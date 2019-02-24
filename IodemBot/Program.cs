@@ -83,7 +83,7 @@ namespace IodemBot
 
         private async Task Client_ReactionAdded(Cacheable<IUserMessage, ulong> cache, ISocketMessageChannel channel, SocketReaction reaction)
         {
-            await Modules.ColossoBattles.ColossoPvE.ReactionAdded(client, cache, channel, reaction);
+            await Modules.ColossoBattles.ColossoPvE.ReactionAdded(cache, channel, reaction);
         }
 
         private async Task Log(LogMessage msg)

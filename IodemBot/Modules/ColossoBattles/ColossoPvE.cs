@@ -69,7 +69,7 @@ namespace IodemBot.Modules.ColossoBattles
             return b;
         }
 
-        internal static async Task TryAddPlayer(DiscordSocketClient client, SocketReaction reaction)
+        internal static async Task TryAddPlayer(SocketReaction reaction)
         {
             var battleCol = battles.Where(s => s.lobbyMsg.Id == reaction.MessageId).FirstOrDefault();
             if (battleCol == null) return;
@@ -92,30 +92,30 @@ namespace IodemBot.Modules.ColossoBattles
 
             if (battleCol.messages.Count == battleCol.playersToStart)
             {
-                await TryStartBattle(client, reaction);
+                await TryStartBattle(reaction);
             }
         }
 
-        internal static async Task ReactionAdded(DiscordSocketClient client, Cacheable<IUserMessage, ulong> cache, ISocketMessageChannel channel, SocketReaction reaction)
+        internal static async Task ReactionAdded(Cacheable<IUserMessage, ulong> cache, ISocketMessageChannel channel, SocketReaction reaction)
         {
             if (reaction.User.Value.IsBot) return;
 
             if (reaction.Emote.Name == "Fight")
             {
-                await TryAddPlayer(client, reaction);
+                await TryAddPlayer(reaction);
             }
             else if (reaction.Emote.Name == "Battle")
             {
-                await TryStartBattle(client, reaction);
+                await TryStartBattle(reaction);
             }
 
             var curBattle = battles.Where(b => b.battleChannel.Id == reaction.Channel.Id).FirstOrDefault();
             if (curBattle == null) return;
             var c = (RestUserMessage)await channel.GetMessageAsync(reaction.MessageId);
-            await curBattle.ProcessReaction(client, reaction, c);
+            await curBattle.ProcessReaction(reaction, c);
         }
 
-        private static async Task TryStartBattle(DiscordSocketClient client, SocketReaction reaction)
+        private static async Task TryStartBattle(SocketReaction reaction)
         {
             var battleCol = battles.Where(s => s.lobbyMsg.Id == reaction.MessageId).FirstOrDefault();
             if (battleCol.Equals(null)) return;
@@ -123,7 +123,7 @@ namespace IodemBot.Modules.ColossoBattles
 
             if (battleCol.battle.sizeTeamA == 0) return;
             battleCol.battle.Start();
-            await battleCol.WriteBattle(client);
+            await battleCol.WriteBattle();
         }
 
         public enum BattleDifficulty { Easy = 1, Medium = 2, Hard = 3 };
@@ -180,7 +180,7 @@ namespace IodemBot.Modules.ColossoBattles
                 await processTurn(forced: true);
             }
 
-            internal async Task ProcessReaction(DiscordSocketClient client, SocketReaction reaction, RestUserMessage c)
+            internal async Task ProcessReaction(SocketReaction reaction, RestUserMessage c)
             {
                 var tryMsg = messages.Keys.Where(k => k.Id == reaction.MessageId).FirstOrDefault();
                 if (tryMsg == null)
@@ -239,7 +239,7 @@ namespace IodemBot.Modules.ColossoBattles
                 bool turnProcessed = forced ? battle.ForceTurn() : battle.Turn();
                 if (turnProcessed)
                 {
-                    await WriteBattle(Global.Client);
+                    await WriteBattle();
                     if (!battle.isActive)
                     {
                         await GameOver();
@@ -247,7 +247,7 @@ namespace IodemBot.Modules.ColossoBattles
                 };
             }
 
-            internal async Task WriteBattle(DiscordSocketClient client)
+            internal async Task WriteBattle()
             {
                 autoTurn.Stop();
                 await WriteStatus();
