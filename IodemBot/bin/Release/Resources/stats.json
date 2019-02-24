@@ -1,0 +1,452 @@
+{
+  "Squire": {
+    "maxHP": 110,
+    "HP": 110,
+    "maxPP": 80,
+    "PP": 80,
+    "Atk": 110,
+    "Def": 100,
+    "Spd": 110
+  },
+  "Knight": {
+    "maxHP": 130,
+    "HP": 130,
+    "maxPP": 90,
+    "PP": 90,
+    "Atk": 120,
+    "Def": 110,
+    "Spd": 120
+  },
+  "Gallant": {
+    "maxHP": 150,
+    "HP": 150,
+    "maxPP": 100,
+    "PP": 100,
+    "Atk": 130,
+    "Def": 120,
+    "Spd": 130
+  },
+  "Lord": {
+    "maxHP": 170,
+    "HP": 170,
+    "maxPP": 110,
+    "PP": 110,
+    "Atk": 140,
+    "Def": 130,
+    "Spd": 140
+  },
+  "Slayer": {
+    "maxHP": 190,
+    "HP": 190,
+    "maxPP": 120,
+    "PP": 120,
+    "Atk": 150,
+    "Def": 140,
+    "Spd": 150
+  },
+  "Miko": {
+	"maxHP": 80,
+    "HP": 80,
+    "maxPP": 150,
+    "PP": 150,
+    "Atk": 70,
+    "Def": 90,
+    "Spd": 120
+  },
+  "High Miko": {
+	"maxHP": 90,
+    "HP": 90,
+    "maxPP": 160,
+    "PP": 160,
+    "Atk": 80,
+    "Def": 90,
+    "Spd": 130
+  },
+  "Master Miko": {
+	"maxHP": 110,
+    "HP": 110,
+    "maxPP": 170,
+    "PP": 170,
+    "Atk": 90,
+    "Def": 110,
+    "Spd": 140
+  },
+  "Mystic Miko": {
+	"maxHP": 130,
+    "HP": 130,
+    "maxPP": 180,
+    "PP": 180,
+    "Atk": 100,
+    "Def": 120,
+    "Spd": 150
+  },
+  "Radiant Miko": {
+	"maxHP": 150,
+    "HP": 150,
+    "maxPP": 190,
+    "PP": 190,
+    "Atk": 110,
+    "Def": 130,
+    "Spd": 160
+  },
+  "Guard": {
+	"maxHP": 110,
+    "HP": 110,
+    "maxPP": 80,
+    "PP": 80,
+    "Atk": 100,
+    "Def": 110,
+    "Spd": 70
+  },
+  "Soldier": {
+	"maxHP": 130,
+    "HP": 130,
+    "maxPP": 90,
+    "PP": 90,
+    "Atk": 110,
+    "Def": 120,
+    "Spd": 80
+  },
+  "Warrior": {
+	"maxHP": 150,
+    "HP": 150,
+    "maxPP": 100,
+    "PP": 100,
+    "Atk": 130,
+    "Def": 140,
+    "Spd": 100
+  },
+  "Champion": {
+	"maxHP": 170,
+    "HP": 170,
+    "maxPP": 110,
+    "PP": 110,
+    "Atk": 130,
+    "Def": 140,
+    "Spd": 100
+  },
+  "Hero": {
+	"maxHP": 190,
+    "HP": 190,
+    "maxPP": 120,
+    "PP": 120,
+    "Atk": 140,
+    "Def": 150,
+    "Spd": 110
+  },
+  "Flame User": {
+	"maxHP": 100,
+    "HP": 100,
+    "maxPP": 120,
+    "PP": 120,
+    "Atk": 100,
+    "Def": 100,
+    "Spd": 120
+  },
+  "Witch": {
+	"maxHP": 110,
+    "HP": 110,
+    "maxPP": 130,
+    "PP": 130,
+    "Atk": 110,
+    "Def": 110,
+    "Spd": 130
+  },
+  "Hex": {
+	"maxHP": 130,
+    "HP": 130,
+    "maxPP": 140,
+    "PP": 140,
+    "Atk": 120,
+    "Def": 120,
+    "Spd": 140
+  },
+  "Fire Master": {
+	"maxHP": 150,
+    "HP": 150,
+    "maxPP": 150,
+    "PP": 150,
+    "Atk": 130,
+    "Def": 130,
+    "Spd": 150
+  },
+  "Justice": {
+	"maxHP": 170,
+    "HP": 170,
+    "maxPP": 160,
+    "PP": 160,
+    "Atk": 140,
+    "Def": 140,
+    "Spd": 160
+  },
+  "Pirate": {
+	"maxHP": 110,
+    "HP": 110,
+    "maxPP": 90,
+    "PP": 90,
+    "Atk": 100,
+    "Def": 100,
+    "Spd": 90
+  },
+  "Cannoneer": {
+	"maxHP": 130,
+    "HP": 130,
+    "maxPP": 100,
+    "PP": 100,
+    "Atk": 110,
+    "Def": 110,
+    "Spd": 100
+  },
+  "Corsair": {
+	"maxHP": 150,
+    "HP": 150,
+    "maxPP": 110,
+    "PP": 110,
+    "Atk": 120,
+    "Def": 120,
+    "Spd": 110
+  },
+  "Pirate King": {
+	"maxHP": 170,
+    "HP": 170,
+    "maxPP": 120,
+    "PP": 120,
+    "Atk": 130,
+    "Def": 130,
+    "Spd": 120
+  },
+  "Hull Reaver": {
+	"maxHP": 190,
+    "HP": 190,
+    "maxPP": 130,
+    "PP": 130,
+    "Atk": 140,
+    "Def": 140,
+    "Spd": 120
+  },
+  "Wind Seer": {
+	"maxHP": 80,
+    "HP": 80,
+    "maxPP": 140,
+    "PP": 140,
+    "Atk": 80,
+    "Def": 90,
+    "Spd": 130
+  },
+  "Magician": {
+	"maxHP": 90,
+    "HP": 90,
+    "maxPP": 150,
+    "PP": 150,
+    "Atk": 90,
+    "Def": 100,
+    "Spd": 140
+  },
+  "Mage": {
+	"maxHP": 110,
+    "HP": 110,
+    "maxPP": 160,
+    "PP": 160,
+    "Atk": 100,
+    "Def": 110,
+    "Spd": 150
+  },
+  "Magister": {
+	"maxHP": 130,
+    "HP": 130,
+    "maxPP": 170,
+    "PP": 170,
+    "Atk": 110,
+    "Def": 120,
+    "Spd": 160
+  },
+  "Sorcerer": {
+	"maxHP": 150,
+    "HP": 150,
+    "maxPP": 180,
+    "PP": 180,
+    "Atk": 120,
+    "Def": 130,
+    "Spd": 170
+  },
+  "Beastling": {
+	"maxHP": 110,
+    "HP": 110,
+    "maxPP": 120,
+    "PP": 120,
+    "Atk": 90,
+    "Def": 100,
+    "Spd": 110
+  },
+  "Wildrunner": {
+	"maxHP": 130,
+    "HP": 130,
+    "maxPP": 130,
+    "PP": 130,
+    "Atk": 100,
+    "Def": 110,
+    "Spd": 120
+  },
+  "Shapeshifter": {
+	"maxHP": 150,
+    "HP": 150,
+    "maxPP": 140,
+    "PP": 140,
+    "Atk": 110,
+    "Def": 120,
+    "Spd": 130
+  },
+  "Beast Master": {
+	"maxHP": 170,
+    "HP": 170,
+    "maxPP": 160,
+    "PP": 160,
+    "Atk": 130,
+    "Def": 130,
+    "Spd": 140
+  },
+  "Prime Beast": {
+	"maxHP": 190,
+    "HP": 190,
+    "maxPP": 170,
+    "PP": 170,
+    "Atk": 140,
+    "Def": 140,
+    "Spd": 150
+  },
+  "Water Seer": {
+	"maxHP": 90,
+    "HP": 90,
+    "maxPP": 130,
+    "PP": 130,
+    "Atk": 90,
+    "Def": 100,
+    "Spd": 80
+  },
+  "Scribe": {
+	"maxHP": 100,
+    "HP": 90,
+    "maxPP": 140,
+    "PP": 140,
+    "Atk": 100,
+    "Def": 110,
+    "Spd": 90
+  },
+  "Cleric": {
+	"maxHP": 120,
+    "HP": 120,
+    "maxPP": 150,
+    "PP": 150,
+    "Atk": 110,
+    "Def": 120,
+    "Spd": 100
+  },
+  "Paragon": {
+	"maxHP": 140,
+    "HP": 140,
+    "maxPP": 160,
+    "PP": 160,
+    "Atk": 120,
+    "Def": 130,
+    "Spd": 110
+  },
+  "Angel": {
+	"maxHP": 160,
+    "HP": 160,
+    "maxPP": 170,
+    "PP": 170,
+    "Atk": 130,
+    "Def": 140,
+    "Spd": 120
+  },
+  "Mariner": {
+	"maxHP": 110,
+    "HP": 110,
+    "maxPP": 90,
+    "PP": 90,
+    "Atk": 100,
+    "Def": 100,
+    "Spd": 90
+  },
+  "Privateer": {
+	"maxHP": 130,
+    "HP": 130,
+    "maxPP": 100,
+    "PP": 100,
+    "Atk": 110,
+    "Def": 110,
+    "Spd": 100
+  },
+  "Commander": {
+	"maxHP": 150,
+    "HP": 150,
+    "maxPP": 110,
+    "PP": 110,
+    "Atk": 120,
+    "Def": 120,
+    "Spd": 110
+  },
+  "Captain": {
+	"maxHP": 170,
+    "HP": 170,
+    "maxPP": 120,
+    "PP": 120,
+    "Atk": 130,
+    "Def": 130,
+    "Spd": 120
+  },
+  "Admiral": {
+	"maxHP": 190,
+    "HP": 190,
+    "maxPP": 130,
+    "PP": 130,
+    "Atk": 140,
+    "Def": 140,
+    "Spd": 130
+  },
+  "Aqua Squire": {
+    "maxHP": 110,
+    "HP": 110,
+    "maxPP": 80,
+    "PP": 80,
+    "Atk": 110,
+    "Def": 100,
+    "Spd": 110
+  },
+  "Aqua Knight": {
+    "maxHP": 130,
+    "HP": 130,
+    "maxPP": 90,
+    "PP": 90,
+    "Atk": 120,
+    "Def": 110,
+    "Spd": 120
+  },
+  "Aqua Prince": {
+    "maxHP": 150,
+    "HP": 150,
+    "maxPP": 100,
+    "PP": 100,
+    "Atk": 130,
+    "Def": 120,
+    "Spd": 130
+  },
+  "Aqua Lord": {
+    "maxHP": 170,
+    "HP": 170,
+    "maxPP": 110,
+    "PP": 110,
+    "Atk": 140,
+    "Def": 130,
+    "Spd": 140
+  },
+  "Aqua Master": {
+    "maxHP": 190,
+    "HP": 190,
+    "maxPP": 120,
+    "PP": 120,
+    "Atk": 150,
+    "Def": 140,
+    "Spd": 150
+  }
+}

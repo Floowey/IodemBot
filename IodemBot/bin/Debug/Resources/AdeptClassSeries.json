@@ -1,0 +1,2631 @@
+[
+  {
+    "name": "Exathi Series",
+    "classes": [
+      {
+        "name": "Exathi",
+        "movepool": [
+		  "Brutal Swing"
+		],
+        "statMultipliers": {
+          "maxHP": 100,
+          "maxPP": 0,
+          "Atk": 100,
+          "Def": 100,
+          "Spd": 100
+        }
+      }
+    ],
+    "elements": [
+      4
+    ],
+    "elstats": {
+      "VenusAtk": 100,
+      "VenusRes": 100,
+      "MarsAtk": 100,
+      "MarsRes": 100,
+      "JupiterAtk": 100,
+      "JupiterRes": 100,
+      "MercuryAtk": 100,
+      "MercuryRes": 100
+    },
+    "requirement": "Level",
+    "isDefault": true
+  },
+  {
+    "name": "Squire Series",
+    "classes": [
+      {
+        "name": "Squire",
+        "movepool": [
+          "Quake",
+          "Cure"
+        ],
+        "statMultipliers": {
+          "maxHP": 110,
+          "maxPP": 80,
+          "Atk": 110,
+          "Def": 100,
+          "Spd": 110
+        }
+      },
+      {
+        "name": "Knight",
+        "movepool": [
+          "Ragnarök",
+		  "Earthquake",
+          "Cure"
+        ],
+        "statMultipliers": {
+          "maxHP": 130,
+          "maxPP": 90,
+          "Atk": 120,
+          "Def": 110,
+          "Spd": 120
+        }
+      },
+	  {
+		"name": "Gallant",
+		"movepool": [
+			"Ragnarök",
+			"Quake Sphere",
+			"Cure Well",
+			"Revive"
+		],
+		"statMultipliers": {
+		  "maxHP": 150,
+          "maxPP": 100,
+          "Atk": 130,
+          "Def": 120,
+          "Spd": 130
+		}
+	  },
+	  {
+		"name": "Lord",
+		"movepool": [
+			"Odyssey",
+			"Quake Sphere",
+			"Cure Well",
+			"Revive"
+		],
+		"statMultipliers": {
+		  "maxHP": 170,
+          "maxPP": 110,
+          "Atk": 140,
+          "Def": 130,
+          "Spd": 140
+		}
+	  },
+	  {
+		"name": "Slayer",
+		"movepool": [
+			"Odyssey",
+			"Quake Sphere",
+			"Potent Cure",
+			"Revive"
+		],
+		"statMultipliers": {
+		  "maxHP": 190,
+          "maxPP": 120,
+          "Atk": 150,
+          "Def": 140,
+          "Spd": 150
+		}
+	  }
+    ],
+    "elements": [
+      0
+    ],
+    "elstats": {
+      "VenusAtk": 140,
+      "VenusRes": 140,
+      "MarsAtk": 80,
+      "MarsRes": 80,
+      "JupiterAtk": 100,
+      "JupiterRes": 100,
+      "MercuryAtk": 100,
+      "MercuryRes": 100
+    },
+    "requirement": "Level",
+    "isDefault": true
+  },
+  {
+    "name": "Miko Series",
+    "classes": [
+      {
+        "name": "Miko",
+        "movepool": [
+          "Cure"
+        ],
+        "statMultipliers": {
+          "maxHP": 80,
+          "maxPP": 150,
+          "Atk": 70,
+          "Def": 90,
+          "Spd": 120
+        }
+      },
+      {
+        "name": "High Miko",
+        "movepool": [
+		  "Weapon Grace",
+          "Cure Well"
+        ],
+        "statMultipliers": {
+          "maxHP": 90,
+          "maxPP": 160,
+          "Atk": 80,
+          "Def": 100,
+          "Spd": 130
+        }
+      },
+	  {
+		"name": "Master Miko",
+		"movepool": [
+		  "Roaring Dragon",
+		  "Weapon Grace",
+		  "Cure Well",
+		  "Revive"
+		],
+		"statMultipliers": {
+		  "maxHP": 110,
+          "maxPP": 170,
+          "Atk": 90,
+          "Def": 110,
+          "Spd": 140
+		}
+	  },
+	  {
+		"name": "Mystic Miko",
+		"movepool": [
+			"Slaying Dragon",
+			"Weapon Grace",
+			"Cure Well",
+			"Revive"
+		],
+		"statMultipliers": {
+		  "maxHP": 130,
+          "maxPP": 180,
+          "Atk": 100,
+          "Def": 120,
+          "Spd": 150
+		}
+	  },
+	  {
+		"name": "Radiant Miko",
+		"movepool": [
+			"Reigning Dragon",
+			"Weapon Grace",
+			"Potent Cure",
+			"Revive"
+		],
+		"statMultipliers": {
+		  "maxHP": 150,
+          "maxPP": 190,
+          "Atk": 110,
+          "Def": 130,
+          "Spd":160 
+		}
+	  },
+    ],
+    "elements": [
+      0
+    ],
+    "elstats": {
+      "VenusAtk": 140,
+      "VenusRes": 140,
+      "MarsAtk": 110,
+      "MarsRes": 110,
+      "JupiterAtk": 70,
+      "JupiterRes": 70,
+      "MercuryAtk": 100,
+      "MercuryRes": 100
+    },
+    "requirement": "Level",
+    "isDefault": true
+  },
+  {
+    "name": "Guard Series",
+    "classes": [
+      {
+        "name": "Guard",
+        "movepool": [
+          "Fireorb",
+		  "Fireball"
+        ],
+        "statMultipliers": {
+          "maxHP": 110,
+          "maxPP": 80,
+          "Atk": 100,
+          "Def": 110,
+          "Spd": 70
+        }
+      },
+      {
+        "name": "Soldier",
+        "movepool": [
+          "Heat Wave",
+          "Fireball",
+          "Guard"
+        ],
+        "statMultipliers": {
+          "maxHP": 130,
+          "maxPP": 90,
+          "Atk": 100,
+          "Def": 120,
+          "Spd": 80
+        }
+      },
+	  {
+		"name": "Warrior",
+		"movepool": [ 
+		  "Heat Wave",
+		  "Fireball",
+		  "Protect"
+		],
+		"statMultipliers": {
+		  "maxHP": 150,
+          "maxPP": 100,
+          "Atk": 130,
+          "Def": 140,
+          "Spd": 100
+		}
+	  },
+	  {
+		"name": "Champion",
+		"movepool": [
+		  "Liquifier",
+		  "Inferno",
+		  "Protect"
+		],
+		"statMultipliers": {
+		  "maxHP": 170,
+          "maxPP": 110,
+          "Atk": 130,
+          "Def": 140,
+          "Spd": 100
+		}
+	  },
+	  {
+		"name": "Hero",
+		"movepool": [
+		  "Liquifier",
+		  "Inferno",
+		  "Protect"
+		],
+		"statMultipliers": {
+		  "maxHP": 190,
+          "maxPP": 120,
+          "Atk": 140,
+          "Def": 150,
+          "Spd": 110
+		}
+	  },
+    ],
+    "elements": [
+      1
+    ],
+    "elstats": {
+      "VenusAtk": 100,
+      "VenusRes": 100,
+      "MarsAtk": 140,
+      "MarsRes": 140,
+      "JupiterAtk": 100,
+      "JupiterRes": 100,
+      "MercuryAtk": 80,
+      "MercuryRes": 80
+    },
+    "requirement": "Level",
+    "isDefault": true
+  },
+  {
+    "name": "Flame User Series",
+    "classes": [
+      {
+        "name": "Flame User",
+        "movepool": [
+          "Fume",
+          "Beam",
+		  "Impair"
+        ],
+        "statMultipliers": {
+          "maxHP": 100,
+          "maxPP": 120,
+          "Atk": 100,
+          "Def": 100,
+          "Spd": 120
+        }
+      },
+      {
+        "name": "Witch",
+        "movepool": [
+          "Fume",
+          "Cycle Beam",
+		  "Impair"
+        ],
+        "statMultipliers": {
+          "maxHP": 110,
+          "maxPP": 130,
+          "Atk": 110,
+          "Def": 110,
+          "Spd": 130
+        }
+      },
+	  {
+		"name": "Hex",
+		"movepool": [
+		  "Serpent Fume",
+		  "Cycle Beam",
+		  "Impair",
+		  "Aura"
+		],
+		"statMultipliers": {
+		  "maxHP": 130,
+          "maxPP": 140,
+          "Atk": 120,
+          "Def": 120,
+          "Spd": 140
+		}
+	  },
+	  {
+		"name": "Flame Master",
+		"movepool": [
+		  "Serpent Fume",
+		  "Searing Beam",
+		  "Debilitate",
+		  "Healing Aura"
+		],
+		"statMultipliers": {
+		  "maxHP": 150,
+          "maxPP": 150,
+          "Atk": 130,
+          "Def": 130,
+          "Spd": 150
+		}
+	  },
+	  {
+		"name": "Justice",
+		"movepool": [
+		  "Dragon Fume",
+		  "Searing Beam",
+		  "Debilitate",
+		  "Cool Aura"
+		],
+		"statMultipliers": {
+		  "maxHP": 170,
+          "maxPP": 160,
+          "Atk": 140,
+          "Def": 140,
+          "Spd": 160
+		}
+	  },
+    ],
+    "elements": [
+      1
+    ],
+    "elstats": {
+      "VenusAtk": 100,
+      "VenusRes": 100,
+      "MarsAtk": 140,
+      "MarsRes": 140,
+      "JupiterAtk": 100,
+      "JupiterRes": 100,
+      "MercuryAtk": 80,
+      "MercuryRes": 80
+    },
+    "requirement": "Level",
+    "isDefault": true
+  },
+  {
+    "name": "Pirate Series",
+    "classes": [
+      {
+        "name": "Pirate",
+        "movepool": [
+          "Fume",
+		  "Beam"
+        ],
+        "statMultipliers": {
+          "maxHP": 110,
+          "maxPP": 90,
+          "Atk": 100,
+          "Def": 100,
+          "Spd": 90
+        }
+      },
+      {
+        "name": "Cannoneer",
+        "movepool": [
+          "Keelhaul",
+          "Fume",
+          "Cycle Beam"
+        ],
+        "statMultipliers": {
+          "maxHP": 130,
+          "maxPP": 100,
+          "Atk": 110,
+          "Def": 110,
+          "Spd": 100
+        }
+      },
+	  {
+		"name": "Corsair",
+		"movepool": [
+			"Keelhaul",
+			"Serpent Fume",
+			"Cycle Beam"
+		],
+		"statMultipliers": {
+		  "maxHP": 150,
+          "maxPP": 110,
+          "Atk": 120,
+          "Def": 120,
+          "Spd": 110
+		}
+	  },
+	  {
+		"name": "Pirate King",
+		"movepool": [
+			"Vicious Chop",
+			"Serpent Fume",
+			"Searing Beam"
+		],
+		"statMultipliers": {
+		  "maxHP": 170,
+          "maxPP": 120,
+          "Atk": 130,
+          "Def": 130,
+          "Spd": 120
+		}
+	  },
+	  {
+		"name": "Hull Reaver",
+		"movepool": [
+			"Vicious Chop",
+			"Dragon Fume",
+			"Searing Beam"
+		],
+		"statMultipliers": {
+		  "maxHP": 190,
+          "maxPP": 130,
+          "Atk": 140,
+          "Def": 140,
+          "Spd": 120
+		}
+	  },
+    ],
+    "elements": [
+      1
+    ],
+    "elstats": {
+      "VenusAtk": 70,
+      "VenusRes": 70,
+      "MarsAtk": 140,
+      "MarsRes": 140,
+      "JupiterAtk": 100,
+      "JupiterRes": 100,
+      "MercuryAtk": 110,
+      "MercuryRes": 110
+    },
+    "requirement": "Level",
+    "isDefault": true
+  },
+  {
+    "name": "Wind Seer Series",
+    "classes": [
+      {
+        "name": "Wind Seer",
+        "movepool": [
+          "Whirlwind",
+		  "Plasma",
+		  "Fresh Breeze"
+        ],
+        "statMultipliers": {
+          "maxHP": 80,
+          "maxPP": 140,
+          "Atk": 80,
+          "Def": 90,
+          "Spd": 130
+        }
+      },
+      {
+        "name": "Magician",
+        "movepool": [
+          "Tornado",
+		  "Plasma",
+		  "Impact",
+		  "Healthy Wind"
+        ],
+        "statMultipliers": {
+          "maxHP": 90,
+          "maxPP": 150,
+          "Atk": 90,
+          "Def": 100,
+          "Spd": 140
+        }
+      },
+	  {
+		"name": "Mage",
+		"movepool": [
+		  "Tornado",
+		  "Shine Plasma",
+		  "High Impact",
+		  "Healthy Wind"
+		],
+		"statMultipliers": {
+		  "maxHP": 110,
+          "maxPP": 160,
+          "Atk": 100,
+          "Def": 110,
+          "Spd": 150
+		}
+	  },
+	  {
+		"name": "Magister",
+		"movepool": [
+		  "Tempest",
+		  "Shine Plasma",
+		  "High Impact",
+		  "Healing Gust"
+		],
+		"statMultipliers": {
+		  "maxHP": 130,
+          "maxPP": 170,
+          "Atk": 110,
+          "Def": 120,
+          "Spd": 160
+		}
+	  },
+	  {
+		"name": "Sorcerer",
+		"movepool": [
+		  "Tempest",
+		  "Spark Plasma",
+		  "High Impact",
+		  "Healing Gust"
+		],
+		"statMultipliers": {
+		  "maxHP": 150,
+          "maxPP": 180,
+          "Atk": 120,
+          "Def": 130,
+          "Spd": 170
+		}
+	  },
+    ],
+    "elements": [
+      2
+    ],
+    "elstats": {
+      "VenusAtk": 70,
+      "VenusRes": 70,
+      "MarsAtk": 100,
+      "MarsRes": 100,
+      "JupiterAtk": 150,
+      "JupiterRes": 150,
+      "MercuryAtk": 100,
+      "MercuryRes": 100
+    },
+    "requirement": "Level",
+    "isDefault": true
+  },
+  {
+    "name": "Beastling Series",
+    "classes": [
+      {
+        "name": "Beastling",
+        "movepool": [
+		  "Slash",
+		  "Ray",
+          "Boon"
+        ],
+        "statMultipliers": {
+          "maxHP": 110,
+          "maxPP": 120,
+          "Atk": 90,
+          "Def": 100,
+          "Spd": 110
+        }
+      },
+      {
+        "name": "Wildrunner",
+        "movepool": [
+		  "Speed Punch",
+		  "Wind Slash",
+		  "Ray",
+          "Nature's Boon"
+        ],
+        "statMultipliers": {
+          "maxHP": 130,
+          "maxPP": 130,
+          "Atk": 100,
+          "Def": 110,
+          "Spd": 120
+        }
+      },
+	  {
+		"name": "Shapeshifter",
+		"movepool": [
+		  "Speed Punch",
+		  "Wind Slash",
+		  "Storm Ray",
+          "Vital Boon"
+		],
+		"statMultipliers": {
+		  "maxHP": 150,
+          "maxPP": 140,
+          "Atk": 110,
+          "Def": 120,
+          "Spd": 130
+		}
+	  },
+	  {
+		"name": "Beast Master",
+		"movepool": [
+		  "Speed Punch",
+		  "Sonic Slash",
+		  "Storm Ray",
+          "Vital Boon"
+		],
+		"statMultipliers": {
+		  "maxHP": 170,
+          "maxPP": 160,
+          "Atk": 130,
+          "Def": 130,
+          "Spd": 140
+		}
+	  },
+	  {
+		"name": "Prime Beast",
+		"movepool": [
+		  "Speed Punch",
+		  "Sonic Slash",
+		  "Destruct Ray",
+          "Vital Boon"
+		],
+		"statMultipliers": {
+		  "maxHP": 190,
+          "maxPP": 170,
+          "Atk": 140,
+          "Def": 140,
+          "Spd": 150
+		}
+	  },
+    ],
+    "elements": [
+      2
+    ],
+    "elstats": {
+      "VenusAtk": 80,
+      "VenusRes": 80,
+      "MarsAtk": 100,
+      "MarsRes": 100,
+      "JupiterAtk": 140,
+      "JupiterRes": 140,
+      "MercuryAtk": 100,
+      "MercuryRes": 100
+    },
+    "requirement": "Level",
+    "isDefault": true
+  },
+  {
+    "name": "Water Seer Series",
+    "classes": [
+      {
+        "name": "Water Seer",
+        "movepool": [
+          "Ice",
+          "Ply"
+        ],
+        "statMultipliers": {
+          "maxHP": 90,
+          "maxPP": 130,
+          "Atk": 90,
+          "Def": 100,
+          "Spd": 80
+        }
+      },
+      {
+        "name": "Scribe",
+        "movepool": [
+          "Ice Horn",
+		  "Break",
+          "Ply Well"
+        ],
+        "statMultipliers": {
+          "maxHP": 100,
+          "maxPP": 140,
+          "Atk": 100,
+          "Def": 110,
+          "Spd": 90
+        }
+      },
+	  {
+		"name": "Cleric",
+		"movepool": [
+		  "Ice Horn",
+		  "Break",
+		  "Ply Well",
+		  "Wish"
+		],
+		"statMultipliers": {
+		  "maxHP": 120,
+          "maxPP": 150,
+          "Atk": 110,
+          "Def": 120,
+          "Spd": 100
+		}
+	  },
+	  {
+		"name": "Paragon",
+		"movepool": [
+		  "Ice Missile",
+		  "Break",
+		  "Pure Ply",
+		  "Wish Well"
+		],
+		"statMultipliers": {
+		  "maxHP": 140,
+          "maxPP": 160,
+          "Atk": 120,
+          "Def": 130,
+          "Spd": 110
+		}
+	  },
+	  {
+		"name": "Angel",
+		"movepool": [
+		  "Ice Missile",
+		  "Break",
+		  "Pure Ply",
+		  "Pure Wish"
+		],
+		"statMultipliers": {
+		  "maxHP": 160,
+          "maxPP": 170,
+          "Atk": 130,
+          "Def": 140,
+          "Spd": 120
+		}
+	  },
+    ],
+    "elements": [
+      3
+    ],
+    "elstats": {
+      "VenusAtk": 100,
+      "VenusRes": 100,
+      "MarsAtk": 100,
+      "MarsRes": 100,
+      "JupiterAtk": 80,
+      "JupiterRes": 80,
+      "MercuryAtk": 140,
+      "MercuryRes": 140
+    },
+    "requirement": "Level",
+    "isDefault": true
+  },
+  {
+    "name": "Mariner Series",
+    "classes": [
+      {
+        "name": "Mariner",
+        "movepool": [
+		  "Frost",
+          "Cool",
+		  "Ply"
+        ],
+        "statMultipliers": {
+          "maxHP": 110,
+          "maxPP": 90,
+          "Atk": 100,
+          "Def": 100,
+          "Spd": 90
+        }
+      },
+      {
+        "name": "Privateer",
+        "movepool": [
+          "Diamond Dust",
+		  "Tundra",
+          "Super Cool",
+		  "Ply"
+        ],
+        "statMultipliers": {
+          "maxHP": 130,
+          "maxPP": 100,
+          "Atk": 110,
+          "Def": 110,
+          "Spd": 100
+        }
+      },
+	  {
+		"name": "Commander",
+		"movepool": [
+		  "Diamond Dust",
+		  "Glacier",
+		  "Super Cool",
+		  "Ply Well"
+		],
+		"statMultipliers": {
+		  "maxHP": 150,
+          "maxPP": 110,
+          "Atk": 120,
+          "Def": 120,
+          "Spd": 110
+		}
+	  },
+	  {
+		"name": "Captain",
+		"movepool": [
+		  "Diamond Berg",
+		  "Glacier",
+		  "Super Cool",
+		  "Pure Ply"
+		],
+		"statMultipliers": {
+		  "maxHP": 170,
+          "maxPP": 120,
+          "Atk": 130,
+          "Def": 130,
+          "Spd": 120
+		}
+	  },
+	  {
+		"name": "Admiral",
+		"movepool": [
+		  "Diamond Berg",
+		  "Glacier",
+		  "Megacool",
+		  "Pure Ply"
+		],
+		"statMultipliers": {
+		  "maxHP": 190,
+          "maxPP": 130,
+          "Atk": 140,
+          "Def": 140,
+          "Spd": 130
+		}
+	  },
+    ],
+    "elements": [
+      3
+    ],
+    "elstats": {
+      "VenusAtk": 80,
+      "VenusRes": 80,
+      "MarsAtk": 100,
+      "MarsRes": 100,
+      "JupiterAtk": 100,
+      "JupiterRes": 100,
+      "MercuryAtk": 140,
+      "MercuryRes": 140
+    },
+    "requirement": "Level",
+    "isDefault": true
+  },
+  {
+    "name": "Aqua Squire Series",
+    "classes": [
+      {
+        "name": "Aqua Squire",
+        "movepool": [
+          "Douse",
+          "Cool",
+		  "Ply"
+        ],
+        "statMultipliers": {
+          "maxHP": 110,
+          "maxPP": 80,
+          "Atk": 110,
+          "Def": 100,
+          "Spd": 110
+        }
+      },
+      {
+        "name": "Aqua Knight",
+        "movepool": [
+          "Diamond Dust",
+		  "Drench",
+          "Super Cool",
+		  "Ply"
+        ],
+        "statMultipliers": {
+          "maxHP": 130,
+          "maxPP": 90,
+          "Atk": 120,
+          "Def": 110,
+          "Spd": 120
+        }
+      },
+	  {
+		"name": "Aqua Prince",
+		"movepool": [
+		  "Diamond Dust",
+		  "Deluge",
+		  "Super Cool",
+		  "Ply Well"
+		],
+		"statMultipliers": {
+		  "maxHP": 150,
+          "maxPP": 100,
+          "Atk": 130,
+          "Def": 120,
+          "Spd": 130
+		}
+	  },
+	  {
+		"name": "Aqua Lord",
+		"movepool": [
+		  "Diamond Berg",
+		  "Deluge",
+		  "Super Cool",
+		  "Pure Ply"
+		],
+		"statMultipliers": {
+		  "maxHP": 170,
+          "maxPP": 110,
+          "Atk": 140,
+          "Def": 130,
+          "Spd": 140
+		}
+	  },
+	  {
+		"name": "Aqua Master",
+		"movepool": [
+		  "Diamond Berg",
+		  "Deluge",
+		  "Megacool",
+		  "Pure Ply"
+		],
+		"statMultipliers": {
+		  "maxHP": 190,
+          "maxPP": 120,
+          "Atk": 150,
+          "Def": 140,
+          "Spd": 150
+		}
+	  }
+    ],
+    "elements": [
+      3
+    ],
+    "elstats": {
+      "VenusAtk": 110,
+      "VenusRes": 110,
+      "MarsAtk": 110,
+      "MarsRes": 110,
+      "JupiterAtk": 90,
+      "JupiterRes": 90,
+      "MercuryAtk": 130,
+      "MercuryRes": 130
+    },
+    "requirement": "Level",
+    "isDefault": true
+  },
+  {
+    "name": "Brute Series",
+    "classes": [
+      {
+        "name": "Brute",
+        "movepool": [
+          "Planet Diver",
+          "Spire"
+        ],
+        "statMultipliers": {
+          "maxHP": 100,
+          "maxPP": 70,
+          "Atk": 120,
+          "Def": 90,
+          "Spd": 70
+        }
+      },
+      {
+        "name": "Ruffian",
+        "movepool": [
+          "Planet Diver",
+          "Clay Spire",
+		  "Impair"
+        ],
+        "statMultipliers": {
+          "maxHP": 120,
+          "maxPP": 80,
+          "Atk": 130,
+          "Def": 100,
+          "Spd": 120
+        }
+      },
+      {
+        "name": "Savage",
+        "movepool": [
+          "Planet Diver",
+          "Clay Spire",
+		  "Impair",
+          "Revive"
+        ],
+        "statMultipliers": {
+          "maxHP": 140,
+          "maxPP": 90,
+          "Atk": 140,
+          "Def": 110,
+          "Spd": 130
+        }
+      },
+      {
+        "name": "Barbarian",
+        "movepool": [
+          "Planet Diver",
+          "Clay Spire",
+		  "Debilitate",
+          "Revive"
+        ],
+        "statMultipliers": {
+          "maxHP": 160,
+          "maxPP": 100,
+          "Atk": 150,
+          "Def": 120,
+          "Spd": 140
+        }
+      },
+      {
+        "name": "Berserker",
+        "movepool": [
+          "Planetary",
+          "Clay Spire",
+		  "Debilitate",
+          "Revive"
+        ],
+        "statMultipliers": {
+          "maxHP": 180,
+          "maxPP": 110,
+          "Atk": 160,
+          "Def": 130,
+          "Spd": 150
+        }
+      },
+      {
+        "name": "Chaos Lord",
+        "movepool": [
+          "Planetary",
+          "Stone Spire",
+		  "Debilitate",
+          "Revive"
+        ],
+        "statMultipliers": {
+          "maxHP": 200,
+          "maxPP": 120,
+          "Atk": 170,
+          "Def": 140,
+          "Spd": 160
+        }
+      }
+    ],
+    "elements": [
+      0,
+	  1
+    ],
+    "elstats": {
+      "VenusAtk": 140,
+      "VenusRes": 140,
+      "MarsAtk": 140,
+      "MarsRes": 140,
+      "JupiterAtk": 100,
+      "JupiterRes": 100,
+      "MercuryAtk": 70,
+      "MercuryRes": 70
+    },
+    "requirement": "ColossoWins",
+    "isDefault": false
+  },
+  {
+    "name": "Apprentice Series",
+    "classes": [
+      {
+        "name": "Apprentice",
+        "movepool": [
+          "Gaia",
+		  "Ward"
+        ],
+        "statMultipliers": {
+          "maxHP": 100,
+          "maxPP": 120,
+          "Atk": 110,
+          "Def": 100,
+          "Spd": 120
+        }
+      },
+      {
+        "name": "Illusionist",
+        "movepool": [
+          "Astral Blast",
+          "Gaia",
+		  "Ward"
+        ],
+        "statMultipliers": {
+          "maxHP": 120,
+          "maxPP": 130,
+          "Atk": 120,
+          "Def": 110,
+          "Spd": 130
+        }
+      },
+      {
+        "name": "Enchanter",
+        "movepool": [
+          "Astral Blast",
+          "Mother Gaia",
+		  "Resist",
+          "Impact"
+        ],
+        "statMultipliers": {
+          "maxHP": 140,
+          "maxPP": 140,
+          "Atk": 130,
+          "Def": 120,
+          "Spd": 140
+        }
+      },
+      {
+        "name": "Conjurer",
+        "movepool": [
+          "Thunder Mine",
+          "Mother Gaia",
+		  "Resist",
+          "High Impact"
+        ],
+        "statMultipliers": {
+          "maxHP": 170,
+          "maxPP": 160,
+          "Atk": 140,
+          "Def": 130,
+          "Spd": 160
+        }
+      },
+      {
+        "name": "War Adept",
+        "movepool": [
+          "Thunder Mine",
+          "Grand Gaia",
+		  "Resist",
+          "High Impact"
+        ],
+        "statMultipliers": {
+          "maxHP": 190,
+          "maxPP": 170,
+          "Atk": 150,
+          "Def": 140,
+          "Spd": 170
+        }
+      }
+    ],
+    "elements": [
+      0,
+	  2
+    ],
+    "elstats": {
+      "VenusAtk": 130,
+      "VenusRes": 150,
+      "MarsAtk": 70,
+      "MarsRes": 70,
+      "JupiterAtk": 150,
+      "JupiterRes": 150,
+      "MercuryAtk": 90,
+      "MercuryRes": 90
+    },
+    "requirement": "Level",
+    "isDefault": false
+  },
+  {
+    "name": "Crusader Series",
+    "classes": [
+      {
+        "name": "Crusader",
+        "movepool": [
+		  "Thorn",
+        ],
+        "statMultipliers": {
+          "maxHP": 100,
+          "maxPP": 90,
+          "Atk": 110,
+          "Def": 110,
+          "Spd": 90
+        }
+      },
+      {
+        "name": "Defender",
+        "movepool": [
+          "Cutting Edge",
+		  "Briar",
+        ],
+        "statMultipliers": {
+          "maxHP": 120,
+          "maxPP": 100,
+          "Atk": 120,
+          "Def": 120,
+          "Spd": 100
+        }
+      },
+      {
+        "name": "Cavalier",
+        "movepool": [
+          "Cutting Edge",
+		  "Briar",
+          "Wish",
+		  "Revive"
+        ],
+        "statMultipliers": {
+          "maxHP": 140,
+          "maxPP": 110,
+          "Atk": 130,
+          "Def": 130,
+          "Spd": 110
+        }
+      },
+      {
+        "name": "Guardian",
+        "movepool": [
+          "Plume Edge",
+		  "Briar",
+          "Wish Well",
+		  "Revive"
+        ],
+        "statMultipliers": {
+          "maxHP": 170,
+          "maxPP": 130,
+          "Atk": 140,
+          "Def": 140,
+          "Spd": 130
+        }
+      },
+      {
+        "name": "Protector",
+        "movepool": [
+          "Plume Edge",
+          "Nettle",
+		  "Pure Wish",
+		  "Revive"
+        ],
+        "statMultipliers": {
+          "maxHP": 190,
+          "maxPP": 140,
+          "Atk": 150,
+          "Def": 150,
+          "Spd": 140
+        }
+      }
+    ],
+    "elements": [
+      0,
+	  3
+    ],
+    "elstats": {
+      "VenusAtk": 140,
+      "VenusRes": 140,
+      "MarsAtk": 100,
+      "MarsRes": 100,
+      "JupiterAtk": 70,
+      "JupiterRes": 70,
+      "MercuryAtk": 140,
+      "MercuryRes": 140
+    },
+    "requirement": "Level",
+    "isDefault": false
+  },
+  {
+    "name": "Page Series",
+    "classes": [
+      {
+        "name": "Page",
+        "movepool": [
+          "Impact",
+		  "Ward",
+		  "Guard"
+        ],
+        "statMultipliers": {
+          "maxHP": 100,
+          "maxPP": 120,
+          "Atk": 110,
+          "Def": 100,
+          "Spd": 120
+        }
+      },
+      {
+        "name": "Illusionist",
+        "movepool": [
+		  "Astral Blast",
+          "Impact",
+		  "Ward",
+		  "Guard"
+        ],
+        "statMultipliers": {
+          "maxHP": 120,
+          "maxPP": 130,
+          "Atk": 120,
+          "Def": 110,
+          "Spd": 130
+        }
+      },
+      {
+        "name": "Enchanter",
+        "movepool": [
+          "Astral Blast",
+          "High Impact",
+		  "Resist",
+		  "Protect"
+        ],
+        "statMultipliers": {
+          "maxHP": 140,
+          "maxPP": 140,
+          "Atk": 130,
+          "Def": 120,
+          "Spd": 140
+        }
+      },
+      {
+        "name": "Conjurer",
+        "movepool": [
+          "Thunder Mine",
+          "High Impact",
+		  "Resist",
+		  "Protect"
+        ],
+        "statMultipliers": {
+          "maxHP": 170,
+          "maxPP": 160,
+          "Atk": 140,
+          "Def": 130,
+          "Spd": 160
+        }
+      },
+      {
+        "name": "War Adept",
+        "movepool": [
+          "Thunder Mine",
+          "High Impact",
+		  "Resist",
+		  "Protect"
+        ],
+        "statMultipliers": {
+          "maxHP": 190,
+          "maxPP": 170,
+          "Atk": 150,
+          "Def": 140,
+          "Spd": 170
+        }
+      }
+    ],
+    "elements": [
+      1,
+	  2
+    ],
+    "elstats": {
+      "VenusAtk": 80,
+      "VenusRes": 80,
+      "MarsAtk": 140,
+      "MarsRes": 140,
+      "JupiterAtk": 140,
+      "JupiterRes": 140,
+      "MercuryAtk": 80,
+      "MercuryRes": 80
+    },
+    "requirement": "Level",
+    "isDefault": false
+  },
+  {
+    "name": "Air Pilgrim Series",
+    "classes": [
+      {
+        "name": "Air Pilgrim",
+        "movepool": [
+          "Volcano",
+		  "Plasma"
+        ],
+        "statMultipliers": {
+          "maxHP": 90,
+          "maxPP": 120,
+          "Atk": 90,
+          "Def": 100,
+          "Spd": 120
+        }
+      },
+      {
+        "name": "Wanderer",
+        "movepool": [
+          "Eruption",
+		  "Plasma",
+		  "Ward"
+        ],
+        "statMultipliers": {
+          "maxHP": 110,
+          "maxPP": 130,
+          "Atk": 100,
+          "Def": 110,
+          "Spd": 130
+        }
+      },
+      {
+        "name": "Ascetic",
+        "movepool": [
+          "Eruption",
+		  "Plasma",
+          "Resist",
+		  "Aura"
+        ],
+        "statMultipliers": {
+          "maxHP": 120,
+          "maxPP": 140,
+          "Atk": 110,
+          "Def": 120,
+          "Spd": 140
+        }
+      },
+      {
+        "name": "Fire Monk",
+        "movepool": [
+		  "Eruption",
+          "Shine Plasma",
+          "Resist",
+		  "Healing Aura"
+        ],
+        "statMultipliers": {
+          "maxHP": 150,
+          "maxPP": 160,
+          "Atk": 130,
+          "Def": 140,
+          "Spd": 160
+        }
+      },
+      {
+        "name": "Guru",
+        "movepool": [
+          "Pyroclasm",
+          "Spark Plasma",
+          "Resist",
+		  "Cool Aura"
+        ],
+        "statMultipliers": {
+          "maxHP": 170,
+          "maxPP": 170,
+          "Atk": 140,
+          "Def": 150,
+          "Spd": 170
+        }
+      }
+    ],
+    "elements": [
+      1,
+	  2
+    ],
+    "elstats": {
+      "VenusAtk": 80,
+      "VenusRes": 80,
+      "MarsAtk": 140,
+      "MarsRes": 140,
+      "JupiterAtk": 130,
+      "JupiterRes": 130,
+      "MercuryAtk": 90,
+      "MercuryRes": 90
+    },
+    "requirement": "Level",
+    "isDefault": false
+  },
+  {
+    "name": "Aqua Pilgrim Series",
+    "classes": [
+      {
+        "name": "Aqua Pilgrim",
+        "movepool": [
+		  "Volcano",
+          "Prism"
+        ],
+        "statMultipliers": {
+          "maxHP": 90,
+          "maxPP": 120,
+          "Atk": 90,
+          "Def": 100,
+          "Spd": 120
+        }
+      },
+      {
+        "name": "Wanderer",
+        "movepool": [
+          "Eruption",
+		  "Hail Prism",
+		  "Wish"
+        ],
+        "statMultipliers": {
+          "maxHP": 110,
+          "maxPP": 130,
+          "Atk": 100,
+          "Def": 110,
+          "Spd": 130
+        }
+      },
+      {
+        "name": "Ascetic",
+        "movepool": [
+          "Eruption",
+		  "Hail Prism",
+          "Wish",
+		  "Phoenix"
+        ],
+        "statMultipliers": {
+          "maxHP": 120,
+          "maxPP": 140,
+          "Atk": 110,
+          "Def": 120,
+          "Spd": 140
+        }
+      },
+      {
+        "name": "Water Monk",
+        "movepool": [
+		  "Eruption",
+          "Hail Prism",
+          "Wish Well",
+		  "Phoenix"
+        ],
+        "statMultipliers": {
+          "maxHP": 150,
+          "maxPP": 160,
+          "Atk": 130,
+          "Def": 140,
+          "Spd": 160
+        }
+      },
+      {
+        "name": "Guru",
+        "movepool": [
+          "Pyroclasm",
+          "Freeze Prism",
+          "Pure Wish",
+		  "Phoenix"
+        ],
+        "statMultipliers": {
+          "maxHP": 170,
+          "maxPP": 170,
+          "Atk": 140,
+          "Def": 150,
+          "Spd": 170
+        }
+      }
+    ],
+    "elements": [
+      1,
+	  3
+    ],
+    "elstats": {
+      "VenusAtk": 90,
+      "VenusRes": 90,
+      "MarsAtk": 140,
+      "MarsRes": 140,
+      "JupiterAtk": 80,
+      "JupiterRes": 80,
+      "MercuryAtk": 130,
+      "MercuryRes": 130
+    },
+    "requirement": "Level",
+    "isDefault": false
+  },
+  {
+    "name": "Air Seer Series",
+    "classes": [
+      {
+        "name": "Air Seer",
+        "movepool": [
+          "Bolt",
+		  "Growth",
+		  "Cure"
+        ],
+        "statMultipliers": {
+          "maxHP": 90,
+          "maxPP": 130,
+          "Atk": 90,
+          "Def": 90,
+          "Spd": 110
+        }
+      },
+      {
+        "name": "Diviner",
+        "movepool": [
+          "Flash Bolt",
+		  "Mad Growth",
+          "Cure Well"
+        ],
+        "statMultipliers": {
+          "maxHP": 110,
+          "maxPP": 140,
+          "Atk": 100,
+          "Def": 100,
+          "Spd": 120
+        }
+      },
+      {
+        "name": "Shaman",
+        "movepool": [
+          "Flash Bolt",
+		  "Mad Growth",
+          "Cure Well", 
+          "Revive"
+        ],
+        "statMultipliers": {
+          "maxHP": 120,
+          "maxPP": 150,
+          "Atk": 110,
+          "Def": 110,
+          "Spd": 130
+        }
+      },
+      {
+        "name": "Druid",
+        "movepool": [
+          "Blue Bolt",
+		  "Wild Growth",
+          "Potent Cure",
+          "Revive"
+        ],
+        "statMultipliers": {
+          "maxHP": 150,
+          "maxPP": 170,
+          "Atk": 130,
+          "Def": 130,
+          "Spd": 150
+        }
+      },
+      {
+        "name": "Oracle",
+        "movepool": [
+          "Blue Bolt",
+          "Mad Growth",
+          "Potent Cure",
+		  "Revive"
+        ],
+        "statMultipliers": {
+          "maxHP": 170,
+          "maxPP": 180,
+          "Atk": 140,
+          "Def": 140,
+          "Spd": 160
+        }
+      }
+    ],
+    "elements": [
+      2,
+	  0
+    ],
+    "elstats": {
+      "VenusAtk": 130,
+      "VenusRes": 130,
+      "MarsAtk": 80,
+      "MarsRes": 80,
+      "JupiterAtk": 140,
+      "JupiterRes": 140,
+      "MercuryAtk": 90,
+      "MercuryRes": 90
+    },
+    "requirement": "Level",
+    "isDefault": false
+  },
+  {
+    "name": "Hermit Series",
+    "classes": [
+      {
+        "name": "Hermit",
+        "movepool": [
+          "Plasma",
+		  "Prism"
+        ],
+        "statMultipliers": {
+          "maxHP": 80,
+          "maxPP": 140,
+          "Atk": 80,
+          "Def": 90,
+          "Spd": 130
+        }
+      },
+      {
+        "name": "Elder",
+        "movepool": [
+          "Plasma",
+		  "Hail Prism",
+		  "Impact"
+        ],
+        "statMultipliers": {
+          "maxHP": 90,
+          "maxPP": 150,
+          "Atk": 90,
+          "Def": 100,
+          "Spd": 140
+        }
+      },
+      {
+        "name": "Scholar",
+        "movepool": [
+          "Plasma",
+		  "Hail Prism",
+          "Impact",
+		  "Wish"
+        ],
+        "statMultipliers": {
+          "maxHP": 110,
+          "maxPP": 160,
+          "Atk": 100,
+          "Def": 110,
+          "Spd": 150
+        }
+      },
+      {
+        "name": "Savant",
+        "movepool": [
+          "Shine Plasma",
+		  "Hail Prism",
+		  "High Impact",
+          "Wish Well"
+        ],
+        "statMultipliers": {
+          "maxHP": 130,
+          "maxPP": 170,
+          "Atk": 110,
+          "Def": 120,
+          "Spd": 160
+        }
+      },
+      {
+        "name": "Sage",
+        "movepool": [
+          "Shine Plasma",
+		  "Freeze Prism",
+		  "High Impact",
+          "Wish Well"
+        ],
+        "statMultipliers": {
+          "maxHP": 150,
+          "maxPP": 180,
+          "Atk": 120,
+          "Def": 130,
+          "Spd": 170
+        }
+	  },
+	  {
+        "name": "Wizard",
+        "movepool": [
+          "Spark Plasma",
+		  "Freeze Prism",
+		  "High Impact",
+          "Pure Wish"
+        ],
+        "statMultipliers": {
+          "maxHP": 170,
+          "maxPP": 190,
+          "Atk": 130,
+          "Def": 140,
+          "Spd": 180
+        }
+      }
+    ],
+    "elements": [
+      2,
+	  3
+    ],
+    "elstats": {
+      "VenusAtk": 80,
+      "VenusRes": 80,
+      "MarsAtk": 70,
+      "MarsRes": 70,
+      "JupiterAtk": 150,
+      "JupiterRes": 150,
+      "MercuryAtk": 150,
+      "MercuryRes": 150
+    },
+    "requirement": "DaysActive",
+    "isDefault": false
+  },
+  {
+    "name": "Aqua Seer Series",
+    "classes": [
+      {
+        "name": "Aqua Seer",
+        "movepool": [
+          "Froth",
+		  "Growth"
+        ],
+        "statMultipliers": {
+          "maxHP": 90,
+          "maxPP": 130,
+          "Atk": 90,
+          "Def": 90,
+          "Spd": 110
+        }
+      },
+      {
+        "name": "Diviner",
+        "movepool": [
+          "Froth Sphere",
+		  "Mad Growth"
+        ],
+        "statMultipliers": {
+          "maxHP": 110,
+          "maxPP": 140,
+          "Atk": 100,
+          "Def": 100,
+          "Spd": 120
+        }
+      },
+      {
+        "name": "Shaman",
+        "movepool": [
+          "Froth Sphere",
+		  "Mad Growth",
+          "Wish",
+		  "Revive"
+        ],
+        "statMultipliers": {
+          "maxHP": 120,
+          "maxPP": 150,
+          "Atk": 110,
+          "Def": 110,
+          "Spd": 130
+        }
+      },
+      {
+        "name": "Druid",
+        "movepool": [
+          "Froth Spiral",
+		  "Mad Growth",
+          "Wish Well",
+		  "Revive"
+        ],
+        "statMultipliers": {
+          "maxHP": 150,
+          "maxPP": 170,
+          "Atk": 130,
+          "Def": 130,
+          "Spd": 150
+        }
+      },
+      {
+        "name": "Oracle",
+        "movepool": [
+          "Froth Spiral",
+          "Wild Growth",
+		  "Pure Wish",
+		  "Revive"
+        ],
+        "statMultipliers": {
+          "maxHP": 170,
+          "maxPP": 180,
+          "Atk": 140,
+          "Def": 140,
+          "Spd": 160
+        }
+      }
+    ],
+    "elements": [
+      3,
+	  0
+    ],
+    "elstats": {
+      "VenusAtk": 140,
+      "VenusRes": 140,
+      "MarsAtk": 90,
+      "MarsRes": 90,
+      "JupiterAtk": 80,
+      "JupiterRes": 80,
+      "MercuryAtk": 130,
+      "MercuryRes": 130
+    },
+    "requirement": "Level",
+    "isDefault": false
+  },
+  {
+    "name": "Swordsman Series",
+    "classes": [
+      {
+        "name": "Swordsman",
+        "movepool": [
+          "Blast",
+		  "Ply"
+        ],
+        "statMultipliers": {
+          "maxHP": 100,
+          "maxPP": 90,
+          "Atk": 110,
+          "Def": 110,
+          "Spd": 90
+        }
+      },
+      {
+        "name": "Defender",
+        "movepool": [
+		  "Cutting Edge",
+          "Mad Blast",
+          "Ply"
+        ],
+        "statMultipliers": {
+          "maxHP": 120,
+          "maxPP": 100,
+          "Atk": 120,
+          "Def": 120,
+          "Spd": 100
+        }
+      },
+      {
+        "name": "Cavalier",
+        "movepool": [
+		  "Cutting Edge",
+          "Mad Blast",
+          "Ply Well",
+		  "Wish"
+        ],
+        "statMultipliers": {
+          "maxHP": 140,
+          "maxPP": 110,
+          "Atk": 130,
+          "Def": 130,
+          "Spd": 110
+        }
+      },
+      {
+        "name": "Luminier",
+        "movepool": [
+		  "Plume Edge",
+          "Mad Blast",
+          "Pure Ply",
+		  "Wish Well"
+        ],
+        "statMultipliers": {
+          "maxHP": 170,
+          "maxPP": 130,
+          "Atk": 140,
+          "Def": 140,
+          "Spd": 130
+        }
+      },
+      {
+        "name": "Radiant",
+        "movepool": [
+          "Plume Edge",
+          "Fiery Blast",
+          "Ply Well",
+		  "Wish Well"
+        ],
+        "statMultipliers": {
+          "maxHP": 190,
+          "maxPP": 140,
+          "Atk": 150,
+          "Def": 150,
+          "Spd": 140
+        }
+      }
+    ],
+    "elements": [
+      1,
+	  3
+    ],
+    "elstats": {
+      "VenusAtk": 140,
+      "VenusRes": 140,
+      "MarsAtk": 90,
+      "MarsRes": 90,
+      "JupiterAtk": 80,
+      "JupiterRes": 80,
+      "MercuryAtk": 130,
+      "MercuryRes": 130
+    },
+    "requirement": "Level",
+    "isDefault": false
+  },
+  {
+    "name": "Curse Mage Series",
+    "classes": [
+      {
+        "name": "Curse Mage",
+        "movepool": [
+          "Undead Curse",
+		  "Raging Heat"
+        ],
+        "statMultipliers": {
+          "maxHP": 80,
+          "maxPP": 140,
+          "Atk": 90,
+          "Def": 90,
+          "Spd": 110
+        }
+      },
+      {
+        "name": "Channeler",
+        "movepool": [
+          "Undead Gloom",
+		  "Fiery Abyss",
+          "Impair"
+        ],
+        "statMultipliers": {
+          "maxHP": 90,
+          "maxPP": 150,
+          "Atk": 100,
+          "Def": 100,
+          "Spd": 120
+        }
+      },
+      {
+        "name": "Puppet Mage",
+        "movepool": [
+          "Undead Gloom",
+		  "Fiery Abyss",
+		  "Toxic Grit",
+          "Debilitate"
+        ],
+        "statMultipliers": {
+          "maxHP": 120,
+          "maxPP": 160,
+          "Atk": 110,
+          "Def": 110,
+          "Spd": 130
+        }
+      },
+      {
+        "name": "Curse Master",
+        "movepool": [
+          "Undead Gloom",
+		  "Fiery Abyss",
+		  "Toxic Grit",
+          "Debilitate"
+        ],
+        "statMultipliers": {
+          "maxHP": 130,
+          "maxPP": 170,
+          "Atk": 120,
+          "Def": 120,
+          "Spd": 140
+        }
+      },
+      {
+        "name": "Soul Siphon",
+        "movepool": [
+          "Undead Gloom",
+          "Dire Inferno",
+          "Toxic Grit",
+		  "Debilitate"
+        ],
+        "statMultipliers": {
+          "maxHP": 150,
+          "maxPP": 180,
+          "Atk": 130,
+          "Def": 130,
+          "Spd": 150
+        }
+      },
+      {
+        "name": "Diabolist",
+        "movepool": [
+          "Undead Might",
+		  "Dire Inferno",
+          "Toxic Grit",
+		  "Debilitate"
+        ],
+        "statMultipliers": {
+          "maxHP": 170,
+          "maxPP": 190,
+          "Atk": 140,
+          "Def": 140,
+          "Spd": 160
+        }
+      }
+    ],
+    "elements": [
+      0,
+	  1
+    ],
+    "elstats": {
+      "VenusAtk": 150,
+      "VenusRes": 150,
+      "MarsAtk": 150,
+      "MarsRes": 150,
+      "JupiterAtk": 100,
+      "JupiterRes": 100,
+      "MercuryAtk": 50,
+      "MercuryRes": 50
+    },
+    "requirement": "ColossoWins",
+    "isDefault": false
+  },
+  {
+    "name": "Scrapper Series",
+    "classes": [
+      {
+        "name": "Scrapper",
+        "movepool": [
+          "Speed Punch",
+		  "Growth"
+        ],
+        "statMultipliers": {
+          "maxHP": 90,
+          "maxPP": 80,
+          "Atk": 110,
+          "Def": 110,
+          "Spd": 120
+        }
+      },
+      {
+        "name": "Grappler",
+        "movepool": [
+          "Speed Punch",
+		  "Psynergy Slam",
+          "Growth"
+        ],
+        "statMultipliers": {
+          "maxHP": 110,
+          "maxPP": 90,
+          "Atk": 120,
+          "Def": 120,
+          "Spd": 130
+        }
+      },
+      {
+        "name": "Brawler",
+        "movepool": [
+          "Speed Punch",
+		  "Psynergy Slam",
+          "Mad Growth"
+        ],
+        "statMultipliers": {
+          "maxHP": 120,
+          "maxPP": 100,
+          "Atk": 130,
+          "Def": 130,
+          "Spd": 140
+        }
+      },
+      {
+        "name": "Bruiser",
+        "movepool": [
+          "Speed Punch",
+		  "Psynergy Slam",
+          "Psynergy Surge",
+          "Mad Growth"
+        ],
+        "statMultipliers": {
+          "maxHP": 150,
+          "maxPP": 110,
+          "Atk": 140,
+          "Def": 140,
+          "Spd": 160
+        }
+      },
+      {
+        "name": "Gladiator",
+        "movepool": [
+          "Speed Punch",
+		  "Psynergy Slam",
+          "Psynergy Surge",
+          "Wild Growth"
+        ],
+        "statMultipliers": {
+          "maxHP": 170,
+          "maxPP": 120,
+          "Atk": 150,
+          "Def": 150,
+          "Spd": 170
+        }
+      }
+    ],
+    "elements": [
+      0,
+	  2
+    ],
+    "elstats": {
+      "VenusAtk": 150,
+      "VenusRes": 150,
+      "MarsAtk": 75,
+      "MarsRes": 75,
+      "JupiterAtk": 150,
+      "JupiterRes": 150,
+      "MercuryAtk": 70,
+      "MercuryRes": 70
+    },
+    "requirement": "ColossoWins",
+    "isDefault": false
+  },
+  {
+    "name": "Samurai Series",
+    "classes": [
+      {
+        "name": "Samurai",
+        "movepool": [
+          "Quick Strike",
+		  "Dragon Cloud",
+		  "Helm Splitter",
+		  "Demon Spear",
+		  "Magic Shell"
+        ],
+        "statMultipliers": {
+          "maxHP": 190,
+          "maxPP": 130,
+          "Atk": 150,
+          "Def": 140,
+          "Spd": 140
+        }
+      },
+      {
+        "name": "Ronin",
+        "movepool": [
+          "Quick Strike",
+		  "Epicenter",
+		  "Helm Splitter",
+		  "Angel Spear",
+		  "Magic Shield"
+        ],
+        "statMultipliers": {
+          "maxHP": 210,
+          "maxPP": 140,
+          "Atk": 160,
+          "Def": 150,
+          "Spd": 150
+        }
+      }
+    ],
+    "elements": [
+      0,
+	  1,
+	  2
+    ],
+    "elstats": {
+      "VenusAtk": 130,
+      "VenusRes": 130,
+      "MarsAtk": 130,
+      "MarsRes": 130,
+      "JupiterAtk": 130,
+      "JupiterRes": 130,
+      "MercuryAtk": 25,
+      "MercuryRes": 25
+    },
+    "requirement": "KillsByHand",
+    "isDefault": false
+  },
+  {
+    "name": "Ninja Series",
+    "classes": [
+      {
+        "name": "Ninja",
+        "movepool": [
+          "Death Plunge",
+		  "Annihilation",
+		  "Shuriken",
+		  "Punji Trap"
+        ],
+        "statMultipliers": {
+          "maxHP": 160,
+          "maxPP": 140,
+          "Atk": 150,
+          "Def": 120,
+          "Spd": 170
+        }
+      },
+      {
+        "name": "Disciple",
+        "movepool": [
+          "Death Leap",
+		  "Shuriken",
+		  "Annihilation",
+		  "Thunderbolt",
+		  "Punji Trap"
+        ],
+        "statMultipliers": {
+          "maxHP": 180,
+          "maxPP": 140,
+          "Atk": 160,
+          "Def": 130,
+          "Spd": 180
+        }
+      },
+      {
+        "name": "Master",
+        "movepool": [
+          "Death Plunge",
+		  "Shuriken",
+		  "Annihilation",
+		  "Thunderhead",
+		  "Punji Strike"
+        ],
+        "statMultipliers": {
+          "maxHP": 200,
+          "maxPP": 160,
+          "Atk": 170,
+          "Def": 140,
+          "Spd": 190
+        }
+      }
+    ],
+    "elements": [
+      0,
+	  1,
+	  2
+    ],
+    "elstats": {
+      "VenusAtk": 110,
+      "VenusRes": 100,
+      "MarsAtk": 130,
+      "MarsRes": 180,
+      "JupiterAtk": 110,
+      "JupiterRes": 100,
+      "MercuryAtk": 50,
+      "MercuryRes": 50
+    },
+    "requirement": "Damage",
+    "isDefault": false
+  },
+  {
+    "name": "Ranger Series",
+    "classes": [
+      {
+        "name": "Ranger",
+        "movepool": [
+          "Molten Bath",
+		  "Typhoon",
+		  "Drench",
+		  "Nature's Boon"
+        ],
+        "statMultipliers": {
+          "maxHP": 130,
+          "maxPP": 160,
+          "Atk": 120,
+          "Def": 120,
+          "Spd": 160
+        }
+      },
+      {
+        "name": "Bard",
+        "movepool": [
+          "Molten Bath",
+		  "Hurricane",
+		  "Deluge",
+		  "Break",
+		  "Nature's Boon"
+        ],
+        "statMultipliers": {
+          "maxHP": 150,
+          "maxPP": 160,
+          "Atk": 130,
+          "Def": 130,
+          "Spd": 170
+        }
+      },
+      {
+        "name": "Warlock",
+        "movepool": [
+          "Magma Storm",
+		  "Hurricane",
+		  "Deluge",
+		  "Break",
+		  "Vital Boon"
+        ],
+        "statMultipliers": {
+          "maxHP": 170,
+          "maxPP": 180,
+          "Atk": 140,
+          "Def": 140,
+          "Spd": 180
+        }
+      }
+    ],
+    "elements": [
+	  1,
+	  2,
+	  3
+    ],
+    "elstats": {
+      "VenusAtk": 25,
+      "VenusRes": 25,
+      "MarsAtk": 130,
+      "MarsRes": 130,
+      "JupiterAtk": 130,
+      "JupiterRes": 130,
+      "MercuryAtk": 130,
+      "MercuryRes": 130
+    },
+    "requirement": "SoloBattles",
+    "isDefault": false
+  },
+  {
+    "name": "Dragoon Series",
+    "classes": [
+      {
+        "name": "Dragoon",
+        "movepool": [
+          "Cutting Edge",
+		  "Rockslide",
+		  "Cluster Bomb",
+		  "Wish"
+        ],
+        "statMultipliers": {
+          "maxHP": 160,
+          "maxPP": 130,
+          "Atk": 140,
+          "Def": 140,
+          "Spd": 110
+        }
+      },
+      {
+        "name": "Templar",
+        "movepool": [
+          "Plume Edge",
+		  "Rockslide",
+		  "Cluster Bomb",
+		  "Restore",
+		  "Wish Well"
+        ],
+        "statMultipliers": {
+          "maxHP": 180,
+          "maxPP": 140,
+          "Atk": 150,
+          "Def": 150,
+          "Spd": 130
+        }
+      },
+      {
+        "name": "Paladin",
+        "movepool": [
+          "Plume Edge",
+		  "Avalanche",
+		  "Carpet Bomb",
+		  "Restore",
+		  "Pure Wish"
+        ],
+        "statMultipliers": {
+          "maxHP": 200,
+          "maxPP": 150,
+          "Atk": 160,
+          "Def": 160,
+          "Spd": 130
+        }
+      }
+    ],
+    "elements": [
+	  0,
+	  1,
+	  3
+    ],
+    "elstats": {
+      "VenusAtk": 110,
+      "VenusRes": 110,
+      "MarsAtk": 80,
+      "MarsRes": 180,
+      "JupiterAtk": 130,
+      "JupiterRes": 130,
+      "MercuryAtk": 130,
+      "MercuryRes": 130
+    },
+    "requirement": "Teammates",
+    "isDefault": false
+  },
+  {
+    "name": "White Mage Series",
+    "classes": [
+      {
+        "name": "White Mage",
+        "movepool": [
+          "Shine Plasma",
+		  "Hail Prism",
+		  "Restore",
+		  "Wish Well",
+		  "Revive"
+        ],
+        "statMultipliers": {
+          "maxHP": 150,
+          "maxPP": 180,
+          "Atk": 130,
+          "Def": 130,
+          "Spd": 150
+        }
+      },
+      {
+        "name": "Pure Mage",
+        "movepool": [
+          "Spark Plasm",
+		  "Freeze Prism",
+		  "Restore",
+		  "Pure Wish",
+		  "Revive"
+        ],
+        "statMultipliers": {
+          "maxHP": 170,
+          "maxPP": 190,
+          "Atk": 140,
+          "Def": 140,
+          "Spd": 160
+        }
+      }
+    ],
+    "elements": [
+	  0,
+	  2,
+	  3
+    ],
+    "elstats": {
+      "VenusAtk": 110,
+      "VenusRes": 110,
+      "MarsAtk": 25,
+      "MarsRes": 25,
+      "JupiterAtk": 150,
+      "JupiterRes": 150,
+      "MercuryAtk": 150,
+      "MercuryRes": 150
+    },
+    "requirement": "Heals",
+    "isDefault": false
+  },
+  {
+    "name": "Medium Series",
+    "classes": [
+      {
+        "name": "Medium",
+        "movepool": [
+          "Destruct Ray",
+		  "Froth Spiral",
+		  "Call Demon",
+		  "Cure Well",
+		  "Revive"
+        ],
+        "statMultipliers": {
+          "maxHP": 130,
+          "maxPP": 170,
+          "Atk": 120,
+          "Def": 120,
+          "Spd": 150
+        }
+      },
+      {
+        "name": "Dark Conjurer",
+        "movepool": [
+          "Destruct Ray",
+		  "Froth Spiral",
+		  "Call Demon",
+		  "Cure Well",
+		  "Revive"
+        ],
+        "statMultipliers": {
+          "maxHP": 150,
+          "maxPP": 180,
+          "Atk": 130,
+          "Def": 130,
+          "Spd": 160
+        }
+      },
+	  ,
+      {
+        "name": "Dark Shaman",
+        "movepool": [
+          "Destruct Ray",
+		  "Froth Spiral",
+		  "Call Dullahan",
+		  "Potent Cure",
+		  "Revive"
+        ],
+        "statMultipliers": {
+          "maxHP": 170,
+          "maxPP": 190,
+          "Atk": 140,
+          "Def": 140,
+          "Spd": 170
+        }
+      }
+    ],
+    "elements": [
+	  0,
+	  2,
+	  3
+    ],
+    "elstats": {
+      "VenusAtk": 110,
+      "VenusRes": 110,
+      "MarsAtk": 25,
+      "MarsRes": 25,
+      "JupiterAtk": 150,
+      "JupiterRes": 150,
+      "MercuryAtk": 150,
+      "MercuryRes": 150
+    },
+    "requirement": "Revives",
+    "isDefault": false
+  }
+]

@@ -1,0 +1,182 @@
+{
+  "Ragnarök": {
+	"name": "Ragnarök",
+	"targetType": 3,
+	"emote": "🗡",
+	"range": 1,
+    "element": 0,
+	"PPCost": 7,
+	"power": 0,
+    "addDamage": 35
+  },
+  "Odyssey": {
+    "name": "Odyssey",
+	"targetType": 3,
+	"emote":"💫",
+	"range": 1,
+    "element": 0,
+	"PPCost": 18,
+	"power": 0,
+    "addDamage": 95
+  },
+  "Roaring Dragon":{
+	"name": "Roaring Dragon",
+	"targetType": 4,
+	"emote":"🐲",
+	"range": 2,
+    "element": 0,
+	"PPCost": 18,
+	"power": 100,
+    "addDamage": 0
+  },
+  "Heat Wave": {
+    "name": "Heat Wave",
+	"targetType": 3,
+	"emote":"♨",
+	"range": 1,
+    "element": 1,
+	"PPCost": 6,
+	"power": 0,
+    "addDamage": 33
+  },
+  "Liquifier": {
+    "name": "Liquifier",
+	"targetType": 3,
+	"emote":"📛",
+	"range": 1,
+    "element": 1,
+	"PPCost": 17,
+	"power": 0,
+    "addDamage": 90
+  },
+  "Keelhaul": {
+    "name": "Keelhaul",
+	"targetType": 3,
+	"emote":"🥊",
+	"range": 1,
+    "element": 1,
+	"PPCost": 6,
+	"power": 0,
+    "addDamage": 34
+  },
+  "Vicious Chop": {
+    "name": "Vicious Chop",
+	"targetType": 3,
+	"emote":"🦀",
+	"range": 1,
+    "element": 1,
+	"PPCost": 15,
+	"power": 0,
+    "addDamage": 87
+  },
+  "Serpent Fume": {
+    "name": "Serpent Fume",
+	"targetType": 3,
+	"emote":"🐉",
+	"range": 1,
+    "element": 1,
+	"PPCost": 14,
+	"power": 60,
+    "addDamage": 0
+  },
+  "Cycle Beam": {
+    "name": "Cycle Beam",
+	"targetType": 4,
+	"emote":"⭕",
+	"range": 3,
+    "element": 1,
+	"PPCost": 14,
+	"power": 50,
+    "addDamage": 0
+  },
+  "Fireball": {
+    "name": "Fireball",
+	"targetType": 4,
+	"emote":"🔥",
+	"range": 2,
+    "element": 1,
+	"PPCost": 12,
+	"power": 65,
+    "addDamage": 0
+  },
+  "Storm Ray": {
+    "name": "Storm Ray",
+	"targetType": 4,
+	"emote":"🌩",
+	"range": 2,
+    "element": 2,
+	"PPCost": 10,
+	"power": 65,
+    "addDamage": 0
+  },
+  "Tornado": {
+    "name": "Tornado",
+	"targetType": 4,
+	"emote":"🌪",
+	"range": 2,
+    "element": 2,
+	"PPCost": 10,
+	"power": 65,
+    "addDamage": 0
+  },
+  "Speed Punch": {
+    "name": "Speed Punch",
+	"targetType": 3,
+	"emote":"☄",
+	"range": 1,
+    "element": 2,
+	"PPCost": 10,
+	"power": 30,
+    "addDamage": 30
+  },
+  "Diamond Dust": {
+	"name": "Diamond Dust",
+	"targetType": 3,
+	"emote": "❄",
+	"range": 1,
+    "element": 3,
+	"PPCost": 7,
+	"power": 0,
+    "addDamage": 35
+  },
+  "Diamond Berg": {
+	"name": "Diamond Berg",
+	"targetType": 3,
+	"emote": "💎",
+	"range": 1,
+    "element": 3,
+	"PPCost": 18,
+	"power": 0,
+    "addDamage": 90
+  },
+  "Tundra": {
+    "name": "Tundra",
+	"targetType": 4,
+	"emote":"⛄",
+	"range": 2,
+    "element": 3,
+	"PPCost": 7,
+	"power": 50,
+    "addDamage": 0
+  },
+  "Super Cool": {
+    "name": "Super Cool",
+	"targetType": 4,
+	"emote":"⛄",
+	"range": 3,
+    "element": 3,
+	"PPCost": 14,
+	"power": 80,
+    "addDamage": 0
+  },
+  "Drench": {
+    "name": "Drench",
+	"targetType": 4,
+	"emote":"🌧",
+	"range": 2,
+    "element": 3,
+	"PPCost": 10,
+	"power": 60,
+    "addDamage": 0
+  }
+}
