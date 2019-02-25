@@ -15,9 +15,68 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public Target targetType;
         public int targetNr;
         public uint range;
-        
 
-        public abstract List<string> Use(ColossoFighter User);
+
+        public List<string> Use(ColossoFighter User)
+        {
+            List<string> log = new List<string>();
+            var t = Validate(User);
+            log.AddRange(t.log);
+            if (!t.isValid) return log;
+
+            log.AddRange(InternalUse(User));
+
+            //Haunt Damage
+
+            return log;
+        }
+
+        protected abstract List<string> InternalUse(ColossoFighter User);
+
+        protected virtual Validation Validate(ColossoFighter User)
+        {
+            List<string> log = new List<string>();
+            if (!User.IsAlive()) return new Validation(false, log);
+            
+            if (!User.HasCondition(Condition.Stun)) {
+                log.Add($"{User.name} can't move");
+                return new Validation(false, log);
+            }
+
+            if (!User.HasCondition(Condition.Sleep))
+            {
+                log.Add($"{User.name} is asleep!");
+                return new Validation(false, log);
+            }
+
+            if (!User.HasCondition(Condition.Flinch))
+            {
+                log.Add($"{User.name} can't move");
+                User.RemoveCondition(Condition.Flinch);
+                return new Validation(false, log);
+            }
+
+            if (!User.HasCondition(Condition.ItemCurse) && Global.random.Next(0,3) == 0)
+            {
+                log.Add($"{User.name} can't move");
+                return new Validation(false, log);
+            }
+
+
+            return new Validation(true, log);
+        }
+
+        public class Validation{
+            public bool isValid;
+            public List<string> log;
+
+            public Validation(bool isValid, List<string> log)
+            {
+                this.isValid = isValid;
+                this.log = log;
+            }
+        }
+
 
         public Move(string name, string emote, Target targetType, uint range)
         {

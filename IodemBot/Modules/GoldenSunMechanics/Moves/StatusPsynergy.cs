@@ -28,17 +28,12 @@ namespace IodemBot.Modules.GoldenSunMechanics
             return MemberwiseClone();
         }
 
-        public override List<string> Use(ColossoFighter User)
+        protected override List<string> InternalUse(ColossoFighter User)
         {
             List<string> log = new List<string>();
-            var res = PPCheck(User);
-            log.AddRange(res.Item2);
-            if (!res.Item1) return log;
-
             //Get enemies and targeted enemies
             List<ColossoFighter> targets = getTarget(User);
 
-            log.Add($"{emote} {User.name} casts {this.name}.");
             foreach (var t in targets)
             {
                 if (!t.IsAlive()) continue;

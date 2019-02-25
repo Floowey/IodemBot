@@ -20,7 +20,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             return JsonConvert.DeserializeObject<Attack>(serialized);
         }
 
-        public override List<string> Use(ColossoFighter User)
+        protected override List<string> InternalUse(ColossoFighter User)
         {
             var enemy = User.battle.getTeam(User.enemies)[targetNr];
 

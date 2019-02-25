@@ -18,16 +18,10 @@ namespace IodemBot.Modules.GoldenSunMechanics
             return MemberwiseClone();
         }
 
-        public override List<string> Use(ColossoFighter User)
+        protected override List<string> InternalUse(ColossoFighter User)
         {
             List<string> Log = new List<string>();
-            var res = PPCheck(User);
-            Log.AddRange(res.Item2);
-            if (!res.Item1) return Log;
-
             List<ColossoFighter> targets = getTarget(User);
-
-            Log.Add($"{emote} {User.name} casts {this.name}.");
             foreach (var t in targets)
             {
                 var newBuffs = new List<Buff>();

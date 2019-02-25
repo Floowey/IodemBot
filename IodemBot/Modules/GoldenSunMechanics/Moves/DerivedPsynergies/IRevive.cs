@@ -14,14 +14,9 @@ namespace IodemBot.Modules.GoldenSunMechanics
         {
         }
 
-        public override List<string> Use(ColossoFighter User)
+        protected override List<string> InternalUse(ColossoFighter User)
         {
             List<string> log = new List<string>();
-            var res = PPCheck(User);
-            log.AddRange(res.Item2);
-            if (!res.Item1) return log;
-
-            log.Add($"{emote} {User.name} casts {this.name}.");
             var targetTeam = User.battle.getTeam(User.party);
             var target = targetTeam[targetNr];
             bool wasDead = !target.IsAlive();

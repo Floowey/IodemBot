@@ -18,7 +18,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             return MemberwiseClone();
         }
 
-        public override List<string> Use(ColossoFighter User)
+        protected override List<string> InternalUse(ColossoFighter User)
         {
             User.Buffs.Add(new Buff("Defense", 4, 1));
             return new List<string>();

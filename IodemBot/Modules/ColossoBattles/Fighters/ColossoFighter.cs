@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace IodemBot.Modules.ColossoBattles
 {
-    public enum Condition { Down, Poison, Venom, Seal, Stun, DeathCurse, Haunt, ItemCurse, Flinch, Delusion}
+    public enum Condition { Down, Poison, Venom, Seal, Stun, DeathCurse, Haunt, ItemCurse, Flinch, Delusion, Sleep}
     public abstract class ColossoFighter : IComparable<ColossoFighter>, ICloneable
     {
         [JsonIgnore] public ColossoBattle battle;

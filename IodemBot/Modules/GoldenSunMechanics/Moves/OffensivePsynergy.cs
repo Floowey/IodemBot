@@ -32,21 +32,17 @@ namespace IodemBot.Modules.GoldenSunMechanics
             return JsonConvert.DeserializeObject<OffensivePsynergy>(serialized);
         }
 
-        public override List<string> Use(ColossoFighter User)
+        protected override List<string> InternalUse(ColossoFighter User)
         {
             //Psynergy Handling
             List<string> log = new List<string>();
-            var res = PPCheck(User);
-            log.AddRange(res.Item2);
-            if (!res.Item1) return log;
-
+            
             //Get enemies and targeted enemies
             double[] actualSpread = new double[2*range-1];
             List<ColossoFighter> enemyTeam = User.battle.getTeam(User.enemies);
             List<ColossoFighter> targets = getTarget(User);
 
             int ii = 0;
-            log.Add($"{emote} {User.name} casts {this.name}.");
             foreach (var t in targets)
             {
                 if (!t.IsAlive()) continue;
@@ -65,7 +61,10 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
                 if (t.elstats.GetRes(element) == t.elstats.highestRes()) punctuation = ".";
                 if (t.elstats.GetRes(element) == t.elstats.leastRes()) punctuation = "!!!";
+
                 log.AddRange(t.dealDamage(realDmg, punctuation));
+                //log.AddRange(effects.ForEach(e => e.Apply(User, Target)));
+
                 if (User is PlayerFighter)
                 {
                     ((PlayerFighter)User).avatar.dealtDmg(realDmg);
