@@ -11,6 +11,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
     {
         public Defend() : base("Defend", "<:Defend:536919830507552768>", Target.self, 1)
         {
+            hasPriority = true;
         }
 
         public override object Clone()
@@ -20,7 +21,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         protected override List<string> InternalUse(ColossoFighter User)
         {
-            User.defensiveMult *= 0.2;
+            User.defensiveMult *= 0.5;
             return new List<string>();
         }
     }

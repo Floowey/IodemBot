@@ -117,6 +117,8 @@ namespace IodemBot.Modules.ColossoBattles
 
         private static async Task TryStartBattle(SocketReaction reaction)
         {
+            //It's not necessary, but this should probably return a Task<bool>
+
             var battleCol = battles.Where(s => s.lobbyMsg.Id == reaction.MessageId).FirstOrDefault();
             if (battleCol.Equals(null)) return;
             if (battleCol.battle.isActive) return;

@@ -259,6 +259,9 @@
     <Compile Include="Modules\GoldenSunMechanics\Classes\Requirements\ReviveRequirement.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Classes\Requirements\SoloBattleRequirement.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Classes\Requirements\TeammatesRequirement.cs" />
+    <Compile Include="Modules\GoldenSunMechanics\Effects\ApplyStatusEffect.cs" />
+    <Compile Include="Modules\GoldenSunMechanics\Effects\Effect.cs" />
+    <Compile Include="Modules\GoldenSunMechanics\Effects\NoEffect.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Moveset.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Moves\Attack.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Moves\DerivedPsynergies\Break.cs" />

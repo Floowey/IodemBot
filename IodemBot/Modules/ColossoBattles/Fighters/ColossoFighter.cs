@@ -151,7 +151,7 @@ namespace IodemBot.Modules.ColossoBattles
 
         public virtual void StartTurn() {
             //Change to Moves with Priority
-            if (selected is Defend)
+            if (selected.hasPriority)
             {
                 var a = selected.Use(this);
             }
@@ -165,12 +165,15 @@ namespace IodemBot.Modules.ColossoBattles
                 return turnLog;
             }
 
-            if (!(selected is Defend))
+            if (!selected.hasPriority)
             {
                 turnLog.AddRange(selected.Use(this));
             } else
             {
-                turnLog.Add($"<:Defend:536919830507552768> {this.name} defends.");
+                if(selected is Defend)
+                {
+                    turnLog.Add($"{selected.emote} {this.name} is defending.");
+                }
             }
             return turnLog;
         }
@@ -261,8 +264,7 @@ namespace IodemBot.Modules.ColossoBattles
                 Console.WriteLine("Why tf do you want to selectRandom(), the battle is *not* active!");
                 return;
             }
-            var s = (uint)rnd.Next(0, moves.Count());
-            selected = moves[s];
+            selected = moves[(uint)rnd.Next(0, moves.Count())];
             selected.targetNr = 0;
             if(selected is Psynergy)
             {
@@ -272,7 +274,7 @@ namespace IodemBot.Modules.ColossoBattles
                     selectRandom();
                 }
             }
-            if (selected is OffensivePsynergy || selected is Attack){
+            if (selected.targetType == Target.otherSingle || selected.targetType == Target.otherRange){
                 selected.targetNr = rnd.Next(0, battle.getTeam(enemies).Count());
                 if(!battle.getTeam(enemies)[selected.targetNr].IsAlive())
                 {

@@ -15,6 +15,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public Target targetType;
         public int targetNr;
         public uint range;
+        public bool hasPriority = false;
 
 
         public List<string> Use(ColossoFighter User)
