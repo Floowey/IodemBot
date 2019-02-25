@@ -20,7 +20,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         protected override List<string> InternalUse(ColossoFighter User)
         {
-            User.Buffs.Add(new Buff("Defense", 4, 1));
+            User.defensiveMult *= 0.2;
             return new List<string>();
         }
     }

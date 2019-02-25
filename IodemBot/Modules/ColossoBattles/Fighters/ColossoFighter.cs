@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace IodemBot.Modules.ColossoBattles
 {
-    public enum Condition { Down, Poison, Venom, Seal, Stun, DeathCurse, Haunt, ItemCurse, Flinch, Delusion, Sleep}
+    public enum Condition { Down, Poison, Venom, Seal, Stun, DeathCurse, Haunt, ItemCurse, Flinch, Delusion, Sleep, Counter}
     public abstract class ColossoFighter : IComparable<ColossoFighter>, ICloneable
     {
         [JsonIgnore] public ColossoBattle battle;
@@ -28,6 +28,9 @@ namespace IodemBot.Modules.ColossoBattles
 
         [JsonIgnore] public Move selected;
         [JsonIgnore] public bool hasSelected = false;
+        [JsonIgnore] public double offensiveMult = 1;
+        [JsonIgnore] public double defensiveMult = 1;
+        [JsonIgnore] public double ignoreDefense = 1;
 
         internal ColossoFighter(string name, string imgUrl, Stats stats, ElementalStats elstats, Move[] moves)
         {
@@ -42,7 +45,7 @@ namespace IodemBot.Modules.ColossoBattles
 
         public bool IsAlive()
         {
-            return !Conditions.Contains(Condition.Down);
+            return !HasCondition(Condition.Down);
         }
 
         public string getMoves()
@@ -67,6 +70,7 @@ namespace IodemBot.Modules.ColossoBattles
                 log.Add($":x: {name} goes down.");
                 AddCondition(Condition.Down);
             }
+            offensiveMult = 1;
             return log;
         }
 
@@ -140,13 +144,13 @@ namespace IodemBot.Modules.ColossoBattles
         public double MultiplyBuffs(string stat)
         {
             var mult = Buffs.Where(b => b.stat.Equals(stat, StringComparison.InvariantCultureIgnoreCase) && b.multiplier > 0).Aggregate(1.0, (p, s) => p *= s.multiplier);
-            //Console.WriteLine($"{name} {buffs.Count}  {mult}");
             if (mult > 2.0) mult = 2.0;
             if (mult < 0.4) mult = 0.4;
             return mult;
         }
 
         public virtual void StartTurn() {
+            //Change to Moves with Priority
             if (selected is Defend)
             {
                 var a = selected.Use(this);
@@ -175,15 +179,15 @@ namespace IodemBot.Modules.ColossoBattles
         {
             StringBuilder s = new StringBuilder();
             if (HasCondition(Condition.DeathCurse)) s.Append("");
-            if (HasCondition(Condition.Delusion)) s.Append("");
+            if (HasCondition(Condition.Delusion)) s.Append("<:delusion:549526931637534721>");
             if (HasCondition(Condition.Down)) s.Append("<:curse:538074679492083742>");
             if (HasCondition(Condition.Flinch)) s.Append("");
-            if (HasCondition(Condition.Haunt)) s.Append("");
-            if (HasCondition(Condition.ItemCurse)) s.Append("");
-            if (HasCondition(Condition.Poison)) s.Append("");
-            if (HasCondition(Condition.Seal)) s.Append("");
+            if (HasCondition(Condition.Haunt)) s.Append("<:Haunted:549526931821953034>");
+            if (HasCondition(Condition.ItemCurse)) s.Append("<:curse:538074679492083742>");
+            if (HasCondition(Condition.Poison)) s.Append("<:Poison:549526931847249920>");
+            if (HasCondition(Condition.Seal)) s.Append("<:Psy_Seal:549526931465568257>");
             if (HasCondition(Condition.Stun)) s.Append("");
-            if (HasCondition(Condition.Venom)) s.Append("");
+            if (HasCondition(Condition.Venom)) s.Append("<:Poison:549526931847249920>");
             return s.ToString();
         }
 
@@ -202,6 +206,14 @@ namespace IodemBot.Modules.ColossoBattles
                 }
             });
             Buffs = newBuffs;
+            defensiveMult = 1;
+            //Poison
+            //Chance to wake up
+            //Chance to remove Stun
+            //Chance to remove Delusion
+            //Remove Counter
+            //Remove Defensive Multipliers
+
             if (!IsAlive())
             {
                 selected = new Nothing();

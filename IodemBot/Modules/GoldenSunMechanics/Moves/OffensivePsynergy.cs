@@ -46,17 +46,20 @@ namespace IodemBot.Modules.GoldenSunMechanics
             foreach (var t in targets)
             {
                 if (!t.IsAlive()) continue;
+
+                //Effects that trigger before damage
+
                 var baseDmg = (new Random()).Next(0, 4);
                 var dmg = attackBased ? 
                     Math.Max(0, 
-                    ((int)User.stats.Atk * User.MultiplyBuffs("Attack") - (int)t.stats.Def * t.MultiplyBuffs("Defense")) / 2) 
+                    ((int)User.stats.Atk * User.MultiplyBuffs("Attack") - (int)t.stats.Def * t.ignoreDefense * t.MultiplyBuffs("Defense")) / 2) 
                     : (int)power;
                 
 
                 var elMult = 1 + Math.Max(0.0, (int)User.elstats.GetPower(element)*User.MultiplyBuffs("Power") - (int)t.elstats.GetRes(element)*t.MultiplyBuffs("Resistance")) / (attackBased ? 400 : 200);
                 var distFromCenter = Math.Abs(enemyTeam.IndexOf(t) - targetNr);
                 var spreadMult = spread[distFromCenter];
-                var realDmg = (uint) ((baseDmg + dmg + addDamage) * dmgMult * elMult * spreadMult);
+                var realDmg = (uint) ((baseDmg + dmg + addDamage) * dmgMult * elMult * spreadMult * t.defensiveMult * User.offensiveMult);
                 var punctuation = "!";
 
                 if (t.elstats.GetRes(element) == t.elstats.highestRes()) punctuation = ".";
@@ -72,6 +75,10 @@ namespace IodemBot.Modules.GoldenSunMechanics
                         if (attackBased && range == 1)
                             ((PlayerFighter)User).avatar.killedByHand();
                 }
+
+                //Effects that trigger after damage
+
+                //Counter
                 ii++;
             }
 

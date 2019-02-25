@@ -14,67 +14,10 @@ namespace IodemBot.Modules.GoldenSunMechanics
         private static Dictionary<string, Stats> stats;
         private static Stats baseStats = new Stats(35, 20, 20, 6, 8); //30, 20, 11, 6, 8
 
-        //get Moveset based on Classname
-        public static Stats getStats(string className, uint level)
-        {
-            var multipliers = new Stats(100, 100, 100, 100, 100);
-            if (stats.ContainsKey(className))
-            {
-                multipliers = stats[className];
-            }
-
-            var actualStats = new Stats(
-                (uint)(baseStats.maxHP * multipliers.maxHP / 100 * Math.Sqrt(1 + level / 2)),
-                (uint)(baseStats.maxPP * multipliers.maxPP / 100 * Math.Sqrt(1 + level / 2)),
-                (uint)(baseStats.Atk * multipliers.Atk / 100 * Math.Sqrt(1 + level / 2)),
-                (uint)(baseStats.Def * multipliers.Def / 100 * Math.Sqrt(1 + level / 2)),
-                (uint)(baseStats.Spd * multipliers.Spd / 100 * Math.Sqrt(1 + level / 2)));
-            return actualStats;   
-        }
-
         static StatList() {
             string json = File.ReadAllText("Resources/stats.json");
             var data = JsonConvert.DeserializeObject<dynamic>(json);
             stats = data.ToObject<Dictionary<string, Stats>>();
-        }
-
-        public static void Save()
-        {
-            stats = new Dictionary<string, Stats>();
-            stats.Add("Squire", new Stats(110, 80, 110, 100, 110));
-            stats.Add("Knight", new Stats(130, 90, 120, 110, 120));
-
-            string data = JsonConvert.SerializeObject(stats, Formatting.Indented);
-            File.WriteAllText("Resources/stats.json", data);
-        }
-
-        public static ElementalStats getElementalStats(Element element)
-        {
-            ElementalStats elstats = new ElementalStats(100, 100, 100, 100, 100, 100, 100, 100);
-            switch (element)
-            {
-                case (Element.Venus):
-                    elstats.VenusAtk = 140;
-                    elstats.VenusRes = 140;
-                    elstats.MarsRes = 70;
-                    break;
-                case (Element.Mars):
-                    elstats.MarsAtk = 140;
-                    elstats.MarsRes = 140;
-                    elstats.MercuryRes = 70;
-                    break;
-                case (Element.Jupiter):
-                    elstats.JupiterAtk = 140;
-                    elstats.JupiterRes = 140;
-                    elstats.VenusRes = 70;
-                    break;
-                case (Element.Mercury):
-                    elstats.MercuryAtk = 140;
-                    elstats.MercuryRes = 140;
-                    elstats.JupiterRes = 70;
-                    break;
-            }
-            return elstats;
         }
     }
 
