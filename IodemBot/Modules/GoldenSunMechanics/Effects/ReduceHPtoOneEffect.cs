@@ -7,16 +7,16 @@ using IodemBot.Modules.ColossoBattles;
 
 namespace IodemBot.Modules.GoldenSunMechanics.Effects
 {
-    public class Counter : IEffect
+    class ReduceHPtoOneEffect : IEffect
     {
-        public Counter(params object[] args)
-        {
-        }
-
+        int probability;
         public override List<string> Apply(ColossoFighter User, ColossoFighter Target)
         {
-            Target.AddCondition(Condition.Counter);
-            return new List<string>() { $"{Target.name} gets ready to strike back!" };
+            if (Target.IsAlive())
+            {
+                if (Global.random.Next(1, 100) <= probability) Target.stats.HP = 1;
+            }
+            return new List<string>();
         }
     }
 }
