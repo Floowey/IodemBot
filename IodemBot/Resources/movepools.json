@@ -1,0 +1,242 @@
+{
+  "Squire": [
+    "Ragnarök",
+    "Cure"
+  ],
+  "Knight": [
+    "Ragnarök",
+	"Revive",
+    "Cure"
+  ],
+  "Gallant":[
+	"Ragnarök",
+	"Cure",
+	"Revive"
+  ],
+  "Lord":[
+	"Odyssey",
+	"Cure",
+	"Revive"
+  ],
+  "Slayer":[
+	"Odyssey",
+	"Cure",
+	"Revive"
+  ],
+  "Miko": [
+    "Roaring Dragon",
+    "Cure"
+  ],
+  "High Miko": [
+    "Roaring Dragon",
+    "Cure",
+	"Weapon Grace"
+  ],
+  "Master Miko": [
+    "Roaring Dragon",
+    "Cure",
+	"Weapon Grace",
+	"Revive"
+  ],
+  "Mystic  Miko": [
+    "Roaring Dragon",
+    "Cure",
+	"Weapon Grace",
+	"Revive"
+  ],
+  "Radiant  Miko": [
+    "Roaring Dragon",
+    "Cure",
+	"Weapon Grace",
+	"Revive"
+  ],
+  "Guard":[
+	"Heat Wave",
+	"Fireball"
+  ],
+  "Soldier":[
+	"Heat Wave",
+	"Fireball",
+	"Protect"
+  ],
+  "Warrior":[
+	"Heat Wave",
+	"Fireball",
+	"Protect"
+  ],
+  "Champion":[
+	"Heat Wave",
+	"Fireball",
+	"Protect"
+  ],
+  "Hero":[
+	"Heat Wave",
+	"Fireball",
+	"Protect"
+  ],
+  "Flame User":[
+	"Serpent Fume",
+	"Cycle Beam"
+  ],
+  "Witch":[
+	"Serpent Fume",
+	"Cycle Beam"
+  ],
+  "Hex":[
+	"Serpent Fume",
+	"Cycle Beam",
+	"Healing Aura"
+  ],
+  "Fire Master":[
+	"Serpent Fume",
+	"Cycle Beam",
+	"Healing Aura"
+  ],
+  "Justice":[
+	"Serpent Fume",
+	"Cycle Beam",
+	"Healing Aura"
+  ],
+  "Pirate":[
+	"Keelhaul",
+	"Serpent Fume",
+	"Cycle Beam"
+  ],
+  "Cannoneer":[
+	"Keelhaul",
+	"Serpent Fume",
+	"Cycle Beam"
+  ],
+  "Corsair":[
+	"Vicious Chop",
+	"Serpent Fume",
+	"Cycle Beam"
+  ],
+  "Pirate King":[
+	"Vicious Chop",
+	"Serpent Fume",
+	"Cycle Beam"
+  ],
+  "Hull Reaver":[
+	"Vicious Chop",
+	"Serpent Fume",
+	"Cycle Beam"
+  ],
+  "Wind Seer":[
+	"Storm Ray",
+	"Impact"
+  ],
+  "Magician":[
+	"Storm Ray",
+	"Impact"
+  ],
+  "Mage":[
+	"Storm Ray",
+	"Healthy Wind"
+  ],
+  "Magister":[
+	"Storm Ray",
+	"Impact",
+	"Healthy Wind"
+  ],
+  "Sorcerer":[
+	"Storm Ray",
+	"Impact",
+	"Healthy Wind"
+  ],
+  "Beastling":[
+	"Tornado",
+	"Nature's Boon"
+  ],
+  "Wildrunner":[
+	"Tornado",
+	"Nature's Boon"
+  ],
+  "Shapeshifter":[
+	"Tornado",
+	"Nature's Boon"
+  ],
+  "Beast Master":[
+	"Speed Punch",
+	"Tornado",
+	"Nature's Boon"
+  ],
+  "Prime Beast":[
+	"Speed Punch",
+	"Tornado",
+	"Nature's Boon"
+  ],
+  "Water Seer":[
+	"Tundra",
+	"Ply Well"
+  ],
+  "Scribe":[
+	"Tundra",
+	"Ply Well"
+  ],
+  "Cleric":[
+	"Tundra",
+	"Ply Well",
+	"Wish Well"
+  ],
+  "Paragon":[
+	"Tundra",
+	"Ply Well",
+	"Wish Well"
+  ],
+  "Angel":[
+	"Tundra",
+	"Ply Well",
+	"Wish Well"
+  ],
+  "Mariner":[
+    "Diamond Dust",
+	"Super Cool",
+	"Ply Well"
+  ],
+  "Privateer":[
+    "Diamond Dust",
+	"Super Cool",
+	"Ply Well"
+  ],
+  "Commander":[
+    "Diamond Berg",
+	"Super Cool",
+	"Ply Well"
+  ],
+  "Captain":[
+    "Diamond Berg",
+	"Super Cool",
+	"Ply Well"
+  ],
+  "Admiral":[
+    "Diamond Berg",
+	"Super Cool",
+	"Ply Well"
+  ],
+  "Aqua Squire":[
+	"Diamond Dust",
+	"Drench",
+	"Ply Well"
+  ],
+  "Aqua Knight":[
+	"Diamond Dust",
+	"Drench",
+	"Ply Well"
+  ],
+  "Aqua Prince":[
+	"Diamond Berg",
+	"Drench",
+	"Ply Well"
+  ],
+  "Aqua Lord":[
+	"Diamond Berg",
+	"Drench",
+	"Ply Well"
+  ],
+  "Aqua Master":[
+	"Diamond Berg",
+	"Drench",
+	"Ply Well"
+  ]
+}

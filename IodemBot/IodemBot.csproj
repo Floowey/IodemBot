@@ -311,11 +311,24 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+    <None Include="Resources\accounts.json" />
+    <None Include="Resources\AdeptClassSeries.json" />
+    <None Include="Resources\bronzeFighters.json" />
+    <None Include="Resources\Colors.json" />
+    <None Include="Resources\config-Iodem.json" />
+    <None Include="Resources\config-Medoi.json" />
+    <None Include="Resources\config.json" />
+    <None Include="Resources\goldFighters.json" />
+    <None Include="Resources\healpsy.json" />
+    <None Include="Resources\movepools.json" />
+    <None Include="Resources\offpsy.json" />
+    <None Include="Resources\silverFighters.json" />
+    <None Include="Resources\statpsy.json" />
+    <None Include="Resources\stats.json" />
     <None Include="SystemLang\quotes.json" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
-    <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SystemLang\alerts.json">
