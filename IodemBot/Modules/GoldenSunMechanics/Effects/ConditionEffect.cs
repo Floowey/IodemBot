@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using IodemBot.Modules.ColossoBattles;
 
-namespace IodemBot.Modules.GoldenSunMechanics.Effects
+namespace IodemBot.Modules.GoldenSunMechanics
 {
     class ConditionEffect : IEffect
     {
