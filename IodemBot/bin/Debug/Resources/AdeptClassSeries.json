@@ -892,12 +892,12 @@
       3
     ],
     "elstats": {
-      "VenusAtk": 80,
-      "VenusRes": 80,
+      "VenusAtk": 70,
+      "VenusRes": 70,
       "MarsAtk": 100,
       "MarsRes": 100,
-      "JupiterAtk": 100,
-      "JupiterRes": 100,
+      "JupiterAtk": 110,
+      "JupiterRes": 110,
       "MercuryAtk": 140,
       "MercuryRes": 140
     },

@@ -21,6 +21,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         }
         public ChancetoOHKOEffect(object[] args)
         {
+            timeToActivate = TimeToActivate.beforeDamge;
             if(args.Length == 1 && args[0] is int)
             {
                 this.probability = (int)args[0];

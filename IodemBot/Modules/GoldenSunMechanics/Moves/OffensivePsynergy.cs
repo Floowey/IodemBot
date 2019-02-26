@@ -53,6 +53,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
                     .ToList()
                     .ForEach(e => log.AddRange(e.Apply(User, t)));
 
+                if (!t.IsAlive()) continue;
+
                 var baseDmg = (new Random()).Next(0, 4);
                 var dmg = attackBased ? 
                     Math.Max(0, 
