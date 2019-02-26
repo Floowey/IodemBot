@@ -30,8 +30,6 @@ namespace IodemBot.Modules.GoldenSunMechanics
             {
                 return 0;
             }
-            //var levels = new uint[] {0, 50, 150, 300, 500, 800, 1000 };
-            //return Array.IndexOf(levels, levels.Where(i => i > user.ColossoWins).First()) - 1;
         }
     }
 }

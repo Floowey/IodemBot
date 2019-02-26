@@ -261,7 +261,7 @@
     <Compile Include="Modules\GoldenSunMechanics\Classes\Requirements\TeammatesRequirement.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Effects\ChanceToOHKOEffect.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Effects\ConditionEffect.cs" />
-    <Compile Include="Modules\GoldenSunMechanics\Effects\Effect.cs" />
+    <Compile Include="Modules\GoldenSunMechanics\Effects\IEffect.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Effects\NoEffect.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Effects\StatEffect.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Moveset.cs" />
