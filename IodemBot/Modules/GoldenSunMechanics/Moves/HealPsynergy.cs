@@ -14,7 +14,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public int percentage;
         public int healPower;
 
-        public HealPsynergy(string name, string emote, Target targetType, uint range, Element element, uint PPCost, int healPower, int percentage, bool singleTarget) : base(name, emote, targetType, range, element, PPCost)
+        public HealPsynergy(string name, string emote, Target targetType, uint range, List<EffectImage> effectImages, Element element, uint PPCost, int healPower, int percentage, bool singleTarget) : base(name, emote, targetType, range, effectImages, element, PPCost)
         {
             this.percentage = percentage;
             this.healPower = healPower;

@@ -15,7 +15,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public enum Element { Venus, Mars, Jupiter, Mercury, none };
 
 
-        protected Psynergy(string name, string emote, Target targetType, uint range, Element element, uint PPCost) : base(name, emote, targetType, range)
+        protected Psynergy(string name, string emote, Target targetType, uint range, List<EffectImage> effectImages, Element element, uint PPCost) : base(name, emote, targetType, range, effectImages)
         {
             this.element = element;
             this.PPCost = PPCost;

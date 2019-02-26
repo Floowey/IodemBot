@@ -31,5 +31,11 @@ namespace IodemBot.Modules.GoldenSunMechanics
         }
     }
 
+    public struct EffectImage
+    {
+        public string id { get; set; }
+        public object[] args { get; set; }
+    }
+
     
 }

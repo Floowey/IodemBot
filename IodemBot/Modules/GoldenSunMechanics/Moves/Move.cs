@@ -1,4 +1,5 @@
 ﻿using IodemBot.Modules.ColossoBattles;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public string name;
         public string emote;
         public Target targetType;
-        public List<IEffect> effects;
+        [JsonIgnore] public List<IEffect> effects;
+        public List<EffectImage> effectImages;
         public int targetNr;
         public uint range;
         public bool hasPriority = false;
@@ -79,13 +81,15 @@ namespace IodemBot.Modules.GoldenSunMechanics
             }
         }
 
-        public Move(string name, string emote, Target targetType, uint range)
+        public Move(string name, string emote, Target targetType, uint range, List<EffectImage> effectImages)
         {
             this.name = name;
             this.emote = emote;
             this.targetType = targetType;
             this.range = range;
             this.effects = new List<IEffect>();
+            if(effectImages != null)
+                effectImages.ForEach(e => effects.Add(IEffect.EffectFactory(e.id, e.args)));
         }
 
         public List<ColossoFighter> getTarget(ColossoFighter user)

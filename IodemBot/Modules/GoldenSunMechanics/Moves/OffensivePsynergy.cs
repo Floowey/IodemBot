@@ -16,9 +16,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
         private bool attackBased;
         private double[] spread = new double[] { 1.0, 0.66, 0.5, 0.33, 0.25, 0.15, 0.1 };
         [JsonConstructor]
-        public OffensivePsynergy(string name, string emote, Target targetType, uint range, Element element, uint PPCost, uint power = 0, uint addDamage = 0, double dmgMult = 1) : base(name, emote, targetType, range, element, PPCost)
+        public OffensivePsynergy(string name, string emote, Target targetType, uint range, List<EffectImage> effectImages, Element element, uint PPCost, uint power = 0, uint addDamage = 0, double dmgMult = 1) : base(name, emote, targetType, range, effectImages, element, PPCost)
         {
-            
             this.power = power;
             this.addDamage = addDamage;
             this.dmgMult = dmgMult;

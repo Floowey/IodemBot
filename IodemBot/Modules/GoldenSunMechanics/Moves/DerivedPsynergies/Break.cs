@@ -9,7 +9,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 {
     class Break : Psynergy
     {
-        public Break() : base("Break", "<:Break:536969993490006036>", Target.otherAll, 4, Element.Mercury, 5)
+        public Break() : base("Break", "<:Break:536969993490006036>", Target.otherAll, 4, new List<EffectImage>(), Element.Mercury, 5)
         {
         }
 

@@ -10,7 +10,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 {
     abstract class IRevive : Psynergy
     {
-        protected IRevive(string name, string emote, Element element, uint PPCost) : base(name, emote, Target.ownSingle, 1, element, PPCost)
+        protected IRevive(string name, string emote, List<EffectImage> effectImages, Element element, uint PPCost) : base(name, emote, Target.ownSingle, 1, effectImages, element, PPCost)
         {
         }
 

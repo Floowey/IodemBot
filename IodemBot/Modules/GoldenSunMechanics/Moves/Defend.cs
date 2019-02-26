@@ -9,7 +9,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 {
     public class Defend : Move
     {
-        public Defend() : base("Defend", "<:Defend:536919830507552768>", Target.self, 1)
+        public Defend() : base("Defend", "<:Defend:536919830507552768>", Target.self, 1, new List<EffectImage>())
         {
             hasPriority = true;
         }

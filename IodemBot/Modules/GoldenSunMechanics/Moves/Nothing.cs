@@ -9,7 +9,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 {
     class Nothing : Move
     {
-        public Nothing() : base("Nothing", "😶", Target.self, 0)
+        public Nothing() : base("Nothing", "😶", Target.self, 0, new List<EffectImage>())
         {
         }
 

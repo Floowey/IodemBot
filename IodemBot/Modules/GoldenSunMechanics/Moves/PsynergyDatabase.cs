@@ -50,7 +50,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 return (Psynergy) otherPsynergy[psynergy].Clone();
             }
 
-            return new OffensivePsynergy($"{psynergy} (Not Implemented!)", "⛔", Target.otherSingle, 1, Psynergy.Element.none, 0, 1 ,0, 1);
+            return new OffensivePsynergy($"{psynergy} (Not Implemented!)", "⛔", Target.otherSingle, 1, new List<EffectImage>(), Psynergy.Element.none, 0, 1 ,0, 1);
         }
 
         public static T Clone<T>(T source)

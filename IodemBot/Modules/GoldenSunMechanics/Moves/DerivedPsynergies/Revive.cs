@@ -9,7 +9,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 {
     class Revive : IRevive
     {
-        public Revive() : base("Revive", "<:Revive:536957965513785347>", Element.Venus, 15)
+        public Revive() : base("Revive", "<:Revive:536957965513785347>", new List<EffectImage>(), Element.Venus, 15)
         {
         }
     }
