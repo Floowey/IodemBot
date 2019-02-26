@@ -10,29 +10,54 @@ namespace IodemBot.Modules.GoldenSunMechanics
     class StatEffect : IEffect
     {
         string StatToBoost;
-        double value;
-        bool onTarget;
-        int duration;
+        double Multiplier;
+        bool OnTarget;
+        uint Turns;
 
-        public StatEffect(string statToBoost, double value)
+        public StatEffect(string StatToBoost, double Value, bool OnTarget = true, uint Duration = 5)
         {
-            StatToBoost = statToBoost;
-            this.value = value;
+            Init(StatToBoost, Value, OnTarget, Duration);
         }
 
-        public StatEffect(string statToBoost, double value, bool onTarget) : this(statToBoost, value)
+        public StatEffect(params object[] args)
         {
-            this.onTarget = onTarget;
+            if(args.Length == 2 && args[0] is string && args[1] is double)
+            {
+                Init((string)args[0], (double)args[1]);
+            } else if(args.Length == 3 && args[0] is string && args[1] is double
+                && args[2] is bool)
+            {
+                Init((string)args[0], (double)args[1], (bool) args[2]);
+            } else if (args.Length == 4 && args[0] is string && args[1] is double
+                 && args[2] is bool && args[3] is uint)
+            {
+                Init((string)args[0], (double)args[1], (bool) args[2], (uint) args[3]);
+            } else
+            {
+                throw new ArgumentException();
+            }
         }
 
-        public StatEffect(string statToBoost, double value, bool onTarget, int duration) : this(statToBoost, value, onTarget)
+        private void Init(string StatToBoost, double Value, bool OnTarget = true, uint Duration = 5)
         {
-            this.duration = duration;
+            this.StatToBoost = StatToBoost;
+            this.Multiplier = Value;
+            this.OnTarget = OnTarget;
+            this.Turns = Duration;
         }
+
 
         public override List<string> Apply(ColossoFighter User, ColossoFighter Target)
         {
-            throw new NotImplementedException();
+            if (OnTarget)
+            {
+                Target.applyBuff(new Buff(StatToBoost, Multiplier, Turns));
+            } else
+            {
+                User.applyBuff(new Buff(StatToBoost, Multiplier, Turns));
+            }
+
+            return new List<string>();//Add actual text from StatusPsnyergy
         }
     }
 }

@@ -54,6 +54,12 @@ namespace IodemBot.Modules.ColossoBattles
             return string.Join(" - ", relevantMoves);
         }
 
+        public void Kill()
+        {
+            stats.HP = 0;
+            AddCondition(Condition.Down);
+        }
+
         public virtual List<string> dealDamage(uint damage, string punctuation = "!")
         {
             var log = new List<string>

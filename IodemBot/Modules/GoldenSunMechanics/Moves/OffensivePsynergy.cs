@@ -48,6 +48,10 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 if (!t.IsAlive()) continue;
 
                 //Effects that trigger before damage
+                effects
+                    .Where(e => e.timeToActivate == IEffect.TimeToActivate.beforeDamge)
+                    .ToList()
+                    .ForEach(e => log.AddRange(e.Apply(User, t)));
 
                 var baseDmg = (new Random()).Next(0, 4);
                 var dmg = attackBased ? 
@@ -66,7 +70,10 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 if (t.elstats.GetRes(element) == t.elstats.leastRes()) punctuation = "!!!";
 
                 log.AddRange(t.dealDamage(realDmg, punctuation));
-                //log.AddRange(effects.ForEach(e => e.Apply(User, Target)));
+                effects
+                    .Where(e => e.timeToActivate == IEffect.TimeToActivate.afterDamage)
+                    .ToList()
+                    .ForEach(e => log.AddRange(e.Apply(User, t)));
 
                 if (User is PlayerFighter)
                 {
