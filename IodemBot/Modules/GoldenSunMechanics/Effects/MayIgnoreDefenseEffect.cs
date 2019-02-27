@@ -10,17 +10,21 @@ namespace IodemBot.Modules.GoldenSunMechanics
     class MayIgnoreDefenseEffect : IEffect
     {
         int ignorePercent = 20;
+        int probability = 10;
         public override List<string> Apply(ColossoFighter User, ColossoFighter Target)
         {
-            Target.ignoreDefense = (1 - ignorePercent / 100);
+            if(Global.random.Next(1, 100) <= probability)
+                Target.ignoreDefense = (1 - ignorePercent / 100);
             return new List<string>();
         }
 
         public MayIgnoreDefenseEffect(object[] args)
         {
-            if(args.Length == 1 && args[0] is int)
+            timeToActivate = TimeToActivate.beforeDamge;
+            if(args.Length == 2 && args[0] is int && args[1] is int)
             {
                 ignorePercent = (int)args[0];
+                probability = (int)args[1];
             }
         }
     }

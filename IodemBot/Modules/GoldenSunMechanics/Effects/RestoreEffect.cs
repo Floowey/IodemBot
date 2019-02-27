@@ -11,6 +11,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
     {
         public override List<string> Apply(ColossoFighter User, ColossoFighter Target)
         {
+            if (!Target.IsAlive()) return new List<string>();
             Target.RemoveAllConditions();
             return new List<string>() { $"{Target.name}'s Conditions were cured." };
         }

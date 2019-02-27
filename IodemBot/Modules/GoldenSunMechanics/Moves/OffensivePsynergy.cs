@@ -53,6 +53,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                     .ForEach(e => log.AddRange(e.Apply(User, t)));
 
                 if (!t.IsAlive()) continue;
+                if (t.isImmuneToPsynergy) log.Add($"{t.name} protects themselves with a magical barrier.");
 
                 var baseDmg = (new Random()).Next(0, 4);
                 var dmg = attackBased ? 

@@ -22,7 +22,7 @@ namespace IodemBot.Modules.ColossoBattles
         public ElementalStats elstats;
         public Move[] moves;
         public bool isImmuneToEffects;
-        public bool isImmunteToPsynergy;
+        public bool isImmuneToPsynergy;
         [JsonIgnore] private Random rnd = Global.random;
         [JsonIgnore] private readonly List<Condition> Conditions = new List<Condition>();
 
@@ -190,22 +190,6 @@ namespace IodemBot.Modules.ColossoBattles
             return turnLog;
         }
 
-        public string ConditionsToString()
-        {
-            StringBuilder s = new StringBuilder();
-            if (HasCondition(Condition.DeathCurse)) s.Append("");
-            if (HasCondition(Condition.Delusion)) s.Append("<:delusion:549526931637534721>");
-            if (HasCondition(Condition.Down)) s.Append("<:curse:538074679492083742>");
-            if (HasCondition(Condition.Flinch)) s.Append("");
-            if (HasCondition(Condition.Haunt)) s.Append("<:Haunted:549526931821953034>");
-            if (HasCondition(Condition.ItemCurse)) s.Append("<:curse:538074679492083742>");
-            if (HasCondition(Condition.Poison)) s.Append("<:Poison:549526931847249920>");
-            if (HasCondition(Condition.Seal)) s.Append("<:Psy_Seal:549526931465568257>");
-            if (HasCondition(Condition.Stun)) s.Append("");
-            if (HasCondition(Condition.Venom)) s.Append("<:Poison:549526931847249920>");
-            return s.ToString();
-        }
-
         public virtual void EndTurn() {
             List<string> turnLog = new List<string>();
 
@@ -222,12 +206,51 @@ namespace IodemBot.Modules.ColossoBattles
             });
             Buffs = newBuffs;
             defensiveMult = 1;
-            //Poison
+            offensiveMult = 1;
+
             //Chance to wake up
+            if (HasCondition(Condition.Sleep))
+            {
+                if (Global.random.Next(0, 3) == 0)
+                {
+                    RemoveCondition(Condition.Sleep);
+                    turnLog.Add($"{name} wakes up.");
+                }
+            }
             //Chance to remove Stun
+            if (HasCondition(Condition.Stun))
+            {
+                if (Global.random.Next(0, 2) == 0)
+                {
+                    RemoveCondition(Condition.Stun);
+                    turnLog.Add($"{name} can move again.");
+                }
+            }
             //Chance to remove Delusion
-            //Remove Counter
-            //Remove Defensive Multipliers
+            if (HasCondition(Condition.Delusion))
+            {
+                if (Global.random.Next(0, 1) == 0)
+                {
+                    RemoveCondition(Condition.Delusion);
+                    turnLog.Add($"{name} can see clearly again.");
+                }
+            }
+
+            //Poison Damage
+            if (HasCondition(Condition.Poison))
+            {
+                var damage = (uint)(stats.HP * Global.random.Next(5, 10) / 100);
+                turnLog.AddRange(DealDamage(damage));
+            }
+            if (HasCondition(Condition.Venom))
+            {
+                var damage = (uint)(stats.HP * Global.random.Next(10, 20) / 100);
+                turnLog.AddRange(DealDamage(damage));
+            }
+
+            RemoveCondition(Condition.Flinch);
+            RemoveCondition(Condition.Counter);
+
 
             if (!IsAlive())
             {
@@ -235,7 +258,21 @@ namespace IodemBot.Modules.ColossoBattles
                 hasSelected = true;
             }
         }
-
+        public string ConditionsToString()
+        {
+            StringBuilder s = new StringBuilder();
+            if (HasCondition(Condition.DeathCurse)) s.Append("");
+            if (HasCondition(Condition.Delusion)) s.Append("<:delusion:549526931637534721>");
+            if (HasCondition(Condition.Down)) s.Append("<:curse:538074679492083742>");
+            if (HasCondition(Condition.Flinch)) s.Append("");
+            if (HasCondition(Condition.Haunt)) s.Append("<:Haunted:549526931821953034>");
+            if (HasCondition(Condition.ItemCurse)) s.Append("<:curse:538074679492083742>");
+            if (HasCondition(Condition.Poison)) s.Append("<:Poison:549526931847249920>");
+            if (HasCondition(Condition.Seal)) s.Append("<:Psy_Seal:549526931465568257>");
+            if (HasCondition(Condition.Stun)) s.Append("");
+            if (HasCondition(Condition.Venom)) s.Append("<:Poison:549526931847249920>");
+            return s.ToString();
+        }
         public bool select(string emote)
         {
             string[] numberEmotes = new string[] {"\u0030\u20E3", "1⃣", "\u0032\u20E3", "\u0033\u20E3", "\u0034\u20E3", "\u0035\u20E3",

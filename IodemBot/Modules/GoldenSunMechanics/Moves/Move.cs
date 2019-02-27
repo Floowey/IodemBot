@@ -31,6 +31,10 @@ namespace IodemBot.Modules.GoldenSunMechanics
             log.AddRange(InternalUse(User));
 
             //Haunt Damage
+            if (User.HasCondition(Condition.Haunt))
+            {
+                log.AddRange(User.DealDamage((uint)(User.stats.HP * Global.random.Next(20, 40) / 100)));
+            }
 
             return log;
         }

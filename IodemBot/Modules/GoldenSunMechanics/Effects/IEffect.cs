@@ -17,14 +17,28 @@ namespace IodemBot.Modules.GoldenSunMechanics
         {
             switch (Identifier)
             {
-                case "Condition":
-                    return new ConditionEffect(args);
-
-                case "Stat":
-                    return new StatEffect(args);
-
+                case "Break":
+                    return new BreakEffect();
                 case "ChanceToOHKO":
                     return new ChancetoOHKOEffect(args);
+                case "Condition":
+                    return new ConditionEffect(args);
+                case "Counter":
+                    return new CounterEffect();
+                case "MayIgnoreDefense":
+                    return new MayIgnoreDefenseEffect(args);
+                case "MultiplyDamage":
+                    return new MultiplyDamageEffect(args);
+                case "ReduceHPtoOne":
+                    return new ReduceHPtoOneEffect(args);
+                case "Restore":
+                    return new RestoreEffect();
+                case "Revive":
+                    return new ReviveEffect(args);
+                case "Stat":
+                    return new StatEffect(args);
+                case "UserDies":
+                    return new UserDiesEffect();
 
                 default: return new NoEffect();
             }

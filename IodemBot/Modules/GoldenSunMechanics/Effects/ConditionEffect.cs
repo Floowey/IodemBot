@@ -43,6 +43,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public override List<string> Apply(ColossoFighter User, ColossoFighter Target)
         {
             List<string> log = new List<string>();
+            if (Target.isImmuneToEffects) return log;
+            if (!Target.IsAlive()) return log;
             if(Global.random.Next(1, 100) <= Probability)
             {
                 Target.AddCondition(Cond);

@@ -12,17 +12,20 @@ namespace IodemBot.Modules.GoldenSunMechanics
         int probability = 0;
         public override List<string> Apply(ColossoFighter User, ColossoFighter Target)
         {
+            var log = new List<string>();
+            if (Target.isImmuneToEffects) return log;
             if (Global.random.Next(1, 100) <= probability)
             {
                 Target.Kill();
-                return new List<string>() { $"{Target.name}'s life was taken." };
+                log.Add($"{Target.name}'s life was taken.");
             }
-            else return new List<string>();
+            return log;
         }
         public ChancetoOHKOEffect(object[] args)
         {
             timeToActivate = TimeToActivate.beforeDamge;
-            if(args.Length == 1 && args[0] is int)
+           
+            if (args.Length == 1 && args[0] is int)
             {
                 this.probability = (int)args[0];
             }

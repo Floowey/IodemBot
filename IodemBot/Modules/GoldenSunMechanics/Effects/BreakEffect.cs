@@ -13,7 +13,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
         {
             List<string> log = new List<string>();
             List<Buff> newBuffs = new List<Buff>();
-            foreach(var b in Target.Buffs)
+            if (!Target.IsAlive()) return log;
+            foreach (var b in Target.Buffs)
             {
                 if (b.multiplier > 1)
                 {
