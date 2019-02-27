@@ -62,6 +62,7 @@ namespace IodemBot.Modules.ColossoBattles
         public bool ForceTurn()
         {
             if (turnActive) return false;
+            Console.WriteLine("Forcing turn.");
             List<ColossoFighter> fighters = new List<ColossoFighter>(TeamA);
             fighters.AddRange(TeamB);
             fighters.ForEach(f =>
@@ -84,6 +85,7 @@ namespace IodemBot.Modules.ColossoBattles
             turnActive = true;
             bool b = true;
             //Stop Timer, just in Case
+            Console.WriteLine("Starting to process Turn");
 
             //Start Turn for things like Defend
             StartTurn();
