@@ -404,7 +404,7 @@
 		"Mad Blast"
 	  ],
       "stats": {
-        "maxHP": 179,
+        "maxHP": 500,
         "maxPP": 60,
         "Atk": 241,
         "Def": 105,
@@ -425,12 +425,12 @@
       "name": "Harridan",
       "imgurl": "",
       "movepool": [
-		"Wind Slash",
-		"Tornado"
+		"Sonic Slash",
+		"Tempest"
 	  ],
       "stats": {
-        "maxHP": 231,
-        "maxPP": 29,
+        "maxHP": 600,
+        "maxPP": 100,
         "Atk": 261,
         "Def": 66,
         "Spd": 118
@@ -481,7 +481,7 @@
 		"Mad Blast"
 	  ],
       "stats": {
-        "maxHP": 179,
+        "maxHP": 500,
         "maxPP": 60,
         "Atk": 241,
         "Def": 105,
@@ -514,7 +514,7 @@
 	  "Aura"
 	  ],
       "stats": {
-        "maxHP": 1350,
+        "maxHP": 1950,
         "maxPP": 100,
         "Atk": 294,
         "Def": 90,
@@ -545,7 +545,7 @@
 	  "Aura"
 	  ],
       "stats": {
-        "maxHP": 1350,
+        "maxHP": 1950,
         "maxPP": 100,
         "Atk": 294,
         "Def": 90,
@@ -633,7 +633,7 @@
 		"Tempest"
 	  ],
       "stats": {
-        "maxHP": 456,
+        "maxHP": 750,
         "maxPP": 55,
         "Atk": 347,
         "Def": 133,
@@ -684,7 +684,7 @@
 		"Tempest"
 	  ],
       "stats": {
-        "maxHP": 456,
+        "maxHP": 750,
         "maxPP": 55,
         "Atk": 347,
         "Def": 133,
@@ -763,14 +763,16 @@
       "name": "Azart",
       "imgurl": "https://vignette.wikia.nocookie.net/goldensun/images/9/94/Azart.png/revision/latest?cb=20080105061632",
       "movepool": [
-		"Oil Drop"
+		"Oil Drop",
+	      "Crystal Powder",
+	      "Bramble Seed"
 	  ],
       "stats": {
-        "maxHP": 400,
+        "maxHP": 1500,
         "maxPP": 160,
-        "Atk": 120,
-        "Def": 40,
-        "Spd": 80
+        "Atk": 250,
+        "Def": 80,
+        "Spd": 150
       },
       "elstats": {
         "VenusAtk": 100,
@@ -788,14 +790,15 @@
       "imgurl": "https://vignette.wikia.nocookie.net/goldensun/images/a/a0/Satrage.png/revision/latest?cb=20080105061855",
       "movepool": [
 		"Oil Drop",
-		"Crystal Powder"
+		"Crystal Powder",
+	      "Bramble Seed"
 	  ],
       "stats": {
-        "maxHP": 1000,
+        "maxHP": 1500,
         "maxPP": 160,
         "Atk": 300,
         "Def": 56,
-        "Spd": 160
+        "Spd": 170
       },
       "elstats": {
         "VenusAtk": 100,
@@ -817,7 +820,7 @@
 		"Bramble Seed"
 	  ],
       "stats": {
-        "maxHP": 2000,
+        "maxHP": 1500,
         "maxPP": 160,
         "Atk": 350,
         "Def": 118,
