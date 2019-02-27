@@ -42,25 +42,25 @@ namespace IodemBot.Modules.GoldenSunMechanics
             List<string> log = new List<string>();
             if (!User.IsAlive()) return new Validation(false, log);
             
-            if (!User.HasCondition(Condition.Stun)) {
+            if (User.HasCondition(Condition.Stun)) {
                 log.Add($"{User.name} can't move");
                 return new Validation(false, log);
             }
 
-            if (!User.HasCondition(Condition.Sleep))
+            if (User.HasCondition(Condition.Sleep))
             {
                 log.Add($"{User.name} is asleep!");
                 return new Validation(false, log);
             }
 
-            if (!User.HasCondition(Condition.Flinch))
+            if (User.HasCondition(Condition.Flinch))
             {
                 log.Add($"{User.name} can't move");
                 User.RemoveCondition(Condition.Flinch);
                 return new Validation(false, log);
             }
 
-            if (!User.HasCondition(Condition.ItemCurse) && Global.random.Next(0,3) == 0)
+            if (User.HasCondition(Condition.ItemCurse) && Global.random.Next(0,3) == 0)
             {
                 log.Add($"{User.name} can't move");
                 return new Validation(false, log);
