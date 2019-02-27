@@ -760,7 +760,7 @@
   ],
   [
   {
-      "name": "Azart"
+      "name": "Azart",
       "imgurl": "https://vignette.wikia.nocookie.net/goldensun/images/9/94/Azart.png/revision/latest?cb=20080105061632",
       "movepool": [
 		"Oil Drop"
@@ -784,7 +784,7 @@
 	  }
 	},
 	{
-      "name": "Satrage"
+      "name": "Satrage",
       "imgurl": "https://vignette.wikia.nocookie.net/goldensun/images/a/a0/Satrage.png/revision/latest?cb=20080105061855",
       "movepool": [
 		"Oil Drop",
@@ -809,7 +809,7 @@
 	  }
 	},
 	{
-      "name": "Navampa"
+      "name": "Navampa",
       "imgurl": "https://vignette.wikia.nocookie.net/goldensun/images/9/97/Navampa.png/revision/latest?cb=20080105062200",
       "movepool": [
 		"Oil Drop",
@@ -837,7 +837,7 @@
 	],
 	[
   {
-      "name": "Lich"
+      "name": "Lich",
       "imgurl": "https://vignette.wikia.nocookie.net/goldensun/images/e/ec/Succubus.png/revision/latest?cb=20080205202925",
       "movepool": [
 		"Glacier",
@@ -867,7 +867,7 @@
 	  }
 	},
 	{
-      "name": "Succubus"
+      "name": "Succubus",
       "imgurl": "https://vignette.wikia.nocookie.net/goldensun/images/a/a0/Satrage.png/revision/latest?cb=20080105061855",
       "movepool": [
 		"Freeze Prism",
@@ -896,7 +896,7 @@
 	  }
 	},
 	{
-      "name": "Lich"
+      "name": "Lich",
       "imgurl": "https://vignette.wikia.nocookie.net/goldensun/images/9/94/Azart.png/revision/latest?cb=20080105061632",
       "movepool": [
 		"Glacier",
@@ -928,7 +928,7 @@
 	],
 	[
   {
-      "name": "Hobgoblin"
+      "name": "Hobgoblin",
       "imgurl": "https://vignette.wikia.nocookie.net/goldensun/images/3/31/Hobgoblin.png/revision/latest?cb=20071212184432",
       "movepool": [
 		"Mighty Press",
@@ -957,7 +957,7 @@
 	  }
 	},
 	{
-      "name": "Hobgoblin"
+      "name": "Hobgoblin",
       "imgurl": "https://vignette.wikia.nocookie.net/goldensun/images/e/ec/Succubus.png/revision/latest?cb=20080205202925",
       "movepool": [
 		"Mighty Press",
@@ -988,7 +988,7 @@
 	],
 	[
   {
-      "name": "Earth Lizard"
+      "name": "Earth Lizard",
       "imgurl": "https://vignette.wikia.nocookie.net/goldensun/images/e/ec/Succubus.png/revision/latest?cb=20080205202925",
       "movepool": [
 		"Stone Spire",
@@ -1016,7 +1016,7 @@
 	  }
 	},
 	{
-      "name": "Lizard King"
+      "name": "Lizard King",
       "imgurl": "https://vignette.wikia.nocookie.net/goldensun/images/a/a0/Satrage.png/revision/latest?cb=20080105061855",
       "movepool": [
 		"Protect",
@@ -1046,7 +1046,7 @@
 	  }
 	},
 	{
-      "name": "Thunder Lizard"
+      "name": "Thunder Lizard",
       "imgurl": "https://vignette.wikia.nocookie.net/goldensun/images/9/94/Azart.png/revision/latest?cb=20080105061632",
       "movepool": [
 		"Storm Breath",

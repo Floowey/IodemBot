@@ -726,10 +726,10 @@
         "MercuryRes": 72
 	  }
 	}
-  ]
+  ],
   [
     {
-      "name": "Azart"
+      "name": "Azart",
       "imgurl": "https://vignette.wikia.nocookie.net/goldensun/images/9/94/Azart.png/revision/latest?cb=20080105061632",
       "movepool": [
 		"Oil Drop"

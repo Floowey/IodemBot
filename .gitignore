@@ -55,3 +55,8 @@ dkms.conf
 /.vs/IodemBot/v15
 /IodemBot/~$IodemClassSheet.xlsx
 /packages
+/IodemBot/Resources/config.json
+/IodemBot/Resources/config-Medoi.json
+/IodemBot/Resources/config-Iodem.json
+/IodemBot/Resources/accounts.json
+/IodemBot/bin

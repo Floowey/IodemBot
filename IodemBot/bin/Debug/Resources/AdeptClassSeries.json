@@ -1235,7 +1235,7 @@
         "name": "Defender",
         "movepool": [
           "Cutting Edge",
-		  "Briar",
+		  "Briar"
         ],
         "statMultipliers": {
           "maxHP": 120,
