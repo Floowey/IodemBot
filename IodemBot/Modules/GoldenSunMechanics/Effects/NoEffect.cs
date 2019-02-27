@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using IodemBot.Modules.ColossoBattles;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
-    class Phoenix : IRevive
+    class NoEffect : IEffect
     {
-        public Phoenix() : base("Phoenix", "<:Phoenix:539166682132906005>", new List<EffectImage>(), Element.Mars, 10)
+        public override List<string> Apply(ColossoFighter User, ColossoFighter Target)
         {
+            return new List<string>();
         }
     }
 }

@@ -259,6 +259,19 @@
     <Compile Include="Modules\GoldenSunMechanics\Classes\Requirements\ReviveRequirement.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Classes\Requirements\SoloBattleRequirement.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Classes\Requirements\TeammatesRequirement.cs" />
+    <Compile Include="Modules\GoldenSunMechanics\Effects\BreakEffect.cs" />
+    <Compile Include="Modules\GoldenSunMechanics\Effects\ChanceToOHKOEffect.cs" />
+    <Compile Include="Modules\GoldenSunMechanics\Effects\ConditionEffect.cs" />
+    <Compile Include="Modules\GoldenSunMechanics\Effects\CounterEffect.cs" />
+    <Compile Include="Modules\GoldenSunMechanics\Effects\IEffect.cs" />
+    <Compile Include="Modules\GoldenSunMechanics\Effects\MayIgnoreDefenseEffect.cs" />
+    <Compile Include="Modules\GoldenSunMechanics\Effects\MultiplyDamgeEffect.cs" />
+    <Compile Include="Modules\GoldenSunMechanics\Effects\NoEffect.cs" />
+    <Compile Include="Modules\GoldenSunMechanics\Effects\ReduceHPtoOneEffect.cs" />
+    <Compile Include="Modules\GoldenSunMechanics\Effects\RestoreEffect.cs" />
+    <Compile Include="Modules\GoldenSunMechanics\Effects\ReviveEffect.cs" />
+    <Compile Include="Modules\GoldenSunMechanics\Effects\StatEffect.cs" />
+    <Compile Include="Modules\GoldenSunMechanics\Effects\UserDiesEffect.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Moveset.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Moves\Attack.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Moves\DerivedPsynergies\Break.cs" />
@@ -300,8 +313,47 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-    <None Include="Resources\config.json" />
-    <None Include="SystemLang\quotes.json" />
+    <None Include="Resources\accounts.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\AdeptClassSeries.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\bronzeFighters.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Colors.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\config-Iodem.json" />
+    <None Include="Resources\config-Medoi.json" />
+    <None Include="Resources\config.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\goldFighters.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\healpsy.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\movepools.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\offpsy.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\silverFighters.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\statpsy.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\stats.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SystemLang\quotes.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />

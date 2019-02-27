@@ -23,7 +23,7 @@ namespace IodemBot
                 new Program().StartAsync().GetAwaiter().GetResult();
             } catch (Exception e) {
                 var date = DateTime.Now.ToString("yyyy_mm_dd");
-                File.AppendAllText($"Logs/{date}_log.log", e.Message + "\n" + e.InnerException.ToString());
+                File.AppendAllText($"Logs/{date}_crash.log", e.Message + "\n" + e.InnerException.ToString());
             }
         }
 

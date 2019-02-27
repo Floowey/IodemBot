@@ -10,18 +10,13 @@ namespace IodemBot.Modules.GoldenSunMechanics
 {
     abstract class IRevive : Psynergy
     {
-        protected IRevive(string name, string emote, Element element, uint PPCost) : base(name, emote, Target.ownSingle, 1, element, PPCost)
+        protected IRevive(string name, string emote, List<EffectImage> effectImages, Element element, uint PPCost) : base(name, emote, Target.ownSingle, 1, effectImages, element, PPCost)
         {
         }
 
-        public override List<string> Use(ColossoFighter User)
+        protected override List<string> InternalUse(ColossoFighter User)
         {
             List<string> log = new List<string>();
-            var res = PPCheck(User);
-            log.AddRange(res.Item2);
-            if (!res.Item1) return log;
-
-            log.Add($"{emote} {User.name} casts {this.name}.");
             var targetTeam = User.battle.getTeam(User.party);
             var target = targetTeam[targetNr];
             bool wasDead = !target.IsAlive();

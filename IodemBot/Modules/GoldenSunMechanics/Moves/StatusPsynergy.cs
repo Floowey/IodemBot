@@ -14,7 +14,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         private double multiplier;
         private uint turns;
 
-        public StatusPsynergy(string statToBuff, double multiplier, uint turns, string name, string emote, Target targetType, uint range, Element element, uint PPCost) : base(name, emote, targetType, range, element, PPCost)
+        public StatusPsynergy(string statToBuff, double multiplier, uint turns, string name, string emote, Target targetType, uint range, List<EffectImage> effectImages, Element element, uint PPCost) : base(name, emote, targetType, range, effectImages, element, PPCost)
         {
             this.statToBuff = statToBuff;
             this.multiplier = multiplier;
@@ -28,22 +28,15 @@ namespace IodemBot.Modules.GoldenSunMechanics
             return MemberwiseClone();
         }
 
-        public override List<string> Use(ColossoFighter User)
+        protected override List<string> InternalUse(ColossoFighter User)
         {
             List<string> log = new List<string>();
-            var res = PPCheck(User);
-            log.AddRange(res.Item2);
-            if (!res.Item1) return log;
-
             //Get enemies and targeted enemies
             List<ColossoFighter> targets = getTarget(User);
 
-            log.Add($"{emote} {User.name} casts {this.name}.");
             foreach (var t in targets)
             {
-                if (!t.IsAlive()) continue;
-                t.applyBuff(new Buff(statToBuff, multiplier, turns));
-                log.Add($"{t.name}'s {statToBuff} {(multiplier > 1 ? "rises" : "lowers")}.");
+                effects.ForEach(e => e.Apply(User, t));
             }
 
             return log;

@@ -10,7 +10,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 {
     public class Attack : Move
     {
-        public Attack() : base("Attack", "<:Attack:536919809393295381>", Target.otherSingle, 1)
+        public Attack() : base("Attack", "<:Attack:536919809393295381>", Target.otherSingle, 1, new List<EffectImage>())
         {
         }
 
@@ -20,7 +20,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             return JsonConvert.DeserializeObject<Attack>(serialized);
         }
 
-        public override List<string> Use(ColossoFighter User)
+        protected override List<string> InternalUse(ColossoFighter User)
         {
             var enemy = User.battle.getTeam(User.enemies)[targetNr];
 

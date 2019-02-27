@@ -15,22 +15,35 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public enum Element { Venus, Mars, Jupiter, Mercury, none };
 
 
-        protected Psynergy(string name, string emote, Target targetType, uint range, Element element, uint PPCost) : base(name, emote, targetType, range)
+        protected Psynergy(string name, string emote, Target targetType, uint range, List<EffectImage> effectImages, Element element, uint PPCost) : base(name, emote, targetType, range, effectImages)
         {
             this.element = element;
             this.PPCost = PPCost;
         }
 
-        public Tuple<bool, List<string>> PPCheck(ColossoFighter User)
+        protected override Validation Validate(ColossoFighter User)
         {
             List<string> log = new List<string>();
+            var t = base.Validate(User);
+            if (!t.isValid) return t;
+
+            log.AddRange(t.log);
+
+            //Psy Seal:
+            if (User.HasCondition(Condition.Seal))
+            {
+                log.Add($"{User.name}'s Psynergy is sealed!");
+                return new Validation(false, log);
+            }
+
             if (User.stats.PP < PPCost)
             {
                 log.Add($"{User.name} has not enough PP to cast {this.name}.");
-                return new Tuple<bool, List<string>>(false, log);
+                return new Validation(false, log);
             }
             User.stats.PP -= PPCost;
-            return new Tuple<bool, List<string>>(true, log);
+            log.Add($"{emote} {User.name} casts {this.name}!");
+            return new Validation(true, log);
         }
     }
 }   

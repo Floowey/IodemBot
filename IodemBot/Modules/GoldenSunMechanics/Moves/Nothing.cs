@@ -9,7 +9,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 {
     class Nothing : Move
     {
-        public Nothing() : base("Nothing", "😶", Target.self, 0)
+        public Nothing() : base("Nothing", "😶", Target.self, 0, new List<EffectImage>())
         {
         }
 
@@ -18,7 +18,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             return MemberwiseClone();
         }
 
-        public override List<string> Use(ColossoFighter User)
+        protected override List<string> InternalUse(ColossoFighter User)
         {
             return new List<string>() ;
         }

@@ -9,8 +9,9 @@ namespace IodemBot.Modules.GoldenSunMechanics
 {
     public class Defend : Move
     {
-        public Defend() : base("Defend", "<:Defend:536919830507552768>", Target.self, 1)
+        public Defend() : base("Defend", "<:Defend:536919830507552768>", Target.self, 1, new List<EffectImage>())
         {
+            hasPriority = true;
         }
 
         public override object Clone()
@@ -18,9 +19,9 @@ namespace IodemBot.Modules.GoldenSunMechanics
             return MemberwiseClone();
         }
 
-        public override List<string> Use(ColossoFighter User)
+        protected override List<string> InternalUse(ColossoFighter User)
         {
-            User.Buffs.Add(new Buff("Defense", 4, 1));
+            User.defensiveMult *= 0.5;
             return new List<string>();
         }
     }

@@ -1,4 +1,5 @@
 ﻿using IodemBot.Modules.ColossoBattles;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,18 +14,82 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public string name;
         public string emote;
         public Target targetType;
+        [JsonIgnore] public List<IEffect> effects;
+        public List<EffectImage> effectImages;
         public int targetNr;
         public uint range;
-        
+        public bool hasPriority = false;
 
-        public abstract List<string> Use(ColossoFighter User);
 
-        public Move(string name, string emote, Target targetType, uint range)
+        public List<string> Use(ColossoFighter User)
+        {
+            List<string> log = new List<string>();
+            var t = Validate(User);
+            log.AddRange(t.log);
+            if (!t.isValid) return log;
+
+            log.AddRange(InternalUse(User));
+
+            //Haunt Damage
+
+            return log;
+        }
+
+        protected abstract List<string> InternalUse(ColossoFighter User);
+
+        protected virtual Validation Validate(ColossoFighter User)
+        {
+            List<string> log = new List<string>();
+            if (!User.IsAlive()) return new Validation(false, log);
+            
+            if (User.HasCondition(Condition.Stun)) {
+                log.Add($"{User.name} can't move");
+                return new Validation(false, log);
+            }
+
+            if (User.HasCondition(Condition.Sleep))
+            {
+                log.Add($"{User.name} is asleep!");
+                return new Validation(false, log);
+            }
+
+            if (User.HasCondition(Condition.Flinch))
+            {
+                log.Add($"{User.name} can't move");
+                User.RemoveCondition(Condition.Flinch);
+                return new Validation(false, log);
+            }
+
+            if (User.HasCondition(Condition.ItemCurse) && Global.random.Next(0,3) == 0)
+            {
+                log.Add($"{User.name} can't move");
+                return new Validation(false, log);
+            }
+
+
+            return new Validation(true, log);
+        }
+
+        public class Validation{
+            public bool isValid;
+            public List<string> log;
+
+            public Validation(bool isValid, List<string> log)
+            {
+                this.isValid = isValid;
+                this.log = log;
+            }
+        }
+
+        public Move(string name, string emote, Target targetType, uint range, List<EffectImage> effectImages)
         {
             this.name = name;
             this.emote = emote;
             this.targetType = targetType;
             this.range = range;
+            this.effects = new List<IEffect>();
+            if(effectImages != null)
+                effectImages.ForEach(e => effects.Add(IEffect.EffectFactory(e.id, e.args)));
         }
 
         public List<ColossoFighter> getTarget(ColossoFighter user)

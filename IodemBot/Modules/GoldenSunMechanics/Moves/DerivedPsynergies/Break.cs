@@ -9,7 +9,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 {
     class Break : Psynergy
     {
-        public Break() : base("Break", "<:Break:536969993490006036>", Target.otherAll, 4, Element.Mercury, 5)
+        public Break() : base("Break", "<:Break:536969993490006036>", Target.otherAll, 4, new List<EffectImage>(), Element.Mercury, 5)
         {
         }
 
@@ -18,16 +18,10 @@ namespace IodemBot.Modules.GoldenSunMechanics
             return MemberwiseClone();
         }
 
-        public override List<string> Use(ColossoFighter User)
+        protected override List<string> InternalUse(ColossoFighter User)
         {
             List<string> Log = new List<string>();
-            var res = PPCheck(User);
-            Log.AddRange(res.Item2);
-            if (!res.Item1) return Log;
-
             List<ColossoFighter> targets = getTarget(User);
-
-            Log.Add($"{emote} {User.name} casts {this.name}.");
             foreach (var t in targets)
             {
                 var newBuffs = new List<Buff>();
