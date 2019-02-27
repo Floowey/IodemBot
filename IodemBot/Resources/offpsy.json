@@ -4,12 +4,6 @@
 	"targetType": 4,
 	"emote": "<:Rampage:537766290031509524>",
 	"range": 2,
-	"effectImages": [
-	  {
-	    "id": "Stat",
-	    "args": ["Attack", 1.5]
-	  }
-	],
     "element": 4,
 	"PPCost": 0,
     "dmgMult": 0.8
