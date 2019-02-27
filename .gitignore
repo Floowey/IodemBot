@@ -62,3 +62,4 @@ dkms.conf
 /IodemBot/Resources/config-Iodem.json
 /IodemBot/Resources/accounts.json
 /.vs/slnx.sqlite-journal
+/.vs
