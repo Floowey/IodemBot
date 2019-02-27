@@ -30,7 +30,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
             foreach (var t in targets)
             {
-                effects.ForEach(e => e.Apply(User, t));
+                effects.ForEach(e => log.AddRange(e.Apply(User, t)));
             }
 
             return log;
