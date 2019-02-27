@@ -43,7 +43,6 @@ namespace IodemBot.Modules.GoldenSunMechanics
             
             var atk = User.stats.Atk * User.MultiplyBuffs("Attack");
             var def = enemy.stats.Def * enemy.MultiplyBuffs("Defense");
-            Console.WriteLine(User.MultiplyBuffs("Attack"));
             uint damage = 1;
             if (def < atk)
             {
@@ -54,7 +53,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 log.Add("Critical!!");
                 damage = (uint)(damage*1.25 + Global.random.Next(5,15));    
             }
-            log.AddRange(enemy.dealDamage(damage));
+            log.AddRange(enemy.DealDamage(damage));
             if (User is PlayerFighter)
             {
                 ((PlayerFighter)User).avatar.dealtDmg(damage);

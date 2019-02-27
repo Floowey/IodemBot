@@ -6,9 +6,12 @@
 	"range": 1,
     "element": 2,
 	"PPCost": 7,
-	"statToBuff": "Attack",
-	"multiplier": 1.25,
-	"turns": 5
+	"effectImages": [
+	  {
+	    "id": "Stat",
+	    "args": ["Attack", 1.5]
+	  }
+	]
   },
   "High Impact": {
 	"name": "High Impact",
@@ -17,9 +20,12 @@
 	"range": 4,
     "element": 2,
 	"PPCost": 12,
-	"statToBuff": "Attack",
-	"multiplier": 1.125,
-	"turns": 5
+	"effectImages": [
+	  {
+	    "id": "Stat",
+	    "args": ["Attack", 1.2]
+	  }
+	]
   },
   "Demon Spear": {
 	"name": "Demon Spear",
@@ -28,9 +34,12 @@
 	"range": 1,
     "element": 2,
 	"PPCost": 7,
-	"statToBuff": "Attack",
-	"multiplier": 1.25,
-	"turns": 5
+	"effectImages": [
+	  {
+	    "id": "Stat",
+	    "args": ["Attack", 1.5]
+	  }
+	]
   },
   "Angel Spear": {
 	"name": "Angel Spear",
@@ -39,9 +48,12 @@
 	"range": 4,
     "element": 2,
 	"PPCost": 12,
-	"statToBuff": "Attack",
-	"multiplier": 1.125,
-	"turns": 5
+	"effectImages": [
+	  {
+	    "id": "Stat",
+	    "args": ["Attack", 1.2]
+	  }
+	]
   },
   "Guard": {
 	"name": "Guard",
@@ -50,9 +62,12 @@
 	"range": 4,
     "element": 1,
 	"PPCost": 5,
-	"statToBuff": "Defense",
-	"multiplier": 1.25,
-	"turns": 5
+	"effectImages": [
+	  {
+	    "id": "Stat",
+	    "args": ["Defense", 1.5]
+	  }
+	]
   },
   "Protect": {
 	"name": "Protect",
@@ -61,9 +76,12 @@
 	"range": 4,
     "element": 1,
 	"PPCost": 5,
-	"statToBuff": "Defense",
-	"multiplier": 1.2,
-	"turns": 5
+	"effectImages": [
+	  {
+	    "id": "Stat",
+	    "args": ["Defense", 1.2]
+	  }
+	]
   },
   "Ward": {
 	"name": "Ward",
@@ -72,9 +90,12 @@
 	"range": 4,
     "element": 1,
 	"PPCost": 3,
-	"statToBuff": "Resistance",
-	"multiplier": 1.25,
-	"turns": 5
+	"effectImages": [
+	  {
+	    "id": "Stat",
+	    "args": ["Resistance", 1.5]
+	  }
+	]
   },
   "Resist": {
 	"name": "Resist",
@@ -83,9 +104,12 @@
 	"range": 1,
     "element": 1,
 	"PPCost": 5,
-	"statToBuff": "Resistance",
-	"multiplier": 1.2,
-	"turns": 5
+	"effectImages": [
+	  {
+	    "id": "Stat",
+	    "args": ["Resistance", 1.2]
+	  }
+	]
   },
   "Magic Shell": {
 	"name": "Magic Shell",
@@ -94,9 +118,12 @@
 	"range": 4,
     "element": 1,
 	"PPCost": 3,
-	"statToBuff": "Resistance",
-	"multiplier": 1.25,
-	"turns": 5
+	"effectImages": [
+	  {
+	    "id": "Stat",
+	    "args": ["Resistance", 1.5]
+	  }
+	]
   },
   "Magic Shield": {
 	"name": "Magic Shield",
@@ -105,9 +132,12 @@
 	"range": 1,
     "element": 1,
 	"PPCost": 5,
-	"statToBuff": "Resistance",
-	"multiplier": 1.2,
-	"turns": 5
+	"effectImages": [
+	  {
+	    "id": "Stat",
+	    "args": ["Resistance", 1.2]
+	  }
+	]
   },
   "Impair": {
 	"name": "Impair",
@@ -116,9 +146,12 @@
 	"range": 3,
     "element": 1,
 	"PPCost": 5,
-	"statToBuff": "Defense",
-	"multiplier": 0.75,
-	"turns": 5
+	"effectImages": [
+	  {
+	    "id": "Stat",
+	    "args": ["Defense", 0.6]
+	  }
+	]
   },
   "Debilitate": {
 	"name": "Debilitate",
@@ -127,9 +160,12 @@
 	"range": 3,
     "element": 1,
 	"PPCost": 5,
-	"statToBuff": "Defense",
-	"multiplier": 0.8,
-	"turns": 5
+	"effectImages": [
+	  {
+	    "id": "Stat",
+	    "args": ["Defense", 0.8]
+	  }
+	]
   },
   "Weapon Grace": {
 	"name": "Weapon Grace",
@@ -138,9 +174,12 @@
 	"range": 1,
     "element": 0,
 	"PPCost": 5,
-	"statToBuff": "Attack",
-	"multiplier": 1.5,
-	"turns": 5
+	"effectImages": [
+	  {
+	    "id": "Stat",
+	    "args": ["Attack", 2.0]
+	  }
+	]
   },
   "Berserk": {
 	"name": "Berserk",
@@ -149,9 +188,12 @@
 	"range": 1,
     "element": 1,
 	"PPCost": 0,
-	"statToBuff": "Attack",
-	"multiplier": 1.25,
-	"turns": 5
+	"effectImages": [
+	  {
+	    "id": "Stat",
+	    "args": ["Attack", 1.5]
+	  }
+	]
   },
   "Heartrender": {
 	"name": "Heartrender",
@@ -160,9 +202,12 @@
 	"range": 1,
     "element": 1,
 	"PPCost": 0,
-	"statToBuff": "Attack",
-	"multiplier": 0.8,
-	"turns": 5
+	"effectImages": [
+	  {
+	    "id": "Stat",
+	    "args": ["Attack", 0.75]
+	  }
+	]
   },
   "Enfeeble": {
 	"name": "Enfeeble",
@@ -171,9 +216,12 @@
 	"range": 3,
     "element": 1,
 	"PPCost": 5,
-	"statToBuff": "Resistance",
-	"multiplier": 0.8,
-	"turns": 5
+	"effectImages": [
+	  {
+	    "id": "Stat",
+	    "args": ["Resistance", 0.8]
+	  }
+	]
   },
   "Heartbreaker": {
 	"name": "Heartbreaker",
@@ -182,8 +230,11 @@
 	"range": 5,
     "element": 1,
 	"PPCost": 0,
-	"statToBuff": "Attack",
-	"multiplier": 0.8,
-	"turns": 5
+	"effectImages": [
+	  {
+	    "id": "Stat",
+	    "args": ["Attack", 0.8]
+	  }
+	]
   },
 }

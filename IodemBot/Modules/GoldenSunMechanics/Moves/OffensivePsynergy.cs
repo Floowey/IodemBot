@@ -70,7 +70,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 if (t.elstats.GetRes(element) == t.elstats.highestRes()) punctuation = ".";
                 if (t.elstats.GetRes(element) == t.elstats.leastRes()) punctuation = "!!!";
 
-                log.AddRange(t.dealDamage(realDmg, punctuation));
+                log.AddRange(t.DealDamage(realDmg, punctuation));
                 effects
                     .Where(e => e.timeToActivate == IEffect.TimeToActivate.afterDamage)
                     .ToList()

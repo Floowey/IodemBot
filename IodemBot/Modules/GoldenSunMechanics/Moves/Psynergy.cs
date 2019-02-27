@@ -30,7 +30,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
             log.AddRange(t.log);
 
             //Psy Seal:
-            if (User.HasCondition(Condition.Seal))
+            //PPCost > 1 is, because Items are right now implemented as Psynergy with PPCost 1
+            if (PPCost > 1 && User.HasCondition(Condition.Seal))
             {
                 log.Add($"{User.name}'s Psynergy is sealed!");
                 return new Validation(false, log);

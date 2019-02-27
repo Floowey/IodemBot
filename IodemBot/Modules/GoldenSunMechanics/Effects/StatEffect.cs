@@ -49,12 +49,15 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public override List<string> Apply(ColossoFighter User, ColossoFighter Target)
         {
+            List<string> log = new List<string>();
             if (OnTarget)
             {
                 Target.applyBuff(new Buff(StatToBoost, Multiplier, Turns));
+                log.Add($"{Target.name}'s {StatToBoost} {(Multiplier > 1 ? "rises" : "lowers")}.");
             } else
             {
                 User.applyBuff(new Buff(StatToBoost, Multiplier, Turns));
+                log.Add($"{User.name}'s {StatToBoost} {(Multiplier > 1 ? "rises" : "lowers")}.");
             }
 
             return new List<string>();//Add actual text from StatusPsnyergy

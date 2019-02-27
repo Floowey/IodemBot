@@ -10,15 +10,9 @@ namespace IodemBot.Modules.GoldenSunMechanics
 {
     class StatusPsynergy : Psynergy
     {
-        private string statToBuff;
-        private double multiplier;
-        private uint turns;
 
-        public StatusPsynergy(string statToBuff, double multiplier, uint turns, string name, string emote, Target targetType, uint range, List<EffectImage> effectImages, Element element, uint PPCost) : base(name, emote, targetType, range, effectImages, element, PPCost)
+        public StatusPsynergy(string name, string emote, Target targetType, uint range, List<EffectImage> effectImages, Element element, uint PPCost) : base(name, emote, targetType, range, effectImages, element, PPCost)
         {
-            this.statToBuff = statToBuff;
-            this.multiplier = multiplier;
-            this.turns = turns;
         }
 
         public override object Clone()
@@ -36,7 +30,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
             foreach (var t in targets)
             {
-                effects.ForEach(e => e.Apply(User, t));
+                effects.ForEach(e => log.AddRange(e.Apply(User, t)));
             }
 
             return log;
