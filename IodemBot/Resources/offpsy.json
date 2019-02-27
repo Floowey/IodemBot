@@ -225,7 +225,7 @@
     "name": "Nettle",
 	"targetType": 4,
 	"emote":"<:Nettle:536958600078426122>",
-	"range": 2,
+	"range": 3,
     "element": 0,
 	"PPCost": 23,
 	"power": 140
@@ -1305,48 +1305,48 @@
 	"PPCost": 0,
 	"addDamage": 50
 	},
-  "Oil Drop" {
-    "name": "Oil Drop"
+  "Oil Drop": {
+    "name": "Oil Drop",
 	"targetType": 4,
-	"emote":"<:Oil_Drop:548636061144711178>"
-	"range": 3
-    "element": 1
+	"emote":"<:Oil_Drop:548636061144711178>",
+	"range": 3,
+    "element": 1,
 	"PPCost": 1,
 	"power": 80
   },
-  "Bramble Seed" {
-    "name": "Bramble Seed"
+  "Bramble Seed": {
+    "name": "Bramble Seed":
 	"targetType": 4,
-	"emote":"<:Bramble_Seed:548673643690065930>"
-	"range": 5
-    "element": 0
+	"emote":"<:Bramble_Seed:548673643690065930>",
+	"range": 5,
+    "element": 0,
 	"PPCost": 1,
 	"power": 110
   },
-  "Slice" {
-    "name": "Slice"
+  "Slice": {
+    "name": "Slice",
 	"targetType": 3,
-	"emote":"<:angry1:490015817908355072>"
-	"range": 1
-    "element": 4
+	"emote":"<:angry1:490015817908355072>",
+	"range": 1,
+    "element": 4,
 	"PPCost": 0,
 	"dmgMult": 2
   },
-   "Crusher Grip" {
-    "name": "Crusher Grip"
+   "Crusher Grip": {
+    "name": "Crusher Grip",
 	"targetType": 3,
-	"emote":"<:angry1:490015817908355072>"
-	"range": 1
-    "element": 0
+	"emote":"<:angry1:490015817908355072>",
+	"range": 1,
+    "element": 0,
 	"PPCost": 0,
 	"dmgMult": 1.3
   },
-   "Mighty Press" {
-    "name": "Mighty Press"
+   "Mighty Press": {
+    "name": "Mighty Press",
 	"targetType": 3,
-	"emote":"<:angry1:490015817908355072>"
-	"range": 1
-    "element": 0
+	"emote":"<:angry1:490015817908355072>",
+	"range": 1,
+    "element": 0,
 	"PPCost": 0,
 	"addDamage": 50
   },

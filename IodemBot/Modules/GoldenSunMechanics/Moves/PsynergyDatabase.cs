@@ -17,6 +17,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         static PsynergyDatabase()
         {
+            try
+            {
             string json = File.ReadAllText("Resources/offpsy.json");
             offpsy = JsonConvert.DeserializeObject<Dictionary<string, OffensivePsynergy>>(json);
 
@@ -29,6 +31,13 @@ namespace IodemBot.Modules.GoldenSunMechanics
             otherPsynergy.Add("Revive", new Revive());
             otherPsynergy.Add("Phoenix", new Phoenix());
             otherPsynergy.Add("Break", new Break());
+
+            } catch (Exception e)
+            {
+                //Just for debugging.
+                Console.WriteLine(e.ToString());
+            }
+
         }
 
         public static Psynergy GetPsynergy(string psynergy)
