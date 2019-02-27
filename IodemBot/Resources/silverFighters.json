@@ -346,7 +346,8 @@
       "movepool": [
 		"Cure Well",
 		"Mad Growth",
-		"Punji Strike"
+		"Punji Strike",
+	        "Clay Spire"
 	  ],
       "stats": {
         "maxHP": 340,
@@ -657,11 +658,12 @@
       "name": "Virago",
       "imgurl": "https://vignette.wikia.nocookie.net/goldensun/images/3/31/Hobgoblin.png/revision/latest?cb=20071212184432",
       "movepool": [
-		"Tornado"
+		"Tornado",
+	      "Sonic Slash"
 	  ],
       "stats": {
-        "maxHP": 185,
-        "maxPP": 34,
+        "maxHP": 550,
+        "maxPP": 80,
         "Atk": 199,
         "Def": 47,
         "Spd": 89
@@ -685,7 +687,7 @@
 		"Crystal Powder",
 	  ],
       "stats": {
-        "maxHP": 650,
+        "maxHP": 1000,
         "maxPP": 80,
         "Atk": 203,
         "Def": 54,
@@ -706,11 +708,12 @@
       "name": "Virago",
       "imgurl": "",
       "movepool": [
-		"Tornado"
+		"Tornado",
+	      "Sonic Slash"
 	  ],
       "stats": {
-        "maxHP": 185,
-        "maxPP": 34,
+        "maxHP": 550,
+        "maxPP": 80,
         "Atk": 199,
         "Def": 47,
         "Spd": 89
@@ -955,11 +958,11 @@
 		"Crystal Powder"
 	  ],
       "stats": {
-        "maxHP": 500,
+        "maxHP": 1000,
         "maxPP": 160,
-        "Atk": 150,
-        "Def": 28,
-        "Spd": 80
+        "Atk": 200,
+        "Def": 60,
+        "Spd": 100
       },
       "elstats": {
         "VenusAtk": 100,
@@ -983,11 +986,11 @@
 		"Bramble Seed"
 	  ],
       "stats": {
-        "maxHP": 1000,
+        "maxHP": 1500,
         "maxPP": 160,
         "Atk": 274,
-        "Def": 54,
-        "Spd": 84
+        "Def": 80,
+        "Spd": 150
       },
       "elstats": {
         "VenusAtk": 100,
