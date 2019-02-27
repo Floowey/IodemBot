@@ -10,9 +10,6 @@ namespace IodemBot.Modules.GoldenSunMechanics
 {
     class StatusPsynergy : Psynergy
     {
-        private string statToBuff;
-        private double multiplier;
-        private uint turns;
 
         public StatusPsynergy(string name, string emote, Target targetType, uint range, List<EffectImage> effectImages, Element element, uint PPCost) : base(name, emote, targetType, range, effectImages, element, PPCost)
         {

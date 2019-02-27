@@ -11,7 +11,7 @@
 	    "id": "Stat",
 	    "args": ["Attack", 1.5]
 	  }
-	],
+	]
   },
   "High Impact": {
 	"name": "High Impact",
@@ -25,7 +25,7 @@
 	    "id": "Stat",
 	    "args": ["Attack", 1.2]
 	  }
-	],
+	]
   },
   "Demon Spear": {
 	"name": "Demon Spear",
@@ -39,7 +39,7 @@
 	    "id": "Stat",
 	    "args": ["Attack", 1.5]
 	  }
-	],
+	]
   },
   "Angel Spear": {
 	"name": "Angel Spear",
@@ -53,7 +53,7 @@
 	    "id": "Stat",
 	    "args": ["Attack", 1.2]
 	  }
-	],
+	]
   },
   "Guard": {
 	"name": "Guard",
@@ -67,7 +67,7 @@
 	    "id": "Stat",
 	    "args": ["Defense", 1.5]
 	  }
-	],
+	]
   },
   "Protect": {
 	"name": "Protect",
@@ -81,7 +81,7 @@
 	    "id": "Stat",
 	    "args": ["Defense", 1.2]
 	  }
-	],
+	]
   },
   "Ward": {
 	"name": "Ward",
@@ -95,7 +95,7 @@
 	    "id": "Stat",
 	    "args": ["Resistance", 1.5]
 	  }
-	],
+	]
   },
   "Resist": {
 	"name": "Resist",
@@ -109,7 +109,7 @@
 	    "id": "Stat",
 	    "args": ["Resistance", 1.2]
 	  }
-	],
+	]
   },
   "Magic Shell": {
 	"name": "Magic Shell",
@@ -123,7 +123,7 @@
 	    "id": "Stat",
 	    "args": ["Resistance", 1.5]
 	  }
-	],
+	]
   },
   "Magic Shield": {
 	"name": "Magic Shield",
@@ -137,7 +137,7 @@
 	    "id": "Stat",
 	    "args": ["Resistance", 1.2]
 	  }
-	],
+	]
   },
   "Impair": {
 	"name": "Impair",
@@ -151,7 +151,7 @@
 	    "id": "Stat",
 	    "args": ["Defense", 0.6]
 	  }
-	],
+	]
   },
   "Debilitate": {
 	"name": "Debilitate",
@@ -165,7 +165,7 @@
 	    "id": "Stat",
 	    "args": ["Defense", 0.8]
 	  }
-	],
+	]
   },
   "Weapon Grace": {
 	"name": "Weapon Grace",
@@ -177,9 +177,9 @@
 	"effectImages": [
 	  {
 	    "id": "Stat",
-	    "args": ["Attack", 2]
+	    "args": ["Attack", 2.0]
 	  }
-	],
+	]
   },
   "Berserk": {
 	"name": "Berserk",
@@ -193,7 +193,7 @@
 	    "id": "Stat",
 	    "args": ["Attack", 1.5]
 	  }
-	],
+	]
   },
   "Heartrender": {
 	"name": "Heartrender",
@@ -207,7 +207,7 @@
 	    "id": "Stat",
 	    "args": ["Attack", 0.75]
 	  }
-	],
+	]
   },
   "Enfeeble": {
 	"name": "Enfeeble",
@@ -221,7 +221,7 @@
 	    "id": "Stat",
 	    "args": ["Resistance", 0.8]
 	  }
-	],
+	]
   },
   "Heartbreaker": {
 	"name": "Heartbreaker",
@@ -235,6 +235,6 @@
 	    "id": "Stat",
 	    "args": ["Attack", 0.8]
 	  }
-	],
+	]
   },
 }
