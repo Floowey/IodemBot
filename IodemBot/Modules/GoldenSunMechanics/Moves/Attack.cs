@@ -43,7 +43,6 @@ namespace IodemBot.Modules.GoldenSunMechanics
             
             var atk = User.stats.Atk * User.MultiplyBuffs("Attack");
             var def = enemy.stats.Def * enemy.MultiplyBuffs("Defense");
-            Console.WriteLine(User.MultiplyBuffs("Attack"));
             uint damage = 1;
             if (def < atk)
             {
