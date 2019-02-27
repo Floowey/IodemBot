@@ -14,7 +14,7 @@ namespace IodemBot.Modules.GoldenSunMechanics.Effects
         {
             List<string> log = new List<string>();
             bool wasDead = !Target.IsAlive();
-            log.AddRange(Target.revive(75));
+            log.AddRange(Target.Revive(75));
             if (wasDead)
             {
                 if (User is PlayerFighter) ((PlayerFighter)User).avatar.revived();

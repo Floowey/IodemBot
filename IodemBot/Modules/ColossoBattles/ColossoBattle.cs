@@ -118,7 +118,7 @@ namespace IodemBot.Modules.ColossoBattles
                 player.enemies = Team.A;
                 sizeTeamB++;
             }
-            player.revive(100);
+            player.Revive(100);
             player.RemoveAllConditions();
             player.stats.HP = player.stats.maxHP;
             player.stats.PP = player.stats.maxPP;

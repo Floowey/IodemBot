@@ -20,7 +20,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             var targetTeam = User.battle.getTeam(User.party);
             var target = targetTeam[targetNr];
             bool wasDead = !target.IsAlive();
-            log.AddRange(target.revive(75));
+            log.AddRange(target.Revive(75));
             if (wasDead)
             {
                 if (User is PlayerFighter) ((PlayerFighter)User).avatar.revived();

@@ -21,6 +21,8 @@ namespace IodemBot.Modules.ColossoBattles
         public Stats stats;
         public ElementalStats elstats;
         public Move[] moves;
+        public bool isImmuneToEffects;
+        public bool isImmunteToPsynergy;
         [JsonIgnore] private Random rnd = Global.random;
         [JsonIgnore] private readonly List<Condition> Conditions = new List<Condition>();
 
@@ -60,13 +62,18 @@ namespace IodemBot.Modules.ColossoBattles
             AddCondition(Condition.Down);
         }
 
-        public virtual List<string> dealDamage(uint damage, string punctuation = "!")
+        public virtual List<string> DealDamage(uint damage, string punctuation = "!")
         {
             var log = new List<string>
             {
                 $"{name} takes {damage} damage{punctuation}"
             };
-            if (damage < stats.HP)
+            if (!IsAlive())
+            {
+                log.Add("Someone tried to damage the dead. This shouldn't have happened... Please use i!bug and name the action that was performed");
+                return log;
+            }
+            if (stats.HP > damage)
             {
                 stats.HP -= damage;
             }
@@ -76,7 +83,6 @@ namespace IodemBot.Modules.ColossoBattles
                 log.Add($":x: {name} goes down.");
                 AddCondition(Condition.Down);
             }
-            offensiveMult = 1;
             return log;
         }
 
@@ -110,25 +116,25 @@ namespace IodemBot.Modules.ColossoBattles
         public List<string> heal(uint healHP)
         {
             List<string> log = new List<string>();
-            if (stats.HP > 0)
-            {
-                stats.HP = Math.Min(stats.HP + healHP, stats.maxHP);
-                if (stats.HP == stats.maxHP)
-                {
-                    log.Add($"{name}'s HP was fully restored!");
-                }
-                else
-                {
-                    log.Add($"{name} recovers {healHP} HP!");
-                }
-            } else
+            if (!IsAlive())
             {
                 log.Add($"{name} is unaffected");
+                return log;
+            }
+            
+            stats.HP = Math.Min(stats.HP + healHP, stats.maxHP);
+            if (stats.HP == stats.maxHP)
+            {
+                log.Add($"{name}'s HP was fully restored!");
+            }
+            else
+            {
+                log.Add($"{name} recovers {healHP} HP!");
             }
             return log;
             
         }
-        public List<string> revive(uint percentage)
+        public List<string> Revive(uint percentage)
         {
             List<string> log = new List<string>();
             if (!IsAlive())
@@ -157,7 +163,6 @@ namespace IodemBot.Modules.ColossoBattles
         }
 
         public virtual void StartTurn() {
-            //Change to Moves with Priority
             if (selected.hasPriority)
             {
                 var a = selected.Use(this);
