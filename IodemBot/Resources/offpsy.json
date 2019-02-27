@@ -1315,7 +1315,7 @@
 	"power": 80
   },
   "Bramble Seed": {
-    "name": "Bramble Seed":
+    "name": "Bramble Seed",
 	"targetType": 4,
 	"emote":"<:Bramble_Seed:548673643690065930>",
 	"range": 5,

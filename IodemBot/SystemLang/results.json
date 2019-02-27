@@ -1,0 +1,114 @@
+[
+  {
+    "text": "{0}'s weapon unleashes and beats {1} with a devastating blow.",
+    "isWin": true
+  },
+  {
+    "text": "The {1} manages to sneak attack {0}!",
+    "isWin": false
+  },
+  {
+    "text": "{0} is paralyzed by fear and {1} takes the opportunity to hit.",
+    "isWin": false
+  },
+  {
+    "text": "{0} avoids the {1}'s attack and strikes back!",
+    "isWin": true
+  },
+  {
+    "text": "{0} forgot to heal and falls under the {1}'s assaults.",
+    "isWin": false
+  },
+  {
+    "text": "{0} unleashes a Djinn on {1}, eliminating it!",
+    "isWin": true
+  },
+  {
+    "text": "{1} lands a critical hit on {0}!",
+    "isWin": false
+  },
+  {
+    "text": "{0} calls a Summon, obliterating the {1}!",
+    "isWin": true
+  },
+  {
+    "text": "{1} makes a cute face and {0} is fooled by the feint.",
+    "isWin": false
+  },
+  {
+    "text": "{1} perceives {0}'s power and flees as fast as possible.",
+    "isWin": true
+  },
+  {
+    "text": "{0} brutally slays {1}.",
+    "isWin": true
+  },
+  {
+    "text": "Babi fainted during the race. The battle will be delayed. {0} and {1} leave the battle field.",
+    "isWin": false
+  },
+  {
+    "text": "{1} has too many nuts. {0} faints.",
+    "isWin": false
+  },
+  {
+    "text": "{0} thinks his weapon is about to unleash. It's just a Broadsword, silly. {1} takes advantage of the situation and hits devastating blow.",
+    "isWin": false
+  },
+  {
+    "text": "{0}'s cotton shirt is too large and can hardly move when {1} attacks.",
+    "isWin": false
+  },
+  {
+    "text": "{0} is in a no-psynergy run, fights hard and {1} is down. Babi wanted to see {0}'s powers though, so gives {0} a loss.",
+    "isWin": false
+  },
+  {
+    "text": "{1} is actually Alex in disguise. {0} loses.",
+    "isWin": false
+  },
+  {
+    "text": "{0} carries Djinn Tonic and is too drunk to fight. {0} pukes on {1} for good measure.",
+    "isWin": false
+  },
+  {
+    "text": "{1} uses Oil Drop and sets off {0}'s Cotton Shirt. {0} burns to a crisp.",
+    "isWin": false
+  },
+  {
+    "text": "{0} charges {1}, but falls into a pit and bangs their elbow. Humiliated, {0} leaves the battlefield.",
+    "isWin": false
+  },
+  {
+    "text": "{1} falls into the water and {0} wins!",
+    "isWin": true
+  },
+  {
+    "text": "{0} falls into the water and {1} wins!",
+    "isWin": false
+  },
+  {
+    "text": "{1} puts {0} asleep. {0} loses.",
+    "isWin": false
+  },
+  {
+    "text": "{0}'s weapon let's out a howl! {1} goes down.",
+    "isWin": true
+  },
+  {
+    "text": "{0} defends over and over again, while {1} attacks. No, {0}, Defense is *not* the best offense.",
+    "isWin": false
+  },
+  {
+    "text": "With a beautiful parade {0} dodges an attack and strikes {1}'s weak spot.",
+    "isWin": true
+  },
+  {
+    "text": "{1} gets hold of {0}'s weapon and deals the final blow.",
+    "isWin": false
+  },
+  {
+    "text": "{0} somehow manages to bribe  the monster tamer into facing the weakest {1}.",
+    "isWin": true
+  }
+]
