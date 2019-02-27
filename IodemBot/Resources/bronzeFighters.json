@@ -735,11 +735,11 @@
 		"Oil Drop"
 	  ],
       "stats": {
-        "maxHP": 200,
+        "maxHP": 500,
         "maxPP": 160,
-        "Atk": 60,
-        "Def": 20,
-        "Spd": 40
+        "Atk": 90,
+        "Def": 30,
+        "Spd": 50
       },
       "elstats": {
         "VenusAtk": 100,
@@ -760,9 +760,9 @@
       "movepool": [
 	  ],
       "stats": {
-        "maxHP": 110,
+        "maxHP": 200,
         "maxPP": 34,
-        "Atk": 42,
+        "Atk": 40,
         "Def": 5,
         "Spd": 9
       },
@@ -784,9 +784,9 @@
 		"Slice"
 	  ],
       "stats": {
-        "maxHP": 244,
+        "maxHP": 300,
         "maxPP": 52,
-        "Atk": 46,
+        "Atk": 60,
         "Def": 8,
         "Spd": 20
       },
@@ -808,7 +808,7 @@
 		
 	  ],
       "stats": {
-        "maxHP": 110,
+        "maxHP": 200,
         "maxPP": 34,
         "Atk": 42,
         "Def": 5,
@@ -834,7 +834,7 @@
 	  "Bear Claw"
 	  ],
       "stats": {
-        "maxHP": 109,
+        "maxHP": 200,
         "maxPP": 34,
         "Atk": 99,
         "Def": 27,
@@ -858,7 +858,7 @@
 	  "Bear Claw"
 	  ],
       "stats": {
-        "maxHP": 109,
+        "maxHP": 200,
         "maxPP": 34,
         "Atk": 99,
         "Def": 27,
@@ -882,7 +882,7 @@
 	  "Bear Claw"
 	  ],
       "stats": {
-        "maxHP": 109,
+        "maxHP": 200,
         "maxPP": 34,
         "Atk": 99,
         "Def": 27,
