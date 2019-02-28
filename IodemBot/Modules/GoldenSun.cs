@@ -149,6 +149,7 @@ namespace IodemBot.Modules
             }
 
             embed.AddField("Images", s, true);
+            s = "none";
 
             if (psy.effects != null)
                 s = string.Join(",", psy.effects.Select(e => $"{e.ToString()}"));

@@ -131,6 +131,11 @@ namespace IodemBot.Modules.GoldenSunMechanics
             return targets;
         }
 
+        public override string ToString()
+        {
+            return name;
+        }
+
         public abstract object Clone();
     }
 }

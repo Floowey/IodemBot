@@ -33,7 +33,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 case 4: bool.TryParse(args[3], out OnTarget); goto case 3;
                 case 3: int.TryParse(args[2], out probability); goto case 2;
                 case 2:
-                    double.TryParse("0.8", NumberStyles.Number, new CultureInfo("en-GB"), out Multiplier);
+                    double.TryParse(args[1], NumberStyles.Number, new CultureInfo("en-GB"), out Multiplier);
 
                     StatToBoost = args[0];
                     break;
@@ -51,7 +51,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public override string ToString()
         {
-            return $"{StatToBoost}, {probability}";
+            return $"{StatToBoost}, {Multiplier}";
         }
 
         public override List<string> Apply(ColossoFighter User, ColossoFighter Target)

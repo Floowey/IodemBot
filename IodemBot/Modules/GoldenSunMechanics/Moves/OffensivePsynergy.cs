@@ -85,8 +85,6 @@ namespace IodemBot.Modules.GoldenSunMechanics
                             ((PlayerFighter)User).avatar.killedByHand();
                 }
 
-                //Effects that trigger after damage
-
                 //Counter
                 ii++;
             }
