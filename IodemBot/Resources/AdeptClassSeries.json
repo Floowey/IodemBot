@@ -40,7 +40,7 @@
         "movepool": [
           "Quake",
           "Cure"
-        ],
+        ], 	
         "statMultipliers": {
           "maxHP": 110,
           "maxPP": 80,
@@ -911,7 +911,6 @@
         "name": "Aqua Squire",
         "movepool": [
           "Douse",
-          "Cool",
 		  "Ply"
         ],
         "statMultipliers": {
@@ -927,7 +926,7 @@
         "movepool": [
           "Diamond Dust",
 		  "Drench",
-          "Super Cool",
+          "Break",
 		  "Ply"
         ],
         "statMultipliers": {
@@ -943,7 +942,7 @@
 		"movepool": [
 		  "Diamond Dust",
 		  "Deluge",
-		  "Super Cool",
+		  "Break",
 		  "Ply Well"
 		],
 		"statMultipliers": {
@@ -959,7 +958,7 @@
 		"movepool": [
 		  "Diamond Berg",
 		  "Deluge",
-		  "Super Cool",
+		  "Break",
 		  "Pure Ply"
 		],
 		"statMultipliers": {
@@ -975,7 +974,7 @@
 		"movepool": [
 		  "Diamond Berg",
 		  "Deluge",
-		  "Megacool",
+		  "Break",
 		  "Pure Ply"
 		],
 		"statMultipliers": {

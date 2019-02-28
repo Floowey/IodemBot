@@ -35,11 +35,7 @@
 	"effectImages": [
 	  {
 	    "id": "ChanceToOHKO",
-		"args": ["10"]
-	  },
-	  {
-	    "id": "Stat",
-	    "args": ["Attack", "0.1", "20", "false", "2"]
+		"args": ["5"]
 	  }
 	],
 	"PPCost": 8,
@@ -54,7 +50,7 @@
 	"effectImages": [
 	  {
 	    "id": "ChanceToOHKO",
-		"args": [80]
+		"args": ["10"]
 	  }
 	],
 	"PPCost": 18,
@@ -183,6 +179,12 @@
 	"emote":"<:curse:538074679492083742>",
 	"range": 3,
     "element": 0,
+	"effectImages":[
+	{"id": "Condition",
+	"args": ["Poison", "60"]},
+	{"id": "Condition",
+	"args": ["Venom", "10"]}
+	],
 	"PPCost": 23,
 	"power": 125
   },
@@ -639,8 +641,8 @@
 	"PPCost": 31,
 	"power": 150
   },
-  "Planet Driver": {
-    "name": "Planet Driver",
+  "Planet Diver": {
+    "name": "Planet Diver",
 	"targetType": 3,
 	"emote":"<:Planet_Diver:536963450665041941>",
 	"range": 1,

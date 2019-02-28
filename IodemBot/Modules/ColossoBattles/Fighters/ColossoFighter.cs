@@ -59,6 +59,7 @@ namespace IodemBot.Modules.ColossoBattles
         public void Kill()
         {
             stats.HP = 0;
+            RemoveAllConditions();
             AddCondition(Condition.Down);
         }
 
@@ -81,6 +82,7 @@ namespace IodemBot.Modules.ColossoBattles
             {
                 stats.HP = 0;
                 log.Add($":x: {name} goes down.");
+                RemoveAllConditions();
                 AddCondition(Condition.Down);
             }
             return log;
@@ -90,6 +92,9 @@ namespace IodemBot.Modules.ColossoBattles
         {
             if (!Conditions.Contains(con))
             {
+                if (con == Condition.Venom && HasCondition(Condition.Poison))
+                    RemoveCondition(Condition.Poison);
+
                 Conditions.Add(con);
             }
         }
@@ -162,11 +167,14 @@ namespace IodemBot.Modules.ColossoBattles
             return mult;
         }
 
-        public virtual void StartTurn() {
+        public virtual List<string> StartTurn() {
+            List<string> turnLog = new List<string>();
             if (selected.hasPriority)
             {
-                var a = selected.Use(this);
+                turnLog.AddRange(selected.Use(this));
             }
+
+            return turnLog;
         }
 
         public List<string> MainTurn()
@@ -190,7 +198,7 @@ namespace IodemBot.Modules.ColossoBattles
             return turnLog;
         }
 
-        public virtual void EndTurn() {
+        public virtual List<string> EndTurn() {
             List<string> turnLog = new List<string>();
 
             var newBuffs = new List<Buff>();
@@ -239,12 +247,14 @@ namespace IodemBot.Modules.ColossoBattles
             //Poison Damage
             if (HasCondition(Condition.Poison))
             {
-                var damage = (uint)(stats.HP * Global.random.Next(5, 10) / 100);
+                var damage = (uint)(stats.maxHP * Global.random.Next(5, 10) / 100);
+                turnLog.Add($"{name} is damaged by the Poison.");
                 turnLog.AddRange(DealDamage(damage));
             }
             if (HasCondition(Condition.Venom))
             {
-                var damage = (uint)(stats.HP * Global.random.Next(10, 20) / 100);
+                var damage = (uint)(stats.maxHP * Global.random.Next(10, 20) / 100);
+                turnLog.Add($"{name} is damaged by the Venom.");
                 turnLog.AddRange(DealDamage(damage));
             }
 
@@ -257,6 +267,7 @@ namespace IodemBot.Modules.ColossoBattles
                 selected = new Nothing();
                 hasSelected = true;
             }
+            return turnLog;
         }
         public string ConditionsToString()
         {
