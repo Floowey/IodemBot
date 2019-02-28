@@ -81,7 +81,7 @@ namespace IodemBot.Modules
             string enemy = enemies[Global.random.Next(0, enemies.Count)];
             Result result = results[Global.random.Next(0, results.Count)];
             return new Matchup(enemy, result);
-        }
+        }   
 
         private static string getTitle(SocketUser user, string enemy)
         {

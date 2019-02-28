@@ -9,7 +9,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 {
     public class CounterEffect : IEffect
     {
-        public CounterEffect(params object[] args)
+        public CounterEffect()
         {
         }
 

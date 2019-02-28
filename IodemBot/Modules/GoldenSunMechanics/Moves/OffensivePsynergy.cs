@@ -53,6 +53,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                     .ForEach(e => log.AddRange(e.Apply(User, t)));
 
                 if (!t.IsAlive()) continue;
+                if (t.isImmuneToPsynergy) log.Add($"{t.name} protects themselves with a magical barrier.");
 
                 var baseDmg = (new Random()).Next(0, 4);
                 var dmg = attackBased ? 
@@ -83,8 +84,6 @@ namespace IodemBot.Modules.GoldenSunMechanics
                         if (attackBased && range == 1)
                             ((PlayerFighter)User).avatar.killedByHand();
                 }
-
-                //Effects that trigger after damage
 
                 //Counter
                 ii++;

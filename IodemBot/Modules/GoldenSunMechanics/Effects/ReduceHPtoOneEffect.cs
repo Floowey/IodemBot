@@ -5,18 +5,29 @@ using System.Text;
 using System.Threading.Tasks;
 using IodemBot.Modules.ColossoBattles;
 
-namespace IodemBot.Modules.GoldenSunMechanics.Effects
+namespace IodemBot.Modules.GoldenSunMechanics
 {
-    class ReduceHPtoOneEffect : IEffect
+    public class ReduceHPtoOneEffect : IEffect
     {
-        int probability;
+        private int probability = 10;
+
+        public ReduceHPtoOneEffect(string[] args)
+        {
+            if (args.Length == 1)
+            {
+                int.TryParse(args[0], out probability);
+            }
+        }
+
         public override List<string> Apply(ColossoFighter User, ColossoFighter Target)
         {
+            var log = new List<string>();
+            if (Target.isImmuneToEffects) return log;
             if (Target.IsAlive())
             {
                 if (Global.random.Next(1, 100) <= probability) Target.stats.HP = 1;
             }
-            return new List<string>();
+            return log;
         }
     }
 }

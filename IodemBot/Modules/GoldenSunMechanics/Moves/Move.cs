@@ -31,6 +31,10 @@ namespace IodemBot.Modules.GoldenSunMechanics
             log.AddRange(InternalUse(User));
 
             //Haunt Damage
+            if (User.HasCondition(Condition.Haunt))
+            {
+                log.AddRange(User.DealDamage((uint)(User.stats.HP * Global.random.Next(20, 40) / 100)));
+            }
 
             return log;
         }
@@ -88,6 +92,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             this.targetType = targetType;
             this.range = range;
             this.effects = new List<IEffect>();
+            this.effectImages = effectImages;
             if(effectImages != null)
                 effectImages.ForEach(e => effects.Add(IEffect.EffectFactory(e.id, e.args)));
         }
@@ -124,6 +129,11 @@ namespace IodemBot.Modules.GoldenSunMechanics
                     break;
             }
             return targets;
+        }
+
+        public override string ToString()
+        {
+            return name;
         }
 
         public abstract object Clone();

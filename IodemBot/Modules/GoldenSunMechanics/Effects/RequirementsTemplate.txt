@@ -1,0 +1,49 @@
+﻿"EffectImages": [
+//Break Effect
+{"id":"Break"},
+
+//x% Chance To OHKO
+{"id":"ChanceToOHKO"
+"args":[2]},
+
+//x% Chance to apply Poison, Venom, Stun, Haunt, Flinch, DeathCurse, Delusion, Seal
+{"id":"Condition",
+"args":["Poison/Stun/etc", 10]},
+
+//Counter. Note: Psynergy should have "isPriority": true
+{"id":"Counter},
+
+//y% chance to ignore x% of defense
+{"id":"MayIgnoreDefense"
+"args":[50, 20]}
+
+//y1% chance to deal x1 times damage, y2% chance deal x2 times damage, etc
+{"id": "MultiplyDamage",
+"args": [[1.5, 2.0], [30, 20]]}
+
+//x% chance to reduce HP to 1
+{"id": "ReduceHPtoOne",
+"args": [10]}
+
+//Restore, includes Poison Cure
+{"id": "Restore"}
+
+//Revive x% of HP
+{"id": "Revive",
+"args":[75]}
+
+//Guaranteed Attack boost on Target for five turns
+{"id": "Stat"
+"args":["Attack", 2.0, 100, false, 5]}
+//can be shortened as:
+{"id": "Stat",
+"args:["Attack", 2.0]}
+
+//20% Chance to reduce Resistace on User for one turn
+{"id": "Stat"
+"args":["Resistance", 0.5, 20, false, 1]}
+
+//UserDies
+{"id": "UserDies"}
+
+]

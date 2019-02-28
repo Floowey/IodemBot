@@ -17,9 +17,9 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public override object Clone()
         {
-            //var serialized = JsonConvert.SerializeObject(this);
-            //return JsonConvert.DeserializeObject<StatusPsynergy>(serialized);
-            return MemberwiseClone();
+            var serialized = JsonConvert.SerializeObject(this);
+            return JsonConvert.DeserializeObject<StatusPsynergy>(serialized);
+            //return MemberwiseClone();
         }
 
         protected override List<string> InternalUse(ColossoFighter User)
@@ -35,5 +35,6 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
             return log;
         }
+
     }
 }

@@ -32,6 +32,12 @@
 	"emote": "<:Skull_Splitter:536959343153774652>",
 	"range": 1,
     "element": 0,
+	"effectImages": [
+	  {
+	    "id": "ChanceToOHKO",
+		"args": ["5"]
+	  }
+	],
 	"PPCost": 8,
     "addDamage": 30
   },
@@ -41,6 +47,12 @@
 	"emote": "<:Annihalation:536959197288464393>",
 	"range": 1,
     "element": 0,
+	"effectImages": [
+	  {
+	    "id": "ChanceToOHKO",
+		"args": ["10"]
+	  }
+	],
 	"PPCost": 18,
     "dmgMult": 1.5
   },
@@ -107,6 +119,33 @@
 	"PPCost": 19,
 	"power": 110
   },
+  "Punji": {
+    "name": "Punji",
+	"targetType": 4,
+	"emote":"<:Punji:536958777413337088>",
+	"range": 3,
+    "element": 0,
+	"PPCost": 7,
+	"power": 45
+  },
+  "Punji Trap": {
+    "name": "Punji Trap",
+	"targetType": 4,
+	"emote":"<:Punji_Trap:536958822841843722>",
+	"range": 3,
+    "element": 0,
+	"PPCost": 13,
+	"power": 85
+  },
+  "Punji Strike": {
+    "name": "Punji Strike",
+	"targetType": 4,
+	"emote":"<:Punji_Strike:536958839434641408>",
+	"range": 5,
+    "element": 0,
+	"PPCost": 24,
+	"power": 150
+  },
   "Spire": {
     "name": "Spire",
 	"targetType": 3,
@@ -140,6 +179,12 @@
 	"emote":"<:curse:538074679492083742>",
 	"range": 3,
     "element": 0,
+	"effectImages":[
+	{"id": "Condition",
+	"args": ["Poison", "60"]},
+	{"id": "Condition",
+	"args": ["Venom", "10"]}
+	],
 	"PPCost": 23,
 	"power": 125
   },
@@ -596,8 +641,8 @@
 	"PPCost": 31,
 	"power": 150
   },
-  "Planet Driver": {
-    "name": "Planet Driver",
+  "Planet Diver": {
+    "name": "Planet Diver",
 	"targetType": 3,
 	"emote":"<:Planet_Diver:536963450665041941>",
 	"range": 1,
@@ -1137,37 +1182,10 @@
 	"PPCost": 0,
 	"addDamage": 35
   },
-  "Punji": {
-    "name": "Punji",
-	"targetType": 4,
-	"emote":"<:Punji:536958777413337088>",
-	"range": 3,
-    "element": 0,
-	"PPCost": 7,
-	"power": 45
-  },
-  "Punji Trap": {
-    "name": "Punji Trap",
-	"targetType": 4,
-	"emote":"<:Punji_Trap:536958822841843722>",
-	"range": 3,
-    "element": 0,
-	"PPCost": 13,
-	"power": 85
-  },
-  "Punji Strike": {
-    "name": "Punji Strike",
-	"targetType": 4,
-	"emote":"<:Punji_Strike:536958839434641408>",
-	"range": 5,
-    "element": 0,
-	"PPCost": 24,
-	"power": 150
-  },
   "Crystal Powder": {
     "name": "Crystal Powder",
 	"targetType": 4,
-	"emote":"<:Crystal_Powder:54863606094770996>",
+	"emote":"<:Crystal_Powder:548636060947709965>",
 	"range": 5,
     "element": 3,
 	"PPCost": 1,
@@ -1257,7 +1275,7 @@
   "Mad Dash": {
     "name": "Mad Dash",
 	"targetType": 3,
-	"emote":"<:angry1:490015817908355072>",
+	"emote":"<:Rampage:537766290031509524>",
 	"range": 1,
     "element": 0,
 	"PPCost": 0,
@@ -1320,7 +1338,7 @@
   "Slice": {
     "name": "Slice",
 	"targetType": 3,
-	"emote":"<:angry1:490015817908355072>",
+	"emote":"<:Rampage:537766290031509524>",
 	"range": 1,
     "element": 4,
 	"PPCost": 0,
@@ -1329,7 +1347,7 @@
    "Crusher Grip": {
     "name": "Crusher Grip",
 	"targetType": 3,
-	"emote":"<:angry1:490015817908355072>",
+	"emote":"<:Rampage:537766290031509524>",
 	"range": 1,
     "element": 0,
 	"PPCost": 0,
@@ -1338,7 +1356,7 @@
    "Mighty Press": {
     "name": "Mighty Press",
 	"targetType": 3,
-	"emote":"<:angry1:490015817908355072>",
+	"emote":"<:Rampage:537766290031509524>",
 	"range": 1,
     "element": 0,
 	"PPCost": 0,
