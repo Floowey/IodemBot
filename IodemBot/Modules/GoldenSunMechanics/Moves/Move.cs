@@ -92,6 +92,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             this.targetType = targetType;
             this.range = range;
             this.effects = new List<IEffect>();
+            this.effectImages = effectImages;
             if(effectImages != null)
                 effectImages.ForEach(e => effects.Add(IEffect.EffectFactory(e.id, e.args)));
         }

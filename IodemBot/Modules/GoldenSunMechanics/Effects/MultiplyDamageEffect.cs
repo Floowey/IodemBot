@@ -23,13 +23,14 @@ namespace IodemBot.Modules.GoldenSunMechanics
             return new List<string>();
         }
 
-        public MultiplyDamageEffect(object[] args)
+        public MultiplyDamageEffect(string[] args)
         {
+            //["1.5, 2.5", "20, 10"]
             timeToActivate = TimeToActivate.beforeDamge;
-            if(args.Length == 2 && args[0] is double[] && args[1] is int[])
+            if(args.Length == 2)
             {
-                multipliers = (double[])args[0];
-                probabilites = (int[])args[1];
+                multipliers = args[0].Split(',').Select(n => Convert.ToDouble(n)).ToArray();
+                probabilites = args[1].Split(',').Select(n => Convert.ToInt32(n)).ToArray();
             } else
             {
                 Console.WriteLine("Construtor for MultiplyDamage not initialized correctly. Using default Values.");

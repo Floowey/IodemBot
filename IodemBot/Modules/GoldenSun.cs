@@ -129,6 +129,34 @@ namespace IodemBot.Modules
             await Context.Channel.SendMessageAsync("", false, embed.Build());
         }
 
+        [Command("MoveInfo")]
+        public async Task moveInfo([Remainder] string name = "")
+        {
+            
+            Psynergy psy = PsynergyDatabase.GetPsynergy(name);
+            var embed = new EmbedBuilder();
+            embed.WithAuthor(psy.name);
+            embed.AddField("PP", psy.PPCost, true);
+            embed.AddField("Emote", psy.emote, true);
+            embed.AddField("Element", psy.element, true);
+            embed.AddField("Target", psy.targetType, true);
+
+            var s = "none";
+            if (psy.effectImages != null)
+            {
+                s = string.Join(", ", psy.effectImages.Select(e => $"{e.id}: {string.Join(", ", e.args)}").ToList());
+
+            }
+
+            embed.AddField("Images", s, true);
+
+            if (psy.effects != null)
+                s = string.Join(",", psy.effects.Select(e => $"{e.ToString()}"));
+
+            embed.AddField("Effects", s, true);
+            await Context.Channel.SendMessageAsync("", false, embed.Build());
+        }
+
         [Command("class")]
         [Remarks("Toggle between the classes of your element (ie 'Guard' -> 'Flame User' -> 'Pirate' -> 'Guard'")]
         [Cooldown(2)]

@@ -11,11 +11,11 @@ namespace IodemBot.Modules.GoldenSunMechanics
     {
         private int probability = 10;
 
-        public ReduceHPtoOneEffect(object[] args)
+        public ReduceHPtoOneEffect(string[] args)
         {
-            if (args.Length == 1 && args[0] is int)
+            if (args.Length == 1)
             {
-                probability = (int)args[0];
+                int.TryParse(args[0], out probability);
             }
         }
 

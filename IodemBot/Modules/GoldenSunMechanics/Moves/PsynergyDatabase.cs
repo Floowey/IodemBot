@@ -28,9 +28,9 @@ namespace IodemBot.Modules.GoldenSunMechanics
             json = File.ReadAllText("Resources/statpsy.json");
             statpsy = JsonConvert.DeserializeObject<Dictionary<string, StatusPsynergy>>(json);
 
-            otherPsynergy.Add("Revive", new Revive());
-            otherPsynergy.Add("Phoenix", new Phoenix());
-            otherPsynergy.Add("Break", new Break());
+            //otherPsynergy.Add("Revive", new Revive());
+            //otherPsynergy.Add("Phoenix", new Phoenix());
+            //otherPsynergy.Add("Break", new Break());
 
             } catch (Exception e)
             {

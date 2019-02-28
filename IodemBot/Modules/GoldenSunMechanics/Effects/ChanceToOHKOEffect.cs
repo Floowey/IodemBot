@@ -21,14 +21,12 @@ namespace IodemBot.Modules.GoldenSunMechanics
             }
             return log;
         }
-        public ChancetoOHKOEffect(object[] args)
+        public ChancetoOHKOEffect(string[] args)
         {
             timeToActivate = TimeToActivate.beforeDamge;
            
-            if (args.Length == 1 && args[0] is int)
-            {
-                this.probability = (int)args[0];
-            }
+            if (args.Length == 1)
+                int.TryParse(args[0], out probability);
         }
     }
 }

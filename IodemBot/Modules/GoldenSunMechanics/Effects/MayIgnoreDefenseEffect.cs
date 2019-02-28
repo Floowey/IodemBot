@@ -18,14 +18,14 @@ namespace IodemBot.Modules.GoldenSunMechanics
             return new List<string>();
         }
 
-        public MayIgnoreDefenseEffect(object[] args)
+        public MayIgnoreDefenseEffect(string[] args)
         {
             timeToActivate = TimeToActivate.beforeDamge;
-            if(args.Length == 2 && args[0] is int && args[1] is int)
-            {
-                ignorePercent = (int)args[0];
-                probability = (int)args[1];
+            if(args.Length == 2){
+                int.TryParse(args[0], out ignorePercent);
+                int.TryParse(args[1], out probability);
             }
+            
         }
     }
 }

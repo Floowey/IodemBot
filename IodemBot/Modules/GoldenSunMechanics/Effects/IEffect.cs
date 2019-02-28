@@ -13,7 +13,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public TimeToActivate timeToActivate = TimeToActivate.afterDamage;
 
         public abstract List<string> Apply(ColossoFighter User, ColossoFighter Target);
-        public static IEffect EffectFactory(string Identifier, params object[] args)
+        public static IEffect EffectFactory(string Identifier, params string[] args)
         {
             switch (Identifier)
             {
@@ -48,7 +48,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
     public struct EffectImage
     {
         public string id { get; set; }
-        public object[] args { get; set; }
+        public string[] args { get; set; }
     }
 
     

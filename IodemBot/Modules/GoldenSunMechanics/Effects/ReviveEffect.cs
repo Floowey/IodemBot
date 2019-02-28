@@ -11,11 +11,11 @@ namespace IodemBot.Modules.GoldenSunMechanics
     {
         private uint percentage;
 
-        public ReviveEffect(object[] args)
+        public ReviveEffect(string[] args)
         {
-            if(args.Length == 1 && args[0] is uint)
+            if(args.Length == 1)
             {
-                this.percentage = (uint)args[0];
+                uint.TryParse(args[0], out percentage);
             }
         }
 

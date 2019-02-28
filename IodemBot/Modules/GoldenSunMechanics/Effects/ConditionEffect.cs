@@ -10,21 +10,20 @@ namespace IodemBot.Modules.GoldenSunMechanics
     class ConditionEffect : IEffect
     {
         private Condition Cond;
-        private int Probability;
+        private int Probability = 10;
 
         public ConditionEffect(string stringCondition, int probability)
         {
             init(stringCondition, probability);
         }
 
-        public ConditionEffect(params object[] args)
+        public ConditionEffect(params string[] args)
         {
-            if(args.Length != 2)
+            if(args.Length == 2)
             {
-                if (args[0] is string && args[1] is int)
-                {
-                    init((string)args[0], (int)args[1]);
-                }
+                int prob = 10;
+                int.TryParse(args[1], out prob);
+                init(args[0], prob);
             } else
             {
                 throw new ArgumentException("Condition, probability");

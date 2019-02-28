@@ -9,7 +9,7 @@
 	"effectImages": [
 	  {
 	    "id": "Stat",
-	    "args": ["Attack", 1.5]
+	    "args": ["Attack", "1.5"]
 	  }
 	]
   },
@@ -23,7 +23,7 @@
 	"effectImages": [
 	  {
 	    "id": "Stat",
-	    "args": ["Attack", 1.2]
+	    "args": ["Attack", "1.2"]
 	  }
 	]
   },
@@ -37,7 +37,7 @@
 	"effectImages": [
 	  {
 	    "id": "Stat",
-	    "args": ["Attack", 1.5]
+	    "args": ["Attack", "1.5"]
 	  }
 	]
   },
@@ -51,7 +51,7 @@
 	"effectImages": [
 	  {
 	    "id": "Stat",
-	    "args": ["Attack", 1.2]
+	    "args": ["Attack", "1.2"]
 	  }
 	]
   },
@@ -65,7 +65,7 @@
 	"effectImages": [
 	  {
 	    "id": "Stat",
-	    "args": ["Defense", 1.5]
+	    "args": ["Defense", "1.5"]
 	  }
 	]
   },
@@ -79,7 +79,7 @@
 	"effectImages": [
 	  {
 	    "id": "Stat",
-	    "args": ["Defense", 1.2]
+	    "args": ["Defense", "1.2"]
 	  }
 	]
   },
@@ -93,7 +93,7 @@
 	"effectImages": [
 	  {
 	    "id": "Stat",
-	    "args": ["Resistance", 1.5]
+	    "args": ["Resistance", "1.5"]
 	  }
 	]
   },
@@ -107,7 +107,7 @@
 	"effectImages": [
 	  {
 	    "id": "Stat",
-	    "args": ["Resistance", 1.2]
+	    "args": ["Resistance", "1.2"]
 	  }
 	]
   },
@@ -121,7 +121,7 @@
 	"effectImages": [
 	  {
 	    "id": "Stat",
-	    "args": ["Resistance", 1.5]
+	    "args": ["Resistance", "1.5"]
 	  }
 	]
   },
@@ -135,7 +135,7 @@
 	"effectImages": [
 	  {
 	    "id": "Stat",
-	    "args": ["Resistance", 1.2]
+	    "args": ["Resistance", "1.2"]
 	  }
 	]
   },
@@ -149,7 +149,7 @@
 	"effectImages": [
 	  {
 	    "id": "Stat",
-	    "args": ["Defense", 0.6]
+	    "args": ["Defense", "0.6"]
 	  }
 	]
   },
@@ -163,7 +163,7 @@
 	"effectImages": [
 	  {
 	    "id": "Stat",
-	    "args": ["Defense", 0.8]
+	    "args": ["Defense", "0.8"]
 	  }
 	]
   },
@@ -177,7 +177,7 @@
 	"effectImages": [
 	  {
 	    "id": "Stat",
-	    "args": ["Attack", 2.0]
+	    "args": ["Attack", "2.0"]
 	  }
 	]
   },
@@ -191,7 +191,15 @@
 	"effectImages": [
 	  {
 	    "id": "Stat",
-	    "args": ["Attack", 1.5]
+	    "args": ["Attack", "2.0"]
+	  },
+	  {
+	    "id": "Stat",
+	    "args": ["Defense", "0.5"]
+	  },
+	  {
+	    "id": "Stat",
+	    "args": ["Speed", "1.5"]
 	  }
 	]
   },
@@ -205,7 +213,7 @@
 	"effectImages": [
 	  {
 	    "id": "Stat",
-	    "args": ["Attack", 0.75]
+	    "args": ["Attack", "0.75"]
 	  }
 	]
   },
@@ -219,7 +227,7 @@
 	"effectImages": [
 	  {
 	    "id": "Stat",
-	    "args": ["Resistance", 0.8]
+	    "args": ["Resistance", "0.8"]
 	  }
 	]
   },
@@ -233,8 +241,62 @@
 	"effectImages": [
 	  {
 	    "id": "Stat",
-	    "args": ["Attack", 0.8]
+	    "args": ["Attack", "0.8"]
 	  }
 	]
   },
+   "Restore": {
+	"name": "Restore",
+	"targetType": 1,
+	"emote": "",
+	"range": 1,
+    "element": 3,
+	"PPCost": 4,
+	"effectImages": [
+	  {
+	    "id": "Restore"
+	  }
+	]
+  },
+  "Revive": {
+	"name": "Revive",
+	"targetType": 1,
+	"emote": "",
+	"range": 1,
+    "element": 0,
+	"PPCost": 15,
+	"effectImages": [
+	  {
+	    "id": "Revive",
+		"args": ["75"]
+	  }
+	]
+  },
+  "Phoenix": {
+	"name": "Phoenix",
+	"targetType": 1,
+	"emote": "",
+	"range": 1,
+    "element": 1,
+	"PPCost": 15,
+	"effectImages": [
+	  {
+	    "id": "Revive",
+		"args": ["75"]
+	  }
+	]
+  },
+  "Break": {
+	"name": "Break",
+	"targetType": 1,
+	"emote": "",
+	"range": 1,
+    "element": 3,
+	"PPCost": 5,
+	"effectImages": [
+	  {
+	    "id": "Break"
+	  }
+	]
+  }
 }

@@ -35,5 +35,6 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
             return log;
         }
+
     }
 }
