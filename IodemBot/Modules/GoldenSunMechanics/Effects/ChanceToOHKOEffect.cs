@@ -9,12 +9,12 @@ namespace IodemBot.Modules.GoldenSunMechanics
 {
     class ChancetoOHKOEffect : IEffect
     {
-        int probability = 0;
+        int Probability = 0;
         public override List<string> Apply(ColossoFighter User, ColossoFighter Target)
         {
             var log = new List<string>();
             if (Target.isImmuneToEffects) return log;
-            if (Global.random.Next(1, 100) <= probability)
+            if (Global.random.Next(1, 100) <= Probability)
             {
                 Target.Kill();
                 log.Add($"{Target.name}'s life was taken.");
@@ -26,7 +26,12 @@ namespace IodemBot.Modules.GoldenSunMechanics
             timeToActivate = TimeToActivate.beforeDamge;
            
             if (args.Length == 1)
-                int.TryParse(args[0], out probability);
+                int.TryParse(args[0], out Probability);
+        }
+
+        public override string ToString()
+        {
+            return $"{(Probability != 100 ? $"{Probability}% chance to eliminate" : "Eliminate")} enemy.";
         }
     }
 }

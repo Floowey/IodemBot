@@ -248,7 +248,7 @@
    "Restore": {
 	"name": "Restore",
 	"targetType": 1,
-	"emote": "",
+	"emote": "<:Restore:536969958542802975>",
 	"range": 1,
     "element": 3,
 	"PPCost": 4,
@@ -261,7 +261,7 @@
   "Revive": {
 	"name": "Revive",
 	"targetType": 1,
-	"emote": "",
+	"emote": "<:Revive:536957965513785347>",
 	"range": 1,
     "element": 0,
 	"PPCost": 15,
@@ -275,7 +275,7 @@
   "Phoenix": {
 	"name": "Phoenix",
 	"targetType": 1,
-	"emote": "",
+	"emote": "<:Phoenix:539166682132906005>",
 	"range": 1,
     "element": 1,
 	"PPCost": 15,
@@ -289,7 +289,7 @@
   "Break": {
 	"name": "Break",
 	"targetType": 1,
-	"emote": "",
+	"emote": "<:Break:536969993490006036>",
 	"range": 1,
     "element": 3,
 	"PPCost": 5,

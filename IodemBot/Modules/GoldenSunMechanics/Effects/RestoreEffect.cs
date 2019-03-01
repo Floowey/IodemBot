@@ -15,5 +15,10 @@ namespace IodemBot.Modules.GoldenSunMechanics
             Target.RemoveAllConditions();
             return new List<string>() { $"{Target.name}'s Conditions were cured." };
         }
+
+        public override string ToString()
+        {
+            return $"Restore the target from Conditions and Poison.";
+        }
     }
 }
