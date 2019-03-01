@@ -248,6 +248,10 @@
 	"emote":"<:Thorn:536958717888036865>",
 	"range": 2,
     "element": 0,
+	"effectImages":[
+	{"id": "Condition",
+	"args": ["Poison", "20"]}
+	],
 	"PPCost": 6,
 	"power": 35
   },
@@ -257,6 +261,10 @@
 	"emote":"<:Briar:536958574128136193>",
 	"range": 2,
     "element": 0,
+	"effectImages":[
+	{"id": "Condition",
+	"args": ["Poison", "20"]}
+	],
 	"PPCost": 11,
 	"power": 70
   },
@@ -266,6 +274,10 @@
 	"emote":"<:Nettle:536958600078426122>",
 	"range": 3,
     "element": 0,
+	"effectImages":[
+	{"id": "Condition",
+	"args": ["Poison", "20"]}
+	],
 	"PPCost": 23,
 	"power": 140
   },
