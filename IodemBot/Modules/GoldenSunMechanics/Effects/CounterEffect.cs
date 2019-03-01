@@ -21,7 +21,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public override string ToString()
         {
-            return "Puts the Target in the Counter State";
+            return "Puts the target in the Counter State";
         }
     }
 }

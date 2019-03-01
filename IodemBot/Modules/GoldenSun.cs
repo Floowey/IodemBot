@@ -137,17 +137,16 @@ namespace IodemBot.Modules
             var embed = new EmbedBuilder();
             embed.WithColor(Colors.get(psy.element.ToString()));
             embed.WithAuthor(psy.name);
-            embed.AddField("Element", psy.element, true);
-            embed.AddField("PP", psy.PPCost, true);
             embed.AddField("Emote", psy.emote, true);
-            embed.AddField("Description", psy.ToString());
-
+            embed.AddField("PP", psy.PPCost, true);
+            //embed.AddField("Element", psy.element, true);
+            embed.AddField("Description", $"{psy.ToString()} {(psy.hasPriority ? "Always goes first." : "")}");
             var s = "none";
 
             if (psy.effects.Count > 0)
                 s = string.Join("\n", psy.effects.Select(e => $"{e.ToString()}"));
 
-            embed.AddField("Effects", s ?? "none");
+            embed.AddField("Effects", s);
             await Context.Channel.SendMessageAsync("", false, embed.Build());
         }
 

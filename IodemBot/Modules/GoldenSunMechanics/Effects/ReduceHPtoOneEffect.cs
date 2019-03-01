@@ -32,7 +32,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public override string ToString()
         {
-            return $"{(Probability != 100 ? $"{Probability}% chance to set" : "Set")} enemies HP to one.";
+            return $"{(Probability != 100 ? $"{Probability}% chance to set" : "Set")} targets HP to one.";
         }
     }
 }
