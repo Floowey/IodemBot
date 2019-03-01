@@ -51,7 +51,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public override string ToString()
         {
-            return $"{(probability < 100 ? "Guarantee to" : $"{probability} Chance to ")} {(Multiplier > 1 ? "raise " : "lower ")} {StatToBoost} by {Multiplier}.";
+            return $"{(probability == 100 ? "Guarantee to" : $"{probability} Chance to ")} {(Multiplier > 1 ? "raise " : "lower ")} {StatToBoost} by {Multiplier}.";
         }
 
         public override List<string> Apply(ColossoFighter User, ColossoFighter Target)

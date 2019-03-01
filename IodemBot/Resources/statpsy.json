@@ -167,6 +167,34 @@
 	  }
 	]
   },
+  "Dull": {
+	"name": "Dull",
+	"targetType": 3,
+	"emote": "<:Dull:536966947879780366>",
+	"range": 3,
+    "element": 1,
+	"PPCost": 5,
+	"effectImages": [
+	  {
+	    "id": "Stat",
+	    "args": ["Attack", "0.6"]
+	  }
+	]
+  },
+  "Blunt": {
+	"name": "Blunt",
+	"targetType": 4,
+	"emote": "<:Blunt:536966988388368394>",
+	"range": 3,
+    "element": 1,
+	"PPCost": 5,
+	"effectImages": [
+	  {
+	    "id": "Stat",
+	    "args": ["Attack", "0.8"]
+	  }
+	]
+  },
   "Weapon Grace": {
 	"name": "Weapon Grace",
 	"targetType": 1,
@@ -292,6 +320,32 @@
 	"emote": "<:Break:536969993490006036>",
 	"range": 1,
     "element": 3,
+	"PPCost": 5,
+	"effectImages": [
+	  {
+	    "id": "Break"
+	  }
+	]
+  },
+  "Thermal": {
+	"name": "Thermal",
+	"targetType": 1,
+	"emote": "<:Blaze:551042852730175520>",
+	"range": 1,
+    "element": 1,
+	"PPCost": 4,
+	"effectImages": [
+	  {
+	    "id": "Restore"
+	  }
+	]
+  },
+   "Blaze": {
+	"name": "Blaze",
+	"targetType": 1,
+	"emote": "<:Blaze:551042852730175520>",
+	"range": 1,
+    "element": 1,
 	"PPCost": 5,
 	"effectImages": [
 	  {
