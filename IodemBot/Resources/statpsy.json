@@ -273,11 +273,9 @@
 	"range": 1,
     "element": 2,
 	"PPCost": 5,
-	"effectImages": [
-	  {
-	    "id": "Condition"
-		  "args": ["Seal", "70"],
-	  }
+	"effectImages":[
+	{"id": "Condition",
+	"args": ["Seal", "70"]}
 	]
   },
 }
