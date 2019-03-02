@@ -1337,7 +1337,7 @@
     "power": 170,
     "effectImages":[
       {"id": "Stat",
-       "args":["Defense, "0.8", "20"]}
+       "args":["Defense", "0.8", "20"]}
     ]
   },
   "Storm Breath": {
@@ -1433,7 +1433,7 @@
 		   {
 			   "id": "Condition",
 			   "args":["Flinch", "35"]}
-		   ],
+		   ]
   },
 "Smoke Bomb": {
     "name": "Smoke Bomb",
@@ -1441,7 +1441,7 @@
 	"emote":"<:Smoke_Bomb:551223599911141391>",
 	"range": 1,
     "element": 0,
-	"PPCost": 0
+	"PPCost": 0,
 	   "effectImages":[
 		   {
 			   "id": "Condition",
@@ -1454,7 +1454,7 @@
     "emote":"<:Sleep_Bomb:551223599894102026>",
     "range": 1,
     "element": 0,
-    "PPCost": 0
+    "PPCost": 0,
     "effectImages":[
       {"id": "Condition",
        "args":["Sleep", "35"]}
