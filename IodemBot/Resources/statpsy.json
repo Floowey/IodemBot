@@ -350,5 +350,17 @@
 	    "id": "Break"
 	  }
 	]
+   },
+	"Bind": {
+    "name": "Bind",
+	"targetType": 3,
+	"emote":"<:Bind:549526931465568257>",
+	"range": 1,
+    "element": 2,
+	"effectImages":[
+	{"id": "Condition",
+	"args": ["Seal", "70"]}
+	],
+	"PPCost": 5
   }
 }
