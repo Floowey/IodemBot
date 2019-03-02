@@ -186,4 +186,98 @@
 	"multiplier": 0.8,
 	"turns": 5
   },
+	"Restore": {
+	"name": "Restore",
+	"targetType": 1,
+	"emote": "<:Restore:536969958542802975>",
+	"range": 1,
+    "element": 3,
+	"PPCost": 4,
+	"effectImages": [
+	  {
+	    "id": "Restore"
+	  }
+	]
+  },
+  "Revive": {
+	"name": "Revive",
+	"targetType": 1,
+	"emote": "<:Revive:536957965513785347>",
+	"range": 1,
+    "element": 0,
+	"PPCost": 15,
+	"effectImages": [
+	  {
+	    "id": "Revive",
+		"args": ["75"]
+	  }
+	]
+  },
+  "Phoenix": {
+	"name": "Phoenix",
+	"targetType": 1,
+	"emote": "<:Phoenix:539166682132906005>",
+	"range": 1,
+    "element": 1,
+	"PPCost": 15,
+	"effectImages": [
+	  {
+	    "id": "Revive",
+		"args": ["75"]
+	  }
+	]
+  },
+  "Break": {
+	"name": "Break",
+	"targetType": 1,
+	"emote": "<:Break:536969993490006036>",
+	"range": 1,
+    "element": 3,
+	"PPCost": 5,
+	"effectImages": [
+	  {
+	    "id": "Break"
+	  }
+	]
+  },
+  "Thermal": {
+	"name": "Thermal",
+	"targetType": 1,
+	"emote": "<:Blaze:551042852730175520>",
+	"range": 1,
+    "element": 1,
+	"PPCost": 4,
+	"effectImages": [
+	  {
+	    "id": "Restore"
+	  }
+	]
+  },
+   "Blaze": {
+	"name": "Blaze",
+	"targetType": 1,
+	"emote": "<:Blaze:551042852730175520>",
+	"range": 1,
+    "element": 1,
+	"PPCost": 5,
+	"effectImages": [
+	  {
+	    "id": "Break"
+	  }
+	]
+  },
+	"Bind": {
+	"name": "Bind",
+	"targetType": 3,
+	"emote": "<:Bind:549526931465568257>",
+	"range": 1,
+    "element": 2,
+	"PPCost": 5,
+	"effectImages": [
+	  {
+	    "id": "Condition"
+		  "args": ["Seal", "70"],
+	  }
+	]
+  },
 }
