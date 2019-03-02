@@ -8,8 +8,8 @@
 	"PPCost": 0,
     "dmgMult": 0.8
   },
-  "Ragnarök": {
-	"name": "Ragnarök",
+  "Ragnarok": {
+	"name": "Ragnarok",
 	"targetType": 3,
 	"emote": "<:Ragnarok:536958312164622346>",
 	"range": 1,
