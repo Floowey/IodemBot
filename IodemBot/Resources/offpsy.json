@@ -1305,7 +1305,7 @@
 	"range": 1,
     "element": 0,
 	"PPCost": 0,
-	"addDamage": 36
+	"addDamage": 36,
 	  "effectImages":[
 	  { "id": "Condition",
 	  "args": ["Venom", "25"]}
