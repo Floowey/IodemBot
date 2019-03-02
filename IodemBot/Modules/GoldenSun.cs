@@ -130,10 +130,20 @@ namespace IodemBot.Modules
         }
 
         [Command("MoveInfo")]
-        [Alias("Psynergy", "PsynergyInfo")]
+        [Alias("Psynergy", "PsynergyInfo", "psy")]
+        [Remarks("Get information on moves and psynergies")]
         public async Task moveInfo([Remainder] string name = "")
         {
+            if (name == "") return;
             Psynergy psy = PsynergyDatabase.GetPsynergy(name);
+            if (psy.name.Contains("Not Implemented"))
+            {
+                var failEmbed = new EmbedBuilder();
+                failEmbed.WithColor(Colors.get("Iodem"));
+                failEmbed.WithDescription("I have never heard of that kind of of Psynergy");
+                await Context.Channel.SendMessageAsync("", false, failEmbed.Build());
+                return;
+            }
             var embed = new EmbedBuilder();
             embed.WithColor(Colors.get(psy.element.ToString()));
             embed.WithAuthor(psy.name);
