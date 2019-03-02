@@ -1426,4 +1426,44 @@
 				   "args": ["10"]}
 			   ],
   },
+"War Cry": {
+    "name": "War Cry",
+	"targetType": 3,
+	"emote":"<:Rampage:537766290031509524>",
+	"range": 1,
+    "element": 2,
+	"PPCost": 0,
+	"power": 45,
+	   "effectImages":[
+		   {
+			   "id": "Condition",
+			   "args":["Flinch", "35"]}
+		   ],
+  },
+"Smoke Bomb": {
+    "name": "Smoke Bomb",
+	"targetType": 3,
+	"emote":"<:Smoke_Bomb:551223599911141391>",
+	"range": 1,
+    "element": 0,
+	"PPCost": 0
+	   "effectImages":[
+		   {
+			   "id": "Condition",
+			   "args":["Delusion", "35"]}
+		   ],
+  },
+"Sleep Bomb": {
+    "name": "Sleep Bomb",
+	"targetType": 3,
+	"emote":"<:Sleep_Bomb:551223599894102026>",
+	"range": 1,
+    "element": 0,
+	"PPCost": 0
+	   "effectImages":[
+		   {
+			   "id": "Condition",
+			   "args":["Sleep", "35"]}
+		   ],
+  },
 }
