@@ -133,7 +133,7 @@
 	  ["Quake Sphere",
 	  "Stone Spire",
 	  "Odyssey",
-	  "Ragnarök",
+	  "Ragnarok",
 	  "Grand Gaia",
 	  "Nettle"
 	  ],
@@ -401,7 +401,8 @@
       "imgurl": "https://vignette.wikia.nocookie.net/goldensun/images/6/68/Lizard_King.png/revision/latest?cb=20071119071811",
       "movepool": [
 		"Headbutt",
-		"Mad Blast"
+		"Mad Blast",
+	      "Dynamite"
 	  ],
       "stats": {
         "maxHP": 500,
@@ -426,7 +427,8 @@
       "imgurl": "",
       "movepool": [
 		"Sonic Slash",
-		"Tempest"
+		"Tempest",
+	      "Banshee Howl"
 	  ],
       "stats": {
         "maxHP": 600,
@@ -478,7 +480,8 @@
       "imgurl": "",
       "movepool": [
 		"Headbutt",
-		"Mad Blast"
+		"Mad Blast",
+	      "Dynamite"
 	  ],
       "stats": {
         "maxHP": 500,
@@ -936,7 +939,7 @@
       "movepool": [
 		"Mighty Press",
 		"Headbutt",
-		"Ragnarök",
+		"Ragnarok",
 		"Cutting Edge",
 		"Helm Splitter",
 		"Liquifier"
@@ -965,7 +968,7 @@
       "movepool": [
 		"Mighty Press",
 		"Headbutt",
-		"Ragnarök",
+		"Ragnarok",
 		"Cutting Edge",
 		"Helm Splitter",
 		"Liquifier"
