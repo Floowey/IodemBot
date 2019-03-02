@@ -88,13 +88,13 @@ namespace IodemBot.Modules.ColossoBattles
             Console.WriteLine("Starting to process Turn");
 
             //Start Turn for things like Defend
-            StartTurn();
+            log.AddRange(StartTurn());
 
             //Main Turn
             log.AddRange(MainTurn());
 
             //End Turn
-            EndTurn();
+            log.AddRange(EndTurn());
 
             //Check for Game Over
             if (gameOver()){
@@ -139,12 +139,14 @@ namespace IodemBot.Modules.ColossoBattles
             }
         }
 
-        private void StartTurn()
+        private List<string> StartTurn()
         {
+            List<string> turnLog = new List<string>();
             List<ColossoFighter> fighters = new List<ColossoFighter>(TeamA);
             fighters.AddRange(TeamB);
-            fighters.OrderBy(f => f.stats.Spd);
-            fighters.ForEach(f => f.StartTurn());
+            fighters = fighters.OrderByDescending(f => f.stats.Spd).ToList();
+            fighters.ForEach(f => { turnLog.AddRange(f.StartTurn()); });
+            return turnLog;
         }
 
         private List<string> MainTurn()
@@ -152,18 +154,19 @@ namespace IodemBot.Modules.ColossoBattles
             List<string> turnLog = new List<string>();
             List<ColossoFighter> fighters = new List<ColossoFighter>(TeamA);
             fighters.AddRange(TeamB);
-            //fighters.Sort();
             fighters = fighters.OrderByDescending(f => f.stats.Spd).ToList();
             fighters.ForEach(f => { turnLog.AddRange(f.MainTurn());});
             return turnLog;
         }
 
-        private void EndTurn()
+        private List<string> EndTurn()
         {
+            List<string> turnLog = new List<string>();
             List<ColossoFighter> fighters = new List<ColossoFighter>(TeamA);
             fighters.AddRange(TeamB);
-            fighters.OrderBy(f => f.stats.Spd);
-            fighters.ForEach(f => f.EndTurn());
+            fighters = fighters.OrderByDescending(f => f.stats.Spd).ToList();
+            fighters.ForEach(f => { turnLog.AddRange(f.EndTurn()); });
+            return turnLog;
         }
 
         public void resetGame()

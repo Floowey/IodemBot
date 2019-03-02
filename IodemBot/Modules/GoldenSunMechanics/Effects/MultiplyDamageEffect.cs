@@ -7,10 +7,10 @@ using IodemBot.Modules.ColossoBattles;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
-    class MultiplyDamgeEffect : IEffect
+    class MultiplyDamageEffect : IEffect
     {
-        double[] multipliers = {2.0 };
-        int[] probabilites = { 10 };
+        private double[] multipliers = {2.0 };
+        private int[] probabilites = { 10 };
         public override List<string> Apply(ColossoFighter User, ColossoFighter Target)
         {
             for (int i = 1; i < multipliers.Length; i++){
@@ -23,16 +23,23 @@ namespace IodemBot.Modules.GoldenSunMechanics
             return new List<string>();
         }
 
-        public MultiplyDamgeEffect(object[] args)
+        public MultiplyDamageEffect(string[] args)
         {
-            if(args.Length == 2 && args[0] is double[] && args[1] is int[])
+            //["1.5, 2.5", "20, 10"]
+            timeToActivate = TimeToActivate.beforeDamge;
+            if(args.Length == 2)
             {
-                multipliers = (double[])args[0];
-                probabilites = (int[])args[1];
+                multipliers = args[0].Split(',').Select(n => Convert.ToDouble(n)).ToArray();
+                probabilites = args[1].Split(',').Select(n => Convert.ToInt32(n)).ToArray();
             } else
             {
                 Console.WriteLine("Construtor for MultiplyDamage not initialized correctly. Using default Values.");
             }
+        }
+
+        public override string ToString()
+        {
+            return $"Chance to do {string.Join("x,", multipliers)}x Damage";
         }
     }
 }

@@ -40,11 +40,11 @@ namespace IodemBot.Modules.ColossoBattles
             return actualStats;
         }
 
-        public override void EndTurn()
+        public override List<string> EndTurn()
         {
             selected = null;
             hasSelected = false;
-            base.EndTurn();
+            return base.EndTurn();
         }
 
     }

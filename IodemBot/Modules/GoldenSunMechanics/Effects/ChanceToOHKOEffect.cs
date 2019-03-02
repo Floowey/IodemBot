@@ -9,23 +9,29 @@ namespace IodemBot.Modules.GoldenSunMechanics
 {
     class ChancetoOHKOEffect : IEffect
     {
-        int probability = 0;
+        int Probability = 0;
         public override List<string> Apply(ColossoFighter User, ColossoFighter Target)
         {
-            if (Global.random.Next(1, 100) <= probability)
+            var log = new List<string>();
+            if (Target.isImmuneToEffects) return log;
+            if (Global.random.Next(1, 100) <= Probability)
             {
                 Target.Kill();
-                return new List<string>() { $"{Target.name}'s life was taken." };
+                log.Add($"{Target.name}'s life was taken.");
             }
-            else return new List<string>();
+            return log;
         }
-        public ChancetoOHKOEffect(object[] args)
+        public ChancetoOHKOEffect(string[] args)
         {
             timeToActivate = TimeToActivate.beforeDamge;
-            if(args.Length == 1 && args[0] is int)
-            {
-                this.probability = (int)args[0];
-            }
+           
+            if (args.Length == 1)
+                int.TryParse(args[0], out Probability);
+        }
+
+        public override string ToString()
+        {
+            return $"{(Probability != 100 ? $"{Probability}% chance to eliminate" : "Eliminate")} target.";
         }
     }
 }

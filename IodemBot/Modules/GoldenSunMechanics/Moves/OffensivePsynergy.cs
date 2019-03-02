@@ -53,6 +53,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                     .ForEach(e => log.AddRange(e.Apply(User, t)));
 
                 if (!t.IsAlive()) continue;
+                if (t.isImmuneToPsynergy) log.Add($"{t.name} protects themselves with a magical barrier.");
 
                 var baseDmg = (new Random()).Next(0, 4);
                 var dmg = attackBased ? 
@@ -70,6 +71,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 if (t.elstats.GetRes(element) == t.elstats.highestRes()) punctuation = ".";
                 if (t.elstats.GetRes(element) == t.elstats.leastRes()) punctuation = "!!!";
 
+                if (realDmg == 0) realDmg = 1;
                 log.AddRange(t.DealDamage(realDmg, punctuation));
                 effects
                     .Where(e => e.timeToActivate == IEffect.TimeToActivate.afterDamage)
@@ -84,13 +86,16 @@ namespace IodemBot.Modules.GoldenSunMechanics
                             ((PlayerFighter)User).avatar.killedByHand();
                 }
 
-                //Effects that trigger after damage
-
                 //Counter
                 ii++;
             }
 
             return log;
+        }
+
+        public override string ToString()
+        {
+            return $"Attack {(range == 1 ? "a target" : $"up to {range*2-1} Targets")} with a base damage of {(attackBased ? "a normal physical Attack" : $"{power}")}{(addDamage > 0 ? $" plus an additional {addDamage} Points" : "")}{(dmgMult != 1 ? $" multiplied by {dmgMult}" : "")}.";
         }
     }
 }

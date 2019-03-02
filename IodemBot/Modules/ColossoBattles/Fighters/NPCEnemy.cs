@@ -13,10 +13,10 @@ namespace IodemBot.Modules.ColossoBattles
         {
         }
 
-        public override void EndTurn()
+        public override List<string> EndTurn()
         {
             selectRandom();
-            base.EndTurn();
+            return base.EndTurn();
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,34 +12,36 @@ namespace IodemBot.Modules.GoldenSunMechanics
     {
         string StatToBoost;
         double Multiplier;
-        bool OnTarget;
-        uint Turns;
+        int probability = 100;
+        bool OnTarget = true;
+        int Turns = 5;
 
-        public StatEffect(string StatToBoost, double Value, bool OnTarget = true, uint Duration = 5)
+        public StatEffect(string StatToBoost, double Value,long probability = 100, bool OnTarget = true, int Duration = 5)
         {
-            Init(StatToBoost, Value, OnTarget, Duration);
+            Init(StatToBoost, Value, probability, OnTarget, Duration);
         }
 
-        public StatEffect(params object[] args)
+        public StatEffect(params string[] args)
         {
-            if(args.Length == 2 && args[0] is string && args[1] is double)
+            CultureInfo[] cultures = { new CultureInfo("en-US"),
+                                 new CultureInfo("fr-FR"),
+                                 new CultureInfo("it-IT"),
+                                 new CultureInfo("de-DE") };
+            switch (args.Length)
             {
-                Init((string)args[0], (double)args[1]);
-            } else if(args.Length == 3 && args[0] is string && args[1] is double
-                && args[2] is bool)
-            {
-                Init((string)args[0], (double)args[1], (bool) args[2]);
-            } else if (args.Length == 4 && args[0] is string && args[1] is double
-                 && args[2] is bool && args[3] is uint)
-            {
-                Init((string)args[0], (double)args[1], (bool) args[2], (uint) args[3]);
-            } else
-            {
-                throw new ArgumentException();
+                case 5: int.TryParse(args[4], out Turns); goto case 4;
+                case 4: bool.TryParse(args[3], out OnTarget); goto case 3;
+                case 3: int.TryParse(args[2], out probability); goto case 2;
+                case 2:
+                    double.TryParse(args[1], NumberStyles.Number, new CultureInfo("en-GB"), out Multiplier);
+
+                    StatToBoost = args[0];
+                    break;
+                default: throw new ArgumentException("Stat Effects take 2-5 string arguments");
             }
         }
 
-        private void Init(string StatToBoost, double Value, bool OnTarget = true, uint Duration = 5)
+        private void Init(string StatToBoost, double Value, long probability = 100, bool OnTarget = true, int Duration = 5)
         {
             this.StatToBoost = StatToBoost;
             this.Multiplier = Value;
@@ -46,21 +49,29 @@ namespace IodemBot.Modules.GoldenSunMechanics
             this.Turns = Duration;
         }
 
+        public override string ToString()
+        {
+            return $"{(probability == 100 ? "Guarantee to" : $"{probability} Chance to ")} {(Multiplier > 1 ? "raise " : "lower ")} {StatToBoost} of {(OnTarget ? "target" : "user")} by {Multiplier}.";
+        }
 
         public override List<string> Apply(ColossoFighter User, ColossoFighter Target)
         {
             List<string> log = new List<string>();
-            if (OnTarget)
+            if (!Target.IsAlive()) return log;
+            if(Global.random.Next(1,100) <= probability)
             {
-                Target.applyBuff(new Buff(StatToBoost, Multiplier, Turns));
-                log.Add($"{Target.name}'s {StatToBoost} {(Multiplier > 1 ? "rises" : "lowers")}.");
-            } else
-            {
-                User.applyBuff(new Buff(StatToBoost, Multiplier, Turns));
-                log.Add($"{User.name}'s {StatToBoost} {(Multiplier > 1 ? "rises" : "lowers")}.");
+                if (OnTarget)
+                {
+                    Target.applyBuff(new Buff(StatToBoost, Multiplier, (uint)Turns));
+                    log.Add($"{Target.name}'s {StatToBoost} {(Multiplier > 1 ? "rises" : "lowers")}.");
+                } else
+                {
+                    User.applyBuff(new Buff(StatToBoost, Multiplier, (uint)Turns));
+                    log.Add($"{User.name}'s {StatToBoost} {(Multiplier > 1 ? "rises" : "lowers")}.");
+                }
             }
 
-            return new List<string>();//Add actual text from StatusPsnyergy
+            return log;//Add actual text from StatusPsnyergy
         }
     }
 }

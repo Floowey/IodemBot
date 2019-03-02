@@ -197,6 +197,28 @@
 	"percentage": 0,
     "singleTarget": false
   },
+  "Elder Wood": {
+	"name": "Elder Wood",
+	"targetType": 2,
+	"emote":"<:Estre_Wood:551067651670016020>",
+	"range": 3,
+	"element": 3,
+	"PPCost": 9,
+	"healPower": 120,
+	"percentage": 0,
+    "singleTarget": false
+  },
+  "Estre Wood": {
+	"name": "Estre Wood",
+	"targetType": 2,
+	"emote":"<:Estre_Wood:551067651670016020>",
+	"range": 3,
+	"element": 3,
+	"PPCost": 16,
+	"healPower": 280,
+	"percentage": 0,
+    "singleTarget": false
+  },
     "Nut": {
 	"name": "Nut",
 	"targetType": 1,

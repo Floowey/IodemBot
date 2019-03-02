@@ -8,8 +8,8 @@
 	"PPCost": 0,
     "dmgMult": 0.8
   },
-  "Ragnarök": {
-	"name": "Ragnarök",
+  "Ragnarok": {
+	"name": "Ragnarok",
 	"targetType": 3,
 	"emote": "<:Ragnarok:536958312164622346>",
 	"range": 1,
@@ -32,6 +32,12 @@
 	"emote": "<:Skull_Splitter:536959343153774652>",
 	"range": 1,
     "element": 0,
+	"effectImages": [
+	  {
+	    "id": "ChanceToOHKO",
+		"args": ["5"]
+	  }
+	],
 	"PPCost": 8,
     "addDamage": 30
   },
@@ -41,6 +47,12 @@
 	"emote": "<:Annihalation:536959197288464393>",
 	"range": 1,
     "element": 0,
+	"effectImages": [
+	  {
+	    "id": "ChanceToOHKO",
+		"args": ["10"]
+	  }
+	],
 	"PPCost": 18,
     "dmgMult": 1.5
   },
@@ -107,6 +119,33 @@
 	"PPCost": 19,
 	"power": 110
   },
+  "Punji": {
+    "name": "Punji",
+	"targetType": 4,
+	"emote":"<:Punji:536958777413337088>",
+	"range": 3,
+    "element": 0,
+	"PPCost": 7,
+	"power": 45
+  },
+  "Punji Trap": {
+    "name": "Punji Trap",
+	"targetType": 4,
+	"emote":"<:Punji_Trap:536958822841843722>",
+	"range": 3,
+    "element": 0,
+	"PPCost": 13,
+	"power": 85
+  },
+  "Punji Strike": {
+    "name": "Punji Strike",
+	"targetType": 4,
+	"emote":"<:Punji_Strike:536958839434641408>",
+	"range": 5,
+    "element": 0,
+	"PPCost": 24,
+	"power": 150
+  },
   "Spire": {
     "name": "Spire",
 	"targetType": 3,
@@ -140,6 +179,12 @@
 	"emote":"<:curse:538074679492083742>",
 	"range": 3,
     "element": 0,
+	"effectImages":[
+	{"id": "Condition",
+	"args": ["Poison", "60"]},
+	{"id": "Condition",
+	"args": ["Venom", "10"]}
+	],
 	"PPCost": 23,
 	"power": 125
   },
@@ -203,6 +248,10 @@
 	"emote":"<:Thorn:536958717888036865>",
 	"range": 2,
     "element": 0,
+	"effectImages":[
+	{"id": "Condition",
+	"args": ["Poison", "20"]}
+	],
 	"PPCost": 6,
 	"power": 35
   },
@@ -212,6 +261,10 @@
 	"emote":"<:Briar:536958574128136193>",
 	"range": 2,
     "element": 0,
+	"effectImages":[
+	{"id": "Condition",
+	"args": ["Poison", "20"]}
+	],
 	"PPCost": 11,
 	"power": 70
   },
@@ -221,6 +274,10 @@
 	"emote":"<:Nettle:536958600078426122>",
 	"range": 3,
     "element": 0,
+	"effectImages":[
+	{"id": "Condition",
+	"args": ["Poison", "20"]}
+	],
 	"PPCost": 23,
 	"power": 140
   },
@@ -596,8 +653,8 @@
 	"PPCost": 31,
 	"power": 150
   },
-  "Planet Driver": {
-    "name": "Planet Driver",
+  "Planet Diver": {
+    "name": "Planet Diver",
 	"targetType": 3,
 	"emote":"<:Planet_Diver:536963450665041941>",
 	"range": 1,
@@ -1117,16 +1174,25 @@
 	"range": 1,
     "element": 1,
 	"PPCost": 0,
-	"addDamage": 20
+	"addDamage": 20,
+	  "effectImages":[
+	{"id": "Condition",
+	"args": ["Delusion", "30"]}
+	],
   },
   "Death Size": {
     "name": "Death Size",
-	"targetType": 3,
-	"emote":":skull_crossbones:",
-	"range": 1,
+    "targetType": 3,
+    "emote":":skull_crossbones:",
+    "range": 1,
     "element": 0,
 	"PPCost": 0,
-	"addDamage": 35
+	"addDamage": 35,
+	  "effectImages": [
+	  {"id": "ChanceToOHKO",
+	   "args": ["20"]
+	  }
+	],
   },
   "Ransack": {
     "name": "Ransack",
@@ -1137,37 +1203,10 @@
 	"PPCost": 0,
 	"addDamage": 35
   },
-  "Punji": {
-    "name": "Punji",
-	"targetType": 4,
-	"emote":"<:Punji:536958777413337088>",
-	"range": 3,
-    "element": 0,
-	"PPCost": 7,
-	"power": 45
-  },
-  "Punji Trap": {
-    "name": "Punji Trap",
-	"targetType": 4,
-	"emote":"<:Punji_Trap:536958822841843722>",
-	"range": 3,
-    "element": 0,
-	"PPCost": 13,
-	"power": 85
-  },
-  "Punji Strike": {
-    "name": "Punji Strike",
-	"targetType": 4,
-	"emote":"<:Punji_Strike:536958839434641408>",
-	"range": 5,
-    "element": 0,
-	"PPCost": 24,
-	"power": 150
-  },
   "Crystal Powder": {
     "name": "Crystal Powder",
 	"targetType": 4,
-	"emote":"<:Crystal_Powder:54863606094770996>",
+	"emote":"<:Crystal_Powder:548636060947709965>",
 	"range": 5,
     "element": 3,
 	"PPCost": 1,
@@ -1180,7 +1219,11 @@
 	"range": 1,
     "element": 2,
 	"PPCost": 0,
-	"power": 70
+	"power": 70,
+	    "effectImages":[
+	{"id": "Condition",
+	"args": ["Flinch", "30"]}
+	],
   },
   "Bear Claw": {
     "name": "Bear Claw",
@@ -1207,7 +1250,11 @@
 	"range": 1,
     "element": 0,
 	"PPCost": 0,
-	"addDamage": 40
+	"addDamage": 40,
+	    "effectImages":[
+	{"id": "Condition",
+	"args": ["Poison", "50"]}
+	],
   },
    "Wing Flutter": {
     "name": "Wing Flutter",
@@ -1225,7 +1272,11 @@
 	"range": 1,
     "element": 2,
 	"PPCost": 0,
-	"addDamage": 40
+	"addDamage": 30,
+	"effectImages":[
+	   {"id": "DamageMult",
+		"args": ["1.0, 2.0", "50, 50"]}
+     ],
   },
   "Ice Blessing": {
     "name": "Ice Blessing",
@@ -1252,12 +1303,16 @@
 	"range": 1,
     "element": 0,
 	"PPCost": 0,
-	"addDamage": 50
+	"addDamage": 36,
+	  "effectImages":[
+	  { "id": "Condition",
+	  "args": ["Venom", "25"]}
+	],
   },
   "Mad Dash": {
     "name": "Mad Dash",
 	"targetType": 3,
-	"emote":"<:angry1:490015817908355072>",
+	"emote":"<:Rampage:537766290031509524>",
 	"range": 1,
     "element": 0,
 	"PPCost": 0,
@@ -1274,31 +1329,43 @@
   },
   "Acid Breath": {
     "name": "Acid Breath",
-	"targetType": 4,
-	"emote":"☣",
-	"range": 3,
+    "targetType": 4,
+    "emote":"☣",
+    "range": 3,
     "element": 1,
-	"PPCost": 0,
-	"power": 170
+    "PPCost": 0,
+    "power": 170,
+    "effectImages":[
+      {"id": "Stat",
+       "args":["Defense", "0.8", "20"]}
+    ]
   },
   "Storm Breath": {
     "name": "Storm Breath",
-	"targetType": 4,
-	"emote":"🌩",
-	"range": 3,
+    "targetType": 4,
+    "emote":"🌩",
+    "range": 3,
     "element": 2,
-	"PPCost": 0,
-	"power": 170
+    "PPCost": 0,
+    "power": 170,
+    "effectImages":[
+	{"id": "Condition",
+	 "args":["Stun", "20"]}
+    ]
   },
   "Double Fang": {
     "name": "Double Fang",
-	"targetType": 3,
-	"emote":"🐶",
-	"range": 1,
+    "targetType": 3,
+    "emote":"🐶",
+    "range": 1,
     "element": 0,
-	"PPCost": 0,
-	"addDamage": 50
-	},
+    "PPCost": 0,
+    "addDamage": 50,
+    "effectImages":[
+      {"id": "DamageMult",
+       "args":["1.0, 2.0", "50, 50"]}
+    ],
+  },
   "Oil Drop": {
     "name": "Oil Drop",
 	"targetType": 4,
@@ -1320,7 +1387,7 @@
   "Slice": {
     "name": "Slice",
 	"targetType": 3,
-	"emote":"<:angry1:490015817908355072>",
+	"emote":"<:Rampage:537766290031509524>",
 	"range": 1,
     "element": 4,
 	"PPCost": 0,
@@ -1329,19 +1396,82 @@
    "Crusher Grip": {
     "name": "Crusher Grip",
 	"targetType": 3,
-	"emote":"<:angry1:490015817908355072>",
+	"emote":"<:Rampage:537766290031509524>",
 	"range": 1,
     "element": 0,
 	"PPCost": 0,
-	"dmgMult": 1.3
+	"dmgMult": 1.3,
+	   "effectImages":[
+		   {
+			   "id": "Condition",
+			   "args":["Stun", "20"]}
+		   ],
   },
    "Mighty Press": {
     "name": "Mighty Press",
 	"targetType": 3,
-	"emote":"<:angry1:490015817908355072>",
+	"emote":"<:Rampage:537766290031509524>",
 	"range": 1,
     "element": 0,
 	"PPCost": 0,
-	"addDamage": 50
+	"addDamage": 50,
+		   "effectImages":[
+			   {
+				   "id": "ChanceToOHKO",
+				   "args": ["10"]}
+			   ],
+  },
+"War Cry": {
+    "name": "War Cry",
+	"targetType": 3,
+	"emote":"<:Rampage:537766290031509524>",
+	"range": 1,
+    "element": 2,
+	"PPCost": 0,
+	"power": 45,
+	   "effectImages":[
+		   {
+			   "id": "Condition",
+			   "args":["Flinch", "35"]}
+		   ],
+  },
+"Smoke Bomb": {
+    "name": "Smoke Bomb",
+	"targetType": 3,
+	"emote":"<:Smoke_Bomb:551223599911141391>",
+	"range": 1,
+    "element": 0,
+	"PPCost": 0,
+	   "effectImages":[
+		   {
+			   "id": "Condition",
+			   "args":["Delusion", "35"]}
+		   ],
+},
+"Sleep Bomb": {
+    "name": "Sleep Bomb",
+    "targetType": 3,
+    "emote":"<:Sleep_Bomb:551223599894102026>",
+    "range": 1,
+    "element": 0,
+    "PPCost": 0,
+    "effectImages":[
+      {"id": "Condition",
+       "args":["Sleep", "35"]}
+    ],
+},
+"Dynamite": {
+    "name": "Dynamite",
+	"targetType": 4,
+	"emote":"<:bomb:>",
+	"range": 3,
+    "element": 1,
+	"PPCost": 0,
+	"power": 200,
+	   "effectImages":[
+		   {
+			   "id": "UserDies"
+			   }
+		   ],
   },
 }

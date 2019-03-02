@@ -46,13 +46,14 @@ namespace IodemBot.Modules.GoldenSunMechanics
             uint damage = 1;
             if (def < atk)
             {
-                damage = (uint) (atk - def)/2 + (uint)Global.random.Next(1, 4);
+                damage = (uint) ((atk - def)*enemy.defensiveMult/2 + (uint)Global.random.Next(1, 4));
             }
             if (Global.random.Next(0, 8) == 0)
             {
                 log.Add("Critical!!");
                 damage = (uint)(damage*1.25 + Global.random.Next(5,15));    
             }
+            if (damage == 0) damage = 1;
             log.AddRange(enemy.DealDamage(damage));
             if (User is PlayerFighter)
             {
