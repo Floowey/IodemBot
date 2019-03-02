@@ -13,7 +13,7 @@ using static IodemBot.Modules.GoldenSunMechanics.Psynergy;
 
 namespace IodemBot.Modules
 {
-   
+
 
     public class GoldenSun : ModuleBase<SocketCommandContext>
     {
@@ -85,7 +85,7 @@ namespace IodemBot.Modules
                 var exathi = Context.Guild.Roles.FirstOrDefault(x => x.Name == "Exathi") ?? venusRole;
                 if (role == null) role = exathi;
 
-                await (Context.User as IGuildUser).RemoveRolesAsync(new IRole[] { venusRole, marsRole, jupiterRole, mercuryRole, exathi});
+                await (Context.User as IGuildUser).RemoveRolesAsync(new IRole[] { venusRole, marsRole, jupiterRole, mercuryRole, exathi });
                 await (Context.User as IGuildUser).AddRoleAsync(role);
                 account.element = chosenElement;
                 account.classToggle = 0;
@@ -130,31 +130,23 @@ namespace IodemBot.Modules
         }
 
         [Command("MoveInfo")]
+        [Alias("Psynergy", "PsynergyInfo")]
         public async Task moveInfo([Remainder] string name = "")
         {
-            
             Psynergy psy = PsynergyDatabase.GetPsynergy(name);
             var embed = new EmbedBuilder();
+            embed.WithColor(Colors.get(psy.element.ToString()));
             embed.WithAuthor(psy.name);
-            embed.AddField("PP", psy.PPCost, true);
             embed.AddField("Emote", psy.emote, true);
-            embed.AddField("Element", psy.element, true);
-            embed.AddField("Target", psy.targetType, true);
-
+            embed.AddField("PP", psy.PPCost, true);
+            //embed.AddField("Element", psy.element, true);
+            embed.AddField("Description", $"{psy.ToString()} {(psy.hasPriority ? "Always goes first." : "")}");
             var s = "none";
-            if (psy.effectImages != null)
-            {
-                s = string.Join(", ", psy.effectImages.Select(e => $"{e.id}: {string.Join(", ", e.args)}").ToList());
 
-            }
+            if (psy.effects.Count > 0)
+                s = string.Join("\n", psy.effects.Select(e => $"{e.ToString()}"));
 
-            embed.AddField("Images", s, true);
-            s = "none";
-
-            if (psy.effects != null)
-                s = string.Join(",", psy.effects.Select(e => $"{e.ToString()}"));
-
-            embed.AddField("Effects", s, true);
+            embed.AddField("Effects", s);
             await Context.Channel.SendMessageAsync("", false, embed.Build());
         }
 

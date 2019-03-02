@@ -12,11 +12,11 @@
     "isWin": false
   },
   {
-    "text": "{0} avoids the {1}'s attack and strikes back!",
+    "text": "{0} avoids the {1}s attack and strikes back!",
     "isWin": true
   },
   {
-    "text": "{0} forgot to heal and falls under the {1}'s assaults.",
+    "text": "{0} forgot to heal and falls under the {1}s assaults.",
     "isWin": false
   },
   {
@@ -36,7 +36,7 @@
     "isWin": false
   },
   {
-    "text": "{1} perceives {0}'s power and flees as fast as possible.",
+    "text": "{1} perceives {0}s power and flees as fast as possible.",
     "isWin": true
   },
   {
@@ -72,7 +72,7 @@
     "isWin": false
   },
   {
-    "text": "{1} uses Oil Drop and sets off {0}'s Cotton Shirt. {0} burns to a crisp.",
+    "text": "{1} uses Oil Drop and sets off {0}s Cotton Shirt. {0} burns to a crisp.",
     "isWin": false
   },
   {
@@ -88,11 +88,11 @@
     "isWin": false
   },
   {
-    "text": "{1} puts {0} asleep. {0} loses.",
+    "text": "{1} puts {0} to sleep. {0} loses.",
     "isWin": false
   },
   {
-    "text": "{0}'s weapon let's out a howl! {1} goes down.",
+    "text": "{0}'s weapon lets out a howl! {1} goes down.",
     "isWin": true
   },
   {
@@ -100,11 +100,11 @@
     "isWin": false
   },
   {
-    "text": "With a beautiful parade {0} dodges an attack and strikes {1}'s weak spot.",
+    "text": "With a beautiful parade {0} dodges an attack and strikes {1}s weak spot.",
     "isWin": true
   },
   {
-    "text": "{1} gets hold of {0}'s weapon and deals the final blow.",
+    "text": "{1} gets hold of {0}s weapon and deals the final blow.",
     "isWin": false
   },
   {

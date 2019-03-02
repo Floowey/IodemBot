@@ -167,6 +167,34 @@
 	  }
 	]
   },
+  "Dull": {
+	"name": "Dull",
+	"targetType": 3,
+	"emote": "<:Dull:536966947879780366>",
+	"range": 3,
+    "element": 1,
+	"PPCost": 5,
+	"effectImages": [
+	  {
+	    "id": "Stat",
+	    "args": ["Attack", "0.6"]
+	  }
+	]
+  },
+  "Blunt": {
+	"name": "Blunt",
+	"targetType": 4,
+	"emote": "<:Blunt:536966988388368394>",
+	"range": 3,
+    "element": 1,
+	"PPCost": 5,
+	"effectImages": [
+	  {
+	    "id": "Stat",
+	    "args": ["Attack", "0.8"]
+	  }
+	]
+  },
   "Weapon Grace": {
 	"name": "Weapon Grace",
 	"targetType": 1,
@@ -248,7 +276,7 @@
    "Restore": {
 	"name": "Restore",
 	"targetType": 1,
-	"emote": "",
+	"emote": "<:Restore:536969958542802975>",
 	"range": 1,
     "element": 3,
 	"PPCost": 4,
@@ -261,7 +289,7 @@
   "Revive": {
 	"name": "Revive",
 	"targetType": 1,
-	"emote": "",
+	"emote": "<:Revive:536957965513785347>",
 	"range": 1,
     "element": 0,
 	"PPCost": 15,
@@ -275,7 +303,7 @@
   "Phoenix": {
 	"name": "Phoenix",
 	"targetType": 1,
-	"emote": "",
+	"emote": "<:Phoenix:539166682132906005>",
 	"range": 1,
     "element": 1,
 	"PPCost": 15,
@@ -288,9 +316,8 @@
   },
   "Break": {
 	"name": "Break",
-	"targetType": 1,
-	"emote": "",
-	"range": 1,
+	"targetType": 5,
+	"emote": "<:Break:536969993490006036>",
     "element": 3,
 	"PPCost": 5,
 	"effectImages": [
@@ -298,5 +325,42 @@
 	    "id": "Break"
 	  }
 	]
+  },
+  "Thermal": {
+	"name": "Thermal",
+	"targetType": 1,
+	"emote": "<:Blaze:551042852730175520>",
+	"range": 1,
+    "element": 1,
+	"PPCost": 4,
+	"effectImages": [
+	  {
+	    "id": "Restore"
+	  }
+	]
+  },
+   "Blaze": {
+	"name": "Blaze",
+	"targetType": 5,
+	"emote": "<:Blaze:551042852730175520>",
+    "element": 1,
+	"PPCost": 5,
+	"effectImages": [
+	  {
+	    "id": "Break"
+	  }
+	]
+   },
+	"Bind": {
+    "name": "Bind",
+	"targetType": 3,
+	"emote":"<:Bind:549526931465568257>",
+	"range": 1,
+    "element": 2,
+	"effectImages":[
+	{"id": "Condition",
+	"args": ["Seal", "70"]}
+	],
+	"PPCost": 5
   }
 }

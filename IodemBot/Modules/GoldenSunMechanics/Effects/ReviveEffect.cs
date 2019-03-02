@@ -30,5 +30,10 @@ namespace IodemBot.Modules.GoldenSunMechanics
             }
             return log;
         }
+
+        public override string ToString()
+        {
+            return $"Revive the target to {percentage}% of it's maximum Health.";
+        }
     }
 }

@@ -21,6 +21,9 @@ namespace IodemBot.Modules.GoldenSunMechanics
             return new List<string>() { $"{User.name}'s goes down from exhaustion." };
         }
 
-        
+        public override string ToString()
+        {
+            return $"User takes itself down.";
+        }
     }
 }

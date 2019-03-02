@@ -27,6 +27,11 @@ namespace IodemBot.Modules.GoldenSunMechanics
             return JsonConvert.DeserializeObject<HealPsynergy>(serialized);
         }
 
+        public override string ToString()
+        {
+            return $"Heals {(singleTarget ? "one Player" : "the whole Party")} with a power of {healPower} {(percentage>0 ? $"and additional {percentage}%" : "")}.";
+        }
+
         protected override List<string> InternalUse(ColossoFighter User)
         {
             List<string> log = new List<string>();

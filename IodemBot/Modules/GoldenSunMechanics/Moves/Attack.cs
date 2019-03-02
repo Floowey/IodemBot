@@ -53,6 +53,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 log.Add("Critical!!");
                 damage = (uint)(damage*1.25 + Global.random.Next(5,15));    
             }
+            if (damage == 0) damage = 1;
             log.AddRange(enemy.DealDamage(damage));
             if (User is PlayerFighter)
             {

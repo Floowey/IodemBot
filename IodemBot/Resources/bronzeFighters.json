@@ -84,7 +84,7 @@
       "name": "Wyvern",
       "imgurl": "https://goldensunwiki.net/w/images/thumb/f/f7/Gryphon_Dark_Dawn.jpg/250px-Gryphon_Dark_Dawn.jpg",
       "movepool": [
-		"Planet Driver",
+		"Planet Diver",
 		"Raging Heat",
 		"Mad Blast"
 	  ],
@@ -137,7 +137,7 @@
       "name": "Wyvern",
       "imgurl": "",
       "movepool": [
-		"Planet Driver",
+		"Planet Diver",
 		"Raging Heat",
 		"Mad Blast"
 	  ],
@@ -504,7 +504,7 @@
       "name": "Skeleton",
       "imgurl": "https://goldensunwiki.net/w/images/thumb/9/97/Skeleton_Dark_Dawn.jpg/300px-Skeleton_Dark_Dawn.jpg",
       "movepool": [
-		"Ragnarök",
+		"Ragnarok",
 		"Cutting Edge",
 		"Helm Splitter"
 	  ],
@@ -530,7 +530,7 @@
       "name": "Skeleton",
       "imgurl": "",
       "movepool": [
-		"Ragnarök",
+		"Ragnarok",
 		"Helm Splitter",
 		"Cutting Edge"
 	  ],
@@ -557,7 +557,7 @@
       "imgurl": "",
       "movepool": [
 		"Cutting Edge",
-		"Ragnarök",
+		"Ragnarok",
 		"Helm Splitter"
 	  ],
       "stats": {

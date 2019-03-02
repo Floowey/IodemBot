@@ -68,7 +68,7 @@
   "Boon": {
 	"name": "Boon",
 	"targetType": 1,
-	"emote":"<:Natures_Boon:537001159630782465>",
+	"emote":"<:Boon:551203547098906624>",
 	"range": 3,
 	"element": 2,
 	"PPCost": 5,
@@ -90,7 +90,7 @@
   "Vital Boon": {
 	"name": "Vital Boon",
 	"targetType": 1,
-	"emote":"<:Natures_Boon:537001159630782465>",
+	"emote":"<:Vital_Boon:551203547274936324>",
 	"range": 3,
 	"element": 2,
 	"PPCost": 18,
@@ -101,7 +101,7 @@
   "Fresh Breeze": {
 	"name": "Fresh Breeze",
 	"targetType": 2,
-	"emote":"<:Natures_Boon:537001159630782465>",
+	"emote":"<:Fresh_Breeze:551205173159002126>",
 	"range": 3,
 	"element": 2,
 	"PPCost": 8,
@@ -112,7 +112,7 @@
   "Healthy Wind": {
 	"name": "Healthy Wind",
 	"targetType": 2,
-	"emote":"<:Natures_Boon:537001159630782465>",
+	"emote":"<:Healthy_Wind:551205173167521811>",
 	"range": 3,
 	"element": 2,
 	"PPCost": 13,
@@ -123,7 +123,7 @@
   "Healing Gust": {
 	"name": "Healing Gust",
 	"targetType": 2,
-	"emote":"<:Natures_Boon:537001159630782465>",
+	"emote":"<:Healing_Gust:551205173154938899>",
 	"range": 3,
 	"element": 2,
 	"PPCost": 21,
@@ -194,6 +194,28 @@
 	"element": 3,
 	"PPCost": 20,
 	"healPower": 400,
+	"percentage": 0,
+    "singleTarget": false
+  },
+  "Elder Wood": {
+	"name": "Elder Wood",
+	"targetType": 2,
+	"emote":"<:Estre_Wood:551067651670016020>",
+	"range": 3,
+	"element": 3,
+	"PPCost": 9,
+	"healPower": 120,
+	"percentage": 0,
+    "singleTarget": false
+  },
+  "Estre Wood": {
+	"name": "Estre Wood",
+	"targetType": 2,
+	"emote":"<:Estre_Wood:551067651670016020>",
+	"range": 3,
+	"element": 3,
+	"PPCost": 16,
+	"healPower": 280,
 	"percentage": 0,
     "singleTarget": false
   },

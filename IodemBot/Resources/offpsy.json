@@ -543,7 +543,7 @@
 	"range": 2,
     "element": 1,
 	"PPCost": 12,
-	"power": 70
+	"power": 80
   },
   "Magma Storm": {
     "name": "Magma Storm",
@@ -552,7 +552,7 @@
 	"range": 3,
     "element": 1,
 	"PPCost": 27,
-	"power": 120
+	"power": 160
   },
   "Dragon Cloud": {
     "name": "Dragon Cloud",
@@ -561,7 +561,7 @@
 	"range": 1,
     "element": 1,
 	"PPCost": 6,
-	"power": 120
+	"power": 80
   },
   "Epicenter": {
     "name": "Epicenter",
@@ -570,7 +570,7 @@
 	"range": 1,
     "element": 1,
 	"PPCost": 33,
-	"power": 120
+	"power": 210
   },
   "Blast": {
     "name": "Blast",
@@ -1433,7 +1433,7 @@
 		   {
 			   "id": "Condition",
 			   "args":["Flinch", "35"]}
-		   ]
+		   ],
   },
 "Smoke Bomb": {
     "name": "Smoke Bomb",

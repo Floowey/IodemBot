@@ -9,13 +9,13 @@ namespace IodemBot.Modules.GoldenSunMechanics
 {
     public class ReduceHPtoOneEffect : IEffect
     {
-        private int probability = 10;
+        private int Probability = 10;
 
         public ReduceHPtoOneEffect(string[] args)
         {
             if (args.Length == 1)
             {
-                int.TryParse(args[0], out probability);
+                int.TryParse(args[0], out Probability);
             }
         }
 
@@ -25,9 +25,14 @@ namespace IodemBot.Modules.GoldenSunMechanics
             if (Target.isImmuneToEffects) return log;
             if (Target.IsAlive())
             {
-                if (Global.random.Next(1, 100) <= probability) Target.stats.HP = 1;
+                if (Global.random.Next(1, 100) <= Probability) Target.stats.HP = 1;
             }
             return log;
+        }
+
+        public override string ToString()
+        {
+            return $"{(Probability != 100 ? $"{Probability}% chance to set" : "Set")} targets HP to one.";
         }
     }
 }

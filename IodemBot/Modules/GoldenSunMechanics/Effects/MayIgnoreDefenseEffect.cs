@@ -25,7 +25,11 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 int.TryParse(args[0], out ignorePercent);
                 int.TryParse(args[1], out probability);
             }
-            
+        }
+
+        public override string ToString()
+        {
+            return $"{(probability != 100 ? "Chance to ignore ": "Ignore ")} {ignorePercent} of Defense";
         }
     }
 }

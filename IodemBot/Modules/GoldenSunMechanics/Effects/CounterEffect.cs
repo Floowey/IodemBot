@@ -18,5 +18,10 @@ namespace IodemBot.Modules.GoldenSunMechanics
             Target.AddCondition(Condition.Counter);
             return new List<string>() { $"{Target.name} gets ready to strike back!" };
         }
+
+        public override string ToString()
+        {
+            return "Puts the target in the Counter State";
+        }
     }
 }

@@ -36,5 +36,19 @@ namespace IodemBot.Modules.GoldenSunMechanics
             return log;
         }
 
+        public override string ToString()
+        {
+            string target = "";
+            switch (targetType)
+            {
+                case Target.self: target = "the User"; break;
+                case Target.ownSingle: target = "a party member"; break;
+                case Target.ownAll: target = "the Party"; break;
+                case Target.otherSingle: target = "an enemy"; break;
+                case Target.otherRange: target = "a range of enemies"; break;
+                case Target.otherAll: target = "all enemies"; break;
+            }
+            return $"Apply an Effect to {target}.";
+        }
     }
 }
