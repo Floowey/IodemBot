@@ -64,6 +64,28 @@ namespace IodemBot.Modules
             await Context.Channel.SendMessageAsync("", false, embed.Build());
         }
 
+        [Command("wiki")]
+        [Cooldown(5)]
+        [Remarks("Link the wiki")]
+        public async Task Wiki()
+        {
+            var embed = new EmbedBuilder();
+            embed.WithColor(Colors.get("Iodem"));
+            embed.WithDescription($"https://goldensunwiki.net/wiki/Main_Page");
+            await Context.Channel.SendMessageAsync("", false, embed.Build());
+        }
+
+        [Command("subreddit"), Alias("sub")]
+        [Cooldown(5)]
+        [Remarks("Link the wiki")]
+        public async Task Subreddit()
+        {
+            var embed = new EmbedBuilder();
+            embed.WithColor(Colors.get("Iodem"));
+            embed.WithDescription($"https://reddit.com/r/GoldenSun");
+            await Context.Channel.SendMessageAsync("", false, embed.Build());
+        }
+
         [Command("names")]
         public async Task Names()
         {
@@ -71,6 +93,27 @@ namespace IodemBot.Modules
             await Context.Channel.SendMessageAsync($"{user.Username} != {user.Nickname} " +
                 $"because Nickname == null => {user.Nickname == null}");
         }
+        [Command("xp")]
+        [Cooldown(5)]
+        [Remarks("Get information about your level etc")]
+        public async Task xp()
+        {
+            var user = (SocketGuildUser)Context.User;
+            var account = UserAccounts.GetAccount(user);
+            var embed = new EmbedBuilder();
+            var p = new PlayerFighter(user);
+
+            embed.WithColor(Colors.get(account.element.ToString()));
+            var author = new EmbedAuthorBuilder();
+            author.WithName(user.DisplayName());
+            author.WithIconUrl(user.GetAvatarUrl());
+            embed.WithAuthor(author);
+            embed.AddField("Level", account.LevelNumber, true);
+            embed.AddField("XP", account.XP, true);
+            embed.AddField("XP to level up", Leveling.XPforNextLevel(account.XP), true);
+            await Context.Channel.SendMessageAsync("", false, embed.Build());
+        }
+
 
         [Command("status")]
         [Cooldown(5)]

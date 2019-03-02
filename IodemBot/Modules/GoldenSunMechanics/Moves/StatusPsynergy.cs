@@ -10,22 +10,16 @@ namespace IodemBot.Modules.GoldenSunMechanics
 {
     class StatusPsynergy : Psynergy
     {
-        private string statToBuff;
-        private double multiplier;
-        private uint turns;
 
-        public StatusPsynergy(string statToBuff, double multiplier, uint turns, string name, string emote, Target targetType, uint range, List<EffectImage> effectImages, Element element, uint PPCost) : base(name, emote, targetType, range, effectImages, element, PPCost)
+        public StatusPsynergy(string name, string emote, Target targetType, uint range, List<EffectImage> effectImages, Element element, uint PPCost) : base(name, emote, targetType, range, effectImages, element, PPCost)
         {
-            this.statToBuff = statToBuff;
-            this.multiplier = multiplier;
-            this.turns = turns;
         }
 
         public override object Clone()
         {
-            //var serialized = JsonConvert.SerializeObject(this);
-            //return JsonConvert.DeserializeObject<StatusPsynergy>(serialized);
-            return MemberwiseClone();
+            var serialized = JsonConvert.SerializeObject(this);
+            return JsonConvert.DeserializeObject<StatusPsynergy>(serialized);
+            //return MemberwiseClone();
         }
 
         protected override List<string> InternalUse(ColossoFighter User)
@@ -36,10 +30,25 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
             foreach (var t in targets)
             {
-                effects.ForEach(e => e.Apply(User, t));
+                effects.ForEach(e => log.AddRange(e.Apply(User, t)));
             }
 
             return log;
+        }
+
+        public override string ToString()
+        {
+            string target = "";
+            switch (targetType)
+            {
+                case Target.self: target = "the User"; break;
+                case Target.ownSingle: target = "a party member"; break;
+                case Target.ownAll: target = "the Party"; break;
+                case Target.otherSingle: target = "an enemy"; break;
+                case Target.otherRange: target = "a range of enemies"; break;
+                case Target.otherAll: target = "all enemies"; break;
+            }
+            return $"Apply an Effect to {target}.";
         }
     }
 }

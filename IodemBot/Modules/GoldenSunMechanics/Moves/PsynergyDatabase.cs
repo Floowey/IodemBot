@@ -10,27 +10,29 @@ namespace IodemBot.Modules.GoldenSunMechanics
 {
     public class PsynergyDatabase
     {
-        private static Dictionary<string, OffensivePsynergy> offpsy = new Dictionary<string, OffensivePsynergy>();
-        private static Dictionary<string, HealPsynergy> healpsy = new Dictionary<string, HealPsynergy>();
-        private static Dictionary<string, StatusPsynergy> statpsy = new Dictionary<string, StatusPsynergy>();
-        private static Dictionary<string, Psynergy> otherPsynergy = new Dictionary<string, Psynergy>();
+        private static Dictionary<string, OffensivePsynergy> offpsy = new Dictionary<string, OffensivePsynergy>(StringComparer.OrdinalIgnoreCase);
+        private static Dictionary<string, HealPsynergy> healpsy = new Dictionary<string, HealPsynergy>(StringComparer.OrdinalIgnoreCase);
+        private static Dictionary<string, StatusPsynergy> statpsy = new Dictionary<string, StatusPsynergy>(StringComparer.OrdinalIgnoreCase);
+        private static Dictionary<string, Psynergy> otherPsynergy = new Dictionary<string, Psynergy>(StringComparer.InvariantCultureIgnoreCase);
 
         static PsynergyDatabase()
         {
             try
             {
-            string json = File.ReadAllText("Resources/offpsy.json");
-            offpsy = JsonConvert.DeserializeObject<Dictionary<string, OffensivePsynergy>>(json);
+                string json = File.ReadAllText("Resources/offpsy.json");
+                offpsy = new Dictionary<string, OffensivePsynergy>(
+                    JsonConvert.DeserializeObject<Dictionary<string, OffensivePsynergy>>(json),
+                    StringComparer.OrdinalIgnoreCase);
 
-            json = File.ReadAllText("Resources/healpsy.json");
-            healpsy = JsonConvert.DeserializeObject<Dictionary<string, HealPsynergy>>(json);
+                json = File.ReadAllText("Resources/healpsy.json");
+                healpsy = new Dictionary<string, HealPsynergy>(
+                    JsonConvert.DeserializeObject<Dictionary<string, HealPsynergy>>(json),
+                    StringComparer.OrdinalIgnoreCase);
 
-            json = File.ReadAllText("Resources/statpsy.json");
-            statpsy = JsonConvert.DeserializeObject<Dictionary<string, StatusPsynergy>>(json);
-
-            otherPsynergy.Add("Revive", new Revive());
-            otherPsynergy.Add("Phoenix", new Phoenix());
-            otherPsynergy.Add("Break", new Break());
+                json = File.ReadAllText("Resources/statpsy.json");
+                statpsy = new Dictionary<string, StatusPsynergy>(
+                    JsonConvert.DeserializeObject<Dictionary<string, StatusPsynergy>>(json),
+                    StringComparer.OrdinalIgnoreCase);
 
             } catch (Exception e)
             {
@@ -42,23 +44,12 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public static Psynergy GetPsynergy(string psynergy)
         {
-            if (offpsy.ContainsKey(psynergy))
-            {
-                return (OffensivePsynergy)Clone(offpsy[psynergy]).Clone();
-            }
-            else if (healpsy.ContainsKey(psynergy))
-            {
-                return (HealPsynergy) healpsy[psynergy].Clone();
-            }
-            else if (statpsy.ContainsKey(psynergy))
-            {
-                return (StatusPsynergy) statpsy[psynergy].Clone();
-            }
-            else if (otherPsynergy.ContainsKey(psynergy))
-            {
-                return (Psynergy) otherPsynergy[psynergy].Clone();
-            }
+            if (offpsy.TryGetValue(psynergy, out OffensivePsynergy op)) return (OffensivePsynergy) op.Clone();
 
+            if (healpsy.TryGetValue(psynergy, out HealPsynergy hp)) return (HealPsynergy) hp.Clone();
+
+            if (statpsy.TryGetValue(psynergy, out StatusPsynergy sp)) return (StatusPsynergy) sp.Clone();
+           
             return new OffensivePsynergy($"{psynergy} (Not Implemented!)", "⛔", Target.otherSingle, 1, new List<EffectImage>(), Psynergy.Element.none, 0, 1 ,0, 1);
         }
 

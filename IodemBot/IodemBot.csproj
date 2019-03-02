@@ -265,7 +265,7 @@
     <Compile Include="Modules\GoldenSunMechanics\Effects\CounterEffect.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Effects\IEffect.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Effects\MayIgnoreDefenseEffect.cs" />
-    <Compile Include="Modules\GoldenSunMechanics\Effects\MultiplyDamgeEffect.cs" />
+    <Compile Include="Modules\GoldenSunMechanics\Effects\MultiplyDamageEffect.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Effects\NoEffect.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Effects\ReduceHPtoOneEffect.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Effects\RestoreEffect.cs" />
@@ -370,6 +370,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="iodem_ZUO_icon.ico" />
+    <Content Include="Modules\GoldenSunMechanics\Effects\RequirementsTemplate.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets" Condition="Exists('..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets')" />

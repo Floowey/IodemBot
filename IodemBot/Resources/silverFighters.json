@@ -5,14 +5,14 @@
       "imgurl": "https://pbs.twimg.com/media/DxYLWDzWwAAAUEc.jpg",
       "movepool": 
 	  [
-	  "Cure Well",
+	  "Cure",
 	  "Ragnarök",
 	  "Odyssey",
 	  "Quake Sphere"
 	  ],
       "stats": {
-        "maxHP": 1500,
-        "maxPP": 300,
+        "maxHP": 1450,
+        "maxPP": 175,
         "Atk": 250,
         "Def": 60,
         "Spd": 70

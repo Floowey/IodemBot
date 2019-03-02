@@ -40,7 +40,7 @@
         "movepool": [
           "Quake",
           "Cure"
-        ],
+        ], 	
         "statMultipliers": {
           "maxHP": 110,
           "maxPP": 80,
@@ -326,7 +326,6 @@
         "movepool": [
           "Fume",
           "Beam",
-		  "Impair"
         ],
         "statMultipliers": {
           "maxHP": 100,
@@ -341,7 +340,7 @@
         "movepool": [
           "Fume",
           "Cycle Beam",
-		  "Impair"
+		  "Blaze"
         ],
         "statMultipliers": {
           "maxHP": 110,
@@ -356,7 +355,7 @@
 		"movepool": [
 		  "Serpent Fume",
 		  "Cycle Beam",
-		  "Impair",
+		  "Blaze",
 		  "Aura"
 		],
 		"statMultipliers": {
@@ -372,7 +371,7 @@
 		"movepool": [
 		  "Serpent Fume",
 		  "Searing Beam",
-		  "Debilitate",
+		  "Blaze",
 		  "Healing Aura"
 		],
 		"statMultipliers": {
@@ -388,7 +387,7 @@
 		"movepool": [
 		  "Dragon Fume",
 		  "Searing Beam",
-		  "Debilitate",
+		  "Blaze",
 		  "Cool Aura"
 		],
 		"statMultipliers": {
@@ -423,7 +422,8 @@
         "name": "Pirate",
         "movepool": [
           "Fume",
-		  "Beam"
+		  "Beam",
+		  "Thermal"
         ],
         "statMultipliers": {
           "maxHP": 110,
@@ -438,7 +438,8 @@
         "movepool": [
           "Keelhaul",
           "Fume",
-          "Cycle Beam"
+          "Cycle Beam",
+		  "Thermal"
         ],
         "statMultipliers": {
           "maxHP": 130,
@@ -453,7 +454,8 @@
 		"movepool": [
 			"Keelhaul",
 			"Serpent Fume",
-			"Cycle Beam"
+			"Cycle Beam",
+			"Thermal"
 		],
 		"statMultipliers": {
 		  "maxHP": 150,
@@ -468,7 +470,8 @@
 		"movepool": [
 			"Vicious Chop",
 			"Serpent Fume",
-			"Searing Beam"
+			"Searing Beam",
+			"Thermal"
 		],
 		"statMultipliers": {
 		  "maxHP": 170,
@@ -483,7 +486,8 @@
 		"movepool": [
 			"Vicious Chop",
 			"Dragon Fume",
-			"Searing Beam"
+			"Searing Beam",
+			"Thermal"
 		],
 		"statMultipliers": {
 		  "maxHP": 190,
@@ -729,7 +733,7 @@
         "name": "Scribe",
         "movepool": [
           "Ice Horn",
-		  "Break",
+		  "Restore",
           "Ply Well"
         ],
         "statMultipliers": {
@@ -744,7 +748,7 @@
 		"name": "Cleric",
 		"movepool": [
 		  "Ice Horn",
-		  "Break",
+		  "Restore",
 		  "Ply Well",
 		  "Wish"
 		],
@@ -760,7 +764,7 @@
 		"name": "Paragon",
 		"movepool": [
 		  "Ice Missile",
-		  "Break",
+		  "Restore",
 		  "Pure Ply",
 		  "Wish Well"
 		],
@@ -776,7 +780,7 @@
 		"name": "Angel",
 		"movepool": [
 		  "Ice Missile",
-		  "Break",
+		  "Restore",
 		  "Pure Ply",
 		  "Pure Wish"
 		],
@@ -911,7 +915,6 @@
         "name": "Aqua Squire",
         "movepool": [
           "Douse",
-          "Cool",
 		  "Ply"
         ],
         "statMultipliers": {
@@ -927,7 +930,7 @@
         "movepool": [
           "Diamond Dust",
 		  "Drench",
-          "Super Cool",
+          "Break",
 		  "Ply"
         ],
         "statMultipliers": {
@@ -943,7 +946,7 @@
 		"movepool": [
 		  "Diamond Dust",
 		  "Deluge",
-		  "Super Cool",
+		  "Break",
 		  "Ply Well"
 		],
 		"statMultipliers": {
@@ -959,7 +962,7 @@
 		"movepool": [
 		  "Diamond Berg",
 		  "Deluge",
-		  "Super Cool",
+		  "Break",
 		  "Pure Ply"
 		],
 		"statMultipliers": {
@@ -975,7 +978,7 @@
 		"movepool": [
 		  "Diamond Berg",
 		  "Deluge",
-		  "Megacool",
+		  "Break",
 		  "Pure Ply"
 		],
 		"statMultipliers": {
@@ -1124,7 +1127,7 @@
         "name": "Apprentice",
         "movepool": [
           "Gaia",
-		  "Ward"
+		  "Dull"
         ],
         "statMultipliers": {
           "maxHP": 100,
@@ -1139,7 +1142,7 @@
         "movepool": [
           "Astral Blast",
           "Gaia",
-		  "Ward"
+		  "Dull"
         ],
         "statMultipliers": {
           "maxHP": 120,
@@ -1154,7 +1157,7 @@
         "movepool": [
           "Astral Blast",
           "Mother Gaia",
-		  "Resist",
+		  "Blunt",
           "Impact"
         ],
         "statMultipliers": {
@@ -1170,7 +1173,7 @@
         "movepool": [
           "Thunder Mine",
           "Mother Gaia",
-		  "Resist",
+		  "Blunt",
           "High Impact"
         ],
         "statMultipliers": {
@@ -1186,7 +1189,7 @@
         "movepool": [
           "Thunder Mine",
           "Grand Gaia",
-		  "Resist",
+		  "Blunt",
           "High Impact"
         ],
         "statMultipliers": {
@@ -1856,7 +1859,7 @@
         "movepool": [
           "Froth Sphere",
 		  "Mad Growth",
-          "Wish",
+          "Elder Wood",
 		  "Revive"
         ],
         "statMultipliers": {
@@ -1872,7 +1875,7 @@
         "movepool": [
           "Froth Spiral",
 		  "Mad Growth",
-          "Wish Well",
+          "Elder Wood",
 		  "Revive"
         ],
         "statMultipliers": {
@@ -1888,7 +1891,7 @@
         "movepool": [
           "Froth Spiral",
           "Wild Growth",
-		  "Pure Wish",
+		  "Estree Wood",
 		  "Revive"
         ],
         "statMultipliers": {
@@ -1939,7 +1942,7 @@
         "movepool": [
 		  "Cutting Edge",
           "Mad Blast",
-          "Ply"
+          "Restore"
         ],
         "statMultipliers": {
           "maxHP": 120,
@@ -1954,7 +1957,7 @@
         "movepool": [
 		  "Cutting Edge",
           "Mad Blast",
-          "Ply Well",
+          "Restore",
 		  "Wish"
         ],
         "statMultipliers": {
@@ -1970,7 +1973,7 @@
         "movepool": [
 		  "Plume Edge",
           "Mad Blast",
-          "Pure Ply",
+          "Restore",
 		  "Wish Well"
         ],
         "statMultipliers": {
@@ -1986,7 +1989,7 @@
         "movepool": [
           "Plume Edge",
           "Fiery Blast",
-          "Ply Well",
+          "Restore",
 		  "Wish Well"
         ],
         "statMultipliers": {

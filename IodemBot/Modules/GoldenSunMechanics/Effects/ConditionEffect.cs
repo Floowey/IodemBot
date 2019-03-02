@@ -10,25 +10,29 @@ namespace IodemBot.Modules.GoldenSunMechanics
     class ConditionEffect : IEffect
     {
         private Condition Cond;
-        private int Probability;
+        private int Probability = 10;
 
         public ConditionEffect(string stringCondition, int probability)
         {
             init(stringCondition, probability);
         }
 
-        public ConditionEffect(params object[] args)
+        public ConditionEffect(params string[] args)
         {
-            if(args.Length != 2)
+            if(args.Length == 2)
             {
-                if (args[0] is string && args[1] is int)
-                {
-                    init((string)args[0], (int)args[1]);
-                }
+                int prob = 10;
+                int.TryParse(args[1], out prob);
+                init(args[0], prob);
             } else
             {
                 throw new ArgumentException("Condition, probability");
             }
+        }
+
+        public override string ToString()
+        {
+            return $"{(Probability != 100 ? $"{Probability}% chance to apply " : "Apply ")} {Cond}.";
         }
 
         private void init(string stringCondition, int probability)
@@ -43,6 +47,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public override List<string> Apply(ColossoFighter User, ColossoFighter Target)
         {
             List<string> log = new List<string>();
+            if (Target.isImmuneToEffects) return log;
+            if (!Target.IsAlive()) return log;
             if(Global.random.Next(1, 100) <= Probability)
             {
                 Target.AddCondition(Cond);
