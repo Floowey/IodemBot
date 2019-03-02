@@ -53,5 +53,18 @@ namespace IodemBot.Modules.GoldenSunMechanics
             var position = User.classToggle % availableClasses.Count;
             return availableClasses.ElementAt(position);
         }
+
+        public static bool TryGetClassSeries(string series, out AdeptClassSeries outSeries)
+        {
+            var trySeries = allClasses.Where(s => s.name.ToUpper().Contains(series.ToUpper()) || s.classes.Any(c => c.name.ToUpper().Contains(series.ToUpper()))).FirstOrDefault();
+            if (trySeries == null)
+            {
+                outSeries = null;
+                return false;
+            }
+
+            outSeries = trySeries;
+            return true;
+        }
     }
 }
