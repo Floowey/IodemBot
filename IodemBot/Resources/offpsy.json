@@ -1174,7 +1174,11 @@
 	"range": 1,
     "element": 1,
 	"PPCost": 0,
-	"addDamage": 20
+	"addDamage": 20,
+	  "effectImages":[
+	{"id": "Condition",
+	"args": ["Delusion", "30"]}
+	],
   },
   "Death Size": {
     "name": "Death Size",
@@ -1183,7 +1187,13 @@
 	"range": 1,
     "element": 0,
 	"PPCost": 0,
-	"addDamage": 35
+	"addDamage": 35,
+	  "effectImages": [
+	  {
+	    "id": "ChanceToOHKO",
+		"args": ["20"]
+	  }
+	],
   },
   "Ransack": {
     "name": "Ransack",
@@ -1210,7 +1220,11 @@
 	"range": 1,
     "element": 2,
 	"PPCost": 0,
-	"power": 70
+	"power": 70,
+	    "effectImages":[
+	{"id": "Condition",
+	"args": ["Flinch", "30"]}
+	],
   },
   "Bear Claw": {
     "name": "Bear Claw",
@@ -1237,7 +1251,11 @@
 	"range": 1,
     "element": 0,
 	"PPCost": 0,
-	"addDamage": 40
+	"addDamage": 40,
+	    "effectImages":[
+	{"id": "Condition",
+	"args": ["Poison", "50"]}
+	],
   },
    "Wing Flutter": {
     "name": "Wing Flutter",
@@ -1255,7 +1273,12 @@
 	"range": 1,
     "element": 2,
 	"PPCost": 0,
-	"addDamage": 40
+	"addDamage": 30,
+	   "effectImages":[
+	   {
+	   "id": "DamageMult",
+"args": ["1.0, 2.0", "50, 50"]}
+		   ],
   },
   "Ice Blessing": {
     "name": "Ice Blessing",
@@ -1282,7 +1305,11 @@
 	"range": 1,
     "element": 0,
 	"PPCost": 0,
-	"addDamage": 50
+	"addDamage": 36
+	  "effectImages":[
+	  { "id": "Condition",
+	  "args": ["Venom", "25"]}
+	],
   },
   "Mad Dash": {
     "name": "Mad Dash",
@@ -1309,7 +1336,12 @@
 	"range": 3,
     "element": 1,
 	"PPCost": 0,
-	"power": 170
+	"power": 170,
+	"effectImages":[
+	{
+		"id": "Stat",
+		"args":["Defense, "0.8", "20"]}
+			],
   },
   "Storm Breath": {
     "name": "Storm Breath",
@@ -1318,7 +1350,12 @@
 	"range": 3,
     "element": 2,
 	"PPCost": 0,
-	"power": 170
+	"power": 170,
+		"effectImages":[
+		{
+		"id": "Condition",
+		"args":["Stun", "20"]}
+],
   },
   "Double Fang": {
     "name": "Double Fang",
@@ -1327,7 +1364,12 @@
 	"range": 1,
     "element": 0,
 	"PPCost": 0,
-	"addDamage": 50
+	"addDamage": 50,
+	  "effectImages":[
+		  {
+		  "id": "DamageMult",
+			  "args":["1.0, 2.0", "50, 50"]}
+		  ],
 	},
   "Oil Drop": {
     "name": "Oil Drop",
@@ -1363,7 +1405,12 @@
 	"range": 1,
     "element": 0,
 	"PPCost": 0,
-	"dmgMult": 1.3
+	"dmgMult": 1.3,
+	   "effectImages":[
+		   {
+			   "id": "Condition",
+			   "args":["Stun", "20"]}
+		   ],
   },
    "Mighty Press": {
     "name": "Mighty Press",
@@ -1372,6 +1419,11 @@
 	"range": 1,
     "element": 0,
 	"PPCost": 0,
-	"addDamage": 50
+	"addDamage": 50,
+		   "effectImages":[
+			   {
+				   "id": "ChanceToOHKO",
+				   "args": ["10"]}
+			   ],
   },
 }
