@@ -6,7 +6,7 @@
       "movepool": 
 	  [
 	  "Cure",
-	  "Ragnarök",
+	  "Ragnarok",
 	  "Odyssey",
 	  "Quake Sphere"
 	  ],
@@ -126,7 +126,7 @@
       "imgurl": "https://cdn.discordapp.com/attachments/535209634408169492/543711326896128012/gs_tla_chibis.png",
       "movepool": [
 		"Cure Well",
-		"Ragnarök",
+		"Ragnarok",
 		"Mother Gaia",
 		"Revive"
 	  ],
@@ -235,7 +235,7 @@
       "imgurl": "https://static.tvtropes.org/pmwiki/pub/images/golden-sun.jpg",
       "movepool": [
 		"Cure Well",
-		"Ragnarök",
+		"Ragnarok",
 		"Mother Gaia",
 		"Revive"
 	  ],
@@ -584,6 +584,8 @@
 		"Ransack",
 		"Douse",
 		"Debilitate",
+	      "Bind",
+	      "War Cry"
 	  ],
       "stats": {
         "maxHP": 1000,
@@ -657,10 +659,11 @@
       "name": "Virago",
       "imgurl": "https://vignette.wikia.nocookie.net/goldensun/images/3/31/Hobgoblin.png/revision/latest?cb=20071212184432",
       "movepool": [
-		"Tornado"
+		"Tornado",
+	      "Banshee Howl"
 	  ],
       "stats": {
-        "maxHP": 185,
+        "maxHP": 450,
         "maxPP": 34,
         "Atk": 199,
         "Def": 47,
@@ -683,9 +686,11 @@
       "movepool": [
 		"Nut",
 		"Crystal Powder",
+	      "Sleep Bomb",
+	      "Smoke Bomb"
 	  ],
       "stats": {
-        "maxHP": 650,
+        "maxHP": 900,
         "maxPP": 80,
         "Atk": 203,
         "Def": 54,
@@ -706,10 +711,11 @@
       "name": "Virago",
       "imgurl": "",
       "movepool": [
-		"Tornado"
+		"Tornado",
+	      "Banshee Howl"
 	  ],
       "stats": {
-        "maxHP": 185,
+        "maxHP": 450,
         "maxPP": 34,
         "Atk": 199,
         "Def": 47,
@@ -955,7 +961,7 @@
 		"Crystal Powder"
 	  ],
       "stats": {
-        "maxHP": 500,
+        "maxHP": 1000,
         "maxPP": 160,
         "Atk": 150,
         "Def": 28,
@@ -983,7 +989,7 @@
 		"Bramble Seed"
 	  ],
       "stats": {
-        "maxHP": 1000,
+        "maxHP": 1500,
         "maxPP": 160,
         "Atk": 274,
         "Def": 54,
