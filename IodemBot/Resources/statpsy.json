@@ -274,7 +274,7 @@
     "element": 2,
 	"PPCost": 5,
 	"effectImages":[
-	{"id": "Condition",
+	{id: "Condition",
 	"args": ["Seal", "70"]}
 	]
   },
