@@ -316,9 +316,8 @@
   },
   "Break": {
 	"name": "Break",
-	"targetType": 1,
+	"targetType": 5,
 	"emote": "<:Break:536969993490006036>",
-	"range": 1,
     "element": 3,
 	"PPCost": 5,
 	"effectImages": [
@@ -342,9 +341,8 @@
   },
    "Blaze": {
 	"name": "Blaze",
-	"targetType": 1,
+	"targetType": 5,
 	"emote": "<:Blaze:551042852730175520>",
-	"range": 1,
     "element": 1,
 	"PPCost": 5,
 	"effectImages": [
@@ -364,5 +362,5 @@
 	"args": ["Seal", "70"]}
 	],
 	"PPCost": 5
-  },
+  }
 }
