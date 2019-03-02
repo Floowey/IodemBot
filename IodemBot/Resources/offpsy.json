@@ -1182,16 +1182,15 @@
   },
   "Death Size": {
     "name": "Death Size",
-	"targetType": 3,
-	"emote":":skull_crossbones:",
-	"range": 1,
+    "targetType": 3,
+    "emote":":skull_crossbones:",
+    "range": 1,
     "element": 0,
 	"PPCost": 0,
 	"addDamage": 35,
 	  "effectImages": [
-	  {
-	    "id": "ChanceToOHKO",
-		"args": ["20"]
+	  {"id": "ChanceToOHKO",
+	   "args": ["20"]
 	  }
 	],
   },
@@ -1274,11 +1273,10 @@
     "element": 2,
 	"PPCost": 0,
 	"addDamage": 30,
-	   "effectImages":[
-	   {
-	   "id": "DamageMult",
-"args": ["1.0, 2.0", "50, 50"]}
-		   ],
+	"effectImages":[
+	   {"id": "DamageMult",
+		"args": ["1.0, 2.0", "50, 50"]}
+     ],
   },
   "Ice Blessing": {
     "name": "Ice Blessing",
@@ -1339,7 +1337,7 @@
     "power": 170,
     "effectImages":[
       {"id": "Stat",
-       "args":["Defense, "0.8", "20"]}
+       "args":["Defense", "0.8", "20"]}
     ]
   },
   "Storm Breath": {
@@ -1367,7 +1365,7 @@
       {"id": "DamageMult",
        "args":["1.0, 2.0", "50, 50"]}
     ],
-	},
+  },
   "Oil Drop": {
     "name": "Oil Drop",
 	"targetType": 4,
@@ -1443,7 +1441,7 @@
 	"emote":"<:Smoke_Bomb:551223599911141391>",
 	"range": 1,
     "element": 0,
-	"PPCost": 0
+	"PPCost": 0,
 	   "effectImages":[
 		   {
 			   "id": "Condition",
@@ -1456,7 +1454,7 @@
     "emote":"<:Sleep_Bomb:551223599894102026>",
     "range": 1,
     "element": 0,
-    "PPCost": 0
+    "PPCost": 0,
     "effectImages":[
       {"id": "Condition",
        "args":["Sleep", "35"]}
