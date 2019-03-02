@@ -52,7 +52,7 @@
       {
         "name": "Knight",
         "movepool": [
-          "Ragnarök",
+          "Ragnarok",
 		  "Earthquake",
           "Cure"
         ],
@@ -67,7 +67,7 @@
 	  {
 		"name": "Gallant",
 		"movepool": [
-			"Ragnarök",
+			"Ragnarok",
 			"Quake Sphere",
 			"Cure Well",
 			"Revive"
