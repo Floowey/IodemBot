@@ -1331,45 +1331,42 @@
   },
   "Acid Breath": {
     "name": "Acid Breath",
-	"targetType": 4,
-	"emote":"☣",
-	"range": 3,
+    "targetType": 4,
+    "emote":"☣",
+    "range": 3,
     "element": 1,
-	"PPCost": 0,
-	"power": 170,
-	"effectImages":[
-	{
-		"id": "Stat",
-		"args":["Defense, "0.8", "20"]}
-			],
+    "PPCost": 0,
+    "power": 170,
+    "effectImages":[
+      {"id": "Stat",
+       "args":["Defense, "0.8", "20"]}
+    ]
   },
   "Storm Breath": {
     "name": "Storm Breath",
-	"targetType": 4,
-	"emote":"🌩",
-	"range": 3,
+    "targetType": 4,
+    "emote":"🌩",
+    "range": 3,
     "element": 2,
-	"PPCost": 0,
-	"power": 170,
-		"effectImages":[
-		{
-		"id": "Condition",
-		"args":["Stun", "20"]}
-],
+    "PPCost": 0,
+    "power": 170,
+    "effectImages":[
+	{"id": "Condition",
+	 "args":["Stun", "20"]}
+    ]
   },
   "Double Fang": {
     "name": "Double Fang",
-	"targetType": 3,
-	"emote":"🐶",
-	"range": 1,
+    "targetType": 3,
+    "emote":"🐶",
+    "range": 1,
     "element": 0,
-	"PPCost": 0,
-	"addDamage": 50,
-	  "effectImages":[
-		  {
-		  "id": "DamageMult",
-			  "args":["1.0, 2.0", "50, 50"]}
-		  ],
+    "PPCost": 0,
+    "addDamage": 50,
+    "effectImages":[
+      {"id": "DamageMult",
+       "args":["1.0, 2.0", "50, 50"]}
+    ],
 	},
   "Oil Drop": {
     "name": "Oil Drop",
@@ -1452,20 +1449,19 @@
 			   "id": "Condition",
 			   "args":["Delusion", "35"]}
 		   ],
-  },
+},
 "Sleep Bomb": {
     "name": "Sleep Bomb",
-	"targetType": 3,
-	"emote":"<:Sleep_Bomb:551223599894102026>",
-	"range": 1,
+    "targetType": 3,
+    "emote":"<:Sleep_Bomb:551223599894102026>",
+    "range": 1,
     "element": 0,
-	"PPCost": 0
-	   "effectImages":[
-		   {
-			   "id": "Condition",
-			   "args":["Sleep", "35"]}
-		   ],
-  },
+    "PPCost": 0
+    "effectImages":[
+      {"id": "Condition",
+       "args":["Sleep", "35"]}
+    ],
+},
 "Dynamite": {
     "name": "Dynamite",
 	"targetType": 4,
@@ -1476,7 +1472,7 @@
 	"power": 200,
 	   "effectImages":[
 		   {
-			   "id": "UserDies",
+			   "id": "UserDies"
 			   }
 		   ],
   },
