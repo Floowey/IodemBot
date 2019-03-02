@@ -1466,4 +1466,18 @@
 			   "args":["Sleep", "35"]}
 		   ],
   },
+"Dynamite": {
+    "name": "Dynamite",
+	"targetType": 4,
+	"emote":"<:bomb:>",
+	"range": 3,
+    "element": 1,
+	"PPCost": 0,
+	"power": 200,
+	   "effectImages":[
+		   {
+			   "id": "UserDies",
+			   }
+		   ],
+  },
 }
