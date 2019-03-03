@@ -55,7 +55,7 @@ namespace IodemBot
                 new CurseReaction(),
                 2));
             responses.Add(new AutoResponse(
-                new Regex(@" 420 ", RegexOptions.Compiled),
+                new Regex(@"(^|\D)(420)(\D|$)", RegexOptions.Compiled),
                 new Reaction("",
                     Emote.Parse("<:Herb:543043292187590659>")),
                 60));
