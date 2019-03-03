@@ -44,6 +44,12 @@ namespace IodemBot.Modules.GoldenSunMechanics
             MercuryRes = mercuryDef;
         }
 
+        public override string ToString()
+        {
+            return $"`VnPow: {VenusAtk} MrPow: {MarsAtk} JpPow: {JupiterAtk} McPow: {MercuryAtk}`\n" +
+                $"`VnRes: {VenusRes} MrRes: {MarsRes} JpRes: {JupiterRes} McRes: {MercuryRes}`";
+        }
+
         internal uint leastRes()
         {
             return (new[] { VenusRes, MarsRes, JupiterRes, MercuryRes}).Min();

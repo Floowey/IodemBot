@@ -6,9 +6,11 @@
       "movepool": 
 	  [
 	  "Cure",
+	  "Cure Well",
 	  "Ragnarok",
 	  "Odyssey",
-	  "Quake Sphere"
+	  "Quake Sphere",
+	  "Mother Gaia"
 	  ],
       "stats": {
         "maxHP": 1450,
@@ -154,7 +156,8 @@
       "movepool": [
 		"Healing Aura",
 		"Serpent Fume",
-		"Cycle Beam"
+		"Cycle Beam",
+		"Blaze"
 	  ],
       "stats": {
         "maxHP": 310,
@@ -181,7 +184,8 @@
 		"Tornado",
 		"Spark Plasma",
 		"Impact",
-		"High Impact"
+		"High Impact",
+		"Bind"
 	  ],
       "stats": {
         "maxHP": 260,
@@ -208,7 +212,8 @@
 		"Diamond Dust",
 		"Ply Well",
 		"Super Cool",
-		"Tundra"
+		"Tundra",
+		"Break"
 	  ],
       "stats": {
         "maxHP": 400,
@@ -240,7 +245,7 @@
 		"Revive"
 	  ],
       "stats": {
-        "maxHP": 350,
+        "maxHP": 450,
         "maxPP": 100,
         "Atk": 120,
         "Def": 80,
@@ -267,7 +272,7 @@
 		"Protect"
 	  ],
       "stats": {
-        "maxHP": 400,
+        "maxHP": 500,
         "maxPP": 100,
         "Atk": 100,
         "Def": 100,
@@ -291,10 +296,11 @@
 		"Tornado",
 		"Spark Plasma",
 		"Impact",
-		"High Impact"
+		"High Impact",
+		"Bind"
 	  ],
       "stats": {
-        "maxHP": 270,
+        "maxHP": 370,
         "maxPP": 200,
         "Atk": 80,
         "Def": 40,
@@ -318,10 +324,12 @@
 		"Tundra",
 		"Ply Well",
 		"Wish Well",
-		"Ice Horn"
+		"Ice Horn",
+		"Restore",
+		"Break"
 	  ],
       "stats": {
-        "maxHP": 300,
+        "maxHP": 400,
         "maxPP": 200,
         "Atk": 50,
         "Def": 80,

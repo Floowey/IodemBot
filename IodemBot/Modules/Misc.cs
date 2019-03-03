@@ -67,11 +67,13 @@ namespace IodemBot.Modules
         [Command("wiki")]
         [Cooldown(5)]
         [Remarks("Link the wiki")]
-        public async Task Wiki()
+        public async Task Wiki([Remainder] string searchQuery = "")
         {
             var embed = new EmbedBuilder();
             embed.WithColor(Colors.get("Iodem"));
-            embed.WithDescription($"https://goldensunwiki.net/wiki/Main_Page");
+            string link = "https://goldensunwiki.net/wiki/Main_Page";
+            if (searchQuery != "") link = $"https://goldensunwiki.net/w/index.php?Search&search={searchQuery.Trim().Replace(" ", "+")}";
+            embed.WithDescription(link);
             await Context.Channel.SendMessageAsync("", false, embed.Build());
         }
 
@@ -86,13 +88,6 @@ namespace IodemBot.Modules
             await Context.Channel.SendMessageAsync("", false, embed.Build());
         }
 
-        [Command("names")]
-        public async Task Names()
-        {
-            SocketGuildUser user = (SocketGuildUser) Context.User;
-            await Context.Channel.SendMessageAsync($"{user.Username} != {user.Nickname} " +
-                $"because Nickname == null => {user.Nickname == null}");
-        }
         [Command("xp")]
         [Cooldown(5)]
         [Remarks("Get information about your level etc")]

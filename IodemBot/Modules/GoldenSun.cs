@@ -135,11 +135,17 @@ namespace IodemBot.Modules
             if (name == "") return;
             if (AdeptClassSeriesManager.TryGetClassSeries(name, out AdeptClassSeries series))
             {
+                AdeptClass adeptClass = series.classes.Where(c => c.name.ToUpper() == name.ToUpper()).FirstOrDefault();
                 var embed = new EmbedBuilder();
-                embed.WithAuthor(series.name);
-                //embed.AddField("Elemental Stats", series.elstats.ToString());
-                embed.AddField("Elements", string.Join(", ", series.elements.Select(e => e.ToString())));
-                embed.AddField("Classes", string.Join(", ", series.classes.Select(s => s.name)));
+                embed.WithAuthor($"{adeptClass.name}");
+                embed.WithColor(Colors.get(series.elements.Select(s => s.ToString()).ToArray()));
+                var relevantMoves = AdeptClassSeriesManager.getMoveset(adeptClass).Where(m => m is Psynergy).ToList().ConvertAll(m => (Psynergy)m).ConvertAll(p => $"{p.emote} {p.name} `{p.PPCost}`");
+                embed.AddField("Description", series.description ?? "-");
+                embed.AddField("Stats", adeptClass.statMultipliers, true);
+                embed.AddField("Elemental Stats", series.elstats.ToString(), true);
+                embed.AddField("Movepool", string.Join(" - ", relevantMoves));
+                embed.AddField($"Other Classes in {series.name}", string.Join(", ", series.classes.Select(s => s.name)), true);
+                embed.AddField("Elements", string.Join(", ", series.elements.Select(e => e.ToString())), true);
                 await Context.Channel.SendMessageAsync("", false, embed.Build());
             } else
             {
@@ -158,7 +164,7 @@ namespace IodemBot.Modules
             {
                 var failEmbed = new EmbedBuilder();
                 failEmbed.WithColor(Colors.get("Iodem"));
-                failEmbed.WithDescription("I have never heard of that kind of of Psynergy");
+                failEmbed.WithDescription("I have never heard of that kind of Psynergy");
                 await Context.Channel.SendMessageAsync("", false, failEmbed.Build());
                 return;
             }

@@ -127,7 +127,8 @@
       "MercuryRes": 100
     },
     "requirement": "Level",
-    "isDefault": true
+    "isDefault": true,
+	"description": "Stoic and rooted to the soil, Adepts of the Squire Series excell in leadship and versatility."
   },
   {
     "name": "Miko Series",
@@ -222,7 +223,8 @@
       "MercuryRes": 100
     },
     "requirement": "Level",
-    "isDefault": true
+    "isDefault": true,
+	"description": "Miko are trained to express astronomic power by funneling their inner spirits."
   },
   {
     "name": "Guard Series",
@@ -316,7 +318,8 @@
       "MercuryRes": 80
     },
     "requirement": "Level",
-    "isDefault": true
+    "isDefault": true,
+	"description": "In the heat of the battle, the Guards will heroically protect their own."
   },
   {
     "name": "Flame User Series",
@@ -413,7 +416,8 @@
       "MercuryRes": 80
     },
     "requirement": "Level",
-    "isDefault": true
+    "isDefault": true,
+	"description": "Flame Users show the glistering magic of the Mars element, by reigning Justice from above"
   },
   {
     "name": "Pirate Series",
@@ -512,7 +516,8 @@
       "MercuryRes": 110
     },
     "requirement": "Level",
-    "isDefault": true
+    "isDefault": true,
+	"description": "Crossing the Eastern Seas, Pirates fear the lands more than the seas."
   },
   {
     "name": "Wind Seer Series",
@@ -611,7 +616,8 @@
       "MercuryRes": 100
     },
     "requirement": "Level",
-    "isDefault": true
+    "isDefault": true,
+	"description":"Windseers inherit the wisdom and tempestuousness of the Anemos."
   },
   {
     "name": "Beastling Series",
@@ -710,7 +716,8 @@
       "MercuryRes": 100
     },
     "requirement": "Level",
-    "isDefault": true
+    "isDefault": true,
+	"Their connection to nature let's Beastlings become one with the wild.'"
   },
   {
     "name": "Water Seer Series",
@@ -807,7 +814,8 @@
       "MercuryRes": 140
     },
     "requirement": "Level",
-    "isDefault": true
+    "isDefault": true,
+	"description": "The heirs of the Mercury Clan use the chill of water to heal."
   },
   {
     "name": "Mariner Series",
@@ -906,7 +914,8 @@
       "MercuryRes": 140
     },
     "requirement": "Level",
-    "isDefault": true
+    "isDefault": true,
+	"description": "Mastering the seas allows Mariners to cross waters even the roughest conditions."
   },
   {
     "name": "Aqua Squire Series",
@@ -1004,7 +1013,8 @@
       "MercuryRes": 130
     },
     "requirement": "Level",
-    "isDefault": true
+    "isDefault": true,
+	"description":"The Ayuthay pledge to become reputable representatives of their folk to rise from a mere Aqua Squire to reigning their country. (Dev-note: Unlike the games, the stats of the Aqua Squire series follow those of the Squire Series, and not the Mariner Series)"
   },
   {
     "name": "Brute Series",
@@ -1118,7 +1128,8 @@
       "MercuryRes": 70
     },
     "requirement": "ColossoWins",
-    "isDefault": false
+    "isDefault": false,
+	"description": "A Brutes mere interest is to fight and prove superiority."
   },
   {
     "name": "Apprentice Series",
@@ -1138,7 +1149,7 @@
         }
       },
       {
-        "name": "Illusionist",
+        "name": "Gaia Illusionist",
         "movepool": [
           "Astral Blast",
           "Gaia",
@@ -1153,7 +1164,7 @@
         }
       },
       {
-        "name": "Enchanter",
+        "name": "Gaia Enchanter",
         "movepool": [
           "Astral Blast",
           "Mother Gaia",
@@ -1169,7 +1180,7 @@
         }
       },
       {
-        "name": "Conjurer",
+        "name": "Gaia Conjurer",
         "movepool": [
           "Thunder Mine",
           "Mother Gaia",
@@ -1185,7 +1196,7 @@
         }
       },
       {
-        "name": "War Adept",
+        "name": "Gaia War Adept",
         "movepool": [
           "Thunder Mine",
           "Grand Gaia",
@@ -1216,7 +1227,8 @@
       "MercuryRes": 90
     },
     "requirement": "Level",
-    "isDefault": false
+    "isDefault": false,
+	"description": "The study of Alchemy is the center of an Apprentices education, with the end-goal to support all of his fellows."
   },
   {
     "name": "Crusader Series",
@@ -1235,7 +1247,7 @@
         }
       },
       {
-        "name": "Defender",
+        "name": "Gaia Defender",
         "movepool": [
           "Cutting Edge",
 		  "Briar"
@@ -1249,7 +1261,7 @@
         }
       },
       {
-        "name": "Cavalier",
+        "name": "Gaia Cavalier",
         "movepool": [
           "Cutting Edge",
 		  "Briar",
@@ -1333,7 +1345,7 @@
         }
       },
       {
-        "name": "Illusionist",
+        "name": "Magma Illusionist",
         "movepool": [
 		  "Astral Blast",
           "Impact",
@@ -1349,7 +1361,7 @@
         }
       },
       {
-        "name": "Enchanter",
+        "name": "Magma Enchanter",
         "movepool": [
           "Astral Blast",
           "High Impact",
@@ -1365,7 +1377,7 @@
         }
       },
       {
-        "name": "Conjurer",
+        "name": "Magma Conjurer",
         "movepool": [
           "Thunder Mine",
           "High Impact",
@@ -1381,7 +1393,7 @@
         }
       },
       {
-        "name": "War Adept",
+        "name": "Magma War Adept",
         "movepool": [
           "Thunder Mine",
           "High Impact",
@@ -1432,7 +1444,7 @@
         }
       },
       {
-        "name": "Wanderer",
+        "name": "Air Wanderer",
         "movepool": [
           "Eruption",
 		  "Plasma",
@@ -1447,7 +1459,7 @@
         }
       },
       {
-        "name": "Ascetic",
+        "name": "Air Ascetic",
         "movepool": [
           "Eruption",
 		  "Plasma",
@@ -1463,7 +1475,7 @@
         }
       },
       {
-        "name": "Fire Monk",
+        "name": "Air Fire Monk",
         "movepool": [
 		  "Eruption",
           "Shine Plasma",
@@ -1479,7 +1491,7 @@
         }
       },
       {
-        "name": "Guru",
+        "name": "Air Guru",
         "movepool": [
           "Pyroclasm",
           "Spark Plasma",
@@ -1841,7 +1853,7 @@
         }
       },
       {
-        "name": "Diviner",
+        "name": "AquaDiviner",
         "movepool": [
           "Froth Sphere",
 		  "Mad Growth"
@@ -1855,7 +1867,7 @@
         }
       },
       {
-        "name": "Shaman",
+        "name": "Aqua Shaman",
         "movepool": [
           "Froth Sphere",
 		  "Mad Growth",
@@ -1871,7 +1883,7 @@
         }
       },
       {
-        "name": "Druid",
+        "name": "Aqua Druid",
         "movepool": [
           "Froth Spiral",
 		  "Mad Growth",
@@ -1887,7 +1899,7 @@
         }
       },
       {
-        "name": "Oracle",
+        "name": "Aqua Oracle",
         "movepool": [
           "Froth Spiral",
           "Wild Growth",
@@ -1938,7 +1950,7 @@
         }
       },
       {
-        "name": "Defender",
+        "name": "Magma Defender",
         "movepool": [
 		  "Cutting Edge",
           "Mad Blast",
@@ -1953,7 +1965,7 @@
         }
       },
       {
-        "name": "Cavalier",
+        "name": "Magma Cavalier",
         "movepool": [
 		  "Cutting Edge",
           "Mad Blast",
@@ -2594,7 +2606,6 @@
           "Spd": 160
         }
       },
-	  ,
       {
         "name": "Dark Shaman",
         "movepool": [

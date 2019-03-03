@@ -36,6 +36,19 @@ namespace IodemBot.Modules.GoldenSunMechanics
             return moves.ToArray();
         }
 
+        internal static Move[] getMoveset(AdeptClass adeptClass)
+        {
+            List<Move> moves = new List<Move>();
+            string[] moveNames = adeptClass.movepool;
+
+            foreach (string s in moveNames)
+            {
+                Move m = PsynergyDatabase.GetPsynergy(s);
+                moves.Add(m);
+            }
+            return moves.ToArray();
+        }
+
         internal static ElementalStats getElStats(UserAccount User)
         {
             return getClassSeries(User).elstats;
@@ -56,14 +69,16 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public static bool TryGetClassSeries(string series, out AdeptClassSeries outSeries)
         {
-            var trySeries = allClasses.Where(s => s.name.ToUpper().Contains(series.ToUpper()) || s.classes.Any(c => c.name.ToUpper().Contains(series.ToUpper()))).FirstOrDefault();
+            var trySeries = allClasses.Where(s => s.name.ToUpper().Contains(series.ToUpper()) || s.classes.Any(c => c.name.ToUpper().Contains(series.ToUpper())));
             if (trySeries == null)
             {
                 outSeries = null;
                 return false;
+            } else
+            {
+                outSeries = trySeries.Where(s => s.classes.Any(c => c.name.ToUpper() == series.ToUpper())).FirstOrDefault() ?? trySeries.FirstOrDefault();
             }
 
-            outSeries = trySeries;
             return true;
         }
     }
