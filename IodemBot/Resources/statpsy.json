@@ -219,7 +219,7 @@
 	"effectImages": [
 	  {
 	    "id": "Stat",
-	    "args": ["Attack", "2.0"]
+	    "args": ["Attack", "1.25"]
 	  },
 	  {
 	    "id": "Stat",
