@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Discord;
 using Discord.Commands;
@@ -66,7 +67,7 @@ namespace IodemBot.Modules
 
         [Command("wiki")]
         [Cooldown(5)]
-        [Remarks("Link the wiki")]
+        [Remarks("Link to the wiki or a a specific search query.")]
         public async Task Wiki([Remainder] string searchQuery = "")
         {
             var embed = new EmbedBuilder();
@@ -86,6 +87,21 @@ namespace IodemBot.Modules
             embed.WithColor(Colors.get("Iodem"));
             embed.WithDescription($"https://reddit.com/r/GoldenSun");
             await Context.Channel.SendMessageAsync("", false, embed.Build());
+        }
+
+        [Command("flag"), Alias("country")]
+        [Cooldown(5)]
+        [Remarks("Set the flag that shows up next to your name")]
+        public async Task setFlag(string flag)
+        {
+            var r = new Regex("[\uD83C][\uDDE6-\uDDFF][\uD83C][\uDDE6-\uDDFF]");
+            if (r.IsMatch(flag))
+            {
+                var account = UserAccounts.GetAccount(Context.User);
+                account.Flag = flag;
+                UserAccounts.SaveAccounts();
+                await Context.Channel.SendMessageAsync(flag);
+            }
         }
 
         [Command("xp")]
@@ -122,7 +138,7 @@ namespace IodemBot.Modules
 
             embed.WithColor(Colors.get(account.element.ToString()));
             var author = new EmbedAuthorBuilder();
-            author.WithName(user.DisplayName());
+            author.WithName($"{user.DisplayName()} {account.Flag}");
             author.WithIconUrl(user.GetAvatarUrl());
             embed.WithAuthor(author);
             embed.WithThumbnailUrl(user.GetAvatarUrl());
