@@ -219,7 +219,7 @@ namespace IodemBot.Modules.ColossoBattles
             //Chance to wake up
             if (HasCondition(Condition.Sleep))
             {
-                if (Global.random.Next(0, 3) == 0)
+                if (Global.random.Next(0, 2) == 0)
                 {
                     RemoveCondition(Condition.Sleep);
                     turnLog.Add($"{name} wakes up.");
@@ -234,10 +234,19 @@ namespace IodemBot.Modules.ColossoBattles
                     turnLog.Add($"{name} can move again.");
                 }
             }
+            //Chance to remove Stun
+            if (HasCondition(Condition.Seal))
+            {
+                if (Global.random.Next(0, 3) == 0)
+                {
+                    RemoveCondition(Condition.Stun);
+                    turnLog.Add($"{name}'s Psynergy is no longer sealed.");
+                }
+            }
             //Chance to remove Delusion
             if (HasCondition(Condition.Delusion))
             {
-                if (Global.random.Next(0, 1) == 0)
+                if (Global.random.Next(0, 4) == 0)
                 {
                     RemoveCondition(Condition.Delusion);
                     turnLog.Add($"{name} can see clearly again.");

@@ -248,10 +248,6 @@
 	"emote":"<:Thorn:536958717888036865>",
 	"range": 2,
     "element": 0,
-	"effectImages":[
-	{"id": "Condition",
-	"args": ["Poison", "10"]}
-	],
 	"PPCost": 6,
 	"power": 35
   },
@@ -261,10 +257,6 @@
 	"emote":"<:Briar:536958574128136193>",
 	"range": 2,
     "element": 0,
-	"effectImages":[
-	{"id": "Condition",
-	"args": ["Poison", "10"]}
-	],
 	"PPCost": 11,
 	"power": 70
   },
@@ -596,6 +588,12 @@
 	"emote":"<:Fiery_Blast:536965017434718212>",
 	"range": 3,
     "element": 1,
+	"effectImages":[
+	{"id": "Condition",
+	"args": ["Flinch", "5"]},
+	{"id": "Condition",
+	"args": ["Delusion", "5"]}
+	],
 	"PPCost": 19,
 	"power": 110
   },
@@ -1274,8 +1272,8 @@
 	"PPCost": 0,
 	"addDamage": 30,
 	"effectImages":[
-	   {"id": "DamageMult",
-		"args": ["1.0, 2.0", "50, 50"]}
+	   {"id": "MultiplyDamage",
+		"args": ["2.0", "50"]}
      ],
   },
   "Ice Blessing": {
@@ -1362,8 +1360,8 @@
     "PPCost": 0,
     "addDamage": 50,
     "effectImages":[
-      {"id": "DamageMult",
-       "args":["1.0, 2.0", "50, 50"]}
+      {"id": "MultiplyDamage",
+       "args":["2.0", "50"]}
     ],
   },
   "Oil Drop": {

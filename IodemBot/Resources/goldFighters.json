@@ -768,11 +768,12 @@
       "movepool": [
 		"Oil Drop",
 	      "Crystal Powder",
-	      "Bramble Seed"
+	      "Bramble Seed",
+		  "Nut"
 	  ],
       "stats": {
         "maxHP": 1500,
-        "maxPP": 160,
+        "maxPP": 15,
         "Atk": 250,
         "Def": 80,
         "Spd": 150
@@ -794,11 +795,12 @@
       "movepool": [
 		"Oil Drop",
 		"Crystal Powder",
-	      "Bramble Seed"
+	      "Bramble Seed",
+		  "Nut"
 	  ],
       "stats": {
         "maxHP": 1500,
-        "maxPP": 160,
+        "maxPP": 15,
         "Atk": 300,
         "Def": 56,
         "Spd": 170
@@ -820,11 +822,12 @@
       "movepool": [
 		"Oil Drop",
 		"Crystal Powder",
-		"Bramble Seed"
+		"Bramble Seed",
+		"Nut"
 	  ],
       "stats": {
         "maxHP": 1500,
-        "maxPP": 160,
+        "maxPP": 15,
         "Atk": 350,
         "Def": 118,
         "Spd": 168
