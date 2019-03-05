@@ -181,7 +181,7 @@
     "element": 0,
 	"effectImages":[
 	{"id": "Condition",
-	"args": ["Poison", "60"]},
+	"args": ["Poison", "15"]},
 	{"id": "Condition",
 	"args": ["Venom", "10"]}
 	],
@@ -250,7 +250,7 @@
     "element": 0,
 	"effectImages":[
 	{"id": "Condition",
-	"args": ["Poison", "20"]}
+	"args": ["Poison", "10"]}
 	],
 	"PPCost": 6,
 	"power": 35
@@ -263,7 +263,7 @@
     "element": 0,
 	"effectImages":[
 	{"id": "Condition",
-	"args": ["Poison", "20"]}
+	"args": ["Poison", "10"]}
 	],
 	"PPCost": 11,
 	"power": 70
@@ -276,7 +276,7 @@
     "element": 0,
 	"effectImages":[
 	{"id": "Condition",
-	"args": ["Poison", "20"]}
+	"args": ["Poison", "10"]}
 	],
 	"PPCost": 23,
 	"power": 140
@@ -543,7 +543,7 @@
 	"range": 2,
     "element": 1,
 	"PPCost": 12,
-	"power": 70
+	"power": 80
   },
   "Magma Storm": {
     "name": "Magma Storm",
@@ -552,7 +552,7 @@
 	"range": 3,
     "element": 1,
 	"PPCost": 27,
-	"power": 120
+	"power": 160
   },
   "Dragon Cloud": {
     "name": "Dragon Cloud",
@@ -561,7 +561,7 @@
 	"range": 1,
     "element": 1,
 	"PPCost": 6,
-	"power": 120
+	"power": 80
   },
   "Epicenter": {
     "name": "Epicenter",
@@ -570,7 +570,7 @@
 	"range": 1,
     "element": 1,
 	"PPCost": 33,
-	"power": 120
+	"power": 210
   },
   "Blast": {
     "name": "Blast",
@@ -1182,16 +1182,15 @@
   },
   "Death Size": {
     "name": "Death Size",
-	"targetType": 3,
-	"emote":":skull_crossbones:",
-	"range": 1,
+    "targetType": 3,
+    "emote":":skull_crossbones:",
+    "range": 1,
     "element": 0,
 	"PPCost": 0,
 	"addDamage": 35,
 	  "effectImages": [
-	  {
-	    "id": "ChanceToOHKO",
-		"args": ["20"]
+	  {"id": "ChanceToOHKO",
+	   "args": ["20"]
 	  }
 	],
   },
@@ -1274,11 +1273,10 @@
     "element": 2,
 	"PPCost": 0,
 	"addDamage": 30,
-	   "effectImages":[
-	   {
-	   "id": "DamageMult",
-"args": ["1.0, 2.0", "50, 50"]}
-		   ],
+	"effectImages":[
+	   {"id": "DamageMult",
+		"args": ["1.0, 2.0", "50, 50"]}
+     ],
   },
   "Ice Blessing": {
     "name": "Ice Blessing",
@@ -1331,46 +1329,43 @@
   },
   "Acid Breath": {
     "name": "Acid Breath",
-	"targetType": 4,
-	"emote":"☣",
-	"range": 3,
+    "targetType": 4,
+    "emote":"☣",
+    "range": 3,
     "element": 1,
-	"PPCost": 0,
-	"power": 170,
-	"effectImages":[
-	{
-		"id": "Stat",
-		"args":["Defense, "0.8", "20"]}
-			],
+    "PPCost": 0,
+    "power": 170,
+    "effectImages":[
+      {"id": "Stat",
+       "args":["Defense", "0.8", "20"]}
+    ]
   },
   "Storm Breath": {
     "name": "Storm Breath",
-	"targetType": 4,
-	"emote":"🌩",
-	"range": 3,
+    "targetType": 4,
+    "emote":"🌩",
+    "range": 3,
     "element": 2,
-	"PPCost": 0,
-	"power": 170,
-		"effectImages":[
-		{
-		"id": "Condition",
-		"args":["Stun", "20"]}
-],
+    "PPCost": 0,
+    "power": 170,
+    "effectImages":[
+	{"id": "Condition",
+	 "args":["Stun", "20"]}
+    ]
   },
   "Double Fang": {
     "name": "Double Fang",
-	"targetType": 3,
-	"emote":"🐶",
-	"range": 1,
+    "targetType": 3,
+    "emote":"🐶",
+    "range": 1,
     "element": 0,
-	"PPCost": 0,
-	"addDamage": 50,
-	  "effectImages":[
-		  {
-		  "id": "DamageMult",
-			  "args":["1.0, 2.0", "50, 50"]}
-		  ],
-	},
+    "PPCost": 0,
+    "addDamage": 50,
+    "effectImages":[
+      {"id": "DamageMult",
+       "args":["1.0, 2.0", "50, 50"]}
+    ],
+  },
   "Oil Drop": {
     "name": "Oil Drop",
 	"targetType": 4,
@@ -1446,26 +1441,25 @@
 	"emote":"<:Smoke_Bomb:551223599911141391>",
 	"range": 1,
     "element": 0,
-	"PPCost": 0
+	"PPCost": 0,
 	   "effectImages":[
 		   {
 			   "id": "Condition",
 			   "args":["Delusion", "35"]}
 		   ],
-  },
+},
 "Sleep Bomb": {
     "name": "Sleep Bomb",
-	"targetType": 3,
-	"emote":"<:Sleep_Bomb:551223599894102026>",
-	"range": 1,
+    "targetType": 3,
+    "emote":"<:Sleep_Bomb:551223599894102026>",
+    "range": 1,
     "element": 0,
-	"PPCost": 0
-	   "effectImages":[
-		   {
-			   "id": "Condition",
-			   "args":["Sleep", "35"]}
-		   ],
-  },
+    "PPCost": 0,
+    "effectImages":[
+      {"id": "Condition",
+       "args":["Sleep", "35"]}
+    ],
+},
 "Dynamite": {
     "name": "Dynamite",
 	"targetType": 4,
@@ -1476,7 +1470,7 @@
 	"power": 200,
 	   "effectImages":[
 		   {
-			   "id": "UserDies",
+			   "id": "UserDies"
 			   }
 		   ],
   },

@@ -18,6 +18,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public ElementalStats elstats { get; set; }
         public string requirement { get; set; }
         public bool isDefault { get; set; }
+        public string description { get; set; }
 
         public AdeptClass getClass(UserAccount User)
         {

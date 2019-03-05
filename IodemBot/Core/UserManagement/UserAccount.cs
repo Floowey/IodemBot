@@ -14,6 +14,7 @@ namespace IodemBot.Core.UserManagement
     {
         public ulong ID { get; set; }
         public string Name { get; set; }
+        public string Flag { get; set; }
         //Ranking
         public uint ColossoWins { get; set; } = 0;
         public uint ColossoStreak { get; set; } = 0;
