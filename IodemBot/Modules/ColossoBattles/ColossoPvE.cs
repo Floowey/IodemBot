@@ -42,10 +42,10 @@ namespace IodemBot.Modules.ColossoBattles
             await Context.Message.DeleteAsync();
             var b = await GetBattleCollector(Context, "Bronze", BattleDifficulty.Easy);
             battles.Add(b);
-            //b = await GetBattleCollector(Context, "Silver", BattleDifficulty.Medium);
-            //battles.Add(b);
-            //b = await GetBattleCollector(Context, "Gold", BattleDifficulty.Hard);
-            //battles.Add(b);
+            b = await GetBattleCollector(Context, "Silver", BattleDifficulty.Medium);
+            battles.Add(b);
+            b = await GetBattleCollector(Context, "Gold", BattleDifficulty.Hard);
+            battles.Add(b);
         }
 
         private async Task<BattleCollector> GetBattleCollector(SocketCommandContext Context, string Name, BattleDifficulty diff)
