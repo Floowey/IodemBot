@@ -84,7 +84,7 @@
 		"name": "Lord",
 		"movepool": [
 			"Odyssey",
-			"Quake Sphere",
+			"Mother Gaia",
 			"Cure Well",
 			"Revive"
 		],
@@ -100,7 +100,7 @@
 		"name": "Slayer",
 		"movepool": [
 			"Odyssey",
-			"Quake Sphere",
+			"Grand Gaia",
 			"Potent Cure",
 			"Revive"
 		],
@@ -136,6 +136,7 @@
       {
         "name": "Miko",
         "movepool": [
+		  "Growth",
           "Cure"
         ],
         "statMultipliers": {
@@ -149,6 +150,7 @@
       {
         "name": "High Miko",
         "movepool": [
+		  "Mad Growth",
 		  "Weapon Grace",
           "Cure Well"
         ],
@@ -517,7 +519,7 @@
     },
     "requirement": "Level",
     "isDefault": true,
-	"description": "Crossing the Eastern Seas, Pirates fear the lands more than the seas."
+	"description": "Crossing and plundering throughout the Eastern Seas, Pirates fear the lands more than the depths below."
   },
   {
     "name": "Wind Seer Series",
@@ -717,7 +719,7 @@
     },
     "requirement": "Level",
     "isDefault": true,
-	"Their connection to nature let's Beastlings become one with the wild.'"
+	"description":"Their connection to nature let's Beastlings become one with the wild."
   },
   {
     "name": "Water Seer Series",
@@ -1014,7 +1016,7 @@
     },
     "requirement": "Level",
     "isDefault": true,
-	"description":"The Ayuthay pledge to become reputable representatives of their folk to rise from a mere Aqua Squire to reigning their country. (Dev-note: Unlike the games, the stats of the Aqua Squire series follow those of the Squire Series, and not the Mariner Series)"
+	"description":"The Ayuthay pledge to become reputable representatives of their folk to rise from a mere Aqua Squire to reigning their country. `(Dev-note: Unlike the games, the stats of the Aqua Squire series follow those of the Squire Series, and not the Mariner Series)`"
   },
   {
     "name": "Brute Series",
@@ -1522,7 +1524,8 @@
       "MercuryRes": 90
     },
     "requirement": "Level",
-    "isDefault": false
+    "isDefault": false,
+	"description": "The Air Pilgrim doesn't have a home. He travels from place to place with the winds."
   },
   {
     "name": "Aqua Pilgrim Series",
