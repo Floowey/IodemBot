@@ -1435,31 +1435,6 @@
 			   "args":["Flinch", "35"]}
 		   ],
   },
-"Smoke Bomb": {
-    "name": "Smoke Bomb",
-	"targetType": 3,
-	"emote":"<:Smoke_Bomb:551223599911141391>",
-	"range": 1,
-    "element": 0,
-	"PPCost": 0,
-	   "effectImages":[
-		   {
-			   "id": "Condition",
-			   "args":["Delusion", "35"]}
-		   ],
-},
-"Sleep Bomb": {
-    "name": "Sleep Bomb",
-    "targetType": 3,
-    "emote":"<:Sleep_Bomb:551223599894102026>",
-    "range": 1,
-    "element": 0,
-    "PPCost": 0,
-    "effectImages":[
-      {"id": "Condition",
-       "args":["Sleep", "35"]}
-    ],
-},
 "Dynamite": {
     "name": "Dynamite",
 	"targetType": 4,
