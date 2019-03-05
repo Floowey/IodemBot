@@ -181,7 +181,7 @@
     "element": 0,
 	"effectImages":[
 	{"id": "Condition",
-	"args": ["Poison", "60"]},
+	"args": ["Poison", "15"]},
 	{"id": "Condition",
 	"args": ["Venom", "10"]}
 	],
@@ -250,7 +250,7 @@
     "element": 0,
 	"effectImages":[
 	{"id": "Condition",
-	"args": ["Poison", "20"]}
+	"args": ["Poison", "10"]}
 	],
 	"PPCost": 6,
 	"power": 35
@@ -263,7 +263,7 @@
     "element": 0,
 	"effectImages":[
 	{"id": "Condition",
-	"args": ["Poison", "20"]}
+	"args": ["Poison", "10"]}
 	],
 	"PPCost": 11,
 	"power": 70
@@ -276,7 +276,7 @@
     "element": 0,
 	"effectImages":[
 	{"id": "Condition",
-	"args": ["Poison", "20"]}
+	"args": ["Poison", "10"]}
 	],
 	"PPCost": 23,
 	"power": 140
