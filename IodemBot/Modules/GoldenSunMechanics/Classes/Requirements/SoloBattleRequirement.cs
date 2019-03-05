@@ -11,7 +11,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
     {
         public int apply(UserAccount user)
         {
-            return user.soloBattles >= 450 ? 2 : user.soloBattles >= 200 ? 1 : 0;
+            return user.soloBattles >= 400 ? 2 : user.soloBattles >= 200 ? 1 : 0;
         }
     }
 }
