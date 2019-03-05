@@ -100,24 +100,31 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public List<ColossoFighter> getTarget(ColossoFighter user)
         {
             List<ColossoFighter> targets = new List<ColossoFighter>();
+            var playerCount = user.battle.getTeam(user.party).Count;
+            var enemyCount = user.battle.getTeam(user.enemies).Count;
+
             switch (targetType)
             {
                 case Target.self:
                     targets.Add(user);
                     break;
                 case Target.ownAll:
+                    targetNr = Math.Min(targetNr, playerCount);
                     targets.AddRange(user.battle.getTeam(user.party));
                     break;
                 case Target.ownSingle:
+                    targetNr = Math.Min(targetNr, playerCount);
                     targets.Add(user.battle.getTeam(user.party)[targetNr]);
                     break;
                 case Target.otherAll:
                     targets.AddRange(user.battle.getTeam(user.enemies));
                     break;
                 case Target.otherSingle:
+                    targetNr = Math.Min(targetNr, enemyCount);
                     targets.Add(user.battle.getTeam(user.enemies)[targetNr]);
                     break;
                 case Target.otherRange:
+                    targetNr = Math.Min(targetNr, enemyCount);
                     var targetTeam = user.battle.getTeam(user.enemies);
                     for (int i = -(int)range + 1; i <= range - 1; i++)
                     {

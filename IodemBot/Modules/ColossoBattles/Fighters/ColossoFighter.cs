@@ -318,6 +318,12 @@ namespace IodemBot.Modules.ColossoBattles
                 hasSelected = true;
             }
 
+            if ((selected.targetType == Target.ownSingle && battle.getTeam(party).Count == 1) ||
+                (selected.targetType == Target.otherSingle && battle.getTeam(enemies).Count == 1))
+            {
+                selected.targetNr = 0;
+                hasSelected = true;
+            }
             return true;
         }
 
