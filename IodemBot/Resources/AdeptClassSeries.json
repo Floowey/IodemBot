@@ -724,7 +724,7 @@
     },
     "requirement": "Level",
     "isDefault": true,
-	"description":"Their connection to nature let's Beastlings become one with the wild."
+	"description":"Their connection to nature lets Beastlings become one with the wild."
   },
   {
     "name": "Water Seer Series",
@@ -2260,7 +2260,7 @@
     },
     "requirement": "ColossoWins",
     "isDefault": false,
-	"description": "Young scrappers like to tinker with mechanisms, which they try to make the best of in battles."
+	"description": "Young Scrappers like to tinker with mechanisms, which they try to make the best of in battles."
   },
   {
     "name": "Samurai Series",
@@ -2358,7 +2358,7 @@
       {
         "name": "Master",
         "movepool": [
-          "Death Plunge",
+          "Death Leap",
 		  "Shuriken",
 		  "Annihilation",
 		  "Thunderhead",
@@ -2390,7 +2390,7 @@
     },
     "requirement": "Damage",
     "isDefault": false,
-	"description": "Ninjas are masters in causing as much destruction as possible."
+	"description": "Ninjas are Masters in causing as much destruction as possible."
   },
   {
     "name": "Ranger Series",
@@ -2525,10 +2525,10 @@
 	  3
     ],
     "elstats": {
-      "VenusAtk": 110,
-      "VenusRes": 110,
-      "MarsAtk": 80,
-      "MarsRes": 180,
+      "VenusAtk": 50,
+      "VenusRes": 50,
+      "MarsAtk": 130,
+      "MarsRes": 130,
       "JupiterAtk": 130,
       "JupiterRes": 130,
       "MercuryAtk": 130,

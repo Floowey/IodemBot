@@ -27,6 +27,21 @@
     "addDamage": 95
   },
   "Helm Splitter": {
+	"name": "Helm Splitter",
+	"targetType": 3,
+	"emote": "<:Skull_Splitter:536959343153774652>",
+	"range": 1,
+    "element": 0,
+	"effectImages": [
+	  {
+	    "id": "Stat",
+	    "args": ["Attack", "0.5", "80"]
+	  }
+	],
+	"PPCost": 8,
+    "addDamage": 30
+  },
+  "Skull Splitter": {
 	"name": "Skull Splitter",
 	"targetType": 3,
 	"emote": "<:Skull_Splitter:536959343153774652>",
@@ -838,6 +853,12 @@
 	"emote":"<:Death_Plunge:536966770402000897>",
 	"range": 1,
     "element": 2,
+	"effectImages": [
+	  {
+	    "id": "Condition",
+		"args": ["Stun", "10"]
+	  }
+	],
 	"PPCost": 14,
 	"addDamage": 40
   },
@@ -847,6 +868,12 @@
 	"emote":"<:Death_Leap:536966785363083264>",
 	"range": 1,
     "element": 2,
+	"effectImages": [
+	  {
+	    "id": "Condition",
+		"args": ["Stun", "10"]
+	  }
+	],
 	"PPCost": 22,
 	"addDamage": 110
   },
