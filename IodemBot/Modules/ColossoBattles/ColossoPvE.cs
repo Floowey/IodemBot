@@ -39,7 +39,7 @@ namespace IodemBot.Modules.ColossoBattles
         {
             textChannel = (SocketTextChannel)Global.Client.GetChannel(546760009741107216);
             battles = new List<BattleCollector>();
-            await Context.Message.DeleteAsync();
+            Context.Message.DeleteAsync();
             var b = await GetBattleCollector(Context, "Bronze", BattleDifficulty.Easy);
             battles.Add(b);
             b = await GetBattleCollector(Context, "Silver", BattleDifficulty.Medium);
@@ -112,7 +112,7 @@ namespace IodemBot.Modules.ColossoBattles
             var curBattle = battles.Where(b => b.battleChannel.Id == reaction.Channel.Id).FirstOrDefault();
             if (curBattle == null) return;
             var c = (RestUserMessage)await channel.GetMessageAsync(reaction.MessageId);
-            await curBattle.ProcessReaction(reaction, c);
+            curBattle.ProcessReaction(reaction, c);
         }
 
         private static async Task TryStartBattle(SocketReaction reaction)
