@@ -182,7 +182,8 @@
         "JupiterRes": 140,
         "MercuryAtk": 200,
         "MercuryRes": 200
-      }
+      },
+	  "extraTurns": 1
     }
   ],
   [
@@ -278,7 +279,8 @@
         "JupiterRes": 152,
         "MercuryAtk": 130,
         "MercuryRes": 193
-      }
+      },
+	  "extraTurns": 1
     }
   ],
   [

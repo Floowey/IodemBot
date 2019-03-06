@@ -195,6 +195,13 @@ namespace IodemBot.Modules.ColossoBattles
                     turnLog.Add($"{selected.emote} {this.name} is defending.");
                 }
             }
+
+            //Haunt Damage
+            if (HasCondition(Condition.Haunt))
+            {
+                turnLog.AddRange(DealDamage((uint)(stats.HP * Global.random.Next(20, 40) / 100)));
+            }
+
             return turnLog;
         }
 
@@ -239,7 +246,7 @@ namespace IodemBot.Modules.ColossoBattles
             {
                 if (Global.random.Next(0, 3) == 0)
                 {
-                    RemoveCondition(Condition.Stun);
+                    RemoveCondition(Condition.Seal);
                     turnLog.Add($"{name}'s Psynergy is no longer sealed.");
                 }
             }
@@ -298,6 +305,7 @@ namespace IodemBot.Modules.ColossoBattles
             string[] numberEmotes = new string[] {"\u0030\u20E3", "1⃣", "\u0032\u20E3", "\u0033\u20E3", "\u0034\u20E3", "\u0035\u20E3",
             "\u0036\u20E3", "\u0037\u20E3", "\u0038\u20E3", "\u0039\u20E3" };
             var trySelected = moves.Where(m => m.emote == emote).FirstOrDefault() ?? moves.Where(m => m.emote.Contains(emote)).FirstOrDefault();
+            if (!IsAlive()) return false;
             if (trySelected == null)
             {
                 if (numberEmotes.Contains(emote) && selected != null)
@@ -310,7 +318,13 @@ namespace IodemBot.Modules.ColossoBattles
                 }
             } else
             {
-                selected = trySelected;
+                if(trySelected is Psynergy && ((Psynergy)trySelected).PPCost > stats.PP)
+                {
+                    return false;
+                } else
+                {
+                    selected = trySelected;
+                }
             }
 
             if (selected.targetType == Target.self || selected.targetType == Target.ownAll ||selected.targetType == Target.otherAll)

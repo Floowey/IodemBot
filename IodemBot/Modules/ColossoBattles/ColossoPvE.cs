@@ -208,13 +208,12 @@ namespace IodemBot.Modules.ColossoBattles
                     Console.WriteLine("Battle not active.");
                     return;
                 }
+                var curPlayer = messages.Values.Where(p => p.name == ((SocketGuildUser)reaction.User.Value).DisplayName()).FirstOrDefault();
+                var correctID = messages.Keys.Where(key => messages[key].name == curPlayer.name).First().Id;
 
-                if (!messages.TryGetValue(tryMsg, out var curPlayer))
+                if (!numberEmotes.Contains(reaction.Emote.Name))
                 {
-                    if (reaction.MessageId == enemyMsg.Id)
-                    {
-                        curPlayer = messages.Values.Where(p => p.name == ((SocketGuildUser)reaction.User.Value).DisplayName()).FirstOrDefault();
-                    } else
+                    if (reaction.MessageId != enemyMsg.Id && reaction.MessageId != correctID)
                     {
                         await c.RemoveReactionAsync(reaction.Emote, reaction.User.Value);
                         Console.WriteLine("Didn't click on own message.");
@@ -346,6 +345,7 @@ namespace IodemBot.Modules.ColossoBattles
                 await WriteStatusInit();
                 await WriteEnemiesInit();
                 await WritePlayersInit();
+                autoTurn.Start();
             }
             private async Task WriteStatusInit()
             {
@@ -365,7 +365,8 @@ namespace IodemBot.Modules.ColossoBattles
                     i++;
                 }
                 await msg.ModifyAsync(m => m.Embed = e.Build());
-                var countA = battle.getTeam(ColossoBattle.Team.A).Count;
+                //var countA = battle.getTeam(ColossoBattle.Team.A).Count;
+                var countA = 1;
                 var countB = battle.getTeam(ColossoBattle.Team.B).Count;
                 if (countA > 1 || countB > 1){
                     for (int j = 1; j <= Math.Max(countA, countB); j++)
@@ -393,7 +394,7 @@ namespace IodemBot.Modules.ColossoBattles
                     List<IEmote> emotes = new List<IEmote>();
                     if(messages.Count > 1)
                     {
-                        //emotes.Add(new Emoji(numberEmotes[i]));
+                        emotes.Add(new Emoji(numberEmotes[i]));
                     }
                         
                     foreach (var m in fighter.moves)

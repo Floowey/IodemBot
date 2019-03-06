@@ -30,12 +30,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
             log.AddRange(InternalUse(User));
 
-            //Haunt Damage
-            if (User.HasCondition(Condition.Haunt))
-            {
-                log.AddRange(User.DealDamage((uint)(User.stats.HP * Global.random.Next(20, 40) / 100)));
-            }
-
+            
             return log;
         }
 
@@ -100,8 +95,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public List<ColossoFighter> getTarget(ColossoFighter user)
         {
             List<ColossoFighter> targets = new List<ColossoFighter>();
-            var playerCount = user.battle.getTeam(user.party).Count;
-            var enemyCount = user.battle.getTeam(user.enemies).Count;
+            var playerCount = user.battle.getTeam(user.party).Count-1;
+            var enemyCount = user.battle.getTeam(user.enemies).Count-1;
 
             switch (targetType)
             {

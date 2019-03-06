@@ -40,7 +40,7 @@ namespace IodemBot.Modules.ColossoBattles
                 List<ColossoFighter> curTeam = new List<ColossoFighter>();
                 enemyTeam.ForEach(fighter =>
                 {
-                    curTeam.Add(new NPCEnemy(fighter.name, fighter.imgurl, fighter.stats, fighter.elstats, Moveset.getMoveset(fighter.movepool)));
+                    curTeam.Add(new NPCEnemy(fighter.name, fighter.imgurl, fighter.stats, fighter.elstats, Moveset.getMoveset(fighter.movepool), fighter.extraTurns));
                 });
                 fighters.Add(curTeam);
             });
@@ -77,5 +77,6 @@ namespace IodemBot.Modules.ColossoBattles
         public string[] movepool { get; set; }
         public Stats stats { get; set; }
         public ElementalStats elstats { get; set; }
+        public int extraTurns { get; set; }
     }
 }
