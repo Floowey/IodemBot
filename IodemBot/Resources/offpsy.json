@@ -181,9 +181,9 @@
     "element": 0,
 	"effectImages":[
 	{"id": "Condition",
-	"args": ["Poison", "15"]},
+	"args": ["Poison", "25"]},
 	{"id": "Condition",
-	"args": ["Venom", "10"]}
+	"args": ["Venom", "5"]}
 	],
 	"PPCost": 23,
 	"power": 125
