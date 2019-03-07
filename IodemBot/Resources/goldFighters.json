@@ -399,7 +399,7 @@
   ],
   [
     {
-      "name": "Stone Soldier",
+      "name": "Stone Soldier 1",
       "imgurl": "https://vignette.wikia.nocookie.net/goldensun/images/6/68/Lizard_King.png/revision/latest?cb=20071119071811",
       "movepool": [
 		"Headbutt",
@@ -478,7 +478,7 @@
 	  }
 	},
 	{
-      "name": "Stone Soldier",
+      "name": "Stone Soldier 2",
       "imgurl": "",
       "movepool": [
 		"Headbutt",
@@ -506,7 +506,7 @@
   ],
   [
 	{
-      "name": "Chimera",
+      "name": "Chimera 1",
       "imgurl": "https://vignette.wikia.nocookie.net/goldensun/images/3/36/Chimera.png/revision/latest?cb=20080208053300",
       "movepool": 
 	  [
@@ -537,7 +537,7 @@
       }
     },
 	{
-      "name": "Chimera",
+      "name": "Chimera 2",
       "imgurl": "",
       "movepool": 
 	  [
@@ -570,7 +570,7 @@
   ],
   [
 	{
-      "name": "Earth Lizard",
+      "name": "Earth Lizard 1",
       "imgurl": "https://vignette.wikia.nocookie.net/goldensun/images/d/de/Earth_Lizard.png/revision/latest?cb=20080205202157",
       "movepool": 
 	  [
@@ -599,7 +599,7 @@
       }
     },
 	{
-      "name": "Earth Lizard",
+      "name": "Earth Lizard 2",
       "imgurl": "",
       "movepool": 
 	  [
@@ -630,7 +630,7 @@
   ],
   [
     {
-      "name": "Thunder Lizard",
+      "name": "Thunder Lizard 1",
       "imgurl": "https://vignette.wikia.nocookie.net/goldensun/images/c/cf/Poison_Toad.png/revision/latest?cb=20071119064119",
       "movepool": [
 		"Storm Breath",
@@ -681,7 +681,7 @@
 	  }
 	},
     {
-      "name": "Thunder Lizard",
+      "name": "Thunder Lizard 2",
       "imgurl": "",
       "movepool": [
 		"Storm Breath",
@@ -709,7 +709,7 @@
   ],
   [
 	{
-      "name": "Cerebus",
+      "name": "Cerebus 1",
       "imgurl": "https://vignette.wikia.nocookie.net/goldensun/images/7/72/Cerebus.png/revision/latest?cb=20080212063010",
       "movepool": 
 	  [
@@ -736,7 +736,7 @@
       }
     },
 	{
-      "name": "Cerebus",
+      "name": "Cerebus 2",
       "imgurl": "",
       "movepool": 
 	  [
@@ -848,7 +848,7 @@
 	],
 	[
   {
-      "name": "Lich",
+      "name": "Lich 1",
       "imgurl": "https://vignette.wikia.nocookie.net/goldensun/images/e/ec/Succubus.png/revision/latest?cb=20080205202925",
       "movepool": [
 		"Glacier",
@@ -907,7 +907,7 @@
 	  }
 	},
 	{
-      "name": "Lich",
+      "name": "Lich 2",
       "imgurl": "https://vignette.wikia.nocookie.net/goldensun/images/9/94/Azart.png/revision/latest?cb=20080105061632",
       "movepool": [
 		"Glacier",
@@ -939,7 +939,7 @@
 	],
 	[
   {
-      "name": "Hobgoblin",
+      "name": "Hobgoblin 1",
       "imgurl": "https://vignette.wikia.nocookie.net/goldensun/images/3/31/Hobgoblin.png/revision/latest?cb=20071212184432",
       "movepool": [
 		"Mighty Press",
@@ -968,7 +968,7 @@
 	  }
 	},
 	{
-      "name": "Hobgoblin",
+      "name": "Hobgoblin 2",
       "imgurl": "https://vignette.wikia.nocookie.net/goldensun/images/e/ec/Succubus.png/revision/latest?cb=20080205202925",
       "movepool": [
 		"Mighty Press",
