@@ -81,12 +81,8 @@ namespace IodemBot.Modules.ColossoBattles
             var playerAvatar = UserAccounts.GetAccount(player);
 
             var p = new PlayerFighter(player);
-
-            //var q = new PlayerFighter(player);
-
             battleCol.battle.AddPlayer(p, ColossoBattle.Team.A);
 
-            //await reaction.Channel.SendMessageAsync($"{player.Username} wants to battle!");
             var playerMsg = await battleCol.battleChannel.SendMessageAsync($"{player.DisplayName()} wants to battle!");
             battleCol.messages.Add(playerMsg, p);
 
@@ -174,7 +170,7 @@ namespace IodemBot.Modules.ColossoBattles
 
                 autoTurn = new Timer()
                 {
-                    Interval = 30000,
+                    Interval = 25000,
                     AutoReset = false,
                     Enabled = false
                 };
@@ -239,7 +235,7 @@ namespace IodemBot.Modules.ColossoBattles
                     await WriteBattle();
                     if (!battle.isActive)
                     {
-                        await GameOver();
+                        GameOver();
                     }
                 };
             }

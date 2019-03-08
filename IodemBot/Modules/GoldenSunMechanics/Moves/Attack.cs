@@ -20,6 +20,21 @@ namespace IodemBot.Modules.GoldenSunMechanics
             return JsonConvert.DeserializeObject<Attack>(serialized);
         }
 
+        public override void InternalChooseBestTarget(ColossoFighter User)
+        {
+            var aliveEnemies = User.getEnemies().Where(f => f.IsAlive()).ToList();
+            if (aliveEnemies.Count == 0) {
+                targetNr = 0;
+                return;
+            }
+            targetNr = User.getEnemies().IndexOf(aliveEnemies[Global.random.Next(0, aliveEnemies.Count)]);
+        }
+
+        public override bool InternalValidSelection(ColossoFighter User)
+        {
+            return true;
+        }
+
         protected override List<string> InternalUse(ColossoFighter User)
         {
             var enemy = User.battle.getTeam(User.enemies)[targetNr];

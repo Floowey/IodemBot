@@ -20,7 +20,7 @@ namespace IodemBot.Modules.ColossoBattles
         public string imgUrl;
         public Stats stats;
         public ElementalStats elstats;
-        public Move[] moves;
+        [JsonIgnore] public Move[] moves;
         public bool isImmuneToEffects;
         public bool isImmuneToPsynergy;
         [JsonIgnore] private Random rnd = Global.random;
@@ -45,6 +45,16 @@ namespace IodemBot.Modules.ColossoBattles
             this.moves = moves;
         }
 
+
+        public List<ColossoFighter> getTeam()
+        {
+            return battle.getTeam(party);
+        }
+
+        public List<ColossoFighter> getEnemies()
+        {
+            return battle.getTeam(enemies);
+        }
         public bool IsAlive()
         {
             return !HasCondition(Condition.Down);
@@ -84,6 +94,7 @@ namespace IodemBot.Modules.ColossoBattles
                 log.Add($":x: {name} goes down.");
                 RemoveAllConditions();
                 AddCondition(Condition.Down);
+                Buffs = new List<Buff>();
             }
             return log;
         }
@@ -177,6 +188,12 @@ namespace IodemBot.Modules.ColossoBattles
             return turnLog;
         }
 
+        public bool hasCurableCondition()
+        {
+            Condition[] badConditions = { Condition.Poison, Condition.Venom, Condition.Seal, Condition.Sleep, Condition.Stun, Condition.DeathCurse };
+            return Conditions.Any(c => badConditions.Contains(c));
+        }
+
         public List<string> MainTurn()
         {
             List<string> turnLog = new List<string>();
@@ -195,7 +212,7 @@ namespace IodemBot.Modules.ColossoBattles
                     turnLog.Add($"{selected.emote} {this.name} is defending.");
                 }
             }
-
+            RemoveCondition(Condition.Flinch);
             //Haunt Damage
             if (HasCondition(Condition.Haunt))
             {
@@ -203,6 +220,11 @@ namespace IodemBot.Modules.ColossoBattles
             }
 
             return turnLog;
+        }
+
+        public virtual List<string> ExtraTurn()
+        {
+            return new List<string>();
         }
 
         public virtual List<string> EndTurn() {
@@ -274,9 +296,7 @@ namespace IodemBot.Modules.ColossoBattles
                 turnLog.AddRange(DealDamage(damage));
             }
 
-            RemoveCondition(Condition.Flinch);
             RemoveCondition(Condition.Counter);
-
 
             if (!IsAlive())
             {
@@ -363,16 +383,12 @@ namespace IodemBot.Modules.ColossoBattles
                     selectRandom();
                 }
             }
-            if (selected.targetType == Target.otherSingle || selected.targetType == Target.otherRange){
-                selected.targetNr = rnd.Next(0, battle.getTeam(enemies).Count());
-                if(!battle.getTeam(enemies)[selected.targetNr].IsAlive())
-                {
-                    Console.WriteLine("Target not alive. Retargeting.");
-                    selected.targetNr = rnd.Next(0, battle.getTeam(enemies).Count());
-                }
+            if (selected.ValidSelection(this))
+            {
+                selected.ChooseBestTarget(this);
             } else
             {
-                selected.targetNr = rnd.Next(0, battle.getTeam(party).Count());
+                selectRandom();
             }
             hasSelected = true;
             //select(s, t);
@@ -388,10 +404,7 @@ namespace IodemBot.Modules.ColossoBattles
             return -1;
         }
 
-        public object Clone()
-        {
-            return MemberwiseClone();
-        }
+        public abstract object Clone();
     }
 
     public struct Buff

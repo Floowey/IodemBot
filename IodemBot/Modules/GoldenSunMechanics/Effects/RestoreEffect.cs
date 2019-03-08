@@ -20,5 +20,16 @@ namespace IodemBot.Modules.GoldenSunMechanics
         {
             return $"Restore the target from Conditions and Poison.";
         }
+
+        protected override int InternalChooseBestTarget(List<ColossoFighter> targets)
+        {
+            var unaffectedEnemies = targets.Where(s => s.hasCurableCondition()).ToList();
+            return unaffectedEnemies.IndexOf(unaffectedEnemies[Global.random.Next(0, unaffectedEnemies.Count)]);
+        }
+
+        protected override bool InternalValidSelection(ColossoFighter user)
+        {
+            return user.getTeam().Any(s => s.hasCurableCondition());
+        }
     }
 }
