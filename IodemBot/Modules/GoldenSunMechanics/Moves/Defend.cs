@@ -19,6 +19,16 @@ namespace IodemBot.Modules.GoldenSunMechanics
             return MemberwiseClone();
         }
 
+        public override void InternalChooseBestTarget(ColossoFighter User)
+        {
+            
+        }
+
+        public override bool InternalValidSelection(ColossoFighter User)
+        {
+            return Global.random.Next(0, 2) == 0;
+        }
+
         protected override List<string> InternalUse(ColossoFighter User)
         {
             User.defensiveMult *= 0.5;

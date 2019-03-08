@@ -120,10 +120,6 @@ namespace IodemBot.Modules.ColossoBattles
                 player.enemies = Team.A;
                 sizeTeamB++;
             }
-            player.Revive(100);
-            player.RemoveAllConditions();
-            player.stats.HP = player.stats.maxHP;
-            player.stats.PP = player.stats.maxPP;
 
             player.battle = this;
         }
@@ -156,6 +152,16 @@ namespace IodemBot.Modules.ColossoBattles
             fighters.AddRange(TeamB);
             fighters = fighters.OrderByDescending(f => f.stats.Spd * f.MultiplyBuffs("Speed")).ToList();
             fighters.ForEach(f => { turnLog.AddRange(f.MainTurn());});
+            return turnLog;
+        }
+
+        private List<string> ExtraTurn()
+        {
+            List<string> turnLog = new List<string>();
+            List<ColossoFighter> fighters = new List<ColossoFighter>(TeamA);
+            fighters.AddRange(TeamB);
+            fighters = fighters.OrderByDescending(f => f.stats.Spd * f.MultiplyBuffs("Speed")).ToList();
+            fighters.ForEach(f => { turnLog.AddRange(f.ExtraTurn()); });
             return turnLog;
         }
 

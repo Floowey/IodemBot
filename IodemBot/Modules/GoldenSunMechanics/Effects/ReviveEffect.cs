@@ -35,5 +35,16 @@ namespace IodemBot.Modules.GoldenSunMechanics
         {
             return $"Revive the target to {percentage}% of it's maximum Health.";
         }
+
+        protected override int InternalChooseBestTarget(List<ColossoFighter> targets)
+        {
+            var deadFriends = targets.Where(s => !s.IsAlive()).ToList();
+            return deadFriends.IndexOf(deadFriends[Global.random.Next(0, deadFriends.Count)]);
+        }
+
+        protected override bool InternalValidSelection(ColossoFighter user)
+        {
+            return user.getTeam().Any(s => !s.IsAlive());
+        }
     }
 }

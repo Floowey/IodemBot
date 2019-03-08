@@ -53,6 +53,30 @@ namespace IodemBot.Modules.GoldenSunMechanics
             return new OffensivePsynergy($"{psynergy} (Not Implemented!)", "⛔", Target.otherSingle, 1, new List<EffectImage>(), Psynergy.Element.none, 0, 1 ,0, 1);
         }
 
+        public static Psynergy[] GetPsynergy(string[] psynergiesString)
+        {
+            List<Psynergy> psynergies = new List<Psynergy>();
+            if (psynergiesString == null) return psynergies.ToArray();
+            if(psynergiesString.Length > 0)
+            {
+                foreach (var s in psynergiesString)
+                {
+                    psynergies.Add(GetPsynergy(s));
+                }
+            }
+            return psynergies.ToArray();
+        }
+
+        public static Move[] GetMovepool(string[] psynergiesString)
+        {
+            List<Move> moves = new List<Move>();
+            moves.Add(new Attack());
+            moves.Add(new Defend());
+            moves.AddRange(GetPsynergy(psynergiesString));
+            
+            return moves.ToArray();
+        }
+
         public static T Clone<T>(T source)
         {
             var serialized = JsonConvert.SerializeObject(source);

@@ -2,6 +2,7 @@
 using IodemBot.Core.UserManagement;
 using IodemBot.Extensions;
 using IodemBot.Modules.GoldenSunMechanics;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,7 @@ namespace IodemBot.Modules.ColossoBattles
     public class PlayerFighter : ColossoFighter
     {
         public UserAccount avatar;
+        private SocketGuildUser guildUser;
 
         private static Stats baseStats = new Stats(30, 20, 20, 6, 8); //30, 20, 11, 6, 8
 
@@ -22,6 +24,7 @@ namespace IodemBot.Modules.ColossoBattles
             AdeptClassSeriesManager.getMoveset(UserAccounts.GetAccount(user)))
         {
             avatar = UserAccounts.GetAccount(user);
+            guildUser = user;
         }
 
         private static Stats ModifyStats(SocketGuildUser user)
@@ -45,6 +48,11 @@ namespace IodemBot.Modules.ColossoBattles
             selected = null;
             hasSelected = false;
             return base.EndTurn();
+        }
+
+        public override object Clone()
+        {
+            return new PlayerFighter(guildUser);
         }
 
     }

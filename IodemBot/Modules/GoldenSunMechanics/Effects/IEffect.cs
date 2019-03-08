@@ -43,6 +43,25 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 default: return new NoEffect();
             }
         }
+
+        protected virtual bool InternalValidSelection(ColossoFighter user)
+        {
+            return true;
+        }
+        protected virtual int InternalChooseBestTarget(List<ColossoFighter> targets)
+        {
+            return Global.random.Next(0, targets.Count);
+        }
+
+        internal int ChooseBestTarget(List<ColossoFighter> targets)
+        {
+            return InternalChooseBestTarget(targets);
+        }
+
+        internal bool ValidSelection(ColossoFighter User)
+        {
+            return InternalValidSelection(User);
+        }
     }
 
     public struct EffectImage

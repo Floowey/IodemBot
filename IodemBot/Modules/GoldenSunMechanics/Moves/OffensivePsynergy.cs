@@ -31,6 +31,22 @@ namespace IodemBot.Modules.GoldenSunMechanics
             return JsonConvert.DeserializeObject<OffensivePsynergy>(serialized);
         }
 
+        public override void InternalChooseBestTarget(ColossoFighter User)
+        {
+            var aliveEnemies = User.getEnemies().Where(f => f.IsAlive()).ToList();
+            if (aliveEnemies.Count == 0)
+            {
+                targetNr = 0;
+                return;
+            }
+            targetNr = User.getEnemies().IndexOf(aliveEnemies[Global.random.Next(0, aliveEnemies.Count)]);
+        }
+
+        public override bool InternalValidSelection(ColossoFighter User)
+        {
+            return User.stats.PP >= PPCost;
+        }
+
         protected override List<string> InternalUse(ColossoFighter User)
         {
             //Psynergy Handling

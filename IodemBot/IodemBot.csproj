@@ -274,16 +274,12 @@
     <Compile Include="Modules\GoldenSunMechanics\Effects\UserDiesEffect.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Moveset.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Moves\Attack.cs" />
-    <Compile Include="Modules\GoldenSunMechanics\Moves\DerivedPsynergies\Break.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Moves\Defend.cs" />
-    <Compile Include="Modules\GoldenSunMechanics\Moves\DerivedPsynergies\IRevive.cs" />
-    <Compile Include="Modules\GoldenSunMechanics\Moves\DerivedPsynergies\Phoenix.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Moves\HealPsynergy.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Moves\Move.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Moves\Nothing.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Moves\OffensivePsynergy.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Moves\Psynergy.cs" />
-    <Compile Include="Modules\GoldenSunMechanics\Moves\DerivedPsynergies\Revive.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Moves\StatusPsynergy.cs" />
     <Compile Include="Modules\ColossoBattles\Fighters\NPCEnemy.cs" />
     <Compile Include="Modules\ColossoBattles\Fighters\PlayerFighter.cs" />

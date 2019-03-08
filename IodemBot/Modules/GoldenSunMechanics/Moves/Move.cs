@@ -29,9 +29,15 @@ namespace IodemBot.Modules.GoldenSunMechanics
             if (!t.isValid) return log;
 
             log.AddRange(InternalUse(User));
-
-            
             return log;
+        }
+
+        [JsonIgnore]public bool onEnemy
+        {
+            get
+            {
+                return new Target[] { Target.otherSingle, Target.otherAll, Target.otherRange }.Contains(targetType);
+            }
         }
 
         protected abstract List<string> InternalUse(ColossoFighter User);
@@ -139,5 +145,18 @@ namespace IodemBot.Modules.GoldenSunMechanics
         }
 
         public abstract object Clone();
+
+        public abstract bool InternalValidSelection(ColossoFighter User);
+        public abstract void InternalChooseBestTarget(ColossoFighter User);
+
+        internal bool ValidSelection(ColossoFighter User)
+        {
+            return InternalValidSelection(User);
+        }
+
+        internal void ChooseBestTarget(ColossoFighter User)
+        {
+            InternalChooseBestTarget(User);
+        }
     }
 }

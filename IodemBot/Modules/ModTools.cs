@@ -38,7 +38,7 @@ namespace IodemBot.Modules
             if (user == Context.User)
                 amountOfMessagesToDelete++; //Because it will count the purge command as a message
 
-            var messages = await Context.Message.Channel.GetMessagesAsync(amountOfMessagesToDelete).FlattenAsync();
+            var messages = await Context.Message.Channel.GetMessagesAsync(amountOfMessagesToDelete+1).FlattenAsync();
 
             var result = messages.Where(x => x.Author.Id == user.Id && x.CreatedAt >= DateTimeOffset.UtcNow.Subtract(TimeSpan.FromDays(14)));
 
@@ -50,7 +50,7 @@ namespace IodemBot.Modules
         [RequireUserPermission(ChannelPermission.ManageMessages)]
         public async Task Clear(int amountOfMessagesToDelete = 2)
         {
-            var messages = await Context.Message.Channel.GetMessagesAsync(amountOfMessagesToDelete).FlattenAsync();
+            var messages = await Context.Message.Channel.GetMessagesAsync(amountOfMessagesToDelete+1).FlattenAsync();
             var result = messages.Where(x => x.CreatedAt >= DateTimeOffset.UtcNow.Subtract(TimeSpan.FromDays(14)));
 
             await (Context.Message.Channel as SocketTextChannel).DeleteMessagesAsync(messages);

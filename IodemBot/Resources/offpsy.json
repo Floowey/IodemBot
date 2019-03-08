@@ -35,7 +35,7 @@
 	"effectImages": [
 	  {
 	    "id": "Stat",
-	    "args": ["Attack", "0.5", "80"]
+	    "args": ["Defense", "0.5", "80"]
 	  }
 	],
 	"PPCost": 8,
@@ -1463,7 +1463,7 @@
 "Dynamite": {
     "name": "Dynamite",
 	"targetType": 4,
-	"emote":"<:bomb:>",
+	"emote":":bomb:",
 	"range": 3,
     "element": 1,
 	"PPCost": 0,
