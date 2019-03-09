@@ -133,7 +133,7 @@
 		"Revive"
 	  ],
       "stats": {
-        "maxHP": 340,
+        "maxHP": 420,
         "maxPP": 100,
         "Atk": 130,
         "Def": 90,
@@ -160,7 +160,7 @@
 		"Blaze"
 	  ],
       "stats": {
-        "maxHP": 310,
+        "maxHP": 380,
         "maxPP": 150,
         "Atk": 60,
         "Def": 60,
@@ -188,7 +188,7 @@
 		"Bind"
 	  ],
       "stats": {
-        "maxHP": 260,
+        "maxHP": 320,
         "maxPP": 200,
         "Atk": 70,
         "Def": 40,
@@ -216,7 +216,7 @@
 		"Break"
 	  ],
       "stats": {
-        "maxHP": 400,
+        "maxHP": 450,
         "maxPP": 200,
         "Atk": 100,
         "Def": 80,
@@ -355,7 +355,7 @@
 		"Cure Well",
 		"Mad Growth",
 		"Punji Strike",
-	        "Clay Spire"
+	    "Clay Spire"
 	  ],
       "stats": {
         "maxHP": 340,

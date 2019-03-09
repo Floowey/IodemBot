@@ -38,14 +38,29 @@ namespace IodemBot.Modules.ColossoBattles
         public async Task SetupColosso()
         {
             textChannel = (SocketTextChannel)Global.Client.GetChannel(546760009741107216);
+            await Context.Message.DeleteAsync();
+            _ = setup();
+        }
+
+        private async Task setup()
+        {
             battles = new List<BattleCollector>();
-            Context.Message.DeleteAsync();
             var b = await GetBattleCollector(Context, "Bronze", BattleDifficulty.Easy);
             battles.Add(b);
             b = await GetBattleCollector(Context, "Silver", BattleDifficulty.Medium);
             battles.Add(b);
             b = await GetBattleCollector(Context, "Gold", BattleDifficulty.Hard);
             battles.Add(b);
+        }
+
+        [Command("reset")]
+        [RequireUserPermission(ChannelPermission.ManageMessages)]
+        public async Task reset(BattleDifficulty diff)
+        {
+            await Context.Message.DeleteAsync();
+            var a = battles.Where(b => b.diff == diff).FirstOrDefault();
+            if (a != null) _ = a.reset();
+            await Task.CompletedTask;
         }
 
         private async Task<BattleCollector> GetBattleCollector(SocketCommandContext Context, string Name, BattleDifficulty diff)
@@ -107,7 +122,15 @@ namespace IodemBot.Modules.ColossoBattles
 
             var curBattle = battles.Where(b => b.battleChannel.Id == reaction.Channel.Id).FirstOrDefault();
             if (curBattle == null) return;
-            var c = (RestUserMessage)await channel.GetMessageAsync(reaction.MessageId);
+            RestUserMessage c;
+            if (cache.HasValue){
+                c = (RestUserMessage)cache.Value;
+            } else
+            {
+                channel.GetCachedMessage(reaction.MessageId);
+                c = (RestUserMessage)await channel.GetMessageAsync(reaction.MessageId);
+
+            }
             curBattle.ProcessReaction(reaction, c);
         }
 
@@ -167,6 +190,7 @@ namespace IodemBot.Modules.ColossoBattles
                     statusMsg = null;
                 }
                 EnemiesDatabase.getRandomEnemies(diff).ForEach(f => battle.AddPlayer(f, ColossoBattle.Team.B));
+                Console.WriteLine($"Up against {battle.TeamB.First().name}");
 
                 autoTurn = new Timer()
                 {
@@ -180,7 +204,7 @@ namespace IodemBot.Modules.ColossoBattles
 
             private async void OnTimerTicked(object sender, ElapsedEventArgs e)
             {
-                await processTurn(forced: true);
+                processTurn(forced: true);
             }
 
             internal async Task ProcessReaction(SocketReaction reaction, RestUserMessage c)
@@ -224,29 +248,32 @@ namespace IodemBot.Modules.ColossoBattles
                     return;
                 }
                 reactions.Add(reaction);
-                await processTurn(forced: false);
+                processTurn(forced: false);
             }
 
             internal async Task processTurn(bool forced)
             {
+                autoTurn.Stop();
                 bool turnProcessed = forced ? battle.ForceTurn() : battle.Turn();
                 if (turnProcessed)
                 {
-                    await WriteBattle();
-                    if (!battle.isActive)
+                    if (battle.isActive)
                     {
-                        GameOver();
+                        await WriteBattle();
+                        autoTurn.Start();
+                    } else
+                    {
+                        await GameOver();
+                        autoTurn.Dispose();
                     }
                 };
             }
 
             internal async Task WriteBattle()
             {
-                autoTurn.Stop();
                 await WriteStatus();
                 await WriteEnemies();
                 await WritePlayers();
-                autoTurn.Start();
             }
 
             private async Task WriteStatus()
@@ -445,11 +472,7 @@ namespace IodemBot.Modules.ColossoBattles
 
             internal async Task GameOver()
             {
-                autoTurn.Stop();
-                autoTurn.Dispose();
                 var winners = battle.getTeam(battle.getWinner());
-                var text = $"{winners.First().name}'s Party wins! Battle will reset shortly";
-                await statusMsg.ModifyAsync(m => { m.Content = text; m.Embed = null; });
                 if (winners.First() is PlayerFighter)
                 {
                     winners.ConvertAll(s => (PlayerFighter)s).ForEach(async p => await ServerGames.UserWonBattle(p.avatar, diff, textChannel));
@@ -459,11 +482,18 @@ namespace IodemBot.Modules.ColossoBattles
                     var losers = winners.First().battle.getTeam(winners.First().enemies);
                     losers.ConvertAll(s => (PlayerFighter)s).ForEach(async p => await ServerGames.UserLostBattle(p.avatar, diff, textChannel));
                 }
-                await Task.Delay(5000);
+                WriteGameOver();
+            }
+            private async Task WriteGameOver()
+            {
+                WriteStatus();
+                await Task.Delay(2000);
+                var winners = battle.getTeam(battle.getWinner());
+                var text = $"{winners.First().name}'s Party wins! Battle will reset shortly";
+                await statusMsg.ModifyAsync(m => { m.Content = text; m.Embed = null; });
+                await Task.Delay(2000);
                 await reset();
             }
-
-            
         }
     }
 }

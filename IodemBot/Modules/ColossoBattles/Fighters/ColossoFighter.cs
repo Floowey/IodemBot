@@ -375,14 +375,15 @@ namespace IodemBot.Modules.ColossoBattles
             }
             selected = moves[Global.random.Next(0, moves.Count())];
             selected.targetNr = 0;
+            Console.WriteLine($"{selected.name} was rolled.");
            
             if (selected.ValidSelection(this))
             {
                 selected.ChooseBestTarget(this);
-                Console.WriteLine($"{selected.name} passed the check.");
+                Console.WriteLine($"  {selected.name} passed the check.");
             } else
             {
-                Console.WriteLine($"{selected.name} was a bad choice. Rerolling.");
+                Console.WriteLine($"X {selected.name} was a bad choice. Rerolling.");
                 selectRandom();
                 return;
             }

@@ -59,7 +59,5 @@ namespace IodemBot.Modules.ColossoBattles
             }
             return selectedDifficulty[(new Random()).Next(0, selectedDifficulty.Count)].Select(f => (ColossoFighter)f.Clone()).ToList();
         }
-
     }
-
 }
