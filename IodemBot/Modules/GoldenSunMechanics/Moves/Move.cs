@@ -118,7 +118,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                     targets.Add(user.battle.getTeam(user.party)[targetNr]);
                     break;
                 case Target.otherAll:
-                    targets.AddRange(user.battle.getTeam(user.enemies));
+                    targets.AddRange(user.getEnemies());
                     break;
                 case Target.otherSingle:
                     targetNr = Math.Min(targetNr, enemyCount);

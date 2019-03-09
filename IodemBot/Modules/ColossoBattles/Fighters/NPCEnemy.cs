@@ -38,7 +38,14 @@ namespace IodemBot.Modules.ColossoBattles
         public override List<string> EndTurn()
         {
             List<string> log = new List<string>();
-            selectRandom();
+            if (IsAlive())
+            {
+                selectRandom();
+            } else
+            {
+                selected= new Nothing();
+                hasSelected = true;
+            }
             log.AddRange(base.EndTurn());
             return log;
         }

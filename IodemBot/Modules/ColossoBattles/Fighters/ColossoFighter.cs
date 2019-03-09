@@ -71,6 +71,7 @@ namespace IodemBot.Modules.ColossoBattles
             stats.HP = 0;
             RemoveAllConditions();
             AddCondition(Condition.Down);
+            Buffs = new List<Buff>();
         }
 
         public virtual List<string> DealDamage(uint damage, string punctuation = "!")
@@ -94,7 +95,6 @@ namespace IodemBot.Modules.ColossoBattles
                 log.Add($":x: {name} goes down.");
                 RemoveAllConditions();
                 AddCondition(Condition.Down);
-                Buffs = new List<Buff>();
             }
             return log;
         }
@@ -373,25 +373,20 @@ namespace IodemBot.Modules.ColossoBattles
                 Console.WriteLine("Why tf do you want to selectRandom(), the battle is *not* active!");
                 return;
             }
-            selected = moves[(uint)rnd.Next(0, moves.Count())];
+            selected = moves[Global.random.Next(0, moves.Count())];
             selected.targetNr = 0;
-            if(selected is Psynergy)
-            {
-                if (stats.PP < ((Psynergy)selected).PPCost)
-                {
-                    Console.WriteLine("Not enough PP. Picking new Move.");
-                    selectRandom();
-                }
-            }
+           
             if (selected.ValidSelection(this))
             {
                 selected.ChooseBestTarget(this);
+                Console.WriteLine($"{selected.name} passed the check.");
             } else
             {
+                Console.WriteLine($"{selected.name} was a bad choice. Rerolling.");
                 selectRandom();
+                return;
             }
             hasSelected = true;
-            //select(s, t);
         }
 
         public int CompareTo(ColossoFighter obj)

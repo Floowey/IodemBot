@@ -36,15 +36,20 @@ namespace IodemBot.Modules.GoldenSunMechanics
         {
             if (targetType == Target.ownAll) return;
             var aliveFriends = User.getTeam().Where(f => f.IsAlive()).ToList();
+            if(aliveFriends.Count == 0)
+            {
+                targetNr = 0;
+                return;
+            }
             
-            aliveFriends = aliveFriends.OrderBy(s => s.stats.HP / s.stats.maxHP).ToList();
+            aliveFriends = aliveFriends.OrderBy(s => s.stats.HP / s.stats.maxHP).ThenBy(s => s.stats.maxHP).ToList();
             targetNr = User.getTeam().IndexOf(aliveFriends.First());
 
         }
 
         public override bool InternalValidSelection(ColossoFighter User)
         {
-            return true;
+            return User.stats.PP >= PPCost;
         }
 
         protected override List<string> InternalUse(ColossoFighter User)

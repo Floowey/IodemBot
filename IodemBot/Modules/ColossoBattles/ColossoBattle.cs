@@ -51,14 +51,6 @@ namespace IodemBot.Modules.ColossoBattles
             UserAccounts.SaveAccounts();
         }
 
-        public void TimeUp()
-        {
-            // Select random Move from players movepools
-
-            // Force Next Turn
-            Turn();
-        }
-
         public bool ForceTurn()
         {
             if (turnActive) return false;
@@ -77,8 +69,7 @@ namespace IodemBot.Modules.ColossoBattles
             if (!isActive) return false;
             if (turnActive) return false;
             log.Clear();
-            if(TeamA.Aggregate(false, (p, s) => !s.hasSelected ? true : p) ||
-                TeamB.Aggregate(false, (p, s) => !s.hasSelected ? true : p))
+            if(!(TeamA.All(p => p.hasSelected) && TeamB.All(p => p.hasSelected)))
             {
                 return false;
             }

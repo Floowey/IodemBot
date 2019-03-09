@@ -47,7 +47,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         protected override int InternalChooseBestTarget(List<ColossoFighter> targets)
         {
             var unaffectedEnemies = targets.Where(s => !s.HasCondition(Cond)).ToList();
-            return unaffectedEnemies.IndexOf(unaffectedEnemies[Global.random.Next(0, unaffectedEnemies.Count)]);
+            return targets.IndexOf(unaffectedEnemies[Global.random.Next(0, unaffectedEnemies.Count)]);
         }
 
         protected override bool InternalValidSelection(ColossoFighter user)

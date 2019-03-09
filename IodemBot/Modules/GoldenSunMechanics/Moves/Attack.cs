@@ -16,8 +16,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public override object Clone()
         {
-            var serialized = JsonConvert.SerializeObject(this);
-            return JsonConvert.DeserializeObject<Attack>(serialized);
+            return new Attack();
         }
 
         public override void InternalChooseBestTarget(ColossoFighter User)

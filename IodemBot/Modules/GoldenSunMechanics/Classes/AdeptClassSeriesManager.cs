@@ -51,7 +51,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         internal static ElementalStats getElStats(UserAccount User)
         {
-            return getClassSeries(User).elstats;
+            var els = getClassSeries(User).elstats;
+            return els;
         }
 
         public static AdeptClass getClass(UserAccount User)
