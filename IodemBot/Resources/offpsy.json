@@ -1474,4 +1474,45 @@
 			   }
 		   ],
   },
+"Claw Attack": {
+    "name": "Claw Attack",
+    "targetType": 3,
+    "emote":"<:Rampage:537766290031509524>",
+    "range": 1,
+    "element": 4,
+    "PPCost": 0,
+    "addDamage": 20
+  },
+"Poison Fang": {
+    "name": "Poison Fang",
+    "targetType": 3,
+    "emote":":snake:",
+    "range": 1,
+    "element": 0,
+    "PPCost": 0,
+    "addDamage": 0,
+    "effectImages":[
+	{"id": "Condition",
+	 "args":["Poison", "40"]}
+	 ]
+  },
+"Twin Shear": {
+    "name": "Twin Shear",
+    "targetType": 3,
+    "emote":":scissors:",
+    "range": 1,
+    "element": 0,
+    "PPCost": 0,
+    "dmgMult": 1.8
+  },
+"Aqua Breath": {
+    "name": "Aqua Breath",
+    "targetType": 4,
+	"emote":":sweat_drops:",
+    "range": 3,
+    "element": 3,
+    "PPCost": 0,
+    "power": 120
+  }
+    
 }
