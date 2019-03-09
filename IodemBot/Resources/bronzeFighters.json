@@ -900,5 +900,91 @@
         "MercuryRes": 72
 	  }
 	}
+  ],
+  [
+    {
+      "name": "Crab 1",
+      "imgurl": "https://goldensunwiki.net/w/images/0/0e/UnusedMonster2.gif",
+      "movepool": [
+	  "Vicious Chop",
+	  "Claw Attack",
+	  "Twin Shear",
+	  "Slice",
+	  "Aqua Breath"
+	  ],
+      "stats": {
+	"maxHP": 110,
+	"maxPP": 66,
+	"Atk": 93,
+	"Def": 37,
+	"Spd": 28
+      },
+      "elstats": {
+        "VenusAtk": 110,
+        "VenusRes": 72,
+        "MarsAtk": 25,
+        "MarsRes": 25,
+        "JupiterAtk": 48,
+        "JupiterRes": 48,
+        "MercuryAtk": 100,
+        "MercuryRes": 72
+	  }
+        },
+    {
+      "name": "Crab 2",
+      "imgurl": "",
+      "movepool": [
+	  "Vicious Chop",
+	  "Claw Attack",
+	  "Twin Shear",
+	  "Slice",
+	  "Aqua Breath"
+	  ],
+      "stats": {
+	"maxHP": 110,
+	"maxPP": 66,
+	"Atk": 93,
+	"Def": 37,
+	"Spd": 28
+      },
+      "elstats": {
+        "VenusAtk": 110,
+        "VenusRes": 72,
+        "MarsAtk": 25,
+        "MarsRes": 25,
+        "JupiterAtk": 48,
+        "JupiterRes": 48,
+        "MercuryAtk": 100,
+        "MercuryRes": 72
+	  }
+        },
+     {
+      "name": "Crab 3",
+      "imgurl": "",
+      "movepool": [
+	  "Vicious Chop",
+	  "Claw Attack",
+	  "Twin Shear",
+	  "Slice",
+	  "Aqua Breath"
+	  ],
+      "stats": {
+	"maxHP": 110,
+	"maxPP": 66,
+	"Atk": 93,
+	"Def": 37,
+	"Spd": 28
+      },
+      "elstats": {
+        "VenusAtk": 110,
+        "VenusRes": 72,
+        "MarsAtk": 25,
+        "MarsRes": 25,
+        "JupiterAtk": 48,
+        "JupiterRes": 48,
+        "MercuryAtk": 100,
+        "MercuryRes": 72
+	  }
+        }
   ]
 ]
