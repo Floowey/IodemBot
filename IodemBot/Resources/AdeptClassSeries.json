@@ -2036,12 +2036,12 @@
 	  3
     ],
     "elstats": {
-      "VenusAtk": 140,
-      "VenusRes": 140,
-      "MarsAtk": 90,
-      "MarsRes": 90,
-      "JupiterAtk": 80,
-      "JupiterRes": 80,
+      "VenusAtk": 80,
+      "VenusRes": 80,
+      "MarsAtk": 140,
+      "MarsRes": 140,
+      "JupiterAtk": 90,
+      "JupiterRes": 90,
       "MercuryAtk": 130,
       "MercuryRes": 130
     },
@@ -2525,12 +2525,12 @@
 	  3
     ],
     "elstats": {
-      "VenusAtk": 50,
-      "VenusRes": 50,
+      "VenusAtk": 130,
+      "VenusRes": 130,
       "MarsAtk": 130,
       "MarsRes": 130,
-      "JupiterAtk": 130,
-      "JupiterRes": 130,
+      "JupiterAtk": 50,
+      "JupiterRes": 50,
       "MercuryAtk": 130,
       "MercuryRes": 130
     },
