@@ -1016,4 +1016,62 @@
 	  }
 	}
   ],
+  [
+    {
+      "name": "Nue 1",
+      "imgurl": "https://goldensunwiki.net/w/images/c/c4/UnusedMonster1.gif",
+      "movepool": [
+		"Banshee Howl",
+		"Double Fang",
+		"Poison Fang",
+	        "Claw Attack",
+	        "Fire Breath"
+	  ],
+      "stats": {
+        "maxHP": 1075,
+        "maxPP": 80,
+        "Atk": 232,
+        "Def": 64,
+        "Spd": 87
+      },
+      "elstats": {
+        "VenusAtk": 125,
+        "VenusRes": 90,
+        "MarsAtk": 110,
+        "MarsRes": 90,
+        "JupiterAtk": 72,
+        "JupiterRes": 72,
+        "MercuryAtk": 30,
+        "MercuryRes": 30
+	  }
+	},
+    {
+      "name": "Nue 2",
+      "imgurl": "",
+      "movepool": [
+		"Banshee Howl",
+		"Double Fang",
+		"Poison Fang",
+	        "Claw Attack",
+	        "Fire Breath"
+	  ],
+      "stats": {
+        "maxHP": 1075,
+        "maxPP": 80,
+        "Atk": 232,
+        "Def": 64,
+        "Spd": 87
+      },
+      "elstats": {
+        "VenusAtk": 125,
+        "VenusRes": 90,
+        "MarsAtk": 110,
+        "MarsRes": 90,
+        "JupiterAtk": 72,
+        "JupiterRes": 72,
+        "MercuryAtk": 30,
+        "MercuryRes": 30
+	  }
+	}
+  ],
 ]
