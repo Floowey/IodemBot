@@ -128,7 +128,7 @@
     },
     "requirement": "Level",
     "isDefault": true,
-	"description": "Stoic and rooted to the soil, Adepts of the Squire Series excell in leadship and versatility."
+	"description": "Stoic and rooted to the soil, Adepts of the Squire Series excell in leadership and versatility."
   },
   {
     "name": "Miko Series",
@@ -1988,7 +1988,7 @@
 		  "Cutting Edge",
           "Mad Blast",
           "Restore",
-		  "Pure Ply"
+		  "Ply Well"
         ],
         "statMultipliers": {
           "maxHP": 140,
@@ -2004,7 +2004,7 @@
 		  "Plume Edge",
           "Fiery Blast",
           "Restore",
-		  "Pure Ply"
+		  "Ply Well"
         ],
         "statMultipliers": {
           "maxHP": 170,
@@ -2020,7 +2020,7 @@
           "Plume Edge",
           "Fiery Blast",
           "Restore",
-		  "Ply Well"
+		  "Pure Ply"
         ],
         "statMultipliers": {
           "maxHP": 190,

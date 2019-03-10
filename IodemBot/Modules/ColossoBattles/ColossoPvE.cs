@@ -63,6 +63,16 @@ namespace IodemBot.Modules.ColossoBattles
             await Task.CompletedTask;
         }
 
+        [Command("setEnemy")]
+        [RequireUserPermission(ChannelPermission.ManageMessages)]
+        public async Task setEnemy(BattleDifficulty diff, [Remainder] string enemy)
+        {
+            await Context.Message.DeleteAsync();
+            var a = battles.Where(b => b.diff == diff).FirstOrDefault();
+            if (a != null) a.setEnemy(enemy);
+            await Task.CompletedTask;
+        }
+
         private async Task<BattleCollector> GetBattleCollector(SocketCommandContext Context, string Name, BattleDifficulty diff)
         {
             var b = new BattleCollector();
@@ -145,6 +155,7 @@ namespace IodemBot.Modules.ColossoBattles
             if (battleCol.battle.sizeTeamA == 0) return;
             battleCol.battle.Start();
             await battleCol.WriteBattleInit();
+            battleCol.autoTurn.Start();
         }
 
         public enum BattleDifficulty { Easy = 1, Medium = 2, Hard = 3 };
@@ -173,7 +184,7 @@ namespace IodemBot.Modules.ColossoBattles
                 messages = new Dictionary<IUserMessage, ColossoFighter>();
 
                 await lobbyMsg.RemoveAllReactionsAsync();
-                await lobbyMsg.AddReactionsAsync(new IEmote[]
+                lobbyMsg.AddReactionsAsync(new IEmote[]
                     {
                         Emote.Parse("<:Fight:536919792813211648>"),
                         Emote.Parse("<:Battle:536954571256365096>")
@@ -181,14 +192,15 @@ namespace IodemBot.Modules.ColossoBattles
 
                 if (enemyMsg != null)
                 {
-                    await enemyMsg.ModifyAsync(c => { c.Content = $"Welcome to {Name} Battle!"; c.Embed = null; });
-                    await enemyMsg.RemoveAllReactionsAsync();
+                    enemyMsg.ModifyAsync(c => { c.Content = $"Welcome to {Name} Battle!"; c.Embed = null; });
+                    enemyMsg.RemoveAllReactionsAsync();
                 }
                 if (statusMsg != null)
                 {
-                    await statusMsg.DeleteAsync();
+                    statusMsg.DeleteAsync();
                     statusMsg = null;
                 }
+                battle.TeamB = new List<ColossoFighter>();
                 EnemiesDatabase.getRandomEnemies(diff).ForEach(f => battle.AddPlayer(f, ColossoBattle.Team.B));
                 Console.WriteLine($"Up against {battle.TeamB.First().name}");
 
@@ -257,9 +269,9 @@ namespace IodemBot.Modules.ColossoBattles
                 bool turnProcessed = forced ? battle.ForceTurn() : battle.Turn();
                 if (turnProcessed)
                 {
+                    await WriteBattle();
                     if (battle.isActive)
                     {
-                        await WriteBattle();
                         autoTurn.Start();
                     } else
                     {
@@ -368,7 +380,6 @@ namespace IodemBot.Modules.ColossoBattles
                 await WriteStatusInit();
                 await WriteEnemiesInit();
                 await WritePlayersInit();
-                autoTurn.Start();
             }
             private async Task WriteStatusInit()
             {
@@ -485,14 +496,20 @@ namespace IodemBot.Modules.ColossoBattles
                 WriteGameOver();
             }
             private async Task WriteGameOver()
-            {
-                WriteStatus();
+            { 
                 await Task.Delay(2000);
                 var winners = battle.getTeam(battle.getWinner());
                 var text = $"{winners.First().name}'s Party wins! Battle will reset shortly";
                 await statusMsg.ModifyAsync(m => { m.Content = text; m.Embed = null; });
                 await Task.Delay(2000);
                 await reset();
+            }
+
+            internal void setEnemy(string enemy)
+            {
+                battle.TeamB = new List<ColossoFighter>();
+                EnemiesDatabase.getEnemies(diff, enemy).ForEach(f => battle.AddPlayer(f, ColossoBattle.Team.B));
+                Console.WriteLine($"Up against {battle.TeamB.First().name}");
             }
         }
     }

@@ -33,6 +33,9 @@ namespace IodemBot.Modules.ColossoBattles
         [JsonIgnore] public double offensiveMult = 1;
         [JsonIgnore] public double defensiveMult = 1;
         [JsonIgnore] public double ignoreDefense = 1;
+        public uint HPrecovery { get; set; } = 0;
+        public uint PPrecovery { get; set; } = 0;
+
 
         internal ColossoFighter(string name, string imgUrl, Stats stats, ElementalStats elstats, Move[] moves)
         {
@@ -145,7 +148,7 @@ namespace IodemBot.Modules.ColossoBattles
             }
             else
             {
-                log.Add($"{name} recovers {healHP} HP!");
+                log.Add($"{name} recovers {healHP} HP.");
             }
             return log;
             
@@ -244,6 +247,36 @@ namespace IodemBot.Modules.ColossoBattles
             Buffs = newBuffs;
             defensiveMult = 1;
             offensiveMult = 1;
+
+            if (IsAlive())
+            {
+                if (HPrecovery > 0 && stats.HP < stats.maxHP)
+                {
+                    stats.HP = Math.Min(stats.maxHP, stats.HP + HPrecovery);
+                    if (stats.HP < stats.maxHP)
+                    {
+                        turnLog.Add($"{name} recovers {HPrecovery} HP.");
+                    }
+                    else
+                    {
+                        turnLog.Add($"{name}'s HP was fully restored.");
+                    }
+                }
+                if (PPrecovery > 0 && stats.PP < stats.maxPP)
+                {
+                    stats.PP = Math.Min(stats.maxPP, stats.PP + PPrecovery);
+                    if(stats.PP < stats.maxPP)
+                    {
+                        turnLog.Add($"{name} recovers {PPrecovery} PP.");
+                    } else
+                    {
+                        turnLog.Add($"{name}'s PP was fully restored.");
+                    }
+                }
+
+            }
+
+            RemoveCondition(Condition.Flinch);
 
             //Chance to wake up
             if (HasCondition(Condition.Sleep))

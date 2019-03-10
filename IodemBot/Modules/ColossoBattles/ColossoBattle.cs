@@ -84,6 +84,9 @@ namespace IodemBot.Modules.ColossoBattles
             //Main Turn
             log.AddRange(MainTurn());
 
+            //Main Turn
+            log.AddRange(ExtraTurn());
+
             //End Turn
             log.AddRange(EndTurn());
 
@@ -92,6 +95,9 @@ namespace IodemBot.Modules.ColossoBattles
                 isActive = false;
             }
             turnActive = false;
+
+            Console.WriteLine("Done processing Turn");
+
             return b;
         }
 

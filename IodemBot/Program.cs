@@ -18,10 +18,13 @@ namespace IodemBot
 
         static void Main(string[] args)
         {
+
             try
             {
                 new Program().StartAsync().GetAwaiter().GetResult();
-            } catch (Exception e) {
+            }
+            catch (Exception e)
+            {
                 var date = DateTime.Now.ToString("yyyy_mm_dd");
                 File.AppendAllText($"Logs/{date}_crash.log", e.Message + "\n" + e.InnerException.ToString());
             }

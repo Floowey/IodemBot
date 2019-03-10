@@ -51,7 +51,10 @@
         "JupiterRes": 80,
         "MercuryAtk": 130,
         "MercuryRes": 140
-      }
+      },
+	  "HPRecovery": 40,
+	  "PPRecovery": 5,
+	  "extraTurns": 1
     },
 	{
       "name": "Wood Walker 2",

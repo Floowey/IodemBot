@@ -52,7 +52,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         protected override bool InternalValidSelection(ColossoFighter user)
         {
-            return user.getEnemies().All(s => s.HasCondition(Cond));
+            return !user.getEnemies().All(s => s.HasCondition(Cond));
         }
 
         public override List<string> Apply(ColossoFighter User, ColossoFighter Target)

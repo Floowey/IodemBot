@@ -321,6 +321,10 @@
 	"emote":"<:Call_Zombie:536997673799122956>",
 	"range": 1,
     "element": 0,
+	"effectImages":[
+	{"id": "Condition",
+	"args": ["Haunt", "33"]}
+	],
 	"PPCost": 5,
 	"power": 40
   },
@@ -330,6 +334,10 @@
 	"emote":"💀",
 	"range": 1,
     "element": 0,
+	"effectImages":[
+	{"id": "Condition",
+	"args": ["Haunt", "44"]}
+	],
 	"PPCost": 15,
 	"power": 140
   },
@@ -339,6 +347,10 @@
 	"emote":"☠",
 	"range": 1,
     "element": 0,
+	"effectImages":[
+	{"id": "Condition",
+	"args": ["Haunt", "55"]}
+	],
 	"PPCost": 30,
 	"power": 250
   },
@@ -1435,16 +1447,16 @@
    "Mighty Press": {
     "name": "Mighty Press",
 	"targetType": 3,
-	"emote":"<:Rampage:537766290031509524>",
+	"emote":":compression:",
 	"range": 1,
     "element": 0,
 	"PPCost": 0,
 	"addDamage": 50,
-		   "effectImages":[
-			   {
-				   "id": "ChanceToOHKO",
-				   "args": ["10"]}
-			   ],
+	"effectImages":[
+	{
+		"id": "ChanceToOHKO",
+		"args": ["10"]}
+	],
   },
 "War Cry": {
     "name": "War Cry",
@@ -1454,11 +1466,11 @@
     "element": 2,
 	"PPCost": 0,
 	"power": 45,
-	   "effectImages":[
-		   {
-			   "id": "Condition",
-			   "args":["Flinch", "35"]}
-		   ],
+	"effectImages":[
+	{
+		"id": "Condition",
+		"args":["Flinch", "35"]}
+	],
   },
 "Dynamite": {
     "name": "Dynamite",
@@ -1505,6 +1517,15 @@
     "PPCost": 0,
     "dmgMult": 1.8
   },
+"Echo Cut": {
+    "name": "Êcho Cut",
+    "targetType": 3,
+    "emote":":scissors:",
+    "range": 1,
+    "element": 4,
+    "PPCost": 0,
+    "addDamage": 30
+  },
 "Aqua Breath": {
     "name": "Aqua Breath",
     "targetType": 4,
@@ -1513,6 +1534,27 @@
     "element": 3,
     "PPCost": 0,
     "power": 120
+  },
+"Black Ice": {
+    "name": "Black Ice",
+    "targetType": 4,
+	"emote":":chocolate_bar:",
+    "range": 3,
+    "element": 0,
+    "PPCost": 0,
+    "power": 80
+},
+"Armor Crush": {
+    "name": "Armor Crush",
+    "targetType": 3,
+	"emote":":name_badge:",
+    "range": 1,
+    "element": 0,
+	"effectImages":[
+	{"id": "Status",
+	 "args":["Defense", "0.75", "50"]}],
+    "PPCost": 0,
+    "dmgMult":1.4
   }
-    
 }
+

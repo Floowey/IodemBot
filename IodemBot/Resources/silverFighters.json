@@ -668,7 +668,7 @@
       "name": "Virago 1",
       "imgurl": "https://vignette.wikia.nocookie.net/goldensun/images/3/31/Hobgoblin.png/revision/latest?cb=20071212184432",
       "movepool": [
-		    "Tornado",
+		  "Tornado",
 	      "Banshee Howl"
 	  ],
       "stats": {
@@ -693,10 +693,10 @@
       "name": "Hobgoblin",
       "imgurl": "",
       "movepool": [
-		"Nut",
 		"Crystal Powder",
-	      "Sleep Bomb",
-	      "Smoke Bomb"
+		"Nut",
+	    "Sleep Bomb",
+	    "Smoke Bomb"
 	  ],
       "stats": {
         "maxHP": 900,
@@ -720,7 +720,7 @@
       "name": "Virago 2",
       "imgurl": "",
       "movepool": [
-		  "Tornado",
+		"Tornado",
 	    "Banshee Howl"
 	  ],
       "stats": {
@@ -826,11 +826,13 @@
       "imgurl": "https://vignette.wikia.nocookie.net/goldensun/images/6/6a/Lich_Ghost.png/revision/latest?cb=20070917070302",
       "movepool": [
 		"Cannibal Fang",
-		"Bacteria Rush"
+		"Bacteria Rush",
+		"Smoke Bomb",
+		"Dull"
 	  ],
       "stats": {
         "maxHP": 609,
-        "maxPP": 34,
+        "maxPP": 33,
         "Atk": 199,
         "Def": 45,
         "Spd": 69
@@ -852,8 +854,7 @@
       "movepool": [
 		"Glacier",
 		"Revive",
-		"Enfeeble",
-		"Debilitate"
+		"Bind"
 	  ],
       "stats": {
         "maxHP": 900,
@@ -876,13 +877,15 @@
     {
       "name": "Fiendish Ghoul 2",
       "imgurl": "",
-      "movepool": [
+       "movepool": [
 		"Cannibal Fang",
-		"Bacteria Rush"
+		"Bacteria Rush",
+		"Smoke Bomb",
+		"Guard"
 	  ],
       "stats": {
         "maxHP": 609,
-        "maxPP": 34,
+        "maxPP": 33,
         "Atk": 199,
         "Def": 45,
         "Spd": 69
@@ -914,7 +917,7 @@
 	  ],
       "stats": {
         "maxHP": 1100,
-        "maxPP": 36,
+        "maxPP": 50,
         "Atk": 213,
         "Def": 56,
         "Spd": 98
@@ -944,7 +947,7 @@
 	  ],
       "stats": {
         "maxHP": 1100,
-        "maxPP": 36,
+        "maxPP": 50,
         "Atk": 213,
         "Def": 56,
         "Spd": 98
@@ -1024,8 +1027,8 @@
 		"Banshee Howl",
 		"Double Fang",
 		"Poison Fang",
-	        "Claw Attack",
-	        "Fire Breath"
+	    "Claw Attack",
+	    "Fire Breath"
 	  ],
       "stats": {
         "maxHP": 1075,
@@ -1052,8 +1055,8 @@
 		"Banshee Howl",
 		"Double Fang",
 		"Poison Fang",
-	        "Claw Attack",
-	        "Fire Breath"
+	    "Claw Attack",
+	    "Fire Breath"
 	  ],
       "stats": {
         "maxHP": 1075,
@@ -1074,4 +1077,118 @@
 	  }
 	}
   ],
+  [
+    {
+      "name": "Sea Fighter 1",
+      "imgurl": "",
+      "movepool": [
+		"Echo Cut",
+		"Nut",
+		"Smoke Bomb",
+		"Oil Drop"
+	  ],
+      "stats": {
+        "maxHP": 295,
+        "maxPP": 10,
+        "Atk": 148,
+        "Def": 35,
+        "Spd": 87
+      },
+      "elstats": {
+        "VenusAtk": 100,
+        "VenusRes": 100,
+        "MarsAtk": 100,
+        "MarsRes": 100,
+        "JupiterAtk": 100,
+        "JupiterRes": 100,
+        "MercuryAtk": 100,
+        "MercuryRes": 100
+	  }
+	},
+	{
+      "name": "Sea Fighter 2",
+      "imgurl": "",
+      "movepool": [
+		"Echo Cut",
+		"Nut",
+		"Smoke Bomb",
+		"Oil Drop"
+	  ],
+      "stats": {
+        "maxHP": 295,
+        "maxPP": 10,
+        "Atk": 148,
+        "Def": 35,
+        "Spd": 87
+      },
+      "elstats": {
+        "VenusAtk": 100,
+        "VenusRes": 100,
+        "MarsAtk": 100,
+        "MarsRes": 100,
+        "JupiterAtk": 100,
+        "JupiterRes": 100,
+        "MercuryAtk": 100,
+        "MercuryRes": 100
+	  }
+	},
+    {
+      "name": "Briggs",
+      "imgurl": "",
+      "movepool": [
+		"Echo Cut",
+		"Signal Whistle"
+	  ],
+      "stats": {
+        "maxHP": 1476,
+        "maxPP": 3,
+        "Atk": 161,
+        "Def": 36,
+        "Spd": 76
+      },
+      "elstats": {
+        "VenusAtk": 100,
+        "VenusRes": 100,
+        "MarsAtk": 100,
+        "MarsRes": 100,
+        "JupiterAtk": 100,
+        "JupiterRes": 100,
+        "MercuryAtk": 100,
+        "MercuryRes": 100
+	  }
+	}
+  ],
+  [
+    {
+      "name": "Serpent",
+      "imgurl": "https://goldensunwiki.net/w/images/8/89/Serpent.png",
+      "movepool": [
+		"Briar",
+		"Quake Sphere",
+		"Cure Well",
+		"Toxic Grit",
+		"Mighty Press",
+		"Black Ice"
+	  ],
+      "stats": {
+        "maxHP": 2536,
+        "maxPP": 160,
+        "Atk": 148,
+        "Def": 35,
+        "Spd": 87
+      },
+      "elstats": {
+        "VenusAtk": 110,
+        "VenusRes": 152,
+        "MarsAtk": 100,
+        "MarsRes": 100,
+        "JupiterAtk": 100,
+        "JupiterRes": 48,
+        "MercuryAtk": 100,
+        "MercuryRes": 100
+	  },
+	  "HPRecovery":30,
+	  "extraTurns":1
+	}
+  ]
 ]

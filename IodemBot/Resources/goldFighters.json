@@ -1085,4 +1085,294 @@
 	  }
 	}
 	],
+	[
+    {
+      "name": "Serpent",
+      "imgurl": "https://goldensunwiki.net/w/images/8/89/Serpent.png",
+      "movepool": [
+		"Briar",
+		"Quake Sphere",
+		"Cure Well",
+		"Toxic Grit",
+		"Mighty Press",
+		"Black Ice"
+	  ],
+      "stats": {
+        "maxHP": 5306,
+        "maxPP": 160,
+        "Atk": 311,
+        "Def": 95,
+        "Spd": 87
+      },
+      "elstats": {
+        "VenusAtk": 110,
+        "VenusRes": 152,
+        "MarsAtk": 100,
+        "MarsRes": 100,
+        "JupiterAtk": 100,
+        "JupiterRes": 48,
+        "MercuryAtk": 100,
+        "MercuryRes": 100
+	  },
+	  "HPRecovery": 90,
+	  "extraTurns":2
+	}
+  ],
+  [
+    {
+      "name": "Serpent",
+      "imgurl": "https://goldensunwiki.net/w/images/8/89/Serpent.png",
+      "movepool": [
+		"Briar",
+		"Quake Sphere",
+		"Cure Well",
+		"Toxic Grit",
+		"Mighty Press",
+		"Black Ice"
+	  ],
+      "stats": {
+        "maxHP": 3536,
+        "maxPP": 249,
+        "Atk": 249,
+        "Def": 76,
+        "Spd": 87
+      },
+      "elstats": {
+        "VenusAtk": 110,
+        "VenusRes": 152,
+        "MarsAtk": 100,
+        "MarsRes": 100,
+        "JupiterAtk": 100,
+        "JupiterRes": 48,
+        "MercuryAtk": 100,
+        "MercuryRes": 100
+	  },
+	  "HPRecovery": 270,
+	  "extraTurns": 2
+	}
+  ],
+  [
+    {
+      "name": "Sentinelino",
+      "imgurl": "",
+      "movepool": [
+		"Break",
+		"Guard",
+		"Armor Crush",
+		"Searing Beam",
+		"Spark Plasma",
+		"Destruct Ray"
+	  ],
+      "stats": {
+        "maxHP": 3536,
+        "maxPP": 380,
+        "Atk": 304,
+        "Def": 108,
+        "Spd": 85
+      },
+      "elstats": {
+        "VenusAtk": 100,
+        "VenusRes": 72,
+        "MarsAtk": 120,
+        "MarsRes": 127,
+        "JupiterAtk": 110,
+        "JupiterRes": 152,
+        "MercuryAtk": 100,
+        "MercuryRes": 193
+	  },
+	  "HPRecovery": 200,
+	  "PPRecovery": 30,
+	  "extraTurns": 1
+	}
+  ],
+  [
+    {
+      "name": "Wonder Bird",
+      "imgurl": "",
+      "movepool": [
+		"Phoenix",
+		"Fire Dance",
+		"Pyroclasm",
+		"Searing Beam",
+		"Supernova"
+	  ],
+      "stats": {
+        "maxHP": 636,
+        "maxPP": 380,
+        "Atk": 637,
+        "Def": 237,
+        "Spd": 285
+      },
+      "elstats": {
+        "VenusAtk": 100,
+        "VenusRes": 100,
+        "MarsAtk": 125,
+        "MarsRes": 193,
+        "JupiterAtk": 100,
+        "JupiterRes": 100,
+        "MercuryAtk": 100,
+        "MercuryRes": 25
+	  },
+	  "extraTurns": 2
+	},
+	{
+      "name": "Wonder Bird",
+      "imgurl": "",
+      "movepool": [
+		"Phoenix",
+		"Fire Dance",
+		"Pyroclasm",
+		"Searing Beam",
+		"Supernova"
+	  ],
+      "stats": {
+        "maxHP": 636,
+        "maxPP": 380,
+        "Atk": 637,
+        "Def": 237,
+        "Spd": 285
+      },
+      "elstats": {
+        "VenusAtk": 100,
+        "VenusRes": 100,
+        "MarsAtk": 125,
+        "MarsRes": 193,
+        "JupiterAtk": 100,
+        "JupiterRes": 100,
+        "MercuryAtk": 100,
+        "MercuryRes": 25
+	  },
+	  "extraTurns": 2
+	}
+  ],
+  [
+	{
+      "name": "Ogre Titan 1",
+      "imgurl": "",
+      "movepool": [
+		"Brute Force"
+	  ],
+      "stats": {
+        "maxHP": 964,
+        "maxPP": 0,
+        "Atk": 546,
+        "Def": 223,
+        "Spd": 202
+      },
+      "elstats": {
+        "VenusAtk": 100,
+        "VenusRes": 48,
+        "MarsAtk": 125,
+        "MarsRes": 25,
+        "JupiterAtk": 100,
+        "JupiterRes": 72,
+        "MercuryAtk": 100,
+        "MercuryRes": 48
+	  },
+	  "HPRecovery": 40
+	},
+	{
+      "name": "Ogre Titan 2",
+      "imgurl": "",
+      "movepool": [
+		"Brute Force"
+	  ],
+      "stats": {
+        "maxHP": 1928,
+        "maxPP": 380,
+        "Atk": 568,
+        "Def": 235,
+        "Spd": 213
+      },
+      "elstats": {
+        "VenusAtk": 100,
+        "VenusRes": 48,
+        "MarsAtk": 125,
+        "MarsRes": 25,
+        "JupiterAtk": 100,
+        "JupiterRes": 72,
+        "MercuryAtk": 100,
+        "MercuryRes": 48
+	  },
+	  "HPRecovery":80
+	},
+	{
+      "name": "Ogre Titan 3",
+      "imgurl": "",
+      "movepool": [
+		"Brute Force"
+	  ],
+      "stats": {
+        "maxHP": 4016,
+        "maxPP": 591,
+        "Atk": 591,
+        "Def": 238,
+        "Spd": 225
+      },
+      "elstats": {
+        "VenusAtk": 100,
+        "VenusRes": 48,
+        "MarsAtk": 125,
+        "MarsRes": 25,
+        "JupiterAtk": 100,
+        "JupiterRes": 72,
+        "MercuryAtk": 100,
+        "MercuryRes": 48
+	  },
+	  "HPRecovery":120
+	},
+	{
+      "name": "Ogre Titan 4",
+      "imgurl": "",
+      "movepool": [
+		"Brute Force"
+	  ],
+      "stats": {
+        "maxHP": 8033,
+        "maxPP": 380,
+        "Atk": 614,
+        "Def": 240,
+        "Spd": 236
+      },
+      "elstats": {
+        "VenusAtk": 100,
+        "VenusRes": 48,
+        "MarsAtk": 125,
+        "MarsRes": 25,
+        "JupiterAtk": 100,
+        "JupiterRes": 72,
+        "MercuryAtk": 100,
+        "MercuryRes": 48
+	  },
+	  "HPRecovery":160
+	}
+  ],
+  [
+	{
+      "name": "Ogre Titan 5",
+      "imgurl": "",
+      "movepool": [
+		"Brute Force",
+		"Massive Swing"
+	  ],
+      "stats": {
+        "maxHP": 16066,
+        "maxPP": 380,
+        "Atk": 637,
+        "Def": 242,
+        "Spd": 247
+      },
+      "elstats": {
+        "VenusAtk": 100,
+        "VenusRes": 48,
+        "MarsAtk": 125,
+        "MarsRes": 25,
+        "JupiterAtk": 100,
+        "JupiterRes": 72,
+        "MercuryAtk": 100,
+        "MercuryRes": 48
+	  },
+	  "HPRecovery":250
+	}
+  ]
 ]

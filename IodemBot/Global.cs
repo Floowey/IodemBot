@@ -14,4 +14,6 @@ namespace IodemBot
         internal static Random random { get; set; } = new Random();
         internal static DateTime UpSince { get; set; }
     }
+
+    
 }
