@@ -108,7 +108,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public override string ToString()
         {
-            return $"`HP: {maxHP} Atk: {Atk} Spd: {Spd}`\n` PP: {maxPP} Def: {Def} `";
+            return $"`HP: {maxHP} Atk: {Atk} Agi: {Spd}`\n` PP: {maxPP} Def: {Def} `";
         }
     }
 }

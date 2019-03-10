@@ -460,7 +460,7 @@
   ],
   [
     {
-      "name": "Living Statue",
+      "name": "Living Statue 1",
       "imgurl": "https://goldensunwiki.net/w/images/a/a6/HydrosStatueSS.png",
       "movepool": [
 		"Tundra",
@@ -512,7 +512,7 @@
 	  }
 	},
     {
-      "name": "Living Statue",
+      "name": "Living Statue 2",
       "imgurl": "",
       "movepool": [
 		"Tundra",
@@ -539,7 +539,7 @@
   ],
   [
     {
-      "name": "Ape",
+      "name": "Ape 1",
       "imgurl": "https://vignette.wikia.nocookie.net/goldensun/images/1/15/Killer_Ape.png/revision/latest?cb=20080522225654",
       "movepool": [
 		"Ransack"
@@ -563,7 +563,7 @@
       }
     },
 	{
-      "name": "Ape",
+      "name": "Ape 2",
       "imgurl": "",
       "movepool": [
 		"Ransack"
@@ -615,7 +615,7 @@
       }
     },
 	{
-      "name": "Ape",
+      "name": "Ape 3",
       "imgurl": "",
       "movepool": [
 		"Ransack"
@@ -639,7 +639,7 @@
       }
     },
 	{
-      "name": "Ape",
+      "name": "Ape 4",
       "imgurl": "",
       "movepool": [
 		"Ransack"
@@ -665,7 +665,7 @@
   ],
   [
     {
-      "name": "Virago",
+      "name": "Virago 1",
       "imgurl": "https://vignette.wikia.nocookie.net/goldensun/images/3/31/Hobgoblin.png/revision/latest?cb=20071212184432",
       "movepool": [
 		    "Tornado",
@@ -700,7 +700,7 @@
 	  ],
       "stats": {
         "maxHP": 900,
-        "maxPP": 80,
+        "maxPP": 10,
         "Atk": 203,
         "Def": 54,
         "Spd": 65
@@ -717,7 +717,7 @@
 	  }
 	},
     {
-      "name": "Virago",
+      "name": "Virago 2",
       "imgurl": "",
       "movepool": [
 		  "Tornado",
@@ -744,7 +744,7 @@
   ],
   [
     {
-      "name": "Grisly",
+      "name": "Grisly 1",
       "imgurl": "https://vignette.wikia.nocookie.net/goldensun/images/e/ec/Succubus.png/revision/latest?cb=20080205202925",
       "movepool": [
 		"Bear Claw",
@@ -795,7 +795,7 @@
 	  }
 	},
     {
-      "name": "Grisly",
+      "name": "Grisly 2",
       "imgurl": "",
       "movepool": [
 		"Bear Claw",
@@ -822,7 +822,7 @@
   ],
   [
     {
-      "name": "Fiendish Ghoul",
+      "name": "Fiendish Ghoul 1",
       "imgurl": "https://vignette.wikia.nocookie.net/goldensun/images/6/6a/Lich_Ghost.png/revision/latest?cb=20070917070302",
       "movepool": [
 		"Cannibal Fang",
@@ -874,7 +874,7 @@
 	  }
 	},
     {
-      "name": "Fiendish Ghoul",
+      "name": "Fiendish Ghoul 2",
       "imgurl": "",
       "movepool": [
 		"Cannibal Fang",
@@ -901,7 +901,7 @@
   ],
   [
 	{
-      "name": "Gryphon",
+      "name": "Gryphon 1",
       "imgurl": "https://vignette.wikia.nocookie.net/goldensun/images/2/2f/Gryphon.png/revision/latest?cb=20070118205553",
       "movepool": 
 	  [
@@ -931,7 +931,7 @@
       }
     },
 	{
-      "name": "Gryphon",
+      "name": "Gryphon 2",
       "imgurl": "",
       "movepool": 
 	  [

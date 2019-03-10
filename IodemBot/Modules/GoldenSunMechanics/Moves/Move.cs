@@ -29,14 +29,15 @@ namespace IodemBot.Modules.GoldenSunMechanics
             if (!t.isValid) return log;
 
             log.AddRange(InternalUse(User));
-
-            //Haunt Damage
-            if (User.HasCondition(Condition.Haunt))
-            {
-                log.AddRange(User.DealDamage((uint)(User.stats.HP * Global.random.Next(20, 40) / 100)));
-            }
-
             return log;
+        }
+
+        [JsonIgnore]public bool onEnemy
+        {
+            get
+            {
+                return new Target[] { Target.otherSingle, Target.otherAll, Target.otherRange }.Contains(targetType);
+            }
         }
 
         protected abstract List<string> InternalUse(ColossoFighter User);
@@ -100,24 +101,31 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public List<ColossoFighter> getTarget(ColossoFighter user)
         {
             List<ColossoFighter> targets = new List<ColossoFighter>();
+            var playerCount = user.battle.getTeam(user.party).Count-1;
+            var enemyCount = user.battle.getTeam(user.enemies).Count-1;
+
             switch (targetType)
             {
                 case Target.self:
                     targets.Add(user);
                     break;
                 case Target.ownAll:
+                    targetNr = Math.Min(targetNr, playerCount);
                     targets.AddRange(user.battle.getTeam(user.party));
                     break;
                 case Target.ownSingle:
+                    targetNr = Math.Min(targetNr, playerCount);
                     targets.Add(user.battle.getTeam(user.party)[targetNr]);
                     break;
                 case Target.otherAll:
-                    targets.AddRange(user.battle.getTeam(user.enemies));
+                    targets.AddRange(user.getEnemies());
                     break;
                 case Target.otherSingle:
+                    targetNr = Math.Min(targetNr, enemyCount);
                     targets.Add(user.battle.getTeam(user.enemies)[targetNr]);
                     break;
                 case Target.otherRange:
+                    targetNr = Math.Min(targetNr, enemyCount);
                     var targetTeam = user.battle.getTeam(user.enemies);
                     for (int i = -(int)range + 1; i <= range - 1; i++)
                     {
@@ -137,5 +145,18 @@ namespace IodemBot.Modules.GoldenSunMechanics
         }
 
         public abstract object Clone();
+
+        public abstract bool InternalValidSelection(ColossoFighter User);
+        public abstract void InternalChooseBestTarget(ColossoFighter User);
+
+        internal bool ValidSelection(ColossoFighter User)
+        {
+            return InternalValidSelection(User);
+        }
+
+        internal void ChooseBestTarget(ColossoFighter User)
+        {
+            InternalChooseBestTarget(User);
+        }
     }
 }

@@ -22,6 +22,23 @@ namespace IodemBot.Modules.GoldenSunMechanics
             //return MemberwiseClone();
         }
 
+        public override void InternalChooseBestTarget(ColossoFighter User)
+        {
+            if (effects.Count > 0)
+                targetNr = effects[0].ChooseBestTarget(onEnemy ? User.getEnemies() : User.getTeam());
+            else
+                targetNr = 0;
+        }
+
+        public override bool InternalValidSelection(ColossoFighter User)
+        {
+            if (User.stats.PP < PPCost)
+                return false;
+            if (effects.Count > 0)
+                return effects[0].ValidSelection(User);
+            return true;
+        }
+
         protected override List<string> InternalUse(ColossoFighter User)
         {
             List<string> log = new List<string>();

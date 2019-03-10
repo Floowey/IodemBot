@@ -27,6 +27,21 @@
     "addDamage": 95
   },
   "Helm Splitter": {
+	"name": "Helm Splitter",
+	"targetType": 3,
+	"emote": "<:Skull_Splitter:536959343153774652>",
+	"range": 1,
+    "element": 0,
+	"effectImages": [
+	  {
+	    "id": "Stat",
+	    "args": ["Defense", "0.5", "80"]
+	  }
+	],
+	"PPCost": 8,
+    "addDamage": 30
+  },
+  "Skull Splitter": {
 	"name": "Skull Splitter",
 	"targetType": 3,
 	"emote": "<:Skull_Splitter:536959343153774652>",
@@ -181,9 +196,9 @@
     "element": 0,
 	"effectImages":[
 	{"id": "Condition",
-	"args": ["Poison", "15"]},
+	"args": ["Poison", "25"]},
 	{"id": "Condition",
-	"args": ["Venom", "10"]}
+	"args": ["Venom", "5"]}
 	],
 	"PPCost": 23,
 	"power": 125
@@ -248,10 +263,6 @@
 	"emote":"<:Thorn:536958717888036865>",
 	"range": 2,
     "element": 0,
-	"effectImages":[
-	{"id": "Condition",
-	"args": ["Poison", "10"]}
-	],
 	"PPCost": 6,
 	"power": 35
   },
@@ -261,10 +272,6 @@
 	"emote":"<:Briar:536958574128136193>",
 	"range": 2,
     "element": 0,
-	"effectImages":[
-	{"id": "Condition",
-	"args": ["Poison", "10"]}
-	],
 	"PPCost": 11,
 	"power": 70
   },
@@ -596,6 +603,12 @@
 	"emote":"<:Fiery_Blast:536965017434718212>",
 	"range": 3,
     "element": 1,
+	"effectImages":[
+	{"id": "Condition",
+	"args": ["Flinch", "5"]},
+	{"id": "Condition",
+	"args": ["Delusion", "5"]}
+	],
 	"PPCost": 19,
 	"power": 110
   },
@@ -840,6 +853,12 @@
 	"emote":"<:Death_Plunge:536966770402000897>",
 	"range": 1,
     "element": 2,
+	"effectImages": [
+	  {
+	    "id": "Condition",
+		"args": ["Stun", "10"]
+	  }
+	],
 	"PPCost": 14,
 	"addDamage": 40
   },
@@ -849,6 +868,12 @@
 	"emote":"<:Death_Leap:536966785363083264>",
 	"range": 1,
     "element": 2,
+	"effectImages": [
+	  {
+	    "id": "Condition",
+		"args": ["Stun", "10"]
+	  }
+	],
 	"PPCost": 22,
 	"addDamage": 110
   },
@@ -1274,8 +1299,8 @@
 	"PPCost": 0,
 	"addDamage": 30,
 	"effectImages":[
-	   {"id": "DamageMult",
-		"args": ["1.0, 2.0", "50, 50"]}
+	   {"id": "MultiplyDamage",
+		"args": ["2.0", "50"]}
      ],
   },
   "Ice Blessing": {
@@ -1362,8 +1387,8 @@
     "PPCost": 0,
     "addDamage": 50,
     "effectImages":[
-      {"id": "DamageMult",
-       "args":["1.0, 2.0", "50, 50"]}
+      {"id": "MultiplyDamage",
+       "args":["2.0", "50"]}
     ],
   },
   "Oil Drop": {
@@ -1438,7 +1463,7 @@
 "Dynamite": {
     "name": "Dynamite",
 	"targetType": 4,
-	"emote":"<:bomb:>",
+	"emote":":bomb:",
 	"range": 3,
     "element": 1,
 	"PPCost": 0,

@@ -51,14 +51,6 @@ namespace IodemBot.Modules.ColossoBattles
             UserAccounts.SaveAccounts();
         }
 
-        public void TimeUp()
-        {
-            // Select random Move from players movepools
-
-            // Force Next Turn
-            Turn();
-        }
-
         public bool ForceTurn()
         {
             if (turnActive) return false;
@@ -77,8 +69,7 @@ namespace IodemBot.Modules.ColossoBattles
             if (!isActive) return false;
             if (turnActive) return false;
             log.Clear();
-            if(TeamA.Aggregate(false, (p, s) => !s.hasSelected ? true : p) ||
-                TeamB.Aggregate(false, (p, s) => !s.hasSelected ? true : p))
+            if(!(TeamA.All(p => p.hasSelected) && TeamB.All(p => p.hasSelected)))
             {
                 return false;
             }
@@ -120,10 +111,6 @@ namespace IodemBot.Modules.ColossoBattles
                 player.enemies = Team.A;
                 sizeTeamB++;
             }
-            player.Revive(100);
-            player.RemoveAllConditions();
-            player.stats.HP = player.stats.maxHP;
-            player.stats.PP = player.stats.maxPP;
 
             player.battle = this;
         }
@@ -144,7 +131,7 @@ namespace IodemBot.Modules.ColossoBattles
             List<string> turnLog = new List<string>();
             List<ColossoFighter> fighters = new List<ColossoFighter>(TeamA);
             fighters.AddRange(TeamB);
-            fighters = fighters.OrderByDescending(f => f.stats.Spd).ToList();
+            fighters = fighters.OrderByDescending(f => f.stats.Spd * f.MultiplyBuffs("Speed")).ToList();
             fighters.ForEach(f => { turnLog.AddRange(f.StartTurn()); });
             return turnLog;
         }
@@ -154,8 +141,18 @@ namespace IodemBot.Modules.ColossoBattles
             List<string> turnLog = new List<string>();
             List<ColossoFighter> fighters = new List<ColossoFighter>(TeamA);
             fighters.AddRange(TeamB);
-            fighters = fighters.OrderByDescending(f => f.stats.Spd).ToList();
+            fighters = fighters.OrderByDescending(f => f.stats.Spd * f.MultiplyBuffs("Speed")).ToList();
             fighters.ForEach(f => { turnLog.AddRange(f.MainTurn());});
+            return turnLog;
+        }
+
+        private List<string> ExtraTurn()
+        {
+            List<string> turnLog = new List<string>();
+            List<ColossoFighter> fighters = new List<ColossoFighter>(TeamA);
+            fighters.AddRange(TeamB);
+            fighters = fighters.OrderByDescending(f => f.stats.Spd * f.MultiplyBuffs("Speed")).ToList();
+            fighters.ForEach(f => { turnLog.AddRange(f.ExtraTurn()); });
             return turnLog;
         }
 
@@ -164,7 +161,7 @@ namespace IodemBot.Modules.ColossoBattles
             List<string> turnLog = new List<string>();
             List<ColossoFighter> fighters = new List<ColossoFighter>(TeamA);
             fighters.AddRange(TeamB);
-            fighters = fighters.OrderByDescending(f => f.stats.Spd).ToList();
+            fighters = fighters.OrderByDescending(f => f.stats.Spd * f.MultiplyBuffs("Speed")).ToList();
             fighters.ForEach(f => { turnLog.AddRange(f.EndTurn()); });
             return turnLog;
         }

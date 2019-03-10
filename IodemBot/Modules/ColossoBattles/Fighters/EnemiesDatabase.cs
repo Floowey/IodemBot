@@ -20,11 +20,12 @@ namespace IodemBot.Modules.ColossoBattles
         {
             try
             {
-            bronzeFighters = loadEnemiesFromFile("Resources/bronzeFighters.json");
-            silverFighters = loadEnemiesFromFile("Resources/silverFighters.json");
-            goldFighters = loadEnemiesFromFile("Resources/goldFighters.json");
+                bronzeFighters = loadEnemiesFromFile("Resources/bronzeFighters.json");
+                silverFighters = loadEnemiesFromFile("Resources/silverFighters.json");
+                goldFighters = loadEnemiesFromFile("Resources/goldFighters.json");
 
-            } catch (Exception e)
+            }
+            catch (Exception e) // Just for debugging
             {
                 Console.Write("A");
             }
@@ -32,19 +33,10 @@ namespace IodemBot.Modules.ColossoBattles
 
         public static List<List<ColossoFighter>> loadEnemiesFromFile(string filePath)
         {
-            List<List<ColossoFighter>> fighters = new List<List<ColossoFighter>>();
+            //List<List<ColossoFighter>> fighters = new List<List<ColossoFighter>>();
             string json = File.ReadAllText(filePath);
-            var data = JsonConvert.DeserializeObject<dynamic>(json);
-            List<List<FighterImage>> bronzeImages = data.ToObject<List<List<FighterImage>>>();
-            bronzeImages.ForEach(enemyTeam => {
-                List<ColossoFighter> curTeam = new List<ColossoFighter>();
-                enemyTeam.ForEach(fighter =>
-                {
-                    curTeam.Add(new NPCEnemy(fighter.name, fighter.imgurl, fighter.stats, fighter.elstats, Moveset.getMoveset(fighter.movepool)));
-                });
-                fighters.Add(curTeam);
-            });
-            return fighters;
+            List<List<NPCEnemy>> fighters = JsonConvert.DeserializeObject<List<List<NPCEnemy>>>(json);
+            return fighters.Select(s1 => s1.Select(s2 => (ColossoFighter)s2).ToList()).ToList();
         }
 
         internal static List<ColossoFighter> getRandomEnemies(BattleDifficulty diff)
@@ -65,17 +57,9 @@ namespace IodemBot.Modules.ColossoBattles
                     selectedDifficulty = bronzeFighters;
                     break;
             }
-            return selectedDifficulty[(new Random()).Next(0, selectedDifficulty.Count)];
+            return selectedDifficulty[(new Random()).Next(0, selectedDifficulty.Count)].Select(f => (ColossoFighter)f.Clone()).ToList();
         }
+
     }
 
-
-    internal struct FighterImage
-    {
-        public string name { get; set; }
-        public string imgurl { get; set; }
-        public string[] movepool { get; set; }
-        public Stats stats { get; set; }
-        public ElementalStats elstats { get; set; }
-    }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,7 +30,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             timeToActivate = TimeToActivate.beforeDamge;
             if(args.Length == 2)
             {
-                multipliers = args[0].Split(',').Select(n => Convert.ToDouble(n)).ToArray();
+                multipliers = args[0].Split(',').Select(n => Convert.ToDouble(n, new CultureInfo("en-GB"))).ToArray();
                 probabilites = args[1].Split(',').Select(n => Convert.ToInt32(n)).ToArray();
             } else
             {

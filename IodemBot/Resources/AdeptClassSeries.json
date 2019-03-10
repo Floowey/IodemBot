@@ -234,8 +234,9 @@
       {
         "name": "Guard",
         "movepool": [
-          "Fireorb",
-		  "Fireball"
+		  "Fireball",
+		  "Guard",
+		  "Impair"
         ],
         "statMultipliers": {
           "maxHP": 110,
@@ -250,7 +251,8 @@
         "movepool": [
           "Heat Wave",
           "Fireball",
-          "Guard"
+          "Guard",
+		  "Impair"
         ],
         "statMultipliers": {
           "maxHP": 130,
@@ -265,7 +267,8 @@
 		"movepool": [ 
 		  "Heat Wave",
 		  "Fireball",
-		  "Protect"
+		  "Protect",
+		  "Impair"
 		],
 		"statMultipliers": {
 		  "maxHP": 150,
@@ -280,7 +283,8 @@
 		"movepool": [
 		  "Liquifier",
 		  "Inferno",
-		  "Protect"
+		  "Protect",
+		  "Debilitate"
 		],
 		"statMultipliers": {
 		  "maxHP": 170,
@@ -295,7 +299,8 @@
 		"movepool": [
 		  "Liquifier",
 		  "Inferno",
-		  "Protect"
+		  "Protect",
+		  "Debilitate"
 		],
 		"statMultipliers": {
 		  "maxHP": 190,
@@ -719,7 +724,7 @@
     },
     "requirement": "Level",
     "isDefault": true,
-	"description":"Their connection to nature let's Beastlings become one with the wild."
+	"description":"Their connection to nature lets Beastlings become one with the wild."
   },
   {
     "name": "Water Seer Series",
@@ -1009,10 +1014,10 @@
       "VenusRes": 110,
       "MarsAtk": 110,
       "MarsRes": 110,
-      "JupiterAtk": 90,
-      "JupiterRes": 90,
-      "MercuryAtk": 130,
-      "MercuryRes": 130
+      "JupiterAtk": 80,
+      "JupiterRes": 80,
+      "MercuryAtk": 120,
+      "MercuryRes": 120
     },
     "requirement": "Level",
     "isDefault": true,
@@ -1239,6 +1244,7 @@
         "name": "Crusader",
         "movepool": [
 		  "Thorn",
+		  "Ply"
         ],
         "statMultipliers": {
           "maxHP": 100,
@@ -1252,7 +1258,8 @@
         "name": "Gaia Defender",
         "movepool": [
           "Cutting Edge",
-		  "Briar"
+		  "Briar",
+		  "Ply"
         ],
         "statMultipliers": {
           "maxHP": 120,
@@ -1267,7 +1274,7 @@
         "movepool": [
           "Cutting Edge",
 		  "Briar",
-          "Wish",
+          "Ply Well",
 		  "Revive"
         ],
         "statMultipliers": {
@@ -1283,7 +1290,7 @@
         "movepool": [
           "Plume Edge",
 		  "Briar",
-          "Wish Well",
+          "Ply Well",
 		  "Revive"
         ],
         "statMultipliers": {
@@ -1299,7 +1306,7 @@
         "movepool": [
           "Plume Edge",
           "Nettle",
-		  "Pure Wish",
+		  "Pure Ply",
 		  "Revive"
         ],
         "statMultipliers": {
@@ -1326,7 +1333,8 @@
       "MercuryRes": 140
     },
     "requirement": "Level",
-    "isDefault": false
+    "isDefault": false,
+	"description": "-"
   },
   {
     "name": "Page Series",
@@ -1426,7 +1434,8 @@
       "MercuryRes": 80
     },
     "requirement": "Level",
-    "isDefault": false
+    "isDefault": false,
+	"description" :"-"
   },
   {
     "name": "Air Pilgrim Series",
@@ -1623,7 +1632,8 @@
       "MercuryRes": 130
     },
     "requirement": "Level",
-    "isDefault": false
+    "isDefault": false,
+	"description":"-"
   },
   {
     "name": "Air Seer Series",
@@ -1644,7 +1654,7 @@
         }
       },
       {
-        "name": "Diviner",
+        "name": "Air Diviner",
         "movepool": [
           "Flash Bolt",
 		  "Mad Growth",
@@ -1659,7 +1669,7 @@
         }
       },
       {
-        "name": "Shaman",
+        "name": "Air Shaman",
         "movepool": [
           "Flash Bolt",
 		  "Mad Growth",
@@ -1675,7 +1685,7 @@
         }
       },
       {
-        "name": "Druid",
+        "name": "Air Druid",
         "movepool": [
           "Blue Bolt",
 		  "Wild Growth",
@@ -1691,7 +1701,7 @@
         }
       },
       {
-        "name": "Oracle",
+        "name": "Air Oracle",
         "movepool": [
           "Blue Bolt",
           "Mad Growth",
@@ -1722,7 +1732,8 @@
       "MercuryRes": 90
     },
     "requirement": "Level",
-    "isDefault": false
+    "isDefault": false,
+	"description":"Air Seers meditate in Canyons, to make predictions about the future."
   },
   {
     "name": "Hermit Series",
@@ -1746,7 +1757,8 @@
         "movepool": [
           "Plasma",
 		  "Hail Prism",
-		  "Impact"
+		  "Impact",
+		  "Wish"
         ],
         "statMultipliers": {
           "maxHP": 90,
@@ -1836,7 +1848,8 @@
       "MercuryRes": 150
     },
     "requirement": "DaysActive",
-    "isDefault": false
+    "isDefault": false,
+	"description": "Hermits stay at one place to find their inner peace."
   },
   {
     "name": "Aqua Seer Series",
@@ -1856,7 +1869,7 @@
         }
       },
       {
-        "name": "AquaDiviner",
+        "name": "Aqua Diviner",
         "movepool": [
           "Froth Sphere",
 		  "Mad Growth"
@@ -1933,7 +1946,8 @@
       "MercuryRes": 130
     },
     "requirement": "Level",
-    "isDefault": false
+    "isDefault": false,
+	"description": "The energy of swamps lets Aqua Seers anticipate future events."
   },
   {
     "name": "Swordsman Series",
@@ -1957,7 +1971,8 @@
         "movepool": [
 		  "Cutting Edge",
           "Mad Blast",
-          "Restore"
+          "Restore",
+		  "Ply"
         ],
         "statMultipliers": {
           "maxHP": 120,
@@ -1973,7 +1988,7 @@
 		  "Cutting Edge",
           "Mad Blast",
           "Restore",
-		  "Wish"
+		  "Pure Ply"
         ],
         "statMultipliers": {
           "maxHP": 140,
@@ -1989,7 +2004,7 @@
 		  "Plume Edge",
           "Fiery Blast",
           "Restore",
-		  "Wish Well"
+		  "Pure Ply"
         ],
         "statMultipliers": {
           "maxHP": 170,
@@ -2005,7 +2020,7 @@
           "Plume Edge",
           "Fiery Blast",
           "Restore",
-		  "Wish Well"
+		  "Ply Well"
         ],
         "statMultipliers": {
           "maxHP": 190,
@@ -2021,17 +2036,18 @@
 	  3
     ],
     "elstats": {
-      "VenusAtk": 140,
-      "VenusRes": 140,
-      "MarsAtk": 90,
-      "MarsRes": 90,
-      "JupiterAtk": 80,
-      "JupiterRes": 80,
+      "VenusAtk": 80,
+      "VenusRes": 80,
+      "MarsAtk": 140,
+      "MarsRes": 140,
+      "JupiterAtk": 90,
+      "JupiterRes": 90,
       "MercuryAtk": 130,
       "MercuryRes": 130
     },
     "requirement": "Level",
-    "isDefault": false
+    "isDefault": false,
+	"description" :"-"
   },
   {
     "name": "Curse Mage Series",
@@ -2145,7 +2161,8 @@
       "MercuryRes": 50
     },
     "requirement": "ColossoWins",
-    "isDefault": false
+    "isDefault": false,
+	"description": "Mikos turn to dark, but powerful curses, when they have lost their way."
   },
   {
     "name": "Scrapper Series",
@@ -2242,7 +2259,8 @@
       "MercuryRes": 70
     },
     "requirement": "ColossoWins",
-    "isDefault": false
+    "isDefault": false,
+	"description": "Young Scrappers like to tinker with mechanisms, which they try to make the best of in battles."
   },
   {
     "name": "Samurai Series",
@@ -2269,7 +2287,7 @@
         "movepool": [
           "Quick Strike",
 		  "Epicenter",
-		  "Helm Splitter",
+		  "Skull Splitter",
 		  "Angel Spear",
 		  "Magic Shield"
         ],
@@ -2298,7 +2316,8 @@
       "MercuryRes": 25
     },
     "requirement": "KillsByHand",
-    "isDefault": false
+    "isDefault": false,
+	"description": "Samurais are trained to have the upper hand in Hand-On-Hand combat."
   },
   {
     "name": "Ninja Series",
@@ -2339,7 +2358,7 @@
       {
         "name": "Master",
         "movepool": [
-          "Death Plunge",
+          "Death Leap",
 		  "Shuriken",
 		  "Annihilation",
 		  "Thunderhead",
@@ -2370,7 +2389,8 @@
       "MercuryRes": 50
     },
     "requirement": "Damage",
-    "isDefault": false
+    "isDefault": false,
+	"description": "Ninjas are Masters in causing as much destruction as possible."
   },
   {
     "name": "Ranger Series",
@@ -2442,7 +2462,8 @@
       "MercuryRes": 130
     },
     "requirement": "SoloBattles",
-    "isDefault": false
+    "isDefault": false,
+	"description": "Rangers wander the wilds alone, until they master the true forces of nature."
   },
   {
     "name": "Dragoon Series",
@@ -2504,17 +2525,18 @@
 	  3
     ],
     "elstats": {
-      "VenusAtk": 110,
-      "VenusRes": 110,
-      "MarsAtk": 80,
-      "MarsRes": 180,
-      "JupiterAtk": 130,
-      "JupiterRes": 130,
+      "VenusAtk": 130,
+      "VenusRes": 130,
+      "MarsAtk": 130,
+      "MarsRes": 130,
+      "JupiterAtk": 50,
+      "JupiterRes": 50,
       "MercuryAtk": 130,
       "MercuryRes": 130
     },
     "requirement": "Teammates",
-    "isDefault": false
+    "isDefault": false,
+	"description": "Dragoons are always surrounded by their companions."
   },
   {
     "name": "White Mage Series",
@@ -2570,7 +2592,8 @@
       "MercuryRes": 150
     },
     "requirement": "Heals",
-    "isDefault": false
+    "isDefault": false,
+	"description": "The healing capabilites of the White Mages are the best of their kind."
   },
   {
     "name": "Medium Series",
@@ -2643,6 +2666,7 @@
       "MercuryRes": 150
     },
     "requirement": "Revives",
-    "isDefault": false
+    "isDefault": false,
+	"description": "Mediums talk to the fallen and harness their powers."
   }
 ]

@@ -1,7 +1,7 @@
 [
   [
     {
-      "name": "Wood Walker",
+      "name": "Wood Walker 1",
       "imgurl": "https://cdn.discordapp.com/attachments/497831661896073289/536229936478814208/Untitled.png",
       "movepool": [
 		"Cure",
@@ -54,7 +54,7 @@
       }
     },
 	{
-      "name": "Wood Walker",
+      "name": "Wood Walker 2",
       "imgurl": "",
       "movepool": [
 		"Cure",
@@ -81,7 +81,7 @@
   ],
   [
     {
-      "name": "Wyvern",
+      "name": "Wyvern 1",
       "imgurl": "https://goldensunwiki.net/w/images/thumb/f/f7/Gryphon_Dark_Dawn.jpg/250px-Gryphon_Dark_Dawn.jpg",
       "movepool": [
 		"Planet Diver",
@@ -134,7 +134,7 @@
       }
     },
 	{
-      "name": "Wyvern",
+      "name": "Wyvern 2",
       "imgurl": "",
       "movepool": [
 		"Planet Diver",
@@ -280,7 +280,7 @@
   ],
   [
     {
-      "name": "Slime",
+      "name": "Slime 1",
       "imgurl": "https://cdn.discordapp.com/attachments/497831661896073289/540191461942099968/slimes.png",
       "movepool": [
 		"Speed Punch"
@@ -304,7 +304,7 @@
 	  }
 	},
 	{
-      "name": "Slime",
+      "name": "Slime 2",
       "imgurl": "",
       "movepool": [
 		"Douse"
@@ -328,7 +328,7 @@
 	  }
 	},
 	{
-      "name": "Slime",
+      "name": "Slime 3",
       "imgurl": "",
       "movepool": [
 		"Fireball"
@@ -352,7 +352,7 @@
 	  }
 	},
 	{
-      "name": "Slime",
+      "name": "Slime 4",
       "imgurl": "",
       "movepool": [
 		"Spire"
@@ -376,7 +376,7 @@
 	  }
 	},
 	{
-      "name": "Slime",
+      "name": "Slime 5",
       "imgurl": "",
       "movepool": [
 		"Speed Punch"
@@ -400,7 +400,7 @@
 	  }
 	},
 	{
-      "name": "Slime",
+      "name": "Slime 6",
       "imgurl": "",
       "movepool": [
 		"Fireball"
@@ -424,7 +424,7 @@
 	  }
 	},
 	{
-      "name": "Slime",
+      "name": "Slime 7",
       "imgurl": "",
       "movepool": [
 		"Douse"
@@ -448,7 +448,7 @@
 	  }
 	},
 	{
-      "name": "Slime",
+      "name": "Slime 8",
       "imgurl": "",
       "movepool": [
 		"Spire"
@@ -472,7 +472,7 @@
 	  }
 	},
 	{
-      "name": "Slime",
+      "name": "Slime 9",
       "imgurl": "",
       "movepool": [
 		"Speed Punch",
@@ -501,7 +501,7 @@
   ],
   [
     {
-      "name": "Skeleton",
+      "name": "Skeleton 1",
       "imgurl": "https://goldensunwiki.net/w/images/thumb/9/97/Skeleton_Dark_Dawn.jpg/300px-Skeleton_Dark_Dawn.jpg",
       "movepool": [
 		"Ragnarok",
@@ -527,7 +527,7 @@
       }
     },
 	{
-      "name": "Skeleton",
+      "name": "Skeleton 2",
       "imgurl": "",
       "movepool": [
 		"Ragnarok",
@@ -553,7 +553,7 @@
       }
     },
 	{
-      "name": "Skeleton",
+      "name": "Skeleton 3",
       "imgurl": "",
       "movepool": [
 		"Cutting Edge",
@@ -736,7 +736,7 @@
 	  ],
       "stats": {
         "maxHP": 500,
-        "maxPP": 160,
+        "maxPP": 4,
         "Atk": 90,
         "Def": 30,
         "Spd": 50
@@ -755,13 +755,14 @@
   ],
   [
     {
-      "name": "Thief",
+      "name": "Thief 1",
       "imgurl": "https://vignette.wikia.nocookie.net/goldensun/images/1/1f/Bandit.png/revision/latest?cb=20090623031132",
       "movepool": [
+	  "Nut"
 	  ],
       "stats": {
-        "maxHP": 200,
-        "maxPP": 34,
+        "maxHP": 180,
+        "maxPP": 1,
         "Atk": 40,
         "Def": 5,
         "Spd": 9
@@ -784,7 +785,7 @@
 		"Slice"
 	  ],
       "stats": {
-        "maxHP": 300,
+        "maxHP": 270,
         "maxPP": 52,
         "Atk": 60,
         "Def": 8,
@@ -802,14 +803,14 @@
 	  }
 	},
     {
-      "name": "Thief",
+      "name": "Thief 2",
       "imgurl": "",
       "movepool": [
-		
+		"Nut"
 	  ],
       "stats": {
-        "maxHP": 200,
-        "maxPP": 34,
+        "maxHP": 180,
+        "maxPP": 1,
         "Atk": 42,
         "Def": 5,
         "Spd": 9
@@ -828,7 +829,7 @@
   ],
   [
     {
-      "name": "Mauler",
+      "name": "Mauler 1",
       "imgurl": "https://goldensunwiki.net/wiki/Mauler_enemy_line#/media/File:Mauler.png",
       "movepool": [
 	  "Bear Claw"
@@ -852,7 +853,7 @@
 	  }
 	},
     {
-      "name": "Mauler",
+      "name": "Mauler 2",
       "imgurl": "https://goldensunwiki.net/wiki/Mauler_enemy_line#/media/File:Mauler.png",
       "movepool": [
 	  "Bear Claw"
@@ -876,7 +877,7 @@
 	  }
 	},
     {
-      "name": "Mauler",
+      "name": "Mauler 3",
       "imgurl": "https://goldensunwiki.net/wiki/Mauler_enemy_line#/media/File:Mauler.png",
       "movepool": [
 	  "Bear Claw"
