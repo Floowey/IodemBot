@@ -191,7 +191,7 @@ namespace IodemBot.Modules.ColossoBattles
             return turnLog;
         }
 
-        public bool hasCurableCondition()
+        public bool HasCurableCondition()
         {
             Condition[] badConditions = { Condition.Poison, Condition.Venom, Condition.Seal, Condition.Sleep, Condition.Stun, Condition.DeathCurse };
             return Conditions.Any(c => badConditions.Contains(c));
@@ -349,6 +349,7 @@ namespace IodemBot.Modules.ColossoBattles
             if (HasCondition(Condition.ItemCurse)) s.Append("<:curse:538074679492083742>");
             if (HasCondition(Condition.Poison)) s.Append("<:Poison:549526931847249920>");
             if (HasCondition(Condition.Seal)) s.Append("<:Psy_Seal:549526931465568257>");
+            if (HasCondition(Condition.Sleep)) s.Append("<:Sleep:555427023519088671>");
             if (HasCondition(Condition.Stun)) s.Append("");
             if (HasCondition(Condition.Venom)) s.Append("<:Poison:549526931847249920>");
             return s.ToString();
