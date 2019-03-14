@@ -10,7 +10,7 @@ using static IodemBot.Modules.ColossoBattles.ColossoPvE;
 
 namespace IodemBot.Modules.ColossoBattles
 {
-    public class EnemiesDatabase
+    public static class EnemiesDatabase
     {
         private static List<List<ColossoFighter>> bronzeFighters;
         private static List<List<ColossoFighter>> silverFighters;

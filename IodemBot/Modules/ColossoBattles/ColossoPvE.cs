@@ -154,8 +154,8 @@ namespace IodemBot.Modules.ColossoBattles
 
             if (battleCol.battle.sizeTeamA == 0) return;
             battleCol.battle.Start();
-            await battleCol.WriteBattleInit();
-            battleCol.autoTurn.Start();
+            battleCol.WriteBattleInit();
+            
         }
 
         public enum BattleDifficulty { Easy = 1, Medium = 2, Hard = 3 };
@@ -183,12 +183,7 @@ namespace IodemBot.Modules.ColossoBattles
                 if (messages != null) foreach (var k in messages.Keys) await k.DeleteAsync();
                 messages = new Dictionary<IUserMessage, ColossoFighter>();
 
-                await lobbyMsg.RemoveAllReactionsAsync();
-                lobbyMsg.AddReactionsAsync(new IEmote[]
-                    {
-                        Emote.Parse("<:Fight:536919792813211648>"),
-                        Emote.Parse("<:Battle:536954571256365096>")
-                    });
+                
 
                 if (enemyMsg != null)
                 {
@@ -211,6 +206,13 @@ namespace IodemBot.Modules.ColossoBattles
                     Enabled = false
                 };
                 autoTurn.Elapsed += OnTimerTicked;
+
+                await lobbyMsg.RemoveAllReactionsAsync();
+                _ = lobbyMsg.AddReactionsAsync(new IEmote[]
+                    {
+                        Emote.Parse("<:Fight:536919792813211648>"),
+                        Emote.Parse("<:Battle:536954571256365096>")
+                    });
                 Console.WriteLine("Battle was reset.");
             }
 
@@ -276,7 +278,6 @@ namespace IodemBot.Modules.ColossoBattles
                     } else
                     {
                         await GameOver();
-                        autoTurn.Dispose();
                     }
                 };
             }
@@ -352,6 +353,7 @@ namespace IodemBot.Modules.ColossoBattles
                     }
                     //e.WithAuthor($"{numberEmotes[i]} {fighter.name}");
                     embed.WithThumbnailUrl(fighter.imgUrl);
+                    embed.WithColor(Colors.get(fighter.moves.Where(m => m is Psynergy).Select(m => (Psynergy)m).Select(p => p.element.ToString()).ToArray()));
                     //e.AddField();
                     embed.AddField($"{numberEmotes[i]} {fighter.ConditionsToString()}", fighter.name);
                     embed.AddField("HP", $"{fighter.stats.HP} / {fighter.stats.maxHP}", true);
@@ -380,6 +382,7 @@ namespace IodemBot.Modules.ColossoBattles
                 await WriteStatusInit();
                 await WriteEnemiesInit();
                 await WritePlayersInit();
+                autoTurn.Start();
             }
             private async Task WriteStatusInit()
             {
@@ -420,6 +423,7 @@ namespace IodemBot.Modules.ColossoBattles
                     var fighter = k.Value;
                     //e.WithAuthor($"{numberEmotes[i]} {fighter.name}");
                     embed.WithThumbnailUrl(fighter.imgUrl);
+                    embed.WithColor(Colors.get(fighter.moves.Where(m => m is Psynergy).Select(m => (Psynergy)m).Select(p => p.element.ToString()).ToArray()));
                     //e.AddField();
                     embed.AddField($"{numberEmotes[i]} {fighter.ConditionsToString()}", fighter.name);
                     embed.AddField("HP", $"{fighter.stats.HP} / {fighter.stats.maxHP}", true);
