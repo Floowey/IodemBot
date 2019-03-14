@@ -1458,7 +1458,7 @@
 		"args": ["10"]}
 	],
   },
-"War Cry": {
+  "War Cry": {
     "name": "War Cry",
 	"targetType": 3,
 	"emote":"<:Rampage:537766290031509524>",
@@ -1472,7 +1472,7 @@
 		"args":["Flinch", "35"]}
 	],
   },
-"Dynamite": {
+  "Dynamite": {
     "name": "Dynamite",
 	"targetType": 4,
 	"emote":":bomb:",
@@ -1486,7 +1486,7 @@
 			   }
 		   ],
   },
-"Claw Attack": {
+  "Claw Attack": {
     "name": "Claw Attack",
     "targetType": 3,
     "emote":"<:Rampage:537766290031509524>",
@@ -1495,7 +1495,16 @@
     "PPCost": 0,
     "addDamage": 20
   },
-"Poison Fang": {
+  "Fire Dance": {
+    "name": "Fire Dance",
+    "targetType": 3,
+    "emote":"<:Blaze:551042852730175520>",
+    "range": 1,
+    "element": 1,
+    "PPCost": 0,
+    "dmgMult": 1.3
+  },
+  "Poison Fang": {
     "name": "Poison Fang",
     "targetType": 3,
     "emote":":snake:",
@@ -1508,7 +1517,7 @@
 	 "args":["Poison", "40"]}
 	 ]
   },
-"Twin Shear": {
+  "Twin Shear": {
     "name": "Twin Shear",
     "targetType": 3,
     "emote":":scissors:",
@@ -1517,8 +1526,8 @@
     "PPCost": 0,
     "dmgMult": 1.8
   },
-"Echo Cut": {
-    "name": "Êcho Cut",
+  "Echo Cut": {
+    "name": "Echo Cut",
     "targetType": 3,
     "emote":":scissors:",
     "range": 1,
@@ -1526,7 +1535,7 @@
     "PPCost": 0,
     "addDamage": 30
   },
-"Aqua Breath": {
+  "Aqua Breath": {
     "name": "Aqua Breath",
     "targetType": 4,
 	"emote":":sweat_drops:",
@@ -1535,7 +1544,7 @@
     "PPCost": 0,
     "power": 120
   },
-"Black Ice": {
+  "Black Ice": {
     "name": "Black Ice",
     "targetType": 4,
 	"emote":":chocolate_bar:",
@@ -1543,8 +1552,8 @@
     "element": 0,
     "PPCost": 0,
     "power": 80
-},
-"Armor Crush": {
+  },
+  "Armor Crush": {
     "name": "Armor Crush",
     "targetType": 3,
 	"emote":":name_badge:",

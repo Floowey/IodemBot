@@ -1643,7 +1643,7 @@
         "movepool": [
           "Bolt",
 		  "Growth",
-		  "Cure"
+		  "Fresh Breeze"
         ],
         "statMultipliers": {
           "maxHP": 90,
@@ -1658,7 +1658,7 @@
         "movepool": [
           "Flash Bolt",
 		  "Mad Growth",
-          "Cure Well"
+          "Healthy Wind"
         ],
         "statMultipliers": {
           "maxHP": 110,
@@ -1673,7 +1673,7 @@
         "movepool": [
           "Flash Bolt",
 		  "Mad Growth",
-          "Cure Well", 
+          "Healthy Wind", 
           "Revive"
         ],
         "statMultipliers": {
@@ -1689,7 +1689,7 @@
         "movepool": [
           "Blue Bolt",
 		  "Wild Growth",
-          "Potent Cure",
+          "Healing Gust",
           "Revive"
         ],
         "statMultipliers": {
@@ -1704,8 +1704,8 @@
         "name": "Air Oracle",
         "movepool": [
           "Blue Bolt",
-          "Mad Growth",
-          "Potent Cure",
+          "Wild Growth",
+          "Healing Gust",
 		  "Revive"
         ],
         "statMultipliers": {
@@ -1718,8 +1718,8 @@
       }
     ],
     "elements": [
-      2,
-	  0
+	  0,
+      2
     ],
     "elstats": {
       "VenusAtk": 130,
@@ -1932,8 +1932,8 @@
       }
     ],
     "elements": [
-      3,
-	  0
+      0,
+	  3
     ],
     "elstats": {
       "VenusAtk": 140,
@@ -2621,7 +2621,7 @@
           "Destruct Ray",
 		  "Froth Spiral",
 		  "Call Demon",
-		  "Cure Well",
+		  "Potent Cure",
 		  "Revive"
         ],
         "statMultipliers": {
