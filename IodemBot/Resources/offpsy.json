@@ -1564,6 +1564,28 @@
 	 "args":["Defense", "0.75", "50"]}],
     "PPCost": 0,
     "dmgMult":1.4
-  }
+  },
+  "Mega Slash": {
+    "name": "Mega Slash",
+    "targetType": 3,
+	"emote":":turkey:",
+    "range": 1,
+    "element": 2,
+    "PPCost": 0,
+    "dmgMult": 1.4
+  },
+  "Raiden's Wrath": {
+    "name": "Raiden's Wrath",
+    "targetType": 3,
+	"emote":"<:Cloud_Brand:555843776174882826>",
+    "range": 1,
+    "element": 2,
+    "PPCost": 0,
+    "addDamage": 39,
+	"effectImages": [
+		{"id": "MayIgnoreDefense",
+		"args": ["100", "100"]}
+	]
+  },
 }
 

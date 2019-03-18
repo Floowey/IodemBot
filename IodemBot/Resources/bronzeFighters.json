@@ -51,10 +51,7 @@
         "JupiterRes": 80,
         "MercuryAtk": 130,
         "MercuryRes": 140
-      },
-	  "HPRecovery": 40,
-	  "PPRecovery": 5,
-	  "extraTurns": 1
+      }
     },
 	{
       "name": "Wood Walker 2",
@@ -166,7 +163,7 @@
   [
     {
       "name": "Venus Djinn",
-      "imgurl": "https://i.neoseeker.com/ca/golden_sun_dark_dawn_conceptart_pGQt8.png",
+      "imgurl": "https://media.discordapp.net/attachments/494638277987401739/556350801036181517/Flint_Cartoon_Outlines.png",
       "movepool": [
 		"Cure",
 		"Mad Growth",
@@ -909,18 +906,18 @@
       "name": "Crab 1",
       "imgurl": "https://goldensunwiki.net/w/images/0/0e/UnusedMonster2.gif",
       "movepool": [
-	  "Vicious Chop",
-	  "Claw Attack",
-	  "Twin Shear",
-	  "Slice",
-	  "Aqua Breath"
+		"Vicious Chop",
+		"Claw Attack",
+		"Twin Shear",
+		"Slice",
+		"Aqua Breath"
 	  ],
       "stats": {
-	"maxHP": 110,
-	"maxPP": 66,
-	"Atk": 93,
-	"Def": 37,
-	"Spd": 28
+		"maxHP": 110,
+		"maxPP": 66,
+		"Atk": 93,
+		"Def": 37,
+		"Spd": 28
       },
       "elstats": {
         "VenusAtk": 110,
@@ -932,23 +929,23 @@
         "MercuryAtk": 100,
         "MercuryRes": 72
 	  }
-        },
+    },
     {
       "name": "Crab 2",
       "imgurl": "",
       "movepool": [
-	  "Vicious Chop",
-	  "Claw Attack",
-	  "Twin Shear",
-	  "Slice",
-	  "Aqua Breath"
+		"Vicious Chop",
+		"Claw Attack",
+		"Twin Shear",
+		"Slice",
+		"Aqua Breath"
 	  ],
       "stats": {
-	"maxHP": 110,
-	"maxPP": 66,
-	"Atk": 93,
-	"Def": 37,
-	"Spd": 28
+		"maxHP": 110,
+		"maxPP": 66,
+		"Atk": 93,
+		"Def": 37,
+		"Spd": 28
       },
       "elstats": {
         "VenusAtk": 110,
@@ -960,23 +957,23 @@
         "MercuryAtk": 100,
         "MercuryRes": 72
 	  }
-        },
+    },
      {
       "name": "Crab 3",
       "imgurl": "",
       "movepool": [
-	  "Vicious Chop",
-	  "Claw Attack",
-	  "Twin Shear",
-	  "Slice",
-	  "Aqua Breath"
+		"Vicious Chop",
+		"Claw Attack",
+		"Twin Shear",
+		"Slice",
+		"Aqua Breath"
 	  ],
       "stats": {
-	"maxHP": 110,
-	"maxPP": 66,
-	"Atk": 93,
-	"Def": 37,
-	"Spd": 28
+		"maxHP": 110,
+		"maxPP": 66,
+		"Atk": 93,
+		"Def": 37,
+		"Spd": 28
       },
       "elstats": {
         "VenusAtk": 110,
@@ -989,5 +986,256 @@
         "MercuryRes": 72
 	  }
         }
+  ],
+  [
+    {
+      "name": "Alec Goblin",
+      "imgurl": "https://goldensunwiki.net/wiki/File:Alec_Goblin.png",
+      "movepool": [
+		"Nut",
+		"Oil Drop",
+		"Smoke Bomb"
+	  ],
+      "stats": {
+		"maxHP": 220,
+		"maxPP": 3,
+		"Atk": 61,
+		"Def": 20,
+		"Spd": 25
+      },
+      "elstats": {
+        "VenusAtk": 100,
+        "VenusRes": 100,
+        "MarsAtk": 72,
+        "MarsRes": 72,
+        "JupiterAtk": 48,
+        "JupiterRes": 48,
+        "MercuryAtk": 72,
+        "MercuryRes": 72
+	  }
+    },
+    {
+      "name": "Alec Goblin",
+      "imgurl": "",
+      "movepool": [
+		"Nut",
+		"Oil Drop",
+		"Smoke Bomb"
+	  ],
+      "stats": {
+		"maxHP": 220,
+		"maxPP": 3,
+		"Atk": 61,
+		"Def": 20,
+		"Spd": 25
+      },
+      "elstats": {
+        "VenusAtk": 100,
+        "VenusRes": 100,
+        "MarsAtk": 72,
+        "MarsRes": 72,
+        "JupiterAtk": 48,
+        "JupiterRes": 48,
+        "MercuryAtk": 72,
+        "MercuryRes": 72
+	  }
+    }
+  ],
+   [
+    {
+      "name": "Emu",
+      "imgurl": "https://goldensunwiki.net/wiki/File:Alec_Goblin.png",
+      "movepool": [
+		"Mega Slash"
+	  ],
+      "stats": {
+		"maxHP": 98,
+		"maxPP": 3,
+		"Atk": 89,
+		"Def": 21,
+		"Spd": 46
+      },
+      "elstats": {
+        "VenusAtk": 100,
+        "VenusRes": 127,
+        "MarsAtk": 38,
+        "MarsRes": 48,
+        "JupiterAtk": 110,
+        "JupiterRes": 7,
+        "MercuryAtk": 72,
+        "MercuryRes": 72
+	  }
+    },
+    {
+      "name": "Talon Runner",
+      "imgurl": "",
+      "movepool": [
+		"Mega Slash"
+	  ],
+      "stats": {
+		"maxHP": 342,
+		"maxPP": 3,
+		"Atk": 111,
+		"Def": 26,
+		"Spd": 47
+      },
+      "elstats": {
+        "VenusAtk": 100,
+        "VenusRes": 127,
+        "MarsAtk": 38,
+        "MarsRes": 48,
+        "JupiterAtk": 110,
+        "JupiterRes": 7,
+        "MercuryAtk": 72,
+        "MercuryRes": 72
+	  }
+    },
+	{
+      "name": "Emu",
+      "imgurl": "",
+      "movepool": [
+		"Mega Slash"
+	  ],
+      "stats": {
+		"maxHP": 98,
+		"maxPP": 3,
+		"Atk": 89,
+		"Def": 21,
+		"Spd": 46
+      },
+      "elstats": {
+        "VenusAtk": 100,
+        "VenusRes": 127,
+        "MarsAtk": 38,
+        "MarsRes": 48,
+        "JupiterAtk": 110,
+        "JupiterRes": 7,
+        "MercuryAtk": 72,
+        "MercuryRes": 72
+	  }
+    }
+  ],
+  [
+  	{
+		"name": "Ruffian 1",
+		"imgurl": "https://goldensunwiki.net/w/images/f/f6/Ruffian.png",
+		"movepool": [
+		],
+		"stats": {
+		"maxHP": 143,
+		"maxPP": 3,
+		"Atk": 89,
+		"Def": 21,
+		"Spd": 46
+		},
+		"elstats": {
+			"VenusAtk": 100,
+			"VenusRes": 100,
+			"MarsAtk": 100,
+			"MarsRes": 100,
+			"JupiterAtk": 100,
+			"JupiterRes": 100,
+			"MercuryAtk": 100,
+			"MercuryRes": 100
+		}
+    },
+	{
+		"name": "Ruffian 2",
+		"imgurl": "",
+		"movepool": [
+		],
+		"stats": {
+		"maxHP": 143,
+		"maxPP": 3,
+		"Atk": 89,
+		"Def": 21,
+		"Spd": 46
+		},
+		"elstats": {
+			"VenusAtk": 100,
+			"VenusRes": 100,
+			"MarsAtk": 100,
+			"MarsRes": 100,
+			"JupiterAtk": 100,
+			"JupiterRes": 100,
+			"MercuryAtk": 100,
+			"MercuryRes": 100
+		}
+    },
+	{
+		"name": "Ruffian 3",
+		"imgurl": "",
+		"movepool": [
+		],
+		"stats": {
+		"maxHP": 143,
+		"maxPP": 3,
+		"Atk": 89,
+		"Def": 21,
+		"Spd": 46
+		},
+		"elstats": {
+			"VenusAtk": 100,
+			"VenusRes": 100,
+			"MarsAtk": 100,
+			"MarsRes": 100,
+			"JupiterAtk": 100,
+			"JupiterRes": 100,
+			"MercuryAtk": 100,
+			"MercuryRes": 100
+		}
+    },
+	{
+		"name": "Ruffian 4",
+		"imgurl": "",
+		"movepool": [
+		],
+		"stats": {
+		"maxHP": 143,
+		"maxPP": 3,
+		"Atk": 89,
+		"Def": 21,
+		"Spd": 46
+		},
+		"elstats": {
+			"VenusAtk": 100,
+			"VenusRes": 100,
+			"MarsAtk": 100,
+			"MarsRes": 100,
+			"JupiterAtk": 100,
+			"JupiterRes": 100,
+			"MercuryAtk": 100,
+			"MercuryRes": 100
+		}
+    }
+  ],
+  [
+  	{
+      "name": "Sea Fighter",
+      "imgurl": "https://goldensunwiki.net/w/images/a/a8/Sea_Fighter.png",
+      "movepool": [
+		"Echo Cut",
+		"Nut",
+		"Smoke Bomb",
+		"Oil Drop"
+	  ],
+      "stats": {
+        "maxHP": 295,
+        "maxPP": 10,
+        "Atk": 148,
+        "Def": 35,
+        "Spd": 87
+      },
+      "elstats": {
+        "VenusAtk": 100,
+        "VenusRes": 100,
+        "MarsAtk": 100,
+        "MarsRes": 100,
+        "JupiterAtk": 100,
+        "JupiterRes": 100,
+        "MercuryAtk": 100,
+        "MercuryRes": 100
+	  }
+	}
   ]
 ]

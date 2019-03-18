@@ -16,6 +16,9 @@ namespace IodemBot.Core.UserManagement
         public string Name { get; set; }
         public string Flag { get; set; }
         //Ranking
+
+        public BattleStats BattleStats { get; set; }
+        public ServerStats ServerStats { get; set; }
         public uint ColossoWins { get; set; } = 0;
         public uint ColossoStreak { get; set; } = 0;
         public uint ColossoHighestStreak { get; set; } = 0;
@@ -64,8 +67,8 @@ namespace IodemBot.Core.UserManagement
         }
 
         //Golden Sun
-        public Element element = Element.none;
-        public int classToggle;
+        public Element element { get; set; } = Element.none;
+        public int classToggle { get; set; } = 0;
 
         internal void dealtDmg(uint damage)
         {
@@ -92,13 +95,38 @@ namespace IodemBot.Core.UserManagement
             }
         }
 
-        public int uniqueDaysActive { get; set; }
+        public int uniqueDaysActive { get; set; } = 0;
 
         //Friend Codes
         public bool arePublicCodes = false;
         public string N3DSCode { get; set; } = "0000-0000-0000";
         public string SwitchCode { get; set; } = "0000-0000-0000";
         public string PoGoCode { get; set; } = "0000-0000-0000";
+    }
+
+    public class BattleStats
+    {
+        public uint damageDealt { get; set; } = 0;
+        public uint killsByHand { get; set; } = 0;
+        public uint HPhealed { get; set; } = 0;
+        public uint revives { get; set; } = 0;
+        public int totalTeamMates { get; set; } = 0;
+        public int soloBattles { get; set; } = 0;
+    }
+    
+    public class ServerStats
+    {
+        public uint ColossoWins { get; set; } = 0;
+        public uint ColossoStreak { get; set; } = 0;
+        public uint ColossoHighestStreak { get; set; } = 0;
+        public uint rpsWins { get; set; } = 0;
+        public uint rpsStreak { get; set; } = 0;
+        public ulong mostRecentChannel { get; set; } = 0;
+        public ulong channelSwitches { get; set; } = 0;
+        public bool hasWrittenCurse { get; set; } = false;
+        public bool hasQuotedMatthew { get; set; } = false;
+        public int uniqueDaysActive { get; set; } = 0;
+        public DateTime lastDayActive { get; set; }
     }
         //etc 
 }

@@ -749,7 +749,7 @@
   [
     {
       "name": "Grisly 1",
-      "imgurl": "https://vignette.wikia.nocookie.net/goldensun/images/e/ec/Succubus.png/revision/latest?cb=20080205202925",
+      "imgurl": "https://cdn.discordapp.com/attachments/535209634408169492/556079984091856907/succubus.png",
       "movepool": [
 		"Bear Claw",
 		"Berserk"
@@ -1485,7 +1485,7 @@
   [
     {
       "name": "Earth Lizard",
-      "imgurl": "https://vignette.wikia.nocookie.net/goldensun/images/6/68/Lizard_King.png/revision/latest?cb=20071119071811",
+      "imgurl": "https://goldensunwiki.net/w/images/d/d8/Lizard_Man_Dark_Dawn.jpg",
       "movepool": [
 		"Stone Spire",
 		"Quake Sphere",
@@ -1513,7 +1513,7 @@
 	},
 	{
       "name": "Lizard King",
-      "imgurl": "https://vignette.wikia.nocookie.net/goldensun/images/a/a0/Satrage.png/revision/latest?cb=20080105061855",
+      "imgurl": "",
       "movepool": [
 		"Protect",
 		"High Impact",
@@ -1543,7 +1543,7 @@
 	},
 	{
       "name": "Thunder Lizard",
-      "imgurl": "https://vignette.wikia.nocookie.net/goldensun/images/9/94/Azart.png/revision/latest?cb=20080105061632",
+      "imgurl": "",
       "movepool": [
 		"Storm Breath",
 		"Destruct Ray",
@@ -1569,5 +1569,173 @@
         "MercuryRes": 150
 	  }
 	}
+  ],
+  [
+  	{
+	  "name": "Minotaurus",
+      "imgurl": "https://goldensunwiki.net/w/images/a/a8/Minos_Warrior.png",
+      "movepool": [
+	    "Berserk",
+		"Slice",
+		"Ransack"
+	  ],
+      "stats": {
+        "maxHP": 402,
+        "maxPP": 0,
+        "Atk": 176,
+        "Def": 84,
+        "Spd": 123
+      },
+      "elstats": {
+        "VenusAtk": 100,
+        "VenusRes": 50,
+        "MarsAtk": 100,
+        "MarsRes": 125,
+        "JupiterAtk": 120,
+        "JupiterRes": 200,
+        "MercuryAtk": 100,
+        "MercuryRes": 150
+	  }
+	},
+	{
+	  "name": "Minos Warrior",
+      "imgurl": "",
+      "movepool": [
+	    "Berserk",
+		"Ransack",
+		"Cutting Edge"
+	  ],
+      "stats": {
+        "maxHP": 581,
+        "maxPP": 40,
+        "Atk": 176,
+        "Def": 130,
+        "Spd": 164
+      },
+      "elstats": {
+        "VenusAtk": 100,
+        "VenusRes": 50,
+        "MarsAtk": 100,
+        "MarsRes": 125,
+        "JupiterAtk": 120,
+        "JupiterRes": 200,
+        "MercuryAtk": 100,
+        "MercuryRes": 150
+	  }
+    },
+	{
+	  "name": "Minos Knight",
+      "imgurl": "",
+      "movepool": [
+	    "Berserk",
+		"Helm Splitter",
+		"Skull Splitter"
+	  ],
+      "stats": {
+        "maxHP": 700,
+        "maxPP": 40,
+        "Atk": 225,
+        "Def": 170,
+        "Spd": 175
+      },
+      "elstats": {
+        "VenusAtk": 100,
+        "VenusRes": 50,
+        "MarsAtk": 100,
+        "MarsRes": 125,
+        "JupiterAtk": 120,
+        "JupiterRes": 200,
+        "MercuryAtk": 100,
+        "MercuryRes": 150
+	  }
+	}
+  ],
+  [
+  {
+	"name": "Izumo Miko",
+    "imgurl": "https://solejupiterwind.files.wordpress.com/2011/08/susanoo.jpg",
+    "movepool": [
+	  "Weapon Grace",
+	  "Weapon Grace",
+	  "Revive",
+	  "Revive",
+	  "Roaring Dragon",
+	  "Potent Cure"
 	],
+    "stats": {
+    "maxHP": 355,
+    "maxPP": 200,
+    "Atk": 186,
+    "Def": 75,
+    "Spd": 251
+    },
+    "elstats": {
+      "VenusAtk": 140,
+      "VenusRes": 140,
+      "MarsAtk": 110,
+      "MarsRes": 110,
+      "JupiterAtk": 70,
+      "JupiterRes": 70,
+      "MercuryAtk": 100,
+      "MercuryRes": 100
+	}
+  },
+  {
+	"name": "Susa",
+    "imgurl": "",
+    "movepool": [
+	  "Raiden's Wrath",
+	  "Raiden's Wrath",
+	  "Raiden's Wrath",
+	  "Raiden's Wrath"
+	],
+    "stats": {
+    "maxHP": 700,
+    "maxPP": 152,
+    "Atk": 229,
+    "Def": 102,
+    "Spd": 202
+    },
+    "elstats": {
+	  "VenusAtk": 140,
+      "VenusRes": 140,
+      "MarsAtk": 80,
+      "MarsRes": 80,
+      "JupiterAtk": 100,
+      "JupiterRes": 100,
+      "MercuryAtk": 100,
+      "MercuryRes": 100
+	}
+  },
+  {
+	"name": "Izumo Curse Mage",
+    "imgurl": "",
+    "movepool": [
+	  "Revive",
+	  "Revive",
+	  "Undead Gloom",
+	  "Call Demon",
+	  "Fiery Abyss",
+	  "Debilitate",
+	  "Toxic Grit"
+	],
+    "stats": {
+    "maxHP": 350,
+    "maxPP": 200,
+    "Atk": 255,
+    "Def": 79,
+    "Spd": 240
+    },
+    "elstats": {
+      "VenusAtk": 150,
+      "VenusRes": 150,
+      "MarsAtk": 150,
+      "MarsRes": 150,
+      "JupiterAtk": 100,
+      "JupiterRes": 100,
+      "MercuryAtk": 50,
+      "MercuryRes": 50
+	}
+  }
+ ]
 ]

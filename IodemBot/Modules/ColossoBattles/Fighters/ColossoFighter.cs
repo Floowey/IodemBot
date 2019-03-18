@@ -219,7 +219,8 @@ namespace IodemBot.Modules.ColossoBattles
             //Haunt Damage
             if (HasCondition(Condition.Haunt))
             {
-                turnLog.AddRange(DealDamage((uint)(stats.HP * Global.random.Next(20, 40) / 100)));
+                var hauntDmg = Math.Max(280, (uint)(stats.HP * Global.random.Next(20, 40) / 100));
+                turnLog.AddRange(DealDamage(hauntDmg));
             }
 
             return turnLog;
@@ -296,7 +297,7 @@ namespace IodemBot.Modules.ColossoBattles
                     turnLog.Add($"{name} can move again.");
                 }
             }
-            //Chance to remove Stun
+            //Chance to remove Seal
             if (HasCondition(Condition.Seal))
             {
                 if (Global.random.Next(0, 3) == 0)
@@ -350,7 +351,7 @@ namespace IodemBot.Modules.ColossoBattles
             if (HasCondition(Condition.Poison)) s.Append("<:Poison:549526931847249920>");
             if (HasCondition(Condition.Seal)) s.Append("<:Psy_Seal:549526931465568257>");
             if (HasCondition(Condition.Sleep)) s.Append("<:Sleep:555427023519088671>");
-            if (HasCondition(Condition.Stun)) s.Append("");
+            if (HasCondition(Condition.Stun)) s.Append("<:Flash_Bolt:536966441862299678>");
             if (HasCondition(Condition.Venom)) s.Append("<:Poison:549526931847249920>");
             return s.ToString();
         }
