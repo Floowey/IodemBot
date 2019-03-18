@@ -240,7 +240,6 @@
     <Compile Include="Extensions\DiscordSocketGuildExt.cs" />
     <Compile Include="Extensions\DiscordSocketGuildUserExt.cs" />
     <Compile Include="MessageHandler.cs" />
-    <Compile Include="Modules\ColossoBattles\ColossoGameProvider.cs" />
     <Compile Include="Modules\ColossoBattles\ColossoPvE.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Classes\AdeptClass.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Classes\AdeptClassSeries.cs" />
@@ -303,6 +302,7 @@
     <Compile Include="Config.cs" />
     <Compile Include="Modules\Misc.cs" />
     <Compile Include="Program.cs" />
+    <None Include="Resources\archive.json" />
     <Compile Include="Sprites.cs" />
     <Compile Include="Utilities.cs" />
   </ItemGroup>

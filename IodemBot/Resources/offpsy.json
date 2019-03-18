@@ -321,6 +321,10 @@
 	"emote":"<:Call_Zombie:536997673799122956>",
 	"range": 1,
     "element": 0,
+	"effectImages":[
+	{"id": "Condition",
+	"args": ["Haunt", "33"]}
+	],
 	"PPCost": 5,
 	"power": 40
   },
@@ -330,6 +334,10 @@
 	"emote":"💀",
 	"range": 1,
     "element": 0,
+	"effectImages":[
+	{"id": "Condition",
+	"args": ["Haunt", "44"]}
+	],
 	"PPCost": 15,
 	"power": 140
   },
@@ -339,6 +347,10 @@
 	"emote":"☠",
 	"range": 1,
     "element": 0,
+	"effectImages":[
+	{"id": "Condition",
+	"args": ["Haunt", "55"]}
+	],
 	"PPCost": 30,
 	"power": 250
   },
@@ -1435,18 +1447,18 @@
    "Mighty Press": {
     "name": "Mighty Press",
 	"targetType": 3,
-	"emote":"<:Rampage:537766290031509524>",
+	"emote":":compression:",
 	"range": 1,
     "element": 0,
 	"PPCost": 0,
 	"addDamage": 50,
-		   "effectImages":[
-			   {
-				   "id": "ChanceToOHKO",
-				   "args": ["10"]}
-			   ],
+	"effectImages":[
+	{
+		"id": "ChanceToOHKO",
+		"args": ["10"]}
+	],
   },
-"War Cry": {
+  "War Cry": {
     "name": "War Cry",
 	"targetType": 3,
 	"emote":"<:Rampage:537766290031509524>",
@@ -1454,13 +1466,13 @@
     "element": 2,
 	"PPCost": 0,
 	"power": 45,
-	   "effectImages":[
-		   {
-			   "id": "Condition",
-			   "args":["Flinch", "35"]}
-		   ],
+	"effectImages":[
+	{
+		"id": "Condition",
+		"args":["Flinch", "35"]}
+	],
   },
-"Dynamite": {
+  "Dynamite": {
     "name": "Dynamite",
 	"targetType": 4,
 	"emote":":bomb:",
@@ -1474,4 +1486,106 @@
 			   }
 		   ],
   },
+  "Claw Attack": {
+    "name": "Claw Attack",
+    "targetType": 3,
+    "emote":"<:Rampage:537766290031509524>",
+    "range": 1,
+    "element": 4,
+    "PPCost": 0,
+    "addDamage": 20
+  },
+  "Fire Dance": {
+    "name": "Fire Dance",
+    "targetType": 3,
+    "emote":"<:Blaze:551042852730175520>",
+    "range": 1,
+    "element": 1,
+    "PPCost": 0,
+    "dmgMult": 1.3
+  },
+  "Poison Fang": {
+    "name": "Poison Fang",
+    "targetType": 3,
+    "emote":":snake:",
+    "range": 1,
+    "element": 0,
+    "PPCost": 0,
+    "addDamage": 0,
+    "effectImages":[
+	{"id": "Condition",
+	 "args":["Poison", "40"]}
+	 ]
+  },
+  "Twin Shear": {
+    "name": "Twin Shear",
+    "targetType": 3,
+    "emote":":scissors:",
+    "range": 1,
+    "element": 0,
+    "PPCost": 0,
+    "dmgMult": 1.8
+  },
+  "Echo Cut": {
+    "name": "Echo Cut",
+    "targetType": 3,
+    "emote":":scissors:",
+    "range": 1,
+    "element": 4,
+    "PPCost": 0,
+    "addDamage": 30
+  },
+  "Aqua Breath": {
+    "name": "Aqua Breath",
+    "targetType": 4,
+	"emote":":sweat_drops:",
+    "range": 3,
+    "element": 3,
+    "PPCost": 0,
+    "power": 120
+  },
+  "Black Ice": {
+    "name": "Black Ice",
+    "targetType": 4,
+	"emote":":chocolate_bar:",
+    "range": 3,
+    "element": 0,
+    "PPCost": 0,
+    "power": 80
+  },
+  "Armor Crush": {
+    "name": "Armor Crush",
+    "targetType": 3,
+	"emote":":name_badge:",
+    "range": 1,
+    "element": 0,
+	"effectImages":[
+	{"id": "Status",
+	 "args":["Defense", "0.75", "50"]}],
+    "PPCost": 0,
+    "dmgMult":1.4
+  },
+  "Mega Slash": {
+    "name": "Mega Slash",
+    "targetType": 3,
+	"emote":":turkey:",
+    "range": 1,
+    "element": 2,
+    "PPCost": 0,
+    "dmgMult": 1.4
+  },
+  "Raiden's Wrath": {
+    "name": "Raiden's Wrath",
+    "targetType": 3,
+	"emote":"<:Cloud_Brand:555843776174882826>",
+    "range": 1,
+    "element": 2,
+    "PPCost": 0,
+    "addDamage": 39,
+	"effectImages": [
+		{"id": "MayIgnoreDefense",
+		"args": ["100", "100"]}
+	]
+  },
 }
+

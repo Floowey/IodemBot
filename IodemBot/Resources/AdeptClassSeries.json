@@ -128,7 +128,7 @@
     },
     "requirement": "Level",
     "isDefault": true,
-	"description": "Stoic and rooted to the soil, Adepts of the Squire Series excell in leadship and versatility."
+	"description": "Stoic and rooted to the soil, Adepts of the Squire Series excell in leadership and versatility."
   },
   {
     "name": "Miko Series",
@@ -1643,7 +1643,7 @@
         "movepool": [
           "Bolt",
 		  "Growth",
-		  "Cure"
+		  "Fresh Breeze"
         ],
         "statMultipliers": {
           "maxHP": 90,
@@ -1658,7 +1658,7 @@
         "movepool": [
           "Flash Bolt",
 		  "Mad Growth",
-          "Cure Well"
+          "Healthy Wind"
         ],
         "statMultipliers": {
           "maxHP": 110,
@@ -1673,7 +1673,7 @@
         "movepool": [
           "Flash Bolt",
 		  "Mad Growth",
-          "Cure Well", 
+          "Healthy Wind", 
           "Revive"
         ],
         "statMultipliers": {
@@ -1689,7 +1689,7 @@
         "movepool": [
           "Blue Bolt",
 		  "Wild Growth",
-          "Potent Cure",
+          "Healing Gust",
           "Revive"
         ],
         "statMultipliers": {
@@ -1704,8 +1704,8 @@
         "name": "Air Oracle",
         "movepool": [
           "Blue Bolt",
-          "Mad Growth",
-          "Potent Cure",
+          "Wild Growth",
+          "Healing Gust",
 		  "Revive"
         ],
         "statMultipliers": {
@@ -1718,8 +1718,8 @@
       }
     ],
     "elements": [
-      2,
-	  0
+	  0,
+      2
     ],
     "elstats": {
       "VenusAtk": 130,
@@ -1932,8 +1932,8 @@
       }
     ],
     "elements": [
-      3,
-	  0
+      0,
+	  3
     ],
     "elstats": {
       "VenusAtk": 140,
@@ -1988,7 +1988,7 @@
 		  "Cutting Edge",
           "Mad Blast",
           "Restore",
-		  "Pure Ply"
+		  "Ply Well"
         ],
         "statMultipliers": {
           "maxHP": 140,
@@ -2004,7 +2004,7 @@
 		  "Plume Edge",
           "Fiery Blast",
           "Restore",
-		  "Pure Ply"
+		  "Ply Well"
         ],
         "statMultipliers": {
           "maxHP": 170,
@@ -2020,7 +2020,7 @@
           "Plume Edge",
           "Fiery Blast",
           "Restore",
-		  "Ply Well"
+		  "Pure Ply"
         ],
         "statMultipliers": {
           "maxHP": 190,
@@ -2621,7 +2621,7 @@
           "Destruct Ray",
 		  "Froth Spiral",
 		  "Call Demon",
-		  "Cure Well",
+		  "Potent Cure",
 		  "Revive"
         ],
         "statMultipliers": {

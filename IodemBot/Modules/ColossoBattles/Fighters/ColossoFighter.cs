@@ -33,6 +33,9 @@ namespace IodemBot.Modules.ColossoBattles
         [JsonIgnore] public double offensiveMult = 1;
         [JsonIgnore] public double defensiveMult = 1;
         [JsonIgnore] public double ignoreDefense = 1;
+        public uint HPrecovery { get; set; } = 0;
+        public uint PPrecovery { get; set; } = 0;
+
 
         internal ColossoFighter(string name, string imgUrl, Stats stats, ElementalStats elstats, Move[] moves)
         {
@@ -145,7 +148,7 @@ namespace IodemBot.Modules.ColossoBattles
             }
             else
             {
-                log.Add($"{name} recovers {healHP} HP!");
+                log.Add($"{name} recovers {healHP} HP.");
             }
             return log;
             
@@ -188,7 +191,7 @@ namespace IodemBot.Modules.ColossoBattles
             return turnLog;
         }
 
-        public bool hasCurableCondition()
+        public bool HasCurableCondition()
         {
             Condition[] badConditions = { Condition.Poison, Condition.Venom, Condition.Seal, Condition.Sleep, Condition.Stun, Condition.DeathCurse };
             return Conditions.Any(c => badConditions.Contains(c));
@@ -216,7 +219,8 @@ namespace IodemBot.Modules.ColossoBattles
             //Haunt Damage
             if (HasCondition(Condition.Haunt))
             {
-                turnLog.AddRange(DealDamage((uint)(stats.HP * Global.random.Next(20, 40) / 100)));
+                var hauntDmg = Math.Max(280, (uint)(stats.HP * Global.random.Next(20, 40) / 100));
+                turnLog.AddRange(DealDamage(hauntDmg));
             }
 
             return turnLog;
@@ -245,6 +249,36 @@ namespace IodemBot.Modules.ColossoBattles
             defensiveMult = 1;
             offensiveMult = 1;
 
+            if (IsAlive())
+            {
+                if (HPrecovery > 0 && stats.HP < stats.maxHP)
+                {
+                    stats.HP = Math.Min(stats.maxHP, stats.HP + HPrecovery);
+                    if (stats.HP < stats.maxHP)
+                    {
+                        turnLog.Add($"{name} recovers {HPrecovery} HP.");
+                    }
+                    else
+                    {
+                        turnLog.Add($"{name}'s HP was fully restored.");
+                    }
+                }
+                if (PPrecovery > 0 && stats.PP < stats.maxPP)
+                {
+                    stats.PP = Math.Min(stats.maxPP, stats.PP + PPrecovery);
+                    if(stats.PP < stats.maxPP)
+                    {
+                        turnLog.Add($"{name} recovers {PPrecovery} PP.");
+                    } else
+                    {
+                        turnLog.Add($"{name}'s PP was fully restored.");
+                    }
+                }
+
+            }
+
+            RemoveCondition(Condition.Flinch);
+
             //Chance to wake up
             if (HasCondition(Condition.Sleep))
             {
@@ -263,7 +297,7 @@ namespace IodemBot.Modules.ColossoBattles
                     turnLog.Add($"{name} can move again.");
                 }
             }
-            //Chance to remove Stun
+            //Chance to remove Seal
             if (HasCondition(Condition.Seal))
             {
                 if (Global.random.Next(0, 3) == 0)
@@ -316,7 +350,8 @@ namespace IodemBot.Modules.ColossoBattles
             if (HasCondition(Condition.ItemCurse)) s.Append("<:curse:538074679492083742>");
             if (HasCondition(Condition.Poison)) s.Append("<:Poison:549526931847249920>");
             if (HasCondition(Condition.Seal)) s.Append("<:Psy_Seal:549526931465568257>");
-            if (HasCondition(Condition.Stun)) s.Append("");
+            if (HasCondition(Condition.Sleep)) s.Append("<:Sleep:555427023519088671>");
+            if (HasCondition(Condition.Stun)) s.Append("<:Flash_Bolt:536966441862299678>");
             if (HasCondition(Condition.Venom)) s.Append("<:Poison:549526931847249920>");
             return s.ToString();
         }
@@ -375,14 +410,15 @@ namespace IodemBot.Modules.ColossoBattles
             }
             selected = moves[Global.random.Next(0, moves.Count())];
             selected.targetNr = 0;
+            Console.WriteLine($"{selected.name} was rolled.");
            
             if (selected.ValidSelection(this))
             {
                 selected.ChooseBestTarget(this);
-                Console.WriteLine($"{selected.name} passed the check.");
+                Console.WriteLine($"  {selected.name} passed the check.");
             } else
             {
-                Console.WriteLine($"{selected.name} was a bad choice. Rerolling.");
+                Console.WriteLine($"X {selected.name} was a bad choice. Rerolling.");
                 selectRandom();
                 return;
             }

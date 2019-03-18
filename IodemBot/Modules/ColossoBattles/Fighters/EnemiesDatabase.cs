@@ -10,7 +10,7 @@ using static IodemBot.Modules.ColossoBattles.ColossoPvE;
 
 namespace IodemBot.Modules.ColossoBattles
 {
-    public class EnemiesDatabase
+    public static class EnemiesDatabase
     {
         private static List<List<ColossoFighter>> bronzeFighters;
         private static List<List<ColossoFighter>> silverFighters;
@@ -55,11 +55,34 @@ namespace IodemBot.Modules.ColossoBattles
                     break;
                 default:
                     selectedDifficulty = bronzeFighters;
+                    Console.WriteLine("Enemies from default!!!");
                     break;
             }
             return selectedDifficulty[(new Random()).Next(0, selectedDifficulty.Count)].Select(f => (ColossoFighter)f.Clone()).ToList();
         }
 
+        internal static List<ColossoFighter> getEnemies(BattleDifficulty diff, string enemy)
+        {
+            List<List<ColossoFighter>> selectedDifficulty;
+            switch (diff)
+            {
+                case (BattleDifficulty.Easy):
+                    selectedDifficulty = bronzeFighters;
+                    break;
+                case (BattleDifficulty.Medium):
+                    selectedDifficulty = silverFighters;
+                    break;
+                case (BattleDifficulty.Hard):
+                    selectedDifficulty = goldFighters;
+                    break;
+                default:
+                    selectedDifficulty = bronzeFighters;
+                    Console.WriteLine("Enemies from default!!!");
+                    break;
+            }
+            var enemies = selectedDifficulty.Where(l => l.Any(e => e.name.ToUpper().Contains(enemy.ToUpper()))).FirstOrDefault();
+            if (enemies == null) enemies = getRandomEnemies(diff);
+            return enemies.Select(f => (ColossoFighter)f.Clone()).ToList();
+        }
     }
-
 }

@@ -42,7 +42,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 return;
             }
             
-            aliveFriends = aliveFriends.OrderBy(s => s.stats.HP / s.stats.maxHP).ThenBy(s => s.stats.maxHP).ToList();
+            aliveFriends = aliveFriends.OrderBy(s => s.stats.HP / s.stats.maxHP).ThenBy(s => s.stats.HP).ToList();
             targetNr = User.getTeam().IndexOf(aliveFriends.First());
 
         }

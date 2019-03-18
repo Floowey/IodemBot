@@ -17,6 +17,26 @@ namespace IodemBot.Core.UserManagement
             if (DataStorage.SaveExists(accountsFile))
             {
                 accounts = DataStorage.LoadUserAccounts(accountsFile).ToList();
+                foreach (var acc in accounts)
+                {
+                    acc.BattleStats.damageDealt = acc.damageDealt;
+                    acc.BattleStats.HPhealed= acc.HPhealed;
+                    acc.BattleStats.killsByHand = acc.killsByHand;
+                    acc.BattleStats.revives= acc.revives;
+                    acc.BattleStats.soloBattles = acc.soloBattles;
+                    acc.BattleStats.totalTeamMates = acc.totalTeamMates;
+
+                    acc.ServerStats.channelSwitches = acc.channelSwitches;
+                    acc.ServerStats.ColossoHighestStreak = acc.ColossoHighestStreak;
+                    acc.ServerStats.ColossoStreak = acc.ColossoStreak;
+                    acc.ServerStats.ColossoWins = acc.ColossoWins;
+                    acc.ServerStats.hasQuotedMatthew = acc.hasQuotedMatthew;
+                    acc.ServerStats.hasWrittenCurse = acc.hasWrittenCurse;
+                    acc.ServerStats.mostRecentChannel = acc.mostRecentChannel;
+                    acc.ServerStats.rpsStreak = acc.rpsStreak;
+                    acc.ServerStats.rpsWins = acc.rpsWins;
+                }
+                SaveAccounts();
             }
             else
             {

@@ -71,6 +71,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         {
             List<Move> moves = new List<Move>();
             moves.Add(new Attack());
+            moves.Add(new Attack());
             moves.Add(new Defend());
             moves.AddRange(GetPsynergy(psynergiesString));
             

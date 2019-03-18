@@ -310,7 +310,21 @@
 	"effectImages": [
 	  {
 	    "id": "Revive",
-		"args": ["75"]
+		"args": ["66"]
+	  }
+	]
+  },
+   "Signal Whistle": {
+	"name": "Signal Whistle",
+	"targetType": 2,
+	"emote": ":trumpet:",
+	"range": 2,
+    "element": 4,
+	"PPCost": 1,
+	"effectImages": [
+	  {
+	    "id": "Revive",
+		"args": ["100"]
 	  }
 	]
   },

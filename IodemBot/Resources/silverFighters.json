@@ -130,10 +130,12 @@
 		"Cure Well",
 		"Ragnarok",
 		"Mother Gaia",
+		"Revive",
+		"Revive",
 		"Revive"
 	  ],
       "stats": {
-        "maxHP": 340,
+        "maxHP": 420,
         "maxPP": 100,
         "Atk": 130,
         "Def": 90,
@@ -160,7 +162,7 @@
 		"Blaze"
 	  ],
       "stats": {
-        "maxHP": 310,
+        "maxHP": 380,
         "maxPP": 150,
         "Atk": 60,
         "Def": 60,
@@ -188,7 +190,7 @@
 		"Bind"
 	  ],
       "stats": {
-        "maxHP": 260,
+        "maxHP": 320,
         "maxPP": 200,
         "Atk": 70,
         "Def": 40,
@@ -216,7 +218,7 @@
 		"Break"
 	  ],
       "stats": {
-        "maxHP": 400,
+        "maxHP": 450,
         "maxPP": 200,
         "Atk": 100,
         "Def": 80,
@@ -242,6 +244,8 @@
 		"Cure Well",
 		"Ragnarok",
 		"Mother Gaia",
+		"Revive",
+		"Revive",
 		"Revive"
 	  ],
       "stats": {
@@ -355,7 +359,7 @@
 		"Cure Well",
 		"Mad Growth",
 		"Punji Strike",
-	        "Clay Spire"
+	    "Clay Spire"
 	  ],
       "stats": {
         "maxHP": 340,
@@ -668,7 +672,7 @@
       "name": "Virago 1",
       "imgurl": "https://vignette.wikia.nocookie.net/goldensun/images/3/31/Hobgoblin.png/revision/latest?cb=20071212184432",
       "movepool": [
-		    "Tornado",
+		  "Tornado",
 	      "Banshee Howl"
 	  ],
       "stats": {
@@ -693,10 +697,10 @@
       "name": "Hobgoblin",
       "imgurl": "",
       "movepool": [
-		"Nut",
 		"Crystal Powder",
-	      "Sleep Bomb",
-	      "Smoke Bomb"
+		"Nut",
+	    "Sleep Bomb",
+	    "Smoke Bomb"
 	  ],
       "stats": {
         "maxHP": 900,
@@ -720,7 +724,7 @@
       "name": "Virago 2",
       "imgurl": "",
       "movepool": [
-		  "Tornado",
+		"Tornado",
 	    "Banshee Howl"
 	  ],
       "stats": {
@@ -745,7 +749,7 @@
   [
     {
       "name": "Grisly 1",
-      "imgurl": "https://vignette.wikia.nocookie.net/goldensun/images/e/ec/Succubus.png/revision/latest?cb=20080205202925",
+      "imgurl": "https://cdn.discordapp.com/attachments/535209634408169492/556079984091856907/succubus.png",
       "movepool": [
 		"Bear Claw",
 		"Berserk"
@@ -826,11 +830,13 @@
       "imgurl": "https://vignette.wikia.nocookie.net/goldensun/images/6/6a/Lich_Ghost.png/revision/latest?cb=20070917070302",
       "movepool": [
 		"Cannibal Fang",
-		"Bacteria Rush"
+		"Bacteria Rush",
+		"Smoke Bomb",
+		"Dull"
 	  ],
       "stats": {
         "maxHP": 609,
-        "maxPP": 34,
+        "maxPP": 33,
         "Atk": 199,
         "Def": 45,
         "Spd": 69
@@ -852,8 +858,7 @@
       "movepool": [
 		"Glacier",
 		"Revive",
-		"Enfeeble",
-		"Debilitate"
+		"Bind"
 	  ],
       "stats": {
         "maxHP": 900,
@@ -876,13 +881,15 @@
     {
       "name": "Fiendish Ghoul 2",
       "imgurl": "",
-      "movepool": [
+       "movepool": [
 		"Cannibal Fang",
-		"Bacteria Rush"
+		"Bacteria Rush",
+		"Smoke Bomb",
+		"Guard"
 	  ],
       "stats": {
         "maxHP": 609,
-        "maxPP": 34,
+        "maxPP": 33,
         "Atk": 199,
         "Def": 45,
         "Spd": 69
@@ -914,7 +921,7 @@
 	  ],
       "stats": {
         "maxHP": 1100,
-        "maxPP": 36,
+        "maxPP": 50,
         "Atk": 213,
         "Def": 56,
         "Spd": 98
@@ -944,7 +951,7 @@
 	  ],
       "stats": {
         "maxHP": 1100,
-        "maxPP": 36,
+        "maxPP": 50,
         "Atk": 213,
         "Def": 56,
         "Spd": 98
@@ -1016,4 +1023,719 @@
 	  }
 	}
   ],
+  [
+    {
+      "name": "Nue 1",
+      "imgurl": "https://goldensunwiki.net/w/images/c/c4/UnusedMonster1.gif",
+      "movepool": [
+		"Banshee Howl",
+		"Double Fang",
+		"Poison Fang",
+	    "Claw Attack",
+	    "Fire Breath"
+	  ],
+      "stats": {
+        "maxHP": 1075,
+        "maxPP": 80,
+        "Atk": 232,
+        "Def": 64,
+        "Spd": 87
+      },
+      "elstats": {
+        "VenusAtk": 125,
+        "VenusRes": 90,
+        "MarsAtk": 110,
+        "MarsRes": 90,
+        "JupiterAtk": 72,
+        "JupiterRes": 72,
+        "MercuryAtk": 30,
+        "MercuryRes": 30
+	  }
+	},
+    {
+      "name": "Nue 2",
+      "imgurl": "",
+      "movepool": [
+		"Banshee Howl",
+		"Double Fang",
+		"Poison Fang",
+	    "Claw Attack",
+	    "Fire Breath"
+	  ],
+      "stats": {
+        "maxHP": 1075,
+        "maxPP": 80,
+        "Atk": 232,
+        "Def": 64,
+        "Spd": 87
+      },
+      "elstats": {
+        "VenusAtk": 125,
+        "VenusRes": 90,
+        "MarsAtk": 110,
+        "MarsRes": 90,
+        "JupiterAtk": 72,
+        "JupiterRes": 72,
+        "MercuryAtk": 30,
+        "MercuryRes": 30
+	  }
+	}
+  ],
+  [
+    {
+      "name": "Sea Fighter 1",
+      "imgurl": "",
+      "movepool": [
+		"Echo Cut",
+		"Nut",
+		"Smoke Bomb",
+		"Oil Drop"
+	  ],
+      "stats": {
+        "maxHP": 295,
+        "maxPP": 10,
+        "Atk": 148,
+        "Def": 35,
+        "Spd": 87
+      },
+      "elstats": {
+        "VenusAtk": 100,
+        "VenusRes": 100,
+        "MarsAtk": 100,
+        "MarsRes": 100,
+        "JupiterAtk": 100,
+        "JupiterRes": 100,
+        "MercuryAtk": 100,
+        "MercuryRes": 100
+	  }
+	},
+	{
+      "name": "Sea Fighter 2",
+      "imgurl": "",
+      "movepool": [
+		"Echo Cut",
+		"Nut",
+		"Smoke Bomb",
+		"Oil Drop"
+	  ],
+      "stats": {
+        "maxHP": 295,
+        "maxPP": 10,
+        "Atk": 148,
+        "Def": 35,
+        "Spd": 87
+      },
+      "elstats": {
+        "VenusAtk": 100,
+        "VenusRes": 100,
+        "MarsAtk": 100,
+        "MarsRes": 100,
+        "JupiterAtk": 100,
+        "JupiterRes": 100,
+        "MercuryAtk": 100,
+        "MercuryRes": 100
+	  }
+	},
+    {
+      "name": "Briggs",
+      "imgurl": "",
+      "movepool": [
+		"Echo Cut",
+		"Signal Whistle"
+	  ],
+      "stats": {
+        "maxHP": 1476,
+        "maxPP": 3,
+        "Atk": 161,
+        "Def": 36,
+        "Spd": 76
+      },
+      "elstats": {
+        "VenusAtk": 100,
+        "VenusRes": 100,
+        "MarsAtk": 100,
+        "MarsRes": 100,
+        "JupiterAtk": 100,
+        "JupiterRes": 100,
+        "MercuryAtk": 100,
+        "MercuryRes": 100
+	  }
+	}
+  ],
+  [
+    {
+      "name": "Serpent",
+      "imgurl": "https://goldensunwiki.net/w/images/8/89/Serpent.png",
+      "movepool": [
+		"Briar",
+		"Quake Sphere",
+		"Cure",
+		"Toxic Grit",
+		"Mighty Press",
+		"Black Ice"
+	  ],
+      "stats": {
+        "maxHP": 2536,
+        "maxPP": 160,
+        "Atk": 148,
+        "Def": 35,
+        "Spd": 87
+      },
+      "elstats": {
+        "VenusAtk": 110,
+        "VenusRes": 152,
+        "MarsAtk": 100,
+        "MarsRes": 100,
+        "JupiterAtk": 100,
+        "JupiterRes": 48,
+        "MercuryAtk": 100,
+        "MercuryRes": 100
+	  },
+	  "HPRecovery":30,
+	  "extraTurns":1
+	}
+  ],
+  [
+    {
+      "name": "Stone Soldier 1",
+      "imgurl": "https://vignette.wikia.nocookie.net/goldensun/images/6/68/Lizard_King.png/revision/latest?cb=20071119071811",
+      "movepool": [
+		"Headbutt",
+		"Mad Blast",
+	      "Dynamite"
+	  ],
+      "stats": {
+        "maxHP": 200,
+        "maxPP": 60,
+        "Atk": 241,
+        "Def": 105,
+        "Spd": 104
+      },
+      "elstats": {
+        "VenusAtk": 95,
+        "VenusRes": 48,
+        "MarsAtk": 130,
+        "MarsRes": 127,
+        "JupiterAtk": 120,
+        "JupiterRes": 48,
+        "MercuryAtk": 100,
+        "MercuryRes": 7
+	  }
+	},
+	{
+      "name": "Harridan",
+      "imgurl": "",
+      "movepool": [
+		"Sonic Slash",
+		"Tempest",
+	      "Banshee Howl"
+	  ],
+      "stats": {
+        "maxHP": 600,
+        "maxPP": 100,
+        "Atk": 261,
+        "Def": 66,
+        "Spd": 118
+      },
+      "elstats": {
+        "VenusAtk": 152,
+        "VenusRes": 175,
+        "MarsAtk": 130,
+        "MarsRes": 72,
+        "JupiterAtk": 110,
+        "JupiterRes": 25,
+        "MercuryAtk": 120,
+        "MercuryRes": 100
+	  }
+	},
+	{
+      "name": "Lizard King",
+      "imgurl": "",
+      "movepool": [
+		"Ice Blessing",
+		"Debilitate",
+		"High Impact",
+		"Hail Prism"
+	  ],
+      "stats": {
+        "maxHP": 2000,
+        "maxPP": 52,
+        "Atk": 285,
+        "Def": 93,
+        "Spd": 92
+      },
+      "elstats": {
+        "VenusAtk": 100,
+        "VenusRes": 100,
+        "MarsAtk": 130,
+        "MarsRes": 72,
+        "JupiterAtk": 100,
+        "JupiterRes": 100,
+        "MercuryAtk": 100,
+        "MercuryRes": 127
+	  }
+	},
+	{
+      "name": "Stone Soldier 2",
+      "imgurl": "",
+      "movepool": [
+		"Headbutt",
+		"Mad Blast",
+	      "Dynamite"
+	  ],
+      "stats": {
+        "maxHP": 200,
+        "maxPP": 60,
+        "Atk": 241,
+        "Def": 105,
+        "Spd": 104
+      },
+      "elstats": {
+        "VenusAtk": 95,
+        "VenusRes": 48,
+        "MarsAtk": 130,
+        "MarsRes": 127,
+        "JupiterAtk": 80,
+        "JupiterRes": 48,
+        "MercuryAtk": 100,
+        "MercuryRes": 7
+	  }
+	}
+  ],
+  [
+	{
+      "name": "Chimera 1",
+      "imgurl": "https://vignette.wikia.nocookie.net/goldensun/images/3/36/Chimera.png/revision/latest?cb=20080208053300",
+      "movepool": 
+	  [
+	  "Rabid Fang",
+	  "Mad Dash",
+	  "Fire Breath",
+	  "Flare Storm",
+	  "Guard",
+	  "Impair",
+	  "Aura"
+	  ],
+      "stats": {
+        "maxHP": 850,
+        "maxPP": 100,
+        "Atk": 294,
+        "Def": 90,
+        "Spd": 121
+      },
+      "elstats": {
+        "VenusAtk": 95,
+        "VenusRes": 100,
+        "MarsAtk": 115,
+        "MarsRes": 175,
+        "JupiterAtk": 110,
+        "JupiterRes": 100,
+        "MercuryAtk": 140,
+        "MercuryRes": 25
+      }
+    },
+	{
+      "name": "Chimera 2",
+      "imgurl": "",
+      "movepool": 
+	  [
+	   "Rabid Fang",
+	  "Mad Dash",
+	  "Fire Breath",
+	  "Flare Storm",
+	  "Guard",
+	  "Impair",
+	  "Aura"
+	  ],
+      "stats": {
+        "maxHP": 850,
+        "maxPP": 100,
+        "Atk": 294,
+        "Def": 90,
+        "Spd": 121
+      },
+      "elstats": {
+        "VenusAtk": 95,
+        "VenusRes": 100,
+        "MarsAtk": 115,
+        "MarsRes": 175,
+        "JupiterAtk": 110,
+        "JupiterRes": 100,
+        "MercuryAtk": 110,
+        "MercuryRes": 25
+      }
+    }
+  ],
+  [
+    {
+      "name": "Hobgoblin 1",
+      "imgurl": "https://vignette.wikia.nocookie.net/goldensun/images/3/31/Hobgoblin.png/revision/latest?cb=20071212184432",
+      "movepool": [
+		"Mighty Press",
+		"Headbutt",
+		"Ragnarok",
+		"Cutting Edge",
+		"Helm Splitter",
+		"Liquifier"
+	  ],
+      "stats": {
+        "maxHP": 1500,
+        "maxPP": 300,
+        "Atk": 350,
+        "Def": 180,
+        "Spd": 125
+      },
+      "elstats": {
+        "VenusAtk": 110,
+        "VenusRes": 125,
+        "MarsAtk": 130,
+        "MarsRes": 200,
+        "JupiterAtk": 100,
+        "JupiterRes": 75,
+        "MercuryAtk": 120,
+        "MercuryRes": 150
+	  }
+    },
+	{
+      "name": "Hobgoblin 2",
+      "imgurl": "https://vignette.wikia.nocookie.net/goldensun/images/e/ec/Succubus.png/revision/latest?cb=20080205202925",
+      "movepool": [
+		"Mighty Press",
+		"Headbutt",
+		"Ragnarok",
+		"Cutting Edge",
+		"Helm Splitter",
+		"Liquifier"
+	  ],
+      "stats": {
+        "maxHP": 1500,
+        "maxPP": 300,
+        "Atk": 400,
+        "Def": 125,
+        "Spd": 125
+      },
+      "elstats": {
+        "VenusAtk": 110,
+        "VenusRes": 125,
+        "MarsAtk": 130,
+        "MarsRes": 200,
+        "JupiterAtk": 100,
+        "JupiterRes": 125,
+        "MercuryAtk": 120,
+        "MercuryRes": 75
+	  }
+	},
+	],
+	[
+	{
+      "name": "Cerebus 1",
+      "imgurl": "https://vignette.wikia.nocookie.net/goldensun/images/7/72/Cerebus.png/revision/latest?cb=20080212063010",
+      "movepool": 
+	  [
+	  "Double Fang",
+	  "Ice Blessing",
+	  "Ice Missile"
+	  ],
+      "stats": {
+        "maxHP": 1200,
+        "maxPP": 42,
+        "Atk": 369,
+        "Def": 130,
+        "Spd": 151
+      },
+      "elstats": {
+        "VenusAtk": 95,
+        "VenusRes": 100,
+        "MarsAtk": 115,
+        "MarsRes": 25,
+        "JupiterAtk": 95,
+        "JupiterRes": 100,
+        "MercuryAtk": 115,
+        "MercuryRes": 175
+      }
+    },
+	{
+      "name": "Cerebus 2",
+      "imgurl": "",
+      "movepool": 
+	  [
+	   "Double Fang",
+	  "Ice Blessing",
+	  "Ice Missile"
+	  ],
+      "stats": {
+        "maxHP": 1200,
+        "maxPP": 42,
+        "Atk": 369,
+        "Def": 130,
+        "Spd": 151
+      },
+      "elstats": {
+        "VenusAtk": 95,
+        "VenusRes": 100,
+        "MarsAtk": 115,
+        "MarsRes": 25,
+        "JupiterAtk": 95,
+        "JupiterRes": 100,
+        "MercuryAtk": 110,
+        "MercuryRes": 175
+      }
+    }
+  ],
+  [
+    {
+      "name": "Earth Lizard",
+      "imgurl": "https://goldensunwiki.net/w/images/d/d8/Lizard_Man_Dark_Dawn.jpg",
+      "movepool": [
+		"Stone Spire",
+		"Quake Sphere",
+		"Acid Breath",
+		"Potent Cure",
+		"Mother Gaia"
+	  ],
+      "stats": {
+        "maxHP": 800,
+        "maxPP": 300,
+        "Atk": 250,
+        "Def": 150,
+        "Spd": 150
+      },
+      "elstats": {
+        "VenusAtk": 120,
+        "VenusRes": 200,
+        "MarsAtk": 110,
+        "MarsRes": 150,
+        "JupiterAtk": 120,
+        "JupiterRes": 50,
+        "MercuryAtk": 130,
+        "MercuryRes": 125
+	  }
+	},
+	{
+      "name": "Lizard King",
+      "imgurl": "",
+      "movepool": [
+		"Protect",
+		"High Impact",
+		"Freeze Prism",
+		"Ice Blessing",
+		"Debilitate",
+		"Diamond Dust",
+		"Diamond Berg"
+	  ],
+      "stats": {
+        "maxHP": 1000,
+        "maxPP": 300,
+        "Atk": 400,
+        "Def": 160,
+        "Spd": 160
+      },
+      "elstats": {
+        "VenusAtk": 100,
+        "VenusRes": 125,
+        "MarsAtk": 120,
+        "MarsRes": 75,
+        "JupiterAtk": 120,
+        "JupiterRes": 150,
+        "MercuryAtk": 120,
+        "MercuryRes": 200
+	  }
+	},
+	{
+      "name": "Thunder Lizard",
+      "imgurl": "",
+      "movepool": [
+		"Storm Breath",
+		"Destruct Ray",
+		"Blue Bolt",
+		"Tempest",
+		"Spark Plasma"
+	  ],
+      "stats": {
+        "maxHP": 800,
+        "maxPP": 300,
+        "Atk": 250,
+        "Def": 150,
+        "Spd": 150
+      },
+      "elstats": {
+        "VenusAtk": 100,
+        "VenusRes": 50,
+        "MarsAtk": 100,
+        "MarsRes": 125,
+        "JupiterAtk": 120,
+        "JupiterRes": 200,
+        "MercuryAtk": 100,
+        "MercuryRes": 150
+	  }
+	}
+  ],
+  [
+  	{
+	  "name": "Minotaurus",
+      "imgurl": "https://goldensunwiki.net/w/images/a/a8/Minos_Warrior.png",
+      "movepool": [
+	    "Berserk",
+		"Slice",
+		"Ransack"
+	  ],
+      "stats": {
+        "maxHP": 402,
+        "maxPP": 0,
+        "Atk": 176,
+        "Def": 84,
+        "Spd": 123
+      },
+      "elstats": {
+        "VenusAtk": 100,
+        "VenusRes": 50,
+        "MarsAtk": 100,
+        "MarsRes": 125,
+        "JupiterAtk": 120,
+        "JupiterRes": 200,
+        "MercuryAtk": 100,
+        "MercuryRes": 150
+	  }
+	},
+	{
+	  "name": "Minos Warrior",
+      "imgurl": "",
+      "movepool": [
+	    "Berserk",
+		"Ransack",
+		"Cutting Edge"
+	  ],
+      "stats": {
+        "maxHP": 581,
+        "maxPP": 40,
+        "Atk": 176,
+        "Def": 130,
+        "Spd": 164
+      },
+      "elstats": {
+        "VenusAtk": 100,
+        "VenusRes": 50,
+        "MarsAtk": 100,
+        "MarsRes": 125,
+        "JupiterAtk": 120,
+        "JupiterRes": 200,
+        "MercuryAtk": 100,
+        "MercuryRes": 150
+	  }
+    },
+	{
+	  "name": "Minos Knight",
+      "imgurl": "",
+      "movepool": [
+	    "Berserk",
+		"Helm Splitter",
+		"Skull Splitter"
+	  ],
+      "stats": {
+        "maxHP": 700,
+        "maxPP": 40,
+        "Atk": 225,
+        "Def": 170,
+        "Spd": 175
+      },
+      "elstats": {
+        "VenusAtk": 100,
+        "VenusRes": 50,
+        "MarsAtk": 100,
+        "MarsRes": 125,
+        "JupiterAtk": 120,
+        "JupiterRes": 200,
+        "MercuryAtk": 100,
+        "MercuryRes": 150
+	  }
+	}
+  ],
+  [
+  {
+	"name": "Izumo Miko",
+    "imgurl": "https://solejupiterwind.files.wordpress.com/2011/08/susanoo.jpg",
+    "movepool": [
+	  "Weapon Grace",
+	  "Weapon Grace",
+	  "Revive",
+	  "Revive",
+	  "Roaring Dragon",
+	  "Potent Cure"
+	],
+    "stats": {
+    "maxHP": 355,
+    "maxPP": 200,
+    "Atk": 186,
+    "Def": 75,
+    "Spd": 251
+    },
+    "elstats": {
+      "VenusAtk": 140,
+      "VenusRes": 140,
+      "MarsAtk": 110,
+      "MarsRes": 110,
+      "JupiterAtk": 70,
+      "JupiterRes": 70,
+      "MercuryAtk": 100,
+      "MercuryRes": 100
+	}
+  },
+  {
+	"name": "Susa",
+    "imgurl": "",
+    "movepool": [
+	  "Raiden's Wrath",
+	  "Raiden's Wrath",
+	  "Raiden's Wrath",
+	  "Raiden's Wrath"
+	],
+    "stats": {
+    "maxHP": 700,
+    "maxPP": 152,
+    "Atk": 229,
+    "Def": 102,
+    "Spd": 202
+    },
+    "elstats": {
+	  "VenusAtk": 140,
+      "VenusRes": 140,
+      "MarsAtk": 80,
+      "MarsRes": 80,
+      "JupiterAtk": 100,
+      "JupiterRes": 100,
+      "MercuryAtk": 100,
+      "MercuryRes": 100
+	}
+  },
+  {
+	"name": "Izumo Curse Mage",
+    "imgurl": "",
+    "movepool": [
+	  "Revive",
+	  "Revive",
+	  "Undead Gloom",
+	  "Call Demon",
+	  "Fiery Abyss",
+	  "Debilitate",
+	  "Toxic Grit"
+	],
+    "stats": {
+    "maxHP": 350,
+    "maxPP": 200,
+    "Atk": 255,
+    "Def": 79,
+    "Spd": 240
+    },
+    "elstats": {
+      "VenusAtk": 150,
+      "VenusRes": 150,
+      "MarsAtk": 150,
+      "MarsRes": 150,
+      "JupiterAtk": 100,
+      "JupiterRes": 100,
+      "MercuryAtk": 50,
+      "MercuryRes": 50
+	}
+  }
+ ]
 ]
