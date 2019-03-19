@@ -1237,5 +1237,112 @@
         "MercuryRes": 100
 	  }
 	}
-  ]
+  ],
+	[
+    {
+      "name": "Chestbeater",
+      "imgurl": "https://goldensunwiki.net/wiki/Chestbeater_enemy_line#/media/File:Chestbeater.png",
+      "movepool": [
+		"Claw Attack",
+	      "Beat Dance",
+	      "Herb"
+	  ],
+      "stats": {
+		"maxHP": 200,
+		"maxPP": 44,
+		"Atk": 44,
+		"Def": 11,
+		"Spd": 20
+      },
+      "elstats": {
+        "VenusAtk": 110,
+        "VenusRes": 48,
+        "MarsAtk": 25,
+        "MarsRes": 25,
+        "JupiterAtk": 48,
+        "JupiterRes": 72,
+        "MercuryAtk": 100,
+        "MercuryRes": 48
+	  }
+    },
+    {
+      "name": "Chestbeater",
+      "imgurl": "",
+      "movepool": [
+		"Claw Attack",
+	      "Beat Dance",
+	      "Herb"
+	  ],
+      "stats": {
+		"maxHP": 200,
+		"maxPP": 44,
+		"Atk": 44,
+		"Def": 11,
+		"Spd": 20
+      },
+      "elstats": {
+        "VenusAtk": 110,
+        "VenusRes": 48,
+        "MarsAtk": 25,
+        "MarsRes": 25,
+        "JupiterAtk": 48,
+        "JupiterRes": 72,
+        "MercuryAtk": 100,
+        "MercuryRes": 48
+	  }
+    },
+     {
+      "name": "Chestbeater",
+      "imgurl": "",
+      "movepool": [
+		"Claw Attack",
+	      "Beat Dance",
+	      "Herb"
+	  ],
+      "stats": {
+		"maxHP": 200,
+		"maxPP": 44,
+		"Atk": 44,
+		"Def": 11,
+		"Spd": 20
+      },
+      "elstats": {
+        "VenusAtk": 110,
+        "VenusRes": 48,
+        "MarsAtk": 25,
+        "MarsRes": 25,
+        "JupiterAtk": 48,
+        "JupiterRes": 72,
+        "MercuryAtk": 100,
+        "MercuryRes": 48
+	  }
+        }
+  ],
+	 [
+  	{
+      "name": "Moapa Knight",
+      "imgurl": "https://goldensunwiki.net/wiki/Moapa#/media/File:Knight.png",
+      "movepool": [
+		"Strong Hit",
+		"Herb"
+	  ],
+      "stats": {
+        "maxHP": 295,
+        "maxPP": 10,
+        "Atk": 148,
+        "Def": 35,
+        "Spd": 87
+      },
+      "elstats": {
+        "VenusAtk": 100,
+        "VenusRes": 100,
+        "MarsAtk": 100,
+        "MarsRes": 100,
+        "JupiterAtk": 100,
+        "JupiterRes": 100,
+        "MercuryAtk": 100,
+        "MercuryRes": 100
+	  }
+	}
+  ],
 ]
