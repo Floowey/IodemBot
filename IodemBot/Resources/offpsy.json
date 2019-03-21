@@ -1547,10 +1547,19 @@
     "name": "Aqua Breath",
     "targetType": 4,
 	"emote":":sweat_drops:",
-    "range": 3,
+    "range": 2,
     "element": 3,
     "PPCost": 0,
     "power": 120
+  },
+  "Water Breath": {
+    "name": "Water Breath",
+    "targetType": 4,
+	"emote":":sweat_drops:",
+    "range": 2,
+    "element": 3,
+    "PPCost": 0,
+    "power": 100
   },
   "Black Ice": {
     "name": "Black Ice",
