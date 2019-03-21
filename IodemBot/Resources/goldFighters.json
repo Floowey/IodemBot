@@ -138,7 +138,7 @@
 	  "Nettle"
 	  ],
       "stats": {
-        "maxHP": 2000,
+        "maxHP": 3333,
         "maxPP": 400,
         "Atk": 250,
         "Def": 200,
@@ -153,7 +153,9 @@
         "JupiterRes": 25,
         "MercuryAtk": 120,
         "MercuryRes": 120
-      }
+      },
+	  "HPRecovery": 333,
+	  "PPRecovery": 33
     }
   ],
   [
@@ -183,7 +185,8 @@
         "MercuryAtk": 200,
         "MercuryRes": 200
       },
-	  "extraTurns": 1
+	  "extraTurns": 1,
+	  "PPRecovery": 12
     }
   ],
   [
@@ -398,7 +401,8 @@
         "JupiterRes": 121,
         "MercuryAtk": 139,
         "MercuryRes": 134
-      }
+      },
+	  "PPRecovery": 12
     }
   ],
   [

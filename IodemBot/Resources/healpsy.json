@@ -73,7 +73,7 @@
 	"element": 2,
 	"PPCost": 5,
 	"healPower": 50,
-	"percentage": 10,
+	"percentage": 30,
     "singleTarget": true
   },
   "Nature's Boon": {
@@ -84,7 +84,7 @@
 	"element": 2,
 	"PPCost": 8,
 	"healPower": 50,
-	"percentage": 30,
+	"percentage": 50,
     "singleTarget": true
   },
   "Vital Boon": {
@@ -95,7 +95,7 @@
 	"element": 2,
 	"PPCost": 18,
 	"healPower": 50,
-	"percentage": 50,
+	"percentage": 200,
     "singleTarget": true
   },
   "Fresh Breeze": {
@@ -104,7 +104,7 @@
 	"emote":"<:Fresh_Breeze:551205173159002126>",
 	"range": 3,
 	"element": 2,
-	"PPCost": 8,
+	"PPCost": 5,
 	"healPower": 75,
 	"percentage": 15,
     "singleTarget": false
@@ -115,8 +115,8 @@
 	"emote":"<:Healthy_Wind:551205173167521811>",
 	"range": 3,
 	"element": 2,
-	"PPCost": 13,
-	"healPower": 80,
+	"PPCost": 8,
+	"healPower": 100,
 	"percentage": 15,
     "singleTarget": false
   },
@@ -126,9 +126,9 @@
 	"emote":"<:Healing_Gust:551205173154938899>",
 	"range": 3,
 	"element": 2,
-	"PPCost": 21,
+	"PPCost": 14,
 	"healPower": 140,
-	"percentage": 15,
+	"percentage": 20,
     "singleTarget": false
   },
   "Ply": {

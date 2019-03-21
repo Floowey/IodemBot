@@ -267,10 +267,10 @@ namespace IodemBot.Modules.ColossoBattles
 
             internal async Task processTurn(bool forced)
             {
-                autoTurn.Stop();
                 bool turnProcessed = forced ? battle.ForceTurn() : battle.Turn();
                 if (turnProcessed)
                 {
+                    autoTurn.Stop();
                     await WriteBattle();
                     if (battle.isActive)
                     {

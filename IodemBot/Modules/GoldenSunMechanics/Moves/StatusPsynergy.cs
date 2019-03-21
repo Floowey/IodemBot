@@ -62,7 +62,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 case Target.ownSingle: target = "a party member"; break;
                 case Target.ownAll: target = "the Party"; break;
                 case Target.otherSingle: target = "an enemy"; break;
-                case Target.otherRange: target = "a range of enemies"; break;
+                case Target.otherRange: target = $"a range of {range} enemies"; break;
                 case Target.otherAll: target = "all enemies"; break;
             }
             return $"Apply an Effect to {target}.";
