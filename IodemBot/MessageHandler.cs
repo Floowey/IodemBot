@@ -83,7 +83,7 @@ namespace IodemBot
             {
                 await base.ReactAsync(msg);
                 var userAccount = UserAccounts.GetAccount(msg.Author);
-                userAccount.hasWrittenCurse = true;
+                userAccount.ServerStats.hasWrittenCurse = true;
                 UserAccounts.SaveAccounts();
                 await ServerGames.UserHasCursed((SocketGuildUser) msg.Author, (SocketTextChannel) msg.Channel);
             }

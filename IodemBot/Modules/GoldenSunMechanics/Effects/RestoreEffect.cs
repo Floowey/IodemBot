@@ -13,6 +13,10 @@ namespace IodemBot.Modules.GoldenSunMechanics
         {
             if (!Target.IsAlive()) return new List<string>();
             Target.RemoveAllConditions();
+            if (User is PlayerFighter)
+            {
+                ((PlayerFighter)User).battleStats.supported++;
+            }
             return new List<string>() { $"{Target.name}'s Conditions were cured." };
         }
 

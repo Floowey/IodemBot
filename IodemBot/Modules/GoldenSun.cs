@@ -7,6 +7,7 @@ using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
 using Iodembot.Preconditions;
+using IodemBot.Core.Leveling;
 using IodemBot.Core.UserManagement;
 using IodemBot.Modules.GoldenSunMechanics;
 using static IodemBot.Modules.GoldenSunMechanics.Psynergy;
@@ -147,6 +148,7 @@ namespace IodemBot.Modules
                 embed.AddField($"Other Classes in {series.name}", string.Join(", ", series.classes.Select(s => s.name)), true);
                 embed.AddField("Elements", string.Join(", ", series.elements.Select(e => e.ToString())), true);
                 await Context.Channel.SendMessageAsync("", false, embed.Build());
+                ServerGames.UserLookedUpInformation((SocketGuildUser)Context.User, (SocketTextChannel)Context.Channel);
             } else
             {
                 return;
@@ -182,6 +184,7 @@ namespace IodemBot.Modules
 
             embed.AddField("Effects", s);
             await Context.Channel.SendMessageAsync("", false, embed.Build());
+            ServerGames.UserLookedUpInformation((SocketGuildUser)Context.User, (SocketTextChannel)Context.Channel);
         }
 
         [Command("class")]

@@ -153,7 +153,7 @@ namespace IodemBot.Modules
             embed.AddField("XP", account.XP, true);
             embed.AddField("XP to level up", Leveling.XPforNextLevel(account.XP), true);
 
-            embed.AddField("Colosso wins", account.ColossoWins, true);
+            embed.AddField("Colosso wins", account.ServerStats.ColossoWins, true);
             //embed.AddField("", "");
 
             embed.AddField("Stats", p.stats.ToString());
@@ -187,18 +187,18 @@ namespace IodemBot.Modules
             embed.WithThumbnailUrl(user.GetAvatarUrl());
             //embed.WithDescription($"Status.");
 
-            embed.AddField("Damage (Ninja)", account.damageDealt, true);
-            embed.AddField("Kills By Hand (Samurai)", account.killsByHand, true);
-            embed.AddField("HP Healed (White Mage)", account.HPhealed, true);
-            embed.AddField("Revives (Medium)", account.revives, true);
-            embed.AddField("Solos (Ranger)", account.soloBattles, true);
-            embed.AddField("Teammates (Dragoon)", account.totalTeamMates, true);
-            embed.AddField("Days Active (Hermit)", account.uniqueDaysActive, true);
-            embed.AddField("Commands Used (Scrapper)", account.commandsUsed);
-            embed.AddField("Wins/Streak (Brute, Curse Mage and More)", $"{account.ColossoWins}, {account.ColossoHighestStreak}");
-            embed.AddField("Rps Wins/Streak (Aqua/Air Seer)", $"{account.rpsWins}, {account.rpsStreak}");
-            embed.AddField("Channel Switches (Pilgrim)", account.channelSwitches);
-            embed.AddField("Curse Mage (Written Curse, Quoted Matthew)", $"{account.hasWrittenCurse}, {account.hasQuotedMatthew}");
+            embed.AddField("Damage (Ninja)", account.BattleStats.damageDealt, true);
+            embed.AddField("Kills By Hand (Samurai)", account.BattleStats.killsByHand, true);
+            embed.AddField("HP Healed (White Mage)", account.BattleStats.HPhealed, true);
+            embed.AddField("Revives (Medium)", account.BattleStats.revives, true);
+            embed.AddField("Solos (Ranger)", account.BattleStats.soloBattles, true);
+            embed.AddField("Teammates (Dragoon)", account.BattleStats.totalTeamMates, true);
+            embed.AddField("Days Active (Hermit)", account.ServerStats.uniqueDaysActive, true);
+            embed.AddField("Commands Used (Scrapper)", account.ServerStats.CommandsUsed);
+            embed.AddField("Wins/Streak (Brute, Curse Mage and More)", $"{account.ServerStats.ColossoWins}, {account.ServerStats.ColossoHighestStreak}");
+            embed.AddField("Rps Wins/Streak (Aqua/Air Seer)", $"{account.ServerStats.rpsWins}, {account.ServerStats.rpsStreak}");
+            embed.AddField("Channel Switches (Pilgrim)", account.ServerStats.channelSwitches);
+            embed.AddField("Curse Mage (Written Curse, Quoted Matthew)", $"{account.ServerStats.hasWrittenCurse}, {account.ServerStats.hasQuotedMatthew}");
 
             embed.AddField("Unlocked Classes", account.BonusClasses.Length == 0 ? "none" : string.Join(", ", account.BonusClasses));
 

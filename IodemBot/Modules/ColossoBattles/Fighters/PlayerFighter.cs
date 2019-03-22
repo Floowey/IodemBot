@@ -17,6 +17,7 @@ namespace IodemBot.Modules.ColossoBattles
         private SocketGuildUser guildUser;
 
         private static Stats baseStats = new Stats(30, 20, 20, 6, 8); //30, 20, 11, 6, 8
+        public BattleStats battleStats = new BattleStats();
 
         public PlayerFighter(SocketGuildUser user) : base(user.DisplayName(), user.GetAvatarUrl(),
             ModifyStats(user),

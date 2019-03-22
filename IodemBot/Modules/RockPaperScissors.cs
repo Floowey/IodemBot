@@ -44,18 +44,18 @@ namespace IodemBot.Modules
         {
             string[] emotesPlayer = { "🤜", "🖐️", "✌️" };
             string[] emotesCPU = { "🤛", "🖐️", "✌️" };
-        
+
             var avatar = UserAccounts.GetAccount(Context.User);
-            rpsEnum cpuChoice = (rpsEnum)((new Random()).Next(0, 1000)%3);
+            rpsEnum cpuChoice = (rpsEnum)((new Random()).Next(0, 1000) % 3);
             string result = "";
 
 
-            switch((int)choice - (int)cpuChoice)
+            switch ((int)choice - (int)cpuChoice)
             {
                 case 1:
                 case -2:
                     result = "You read me like an open book! You win!";
-                    await ServerGames.UserWonRPS((SocketGuildUser) Context.User, (SocketTextChannel)Context.Channel);
+                    await ServerGames.UserWonRPS((SocketGuildUser)Context.User, (SocketTextChannel)Context.Channel);
                     break;
                 case 0:
                     ServerGames.UserDidNotWinRPS((SocketGuildUser)Context.User);
@@ -70,11 +70,10 @@ namespace IodemBot.Modules
 
             var embed = new EmbedBuilder();
             embed.WithColor(Colors.get("Iodem"));
-            embed.WithDescription($"{emotesPlayer[(int) choice]} vs {emotesCPU[(int)cpuChoice]}");
+            embed.WithDescription($"{emotesPlayer[(int)choice]} vs {emotesCPU[(int)cpuChoice]}");
             embed.AddField("Result:", result);
 
             await Context.Channel.SendMessageAsync("", false, embed.Build());
-
         }
     }
 }

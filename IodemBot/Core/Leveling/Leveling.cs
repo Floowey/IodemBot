@@ -39,19 +39,19 @@ namespace IodemBot.Core.Leveling
                 await GoldenSun.AwardClassSeries("Hermit Series", user, channel);
             }
 
-            if (channel.Id != userAccount.mostRecentChannel)
+            if (channel.Id != userAccount.ServerStats.mostRecentChannel)
             {
-                userAccount.mostRecentChannel = channel.Id;
-                userAccount.channelSwitches += 2;
-                if(userAccount.channelSwitches >= 10)
+                userAccount.ServerStats.mostRecentChannel = channel.Id;
+                userAccount.ServerStats.channelSwitches += 2;
+                if(userAccount.ServerStats.channelSwitches >= 10)
                 {
                     await GoldenSun.AwardClassSeries("Air Pilgrim Series", user, channel);
                 } 
             }
             else
             {
-                if (userAccount.channelSwitches >= 1)
-                    userAccount.channelSwitches--;
+                if (userAccount.ServerStats.channelSwitches >= 1)
+                    userAccount.ServerStats.channelSwitches--;
             }
 
             UserAccounts.SaveAccounts();

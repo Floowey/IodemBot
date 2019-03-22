@@ -48,7 +48,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             DictReq.Add("DaysActive", new DaysActiveRequirement());
         }
 
-        //Apprentice:       
+        //Apprentice:       42 i!classinfo and i!psy lookups
         //Brute:            15 Colosso Wins
         //Crusader:         
         //Curse Mage:       i!quote Matthew + #^@%!

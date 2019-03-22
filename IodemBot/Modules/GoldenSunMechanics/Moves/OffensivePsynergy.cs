@@ -89,7 +89,14 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 var punctuation = "!";
 
                 if (t.elstats.GetRes(element) == t.elstats.highestRes()) punctuation = ".";
-                if (t.elstats.GetRes(element) == t.elstats.leastRes()) punctuation = "!!!";
+                if (t.elstats.GetRes(element) == t.elstats.leastRes())
+                {
+                    punctuation = "!!!";
+                    if (User is PlayerFighter)
+                    {
+                        ((PlayerFighter)User).battleStats.attackedWeakness++;
+                    }
+                }
 
                 if (realDmg == 0) realDmg = 1;
                 log.AddRange(t.DealDamage(realDmg, punctuation));
@@ -102,8 +109,12 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 {
                     ((PlayerFighter)User).avatar.dealtDmg(realDmg);
                     if (!t.IsAlive())
+                    {
                         if (attackBased && range == 1)
-                            ((PlayerFighter)User).avatar.killedByHand();
+                            ((PlayerFighter)User).battleStats.killsByHand++;
+
+                        ((PlayerFighter)User).battleStats.kills++;
+                    }
                 }
 
                 //Counter

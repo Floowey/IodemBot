@@ -48,6 +48,10 @@ namespace IodemBot.Modules.GoldenSunMechanics
             foreach (var t in targets)
             {
                 effects.ForEach(e => log.AddRange(e.Apply(User, t)));
+                if (User is PlayerFighter)
+                {
+                    ((PlayerFighter)User).battleStats.supported++;
+                }
             }
 
             return log;

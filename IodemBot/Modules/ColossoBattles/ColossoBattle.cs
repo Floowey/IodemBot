@@ -33,8 +33,8 @@ namespace IodemBot.Modules.ColossoBattles
                 if (p is NPCEnemy) p.selectRandom();
                 if (p is PlayerFighter)
                 {
-                    ((PlayerFighter)p).avatar.totalTeamMates += TeamA.Count - 1;
-                    if (TeamA.Count == 1) ((PlayerFighter)p).avatar.soloBattles++;
+                    ((PlayerFighter)p).battleStats.totalTeamMates += TeamA.Count - 1;
+                    if (TeamA.Count == 1) ((PlayerFighter)p).battleStats.soloBattles++;
                 }
             });
 
@@ -43,8 +43,8 @@ namespace IodemBot.Modules.ColossoBattles
                 if (p is NPCEnemy) p.selectRandom();
                 if (p is PlayerFighter)
                 {
-                    ((PlayerFighter)p).avatar.totalTeamMates += TeamB.Count - 1;
-                    if (TeamB.Count == 1) ((PlayerFighter)p).avatar.soloBattles++;
+                    ((PlayerFighter)p).battleStats.totalTeamMates += TeamB.Count - 1;
+                    if (TeamB.Count == 1) ((PlayerFighter)p).battleStats.soloBattles++;
                 }
             });
 
@@ -80,15 +80,19 @@ namespace IodemBot.Modules.ColossoBattles
 
             //Start Turn for things like Defend
             log.AddRange(StartTurn());
+            Console.WriteLine("Finished StartTurn()");
 
             //Main Turn
             log.AddRange(MainTurn());
-
+            Console.WriteLine("Finished MainTurn()");
+            
             //Main Turn
             log.AddRange(ExtraTurn());
-
+            Console.WriteLine("Finished ExtraTurn()");
+            
             //End Turn
             log.AddRange(EndTurn());
+            Console.WriteLine("Finished EndTurn()");
 
             //Check for Game Over
             if (gameOver()){

@@ -60,10 +60,13 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
             foreach (var p in targets)
             {
-                var HPtoHeal = healPower * Power / 100 + p.stats.maxHP * percentage / 100;
-                log.AddRange(p.heal((uint) HPtoHeal));
-                if (User is PlayerFighter) ((PlayerFighter)User).avatar.healedHP(HPtoHeal);
-            }
+                var HPtoHeal = (uint) (healPower * Power / 100 + p.stats.maxHP * percentage / 100);
+                log.AddRange(p.heal(HPtoHeal));
+                if (User is PlayerFighter)
+                {
+                    ((PlayerFighter)User).battleStats.HPhealed += HPtoHeal;
+                }
+            } 
             return log;
         }
     }

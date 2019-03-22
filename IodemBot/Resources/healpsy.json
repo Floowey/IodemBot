@@ -73,7 +73,7 @@
 	"element": 2,
 	"PPCost": 5,
 	"healPower": 50,
-	"percentage": 30,
+	"percentage": 13,
     "singleTarget": true
   },
   "Nature's Boon": {
@@ -83,8 +83,8 @@
 	"range": 3,
 	"element": 2,
 	"PPCost": 8,
-	"healPower": 50,
-	"percentage": 50,
+	"healPower": 100,
+	"percentage": 25,
     "singleTarget": true
   },
   "Vital Boon": {
@@ -94,8 +94,8 @@
 	"range": 3,
 	"element": 2,
 	"PPCost": 18,
-	"healPower": 50,
-	"percentage": 200,
+	"healPower": 200,
+	"percentage": 50,
     "singleTarget": true
   },
   "Fresh Breeze": {

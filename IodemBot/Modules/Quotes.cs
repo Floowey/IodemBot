@@ -51,7 +51,7 @@ namespace IodemBot.Modules
             embed.WithDescription(q.quote);
             if (q.quote.Contains(@"#^@%!")){
                 var userAccount = UserAccounts.GetAccount(Context.User);
-                userAccount.hasQuotedMatthew = true;
+                userAccount.ServerStats.hasQuotedMatthew = true;
                 UserAccounts.SaveAccounts();
                 await ServerGames.UserHasCursed((SocketGuildUser) Context.User, (SocketTextChannel) Context.Channel);
             } 
@@ -93,7 +93,7 @@ namespace IodemBot.Modules
                 if (quote.quote.Contains(@"#^@%!"))
                 {
                     var userAccount = UserAccounts.GetAccount(Context.User);
-                    userAccount.hasQuotedMatthew = true;
+                    userAccount.ServerStats.hasQuotedMatthew = true;
                     UserAccounts.SaveAccounts();
                     await ServerGames.UserHasCursed((SocketGuildUser)Context.User, (SocketTextChannel)Context.Channel);
                 }

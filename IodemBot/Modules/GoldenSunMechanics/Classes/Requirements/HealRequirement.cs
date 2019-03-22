@@ -11,7 +11,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
     {
         public int apply(UserAccount user)
         {
-            return user.HPhealed >= 999999 ? 1 : 0;
+            return user.BattleStats.HPhealed >= 999999 ? 1 : 0;
         }
     }
 }

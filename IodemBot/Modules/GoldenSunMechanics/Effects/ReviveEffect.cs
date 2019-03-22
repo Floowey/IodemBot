@@ -26,7 +26,10 @@ namespace IodemBot.Modules.GoldenSunMechanics
             log.AddRange(Target.Revive(percentage));
             if (wasDead)
             {
-                if (User is PlayerFighter) ((PlayerFighter)User).avatar.revived();
+                if (User is PlayerFighter)
+                {
+                    ((PlayerFighter)User).battleStats.revives++;
+                }
             }
             return log;
         }
