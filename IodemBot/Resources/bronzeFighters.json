@@ -1377,7 +1377,7 @@
   ],
 [
 	{
-	   "name": "Mad Plant"
+	   "name": "Mad Plant",
       "imgurl": "https://goldensunwiki.net/wiki/Mad_Plant_enemy_line#/media/File:MadPlant.png",
       "movepool": [
 	"Mad Growth",
@@ -1386,7 +1386,7 @@
 	"Poisonous Bite",
 	  ],
       "stats": {
-        "maxHP": 382
+        "maxHP": 382,
         "maxPP": 100,
         "Atk": 94,
         "Def": 39,
@@ -1406,7 +1406,7 @@
   ],
 	[
 	{
-	   "name": "Tret"
+	   "name": "Tret",
       "imgurl": "https://goldensunwiki.net/wiki/Tret#/media/File:Tret_Battle.gif",
       "movepool": [
 	"Thorn",
@@ -1415,7 +1415,7 @@
 	"Sleep Star",
 	  ],
       "stats": {
-        "maxHP": 710
+        "maxHP": 710,
         "maxPP": 36,
         "Atk": 89,
         "Def": 27,
@@ -1427,7 +1427,7 @@
         "MarsAtk": 100,
         "MarsRes": 25,
         "JupiterAtk": 100,
-        "JupiterRes": 100
+        "JupiterRes": 100,
         "MercuryAtk": 100,
         "MercuryRes": 175,
 	  }
@@ -1435,13 +1435,13 @@
   ],
 	[
 	{
-	   "name": "Kaja"
+	   "name": "Kaja",
       "imgurl": "https://goldensunwiki.net/wiki/Kaja#/media/File:Kaja.gif",
       "movepool": [
 	"Keelhaul"
 	  ],
       "stats": {
-        "maxHP": 482
+        "maxHP": 482,
         "maxPP": 60,
         "Atk": 84,
         "Def": 35,
@@ -1468,21 +1468,21 @@
 	      "Shriek"
 	  ],
       "stats": {
-		"maxHP": 213
-		"maxPP": 0
-		"Atk": 68
+		"maxHP": 213,
+		"maxPP": 0,
+		"Atk": 68,
 		"Def": 11,
 		"Spd": 30
       },
       "elstats": {
         "VenusAtk": 110,
-        "VenusRes": 72
+        "VenusRes": 72,
         "MarsAtk": 25,
-        "MarsRes": 48
-        "JupiterAtk": 85
-        "JupiterRes": 72
+        "MarsRes": 48,
+        "JupiterAtk": 85,
+        "JupiterRes": 72,
         "MercuryAtk": 100,
-        "MercuryRes": 100
+        "MercuryRes": 100,
 	  }
     },
       {
@@ -1493,21 +1493,21 @@
 	      "Shriek"
 	  ],
       "stats": {
-		"maxHP": 213
-		"maxPP": 0
-		"Atk": 68
+		"maxHP": 213,
+		"maxPP": 0,
+		"Atk": 68,
 		"Def": 11,
-		"Spd": 30
+		"Spd": 30,
       },
       "elstats": {
         "VenusAtk": 110,
-        "VenusRes": 72
+        "VenusRes": 72,
         "MarsAtk": 25,
-        "MarsRes": 48
-        "JupiterAtk": 85
-        "JupiterRes": 72
+        "MarsRes": 48,
+        "JupiterAtk": 85,
+        "JupiterRes": 72,
         "MercuryAtk": 100,
-        "MercuryRes": 100
+        "MercuryRes": 100,
 	  }
     },
       {
@@ -1518,21 +1518,21 @@
 	      "Shriek"
 	  ],
       "stats": {
-		"maxHP": 213
-		"maxPP": 0
-		"Atk": 68
+		"maxHP": 213,
+		"maxPP": 0,
+		"Atk": 68,
 		"Def": 11,
-		"Spd": 30
+		"Spd": 30,
       },
       "elstats": {
         "VenusAtk": 110,
-        "VenusRes": 72
+        "VenusRes": 72,
         "MarsAtk": 25,
-        "MarsRes": 48
-        "JupiterAtk": 85
-        "JupiterRes": 72
+        "MarsRes": 48,
+        "JupiterAtk": 85,
+        "JupiterRes": 72,
         "MercuryAtk": 100,
-        "MercuryRes": 100
+        "MercuryRes": 100,
 	  }
     }
   ],
