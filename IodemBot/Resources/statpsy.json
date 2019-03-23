@@ -416,4 +416,18 @@
 	  }
 	]
   },
+	"Sleep Star": {
+	"name": "Sleep Star",
+	"targetType": 4,
+	"emote": ":sleep:",
+	"range": 3,
+    "element": 0,
+	"PPCost": 0,
+	"effectImages": [
+	  {
+	    "id": "Condition",
+	    "args": ["Sleep", "25"]
+	  }
+	]
+  },
 }
