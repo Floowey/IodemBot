@@ -1589,7 +1589,7 @@
     "range": 1,
     "element": 2,
     "PPCost": 0,
-    "dmgMult": 1.4
+    "dmgMult": 1.4,
   },
   "Raiden's Wrath": {
     "name": "Raiden's Wrath",
@@ -1602,6 +1602,67 @@
 	"effectImages": [
 		{"id": "MayIgnoreDefense",
 		"args": ["100", "100"]}
+	]
+  },
+	  "Strong Hit": {
+    "name": "Strong Hit",
+    "targetType": 3,
+	"emote":":angry1:",
+    "range": 1,
+    "element": 4,
+    "PPCost": 0,
+    "dmgMult": 1.4,
+  },
+		  "Sand Breath": {
+    "name": "Sand Breath",
+    "targetType": 4,
+	"emote":":hourglass_flowing_sand:",
+    "range": 3,
+    "element": 0,
+    "PPCost": 0,
+    "power": 35,
+"effectImages":[
+	{"id": "Condition",
+	 "args": ["Delusion", "35"]}
+	]
+  },
+		  "Desert Gasp": {
+    "name": "Desert Gasp",
+    "targetType": 4,
+	"emote":":hourglass_flowing_sand:",
+    "range": 3,
+    "element": 0,
+    "PPCost": 0,
+"power": 35,
+"effectImages":[
+	{"id": "Stat",
+	 "args": ["Defense", "0.8"]}
+	]
+  },
+"Paralytail": {
+    "name": "Paralytail",
+    "targetType": 3,
+	"emote":":scorpion:",
+    "range": 1,
+    "element": 0,
+    "PPCost": 0,
+"addDamamge": 20,
+"effectImages":[
+	{"id": "Condition",
+	 "args": ["Stun", "30"]}
+	]
+  },
+	"Poison Tail": {
+    "name": "Poison Tail",
+    "targetType": 3,
+	"emote":":scorpion:",
+    "range": 1,
+    "element": 0,
+    "PPCost": 0,
+"addDamamge": 35,
+"effectImages":[
+	{"id": "Condition",
+	 "args": ["Poison", "50"]}
 	]
   },
 }
