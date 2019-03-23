@@ -11,7 +11,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
     {
         public int apply(UserAccount user)
         {
-            return user.killsByHand >= 666 ? 1 : 0;
+            return user.BattleStats.killsByHand >= 666 ? 1 : 0;
         }
     }
 }

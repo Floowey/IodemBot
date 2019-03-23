@@ -11,7 +11,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
     {
         public int apply(UserAccount user)
         {
-            return (int) Math.Floor(Math.Sqrt(user.commandsUsed) / 12);
+            return (int) Math.Floor(Math.Sqrt(user.ServerStats.CommandsUsed) / 12);
         }
     }
 }

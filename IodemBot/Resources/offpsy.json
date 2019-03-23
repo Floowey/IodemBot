@@ -648,6 +648,10 @@
 	"emote":"<:Carpet_Bomb:536965454179336192>",
 	"range": 3,
     "element": 1,
+	"effectImages":[
+	{"id": "Condition",
+	"args": ["Flinch", "20"]}
+	],
 	"PPCost": 29,
 	"power": 130
   },
@@ -967,6 +971,10 @@
 	"emote":"<:Blue_Bolt:536966467543891968>",
 	"range": 3,
     "element": 2,
+	"effectImages":[
+	{"id": "Condition",
+	"args": ["Stun", "15"]}
+	],
 	"PPCost": 20,
 	"power": 120
   },
@@ -1539,10 +1547,19 @@
     "name": "Aqua Breath",
     "targetType": 4,
 	"emote":":sweat_drops:",
-    "range": 3,
+    "range": 2,
     "element": 3,
     "PPCost": 0,
     "power": 120
+  },
+  "Water Breath": {
+    "name": "Water Breath",
+    "targetType": 4,
+	"emote":":sweat_drops:",
+    "range": 2,
+    "element": 3,
+    "PPCost": 0,
+    "power": 100
   },
   "Black Ice": {
     "name": "Black Ice",

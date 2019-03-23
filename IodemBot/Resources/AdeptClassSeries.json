@@ -1235,7 +1235,7 @@
     },
     "requirement": "Level",
     "isDefault": false,
-	"description": "The study of Alchemy is the center of an Apprentices education, with the end-goal to support all of his fellows."
+	"description": "The study of Alchemy and the answer of the universe is the center of the Apprentices education, with the goal to support all of their fellows."
   },
   {
     "name": "Crusader Series",
@@ -1534,7 +1534,7 @@
     },
     "requirement": "Level",
     "isDefault": false,
-	"description": "The Air Pilgrim doesn't have a home. He travels from place to place with the winds."
+	"description": "The Air Pilgrims don't have a home. They travel from place to place with the winds."
   },
   {
     "name": "Aqua Pilgrim Series",
@@ -2561,7 +2561,7 @@
       {
         "name": "Pure Mage",
         "movepool": [
-          "Spark Plasm",
+          "Spark Plasma",
 		  "Freeze Prism",
 		  "Restore",
 		  "Pure Wish",

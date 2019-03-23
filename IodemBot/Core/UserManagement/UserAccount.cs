@@ -17,34 +17,11 @@ namespace IodemBot.Core.UserManagement
         public string Flag { get; set; }
         //Ranking
 
-        public BattleStats BattleStats { get; set; }
-        public ServerStats ServerStats { get; set; }
-        public uint ColossoWins { get; set; } = 0;
-        public uint ColossoStreak { get; set; } = 0;
-        public uint ColossoHighestStreak { get; set; } = 0;
-
-        public uint emotesAdded { get; set; } = 0;
-        public uint commandsUsed { get; set; } = 0;
-
-        public uint rpsWins { get; set; } = 0;
-        public uint rpsStreak { get; set; } = 0;
-        public ulong mostRecentChannel { get; set; } = 0;
-        public ulong channelSwitches { get; set; } = 0;
-        public bool hasWrittenCurse { get; set; } = false;
-        public bool hasQuotedMatthew { get; set; } = false;
-
-        public uint damageDealt { get; set; } = 0;
-        public uint killsByHand { get; set; } = 0;
-        public uint HPhealed { get; set; } = 0;
-        public uint revives { get; set; } = 0;
-        public uint curStreak { get; set; } = 0;
-        public uint highestStreak { get; set; } = 0;
-        public int totalTeamMates { get; set; } = 0;
-        public int soloBattles { get; set; } = 0;
-
+        public BattleStats BattleStats { get; set; } = new BattleStats();
+        public ServerStats ServerStats { get; set; } = new ServerStats();
         internal void revived()
         {
-            revives++;
+            BattleStats.revives++;
         }
 
         public uint XP { get; set; } = 0;
@@ -72,19 +49,19 @@ namespace IodemBot.Core.UserManagement
 
         internal void dealtDmg(uint damage)
         {
-            damageDealt += damage;
+            BattleStats.damageDealt += damage;
         }
 
         internal void killedByHand()
         {
-            killsByHand++;
+            BattleStats.killsByHand++;
         }
 
         public string[] BonusClasses = new string[] { };
 
         internal void healedHP(long HPtoHeal)
         {
-            HPhealed += (uint) HPtoHeal;
+            BattleStats.HPhealed += (uint) HPtoHeal;
         }
 
         [JsonIgnore] public string gsClass
@@ -112,6 +89,26 @@ namespace IodemBot.Core.UserManagement
         public uint revives { get; set; } = 0;
         public int totalTeamMates { get; set; } = 0;
         public int soloBattles { get; set; } = 0;
+        public int supported { get; set; } = 0;
+        public int kills { get; set; } = 0;
+        public int defends { get; set; } = 0;
+        public int attackedWeakness { get; set; } = 0;
+
+        public static BattleStats operator +(BattleStats b1, BattleStats b2)
+        {
+            return new BattleStats()
+            {
+                damageDealt = b1.damageDealt + b2.damageDealt,
+                killsByHand = b1.killsByHand + b2.killsByHand,
+                HPhealed = b1.HPhealed + b2.HPhealed,
+                revives = b1.revives + b2.revives,
+                totalTeamMates = b1.totalTeamMates + b2.totalTeamMates,
+                soloBattles = b1.soloBattles + b2.soloBattles,
+                supported = b1.supported + b2.supported,
+                kills = b1.kills + b2.kills,
+                defends = b1.defends + b2.defends
+            };
+        }
     }
     
     public class ServerStats
@@ -119,6 +116,7 @@ namespace IodemBot.Core.UserManagement
         public uint ColossoWins { get; set; } = 0;
         public uint ColossoStreak { get; set; } = 0;
         public uint ColossoHighestStreak { get; set; } = 0;
+        public uint CommandsUsed { get; set; } = 0;
         public uint rpsWins { get; set; } = 0;
         public uint rpsStreak { get; set; } = 0;
         public ulong mostRecentChannel { get; set; } = 0;
@@ -126,7 +124,7 @@ namespace IodemBot.Core.UserManagement
         public bool hasWrittenCurse { get; set; } = false;
         public bool hasQuotedMatthew { get; set; } = false;
         public int uniqueDaysActive { get; set; } = 0;
+        public int lookedUpInformation { get; set; } = 0;
         public DateTime lastDayActive { get; set; }
     }
-        //etc 
 }

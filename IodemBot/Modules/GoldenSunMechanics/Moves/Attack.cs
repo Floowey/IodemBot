@@ -71,8 +71,13 @@ namespace IodemBot.Modules.GoldenSunMechanics
             log.AddRange(enemy.DealDamage(damage));
             if (User is PlayerFighter)
             {
-                ((PlayerFighter)User).avatar.dealtDmg(damage);
-                if (!enemy.IsAlive()) ((PlayerFighter)User).avatar.killedByHand();
+                var player = (PlayerFighter)User;
+                player.battleStats.damageDealt += damage;
+                if (!enemy.IsAlive())
+                {
+                    player.battleStats.killsByHand++;
+                    player.battleStats.kills++;
+                }
             }
             return log;
         }

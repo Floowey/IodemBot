@@ -32,6 +32,10 @@ namespace IodemBot.Modules.GoldenSunMechanics
         protected override List<string> InternalUse(ColossoFighter User)
         {
             User.defensiveMult *= 0.5;
+            if (User is PlayerFighter)
+            {
+                ((PlayerFighter)User).battleStats.defends++;
+            }
             return new List<string>();
         }
     }

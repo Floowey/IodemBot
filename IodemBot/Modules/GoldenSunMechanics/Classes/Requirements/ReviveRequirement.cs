@@ -11,7 +11,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
     {
         public int apply(UserAccount user)
         {
-            return user.revives >= 200 ? 2 : user.revives >= 120 ? 1 : 0;
+            return user.BattleStats.revives >= 200 ? 2 : user.BattleStats.revives >= 120 ? 1 : 0;
         }
     }
 }

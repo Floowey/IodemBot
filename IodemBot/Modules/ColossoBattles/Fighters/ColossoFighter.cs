@@ -98,6 +98,7 @@ namespace IodemBot.Modules.ColossoBattles
                 log.Add($":x: {name} goes down.");
                 RemoveAllConditions();
                 AddCondition(Condition.Down);
+                Buffs = new List<Buff>();
             }
             return log;
         }
@@ -219,7 +220,7 @@ namespace IodemBot.Modules.ColossoBattles
             //Haunt Damage
             if (HasCondition(Condition.Haunt))
             {
-                var hauntDmg = Math.Max(280, (uint)(stats.HP * Global.random.Next(20, 40) / 100));
+                var hauntDmg = Math.Min(280, (uint)(stats.HP * Global.random.Next(20, 40) / 100));
                 turnLog.AddRange(DealDamage(hauntDmg));
             }
 

@@ -175,7 +175,7 @@
         "maxPP": 80,
         "Atk": 98,
         "Def": 60,
-        "Spd": 149
+        "Spd": 49
       },
       "elstats": {
         "VenusAtk": 152,
@@ -200,11 +200,11 @@
 		"Nova"
 	  ],
       "stats": {
-        "maxHP": 400,
+        "maxHP": 500,
         "maxPP": 100,
         "Atk": 98,
         "Def": 60,
-        "Spd": 149
+        "Spd": 99
       },
       "elstats": {
         "VenusAtk": 100,
@@ -229,7 +229,7 @@
 		"Storm Ray"
 	  ],
       "stats": {
-        "maxHP": 400,
+        "maxHP": 360,
         "maxPP": 140,
         "Atk": 98,
         "Def": 40,
@@ -264,7 +264,7 @@
         "maxPP": 108,
         "Atk": 98,
         "Def": 50,
-        "Spd": 149
+        "Spd": 19
       },
       "elstats": {
         "VenusAtk": 100,
@@ -910,7 +910,7 @@
 		"Claw Attack",
 		"Twin Shear",
 		"Slice",
-		"Aqua Breath"
+		"Water Breath"
 	  ],
       "stats": {
 		"maxHP": 110,
@@ -938,7 +938,7 @@
 		"Claw Attack",
 		"Twin Shear",
 		"Slice",
-		"Aqua Breath"
+		"Water Breath"
 	  ],
       "stats": {
 		"maxHP": 110,
@@ -966,7 +966,7 @@
 		"Claw Attack",
 		"Twin Shear",
 		"Slice",
-		"Aqua Breath"
+		"Water Breath"
 	  ],
       "stats": {
 		"maxHP": 110,

@@ -267,10 +267,10 @@ namespace IodemBot.Modules.ColossoBattles
 
             internal async Task processTurn(bool forced)
             {
-                autoTurn.Stop();
                 bool turnProcessed = forced ? battle.ForceTurn() : battle.Turn();
                 if (turnProcessed)
                 {
+                    autoTurn.Stop();
                     await WriteBattle();
                     if (battle.isActive)
                     {
@@ -490,7 +490,7 @@ namespace IodemBot.Modules.ColossoBattles
                 var winners = battle.getTeam(battle.getWinner());
                 if (winners.First() is PlayerFighter)
                 {
-                    winners.ConvertAll(s => (PlayerFighter)s).ForEach(async p => await ServerGames.UserWonBattle(p.avatar, diff, textChannel));
+                    winners.ConvertAll(s => (PlayerFighter)s).ForEach(async p => await ServerGames.UserWonBattle(p.avatar, p.battleStats, diff, textChannel));
                 }
                 else
                 {

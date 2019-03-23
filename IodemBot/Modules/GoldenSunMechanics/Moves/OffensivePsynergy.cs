@@ -69,7 +69,11 @@ namespace IodemBot.Modules.GoldenSunMechanics
                     .ForEach(e => log.AddRange(e.Apply(User, t)));
 
                 if (!t.IsAlive()) continue;
-                if (t.isImmuneToPsynergy) log.Add($"{t.name} protects themselves with a magical barrier.");
+                if (t.isImmuneToPsynergy)
+                {
+                    log.Add($"{t.name} protects themselves with a magical barrier.");
+                    return log;
+                }
 
                 var baseDmg = (new Random()).Next(0, 4);
                 var dmg = attackBased ? 
@@ -85,7 +89,14 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 var punctuation = "!";
 
                 if (t.elstats.GetRes(element) == t.elstats.highestRes()) punctuation = ".";
-                if (t.elstats.GetRes(element) == t.elstats.leastRes()) punctuation = "!!!";
+                if (t.elstats.GetRes(element) == t.elstats.leastRes())
+                {
+                    punctuation = "!!!";
+                    if (User is PlayerFighter)
+                    {
+                        ((PlayerFighter)User).battleStats.attackedWeakness++;
+                    }
+                }
 
                 if (realDmg == 0) realDmg = 1;
                 log.AddRange(t.DealDamage(realDmg, punctuation));
@@ -98,8 +109,12 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 {
                     ((PlayerFighter)User).avatar.dealtDmg(realDmg);
                     if (!t.IsAlive())
+                    {
                         if (attackBased && range == 1)
-                            ((PlayerFighter)User).avatar.killedByHand();
+                            ((PlayerFighter)User).battleStats.killsByHand++;
+
+                        ((PlayerFighter)User).battleStats.kills++;
+                    }
                 }
 
                 //Counter

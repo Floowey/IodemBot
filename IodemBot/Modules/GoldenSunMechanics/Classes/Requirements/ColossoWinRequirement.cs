@@ -11,19 +11,19 @@ namespace IodemBot.Modules.GoldenSunMechanics
     {
         public int apply(UserAccount user)
         {
-            if(user.ColossoWins >= 800 && user.ColossoHighestStreak >= 25) //Chaos Lord
+            if(user.ServerStats.ColossoWins >= 800 && user.ServerStats.ColossoHighestStreak >= 25) //Chaos Lord
             {
                 return 5;
-            } else if (user.ColossoWins >= 500 && user.ColossoHighestStreak >= 10) //Berserker
+            } else if (user.ServerStats.ColossoWins >= 500 && user.ServerStats.ColossoHighestStreak >= 10) //Berserker
             {
                 return 4;
-            } else if (user.ColossoWins >= 300) //Barbarian
+            } else if (user.ServerStats.ColossoWins >= 300) //Barbarian
             {
                 return 3;
-            } else if (user.ColossoWins >= 150) //Savage
+            } else if (user.ServerStats.ColossoWins >= 150) //Savage
             {
                 return 2;
-            } else if (user.ColossoWins >= 50) //Ruffian
+            } else if (user.ServerStats.ColossoWins >= 50) //Ruffian
             {
                 return 1;
             } else // Brute
