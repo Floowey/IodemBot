@@ -1328,10 +1328,10 @@
 	  ],
       "stats": {
         "maxHP": 295,
-        "maxPP": 10,
-        "Atk": 148,
+        "maxPP": 2,
+        "Atk": 75,
         "Def": 35,
-        "Spd": 87
+        "Spd": 50
       },
       "elstats": {
         "VenusAtk": 100,
@@ -1342,6 +1342,34 @@
         "JupiterRes": 100,
         "MercuryAtk": 100,
         "MercuryRes": 100
+	  }
+	}
+  ],
+	   "name": "King Scorpion",
+      "imgurl": "https://goldensunwiki.net/wiki/Scorpion_enemy_line#/media/File:King_Scorpion.png",
+      "movepool": [
+	"Twin Shear",
+	"Sand Breath",
+	"Desert Gasp",
+	"Paralytail",
+	"Poison Tail"
+	  ],
+      "stats": {
+        "maxHP": 1064,
+        "maxPP": 0,
+        "Atk": 101,
+        "Def": 32,
+        "Spd": 39
+      },
+      "elstats": {
+        "VenusAtk": 95,
+        "VenusRes": 72,
+        "MarsAtk": 100,
+        "MarsRes": 48,
+        "JupiterAtk": 100,
+        "JupiterRes": 100,
+        "MercuryAtk": 100,
+        "MercuryRes": 72
 	  }
 	}
   ],
