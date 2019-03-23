@@ -1621,10 +1621,6 @@
     "element": 0,
     "PPCost": 0,
     "power": 35,
-"effectImages":[
-	{"id": "Condition",
-	 "args": ["Delusion", "35"]}
-	]
   },
 		  "Desert Gasp": {
     "name": "Desert Gasp",
@@ -1646,10 +1642,10 @@
     "range": 1,
     "element": 0,
     "PPCost": 0,
-"addDamamge": 20,
+"addDamage": 20,
 "effectImages":[
 	{"id": "Condition",
-	 "args": ["Stun", "30"]}
+	 "args": ["Stun", "20"]}
 	]
   },
 	"Poison Tail": {
@@ -1659,11 +1655,41 @@
     "range": 1,
     "element": 0,
     "PPCost": 0,
-"addDamamge": 35,
+"addDamage": 35,
 "effectImages":[
 	{"id": "Condition",
-	 "args": ["Poison", "50"]}
+	 "args": ["Poison", "20"]}
 	]
   },
+"Poisonous Bite": {
+    "name": "Poisonous Bite",
+    "targetType": 3,
+	"emote":":angry1:",
+    "range": 1,
+    "element": 0,
+    "PPCost": 0,
+"addDamage": 15,
+"effectImages":[
+	{"id": "Condition",
+	 "args": ["Poison", "20"]}
+	]
+  },
+	"Ur Flash": {
+    "name": "Ur Flash",
+    "targetType": 3,
+	"emote":":angry1:",
+    "range": 1,
+    "element": 2,
+    "PPCost": 0,
+"dmgMult": 1.4
+  },
+	"Shriek": {
+    "name": "Shriek",
+    "targetType": 3,
+	"emote":":angry1:",
+    "range": 1,
+    "element": 2,
+    "PPCost": 0,
+"power": 30
+  },
 }
-
