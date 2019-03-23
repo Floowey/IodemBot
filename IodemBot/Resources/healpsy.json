@@ -229,7 +229,7 @@
 	"healPower": 200,
 	"percentage": 0,
     "singleTarget": true
-  }
+  },
 	"Herb": {
 	"name": "Herb",
 	"targetType": 1,
