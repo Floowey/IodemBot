@@ -229,5 +229,16 @@
 	"healPower": 200,
 	"percentage": 0,
     "singleTarget": true
+  },
+	"Herb": {
+	"name": "Herb",
+	"targetType": 1,
+	"emote":"<:Herb:543043292187590659>",
+	"range": 1,
+	"element": 3,
+	"PPCost": 1,
+	"healPower": 70,
+	"percentage": 0,
+    "singleTarget": true
   }
 }

@@ -402,4 +402,32 @@
        "args":["Sleep", "35"]}
     ],
 },
+	"Beat Dance": {
+	"name": "Beat Dance",
+	"targetType": 0,
+	"emote": ":musical_note:",
+	"range": 1,
+    "element": 1,
+	"PPCost": 0,
+	"effectImages": [
+	  {
+	    "id": "Stat",
+	    "args": ["Attack", "1.25"]
+	  }
+	]
+  },
+	"Sleep Star": {
+	"name": "Sleep Star",
+	"targetType": 4,
+	"emote": ":sleep:",
+	"range": 3,
+    "element": 0,
+	"PPCost": 0,
+	"effectImages": [
+	  {
+	    "id": "Condition",
+	    "args": ["Sleep", "25"]
+	  }
+	]
+  },
 }
