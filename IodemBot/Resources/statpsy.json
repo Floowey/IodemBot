@@ -306,7 +306,7 @@
 	"emote": "<:Phoenix:539166682132906005>",
 	"range": 1,
     "element": 1,
-	"PPCost": 15,
+	"PPCost": 10,
 	"effectImages": [
 	  {
 	    "id": "Revive",
