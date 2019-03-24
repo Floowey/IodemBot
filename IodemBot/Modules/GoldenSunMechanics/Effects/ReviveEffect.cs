@@ -36,7 +36,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public override string ToString()
         {
-            return $"Revive the target to {percentage}% of it's maximum Health.";
+            return $"Revive the target to {percentage}% of its maximum Health.";
         }
 
         protected override int InternalChooseBestTarget(List<ColossoFighter> targets)
