@@ -1,10 +1,7 @@
 ﻿using IodemBot.Modules.ColossoBattles;
 using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
@@ -29,22 +26,25 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public override string ToString()
         {
-            return $"Heals {(singleTarget ? "one Player" : "the whole Party")} with a power of {healPower} {(percentage>0 ? $"and additional {percentage}%" : "")}.";
+            return $"Heals {(singleTarget ? "one Player" : "the whole Party")} with a power of {healPower} {(percentage > 0 ? $"and additional {percentage}%" : "")}.";
         }
 
         public override void InternalChooseBestTarget(ColossoFighter User)
         {
-            if (targetType == Target.ownAll) return;
+            if (targetType == Target.ownAll)
+            {
+                return;
+            }
+
             var aliveFriends = User.getTeam().Where(f => f.IsAlive()).ToList();
-            if(aliveFriends.Count == 0)
+            if (aliveFriends.Count == 0)
             {
                 targetNr = 0;
                 return;
             }
-            
+
             aliveFriends = aliveFriends.OrderBy(s => s.stats.HP / s.stats.maxHP).ThenBy(s => s.stats.HP).ToList();
             targetNr = User.getTeam().IndexOf(aliveFriends.First());
-
         }
 
         public override bool InternalValidSelection(ColossoFighter User)
@@ -60,13 +60,13 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
             foreach (var p in targets)
             {
-                var HPtoHeal = (uint) (healPower * Power / 100 + p.stats.maxHP * percentage / 100);
+                var HPtoHeal = (uint)(healPower * Power / 100 + p.stats.maxHP * percentage / 100);
                 log.AddRange(p.heal(HPtoHeal));
                 if (User is PlayerFighter)
                 {
                     ((PlayerFighter)User).battleStats.HPhealed += HPtoHeal;
                 }
-            } 
+            }
             return log;
         }
     }

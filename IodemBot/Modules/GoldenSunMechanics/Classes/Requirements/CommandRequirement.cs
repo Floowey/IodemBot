@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using IodemBot.Core.UserManagement;
+﻿using IodemBot.Core.UserManagement;
+using System;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
-    class CommandRequirement : IRequirement
+    internal class CommandRequirement : IRequirement
     {
         public int apply(UserAccount user)
         {
-            return (int) Math.Floor(Math.Sqrt(user.ServerStats.CommandsUsed) / 12);
+            return (int)Math.Floor(Math.Sqrt(user.ServerStats.CommandsUsed) / 12);
         }
     }
 }

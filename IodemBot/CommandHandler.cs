@@ -1,18 +1,16 @@
-using System.Reflection;
-using System.Threading.Tasks;
 using Discord.Commands;
 using Discord.WebSocket;
-using System;
 using IodemBot.Core.Leveling;
+using System;
+using System.Reflection;
+using System.Threading.Tasks;
 
 namespace IodemBot
 {
-
     public class CommandHandler
     {
         private DiscordSocketClient client;
         private CommandService service;
-
 
         public async Task InitializeAsync(DiscordSocketClient client)
         {
@@ -27,9 +25,17 @@ namespace IodemBot
         private async Task HandleCommandAsync(SocketMessage s)
         {
             SocketUserMessage msg = s as SocketUserMessage;
-            if (msg == null) return;
+            if (msg == null)
+            {
+                return;
+            }
+
             var context = new SocketCommandContext(client, msg);
-            if (context.User.IsBot) return;
+            if (context.User.IsBot)
+            {
+                return;
+            }
+
             int argPos = 0;
 
             if (msg.HasStringPrefix(Config.bot.cmdPrefix, ref argPos) || msg.HasMentionPrefix(client.CurrentUser, ref argPos))
@@ -40,7 +46,7 @@ namespace IodemBot
                     Console.WriteLine(result.ErrorReason);
                 }
 
-                await ServerGames.UserSentCommand((SocketGuildUser) context.User, (SocketTextChannel) context.Channel);
+                await ServerGames.UserSentCommand((SocketGuildUser)context.User, (SocketTextChannel)context.Channel);
             }
         }
     }

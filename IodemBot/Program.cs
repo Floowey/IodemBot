@@ -1,25 +1,21 @@
-﻿using Discord.WebSocket;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Discord;
-using IodemBot.Modules.GoldenSunMechanics;
-using System.IO;
+﻿using Discord;
+using Discord.WebSocket;
 using IodemBot.Extensions;
+using System;
+using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace IodemBot
 {
-    class Program
+    internal class Program
     {
         private static DiscordSocketClient client;
         private static CommandHandler handler;
         private static MessageHandler msgHandler;
 
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
-
             try
             {
                 new Program().StartAsync().GetAwaiter().GetResult();
@@ -33,7 +29,10 @@ namespace IodemBot
 
         public async Task StartAsync()
         {
-            if (string.IsNullOrEmpty(Config.bot.token)) return;
+            if (string.IsNullOrEmpty(Config.bot.token))
+            {
+                return;
+            }
 
             var version = System.Environment.OSVersion.Version;
             if (version.Major == 6 && version.Minor == 1)
@@ -44,7 +43,8 @@ namespace IodemBot
                     LogLevel = LogSeverity.Verbose,
                     WebSocketProvider = Discord.Net.Providers.WS4Net.WS4NetProvider.Instance
                 });
-            } else
+            }
+            else
             {
                 Console.WriteLine("Not Windows 7");
                 client = new DiscordSocketClient(new DiscordSocketConfig
@@ -69,9 +69,9 @@ namespace IodemBot
         }
 
         private string[] welcomeMsg = {
-            "Welcome {0}! Just ignore that strange tree out front!",
-            "Welcome {0}! We'll forget that whole curse business in no time!",
-            "Welcome, {0}, to the /r/GoldenSun Discord! You may enter, so long as you do not disrupt the peace.",
+            "Welcome, {0}! Just ignore that strange tree out front!",
+            "Welcome, {0}! We'll forget that whole curse business in no time!",
+            "Welcome, {0}! You may enter, so long as you do not disrupt the peace.",
             "Welcome back, {0}! It's good to have you home!",
             "Shoot... What was my first line? \"Welcome, {0}, to the Palace of the Dragon King\"?",
             "Ah! {0}! Welcome, welcome... Listen, sorry about all that \"not letting you in\" business before... Don't take it personally.",
@@ -80,7 +80,9 @@ namespace IodemBot
             "Listen, this is {0}'s quest now... We're just doing what we can to help out...",
             "Well, I'll need to call you something. Hmm... You look like {0}.",
             "I want to scream. But {0} does not like it when I do that.",
-            "Appearances can be an illusion... {0} has a caring heart."
+            "Appearances can be an illusion... {0} has a caring heart.",
+            "Isaac gave a Hard Nut to {0}",
+            "Felix gave a Hard Nut to {0}",
         };
 
         private async Task Client_UserJoined(SocketGuildUser user)
@@ -95,7 +97,6 @@ namespace IodemBot
 
         private async Task Client_UserLeft(SocketGuildUser user)
         {
-           
             await ((SocketTextChannel)client.GetChannel(506961678928314368)).SendMessageAsync($"{user.DisplayName()} left the party :(.");
         }
 
@@ -115,12 +116,15 @@ namespace IodemBot
         {
             Console.WriteLine(msg.Message);
             var date = DateTime.Now.ToString("yyyy_MM_dd");
-            File.AppendAllText($"Logs/{date}_log.log",msg.Message + "\n");
+            File.AppendAllText($"Logs/{date}_log.log", msg.Message + "\n");
             try
             {
-                if(msg.Exception != null)
+                if (msg.Exception != null)
+                {
                     File.AppendAllText($"Logs/{date}_log.log", msg.Exception.InnerException.ToString() + "\n");
-            } catch
+                }
+            }
+            catch
             {
                 File.AppendAllText($"Logs/{date}_log.log", $"Couldn't print Exception.\n");
             }

@@ -1,15 +1,12 @@
 ﻿using IodemBot.Core.UserManagement;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using static IodemBot.Modules.GoldenSunMechanics.Psynergy;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
     //public enum Requirement { Level, Colosso, Command};
-    class AdeptClassSeries
+    internal class AdeptClassSeries
     {
         public static Dictionary<string, IRequirement> DictReq;
         public string name { get; set; }
@@ -25,8 +22,9 @@ namespace IodemBot.Modules.GoldenSunMechanics
             int classNr;
             try
             {
-                classNr = Math.Min(classes.Length-1, DictReq[requirement].apply(User));
-            } catch
+                classNr = Math.Min(classes.Length - 1, DictReq[requirement].apply(User));
+            }
+            catch
             {
                 classNr = 0;
             }
@@ -50,12 +48,12 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         //Apprentice:       42 i!classinfo and i!psy lookups
         //Brute:            15 Colosso Wins
-        //Crusader:         
+        //Crusader:
         //Curse Mage:       i!quote Matthew + #^@%!
         //Hermit:           Time on Server (increases with active days)
-        //Page:             
+        //Page:
         //Pilgrim (Jup):    10 "Switchpoints) between Channels (+2 for switch, -1 for staying)
-        //Pilgrim (Mer):    
+        //Pilgrim (Mer):
         //Scrapper:         Bot Commands
         //Seer (Jup):       Winning rps
         //Seer (Mer):       rps streak

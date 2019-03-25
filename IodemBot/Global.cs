@@ -1,9 +1,5 @@
 ﻿using Discord.WebSocket;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace IodemBot
 {
@@ -14,6 +10,4 @@ namespace IodemBot
         internal static Random random { get; set; } = new Random();
         internal static DateTime UpSince { get; set; }
     }
-
-    
 }

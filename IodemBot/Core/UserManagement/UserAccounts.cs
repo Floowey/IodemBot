@@ -1,9 +1,6 @@
-﻿using System;
+﻿using Discord.WebSocket;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Discord.WebSocket;
 
 namespace IodemBot.Core.UserManagement
 {
@@ -59,7 +56,11 @@ namespace IodemBot.Core.UserManagement
                          select a;
 
             var account = result.FirstOrDefault();
-            if (account == null) account = CreateUserAccount(id, name);
+            if (account == null)
+            {
+                account = CreateUserAccount(id, name);
+            }
+
             return account;
         }
 
@@ -76,4 +77,3 @@ namespace IodemBot.Core.UserManagement
         }
     }
 }
-

@@ -1,9 +1,5 @@
 ﻿using IodemBot.Modules.ColossoBattles;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
@@ -21,7 +17,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public override void InternalChooseBestTarget(ColossoFighter User)
         {
-            return;   
+            return;
         }
 
         public override bool InternalValidSelection(ColossoFighter User)

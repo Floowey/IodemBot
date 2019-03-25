@@ -351,6 +351,7 @@
       "movepool": [
 		"Planetary",
 		"Clay Spire",
+		"Debilitate",
 		"Revive",
 		"Revive",
 		"Revive"
@@ -383,6 +384,9 @@
 		"Pure Wish",
 		"Freeze Prism",
 		"Spark Plasma",
+		"Restore",
+		"Restore",
+		"Restore",
 		"Break"
 	  ],
       "stats": {

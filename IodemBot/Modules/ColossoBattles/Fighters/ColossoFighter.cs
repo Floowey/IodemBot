@@ -1,16 +1,14 @@
-﻿using IodemBot.Modules.ColossoBattles;
-using IodemBot.Modules.GoldenSunMechanics;
+﻿using IodemBot.Modules.GoldenSunMechanics;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace IodemBot.Modules.ColossoBattles
 {
-    public enum Condition { Down, Poison, Venom, Seal, Stun, DeathCurse, Haunt, ItemCurse, Flinch, Delusion, Sleep, Counter}
+    public enum Condition { Down, Poison, Venom, Seal, Stun, DeathCurse, Haunt, ItemCurse, Flinch, Delusion, Sleep, Counter }
+
     public abstract class ColossoFighter : IComparable<ColossoFighter>, ICloneable
     {
         [JsonIgnore] public ColossoBattle battle;
@@ -36,7 +34,6 @@ namespace IodemBot.Modules.ColossoBattles
         public uint HPrecovery { get; set; } = 0;
         public uint PPrecovery { get; set; } = 0;
 
-
         internal ColossoFighter(string name, string imgUrl, Stats stats, ElementalStats elstats, Move[] moves)
         {
             this.name = name;
@@ -48,7 +45,6 @@ namespace IodemBot.Modules.ColossoBattles
             this.moves = moves;
         }
 
-
         public List<ColossoFighter> getTeam()
         {
             return battle.getTeam(party);
@@ -58,6 +54,7 @@ namespace IodemBot.Modules.ColossoBattles
         {
             return battle.getTeam(enemies);
         }
+
         public bool IsAlive()
         {
             return !HasCondition(Condition.Down);
@@ -65,7 +62,7 @@ namespace IodemBot.Modules.ColossoBattles
 
         public string getMoves()
         {
-            var relevantMoves = moves.Where(m => m is Psynergy).ToList().ConvertAll(m => (Psynergy) m).ConvertAll(p => $"{p.emote} {p.name} `{p.PPCost}`");
+            var relevantMoves = moves.Where(m => m is Psynergy).ToList().ConvertAll(m => (Psynergy)m).ConvertAll(p => $"{p.emote} {p.name} `{p.PPCost}`");
             return string.Join(" - ", relevantMoves);
         }
 
@@ -108,7 +105,9 @@ namespace IodemBot.Modules.ColossoBattles
             if (!Conditions.Contains(con))
             {
                 if (con == Condition.Venom && HasCondition(Condition.Poison))
+                {
                     RemoveCondition(Condition.Poison);
+                }
 
                 Conditions.Add(con);
             }
@@ -141,7 +140,7 @@ namespace IodemBot.Modules.ColossoBattles
                 log.Add($"{name} is unaffected");
                 return log;
             }
-            
+
             stats.HP = Math.Min(stats.HP + healHP, stats.maxHP);
             if (stats.HP == stats.maxHP)
             {
@@ -152,8 +151,8 @@ namespace IodemBot.Modules.ColossoBattles
                 log.Add($"{name} recovers {healHP} HP.");
             }
             return log;
-            
         }
+
         public List<string> Revive(uint percentage)
         {
             List<string> log = new List<string>();
@@ -162,7 +161,8 @@ namespace IodemBot.Modules.ColossoBattles
                 stats.HP = stats.maxHP * percentage / 100;
                 log.Add($"{name} is back on their feet.");
                 RemoveCondition(Condition.Down);
-            } else
+            }
+            else
             {
                 log.Add($"{name} is unaffected");
             }
@@ -177,12 +177,21 @@ namespace IodemBot.Modules.ColossoBattles
         public double MultiplyBuffs(string stat)
         {
             var mult = Buffs.Where(b => b.stat.Equals(stat, StringComparison.InvariantCultureIgnoreCase) && b.multiplier > 0).Aggregate(1.0, (p, s) => p *= s.multiplier);
-            if (mult > 2.0) mult = 2.0;
-            if (mult < 0.4) mult = 0.4;
+            if (mult > 2.0)
+            {
+                mult = 2.0;
+            }
+
+            if (mult < 0.4)
+            {
+                mult = 0.4;
+            }
+
             return mult;
         }
 
-        public virtual List<string> StartTurn() {
+        public virtual List<string> StartTurn()
+        {
             List<string> turnLog = new List<string>();
             if (selected.hasPriority)
             {
@@ -209,16 +218,17 @@ namespace IodemBot.Modules.ColossoBattles
             if (!selected.hasPriority)
             {
                 turnLog.AddRange(selected.Use(this));
-            } else
+            }
+            else
             {
-                if(selected is Defend)
+                if (selected is Defend)
                 {
                     turnLog.Add($"{selected.emote} {this.name} is defending.");
                 }
             }
             RemoveCondition(Condition.Flinch);
             //Haunt Damage
-            if (HasCondition(Condition.Haunt))
+            if (HasCondition(Condition.Haunt) && Global.random.Next(0, 2) == 0)
             {
                 var hauntDmg = Math.Min(280, (uint)(stats.HP * Global.random.Next(20, 40) / 100));
                 turnLog.AddRange(DealDamage(hauntDmg));
@@ -232,16 +242,19 @@ namespace IodemBot.Modules.ColossoBattles
             return new List<string>();
         }
 
-        public virtual List<string> EndTurn() {
+        public virtual List<string> EndTurn()
+        {
             List<string> turnLog = new List<string>();
 
             var newBuffs = new List<Buff>();
-            Buffs.ForEach(s => {
+            Buffs.ForEach(s =>
+            {
                 s.turns -= 1;
                 if (s.turns >= 1)
                 {
                     newBuffs.Add(s);
-                } else
+                }
+                else
                 {
                     turnLog.Add($"{name}'s {s.stat} normalizes.");
                 }
@@ -267,15 +280,15 @@ namespace IodemBot.Modules.ColossoBattles
                 if (PPrecovery > 0 && stats.PP < stats.maxPP)
                 {
                     stats.PP = Math.Min(stats.maxPP, stats.PP + PPrecovery);
-                    if(stats.PP < stats.maxPP)
+                    if (stats.PP < stats.maxPP)
                     {
                         turnLog.Add($"{name} recovers {PPrecovery} PP.");
-                    } else
+                    }
+                    else
                     {
                         turnLog.Add($"{name}'s PP was fully restored.");
                     }
                 }
-
             }
 
             RemoveCondition(Condition.Flinch);
@@ -340,50 +353,103 @@ namespace IodemBot.Modules.ColossoBattles
             }
             return turnLog;
         }
+
         public string ConditionsToString()
         {
             StringBuilder s = new StringBuilder();
-            if (HasCondition(Condition.DeathCurse)) s.Append("");
-            if (HasCondition(Condition.Delusion)) s.Append("<:delusion:549526931637534721>");
-            if (HasCondition(Condition.Down)) s.Append("<:curse:538074679492083742>");
-            if (HasCondition(Condition.Flinch)) s.Append("");
-            if (HasCondition(Condition.Haunt)) s.Append("<:Haunted:549526931821953034>");
-            if (HasCondition(Condition.ItemCurse)) s.Append("<:curse:538074679492083742>");
-            if (HasCondition(Condition.Poison)) s.Append("<:Poison:549526931847249920>");
-            if (HasCondition(Condition.Seal)) s.Append("<:Psy_Seal:549526931465568257>");
-            if (HasCondition(Condition.Sleep)) s.Append("<:Sleep:555427023519088671>");
-            if (HasCondition(Condition.Stun)) s.Append("<:Flash_Bolt:536966441862299678>");
-            if (HasCondition(Condition.Venom)) s.Append("<:Poison:549526931847249920>");
+            if (HasCondition(Condition.DeathCurse))
+            {
+                s.Append("");
+            }
+
+            if (HasCondition(Condition.Delusion))
+            {
+                s.Append("<:delusion:549526931637534721>");
+            }
+
+            if (HasCondition(Condition.Down))
+            {
+                s.Append("<:curse:538074679492083742>");
+            }
+
+            if (HasCondition(Condition.Flinch))
+            {
+                s.Append("");
+            }
+
+            if (HasCondition(Condition.Haunt))
+            {
+                s.Append("<:Haunted:549526931821953034>");
+            }
+
+            if (HasCondition(Condition.ItemCurse))
+            {
+                s.Append("<:curse:538074679492083742>");
+            }
+
+            if (HasCondition(Condition.Poison))
+            {
+                s.Append("<:Poison:549526931847249920>");
+            }
+
+            if (HasCondition(Condition.Seal))
+            {
+                s.Append("<:Psy_Seal:549526931465568257>");
+            }
+
+            if (HasCondition(Condition.Sleep))
+            {
+                s.Append("<:Sleep:555427023519088671>");
+            }
+
+            if (HasCondition(Condition.Stun))
+            {
+                s.Append("<:Flash_Bolt:536966441862299678>");
+            }
+
+            if (HasCondition(Condition.Venom))
+            {
+                s.Append("<:Poison:549526931847249920>");
+            }
+
             return s.ToString();
         }
+
         public bool select(string emote)
         {
             string[] numberEmotes = new string[] {"\u0030\u20E3", "1⃣", "\u0032\u20E3", "\u0033\u20E3", "\u0034\u20E3", "\u0035\u20E3",
             "\u0036\u20E3", "\u0037\u20E3", "\u0038\u20E3", "\u0039\u20E3" };
             var trySelected = moves.Where(m => m.emote == emote).FirstOrDefault() ?? moves.Where(m => m.emote.Contains(emote)).FirstOrDefault();
-            if (!IsAlive()) return false;
+            if (!IsAlive())
+            {
+                return false;
+            }
+
             if (trySelected == null)
             {
                 if (numberEmotes.Contains(emote) && selected != null)
                 {
-                    selected.targetNr = Array.IndexOf(numberEmotes, emote)-1;
+                    selected.targetNr = Array.IndexOf(numberEmotes, emote) - 1;
                     hasSelected = true;
-                } else
+                }
+                else
                 {
                     return false;
                 }
-            } else
+            }
+            else
             {
-                if(trySelected is Psynergy && ((Psynergy)trySelected).PPCost > stats.PP)
+                if (trySelected is Psynergy && ((Psynergy)trySelected).PPCost > stats.PP)
                 {
                     return false;
-                } else
+                }
+                else
                 {
                     selected = trySelected;
                 }
             }
 
-            if (selected.targetType == Target.self || selected.targetType == Target.ownAll ||selected.targetType == Target.otherAll)
+            if (selected.targetType == Target.self || selected.targetType == Target.ownAll || selected.targetType == Target.otherAll)
             {
                 hasSelected = true;
             }
@@ -412,12 +478,13 @@ namespace IodemBot.Modules.ColossoBattles
             selected = moves[Global.random.Next(0, moves.Count())];
             selected.targetNr = 0;
             Console.WriteLine($"{selected.name} was rolled.");
-           
+
             if (selected.ValidSelection(this))
             {
                 selected.ChooseBestTarget(this);
                 Console.WriteLine($"  {selected.name} passed the check.");
-            } else
+            }
+            else
             {
                 Console.WriteLine($"X {selected.name} was a bad choice. Rerolling.");
                 selectRandom();
@@ -428,11 +495,26 @@ namespace IodemBot.Modules.ColossoBattles
 
         public int CompareTo(ColossoFighter obj)
         {
-            if (obj == null) return 1;
-            if (name == obj.name) return 0;
+            if (obj == null)
+            {
+                return 1;
+            }
 
-            if (stats.Spd > obj.stats.Spd) return 1;
-            if (stats.Spd == obj.stats.Spd) return 0;
+            if (name == obj.name)
+            {
+                return 0;
+            }
+
+            if (stats.Spd > obj.stats.Spd)
+            {
+                return 1;
+            }
+
+            if (stats.Spd == obj.stats.Spd)
+            {
+                return 0;
+            }
+
             return -1;
         }
 

@@ -1,10 +1,7 @@
 ﻿using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using static IodemBot.Modules.GoldenSunMechanics.Psynergy;
 
 namespace IodemBot.Modules.GoldenSunMechanics
@@ -14,7 +11,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
         private static Dictionary<string, Stats> stats;
         private static Stats baseStats = new Stats(35, 20, 20, 6, 8); //30, 20, 11, 6, 8
 
-        static StatList() {
+        static StatList()
+        {
             string json = File.ReadAllText("Resources/stats.json");
             var data = JsonConvert.DeserializeObject<dynamic>(json);
             stats = data.ToObject<Dictionary<string, Stats>>();
@@ -52,7 +50,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         internal uint leastRes()
         {
-            return (new[] { VenusRes, MarsRes, JupiterRes, MercuryRes}).Min();
+            return (new[] { VenusRes, MarsRes, JupiterRes, MercuryRes }).Min();
         }
 
         internal uint highestRes()

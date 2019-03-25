@@ -1,19 +1,20 @@
-﻿using System;
+﻿using IodemBot.Modules.ColossoBattles;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using IodemBot.Modules.ColossoBattles;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
-    class ChancetoOHKOEffect : IEffect
+    internal class ChancetoOHKOEffect : IEffect
     {
-        int Probability = 0;
+        private int Probability = 0;
+
         public override List<string> Apply(ColossoFighter User, ColossoFighter Target)
         {
             var log = new List<string>();
-            if (Target.isImmuneToEffects) return log;
+            if (Target.isImmuneToEffects)
+            {
+                return log;
+            }
+
             if (Global.random.Next(1, 100) <= Probability)
             {
                 Target.Kill();
@@ -21,12 +22,15 @@ namespace IodemBot.Modules.GoldenSunMechanics
             }
             return log;
         }
+
         public ChancetoOHKOEffect(string[] args)
         {
             timeToActivate = TimeToActivate.beforeDamge;
-           
+
             if (args.Length == 1)
+            {
                 int.TryParse(args[0], out Probability);
+            }
         }
 
         public override string ToString()

@@ -1,19 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Discord;
+﻿using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
 using IodemBot.Core.UserManagement;
+using System;
+using System.Linq;
+using System.Threading.Tasks;
 using static IodemBot.Modules.GoldenSunMechanics.Psynergy;
 
 namespace IodemBot.Modules
 {
     public class ModTools : ModuleBase<SocketCommandContext>
     {
-        
         [Command("Kick")]
         [RequireUserPermission(GuildPermission.KickMembers)]
         [RequireBotPermission(GuildPermission.KickMembers)]
@@ -36,9 +33,11 @@ namespace IodemBot.Modules
         public async Task Clear(SocketGuildUser user, int amountOfMessagesToDelete = 100)
         {
             if (user == Context.User)
+            {
                 amountOfMessagesToDelete++; //Because it will count the purge command as a message
+            }
 
-            var messages = await Context.Message.Channel.GetMessagesAsync(amountOfMessagesToDelete+1).FlattenAsync();
+            var messages = await Context.Message.Channel.GetMessagesAsync(amountOfMessagesToDelete + 1).FlattenAsync();
 
             var result = messages.Where(x => x.Author.Id == user.Id && x.CreatedAt >= DateTimeOffset.UtcNow.Subtract(TimeSpan.FromDays(14)));
 
@@ -50,7 +49,7 @@ namespace IodemBot.Modules
         [RequireUserPermission(ChannelPermission.ManageMessages)]
         public async Task Clear(int amountOfMessagesToDelete = 2)
         {
-            var messages = await Context.Message.Channel.GetMessagesAsync(amountOfMessagesToDelete+1).FlattenAsync();
+            var messages = await Context.Message.Channel.GetMessagesAsync(amountOfMessagesToDelete + 1).FlattenAsync();
             var result = messages.Where(x => x.CreatedAt >= DateTimeOffset.UtcNow.Subtract(TimeSpan.FromDays(14)));
 
             await (Context.Message.Channel as SocketTextChannel).DeleteMessagesAsync(messages);
@@ -61,14 +60,15 @@ namespace IodemBot.Modules
         [RequireOwner]
         public async Task setupIodem()
         {
-            foreach(SocketGuildUser user in Context.Guild.Users)
+            foreach (SocketGuildUser user in Context.Guild.Users)
             {
                 var account = UserAccounts.GetAccount(user);
-                
-                if(user.Roles.Where(r => r.Id == 497198579207897088).FirstOrDefault() != null)
+
+                if (user.Roles.Where(r => r.Id == 497198579207897088).FirstOrDefault() != null)
                 {//Venus
                     account.element = Element.Venus;
-                } else if (user.Roles.Where(r => r.Id == 497198845994991646).FirstOrDefault() != null)
+                }
+                else if (user.Roles.Where(r => r.Id == 497198845994991646).FirstOrDefault() != null)
                 {//Mars
                     account.element = Element.Mars;
                 }
@@ -79,7 +79,8 @@ namespace IodemBot.Modules
                 else if (user.Roles.Where(r => r.Id == 497212342896033812).FirstOrDefault() != null)
                 {//Mercury
                     account.element = Element.Mercury;
-                } else
+                }
+                else
                 {
                     account.element = Element.none;
                 }

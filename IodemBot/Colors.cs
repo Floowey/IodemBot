@@ -1,11 +1,5 @@
-﻿using System;
+﻿using Discord;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Discord;
-using Newtonsoft.Json;
-using System.IO;
 
 namespace IodemBot
 {
@@ -27,7 +21,11 @@ namespace IodemBot
 
         public static Color get(string key)
         {
-            if (colors.ContainsKey(key)) return colors[key];
+            if (colors.ContainsKey(key))
+            {
+                return colors[key];
+            }
+
             return new Color(255, 255, 255);
         }
 
@@ -36,7 +34,7 @@ namespace IodemBot
             int r = 0;
             int g = 0;
             int b = 0;
-            foreach(string c in keys)
+            foreach (string c in keys)
             {
                 var col = get(c);
                 r += col.R;
@@ -45,6 +43,5 @@ namespace IodemBot
             }
             return new Color(r / keys.Length, g / keys.Length, b / keys.Length);
         }
-
     }
 }

@@ -1,13 +1,8 @@
 ﻿using IodemBot.Core.UserManagement;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
-    class DaysActiveRequirement : IRequirement
+    internal class DaysActiveRequirement : IRequirement
     {
         public int apply(UserAccount user)
         {
@@ -15,7 +10,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             {
                 return 5;
             }
-            else if(user.uniqueDaysActive >= 45) //Sage
+            else if (user.uniqueDaysActive >= 45) //Sage
             {
                 return 4;
             }

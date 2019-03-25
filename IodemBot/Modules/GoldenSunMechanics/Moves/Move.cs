@@ -3,12 +3,11 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace IodemBot.Modules.GoldenSunMechanics 
+namespace IodemBot.Modules.GoldenSunMechanics
 {
-    public enum Target { self, ownSingle, ownAll, otherSingle, otherRange, otherAll}
+    public enum Target { self, ownSingle, ownAll, otherSingle, otherRange, otherAll }
+
     public abstract class Move : ICloneable
     {
         public string name;
@@ -20,19 +19,22 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public uint range;
         public bool hasPriority = false;
 
-
         public List<string> Use(ColossoFighter User)
         {
             List<string> log = new List<string>();
             var t = Validate(User);
             log.AddRange(t.log);
-            if (!t.isValid) return log;
+            if (!t.isValid)
+            {
+                return log;
+            }
 
             log.AddRange(InternalUse(User));
             return log;
         }
 
-        [JsonIgnore]public bool onEnemy
+        [JsonIgnore]
+        public bool onEnemy
         {
             get
             {
@@ -45,9 +47,13 @@ namespace IodemBot.Modules.GoldenSunMechanics
         protected virtual Validation Validate(ColossoFighter User)
         {
             List<string> log = new List<string>();
-            if (!User.IsAlive()) return new Validation(false, log);
-            
-            if (User.HasCondition(Condition.Stun)) {
+            if (!User.IsAlive())
+            {
+                return new Validation(false, log);
+            }
+
+            if (User.HasCondition(Condition.Stun))
+            {
                 log.Add($"{User.name} can't move");
                 return new Validation(false, log);
             }
@@ -65,17 +71,17 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 return new Validation(false, log);
             }
 
-            if (User.HasCondition(Condition.ItemCurse) && Global.random.Next(0,3) == 0)
+            if (User.HasCondition(Condition.ItemCurse) && Global.random.Next(0, 3) == 0)
             {
                 log.Add($"{User.name} can't move");
                 return new Validation(false, log);
             }
 
-
             return new Validation(true, log);
         }
 
-        public class Validation{
+        public class Validation
+        {
             public bool isValid;
             public List<string> log;
 
@@ -94,36 +100,43 @@ namespace IodemBot.Modules.GoldenSunMechanics
             this.range = range;
             this.effects = new List<IEffect>();
             this.effectImages = effectImages;
-            if(effectImages != null)
+            if (effectImages != null)
+            {
                 effectImages.ForEach(e => effects.Add(IEffect.EffectFactory(e.id, e.args)));
+            }
         }
 
         public List<ColossoFighter> getTarget(ColossoFighter user)
         {
             List<ColossoFighter> targets = new List<ColossoFighter>();
-            var playerCount = user.battle.getTeam(user.party).Count-1;
-            var enemyCount = user.battle.getTeam(user.enemies).Count-1;
+            var playerCount = user.battle.getTeam(user.party).Count - 1;
+            var enemyCount = user.battle.getTeam(user.enemies).Count - 1;
 
             switch (targetType)
             {
                 case Target.self:
                     targets.Add(user);
                     break;
+
                 case Target.ownAll:
                     targetNr = Math.Min(targetNr, playerCount);
                     targets.AddRange(user.battle.getTeam(user.party));
                     break;
+
                 case Target.ownSingle:
                     targetNr = Math.Min(targetNr, playerCount);
                     targets.Add(user.battle.getTeam(user.party)[targetNr]);
                     break;
+
                 case Target.otherAll:
                     targets.AddRange(user.getEnemies());
                     break;
+
                 case Target.otherSingle:
                     targetNr = Math.Min(targetNr, enemyCount);
                     targets.Add(user.battle.getTeam(user.enemies)[targetNr]);
                     break;
+
                 case Target.otherRange:
                     targetNr = Math.Min(targetNr, enemyCount);
                     var targetTeam = user.battle.getTeam(user.enemies);
@@ -147,6 +160,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public abstract object Clone();
 
         public abstract bool InternalValidSelection(ColossoFighter User);
+
         public abstract void InternalChooseBestTarget(ColossoFighter User);
 
         internal bool ValidSelection(ColossoFighter User)

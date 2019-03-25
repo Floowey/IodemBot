@@ -1,17 +1,14 @@
 ﻿using IodemBot.Modules.GoldenSunMechanics;
 using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace IodemBot.Modules.ColossoBattles
 {
     public class NPCEnemy : ColossoFighter
     {
-        [JsonProperty] int extraTurns { get; set; } = 0;
-        [JsonProperty] string[] movepool { get; set; }
+        [JsonProperty] private int extraTurns { get; set; } = 0;
+        [JsonProperty] private string[] movepool { get; set; }
+
         public NPCEnemy(string name, string imgUrl, Stats stats, ElementalStats elstats, Move[] moves, int extraTurns) : base(name, imgUrl, stats, elstats, moves)
         {
             this.extraTurns = extraTurns;
@@ -21,7 +18,6 @@ namespace IodemBot.Modules.ColossoBattles
         public NPCEnemy(string name, string imgUrl, Stats stats, ElementalStats elstats, string[] movepool) : base(name, imgUrl, stats, elstats, PsynergyDatabase.GetMovepool(movepool))
         {
             this.movepool = movepool;
-            
         }
 
         public override List<string> ExtraTurn()
@@ -41,9 +37,10 @@ namespace IodemBot.Modules.ColossoBattles
             if (IsAlive())
             {
                 selectRandom();
-            } else
+            }
+            else
             {
-                selected= new Nothing();
+                selected = new Nothing();
                 hasSelected = true;
             }
             log.AddRange(base.EndTurn());

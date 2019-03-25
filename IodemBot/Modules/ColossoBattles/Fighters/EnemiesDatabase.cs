@@ -1,11 +1,8 @@
-﻿using IodemBot.Modules.GoldenSunMechanics;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using static IodemBot.Modules.ColossoBattles.ColossoPvE;
 
 namespace IodemBot.Modules.ColossoBattles
@@ -23,7 +20,6 @@ namespace IodemBot.Modules.ColossoBattles
                 bronzeFighters = loadEnemiesFromFile("Resources/bronzeFighters.json");
                 silverFighters = loadEnemiesFromFile("Resources/silverFighters.json");
                 goldFighters = loadEnemiesFromFile("Resources/goldFighters.json");
-
             }
             catch (Exception e) // Just for debugging
             {
@@ -47,12 +43,15 @@ namespace IodemBot.Modules.ColossoBattles
                 case (BattleDifficulty.Easy):
                     selectedDifficulty = bronzeFighters;
                     break;
+
                 case (BattleDifficulty.Medium):
                     selectedDifficulty = silverFighters;
                     break;
+
                 case (BattleDifficulty.Hard):
                     selectedDifficulty = goldFighters;
                     break;
+
                 default:
                     selectedDifficulty = bronzeFighters;
                     Console.WriteLine("Enemies from default!!!");
@@ -69,19 +68,26 @@ namespace IodemBot.Modules.ColossoBattles
                 case (BattleDifficulty.Easy):
                     selectedDifficulty = bronzeFighters;
                     break;
+
                 case (BattleDifficulty.Medium):
                     selectedDifficulty = silverFighters;
                     break;
+
                 case (BattleDifficulty.Hard):
                     selectedDifficulty = goldFighters;
                     break;
+
                 default:
                     selectedDifficulty = bronzeFighters;
                     Console.WriteLine("Enemies from default!!!");
                     break;
             }
             var enemies = selectedDifficulty.Where(l => l.Any(e => e.name.ToUpper().Contains(enemy.ToUpper()))).FirstOrDefault();
-            if (enemies == null) enemies = getRandomEnemies(diff);
+            if (enemies == null)
+            {
+                enemies = getRandomEnemies(diff);
+            }
+
             return enemies.Select(f => (ColossoFighter)f.Clone()).ToList();
         }
     }

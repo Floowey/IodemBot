@@ -1,9 +1,7 @@
-﻿using System;
+﻿using IodemBot.Modules.ColossoBattles;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using IodemBot.Modules.ColossoBattles;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
@@ -13,7 +11,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public ReviveEffect(string[] args)
         {
-            if(args.Length == 1)
+            if (args.Length == 1)
             {
                 uint.TryParse(args[0], out percentage);
             }

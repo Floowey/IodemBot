@@ -8,9 +8,9 @@ namespace Iodembot.Preconditions
 {
     public class Cooldown : PreconditionAttribute
     {
-        TimeSpan CooldownLength { get; set; }
-        bool AdminsAreLimited { get; set; }
-        readonly ConcurrentDictionary<CooldownInfo, DateTime> _cooldowns = new ConcurrentDictionary<CooldownInfo, DateTime>();
+        private TimeSpan CooldownLength { get; set; }
+        private bool AdminsAreLimited { get; set; }
+        private readonly ConcurrentDictionary<CooldownInfo, DateTime> _cooldowns = new ConcurrentDictionary<CooldownInfo, DateTime>();
 
         /// <summary>
         /// Sets the cooldown for a user to use this command
@@ -39,10 +39,12 @@ namespace Iodembot.Preconditions
         {
             // Check if the user is administrator and if it needs to apply cooldown for him.
             if (!AdminsAreLimited && context.User is IGuildUser user && user.GuildPermissions.Administrator)
+            {
                 return Task.FromResult(PreconditionResult.FromSuccess());
+            }
 
             var key = new CooldownInfo(context.User.Id, command.GetHashCode());
-            // Check if message with the same hash code is already in dictionary 
+            // Check if message with the same hash code is already in dictionary
             if (_cooldowns.TryGetValue(key, out DateTime endsAt))
             {
                 // Calculate the difference between current time and the time cooldown should end

@@ -677,7 +677,7 @@
     "name": "Supernova",
 	"targetType": 4,
 	"emote":"<:Supernova:536965117980573716>",
-	"range": 2,
+	"range": 3,
     "element": 1,
 	"PPCost": 31,
 	"power": 150
@@ -1162,7 +1162,7 @@
     "name": "Hail Prism",
 	"targetType": 4,
 	"emote":"<:Hail_Prism:536969551729000468>",
-	"range": 2,
+	"range": 3,
     "element": 3,
 	"PPCost": 16,
 	"power": 90
@@ -1171,7 +1171,7 @@
     "name": "Freeze Prism",
 	"targetType": 4,
 	"emote":"<:Freeze_Prism:536969587254755368>",
-	"range": 2,
+	"range": 3,
     "element": 3,
 	"PPCost": 31,
 	"power": 190

@@ -1,23 +1,23 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
-using Newtonsoft.Json;
-using Discord;
-using Discord.Commands;
-using IodemBot.Modules;
+using System.Linq;
 
 namespace IodemBot
 {
     public class Sprites
     {
         private static Dictionary<string, string> sprites;
+
         public static string GetImageFromName(string name)
         {
             name = name.ToLower();
-            if(sprites.ContainsKey(name)) return sprites[name];
+            if (sprites.ContainsKey(name))
+            {
+                return sprites[name];
+            }
+
             return sprites["unknown"];
         }
 
