@@ -18,7 +18,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             if (Global.random.Next(1, 100) <= Probability)
             {
                 Target.Kill();
-                log.Add($"{Target.name}'s life was taken.");
+                log.Add($":x: {Target.name}'s life was taken.");
             }
             return log;
         }

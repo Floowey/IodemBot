@@ -9,31 +9,40 @@ namespace IodemBot.Modules.ColossoBattles
 {
     public enum Condition { Down, Poison, Venom, Seal, Stun, DeathCurse, Haunt, ItemCurse, Flinch, Delusion, Sleep, Counter }
 
+    public struct Buff
+    {
+        public double multiplier;
+        public string stat;
+        public uint turns;
+
+        public Buff(string stat, double multiplier, uint turns)
+        {
+            this.stat = stat;
+            this.multiplier = multiplier;
+            this.turns = turns;
+        }
+    }
+
     public abstract class ColossoFighter : IComparable<ColossoFighter>, ICloneable
     {
         [JsonIgnore] public ColossoBattle battle;
-        [JsonIgnore] public ColossoBattle.Team party;
-        [JsonIgnore] public ColossoBattle.Team enemies;
-        public string name;
-        public string imgUrl;
-        public Stats stats;
+        [JsonIgnore] public List<Buff> Buffs = new List<Buff>();
+        [JsonIgnore] public double defensiveMult = 1;
         public ElementalStats elstats;
-        [JsonIgnore] public Move[] moves;
+        [JsonIgnore] public ColossoBattle.Team enemies;
+        [JsonIgnore] public bool hasSelected = false;
+        [JsonIgnore] public double ignoreDefense = 1;
+        public string imgUrl;
         public bool isImmuneToEffects;
         public bool isImmuneToPsynergy;
-        [JsonIgnore] private Random rnd = Global.random;
-        [JsonIgnore] private readonly List<Condition> Conditions = new List<Condition>();
-
-        [JsonIgnore] public List<Buff> Buffs = new List<Buff>();
-
-        [JsonIgnore] public Move selected;
-        [JsonIgnore] public bool hasSelected = false;
+        [JsonIgnore] public Move[] moves;
+        public string name;
         [JsonIgnore] public double offensiveMult = 1;
-        [JsonIgnore] public double defensiveMult = 1;
-        [JsonIgnore] public double ignoreDefense = 1;
-        public uint HPrecovery { get; set; } = 0;
-        public uint PPrecovery { get; set; } = 0;
-
+        [JsonIgnore] public ColossoBattle.Team party;
+        [JsonIgnore] public Move selected;
+        public Stats stats;
+        [JsonIgnore] private readonly List<Condition> Conditions = new List<Condition>();
+        [JsonIgnore] private Random rnd = Global.random;
         internal ColossoFighter(string name, string imgUrl, Stats stats, ElementalStats elstats, Move[] moves)
         {
             this.name = name;
@@ -45,33 +54,112 @@ namespace IodemBot.Modules.ColossoBattles
             this.moves = moves;
         }
 
-        public List<ColossoFighter> getTeam()
+        public uint HPrecovery { get; set; } = 0;
+        public uint PPrecovery { get; set; } = 0;
+        public void AddCondition(Condition con)
         {
-            return battle.getTeam(party);
+            if (!Conditions.Contains(con))
+            {
+                if (con == Condition.Venom && HasCondition(Condition.Poison))
+                {
+                    RemoveCondition(Condition.Poison);
+                }
+
+                Conditions.Add(con);
+            }
         }
 
-        public List<ColossoFighter> getEnemies()
+        public void applyBuff(Buff buff)
         {
-            return battle.getTeam(enemies);
+            Buffs.Add(buff);
         }
 
-        public bool IsAlive()
+        public abstract object Clone();
+
+        public int CompareTo(ColossoFighter obj)
         {
-            return !HasCondition(Condition.Down);
+            if (obj == null)
+            {
+                return 1;
+            }
+
+            if (name == obj.name)
+            {
+                return 0;
+            }
+
+            if (stats.Spd > obj.stats.Spd)
+            {
+                return 1;
+            }
+
+            if (stats.Spd == obj.stats.Spd)
+            {
+                return 0;
+            }
+
+            return -1;
         }
 
-        public string getMoves()
+        public string ConditionsToString()
         {
-            var relevantMoves = moves.Where(m => m is Psynergy).ToList().ConvertAll(m => (Psynergy)m).ConvertAll(p => $"{p.emote} {p.name} `{p.PPCost}`");
-            return string.Join(" - ", relevantMoves);
-        }
+            StringBuilder s = new StringBuilder();
+            if (HasCondition(Condition.DeathCurse))
+            {
+                s.Append("");
+            }
 
-        public void Kill()
-        {
-            stats.HP = 0;
-            RemoveAllConditions();
-            AddCondition(Condition.Down);
-            Buffs = new List<Buff>();
+            if (HasCondition(Condition.Delusion))
+            {
+                s.Append("<:delusion:549526931637534721>");
+            }
+
+            if (HasCondition(Condition.Down))
+            {
+                s.Append("<:curse:538074679492083742>");
+            }
+
+            if (HasCondition(Condition.Flinch))
+            {
+                s.Append("");
+            }
+
+            if (HasCondition(Condition.Haunt))
+            {
+                s.Append("<:Haunted:549526931821953034>");
+            }
+
+            if (HasCondition(Condition.ItemCurse))
+            {
+                s.Append("<:curse:538074679492083742>");
+            }
+
+            if (HasCondition(Condition.Poison))
+            {
+                s.Append("<:Poison:549526931847249920>");
+            }
+
+            if (HasCondition(Condition.Seal))
+            {
+                s.Append("<:Psy_Seal:549526931465568257>");
+            }
+
+            if (HasCondition(Condition.Sleep))
+            {
+                s.Append("<:Sleep:555427023519088671>");
+            }
+
+            if (HasCondition(Condition.Stun))
+            {
+                s.Append("<:Flash_Bolt:536966441862299678>");
+            }
+
+            if (HasCondition(Condition.Venom))
+            {
+                s.Append("<:Poison:549526931847249920>");
+            }
+
+            return s.ToString();
         }
 
         public virtual List<string> DealDamage(uint damage, string punctuation = "!")
@@ -98,148 +186,6 @@ namespace IodemBot.Modules.ColossoBattles
                 Buffs = new List<Buff>();
             }
             return log;
-        }
-
-        public void AddCondition(Condition con)
-        {
-            if (!Conditions.Contains(con))
-            {
-                if (con == Condition.Venom && HasCondition(Condition.Poison))
-                {
-                    RemoveCondition(Condition.Poison);
-                }
-
-                Conditions.Add(con);
-            }
-        }
-
-        public bool HasCondition(Condition con)
-        {
-            return Conditions.Contains(con);
-        }
-
-        public void RemoveAllConditions()
-        {
-            Condition[] dontRemove = new Condition[] { Condition.Down, Condition.Counter, Condition.ItemCurse, Condition.Haunt };
-            Conditions.RemoveAll(c => !dontRemove.Contains(c));
-        }
-
-        public void RemoveCondition(Condition con)
-        {
-            if (Conditions.Contains(con))
-            {
-                Conditions.Remove(con);
-            }
-        }
-
-        public List<string> heal(uint healHP)
-        {
-            List<string> log = new List<string>();
-            if (!IsAlive())
-            {
-                log.Add($"{name} is unaffected");
-                return log;
-            }
-
-            stats.HP = Math.Min(stats.HP + healHP, stats.maxHP);
-            if (stats.HP == stats.maxHP)
-            {
-                log.Add($"{name}'s HP was fully restored!");
-            }
-            else
-            {
-                log.Add($"{name} recovers {healHP} HP.");
-            }
-            return log;
-        }
-
-        public List<string> Revive(uint percentage)
-        {
-            List<string> log = new List<string>();
-            if (!IsAlive())
-            {
-                stats.HP = stats.maxHP * percentage / 100;
-                log.Add($"{name} is back on their feet.");
-                RemoveCondition(Condition.Down);
-            }
-            else
-            {
-                log.Add($"{name} is unaffected");
-            }
-            return log;
-        }
-
-        public void applyBuff(Buff buff)
-        {
-            Buffs.Add(buff);
-        }
-
-        public double MultiplyBuffs(string stat)
-        {
-            var mult = Buffs.Where(b => b.stat.Equals(stat, StringComparison.InvariantCultureIgnoreCase) && b.multiplier > 0).Aggregate(1.0, (p, s) => p *= s.multiplier);
-            if (mult > 2.0)
-            {
-                mult = 2.0;
-            }
-
-            if (mult < 0.4)
-            {
-                mult = 0.4;
-            }
-
-            return mult;
-        }
-
-        public virtual List<string> StartTurn()
-        {
-            List<string> turnLog = new List<string>();
-            if (selected.hasPriority)
-            {
-                turnLog.AddRange(selected.Use(this));
-            }
-
-            return turnLog;
-        }
-
-        public bool HasCurableCondition()
-        {
-            Condition[] badConditions = { Condition.Poison, Condition.Venom, Condition.Seal, Condition.Sleep, Condition.Stun, Condition.DeathCurse };
-            return Conditions.Any(c => badConditions.Contains(c));
-        }
-
-        public List<string> MainTurn()
-        {
-            List<string> turnLog = new List<string>();
-            if (!IsAlive())
-            {
-                return turnLog;
-            }
-
-            if (!selected.hasPriority)
-            {
-                turnLog.AddRange(selected.Use(this));
-            }
-            else
-            {
-                if (selected is Defend)
-                {
-                    turnLog.Add($"{selected.emote} {this.name} is defending.");
-                }
-            }
-            RemoveCondition(Condition.Flinch);
-            //Haunt Damage
-            if (HasCondition(Condition.Haunt) && Global.random.Next(0, 2) == 0)
-            {
-                var hauntDmg = Math.Min(280, (uint)(stats.HP * Global.random.Next(20, 40) / 100));
-                turnLog.AddRange(DealDamage(hauntDmg));
-            }
-
-            return turnLog;
-        }
-
-        public virtual List<string> ExtraTurn()
-        {
-            return new List<string>();
         }
 
         public virtual List<string> EndTurn()
@@ -333,13 +279,13 @@ namespace IodemBot.Modules.ColossoBattles
             //Poison Damage
             if (HasCondition(Condition.Poison))
             {
-                var damage = (uint)(stats.maxHP * Global.random.Next(5, 10) / 100);
+                var damage = Math.Min(200, (uint)(stats.maxHP * Global.random.Next(5, 10) / 100));
                 turnLog.Add($"{name} is damaged by the Poison.");
                 turnLog.AddRange(DealDamage(damage));
             }
             if (HasCondition(Condition.Venom))
             {
-                var damage = (uint)(stats.maxHP * Global.random.Next(10, 20) / 100);
+                var damage = Math.Min(400, (uint)(stats.maxHP * Global.random.Next(10, 20) / 100));
                 turnLog.Add($"{name} is damaged by the Venom.");
                 turnLog.AddRange(DealDamage(damage));
             }
@@ -354,67 +300,143 @@ namespace IodemBot.Modules.ColossoBattles
             return turnLog;
         }
 
-        public string ConditionsToString()
+        public virtual List<string> ExtraTurn()
         {
-            StringBuilder s = new StringBuilder();
-            if (HasCondition(Condition.DeathCurse))
-            {
-                s.Append("");
-            }
-
-            if (HasCondition(Condition.Delusion))
-            {
-                s.Append("<:delusion:549526931637534721>");
-            }
-
-            if (HasCondition(Condition.Down))
-            {
-                s.Append("<:curse:538074679492083742>");
-            }
-
-            if (HasCondition(Condition.Flinch))
-            {
-                s.Append("");
-            }
-
-            if (HasCondition(Condition.Haunt))
-            {
-                s.Append("<:Haunted:549526931821953034>");
-            }
-
-            if (HasCondition(Condition.ItemCurse))
-            {
-                s.Append("<:curse:538074679492083742>");
-            }
-
-            if (HasCondition(Condition.Poison))
-            {
-                s.Append("<:Poison:549526931847249920>");
-            }
-
-            if (HasCondition(Condition.Seal))
-            {
-                s.Append("<:Psy_Seal:549526931465568257>");
-            }
-
-            if (HasCondition(Condition.Sleep))
-            {
-                s.Append("<:Sleep:555427023519088671>");
-            }
-
-            if (HasCondition(Condition.Stun))
-            {
-                s.Append("<:Flash_Bolt:536966441862299678>");
-            }
-
-            if (HasCondition(Condition.Venom))
-            {
-                s.Append("<:Poison:549526931847249920>");
-            }
-
-            return s.ToString();
+            return new List<string>();
         }
 
+        public List<ColossoFighter> getEnemies()
+        {
+            return battle.getTeam(enemies);
+        }
+
+        public string getMoves()
+        {
+            var relevantMoves = moves.Where(m => m is Psynergy).ToList().ConvertAll(m => (Psynergy)m).ConvertAll(p => $"{p.emote} {p.name} `{p.PPCost}`");
+            return string.Join(" - ", relevantMoves);
+        }
+
+        public List<ColossoFighter> getTeam()
+        {
+            return battle.getTeam(party);
+        }
+        public bool HasCondition(Condition con)
+        {
+            return Conditions.Contains(con);
+        }
+
+        public bool HasCurableCondition()
+        {
+            Condition[] badConditions = { Condition.Poison, Condition.Venom, Condition.Seal, Condition.Sleep, Condition.Stun, Condition.DeathCurse };
+            return Conditions.Any(c => badConditions.Contains(c));
+        }
+
+        public List<string> heal(uint healHP)
+        {
+            List<string> log = new List<string>();
+            if (!IsAlive())
+            {
+                log.Add($"{name} is unaffected");
+                return log;
+            }
+
+            stats.HP = Math.Min(stats.HP + healHP, stats.maxHP);
+            if (stats.HP == stats.maxHP)
+            {
+                log.Add($"{name}'s HP was fully restored!");
+            }
+            else
+            {
+                log.Add($"{name} recovers {healHP} HP.");
+            }
+            return log;
+        }
+
+        public bool IsAlive()
+        {
+            return !HasCondition(Condition.Down);
+        }
+        public void Kill()
+        {
+            stats.HP = 0;
+            RemoveAllConditions();
+            AddCondition(Condition.Down);
+            Buffs = new List<Buff>();
+        }
+        public List<string> MainTurn()
+        {
+            List<string> turnLog = new List<string>();
+            if (!IsAlive())
+            {
+                return turnLog;
+            }
+
+            if (!selected.hasPriority)
+            {
+                turnLog.AddRange(selected.Use(this));
+            }
+            else
+            {
+                if (selected is Defend)
+                {
+                    turnLog.Add($"{selected.emote} {this.name} is defending.");
+                }
+            }
+            RemoveCondition(Condition.Flinch);
+            //Haunt Damage
+            if (HasCondition(Condition.Haunt) && Global.random.Next(0, 2) == 0)
+            {
+                var hauntDmg = Math.Min(280, (uint)(stats.HP * Global.random.Next(20, 40) / 100));
+                turnLog.AddRange(DealDamage(hauntDmg));
+            }
+
+            return turnLog;
+        }
+
+        public double MultiplyBuffs(string stat)
+        {
+            var mult = Buffs.Where(b => b.stat.Equals(stat, StringComparison.InvariantCultureIgnoreCase) && b.multiplier > 0).Aggregate(1.0, (p, s) => p *= s.multiplier);
+            if (mult > 2.0)
+            {
+                mult = 2.0;
+            }
+
+            if (mult < 0.4)
+            {
+                mult = 0.4;
+            }
+
+            return mult;
+        }
+
+        public void RemoveAllConditions()
+        {
+            Condition[] dontRemove = new Condition[] { Condition.Down, Condition.Counter, Condition.ItemCurse, Condition.Haunt };
+            Conditions.RemoveAll(c => !dontRemove.Contains(c));
+        }
+
+        public void RemoveCondition(Condition con)
+        {
+            if (Conditions.Contains(con))
+            {
+                Conditions.Remove(con);
+            }
+        }
+        public List<string> Revive(uint percentage)
+        {
+            List<string> log = new List<string>();
+            if (!IsAlive())
+            {
+                stats.HP = stats.maxHP * percentage / 100;
+                log.Add($"{name} is back on their feet.");
+                RemoveCondition(Condition.Down);
+            }
+            else
+            {
+                log.Add($"{name} is unaffected");
+            }
+            return log;
+        }
         public bool select(string emote)
         {
             string[] numberEmotes = new string[] {"\u0030\u20E3", "1⃣", "\u0032\u20E3", "\u0033\u20E3", "\u0034\u20E3", "\u0035\u20E3",
@@ -493,45 +515,15 @@ namespace IodemBot.Modules.ColossoBattles
             hasSelected = true;
         }
 
-        public int CompareTo(ColossoFighter obj)
+        public virtual List<string> StartTurn()
         {
-            if (obj == null)
+            List<string> turnLog = new List<string>();
+            if (selected.hasPriority)
             {
-                return 1;
+                turnLog.AddRange(selected.Use(this));
             }
 
-            if (name == obj.name)
-            {
-                return 0;
-            }
-
-            if (stats.Spd > obj.stats.Spd)
-            {
-                return 1;
-            }
-
-            if (stats.Spd == obj.stats.Spd)
-            {
-                return 0;
-            }
-
-            return -1;
-        }
-
-        public abstract object Clone();
-    }
-
-    public struct Buff
-    {
-        public string stat;
-        public double multiplier;
-        public uint turns;
-
-        public Buff(string stat, double multiplier, uint turns)
-        {
-            this.stat = stat;
-            this.multiplier = multiplier;
-            this.turns = turns;
+            return turnLog;
         }
     }
 }

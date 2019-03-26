@@ -11,14 +11,6 @@ namespace IodemBot.Modules
 {
     public class ModTools : ModuleBase<SocketCommandContext>
     {
-        [Command("Kick")]
-        [RequireUserPermission(GuildPermission.KickMembers)]
-        [RequireBotPermission(GuildPermission.KickMembers)]
-        public async Task KickUser(IGuildUser user, string reason = "No reason provided.")
-        {
-            await user.KickAsync(reason);
-        }
-
         [Command("Ban")]
         [RequireUserPermission(GuildPermission.BanMembers)]
         [RequireBotPermission(GuildPermission.BanMembers)]
@@ -55,6 +47,13 @@ namespace IodemBot.Modules
             await (Context.Message.Channel as SocketTextChannel).DeleteMessagesAsync(messages);
         }
 
+        [Command("Kick")]
+        [RequireUserPermission(GuildPermission.KickMembers)]
+        [RequireBotPermission(GuildPermission.KickMembers)]
+        public async Task KickUser(IGuildUser user, string reason = "No reason provided.")
+        {
+            await user.KickAsync(reason);
+        }
         [Command("setupIodem")]
         [Remarks("One Time Use only, if it works")]
         [RequireOwner]

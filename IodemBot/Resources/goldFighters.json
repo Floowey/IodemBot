@@ -499,7 +499,7 @@
       "movepool": [
 		"Briar",
 		"Quake Sphere",
-		"Cure Well",
+		"Cure",
 		"Toxic Grit",
 		"Mighty Press",
 		"Black Ice"
@@ -532,7 +532,7 @@
       "movepool": [
 		"Briar",
 		"Quake Sphere",
-		"Cure Well",
+		"Cure",
 		"Toxic Grit",
 		"Mighty Press",
 		"Black Ice"
@@ -599,6 +599,8 @@
       "imgurl": "",
       "movepool": [
 		"Phoenix",
+		"Phoenix",
+		"Phoenix",
 		"Fire Dance",
 		"Pyroclasm",
 		"Searing Beam",
@@ -627,6 +629,8 @@
       "name": "Wonder Bird 2",
       "imgurl": "",
       "movepool": [
+		"Phoenix",
+		"Phoenix",
 		"Phoenix",
 		"Fire Dance",
 		"Pyroclasm",
