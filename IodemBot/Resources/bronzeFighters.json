@@ -1043,7 +1043,7 @@
   ],
    [
     {
-      "name": "Emu",
+      "name": "Emu 1",
       "imgurl": "https://goldensunwiki.net/wiki/File:Alec_Goblin.png",
       "movepool": [
 		"Mega Slash"
@@ -1091,7 +1091,7 @@
 	  }
     },
 	{
-      "name": "Emu",
+      "name": "Emu 2",
       "imgurl": "",
       "movepool": [
 		"Mega Slash"
