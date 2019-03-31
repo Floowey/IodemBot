@@ -29,6 +29,7 @@ namespace IodemBot.Modules.ColossoBattles
         static ColossoPvE()
         {
             //lobbyChannelId = 528637030825984000;
+            Global.Client.ReactionAdded += ReactionAdded;
             battles = new List<BattleCollector>();
         }
 
@@ -62,8 +63,6 @@ namespace IodemBot.Modules.ColossoBattles
             {
                 _ = a.reset();
             }
-
-            await Task.CompletedTask;
         }
 
         [Command("setEnemy")]
@@ -76,8 +75,6 @@ namespace IodemBot.Modules.ColossoBattles
             {
                 a.setEnemy(enemy);
             }
-
-            await Task.CompletedTask;
         }
 
         private async Task<BattleCollector> GetBattleCollector(SocketCommandContext Context, string Name, BattleDifficulty diff)

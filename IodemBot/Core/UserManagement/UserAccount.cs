@@ -22,7 +22,6 @@ namespace IodemBot.Core.UserManagement
 
         public uint XP { get; set; } = 0;
         public DateTime lastXP { get; set; }
-        public DateTime lastDayActive { get; set; }
 
         [JsonIgnore]
         public uint LevelNumber
@@ -72,9 +71,6 @@ namespace IodemBot.Core.UserManagement
                 return AdeptClassSeriesManager.getClass(this).name; //GoldenSun.getClass(element, LevelNumber, (uint) classToggle);
             }
         }
-
-        public int uniqueDaysActive { get; set; } = 0;
-
         //Friend Codes
         public bool arePublicCodes = false;
 
@@ -95,6 +91,7 @@ namespace IodemBot.Core.UserManagement
         public int kills { get; set; } = 0;
         public int defends { get; set; } = 0;
         public int attackedWeakness { get; set; } = 0;
+        public uint damageTanked { get; set; } = 0;
 
         public static BattleStats operator +(BattleStats b1, BattleStats b2)
         {
@@ -108,7 +105,9 @@ namespace IodemBot.Core.UserManagement
                 soloBattles = b1.soloBattles + b2.soloBattles,
                 supported = b1.supported + b2.supported,
                 kills = b1.kills + b2.kills,
-                defends = b1.defends + b2.defends
+                defends = b1.defends + b2.defends,
+                attackedWeakness = b1.attackedWeakness + b2.attackedWeakness,
+                damageTanked = b1.damageTanked + b2.damageTanked
             };
         }
     }
@@ -129,5 +128,6 @@ namespace IodemBot.Core.UserManagement
         public int lookedUpInformation { get; set; } = 0;
         public DateTime lastDayActive { get; set; }
         public int lookedUpClass { get; set; }
+        public int MessagesInColossoTalks { get; set; }
     }
 }

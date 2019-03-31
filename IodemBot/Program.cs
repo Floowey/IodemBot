@@ -54,8 +54,9 @@ namespace IodemBot
                 });
             }
 
+            Global.Client = client;
+
             client.Log += Log;
-            client.ReactionAdded += Client_ReactionAdded;
             client.Ready += Client_Ready;
             client.UserLeft += Client_UserLeft;
             client.UserJoined += Client_UserJoined;
@@ -83,6 +84,8 @@ namespace IodemBot
             "Appearances can be an illusion... {0} has a caring heart.",
             "Isaac gave a Hard Nut to {0}",
             "Felix gave a Hard Nut to {0}",
+            "You're {0}? The one they're all talking about? I heard rumors that you were a huge, hulking man. I guess they were wrong.",
+            "Well, if it isn't {0}, too! Where do you all plan to go today?"
         };
 
         private async Task Client_UserJoined(SocketGuildUser user)
@@ -105,11 +108,6 @@ namespace IodemBot
             //setup colosso
             await client.SetGameAsync("in Babi's Palast.", "https://www.twitch.tv/directory/game/Golden%20Sun", ActivityType.Streaming);
             Global.UpSince = DateTime.UtcNow;
-        }
-
-        private async Task Client_ReactionAdded(Cacheable<IUserMessage, ulong> cache, ISocketMessageChannel channel, SocketReaction reaction)
-        {
-            await Modules.ColossoBattles.ColossoPvE.ReactionAdded(cache, channel, reaction);
         }
 
         private async Task Log(LogMessage msg)

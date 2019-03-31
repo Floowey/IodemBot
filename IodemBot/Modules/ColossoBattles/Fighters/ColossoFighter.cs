@@ -176,6 +176,10 @@ namespace IodemBot.Modules.ColossoBattles
             if (stats.HP > damage)
             {
                 stats.HP -= damage;
+                if (this is PlayerFighter)
+                {
+                    ((PlayerFighter)this).battleStats.damageTanked += damage;
+                }
             }
             else
             {

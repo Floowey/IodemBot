@@ -258,6 +258,7 @@
     <Compile Include="Modules\GoldenSunMechanics\Classes\Requirements\ReviveRequirement.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Classes\Requirements\SoloBattleRequirement.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Classes\Requirements\TeammatesRequirement.cs" />
+    <Compile Include="Modules\GoldenSunMechanics\Classes\Requirements\UnlockedClassesRequirement.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Effects\BreakEffect.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Effects\ChanceToOHKOEffect.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Effects\ConditionEffect.cs" />

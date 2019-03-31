@@ -25,41 +25,48 @@ namespace IodemBot.Core.Leveling
 
             // if the user has a timeout, ignore them
             var sinceLastXP = DateTime.UtcNow - userAccount.lastXP;
-            if (sinceLastXP.Minutes < 2)
-            {
-                return;
-            }
-
-            userAccount.lastXP = DateTime.UtcNow;
-
             uint oldLevel = userAccount.LevelNumber;
-            userAccount.XP += (uint)(new Random()).Next(30, 60);
 
-            if ((DateTime.Now.Date != userAccount.lastDayActive.Date))
+            if (sinceLastXP.Minutes >= 2)
             {
-                userAccount.uniqueDaysActive++;
-                userAccount.lastDayActive = DateTime.Now.Date;
+                userAccount.lastXP = DateTime.UtcNow;
+                userAccount.XP += (uint)(new Random()).Next(30, 60);
             }
 
-            if ((DateTime.Now - user.JoinedAt).Value.TotalDays > 30)
+            if ((DateTime.Now.Date != userAccount.ServerStats.lastDayActive.Date))
             {
-                await GoldenSun.AwardClassSeries("Hermit Series", user, channel);
+                userAccount.ServerStats.uniqueDaysActive++;
+                userAccount.ServerStats.lastDayActive = DateTime.Now.Date;
+
+                if ((DateTime.Now - user.JoinedAt).Value.TotalDays > 30)
+                {
+                    await GoldenSun.AwardClassSeries("Hermit Series", user, channel);
+                }
             }
 
             if (channel.Id != userAccount.ServerStats.mostRecentChannel)
             {
                 userAccount.ServerStats.mostRecentChannel = channel.Id;
                 userAccount.ServerStats.channelSwitches += 2;
-                if (userAccount.ServerStats.channelSwitches >= 10)
+                if (userAccount.ServerStats.channelSwitches >= 14)
                 {
                     await GoldenSun.AwardClassSeries("Air Pilgrim Series", user, channel);
                 }
             }
             else
             {
-                if (userAccount.ServerStats.channelSwitches >= 1)
+                if (userAccount.ServerStats.channelSwitches > 0)
                 {
                     userAccount.ServerStats.channelSwitches--;
+                }
+            }
+
+            if (channel.Id == 546760009741107216)
+            {
+                userAccount.ServerStats.MessagesInColossoTalks++;
+                if (userAccount.ServerStats.MessagesInColossoTalks >= 50)
+                {
+                    await GoldenSun.AwardClassSeries("Swordsman Series", user, channel);
                 }
             }
 
