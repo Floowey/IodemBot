@@ -1507,7 +1507,7 @@
             "movepool": [
                 "Protect",
                 "High Impact",
-                "Freeze Prism",
+                "Hail Prism",
                 "Ice Blessing",
                 "Debilitate",
                 "Diamond Dust",
@@ -1516,7 +1516,7 @@
             "stats": {
                 "maxHP": 1000,
                 "maxPP": 300,
-                "Atk": 400,
+                "Atk": 300,
                 "Def": 160,
                 "Spd": 160
             },
@@ -1539,7 +1539,7 @@
                 "Destruct Ray",
                 "Blue Bolt",
                 "Tempest",
-                "Spark Plasma"
+                "Shine Plasma"
             ],
             "stats": {
                 "maxHP": 800,
