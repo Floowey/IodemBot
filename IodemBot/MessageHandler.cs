@@ -1,13 +1,13 @@
-﻿using System.Reflection;
-using System.Threading.Tasks;
+﻿using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
-using System;
 using IodemBot.Core.Leveling;
-using System.Text.RegularExpressions;
-using Discord;
-using System.Collections.Generic;
 using IodemBot.Core.UserManagement;
+using System;
+using System.Collections.Generic;
+using System.Reflection;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 
 namespace IodemBot
 {
@@ -15,7 +15,7 @@ namespace IodemBot
     {
         private DiscordSocketClient client;
         private CommandService service;
-        ulong[] whiteList = { 1234 };
+        private ulong[] whiteList = { 1234 };
         private List<AutoResponse> responses;
 
         public async Task InitializeAsync(DiscordSocketClient client)
@@ -43,7 +43,7 @@ namespace IodemBot
                     Emote.Parse("<:sad:490015818063675392>")),
                 60));
             responses.Add(new AutoResponse(
-                new Regex("(Air).*(Rock).*(Sol Blade)|(Sol Blade).*(Air).*(Rock)", RegexOptions.Compiled|RegexOptions.IgnoreCase),
+                new Regex("(Air).*(Rock).*(Sol Blade)|(Sol Blade).*(Air).*(Rock)", RegexOptions.Compiled | RegexOptions.IgnoreCase),
                 new Reaction("I assume you are talking about the Air's Rock Glitch where you can get an early Sol Blade. Check TLPlexas video about it! https://www.youtube.com/watch?v=AIdt53_mqXQ&t=1s"),
                 30));
             responses.Add(new AutoResponse(
@@ -64,9 +64,16 @@ namespace IodemBot
         private async Task HandleMessageAsync(SocketMessage s)
         {
             SocketUserMessage msg = s as SocketUserMessage;
-            if (msg == null) return;
+            if (msg == null)
+            {
+                return;
+            }
+
             var context = new SocketCommandContext(client, msg);
-            if (context.User.IsBot) return;
+            if (context.User.IsBot)
+            {
+                return;
+            }
             //Check for Profanity here
             responses.ForEach(async r => await r.Check(msg));
             Leveling.UserSentMessage((SocketGuildUser)context.User, (SocketTextChannel)context.Channel);
@@ -75,7 +82,7 @@ namespace IodemBot
 
         private class CurseReaction : Reaction
         {
-            public CurseReaction() : base("",Emote.Parse("<:curse:538074679492083742>"))
+            public CurseReaction() : base("", Emote.Parse("<:curse:538074679492083742>"))
             {
             }
 
@@ -85,7 +92,7 @@ namespace IodemBot
                 var userAccount = UserAccounts.GetAccount(msg.Author);
                 userAccount.ServerStats.hasWrittenCurse = true;
                 UserAccounts.SaveAccounts();
-                await ServerGames.UserHasCursed((SocketGuildUser) msg.Author, (SocketTextChannel) msg.Channel);
+                await ServerGames.UserHasCursed((SocketGuildUser)msg.Author, (SocketTextChannel)msg.Channel);
             }
         }
 
@@ -119,12 +126,17 @@ namespace IodemBot
             {
                 if (trigger.IsMatch(msg.Content))
                 {
-                    if ((DateTime.Now - lastUse).TotalSeconds < timeOut) return;
+                    if ((DateTime.Now - lastUse).TotalSeconds < timeOut)
+                    {
+                        return;
+                    }
+
                     await reaction.ReactAsync(msg);
                     lastUse = DateTime.Now;
                 }
             }
         }
+
         internal class Reaction
         {
             private string text;
@@ -150,7 +162,11 @@ namespace IodemBot
 
             public virtual async Task ReactAsync(SocketUserMessage msg)
             {
-                if (emotes.Length > 0) await msg.AddReactionsAsync(emotes);
+                if (emotes.Length > 0)
+                {
+                    await msg.AddReactionsAsync(emotes);
+                }
+
                 if (text != "")
                 {
                     var embed = new EmbedBuilder();

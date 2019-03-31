@@ -1,12 +1,10 @@
 ﻿using Discord;
 using Discord.WebSocket;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using IodemBot.Core.UserManagement;
 using IodemBot.Modules;
+using System;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace IodemBot.Core.Leveling
 {
@@ -15,43 +13,61 @@ namespace IodemBot.Core.Leveling
         internal static ulong[] blackListedChannels = new ulong[] { 358276942337671178 };
         public static int rate = 200;
         public static int cutoff = 125000;
+
         internal static async void UserSentMessage(SocketGuildUser user, SocketTextChannel channel)
         {
-            if (blackListedChannels.Contains(channel.Id)) return;
-            var userAccount = UserAccounts.GetAccount(user);
-         
-            // if the user has a timeout, ignore them
-            var sinceLastXP = DateTime.UtcNow - userAccount.lastXP;
-            if (sinceLastXP.Minutes < 2) return;
-            userAccount.lastXP = DateTime.UtcNow;
-
-            uint oldLevel = userAccount.LevelNumber;
-            userAccount.XP += (uint)(new Random()).Next(30, 60);
-
-            if((DateTime.Now.Date != userAccount.lastDayActive.Date))
+            if (blackListedChannels.Contains(channel.Id))
             {
-                userAccount.uniqueDaysActive++;
-                userAccount.lastDayActive = DateTime.Now.Date;
+                return;
             }
 
-            if((DateTime.Now - user.JoinedAt).Value.TotalDays > 30)
+            var userAccount = UserAccounts.GetAccount(user);
+
+            // if the user has a timeout, ignore them
+            var sinceLastXP = DateTime.UtcNow - userAccount.lastXP;
+            uint oldLevel = userAccount.LevelNumber;
+
+            if (sinceLastXP.Minutes >= 2)
             {
-                await GoldenSun.AwardClassSeries("Hermit Series", user, channel);
+                userAccount.lastXP = DateTime.UtcNow;
+                userAccount.XP += (uint)(new Random()).Next(30, 60);
+            }
+
+            if ((DateTime.Now.Date != userAccount.ServerStats.lastDayActive.Date))
+            {
+                userAccount.ServerStats.uniqueDaysActive++;
+                userAccount.ServerStats.lastDayActive = DateTime.Now.Date;
+
+                if ((DateTime.Now - user.JoinedAt).Value.TotalDays > 30)
+                {
+                    await GoldenSun.AwardClassSeries("Hermit Series", user, channel);
+                }
             }
 
             if (channel.Id != userAccount.ServerStats.mostRecentChannel)
             {
                 userAccount.ServerStats.mostRecentChannel = channel.Id;
                 userAccount.ServerStats.channelSwitches += 2;
-                if(userAccount.ServerStats.channelSwitches >= 10)
+                if (userAccount.ServerStats.channelSwitches >= 14)
                 {
                     await GoldenSun.AwardClassSeries("Air Pilgrim Series", user, channel);
-                } 
+                }
             }
             else
             {
-                if (userAccount.ServerStats.channelSwitches >= 1)
+                if (userAccount.ServerStats.channelSwitches > 0)
+                {
                     userAccount.ServerStats.channelSwitches--;
+                }
+            }
+
+            if (channel.Id == 546760009741107216)
+            {
+                userAccount.ServerStats.MessagesInColossoTalks++;
+                if (userAccount.ServerStats.MessagesInColossoTalks >= 50)
+                {
+                    await GoldenSun.AwardClassSeries("Swordsman Series", user, channel);
+                }
             }
 
             UserAccounts.SaveAccounts();
@@ -67,11 +83,14 @@ namespace IodemBot.Core.Leveling
 
         internal static async void LevelUp(UserAccount userAccount, SocketGuildUser user, SocketTextChannel channel = null)
         {
-            if(userAccount.LevelNumber < 10 && (userAccount.LevelNumber % 5) > 0)
+            if (userAccount.LevelNumber < 10 && (userAccount.LevelNumber % 5) > 0)
             {
                 channel = (SocketTextChannel)user.Guild.Channels.Where(c => c.Id == 358276942337671178).FirstOrDefault();
             }
-            if (channel == null) return;
+            if (channel == null)
+            {
+                return;
+            }
             // the user leveled up
             var embed = new EmbedBuilder();
             embed.WithColor(Colors.get(userAccount.element.ToString()));
@@ -104,9 +123,9 @@ namespace IodemBot.Core.Leveling
             else
             {
                 curLevel = (uint)(50 - Math.Sqrt(cutoff / rate) + Math.Sqrt(xp / rate));
-                xpneeded = (uint)Math.Pow((curLevel + 1)-25, 2) * 200 - xp;
+                xpneeded = (uint)Math.Pow((curLevel + 1) - 25, 2) * 200 - xp;
             }
-            
+
             return xpneeded;
         }
     }

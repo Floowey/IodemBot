@@ -1,9 +1,4 @@
-﻿using System;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using Discord;
+﻿using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
 using Iodembot.Preconditions;
@@ -11,15 +6,22 @@ using IodemBot.Core.Leveling;
 using IodemBot.Core.UserManagement;
 using IodemBot.Extensions;
 using IodemBot.Modules.ColossoBattles;
+using Newtonsoft.Json;
+using System;
+using System.Linq;
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 
 namespace IodemBot.Modules
 {
     public class Misc : ModuleBase<SocketCommandContext>
-    { 
+    {
         [Command("say")]
         [RequireUserPermission(GuildPermission.ManageGuild)]
         [Remarks("Are you me?")]
-        public async Task Echo([Remainder] string message) {
+        public async Task Echo([Remainder] string message)
+        {
             var embed = new EmbedBuilder();
             embed.WithColor(Colors.get("Iodem"));
             embed.WithDescription(message);
@@ -44,10 +46,14 @@ namespace IodemBot.Modules
         {
             var lower = text.ToLower();
             var s = new StringBuilder();
-            for(int i = 0; i < lower.Length; i++)
+            for (int i = 0; i < lower.Length; i++)
             {
                 string c = lower[i].ToString();
-                if (i % 2 == 1) c = c.ToUpper();
+                if (i % 2 == 1)
+                {
+                    c = c.ToUpper();
+                }
+
                 s.Append(c);
             }
 
@@ -73,7 +79,11 @@ namespace IodemBot.Modules
             var embed = new EmbedBuilder();
             embed.WithColor(Colors.get("Iodem"));
             string link = "https://goldensunwiki.net/wiki/Main_Page";
-            if (searchQuery != "") link = $"https://goldensunwiki.net/w/index.php?Search&search={searchQuery.Trim().Replace(" ", "+")}";
+            if (searchQuery != "")
+            {
+                link = $"https://goldensunwiki.net/w/index.php?Search&search={searchQuery.Trim().Replace(" ", "+")}";
+            }
+
             embed.WithDescription(link);
             await Context.Channel.SendMessageAsync("", false, embed.Build());
         }
@@ -125,13 +135,12 @@ namespace IodemBot.Modules
             await Context.Channel.SendMessageAsync("", false, embed.Build());
         }
 
-
         [Command("status")]
         [Cooldown(5)]
         [Remarks("Get information about your level etc")]
         public async Task status(SocketGuildUser user = null)
         {
-            user = user ?? (SocketGuildUser) Context.User;
+            user = user ?? (SocketGuildUser)Context.User;
             var account = UserAccounts.GetAccount(user);
             var embed = new EmbedBuilder();
             var p = new PlayerFighter(user);
@@ -187,18 +196,21 @@ namespace IodemBot.Modules
             embed.WithThumbnailUrl(user.GetAvatarUrl());
             //embed.WithDescription($"Status.");
 
-            embed.AddField("Damage (Ninja)", account.BattleStats.damageDealt, true);
-            embed.AddField("Kills By Hand (Samurai)", account.BattleStats.killsByHand, true);
-            embed.AddField("HP Healed (White Mage)", account.BattleStats.HPhealed, true);
-            embed.AddField("Revives (Medium)", account.BattleStats.revives, true);
-            embed.AddField("Solos (Ranger)", account.BattleStats.soloBattles, true);
-            embed.AddField("Teammates (Dragoon)", account.BattleStats.totalTeamMates, true);
-            embed.AddField("Days Active (Hermit)", account.ServerStats.uniqueDaysActive, true);
-            embed.AddField("Commands Used (Scrapper)", account.ServerStats.CommandsUsed);
-            embed.AddField("Wins/Streak (Brute, Curse Mage and More)", $"{account.ServerStats.ColossoWins}, {account.ServerStats.ColossoHighestStreak}");
-            embed.AddField("Rps Wins/Streak (Aqua/Air Seer)", $"{account.ServerStats.rpsWins}, {account.ServerStats.rpsStreak}");
-            embed.AddField("Channel Switches (Pilgrim)", account.ServerStats.channelSwitches);
-            embed.AddField("Curse Mage (Written Curse, Quoted Matthew)", $"{account.ServerStats.hasWrittenCurse}, {account.ServerStats.hasQuotedMatthew}");
+            //embed.AddField("Damage (Ninja)", account.BattleStats.damageDealt, true);
+            //embed.AddField("Kills By Hand (Samurai)", account.BattleStats.killsByHand, true);
+            //embed.AddField("HP Healed (White Mage)", account.BattleStats.HPhealed, true);
+            //embed.AddField("Revives (Medium)", account.BattleStats.revives, true);
+            //embed.AddField("Solos (Ranger)", account.BattleStats.soloBattles, true);
+            //embed.AddField("Teammates (Dragoon)", account.BattleStats.totalTeamMates, true);
+            //embed.AddField("Days Active (Hermit)", account.ServerStats.uniqueDaysActive, true);
+            //embed.AddField("Commands Used (Scrapper)", account.ServerStats.CommandsUsed);
+            //embed.AddField("Wins/Streak (Brute, Curse Mage and More)", $"{account.ServerStats.ColossoWins}, {account.ServerStats.ColossoHighestStreak}");
+            //embed.AddField("Rps Wins/Streak (Aqua/Air Seer)", $"{account.ServerStats.rpsWins}, {account.ServerStats.rpsStreak}");
+            //embed.AddField("Channel Switches (Pilgrim)", account.ServerStats.channelSwitches);
+            //embed.AddField("Curse Mage (Written Curse, Quoted Matthew)", $"{account.ServerStats.hasWrittenCurse}, {account.ServerStats.hasQuotedMatthew}");
+
+            embed.AddField("Server Stats", JsonConvert.SerializeObject(account.ServerStats, Formatting.Indented));
+            embed.AddField("Battle Stats", JsonConvert.SerializeObject(account.BattleStats, Formatting.Indented));
 
             embed.AddField("Unlocked Classes", account.BonusClasses.Length == 0 ? "none" : string.Join(", ", account.BonusClasses));
 
@@ -249,7 +261,10 @@ namespace IodemBot.Modules
             {
                 mentionedRole = Context.Guild.Roles.Where(r => r.Name.ToLower().StartsWith(args)).FirstOrDefault();
             }
-            if (mentionedRole == null || mentionedRole.IsEveryone) return;
+            if (mentionedRole == null || mentionedRole.IsEveryone)
+            {
+                return;
+            }
 
             var membercount = Context.Guild.Users.Where(u => u.Roles.Contains(mentionedRole)).Count();
 
@@ -292,7 +307,7 @@ namespace IodemBot.Modules
             {
                 choices = s.Split(',');
             }
-            foreach(string c in choices)
+            foreach (string c in choices)
             {
                 c.Trim();
             }
@@ -316,7 +331,7 @@ namespace IodemBot.Modules
             for (int i = 0; i < 10; i++)
             {
                 var curAccount = topAccounts[i];
-                builder.Append($"`{i+1}` {Emotes[i]} {curAccount.Name.PadRight(15)} - `Lv{curAccount.LevelNumber}` - `{curAccount.XP}xp` \n");
+                builder.Append($"`{i + 1}` {Emotes[i]} {curAccount.Name.PadRight(15)} - `Lv{curAccount.LevelNumber}` - `{curAccount.XP}xp` \n");
                 //builder.Append($"`{i + 1}` {Emotes[i]} - `Lv{curAccount.LevelNumber}` - `{curAccount.XP}xp` \n");
             }
 
@@ -326,7 +341,7 @@ namespace IodemBot.Modules
             if (rank >= 10)
             {
                 builder.Append("... \n");
-                builder.Append($"`{rank+1}` {Context.User.Username.PadRight(15)} - `Lv{account.LevelNumber}` - `{account.XP}xp`");
+                builder.Append($"`{rank + 1}` {Context.User.Username.PadRight(15)} - `Lv{account.LevelNumber}` - `{account.XP}xp`");
             }
 
             embed.WithDescription(builder.ToString());
@@ -342,21 +357,26 @@ namespace IodemBot.Modules
             var embed = new EmbedBuilder();
             embed.WithColor(Colors.get("Iodem"));
             SocketGuildUser user;
-            if(Context.Message.MentionedUsers.FirstOrDefault() != null)
+            if (Context.Message.MentionedUsers.FirstOrDefault() != null)
             {
-                user = (SocketGuildUser) Context.Message.MentionedUsers.FirstOrDefault();
-            } else
+                user = (SocketGuildUser)Context.Message.MentionedUsers.FirstOrDefault();
+            }
+            else
             {
-                user = (SocketGuildUser) Context.User;
+                user = (SocketGuildUser)Context.User;
             }
 
             var Role = Context.Guild.Roles.Where(r => r.Id == 511704880122036234).FirstOrDefault();
-            if (Role == null) return;
+            if (Role == null)
+            {
+                return;
+            }
 
-            if(Role.Members.Where(m => m.Id == user.Id).FirstOrDefault() == null)
+            if (Role.Members.Where(m => m.Id == user.Id).FirstOrDefault() == null)
             {
                 await user.AddRoleAsync(Role);
-            } else
+            }
+            else
             {
                 await user.RemoveRoleAsync(Role);
             }
@@ -366,4 +386,3 @@ namespace IodemBot.Modules
         }
     }
 }
-    

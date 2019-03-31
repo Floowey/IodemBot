@@ -1,13 +1,9 @@
 ﻿using IodemBot.Modules.ColossoBattles;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
-    class Nothing : Move
+    internal class Nothing : Move
     {
         public Nothing() : base("Nothing", "😶", Target.self, 0, new List<EffectImage>())
         {
@@ -30,9 +26,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         protected override List<string> InternalUse(ColossoFighter User)
         {
-            return new List<string>() ;
+            return new List<string>();
         }
-
-
     }
 }

@@ -5,9 +5,6 @@ using Iodembot.Preconditions;
 using IodemBot.Core.Leveling;
 using IodemBot.Core.UserManagement;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace IodemBot.Modules
@@ -37,6 +34,7 @@ namespace IodemBot.Modules
         }
 
         public enum rpsEnum { Rock, Paper, Scissors }
+
         [Command("rps")]
         [Cooldown(4)]
         [Remarks("Rock, Paper, Scissors")]
@@ -49,7 +47,6 @@ namespace IodemBot.Modules
             rpsEnum cpuChoice = (rpsEnum)((new Random()).Next(0, 1000) % 3);
             string result = "";
 
-
             switch ((int)choice - (int)cpuChoice)
             {
                 case 1:
@@ -57,10 +54,12 @@ namespace IodemBot.Modules
                     result = "You read me like an open book! You win!";
                     await ServerGames.UserWonRPS((SocketGuildUser)Context.User, (SocketTextChannel)Context.Channel);
                     break;
+
                 case 0:
                     ServerGames.UserDidNotWinRPS((SocketGuildUser)Context.User);
                     result = "I may not have the gift of Psynergy, but I can still match your strength!";
                     break;
+
                 case -1:
                 case 2:
                     ServerGames.UserDidNotWinRPS((SocketGuildUser)Context.User);

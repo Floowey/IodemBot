@@ -1,22 +1,19 @@
-﻿using System;
+﻿using IodemBot.Modules.ColossoBattles;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using IodemBot.Modules.ColossoBattles;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
-    class StatEffect : IEffect
+    internal class StatEffect : IEffect
     {
-        string StatToBoost;
-        double Multiplier;
-        int probability = 100;
-        bool OnTarget = true;
-        int Turns = 5;
+        private string StatToBoost;
+        private double Multiplier;
+        private int probability = 100;
+        private bool OnTarget = true;
+        private int Turns = 5;
 
-        public StatEffect(string StatToBoost, double Value,long probability = 100, bool OnTarget = true, int Duration = 5)
+        public StatEffect(string StatToBoost, double Value, long probability = 100, bool OnTarget = true, int Duration = 5)
         {
             Init(StatToBoost, Value, probability, OnTarget, Duration);
         }
@@ -37,6 +34,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
                     StatToBoost = args[0];
                     break;
+
                 default: throw new ArgumentException("Stat Effects take 2-5 string arguments");
             }
         }
@@ -57,14 +55,19 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public override List<string> Apply(ColossoFighter User, ColossoFighter Target)
         {
             List<string> log = new List<string>();
-            if (!Target.IsAlive()) return log;
-            if(Global.random.Next(1,100) <= probability)
+            if (!Target.IsAlive())
+            {
+                return log;
+            }
+
+            if (Global.random.Next(1, 100) <= probability)
             {
                 if (OnTarget)
                 {
                     Target.applyBuff(new Buff(StatToBoost, Multiplier, (uint)Turns));
                     log.Add($"{Target.name}'s {StatToBoost} {(Multiplier > 1 ? "rises" : "lowers")}.");
-                } else
+                }
+                else
                 {
                     User.applyBuff(new Buff(StatToBoost, Multiplier, (uint)Turns));
                     log.Add($"{User.name}'s {StatToBoost} {(Multiplier > 1 ? "rises" : "lowers")}.");

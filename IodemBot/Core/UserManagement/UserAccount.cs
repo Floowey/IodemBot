@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using IodemBot.Modules;
-using IodemBot.Modules.GoldenSunMechanics;
+﻿using IodemBot.Modules.GoldenSunMechanics;
 using Newtonsoft.Json;
+using System;
 using static IodemBot.Modules.GoldenSunMechanics.Psynergy;
 
 namespace IodemBot.Core.UserManagement
@@ -19,6 +14,7 @@ namespace IodemBot.Core.UserManagement
 
         public BattleStats BattleStats { get; set; } = new BattleStats();
         public ServerStats ServerStats { get; set; } = new ServerStats();
+
         internal void revived()
         {
             BattleStats.revives++;
@@ -26,8 +22,9 @@ namespace IodemBot.Core.UserManagement
 
         public uint XP { get; set; } = 0;
         public DateTime lastXP { get; set; }
-        public DateTime lastDayActive { get; set; }
-        [JsonIgnore] public uint LevelNumber
+
+        [JsonIgnore]
+        public uint LevelNumber
         {
             get
             {
@@ -36,15 +33,17 @@ namespace IodemBot.Core.UserManagement
                 if (XP <= cutoff)
                 {
                     return (uint)Math.Sqrt(XP / 50);
-                } else
+                }
+                else
                 {
-                    return (uint) (50 - Math.Sqrt(cutoff / rate) + Math.Sqrt(XP / rate));
+                    return (uint)(50 - Math.Sqrt(cutoff / rate) + Math.Sqrt(XP / rate));
                 }
             }
         }
 
         //Golden Sun
         public Element element { get; set; } = Element.none;
+
         public int classToggle { get; set; } = 0;
 
         internal void dealtDmg(uint damage)
@@ -61,21 +60,20 @@ namespace IodemBot.Core.UserManagement
 
         internal void healedHP(long HPtoHeal)
         {
-            BattleStats.HPhealed += (uint) HPtoHeal;
+            BattleStats.HPhealed += (uint)HPtoHeal;
         }
 
-        [JsonIgnore] public string gsClass
+        [JsonIgnore]
+        public string gsClass
         {
             get
             {
                 return AdeptClassSeriesManager.getClass(this).name; //GoldenSun.getClass(element, LevelNumber, (uint) classToggle);
             }
         }
-
-        public int uniqueDaysActive { get; set; } = 0;
-
         //Friend Codes
         public bool arePublicCodes = false;
+
         public string N3DSCode { get; set; } = "0000-0000-0000";
         public string SwitchCode { get; set; } = "0000-0000-0000";
         public string PoGoCode { get; set; } = "0000-0000-0000";
@@ -93,6 +91,7 @@ namespace IodemBot.Core.UserManagement
         public int kills { get; set; } = 0;
         public int defends { get; set; } = 0;
         public int attackedWeakness { get; set; } = 0;
+        public uint damageTanked { get; set; } = 0;
 
         public static BattleStats operator +(BattleStats b1, BattleStats b2)
         {
@@ -106,11 +105,13 @@ namespace IodemBot.Core.UserManagement
                 soloBattles = b1.soloBattles + b2.soloBattles,
                 supported = b1.supported + b2.supported,
                 kills = b1.kills + b2.kills,
-                defends = b1.defends + b2.defends
+                defends = b1.defends + b2.defends,
+                attackedWeakness = b1.attackedWeakness + b2.attackedWeakness,
+                damageTanked = b1.damageTanked + b2.damageTanked
             };
         }
     }
-    
+
     public class ServerStats
     {
         public uint ColossoWins { get; set; } = 0;
@@ -126,5 +127,7 @@ namespace IodemBot.Core.UserManagement
         public int uniqueDaysActive { get; set; } = 0;
         public int lookedUpInformation { get; set; } = 0;
         public DateTime lastDayActive { get; set; }
+        public int lookedUpClass { get; set; }
+        public int MessagesInColossoTalks { get; set; }
     }
 }

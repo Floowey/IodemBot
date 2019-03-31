@@ -1,13 +1,10 @@
-﻿
-using Discord;
+﻿using Discord;
 using Discord.Commands;
+using Iodembot.Preconditions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Discord.WebSocket;
-using Discord.Rest;
-using Iodembot.Preconditions;
 
 namespace IodemBot.Modules
 {
@@ -73,7 +70,6 @@ namespace IodemBot.Modules
             {
                 builder.Fields.RemoveRange(0, 25);
                 await dmChannel.SendMessageAsync("", false, builder.Build());
-
             }
         }
 
@@ -90,7 +86,10 @@ namespace IodemBot.Modules
 
             var result = _service.Search(Context, query);
             if (query.StartsWith("module "))
+            {
                 query = query.Remove(0, "module ".Length);
+            }
+
             var emb = result.IsSuccess ? HelpCommand(result, builder) : await HelpModule(query, builder);
 
             if (emb.Fields.Length == 0)
@@ -133,24 +132,44 @@ namespace IodemBot.Modules
 
         private async Task AddModuleEmbedField(ModuleInfo module, EmbedBuilder builder)
         {
-            if (module is null) return;
+            if (module is null)
+            {
+                return;
+            }
+
             var descriptionBuilder = new List<string>();
             var duplicateChecker = new List<string>();
             foreach (var cmd in module.Commands)
             {
                 var result = await cmd.CheckPreconditionsAsync(Context);
-                if (!result.IsSuccess || duplicateChecker.Contains(cmd.Aliases.First())) continue;
+                if (!result.IsSuccess || duplicateChecker.Contains(cmd.Aliases.First()))
+                {
+                    continue;
+                }
+
                 duplicateChecker.Add(cmd.Aliases.First());
                 var cmdDescription = $"`{cmd.Aliases.First()}`";
                 if (!string.IsNullOrEmpty(cmd.Summary))
+                {
                     cmdDescription += $" | {cmd.Summary}";
+                }
+
                 if (!string.IsNullOrEmpty(cmd.Remarks))
+                {
                     cmdDescription += $" | {cmd.Remarks}";
+                }
+
                 if (cmdDescription != "``")
+                {
                     descriptionBuilder.Add(cmdDescription);
+                }
             }
 
-            if (descriptionBuilder.Count <= 0) return;
+            if (descriptionBuilder.Count <= 0)
+            {
+                return;
+            }
+
             var builtString = string.Join("\n", descriptionBuilder);
             var testLength = builtString.Length;
             if (testLength >= 1024)
@@ -159,11 +178,20 @@ namespace IodemBot.Modules
             }
             var moduleNotes = "";
             if (!string.IsNullOrEmpty(module.Summary))
+            {
                 moduleNotes += $" {module.Summary}";
+            }
+
             if (!string.IsNullOrEmpty(module.Remarks))
+            {
                 moduleNotes += $" {module.Remarks}";
+            }
+
             if (!string.IsNullOrEmpty(moduleNotes))
+            {
                 moduleNotes += "\n";
+            }
+
             if (!string.IsNullOrEmpty(module.Name))
             {
                 builder.AddField($"__**{module.Name}:**__",

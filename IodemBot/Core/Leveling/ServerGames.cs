@@ -1,13 +1,9 @@
 ﻿using Discord;
-using Discord.Rest;
 using Discord.WebSocket;
 using IodemBot.Core.UserManagement;
 using IodemBot.Modules;
 using IodemBot.Modules.ColossoBattles;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace IodemBot.Core.Leveling
@@ -23,14 +19,21 @@ namespace IodemBot.Core.Leveling
 
             userAccount.ServerStats.ColossoWins++;
             userAccount.ServerStats.ColossoStreak++;
-            if (userAccount.ServerStats.ColossoStreak > userAccount.ServerStats.ColossoHighestStreak) userAccount.ServerStats.ColossoHighestStreak = userAccount.ServerStats.ColossoStreak;
+            if (userAccount.ServerStats.ColossoStreak > userAccount.ServerStats.ColossoHighestStreak)
+            {
+                userAccount.ServerStats.ColossoHighestStreak = userAccount.ServerStats.ColossoStreak;
+            }
 
             UserAccounts.SaveAccounts();
             if (oldLevel != newLevel)
             {
                 Leveling.LevelUp(userAccount, user, channel);
             }
-            if (userAccount.ServerStats.ColossoWins >= 15) await GoldenSun.AwardClassSeries("Brute Series", user, channel);
+            if (userAccount.ServerStats.ColossoWins >= 15)
+            {
+                await GoldenSun.AwardClassSeries("Brute Series", user, channel);
+            }
+
             await Task.CompletedTask;
         }
 
@@ -67,12 +70,12 @@ namespace IodemBot.Core.Leveling
             userAccount.ServerStats.rpsStreak++;
             UserAccounts.SaveAccounts();
 
-            if(userAccount.ServerStats.rpsStreak == 4)
+            if (userAccount.ServerStats.rpsStreak == 4)
             {
                 await GoldenSun.AwardClassSeries("Air Seer Series", user, channel);
             }
 
-            if(userAccount.ServerStats.rpsWins == 15)
+            if (userAccount.ServerStats.rpsWins == 15)
             {
                 await GoldenSun.AwardClassSeries("Aqua Seer Series", user, channel);
             }
@@ -88,7 +91,7 @@ namespace IodemBot.Core.Leveling
         internal static async Task UserWonBattle(UserAccount userAccount, BattleStats battleStats, ColossoPvE.BattleDifficulty diff, ITextChannel battleChannel)
         {
             uint oldLevel = userAccount.LevelNumber;
-            userAccount.XP += (uint)(new Random()).Next(10, 20)*(uint) Math.Pow(((int) diff +1),2) * 2;
+            userAccount.XP += (uint)(new Random()).Next(10, 20) * (uint)Math.Pow(((int)diff + 1), 2) * 2;
             uint newLevel = userAccount.LevelNumber;
 
             userAccount.ServerStats.ColossoWins++;
@@ -96,22 +99,51 @@ namespace IodemBot.Core.Leveling
             userAccount.BattleStats += battleStats;
             var bs = userAccount.BattleStats;
 
-            if (userAccount.ServerStats.ColossoStreak > userAccount.ServerStats.ColossoHighestStreak) userAccount.ServerStats.ColossoHighestStreak = userAccount.ServerStats.ColossoStreak;
+            if (userAccount.ServerStats.ColossoStreak > userAccount.ServerStats.ColossoHighestStreak)
+            {
+                userAccount.ServerStats.ColossoHighestStreak = userAccount.ServerStats.ColossoStreak;
+            }
 
-            if (userAccount.ServerStats.ColossoWins >= 15) await GoldenSun.AwardClassSeries("Brute Series", userAccount, (SocketTextChannel)battleChannel);
+            if (userAccount.ServerStats.ColossoWins >= 15)
+            {
+                await GoldenSun.AwardClassSeries("Brute Series", userAccount, (SocketTextChannel)battleChannel);
+            }
 
-            if (bs.killsByHand >= 161) await GoldenSun.AwardClassSeries("Samurai Series", userAccount, (SocketTextChannel)battleChannel);
-            if (bs.damageDealt >= 666666) await GoldenSun.AwardClassSeries("Ninja Series", userAccount, (SocketTextChannel)battleChannel);
-            if (bs.soloBattles >= 50) await GoldenSun.AwardClassSeries("Ranger Series", userAccount, (SocketTextChannel)battleChannel);
-            if (bs.totalTeamMates >= 100) await GoldenSun.AwardClassSeries("Dragoon Series", userAccount, (SocketTextChannel)battleChannel);
-            if (bs.HPhealed >= 333333) await GoldenSun.AwardClassSeries("White Mage Series", userAccount, (SocketTextChannel) battleChannel);
-            if (bs.revives >= 50) await GoldenSun.AwardClassSeries("Medium Series", userAccount, (SocketTextChannel)battleChannel);
+            if (bs.killsByHand >= 161)
+            {
+                await GoldenSun.AwardClassSeries("Samurai Series", userAccount, (SocketTextChannel)battleChannel);
+            }
+
+            if (bs.damageDealt >= 666666)
+            {
+                await GoldenSun.AwardClassSeries("Ninja Series", userAccount, (SocketTextChannel)battleChannel);
+            }
+
+            if (bs.soloBattles >= 50)
+            {
+                await GoldenSun.AwardClassSeries("Ranger Series", userAccount, (SocketTextChannel)battleChannel);
+            }
+
+            if (bs.totalTeamMates >= 100)
+            {
+                await GoldenSun.AwardClassSeries("Dragoon Series", userAccount, (SocketTextChannel)battleChannel);
+            }
+
+            if (bs.HPhealed >= 333333)
+            {
+                await GoldenSun.AwardClassSeries("White Mage Series", userAccount, (SocketTextChannel)battleChannel);
+            }
+
+            if (bs.revives >= 50)
+            {
+                await GoldenSun.AwardClassSeries("Medium Series", userAccount, (SocketTextChannel)battleChannel);
+            }
 
             UserAccounts.SaveAccounts();
             if (oldLevel != newLevel)
             {
-                var user = (SocketGuildUser) await battleChannel.GetUserAsync(userAccount.ID); // Where(s => s. == userAccount.ID).First();
-                Leveling.LevelUp(userAccount, user, (SocketTextChannel) battleChannel);
+                var user = (SocketGuildUser)await battleChannel.GetUserAsync(userAccount.ID); // Where(s => s. == userAccount.ID).First();
+                Leveling.LevelUp(userAccount, user, (SocketTextChannel)battleChannel);
             }
 
             await Task.CompletedTask;
@@ -120,7 +152,7 @@ namespace IodemBot.Core.Leveling
         internal static async Task UserHasCursed(SocketGuildUser user, SocketTextChannel channel)
         {
             var userAccount = UserAccounts.GetAccount(user);
-            if(userAccount.ServerStats.hasQuotedMatthew && userAccount.ServerStats.hasWrittenCurse)
+            if (userAccount.ServerStats.hasQuotedMatthew && userAccount.ServerStats.hasWrittenCurse)
             {
                 await GoldenSun.AwardClassSeries("Curse Mage Series", user, channel);
             }
@@ -144,7 +176,7 @@ namespace IodemBot.Core.Leveling
             await Task.CompletedTask;
         }
 
-        internal static async Task UserLookedUpInformation(SocketGuildUser user, SocketTextChannel channel)
+        internal static async Task UserLookedUpPsynergy(SocketGuildUser user, SocketTextChannel channel)
         {
             var userAccount = UserAccounts.GetAccount(user);
             userAccount.ServerStats.lookedUpInformation++;
@@ -153,6 +185,18 @@ namespace IodemBot.Core.Leveling
             if (userAccount.ServerStats.lookedUpInformation >= 21)
             {
                 await GoldenSun.AwardClassSeries("Apprentice Series", user, channel);
+            }
+        }
+
+        internal static async Task UserLookedUpClass(SocketGuildUser user, SocketTextChannel channel)
+        {
+            var userAccount = UserAccounts.GetAccount(user);
+            userAccount.ServerStats.lookedUpClass++;
+            UserAccounts.SaveAccounts();
+
+            if (userAccount.ServerStats.lookedUpClass >= 21)
+            {
+                await GoldenSun.AwardClassSeries("Page Series", user, channel);
             }
         }
     }

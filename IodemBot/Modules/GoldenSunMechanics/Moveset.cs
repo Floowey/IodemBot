@@ -1,10 +1,6 @@
 ﻿using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
@@ -15,9 +11,12 @@ namespace IodemBot.Modules.GoldenSunMechanics
         //get Moveset based on Classname
         public static Move[] getMoveset(string className)
         {
-            if (!movepools.ContainsKey(className)) return getMoveset(new string[] { });
+            if (!movepools.ContainsKey(className))
+            {
+                return getMoveset(new string[] { });
+            }
+
             return getMoveset(movepools[className]);
-            
         }
 
         public static Move[] getMoveset(string[] moveNames)
@@ -31,7 +30,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
             return moves.ToArray();
         }
 
-        static Moveset() {
+        static Moveset()
+        {
             string json = File.ReadAllText("Resources/movepools.json");
             var data = JsonConvert.DeserializeObject<dynamic>(json);
             movepools = data.ToObject<Dictionary<string, string[]>>();
@@ -46,6 +46,5 @@ namespace IodemBot.Modules.GoldenSunMechanics
             string data = JsonConvert.SerializeObject(movepools, Formatting.Indented);
             File.WriteAllText("Resources/movepools.json", data);
         }
-
     }
 }

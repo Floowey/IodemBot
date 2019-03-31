@@ -1,10 +1,6 @@
 ﻿using IodemBot.Modules.ColossoBattles;
-using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
@@ -22,7 +18,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public override void InternalChooseBestTarget(ColossoFighter User)
         {
             var aliveEnemies = User.getEnemies().Where(f => f.IsAlive()).ToList();
-            if (aliveEnemies.Count == 0) {
+            if (aliveEnemies.Count == 0)
+            {
                 targetNr = 0;
                 return;
             }
@@ -47,27 +44,34 @@ namespace IodemBot.Modules.GoldenSunMechanics
             }
 
             int chanceToMiss = 8;
-            if (User.HasCondition(Condition.Delusion)) chanceToMiss = 3;
-           
-            if(Global.random.Next(0, chanceToMiss) == 0)
+            if (User.HasCondition(Condition.Delusion))
+            {
+                chanceToMiss = 3;
+            }
+
+            if (Global.random.Next(0, chanceToMiss) == 0)
             {
                 log.Add($"{enemy.name} dodges the blow!");
                 return log;
             }
-            
+
             var atk = User.stats.Atk * User.MultiplyBuffs("Attack");
             var def = enemy.stats.Def * enemy.MultiplyBuffs("Defense");
             uint damage = 1;
             if (def < atk)
             {
-                damage = (uint) ((atk - def)*enemy.defensiveMult/2 + (uint)Global.random.Next(1, 4));
+                damage = (uint)((atk - def) * enemy.defensiveMult / 2 + (uint)Global.random.Next(1, 4));
             }
             if (Global.random.Next(0, 8) == 0)
             {
                 log.Add("Critical!!");
-                damage = (uint)(damage*1.25 + Global.random.Next(5,15));    
+                damage = (uint)(damage * 1.25 + Global.random.Next(5, 15));
             }
-            if (damage == 0) damage = 1;
+            if (damage == 0)
+            {
+                damage = 1;
+            }
+
             log.AddRange(enemy.DealDamage(damage));
             if (User is PlayerFighter)
             {

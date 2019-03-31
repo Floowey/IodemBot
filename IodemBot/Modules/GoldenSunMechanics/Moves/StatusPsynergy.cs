@@ -1,16 +1,11 @@
 ﻿using IodemBot.Modules.ColossoBattles;
 using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
-    class StatusPsynergy : Psynergy
+    internal class StatusPsynergy : Psynergy
     {
-
         public StatusPsynergy(string name, string emote, Target targetType, uint range, List<EffectImage> effectImages, Element element, uint PPCost) : base(name, emote, targetType, range, effectImages, element, PPCost)
         {
         }
@@ -25,17 +20,27 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public override void InternalChooseBestTarget(ColossoFighter User)
         {
             if (effects.Count > 0)
+            {
                 targetNr = effects[0].ChooseBestTarget(onEnemy ? User.getEnemies() : User.getTeam());
+            }
             else
+            {
                 targetNr = 0;
+            }
         }
 
         public override bool InternalValidSelection(ColossoFighter User)
         {
             if (User.stats.PP < PPCost)
+            {
                 return false;
+            }
+
             if (effects.Count > 0)
+            {
                 return effects[0].ValidSelection(User);
+            }
+
             return true;
         }
 

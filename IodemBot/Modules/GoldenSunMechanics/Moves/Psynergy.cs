@@ -1,9 +1,5 @@
 ﻿using IodemBot.Modules.ColossoBattles;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
@@ -13,7 +9,6 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public Element element;
 
         public enum Element { Venus, Mars, Jupiter, Mercury, none };
-
 
         protected Psynergy(string name, string emote, Target targetType, uint range, List<EffectImage> effectImages, Element element, uint PPCost) : base(name, emote, targetType, range, effectImages)
         {
@@ -25,7 +20,10 @@ namespace IodemBot.Modules.GoldenSunMechanics
         {
             List<string> log = new List<string>();
             var t = base.Validate(User);
-            if (!t.isValid) return t;
+            if (!t.isValid)
+            {
+                return t;
+            }
 
             log.AddRange(t.log);
 
@@ -48,4 +46,4 @@ namespace IodemBot.Modules.GoldenSunMechanics
             return new Validation(true, log);
         }
     }
-}   
+}

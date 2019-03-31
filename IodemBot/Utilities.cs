@@ -1,14 +1,11 @@
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
 using System.IO;
 
 namespace IodemBot
 {
-    class Utilities
+    internal class Utilities
     {
         private static Dictionary<string, string> alerts;
 
@@ -21,7 +18,11 @@ namespace IodemBot
 
         public static string GetAlert(string key)
         {
-            if (alerts.ContainsKey(key)) return alerts[key];
+            if (alerts.ContainsKey(key))
+            {
+                return alerts[key];
+            }
+
             return GetAlert("ALERT_NOT_FOUND");
         }
 
@@ -41,7 +42,6 @@ namespace IodemBot
 
         public static String toCaps(string input)
         {
-
             string[] words = input.Split(' ');
             string output = "";
 

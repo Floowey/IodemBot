@@ -1,10 +1,7 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
@@ -33,31 +30,43 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 statpsy = new Dictionary<string, StatusPsynergy>(
                     JsonConvert.DeserializeObject<Dictionary<string, StatusPsynergy>>(json),
                     StringComparer.OrdinalIgnoreCase);
-
-            } catch (Exception e)
+            }
+            catch (Exception e)
             {
                 //Just for debugging.
                 Console.WriteLine(e.ToString());
             }
-
         }
 
         public static Psynergy GetPsynergy(string psynergy)
         {
-            if (offpsy.TryGetValue(psynergy, out OffensivePsynergy op)) return (OffensivePsynergy) op.Clone();
+            if (offpsy.TryGetValue(psynergy, out OffensivePsynergy op))
+            {
+                return (OffensivePsynergy)op.Clone();
+            }
 
-            if (healpsy.TryGetValue(psynergy, out HealPsynergy hp)) return (HealPsynergy) hp.Clone();
+            if (healpsy.TryGetValue(psynergy, out HealPsynergy hp))
+            {
+                return (HealPsynergy)hp.Clone();
+            }
 
-            if (statpsy.TryGetValue(psynergy, out StatusPsynergy sp)) return (StatusPsynergy) sp.Clone();
-           
-            return new OffensivePsynergy($"{psynergy} (Not Implemented!)", "⛔", Target.otherSingle, 1, new List<EffectImage>(), Psynergy.Element.none, 0, 1 ,0, 1);
+            if (statpsy.TryGetValue(psynergy, out StatusPsynergy sp))
+            {
+                return (StatusPsynergy)sp.Clone();
+            }
+
+            return new OffensivePsynergy($"{psynergy} (Not Implemented!)", "⛔", Target.otherSingle, 1, new List<EffectImage>(), Psynergy.Element.none, 0, 1, 0, 1);
         }
 
         public static Psynergy[] GetPsynergy(string[] psynergiesString)
         {
             List<Psynergy> psynergies = new List<Psynergy>();
-            if (psynergiesString == null) return psynergies.ToArray();
-            if(psynergiesString.Length > 0)
+            if (psynergiesString == null)
+            {
+                return psynergies.ToArray();
+            }
+
+            if (psynergiesString.Length > 0)
             {
                 foreach (var s in psynergiesString)
                 {
@@ -74,7 +83,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             moves.Add(new Attack());
             moves.Add(new Defend());
             moves.AddRange(GetPsynergy(psynergiesString));
-            
+
             return moves.ToArray();
         }
 

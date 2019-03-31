@@ -1,15 +1,12 @@
 ﻿using IodemBot.Core.UserManagement;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using static IodemBot.Modules.GoldenSunMechanics.Psynergy;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
     //public enum Requirement { Level, Colosso, Command};
-    class AdeptClassSeries
+    internal class AdeptClassSeries
     {
         public static Dictionary<string, IRequirement> DictReq;
         public string name { get; set; }
@@ -25,8 +22,9 @@ namespace IodemBot.Modules.GoldenSunMechanics
             int classNr;
             try
             {
-                classNr = Math.Min(classes.Length-1, DictReq[requirement].apply(User));
-            } catch
+                classNr = Math.Min(classes.Length - 1, DictReq[requirement].apply(User));
+            }
+            catch
             {
                 classNr = 0;
             }
@@ -46,26 +44,27 @@ namespace IodemBot.Modules.GoldenSunMechanics
             DictReq.Add("SoloBattles", new SoloBattleRequirement());
             DictReq.Add("Teammates", new TeammatesRequirement());
             DictReq.Add("DaysActive", new DaysActiveRequirement());
+            DictReq.Add("UnlockedClasses", new UnlockedClassesRequirement());
         }
 
-        //Apprentice:       42 i!classinfo and i!psy lookups
-        //Brute:            15 Colosso Wins
-        //Crusader:         
-        //Curse Mage:       i!quote Matthew + #^@%!
-        //Hermit:           Time on Server (increases with active days)
-        //Page:             
-        //Pilgrim (Jup):    10 "Switchpoints) between Channels (+2 for switch, -1 for staying)
-        //Pilgrim (Mer):    
-        //Scrapper:         Bot Commands
-        //Seer (Jup):       Winning rps
-        //Seer (Mer):       rps streak
-        //Swordsman:
+        // Apprentice:       21 i!psy lookups | Level
+        // Brute:            15 Colosso Wins | (0, 50, 150, 300, 500+10, 800+25 Wins + Streak)
+        // Crusader:         - | same as Brute
+        // Curse Mage:       i!quote Matthew + #^@%! | same as Brute
+        // Hermit:           30 Days since joining the Server | (0, 7, 14, 30, 45, 70 *active* Days)
+        // Page:             21 i!classinfo lookups | (0, 3, 6, 9, 14) Unlocked Classes
+        // Pilgrim (Jup):    14 "Switchpoints" between Channels (+2 for switch, -1 for staying) | Level
+        // Pilgrim (Mer):    - | Level
+        // Scrapper:         Bot Commands | same as Brute
+        // Seer (Jup):       15 RPS Wins | Level
+        // Seer (Mer):       4 RPS Wins in a row | Level
+        // Swordsman:        50 Messages in ColossoTalks | same as Brute
 
-        //Dragoon: People in Battle (100, 250, 400) (+0 for Solo, +3 for full party)
-        //Samurai: Kills By Hand (161, 666)
-        //Medium: Revives (50, 120, 200)
-        //Ranger: Solo Battles (50, 200, 450
-        //Ninja: Total Damage (666 666, 999 999, 3 333 333)
-        //White Mage: Points Healed (333 333, 999 999)
+        // Dragoon: People in Battle (100, 250, 450) (+0 for Solo, +3 for full party)
+        // Samurai: Kills By Hand (161, 666)
+        // Medium: Revives (50, 120, 200)
+        // Ranger: Solo Battles (50, 200, 400)
+        // Ninja: Total Damage (666 666, 999 999, 3 333 333)
+        // White Mage: Points Healed (333 333, 999 999)
     }
 }

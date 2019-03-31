@@ -1,18 +1,17 @@
 ﻿using IodemBot.Core.UserManagement;
-using IodemBot.Modules.GoldenSunMechanics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace IodemBot.Modules.ColossoBattles
 {
     public class ColossoBattle
     {
-        public enum Team { A,B}
+        public enum Team { A, B }
+
         //public static NPCEnemy enemy;
         public List<ColossoFighter> TeamA = new List<ColossoFighter>();
+
         public List<ColossoFighter> TeamB = new List<ColossoFighter>();
         public bool isActive = false;
         public uint sizeTeamA = 0;
@@ -22,7 +21,6 @@ namespace IodemBot.Modules.ColossoBattles
 
         public ColossoBattle()
         {
-            
         }
 
         public void Start()
@@ -30,21 +28,35 @@ namespace IodemBot.Modules.ColossoBattles
             isActive = true;
             TeamA.ForEach(p =>
             {
-                if (p is NPCEnemy) p.selectRandom();
+                if (p is NPCEnemy)
+                {
+                    p.selectRandom();
+                }
+
                 if (p is PlayerFighter)
                 {
                     ((PlayerFighter)p).battleStats.totalTeamMates += TeamA.Count - 1;
-                    if (TeamA.Count == 1) ((PlayerFighter)p).battleStats.soloBattles++;
+                    if (TeamA.Count == 1)
+                    {
+                        ((PlayerFighter)p).battleStats.soloBattles++;
+                    }
                 }
             });
 
             TeamB.ForEach(p =>
             {
-                if (p is NPCEnemy) p.selectRandom();
+                if (p is NPCEnemy)
+                {
+                    p.selectRandom();
+                }
+
                 if (p is PlayerFighter)
                 {
                     ((PlayerFighter)p).battleStats.totalTeamMates += TeamB.Count - 1;
-                    if (TeamB.Count == 1) ((PlayerFighter)p).battleStats.soloBattles++;
+                    if (TeamB.Count == 1)
+                    {
+                        ((PlayerFighter)p).battleStats.soloBattles++;
+                    }
                 }
             });
 
@@ -53,23 +65,38 @@ namespace IodemBot.Modules.ColossoBattles
 
         public bool ForceTurn()
         {
-            if (turnActive) return false;
+            if (turnActive)
+            {
+                return false;
+            }
+
             Console.WriteLine("Forcing turn.");
             List<ColossoFighter> fighters = new List<ColossoFighter>(TeamA);
             fighters.AddRange(TeamB);
             fighters.ForEach(f =>
-            { if (!f.hasSelected)
+            {
+                if (!f.hasSelected)
+                {
                     f.selectRandom();
+                }
             });
             return Turn();
         }
 
         public bool Turn()
         {
-            if (!isActive) return false;
-            if (turnActive) return false;
+            if (!isActive)
+            {
+                return false;
+            }
+
+            if (turnActive)
+            {
+                return false;
+            }
+
             log.Clear();
-            if(!(TeamA.All(p => p.hasSelected) && TeamB.All(p => p.hasSelected)))
+            if (!(TeamA.All(p => p.hasSelected) && TeamB.All(p => p.hasSelected)))
             {
                 return false;
             }
@@ -85,17 +112,18 @@ namespace IodemBot.Modules.ColossoBattles
             //Main Turn
             log.AddRange(MainTurn());
             Console.WriteLine("Finished MainTurn()");
-            
+
             //Main Turn
             log.AddRange(ExtraTurn());
             Console.WriteLine("Finished ExtraTurn()");
-            
+
             //End Turn
             log.AddRange(EndTurn());
             Console.WriteLine("Finished EndTurn()");
 
             //Check for Game Over
-            if (gameOver()){
+            if (gameOver())
+            {
                 isActive = false;
             }
             turnActive = false;
@@ -107,14 +135,24 @@ namespace IodemBot.Modules.ColossoBattles
 
         public void AddPlayer(ColossoFighter player, Team team)
         {
-            if (isActive) return;
-            if (TeamA.Any(p => p.imgUrl != "" && p.imgUrl == player.imgUrl)) return;
-            if (team == Team.A){
+            if (isActive)
+            {
+                return;
+            }
+
+            if (TeamA.Any(p => p.imgUrl != "" && p.imgUrl == player.imgUrl))
+            {
+                return;
+            }
+
+            if (team == Team.A)
+            {
                 TeamA.Add(player);
                 player.party = Team.A;
                 player.enemies = Team.B;
                 sizeTeamA++;
-            } else
+            }
+            else
             {
                 TeamB.Add(player);
                 player.party = Team.B;
@@ -130,7 +168,8 @@ namespace IodemBot.Modules.ColossoBattles
             if (team == Team.A)
             {
                 return TeamA;
-            } else
+            }
+            else
             {
                 return TeamB;
             }
@@ -152,7 +191,7 @@ namespace IodemBot.Modules.ColossoBattles
             List<ColossoFighter> fighters = new List<ColossoFighter>(TeamA);
             fighters.AddRange(TeamB);
             fighters = fighters.OrderByDescending(f => f.stats.Spd * f.MultiplyBuffs("Speed")).ToList();
-            fighters.ForEach(f => { turnLog.AddRange(f.MainTurn());});
+            fighters.ForEach(f => { turnLog.AddRange(f.MainTurn()); });
             return turnLog;
         }
 
@@ -190,7 +229,14 @@ namespace IodemBot.Modules.ColossoBattles
 
         public Team getWinner()
         {
-            if (TeamA.Where(p => p.IsAlive()).Any()) return Team.A; else return Team.B;
+            if (TeamA.Where(p => p.IsAlive()).Any())
+            {
+                return Team.A;
+            }
+            else
+            {
+                return Team.B;
+            }
         }
     }
 }

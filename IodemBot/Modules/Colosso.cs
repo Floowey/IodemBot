@@ -1,17 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.IO;
-using Newtonsoft.Json;
+﻿using Discord;
 using Discord.Commands;
-using Discord;
 using Discord.WebSocket;
-using IodemBot.Core.UserManagement;
 using Iodembot.Preconditions;
 using IodemBot.Core.Leveling;
 using IodemBot.Extensions;
+using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Threading.Tasks;
 
 namespace IodemBot.Modules
 {
@@ -24,7 +21,7 @@ namespace IodemBot.Modules
         [Cooldown(15)]
         [Remarks("Proof your strength by battling a random opponent in Colosso")]
         public async Task ColossoTrain()
-        { 
+        {
             var embed = new EmbedBuilder();
             embed.WithColor(Colors.get("Iodem"));
 
@@ -37,7 +34,8 @@ namespace IodemBot.Modules
             if (m.result.isWin)
             {
                 ServerGames.UserWonColosso((SocketGuildUser)Context.User, (SocketTextChannel)Context.Channel);
-            } else
+            }
+            else
             {
                 ServerGames.UserLostColosso((SocketGuildUser)Context.User, (SocketTextChannel)Context.Channel);
             }
@@ -48,13 +46,14 @@ namespace IodemBot.Modules
         [Remarks("Add an enemy to the Colosso beastiary")]
         public async Task ColossoAddEnemy([Remainder] string enemy)
         {
-            if (addEnemy(enemy)){
+            if (addEnemy(enemy))
+            {
                 await Context.Channel.SendMessageAsync(Utilities.GetFormattedAlert("ENEMY_ADDED", enemy));
-            } else
+            }
+            else
             {
                 await Context.Channel.SendMessageAsync(Utilities.GetAlert("ENEMY_NOT_ADDED"));
             }
-            
         }
 
         [Command("colossoAddResult")]
@@ -66,10 +65,9 @@ namespace IodemBot.Modules
             await Context.Channel.SendMessageAsync(Utilities.GetAlert("RESULT_ADDED"));
         }
 
-
         private string getText(SocketUser user, Matchup m)
         {
-            return String.Format(m.result.text, ((SocketGuildUser) user).DisplayName(), m.enemy);
+            return String.Format(m.result.text, ((SocketGuildUser)user).DisplayName(), m.enemy);
         }
 
         private static Matchup getRandomMatchup()
@@ -81,14 +79,15 @@ namespace IodemBot.Modules
             string enemy = enemies[Global.random.Next(0, enemies.Count)];
             Result result = results[Global.random.Next(0, results.Count)];
             return new Matchup(enemy, result);
-        }   
+        }
 
         private static string getTitle(SocketUser user, string enemy)
         {
             return $"{user.Username} is up against {enemy}!";
         }
 
-        private struct Matchup{
+        private struct Matchup
+        {
             public Matchup(string enemy, Result result) : this()
             {
                 this.enemy = enemy;
@@ -149,7 +148,10 @@ namespace IodemBot.Modules
 
         public static bool addEnemy(string enemy)
         {
-            if (enemies.Contains(enemy)) return false;
+            if (enemies.Contains(enemy))
+            {
+                return false;
+            }
 
             enemies.Add(enemy);
             SaveData();
@@ -159,7 +161,10 @@ namespace IodemBot.Modules
         public static void addResult(bool isWin, string result)
         {
             Result r = new Result(result, isWin);
-            if (results.Contains(r)) return;
+            if (results.Contains(r))
+            {
+                return;
+            }
 
             results.Add(r);
             SaveData();

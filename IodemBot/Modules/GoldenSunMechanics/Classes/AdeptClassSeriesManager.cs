@@ -1,15 +1,12 @@
 ﻿using IodemBot.Core.UserManagement;
 using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
-    class AdeptClassSeriesManager
+    internal class AdeptClassSeriesManager
     {
         private static List<AdeptClassSeries> allClasses;
         private static string filePath = "Resources/AdeptClassSeries.json";
@@ -57,7 +54,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public static AdeptClass getClass(UserAccount User)
         {
-           return getClassSeries(User).getClass(User);
+            return getClassSeries(User).getClass(User);
         }
 
         public static AdeptClassSeries getClassSeries(UserAccount User)
@@ -75,7 +72,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
             {
                 outSeries = null;
                 return false;
-            } else
+            }
+            else
             {
                 outSeries = trySeries.Where(s => s.classes.Any(c => c.name.ToUpper() == series.ToUpper())).FirstOrDefault() ?? trySeries.FirstOrDefault();
             }

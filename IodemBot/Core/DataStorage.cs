@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using IodemBot.Core.UserManagement;
-using System.IO;
+﻿using IodemBot.Core.UserManagement;
 using Newtonsoft.Json;
+using System.Collections.Generic;
+using System.IO;
 
 namespace IodemBot.Core
 {
@@ -21,7 +17,11 @@ namespace IodemBot.Core
         //Get All userAccounts
         public static IEnumerable<UserAccount> LoadUserAccounts(string filePath)
         {
-            if (!File.Exists(filePath)) return null;
+            if (!File.Exists(filePath))
+            {
+                return null;
+            }
+
             string json = File.ReadAllText(filePath);
             return JsonConvert.DeserializeObject<List<UserAccount>>(json);
         }

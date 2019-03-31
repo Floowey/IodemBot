@@ -1,9 +1,6 @@
-﻿using System;
+﻿using IodemBot.Modules.ColossoBattles;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using IodemBot.Modules.ColossoBattles;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
@@ -11,7 +8,11 @@ namespace IodemBot.Modules.GoldenSunMechanics
     {
         public override List<string> Apply(ColossoFighter User, ColossoFighter Target)
         {
-            if (!Target.IsAlive()) return new List<string>();
+            if (!Target.IsAlive())
+            {
+                return new List<string>();
+            }
+
             Target.RemoveAllConditions();
             if (User is PlayerFighter)
             {

@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Discord;
+﻿using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
 using Iodembot.Preconditions;
 using IodemBot.Core.UserManagement;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace IodemBot.Modules
 {
@@ -33,11 +30,12 @@ namespace IodemBot.Modules
                 embed.WithDescription($"PoGo: {user.PoGoCode} \n" +
                 $"Switch: {user.SwitchCode} \n" +
                 $"3DS: {user.N3DSCode}");
-            } else
+            }
+            else
             {
                 embed.WithDescription(Utilities.GetAlert("CODE_IS_PRIVATE"));
             }
-            
+
             await Context.Channel.SendMessageAsync("", false, embed.Build());
         }
 
@@ -51,18 +49,22 @@ namespace IodemBot.Modules
 
             switch (type)
             {
-                case "3ds": case "n3ds":
+                case "3ds":
+                case "n3ds":
                     account.N3DSCode = code;
                     embed.WithDescription(Utilities.GetFormattedAlert("FC_ADDED_SUCCESS", "3DS"));
                     break;
+
                 case "switch":
                     account.SwitchCode = code;
                     embed.WithDescription(Utilities.GetFormattedAlert("FC_ADDED_SUCCESS", "Switch"));
                     break;
+
                 case "pogo":
                     account.PoGoCode = code;
                     embed.WithDescription(Utilities.GetFormattedAlert("FC_ADDED_SUCCESS", "Pokemon Go"));
                     break;
+
                 default:
                     embed.WithDescription(Utilities.GetAlert("FC_CODE_UNKNOWN"));
                     break;
