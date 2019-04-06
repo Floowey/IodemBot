@@ -125,7 +125,7 @@ namespace IodemBot.Core.Leveling
 
             if (userAccount.ServerStats.ReactionsAdded >= 50)
             {
-                await GoldenSun.AwardClassSeries("Air Pilgrim Series", user, (SocketTextChannel) Global.Client.GetChannel(546760009741107216));
+                await GoldenSun.AwardClassSeries("Aqua Pilgrim Series", user, (SocketTextChannel) Global.Client.GetChannel(546760009741107216));
             }
             UserAccounts.SaveAccounts();
         }

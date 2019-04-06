@@ -33,7 +33,7 @@ namespace IodemBot.Modules
             embed.WithDescription(getText(Context.User, m));
 
             lastMessageWasNuts = false;
-            if (m.result.text.Contains("Nuts")) lastMessageWasNuts = true;
+            if (m.result.text.Contains("nuts")) lastMessageWasNuts = true;
 
             await Context.Channel.SendMessageAsync("", false, embed.Build());
             if (m.result.isWin)
