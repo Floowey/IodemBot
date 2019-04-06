@@ -211,6 +211,20 @@ namespace IodemBot.Modules
             await RemoveClassSeries(series, user, (SocketTextChannel)Context.Channel);
         }
 
+        [Command("ship")]
+        [Remarks("Pulls two random characters and ships them. Use at your own risk.")]
+        [Cooldown(5)]
+        public async Task Ship()
+        {
+            var embed = new EmbedBuilder();
+            embed.WithColor(Colors.get("Iodem"));
+            embed.WithImageUrl(Sprites.GetRandomSprite());
+            embed.WithThumbnailUrl(Sprites.GetRandomSprite());
+            embed.AddField(":hearts:", ":hearts:");
+
+            Context.Channel.SendMessageAsync("", false, embed.Build());
+        }
+
         [Command("sprite"), Alias("portrait")]
         [Remarks("Get a random sprite or one of a given Character")]
         [Cooldown(5)]

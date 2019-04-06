@@ -92,15 +92,18 @@ namespace IodemBot.Modules.ColossoBattles
             var messages = await channel.GetMessagesAsync(100).FlattenAsync();
             await channel.DeleteMessagesAsync(messages);
             b.battleChannel = channel;
-            b.enemyMsg = await b.battleChannel.SendMessageAsync($"Welcome to {b.Name} Battle!");
-            b.lobbyMsg = await Context.Channel.SendMessageAsync($"{b.Name}: React with <:Fight:536919792813211648> to join the {b.Name} Battle and press <:Battle:536954571256365096> when you are ready to battle!");
+
+            b.enemyMsg = await b.battleChannel.SendMessageAsync($"Welcome to {b.Name} Battle!\n\nReact with <:Fight:536919792813211648> to join the {b.Name} Battle and press <:Battle:536954571256365096> when you are ready to battle!");
+            //b.lobbyMsg = b.enemyMsg;
+            //b.enemyMsg = await b.battleChannel.SendMessageAsync($"Welcome to {b.Name} Battle!");
+            //b.lobbyMsg = await Context.Channel.SendMessageAsync($"{b.Name}: React with <:Fight:536919792813211648> to join the {b.Name} Battle and press <:Battle:536954571256365096> when you are ready to battle!");
             await b.reset();
             return b;
         }
 
         internal static async Task TryAddPlayer(SocketReaction reaction)
         {
-            var battleCol = battles.Where(s => s.lobbyMsg.Id == reaction.MessageId).FirstOrDefault();
+            var battleCol = battles.Where(s => s.enemyMsg.Id == reaction.MessageId).FirstOrDefault();
             if (battleCol == null)
             {
                 return;
@@ -141,10 +144,12 @@ namespace IodemBot.Modules.ColossoBattles
             if (reaction.Emote.Name == "Fight")
             {
                 await TryAddPlayer(reaction);
+                return;
             }
             else if (reaction.Emote.Name == "Battle")
             {
                 await TryStartBattle(reaction);
+                return;
             }
 
             var curBattle = battles.Where(b => b.battleChannel.Id == reaction.Channel.Id).FirstOrDefault();
@@ -170,7 +175,7 @@ namespace IodemBot.Modules.ColossoBattles
         {
             //It's not necessary, but this should probably return a Task<bool>
 
-            var battleCol = battles.Where(s => s.lobbyMsg.Id == reaction.MessageId).FirstOrDefault();
+            var battleCol = battles.Where(s => s.enemyMsg.Id == reaction.MessageId).FirstOrDefault();
             if (battleCol.Equals(null))
             {
                 return;
@@ -227,8 +232,13 @@ namespace IodemBot.Modules.ColossoBattles
 
                 if (enemyMsg != null)
                 {
-                    enemyMsg.ModifyAsync(c => { c.Content = $"Welcome to {Name} Battle!"; c.Embed = null; });
-                    enemyMsg.RemoveAllReactionsAsync();
+                    _ = enemyMsg.ModifyAsync(c => { c.Content = $"Welcome to {Name} Battle!\n\nReact with <:Fight:536919792813211648> to join the {Name} Battle and press <:Battle:536954571256365096> when you are ready to battle!"; c.Embed = null; });
+                    _ = enemyMsg.RemoveAllReactionsAsync();
+                    _ = enemyMsg.AddReactionsAsync(new IEmote[]
+                    {
+                        Emote.Parse("<:Fight:536919792813211648>"),
+                        Emote.Parse("<:Battle:536954571256365096>")
+                    });
                 }
                 if (statusMsg != null)
                 {
@@ -246,13 +256,7 @@ namespace IodemBot.Modules.ColossoBattles
                     Enabled = false
                 };
                 autoTurn.Elapsed += OnTimerTicked;
-
-                await lobbyMsg.RemoveAllReactionsAsync();
-                _ = lobbyMsg.AddReactionsAsync(new IEmote[]
-                    {
-                        Emote.Parse("<:Fight:536919792813211648>"),
-                        Emote.Parse("<:Battle:536954571256365096>")
-                    });
+                
                 Console.WriteLine("Battle was reset.");
             }
 
@@ -442,10 +446,11 @@ namespace IodemBot.Modules.ColossoBattles
                     e.AddField($"{numberEmotes[i]} {fighter.ConditionsToString()}", $"{fighter.name}", true);
                     i++;
                 }
-                await msg.ModifyAsync(m => m.Embed = e.Build());
+                _ = msg.ModifyAsync(m => { m.Content = ""; m.Embed = e.Build(); });
                 //var countA = battle.getTeam(ColossoBattle.Team.A).Count;
                 var countA = 1;
                 var countB = battle.getTeam(ColossoBattle.Team.B).Count;
+                await msg.RemoveAllReactionsAsync();
                 if (countA > 1 || countB > 1)
                 {
                     for (int j = 1; j <= Math.Max(countA, countB); j++)

@@ -16,6 +16,8 @@ namespace IodemBot.Modules
     {
         private static List<string> enemies = new List<string>();
         private static List<Result> results = new List<Result>();
+        private static ulong lastId;
+        private static bool lastMessageWasNuts;
 
         [Command("colosso")]
         [Cooldown(15)]
@@ -29,6 +31,9 @@ namespace IodemBot.Modules
 
             embed.WithAuthor(getTitle(Context.User, m.enemy));
             embed.WithDescription(getText(Context.User, m));
+
+            lastMessageWasNuts = false;
+            if (m.result.text.Contains("Nuts")) lastMessageWasNuts = true;
 
             await Context.Channel.SendMessageAsync("", false, embed.Build());
             if (m.result.isWin)
@@ -74,7 +79,7 @@ namespace IodemBot.Modules
         {
             if (enemies.Count == 0 || enemies.Count == 0)
             {
-                return new Matchup("Gladiator", new Result("{0} doesn't show up and {1} goes home. \n(If you see this, something is broken, please try it later)", false));
+                return new Matchup("Gladiator", new Result("{0} doesn't show up and {1} goes home. \n(If you see this, something is broken, please try it later) Nuts", false));
             }
             string enemy = enemies[Global.random.Next(0, enemies.Count)];
             Result result = results[Global.random.Next(0, results.Count)];
@@ -123,6 +128,16 @@ namespace IodemBot.Modules
                 string jsonR = File.ReadAllText("SystemLang/results.json");
                 results = JsonConvert.DeserializeObject<List<Result>>(jsonR);
             }
+
+            Global.Client.ReactionAdded += Client_ReactionAdded;
+        }
+
+        private static async Task Client_ReactionAdded(Cacheable<IUserMessage, ulong> Message, ISocketMessageChannel Channel, SocketReaction Reaction)
+        {
+            if(Reaction.Emote.Name == "hard_nut" && lastMessageWasNuts)
+            {
+                await GoldenSun.AwardClassSeries("Crusader Series", (SocketGuildUser) Reaction.User, (SocketTextChannel) Reaction.Channel);
+            } 
         }
 
         private static bool ValidateStorageFile(string file)

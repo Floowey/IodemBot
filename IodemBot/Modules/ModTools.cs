@@ -2,7 +2,9 @@
 using Discord.Commands;
 using Discord.WebSocket;
 using IodemBot.Core.UserManagement;
+using IodemBot.Extensions;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using static IodemBot.Modules.GoldenSunMechanics.Psynergy;
@@ -88,6 +90,101 @@ namespace IodemBot.Modules
                 Console.WriteLine($"{account.Name} is a {account.element} Adept");
             }
             UserAccounts.SaveAccounts();
+        }
+
+        private Dictionary<ulong, userImage> aprilFoolsUsers = new Dictionary<ulong, userImage>();
+        public struct userImage
+        {
+            public ulong id { get; set; }
+            public string name { get; set; }
+            public Element element { get; set; }
+            public int classToggle { get; set; }
+
+        }
+
+        private SocketRole venusRole;
+        private SocketRole marsRole;
+        private SocketRole jupiterRole;
+        private SocketRole mercuryRole;
+        private SocketRole exathi;
+
+        [Command("AprilFoolsOn")]
+        public async Task aprilFoolsOn()
+        {
+            venusRole = Context.Guild.Roles.FirstOrDefault(x => x.Name == "Venus Adepts");
+            marsRole = Context.Guild.Roles.FirstOrDefault(x => x.Name == "Mars Adepts");
+            jupiterRole = Context.Guild.Roles.FirstOrDefault(x => x.Name == "Jupiter Adepts");
+            mercuryRole = Context.Guild.Roles.FirstOrDefault(x => x.Name == "Mercury Adepts");
+            exathi = Context.Guild.Roles.FirstOrDefault(x => x.Name == "Exathi") ?? venusRole;
+
+            Global.Client.UserJoined += Client_UserJoined;
+            foreach (SocketGuildUser user in Context.Guild.Users)
+            {
+                AprilFoolsUser(user);
+            }
+
+        }
+
+        private async Task AprilFoolsUser(SocketGuildUser user)
+        {
+            aprilFoolsUsers = new Dictionary<ulong, userImage>();
+            var account = UserAccounts.GetAccount(user);
+            aprilFoolsUsers.Add(user.Id,
+                new userImage()
+                {
+                    id = user.Id,
+                    name = user.DisplayName(),
+                    element = account.element,
+                    classToggle = account.classToggle
+                });
+
+            _ = user.ModifyAsync(p => p.Nickname = "Issac");
+            await (user as IGuildUser).RemoveRolesAsync(new IRole[] { venusRole, marsRole, jupiterRole, mercuryRole, exathi });
+            _ = (user as IGuildUser).AddRoleAsync(venusRole);
+
+            account.element = 0;
+            account.classToggle = 0;
+        }
+
+        private async Task Client_UserJoined(SocketGuildUser user)
+        {
+            AprilFoolsUser(user);
+        }
+
+        [Command("AprilFoolsOff")]
+        public async Task aprilFoolsOff()
+        {
+            var venusRole = Context.Guild.Roles.FirstOrDefault(x => x.Name == "Venus Adepts");
+            var marsRole = Context.Guild.Roles.FirstOrDefault(x => x.Name == "Mars Adepts");
+            var jupiterRole = Context.Guild.Roles.FirstOrDefault(x => x.Name == "Jupiter Adepts");
+            var mercuryRole = Context.Guild.Roles.FirstOrDefault(x => x.Name == "Mercury Adepts");
+            var exathi = Context.Guild.Roles.FirstOrDefault(x => x.Name == "Exathi") ?? venusRole;
+
+            foreach (SocketGuildUser user in Context.Guild.Users)
+            {
+                var account = UserAccounts.GetAccount(user);
+                if(aprilFoolsUsers.TryGetValue(user.Id, out userImage UI))
+                {
+                    _ = user.ModifyAsync(p => p.Nickname = UI.name);
+                    account.element = UI.element;
+                    account.classToggle = UI.classToggle;
+                    SocketRole role;
+                    switch ((int) account.element)
+                    {
+                        case 0: role = venusRole;
+                            break;
+                        case 1: role = marsRole;
+                            break;
+                        case 2: role = jupiterRole;
+                            break;
+                        case 3: role = mercuryRole;
+                            break;
+                        default: role = exathi;
+                            break;
+                    }
+                    _ = user.AddRoleAsync(role);
+                }
+            }
         }
     }
 }
