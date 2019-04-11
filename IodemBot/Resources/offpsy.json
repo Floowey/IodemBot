@@ -1654,7 +1654,7 @@
     "Strong Hit": {
         "name": "Strong Hit",
         "targetType": 3,
-        "emote": ":angry1:",
+        "emote": "<:Rampage:537766290031509524>",
         "range": 1,
         "element": 4,
         "PPCost": 0,
@@ -1717,7 +1717,7 @@
     "Poisonous Bite": {
         "name": "Poisonous Bite",
         "targetType": 3,
-        "emote": ":angry1:",
+        "emote": "<:Rampage:537766290031509524>",
         "range": 1,
         "element": 0,
         "PPCost": 0,
@@ -1732,7 +1732,7 @@
     "Ur Flash": {
         "name": "Ur Flash",
         "targetType": 3,
-        "emote": ":angry1:",
+        "emote": "<:Rampage:537766290031509524>",
         "range": 1,
         "element": 2,
         "PPCost": 0,
@@ -1741,7 +1741,7 @@
     "Shriek": {
         "name": "Shriek",
         "targetType": 3,
-        "emote": ":angry1:",
+        "emote": "<:Rampage:537766290031509524>",
         "range": 1,
         "element": 2,
         "PPCost": 0,
