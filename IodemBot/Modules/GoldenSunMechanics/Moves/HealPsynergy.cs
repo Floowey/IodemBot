@@ -49,7 +49,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public override bool InternalValidSelection(ColossoFighter User)
         {
-            return User.stats.PP >= PPCost;
+            return (User.stats.PP >= PPCost && (User.battle.turn == 1 ||
+                User.getTeam().Any(f => f.IsAlive() && (100 * f.stats.HP) / f.stats.maxHP < 85)));
         }
 
         protected override List<string> InternalUse(ColossoFighter User)

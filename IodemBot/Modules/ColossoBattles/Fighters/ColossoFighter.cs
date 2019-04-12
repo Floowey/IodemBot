@@ -419,6 +419,12 @@ namespace IodemBot.Modules.ColossoBattles
             Conditions.RemoveAll(c => !dontRemove.Contains(c));
         }
 
+        public void RemoveNearlyAllConditions()
+        {
+            Condition[] dontRemove = new Condition[] { Condition.Down, Condition.Counter, Condition.ItemCurse, Condition.Poison, Condition.Venom, Condition.Haunt };
+            Conditions.RemoveAll(c => !dontRemove.Contains(c));
+        }
+
         public void RemoveCondition(Condition con)
         {
             if (Conditions.Contains(con))
