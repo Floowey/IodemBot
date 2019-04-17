@@ -58,6 +58,10 @@ namespace IodemBot.Modules.ColossoBattles
                     break;
             }
             var enemies = selectedDifficulty[(new Random()).Next(0, selectedDifficulty.Count)].Select(f => (ColossoFighter)f.Clone()).ToList();
+            if(diff == BattleDifficulty.MediumRare)
+            {
+                enemies.ForEach(e => e.stats *= 1.5);
+            }
             return enemies;
 
         }

@@ -48,6 +48,9 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 case "UserDies":
                     return new UserDiesEffect();
 
+                case "ReduceDamage":
+                    return new ReduceDamageEffect(args);
+
                 default: return new NoEffect();
             }
         }

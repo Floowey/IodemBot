@@ -1130,8 +1130,8 @@
         "emote": "<:Douse:536969010974294016>",
         "range": 2,
         "element": 3,
-        "PPCost": 10,
-        "power": 60
+        "PPCost": 5,
+        "power": 25
     },
     "Drench": {
         "name": "Drench",
@@ -1245,7 +1245,7 @@
                 "id": "Condition",
                 "args": [ "Delusion", "30" ]
             }
-        ],
+        ]
     },
     "Death Size": {
         "name": "Death Size",
@@ -1260,7 +1260,7 @@
                 "id": "ChanceToOHKO",
                 "args": [ "20" ]
             }
-        ],
+        ]
     },
     "Ransack": {
         "name": "Ransack",
@@ -1293,7 +1293,7 @@
                 "id": "Condition",
                 "args": [ "Flinch", "30" ]
             }
-        ],
+        ]
     },
     "Bear Claw": {
         "name": "Bear Claw",
@@ -1326,7 +1326,7 @@
                 "id": "Condition",
                 "args": [ "Poison", "50" ]
             }
-        ],
+        ]
     },
     "Wing Flutter": {
         "name": "Wing Flutter",
@@ -1350,7 +1350,7 @@
                 "id": "MultiplyDamage",
                 "args": [ "2.0", "50" ]
             }
-        ],
+        ]
     },
     "Ice Blessing": {
         "name": "Ice Blessing",
@@ -1383,7 +1383,7 @@
                 "id": "Condition",
                 "args": [ "Venom", "25" ]
             }
-        ],
+        ]
     },
     "Mad Dash": {
         "name": "Mad Dash",
@@ -1446,7 +1446,7 @@
                 "id": "MultiplyDamage",
                 "args": [ "2.0", "50" ]
             }
-        ],
+        ]
     },
     "Oil Drop": {
         "name": "Oil Drop",
@@ -1488,7 +1488,7 @@
                 "id": "Condition",
                 "args": [ "Stun", "20" ]
             }
-        ],
+        ]
     },
     "Mighty Press": {
         "name": "Mighty Press",
@@ -1503,7 +1503,7 @@
                 "id": "ChanceToOHKO",
                 "args": [ "10" ]
             }
-        ],
+        ]
     },
     "War Cry": {
         "name": "War Cry",
@@ -1518,7 +1518,7 @@
                 "id": "Condition",
                 "args": [ "Flinch", "35" ]
             }
-        ],
+        ]
     },
     "Dynamite": {
         "name": "Dynamite",
@@ -1532,7 +1532,7 @@
             {
                 "id": "UserDies"
             }
-        ],
+        ]
     },
     "Claw Attack": {
         "name": "Claw Attack",
@@ -1634,7 +1634,7 @@
         "range": 1,
         "element": 2,
         "PPCost": 0,
-        "dmgMult": 1.4,
+        "dmgMult": 1.4
     },
     "Raiden's Wrath": {
         "name": "Raiden's Wrath",
@@ -1658,7 +1658,7 @@
         "range": 1,
         "element": 4,
         "PPCost": 0,
-        "dmgMult": 1.4,
+        "dmgMult": 1.4
     },
     "Sand Breath": {
         "name": "Sand Breath",
@@ -1667,7 +1667,7 @@
         "range": 3,
         "element": 0,
         "PPCost": 0,
-        "power": 35,
+        "power": 35
     },
     "Desert Gasp": {
         "name": "Desert Gasp",
@@ -1747,4 +1747,20 @@
         "PPCost": 0,
         "power": 30
     },
+    "Maul": {
+        "name": "Maul",
+        "targetType": 3,
+        "emote": ":feet:",
+        "range": 1,
+        "element": 4,
+        "PPCost": 0
+    },
+    "Rampage": {
+        "name": "Rampage",
+        "targetType": 5,
+        "emote": ":wolf:",
+        "range": 5,
+        "element": 4,
+        "PPCost": 0
+    }
 }

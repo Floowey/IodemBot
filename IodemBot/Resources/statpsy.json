@@ -1,433 +1,453 @@
 {
-  "Impact": {
-	"name": "Impact",
-	"targetType": 1,
-	"emote": "<:Impact:536967217581916160>",
-	"range": 1,
-    "element": 2,
-	"PPCost": 7,
-	"effectImages": [
-	  {
-	    "id": "Stat",
-	    "args": ["Attack", "1.5"]
-	  }
-	]
-  },
-  "High Impact": {
-	"name": "High Impact",
-	"targetType": 2,
-	"emote": "<:High_Impact:536967233646100481>",
-	"range": 4,
-    "element": 2,
-	"PPCost": 12,
-	"effectImages": [
-	  {
-	    "id": "Stat",
-	    "args": ["Attack", "1.2"]
-	  }
-	]
-  },
-  "Demon Spear": {
-	"name": "Demon Spear",
-	"targetType": 1,
-	"emote": "<:Demon_Spear:536966867831619584>",
-	"range": 1,
-    "element": 2,
-	"PPCost": 7,
-	"effectImages": [
-	  {
-	    "id": "Stat",
-	    "args": ["Attack", "1.5"]
-	  }
-	]
-  },
-  "Angel Spear": {
-	"name": "Angel Spear",
-	"targetType": 2,
-	"emote": "<:Angel_Spear:536966880888619028>",
-	"range": 4,
-    "element": 2,
-	"PPCost": 12,
-	"effectImages": [
-	  {
-	    "id": "Stat",
-	    "args": ["Attack", "1.2"]
-	  }
-	]
-  },
-  "Guard": {
-	"name": "Guard",
-	"targetType": 1,
-	"emote": "<:Guard:537705488306012179>",
-	"range": 4,
-    "element": 1,
-	"PPCost": 5,
-	"effectImages": [
-	  {
-	    "id": "Stat",
-	    "args": ["Defense", "1.5"]
-	  }
-	]
-  },
-  "Protect": {
-	"name": "Protect",
-	"targetType": 2,
-	"emote": "<:Protect:537705526038102016>",
-	"range": 4,
-    "element": 1,
-	"PPCost": 5,
-	"effectImages": [
-	  {
-	    "id": "Stat",
-	    "args": ["Defense", "1.2"]
-	  }
-	]
-  },
-  "Ward": {
-	"name": "Ward",
-	"targetType": 1,
-	"emote": "<:Ward:536967348448657440>",
-	"range": 4,
-    "element": 1,
-	"PPCost": 3,
-	"effectImages": [
-	  {
-	    "id": "Stat",
-	    "args": ["Resistance", "1.5"]
-	  }
-	]
-  },
-  "Resist": {
-	"name": "Resist",
-	"targetType": 2,
-	"emote": "<:Resist:536967379129991198>",
-	"range": 1,
-    "element": 1,
-	"PPCost": 5,
-	"effectImages": [
-	  {
-	    "id": "Stat",
-	    "args": ["Resistance", "1.2"]
-	  }
-	]
-  },
-  "Magic Shell": {
-	"name": "Magic Shell",
-	"targetType": 1,
-	"emote": "<:Magic_Shell:547524710888505364>",
-	"range": 4,
-    "element": 1,
-	"PPCost": 3,
-	"effectImages": [
-	  {
-	    "id": "Stat",
-	    "args": ["Resistance", "1.5"]
-	  }
-	]
-  },
-  "Magic Shield": {
-	"name": "Magic Shield",
-	"targetType": 2,
-	"emote": "<:Magic_Shield:547524710930317312>",
-	"range": 1,
-    "element": 1,
-	"PPCost": 5,
-	"effectImages": [
-	  {
-	    "id": "Stat",
-	    "args": ["Resistance", "1.2"]
-	  }
-	]
-  },
-  "Impair": {
-	"name": "Impair",
-	"targetType": 3,
-	"emote": "<:Impair:538289498690420736>",
-	"range": 3,
-    "element": 1,
-	"PPCost": 5,
-	"effectImages": [
-	  {
-	    "id": "Stat",
-	    "args": ["Defense", "0.6"]
-	  }
-	]
-  },
-  "Debilitate": {
-	"name": "Debilitate",
-	"targetType": 4,
-	"emote": "<:Debilitate:548922397017767956>",
-	"range": 3,
-    "element": 1,
-	"PPCost": 5,
-	"effectImages": [
-	  {
-	    "id": "Stat",
-	    "args": ["Defense", "0.8"]
-	  }
-	]
-  },
-  "Dull": {
-	"name": "Dull",
-	"targetType": 3,
-	"emote": "<:Dull:536966947879780366>",
-	"range": 3,
-    "element": 1,
-	"PPCost": 5,
-	"effectImages": [
-	  {
-	    "id": "Stat",
-	    "args": ["Attack", "0.6"]
-	  }
-	]
-  },
-  "Blunt": {
-	"name": "Blunt",
-	"targetType": 4,
-	"emote": "<:Blunt:536966988388368394>",
-	"range": 3,
-    "element": 1,
-	"PPCost": 5,
-	"effectImages": [
-	  {
-	    "id": "Stat",
-	    "args": ["Attack", "0.8"]
-	  }
-	]
-  },
-  "Weapon Grace": {
-	"name": "Weapon Grace",
-	"targetType": 1,
-	"emote": "<:Weapon_Grace:537001160058601472>",
-	"range": 1,
-    "element": 0,
-	"PPCost": 5,
-	"effectImages": [
-	  {
-	    "id": "Stat",
-	    "args": ["Attack", "2.0"]
-	  }
-	]
-  },
-  "Berserk": {
-	"name": "Berserk",
-	"targetType": 0,
-	"emote": "<:angry1:490015817908355072>",
-	"range": 1,
-    "element": 1,
-	"PPCost": 0,
-	"effectImages": [
-	  {
-	    "id": "Stat",
-	    "args": ["Attack", "1.25"]
-	  },
-	  {
-	    "id": "Stat",
-	    "args": ["Defense", "0.5"]
-	  },
-	  {
-	    "id": "Stat",
-	    "args": ["Speed", "1.5"]
-	  }
-	]
-  },
-  "Heartrender": {
-	"name": "Heartrender",
-	"targetType": 3,
-	"emote": "💗",
-	"range": 1,
-    "element": 1,
-	"PPCost": 0,
-	"effectImages": [
-	  {
-	    "id": "Stat",
-	    "args": ["Attack", "0.75"]
-	  }
-	]
-  },
-  "Enfeeble": {
-	"name": "Enfeeble",
-	"targetType": 4,
-	"emote": "🔱",
-	"range": 3,
-    "element": 1,
-	"PPCost": 5,
-	"effectImages": [
-	  {
-	    "id": "Stat",
-	    "args": ["Resistance", "0.8"]
-	  }
-	]
-  },
-  "Heartbreaker": {
-	"name": "Heartbreaker",
-	"targetType": 4,
-	"emote": "💔",
-	"range": 5,
-    "element": 1,
-	"PPCost": 0,
-	"effectImages": [
-	  {
-	    "id": "Stat",
-	    "args": ["Attack", "0.8"]
-	  }
-	]
-  },
-   "Restore": {
-	"name": "Restore",
-	"targetType": 1,
-	"emote": "<:Restore:536969958542802975>",
-	"range": 1,
-    "element": 3,
-	"PPCost": 4,
-	"effectImages": [
-	  {
-	    "id": "Restore"
-	  }
-	]
-  },
-  "Revive": {
-	"name": "Revive",
-	"targetType": 1,
-	"emote": "<:Revive:536957965513785347>",
-	"range": 1,
-    "element": 0,
-	"PPCost": 15,
-	"effectImages": [
-	  {
-	    "id": "Revive",
-		"args": ["75"]
-	  }
-	]
-  },
-  "Phoenix": {
-	"name": "Phoenix",
-	"targetType": 1,
-	"emote": "<:Phoenix:539166682132906005>",
-	"range": 1,
-    "element": 1,
-	"PPCost": 10,
-	"effectImages": [
-	  {
-	    "id": "Revive",
-		"args": ["66"]
-	  }
-	]
-  },
-   "Signal Whistle": {
-	"name": "Signal Whistle",
-	"targetType": 2,
-	"emote": ":trumpet:",
-	"range": 2,
-    "element": 4,
-	"PPCost": 1,
-	"effectImages": [
-	  {
-	    "id": "Revive",
-		"args": ["100"]
-	  }
-	]
-  },
-  "Break": {
-	"name": "Break",
-	"targetType": 5,
-	"emote": "<:Break:536969993490006036>",
-    "element": 3,
-	"PPCost": 5,
-	"effectImages": [
-	  {
-	    "id": "Break"
-	  }
-	]
-  },
-  "Thermal": {
-	"name": "Thermal",
-	"targetType": 1,
-	"emote": "<:Blaze:551042852730175520>",
-	"range": 1,
-    "element": 1,
-	"PPCost": 4,
-	"effectImages": [
-	  {
-	    "id": "Restore"
-	  }
-	]
-  },
-   "Blaze": {
-	"name": "Blaze",
-	"targetType": 5,
-	"emote": "<:Blaze:551042852730175520>",
-    "element": 1,
-	"PPCost": 5,
-	"effectImages": [
-	  {
-	    "id": "Break"
-	  }
-	]
-   },
-	"Bind": {
-    "name": "Bind",
-	"targetType": 3,
-	"emote":"<:Bind:549526931465568257>",
-	"range": 1,
-    "element": 2,
-	"effectImages":[
-	{"id": "Condition",
-	"args": ["Seal", "70"]}
-	],
-	"PPCost": 5
-  },
-	"Smoke Bomb": {
-    "name": "Smoke Bomb",
-	"targetType": 3,
-	"emote":"<:Smoke_Bomb:551223599911141391>",
-	"range": 1,
-    "element": 0,
-	"PPCost": 0,
-	   "effectImages":[
-		   {
-			   "id": "Condition",
-			   "args":["Delusion", "35"]}
-		   ],
-},
-"Sleep Bomb": {
-    "name": "Sleep Bomb",
-    "targetType": 3,
-    "emote":"<:Sleep_Bomb:551223599894102026>",
-    "range": 1,
-    "element": 0,
-    "PPCost": 0,
-    "effectImages":[
-      {"id": "Condition",
-       "args":["Sleep", "35"]}
-    ],
-},
-	"Beat Dance": {
-	"name": "Beat Dance",
-	"targetType": 0,
-	"emote": ":musical_note:",
-	"range": 1,
-    "element": 1,
-	"PPCost": 0,
-	"effectImages": [
-	  {
-	    "id": "Stat",
-	    "args": ["Attack", "1.25"]
-	  }
-	]
-  },
-	"Sleep Star": {
-	"name": "Sleep Star",
-	"targetType": 4,
-	"emote": ":sleep:",
-	"range": 3,
-    "element": 0,
-	"PPCost": 0,
-	"effectImages": [
-	  {
-	    "id": "Condition",
-	    "args": ["Sleep", "25"]
-	  }
-	]
-  },
+    "Impact": {
+        "name": "Impact",
+        "targetType": 1,
+        "emote": "<:Impact:536967217581916160>",
+        "range": 1,
+        "element": 2,
+        "PPCost": 7,
+        "effectImages": [
+            {
+                "id": "Stat",
+                "args": [ "Attack", "1.5" ]
+            }
+        ]
+    },
+    "High Impact": {
+        "name": "High Impact",
+        "targetType": 2,
+        "emote": "<:High_Impact:536967233646100481>",
+        "range": 4,
+        "element": 2,
+        "PPCost": 12,
+        "effectImages": [
+            {
+                "id": "Stat",
+                "args": [ "Attack", "1.2" ]
+            }
+        ]
+    },
+    "Demon Spear": {
+        "name": "Demon Spear",
+        "targetType": 1,
+        "emote": "<:Demon_Spear:536966867831619584>",
+        "range": 1,
+        "element": 2,
+        "PPCost": 7,
+        "effectImages": [
+            {
+                "id": "Stat",
+                "args": [ "Attack", "1.5" ]
+            }
+        ]
+    },
+    "Angel Spear": {
+        "name": "Angel Spear",
+        "targetType": 2,
+        "emote": "<:Angel_Spear:536966880888619028>",
+        "range": 4,
+        "element": 2,
+        "PPCost": 12,
+        "effectImages": [
+            {
+                "id": "Stat",
+                "args": [ "Attack", "1.2" ]
+            }
+        ]
+    },
+    "Guard": {
+        "name": "Guard",
+        "targetType": 1,
+        "emote": "<:Guard:537705488306012179>",
+        "range": 4,
+        "element": 1,
+        "PPCost": 5,
+        "effectImages": [
+            {
+                "id": "Stat",
+                "args": [ "Defense", "1.5" ]
+            }
+        ]
+    },
+    "Protect": {
+        "name": "Protect",
+        "targetType": 2,
+        "emote": "<:Protect:537705526038102016>",
+        "range": 4,
+        "element": 1,
+        "PPCost": 5,
+        "effectImages": [
+            {
+                "id": "Stat",
+                "args": [ "Defense", "1.2" ]
+            }
+        ]
+    },
+    "Ward": {
+        "name": "Ward",
+        "targetType": 1,
+        "emote": "<:Ward:536967348448657440>",
+        "range": 4,
+        "element": 1,
+        "PPCost": 3,
+        "effectImages": [
+            {
+                "id": "Stat",
+                "args": [ "Resistance", "1.5" ]
+            }
+        ]
+    },
+    "Resist": {
+        "name": "Resist",
+        "targetType": 2,
+        "emote": "<:Resist:536967379129991198>",
+        "range": 1,
+        "element": 1,
+        "PPCost": 5,
+        "effectImages": [
+            {
+                "id": "Stat",
+                "args": [ "Resistance", "1.2" ]
+            }
+        ]
+    },
+    "Magic Shell": {
+        "name": "Magic Shell",
+        "targetType": 1,
+        "emote": "<:Magic_Shell:547524710888505364>",
+        "range": 4,
+        "element": 1,
+        "PPCost": 3,
+        "effectImages": [
+            {
+                "id": "Stat",
+                "args": [ "Resistance", "1.5" ]
+            }
+        ]
+    },
+    "Magic Shield": {
+        "name": "Magic Shield",
+        "targetType": 2,
+        "emote": "<:Magic_Shield:547524710930317312>",
+        "range": 1,
+        "element": 1,
+        "PPCost": 5,
+        "effectImages": [
+            {
+                "id": "Stat",
+                "args": [ "Resistance", "1.2" ]
+            }
+        ]
+    },
+    "Impair": {
+        "name": "Impair",
+        "targetType": 3,
+        "emote": "<:Impair:538289498690420736>",
+        "range": 3,
+        "element": 1,
+        "PPCost": 5,
+        "effectImages": [
+            {
+                "id": "Stat",
+                "args": [ "Defense", "0.6" ]
+            }
+        ]
+    },
+    "Debilitate": {
+        "name": "Debilitate",
+        "targetType": 4,
+        "emote": "<:Debilitate:548922397017767956>",
+        "range": 3,
+        "element": 1,
+        "PPCost": 5,
+        "effectImages": [
+            {
+                "id": "Stat",
+                "args": [ "Defense", "0.8" ]
+            }
+        ]
+    },
+    "Dull": {
+        "name": "Dull",
+        "targetType": 3,
+        "emote": "<:Dull:536966947879780366>",
+        "range": 3,
+        "element": 1,
+        "PPCost": 5,
+        "effectImages": [
+            {
+                "id": "Stat",
+                "args": [ "Attack", "0.6" ]
+            }
+        ]
+    },
+    "Blunt": {
+        "name": "Blunt",
+        "targetType": 4,
+        "emote": "<:Blunt:536966988388368394>",
+        "range": 3,
+        "element": 1,
+        "PPCost": 5,
+        "effectImages": [
+            {
+                "id": "Stat",
+                "args": [ "Attack", "0.8" ]
+            }
+        ]
+    },
+    "Weapon Grace": {
+        "name": "Weapon Grace",
+        "targetType": 1,
+        "emote": "<:Weapon_Grace:537001160058601472>",
+        "range": 1,
+        "element": 0,
+        "PPCost": 5,
+        "effectImages": [
+            {
+                "id": "Stat",
+                "args": [ "Attack", "2.0" ]
+            }
+        ]
+    },
+    "Berserk": {
+        "name": "Berserk",
+        "targetType": 0,
+        "emote": "<:angry1:490015817908355072>",
+        "range": 1,
+        "element": 1,
+        "PPCost": 0,
+        "effectImages": [
+            {
+                "id": "Stat",
+                "args": [ "Attack", "1.25" ]
+            },
+            {
+                "id": "Stat",
+                "args": [ "Defense", "0.5" ]
+            },
+            {
+                "id": "Stat",
+                "args": [ "Speed", "1.5" ]
+            }
+        ]
+    },
+    "Heartrender": {
+        "name": "Heartrender",
+        "targetType": 3,
+        "emote": "💗",
+        "range": 1,
+        "element": 1,
+        "PPCost": 0,
+        "effectImages": [
+            {
+                "id": "Stat",
+                "args": [ "Attack", "0.75" ]
+            }
+        ]
+    },
+    "Enfeeble": {
+        "name": "Enfeeble",
+        "targetType": 4,
+        "emote": "🔱",
+        "range": 3,
+        "element": 1,
+        "PPCost": 5,
+        "effectImages": [
+            {
+                "id": "Stat",
+                "args": [ "Resistance", "0.8" ]
+            }
+        ]
+    },
+    "Heartbreaker": {
+        "name": "Heartbreaker",
+        "targetType": 4,
+        "emote": "💔",
+        "range": 5,
+        "element": 1,
+        "PPCost": 0,
+        "effectImages": [
+            {
+                "id": "Stat",
+                "args": [ "Attack", "0.8" ]
+            }
+        ]
+    },
+    "Restore": {
+        "name": "Restore",
+        "targetType": 1,
+        "emote": "<:Restore:536969958542802975>",
+        "range": 1,
+        "element": 3,
+        "PPCost": 4,
+        "effectImages": [
+            {
+                "id": "Restore"
+            }
+        ]
+    },
+    "Revive": {
+        "name": "Revive",
+        "targetType": 1,
+        "emote": "<:Revive:536957965513785347>",
+        "range": 1,
+        "element": 0,
+        "PPCost": 15,
+        "effectImages": [
+            {
+                "id": "Revive",
+                "args": [ "75" ]
+            }
+        ]
+    },
+    "Phoenix": {
+        "name": "Phoenix",
+        "targetType": 1,
+        "emote": "<:Phoenix:539166682132906005>",
+        "range": 1,
+        "element": 1,
+        "PPCost": 10,
+        "effectImages": [
+            {
+                "id": "Revive",
+                "args": [ "66" ]
+            }
+        ]
+    },
+    "Signal Whistle": {
+        "name": "Signal Whistle",
+        "targetType": 2,
+        "emote": ":trumpet:",
+        "range": 2,
+        "element": 4,
+        "PPCost": 1,
+        "effectImages": [
+            {
+                "id": "Revive",
+                "args": [ "100" ]
+            }
+        ]
+    },
+    "Break": {
+        "name": "Break",
+        "targetType": 5,
+        "emote": "<:Break:536969993490006036>",
+        "element": 3,
+        "PPCost": 5,
+        "effectImages": [
+            {
+                "id": "Break"
+            }
+        ]
+    },
+    "Thermal": {
+        "name": "Thermal",
+        "targetType": 1,
+        "emote": "<:Blaze:551042852730175520>",
+        "range": 1,
+        "element": 1,
+        "PPCost": 4,
+        "effectImages": [
+            {
+                "id": "Restore"
+            }
+        ]
+    },
+    "Blaze": {
+        "name": "Blaze",
+        "targetType": 5,
+        "emote": "<:Blaze:551042852730175520>",
+        "element": 1,
+        "PPCost": 5,
+        "effectImages": [
+            {
+                "id": "Break"
+            }
+        ]
+    },
+    "Bind": {
+        "name": "Bind",
+        "targetType": 3,
+        "emote": "<:Bind:549526931465568257>",
+        "range": 1,
+        "element": 2,
+        "effectImages": [
+            {
+                "id": "Condition",
+                "args": [ "Seal", "70" ]
+            }
+        ],
+        "PPCost": 5
+    },
+    "Smoke Bomb": {
+        "name": "Smoke Bomb",
+        "targetType": 3,
+        "emote": "<:Smoke_Bomb:551223599911141391>",
+        "range": 1,
+        "element": 0,
+        "PPCost": 0,
+        "effectImages": [
+            {
+                "id": "Condition",
+                "args": [ "Delusion", "35" ]
+            }
+        ]
+    },
+    "Sleep Bomb": {
+        "name": "Sleep Bomb",
+        "targetType": 3,
+        "emote": "<:Sleep_Bomb:551223599894102026>",
+        "range": 1,
+        "element": 0,
+        "PPCost": 0,
+        "effectImages": [
+            {
+                "id": "Condition",
+                "args": [ "Sleep", "35" ]
+            }
+        ]
+    },
+    "Beat Dance": {
+        "name": "Beat Dance",
+        "targetType": 0,
+        "emote": ":musical_note:",
+        "range": 1,
+        "element": 1,
+        "PPCost": 0,
+        "effectImages": [
+            {
+                "id": "Stat",
+                "args": [ "Attack", "1.25" ]
+            }
+        ]
+    },
+    "Sleep Star": {
+        "name": "Sleep Star",
+        "targetType": 4,
+        "emote": "<:Sleep:555427023519088671>",
+        "range": 3,
+        "element": 0,
+        "PPCost": 0,
+        "effectImages": [
+            {
+                "id": "Condition",
+                "args": [ "Sleep", "25" ]
+            }
+        ]
+    },
+    "Pack Defense": {
+        "name": "Pack Defense",
+        "targetType": 2,
+        "emote": "<:Maha:568133448645214219>",
+        "range": 1,
+        "element": 0,
+        "PPCost": 0,
+        "hasPriority": true,
+        "effectImages": [
+            {
+                "id": "ReduceDamage",
+                "args": [ "50" ]
+            }
+        ]
+    }
 }

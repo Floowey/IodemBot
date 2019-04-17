@@ -516,7 +516,7 @@
             "imgurl": "",
             "movepool": [
                 "Tundra",
-                "Ice Horn",
+                "Ice Horn"
             ],
             "stats": {
                 "maxHP": 540,
@@ -1416,7 +1416,7 @@
                 "MercuryAtk": 120,
                 "MercuryRes": 75
             }
-        },
+        }
     ],
     [
         {
@@ -1726,6 +1726,65 @@
                 "MercuryAtk": 50,
                 "MercuryRes": 50
             }
+        }
+    ],
+    [
+        {
+            "name": "Sveta",
+            "imgurl": "https://static.zerochan.net/Sveta.%28Golden.Sun%29.full.1296865.jpg",
+            "movepool": [
+                "Wild Growth",
+                "Vital Boon",
+                "Speed Punch",
+                "Psynergy Surge"
+            ],
+            "stats": {
+                "maxHP": 600,
+                "maxPP": 300,
+                "Atk": 150,
+                "Def": 100,
+                "Spd": 100
+            },
+            "elstats": {
+                "VenusAtk": 130,
+                "VenusRes": 130,
+                "MarsAtk": 100,
+                "MarsRes": 100,
+                "JupiterAtk": 130,
+                "JupiterRes": 130,
+                "MercuryAtk": 80,
+                "MercuryRes": 80
+            }
+        },
+        {
+            "name": "Beastform Sveta",
+            "imgurl": "",
+            "movepool": [
+                "Maul",
+                "Rampage",
+                "Pack Defense",
+                "Speed Punch",
+                "Psynergy Slam"
+            ],
+            "stats": {
+                "maxHP": 800,
+                "maxPP": 250,
+                "Atk": 360,
+                "Def": 160,
+                "Spd": 90
+            },
+            "elstats": {
+                "VenusAtk": 130,
+                "VenusRes": 130,
+                "MarsAtk": 100,
+                "MarsRes": 100,
+                "JupiterAtk": 130,
+                "JupiterRes": 130,
+                "MercuryAtk": 80,
+                "MercuryRes": 80
+            },
+            "hasAttack": false,
+            "hasDefend": false
         }
     ]
 ]

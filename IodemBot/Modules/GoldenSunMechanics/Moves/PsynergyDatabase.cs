@@ -76,12 +76,20 @@ namespace IodemBot.Modules.GoldenSunMechanics
             return psynergies.ToArray();
         }
 
-        public static Move[] GetMovepool(string[] psynergiesString)
+        public static Move[] GetMovepool(string[] psynergiesString, bool hasAttack, bool hasDefend)
         {
             List<Move> moves = new List<Move>();
-            moves.Add(new Attack());
-            moves.Add(new Attack());
-            moves.Add(new Defend());
+            if (hasAttack)
+            {
+                moves.Add(new Attack());
+                moves.Add(new Attack());
+            }
+
+            if (hasDefend)
+            {
+                moves.Add(new Defend());
+            }
+
             moves.AddRange(GetPsynergy(psynergiesString));
 
             return moves.ToArray();
