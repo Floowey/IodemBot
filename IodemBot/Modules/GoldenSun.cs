@@ -4,6 +4,7 @@ using Discord.WebSocket;
 using Iodembot.Preconditions;
 using IodemBot.Core.Leveling;
 using IodemBot.Core.UserManagement;
+using IodemBot.Extensions;
 using IodemBot.Modules.GoldenSunMechanics;
 using System;
 using System.Collections.Generic;
@@ -67,7 +68,7 @@ namespace IodemBot.Modules
             setClass(account, name);
 
             var embed = new EmbedBuilder();
-            embed.WithDescription($"You are {article(account.gsClass)} {account.gsClass} now, {Context.User.Username}.");
+            embed.WithDescription($"You are {article(account.gsClass)} {account.gsClass} now, {((SocketGuildUser)Context.User).DisplayName()}.");
             embed.WithColor(Colors.get(account.element.ToString()));
             //embed.WithThumbnailUrl(Sprites.get)
             await Context.Channel.SendMessageAsync("", false, embed.Build());
@@ -108,7 +109,7 @@ namespace IodemBot.Modules
                 account.classToggle = 0;
                 UserAccounts.SaveAccounts();
                 embed.WithColor(Colors.get(chosenElement.ToString()));
-                embed.WithDescription($"Welcome to the {chosenElement.ToString()} Clan, {account.gsClass} {Context.User.Username}!");
+                embed.WithDescription($"Welcome to the {chosenElement.ToString()} Clan, {account.gsClass} {((SocketGuildUser)Context.User).DisplayName()}!");
                 await Context.Channel.SendMessageAsync("", false, embed.Build());
             }
             else

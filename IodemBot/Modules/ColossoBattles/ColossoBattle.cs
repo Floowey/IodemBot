@@ -38,6 +38,7 @@ namespace IodemBot.Modules.ColossoBattles
 
                 if (p is PlayerFighter)
                 {
+                    ((PlayerFighter)p).battleStats = new BattleStats();
                     ((PlayerFighter)p).battleStats.totalTeamMates += TeamA.Count - 1;
                     if (TeamA.Count == 1)
                     {
@@ -55,6 +56,7 @@ namespace IodemBot.Modules.ColossoBattles
 
                 if (p is PlayerFighter)
                 {
+                    ((PlayerFighter)p).battleStats = new BattleStats();
                     ((PlayerFighter)p).battleStats.totalTeamMates += TeamB.Count - 1;
                     if (TeamB.Count == 1)
                     {

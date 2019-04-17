@@ -10,7 +10,7 @@ namespace IodemBot.Core.Leveling
 {
     internal static class Leveling
     {
-        internal static ulong[] blackListedChannels = new ulong[] { 358276942337671178, 535082629091950602, 536721357216677891, 536721375323357196, 536721392620535830, 535199363907977226 };
+        internal static ulong[] blackListedChannels = new ulong[] { 358276942337671178, 535082629091950602, 536721357216677891, 536721375323357196, 536721392620535830, 535199363907977226, 565910418741133315 };
         public static int rate = 200;
         public static int cutoff = 125000;
 

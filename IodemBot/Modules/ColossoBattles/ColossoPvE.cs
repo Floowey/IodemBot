@@ -58,10 +58,10 @@ namespace IodemBot.Modules.ColossoBattles
 
         [Command("reset")]
         [RequireUserPermission(ChannelPermission.ManageMessages)]
-        public async Task reset(BattleDifficulty diff)
+        public async Task reset(string name)
         {
             await Context.Message.DeleteAsync();
-            var a = battles.Where(b => b.diff == diff).FirstOrDefault();
+            var a = battles.Where(b => b.Name.Equals(name, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
             if (a != null)
             {
                 _ = a.reset();
@@ -286,6 +286,33 @@ namespace IodemBot.Modules.ColossoBattles
                     Console.WriteLine("Battle not active.");
                     return;
                 }
+
+                if (reaction.Emote.Name == "🔄")
+                {
+                    await c.RemoveReactionAsync(reaction.Emote, reaction.User.Value);
+                    autoTurn.Stop();
+                    foreach (KeyValuePair<IUserMessage, ColossoFighter> k in messages)
+                    {
+                        var msg = k.Key;
+                        await msg.RemoveAllReactionsAsync();
+                    }
+                    await WriteBattleInit();
+                    autoTurn.Start();
+                    return;
+                }
+
+                if (reaction.Emote.Name == "⏸")
+                {
+                    autoTurn.Stop();
+                    return;
+                }
+
+                if (reaction.Emote.Name == "▶")
+                {
+                    autoTurn.Start();
+                    return;
+                }
+
                 var curPlayer = messages.Values.Where(p => p.name == ((SocketGuildUser)reaction.User.Value).DisplayName()).FirstOrDefault();
                 var correctID = messages.Keys.Where(key => messages[key].name == curPlayer.name).First().Id;
 
@@ -371,7 +398,14 @@ namespace IodemBot.Modules.ColossoBattles
                     e.AddField($"{numberEmotes[i]} {fighter.ConditionsToString()}", $"{fighter.name}", true);
                     i++;
                 }
+                if (isEndless)
+                {
+                    EmbedFooterBuilder footerBuilder = new EmbedFooterBuilder();
+                    footerBuilder.WithText($"Battle {winsInARow + 1} - {diff}");
+                    e.WithFooter(footerBuilder);
+                }
                 await msg.ModifyAsync(m => m.Embed = e.Build());
+
                 var validReactions = reactions.Where(r => r.MessageId == enemyMsg.Id).ToList();
                 foreach (var r in validReactions)
                 {
@@ -445,6 +479,12 @@ namespace IodemBot.Modules.ColossoBattles
                     //e.AddField(numberEmotes[i], $"{fighter.name} {fighter.stats.HP}/{fighter.stats.maxHP}", true);
                     e.AddField($"{numberEmotes[i]} {fighter.ConditionsToString()}", $"{fighter.name}", true);
                     i++;
+                }
+                if (isEndless)
+                {
+                    EmbedFooterBuilder footerBuilder = new EmbedFooterBuilder();
+                    footerBuilder.WithText($"Battle {winsInARow + 1} - {diff}");
+                    e.WithFooter(footerBuilder);
                 }
                 _ = msg.ModifyAsync(m => { m.Content = ""; m.Embed = e.Build(); });
                 //var countA = battle.getTeam(ColossoBattle.Team.A).Count;
@@ -538,7 +578,7 @@ namespace IodemBot.Modules.ColossoBattles
                 if (winners.First() is PlayerFighter)
                 {
                     winsInARow++;
-                    winners.ConvertAll(s => (PlayerFighter)s).ForEach(async p => await ServerGames.UserWonBattle(p.avatar, p.battleStats, diff, textChannel));
+                    winners.ConvertAll(s => (PlayerFighter)s).ForEach(async p => await ServerGames.UserWonBattle(p.avatar, winsInARow, p.battleStats, diff, textChannel));
                     if (!isEndless)
                     {
                         WriteGameOver();
@@ -552,15 +592,18 @@ namespace IodemBot.Modules.ColossoBattles
                             p.Buffs = new List<Buff>();
                             p.heal((uint)(p.stats.HP * 5 / 100));
                         });
+
                         battle.TeamB = new List<ColossoFighter>();
                         var text = $"{winners.First().name}'s Party wins Battle {winsInARow}! Battle will reset shortly";
                         await Task.Delay(2000);
                         await statusMsg.ModifyAsync(m => { m.Content = text; m.Embed = null; });
 
                         await Task.Delay(2000);
-                        EnemiesDatabase.getRandomEnemies((BattleDifficulty)Math.Min(4, 1 + winsInARow / 12)).ForEach(f =>
+                        var stageLength = 12;
+                        diff = (BattleDifficulty)Math.Min(4, 1 + winsInARow / stageLength);
+                        EnemiesDatabase.getRandomEnemies(diff).ForEach(f =>
                         {
-                            f.stats *= (1 + (double)winsInARow / 75);
+                            f.stats *= (1 + ((double)winsInARow / 50) % (winsInARow < 4 * stageLength ? stageLength : 1));
                             battle.AddPlayer(f, ColossoBattle.Team.B);
                         });
                         battle.Start();
@@ -569,6 +612,8 @@ namespace IodemBot.Modules.ColossoBattles
                 }
                 else
                 {
+                    if (isEndless) diff = BattleDifficulty.Easy;
+
                     var losers = winners.First().battle.getTeam(winners.First().enemies);
                     losers.ConvertAll(s => (PlayerFighter)s).ForEach(async p => await ServerGames.UserLostBattle(p.avatar, diff, textChannel));
                     WriteGameOver();

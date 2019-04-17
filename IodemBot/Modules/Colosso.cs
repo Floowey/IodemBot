@@ -88,7 +88,7 @@ namespace IodemBot.Modules
 
         private static string getTitle(SocketUser user, string enemy)
         {
-            return $"{user.Username} is up against {enemy}!";
+            return $"{((SocketGuildUser)user).DisplayName()} is up against {enemy}!";
         }
 
         private struct Matchup

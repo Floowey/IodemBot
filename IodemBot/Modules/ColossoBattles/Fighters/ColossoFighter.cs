@@ -43,6 +43,7 @@ namespace IodemBot.Modules.ColossoBattles
         public Stats stats;
         [JsonIgnore] private readonly List<Condition> Conditions = new List<Condition>();
         [JsonIgnore] private Random rnd = Global.random;
+
         internal ColossoFighter(string name, string imgUrl, Stats stats, ElementalStats elstats, Move[] moves)
         {
             this.name = name;

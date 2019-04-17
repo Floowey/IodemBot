@@ -88,7 +88,7 @@ namespace IodemBot.Core.Leveling
             UserAccounts.SaveAccounts();
         }
 
-        internal static async Task UserWonBattle(UserAccount userAccount, BattleStats battleStats, ColossoPvE.BattleDifficulty diff, ITextChannel battleChannel)
+        internal static async Task UserWonBattle(UserAccount userAccount, int winsInARow, BattleStats battleStats, ColossoPvE.BattleDifficulty diff, ITextChannel battleChannel)
         {
             uint oldLevel = userAccount.LevelNumber;
             userAccount.XP += (uint)(new Random()).Next(10, 20) * (uint)Math.Pow(((int)diff + 1), 2) * 2;
@@ -96,13 +96,12 @@ namespace IodemBot.Core.Leveling
 
             userAccount.ServerStats.ColossoWins++;
             userAccount.ServerStats.ColossoStreak++;
+            userAccount.ServerStats.ColossoHighestStreak = Math.Max(userAccount.ServerStats.ColossoHighestStreak, userAccount.ServerStats.ColossoStreak);
+            userAccount.ServerStats.ColossoHighestRoundEndless = Math.Max(userAccount.ServerStats.ColossoHighestRoundEndless, winsInARow);
+
             userAccount.BattleStats += battleStats;
             var bs = userAccount.BattleStats;
 
-            if (userAccount.ServerStats.ColossoStreak > userAccount.ServerStats.ColossoHighestStreak)
-            {
-                userAccount.ServerStats.ColossoHighestStreak = userAccount.ServerStats.ColossoStreak;
-            }
 
             if (userAccount.ServerStats.ColossoWins >= 15)
             {
