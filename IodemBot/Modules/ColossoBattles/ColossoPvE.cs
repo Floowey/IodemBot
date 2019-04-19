@@ -232,7 +232,7 @@ namespace IodemBot.Modules.ColossoBattles
                 if (enemyMsg != null)
                 {
                     _ = enemyMsg.ModifyAsync(c => { c.Content = $"Welcome to {Name} Battle!\n\nReact with <:Fight:536919792813211648> to join the {Name} Battle and press <:Battle:536954571256365096> when you are ready to battle!"; c.Embed = null; });
-                    _ = enemyMsg.RemoveAllReactionsAsync();
+                    await enemyMsg.RemoveAllReactionsAsync();
                     _ = enemyMsg.AddReactionsAsync(new IEmote[]
                     {
                         Emote.Parse("<:Fight:536919792813211648>"),
