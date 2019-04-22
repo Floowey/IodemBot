@@ -1225,7 +1225,7 @@
                 "Banshee Howl"
             ],
             "stats": {
-                "maxHP": 600,
+                "maxHP": 500,
                 "maxPP": 100,
                 "Atk": 261,
                 "Def": 66,
@@ -1252,7 +1252,7 @@
                 "Hail Prism"
             ],
             "stats": {
-                "maxHP": 2000,
+                "maxHP": 1800,
                 "maxPP": 52,
                 "Atk": 285,
                 "Def": 93,
@@ -1484,7 +1484,7 @@
                 "Mother Gaia"
             ],
             "stats": {
-                "maxHP": 800,
+                "maxHP": 700,
                 "maxPP": 300,
                 "Atk": 250,
                 "Def": 150,
@@ -1514,7 +1514,7 @@
                 "Diamond Berg"
             ],
             "stats": {
-                "maxHP": 1000,
+                "maxHP": 800,
                 "maxPP": 300,
                 "Atk": 300,
                 "Def": 160,
@@ -1542,7 +1542,7 @@
                 "Shine Plasma"
             ],
             "stats": {
-                "maxHP": 800,
+                "maxHP": 600,
                 "maxPP": 300,
                 "Atk": 250,
                 "Def": 150,
@@ -1570,7 +1570,7 @@
                 "Ransack"
             ],
             "stats": {
-                "maxHP": 402,
+                "maxHP": 362,
                 "maxPP": 0,
                 "Atk": 176,
                 "Def": 84,
@@ -1596,7 +1596,7 @@
                 "Cutting Edge"
             ],
             "stats": {
-                "maxHP": 581,
+                "maxHP": 461,
                 "maxPP": 40,
                 "Atk": 176,
                 "Def": 130,
@@ -1622,7 +1622,7 @@
                 "Skull Splitter"
             ],
             "stats": {
-                "maxHP": 700,
+                "maxHP": 600,
                 "maxPP": 40,
                 "Atk": 225,
                 "Def": 170,

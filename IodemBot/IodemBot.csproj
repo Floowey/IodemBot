@@ -273,6 +273,9 @@
     <Compile Include="Modules\GoldenSunMechanics\Effects\ReviveEffect.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Effects\StatEffect.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Effects\UserDiesEffect.cs" />
+    <Compile Include="Modules\GoldenSunMechanics\Items\Inventory.cs" />
+    <Compile Include="Modules\GoldenSunMechanics\Items\ItemDatabase.cs" />
+    <Compile Include="Modules\GoldenSunMechanics\Items\Item.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Moveset.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Moves\Attack.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Moves\Defend.cs" />
