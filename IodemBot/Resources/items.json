@@ -1,0 +1,1338 @@
+﻿{
+    "Knight's Helm": {
+        "Name": "Knight's Helm",
+        "Price": 4600,
+        "Icon": "<:Knights_Helm:569822627418472471>",
+        "ItemType": "Helmet",
+        "IsEquippable": true,
+        "AddStatsOnEquip": {
+            "Def": 33
+        }
+    },
+    "Wheat Sword": {
+        "Name": "Wheat Sword",
+        "Price": 999999,
+        "Icon": ":french_bread:",
+        "ItemType": "LongSword",
+        "IsArtifact": true,
+        "IsEquippable": true,
+        "AddStatsOnEquip": {
+            "Atk": 250
+        },
+        "AddElStatsOnEquip": {
+            "VenusPow": 20,
+            "VenusRes": 20,
+            "MarsPow": 20,
+            "MarsRes": 20,
+            "JupiterPow": 20,
+            "JupiterRes": 20,
+            "MercuryPow": 20,
+            "MercuryRes": 20
+        },
+        "UnleashRate": 10,
+        "Unleash": {
+            "UnleashName": "Dutch Farmer",
+            "UnleashAlignment": 0,
+            "effectImages": [
+
+                {
+                    "Id": "MultiplyDamage",
+                    "args": [ "10.0, 8.0, 6.0, 3.0", "5, 12, 17, 29" ]
+                }
+            ]
+        }
+    },
+    "Sol Blade": {
+        "Name": "Sol Blade",
+        "Price": 31200,
+        "Icon": "<:Sol_Blade:569855141709348864>",
+        "ItemType": "LongSword",
+        "ExclusiveTo": [ 0 ],
+        "IsArtifact": true,
+        "IsEquippable": true,
+        "AddStatsOnEquip": {
+            "Atk": 200
+        },
+        "Unleash": {
+            "UnleashName": "Megiddo",
+            "UnleashAlignment": 0,
+            "effectImages": [
+                {
+                    "Id": "MultiplyDamage",
+                    "args": [ "3.0", "100" ]
+                }
+            ]
+        }
+    },
+    "Heavy Mace": {
+        "Name": "Heavy Mace",
+        "Price": 375,
+        "Icon": "<:Heavy_Mace:569901405025075212>",
+        "ItemType": "Mace",
+        "IsEquippable": true,
+        "AddStatsOnEquip": {
+            "Atk": 26
+        }
+    },
+    "Mace": {
+        "Name": "Mace",
+        "Price": 80,
+        "Icon": "<:Mace:569901405435985930>",
+        "ItemType": "Mace",
+        "IsEquippable": true,
+        "AddStatsOnEquip": {
+            "Atk": 6
+        }
+    },
+    "Battle Mace": {
+        "Name": "Battle Mace",
+        "Price": 2600,
+        "Icon": "<:Heavy_Mace:569901405025075212>",
+        "ItemType": "Mace",
+        "IsEquippable": true,
+        "AddStatsOnEquip": {
+            "Atk": 56
+        }
+    },
+    "War Mace": {
+        "Name": "War Mace",
+        "Price": 6200,
+        "Icon": "<:War_Mace:569901405478060032>",
+        "ItemType": "Mace",
+        "IsEquippable": true,
+        "AddStatsOnEquip": {
+            "Atk": 84
+        }
+    },
+    "Grievous Mace": {
+        "Name": "Grievous Mace",
+        "Price": 7000,
+        "Icon": "<:Grievous_Mace:569901408367804438>",
+        "ItemType": "Mace",
+        "IsEquippable": true,
+        "IsArtifact": true,
+        "DamageAlignment": 0,
+        "AddStatsOnEquip": {
+            "Atk": 88
+        },
+        "Unleash": {
+            "UnleashName": "Terra Strike",
+            "UnleashAlignment": 0,
+            "effectImages": [
+                {
+                    "Id": "AddDamage",
+                    "args": [ "20" ]
+                }
+            ]
+        }
+    },
+    "Righteous Mace": {
+        "Name": "Righteous Mace",
+        "Price": 8400,
+        "Icon": "<:Righteous_Mace:569901405200973829>",
+        "ItemType": "Mace",
+        "IsEquippable": true,
+        "IsArtifact": true,
+        "AddStatsOnEquip": {
+            "Atk": 112
+        },
+        "HPRecovery": 3,
+        "Unleash": {
+            "UnleashName": "Blinding Smog",
+            "UnleashAlignment": 2,
+            "effectImages": [
+                {
+                    "Id": "AddDamage",
+                    "args": [ "49" ]
+                },
+                {
+                    "id": "Condition",
+                    "args": [ "Delusion", "30" ]
+                }
+            ]
+        }
+    },
+    "Wicked Mace": {
+        "Name": "Wicked Mace",
+        "Price": 13800,
+        "Icon": "<:Wicked_Mace:569901405528260618>",
+        "ItemType": "Mace",
+        "IsEquippable": true,
+        "IsArtifact": true,
+        "IsCursed": true,
+        "AddStatsOnEquip": {
+            "Atk": 130
+        },
+        "Unleash": {
+            "UnleashName": "Poison Death",
+            "UnleashAlignment": 0,
+            "effectImages": [
+                {
+                    "Id": "AddDamage",
+                    "args": [ "53" ]
+                },
+                {
+                    "id": "Condition",
+                    "args": [ "Venom", "60" ]
+                }
+            ]
+        }
+    },
+    "Blessed Mace": {
+        "Name": "Blessed Mace",
+        "Price": 10875,
+        "Icon": "<:Blessed_Mace:569901405133865011>",
+        "ItemType": "Mace",
+        "IsEquippable": true,
+        "IsArtifact": true,
+        "AddStatsOnEquip": {
+            "Atk": 126
+        },
+        "HPRecovery": 2,
+        "CuresCurse": true
+    },
+    "Blow Mace": {
+        "Name": "Blow Mace",
+        "Price": 2800,
+        "Icon": "<:Blow_Mace:569901406035771432>",
+        "ItemType": "Mace",
+        "IsEquippable": true,
+        "IsArtifact": true,
+        "AddStatsOnEquip": {
+            "Atk": 45
+        },
+        "Unleash": {
+            "UnleashName": "Boost Hack",
+            "UnleashAlignment": 1,
+            "effectImages": [
+                {
+                    "Id": "AddDamage",
+                    "args": [ "17" ]
+                }
+            ]
+        }
+    },
+    "Comet Mace": {
+        "Name": "Comet Mace",
+        "Price": 8000,
+        "Icon": "<:Comet_Mace:569901405402562570>",
+        "ItemType": "Mace",
+        "IsEquippable": true,
+        "IsArtifact": true,
+        "AddStatsOnEquip": {
+            "Atk": 105
+        },
+        "Unleash": {
+            "UnleashName": "Ice Crush",
+            "UnleashAlignment": 3,
+            "effectImages": [
+                {
+                    "Id": "AddDamage",
+                    "args": [ "34" ]
+                },
+                {
+                    "id": "Stat",
+                    "args": [ "Defense", "0.75", "50" ]
+                }
+            ]
+        }
+    },
+    "Hagbone Mace": {
+        "Name": "Hagbone Mace",
+        "Price": 10400,
+        "Icon": "<:Hagbone_Mace:569901405410820116>",
+        "ItemType": "Mace",
+        "IsEquippable": true,
+        "IsArtifact": true,
+        "AddStatsOnEquip": {
+            "Atk": 108
+        },
+        "Unleash": {
+            "UnleashName": "Wyrd Curse",
+            "UnleashAlignment": 0,
+            "effectImages": [
+                {
+                    "Id": "AddDamage",
+                    "args": [ "41" ]
+                },
+                {
+                    "id": "Condition",
+                    "args": [ "Haunt", "20" ]
+                }
+            ]
+        }
+    },
+    "Demon Mace": {
+        "Name": "Demon Mace",
+        "Price": 9200,
+        "Icon": "<:Demon_Mace:569901405226139669>",
+        "ItemType": "Mace",
+        "IsEquippable": true,
+        "IsArtifact": true,
+        "AddStatsOnEquip": {
+            "Atk": 115
+        },
+        "Unleash": {
+            "UnleashName": "Evil Eye",
+            "UnleashAlignment": 0,
+            "effectImages": [
+                {
+                    "Id": "AddDamage",
+                    "args": [ "38" ]
+                },
+                {
+                    "id": "Condition",
+                    "args": [ "Delusion", "33" ]
+                }
+            ]
+        }
+    },
+    "Thanatos Mace": {
+        "Name": "Thanatos Mace",
+        "Price": 10400,
+        "Icon": "<:Thanatos_Mace:569901405264150545>",
+        "ItemType": "Mace",
+        "IsEquippable": true,
+        "IsArtifact": true,
+        "AddStatsOnEquip": {
+            "Atk": 125
+        },
+        "Unleash": {
+            "UnleashName": "Heartbreak",
+            "UnleashAlignment": 0,
+            "effectImages": [
+                {
+                    "Id": "AddDamage",
+                    "args": [ "42" ]
+                },
+                {
+                    "id": "ChanceToOHKO",
+                    "args": [ "15" ]
+                }
+            ]
+        }
+    },
+    "Rising Mace": {
+        "Name": "Rising Mace",
+        "Price": 10400,
+        "Icon": "<:Rising_Mace:569901405520003072>",
+        "ItemType": "Mace",
+        "IsEquippable": true,
+        "IsArtifact": true,
+        "AddStatsOnEquip": {
+            "Atk": 152
+        },
+        "Unleash": {
+            "UnleashName": "High Vitals",
+            "UnleashAlignment": 2,
+            "effectImages": [
+                {
+                    "Id": "AddDamage",
+                    "args": [ "152" ]
+                }
+            ]
+        }
+    },
+    "Tungsten Mace": {
+        "Name": "Tungsten Mace",
+        "Price": 10400,
+        "Icon": "<:Tungsten_Mace:569901405440049156>",
+        "ItemType": "Mace",
+        "IsEquippable": true,
+        "IsArtifact": true,
+        "AddStatsOnEquip": {
+            "Atk": 159
+        },
+        "Unleash": {
+            "UnleashName": "Hammersphere",
+            "UnleashAlignment": 0,
+            "effectImages": [
+                {
+                    "Id": "AddDamage",
+                    "args": [ "42" ]
+                },
+                {
+                    "id": "MayIgnoreDefense",
+                    "args": [ "50", "50" ]
+                }
+            ]
+        }
+    },
+    "Silk Robe": {
+        "Name": "Silk Robe",
+        "Price": 1400,
+        "Icon": "<:Silk_Robe:569823579605041162>",
+        "ItemType": "Robe",
+        "IsEquippable": true,
+        "AddStatsOnEquip": {
+            "Def": 20
+        }
+    },
+
+    "Blessed Robe": {
+        "Name": "Blessed Robe",
+        "Price": 7000,
+        "Icon": "<:Blessed_Robe:569854449800183819>",
+        "ItemType": "Robe",
+        "IsEquippable": true,
+        "IsArtifact": true,
+        "AddStatsOnEquip": {
+            "Def": 36
+        },
+        "HPRegen": 10
+    },
+
+    "Magical Cassock": {
+        "Name": "Magical Cassock",
+        "Price": 9000,
+        "Icon": "<:Magical_Cassock:569854449837932545>",
+        "ItemType": "Robe",
+        "IsEquippable": true,
+        "IsArtifact": true,
+        "AddStatsOnEquip": {
+            "Def": 39
+        },
+        "PPRegen": 2
+    },
+
+    "Feathered Robe": {
+        "Name": "Feathered Robe",
+        "Price": 14000,
+        "Icon": "<:Feathered_Robe:569854449871224863>",
+        "ItemType": "Robe",
+        "IsEquippable": true,
+        "IsArtifact": true,
+        "AddStatsOnEquip": {
+            "Def": 45,
+            "Spd": 30
+        },
+        "AddElStatsOnEquip": {
+            "JupiterAtk": 20,
+            "JupiterRes": 30
+        }
+    },
+
+    "Mysterious Robe": {
+        "Name": "Mysterious Robe",
+        "Price": 36500,
+        "Icon": "<:Mysterious_Robe:569854449875550231>",
+        "ItemType": "Robe",
+        "IsEquippable": true,
+        "IsArtifact": true,
+        "AddStatsOnEquip": {
+            "Def": 48
+        },
+        "HPRegen": 20,
+        "PPRegen": 10
+    },
+
+    "Travel Robe": {
+        "Name": "Travel Robe",
+        "Price": 200,
+        "Icon": "<:Travel_Robe:569854449997316107>",
+        "ItemType": "Robe",
+        "IsEquippable": true,
+        "AddStatsOnEquip": {
+            "Def": 10
+        }
+    },
+
+    "China Dress": {
+        "Name": "China Dress",
+        "Price": 1600,
+        "Icon": "<:China_Dress:569854450135597067>",
+        "ItemType": "Robe",
+        "IsEquippable": true,
+        "IsArtifact": true,
+        "AddStatsOnEquip": {
+            "Def": 19
+        }
+    },
+
+    "Jerkin": {
+        "Name": "Jerkin",
+        "Price": 2400,
+        "Icon": "<:Jerkin:569854450139660288>",
+        "ItemType": "Robe",
+        "IsEquippable": true,
+        "AddStatsOnEquip": {
+            "Def": 26
+        }
+    },
+
+    "Aeolian Cassock": {
+        "Name": "Aeolian Cassock",
+        "Price": 11400,
+        "Icon": "<:Aeolian_Cassock:569854450156568576>",
+        "ItemType": "Robe",
+        "IsEquippable": true,
+        "AddStatsOnEquip": null,
+        "Def": 46,
+        "AddElStatsOnEquip": {
+            "JupiterAtk": 15,
+            "JupiterRes": 50
+        }
+    },
+    "Dragon Robe": {
+        "Name": "Dragon Robe",
+        "Price": 8900,
+        "Icon": "<:Dragon_Robe:569854450160762880>",
+        "ItemType": "Robe",
+        "IsEquippable": true,
+        "IsArtifact": true,
+        "AddStatsOnEquip": null,
+        "Def": 42,
+        "AddElStatsOnEquip": {
+            "MarsRes": 18,
+            "MercuryRes": 18
+        }
+    },
+    "Iris Robe": {
+        "Name": "Iris Robe",
+        "Price": 16600,
+        "Icon": "<:Iris_Robe:569854450164957196>",
+        "ItemType": "Robe",
+        "IsEquippable": true,
+        "IsArtifact": true,
+        "AddStatsOnEquip": {
+            "Def": 47
+        },
+        "AddElStatsOnEquip": {
+            "MarsRes": 30
+        },
+        "PPRegen": 12
+    },
+    "Cocktail Dress": {
+        "Name": "Cocktail Dress",
+        "Price": 4000,
+        "Icon": "<:Cocktail_Dress:569854450169020417>",
+        "ItemType": "Robe",
+        "IsEquippable": true,
+        "IsArtifact": true,
+        "AddStatsOnEquip": {
+            "Def": 29,
+            "maxPP": 15
+        }
+    },
+    "Muni Robe": {
+        "Name": "Muni Robe",
+        "Price": 6300,
+        "Icon": "<:Muni_Robe:569854450169282580>",
+        "ItemType": "Robe",
+        "IsEquippable": true,
+        "IsArtifact": true,
+        "AddStatsOnEquip": {
+            "Def": 39
+        },
+        "HPRegen": 10
+    },
+    "OnePiece Dress": {
+        "Name": "OnePiece Dress",
+        "Price": 25,
+        "Icon": "<:OnePiece_Dress:569854450194317312>",
+        "ItemType": "Robe",
+        "IsEquippable": true,
+        "AddStatsOnEquip": {
+            "Def": 4
+        }
+    },
+    "Oracle Robe": {
+        "Name": "Oracle Robe",
+        "Price": 13500,
+        "Icon": "<:Oracles_Robe:569854450223808532>",
+        "ItemType": "Robe",
+        "IsEquippable": true,
+        "IsArtifact": true,
+        "AddStatsOnEquip": {
+            "Def": 43
+        },
+        "AddElStatsOnEquip": {
+            "MercuryRes": 40
+        },
+        "HPRegen": 10
+    },
+    "Ardagh Robe": {
+        "Name": "Ardagh Robe",
+        "Price": 9900,
+        "Icon": "<:Ardagh_Robe:569854450307563521>",
+        "ItemType": "Robe",
+        "IsEquippable": true,
+        "IsArtifact": true,
+        "AddStatsOnEquip": {
+            "Def": 44
+        },
+        "AddElStatsOnEquip": {
+            "MarsRes": 40,
+            "MarsAtk": 20
+        }
+    },
+    "Leather Armor": {
+        "Name": "Leather Armor",
+        "Price": 240,
+        "Icon": "<:Leather_Armor:569854623205163018>",
+        "ItemType": "HeavyArmor",
+        "IsEquippable": true,
+        "IsArtifact": false,
+        "AddStatsOnEquip": {
+            "Def": 12
+        }
+    },
+    "Psynergy Armor": {
+        "Name": "Psynergy Armor",
+        "Price": 1000,
+        "Icon": "<:Psynergy_Armor:569854623205163039>",
+        "ItemType": "HeavyArmor",
+        "IsEquippable": true,
+        "IsArtifact": false,
+        "AddStatsOnEquip": {
+            "Def": 21,
+            "MaxPP": 20
+        }
+    },
+    "Chain Mail": {
+        "Name": "Chain Mail",
+        "Price": 2000,
+        "Icon": "<:Chain_Mail:569854622806835222>",
+        "ItemType": "HeavyArmor",
+        "IsEquippable": true,
+        "IsArtifact": false,
+        "AddStatsOnEquip": {
+            "Def": 25
+        }
+    },
+    "Armored Shell": {
+        "Name": "Armored Shell",
+        "Price": 3600,
+        "Icon": "<:Armored_Shell:569854622836064292>",
+        "ItemType": "HeavyArmor",
+        "IsEquippable": true,
+        "IsArtifact": false,
+        "AddStatsOnEquip": {
+            "Def": 30
+        }
+    },
+    "Spirit Armor": {
+        "Name": "Spirit Armor",
+        "Price": 4000,
+        "Icon": "<:Spirit_Armor:569854622974476289>",
+        "ItemType": "HeavyArmor",
+        "IsEquippable": true,
+        "IsArtifact": true,
+        "AddStatsOnEquip": {
+            "Def": 32
+        },
+        "AddElStatsOnEquip": {
+            "MercuryRes": 15,
+            "VenusRes": 15,
+            "JupiterRes": 15,
+            "MarsRes": 15
+        }
+    },
+    "Plate Mail": {
+        "Name": "Plate Mail",
+        "Price": 4400,
+        "Icon": "<:Plate_Mail:569854623238586368>",
+        "ItemType": "HeavyArmor",
+        "IsEquippable": true,
+        "IsArtifact": false,
+        "AddStatsOnEquip": {
+            "Def": 33
+        }
+    },
+    "Steel Armor": {
+        "Name": "Steel Armor",
+        "Price": 4900,
+        "Icon": "<:Steel_Armor:569823327531565067>",
+        "ItemType": "HeavyArmor",
+        "IsEquippable": true,
+        "IsArtifact": false,
+        "AddStatsOnEquip": {
+            "Def": 36
+        }
+    },
+    "Spiked Armor": {
+        "Name": "Spiked Armor",
+        "Price": 14000,
+        "Icon": "<:Spiked_Armor:569854623246974977>",
+        "ItemType": "HeavyArmor",
+        "IsEquippable": true,
+        "IsArtifact": true,
+        "AddStatsOnEquip": {
+            "Def": 34,
+            "Atk": 10
+        },
+        "increaseUnleashRate": 6
+    },
+    "Asura's Armor": {
+        "Name": "Asura's Armor",
+        "Price": 15000,
+        "Icon": "<:Asuras_Armor:569854622840127515>",
+        "ItemType": "HeavyArmor",
+        "IsEquippable": true,
+        "IsArtifact": true,
+        "AddStatsOnEquip": {
+            "Def": 42,
+            "Atk": 5
+        },
+        "HPRegen": 8
+    },
+    "Dragon Scales": {
+        "Name": "Dragon Scales",
+        "Price": 17000,
+        "Icon": "<:Dragon_Scales:569854623154962452>",
+        "ItemType": "HeavyArmor",
+        "IsEquippable": true,
+        "IsArtifact": true,
+        "AddStatsOnEquip": {
+            "Def": 44
+        },
+        "AddElStatsOnEquip": {
+            "MercuryRes": 30,
+            "MarsRes": 30
+        }
+    },
+    "Gray's Armor": {
+        "Name": "Gray's Armor",
+        "Price": 915000,
+        "Icon": "<:Tritons_Ward:569854675906461716>",
+        "ItemType": "HeavyArmor",
+        "IsEquippable": true,
+        "IsArtifact": true,
+        "AddStatsOnEquip": {
+            "Def": 90,
+            "Atk": 70,
+            "Spd": 70,
+            "MaxHP": 1990,
+            "MaxPP": 990
+        },
+        "HPRegen": 2000,
+        "PPRegen": 90,
+        "increaseUnleashRate": 100,
+        "AddElStatsOnEquip": {
+            "MercuryAtk": 120,
+            "MercuryRes": 120,
+            "VenusAtk": 120,
+            "VenusRes": 120,
+            "JupiterAtk": 120,
+            "JupiterRes": 120,
+            "MarsAtk": 120,
+            "MarsRes": 120
+        }
+    },
+    "Demon Mail": {
+        "Name": "Demon Mail",
+        "Price": 17000,
+        "Icon": "<:Demon_Mail:569854623012093973>",
+        "ItemType": "HeavyArmor",
+        "IsEquippable": true,
+        "IsArtifact": true,
+        "isCursed": true,
+        "AddStatsOnEquip": {
+            "Def": 50
+        },
+        "AddElStatsOnEquip": {
+            "JupiterRes": -10
+        }
+    },
+    "Ixion Mail": {
+        "Name": "Ixion Mail",
+        "Price": 1300,
+        "Icon": "<:Ixion_Mail:569854623305957376>",
+        "ItemType": "HeavyArmor",
+        "IsEquippable": true,
+        "IsArtifact": true,
+        "AddStatsOnEquip": {
+            "Def": 26
+        },
+        "AddElStatsOnEquip": {
+            "MercuryRes": 20,
+            "JupiterRes": 20
+        }
+    },
+    "Planet Armor": {
+        "Name": "Planet Armor",
+        "Price": 4800,
+        "Icon": "<:Planet_Armor:569854623255625728>",
+        "ItemType": "HeavyArmor",
+        "IsEquippable": true,
+        "IsArtifact": true,
+        "AddStatsOnEquip": {
+            "Def": 36
+        },
+        "AddElStatsOnEquip": {
+            "MercuryAtk": 10,
+            "VenusAtk": 10,
+            "JupiterAtk": 10,
+            "MarsAtk": 10
+        }
+    },
+    "Phantasmal Mail": {
+        "Name": "Phantasmal Mail",
+        "Price": 5800,
+        "Icon": "<:Phantasmal_Mail:569854623242911744>",
+        "ItemType": "HeavyArmor",
+        "IsEquippable": true,
+        "IsArtifact": true,
+        "AddStatsOnEquip": {
+            "Def": 38
+        }
+    },
+    "Erebus Armor": {
+        "Name": "Erebus Armor",
+        "Price": 12000,
+        "Icon": "<:Erebus_Armor:569854623196774410>",
+        "ItemType": "HeavyArmor",
+        "IsEquippable": true,
+        "IsArtifact": true,
+        "AddStatsOnEquip": {
+            "Def": 43
+        },
+        "HPRegen": 6
+    },
+    "Dragon Mail": {
+        "Name": "Dragon Mail",
+        "Price": 9700,
+        "Icon": "<:Dragon_Mail:569854623461015573>",
+        "ItemType": "HeavyArmor",
+        "IsEquippable": true,
+        "IsArtifact": true,
+        "AddStatsOnEquip": {
+            "Def": 44
+        },
+        "AddElStatsOnEquip": {
+            "MercuryRes": 15,
+            "MarsRes": 15
+        }
+    },
+    "Chronos Mail": {
+        "Name": "Chronos Mail",
+        "Price": 13100,
+        "Icon": "<:Chronos_Mail:569854622940921867>",
+        "ItemType": "HeavyArmor",
+        "IsEquippable": true,
+        "IsArtifact": true,
+        "AddStatsOnEquip": {
+            "Def": 47,
+            "MaxHP": 30
+        }
+    },
+    "Stealth Armor": {
+        "Name": "Stealth Armor",
+        "Price": 14000,
+        "Icon": "<:Stealth_Armor:569854623251169280>",
+        "ItemType": "HeavyArmor",
+        "IsEquippable": true,
+        "IsArtifact": true,
+        "isCursed": true,
+        "AddStatsOnEquip": {
+            "Def": 48
+        },
+        "AddElStatsOnEquip": {
+            "VenusRes": -10
+        }
+    },
+    "Xylion Armor": {
+        "Name": "Xylion Armor",
+        "Price": 22500,
+        "Icon": "<:Xylion_Armor:569854622899109901>",
+        "ItemType": "HeavyArmor",
+        "IsEquippable": true,
+        "IsArtifact": true,
+        "AddStatsOnEquip": {
+            "Def": 50,
+            "Atk": 12
+        }
+    },
+    "Valkyrie Mail": {
+        "Name": "Valkyrie Mail",
+        "Price": 25500,
+        "Icon": "<:Valkyrie_Mail:569854623242911754>",
+        "ItemType": "HeavyArmor",
+        "IsEquippable": true,
+        "IsArtifact": true,
+        "AddStatsOnEquip": {
+            "Def": 53
+        },
+        "increaseUnleashRate": 20
+    },
+    "Cotton Shirt": {
+        "Name": "Cotton Shirt",
+        "Price": 20,
+        "Icon": "<:Cotton_Shirt:569854675658997760>",
+        "ItemType": "LightArmor",
+        "IsEquippable": true,
+        "IsArtifact": false,
+        "AddStatsOnEquip": {
+            "Def": 3
+        }
+    },
+    "Travel Vest": {
+        "Name": "Travel Vest",
+        "Price": 50,
+        "Icon": "<:Travel_Vest:569854675973570563>",
+        "ItemType": "LightArmor",
+        "IsEquippable": true,
+        "IsArtifact": false,
+        "AddStatsOnEquip": {
+            "Def": 7
+        }
+    },
+    "Fur Coat": {
+        "Name": "Fur Coat",
+        "Price": 400,
+        "Icon": "<:Fur_Coat:569854675797409802>",
+        "ItemType": "LightArmor",
+        "IsEquippable": true,
+        "IsArtifact": false,
+        "AddStatsOnEquip": {
+            "Def": 16
+        },
+        "AddElStatsOnEquip": {
+            "MercuryRes": 15
+        }
+    },
+    "Adept's Clothes": {
+        "Name": "Adept's Clothes",
+        "Price": 850,
+        "Icon": "<:Adepts_Clothes:569854675638026240>",
+        "ItemType": "LightArmor",
+        "IsEquippable": true,
+        "IsArtifact": false,
+        "AddStatsOnEquip": {
+            "Def": 18,
+            "maxPP": 8
+        }
+    },
+    "Elven Shirt": {
+        "Name": "Elven Shirt",
+        "Price": 1700,
+        "Icon": "<:Elven_Shirt:569854675679969280>",
+        "ItemType": "LightArmor",
+        "IsEquippable": true,
+        "IsArtifact": true,
+        "AddStatsOnEquip": {
+            "Def": 22
+        },
+        "MultStatsOnEquip": {
+            "Spd": 150
+        }
+    },
+    "Kimono": {
+        "Name": "Kimono",
+        "Price": 2800,
+        "Icon": "<:Kimono:569854675738820629>",
+        "ItemType": "LightArmor",
+        "IsEquippable": true,
+        "IsArtifact": true,
+        "AddStatsOnEquip": {
+            "Def": 16,
+            "Spd": 10
+        },
+        "AddElStatsOnEquip": {
+            "MarsRes": 10
+        }
+    },
+    "Water Jacket": {
+        "Name": "Water Jacket",
+        "Price": 3000,
+        "Icon": "<:Water_Jacket:569854675860455424>",
+        "ItemType": "LightArmor",
+        "IsEquippable": true,
+        "IsArtifact": true,
+        "AddStatsOnEquip": {
+            "Def": 30
+        },
+        "AddElStatsOnEquip": {
+            "MercuryRes": 30,
+            "MarsRes": 20
+        }
+    },
+    "Silver Vest": {
+        "Name": "Silver Vest",
+        "Price": 3200,
+        "Icon": "<:Silver_Vest:569854675826769930>",
+        "ItemType": "LightArmor",
+        "IsEquippable": true,
+        "IsArtifact": false,
+        "AddStatsOnEquip": {
+            "Def": 28
+        }
+    },
+    "Ninja Garb": {
+        "Name": "Ninja Garb",
+        "Price": 6900,
+        "Icon": "<:Ninja_Garb:569854675839352832>",
+        "ItemType": "LightArmor",
+        "IsEquippable": true,
+        "IsArtifact": true,
+        "AddStatsOnEquip": {
+            "Def": 36,
+            "Spd": 30
+        },
+        "AddElStatsOnEquip": {
+            "JupiterRes": 10
+        }
+    },
+    "Storm Gear": {
+        "Name": "Storm Gear",
+        "Price": 9800,
+        "Icon": "<:Storm_Gear:569854675512459266>",
+        "ItemType": "LightArmor",
+        "IsEquippable": true,
+        "IsArtifact": true,
+        "AddStatsOnEquip": {
+            "Def": 42
+        },
+        "AddElStatsOnEquip": {
+            "MercuryRes": 30,
+            "JupiterRes": 30,
+            "MarsRes": 30
+        }
+    },
+    "Full Metal Vest": {
+        "Name": "<:Full_Metal_Vest:569854675747209216>",
+        "Price": 1100,
+        "Icon": ":Full_Metal_Vest:",
+        "ItemType": "LightArmor",
+        "IsEquippable": true,
+        "IsArtifact": true,
+        "AddStatsOnEquip": {
+            "Def": 21
+        }
+    },
+    "Festival Coat": {
+        "Name": "Festival Coat",
+        "Price": 2800,
+        "Icon": "<:Festival_Coat:569854675780632576>",
+        "ItemType": "LightArmor",
+        "IsEquippable": true,
+        "IsArtifact": true,
+        "AddStatsOnEquip": {
+            "Def": 28
+        }
+    },
+    "Wild Coat": {
+        "Name": "Wild Coat",
+        "Price": 4000,
+        "Icon": "<:Wild_Coat:569854675940147230>",
+        "ItemType": "LightArmor",
+        "IsEquippable": true,
+        "IsArtifact": true,
+        "AddStatsOnEquip": {
+            "Def": 37,
+            "Spd": 40
+        }
+    },
+    "Floral Dress": {
+        "Name": "Floral Dress",
+        "Price": 6600,
+        "Icon": "<:Floral_Dress:569854675793215488>",
+        "ItemType": "LightArmor",
+        "IsEquippable": true,
+        "IsArtifact": true,
+        "AddStatsOnEquip": {
+            "Def": 38
+        }
+    },
+    "Faery Vest": {
+        "Name": "Faery Vest",
+        "Price": 6900,
+        "Icon": "<:Faery_Vest:569854675340361729>",
+        "ItemType": "LightArmor",
+        "IsEquippable": true,
+        "IsArtifact": true,
+        "AddStatsOnEquip": {
+            "Def": 38
+        }
+    },
+    "Erinyes Tunic": {
+        "Name": "Erinyes Tunic",
+        "Price": 10400,
+        "Icon": "<:Erinyes_Tunic:569854675705266198>",
+        "ItemType": "LightArmor",
+        "IsEquippable": true,
+        "IsArtifact": true,
+        "AddStatsOnEquip": {
+            "Def": 42,
+            "Atk": 5
+        },
+        "increaseUnleashRate": 10
+    },
+    "Mythril Clothes": {
+        "Name": "Mythril Clothes",
+        "Price": 14900,
+        "Icon": "<:Mythril_Clothes:569854675784957952>",
+        "ItemType": "LightArmor",
+        "IsEquippable": true,
+        "IsArtifact": true,
+        "AddStatsOnEquip": {
+            "Def": 49
+        },
+        "increaseUnleashRate": 15
+    },
+    "Triton's Ward": {
+        "Name": "Triton's Ward",
+        "Price": 16200,
+        "Icon": "<:Tritons_Ward:569854675906461716>",
+        "ItemType": "LightArmor",
+        "IsEquippable": true,
+        "IsArtifact": true,
+        "AddStatsOnEquip": {
+            "Def": 47
+        },
+        "AddElStatsOnEquip": {
+            "MercuryAtk": 30,
+            "MercuryRes": 70
+        }
+    },
+    "Umbra Cloak": {
+        "Name": "Umbra Cloak",
+        "Price": 14000,
+        "Icon": ":Umbra_Cloak:",
+        "ItemType": "LightArmor",
+        "IsEquippable": true,
+        "IsArtifact": true,
+        "AddStatsOnEquip": {
+            "Def": 45
+        },
+        "AddElStatsOnEquip": {
+            "VenusRes": 20,
+            "MarsRes": 20
+        }
+    },
+    "Running Shirt": {
+        "Name": "Running Shirt",
+        "Price": 400,
+        "Icon": "<:Running_Shirt:569854290550587422>",
+        "ItemType": "UnderWear",
+        "IsEquippable": true,
+        "IsArtifact": true,
+        "AddStatsOnEquip": {
+            "Def": 1,
+            "Spd": 15
+        }
+    },
+    "Silk Shirt": {
+        "Name": "Silk Shirt",
+        "Price": 1800,
+        "Icon": "<:Silk_Shirt:569854290965823508>",
+        "ItemType": "UnderWear",
+        "IsEquippable": true,
+        "IsArtifact": true,
+        "AddStatsOnEquip": {
+            "Def": 6
+        }
+    },
+    "Mythril Shirt": {
+        "Name": "Mythril Shirt",
+        "Price": 2900,
+        "Icon": "<:Mythril_Shirt:569854290894520340>",
+        "ItemType": "UnderWear",
+        "IsEquippable": true,
+        "IsArtifact": true,
+        "AddStatsOnEquip": {
+            "Def": 10,
+            "MaxHP": 5
+        }
+    },
+    "Casual Shirt": {
+        "Name": "Casual Shirt",
+        "Price": 50,
+        "Icon": "<:Casual_Shirt:569854675730300928>",
+        "ItemType": "UnderWear",
+        "IsEquippable": true,
+        "IsArtifact": true,
+        "AddStatsOnEquip": {
+            "Def": 3,
+            "MaxHP": 5
+        }
+    },
+    "Herbed Shirt": {
+        "Name": "Herbed Shirt",
+        "Price": 1900,
+        "Icon": "<:Herbed_Shirt:569854675751534592>",
+        "ItemType": "UnderWear",
+        "IsEquippable": true,
+        "IsArtifact": true,
+        "AddStatsOnEquip": {
+            "Def": 7
+        }
+    },
+    "Golden Shirt": {
+        "Name": "Golden Shirt",
+        "Price": 2400,
+        "Icon": "<:Golden_Shirt:569854675742883841>",
+        "ItemType": "UnderWear",
+        "IsEquippable": true,
+        "IsArtifact": true,
+        "AddStatsOnEquip": {
+            "Def": 12,
+            "MaxHP": 10
+        }
+    },
+    "Divine Camisole": {
+        "Name": "Divine Camisole",
+        "Price": 2700,
+        "Icon": "<:Divine_Camisole:569854675348750341>",
+        "ItemType": "UnderWear",
+        "IsEquippable": true,
+        "IsArtifact": true,
+        "AddStatsOnEquip": {
+            "Def": 10
+        }
+    },
+    "Turtle Boots": {
+        "Name": "Turtle Boots",
+        "Price": 600,
+        "Icon": "<:Turtle_Boots:569854266156515329>",
+        "ItemType": "Boots",
+        "IsEquippable": true,
+        "IsArtifact": true,
+        "AddStatsOnEquip": {
+            "Def": 3
+        },
+        "MultStatsOnEquip": {
+            "Spd": 50
+        }
+    },
+    "Fur Boots": {
+        "Name": "Fur Boots",
+        "Price": 1200,
+        "Icon": "<:Fur_Boots:569854266366361620>",
+        "ItemType": "Boots",
+        "IsEquippable": true,
+        "IsArtifact": true,
+        "AddStatsOnEquip": {
+            "Def": 2
+        },
+        "AddElStatsOnEquip": {
+            "MercuryRes": 15
+        }
+    },
+    "Quick Boots": {
+        "Name": "Quick Boots",
+        "Price": 2100,
+        "Icon": "<:Quick_Boots:569854266399916053>",
+        "ItemType": "Boots",
+        "IsEquippable": true,
+        "IsArtifact": true,
+        "AddStatsOnEquip": {
+            "Def": 3,
+            "Spd": 20
+        }
+    },
+    "Hyper Boots": {
+        "Name": "Hyper Boots",
+        "Price": 2400,
+        "Icon": "<:Hyper_Boots:569854266412367912>",
+        "ItemType": "Boots",
+        "IsEquippable": true,
+        "IsArtifact": true,
+        "AddStatsOnEquip": {
+            "Def": 4
+        },
+        "increaseUnleashRate": 12
+    },
+    "Leather Boots": {
+        "Name": "Leather Boots",
+        "Price": 270,
+        "Icon": "<:Leather_Boots:569854266400047114>",
+        "ItemType": "Boots",
+        "IsEquippable": true,
+        "IsArtifact": true,
+        "AddStatsOnEquip": {
+            "Def": 6
+        }
+    },
+    "Safety Boots": {
+        "Name": "Safety Boots",
+        "Price": 700,
+        "Icon": "<:Safety_Boots:569854266370424854>",
+        "ItemType": "Boots",
+        "IsEquippable": true,
+        "IsArtifact": true,
+        "AddStatsOnEquip": {
+            "Def": 12
+        },
+        "MultStatsOnEquip": {
+            "Spd": 70
+        }
+    },
+    "Dragon Boots": {
+        "Name": "Dragon Boots",
+        "Price": 4200,
+        "Icon": "<:Dragon_Boots:569854266433470464>",
+        "ItemType": "Boots",
+        "IsEquippable": true,
+        "IsArtifact": true,
+        "AddStatsOnEquip": {
+            "Def": 13
+        },
+        "AddElStatsOnEquip": {
+            "MercuryRes": 10,
+            "VenusRes": 10,
+            "MarsRes": 10
+        }
+    },
+    "Golden Boots": {
+        "Name": "Golden Boots",
+        "Price": 4400,
+        "Icon": "<:Golden_Boots:569854266051788818>",
+        "ItemType": "Boots",
+        "IsEquippable": true,
+        "IsArtifact": true,
+        "AddStatsOnEquip": {
+            "Def": 15,
+            "Spd": 30
+        }
+    },
+    "Ninja Sandals": {
+        "Name": "Ninja Sandals",
+        "Price": 2000,
+        "Icon": "<:Ninja_Sandals:569854266643316737>",
+        "ItemType": "Boots",
+        "IsEquippable": true,
+        "IsArtifact": true,
+        "AddStatsOnEquip": {
+            "Def": 19
+        },
+        "increaseUnleashRate": 15
+    },
+    "Knight's Greave": {
+        "Name": "Knight's Greave",
+        "Price": 2700,
+        "Icon": "<:Knights_Greave:569854266445922304>",
+        "ItemType": "Boots",
+        "IsEquippable": true,
+        "IsArtifact": true,
+        "AddStatsOnEquip": {
+            "Def": 16,
+            "MaxHP": 5
+        }
+    },
+    "Silver Greave": {
+        "Name": "Silver Greave",
+        "Price": 3800,
+        "Icon": "<:Silver_Greave:569854266072629249>",
+        "ItemType": "Boots",
+        "IsEquippable": true,
+        "IsArtifact": true,
+        "AddStatsOnEquip": {
+            "Def": 22
+        }
+    },
+    "Hover Greave": {
+        "Name": "Hover Greave",
+        "Price": 4500,
+        "Icon": ":Hover_Greave:",
+        "ItemType": "Boots",
+        "IsEquippable": true,
+        "IsArtifact": true,
+        "AddStatsOnEquip": {
+            "Def": 20
+        },
+        "MultStatsOnEquip": {
+            "Spd": 150
+        }
+    }
+}

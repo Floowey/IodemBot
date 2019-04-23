@@ -28,8 +28,14 @@ namespace IodemBot.Modules.GoldenSunMechanics
             {
                 return log;
             }
+            try
+            {
+                log.AddRange(InternalUse(User));
 
-            log.AddRange(InternalUse(User));
+            } catch (Exception e)
+            {
+                Console.WriteLine("What!?");
+            }
             return log;
         }
 

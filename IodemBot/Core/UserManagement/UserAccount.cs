@@ -1,6 +1,7 @@
 ﻿using IodemBot.Modules.GoldenSunMechanics;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using static IodemBot.Modules.GoldenSunMechanics.Psynergy;
 
 namespace IodemBot.Core.UserManagement
@@ -14,6 +15,8 @@ namespace IodemBot.Core.UserManagement
 
         public BattleStats BattleStats { get; set; } = new BattleStats();
         public ServerStats ServerStats { get; set; } = new ServerStats();
+
+        public Inventory inv { get; set; }// = new Inventory(new List<string>(), new List<string>(), new List<string>());
 
         internal void revived()
         {

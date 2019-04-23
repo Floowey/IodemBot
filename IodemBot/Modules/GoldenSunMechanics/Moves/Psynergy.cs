@@ -40,7 +40,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 log.Add($"{User.name} has not enough PP to cast {this.name}.");
                 return new Validation(false, log);
             }
-            User.stats.PP -= PPCost;
+            User.stats.PP -= (int)PPCost;
 
             log.Add($"{emote} {User.name} {(PPCost == 1 ? "uses" : "casts")} {this.name}!");
             return new Validation(true, log);

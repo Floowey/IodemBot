@@ -41,7 +41,7 @@ namespace IodemBot.Modules
             {
                 AdeptClass adeptClass = series.classes.Where(c => c.name.ToUpper() == name.ToUpper()).FirstOrDefault();
                 var embed = new EmbedBuilder();
-                embed.WithAuthor($"{adeptClass.name}");
+                embed.WithAuthor($"{adeptClass.name} - {series.archtype}");
                 embed.WithColor(Colors.get(series.elements.Select(s => s.ToString()).ToArray()));
                 var relevantMoves = AdeptClassSeriesManager.getMoveset(adeptClass).Where(m => m is Psynergy).ToList().ConvertAll(m => (Psynergy)m).ConvertAll(p => $"{p.emote} {p.name} `{p.PPCost}`");
                 embed.AddField("Description", series.description ?? "-");
@@ -57,6 +57,26 @@ namespace IodemBot.Modules
             {
                 return;
             }
+        }
+
+        [Command("classInfo")]
+        public async Task itemInfo([Remainder] string name = "")
+        {
+            if (name == "")
+            {
+                return;
+            }
+
+            var item = ItemDatabase.GetItem(name);
+            if (item == null) return;
+
+            var embed = new EmbedBuilder();
+            embed.WithAuthor($"{item.Name}");
+
+            embed.AddField("Icon", item.Icon);
+            embed.AddField("Value", item.Price);
+            embed.AddField("Type", item.ItemType);
+            embed.AddField("Artifact", item.IsArtifact ? "Yes" : "no");
         }
 
         [Command("class")]

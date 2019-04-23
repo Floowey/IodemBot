@@ -168,7 +168,7 @@ namespace IodemBot.Modules.ColossoBattles
                 channel.GetCachedMessage(reaction.MessageId);
                 c = (RestUserMessage)await channel.GetMessageAsync(reaction.MessageId);
             }
-            curBattle.ProcessReaction(reaction, c);
+            _ = curBattle.ProcessReaction(reaction, c);
         }
 
         private static async Task TryStartBattle(SocketReaction reaction)
@@ -587,7 +587,7 @@ namespace IodemBot.Modules.ColossoBattles
                     {
                         battle.TeamA.ForEach(p =>
                         {
-                            p.PPrecovery = Math.Min(8, p.PPrecovery + (uint)(winsInARow % 3 == 0 ? 1 : 0));
+                            p.PPrecovery = Math.Min(8, p.PPrecovery + (winsInARow % 3 == 0 ? 1 : 0));
                             p.RemoveNearlyAllConditions();
                             p.Buffs = new List<Buff>();
                             p.heal((uint)(p.stats.HP * 5 / 100));

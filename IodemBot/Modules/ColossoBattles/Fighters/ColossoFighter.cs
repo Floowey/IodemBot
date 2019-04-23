@@ -35,6 +35,7 @@ namespace IodemBot.Modules.ColossoBattles
         public string imgUrl;
         public bool isImmuneToEffects;
         public bool isImmuneToPsynergy;
+        public bool isImmuneToItemCurse;
         [JsonIgnore] public Move[] moves;
         public string name;
         [JsonIgnore] public double offensiveMult = 1;
@@ -43,6 +44,9 @@ namespace IodemBot.Modules.ColossoBattles
         public Stats stats;
         [JsonIgnore] private readonly List<Condition> Conditions = new List<Condition>();
         [JsonIgnore] private Random rnd = Global.random;
+        public Item Weapon;
+        public int unleashRate = 35;
+        [JsonIgnore] public uint addDamage;
 
         internal ColossoFighter(string name, string imgUrl, Stats stats, ElementalStats elstats, Move[] moves)
         {
@@ -55,8 +59,8 @@ namespace IodemBot.Modules.ColossoBattles
             this.moves = moves;
         }
 
-        public uint HPrecovery { get; set; } = 0;
-        public uint PPrecovery { get; set; } = 0;
+        public int HPrecovery { get; set; } = 0;
+        public int PPrecovery { get; set; } = 0;
         public void AddCondition(Condition con)
         {
             if (!Conditions.Contains(con))
@@ -176,7 +180,7 @@ namespace IodemBot.Modules.ColossoBattles
             }
             if (stats.HP > damage)
             {
-                stats.HP -= damage;
+                stats.HP -= (int)damage;
                 if (this is PlayerFighter)
                 {
                     ((PlayerFighter)this).battleStats.damageTanked += damage;
@@ -345,7 +349,7 @@ namespace IodemBot.Modules.ColossoBattles
                 return log;
             }
 
-            stats.HP = Math.Min(stats.HP + healHP, stats.maxHP);
+            stats.HP = (int)Math.Min(stats.HP + healHP, stats.maxHP);
             if (stats.HP == stats.maxHP)
             {
                 log.Add($"{name}'s HP was fully restored!");
@@ -438,7 +442,7 @@ namespace IodemBot.Modules.ColossoBattles
             List<string> log = new List<string>();
             if (!IsAlive())
             {
-                stats.HP = stats.maxHP * percentage / 100;
+                stats.HP = (int)(stats.maxHP * percentage / 100);
                 log.Add($"{name} is back on their feet.");
                 RemoveCondition(Condition.Down);
             }

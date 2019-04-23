@@ -14,21 +14,23 @@ using static IodemBot.Modules.GoldenSunMechanics.Psynergy;
 namespace IodemBot.Modules.GoldenSunMechanics
 {
     public enum ItemType { Collectible,
-        LongSword, Axe, Staff, LightBlade, Mace, Bow, Claw,
+        LongSword, Axe, Stave, LightBlade, Mace, Bow, Claw,
         Shield, Armlet, Glove,
         HeavyArmor, Robe, LightArmor,
-        HardHat, LightHat, Circlet, Crown,
-        UnderWear, Boot, Ring
+        Helmet, Hat, Circlet, Crown,
+        UnderWear,
+        Boots, HeavyBoots,
+        Ring
     }
     public class Item : ICloneable
     {
-        private static ItemType[] Weapons = { ItemType.LongSword, ItemType.Axe, ItemType.Staff, ItemType.LightBlade, ItemType.Mace, ItemType.Bow, ItemType.Claw };
+        private static ItemType[] Weapons = { ItemType.LongSword, ItemType.Axe, ItemType.Stave, ItemType.LightBlade, ItemType.Mace, ItemType.Bow, ItemType.Claw };
         private static ItemType[] ArmWear = { ItemType.Shield, ItemType.Armlet, ItemType.Glove };
         private static ItemType[] ChestWear = { ItemType.HeavyArmor, ItemType.Robe, ItemType.LightArmor };
-        private static ItemType[] HeadWear = { ItemType.HardHat, ItemType.LightHat, ItemType.Circlet, ItemType.Crown };
+        private static ItemType[] HeadWear = { ItemType.Helmet, ItemType.Hat, ItemType.Circlet, ItemType.Crown };
 
         public string Name { get; set; }
-        public IEmote Icon { get; set; }
+        public string Icon { get; set; }
         public uint Price { get; set; }
 
         [JsonIgnore]
@@ -43,7 +45,9 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public bool IsUsable { get; set; } = false;
         public bool IsArtifact { get; set; } = false;
 
-        public bool IsUnleashable { get; set; }
+        public int increaseUnleashRate { get; set; }
+
+        public bool IsUnleashable { get { return unleash != null; } }
         public Unleash unleash { get; set; }
 
         [DefaultValue(Element.none)]
@@ -60,7 +64,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public Stats AddStatsOnEquip { get; set; } = new Stats(0, 0, 0, 0, 0);
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public Stats MultStatsOnEquip { get; set; } = new Stats(1, 1, 1, 1, 1);
+        public Stats MultStatsOnEquip { get; set; } = new Stats(100, 100, 100, 100, 100);
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public ElementalStats AddElStatsOnEquip { get; set; } = new ElementalStats(0, 0, 0, 0, 0, 0, 0, 0);
@@ -106,6 +110,17 @@ namespace IodemBot.Modules.GoldenSunMechanics
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public int UnleashRate { get; set; }
 
-        public IEffect EffectOnUnleash { get; set; }
+        [JsonIgnore] public List<IEffect> effects { get; set; }
+        public List<EffectImage> effectImages { get; set; }
+
+        public Unleash(List<EffectImage> effectImages)
+        {
+            this.effects = new List<IEffect>();
+            this.effectImages = effectImages;
+            if (effectImages != null)
+            {
+                effectImages.ForEach(e => effects.Add(IEffect.EffectFactory(e.id, e.args)));
+            }
+        }
     }
 }

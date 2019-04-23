@@ -1,6 +1,8 @@
 ﻿using IodemBot.Modules.ColossoBattles;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using static IodemBot.Modules.GoldenSunMechanics.Psynergy;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
@@ -43,16 +45,28 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 return log;
             }
 
-            int chanceToMiss = 8;
-            if (User.HasCondition(Condition.Delusion))
-            {
-                chanceToMiss = 3;
-            }
+            bool weaponUnleashed = User.Weapon != null && User.Weapon.IsUnleashable && Global.random.Next(0, 100) <= User.unleashRate;
 
-            if (Global.random.Next(0, chanceToMiss) == 0)
+            if (weaponUnleashed)
             {
-                log.Add($"{enemy.name} dodges the blow!");
-                return log;
+                log.Add($"{User.Weapon.Icon}{User.name}'s weapon lets out a howl! {User.Weapon.unleash.UnleashName}!");
+                User.Weapon.unleash.effects
+                    .Where(e => e.timeToActivate == IEffect.TimeToActivate.beforeDamge)
+                    .ToList()
+                    .ForEach(e => log.AddRange(e.Apply(User, enemy)));
+            } else
+            {
+                int chanceToMiss = 8;
+                if (User.HasCondition(Condition.Delusion))
+                {
+                    chanceToMiss = 3;
+                }
+
+                if (Global.random.Next(0, chanceToMiss) == 0)
+                {
+                    log.Add($"{enemy.name} dodges the blow!");
+                    return log;
+                }
             }
 
             var atk = User.stats.Atk * User.MultiplyBuffs("Attack");
@@ -62,7 +76,32 @@ namespace IodemBot.Modules.GoldenSunMechanics
             {
                 damage = (uint)((atk - def) * enemy.defensiveMult / 2 + (uint)Global.random.Next(1, 4));
             }
-            if (Global.random.Next(0, 8) == 0)
+            damage += User.addDamage;
+            damage = (uint)(damage * User.offensiveMult);
+
+            var element = Element.none;
+            if (User.Weapon != null) element = User.Weapon.DamageAlignment;
+            if (weaponUnleashed) element = User.Weapon.unleash.UnleashAlignment;
+
+            var elMult = 1 + Math.Max(0.0, (int)User.elstats.GetPower(element) * User.MultiplyBuffs("Power") - (int)enemy.elstats.GetRes(element) * enemy.MultiplyBuffs("Resistance")) / 400;
+            var punctuation = "!";
+            if (enemy.elstats.GetRes(element) == enemy.elstats.highestRes())
+            {
+                punctuation = ".";
+            }
+
+            if (enemy.elstats.GetRes(element) == enemy.elstats.leastRes())
+            {
+                punctuation = "!!!";
+                if (User is PlayerFighter)
+                {
+                    ((PlayerFighter)User).battleStats.attackedWeakness++;
+                }
+            }
+            if (element == Psynergy.Element.none) punctuation = "!";
+
+            User.addDamage = 0;
+            if (!weaponUnleashed && Global.random.Next(0, 8) == 0)
             {
                 log.Add("Critical!!");
                 damage = (uint)(damage * 1.25 + Global.random.Next(5, 15));
@@ -72,7 +111,15 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 damage = 1;
             }
 
-            log.AddRange(enemy.DealDamage(damage));
+            log.AddRange(enemy.DealDamage(damage, punctuation));
+            if (weaponUnleashed)
+            {
+                User.Weapon.unleash.effects
+                    .Where(e => e.timeToActivate == IEffect.TimeToActivate.beforeDamge)
+                    .ToList()
+                    .ForEach(e => log.AddRange(e.Apply(User, enemy)));
+            }
+
             if (User is PlayerFighter)
             {
                 var player = (PlayerFighter)User;

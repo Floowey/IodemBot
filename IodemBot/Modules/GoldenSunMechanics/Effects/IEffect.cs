@@ -51,6 +51,9 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 case "ReduceDamage":
                     return new ReduceDamageEffect(args);
 
+                case "AddDamage":
+                    return new AddDamageEffect(args);
+
                 default: return new NoEffect();
             }
         }

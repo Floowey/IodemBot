@@ -13,9 +13,9 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public override List<string> Apply(ColossoFighter User, ColossoFighter Target)
         {
-            for (int i = 1; i < multipliers.Length; i++)
+            for (int i = 0; i < multipliers.Length; i++)
             {
-                if (Global.random.Next(1, 100) <= probabilites[i])
+                if (Global.random.Next(0, 100) <= probabilites[i])
                 {
                     User.offensiveMult = multipliers[i];
                     break;

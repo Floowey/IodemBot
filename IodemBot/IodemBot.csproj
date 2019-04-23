@@ -259,6 +259,7 @@
     <Compile Include="Modules\GoldenSunMechanics\Classes\Requirements\SoloBattleRequirement.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Classes\Requirements\TeammatesRequirement.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Classes\Requirements\UnlockedClassesRequirement.cs" />
+    <Compile Include="Modules\GoldenSunMechanics\Effects\AddDamageEffect.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Effects\BreakEffect.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Effects\ChanceToOHKOEffect.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Effects\ConditionEffect.cs" />
@@ -274,6 +275,7 @@
     <Compile Include="Modules\GoldenSunMechanics\Effects\StatEffect.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Effects\UserDiesEffect.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Items\Inventory.cs" />
+    <Compile Include="Modules\GoldenSunMechanics\Items\InventoryHandler.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Items\ItemDatabase.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Items\Item.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Moveset.cs" />
@@ -335,6 +337,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Resources\healpsy.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\items.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Resources\movepools.json">

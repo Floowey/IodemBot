@@ -56,7 +56,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         protected override List<string> InternalUse(ColossoFighter User)
         {
             List<string> log = new List<string>();
-            uint Power = User.elstats.GetPower(element);
+            int Power = User.elstats.GetPower(element);
             List<ColossoFighter> targets = getTarget(User);
 
             foreach (var p in targets)

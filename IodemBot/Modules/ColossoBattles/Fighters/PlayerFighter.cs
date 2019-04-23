@@ -21,21 +21,47 @@ namespace IodemBot.Modules.ColossoBattles
         {
             avatar = UserAccounts.GetAccount(user);
             guildUser = user;
+
+            var classSeries = AdeptClassSeriesManager.getClassSeries(avatar);
+            var gear = avatar.inv.GetGear(classSeries.archtype);
+            gear.ForEach(g =>
+            {
+                HPrecovery += g.HPRegen;
+                PPrecovery += g.PPRegen;
+                unleashRate += g.increaseUnleashRate;
+                if (g.IsCursed) AddCondition(Condition.ItemCurse);
+                if (g.CuresCurse) isImmuneToItemCurse = true;
+                if (g.IsWeapon()) Weapon = g;
+            });
         }
 
         private static Stats ModifyStats(SocketGuildUser user)
         {
             var avatar = UserAccounts.GetAccount(user);
+            var classSeries = AdeptClassSeriesManager.getClassSeries(avatar);
             var adept = AdeptClassSeriesManager.getClass(avatar);
             var multipliers = adept.statMultipliers;
             var level = avatar.LevelNumber;
 
             var actualStats = new Stats(
-                (uint)((baseStats.maxHP + baseStats.maxHP * 0.25 * level / 1.4) * multipliers.maxHP / 100),
-                (uint)((baseStats.maxPP + baseStats.maxPP * 0.115 * level / 1.2) * multipliers.maxPP / 100),
-                (uint)((baseStats.Atk + baseStats.Atk * 0.3 * level / 1.5) * multipliers.Atk / 100),
-                (uint)((baseStats.Def + baseStats.Def * 0.3 * level / 1.5) * multipliers.Def / 100),
-                (uint)((baseStats.Spd + baseStats.Spd * 0.5 * level / 1.5) * multipliers.Spd / 100));
+                (int)((baseStats.maxHP + baseStats.maxHP * 0.25 * level / 1.4) * multipliers.maxHP / 100),
+                (int)((baseStats.maxPP + baseStats.maxPP * 0.115 * level / 1.2) * multipliers.maxPP / 100),
+                (int)((baseStats.Atk + baseStats.Atk * 0.3 * level / 1.5) * multipliers.Atk / 100),
+                (int)((baseStats.Def + baseStats.Def * 0.3 * level / 1.5) * multipliers.Def / 100),
+                (int)((baseStats.Spd + baseStats.Spd * 0.5 * level / 1.5) * multipliers.Spd / 100));
+
+            var gear = avatar.inv.GetGear(classSeries.archtype);
+            gear.ForEach(g =>
+            {
+                actualStats += g.AddStatsOnEquip;
+            });
+
+            gear.ForEach(g =>
+            {
+                actualStats *= g.MultStatsOnEquip;
+                actualStats *= 0.01;
+            });
+
             return actualStats;
         }
 
