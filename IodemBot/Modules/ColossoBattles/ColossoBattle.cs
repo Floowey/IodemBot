@@ -16,6 +16,7 @@ namespace IodemBot.Modules.ColossoBattles
         public bool isActive = false;
         public uint sizeTeamA = 0;
         public uint sizeTeamB = 0;
+        public int turn = 0;
         public List<string> log = new List<string>();
         public bool turnActive = false;
 
@@ -26,6 +27,8 @@ namespace IodemBot.Modules.ColossoBattles
         public void Start()
         {
             isActive = true;
+            turn = 0;
+            log.Clear();
             TeamA.ForEach(p =>
             {
                 if (p is NPCEnemy)
@@ -35,6 +38,7 @@ namespace IodemBot.Modules.ColossoBattles
 
                 if (p is PlayerFighter)
                 {
+                    ((PlayerFighter)p).battleStats = new BattleStats();
                     ((PlayerFighter)p).battleStats.totalTeamMates += TeamA.Count - 1;
                     if (TeamA.Count == 1)
                     {
@@ -52,6 +56,7 @@ namespace IodemBot.Modules.ColossoBattles
 
                 if (p is PlayerFighter)
                 {
+                    ((PlayerFighter)p).battleStats = new BattleStats();
                     ((PlayerFighter)p).battleStats.totalTeamMates += TeamB.Count - 1;
                     if (TeamB.Count == 1)
                     {
@@ -102,6 +107,7 @@ namespace IodemBot.Modules.ColossoBattles
             }
             turnActive = true;
             bool b = true;
+            log.Add($"Turn {++turn}");
             //Stop Timer, just in Case
             Console.WriteLine("Starting to process Turn");
 
@@ -219,6 +225,8 @@ namespace IodemBot.Modules.ColossoBattles
         {
             TeamA = new List<ColossoFighter>();
             TeamB = new List<ColossoFighter>();
+            log.Clear();
+            turn = 0;
             isActive = false;
         }
 

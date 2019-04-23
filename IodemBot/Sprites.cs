@@ -35,7 +35,7 @@ namespace IodemBot
 
         public static string GetRandomSprite()
         {
-            int r = (new Random()).Next(0, sprites.Count);
+            int r = Global.random.Next(0, sprites.Count);
             return sprites.ElementAt(r).Value;
         }
     }

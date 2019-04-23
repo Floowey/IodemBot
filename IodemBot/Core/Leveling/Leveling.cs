@@ -10,7 +10,7 @@ namespace IodemBot.Core.Leveling
 {
     internal static class Leveling
     {
-        internal static ulong[] blackListedChannels = new ulong[] { 358276942337671178 };
+        internal static ulong[] blackListedChannels = new ulong[] { 358276942337671178, 535082629091950602, 536721357216677891, 536721375323357196, 536721392620535830, 535199363907977226, 565910418741133315 };
         public static int rate = 200;
         public static int cutoff = 125000;
 
@@ -101,9 +101,36 @@ namespace IodemBot.Core.Leveling
             await channel.SendMessageAsync("", embed: embed.Build());
         }
 
-        internal static async void UserAddedReaction(SocketGuildUser user, SocketTextChannel channel)
+        internal static async void UserAddedReaction(SocketGuildUser user, SocketReaction reaction)
         {
-            await Task.CompletedTask;
+            if (blackListedChannels.Contains(reaction.Channel.Id))
+            {
+                return;
+            }
+
+            if (!Global.Client.Guilds.Any(g => g.Emotes.Any(e => e.Name == reaction.Emote.Name)))
+            {
+                return;
+            }
+
+            var userAccount = UserAccounts.GetAccount(user);
+            if (reaction.MessageId == userAccount.ServerStats.mostRecentChannel)
+            {
+                userAccount.ServerStats.ReactionsAdded++;
+            } else
+            {
+                userAccount.ServerStats.ReactionsAdded += 5;
+                userAccount.ServerStats.mostRecentChannel = reaction.MessageId;
+            }
+
+            if (userAccount.ServerStats.ReactionsAdded >= 50)
+            {
+                try
+                {
+                    await GoldenSun.AwardClassSeries("Aqua Pilgrim Series", user, (SocketTextChannel)Global.Client.GetChannel(546760009741107216));
+                } catch { }
+            }
+            UserAccounts.SaveAccounts();
         }
 
         internal static async void UserSentFile(SocketGuildUser user, SocketTextChannel channel)

@@ -24,6 +24,7 @@ namespace IodemBot
             service = new CommandService();
             await service.AddModulesAsync(Assembly.GetEntryAssembly(), null);
             client.MessageReceived += HandleMessageAsync;
+            client.ReactionAdded += HandleReactionAsync;
             //badWords = File.ReadAllLines("Resources/bad_words.txt");
 
             responses = new List<AutoResponse>();
@@ -61,6 +62,16 @@ namespace IodemBot
                 60));
         }
 
+        private async Task HandleReactionAsync(Cacheable<IUserMessage, ulong> Message, ISocketMessageChannel Channel, SocketReaction Reaction)
+        {
+            var User = (SocketGuildUser) Reaction.User;
+            if (User.IsBot)
+            {
+                return;
+            }
+            Leveling.UserAddedReaction(User, Reaction);
+        }
+
         private async Task HandleMessageAsync(SocketMessage s)
         {
             SocketUserMessage msg = s as SocketUserMessage;
@@ -74,7 +85,10 @@ namespace IodemBot
             {
                 return;
             }
+
             //Check for Profanity here
+
+            // Auto Responses
             responses.ForEach(async r => await r.Check(msg));
             Leveling.UserSentMessage((SocketGuildUser)context.User, (SocketTextChannel)context.Channel);
             await Task.CompletedTask;

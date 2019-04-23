@@ -104,6 +104,11 @@ namespace IodemBot.Modules.GoldenSunMechanics
             Spd = spd;
         }
 
+        public static Stats operator *(Stats s1, double factor)
+        {
+            return new Stats((uint)(s1.maxHP * factor), (uint)(s1.maxPP * factor), (uint)(s1.Atk * factor), (uint)(s1.Def * factor), (uint)(s1.Spd * factor));
+        }
+
         public override string ToString()
         {
             return $"`HP: {maxHP} Atk: {Atk} Agi: {Spd}`\n` PP: {maxPP} Def: {Def} `";

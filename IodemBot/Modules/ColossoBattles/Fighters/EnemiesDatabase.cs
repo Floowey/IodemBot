@@ -45,9 +45,9 @@ namespace IodemBot.Modules.ColossoBattles
                     break;
 
                 case (BattleDifficulty.Medium):
+                case (BattleDifficulty.MediumRare):
                     selectedDifficulty = silverFighters;
                     break;
-
                 case (BattleDifficulty.Hard):
                     selectedDifficulty = goldFighters;
                     break;
@@ -57,7 +57,13 @@ namespace IodemBot.Modules.ColossoBattles
                     Console.WriteLine("Enemies from default!!!");
                     break;
             }
-            return selectedDifficulty[(new Random()).Next(0, selectedDifficulty.Count)].Select(f => (ColossoFighter)f.Clone()).ToList();
+            var enemies = selectedDifficulty[(new Random()).Next(0, selectedDifficulty.Count)].Select(f => (ColossoFighter)f.Clone()).ToList();
+            if(diff == BattleDifficulty.MediumRare)
+            {
+                enemies.ForEach(e => e.stats *= 1.5);
+            }
+            return enemies;
+
         }
 
         internal static List<ColossoFighter> getEnemies(BattleDifficulty diff, string enemy)

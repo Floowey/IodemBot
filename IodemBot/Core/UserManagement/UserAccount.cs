@@ -129,5 +129,7 @@ namespace IodemBot.Core.UserManagement
         public DateTime lastDayActive { get; set; }
         public int lookedUpClass { get; set; }
         public int MessagesInColossoTalks { get; set; }
+        public int ReactionsAdded { get; set; }
+        public int ColossoHighestRoundEndless { get; set; }
     }
 }

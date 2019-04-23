@@ -267,6 +267,7 @@
     <Compile Include="Modules\GoldenSunMechanics\Effects\MayIgnoreDefenseEffect.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Effects\MultiplyDamageEffect.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Effects\NoEffect.cs" />
+    <Compile Include="Modules\GoldenSunMechanics\Effects\ReduceDamageEffect.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Effects\ReduceHPtoOneEffect.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Effects\RestoreEffect.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Effects\ReviveEffect.cs" />

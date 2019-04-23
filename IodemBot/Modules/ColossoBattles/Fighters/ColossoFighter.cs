@@ -43,6 +43,7 @@ namespace IodemBot.Modules.ColossoBattles
         public Stats stats;
         [JsonIgnore] private readonly List<Condition> Conditions = new List<Condition>();
         [JsonIgnore] private Random rnd = Global.random;
+
         internal ColossoFighter(string name, string imgUrl, Stats stats, ElementalStats elstats, Move[] moves)
         {
             this.name = name;
@@ -416,6 +417,12 @@ namespace IodemBot.Modules.ColossoBattles
         public void RemoveAllConditions()
         {
             Condition[] dontRemove = new Condition[] { Condition.Down, Condition.Counter, Condition.ItemCurse, Condition.Haunt };
+            Conditions.RemoveAll(c => !dontRemove.Contains(c));
+        }
+
+        public void RemoveNearlyAllConditions()
+        {
+            Condition[] dontRemove = new Condition[] { Condition.Down, Condition.Counter, Condition.ItemCurse, Condition.Poison, Condition.Venom, Condition.Haunt };
             Conditions.RemoveAll(c => !dontRemove.Contains(c));
         }
 

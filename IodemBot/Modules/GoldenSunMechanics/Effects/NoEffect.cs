@@ -9,5 +9,10 @@ namespace IodemBot.Modules.GoldenSunMechanics
         {
             return new List<string>();
         }
+
+        public override string ToString()
+        {
+            return "Doesn't have a effect, should probably have one. Please report.";
+        }
     }
 }

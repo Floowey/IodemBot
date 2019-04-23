@@ -1,6 +1,7 @@
 ﻿using IodemBot.Modules.GoldenSunMechanics;
 using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace IodemBot.Modules.ColossoBattles
 {
@@ -9,15 +10,20 @@ namespace IodemBot.Modules.ColossoBattles
         [JsonProperty] private int extraTurns { get; set; } = 0;
         [JsonProperty] private string[] movepool { get; set; }
 
-        public NPCEnemy(string name, string imgUrl, Stats stats, ElementalStats elstats, Move[] moves, int extraTurns) : base(name, imgUrl, stats, elstats, moves)
-        {
-            this.extraTurns = extraTurns;
-        }
+        [DefaultValue(true)]
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Populate)]
+        private bool hasAttack { get; set; } = true;
+        
+        [DefaultValue(true)]
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Populate)]
+        private bool hasDefend { get; set; } = true;
 
         [JsonConstructor]
-        public NPCEnemy(string name, string imgUrl, Stats stats, ElementalStats elstats, string[] movepool) : base(name, imgUrl, stats, elstats, PsynergyDatabase.GetMovepool(movepool))
+        public NPCEnemy(string name, string imgUrl, Stats stats, ElementalStats elstats, string[] movepool, bool hasAttack, bool hasDefend) : base(name, imgUrl, stats, elstats, PsynergyDatabase.GetMovepool(movepool, hasAttack, hasDefend))
         {
             this.movepool = movepool;
+            this.hasAttack = hasAttack;
+            this.hasDefend = hasDefend;
         }
 
         public override List<string> ExtraTurn()
