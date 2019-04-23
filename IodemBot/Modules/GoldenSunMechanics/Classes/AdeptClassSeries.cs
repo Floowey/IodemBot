@@ -1,4 +1,6 @@
 ﻿using IodemBot.Core.UserManagement;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using System;
 using System.Collections.Generic;
 using static IodemBot.Modules.GoldenSunMechanics.Psynergy;
@@ -16,6 +18,9 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public string requirement { get; set; }
         public bool isDefault { get; set; }
         public string description { get; set; }
+
+        [JsonConverter(typeof(StringEnumConverter))]
+        public ArchType archtype { get; set; }
 
         public AdeptClass getClass(UserAccount User)
         {

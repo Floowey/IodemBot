@@ -30,6 +30,14 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 Move m = PsynergyDatabase.GetPsynergy(s);
                 moves.Add(m);
             }
+
+            var classSeries = AdeptClassSeriesManager.getClassSeries(avatar);
+            var gear = avatar.inv.GetGear(classSeries.archtype);
+            gear.ForEach(g =>
+            {
+                if (g.IsWeapon()) moves.Where(m => m is Attack).First().emote = g.Icon;
+                if (g.IsArmWear()) moves.Where(m => m is Defend).First().emote = g.Icon;
+            });
             return moves.ToArray();
         }
 
@@ -48,7 +56,14 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         internal static ElementalStats getElStats(UserAccount User)
         {
+            var classSeries = AdeptClassSeriesManager.getClassSeries(User);
             var els = getClassSeries(User).elstats;
+
+            var gear = User.inv.GetGear(classSeries.archtype);
+            gear.ForEach(g =>
+            {
+                els += g.AddElStatsOnEquip;
+            });
             return els;
         }
 
