@@ -1074,7 +1074,7 @@
         "name": "Ice",
         "targetType": 4,
         "emote": "<:Ice:536969244538044426>",
-        "range": 2,
+        "range": 1,
         "element": 3,
         "PPCost": 5,
         "power": 35
