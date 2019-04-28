@@ -49,12 +49,13 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
             if (weaponUnleashed)
             {
-                log.Add($"{User.Weapon.Icon}{User.name}'s weapon lets out a howl! {User.Weapon.unleash.UnleashName}!");
+                log.Add($"{User.Weapon.Icon} {User.name}'s {User.Weapon.Name} lets out a howl! {User.Weapon.unleash.UnleashName}!");
                 User.Weapon.unleash.effects
                     .Where(e => e.timeToActivate == IEffect.TimeToActivate.beforeDamge)
                     .ToList()
                     .ForEach(e => log.AddRange(e.Apply(User, enemy)));
-            } else
+            }
+            else
             {
                 int chanceToMiss = 8;
                 if (User.HasCondition(Condition.Delusion))
@@ -80,8 +81,15 @@ namespace IodemBot.Modules.GoldenSunMechanics
             damage = (uint)(damage * User.offensiveMult);
 
             var element = Element.none;
-            if (User.Weapon != null) element = User.Weapon.DamageAlignment;
-            if (weaponUnleashed) element = User.Weapon.unleash.UnleashAlignment;
+            if (User.Weapon != null)
+            {
+                element = User.Weapon.DamageAlignment;
+            }
+
+            if (weaponUnleashed)
+            {
+                element = User.Weapon.unleash.UnleashAlignment;
+            }
 
             var elMult = 1 + Math.Max(0.0, (int)User.elstats.GetPower(element) * User.MultiplyBuffs("Power") - (int)enemy.elstats.GetRes(element) * enemy.MultiplyBuffs("Resistance")) / 400;
             var punctuation = "!";
@@ -89,6 +97,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
             {
                 punctuation = ".";
             }
+
+            damage = (uint)(damage * elMult);
 
             if (enemy.elstats.GetRes(element) == enemy.elstats.leastRes())
             {
@@ -98,7 +108,10 @@ namespace IodemBot.Modules.GoldenSunMechanics
                     ((PlayerFighter)User).battleStats.attackedWeakness++;
                 }
             }
-            if (element == Psynergy.Element.none) punctuation = "!";
+            if (element == Psynergy.Element.none)
+            {
+                punctuation = "!";
+            }
 
             User.addDamage = 0;
             if (!weaponUnleashed && Global.random.Next(0, 8) == 0)
@@ -115,7 +128,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             if (weaponUnleashed)
             {
                 User.Weapon.unleash.effects
-                    .Where(e => e.timeToActivate == IEffect.TimeToActivate.beforeDamge)
+                    .Where(e => e.timeToActivate == IEffect.TimeToActivate.afterDamage)
                     .ToList()
                     .ForEach(e => log.AddRange(e.Apply(User, enemy)));
             }

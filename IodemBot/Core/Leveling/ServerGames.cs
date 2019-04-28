@@ -3,8 +3,11 @@ using Discord.WebSocket;
 using IodemBot.Core.UserManagement;
 using IodemBot.Modules;
 using IodemBot.Modules.ColossoBattles;
+using IodemBot.Modules.GoldenSunMechanics;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
+using static IodemBot.Modules.ColossoBattles.ColossoPvE;
 
 namespace IodemBot.Core.Leveling
 {
@@ -91,7 +94,9 @@ namespace IodemBot.Core.Leveling
         internal static async Task UserWonBattle(UserAccount userAccount, int winsInARow, BattleStats battleStats, ColossoPvE.BattleDifficulty diff, ITextChannel battleChannel)
         {
             uint oldLevel = userAccount.LevelNumber;
-            userAccount.XP += (uint)(new Random()).Next(10, 20) * (uint)Math.Pow(((int)diff + 1), 2) * 2;
+            var xpawarded = (uint)(new Random()).Next(20, 40) * Math.Min(3, (uint)Math.Pow(((int)diff + 1), 2));
+            userAccount.XP += xpawarded;
+            userAccount.inv.AddBalance(xpawarded / 2);
             uint newLevel = userAccount.LevelNumber;
 
             userAccount.ServerStats.ColossoWins++;
@@ -102,6 +107,15 @@ namespace IodemBot.Core.Leveling
             userAccount.BattleStats += battleStats;
             var bs = userAccount.BattleStats;
 
+            if (Global.random.Next(0, 100) <= 7)
+            {
+                ChestQuality awardedChest = (ChestQuality)((int)diff + (Global.random.Next(0, 8) == 0 ? Global.random.Next(-1, 2) : 0));
+                userAccount.inv.AwardChest(awardedChest);
+                var embed = new EmbedBuilder();
+                embed.WithColor(Colors.get("Iodem"));
+                embed.WithDescription($"{((SocketTextChannel)battleChannel).Users.Where(u => u.Id == userAccount.ID).FirstOrDefault().Mention} found a {Inventory.ChestIcons[awardedChest]} {awardedChest} Chest!");
+                await battleChannel.SendMessageAsync("", false, embed.Build());
+            }
 
             if (userAccount.ServerStats.ColossoWins >= 15)
             {
@@ -146,6 +160,34 @@ namespace IodemBot.Core.Leveling
             }
 
             await Task.CompletedTask;
+        }
+
+        private static ChestQuality getRandomChest(BattleDifficulty diff)
+        {
+            ChestQuality[] chests;
+            switch (diff)
+            {
+                case BattleDifficulty.Tutorial:
+                    chests = new ChestQuality[] { ChestQuality.Wooden };
+                    return chests[Global.random.Next(0, chests.Length)];
+
+                case BattleDifficulty.Easy:
+                default:
+                    chests = new ChestQuality[] { ChestQuality.Wooden, ChestQuality.Wooden, ChestQuality.Wooden, ChestQuality.Normal, ChestQuality.Normal };
+                    return chests[Global.random.Next(0, chests.Length)];
+
+                case BattleDifficulty.Medium:
+                    chests = new ChestQuality[] { ChestQuality.Wooden, ChestQuality.Normal, ChestQuality.Normal, ChestQuality.Normal, ChestQuality.Silver, ChestQuality.Silver };
+                    return chests[Global.random.Next(0, chests.Length)];
+
+                case BattleDifficulty.MediumRare:
+                    chests = new ChestQuality[] { ChestQuality.Normal, ChestQuality.Silver, ChestQuality.Silver, ChestQuality.Silver, ChestQuality.Gold };
+                    return chests[Global.random.Next(0, chests.Length)];
+
+                case BattleDifficulty.Hard:
+                    chests = new ChestQuality[] { ChestQuality.Silver, ChestQuality.Gold, ChestQuality.Gold, ChestQuality.Gold, ChestQuality.Gold, ChestQuality.Adept };
+                    return chests[Global.random.Next(0, chests.Length)];
+            }
         }
 
         internal static async Task UserHasCursed(SocketGuildUser user, SocketTextChannel channel)

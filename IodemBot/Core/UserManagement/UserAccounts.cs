@@ -1,4 +1,5 @@
 ﻿using Discord.WebSocket;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -11,14 +12,21 @@ namespace IodemBot.Core.UserManagement
 
         static UserAccounts()
         {
-            if (DataStorage.SaveExists(accountsFile))
+            try
             {
-                accounts = DataStorage.LoadUserAccounts(accountsFile).ToList();
+                if (DataStorage.SaveExists(accountsFile))
+                {
+                    accounts = DataStorage.LoadUserAccounts(accountsFile).ToList();
+                }
+                else
+                {
+                    accounts = new List<UserAccount>();
+                    SaveAccounts();
+                }
             }
-            else
+            catch (Exception e)
             {
-                accounts = new List<UserAccount>();
-                SaveAccounts();
+                Console.WriteLine(e.ToString());
             }
         }
 

@@ -9,6 +9,7 @@ namespace IodemBot.Modules.ColossoBattles
 {
     public static class EnemiesDatabase
     {
+        private static List<List<ColossoFighter>> tutorialFighters;
         private static List<List<ColossoFighter>> bronzeFighters;
         private static List<List<ColossoFighter>> silverFighters;
         private static List<List<ColossoFighter>> goldFighters;
@@ -17,6 +18,7 @@ namespace IodemBot.Modules.ColossoBattles
         {
             try
             {
+                tutorialFighters = loadEnemiesFromFile("Resources/tutorialFighters.json");
                 bronzeFighters = loadEnemiesFromFile("Resources/bronzeFighters.json");
                 silverFighters = loadEnemiesFromFile("Resources/silverFighters.json");
                 goldFighters = loadEnemiesFromFile("Resources/goldFighters.json");
@@ -40,6 +42,10 @@ namespace IodemBot.Modules.ColossoBattles
             List<List<ColossoFighter>> selectedDifficulty;
             switch (diff)
             {
+                case (BattleDifficulty.Tutorial):
+                    selectedDifficulty = tutorialFighters;
+                    break;
+
                 case (BattleDifficulty.Easy):
                     selectedDifficulty = bronzeFighters;
                     break;
@@ -48,6 +54,7 @@ namespace IodemBot.Modules.ColossoBattles
                 case (BattleDifficulty.MediumRare):
                     selectedDifficulty = silverFighters;
                     break;
+
                 case (BattleDifficulty.Hard):
                     selectedDifficulty = goldFighters;
                     break;
@@ -58,12 +65,11 @@ namespace IodemBot.Modules.ColossoBattles
                     break;
             }
             var enemies = selectedDifficulty[(new Random()).Next(0, selectedDifficulty.Count)].Select(f => (ColossoFighter)f.Clone()).ToList();
-            if(diff == BattleDifficulty.MediumRare)
+            if (diff == BattleDifficulty.MediumRare)
             {
                 enemies.ForEach(e => e.stats *= 1.5);
             }
             return enemies;
-
         }
 
         internal static List<ColossoFighter> getEnemies(BattleDifficulty diff, string enemy)

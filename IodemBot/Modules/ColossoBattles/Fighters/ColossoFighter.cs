@@ -47,6 +47,7 @@ namespace IodemBot.Modules.ColossoBattles
         public Item Weapon;
         public int unleashRate = 35;
         [JsonIgnore] public uint addDamage;
+        public List<Item> EquipmentWithEffect = new List<Item>();
 
         internal ColossoFighter(string name, string imgUrl, Stats stats, ElementalStats elstats, Move[] moves)
         {
@@ -61,6 +62,7 @@ namespace IodemBot.Modules.ColossoBattles
 
         public int HPrecovery { get; set; } = 0;
         public int PPrecovery { get; set; } = 0;
+
         public void AddCondition(Condition con)
         {
             if (!Conditions.Contains(con))
@@ -222,27 +224,11 @@ namespace IodemBot.Modules.ColossoBattles
             {
                 if (HPrecovery > 0 && stats.HP < stats.maxHP)
                 {
-                    stats.HP = Math.Min(stats.maxHP, stats.HP + HPrecovery);
-                    if (stats.HP < stats.maxHP)
-                    {
-                        turnLog.Add($"{name} recovers {HPrecovery} HP.");
-                    }
-                    else
-                    {
-                        turnLog.Add($"{name}'s HP was fully restored.");
-                    }
+                    turnLog.AddRange(heal((uint)HPrecovery));
                 }
                 if (PPrecovery > 0 && stats.PP < stats.maxPP)
                 {
-                    stats.PP = Math.Min(stats.maxPP, stats.PP + PPrecovery);
-                    if (stats.PP < stats.maxPP)
-                    {
-                        turnLog.Add($"{name} recovers {PPrecovery} PP.");
-                    }
-                    else
-                    {
-                        turnLog.Add($"{name}'s PP was fully restored.");
-                    }
+                    turnLog.AddRange(restorePP((uint)PPrecovery));
                 }
             }
 
@@ -301,6 +287,27 @@ namespace IodemBot.Modules.ColossoBattles
 
             RemoveCondition(Condition.Counter);
 
+            foreach (var item in EquipmentWithEffect)
+            {
+                if (item.IsUnleashable
+                    && !item.isBroken
+                    && item.unleash.effects.Any(e => e.ValidSelection(this))
+                    && Global.random.Next(0, 100) <= item.ChanceToActivate)
+                {
+                    turnLog.Add($"{item.Icon} {name}'s {item.Name} starts to Glow.");
+                    foreach (var effect in item.unleash.effects)
+                    {
+                        turnLog.AddRange(effect.Apply(this, this));
+                    }
+
+                    if (Global.random.Next(0, 100) <= item.ChanceToBreak)
+                    {
+                        item.isBroken = true;
+                        turnLog.Add($"{item.Icon} {name}'s {item.Name} breaks;");
+                    }
+                }
+            }
+
             if (!IsAlive())
             {
                 selected = new Nothing();
@@ -319,9 +326,13 @@ namespace IodemBot.Modules.ColossoBattles
             return battle.getTeam(enemies);
         }
 
-        public string getMoves()
+        public string getMoves(bool detailed = true)
         {
-            var relevantMoves = moves.Where(m => m is Psynergy).ToList().ConvertAll(m => (Psynergy)m).ConvertAll(p => $"{p.emote} {p.name} `{p.PPCost}`");
+            var relevantMoves = moves.Where(m => m is Psynergy).ToList().Select(m => m.emote);
+            if (detailed)
+            {
+                relevantMoves = moves.Where(m => m is Psynergy).ToList().ConvertAll(m => (Psynergy)m).ConvertAll(p => $"{p.emote} {p.name} `{p.PPCost}`");
+            }
             return string.Join(" - ", relevantMoves);
         }
 
@@ -329,6 +340,7 @@ namespace IodemBot.Modules.ColossoBattles
         {
             return battle.getTeam(party);
         }
+
         public bool HasCondition(Condition con)
         {
             return Conditions.Contains(con);
@@ -361,10 +373,32 @@ namespace IodemBot.Modules.ColossoBattles
             return log;
         }
 
+        public List<string> restorePP(uint restorePP)
+        {
+            List<string> log = new List<string>();
+            if (!IsAlive())
+            {
+                log.Add($"{name} is unaffected");
+                return log;
+            }
+
+            stats.PP = (int)Math.Min(stats.PP + restorePP, stats.maxPP);
+            if (stats.PP == stats.maxPP)
+            {
+                log.Add($"{name}'s PP was fully restored!");
+            }
+            else
+            {
+                log.Add($"{name} recovers {restorePP} PP.");
+            }
+            return log;
+        }
+
         public bool IsAlive()
         {
             return !HasCondition(Condition.Down);
         }
+
         public void Kill()
         {
             stats.HP = 0;
@@ -372,6 +406,7 @@ namespace IodemBot.Modules.ColossoBattles
             AddCondition(Condition.Down);
             Buffs = new List<Buff>();
         }
+
         public List<string> MainTurn()
         {
             List<string> turnLog = new List<string>();
@@ -437,6 +472,7 @@ namespace IodemBot.Modules.ColossoBattles
                 Conditions.Remove(con);
             }
         }
+
         public List<string> Revive(uint percentage)
         {
             List<string> log = new List<string>();
@@ -452,6 +488,7 @@ namespace IodemBot.Modules.ColossoBattles
             }
             return log;
         }
+
         public bool select(string emote)
         {
             string[] numberEmotes = new string[] {"\u0030\u20E3", "1⃣", "\u0032\u20E3", "\u0033\u20E3", "\u0034\u20E3", "\u0035\u20E3",
@@ -512,7 +549,14 @@ namespace IodemBot.Modules.ColossoBattles
                 Console.WriteLine("Why tf do you want to selectRandom(), the battle is *not* active!");
                 return;
             }
+            if (moves.Count() == 0)
+            {
+                selected = new Nothing();
+                hasSelected = true;
+                return;
+            }
             selected = moves[Global.random.Next(0, moves.Count())];
+
             selected.targetNr = 0;
             Console.WriteLine($"{selected.name} was rolled.");
 

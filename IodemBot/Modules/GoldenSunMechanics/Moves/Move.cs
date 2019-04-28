@@ -31,8 +31,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
             try
             {
                 log.AddRange(InternalUse(User));
-
-            } catch (Exception e)
+            }
+            catch (Exception e)
             {
                 Console.WriteLine("What!?");
             }
@@ -77,7 +77,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 return new Validation(false, log);
             }
 
-            if (User.HasCondition(Condition.ItemCurse) && Global.random.Next(0, 3) == 0)
+            if (User.HasCondition(Condition.ItemCurse) && !User.isImmuneToItemCurse && Global.random.Next(0, 3) == 0)
             {
                 log.Add($"{User.name} can't move");
                 return new Validation(false, log);

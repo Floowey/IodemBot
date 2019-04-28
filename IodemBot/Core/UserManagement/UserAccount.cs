@@ -1,7 +1,6 @@
 ﻿using IodemBot.Modules.GoldenSunMechanics;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using static IodemBot.Modules.GoldenSunMechanics.Psynergy;
 
 namespace IodemBot.Core.UserManagement
@@ -13,10 +12,25 @@ namespace IodemBot.Core.UserManagement
         public string Flag { get; set; }
         //Ranking
 
-        public BattleStats BattleStats { get; set; } = new BattleStats();
+        public BattleStats BattleStats { get; set; }
+            = new BattleStats();
+
         public ServerStats ServerStats { get; set; } = new ServerStats();
 
-        public Inventory inv { get; set; }// = new Inventory(new List<string>(), new List<string>(), new List<string>());
+        private Inventory hiddenInv;
+
+        public Inventory inv
+        {
+            get
+            {
+                if (hiddenInv == null)
+                { hiddenInv = new Inventory(); }
+                else if (!hiddenInv.IsInitialized)
+                { hiddenInv.Initialize(); }
+                return hiddenInv;
+            }
+            set { hiddenInv = value; }
+        }
 
         internal void revived()
         {
@@ -74,6 +88,7 @@ namespace IodemBot.Core.UserManagement
                 return AdeptClassSeriesManager.getClass(this).name; //GoldenSun.getClass(element, LevelNumber, (uint) classToggle);
             }
         }
+
         //Friend Codes
         public bool arePublicCodes = false;
 

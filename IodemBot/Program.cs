@@ -16,6 +16,9 @@ namespace IodemBot
 
         private static void Main(string[] args)
         {
+
+
+
             try
             {
                 new Program().StartAsync().GetAwaiter().GetResult();

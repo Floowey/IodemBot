@@ -95,7 +95,7 @@ namespace IodemBot.Core.Leveling
             var embed = new EmbedBuilder();
             embed.WithColor(Colors.get(userAccount.element.ToString()));
             embed.WithTitle("LEVEL UP!");
-            embed.WithDescription(userAccount.gsClass + " " + user.Mention ?? "@" + userAccount.Name + " just leveled up!");
+            embed.WithDescription("<:Up_Arrow:571309108289077258> " + userAccount.gsClass + " " + user.Mention + " just leveled up!");
             embed.AddField("LEVEL", userAccount.LevelNumber, true);
             embed.AddField("XP", userAccount.XP, true);
             await channel.SendMessageAsync("", embed: embed.Build());
@@ -117,7 +117,8 @@ namespace IodemBot.Core.Leveling
             if (reaction.MessageId == userAccount.ServerStats.mostRecentChannel)
             {
                 userAccount.ServerStats.ReactionsAdded++;
-            } else
+            }
+            else
             {
                 userAccount.ServerStats.ReactionsAdded += 5;
                 userAccount.ServerStats.mostRecentChannel = reaction.MessageId;
@@ -128,7 +129,8 @@ namespace IodemBot.Core.Leveling
                 try
                 {
                     await GoldenSun.AwardClassSeries("Aqua Pilgrim Series", user, (SocketTextChannel)Global.Client.GetChannel(546760009741107216));
-                } catch { }
+                }
+                catch { }
             }
             UserAccounts.SaveAccounts();
         }

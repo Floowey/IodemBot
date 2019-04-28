@@ -6,6 +6,7 @@ using IodemBot.Core.Leveling;
 using IodemBot.Core.UserManagement;
 using IodemBot.Extensions;
 using IodemBot.Modules.ColossoBattles;
+using IodemBot.Modules.GoldenSunMechanics;
 using Newtonsoft.Json;
 using System;
 using System.Linq;
@@ -150,23 +151,24 @@ namespace IodemBot.Modules
             author.WithName($"{user.DisplayName()} {account.Flag}");
             author.WithIconUrl(user.GetAvatarUrl());
             embed.WithAuthor(author);
-            embed.WithThumbnailUrl(user.GetAvatarUrl());
+            //embed.WithThumbnailUrl(user.GetAvatarUrl());
             //embed.WithDescription($"Status.");
 
-            embed.AddField("Element", account.element, true);
-            embed.AddField("Class", account.gsClass, true);
+            //embed.AddField("Element", account.element, true);
 
             embed.AddField("Level", account.LevelNumber, true);
+            embed.AddField("XP", $"{account.XP} - next in {Leveling.XPforNextLevel(account.XP)}", true);
             embed.AddField("Rank", UserAccounts.GetRank(user) + 1, true);
 
-            embed.AddField("XP", account.XP, true);
-            embed.AddField("XP to level up", Leveling.XPforNextLevel(account.XP), true);
-
-            embed.AddField("Colosso wins", account.ServerStats.ColossoWins, true);
             //embed.AddField("", "");
 
-            embed.AddField("Stats", p.stats.ToString());
-            embed.AddField("Psynergy", p.getMoves());
+            embed.AddField("Class", account.gsClass, true);
+            embed.AddField("Colosso wins", account.ServerStats.ColossoWins, true);
+
+            embed.AddField("Current Equip", account.inv.GearToString(AdeptClassSeriesManager.getClassSeries(account).archtype), true);
+            embed.AddField("Psynergy", p.getMoves(false), true);
+
+            embed.AddField("Stats", p.stats.ToString(), false);
             embed.AddField("Unlocked Classes", account.BonusClasses.Length == 0 ? "none" : string.Join(", ", account.BonusClasses));
 
             var Footer = new EmbedFooterBuilder();

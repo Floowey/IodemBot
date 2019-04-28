@@ -125,6 +125,17 @@ namespace IodemBot.Modules.ColossoBattles
             var p = new PlayerFighter(player);
             battleCol.battle.AddPlayer(p, ColossoBattle.Team.A);
 
+            if (playerAvatar.LevelNumber < 10 && battleCol.messages.Count == 0 && battleCol.Name == "Bronze")
+            {
+                //battleCol.diff = BattleDifficulty.Tutorial;
+                battleCol.battle.TeamB = new List<ColossoFighter>();
+                EnemiesDatabase.getRandomEnemies(BattleDifficulty.Tutorial).ForEach(f => battleCol.battle.AddPlayer(f, ColossoBattle.Team.B));
+            }
+            else
+            {
+                battleCol.diff = BattleDifficulty.Easy;
+            }
+
             var playerMsg = await battleCol.battleChannel.SendMessageAsync($"{player.DisplayName()} wants to battle!");
             battleCol.messages.Add(playerMsg, p);
 
@@ -193,7 +204,7 @@ namespace IodemBot.Modules.ColossoBattles
             battleCol.WriteBattleInit();
         }
 
-        public enum BattleDifficulty { Easy = 1, Medium = 2, MediumRare = 3, Hard = 4 };
+        public enum BattleDifficulty { Tutorial = 0, Easy = 1, Medium = 2, MediumRare = 3, Hard = 4, Adept = 5 };
 
         internal class BattleCollector
         {
@@ -612,7 +623,10 @@ namespace IodemBot.Modules.ColossoBattles
                 }
                 else
                 {
-                    if (isEndless) diff = BattleDifficulty.Easy;
+                    if (isEndless)
+                    {
+                        diff = BattleDifficulty.Easy;
+                    }
 
                     var losers = winners.First().battle.getTeam(winners.First().enemies);
                     losers.ConvertAll(s => (PlayerFighter)s).ForEach(async p => await ServerGames.UserLostBattle(p.avatar, diff, textChannel));

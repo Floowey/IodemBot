@@ -11,7 +11,7 @@ namespace IodemBot.Modules.ColossoBattles
         public UserAccount avatar;
         private SocketGuildUser guildUser;
 
-        private static Stats baseStats = new Stats(30, 20, 20, 6, 8); //30, 20, 11, 6, 8
+        private static Stats baseStats = new Stats(30, 20, 11, 6, 8); //30, 20, 11, 6, 8
         public BattleStats battleStats = new BattleStats();
 
         public PlayerFighter(SocketGuildUser user) : base(user.DisplayName(), user.GetAvatarUrl(),
@@ -29,9 +29,25 @@ namespace IodemBot.Modules.ColossoBattles
                 HPrecovery += g.HPRegen;
                 PPrecovery += g.PPRegen;
                 unleashRate += g.increaseUnleashRate;
-                if (g.IsCursed) AddCondition(Condition.ItemCurse);
-                if (g.CuresCurse) isImmuneToItemCurse = true;
-                if (g.IsWeapon()) Weapon = g;
+                if (g.IsCursed)
+                {
+                    AddCondition(Condition.ItemCurse);
+                }
+
+                if (g.CuresCurse)
+                {
+                    isImmuneToItemCurse = true;
+                }
+
+                if (g.IsWeapon())
+                {
+                    Weapon = g;
+                }
+
+                if (!g.IsWeapon() && g.IsUnleashable)
+                {
+                    EquipmentWithEffect.Add(g);
+                }
             });
         }
 
@@ -44,8 +60,8 @@ namespace IodemBot.Modules.ColossoBattles
             var level = avatar.LevelNumber;
 
             var actualStats = new Stats(
-                (int)((baseStats.maxHP + baseStats.maxHP * 0.25 * level / 1.4) * multipliers.maxHP / 100),
-                (int)((baseStats.maxPP + baseStats.maxPP * 0.115 * level / 1.2) * multipliers.maxPP / 100),
+                (int)((baseStats.maxHP + baseStats.maxHP * 0.25 * level / 1.5) * multipliers.maxHP / 100),
+                (int)((baseStats.maxPP + baseStats.maxPP * 0.115 * level / 1.5) * multipliers.maxPP / 100),
                 (int)((baseStats.Atk + baseStats.Atk * 0.3 * level / 1.5) * multipliers.Atk / 100),
                 (int)((baseStats.Def + baseStats.Def * 0.3 * level / 1.5) * multipliers.Def / 100),
                 (int)((baseStats.Spd + baseStats.Spd * 0.5 * level / 1.5) * multipliers.Spd / 100));

@@ -17,7 +17,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             {
                 if (Global.random.Next(0, 100) <= probabilites[i])
                 {
-                    User.offensiveMult = multipliers[i];
+                    User.offensiveMult *= multipliers[i];
                     break;
                 }
             }

@@ -59,7 +59,7 @@ namespace IodemBot.Modules
             }
         }
 
-        [Command("classInfo")]
+        [Command("iteminfo")]
         public async Task itemInfo([Remainder] string name = "")
         {
             if (name == "")
@@ -68,7 +68,10 @@ namespace IodemBot.Modules
             }
 
             var item = ItemDatabase.GetItem(name);
-            if (item == null) return;
+            if (item == null)
+            {
+                return;
+            }
 
             var embed = new EmbedBuilder();
             embed.WithAuthor($"{item.Name}");
@@ -77,6 +80,7 @@ namespace IodemBot.Modules
             embed.AddField("Value", item.Price);
             embed.AddField("Type", item.ItemType);
             embed.AddField("Artifact", item.IsArtifact ? "Yes" : "no");
+            Context.Channel.SendMessageAsync("", false, embed.Build());
         }
 
         [Command("class")]
@@ -97,49 +101,43 @@ namespace IodemBot.Modules
         [Command("element"), Alias("el")]
         [Remarks("Get your current Element or set it to one of the four with e.g. `i!element Venus`")]
         [Cooldown(5)]
-        public async Task element([Remainder] string element = "")
+        public async Task element(Element chosenElement)
         {
             var embed = new EmbedBuilder();
             var account = UserAccounts.GetAccount(Context.User);
 
-            if (element.Length > 0)
+            var role = Context.Guild.Roles.FirstOrDefault(x => x.Name == chosenElement.ToString() + " Adepts");
+            var venusRole = Context.Guild.Roles.FirstOrDefault(x => x.Name == "Venus Adepts");
+            var marsRole = Context.Guild.Roles.FirstOrDefault(x => x.Name == "Mars Adepts");
+            var jupiterRole = Context.Guild.Roles.FirstOrDefault(x => x.Name == "Jupiter Adepts");
+            var mercuryRole = Context.Guild.Roles.FirstOrDefault(x => x.Name == "Mercury Adepts");
+            var exathi = Context.Guild.Roles.FirstOrDefault(x => x.Name == "Exathi") ?? venusRole;
+            if (role == null)
             {
-                //Assign new Element
-                if (!Enum.TryParse(element, true, out Element chosenElement))
-                {
-                    embed.WithColor(Colors.get("Iodem"));
-                    embed.WithDescription(Utilities.GetFormattedAlert("CLAN_NOT_FOUND", element));
-                    await Context.Channel.SendMessageAsync("", false, embed.Build());
-                    return;
-                }
-                var role = Context.Guild.Roles.FirstOrDefault(x => x.Name == chosenElement.ToString() + " Adepts");
-                var venusRole = Context.Guild.Roles.FirstOrDefault(x => x.Name == "Venus Adepts");
-                var marsRole = Context.Guild.Roles.FirstOrDefault(x => x.Name == "Mars Adepts");
-                var jupiterRole = Context.Guild.Roles.FirstOrDefault(x => x.Name == "Jupiter Adepts");
-                var mercuryRole = Context.Guild.Roles.FirstOrDefault(x => x.Name == "Mercury Adepts");
-                var exathi = Context.Guild.Roles.FirstOrDefault(x => x.Name == "Exathi") ?? venusRole;
-                if (role == null)
-                {
-                    role = exathi;
-                }
+                return;
+            }
 
-                await (Context.User as IGuildUser).RemoveRolesAsync(new IRole[] { venusRole, marsRole, jupiterRole, mercuryRole, exathi });
-                await (Context.User as IGuildUser).AddRoleAsync(role);
-                account.element = chosenElement;
-                account.classToggle = 0;
-                UserAccounts.SaveAccounts();
-                embed.WithColor(Colors.get(chosenElement.ToString()));
-                embed.WithDescription($"Welcome to the {chosenElement.ToString()} Clan, {account.gsClass} {((SocketGuildUser)Context.User).DisplayName()}!");
-                await Context.Channel.SendMessageAsync("", false, embed.Build());
-            }
-            else
+            if (chosenElement == account.element)
             {
-                //Return current Element
-                element = account.element.ToString();
-                embed.WithColor(Colors.get(element));
-                embed.WithDescription($"{account.gsClass} {Context.User.Username} is a {element} Adept");
-                await Context.Channel.SendMessageAsync("", false, embed.Build());
+                return;
             }
+
+            await (Context.User as IGuildUser).RemoveRolesAsync(new IRole[] { venusRole, marsRole, jupiterRole, mercuryRole, exathi });
+            await (Context.User as IGuildUser).AddRoleAsync(role);
+
+            foreach (string removed in account.inv.UnequipExclusiveTo(account.element))
+            {
+                var removedEmbed = new EmbedBuilder();
+                removedEmbed.WithDescription($"<:Exclamatory:571309036473942026> Your {removed} was unequipped.");
+                await Context.Channel.SendMessageAsync("", false, removedEmbed.Build());
+            }
+
+            account.element = chosenElement;
+            account.classToggle = 0;
+            UserAccounts.SaveAccounts();
+            embed.WithColor(Colors.get(chosenElement.ToString()));
+            embed.WithDescription($"Welcome to the {chosenElement.ToString()} Clan, {account.gsClass} {((SocketGuildUser)Context.User).DisplayName()}!");
+            await Context.Channel.SendMessageAsync("", false, embed.Build());
         }
 
         [Command("MoveInfo")]
@@ -223,6 +221,7 @@ namespace IodemBot.Modules
 
             await Context.Channel.SendMessageAsync("", false, embed.Build());
         }
+
         [Command("removeClassSeries")]
         [Remarks("Remove a given Class Series from a User")]
         [RequireUserPermission(GuildPermission.ManageGuild)]
@@ -269,6 +268,7 @@ namespace IodemBot.Modules
 
             await Context.Channel.SendMessageAsync("", false, embed.Build());
         }
+
         internal static async Task AwardClassSeries(string series, SocketGuildUser user, SocketTextChannel channel)
         {
             var avatar = UserAccounts.GetAccount(user);
@@ -334,6 +334,7 @@ namespace IodemBot.Modules
             }
             UserAccounts.SaveAccounts();
         }
+
         private string article(string s)
         {
             s = s.ToLower();

@@ -4,40 +4,96 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using static IodemBot.Modules.GoldenSunMechanics.Psynergy;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
     public enum ArchType { Warrior, Mage }
 
+    public enum ChestQuality { Wooden, Normal, Silver, Gold, Adept, Daily }
+
     public class Inventory
     {
         private static int inventorySize = 24;
-        private static ItemType[] WarriorExclusive = {ItemType.LongSword, ItemType.Shield, ItemType.Helmet, ItemType.HeavyArmor, ItemType.HeavyBoots };
-        private static ItemType[] MageExclusive = { ItemType.Stave, ItemType.Circlet, ItemType.Bow, ItemType.Robe, ItemType.Armlet };
+        private static ItemType[] WarriorExclusive = { ItemType.LongSword, ItemType.Shield, ItemType.Helmet, ItemType.HeavyArmor, ItemType.HeavyBoots };
+        private static ItemType[] MageExclusive = { ItemType.Staff, ItemType.Circlet, ItemType.Bow, ItemType.Robe, ItemType.Bracelet };
+        private static ChestQuality[] chestQualities = { ChestQuality.Wooden, ChestQuality.Normal, ChestQuality.Silver, ChestQuality.Gold, ChestQuality.Adept, ChestQuality.Daily };
 
-        [JsonProperty] private List<string> InvString { get; set; } = new List<string>();
-        [JsonProperty] private List<string> WarriorGearString { get; set; } = new List<string>();
-        [JsonProperty] private List<string> MageGearString { get; set; } = new List<string>();
+        public static Dictionary<ChestQuality, string> ChestIcons = new Dictionary<ChestQuality, string>()
+        {
+            {ChestQuality.Wooden, "<:wooden_chest:570332670576295986>" },
+            {ChestQuality.Normal, "<:chest:570332670442078219>" },
+            {ChestQuality.Silver, "<:silver_chest:570332670391877678>" },
+            {ChestQuality.Gold, "<:gold_chest:570332670530158593>" },
+            {ChestQuality.Adept, "<:adept_chest:570332670329094146>" },
+            {ChestQuality.Daily, "<:daily_chest:570332670605787157>" }
+        };
+
+        [JsonProperty] private List<string> InvString { get; set; }
+        [JsonProperty] private List<string> WarriorGearString { get; set; }
+        [JsonProperty] private List<string> MageGearString { get; set; }
         [JsonProperty] public uint Coins { get; set; }
 
-        [JsonIgnore]
-        private List<Item> Inv = new List<Item>();
+        [JsonProperty] private DateTime lastDailyChest;
 
-        [JsonIgnore]
-        private List<Item> WarriorGear = new List<Item>();
+        [JsonIgnore] private List<Item> Inv;
+        [JsonIgnore] private List<Item> WarriorGear;
+        [JsonIgnore] private List<Item> MageGear;
+        [JsonIgnore] public bool IsInitialized { get { return Inv != null; } }
 
-        [JsonIgnore]
-        private List<Item> MageGear = new List<Item>();
+        [JsonProperty]
+        private Dictionary<ChestQuality, uint> chests = new Dictionary<ChestQuality, uint>()
+        {
+            { ChestQuality.Wooden, 0 }, {ChestQuality.Normal, 0}, {ChestQuality.Silver, 0}, {ChestQuality.Gold, 0}, {ChestQuality.Adept, 0}, {ChestQuality.Daily, 0}
+        };
 
+        [JsonConstructor]
         public Inventory(List<string> InvString, List<string> WarriorGearString, List<string> MageGearString)
         {
-            this.InvString = InvString;
-            this.WarriorGearString = WarriorGearString;
-            this.MageGearString = MageGearString;
+            this.InvString = InvString ?? new List<string>();
+            this.WarriorGearString = WarriorGearString ?? new List<string>();
+            this.MageGearString = MageGearString ?? new List<string>();
 
             Inv = ItemDatabase.GetItems(InvString);
             WarriorGear = ItemDatabase.GetItems(WarriorGearString);
             MageGear = ItemDatabase.GetItems(MageGearString);
+        }
+
+        public void Initialize()
+        {
+            if (IsInitialized)
+            {
+                return;
+            }
+
+            this.InvString = InvString ?? new List<string>();
+            this.WarriorGearString = WarriorGearString ?? new List<string>();
+            this.MageGearString = MageGearString ?? new List<string>();
+
+            Inv = ItemDatabase.GetItems(InvString);
+            WarriorGear = ItemDatabase.GetItems(WarriorGearString);
+            MageGear = ItemDatabase.GetItems(MageGearString);
+        }
+
+        public Inventory()
+        {
+        }
+
+        public List<string> UnequipExclusiveTo(Element element)
+        {
+            List<string> removed = new List<string>();
+            foreach (var item in WarriorGear)
+            {
+                if (item.ExclusiveTo != null && item.ExclusiveTo.Contains(element))
+                {
+                    removed.Add(item.Name);
+                }
+            }
+            foreach (var item in removed)
+            {
+                Unequip(item);
+            }
+            return removed;
         }
 
         public List<Item> GetGear(ArchType arch)
@@ -45,14 +101,82 @@ namespace IodemBot.Modules.GoldenSunMechanics
             return (arch == ArchType.Warrior ? WarriorGear : MageGear);
         }
 
-        public string InventoryToString(bool detailed = false)
+        public bool OpenChest(ChestQuality chestQuality)
+        {
+            CheckDaily();
+            chests.TryGetValue(chestQuality, out uint nOfChests);
+
+            if (nOfChests == 0)
+            {
+                return false;
+            }
+
+            chests.Remove(chestQuality);
+            chests.Add(chestQuality, nOfChests - 1);
+            UserAccounts.SaveAccounts();
+            return true;
+        }
+
+        private void CheckDaily()
+        {
+            if (lastDailyChest.Date != DateTime.Now.Date && chests[ChestQuality.Daily] == 0)
+            {
+                AwardChest(ChestQuality.Daily);
+                lastDailyChest = DateTime.Now;
+            }
+        }
+
+        public void AwardChest(ChestQuality chestQuality)
+        {
+            chests.TryGetValue(chestQuality, out uint nOfChests);
+
+            chests.Remove(chestQuality);
+            chests.Add(chestQuality, ++nOfChests);
+            UserAccounts.SaveAccounts();
+        }
+
+        public string getChestsToString()
+        {
+            CheckDaily();
+            List<string> s = new List<string>();
+            foreach (var cq in chestQualities)
+            {
+                if (chests[cq] > 0)
+                {
+                    s.Add($"{ChestIcons[cq]}: {chests[cq]}");
+                }
+            }
+            return string.Join(" - ", s);
+        }
+
+        public enum Detail { none, Name, PriceAndName }
+
+        public string InventoryToString(Detail detail = Detail.none)
         {
             if (Inv.Count == 0)
             {
                 return "empty";
             }
+            switch (detail)
+            {
+                case (Detail.none):
+                default:
+                    return string.Join("", Inv.Select(i => i.Icon).ToArray());
 
-            return string.Join("", Inv.Select(i => i.Icon).ToArray());
+                case (Detail.Name):
+                    return string.Join(", ", Inv.Select(i => $"{i.Icon} {i.Name}").ToArray());
+
+                case (Detail.PriceAndName):
+                    return string.Join("\n", Inv.Select(i => $"{i.Icon} {i.Name} - <:coin:569836987767324672>{i.Price}").ToArray());
+            }
+        }
+
+        public void Clear()
+        {
+            Inv.Clear();
+            WarriorGear.Clear();
+            MageGear.Clear();
+            UpdateStrings();
         }
 
         public string GearToString(ArchType archType, bool detailed = false)
@@ -90,7 +214,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public bool HasItem(string item)
         {
-            return Inv.Any(s => s.Name == item);
+            return Inv.Any(s => string.Equals(s.Name, item, StringComparison.CurrentCultureIgnoreCase));
         }
 
         public bool Equip(string item, ArchType archType)
@@ -111,12 +235,20 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
             if (archType == ArchType.Mage)
             {
-                if (WarriorExclusive.Contains(i.ItemType)) return false;
+                if (WarriorExclusive.Contains(i.ItemType))
+                {
+                    return false;
+                }
+
                 Gear = MageGear;
                 GearString = MageGearString;
-            } else
+            }
+            else
             {
-                if (MageExclusive.Contains(i.ItemType)) return false;
+                if (MageExclusive.Contains(i.ItemType))
+                {
+                    return false;
+                }
             }
 
             if (i.IsWeapon())
@@ -177,9 +309,15 @@ namespace IodemBot.Modules.GoldenSunMechanics
         {
             var it = ItemDatabase.GetItem(item);
             if (!WarriorGear.Any(i => i.Name.Equals(it.Name, StringComparison.CurrentCultureIgnoreCase)) &&
-            !MageGear.Any(i => i.Name.Equals(it.Name, StringComparison.CurrentCultureIgnoreCase))) return false;
+            !MageGear.Any(i => i.Name.Equals(it.Name, StringComparison.CurrentCultureIgnoreCase)))
+            {
+                return false;
+            }
 
-            if (it.IsCursed) return false;
+            if (it.IsCursed)
+            {
+                return false;
+            }
 
             WarriorGear.RemoveAll(i => i.Name.Equals(it.Name, StringComparison.CurrentCultureIgnoreCase));
             MageGear.RemoveAll(i => i.Name.Equals(it.Name, StringComparison.CurrentCultureIgnoreCase));
@@ -191,7 +329,10 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public bool RemoveCursedEquipment()
         {
-            if (!RemoveBalance(10000)) return false;
+            if (!RemoveBalance(10000))
+            {
+                return false;
+            }
 
             WarriorGear.RemoveAll(i => i.IsCursed);
             MageGear.RemoveAll(i => i.IsCursed);
@@ -204,11 +345,6 @@ namespace IodemBot.Modules.GoldenSunMechanics
         {
             var i = ItemDatabase.GetItem(item);
             if (i.Name.Contains("NOT IMPLEMENTED!"))
-            {
-                return false;
-            }
-
-            if (HasItem(item))
             {
                 return false;
             }
@@ -226,30 +362,40 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 return false;
             }
 
-            if (HasItem(item))
+            if (!RemoveBalance(i.Price))
             {
                 return false;
             }
 
-            if (!RemoveBalance(i.Price))
-                return false;
             return Add(i.Name);
-            
         }
 
         public void Sort()
         {
-            Inv = Inv.OrderBy(d => WarriorGear.Contains(d)).ThenBy(d => MageGear.Contains(d)).ThenBy(d => d.ItemType).ThenBy(d => d.Name).ToList();
+            Inv = Inv.OrderByDescending(d => WarriorGear.Any(e => e.Name.Equals(d.Name)))
+                .ThenByDescending(d => MageGear.Any(e => e.Name.Equals(d.Name)) && !WarriorGear.Any(e => e.Name.Equals(d.Name)))
+                .ThenBy(d => d.ItemType)
+                .ThenBy(d => d.Name)
+                .ToList();
             UpdateStrings();
         }
 
         public bool Sell(string item)
         {
-            var it = Inv.Where(i => i.Name == item).FirstOrDefault();
-            if (it == null) return false;
-            if (it.IsEquipped) return false;
+            var it = Inv.Where(i => string.Equals(i.Name, item, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
+            if (it == null)
+            {
+                return false;
+            }
+
             if (WarriorGear.Any(i => i.Name.Equals(it.Name, StringComparison.CurrentCultureIgnoreCase)) ||
-            MageGear.Any(i => i.Name.Equals(it.Name, StringComparison.CurrentCultureIgnoreCase))) return false;
+            MageGear.Any(i => i.Name.Equals(it.Name, StringComparison.CurrentCultureIgnoreCase)))
+            {
+                if (Inv.Where(i => string.Equals(i.Name, item, StringComparison.InvariantCultureIgnoreCase)).Count() == 1)
+                {
+                    return false;
+                }
+            }
 
             Inv.Remove(it);
             Coins += it.sellValue;

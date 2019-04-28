@@ -1,31 +1,29 @@
-﻿using Discord;
-using IodemBot.Core.UserManagement;
-using IodemBot.Modules.ColossoBattles;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using static IodemBot.Modules.GoldenSunMechanics.Psynergy;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
-    public enum ItemType { Collectible,
-        LongSword, Axe, Stave, LightBlade, Mace, Bow, Claw,
-        Shield, Armlet, Glove,
-        HeavyArmor, Robe, LightArmor,
+    public enum ItemType
+    {
+        Collectible,
+        LongSword, Axe, Staff, LightBlade, Mace, Bow, Claw,
+        Shield, Bracelet, Glove,
         Helmet, Hat, Circlet, Crown,
+        HeavyArmor, Robe, LightArmor,
         UnderWear,
         Boots, HeavyBoots,
         Ring
     }
+
     public class Item : ICloneable
     {
-        private static ItemType[] Weapons = { ItemType.LongSword, ItemType.Axe, ItemType.Stave, ItemType.LightBlade, ItemType.Mace, ItemType.Bow, ItemType.Claw };
-        private static ItemType[] ArmWear = { ItemType.Shield, ItemType.Armlet, ItemType.Glove };
+        private static ItemType[] Weapons = { ItemType.LongSword, ItemType.Axe, ItemType.Staff, ItemType.LightBlade, ItemType.Mace, ItemType.Bow, ItemType.Claw };
+        private static ItemType[] ArmWear = { ItemType.Shield, ItemType.Bracelet, ItemType.Glove };
         private static ItemType[] ChestWear = { ItemType.HeavyArmor, ItemType.Robe, ItemType.LightArmor };
         private static ItemType[] HeadWear = { ItemType.Helmet, ItemType.Hat, ItemType.Circlet, ItemType.Crown };
 
@@ -46,6 +44,13 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public bool IsArtifact { get; set; } = false;
 
         public int increaseUnleashRate { get; set; }
+
+        [DefaultValue(100)]
+        public int ChanceToActivate { get; set; } = 80;
+
+        public int ChanceToBreak { get; set; } = 100;
+
+        public bool isBroken { get; set; }
 
         public bool IsUnleashable { get { return unleash != null; } }
         public Unleash unleash { get; set; }
@@ -99,7 +104,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
         }
     }
 
-    public class Unleash {
+    public class Unleash
+    {
         public string UnleashName { get; set; }
 
         [DefaultValue(Element.none)]
