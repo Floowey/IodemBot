@@ -504,17 +504,17 @@
         "PPCost": 12,
         "power": 80
     },
-    "Fireorb": {
-        "name": "Fireorb",
+    "Fireball": {
+        "name": "Fireball",
         "targetType": 4,
         "emote": "<:Fire:536964317040607242>",
-        "range": 2,
+        "range": 1,
         "element": 1,
         "PPCost": 6,
         "power": 35
     },
-    "Fireball": {
-        "name": "Fireball",
+    "Fire Orb": {
+        "name": "Fire Orb",
         "targetType": 4,
         "emote": "<:Fireball:536964348833431552>",
         "range": 2,
@@ -1074,7 +1074,7 @@
         "name": "Ice",
         "targetType": 4,
         "emote": "<:Ice:536969244538044426>",
-        "range": 2,
+        "range": 1,
         "element": 3,
         "PPCost": 5,
         "power": 35
