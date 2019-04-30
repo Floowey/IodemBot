@@ -189,25 +189,25 @@ namespace IodemBot.Modules.GoldenSunMechanics
             }
 
             var weapon = Gear.Where(i => i.IsWeapon()).FirstOrDefault();
-            s.Append(weapon != null ? weapon.Icon : (archType == ArchType.Warrior ? "<:SwordBW:569890243755638795>" : "<:StaveBW:569890244133126160>"));
+            s.Append(weapon != null ? weapon.Icon : (archType == ArchType.Warrior ? "<:Swords:572526110357585920>" : "<:Staves:572526110370168851>"));
 
             var armwear = Gear.Where(i => i.IsArmWear()).FirstOrDefault();
-            s.Append(armwear != null ? armwear.Icon : (archType == ArchType.Warrior ? "<:ShieldBW:569890244120281103>" : "<:ArmletBW:569890244057497610>"));
+            s.Append(armwear != null ? armwear.Icon : (archType == ArchType.Warrior ? "<:Shields:572526110118641664>" : "<:Armlets:572526109908795402>"));
 
             var headwear = Gear.Where(i => i.IsHeadWear()).FirstOrDefault();
-            s.Append(headwear != null ? headwear.Icon : (archType == ArchType.Warrior ? "<:HelmetBW:569890244175069194>" : "<:CircletBW:569890244053434368>"));
+            s.Append(headwear != null ? headwear.Icon : (archType == ArchType.Warrior ? "<:Helmets:572526110055858226>" : "<:Circlets:572526110101864448>"));
 
             var chestwear = Gear.Where(i => i.IsChestWear()).FirstOrDefault();
-            s.Append(chestwear != null ? chestwear.Icon : (archType == ArchType.Warrior ? "<:ArmorBW:569890244074274846>" : "<:RobeBW:569890243629547573>"));
+            s.Append(chestwear != null ? chestwear.Icon : (archType == ArchType.Warrior ? "<:Armors:572526109942611978>" : "<:Robes:572526110068441118>"));
 
             var underwear = Gear.Where(i => i.ItemType == ItemType.UnderWear).FirstOrDefault();
-            s.Append(underwear != null ? underwear.Icon : "<:UndershirtBW:569890244154097697>");
+            s.Append(underwear != null ? underwear.Icon : "<:Shirts:572526110173167616>");
 
             var boots = Gear.Where(i => i.ItemType == ItemType.Boots).FirstOrDefault();
-            s.Append(boots != null ? boots.Icon : "<:BootsBW:569890244082663436>");
+            s.Append(boots != null ? boots.Icon : "<:Boots:572526109975904257>");
 
             var ring = Gear.Where(i => i.ItemType == ItemType.Ring).FirstOrDefault();
-            s.Append(ring != null ? ring.Icon : "<:RingBW:569890244141252608>");
+            s.Append(ring != null ? ring.Icon : "<:Rings:572526110060052482>");
 
             return s.ToString();
         }
