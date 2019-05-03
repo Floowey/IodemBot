@@ -55,10 +55,10 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public string NonZerosToSTring()
         {
-            return $"{((VenusAtk != 0 || VenusRes != 0) ? $"<:Venus_Star:572495673186975754> `{VenusAtk} | {VenusRes}` " : "")}" +
-                $"{((MarsAtk != 0 || MarsRes != 0) ? $"<:Mars_Star:572495673132318721> `{MarsAtk} | {MarsRes}` " : "")}" +
-                $"{((JupiterAtk != 0 || JupiterRes != 0) ? $"<:Jupiter_Star:572495672906088459> `{JupiterAtk} | {JupiterRes}` " : "")}" +
-                $"{((MercuryAtk != 0 || MercuryRes != 0) ? $"<:Mercury_Star:572495673128124446> `{MercuryAtk} | {MercuryRes}` " : "")}";
+            return $"{((VenusAtk != 0 || VenusRes != 0) ? $"<:Venus_Element:573938340219584524> `{VenusAtk} | {VenusRes}` " : "")}" +
+                $"{((MarsAtk != 0 || MarsRes != 0) ? $"<:Mars_Element:573938340307402786> `{MarsAtk} | {MarsRes}` " : "")}" +
+                $"{((JupiterAtk != 0 || JupiterRes != 0) ? $"<:Jupiter_Element:573938340584488987> `{JupiterAtk} | {JupiterRes}` " : "")}" +
+                $"{((MercuryAtk != 0 || MercuryRes != 0) ? $"<:Mercury_Element:573938340743872513> `{MercuryAtk} | {MercuryRes}` " : "")}";
         }
 
         internal int leastRes()
