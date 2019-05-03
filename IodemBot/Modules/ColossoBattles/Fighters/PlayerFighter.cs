@@ -13,6 +13,8 @@ namespace IodemBot.Modules.ColossoBattles
 
         private static Stats baseStats = new Stats(30, 20, 11, 6, 8); //30, 20, 11, 6, 8
         public BattleStats battleStats = new BattleStats();
+        public int AutoTurnPool = 10;
+        public int AutoTurnsInARow = 0;
 
         public PlayerFighter(SocketGuildUser user) : base(user.DisplayName(), user.GetAvatarUrl(),
             ModifyStats(user),
@@ -39,12 +41,12 @@ namespace IodemBot.Modules.ColossoBattles
                     isImmuneToItemCurse = true;
                 }
 
-                if (g.IsWeapon())
+                if (g.IsWeapon)
                 {
                     Weapon = g;
                 }
 
-                if (!g.IsWeapon() && g.IsUnleashable)
+                if (!g.IsWeapon && g.IsUnleashable)
                 {
                     EquipmentWithEffect.Add(g);
                 }
@@ -85,7 +87,16 @@ namespace IodemBot.Modules.ColossoBattles
         {
             selected = null;
             hasSelected = false;
-            return base.EndTurn();
+            var log = new List<string>();
+
+            if (AutoTurnsInARow >= 4)
+            {
+                Kill();
+                log.Add($":x: {name} dies from inactivity.");
+            }
+
+            log.AddRange(base.EndTurn());
+            return log;
         }
 
         public override object Clone()

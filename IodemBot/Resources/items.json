@@ -1444,7 +1444,7 @@
         "Unleash": {
             "UnleashName": "Barrage",
             "UnleashAlignment": 1,
-            "Effect": [
+            "effectImages": [
                 {
                     "id": "AddDamage",
                     "args": [ "20" ]
@@ -1484,7 +1484,7 @@
         "Unleash": {
             "UnleashName": "Broil",
             "UnleashAlignment": 1,
-            "Effect": [
+            "effectImages": [
                 {
                     "Id": "AddDamage",
                     "args": [ "23" ]
@@ -1507,7 +1507,7 @@
         "Unleash": {
             "UnleashName": "Heat Mirage",
             "UnleashAlignment": 1,
-            "Effect": [
+            "effectImages": [
                 {
                     "Id": "AddDamage",
                     "args": [ "21" ]
@@ -1534,7 +1534,7 @@
         "Unleash": {
             "UnleashName": "Meltdown",
             "UnleashAlignment": 1,
-            "Effect": [
+            "effectImages": [
                 {
                     "Id": "AddDamage",
                     "args": [ "47" ]
@@ -1565,7 +1565,7 @@
         "Unleash": {
             "UnleashName": "Poison Cloud",
             "UnleashAlignment": 0,
-            "Effect": [
+            "effectImages": [
                 {
                     "Id": "AddDamage",
                     "args": [ "55" ]
@@ -1592,7 +1592,7 @@
         "Unleash": {
             "UnleashName": "Stone Justice",
             "UnleashAlignment": 0,
-            "Effect": [
+            "effectImages": [
                 {
                     "Id": "AddDamage",
                     "args": [ "11" ]
@@ -1619,7 +1619,7 @@
         "Unleash": {
             "UnleashName": "Power Drive",
             "UnleashAlignment": 1,
-            "Effect": [
+            "effectImages": [
                 {
                     "Id": "AddDamage",
                     "args": [ "24" ]
@@ -1658,7 +1658,7 @@
         "Unleash": {
             "UnleashName": "Vein Tap",
             "UnleashAlignment": 0,
-            "Effect": [
+            "effectImages": [
                 {
                     "Id": "AddDamage",
                     "args": [ "43" ]
@@ -1681,7 +1681,7 @@
         "Unleash": {
             "UnleashName": "Stun Bolt",
             "UnleashAlignment": 2,
-            "Effect": [
+            "effectImages": [
                 {
                     "Id": "AddDamage",
                     "args": [ "47" ]
@@ -1708,7 +1708,7 @@
         "Unleash": {
             "UnleashName": "Heat Shatter",
             "UnleashAlignment": 1,
-            "Effect": [
+            "effectImages": [
                 {
                     "Id": "AddDamage",
                     "args": [ "41" ]
@@ -1732,7 +1732,7 @@
         "Unleash": {
             "UnleashName": "Flare Burst",
             "UnleashAlignment": 1,
-            "Effect": [
+            "effectImages": [
                 {
                     "Id": "AddDamage",
                     "args": [ "54" ]
@@ -1756,7 +1756,7 @@
         "Unleash": {
             "UnleashName": "Mother Earth",
             "UnleashAlignment": 0,
-            "Effect": [
+            "effectImages": [
                 {
                     "Id": "AddDamage",
                     "args": [ "59" ]
@@ -1783,7 +1783,7 @@
         "Unleash": {
             "UnleashName": "Supernova",
             "UnleashAlignment": 2,
-            "Effect": [
+            "effectImages": [
                 {
                     "Id": "AddDamage",
                     "args": [ "63" ]
@@ -1810,7 +1810,7 @@
         "Unleash": {
             "UnleashName": "Olympus Rage",
             "UnleashAlignment": 1,
-            "Effect": [
+            "effectImages": [
                 {
                     "Id": "MultiplyDamage",
                     "args": [ "2.0" ]
@@ -1844,7 +1844,7 @@
             "Atk": 8
         }
     },
-    "Hunters Sword": {
+    "Hunter's Sword": {
         "Name": "Hunter's Sword",
         "Price": 520,
         "Icon": "<:Hunters_Sword:569855398492897290>",
@@ -1877,7 +1877,7 @@
             "Atk": 86
         }
     },
-    "Bandits Sword": {
+    "Bandit's Sword": {
         "Name": "Bandit's Sword",
         "Price": 700,
         "Icon": "<:Bandits_Sword:569855398442696705>",
@@ -2435,8 +2435,9 @@
         "Icon": "<:Aeolian_Cassock:569854450156568576>",
         "ItemType": "Robe",
         "IsEquippable": true,
-        "AddStatsOnEquip": null,
-        "Def": 46,
+        "AddStatsOnEquip": {
+            "Def": 46
+        },
         "AddElStatsOnEquip": {
             "JupiterAtk": 15,
             "JupiterRes": 50
@@ -2449,8 +2450,9 @@
         "ItemType": "Robe",
         "IsEquippable": true,
         "IsArtifact": true,
-        "AddStatsOnEquip": null,
-        "Def": 42,
+        "AddStatsOnEquip": {
+            "Def": 42
+        },
         "AddElStatsOnEquip": {
             "MarsRes": 18,
             "MercuryRes": 18

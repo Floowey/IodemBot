@@ -11,6 +11,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         private static Dictionary<string, Item> itemsDatabase = new Dictionary<string, Item>(StringComparer.OrdinalIgnoreCase);
         private static Inventory shop;
         private static DateTime lastReset;
+        private static int HoursForReset = 8;
 
         static ItemDatabase()
         {
@@ -51,7 +52,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public static Inventory GetShop()
         {
-            if (DateTime.Now.Subtract(lastReset).Hours > 12)
+            if (DateTime.Now.Subtract(lastReset).Hours > HoursForReset)
             {
                 RandomizeShop();
             }

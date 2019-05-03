@@ -1,15 +1,13 @@
-﻿using System;
+﻿using IodemBot.Modules.ColossoBattles;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using IodemBot.Modules.ColossoBattles;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
     public class AddDamageEffect : IEffect
     {
-        uint addDamage = 0;
+        private uint addDamage = 0;
+
         public override List<string> Apply(ColossoFighter User, ColossoFighter Target)
         {
             User.addDamage += addDamage;
@@ -28,5 +26,10 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 Console.WriteLine("Construtor for MultiplyDamage not initialized correctly. Using default Values.");
             }
         }
-    }   
+
+        public override string ToString()
+        {
+            return $"+{addDamage} damage";
+        }
+    }
 }

@@ -53,6 +53,14 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 $"`VnRes: {VenusRes} MrRes: {MarsRes} JpRes: {JupiterRes} McRes: {MercuryRes}`";
         }
 
+        public string NonZerosToSTring()
+        {
+            return $"{((VenusAtk != 0 || VenusRes != 0) ? $"<:Venus_Star:572495673186975754> `{VenusAtk} | {VenusRes}` " : "")}" +
+                $"{((MarsAtk != 0 || MarsRes != 0) ? $"<:Mars_Star:572495673132318721> `{MarsAtk} | {MarsRes}` " : "")}" +
+                $"{((JupiterAtk != 0 || JupiterRes != 0) ? $"<:Jupiter_Star:572495672906088459> `{JupiterAtk} | {JupiterRes}` " : "")}" +
+                $"{((MercuryAtk != 0 || MercuryRes != 0) ? $"<:Mercury_Star:572495673128124446> `{MercuryAtk} | {MercuryRes}` " : "")}";
+        }
+
         internal int leastRes()
         {
             return (new[] { VenusRes, MarsRes, JupiterRes, MercuryRes }).Min();
@@ -117,7 +125,6 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public static Stats operator *(Stats s1, Stats s2)
         {
             return new Stats(s1.maxHP * s2.maxHP, s1.maxPP * s2.maxPP, s1.Atk * s2.Atk, s1.Def * s2.Def, s1.Spd * s2.Spd);
-
         }
 
         public static Stats operator +(Stats s1, Stats s2)
@@ -127,7 +134,25 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public override string ToString()
         {
-            return $"`HP: {maxHP} Atk: {Atk} Agi: {Spd}`\n` PP: {maxPP} Def: {Def} `";
+            return $"`HP: {maxHP} Atk: {Atk} Agi: {Spd}`\n` PP: {maxPP} Def: {Def}`";
+        }
+
+        public string NonZerosToString()
+        {
+            return $"`{(maxHP != 0 ? $"HP: {maxHP} " : "")}" +
+                $"{(maxPP != 0 ? $"PP: {maxPP} " : "")}" +
+                $"{(Atk != 0 ? $"Atk: {Atk} " : "")}" +
+                $"{(Def != 0 ? $"Def: {Def} " : "")}" +
+                $"{(Spd != 0 ? $"Agi: {Spd} " : "")}`";
+        }
+
+        public string MultipliersToString()
+        {
+            return $"`{(maxHP != 100 ? $"HP: x{((double)maxHP / 100)} " : "")}" +
+                $"{(maxPP != 100 ? $"PP: x{((double)maxPP / 100)} " : "")}" +
+                $"{(Atk != 100 ? $"Atk: x{((double)Atk / 100)} " : "")}" +
+                $"{(Def != 100 ? $"Def: x{((double)Def / 100)} " : "")}" +
+                $"{(Spd != 100 ? $"Agi: x{((double)Spd / 100)} " : "")}`";
         }
     }
 }

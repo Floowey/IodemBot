@@ -107,9 +107,9 @@ namespace IodemBot.Core.Leveling
             userAccount.BattleStats += battleStats;
             var bs = userAccount.BattleStats;
 
-            if (Global.random.Next(0, 100) <= 7)
+            if (Global.random.Next(0, 100) <= 7 + battleStats.totalTeamMates * 2)
             {
-                ChestQuality awardedChest = (ChestQuality)((int)diff + (Global.random.Next(0, 8) == 0 ? Global.random.Next(-1, 2) : 0));
+                ChestQuality awardedChest = getRandomChest(diff);
                 userAccount.inv.AwardChest(awardedChest);
                 var embed = new EmbedBuilder();
                 embed.WithColor(Colors.get("Iodem"));
@@ -173,11 +173,11 @@ namespace IodemBot.Core.Leveling
 
                 case BattleDifficulty.Easy:
                 default:
-                    chests = new ChestQuality[] { ChestQuality.Wooden, ChestQuality.Wooden, ChestQuality.Wooden, ChestQuality.Normal, ChestQuality.Normal };
+                    chests = new ChestQuality[] { ChestQuality.Wooden, ChestQuality.Wooden, ChestQuality.Normal, ChestQuality.Normal, ChestQuality.Normal, ChestQuality.Normal, ChestQuality.Normal, ChestQuality.Silver };
                     return chests[Global.random.Next(0, chests.Length)];
 
                 case BattleDifficulty.Medium:
-                    chests = new ChestQuality[] { ChestQuality.Wooden, ChestQuality.Normal, ChestQuality.Normal, ChestQuality.Normal, ChestQuality.Silver, ChestQuality.Silver };
+                    chests = new ChestQuality[] { ChestQuality.Wooden, ChestQuality.Normal, ChestQuality.Normal, ChestQuality.Silver, ChestQuality.Silver, ChestQuality.Silver };
                     return chests[Global.random.Next(0, chests.Length)];
 
                 case BattleDifficulty.MediumRare:

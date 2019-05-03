@@ -83,6 +83,11 @@ namespace IodemBot.Modules.ColossoBattles
                 if (!f.hasSelected)
                 {
                     f.selectRandom();
+                    if (f is PlayerFighter)
+                    {
+                        ((PlayerFighter)f).AutoTurnPool--;
+                        ((PlayerFighter)f).AutoTurnsInARow++;
+                    }
                 }
             });
             return Turn();

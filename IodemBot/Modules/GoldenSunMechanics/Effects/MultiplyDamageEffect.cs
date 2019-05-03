@@ -35,13 +35,13 @@ namespace IodemBot.Modules.GoldenSunMechanics
             }
             else
             {
-                Console.WriteLine("Construtor for MultiplyDamage not initialized correctly. Using default Values.");
+                Console.WriteLine("Constructor for MultiplyDamage not initialized correctly. Using default Values.");
             }
         }
 
         public override string ToString()
         {
-            return $"Chance to do {string.Join("x,", multipliers)}x Damage";
+            return $"{(probabilites[0] == 100 ? "" : "Chance to do ")}{string.Join("x, ", multipliers)}x Damage";
         }
     }
 }

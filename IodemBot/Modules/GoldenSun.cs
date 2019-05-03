@@ -59,7 +59,7 @@ namespace IodemBot.Modules
             }
         }
 
-        [Command("iteminfo")]
+        [Command("iteminfo"), Alias("item", "i")]
         public async Task itemInfo([Remainder] string name = "")
         {
             if (name == "")
@@ -74,12 +74,13 @@ namespace IodemBot.Modules
             }
 
             var embed = new EmbedBuilder();
-            embed.WithAuthor($"{item.Name}");
+            embed.WithAuthor($"{item.Name} {(item.IsArtifact ? " (Artifact)" : "")}");
 
-            embed.AddField("Icon", item.Icon);
-            embed.AddField("Value", item.Price);
-            embed.AddField("Type", item.ItemType);
-            embed.AddField("Artifact", item.IsArtifact ? "Yes" : "no");
+            embed.AddField("Icon", item.Icon, true);
+            embed.AddField("Value", item.Price, true);
+            embed.AddField("Type", item.ItemType, true);
+            embed.AddField("Description", item.Summary());
+
             Context.Channel.SendMessageAsync("", false, embed.Build());
         }
 

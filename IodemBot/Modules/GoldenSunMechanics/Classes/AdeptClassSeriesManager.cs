@@ -35,8 +35,15 @@ namespace IodemBot.Modules.GoldenSunMechanics
             var gear = avatar.inv.GetGear(classSeries.archtype);
             gear.ForEach(g =>
             {
-                if (g.IsWeapon()) moves.Where(m => m is Attack).First().emote = g.Icon;
-                if (g.IsArmWear()) moves.Where(m => m is Defend).First().emote = g.Icon;
+                if (g.IsWeapon)
+                {
+                    moves.Where(m => m is Attack).First().emote = g.Icon;
+                }
+
+                if (g.IsArmWear)
+                {
+                    moves.Where(m => m is Defend).First().emote = g.Icon;
+                }
             });
             return moves.ToArray();
         }

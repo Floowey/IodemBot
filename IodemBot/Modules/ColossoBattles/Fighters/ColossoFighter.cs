@@ -534,6 +534,10 @@ namespace IodemBot.Modules.ColossoBattles
                 selected.targetNr = 0;
                 hasSelected = true;
             }
+            if (this is PlayerFighter)
+            {
+                ((PlayerFighter)this).AutoTurnsInARow = 0;
+            }
             return true;
         }
 

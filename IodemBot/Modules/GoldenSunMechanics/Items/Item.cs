@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Text;
 using static IodemBot.Modules.GoldenSunMechanics.Psynergy;
 
 namespace IodemBot.Modules.GoldenSunMechanics
@@ -16,8 +17,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
         Helmet, Hat, Circlet, Crown,
         HeavyArmor, Robe, LightArmor,
         UnderWear,
-        Boots, HeavyBoots,
-        Ring
+        Boots, Greaves,
+        Ring, Misc
     }
 
     public class Item : ICloneable
@@ -26,6 +27,9 @@ namespace IodemBot.Modules.GoldenSunMechanics
         private static ItemType[] ArmWear = { ItemType.Shield, ItemType.Bracelet, ItemType.Glove };
         private static ItemType[] ChestWear = { ItemType.HeavyArmor, ItemType.Robe, ItemType.LightArmor };
         private static ItemType[] HeadWear = { ItemType.Helmet, ItemType.Hat, ItemType.Circlet, ItemType.Crown };
+        private static ItemType[] UnderWear = { ItemType.UnderWear };
+        private static ItemType[] Footwear = { ItemType.Boots, ItemType.Greaves };
+        private static ItemType[] Accessoires = { ItemType.Ring, ItemType.Misc };
 
         public string Name { get; set; }
         public string Icon { get; set; }
@@ -77,30 +81,83 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public int HPRegen { get; set; }
         public int PPRegen { get; set; }
 
-        public bool IsWeapon()
-        {
-            return Weapons.Contains(ItemType);
-        }
+        [JsonIgnore]
+        public bool IsWeapon { get { return Weapons.Contains(ItemType); } }
 
-        public bool IsHeadWear()
-        {
-            return HeadWear.Contains(ItemType);
-        }
+        [JsonIgnore]
+        public bool IsHeadWear { get { return HeadWear.Contains(ItemType); } }
 
-        public bool IsChestWear()
-        {
-            return ChestWear.Contains(ItemType);
-        }
+        [JsonIgnore]
+        public bool IsChestWear { get { return ChestWear.Contains(ItemType); } }
 
-        public bool IsArmWear()
-        {
-            return ArmWear.Contains(ItemType);
-        }
+        [JsonIgnore]
+        public bool IsArmWear { get { return ArmWear.Contains(ItemType); } }
+
+        [JsonIgnore]
+        public bool IsUnderWear { get { return UnderWear.Contains(ItemType); } }
+
+        [JsonIgnore]
+        public bool IsFootWear { get { return Footwear.Contains(ItemType); } }
+
+        [JsonIgnore]
+        public bool IsAccessoire { get { return Accessoires.Contains(ItemType); } }
 
         public object Clone()
         {
             var serialized = JsonConvert.SerializeObject(this);
             return JsonConvert.DeserializeObject<Item>(serialized);
+        }
+
+        public override string ToString()
+        {
+            return Name;
+        }
+
+        public string Summary()
+        {
+            var s = new StringBuilder();
+            if (AddStatsOnEquip.NonZerosToString() != "``")
+            {
+                s.Append(AddStatsOnEquip.NonZerosToString());
+                s.Append("\n");
+            }
+            if (MultStatsOnEquip.MultipliersToString() != "``")
+            {
+                s.Append(MultStatsOnEquip.MultipliersToString());
+                s.Append("\n");
+            }
+            if (AddElStatsOnEquip.NonZerosToSTring() != "")
+            {
+                s.Append(AddElStatsOnEquip.NonZerosToSTring());
+                s.Append("\n");
+            }
+
+            if (HPRegen > 0)
+            {
+                s.Append($"HP Regen: {HPRegen} | ");
+            }
+
+            if (PPRegen > 0)
+            {
+                s.Append($"PP Regen: {PPRegen} | ");
+            }
+
+            if (increaseUnleashRate > 0)
+            {
+                s.Append($"Increases Unleashrate | ");
+            }
+
+            if (IsUnleashable)
+            {
+                s.Append($"{unleash.ToString()} | ");
+            }
+
+            if (CuresCurse)
+            {
+                s.Append($"Cures Curse");
+            }
+
+            return s.ToString();
         }
     }
 
@@ -127,6 +184,29 @@ namespace IodemBot.Modules.GoldenSunMechanics
             {
                 effectImages.ForEach(e => effects.Add(IEffect.EffectFactory(e.id, e.args)));
             }
+        }
+
+        public override string ToString()
+        {
+            var s = new StringBuilder();
+            if (UnleashName != null)
+            {
+                s.Append(UnleashName);
+            }
+
+            if (effects.Count > 0)
+            {
+                if (UnleashName != null)
+                {
+                    s.Append(" (");
+                }
+                s.Append(string.Join(" , ", effects.Select(e => $"{e.ToString()}")));
+                if (UnleashName != null)
+                {
+                    s.Append(")");
+                }
+            }
+            return s.ToString();
         }
     }
 }

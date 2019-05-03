@@ -125,15 +125,23 @@ namespace IodemBot.Modules.ColossoBattles
             var p = new PlayerFighter(player);
             battleCol.battle.AddPlayer(p, ColossoBattle.Team.A);
 
-            if (playerAvatar.LevelNumber < 10 && battleCol.messages.Count == 0 && battleCol.Name == "Bronze")
+            if (battleCol.Name == "Bronze")
             {
-                //battleCol.diff = BattleDifficulty.Tutorial;
-                battleCol.battle.TeamB = new List<ColossoFighter>();
-                EnemiesDatabase.getRandomEnemies(BattleDifficulty.Tutorial).ForEach(f => battleCol.battle.AddPlayer(f, ColossoBattle.Team.B));
-            }
-            else
-            {
-                battleCol.diff = BattleDifficulty.Easy;
+                if (playerAvatar.LevelNumber < 10 && battleCol.messages.Count == 0)
+                {
+                    battleCol.diff = BattleDifficulty.Tutorial;
+                    battleCol.battle.TeamB = new List<ColossoFighter>();
+                    EnemiesDatabase.getRandomEnemies(BattleDifficulty.Tutorial).ForEach(f => battleCol.battle.AddPlayer(f, ColossoBattle.Team.B));
+                }
+                else
+                {
+                    if (battleCol.diff != BattleDifficulty.Easy)
+                    {
+                        battleCol.diff = BattleDifficulty.Easy;
+                        battleCol.battle.TeamB = new List<ColossoFighter>();
+                        EnemiesDatabase.getRandomEnemies(BattleDifficulty.Easy).ForEach(f => battleCol.battle.AddPlayer(f, ColossoBattle.Team.B));
+                    }
+                }
             }
 
             var playerMsg = await battleCol.battleChannel.SendMessageAsync($"{player.DisplayName()} wants to battle!");
