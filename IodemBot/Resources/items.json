@@ -4455,7 +4455,7 @@
     "Guardian Ring": {
         "Name": "Guardian Ring",
         "Price": 2600,
-        "Icon": "<:Golden_Ring:569854314156392468>",
+        "Icon": "<:Guardian_Ring:569854313929768962>",
         "ItemType": "Ring",
         "IsEquippable": true,
         "IsArtifact": true,
