@@ -10,13 +10,13 @@
             "Atk": 250
         },
         "AddElStatsOnEquip": {
-            "VenusPow": 20,
+            "VenusAtk": 20,
             "VenusRes": 20,
-            "MarsPow": 20,
+            "MarsAtk": 20,
             "MarsRes": 20,
-            "JupiterPow": 20,
+            "JupiterAtk": 20,
             "JupiterRes": 20,
-            "MercuryPow": 20,
+            "MercuryAtk": 20,
             "MercuryRes": 20
         },
         "UnleashRate": 10,
@@ -2003,14 +2003,7 @@
             "Atk": 104
         },
         "AddElStatsOnEquip": {
-            "VenusPow": 0,
-            "VenusRes": 0,
-            "MarsPow": 0,
-            "MarsRes": 0,
-            "JupiterPow": 10,
-            "JupiterRes": 0,
-            "MercuryPow": 0,
-            "MercuryRes": 0
+            "JupiterAtk": 10,
         },
         "UnleashRate": 35,
         "Unleash": {
@@ -2057,14 +2050,7 @@
             "Atk": 135
         },
         "AddElStatsOnEquip": {
-            "VenusPow": 0,
-            "VenusRes": 0,
-            "MarsPow": 0,
             "MarsRes": 20,
-            "JupiterPow": 0,
-            "JupiterRes": 0,
-            "MercuryPow": 0,
-            "MercuryRes": 0
         },
         "UnleashRate": 40,
         "Unleash": {
