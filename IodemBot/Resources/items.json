@@ -3259,7 +3259,7 @@
         "Name": "Knight's Greave",
         "Price": 2700,
         "Icon": "<:Knights_Greave:569854266445922304>",
-        "ItemType": "Boots",
+        "ItemType": "Greave",
         "IsEquippable": true,
         "IsArtifact": true,
         "AddStatsOnEquip": {
@@ -3271,7 +3271,7 @@
         "Name": "Silver Greave",
         "Price": 3800,
         "Icon": "<:Silver_Greave:569854266072629249>",
-        "ItemType": "Boots",
+        "ItemType": "Greave",
         "IsEquippable": true,
         "IsArtifact": true,
         "AddStatsOnEquip": {
@@ -3282,7 +3282,7 @@
         "Name": "Hover Greave",
         "Price": 4500,
         "Icon": ":Hover_Greave:",
-        "ItemType": "Boots",
+        "ItemType": "Greave",
         "IsEquippable": true,
         "IsArtifact": true,
         "AddStatsOnEquip": {
