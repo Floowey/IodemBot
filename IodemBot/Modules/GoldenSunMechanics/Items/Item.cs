@@ -17,7 +17,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         Helmet, Hat, Circlet, Crown,
         HeavyArmor, Robe, LightArmor,
         UnderWear,
-        Boots, Greaves,
+        Boots, Greave,
         Ring, Misc
     }
 
@@ -28,7 +28,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         private static ItemType[] ChestWear = { ItemType.HeavyArmor, ItemType.Robe, ItemType.LightArmor };
         private static ItemType[] HeadWear = { ItemType.Helmet, ItemType.Hat, ItemType.Circlet, ItemType.Crown };
         private static ItemType[] UnderWear = { ItemType.UnderWear };
-        private static ItemType[] Footwear = { ItemType.Boots, ItemType.Greaves };
+        private static ItemType[] Footwear = { ItemType.Boots, ItemType.Greave };
         private static ItemType[] Accessoires = { ItemType.Ring, ItemType.Misc };
 
         public string Name { get; set; }
@@ -57,6 +57,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public bool isBroken { get; set; }
 
         public bool IsUnleashable { get { return unleash != null; } }
+        public bool GrantsUnleash { get; set; }
         public Unleash unleash { get; set; }
 
         [DefaultValue(Element.none)]
@@ -132,31 +133,42 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 s.Append("\n");
             }
 
+            var various = new List<string>();
             if (HPRegen > 0)
             {
-                s.Append($"HP Regen: {HPRegen} | ");
+                various.Add($"HP Regen: {HPRegen}");
+            }
+
+            if (DamageAlignment != Element.none)
+            {
+                various.Add($"{GoldenSun.ElementIcons[DamageAlignment]}");
             }
 
             if (PPRegen > 0)
             {
-                s.Append($"PP Regen: {PPRegen} | ");
+                various.Add($"PP Regen: {PPRegen}");
             }
 
             if (increaseUnleashRate > 0)
             {
-                s.Append($"Increases Unleashrate | ");
+                various.Add($"Increases Unleashrate");
             }
 
             if (IsUnleashable)
             {
-                s.Append($"{unleash.ToString()} | ");
+                various.Add($"{unleash.ToString()}");
             }
 
             if (CuresCurse)
             {
-                s.Append($"Cures Curse");
+                various.Add($"Cures Curse");
             }
 
+            if (IsCursed)
+            {
+                various.Add($"Cursed");
+            }
+            s.Append(string.Join(" | ", various));
             return s.ToString();
         }
     }
@@ -200,7 +212,12 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 {
                     s.Append(" (");
                 }
-                s.Append(string.Join(" , ", effects.Select(e => $"{e.ToString()}")));
+
+                if (UnleashAlignment != Element.none)
+                {
+                    s.Append(GoldenSun.ElementIcons[UnleashAlignment]);
+                }
+                s.Append(string.Join(", ", effects.Select(e => $"{e.ToString()}")));
                 if (UnleashName != null)
                 {
                     s.Append(")");

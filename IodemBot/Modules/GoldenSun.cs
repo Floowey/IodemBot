@@ -18,6 +18,13 @@ namespace IodemBot.Modules
     {
         private enum rndElement { Venus, Mars, Jupiter, Mercury }
 
+        internal static Dictionary<Element, string> ElementIcons = new Dictionary<Element, string>(){
+            {Element.Venus, "<:Venus_Element:573938340219584524>"},
+            { Element.Mars, "<:Mars_Element:573938340307402786>"},
+            { Element.Jupiter, "<:Jupiter_Element:573938340584488987>" },
+            { Element.Mercury, "<:Mercury_Element:573938340743872513>" }, {Element.none , ""}
+        };
+
         //public enum Element { Venus, Mars, Jupiter, Mercury, None }
 
         [Command("awardClassSeries")]
