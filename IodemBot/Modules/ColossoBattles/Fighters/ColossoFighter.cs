@@ -41,6 +41,7 @@ namespace IodemBot.Modules.ColossoBattles
         [JsonIgnore] public double offensiveMult = 1;
         [JsonIgnore] public ColossoBattle.Team party;
         [JsonIgnore] public Move selected;
+        [JsonIgnore] public uint damageDoneThisTurn;
         public Stats stats;
         [JsonIgnore] private readonly List<Condition> Conditions = new List<Condition>();
         [JsonIgnore] private Random rnd = Global.random;
@@ -307,7 +308,7 @@ namespace IodemBot.Modules.ColossoBattles
                     }
                 }
             }
-
+            damageDoneThisTurn = 0;
             if (!IsAlive())
             {
                 selected = new Nothing();

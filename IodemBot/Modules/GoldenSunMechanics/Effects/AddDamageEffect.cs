@@ -23,7 +23,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             }
             else
             {
-                Console.WriteLine("Construtor for MultiplyDamage not initialized correctly. Using default Values.");
+                Console.WriteLine("Construtor for AddDamage not initialized correctly. Using default Values.");
             }
         }
 

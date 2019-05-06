@@ -125,6 +125,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             }
 
             log.AddRange(enemy.DealDamage(damage, punctuation));
+            User.damageDoneThisTurn += damage;
             if (weaponUnleashed)
             {
                 User.Weapon.unleash.effects

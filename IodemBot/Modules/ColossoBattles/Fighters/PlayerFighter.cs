@@ -46,9 +46,16 @@ namespace IodemBot.Modules.ColossoBattles
                     Weapon = g;
                 }
 
-                if (!g.IsWeapon && g.IsUnleashable)
+                if (!g.IsWeapon && g.IsUnleashable && !g.GrantsUnleash)
                 {
-                    EquipmentWithEffect.Add(g);
+                    if (g.GrantsUnleash)
+                    {
+                        Weapon.unleash.effects.AddRange(g.unleash.effects);
+                    }
+                    else
+                    {
+                        EquipmentWithEffect.Add(g);
+                    }
                 }
             });
         }

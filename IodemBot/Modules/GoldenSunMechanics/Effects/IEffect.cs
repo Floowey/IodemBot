@@ -27,11 +27,17 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 case "Counter":
                     return new CounterEffect();
 
+                case "HPDrain":
+                    return new HPDrainEffect(args);
+
                 case "MayIgnoreDefense":
                     return new MayIgnoreDefenseEffect(args);
 
                 case "MultiplyDamage":
                     return new MultiplyDamageEffect(args);
+
+                case "PPDrain":
+                    return new PPDrainEffect(args);
 
                 case "ReduceHPtoOne":
                     return new ReduceHPtoOneEffect(args);
