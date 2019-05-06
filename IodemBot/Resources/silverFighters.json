@@ -1980,7 +1980,7 @@
        [
         {
             "name": "Menardi",
-            "imgurl": "https://goldensunwiki.net/w/images/7/70/Avimander.png",
+            "imgurl": "",
             "movepool": [
                 "Death Size",
                 "Nova",
@@ -2004,7 +2004,7 @@
                 "JupiterRes": 100,
                 "MercuryAtk": 100,
                 "MercuryRes": 70
-                ),
+            },
                 "PPRecovery": 10
             }
     ],
