@@ -19,7 +19,7 @@
             "MercuryAtk": 20,
             "MercuryRes": 20
         },
-        "UnleashRate": 10,
+        "increaseUnleashRate": 10,
         "Unleash": {
             "UnleashName": "Dutch Farmer",
             "UnleashAlignment": 0,
@@ -103,7 +103,7 @@
         "AddStatsOnEquip": {
             "Atk": 112
         },
-        "HPRecovery": 3,
+        "HPRegen": 3,
         "Unleash": {
             "UnleashName": "Blinding Smog",
             "UnleashAlignment": 2,
@@ -155,7 +155,7 @@
         "AddStatsOnEquip": {
             "Atk": 126
         },
-        "HPRecovery": 2,
+        "HPRegen": 2,
         "CuresCurse": true
     },
     "Blow Mace": {
@@ -346,7 +346,7 @@
         "AddStatsOnEquip": {
             "Atk": 177
         },
-        "UnleashRate": 40,
+        "increaseUnleashRate": 5,
         "Unleash": {
             "UnleashName": "Apocalypse",
             "UnleashAlignment": 2,
@@ -393,7 +393,6 @@
         "AddStatsOnEquip": {
             "Atk": 98
         },
-        "UnleashRate": 35,
         "Unleash": {
             "UnleashName": "Stun Cloud",
             "UnleashAlignment": 3,
@@ -419,7 +418,6 @@
         "AddStatsOnEquip": {
             "Atk": 64
         },
-        "UnleashRate": 35,
         "Unleash": {
             "UnleashName": "Psy Leech",
             "UnleashAlignment": 3,
@@ -441,7 +439,6 @@
         "AddStatsOnEquip": {
             "Atk": 46
         },
-        "UnleashRate": 35,
         "Unleash": {
             "UnleashName": "Psyphon Seal",
             "UnleashAlignment": 2,
@@ -467,7 +464,6 @@
         "AddStatsOnEquip": {
             "Atk": 128
         },
-        "UnleashRate": 35,
         "Unleash": {
             "UnleashName": "Aging Gas",
             "UnleashAlignment": 2,
@@ -489,7 +485,6 @@
         "AddStatsOnEquip": {
             "Atk": 156
         },
-        "UnleashRate": 35,
         "Unleash": {
             "UnleashName": "Fire Dance",
             "UnleashAlignment": 1,
@@ -515,7 +510,6 @@
         "AddStatsOnEquip": {
             "Atk": 16
         },
-        "UnleashRate": 35,
         "Unleash": {
             "UnleashName": "Murk",
             "UnleashAlignment": 2,
@@ -541,7 +535,6 @@
         "AddStatsOnEquip": {
             "Atk": 32
         },
-        "UnleashRate": 35,
         "Unleash": {
             "UnleashName": "Stun Voltage",
             "UnleashAlignment": 2,
@@ -567,7 +560,6 @@
         "AddStatsOnEquip": {
             "Atk": 126
         },
-        "UnleashRate": 35,
         "Unleash": {
             "UnleashName": "Flash Force",
             "UnleashAlignment": 3,
@@ -593,7 +585,6 @@
         "AddStatsOnEquip": {
             "Atk": 83
         },
-        "UnleashRate": 35,
         "Unleash": {
             "UnleashName": "Life Leech",
             "UnleashAlignment": 3,
@@ -616,7 +607,6 @@
         "AddStatsOnEquip": {
             "Atk": 92
         },
-        "UnleashRate": 35,
         "Unleash": {
             "UnleashName": "Bad Omen",
             "UnleashAlignment": 0,
@@ -642,7 +632,6 @@
         "AddStatsOnEquip": {
             "Atk": 134
         },
-        "UnleashRate": 35,
         "Unleash": {
             "UnleashName": "Sargasso",
             "UnleashAlignment": 3,
@@ -676,10 +665,10 @@
         "ItemType": "Staff",
         "IsEquippable": true,
         "IsArtifact": true,
+        "DamageAlignment": 3,
         "AddStatsOnEquip": {
             "Atk": 76
         },
-        "UnleashRate": 35,
         "Unleash": {
             "UnleashName": "Frost Bite",
             "UnleashAlignment": 3,
@@ -705,7 +694,6 @@
         "AddStatsOnEquip": {
             "Atk": 165
         },
-        "UnleashRate": 35,
         "Unleash": {
             "UnleashName": "Reverse Star",
             "UnleashAlignment": 3,
@@ -727,7 +715,6 @@
         "AddStatsOnEquip": {
             "Atk": 106
         },
-        "UnleashRate": 35,
         "Unleash": {
             "UnleashName": "Drown",
             "UnleashAlignment": 3,
@@ -753,7 +740,6 @@
         "AddStatsOnEquip": {
             "Atk": 150
         },
-        "UnleashRate": 35,
         "Unleash": {
             "UnleashName": "Nirvana",
             "UnleashAlignment": 2,
@@ -775,7 +761,7 @@
         "AddStatsOnEquip": {
             "Atk": 169
         },
-        "UnleashRate": 40,
+        "increaseUnleashRate": 5,
         "Unleash": {
             "UnleashName": "Life Shear",
             "UnleashAlignment": 1,
@@ -801,7 +787,6 @@
         "AddStatsOnEquip": {
             "Atk": 83
         },
-        "UnleashRate": 35,
         "Unleash": {
             "UnleashName": "Sarcophagus",
             "UnleashAlignment": 0,
@@ -827,7 +812,6 @@
         "AddStatsOnEquip": {
             "Atk": 102
         },
-        "UnleashRate": 35,
         "Unleash": {
             "UnleashName": "Shining Star",
             "UnleashAlignment": 2,
@@ -929,7 +913,6 @@
         "AddStatsOnEquip": {
             "Atk": 99
         },
-        "UnleashRate": 35,
         "Unleash": {
             "UnleashName": "Acid Bath",
             "UnleashAlignment": 1,
@@ -955,7 +938,6 @@
         "AddStatsOnEquip": {
             "Atk": 108
         },
-        "UnleashRate": 35,
         "Unleash": {
             "UnleashName": "Aqua Sock",
             "UnleashAlignment": 3,
@@ -977,7 +959,6 @@
         "AddStatsOnEquip": {
             "Atk": 126
         },
-        "UnleashRate": 35,
         "Unleash": {
             "UnleashName": "Demon Fire",
             "UnleashAlignment": 1,
@@ -1000,12 +981,12 @@
         "ItemType": "LongSword",
         "IsEquippable": true,
         "IsArtifact": true,
+        "DamageAlignment": 0,
         "AddStatsOnEquip": {
             "Atk": 135,
             "VenusAtk": 20,
             "VenusRes": 20
         },
-        "UnleashRate": 35,
         "Unleash": {
             "UnleashName": "Titan Blade",
             "UnleashAlignment": 0,
@@ -1027,7 +1008,6 @@
         "AddStatsOnEquip": {
             "Atk": 60
         },
-        "UnleashRate": 35,
         "Unleash": {
             "UnleashName": "Hurricane",
             "UnleashAlignment": 3,
@@ -1053,7 +1033,6 @@
         "AddStatsOnEquip": {
             "Atk": 101
         },
-        "UnleashRate": 35,
         "Unleash": {
             "UnleashName": "Shred",
             "UnleashAlignment": 1,
@@ -1079,7 +1058,6 @@
         "AddStatsOnEquip": {
             "Atk": 134
         },
-        "UnleashRate": 35,
         "Unleash": {
             "UnleashName": "Flash Edge",
             "UnleashAlignment": 2,
@@ -1106,7 +1084,7 @@
         "AddStatsOnEquip": {
             "Atk": 130
         },
-        "UnleashRate": 40,
+        "increaseUnleashRate": 5,
         "Unleash": {
             "UnleashName": "Raiden's Wrath",
             "UnleashAlignment": 2,
@@ -1132,7 +1110,6 @@
         "AddStatsOnEquip": {
             "Atk": 145
         },
-        "UnleashRate": 35,
         "Unleash": {
             "UnleashName": "Crucible Fire",
             "UnleashAlignment": 1,
@@ -1155,11 +1132,10 @@
         "ItemType": "LongSword",
         "IsEquippable": true,
         "IsArtifact": true,
+        "DamageAlignment": 0,
         "AddStatsOnEquip": {
-            "Atk": 155,
-            "damageAlignment": 0
+            "Atk": 155
         },
-        "UnleashRate": 35,
         "Unleash": {
             "UnleashName": "Heavy Divide",
             "UnleashAlignment": 0,
@@ -1186,7 +1162,6 @@
             "Atk": 141,
             "PPRegen": 2
         },
-        "UnleashRate": 35,
         "Unleash": {
             "UnleashName": "Soul Shatter",
             "UnleashAlignment": 1,
@@ -1208,7 +1183,6 @@
         "AddStatsOnEquip": {
             "Atk": 160
         },
-        "UnleashRate": 35,
         "Unleash": {
             "UnleashName": "Lethe Albion",
             "UnleashAlignment": 3,
@@ -1234,7 +1208,6 @@
         "AddStatsOnEquip": {
             "Atk": 162
         },
-        "UnleashRate": 35,
         "Unleash": {
             "UnleashName": "Void Beam",
             "UnleashAlignment": 2,
@@ -1260,7 +1233,6 @@
         "AddStatsOnEquip": {
             "Atk": 173
         },
-        "UnleashRate": 35,
         "Unleash": {
             "UnleashName": "Radiant Fire",
             "UnleashAlignment": 1,
@@ -1283,11 +1255,10 @@
         "ItemType": "LongSword",
         "IsEquippable": true,
         "IsArtifact": true,
+        "DamageAlignment": 1,
         "AddStatsOnEquip": {
-            "Atk": 176,
-            "damageAlignment": 1
+            "Atk": 176
         },
-        "UnleashRate": 35,
         "Unleash": {
             "UnleashName": "Purgatory",
             "UnleashAlignment": 1,
@@ -1314,7 +1285,6 @@
         "AddStatsOnEquip": {
             "Atk": 210
         },
-        "UnleashRate": 35,
         "Unleash": {
             "UnleashName": "Acheron's Grief",
             "UnleashAlignment": 0,
@@ -1340,7 +1310,6 @@
         "AddStatsOnEquip": {
             "Atk": 180
         },
-        "UnleashRate": 35,
         "Unleash": {
             "UnleashName": "Legend",
             "UnleashAlignment": 2,
@@ -1351,7 +1320,7 @@
                 },
                 {
                     "id": "MultiplyDamage",
-                    "args": [ "3.0", "25" ]
+                    "args": [ "3.0", "60" ]
                 }
             ]
         }
@@ -1367,7 +1336,6 @@
         "AddStatsOnEquip": {
             "Atk": 200
         },
-        "UnleashRate": 35,
         "Unleash": {
             "UnleashName": "Megiddo",
             "UnleashAlignment": 0,
@@ -1389,7 +1357,6 @@
         "AddStatsOnEquip": {
             "Atk": 100
         },
-        "UnleashRate": 35,
         "Unleash": {
             "UnleashName": "Sunset Burst",
             "UnleashAlignment": 1,
@@ -1411,8 +1378,6 @@
         "Icon": "<:Battle_Axe:569855200945373209>",
         "ItemType": "Axe",
         "IsEquippable": true,
-        "IsArtifact": false,
-        "isCursed": false,
         "AddStatsOnEquip": {
             "Atk": 24
         }
@@ -1423,8 +1388,6 @@
         "Icon": "<:Broad_Axe:569855200748240936>",
         "ItemType": "Axe",
         "IsEquippable": true,
-        "IsArtifact": false,
-        "isCursed": false,
         "AddStatsOnEquip": {
             "Atk": 50
         }
@@ -1436,10 +1399,9 @@
         "ItemType": "Axe",
         "IsEquippable": true,
         "IsArtifact": true,
-        "isCursed": false,
+        "DamageAlignment": 1,
         "AddStatsOnEquip": {
-            "Atk": 76,
-            "damageAlignment": 1
+            "Atk": 76
         },
         "Unleash": {
             "UnleashName": "Barrage",
@@ -1462,8 +1424,6 @@
         "Icon": "<:Great_Axe:569855200899104783>",
         "ItemType": "Axe",
         "IsEquippable": true,
-        "IsArtifact": false,
-        "isCursed": false,
         "AddStatsOnEquip": {
             "Atk": 80
         }
@@ -1475,12 +1435,10 @@
         "ItemType": "Axe",
         "IsEquippable": true,
         "IsArtifact": true,
-        "isCursed": false,
+        "DamageAlignment": 1,
         "AddStatsOnEquip": {
-            "Atk": 84,
-            "damageAlignment": 1
+            "Atk": 84
         },
-        "UnleashRate": 35,
         "Unleash": {
             "UnleashName": "Broil",
             "UnleashAlignment": 1,
@@ -1499,11 +1457,9 @@
         "ItemType": "Axe",
         "IsEquippable": true,
         "IsArtifact": true,
-        "isCursed": false,
         "AddStatsOnEquip": {
             "Atk": 100
         },
-        "UnleashRate": 35,
         "Unleash": {
             "UnleashName": "Heat Mirage",
             "UnleashAlignment": 1,
@@ -1526,11 +1482,9 @@
         "ItemType": "Axe",
         "IsEquippable": true,
         "IsArtifact": true,
-        "isCursed": false,
         "AddStatsOnEquip": {
             "Atk": 114
         },
-        "UnleashRate": 35,
         "Unleash": {
             "UnleashName": "Meltdown",
             "UnleashAlignment": 1,
@@ -1561,7 +1515,6 @@
         "AddStatsOnEquip": {
             "Atk": 132
         },
-        "UnleashRate": 35,
         "Unleash": {
             "UnleashName": "Poison Cloud",
             "UnleashAlignment": 0,
@@ -1584,11 +1537,9 @@
         "ItemType": "Axe",
         "IsEquippable": true,
         "IsArtifact": true,
-        "isCursed": false,
         "AddStatsOnEquip": {
             "Atk": 30
         },
-        "UnleashRate": 35,
         "Unleash": {
             "UnleashName": "Stone Justice",
             "UnleashAlignment": 0,
@@ -1611,11 +1562,9 @@
         "ItemType": "Axe",
         "IsEquippable": true,
         "IsArtifact": true,
-        "isCursed": false,
         "AddStatsOnEquip": {
             "Atk": 76
         },
-        "UnleashRate": 35,
         "Unleash": {
             "UnleashName": "Power Drive",
             "UnleashAlignment": 1,
@@ -1634,7 +1583,6 @@
         "ItemType": "Axe",
         "IsEquippable": true,
         "IsArtifact": true,
-        "isCursed": false,
         "AddStatsOnEquip": {
             "Atk": 95
         },
@@ -1649,12 +1597,10 @@
         "ItemType": "Axe",
         "IsEquippable": true,
         "IsArtifact": true,
-        "isCursed": false,
         "AddStatsOnEquip": {
             "Atk": 127,
             "HPRegen": 10
         },
-        "UnleashRate": 35,
         "Unleash": {
             "UnleashName": "Vein Tap",
             "UnleashAlignment": 0,
@@ -1673,11 +1619,9 @@
         "ItemType": "Axe",
         "IsEquippable": true,
         "IsArtifact": true,
-        "isCursed": false,
         "AddStatsOnEquip": {
             "Atk": 137
         },
-        "UnleashRate": 35,
         "Unleash": {
             "UnleashName": "Stun Bolt",
             "UnleashAlignment": 2,
@@ -1700,11 +1644,9 @@
         "ItemType": "Axe",
         "IsEquippable": true,
         "IsArtifact": true,
-        "isCursed": false,
         "AddStatsOnEquip": {
             "Atk": 142
         },
-        "UnleashRate": 35,
         "Unleash": {
             "UnleashName": "Heat Shatter",
             "UnleashAlignment": 1,
@@ -1723,12 +1665,11 @@
         "ItemType": "Axe",
         "IsEquippable": true,
         "IsArtifact": true,
+        "DamageAlignment": 1,
         "AddStatsOnEquip": {
-            "Atk": 158,
-            "damageAlignment": 1,
-            "HPRegen": 20
+            "Atk": 158
         },
-        "UnleashRate": 35,
+        "HPRegen": 20,
         "Unleash": {
             "UnleashName": "Flare Burst",
             "UnleashAlignment": 1,
@@ -1747,12 +1688,10 @@
         "ItemType": "Axe",
         "IsEquippable": true,
         "IsArtifact": true,
-        "isCursed": false,
+        "DamageAlignment": 0,
         "AddStatsOnEquip": {
-            "Atk": 163,
-            "damageAlignment": 0
+            "Atk": 163
         },
-        "UnleashRate": 35,
         "Unleash": {
             "UnleashName": "Mother Earth",
             "UnleashAlignment": 0,
@@ -1775,11 +1714,9 @@
         "ItemType": "Axe",
         "IsEquippable": true,
         "IsArtifact": true,
-        "isCursed": false,
         "AddStatsOnEquip": {
             "Atk": 171
         },
-        "UnleashRate": 35,
         "Unleash": {
             "UnleashName": "Supernova",
             "UnleashAlignment": 2,
@@ -1802,11 +1739,9 @@
         "ItemType": "Axe",
         "IsEquippable": true,
         "IsArtifact": true,
-        "isCursed": false,
         "AddStatsOnEquip": {
             "Atk": 186
         },
-        "UnleashRate": 35,
         "Unleash": {
             "UnleashName": "Olympus Rage",
             "UnleashAlignment": 1,
@@ -1828,7 +1763,6 @@
         "Icon": "<:Machete:569855398249758728>",
         "ItemType": "LightBlade",
         "IsEquippable": true,
-        "IsArtifact": false,
         "AddStatsOnEquip": {
             "Atk": 6
         }
@@ -1839,7 +1773,6 @@
         "Icon": "<:Short_Sword:569855398635503636>",
         "ItemType": "LightBlade",
         "IsEquippable": true,
-        "IsArtifact": false,
         "AddStatsOnEquip": {
             "Atk": 8
         }
@@ -1850,7 +1783,6 @@
         "Icon": "<:Hunters_Sword:569855398492897290>",
         "ItemType": "LightBlade",
         "IsEquippable": true,
-        "IsArtifact": false,
         "AddStatsOnEquip": {
             "Atk": 28
         }
@@ -1861,7 +1793,6 @@
         "Icon": "<:Battle_Rapier:569855398186844177>",
         "ItemType": "LightBlade",
         "IsEquippable": true,
-        "IsArtifact": false,
         "AddStatsOnEquip": {
             "Atk": 58
         }
@@ -1872,7 +1803,6 @@
         "Icon": "<:Master_Rapier:569855398547292160>",
         "ItemType": "LightBlade",
         "IsEquippable": true,
-        "IsArtifact": false,
         "AddStatsOnEquip": {
             "Atk": 86
         }
@@ -1887,7 +1817,6 @@
         "AddStatsOnEquip": {
             "Atk": 12
         },
-        "UnleashRate": 35,
         "Unleash": {
             "UnleashName": "Rapid Smash",
             "UnleashAlignment": 2,
@@ -1906,11 +1835,11 @@
         "ItemType": "LightBlade",
         "IsEquippable": true,
         "IsArtifact": true,
+        "DamageAlignment": 2,
         "AddStatsOnEquip": {
             "Atk": 44
         },
         "damageAlignment": 2,
-        "UnleashRate": 35,
         "Unleash": {
             "UnleashName": "Vorpal Slash",
             "UnleashAlignment": 2,
@@ -1932,7 +1861,6 @@
         "AddStatsOnEquip": {
             "Atk": 84
         },
-        "UnleashRate": 35,
         "Unleash": {
             "UnleashName": "Life Nourish",
             "UnleashAlignment": 0,
@@ -1954,7 +1882,6 @@
         "AddStatsOnEquip": {
             "Atk": 90
         },
-        "UnleashRate": 35,
         "Unleash": {
             "UnleashName": "Mortal Danger",
             "UnleashAlignment": 0,
@@ -1980,7 +1907,6 @@
         "AddStatsOnEquip": {
             "Atk": 94
         },
-        "UnleashRate": 35,
         "Unleash": {
             "UnleashName": "Cyclone Slash",
             "UnleashAlignment": 2,
@@ -2005,7 +1931,6 @@
         "AddElStatsOnEquip": {
             "JupiterAtk": 10,
         },
-        "UnleashRate": 35,
         "Unleash": {
             "UnleashName": "Sonic Smash",
             "UnleashAlignment": 2,
@@ -2027,7 +1952,6 @@
         "AddStatsOnEquip": {
             "Atk": 128
         },
-        "UnleashRate": 35,
         "Unleash": {
             "UnleashName": "Asura",
             "UnleashAlignment": 2,
@@ -2041,7 +1965,7 @@
     },
     "Kusanagi": {
         "Name": "Kusanagi",
-        "Price": 0,
+        "Price": 13200,
         "Icon": "<:Kunasagi:569855398270730251>",
         "ItemType": "LightBlade",
         "IsEquippable": true,
@@ -2052,7 +1976,7 @@
         "AddElStatsOnEquip": {
             "MarsRes": 20,
         },
-        "UnleashRate": 40,
+        "increaseUnleashRate": 5,
         "Unleash": {
             "UnleashName": "Firebreak",
             "UnleashAlignment": 0,
@@ -2078,7 +2002,6 @@
         "AddStatsOnEquip": {
             "Atk": 34
         },
-        "UnleashRate": 35,
         "Unleash": {
             "UnleashName": "Dreamtide",
             "UnleashAlignment": 3,
@@ -2104,7 +2027,6 @@
         "AddStatsOnEquip": {
             "Atk": 49
         },
-        "UnleashRate": 35,
         "Unleash": {
             "UnleashName": "Moon Air",
             "UnleashAlignment": 2,
@@ -2130,7 +2052,6 @@
         "AddStatsOnEquip": {
             "Atk": 90
         },
-        "UnleashRate": 35,
         "Unleash": {
             "UnleashName": "Lunar Slash",
             "UnleashAlignment": 2,
@@ -2152,7 +2073,6 @@
         "AddStatsOnEquip": {
             "Atk": 110
         },
-        "UnleashRate": 35,
         "Unleash": {
             "UnleashName": "Searing Fog",
             "UnleashAlignment": 3,
@@ -2175,11 +2095,11 @@
         "ItemType": "LightBlade",
         "IsEquippable": true,
         "IsArtifact": true,
+        "DamageAlignment": 2,
         "AddStatsOnEquip": {
             "Atk": 124
         },
         "damageAlignment": 2,
-        "UnleashRate": 35,
         "Unleash": {
             "UnleashName": "Mad Zephyr",
             "UnleashAlignment": 2,
@@ -2205,7 +2125,6 @@
         "AddStatsOnEquip": {
             "Atk": 136
         },
-        "UnleashRate": 35,
         "Unleash": {
             "UnleashName": "Scorpionfish",
             "UnleashAlignment": 1,
@@ -2231,7 +2150,6 @@
         "AddStatsOnEquip": {
             "Atk": 151
         },
-        "UnleashRate": 35,
         "Unleash": {
             "UnleashName": "Light Surge",
             "UnleashAlignment": 2,
@@ -2254,10 +2172,10 @@
         "ItemType": "LightBlade",
         "IsEquippable": true,
         "IsArtifact": true,
+        "DamageAlignment": 1,
         "AddStatsOnEquip": {
             "Atk": 157
         },
-        "UnleashRate": 35,
         "Unleash": {
             "UnleashName": "Blaze Rush",
             "UnleashAlignment": 1,
@@ -2279,7 +2197,7 @@
         "AddStatsOnEquip": {
             "Atk": 161
         },
-        "UnleashRate": 35,
+        "increaseUnleashRate": 5,
         "Unleash": {
             "UnleashName": "Rising Dragon",
             "UnleashAlignment": 3,
@@ -2305,7 +2223,6 @@
         "AddStatsOnEquip": {
             "Atk": 173
         },
-        "UnleashRate": 35,
         "Unleash": {
             "UnleashName": "Vengeance",
             "UnleashAlignment": 0,
@@ -2540,7 +2457,6 @@
         "Icon": "<:Psynergy_Armor:569854623205163039>",
         "ItemType": "HeavyArmor",
         "IsEquippable": true,
-        "IsArtifact": false,
         "AddStatsOnEquip": {
             "Def": 21,
             "MaxPP": 20
@@ -2552,7 +2468,6 @@
         "Icon": "<:Chain_Mail:569854622806835222>",
         "ItemType": "HeavyArmor",
         "IsEquippable": true,
-        "IsArtifact": false,
         "AddStatsOnEquip": {
             "Def": 25
         }
@@ -2563,7 +2478,6 @@
         "Icon": "<:Armored_Shell:569854622836064292>",
         "ItemType": "HeavyArmor",
         "IsEquippable": true,
-        "IsArtifact": false,
         "AddStatsOnEquip": {
             "Def": 30
         }
@@ -2591,7 +2505,6 @@
         "Icon": "<:Plate_Mail:569854623238586368>",
         "ItemType": "HeavyArmor",
         "IsEquippable": true,
-        "IsArtifact": false,
         "AddStatsOnEquip": {
             "Def": 33
         }
@@ -2602,7 +2515,6 @@
         "Icon": "<:Steel_Armor:569823327531565067>",
         "ItemType": "HeavyArmor",
         "IsEquippable": true,
-        "IsArtifact": false,
         "AddStatsOnEquip": {
             "Def": 36
         }
@@ -4399,8 +4311,8 @@
         }
     },
     "Adept Ring": {
-        "Name": "Cleric's Ring",
-        "Price": 1550,
+        "Name": "Adept Ring",
+        "Price": 3100,
         "Icon": "<:Adept_Ring:569854314168713216>",
         "ItemType": "Ring",
         "IsEquippable": true,
