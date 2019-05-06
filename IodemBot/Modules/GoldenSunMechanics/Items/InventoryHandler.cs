@@ -24,8 +24,9 @@ namespace IodemBot.Modules.GoldenSunMechanics
             }
 
             var fb = new EmbedFooterBuilder();
+            fb.WithText($"{inv.Count} / {Inventory.MaxInvSize}");
             embed.AddField("Coin", $"<:coin:569836987767324672> {inv.Coins}");
-
+            embed.WithFooter(fb);
             await Context.Channel.SendMessageAsync("", false, embed.Build());
         }
 
@@ -35,9 +36,9 @@ namespace IodemBot.Modules.GoldenSunMechanics
             var inv = UserAccounts.GetAccount(Context.User).inv;
             var shop = ItemDatabase.GetShop();
             var embed = new EmbedBuilder();
-
+            embed.WithColor(new Color(200, 200, 50));
             embed.WithImageUrl(Sprites.GetImageFromName("Sunshine"));
-            embed.AddField("Today's Shop:", shop.InventoryToString(Inventory.Detail.PriceAndName));
+            embed.AddField("Today's Shop:", shop.InventoryToString(Inventory.Detail.PriceAndName), true);
             await Context.Channel.SendMessageAsync("", false, embed.Build());
         }
 
@@ -62,15 +63,29 @@ namespace IodemBot.Modules.GoldenSunMechanics
             {
                 ShowInventory();
             }
+            else
+            {
+                var embed = new EmbedBuilder();
+                embed.WithDescription("Balance not enough or Inventory at full capacity.");
+                await Context.Channel.SendMessageAsync("", false, embed.Build());
+            }
         }
 
         [Command("Sell")]
         public async Task SellItem([Remainder] string item)
         {
             var inv = UserAccounts.GetAccount(Context.User).inv;
+            var embed = new EmbedBuilder();
             if (inv.Sell(item))
             {
-                ShowInventory();
+                var it = ItemDatabase.GetItem(item);
+                embed.WithDescription($"Sold {it.Name} for {it.sellValue}.");
+                await Context.Channel.SendMessageAsync("", false, embed.Build());
+            }
+            else
+            {
+                embed.WithDescription("You can only sell unequipped items in your possession.");
+                await Context.Channel.SendMessageAsync("", false, embed.Build());
             }
         }
 
@@ -99,6 +114,14 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
             if (!inv.OpenChest(cq))
             {
+                return;
+            }
+
+            if (inv.isFull)
+            {
+                var emb = new EmbedBuilder();
+                emb.WithDescription("Inventory capacity reached!");
+                await Context.Channel.SendMessageAsync("", false, emb.Build());
                 return;
             }
 
