@@ -1669,7 +1669,7 @@
         "AddStatsOnEquip": {
             "Atk": 158
         },
-        "HPRegen": 20
+        "HPRegen": 20,
         "Unleash": {
             "UnleashName": "Flare Burst",
             "UnleashAlignment": 1,
