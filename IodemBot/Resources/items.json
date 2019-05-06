@@ -4311,8 +4311,8 @@
         }
     },
     "Adept Ring": {
-        "Name": "Cleric's Ring",
-        "Price": 1550,
+        "Name": "Adept Ring",
+        "Price": 3100,
         "Icon": "<:Adept_Ring:569854314168713216>",
         "ItemType": "Ring",
         "IsEquippable": true,
