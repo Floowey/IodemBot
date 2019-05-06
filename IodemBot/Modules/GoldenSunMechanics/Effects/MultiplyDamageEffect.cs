@@ -33,6 +33,11 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 multipliers = args[0].Split(',').Select(n => Convert.ToDouble(n, new CultureInfo("en-GB"))).ToArray();
                 probabilites = args[1].Split(',').Select(n => Convert.ToInt32(n)).ToArray();
             }
+            else if (args.Length == 1)
+            {
+                multipliers = args[0].Split(',').Select(n => Convert.ToDouble(n, new CultureInfo("en-GB"))).ToArray();
+                probabilites = new[] { 100 };
+            }
             else
             {
                 Console.WriteLine("Constructor for MultiplyDamage not initialized correctly. Using default Values.");
