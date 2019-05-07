@@ -1792,7 +1792,7 @@
             "name": "Living Armor",
             "imgurl": "https://goldensunwiki.net/w/images/d/d0/Living_Armor.png",
             "movepool": [
-                "Power Crush"
+                "Power Crush",
             ],
             "stats": {
                 "maxHP": 201,
@@ -1835,6 +1835,7 @@
                 "MercuryAtk": 80,
                 "MercuryRes": 152
             },
+        }
     ],
             [
         {
@@ -1945,6 +1946,7 @@
                 "MercuryAtk": 80,
                 "MercuryRes": 152
             },
+        }
     ],
             [
         {
