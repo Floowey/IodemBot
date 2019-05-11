@@ -272,6 +272,7 @@
     <Compile Include="Modules\GoldenSunMechanics\Classes\Requirements\TeammatesRequirement.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Classes\Requirements\UnlockedClassesRequirement.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Effects\AddDamageEffect.cs" />
+    <Compile Include="Modules\GoldenSunMechanics\Effects\AttackWithTeammateEffect.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Effects\BreakEffect.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Effects\ChanceToOHKOEffect.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Effects\ConditionEffect.cs" />
