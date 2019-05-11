@@ -70,6 +70,11 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 }
             }
 
+            if (!enemy.IsAlive())
+            {
+                return log;
+            }
+
             var atk = User.stats.Atk * User.MultiplyBuffs("Attack");
             var def = enemy.stats.Def * enemy.MultiplyBuffs("Defense");
             uint damage = 1;
