@@ -3048,7 +3048,7 @@
         "ItemType": "UnderWear",
         "IsEquippable": true,
         "IsArtifact": true,
-        "HPRegen": 3
+        "HPRegen": 3,
         "AddStatsOnEquip": {
             "Def": 7,
             "MaxHP": 7
@@ -4514,7 +4514,7 @@
         "AddElStatsOnEquip": {
             "MercuryAtk": 30,
             "MercuryRes": 40
-        }
+        },
         "ChanceToActivate": 0,
         "ChanceToBreak": 0,
         "Unleash": {
@@ -4600,7 +4600,7 @@
         "IsArtifact": true,
         "AddStatsOnEquip": {
             "Def": 8
-        }
+        },
         "AddElStatsOnEquip": {
             "VenusRes": 10,
             "MarsRes": 10,
