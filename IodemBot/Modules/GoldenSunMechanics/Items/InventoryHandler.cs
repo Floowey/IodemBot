@@ -17,7 +17,17 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
             embed.AddField("Warrior Gear", inv.GearToString(ArchType.Warrior), true);
             embed.AddField("Mage Gear", inv.GearToString(ArchType.Mage), true);
-            embed.AddField("Inventory", inv.InventoryToString(detailed ? Inventory.Detail.Name : Inventory.Detail.none));
+            var invstring = inv.InventoryToString(detailed ? Inventory.Detail.Name : Inventory.Detail.none);
+            if (invstring.Length > 1024)
+            {
+                var lastitem = invstring.Take(1024).ToList().FindLastIndex(s => s.Equals(',')) + 1;
+                embed.AddField("Inventory (1/2)", string.Join("", invstring.Take(lastitem)));
+                embed.AddField("Inventory (2/2)", string.Join("", invstring.Skip(lastitem)));
+            }
+            else
+            {
+                embed.AddField("Inventory", invstring);
+            }
             if (inv.getChestsToString().Length > 0)
             {
                 embed.AddField("Chests:", inv.getChestsToString());
