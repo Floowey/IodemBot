@@ -145,7 +145,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public override string ToString()
         {
-            return $"Attack {(targetType == Target.otherSingle ? "an enemy" : (targetType == Target.otherAll ? $"all Enemies" : $"up to {range * 2 - 1} Targets"))} with a base damage of {(attackBased ? "a normal physical Attack" : $"{power}")}{(addDamage > 0 ? $" plus an additional {addDamage} Points" : "")}{(dmgMult != 1 ? $" multiplied by {dmgMult}" : "")}.";
+            return $"Attack {(targetType == Target.otherSingle ? "an enemy" : (targetType == Target.otherAll ? $"all Enemies" : $"up to {range * 2 - 1} Targets"))} with a base damage of {(attackBased ? "a normal physical Attack" : $"{power}")}{(addDamage > 0 ? $" plus an additional {addDamage} Points" : "")}{(dmgMult != 1 ? $" multiplied by {dmgMult}" : "")}{(percentageDamage > 0 ? $" and takes {percentageDamage}% of the targets Health" : "")}.";
         }
     }
 }
