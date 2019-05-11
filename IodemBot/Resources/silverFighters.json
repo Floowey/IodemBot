@@ -1787,12 +1787,12 @@
             "hasDefend": false
         }
     ],
-     [
+    [
         {
             "name": "Living Armor",
             "imgurl": "https://goldensunwiki.net/w/images/d/d0/Living_Armor.png",
             "movepool": [
-                "Power Crush",
+                "Power Crush"
             ],
             "stats": {
                 "maxHP": 201,
@@ -1816,7 +1816,7 @@
             "name": "Puppet Warrior",
             "imgurl": "",
             "movepool": [
-               "Power Crush",
+                "Power Crush"
             ],
             "stats": {
                 "maxHP": 402,
@@ -1834,15 +1834,15 @@
                 "JupiterRes": 25,
                 "MercuryAtk": 80,
                 "MercuryRes": 152
-            },
+            }
         }
     ],
-            [
+    [
         {
             "name": "Estre Baron",
             "imgurl": "https://goldensunwiki.net/w/images/8/8a/Estre_Baron.png",
             "movepool": [
-                "Power Crush",
+                "Power Crush"
             ],
             "stats": {
                 "maxHP": 1500,
@@ -1862,18 +1862,18 @@
                 "MercuryRes": 100
             },
             "HPRecovery": 20,
-         "hasAttack": false
+            "hasAttack": false
         }
     ],
-     [
+    [
         {
             "name": "Spirit Army",
             "imgurl": "https://goldensunwiki.net/w/images/3/34/Spirit_Army.png",
             "movepool": [
                 "Destruct Ray",
                 "Tempest",
-                "Pike Assault",
-            
+                "Pike Assault"
+
             ],
             "stats": {
                 "maxHP": 750,
@@ -1892,7 +1892,7 @@
                 "MercuryAtk": 100,
                 "MercuryRes": 100
             },
-         "hasDefend": false
+            "hasDefend": false
         }
     ],
     [
@@ -1925,7 +1925,7 @@
             "name": "Soul Army",
             "imgurl": "",
             "movepool": [
-               "Pike Assault",
+                "Pike Assault",
                 "Destruct Ray",
                 "Tempest"
             ],
@@ -1945,21 +1945,21 @@
                 "JupiterRes": 25,
                 "MercuryAtk": 80,
                 "MercuryRes": 152
-            },
+            }
         }
     ],
-            [
+    [
         {
             "name": "Avimander",
             "imgurl": "https://goldensunwiki.net/w/images/7/70/Avimander.png",
             "movepool": [
                 "Fire Breath",
-            "Fiery Blast",
-            "Guard",
-            "Impair",
-            "Star Mine",
-            "Heat Stun"
-            
+                "Fiery Blast",
+                "Guard",
+                "Impair",
+                "Star Mine",
+                "Heat Stun"
+
             ],
             "stats": {
                 "maxHP": 3792,
@@ -1977,10 +1977,10 @@
                 "JupiterRes": 100,
                 "MercuryAtk": 100,
                 "MercuryRes": 25
-            },
+            }
         }
     ],
-       [
+    [
         {
             "name": "Menardi",
             "imgurl": "",
@@ -1989,7 +1989,7 @@
                 "Nova",
                 "Flare Storm",
                 "Fiery Blast"
-            
+
             ],
             "stats": {
                 "maxHP": 1400,
@@ -2008,19 +2008,19 @@
                 "MercuryAtk": 100,
                 "MercuryRes": 70
             },
-                "PPRecovery": 10
-            }
+            "PPRecovery": 10
+        }
     ],
-               [
+    [
         {
             "name": "Toadonpa",
             "imgurl": "https://goldensunwiki.net/w/images/2/26/Toadonpa.png",
             "movepool": [
                 "Sticky Poison",
-            "Dark Blessing",
-            "Thrash",
-            "Rotten Blood"
-            
+                "Dark Blessing",
+                "Thrash",
+                "Rotten Blood"
+
             ],
             "stats": {
                 "maxHP": 2800,
@@ -2039,10 +2039,10 @@
                 "MercuryAtk": 115,
                 "MercuryRes": 175
             },
-           "HPRecovery": 80,
-           }
+            "HPRecovery": 80
+        }
     ],
-     [
+    [
         {
             "name": "Manticore",
             "imgurl": "https://goldensunwiki.net/w/images/0/03/Manticore.png",
@@ -2052,7 +2052,7 @@
                 "Nova",
                 "Mad Blast",
                 "Impair"
-            
+
             ],
             "stats": {
                 "maxHP": 1700,
@@ -2070,17 +2070,17 @@
                 "JupiterRes": 100,
                 "MercuryAtk": 100,
                 "MercuryRes": 25
-            },
+            }
         }
     ],
-            [
+    [
         {
             "name": "Moapa Knight",
             "imgurl": "https://goldensunwiki.net/w/images/6/6b/Knight.png",
             "movepool": [
                 "Strong Hit",
-            "Bramble Seed",
-            "Nut"
+                "Bramble Seed",
+                "Nut"
             ],
             "stats": {
                 "maxHP": 600,
@@ -2100,13 +2100,13 @@
                 "MercuryRes": 100
             }
         },
-         {
+        {
             "name": "Moapa Knight",
             "imgurl": "https://goldensunwiki.net/w/images/6/6b/Knight.png",
             "movepool": [
                 "Strong Hit",
-            "Bramble Seed",
-            "Nut"
+                "Bramble Seed",
+                "Nut"
             ],
             "stats": {
                 "maxHP": 600,
@@ -2125,6 +2125,6 @@
                 "MercuryAtk": 100,
                 "MercuryRes": 100
             }
-        },
-    ],
+        }
+    ]
 ]
