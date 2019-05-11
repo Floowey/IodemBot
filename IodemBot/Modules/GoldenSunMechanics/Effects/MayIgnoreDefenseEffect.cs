@@ -30,7 +30,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public override string ToString()
         {
-            return $"{(probability != 100 ? "% chance to ignore " : "Ignore")} {ignorePercent}% of Defense";
+            return $"{(probability != 100 ? $"{probability}% chance to ignore " : "Ignore")} {ignorePercent}% of Defense";
         }
     }
 }

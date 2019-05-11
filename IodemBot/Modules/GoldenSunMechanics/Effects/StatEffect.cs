@@ -11,7 +11,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         private double Multiplier;
         private int probability = 100;
         private bool OnTarget = true;
-        private int Turns = 5;
+        private int Turns = 7;
 
         public StatEffect(string StatToBoost, double Value, long probability = 100, bool OnTarget = true, int Duration = 5)
         {

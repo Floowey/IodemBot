@@ -15,6 +15,9 @@ namespace IodemBot.Modules.GoldenSunMechanics
         {
             switch (Identifier)
             {
+                case "AttackWithTeammate":
+                    return new AttackWithTeammateEffect();
+
                 case "Break":
                     return new BreakEffect();
 
@@ -82,6 +85,11 @@ namespace IodemBot.Modules.GoldenSunMechanics
         internal bool ValidSelection(ColossoFighter User)
         {
             return InternalValidSelection(User);
+        }
+
+        public override string ToString()
+        {
+            return "Unspecified Effect";
         }
     }
 
