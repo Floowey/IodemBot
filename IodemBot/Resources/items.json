@@ -371,7 +371,7 @@
         "IsArtifact": true,
         "AddStatsOnEquip": {
             "Atk": 130
-        },
+        }
         "AddElStatsOnEquip": {
             "MercuryAtk": 25,
             "MarsRes": 10
