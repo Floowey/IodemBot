@@ -372,15 +372,9 @@
         "AddStatsOnEquip": {
             "Atk": 130
         },
-        "Unleash": {
-            "UnleashName": "",
-            "UnleashAlignment": 3,
-            "effectImages": [
-                {
-                    "id": "Stat",
-                    "args": [ "Resistance", "1.5", "50" ]
-                }
-            ]
+        "AddElStatsOnEquip": {
+            "MercuryAtk": 25,
+            "MarsRes": 10
         }
     },
     "Cloud Wand": {
@@ -2321,6 +2315,16 @@
         "AddStatsOnEquip": {
             "Def": 19
         }
+        "ChanceToActivate": 30,
+        "ChanceToBreak": 5,
+        "Unleash": {
+            "effectImages": [
+                {
+                    "id": "",
+                    "args": [ "", "100" ]
+                }
+            ]
+        }
     },
     "Jerkin": {
         "Name": "Jerkin",
@@ -2645,6 +2649,16 @@
         "AddStatsOnEquip": {
             "Def": 38
         }
+        "ChanceToActivate": 25,
+        "ChanceToBreak": 10,
+        "Unleash": {
+            "effectImages": [
+                {
+                    "id": "Condition",
+                    "args": [ "Delusion", "100" ]
+                }
+            ]
+        }
     },
     "Erebus Armor": {
         "Name": "Erebus Armor",
@@ -2902,6 +2916,16 @@
         "AddStatsOnEquip": {
             "Def": 38
         }
+        "ChanceToActivate": 15,
+        "ChanceToBreak": 35,
+        "Unleash": {
+            "effectImages": [
+                {
+                    "id": "Condition",
+                    "args": [ "Sleep", "100" ]
+                }
+            ]
+        }
     },
     "Faery Vest": {
         "Name": "Faery Vest",
@@ -3024,8 +3048,10 @@
         "IsEquippable": true,
         "IsArtifact": true,
         "AddStatsOnEquip": {
-            "Def": 7
+            "Def": 7,
+            "MaxHP": 7
         }
+        "HPRegen": 3
     },
     "Golden Shirt": {
         "Name": "Golden Shirt",
@@ -3281,6 +3307,16 @@
         "AddStatsOnEquip": {
             "Def": 30
         }
+        "ChanceToActivate": 25,
+        "ChanceToBreak": 10,
+        "Unleash": {
+            "effectImages": [
+                {
+                    "id": "Condition",
+                    "args": [ "Delusion", "100" ]
+                }
+            ]
+        }
     },
     "Lucky Cap": {
         "Name": "Lucky Cap",
@@ -3341,6 +3377,9 @@
         "AddStatsOnEquip": {
             "Def": 31
         }
+        "AddElStatsOnEquip": {
+            "MercuryAtk": 20
+        }
     },
     "Floating Hat": {
         "Name": "Floating Hat",
@@ -3366,6 +3405,9 @@
         "AddStatsOnEquip": {
             "Def": 33
         }
+        "AddElStatsOnEquip": {
+            "MarsAtk": 25
+        }
     },
     "Crown of Glory": {
         "Name": "Crown of Glory",
@@ -3388,6 +3430,16 @@
         "IsArtifact": true,
         "AddStatsOnEquip": {
             "Def": 47
+        }
+        "ChanceToActivate": 25,
+        "ChanceToBreak": 10,
+        "Unleash": {
+            "effectImages": [
+                {
+                    "id": "Condition",
+                    "args": [ "Delusion", "100" ]
+                }
+            ]
         }
     },
     "Umbra Cowl": {
@@ -3447,6 +3499,16 @@
         "IsArtifact": true,
         "AddStatsOnEquip": {
             "Def": 27
+        }
+        "ChanceToActivate": 25,
+        "ChanceToBreak": 10,
+        "Unleash": {
+            "effectImages": [
+                {
+                    "id": "Condition",
+                    "args": [ "Delusion", "100" ]
+                }
+            ]
         }
     },
     "Platinum Circlet": {
@@ -3824,6 +3886,16 @@
         "AddStatsOnEquip": {
             "Def": 30
         }
+        "ChanceToActivate": 25,
+        "ChanceToBreak": 10,
+        "Unleash": {
+            "effectImages": [
+                {
+                    "id": "Condition",
+                    "args": [ "Delusion", "100" ]
+                }
+            ]
+        }
     },
     "Heavy Armlet": {
         "Name": "Heavy Armlet",
@@ -3906,6 +3978,15 @@
         "AddElStatsOnEquip": {
             "VenusAtk": 10,
             "MercuryAtk": 10
+        }
+        "ChanceToActivate": 55,
+        "ChanceToBreak": 30,
+        "Unleash": {
+            "effectImages": [
+                {
+                    "id": "Restore"
+                }
+            ]
         }
     },
     "Virtuous Armlet": {
@@ -4197,6 +4278,16 @@
         "AddStatsOnEquip": {
             "Def": 39
         }
+        "ChanceToActivate": 25,
+        "ChanceToBreak": 10,
+        "Unleash": {
+            "effectImages": [
+                {
+                    "id": "Condition",
+                    "args": [ "Delusion", "100" ]
+                }
+            ]
+        }
     },
     "Terra Shield": {
         "Name": "Terra Shield",
@@ -4262,7 +4353,7 @@
             "effectImages": [
                 {
                     "id": "Revive",
-                    "args": [ "25" ]
+                    "args": [ "33" ]
                 }
             ]
         }
@@ -4283,7 +4374,7 @@
         "ItemType": "Ring",
         "IsEquippable": true,
         "IsArtifact": true,
-        "ChanceToActivate": 60,
+        "ChanceToActivate": 30,
         "ChanceToBreak": 20,
         "Unleash": {
             "effectImages": [
@@ -4300,8 +4391,8 @@
         "ItemType": "Ring",
         "IsEquippable": true,
         "IsArtifact": true,
-        "ChanceToActivate": 100,
-        "ChanceToBreak": 50,
+        "ChanceToActivate": 80,
+        "ChanceToBreak": 40,
         "Unleash": {
             "effectImages": [
                 {
@@ -4326,7 +4417,7 @@
         "ItemType": "Ring",
         "IsEquippable": true,
         "IsArtifact": true,
-        "HPregen": 12
+        "HPregen": 7
     },
     "War Ring": {
         "Name": "War Ring",
@@ -4341,7 +4432,7 @@
             "effectImages": [
                 {
                     "id": "Stat",
-                    "args": [ "Attack", "1.1" ]
+                    "args": [ "Attack", "1.2" ]
                 }
             ]
         }
@@ -4374,6 +4465,158 @@
         "AddStatsOnEquip": {
             "Def": 4,
             "maxHP": 20
+        }
+    },
+    "Aroma Ring": {
+        "Name": "Aroma Ring",
+        "Price": 2300,
+        "Icon": "<:Soul_Ring:569854314202529802>",
+        "ItemType": "Ring",
+        "IsEquippable": true,
+        "IsArtifact": true,
+        "ChanceToActivate": 20,
+        "ChanceToBreak": 20,
+        "Unleash": {
+            "effectImages": [
+                {
+                    "id": "HPDrain",
+                    "args": [ "50" ]
+                }
+            ]
+        }
+    },
+    "Spirit Ring": {
+        "Name": "Spirit Ring",
+        "Price": 3600,
+        "Icon": "<:Soul_Ring:569854314202529802>",
+        "ItemType": "Ring",
+        "IsEquippable": true,
+        "IsArtifact": true,
+        "ChanceToActivate": 15,
+        "ChanceToBreak": 25,
+        "Unleash": {
+            "effectImages": [
+                {
+                    "id": "HPDrain",
+                    "args": [ "75" ]
+                }
+            ]
+        }
+    },
+    "Heirloom Ring": {
+        "Name": "Heirloom Ring",
+        "Price": 5600,
+        "Icon": "<:ring:>",
+        "ItemType": "Ring",
+        "IsEquippable": true,
+        "IsArtifact": true,
+        "AddElStatsOnEquip": {
+            "MercuryAtk": 30,
+            "MercuryRes": 40
+        }
+        "ChanceToActivate": 0,
+        "ChanceToBreak": 0,
+        "Unleash": {
+            "effectImages": [
+                {
+                    "id": "",
+                    "args": [ "", "" ]
+                }
+            ]
+        }
+    },
+    "Sleep Ring": {
+        "Name": "Sleep Ring",
+        "Price": 1400,
+        "Icon": "<:ring:>",
+        "ItemType": "Ring",
+        "IsEquippable": true,
+        "IsArtifact": true,
+        "ChanceToActivate": 15,
+        "ChanceToBreak": 35,
+        "Unleash": {
+            "effectImages": [
+                {
+                    "id": "Condition",
+                    "args": [ "Sleep", "100" ]
+                }
+            ]
+        }
+    },
+    "Stardust Ring": {
+        "Name": "Stardust Ring",
+        "Price": 1250,
+        "Icon": "<:ring:>",
+        "ItemType": "Ring",
+        "IsEquippable": true,
+        "IsArtifact": true,
+        "ChanceToActivate": 20,
+        "ChanceToBreak": 15,
+        "Unleash": {
+            "effectImages": [
+                {
+                    "id": "Condition",
+                    "args": [ "Seal", "100" ]
+                }
+            ]
+        }
+    },
+    "Rainbow Ring": {
+        "Name": "Rainbow Ring",
+        "Price": 900,
+        "Icon": "<:ring:>",
+        "ItemType": "Ring",
+        "IsEquippable": true,
+        "IsArtifact": true,
+        "ChanceToActivate": 25,
+        "ChanceToBreak": 10,
+        "Unleash": {
+            "effectImages": [
+                {
+                    "id": "Condition",
+                    "args": [ "Delusion", "100" ]
+                }
+            ]
+        }
+    }
+    "Zol Ring": {
+        "Name": "Zol Ring",
+        "Price": 2500,
+        "Icon": "<:ring:>",
+        "ItemType": "Ring",
+        "IsEquippable": true,
+        "IsArtifact": true,
+        "MultStatsOnEquip": {
+            "Spd": 180
+        }
+    },
+    "Lady Moon's Ring": {
+        "Name": "Lady Moon's Ring",
+        "Price": 3300,
+        "Icon": "<:ring:>",
+        "ItemType": "Ring",
+        "IsEquippable": true,
+        "IsArtifact": true,
+        "AddStatsOnEquip": {
+            "Def": 8
+        }
+        "AddElStatsOnEquip": {
+            "VenusRes": 10,
+            "MarsRes": 10,
+            "JupiterRes": 10,
+            "MercuryRes": 10
+        }
+    },
+    "Lord Sun's Ring": {
+        "Name": "Lord Sun's Ring",
+        "Price": 4900,
+        "Icon": "<:ring:>",
+        "ItemType": "Ring",
+        "IsEquippable": true,
+        "IsArtifact": true,
+        "increaseUnleashRate": 12,
+        "AddStatsOnEquip": {
+            "Atk": 8
         }
     }
 }
