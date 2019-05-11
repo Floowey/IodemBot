@@ -2315,7 +2315,7 @@
         "IsArtifact": true,
         "AddStatsOnEquip": {
             "Def": 19
-        }
+        },
         "ChanceToActivate": 30,
         "ChanceToBreak": 5,
         "Unleash": {
@@ -2649,7 +2649,7 @@
         "IsArtifact": true,
         "AddStatsOnEquip": {
             "Def": 38
-        }
+        },
         "ChanceToActivate": 25,
         "ChanceToBreak": 10,
         "Unleash": {
@@ -2916,7 +2916,7 @@
         "IsArtifact": true,
         "AddStatsOnEquip": {
             "Def": 38
-        }
+        },
         "ChanceToActivate": 15,
         "ChanceToBreak": 35,
         "Unleash": {
@@ -3048,11 +3048,11 @@
         "ItemType": "UnderWear",
         "IsEquippable": true,
         "IsArtifact": true,
+        "HPRegen": 3
         "AddStatsOnEquip": {
             "Def": 7,
             "MaxHP": 7
         }
-        "HPRegen": 3
     },
     "Golden Shirt": {
         "Name": "Golden Shirt",
@@ -3307,7 +3307,7 @@
         "IsArtifact": true,
         "AddStatsOnEquip": {
             "Def": 30
-        }
+        },
         "ChanceToActivate": 25,
         "ChanceToBreak": 10,
         "Unleash": {
@@ -3377,7 +3377,7 @@
         "IsArtifact": true,
         "AddStatsOnEquip": {
             "Def": 31
-        }
+        },
         "AddElStatsOnEquip": {
             "MercuryAtk": 20
         }
@@ -3405,7 +3405,7 @@
         "IsArtifact": true,
         "AddStatsOnEquip": {
             "Def": 33
-        }
+        },
         "AddElStatsOnEquip": {
             "MarsAtk": 25
         }
@@ -3431,7 +3431,7 @@
         "IsArtifact": true,
         "AddStatsOnEquip": {
             "Def": 47
-        }
+        },
         "ChanceToActivate": 25,
         "ChanceToBreak": 10,
         "Unleash": {
@@ -3500,7 +3500,7 @@
         "IsArtifact": true,
         "AddStatsOnEquip": {
             "Def": 27
-        }
+        },
         "ChanceToActivate": 25,
         "ChanceToBreak": 10,
         "Unleash": {
@@ -3886,7 +3886,7 @@
         "IsEquippable": true,
         "AddStatsOnEquip": {
             "Def": 30
-        }
+        },
         "ChanceToActivate": 25,
         "ChanceToBreak": 10,
         "Unleash": {
@@ -3979,7 +3979,7 @@
         "AddElStatsOnEquip": {
             "VenusAtk": 10,
             "MercuryAtk": 10
-        }
+        },
         "ChanceToActivate": 55,
         "ChanceToBreak": 30,
         "Unleash": {
@@ -4278,7 +4278,7 @@
         "IsEquippable": true,
         "AddStatsOnEquip": {
             "Def": 39
-        }
+        },
         "ChanceToActivate": 25,
         "ChanceToBreak": 10,
         "Unleash": {
@@ -4451,7 +4451,7 @@
             "effectImages": [
                 {
                     "id": "Stat",
-                    "args": [ "Resistance", "1.1" ]
+                    "args": [ "Resistance", "1.2" ]
                 }
             ]
         }
@@ -4471,7 +4471,7 @@
     "Aroma Ring": {
         "Name": "Aroma Ring",
         "Price": 2300,
-        "Icon": "<:Soul_Ring:569854314202529802>",
+        "Icon": "<:ring:>",
         "ItemType": "Ring",
         "IsEquippable": true,
         "IsArtifact": true,
@@ -4489,7 +4489,7 @@
     "Spirit Ring": {
         "Name": "Spirit Ring",
         "Price": 3600,
-        "Icon": "<:Soul_Ring:569854314202529802>",
+        "Icon": "<:ring:>",
         "ItemType": "Ring",
         "IsEquippable": true,
         "IsArtifact": true,
