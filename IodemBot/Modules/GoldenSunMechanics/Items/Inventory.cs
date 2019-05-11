@@ -280,12 +280,12 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
             if (i.IsFootWear)
             {
-                Gear.RemoveAll(w => w.IsUnderWear);
+                Gear.RemoveAll(w => w.IsFootWear);
             }
 
             if (i.IsAccessoire)
             {
-                Gear.RemoveAll(w => w.IsUnderWear);
+                Gear.RemoveAll(w => w.IsAccessoire);
             }
 
             Gear.Add(i);
