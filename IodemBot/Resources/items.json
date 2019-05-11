@@ -376,7 +376,6 @@
             "MercuryAtk": 25,
             "MarsRes": 10
         }
-    }
     },
     "Cloud Wand": {
         "Name": "Cloud Wand",
@@ -1924,7 +1923,7 @@
             "Atk": 104
         },
         "AddElStatsOnEquip": {
-            "JupiterAtk": 10,
+            "JupiterAtk": 10
         },
         "Unleash": {
             "UnleashName": "Sonic Smash",
@@ -1969,7 +1968,7 @@
             "Atk": 135
         },
         "AddElStatsOnEquip": {
-            "MarsRes": 20,
+            "MarsRes": 20
         },
         "increaseUnleashRate": 5,
         "Unleash": {
@@ -2316,13 +2315,12 @@
         "AddStatsOnEquip": {
             "Def": 19
         },
-        "ChanceToActivate": 30,
-        "ChanceToBreak": 5,
+        "GrantsUnleash": true,
         "Unleash": {
             "effectImages": [
                 {
-                    "id": "",
-                    "args": [ "", "100" ]
+                    "id": "Stat",
+                    "args": [ "Attack", "0,8" ]
                 }
             ]
         }
@@ -3432,13 +3430,12 @@
         "AddStatsOnEquip": {
             "Def": 47
         },
-        "ChanceToActivate": 25,
-        "ChanceToBreak": 10,
+        "GrantsUnleash": true,
         "Unleash": {
             "effectImages": [
                 {
                     "id": "Condition",
-                    "args": [ "Delusion", "100" ]
+                    "args": [ "Delusion", "30" ]
                 }
             ]
         }
@@ -3501,13 +3498,12 @@
         "AddStatsOnEquip": {
             "Def": 27
         },
-        "ChanceToActivate": 25,
-        "ChanceToBreak": 10,
+        "GrantsUnleash": true,
         "Unleash": {
             "effectImages": [
                 {
                     "id": "Condition",
-                    "args": [ "Delusion", "100" ]
+                    "args": [ "Delusion", "25" ]
                 }
             ]
         }
@@ -4279,13 +4275,12 @@
         "AddStatsOnEquip": {
             "Def": 39
         },
-        "ChanceToActivate": 25,
-        "ChanceToBreak": 10,
+        "GrantsUnleash": true,
         "Unleash": {
             "effectImages": [
                 {
                     "id": "Condition",
-                    "args": [ "Delusion", "100" ]
+                    "args": [ "Delusion", "30" ]
                 }
             ]
         }
@@ -4471,12 +4466,11 @@
     "Aroma Ring": {
         "Name": "Aroma Ring",
         "Price": 2300,
-        "Icon": "<:ring:>",
+        "Icon": "<:Aroma_Ring:569854314072506378>",
         "ItemType": "Ring",
         "IsEquippable": true,
         "IsArtifact": true,
-        "ChanceToActivate": 20,
-        "ChanceToBreak": 20,
+        "GrantsUnleash": true,
         "Unleash": {
             "effectImages": [
                 {
@@ -4489,17 +4483,16 @@
     "Spirit Ring": {
         "Name": "Spirit Ring",
         "Price": 3600,
-        "Icon": "<:ring:>",
+        "Icon": "<:Spirit_Ring:569854313904603147>",
         "ItemType": "Ring",
         "IsEquippable": true,
         "IsArtifact": true,
-        "ChanceToActivate": 15,
-        "ChanceToBreak": 25,
+        "GrantsUnleash": true,
         "Unleash": {
             "effectImages": [
                 {
                     "id": "HPDrain",
-                    "args": [ "75" ]
+                    "args": [ "75", "10" ]
                 }
             ]
         }
@@ -4507,39 +4500,28 @@
     "Heirloom Ring": {
         "Name": "Heirloom Ring",
         "Price": 5600,
-        "Icon": "<:ring:>",
+        "Icon": ":ring:",
         "ItemType": "Ring",
         "IsEquippable": true,
         "IsArtifact": true,
         "AddElStatsOnEquip": {
             "MercuryAtk": 30,
             "MercuryRes": 40
-        },
-        "ChanceToActivate": 0,
-        "ChanceToBreak": 0,
-        "Unleash": {
-            "effectImages": [
-                {
-                    "id": "",
-                    "args": [ "", "" ]
-                }
-            ]
         }
     },
     "Sleep Ring": {
         "Name": "Sleep Ring",
         "Price": 1400,
-        "Icon": "<:ring:>",
+        "Icon": "<:Sleep_Ring:569854314248536065>",
         "ItemType": "Ring",
         "IsEquippable": true,
         "IsArtifact": true,
-        "ChanceToActivate": 15,
-        "ChanceToBreak": 35,
+        "GrantsUnleash": true,
         "Unleash": {
             "effectImages": [
                 {
                     "id": "Condition",
-                    "args": [ "Sleep", "100" ]
+                    "args": [ "Sleep", "30" ]
                 }
             ]
         }
@@ -4547,17 +4529,16 @@
     "Stardust Ring": {
         "Name": "Stardust Ring",
         "Price": 1250,
-        "Icon": "<:ring:>",
+        "Icon": "<:Stardust_Ring:569854313917054978>",
         "ItemType": "Ring",
         "IsEquippable": true,
         "IsArtifact": true,
-        "ChanceToActivate": 20,
-        "ChanceToBreak": 15,
+        "GrantsUnleash": true,
         "Unleash": {
             "effectImages": [
                 {
                     "id": "Condition",
-                    "args": [ "Seal", "100" ]
+                    "args": [ "Seal", "30" ]
                 }
             ]
         }
@@ -4565,25 +4546,24 @@
     "Rainbow Ring": {
         "Name": "Rainbow Ring",
         "Price": 900,
-        "Icon": "<:ring:>",
+        "Icon": "<:Rainbow_Ring:569854314122706964>",
         "ItemType": "Ring",
         "IsEquippable": true,
         "IsArtifact": true,
-        "ChanceToActivate": 25,
-        "ChanceToBreak": 10,
+        "GrantsUnleash": true,
         "Unleash": {
             "effectImages": [
                 {
                     "id": "Condition",
-                    "args": [ "Delusion", "100" ]
+                    "args": [ "Delusion", "40" ]
                 }
             ]
         }
-    }
+    },
     "Zol Ring": {
         "Name": "Zol Ring",
         "Price": 2500,
-        "Icon": "<:ring:>",
+        "Icon": ":ring:",
         "ItemType": "Ring",
         "IsEquippable": true,
         "IsArtifact": true,
@@ -4594,7 +4574,7 @@
     "Lady Moon's Ring": {
         "Name": "Lady Moon's Ring",
         "Price": 3300,
-        "Icon": "<:ring:>",
+        "Icon": ":ring:",
         "ItemType": "Ring",
         "IsEquippable": true,
         "IsArtifact": true,
@@ -4611,7 +4591,7 @@
     "Lord Sun's Ring": {
         "Name": "Lord Sun's Ring",
         "Price": 4900,
-        "Icon": "<:ring:>",
+        "Icon": ":ring:",
         "ItemType": "Ring",
         "IsEquippable": true,
         "IsArtifact": true,

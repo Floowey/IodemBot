@@ -23,6 +23,11 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 int.TryParse(args[1], out prob);
                 init(args[0], prob);
             }
+            else if (args.Length == 1)
+            {
+                int prob = 10;
+                init(args[0], prob);
+            }
             else
             {
                 throw new ArgumentException("Condition, probability");
