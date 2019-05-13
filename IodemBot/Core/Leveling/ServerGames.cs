@@ -69,16 +69,16 @@ namespace IodemBot.Core.Leveling
         internal static async Task UserWonRPS(SocketGuildUser user, SocketTextChannel channel)
         {
             var userAccount = UserAccounts.GetAccount(user);
-            userAccount.ServerStats.rpsWins++;
-            userAccount.ServerStats.rpsStreak++;
+            userAccount.ServerStats.RpsWins++;
+            userAccount.ServerStats.RpsStreak++;
             UserAccounts.SaveAccounts();
 
-            if (userAccount.ServerStats.rpsStreak == 4)
+            if (userAccount.ServerStats.RpsStreak == 4)
             {
                 await GoldenSun.AwardClassSeries("Air Seer Series", user, channel);
             }
 
-            if (userAccount.ServerStats.rpsWins == 15)
+            if (userAccount.ServerStats.RpsWins == 15)
             {
                 await GoldenSun.AwardClassSeries("Aqua Seer Series", user, channel);
             }
@@ -87,7 +87,7 @@ namespace IodemBot.Core.Leveling
         internal static void UserDidNotWinRPS(SocketGuildUser user)
         {
             var userAccount = UserAccounts.GetAccount(user);
-            userAccount.ServerStats.rpsStreak = 0;
+            userAccount.ServerStats.RpsStreak = 0;
             UserAccounts.SaveAccounts();
         }
 
@@ -96,7 +96,7 @@ namespace IodemBot.Core.Leveling
             uint oldLevel = userAccount.LevelNumber;
             var xpawarded = (uint)(new Random()).Next(20, 40) * Math.Min(3, (uint)Math.Pow(((int)diff + 1), 2));
             userAccount.XP += xpawarded;
-            userAccount.inv.AddBalance(xpawarded / 2);
+            userAccount.Inv.AddBalance(xpawarded / 2);
             uint newLevel = userAccount.LevelNumber;
 
             userAccount.ServerStats.ColossoWins++;
@@ -107,10 +107,10 @@ namespace IodemBot.Core.Leveling
             userAccount.BattleStats += battleStats;
             var bs = userAccount.BattleStats;
 
-            if (Global.random.Next(0, 100) <= 7 + battleStats.totalTeamMates * 2)
+            if (Global.Random.Next(0, 100) <= 7 + battleStats.TotalTeamMates * 2)
             {
-                ChestQuality awardedChest = getRandomChest(diff);
-                userAccount.inv.AwardChest(awardedChest);
+                ChestQuality awardedChest = GetRandomChest(diff);
+                userAccount.Inv.AwardChest(awardedChest);
                 var embed = new EmbedBuilder();
                 embed.WithColor(Colors.get("Iodem"));
                 embed.WithDescription($"{((SocketTextChannel)battleChannel).Users.Where(u => u.Id == userAccount.ID).FirstOrDefault().Mention} found a {Inventory.ChestIcons[awardedChest]} {awardedChest} Chest!");
@@ -122,22 +122,22 @@ namespace IodemBot.Core.Leveling
                 await GoldenSun.AwardClassSeries("Brute Series", userAccount, (SocketTextChannel)battleChannel);
             }
 
-            if (bs.killsByHand >= 161)
+            if (bs.KillsByHand >= 161)
             {
                 await GoldenSun.AwardClassSeries("Samurai Series", userAccount, (SocketTextChannel)battleChannel);
             }
 
-            if (bs.damageDealt >= 666666)
+            if (bs.DamageDealt >= 666666)
             {
                 await GoldenSun.AwardClassSeries("Ninja Series", userAccount, (SocketTextChannel)battleChannel);
             }
 
-            if (bs.soloBattles >= 50)
+            if (bs.SoloBattles >= 50)
             {
                 await GoldenSun.AwardClassSeries("Ranger Series", userAccount, (SocketTextChannel)battleChannel);
             }
 
-            if (bs.totalTeamMates >= 100)
+            if (bs.TotalTeamMates >= 100)
             {
                 await GoldenSun.AwardClassSeries("Dragoon Series", userAccount, (SocketTextChannel)battleChannel);
             }
@@ -147,7 +147,7 @@ namespace IodemBot.Core.Leveling
                 await GoldenSun.AwardClassSeries("White Mage Series", userAccount, (SocketTextChannel)battleChannel);
             }
 
-            if (bs.revives >= 50)
+            if (bs.Revives >= 50)
             {
                 await GoldenSun.AwardClassSeries("Medium Series", userAccount, (SocketTextChannel)battleChannel);
             }
@@ -162,38 +162,38 @@ namespace IodemBot.Core.Leveling
             await Task.CompletedTask;
         }
 
-        private static ChestQuality getRandomChest(BattleDifficulty diff)
+        private static ChestQuality GetRandomChest(BattleDifficulty diff)
         {
             ChestQuality[] chests;
             switch (diff)
             {
                 case BattleDifficulty.Tutorial:
                     chests = new ChestQuality[] { ChestQuality.Wooden };
-                    return chests[Global.random.Next(0, chests.Length)];
+                    return chests[Global.Random.Next(0, chests.Length)];
 
                 case BattleDifficulty.Easy:
                 default:
                     chests = new ChestQuality[] { ChestQuality.Wooden, ChestQuality.Wooden, ChestQuality.Normal, ChestQuality.Normal, ChestQuality.Normal, ChestQuality.Normal, ChestQuality.Normal, ChestQuality.Silver };
-                    return chests[Global.random.Next(0, chests.Length)];
+                    return chests[Global.Random.Next(0, chests.Length)];
 
                 case BattleDifficulty.Medium:
                     chests = new ChestQuality[] { ChestQuality.Wooden, ChestQuality.Normal, ChestQuality.Normal, ChestQuality.Silver, ChestQuality.Silver, ChestQuality.Silver };
-                    return chests[Global.random.Next(0, chests.Length)];
+                    return chests[Global.Random.Next(0, chests.Length)];
 
                 case BattleDifficulty.MediumRare:
                     chests = new ChestQuality[] { ChestQuality.Normal, ChestQuality.Silver, ChestQuality.Silver, ChestQuality.Silver, ChestQuality.Gold };
-                    return chests[Global.random.Next(0, chests.Length)];
+                    return chests[Global.Random.Next(0, chests.Length)];
 
                 case BattleDifficulty.Hard:
                     chests = new ChestQuality[] { ChestQuality.Silver, ChestQuality.Gold, ChestQuality.Gold, ChestQuality.Gold, ChestQuality.Gold, ChestQuality.Adept };
-                    return chests[Global.random.Next(0, chests.Length)];
+                    return chests[Global.Random.Next(0, chests.Length)];
             }
         }
 
         internal static async Task UserHasCursed(SocketGuildUser user, SocketTextChannel channel)
         {
             var userAccount = UserAccounts.GetAccount(user);
-            if (userAccount.ServerStats.hasQuotedMatthew && userAccount.ServerStats.hasWrittenCurse)
+            if (userAccount.ServerStats.HasQuotedMatthew && userAccount.ServerStats.HasWrittenCurse)
             {
                 await GoldenSun.AwardClassSeries("Curse Mage Series", user, channel);
             }
@@ -220,10 +220,10 @@ namespace IodemBot.Core.Leveling
         internal static async Task UserLookedUpPsynergy(SocketGuildUser user, SocketTextChannel channel)
         {
             var userAccount = UserAccounts.GetAccount(user);
-            userAccount.ServerStats.lookedUpInformation++;
+            userAccount.ServerStats.LookedUpInformation++;
             UserAccounts.SaveAccounts();
 
-            if (userAccount.ServerStats.lookedUpInformation >= 21)
+            if (userAccount.ServerStats.LookedUpInformation >= 21)
             {
                 await GoldenSun.AwardClassSeries("Apprentice Series", user, channel);
             }
@@ -232,10 +232,10 @@ namespace IodemBot.Core.Leveling
         internal static async Task UserLookedUpClass(SocketGuildUser user, SocketTextChannel channel)
         {
             var userAccount = UserAccounts.GetAccount(user);
-            userAccount.ServerStats.lookedUpClass++;
+            userAccount.ServerStats.LookedUpClass++;
             UserAccounts.SaveAccounts();
 
-            if (userAccount.ServerStats.lookedUpClass >= 21)
+            if (userAccount.ServerStats.LookedUpClass >= 21)
             {
                 await GoldenSun.AwardClassSeries("Page Series", user, channel);
             }

@@ -9,7 +9,7 @@ namespace IodemBot.Modules.ColossoBattles
     public class PlayerFighter : ColossoFighter
     {
         public UserAccount avatar;
-        private SocketGuildUser guildUser;
+        private readonly SocketGuildUser guildUser;
 
         private static Stats baseStats = new Stats(30, 20, 11, 6, 8); //30, 20, 11, 6, 8
         public BattleStats battleStats = new BattleStats();
@@ -18,19 +18,19 @@ namespace IodemBot.Modules.ColossoBattles
 
         public PlayerFighter(SocketGuildUser user) : base(user.DisplayName(), user.GetAvatarUrl(),
             ModifyStats(user),
-            AdeptClassSeriesManager.getElStats(UserAccounts.GetAccount(user)),
-            AdeptClassSeriesManager.getMoveset(UserAccounts.GetAccount(user)))
+            AdeptClassSeriesManager.GetElStats(UserAccounts.GetAccount(user)),
+            AdeptClassSeriesManager.GetMoveset(UserAccounts.GetAccount(user)))
         {
             avatar = UserAccounts.GetAccount(user);
             guildUser = user;
 
-            var classSeries = AdeptClassSeriesManager.getClassSeries(avatar);
-            var gear = avatar.inv.GetGear(classSeries.archtype);
+            var classSeries = AdeptClassSeriesManager.GetClassSeries(avatar);
+            var gear = avatar.Inv.GetGear(classSeries.Archtype);
             gear.ForEach(g =>
             {
                 HPrecovery += g.HPRegen;
                 PPrecovery += g.PPRegen;
-                unleashRate += g.increaseUnleashRate;
+                unleashRate += g.IncreaseUnleashRate;
                 if (g.IsCursed)
                 {
                     AddCondition(Condition.ItemCurse);
@@ -50,7 +50,7 @@ namespace IodemBot.Modules.ColossoBattles
                 {
                     if (g.GrantsUnleash)
                     {
-                        Weapon.unleash.effects.AddRange(g.unleash.effects);
+                        Weapon.Unleash.Effects.AddRange(g.Unleash.Effects);
                     }
                     else
                     {
@@ -63,19 +63,19 @@ namespace IodemBot.Modules.ColossoBattles
         private static Stats ModifyStats(SocketGuildUser user)
         {
             var avatar = UserAccounts.GetAccount(user);
-            var classSeries = AdeptClassSeriesManager.getClassSeries(avatar);
-            var adept = AdeptClassSeriesManager.getClass(avatar);
-            var multipliers = adept.statMultipliers;
+            var classSeries = AdeptClassSeriesManager.GetClassSeries(avatar);
+            var adept = AdeptClassSeriesManager.GetClass(avatar);
+            var multipliers = adept.StatMultipliers;
             var level = avatar.LevelNumber;
 
             var actualStats = new Stats(
-                (int)((baseStats.maxHP + baseStats.maxHP * 0.25 * level / 1.5) * multipliers.maxHP / 100),
-                (int)((baseStats.maxPP + baseStats.maxPP * 0.115 * level / 1.5) * multipliers.maxPP / 100),
+                (int)((baseStats.MaxHP + baseStats.MaxHP * 0.25 * level / 1.5) * multipliers.MaxHP / 100),
+                (int)((baseStats.MaxPP + baseStats.MaxPP * 0.115 * level / 1.5) * multipliers.MaxPP / 100),
                 (int)((baseStats.Atk + baseStats.Atk * 0.3 * level / 1.5) * multipliers.Atk / 100),
                 (int)((baseStats.Def + baseStats.Def * 0.3 * level / 1.5) * multipliers.Def / 100),
                 (int)((baseStats.Spd + baseStats.Spd * 0.5 * level / 1.5) * multipliers.Spd / 100));
 
-            var gear = avatar.inv.GetGear(classSeries.archtype);
+            var gear = avatar.Inv.GetGear(classSeries.Archtype);
             gear.ForEach(g =>
             {
                 actualStats += g.AddStatsOnEquip;

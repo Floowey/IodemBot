@@ -74,7 +74,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         protected virtual int InternalChooseBestTarget(List<ColossoFighter> targets)
         {
-            return Global.random.Next(0, targets.Count);
+            return Global.Random.Next(0, targets.Count);
         }
 
         internal int ChooseBestTarget(List<ColossoFighter> targets)
@@ -95,7 +95,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
     public struct EffectImage
     {
-        public string id { get; set; }
-        public string[] args { get; set; }
+        public string Id { get; set; }
+        public string[] Args { get; set; }
     }
 }

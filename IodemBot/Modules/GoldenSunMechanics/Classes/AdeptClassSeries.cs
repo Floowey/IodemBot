@@ -11,45 +11,47 @@ namespace IodemBot.Modules.GoldenSunMechanics
     internal class AdeptClassSeries
     {
         public static Dictionary<string, IRequirement> DictReq;
-        public string name { get; set; }
-        public AdeptClass[] classes { get; set; }
-        public Element[] elements { get; set; }
-        public ElementalStats elstats { get; set; }
-        public string requirement { get; set; }
-        public bool isDefault { get; set; }
-        public string description { get; set; }
+        public string Name { get; set; }
+        public AdeptClass[] Classes { get; set; }
+        public Element[] Elements { get; set; }
+        public ElementalStats Elstats { get; set; }
+        public string Requirement { get; set; }
+        public bool IsDefault { get; set; }
+        public string Description { get; set; }
 
         [JsonConverter(typeof(StringEnumConverter))]
-        public ArchType archtype { get; set; }
+        public ArchType Archtype { get; set; }
 
-        public AdeptClass getClass(UserAccount User)
+        public AdeptClass GetClass(UserAccount User)
         {
             int classNr;
             try
             {
-                classNr = Math.Min(classes.Length - 1, DictReq[requirement].apply(User));
+                classNr = Math.Min(Classes.Length - 1, DictReq[Requirement].apply(User));
             }
             catch
             {
                 classNr = 0;
             }
-            return classes[classNr];
+            return Classes[classNr];
         }
 
         static AdeptClassSeries()
         {
-            DictReq = new Dictionary<string, IRequirement>();
-            DictReq.Add("Level", new LevelRequirement());
-            DictReq.Add("ColossoWins", new ColossoWinRequirement());
-            DictReq.Add("CommandUses", new CommandRequirement());
-            DictReq.Add("Damage", new DamageRequirement());
-            DictReq.Add("Heals", new HealRequirement());
-            DictReq.Add("Revives", new ReviveRequirement());
-            DictReq.Add("KillsByHand", new KillsByHandRequirement());
-            DictReq.Add("SoloBattles", new SoloBattleRequirement());
-            DictReq.Add("Teammates", new TeammatesRequirement());
-            DictReq.Add("DaysActive", new DaysActiveRequirement());
-            DictReq.Add("UnlockedClasses", new UnlockedClassesRequirement());
+            DictReq = new Dictionary<string, IRequirement>
+            {
+                { "Level", new LevelRequirement() },
+                { "ColossoWins", new ColossoWinRequirement() },
+                { "CommandUses", new CommandRequirement() },
+                { "Damage", new DamageRequirement() },
+                { "Heals", new HealRequirement() },
+                { "Revives", new ReviveRequirement() },
+                { "KillsByHand", new KillsByHandRequirement() },
+                { "SoloBattles", new SoloBattleRequirement() },
+                { "Teammates", new TeammatesRequirement() },
+                { "DaysActive", new DaysActiveRequirement() },
+                { "UnlockedClasses", new UnlockedClassesRequirement() }
+            };
         }
 
         // Apprentice:       21 i!psy lookups | Level

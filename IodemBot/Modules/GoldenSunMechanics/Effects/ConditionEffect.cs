@@ -12,21 +12,20 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public ConditionEffect(string stringCondition, int probability)
         {
-            init(stringCondition, probability);
+            Init(stringCondition, probability);
         }
 
         public ConditionEffect(params string[] args)
         {
             if (args.Length == 2)
             {
-                int prob = 10;
-                int.TryParse(args[1], out prob);
-                init(args[0], prob);
+                int.TryParse(args[1], out int prob);
+                Init(args[0], prob);
             }
             else if (args.Length == 1)
             {
                 int prob = 10;
-                init(args[0], prob);
+                Init(args[0], prob);
             }
             else
             {
@@ -39,7 +38,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             return $"{(Probability != 100 ? $"{Probability}% chance to apply" : "Apply")} {Cond}.";
         }
 
-        private void init(string stringCondition, int probability)
+        private void Init(string stringCondition, int probability)
         {
             Probability = probability;
             if (!Enum.TryParse<Condition>(stringCondition, out Cond))
@@ -51,12 +50,12 @@ namespace IodemBot.Modules.GoldenSunMechanics
         protected override int InternalChooseBestTarget(List<ColossoFighter> targets)
         {
             var unaffectedEnemies = targets.Where(s => !s.HasCondition(Cond)).ToList();
-            return targets.IndexOf(unaffectedEnemies[Global.random.Next(0, unaffectedEnemies.Count)]);
+            return targets.IndexOf(unaffectedEnemies[Global.Random.Next(0, unaffectedEnemies.Count)]);
         }
 
         protected override bool InternalValidSelection(ColossoFighter user)
         {
-            return !user.getEnemies().All(s => s.HasCondition(Cond));
+            return !user.GetEnemies().All(s => s.HasCondition(Cond));
         }
 
         public override List<string> Apply(ColossoFighter User, ColossoFighter Target)
@@ -72,7 +71,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 return log;
             }
 
-            if (Global.random.Next(1, 100) <= Probability)
+            if (Global.Random.Next(1, 100) <= Probability)
             {
                 Target.AddCondition(Cond);
                 log.Add($"{Target.name} gets hit with {Cond.ToString()}!");

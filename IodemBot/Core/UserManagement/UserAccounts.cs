@@ -8,7 +8,7 @@ namespace IodemBot.Core.UserManagement
     public static class UserAccounts
     {
         private static List<UserAccount> accounts;
-        private static string accountsFile = "Resources/accounts.json";
+        private static readonly string accountsFile = "Resources/accounts.json";
 
         static UserAccounts()
         {

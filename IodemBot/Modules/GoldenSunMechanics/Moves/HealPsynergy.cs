@@ -36,33 +36,33 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 return;
             }
 
-            var aliveFriends = User.getTeam().Where(f => f.IsAlive()).ToList();
+            var aliveFriends = User.GetTeam().Where(f => f.IsAlive()).ToList();
             if (aliveFriends.Count == 0)
             {
                 targetNr = 0;
                 return;
             }
 
-            aliveFriends = aliveFriends.OrderBy(s => s.stats.HP / s.stats.maxHP).ThenBy(s => s.stats.HP).ToList();
-            targetNr = User.getTeam().IndexOf(aliveFriends.First());
+            aliveFriends = aliveFriends.OrderBy(s => s.stats.HP / s.stats.MaxHP).ThenBy(s => s.stats.HP).ToList();
+            targetNr = User.GetTeam().IndexOf(aliveFriends.First());
         }
 
         public override bool InternalValidSelection(ColossoFighter User)
         {
             return (User.stats.PP >= PPCost && (User.battle.turn == 1 ||
-                User.getTeam().Any(f => f.IsAlive() && (100 * f.stats.HP) / f.stats.maxHP < 85)));
+                User.GetTeam().Any(f => f.IsAlive() && (100 * f.stats.HP) / f.stats.MaxHP < 85)));
         }
 
         protected override List<string> InternalUse(ColossoFighter User)
         {
             List<string> log = new List<string>();
             int Power = User.elstats.GetPower(element);
-            List<ColossoFighter> targets = getTarget(User);
+            List<ColossoFighter> targets = GetTarget(User);
 
             foreach (var p in targets)
             {
-                var HPtoHeal = (uint)(healPower * Power / 100 + p.stats.maxHP * percentage / 100);
-                log.AddRange(p.heal(HPtoHeal));
+                var HPtoHeal = (uint)(healPower * Power / 100 + p.stats.MaxHP * percentage / 100);
+                log.AddRange(p.Heal(HPtoHeal));
                 if (User is PlayerFighter)
                 {
                     ((PlayerFighter)User).battleStats.HPhealed += HPtoHeal;

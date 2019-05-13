@@ -5,12 +5,12 @@ namespace IodemBot.Modules.GoldenSunMechanics
 {
     internal class MayIgnoreDefenseEffect : IEffect
     {
-        private int ignorePercent = 20;
-        private int probability = 10;
+        private readonly int ignorePercent = 20;
+        private readonly int probability = 10;
 
         public override List<string> Apply(ColossoFighter User, ColossoFighter Target)
         {
-            if (Global.random.Next(1, 100) <= probability)
+            if (Global.Random.Next(1, 100) <= probability)
             {
                 Target.ignoreDefense = (1 - ignorePercent / 100);
             }

@@ -5,7 +5,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 {
     internal class ReduceDamageEffect : IEffect
     {
-        private int damageReduction = 0;
+        private readonly int damageReduction = 0;
 
         public override List<string> Apply(ColossoFighter User, ColossoFighter Target)
         {

@@ -1,5 +1,6 @@
 ﻿using Discord;
 using Discord.Commands;
+using Discord.WebSocket;
 using IodemBot.Core.UserManagement;
 using System;
 using System.Linq;
@@ -12,7 +13,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         [Command("Inv"), Alias("Inventory", "Bag")]
         public async Task ShowInventory(bool detailed = false)
         {
-            var inv = UserAccounts.GetAccount(Context.User).inv;
+            var inv = UserAccounts.GetAccount(Context.User).Inv;
             var embed = new EmbedBuilder();
 
             embed.AddField("Warrior Gear", inv.GearToString(ArchType.Warrior), true);
@@ -28,9 +29,9 @@ namespace IodemBot.Modules.GoldenSunMechanics
             {
                 embed.AddField("Inventory", invstring);
             }
-            if (inv.getChestsToString().Length > 0)
+            if (inv.GetChestsToString().Length > 0)
             {
-                embed.AddField("Chests:", inv.getChestsToString());
+                embed.AddField("Chests:", inv.GetChestsToString());
             }
 
             var fb = new EmbedFooterBuilder();
@@ -43,7 +44,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         [Command("Shop")]
         public async Task Shop()
         {
-            var inv = UserAccounts.GetAccount(Context.User).inv;
+            var inv = UserAccounts.GetAccount(Context.User).Inv;
             var shop = ItemDatabase.GetShop();
             var embed = new EmbedBuilder();
             embed.WithColor(new Color(200, 200, 50));
@@ -62,7 +63,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         [Command("Buy")]
         public async Task AddItem([Remainder] string item)
         {
-            var inv = UserAccounts.GetAccount(Context.User).inv;
+            var inv = UserAccounts.GetAccount(Context.User).Inv;
             var shop = ItemDatabase.GetShop();
             if (!shop.HasItem(item))
             {
@@ -71,7 +72,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
             if (inv.Buy(item))
             {
-                ShowInventory();
+                _ = ShowInventory();
             }
             else
             {
@@ -84,12 +85,12 @@ namespace IodemBot.Modules.GoldenSunMechanics
         [Command("Sell")]
         public async Task SellItem([Remainder] string item)
         {
-            var inv = UserAccounts.GetAccount(Context.User).inv;
+            var inv = UserAccounts.GetAccount(Context.User).Inv;
             var embed = new EmbedBuilder();
             if (inv.Sell(item))
             {
                 var it = ItemDatabase.GetItem(item);
-                embed.WithDescription($"Sold {it.Name} for {it.sellValue}.");
+                embed.WithDescription($"Sold {it.Name} for {it.SellValue}.");
                 await Context.Channel.SendMessageAsync("", false, embed.Build());
             }
             else
@@ -100,22 +101,24 @@ namespace IodemBot.Modules.GoldenSunMechanics
         }
 
         [Command("GiveChest")]
-        public async Task GiveChest(ChestQuality cq)
+        public async Task GiveChest(ChestQuality cq, SocketUser user = null)
         {
-            var inv = UserAccounts.GetAccount(Context.User).inv;
+            var inv = UserAccounts.GetAccount(user ?? Context.User).Inv;
             inv.AwardChest(cq);
+            await Task.CompletedTask;
         }
 
         [Command("Chest")]
         public async Task OpenChest(ChestQuality cq, uint bonusCount = 0)
         {
             _ = OpenChestAsync(Context, cq, bonusCount);
+            await Task.CompletedTask;
         }
 
         private async Task OpenChestAsync(SocketCommandContext Context, ChestQuality cq, uint bonusCount = 0)
         {
             var user = UserAccounts.GetAccount(Context.User);
-            var inv = user.inv;
+            var inv = user.Inv;
 
             if (!inv.RemoveBalance(bonusCount))
             {
@@ -127,7 +130,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 return;
             }
 
-            if (inv.isFull)
+            if (inv.IsFull)
             {
                 var emb = new EmbedBuilder();
                 emb.WithDescription("Inventory capacity reached!");
@@ -161,48 +164,53 @@ namespace IodemBot.Modules.GoldenSunMechanics
         [Command("Inv Clear")]
         public async Task ClearInventory()
         {
-            var inv = UserAccounts.GetAccount(Context.User).inv;
+            var inv = UserAccounts.GetAccount(Context.User).Inv;
             inv.Clear();
+            await Task.CompletedTask;
         }
 
         [Command("Inv Sort")]
         public async Task SortInventory()
         {
-            var inv = UserAccounts.GetAccount(Context.User).inv;
+            var inv = UserAccounts.GetAccount(Context.User).Inv;
             inv.Sort();
-            ShowInventory();
+            _ = ShowInventory();
+            await Task.CompletedTask;
         }
 
         [Command("Equip")]
         public async Task Equip(ArchType archType, [Remainder] string item)
         {
             var account = UserAccounts.GetAccount(Context.User);
-            var inv = account.inv;
+            var inv = account.Inv;
             var selectedItem = ItemDatabase.GetItem(item);
-            if (selectedItem.ExclusiveTo == null || (selectedItem.ExclusiveTo != null && selectedItem.ExclusiveTo.Contains(account.element)))
+            if (selectedItem.ExclusiveTo == null || (selectedItem.ExclusiveTo != null && selectedItem.ExclusiveTo.Contains(account.Element)))
             {
                 if (inv.Equip(item, archType))
                 {
-                    ShowInventory();
+                    _ = ShowInventory();
                 }
             }
+            await Task.CompletedTask;
         }
 
         [Command("Unequip")]
         public async Task Unequip([Remainder] string item)
         {
-            var inv = UserAccounts.GetAccount(Context.User).inv;
+            var inv = UserAccounts.GetAccount(Context.User).Inv;
             if (inv.Unequip(item))
             {
-                ShowInventory();
+                _ = ShowInventory();
             }
+            await Task.CompletedTask;
         }
 
         [Command("removeCursed")]
         public async Task RemoveCursed()
         {
-            var inv = UserAccounts.GetAccount(Context.User).inv;
+            var inv = UserAccounts.GetAccount(Context.User).Inv;
             inv.RemoveCursedEquipment();
+            await Task.CompletedTask;
         }
     }
 }

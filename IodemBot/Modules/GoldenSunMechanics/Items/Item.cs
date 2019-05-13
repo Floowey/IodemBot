@@ -36,7 +36,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public uint Price { get; set; }
 
         [JsonIgnore]
-        public uint sellValue { get { return Price / 2; } }
+        public uint SellValue { get { return Price / 2; } }
 
         [JsonConverter(typeof(StringEnumConverter))]
         public ItemType ItemType { get; set; }
@@ -47,18 +47,18 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public bool IsUsable { get; set; } = false;
         public bool IsArtifact { get; set; } = false;
 
-        public int increaseUnleashRate { get; set; }
+        public int IncreaseUnleashRate { get; set; }
 
         [DefaultValue(100)]
         public int ChanceToActivate { get; set; } = 80;
 
         public int ChanceToBreak { get; set; } = 100;
 
-        public bool isBroken { get; set; }
+        public bool IsBroken { get; set; }
 
-        public bool IsUnleashable { get { return unleash != null; } }
+        public bool IsUnleashable { get { return Unleash != null; } }
         public bool GrantsUnleash { get; set; }
-        public Unleash unleash { get; set; }
+        public Unleash Unleash { get; set; }
 
         [DefaultValue(Element.none)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
@@ -149,14 +149,14 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 various.Add($"PP Regen: {PPRegen}");
             }
 
-            if (increaseUnleashRate > 0)
+            if (IncreaseUnleashRate > 0)
             {
                 various.Add($"Increases Unleashrate");
             }
 
             if (IsUnleashable)
             {
-                various.Add($"{(IsWeapon ? "" : $"{(GrantsUnleash ? "Adds an additional Effect to your Artifacts Unleash: " : "Targets the User with an Effect: ")}")}{unleash.ToString()}");
+                various.Add($"{(IsWeapon ? "" : $"{(GrantsUnleash ? "Adds an additional Effect to your Artifacts Unleash: " : "Targets the User with an Effect: ")}")}{Unleash.ToString()}");
             }
 
             if (CuresCurse)
@@ -185,16 +185,16 @@ namespace IodemBot.Modules.GoldenSunMechanics
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public int UnleashRate { get; set; }
 
-        [JsonIgnore] public List<IEffect> effects { get; set; }
-        public List<EffectImage> effectImages { get; set; }
+        [JsonIgnore] public List<IEffect> Effects { get; set; }
+        public List<EffectImage> EffectImages { get; set; }
 
         public Unleash(List<EffectImage> effectImages)
         {
-            this.effects = new List<IEffect>();
-            this.effectImages = effectImages;
+            this.Effects = new List<IEffect>();
+            this.EffectImages = effectImages;
             if (effectImages != null)
             {
-                effectImages.ForEach(e => effects.Add(IEffect.EffectFactory(e.id, e.args)));
+                effectImages.ForEach(e => Effects.Add(IEffect.EffectFactory(e.Id, e.Args)));
             }
         }
 
@@ -206,7 +206,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 s.Append(UnleashName);
             }
 
-            if (effects.Count > 0)
+            if (Effects.Count > 0)
             {
                 if (UnleashName != null)
                 {
@@ -217,7 +217,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 {
                     s.Append(GoldenSun.ElementIcons[UnleashAlignment]);
                 }
-                s.Append(string.Join(", ", effects.Select(e => $"{e.ToString()}")));
+                s.Append(string.Join(", ", Effects.Select(e => $"{e.ToString()}")));
                 if (UnleashName != null)
                 {
                     s.Append(")");

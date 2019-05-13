@@ -5,15 +5,15 @@ namespace IodemBot.Modules.GoldenSunMechanics
 {
     internal class PPDrainEffect : IEffect
     {
-        private uint percentage = 20;
-        private uint probability = 100;
+        private readonly uint percentage = 20;
+        private readonly uint probability = 100;
 
         public override List<string> Apply(ColossoFighter User, ColossoFighter Target)
         {
-            if (Global.random.Next(0, 100) <= probability)
+            if (Global.Random.Next(0, 100) <= probability)
             {
                 uint recovery = User.damageDoneThisTurn * percentage / 100;
-                return User.restorePP(recovery);
+                return User.RestorePP(recovery);
             }
             return new List<string>();
         }

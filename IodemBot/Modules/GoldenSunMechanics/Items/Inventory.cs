@@ -40,7 +40,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         [JsonIgnore] private List<Item> WarriorGear;
         [JsonIgnore] private List<Item> MageGear;
         [JsonIgnore] public int Count { get { return Inv.Count; } }
-        [JsonIgnore] public bool isFull { get { return Count >= MaxInvSize; } }
+        [JsonIgnore] public bool IsFull { get { return Count >= MaxInvSize; } }
         [JsonIgnore] public bool IsInitialized { get { return Inv != null; } }
 
         [JsonProperty]
@@ -137,7 +137,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             UserAccounts.SaveAccounts();
         }
 
-        public string getChestsToString()
+        public string GetChestsToString()
         {
             CheckDaily();
             List<string> s = new List<string>();
@@ -345,7 +345,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public bool Add(string item)
         {
-            if (isFull)
+            if (IsFull)
             {
                 return false;
             }
@@ -368,7 +368,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             {
                 return false;
             }
-            if (isFull)
+            if (IsFull)
             {
                 return false;
             }
@@ -408,7 +408,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             }
 
             Inv.Remove(it);
-            Coins += it.sellValue;
+            Coins += it.SellValue;
             UpdateStrings();
             return true;
         }

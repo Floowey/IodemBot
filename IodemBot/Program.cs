@@ -16,9 +16,6 @@ namespace IodemBot
 
         private static void Main(string[] args)
         {
-
-
-
             try
             {
                 new Program().StartAsync().GetAwaiter().GetResult();
@@ -95,7 +92,7 @@ namespace IodemBot
         {
             var embed = new EmbedBuilder();
             embed.WithColor(Colors.get("Iodem"));
-            embed.WithDescription(String.Format(welcomeMsg[Global.random.Next(0, welcomeMsg.Length)], user.DisplayName()));
+            embed.WithDescription(String.Format(welcomeMsg[Global.Random.Next(0, welcomeMsg.Length)], user.DisplayName()));
 
             await user.AddRoleAsync(user.Guild.Roles.Where(r => r.Id == 355560889942016000).First());
             await ((SocketTextChannel)client.GetChannel(355558866282348575)).SendMessageAsync(embed: embed.Build());

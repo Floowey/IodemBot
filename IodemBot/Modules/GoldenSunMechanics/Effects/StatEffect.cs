@@ -9,7 +9,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
     {
         private string StatToBoost;
         private double Multiplier;
-        private int probability = 100;
+        private readonly int probability = 100;
         private bool OnTarget = true;
         private int Turns = 7;
 
@@ -60,16 +60,16 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 return log;
             }
 
-            if (Global.random.Next(1, 100) <= probability)
+            if (Global.Random.Next(1, 100) <= probability)
             {
                 if (OnTarget)
                 {
-                    Target.applyBuff(new Buff(StatToBoost, Multiplier, (uint)Turns));
+                    Target.ApplyBuff(new Buff(StatToBoost, Multiplier, (uint)Turns));
                     log.Add($"{Target.name}'s {StatToBoost} {(Multiplier > 1 ? "rises" : "lowers")}.");
                 }
                 else
                 {
-                    User.applyBuff(new Buff(StatToBoost, Multiplier, (uint)Turns));
+                    User.ApplyBuff(new Buff(StatToBoost, Multiplier, (uint)Turns));
                     log.Add($"{User.name}'s {StatToBoost} {(Multiplier > 1 ? "rises" : "lowers")}.");
                 }
             }

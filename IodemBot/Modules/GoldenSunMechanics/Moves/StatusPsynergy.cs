@@ -21,7 +21,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         {
             if (effects.Count > 0)
             {
-                targetNr = effects[0].ChooseBestTarget(onEnemy ? User.getEnemies() : User.getTeam());
+                targetNr = effects[0].ChooseBestTarget(OnEnemy ? User.GetEnemies() : User.GetTeam());
             }
             else
             {
@@ -48,14 +48,14 @@ namespace IodemBot.Modules.GoldenSunMechanics
         {
             List<string> log = new List<string>();
             //Get enemies and targeted enemies
-            List<ColossoFighter> targets = getTarget(User);
+            List<ColossoFighter> targets = GetTarget(User);
 
             foreach (var t in targets)
             {
                 effects.ForEach(e => log.AddRange(e.Apply(User, t)));
                 if (User is PlayerFighter)
                 {
-                    ((PlayerFighter)User).battleStats.supported++;
+                    ((PlayerFighter)User).battleStats.Supported++;
                 }
             }
 

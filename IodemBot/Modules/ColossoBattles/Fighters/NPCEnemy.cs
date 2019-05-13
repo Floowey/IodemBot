@@ -7,31 +7,31 @@ namespace IodemBot.Modules.ColossoBattles
 {
     public class NPCEnemy : ColossoFighter
     {
-        [JsonProperty] private int extraTurns { get; set; } = 0;
-        [JsonProperty] private string[] movepool { get; set; }
+        [JsonProperty] private int ExtraTurns { get; set; } = 0;
+        [JsonProperty] private string[] Movepool { get; set; }
 
         [DefaultValue(true)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Populate)]
-        private bool hasAttack { get; set; } = true;
-        
+        private bool HasAttack { get; set; } = true;
+
         [DefaultValue(true)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Populate)]
-        private bool hasDefend { get; set; } = true;
+        private bool HasDefend { get; set; } = true;
 
         [JsonConstructor]
         public NPCEnemy(string name, string imgUrl, Stats stats, ElementalStats elstats, string[] movepool, bool hasAttack, bool hasDefend) : base(name, imgUrl, stats, elstats, PsynergyDatabase.GetMovepool(movepool, hasAttack, hasDefend))
         {
-            this.movepool = movepool;
-            this.hasAttack = hasAttack;
-            this.hasDefend = hasDefend;
+            this.Movepool = movepool;
+            this.HasAttack = hasAttack;
+            this.HasDefend = hasDefend;
         }
 
         public override List<string> ExtraTurn()
         {
             List<string> log = new List<string>();
-            for (int i = 0; i < extraTurns; i++)
+            for (int i = 0; i < ExtraTurns; i++)
             {
-                selectRandom();
+                SelectRandom();
                 log.AddRange(MainTurn());
             }
             return log;
@@ -42,7 +42,7 @@ namespace IodemBot.Modules.ColossoBattles
             List<string> log = new List<string>();
             if (IsAlive())
             {
-                selectRandom();
+                SelectRandom();
             }
             else
             {

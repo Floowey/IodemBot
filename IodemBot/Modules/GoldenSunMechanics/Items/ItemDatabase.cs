@@ -11,7 +11,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         private static Dictionary<string, Item> itemsDatabase = new Dictionary<string, Item>(StringComparer.OrdinalIgnoreCase);
         private static Inventory shop;
         private static DateTime lastReset;
-        private static int HoursForReset = 8;
+        private static readonly int HoursForReset = 8;
 
         static ItemDatabase()
         {
@@ -85,7 +85,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             Item price = allItems.Last();
             if (it != null && it.Count() >= 5)
             {
-                price = it.Take(5).ElementAt(Global.random.Next(0, 5));
+                price = it.Take(5).ElementAt(Global.Random.Next(0, 5));
             }
 
             return price.Name;

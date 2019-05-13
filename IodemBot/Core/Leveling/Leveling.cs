@@ -24,19 +24,19 @@ namespace IodemBot.Core.Leveling
             var userAccount = UserAccounts.GetAccount(user);
 
             // if the user has a timeout, ignore them
-            var sinceLastXP = DateTime.UtcNow - userAccount.lastXP;
+            var sinceLastXP = DateTime.UtcNow - userAccount.LastXP;
             uint oldLevel = userAccount.LevelNumber;
 
             if (sinceLastXP.Minutes >= 2)
             {
-                userAccount.lastXP = DateTime.UtcNow;
+                userAccount.LastXP = DateTime.UtcNow;
                 userAccount.XP += (uint)(new Random()).Next(30, 60);
             }
 
-            if ((DateTime.Now.Date != userAccount.ServerStats.lastDayActive.Date))
+            if ((DateTime.Now.Date != userAccount.ServerStats.LastDayActive.Date))
             {
-                userAccount.ServerStats.uniqueDaysActive++;
-                userAccount.ServerStats.lastDayActive = DateTime.Now.Date;
+                userAccount.ServerStats.UniqueDaysActive++;
+                userAccount.ServerStats.LastDayActive = DateTime.Now.Date;
 
                 if ((DateTime.Now - user.JoinedAt).Value.TotalDays > 30)
                 {
@@ -44,20 +44,20 @@ namespace IodemBot.Core.Leveling
                 }
             }
 
-            if (channel.Id != userAccount.ServerStats.mostRecentChannel)
+            if (channel.Id != userAccount.ServerStats.MostRecentChannel)
             {
-                userAccount.ServerStats.mostRecentChannel = channel.Id;
-                userAccount.ServerStats.channelSwitches += 2;
-                if (userAccount.ServerStats.channelSwitches >= 14)
+                userAccount.ServerStats.MostRecentChannel = channel.Id;
+                userAccount.ServerStats.ChannelSwitches += 2;
+                if (userAccount.ServerStats.ChannelSwitches >= 14)
                 {
                     await GoldenSun.AwardClassSeries("Air Pilgrim Series", user, channel);
                 }
             }
             else
             {
-                if (userAccount.ServerStats.channelSwitches > 0)
+                if (userAccount.ServerStats.ChannelSwitches > 0)
                 {
-                    userAccount.ServerStats.channelSwitches--;
+                    userAccount.ServerStats.ChannelSwitches--;
                 }
             }
 
@@ -93,9 +93,9 @@ namespace IodemBot.Core.Leveling
             }
             // the user leveled up
             var embed = new EmbedBuilder();
-            embed.WithColor(Colors.get(userAccount.element.ToString()));
+            embed.WithColor(Colors.get(userAccount.Element.ToString()));
             embed.WithTitle("LEVEL UP!");
-            embed.WithDescription("<:Up_Arrow:571309108289077258> " + userAccount.gsClass + " " + user.Mention + " just leveled up!");
+            embed.WithDescription("<:Up_Arrow:571309108289077258> " + userAccount.GsClass + " " + user.Mention + " just leveled up!");
             embed.AddField("LEVEL", userAccount.LevelNumber, true);
             embed.AddField("XP", userAccount.XP, true);
             await channel.SendMessageAsync("", embed: embed.Build());
@@ -114,14 +114,14 @@ namespace IodemBot.Core.Leveling
             }
 
             var userAccount = UserAccounts.GetAccount(user);
-            if (reaction.MessageId == userAccount.ServerStats.mostRecentChannel)
+            if (reaction.MessageId == userAccount.ServerStats.MostRecentChannel)
             {
                 userAccount.ServerStats.ReactionsAdded++;
             }
             else
             {
                 userAccount.ServerStats.ReactionsAdded += 5;
-                userAccount.ServerStats.mostRecentChannel = reaction.MessageId;
+                userAccount.ServerStats.MostRecentChannel = reaction.MessageId;
             }
 
             if (userAccount.ServerStats.ReactionsAdded >= 50)

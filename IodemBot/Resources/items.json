@@ -2915,8 +2915,7 @@
         "AddStatsOnEquip": {
             "Def": 38
         },
-        "ChanceToActivate": 15,
-        "ChanceToBreak": 35,
+        "GrantsUnleash": true,
         "Unleash": {
             "effectImages": [
                 {
@@ -3306,8 +3305,7 @@
         "AddStatsOnEquip": {
             "Def": 30
         },
-        "ChanceToActivate": 25,
-        "ChanceToBreak": 10,
+        "GrantsUnleash": true,
         "Unleash": {
             "effectImages": [
                 {
@@ -3883,13 +3881,12 @@
         "AddStatsOnEquip": {
             "Def": 30
         },
-        "ChanceToActivate": 25,
-        "ChanceToBreak": 10,
+        "GrantsUnleash": true,
         "Unleash": {
             "effectImages": [
                 {
                     "id": "Condition",
-                    "args": [ "Delusion", "100" ]
+                    "args": [ "Delusion", "30" ]
                 }
             ]
         }

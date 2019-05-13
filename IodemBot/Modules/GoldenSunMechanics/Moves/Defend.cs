@@ -30,7 +30,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             User.defensiveMult *= 0.5;
             if (User is PlayerFighter)
             {
-                ((PlayerFighter)User).battleStats.defends++;
+                ((PlayerFighter)User).battleStats.Defends++;
             }
             return new List<string>();
         }

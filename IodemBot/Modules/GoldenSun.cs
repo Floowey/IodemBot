@@ -16,13 +16,13 @@ namespace IodemBot.Modules
 {
     public class GoldenSun : ModuleBase<SocketCommandContext>
     {
-        private enum rndElement { Venus, Mars, Jupiter, Mercury }
+        private enum RndElement { Venus, Mars, Jupiter, Mercury }
 
         internal static Dictionary<Element, string> ElementIcons = new Dictionary<Element, string>(){
-            {Element.Venus, "<:Venus_Element:573938340219584524>"},
-            { Element.Mars, "<:Mars_Element:573938340307402786>"},
-            { Element.Jupiter, "<:Jupiter_Element:573938340584488987>" },
-            { Element.Mercury, "<:Mercury_Element:573938340743872513>" }, {Element.none , ""}
+            {Psynergy.Element.Venus, "<:Venus_Element:573938340219584524>"},
+            { Psynergy.Element.Mars, "<:Mars_Element:573938340307402786>"},
+            { Psynergy.Element.Jupiter, "<:Jupiter_Element:573938340584488987>" },
+            { Psynergy.Element.Mercury, "<:Mercury_Element:573938340743872513>" }, {Psynergy.Element.none , ""}
         };
 
         //public enum Element { Venus, Mars, Jupiter, Mercury, None }
@@ -30,14 +30,14 @@ namespace IodemBot.Modules
         [Command("awardClassSeries")]
         [Remarks("Awards a given Class Series to a User")]
         [RequireUserPermission(GuildPermission.ManageGuild)]
-        public async Task awardSeries(SocketGuildUser user, [Remainder] string series)
+        public async Task AwardSeries(SocketGuildUser user, [Remainder] string series)
         {
             var account = UserAccounts.GetAccount(Context.User);
             await AwardClassSeries(series, user, (SocketTextChannel)Context.Channel);
         }
 
         [Command("classInfo")]
-        public async Task classInfo([Remainder] string name = "")
+        public async Task ClassInfo([Remainder] string name = "")
         {
             if (name == "")
             {
@@ -46,19 +46,19 @@ namespace IodemBot.Modules
 
             if (AdeptClassSeriesManager.TryGetClassSeries(name, out AdeptClassSeries series))
             {
-                AdeptClass adeptClass = series.classes.Where(c => c.name.ToUpper() == name.ToUpper()).FirstOrDefault();
+                AdeptClass adeptClass = series.Classes.Where(c => c.Name.ToUpper() == name.ToUpper()).FirstOrDefault();
                 var embed = new EmbedBuilder();
-                embed.WithAuthor($"{adeptClass.name} - {series.archtype}");
-                embed.WithColor(Colors.get(series.elements.Select(s => s.ToString()).ToArray()));
-                var relevantMoves = AdeptClassSeriesManager.getMoveset(adeptClass).Where(m => m is Psynergy).ToList().ConvertAll(m => (Psynergy)m).ConvertAll(p => $"{p.emote} {p.name} `{p.PPCost}`");
-                embed.AddField("Description", series.description ?? "-");
-                embed.AddField("Stats", adeptClass.statMultipliers, true);
-                embed.AddField("Elemental Stats", series.elstats.ToString(), true);
+                embed.WithAuthor($"{adeptClass.Name} - {series.Archtype}");
+                embed.WithColor(Colors.get(series.Elements.Select(s => s.ToString()).ToArray()));
+                var relevantMoves = AdeptClassSeriesManager.GetMoveset(adeptClass).Where(m => m is Psynergy).ToList().ConvertAll(m => (Psynergy)m).ConvertAll(p => $"{p.emote} {p.name} `{p.PPCost}`");
+                embed.AddField("Description", series.Description ?? "-");
+                embed.AddField("Stats", adeptClass.StatMultipliers, true);
+                embed.AddField("Elemental Stats", series.Elstats.ToString(), true);
                 embed.AddField("Movepool", string.Join(" - ", relevantMoves));
-                embed.AddField($"Other Classes in {series.name}", string.Join(", ", series.classes.Select(s => s.name)), true);
-                embed.AddField("Elements", string.Join(", ", series.elements.Select(e => e.ToString())), true);
+                embed.AddField($"Other Classes in {series.Name}", string.Join(", ", series.Classes.Select(s => s.Name)), true);
+                embed.AddField("Elements", string.Join(", ", series.Elements.Select(e => e.ToString())), true);
                 await Context.Channel.SendMessageAsync("", false, embed.Build());
-                ServerGames.UserLookedUpClass((SocketGuildUser)Context.User, (SocketTextChannel)Context.Channel);
+                _ = ServerGames.UserLookedUpClass((SocketGuildUser)Context.User, (SocketTextChannel)Context.Channel);
             }
             else
             {
@@ -67,7 +67,7 @@ namespace IodemBot.Modules
         }
 
         [Command("iteminfo"), Alias("item", "i")]
-        public async Task itemInfo([Remainder] string name = "")
+        public async Task ItemInfo([Remainder] string name = "")
         {
             if (name == "")
             {
@@ -88,20 +88,21 @@ namespace IodemBot.Modules
             embed.AddField("Type", item.ItemType, true);
             embed.AddField("Description", item.Summary());
 
-            Context.Channel.SendMessageAsync("", false, embed.Build());
+            _ = Context.Channel.SendMessageAsync("", false, embed.Build());
+            await Task.CompletedTask;
         }
 
         [Command("class")]
         [Remarks("Assign yourself to a class of your current element, or toggle through your available list.")]
         [Cooldown(2)]
-        public async Task classToggle([Remainder] string name = "")
+        public async Task ClassToggle([Remainder] string name = "")
         {
             var account = UserAccounts.GetAccount(Context.User);
-            setClass(account, name);
+            SetClass(account, name);
 
             var embed = new EmbedBuilder();
-            embed.WithDescription($"You are {article(account.gsClass)} {account.gsClass} now, {((SocketGuildUser)Context.User).DisplayName()}.");
-            embed.WithColor(Colors.get(account.element.ToString()));
+            embed.WithDescription($"You are {Article(account.GsClass)} {account.GsClass} now, {((SocketGuildUser)Context.User).DisplayName()}.");
+            embed.WithColor(Colors.get(account.Element.ToString()));
             //embed.WithThumbnailUrl(Sprites.get)
             await Context.Channel.SendMessageAsync("", false, embed.Build());
         }
@@ -109,7 +110,7 @@ namespace IodemBot.Modules
         [Command("element"), Alias("el")]
         [Remarks("Get your current Element or set it to one of the four with e.g. `i!element Venus`")]
         [Cooldown(5)]
-        public async Task element(Element chosenElement)
+        public async Task Element(Element chosenElement)
         {
             var embed = new EmbedBuilder();
             var account = UserAccounts.GetAccount(Context.User);
@@ -125,7 +126,7 @@ namespace IodemBot.Modules
                 return;
             }
 
-            if (chosenElement == account.element)
+            if (chosenElement == account.Element)
             {
                 return;
             }
@@ -133,25 +134,25 @@ namespace IodemBot.Modules
             await (Context.User as IGuildUser).RemoveRolesAsync(new IRole[] { venusRole, marsRole, jupiterRole, mercuryRole, exathi });
             await (Context.User as IGuildUser).AddRoleAsync(role);
 
-            foreach (string removed in account.inv.UnequipExclusiveTo(account.element))
+            foreach (string removed in account.Inv.UnequipExclusiveTo(account.Element))
             {
                 var removedEmbed = new EmbedBuilder();
                 removedEmbed.WithDescription($"<:Exclamatory:571309036473942026> Your {removed} was unequipped.");
                 await Context.Channel.SendMessageAsync("", false, removedEmbed.Build());
             }
 
-            account.element = chosenElement;
-            account.classToggle = 0;
+            account.Element = chosenElement;
+            account.ClassToggle = 0;
             UserAccounts.SaveAccounts();
             embed.WithColor(Colors.get(chosenElement.ToString()));
-            embed.WithDescription($"Welcome to the {chosenElement.ToString()} Clan, {account.gsClass} {((SocketGuildUser)Context.User).DisplayName()}!");
+            embed.WithDescription($"Welcome to the {chosenElement.ToString()} Clan, {account.GsClass} {((SocketGuildUser)Context.User).DisplayName()}!");
             await Context.Channel.SendMessageAsync("", false, embed.Build());
         }
 
         [Command("MoveInfo")]
         [Alias("Psynergy", "PsynergyInfo", "psy")]
         [Remarks("Get information on moves and psynergies")]
-        public async Task moveInfo([Remainder] string name = "")
+        public async Task MoveInfo([Remainder] string name = "")
         {
             if (name == "")
             {
@@ -183,7 +184,7 @@ namespace IodemBot.Modules
 
             embed.AddField("Effects", s);
             await Context.Channel.SendMessageAsync("", false, embed.Build());
-            ServerGames.UserLookedUpPsynergy((SocketGuildUser)Context.User, (SocketTextChannel)Context.Channel);
+            _ = ServerGames.UserLookedUpPsynergy((SocketGuildUser)Context.User, (SocketTextChannel)Context.Channel);
         }
 
         [Command("rndElement"), Alias("rndEl", "randElement")]
@@ -194,31 +195,31 @@ namespace IodemBot.Modules
             var embed = new EmbedBuilder();
             Random r = new Random();
 
-            rndElement el = (rndElement)r.Next(0, 4);
+            RndElement el = (RndElement)r.Next(0, 4);
 
             embed.WithAuthor(el.ToString());
 
             switch (el)
             {
-                case rndElement.Venus:
+                case RndElement.Venus:
                     embed.WithColor(Colors.get("Venus"));
                     embed.WithDescription(Utilities.GetAlert("ELEMENT_VENUS"));
                     embed.WithThumbnailUrl("https://archive-media-0.nyafuu.org/vp/image/1499/44/1499447315322.png");
                     break;
 
-                case rndElement.Mars:
+                case RndElement.Mars:
                     embed.WithColor(Colors.get("Mars"));
                     embed.WithDescription(Utilities.GetAlert("ELEMENT_MARS"));
                     embed.WithThumbnailUrl("https://kmsmith0613.files.wordpress.com/2013/11/mars-djinni.png");
                     break;
 
-                case rndElement.Jupiter:
+                case RndElement.Jupiter:
                     embed.WithColor(Colors.get("Jupiter"));
                     embed.WithDescription(Utilities.GetAlert("ELEMENT_JUPITER"));
                     embed.WithThumbnailUrl("https://pre00.deviantart.net/a1e1/th/pre/i/2014/186/f/7/golden_sun___jupiter_djinn_by_vercidium-d7pb4l3.png");
                     break;
 
-                case rndElement.Mercury:
+                case RndElement.Mercury:
                     embed.WithColor(Colors.get("Mercury"));
                     embed.WithDescription(Utilities.GetAlert("ELEMENT_MERCURY"));
                     embed.WithThumbnailUrl("http://thelostwaters.com/gallery/galleries/goldensun/official/MercuryDjinn.png");
@@ -233,24 +234,10 @@ namespace IodemBot.Modules
         [Command("removeClassSeries")]
         [Remarks("Remove a given Class Series from a User")]
         [RequireUserPermission(GuildPermission.ManageGuild)]
-        public async Task removeSeries(SocketGuildUser user, [Remainder] string series)
+        public async Task RemoveSeries(SocketGuildUser user, [Remainder] string series)
         {
             var account = UserAccounts.GetAccount(Context.User);
             await RemoveClassSeries(series, user, (SocketTextChannel)Context.Channel);
-        }
-
-        [Command("ship")]
-        [Remarks("Pulls two random characters and ships them. Use at your own risk.")]
-        [Cooldown(5)]
-        public async Task Ship()
-        {
-            var embed = new EmbedBuilder();
-            embed.WithColor(Colors.get("Iodem"));
-            embed.WithImageUrl(Sprites.GetRandomSprite());
-            embed.WithThumbnailUrl(Sprites.GetRandomSprite());
-            embed.AddField(":hearts:", ":hearts:");
-
-            Context.Channel.SendMessageAsync("", false, embed.Build());
         }
 
         [Command("sprite"), Alias("portrait")]
@@ -290,11 +277,11 @@ namespace IodemBot.Modules
                 return;
             }
 
-            string curClass = AdeptClassSeriesManager.getClassSeries(avatar).name;
+            string curClass = AdeptClassSeriesManager.GetClassSeries(avatar).Name;
             var list = new List<string>(avatar.BonusClasses) { series };
             list.Sort();
             avatar.BonusClasses = list.ToArray();
-            setClass(avatar, curClass);
+            SetClass(avatar, curClass);
             UserAccounts.SaveAccounts();
             var embed = new EmbedBuilder();
             embed.WithColor(Colors.get("Iodem"));
@@ -320,30 +307,30 @@ namespace IodemBot.Modules
             await channel.SendMessageAsync("", false, embed.Build());
         }
 
-        private static void setClass(UserAccount account, string name = "")
+        private static void SetClass(UserAccount account, string name = "")
         {
             if (name == "")
             {
-                account.classToggle++;
+                account.ClassToggle++;
             }
             else
             {
-                string curClass = AdeptClassSeriesManager.getClassSeries(account).name;
-                account.classToggle++;
-                while (AdeptClassSeriesManager.getClassSeries(account).name != curClass)
+                string curClass = AdeptClassSeriesManager.GetClassSeries(account).Name;
+                account.ClassToggle++;
+                while (AdeptClassSeriesManager.GetClassSeries(account).Name != curClass)
                 {
-                    if (AdeptClassSeriesManager.getClassSeries(account).name.ToLower().Contains(name.ToLower()))
+                    if (AdeptClassSeriesManager.GetClassSeries(account).Name.ToLower().Contains(name.ToLower()))
                     {
                         break;
                     }
 
-                    account.classToggle++;
+                    account.ClassToggle++;
                 }
             }
             UserAccounts.SaveAccounts();
         }
 
-        private string article(string s)
+        private string Article(string s)
         {
             s = s.ToLower();
             char c = s.ElementAt(0);
