@@ -111,9 +111,9 @@ namespace IodemBot.Modules.GoldenSunMechanics
             if (enemy.elstats.GetRes(element) == enemy.elstats.LeastRes())
             {
                 punctuation = "!!!";
-                if (User is PlayerFighter)
+                if (User is PlayerFighter p)
                 {
-                    ((PlayerFighter)User).battleStats.AttackedWeakness++;
+                    p.battleStats.AttackedWeakness++;
                 }
             }
             if (element == Psynergy.Element.none)
