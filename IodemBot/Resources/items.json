@@ -2466,12 +2466,16 @@
         "IsEquippable": true,
         "IsArtifact": true,
         "AddStatsOnEquip": {
-            "Def": 47
+            "Def": 47,
+            "MaxPP": 6
         },
         "AddElStatsOnEquip": {
+            "MercuryRes": 30,
+            "MercuryAtk": 17,
             "MarsRes": 30
         },
         "PPRegen": 12
+        "HPRegen": 5
     },
     "Cocktail Dress": {
         "Name": "Cocktail Dress",
@@ -2745,7 +2749,14 @@
         "IsEquippable": true,
         "IsArtifact": true,
         "AddStatsOnEquip": {
-            "Def": 38
+            "Def": 38,
+            "MaxPP": 12
+        }
+        "AddElStatsOnEquip": {
+            "VenusAtk": 15,
+            "VenusRes": 25,
+            "JupiterAtk": 15,
+            "JupiterRes": 25
         }
     },
     "Erebus Armor": {
@@ -2979,7 +2990,12 @@
         "IsEquippable": true,
         "IsArtifact": true,
         "AddStatsOnEquip": {
-            "Def": 28
+            "Def": 28,
+            "MaxHP": 7
+        }
+        "AddElStatsOnEquip": {
+            "VenusRes": 25,
+            "MarsAtk": 30
         }
     },
     "Wild Coat": {
@@ -3091,7 +3107,8 @@
         "IsEquippable": true,
         "IsArtifact": true,
         "AddStatsOnEquip": {
-            "Def": 6
+            "Def": 6,
+            "MaxPP": 4
         }
     },
     "Mythril Shirt": {
@@ -3149,7 +3166,11 @@
         "IsEquippable": true,
         "IsArtifact": true,
         "AddStatsOnEquip": {
-            "Def": 10
+            "Def": 10,
+            "Atk": 7
+        }
+        "AddElStatsOnEquip": {
+            "MercuryRes": 15
         }
     },
     "Turtle Boots": {
@@ -3273,7 +3294,7 @@
         "Name": "Knight's Greave",
         "Price": 2700,
         "Icon": "<:Knights_Greave:569854266445922304>",
-        "ItemType": "Boots",
+        "ItemType": "Greave",
         "IsEquippable": true,
         "IsArtifact": true,
         "AddStatsOnEquip": {
@@ -3283,20 +3304,26 @@
     },
     "Silver Greave": {
         "Name": "Silver Greave",
-        "Price": 3800,
+        "Price": 3900,
         "Icon": "<:Silver_Greave:569854266072629249>",
-        "ItemType": "Boots",
+        "ItemType": "Greave",
         "IsEquippable": true,
         "IsArtifact": true,
         "AddStatsOnEquip": {
-            "Def": 22
+            "Def": 24
+        }
+        "AddElStatsOnEquip": {
+            "VenusRes": 15
+            "VenusAtk": 15
+            "JupiterAtk" 10
+            "MarsRes": -10
         }
     },
     "Hover Greave": {
         "Name": "Hover Greave",
         "Price": 4500,
         "Icon": ":Hover_Greave:",
-        "ItemType": "Boots",
+        "ItemType": "Greave",
         "IsEquippable": true,
         "IsArtifact": true,
         "AddStatsOnEquip": {
@@ -3370,7 +3397,10 @@
         "IsEquippable": true,
         "IsArtifact": true,
         "AddStatsOnEquip": {
-            "Def": 35
+            "Def": 38
+        }
+        "AddElStatsOnEquip": {
+            "VenusRes": 25
         }
     },
     "Prophet's Hat": {
@@ -3452,10 +3482,11 @@
         "IsEquippable": true,
         "IsArtifact": true,
         "AddStatsOnEquip": {
-            "Def": 34
+            "Def": 34,
+            "Spd": 35
         },
         "AddElStatsOnEquip": {
-            "JupiterRes": 20
+            "JupiterRes": 25
         }
     },
     "Hiotoko Mask": {
@@ -3623,6 +3654,11 @@
         "IsArtifact": true,
         "AddStatsOnEquip": {
             "Def": 36
+        }
+        "AddElStatsOnEquip": {
+            "MercuryRes": 30,
+            "MercuryAtk": 20,
+            "JupiterAtk": 20
         }
     },
     "Psychic Circlet": {
