@@ -35,7 +35,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public override string ToString()
         {
-            return $"{(Probability != 100 ? $"{Probability}% chance to eliminate" : "Eliminate")} target.";
+            return $"{(Probability != 100 ? $"{Probability}% chance to eliminate" : "Eliminate")} target";
         }
     }
 }

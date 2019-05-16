@@ -5,7 +5,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 {
     public class ReduceHPtoOneEffect : IEffect
     {
-        private int Probability = 10;
+        private readonly int Probability = 10;
 
         public ReduceHPtoOneEffect(string[] args)
         {
@@ -35,7 +35,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public override string ToString()
         {
-            return $"{(Probability != 100 ? $"{Probability}% chance to set" : "Set")} targets HP to one.";
+            return $"{(Probability != 100 ? $"{Probability}% chance to set" : "Set")} targets HP to one";
         }
     }
 }

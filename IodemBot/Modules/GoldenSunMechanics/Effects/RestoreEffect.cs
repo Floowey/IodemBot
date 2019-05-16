@@ -23,7 +23,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public override string ToString()
         {
-            return $"Restore the target from Conditions and Poison.";
+            return $"Restore the target from Conditions and Poison";
         }
 
         protected override int InternalChooseBestTarget(List<ColossoFighter> targets)

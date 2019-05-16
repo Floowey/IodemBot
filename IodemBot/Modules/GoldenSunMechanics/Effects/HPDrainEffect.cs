@@ -33,7 +33,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public override string ToString()
         {
-            return $"Restore {percentage}% of the damage done this turn in HP.";
+            return $"{(probability < 100 ? "Chance to restore" : "Restore")} {percentage}% of the damage done this turn in HP";
         }
     }
 }

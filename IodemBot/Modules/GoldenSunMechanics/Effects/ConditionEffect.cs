@@ -35,7 +35,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public override string ToString()
         {
-            return $"{(Probability != 100 ? $"{Probability}% chance to apply" : "Apply")} {Cond}.";
+            return $"{(Probability != 100 ? $"{Probability}% chance to apply" : "Apply")} {Cond}";
         }
 
         private void Init(string stringCondition, int probability)

@@ -30,7 +30,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public override string ToString()
         {
-            return $"Reduces damage taken by {damageReduction}%.";
+            return $"Reduces damage taken by {damageReduction}%";
         }
     }
 }

@@ -35,7 +35,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public override string ToString()
         {
-            return "Remove Stat buffs of enemies.";
+            return "Remove Stat buffs of enemies";
         }
     }
 }

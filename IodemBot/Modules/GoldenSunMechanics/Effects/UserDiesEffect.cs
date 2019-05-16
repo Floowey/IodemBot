@@ -23,7 +23,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public override string ToString()
         {
-            return $"User takes itself down.";
+            return $"User takes itself down";
         }
     }
 }
