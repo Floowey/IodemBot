@@ -11,7 +11,6 @@ using Newtonsoft.Json;
 using System;
 using System.Linq;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace IodemBot.Modules
@@ -100,21 +99,6 @@ namespace IodemBot.Modules
             await Context.Channel.SendMessageAsync("", false, embed.Build());
         }
 
-        [Command("flag"), Alias("country")]
-        [Cooldown(5)]
-        [Remarks("Set the flag that shows up next to your name")]
-        public async Task SetFlag(string flag)
-        {
-            var r = new Regex("[\uD83C][\uDDE6-\uDDFF][\uD83C][\uDDE6-\uDDFF]");
-            if (r.IsMatch(flag))
-            {
-                var account = UserAccounts.GetAccount(Context.User);
-                account.Flag = flag;
-                UserAccounts.SaveAccounts();
-                await Context.Channel.SendMessageAsync(flag);
-            }
-        }
-
         [Command("xp")]
         [Cooldown(5)]
         [Remarks("Get information about your level etc")]
@@ -148,7 +132,7 @@ namespace IodemBot.Modules
 
             embed.WithColor(Colors.get(account.Element.ToString()));
             var author = new EmbedAuthorBuilder();
-            author.WithName($"{user.DisplayName()} {account.Flag}");
+            author.WithName($"{user.DisplayName()}");
             author.WithIconUrl(user.GetAvatarUrl());
             embed.WithAuthor(author);
             //embed.WithThumbnailUrl(user.GetAvatarUrl());

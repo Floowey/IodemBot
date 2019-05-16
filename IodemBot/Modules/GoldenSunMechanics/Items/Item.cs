@@ -181,20 +181,29 @@ namespace IodemBot.Modules.GoldenSunMechanics
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public Element UnleashAlignment { get; set; }
 
-        [DefaultValue(35)]
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
-        public int UnleashRate { get; set; }
+        [JsonIgnore] internal List<IEffect> DefaultEffects { get; set; }
+        [JsonProperty] internal List<EffectImage> EffectImages { get; set; }
+        [JsonIgnore] internal List<IEffect> AdditionalEffects { get; set; } = new List<IEffect>();
 
-        [JsonIgnore] public List<IEffect> Effects { get; set; }
-        public List<EffectImage> EffectImages { get; set; }
+        [JsonIgnore]
+        public List<IEffect> Effects
+        {
+            get
+            {
+                var eff = new List<IEffect>();
+                eff.AddRange(DefaultEffects);
+                eff.AddRange(AdditionalEffects);
+                return eff;
+            }
+        }
 
         public Unleash(List<EffectImage> effectImages)
         {
-            this.Effects = new List<IEffect>();
-            this.EffectImages = effectImages;
+            DefaultEffects = new List<IEffect>();
+            EffectImages = effectImages;
             if (effectImages != null)
             {
-                effectImages.ForEach(e => Effects.Add(IEffect.EffectFactory(e.Id, e.Args)));
+                effectImages.ForEach(e => DefaultEffects.Add(IEffect.EffectFactory(e.Id, e.Args)));
             }
         }
 

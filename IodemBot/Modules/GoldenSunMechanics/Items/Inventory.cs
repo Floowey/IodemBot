@@ -124,8 +124,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
             if (lastDailyChest.Date != DateTime.Now.Date && chests[ChestQuality.Daily] == 0)
             {
                 AwardChest(ChestQuality.Daily);
-                lastDailyChest = DateTime.Now;
             }
+            lastDailyChest = DateTime.Now;
         }
 
         public void AwardChest(ChestQuality chestQuality)
@@ -298,9 +298,11 @@ namespace IodemBot.Modules.GoldenSunMechanics
             InvString.Clear();
             Inv.ForEach(w => InvString.Add(w.Name));
 
+            WarriorGear = WarriorGear.OrderBy(i => i.ItemType).ToList();
             WarriorGearString.Clear();
             WarriorGear.ForEach(w => WarriorGearString.Add(w.Name));
 
+            MageGear = MageGear.OrderBy(i => i.ItemType).ToList();
             MageGearString.Clear();
             MageGear.ForEach(w => MageGearString.Add(w.Name));
 

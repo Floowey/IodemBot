@@ -83,10 +83,10 @@
             "movepool": [
             ],
             "stats": {
-                "maxHP": 150,
+                "maxHP": 140,
                 "maxPP": 0,
                 "Atk": 0,
-                "Def": 20,
+                "Def": 2,
                 "Spd": 3
             },
             "elstats": {
@@ -100,6 +100,103 @@
                 "MercuryRes": 25
             },
             "hasAttack": false
+        }
+    ],
+    [
+        {
+            "name": "Vermin",
+            "imgurl": "https://goldensunwiki.net/w/images/0/01/Vermin.png",
+            "movepool": [
+            ],
+            "stats": {
+                "maxHP": 20,
+                "maxPP": 0,
+                "Atk": 23,
+                "Def": 7,
+                "Spd": 7
+            },
+            "elstats": {
+                "VenusAtk": 100,
+                "VenusRes": 48,
+                "MarsAtk": 100,
+                "MarsRes": 25,
+                "JupiterAtk": 100,
+                "JupiterRes": 72,
+                "MercuryAtk": 100,
+                "MercuryRes": 48
+            }
+        },
+        {
+            "name": "Bat",
+            "imgurl": "",
+            "movepool": [
+            ],
+            "stats": {
+                "maxHP": 17,
+                "maxPP": 0,
+                "Atk": 21,
+                "Def": 6,
+                "Spd": 13
+            },
+            "elstats": {
+                "VenusAtk": 100,
+                "VenusRes": 127,
+                "MarsAtk": 100,
+                "MarsRes": 48,
+                "JupiterAtk": 100,
+                "JupiterRes": 7,
+                "MercuryAtk": 100,
+                "MercuryRes": 72
+            },
+            "hasDefend": false
+        }
+    ],
+    [
+        {
+            "name": "Wild Mushroom",
+            "imgurl": "https://goldensunwiki.net/w/images/1/12/Wild_Mushroom.png",
+            "movepool": [
+            ],
+            "stats": {
+                "maxHP": 18,
+                "maxPP": 0,
+                "Atk": 22,
+                "Def": 5,
+                "Spd": 10
+            },
+            "elstats": {
+                "VenusAtk": 100,
+                "VenusRes": 48,
+                "MarsAtk": 100,
+                "MarsRes": 7,
+                "JupiterAtk": 100,
+                "JupiterRes": 72,
+                "MercuryAtk": 100,
+                "MercuryRes": 100
+            }
+        },
+        {
+            "name": "Wild Mushroom",
+            "imgurl": "",
+            "movepool": [
+            ],
+            "stats": {
+                "maxHP": 18,
+                "maxPP": 0,
+                "Atk": 22,
+                "Def": 5,
+                "Spd": 10
+            },
+            "elstats": {
+                "VenusAtk": 100,
+                "VenusRes": 48,
+                "MarsAtk": 100,
+                "MarsRes": 7,
+                "JupiterAtk": 100,
+                "JupiterRes": 72,
+                "MercuryAtk": 100,
+                "MercuryRes": 100
+            }
         }
     ]
 ]

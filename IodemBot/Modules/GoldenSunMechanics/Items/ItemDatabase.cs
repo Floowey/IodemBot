@@ -74,7 +74,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public static string GetRandomItem(uint level, double bonus = 0, RandomItemType rt = RandomItemType.Any)
         {
             uint n = (uint)(level + Math.Sqrt(bonus / 50));
-            var dist = new Accord.Statistics.Distributions.Univariate.GeneralizedParetoDistribution(Math.Pow(n, 1.8), Math.Pow(n, 2.27), 0.1 - n / 200);
+            var dist = new Accord.Statistics.Distributions.Univariate.GeneralizedParetoDistribution(Math.Pow(n, 2.2), Math.Pow(n, 2.26), 0.1 - n / 200);
             var value = dist.Generate();
 
             var allItems = itemsDatabase.Values.OrderByDescending(d => d.Price);

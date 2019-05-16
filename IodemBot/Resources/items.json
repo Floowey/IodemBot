@@ -325,6 +325,35 @@
             ]
         }
     },
+    "Vajra Mace": {
+        "Name": "Vajra Mace",
+        "Price": 18600,
+        "Icon": "<:Vajra_Mace:578172901354635264>",
+        "ItemType": "Mace",
+        "IsEquippable": true,
+        "IsArtifact": true,
+        "AddStatsOnEquip": {
+            "Atk": 182
+        },
+        "Unleash": {
+            "UnleashName": "Final Nemesis",
+            "UnleashAlignment": 3,
+            "effectImages": [
+                {
+                    "Id": "AddDamage",
+                    "args": [ "17" ]
+                },
+                {
+                    "id": "MultiplyDamage",
+                    "args": [ "1.4, 2.0, 2.8", "60, 60, 60" ]
+                },
+                {
+                    "id": "Condition",
+                    "args": [ "Stun", "25" ]
+                }
+            ]
+        }
+    },
     "Wooden Stick": {
         "Name": "Wooden Stick",
         "Price": 40,
@@ -650,6 +679,24 @@
         "IsArtifact": true,
         "AddStatsOnEquip": {
             "Atk": 168
+        },
+        "Unleash": {
+            "UnleashName": "Leech of Fate",
+            "UnleashAlignment": 3,
+            "EffectImages": [
+                {
+                    "Id": "AddDamage",
+                    "args": [ "26" ]
+                },
+                {
+                    "id": "HPDrain",
+                    "args": [ "80", "50" ]
+                },
+                {
+                    "id": "PPDrain",
+                    "args": [ "10", "50" ]
+                }
+            ]
         }
     },
     "Frost Wand": {
@@ -1017,8 +1064,8 @@
             ]
         }
     },
-    "Robber's Blade": {
-        "Name": "Robber's Blade",
+    "Robbers Blade": {
+        "Name": "Robbers Blade",
         "Price": 7600,
         "Icon": "<:Robbers_Blade:569855141641977876>",
         "ItemType": "LongSword",
@@ -1344,7 +1391,7 @@
     "Sword of Dusk": {
         "Name": "Sword of Dusk",
         "Price": 11500,
-        "Icon": ":Sword_Of_Dusk:",
+        "Icon": "<:Sword_Of_Dusk:578173574355877889>",
         "ItemType": "LongSword",
         "IsEquippable": true,
         "IsArtifact": true,
@@ -1524,8 +1571,8 @@
             ]
         }
     },
-    "Themis' Axe": {
-        "Name": "Themis' Axe",
+    "Themis Axe": {
+        "Name": "Themis Axe",
         "Price": 1900,
         "Icon": "<:Themis_Axe:569855200588988427>",
         "ItemType": "Axe",
@@ -1570,8 +1617,8 @@
             ]
         }
     },
-    "Captain's Axe": {
-        "Name": "Captain's Axe",
+    "Captains Axe": {
+        "Name": "Captains Axe",
         "Price": 5100,
         "Icon": "<:Captains_Axe:569855200702234633>",
         "ItemType": "Axe",
@@ -1652,8 +1699,8 @@
             ]
         }
     },
-    "Apollo's Axe": {
-        "Name": "Apollo's Axe",
+    "Apollos Axe": {
+        "Name": "Apollos Axe",
         "Price": 15200,
         "Icon": "<:Apollos_Axe:569855200895041537>",
         "ItemType": "Axe",
@@ -1675,8 +1722,8 @@
             ]
         }
     },
-    "Gaia's Axe": {
-        "Name": "Gaia's Axe",
+    "Gaias Axe": {
+        "Name": "Gaias Axe",
         "Price": 16400,
         "Icon": "<:Gaias_Axe:569855200848773120>",
         "ItemType": "Axe",
@@ -1771,8 +1818,8 @@
             "Atk": 8
         }
     },
-    "Hunter's Sword": {
-        "Name": "Hunter's Sword",
+    "Hunters Sword": {
+        "Name": "Hunters Sword",
         "Price": 520,
         "Icon": "<:Hunters_Sword:569855398492897290>",
         "ItemType": "LightBlade",
@@ -1801,8 +1848,8 @@
             "Atk": 86
         }
     },
-    "Bandit's Sword": {
-        "Name": "Bandit's Sword",
+    "Bandits Sword": {
+        "Name": "Bandits Sword",
         "Price": 700,
         "Icon": "<:Bandits_Sword:569855398442696705>",
         "ItemType": "LightBlade",
@@ -1862,6 +1909,10 @@
                 {
                     "Id": "AddDamage",
                     "args": [ "25" ]
+                },
+                {
+                    "Id": "HPDrain",
+                    "args": [ "50", "50" ]
                 }
             ]
         }
@@ -1986,8 +2037,8 @@
             ]
         }
     },
-    "Pirate's Sword": {
-        "Name": "Pirate's Sword",
+    "Pirates Sword": {
+        "Name": "Pirates Sword",
         "Price": 2000,
         "Icon": "<:Pirates_Sword:569855398602080257>",
         "ItemType": "LightBlade",
@@ -2036,8 +2087,8 @@
             ]
         }
     },
-    "Corsair's Edge": {
-        "Name": "Corsair's Edge",
+    "Corsairs Edge": {
+        "Name": "Corsairs Edge",
         "Price": 6300,
         "Icon": "<:Corsairs_Edge:569855398626983936>",
         "ItemType": "LightBlade",
@@ -2110,7 +2161,7 @@
         }
     },
     "Pirates Sabre": {
-        "Name": "Pirate's Sabre",
+        "Name": "Pirates Sabre",
         "Price": 10600,
         "Icon": "<:Pirates_Sabre:569855398572458004>",
         "ItemType": "LightBlade",
@@ -2134,8 +2185,8 @@
             ]
         }
     },
-    "Phaeton's Blade": {
-        "Name": "Phaeton's Blade",
+    "Phaetons Blade": {
+        "Name": "Phaetons Blade",
         "Price": 13600,
         "Icon": "<:Phaetons_Blade:569855398467862559>",
         "ItemType": "LightBlade",
@@ -2228,6 +2279,186 @@
                 {
                     "id": "MultiplyDamage",
                     "args": [ "3.0, 2.0", "50, 60" ]
+                }
+            ]
+        }
+    },
+    "Verdant Sword": {
+        "Name": "Verdant Sword",
+        "Price": 18000,
+        "Icon": "<:Verdant_Sword:578173680937467924>",
+        "ItemType": "LightBlade",
+        "IsEquippable": true,
+        "IsArtifact": true,
+        "DamageAlignment": 2,
+        "AddStatsOnEquip": {
+            "Atk": 165
+        },
+        "Unleash": {
+            "UnleashName": "Emerald Blitz",
+            "UnleashAlignment": 2,
+            "effectImages": [
+                {
+                    "id": "MultiplyDamage",
+                    "args": [ "2.0" ]
+                },
+                {
+                    "id": "Condition",
+                    "args": [ "Seal", "45" ]
+                }
+            ]
+        }
+    },
+    "Short Bow": {
+        "Name": "Short Bow",
+        "Price": 300,
+        "Icon": "<:Short_Bow:578230107416821761>",
+        "ItemType": "Bow",
+        "IsEquippable": true,
+        "AddStatsOnEquip": {
+            "Atk": 11
+        }
+    },
+    "Longbow": {
+        "Name": "Longbow",
+        "Price": 800,
+        "Icon": "<:Longbow:578229622680846337>",
+        "ItemType": "Bow",
+        "IsEquippable": true,
+        "AddStatsOnEquip": {
+            "Atk": 22
+        }
+    },
+    "Composite Bow": {
+        "Name": "Composite Bow",
+        "Price": 1600,
+        "Icon": "<:Composite_Bow:578229623175905311>",
+        "ItemType": "Bow",
+        "IsEquippable": true,
+        "AddStatsOnEquip": {
+            "Atk": 65
+        }
+    },
+    "Yew Bow": {
+        "Name": "Yew Bow",
+        "Price": 13000,
+        "Icon": "<:Yew_Bow:578229623293476864>",
+        "ItemType": "Bow",
+        "IsEquippable": true,
+        "IsArtifact": true,
+        "DamageAlignment": 2,
+        "AddStatsOnEquip": {
+            "Atk": 120
+        },
+        "Unleash": {
+            "UnleashName": "Snipe Shot",
+            "UnleashAlignment": 2,
+            "effectImages": [
+                {
+                    "id": "MultiplyDamage",
+                    "args": [ "1.6" ]
+                },
+                {
+                    "id": "MayIgnoreDefense",
+                    "args": [ "50", "50" ]
+                }
+            ]
+        }
+    },
+    "Dragon Bow": {
+        "Name": "Dragon Bow",
+        "Price": 16000,
+        "Icon": "<:Dragon_Bow:578173922147565578>",
+        "ItemType": "Bow",
+        "IsEquippable": true,
+        "IsArtifact": true,
+        "DamageAlignment": 1,
+        "AddStatsOnEquip": {
+            "Atk": 135
+        },
+        "Unleash": {
+            "UnleashName": "Flame Shot",
+            "UnleashAlignment": 1,
+            "effectImages": [
+                {
+                    "id": "MultiplyDamage",
+                    "args": [ "1.5" ]
+                },
+                {
+                    "id": "Stat",
+                    "args": [ "Attack", "0.6", "75" ]
+                }
+            ]
+        }
+    },
+    "Zephyrs Bow": {
+        "Name": "Zephyrs Bow",
+        "Price": 18000,
+        "Icon": "<:Zephyrs_Bow:578229622899081216>",
+        "ItemType": "Bow",
+        "IsEquippable": true,
+        "IsArtifact": true,
+        "AddStatsOnEquip": {
+            "Atk": 135
+        },
+        "Unleash": {
+            "UnleashName": "Cyclone Shot",
+            "UnleashAlignment": 2,
+            "effectImages": [
+                {
+                    "id": "MultiplyDamage",
+                    "args": [ "1.6" ]
+                },
+                {
+                    "id": "Stat",
+                    "args": [ "Resistance", "0.6", "75" ]
+                }
+            ]
+        }
+    },
+    "Silver Longbow": {
+        "Name": "Silver Longbow",
+        "Price": 21000,
+        "Icon": "<:Silver_Longbow:578229622961995778>",
+        "ItemType": "Bow",
+        "IsEquippable": true,
+        "IsArtifact": true,
+        "DamageAlignment": 2,
+        "AddStatsOnEquip": {
+            "Atk": 150
+        },
+        "Unleash": {
+            "UnleashName": "Undead Bane",
+            "UnleashAlignment": 2,
+            "effectImages": [
+                {
+                    "id": "MultiplyDamage",
+                    "args": [ "1.6" ]
+                },
+                {
+                    "id": "Condition",
+                    "args": [ "Sleep", "30" ]
+                }
+            ]
+        }
+    },
+    "Sagittarius Bow": {
+        "Name": "Sagittarius Bow",
+        "Price": 290000,
+        "Icon": "<:Sagittarius_Bow:578229622810869761>",
+        "ItemType": "Bow",
+        "IsEquippable": true,
+        "IsArtifact": true,
+        "AddStatsOnEquip": {
+            "Atk": 170
+        },
+        "Unleash": {
+            "UnleashName": "Blue Comet",
+            "UnleashAlignment": 3,
+            "effectImages": [
+                {
+                    "id": "MultiplyDamage",
+                    "args": [ "2.2" ]
                 }
             ]
         }
@@ -2535,8 +2766,8 @@
         },
         "increaseUnleashRate": 6
     },
-    "Asura's Armor": {
-        "Name": "Asura's Armor",
+    "Asuras Armor": {
+        "Name": "Asuras Armor",
         "Price": 15000,
         "Icon": "<:Asuras_Armor:569854622840127515>",
         "ItemType": "HeavyArmor",
@@ -2563,8 +2794,8 @@
             "MarsRes": 30
         }
     },
-    "Gray's Armor": {
-        "Name": "Gray's Armor",
+    "Grays Armor": {
+        "Name": "Grays Armor",
         "Price": 915000,
         "Icon": "<:Tritons_Ward:569854675906461716>",
         "ItemType": "HeavyArmor",
@@ -2773,8 +3004,8 @@
             "MercuryRes": 15
         }
     },
-    "Adept's Clothes": {
-        "Name": "Adept's Clothes",
+    "Adepts Clothes": {
+        "Name": "Adepts Clothes",
         "Price": 850,
         "Icon": "<:Adepts_Clothes:569854675638026240>",
         "ItemType": "LightArmor",
@@ -2961,8 +3192,8 @@
         },
         "increaseUnleashRate": 15
     },
-    "Triton's Ward": {
-        "Name": "Triton's Ward",
+    "Tritons Ward": {
+        "Name": "Tritons Ward",
         "Price": 16200,
         "Icon": "<:Tritons_Ward:569854675906461716>",
         "ItemType": "LightArmor",
@@ -3191,8 +3422,8 @@
         },
         "increaseUnleashRate": 15
     },
-    "Knight's Greave": {
-        "Name": "Knight's Greave",
+    "Knights Greave": {
+        "Name": "Knights Greave",
         "Price": 2700,
         "Icon": "<:Knights_Greave:569854266445922304>",
         "ItemType": "Greave",
@@ -3295,8 +3526,8 @@
             "Def": 35
         }
     },
-    "Prophet's Hat": {
-        "Name": "Prophet's Hat",
+    "Prophets Hat": {
+        "Name": "Prophets Hat",
         "Price": 4600,
         "Icon": "<:Prophets_Hat:569830463045107742>",
         "ItemType": "Hat",
@@ -3341,8 +3572,8 @@
         },
         "PPRegen": 4
     },
-    "Nurse's Cap": {
-        "Name": "Nurse's Cap",
+    "Nurses Cap": {
+        "Name": "Nurses Cap",
         "Price": 1200,
         "Icon": "<:Nurses_Cap:569873500353986630>",
         "ItemType": "Hat",
@@ -3418,8 +3649,8 @@
         },
         "PPRegen": 8
     },
-    "Alastor's Hood": {
-        "Name": "Alastor's Hood",
+    "Alastors Hood": {
+        "Name": "Alastors Hood",
         "Price": 11800,
         "Icon": "<:Alastors_Hood:569873500295397396>",
         "ItemType": "Hat",
@@ -3675,8 +3906,8 @@
             "Def": 27
         }
     },
-    "Adept's Helm": {
-        "Name": "Adept's Helm",
+    "Adepts Helm": {
+        "Name": "Adepts Helm",
         "Price": 3700,
         "Icon": "<:Adepts_Helm:569830299442348063>",
         "ItemType": "Helmet",
@@ -3700,8 +3931,8 @@
             "Def": 30
         }
     },
-    "Knight's Helm": {
-        "Name": "Knight's Helm",
+    "Knights Helm": {
+        "Name": "Knights Helm",
         "Price": 4600,
         "Icon": "<:Knights_Helm:569822627418472471>",
         "ItemType": "Helmet",
@@ -3711,8 +3942,8 @@
             "Def": 33
         }
     },
-    "Warrior's Helm": {
-        "Name": "Warrior's Helm",
+    "Warriors Helm": {
+        "Name": "Warriors Helm",
         "Price": 10000,
         "Icon": "<:Warriors_Helm:569830299559788544>",
         "ItemType": "Helmet",
@@ -3911,8 +4142,8 @@
             "Def": 7
         }
     },
-    "Jester's Armlet": {
-        "Name": "Jester's Armlet",
+    "Jesters Armlet": {
+        "Name": "Jesters Armlet",
         "Price": 5100,
         "Icon": "<:Jesters_Armlet:569854859810045952>",
         "ItemType": "Bracelet",
@@ -3923,8 +4154,8 @@
             "maxPP": 30
         }
     },
-    "Leda's Bracelet": {
-        "Name": "Leda's Bracelet",
+    "Ledas Bracelet": {
+        "Name": "Ledas Bracelet",
         "Price": 5800,
         "Icon": "<:Ledas_Bracelet:569854859847794688>",
         "ItemType": "Bracelet",
@@ -4166,8 +4397,8 @@
             "Def": 14
         }
     },
-    "Knight's Shield": {
-        "Name": "Knight's Shield",
+    "Knights Shield": {
+        "Name": "Knights Shield",
         "Price": 3000,
         "Icon": "<:Knights_Shield:569854973450387459>",
         "ItemType": "Shield",
@@ -4351,8 +4582,8 @@
             ]
         }
     },
-    "Cleric's Ring": {
-        "Name": "Cleric's Ring",
+    "Clerics Ring": {
+        "Name": "Clerics Ring",
         "Price": 6400,
         "Icon": "<:Clerics_Ring:569854314105798666>",
         "ItemType": "Ring",
@@ -4568,8 +4799,8 @@
             "Spd": 180
         }
     },
-    "Lady Moon's Ring": {
-        "Name": "Lady Moon's Ring",
+    "Lady Moons Ring": {
+        "Name": "Lady Moons Ring",
         "Price": 3300,
         "Icon": ":ring:",
         "ItemType": "Ring",
@@ -4585,8 +4816,8 @@
             "MercuryRes": 10
         }
     },
-    "Lord Sun's Ring": {
-        "Name": "Lord Sun's Ring",
+    "Lord Suns Ring": {
+        "Name": "Lord Suns Ring",
         "Price": 4900,
         "Icon": ":ring:",
         "ItemType": "Ring",

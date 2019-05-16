@@ -168,7 +168,7 @@
                 "Cure",
                 "Mad Growth",
                 "Spire",
-                "Earthquake",
+                "Earthquake"
             ],
             "stats": {
                 "maxHP": 400,
@@ -682,7 +682,7 @@
             ],
             "stats": {
                 "maxHP": 600,
-                "maxPP": 00,
+                "maxPP": 0,
                 "Atk": 80,
                 "Def": 100,
                 "Spd": 40
@@ -697,7 +697,7 @@
                 "MercuryAtk": 110,
                 "MercuryRes": 80
             }
-        },
+        }
     ],
     [
         {
@@ -1495,7 +1495,7 @@
                 "maxPP": 0,
                 "Atk": 68,
                 "Def": 11,
-                "Spd": 30,
+                "Spd": 30
             },
             "elstats": {
                 "VenusAtk": 110,
@@ -1505,7 +1505,7 @@
                 "JupiterAtk": 85,
                 "JupiterRes": 72,
                 "MercuryAtk": 100,
-                "MercuryRes": 100,
+                "MercuryRes": 100
             }
         },
         {
@@ -1520,7 +1520,7 @@
                 "maxPP": 0,
                 "Atk": 68,
                 "Def": 11,
-                "Spd": 30,
+                "Spd": 30
             },
             "elstats": {
                 "VenusAtk": 110,
@@ -1530,8 +1530,8 @@
                 "JupiterAtk": 85,
                 "JupiterRes": 72,
                 "MercuryAtk": 100,
-                "MercuryRes": 100,
+                "MercuryRes": 100
             }
         }
-    ],
+    ]
 ]

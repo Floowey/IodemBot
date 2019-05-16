@@ -3,6 +3,7 @@ using IodemBot.Core.UserManagement;
 using IodemBot.Extensions;
 using IodemBot.Modules.GoldenSunMechanics;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace IodemBot.Modules.ColossoBattles
 {
@@ -26,7 +27,7 @@ namespace IodemBot.Modules.ColossoBattles
 
             var classSeries = AdeptClassSeriesManager.GetClassSeries(avatar);
             var gear = avatar.Inv.GetGear(classSeries.Archtype);
-            gear.ForEach(g =>
+            gear.OrderBy(i => i.ItemType).ToList().ForEach(g =>
             {
                 HPrecovery += g.HPRegen;
                 PPrecovery += g.PPRegen;
@@ -44,13 +45,17 @@ namespace IodemBot.Modules.ColossoBattles
                 if (g.IsWeapon)
                 {
                     Weapon = g;
+                    if (Weapon.IsUnleashable)
+                    {
+                        Weapon.Unleash.AdditionalEffects.Clear();
+                    }
                 }
 
-                if (!g.IsWeapon && g.IsUnleashable && !g.GrantsUnleash)
+                if (!g.IsWeapon && g.IsUnleashable)
                 {
-                    if (g.GrantsUnleash)
+                    if (g.GrantsUnleash && Weapon.IsUnleashable)
                     {
-                        Weapon.Unleash.Effects.AddRange(g.Unleash.Effects);
+                        Weapon.Unleash.AdditionalEffects.AddRange(g.Unleash.Effects);
                     }
                     else
                     {
