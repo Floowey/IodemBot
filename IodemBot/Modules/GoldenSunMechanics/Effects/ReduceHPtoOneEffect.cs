@@ -25,7 +25,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
             if (Target.IsAlive())
             {
-                if (Global.random.Next(1, 100) <= Probability)
+                if (Global.Random.Next(1, 100) <= Probability)
                 {
                     Target.stats.HP = 1;
                 }

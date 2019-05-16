@@ -34,13 +34,13 @@ namespace IodemBot.Modules.GoldenSunMechanics
             }
             catch (Exception e)
             {
-                Console.WriteLine("What!?");
+                Console.WriteLine("What!?" + e.Message);
             }
             return log;
         }
 
         [JsonIgnore]
-        public bool onEnemy
+        public bool OnEnemy
         {
             get
             {
@@ -77,7 +77,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 return new Validation(false, log);
             }
 
-            if (User.HasCondition(Condition.ItemCurse) && !User.isImmuneToItemCurse && Global.random.Next(0, 3) == 0)
+            if (User.HasCondition(Condition.ItemCurse) && !User.isImmuneToItemCurse && Global.Random.Next(0, 3) == 0)
             {
                 log.Add($"{User.name} can't move");
                 return new Validation(false, log);
@@ -108,15 +108,15 @@ namespace IodemBot.Modules.GoldenSunMechanics
             this.effectImages = effectImages;
             if (effectImages != null)
             {
-                effectImages.ForEach(e => effects.Add(IEffect.EffectFactory(e.id, e.args)));
+                effectImages.ForEach(e => effects.Add(IEffect.EffectFactory(e.Id, e.Args)));
             }
         }
 
-        public List<ColossoFighter> getTarget(ColossoFighter user)
+        public List<ColossoFighter> GetTarget(ColossoFighter user)
         {
             List<ColossoFighter> targets = new List<ColossoFighter>();
-            var playerCount = user.battle.getTeam(user.party).Count - 1;
-            var enemyCount = user.battle.getTeam(user.enemies).Count - 1;
+            var playerCount = user.battle.GetTeam(user.party).Count - 1;
+            var enemyCount = user.battle.GetTeam(user.enemies).Count - 1;
 
             switch (targetType)
             {
@@ -126,26 +126,26 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
                 case Target.ownAll:
                     targetNr = Math.Min(targetNr, playerCount);
-                    targets.AddRange(user.battle.getTeam(user.party));
+                    targets.AddRange(user.battle.GetTeam(user.party));
                     break;
 
                 case Target.ownSingle:
                     targetNr = Math.Min(targetNr, playerCount);
-                    targets.Add(user.battle.getTeam(user.party)[targetNr]);
+                    targets.Add(user.battle.GetTeam(user.party)[targetNr]);
                     break;
 
                 case Target.otherAll:
-                    targets.AddRange(user.getEnemies());
+                    targets.AddRange(user.GetEnemies());
                     break;
 
                 case Target.otherSingle:
                     targetNr = Math.Min(targetNr, enemyCount);
-                    targets.Add(user.battle.getTeam(user.enemies)[targetNr]);
+                    targets.Add(user.battle.GetTeam(user.enemies)[targetNr]);
                     break;
 
                 case Target.otherRange:
                     targetNr = Math.Min(targetNr, enemyCount);
-                    var targetTeam = user.battle.getTeam(user.enemies);
+                    var targetTeam = user.battle.GetTeam(user.enemies);
                     for (int i = -(int)range + 1; i <= range - 1; i++)
                     {
                         if (targetNr + i >= 0 && targetNr + i < targetTeam.Count())

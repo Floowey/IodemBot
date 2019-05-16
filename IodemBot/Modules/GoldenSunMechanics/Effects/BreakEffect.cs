@@ -27,7 +27,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             }
             if (User is PlayerFighter)
             {
-                ((PlayerFighter)User).battleStats.supported++;
+                ((PlayerFighter)User).battleStats.Supported++;
             }
             Target.Buffs = newBuffs;
             return log;

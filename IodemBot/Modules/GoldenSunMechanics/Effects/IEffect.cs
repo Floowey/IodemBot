@@ -15,6 +15,9 @@ namespace IodemBot.Modules.GoldenSunMechanics
         {
             switch (Identifier)
             {
+                case "AttackWithTeammate":
+                    return new AttackWithTeammateEffect();
+
                 case "Break":
                     return new BreakEffect();
 
@@ -27,11 +30,17 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 case "Counter":
                     return new CounterEffect();
 
+                case "HPDrain":
+                    return new HPDrainEffect(args);
+
                 case "MayIgnoreDefense":
                     return new MayIgnoreDefenseEffect(args);
 
                 case "MultiplyDamage":
                     return new MultiplyDamageEffect(args);
+
+                case "PPDrain":
+                    return new PPDrainEffect(args);
 
                 case "ReduceHPtoOne":
                     return new ReduceHPtoOneEffect(args);
@@ -65,7 +74,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         protected virtual int InternalChooseBestTarget(List<ColossoFighter> targets)
         {
-            return Global.random.Next(0, targets.Count);
+            return Global.Random.Next(0, targets.Count);
         }
 
         internal int ChooseBestTarget(List<ColossoFighter> targets)
@@ -77,11 +86,16 @@ namespace IodemBot.Modules.GoldenSunMechanics
         {
             return InternalValidSelection(User);
         }
+
+        public override string ToString()
+        {
+            return "Unspecified Effect";
+        }
     }
 
     public struct EffectImage
     {
-        public string id { get; set; }
-        public string[] args { get; set; }
+        public string Id { get; set; }
+        public string[] Args { get; set; }
     }
 }

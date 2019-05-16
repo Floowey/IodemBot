@@ -9,13 +9,13 @@ namespace IodemBot.Modules.GoldenSunMechanics
     internal class MultiplyDamageEffect : IEffect
     {
         private double[] multipliers = { 2.0 };
-        private int[] probabilites = { 10 };
+        private readonly int[] probabilites = { 10 };
 
         public override List<string> Apply(ColossoFighter User, ColossoFighter Target)
         {
             for (int i = 0; i < multipliers.Length; i++)
             {
-                if (Global.random.Next(0, 100) <= probabilites[i])
+                if (Global.Random.Next(0, 100) <= probabilites[i])
                 {
                     User.offensiveMult *= multipliers[i];
                     break;
@@ -32,6 +32,11 @@ namespace IodemBot.Modules.GoldenSunMechanics
             {
                 multipliers = args[0].Split(',').Select(n => Convert.ToDouble(n, new CultureInfo("en-GB"))).ToArray();
                 probabilites = args[1].Split(',').Select(n => Convert.ToInt32(n)).ToArray();
+            }
+            else if (args.Length == 1)
+            {
+                multipliers = args[0].Split(',').Select(n => Convert.ToDouble(n, new CultureInfo("en-GB"))).ToArray();
+                probabilites = new[] { 100 };
             }
             else
             {

@@ -14,12 +14,12 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
     public class Inventory
     {
-        private static int inventorySize = 24;
-        private static ItemType[] WarriorExclusive = { ItemType.LongSword, ItemType.Shield, ItemType.Helmet, ItemType.HeavyArmor, ItemType.Greaves };
-        private static ItemType[] MageExclusive = { ItemType.Staff, ItemType.Circlet, ItemType.Bow, ItemType.Robe, ItemType.Bracelet };
-        private static ChestQuality[] chestQualities = { ChestQuality.Wooden, ChestQuality.Normal, ChestQuality.Silver, ChestQuality.Gold, ChestQuality.Adept, ChestQuality.Daily };
+        public static readonly int MaxInvSize = 26;
+        private static readonly ItemType[] WarriorExclusive = { ItemType.LongSword, ItemType.Shield, ItemType.Helmet, ItemType.HeavyArmor, ItemType.Greave };
+        private static readonly ItemType[] MageExclusive = { ItemType.Staff, ItemType.Circlet, ItemType.Bow, ItemType.Robe, ItemType.Bracelet };
+        private static readonly ChestQuality[] chestQualities = { ChestQuality.Wooden, ChestQuality.Normal, ChestQuality.Silver, ChestQuality.Gold, ChestQuality.Adept, ChestQuality.Daily };
 
-        public static Dictionary<ChestQuality, string> ChestIcons = new Dictionary<ChestQuality, string>()
+        public static readonly Dictionary<ChestQuality, string> ChestIcons = new Dictionary<ChestQuality, string>()
         {
             {ChestQuality.Wooden, "<:wooden_chest:570332670576295986>" },
             {ChestQuality.Normal, "<:chest:570332670442078219>" },
@@ -39,6 +39,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
         [JsonIgnore] private List<Item> Inv;
         [JsonIgnore] private List<Item> WarriorGear;
         [JsonIgnore] private List<Item> MageGear;
+        [JsonIgnore] public int Count { get { return Inv.Count; } }
+        [JsonIgnore] public bool IsFull { get { return Count >= MaxInvSize; } }
         [JsonIgnore] public bool IsInitialized { get { return Inv != null; } }
 
         [JsonProperty]
@@ -135,7 +137,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             UserAccounts.SaveAccounts();
         }
 
-        public string getChestsToString()
+        public string GetChestsToString()
         {
             CheckDaily();
             List<string> s = new List<string>();
@@ -278,12 +280,12 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
             if (i.IsFootWear)
             {
-                Gear.RemoveAll(w => w.IsUnderWear);
+                Gear.RemoveAll(w => w.IsFootWear);
             }
 
             if (i.IsAccessoire)
             {
-                Gear.RemoveAll(w => w.IsUnderWear);
+                Gear.RemoveAll(w => w.IsAccessoire);
             }
 
             Gear.Add(i);
@@ -343,6 +345,11 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public bool Add(string item)
         {
+            if (IsFull)
+            {
+                return false;
+            }
+
             var i = ItemDatabase.GetItem(item);
             if (i.Name.Contains("NOT IMPLEMENTED!"))
             {
@@ -358,6 +365,10 @@ namespace IodemBot.Modules.GoldenSunMechanics
         {
             var i = ItemDatabase.GetItem(item);
             if (i.Name.Contains("NOT IMPLEMENTED!"))
+            {
+                return false;
+            }
+            if (IsFull)
             {
                 return false;
             }
@@ -397,7 +408,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             }
 
             Inv.Remove(it);
-            Coins += it.sellValue;
+            Coins += it.SellValue;
             UpdateStrings();
             return true;
         }

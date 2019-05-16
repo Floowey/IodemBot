@@ -1502,7 +1502,7 @@
             }
         },
         {
-            "name": "Lizard King",
+            "name": "Lizard Prince",
             "imgurl": "",
             "movepool": [
                 "Protect",
@@ -1785,6 +1785,346 @@
             },
             "hasAttack": false,
             "hasDefend": false
+        }
+    ],
+    [
+        {
+            "name": "Living Armor",
+            "imgurl": "https://goldensunwiki.net/w/images/d/d0/Living_Armor.png",
+            "movepool": [
+                "Power Crush"
+            ],
+            "stats": {
+                "maxHP": 201,
+                "maxPP": 0,
+                "Atk": 133,
+                "Def": 99,
+                "Spd": 90
+            },
+            "elstats": {
+                "VenusAtk": 100,
+                "VenusRes": 72,
+                "MarsAtk": 100,
+                "MarsRes": 100,
+                "JupiterAtk": 100,
+                "JupiterRes": 25,
+                "MercuryAtk": 100,
+                "MercuryRes": 152
+            }
+        },
+        {
+            "name": "Puppet Warrior",
+            "imgurl": "",
+            "movepool": [
+                "Power Crush"
+            ],
+            "stats": {
+                "maxHP": 402,
+                "maxPP": 0,
+                "Atk": 200,
+                "Def": 180,
+                "Spd": 125
+            },
+            "elstats": {
+                "VenusAtk": 100,
+                "VenusRes": 72,
+                "MarsAtk": 100,
+                "MarsRes": 100,
+                "JupiterAtk": 100,
+                "JupiterRes": 25,
+                "MercuryAtk": 80,
+                "MercuryRes": 152
+            }
+        }
+    ],
+    [
+        {
+            "name": "Estre Baron",
+            "imgurl": "https://goldensunwiki.net/w/images/8/8a/Estre_Baron.png",
+            "movepool": [
+                "Power Crush"
+            ],
+            "stats": {
+                "maxHP": 1500,
+                "maxPP": 0,
+                "Atk": 300,
+                "Def": 250,
+                "Spd": 150
+            },
+            "elstats": {
+                "VenusAtk": 110,
+                "VenusRes": 25,
+                "MarsAtk": 100,
+                "MarsRes": 72,
+                "JupiterAtk": 100,
+                "JupiterRes": 152,
+                "MercuryAtk": 100,
+                "MercuryRes": 100
+            },
+            "HPRecovery": 20,
+            "hasAttack": false
+        }
+    ],
+    [
+        {
+            "name": "Spirit Army",
+            "imgurl": "https://goldensunwiki.net/w/images/3/34/Spirit_Army.png",
+            "movepool": [
+                "Destruct Ray",
+                "Tempest",
+                "Pike Assault"
+
+            ],
+            "stats": {
+                "maxHP": 750,
+                "maxPP": 108,
+                "Atk": 300,
+                "Def": 90,
+                "Spd": 200
+            },
+            "elstats": {
+                "VenusAtk": 100,
+                "VenusRes": 72,
+                "MarsAtk": 100,
+                "MarsRes": 25,
+                "JupiterAtk": 95,
+                "JupiterRes": 152,
+                "MercuryAtk": 100,
+                "MercuryRes": 100
+            },
+            "hasDefend": false
+        }
+    ],
+    [
+        {
+            "name": "Ghost Army",
+            "imgurl": "https://goldensunwiki.net/w/images/d/d4/Ghost_Army.png",
+            "movepool": [
+                "Pike Assault",
+                "Sonic Slash"
+            ],
+            "stats": {
+                "maxHP": 201,
+                "maxPP": 18,
+                "Atk": 171,
+                "Def": 70,
+                "Spd": 133
+            },
+            "elstats": {
+                "VenusAtk": 100,
+                "VenusRes": 72,
+                "MarsAtk": 100,
+                "MarsRes": 100,
+                "JupiterAtk": 95,
+                "JupiterRes": 25,
+                "MercuryAtk": 100,
+                "MercuryRes": 152
+            }
+        },
+        {
+            "name": "Soul Army",
+            "imgurl": "",
+            "movepool": [
+                "Pike Assault",
+                "Destruct Ray",
+                "Tempest"
+            ],
+            "stats": {
+                "maxHP": 356,
+                "maxPP": 54,
+                "Atk": 200,
+                "Def": 80,
+                "Spd": 156
+            },
+            "elstats": {
+                "VenusAtk": 100,
+                "VenusRes": 72,
+                "MarsAtk": 100,
+                "MarsRes": 100,
+                "JupiterAtk": 95,
+                "JupiterRes": 25,
+                "MercuryAtk": 80,
+                "MercuryRes": 152
+            }
+        }
+    ],
+    [
+        {
+            "name": "Avimander",
+            "imgurl": "https://goldensunwiki.net/w/images/7/70/Avimander.png",
+            "movepool": [
+                "Fire Breath",
+                "Fiery Blast",
+                "Guard",
+                "Impair",
+                "Star Mine",
+                "Heat Stun"
+
+            ],
+            "stats": {
+                "maxHP": 3792,
+                "maxPP": 87,
+                "Atk": 281,
+                "Def": 89,
+                "Spd": 94
+            },
+            "elstats": {
+                "VenusAtk": 100,
+                "VenusRes": 100,
+                "MarsAtk": 115,
+                "MarsRes": 127,
+                "JupiterAtk": 95,
+                "JupiterRes": 100,
+                "MercuryAtk": 100,
+                "MercuryRes": 25
+            }
+        }
+    ],
+    [
+        {
+            "name": "Menardi",
+            "imgurl": "",
+            "movepool": [
+                "Death Size",
+                "Nova",
+                "Flare Storm",
+                "Fiery Blast"
+
+            ],
+            "stats": {
+                "maxHP": 1400,
+                "maxPP": 200,
+                "Atk": 124,
+                "Def": 52,
+                "Spd": 96
+            },
+            "elstats": {
+                "VenusAtk": 100,
+                "VenusRes": 100,
+                "MarsAtk": 130,
+                "MarsRes": 140,
+                "JupiterAtk": 100,
+                "JupiterRes": 100,
+                "MercuryAtk": 100,
+                "MercuryRes": 70
+            },
+            "PPRecovery": 10
+        }
+    ],
+    [
+        {
+            "name": "Toadonpa",
+            "imgurl": "https://goldensunwiki.net/w/images/2/26/Toadonpa.png",
+            "movepool": [
+                "Sticky Poison",
+                "Dark Blessing",
+                "Thrash",
+                "Rotten Blood"
+
+            ],
+            "stats": {
+                "maxHP": 2800,
+                "maxPP": 0,
+                "Atk": 266,
+                "Def": 52,
+                "Spd": 82
+            },
+            "elstats": {
+                "VenusAtk": 100,
+                "VenusRes": 100,
+                "MarsAtk": 85,
+                "MarsRes": 25,
+                "JupiterAtk": 95,
+                "JupiterRes": 100,
+                "MercuryAtk": 115,
+                "MercuryRes": 175
+            },
+            "HPRecovery": 80
+        }
+    ],
+    [
+        {
+            "name": "Manticore",
+            "imgurl": "https://goldensunwiki.net/w/images/0/03/Manticore.png",
+            "movepool": [
+                "Delude",
+                "Poison Tail",
+                "Nova",
+                "Mad Blast",
+                "Impair"
+
+            ],
+            "stats": {
+                "maxHP": 1700,
+                "maxPP": 83,
+                "Atk": 168,
+                "Def": 48,
+                "Spd": 61
+            },
+            "elstats": {
+                "VenusAtk": 95,
+                "VenusRes": 100,
+                "MarsAtk": 115,
+                "MarsRes": 175,
+                "JupiterAtk": 95,
+                "JupiterRes": 100,
+                "MercuryAtk": 100,
+                "MercuryRes": 25
+            }
+        }
+    ],
+    [
+        {
+            "name": "Moapa Knight",
+            "imgurl": "https://goldensunwiki.net/w/images/6/6b/Knight.png",
+            "movepool": [
+                "Strong Hit",
+                "Bramble Seed",
+                "Nut"
+            ],
+            "stats": {
+                "maxHP": 600,
+                "maxPP": 3,
+                "Atk": 150,
+                "Def": 70,
+                "Spd": 100
+            },
+            "elstats": {
+                "VenusAtk": 100,
+                "VenusRes": 100,
+                "MarsAtk": 100,
+                "MarsRes": 100,
+                "JupiterAtk": 100,
+                "JupiterRes": 100,
+                "MercuryAtk": 100,
+                "MercuryRes": 100
+            }
+        },
+        {
+            "name": "Moapa Knight",
+            "imgurl": "https://goldensunwiki.net/w/images/6/6b/Knight.png",
+            "movepool": [
+                "Strong Hit",
+                "Bramble Seed",
+                "Nut"
+            ],
+            "stats": {
+                "maxHP": 600,
+                "maxPP": 3,
+                "Atk": 150,
+                "Def": 70,
+                "Spd": 100
+            },
+            "elstats": {
+                "VenusAtk": 100,
+                "VenusRes": 100,
+                "MarsAtk": 100,
+                "MarsRes": 100,
+                "JupiterAtk": 100,
+                "JupiterRes": 100,
+                "MercuryAtk": 100,
+                "MercuryRes": 100
+            }
         }
     ]
 ]

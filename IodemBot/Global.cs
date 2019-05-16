@@ -7,7 +7,7 @@ namespace IodemBot
     {
         internal static DiscordSocketClient Client { get; set; }
         internal static ulong MessageIdToTrack { get; set; }
-        internal static Random random { get; set; } = new Random();
+        internal static Random Random { get; set; } = new Random();
         internal static DateTime UpSince { get; set; }
     }
 }

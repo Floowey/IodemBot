@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -35,7 +34,7 @@ namespace IodemBot
 
         public static string GetRandomSprite()
         {
-            int r = Global.random.Next(0, sprites.Count);
+            int r = Global.Random.Next(0, sprites.Count);
             return sprites.ElementAt(r).Value;
         }
     }

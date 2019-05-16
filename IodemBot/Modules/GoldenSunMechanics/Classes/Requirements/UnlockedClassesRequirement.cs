@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using IodemBot.Core.UserManagement;
+﻿using IodemBot.Core.UserManagement;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
-    class UnlockedClassesRequirement : IRequirement
+    internal class UnlockedClassesRequirement : IRequirement
     {
         public int apply(UserAccount user)
         {
@@ -24,7 +19,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             {
                 return 2;
             }
-            else if (nOfClasses >= 3) // Illusionist 
+            else if (nOfClasses >= 3) // Illusionist
             {
                 return 1;
             }

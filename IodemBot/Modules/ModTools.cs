@@ -4,10 +4,8 @@ using Discord.WebSocket;
 using IodemBot.Core.UserManagement;
 using IodemBot.Extensions;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using static IodemBot.Modules.GoldenSunMechanics.Psynergy;
 
 namespace IodemBot.Modules
 {
@@ -56,40 +54,21 @@ namespace IodemBot.Modules
         {
             await user.KickAsync(reason);
         }
+
         [Command("setupIodem")]
         [Remarks("One Time Use only, if it works")]
         [RequireOwner]
-        public async Task setupIodem()
+        public async Task SetupIodem()
         {
             foreach (SocketGuildUser user in Context.Guild.Users)
             {
                 var account = UserAccounts.GetAccount(user);
 
-                if (user.Roles.Where(r => r.Id == 497198579207897088).FirstOrDefault() != null)
-                {//Venus
-                    account.element = Element.Venus;
-                }
-                else if (user.Roles.Where(r => r.Id == 497198845994991646).FirstOrDefault() != null)
-                {//Mars
-                    account.element = Element.Mars;
-                }
-                else if (user.Roles.Where(r => r.Id == 497199050408460288).FirstOrDefault() != null)
-                {//Jupiter
-                    account.element = Element.Jupiter;
-                }
-                else if (user.Roles.Where(r => r.Id == 497212342896033812).FirstOrDefault() != null)
-                {//Mercury
-                    account.element = Element.Mercury;
-                }
-                else
-                {
-                    account.element = Element.none;
-                }
-
-                account.Name = user.Username;
-                Console.WriteLine($"{account.Name} is a {account.element} Adept");
+                account.Name = user.DisplayName();
+                Console.WriteLine($"{account.Name} is a {account.Element} Adept");
             }
             UserAccounts.SaveAccounts();
+            await Task.CompletedTask;
         }
 
         [Command("Emotes")]
@@ -98,13 +77,13 @@ namespace IodemBot.Modules
             var s = string.Join("\n", Context.Guild.Emotes.Select(e => $"{e.ToString()} \\<:{e.Name}:{e.Id}>"));
             if (s.Length > 2000)
             {
-                await Context.Channel.SendMessageAsync(s.Substring(0,2000));
+                await Context.Channel.SendMessageAsync(s.Substring(0, 2000));
                 await Context.Channel.SendMessageAsync(s.Substring(2000));
-            } else
+            }
+            else
             {
                 await Context.Channel.SendMessageAsync(s);
             }
-            
         }
     }
 }
