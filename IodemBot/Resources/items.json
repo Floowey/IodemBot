@@ -1710,7 +1710,6 @@
         "AddStatsOnEquip": {
             "Atk": 158
         },
-        "HPRegen": 20,
         "Unleash": {
             "UnleashName": "Flare Burst",
             "UnleashAlignment": 1,
@@ -1718,8 +1717,17 @@
                 {
                     "Id": "AddDamage",
                     "args": [ "54" ]
+                },
+                {
+                    "Id": "HPDrain",
+                    "args": [ "100", "50" ]
                 }
             ]
+        }
+        "Unleash": {
+            "UnleashName": "Life Nourish",
+            "UnleashAlignment": 0,
+            "effectImages": 
         }
     },
     "Gaias Axe": {
