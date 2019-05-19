@@ -3213,21 +3213,6 @@
             "MercuryRes": 70
         }
     },
-    "Umbra Cloak": {
-        "Name": "Umbra Cloak",
-        "Price": 14000,
-        "Icon": ":Umbra_Cloak:",
-        "ItemType": "LightArmor",
-        "IsEquippable": true,
-        "IsArtifact": true,
-        "AddStatsOnEquip": {
-            "Def": 45
-        },
-        "AddElStatsOnEquip": {
-            "VenusRes": 20,
-            "MarsRes": 20
-        }
-    },
     "Running Shirt": {
         "Name": "Running Shirt",
         "Price": 400,
@@ -3688,21 +3673,6 @@
                     "args": [ "Delusion", "30" ]
                 }
             ]
-        }
-    },
-    "Umbra Cowl": {
-        "Name": "Umbra Cowl",
-        "Price": 7200,
-        "Icon": ":Umbra_Cowl:",
-        "ItemType": "Hat",
-        "IsEquippable": true,
-        "IsArtifact": true,
-        "AddStatsOnEquip": {
-            "Def": 35
-        },
-        "AddElStatsOnEquip": {
-            "JupiterRes": 20,
-            "VenusRes": 20
         }
     },
     "Circlet": {
