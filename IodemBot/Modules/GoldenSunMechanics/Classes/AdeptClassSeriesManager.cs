@@ -37,12 +37,12 @@ namespace IodemBot.Modules.GoldenSunMechanics
             {
                 if (g.IsWeapon)
                 {
-                    moves.Where(m => m is Attack).First().emote = g.Icon;
+                    moves.Where(m => m is Attack).First().emote = g.IconDisplay;
                 }
 
                 if (g.IsArmWear)
                 {
-                    moves.Where(m => m is Defend).First().emote = g.Icon;
+                    moves.Where(m => m is Defend).First().emote = g.IconDisplay;
                 }
             });
             return moves.ToArray();

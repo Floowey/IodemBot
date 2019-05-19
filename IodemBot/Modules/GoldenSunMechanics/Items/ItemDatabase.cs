@@ -52,7 +52,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public static Inventory GetShop()
         {
-            if (DateTime.Now.Subtract(lastReset).Hours > HoursForReset)
+            if (DateTime.Now.Subtract(lastReset).Hours >= HoursForReset)
             {
                 RandomizeShop();
             }
@@ -103,7 +103,16 @@ namespace IodemBot.Modules.GoldenSunMechanics
             {
                 foreach (var s in itemNames)
                 {
-                    items.Add(GetItem(s));
+                    if (s.EndsWith("(B)"))
+                    {
+                        var i = GetItem(s.Substring(0, s.Length - 3));
+                        i.IsBroken = true;
+                        items.Add(i);
+                    }
+                    else
+                    {
+                        items.Add(GetItem(s));
+                    }
                 }
             }
 

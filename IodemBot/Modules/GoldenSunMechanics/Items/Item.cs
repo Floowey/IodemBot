@@ -32,6 +32,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
         private static ItemType[] Accessoires = { ItemType.Ring, ItemType.Misc };
 
         public string Name { get; set; }
+        internal string NameAndBroken { get { return $"{Name}{(IsBroken ? "(B)" : "")}"; } }
+        public string IconDisplay { get { return $"{(IsBroken ? "(" : "")}{Icon}{(IsBroken ? ")" : "")}"; } }
         public string Icon { get; set; }
         public uint Price { get; set; }
 
@@ -127,9 +129,9 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 s.Append(MultStatsOnEquip.MultipliersToString());
                 s.Append("\n");
             }
-            if (AddElStatsOnEquip.NonZerosToSTring() != "")
+            if (AddElStatsOnEquip.NonZerosToString() != "")
             {
-                s.Append(AddElStatsOnEquip.NonZerosToSTring());
+                s.Append(AddElStatsOnEquip.NonZerosToString());
                 s.Append("\n");
             }
 
@@ -151,12 +153,12 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
             if (IncreaseUnleashRate > 0)
             {
-                various.Add($"Increases Unleashrate");
+                various.Add($"Increases unleash Rate by {IncreaseUnleashRate}%");
             }
 
             if (IsUnleashable)
             {
-                various.Add($"{(IsWeapon ? "" : $"{(GrantsUnleash ? "Adds an additional Effect to your Artifacts Unleash: " : "Targets the User with an Effect: ")}")}{Unleash.ToString()}");
+                various.Add($"{(IsWeapon ? "" : $"{(GrantsUnleash ? "Adds an Effect to your Artifacts Unleash: " : "Targets the Wearer with an Effect: ")}")}{Unleash.ToString()}");
             }
 
             if (CuresCurse)

@@ -52,7 +52,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
             if (weaponUnleashed)
             {
-                log.Add($"{User.Weapon.Icon} {User.name}'s {User.Weapon.Name} lets out a howl! {User.Weapon.Unleash.UnleashName}!");
+                log.Add($"{User.Weapon.IconDisplay} {User.name}'s {User.Weapon.Name} lets out a howl! {User.Weapon.Unleash.UnleashName}!");
                 User.Weapon.Unleash.Effects
                     .Where(e => e.timeToActivate == IEffect.TimeToActivate.beforeDamge)
                     .ToList()

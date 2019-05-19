@@ -120,6 +120,14 @@ namespace IodemBot.Modules.GoldenSunMechanics
             var user = UserAccounts.GetAccount(Context.User);
             var inv = user.Inv;
 
+            if (inv.IsFull)
+            {
+                var emb = new EmbedBuilder();
+                emb.WithDescription("Inventory capacity reached!");
+                await Context.Channel.SendMessageAsync("", false, emb.Build());
+                return;
+            }
+
             if (!inv.RemoveBalance(bonusCount))
             {
                 return;
@@ -127,14 +135,6 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
             if (!inv.OpenChest(cq))
             {
-                return;
-            }
-
-            if (inv.IsFull)
-            {
-                var emb = new EmbedBuilder();
-                emb.WithDescription("Inventory capacity reached!");
-                await Context.Channel.SendMessageAsync("", false, emb.Build());
                 return;
             }
 
@@ -154,7 +154,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
             embed = new EmbedBuilder();
             embed.WithColor(Colors.get("Iodem"));
-            embed.WithDescription($"You found a {item.Name} {item.Icon}");
+            embed.WithDescription($"You found a {item.Name} {item.IconDisplay}");
 
             await Task.Delay((int)cq * 800);
             _ = msg.ModifyAsync(m => m.Embed = embed.Build());
@@ -205,11 +205,31 @@ namespace IodemBot.Modules.GoldenSunMechanics
             await Task.CompletedTask;
         }
 
+        [Command("Repair")]
+        public async Task Repair([Remainder] string item)
+        {
+            var inv = UserAccounts.GetAccount(Context.User).Inv;
+            var embed = new EmbedBuilder();
+            embed.WithColor(Colors.get("Iodem"));
+            if (inv.Repair(item))
+            {
+                embed.WithDescription($"Item repaired successfully.");
+            }
+            else
+            {
+                embed.WithDescription($"No such item to repair, or not enough funds.");
+            }
+            await Context.Channel.SendMessageAsync("", false, embed.Build());
+        }
+
         [Command("removeCursed")]
         public async Task RemoveCursed()
         {
             var inv = UserAccounts.GetAccount(Context.User).Inv;
-            inv.RemoveCursedEquipment();
+            if (inv.RemoveCursedEquipment())
+            {
+                _ = ShowInventory();
+            }
             await Task.CompletedTask;
         }
     }

@@ -83,7 +83,7 @@ namespace IodemBot.Modules
             var embed = new EmbedBuilder();
             embed.WithAuthor($"{item.Name} {(item.IsArtifact ? " (Artifact)" : "")}");
 
-            embed.AddField("Icon", item.Icon, true);
+            embed.AddField("Icon", item.IconDisplay, true);
             embed.AddField("Value", item.Price, true);
             embed.AddField("Type", item.ItemType, true);
             embed.AddField("Description", item.Summary());

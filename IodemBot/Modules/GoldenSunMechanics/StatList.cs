@@ -34,11 +34,16 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public override string ToString()
         {
-            return $"`VnPow: {VenusAtk} MrPow: {MarsAtk} JpPow: {JupiterAtk} McPow: {MercuryAtk}`\n" +
-                $"`VnRes: {VenusRes} MrRes: {MarsRes} JpRes: {JupiterRes} McRes: {MercuryRes}`";
+            return $"{((VenusAtk != 0 || VenusRes != 0) ? $"{GoldenSun.ElementIcons[Element.Venus]} `{VenusAtk} | {VenusRes}` " : "")}" +
+                $"{((MercuryAtk != 0 || MercuryRes != 0) ? $"{GoldenSun.ElementIcons[Element.Mercury]} `{MercuryAtk} | {MercuryRes}` " : "")}" +
+                "\n" +
+                $"{((MarsAtk != 0 || MarsRes != 0) ? $"{GoldenSun.ElementIcons[Element.Mars]} `{MarsAtk} | {MarsRes}` " : "")}" +
+                $"{((JupiterAtk != 0 || JupiterRes != 0) ? $"{GoldenSun.ElementIcons[Element.Jupiter]} `{JupiterAtk} | {JupiterRes}` " : "")}";
+            //return $"`VnPow: {VenusAtk} MrPow: {MarsAtk} JpPow: {JupiterAtk} McPow: {MercuryAtk}`\n" +
+            //    $"`VnRes: {VenusRes} MrRes: {MarsRes} JpRes: {JupiterRes} McRes: {MercuryRes}`";
         }
 
-        public string NonZerosToSTring()
+        public string NonZerosToString()
         {
             return $"{((VenusAtk != 0 || VenusRes != 0) ? $"{GoldenSun.ElementIcons[Element.Venus]} `{VenusAtk} | {VenusRes}` " : "")}" +
                 $"{((MarsAtk != 0 || MarsRes != 0) ? $"{GoldenSun.ElementIcons[Element.Mars]} `{MarsAtk} | {MarsRes}` " : "")}" +

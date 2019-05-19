@@ -73,8 +73,10 @@ namespace IodemBot.Modules.GoldenSunMechanics
             this.MageGearString = MageGearString ?? new List<string>();
 
             Inv = ItemDatabase.GetItems(InvString);
-            WarriorGear = ItemDatabase.GetItems(WarriorGearString);
-            MageGear = ItemDatabase.GetItems(MageGearString);
+            WarriorGear = Inv.Where(i => WarriorGearString.Contains(i.Name)).ToList();
+            MageGear = Inv.Where(i => MageGearString.Contains(i.Name)).ToList();
+            //WarriorGear = ItemDatabase.GetItems(WarriorGearString);
+            //MageGear = ItemDatabase.GetItems(MageGearString);
         }
 
         public Inventory()
@@ -163,13 +165,13 @@ namespace IodemBot.Modules.GoldenSunMechanics
             {
                 case (Detail.none):
                 default:
-                    return string.Join("", Inv.Select(i => i.Icon).ToArray());
+                    return string.Join("", Inv.Select(i => i.IconDisplay).ToArray());
 
                 case (Detail.Name):
-                    return string.Join(", ", Inv.Select(i => $"{i.Icon} {i.Name}").ToArray());
+                    return string.Join(", ", Inv.Select(i => $"{i.IconDisplay} {i.Name}{(i.IsBroken ? " (Broken)" : "")}").ToArray());
 
                 case (Detail.PriceAndName):
-                    return string.Join("\n", Inv.Select(i => $"{i.Icon} {i.Name} - <:coin:569836987767324672>{i.Price}").ToArray());
+                    return string.Join("\n", Inv.Select(i => $"{i.IconDisplay} {i.Name} - <:coin:569836987767324672>{i.Price}").ToArray());
             }
         }
 
@@ -191,27 +193,45 @@ namespace IodemBot.Modules.GoldenSunMechanics
             }
 
             var weapon = Gear.Where(i => i.IsWeapon).FirstOrDefault();
-            s.Append(weapon != null ? weapon.Icon : (archType == ArchType.Warrior ? "<:Swords:572526110357585920>" : "<:Staves:572526110370168851>"));
+            s.Append(weapon != null ? weapon.IconDisplay : (archType == ArchType.Warrior ? "<:Swords:572526110357585920>" : "<:Staves:572526110370168851>"));
 
             var armwear = Gear.Where(i => i.IsArmWear).FirstOrDefault();
-            s.Append(armwear != null ? armwear.Icon : (archType == ArchType.Warrior ? "<:Shields:572526110118641664>" : "<:Armlets:572526109908795402>"));
+            s.Append(armwear != null ? armwear.IconDisplay : (archType == ArchType.Warrior ? "<:Shields:572526110118641664>" : "<:Armlets:572526109908795402>"));
 
             var headwear = Gear.Where(i => i.IsHeadWear).FirstOrDefault();
-            s.Append(headwear != null ? headwear.Icon : (archType == ArchType.Warrior ? "<:Helmets:572526110055858226>" : "<:Circlets:572526110101864448>"));
+            s.Append(headwear != null ? headwear.IconDisplay : (archType == ArchType.Warrior ? "<:Helmets:572526110055858226>" : "<:Circlets:572526110101864448>"));
 
             var chestwear = Gear.Where(i => i.IsChestWear).FirstOrDefault();
-            s.Append(chestwear != null ? chestwear.Icon : (archType == ArchType.Warrior ? "<:Armors:572526109942611978>" : "<:Robes:572526110068441118>"));
+            s.Append(chestwear != null ? chestwear.IconDisplay : (archType == ArchType.Warrior ? "<:Armors:572526109942611978>" : "<:Robes:572526110068441118>"));
 
             var underwear = Gear.Where(i => i.IsUnderWear).FirstOrDefault();
-            s.Append(underwear != null ? underwear.Icon : "<:Shirts:572526110173167616>");
+            s.Append(underwear != null ? underwear.IconDisplay : "<:Shirts:572526110173167616>");
 
             var boots = Gear.Where(i => i.IsFootWear).FirstOrDefault();
-            s.Append(boots != null ? boots.Icon : "<:Boots:572526109975904257>");
+            s.Append(boots != null ? boots.IconDisplay : "<:Boots:572526109975904257>");
 
             var ring = Gear.Where(i => i.IsAccessoire).FirstOrDefault();
-            s.Append(ring != null ? ring.Icon : "<:Rings:572526110060052482>");
+            s.Append(ring != null ? ring.IconDisplay : "<:Rings:572526110060052482>");
 
             return s.ToString();
+        }
+
+        internal bool Repair(string item)
+        {
+            var it = Inv.Where(i => i.Name.Equals(item, StringComparison.CurrentCultureIgnoreCase) && i.IsBroken).FirstOrDefault();
+            if (it == null)
+            {
+                return false;
+            }
+
+            if (!RemoveBalance(it.SellValue))
+            {
+                return false;
+            }
+
+            it.IsBroken = false;
+            UpdateStrings();
+            return true;
         }
 
         public bool HasItem(string item)
@@ -233,7 +253,6 @@ namespace IodemBot.Modules.GoldenSunMechanics
             }
 
             var Gear = WarriorGear;
-            var GearString = WarriorGearString;
 
             if (archType == ArchType.Mage)
             {
@@ -243,7 +262,6 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 }
 
                 Gear = MageGear;
-                GearString = MageGearString;
             }
             else
             {
@@ -252,39 +270,53 @@ namespace IodemBot.Modules.GoldenSunMechanics
                     return false;
                 }
             }
-
+            Item g;
             if (i.IsWeapon)
             {
+                g = Gear.Where(w => w.IsWeapon).FirstOrDefault();
+                if (g != null && g.IsCursed) return false;
                 Gear.RemoveAll(w => w.IsWeapon);
             }
 
             if (i.IsHeadWear)
             {
+                g = Gear.Where(w => w.IsHeadWear).FirstOrDefault();
+                if (g != null && g.IsCursed) return false;
                 Gear.RemoveAll(w => w.IsHeadWear);
             }
 
             if (i.IsChestWear)
             {
+                g = Gear.Where(w => w.IsChestWear).FirstOrDefault();
+                if (g != null && g.IsCursed) return false;
                 Gear.RemoveAll(w => w.IsChestWear);
             }
 
             if (i.IsArmWear)
             {
+                g = Gear.Where(w => w.IsArmWear).FirstOrDefault();
+                if (g != null && g.IsCursed) return false;
                 Gear.RemoveAll(w => w.IsArmWear);
             }
 
             if (i.IsUnderWear)
             {
+                g = Gear.Where(w => w.IsUnderWear).FirstOrDefault();
+                if (g != null && g.IsCursed) return false;
                 Gear.RemoveAll(w => w.IsUnderWear);
             }
 
             if (i.IsFootWear)
             {
+                g = Gear.Where(w => w.IsFootWear).FirstOrDefault();
+                if (g != null && g.IsCursed) return false;
                 Gear.RemoveAll(w => w.IsFootWear);
             }
 
             if (i.IsAccessoire)
             {
+                g = Gear.Where(w => w.IsAccessoire).FirstOrDefault();
+                if (g != null && g.IsCursed) return false;
                 Gear.RemoveAll(w => w.IsAccessoire);
             }
 
@@ -296,7 +328,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         private void UpdateStrings()
         {
             InvString.Clear();
-            Inv.ForEach(w => InvString.Add(w.Name));
+            Inv.ForEach(w => InvString.Add(w.NameAndBroken));
 
             WarriorGear = WarriorGear.OrderBy(i => i.ItemType).ToList();
             WarriorGearString.Clear();
@@ -333,6 +365,11 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public bool RemoveCursedEquipment()
         {
+            if (!MageGear.Any(w => w.IsCursed) && !WarriorGear.Any(w => w.IsCursed))
+            {
+                return false;
+            }
+
             if (!RemoveBalance(10000))
             {
                 return false;

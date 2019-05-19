@@ -295,7 +295,7 @@ namespace IodemBot.Modules.ColossoBattles
                     && item.Unleash.Effects.Any(e => e.ValidSelection(this))
                     && Global.Random.Next(0, 100) <= item.ChanceToActivate)
                 {
-                    turnLog.Add($"{item.Icon} {name}'s {item.Name} starts to Glow.");
+                    turnLog.Add($"{item.IconDisplay} {name}'s {item.Name} starts to Glow.");
                     foreach (var effect in item.Unleash.Effects)
                     {
                         turnLog.AddRange(effect.Apply(this, this));
@@ -304,7 +304,7 @@ namespace IodemBot.Modules.ColossoBattles
                     if (Global.Random.Next(0, 100) <= item.ChanceToBreak)
                     {
                         item.IsBroken = true;
-                        turnLog.Add($"{item.Icon} {name}'s {item.Name} breaks;");
+                        turnLog.Add($"{item.IconDisplay} {name}'s {item.Name} breaks;");
                     }
                 }
             }

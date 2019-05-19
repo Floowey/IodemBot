@@ -150,9 +150,10 @@ namespace IodemBot.Modules
             embed.AddField("Colosso wins", account.ServerStats.ColossoWins, true);
 
             embed.AddField("Current Equip", account.Inv.GearToString(AdeptClassSeriesManager.GetClassSeries(account).Archtype), true);
-            embed.AddField("Psynergy", p.GetMoves(false), true);
+            embed.AddField("Psynergy", p.GetMoves(false), false);
 
-            embed.AddField("Stats", p.stats.ToString(), false);
+            embed.AddField("Stats", p.stats.ToString(), true);
+            embed.AddField("Elemental Stats", p.elstats.ToString(), true);
             embed.AddField("Unlocked Classes", account.BonusClasses.Length == 0 ? "none" : string.Join(", ", account.BonusClasses));
 
             var Footer = new EmbedFooterBuilder();
