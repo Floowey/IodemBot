@@ -2611,7 +2611,7 @@
             "MercuryAtk": 17,
             "MarsRes": 30
         },
-        "PPRegen": 12
+        "PPRegen": 12,
         "HPRegen": 5
     },
     "Cocktail Dress": {
@@ -2883,7 +2883,7 @@
         "AddStatsOnEquip": {
             "Def": 38,
             "MaxPP": 12
-        }
+        },
         "AddElStatsOnEquip": {
             "VenusAtk": 15,
             "VenusRes": 25,
@@ -3124,7 +3124,7 @@
         "AddStatsOnEquip": {
             "Def": 28,
             "MaxHP": 7
-        }
+        },
         "AddElStatsOnEquip": {
             "VenusRes": 25,
             "MarsAtk": 30
@@ -3311,7 +3311,7 @@
         "AddStatsOnEquip": {
             "Def": 10,
             "Atk": 7
-        }
+        },
         "AddElStatsOnEquip": {
             "MercuryRes": 15
         }
@@ -3454,11 +3454,11 @@
         "IsArtifact": true,
         "AddStatsOnEquip": {
             "Def": 24
-        }
+        },
         "AddElStatsOnEquip": {
-            "VenusRes": 15
-            "VenusAtk": 15
-            "JupiterAtk" 10
+            "VenusRes": 15,
+            "VenusAtk": 15,
+            "JupiterAtk" 10,
             "MarsRes": -10
         }
     },
@@ -3541,7 +3541,7 @@
         "IsArtifact": true,
         "AddStatsOnEquip": {
             "Def": 38
-        }
+        },
         "AddElStatsOnEquip": {
             "VenusRes": 25
         }
@@ -3830,7 +3830,7 @@
         "IsArtifact": true,
         "AddStatsOnEquip": {
             "Def": 36
-        }
+        },
         "AddElStatsOnEquip": {
             "MercuryRes": 30,
             "MercuryAtk": 20,
