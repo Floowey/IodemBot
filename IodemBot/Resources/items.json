@@ -4724,7 +4724,7 @@
     "Heirloom Ring": {
         "Name": "Heirloom Ring",
         "Price": 5600,
-        "Icon": ":ring:",
+        "Icon": "<:Heirloom_Ring:580487258604306461>",
         "ItemType": "Ring",
         "IsEquippable": true,
         "IsArtifact": true,
@@ -4787,7 +4787,7 @@
     "Zol Ring": {
         "Name": "Zol Ring",
         "Price": 2500,
-        "Icon": ":ring:",
+        "Icon": "<:Zol_Ring:580487258289864726>",
         "ItemType": "Ring",
         "IsEquippable": true,
         "IsArtifact": true,
@@ -4798,7 +4798,7 @@
     "Lady Moons Ring": {
         "Name": "Lady Moons Ring",
         "Price": 3300,
-        "Icon": ":ring:",
+        "Icon": "<:Lady_Moons_Ring:580487258277150731>",
         "ItemType": "Ring",
         "IsEquippable": true,
         "IsArtifact": true,
@@ -4815,7 +4815,7 @@
     "Lord Suns Ring": {
         "Name": "Lord Suns Ring",
         "Price": 4900,
-        "Icon": ":ring:",
+        "Icon": "<:Lord_Suns_Ring:580487258407174165>",
         "ItemType": "Ring",
         "IsEquippable": true,
         "IsArtifact": true,
