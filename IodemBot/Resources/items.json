@@ -4562,7 +4562,7 @@
     },
     "Soul Ring": {
         "Name": "Soul Ring",
-        "Price": 18000,
+        "Price": 12000,
         "Icon": "<:Soul_Ring:569854314202529802>",
         "ItemType": "Ring",
         "IsEquippable": true,
@@ -4706,7 +4706,7 @@
     },
     "Spirit Ring": {
         "Name": "Spirit Ring",
-        "Price": 3600,
+        "Price": 8000,
         "Icon": "<:Spirit_Ring:569854313904603147>",
         "ItemType": "Ring",
         "IsEquippable": true,
@@ -4716,13 +4716,13 @@
             "effectImages": [
                 {
                     "id": "HPDrain",
-                    "args": [ "75", "10" ]
+                    "args": [ "60", "10" ]
                 }
             ]
         }
     },
     "Heirloom Ring": {
-        "Name": "Heirloom Ring",
+        "Name": "<:Heirloom_Ring:580487258604306461> ",
         "Price": 5600,
         "Icon": ":ring:",
         "ItemType": "Ring",
@@ -4785,7 +4785,7 @@
         }
     },
     "Zol Ring": {
-        "Name": "Zol Ring",
+        "Name": "<:Zol_Ring:580487258289864726>",
         "Price": 2500,
         "Icon": ":ring:",
         "ItemType": "Ring",
@@ -4796,7 +4796,7 @@
         }
     },
     "Lady Moons Ring": {
-        "Name": "Lady Moons Ring",
+        "Name": "<:Lady_Moons_Ring:580487258277150731>",
         "Price": 3300,
         "Icon": ":ring:",
         "ItemType": "Ring",
@@ -4813,7 +4813,7 @@
         }
     },
     "Lord Suns Ring": {
-        "Name": "Lord Suns Ring",
+        "Name": "<:Lord_Suns_Ring:580487258407174165>",
         "Price": 4900,
         "Icon": ":ring:",
         "ItemType": "Ring",
