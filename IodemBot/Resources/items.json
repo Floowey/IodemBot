@@ -295,7 +295,11 @@
             "effectImages": [
                 {
                     "Id": "AddDamage",
-                    "args": [ "152" ]
+                    "args": [ "52" ]
+                },
+                {
+                    "Id": "HPDrain",
+                    "args": [ "100", "50" ]
                 }
             ]
         }
@@ -448,6 +452,10 @@
                 {
                     "Id": "AddDamage",
                     "args": [ "22" ]
+                },
+                {
+                    "Id": "PPDrain",
+                    "args": [ "10", "50" ]
                 }
             ]
         }
@@ -494,6 +502,10 @@
                 {
                     "Id": "AddDamage",
                     "args": [ "45" ]
+                },
+                {
+                    "Id": "HPDrain",
+                    "args": [ "100", "50" ]
                 }
             ]
         }
@@ -615,6 +627,10 @@
                 {
                     "Id": "AddDamage",
                     "args": [ "29" ]
+                },
+                {
+                    "Id": "HPDrain",
+                    "args": [ "100", "50" ]
                 }
             ]
         }
@@ -742,6 +758,10 @@
                 {
                     "Id": "AddDamage",
                     "args": [ "58" ]
+                },
+                {
+                    "Id": "PPDrain",
+                    "args": [ "10", "50" ]
                 }
             ]
         }
@@ -788,6 +808,10 @@
                 {
                     "Id": "AddDamage",
                     "args": [ "50" ]
+                },
+                {
+                    "Id": "PPDrain",
+                    "args": [ "10", "50" ]
                 }
             ]
         }
@@ -1209,6 +1233,10 @@
                 {
                     "Id": "AddDamage",
                     "args": [ "50" ]
+                },
+                {
+                    "Id": "HPDrain",
+                    "args": [ "10", "50" ]
                 }
             ]
         }
@@ -1647,6 +1675,10 @@
                 {
                     "Id": "AddDamage",
                     "args": [ "43" ]
+                },
+                {
+                    "Id": "HPDrain",
+                    "args": [ "100", "50" ]
                 }
             ]
         }
@@ -1712,7 +1744,6 @@
         "AddStatsOnEquip": {
             "Atk": 158
         },
-        "HPRegen": 20,
         "Unleash": {
             "UnleashName": "Flare Burst",
             "UnleashAlignment": 1,
@@ -1720,8 +1751,17 @@
                 {
                     "Id": "AddDamage",
                     "args": [ "54" ]
+                },
+                {
+                    "Id": "HPDrain",
+                    "args": [ "100", "50" ]
                 }
             ]
+        }
+        "Unleash": {
+            "UnleashName": "Life Nourish",
+            "UnleashAlignment": 0,
+            "effectImages": 
         }
     },
     "Gaias Axe": {
