@@ -33,7 +33,7 @@
     },
     "Heavy Mace": {
         "Name": "Heavy Mace",
-        "Price": 375,
+        "Price": 500,
         "Icon": "<:Heavy_Mace:569901405025075212>",
         "ItemType": "Mace",
         "IsEquippable": true,
@@ -147,7 +147,7 @@
     },
     "Blessed Mace": {
         "Name": "Blessed Mace",
-        "Price": 10875,
+        "Price": 14500,
         "Icon": "<:Blessed_Mace:569901405133865011>",
         "ItemType": "Mace",
         "IsEquippable": true,
@@ -199,14 +199,14 @@
                 },
                 {
                     "id": "Stat",
-                    "args": [ "Defense", "0.75", "50" ]
+                    "args": [ "Defense", "0.25", "50" ]
                 }
             ]
         }
     },
     "Hagbone Mace": {
         "Name": "Hagbone Mace",
-        "Price": 10400,
+        "Price": 8400,
         "Icon": "<:Hagbone_Mace:569901405410820116>",
         "ItemType": "Mace",
         "IsEquippable": true,
@@ -281,7 +281,7 @@
     },
     "Rising Mace": {
         "Name": "Rising Mace",
-        "Price": 10400,
+        "Price": 13900,
         "Icon": "<:Rising_Mace:569901405520003072>",
         "ItemType": "Mace",
         "IsEquippable": true,
@@ -306,7 +306,7 @@
     },
     "Tungsten Mace": {
         "Name": "Tungsten Mace",
-        "Price": 10400,
+        "Price": 14700,
         "Icon": "<:Tungsten_Mace:569901405440049156>",
         "ItemType": "Mace",
         "IsEquippable": true,
@@ -320,7 +320,7 @@
             "effectImages": [
                 {
                     "Id": "AddDamage",
-                    "args": [ "42" ]
+                    "args": [ "58" ]
                 },
                 {
                     "id": "MayIgnoreDefense",
@@ -331,7 +331,7 @@
     },
     "Vajra Mace": {
         "Name": "Vajra Mace",
-        "Price": 18600,
+        "Price": 24800,
         "Icon": "<:Vajra_Mace:578172901354635264>",
         "ItemType": "Mace",
         "IsEquippable": true,
@@ -530,7 +530,7 @@
                 },
                 {
                     "id": "Stat",
-                    "args": [ "Attack", "0.75", "35" ]
+                    "args": [ "Attack", "0.25", "35" ]
                 }
             ]
         }
@@ -887,7 +887,7 @@
                 },
                 {
                     "id": "Condition",
-                    "args": [ "Delusion", "100" ]
+                    "args": [ "Delusion", "60" ]
                 }
             ]
         }
@@ -1224,8 +1224,7 @@
         "IsEquippable": true,
         "IsArtifact": true,
         "AddStatsOnEquip": {
-            "Atk": 141,
-            "PPRegen": 2
+            "Atk": 141
         },
         "Unleash": {
             "UnleashName": "Soul Shatter",
@@ -1312,7 +1311,7 @@
                 },
                 {
                     "Id": "MayIgnoreDefense",
-                    "args": [ "50", "100" ]
+                    "args": [ "50", "50" ]
                 }
             ]
         }
@@ -1647,7 +1646,7 @@
     },
     "Captains Axe": {
         "Name": "Captains Axe",
-        "Price": 5100,
+        "Price": 6800,
         "Icon": "<:Captains_Axe:569855200702234633>",
         "ItemType": "Axe",
         "IsEquippable": true,
@@ -1667,8 +1666,7 @@
         "IsEquippable": true,
         "IsArtifact": true,
         "AddStatsOnEquip": {
-            "Atk": 127,
-            "HPRegen": 10
+            "Atk": 127
         },
         "Unleash": {
             "UnleashName": "Vein Tap",
@@ -1727,6 +1725,10 @@
                 {
                     "Id": "AddDamage",
                     "args": [ "41" ]
+                },
+                {
+                    "id": "Stat",
+                    "args": [ "Resistance", "0.6", "75" ]
                 }
             ]
         }
@@ -1840,7 +1842,7 @@
     },
     "Machete": {
         "Name": "Machete",
-        "Price": 10,
+        "Price": 30,
         "Icon": "<:Machete:569855398249758728>",
         "ItemType": "LightBlade",
         "IsEquippable": true,
@@ -1952,7 +1954,7 @@
                 },
                 {
                     "Id": "HPDrain",
-                    "args": [ "50", "50" ]
+                    "args": [ "100", "50" ]
                 }
             ]
         }
@@ -2044,6 +2046,10 @@
                 {
                     "Id": "AddDamage",
                     "args": [ "64" ]
+                },
+                {
+                    "Id": "MayIgnoreDefense",
+                    "args": [ "50", "50" ]
                 }
             ]
         }
@@ -2144,6 +2150,10 @@
                 {
                     "Id": "AddDamage",
                     "args": [ "25" ]
+                },
+                {
+                    "id": "Stat",
+                    "args": [ "Resistance", "0.6", "75" ]
                 }
             ]
         }
@@ -2268,6 +2278,10 @@
                 {
                     "Id": "AddDamage",
                     "args": [ "54" ]
+                },
+                {
+                    "Id": "Stat",
+                    "args": [ "Def", "0.25", "25" ]
                 }
             ]
         }
@@ -2306,7 +2320,7 @@
         "IsEquippable": true,
         "IsArtifact": true,
         "AddStatsOnEquip": {
-            "Atk": 173
+            "Atk": 178
         },
         "Unleash": {
             "UnleashName": "Vengeance",
@@ -2426,7 +2440,7 @@
                 },
                 {
                     "id": "Stat",
-                    "args": [ "Attack", "0.6", "75" ]
+                    "args": [ "Attack", "0.25", "75" ]
                 }
             ]
         }
@@ -2439,7 +2453,7 @@
         "IsEquippable": true,
         "IsArtifact": true,
         "AddStatsOnEquip": {
-            "Atk": 135
+            "Atk": 140
         },
         "Unleash": {
             "UnleashName": "Cyclone Shot",
@@ -2473,7 +2487,7 @@
             "effectImages": [
                 {
                     "id": "MultiplyDamage",
-                    "args": [ "1.6" ]
+                    "args": [ "1.7" ]
                 },
                 {
                     "id": "Condition",
