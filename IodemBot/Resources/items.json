@@ -2537,7 +2537,7 @@
         "AddStatsOnEquip": {
             "Def": 36
         },
-        "HPRegen": 10
+        "HPRegen": 5
     },
     "Magical Cassock": {
         "Name": "Magical Cassock",
@@ -2702,8 +2702,8 @@
             "Def": 4
         }
     },
-    "Oracle Robe": {
-        "Name": "Oracle Robe",
+    "Oracles Robe": {
+        "Name": "Oracles Robe",
         "Price": 13500,
         "Icon": "<:Oracles_Robe:569854450223808532>",
         "ItemType": "Robe",
@@ -2866,6 +2866,13 @@
             "MaxHP": 1990,
             "MaxPP": 990
         },
+        "MultStatsOnEquip": {
+            "Atk": 150
+            "Spd": 150
+            "Def": 150
+            "MaxHP": 150
+            "MaxPP": 120
+        },
         "HPRegen": 2000,
         "PPRegen": 90,
         "increaseUnleashRate": 100,
@@ -2947,7 +2954,7 @@
     },
     "Erebus Armor": {
         "Name": "Erebus Armor",
-        "Price": 12000,
+        "Price": 9000,
         "Icon": "<:Erebus_Armor:569854623196774410>",
         "ItemType": "HeavyArmor",
         "IsEquippable": true,
@@ -3056,7 +3063,7 @@
             "Def": 16
         },
         "AddElStatsOnEquip": {
-            "MercuryRes": 15
+            "MercuryRes": 20
         }
     },
     "Adepts Clothes": {
@@ -3093,7 +3100,7 @@
         "IsEquippable": true,
         "IsArtifact": true,
         "AddStatsOnEquip": {
-            "Def": 16,
+            "Def": 25,
             "Spd": 10
         },
         "AddElStatsOnEquip": {
@@ -3235,7 +3242,7 @@
         "IsEquippable": true,
         "IsArtifact": true,
         "AddStatsOnEquip": {
-            "Def": 42,
+            "Def": 45,
             "Atk": 5
         },
         "increaseUnleashRate": 10
@@ -3254,7 +3261,7 @@
     },
     "Tritons Ward": {
         "Name": "Tritons Ward",
-        "Price": 16200,
+        "Price": 21600,
         "Icon": "<:Tritons_Ward:569854675906461716>",
         "ItemType": "LightArmor",
         "IsEquippable": true,
@@ -3764,7 +3771,7 @@
     },
     "Glittering Tiara": {
         "Name": "Glittering Tiara",
-        "Price": 3900,
+        "Price": 3600,
         "Icon": "<:Glittering_Tiara:569830373371019285>",
         "ItemType": "Circlet",
         "IsEquippable": true,
@@ -3841,7 +3848,7 @@
         "IsEquippable": true,
         "IsArtifact": true,
         "AddStatsOnEquip": {
-            "Def": 27,
+            "Def": 32,
             "MaxPP": 15
         }
     },
@@ -4114,7 +4121,7 @@
         "ItemType": "Bracelet",
         "IsEquippable": true,
         "AddStatsOnEquip": {
-            "Def": 10
+            "Def": 17
         }
     },
     "Iron Shield": {
@@ -4149,7 +4156,10 @@
         "IsArtifact": true,
         "IsEquippable": true,
         "AddStatsOnEquip": {
-            "Def": 25
+            "Def": 27
+        }
+        "MultStatsOnEquip": {
+            "Def": 120
         }
     },
     "Bone Armlet": {
@@ -4273,6 +4283,10 @@
         "IsEquippable": true,
         "AddStatsOnEquip": {
             "Def": 35
+        },
+        "AddElStatsOnEquip": {
+            "JupiterAtk": 10,
+            "MarsAtk": 10
         }
     },
     "Battle Gloves": {
@@ -4686,7 +4700,7 @@
     },
     "Healing Ring": {
         "Name": "Healing Ring",
-        "Price": 600,
+        "Price": 800,
         "Icon": "<:Healing_Ring:569854314118643732>",
         "ItemType": "Ring",
         "IsEquippable": true,
