@@ -14,7 +14,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
     public class Inventory
     {
-        public static readonly int MaxInvSize = 26;
+        public static readonly int MaxInvSize = 30;
         private static readonly ItemType[] WarriorExclusive = { ItemType.LongSword, ItemType.Shield, ItemType.Helmet, ItemType.HeavyArmor, ItemType.Greave };
         private static readonly ItemType[] MageExclusive = { ItemType.Staff, ItemType.Circlet, ItemType.Bow, ItemType.Robe, ItemType.Bracelet };
         private static readonly ChestQuality[] chestQualities = { ChestQuality.Wooden, ChestQuality.Normal, ChestQuality.Silver, ChestQuality.Gold, ChestQuality.Adept, ChestQuality.Daily };
@@ -274,49 +274,77 @@ namespace IodemBot.Modules.GoldenSunMechanics
             if (i.IsWeapon)
             {
                 g = Gear.Where(w => w.IsWeapon).FirstOrDefault();
-                if (g != null && g.IsCursed) return false;
+                if (g != null && g.IsCursed)
+                {
+                    return false;
+                }
+
                 Gear.RemoveAll(w => w.IsWeapon);
             }
 
             if (i.IsHeadWear)
             {
                 g = Gear.Where(w => w.IsHeadWear).FirstOrDefault();
-                if (g != null && g.IsCursed) return false;
+                if (g != null && g.IsCursed)
+                {
+                    return false;
+                }
+
                 Gear.RemoveAll(w => w.IsHeadWear);
             }
 
             if (i.IsChestWear)
             {
                 g = Gear.Where(w => w.IsChestWear).FirstOrDefault();
-                if (g != null && g.IsCursed) return false;
+                if (g != null && g.IsCursed)
+                {
+                    return false;
+                }
+
                 Gear.RemoveAll(w => w.IsChestWear);
             }
 
             if (i.IsArmWear)
             {
                 g = Gear.Where(w => w.IsArmWear).FirstOrDefault();
-                if (g != null && g.IsCursed) return false;
+                if (g != null && g.IsCursed)
+                {
+                    return false;
+                }
+
                 Gear.RemoveAll(w => w.IsArmWear);
             }
 
             if (i.IsUnderWear)
             {
                 g = Gear.Where(w => w.IsUnderWear).FirstOrDefault();
-                if (g != null && g.IsCursed) return false;
+                if (g != null && g.IsCursed)
+                {
+                    return false;
+                }
+
                 Gear.RemoveAll(w => w.IsUnderWear);
             }
 
             if (i.IsFootWear)
             {
                 g = Gear.Where(w => w.IsFootWear).FirstOrDefault();
-                if (g != null && g.IsCursed) return false;
+                if (g != null && g.IsCursed)
+                {
+                    return false;
+                }
+
                 Gear.RemoveAll(w => w.IsFootWear);
             }
 
             if (i.IsAccessoire)
             {
                 g = Gear.Where(w => w.IsAccessoire).FirstOrDefault();
-                if (g != null && g.IsCursed) return false;
+                if (g != null && g.IsCursed)
+                {
+                    return false;
+                }
+
                 Gear.RemoveAll(w => w.IsAccessoire);
             }
 

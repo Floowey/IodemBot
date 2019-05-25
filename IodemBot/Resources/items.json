@@ -1758,11 +1758,6 @@
                 }
             ]
         }
-        "Unleash": {
-            "UnleashName": "Life Nourish",
-            "UnleashAlignment": 0,
-            "effectImages": 
-        }
     },
     "Gaias Axe": {
         "Name": "Gaias Axe",
@@ -1818,7 +1813,7 @@
     "Herculean Axe": {
         "Name": "Herculean Axe",
         "Price": 28000,
-        "Icon": ":Herculean_Axe:",
+        "Icon": "<:Herculean_Axe:580827489446789130>",
         "ItemType": "Axe",
         "IsEquippable": true,
         "IsArtifact": true,
@@ -2001,6 +1996,10 @@
                 {
                     "Id": "AddDamage",
                     "args": [ "38" ]
+                },
+                {
+                    "Id": "Stat",
+                    "args": [ "Resistance", "0.4", "40" ]
                 }
             ]
         }
@@ -2605,7 +2604,7 @@
             "effectImages": [
                 {
                     "id": "Stat",
-                    "args": [ "Attack", "0,8" ]
+                    "args": [ "Attack", "0.8" ]
                 }
             ]
         }
@@ -2867,10 +2866,10 @@
             "MaxPP": 990
         },
         "MultStatsOnEquip": {
-            "Atk": 150
-            "Spd": 150
-            "Def": 150
-            "MaxHP": 150
+            "Atk": 150,
+            "Spd": 150,
+            "Def": 150,
+            "MaxHP": 150,
             "MaxPP": 120
         },
         "HPRegen": 2000,
@@ -4157,7 +4156,7 @@
         "IsEquippable": true,
         "AddStatsOnEquip": {
             "Def": 27
-        }
+        },
         "MultStatsOnEquip": {
             "Def": 120
         }
@@ -4790,7 +4789,7 @@
         }
     },
     "Heirloom Ring": {
-        "Name": "<:Heirloom_Ring:580487258604306461> ",
+        "Name": "Heirloom Ring",
         "Price": 5600,
         "Icon": "<:Heirloom_Ring:580487258604306461>",
         "ItemType": "Ring",
@@ -4853,7 +4852,7 @@
         }
     },
     "Zol Ring": {
-        "Name": "<:Zol_Ring:580487258289864726>",
+        "Name": "Zol Ring",
         "Price": 2500,
         "Icon": "<:Zol_Ring:580487258289864726>",
         "ItemType": "Ring",
@@ -4864,7 +4863,7 @@
         }
     },
     "Lady Moons Ring": {
-        "Name": "<:Lady_Moons_Ring:580487258277150731>",
+        "Name": "Lady Moons Ring",
         "Price": 3300,
         "Icon": "<:Lady_Moons_Ring:580487258277150731>",
         "ItemType": "Ring",
@@ -4881,7 +4880,7 @@
         }
     },
     "Lord Suns Ring": {
-        "Name": "<:Lord_Suns_Ring:580487258407174165>",
+        "Name": "Lord Suns Ring",
         "Price": 4900,
         "Icon": "<:Lord_Suns_Ring:580487258407174165>",
         "ItemType": "Ring",

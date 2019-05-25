@@ -40,11 +40,13 @@ namespace IodemBot.Modules.GoldenSunMechanics
             shop.Clear();
             shop.Add(GetRandomItem(8, 0, RandomItemType.NonArtifact));
             shop.Add(GetRandomItem(20, 0, RandomItemType.NonArtifact));
-            shop.Add(GetRandomItem(30, 0, RandomItemType.NonArtifact));
+            shop.Add(GetRandomItem(20, 0, RandomItemType.NonArtifact));
 
             shop.Add(GetRandomItem(30, 0, RandomItemType.Any));
+            shop.Add(GetRandomItem(35, 0, RandomItemType.Any));
+            shop.Add(GetRandomItem(40, 0, RandomItemType.Any));
 
-            shop.Add(GetRandomItem(30, 0, RandomItemType.Artifact));
+            shop.Add(GetRandomItem(20, 0, RandomItemType.Artifact));
             shop.Add(GetRandomItem(40, 0, RandomItemType.Artifact));
             shop.Add(GetRandomItem(50, 0, RandomItemType.Artifact));
             lastReset = DateTime.Now;
@@ -74,7 +76,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public static string GetRandomItem(uint level, double bonus = 0, RandomItemType rt = RandomItemType.Any)
         {
             uint n = (uint)(level + Math.Sqrt(bonus / 50));
-            var dist = new Accord.Statistics.Distributions.Univariate.GeneralizedParetoDistribution(Math.Pow(n, 2.2), Math.Pow(n, 2.26), 0.1 - n / 200);
+            var dist = new Accord.Statistics.Distributions.Univariate.GeneralizedParetoDistribution(Math.Pow(n, 2.3), Math.Pow(n, 2.26), 0.1 - n / 200);
             var value = dist.Generate();
 
             var allItems = itemsDatabase.Values.OrderByDescending(d => d.Price);
