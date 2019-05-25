@@ -1903,7 +1903,7 @@
         "range": 1,
         "element": 0,
         "PPCost": 0,
-         "power": 18
+         "power": 18,
         "effectImages": [
         {
         "id": "condition",
@@ -1927,7 +1927,7 @@
         "range": 1,
         "element": 0,
         "PPCost": 0,
-         "power": 37
+         "power": 37,
         "effectImages": [
         {
         "id": "Stat",
