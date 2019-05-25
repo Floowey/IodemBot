@@ -1877,5 +1877,62 @@
                 "args": [ "Poison", "50" ]
             }
         ]
+    },
+     "Brute Force": {
+        "name": "Brute Force",
+        "targetType": 3,
+        "emote": ":angry1:",
+        "range": 1,
+        "element": 0,
+        "PPCost": 0,
+        "dmgMult": 1.9,
+    },
+     "Massive Swing": {
+        "name": "Massive Swing",
+        "targetType": 4,
+        "emote": ":angry1:",
+        "range": 5,
+        "element": 0,
+        "PPCost": 0,
+         "addDamage": 50
+    },
+    "Gasping Breath": {
+        "name": "Gasping Breath",
+        "targetType": 3,
+        "emote": ":gear:",
+        "range": 1,
+        "element": 0,
+        "PPCost": 0,
+         "power": 18,
+        "effectImages": [
+        {
+        "id": "condition",
+        "args": ["Haunt", "20"]
     }
+    ]
+    },
+    "Pebble Breath": {
+        "name": "Gasping Breath",
+        "targetType": 3,
+        "emote": ":gear:",
+        "range": 1,
+        "element": 0,
+        "PPCost": 0,
+         "power": 24
+    },
+    "Sizzle Breath": {
+        "name": "Sizzle Breath",
+        "targetType": 3,
+        "emote": ":gear:",
+        "range": 1,
+        "element": 0,
+        "PPCost": 0,
+         "power": 37,
+        "effectImages": [
+        {
+        "id": "Stat",
+        "args": ["Def", "0.8", "25"]
+    }
+    ]
+    },
 }
