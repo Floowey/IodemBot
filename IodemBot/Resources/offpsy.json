@@ -1877,5 +1877,23 @@
                 "args": [ "Poison", "50" ]
             }
         ]
-    }
+    },
+     "Brute Force": {
+        "name": "Brute Force",
+        "targetType": 3,
+        "emote": ":angry1:",
+        "range": 1,
+        "element": 0,
+        "PPCost": 0,
+        "dmgMult": 1.9,
+    },
+     "Massive Swing": {
+        "name": "Massive Swing",
+        "targetType": 4,
+        "emote": ":angry1:",
+        "range": 5,
+        "element": 0,
+        "PPCost": 0,
+         "addDamage": 50
+    },
 }
