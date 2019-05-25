@@ -10,7 +10,6 @@ namespace IodemBot.Modules.GoldenSunMechanics
         private static Dictionary<string, OffensivePsynergy> offpsy = new Dictionary<string, OffensivePsynergy>(StringComparer.OrdinalIgnoreCase);
         private static Dictionary<string, HealPsynergy> healpsy = new Dictionary<string, HealPsynergy>(StringComparer.OrdinalIgnoreCase);
         private static Dictionary<string, StatusPsynergy> statpsy = new Dictionary<string, StatusPsynergy>(StringComparer.OrdinalIgnoreCase);
-        private static Dictionary<string, Psynergy> otherPsynergy = new Dictionary<string, Psynergy>(StringComparer.InvariantCultureIgnoreCase);
 
         static PsynergyDatabase()
         {

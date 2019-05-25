@@ -1,36 +1,21 @@
 ﻿using Newtonsoft.Json;
-using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using static IodemBot.Modules.GoldenSunMechanics.Psynergy;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
-    public class StatList
-    {
-        private static Dictionary<string, Stats> stats;
-        private static Stats baseStats = new Stats(35, 20, 20, 6, 8); //30, 20, 11, 6, 8
-
-        static StatList()
-        {
-            string json = File.ReadAllText("Resources/stats.json");
-            var data = JsonConvert.DeserializeObject<dynamic>(json);
-            stats = data.ToObject<Dictionary<string, Stats>>();
-        }
-    }
-
     public struct ElementalStats
     {
-        public uint VenusAtk { get; set; }
-        public uint VenusRes { get; set; }
-        public uint MarsAtk { get; set; }
-        public uint MarsRes { get; set; }
-        public uint JupiterAtk { get; set; }
-        public uint JupiterRes { get; set; }
-        public uint MercuryAtk { get; set; }
-        public uint MercuryRes { get; set; }
+        public int VenusAtk { get; set; }
+        public int VenusRes { get; set; }
+        public int MarsAtk { get; set; }
+        public int MarsRes { get; set; }
+        public int JupiterAtk { get; set; }
+        public int JupiterRes { get; set; }
+        public int MercuryAtk { get; set; }
+        public int MercuryRes { get; set; }
 
-        public ElementalStats(uint venusAtk, uint venusRes, uint marsAtk, uint marsDef, uint jupiterAtk, uint jupiterDef, uint mercuryAtk, uint mercuryDef) : this()
+        public ElementalStats(int venusAtk, int venusRes, int marsAtk, int marsDef, int jupiterAtk, int jupiterDef, int mercuryAtk, int mercuryDef) : this()
         {
             VenusAtk = venusAtk;
             VenusRes = venusRes;
@@ -42,23 +27,41 @@ namespace IodemBot.Modules.GoldenSunMechanics
             MercuryRes = mercuryDef;
         }
 
-        public override string ToString()
+        public static ElementalStats operator +(ElementalStats s1, ElementalStats s2)
         {
-            return $"`VnPow: {VenusAtk} MrPow: {MarsAtk} JpPow: {JupiterAtk} McPow: {MercuryAtk}`\n" +
-                $"`VnRes: {VenusRes} MrRes: {MarsRes} JpRes: {JupiterRes} McRes: {MercuryRes}`";
+            return new ElementalStats(s1.VenusAtk + s2.VenusAtk, s1.VenusRes + s2.VenusRes, s1.MarsAtk + s2.MarsAtk, s1.MarsRes + s2.MarsRes, s1.JupiterAtk + s2.JupiterAtk, s1.JupiterRes + s2.JupiterRes, s1.MercuryAtk + s2.MercuryAtk, s1.MercuryRes + s2.MercuryRes);
         }
 
-        internal uint leastRes()
+        public override string ToString()
+        {
+            return $"{((VenusAtk != 0 || VenusRes != 0) ? $"{GoldenSun.ElementIcons[Element.Venus]} `{VenusAtk} | {VenusRes}` " : "")}" +
+                $"{((MercuryAtk != 0 || MercuryRes != 0) ? $"{GoldenSun.ElementIcons[Element.Mercury]} `{MercuryAtk} | {MercuryRes}` " : "")}" +
+                "\n" +
+                $"{((MarsAtk != 0 || MarsRes != 0) ? $"{GoldenSun.ElementIcons[Element.Mars]} `{MarsAtk} | {MarsRes}` " : "")}" +
+                $"{((JupiterAtk != 0 || JupiterRes != 0) ? $"{GoldenSun.ElementIcons[Element.Jupiter]} `{JupiterAtk} | {JupiterRes}` " : "")}";
+            //return $"`VnPow: {VenusAtk} MrPow: {MarsAtk} JpPow: {JupiterAtk} McPow: {MercuryAtk}`\n" +
+            //    $"`VnRes: {VenusRes} MrRes: {MarsRes} JpRes: {JupiterRes} McRes: {MercuryRes}`";
+        }
+
+        public string NonZerosToString()
+        {
+            return $"{((VenusAtk != 0 || VenusRes != 0) ? $"{GoldenSun.ElementIcons[Element.Venus]} `{VenusAtk} | {VenusRes}` " : "")}" +
+                $"{((MarsAtk != 0 || MarsRes != 0) ? $"{GoldenSun.ElementIcons[Element.Mars]} `{MarsAtk} | {MarsRes}` " : "")}" +
+                $"{((JupiterAtk != 0 || JupiterRes != 0) ? $"{GoldenSun.ElementIcons[Element.Jupiter]} `{JupiterAtk} | {JupiterRes}` " : "")}" +
+                $"{((MercuryAtk != 0 || MercuryRes != 0) ? $"{GoldenSun.ElementIcons[Element.Mercury]} `{MercuryAtk} | {MercuryRes}` " : "")}";
+        }
+
+        internal int LeastRes()
         {
             return (new[] { VenusRes, MarsRes, JupiterRes, MercuryRes }).Min();
         }
 
-        internal uint highestRes()
+        internal int HighestRes()
         {
             return (new[] { VenusRes, MarsRes, JupiterRes, MercuryRes }).Max();
         }
 
-        internal uint GetPower(Element e)
+        internal int GetPower(Element e)
         {
             switch (e)
             {
@@ -70,7 +73,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             }
         }
 
-        internal uint GetRes(Element e)
+        internal int GetRes(Element e)
         {
             switch (e)
             {
@@ -85,18 +88,18 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
     public class Stats
     {
-        public uint maxHP { get; set; }
-        [JsonIgnore] public uint HP { get; set; }
-        public uint maxPP { get; set; }
-        [JsonIgnore] public uint PP { get; set; }
-        public uint Atk { get; set; }
-        public uint Def { get; set; }
-        public uint Spd { get; set; }
+        public int MaxHP { get; set; }
+        [JsonIgnore] public int HP { get; set; }
+        public int MaxPP { get; set; }
+        [JsonIgnore] public int PP { get; set; }
+        public int Atk { get; set; }
+        public int Def { get; set; }
+        public int Spd { get; set; }
 
-        public Stats(uint maxHP, uint maxPP, uint atk, uint def, uint spd)
+        public Stats(int maxHP, int maxPP, int atk, int def, int spd)
         {
-            this.maxHP = maxHP;
-            this.maxPP = maxPP;
+            this.MaxHP = maxHP;
+            this.MaxPP = maxPP;
             HP = maxHP;
             PP = maxPP;
             Atk = atk;
@@ -106,12 +109,40 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public static Stats operator *(Stats s1, double factor)
         {
-            return new Stats((uint)(s1.maxHP * factor), (uint)(s1.maxPP * factor), (uint)(s1.Atk * factor), (uint)(s1.Def * factor), (uint)(s1.Spd * factor));
+            return new Stats((int)(s1.MaxHP * factor), (int)(s1.MaxPP * factor), (int)(s1.Atk * factor), (int)(s1.Def * factor), (int)(s1.Spd * factor));
+        }
+
+        public static Stats operator *(Stats s1, Stats s2)
+        {
+            return new Stats(s1.MaxHP * s2.MaxHP, s1.MaxPP * s2.MaxPP, s1.Atk * s2.Atk, s1.Def * s2.Def, s1.Spd * s2.Spd);
+        }
+
+        public static Stats operator +(Stats s1, Stats s2)
+        {
+            return new Stats(s1.MaxHP + s2.MaxHP, s1.MaxPP + s2.MaxPP, s1.Atk + s2.Atk, s1.Def + s2.Def, s1.Spd + s2.Spd);
         }
 
         public override string ToString()
         {
-            return $"`HP: {maxHP} Atk: {Atk} Agi: {Spd}`\n` PP: {maxPP} Def: {Def} `";
+            return $"`HP: {MaxHP} Atk: {Atk} Agi: {Spd}`\n` PP: {MaxPP} Def: {Def}`";
+        }
+
+        public string NonZerosToString()
+        {
+            return $"`{(MaxHP != 0 ? $"HP: {MaxHP} " : "")}" +
+                $"{(MaxPP != 0 ? $"PP: {MaxPP} " : "")}" +
+                $"{(Atk != 0 ? $"Atk: {Atk} " : "")}" +
+                $"{(Def != 0 ? $"Def: {Def} " : "")}" +
+                $"{(Spd != 0 ? $"Agi: {Spd} " : "")}`";
+        }
+
+        public string MultipliersToString()
+        {
+            return $"`{(MaxHP != 100 ? $"HP: x{((double)MaxHP / 100)} " : "")}" +
+                $"{(MaxPP != 100 ? $"PP: x{((double)MaxPP / 100)} " : "")}" +
+                $"{(Atk != 100 ? $"Atk: x{((double)Atk / 100)} " : "")}" +
+                $"{(Def != 100 ? $"Def: x{((double)Def / 100)} " : "")}" +
+                $"{(Spd != 100 ? $"Agi: x{((double)Spd / 100)} " : "")}`";
         }
     }
 }

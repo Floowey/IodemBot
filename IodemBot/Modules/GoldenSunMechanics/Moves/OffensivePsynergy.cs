@@ -11,8 +11,9 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public uint power = 0;
         public uint addDamage = 0;
         public double dmgMult = 1;
-        private bool attackBased;
-        private double[] spread = new double[] { 1.0, 0.66, 0.5, 0.33, 0.25, 0.15, 0.1 };
+        public uint percentageDamage = 0;
+        private readonly bool attackBased;
+        private readonly double[] spread = new double[] { 1.0, 0.66, 0.5, 0.33, 0.25, 0.15, 0.1 };
 
         [JsonConstructor]
         public OffensivePsynergy(string name, string emote, Target targetType, uint range, List<EffectImage> effectImages, Element element, uint PPCost, uint power = 0, uint addDamage = 0, double dmgMult = 1) : base(name, emote, targetType, range, effectImages, element, PPCost)
@@ -36,13 +37,13 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public override void InternalChooseBestTarget(ColossoFighter User)
         {
-            var aliveEnemies = User.getEnemies().Where(f => f.IsAlive()).ToList();
+            var aliveEnemies = User.GetEnemies().Where(f => f.IsAlive()).ToList();
             if (aliveEnemies.Count == 0)
             {
                 targetNr = 0;
                 return;
             }
-            targetNr = User.getEnemies().IndexOf(aliveEnemies[Global.random.Next(0, aliveEnemies.Count)]);
+            targetNr = User.GetEnemies().IndexOf(aliveEnemies[Global.Random.Next(0, aliveEnemies.Count)]);
         }
 
         public override bool InternalValidSelection(ColossoFighter User)
@@ -57,8 +58,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
             //Get enemies and targeted enemies
             double[] actualSpread = new double[2 * range - 1];
-            List<ColossoFighter> enemyTeam = User.battle.getTeam(User.enemies);
-            List<ColossoFighter> targets = getTarget(User);
+            List<ColossoFighter> enemyTeam = User.battle.GetTeam(User.enemies);
+            List<ColossoFighter> targets = GetTarget(User);
 
             int ii = 0;
             foreach (var t in targets)
@@ -94,20 +95,21 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 var elMult = 1 + Math.Max(0.0, (int)User.elstats.GetPower(element) * User.MultiplyBuffs("Power") - (int)t.elstats.GetRes(element) * t.MultiplyBuffs("Resistance")) / (attackBased ? 400 : 200);
                 var distFromCenter = Math.Abs(enemyTeam.IndexOf(t) - targetNr);
                 var spreadMult = spread[distFromCenter];
-                var realDmg = (uint)((baseDmg + dmg + addDamage) * dmgMult * elMult * spreadMult * t.defensiveMult * User.offensiveMult);
+                var prctdmg = (uint)(t.stats.MaxHP * percentageDamage / 100);
+                var realDmg = (uint)((baseDmg + dmg + addDamage) * dmgMult * elMult * spreadMult * t.defensiveMult * User.offensiveMult + prctdmg);
                 var punctuation = "!";
 
-                if (t.elstats.GetRes(element) == t.elstats.highestRes())
+                if (t.elstats.GetRes(element) == t.elstats.HighestRes())
                 {
                     punctuation = ".";
                 }
 
-                if (t.elstats.GetRes(element) == t.elstats.leastRes())
+                if (t.elstats.GetRes(element) == t.elstats.LeastRes())
                 {
                     punctuation = "!!!";
                     if (User is PlayerFighter)
                     {
-                        ((PlayerFighter)User).battleStats.attackedWeakness++;
+                        ((PlayerFighter)User).battleStats.AttackedWeakness++;
                     }
                 }
 
@@ -124,13 +126,13 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
                 if (User is PlayerFighter)
                 {
-                    ((PlayerFighter)User).avatar.dealtDmg(realDmg);
+                    ((PlayerFighter)User).avatar.DealtDmg(realDmg);
                     if (!t.IsAlive())
                     {
                         if (attackBased && range == 1)
                         {
-                            ((PlayerFighter)User).battleStats.killsByHand++;
-                        } ((PlayerFighter)User).battleStats.kills++;
+                            ((PlayerFighter)User).battleStats.KillsByHand++;
+                        } ((PlayerFighter)User).battleStats.Kills++;
                     }
                 }
 
@@ -143,7 +145,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public override string ToString()
         {
-            return $"Attack {(targetType == Target.otherSingle ? "an enemy" : (targetType == Target.otherAll ? $"all Enemies" : $"up to {range * 2 - 1} Targets"))} with a base damage of {(attackBased ? "a normal physical Attack" : $"{power}")}{(addDamage > 0 ? $" plus an additional {addDamage} Points" : "")}{(dmgMult != 1 ? $" multiplied by {dmgMult}" : "")}.";
+            return $"Attack {(targetType == Target.otherSingle ? "an enemy" : (targetType == Target.otherAll ? $"all Enemies" : $"up to {range * 2 - 1} Targets"))} with a base damage of {(attackBased ? "a normal physical Attack" : $"{power}")}{(addDamage > 0 ? $" plus an additional {addDamage} Points" : "")}{(dmgMult != 1 ? $" multiplied by {dmgMult}" : "")}{(percentageDamage > 0 ? $" and takes {percentageDamage}% of the targets Health" : "")}.";
         }
     }
 }

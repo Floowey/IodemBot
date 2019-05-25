@@ -5,7 +5,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 {
     internal class ChancetoOHKOEffect : IEffect
     {
-        private int Probability = 0;
+        private readonly int Probability = 0;
 
         public override List<string> Apply(ColossoFighter User, ColossoFighter Target)
         {
@@ -15,7 +15,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 return log;
             }
 
-            if (Global.random.Next(1, 100) <= Probability)
+            if (Global.Random.Next(1, 100) <= Probability)
             {
                 Target.Kill();
                 log.Add($":x: {Target.name}'s life was taken.");
@@ -35,7 +35,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public override string ToString()
         {
-            return $"{(Probability != 100 ? $"{Probability}% chance to eliminate" : "Eliminate")} target.";
+            return $"{(Probability != 100 ? $"{Probability}% chance to eliminate" : "Eliminate")} target";
         }
     }
 }

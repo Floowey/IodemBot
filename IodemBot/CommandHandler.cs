@@ -24,8 +24,7 @@ namespace IodemBot
 
         private async Task HandleCommandAsync(SocketMessage s)
         {
-            SocketUserMessage msg = s as SocketUserMessage;
-            if (msg == null)
+            if (!(s is SocketUserMessage msg))
             {
                 return;
             }

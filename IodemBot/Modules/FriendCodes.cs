@@ -41,7 +41,7 @@ namespace IodemBot.Modules
 
         [Command("set")]
         [Remarks("<Optional: Type (3ds | switch | pogo)> Set your Friendcode for a given System")]
-        public async Task setCode(string type, [Remainder] string code)
+        public async Task SetCode(string type, [Remainder] string code)
         {
             var embed = new EmbedBuilder();
             embed.WithColor(Colors.get("Iodem"));
@@ -75,7 +75,7 @@ namespace IodemBot.Modules
 
         [Command("public")]
         [Remarks("Everyone will be able to request your Friendcodes")]
-        public async Task setPublic()
+        public async Task SetPublic()
         {
             var account = UserAccounts.GetAccount(Context.User);
             var embed = new EmbedBuilder();
@@ -87,7 +87,7 @@ namespace IodemBot.Modules
 
         [Command("private")]
         [Remarks("Only you can access your Friendcodes")]
-        public async Task setPrivate()
+        public async Task SetPrivate()
         {
             var account = UserAccounts.GetAccount(Context.User);
             var embed = new EmbedBuilder();

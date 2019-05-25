@@ -9,19 +9,35 @@ namespace IodemBot.Core.UserManagement
     {
         public ulong ID { get; set; }
         public string Name { get; set; }
-        public string Flag { get; set; }
         //Ranking
 
-        public BattleStats BattleStats { get; set; } = new BattleStats();
+        public BattleStats BattleStats { get; set; }
+            = new BattleStats();
+
         public ServerStats ServerStats { get; set; } = new ServerStats();
 
-        internal void revived()
+        private Inventory hiddenInv;
+
+        public Inventory Inv
         {
-            BattleStats.revives++;
+            get
+            {
+                if (hiddenInv == null)
+                { hiddenInv = new Inventory(); }
+                else if (!hiddenInv.IsInitialized)
+                { hiddenInv.Initialize(); }
+                return hiddenInv;
+            }
+            set { hiddenInv = value; }
+        }
+
+        internal void Revived()
+        {
+            BattleStats.Revives++;
         }
 
         public uint XP { get; set; } = 0;
-        public DateTime lastXP { get; set; }
+        public DateTime LastXP { get; set; }
 
         [JsonIgnore]
         public uint LevelNumber
@@ -42,35 +58,36 @@ namespace IodemBot.Core.UserManagement
         }
 
         //Golden Sun
-        public Element element { get; set; } = Element.none;
+        public Element Element { get; set; } = Element.none;
 
-        public int classToggle { get; set; } = 0;
+        public int ClassToggle { get; set; } = 0;
 
-        internal void dealtDmg(uint damage)
+        internal void DealtDmg(uint damage)
         {
-            BattleStats.damageDealt += damage;
+            BattleStats.DamageDealt += damage;
         }
 
-        internal void killedByHand()
+        internal void KilledByHand()
         {
-            BattleStats.killsByHand++;
+            BattleStats.KillsByHand++;
         }
 
         public string[] BonusClasses = new string[] { };
 
-        internal void healedHP(long HPtoHeal)
+        internal void HealedHP(long HPtoHeal)
         {
             BattleStats.HPhealed += (uint)HPtoHeal;
         }
 
         [JsonIgnore]
-        public string gsClass
+        public string GsClass
         {
             get
             {
-                return AdeptClassSeriesManager.getClass(this).name; //GoldenSun.getClass(element, LevelNumber, (uint) classToggle);
+                return AdeptClassSeriesManager.GetClass(this).Name; //GoldenSun.getClass(element, LevelNumber, (uint) classToggle);
             }
         }
+
         //Friend Codes
         public bool arePublicCodes = false;
 
@@ -81,33 +98,33 @@ namespace IodemBot.Core.UserManagement
 
     public class BattleStats
     {
-        public uint damageDealt { get; set; } = 0;
-        public uint killsByHand { get; set; } = 0;
+        public uint DamageDealt { get; set; } = 0;
+        public uint KillsByHand { get; set; } = 0;
         public uint HPhealed { get; set; } = 0;
-        public uint revives { get; set; } = 0;
-        public int totalTeamMates { get; set; } = 0;
-        public int soloBattles { get; set; } = 0;
-        public int supported { get; set; } = 0;
-        public int kills { get; set; } = 0;
-        public int defends { get; set; } = 0;
-        public int attackedWeakness { get; set; } = 0;
-        public uint damageTanked { get; set; } = 0;
+        public uint Revives { get; set; } = 0;
+        public int TotalTeamMates { get; set; } = 0;
+        public int SoloBattles { get; set; } = 0;
+        public int Supported { get; set; } = 0;
+        public int Kills { get; set; } = 0;
+        public int Defends { get; set; } = 0;
+        public int AttackedWeakness { get; set; } = 0;
+        public uint DamageTanked { get; set; } = 0;
 
         public static BattleStats operator +(BattleStats b1, BattleStats b2)
         {
             return new BattleStats()
             {
-                damageDealt = b1.damageDealt + b2.damageDealt,
-                killsByHand = b1.killsByHand + b2.killsByHand,
+                DamageDealt = b1.DamageDealt + b2.DamageDealt,
+                KillsByHand = b1.KillsByHand + b2.KillsByHand,
                 HPhealed = b1.HPhealed + b2.HPhealed,
-                revives = b1.revives + b2.revives,
-                totalTeamMates = b1.totalTeamMates + b2.totalTeamMates,
-                soloBattles = b1.soloBattles + b2.soloBattles,
-                supported = b1.supported + b2.supported,
-                kills = b1.kills + b2.kills,
-                defends = b1.defends + b2.defends,
-                attackedWeakness = b1.attackedWeakness + b2.attackedWeakness,
-                damageTanked = b1.damageTanked + b2.damageTanked
+                Revives = b1.Revives + b2.Revives,
+                TotalTeamMates = b1.TotalTeamMates + b2.TotalTeamMates,
+                SoloBattles = b1.SoloBattles + b2.SoloBattles,
+                Supported = b1.Supported + b2.Supported,
+                Kills = b1.Kills + b2.Kills,
+                Defends = b1.Defends + b2.Defends,
+                AttackedWeakness = b1.AttackedWeakness + b2.AttackedWeakness,
+                DamageTanked = b1.DamageTanked + b2.DamageTanked
             };
         }
     }
@@ -118,16 +135,16 @@ namespace IodemBot.Core.UserManagement
         public uint ColossoStreak { get; set; } = 0;
         public uint ColossoHighestStreak { get; set; } = 0;
         public uint CommandsUsed { get; set; } = 0;
-        public uint rpsWins { get; set; } = 0;
-        public uint rpsStreak { get; set; } = 0;
-        public ulong mostRecentChannel { get; set; } = 0;
-        public ulong channelSwitches { get; set; } = 0;
-        public bool hasWrittenCurse { get; set; } = false;
-        public bool hasQuotedMatthew { get; set; } = false;
-        public int uniqueDaysActive { get; set; } = 0;
-        public int lookedUpInformation { get; set; } = 0;
-        public DateTime lastDayActive { get; set; }
-        public int lookedUpClass { get; set; }
+        public uint RpsWins { get; set; } = 0;
+        public uint RpsStreak { get; set; } = 0;
+        public ulong MostRecentChannel { get; set; } = 0;
+        public ulong ChannelSwitches { get; set; } = 0;
+        public bool HasWrittenCurse { get; set; } = false;
+        public bool HasQuotedMatthew { get; set; } = false;
+        public int UniqueDaysActive { get; set; } = 0;
+        public int LookedUpInformation { get; set; } = 0;
+        public DateTime LastDayActive { get; set; }
+        public int LookedUpClass { get; set; }
         public int MessagesInColossoTalks { get; set; }
         public int ReactionsAdded { get; set; }
         public int ColossoHighestRoundEndless { get; set; }

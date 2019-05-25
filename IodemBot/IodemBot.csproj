@@ -38,6 +38,18 @@
     <ApplicationIcon>iodem_ZUO_icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Accord, Version=3.8.0.0, Culture=neutral, PublicKeyToken=fa1a88e29555ccf7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Accord.3.8.0\lib\net462\Accord.dll</HintPath>
+    </Reference>
+    <Reference Include="Accord.Math, Version=3.8.0.0, Culture=neutral, PublicKeyToken=fa1a88e29555ccf7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Accord.Math.3.8.0\lib\net462\Accord.Math.dll</HintPath>
+    </Reference>
+    <Reference Include="Accord.Math.Core, Version=3.8.0.0, Culture=neutral, PublicKeyToken=fa1a88e29555ccf7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Accord.Math.3.8.0\lib\net462\Accord.Math.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Accord.Statistics, Version=3.8.0.0, Culture=neutral, PublicKeyToken=fa1a88e29555ccf7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Accord.Statistics.3.8.0\lib\net462\Accord.Statistics.dll</HintPath>
+    </Reference>
     <Reference Include="Discord.Net.Commands, Version=2.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Discord.Net.Commands.2.0.1\lib\net46\Discord.Net.Commands.dll</HintPath>
     </Reference>
@@ -259,10 +271,14 @@
     <Compile Include="Modules\GoldenSunMechanics\Classes\Requirements\SoloBattleRequirement.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Classes\Requirements\TeammatesRequirement.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Classes\Requirements\UnlockedClassesRequirement.cs" />
+    <Compile Include="Modules\GoldenSunMechanics\Effects\AddDamageEffect.cs" />
+    <Compile Include="Modules\GoldenSunMechanics\Effects\AttackWithTeammateEffect.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Effects\BreakEffect.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Effects\ChanceToOHKOEffect.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Effects\ConditionEffect.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Effects\CounterEffect.cs" />
+    <Compile Include="Modules\GoldenSunMechanics\Effects\PPDrainEffect.cs" />
+    <Compile Include="Modules\GoldenSunMechanics\Effects\HPDrainEffect.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Effects\IEffect.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Effects\MayIgnoreDefenseEffect.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Effects\MultiplyDamageEffect.cs" />
@@ -273,6 +289,10 @@
     <Compile Include="Modules\GoldenSunMechanics\Effects\ReviveEffect.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Effects\StatEffect.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Effects\UserDiesEffect.cs" />
+    <Compile Include="Modules\GoldenSunMechanics\Items\Inventory.cs" />
+    <Compile Include="Modules\GoldenSunMechanics\Items\InventoryHandler.cs" />
+    <Compile Include="Modules\GoldenSunMechanics\Items\ItemDatabase.cs" />
+    <Compile Include="Modules\GoldenSunMechanics\Items\Item.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Moveset.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Moves\Attack.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Moves\Defend.cs" />
@@ -311,10 +331,11 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-    <None Include="Resources\accounts.json">
+    <None Include="Resources\accounts.json" />
+    <None Include="Resources\AdeptClassSeries.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\AdeptClassSeries.json">
+    <None Include="Resources\tutorialFighters.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Resources\bronzeFighters.json">
@@ -332,6 +353,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Resources\healpsy.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\items.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Resources\movepools.json">
@@ -377,5 +401,7 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets'))" />
+    <Error Condition="!Exists('..\packages\Accord.3.8.0\build\Accord.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Accord.3.8.0\build\Accord.targets'))" />
   </Target>
+  <Import Project="..\packages\Accord.3.8.0\build\Accord.targets" Condition="Exists('..\packages\Accord.3.8.0\build\Accord.targets')" />
 </Project>

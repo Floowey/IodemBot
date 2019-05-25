@@ -449,5 +449,19 @@
                 "args": [ "50" ]
             }
         ]
+    },
+    "Delude": {
+        "name": "Delude",
+        "targetType": 4,
+        "emote": "<:Delude:536966813687349264>",
+        "range": 3,
+        "element": 2,
+        "PPCost": 4,
+        "effectImages": [
+            {
+                "id": "Condition",
+                "args": [ "Delusion", "30" ]
+            }
+        ]
     }
 }

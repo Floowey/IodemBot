@@ -29,7 +29,7 @@
             "name": "Woodspecter",
             "imgurl": "",
             "movepool": [
-                "Froth Sphere",
+                "Froth",
                 "Thorn",
                 "Mad Growth",
                 "Cure",
@@ -38,7 +38,7 @@
             "stats": {
                 "maxHP": 450,
                 "maxPP": 100,
-                "Atk": 150,
+                "Atk": 95,
                 "Def": 60,
                 "Spd": 50
             },
@@ -58,7 +58,7 @@
             "imgurl": "",
             "movepool": [
                 "Cure",
-                "Mad Growth"
+                "Growth"
             ],
             "stats": {
                 "maxHP": 250,
@@ -167,8 +167,8 @@
             "movepool": [
                 "Cure",
                 "Mad Growth",
-                "Clay Spire",
-                "Earthquake",
+                "Spire",
+                "Earthquake"
             ],
             "stats": {
                 "maxHP": 400,
@@ -195,9 +195,9 @@
             "imgurl": "https://vignette.wikia.nocookie.net/fantendo/images/6/64/Mars_Djinn_Golden_Sun_by_Susyspider.png/revision/latest?cb=20150512012929",
             "movepool": [
                 "Fireball",
-                "Molten Bath",
+                "Lava Shower",
                 "Flare Wall",
-                "Nova"
+                "Starburst"
             ],
             "stats": {
                 "maxHP": 500,
@@ -223,10 +223,10 @@
             "name": "Jupiter Djinn",
             "imgurl": "https://vignette.wikia.nocookie.net/powerlisting/images/d/d4/Jupiter_Djinn.jpg/revision/latest?cb=20170909132545",
             "movepool": [
-                "Tornado",
-                "Shine Plasma",
+                "Whirlwind",
+                "Plasma",
                 "Wind Slash",
-                "Storm Ray"
+                "Ray"
             ],
             "stats": {
                 "maxHP": 360,
@@ -253,10 +253,10 @@
             "imgurl": "https://banner2.kisspng.com/20180420/thq/kisspng-golden-sun-the-lost-age-golden-sun-dark-dawn-jin-golden-sun-5ad9950249c468.5550019415242088983022.jpg",
             "movepool": [
                 "Ply",
-                "Super Cool",
+                "Cool",
                 "Tundra",
-                "Ice Horn",
-                "Hail Prism"
+                "Ice",
+                "Prism"
 
             ],
             "stats": {
@@ -587,16 +587,16 @@
                 "Fireball",
                 "Flare Wall",
                 "Tundra",
-                "Ice Horn",
+                "Ice",
                 "Plasma",
                 "Flash Bolt",
-                "Tornado",
+                "Whirlwind",
                 "Wind Slash",
-                "Storm Ray",
-                "Hail Prism",
+                "Ray",
+                "Prism",
                 "Mad Blast",
-                "Molten Bath",
-                "Nova",
+                "Lava Shower",
+                "Starburst",
                 "Raging Heat"
             ],
             "stats": {
@@ -624,8 +624,8 @@
             "imgurl": "https://goldensunwiki.net/w/images/6/69/Ant_Lion.png",
             "movepool": [
                 "Earthquake",
-                "Clay Spire",
-                "Mad Growth",
+                "Spire",
+                "Growth",
                 "Flare Wall",
                 "Thunderclap"
 
@@ -659,7 +659,7 @@
             "stats": {
                 "maxHP": 450,
                 "maxPP": 100,
-                "Atk": 110,
+                "Atk": 70,
                 "Def": 50,
                 "Spd": 90
             },
@@ -682,8 +682,8 @@
             ],
             "stats": {
                 "maxHP": 600,
-                "maxPP": 00,
-                "Atk": 130,
+                "maxPP": 0,
+                "Atk": 80,
                 "Def": 100,
                 "Spd": 40
             },
@@ -697,7 +697,7 @@
                 "MercuryAtk": 110,
                 "MercuryRes": 80
             }
-        },
+        }
     ],
     [
         {
@@ -758,7 +758,7 @@
             "name": "Thief 1",
             "imgurl": "https://vignette.wikia.nocookie.net/goldensun/images/1/1f/Bandit.png/revision/latest?cb=20090623031132",
             "movepool": [
-                "Nut"
+                "Herb"
             ],
             "stats": {
                 "maxHP": 180,
@@ -806,7 +806,7 @@
             "name": "Thief 2",
             "imgurl": "",
             "movepool": [
-                "Nut"
+                "Herb"
             ],
             "stats": {
                 "maxHP": 180,
@@ -989,11 +989,10 @@
     ],
     [
         {
-            "name": "Alec Goblin",
+            "name": "Alec Goblin 1",
             "imgurl": "https://goldensunwiki.net/w/images/1/17/Alec_Goblin.png",
             "movepool": [
-                "Nut",
-                "Oil Drop",
+                "Herb",
                 "Smoke Bomb"
             ],
             "stats": {
@@ -1015,11 +1014,10 @@
             }
         },
         {
-            "name": "Alec Goblin",
+            "name": "Alec Goblin 2",
             "imgurl": "",
             "movepool": [
-                "Nut",
-                "Oil Drop",
+                "Herb",
                 "Smoke Bomb"
             ],
             "stats": {
@@ -1215,7 +1213,7 @@
             "imgurl": "https://goldensunwiki.net/w/images/a/a8/Sea_Fighter.png",
             "movepool": [
                 "Echo Cut",
-                "Nut",
+                "Herb",
                 "Smoke Bomb",
                 "Oil Drop"
             ],
@@ -1240,7 +1238,7 @@
     ],
     [
         {
-            "name": "Chestbeater",
+            "name": "Chestbeater 1",
             "imgurl": "https://goldensunwiki.net/w/images/e/eb/Chestbeater.png",
             "movepool": [
                 "Claw Attack",
@@ -1266,7 +1264,7 @@
             }
         },
         {
-            "name": "Chestbeater",
+            "name": "Chestbeater 2",
             "imgurl": "",
             "movepool": [
                 "Claw Attack",
@@ -1292,7 +1290,7 @@
             }
         },
         {
-            "name": "Chestbeater",
+            "name": "Chestbeater 3",
             "imgurl": "",
             "movepool": [
                 "Claw Attack",
@@ -1380,9 +1378,9 @@
             "name": "Mad Plant",
             "imgurl": "https://goldensunwiki.net/w/images/2/2e/TangleBloomArtwork.jpg",
             "movepool": [
-                "Mad Growth",
+                "Growth",
                 "Cure",
-                "Briar",
+                "Thorn",
                 "Poisonous Bite"
             ],
             "stats": {
@@ -1461,7 +1459,7 @@
     ],
     [
         {
-            "name": "Wolfkin",
+            "name": "Wolfkin 1",
             "imgurl": "https://goldensunwiki.net/w/images/5/57/Wolfkin.png",
             "movepool": [
                 "Ur Flash",
@@ -1486,7 +1484,7 @@
             }
         },
         {
-            "name": "Wolfkin",
+            "name": "Wolfkin 2",
             "imgurl": "",
             "movepool": [
                 "Ur Flash",
@@ -1497,7 +1495,7 @@
                 "maxPP": 0,
                 "Atk": 68,
                 "Def": 11,
-                "Spd": 30,
+                "Spd": 30
             },
             "elstats": {
                 "VenusAtk": 110,
@@ -1507,11 +1505,11 @@
                 "JupiterAtk": 85,
                 "JupiterRes": 72,
                 "MercuryAtk": 100,
-                "MercuryRes": 100,
+                "MercuryRes": 100
             }
         },
         {
-            "name": "Wolfkin",
+            "name": "Wolfkin 3",
             "imgurl": "",
             "movepool": [
                 "Ur Flash",
@@ -1522,7 +1520,7 @@
                 "maxPP": 0,
                 "Atk": 68,
                 "Def": 11,
-                "Spd": 30,
+                "Spd": 30
             },
             "elstats": {
                 "VenusAtk": 110,
@@ -1532,8 +1530,8 @@
                 "JupiterAtk": 85,
                 "JupiterRes": 72,
                 "MercuryAtk": 100,
-                "MercuryRes": 100,
+                "MercuryRes": 100
             }
         }
-    ],
+    ]
 ]

@@ -7,7 +7,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 {
     public class ReviveEffect : IEffect
     {
-        private uint percentage;
+        private readonly uint percentage;
 
         public ReviveEffect(string[] args)
         {
@@ -26,7 +26,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             {
                 if (User is PlayerFighter)
                 {
-                    ((PlayerFighter)User).battleStats.revives++;
+                    ((PlayerFighter)User).battleStats.Revives++;
                 }
             }
             return log;
@@ -34,19 +34,19 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public override string ToString()
         {
-            return $"Revive the target to {percentage}% of its maximum Health.";
+            return $"Revive the target to {percentage}% of its maximum Health";
         }
 
         protected override int InternalChooseBestTarget(List<ColossoFighter> targets)
         {
             var deadFriends = targets.Where(s => !s.IsAlive()).ToList();
             Console.WriteLine($"{deadFriends.Count} dead targets.");
-            return targets.IndexOf(deadFriends[Global.random.Next(0, deadFriends.Count)]);
+            return targets.IndexOf(deadFriends[Global.Random.Next(0, deadFriends.Count)]);
         }
 
         protected override bool InternalValidSelection(ColossoFighter user)
         {
-            return user.getTeam().Any(s => !s.IsAlive());
+            return user.GetTeam().Any(s => !s.IsAlive());
         }
     }
 }

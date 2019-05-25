@@ -33,16 +33,16 @@ namespace IodemBot.Modules.ColossoBattles
             {
                 if (p is NPCEnemy)
                 {
-                    p.selectRandom();
+                    p.SelectRandom();
                 }
 
                 if (p is PlayerFighter)
                 {
                     ((PlayerFighter)p).battleStats = new BattleStats();
-                    ((PlayerFighter)p).battleStats.totalTeamMates += TeamA.Count - 1;
+                    ((PlayerFighter)p).battleStats.TotalTeamMates += TeamA.Count - 1;
                     if (TeamA.Count == 1)
                     {
-                        ((PlayerFighter)p).battleStats.soloBattles++;
+                        ((PlayerFighter)p).battleStats.SoloBattles++;
                     }
                 }
             });
@@ -51,16 +51,16 @@ namespace IodemBot.Modules.ColossoBattles
             {
                 if (p is NPCEnemy)
                 {
-                    p.selectRandom();
+                    p.SelectRandom();
                 }
 
                 if (p is PlayerFighter)
                 {
                     ((PlayerFighter)p).battleStats = new BattleStats();
-                    ((PlayerFighter)p).battleStats.totalTeamMates += TeamB.Count - 1;
+                    ((PlayerFighter)p).battleStats.TotalTeamMates += TeamB.Count - 1;
                     if (TeamB.Count == 1)
                     {
-                        ((PlayerFighter)p).battleStats.soloBattles++;
+                        ((PlayerFighter)p).battleStats.SoloBattles++;
                     }
                 }
             });
@@ -82,7 +82,12 @@ namespace IodemBot.Modules.ColossoBattles
             {
                 if (!f.hasSelected)
                 {
-                    f.selectRandom();
+                    f.SelectRandom();
+                    if (f is PlayerFighter)
+                    {
+                        ((PlayerFighter)f).AutoTurnPool--;
+                        ((PlayerFighter)f).AutoTurnsInARow++;
+                    }
                 }
             });
             return Turn();
@@ -128,7 +133,7 @@ namespace IodemBot.Modules.ColossoBattles
             Console.WriteLine("Finished EndTurn()");
 
             //Check for Game Over
-            if (gameOver())
+            if (GameOver())
             {
                 isActive = false;
             }
@@ -169,7 +174,7 @@ namespace IodemBot.Modules.ColossoBattles
             player.battle = this;
         }
 
-        public List<ColossoFighter> getTeam(Team team)
+        public List<ColossoFighter> GetTeam(Team team)
         {
             if (team == Team.A)
             {
@@ -221,7 +226,7 @@ namespace IodemBot.Modules.ColossoBattles
             return turnLog;
         }
 
-        public void resetGame()
+        public void ResetGame()
         {
             TeamA = new List<ColossoFighter>();
             TeamB = new List<ColossoFighter>();
@@ -230,12 +235,12 @@ namespace IodemBot.Modules.ColossoBattles
             isActive = false;
         }
 
-        private bool gameOver()
+        private bool GameOver()
         {
             return !TeamA.Where(p => p.IsAlive()).Any() || !TeamB.Where(p => p.IsAlive()).Any();
         }
 
-        public Team getWinner()
+        public Team GetWinner()
         {
             if (TeamA.Where(p => p.IsAlive()).Any())
             {

@@ -1,0 +1,202 @@
+[
+    [
+        {
+            "name": "Dimmest Dragon",
+            "imgurl": "https://goldensunwiki.net/w/images/7/77/DimDragon.jpg",
+            "movepool": [
+            ],
+            "stats": {
+                "maxHP": 100,
+                "maxPP": 0,
+                "Atk": 30,
+                "Def": 5,
+                "Spd": 3
+            },
+            "elstats": {
+                "VenusAtk": 100,
+                "VenusRes": 80,
+                "MarsAtk": 100,
+                "MarsRes": 80,
+                "JupiterAtk": 100,
+                "JupiterRes": 80,
+                "MercuryAtk": 100,
+                "MercuryRes": 80
+            }
+        }
+    ],
+    [
+        {
+            "name": "Training Dummy",
+            "imgurl": "https://cdn.discordapp.com/attachments/526565153760608266/571982000743776266/unknown.png",
+            "movepool": [
+            ],
+            "stats": {
+                "maxHP": 100,
+                "maxPP": 0,
+                "Atk": 10,
+                "Def": 5,
+                "Spd": 3
+            },
+            "elstats": {
+                "VenusAtk": 100,
+                "VenusRes": 80,
+                "MarsAtk": 100,
+                "MarsRes": 80,
+                "JupiterAtk": 100,
+                "JupiterRes": 80,
+                "MercuryAtk": 100,
+                "MercuryRes": 80
+            }
+        }
+    ],
+    [
+        {
+            "name": "Fake Mimic",
+            "imgurl": "https://cdn.discordapp.com/attachments/526565153760608266/571981004470747147/unknown.png",
+            "movepool": [
+            ],
+            "stats": {
+                "maxHP": 150,
+                "maxPP": 0,
+                "Atk": 0,
+                "Def": 20,
+                "Spd": 3
+            },
+            "elstats": {
+                "VenusAtk": 100,
+                "VenusRes": 25,
+                "MarsAtk": 100,
+                "MarsRes": 25,
+                "JupiterAtk": 100,
+                "JupiterRes": 25,
+                "MercuryAtk": 100,
+                "MercuryRes": 25
+            },
+            "hasAttack": false,
+            "hasDefend": false
+        }
+    ],
+    [
+        {
+            "name": "High Tech Psynergy Training Equipment",
+            "imgurl": "https://cdn.discordapp.com/attachments/526565153760608266/571980602341851136/unknown.png",
+            "movepool": [
+            ],
+            "stats": {
+                "maxHP": 140,
+                "maxPP": 0,
+                "Atk": 0,
+                "Def": 2,
+                "Spd": 3
+            },
+            "elstats": {
+                "VenusAtk": 100,
+                "VenusRes": 25,
+                "MarsAtk": 100,
+                "MarsRes": 25,
+                "JupiterAtk": 100,
+                "JupiterRes": 25,
+                "MercuryAtk": 100,
+                "MercuryRes": 25
+            },
+            "hasAttack": false
+        }
+    ],
+    [
+        {
+            "name": "Vermin",
+            "imgurl": "https://goldensunwiki.net/w/images/0/01/Vermin.png",
+            "movepool": [
+            ],
+            "stats": {
+                "maxHP": 20,
+                "maxPP": 0,
+                "Atk": 23,
+                "Def": 7,
+                "Spd": 7
+            },
+            "elstats": {
+                "VenusAtk": 100,
+                "VenusRes": 48,
+                "MarsAtk": 100,
+                "MarsRes": 25,
+                "JupiterAtk": 100,
+                "JupiterRes": 72,
+                "MercuryAtk": 100,
+                "MercuryRes": 48
+            }
+        },
+        {
+            "name": "Bat",
+            "imgurl": "",
+            "movepool": [
+            ],
+            "stats": {
+                "maxHP": 17,
+                "maxPP": 0,
+                "Atk": 21,
+                "Def": 6,
+                "Spd": 13
+            },
+            "elstats": {
+                "VenusAtk": 100,
+                "VenusRes": 127,
+                "MarsAtk": 100,
+                "MarsRes": 48,
+                "JupiterAtk": 100,
+                "JupiterRes": 7,
+                "MercuryAtk": 100,
+                "MercuryRes": 72
+            },
+            "hasDefend": false
+        }
+    ],
+    [
+        {
+            "name": "Wild Mushroom",
+            "imgurl": "https://goldensunwiki.net/w/images/1/12/Wild_Mushroom.png",
+            "movepool": [
+            ],
+            "stats": {
+                "maxHP": 18,
+                "maxPP": 0,
+                "Atk": 22,
+                "Def": 5,
+                "Spd": 10
+            },
+            "elstats": {
+                "VenusAtk": 100,
+                "VenusRes": 48,
+                "MarsAtk": 100,
+                "MarsRes": 7,
+                "JupiterAtk": 100,
+                "JupiterRes": 72,
+                "MercuryAtk": 100,
+                "MercuryRes": 100
+            }
+        },
+        {
+            "name": "Wild Mushroom",
+            "imgurl": "",
+            "movepool": [
+            ],
+            "stats": {
+                "maxHP": 18,
+                "maxPP": 0,
+                "Atk": 22,
+                "Def": 5,
+                "Spd": 10
+            },
+            "elstats": {
+                "VenusAtk": 100,
+                "VenusRes": 48,
+                "MarsAtk": 100,
+                "MarsRes": 7,
+                "JupiterAtk": 100,
+                "JupiterRes": 72,
+                "MercuryAtk": 100,
+                "MercuryRes": 100
+            }
+        }
+    ]
+]

@@ -27,7 +27,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             }
             if (User is PlayerFighter)
             {
-                ((PlayerFighter)User).battleStats.supported++;
+                ((PlayerFighter)User).battleStats.Supported++;
             }
             Target.Buffs = newBuffs;
             return log;
@@ -35,7 +35,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public override string ToString()
         {
-            return "Remove Stat buffs of enemies.";
+            return "Remove Stat buffs of enemies";
         }
     }
 }

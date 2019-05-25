@@ -128,6 +128,7 @@
         },
         "requirement": "Level",
         "isDefault": true,
+        "archtype": "Warrior",
         "description": "Stoic and rooted to the soil, Adepts of the Squire Series excell in leadership and versatility."
     },
     {
@@ -209,7 +210,7 @@
                     "Def": 130,
                     "Spd": 160
                 }
-            },
+            }
         ],
         "elements": [
             0
@@ -226,6 +227,7 @@
         },
         "requirement": "Level",
         "isDefault": true,
+        "archtype": "Mage",
         "description": "Miko are trained to express astronomic power by funneling their inner spirits."
     },
     {
@@ -309,7 +311,7 @@
                     "Def": 150,
                     "Spd": 110
                 }
-            },
+            }
         ],
         "elements": [
             1
@@ -326,6 +328,7 @@
         },
         "requirement": "Level",
         "isDefault": true,
+        "archtype": "Warrior",
         "description": "In the heat of the battle, the Guards will heroically protect their own."
     },
     {
@@ -335,7 +338,7 @@
                 "name": "Flame User",
                 "movepool": [
                     "Fume",
-                    "Beam",
+                    "Beam"
                 ],
                 "statMultipliers": {
                     "maxHP": 100,
@@ -407,7 +410,7 @@
                     "Def": 140,
                     "Spd": 160
                 }
-            },
+            }
         ],
         "elements": [
             1
@@ -424,6 +427,7 @@
         },
         "requirement": "Level",
         "isDefault": true,
+        "archtype": "Mage",
         "description": "Flame Users show the glistering magic of the Mars element, by reigning Justice from above"
     },
     {
@@ -507,7 +511,7 @@
                     "Def": 140,
                     "Spd": 120
                 }
-            },
+            }
         ],
         "elements": [
             1
@@ -524,6 +528,7 @@
         },
         "requirement": "Level",
         "isDefault": true,
+        "archtype": "Warrior",
         "description": "Crossing and plundering throughout the Eastern Seas, Pirates fear the lands more than the depths below."
     },
     {
@@ -607,7 +612,7 @@
                     "Def": 130,
                     "Spd": 170
                 }
-            },
+            }
         ],
         "elements": [
             2
@@ -624,6 +629,7 @@
         },
         "requirement": "Level",
         "isDefault": true,
+        "archtype": "Mage",
         "description": "Windseers inherit the wisdom and tempestuousness of the Anemos."
     },
     {
@@ -707,7 +713,7 @@
                     "Def": 140,
                     "Spd": 150
                 }
-            },
+            }
         ],
         "elements": [
             2
@@ -724,6 +730,7 @@
         },
         "requirement": "Level",
         "isDefault": true,
+        "archtype": "Mage",
         "description": "Their connection to nature lets Beastlings become one with the wild."
     },
     {
@@ -805,7 +812,7 @@
                     "Def": 140,
                     "Spd": 120
                 }
-            },
+            }
         ],
         "elements": [
             3
@@ -822,6 +829,7 @@
         },
         "requirement": "Level",
         "isDefault": true,
+        "archtype": "Mage",
         "description": "The heirs of the Mercury Clan use the chill of water to heal."
     },
     {
@@ -905,7 +913,7 @@
                     "Def": 140,
                     "Spd": 130
                 }
-            },
+            }
         ],
         "elements": [
             3
@@ -922,6 +930,7 @@
         },
         "requirement": "Level",
         "isDefault": true,
+        "archtype": "Warrior",
         "description": "Mastering the seas allows Mariners to cross waters even the roughest conditions."
     },
     {
@@ -1021,6 +1030,7 @@
         },
         "requirement": "Level",
         "isDefault": true,
+        "archtype": "Mage",
         "description": "The Ayuthay pledge to become reputable representatives of their folk to rise from a mere Aqua Squire to reigning their country. `(Dev-note: Unlike the games, the stats of the Aqua Squire series follow those of the Squire Series, and not the Mariner Series)`"
     },
     {
@@ -1136,6 +1146,7 @@
         },
         "requirement": "ColossoWins",
         "isDefault": false,
+        "archtype": "Warrior",
         "description": "A Brutes mere interest is to fight and prove superiority."
     },
     {
@@ -1235,6 +1246,7 @@
         },
         "requirement": "Level",
         "isDefault": false,
+        "archtype": "Warrior",
         "description": "The study of Alchemy and the answer of the universe is the center of the Apprentices education, with the goal to support all of their fellows."
     },
     {
@@ -1334,6 +1346,7 @@
         },
         "requirement": "ColossoWins",
         "isDefault": false,
+        "archtype": "Warrior",
         "description": "Crusaders want to outlast their opponents at all costs. The tough benefits of Nuts seem to be especially helpful in those regards..."
     },
     {
@@ -1435,6 +1448,7 @@
         },
         "requirement": "UnlockedClasses",
         "isDefault": false,
+        "archtype": "Warrior",
         "description": "The Pages study the strategies and abilities of their peers, so they may better support them."
     },
     {
@@ -1534,6 +1548,7 @@
         },
         "requirement": "Level",
         "isDefault": false,
+        "archtype": "Mage",
         "description": "The Air Pilgrims don't have a home. They travel from place to place with the winds."
     },
     {
@@ -1633,6 +1648,7 @@
         },
         "requirement": "Level",
         "isDefault": false,
+        "archtype": "Mage",
         "description": "On their journeys through all sorts of terrains, Aqua Pilgrims leave riddled markings to mark their way."
     },
     {
@@ -1733,6 +1749,7 @@
         },
         "requirement": "Level",
         "isDefault": false,
+        "archtype": "Mage",
         "description": "Air Seers meditate in Canyons, to make predictions about the future."
     },
     {
@@ -1849,6 +1866,7 @@
         },
         "requirement": "DaysActive",
         "isDefault": false,
+        "archtype": "Mage",
         "description": "Hermits stay at one place to find their inner peace."
     },
     {
@@ -1947,6 +1965,7 @@
         },
         "requirement": "Level",
         "isDefault": false,
+        "archtype": "Mage",
         "description": "The energy of swamps lets Aqua Seers anticipate future events."
     },
     {
@@ -2047,6 +2066,7 @@
         },
         "requirement": "ColossoWins",
         "isDefault": false,
+        "archtype": "Warrior",
         "description": "Eager to show their strengths, young Swordsmen hang about in the vicinity of the battle grounds."
     },
     {
@@ -2162,6 +2182,7 @@
         },
         "requirement": "ColossoWins",
         "isDefault": false,
+        "archtype": "Mage",
         "description": "Mikos turn to dark, but powerful curses, when they have lost their way."
     },
     {
@@ -2260,6 +2281,7 @@
         },
         "requirement": "ColossoWins",
         "isDefault": false,
+        "archtype": "Mage",
         "description": "Young Scrappers like to tinker with mechanisms, which they try to make the best of in battles."
     },
     {
@@ -2317,6 +2339,7 @@
         },
         "requirement": "KillsByHand",
         "isDefault": false,
+        "archtype": "Warrior",
         "description": "Samurais are trained to have the upper hand in Hand-On-Hand combat."
     },
     {
@@ -2390,6 +2413,7 @@
         },
         "requirement": "Damage",
         "isDefault": false,
+        "archtype": "Warrior",
         "description": "Ninjas are Masters in causing as much destruction as possible."
     },
     {
@@ -2463,6 +2487,7 @@
         },
         "requirement": "SoloBattles",
         "isDefault": false,
+        "archtype": "Mage",
         "description": "Rangers wander the wilds alone, until they master the true forces of nature."
     },
     {
@@ -2536,6 +2561,7 @@
         },
         "requirement": "Teammates",
         "isDefault": false,
+        "archtype": "Warrior",
         "description": "Dragoons are always surrounded by their companions."
     },
     {
@@ -2593,6 +2619,7 @@
         },
         "requirement": "Heals",
         "isDefault": false,
+        "archtype": "Mage",
         "description": "The healing capabilites of the White Mages are the best of their kind."
     },
     {
@@ -2667,6 +2694,7 @@
         },
         "requirement": "Revives",
         "isDefault": false,
+        "archtype": "Mage",
         "description": "Mediums talk to the fallen and harness their powers."
     }
 ]
