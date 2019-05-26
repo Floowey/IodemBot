@@ -3502,12 +3502,6 @@
         "IsArtifact": true,
         "AddStatsOnEquip": {
             "Def": 22
-        },
-        "AddElStatsOnEquip": {
-            "VenusRes": 15,
-            "VenusAtk": 15,
-            "JupiterAtk": 10,
-            "MarsRes": -10
         }
     },
     "Hover Greave": {
@@ -3705,7 +3699,7 @@
         },
         "AddElStatsOnEquip": {
             "MarsAtk": 30,
-            "MercuryAtk: -10
+            "MercuryAtk": -10
         }
     },
     "Crown of Glory": {
