@@ -1774,7 +1774,7 @@
         "effectImages": [
             {
                 "id": "ReduceHPtoOne",
-                "args": [ "30" ]
+                "args": [ "20" ]
             }
         ]
     },
@@ -1844,7 +1844,7 @@
         "effectImages": [
             {
                 "id": "ReduceHPtoOne",
-                "args": [ "40" ]
+                "args": [ "20" ]
             }
         ]
     },
