@@ -706,11 +706,11 @@
                 },
                 {
                     "id": "HPDrain",
-                    "args": [ "80", "50" ]
+                    "args": [ "80", "30" ]
                 },
                 {
                     "id": "PPDrain",
-                    "args": [ "10", "50" ]
+                    "args": [ "10", "30" ]
                 }
             ]
         }
@@ -1319,7 +1319,7 @@
     "Fire Brand": {
         "Name": "Fire Brand",
         "Price": 23400,
-        "Icon": "<:Fire_Brand:570389787668905985>",
+        "Icon": "<:Fire_Brand:581966770470912031>",
         "ItemType": "LongSword",
         "IsEquippable": true,
         "IsArtifact": true,
@@ -1418,7 +1418,7 @@
     "Sword of Dusk": {
         "Name": "Sword of Dusk",
         "Price": 11500,
-        "Icon": "<:Sword_Of_Dusk:578173574355877889>",
+        "Icon": "<:Sword_Of_Dusk:581966887429079054>",
         "ItemType": "LongSword",
         "IsEquippable": true,
         "IsArtifact": true,
@@ -2339,7 +2339,7 @@
     "Verdant Sword": {
         "Name": "Verdant Sword",
         "Price": 18000,
-        "Icon": "<:Verdant_Sword:578173680937467924>",
+        "Icon": "<:Verdant_Sword:581967321351061504>",
         "ItemType": "LightBlade",
         "IsEquippable": true,
         "IsArtifact": true,
@@ -2985,8 +2985,7 @@
         "IsEquippable": true,
         "IsArtifact": true,
         "AddStatsOnEquip": {
-            "Def": 38,
-            "MaxPP": 6
+            "Def": 38
         },
         "AddElStatsOnEquip": {
             "VenusRes": 20
@@ -3266,7 +3265,7 @@
             "effectImages": [
                 {
                     "id": "Condition",
-                    "args": [ "Sleep", "100" ]
+                    "args": [ "Sleep", "15" ]
                 }
             ]
         }
@@ -3550,15 +3549,15 @@
             "Def": 22
         },
         "AddElStatsOnEquip": {
-            "VenusRes": 15,
             "VenusAtk": 5,
+            "VenusRes": 15,
             "MarsRes": -10
-        }
+        },
     },
     "Hover Greave": {
         "Name": "Hover Greave",
         "Price": 4500,
-        "Icon": ":Hover_Greave:",
+        "Icon": "<:Hover_Greave:581970059962875932>",
         "ItemType": "Greave",
         "IsEquippable": true,
         "IsArtifact": true,
@@ -3654,7 +3653,7 @@
             "effectImages": [
                 {
                     "id": "Condition",
-                    "args": [ "Delusion", "100" ]
+                    "args": [ "Curse", "10" ]
                 }
             ]
         }
@@ -3719,7 +3718,8 @@
             "Def": 31
         },
         "AddElStatsOnEquip": {
-            "MercuryAtk": 20
+            "MercuryAtk": 30,
+            "MarsAtk": -10
         }
     },
     "Floating Hat": {
@@ -3748,7 +3748,8 @@
             "Def": 33
         },
         "AddElStatsOnEquip": {
-            "MarsAtk": 25
+            "MarsAtk": 30,
+            "MercuryAtk": -10
         }
     },
     "Crown of Glory": {
@@ -3777,8 +3778,8 @@
         "Unleash": {
             "effectImages": [
                 {
-                    "id": "Condition",
-                    "args": [ "Delusion", "30" ]
+                    "id": "ChanceToOHKO",
+                    "args": [ "5" ]
                 }
             ]
         }
@@ -3953,7 +3954,7 @@
     "Zol Tiara": {
         "Name": "Zol Tiara",
         "Price": 6000,
-        "Icon": ":Zol_Tiara:",
+        "Icon": "<:Zol_Tiara:581971650573107231>",
         "ItemType": "Circlet",
         "IsEquippable": true,
         "IsArtifact": true,
@@ -4222,7 +4223,7 @@
             "effectImages": [
                 {
                     "id": "Condition",
-                    "args": [ "Delusion", "30" ]
+                    "args": [ "Haunt", "10" ]
                 }
             ]
         }
@@ -4332,6 +4333,20 @@
         "AddElStatsOnEquip": {
             "JupiterAtk": 10,
             "MarsAtk": 10
+        }
+    },
+    "Air Bangle": {
+        "Name": "Air Bangle",
+        "Price": 6000,
+        "Icon": "<:Air_Bangle:581972768422363137>",
+        "ItemType": "Bracelet",
+        "IsArtifact": true,
+        "IsEquippable": true,
+        "AddStatsOnEquip": {
+            "Def": 39
+        },
+        "AddElStatsOnEquip": {
+            "JupiterAtk": 30
         }
     },
     "Battle Gloves": {
@@ -4617,7 +4632,7 @@
             "effectImages": [
                 {
                     "id": "Condition",
-                    "args": [ "Delusion", "30" ]
+                    "args": [ "Delusion", "25" ]
                 }
             ]
         }
@@ -4867,7 +4882,7 @@
             "effectImages": [
                 {
                     "id": "Condition",
-                    "args": [ "Sleep", "30" ]
+                    "args": [ "Sleep", "15" ]
                 }
             ]
         }
