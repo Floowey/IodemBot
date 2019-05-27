@@ -107,7 +107,7 @@ namespace IodemBot.Core.Leveling
             userAccount.BattleStats += battleStats;
             var bs = userAccount.BattleStats;
 
-            if (Global.Random.Next(0, 100) <= 7 + battleStats.TotalTeamMates * 2)
+            if (Global.Random.Next(0, 100) <= 9 + battleStats.TotalTeamMates * 2)
             {
                 ChestQuality awardedChest = GetRandomChest(diff);
                 userAccount.Inv.AwardChest(awardedChest);

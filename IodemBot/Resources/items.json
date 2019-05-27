@@ -2656,7 +2656,7 @@
         "IsEquippable": true,
         "IsArtifact": true,
         "AddStatsOnEquip": {
-            "Def": 47,
+            "Def": 47
         },
         "AddElStatsOnEquip": {
             "MercuryAtk": 17,
@@ -2890,39 +2890,19 @@
                 {
                     "id": "HPDrain",
                     "args": [ "200", "100" ]
-                }
-            ]
-        },
-        "GrantsUnleash": true,
-        "Unleash": {
-            "effectImages": [
+                },
                 {
                     "id": "Condition",
                     "args": [ "Seal", "20" ]
-                }
-            ]
-        },
-        "GrantsUnleash": true,
-        "Unleash": {
-            "effectImages": [
+                },
                 {
                     "id": "Condition",
                     "args": [ "Venom", "50" ]
-                }
-            ]
-        },
-        "GrantsUnleash": true,
-        "Unleash": {
-            "effectImages": [
+                },
                 {
                     "id": "Condition",
                     "args": [ "Sleep", "20" ]
-                }
-            ]
-        },
-        "GrantsUnleash": true,
-        "Unleash": {
-            "effectImages": [
+                },
                 {
                     "id": "ChanceToOHKO",
                     "args": [ "1" ]
@@ -3552,7 +3532,7 @@
             "VenusAtk": 5,
             "VenusRes": 15,
             "MarsRes": -10
-        },
+        }
     },
     "Hover Greave": {
         "Name": "Hover Greave",
@@ -3653,7 +3633,7 @@
             "effectImages": [
                 {
                     "id": "Condition",
-                    "args": [ "Curse", "10" ]
+                    "args": [ "DeathCurse", "10" ]
                 }
             ]
         }
