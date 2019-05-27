@@ -916,7 +916,7 @@
     "Broad Sword": {
         "Name": "Broad Sword",
         "Price": 1000,
-        "Icon": "<:Long_Sword:569813505423704117>",
+        "Icon": "<:Broad_Sword:582670194707791884>",
         "ItemType": "LongSword",
         "IsEquippable": true,
         "AddStatsOnEquip": {
@@ -1017,7 +1017,7 @@
     "Muramasa": {
         "Name": "Muramasa",
         "Price": 13600,
-        "Icon": "<:Muramasa:569855141361090561>",
+        "Icon": "<:Muramasa:582670194842009641>",
         "ItemType": "LongSword",
         "IsEquippable": true,
         "IsArtifact": true,
@@ -1142,7 +1142,7 @@
     "Cloud Brand": {
         "Name": "Cloud Brand",
         "Price": 11800,
-        "Icon": "<:Cloud_Brand:569855141361221632>",
+        "Icon": "<:Cloud_Brand:582670195043074078>",
         "ItemType": "LongSword",
         "IsEquippable": true,
         "IsArtifact": true,
@@ -2582,7 +2582,7 @@
     "Travel Robe": {
         "Name": "Travel Robe",
         "Price": 200,
-        "Icon": "<:Travel_Robe:569854449997316107>",
+        "Icon": "<:Travel_Robe:582672217788252180>",
         "ItemType": "Robe",
         "IsEquippable": true,
         "AddStatsOnEquip": {
@@ -2744,7 +2744,7 @@
     "Psynergy Armor": {
         "Name": "Psynergy Armor",
         "Price": 1000,
-        "Icon": "<:Psynergy_Armor:569854623205163039>",
+        "Icon": "<:Psynergy_Armor:582671911776026654>",
         "ItemType": "HeavyArmor",
         "IsEquippable": true,
         "AddStatsOnEquip": {
@@ -2933,7 +2933,7 @@
     "Demon Mail": {
         "Name": "Demon Mail",
         "Price": 17000,
-        "Icon": "<:Demon_Mail:569854623012093973>",
+        "Icon": "<:Demon_Mail:582672025814958080>",
         "ItemType": "HeavyArmor",
         "IsEquippable": true,
         "IsArtifact": true,
@@ -4402,7 +4402,7 @@
     "Padded Gloves": {
         "Name": "Padded Gloves",
         "Price": 10,
-        "Icon": "<:Padded_Gloves:569854900112982026>",
+        "Icon": "<:Padded_Gloves:582672322696183824>",
         "ItemType": "Glove",
         "IsEquippable": true,
         "AddStatsOnEquip": {
