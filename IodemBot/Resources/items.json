@@ -299,7 +299,7 @@
                 },
                 {
                     "Id": "HPDrain",
-                    "args": [ "100", "50" ]
+                    "args": [ "100", "33" ]
                 }
             ]
         }
@@ -455,7 +455,7 @@
                 },
                 {
                     "Id": "PPDrain",
-                    "args": [ "10", "50" ]
+                    "args": [ "10", "40" ]
                 }
             ]
         }
@@ -505,7 +505,7 @@
                 },
                 {
                     "Id": "HPDrain",
-                    "args": [ "100", "50" ]
+                    "args": [ "100", "40" ]
                 }
             ]
         }
@@ -630,7 +630,7 @@
                 },
                 {
                     "Id": "HPDrain",
-                    "args": [ "100", "50" ]
+                    "args": [ "100", "33" ]
                 }
             ]
         }
@@ -761,7 +761,7 @@
                 },
                 {
                     "Id": "PPDrain",
-                    "args": [ "10", "50" ]
+                    "args": [ "10", "40" ]
                 }
             ]
         }
@@ -811,7 +811,7 @@
                 },
                 {
                     "Id": "PPDrain",
-                    "args": [ "10", "50" ]
+                    "args": [ "10", "40" ]
                 }
             ]
         }
@@ -1160,7 +1160,7 @@
                 },
                 {
                     "id": "MayIgnoreDefense",
-                    "args": [ "100", "100" ]
+                    "args": [ "100", "30" ]
                 }
             ]
         }
@@ -1235,8 +1235,8 @@
                     "args": [ "50" ]
                 },
                 {
-                    "Id": "HPDrain",
-                    "args": [ "10", "50" ]
+                    "Id": "PPDrain",
+                    "args": [ "10", "45" ]
                 }
             ]
         }
@@ -1678,7 +1678,7 @@
                 },
                 {
                     "Id": "HPDrain",
-                    "args": [ "100", "50" ]
+                    "args": [ "100", "44" ]
                 }
             ]
         }
@@ -1754,7 +1754,7 @@
                 },
                 {
                     "Id": "HPDrain",
-                    "args": [ "100", "50" ]
+                    "args": [ "100", "35" ]
                 }
             ]
         }
@@ -1949,7 +1949,7 @@
                 },
                 {
                     "Id": "HPDrain",
-                    "args": [ "100", "50" ]
+                    "args": [ "100", "33" ]
                 }
             ]
         }
@@ -2657,11 +2657,10 @@
         "IsArtifact": true,
         "AddStatsOnEquip": {
             "Def": 47,
-            "MaxPP": 6
         },
         "AddElStatsOnEquip": {
-            "MercuryRes": 30,
             "MercuryAtk": 17,
+            "MarsAtk": 17,
             "MarsRes": 30
         },
         "PPRegen": 12,
@@ -2884,6 +2883,51 @@
             "JupiterRes": 120,
             "MarsAtk": 120,
             "MarsRes": 120
+        },
+        "GrantsUnleash": true,
+        "Unleash": {
+            "effectImages": [
+                {
+                    "id": "HPDrain",
+                    "args": [ "200", "100" ]
+                }
+            ]
+        },
+        "GrantsUnleash": true,
+        "Unleash": {
+            "effectImages": [
+                {
+                    "id": "Condition",
+                    "args": [ "Seal", "20" ]
+                }
+            ]
+        },
+        "GrantsUnleash": true,
+        "Unleash": {
+            "effectImages": [
+                {
+                    "id": "Condition",
+                    "args": [ "Venom", "50" ]
+                }
+            ]
+        },
+        "GrantsUnleash": true,
+        "Unleash": {
+            "effectImages": [
+                {
+                    "id": "Condition",
+                    "args": [ "Sleep", "20" ]
+                }
+            ]
+        },
+        "GrantsUnleash": true,
+        "Unleash": {
+            "effectImages": [
+                {
+                    "id": "ChanceToOHKO",
+                    "args": [ "1" ]
+                }
+            ]
         }
     },
     "Demon Mail": {
@@ -2942,13 +2986,19 @@
         "IsArtifact": true,
         "AddStatsOnEquip": {
             "Def": 38,
-            "MaxPP": 12
+            "MaxPP": 6
         },
         "AddElStatsOnEquip": {
-            "VenusAtk": 15,
-            "VenusRes": 25,
-            "JupiterAtk": 15,
-            "JupiterRes": 25
+            "VenusRes": 20
+        },
+        "GrantsUnleash": true,
+        "Unleash": {
+            "effectImages": [
+                {
+                    "id": "Condition",
+                    "args": [ "Delusion", "30" ]
+                }
+            ]
         }
     },
     "Erebus Armor": {
@@ -3183,11 +3233,10 @@
         "IsArtifact": true,
         "AddStatsOnEquip": {
             "Def": 28,
-            "MaxHP": 7
+            "MaxHP": 5
         },
         "AddElStatsOnEquip": {
-            "VenusRes": 25,
-            "MarsAtk": 30
+            "VenusRes": 25
         }
     },
     "Wild Coat": {
@@ -3358,7 +3407,7 @@
             "Atk": 7
         },
         "AddElStatsOnEquip": {
-            "MercuryRes": 15
+            "MarsAtk": 15
         }
     },
     "Turtle Boots": {
@@ -3498,12 +3547,11 @@
         "IsEquippable": true,
         "IsArtifact": true,
         "AddStatsOnEquip": {
-            "Def": 24
+            "Def": 22
         },
         "AddElStatsOnEquip": {
             "VenusRes": 15,
-            "VenusAtk": 15,
-            "JupiterAtk": 10,
+            "VenusAtk": 5,
             "MarsRes": -10
         }
     },
@@ -3585,10 +3633,10 @@
         "IsEquippable": true,
         "IsArtifact": true,
         "AddStatsOnEquip": {
-            "Def": 38
+            "Def": 35
         },
         "AddElStatsOnEquip": {
-            "VenusRes": 25
+            "VenusAtk": 25
         }
     },
     "Prophets Hat": {
@@ -3862,9 +3910,7 @@
             "Def": 36
         },
         "AddElStatsOnEquip": {
-            "MercuryRes": 30,
-            "MercuryAtk": 20,
-            "JupiterAtk": 20
+            "MarsAtk": 30
         }
     },
     "Psychic Circlet": {
@@ -4766,7 +4812,7 @@
             "effectImages": [
                 {
                     "id": "HPDrain",
-                    "args": [ "50" ]
+                    "args": [ "40", "20" ]
                 }
             ]
         }
@@ -4783,7 +4829,7 @@
             "effectImages": [
                 {
                     "id": "HPDrain",
-                    "args": [ "60", "10" ]
+                    "args": [ "60", "15" ]
                 }
             ]
         }
@@ -4798,6 +4844,15 @@
         "AddElStatsOnEquip": {
             "MercuryAtk": 30,
             "MercuryRes": 40
+        },
+        "GrantsUnleash": true,
+        "Unleash": {
+            "effectImages": [
+                {
+                    "id": "HPDrain",
+                    "args": [ "10", "20" ]
+                }
+            ]
         }
     },
     "Sleep Ring": {
