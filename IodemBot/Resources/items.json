@@ -702,7 +702,7 @@
             "EffectImages": [
                 {
                     "Id": "AddDamage",
-                    "args": [ "62" ]
+                    "args": [ "26" ]
                 },
                 {
                     "id": "HPDrain",
@@ -2941,15 +2941,17 @@
         "IsEquippable": true,
         "IsArtifact": true,
         "AddStatsOnEquip": {
-            "Def": 38,
-            "MaxPP": 12
+            "Def": 38
+        },
+        "AddElStatsOnEquip": {
+            "VenusRes": 20
         },
         "GrantsUnleash": true,
         "Unleash": {
             "effectImages": [
                 {
                     "id": "Condition",
-                    "args": [ "Delusion", "25" ]
+                    "args": [ "Delusion", "30" ]
                 }
             ]
         }
@@ -3502,7 +3504,12 @@
         "IsArtifact": true,
         "AddStatsOnEquip": {
             "Def": 22
-        }
+        },
+        "AddElStatsOnEquip": {
+            "VenusAtk": 5,
+            "VenusRes": 15,
+            "MarsRes": -10
+        },
     },
     "Hover Greave": {
         "Name": "Hover Greave",
@@ -4779,7 +4786,7 @@
             "effectImages": [
                 {
                     "id": "HPDrain",
-                    "args": [ "50", "20" ]
+                    "args": [ "40", "20" ]
                 }
             ]
         }
@@ -4796,7 +4803,7 @@
             "effectImages": [
                 {
                     "id": "HPDrain",
-                    "args": [ "75", "15" ]
+                    "args": [ "60", "15" ]
                 }
             ]
         }
@@ -4816,7 +4823,7 @@
             "effectImages": [
                 {
                     "id": "HPDrain",
-                    "args": [ "33", "10" ]
+                    "args": [ "10", "20" ]
                 }
             ]
         }
