@@ -2853,7 +2853,7 @@
     "Grays Armor": {
         "Name": "Grays Armor",
         "Price": 915000,
-        "Icon": "<:Tritons_Ward:569854675906461716>",
+        "Icon": "<:Grays_Armor:582649488322199553>",
         "ItemType": "HeavyArmor",
         "IsEquippable": true,
         "IsArtifact": true,
@@ -3279,6 +3279,9 @@
         "IsArtifact": true,
         "AddStatsOnEquip": {
             "Def": 38
+        },
+        "AddElStatsOnEquip": {
+            "JupiterRes": 15
         }
     },
     "Erinyes Tunic": {
@@ -3693,7 +3696,8 @@
         "IsArtifact": true,
         "AddStatsOnEquip": {
             "Def": 18
-        }
+        },
+        "HPRegen": 3
     },
     "Thorn Crown": {
         "Name": "Thorn Crown",
@@ -4328,7 +4332,8 @@
         "IsArtifact": true,
         "IsEquippable": true,
         "AddStatsOnEquip": {
-            "Def": 35
+            "Def": 35,
+            "MaxHP": 15
         },
         "AddElStatsOnEquip": {
             "JupiterAtk": 10,
@@ -4611,7 +4616,8 @@
         "IsArtifact": true,
         "IsEquippable": true,
         "AddStatsOnEquip": {
-            "Def": 31
+            "Def": 31,
+            "MaxHP": 20
         },
         "AddElStatsOnEquip": {
             "VenusRes": 20
