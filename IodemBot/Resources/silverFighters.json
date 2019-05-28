@@ -1795,10 +1795,10 @@
                 "Power Crush"
             ],
             "stats": {
-                "maxHP": 201,
+                "maxHP": 400,
                 "maxPP": 0,
-                "Atk": 133,
-                "Def": 99,
+                "Atk": 150,
+                "Def": 132,
                 "Spd": 90
             },
             "elstats": {
@@ -1819,7 +1819,7 @@
                 "Power Crush"
             ],
             "stats": {
-                "maxHP": 402,
+                "maxHP": 800,
                 "maxPP": 0,
                 "Atk": 200,
                 "Def": 180,
@@ -1848,7 +1848,7 @@
                 "maxHP": 1500,
                 "maxPP": 0,
                 "Atk": 300,
-                "Def": 250,
+                "Def": 400,
                 "Spd": 150
             },
             "elstats": {
@@ -1876,7 +1876,7 @@
 
             ],
             "stats": {
-                "maxHP": 750,
+                "maxHP": 1250,
                 "maxPP": 108,
                 "Atk": 300,
                 "Def": 90,
@@ -1904,7 +1904,7 @@
                 "Sonic Slash"
             ],
             "stats": {
-                "maxHP": 201,
+                "maxHP": 400,
                 "maxPP": 18,
                 "Atk": 171,
                 "Def": 70,
@@ -1930,7 +1930,7 @@
                 "Tempest"
             ],
             "stats": {
-                "maxHP": 356,
+                "maxHP": 750,
                 "maxPP": 54,
                 "Atk": 200,
                 "Def": 80,
