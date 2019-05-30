@@ -35,6 +35,11 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         protected override List<string> InternalUse(ColossoFighter User)
         {
+            if (User.Weapon != null)
+            {
+                emote = User.Weapon.Icon;
+            }
+
             var enemy = User.battle.GetTeam(User.enemies)[targetNr];
 
             var log = new List<string>
@@ -79,7 +84,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             }
 
             var atk = User.stats.Atk * User.MultiplyBuffs("Attack");
-            var def = enemy.stats.Def * enemy.MultiplyBuffs("Defense");
+            var def = enemy.stats.Def * enemy.MultiplyBuffs("Defense") * enemy.ignoreDefense;
             uint damage = 1;
             if (def < atk)
             {

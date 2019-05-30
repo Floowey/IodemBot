@@ -83,9 +83,8 @@ namespace IodemBot.Modules
             {
                 return new Matchup("Gladiator", new Result("{0} doesn't show up and {1} goes home. \n(If you see this, something is broken, please try it later) Nuts", false));
             }
-            string enemy = enemies[Global.Random.Next(0, enemies.Count)];
-            Result result = results[Global.Random.Next(0, results.Count)];
-            return new Matchup(enemy, result);
+
+            return new Matchup(enemies.Random(), results.Random());
         }
 
         private static string GetTitle(SocketUser user, string enemy)

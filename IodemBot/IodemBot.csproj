@@ -251,6 +251,7 @@
     <Compile Include="Core\Leveling\ServerGames.cs" />
     <Compile Include="Extensions\DiscordSocketGuildExt.cs" />
     <Compile Include="Extensions\DiscordSocketGuildUserExt.cs" />
+    <Compile Include="Extensions\IEnumerableExt.cs" />
     <Compile Include="MessageHandler.cs" />
     <Compile Include="Modules\ColossoBattles\ColossoPvE.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Classes\AdeptClass.cs" />
@@ -333,6 +334,9 @@
     <None Include="packages.config" />
     <None Include="Resources\accounts.json" />
     <None Include="Resources\AdeptClassSeries.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\shop.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Resources\tutorialFighters.json">

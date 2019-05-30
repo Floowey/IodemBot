@@ -39,7 +39,7 @@ namespace IodemBot.Modules.ColossoBattles
 
                 if (g.CuresCurse)
                 {
-                    isImmuneToItemCurse = true;
+                    IsImmuneToItemCurse = true;
                 }
 
                 if (g.IsWeapon)

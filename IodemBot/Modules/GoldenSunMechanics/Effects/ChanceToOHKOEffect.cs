@@ -10,7 +10,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public override List<string> Apply(ColossoFighter User, ColossoFighter Target)
         {
             var log = new List<string>();
-            if (Target.isImmuneToEffects)
+            if (Target.IsImmuneToOHKO)
             {
                 return log;
             }

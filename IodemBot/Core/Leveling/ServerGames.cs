@@ -91,10 +91,10 @@ namespace IodemBot.Core.Leveling
             UserAccounts.SaveAccounts();
         }
 
-        internal static async Task UserWonBattle(UserAccount userAccount, int winsInARow, BattleStats battleStats, ColossoPvE.BattleDifficulty diff, ITextChannel battleChannel)
+        internal static async Task UserWonBattle(UserAccount userAccount, int winsInARow, int LureCaps, BattleStats battleStats, BattleDifficulty diff, ITextChannel battleChannel)
         {
             uint oldLevel = userAccount.LevelNumber;
-            var xpawarded = (uint)(new Random()).Next(20, 40) * Math.Min(3, (uint)Math.Pow(((int)diff + 1), 2));
+            var xpawarded = (uint)(new Random()).Next(20 + 5 * LureCaps, 40 + 10 * LureCaps) * Math.Min(3, (uint)Math.Pow(((int)diff + 1), 2));
             userAccount.XP += xpawarded;
             userAccount.Inv.AddBalance(xpawarded / 2);
             uint newLevel = userAccount.LevelNumber;
@@ -107,7 +107,7 @@ namespace IodemBot.Core.Leveling
             userAccount.BattleStats += battleStats;
             var bs = userAccount.BattleStats;
 
-            if (Global.Random.Next(0, 100) <= 9 + battleStats.TotalTeamMates * 2)
+            if (Global.Random.Next(0, 100) <= 9 + battleStats.TotalTeamMates * 2 + 4 * LureCaps)
             {
                 ChestQuality awardedChest = GetRandomChest(diff);
                 userAccount.Inv.AwardChest(awardedChest);

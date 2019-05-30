@@ -77,7 +77,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 return new Validation(false, log);
             }
 
-            if (User.HasCondition(Condition.ItemCurse) && !User.isImmuneToItemCurse && Global.Random.Next(0, 3) == 0)
+            if (User.HasCondition(Condition.ItemCurse) && !User.IsImmuneToItemCurse && Global.Random.Next(0, 3) == 0)
             {
                 log.Add($"{User.name} can't move");
                 return new Validation(false, log);

@@ -1,5 +1,7 @@
-﻿using IodemBot.Modules.GoldenSunMechanics;
+﻿using IodemBot.Extensions;
+using IodemBot.Modules.GoldenSunMechanics;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,30 +27,41 @@ namespace IodemBot.Modules.ColossoBattles
 
     public abstract class ColossoFighter : IComparable<ColossoFighter>, ICloneable
     {
-        [JsonIgnore] public ColossoBattle battle;
-        [JsonIgnore] public List<Buff> Buffs = new List<Buff>();
-        [JsonIgnore] public double defensiveMult = 1;
-        public ElementalStats elstats;
-        [JsonIgnore] public ColossoBattle.Team enemies;
-        [JsonIgnore] public bool hasSelected = false;
-        [JsonIgnore] public double ignoreDefense = 1;
-        public string imgUrl;
-        public bool isImmuneToEffects;
-        public bool isImmuneToPsynergy;
-        public bool isImmuneToItemCurse;
-        [JsonIgnore] public Move[] moves;
+        private static readonly Random rnd = Global.Random;
+
         public string name;
-        [JsonIgnore] public double offensiveMult = 1;
+        public Stats stats;
+        public ElementalStats elstats;
+        public string imgUrl;
+        [JsonIgnore] public Move[] moves;
+
+        [JsonProperty("Conditions", ItemConverterType = typeof(StringEnumConverter))]
+        private List<Condition> Conditions = new List<Condition>();
+
+        [JsonProperty("isImmuneToConditions", ItemConverterType = typeof(StringEnumConverter))]
+        public Condition[] isImmuneToConditions = { };
+
+        public bool IsImmuneToOHKO { get; set; }
+        public bool IsImmuneToHPtoOne { get; set; }
+        public bool IsImmuneToPsynergy { get; set; }
+        public bool IsImmuneToItemCurse { get; set; }
+        public Item Weapon;
         [JsonIgnore] public ColossoBattle.Team party;
         [JsonIgnore] public Move selected;
         [JsonIgnore] public uint damageDoneThisTurn;
-        public Stats stats;
-        [JsonIgnore] private readonly List<Condition> Conditions = new List<Condition>();
-        [JsonIgnore] private readonly Random rnd = Global.Random;
-        public Item Weapon;
+        [JsonIgnore] public ColossoBattle battle;
+        [JsonIgnore] public List<Buff> Buffs = new List<Buff>();
+        [JsonIgnore] public ColossoBattle.Team enemies;
+        [JsonIgnore] public bool hasSelected = false;
+        [JsonIgnore] public double offensiveMult = 1;
+        [JsonIgnore] public double defensiveMult = 1;
+        [JsonIgnore] public double ignoreDefense = 1;
         public int unleashRate = 35;
         [JsonIgnore] public uint addDamage;
         public List<Item> EquipmentWithEffect = new List<Item>();
+        public int HPrecovery { get; set; } = 0;
+        public int PPrecovery { get; set; } = 0;
+        public int DeathCurseCounter = 4;
 
         internal ColossoFighter(string name, string imgUrl, Stats stats, ElementalStats elstats, Move[] moves)
         {
@@ -60,9 +73,6 @@ namespace IodemBot.Modules.ColossoBattles
             this.elstats = elstats;
             this.moves = moves;
         }
-
-        public int HPrecovery { get; set; } = 0;
-        public int PPrecovery { get; set; } = 0;
 
         public void AddCondition(Condition con)
         {
@@ -114,7 +124,8 @@ namespace IodemBot.Modules.ColossoBattles
             StringBuilder s = new StringBuilder();
             if (HasCondition(Condition.DeathCurse))
             {
-                s.Append("");
+                string[] DeathCurseEmotes = { ":grey_question:", "<:DeathCurse1:583645163499552791>", "<:DeathCurse2:583645163927109636>", "<:DeathCurse3:583644633314099202>", "<:DeathCurse2:583645163927109636><:DeathCurse2:583645163927109636>" };
+                s.Append(DeathCurseEmotes[DeathCurseCounter]);
             }
 
             if (HasCondition(Condition.Delusion))
@@ -139,7 +150,7 @@ namespace IodemBot.Modules.ColossoBattles
 
             if (HasCondition(Condition.ItemCurse))
             {
-                s.Append("<:curse:538074679492083742>");
+                s.Append("<:Condemn:583651784040644619>");
             }
 
             if (HasCondition(Condition.Poison))
@@ -191,11 +202,8 @@ namespace IodemBot.Modules.ColossoBattles
             }
             else
             {
-                stats.HP = 0;
+                Kill();
                 log.Add($":x: {name} goes down.");
-                RemoveAllConditions();
-                AddCondition(Condition.Down);
-                Buffs = new List<Buff>();
             }
             return log;
         }
@@ -284,6 +292,16 @@ namespace IodemBot.Modules.ColossoBattles
                 var damage = Math.Min(400, (uint)(stats.MaxHP * Global.Random.Next(10, 20) / 100));
                 turnLog.Add($"{name} is damaged by the Venom.");
                 turnLog.AddRange(DealDamage(damage));
+            }
+
+            if (HasCondition(Condition.DeathCurse))
+            {
+                DeathCurseCounter--;
+                if (DeathCurseCounter <= 0)
+                {
+                    Kill();
+                    turnLog.Add($":x: {name}'s light goes out.");
+                }
             }
 
             RemoveCondition(Condition.Counter);
@@ -458,12 +476,14 @@ namespace IodemBot.Modules.ColossoBattles
         {
             Condition[] dontRemove = new Condition[] { Condition.Down, Condition.Counter, Condition.ItemCurse, Condition.Haunt };
             Conditions.RemoveAll(c => !dontRemove.Contains(c));
+            DeathCurseCounter = 4;
         }
 
         public void RemoveNearlyAllConditions()
         {
             Condition[] dontRemove = new Condition[] { Condition.Down, Condition.Counter, Condition.ItemCurse, Condition.Poison, Condition.Venom, Condition.Haunt };
             Conditions.RemoveAll(c => !dontRemove.Contains(c));
+            DeathCurseCounter = 4;
         }
 
         public void RemoveCondition(Condition con)
@@ -471,6 +491,10 @@ namespace IodemBot.Modules.ColossoBattles
             if (Conditions.Contains(con))
             {
                 Conditions.Remove(con);
+                if (con == Condition.DeathCurse)
+                {
+                    DeathCurseCounter = 4;
+                }
             }
         }
 
@@ -560,7 +584,7 @@ namespace IodemBot.Modules.ColossoBattles
                 hasSelected = true;
                 return;
             }
-            selected = moves[Global.Random.Next(0, moves.Count())];
+            selected = moves.Random();
 
             selected.targetNr = 0;
             Console.WriteLine($"{selected.name} was rolled.");

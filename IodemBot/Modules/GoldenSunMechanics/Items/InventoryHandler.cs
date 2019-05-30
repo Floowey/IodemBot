@@ -50,6 +50,10 @@ namespace IodemBot.Modules.GoldenSunMechanics
             embed.WithColor(new Color(200, 200, 50));
             embed.WithImageUrl(Sprites.GetImageFromName("Sunshine"));
             embed.AddField("Today's Shop:", shop.InventoryToString(Inventory.Detail.PriceAndName), true);
+
+            var fb = new EmbedFooterBuilder();
+            fb.WithText($"Restock in: {ItemDatabase.TimeToNextReset.ToString(@"hh\h\ mm\m")}");
+            embed.WithFooter(fb);
             await Context.Channel.SendMessageAsync("", false, embed.Build());
         }
 

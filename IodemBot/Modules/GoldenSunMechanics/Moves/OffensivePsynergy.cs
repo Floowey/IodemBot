@@ -80,7 +80,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                     continue;
                 }
 
-                if (t.isImmuneToPsynergy)
+                if (t.IsImmuneToPsynergy)
                 {
                     log.Add($"{t.name} protects themselves with a magical barrier.");
                     return log;

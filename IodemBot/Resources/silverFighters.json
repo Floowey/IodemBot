@@ -1186,7 +1186,8 @@
                 "MercuryRes": 100
             },
             "HPRecovery": 30,
-            "extraTurns": 1
+            "extraTurns": 1,
+            "Conditions": [ "Sleep" ]
         }
     ],
     [
@@ -1674,10 +1675,6 @@
             "name": "Susa",
             "imgurl": "",
             "movepool": [
-                "Raiden's Wrath",
-                "Raiden's Wrath",
-                "Raiden's Wrath",
-                "Raiden's Wrath"
             ],
             "stats": {
                 "maxHP": 700,
@@ -1695,7 +1692,34 @@
                 "JupiterRes": 100,
                 "MercuryAtk": 100,
                 "MercuryRes": 100
-            }
+            },
+            "Weapon": {
+                "Name": "Cloud Brand",
+                "Price": 11800,
+                "Icon": "<:Cloud_Brand:582670195043074078>",
+                "ItemType": "LongSword",
+                "IsEquippable": true,
+                "IsArtifact": true,
+                "AddStatsOnEquip": {
+                    "Atk": 130
+                },
+                "increaseUnleashRate": 5,
+                "Unleash": {
+                    "UnleashName": "Raiden's Wrath",
+                    "UnleashAlignment": 2,
+                    "effectImages": [
+                        {
+                            "Id": "AddDamage",
+                            "args": [ "39" ]
+                        },
+                        {
+                            "id": "MayIgnoreDefense",
+                            "args": [ "100", "30" ]
+                        }
+                    ]
+                }
+            },
+            "hasDefend": false
         },
         {
             "name": "Izumo Curse Mage",
@@ -1725,7 +1749,8 @@
                 "JupiterRes": 100,
                 "MercuryAtk": 50,
                 "MercuryRes": 50
-            }
+            },
+            "Conditions": [ "Haunt", "DeathCurse", "ItemCurse" ]
         }
     ],
     [

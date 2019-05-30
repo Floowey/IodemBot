@@ -43,6 +43,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
         [JsonIgnore] public bool IsFull { get { return Count >= MaxInvSize; } }
         [JsonIgnore] public bool IsInitialized { get { return Inv != null; } }
 
+        public bool HasDuplicate { get { return Inv.Any(i => Inv.Where(j => j.Name.Equals(i.Name)).Count() > 1); } }
+
         [JsonProperty]
         private Dictionary<ChestQuality, uint> chests = new Dictionary<ChestQuality, uint>()
         {
@@ -81,6 +83,11 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public Inventory()
         {
+        }
+
+        public int NumberOfItemType(ItemType type)
+        {
+            return Inv.Where(i => i.ItemType == type).Count();
         }
 
         public List<string> UnequipExclusiveTo(Element element)
