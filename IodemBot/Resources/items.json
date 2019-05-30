@@ -1654,7 +1654,7 @@
         "AddStatsOnEquip": {
             "Atk": 95
         },
-        "MultStatOnEquip": {
+        "MultStatsOnEquip": {
             "Def": 120
         }
     },
@@ -4367,6 +4367,16 @@
         "IsEquippable": true,
         "AddStatsOnEquip": {
             "Def": 36
+        },
+        "ChanceToActivate": 30,
+        "ChanceToBreak": 12,
+        "Unleash": {
+            "effectImages": [
+                {
+                    "id": "Stat",
+                    "args": [ "Resistance", "1.2" ]
+                }
+            ]
         }
     },
     "Aerial Gloves": {
@@ -4760,8 +4770,8 @@
         "ItemType": "Ring",
         "IsEquippable": true,
         "IsArtifact": true,
-        "ChanceToActivate": 75,
-        "ChanceToBreak": 5,
+        "ChanceToActivate": 30,
+        "ChanceToBreak": 12,
         "Unleash": {
             "effectImages": [
                 {
@@ -4778,8 +4788,8 @@
         "ItemType": "Ring",
         "IsEquippable": true,
         "IsArtifact": true,
-        "ChanceToActivate": 75,
-        "ChanceToBreak": 5,
+        "ChanceToActivate": 30,
+        "ChanceToBreak": 12,
         "Unleash": {
             "effectImages": [
                 {
