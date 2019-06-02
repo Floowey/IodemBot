@@ -56,6 +56,16 @@
                 "MercuryAtk": 113,
                 "MercuryRes": 113
             }
+            "isImmuneToConditions": [
+            "Poison",
+            "Venom",
+            "Seal",
+            "Delusion",
+            "Stun",
+            "DeathCurse",
+            "Haunt"
+            ],
+            "isImmuneToOHKO": true,
         }
     ],
     [
@@ -73,7 +83,7 @@
             "stats": {
                 "maxHP": 2000,
                 "maxPP": 400,
-                "Atk": 250,
+                "Atk": 400,
                 "Def": 150,
                 "Spd": 150
             },
@@ -87,6 +97,18 @@
                 "MercuryAtk": 80,
                 "MercuryRes": 80
             }
+            "extraTurns": 1,
+            "Conditions": "DeathCurse"
+            "isImmuneToConditions": [
+            "Poison",
+            "Venom",
+            "Seal",
+            "Haunt",
+            "Stun",
+            "Sleep",
+            "Delusion"
+            ],
+            "isImmuneToOHKO": true,
         }
     ],
     [
@@ -119,7 +141,15 @@
                 "MercuryRes": 120
             },
             "HPRecovery": 333,
-            "PPRecovery": 33
+            "PPRecovery": 33,
+            "isImmuneToConditions": [
+            "Haunt",
+             "DeathCurse",
+                "Stun",
+                "Seal",
+                "Sleep"
+                ],
+            "isImmuneToOHKO": true,
         }
     ],
     [
@@ -151,7 +181,18 @@
                 "MercuryRes": 200
             },
             "extraTurns": 1,
-            "PPRecovery": 12
+            "PPRecovery": 12,
+            "isImmuneToConditions": [
+                "Poison",
+                "Venom",
+                "Seal",
+                "Sleep",
+                "Stun",
+                "DeathCurse",
+                "Haunt",
+                "Flinch"
+                ],
+            "isImmuneToOHKO": true,
         }
     ],
     [
@@ -183,6 +224,15 @@
                 "MercuryAtk": 100,
                 "MercuryRes": 72
             }
+            "isImmuneToConditions": [
+            "Poison",
+            "Venom",
+            "Sleep",
+            "DeathCurse",
+            "Haunt",
+            "Stun"
+            ],
+            "isImmuneToOHKO": true,
         },
         {
             "name": "Menardi",
@@ -213,6 +263,15 @@
                 "MercuryAtk": 95,
                 "MercuryRes": 72
             }
+              "isImmuneToConditions": [
+            "Poison",
+            "Venom",
+            "Sleep",
+            "DeathCurse",
+            "Haunt",
+            "Stun"
+            ],
+            "isImmuneToOHKO": true,
         }
     ],
     [
@@ -247,7 +306,18 @@
                 "MercuryAtk": 130,
                 "MercuryRes": 193
             },
-            "extraTurns": 1
+            "extraTurns": 1,
+              "isImmuneToConditions": [
+            "Poison",
+            "Venom",
+            "Sleep",
+            "DeathCurse",
+            "Haunt",
+            "Stun",
+            "Delusion",
+            "Seal"
+            ],
+            "isImmuneToOHKO": true,
         }
     ],
     [
@@ -486,7 +556,8 @@
                 "MercuryRes": 100
             },
             "HPRecovery": 90,
-            "extraTurns": 2
+            "extraTurns": 2,
+            "Condition": [ "Sleep" ],
         }
     ],
     [
@@ -645,7 +716,17 @@
                 "MercuryAtk": 100,
                 "MercuryRes": 48
             },
-            "HPRecovery": 40
+            "HPRecovery": 40,
+            "isImmuneToConditions": [
+                "Stun",
+                "Poison",
+                "Venom",
+                "Delusion",
+                "Sleep",
+                "DeathCurse",
+                "Haunt"
+                ],
+            "isImmuneToOHKO": true,
         },
         {
             "name": "Ogre Titan 2",
@@ -670,7 +751,17 @@
                 "MercuryAtk": 100,
                 "MercuryRes": 48
             },
-            "HPRecovery": 80
+            "HPRecovery": 80,
+            "isImmuneToConditions": [
+                "Stun",
+                "Poison",
+                "Venom",
+                "Delusion",
+                "Sleep",
+                "DeathCurse",
+                "Haunt"
+                ],
+            "isImmuneToOHKO": true,
         },
         {
             "name": "Ogre Titan 3",
@@ -695,7 +786,17 @@
                 "MercuryAtk": 100,
                 "MercuryRes": 48
             },
-            "HPRecovery": 120
+            "HPRecovery": 120,
+            "isImmuneToConditions": [
+                "Stun",
+                "Poison",
+                "Venom",
+                "Delusion",
+                "Sleep",
+                "DeathCurse",
+                "Haunt"
+                ],
+            "isImmuneToOHKO": true,
         },
         {
             "name": "Ogre Titan 4",
@@ -720,7 +821,17 @@
                 "MercuryAtk": 100,
                 "MercuryRes": 48
             },
-            "HPRecovery": 160
+            "HPRecovery": 160,
+            "isImmuneToConditions": [
+                "Stun",
+                "Poison",
+                "Venom",
+                "Delusion",
+                "Sleep",
+                "DeathCurse",
+                "Haunt"
+                ],
+            "isImmuneToOHKO": true,
         }
     ],
     [
@@ -749,7 +860,17 @@
                 "MercuryRes": 48
             },
             "HPRecovery": 250,
-            "extraTurns": 1
+            "extraTurns": 1,
+            "isImmuneToConditions": [
+                "Stun",
+                "Poison",
+                "Venom",
+                "Delusion",
+                "Sleep",
+                "DeathCurse",
+                "Haunt"
+                ],
+            "isImmuneToOHKO": true,
         }
     ]
 ]
