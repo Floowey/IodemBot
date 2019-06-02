@@ -789,10 +789,10 @@
             "Venom",
             "Sleep",
             "Stun",
-            "Seal",
             "DeathCurse",
             ],
             "isImmuneToOHKO": true,
+            "isImmuneToHPtoOne": true,
         }
     ],
     [
