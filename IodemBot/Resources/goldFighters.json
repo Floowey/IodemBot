@@ -55,7 +55,7 @@
                 "JupiterRes": 113,
                 "MercuryAtk": 113,
                 "MercuryRes": 113
-            }
+            },
             "isImmuneToConditions": [
             "Poison",
             "Venom",
@@ -96,9 +96,9 @@
                 "JupiterRes": 140,
                 "MercuryAtk": 80,
                 "MercuryRes": 80
-            }
+            },
             "extraTurns": 1,
-            "Conditions": "DeathCurse"
+            "Conditions": "DeathCurse",
             "isImmuneToConditions": [
             "Poison",
             "Venom",
@@ -223,7 +223,7 @@
                 "JupiterRes": 127,
                 "MercuryAtk": 100,
                 "MercuryRes": 72
-            }
+            },
             "isImmuneToConditions": [
             "Poison",
             "Venom",
@@ -262,7 +262,7 @@
                 "JupiterRes": 100,
                 "MercuryAtk": 95,
                 "MercuryRes": 72
-            }
+            },
               "isImmuneToConditions": [
             "Poison",
             "Venom",
