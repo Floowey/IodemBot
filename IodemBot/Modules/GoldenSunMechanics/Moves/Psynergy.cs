@@ -40,6 +40,13 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 log.Add($"{User.name} has not enough PP to cast {this.name}.");
                 return new Validation(false, log);
             }
+            List<ColossoFighter> targets = GetTarget(User);
+            if (targets.TrueForAll(i => !i.IsAlive()))
+            {
+                log.Add($"{User.name} {(PPCost == 1 ? "use" : "cast")} wants to use {name}, but all the targets are down.");
+                return new Validation(false, log);
+            }
+
             User.stats.PP -= (int)PPCost;
 
             log.Add($"{emote} {User.name} {(PPCost == 1 ? "uses" : "casts")} {this.name}!");

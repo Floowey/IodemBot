@@ -2497,7 +2497,7 @@
     },
     "Sagittarius Bow": {
         "Name": "Sagittarius Bow",
-        "Price": 290000,
+        "Price": 29000,
         "Icon": "<:Sagittarius_Bow:578229622810869761>",
         "ItemType": "Bow",
         "IsEquippable": true,

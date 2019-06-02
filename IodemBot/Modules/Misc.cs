@@ -23,7 +23,7 @@ namespace IodemBot.Modules
         public async Task Echo([Remainder] string message)
         {
             var embed = new EmbedBuilder();
-            embed.WithColor(Colors.get("Iodem"));
+            embed.WithColor(Colors.Get("Iodem"));
             embed.WithDescription(message);
             await Context.Message.DeleteAsync();
             await Context.Channel.SendMessageAsync("", false, embed.Build());
@@ -35,7 +35,7 @@ namespace IodemBot.Modules
         public async Task Mock([Remainder] string message)
         {
             var embed = new EmbedBuilder();
-            embed.WithColor(Colors.get("Iodem"));
+            embed.WithColor(Colors.Get("Iodem"));
             embed.WithAuthor(Context.User);
             embed.WithDescription(StringToMock(message));
             await Context.Message.DeleteAsync();
@@ -66,7 +66,7 @@ namespace IodemBot.Modules
         public async Task Ping()
         {
             var embed = new EmbedBuilder();
-            embed.WithColor(Colors.get("Iodem"));
+            embed.WithColor(Colors.Get("Iodem"));
             embed.WithDescription($"Pong!");
             await Context.Channel.SendMessageAsync("", false, embed.Build());
         }
@@ -77,7 +77,7 @@ namespace IodemBot.Modules
         public async Task Wiki([Remainder] string searchQuery = "")
         {
             var embed = new EmbedBuilder();
-            embed.WithColor(Colors.get("Iodem"));
+            embed.WithColor(Colors.Get("Iodem"));
             string link = "https://goldensunwiki.net/wiki/Main_Page";
             if (searchQuery != "")
             {
@@ -94,7 +94,7 @@ namespace IodemBot.Modules
         public async Task Subreddit()
         {
             var embed = new EmbedBuilder();
-            embed.WithColor(Colors.get("Iodem"));
+            embed.WithColor(Colors.Get("Iodem"));
             embed.WithDescription($"https://reddit.com/r/GoldenSun");
             await Context.Channel.SendMessageAsync("", false, embed.Build());
         }
@@ -109,7 +109,7 @@ namespace IodemBot.Modules
             var embed = new EmbedBuilder();
             var p = new PlayerFighter(user);
 
-            embed.WithColor(Colors.get(account.Element.ToString()));
+            embed.WithColor(Colors.Get(account.Element.ToString()));
             var author = new EmbedAuthorBuilder();
             author.WithName(user.DisplayName());
             author.WithIconUrl(user.GetAvatarUrl());
@@ -130,7 +130,7 @@ namespace IodemBot.Modules
             var embed = new EmbedBuilder();
             var p = new PlayerFighter(user);
 
-            embed.WithColor(Colors.get(account.Element.ToString()));
+            embed.WithColor(Colors.Get(account.Element.ToString()));
             var author = new EmbedAuthorBuilder();
             author.WithName($"{user.DisplayName()}");
             author.WithIconUrl(user.GetAvatarUrl());
@@ -175,7 +175,7 @@ namespace IodemBot.Modules
             var embed = new EmbedBuilder();
             var p = new PlayerFighter(user);
 
-            embed.WithColor(Colors.get(account.Element.ToString()));
+            embed.WithColor(Colors.Get(account.Element.ToString()));
             var author = new EmbedAuthorBuilder();
             author.WithName(user.DisplayName());
             author.WithIconUrl(user.GetAvatarUrl());
@@ -278,7 +278,7 @@ namespace IodemBot.Modules
             var offline = Context.Guild.Users.Where(u => u.Status == UserStatus.Offline).Count();
             var online = count - offline;
             var embed = new EmbedBuilder();
-            embed.WithColor(Colors.get("Iodem"));
+            embed.WithColor(Colors.Get("Iodem"));
             embed.WithDescription($"{count} Users with {online} Online");
 
             await Context.Channel.SendMessageAsync("", false, embed.Build());
@@ -299,7 +299,7 @@ namespace IodemBot.Modules
                 c.Trim();
             }
             var embed = new EmbedBuilder();
-            embed.WithColor(Colors.get("Iodem"));
+            embed.WithColor(Colors.Get("Iodem"));
             var choice = choices[(new Random()).Next(0, choices.Length)];
             embed.WithDescription($"➡️ {choice}");
             await Context.Channel.SendMessageAsync("", false, embed.Build());
@@ -312,7 +312,7 @@ namespace IodemBot.Modules
         {
             var topAccounts = UserAccounts.GetTop(10);
             var embed = new EmbedBuilder();
-            embed.WithColor(Colors.get("Iodem"));
+            embed.WithColor(Colors.Get("Iodem"));
             string[] Emotes = new string[] { "🥇", "🥈", "🥈", "🥉", "🥉", "🥉", "   ", "   ", "   ", "   " };
             var builder = new StringBuilder();
             for (int i = 0; i < 10; i++)
@@ -342,7 +342,7 @@ namespace IodemBot.Modules
         public async Task Gladiator([Remainder] string rem = "")
         {
             var embed = new EmbedBuilder();
-            embed.WithColor(Colors.get("Iodem"));
+            embed.WithColor(Colors.Get("Iodem"));
             SocketGuildUser user;
             if (Context.Message.MentionedUsers.FirstOrDefault() != null)
             {

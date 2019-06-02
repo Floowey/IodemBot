@@ -17,7 +17,7 @@ namespace IodemBot.Modules
         public async Task CoinToss()
         {
             var embed = new EmbedBuilder();
-            embed.WithColor(Colors.get("Iodem"));
+            embed.WithColor(Colors.Get("Iodem"));
             embed.WithDescription((new Random()).Next(0, 2) == 1 ? "<:Lucky_Medals:538050800342269973> Heads!" : "<:Gold:537214319591555073> Tails!");
             await Context.Channel.SendMessageAsync("", false, embed.Build());
         }
@@ -28,7 +28,7 @@ namespace IodemBot.Modules
         public async Task Dice([Remainder] uint sides = 6)
         {
             var embed = new EmbedBuilder();
-            embed.WithColor(Colors.get("Iodem"));
+            embed.WithColor(Colors.Get("Iodem"));
             embed.WithDescription($"🎲 {(new Random()).Next(0, (int)sides) + 1}");
             await Context.Channel.SendMessageAsync("", false, embed.Build());
         }
@@ -68,7 +68,7 @@ namespace IodemBot.Modules
             }
 
             var embed = new EmbedBuilder();
-            embed.WithColor(Colors.get("Iodem"));
+            embed.WithColor(Colors.Get("Iodem"));
             embed.WithDescription($"{emotesPlayer[(int)choice]} vs {emotesCPU[(int)cpuChoice]}");
             embed.AddField("Result:", result);
 

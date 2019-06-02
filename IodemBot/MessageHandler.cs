@@ -191,7 +191,7 @@ namespace IodemBot
                 if (text != "")
                 {
                     var embed = new EmbedBuilder();
-                    embed.WithColor(Colors.get("Iodem"));
+                    embed.WithColor(Colors.Get("Iodem"));
                     embed.WithDescription(text);
                     await msg.Channel.SendMessageAsync("", false, embed.Build());
                 }

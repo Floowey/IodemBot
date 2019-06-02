@@ -24,7 +24,7 @@ namespace IodemBot.Modules
         public async Task ColossoTrain()
         {
             var embed = new EmbedBuilder();
-            embed.WithColor(Colors.get("Iodem"));
+            embed.WithColor(Colors.Get("Iodem"));
 
             Matchup m = GetRandomMatchup();
 

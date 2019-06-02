@@ -112,7 +112,7 @@ namespace IodemBot.Core.Leveling
                 ChestQuality awardedChest = GetRandomChest(diff);
                 userAccount.Inv.AwardChest(awardedChest);
                 var embed = new EmbedBuilder();
-                embed.WithColor(Colors.get("Iodem"));
+                embed.WithColor(Colors.Get("Iodem"));
                 embed.WithDescription($"{((SocketTextChannel)battleChannel).Users.Where(u => u.Id == userAccount.ID).FirstOrDefault().Mention} found a {Inventory.ChestIcons[awardedChest]} {awardedChest} Chest!");
                 await battleChannel.SendMessageAsync("", false, embed.Build());
             }

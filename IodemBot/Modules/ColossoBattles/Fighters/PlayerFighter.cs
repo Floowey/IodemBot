@@ -53,7 +53,7 @@ namespace IodemBot.Modules.ColossoBattles
 
                 if (!g.IsWeapon && g.IsUnleashable)
                 {
-                    if (g.GrantsUnleash && Weapon.IsUnleashable)
+                    if (g.GrantsUnleash && (Weapon != null) && Weapon.IsUnleashable)
                     {
                         Weapon.Unleash.AdditionalEffects.AddRange(g.Unleash.Effects);
                     }

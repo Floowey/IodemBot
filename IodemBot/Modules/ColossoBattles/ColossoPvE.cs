@@ -306,7 +306,7 @@ namespace IodemBot.Modules.ColossoBattles
 
                 for (int i = 0; i < LureCaps; i++)
                 {
-                    if(Battle.GetTeam(team).Count < 9)
+                    if (Battle.GetTeam(team).Count < 9)
                     {
                         Battle.AddPlayer(EnemiesDatabase.GetRandomEnemies(diff).Random(), team);
                     }
@@ -479,7 +479,7 @@ namespace IodemBot.Modules.ColossoBattles
                     }
                     //e.WithAuthor($"{numberEmotes[i]} {fighter.name}");
                     embed.WithThumbnailUrl(fighter.imgUrl);
-                    embed.WithColor(Colors.get(fighter.moves.Where(m => m is Psynergy).Select(m => (Psynergy)m).Select(p => p.element.ToString()).ToArray()));
+                    embed.WithColor(Colors.Get(fighter.moves.Where(m => m is Psynergy).Select(m => (Psynergy)m).Select(p => p.element.ToString()).ToArray()));
                     //e.AddField();
                     embed.AddField($"{numberEmotes[i]} {fighter.ConditionsToString()}", fighter.name);
                     embed.AddField("HP", $"{fighter.stats.HP} / {fighter.stats.MaxHP}", true);
@@ -558,7 +558,7 @@ namespace IodemBot.Modules.ColossoBattles
                     var fighter = k.Value;
                     //e.WithAuthor($"{numberEmotes[i]} {fighter.name}");
                     embed.WithThumbnailUrl(fighter.imgUrl);
-                    embed.WithColor(Colors.get(fighter.moves.Where(m => m is Psynergy).Select(m => (Psynergy)m).Select(p => p.element.ToString()).ToArray()));
+                    embed.WithColor(Colors.Get(fighter.moves.Where(m => m is Psynergy).Select(m => (Psynergy)m).Select(p => p.element.ToString()).ToArray()));
                     //e.AddField();
                     embed.AddField($"{numberEmotes[i]} {fighter.ConditionsToString()}", fighter.name);
                     embed.AddField("HP", $"{fighter.stats.HP} / {fighter.stats.MaxHP}", true);

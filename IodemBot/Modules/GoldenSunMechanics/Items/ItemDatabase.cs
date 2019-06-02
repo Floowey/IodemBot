@@ -13,12 +13,12 @@ namespace IodemBot.Modules.GoldenSunMechanics
         private static Inventory shop;
         private static DateTime lastReset;
 
-        private static ShopStruct Shopstruct { get { return new ShopStruct() { shop = shop, lastReset = lastReset }; } }
+        private static ShopStruct Shopstruct { get { return new ShopStruct() { shop = shop, lastReset = lastReset, restockmessage = restockMessage, shopkeeper = shopkeeper }; } }
         private static readonly int HoursForReset = 8;
         public static string shopkeeper;
         public static string restockMessage;
-        private static string[] shopkeepers = { "", "" };
-        private static string[] restockMessages = { "", "" };
+        private static string[] shopkeepers = { "armor shopkeeper2", "armor shopkeeper3", "champa shopkeeper", "item shopkeeper", "izumo shopkeeper", "weapon shopkeeper", "weapon shopkeeper2", "sunshine", "armor shopkeeper" };
+        private static string[] restockMessages = { "Next shipment in:", "Next restock in:", "New Merchant in:" };
 
         public static TimeSpan TimeToNextReset
         {
@@ -42,6 +42,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
                     var s = JsonConvert.DeserializeObject<ShopStruct>(json);
                     shop = s.shop;
                     lastReset = s.lastReset;
+                    shopkeeper = s.shopkeeper;
+                    restockMessage = s.restockmessage;
                 }
 
                 shop = GetShop();
@@ -79,7 +81,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
             shop.Add(GetRandomItem(40, 0, RandomItemType.Artifact));
             shop.Add(GetRandomItem(50, 0, RandomItemType.Artifact));
 
-            shopkeeper = shopkeepers.Random();
+            shopkeeper = Sprites.GetImageFromName(shopkeepers.Random());
+
             restockMessage = restockMessages.Random();
 
             shop.Sort();
@@ -167,7 +170,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         {
             [JsonProperty] internal Inventory shop;
             [JsonProperty] internal DateTime lastReset;
-            [JsonProperty] internal string shopkeepr;
+            [JsonProperty] internal string shopkeeper;
             [JsonProperty] internal string restockmessage;
         }
     }

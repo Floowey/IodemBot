@@ -24,7 +24,7 @@ namespace IodemBot.Modules
         {
             AddQuote(name, quote);
             var embed = new EmbedBuilder();
-            embed.WithColor(Colors.get("Iodem"));
+            embed.WithColor(Colors.Get("Iodem"));
             embed.WithDescription(Utilities.GetAlert("quote_added"));
             await Context.Channel.SendMessageAsync("", false, embed.Build());
         }
@@ -41,7 +41,7 @@ namespace IodemBot.Modules
             }
 
             var embed = new EmbedBuilder();
-            embed.WithColor(Colors.get("Iodem"));
+            embed.WithColor(Colors.Get("Iodem"));
             QuoteStruct q = quoteList[(new Random()).Next(0, quoteList.Count)];
             q.name = Utilities.toCaps(q.name);
             embed.WithAuthor(q.name);
@@ -70,7 +70,7 @@ namespace IodemBot.Modules
                 return;
             }
             var embed = new EmbedBuilder();
-            embed.WithColor(Colors.get("Iodem"));
+            embed.WithColor(Colors.Get("Iodem"));
 
             //TODO: Optimize this. This is ugly.
             List<QuoteStruct> QuotesFromName = new List<QuoteStruct>();
@@ -106,7 +106,7 @@ namespace IodemBot.Modules
         private async Task NoQuotes()
         {
             var embed = new EmbedBuilder();
-            embed.WithColor(Colors.get("Iodem"));
+            embed.WithColor(Colors.Get("Iodem"));
             embed.WithDescription(Utilities.GetAlert("no_quotes"));
             await Context.Channel.SendMessageAsync("", false, embed.Build());
         }
