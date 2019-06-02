@@ -528,7 +528,7 @@
                 "JupiterRes": 150,
                 "MercuryAtk": 100,
                 "MercuryRes": 100
-            }
+            },
             "Weapon": {
         "Name": "Kikuichimonji",
         "Price": 13400,
@@ -582,7 +582,7 @@
                 "JupiterRes": 80,
                 "MercuryAtk": 140,
                 "MercuryRes": 140
-            }
+            },
             "Weapon": {
         "Name": "Crystal Rod",
         "Price": 13400,
@@ -636,7 +636,7 @@
                 "JupiterRes": 25,
                 "MercuryAtk": 100,
                 "MercuryRes": 100
-            }
+            },
             "isImmuneToConditions": [
             "Poison",
             "Venom",
@@ -670,7 +670,7 @@
                 "JupiterRes": 100,
                 "MercuryAtk": 25,
                 "MercuryRes": 25
-            }
+            },
             "isImmuneToConditions": [
             "Stun",
             "Flinch",
@@ -705,7 +705,7 @@
                 "JupiterRes": 175,
                 "MercuryAtk": 100,
                 "MercuryRes": 100
-            }
+            },
             "isImmuneToConditions": [
             "Seal",
             "Delusion",
@@ -739,7 +739,7 @@
                 "JupiterRes": 100,
                 "MercuryAtk": 152,
                 "MercuryRes": 175
-            }
+            },
             "isImmuneToConditions": [
             "Seal",
             "Sleep",
@@ -800,7 +800,7 @@
                 "JupiterRes": 100,
                 "MercuryAtk": 125,
                 "MercuryRes": 193
-            }
+            },
             "isImmuneToConditions": [
             "Haunt",
             "DeathCurse",
@@ -910,7 +910,7 @@
                 "JupiterRes": 127,
                 "MercuryAtk": 80,
                 "MercuryRes": 72
-            }
+            },
             "isImmuneToConditions": [
             "Stun",
             "DeathCurse",
@@ -1020,7 +1020,7 @@
                 "JupiterRes": 72,
                 "MercuryAtk": 85,
                 "MercuryRes": 100
-            }
+            },
             "isImmuneToConditions": [
             "Stun",
             "DeathCurse",
@@ -1106,7 +1106,7 @@
                 "JupiterRes": 100,
                 "MercuryAtk": 100,
                 "MercuryRes": 127
-            }
+            },
             "isImmuneToConditions": [
             "Seal",
             "Sleep",
@@ -1167,7 +1167,7 @@
                 "JupiterRes": 48,
                 "MercuryAtk": 125,
                 "MercuryRes": 72
-            }
+            },
             "isImmuneToConditions": [
             "Poison",
             "Venom",
@@ -1200,11 +1200,10 @@
                 "JupiterRes": 25,
                 "MercuryAtk": 95,
                 "MercuryRes": 152
-            }
+            },
             "isImmuneToConditions": [
             "Poison",
             "Venom",
-            "Seal",
             "DeathCurse",
             "Haunt"
             ],
@@ -1235,7 +1234,7 @@
                 "JupiterRes": 48,
                 "MercuryAtk": 125,
                 "MercuryRes": 72
-            }
+            },
             "isImmuneToConditions": [
             "Poison",
             "Venom",
@@ -1273,7 +1272,7 @@
                 "JupiterRes": 48,
                 "MercuryAtk": 140,
                 "MercuryRes": 110
-            }
+            },
             "isImmuneToConditions": [
             "Delusion",
             "Flinch",
@@ -1310,7 +1309,7 @@
                 "JupiterRes": 48,
                 "MercuryAtk": 110,
                 "MercuryRes": 110
-            }
+            },
             "isImmuneToConditions": [
             "Delusion",
             "Flinch",
@@ -1403,7 +1402,7 @@
                 "JupiterRes": 72,
                 "MercuryAtk": 30,
                 "MercuryRes": 30
-            }
+            },
             "isImmuneToConditions": [
             "Poison",
             "Venom",
@@ -1438,7 +1437,7 @@
                 "JupiterRes": 72,
                 "MercuryAtk": 30,
                 "MercuryRes": 30
-            }
+            },
             "isImmuneToConditions": [
             "Poison",
             "Venom",
@@ -1561,6 +1560,12 @@
             "HPRecovery": 30,
             "extraTurns": 1,
             "Conditions": [ "Sleep" ],
+            "isImmunetoConditions": [
+                "Poison",
+                "Venom",
+                "Stun",
+                "Delusion",
+                "DeathCurse"
         }
     ],
     [
@@ -1641,7 +1646,7 @@
                 "JupiterRes": 100,
                 "MercuryAtk": 100,
                 "MercuryRes": 127
-            }
+            },
             "isImmuneToConditions": [
             "Stun",
             "Seal",
@@ -1707,7 +1712,7 @@
                 "JupiterRes": 100,
                 "MercuryAtk": 140,
                 "MercuryRes": 25
-            }
+            },
             "isImmuneToConditions": [
             "Poison",
             "Venom",
@@ -1744,7 +1749,7 @@
                 "JupiterRes": 100,
                 "MercuryAtk": 110,
                 "MercuryRes": 25
-            }
+            },
              "isImmuneToConditions": [
             "Poison",
             "Venom",
@@ -1782,7 +1787,7 @@
                 "JupiterRes": 75,
                 "MercuryAtk": 120,
                 "MercuryRes": 150
-            }
+            },
             "isImmuneToConditions": [
             "Seal",
             "Poison",
@@ -1820,7 +1825,7 @@
                 "JupiterRes": 125,
                 "MercuryAtk": 120,
                 "MercuryRes": 75
-            }
+            },
             "isImmuneToConditions": [
             "Poison",
             "Venom",
@@ -1858,7 +1863,7 @@
                 "JupiterRes": 100,
                 "MercuryAtk": 115,
                 "MercuryRes": 175
-            }
+            },
             "isImmuneToConditions": [
             "DeathCurse",
             "Haunt",
@@ -1891,7 +1896,7 @@
                 "JupiterRes": 100,
                 "MercuryAtk": 110,
                 "MercuryRes": 175
-            }
+            },
             "isImmuneToConditions": [
             "DeathCurse",
             "Haunt",
@@ -1928,7 +1933,7 @@
                 "JupiterRes": 50,
                 "MercuryAtk": 130,
                 "MercuryRes": 125
-            }
+            },
             "isImmuneToConditions": [
             "Poison",
             "Venom",
@@ -1966,7 +1971,7 @@
                 "JupiterRes": 150,
                 "MercuryAtk": 120,
                 "MercuryRes": 200
-            }
+            },
             "isImmuneToConditions": [
             "Poison",
             "Venom",
@@ -2003,7 +2008,7 @@
                 "JupiterRes": 200,
                 "MercuryAtk": 100,
                 "MercuryRes": 150
-            }
+            },
             "isImmuneToConditions": [
             "Stun",
             "DeathCurse",
@@ -2382,7 +2387,8 @@
                 "JupiterRes": 25,
                 "MercuryAtk": 100,
                 "MercuryRes": 152
-            }
+            },
+            "hasDefend": false,
         },
         {
             "name": "Soul Army",
@@ -2408,7 +2414,7 @@
                 "JupiterRes": 25,
                 "MercuryAtk": 80,
                 "MercuryRes": 152
-            }
+            },
             "isImmuneToConditions": [
             "Poison",
             "Venom",
@@ -2419,6 +2425,7 @@
             "Haunt"
             ],
             "isImmuneToOHKO": true,
+            "hasDefend": false,
         }
     ],
     [
@@ -2450,7 +2457,7 @@
                 "JupiterRes": 100,
                 "MercuryAtk": 100,
                 "MercuryRes": 25
-            }
+            },
             "isImmuneToConditions": [
             "Poison",
             "Venom",
@@ -2572,7 +2579,7 @@
                 "JupiterRes": 100,
                 "MercuryAtk": 100,
                 "MercuryRes": 25
-            }
+            },
             "isImmuneToConditions": [
             "Poison",
             "Venom",
