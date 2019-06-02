@@ -310,7 +310,7 @@
                 "JupiterRes": 160,
                 "MercuryAtk": 100,
                 "MercuryRes": 100
-            }
+            },
             "Weapon": {
         "Name": "Meditation Rod",
         "Price": 13400,
@@ -363,7 +363,7 @@
                 "JupiterRes": 80,
                 "MercuryAtk": 140,
                 "MercuryRes": 140
-            }
+            },
              "Weapon": {
         "Name": "Fire Brand",
         "Price": 23400,
@@ -420,7 +420,7 @@
                 "JupiterRes": 100,
                 "MercuryAtk": 100,
                 "MercuryRes": 100
-            }
+            },
              "Weapon": {
         "Name": "Gaia Blade",
         "Price": 17000,
@@ -443,6 +443,7 @@
                     "args": [ "70" ]
                 }
             ]
+        }
         }
         },
         {
@@ -470,7 +471,7 @@
                 "JupiterRes": 100,
                 "MercuryAtk": 80,
                 "MercuryRes": 80
-            }
+            },
             "isImmuneToConditions": [
             "ItemCurse"
             ],
