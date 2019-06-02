@@ -807,6 +807,7 @@
             "Stun"
             ],
             "isImmuneToOHKO": true,
+            "isImmuneToHPToOne": true,
         },
         {
             "name": "Living Statue 2",
@@ -915,6 +916,7 @@
             "DeathCurse",
             ],
             "isImmuneToOHKO": true,
+            "isImmuneToHPToOne": true,
         },
         {
             "name": "Ape 3",
@@ -1018,11 +1020,11 @@
                 "MercuryRes": 100
             },
             "isImmuneToConditions": [
-            "Stun",
             "DeathCurse",
             "Flinch",
             ],
             "isImmuneToOHKO": true,
+            "isImmuneToHPToOne": true,
         },
         {
             "name": "Virago 2",
@@ -1102,12 +1104,11 @@
                 "MercuryRes": 127
             },
             "isImmuneToConditions": [
-            "Seal",
             "Sleep",
             "DeathCurse",
-            "Haunt"
             ],
             "isImmuneToOHKO": true,
+            "isImmuneToHPToOne": true,
         },
         {
             "name": "Grisly 2",
@@ -1163,10 +1164,8 @@
                 "MercuryRes": 72
             },
             "isImmuneToConditions": [
-            "Poison",
             "Venom",
             "DeathCurse",
-            "Haunt"
             ],
             "isImmuneToOHKO": true,
         },
@@ -1196,12 +1195,11 @@
                 "MercuryRes": 152
             },
             "isImmuneToConditions": [
-            "Poison",
-            "Venom",
             "DeathCurse",
             "Haunt"
             ],
             "isImmuneToOHKO": true,
+            "isImmuneToHPToOne": true,
         },
         {
             "name": "Fiendish Ghoul 2",
@@ -1230,10 +1228,8 @@
                 "MercuryRes": 72
             },
             "isImmuneToConditions": [
-            "Poison",
             "Venom",
             "DeathCurse",
-            "Haunt"
             ],
             "isImmuneToOHKO": true,
         }
@@ -1270,10 +1266,10 @@
             "isImmuneToConditions": [
             "Delusion",
             "Flinch",
-            "Stun",
             "DeathCurse"
             ],
             "isImmuneToOHKO": true,
+            "isImmuneToHPToOne": true,
         },
         {
             "name": "Gryphon 2",
@@ -1306,10 +1302,10 @@
             "isImmuneToConditions": [
             "Delusion",
             "Flinch",
-            "Stun",
             "DeathCurse"
             ],
             "isImmuneToOHKO": true,
+            "isImmuneToHPToOne": true,
         }
     ],
     [
@@ -1396,12 +1392,8 @@
                 "MercuryRes": 30
             },
             "isImmuneToConditions": [
-            "Poison",
-            "Venom",
             "Sleep",
-            "DeathCurse"
             ],
-            "isImmuneToOHKO": true,
         },
         {
             "name": "Nue 2",
@@ -1431,12 +1423,8 @@
                 "MercuryRes": 30
             },
             "isImmuneToConditions": [
-            "Poison",
-            "Venom",
             "Sleep",
-            "DeathCurse"
             ],
-            "isImmuneToOHKO": true,
         }
     ],
     [
@@ -1552,13 +1540,13 @@
             "HPRecovery": 30,
             "extraTurns": 1,
             "Conditions": [ "Sleep" ],
-            "isImmunetoConditions": [
+            "isImmuneToConditions": [
                 "Poison",
                 "Venom",
-                "Stun",
-                "Delusion",
                 "DeathCurse"
                 ],
+            "isImmuneToOHKO": true,
+            "isImmuneToHPToOne": true,
         }
     ],
     [
@@ -1641,13 +1629,10 @@
                 "MercuryRes": 127
             },
             "isImmuneToConditions": [
-            "Stun",
-            "Seal",
             "Flinch",
-            "DeathCurse",
-            "Haunt"
             ],
             "isImmuneToOHKO": true,
+            "isImmuneToHPToOne": true,
         },
         {
             "name": "Stone Soldier 2",
@@ -1709,10 +1694,9 @@
             "isImmuneToConditions": [
             "Poison",
             "Venom",
-            "DeathCurse",
-            "Haunt"
             ],
             "isImmuneToOHKO": true,
+            "isImmuneToHPToOne": true,
         },
         {
             "name": "Chimera 2",
@@ -1746,10 +1730,9 @@
              "isImmuneToConditions": [
             "Poison",
             "Venom",
-            "DeathCurse",
-            "Haunt"
             ],
             "isImmuneToOHKO": true,
+            "isImmuneToHPToOne": true,
         }
     ],
     [
@@ -1782,14 +1765,11 @@
                 "MercuryRes": 150
             },
             "isImmuneToConditions": [
-            "Seal",
-            "Poison",
-            "Venom",
-            "Sleep",
-            "DeathCurse",
-            "Haunt"
+            "Stun",
+            "DeathCurse"
             ],
             "isImmuneToOHKO": true,
+            "isImmuneToHPToOne": true,
         },
         {
             "name": "Hobgoblin 2",
@@ -1820,15 +1800,11 @@
                 "MercuryRes": 75
             },
             "isImmuneToConditions": [
-            "Poison",
-            "Venom",
-            "DeathCurse",
-            "Haunt",
-            "Delusion",
-            "Flinch",
-            "Stun"
+            "Seal",
+            "DeathCurse"
             ],
             "isImmuneToOHKO": true,
+            "isImmuneToHPToOne": true,
         }
     ],
     [
@@ -1858,12 +1834,11 @@
                 "MercuryRes": 175
             },
             "isImmuneToConditions": [
-            "DeathCurse",
-            "Haunt",
             "Delusion",
             "Sleep"
             ],
             "isImmuneToOHKO": true,
+            "isImmuneToHPToOne": true,
         },
         {
             "name": "Cerebus 2",
@@ -1891,12 +1866,11 @@
                 "MercuryRes": 175
             },
             "isImmuneToConditions": [
-            "DeathCurse",
-            "Haunt",
             "Delusion",
             "Sleep"
             ],
             "isImmuneToOHKO": true,
+            "isImmuneToHPToOne": true,
         }
     ],
     [
@@ -1929,12 +1903,7 @@
             },
             "isImmuneToConditions": [
             "Poison",
-            "Venom",
-            "Flinch",
-            "DeathCurse",
-            "Haunt"
             ],
-            "isImmuneToOHKO": true,
         },
         {
             "name": "Lizard Prince",
@@ -1966,14 +1935,10 @@
                 "MercuryRes": 200
             },
             "isImmuneToConditions": [
-            "Poison",
-            "Venom",
-            "Sleep",
-            "Seal",
-            "DeathCurse",
-            "Haunt"
+            "Flinch"
             ],
             "isImmuneToOHKO": true,
+            "isImmuneToHPToOne": true,
         },
         {
             "name": "Thunder Lizard",
@@ -2003,13 +1968,8 @@
                 "MercuryRes": 150
             },
             "isImmuneToConditions": [
-            "Stun",
-            "DeathCurse",
-            "Haunt",
-            "Delusion",
-            "Seal"
+            "Stun"
             ],
-            "isImmuneToOHKO": true,
         }
     ],
     [
@@ -2316,14 +2276,12 @@
             "HPRecovery": 20,
             "hasAttack": false,
             "isImmuneToConditions": [
-                "Poison",
-                "Venom",
                 "DeathCurse",
-                "Haunt",
                 "Stun",
                 "Flinch"
                 ],
             "isImmuneToOHKO": true,
+            "isImmuneToHPToOne": true,
         }
     ],
     [
@@ -2409,15 +2367,12 @@
                 "MercuryRes": 152
             },
             "isImmuneToConditions": [
-            "Poison",
-            "Venom",
-            "Flinch",
-            "Delusion",
             "Sleep",
             "DeathCurse",
             "Haunt"
             ],
             "isImmuneToOHKO": true,
+            "isImmuneToHPToOne": true,
             "hasDefend": false,
         }
     ],
@@ -2538,9 +2493,6 @@
             "isImmuneToConditions": [
                 "Poison",
                 "Venom",
-                "DeathCurse",
-                "Haunt",
-                "Delusion"
                 ],
         }
     ],
@@ -2575,13 +2527,10 @@
             },
             "isImmuneToConditions": [
             "Poison",
-            "Venom",
-            "Delusion",
-            "Sleep",
-            "DeathCurse",
-            "Haunt"
+            "DeathCurse"
             ],
             "isImmuneToOHKO": true,
+            "isImmuneToHPToOne": true,
         }
     ],
     [
