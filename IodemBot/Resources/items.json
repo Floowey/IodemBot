@@ -4157,7 +4157,7 @@
         "IsEquippable": true,
         "AddStatsOnEquip": {
             "Def": 27
-        }
+        },
         "MultStatsOnEquip": {
             "Def": 120
         }
