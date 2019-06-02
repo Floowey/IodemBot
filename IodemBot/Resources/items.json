@@ -1757,7 +1757,7 @@
                     "args": [ "100", "50" ]
                 }
             ]
-        }
+        },
         "Unleash": {
             "UnleashName": "Life Nourish",
             "UnleashAlignment": 0,
@@ -2867,10 +2867,10 @@
             "MaxPP": 990
         },
         "MultStatsOnEquip": {
-            "Atk": 150
-            "Spd": 150
-            "Def": 150
-            "MaxHP": 150
+            "Atk": 150,
+            "Spd": 150,
+            "Def": 150,
+            "MaxHP": 150,
             "MaxPP": 120
         },
         "HPRegen": 2000,
