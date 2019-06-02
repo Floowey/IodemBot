@@ -38,6 +38,8 @@
             "Atk": 70
         },
       },
+            "isImmuneToOHKO": true,
+            "isImmuneToHPToOne": true,
         }
     ],
     [
@@ -69,10 +71,11 @@
                 "MercuryRes": 140
             },
             "isImmuneToConditions": [
-            "Seal",
+            "Sleep",
             "DeathCurse",
             ],
             "isImmuneToOHKO": true,
+            "isImmuneToHPToOne": true,
         }
     ],
     [
@@ -801,7 +804,7 @@
             "isImmuneToConditions": [
             "DeathCurse",
             "Sleep",
-            "Flinch"
+            "Stun"
             ],
             "isImmuneToOHKO": true,
         },
@@ -910,8 +913,6 @@
             "isImmuneToConditions": [
             "Stun",
             "DeathCurse",
-            "Flinch",
-            "Sleep"
             ],
             "isImmuneToOHKO": true,
         },
