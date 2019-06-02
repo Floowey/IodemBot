@@ -23,11 +23,7 @@
                 "JupiterRes": 100,
                 "MercuryAtk": 100,
                 "MercuryRes": 140
-            },
-            "isImmuneToConditions": [
-            "Poison",
-            "Venom"
-            ],
+            }
         },
         {
             "name": "Woodspecter",
@@ -55,11 +51,7 @@
                 "JupiterRes": 80,
                 "MercuryAtk": 130,
                 "MercuryRes": 140
-            },
-            "isImmuneToConditions": [
-            "Poison",
-            "Venom"
-            ],
+            }
         },
         {
             "name": "Wood Walker 2",
@@ -84,10 +76,7 @@
                 "JupiterRes": 100,
                 "MercuryAtk": 100,
                 "MercuryRes": 140
-            },
-            "isImmuneToConditions": [
-            "Poison",
-            "Venom"
+            }
             ],
         }
     ],
@@ -678,11 +667,8 @@
                 "MercuryRes": 110
             },
             "isImmuneToConditions": [
-            "Poison",
-            "Venom",
             "Stun",
             "DeathCurse",
-            "Haunt"
             ],
            "isImmuneToOHKO": true,
         }
@@ -801,12 +787,10 @@
             "isImmuneToConditions": [
             "Poison",
             "Venom",
-            "Flinch",
             "Sleep",
             "Stun",
             "Seal",
             "DeathCurse",
-            "Haunt"
             ],
             "isImmuneToOHKO": true,
         }
@@ -1460,7 +1444,6 @@
             "Venom",
             "Delusion",
             "DeathCurse",
-            "Haunt"
             ],
             "isImmuneToOHKO": true,
         }
