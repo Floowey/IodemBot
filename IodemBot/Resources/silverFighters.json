@@ -69,11 +69,8 @@
                 "MercuryRes": 140
             },
             "isImmuneToConditions": [
-            "Poison",
-            "Venom",
             "Seal",
             "DeathCurse",
-            "Haunt"
             ],
             "isImmuneToOHKO": true,
         }
@@ -802,7 +799,6 @@
                 "MercuryRes": 193
             },
             "isImmuneToConditions": [
-            "Haunt",
             "DeathCurse",
             "Sleep",
             "Flinch"
@@ -914,7 +910,6 @@
             "isImmuneToConditions": [
             "Stun",
             "DeathCurse",
-            "Haunt",
             "Flinch",
             "Sleep"
             ],
@@ -1024,9 +1019,7 @@
             "isImmuneToConditions": [
             "Stun",
             "DeathCurse",
-            "Haunt",
             "Flinch",
-            "Delusion"
             ],
             "isImmuneToOHKO": true,
         },
@@ -1111,7 +1104,7 @@
             "Seal",
             "Sleep",
             "DeathCurse",
-            "Haunt",
+            "Haunt"
             ],
             "isImmuneToOHKO": true,
         },
@@ -1277,8 +1270,7 @@
             "Delusion",
             "Flinch",
             "Stun",
-            "DeathCurse",
-            "Haunt"
+            "DeathCurse"
             ],
             "isImmuneToOHKO": true,
         },
@@ -1314,8 +1306,7 @@
             "Delusion",
             "Flinch",
             "Stun",
-            "DeathCurse",
-            "Haunt"
+            "DeathCurse"
             ],
             "isImmuneToOHKO": true,
         }
