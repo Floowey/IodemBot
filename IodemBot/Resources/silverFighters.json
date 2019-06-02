@@ -67,8 +67,8 @@
                 "JupiterRes": 140,
                 "MercuryAtk": 140,
                 "MercuryRes": 140
-            }
-            "isImmuneToConditions":
+            },
+            "isImmuneToConditions": [
             "Poison",
             "Venom",
             "Seal",
@@ -172,6 +172,7 @@
             ]
         },
         }
+      },
     ],
     [
         {
