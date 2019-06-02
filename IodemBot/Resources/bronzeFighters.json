@@ -1507,11 +1507,10 @@
                 "MercuryRes": 175
             },
             "isImmuneToConditions": [
-            "Sleep",
-            "DeathCurse",
-            "Haunt"
+            "DeathCurse"
             ],
             "isImmuneToOHKO": true,
+            "isImmuneToHPToOne": true,
         }
     ],
     [
