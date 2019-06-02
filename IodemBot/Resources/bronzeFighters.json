@@ -51,7 +51,10 @@
                 "JupiterRes": 80,
                 "MercuryAtk": 130,
                 "MercuryRes": 140
-            }
+            },
+            "isImmuneToConditions": [
+            "Haunt"
+            ],
         },
         {
             "name": "Wood Walker 2",
