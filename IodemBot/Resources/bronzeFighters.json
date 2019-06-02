@@ -23,7 +23,7 @@
                 "JupiterRes": 100,
                 "MercuryAtk": 100,
                 "MercuryRes": 140
-            }
+            },
             "isImmuneToConditions": [
             "Poison",
             "Venom"
@@ -55,7 +55,7 @@
                 "JupiterRes": 80,
                 "MercuryAtk": 130,
                 "MercuryRes": 140
-            }
+            },
             "isImmuneToConditions": [
             "Poison",
             "Venom"
@@ -84,7 +84,7 @@
                 "JupiterRes": 100,
                 "MercuryAtk": 100,
                 "MercuryRes": 140
-            }
+            },
             "isImmuneToConditions": [
             "Poison",
             "Venom"
@@ -198,7 +198,7 @@
                 "JupiterRes": 25,
                 "MercuryAtk": 100,
                 "MercuryRes": 130
-            }
+            },
             "isImmuneToConditions": [
             "Poison",
             "Venom",
@@ -234,7 +234,7 @@
                 "JupiterRes": 130,
                 "MercuryAtk": 25,
                 "MercuryRes": 25
-            }
+            },
             "isImmuneToConditions": [
             "Stun",
             "Flinch",
@@ -270,7 +270,7 @@
                 "JupiterRes": 175,
                 "MercuryAtk": 100,
                 "MercuryRes": 130
-            }
+            },
             "isImmuneToConditions": [
             "Seal",
             "Delusion",
@@ -308,7 +308,7 @@
                 "JupiterRes": 130,
                 "MercuryAtk": 152,
                 "MercuryRes": 175
-            }
+            },
             "isImmuneToConditions": [
             "Sleep",
             "Seal",
@@ -564,7 +564,7 @@
                 "JupiterRes": 100,
                 "MercuryAtk": 110,
                 "MercuryRes": 120
-            }
+            },
             "isImmuneToConditions": [
             "Poison",
             "Venom",
@@ -597,7 +597,7 @@
                 "JupiterRes": 100,
                 "MercuryAtk": 110,
                 "MercuryRes": 120
-            }
+            },
             "isImmuneToConditions": [
             "Poison",
             "Venom",
@@ -630,7 +630,7 @@
                 "JupiterRes": 100,
                 "MercuryAtk": 110,
                 "MercuryRes": 120
-            }
+            },
             "isImmuneToConditions": [
             "Poison",
             "Venom",
@@ -676,8 +676,8 @@
                 "JupiterRes": 120,
                 "MercuryAtk": 120,
                 "MercuryRes": 110
-            }
-            "isImmuneToConditions":
+            },
+            "isImmuneToConditions": [
             "Poison",
             "Venom",
             "Stun",
@@ -715,7 +715,7 @@
                 "JupiterRes": 100,
                 "MercuryAtk": 120,
                 "MercuryRes": 80
-            }
+            },
             "isImmuneToConditions": [
             "Stun",
             "Flinch"
@@ -797,7 +797,7 @@
                 "JupiterRes": 127,
                 "MercuryAtk": 100,
                 "MercuryRes": 72
-            }
+            },
             "isImmuneToConditions": [
             "Poison",
             "Venom",
@@ -1454,7 +1454,7 @@
                 "JupiterRes": 100,
                 "MercuryAtk": 100,
                 "MercuryRes": 72
-            }
+            },
             "isImmuneToConditions": [
             "Poison",
             "Venom",
@@ -1520,7 +1520,7 @@
                 "JupiterRes": 100,
                 "MercuryAtk": 100,
                 "MercuryRes": 175
-            }
+            },
             "isImmuneToConditions": [
             "Sleep",
             "DeathCurse",
