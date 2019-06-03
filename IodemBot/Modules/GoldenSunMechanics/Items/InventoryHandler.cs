@@ -47,7 +47,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             var inv = UserAccounts.GetAccount(Context.User).Inv;
             var shop = ItemDatabase.GetShop();
             var embed = new EmbedBuilder();
-            embed.WithColor(new Color(200, 200, 50));
+            embed.WithColor(new Color(66, 45, 45));
             embed.WithImageUrl(Sprites.GetImageFromName("Sunshine"));
             embed.AddField("Today's Shop:", shop.InventoryToString(Inventory.Detail.PriceAndName), true);
 
