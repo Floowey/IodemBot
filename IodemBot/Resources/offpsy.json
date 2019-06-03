@@ -588,7 +588,7 @@
     "Dragon Cloud": {
         "name": "Dragon Cloud",
         "targetType": 3,
-        "emote": "<:Dragon_Fire:536964123234402314>",
+        "emote": "<:Dragon_Cloud:536964123234402314>",
         "range": 1,
         "element": 1,
         "PPCost": 6,
