@@ -27,7 +27,19 @@
                 "JupiterRes": 110,
                 "MercuryAtk": 110,
                 "MercuryRes": 110
-            }
+            },
+             "Weapon": {
+        "Name": "Claymore",
+        "Price": 4000,
+        "Icon": "<:Claymore:569855141117820943>",
+        "ItemType": "LongSword",
+        "IsEquippable": true,
+        "AddStatsOnEquip": {
+            "Atk": 70
+        },
+      },
+            "isImmuneToOHKO": true,
+            "isImmuneToHPToOne": true,
         }
     ],
     [
@@ -57,7 +69,13 @@
                 "JupiterRes": 140,
                 "MercuryAtk": 140,
                 "MercuryRes": 140
-            }
+            },
+            "isImmuneToConditions": [
+            "Sleep",
+            "DeathCurse",
+            ],
+            "isImmuneToOHKO": true,
+            "isImmuneToHPToOne": true,
         }
     ],
     [
@@ -87,7 +105,21 @@
                 "JupiterRes": 100,
                 "MercuryAtk": 140,
                 "MercuryRes": 140
-            }
+            },
+             "Weapon": {
+        "Name": "Captains Axe",
+        "Price": 6800,
+        "Icon": "<:Captains_Axe:569855200702234633>",
+        "ItemType": "Axe",
+        "IsEquippable": true,
+        "IsArtifact": true,
+        "AddStatsOnEquip": {
+            "Atk": 95
+        },
+        "MultStatsOnEquip": {
+            "Def": 120
+        },
+        }
         },
         {
             "name": "Eoleo",
@@ -115,8 +147,33 @@
                 "JupiterRes": 100,
                 "MercuryAtk": 110,
                 "MercuryRes": 110
-            }
+            },
+         "Weapon": {
+        "Name": "Pirates Sabre",
+        "Price": 10600,
+        "Icon": "<:Pirates_Sabre:569855398572458004>",
+        "ItemType": "LightBlade",
+        "IsEquippable": true,
+        "IsArtifact": true,
+        "AddStatsOnEquip": {
+            "Atk": 136
+        },
+        "Unleash": {
+            "UnleashName": "Scorpionfish",
+            "UnleashAlignment": 1,
+            "effectImages": [
+                {
+                    "Id": "AddDamage",
+                    "args": [ "43" ]
+                },
+                {
+                    "id": "Condition",
+                    "args": [ "Venom", "20" ]
+                }
+            ]
+        },
         }
+      },
     ],
     [
         {
@@ -146,7 +203,33 @@
                 "JupiterRes": 100,
                 "MercuryAtk": 100,
                 "MercuryRes": 100
-            }
+            },
+            "Weapon": {
+        "Name": "Huge Sword",
+        "Price": 14000,
+        "Icon": "<:Huge_Sword:569855141545771008>",
+        "ItemType": "LongSword",
+        "IsEquippable": true,
+        "IsArtifact": true,
+        "DamageAlignment": 0,
+        "AddStatsOnEquip": {
+            "Atk": 155
+        },
+        "Unleash": {
+            "UnleashName": "Heavy Divide",
+            "UnleashAlignment": 0,
+            "effectImages": [
+                {
+                    "Id": "AddDamage",
+                    "args": [ "60" ]
+                },
+                {
+                    "Id": "Stat",
+                    "args": [ "Def", "0.25", "25" ]
+                }
+            ]
+        }
+    },
         },
         {
             "name": "Jenna",
@@ -173,7 +256,33 @@
                 "JupiterRes": 100,
                 "MercuryAtk": 100,
                 "MercuryRes": 100
-            }
+            },
+            "Weapon": {
+        "Name": "Burning Sword",
+        "Price": 14600,
+        "Icon": "<:Burning_Sword:569855398451085332>",
+        "ItemType": "LightBlade",
+        "IsEquippable": true,
+        "IsArtifact": true,
+        "DamageAlignment": 1,
+        "AddStatsOnEquip": {
+            "Atk": 157
+        },
+        "Unleash": {
+            "UnleashName": "Blaze Rush",
+            "UnleashAlignment": 1,
+            "effectImages": [
+                {
+                    "Id": "AddDamage",
+                    "args": [ "54" ]
+                },
+                {
+                    "Id": "Stat",
+                    "args": [ "Def", "0.25", "25" ]
+                }
+            ]
+        }
+    },
         },
         {
             "name": "Sheba",
@@ -201,7 +310,32 @@
                 "JupiterRes": 160,
                 "MercuryAtk": 100,
                 "MercuryRes": 100
-            }
+            },
+            "Weapon": {
+        "Name": "Meditation Rod",
+        "Price": 13400,
+        "Icon": "<:Meditation_Rod:569855339743281152>",
+        "ItemType": "Staff",
+        "IsEquippable": true,
+        "IsArtifact": true,
+        "AddStatsOnEquip": {
+            "Atk": 150
+        },
+        "Unleash": {
+            "UnleashName": "Nirvana",
+            "UnleashAlignment": 2,
+            "effectImages": [
+                {
+                    "Id": "AddDamage",
+                    "args": [ "50" ]
+                },
+                {
+                    "Id": "PPDrain",
+                    "args": [ "10", "40" ]
+                }
+            ]
+        }
+    },
         },
         {
             "name": "Piers",
@@ -229,7 +363,33 @@
                 "JupiterRes": 80,
                 "MercuryAtk": 140,
                 "MercuryRes": 140
-            }
+            },
+             "Weapon": {
+        "Name": "Fire Brand",
+        "Price": 23400,
+        "Icon": "<:Fire_Brand:581966770470912031>",
+        "ItemType": "LongSword",
+        "IsEquippable": true,
+        "IsArtifact": true,
+        "DamageAlignment": 1,
+        "AddStatsOnEquip": {
+            "Atk": 176
+        },
+        "Unleash": {
+            "UnleashName": "Purgatory",
+            "UnleashAlignment": 1,
+            "effectImages": [
+                {
+                    "Id": "AddDamage",
+                    "args": [ "67" ]
+                },
+                {
+                    "id": "Condition",
+                    "args": [ "Sleep", "20" ]
+                }
+            ]
+        }
+    },
         }
     ],
     [
@@ -260,7 +420,31 @@
                 "JupiterRes": 100,
                 "MercuryAtk": 100,
                 "MercuryRes": 100
-            }
+            },
+             "Weapon": {
+        "Name": "Gaia Blade",
+        "Price": 17000,
+        "Icon": "<:Gaia_Blade:569855141499633664>",
+        "ItemType": "LongSword",
+        "IsEquippable": true,
+        "IsArtifact": true,
+        "DamageAlignment": 0,
+        "AddStatsOnEquip": {
+            "Atk": 135,
+            "VenusAtk": 20,
+            "VenusRes": 20
+        },
+        "Unleash": {
+            "UnleashName": "Titan Blade",
+            "UnleashAlignment": 0,
+            "effectImages": [
+                {
+                    "Id": "AddDamage",
+                    "args": [ "70" ]
+                }
+            ]
+        }
+        }
         },
         {
             "name": "Garet",
@@ -287,7 +471,36 @@
                 "JupiterRes": 100,
                 "MercuryAtk": 80,
                 "MercuryRes": 80
-            }
+            },
+            "isImmuneToConditions": [
+            "ItemCurse"
+            ],
+            "Weapon": {
+        "Name": "Demon Axe",
+        "Price": 16000,
+        "Icon": "<:Demon_Axe:569855200886784010>",
+        "ItemType": "Axe",
+        "IsEquippable": true,
+        "IsArtifact": true,
+        "isCursed": true,
+        "AddStatsOnEquip": {
+            "Atk": 132
+        },
+        "Unleash": {
+            "UnleashName": "Poison Cloud",
+            "UnleashAlignment": 0,
+            "effectImages": [
+                {
+                    "Id": "AddDamage",
+                    "args": [ "55" ]
+                },
+                {
+                    "id": "Condition",
+                    "args": [ "Poison", "35" ]
+                }
+            ]
+        }
+    },
         },
         {
             "name": "Ivan",
@@ -315,7 +528,32 @@
                 "JupiterRes": 150,
                 "MercuryAtk": 100,
                 "MercuryRes": 100
-            }
+            },
+            "Weapon": {
+        "Name": "Kikuichimonji",
+        "Price": 13400,
+        "Icon": "<:Kikuichimonji:569855398417268749>",
+        "ItemType": "LightBlade",
+        "IsEquippable": true,
+        "IsArtifact": true,
+        "AddStatsOnEquip": {
+            "Atk": 128
+        },
+        "Unleash": {
+            "UnleashName": "Asura",
+            "UnleashAlignment": 2,
+            "effectImages": [
+                {
+                    "Id": "AddDamage",
+                    "args": [ "64" ]
+                },
+                {
+                    "Id": "MayIgnoreDefense",
+                    "args": [ "50", "50" ]
+                }
+            ]
+        }
+    },
         },
         {
             "name": "Mia",
@@ -344,7 +582,32 @@
                 "JupiterRes": 80,
                 "MercuryAtk": 140,
                 "MercuryRes": 140
-            }
+            },
+            "Weapon": {
+        "Name": "Crystal Rod",
+        "Price": 13400,
+        "Icon": "<:Crystal_Rod:569855339722309643>",
+        "ItemType": "Staff",
+        "IsEquippable": true,
+        "IsArtifact": true,
+        "AddStatsOnEquip": {
+            "Atk": 106
+        },
+        "Unleash": {
+            "UnleashName": "Drown",
+            "UnleashAlignment": 3,
+            "effectImages": [
+                {
+                    "Id": "AddDamage",
+                    "args": [ "47" ]
+                },
+                {
+                    "id": "ChanceToOHKO",
+                    "args": [ "10" ]
+                }
+            ]
+        }
+    },
         }
     ],
     [
@@ -373,7 +636,14 @@
                 "JupiterRes": 25,
                 "MercuryAtk": 100,
                 "MercuryRes": 100
-            }
+            },
+            "isImmuneToConditions": [
+            "Poison",
+            "Venom",
+            "DeathCurse",
+            "Haunt"
+            ],
+            "isImmuneToOHKO": true,
         },
         {
             "name": "Mars Djinn",
@@ -400,7 +670,14 @@
                 "JupiterRes": 100,
                 "MercuryAtk": 25,
                 "MercuryRes": 25
-            }
+            },
+            "isImmuneToConditions": [
+            "Stun",
+            "Flinch",
+            "DeathCurse",
+            "Haunt"
+            ],
+            "isImmuneToOHKO": true,
         },
         {
             "name": "Jupiter Djinn",
@@ -428,7 +705,14 @@
                 "JupiterRes": 175,
                 "MercuryAtk": 100,
                 "MercuryRes": 100
-            }
+            },
+            "isImmuneToConditions": [
+            "Seal",
+            "Delusion",
+            "Haunt",
+            "DeathCurse"
+            ],
+            "isImmuneToOHKO": true,
         },
         {
             "name": "Mercury Djinn",
@@ -455,7 +739,14 @@
                 "JupiterRes": 100,
                 "MercuryAtk": 152,
                 "MercuryRes": 175
-            }
+            },
+            "isImmuneToConditions": [
+            "Seal",
+            "Sleep",
+            "DeathCurse",
+            "Haunt"
+            ],
+            "isImmuneToOHKO": true,
         }
     ],
     [
@@ -509,7 +800,14 @@
                 "JupiterRes": 100,
                 "MercuryAtk": 125,
                 "MercuryRes": 193
-            }
+            },
+            "isImmuneToConditions": [
+            "DeathCurse",
+            "Sleep",
+            "Stun"
+            ],
+            "isImmuneToOHKO": true,
+            "isImmuneToHPToOne": true,
         },
         {
             "name": "Living Statue 2",
@@ -612,7 +910,13 @@
                 "JupiterRes": 127,
                 "MercuryAtk": 80,
                 "MercuryRes": 72
-            }
+            },
+            "isImmuneToConditions": [
+            "Stun",
+            "DeathCurse",
+            ],
+            "isImmuneToOHKO": true,
+            "isImmuneToHPToOne": true,
         },
         {
             "name": "Ape 3",
@@ -714,7 +1018,13 @@
                 "JupiterRes": 72,
                 "MercuryAtk": 85,
                 "MercuryRes": 100
-            }
+            },
+            "isImmuneToConditions": [
+            "DeathCurse",
+            "Flinch",
+            ],
+            "isImmuneToOHKO": true,
+            "isImmuneToHPToOne": true,
         },
         {
             "name": "Virago 2",
@@ -792,7 +1102,13 @@
                 "JupiterRes": 100,
                 "MercuryAtk": 100,
                 "MercuryRes": 127
-            }
+            },
+            "isImmuneToConditions": [
+            "Sleep",
+            "DeathCurse",
+            ],
+            "isImmuneToOHKO": true,
+            "isImmuneToHPToOne": true,
         },
         {
             "name": "Grisly 2",
@@ -846,7 +1162,12 @@
                 "JupiterRes": 48,
                 "MercuryAtk": 125,
                 "MercuryRes": 72
-            }
+            },
+            "isImmuneToConditions": [
+            "Venom",
+            "DeathCurse",
+            ],
+            "isImmuneToOHKO": true,
         },
         {
             "name": "Lich",
@@ -872,7 +1193,13 @@
                 "JupiterRes": 25,
                 "MercuryAtk": 95,
                 "MercuryRes": 152
-            }
+            },
+            "isImmuneToConditions": [
+            "DeathCurse",
+            "Haunt"
+            ],
+            "isImmuneToOHKO": true,
+            "isImmuneToHPToOne": true,
         },
         {
             "name": "Fiendish Ghoul 2",
@@ -899,7 +1226,12 @@
                 "JupiterRes": 48,
                 "MercuryAtk": 125,
                 "MercuryRes": 72
-            }
+            },
+            "isImmuneToConditions": [
+            "Venom",
+            "DeathCurse",
+            ],
+            "isImmuneToOHKO": true,
         }
     ],
     [
@@ -930,7 +1262,14 @@
                 "JupiterRes": 48,
                 "MercuryAtk": 140,
                 "MercuryRes": 110
-            }
+            },
+            "isImmuneToConditions": [
+            "Delusion",
+            "Flinch",
+            "DeathCurse"
+            ],
+            "isImmuneToOHKO": true,
+            "isImmuneToHPToOne": true,
         },
         {
             "name": "Gryphon 2",
@@ -959,7 +1298,14 @@
                 "JupiterRes": 48,
                 "MercuryAtk": 110,
                 "MercuryRes": 110
-            }
+            },
+            "isImmuneToConditions": [
+            "Delusion",
+            "Flinch",
+            "DeathCurse"
+            ],
+            "isImmuneToOHKO": true,
+            "isImmuneToHPToOne": true,
         }
     ],
     [
@@ -1044,7 +1390,10 @@
                 "JupiterRes": 72,
                 "MercuryAtk": 30,
                 "MercuryRes": 30
-            }
+            },
+            "isImmuneToConditions": [
+            "Sleep",
+            ],
         },
         {
             "name": "Nue 2",
@@ -1072,7 +1421,10 @@
                 "JupiterRes": 72,
                 "MercuryAtk": 30,
                 "MercuryRes": 30
-            }
+            },
+            "isImmuneToConditions": [
+            "Sleep",
+            ],
         }
     ],
     [
@@ -1187,7 +1539,14 @@
             },
             "HPRecovery": 30,
             "extraTurns": 1,
-            "Conditions": [ "Sleep" ]
+            "Conditions": [ "Sleep" ],
+            "isImmuneToConditions": [
+                "Poison",
+                "Venom",
+                "DeathCurse"
+                ],
+            "isImmuneToOHKO": true,
+            "isImmuneToHPToOne": true,
         }
     ],
     [
@@ -1268,7 +1627,12 @@
                 "JupiterRes": 100,
                 "MercuryAtk": 100,
                 "MercuryRes": 127
-            }
+            },
+            "isImmuneToConditions": [
+            "Flinch",
+            ],
+            "isImmuneToOHKO": true,
+            "isImmuneToHPToOne": true,
         },
         {
             "name": "Stone Soldier 2",
@@ -1326,7 +1690,13 @@
                 "JupiterRes": 100,
                 "MercuryAtk": 140,
                 "MercuryRes": 25
-            }
+            },
+            "isImmuneToConditions": [
+            "Poison",
+            "Venom",
+            ],
+            "isImmuneToOHKO": true,
+            "isImmuneToHPToOne": true,
         },
         {
             "name": "Chimera 2",
@@ -1356,7 +1726,13 @@
                 "JupiterRes": 100,
                 "MercuryAtk": 110,
                 "MercuryRes": 25
-            }
+            },
+             "isImmuneToConditions": [
+            "Poison",
+            "Venom",
+            ],
+            "isImmuneToOHKO": true,
+            "isImmuneToHPToOne": true,
         }
     ],
     [
@@ -1387,7 +1763,13 @@
                 "JupiterRes": 75,
                 "MercuryAtk": 120,
                 "MercuryRes": 150
-            }
+            },
+            "isImmuneToConditions": [
+            "Stun",
+            "DeathCurse"
+            ],
+            "isImmuneToOHKO": true,
+            "isImmuneToHPToOne": true,
         },
         {
             "name": "Hobgoblin 2",
@@ -1416,7 +1798,13 @@
                 "JupiterRes": 125,
                 "MercuryAtk": 120,
                 "MercuryRes": 75
-            }
+            },
+            "isImmuneToConditions": [
+            "Seal",
+            "DeathCurse"
+            ],
+            "isImmuneToOHKO": true,
+            "isImmuneToHPToOne": true,
         }
     ],
     [
@@ -1444,7 +1832,13 @@
                 "JupiterRes": 100,
                 "MercuryAtk": 115,
                 "MercuryRes": 175
-            }
+            },
+            "isImmuneToConditions": [
+            "Delusion",
+            "Sleep"
+            ],
+            "isImmuneToOHKO": true,
+            "isImmuneToHPToOne": true,
         },
         {
             "name": "Cerebus 2",
@@ -1470,7 +1864,13 @@
                 "JupiterRes": 100,
                 "MercuryAtk": 110,
                 "MercuryRes": 175
-            }
+            },
+            "isImmuneToConditions": [
+            "Delusion",
+            "Sleep"
+            ],
+            "isImmuneToOHKO": true,
+            "isImmuneToHPToOne": true,
         }
     ],
     [
@@ -1500,7 +1900,10 @@
                 "JupiterRes": 50,
                 "MercuryAtk": 130,
                 "MercuryRes": 125
-            }
+            },
+            "isImmuneToConditions": [
+            "Poison",
+            ],
         },
         {
             "name": "Lizard Prince",
@@ -1530,7 +1933,12 @@
                 "JupiterRes": 150,
                 "MercuryAtk": 120,
                 "MercuryRes": 200
-            }
+            },
+            "isImmuneToConditions": [
+            "Flinch"
+            ],
+            "isImmuneToOHKO": true,
+            "isImmuneToHPToOne": true,
         },
         {
             "name": "Thunder Lizard",
@@ -1558,7 +1966,10 @@
                 "JupiterRes": 200,
                 "MercuryAtk": 100,
                 "MercuryRes": 150
-            }
+            },
+            "isImmuneToConditions": [
+            "Stun"
+            ],
         }
     ],
     [
@@ -1887,7 +2298,14 @@
                 "MercuryRes": 100
             },
             "HPRecovery": 20,
-            "hasAttack": false
+            "hasAttack": false,
+            "isImmuneToConditions": [
+                "DeathCurse",
+                "Stun",
+                "Flinch"
+                ],
+            "isImmuneToOHKO": true,
+            "isImmuneToHPToOne": true,
         }
     ],
     [
@@ -1944,7 +2362,8 @@
                 "JupiterRes": 25,
                 "MercuryAtk": 100,
                 "MercuryRes": 152
-            }
+            },
+            "hasDefend": false,
         },
         {
             "name": "Soul Army",
@@ -1970,7 +2389,15 @@
                 "JupiterRes": 25,
                 "MercuryAtk": 80,
                 "MercuryRes": 152
-            }
+            },
+            "isImmuneToConditions": [
+            "Sleep",
+            "DeathCurse",
+            "Haunt"
+            ],
+            "isImmuneToOHKO": true,
+            "isImmuneToHPToOne": true,
+            "hasDefend": false,
         }
     ],
     [
@@ -2002,7 +2429,18 @@
                 "JupiterRes": 100,
                 "MercuryAtk": 100,
                 "MercuryRes": 25
-            }
+            },
+            "isImmuneToConditions": [
+            "Poison",
+            "Venom",
+            "Stun",
+            "Flinch",
+            "Delusion",
+            "Sleep",
+            "DeathCurse",
+            "Haunt"
+            ],
+            "isImmuneToOHKO": true,
         }
     ],
     [
@@ -2033,7 +2471,17 @@
                 "MercuryAtk": 100,
                 "MercuryRes": 70
             },
-            "PPRecovery": 10
+            "PPRecovery": 10,
+            "isImmuneToOHKO": true,
+            "isImmuneToConditions": [
+                "Seal",
+                "Poison",
+                "Venom",
+                "Stun",
+                "DeathCurse",
+                "Haunt",
+                "Sleep"
+                ],
         }
     ],
     [
@@ -2064,7 +2512,12 @@
                 "MercuryAtk": 115,
                 "MercuryRes": 175
             },
-            "HPRecovery": 80
+            "HPRecovery": 80,
+            "isImmuneToOHKO": true,
+            "isImmuneToConditions": [
+                "Poison",
+                "Venom",
+                ],
         }
     ],
     [
@@ -2095,7 +2548,13 @@
                 "JupiterRes": 100,
                 "MercuryAtk": 100,
                 "MercuryRes": 25
-            }
+            },
+            "isImmuneToConditions": [
+            "Poison",
+            "DeathCurse"
+            ],
+            "isImmuneToOHKO": true,
+            "isImmuneToHPToOne": true,
         }
     ],
     [
