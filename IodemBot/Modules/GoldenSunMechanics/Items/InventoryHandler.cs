@@ -51,7 +51,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             var inv = UserAccounts.GetAccount(Context.User).Inv;
             var shop = ItemDatabase.GetShop();
             var embed = new EmbedBuilder();
-            embed.WithColor(new Color(200, 200, 50));
+            embed.WithColor(new Color(66, 45, 45));
             embed.WithThumbnailUrl(ItemDatabase.shopkeeper);
             embed.AddField("Shop:", shop.InventoryToString(Inventory.Detail.PriceAndName), true);
 
@@ -131,6 +131,14 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public async Task OpenChest(ChestQuality cq, uint bonusCount = 0)
         {
             _ = OpenChestAsync(Context, cq, bonusCount);
+            await Task.CompletedTask;
+        }
+
+        [Command("Claim")]
+        public async Task Claim()
+        {
+            var account = UserAccounts.GetAccount(Context.User);
+            var inv = account.Inv;
             await Task.CompletedTask;
         }
 

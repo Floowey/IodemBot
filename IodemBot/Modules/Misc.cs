@@ -144,8 +144,6 @@ namespace IodemBot.Modules
             embed.AddField("XP", $"{account.XP} - next in {Leveling.XPforNextLevel(account.XP)}", true);
             embed.AddField("Rank", UserAccounts.GetRank(user) + 1, true);
 
-            //embed.AddField("", "");
-
             embed.AddField("Class", account.GsClass, true);
             embed.AddField("Colosso wins", account.ServerStats.ColossoWins, true);
 
