@@ -127,21 +127,25 @@ namespace IodemBot.Modules.ColossoBattles
             var p = new PlayerFighter(player);
             battleCol.Battle.AddPlayer(p, ColossoBattle.Team.A);
 
+            if (playerAvatar.Inv.GetGear(AdeptClassSeriesManager.GetClassSeries(playerAvatar).Archtype).Any(i => i.Name == "Lure Cap"))
+            {
+                battleCol.LureCaps++;
+                battleCol.SetRandomEnemies(ColossoBattle.Team.B);
+            }
+
             if (battleCol.Name == "Bronze")
             {
                 if (playerAvatar.LevelNumber < 10 && battleCol.Messages.Count == 0)
                 {
                     battleCol.diff = BattleDifficulty.Tutorial;
-                    battleCol.Battle.TeamB = new List<ColossoFighter>();
-                    EnemiesDatabase.GetRandomEnemies(BattleDifficulty.Tutorial).ForEach(f => battleCol.Battle.AddPlayer(f, ColossoBattle.Team.B));
+                    battleCol.SetRandomEnemies(ColossoBattle.Team.B);
                 }
                 else
                 {
                     if (battleCol.diff != BattleDifficulty.Easy)
                     {
                         battleCol.diff = BattleDifficulty.Easy;
-                        battleCol.Battle.TeamB = new List<ColossoFighter>();
-                        EnemiesDatabase.GetRandomEnemies(BattleDifficulty.Easy).ForEach(f => battleCol.Battle.AddPlayer(f, ColossoBattle.Team.B));
+                        battleCol.SetRandomEnemies(ColossoBattle.Team.B);
                     }
                 }
             }
@@ -230,6 +234,8 @@ namespace IodemBot.Modules.ColossoBattles
             internal Timer autoTurn;
             internal bool isEndless = false;
             internal int winsInARow = 0;
+            internal int LureCaps = 0;
+            internal readonly int stageLength = 12;
             private List<SocketReaction> reactions = new List<SocketReaction>();
 
             internal async Task Reset()
@@ -267,8 +273,8 @@ namespace IodemBot.Modules.ColossoBattles
                     StatusMsg = null;
                 }
                 winsInARow = 0;
-                Battle.TeamB = new List<ColossoFighter>();
-                EnemiesDatabase.GetRandomEnemies(diff).ForEach(f => Battle.AddPlayer(f, ColossoBattle.Team.B));
+                LureCaps = 0;
+                SetRandomEnemies(ColossoBattle.Team.B);
                 Console.WriteLine($"Up against {Battle.TeamB.First().name}");
 
                 autoTurn = new Timer()
@@ -286,6 +292,25 @@ namespace IodemBot.Modules.ColossoBattles
             {
                 _ = ProcessTurn(forced: true);
                 await Task.CompletedTask;
+            }
+
+            internal void SetRandomEnemies(ColossoBattle.Team team)
+            {
+                Battle.GetTeam(team).Clear();
+                EnemiesDatabase.GetRandomEnemies(diff).ForEach(f =>
+                {
+                    f.stats *= (1 + ((double)winsInARow / 50) % (winsInARow < 4 * stageLength ? stageLength : 1));
+                    Battle.AddPlayer(f, ColossoBattle.Team.B);
+                }
+                );
+
+                for (int i = 0; i < LureCaps; i++)
+                {
+                    if (Battle.GetTeam(team).Count < 9)
+                    {
+                        Battle.AddPlayer(EnemiesDatabase.GetRandomEnemies(diff).Random(), team);
+                    }
+                }
             }
 
             internal async Task ProcessReaction(SocketReaction reaction, RestUserMessage c)
@@ -454,7 +479,7 @@ namespace IodemBot.Modules.ColossoBattles
                     }
                     //e.WithAuthor($"{numberEmotes[i]} {fighter.name}");
                     embed.WithThumbnailUrl(fighter.imgUrl);
-                    embed.WithColor(Colors.get(fighter.moves.Where(m => m is Psynergy).Select(m => (Psynergy)m).Select(p => p.element.ToString()).ToArray()));
+                    embed.WithColor(Colors.Get(fighter.moves.Where(m => m is Psynergy).Select(m => (Psynergy)m).Select(p => p.element.ToString()).ToArray()));
                     //e.AddField();
                     embed.AddField($"{numberEmotes[i]} {fighter.ConditionsToString()}", fighter.name);
                     embed.AddField("HP", $"{fighter.stats.HP} / {fighter.stats.MaxHP}", true);
@@ -533,7 +558,7 @@ namespace IodemBot.Modules.ColossoBattles
                     var fighter = k.Value;
                     //e.WithAuthor($"{numberEmotes[i]} {fighter.name}");
                     embed.WithThumbnailUrl(fighter.imgUrl);
-                    embed.WithColor(Colors.get(fighter.moves.Where(m => m is Psynergy).Select(m => (Psynergy)m).Select(p => p.element.ToString()).ToArray()));
+                    embed.WithColor(Colors.Get(fighter.moves.Where(m => m is Psynergy).Select(m => (Psynergy)m).Select(p => p.element.ToString()).ToArray()));
                     //e.AddField();
                     embed.AddField($"{numberEmotes[i]} {fighter.ConditionsToString()}", fighter.name);
                     embed.AddField("HP", $"{fighter.stats.HP} / {fighter.stats.MaxHP}", true);
@@ -601,7 +626,7 @@ namespace IodemBot.Modules.ColossoBattles
                 if (winners.First() is PlayerFighter)
                 {
                     winsInARow++;
-                    winners.ConvertAll(s => (PlayerFighter)s).ForEach(async p => await ServerGames.UserWonBattle(p.avatar, winsInARow, p.battleStats, diff, textChannel));
+                    winners.ConvertAll(s => (PlayerFighter)s).ForEach(async p => await ServerGames.UserWonBattle(p.avatar, winsInARow, LureCaps, p.battleStats, diff, textChannel));
                     if (!isEndless)
                     {
                         _ = WriteGameOver();
@@ -616,19 +641,14 @@ namespace IodemBot.Modules.ColossoBattles
                             p.Heal((uint)(p.stats.HP * 5 / 100));
                         });
 
-                        Battle.TeamB = new List<ColossoFighter>();
                         var text = $"{winners.First().name}'s Party wins Battle {winsInARow}! Battle will reset shortly";
                         await Task.Delay(2000);
                         await StatusMsg.ModifyAsync(m => { m.Content = text; m.Embed = null; });
 
                         await Task.Delay(2000);
-                        var stageLength = 12;
+
                         diff = (BattleDifficulty)Math.Min(4, 1 + winsInARow / stageLength);
-                        EnemiesDatabase.GetRandomEnemies(diff).ForEach(f =>
-                        {
-                            f.stats *= (1 + ((double)winsInARow / 50) % (winsInARow < 4 * stageLength ? stageLength : 1));
-                            Battle.AddPlayer(f, ColossoBattle.Team.B);
-                        });
+                        SetRandomEnemies(ColossoBattle.Team.B);
                         Battle.Start();
                         _ = WriteBattleInit();
                     }

@@ -588,7 +588,7 @@
     "Dragon Cloud": {
         "name": "Dragon Cloud",
         "targetType": 3,
-        "emote": "<:Dragon_Fire:536964123234402314>",
+        "emote": "<:Dragon_Cloud:536964123234402314>",
         "range": 1,
         "element": 1,
         "PPCost": 6,
@@ -1106,7 +1106,7 @@
         "PPCost": 6,
         "power": 35
     },
-    "Super Cool": {
+    "Supercool": {
         "name": "Supercool",
         "targetType": 4,
         "emote": "<:Supercool:536969323244158977>",
@@ -1774,7 +1774,7 @@
         "effectImages": [
             {
                 "id": "ReduceHPtoOne",
-                "args": [ "30" ]
+                "args": [ "20" ]
             }
         ]
     },
@@ -1844,7 +1844,7 @@
         "effectImages": [
             {
                 "id": "ReduceHPtoOne",
-                "args": [ "40" ]
+                "args": [ "20" ]
             }
         ]
     },

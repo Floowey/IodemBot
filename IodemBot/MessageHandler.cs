@@ -30,7 +30,7 @@ namespace IodemBot
             responses = new List<AutoResponse>
             {
                 new AutoResponse(
-                new Regex("[Hh][y][a]*[h][o]*", RegexOptions.Compiled),
+                new Regex("[Hh][y][a]+[h][o]+", RegexOptions.Compiled),
                 new Reaction("",
                     Emote.Parse("<:Keelhaul:537265959442841600>")),
                 5),
@@ -191,7 +191,7 @@ namespace IodemBot
                 if (text != "")
                 {
                     var embed = new EmbedBuilder();
-                    embed.WithColor(Colors.get("Iodem"));
+                    embed.WithColor(Colors.Get("Iodem"));
                     embed.WithDescription(text);
                     await msg.Channel.SendMessageAsync("", false, embed.Build());
                 }

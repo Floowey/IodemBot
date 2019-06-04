@@ -53,7 +53,7 @@
                 "MercuryRes": 140
             },
             "isImmuneToConditions": [
-            "Haunt"
+                "Haunt"
             ]
         },
         {
@@ -189,7 +189,14 @@
                 "JupiterRes": 25,
                 "MercuryAtk": 100,
                 "MercuryRes": 130
-            }
+            },
+            "isImmuneToConditions": [
+                "Poison",
+                "Venom",
+                "DeathCurse",
+                "Haunt"
+            ],
+            "isImmuneToOHKO": true
         }
     ],
     [
@@ -218,7 +225,14 @@
                 "JupiterRes": 130,
                 "MercuryAtk": 25,
                 "MercuryRes": 25
-            }
+            },
+            "isImmuneToConditions": [
+                "Stun",
+                "Flinch",
+                "DeathCurse",
+                "Haunt"
+            ],
+            "isImmuneToOHKO": true
         }
     ],
     [
@@ -247,7 +261,14 @@
                 "JupiterRes": 175,
                 "MercuryAtk": 100,
                 "MercuryRes": 130
-            }
+            },
+            "isImmuneToConditions": [
+                "Seal",
+                "Delusion",
+                "DeathCurse",
+                "Haunt"
+            ],
+            "isImmuneToOHKO": true
         }
     ],
     [
@@ -278,7 +299,14 @@
                 "JupiterRes": 130,
                 "MercuryAtk": 152,
                 "MercuryRes": 175
-            }
+            },
+            "isImmuneToConditions": [
+                "Sleep",
+                "Seal",
+                "DeathCurse",
+                "Haunt"
+            ],
+            "isImmuneToOHKO": true
         }
     ],
     [
@@ -641,9 +669,10 @@
                 "MercuryRes": 110
             },
             "isImmuneToConditions": [
-                "Stun"
+                "Stun",
+                "DeathCurse"
             ],
-           "isImmuneToOHKO": true
+            "isImmuneToOHKO": true
         }
     ],
     [
@@ -676,8 +705,8 @@
                 "MercuryRes": 80
             },
             "isImmuneToConditions": [
-            "Stun",
-            "Flinch"
+                "Stun",
+                "Flinch"
             ]
         }
     ],
@@ -758,11 +787,11 @@
                 "MercuryRes": 72
             },
             "isImmuneToConditions": [
-            "Poison",
-            "Venom",
-            "Sleep",
-            "Stun",
-            "DeathCurse"
+                "Poison",
+                "Venom",
+                "Sleep",
+                "Stun",
+                "DeathCurse"
             ],
             "isImmuneToOHKO": true,
             "isImmuneToHPtoOne": true
@@ -1413,12 +1442,11 @@
                 "MercuryRes": 72
             },
             "isImmuneToConditions": [
-            "Poison",
-            "Venom",
-            "Delusion",
-            "DeathCurse"
+                "Poison",
+                "Venom",
+                "Delusion",
+                "DeathCurse"
             ],
-            "isImmuneToHPtoOne": true,
             "isImmuneToOHKO": true
         }
     ],
@@ -1479,10 +1507,10 @@
                 "MercuryRes": 175
             },
             "isImmuneToConditions": [
-            "DeathCurse"
+                "DeathCurse"
             ],
             "isImmuneToOHKO": true,
-            "isImmuneToHPToOne": true,
+            "isImmuneToHPToOne": true
         }
     ],
     [
@@ -1588,7 +1616,7 @@
             }
         }
     ],
-     [
+    [
         {
             "name": "Dim Dragon",
             "imgurl": "https://goldensunwiki.net/w/images/7/77/DimDragon.jpg",
@@ -1615,5 +1643,5 @@
                 "MercuryRes": 175
             }
         }
-    ],
+    ]
 ]

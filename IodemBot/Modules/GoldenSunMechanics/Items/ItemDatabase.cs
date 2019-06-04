@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using IodemBot.Extensions;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -11,7 +12,21 @@ namespace IodemBot.Modules.GoldenSunMechanics
         private static Dictionary<string, Item> itemsDatabase = new Dictionary<string, Item>(StringComparer.OrdinalIgnoreCase);
         private static Inventory shop;
         private static DateTime lastReset;
+
+        private static ShopStruct Shopstruct { get { return new ShopStruct() { shop = shop, lastReset = lastReset, restockmessage = restockMessage, shopkeeper = shopkeeper }; } }
         private static readonly int HoursForReset = 8;
+        public static string shopkeeper;
+        public static string restockMessage;
+        private static string[] shopkeepers = { "armor shopkeeper2", "armor shopkeeper3", "champa shopkeeper", "item shopkeeper", "izumo shopkeeper", "weapon shopkeeper", "weapon shopkeeper2", "sunshine", "armor shopkeeper" };
+        private static string[] restockMessages = { "Next shipment in:", "Next restock in:", "New Merchant in:" };
+
+        public static TimeSpan TimeToNextReset
+        {
+            get
+            {
+                return lastReset.Add(new TimeSpan(HoursForReset, 0, 0)).Subtract(DateTime.Now);
+            }
+        }
 
         static ItemDatabase()
         {
@@ -21,13 +36,29 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 itemsDatabase = new Dictionary<string, Item>(
                     JsonConvert.DeserializeObject<Dictionary<string, Item>>(json),
                     StringComparer.OrdinalIgnoreCase);
-                RandomizeShop();
+                if (File.Exists("Resources/shop.json"))
+                {
+                    json = File.ReadAllText("Resources/shop.json");
+                    var s = JsonConvert.DeserializeObject<ShopStruct>(json);
+                    shop = s.shop;
+                    lastReset = s.lastReset;
+                    shopkeeper = s.shopkeeper;
+                    restockMessage = s.restockmessage;
+                }
+
+                shop = GetShop();
             }
             catch (Exception e)
             {
                 //Just for debugging.
                 Console.WriteLine(e.ToString());
             }
+        }
+
+        private static void Save()
+        {
+            string json = JsonConvert.SerializeObject(Shopstruct, Formatting.Indented);
+            File.WriteAllText("Resources/shop.json", json);
         }
 
         public static void RandomizeShop()
@@ -40,14 +71,30 @@ namespace IodemBot.Modules.GoldenSunMechanics
             shop.Clear();
             shop.Add(GetRandomItem(8, 0, RandomItemType.NonArtifact));
             shop.Add(GetRandomItem(20, 0, RandomItemType.NonArtifact));
-            shop.Add(GetRandomItem(30, 0, RandomItemType.NonArtifact));
+            shop.Add(GetRandomItem(20, 0, RandomItemType.NonArtifact));
 
             shop.Add(GetRandomItem(30, 0, RandomItemType.Any));
+            shop.Add(GetRandomItem(35, 0, RandomItemType.Any));
+            shop.Add(GetRandomItem(40, 0, RandomItemType.Any));
 
-            shop.Add(GetRandomItem(30, 0, RandomItemType.Artifact));
+            shop.Add(GetRandomItem(20, 0, RandomItemType.Artifact));
             shop.Add(GetRandomItem(40, 0, RandomItemType.Artifact));
             shop.Add(GetRandomItem(50, 0, RandomItemType.Artifact));
-            lastReset = DateTime.Now;
+
+            shopkeeper = Sprites.GetImageFromName(shopkeepers.Random());
+
+            restockMessage = restockMessages.Random();
+
+            shop.Sort();
+            if (shop.HasDuplicate)
+            {
+                RandomizeShop();
+            }
+            else
+            {
+                lastReset = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, HoursForReset * (DateTime.Now.Hour / HoursForReset), 0, 0);
+                Save();
+            }
         }
 
         public static Inventory GetShop()
@@ -74,7 +121,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public static string GetRandomItem(uint level, double bonus = 0, RandomItemType rt = RandomItemType.Any)
         {
             uint n = (uint)(level + Math.Sqrt(bonus / 50));
-            var dist = new Accord.Statistics.Distributions.Univariate.GeneralizedParetoDistribution(Math.Pow(n, 2.2), Math.Pow(n, 2.26), 0.1 - n / 200);
+            var dist = new Accord.Statistics.Distributions.Univariate.GeneralizedParetoDistribution(Math.Pow(n, 2.3), Math.Pow(n, 2.26), 0.1 - n / 200);
             var value = dist.Generate();
 
             var allItems = itemsDatabase.Values.OrderByDescending(d => d.Price);
@@ -82,10 +129,10 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 && (rt == RandomItemType.Artifact ? i.IsArtifact : true)
                 && (rt == RandomItemType.NonArtifact ? !i.IsArtifact : true));
 
-            Item price = allItems.Last();
+            Item price = allItems.OrderBy(i => i.Price).Take(10).Random();
             if (it != null && it.Count() >= 5)
             {
-                price = it.Take(5).ElementAt(Global.Random.Next(0, 5));
+                price = it.TakeWhile(i => i.Price <= it.First().Price * 0.9).Union(it.Take(5)).Random();
             }
 
             return price.Name;
@@ -117,6 +164,14 @@ namespace IodemBot.Modules.GoldenSunMechanics
             }
 
             return items;
+        }
+
+        internal struct ShopStruct
+        {
+            [JsonProperty] internal Inventory shop;
+            [JsonProperty] internal DateTime lastReset;
+            [JsonProperty] internal string shopkeeper;
+            [JsonProperty] internal string restockmessage;
         }
     }
 }

@@ -158,7 +158,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
             if (IsUnleashable)
             {
-                various.Add($"{(IsWeapon ? "" : $"{(GrantsUnleash ? "Adds an Effect to your Artifacts Unleash: " : "Targets the Wearer with an Effect: ")}")}{Unleash.ToString()}");
+                various.Add($"{(IsWeapon ? "" : $"{(GrantsUnleash ? "Adds an Effect to your Artifacts Unleash: " : $"{(ChanceToActivate  < 100 ? "May target" : "Targets")} the Wearer with an Effect: ")}")}{Unleash.ToString()}");
             }
 
             if (CuresCurse)

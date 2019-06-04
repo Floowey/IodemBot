@@ -93,7 +93,7 @@ namespace IodemBot.Core.Leveling
             }
             // the user leveled up
             var embed = new EmbedBuilder();
-            embed.WithColor(Colors.get(userAccount.Element.ToString()));
+            embed.WithColor(Colors.Get(userAccount.Element.ToString()));
             embed.WithTitle("LEVEL UP!");
             embed.WithDescription("<:Up_Arrow:571309108289077258> " + userAccount.GsClass + " " + user.Mention + " just leveled up!");
             embed.AddField("LEVEL", userAccount.LevelNumber, true);

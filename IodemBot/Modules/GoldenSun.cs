@@ -49,7 +49,7 @@ namespace IodemBot.Modules
                 AdeptClass adeptClass = series.Classes.Where(c => c.Name.ToUpper() == name.ToUpper()).FirstOrDefault();
                 var embed = new EmbedBuilder();
                 embed.WithAuthor($"{adeptClass.Name} - {series.Archtype}");
-                embed.WithColor(Colors.get(series.Elements.Select(s => s.ToString()).ToArray()));
+                embed.WithColor(Colors.Get(series.Elements.Select(s => s.ToString()).ToArray()));
                 var relevantMoves = AdeptClassSeriesManager.GetMoveset(adeptClass).Where(m => m is Psynergy).ToList().ConvertAll(m => (Psynergy)m).ConvertAll(p => $"{p.emote} {p.name} `{p.PPCost}`");
                 embed.AddField("Description", series.Description ?? "-");
                 embed.AddField("Stats", adeptClass.StatMultipliers, true);
@@ -66,32 +66,6 @@ namespace IodemBot.Modules
             }
         }
 
-        [Command("iteminfo"), Alias("item", "i")]
-        public async Task ItemInfo([Remainder] string name = "")
-        {
-            if (name == "")
-            {
-                return;
-            }
-
-            var item = ItemDatabase.GetItem(name);
-            if (item == null)
-            {
-                return;
-            }
-
-            var embed = new EmbedBuilder();
-            embed.WithAuthor($"{item.Name} {(item.IsArtifact ? " (Artifact)" : "")}");
-
-            embed.AddField("Icon", item.IconDisplay, true);
-            embed.AddField("Value", item.Price, true);
-            embed.AddField("Type", item.ItemType, true);
-            embed.AddField("Description", item.Summary());
-
-            _ = Context.Channel.SendMessageAsync("", false, embed.Build());
-            await Task.CompletedTask;
-        }
-
         [Command("class")]
         [Remarks("Assign yourself to a class of your current element, or toggle through your available list.")]
         [Cooldown(2)]
@@ -102,7 +76,7 @@ namespace IodemBot.Modules
 
             var embed = new EmbedBuilder();
             embed.WithDescription($"You are {Article(account.GsClass)} {account.GsClass} now, {((SocketGuildUser)Context.User).DisplayName()}.");
-            embed.WithColor(Colors.get(account.Element.ToString()));
+            embed.WithColor(Colors.Get(account.Element.ToString()));
             //embed.WithThumbnailUrl(Sprites.get)
             await Context.Channel.SendMessageAsync("", false, embed.Build());
         }
@@ -144,7 +118,7 @@ namespace IodemBot.Modules
             account.Element = chosenElement;
             account.ClassToggle = 0;
             UserAccounts.SaveAccounts();
-            embed.WithColor(Colors.get(chosenElement.ToString()));
+            embed.WithColor(Colors.Get(chosenElement.ToString()));
             embed.WithDescription($"Welcome to the {chosenElement.ToString()} Clan, {account.GsClass} {((SocketGuildUser)Context.User).DisplayName()}!");
             await Context.Channel.SendMessageAsync("", false, embed.Build());
         }
@@ -163,13 +137,13 @@ namespace IodemBot.Modules
             if (psy.name.Contains("Not Implemented"))
             {
                 var failEmbed = new EmbedBuilder();
-                failEmbed.WithColor(Colors.get("Iodem"));
+                failEmbed.WithColor(Colors.Get("Iodem"));
                 failEmbed.WithDescription("I have never heard of that kind of Psynergy");
                 await Context.Channel.SendMessageAsync("", false, failEmbed.Build());
                 return;
             }
             var embed = new EmbedBuilder();
-            embed.WithColor(Colors.get(psy.element.ToString()));
+            embed.WithColor(Colors.Get(psy.element.ToString()));
             embed.WithAuthor(psy.name);
             embed.AddField("Emote", psy.emote, true);
             embed.AddField("PP", psy.PPCost, true);
@@ -202,25 +176,25 @@ namespace IodemBot.Modules
             switch (el)
             {
                 case RndElement.Venus:
-                    embed.WithColor(Colors.get("Venus"));
+                    embed.WithColor(Colors.Get("Venus"));
                     embed.WithDescription(Utilities.GetAlert("ELEMENT_VENUS"));
                     embed.WithThumbnailUrl("https://archive-media-0.nyafuu.org/vp/image/1499/44/1499447315322.png");
                     break;
 
                 case RndElement.Mars:
-                    embed.WithColor(Colors.get("Mars"));
+                    embed.WithColor(Colors.Get("Mars"));
                     embed.WithDescription(Utilities.GetAlert("ELEMENT_MARS"));
                     embed.WithThumbnailUrl("https://kmsmith0613.files.wordpress.com/2013/11/mars-djinni.png");
                     break;
 
                 case RndElement.Jupiter:
-                    embed.WithColor(Colors.get("Jupiter"));
+                    embed.WithColor(Colors.Get("Jupiter"));
                     embed.WithDescription(Utilities.GetAlert("ELEMENT_JUPITER"));
                     embed.WithThumbnailUrl("https://pre00.deviantart.net/a1e1/th/pre/i/2014/186/f/7/golden_sun___jupiter_djinn_by_vercidium-d7pb4l3.png");
                     break;
 
                 case RndElement.Mercury:
-                    embed.WithColor(Colors.get("Mercury"));
+                    embed.WithColor(Colors.Get("Mercury"));
                     embed.WithDescription(Utilities.GetAlert("ELEMENT_MERCURY"));
                     embed.WithThumbnailUrl("http://thelostwaters.com/gallery/galleries/goldensun/official/MercuryDjinn.png");
                     break;
@@ -246,7 +220,7 @@ namespace IodemBot.Modules
         public async Task Sprite([Remainder] string name = "")
         {
             var embed = new EmbedBuilder();
-            embed.WithColor(Colors.get("Iodem"));
+            embed.WithColor(Colors.Get("Iodem"));
 
             if (Sprites.GetSpriteCount() == 0)
             {
@@ -284,7 +258,7 @@ namespace IodemBot.Modules
             SetClass(avatar, curClass);
             UserAccounts.SaveAccounts();
             var embed = new EmbedBuilder();
-            embed.WithColor(Colors.get("Iodem"));
+            embed.WithColor(Colors.Get("Iodem"));
             embed.WithDescription($"Congratulations, {channel.Users.Where(u => u.Id == avatar.ID).FirstOrDefault().Mention}! You have unlocked the {series}!");
             await channel.SendMessageAsync("", false, embed.Build());
         }
@@ -302,7 +276,7 @@ namespace IodemBot.Modules
             avatar.BonusClasses = list.ToArray();
             UserAccounts.SaveAccounts();
             var embed = new EmbedBuilder();
-            embed.WithColor(Colors.get("Iodem"));
+            embed.WithColor(Colors.Get("Iodem"));
             embed.WithDescription($"{series} was removed from {user.Mention}.");
             await channel.SendMessageAsync("", false, embed.Build());
         }

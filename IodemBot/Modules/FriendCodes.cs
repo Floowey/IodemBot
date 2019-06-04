@@ -23,7 +23,7 @@ namespace IodemBot.Modules
 
             var user = UserAccounts.GetAccount(target);
             var embed = new EmbedBuilder();
-            embed.WithColor(Colors.get("Iodem"));
+            embed.WithColor(Colors.Get("Iodem"));
 
             if (user.arePublicCodes || target.Equals(Context.User))
             {
@@ -44,7 +44,7 @@ namespace IodemBot.Modules
         public async Task SetCode(string type, [Remainder] string code)
         {
             var embed = new EmbedBuilder();
-            embed.WithColor(Colors.get("Iodem"));
+            embed.WithColor(Colors.Get("Iodem"));
             var account = UserAccounts.GetAccount(Context.User);
 
             switch (type)
@@ -79,7 +79,7 @@ namespace IodemBot.Modules
         {
             var account = UserAccounts.GetAccount(Context.User);
             var embed = new EmbedBuilder();
-            embed.WithColor(Colors.get("Iodem"));
+            embed.WithColor(Colors.Get("Iodem"));
             account.arePublicCodes = true;
             embed.WithDescription(Utilities.GetAlert("FC_PUBLIC"));
             await Context.Channel.SendMessageAsync("", false, embed.Build());
@@ -91,7 +91,7 @@ namespace IodemBot.Modules
         {
             var account = UserAccounts.GetAccount(Context.User);
             var embed = new EmbedBuilder();
-            embed.WithColor(Colors.get("Iodem"));
+            embed.WithColor(Colors.Get("Iodem"));
             account.arePublicCodes = false;
             embed.WithDescription(Utilities.GetAlert("FC_PRIVATE"));
             await Context.Channel.SendMessageAsync("", false, embed.Build());
