@@ -79,11 +79,10 @@
                 "Rolling Flame",
                 "Meteor Blow",
                 "Vicious Chop",
-                "Power Crush",
             ],
             "stats": {
                 "maxHP": 66666,
-                "maxPP": 400,
+                "maxPP": 666,
                 "Atk": 666,
                 "Def": 150,
                 "Spd": 200
@@ -109,7 +108,9 @@
                 "Sleep",
                 "Delusion"
             ],
-            "isImmuneToOHKO": true
+            "isImmuneToOHKO": true,
+            "hasDefend": false,
+            "hasAttack": false
         }
     ],
     [
