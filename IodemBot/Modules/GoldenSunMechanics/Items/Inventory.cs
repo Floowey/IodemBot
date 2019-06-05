@@ -15,8 +15,9 @@ namespace IodemBot.Modules.GoldenSunMechanics
     public class Inventory
     {
         public static readonly int MaxInvSize = 30;
-        private static readonly ItemType[] WarriorExclusive = { ItemType.LongSword, ItemType.Shield, ItemType.Helmet, ItemType.HeavyArmor, ItemType.Greave };
+        private static readonly ItemType[] WarriorExclusive = { ItemType.LongSword, ItemType.Axe, ItemType.Shield, ItemType.Helmet, ItemType.HeavyArmor, ItemType.Greave };
         private static readonly ItemType[] MageExclusive = { ItemType.Staff, ItemType.Circlet, ItemType.Bow, ItemType.Robe, ItemType.Bracelet };
+
         private static readonly ChestQuality[] chestQualities = { ChestQuality.Wooden, ChestQuality.Normal, ChestQuality.Silver, ChestQuality.Gold, ChestQuality.Adept, ChestQuality.Daily };
 
         public static readonly Dictionary<ChestQuality, string> ChestIcons = new Dictionary<ChestQuality, string>()
@@ -43,7 +44,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         [JsonIgnore] public bool IsFull { get { return Count >= MaxInvSize; } }
         [JsonIgnore] public bool IsInitialized { get { return Inv != null; } }
 
-        public bool HasDuplicate { get { return Inv.Any(i => Inv.Where(j => j.Name.Equals(i.Name)).Count() > 1); } }
+        [JsonIgnore] public bool HasDuplicate { get { return Inv.Any(i => Inv.Where(j => j.Name.Equals(i.Name)).Count() > 1); } }
 
         [JsonProperty]
         private Dictionary<ChestQuality, uint> chests = new Dictionary<ChestQuality, uint>()
@@ -135,6 +136,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 AwardChest(ChestQuality.Daily);
             }
             lastDailyChest = DateTime.Now;
+            UpdateStrings();
         }
 
         public void AwardChest(ChestQuality chestQuality)
@@ -185,8 +187,6 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public void Clear()
         {
             Inv.Clear();
-            WarriorGear.Clear();
-            MageGear.Clear();
             UpdateStrings();
         }
 

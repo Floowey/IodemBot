@@ -19,7 +19,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public override void InternalChooseBestTarget(ColossoFighter User)
         {
-            var aliveEnemies = User.GetEnemies().Where(f => f.IsAlive()).ToList();
+            var aliveEnemies = User.GetEnemies().Where(f => f.IsAlive).ToList();
             if (aliveEnemies.Count == 0)
             {
                 targetNr = 0;
@@ -47,7 +47,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 $"{emote} {User.name} attacks!"
             };
 
-            if (!enemy.IsAlive())
+            if (!enemy.IsAlive)
             {
                 log.Add($"{enemy.name} is down already!");
                 return log;
@@ -78,7 +78,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 }
             }
 
-            if (!enemy.IsAlive())
+            if (!enemy.IsAlive)
             {
                 return log;
             }
@@ -150,7 +150,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             if (User is PlayerFighter player)
             {
                 player.battleStats.DamageDealt += damage;
-                if (!enemy.IsAlive())
+                if (!enemy.IsAlive)
                 {
                     player.battleStats.KillsByHand++;
                     player.battleStats.Kills++;

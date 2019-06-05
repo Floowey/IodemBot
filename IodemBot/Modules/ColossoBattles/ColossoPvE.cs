@@ -580,7 +580,7 @@ namespace IodemBot.Modules.ColossoBattles
                         {
                             s.Append($"{m.emote} {m.name} | ");
                         }
-                        if (fighter.IsAlive())
+                        if (fighter.IsAlive)
                         {
                             IEmote e;
                             try

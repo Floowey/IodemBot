@@ -23,7 +23,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 return log;
             }
 
-            if (Target.IsAlive())
+            if (Target.IsAlive)
             {
                 if (Global.Random.Next(1, 100) <= Probability)
                 {

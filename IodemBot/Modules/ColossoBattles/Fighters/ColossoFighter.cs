@@ -62,6 +62,7 @@ namespace IodemBot.Modules.ColossoBattles
         public int HPrecovery { get; set; } = 0;
         public int PPrecovery { get; set; } = 0;
         public int DeathCurseCounter = 4;
+        public bool IsAlive { get { return !HasCondition(Condition.Down); } }
 
         internal ColossoFighter(string name, string imgUrl, Stats stats, ElementalStats elstats, Move[] moves)
         {
@@ -187,7 +188,7 @@ namespace IodemBot.Modules.ColossoBattles
             {
                 $"{name} takes {damage} damage{punctuation}"
             };
-            if (!IsAlive())
+            if (!IsAlive)
             {
                 log.Add("Someone tried to damage the dead. This shouldn't have happened... Please use i!bug and name the action that was performed");
                 return log;
@@ -229,7 +230,7 @@ namespace IodemBot.Modules.ColossoBattles
             defensiveMult = 1;
             offensiveMult = 1;
 
-            if (IsAlive())
+            if (IsAlive)
             {
                 if (HPrecovery > 0 && stats.HP < stats.MaxHP)
                 {
@@ -327,7 +328,7 @@ namespace IodemBot.Modules.ColossoBattles
                 }
             }
             damageDoneThisTurn = 0;
-            if (!IsAlive())
+            if (!IsAlive)
             {
                 selected = new Nothing();
                 hasSelected = true;
@@ -374,7 +375,7 @@ namespace IodemBot.Modules.ColossoBattles
         public List<string> Heal(uint healHP)
         {
             List<string> log = new List<string>();
-            if (!IsAlive())
+            if (!IsAlive)
             {
                 log.Add($"{name} is unaffected");
                 return log;
@@ -395,7 +396,7 @@ namespace IodemBot.Modules.ColossoBattles
         public List<string> RestorePP(uint restorePP)
         {
             List<string> log = new List<string>();
-            if (!IsAlive())
+            if (!IsAlive)
             {
                 log.Add($"{name} is unaffected");
                 return log;
@@ -413,11 +414,6 @@ namespace IodemBot.Modules.ColossoBattles
             return log;
         }
 
-        public bool IsAlive()
-        {
-            return !HasCondition(Condition.Down);
-        }
-
         public void Kill()
         {
             stats.HP = 0;
@@ -429,7 +425,7 @@ namespace IodemBot.Modules.ColossoBattles
         public List<string> MainTurn()
         {
             List<string> turnLog = new List<string>();
-            if (!IsAlive())
+            if (!IsAlive)
             {
                 return turnLog;
             }
@@ -501,7 +497,7 @@ namespace IodemBot.Modules.ColossoBattles
         public List<string> Revive(uint percentage)
         {
             List<string> log = new List<string>();
-            if (!IsAlive())
+            if (!IsAlive)
             {
                 stats.HP = (int)(stats.MaxHP * percentage / 100);
                 log.Add($"{name} is back on their feet.");
@@ -519,7 +515,7 @@ namespace IodemBot.Modules.ColossoBattles
             string[] numberEmotes = new string[] {"\u0030\u20E3", "1⃣", "\u0032\u20E3", "\u0033\u20E3", "\u0034\u20E3", "\u0035\u20E3",
             "\u0036\u20E3", "\u0037\u20E3", "\u0038\u20E3", "\u0039\u20E3" };
             var trySelected = moves.Where(m => m.emote == emote).FirstOrDefault() ?? moves.Where(m => m.emote.Contains(emote)).FirstOrDefault();
-            if (!IsAlive())
+            if (!IsAlive)
             {
                 return false;
             }

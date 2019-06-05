@@ -36,7 +36,7 @@ namespace IodemBot.Core.UserManagement
             {
                 DataStorage.SaveUserAccounts(accounts, accountsFile);
             }
-            catch { }
+            catch (Exception e) { Console.WriteLine(e.ToString()); }
         }
 
         public static UserAccount GetAccount(SocketUser user)

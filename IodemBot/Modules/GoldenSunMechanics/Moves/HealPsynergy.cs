@@ -36,7 +36,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 return;
             }
 
-            var aliveFriends = User.GetTeam().Where(f => f.IsAlive()).ToList();
+            var aliveFriends = User.GetTeam().Where(f => f.IsAlive).ToList();
             if (aliveFriends.Count == 0)
             {
                 targetNr = 0;
@@ -50,7 +50,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public override bool InternalValidSelection(ColossoFighter User)
         {
             return (User.stats.PP >= PPCost && (User.battle.turn == 1 ||
-                User.GetTeam().Any(f => f.IsAlive() && (100 * f.stats.HP) / f.stats.MaxHP < 85)));
+                User.GetTeam().Any(f => f.IsAlive && (100 * f.stats.HP) / f.stats.MaxHP < 85)));
         }
 
         protected override List<string> InternalUse(ColossoFighter User)

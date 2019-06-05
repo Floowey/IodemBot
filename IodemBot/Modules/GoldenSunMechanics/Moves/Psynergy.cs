@@ -42,9 +42,9 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 return new Validation(false, log);
             }
             List<ColossoFighter> targets = GetTarget(User);
-            if (!effects.Any(i => i is ReviveEffect) && targets.TrueForAll(i => !i.IsAlive()))
+            if (!effects.Any(i => i is ReviveEffect) && targets.TrueForAll(i => !i.IsAlive))
             {
-                log.Add($"{User.name} {(PPCost == 1 ? "use" : "cast")} wants to use {name}, but all the targets are down.");
+                log.Add($"{User.name} wants to {(PPCost == 1 ? "use" : "cast")} {name}, but all the targets are down.");
                 return new Validation(false, log);
             }
 

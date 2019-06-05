@@ -158,7 +158,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
             if (IsUnleashable)
             {
-                various.Add($"{(IsWeapon ? "" : $"{(GrantsUnleash ? "Adds an Effect to your Artifacts Unleash: " : $"{(ChanceToActivate  < 100 ? "May target" : "Targets")} the Wearer with an Effect: ")}")}{Unleash.ToString()}");
+                various.Add($"{(IsWeapon ? "" : $"{(GrantsUnleash ? "Adds an Effect to your Artifacts Unleash: " : $"{(ChanceToActivate < 100 ? "May target" : "Targets")} the Wearer with an Effect: ")}")}{Unleash.ToString()}");
             }
 
             if (CuresCurse)
@@ -169,6 +169,11 @@ namespace IodemBot.Modules.GoldenSunMechanics
             if (IsCursed)
             {
                 various.Add($"Cursed");
+            }
+
+            if (Name == "Lure Cap")
+            {
+                various.Add("This cap illuminates the area and will make you and your team find chests more easily. But watch out, it might attract more enemies!");
             }
             s.Append(string.Join(" | ", various));
             return s.ToString();

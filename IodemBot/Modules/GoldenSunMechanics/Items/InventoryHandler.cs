@@ -13,9 +13,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
     {
         [Command("Inv"), Alias("Inventory", "Bag")]
         [Cooldown(10)]
-        [Remarks("Displays inventory and current sets
-        Example: `i!inv`
-        `i!inv true` displays names with icons")]
+        [Remarks("Displays inventory and current sets")]
         public async Task ShowInventory(bool detailed = false)
         {
             var inv = UserAccounts.GetAccount(Context.User).Inv;
@@ -49,8 +47,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         [Command("Shop")]
         [Cooldown(10)]
-        [Remarks("View the current shop rotation
-        Example: `i!shop`")]
+        [Remarks("View the current shop rotation.")]
         public async Task Shop()
         {
             var inv = UserAccounts.GetAccount(Context.User).Inv;
@@ -75,9 +72,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         }
 
         [Command("Buy")]
-        [Remarks("Parameters: item
-        Buy an item currently in the shop
-        Example: `i!buy clear circlet`")]
+        [Remarks("Buy an item currently in the shop. Example: `i!buy clear circlet`")]
         public async Task AddItem([Remainder] string item)
         {
             var inv = UserAccounts.GetAccount(Context.User).Inv;
@@ -105,10 +100,27 @@ namespace IodemBot.Modules.GoldenSunMechanics
             }
         }
 
+        [Command("ModBuy")]
+        [RequireUserPermission(GuildPermission.Administrator)]
+        public async Task ModBuy([Remainder] string item)
+        {
+            var inv = UserAccounts.GetAccount(Context.User).Inv;
+
+            if (inv.Buy(item))
+            {
+                _ = ShowInventory();
+            }
+            else
+            {
+                var embed = new EmbedBuilder();
+                embed.WithDescription(":x: Balance not enough or Inventory at full capacity.");
+                embed.WithColor(Colors.Get("Error"));
+                await Context.Channel.SendMessageAsync("", false, embed.Build());
+            }
+        }
+
         [Command("Sell")]
-        [Remarks("Parameters: item
-        Sell an item in your inventory
-        Example: `i!sell Padded Gloves`")]
+        [Remarks("Sell an unequipped item from your inventory.")]
         public async Task SellItem([Remainder] string item)
         {
             var inv = UserAccounts.GetAccount(Context.User).Inv;
@@ -139,24 +151,43 @@ namespace IodemBot.Modules.GoldenSunMechanics
         }
 
         [Command("Chest")]
-        [Remarks("Parameters: Chest type
-        Open a chest in your inventory
-        Example: `i!chest Wooden`")]
+        [Remarks("Open a chest in your inventory Example: `i!chest Wooden`")]
         public async Task OpenChest(ChestQuality cq, uint bonusCount = 0)
         {
             _ = OpenChestAsync(Context, cq, bonusCount);
             await Task.CompletedTask;
         }
 
+        [Command("Daily")]
+        public async Task Daily(uint bonusCount = 0)
+        {
+            _ = OpenChestAsync(Context, ChestQuality.Daily, bonusCount);
+            await Task.CompletedTask;
+        }
+
         [Command("Claim")]
-        [Remarks("Claim your starting gold and chest.
-        Redeemable until 01/07/19 00:00 GMT+1, one time only
-        Example: `i!claim`")]
+        [Remarks("Claim your starting gold and chest. Redeemable only in June, once.")]
         public async Task Claim()
         {
             var account = UserAccounts.GetAccount(Context.User);
             var inv = account.Inv;
-            await Task.CompletedTask;
+
+            if (DateTime.Now <= new DateTime(2019, 7, 1) && account.LastClaimed < new DateTime(2019, 6, 1))
+            {
+                var coins = account.LevelNumber * 120;
+                inv.AddBalance(coins);
+                var chest1 = (ChestQuality)Math.Max(0, Math.Min(4, ((int)account.LevelNumber / 11) - 1));
+                var chest2 = (ChestQuality)Math.Max(0, Math.Min(4, ((int)account.LevelNumber / 11 - 2)));
+                inv.AwardChest(chest1);
+                inv.AwardChest(chest2);
+
+                var embed = new EmbedBuilder();
+                embed.WithColor(Colors.Get("Iodem"));
+                embed.WithDescription($"Thank you for being part of this server! I hope you have fun with the new items. Here, take this: \n <:coin:569836987767324672>{coins}\n Also, take these to start off your journey: \n{Inventory.ChestIcons[chest2]} {Inventory.ChestIcons[chest1]} ");
+                embed.WithThumbnailUrl(Sprites.GetImageFromName("Iodem"));
+                account.LastClaimed = DateTime.Now;
+                await Context.Channel.SendMessageAsync("", false, embed.Build());
+            }
         }
 
         private async Task OpenChestAsync(SocketCommandContext Context, ChestQuality cq, uint bonusCount = 0)
@@ -185,7 +216,16 @@ namespace IodemBot.Modules.GoldenSunMechanics
             if (!inv.OpenChest(cq))
             {
                 var emb = new EmbedBuilder();
-                emb.WithDescription($":x: No {cq} Chests remaining!");
+
+                if (cq == ChestQuality.Daily)
+                {
+                    emb.WithDescription($":x: No {cq} Chests remaining! Next Daily Chest in: {DateTime.Today.AddDays(1).Subtract(DateTime.Now).ToString(@"hh\h\ mm\m")}");
+                }
+                else
+                {
+                    emb.WithDescription($":x: No {cq} Chests remaining!");
+                }
+
                 emb.WithColor(Colors.Get("Error"));
                 await Context.Channel.SendMessageAsync("", false, emb.Build());
                 return;
@@ -224,8 +264,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         }
 
         [Command("Inv Sort"), Alias("Bag Sort", "Inventory Sort")]
-        [Remarks("Sort your inventory
-        Example: `i!inv sort`")]
+        [Remarks("Sort your inventory.")]
         public async Task SortInventory()
         {
             var inv = UserAccounts.GetAccount(Context.User).Inv;
@@ -235,9 +274,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         }
 
         [Command("Equip")]
-        [Remarks("Parameters: Archetype, item
-        Equips an item to Mage or Warrior set.
-        Examples: `i!equip warrior sol blade`, `i!equip mage iris robe`")]
+        [Remarks("Equips an item to Mage or Warrior set. Examples: `i!equip warrior sol blade`, `i!equip mage iris robe`")]
         public async Task Equip(ArchType archType, [Remainder] string item)
         {
             var account = UserAccounts.GetAccount(Context.User);
@@ -254,9 +291,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         }
 
         [Command("Unequip")]
-        [Remarks("Parameters: item
-        Removes an equipped item from all sets
-        Example: `i!unequip Gloria Helm`")]
+        [Remarks("Unequip an item from all sets.")]
         public async Task Unequip([Remainder] string item)
         {
             var inv = UserAccounts.GetAccount(Context.User).Inv;
@@ -268,9 +303,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         }
 
         [Command("Repair")]
-        [Remarks("Parameters: item
-        Consumes Coin to repair broken equipment
-        example: `i!repair spirit ring`")]
+        [Remarks("Repair broken equipment.")]
         public async Task Repair([Remainder] string item)
         {
             var inv = UserAccounts.GetAccount(Context.User).Inv;
@@ -288,8 +321,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         }
 
         [Command("removeCursed")]
-        [Remarks("Removes all Cursed Gear
-        Example: `i!removeCursed`")]
+        [Remarks("Removes all Cursed Gear")]
         public async Task RemoveCursed()
         {
             var inv = UserAccounts.GetAccount(Context.User).Inv;
@@ -302,10 +334,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         [Command("iteminfo"), Alias("item", "i")]
         [Cooldown(5)]
-        [Remarks("Parameters: name
-        Remarks: gets information on specified equipment
-        No apostrophes used in names
-        Example: `i!iteminfo Wheat Sword`")]
+        [Remarks("Gets information on specified equipment. Example: `i!iteminfo Wheat Sword`")]
         public async Task ItemInfo([Remainder] string name = "")
         {
             if (name == "")

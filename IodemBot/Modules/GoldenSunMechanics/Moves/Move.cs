@@ -53,7 +53,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         protected virtual Validation Validate(ColossoFighter User)
         {
             List<string> log = new List<string>();
-            if (!User.IsAlive())
+            if (!User.IsAlive)
             {
                 return new Validation(false, log);
             }

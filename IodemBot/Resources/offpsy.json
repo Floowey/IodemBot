@@ -84,7 +84,7 @@
         "name": "Quake",
         "targetType": 3,
         "emote": "<:Quake:536958036472889346>",
-        "range": 1,
+        "range": 2,
         "element": 0,
         "PPCost": 4,
         "power": 25
@@ -1836,7 +1836,7 @@
     "Thrash": {
         "name": "Thrash",
         "targetType": 3,
-        "emote": ":angry1:",
+        "emote": "<:Rampage:537766290031509524>",
         "range": 1,
         "element": 3,
         "PPCost": 0,
@@ -1878,23 +1878,23 @@
             }
         ]
     },
-     "Brute Force": {
+    "Brute Force": {
         "name": "Brute Force",
         "targetType": 3,
-        "emote": ":angry1:",
+        "emote": "<:Rampage:537766290031509524>",
         "range": 1,
         "element": 0,
         "PPCost": 0,
-        "dmgMult": 1.9,
+        "dmgMult": 1.9
     },
-     "Massive Swing": {
+    "Massive Swing": {
         "name": "Massive Swing",
         "targetType": 4,
-        "emote": ":angry1:",
+        "emote": "<:Rampage:537766290031509524>",
         "range": 5,
         "element": 0,
         "PPCost": 0,
-         "addDamage": 50
+        "addDamage": 50
     },
     "Gasping Breath": {
         "name": "Gasping Breath",
@@ -1903,13 +1903,13 @@
         "range": 1,
         "element": 0,
         "PPCost": 0,
-         "power": 18,
+        "power": 18,
         "effectImages": [
-        {
-        "id": "condition",
-        "args": ["Haunt", "20"]
-    }
-    ]
+            {
+                "id": "condition",
+                "args": [ "Haunt", "20" ]
+            }
+        ]
     },
     "Pebble Breath": {
         "name": "Gasping Breath",
@@ -1918,7 +1918,7 @@
         "range": 1,
         "element": 0,
         "PPCost": 0,
-         "power": 24
+        "power": 24
     },
     "Sizzle Breath": {
         "name": "Sizzle Breath",
@@ -1927,12 +1927,12 @@
         "range": 1,
         "element": 0,
         "PPCost": 0,
-         "power": 37,
+        "power": 37,
         "effectImages": [
-        {
-        "id": "Stat",
-        "args": ["Def", "0.8", "25"]
+            {
+                "id": "Stat",
+                "args": [ "Def", "0.8", "25" ]
+            }
+        ]
     }
-    ]
-    },
 }

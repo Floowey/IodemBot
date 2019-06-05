@@ -99,7 +99,7 @@ namespace IodemBot.Modules
             await Context.Channel.SendMessageAsync("", false, embed.Build());
         }
 
-        [Command("xp")]
+        [Command("xp"), Alias("level")]
         [Cooldown(5)]
         [Remarks("Get information about your level etc")]
         public async Task Xp()
@@ -303,7 +303,7 @@ namespace IodemBot.Modules
             await Context.Channel.SendMessageAsync("", false, embed.Build());
         }
 
-        [Command("rank"), Alias("top")]
+        [Command("rank"), Alias("top", "top10")]
         [Cooldown(15)]
         [Remarks("Get the most active users and your rank")]
         public async Task Rank()

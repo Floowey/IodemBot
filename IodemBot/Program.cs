@@ -107,7 +107,7 @@ namespace IodemBot
         private async Task Client_Ready()
         {
             //setup colosso
-            await client.SetGameAsync("in Babi's Palast.", "https://www.twitch.tv/directory/game/Golden%20Sun", ActivityType.Streaming);
+            await client.SetGameAsync("in Babi's Palace.", "https://www.twitch.tv/directory/game/Golden%20Sun", ActivityType.Streaming);
             Global.UpSince = DateTime.UtcNow;
         }
 

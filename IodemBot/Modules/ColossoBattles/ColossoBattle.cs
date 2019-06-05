@@ -237,12 +237,12 @@ namespace IodemBot.Modules.ColossoBattles
 
         private bool GameOver()
         {
-            return !TeamA.Where(p => p.IsAlive()).Any() || !TeamB.Where(p => p.IsAlive()).Any();
+            return !TeamA.Where(p => p.IsAlive).Any() || !TeamB.Where(p => p.IsAlive).Any();
         }
 
         public Team GetWinner()
         {
-            if (TeamA.Where(p => p.IsAlive()).Any())
+            if (TeamA.Where(p => p.IsAlive).Any())
             {
                 return Team.A;
             }

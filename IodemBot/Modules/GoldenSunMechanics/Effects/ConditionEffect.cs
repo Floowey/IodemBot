@@ -66,7 +66,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 return log;
             }
 
-            if (!Target.IsAlive())
+            if (!Target.IsAlive)
             {
                 return log;
             }

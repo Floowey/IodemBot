@@ -40,7 +40,7 @@ namespace IodemBot.Modules.ColossoBattles
         public override List<string> EndTurn()
         {
             List<string> log = new List<string>();
-            if (IsAlive())
+            if (IsAlive)
             {
                 SelectRandom();
             }
