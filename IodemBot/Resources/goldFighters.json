@@ -40,10 +40,10 @@
                 "Debilitate"
             ],
             "stats": {
-                "maxHP": 4337,
+                "maxHP": 5000,
                 "maxPP": 500,
-                "Atk": 251,
-                "Def": 151,
+                "Atk": 400,
+                "Def": 250,
                 "Spd": 151
             },
             "elstats": {
@@ -75,17 +75,18 @@
             "movepool": [
                 "Liquifier",
                 "Planetary",
-                "Cure",
                 "Dire Inferno",
-                "Heat Flash",
-                "Vicious Chop"
+                "Rolling Flame",
+                "Meteor Blow",
+                "Vicious Chop",
+                "Power Crush",
             ],
             "stats": {
-                "maxHP": 2000,
+                "maxHP": 66666,
                 "maxPP": 400,
-                "Atk": 400,
+                "Atk": 666,
                 "Def": 150,
-                "Spd": 150
+                "Spd": 200
             },
             "elstats": {
                 "VenusAtk": 140,
@@ -97,7 +98,7 @@
                 "MercuryAtk": 80,
                 "MercuryRes": 80
             },
-            "extraTurns": 1,
+            "extraTurns": 2,
             "Conditions": [ "DeathCurse" ],
             "isImmuneToConditions": [
                 "Poison",
@@ -126,7 +127,7 @@
             "stats": {
                 "maxHP": 3333,
                 "maxPP": 400,
-                "Atk": 250,
+                "Atk": 400,
                 "Def": 200,
                 "Spd": 200
             },
@@ -164,11 +165,11 @@
                 "Break"
             ],
             "stats": {
-                "maxHP": 3500,
+                "maxHP": 5000,
                 "maxPP": 400,
-                "Atk": 250,
+                "Atk": 400,
                 "Def": 150,
-                "Spd": 150
+                "Spd": 250
             },
             "elstats": {
                 "VenusAtk": 140,
@@ -541,7 +542,7 @@
             "stats": {
                 "maxHP": 5306,
                 "maxPP": 160,
-                "Atk": 311,
+                "Atk": 387,
                 "Def": 95,
                 "Spd": 87
             },
@@ -557,7 +558,6 @@
             },
             "HPRecovery": 90,
             "extraTurns": 2,
-            "Condition": [ "Sleep" ]
         }
     ],
     [
@@ -575,7 +575,7 @@
             "stats": {
                 "maxHP": 3536,
                 "maxPP": 249,
-                "Atk": 249,
+                "Atk": 516,
                 "Def": 76,
                 "Spd": 87
             },
