@@ -1912,7 +1912,7 @@
         ]
     },
     "Pebble Breath": {
-        "name": "Gasping Breath",
+        "name": "Pebble Breath",
         "targetType": 3,
         "emote": ":gear:",
         "range": 1,
@@ -1934,5 +1934,23 @@
                 "args": [ "Def", "0.8", "25" ]
             }
         ]
-    }
+    },
+       "Meteor Blow": {
+        "name": "Meteor Blow",
+        "targetType": 3,
+        "emote": ":angry1:",
+        "range": 1,
+        "element": 1,
+        "PPCost": 0,
+        "power": 250
+    },
+       "Rolling Flame": {
+        "name": "Rolling Flame",
+        "targetType": 4,
+        "emote": ":fire:",
+        "range": 3,
+        "element": 1,
+        "PPCost": 0,
+        "addDamage": 100
+    },
 }
