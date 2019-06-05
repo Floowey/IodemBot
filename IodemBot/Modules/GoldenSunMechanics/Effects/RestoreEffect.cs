@@ -8,7 +8,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
     {
         public override List<string> Apply(ColossoFighter User, ColossoFighter Target)
         {
-            if (!Target.IsAlive())
+            if (!Target.IsAlive)
             {
                 return new List<string>();
             }

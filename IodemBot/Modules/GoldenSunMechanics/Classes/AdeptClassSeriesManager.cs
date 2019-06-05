@@ -65,7 +65,17 @@ namespace IodemBot.Modules.GoldenSunMechanics
         {
             var classSeries = AdeptClassSeriesManager.GetClassSeries(User);
             var els = GetClassSeries(User).Elstats;
-
+            switch (User.Element)
+            {
+                case Psynergy.Element.Venus:
+                    els += new ElementalStats() { VenusAtk = 10, VenusRes = 15, MarsAtk = 5, MarsRes = 5, JupiterAtk = -10, JupiterRes = -15 }; break;
+                case Psynergy.Element.Mars:
+                    els += new ElementalStats() { VenusAtk = 5, VenusRes = 5, MarsAtk = 10, MarsRes = 15, MercuryAtk = -10, MercuryRes = -15 }; break;
+                case Psynergy.Element.Jupiter:
+                    els += new ElementalStats() { VenusAtk = -10, VenusRes = -15, JupiterAtk = 10, JupiterRes = 15, MercuryAtk = 5, MercuryRes = 5 }; break;
+                case Psynergy.Element.Mercury:
+                    els += new ElementalStats() { MarsAtk = -10, MarsRes = -15, JupiterAtk = 5, JupiterRes = 5, MercuryAtk = 10, MercuryRes = 15 }; break;
+            }
             var gear = User.Inv.GetGear(classSeries.Archtype);
             gear.ForEach(g =>
             {

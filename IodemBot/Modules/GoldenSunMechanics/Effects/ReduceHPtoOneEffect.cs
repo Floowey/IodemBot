@@ -18,12 +18,12 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public override List<string> Apply(ColossoFighter User, ColossoFighter Target)
         {
             var log = new List<string>();
-            if (Target.isImmuneToEffects)
+            if (Target.IsImmuneToHPtoOne)
             {
                 return log;
             }
 
-            if (Target.IsAlive())
+            if (Target.IsAlive)
             {
                 if (Global.Random.Next(1, 100) <= Probability)
                 {

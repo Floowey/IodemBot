@@ -299,7 +299,7 @@
                 },
                 {
                     "Id": "HPDrain",
-                    "args": [ "100", "50" ]
+                    "args": [ "100", "33" ]
                 }
             ]
         }
@@ -455,7 +455,7 @@
                 },
                 {
                     "Id": "PPDrain",
-                    "args": [ "10", "50" ]
+                    "args": [ "10", "40" ]
                 }
             ]
         }
@@ -505,7 +505,7 @@
                 },
                 {
                     "Id": "HPDrain",
-                    "args": [ "100", "50" ]
+                    "args": [ "100", "40" ]
                 }
             ]
         }
@@ -630,7 +630,7 @@
                 },
                 {
                     "Id": "HPDrain",
-                    "args": [ "100", "50" ]
+                    "args": [ "100", "33" ]
                 }
             ]
         }
@@ -706,11 +706,11 @@
                 },
                 {
                     "id": "HPDrain",
-                    "args": [ "80", "50" ]
+                    "args": [ "80", "30" ]
                 },
                 {
                     "id": "PPDrain",
-                    "args": [ "10", "50" ]
+                    "args": [ "10", "30" ]
                 }
             ]
         }
@@ -761,7 +761,7 @@
                 },
                 {
                     "Id": "PPDrain",
-                    "args": [ "10", "50" ]
+                    "args": [ "10", "40" ]
                 }
             ]
         }
@@ -811,7 +811,7 @@
                 },
                 {
                     "Id": "PPDrain",
-                    "args": [ "10", "50" ]
+                    "args": [ "10", "40" ]
                 }
             ]
         }
@@ -916,7 +916,7 @@
     "Broad Sword": {
         "Name": "Broad Sword",
         "Price": 1000,
-        "Icon": "<:Long_Sword:569813505423704117>",
+        "Icon": "<:Broad_Sword:582670194707791884>",
         "ItemType": "LongSword",
         "IsEquippable": true,
         "AddStatsOnEquip": {
@@ -1017,7 +1017,7 @@
     "Muramasa": {
         "Name": "Muramasa",
         "Price": 13600,
-        "Icon": "<:Muramasa:569855141361090561>",
+        "Icon": "<:Muramasa:582670194842009641>",
         "ItemType": "LongSword",
         "IsEquippable": true,
         "IsArtifact": true,
@@ -1142,7 +1142,7 @@
     "Cloud Brand": {
         "Name": "Cloud Brand",
         "Price": 11800,
-        "Icon": "<:Cloud_Brand:569855141361221632>",
+        "Icon": "<:Cloud_Brand:582670195043074078>",
         "ItemType": "LongSword",
         "IsEquippable": true,
         "IsArtifact": true,
@@ -1160,7 +1160,7 @@
                 },
                 {
                     "id": "MayIgnoreDefense",
-                    "args": [ "100", "100" ]
+                    "args": [ "100", "30" ]
                 }
             ]
         }
@@ -1235,8 +1235,8 @@
                     "args": [ "50" ]
                 },
                 {
-                    "Id": "HPDrain",
-                    "args": [ "10", "50" ]
+                    "Id": "PPDrain",
+                    "args": [ "10", "45" ]
                 }
             ]
         }
@@ -1319,7 +1319,7 @@
     "Fire Brand": {
         "Name": "Fire Brand",
         "Price": 23400,
-        "Icon": "<:Fire_Brand:570389787668905985>",
+        "Icon": "<:Fire_Brand:581966770470912031>",
         "ItemType": "LongSword",
         "IsEquippable": true,
         "IsArtifact": true,
@@ -1418,7 +1418,7 @@
     "Sword of Dusk": {
         "Name": "Sword of Dusk",
         "Price": 11500,
-        "Icon": "<:Sword_Of_Dusk:578173574355877889>",
+        "Icon": "<:Sword_Of_Dusk:581966887429079054>",
         "ItemType": "LongSword",
         "IsEquippable": true,
         "IsArtifact": true,
@@ -1654,7 +1654,7 @@
         "AddStatsOnEquip": {
             "Atk": 95
         },
-        "MultStatOnEquip": {
+        "MultStatsOnEquip": {
             "Def": 120
         }
     },
@@ -1678,7 +1678,7 @@
                 },
                 {
                     "Id": "HPDrain",
-                    "args": [ "100", "50" ]
+                    "args": [ "100", "44" ]
                 }
             ]
         }
@@ -1754,14 +1754,9 @@
                 },
                 {
                     "Id": "HPDrain",
-                    "args": [ "100", "50" ]
+                    "args": [ "100", "35" ]
                 }
             ]
-        },
-        "Unleash": {
-            "UnleashName": "Life Nourish",
-            "UnleashAlignment": 0,
-            "effectImages": 
         }
     },
     "Gaias Axe": {
@@ -1818,7 +1813,7 @@
     "Herculean Axe": {
         "Name": "Herculean Axe",
         "Price": 28000,
-        "Icon": ":Herculean_Axe:",
+        "Icon": "<:Herculean_Axe:580827489446789130>",
         "ItemType": "Axe",
         "IsEquippable": true,
         "IsArtifact": true,
@@ -1954,7 +1949,7 @@
                 },
                 {
                     "Id": "HPDrain",
-                    "args": [ "100", "50" ]
+                    "args": [ "100", "33" ]
                 }
             ]
         }
@@ -2001,6 +1996,10 @@
                 {
                     "Id": "AddDamage",
                     "args": [ "38" ]
+                },
+                {
+                    "Id": "Stat",
+                    "args": [ "Resistance", "0.4", "40" ]
                 }
             ]
         }
@@ -2340,7 +2339,7 @@
     "Verdant Sword": {
         "Name": "Verdant Sword",
         "Price": 18000,
-        "Icon": "<:Verdant_Sword:578173680937467924>",
+        "Icon": "<:Verdant_Sword:581967321351061504>",
         "ItemType": "LightBlade",
         "IsEquippable": true,
         "IsArtifact": true,
@@ -2498,7 +2497,7 @@
     },
     "Sagittarius Bow": {
         "Name": "Sagittarius Bow",
-        "Price": 290000,
+        "Price": 29000,
         "Icon": "<:Sagittarius_Bow:578229622810869761>",
         "ItemType": "Bow",
         "IsEquippable": true,
@@ -2583,7 +2582,7 @@
     "Travel Robe": {
         "Name": "Travel Robe",
         "Price": 200,
-        "Icon": "<:Travel_Robe:569854449997316107>",
+        "Icon": "<:Travel_Robe:582672217788252180>",
         "ItemType": "Robe",
         "IsEquippable": true,
         "AddStatsOnEquip": {
@@ -2605,7 +2604,7 @@
             "effectImages": [
                 {
                     "id": "Stat",
-                    "args": [ "Attack", "0,8" ]
+                    "args": [ "Attack", "0.8" ]
                 }
             ]
         }
@@ -2657,12 +2656,11 @@
         "IsEquippable": true,
         "IsArtifact": true,
         "AddStatsOnEquip": {
-            "Def": 47,
-            "MaxPP": 6
+            "Def": 47
         },
         "AddElStatsOnEquip": {
-            "MercuryRes": 30,
             "MercuryAtk": 17,
+            "MarsAtk": 17,
             "MarsRes": 30
         },
         "PPRegen": 12,
@@ -2746,7 +2744,7 @@
     "Psynergy Armor": {
         "Name": "Psynergy Armor",
         "Price": 1000,
-        "Icon": "<:Psynergy_Armor:569854623205163039>",
+        "Icon": "<:Psynergy_Armor:582671911776026654>",
         "ItemType": "HeavyArmor",
         "IsEquippable": true,
         "AddStatsOnEquip": {
@@ -2855,7 +2853,7 @@
     "Grays Armor": {
         "Name": "Grays Armor",
         "Price": 915000,
-        "Icon": "<:Tritons_Ward:569854675906461716>",
+        "Icon": "<:Grays_Armor:582649488322199553>",
         "ItemType": "HeavyArmor",
         "IsEquippable": true,
         "IsArtifact": true,
@@ -2885,12 +2883,37 @@
             "JupiterRes": 120,
             "MarsAtk": 120,
             "MarsRes": 120
+        },
+        "GrantsUnleash": true,
+        "Unleash": {
+            "effectImages": [
+                {
+                    "id": "HPDrain",
+                    "args": [ "200", "100" ]
+                },
+                {
+                    "id": "Condition",
+                    "args": [ "Seal", "20" ]
+                },
+                {
+                    "id": "Condition",
+                    "args": [ "Venom", "50" ]
+                },
+                {
+                    "id": "Condition",
+                    "args": [ "Sleep", "20" ]
+                },
+                {
+                    "id": "ChanceToOHKO",
+                    "args": [ "1" ]
+                }
+            ]
         }
     },
     "Demon Mail": {
         "Name": "Demon Mail",
         "Price": 17000,
-        "Icon": "<:Demon_Mail:569854623012093973>",
+        "Icon": "<:Demon_Mail:582672025814958080>",
         "ItemType": "HeavyArmor",
         "IsEquippable": true,
         "IsArtifact": true,
@@ -2942,14 +2965,19 @@
         "IsEquippable": true,
         "IsArtifact": true,
         "AddStatsOnEquip": {
-            "Def": 38,
-            "MaxPP": 12
+            "Def": 38
         },
         "AddElStatsOnEquip": {
-            "VenusAtk": 15,
-            "VenusRes": 25,
-            "JupiterAtk": 15,
-            "JupiterRes": 25
+            "VenusRes": 20
+        },
+        "GrantsUnleash": true,
+        "Unleash": {
+            "effectImages": [
+                {
+                    "id": "Condition",
+                    "args": [ "Delusion", "30" ]
+                }
+            ]
         }
     },
     "Erebus Armor": {
@@ -3184,11 +3212,10 @@
         "IsArtifact": true,
         "AddStatsOnEquip": {
             "Def": 28,
-            "MaxHP": 7
+            "MaxHP": 5
         },
         "AddElStatsOnEquip": {
-            "VenusRes": 25,
-            "MarsAtk": 30
+            "VenusRes": 25
         }
     },
     "Wild Coat": {
@@ -3218,7 +3245,7 @@
             "effectImages": [
                 {
                     "id": "Condition",
-                    "args": [ "Sleep", "100" ]
+                    "args": [ "Sleep", "15" ]
                 }
             ]
         }
@@ -3232,6 +3259,9 @@
         "IsArtifact": true,
         "AddStatsOnEquip": {
             "Def": 38
+        },
+        "AddElStatsOnEquip": {
+            "JupiterRes": 15
         }
     },
     "Erinyes Tunic": {
@@ -3359,7 +3389,7 @@
             "Atk": 7
         },
         "AddElStatsOnEquip": {
-            "MercuryRes": 15
+            "MarsAtk": 15
         }
     },
     "Turtle Boots": {
@@ -3499,19 +3529,18 @@
         "IsEquippable": true,
         "IsArtifact": true,
         "AddStatsOnEquip": {
-            "Def": 24
+            "Def": 22
         },
         "AddElStatsOnEquip": {
+            "VenusAtk": 5,
             "VenusRes": 15,
-            "VenusAtk": 15,
-            "JupiterAtk": 10,
             "MarsRes": -10
         }
     },
     "Hover Greave": {
         "Name": "Hover Greave",
         "Price": 4500,
-        "Icon": ":Hover_Greave:",
+        "Icon": "<:Hover_Greave:581970059962875932>",
         "ItemType": "Greave",
         "IsEquippable": true,
         "IsArtifact": true,
@@ -3586,10 +3615,10 @@
         "IsEquippable": true,
         "IsArtifact": true,
         "AddStatsOnEquip": {
-            "Def": 38
+            "Def": 35
         },
         "AddElStatsOnEquip": {
-            "VenusRes": 25
+            "VenusAtk": 25
         }
     },
     "Prophets Hat": {
@@ -3607,7 +3636,7 @@
             "effectImages": [
                 {
                     "id": "Condition",
-                    "args": [ "Delusion", "100" ]
+                    "args": [ "DeathCurse", "10" ]
                 }
             ]
         }
@@ -3647,7 +3676,8 @@
         "IsArtifact": true,
         "AddStatsOnEquip": {
             "Def": 18
-        }
+        },
+        "HPRegen": 3
     },
     "Thorn Crown": {
         "Name": "Thorn Crown",
@@ -3672,7 +3702,8 @@
             "Def": 31
         },
         "AddElStatsOnEquip": {
-            "MercuryAtk": 20
+            "MercuryAtk": 30,
+            "MarsAtk": -10
         }
     },
     "Floating Hat": {
@@ -3701,7 +3732,8 @@
             "Def": 33
         },
         "AddElStatsOnEquip": {
-            "MarsAtk": 25
+            "MarsAtk": 30,
+            "MercuryAtk": -10
         }
     },
     "Crown of Glory": {
@@ -3730,8 +3762,8 @@
         "Unleash": {
             "effectImages": [
                 {
-                    "id": "Condition",
-                    "args": [ "Delusion", "30" ]
+                    "id": "ChanceToOHKO",
+                    "args": [ "5" ]
                 }
             ]
         }
@@ -3863,9 +3895,7 @@
             "Def": 36
         },
         "AddElStatsOnEquip": {
-            "MercuryRes": 30,
-            "MercuryAtk": 20,
-            "JupiterAtk": 20
+            "MarsAtk": 30
         }
     },
     "Psychic Circlet": {
@@ -3908,7 +3938,7 @@
     "Zol Tiara": {
         "Name": "Zol Tiara",
         "Price": 6000,
-        "Icon": ":Zol_Tiara:",
+        "Icon": "<:Zol_Tiara:581971650573107231>",
         "ItemType": "Circlet",
         "IsEquippable": true,
         "IsArtifact": true,
@@ -4177,7 +4207,7 @@
             "effectImages": [
                 {
                     "id": "Condition",
-                    "args": [ "Delusion", "30" ]
+                    "args": [ "Haunt", "10" ]
                 }
             ]
         }
@@ -4282,11 +4312,26 @@
         "IsArtifact": true,
         "IsEquippable": true,
         "AddStatsOnEquip": {
-            "Def": 35
+            "Def": 35,
+            "MaxHP": 15
         },
         "AddElStatsOnEquip": {
             "JupiterAtk": 10,
             "MarsAtk": 10
+        }
+    },
+    "Air Bangle": {
+        "Name": "Air Bangle",
+        "Price": 6000,
+        "Icon": "<:Air_Bangle:581972768422363137>",
+        "ItemType": "Bracelet",
+        "IsArtifact": true,
+        "IsEquippable": true,
+        "AddStatsOnEquip": {
+            "Def": 39
+        },
+        "AddElStatsOnEquip": {
+            "JupiterAtk": 30
         }
     },
     "Battle Gloves": {
@@ -4322,6 +4367,16 @@
         "IsEquippable": true,
         "AddStatsOnEquip": {
             "Def": 36
+        },
+        "ChanceToActivate": 30,
+        "ChanceToBreak": 12,
+        "Unleash": {
+            "effectImages": [
+                {
+                    "id": "Stat",
+                    "args": [ "Resistance", "1.2" ]
+                }
+            ]
         }
     },
     "Aerial Gloves": {
@@ -4342,7 +4397,7 @@
     "Padded Gloves": {
         "Name": "Padded Gloves",
         "Price": 10,
-        "Icon": "<:Padded_Gloves:569854900112982026>",
+        "Icon": "<:Padded_Gloves:582672322696183824>",
         "ItemType": "Glove",
         "IsEquippable": true,
         "AddStatsOnEquip": {
@@ -4551,7 +4606,8 @@
         "IsArtifact": true,
         "IsEquippable": true,
         "AddStatsOnEquip": {
-            "Def": 31
+            "Def": 31,
+            "MaxHP": 20
         },
         "AddElStatsOnEquip": {
             "VenusRes": 20
@@ -4572,7 +4628,7 @@
             "effectImages": [
                 {
                     "id": "Condition",
-                    "args": [ "Delusion", "30" ]
+                    "args": [ "Delusion", "25" ]
                 }
             ]
         }
@@ -4714,8 +4770,8 @@
         "ItemType": "Ring",
         "IsEquippable": true,
         "IsArtifact": true,
-        "ChanceToActivate": 75,
-        "ChanceToBreak": 5,
+        "ChanceToActivate": 30,
+        "ChanceToBreak": 12,
         "Unleash": {
             "effectImages": [
                 {
@@ -4732,8 +4788,8 @@
         "ItemType": "Ring",
         "IsEquippable": true,
         "IsArtifact": true,
-        "ChanceToActivate": 75,
-        "ChanceToBreak": 5,
+        "ChanceToActivate": 30,
+        "ChanceToBreak": 12,
         "Unleash": {
             "effectImages": [
                 {
@@ -4767,7 +4823,7 @@
             "effectImages": [
                 {
                     "id": "HPDrain",
-                    "args": [ "50" ]
+                    "args": [ "40", "20" ]
                 }
             ]
         }
@@ -4784,13 +4840,13 @@
             "effectImages": [
                 {
                     "id": "HPDrain",
-                    "args": [ "60", "10" ]
+                    "args": [ "60", "15" ]
                 }
             ]
         }
     },
     "Heirloom Ring": {
-        "Name": "<:Heirloom_Ring:580487258604306461> ",
+        "Name": "Heirloom Ring",
         "Price": 5600,
         "Icon": "<:Heirloom_Ring:580487258604306461>",
         "ItemType": "Ring",
@@ -4799,6 +4855,15 @@
         "AddElStatsOnEquip": {
             "MercuryAtk": 30,
             "MercuryRes": 40
+        },
+        "GrantsUnleash": true,
+        "Unleash": {
+            "effectImages": [
+                {
+                    "id": "HPDrain",
+                    "args": [ "10", "20" ]
+                }
+            ]
         }
     },
     "Sleep Ring": {
@@ -4813,7 +4878,7 @@
             "effectImages": [
                 {
                     "id": "Condition",
-                    "args": [ "Sleep", "30" ]
+                    "args": [ "Sleep", "15" ]
                 }
             ]
         }
@@ -4853,7 +4918,7 @@
         }
     },
     "Zol Ring": {
-        "Name": "<:Zol_Ring:580487258289864726>",
+        "Name": "Zol Ring",
         "Price": 2500,
         "Icon": "<:Zol_Ring:580487258289864726>",
         "ItemType": "Ring",
@@ -4864,7 +4929,7 @@
         }
     },
     "Lady Moons Ring": {
-        "Name": "<:Lady_Moons_Ring:580487258277150731>",
+        "Name": "Lady Moons Ring",
         "Price": 3300,
         "Icon": "<:Lady_Moons_Ring:580487258277150731>",
         "ItemType": "Ring",
@@ -4881,7 +4946,7 @@
         }
     },
     "Lord Suns Ring": {
-        "Name": "<:Lord_Suns_Ring:580487258407174165>",
+        "Name": "Lord Suns Ring",
         "Price": 4900,
         "Icon": "<:Lord_Suns_Ring:580487258407174165>",
         "ItemType": "Ring",

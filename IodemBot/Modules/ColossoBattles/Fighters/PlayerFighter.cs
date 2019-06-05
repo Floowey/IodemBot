@@ -39,7 +39,7 @@ namespace IodemBot.Modules.ColossoBattles
 
                 if (g.CuresCurse)
                 {
-                    isImmuneToItemCurse = true;
+                    IsImmuneToItemCurse = true;
                 }
 
                 if (g.IsWeapon)
@@ -53,9 +53,12 @@ namespace IodemBot.Modules.ColossoBattles
 
                 if (!g.IsWeapon && g.IsUnleashable)
                 {
-                    if (g.GrantsUnleash && Weapon.IsUnleashable)
+                    if (g.GrantsUnleash)
                     {
-                        Weapon.Unleash.AdditionalEffects.AddRange(g.Unleash.Effects);
+                        if ((Weapon != null) && Weapon.IsUnleashable)
+                        {
+                            Weapon.Unleash.AdditionalEffects.AddRange(g.Unleash.Effects);
+                        }
                     }
                     else
                     {
@@ -101,7 +104,7 @@ namespace IodemBot.Modules.ColossoBattles
             hasSelected = false;
             var log = new List<string>();
 
-            if (AutoTurnsInARow >= 4)
+            if (AutoTurnsInARow >= 4 && !IsAlive)
             {
                 Kill();
                 log.Add($":x: {name} dies from inactivity.");

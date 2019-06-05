@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using IodemBot.Extensions;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -64,12 +65,20 @@ namespace IodemBot.Modules.ColossoBattles
                     Console.WriteLine("Enemies from default!!!");
                     break;
             }
-            var enemies = selectedDifficulty[(new Random()).Next(0, selectedDifficulty.Count)].Select(f => (ColossoFighter)f.Clone()).ToList();
-            if (diff == BattleDifficulty.MediumRare)
+
+            try
             {
-                enemies.ForEach(e => e.stats *= 1.5);
+                var enemies = selectedDifficulty.Random().Select(f => (ColossoFighter)f.Clone()).ToList();
+                if (diff == BattleDifficulty.MediumRare)
+                {
+                    enemies.ForEach(e => e.stats *= 1.5);
+                }
+                return enemies;
             }
-            return enemies;
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         internal static List<ColossoFighter> GetEnemies(BattleDifficulty diff, string enemy)

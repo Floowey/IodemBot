@@ -9,7 +9,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         {
             List<string> log = new List<string>();
             List<Buff> newBuffs = new List<Buff>();
-            if (!Target.IsAlive())
+            if (!Target.IsAlive)
             {
                 return log;
             }

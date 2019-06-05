@@ -57,15 +57,15 @@
                 "MercuryRes": 113
             },
             "isImmuneToConditions": [
-            "Poison",
-            "Venom",
-            "Seal",
-            "Delusion",
-            "Stun",
-            "DeathCurse",
-            "Haunt"
+                "Poison",
+                "Venom",
+                "Seal",
+                "Delusion",
+                "Stun",
+                "DeathCurse",
+                "Haunt"
             ],
-            "isImmuneToOHKO": true,
+            "isImmuneToOHKO": true
         }
     ],
     [
@@ -98,17 +98,17 @@
                 "MercuryRes": 80
             },
             "extraTurns": 1,
-            "Conditions": "DeathCurse",
+            "Conditions": [ "DeathCurse" ],
             "isImmuneToConditions": [
-            "Poison",
-            "Venom",
-            "Seal",
-            "Haunt",
-            "Stun",
-            "Sleep",
-            "Delusion"
+                "Poison",
+                "Venom",
+                "Seal",
+                "Haunt",
+                "Stun",
+                "Sleep",
+                "Delusion"
             ],
-            "isImmuneToOHKO": true,
+            "isImmuneToOHKO": true
         }
     ],
     [
@@ -143,13 +143,13 @@
             "HPRecovery": 333,
             "PPRecovery": 33,
             "isImmuneToConditions": [
-            "Haunt",
-             "DeathCurse",
+                "Haunt",
+                "DeathCurse",
                 "Stun",
                 "Seal",
                 "Sleep"
-                ],
-            "isImmuneToOHKO": true,
+            ],
+            "isImmuneToOHKO": true
         }
     ],
     [
@@ -191,8 +191,8 @@
                 "DeathCurse",
                 "Haunt",
                 "Flinch"
-                ],
-            "isImmuneToOHKO": true,
+            ],
+            "isImmuneToOHKO": true
         }
     ],
     [
@@ -225,14 +225,14 @@
                 "MercuryRes": 72
             },
             "isImmuneToConditions": [
-            "Poison",
-            "Venom",
-            "Sleep",
-            "DeathCurse",
-            "Haunt",
-            "Stun"
+                "Poison",
+                "Venom",
+                "Sleep",
+                "DeathCurse",
+                "Haunt",
+                "Stun"
             ],
-            "isImmuneToOHKO": true,
+            "isImmuneToOHKO": true
         },
         {
             "name": "Menardi",
@@ -263,15 +263,15 @@
                 "MercuryAtk": 95,
                 "MercuryRes": 72
             },
-              "isImmuneToConditions": [
-            "Poison",
-            "Venom",
-            "Sleep",
-            "DeathCurse",
-            "Haunt",
-            "Stun"
+            "isImmuneToConditions": [
+                "Poison",
+                "Venom",
+                "Sleep",
+                "DeathCurse",
+                "Haunt",
+                "Stun"
             ],
-            "isImmuneToOHKO": true,
+            "isImmuneToOHKO": true
         }
     ],
     [
@@ -307,17 +307,17 @@
                 "MercuryRes": 193
             },
             "extraTurns": 1,
-              "isImmuneToConditions": [
-            "Poison",
-            "Venom",
-            "Sleep",
-            "DeathCurse",
-            "Haunt",
-            "Stun",
-            "Delusion",
-            "Seal"
+            "isImmuneToConditions": [
+                "Poison",
+                "Venom",
+                "Sleep",
+                "DeathCurse",
+                "Haunt",
+                "Stun",
+                "Delusion",
+                "Seal"
             ],
-            "isImmuneToOHKO": true,
+            "isImmuneToOHKO": true
         }
     ],
     [
@@ -557,7 +557,7 @@
             },
             "HPRecovery": 90,
             "extraTurns": 2,
-            "Condition": [ "Sleep" ],
+            "Condition": [ "Sleep" ]
         }
     ],
     [
@@ -658,7 +658,7 @@
                 "MercuryAtk": 100,
                 "MercuryRes": 25
             },
-            "extraTurns": 2,
+            "extraTurns": 2
         },
         {
             "name": "Wonder Bird 2",
@@ -725,8 +725,8 @@
                 "Sleep",
                 "DeathCurse",
                 "Haunt"
-                ],
-            "isImmuneToOHKO": true,
+            ],
+            "isImmuneToOHKO": true
         },
         {
             "name": "Ogre Titan 2",
@@ -760,8 +760,8 @@
                 "Sleep",
                 "DeathCurse",
                 "Haunt"
-                ],
-            "isImmuneToOHKO": true,
+            ],
+            "isImmuneToOHKO": true
         },
         {
             "name": "Ogre Titan 3",
@@ -795,8 +795,8 @@
                 "Sleep",
                 "DeathCurse",
                 "Haunt"
-                ],
-            "isImmuneToOHKO": true,
+            ],
+            "isImmuneToOHKO": true
         },
         {
             "name": "Ogre Titan 4",
@@ -830,8 +830,8 @@
                 "Sleep",
                 "DeathCurse",
                 "Haunt"
-                ],
-            "isImmuneToOHKO": true,
+            ],
+            "isImmuneToOHKO": true
         }
     ],
     [
@@ -869,8 +869,8 @@
                 "Sleep",
                 "DeathCurse",
                 "Haunt"
-                ],
-            "isImmuneToOHKO": true,
+            ],
+            "isImmuneToOHKO": true
         }
     ]
 ]

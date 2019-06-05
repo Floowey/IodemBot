@@ -91,6 +91,8 @@ namespace IodemBot.Core.UserManagement
         //Friend Codes
         public bool arePublicCodes = false;
 
+        public DateTime LastClaimed { get; set; }
+
         public string N3DSCode { get; set; } = "0000-0000-0000";
         public string SwitchCode { get; set; } = "0000-0000-0000";
         public string PoGoCode { get; set; } = "0000-0000-0000";

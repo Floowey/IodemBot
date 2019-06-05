@@ -19,7 +19,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public override void InternalChooseBestTarget(ColossoFighter User)
         {
-            var aliveEnemies = User.GetEnemies().Where(f => f.IsAlive()).ToList();
+            var aliveEnemies = User.GetEnemies().Where(f => f.IsAlive).ToList();
             if (aliveEnemies.Count == 0)
             {
                 targetNr = 0;
@@ -35,6 +35,11 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         protected override List<string> InternalUse(ColossoFighter User)
         {
+            if (User.Weapon != null)
+            {
+                emote = User.Weapon.Icon;
+            }
+
             var enemy = User.battle.GetTeam(User.enemies)[targetNr];
 
             var log = new List<string>
@@ -42,7 +47,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 $"{emote} {User.name} attacks!"
             };
 
-            if (!enemy.IsAlive())
+            if (!enemy.IsAlive)
             {
                 log.Add($"{enemy.name} is down already!");
                 return log;
@@ -73,13 +78,13 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 }
             }
 
-            if (!enemy.IsAlive())
+            if (!enemy.IsAlive)
             {
                 return log;
             }
 
             var atk = User.stats.Atk * User.MultiplyBuffs("Attack");
-            var def = enemy.stats.Def * enemy.MultiplyBuffs("Defense");
+            var def = enemy.stats.Def * enemy.MultiplyBuffs("Defense") * enemy.ignoreDefense;
             uint damage = 1;
             if (def < atk)
             {
@@ -145,7 +150,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             if (User is PlayerFighter player)
             {
                 player.battleStats.DamageDealt += damage;
-                if (!enemy.IsAlive())
+                if (!enemy.IsAlive)
                 {
                     player.battleStats.KillsByHand++;
                     player.battleStats.Kills++;
