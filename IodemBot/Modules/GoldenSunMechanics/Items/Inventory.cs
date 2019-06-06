@@ -18,7 +18,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         private static readonly ItemType[] WarriorExclusive = { ItemType.LongSword, ItemType.Axe, ItemType.Shield, ItemType.Helmet, ItemType.HeavyArmor, ItemType.Greave };
         private static readonly ItemType[] MageExclusive = { ItemType.Staff, ItemType.Circlet, ItemType.Bow, ItemType.Robe, ItemType.Bracelet };
 
-        private static readonly ChestQuality[] chestQualities = { ChestQuality.Wooden, ChestQuality.Normal, ChestQuality.Silver, ChestQuality.Gold, ChestQuality.Adept, ChestQuality.Daily };
+        public static readonly ChestQuality[] chestQualities = { ChestQuality.Wooden, ChestQuality.Normal, ChestQuality.Silver, ChestQuality.Gold, ChestQuality.Adept, ChestQuality.Daily };
 
         public static readonly Dictionary<ChestQuality, string> ChestIcons = new Dictionary<ChestQuality, string>()
         {
@@ -182,6 +182,11 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 case (Detail.PriceAndName):
                     return string.Join("\n", Inv.Select(i => $"{i.IconDisplay} {i.Name} - <:coin:569836987767324672>{i.Price}").ToArray());
             }
+        }
+
+        internal bool HasChest(ChestQuality cq)
+        {
+            return chests[cq] > 0;
         }
 
         public void Clear()

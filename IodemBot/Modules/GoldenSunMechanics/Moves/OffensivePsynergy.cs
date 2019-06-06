@@ -13,6 +13,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public double dmgMult = 1;
         public uint percentageDamage = 0;
         private readonly bool attackBased;
+        public bool IgnoreSpread { get; set; }
         private readonly double[] spread = new double[] { 1.0, 0.66, 0.5, 0.33, 0.25, 0.15, 0.1 };
 
         [JsonConstructor]
@@ -94,7 +95,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
                 var elMult = 1 + Math.Max(0.0, (int)User.elstats.GetPower(element) * User.MultiplyBuffs("Power") - (int)t.elstats.GetRes(element) * t.MultiplyBuffs("Resistance")) / (attackBased ? 400 : 200);
                 var distFromCenter = Math.Abs(enemyTeam.IndexOf(t) - targetNr);
-                var spreadMult = spread[distFromCenter];
+                var spreadMult = IgnoreSpread ? 1 : spread[distFromCenter];
                 var prctdmg = (uint)(t.stats.MaxHP * percentageDamage / 100);
                 var realDmg = (uint)((baseDmg + dmg + addDamage) * dmgMult * elMult * spreadMult * t.defensiveMult * User.offensiveMult + prctdmg);
                 var punctuation = "!";

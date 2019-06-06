@@ -1935,7 +1935,7 @@
             }
         ]
     },
-       "Meteor Blow": {
+    "Meteor Blow": {
         "name": "Meteor Blow",
         "targetType": 3,
         "emote": ":angry1:",
@@ -1944,7 +1944,7 @@
         "PPCost": 0,
         "power": 250
     },
-       "Rolling Flame": {
+    "Rolling Flame": {
         "name": "Rolling Flame",
         "targetType": 4,
         "emote": ":fire:",
@@ -1952,5 +1952,5 @@
         "element": 1,
         "PPCost": 0,
         "addDamage": 100
-    },
+    }
 }

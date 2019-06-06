@@ -107,7 +107,7 @@ namespace IodemBot.Core.Leveling
             userAccount.BattleStats += battleStats;
             var bs = userAccount.BattleStats;
 
-            if (Global.Random.Next(0, 100) <= 9 + battleStats.TotalTeamMates * 2 + 4 * LureCaps)
+            if (Global.Random.Next(0, 100) <= 7 + battleStats.TotalTeamMates * 2 + 4 * LureCaps + winsInARow / 10)
             {
                 ChestQuality awardedChest = GetRandomChest(diff);
                 userAccount.Inv.AwardChest(awardedChest);
@@ -177,11 +177,11 @@ namespace IodemBot.Core.Leveling
                     return chests[Global.Random.Next(0, chests.Length)];
 
                 case BattleDifficulty.Medium:
-                    chests = new ChestQuality[] { ChestQuality.Wooden, ChestQuality.Normal, ChestQuality.Normal, ChestQuality.Silver, ChestQuality.Silver, ChestQuality.Silver };
+                    chests = new ChestQuality[] { ChestQuality.Normal, ChestQuality.Normal, ChestQuality.Normal, ChestQuality.Normal, ChestQuality.Normal, ChestQuality.Silver, ChestQuality.Silver, ChestQuality.Gold };
                     return chests[Global.Random.Next(0, chests.Length)];
 
                 case BattleDifficulty.MediumRare:
-                    chests = new ChestQuality[] { ChestQuality.Normal, ChestQuality.Silver, ChestQuality.Silver, ChestQuality.Silver, ChestQuality.Gold };
+                    chests = new ChestQuality[] { ChestQuality.Silver, ChestQuality.Silver, ChestQuality.Silver, ChestQuality.Gold, ChestQuality.Gold };
                     return chests[Global.Random.Next(0, chests.Length)];
 
                 case BattleDifficulty.Hard:

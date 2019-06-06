@@ -361,6 +361,12 @@ namespace IodemBot.Modules.ColossoBattles
                     return;
                 }
 
+                if (reaction.Emote.Name == "⏩")
+                {
+                    _ = ProcessTurn(true);
+                    return;
+                }
+
                 var curPlayer = Messages.Values.Where(p => p.name == ((SocketGuildUser)reaction.User.Value).DisplayName()).FirstOrDefault();
                 var correctID = Messages.Keys.Where(key => Messages[key].name == curPlayer.name).First().Id;
 

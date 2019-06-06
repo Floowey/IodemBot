@@ -79,7 +79,7 @@
                 "Rolling Flame",
                 "Meteor Blow",
                 "Vicious Chop",
-                "Power Crush",
+                "Power Crush"
             ],
             "stats": {
                 "maxHP": 66666,
@@ -557,7 +557,7 @@
                 "MercuryRes": 100
             },
             "HPRecovery": 90,
-            "extraTurns": 2,
+            "extraTurns": 2
         }
     ],
     [

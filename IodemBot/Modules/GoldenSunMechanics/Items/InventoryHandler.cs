@@ -152,9 +152,24 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         [Command("Chest")]
         [Remarks("Open a chest in your inventory Example: `i!chest Wooden`")]
-        public async Task OpenChest(ChestQuality cq, uint bonusCount = 0)
+        public async Task OpenChest(ChestQuality cq)
         {
-            _ = OpenChestAsync(Context, cq, bonusCount);
+            _ = OpenChestAsync(Context, cq, 0);
+            await Task.CompletedTask;
+        }
+
+        [Command("Chest")]
+        public async Task OpenChest()
+        {
+            var inv = UserAccounts.GetAccount(Context.User).Inv;
+            foreach (ChestQuality cq in Inventory.chestQualities)
+            {
+                if (inv.HasChest(cq))
+                {
+                    _ = OpenChestAsync(Context, cq, 0);
+                    break;
+                }
+            }
             await Task.CompletedTask;
         }
 
