@@ -70,10 +70,10 @@ namespace IodemBot.Modules.ColossoBattles
 
         [Command("setEnemy")]
         [RequireUserPermission(ChannelPermission.ManageMessages)]
-        public async Task SetEnemy(BattleDifficulty diff, [Remainder] string enemy)
+        public async Task SetEnemy(string name, [Remainder] string enemy)
         {
             await Context.Message.DeleteAsync();
-            var a = battles.Where(b => b.diff == diff).FirstOrDefault();
+            var a = battles.Where(b => b.Name.Equals(name, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
             if (a != null)
             {
                 a.SetEnemy(enemy);
@@ -387,7 +387,14 @@ namespace IodemBot.Modules.ColossoBattles
                     return;
                 }
                 reactions.Add(reaction);
-                _ = ProcessTurn(forced: false);
+                try
+                {
+                    _ = ProcessTurn(forced: false);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("Colosso Turn Processing Error: " + e.Message);
+                }
             }
 
             internal async Task ProcessTurn(bool forced)
@@ -641,7 +648,7 @@ namespace IodemBot.Modules.ColossoBattles
                     {
                         Battle.TeamA.ForEach(p =>
                         {
-                            p.PPrecovery = Math.Min(8, p.PPrecovery + (winsInARow % 3 == 0 ? 1 : 0));
+                            p.PPrecovery = Math.Min(8, p.PPrecovery + (winsInARow % 4 == 0 ? 1 : 0));
                             p.RemoveNearlyAllConditions();
                             p.Buffs = new List<Buff>();
                             p.Heal((uint)(p.stats.HP * 5 / 100));

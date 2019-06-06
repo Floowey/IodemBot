@@ -1,4 +1,5 @@
-﻿using IodemBot.Modules.ColossoBattles;
+﻿using IodemBot.Extensions;
+using IodemBot.Modules.ColossoBattles;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,7 +26,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 targetNr = 0;
                 return;
             }
-            targetNr = User.GetEnemies().IndexOf(aliveEnemies[Global.Random.Next(0, aliveEnemies.Count)]);
+            targetNr = User.GetEnemies().IndexOf(aliveEnemies.Random());
         }
 
         public override bool InternalValidSelection(ColossoFighter User)
@@ -40,7 +41,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 emote = User.Weapon.Icon;
             }
 
-            var enemy = User.battle.GetTeam(User.enemies)[targetNr];
+            var enemy = GetTarget(User).First();
 
             var log = new List<string>
             {
