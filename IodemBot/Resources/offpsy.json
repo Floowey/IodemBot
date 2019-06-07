@@ -59,7 +59,7 @@
     "Annihilation": {
         "name": "Annihilation",
         "targetType": 3,
-        "emote": "<:Annihalation:536959197288464393>",
+        "emote": "<:Annihilation:536959197288464393>",
         "range": 1,
         "element": 0,
         "effectImages": [
