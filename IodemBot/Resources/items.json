@@ -4473,7 +4473,7 @@
     "Spirit Gauntlets": {
         "Name": "Spirit Gauntlets",
         "Price": 7200,
-        "Icon": "<:Spirit_Gloves_2:569854900192804864>",
+        "Icon": "<:Spirit_Gauntlets:587426621062119454>",
         "ItemType": "Glove",
         "IsArtifact": true,
         "IsEquippable": true,
