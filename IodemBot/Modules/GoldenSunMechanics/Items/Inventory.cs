@@ -14,7 +14,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
     public class Inventory
     {
-        public static readonly int MaxInvSize = 30;
+        public static readonly uint MaxInvSizeGlobal = 30;
         private static readonly ItemType[] WarriorExclusive = { ItemType.LongSword, ItemType.Axe, ItemType.Shield, ItemType.Helmet, ItemType.HeavyArmor, ItemType.Greave };
         private static readonly ItemType[] MageExclusive = { ItemType.Staff, ItemType.Circlet, ItemType.Bow, ItemType.Robe, ItemType.Bracelet };
 
@@ -34,13 +34,30 @@ namespace IodemBot.Modules.GoldenSunMechanics
         [JsonProperty] private List<string> WarriorGearString { get; set; }
         [JsonProperty] private List<string> MageGearString { get; set; }
         [JsonProperty] public uint Coins { get; set; }
+        [JsonProperty] public uint Upgrades { get; set; }
 
-        [JsonProperty] private DateTime lastDailyChest;
+        [JsonProperty]
+        public uint MaxInvSize
+        {
+            get { return MaxInvSizeGlobal + 10 * Upgrades; }
+        }
 
-        [JsonIgnore] private List<Item> Inv;
-        [JsonIgnore] private List<Item> WarriorGear;
-        [JsonIgnore] private List<Item> MageGear;
-        [JsonIgnore] public int Count { get { return Inv.Count; } }
+        [JsonProperty]
+        private DateTime lastDailyChest;
+
+        [JsonIgnore]
+        private List<Item> Inv;
+
+        [JsonIgnore]
+        private List<Item> WarriorGear;
+
+        [JsonIgnore]
+        private List<Item> MageGear;
+
+        [JsonIgnore]
+        public int Count
+        { get { return Inv.Count; } }
+
         [JsonIgnore] public bool IsFull { get { return Count >= MaxInvSize; } }
         [JsonIgnore] public bool IsInitialized { get { return Inv != null; } }
 
@@ -162,7 +179,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             return string.Join(" - ", s);
         }
 
-        public enum Detail { none, Name, PriceAndName }
+        public enum Detail { none, True, Names, PriceAndName }
 
         public string InventoryToString(Detail detail = Detail.none)
         {
@@ -176,7 +193,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 default:
                     return string.Join("", Inv.Select(i => i.IconDisplay).ToArray());
 
-                case (Detail.Name):
+                case (Detail.Names):
                     return string.Join(", ", Inv.Select(i => $"{i.IconDisplay} {i.Name}{(i.IsBroken ? " (Broken)" : "")}").ToArray());
 
                 case (Detail.PriceAndName):
@@ -258,7 +275,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 return false;
             }
 
-            var i = ItemDatabase.GetItem(item);
+            var i = Inv.Where(s => s.Name.Equals(item, StringComparison.InvariantCultureIgnoreCase)).First();
             if (!i.IsEquippable)
             {
                 return false;

@@ -111,6 +111,7 @@ namespace IodemBot.Core.UserManagement
         public int Defends { get; set; } = 0;
         public int AttackedWeakness { get; set; } = 0;
         public uint DamageTanked { get; set; } = 0;
+        public uint HighestDamage { get; set; } = 0;
 
         public static BattleStats operator +(BattleStats b1, BattleStats b2)
         {
@@ -126,7 +127,8 @@ namespace IodemBot.Core.UserManagement
                 Kills = b1.Kills + b2.Kills,
                 Defends = b1.Defends + b2.Defends,
                 AttackedWeakness = b1.AttackedWeakness + b2.AttackedWeakness,
-                DamageTanked = b1.DamageTanked + b2.DamageTanked
+                DamageTanked = b1.DamageTanked + b2.DamageTanked,
+                HighestDamage = Math.Max(b1.HighestDamage, b2.HighestDamage)
             };
         }
     }
@@ -149,6 +151,14 @@ namespace IodemBot.Core.UserManagement
         public int LookedUpClass { get; set; }
         public int MessagesInColossoTalks { get; set; }
         public int ReactionsAdded { get; set; }
-        public int ColossoHighestRoundEndless { get; set; }
+        public int ColossoHighestRoundEndless { get; set; } = 0;
+        public int ColossoHighestRoundEndlessSolo { get; set; }
+        public int ColossoHighestRoundEndlessDuo { get; set; } = 0;
+        public int ColossoHighestRoundEndlessTrio { get; set; } = 0;
+        public int ColossoHighestRoundEndlessQuad { get; set; } = 0;
+        public string ColossoHighestRoundEndlessDuoNames { get; set; } = "";
+        public string ColossoHighestRoundEndlessTrioNames { get; set; } = "";
+        public string ColossoHighestRoundEndlessQuadNames { get; set; } = "";
+        public uint SpentMoneyOnArtifacts { get; set; }
     }
 }

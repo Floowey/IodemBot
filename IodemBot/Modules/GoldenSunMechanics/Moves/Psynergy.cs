@@ -17,6 +17,11 @@ namespace IodemBot.Modules.GoldenSunMechanics
             this.PPCost = PPCost;
         }
 
+        public override bool InternalValidSelection(ColossoFighter User)
+        {
+            return User.stats.PP >= PPCost && !(PPCost > 1 && User.HasCondition(Condition.Seal));
+        }
+
         protected override Validation Validate(ColossoFighter User)
         {
             List<string> log = new List<string>();

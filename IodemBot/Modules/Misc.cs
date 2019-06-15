@@ -145,7 +145,8 @@ namespace IodemBot.Modules
             embed.AddField("Rank", UserAccounts.GetRank(user) + 1, true);
 
             embed.AddField("Class", account.GsClass, true);
-            embed.AddField("Colosso wins", account.ServerStats.ColossoWins, true);
+            embed.AddField("Colosso wins/streak", $"{account.ServerStats.ColossoWins} | {account.ServerStats.ColossoHighestStreak} ", true);
+            embed.AddField("Colosso/Showdown Streaks", $"Solo: {account.ServerStats.ColossoHighestRoundEndlessSolo} | Duo: {account.ServerStats.ColossoHighestRoundEndlessDuo} \nTrio: {account.ServerStats.ColossoHighestRoundEndlessTrio} | Quad: {account.ServerStats.ColossoHighestRoundEndlessQuad}", true);
 
             embed.AddField("Current Equip", account.Inv.GearToString(AdeptClassSeriesManager.GetClassSeries(account).Archtype), true);
             embed.AddField("Psynergy", p.GetMoves(false), false);
@@ -303,21 +304,22 @@ namespace IodemBot.Modules
             await Context.Channel.SendMessageAsync("", false, embed.Build());
         }
 
+        public enum RankEnum { Level, Solo, Duo, Trio, Quad }
+
         [Command("rank"), Alias("top", "top10")]
         [Cooldown(15)]
         [Remarks("Get the most active users and your rank")]
         public async Task Rank()
         {
-            var topAccounts = UserAccounts.GetTop(10);
+            var topAccounts = UserAccounts.GetTop(10, RankEnum.Level);
             var embed = new EmbedBuilder();
             embed.WithColor(Colors.Get("Iodem"));
             string[] Emotes = new string[] { "🥇", "🥈", "🥈", "🥉", "🥉", "🥉", "   ", "   ", "   ", "   " };
             var builder = new StringBuilder();
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < Math.Min(topAccounts.Count(), 10); i++)
             {
                 var curAccount = topAccounts[i];
-                builder.Append($"`{i + 1}` {Emotes[i]} {curAccount.Name.PadRight(15)} - `Lv{curAccount.LevelNumber}` - `{curAccount.XP}xp` \n");
-                //builder.Append($"`{i + 1}` {Emotes[i]} - `Lv{curAccount.LevelNumber}` - `{curAccount.XP}xp` \n");
+                builder.Append($"`{i + 1}` {Emotes[i]} {curAccount.Name.PadRight(15)} - `Lv{curAccount.LevelNumber}` - `{curAccount.XP}xp`\n");
             }
 
             var rank = UserAccounts.GetRank(Context.User);
@@ -329,6 +331,68 @@ namespace IodemBot.Modules
                 builder.Append($"`{rank + 1}` {Context.User.Username.PadRight(15)} - `Lv{account.LevelNumber}` - `{account.XP}xp`");
             }
 
+            embed.WithDescription(builder.ToString());
+
+            await Context.Channel.SendMessageAsync("", false, embed.Build());
+        }
+
+        [Command("showdown")]
+        [Cooldown(15)]
+        public async Task Showdown(RankEnum type = RankEnum.Solo)
+        {
+            var topAccounts = UserAccounts.GetTop(10, type);
+            var embed = new EmbedBuilder();
+            embed.WithColor(Colors.Get("Iodem"));
+            string[] Emotes = new string[] { "🥇", "🥈", "🥉", "", "" };
+            var builder = new StringBuilder();
+            for (int i = 0; i < Math.Min(topAccounts.Count(), 5); i++)
+            {
+                var curAccount = topAccounts[i];
+                switch (type)
+                {
+                    case RankEnum.Solo:
+                        builder.Append($"`{i + 1}` {Emotes[i]} {curAccount.Name.PadRight(15)} - `{curAccount.ServerStats.ColossoHighestRoundEndlessSolo}`\n");
+                        break;
+
+                    case RankEnum.Duo:
+                        builder.Append($"`{i + 1}` {Emotes[i]} {curAccount.ServerStats.ColossoHighestRoundEndlessDuoNames} - `{curAccount.ServerStats.ColossoHighestRoundEndlessDuo}`\n");
+                        break;
+
+                    case RankEnum.Trio:
+                        builder.Append($"`{i + 1}` {Emotes[i]} {curAccount.ServerStats.ColossoHighestRoundEndlessTrioNames} - `{curAccount.ServerStats.ColossoHighestRoundEndlessTrio}`\n");
+                        break;
+
+                    case RankEnum.Quad:
+                        builder.Append($"`{i + 1}` {Emotes[i]} {curAccount.ServerStats.ColossoHighestRoundEndlessQuadNames} - `{curAccount.ServerStats.ColossoHighestRoundEndlessQuad}`\n");
+                        break;
+                }
+            }
+
+            var rank = UserAccounts.GetRank(Context.User, type);
+            //Console.WriteLine(rank);
+            var account = UserAccounts.GetAccount(Context.User);
+            if (rank >= 5)
+            {
+                builder.Append("... \n");
+                switch (type)
+                {
+                    case RankEnum.Solo:
+                        builder.Append($"`{rank + 1}` {account.Name.PadRight(15)} - `{account.ServerStats.ColossoHighestRoundEndlessSolo}`");
+                        break;
+
+                    case RankEnum.Duo:
+                        builder.Append($"`{rank + 1}` {account.ServerStats.ColossoHighestRoundEndlessDuoNames} - `{account.ServerStats.ColossoHighestRoundEndlessDuo}`");
+                        break;
+
+                    case RankEnum.Trio:
+                        builder.Append($"`{rank + 1}` {account.ServerStats.ColossoHighestRoundEndlessTrioNames} - `{account.ServerStats.ColossoHighestRoundEndlessTrio}`");
+                        break;
+
+                    case RankEnum.Quad:
+                        builder.Append($"`{rank + 1}` {account.ServerStats.ColossoHighestRoundEndlessQuadNames} - `{account.ServerStats.ColossoHighestRoundEndlessQuad}`");
+                        break;
+                }
+            }
             embed.WithDescription(builder.ToString());
 
             await Context.Channel.SendMessageAsync("", false, embed.Build());

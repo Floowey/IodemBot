@@ -1,10 +1,12 @@
 ﻿using Discord;
 using Discord.WebSocket;
 using IodemBot.Core.UserManagement;
+using IodemBot.Extensions;
 using IodemBot.Modules;
 using IodemBot.Modules.ColossoBattles;
 using IodemBot.Modules.GoldenSunMechanics;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using static IodemBot.Modules.ColossoBattles.ColossoPvE;
@@ -91,10 +93,11 @@ namespace IodemBot.Core.Leveling
             UserAccounts.SaveAccounts();
         }
 
-        internal static async Task UserWonBattle(UserAccount userAccount, int winsInARow, int LureCaps, BattleStats battleStats, BattleDifficulty diff, ITextChannel battleChannel)
+        internal static async Task UserWonBattle(UserAccount userAccount, int winsInARow, int LureCaps, BattleStats battleStats, BattleDifficulty diff, ITextChannel battleChannel, IEnumerable<ColossoFighter> winners, bool wasMimic)
         {
             uint oldLevel = userAccount.LevelNumber;
-            var xpawarded = (uint)(new Random()).Next(20 + 5 * LureCaps, 40 + 10 * LureCaps) * Math.Min(3, (uint)Math.Pow(((int)diff + 1), 2));
+            var baseXP = 20 + 5 * LureCaps + winsInARow / 4;
+            var xpawarded = (uint)new Random().Next(baseXP, baseXP * 2) * Math.Max(3, (uint)Math.Pow(((int)diff + 1), 2));
             userAccount.XP += xpawarded;
             userAccount.Inv.AddBalance(xpawarded / 2);
             uint newLevel = userAccount.LevelNumber;
@@ -102,12 +105,41 @@ namespace IodemBot.Core.Leveling
             userAccount.ServerStats.ColossoWins++;
             userAccount.ServerStats.ColossoStreak++;
             userAccount.ServerStats.ColossoHighestStreak = Math.Max(userAccount.ServerStats.ColossoHighestStreak, userAccount.ServerStats.ColossoStreak);
-            userAccount.ServerStats.ColossoHighestRoundEndless = Math.Max(userAccount.ServerStats.ColossoHighestRoundEndless, winsInARow);
+            switch (battleStats.TotalTeamMates)
+            {
+                case 0:
+                    userAccount.ServerStats.ColossoHighestRoundEndlessSolo = Math.Max(userAccount.ServerStats.ColossoHighestRoundEndlessSolo, winsInARow);
+                    break;
+
+                case 1:
+                    if (winsInARow > userAccount.ServerStats.ColossoHighestRoundEndlessDuo)
+                    {
+                        userAccount.ServerStats.ColossoHighestRoundEndlessDuo = winsInARow;
+                        userAccount.ServerStats.ColossoHighestRoundEndlessDuoNames = string.Join(", ", winners.Select(p => p.name));
+                    }
+                    break;
+
+                case 2:
+                    if (winsInARow > userAccount.ServerStats.ColossoHighestRoundEndlessTrio)
+                    {
+                        userAccount.ServerStats.ColossoHighestRoundEndlessTrio = winsInARow;
+                        userAccount.ServerStats.ColossoHighestRoundEndlessTrioNames = string.Join(", ", winners.Select(p => p.name));
+                    }
+                    break;
+
+                case 3:
+                    if (winsInARow > userAccount.ServerStats.ColossoHighestRoundEndlessQuad)
+                    {
+                        userAccount.ServerStats.ColossoHighestRoundEndlessQuad = winsInARow;
+                        userAccount.ServerStats.ColossoHighestRoundEndlessQuadNames = string.Join(", ", winners.Select(p => p.name));
+                    }
+                    break;
+            }
 
             userAccount.BattleStats += battleStats;
             var bs = userAccount.BattleStats;
 
-            if (Global.Random.Next(0, 100) <= 7 + battleStats.TotalTeamMates * 2 + 4 * LureCaps + winsInARow / 10)
+            if (wasMimic || Global.Random.Next(0, 100) <= 7 + battleStats.TotalTeamMates * 2 + 4 * LureCaps + winsInARow / 10)
             {
                 ChestQuality awardedChest = GetRandomChest(diff);
                 userAccount.Inv.AwardChest(awardedChest);
@@ -169,25 +201,26 @@ namespace IodemBot.Core.Leveling
             {
                 case BattleDifficulty.Tutorial:
                     chests = new ChestQuality[] { ChestQuality.Wooden };
-                    return chests[Global.Random.Next(0, chests.Length)];
+                    return chests.Random();
 
                 case BattleDifficulty.Easy:
                 default:
                     chests = new ChestQuality[] { ChestQuality.Wooden, ChestQuality.Wooden, ChestQuality.Normal, ChestQuality.Normal, ChestQuality.Normal, ChestQuality.Normal, ChestQuality.Normal, ChestQuality.Silver };
-                    return chests[Global.Random.Next(0, chests.Length)];
+                    break;
 
                 case BattleDifficulty.Medium:
                     chests = new ChestQuality[] { ChestQuality.Normal, ChestQuality.Normal, ChestQuality.Normal, ChestQuality.Normal, ChestQuality.Normal, ChestQuality.Silver, ChestQuality.Silver, ChestQuality.Gold };
-                    return chests[Global.Random.Next(0, chests.Length)];
+                    break;
 
                 case BattleDifficulty.MediumRare:
                     chests = new ChestQuality[] { ChestQuality.Silver, ChestQuality.Silver, ChestQuality.Silver, ChestQuality.Gold, ChestQuality.Gold };
-                    return chests[Global.Random.Next(0, chests.Length)];
+                    break;
 
                 case BattleDifficulty.Hard:
                     chests = new ChestQuality[] { ChestQuality.Silver, ChestQuality.Gold, ChestQuality.Gold, ChestQuality.Gold, ChestQuality.Gold, ChestQuality.Adept };
-                    return chests[Global.Random.Next(0, chests.Length)];
+                    break;
             }
+            return chests.Random();
         }
 
         internal static async Task UserHasCursed(SocketGuildUser user, SocketTextChannel channel)

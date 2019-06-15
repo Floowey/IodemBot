@@ -179,6 +179,28 @@ namespace IodemBot.Modules.ColossoBattles
                 s.Append("<:Poison:549526931847249920>");
             }
 
+            if (MultiplyBuffs("Attack") != 1)
+            {
+                s.Append($"<:attack_up:549526931423363093>`x{MultiplyBuffs("Attack")}`");
+            }
+
+            if (MultiplyBuffs("Defense") != 1)
+            {
+                s.Append($"<:defense_up:549526931557842945>`x{MultiplyBuffs("Defense")}`");
+            }
+
+            if (MultiplyBuffs("Speed") != 1)
+            {
+            }
+
+            if (MultiplyBuffs("Power") != 1)
+            {
+                s.Append($"<:resist_up:549526931465437185>`x{MultiplyBuffs("Power")}`");
+            }
+
+            if (MultiplyBuffs("Resistance") != 0)
+            {
+            }
             return s.ToString();
         }
 
@@ -550,7 +572,7 @@ namespace IodemBot.Modules.ColossoBattles
             }
 
             if ((selected.targetType == Target.ownSingle && battle.GetTeam(party).Count == 1) ||
-                ((selected.targetType == Target.otherSingle || selected.targetType == Target.otherRange) && battle.GetTeam(enemies).Count == 1))
+                ((selected.targetType == Target.otherSingle || selected.targetType == Target.otherRange) && battle.GetTeam(enemies).Count <= 1))
             {
                 selected.targetNr = 0;
                 hasSelected = true;
@@ -583,16 +605,16 @@ namespace IodemBot.Modules.ColossoBattles
             selected = moves.Random();
 
             selected.targetNr = 0;
-            Console.WriteLine($"{selected.name} was rolled.");
+            //Console.WriteLine($"{selected.name} was rolled.");
 
             if (selected.ValidSelection(this))
             {
                 selected.ChooseBestTarget(this);
-                Console.WriteLine($"  {selected.name} passed the check.");
+                //Console.WriteLine($"  {selected.name} passed the check.");
             }
             else
             {
-                Console.WriteLine($"X {selected.name} was a bad choice. Rerolling.");
+                //Console.WriteLine($"X {selected.name} was a bad choice. Rerolling.");
                 SelectRandom();
                 return;
             }

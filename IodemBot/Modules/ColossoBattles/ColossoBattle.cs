@@ -14,8 +14,23 @@ namespace IodemBot.Modules.ColossoBattles
 
         public List<ColossoFighter> TeamB = new List<ColossoFighter>();
         public bool isActive = false;
-        public uint sizeTeamA = 0;
-        public uint sizeTeamB = 0;
+
+        public int SizeTeamA
+        {
+            get
+            {
+                return TeamA.Count();
+            }
+        }
+
+        public int SizeTeamB
+        {
+            get
+            {
+                return TeamB.Count();
+            }
+        }
+
         public int turn = 0;
         public List<string> log = new List<string>();
         public bool turnActive = false;
@@ -110,27 +125,38 @@ namespace IodemBot.Modules.ColossoBattles
             {
                 return false;
             }
+
+            if (SizeTeamB == 0)
+            {
+                Console.WriteLine("The stupid bug happened");
+                log.Add("Error occured. You win.");
+                isActive = false;
+                return true;
+            }
             turnActive = true;
-            bool b = true;
             log.Add($"Turn {++turn}");
-            //Stop Timer, just in Case
+
             Console.WriteLine("Starting to process Turn");
 
             //Start Turn for things like Defend
-            log.AddRange(StartTurn());
-            Console.WriteLine("Finished StartTurn()");
+            try
+            {
+                log.AddRange(StartTurn());
 
-            //Main Turn
-            log.AddRange(MainTurn());
-            Console.WriteLine("Finished MainTurn()");
+                //Main Turn
+                log.AddRange(MainTurn());
 
-            //Main Turn
-            log.AddRange(ExtraTurn());
-            Console.WriteLine("Finished ExtraTurn()");
+                //Main Turn
+                log.AddRange(ExtraTurn());
 
-            //End Turn
-            log.AddRange(EndTurn());
-            Console.WriteLine("Finished EndTurn()");
+                //End Turn
+                log.AddRange(EndTurn());
+            }
+            catch (Exception e)
+            {
+                log.Add(e.Message);
+                Console.WriteLine(e.Message);
+            }
 
             //Check for Game Over
             if (GameOver())
@@ -141,7 +167,7 @@ namespace IodemBot.Modules.ColossoBattles
 
             Console.WriteLine("Done processing Turn");
 
-            return b;
+            return true;
         }
 
         public void AddPlayer(ColossoFighter player, Team team)
@@ -161,14 +187,12 @@ namespace IodemBot.Modules.ColossoBattles
                 TeamA.Add(player);
                 player.party = Team.A;
                 player.enemies = Team.B;
-                sizeTeamA++;
             }
             else
             {
                 TeamB.Add(player);
                 player.party = Team.B;
                 player.enemies = Team.A;
-                sizeTeamB++;
             }
 
             player.battle = this;
@@ -224,15 +248,6 @@ namespace IodemBot.Modules.ColossoBattles
             fighters = fighters.OrderByDescending(f => f.stats.Spd * f.MultiplyBuffs("Speed")).ToList();
             fighters.ForEach(f => { turnLog.AddRange(f.EndTurn()); });
             return turnLog;
-        }
-
-        public void ResetGame()
-        {
-            TeamA = new List<ColossoFighter>();
-            TeamB = new List<ColossoFighter>();
-            log.Clear();
-            turn = 0;
-            isActive = false;
         }
 
         private bool GameOver()

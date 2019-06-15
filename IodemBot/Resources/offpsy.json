@@ -1938,7 +1938,7 @@
     "Meteor Blow": {
         "name": "Meteor Blow",
         "targetType": 3,
-        "emote": ":angry1:",
+        "emote": ":comet:",
         "range": 1,
         "element": 1,
         "PPCost": 0,
@@ -1947,7 +1947,7 @@
     "Rolling Flame": {
         "name": "Rolling Flame",
         "targetType": 4,
-        "emote": ":fire:",
+        "emote": ":fireworks:",
         "range": 3,
         "element": 1,
         "PPCost": 0,

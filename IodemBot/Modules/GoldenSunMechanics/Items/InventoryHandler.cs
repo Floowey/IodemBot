@@ -4,6 +4,7 @@ using Discord.WebSocket;
 using Iodembot.Preconditions;
 using IodemBot.Core.UserManagement;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -14,19 +15,38 @@ namespace IodemBot.Modules.GoldenSunMechanics
         [Command("Inv"), Alias("Inventory", "Bag")]
         [Cooldown(10)]
         [Remarks("Displays inventory and current sets")]
-        public async Task ShowInventory(bool detailed = false)
+        public async Task ShowInventory(Inventory.Detail detail = Inventory.Detail.none)
         {
+            var split = new Dictionary<Inventory.Detail, char>()
+            {
+                { Inventory.Detail.none, '>' },
+                {Inventory.Detail.Names,',' },
+                {Inventory.Detail.PriceAndName, '\n' }
+            };
             var inv = UserAccounts.GetAccount(Context.User).Inv;
             var embed = new EmbedBuilder();
-
+            if (detail == Inventory.Detail.True)
+            {
+                embed.WithAuthor("Attention: Please use `i!inv Names` in the future, since `i!inv true` will be removed!");
+            }
             embed.AddField("Warrior Gear", inv.GearToString(ArchType.Warrior), true);
             embed.AddField("Mage Gear", inv.GearToString(ArchType.Mage), true);
-            var invstring = inv.InventoryToString(detailed ? Inventory.Detail.Name : Inventory.Detail.none);
-            if (invstring.Length > 1024)
+            var invstring = inv.InventoryToString(detail);
+            if (invstring.Length >= 1024)
             {
-                var lastitem = invstring.Take(1024).ToList().FindLastIndex(s => s.Equals(',')) + 1;
-                embed.AddField("Inventory (1/2)", string.Join("", invstring.Take(lastitem)));
-                embed.AddField("Inventory (2/2)", string.Join("", invstring.Skip(lastitem)));
+                var remainingstring = invstring;
+                List<string> parts = new List<string>();
+                while (remainingstring.Length >= 1024)
+                {
+                    var lastitem = remainingstring.Take(1024).ToList().FindLastIndex(s => s.Equals(split[detail])) + 1;
+                    parts.Add(string.Join("", remainingstring.Take(lastitem)));
+                    remainingstring = string.Join("", remainingstring.Skip(lastitem));
+                }
+                parts.Add(remainingstring);
+                foreach (var (value, index) in parts.Select((v, i) => (v, i)))
+                {
+                    embed.AddField($"Inventory ({index + 1}/{parts.Count})", value);
+                }
             }
             else
             {
@@ -38,11 +58,28 @@ namespace IodemBot.Modules.GoldenSunMechanics
             }
 
             var fb = new EmbedFooterBuilder();
-            fb.WithText($"{inv.Count} / {Inventory.MaxInvSize}");
+            fb.WithText($"{inv.Count} / {inv.MaxInvSize}");
             embed.AddField("Coin", $"<:coin:569836987767324672> {inv.Coins}");
             embed.WithColor(Colors.Get("Iodem"));
             embed.WithFooter(fb);
+            Console.WriteLine(embed.Length);
             await Context.Channel.SendMessageAsync("", false, embed.Build());
+        }
+
+        [Command("UpgradeInventory")]
+        public async Task IncreaseBagSize()
+        {
+            var inv = UserAccounts.GetAccount(Context.User).Inv;
+            if (inv.Upgrades >= 3)
+            {
+                return;
+            }
+
+            if (inv.RemoveBalance((uint)(50000 * Math.Pow(2, inv.Upgrades))))
+            {
+                inv.Upgrades++;
+                await ShowInventory();
+            }
         }
 
         [Command("Shop")]
@@ -75,7 +112,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
         [Remarks("Buy an item currently in the shop. Example: `i!buy clear circlet`")]
         public async Task AddItem([Remainder] string item)
         {
-            var inv = UserAccounts.GetAccount(Context.User).Inv;
+            var account = UserAccounts.GetAccount(Context.User);
+            var inv = account.Inv;
             var shop = ItemDatabase.GetShop();
             if (!shop.HasItem(item))
             {
@@ -90,6 +128,14 @@ namespace IodemBot.Modules.GoldenSunMechanics
             if (inv.Buy(item))
             {
                 _ = ShowInventory();
+                if (ItemDatabase.GetItem(item).IsArtifact)
+                {
+                    account.ServerStats.SpentMoneyOnArtifacts += ItemDatabase.GetItem(item).Price;
+                    if (account.ServerStats.SpentMoneyOnArtifacts >= 18000)
+                    {
+                        await GoldenSun.AwardClassSeries("Crusader Series", (SocketGuildUser)Context.User, (SocketTextChannel)Context.Channel);
+                    }
+                }
             }
             else
             {
@@ -205,6 +251,15 @@ namespace IodemBot.Modules.GoldenSunMechanics
             }
         }
 
+        [Command("AddBalance")]
+        [RequireUserPermission(GuildPermission.Administrator)]
+        public async Task AddBalance(uint amount, SocketUser user = null)
+        {
+            var inv = UserAccounts.GetAccount(user ?? Context.User).Inv;
+            inv.AddBalance(amount);
+            await Task.CompletedTask;
+        }
+
         private async Task OpenChestAsync(SocketCommandContext Context, ChestQuality cq, uint bonusCount = 0)
         {
             var user = UserAccounts.GetAccount(Context.User);
@@ -263,7 +318,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
             embed = new EmbedBuilder();
             embed.WithColor((item.IsWeapon && item.IsUnleashable) ? Colors.Get(item.Unleash.UnleashAlignment.ToString()) : item.IsArtifact ? Colors.Get("Artifact") : Colors.Get("Exathi"));
-            embed.WithDescription($"You found a {item.Name} {item.IconDisplay}");
+            embed.WithDescription($"{Inventory.ChestIcons[cq]} You found a {item.Name} {item.IconDisplay}");
             await Task.Delay((int)cq * 700);
             _ = msg.ModifyAsync(m => m.Embed = embed.Build());
             inv.Add(item.Name);

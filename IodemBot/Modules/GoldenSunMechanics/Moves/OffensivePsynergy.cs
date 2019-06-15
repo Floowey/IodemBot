@@ -47,11 +47,6 @@ namespace IodemBot.Modules.GoldenSunMechanics
             targetNr = User.GetEnemies().IndexOf(aliveEnemies[Global.Random.Next(0, aliveEnemies.Count)]);
         }
 
-        public override bool InternalValidSelection(ColossoFighter User)
-        {
-            return User.stats.PP >= PPCost;
-        }
-
         protected override List<string> InternalUse(ColossoFighter User)
         {
             //Psynergy Handling
@@ -87,13 +82,15 @@ namespace IodemBot.Modules.GoldenSunMechanics
                     return log;
                 }
 
-                var baseDmg = (new Random()).Next(0, 4);
+                var baseDmg = Global.Random.Next(0, 4);
                 var dmg = attackBased ?
                     Math.Max(0,
                     ((int)User.stats.Atk * User.MultiplyBuffs("Attack") - (int)t.stats.Def * t.ignoreDefense * t.MultiplyBuffs("Defense")) / 2)
                     : (int)power;
 
-                var elMult = 1 + Math.Max(0.0, (int)User.elstats.GetPower(element) * User.MultiplyBuffs("Power") - (int)t.elstats.GetRes(element) * t.MultiplyBuffs("Resistance")) / (attackBased ? 400 : 200);
+                //                var elMult = 1 + Math.Max(0.0, (int)User.elstats.GetPower(element) * User.MultiplyBuffs("Power") - (int)t.elstats.GetRes(element) * t.MultiplyBuffs("Resistance")) / (attackBased ? 400 : 200);
+                var elMult = 1 + (User.elstats.GetPower(element) * User.MultiplyBuffs("Power") - t.elstats.GetRes(element) * t.MultiplyBuffs("Resistance")) / (attackBased ? 400 : 200);
+
                 var distFromCenter = Math.Abs(enemyTeam.IndexOf(t) - targetNr);
                 var spreadMult = IgnoreSpread ? 1 : spread[distFromCenter];
                 var prctdmg = (uint)(t.stats.MaxHP * percentageDamage / 100);
@@ -114,10 +111,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                     }
                 }
 
-                if (realDmg == 0)
-                {
-                    realDmg = 1;
-                }
+                realDmg = Math.Max(0, realDmg);
 
                 log.AddRange(t.DealDamage(realDmg, punctuation));
                 effects

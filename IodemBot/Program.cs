@@ -40,7 +40,7 @@ namespace IodemBot
                 Console.WriteLine("Windows 7");
                 client = new DiscordSocketClient(new DiscordSocketConfig
                 {
-                    LogLevel = LogSeverity.Verbose,
+                    LogLevel = LogSeverity.Warning,
                     WebSocketProvider = Discord.Net.Providers.WS4Net.WS4NetProvider.Instance
                 });
             }
@@ -49,7 +49,7 @@ namespace IodemBot
                 Console.WriteLine("Not Windows 7");
                 client = new DiscordSocketClient(new DiscordSocketConfig
                 {
-                    LogLevel = LogSeverity.Verbose,
+                    LogLevel = LogSeverity.Info,
                     //WebSocketProvider = Discord.Net.Providers.WS4Net.WS4NetProvider.Instance
                 });
             }

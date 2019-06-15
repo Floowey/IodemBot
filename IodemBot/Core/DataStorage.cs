@@ -7,11 +7,21 @@ namespace IodemBot.Core
 {
     public static class DataStorage
     {
+        private static bool isSaving = false;
+
         //Save All userAccounts
         public static void SaveUserAccounts(IEnumerable<UserAccount> accounts, string filePath)
         {
+            //prevent crashes.
+            if (isSaving)
+            {
+                return;
+            }
+
+            isSaving = true;
             string json = JsonConvert.SerializeObject(accounts, Formatting.Indented);
             File.WriteAllText(filePath, json);
+            isSaving = false;
         }
 
         //Get All userAccounts

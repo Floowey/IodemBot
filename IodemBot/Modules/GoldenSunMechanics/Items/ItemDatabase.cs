@@ -46,6 +46,9 @@ namespace IodemBot.Modules.GoldenSunMechanics
                     restockMessage = s.restockmessage;
                 }
 
+                var longestItem = itemsDatabase.Select(d => d.Value).OrderByDescending(d => $"{d.Icon} - {d.Name},".Length).First();
+                Console.WriteLine($"{longestItem.Icon} - {longestItem.Name}, {$"{longestItem.Icon} - {longestItem.Name},".Length}");
+
                 shop = GetShop();
             }
             catch (Exception e)

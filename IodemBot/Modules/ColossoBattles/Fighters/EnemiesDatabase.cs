@@ -73,10 +73,16 @@ namespace IodemBot.Modules.ColossoBattles
                 {
                     enemies.ForEach(e => e.stats *= 1.5);
                 }
+                if (enemies.Count == 0)
+                {
+                    Console.WriteLine($"{diff}: Enemies were empty");
+                    enemies = GetRandomEnemies(diff);
+                }
                 return enemies;
             }
             catch (Exception e)
             {
+                Console.WriteLine(e.Message);
                 throw e;
             }
         }

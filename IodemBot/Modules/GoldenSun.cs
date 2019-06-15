@@ -77,7 +77,6 @@ namespace IodemBot.Modules
             var embed = new EmbedBuilder();
             embed.WithDescription($"You are {Article(account.GsClass)} {account.GsClass} now, {((SocketGuildUser)Context.User).DisplayName()}.");
             embed.WithColor(Colors.Get(account.Element.ToString()));
-            //embed.WithThumbnailUrl(Sprites.get)
             await Context.Channel.SendMessageAsync("", false, embed.Build());
         }
 

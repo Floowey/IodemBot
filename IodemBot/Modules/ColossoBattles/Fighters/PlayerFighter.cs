@@ -12,7 +12,7 @@ namespace IodemBot.Modules.ColossoBattles
         public UserAccount avatar;
         private readonly SocketGuildUser guildUser;
 
-        private static Stats baseStats = new Stats(30, 20, 11, 6, 8); //30, 20, 11, 6, 8
+        private static Stats baseStats = new Stats(30, 20, 11, 6, 8);
         public BattleStats battleStats = new BattleStats();
         public int AutoTurnPool = 10;
         public int AutoTurnsInARow = 0;
@@ -26,6 +26,10 @@ namespace IodemBot.Modules.ColossoBattles
             guildUser = user;
 
             var classSeries = AdeptClassSeriesManager.GetClassSeries(avatar);
+            if (classSeries.Name == "Curse Mage Series" || classSeries.Name == "Medium Series")
+            {
+                IsImmuneToItemCurse = true;
+            }
             var gear = avatar.Inv.GetGear(classSeries.Archtype);
             gear.OrderBy(i => i.ItemType).ToList().ForEach(g =>
             {
@@ -73,29 +77,32 @@ namespace IodemBot.Modules.ColossoBattles
             var avatar = UserAccounts.GetAccount(user);
             var classSeries = AdeptClassSeriesManager.GetClassSeries(avatar);
             var adept = AdeptClassSeriesManager.GetClass(avatar);
-            var multipliers = adept.StatMultipliers;
+            var classMultipliers = adept.StatMultipliers;
             var level = avatar.LevelNumber;
 
-            var actualStats = new Stats(
-                (int)((baseStats.MaxHP + baseStats.MaxHP * 0.25 * level / 1.5) * multipliers.MaxHP / 100),
-                (int)((baseStats.MaxPP + baseStats.MaxPP * 0.115 * level / 1.5) * multipliers.MaxPP / 100),
-                (int)((baseStats.Atk + baseStats.Atk * 0.3 * level / 1.5) * multipliers.Atk / 100),
-                (int)((baseStats.Def + baseStats.Def * 0.3 * level / 1.5) * multipliers.Def / 100),
-                (int)((baseStats.Spd + baseStats.Spd * 0.5 * level / 1.5) * multipliers.Spd / 100));
+            var Stats = new Stats(
+                (int)(baseStats.MaxHP * (1 + 0.25 * level / 1.5)),
+                (int)(baseStats.MaxPP * (1 + 0.115 * level / 1.5)),
+                (int)(baseStats.Atk * (1 + 0.3 * level / 1.5)),
+                (int)(baseStats.Def * (1 + 0.3 * level / 1.5)),
+                (int)(baseStats.Spd * (1 + 0.5 * level / 1.5)));
+
+            Stats *= classMultipliers;
+            Stats *= 0.01;
 
             var gear = avatar.Inv.GetGear(classSeries.Archtype);
             gear.ForEach(g =>
             {
-                actualStats += g.AddStatsOnEquip;
+                Stats += g.AddStatsOnEquip;
             });
 
             gear.ForEach(g =>
             {
-                actualStats *= g.MultStatsOnEquip;
-                actualStats *= 0.01;
+                Stats *= g.MultStatsOnEquip;
+                Stats *= 0.01;
             });
 
-            return actualStats;
+            return Stats;
         }
 
         public override List<string> EndTurn()
@@ -104,10 +111,11 @@ namespace IodemBot.Modules.ColossoBattles
             hasSelected = false;
             var log = new List<string>();
 
-            if (AutoTurnsInARow >= 4 && !IsAlive)
+            if (AutoTurnsInARow >= 4 && IsAlive)
             {
                 Kill();
                 log.Add($":x: {name} dies from inactivity.");
+                AutoTurnsInARow = 0;
             }
 
             log.AddRange(base.EndTurn());
