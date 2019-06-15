@@ -1,5 +1,7 @@
-﻿using IodemBot.Modules.ColossoBattles;
+﻿using IodemBot.Extensions;
+using IodemBot.Modules.ColossoBattles;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
@@ -74,7 +76,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         protected virtual int InternalChooseBestTarget(List<ColossoFighter> targets)
         {
-            return Global.Random.Next(0, targets.Count);
+            return targets.IndexOf(targets.Where(t => t.IsAlive).Random());
         }
 
         internal int ChooseBestTarget(List<ColossoFighter> targets)
