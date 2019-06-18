@@ -46,7 +46,7 @@ namespace IodemBot.Modules.ColossoBattles
                     IsImmuneToItemCurse = true;
                 }
 
-                if (g.IsWeapon)
+                if (g.Category == ItemCategory.Weapon)
                 {
                     Weapon = g;
                     if (Weapon.IsUnleashable)
@@ -54,8 +54,7 @@ namespace IodemBot.Modules.ColossoBattles
                         Weapon.Unleash.AdditionalEffects.Clear();
                     }
                 }
-
-                if (!g.IsWeapon && g.IsUnleashable)
+                else if (g.IsUnleashable)
                 {
                     if (g.GrantsUnleash)
                     {

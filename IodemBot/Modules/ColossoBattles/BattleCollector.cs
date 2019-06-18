@@ -54,7 +54,7 @@ namespace IodemBot.Modules.ColossoBattles
 
         public BattleCollector()
         {
-            Global.Client.ReactionAdded += ProcessReaction;
+            Global.Client.ReactionAdded += ReactionAdded;
         }
 
         internal async Task Reset()
@@ -143,7 +143,7 @@ namespace IodemBot.Modules.ColossoBattles
             Console.WriteLine($"Up against {Battle.TeamB.First().name}");
         }
 
-        internal async Task ProcessReaction(Cacheable<IUserMessage, ulong> cache, ISocketMessageChannel channel, SocketReaction reaction)
+        internal async Task ReactionAdded(Cacheable<IUserMessage, ulong> cache, ISocketMessageChannel channel, SocketReaction reaction)
         {
             if (reaction.User.Value.IsBot)
             {
@@ -239,7 +239,7 @@ namespace IodemBot.Modules.ColossoBattles
             {
                 if (reaction.MessageId != EnemyMsg.Id && reaction.MessageId != correctID)
                 {
-                    await c.RemoveReactionAsync(reaction.Emote, reaction.User.Value);
+                    _ = c.RemoveReactionAsync(reaction.Emote, reaction.User.Value);
                     Console.WriteLine("Didn't click on own message.");
                     return;
                 }
@@ -247,7 +247,7 @@ namespace IodemBot.Modules.ColossoBattles
 
             if (!curPlayer.Select(reaction.Emote.Name))
             {
-                await c.RemoveReactionAsync(reaction.Emote, reaction.User.Value);
+                _ = c.RemoveReactionAsync(reaction.Emote, reaction.User.Value);
                 Console.WriteLine("Couldn't select that move.");
                 return;
             }
@@ -464,16 +464,7 @@ namespace IodemBot.Modules.ColossoBattles
         {
             await WriteStatusInit();
             await WriteEnemiesInit();
-            if (Battle.SizeTeamB == 0)
-            {
-                Console.WriteLine("Write Battle Here!!");
-            }
             await WritePlayersInit();
-            if (Battle.SizeTeamB == 0)
-            {
-                Console.WriteLine("Write Battle Here!!");
-            }
-            autoTurn.Start();
         }
 
         private async Task WriteStatusInit()
@@ -621,8 +612,7 @@ namespace IodemBot.Modules.ColossoBattles
                     Diff = (BattleDifficulty)Math.Min(4, 1 + winsInARow / stageLength);
                     SetRandomEnemies(ColossoBattle.Team.B);
                     Battle.turn = 0;
-                    _ = WriteBattleInit();
-                    Battle.Start();
+                    _ = StartBattle();
                 }
             }
             else

@@ -252,6 +252,8 @@
     <Compile Include="Extensions\DiscordSocketGuildExt.cs" />
     <Compile Include="Extensions\DiscordSocketGuildUserExt.cs" />
     <Compile Include="Extensions\IEnumerableExt.cs" />
+    <Compile Include="Extensions\ItemListExtension.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="MessageHandler.cs" />
     <Compile Include="Modules\ColossoBattles\BattleCollector.cs" />
     <Compile Include="Modules\ColossoBattles\ColossoPvE.cs" />

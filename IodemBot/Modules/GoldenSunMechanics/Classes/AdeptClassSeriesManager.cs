@@ -1,4 +1,5 @@
 ﻿using IodemBot.Core.UserManagement;
+using IodemBot.Extensions;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.IO;
@@ -33,18 +34,14 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
             var classSeries = AdeptClassSeriesManager.GetClassSeries(avatar);
             var gear = avatar.Inv.GetGear(classSeries.Archtype);
-            gear.ForEach(g =>
+            if (gear.HasItem(ItemCategory.Weapon))
             {
-                if (g.IsWeapon)
-                {
-                    moves.Where(m => m is Attack).First().emote = g.Icon;
-                }
-
-                if (g.IsArmWear)
-                {
-                    moves.Where(m => m is Defend).First().emote = g.Icon;
-                }
-            });
+                moves.Where(m => m is Attack).First().emote = gear.GetItem(ItemCategory.Weapon).Icon;
+            }
+            if (gear.HasItem(ItemCategory.ArmWear))
+            {
+                moves.Where(m => m is Defend).First().emote = gear.GetItem(ItemCategory.ArmWear).Icon;
+            }
             return moves.ToArray();
         }
 

@@ -9,7 +9,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using static IodemBot.Modules.ColossoBattles.ColossoPvE;
 
 namespace IodemBot.Core.Leveling
 {
@@ -232,7 +231,7 @@ namespace IodemBot.Core.Leveling
             }
         }
 
-        internal static async Task UserLostBattle(UserAccount userAccount, ColossoPvE.BattleDifficulty diff, ITextChannel battleChannel)
+        internal static async Task UserLostBattle(UserAccount userAccount, BattleDifficulty diff, ITextChannel battleChannel)
         {
             uint oldLevel = userAccount.LevelNumber;
             userAccount.XP += (uint)(new Random()).Next(0, 10);

@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 
 namespace IodemBot.Modules.ColossoBattles
 {
+    public enum BattleDifficulty { Tutorial = 0, Easy = 1, Medium = 2, MediumRare = 3, Hard = 4, Adept = 5 };
+
     [Group("colosso")]
     public class ColossoPvE : ModuleBase<SocketCommandContext>
     {
@@ -91,7 +93,5 @@ namespace IodemBot.Modules.ColossoBattles
             await b.Reset();
             return b;
         }
-
-        public enum BattleDifficulty { Tutorial = 0, Easy = 1, Medium = 2, MediumRare = 3, Hard = 4, Adept = 5 };
     }
 }
