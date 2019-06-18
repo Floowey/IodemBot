@@ -34,25 +34,10 @@ namespace IodemBot
                 return;
             }
 
-            var version = System.Environment.OSVersion.Version;
-            if (version.Major == 6 && version.Minor == 1)
+            client = new DiscordSocketClient(new DiscordSocketConfig
             {
-                Console.WriteLine("Windows 7");
-                client = new DiscordSocketClient(new DiscordSocketConfig
-                {
-                    LogLevel = LogSeverity.Warning,
-                    WebSocketProvider = Discord.Net.Providers.WS4Net.WS4NetProvider.Instance
-                });
-            }
-            else
-            {
-                Console.WriteLine("Not Windows 7");
-                client = new DiscordSocketClient(new DiscordSocketConfig
-                {
-                    LogLevel = LogSeverity.Info,
-                    //WebSocketProvider = Discord.Net.Providers.WS4Net.WS4NetProvider.Instance
-                });
-            }
+                LogLevel = LogSeverity.Info,
+            });
 
             Global.Client = client;
 

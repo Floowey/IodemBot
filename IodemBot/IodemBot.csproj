@@ -325,24 +325,24 @@
     <Compile Include="Config.cs" />
     <Compile Include="Modules\Misc.cs" />
     <Compile Include="Program.cs" />
-    <None Include="Resources\archive.json" />
+    <None Include="Resources\GoldenSun\Battles\archive.json" />
     <Compile Include="Sprites.cs" />
     <Compile Include="Utilities.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-    <None Include="Resources\accounts.json" />
-    <None Include="Resources\AdeptClassSeries.json">
+    <None Include="Resources\Accounts\accounts.json" />
+    <None Include="Resources\GoldenSun\AdeptClassSeries.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\shop.json">
+    <None Include="Resources\GoldenSun\shop.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\tutorialFighters.json">
+    <None Include="Resources\GoldenSun\Battles\tutorialFighters.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\bronzeFighters.json">
+    <None Include="Resources\GoldenSun\Battles\bronzeFighters.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Resources\Colors.json">
@@ -353,28 +353,22 @@
     <None Include="Resources\config.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\goldFighters.json">
+    <None Include="Resources\GoldenSun\Battles\goldFighters.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\healpsy.json">
+    <None Include="Resources\GoldenSun\Moves\healpsy.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\items.json">
+    <None Include="Resources\GoldenSun\items.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\movepools.json">
+    <None Include="Resources\GoldenSun\Moves\offpsy.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\offpsy.json">
+    <None Include="Resources\GoldenSun\Battles\silverFighters.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\silverFighters.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\statpsy.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\stats.json">
+    <None Include="Resources\GoldenSun\Moves\statpsy.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SystemLang\quotes.json">

@@ -5,7 +5,6 @@ using IodemBot.Core.Leveling;
 using IodemBot.Core.UserManagement;
 using System;
 using System.Collections.Generic;
-using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
@@ -14,15 +13,12 @@ namespace IodemBot
     public class MessageHandler
     {
         private DiscordSocketClient client;
-        private CommandService service;
         private readonly ulong[] whiteList = { 1234 };
         private List<AutoResponse> responses;
 
         public async Task InitializeAsync(DiscordSocketClient client)
         {
             this.client = client;
-            service = new CommandService();
-            await service.AddModulesAsync(Assembly.GetEntryAssembly(), null);
             client.MessageReceived += HandleMessageAsync;
             client.ReactionAdded += HandleReactionAsync;
             //badWords = File.ReadAllLines("Resources/bad_words.txt");
@@ -67,6 +63,7 @@ namespace IodemBot
                     Emote.Parse("<:Krakden:576856312500060161>")),
                 60)
             };
+            await Task.CompletedTask;
         }
 
         private async Task HandleReactionAsync(Cacheable<IUserMessage, ulong> Message, ISocketMessageChannel Channel, SocketReaction Reaction)
