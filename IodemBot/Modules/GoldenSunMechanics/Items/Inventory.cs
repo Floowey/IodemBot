@@ -32,28 +32,26 @@ namespace IodemBot.Modules.GoldenSunMechanics
         };
 
         internal static readonly Dictionary<ItemCategory, string> WarriorIcons = new Dictionary<ItemCategory, string>()
-            {
-                {ItemCategory.Weapon, "<:Swords:572526110357585920>" },
-                {ItemCategory.ArmWear, "<:Shields:572526110118641664>" },
-                {ItemCategory.HeadWear,"<:Helmets:572526110055858226>" },
-                {ItemCategory.ChestWear, "<:Armors:572526109942611978>" },
-                {ItemCategory.UnderWear, "<:Shirts:572526110173167616>" },
-                {ItemCategory.FootWear,"<:Boots:572526109975904257>" },
-                {ItemCategory.Accessoire, "<:Rings:572526110060052482>"},
-                {ItemCategory.Other, "" }
-            };
+        {
+            {ItemCategory.Weapon, "<:Swords:572526110357585920>" },
+            {ItemCategory.ArmWear, "<:Shields:572526110118641664>" },
+            {ItemCategory.HeadWear,"<:Helmets:572526110055858226>" },
+            {ItemCategory.ChestWear, "<:Armors:572526109942611978>" },
+            {ItemCategory.UnderWear, "<:Shirts:572526110173167616>" },
+            {ItemCategory.FootWear,"<:Boots:572526109975904257>" },
+            {ItemCategory.Accessoire, "<:Rings:572526110060052482>"}
+        };
 
         internal static readonly Dictionary<ItemCategory, string> MageIcons = new Dictionary<ItemCategory, string>()
-            {
-                {ItemCategory.Weapon,  "<:Staves:572526110370168851>" },
-                {ItemCategory.ArmWear, "<:Armlets:572526109908795402>"},
-                {ItemCategory.HeadWear,"<:Circlets:572526110101864448>" },
-                {ItemCategory.ChestWear, "<:Robes:572526110068441118>" },
-                {ItemCategory.UnderWear, "<:Shirts:572526110173167616>" },
-                {ItemCategory.FootWear,"<:Boots:572526109975904257>" },
-                {ItemCategory.Accessoire, "<:Rings:572526110060052482>"},
-                {ItemCategory.Other, "" }
-            };
+        {
+            {ItemCategory.Weapon,  "<:Staves:572526110370168851>" },
+            {ItemCategory.ArmWear, "<:Armlets:572526109908795402>"},
+            {ItemCategory.HeadWear,"<:Circlets:572526110101864448>" },
+            {ItemCategory.ChestWear, "<:Robes:572526110068441118>" },
+            {ItemCategory.UnderWear, "<:Shirts:572526110173167616>" },
+            {ItemCategory.FootWear,"<:Boots:572526109975904257>" },
+            {ItemCategory.Accessoire, "<:Rings:572526110060052482>"}
+        };
 
         [JsonProperty] private List<string> InvString { get; set; }
 
@@ -247,15 +245,11 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public string GearToString(ArchType archType, bool detailed = false)
         {
             var s = new StringBuilder();
-            var Gear = WarriorGear;
-            var DefaultIcons = WarriorIcons;
-            if (archType == ArchType.Mage)
-            {
-                Gear = MageGear;
-                DefaultIcons = MageIcons;
-            }
+            var Gear = GetGear(archType);
 
-            foreach (ItemCategory cat in Enum.GetValues(typeof(ItemCategory)))
+            var DefaultIcons = archType == ArchType.Warrior ? WarriorIcons : MageIcons;
+
+            foreach (ItemCategory cat in Item.Equippables)
             {
                 s.Append(Gear.GetItem(cat)?.IconDisplay ?? DefaultIcons[cat]);
             }

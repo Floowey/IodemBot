@@ -29,7 +29,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
     public class Item : ICloneable
     {
-        private static Dictionary<ItemCategory, ItemType[]> ItemCategorization = new Dictionary<ItemCategory, ItemType[]>()
+        private static readonly Dictionary<ItemCategory, ItemType[]> ItemCategorization = new Dictionary<ItemCategory, ItemType[]>()
         {
             { ItemCategory.Weapon, new [] { ItemType.LongSword, ItemType.Axe, ItemType.Staff, ItemType.LightBlade, ItemType.Mace, ItemType.Bow, ItemType.Claw } },
             { ItemCategory.ArmWear, new [] { ItemType.Shield, ItemType.Bracelet, ItemType.Glove } },
@@ -40,6 +40,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
             { ItemCategory.Accessoire, new []{ ItemType.Ring, ItemType.Misc } },
             {ItemCategory.Other, new [] {ItemType.Collectible } }
         };
+
+        public static readonly ItemCategory[] Equippables = new[] { ItemCategory.Weapon, ItemCategory.ArmWear, ItemCategory.ChestWear, ItemCategory.HeadWear, ItemCategory.UnderWear, ItemCategory.FootWear, ItemCategory.Accessoire };
 
         public string Name { get; set; }
         internal string NameAndBroken { get { return $"{Name}{(IsBroken ? "(B)" : "")}"; } }
@@ -57,7 +59,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         }
 
         [JsonIgnore]
-        public uint SellValue { get { return Price / 2; } }
+        public uint SellValue { get { return (uint)(Price / (IsBroken ? 10 : 2)); } }
 
         [JsonConverter(typeof(StringEnumConverter))]
         public ItemType ItemType { get; set; }
@@ -93,7 +95,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public bool IsCursed { get; set; }
         public bool CuresCurse { get; set; }
 
-        public bool IsEquippable { get; set; }
+        public bool IsEquippable { get { return Equippables.Contains(Category); } }
         public bool IsEquipped { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]

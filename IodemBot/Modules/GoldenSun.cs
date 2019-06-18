@@ -5,7 +5,9 @@ using Iodembot.Preconditions;
 using IodemBot.Core.Leveling;
 using IodemBot.Core.UserManagement;
 using IodemBot.Extensions;
+using IodemBot.Modules.ColossoBattles;
 using IodemBot.Modules.GoldenSunMechanics;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -77,6 +79,101 @@ namespace IodemBot.Modules
             var embed = new EmbedBuilder();
             embed.WithDescription($"You are {Article(account.GsClass)} {account.GsClass} now, {((SocketGuildUser)Context.User).DisplayName()}.");
             embed.WithColor(Colors.Get(account.Element.ToString()));
+            await Context.Channel.SendMessageAsync("", false, embed.Build());
+        }
+
+        [Command("xp"), Alias("level")]
+        [Cooldown(5)]
+        [Remarks("Get information about your level etc")]
+        public async Task Xp()
+        {
+            var user = (SocketGuildUser)Context.User;
+            var account = UserAccounts.GetAccount(user);
+            var embed = new EmbedBuilder();
+            var p = new PlayerFighter(user);
+
+            embed.WithColor(Colors.Get(account.Element.ToString()));
+            var author = new EmbedAuthorBuilder();
+            author.WithName(user.DisplayName());
+            author.WithIconUrl(user.GetAvatarUrl());
+            embed.WithAuthor(author);
+            embed.AddField("Level", account.LevelNumber, true);
+            embed.AddField("XP", account.XP, true);
+            embed.AddField("XP to level up", Leveling.XPforNextLevel(account.XP), true);
+            await Context.Channel.SendMessageAsync("", false, embed.Build());
+        }
+
+        [Command("status")]
+        [Cooldown(5)]
+        [Remarks("Get information about your level etc")]
+        public async Task Status(SocketGuildUser user = null)
+        {
+            user = user ?? (SocketGuildUser)Context.User;
+            var account = UserAccounts.GetAccount(user);
+            var embed = new EmbedBuilder();
+            var p = new PlayerFighter(user);
+
+            embed.WithColor(Colors.Get(account.Element.ToString()));
+            var author = new EmbedAuthorBuilder();
+            author.WithName($"{user.DisplayName()}");
+            author.WithIconUrl(user.GetAvatarUrl());
+            embed.WithAuthor(author);
+            //embed.WithThumbnailUrl(user.GetAvatarUrl());
+            //embed.WithDescription($"Status.");
+
+            //embed.AddField("Element", account.element, true);
+
+            embed.AddField("Level", account.LevelNumber, true);
+            embed.AddField("XP", $"{account.XP} - next in {Leveling.XPforNextLevel(account.XP)}", true);
+            embed.AddField("Rank", UserAccounts.GetRank(user) + 1, true);
+
+            embed.AddField("Class", account.GsClass, true);
+            embed.AddField("Colosso wins/streak", $"{account.ServerStats.ColossoWins} | {account.ServerStats.ColossoHighestStreak} ", true);
+            embed.AddField("Colosso/Showdown Streaks", $"Solo: {account.ServerStats.ColossoHighestRoundEndlessSolo} | Duo: {account.ServerStats.ColossoHighestRoundEndlessDuo} \nTrio: {account.ServerStats.ColossoHighestRoundEndlessTrio} | Quad: {account.ServerStats.ColossoHighestRoundEndlessQuad}", true);
+
+            embed.AddField("Current Equip", account.Inv.GearToString(AdeptClassSeriesManager.GetClassSeries(account).Archtype), true);
+            embed.AddField("Psynergy", p.GetMoves(false), false);
+
+            embed.AddField("Stats", p.stats.ToString(), true);
+            embed.AddField("Elemental Stats", p.elstats.ToString(), true);
+            embed.AddField("Unlocked Classes", account.BonusClasses.Length == 0 ? "none" : string.Join(", ", account.BonusClasses));
+
+            var Footer = new EmbedFooterBuilder();
+            Footer.WithText("Joined this Server on " + user.JoinedAt.Value.Date.ToString("dd-MM-yyyy"));
+            Footer.WithIconUrl(Sprites.GetImageFromName("Iodem"));
+            embed.WithFooter(Footer);
+
+            await Context.Channel.SendMessageAsync("", false, embed.Build());
+        }
+
+        [Command("hiddenstats"), Alias("tri")]
+        [Cooldown(5)]
+        [RequireUserPermission(GuildPermission.ManageGuild)]
+        [Remarks("Hidden Information on Tri-Elemental Classes")]
+        public async Task Tri(SocketGuildUser user = null)
+        {
+            user = user ?? (SocketGuildUser)Context.User;
+            var account = UserAccounts.GetAccount(user);
+            var embed = new EmbedBuilder();
+            var p = new PlayerFighter(user);
+
+            embed.WithColor(Colors.Get(account.Element.ToString()));
+            var author = new EmbedAuthorBuilder();
+            author.WithName(user.DisplayName());
+            author.WithIconUrl(user.GetAvatarUrl());
+            embed.WithAuthor(author);
+            embed.WithThumbnailUrl(user.GetAvatarUrl());
+            embed.AddField("Server Stats", JsonConvert.SerializeObject(account.ServerStats, Formatting.Indented));
+            embed.AddField("Battle Stats", JsonConvert.SerializeObject(account.BattleStats, Formatting.Indented));
+
+            embed.AddField("Unlocked Classes", account.BonusClasses.Length == 0 ? "none" : string.Join(", ", account.BonusClasses));
+
+            var Footer = new EmbedFooterBuilder();
+            Footer.WithText("Joined this Server on " + user.JoinedAt.Value.Date.ToString("dd-MM-yyyy"));
+            Footer.WithIconUrl(Sprites.GetImageFromName("Iodem"));
+            embed.WithFooter(Footer);
+
+            //await Context.User.SendMessageAsync("", false, embed.Build());
             await Context.Channel.SendMessageAsync("", false, embed.Build());
         }
 
