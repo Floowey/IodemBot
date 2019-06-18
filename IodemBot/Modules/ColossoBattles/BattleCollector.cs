@@ -121,7 +121,7 @@ namespace IodemBot.Modules.ColossoBattles
 
         private async void OnTimerTicked(object sender, ElapsedEventArgs e)
         {
-            _ = ProcessTurn(forced: true);
+            await ProcessTurn(forced: true);
             await Task.CompletedTask;
         }
 
@@ -254,6 +254,12 @@ namespace IodemBot.Modules.ColossoBattles
                 }
                 reactions.Add(reaction);
 
+                if (isProcessing)
+                {
+                    _ = c.RemoveReactionAsync(reaction.Emote, reaction.User.Value);
+                    Console.WriteLine("Still processing.");
+                    return;
+                }
                 _ = ProcessTurn(forced: false);
             }
             catch (Exception e)
@@ -263,12 +269,17 @@ namespace IodemBot.Modules.ColossoBattles
             }
         }
 
+        private bool isProcessing = false;
+
         internal async Task ProcessTurn(bool forced)
         {
+            isProcessing = true;
             bool turnProcessed = forced ? Battle.ForceTurn() : Battle.Turn();
+
             if (turnProcessed)
             {
                 autoTurn.Stop();
+                await Task.Delay(100);
                 await WriteBattle();
                 if (Battle.isActive)
                 {
@@ -279,6 +290,7 @@ namespace IodemBot.Modules.ColossoBattles
                     await GameOver();
                 }
             };
+            isProcessing = false;
         }
 
         internal async Task WriteBattle()
@@ -353,8 +365,8 @@ namespace IodemBot.Modules.ColossoBattles
 
             resetIfNotActive.Stop();
             Battle.Start();
-            _ = WriteBattleInit();
-            await Task.CompletedTask;
+            await WriteBattleInit();
+            // await Task.CompletedTask;
         }
 
         private async Task WriteStatus()
@@ -391,6 +403,7 @@ namespace IodemBot.Modules.ColossoBattles
             }
             var msg = EnemyMsg;
             var i = 1;
+            await Task.Delay(100);
             foreach (ColossoFighter fighter in Battle.GetTeam(ColossoBattle.Team.B))
             {
                 //e.AddField(numberEmotes[i], $"{fighter.name} {fighter.stats.HP}/{fighter.stats.maxHP}", true);
@@ -498,18 +511,47 @@ namespace IodemBot.Modules.ColossoBattles
             }
             _ = msg.ModifyAsync(m => { m.Content = ""; m.Embed = e.Build(); });
 
-            if (Battle.SizeTeamB == 0)
+            var oldReactionCount = EnemyMsg.Reactions.Where(k => numberEmotes.Contains(k.Key.Name)).Count();
+            if (winsInARow == 0 && Battle.turn == 0)
             {
-                Console.WriteLine("Here!!");
+                await msg.RemoveAllReactionsAsync();
             }
-            await msg.RemoveAllReactionsAsync();
-            if (Battle.SizeTeamB > 1)
+
+            if (Battle.SizeTeamB == oldReactionCount)
             {
+            }
+            else if (Battle.SizeTeamB <= 1)
+            {
+                if (oldReactionCount > 0)
+                {
+                    await msg.RemoveAllReactionsAsync();
+                }
+            }
+            else if (Battle.SizeTeamB > oldReactionCount)
+            {
+                for (int j = Math.Max(1, oldReactionCount); j <= Battle.SizeTeamB; j++)
+                {
+                    await msg.AddReactionAsync(new Emoji(numberEmotes[j]));
+                }
+            }
+            else if (oldReactionCount - Battle.SizeTeamB <= Battle.SizeTeamB + 1)
+            {
+                var reactionsToRemove = msg.Reactions.Where(k => numberEmotes.Skip(Battle.SizeTeamB - 1).Contains(k.Key.Name)).ToArray();
+                await msg.RemoveReactionsAsync(msg.Author, reactionsToRemove.Select(d => d.Key).ToArray());
+            }
+            else
+            {
+                if (oldReactionCount > 0)
+                {
+                    await msg.RemoveAllReactionsAsync();
+                }
+
                 for (int j = 1; j <= Battle.SizeTeamB; j++)
                 {
                     await msg.AddReactionAsync(new Emoji(numberEmotes[j]));
                 }
             }
+
             if (Battle.SizeTeamB == 0)
             {
                 Console.WriteLine("Here!!");
