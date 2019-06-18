@@ -24,7 +24,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
     public enum ItemCategory
     {
-        Weapon, ArmWear, ChestWear, HeadWear, UnderWear, FootWear, Accessoure
+        Weapon, ArmWear, ChestWear, HeadWear, UnderWear, FootWear, Accessoire, Other
     }
 
     public class Item : ICloneable
@@ -37,7 +37,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
             { ItemCategory.HeadWear, new []{ ItemType.Helmet, ItemType.Hat, ItemType.Circlet, ItemType.Crown } },
             { ItemCategory.UnderWear, new[] { ItemType.UnderWear} },
             { ItemCategory.FootWear, new [] { ItemType.Boots, ItemType.Greave } },
-            { ItemCategory.Accessoure, new []{ ItemType.Ring, ItemType.Misc } }
+            { ItemCategory.Accessoire, new []{ ItemType.Ring, ItemType.Misc } },
+            {ItemCategory.Other, new [] {ItemType.Collectible } }
         };
 
         public string Name { get; set; }
@@ -51,7 +52,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             get
             {
                 return (Category == ItemCategory.Weapon && IsUnleashable) ? Colors.Get(Unleash.UnleashAlignment.ToString()) :
- IsArtifact ? Colors.Get("Artifact") : Colors.Get("Exathi");
+                     IsArtifact ? Colors.Get("Artifact") : Colors.Get("Exathi");
             }
         }
 

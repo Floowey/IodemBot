@@ -32,13 +32,13 @@ namespace IodemBot.Modules.GoldenSunMechanics
         {
             try
             {
-                string json = File.ReadAllText("Resources/items.json");
+                string json = File.ReadAllText("Resources/GoldenSun/items.json");
                 itemsDatabase = new Dictionary<string, Item>(
                     JsonConvert.DeserializeObject<Dictionary<string, Item>>(json),
                     StringComparer.OrdinalIgnoreCase);
-                if (File.Exists("Resources/shop.json"))
+                if (File.Exists("Resources/GoldenSun/shop.json"))
                 {
-                    json = File.ReadAllText("Resources/shop.json");
+                    json = File.ReadAllText("Resources/GoldenSun/shop.json");
                     var s = JsonConvert.DeserializeObject<ShopStruct>(json);
                     shop = s.shop;
                     lastReset = s.lastReset;
@@ -89,7 +89,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             restockMessage = restockMessages.Random();
 
             shop.Sort();
-            if (shop.HasDuplicate)
+            if (shop.HasDuplicate && (shop.HasItem(ItemCategory.UnderWear) || shop.HasItem(ItemCategory.Accessoire) || shop.HasItem(ItemCategory.FootWear)))
             {
                 RandomizeShop();
             }

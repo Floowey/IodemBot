@@ -62,7 +62,6 @@ namespace IodemBot.Modules.GoldenSunMechanics
             embed.AddField("Coin", $"<:coin:569836987767324672> {inv.Coins}");
             embed.WithColor(Colors.Get("Iodem"));
             embed.WithFooter(fb);
-            Console.WriteLine(embed.Length);
             await Context.Channel.SendMessageAsync("", false, embed.Build());
         }
 
