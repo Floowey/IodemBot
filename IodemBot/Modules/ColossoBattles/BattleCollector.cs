@@ -7,6 +7,7 @@ using IodemBot.Extensions;
 using IodemBot.Modules.GoldenSunMechanics;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -145,121 +146,120 @@ namespace IodemBot.Modules.ColossoBattles
 
         internal async Task ReactionAdded(Cacheable<IUserMessage, ulong> cache, ISocketMessageChannel channel, SocketReaction reaction)
         {
-            if (reaction.User.Value.IsBot)
-            {
-                return;
-            }
-            if (channel.Id != BattleChannel.Id)
-            {
-                return;
-            }
-            IUserMessage c = null;
-            if (StatusMsg.Id == reaction.MessageId)
-            {
-                c = StatusMsg;
-            }
-            if (EnemyMsg.Id == reaction.MessageId)
-            {
-                c = EnemyMsg;
-            }
-            var tryMsg = Messages.Keys.Where(k => k.Id == reaction.MessageId).FirstOrDefault();
-            if (tryMsg != null && c == null)
-            {
-                c = tryMsg;
-            }
-            else
-            {
-                c = (RestUserMessage)await channel.GetMessageAsync(reaction.MessageId);
-                await c.RemoveReactionAsync(reaction.Emote, reaction.User.Value);
-                Console.WriteLine("No matching Message for User found.");
-                return;
-            }
-
-            if (!Battle.isActive)
-            {
-                await c.RemoveReactionAsync(reaction.Emote, reaction.User.Value);
-                Console.WriteLine("Battle not active.");
-                return;
-            }
-
-            if (Battle.turnActive)
-            {
-                await c.RemoveReactionAsync(reaction.Emote, reaction.User.Value);
-                Console.WriteLine("Not so fast");
-                return;
-            }
-
-            if (reaction.Emote.Name == "Fight")
-            {
-                await AddPlayer(reaction);
-                return;
-            }
-            else if (reaction.Emote.Name == "Battle")
-            {
-                await StartBattle();
-                return;
-            }
-
-            if (reaction.Emote.Name == "🔄")
-            {
-                await c.RemoveReactionAsync(reaction.Emote, reaction.User.Value);
-                autoTurn.Stop();
-                foreach (KeyValuePair<IUserMessage, ColossoFighter> k in Messages)
-                {
-                    var msg = k.Key;
-                    await msg.RemoveAllReactionsAsync();
-                }
-                await WriteBattleInit();
-                autoTurn.Start();
-                return;
-            }
-
-            if (reaction.Emote.Name == "⏸")
-            {
-                autoTurn.Stop();
-                return;
-            }
-
-            if (reaction.Emote.Name == "▶")
-            {
-                autoTurn.Start();
-                return;
-            }
-
-            if (reaction.Emote.Name == "⏩")
-            {
-                _ = ProcessTurn(true);
-                return;
-            }
-
-            var curPlayer = Messages.Values.Where(p => p.name == ((SocketGuildUser)reaction.User.Value).DisplayName()).FirstOrDefault();
-            var correctID = Messages.Keys.Where(key => Messages[key].name == curPlayer.name).First().Id;
-
-            if (!numberEmotes.Contains(reaction.Emote.Name))
-            {
-                if (reaction.MessageId != EnemyMsg.Id && reaction.MessageId != correctID)
-                {
-                    _ = c.RemoveReactionAsync(reaction.Emote, reaction.User.Value);
-                    Console.WriteLine("Didn't click on own message.");
-                    return;
-                }
-            }
-
-            if (!curPlayer.Select(reaction.Emote.Name))
-            {
-                _ = c.RemoveReactionAsync(reaction.Emote, reaction.User.Value);
-                Console.WriteLine("Couldn't select that move.");
-                return;
-            }
-            reactions.Add(reaction);
-
             try
             {
+                if (reaction.User.Value.IsBot)
+                {
+                    return;
+                }
+                if (channel.Id != BattleChannel.Id)
+                {
+                    return;
+                }
+                if (reaction.Emote.Name == "Fight")
+                {
+                    await AddPlayer(reaction);
+                    return;
+                }
+                else if (reaction.Emote.Name == "Battle")
+                {
+                    await StartBattle();
+                    return;
+                }
+
+                if (!Battle.isActive)
+                {
+                    Console.WriteLine("Battle not active.");
+                    return;
+                }
+                IUserMessage c = null;
+                if (StatusMsg.Id == reaction.MessageId)
+                {
+                    c = StatusMsg;
+                }
+                if (EnemyMsg.Id == reaction.MessageId)
+                {
+                    c = EnemyMsg;
+                }
+                if (Messages.Keys.Any(k => k.Id == reaction.MessageId))
+                {
+                    c = Messages.Keys.Where(k => k.Id == reaction.MessageId).First();
+                }
+
+                if (c == null)
+                {
+                    c = (RestUserMessage)await channel.GetMessageAsync(reaction.MessageId);
+                    await c.RemoveReactionAsync(reaction.Emote, reaction.User.Value);
+                    Console.WriteLine("No matching Message for User found.");
+                    return;
+                }
+
+                if (Battle.turnActive)
+                {
+                    await c.RemoveReactionAsync(reaction.Emote, reaction.User.Value);
+                    Console.WriteLine("Not so fast");
+                    return;
+                }
+
+                if (reaction.Emote.Name == "🔄")
+                {
+                    await c.RemoveReactionAsync(reaction.Emote, reaction.User.Value);
+                    autoTurn.Stop();
+                    foreach (KeyValuePair<IUserMessage, ColossoFighter> k in Messages)
+                    {
+                        var msg = k.Key;
+                        await msg.RemoveAllReactionsAsync();
+                    }
+                    await WriteBattleInit();
+                    autoTurn.Start();
+                    return;
+                }
+
+                if (reaction.Emote.Name == "⏸")
+                {
+                    autoTurn.Stop();
+                    return;
+                }
+
+                if (reaction.Emote.Name == "▶")
+                {
+                    autoTurn.Start();
+                    return;
+                }
+
+                if (reaction.Emote.Name == "⏩")
+                {
+                    _ = ProcessTurn(true);
+                    return;
+                }
+
+                var curPlayer = Messages.Values.Where(p => p.name == ((SocketGuildUser)reaction.User.Value).DisplayName()).FirstOrDefault();
+                var correctID = Messages.Keys.Where(key => Messages[key].name == curPlayer.name).First().Id;
+
+                if (!numberEmotes.Contains(reaction.Emote.Name))
+                {
+                    if (reaction.MessageId != EnemyMsg.Id && reaction.MessageId != correctID)
+                    {
+                        _ = c.RemoveReactionAsync(reaction.Emote, reaction.User.Value);
+                        Console.WriteLine("Didn't click on own message.");
+                        return;
+                    }
+                }
+
+                if (!curPlayer.Select(reaction.Emote.Name))
+                {
+                    _ = c.RemoveReactionAsync(reaction.Emote, reaction.User.Value);
+                    Console.WriteLine("Couldn't select that move.");
+                    return;
+                }
+                reactions.Add(reaction);
+
                 _ = ProcessTurn(forced: false);
             }
             catch (Exception e)
             {
                 Console.WriteLine("Colosso Turn Processing Error: " + e.Message);
+                File.WriteAllText($"Logs/Crashes/Error_{DateTime.Now.Date}.log", e.Message);
             }
         }
 
@@ -524,10 +524,8 @@ namespace IodemBot.Modules.ColossoBattles
                 var msg = k.Key;
                 var embed = new EmbedBuilder();
                 var fighter = k.Value;
-                //e.WithAuthor($"{numberEmotes[i]} {fighter.name}");
                 embed.WithThumbnailUrl(fighter.imgUrl);
                 embed.WithColor(Colors.Get(fighter.moves.Where(m => m is Psynergy).Select(m => (Psynergy)m).Select(p => p.element.ToString()).ToArray()));
-                //e.AddField();
                 embed.AddField($"{numberEmotes[i]} {fighter.ConditionsToString()}", fighter.name);
                 embed.AddField("HP", $"{fighter.stats.HP} / {fighter.stats.MaxHP}", true);
                 embed.AddField("PP", $"{fighter.stats.PP} / {fighter.stats.MaxPP}", true);
