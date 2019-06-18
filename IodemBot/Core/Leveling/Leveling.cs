@@ -142,20 +142,28 @@ namespace IodemBot.Core.Leveling
 
         internal static uint XPforNextLevel(uint xp)
         {
-            uint curLevel;
-            uint xpneeded;
-            if (xp <= cutoff)
+            int rate50 = 200;
+            int cutoff50 = 125000;
+            int rate80 = 1000;
+            int cutoff80 = 605000;
+            uint level = 1;
+            uint xpneeded = 0;
+            if (xp <= cutoff50)
             {
-                curLevel = (uint)Math.Sqrt(xp / 50);
-                xpneeded = (uint)Math.Pow((curLevel + 1), 2) * 50 - xp;
+                level = (uint)Math.Sqrt(xp / 50);
+                xpneeded = (uint)Math.Pow((level + 1), 2) * 50 - xp;
+            }
+            else if (xp <= cutoff80)
+            {
+                level = (uint)(50 - Math.Sqrt(cutoff50 / rate50) + Math.Sqrt(xp / rate50));
+                xpneeded = (uint)(Math.Pow(level + 1 - 50 + Math.Sqrt(cutoff50 / rate50), 2) * rate50);
             }
             else
             {
-                curLevel = (uint)(50 - Math.Sqrt(cutoff / rate) + Math.Sqrt(xp / rate));
-                xpneeded = (uint)Math.Pow((curLevel + 1) - 25, 2) * 200 - xp;
+                level = (uint)(80 - Math.Sqrt(cutoff80 / rate80) + Math.Sqrt(xp / rate80));
+                xpneeded = (uint)(Math.Pow(level + 1 - 80 + Math.Sqrt(cutoff80 / rate80), 2) * rate80);
             }
-
-            return xpneeded;
+            return xpneeded - xp;
         }
     }
 }
