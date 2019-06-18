@@ -38,7 +38,7 @@ namespace IodemBot.Modules.ColossoBattles
             return fighters.Select(s1 => s1.Select(s2 => (ColossoFighter)s2).ToList()).ToList();
         }
 
-        internal static List<ColossoFighter> GetRandomEnemies(BattleDifficulty diff)
+        internal static List<ColossoFighter> GetRandomEnemies(BattleDifficulty diff, double boost = 1)
         {
             List<List<ColossoFighter>> selectedDifficulty;
             switch (diff)
@@ -66,25 +66,18 @@ namespace IodemBot.Modules.ColossoBattles
                     break;
             }
 
-            try
+            var enemies = selectedDifficulty.Random().Select(f => (ColossoFighter)f.Clone()).ToList();
+            if (diff == BattleDifficulty.MediumRare)
             {
-                var enemies = selectedDifficulty.Random().Select(f => (ColossoFighter)f.Clone()).ToList();
-                if (diff == BattleDifficulty.MediumRare)
-                {
-                    enemies.ForEach(e => e.stats *= 1.5);
-                }
-                if (enemies.Count == 0)
-                {
-                    Console.WriteLine($"{diff}: Enemies were empty");
-                    enemies = GetRandomEnemies(diff);
-                }
-                return enemies;
+                enemies.ForEach(e => e.stats *= 1.5);
             }
-            catch (Exception e)
+            enemies.ForEach(e => e.stats *= boost);
+            if (enemies.Count == 0)
             {
-                Console.WriteLine(e.Message);
-                throw e;
+                Console.WriteLine($"{diff}: Enemies were empty");
+                enemies = GetRandomEnemies(diff);
             }
+            return enemies;
         }
 
         internal static List<ColossoFighter> GetEnemies(BattleDifficulty diff, string enemy)
