@@ -456,13 +456,7 @@ namespace IodemBot.Modules.ColossoBattles
             {
                 turnLog.AddRange(selected.Use(this));
             }
-            else
-            {
-                if (selected is Defend)
-                {
-                    turnLog.Add($"{selected.emote} {this.name} is defending.");
-                }
-            }
+
             RemoveCondition(Condition.Flinch);
             //Haunt Damage
             if (HasCondition(Condition.Haunt) && Global.Random.Next(0, 2) == 0)
@@ -596,6 +590,10 @@ namespace IodemBot.Modules.ColossoBattles
                 Console.WriteLine("Why tf do you want to selectRandom(), the battle is *not* active!");
                 return;
             }
+            if (!IsAlive)
+            {
+                return;
+            }
             if (moves.Count() == 0)
             {
                 selected = new Nothing();
@@ -610,7 +608,7 @@ namespace IodemBot.Modules.ColossoBattles
             if (selected.ValidSelection(this))
             {
                 selected.ChooseBestTarget(this);
-                //Console.WriteLine($"  {selected.name} passed the check.");
+                Console.WriteLine($"  {selected.name} passed the check.");
             }
             else
             {

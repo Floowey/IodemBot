@@ -32,7 +32,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             {
                 ((PlayerFighter)User).battleStats.Defends++;
             }
-            return new List<string>();
+            return new List<string>() { $"{emote} {User.name} is defending." };
         }
     }
 }
