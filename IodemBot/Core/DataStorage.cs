@@ -1,5 +1,6 @@
 ﻿using IodemBot.Core.UserManagement;
 using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
 
@@ -12,16 +13,23 @@ namespace IodemBot.Core
         //Save All userAccounts
         public static void SaveUserAccounts(IEnumerable<UserAccount> accounts, string filePath)
         {
-            //prevent crashes.
-            if (isSaving)
+            try
             {
-                return;
-            }
+                //prevent crashes.
+                if (isSaving)
+                {
+                    return;
+                }
 
-            isSaving = true;
-            string json = JsonConvert.SerializeObject(accounts, Formatting.Indented);
-            File.WriteAllText(filePath, json);
-            isSaving = false;
+                isSaving = true;
+                string json = JsonConvert.SerializeObject(accounts, Formatting.Indented);
+                File.WriteAllText(filePath, json);
+                isSaving = false;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error while saving:" + e.Message);
+            }
         }
 
         //Get All userAccounts
