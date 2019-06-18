@@ -10,7 +10,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
     internal class AdeptClassSeriesManager
     {
         private static List<AdeptClassSeries> allClasses;
-        private static readonly string filePath = "Resources/AdeptClassSeries.json";
+        private static readonly string filePath = "Resources/GoldenSun/AdeptClassSeries.json";
 
         static AdeptClassSeriesManager()
         {
