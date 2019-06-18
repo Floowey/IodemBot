@@ -1990,7 +1990,7 @@
                 "movepool": [
                     "Cutting Edge",
                     "Mad Blast",
-                    "Restore",
+                    "Thermal",
                     "Ply"
                 ],
                 "statMultipliers": {
@@ -2006,7 +2006,7 @@
                 "movepool": [
                     "Cutting Edge",
                     "Mad Blast",
-                    "Restore",
+                    "Thermal",
                     "Ply Well"
                 ],
                 "statMultipliers": {
@@ -2022,7 +2022,7 @@
                 "movepool": [
                     "Plume Edge",
                     "Fiery Blast",
-                    "Restore",
+                    "Thermal",
                     "Ply Well"
                 ],
                 "statMultipliers": {
@@ -2038,7 +2038,7 @@
                 "movepool": [
                     "Plume Edge",
                     "Fiery Blast",
-                    "Restore",
+                    "Thermal",
                     "Pure Ply"
                 ],
                 "statMultipliers": {
