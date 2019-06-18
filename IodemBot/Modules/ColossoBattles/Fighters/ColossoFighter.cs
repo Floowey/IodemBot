@@ -29,6 +29,22 @@ namespace IodemBot.Modules.ColossoBattles
     {
         private static readonly Random rnd = Global.Random;
 
+        public static readonly Dictionary<Condition, string> ConditionStrings = new Dictionary<Condition, string>()
+        {
+            { Condition.Down, "<:curse:538074679492083742>"},
+            { Condition.Poison, "<:Poison:549526931847249920>"},
+            { Condition.Venom, "<:Poison:549526931847249920>"},
+            { Condition.Seal, "<:Psy_Seal:549526931465568257>"},
+            { Condition.Stun, "<:Flash_Bolt:536966441862299678>"},
+            { Condition.DeathCurse, ""},
+            { Condition.Haunt, "<:Haunted:549526931821953034>"},
+            { Condition.ItemCurse, "<:Condemn:583651784040644619>"},
+            { Condition.Flinch, ""},
+            { Condition.Delusion, "<:delusion:549526931637534721>"},
+            {Condition.Sleep, "<:Sleep:555427023519088671>" },
+            {Condition.Counter, "" }
+        };
+
         public string name;
         public Stats stats;
         public ElementalStats elstats;
@@ -126,58 +142,17 @@ namespace IodemBot.Modules.ColossoBattles
             if (HasCondition(Condition.DeathCurse))
             {
                 string[] DeathCurseEmotes = { ":grey_question:", "<:DeathCurse1:583645163499552791>", "<:DeathCurse2:583645163927109636>", "<:DeathCurse3:583644633314099202>", "<:DeathCurse2:583645163927109636><:DeathCurse2:583645163927109636>" };
-                s.Append(DeathCurseEmotes[DeathCurseCounter]);
+                if (DeathCurseCounter >= DeathCurseEmotes.Length)
+                {
+                    s.Append($"<:DeathCurse1:583645163499552791>{DeathCurseCounter}");
+                }
+                else
+                {
+                    s.Append(DeathCurseEmotes[DeathCurseCounter]);
+                }
             }
 
-            if (HasCondition(Condition.Delusion))
-            {
-                s.Append("<:delusion:549526931637534721>");
-            }
-
-            if (HasCondition(Condition.Down))
-            {
-                s.Append("<:curse:538074679492083742>");
-            }
-
-            if (HasCondition(Condition.Flinch))
-            {
-                s.Append("");
-            }
-
-            if (HasCondition(Condition.Haunt))
-            {
-                s.Append("<:Haunted:549526931821953034>");
-            }
-
-            if (HasCondition(Condition.ItemCurse))
-            {
-                s.Append("<:Condemn:583651784040644619>");
-            }
-
-            if (HasCondition(Condition.Poison))
-            {
-                s.Append("<:Poison:549526931847249920>");
-            }
-
-            if (HasCondition(Condition.Seal))
-            {
-                s.Append("<:Psy_Seal:549526931465568257>");
-            }
-
-            if (HasCondition(Condition.Sleep))
-            {
-                s.Append("<:Sleep:555427023519088671>");
-            }
-
-            if (HasCondition(Condition.Stun))
-            {
-                s.Append("<:Flash_Bolt:536966441862299678>");
-            }
-
-            if (HasCondition(Condition.Venom))
-            {
-                s.Append("<:Poison:549526931847249920>");
-            }
+            Conditions.ForEach(c => s.Append(ConditionStrings[c]));
 
             if (MultiplyBuffs("Attack") != 1)
             {
