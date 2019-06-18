@@ -39,7 +39,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 {ItemCategory.ChestWear, "<:Armors:572526109942611978>" },
                 {ItemCategory.UnderWear, "<:Shirts:572526110173167616>" },
                 {ItemCategory.FootWear,"<:Boots:572526109975904257>" },
-                {ItemCategory.UnderWear, "<:Rings:572526110060052482>"},
+                {ItemCategory.Accessoire, "<:Rings:572526110060052482>"},
+                {ItemCategory.Other, "" }
             };
 
         internal static readonly Dictionary<ItemCategory, string> MageIcons = new Dictionary<ItemCategory, string>()
@@ -50,7 +51,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 {ItemCategory.ChestWear, "<:Robes:572526110068441118>" },
                 {ItemCategory.UnderWear, "<:Shirts:572526110173167616>" },
                 {ItemCategory.FootWear,"<:Boots:572526109975904257>" },
-                {ItemCategory.UnderWear, "<:Rings:572526110060052482>"},
+                {ItemCategory.Accessoire, "<:Rings:572526110060052482>"},
+                {ItemCategory.Other, "" }
             };
 
         [JsonProperty] private List<string> InvString { get; set; }
@@ -231,6 +233,11 @@ namespace IodemBot.Modules.GoldenSunMechanics
             return chests[cq] > 0;
         }
 
+        internal bool HasItem(ItemCategory cat)
+        {
+            return Inv.HasItem(cat);
+        }
+
         public void Clear()
         {
             Inv.Clear();
@@ -250,7 +257,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
             foreach (ItemCategory cat in Enum.GetValues(typeof(ItemCategory)))
             {
-                s.Append(Gear.GetItem(cat)?.Name ?? DefaultIcons[cat]);
+                s.Append(Gear.GetItem(cat)?.IconDisplay ?? DefaultIcons[cat]);
             }
 
             return s.ToString();
