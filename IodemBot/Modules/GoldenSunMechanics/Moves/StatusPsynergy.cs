@@ -31,7 +31,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public override bool InternalValidSelection(ColossoFighter User)
         {
-            if (User.stats.PP < PPCost)
+            if (!base.InternalValidSelection(User))
             {
                 return false;
             }
