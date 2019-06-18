@@ -19,10 +19,10 @@ namespace IodemBot.Modules.ColossoBattles
         {
             try
             {
-                tutorialFighters = LoadEnemiesFromFile("Resources/tutorialFighters.json");
-                bronzeFighters = LoadEnemiesFromFile("Resources/bronzeFighters.json");
-                silverFighters = LoadEnemiesFromFile("Resources/silverFighters.json");
-                goldFighters = LoadEnemiesFromFile("Resources/goldFighters.json");
+                tutorialFighters = LoadEnemiesFromFile("Resources/GoldenSun/Battles/tutorialFighters.json");
+                bronzeFighters = LoadEnemiesFromFile("Resources/GoldenSun/Battles/bronzeFighters.json");
+                silverFighters = LoadEnemiesFromFile("Resources/GoldenSun/Battles/silverFighters.json");
+                goldFighters = LoadEnemiesFromFile("Resources/GoldenSun/Battles/goldFighters.json");
             }
             catch (Exception e) // Just for debugging
             {
