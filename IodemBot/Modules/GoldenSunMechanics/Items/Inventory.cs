@@ -203,6 +203,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         internal bool HasChest(ChestQuality cq)
         {
+            CheckDaily();
             return chests[cq] > 0;
         }
 
