@@ -44,16 +44,24 @@ namespace IodemBot.Core.UserManagement
         {
             get
             {
-                int rate = 200;
-                int cutoff = 125000;
-                if (XP <= cutoff)
+                int rate50 = 200;
+                int cutoff50 = 125000;
+                int rate80 = 1000;
+                int cutoff80 = 605000;
+                uint level = 1;
+                if (XP <= cutoff50)
                 {
-                    return (uint)Math.Sqrt(XP / 50);
+                    level = (uint)Math.Sqrt(XP / 50);
+                }
+                else if (XP <= cutoff80)
+                {
+                    level = (uint)(50 - Math.Sqrt(cutoff50 / rate50) + Math.Sqrt(XP / rate50));
                 }
                 else
                 {
-                    return (uint)(50 - Math.Sqrt(cutoff / rate) + Math.Sqrt(XP / rate));
+                    level = (uint)(80 - Math.Sqrt(cutoff80 / rate80) + Math.Sqrt(XP / rate80));
                 }
+                return Math.Min(level, 100);
             }
         }
 
