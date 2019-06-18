@@ -1,4 +1,5 @@
 ﻿using IodemBot.Core.UserManagement;
+using IodemBot.Extensions;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -30,7 +31,30 @@ namespace IodemBot.Modules.GoldenSunMechanics
             {ChestQuality.Daily, "<:daily_chest:570332670605787157>" }
         };
 
+        internal static readonly Dictionary<ItemCategory, string> WarriorIcons = new Dictionary<ItemCategory, string>()
+            {
+                {ItemCategory.Weapon, "<:Swords:572526110357585920>" },
+                {ItemCategory.ArmWear, "<:Shields:572526110118641664>" },
+                {ItemCategory.HeadWear,"<:Helmets:572526110055858226>" },
+                {ItemCategory.ChestWear, "<:Armors:572526109942611978>" },
+                {ItemCategory.UnderWear, "<:Shirts:572526110173167616>" },
+                {ItemCategory.FootWear,"<:Boots:572526109975904257>" },
+                {ItemCategory.UnderWear, "<:Rings:572526110060052482>"},
+            };
+
+        internal static readonly Dictionary<ItemCategory, string> MageIcons = new Dictionary<ItemCategory, string>()
+            {
+                {ItemCategory.Weapon,  "<:Staves:572526110370168851>" },
+                {ItemCategory.ArmWear, "<:Armlets:572526109908795402>"},
+                {ItemCategory.HeadWear,"<:Circlets:572526110101864448>" },
+                {ItemCategory.ChestWear, "<:Robes:572526110068441118>" },
+                {ItemCategory.UnderWear, "<:Shirts:572526110173167616>" },
+                {ItemCategory.FootWear,"<:Boots:572526109975904257>" },
+                {ItemCategory.UnderWear, "<:Rings:572526110060052482>"},
+            };
+
         [JsonProperty] private List<string> InvString { get; set; }
+
         [JsonProperty] private List<string> WarriorGearString { get; set; }
         [JsonProperty] private List<string> MageGearString { get; set; }
         [JsonProperty] public uint Coins { get; set; }
@@ -217,31 +241,17 @@ namespace IodemBot.Modules.GoldenSunMechanics
         {
             var s = new StringBuilder();
             var Gear = WarriorGear;
+            var DefaultIcons = WarriorIcons;
             if (archType == ArchType.Mage)
             {
                 Gear = MageGear;
+                DefaultIcons = MageIcons;
             }
 
-            var weapon = Gear.Where(i => i.IsWeapon).FirstOrDefault();
-            s.Append(weapon != null ? weapon.IconDisplay : (archType == ArchType.Warrior ? "<:Swords:572526110357585920>" : "<:Staves:572526110370168851>"));
-
-            var armwear = Gear.Where(i => i.IsArmWear).FirstOrDefault();
-            s.Append(armwear != null ? armwear.IconDisplay : (archType == ArchType.Warrior ? "<:Shields:572526110118641664>" : "<:Armlets:572526109908795402>"));
-
-            var headwear = Gear.Where(i => i.IsHeadWear).FirstOrDefault();
-            s.Append(headwear != null ? headwear.IconDisplay : (archType == ArchType.Warrior ? "<:Helmets:572526110055858226>" : "<:Circlets:572526110101864448>"));
-
-            var chestwear = Gear.Where(i => i.IsChestWear).FirstOrDefault();
-            s.Append(chestwear != null ? chestwear.IconDisplay : (archType == ArchType.Warrior ? "<:Armors:572526109942611978>" : "<:Robes:572526110068441118>"));
-
-            var underwear = Gear.Where(i => i.IsUnderWear).FirstOrDefault();
-            s.Append(underwear != null ? underwear.IconDisplay : "<:Shirts:572526110173167616>");
-
-            var boots = Gear.Where(i => i.IsFootWear).FirstOrDefault();
-            s.Append(boots != null ? boots.IconDisplay : "<:Boots:572526109975904257>");
-
-            var ring = Gear.Where(i => i.IsAccessoire).FirstOrDefault();
-            s.Append(ring != null ? ring.IconDisplay : "<:Rings:572526110060052482>");
+            foreach (ItemCategory cat in Enum.GetValues(typeof(ItemCategory)))
+            {
+                s.Append(Gear.GetItem(cat)?.Name ?? DefaultIcons[cat]);
+            }
 
             return s.ToString();
         }
@@ -301,81 +311,18 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 }
             }
             Item g;
-            if (i.IsWeapon)
+
+            g = Gear.GetItem(i.Category);
+            if (g != null)
             {
-                g = Gear.Where(w => w.IsWeapon).FirstOrDefault();
-                if (g != null && g.IsCursed)
+                if (g.IsCursed)
                 {
                     return false;
                 }
-
-                Gear.RemoveAll(w => w.IsWeapon);
-            }
-
-            if (i.IsHeadWear)
-            {
-                g = Gear.Where(w => w.IsHeadWear).FirstOrDefault();
-                if (g != null && g.IsCursed)
+                else
                 {
-                    return false;
+                    Gear.Remove(g);
                 }
-
-                Gear.RemoveAll(w => w.IsHeadWear);
-            }
-
-            if (i.IsChestWear)
-            {
-                g = Gear.Where(w => w.IsChestWear).FirstOrDefault();
-                if (g != null && g.IsCursed)
-                {
-                    return false;
-                }
-
-                Gear.RemoveAll(w => w.IsChestWear);
-            }
-
-            if (i.IsArmWear)
-            {
-                g = Gear.Where(w => w.IsArmWear).FirstOrDefault();
-                if (g != null && g.IsCursed)
-                {
-                    return false;
-                }
-
-                Gear.RemoveAll(w => w.IsArmWear);
-            }
-
-            if (i.IsUnderWear)
-            {
-                g = Gear.Where(w => w.IsUnderWear).FirstOrDefault();
-                if (g != null && g.IsCursed)
-                {
-                    return false;
-                }
-
-                Gear.RemoveAll(w => w.IsUnderWear);
-            }
-
-            if (i.IsFootWear)
-            {
-                g = Gear.Where(w => w.IsFootWear).FirstOrDefault();
-                if (g != null && g.IsCursed)
-                {
-                    return false;
-                }
-
-                Gear.RemoveAll(w => w.IsFootWear);
-            }
-
-            if (i.IsAccessoire)
-            {
-                g = Gear.Where(w => w.IsAccessoire).FirstOrDefault();
-                if (g != null && g.IsCursed)
-                {
-                    return false;
-                }
-
-                Gear.RemoveAll(w => w.IsAccessoire);
             }
 
             Gear.Add(i);

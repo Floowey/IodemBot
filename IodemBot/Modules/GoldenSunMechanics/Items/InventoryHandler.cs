@@ -175,7 +175,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             {
                 var it = ItemDatabase.GetItem(item);
                 embed.WithDescription($"Sold {it.Icon}{it.Name} for <:coin:569836987767324672> {it.SellValue}.");
-                embed.WithColor((it.IsWeapon && it.IsUnleashable) ? Colors.Get(it.Unleash.UnleashAlignment.ToString()) : it.IsArtifact ? Colors.Get("Artifact") : Colors.Get("Exathi"));
+                embed.WithColor(it.Color);
 
                 await Context.Channel.SendMessageAsync("", false, embed.Build());
             }
@@ -317,7 +317,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             var msg = await Context.Channel.SendMessageAsync("", false, embed.Build());
 
             embed = new EmbedBuilder();
-            embed.WithColor((item.IsWeapon && item.IsUnleashable) ? Colors.Get(item.Unleash.UnleashAlignment.ToString()) : item.IsArtifact ? Colors.Get("Artifact") : Colors.Get("Exathi"));
+            embed.WithColor(item.Color);
             embed.WithDescription($"{Inventory.ChestIcons[cq]} You found a {item.Name} {item.IconDisplay}");
             await Task.Delay((int)cq * 700);
             _ = msg.ModifyAsync(m => m.Embed = embed.Build());
@@ -430,7 +430,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             embed.AddField("Type", item.ItemType, true);
             embed.AddField("Description", item.Summary());
 
-            embed.WithColor((item.IsWeapon && item.IsUnleashable) ? Colors.Get(item.Unleash.UnleashAlignment.ToString()) : item.IsArtifact ? Colors.Get("Artifact") : Colors.Get("Exathi"));
+            embed.WithColor((item.Category == ItemCategory.Weapon && item.IsUnleashable) ? Colors.Get(item.Unleash.UnleashAlignment.ToString()) : item.IsArtifact ? Colors.Get("Artifact") : Colors.Get("Exathi"));
 
             _ = Context.Channel.SendMessageAsync("", false, embed.Build());
             await Task.CompletedTask;

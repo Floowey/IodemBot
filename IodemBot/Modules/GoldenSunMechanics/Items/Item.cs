@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Discord;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System;
 using System.Collections.Generic;
@@ -21,15 +22,23 @@ namespace IodemBot.Modules.GoldenSunMechanics
         Ring, Misc
     }
 
+    public enum ItemCategory
+    {
+        Weapon, ArmWear, ChestWear, HeadWear, UnderWear, FootWear, Accessoure
+    }
+
     public class Item : ICloneable
     {
-        private static ItemType[] Weapons = { ItemType.LongSword, ItemType.Axe, ItemType.Staff, ItemType.LightBlade, ItemType.Mace, ItemType.Bow, ItemType.Claw };
-        private static ItemType[] ArmWear = { ItemType.Shield, ItemType.Bracelet, ItemType.Glove };
-        private static ItemType[] ChestWear = { ItemType.HeavyArmor, ItemType.Robe, ItemType.LightArmor };
-        private static ItemType[] HeadWear = { ItemType.Helmet, ItemType.Hat, ItemType.Circlet, ItemType.Crown };
-        private static ItemType[] UnderWear = { ItemType.UnderWear };
-        private static ItemType[] Footwear = { ItemType.Boots, ItemType.Greave };
-        private static ItemType[] Accessoires = { ItemType.Ring, ItemType.Misc };
+        private static Dictionary<ItemCategory, ItemType[]> ItemCategorization = new Dictionary<ItemCategory, ItemType[]>()
+        {
+            { ItemCategory.Weapon, new [] { ItemType.LongSword, ItemType.Axe, ItemType.Staff, ItemType.LightBlade, ItemType.Mace, ItemType.Bow, ItemType.Claw } },
+            { ItemCategory.ArmWear, new [] { ItemType.Shield, ItemType.Bracelet, ItemType.Glove } },
+            { ItemCategory.ChestWear, new []  { ItemType.HeavyArmor, ItemType.Robe, ItemType.LightArmor } },
+            { ItemCategory.HeadWear, new []{ ItemType.Helmet, ItemType.Hat, ItemType.Circlet, ItemType.Crown } },
+            { ItemCategory.UnderWear, new[] { ItemType.UnderWear} },
+            { ItemCategory.FootWear, new [] { ItemType.Boots, ItemType.Greave } },
+            { ItemCategory.Accessoure, new []{ ItemType.Ring, ItemType.Misc } }
+        };
 
         public string Name { get; set; }
         internal string NameAndBroken { get { return $"{Name}{(IsBroken ? "(B)" : "")}"; } }
@@ -37,11 +46,25 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public string Icon { get; set; }
         public uint Price { get; set; }
 
+        public Color Color
+        {
+            get
+            {
+                return (Category == ItemCategory.Weapon && IsUnleashable) ? Colors.Get(Unleash.UnleashAlignment.ToString()) :
+ IsArtifact ? Colors.Get("Artifact") : Colors.Get("Exathi");
+            }
+        }
+
         [JsonIgnore]
         public uint SellValue { get { return Price / 2; } }
 
         [JsonConverter(typeof(StringEnumConverter))]
         public ItemType ItemType { get; set; }
+
+        public ItemCategory Category
+        {
+            get { return ItemCategorization.Where(k => k.Value.Contains(ItemType)).First().Key; }
+        }
 
         public Element[] ExclusiveTo { get; set; }
         public bool IsStackable { get; set; }
@@ -83,27 +106,6 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public int HPRegen { get; set; }
         public int PPRegen { get; set; }
-
-        [JsonIgnore]
-        public bool IsWeapon { get { return Weapons.Contains(ItemType); } }
-
-        [JsonIgnore]
-        public bool IsHeadWear { get { return HeadWear.Contains(ItemType); } }
-
-        [JsonIgnore]
-        public bool IsChestWear { get { return ChestWear.Contains(ItemType); } }
-
-        [JsonIgnore]
-        public bool IsArmWear { get { return ArmWear.Contains(ItemType); } }
-
-        [JsonIgnore]
-        public bool IsUnderWear { get { return UnderWear.Contains(ItemType); } }
-
-        [JsonIgnore]
-        public bool IsFootWear { get { return Footwear.Contains(ItemType); } }
-
-        [JsonIgnore]
-        public bool IsAccessoire { get { return Accessoires.Contains(ItemType); } }
 
         public object Clone()
         {
@@ -158,7 +160,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
             if (IsUnleashable)
             {
-                various.Add($"{(IsWeapon ? "" : $"{(GrantsUnleash ? "Adds an Effect to your Artifacts Unleash: " : $"{(ChanceToActivate < 100 ? "May target" : "Targets")} the Wearer with an Effect: ")}")}{Unleash.ToString()}");
+                various.Add($"{(Category == ItemCategory.Weapon ? "" : $"{(GrantsUnleash ? "Adds an Effect to your Artifacts Unleash: " : $"{(ChanceToActivate < 100 ? "May target" : "Targets")} the Wearer with an Effect: ")}")}{Unleash.ToString()}");
             }
 
             if (CuresCurse)
