@@ -19,7 +19,6 @@ namespace IodemBot
             await service.AddModulesAsync(Assembly.GetEntryAssembly(), null);
             client.MessageReceived += HandleCommandAsync;
             Global.Client = client;
-            //badWords = File.ReadAllLines("Resources/bad_words.txt");
         }
 
         private async Task HandleCommandAsync(SocketMessage s)

@@ -253,6 +253,7 @@
     <Compile Include="Extensions\DiscordSocketGuildUserExt.cs" />
     <Compile Include="Extensions\IEnumerableExt.cs" />
     <Compile Include="MessageHandler.cs" />
+    <Compile Include="Modules\ColossoBattles\BattleCollector.cs" />
     <Compile Include="Modules\ColossoBattles\ColossoPvE.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Classes\AdeptClass.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Classes\AdeptClassSeries.cs" />

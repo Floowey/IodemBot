@@ -17,21 +17,22 @@ namespace IodemBot.Modules.ColossoBattles
 {
     internal class BattleCollector
     {
-        internal ColossoBattle Battle { get; set; }
+        private ColossoBattle Battle { get; set; }
         internal ITextChannel BattleChannel { get; set; }
-        internal ITextChannel TextChannel = ColossoPvE.LobbyChannel;
+        internal ITextChannel TextChannel = LobbyChannel;
         internal IUserMessage EnemyMsg { get; set; }
         internal IUserMessage StatusMsg { get; set; }
         internal Dictionary<IUserMessage, ColossoFighter> Messages { get; set; } = new Dictionary<IUserMessage, ColossoFighter>();
         internal uint PlayersToStart { get; set; } = 4;
         internal BattleDifficulty Diff { get; set; } = BattleDifficulty.Easy;
         internal string Name;
-        internal Timer autoTurn;
-        internal Timer resetIfNotActive;
-        internal bool IsEndless { get; set; } = false;
-        internal int winsInARow = 0;
-        internal int LureCaps = 0;
-        internal readonly int stageLength = 12;
+        public bool IsEndless { get; internal set; } = false;
+
+        private Timer autoTurn;
+        private Timer resetIfNotActive;
+        private int winsInARow = 0;
+        private int LureCaps = 0;
+        private readonly int stageLength = 12;
 
         internal double Boost
         {
@@ -126,9 +127,8 @@ namespace IodemBot.Modules.ColossoBattles
         internal void SetRandomEnemies(ColossoBattle.Team team)
         {
             Battle.GetTeam(team).Clear();
-            EnemiesDatabase.GetRandomEnemies(Diff, winsInARow).ForEach(f =>
+            EnemiesDatabase.GetRandomEnemies(Diff, Boost).ForEach(f =>
             {
-                f.stats *= 1;
                 Battle.AddPlayer(f, ColossoBattle.Team.B);
             }
             );
@@ -137,7 +137,7 @@ namespace IodemBot.Modules.ColossoBattles
             {
                 if (Battle.GetTeam(team).Count < 9)
                 {
-                    Battle.AddPlayer(EnemiesDatabase.GetRandomEnemies(Diff).Random(), team);
+                    Battle.AddPlayer(EnemiesDatabase.GetRandomEnemies(Diff, Boost).Random(), team);
                 }
             }
             Console.WriteLine($"Up against {Battle.TeamB.First().name}");
