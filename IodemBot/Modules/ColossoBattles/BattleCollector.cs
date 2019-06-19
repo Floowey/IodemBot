@@ -16,7 +16,7 @@ using static IodemBot.Modules.ColossoBattles.ColossoPvE;
 
 namespace IodemBot.Modules.ColossoBattles
 {
-    internal class BattleCollector
+    internal class BattleCollector : IDisposable
     {
         private ColossoBattle Battle { get; set; }
         internal ITextChannel BattleChannel { get; set; }
@@ -39,14 +39,14 @@ namespace IodemBot.Modules.ColossoBattles
         {
             get
             {
-                if (winsInARow < 3 * stageLength)
+                if (winsInARow <= 3 * stageLength)
                 {
-                    return 1 + (double)winsInARow % (stageLength + 1) / 50;
+                    return 1.0 + (double)winsInARow % (stageLength + 1) / 30;
                 }
                 else
 
                 {
-                    return 1 + (double)(winsInARow - 3 * stageLength) / 50;
+                    return 1.0 + (double)(winsInARow - 3 * stageLength) / 30;
                 }
             }
         }
@@ -66,13 +66,14 @@ namespace IodemBot.Modules.ColossoBattles
             {
                 autoTurn.Dispose();
             }
-
-            if (Messages != null)
+            if (resetIfNotActive != null)
             {
-                foreach (var k in Messages.Keys)
-                {
-                    await k.DeleteAsync();
-                }
+                resetIfNotActive.Dispose();
+            }
+
+            foreach (var k in Messages.Keys)
+            {
+                await k.DeleteAsync();
             }
 
             Messages.Clear();
@@ -128,6 +129,7 @@ namespace IodemBot.Modules.ColossoBattles
         internal void SetRandomEnemies(ColossoBattle.Team team)
         {
             Battle.GetTeam(team).Clear();
+            Console.WriteLine(Boost);
             EnemiesDatabase.GetRandomEnemies(Diff, Boost).ForEach(f =>
             {
                 Battle.AddPlayer(f, ColossoBattle.Team.B);
@@ -158,12 +160,12 @@ namespace IodemBot.Modules.ColossoBattles
                 }
                 if (reaction.Emote.Name == "Fight")
                 {
-                    await AddPlayer(reaction);
+                    _ = AddPlayer(reaction);
                     return;
                 }
                 else if (reaction.Emote.Name == "Battle")
                 {
-                    await StartBattle();
+                    _ = StartBattle();
                     return;
                 }
 
@@ -210,7 +212,7 @@ namespace IodemBot.Modules.ColossoBattles
                         var msg = k.Key;
                         await msg.RemoveAllReactionsAsync();
                     }
-                    await WriteBattleInit();
+                    _ = WriteBattleInit();
                     autoTurn.Start();
                     return;
                 }
@@ -279,7 +281,6 @@ namespace IodemBot.Modules.ColossoBattles
             if (turnProcessed)
             {
                 autoTurn.Stop();
-                await Task.Delay(100);
                 await WriteBattle();
                 if (Battle.isActive)
                 {
@@ -366,6 +367,7 @@ namespace IodemBot.Modules.ColossoBattles
             resetIfNotActive.Stop();
             Battle.Start();
             await WriteBattleInit();
+            autoTurn.Start();
             // await Task.CompletedTask;
         }
 
@@ -403,7 +405,6 @@ namespace IodemBot.Modules.ColossoBattles
             }
             var msg = EnemyMsg;
             var i = 1;
-            await Task.Delay(100);
             foreach (ColossoFighter fighter in Battle.GetTeam(ColossoBattle.Team.B))
             {
                 //e.AddField(numberEmotes[i], $"{fighter.name} {fighter.stats.HP}/{fighter.stats.maxHP}", true);
@@ -536,7 +537,7 @@ namespace IodemBot.Modules.ColossoBattles
             }
             else if (oldReactionCount - Battle.SizeTeamB <= Battle.SizeTeamB + 1)
             {
-                var reactionsToRemove = msg.Reactions.Where(k => numberEmotes.Skip(Battle.SizeTeamB - 1).Contains(k.Key.Name)).ToArray();
+                var reactionsToRemove = msg.Reactions.Where(k => numberEmotes.Skip(Battle.SizeTeamB + 1).Contains(k.Key.Name)).ToArray();
                 await msg.RemoveReactionsAsync(msg.Author, reactionsToRemove.Select(d => d.Key).ToArray());
             }
             else
@@ -683,6 +684,14 @@ namespace IodemBot.Modules.ColossoBattles
             Battle.TeamB = new List<ColossoFighter>();
             EnemiesDatabase.GetEnemies(Diff, enemy).ForEach(f => Battle.AddPlayer(f, ColossoBattle.Team.B));
             Console.WriteLine($"Up against {Battle.TeamB.First().name}");
+        }
+
+        public void Dispose()
+        {
+            Global.Client.ReactionAdded -= ReactionAdded;
+            Messages.Clear();
+            autoTurn.Dispose();
+            resetIfNotActive.Dispose();
         }
     }
 }

@@ -31,6 +31,7 @@ namespace IodemBot.Modules.ColossoBattles
 
         private async Task Setup()
         {
+            battles.ForEach(old => old.Dispose());
             battles = new List<BattleCollector>();
             var b = await GetBattleCollector(Context, "Bronze", BattleDifficulty.Easy);
             battles.Add(b);
@@ -43,7 +44,6 @@ namespace IodemBot.Modules.ColossoBattles
 
             b = await GetBattleCollector(Context, "Showdown", BattleDifficulty.Easy);
             b.IsEndless = true;
-
             battles.Add(b);
         }
 
