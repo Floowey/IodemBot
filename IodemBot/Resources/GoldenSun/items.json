@@ -2,7 +2,7 @@
     "Wheat Sword": {
         "Name": "Wheat Sword",
         "Price": 999999,
-        "Icon": ":french_bread:",
+        "Icon": "🥖",
         "ItemType": "LongSword",
         "IsArtifact": true,
         "IsEquippable": true,
