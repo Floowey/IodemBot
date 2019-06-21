@@ -89,7 +89,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             restockMessage = restockMessages.Random();
 
             shop.Sort();
-            if (shop.HasDuplicate && (shop.HasItem(ItemCategory.UnderWear) || shop.HasItem(ItemCategory.Accessoire) || shop.HasItem(ItemCategory.FootWear)))
+            if (shop.HasDuplicate || !(shop.HasItem(ItemCategory.UnderWear) || shop.HasItem(ItemCategory.Accessoire) || shop.HasItem(ItemCategory.FootWear)))
             {
                 RandomizeShop();
             }
