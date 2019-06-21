@@ -13,7 +13,7 @@ namespace IodemBot.Modules.ColossoBattles
     [Group("colosso")]
     public class ColossoPvE : ModuleBase<SocketCommandContext>
     {
-        public static string[] numberEmotes = new string[] { "\u0030\u20E3", "1⃣", "\u0032\u20E3", "\u0033\u20E3", "\u0034\u20E3", "\u0035\u20E3",
+        public static string[] numberEmotes = new string[] { "\u0030\u20E3", "\u0031\u20E3", "\u0032\u20E3", "\u0033\u20E3", "\u0034\u20E3", "\u0035\u20E3",
             "\u0036\u20E3", "\u0037\u20E3", "\u0038\u20E3", "\u0039\u20E3" };
 
         private static List<BattleCollector> battles = new List<BattleCollector>();
