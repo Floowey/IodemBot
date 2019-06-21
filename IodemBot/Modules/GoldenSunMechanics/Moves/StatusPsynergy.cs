@@ -52,6 +52,11 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
             foreach (var t in targets)
             {
+                if (PPCost > 1 && User.GetEnemies().Contains(t) && t.IsImmuneToPsynergy)
+                {
+                    log.Add($"{t.name} protects themselves with a magical barrier.");
+                    return log;
+                }
                 effects.ForEach(e => log.AddRange(e.Apply(User, t)));
                 if (User is PlayerFighter)
                 {

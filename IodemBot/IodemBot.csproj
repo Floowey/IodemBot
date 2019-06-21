@@ -251,6 +251,7 @@
     <Compile Include="Core\Leveling\ServerGames.cs" />
     <Compile Include="Extensions\DiscordSocketGuildExt.cs" />
     <Compile Include="Extensions\DiscordSocketGuildUserExt.cs" />
+    <Compile Include="Extensions\EmbedBuilderExtension.cs" />
     <Compile Include="Extensions\IEnumerableExt.cs" />
     <Compile Include="Extensions\ItemListExtension.cs" />
     <Compile Include="GlobalSuppressions.cs" />
