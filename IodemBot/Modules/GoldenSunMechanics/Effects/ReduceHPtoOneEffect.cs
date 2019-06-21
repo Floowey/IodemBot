@@ -28,6 +28,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 if (Global.Random.Next(1, 100) <= Probability)
                 {
                     Target.stats.HP = 1;
+                    log.Add($"{Target.name} barely holds on.");
                 }
             }
             return log;
