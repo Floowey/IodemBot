@@ -1,5 +1,6 @@
 ﻿using Discord;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace IodemBot.Modules.ColossoBattles
@@ -25,6 +26,21 @@ namespace IodemBot.Modules.ColossoBattles
         protected override Task GameOver()
         {
             throw new NotImplementedException();
+        }
+
+        private class Dungeon
+        {
+            public List<DungeonMatchup> matchups;
+            public string flavourText;
+            public string image;
+        }
+
+        private class DungeonMatchup
+        {
+            public List<NPCEnemy> Enemy;
+            public string flavourText;
+            public string Reward;
+            public int RewardProbability;
         }
     }
 }
