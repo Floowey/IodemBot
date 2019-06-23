@@ -16,7 +16,7 @@ namespace IodemBot.Modules.ColossoBattles
         public static string[] numberEmotes = new string[] { "\u0030\u20E3", "\u0031\u20E3", "\u0032\u20E3", "\u0033\u20E3", "\u0034\u20E3", "\u0035\u20E3",
             "\u0036\u20E3", "\u0037\u20E3", "\u0038\u20E3", "\u0039\u20E3" };
 
-        private static List<BattleCollector> battles = new List<BattleCollector>();
+        private static List<BattleManager> battles = new List<BattleManager>();
 
         public static SocketTextChannel LobbyChannel { get; private set; }
 
@@ -25,6 +25,8 @@ namespace IodemBot.Modules.ColossoBattles
         public async Task SetupColosso()
         {
             LobbyChannel = (SocketTextChannel)Context.Channel;
+            PvPBattleManager.TeamBRole = Context.Guild.GetRole(592413472277528589);
+
             await Context.Message.DeleteAsync();
             _ = Setup();
         }
@@ -32,19 +34,16 @@ namespace IodemBot.Modules.ColossoBattles
         private async Task Setup()
         {
             battles.ForEach(old => old.Dispose());
-            battles = new List<BattleCollector>();
-            var b = await GetBattleCollector(Context, "Bronze", BattleDifficulty.Easy);
-            battles.Add(b);
+            battles.Clear();
+            //battles.Add(new SingleBattleManager("Bronze", LobbyChannel, await PrepareBattleChannel("Bronze"), BattleDifficulty.Easy));
 
-            b = await GetBattleCollector(Context, "Silver", BattleDifficulty.Medium);
-            battles.Add(b);
+            //battles.Add(new SingleBattleManager("Silver", LobbyChannel, await PrepareBattleChannel("Silver"), BattleDifficulty.Medium));
 
-            b = await GetBattleCollector(Context, "Gold", BattleDifficulty.Hard);
-            battles.Add(b);
+            //battles.Add(new SingleBattleManager("Gold", LobbyChannel, await PrepareBattleChannel("Gold"), BattleDifficulty.Hard));
 
-            b = await GetBattleCollector(Context, "Showdown", BattleDifficulty.Easy);
-            b.IsEndless = true;
-            battles.Add(b);
+            //battles.Add(new EndlessBattleManager("Showdown", LobbyChannel, await PrepareBattleChannel("Showdown")));
+            battles.Add(new TeamBattleManager("OneVOne", LobbyChannel, await PrepareBattleChannel("OneVOneA", PermValue.Deny), await PrepareBattleChannel("OneVOneB", PermValue.Allow), 1));
+            battles.Add(new TeamBattleManager("PvPTeam", LobbyChannel, await PrepareBattleChannel("PvPTeamA", PermValue.Deny), await PrepareBattleChannel("PvPTeamB", PermValue.Allow)));
         }
 
         [Command("reset")]
@@ -67,11 +66,11 @@ namespace IodemBot.Modules.ColossoBattles
             var a = battles.Where(b => b.Name.Equals(name, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
             if (a != null)
             {
-                a.SetEnemy(enemy);
+                //a.SetEnemy(enemy);
             }
         }
 
-        private async Task<BattleCollector> GetBattleCollector(SocketCommandContext Context, string Name, BattleDifficulty diff)
+        private async Task<ITextChannel> PrepareBattleChannel(string Name, PermValue teamBperm = PermValue.Inherit)
         {
             var channel = await Context.Guild.GetOrCreateTextChannelAsync("colosso-" + Name);
             await channel.ModifyAsync(c =>
@@ -80,18 +79,20 @@ namespace IodemBot.Modules.ColossoBattles
                 c.Position = ((ITextChannel)Context.Channel).Position + battles.Count + 1;
             });
             await channel.SyncPermissionsAsync();
+
+            if (teamBperm == PermValue.Allow)
+            {
+                await channel.AddPermissionOverwriteAsync(PvPBattleManager.TeamBRole, new OverwritePermissions(viewChannel: PermValue.Allow));
+                await channel.AddPermissionOverwriteAsync(Context.Guild.EveryoneRole, new OverwritePermissions(viewChannel: PermValue.Deny));
+            }
+
+            if (teamBperm == PermValue.Deny)
+            {
+                await channel.AddPermissionOverwriteAsync(PvPBattleManager.TeamBRole, new OverwritePermissions(viewChannel: PermValue.Deny));
+            }
             var messages = await channel.GetMessagesAsync(100).FlattenAsync();
             await channel.DeleteMessagesAsync(messages);
-
-            var b = new BattleCollector()
-            {
-                Name = Name,
-                Diff = diff,
-                BattleChannel = channel,
-                EnemyMsg = await channel.SendMessageAsync($"Welcome to {Name} Battle!\n\nReact with <:Fight:536919792813211648> to join the {Name} Battle and press <:Battle:536954571256365096> when you are ready to battle!")
-            };
-            await b.Reset();
-            return b;
+            return channel;
         }
     }
 }
