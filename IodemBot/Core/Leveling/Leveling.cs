@@ -151,7 +151,7 @@ namespace IodemBot.Core.Leveling
             if (xp <= cutoff50)
             {
                 level = (uint)Math.Sqrt(xp / 50);
-                xpneeded = (uint)Math.Pow((level + 1), 2) * 50 - xp;
+                xpneeded = (uint)Math.Pow((level + 1), 2) * 50;
             }
             else if (xp <= cutoff80)
             {
