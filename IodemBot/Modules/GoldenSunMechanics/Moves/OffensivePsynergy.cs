@@ -90,7 +90,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
                 //                var elMult = 1 + Math.Max(0.0, (int)User.elstats.GetPower(element) * User.MultiplyBuffs("Power") - (int)t.elstats.GetRes(element) * t.MultiplyBuffs("Resistance")) / (attackBased ? 400 : 200);
                 var elMult = 1 + (User.elstats.GetPower(element) * User.MultiplyBuffs("Power") - t.elstats.GetRes(element) * t.MultiplyBuffs("Resistance")) / (attackBased ? 400 : 200);
-
+                elMult = Math.Max(0, elMult);
                 var distFromCenter = Math.Abs(enemyTeam.IndexOf(t) - targetNr);
                 var spreadMult = IgnoreSpread ? 1 : spread[distFromCenter];
                 var prctdmg = (uint)(t.stats.MaxHP * percentageDamage / 100);
@@ -132,6 +132,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 }
 
                 //Counter
+
                 ii++;
             }
 

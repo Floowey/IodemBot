@@ -231,7 +231,7 @@ namespace IodemBot.Core.Leveling
             }
         }
 
-        internal static async Task UserLostBattle(UserAccount userAccount, BattleDifficulty diff, ITextChannel battleChannel)
+        internal static async Task UserLostBattle(UserAccount userAccount, ITextChannel battleChannel)
         {
             uint oldLevel = userAccount.LevelNumber;
             userAccount.XP += (uint)(new Random()).Next(0, 10);

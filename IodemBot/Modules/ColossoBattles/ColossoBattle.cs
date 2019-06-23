@@ -9,9 +9,7 @@ namespace IodemBot.Modules.ColossoBattles
     {
         public enum Team { A, B }
 
-        //public static NPCEnemy enemy;
         public List<ColossoFighter> TeamA = new List<ColossoFighter>();
-
         public List<ColossoFighter> TeamB = new List<ColossoFighter>();
         public bool isActive = false;
 
@@ -34,10 +32,6 @@ namespace IodemBot.Modules.ColossoBattles
         public int turn = 0;
         public List<string> log = new List<string>();
         public bool turnActive = false;
-
-        public ColossoBattle()
-        {
-        }
 
         public void Start()
         {
@@ -108,6 +102,46 @@ namespace IodemBot.Modules.ColossoBattles
             return Turn();
         }
 
+        public void AddPlayer(ColossoFighter player, Team team)
+        {
+            if (isActive)
+            {
+                return;
+            }
+
+            if (TeamA.Any(p => p.imgUrl != "" && p.imgUrl == player.imgUrl))
+            {
+                return;
+            }
+
+            if (team == Team.A)
+            {
+                TeamA.Add(player);
+                player.party = Team.A;
+                player.enemies = Team.B;
+            }
+            else
+            {
+                TeamB.Add(player);
+                player.party = Team.B;
+                player.enemies = Team.A;
+            }
+
+            player.battle = this;
+        }
+
+        public List<ColossoFighter> GetTeam(Team team)
+        {
+            if (team == Team.A)
+            {
+                return TeamA;
+            }
+            else
+            {
+                return TeamB;
+            }
+        }
+
         public bool Turn()
         {
             if (!isActive)
@@ -168,46 +202,6 @@ namespace IodemBot.Modules.ColossoBattles
             Console.WriteLine("Done processing Turn");
 
             return true;
-        }
-
-        public void AddPlayer(ColossoFighter player, Team team)
-        {
-            if (isActive)
-            {
-                return;
-            }
-
-            if (TeamA.Any(p => p.imgUrl != "" && p.imgUrl == player.imgUrl))
-            {
-                return;
-            }
-
-            if (team == Team.A)
-            {
-                TeamA.Add(player);
-                player.party = Team.A;
-                player.enemies = Team.B;
-            }
-            else
-            {
-                TeamB.Add(player);
-                player.party = Team.B;
-                player.enemies = Team.A;
-            }
-
-            player.battle = this;
-        }
-
-        public List<ColossoFighter> GetTeam(Team team)
-        {
-            if (team == Team.A)
-            {
-                return TeamA;
-            }
-            else
-            {
-                return TeamB;
-            }
         }
 
         private List<string> StartTurn()
