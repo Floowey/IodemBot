@@ -282,14 +282,14 @@ namespace IodemBot.Modules.ColossoBattles
                         return;
                     }
 
-                    var curPlayer = PlayerMessages.Values.Where(p => p.name == ((SocketGuildUser)reaction.User.Value).DisplayName()).FirstOrDefault();
+                    var curPlayer = PlayerMessages.Values.Where(p => p.avatar.ID == reaction.User.Value.Id).FirstOrDefault();
                     if (curPlayer == null)
                     {
                         _ = c.RemoveReactionAsync(reaction.Emote, reaction.User.Value);
                         Console.WriteLine("Player not in this room.");
                         return;
                     }
-                    var correctID = PlayerMessages.Keys.Where(key => PlayerMessages[key].name == curPlayer.name).First().Id;
+                    var correctID = PlayerMessages.Keys.Where(key => PlayerMessages[key].avatar.ID == curPlayer.avatar.ID).First().Id;
 
                     if (!numberEmotes.Contains(reaction.Emote.Name))
                     {
