@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using static IodemBot.Modules.ColossoBattles.ColossoPvE;
 
 namespace IodemBot.Modules.ColossoBattles
 {
@@ -14,6 +13,7 @@ namespace IodemBot.Modules.ColossoBattles
         private static readonly List<List<ColossoFighter>> bronzeFighters;
         private static readonly List<List<ColossoFighter>> silverFighters;
         private static readonly List<List<ColossoFighter>> goldFighters;
+        private static readonly Dictionary<string, ColossoFighter> allEnemies;
 
         static EnemiesDatabase()
         {
@@ -78,6 +78,18 @@ namespace IodemBot.Modules.ColossoBattles
                 enemies = GetRandomEnemies(diff);
             }
             return enemies;
+        }
+
+        internal static ColossoFighter GetEnemy(string enemyKey)
+        {
+            if (allEnemies.TryGetValue(enemyKey, out ColossoFighter enemy))
+            {
+                return enemy;
+            }
+            else
+            {
+                throw new KeyNotFoundException(enemyKey);
+            }
         }
 
         internal static List<ColossoFighter> GetEnemies(BattleDifficulty diff, string enemy)

@@ -30,17 +30,17 @@ namespace IodemBot.Modules.ColossoBattles
 
         private class Dungeon
         {
-            public List<DungeonMatchup> matchups;
-            public string flavourText;
-            public string image;
+            public List<DungeonMatchup> Matchups { get; set; }
+            public string FlavourText { get; set; }
+            public string Image { get; set; }
         }
 
         private class DungeonMatchup
         {
-            public List<NPCEnemy> Enemy;
-            public string flavourText;
-            public string Reward;
-            public int RewardProbability;
+            public List<NPCEnemy> Enemy { get; set; }
+            public string FlavourText { get; set; }
+            public string Reward { get; set; }
+            public int RewardProbability { get; set; }
         }
     }
 }

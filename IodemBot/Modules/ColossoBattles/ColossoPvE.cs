@@ -44,6 +44,7 @@ namespace IodemBot.Modules.ColossoBattles
             //battles.Add(new EndlessBattleManager("Showdown", LobbyChannel, await PrepareBattleChannel("Showdown")));
             battles.Add(new TeamBattleManager("OneVOne", LobbyChannel, await PrepareBattleChannel("OneVOneA", PermValue.Deny), await PrepareBattleChannel("OneVOneB", PermValue.Allow), 1));
             battles.Add(new TeamBattleManager("PvPTeam", LobbyChannel, await PrepareBattleChannel("PvPTeamA", PermValue.Deny), await PrepareBattleChannel("PvPTeamB", PermValue.Allow)));
+            battles.Add(new GoliathBattleManager("PvPTeam", LobbyChannel, await PrepareBattleChannel("GoliathA", PermValue.Deny), await PrepareBattleChannel("GoliathB", PermValue.Allow)));
         }
 
         [Command("reset")]
