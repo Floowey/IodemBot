@@ -1,0 +1,84 @@
+﻿{
+    "Vale": {
+        "Name": "Vale",
+        "Image": "url.png",
+        "FlavourText": "The calm town of Vale",
+        "Matchups": [
+            {
+                "EnemyNames": [ "Vermin 1", "Bat 1" ],
+                "Reward": {
+                    "Probability": 20,
+                    "xp": 30,
+                    "gold": 7
+                },
+                "FlavourText": "In the storms, the critters attack."
+            },
+            {
+                "EnemyNames": [ "Vermin 1", "Bat 1", "Vermin 1" ],
+                "FlavourText": "In the storms, more critters attack."
+            },
+            {
+                "EnemyNames": [ "Bat 1", "Bat 1", "Bat 1" ],
+                "Reward": {
+                    "ChestProbability": 50,
+                    "Chest": "Wooden"
+                }
+            },
+            {
+                "EnemyNames": [ "Zombie 1", "Skeleton 1" ],
+                "Reward": {
+                    "DungeonProbability": 10,
+                    "DungeonUnlock": "Sol Sanctum"
+                }
+            },
+            {
+                "EnemyNames": [ "Zombie 1", "Skeleton 1" ],
+                "Reward": {
+                    "DungeonProbability": 10,
+                    "DungeonUnlock": "Vale Cave"
+                }
+            }
+        ]
+    },
+    "Sol Sanctum": {
+        "Name": "Vale",
+        "Image": "url.png",
+        "FlavourText": "The holy grounds above Vale. Watch out for falling rocks.",
+        "Matchups": [
+            {
+                "EnemyNames": [ "Vermin 1", "Bat 1" ],
+                "Reward": {
+                    "Probability": 20,
+                    "xp": 30,
+                    "gold": 7
+                },
+                "FlavourText": "blah"
+            },
+            {
+                "EnemyNames": [ "Vermin 1", "Bat 1", "Vermin 1" ],
+                "FlavourText": "In the storms, more critters attack."
+            },
+            {
+                "EnemyNames": [ "Bat 1", "Bat 1", "Bat 1" ],
+                "Reward": {
+                    "ChestProbability": 50,
+                    "Chest": "Wooden"
+                }
+            },
+            {
+                "EnemyNames": [ "Zombie 1", "Skeleton 1" ],
+                "Reward": {
+                    "DungeonProbability": 10,
+                    "DungeonUnlock": "Sol Sanctum"
+                }
+            },
+            {
+                "EnemyNames": [ "Zombie 1", "Skeleton 1" ],
+                "Reward": {
+                    "DungeonProbability": 10,
+                    "DungeonUnlock": "Vale Cave"
+                }
+            }
+        ]
+    }
+}

@@ -24,18 +24,41 @@ namespace IodemBot.Modules.ColossoBattles
         {
             this.BattleChannel = BattleChannel;
             this.lobbyChannel = lobbyChannel;
-            Initialize();
+            //Initialize();
         }
 
         private async void Initialize()
         {
-            EnemyMessage = await BattleChannel.SendMessageAsync($"Welcome to {Name} Battle!\n\nReact with <:Fight:536919792813211648> to join the {Name} Battle and press <:Battle:536954571256365096> when you are ready to battle!");
+            EnemyMessage = await BattleChannel.SendMessageAsync(GetEnemyMessageString());
             _ = EnemyMessage.AddReactionsAsync(new IEmote[]
                 {
                     Emote.Parse("<:Fight:536919792813211648>"),
                     Emote.Parse("<:Battle:536954571256365096>")
                 });
             return;
+        }
+
+        protected virtual string GetEnemyMessageString()
+        {
+            return $"Welcome to {Name} Battle!\n\nReact with <:Fight:536919792813211648> to join the {Name} Battle and press <:Battle:536954571256365096> when you are ready to battle!";
+        }
+
+        protected virtual string GetStartBattleString()
+        {
+            string msg = PlayerMessages
+                        .Aggregate("", (s, v) => s += $"<@{v.Value.avatar.ID}>, ");
+            return $"{msg} get into Position!";
+        }
+
+        protected virtual string GetWinMessageString()
+        {
+            var winners = Battle.GetTeam(Battle.GetWinner());
+            return $"{winners.FirstOrDefault().name}'s Party wins! Battle will reset shortly";
+        }
+
+        protected virtual string GetLossMessage()
+        {
+            return GetWinMessageString();
         }
 
         public abstract void SetEnemy(string Enemy);
@@ -209,9 +232,13 @@ namespace IodemBot.Modules.ColossoBattles
 
             PlayerMessages.Clear();
 
-            if (EnemyMessage != null)
+            if (EnemyMessage == null)
             {
-                _ = EnemyMessage.ModifyAsync(c => { c.Content = $"Welcome to {Name} Battle!\n\nReact with <:Fight:536919792813211648> to join the {Name} Battle and press <:Battle:536954571256365096> when you are ready to battle!"; c.Embed = null; });
+                Initialize();
+            }
+            else
+            {
+                _ = EnemyMessage.ModifyAsync(c => { c.Content = GetEnemyMessageString(); c.Embed = null; });
                 await EnemyMessage.RemoveAllReactionsAsync();
                 _ = EnemyMessage.AddReactionsAsync(new IEmote[]
                 {
@@ -294,12 +321,9 @@ namespace IodemBot.Modules.ColossoBattles
 
         protected override async Task WriteBattleInit()
         {
-            await Task.WhenAll(new[]
-{
-                WriteStatusInit(),
-                WriteEnemiesInit(),
-                WritePlayersInit()
-            });
+            await WriteStatusInit();
+            await WriteEnemiesInit();
+            await WritePlayersInit();
         }
 
         protected virtual async Task WriteEnemies()
@@ -365,7 +389,7 @@ namespace IodemBot.Modules.ColossoBattles
             var msg = EnemyMessage;
             var tasks = new List<Task>();
             var oldReactionCount = EnemyMessage.Reactions.Where(k => numberEmotes.Contains(k.Key.Name)).Count();
-            if (oldReactionCount == 0 && EnemyMessage.Reactions.Count > 0)
+            if (EnemyMessage.Reactions.Count == 0 && Battle.turn == 0)
             {
                 await msg.RemoveAllReactionsAsync();
             }
@@ -452,9 +476,9 @@ namespace IodemBot.Modules.ColossoBattles
                     tasks.Add(msg.ModifyAsync(m => { m.Content = $""; m.Embed = embed.Build(); }));
                 }
 
-                if (fighter is PlayerFighter && ((PlayerFighter)fighter).AutoTurnsInARow >= 2)
+                if (fighter is PlayerFighter && (fighter).AutoTurnsInARow >= 2)
                 {
-                    var ping = await msg.Channel.SendMessageAsync($"<@{((PlayerFighter)fighter).avatar.ID}>");
+                    var ping = await msg.Channel.SendMessageAsync($"<@{(fighter).avatar.ID}>");
                     await ping.DeleteAsync();
                 }
                 i++;
@@ -509,9 +533,7 @@ namespace IodemBot.Modules.ColossoBattles
             {
                 if (StatusMessage == null)
                 {
-                    string msg = PlayerMessages
-                        .Aggregate("", (s, v) => s += $"<@{v.Value.avatar.ID}>, ");
-                    StatusMessage = await BattleChannel.SendMessageAsync($"{msg}get in position!");
+                    StatusMessage = await BattleChannel.SendMessageAsync(GetStartBattleString());
                 }
             }
         }
@@ -520,7 +542,7 @@ namespace IodemBot.Modules.ColossoBattles
         {
             await Task.Delay(2000);
             var winners = Battle.GetTeam(Battle.GetWinner());
-            var text = $"{winners.FirstOrDefault().name}'s Party wins! Battle will reset shortly";
+            var text = GetWinMessageString();
             await StatusMessage.ModifyAsync(m => { m.Content = text; m.Embed = null; });
             await Task.Delay(2000);
             await Reset();

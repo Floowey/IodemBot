@@ -18,6 +18,7 @@ namespace IodemBot.Modules.ColossoBattles
         public SingleBattleManager(string Name, ITextChannel lobbyChannel, ITextChannel BattleChannel, BattleDifficulty diff) : base(Name, lobbyChannel, BattleChannel)
         {
             internalDiff = diff;
+            _ = Reset();
         }
 
         public override BattleDifficulty Difficulty => internalDiff;
@@ -104,7 +105,14 @@ namespace IodemBot.Modules.ColossoBattles
                 losers.ConvertAll(s => (PlayerFighter)s).ForEach(async p => await ServerGames.UserLostBattle(p.avatar, lobbyChannel));
                 _ = WriteGameOver();
             }
+            LureCaps = 0;
             await Task.CompletedTask;
+        }
+
+        public override async Task Reset()
+        {
+            LureCaps = 0;
+            await base.Reset();
         }
     }
 }

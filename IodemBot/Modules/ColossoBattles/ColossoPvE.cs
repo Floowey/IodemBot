@@ -35,16 +35,14 @@ namespace IodemBot.Modules.ColossoBattles
         {
             battles.ForEach(old => old.Dispose());
             battles.Clear();
-            //battles.Add(new SingleBattleManager("Bronze", LobbyChannel, await PrepareBattleChannel("Bronze"), BattleDifficulty.Easy));
-
-            //battles.Add(new SingleBattleManager("Silver", LobbyChannel, await PrepareBattleChannel("Silver"), BattleDifficulty.Medium));
-
+            battles.Add(new SingleBattleManager("Bronze", LobbyChannel, await PrepareBattleChannel("Bronze"), BattleDifficulty.Easy));
+            battles.Add(new SingleBattleManager("Silver", LobbyChannel, await PrepareBattleChannel("Silver"), BattleDifficulty.Medium));
+            battles.Add(new SingleBattleManager("Gold", LobbyChannel, await PrepareBattleChannel("Gold"), BattleDifficulty.Hard));
+            battles.Add(new EndlessBattleManager("Showdown", LobbyChannel, await PrepareBattleChannel("Showdown")));
+            //battles.Add(new TeamBattleManager("OneVOne", LobbyChannel, await PrepareBattleChannel("OneVOneA", PermValue.Deny), await PrepareBattleChannel("OneVOneB", PermValue.Allow), 1));
+            //battles.Add(new TeamBattleManager("PvPTeam", LobbyChannel, await PrepareBattleChannel("PvPTeamA", PermValue.Deny), await PrepareBattleChannel("PvPTeamB", PermValue.Allow)));
             //battles.Add(new SingleBattleManager("Gold", LobbyChannel, await PrepareBattleChannel("Gold"), BattleDifficulty.Hard));
-
-            //battles.Add(new EndlessBattleManager("Showdown", LobbyChannel, await PrepareBattleChannel("Showdown")));
-            battles.Add(new TeamBattleManager("OneVOne", LobbyChannel, await PrepareBattleChannel("OneVOneA", PermValue.Deny), await PrepareBattleChannel("OneVOneB", PermValue.Allow), 1));
-            battles.Add(new TeamBattleManager("PvPTeam", LobbyChannel, await PrepareBattleChannel("PvPTeamA", PermValue.Deny), await PrepareBattleChannel("PvPTeamB", PermValue.Allow)));
-            battles.Add(new GoliathBattleManager("PvPTeam", LobbyChannel, await PrepareBattleChannel("GoliathA", PermValue.Deny), await PrepareBattleChannel("GoliathB", PermValue.Allow)));
+            //battles.Add(new GauntletBattleManager("Gauntlet", LobbyChannel, await PrepareBattleChannel("Dungeon"), "Vale"));
         }
 
         [Command("reset")]
@@ -64,10 +62,11 @@ namespace IodemBot.Modules.ColossoBattles
         public async Task SetEnemy(string name, [Remainder] string enemy)
         {
             await Context.Message.DeleteAsync();
-            var a = battles.Where(b => b.Name.Equals(name, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
+            var a = battles.OfType<PvEBattleManager>().Where(b => b.Name.Equals(name, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
             if (a != null)
             {
-                //a.SetEnemy(enemy);
+                a.SetEnemy(enemy);
+                _ = a.Reset();
             }
         }
 

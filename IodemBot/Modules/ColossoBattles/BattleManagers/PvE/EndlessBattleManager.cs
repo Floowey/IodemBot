@@ -19,6 +19,7 @@ namespace IodemBot.Modules.ColossoBattles
 
         public EndlessBattleManager(string Name, ITextChannel lobbyChannel, ITextChannel BattleChannel) : base(Name, lobbyChannel, BattleChannel)
         {
+            _ = Reset();
         }
 
         public override BattleDifficulty Difficulty => (BattleDifficulty)Math.Min(4, 1 + winsInARow / StageLength);
@@ -86,6 +87,13 @@ namespace IodemBot.Modules.ColossoBattles
                 losers.ConvertAll(s => (PlayerFighter)s).ForEach(async p => await ServerGames.UserLostBattle(p.avatar, lobbyChannel));
                 _ = WriteGameOver();
             }
+        }
+
+        public override async Task Reset()
+        {
+            LureCaps = 0;
+            winsInARow = 0;
+            await base.Reset();
         }
 
         protected override async Task AddPlayer(SocketReaction reaction)

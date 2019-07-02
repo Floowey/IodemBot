@@ -385,12 +385,9 @@ namespace IodemBot.Modules.ColossoBattles
 
         protected override async Task WriteBattleInit()
         {
-            await Task.WhenAll(new[]
-{
-                WriteStatusInit(),
-                WriteEnemiesInit(),
-                WritePlayersInit()
-            });
+            await WriteStatusInit();
+            await WriteEnemiesInit();
+            await WritePlayersInit();
         }
 
         protected virtual async Task WriteEnemies()

@@ -57,6 +57,57 @@ namespace IodemBot.Core.Leveling
             await Task.CompletedTask;
         }
 
+        internal static async Task UserWonBattle(UserAccount userAccount, EnemiesDatabase.DungeonMatchup matchup, BattleStats battleStats, ITextChannel lobbyChannel)
+        {
+            uint oldLevel = userAccount.LevelNumber;
+            var xpawarded = matchup.Reward.XP;
+            userAccount.XP += xpawarded;
+            userAccount.Inv.AddBalance(matchup.Reward.Coins);
+            uint newLevel = userAccount.LevelNumber;
+
+            userAccount.ServerStats.ColossoWins++;
+            userAccount.BattleStats += battleStats;
+            var bs = userAccount.BattleStats;
+
+            if (Global.Random.Next(0, 100) <= matchup.Reward.ChestProbability)
+            {
+                var awardedChest = matchup.Reward.Chest;
+                userAccount.Inv.AwardChest(matchup.Reward.Chest);
+                var embed = new EmbedBuilder();
+                embed.WithColor(Colors.Get("Iodem"));
+                embed.WithDescription($"{((SocketTextChannel)lobbyChannel).Users.Where(u => u.Id == userAccount.ID).FirstOrDefault().Mention} found a {Inventory.ChestIcons[awardedChest]} {awardedChest} Chest!");
+                await lobbyChannel.SendMessageAsync("", false, embed.Build());
+            }
+
+            if (Global.Random.Next(0, 100) <= matchup.Reward.DungeonProbability)
+            {
+                userAccount.Dungeons.Add(matchup.Reward.DungeonUnlock);
+                var embed = new EmbedBuilder();
+                embed.WithColor(Colors.Get("Iodem"));
+                embed.WithDescription($"{((SocketTextChannel)lobbyChannel).Users.Where(u => u.Id == userAccount.ID).FirstOrDefault().Mention} found a map for {matchup.Reward.DungeonUnlock}!");
+                await lobbyChannel.SendMessageAsync("", false, embed.Build());
+            }
+
+            if (Global.Random.Next(0, 100) <= matchup.Reward.ItemProbability)
+            {
+                var item = ItemDatabase.GetItem(matchup.Reward.Item);
+                userAccount.Inv.Add(matchup.Reward.Item);
+                var embed = new EmbedBuilder();
+                embed.WithColor(Colors.Get("Iodem"));
+                embed.WithDescription($"{((SocketTextChannel)lobbyChannel).Users.Where(u => u.Id == userAccount.ID).FirstOrDefault().Mention} found a {item.Icon} {item.Name}!");
+                await lobbyChannel.SendMessageAsync("", false, embed.Build());
+            }
+
+            UserAccounts.SaveAccounts();
+            if (oldLevel != newLevel)
+            {
+                var user = (SocketGuildUser)await lobbyChannel.GetUserAsync(userAccount.ID); // Where(s => s. == userAccount.ID).First();
+                Leveling.LevelUp(userAccount, user, (SocketTextChannel)lobbyChannel);
+            }
+
+            await Task.CompletedTask;
+        }
+
         internal static async Task UserSentCommand(SocketGuildUser user, SocketTextChannel channel)
         {
             var userAccount = UserAccounts.GetAccount(user);

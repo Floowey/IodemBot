@@ -61,7 +61,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         private static void Save()
         {
             string json = JsonConvert.SerializeObject(Shopstruct, Formatting.Indented);
-            File.WriteAllText("Resources/shop.json", json);
+            File.WriteAllText("Resources/GoldenSun/shop.json", json);
         }
 
         public static void RandomizeShop()

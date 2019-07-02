@@ -2,6 +2,7 @@
 using Discord.WebSocket;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Threading.Tasks;
 using System.Timers;
 
@@ -26,7 +27,6 @@ namespace IodemBot.Modules.ColossoBattles
             this.Name = Name;
             this.lobbyChannel = lobbyChannel;
             Global.Client.ReactionAdded += ProcessReaction;
-            Reset();
         }
 
         protected abstract Task ProcessReaction(Cacheable<IUserMessage, ulong> cache, ISocketMessageChannel message, SocketReaction reaction);
@@ -39,21 +39,46 @@ namespace IodemBot.Modules.ColossoBattles
                 return;
             }
             isProcessing = true;
-            bool turnProcessed = forced ? Battle.ForceTurn() : Battle.Turn();
-
-            if (turnProcessed)
+            bool turnProcessed = false;
+            try
             {
-                autoTurn.Stop();
-                await WriteBattle();
+                turnProcessed = forced ? Battle.ForceTurn() : Battle.Turn();
+            }
+            catch (Exception e)
+            {
+                Console.Write("Turn did not Process correctly: " + e.Message);
+                File.WriteAllText("Logs/" + DateTime.Now.ToString() + ".txt", e.Message);
+            }
+
+            try
+            {
+                if (turnProcessed)
+                {
+                    autoTurn.Stop();
+                    await WriteBattle();
+                    if (Battle.isActive)
+                    {
+                        autoTurn.Start();
+                    }
+                    else
+                    {
+                        await GameOver();
+                    }
+                };
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Battle did not draw correctly:" + e.Message);
+                File.WriteAllText("Logs/" + DateTime.Now.ToString() + ".txt", e.Message);
                 if (Battle.isActive)
                 {
-                    autoTurn.Start();
+                    await WriteBattle();
                 }
                 else
                 {
                     await GameOver();
                 }
-            };
+            }
             isProcessing = false;
         }
 

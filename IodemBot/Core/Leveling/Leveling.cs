@@ -32,6 +32,10 @@ namespace IodemBot.Core.Leveling
                 userAccount.LastXP = DateTime.UtcNow;
                 userAccount.XP += (uint)(new Random()).Next(30, 60);
             }
+            if (user.Roles.Count == 0 && !user.Roles.Any(r => r.Id == 355560889942016000))
+            {
+                await user.AddRoleAsync(user.Guild.Roles.Where(r => r.Id == 355560889942016000).First());
+            }
 
             if ((DateTime.Now.Date != userAccount.ServerStats.LastDayActive.Date))
             {
