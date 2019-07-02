@@ -3459,7 +3459,7 @@
         "Name": "Safety Boots",
         "Price": 700,
         "Icon": "<:Safety_Boots:569854266370424854>",
-        "ItemType": "Boots",
+        "ItemType": "Greave",
         "IsEquippable": true,
         "IsArtifact": true,
         "AddStatsOnEquip": {
