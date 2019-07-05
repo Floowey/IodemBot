@@ -1,82 +1,258 @@
 ﻿{
     "Vale": {
         "Name": "Vale",
-        "Image": "url.png",
+        "Image": "https://cdn.discordapp.com/attachments/497696510688100352/595583507393150997/unknown.png",
         "FlavourText": "The calm town of Vale",
+        "IsDefault": true,
         "Matchups": [
             {
-                "EnemyNames": [ "Vermin 1", "Bat 1" ],
+                "EnemyNames": [ "Vale Training" ],
                 "Reward": {
-                    "Probability": 20,
-                    "xp": 30,
-                    "gold": 7
+                    "xp": 20,
+                    "gold": 7,
+                    "ItemProbability": 20,
+                    "Item": "Short Sword"
                 },
-                "FlavourText": "In the storms, the critters attack."
+                "FlavourText": "Valeans are training hard to protect their Village and Secrets. As a young adept, you are walking in their Footsteps."
+            },
+            {
+                "EnemyNames": [ "Vermin 1" ],
+                "FlavourText": "A light Storm is coming up, watch out for critters coming forward.",
+                "Reward": {
+                    "xp": 20,
+                    "gold": 7
+                }
             },
             {
                 "EnemyNames": [ "Vermin 1", "Bat 1", "Vermin 1" ],
-                "FlavourText": "In the storms, more critters attack."
+                "Reward": {
+                    "xp": 20,
+                    "gold": 7,
+                    "ChestProbability": 10,
+                    "Chest": "Wooden"
+                },
+                "FlavourText": "The storm gets harsher, more critters attack."
             },
             {
                 "EnemyNames": [ "Bat 1", "Bat 1", "Bat 1" ],
                 "Reward": {
                     "ChestProbability": 50,
                     "Chest": "Wooden"
-                }
+                },
+                "FlavourText": "Bats Bats Bats"
             },
             {
-                "EnemyNames": [ "Zombie 1", "Skeleton 1" ],
+                "EnemyNames": [ "Wild Mushroom", "Wild Mushroom" ],
+                "Reward": {
+                    "ItemProbability": 10,
+                    "Item": "Leather Cap"
+                },
+                "FlavourText": "Did you eat something funny? Why are the Mushroom walking!?"
+            },
+            {
+                "EnemyNames": [ "Boulder" ],
                 "Reward": {
                     "DungeonProbability": 10,
                     "DungeonUnlock": "Sol Sanctum"
-                }
+                },
+                "FlavourText": "Watch out! A boulder is falling from Mount Aleph! You need to dodge it!"
             },
             {
-                "EnemyNames": [ "Zombie 1", "Skeleton 1" ],
+                "EnemyNames": [ "Vermin 1", "Mad Vermin", "Vermin 1" ],
+                "image": "https://goldensunwiki.net/wiki/Special:FilePath/Mad_Vermin.png",
                 "Reward": {
                     "DungeonProbability": 10,
                     "DungeonUnlock": "Vale Cave"
-                }
+                },
+                "FlavourText": "The storm appears to calm down, but a few critters are still roaming around."
             }
         ]
     },
     "Sol Sanctum": {
-        "Name": "Vale",
-        "Image": "url.png",
+        "Name": "Sol Sanctum",
+        "Image": "https://cdn.discordapp.com/attachments/497696510688100352/595581189901910029/unknown.png",
         "FlavourText": "The holy grounds above Vale. Watch out for falling rocks.",
+        "IsOneTimeOnly": true,
         "Matchups": [
             {
-                "EnemyNames": [ "Vermin 1", "Bat 1" ],
+                "EnemyNames": [ "Wild Mushroom 1", "Wild Mushroom 1" ],
                 "Reward": {
-                    "Probability": 20,
                     "xp": 30,
-                    "gold": 7
+                    "gold": 17
                 },
-                "FlavourText": "blah"
+                "FlavourText": "The entrance of the Sanctuary is massive and impressive. You enter cautiously..."
             },
             {
-                "EnemyNames": [ "Vermin 1", "Bat 1", "Vermin 1" ],
-                "FlavourText": "In the storms, more critters attack."
+                "EnemyNames": [ "Vermin 2", "Bat 2", "Vermin 2" ],
+                "FlavourText": "As the hallway lights up, some monsters get scared and jump forward",
+                "Reward": {
+                    "coins": 15,
+                    "xp": 30,
+                    "ItemProbability": 20,
+                    "Item": "Herbed Shirt"
+                }
             },
             {
-                "EnemyNames": [ "Bat 1", "Bat 1", "Bat 1" ],
+                "EnemyNames": [ "Giant Bat", "Bat 1" ],
+                "FlavourText": "As you solve the puzzles, you find some empty rooms. Well, not *completely* empty.",
+                "Reward": {
+                    "coins": 15,
+                    "xp": 30
+                }
+            },
+            {
+                "EnemyNames": [ "Statue Attrape", "Statue Trap", "Statue Attrape" ],
+                "Image": "https://cdn.discordapp.com/attachments/497696510688100352/595706918568198181/unknown.png",
+                "FlavourText": "You reach a very distinct room. You have heard about that. You see a bunch of statues, but you can only move one. Which one will it be?",
+                "Reward": {
+                    "coins": 0,
+                    "xp": 100
+                }
+            },
+            {
+                "EnemyNames": [ "Amaze", "Amaze", "Amaze" ],
+                "FlavourText": "You have solved the puzzle, you have reached the Star Chamber! Congratulations. Some nasty looking monsters are looking at you from afar, it would be better to turn back now than never!",
+                "Reward": {
+                    "coins": 500,
+                    "xp": 300,
+                    "DungeonProbability": 15,
+                    "DungeonUnlock": "Star Chamber"
+                }
+            }
+        ]
+    },
+    "Star Chamber": {
+        "Name": "Star Chamber",
+        "IsOneTimeOnly": true,
+        "Matchups": [
+            {
+                "EnemyNames": [ "Anger Ball 1", "Anger Ball 2" ],
+                "FlavourText": "What is going on? The Star Chamber appears to be alive! Watchout! Run!"
+            },
+            {
+                "EnemyNames": [ "Venus Djinni 16", "Mars Djinni 11", "Jupiter Djinni 18", "Mercury Djinni 15" ],
+                "FlavourText": "That was close. Look! The guardians of the elemental stars are noticing you!"
+            }
+        ],
+        "FlavourText": "The mysterious star Chamber. Watchout, it's slippery!",
+        "Requirement": {
+            "MinLevel": 50
+        }
+    },
+    "Vale Cave": {
+        "Name": "Vale Cave",
+        "IsOneTimeOnly": true,
+        "Matchups": [
+            {
+                "EnemyNames": [ "Grisly" ],
+                "FlavourText": "A bear is in the cave. I hope you're not surprised.",
+                "Reward": {
+                    "ItemProbability": 20,
+                    "Item": "Fur Coat"
+                }
+            },
+            {
+                "EnemyNames": [ "Mad Vermin", "Gressil", "Mad Vermin" ],
+                "FlavourText": "Wipe off the hair, let's go!",
+                "Reward": {
+                    "coins": 20,
+                    "xp": 100
+                }
+            },
+            {
+                "EnemyNames": [ "Death Cap", "Poison Toad", "Death Cap" ],
+                "FlavourText": "The cave is getting darker and danker..",
+                "Reward": {
+                    "coins": 0,
+                    "xp": 100
+                }
+            },
+            {
+                "EnemyNames": [ "Wight", "Undead", "Wight" ],
+                "FlavourText": "*We need to go deeper*",
+                "Reward": {
+                    "ChestProbability": 15,
+                    "Chest": "Silver"
+                }
+            },
+            {
+                "EnemyNames": [ "Lich", "Ghost Mage" ],
+                "FlavourText": "The cave is getting spooky. You can see a yellow stone glimmering in the back.",
+                "Reward": {
+                    "coins": 50,
+                    "xp": 120
+                }
+            },
+            {
+                "EnemyNames": [ "Jupiter Djinni 10" ],
+                "FlavourText": "Oh hey! I guess it was worth it after all! Now let's quickly exit this creepy place...",
+                "Reward": {
+                    "coins": 500,
+                    "xp": 500
+                }
+            }
+        ],
+        "FlavourText": "Hidden behind Kraden's Cottage, there is a small Cave. Whatever might be in there?",
+        "Requirement": {
+            "MinLevel": 30
+        }
+    },
+    "Warrior Training Grounds": {
+        "Name": "Warrior Training Grounds",
+        "Image": "https://images-eu.ssl-images-amazon.com/images/I/81MYd8u7plL.png",
+        "FlavourText": "W.A.R.R.I.O.R. We Are Rough Ruffians In Ongoing Rough Scuffles.",
+        "IsDefault": true,
+        "Requirement": {
+            "Archtypes": [ 0 ]
+        },
+        "Matchups": [
+            {
+                "EnemyNames": [ "Navampa 1" ],
+                "Reward": {
+                    "ItemProbability": 50,
+                    "Item": "Claymore"
+                }
+            }
+        ]
+    },
+    "Miko Training Grounds": {
+        "Name": "Miko Training Grounds",
+        "Image": "https://cdn.discordapp.com/attachments/497696510688100352/595581189901910029/unknown.png",
+        "FlavourText": "Mikos train their spiritual powers in the holy ruins beneath Izumo.",
+        "IsDefault": true,
+        "Requirement": {
+            "ClassSeries": [ "Miko Series" ]
+        },
+        "Matchups": [
+            {
+                "EnemyNames": [ "Little Death" ],
+                "Reward": {
+                    "xp": 30,
+                    "gold": 7,
+                    "ItemProbability": 80,
+                    "Item": "Silver Armlet"
+                },
+
+                "FlavourText": "MIKO 1"
+            },
+            {
+                "EnemyNames": [ "Death Cap" ],
+                "FlavourText": "MIKO 2",
+                "Reward": {
+                    "xp": 50,
+                    "gold": 7,
+                    "DungeonProbability": 80,
+                    "DungeonUnlock": "Gaia Rock"
+                }
+            },
+            {
+                "EnemyNames": [ "Death Cap", "Death Scuttler", "Little Death" ],
+                "FlavourText": "MIKO 3",
                 "Reward": {
                     "ChestProbability": 50,
-                    "Chest": "Wooden"
-                }
-            },
-            {
-                "EnemyNames": [ "Zombie 1", "Skeleton 1" ],
-                "Reward": {
-                    "DungeonProbability": 10,
-                    "DungeonUnlock": "Sol Sanctum"
-                }
-            },
-            {
-                "EnemyNames": [ "Zombie 1", "Skeleton 1" ],
-                "Reward": {
-                    "DungeonProbability": 10,
-                    "DungeonUnlock": "Vale Cave"
+                    "Chest": "Gold",
+                    "ItemProbability": 50,
+                    "Item": "Psynergy Rod"
                 }
             }
         ]

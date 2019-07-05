@@ -179,7 +179,8 @@
             "mercuryres": 25,
             "venuspow": 95
         },
-        "extraturns": 0
+        "extraturns": 0,
+        "hasdefend": false
     },
     "Anger Ball 2": {
         "movepool": [ "Angry Mine" ],
@@ -199,7 +200,8 @@
             "mercuryres": 25,
             "venuspow": 95
         },
-        "extraturns": 0
+        "extraturns": 0,
+        "hasdefend": false
     },
     "Angle Worm": {
         "movepool": [ "Angle Spike" ],
@@ -10240,5 +10242,107 @@
             "marsres": 7
         },
         "extraturns": 0
+    },
+    "Vale Training": {
+        "name": "High Tech Psynergy Training Equipment",
+        "imgurl": "https://cdn.discordapp.com/attachments/526565153760608266/571980602341851136/unknown.png",
+        "movepool": [
+        ],
+        "stats": {
+            "maxHP": 140,
+            "maxPP": 0,
+            "Atk": 0,
+            "Def": 2,
+            "Spd": 3
+        },
+        "elstats": {
+            "VenusAtk": 100,
+            "VenusRes": 25,
+            "MarsAtk": 100,
+            "MarsRes": 25,
+            "JupiterAtk": 100,
+            "JupiterRes": 25,
+            "MercuryAtk": 100,
+            "MercuryRes": 25
+        },
+        "hasAttack": false
+    },
+    "Boulder": {
+        "name": "Boulder",
+        "imgurl": "https://cdn.discordapp.com/attachments/497696510688100352/595677509253857280/unknown.png",
+        "movepool": [
+        ],
+        "stats": {
+            "maxHP": 20000,
+            "maxPP": 0,
+            "Atk": 100,
+            "Def": 2,
+            "Spd": 3
+        },
+        "elstats": {
+            "VenusAtk": 100,
+            "VenusRes": 25,
+            "MarsAtk": 100,
+            "MarsRes": 25,
+            "JupiterAtk": 100,
+            "JupiterRes": 25,
+            "MercuryAtk": 100,
+            "MercuryRes": 25
+        },
+        "Conditions": [ "DeathCurse" ],
+        "DeathCurseCounter": 1,
+        "hasDefend": false
+    },
+    "Statue Trap": {
+        "name": "Statue",
+        "imgurl": "https://goldensunwiki.net/w/images/c/ca/SolSanctumDisarm.png",
+        "movepool": [
+            "Trap"
+        ],
+        "stats": {
+            "maxHP": 20000,
+            "maxPP": 0,
+            "Atk": 100,
+            "Def": 2,
+            "Spd": 3
+        },
+        "elstats": {
+            "VenusAtk": 100,
+            "VenusRes": 25,
+            "MarsAtk": 100,
+            "MarsRes": 25,
+            "JupiterAtk": 100,
+            "JupiterRes": 25,
+            "MercuryAtk": 100,
+            "MercuryRes": 25
+        },
+        "hasDefend": false,
+        "hasAttack": false
+    },
+    "Statue Atrappe": {
+        "name": "Statue",
+        "imgurl": "https://goldensunwiki.net/w/images/c/ca/SolSanctumDisarm.png",
+        "movepool": [
+            "Disarm"
+        ],
+        "stats": {
+            "maxHP": 20000,
+            "maxPP": 0,
+            "Atk": 100,
+            "Def": 2,
+            "Spd": 3
+        },
+        "elstats": {
+            "VenusAtk": 100,
+            "VenusRes": 25,
+            "MarsAtk": 100,
+            "MarsRes": 25,
+            "JupiterAtk": 100,
+            "JupiterRes": 25,
+            "MercuryAtk": 100,
+            "MercuryRes": 25
+        },
+        "hasDefend": false,
+        "hasAttack": false
     }
 }

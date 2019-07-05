@@ -1534,6 +1534,35 @@
             }
         ]
     },
+    "Trap": {
+        "name": "Trap!",
+        "targetType": 4,
+        "emote": ":bomb:",
+        "range": 5,
+        "element": 4,
+        "PPCost": 0,
+        "power": 2000,
+        "IgnoreSpread": true,
+        "effectImages": [
+            {
+                "id": "UserDies"
+            }
+        ]
+    },
+    "Disarm": {
+        "name": "Disarm",
+        "targetType": 4,
+        "emote": "🏳️",
+        "range": 3,
+        "element": 4,
+        "PPCost": 0,
+        "power": 0,
+        "effectImages": [
+            {
+                "id": "UserDies"
+            }
+        ]
+    },
     "Claw Attack": {
         "name": "Claw Attack",
         "targetType": 3,
@@ -1951,6 +1980,7 @@
         "range": 3,
         "element": 1,
         "PPCost": 0,
-        "addDamage": 100
+        "addDamage": 100,
+        "IgnoreSpread": true
     }
 }
