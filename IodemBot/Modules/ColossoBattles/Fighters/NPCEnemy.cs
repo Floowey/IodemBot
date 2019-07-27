@@ -19,8 +19,14 @@ namespace IodemBot.Modules.ColossoBattles
         private bool HasDefend { get; set; } = true;
 
         [JsonConstructor]
-        public NPCEnemy(string name, string imgUrl, Stats stats, ElementalStats elstats, string[] movepool, bool hasAttack, bool hasDefend) : base(name, imgUrl, stats, elstats, PsynergyDatabase.GetMovepool(movepool, hasAttack, hasDefend))
+        public NPCEnemy(string name, string imgUrl, Stats stats, ElementalStats elstats, string[] movepool, bool hasAttack, bool hasDefend) : base()
         {
+            this.Name = name;
+            this.ImgUrl = imgUrl;
+            this.Stats = stats;
+            this.ElStats = elstats;
+            this.Moves = PsynergyDatabase.GetMovepool(movepool, hasAttack, hasDefend);
+
             this.Movepool = movepool;
             this.HasAttack = hasAttack;
             this.HasDefend = hasDefend;

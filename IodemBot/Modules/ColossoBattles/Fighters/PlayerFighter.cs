@@ -2,6 +2,7 @@
 using IodemBot.Core.UserManagement;
 using IodemBot.Extensions;
 using IodemBot.Modules.GoldenSunMechanics;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -9,99 +10,16 @@ namespace IodemBot.Modules.ColossoBattles
 {
     public class PlayerFighter : ColossoFighter
     {
-        public UserAccount avatar;
-        private readonly SocketGuildUser guildUser;
+        [JsonIgnore] public UserAccount avatar;
+        [JsonIgnore] public SocketGuildUser guildUser;
+        [JsonIgnore] public PlayerFighterFactory factory;
 
-        private static Stats baseStats = new Stats(30, 20, 11, 6, 8);
         public BattleStats battleStats = new BattleStats();
         public int AutoTurnPool = 10;
         public int AutoTurnsInARow = 0;
 
-        public PlayerFighter(SocketGuildUser user) : base(user.DisplayName(), user.GetAvatarUrl(),
-            ModifyStats(user),
-            AdeptClassSeriesManager.GetElStats(UserAccounts.GetAccount(user)),
-            AdeptClassSeriesManager.GetMoveset(UserAccounts.GetAccount(user)))
+        public PlayerFighter() : base()
         {
-            avatar = UserAccounts.GetAccount(user);
-            guildUser = user;
-
-            var classSeries = AdeptClassSeriesManager.GetClassSeries(avatar);
-            if (classSeries.Name == "Curse Mage Series" || classSeries.Name == "Medium Series")
-            {
-                IsImmuneToItemCurse = true;
-            }
-            var gear = avatar.Inv.GetGear(classSeries.Archtype);
-            gear.OrderBy(i => i.ItemType).ToList().ForEach(g =>
-            {
-                HPrecovery += g.HPRegen;
-                PPrecovery += g.PPRegen;
-                unleashRate += g.IncreaseUnleashRate;
-                if (g.IsCursed)
-                {
-                    AddCondition(Condition.ItemCurse);
-                }
-
-                if (g.CuresCurse)
-                {
-                    IsImmuneToItemCurse = true;
-                }
-
-                if (g.Category == ItemCategory.Weapon)
-                {
-                    Weapon = g;
-                    if (Weapon.IsUnleashable)
-                    {
-                        Weapon.Unleash.AdditionalEffects.Clear();
-                    }
-                }
-                else if (g.IsUnleashable)
-                {
-                    if (g.GrantsUnleash)
-                    {
-                        if ((Weapon != null) && Weapon.IsUnleashable)
-                        {
-                            Weapon.Unleash.AdditionalEffects.AddRange(g.Unleash.Effects);
-                        }
-                    }
-                    else
-                    {
-                        EquipmentWithEffect.Add(g);
-                    }
-                }
-            });
-        }
-
-        private static Stats ModifyStats(SocketGuildUser user)
-        {
-            var avatar = UserAccounts.GetAccount(user);
-            var classSeries = AdeptClassSeriesManager.GetClassSeries(avatar);
-            var adept = AdeptClassSeriesManager.GetClass(avatar);
-            var classMultipliers = adept.StatMultipliers;
-            var level = avatar.LevelNumber;
-
-            var Stats = new Stats(
-                (int)(baseStats.MaxHP * (1 + 0.25 * level / 1.5)),
-                (int)(baseStats.MaxPP * (1 + 0.115 * level / 1.5)),
-                (int)(baseStats.Atk * (1 + 0.3 * level / 1.5)),
-                (int)(baseStats.Def * (1 + 0.3 * level / 1.5)),
-                (int)(baseStats.Spd * (1 + 0.5 * level / 1.5)));
-
-            Stats *= classMultipliers;
-            Stats *= 0.01;
-
-            var gear = avatar.Inv.GetGear(classSeries.Archtype);
-            gear.ForEach(g =>
-            {
-                Stats += g.AddStatsOnEquip;
-            });
-
-            gear.ForEach(g =>
-            {
-                Stats *= g.MultStatsOnEquip;
-                Stats *= 0.01;
-            });
-
-            return Stats;
         }
 
         public override List<string> EndTurn()
@@ -113,7 +31,7 @@ namespace IodemBot.Modules.ColossoBattles
             if (AutoTurnsInARow >= 4 && IsAlive)
             {
                 Kill();
-                log.Add($":x: {name} dies from inactivity.");
+                log.Add($":x: {Name} dies from inactivity.");
                 AutoTurnsInARow = 0;
             }
 
@@ -123,7 +41,179 @@ namespace IodemBot.Modules.ColossoBattles
 
         public override object Clone()
         {
-            return new PlayerFighter(guildUser);
+            return factory.CreatePlayerFighter(guildUser);
+        }
+    }
+
+    public enum LevelOption { Default, SetLevel, CappedLevel }
+
+    public enum InventoryOption { Default, NoInventory }
+
+    public enum DjinnOption { Default, NoDjinn }
+
+    public enum BaseStatOption { Default, Average }
+
+    public enum BaseStatManipulationOption { Default, NoIncrease }
+
+    internal class StatHolder
+    {
+        public Stats BaseStat;
+        public Stats FinalBaseStats;
+
+        public StatHolder(Stats baseStat, Stats finalBaseStats)
+        {
+            BaseStat = baseStat;
+            FinalBaseStats = finalBaseStats;
+        }
+
+        public Stats GetStats(uint Level)
+        {
+            return BaseStat + (FinalBaseStats - BaseStat) * 0.01010101 * Level * 0.66666;
+        }
+    }
+
+    public class PlayerFighterFactory
+    {
+        private static StatHolder WarriorStatHolder = new StatHolder(new Stats(31, 19, 12, 7, 7), new Stats(807, 245, 381, 171, 371));
+        private static StatHolder MageStatHolder = new StatHolder(new Stats(28, 23, 9, 5, 9), new Stats(744, 280, 355, 160, 397));
+        private static StatHolder AverageStatHolder = new StatHolder(new Stats(30, 20, 11, 6, 8), new Stats(775, 262, 368, 165, 384));
+
+        public LevelOption LevelOption { get; set; } = LevelOption.Default;
+        public InventoryOption InventoryOption { get; set; } = InventoryOption.Default;
+        public DjinnOption DjinnOption { get; set; } = DjinnOption.Default;
+        public BaseStatOption BaseStatOption { get; set; } = BaseStatOption.Default;
+        public BaseStatManipulationOption BaseStatManipulationOption { get; set; } = BaseStatManipulationOption.Default;
+
+        public uint SetLevel { get; set; } = 50;
+        public Stats StatMultiplier { get; set; } = new Stats(100, 100, 100, 100, 100);
+
+        public ElementalStats ElStatMultiplier = new ElementalStats(100, 100, 100, 100, 100, 100, 100, 100);
+
+        public PlayerFighter CreatePlayerFighter(SocketUser user)
+        {
+            var p = new PlayerFighter();
+            var avatar = UserAccounts.GetAccount(user);
+
+            p.Name = (user is SocketGuildUser) ? ((SocketGuildUser)user).DisplayName() : user.Username;
+            p.avatar = avatar;
+            p.factory = this;
+            if (user is SocketGuildUser)
+            {
+                p.guildUser = (SocketGuildUser)user;
+            }
+
+            var Class = AdeptClassSeriesManager.GetClass(avatar);
+            var classSeries = AdeptClassSeriesManager.GetClassSeries(avatar);
+            p.Stats = GetStats(avatar);
+            p.ElStats = classSeries.Elstats;
+            if (classSeries.Name == "Curse Mage Series" || classSeries.Name == "Medium Series")
+            {
+                p.IsImmuneToItemCurse = true;
+            }
+
+            switch (InventoryOption)
+            {
+                case InventoryOption.Default:
+                    var gear = avatar.Inv.GetGear(classSeries.Archtype);
+                    gear.ForEach(g =>
+                    {
+                        p.Stats += g.AddStatsOnEquip;
+                    });
+
+                    gear.ForEach(g =>
+                    {
+                        p.Stats *= g.MultStatsOnEquip;
+                        p.Stats *= 0.01;
+                    });
+
+                    gear.OrderBy(i => i.ItemType).ToList().ForEach(g =>
+                    {
+                        p.HPrecovery += g.HPRegen;
+                        p.PPrecovery += g.PPRegen;
+                        p.unleashRate += g.IncreaseUnleashRate;
+                        if (g.IsCursed)
+                        {
+                            p.AddCondition(Condition.ItemCurse);
+                        }
+
+                        if (g.CuresCurse)
+                        {
+                            p.IsImmuneToItemCurse = true;
+                        }
+
+                        if (g.Category == ItemCategory.Weapon)
+                        {
+                            p.Weapon = g;
+                            if (p.Weapon.IsUnleashable)
+                            {
+                                p.Weapon.Unleash.AdditionalEffects.Clear();
+                            }
+                        }
+                        else if (g.IsUnleashable)
+                        {
+                            if (g.GrantsUnleash)
+                            {
+                                if ((p.Weapon != null) && p.Weapon.IsUnleashable)
+                                {
+                                    p.Weapon.Unleash.AdditionalEffects.AddRange(g.Unleash.Effects);
+                                }
+                            }
+                            else
+                            {
+                                p.EquipmentWithEffect.Add(g);
+                            }
+                        }
+                    });
+                    p.HPrecovery = (int)(p.HPrecovery * (1 + avatar.LevelNumber / 33));
+
+                    break;
+
+                case InventoryOption.NoInventory:
+                    break;
+            }
+
+            switch (DjinnOption)
+            {
+                case DjinnOption.Default:
+                    break;
+
+                case DjinnOption.NoDjinn:
+                    break;
+            }
+
+            p.Stats *= StatMultiplier;
+            p.Stats *= 0.01;
+
+            p.Moves = AdeptClassSeriesManager.GetMoveset(avatar);
+            return p;
+        }
+
+        private Stats GetStats(UserAccount avatar)
+        {
+            var classSeries = AdeptClassSeriesManager.GetClassSeries(avatar);
+            var adept = AdeptClassSeriesManager.GetClass(avatar);
+            var classMultipliers = adept.StatMultipliers;
+            var level = LevelOption == LevelOption.Default
+                || (LevelOption == LevelOption.CappedLevel && avatar.LevelNumber <= SetLevel)
+                ? avatar.LevelNumber
+                : SetLevel;
+            Stats Stats;
+            switch (BaseStatOption)
+            {
+                case BaseStatOption.Default:
+                    Stats = classSeries.Archtype == ArchType.Warrior ? WarriorStatHolder.GetStats(level) : MageStatHolder.GetStats(level);
+                    break;
+
+                case BaseStatOption.Average:
+                default:
+                    Stats = AverageStatHolder.GetStats(level);
+                    break;
+            }
+
+            Stats *= classMultipliers;
+            Stats *= 0.01;
+
+            return Stats;
         }
     }
 }

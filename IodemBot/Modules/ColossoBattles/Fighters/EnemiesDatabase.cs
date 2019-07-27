@@ -1,4 +1,5 @@
-﻿using IodemBot.Extensions;
+﻿using IodemBot.Core.UserManagement;
+using IodemBot.Extensions;
 using IodemBot.Modules.GoldenSunMechanics;
 using Newtonsoft.Json;
 using System;
@@ -18,6 +19,8 @@ namespace IodemBot.Modules.ColossoBattles
         private static readonly Dictionary<string, NPCEnemy> allEnemies;
         private static readonly Dictionary<string, Dungeon> dungeons;
 
+        public static List<Dungeon> DefaultDungeons { get { return dungeons.Where(d => d.Value.IsDefault).Select(d => d.Value).ToList(); } }
+
         static EnemiesDatabase()
         {
             try
@@ -28,14 +31,18 @@ namespace IodemBot.Modules.ColossoBattles
                 goldFighters = LoadEnemiesFromFile("Resources/GoldenSun/Battles/goldFighters.json");
 
                 string json = File.ReadAllText("Resources/GoldenSun/Battles/enemies.json");
-                allEnemies = JsonConvert.DeserializeObject<Dictionary<string, NPCEnemy>>(json);
+                allEnemies = new Dictionary<string, NPCEnemy>(
+                    JsonConvert.DeserializeObject<Dictionary<string, NPCEnemy>>(json),
+                    StringComparer.OrdinalIgnoreCase);
 
                 json = File.ReadAllText("Resources/GoldenSun/Battles/dungeons.json");
-                dungeons = JsonConvert.DeserializeObject<Dictionary<string, Dungeon>>(json);
+                dungeons = new Dictionary<string, Dungeon>(
+                    JsonConvert.DeserializeObject<Dictionary<string, Dungeon>>(json),
+                    StringComparer.OrdinalIgnoreCase);
             }
             catch (Exception e) // Just for debugging
             {
-                Console.Write("A" + e.Message);
+                Console.Write("Enemies not loaded correctly" + e.Message);
             }
         }
 
@@ -78,9 +85,9 @@ namespace IodemBot.Modules.ColossoBattles
             var enemies = selectedDifficulty.Random().Select(f => (ColossoFighter)f.Clone()).ToList();
             if (diff == BattleDifficulty.MediumRare)
             {
-                enemies.ForEach(e => e.stats *= 1.5);
+                enemies.ForEach(e => e.Stats *= 1.5);
             }
-            enemies.ForEach(e => e.stats *= boost);
+            enemies.ForEach(e => e.Stats *= boost);
             if (enemies.Count == 0)
             {
                 Console.WriteLine($"{diff}: Enemies were empty");
@@ -113,6 +120,11 @@ namespace IodemBot.Modules.ColossoBattles
             }
         }
 
+        internal static bool HasDungeon(string dungeonKey)
+        {
+            return dungeons.ContainsKey(dungeonKey);
+        }
+
         internal static List<ColossoFighter> GetEnemies(BattleDifficulty diff, string enemy)
         {
             List<List<ColossoFighter>> selectedDifficulty;
@@ -135,7 +147,7 @@ namespace IodemBot.Modules.ColossoBattles
                     Console.WriteLine("Enemies from default!!!");
                     break;
             }
-            var enemies = selectedDifficulty.Where(l => l.Any(e => e.name.ToUpper().Contains(enemy.ToUpper()))).FirstOrDefault();
+            var enemies = selectedDifficulty.Where(l => l.Any(e => e.Name.ToUpper().Contains(enemy.ToUpper()))).FirstOrDefault();
             if (enemies == null)
             {
                 enemies = GetRandomEnemies(diff);
@@ -147,11 +159,12 @@ namespace IodemBot.Modules.ColossoBattles
         public class Dungeon
         {
             public List<DungeonMatchup> Matchups { get; set; }
-            public Requirement Requirement { get; set; }
+            public Requirement Requirement { get; set; } = new Requirement();
             public string Name { get; set; }
             public string FlavourText { get; set; }
             public string Image { get; set; }
             public bool IsOneTimeOnly { get; set; }
+            public bool IsDefault { get; set; }
         }
 
         public class DungeonMatchup
@@ -184,6 +197,9 @@ namespace IodemBot.Modules.ColossoBattles
 
         public int DungeonProbability { get; set; }
         public string DungeonUnlock { get; set; }
+
+        public int SecretDungeonProbability { get; set; }
+        public string SecretDungeon { get; set; }
     }
 
     public class Requirement
@@ -194,5 +210,34 @@ namespace IodemBot.Modules.ColossoBattles
         public string[] Classes { get; set; } = new string[] { };
         public int MinLevel { get; set; } = 0;
         public int MaxLevel { get; set; } = 100;
+
+        public bool Applies(UserAccount playerAvatar)
+        {
+            if (Elements.Count() > 0 && !Elements.Contains(playerAvatar.Element))
+            {
+                return false;
+            }
+
+            if (Classes.Count() > 0 && !Classes.Contains(playerAvatar.GsClass))
+            {
+                return false;
+            }
+
+            if (ClassSeries.Count() > 0 && !ClassSeries.Contains(AdeptClassSeriesManager.GetClassSeries(playerAvatar).Name))
+            {
+                return false;
+            }
+
+            if (ArchTypes.Count() > 0 && !ArchTypes.Contains(AdeptClassSeriesManager.GetClassSeries(playerAvatar).Archtype))
+            {
+                return false;
+            }
+
+            if (MinLevel > playerAvatar.LevelNumber || MaxLevel < playerAvatar.LevelNumber)
+            {
+                return false;
+            }
+            return true;
+        }
     }
 }
