@@ -7,15 +7,12 @@
                 "Quake Sphere",
                 "Clay Spire",
                 "Stone Spire",
-                "Mother Gaia",
                 "Grand Gaia",
                 "Nettle",
-                "Slaying Dragon",
                 "Reigning Dragon",
                 "Undead Might",
                 "Dragon Fume",
                 "Searing Beam",
-                "Inferno",
                 "Eruption",
                 "Pyroclasm",
                 "Fiery Blast",
@@ -24,14 +21,11 @@
                 "Dire Inferno",
                 "Storm Ray",
                 "Destruct Ray",
-                "Tornado",
                 "Tempest",
-                "Shine Plasma",
                 "Spark Plasma",
                 "Thunderhead",
                 "Ice Missile",
                 "Megacool",
-                "Hail Prism",
                 "Freeze Prism",
                 "Froth Spiral",
                 "Ward",
@@ -65,7 +59,8 @@
                 "DeathCurse",
                 "Haunt"
             ],
-            "isImmuneToOHKO": true
+            "isImmuneToOHKO": true,
+            "extraTurns": 1
         }
     ],
     [
@@ -872,6 +867,128 @@
                 "Haunt"
             ],
             "isImmuneToOHKO": true
+        }
+    ],
+    [
+        {
+            "movepool": [ "Guard Aura" ],
+            "name": "Guardian Ball",
+            "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Guardian_Ball.png",
+            "stats": {
+                "maxhp": 520,
+                "maxpp": 43,
+                "atk": 317,
+                "def": 127,
+                "spd": 292
+            },
+            "elstats": {
+                "venusres": 152,
+                "marsres": 100,
+                "mercuryres": 100,
+                "jupiterres": 48
+            },
+            "extraturns": 0
+        },
+        {
+            "movepool": [ "Flash Bolt", "Storm Ray", "Shine Plasma" ],
+            "name": "Thunder Ball",
+            "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Thunder_Ball.png",
+            "stats": {
+                "maxhp": 280,
+                "maxpp": 43,
+                "atk": 329,
+                "def": 125,
+                "spd": 219
+            },
+            "elstats": {
+                "jupiterres": 152,
+                "marsres": 100,
+                "mercuryres": 100,
+                "venusres": 48,
+                "jupiterpow": 110
+            },
+            "extraturns": 0
+        },
+        {
+            "name": "Star Apprentice",
+            "imgurl": "",
+            "movepool": [
+                "Mystic Call",
+                "Mystic Call",
+                "Mystic Call",
+                "Mine Ball",
+                "Spark Plasma",
+                "Megacool"
+            ],
+            "stats": {
+                "maxhp": 7486,
+                "maxpp": 560,
+                "atk": 460,
+                "def": 139,
+                "spd": 268
+            },
+            "elstats": {
+                "VenusAtk": 100,
+                "VenusRes": 130,
+                "MarsAtk": 100,
+                "MarsRes": 72,
+                "JupiterAtk": 95,
+                "JupiterRes": 150,
+                "MercuryAtk": 110,
+                "MercuryRes": 180
+            },
+            "extraTurns": 1,
+            "isImmuneToConditions": [
+                "Stun",
+                "Poison",
+                "Venom",
+                "Delusion",
+                "Sleep",
+                "DeathCurse",
+                "Haunt"
+            ],
+            "isImmuneToOHKO": true
+        },
+        {
+            "movepool": [ "Angry Mine" ],
+            "name": "Anger Ball",
+            "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Anger_Ball.png",
+            "stats": {
+                "maxhp": 460,
+                "maxpp": 43,
+                "atk": 357,
+                "def": 125,
+                "spd": 173
+            },
+            "elstats": {
+                "marsres": 175,
+                "venusres": 100,
+                "jupiterres": 100,
+                "mercuryres": 25,
+                "venuspow": 95
+            },
+            "extraturns": 0,
+            "hasdefend": false
+        },
+        {
+            "movepool": [ "Earnest Ply", "Cure Poison", "Restore" ],
+            "name": "Refresh Ball",
+            "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Refresh_Ball.png",
+            "stats": {
+                "maxhp": 360,
+                "maxpp": 43,
+                "atk": 317,
+                "def": 124,
+                "spd": 136
+            },
+            "elstats": {
+                "mercuryres": 175,
+                "venusres": 100,
+                "jupiterres": 100,
+                "marsres": 25,
+                "mercurypow": 115
+            },
+            "extraturns": 0
         }
     ]
 ]

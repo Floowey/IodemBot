@@ -870,6 +870,27 @@
                 "JupiterRes": 72,
                 "MercuryAtk": 95,
                 "MercuryRes": 72
+            },
+            "Weapon": {
+                "Name": "Bandits Sword",
+                "Price": 700,
+                "Icon": "<:Bandits_Sword:569855398442696705>",
+                "ItemType": "LightBlade",
+                "IsEquippable": true,
+                "IsArtifact": true,
+                "AddStatsOnEquip": {
+                    "Atk": 12
+                },
+                "Unleash": {
+                    "UnleashName": "Rapid Smash",
+                    "UnleashAlignment": 2,
+                    "effectImages": [
+                        {
+                            "Id": "MultiplyDamage",
+                            "args": [ "0.9, 1.8", "50, 100" ]
+                        }
+                    ]
+                }
             }
         },
         {

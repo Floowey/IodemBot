@@ -42,7 +42,7 @@
                 "FlavourText": "Bats Bats Bats"
             },
             {
-                "EnemyNames": [ "Wild Mushroom", "Wild Mushroom" ],
+                "EnemyNames": [ "Wild Mushroom 1", "Wild Mushroom 1" ],
                 "Reward": {
                     "ItemProbability": 10,
                     "Item": "Leather Cap"
@@ -93,15 +93,15 @@
                 }
             },
             {
-                "EnemyNames": [ "Giant Bat", "Bat 1" ],
-                "FlavourText": "As you solve the puzzles, you find some empty rooms. Well, not *completely* empty.",
+                "EnemyNames": [ "Giant Bat 2", "Bat 1" ],
+                "FlavourText": "As you solve the puzzles, you find some empty rooms. Well, not *completely* empty, anyways.",
                 "Reward": {
                     "coins": 15,
                     "xp": 30
                 }
             },
             {
-                "EnemyNames": [ "Statue Attrape", "Statue Trap", "Statue Attrape" ],
+                "EnemyNames": [ "Statue Mockup", "Statue Trap", "Statue Mockup" ],
                 "Image": "https://cdn.discordapp.com/attachments/497696510688100352/595706918568198181/unknown.png",
                 "FlavourText": "You reach a very distinct room. You have heard about that. You see a bunch of statues, but you can only move one. Which one will it be?",
                 "Reward": {
@@ -110,13 +110,13 @@
                 }
             },
             {
-                "EnemyNames": [ "Amaze", "Amaze", "Amaze" ],
+                "EnemyNames": [ "Amaze 2", "Amaze 2", "Amaze 2" ],
                 "FlavourText": "You have solved the puzzle, you have reached the Star Chamber! Congratulations. Some nasty looking monsters are looking at you from afar, it would be better to turn back now than never!",
                 "Reward": {
                     "coins": 500,
                     "xp": 300,
-                    "DungeonProbability": 15,
-                    "DungeonUnlock": "Star Chamber"
+                    "SecretDungeonProbability": 15,
+                    "SecretDungeon": "Star Chamber"
                 }
             }
         ]
@@ -144,7 +144,7 @@
         "IsOneTimeOnly": true,
         "Matchups": [
             {
-                "EnemyNames": [ "Grisly" ],
+                "EnemyNames": [ "Grisly 1" ],
                 "FlavourText": "A bear is in the cave. I hope you're not surprised.",
                 "Reward": {
                     "ItemProbability": 20,
@@ -168,7 +168,7 @@
                 }
             },
             {
-                "EnemyNames": [ "Wight", "Undead", "Wight" ],
+                "EnemyNames": [ "Wight", "Undead 2", "Wight" ],
                 "FlavourText": "*We need to go deeper*",
                 "Reward": {
                     "ChestProbability": 15,
@@ -176,7 +176,7 @@
                 }
             },
             {
-                "EnemyNames": [ "Lich", "Ghost Mage" ],
+                "EnemyNames": [ "Lich 2", "Ghost Mage 2" ],
                 "FlavourText": "The cave is getting spooky. You can see a yellow stone glimmering in the back.",
                 "Reward": {
                     "coins": 50,
@@ -253,6 +253,104 @@
                     "Chest": "Gold",
                     "ItemProbability": 50,
                     "Item": "Psynergy Rod"
+                }
+            }
+        ]
+    },
+
+    "Tret Tree": {
+        "Name": "Tret Tree",
+        "Image": "https://vignette.wikia.nocookie.net/goldensun/images/8/8f/KolimaForestTret.png/revision/latest?cb=20100212082034",
+        "FlavourText": "Inside the cursed tree, Tret",
+        "Matchups": [
+
+            {
+                "EnemyNames": [ "Rat 1", "Rat Soldier 1", "Rat 1" ],
+                "FlavourText": "A respectable first fight, yet you sigh upon recalling the great size of Tret.",
+                "reward": {
+                    "xp": 60,
+                    "coins": 60
+                }
+            },
+            {
+                "EnemyNames": [ "Gnome", "Creeper 1", "Brutal Troll 1", "Rat 1" ],
+                "FlavourText": "First there was the forest, now there's this tree maze, too.",
+                "reward": {
+                    "xp": 140,
+                    "coins": 100
+                }
+            },
+            {
+                "EnemyNames": [ "Drone Bee 1", "Gnome", "Gnome", "Gnome" ],
+                "FlavourText": "Since they were born, they've been stayin' alive.",
+                "Reward": {
+                    "xp": 120,
+                    "coins": 200
+                }
+            },
+            {
+                "EnemyNames": [ "Spider 1", "Spider 1", "Spider 1", "Spider 1", "Spider 1" ],
+                "FlavourText": "After some searching around a while, you find a room with a table of spiders playing cards, they quickly notice you, uh oh...",
+                "Reward": {
+                    "xp": 300,
+                    "coins": 400,
+                    "ChestProbability": 20,
+                    "Chest": "normal"
+                }
+            },
+            {
+                "EnemyNames": [ "Jupiter Djinni 1" ],
+                "FlavourText": "You take the first exit you see, which leads to a jupiter Djinni.",
+                "Reward": {
+                    "xp": 100,
+                    "coins": 200
+                }
+            },
+            {
+                "EnemyNames": [ "Creeper 1", "Creeper 1", "Creeper 1", "Creeper 1" ],
+                "FlavourText": "You enter the third floor and see a Creeper next to a chest.",
+                "Reward": {
+                    "FlavourText": "It turns out there was some creepers hiding inside the chest waiting to pounce.",
+                    "xp": 200,
+                    "coins": 140
+                }
+            },
+            {
+                "EnemyNames": [ "Brutal Troll 1" ],
+                "FlavourText": "As you are about to check the chest again... another troll enters the room",
+                "Reward": {
+                    "xp": 60,
+                    "coins": 100
+                }
+            },
+            {
+                "EnemyNames": [ "Brutal Troll 1" ],
+                "FlavourText": "As you are about to check the chest AGAIN, another troll enters the room",
+                "Reward": {
+                    "xp": 60,
+                    "coins": 100,
+                    "FlavourText": "The chest has engraved within 'you only have a 30 percent chance of getting what's inside, this chest was made by a troll'",
+                    "ItemProbability": 30,
+                    "Item": "Healing Ring"
+                }
+            },
+            {
+                "EnemyNames": [ "Rat 1", "Rat Soldier 1", "Gnome" ],
+                "FlavourText": "You are greatly demoralized, you exit the room while pondering what made the hole in the middle of the room and spot some more meanies",
+                "reward": {
+                    "FlavourText": "You are overcome with frustration at this stupid tree and turn around",
+                    "xp": 80,
+                    "coins": 80
+                }
+            },
+            {
+                "EnemyNames": [ "Tret" ],
+                "FlavourText": "After deciding to try committing suicide out of frustration of the maze, you accidentally find Tret, yay!",
+                "Reward": {
+                    "xp": 2500,
+                    "coins": 1200,
+                    "ChestProbability": 100,
+                    "Chest": "silver"
                 }
             }
         ]

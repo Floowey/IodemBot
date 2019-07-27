@@ -4718,8 +4718,8 @@
         "ItemType": "Ring",
         "IsEquippable": true,
         "IsArtifact": true,
-        "ChanceToActivate": 30,
-        "ChanceToBreak": 20,
+        "ChanceToActivate": 25,
+        "ChanceToBreak": 10,
         "Unleash": {
             "effectImages": [
                 {

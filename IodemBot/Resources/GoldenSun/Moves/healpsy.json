@@ -164,6 +164,17 @@
         "percentage": 0,
         "singleTarget": true
     },
+    "Earnest Ply": {
+        "name": "Earnest Ply",
+        "targetType": 1,
+        "emote": "<:Pure_Ply:536969776036315136>",
+        "range": 1,
+        "element": 3,
+        "PPCost": 12,
+        "healPower": 1000,
+        "percentage": 0,
+        "singleTarget": true
+    },
     "Wish": {
         "name": "Wish",
         "targetType": 2,
