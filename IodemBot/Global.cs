@@ -9,5 +9,13 @@ namespace IodemBot
         internal static ulong MessageIdToTrack { get; set; }
         internal static Random Random { get; set; } = new Random();
         internal static DateTime UpSince { get; set; }
+
+        internal static string DateString
+        {
+            get
+            {
+                return DateTime.Now.ToString("MM_dd_HH-mm-ss");
+            }
+        }
     }
 }

@@ -21,7 +21,7 @@ namespace IodemBot.Modules
             embed.WithColor(Colors.Get("Iodem"));
             embed.WithDescription(message);
             await Context.Message.DeleteAsync();
-            await Context.Channel.SendMessageAsync("", false, embed.Build());
+            await Context.Channel.SendMessageAsync(message, false, embed.Build());
         }
 
         [Command("mock")]
@@ -277,6 +277,10 @@ namespace IodemBot.Modules
                         builder.Append($"`{rank + 1}` {account.ServerStats.ColossoHighestRoundEndlessQuadNames} - `{account.ServerStats.ColossoHighestRoundEndlessQuad}`");
                         break;
                 }
+            }
+            if (type == RankEnum.Solo)
+            {
+                builder.Append("\n\nHonorary Mention:\nSmeecko - `81`\nby breaking the Time-Space Continuum");
             }
             embed.WithDescription(builder.ToString());
 

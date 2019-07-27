@@ -91,7 +91,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             List<AdeptClassSeries> availableClasses = allClasses.Where(c => c.IsDefault && c.Elements.Contains(User.Element)).ToList();
             availableClasses.AddRange(allClasses.Where(c => User.BonusClasses.Contains(c.Name) && c.Elements.Contains(User.Element)).ToList());
             var position = User.ClassToggle % availableClasses.Count;
-            return availableClasses.ElementAt(position);
+            return availableClasses.ElementAt(position).Clone();
         }
 
         public static bool TryGetClassSeries(string series, out AdeptClassSeries outSeries)

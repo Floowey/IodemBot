@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using System;
 using System.Linq;
 using static IodemBot.Modules.GoldenSunMechanics.Psynergy;
 
@@ -120,6 +121,11 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public static Stats operator +(Stats s1, Stats s2)
         {
             return new Stats(s1.MaxHP + s2.MaxHP, s1.MaxPP + s2.MaxPP, s1.Atk + s2.Atk, s1.Def + s2.Def, s1.Spd + s2.Spd);
+        }
+
+        public static Stats operator -(Stats s1, Stats s2)
+        {
+            return new Stats(Math.Max(0, s1.MaxHP - s2.MaxHP), Math.Max(0, s1.MaxPP - s2.MaxPP), Math.Max(0, s1.Atk - s2.Atk), Math.Max(0, s1.Def - s2.Def), Math.Max(0, s1.Spd - s2.Spd));
         }
 
         public override string ToString()

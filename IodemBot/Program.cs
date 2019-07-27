@@ -103,7 +103,7 @@ namespace IodemBot
             {
                 if (msg.Exception != null)
                 {
-                    File.AppendAllText($"Logs/{date}_log.log", msg.Exception.InnerException.ToString() + "\n");
+                    Console.WriteLine(msg.Exception.ToString());
                 }
             }
             catch
