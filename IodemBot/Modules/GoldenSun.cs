@@ -90,7 +90,8 @@ namespace IodemBot.Modules
             var user = (SocketGuildUser)Context.User;
             var account = UserAccounts.GetAccount(user);
             var embed = new EmbedBuilder();
-            var p = new PlayerFighter(user);
+            var factory = new PlayerFighterFactory();
+            var p = factory.CreatePlayerFighter(user);
 
             embed.WithColor(Colors.Get(account.Element.ToString()));
             var author = new EmbedAuthorBuilder();
@@ -111,7 +112,8 @@ namespace IodemBot.Modules
             user = user ?? (SocketGuildUser)Context.User;
             var account = UserAccounts.GetAccount(user);
             var embed = new EmbedBuilder();
-            var p = new PlayerFighter(user);
+            var factory = new PlayerFighterFactory();
+            var p = factory.CreatePlayerFighter(user);
 
             embed.WithColor(Colors.Get(account.Element.ToString()));
             var author = new EmbedAuthorBuilder();
@@ -134,15 +136,15 @@ namespace IodemBot.Modules
             embed.AddField("Current Equip", account.Inv.GearToString(AdeptClassSeriesManager.GetClassSeries(account).Archtype), true);
             embed.AddField("Psynergy", p.GetMoves(false), false);
 
-            embed.AddField("Stats", p.stats.ToString(), true);
-            embed.AddField("Elemental Stats", p.elstats.ToString(), true);
+            embed.AddField("Stats", p.Stats.ToString(), true);
+            embed.AddField("Elemental Stats", p.ElStats.ToString(), true);
             embed.AddField("Unlocked Classes", account.BonusClasses.Length == 0 ? "none" : string.Join(", ", account.BonusClasses));
 
             var Footer = new EmbedFooterBuilder();
             Footer.WithText("Joined this Server on " + user.JoinedAt.Value.Date.ToString("dd-MM-yyyy"));
             Footer.WithIconUrl(Sprites.GetImageFromName("Iodem"));
             embed.WithFooter(Footer);
-
+            var built = embed.Build();
             await Context.Channel.SendMessageAsync("", false, embed.Build());
         }
 
@@ -155,7 +157,8 @@ namespace IodemBot.Modules
             user = user ?? (SocketGuildUser)Context.User;
             var account = UserAccounts.GetAccount(user);
             var embed = new EmbedBuilder();
-            var p = new PlayerFighter(user);
+            var factory = new PlayerFighterFactory();
+            var p = factory.CreatePlayerFighter(user);
 
             embed.WithColor(Colors.Get(account.Element.ToString()));
             var author = new EmbedAuthorBuilder();
@@ -175,12 +178,47 @@ namespace IodemBot.Modules
 
             //await Context.User.SendMessageAsync("", false, embed.Build());
             await Context.Channel.SendMessageAsync("", false, embed.Build());
+
+            Console.WriteLine(JsonConvert.SerializeObject(account, Formatting.Indented));
+        }
+
+        [Command("Dungeons")]
+        [Cooldown(5)]
+        public async Task ListDungeons()
+        {
+            var account = UserAccounts.GetAccount(Context.User);
+            var defaultDungeons = EnemiesDatabase.DefaultDungeons;
+            var availableDefaultDungeons = defaultDungeons.Where(d => d.Requirement.Applies(account)).Select(s => s.Name).ToArray();
+            var unavailableDefaultDungeons = defaultDungeons.Where(d => !d.Requirement.Applies(account)).Select(s => s.Name).ToArray();
+
+            var unlockedDungeons = account.Dungeons.Select(s => EnemiesDatabase.GetDungeon(s));
+            var availablePermUnlocks = unlockedDungeons.Where(d => d.IsOneTimeOnly && d.Requirement.Applies(account)).Select(s => s.Name).ToArray();
+            var unavailablePermUnlocks = unlockedDungeons.Where(d => d.IsOneTimeOnly && !d.Requirement.Applies(account)).Select(s => s.Name).ToArray();
+
+            var availableOneTimeUnlocks = unlockedDungeons.Where(d => !d.IsOneTimeOnly && d.Requirement.Applies(account)).Select(s => s.Name).ToArray();
+            var unavailableOneTimeUnlocks = unlockedDungeons.Where(d => !d.IsOneTimeOnly && !d.Requirement.Applies(account)).Select(s => s.Name).ToArray();
+
+            var embed = new EmbedBuilder();
+            embed.WithTitle("Dungeons");
+            if (defaultDungeons.Count() > 0)
+            {
+                embed.AddField("Default Unlocks", $"Available: {string.Join(", ", availableDefaultDungeons)} \n Unavailable: {string.Join(", ", unavailableDefaultDungeons)}");
+            }
+            if (availablePermUnlocks.Count() > 0)
+            {
+                embed.AddField("Permanent Unlocks", $"Available: {string.Join(", ", availablePermUnlocks)} \n Unavailable: {string.Join(", ", unavailablePermUnlocks)}");
+            }
+            if (availableOneTimeUnlocks.Count() > 0)
+            {
+                embed.AddField("One Time Entries", $"Available: {string.Join(", ", availableOneTimeUnlocks)} \n Unavailable: {string.Join(", ", unavailableOneTimeUnlocks)}");
+            }
+            await Context.Channel.SendMessageAsync("", false, embed.Build());
         }
 
         [Command("element"), Alias("el")]
         [Remarks("Get your current Element or set it to one of the four with e.g. `i!element Venus`")]
         [Cooldown(5)]
-        public async Task Element(Element chosenElement)
+        public async Task Element(Element chosenElement, [Remainder] string classSeriesName = null)
         {
             var embed = new EmbedBuilder();
             var account = UserAccounts.GetAccount(Context.User);
@@ -213,6 +251,11 @@ namespace IodemBot.Modules
 
             account.Element = chosenElement;
             account.ClassToggle = 0;
+            if (classSeriesName != null && classSeriesName != "")
+            {
+                SetClass(account, classSeriesName);
+            }
+
             UserAccounts.SaveAccounts();
             embed.WithColor(Colors.Get(chosenElement.ToString()));
             embed.WithDescription($"Welcome to the {chosenElement.ToString()} Clan, {account.GsClass} {((SocketGuildUser)Context.User).DisplayName()}!");
