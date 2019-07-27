@@ -11,11 +11,11 @@ using System.Threading.Tasks;
 
 namespace IodemBot.Modules.ColossoBattles
 {
-    internal class SingleBattleManager : PvEBattleManager
+    internal class SingleBattleEnvironment : PvEEnvironment
     {
         private int LureCaps = 0;
 
-        public SingleBattleManager(string Name, ITextChannel lobbyChannel, ITextChannel BattleChannel, BattleDifficulty diff) : base(Name, lobbyChannel, BattleChannel)
+        public SingleBattleEnvironment(string Name, ITextChannel lobbyChannel, ITextChannel BattleChannel, BattleDifficulty diff) : base(Name, lobbyChannel, BattleChannel)
         {
             internalDiff = diff;
             _ = Reset();
@@ -28,7 +28,7 @@ namespace IodemBot.Modules.ColossoBattles
         {
             Battle.TeamB = new List<ColossoFighter>();
             EnemiesDatabase.GetEnemies(Difficulty, Enemy).ForEach(f => Battle.AddPlayer(f, ColossoBattle.Team.B));
-            Console.WriteLine($"Up against {Battle.TeamB.First().name}");
+            Console.WriteLine($"Up against {Battle.TeamB.First().Name}");
         }
 
         protected override async Task AddPlayer(SocketReaction reaction)
@@ -39,7 +39,8 @@ namespace IodemBot.Modules.ColossoBattles
             }
             SocketGuildUser player = (SocketGuildUser)reaction.User.Value;
             var playerAvatar = UserAccounts.GetAccount(player);
-            var p = new PlayerFighter(player);
+            var factory = new PlayerFighterFactory();
+            var p = factory.CreatePlayerFighter(player);
 
             if (Name == "Bronze")
             {
@@ -82,7 +83,7 @@ namespace IodemBot.Modules.ColossoBattles
                     Battle.AddPlayer(EnemiesDatabase.GetRandomEnemies(Difficulty, 1).Random(), ColossoBattle.Team.B);
                 }
             }
-            Console.WriteLine($"Up against {Battle.TeamB.First().name}");
+            Console.WriteLine($"Up against {Battle.TeamB.First().Name}");
         }
 
         protected override async Task GameOver()
@@ -94,7 +95,7 @@ namespace IodemBot.Modules.ColossoBattles
             }
             if (Battle.GetWinner() == ColossoBattle.Team.A)
             {
-                var wasMimic = Battle.TeamB.Any(e => e.name.Contains("Mimic"));
+                var wasMimic = Battle.TeamB.Any(e => e.Name.Contains("Mimic"));
                 winners.ConvertAll(s => (PlayerFighter)s).ForEach(async p => await ServerGames.UserWonBattle(p.avatar, 1, LureCaps, p.battleStats, Difficulty, lobbyChannel, winners, wasMimic));
 
                 _ = WriteGameOver();

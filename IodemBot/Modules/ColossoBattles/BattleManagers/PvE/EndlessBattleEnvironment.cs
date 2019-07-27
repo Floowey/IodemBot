@@ -11,13 +11,13 @@ using System.Threading.Tasks;
 
 namespace IodemBot.Modules.ColossoBattles
 {
-    internal class EndlessBattleManager : PvEBattleManager
+    internal class EndlessBattleEnvironment : PvEEnvironment
     {
         private int LureCaps = 0;
         private int winsInARow = 0;
         private int StageLength { get; set; } = 12;
 
-        public EndlessBattleManager(string Name, ITextChannel lobbyChannel, ITextChannel BattleChannel) : base(Name, lobbyChannel, BattleChannel)
+        public EndlessBattleEnvironment(string Name, ITextChannel lobbyChannel, ITextChannel BattleChannel) : base(Name, lobbyChannel, BattleChannel)
         {
             _ = Reset();
         }
@@ -28,7 +28,7 @@ namespace IodemBot.Modules.ColossoBattles
         {
             Battle.TeamB = new List<ColossoFighter>();
             EnemiesDatabase.GetEnemies(Difficulty, Enemy).ForEach(f => Battle.AddPlayer(f, ColossoBattle.Team.B));
-            Console.WriteLine($"Up against {Battle.TeamB.First().name}");
+            Console.WriteLine($"Up against {Battle.TeamB.First().Name}");
         }
 
         public override void SetNextEnemy()
@@ -47,7 +47,7 @@ namespace IodemBot.Modules.ColossoBattles
                     Battle.AddPlayer(EnemiesDatabase.GetRandomEnemies(Difficulty, 1).Random(), ColossoBattle.Team.B);
                 }
             }
-            Console.WriteLine($"Up against {Battle.TeamB.First().name}");
+            Console.WriteLine($"Up against {Battle.TeamB.First().Name}");
         }
 
         protected override async Task GameOver()
@@ -60,18 +60,18 @@ namespace IodemBot.Modules.ColossoBattles
             if (Battle.GetWinner() == ColossoBattle.Team.A)
             {
                 winsInARow++;
-                var wasMimic = Battle.TeamB.Any(e => e.name.Contains("Mimic"));
+                var wasMimic = Battle.TeamB.Any(e => e.Name.Contains("Mimic"));
                 winners.ConvertAll(s => (PlayerFighter)s).ForEach(async p => await ServerGames.UserWonBattle(p.avatar, winsInARow, LureCaps, p.battleStats, Difficulty, lobbyChannel, winners, wasMimic));
-
+                Console.WriteLine("Winners rewarded.");
                 Battle.TeamA.ForEach(p =>
                 {
                     p.PPrecovery += (winsInARow <= 8 * 4 && winsInARow % 4 == 0) ? 1 : 0;
                     p.RemoveNearlyAllConditions();
                     p.Buffs = new List<Buff>();
-                    p.Heal((uint)(p.stats.HP * 5 / 100));
+                    p.Heal((uint)(p.Stats.HP * 5 / 100));
                 });
 
-                var text = $"{winners.First().name}'s Party wins Battle {winsInARow}! Battle will reset shortly";
+                var text = $"{winners.First().Name}'s Party wins Battle {winsInARow}! Battle will reset shortly";
                 await Task.Delay(2000);
                 await StatusMessage.ModifyAsync(m => { m.Content = text; m.Embed = null; });
 
@@ -104,7 +104,8 @@ namespace IodemBot.Modules.ColossoBattles
             }
             SocketGuildUser player = (SocketGuildUser)reaction.User.Value;
             var playerAvatar = UserAccounts.GetAccount(player);
-            var p = new PlayerFighter(player);
+            var factory = new PlayerFighterFactory();
+            var p = factory.CreatePlayerFighter(player);
 
             if (playerAvatar.Inv.GetGear(AdeptClassSeriesManager.GetClassSeries(playerAvatar).Archtype).Any(i => i.Name == "Lure Cap"))
             {

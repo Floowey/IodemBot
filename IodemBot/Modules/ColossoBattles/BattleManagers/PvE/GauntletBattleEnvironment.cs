@@ -1,5 +1,8 @@
 ﻿using Discord;
+using Discord.WebSocket;
 using IodemBot.Core.Leveling;
+using IodemBot.Core.UserManagement;
+using IodemBot.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,17 +11,16 @@ using static IodemBot.Modules.ColossoBattles.EnemiesDatabase;
 
 namespace IodemBot.Modules.ColossoBattles
 {
-    internal class GauntletBattleManager : PvEBattleManager
+    internal class GauntletBattleEnvironment : PvEEnvironment
     {
         public Dungeon Dungeon;
         public DungeonMatchup matchup;
         public List<DungeonMatchup>.Enumerator enumerator;
         private bool EndOfDungeon = false;
 
-        public GauntletBattleManager(string Name, ITextChannel lobbyChannel, ITextChannel BattleChannel, string DungeonName) : base(Name, lobbyChannel, BattleChannel)
+        public GauntletBattleEnvironment(string Name, ITextChannel lobbyChannel, ITextChannel BattleChannel, string DungeonName) : base(Name, lobbyChannel, BattleChannel)
         {
             SetEnemy(DungeonName);
-            Console.WriteLine("hi");
             _ = Reset();
         }
 
@@ -28,6 +30,7 @@ namespace IodemBot.Modules.ColossoBattles
         {
             Dungeon = GetDungeon(Enemy);
             enumerator = Dungeon.Matchups.GetEnumerator();
+            _ = Reset();
         }
 
         public override void SetNextEnemy()
@@ -36,7 +39,7 @@ namespace IodemBot.Modules.ColossoBattles
             {
                 matchup = enumerator.Current;
                 Battle.TeamB.Clear();
-                matchup.Enemy.ForEach(e => Battle.AddPlayer(e, ColossoBattle.Team.B));
+                matchup.Enemy.ForEach(e => Battle.AddPlayer((NPCEnemy)e.Clone(), ColossoBattle.Team.B));
                 EndOfDungeon = false;
             }
             else
@@ -45,11 +48,46 @@ namespace IodemBot.Modules.ColossoBattles
             }
         }
 
+        protected override EmbedBuilder GetEnemyEmbedBuilder()
+        {
+            var builder = base.GetEnemyEmbedBuilder();
+            if (matchup.Image != null)
+            {
+                builder.WithThumbnailUrl(matchup.Image);
+            }
+            return builder;
+        }
+
         public override async Task Reset()
         {
             enumerator = Dungeon.Matchups.GetEnumerator();
             matchup = enumerator.Current;
             await base.Reset();
+            var e = new EmbedBuilder();
+            e.WithThumbnailUrl(Dungeon.Image);
+            e.WithDescription(EnemyMessage.Content);
+            await EnemyMessage.ModifyAsync(m =>
+            {
+                m.Content = "";
+                m.Embed = e.Build();
+            });
+        }
+
+        protected override async Task AddPlayer(SocketReaction reaction)
+        {
+            if (PlayerMessages.Values.Any(s => (s.avatar.ID == reaction.UserId)))
+            {
+                return;
+            }
+            SocketGuildUser player = (SocketGuildUser)reaction.User.Value;
+            var playerAvatar = UserAccounts.GetAccount(player);
+
+            if (!Dungeon.Requirement.Applies(playerAvatar))
+            {
+                return;
+            }
+
+            await base.AddPlayer(reaction);
         }
 
         protected override string GetEnemyMessageString()
@@ -78,14 +116,14 @@ namespace IodemBot.Modules.ColossoBattles
                     {
                         p.RemoveNearlyAllConditions();
                         p.Buffs = new List<Buff>();
-                        p.Heal((uint)(p.stats.HP * 5 / 100));
+                        p.Heal((uint)(p.Stats.HP * 5 / 100));
                     });
 
                 SetNextEnemy();
 
                 if (!EndOfDungeon)
                 {
-                    var text = $"{winners.First().name}'s Party wins Battle! \n {matchup.FlavourText}.";
+                    var text = $"{winners.First().Name}'s Party wins Battle! \n {matchup.FlavourText}.";
                     await Task.Delay(2000);
                     await StatusMessage.ModifyAsync(m => { m.Content = text; m.Embed = null; });
                     await Task.Delay(2000);
@@ -93,7 +131,10 @@ namespace IodemBot.Modules.ColossoBattles
                     _ = StartBattle();
                 }
                 else
-                { _ = WriteGameOver(); }
+                {
+                    SetEnemy(DefaultDungeons.Random().Name);
+                    _ = WriteGameOver();
+                }
             }
             else
             {

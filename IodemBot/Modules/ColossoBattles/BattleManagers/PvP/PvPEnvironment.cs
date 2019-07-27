@@ -14,7 +14,7 @@ using static IodemBot.Modules.ColossoBattles.ColossoBattle;
 
 namespace IodemBot.Modules.ColossoBattles
 {
-    public abstract class PvPBattleManager : BattleManager
+    public abstract class PvPEnvironment : BattleEnvironment
     {
         protected class PvPTeamCollector
         {
@@ -36,7 +36,7 @@ namespace IodemBot.Modules.ColossoBattles
             {Team.B, new PvPTeamCollector(){team = Team.B, enemies = Team.A } },
         };
 
-        public PvPBattleManager(string Name, ITextChannel lobbyChannel, ITextChannel teamAChannel, ITextChannel teamBChannel, uint playersToStart = 3, uint playersToStartB = 3) : base(Name, lobbyChannel)
+        public PvPEnvironment(string Name, ITextChannel lobbyChannel, ITextChannel teamAChannel, ITextChannel teamBChannel, uint playersToStart = 3, uint playersToStartB = 3) : base(Name, lobbyChannel)
         {
             PlayersToStart = playersToStart;
             PlayersToStartB = playersToStartB;
@@ -171,7 +171,7 @@ namespace IodemBot.Modules.ColossoBattles
         {
             await Task.Delay(2000);
             var winners = Battle.GetTeam(Battle.GetWinner());
-            var text = $"{winners.FirstOrDefault().name}'s Party wins! Battle will reset shortly";
+            var text = $"{winners.FirstOrDefault().Name}'s Party wins! Battle will reset shortly";
 
             _ = Teams[Team.A].StatusMessage.ModifyAsync(m => { m.Content = text; m.Embed = null; });
             _ = Teams[Team.B].StatusMessage.ModifyAsync(m => { m.Content = text; m.Embed = null; });
@@ -328,11 +328,18 @@ namespace IodemBot.Modules.ColossoBattles
                 return;
             }
             SocketGuildUser player = (SocketGuildUser)reaction.User.Value;
-            await player.AddRoleAsync(TeamBRole);
-            playersWithBRole.Add(player);
+            if (team == Team.B)
+            {
+                await player.AddRoleAsync(TeamBRole);
+                playersWithBRole.Add(player);
+            }
             var playerAvatar = UserAccounts.GetAccount(player);
 
-            var p = new PlayerFighter(player);
+            var factory = new PlayerFighterFactory()
+            {
+                LevelOption = LevelOption.SetLevel,
+            };
+            var p = factory.CreatePlayerFighter(player);
             await AddPlayer(p, team);
         }
 
@@ -345,7 +352,7 @@ namespace IodemBot.Modules.ColossoBattles
 
             Battle.AddPlayer(player, team);
 
-            var playerMsg = await Teams[team].teamChannel.SendMessageAsync($"{player.name} wants to battle!");
+            var playerMsg = await Teams[team].teamChannel.SendMessageAsync($"{player.Name} wants to battle!");
             Teams[team].PlayerMessages.Add(playerMsg, player);
             resetIfNotActive.Start();
 
@@ -443,12 +450,12 @@ namespace IodemBot.Modules.ColossoBattles
             var e = new EmbedBuilder();
             if (Battle.SizeTeamB > 0)
             {
-                e.WithThumbnailUrl(Battle.GetTeam(team).FirstOrDefault().imgUrl);
+                e.WithThumbnailUrl(Battle.GetTeam(team).FirstOrDefault().ImgUrl);
             }
             var i = 1;
             foreach (ColossoFighter fighter in Battle.GetTeam(team))
             {
-                e.AddField($"{numberEmotes[i]} {fighter.ConditionsToString()}", $"{fighter.name}", true);
+                e.AddField($"{numberEmotes[i]} {fighter.ConditionsToString()}", $"{fighter.Name}", true);
                 i++;
             }
             return e;
@@ -468,6 +475,7 @@ namespace IodemBot.Modules.ColossoBattles
                     tasks.Add(msg.AddReactionsAsync(
                         numberEmotes
                         .Skip(1)
+                        .Take(Battle.GetTeam(V.enemies).Count)
                         .Select(s => new Emoji(s))
                         .ToArray()));
                 }
@@ -527,13 +535,13 @@ namespace IodemBot.Modules.ColossoBattles
                         tasks.Add(msg.RemoveReactionAsync(r.Emote, r.User.Value));
                         reactions.Remove(r);
                     }
-                    embed.WithThumbnailUrl(fighter.imgUrl);
-                    embed.WithColor(Colors.Get(fighter.moves.Where(m => m is Psynergy).Select(m => (Psynergy)m).Select(p => p.element.ToString()).ToArray()));
-                    embed.AddField($"{numberEmotes[i]}{fighter.ConditionsToString()}", fighter.name);
-                    embed.AddField("HP", $"{fighter.stats.HP} / {fighter.stats.MaxHP}", true);
-                    embed.AddField("PP", $"{fighter.stats.PP} / {fighter.stats.MaxPP}", true);
+                    embed.WithThumbnailUrl(fighter.ImgUrl);
+                    embed.WithColor(Colors.Get(fighter.Moves.Where(m => m is Psynergy).Select(m => (Psynergy)m).Select(p => p.element.ToString()).ToArray()));
+                    embed.AddField($"{numberEmotes[i]}{fighter.ConditionsToString()}", fighter.Name);
+                    embed.AddField("HP", $"{fighter.Stats.HP} / {fighter.Stats.MaxHP}", true);
+                    embed.AddField("PP", $"{fighter.Stats.PP} / {fighter.Stats.MaxPP}", true);
                     var s = new List<string>();
-                    foreach (var m in fighter.moves)
+                    foreach (var m in fighter.Moves)
                     {
                         if (m is Psynergy)
                         {
@@ -577,7 +585,7 @@ namespace IodemBot.Modules.ColossoBattles
                     {
                         emotes.Add(new Emoji(numberEmotes[i]));
                     }
-                    foreach (var m in fighter.moves)
+                    foreach (var m in fighter.Moves)
                     {
                         emotes.Add(m.GetEmote());
                     }
