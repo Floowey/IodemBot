@@ -76,7 +76,7 @@ namespace IodemBot.Core.UserManagement
                     sortedList = accounts.Where(d => d.ServerStats.ColossoHighestRoundEndlessQuad > 0)
                         .GroupBy(p => p.ServerStats.ColossoHighestRoundEndlessQuadNames)
                         .Select(group => group.First())
-                        .OrderByDescending(d => d.ServerStats.ColossoHighestRoundEndlessDuo)
+                        .OrderByDescending(d => d.ServerStats.ColossoHighestRoundEndlessQuad)
                         .ToList();
                     break;
 
@@ -115,7 +115,7 @@ namespace IodemBot.Core.UserManagement
                     sortedList = accounts.Where(d => d.ServerStats.ColossoHighestRoundEndlessQuad > 0)
                        .GroupBy(p => p.ServerStats.ColossoHighestRoundEndlessQuadNames)
                        .Select(group => group.First())
-                       .OrderByDescending(d => d.ServerStats.ColossoHighestRoundEndlessDuo)
+                       .OrderByDescending(d => d.ServerStats.ColossoHighestRoundEndlessQuad)
                        .ToList();
                     break;
             }

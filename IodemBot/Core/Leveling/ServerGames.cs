@@ -69,7 +69,7 @@ namespace IodemBot.Core.Leveling
             userAccount.BattleStats += battleStats;
             var bs = userAccount.BattleStats;
 
-            if (Global.Random.Next(0, 100) <= matchup.Reward.ChestProbability)
+            if (matchup.Reward.ChestProbability > 0 && Global.Random.Next(0, 100) <= matchup.Reward.ChestProbability)
             {
                 var awardedChest = matchup.Reward.Chest;
                 userAccount.Inv.AwardChest(matchup.Reward.Chest);
@@ -79,16 +79,39 @@ namespace IodemBot.Core.Leveling
                 await lobbyChannel.SendMessageAsync("", false, embed.Build());
             }
 
-            if (Global.Random.Next(0, 100) <= matchup.Reward.DungeonProbability)
+            if (matchup.Reward.DungeonProbability > 0 && Global.Random.Next(0, 100) <= matchup.Reward.DungeonProbability - 1)
             {
-                userAccount.Dungeons.Add(matchup.Reward.DungeonUnlock);
-                var embed = new EmbedBuilder();
-                embed.WithColor(Colors.Get("Iodem"));
-                embed.WithDescription($"{((SocketTextChannel)lobbyChannel).Users.Where(u => u.Id == userAccount.ID).FirstOrDefault().Mention} found a map for {matchup.Reward.DungeonUnlock}!");
-                await lobbyChannel.SendMessageAsync("", false, embed.Build());
+                if (EnemiesDatabase.HasDungeon(matchup.Reward.DungeonUnlock))
+                {
+                    var Dungeon = EnemiesDatabase.GetDungeon(matchup.Reward.DungeonUnlock);
+                    if (!(Dungeon.IsOneTimeOnly || userAccount.Dungeons.Contains(Dungeon.Name)))
+                    {
+                        userAccount.Dungeons.Add(matchup.Reward.DungeonUnlock);
+                        var embed = new EmbedBuilder();
+                        embed.WithColor(Colors.Get("Iodem"));
+                        embed.WithDescription($"{((SocketTextChannel)lobbyChannel).Users.Where(u => u.Id == userAccount.ID).FirstOrDefault().Mention} found a map for {matchup.Reward.DungeonUnlock}!");
+                        await lobbyChannel.SendMessageAsync("", false, embed.Build());
+                    }
+                }
             }
 
-            if (Global.Random.Next(0, 100) <= matchup.Reward.ItemProbability)
+            if (matchup.Reward.SecretDungeonProbability > 0 && Global.Random.Next(0, 1000) <= matchup.Reward.SecretDungeonProbability - 1)
+            {
+                if (EnemiesDatabase.HasDungeon(matchup.Reward.DungeonUnlock))
+                {
+                    var Dungeon = EnemiesDatabase.GetDungeon(matchup.Reward.DungeonUnlock);
+                    if (!(Dungeon.IsOneTimeOnly || userAccount.Dungeons.Contains(Dungeon.Name)))
+                    {
+                        userAccount.Dungeons.Add(matchup.Reward.SecretDungeon);
+                        var embed = new EmbedBuilder();
+                        embed.WithColor(Colors.Get("Iodem"));
+                        embed.WithDescription($"{((SocketTextChannel)lobbyChannel).Users.Where(u => u.Id == userAccount.ID).FirstOrDefault().Mention} found a map for {matchup.Reward.SecretDungeon}!");
+                        await lobbyChannel.SendMessageAsync("", false, embed.Build());
+                    }
+                }
+            }
+
+            if (matchup.Reward.ItemProbability > 0 && Global.Random.Next(0, 100) <= matchup.Reward.ItemProbability - 1)
             {
                 var item = ItemDatabase.GetItem(matchup.Reward.Item);
                 userAccount.Inv.Add(matchup.Reward.Item);
@@ -165,7 +188,7 @@ namespace IodemBot.Core.Leveling
                     if (winsInARow > userAccount.ServerStats.ColossoHighestRoundEndlessDuo)
                     {
                         userAccount.ServerStats.ColossoHighestRoundEndlessDuo = winsInARow;
-                        userAccount.ServerStats.ColossoHighestRoundEndlessDuoNames = string.Join(", ", winners.Select(p => p.name));
+                        userAccount.ServerStats.ColossoHighestRoundEndlessDuoNames = string.Join(", ", winners.Select(p => p.Name));
                     }
                     break;
 
@@ -173,7 +196,7 @@ namespace IodemBot.Core.Leveling
                     if (winsInARow > userAccount.ServerStats.ColossoHighestRoundEndlessTrio)
                     {
                         userAccount.ServerStats.ColossoHighestRoundEndlessTrio = winsInARow;
-                        userAccount.ServerStats.ColossoHighestRoundEndlessTrioNames = string.Join(", ", winners.Select(p => p.name));
+                        userAccount.ServerStats.ColossoHighestRoundEndlessTrioNames = string.Join(", ", winners.Select(p => p.Name));
                     }
                     break;
 
@@ -181,7 +204,7 @@ namespace IodemBot.Core.Leveling
                     if (winsInARow > userAccount.ServerStats.ColossoHighestRoundEndlessQuad)
                     {
                         userAccount.ServerStats.ColossoHighestRoundEndlessQuad = winsInARow;
-                        userAccount.ServerStats.ColossoHighestRoundEndlessQuadNames = string.Join(", ", winners.Select(p => p.name));
+                        userAccount.ServerStats.ColossoHighestRoundEndlessQuadNames = string.Join(", ", winners.Select(p => p.Name));
                     }
                     break;
             }
@@ -189,7 +212,7 @@ namespace IodemBot.Core.Leveling
             userAccount.BattleStats += battleStats;
             var bs = userAccount.BattleStats;
 
-            if (wasMimic || Global.Random.Next(0, 100) <= 7 + battleStats.TotalTeamMates * 2 + 4 * LureCaps + winsInARow / 10)
+            if (wasMimic || Global.Random.Next(0, 100) <= 7 + battleStats.TotalTeamMates * 2 + 4 * LureCaps + winsInARow / 10 - 1)
             {
                 ChestQuality awardedChest = GetRandomChest(diff);
                 userAccount.Inv.AwardChest(awardedChest);
