@@ -3,6 +3,7 @@ using Discord.Commands;
 using Discord.WebSocket;
 using Iodembot.Preconditions;
 using IodemBot.Core.UserManagement;
+using IodemBot.Modules.ColossoBattles;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -181,6 +182,28 @@ namespace IodemBot.Modules.GoldenSunMechanics
             else
             {
                 embed.WithDescription(":x: You can only sell unequipped items in your possession.");
+                embed.WithColor(Colors.Get("Error"));
+                await Context.Channel.SendMessageAsync("", false, embed.Build());
+            }
+        }
+
+        [Command("Yeet")]
+        [Remarks("Yeet and item and wave it goodbye forever.")]
+        public async Task YeetItem([Remainder] string item)
+        {
+            var inv = UserAccounts.GetAccount(Context.User).Inv;
+            var embed = new EmbedBuilder();
+            if (inv.Remove(item))
+            {
+                var it = ItemDatabase.GetItem(item);
+                embed.WithDescription($"{Context.User.Username} yeets {it.Icon}{it.Name} as far as possible.");
+                embed.WithColor(it.Color);
+
+                await Context.Channel.SendMessageAsync("", false, embed.Build());
+            }
+            else
+            {
+                embed.WithDescription(":x: You can only get rid of unequipped items in your possession.");
                 embed.WithColor(Colors.Get("Error"));
                 await Context.Channel.SendMessageAsync("", false, embed.Build());
             }
@@ -378,6 +401,11 @@ namespace IodemBot.Modules.GoldenSunMechanics
             var inv = UserAccounts.GetAccount(Context.User).Inv;
             var embed = new EmbedBuilder();
             embed.WithColor(Colors.Get("Iodem"));
+            if (ColossoPvE.UserInBattle(UserAccounts.GetAccount(Context.User)))
+            {
+                return;
+            }
+
             if (inv.Repair(item))
             {
                 embed.WithDescription($"Item repaired successfully.");
@@ -415,7 +443,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             if (item.Name.Contains("NOT IMPLEMENTED"))
             {
                 var emb = new EmbedBuilder();
-                emb.WithDescription(":x: I asked our treasurer, the weapon smith, the priest, the librarian and a cool looking kid walking by, and noone has heard of that item!");
+                emb.WithDescription(":x: I asked our treasurer, the weapon smith, the priest, the librarian and a cool looking kid walking by, and no one has heard of that item!");
                 emb.WithColor(Colors.Get("Error"));
                 await Context.Channel.SendMessageAsync("", false, emb.Build());
                 return;
