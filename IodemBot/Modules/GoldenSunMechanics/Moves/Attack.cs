@@ -45,12 +45,12 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
             var log = new List<string>
             {
-                $"{emote} {User.name} attacks!"
+                $"{emote} {User.Name} attacks!"
             };
 
             if (!enemy.IsAlive)
             {
-                log.Add($"{enemy.name} is down already!");
+                log.Add($"{enemy.Name} is down already!");
                 return log;
             }
 
@@ -62,14 +62,14 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
             if (Global.Random.Next(0, chanceToMiss) == 0)
             {
-                log.Add($"{enemy.name} dodges the blow!");
+                log.Add($"{enemy.Name} dodges the blow!");
                 return log;
             }
 
             bool weaponUnleashed = User.Weapon != null && User.Weapon.IsUnleashable && Global.Random.Next(0, 100) <= User.unleashRate;
             if (weaponUnleashed)
             {
-                log.Add($"{User.Weapon.IconDisplay} {User.name}'s {User.Weapon.Name} lets out a howl! {User.Weapon.Unleash.UnleashName}!");
+                log.Add($"{User.Weapon.IconDisplay} {User.Name}'s {User.Weapon.Name} lets out a howl! {User.Weapon.Unleash.UnleashName}!");
                 User.Weapon.Unleash.Effects
                     .Where(e => e.timeToActivate == IEffect.TimeToActivate.beforeDamge)
                     .ToList()
@@ -81,8 +81,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 return log;
             }
 
-            var atk = User.stats.Atk * User.MultiplyBuffs("Attack");
-            var def = enemy.stats.Def * enemy.MultiplyBuffs("Defense") * enemy.ignoreDefense;
+            var atk = User.Stats.Atk * User.MultiplyBuffs("Attack");
+            var def = enemy.Stats.Def * enemy.MultiplyBuffs("Defense") * enemy.ignoreDefense;
             uint damage = (uint)Global.Random.Next(0, 4);
             if (def < atk)
             {
@@ -103,17 +103,17 @@ namespace IodemBot.Modules.GoldenSunMechanics
             }
 
             //var elMult = 1 + Math.Max(0.0, (int)User.elstats.GetPower(element) * User.MultiplyBuffs("Power") - (int)enemy.elstats.GetRes(element) * enemy.MultiplyBuffs("Resistance")) / 400;
-            var elMult = 1 + (User.elstats.GetPower(element) * User.MultiplyBuffs("Power") - enemy.elstats.GetRes(element) * enemy.MultiplyBuffs("Resistance")) / 400;
+            var elMult = 1 + (User.ElStats.GetPower(element) * User.MultiplyBuffs("Power") - enemy.ElStats.GetRes(element) * enemy.MultiplyBuffs("Resistance")) / 400;
 
             var punctuation = "!";
-            if (enemy.elstats.GetRes(element) == enemy.elstats.HighestRes())
+            if (enemy.ElStats.GetRes(element) == enemy.ElStats.HighestRes())
             {
                 punctuation = ".";
             }
 
             damage = (uint)(damage * elMult);
 
-            if (enemy.elstats.GetRes(element) == enemy.elstats.LeastRes())
+            if (enemy.ElStats.GetRes(element) == enemy.ElStats.LeastRes())
             {
                 punctuation = "!!!";
                 if (User is PlayerFighter p)
@@ -142,6 +142,19 @@ namespace IodemBot.Modules.GoldenSunMechanics
                     .Where(e => e.timeToActivate == IEffect.TimeToActivate.afterDamage)
                     .ToList()
                     .ForEach(e => log.AddRange(e.Apply(User, enemy)));
+            }
+
+            if (enemy.IsAlive && enemy.HasCondition(Condition.Counter))
+            {
+                var counterAtk = enemy.Stats.Atk * enemy.MultiplyBuffs("Attack");
+                var counterDef = User.Stats.Def * User.MultiplyBuffs("Defense") * User.ignoreDefense;
+                uint CounterDamage = (uint)Global.Random.Next(0, 4);
+                if (def < atk)
+                {
+                    CounterDamage = (uint)((counterAtk - counterDef) * User.defensiveMult / 2);
+                }
+                log.Add($"{enemy.Name} strikes back!");
+                log.AddRange(User.DealDamage(CounterDamage));
             }
 
             if (User is PlayerFighter player)

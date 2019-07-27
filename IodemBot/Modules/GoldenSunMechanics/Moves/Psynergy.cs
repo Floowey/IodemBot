@@ -19,7 +19,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public override bool InternalValidSelection(ColossoFighter User)
         {
-            return User.stats.PP >= PPCost && !(PPCost > 1 && User.HasCondition(Condition.Seal));
+            return User.Stats.PP >= PPCost && !(PPCost > 1 && User.HasCondition(Condition.Seal));
         }
 
         protected override Validation Validate(ColossoFighter User)
@@ -37,25 +37,25 @@ namespace IodemBot.Modules.GoldenSunMechanics
             //PPCost > 1 is, because Items are right now implemented as Psynergy with PPCost 1
             if (PPCost > 1 && User.HasCondition(Condition.Seal))
             {
-                log.Add($"{User.name}'s Psynergy is sealed!");
+                log.Add($"{User.Name}'s Psynergy is sealed!");
                 return new Validation(false, log);
             }
 
-            if (User.stats.PP < PPCost)
+            if (User.Stats.PP < PPCost)
             {
-                log.Add($"{User.name} has not enough PP to cast {this.name}.");
+                log.Add($"{User.Name} has not enough PP to cast {this.name}.");
                 return new Validation(false, log);
             }
             List<ColossoFighter> targets = GetTarget(User);
-            if (!effects.Any(i => i is ReviveEffect) && targets.TrueForAll(i => !i.IsAlive))
+            if (!effects.Any(i => i is ReviveEffect || i is MysticCallEffect) && targets.TrueForAll(i => !i.IsAlive))
             {
-                log.Add($"{User.name} wants to {(PPCost == 1 ? "use" : "cast")} {name}, but {(targets.Count == 1 ? "the target is" : "all the targets are")} down.");
+                log.Add($"{User.Name} wants to {(PPCost == 1 ? "use" : "cast")} {name}, but {(targets.Count == 1 ? "the target is" : "all the targets are")} down.");
                 return new Validation(false, log);
             }
 
-            User.stats.PP -= (int)PPCost;
+            User.Stats.PP -= (int)PPCost;
 
-            log.Add($"{emote} {User.name} {(PPCost == 1 ? "uses" : "casts")} {this.name}!");
+            log.Add($"{emote} {User.Name} {(PPCost == 1 ? "uses" : "casts")} {this.name}!");
             return new Validation(true, log);
         }
     }
