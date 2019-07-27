@@ -65,12 +65,12 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 if (OnTarget)
                 {
                     Target.ApplyBuff(new Buff(StatToBoost, Multiplier, (uint)Turns));
-                    log.Add($"{Target.name}'s {StatToBoost} {(Multiplier > 1 ? "rises" : "lowers")}.");
+                    log.Add($"{Target.Name}'s {StatToBoost} {(Multiplier > 1 ? "rises" : "lowers")}.");
                 }
                 else
                 {
                     User.ApplyBuff(new Buff(StatToBoost, Multiplier, (uint)Turns));
-                    log.Add($"{User.name}'s {StatToBoost} {(Multiplier > 1 ? "rises" : "lowers")}.");
+                    log.Add($"{User.Name}'s {StatToBoost} {(Multiplier > 1 ? "rises" : "lowers")}.");
                 }
             }
 

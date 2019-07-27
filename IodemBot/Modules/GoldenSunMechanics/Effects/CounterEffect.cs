@@ -12,7 +12,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public override List<string> Apply(ColossoFighter User, ColossoFighter Target)
         {
             Target.AddCondition(Condition.Counter);
-            return new List<string>() { $"{Target.name} gets ready to strike back!" };
+            return new List<string>() { $"{Target.Name} gets ready to strike back!" };
         }
 
         public override string ToString()

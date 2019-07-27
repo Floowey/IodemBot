@@ -14,5 +14,10 @@ namespace IodemBot.Modules.GoldenSunMechanics
         {
             return "Doesn't have a effect, should probably have one. Please report.";
         }
+
+        protected override bool InternalValidSelection(ColossoFighter user)
+        {
+            return false;
+        }
     }
 }

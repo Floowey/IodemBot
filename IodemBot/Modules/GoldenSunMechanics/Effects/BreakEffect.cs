@@ -18,7 +18,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             {
                 if (b.multiplier > 1)
                 {
-                    log.Add($"{Target.name}'s Boost to {b.stat} normalizes");
+                    log.Add($"{Target.Name}'s Boost to {b.stat} normalizes");
                 }
                 else
                 {
