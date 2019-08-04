@@ -107,7 +107,7 @@ namespace IodemBot.Core.Leveling
 
         internal static async void UserAddedReaction(SocketGuildUser user, SocketReaction reaction)
         {
-            if (blackListedChannels.Contains(reaction.Channel.Id))
+            if (blackListedChannels.Contains(reaction.Channel.Id) || Modules.ColossoBattles.ColossoPvE.ChannelIds.Contains(reaction.Channel.Id))
             {
                 return;
             }
