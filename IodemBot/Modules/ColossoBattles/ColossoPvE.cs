@@ -21,6 +21,14 @@ namespace IodemBot.Modules.ColossoBattles
 
         public static SocketTextChannel LobbyChannel { get; private set; }
 
+        public static ulong[] ChannelIds
+        {
+            get
+            {
+                return battles.Select(b => b.GetIds).SelectMany(item => item).Distinct().ToArray();
+            }
+        }
+
         [Command("setup")]
         [RequireUserPermission(ChannelPermission.ManageMessages)]
         public async Task SetupColosso()
@@ -36,13 +44,18 @@ namespace IodemBot.Modules.ColossoBattles
         {
             battles.ForEach(old => old.Dispose());
             battles.Clear();
-            battles.Add(new SingleBattleEnvironment("Bronze", LobbyChannel, await PrepareBattleChannel("Bronze"), BattleDifficulty.Easy));
-            battles.Add(new SingleBattleEnvironment("Silver", LobbyChannel, await PrepareBattleChannel("Silver"), BattleDifficulty.Medium));
-            battles.Add(new SingleBattleEnvironment("Gold", LobbyChannel, await PrepareBattleChannel("Gold"), BattleDifficulty.Hard));
-            battles.Add(new EndlessBattleEnvironment("Showdown", LobbyChannel, await PrepareBattleChannel("Showdown")));
-            battles.Add(new TeamBattleEnvironment("PvPTeam", LobbyChannel, await PrepareBattleChannel("PvPTeamA", RoomVisibility.Private), await PrepareBattleChannel("PvPTeamB", RoomVisibility.TeamB)));
+            battles.Add(new SingleBattleEnvironment("Wilds", LobbyChannel, await PrepareBattleChannel("Weyard-Wilds"), BattleDifficulty.Easy));
+            battles.Add(new SingleBattleEnvironment("Woods", LobbyChannel, await PrepareBattleChannel("Weyard-Woods"), BattleDifficulty.Medium));
+            //battles.Add(new SingleBattleEnvironment("Wealds", LobbyChannel, await PrepareBattleChannel("Weyard-Wealds"), BattleDifficulty.Hard));
+
+            battles.Add(new EndlessBattleEnvironment("Endless", LobbyChannel, await PrepareBattleChannel("Endless-Encounters")));
+
+            battles.Add(new GauntletBattleEnvironment("Dungeon", LobbyChannel, await PrepareBattleChannel("deep-dungeon"), "Vale"));
+            //battles.Add(new GauntletBattleEnvironment("Catabombs", LobbyChannel, await PrepareBattleChannel("chilly-catacombs"), "Vale"));
+            battles.Add(new TeamBattleEnvironment("PvP", LobbyChannel, await PrepareBattleChannel("PvP-A", RoomVisibility.Private), await PrepareBattleChannel("PvP-B", RoomVisibility.TeamB)));
+
+            //battles.Add(new SingleBattleEnvironment("Gold", LobbyChannel, await PrepareBattleChannel("Gold"), BattleDifficulty.Hard));
             //battles.Add(new TeamBattleManager("OneVOne", LobbyChannel, await PrepareBattleChannel("OneVOneA", PermValue.Deny), await PrepareBattleChannel("OneVOneB", PermValue.Allow), 1));
-            //battles.Add(new GauntletBattleManager("Gauntlet", LobbyChannel, await PrepareBattleChannel("Dungeon"), "Vale"));
         }
 
         [Command("reset")]
@@ -77,32 +90,32 @@ namespace IodemBot.Modules.ColossoBattles
             var User = UserAccounts.GetAccount(Context.User);
             if (!EnemiesDatabase.HasDungeon(DungeonName))
             {
-                //invalid Dungeon
+                await Context.Channel.SendMessageAsync($"I don't know where that place is.");
                 return;
             }
-            if (User.Dungeons.Contains(DungeonName, StringComparer.InvariantCulture) || EnemiesDatabase.DefaultDungeons.Any(d => d.Name.ToLower().Equals(DungeonName.ToLower())))
+            if (User.Dungeons.Contains(DungeonName, StringComparer.InvariantCultureIgnoreCase) || EnemiesDatabase.DefaultDungeons.Any(d => d.Name.ToLower().Equals(DungeonName.ToLower())))
             {
                 var Dungeon = EnemiesDatabase.GetDungeon(DungeonName);
-                var openBattle = (battles.OfType<GauntletBattleEnvironment>().Where(b => !b.IsActive).FirstOrDefault());
+                var openBattle = battles.OfType<GauntletBattleEnvironment>().Where(b => b.IsReady).FirstOrDefault();
                 if (openBattle == null)
                 {
-                    //No room available
+                    await Context.Channel.SendMessageAsync($"All our carriots are full, please try again in a bit!");
                     return;
                 }
 
                 openBattle.SetEnemy(DungeonName);
-                _ = openBattle.Reset();
 
                 if (Dungeon.IsOneTimeOnly)
                 {
                     User.Dungeons.Remove(Dungeon.Name);
                 }
+                _ = Context.Message.DeleteAsync();
+                _ = Context.Channel.SendMessageAsync($"{openBattle.Name} has been prepared for your adventure to {Dungeon.Name}");
             }
-            await Task.CompletedTask;
         }
 
         [Command("Status")]
-        [RequireUserPermission(GuildPermission.Administrator)]
+        [RequireUserPermission(ChannelPermission.ManageMessages)]
         public async Task StatusOfBattle(string name)
         {
             await Context.Message.DeleteAsync();
@@ -117,7 +130,7 @@ namespace IodemBot.Modules.ColossoBattles
 
         private async Task<ITextChannel> PrepareBattleChannel(string Name, RoomVisibility visibility = RoomVisibility.All)
         {
-            var channel = await Context.Guild.GetOrCreateTextChannelAsync("colosso-" + Name);
+            var channel = await Context.Guild.GetOrCreateTextChannelAsync(Name);
             await channel.ModifyAsync(c =>
             {
                 c.CategoryId = ((ITextChannel)Context.Channel).CategoryId;

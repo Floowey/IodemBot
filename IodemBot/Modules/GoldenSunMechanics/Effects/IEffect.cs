@@ -68,6 +68,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 case "MysticCall":
                     return new MysticCallEffect(args);
 
+                case "NoEffect":
                 default: return new NoEffect();
             }
         }

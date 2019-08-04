@@ -33,12 +33,12 @@ namespace IodemBot.Modules.ColossoBattles
                 string json = File.ReadAllText("Resources/GoldenSun/Battles/enemies.json");
                 allEnemies = new Dictionary<string, NPCEnemy>(
                     JsonConvert.DeserializeObject<Dictionary<string, NPCEnemy>>(json),
-                    StringComparer.OrdinalIgnoreCase);
+                    StringComparer.InvariantCultureIgnoreCase);
 
                 json = File.ReadAllText("Resources/GoldenSun/Battles/dungeons.json");
                 dungeons = new Dictionary<string, Dungeon>(
                     JsonConvert.DeserializeObject<Dictionary<string, Dungeon>>(json),
-                    StringComparer.OrdinalIgnoreCase);
+                    StringComparer.InvariantCultureIgnoreCase);
             }
             catch (Exception e) // Just for debugging
             {
@@ -179,6 +179,7 @@ namespace IodemBot.Modules.ColossoBattles
             [JsonIgnore] public List<NPCEnemy> Enemy { get; } = new List<NPCEnemy>();
             public List<string> EnemyNames { get; set; }
             public string FlavourText { get; set; }
+            public RewardTables RewardTables { get; set; } = new RewardTables();
             public Reward Reward { get; set; } = new Reward();
             public string Image { get; set; }
         }

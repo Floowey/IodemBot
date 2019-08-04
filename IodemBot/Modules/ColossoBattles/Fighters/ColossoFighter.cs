@@ -590,21 +590,24 @@ namespace IodemBot.Modules.ColossoBattles
             {
                 return;
             }
-            if (Moves.Count() == 0)
+            if (Moves.Where(s => s.ValidSelection(this)).Count() == 0)
             {
                 selected = new Nothing();
                 hasSelected = true;
                 return;
             }
-            try
+            else
             {
-                selected = Moves.Where(s => s.ValidSelection(this)).Random();
-                selected.ChooseBestTarget(this);
-                hasSelected = true;
-            }
-            catch (Exception e)
-            {
-                throw new Exception($"{Name} failed to select random Move: {selected.name}", e);
+                try
+                {
+                    selected = Moves.Where(s => s.ValidSelection(this)).Random();
+                    selected.ChooseBestTarget(this);
+                    hasSelected = true;
+                }
+                catch (Exception e)
+                {
+                    throw new Exception($"{Name} failed to select random Move: {selected.name}", e);
+                }
             }
         }
 

@@ -537,7 +537,6 @@
             {
                 "name": "Wind Seer",
                 "movepool": [
-                    "Whirlwind",
                     "Plasma",
                     "Fresh Breeze"
                 ],
@@ -552,8 +551,7 @@
             {
                 "name": "Magician",
                 "movepool": [
-                    "Tornado",
-                    "Plasma",
+                    "Shine Plasma",
                     "Impact",
                     "Healthy Wind"
                 ],
@@ -568,8 +566,8 @@
             {
                 "name": "Mage",
                 "movepool": [
-                    "Tornado",
                     "Shine Plasma",
+                    "Bind",
                     "High Impact",
                     "Healthy Wind"
                 ],
@@ -584,8 +582,8 @@
             {
                 "name": "Magister",
                 "movepool": [
-                    "Tempest",
                     "Shine Plasma",
+                    "Bind",
                     "High Impact",
                     "Healing Gust"
                 ],
@@ -600,8 +598,8 @@
             {
                 "name": "Sorcerer",
                 "movepool": [
-                    "Tempest",
                     "Spark Plasma",
+                    "Bind",
                     "High Impact",
                     "Healing Gust"
                 ],
@@ -1135,14 +1133,14 @@
             1
         ],
         "elstats": {
-            "VenusAtk": 140,
-            "VenusRes": 140,
-            "MarsAtk": 140,
-            "MarsRes": 140,
-            "JupiterAtk": 100,
-            "JupiterRes": 100,
-            "MercuryAtk": 70,
-            "MercuryRes": 70
+            "VenusAtk": 130,
+            "VenusRes": 130,
+            "MarsAtk": 130,
+            "MarsRes": 130,
+            "JupiterAtk": 90,
+            "JupiterRes": 90,
+            "MercuryAtk": 65,
+            "MercuryRes": 65
         },
         "requirement": "ColossoWins",
         "isDefault": false,
@@ -1236,13 +1234,13 @@
         ],
         "elstats": {
             "VenusAtk": 130,
-            "VenusRes": 150,
-            "MarsAtk": 70,
-            "MarsRes": 70,
-            "JupiterAtk": 150,
-            "JupiterRes": 150,
-            "MercuryAtk": 90,
-            "MercuryRes": 90
+            "VenusRes": 130,
+            "MarsAtk": 65,
+            "MarsRes": 65,
+            "JupiterAtk": 130,
+            "JupiterRes": 130,
+            "MercuryAtk": 85,
+            "MercuryRes": 85
         },
         "requirement": "Level",
         "isDefault": false,
@@ -1335,19 +1333,19 @@
             3
         ],
         "elstats": {
-            "VenusAtk": 140,
-            "VenusRes": 140,
-            "MarsAtk": 100,
-            "MarsRes": 100,
-            "JupiterAtk": 70,
-            "JupiterRes": 70,
-            "MercuryAtk": 140,
-            "MercuryRes": 140
+            "VenusAtk": 130,
+            "VenusRes": 130,
+            "MarsAtk": 90,
+            "MarsRes": 90,
+            "JupiterAtk": 65,
+            "JupiterRes": 65,
+            "MercuryAtk": 130,
+            "MercuryRes": 130
         },
         "requirement": "ColossoWins",
         "isDefault": false,
         "archtype": "Warrior",
-        "description": "Crusaders want to outlast their opponents at all costs. The tough benefits of Nuts seem to be especially helpful in those regards..."
+        "description": "Crusaders are treasure hunters and try to pick up a bargain whenever possible."
     },
     {
         "name": "Page Series",
@@ -1437,14 +1435,14 @@
             2
         ],
         "elstats": {
-            "VenusAtk": 80,
-            "VenusRes": 80,
-            "MarsAtk": 140,
-            "MarsRes": 140,
-            "JupiterAtk": 140,
-            "JupiterRes": 140,
-            "MercuryAtk": 80,
-            "MercuryRes": 80
+            "VenusAtk": 70,
+            "VenusRes": 70,
+            "MarsAtk": 130,
+            "MarsRes": 130,
+            "JupiterAtk": 130,
+            "JupiterRes": 130,
+            "MercuryAtk": 70,
+            "MercuryRes": 70
         },
         "requirement": "UnlockedClasses",
         "isDefault": false,
@@ -1537,14 +1535,14 @@
             2
         ],
         "elstats": {
-            "VenusAtk": 80,
-            "VenusRes": 80,
-            "MarsAtk": 140,
-            "MarsRes": 140,
+            "VenusAtk": 70,
+            "VenusRes": 70,
+            "MarsAtk": 130,
+            "MarsRes": 130,
             "JupiterAtk": 130,
             "JupiterRes": 130,
-            "MercuryAtk": 90,
-            "MercuryRes": 90
+            "MercuryAtk": 80,
+            "MercuryRes": 80
         },
         "requirement": "Level",
         "isDefault": false,
@@ -1569,7 +1567,7 @@
                 }
             },
             {
-                "name": "Wanderer",
+                "name": "Aqua Wanderer",
                 "movepool": [
                     "Eruption",
                     "Hail Prism",
@@ -1584,7 +1582,7 @@
                 }
             },
             {
-                "name": "Ascetic",
+                "name": "Aqua Ascetic",
                 "movepool": [
                     "Eruption",
                     "Hail Prism",
@@ -1616,7 +1614,7 @@
                 }
             },
             {
-                "name": "Guru",
+                "name": "Aqua Guru",
                 "movepool": [
                     "Pyroclasm",
                     "Freeze Prism",
@@ -1637,12 +1635,12 @@
             3
         ],
         "elstats": {
-            "VenusAtk": 90,
-            "VenusRes": 90,
-            "MarsAtk": 140,
-            "MarsRes": 140,
-            "JupiterAtk": 80,
-            "JupiterRes": 80,
+            "VenusAtk": 70,
+            "VenusRes": 70,
+            "MarsAtk": 130,
+            "MarsRes": 130,
+            "JupiterAtk": 75,
+            "JupiterRes": 75,
             "MercuryAtk": 130,
             "MercuryRes": 130
         },
@@ -1742,10 +1740,10 @@
             "VenusRes": 130,
             "MarsAtk": 80,
             "MarsRes": 80,
-            "JupiterAtk": 140,
-            "JupiterRes": 140,
-            "MercuryAtk": 90,
-            "MercuryRes": 90
+            "JupiterAtk": 130,
+            "JupiterRes": 130,
+            "MercuryAtk": 85,
+            "MercuryRes": 85
         },
         "requirement": "Level",
         "isDefault": false,
@@ -1855,14 +1853,14 @@
             3
         ],
         "elstats": {
-            "VenusAtk": 80,
-            "VenusRes": 80,
-            "MarsAtk": 70,
-            "MarsRes": 70,
-            "JupiterAtk": 150,
-            "JupiterRes": 150,
-            "MercuryAtk": 150,
-            "MercuryRes": 150
+            "VenusAtk": 75,
+            "VenusRes": 75,
+            "MarsAtk": 65,
+            "MarsRes": 65,
+            "JupiterAtk": 140,
+            "JupiterRes": 140,
+            "MercuryAtk": 140,
+            "MercuryRes": 140
         },
         "requirement": "DaysActive",
         "isDefault": false,
@@ -1954,12 +1952,12 @@
             3
         ],
         "elstats": {
-            "VenusAtk": 140,
-            "VenusRes": 140,
-            "MarsAtk": 90,
-            "MarsRes": 90,
-            "JupiterAtk": 80,
-            "JupiterRes": 80,
+            "VenusAtk": 130,
+            "VenusRes": 130,
+            "MarsAtk": 70,
+            "MarsRes": 70,
+            "JupiterAtk": 75,
+            "JupiterRes": 75,
             "MercuryAtk": 130,
             "MercuryRes": 130
         },
@@ -2055,12 +2053,12 @@
             3
         ],
         "elstats": {
-            "VenusAtk": 80,
-            "VenusRes": 80,
-            "MarsAtk": 140,
-            "MarsRes": 140,
-            "JupiterAtk": 90,
-            "JupiterRes": 90,
+            "VenusAtk": 70,
+            "VenusRes": 70,
+            "MarsAtk": 130,
+            "MarsRes": 130,
+            "JupiterAtk": 85,
+            "JupiterRes": 85,
             "MercuryAtk": 130,
             "MercuryRes": 130
         },
@@ -2171,14 +2169,14 @@
             1
         ],
         "elstats": {
-            "VenusAtk": 150,
-            "VenusRes": 150,
-            "MarsAtk": 150,
-            "MarsRes": 150,
-            "JupiterAtk": 100,
-            "JupiterRes": 100,
-            "MercuryAtk": 50,
-            "MercuryRes": 50
+            "VenusAtk": 140,
+            "VenusRes": 140,
+            "MarsAtk": 140,
+            "MarsRes": 140,
+            "JupiterAtk": 80,
+            "JupiterRes": 80,
+            "MercuryAtk": 45,
+            "MercuryRes": 45
         },
         "requirement": "ColossoWins",
         "isDefault": false,
@@ -2270,12 +2268,12 @@
             2
         ],
         "elstats": {
-            "VenusAtk": 150,
-            "VenusRes": 150,
+            "VenusAtk": 130,
+            "VenusRes": 130,
             "MarsAtk": 75,
             "MarsRes": 75,
-            "JupiterAtk": 150,
-            "JupiterRes": 150,
+            "JupiterAtk": 130,
+            "JupiterRes": 130,
             "MercuryAtk": 70,
             "MercuryRes": 70
         },
@@ -2328,14 +2326,14 @@
             2
         ],
         "elstats": {
-            "VenusAtk": 130,
-            "VenusRes": 130,
-            "MarsAtk": 130,
-            "MarsRes": 130,
-            "JupiterAtk": 130,
-            "JupiterRes": 130,
-            "MercuryAtk": 25,
-            "MercuryRes": 25
+            "VenusAtk": 120,
+            "VenusRes": 120,
+            "MarsAtk": 120,
+            "MarsRes": 120,
+            "JupiterAtk": 120,
+            "JupiterRes": 120,
+            "MercuryAtk": 30,
+            "MercuryRes": 30
         },
         "requirement": "KillsByHand",
         "isDefault": false,
@@ -2476,14 +2474,14 @@
             3
         ],
         "elstats": {
-            "VenusAtk": 25,
-            "VenusRes": 25,
-            "MarsAtk": 130,
-            "MarsRes": 130,
-            "JupiterAtk": 130,
-            "JupiterRes": 130,
-            "MercuryAtk": 130,
-            "MercuryRes": 130
+            "VenusAtk": 30,
+            "VenusRes": 30,
+            "MarsAtk": 120,
+            "MarsRes": 120,
+            "JupiterAtk": 120,
+            "JupiterRes": 120,
+            "MercuryAtk": 120,
+            "MercuryRes": 120
         },
         "requirement": "SoloBattles",
         "isDefault": false,
@@ -2550,14 +2548,14 @@
             3
         ],
         "elstats": {
-            "VenusAtk": 130,
-            "VenusRes": 130,
-            "MarsAtk": 130,
-            "MarsRes": 130,
-            "JupiterAtk": 50,
-            "JupiterRes": 50,
-            "MercuryAtk": 130,
-            "MercuryRes": 130
+            "VenusAtk": 115,
+            "VenusRes": 115,
+            "MarsAtk": 115,
+            "MarsRes": 115,
+            "JupiterAtk": 40,
+            "JupiterRes": 40,
+            "MercuryAtk": 115,
+            "MercuryRes": 115
         },
         "requirement": "Teammates",
         "isDefault": false,
@@ -2608,14 +2606,14 @@
             3
         ],
         "elstats": {
-            "VenusAtk": 110,
-            "VenusRes": 110,
-            "MarsAtk": 25,
-            "MarsRes": 25,
-            "JupiterAtk": 150,
-            "JupiterRes": 150,
-            "MercuryAtk": 150,
-            "MercuryRes": 150
+            "VenusAtk": 100,
+            "VenusRes": 100,
+            "MarsAtk": 30,
+            "MarsRes": 30,
+            "JupiterAtk": 120,
+            "JupiterRes": 120,
+            "MercuryAtk": 120,
+            "MercuryRes": 120
         },
         "requirement": "Heals",
         "isDefault": false,
@@ -2683,14 +2681,14 @@
             3
         ],
         "elstats": {
-            "VenusAtk": 110,
-            "VenusRes": 110,
-            "MarsAtk": 25,
-            "MarsRes": 25,
-            "JupiterAtk": 150,
-            "JupiterRes": 150,
-            "MercuryAtk": 150,
-            "MercuryRes": 150
+            "VenusAtk": 120,
+            "VenusRes": 120,
+            "MarsAtk": 30,
+            "MarsRes": 30,
+            "JupiterAtk": 120,
+            "JupiterRes": 120,
+            "MercuryAtk": 120,
+            "MercuryRes": 120
         },
         "requirement": "Revives",
         "isDefault": false,

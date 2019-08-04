@@ -3408,7 +3408,7 @@
         "extraturns": 0
     },
     "Guardian Ball 1": {
-        "movepool": [ "Guard Aura" ],
+        "movepool": [ "Guard Aura", "Guard Aura", "Guard Aura" ],
         "name": "Guardian Ball",
         "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Guardian_Ball.png",
         "stats": {
@@ -10300,7 +10300,7 @@
             "Trap"
         ],
         "stats": {
-            "maxHP": 20000,
+            "maxHP": 1,
             "maxPP": 0,
             "Atk": 100,
             "Def": 2,
@@ -10344,5 +10344,71 @@
         },
         "hasDefend": false,
         "hasAttack": false
+    },
+    "Crab": {
+        "name": "Crab",
+        "imgurl": "https://goldensunwiki.net/w/images/0/0e/UnusedMonster2.gif",
+        "movepool": [
+            "Vicious Chop",
+            "Claw Attack",
+            "Twin Shear",
+            "Slice",
+            "Water Breath"
+        ],
+        "stats": {
+            "maxHP": 110,
+            "maxPP": 66,
+            "Atk": 93,
+            "Def": 37,
+            "Spd": 28
+        },
+        "elstats": {
+            "VenusAtk": 110,
+            "VenusRes": 72,
+            "MarsAtk": 25,
+            "MarsRes": 25,
+            "JupiterAtk": 48,
+            "JupiterRes": 48,
+            "MercuryAtk": 100,
+            "MercuryRes": 72
+        }
+    },
+    "Tolbi Guard": {
+        "movepool": [ "Slice" ],
+        "name": "Tolbi Guard",
+        "imgurl": "https://www.spriters-resource.com/resources/sheet_icons/79/82607.png",
+        "stats": {
+            "maxhp": 421,
+            "maxpp": 0,
+            "atk": 251,
+            "def": 69,
+            "spd": 104
+        },
+        "elstats": {
+            "venusres": 72,
+            "mercuryres": 72,
+            "marsres": 72,
+            "jupiterres": 72,
+            "jupiterpow": 80
+        }
+    },
+    "Gladiator": {
+        "movepool": [],
+        "name": "Gladiator",
+        "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Azart.png",
+        "stats": {
+            "maxhp": 365,
+            "maxpp": 0,
+            "atk": 328,
+            "def": 66,
+            "spd": 134
+        },
+        "elstats": {
+            "venusres": 90,
+            "mercuryres": 90,
+            "marsres": 90,
+            "jupiterres": 90
+        },
+        "extraturns": 0
     }
 }

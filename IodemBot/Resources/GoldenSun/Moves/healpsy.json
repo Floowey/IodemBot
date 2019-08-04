@@ -74,7 +74,12 @@
         "PPCost": 5,
         "healPower": 50,
         "percentage": 13,
-        "singleTarget": true
+        "singleTarget": true,
+        "effectImages": [
+            {
+                "id": "Restore"
+            }
+        ]
     },
     "Nature's Boon": {
         "name": "Nature's Boon",
@@ -85,7 +90,12 @@
         "PPCost": 8,
         "healPower": 100,
         "percentage": 25,
-        "singleTarget": true
+        "singleTarget": true,
+        "effectImages": [
+            {
+                "id": "Restore"
+            }
+        ]
     },
     "Vital Boon": {
         "name": "Vital Boon",
@@ -96,7 +106,12 @@
         "PPCost": 18,
         "healPower": 200,
         "percentage": 50,
-        "singleTarget": true
+        "singleTarget": true,
+        "effectImages": [
+            {
+                "id": "Restore"
+            }
+        ]
     },
     "Fresh Breeze": {
         "name": "Fresh Breeze",

@@ -7,63 +7,124 @@
         "Matchups": [
             {
                 "EnemyNames": [ "Vale Training" ],
-                "Reward": {
-                    "xp": 20,
-                    "gold": 7,
-                    "ItemProbability": 20,
-                    "Item": "Short Sword"
-                },
+                "RewardTables": [
+                    [
+                        {
+                            "xp": 20,
+                            "coins": 7,
+                            "Weight": 10
+                        }
+                    ],
+                    [
+                        {
+                            "Item": "Short Sword",
+                            "Weight": 1
+                        },
+                        {
+                            "Weight": 2
+                        }
+                    ]
+                ],
                 "FlavourText": "Valeans are training hard to protect their Village and Secrets. As a young adept, you are walking in their Footsteps."
             },
             {
                 "EnemyNames": [ "Vermin 1" ],
                 "FlavourText": "A light Storm is coming up, watch out for critters coming forward.",
-                "Reward": {
-                    "xp": 20,
-                    "gold": 7
-                }
+                "RewardTables": [
+                    [
+                        {
+                            "xp": 20,
+                            "coins": 7
+                        }
+                    ]
+                ]
             },
             {
                 "EnemyNames": [ "Vermin 1", "Bat 1", "Vermin 1" ],
-                "Reward": {
-                    "xp": 20,
-                    "gold": 7,
-                    "ChestProbability": 10,
-                    "Chest": "Wooden"
-                },
+                "RewardTables": [
+                    [
+                        {
+                            "xp": 20,
+                            "coins": 7
+                        }
+                    ],
+                    [
+                        {
+                            "chest": "Wooden",
+                            "weight": 1
+                        },
+                        {
+                            "Weight": 4
+                        }
+                    ]
+                ],
                 "FlavourText": "The storm gets harsher, more critters attack."
             },
             {
                 "EnemyNames": [ "Bat 1", "Bat 1", "Bat 1" ],
-                "Reward": {
-                    "ChestProbability": 50,
-                    "Chest": "Wooden"
-                },
+                "RewardTables": [
+                    [
+                        {
+                            "chest": "Wooden",
+                            "Weight": 1
+                        },
+                        {
+                            "Weight": 2
+                        }
+                    ]
+                ],
                 "FlavourText": "Bats Bats Bats"
             },
             {
                 "EnemyNames": [ "Wild Mushroom 1", "Wild Mushroom 1" ],
-                "Reward": {
-                    "ItemProbability": 10,
-                    "Item": "Leather Cap"
-                },
+                "RewardTables": [
+                    [
+                        {
+                            "xp": 20,
+                            "coins": 7
+                        }
+                    ],
+                    [
+                        {
+                            "Item": "Mace",
+                            "Weight": 1
+                        },
+                        {
+                            "Weight": 3
+                        }
+                    ]
+                ],
                 "FlavourText": "Did you eat something funny? Why are the Mushroom walking!?"
             },
             {
                 "EnemyNames": [ "Boulder" ],
-                "Reward": {
-                    "DungeonProbability": 10,
-                    "DungeonUnlock": "Sol Sanctum"
-                },
+                "RewardTables": [
+                    [
+                        {
+                            "Dungeon": "Sol Sanctum",
+                            "Weight": 1
+                        },
+                        {
+                            "Weight": 2
+                        }
+                    ]
+                ],
                 "FlavourText": "Watch out! A boulder is falling from Mount Aleph! You need to dodge it!"
             },
             {
                 "EnemyNames": [ "Vermin 1", "Mad Vermin", "Vermin 1" ],
                 "image": "https://goldensunwiki.net/wiki/Special:FilePath/Mad_Vermin.png",
-                "Reward": {
-                    "DungeonProbability": 10,
-                    "DungeonUnlock": "Vale Cave"
-                },
+                "RewardTables": [
+                    [
+                        {
+                            "Dungeon": "Vale Cave",
+                            "Weight": 1
+                        },
+                        {
+                            "Weight": 3
+                        }
+                    ]
+                ],
                 "FlavourText": "The storm appears to calm down, but a few critters are still roaming around."
             }
         ]
@@ -76,48 +137,82 @@
         "Matchups": [
             {
                 "EnemyNames": [ "Wild Mushroom 1", "Wild Mushroom 1" ],
-                "Reward": {
-                    "xp": 30,
-                    "gold": 17
-                },
-                "FlavourText": "The entrance of the Sanctuary is massive and impressive. You enter cautiously..."
+                "FlavourText": "The entrance of the Sanctuary is massive and impressive. You enter cautiously...",
+                "RewardTables": [
+                    [
+                        {
+                            "xp": 30,
+                            "coins": 17
+                        }
+                    ]
+                ]
             },
             {
-                "EnemyNames": [ "Vermin 2", "Bat 2", "Vermin 2" ],
+                "EnemyNames": [ "Vermin 1", "Bat 2", "Vermin 1" ],
                 "FlavourText": "As the hallway lights up, some monsters get scared and jump forward",
-                "Reward": {
-                    "coins": 15,
-                    "xp": 30,
-                    "ItemProbability": 20,
-                    "Item": "Herbed Shirt"
-                }
+                "RewardTables": [
+                    [
+                        {
+                            "xp": 15,
+                            "coins": 30
+                        }
+                    ],
+                    [
+                        {
+                            "Item": "Herbed Shirt",
+                            "Weight": 1
+                        },
+                        {
+                            "Weight": 4
+                        }
+                    ]
+                ]
             },
             {
-                "EnemyNames": [ "Giant Bat 2", "Bat 1" ],
+                "EnemyNames": [ "Giant Bat 1", "Bat 1" ],
                 "FlavourText": "As you solve the puzzles, you find some empty rooms. Well, not *completely* empty, anyways.",
-                "Reward": {
-                    "coins": 15,
-                    "xp": 30
-                }
+                "RewardTables": [
+                    [
+                        {
+                            "xp": 15,
+                            "coins": 30
+                        }
+                    ]
+                ]
             },
             {
                 "EnemyNames": [ "Statue Mockup", "Statue Trap", "Statue Mockup" ],
                 "Image": "https://cdn.discordapp.com/attachments/497696510688100352/595706918568198181/unknown.png",
                 "FlavourText": "You reach a very distinct room. You have heard about that. You see a bunch of statues, but you can only move one. Which one will it be?",
-                "Reward": {
-                    "coins": 0,
-                    "xp": 100
-                }
+                "RewardTables": [
+                    [
+                        {
+                            "xp": 0,
+                            "coins": 100
+                        }
+                    ]
+                ]
             },
             {
                 "EnemyNames": [ "Amaze 2", "Amaze 2", "Amaze 2" ],
                 "FlavourText": "You have solved the puzzle, you have reached the Star Chamber! Congratulations. Some nasty looking monsters are looking at you from afar, it would be better to turn back now than never!",
-                "Reward": {
-                    "coins": 500,
-                    "xp": 300,
-                    "SecretDungeonProbability": 15,
-                    "SecretDungeon": "Star Chamber"
-                }
+                "RewardTables": [
+                    [
+                        {
+                            "xp": 20,
+                            "coins": 7
+                        }
+                    ],
+                    [
+                        {
+                            "Dungeon": "Star Chamber",
+                            "Weight": 1
+                        },
+                        {
+                            "Weight": 7
+                        }
+                    ]
+                ]
             }
         ]
     },
@@ -132,9 +227,13 @@
             {
                 "EnemyNames": [ "Venus Djinni 16", "Mars Djinni 11", "Jupiter Djinni 18", "Mercury Djinni 15" ],
                 "FlavourText": "That was close. Look! The guardians of the elemental stars are noticing you!"
+            },
+            {
+                "EnemyNames": [ "Gillman Lord 1", "Aqua Hydra 1", "Gillman Lord 1" ],
+                "FlavourText": "It appears there's more going on than usual, what is happening? The creatues living in the water are climbing up to you."
             }
         ],
-        "FlavourText": "The mysterious star Chamber. Watchout, it's slippery!",
+        "FlavourText": "The mysterious star chamber. Watchout, it's slippery!",
         "Requirement": {
             "MinLevel": 50
         }
@@ -146,53 +245,82 @@
             {
                 "EnemyNames": [ "Grisly 1" ],
                 "FlavourText": "A bear is in the cave. I hope you're not surprised.",
-                "Reward": {
-                    "ItemProbability": 20,
-                    "Item": "Fur Coat"
-                }
+                "RewardTables": [
+                    [
+                        {
+                            "Item": "Fur Coat",
+                            "Weight": 1
+                        },
+                        {
+                            "Weight": 4
+                        }
+                    ]
+                ]
             },
             {
                 "EnemyNames": [ "Mad Vermin", "Gressil", "Mad Vermin" ],
                 "FlavourText": "Wipe off the hair, let's go!",
-                "Reward": {
-                    "coins": 20,
-                    "xp": 100
-                }
+                "RewardTables": [
+                    [
+                        {
+                            "xp": 100,
+                            "coins": 20
+                        }
+                    ]
+                ]
             },
             {
-                "EnemyNames": [ "Death Cap", "Poison Toad", "Death Cap" ],
+                "EnemyNames": [ "Death Cap", "Roach", "Roach", "Death Cap" ],
                 "FlavourText": "The cave is getting darker and danker..",
-                "Reward": {
-                    "coins": 0,
-                    "xp": 100
-                }
+                "RewardTables": [
+                    [
+                        {
+                            "xp": 80,
+                            "coins": 80
+                        }
+                    ]
+                ]
             },
             {
                 "EnemyNames": [ "Wight", "Undead 2", "Wight" ],
                 "FlavourText": "*We need to go deeper*",
-                "Reward": {
-                    "ChestProbability": 15,
-                    "Chest": "Silver"
-                }
+                "RewardTables": [
+                    [
+                        {
+                            "Chest": "Silver"
+                        },
+                        {
+                            "Weight": 4
+                        }
+                    ]
+                ]
             },
             {
                 "EnemyNames": [ "Lich 2", "Ghost Mage 2" ],
                 "FlavourText": "The cave is getting spooky. You can see a yellow stone glimmering in the back.",
-                "Reward": {
-                    "coins": 50,
-                    "xp": 120
-                }
+                "RewardTables": [
+                    [
+                        {
+                            "xp": 50,
+                            "coins": 120
+                        }
+                    ]
+                ]
             },
             {
                 "EnemyNames": [ "Jupiter Djinni 10" ],
                 "FlavourText": "Oh hey! I guess it was worth it after all! Now let's quickly exit this creepy place...",
-                "Reward": {
-                    "coins": 500,
-                    "xp": 500
-                }
+                "RewardTables": [
+                    [
+                        {
+                            "xp": 500,
+                            "coins": 500
+                        }
+                    ]
+                ]
             }
         ],
-        "FlavourText": "Hidden behind Kraden's Cottage, there is a small Cave. Whatever might be in there?",
+        "FlavourText": "Hidden behind Kraden's Cottage, there is a small cave. Whatever might be in there?",
         "Requirement": {
             "MinLevel": 30
         }
@@ -201,7 +329,6 @@
         "Name": "Warrior Training Grounds",
         "Image": "https://images-eu.ssl-images-amazon.com/images/I/81MYd8u7plL.png",
         "FlavourText": "W.A.R.R.I.O.R. We Are Rough Ruffians In Ongoing Rough Scuffles.",
-        "IsDefault": true,
         "Requirement": {
             "Archtypes": [ 0 ]
         },
@@ -219,7 +346,6 @@
         "Name": "Miko Training Grounds",
         "Image": "https://cdn.discordapp.com/attachments/497696510688100352/595581189901910029/unknown.png",
         "FlavourText": "Mikos train their spiritual powers in the holy ruins beneath Izumo.",
-        "IsDefault": true,
         "Requirement": {
             "ClassSeries": [ "Miko Series" ]
         },
@@ -257,7 +383,6 @@
             }
         ]
     },
-
     "Tret Tree": {
         "Name": "Tret Tree",
         "Image": "https://vignette.wikia.nocookie.net/goldensun/images/8/8f/KolimaForestTret.png/revision/latest?cb=20100212082034",
@@ -354,5 +479,232 @@
                 }
             }
         ]
+    },
+    "Tolbi": {
+        "Name": "Tolbi",
+        "IsOneTimeOnly": true,
+        "Matchups": [
+            {
+                "EnemyNames": [ "Calamar 1", "Crab", "Urchin Beast", "Calamar 1" ],
+                "FlavourText": "Aaah, the glorious city of tolbi. You have heard a lot about it and you head straight to the famous fountain to try your luck. As you approach, you see that it is full of monsters...",
+                "RewardTables": [
+                    [
+                        {
+                            "Dungeon": "Karagol Sea"
+                        },
+                        {
+                            "Weight": 3
+                        }
+
+                    ],
+                    [
+                        {
+                            "Coins": 30,
+                            "XP": 30
+                        }
+                    ],
+                    [
+                        {
+                            "Item": "Assasin Blade"
+                        },
+                        {
+                            "Item": "Earth Shield"
+                        },
+                        {
+                            "Item": "Spirit Armor"
+                        },
+                        {
+                            "Item": "Adepts Helm"
+                        },
+                        {
+                            "Item": "Burning Axe"
+                        },
+                        {
+                            "Item": "Cocktail Dress"
+                        },
+                        {
+                            "Item": "Ninja Hood"
+                        },
+                        {
+                            "Item": "Kimono"
+                        },
+                        {
+                            "Item": "Battle Gloves"
+                        },
+                        {
+                            "Item": "Guardian Armlet"
+                        },
+                        {
+                            "Item": "Grievous Mace"
+                        },
+                        {
+                            "Weight": 30
+                        }
+                    ]
+                ]
+            },
+            {
+                "EnemyNames": [ "Mars Djinni 3" ],
+                "FlavourText": "While fighting those monsters, you saw a glowing shadow slipping by a house. You decide to follow it. Wait, a glowing shadow? That doesn't make any.. whooah, it's a Djinni",
+                "RewardTables": [
+                    [
+                        {
+                            "xp": 90
+                        }
+                    ]
+                ]
+            },
+            {
+                "EnemyNames": [ "Ruffian", "Assassin", "Thief 2", "Bandit 2", "Ruffian" ],
+                "FlavourText": "As you come back to the main square, you witness some thugs trying to steal a poor merchants cob of corn. You must step in.",
+                "RewardTables": [
+                    [
+                        {
+                            "xp": 90
+                        }
+                    ],
+                    [
+                        {
+                            "Chest": "Wooden"
+                        },
+                        {
+                            "Chest": "Silver"
+                        },
+                        {
+                            "Weight": 4
+                        }
+                    ]
+                ]
+            },
+            {
+                "EnemyNames": [ "Tolbi Guard", "Guardian Ball 1", "Tolbi Guard", "Guardian Ball 1" ],
+                "FlavourText": "Sigh.. The commotion has alarmed the guards. You just wanted to help, right? You have destroyed the whole market and burned down half a house, but noone could have seen that coming, right? ......Right?",
+                "RewardTables": [
+                    [
+                        {
+                            "coins": 30,
+                            "xp": 80
+                        }
+                    ]
+                ]
+            },
+            {
+                "EnemyNames": [ "Gladiator", "Gladiator" ],
+                "FlavourText": "The Guards tell you that you are under arrest. They can't bring you there themselves, because they're injured too much, but give you the directions. On the way there you walk by some gladiators training. Let's say hello!",
+                "RewardTables": [
+                    [
+                        {
+                            "xp": 300
+                        }
+                    ],
+                    [
+                        {
+                            "Dungeon": "Colosso"
+                        },
+                        {
+                            "Weight": 1
+                        }
+                    ]
+                ]
+            },
+            {
+                "EnemyNames": [ "Mole 1", "Mad Mole 1", "Mole Mage 1" ],
+                "FlavourText": "You're done with this city. Too big, too strange. You start exploring the outskirts.",
+                "RewardTables": [
+                    [
+                        {
+                            "coins": 40,
+                            "xp": 70
+                        }
+                    ],
+                    [
+                        {
+                            "Chest": "Gold"
+                        },
+                        {
+                            "Chest": "Silver",
+                            "Weight": 2
+                        },
+                        {
+                            "Weight": 4
+                        }
+                    ]
+                ]
+            },
+            {
+                "EnemyNames": [ "Mercury Djinni 2" ],
+                "FlavourText": "The sky becomes overcast and something hard hits your head.",
+                "RewardTables": [
+                    [
+                        {
+                            "xp": 90
+                        }
+                    ]
+                ]
+            },
+            {
+                "EnemyNames": [ "Rabid Bat", "Giant Bat 2", "Vampire Bat" ],
+                "FlavourText": "Before the weather gets worse, you take shelter in a nearby cave.",
+                "RewardTables": [
+                    [
+                        {
+                            "coins": 40,
+                            "xp": 70
+                        }
+                    ],
+                    [
+                        {
+                            "Dungeon": "Altmiller Cave"
+                        },
+                        {
+                            "Weight": 3
+                        }
+                    ]
+
+                ]
+            },
+            {
+                "EnemyNames": [ "Gnome Mage", "Armored Rat 1", "Gnome Mage" ],
+                "FlavourText": "You realized that you are just walking around Karagol Sea. Let's head in the other direction.",
+                "RewardTables": [
+                    [
+                        {
+                            "coins": 40,
+                            "xp": 70
+                        }
+                    ],
+                    [
+                        {
+                            "Dungeon": "Gondowan Cave"
+                        },
+                        {
+                            "Weight": 3
+                        }
+                    ]
+
+                ]
+            },
+            {
+                "EnemyNames": [ "Orc Captain", "Dirty Ape 1", "Orc Lord" ],
+                "FlavourText": "As you cross over to the continent of Gondowan, you face a desert. Realizing that is going to be hot and that you won't be able to stop sweating, you wish you'd brought a change of clothes. Back to Tolbi, for now.",
+                "RewardTables": [
+                    [
+                        {
+                            "coins": 40,
+                            "xp": 70
+                        }
+                    ],
+                    [
+                        {
+                            "Dungeon": "Suhalla Desert"
+                        },
+                        {
+                            "Weight": 1
+                        }
+                    ]
+                ]
+            }
+        ],
+        "FlavourText": "On the south side of Karagol sea lies the huge city of Tolbi under the leadership, or *regime* as it's told, of Babi. What might be his secrets? The town is full of tourists, merchants, soldiers, ... It looks like they are getting ready for an event!"
     }
 }

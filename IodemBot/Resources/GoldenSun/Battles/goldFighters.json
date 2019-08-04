@@ -34,7 +34,7 @@
                 "Debilitate"
             ],
             "stats": {
-                "maxHP": 5000,
+                "maxHP": 5500,
                 "maxPP": 500,
                 "Atk": 400,
                 "Def": 250,
@@ -195,7 +195,7 @@
     [
         {
             "name": "Saturos",
-            "imgurl": "https://goldensunwiki.net/w/images/2/21/GSSaturos.jpg",
+            "imgurl": "https://cdn.discordapp.com/attachments/497696510688100352/604995233356447764/unknown.png",
             "movepool": [
                 "Heat Flash",
                 "Inferno",
@@ -236,7 +236,7 @@
             "imgurl": "",
             "movepool": [
                 "Fiery Blast",
-                "Wish",
+                "Cool Aura",
                 "Impact",
                 "Supernova",
                 "Resist",
@@ -345,6 +345,24 @@
                 "JupiterRes": 123,
                 "MercuryAtk": 77,
                 "MercuryRes": 87
+            },
+            "Weapon": {
+                "Name": "Salamander Rod",
+                "Icon": "<:Salamander_Rod:569855339420188674>",
+                "Unleash": {
+                    "UnleashName": "Fire Dance",
+                    "UnleashAlignment": 1,
+                    "effectImages": [
+                        {
+                            "Id": "AddDamage",
+                            "args": [ "51" ]
+                        },
+                        {
+                            "id": "Stat",
+                            "args": [ "Attack", "0.25", "35" ]
+                        }
+                    ]
+                }
             }
         },
         {
@@ -374,6 +392,20 @@
                 "JupiterRes": 87,
                 "MercuryAtk": 78,
                 "MercuryRes": 88
+            },
+            "Weapon": {
+                "Name": "Sol Blade",
+                "Icon": "<:Sol_Blade:569855141709348864>",
+                "Unleash": {
+                    "UnleashName": "Megiddo",
+                    "UnleashAlignment": 0,
+                    "effectImages": [
+                        {
+                            "Id": "MultiplyDamage",
+                            "args": [ "3.0", "100" ]
+                        }
+                    ]
+                }
             }
         },
         {
@@ -403,6 +435,24 @@
                 "JupiterRes": 87,
                 "MercuryAtk": 78,
                 "MercuryRes": 88
+            },
+            "Weapon": {
+                "Name": "Excalibur",
+                "Icon": "<:Excalibur:569855141491245056>",
+                "Unleash": {
+                    "UnleashName": "Legend",
+                    "UnleashAlignment": 2,
+                    "effectImages": [
+                        {
+                            "Id": "AddDamage",
+                            "args": [ "73" ]
+                        },
+                        {
+                            "id": "MultiplyDamage",
+                            "args": [ "3.0", "60" ]
+                        }
+                    ]
+                }
             }
         },
         {
@@ -437,7 +487,29 @@
                 "MercuryAtk": 139,
                 "MercuryRes": 134
             },
-            "PPRecovery": 12
+            "PPRecovery": 12,
+            "Weapon": {
+                "Name": "Clothos Distaff",
+                "Icon": "<:Clothos_Distaff:569855339692818472>",
+                "Unleash": {
+                    "UnleashName": "Leech of Fate",
+                    "UnleashAlignment": 3,
+                    "EffectImages": [
+                        {
+                            "Id": "AddDamage",
+                            "args": [ "26" ]
+                        },
+                        {
+                            "id": "HPDrain",
+                            "args": [ "80", "30" ]
+                        },
+                        {
+                            "id": "PPDrain",
+                            "args": [ "10", "30" ]
+                        }
+                    ]
+                }
+            }
         }
     ],
     [
@@ -592,7 +664,7 @@
     [
         {
             "name": "Sentinelino",
-            "imgurl": "",
+            "imgurl": "https://cdn.discordapp.com/attachments/497696510688100352/604992159258509323/sentinelino.png",
             "movepool": [
                 "Break",
                 "Guard",
@@ -627,7 +699,7 @@
     [
         {
             "name": "Wonder Bird 1",
-            "imgurl": "",
+            "imgurl": "https://goldensunwiki.net/w/images/1/1f/Wonder_Bird.png",
             "movepool": [
                 "Phoenix",
                 "Phoenix",
@@ -691,7 +763,7 @@
     [
         {
             "name": "Ogre Titan 1",
-            "imgurl": "",
+            "imgurl": "https://goldensunwiki.net/w/images/5/5c/OgreTitan.jpg",
             "movepool": [
                 "Brute Force"
             ],
@@ -833,7 +905,7 @@
     [
         {
             "name": "Ogre Titan 5",
-            "imgurl": "",
+            "imgurl": "https://goldensunwiki.net/w/images/a/a2/OgreTitan5.jpg",
             "movepool": [
                 "Brute Force",
                 "Massive Swing"
@@ -871,47 +943,8 @@
     ],
     [
         {
-            "movepool": [ "Guard Aura" ],
-            "name": "Guardian Ball",
-            "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Guardian_Ball.png",
-            "stats": {
-                "maxhp": 520,
-                "maxpp": 43,
-                "atk": 317,
-                "def": 127,
-                "spd": 292
-            },
-            "elstats": {
-                "venusres": 152,
-                "marsres": 100,
-                "mercuryres": 100,
-                "jupiterres": 48
-            },
-            "extraturns": 0
-        },
-        {
-            "movepool": [ "Flash Bolt", "Storm Ray", "Shine Plasma" ],
-            "name": "Thunder Ball",
-            "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Thunder_Ball.png",
-            "stats": {
-                "maxhp": 280,
-                "maxpp": 43,
-                "atk": 329,
-                "def": 125,
-                "spd": 219
-            },
-            "elstats": {
-                "jupiterres": 152,
-                "marsres": 100,
-                "mercuryres": 100,
-                "venusres": 48,
-                "jupiterpow": 110
-            },
-            "extraturns": 0
-        },
-        {
             "name": "Star Apprentice",
-            "imgurl": "",
+            "imgurl": "https://cdn.discordapp.com/attachments/497696510688100352/604984559242838018/starapprentice.png",
             "movepool": [
                 "Mystic Call",
                 "Mystic Call",
@@ -950,25 +983,43 @@
             "isImmuneToOHKO": true
         },
         {
-            "movepool": [ "Angry Mine" ],
-            "name": "Anger Ball",
-            "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Anger_Ball.png",
+            "movepool": [ "Guard Aura" ],
+            "name": "Guardian Ball",
+            "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Guardian_Ball.png",
             "stats": {
-                "maxhp": 460,
+                "maxhp": 520,
                 "maxpp": 43,
-                "atk": 357,
-                "def": 125,
-                "spd": 173
+                "atk": 317,
+                "def": 127,
+                "spd": 292
             },
             "elstats": {
-                "marsres": 175,
-                "venusres": 100,
-                "jupiterres": 100,
-                "mercuryres": 25,
-                "venuspow": 95
+                "venusres": 152,
+                "marsres": 100,
+                "mercuryres": 100,
+                "jupiterres": 48
             },
-            "extraturns": 0,
-            "hasdefend": false
+            "extraturns": 0
+        },
+        {
+            "movepool": [ "Flash Bolt", "Storm Ray", "Shine Plasma" ],
+            "name": "Thunder Ball",
+            "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Thunder_Ball.png",
+            "stats": {
+                "maxhp": 280,
+                "maxpp": 43,
+                "atk": 329,
+                "def": 125,
+                "spd": 219
+            },
+            "elstats": {
+                "jupiterres": 152,
+                "marsres": 100,
+                "mercuryres": 100,
+                "venusres": 48,
+                "jupiterpow": 110
+            },
+            "extraturns": 0
         },
         {
             "movepool": [ "Earnest Ply", "Cure Poison", "Restore" ],

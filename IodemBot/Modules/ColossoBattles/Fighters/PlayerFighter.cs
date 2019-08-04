@@ -68,7 +68,7 @@ namespace IodemBot.Modules.ColossoBattles
 
         public Stats GetStats(uint Level)
         {
-            return BaseStat + (FinalBaseStats - BaseStat) * 0.01010101 * Level * 0.66666;
+            return BaseStat + (FinalBaseStats - BaseStat) * ((double)Level / 99 / 1.5);
         }
     }
 
@@ -96,16 +96,18 @@ namespace IodemBot.Modules.ColossoBattles
 
             p.Name = (user is SocketGuildUser) ? ((SocketGuildUser)user).DisplayName() : user.Username;
             p.avatar = avatar;
+            p.ImgUrl = user.GetAvatarUrl();
             p.factory = this;
             if (user is SocketGuildUser)
             {
                 p.guildUser = (SocketGuildUser)user;
             }
+            p.Moves = AdeptClassSeriesManager.GetMoveset(avatar);
 
             var Class = AdeptClassSeriesManager.GetClass(avatar);
             var classSeries = AdeptClassSeriesManager.GetClassSeries(avatar);
             p.Stats = GetStats(avatar);
-            p.ElStats = classSeries.Elstats;
+            p.ElStats = AdeptClassSeriesManager.GetElStats(avatar);
             if (classSeries.Name == "Curse Mage Series" || classSeries.Name == "Medium Series")
             {
                 p.IsImmuneToItemCurse = true;
@@ -119,7 +121,10 @@ namespace IodemBot.Modules.ColossoBattles
                     {
                         p.Stats += g.AddStatsOnEquip;
                     });
-
+                    gear.ForEach(g =>
+                    {
+                        p.ElStats += g.AddElStatsOnEquip;
+                    });
                     gear.ForEach(g =>
                     {
                         p.Stats *= g.MultStatsOnEquip;
@@ -164,7 +169,7 @@ namespace IodemBot.Modules.ColossoBattles
                             }
                         }
                     });
-                    p.HPrecovery = (int)(p.HPrecovery * (1 + avatar.LevelNumber / 33));
+                    p.HPrecovery = (int)(p.HPrecovery * (1 + (double)avatar.LevelNumber / 33));
 
                     break;
 
@@ -181,10 +186,11 @@ namespace IodemBot.Modules.ColossoBattles
                     break;
             }
 
+            p.Stats *= Class.StatMultipliers;
+            p.Stats *= 0.01;
             p.Stats *= StatMultiplier;
             p.Stats *= 0.01;
 
-            p.Moves = AdeptClassSeriesManager.GetMoveset(avatar);
             return p;
         }
 
@@ -209,10 +215,6 @@ namespace IodemBot.Modules.ColossoBattles
                     Stats = AverageStatHolder.GetStats(level);
                     break;
             }
-
-            Stats *= classMultipliers;
-            Stats *= 0.01;
-
             return Stats;
         }
     }

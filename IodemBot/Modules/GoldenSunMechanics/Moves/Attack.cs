@@ -86,7 +86,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             uint damage = (uint)Global.Random.Next(0, 4);
             if (def < atk)
             {
-                damage = (uint)((atk - def) * enemy.defensiveMult / 2);
+                damage = (uint)((atk - def) / 2);
             }
             damage += User.addDamage;
             damage = (uint)(damage * User.offensiveMult);
@@ -112,6 +112,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             }
 
             damage = (uint)(damage * elMult);
+            damage = (uint)(damage * enemy.defensiveMult);
 
             if (enemy.ElStats.GetRes(element) == enemy.ElStats.LeastRes())
             {

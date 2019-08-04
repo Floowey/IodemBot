@@ -4771,7 +4771,7 @@
         "IsEquippable": true,
         "IsArtifact": true,
         "ChanceToActivate": 30,
-        "ChanceToBreak": 12,
+        "ChanceToBreak": 6,
         "Unleash": {
             "effectImages": [
                 {
@@ -4822,8 +4822,8 @@
         "Unleash": {
             "effectImages": [
                 {
-                    "id": "HPDrain",
-                    "args": [ "40", "20" ]
+                    "id": "PPDrain",
+                    "args": [ "10", "20" ]
                 }
             ]
         }
@@ -4840,7 +4840,7 @@
             "effectImages": [
                 {
                     "id": "HPDrain",
-                    "args": [ "60", "15" ]
+                    "args": [ "50", "20" ]
                 }
             ]
         }

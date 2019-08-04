@@ -82,7 +82,7 @@
     },
     "Quake": {
         "name": "Quake",
-        "targetType": 3,
+        "targetType": 4,
         "emote": "<:Quake:536958036472889346>",
         "range": 2,
         "element": 0,

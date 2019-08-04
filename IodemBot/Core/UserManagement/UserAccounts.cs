@@ -82,7 +82,7 @@ namespace IodemBot.Core.UserManagement
 
                 default: break;
             }
-            return sortedList.Take(10).ToArray();
+            return sortedList.Take(Math.Min(sortedList.Count(), 10)).ToArray();
         }
 
         public static int GetRank(SocketUser user, Modules.Misc.RankEnum type = Modules.Misc.RankEnum.Level)

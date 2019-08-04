@@ -32,7 +32,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 moves.Add(m);
             }
 
-            var classSeries = AdeptClassSeriesManager.GetClassSeries(avatar);
+            var classSeries = GetClassSeries(avatar);
             var gear = avatar.Inv.GetGear(classSeries.Archtype);
             if (gear.HasItem(ItemCategory.Weapon))
             {
@@ -60,7 +60,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         internal static ElementalStats GetElStats(UserAccount User)
         {
-            var classSeries = AdeptClassSeriesManager.GetClassSeries(User);
+            var classSeries = GetClassSeries(User);
             var els = GetClassSeries(User).Elstats;
             switch (User.Element)
             {
@@ -73,11 +73,6 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 case Psynergy.Element.Mercury:
                     els += new ElementalStats() { MarsAtk = -10, MarsRes = -15, JupiterAtk = 5, JupiterRes = 5, MercuryAtk = 10, MercuryRes = 15 }; break;
             }
-            var gear = User.Inv.GetGear(classSeries.Archtype);
-            gear.ForEach(g =>
-            {
-                els += g.AddElStatsOnEquip;
-            });
             return els;
         }
 

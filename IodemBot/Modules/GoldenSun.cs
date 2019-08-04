@@ -107,7 +107,7 @@ namespace IodemBot.Modules
         [Command("status")]
         [Cooldown(5)]
         [Remarks("Get information about your level etc")]
-        public async Task Status(SocketGuildUser user = null)
+        public async Task Status([Remainder] SocketGuildUser user = null)
         {
             user = user ?? (SocketGuildUser)Context.User;
             var account = UserAccounts.GetAccount(user);
@@ -152,7 +152,7 @@ namespace IodemBot.Modules
         [Cooldown(5)]
         [RequireUserPermission(GuildPermission.ManageGuild)]
         [Remarks("Hidden Information on Tri-Elemental Classes")]
-        public async Task Tri(SocketGuildUser user = null)
+        public async Task Tri([Remainder] SocketGuildUser user = null)
         {
             user = user ?? (SocketGuildUser)Context.User;
             var account = UserAccounts.GetAccount(user);
@@ -192,25 +192,25 @@ namespace IodemBot.Modules
             var unavailableDefaultDungeons = defaultDungeons.Where(d => !d.Requirement.Applies(account)).Select(s => s.Name).ToArray();
 
             var unlockedDungeons = account.Dungeons.Select(s => EnemiesDatabase.GetDungeon(s));
-            var availablePermUnlocks = unlockedDungeons.Where(d => d.IsOneTimeOnly && d.Requirement.Applies(account)).Select(s => s.Name).ToArray();
-            var unavailablePermUnlocks = unlockedDungeons.Where(d => d.IsOneTimeOnly && !d.Requirement.Applies(account)).Select(s => s.Name).ToArray();
+            var availablePermUnlocks = unlockedDungeons.Where(d => !d.IsOneTimeOnly && d.Requirement.Applies(account)).Select(s => s.Name).ToArray();
+            var unavailablePermUnlocks = unlockedDungeons.Where(d => !d.IsOneTimeOnly && !d.Requirement.Applies(account)).Select(s => s.Name).ToArray();
 
-            var availableOneTimeUnlocks = unlockedDungeons.Where(d => !d.IsOneTimeOnly && d.Requirement.Applies(account)).Select(s => s.Name).ToArray();
-            var unavailableOneTimeUnlocks = unlockedDungeons.Where(d => !d.IsOneTimeOnly && !d.Requirement.Applies(account)).Select(s => s.Name).ToArray();
+            var availableOneTimeUnlocks = unlockedDungeons.Where(d => d.IsOneTimeOnly && d.Requirement.Applies(account)).Select(s => s.Name).ToArray();
+            var unavailableOneTimeUnlocks = unlockedDungeons.Where(d => d.IsOneTimeOnly && !d.Requirement.Applies(account)).Select(s => s.Name).ToArray();
 
             var embed = new EmbedBuilder();
             embed.WithTitle("Dungeons");
             if (defaultDungeons.Count() > 0)
             {
-                embed.AddField("Default Unlocks", $"Available: {string.Join(", ", availableDefaultDungeons)} \n Unavailable: {string.Join(", ", unavailableDefaultDungeons)}");
+                embed.AddField("<:town:606236181243625493> Default Unlocks", $"Available: {string.Join(", ", availableDefaultDungeons)} \n Unavailable: {string.Join(", ", unavailableDefaultDungeons)}");
             }
             if (availablePermUnlocks.Count() > 0)
             {
-                embed.AddField("Permanent Unlocks", $"Available: {string.Join(", ", availablePermUnlocks)} \n Unavailable: {string.Join(", ", unavailablePermUnlocks)}");
+                embed.AddField("<:mapopen:606236181503410176> Places Discovered", $"Available: {string.Join(", ", availablePermUnlocks)} \n Unavailable: {string.Join(", ", unavailablePermUnlocks)}");
             }
             if (availableOneTimeUnlocks.Count() > 0)
             {
-                embed.AddField("One Time Entries", $"Available: {string.Join(", ", availableOneTimeUnlocks)} \n Unavailable: {string.Join(", ", unavailableOneTimeUnlocks)}");
+                embed.AddField("<:dungeonkey:606237382047694919> Dungeon Keys", $"Available: {string.Join(", ", availableOneTimeUnlocks)} \n Unavailable: {string.Join(", ", unavailableOneTimeUnlocks)}");
             }
             await Context.Channel.SendMessageAsync("", false, embed.Build());
         }
@@ -383,7 +383,7 @@ namespace IodemBot.Modules
             await AwardClassSeries(series, avatar, channel);
         }
 
-        internal static async Task AwardClassSeries(string series, UserAccount avatar, SocketTextChannel channel)
+        internal static async Task AwardClassSeries(string series, UserAccount avatar, ITextChannel channel)
         {
             if (avatar.BonusClasses.Contains(series))
             {
@@ -398,7 +398,11 @@ namespace IodemBot.Modules
             UserAccounts.SaveAccounts();
             var embed = new EmbedBuilder();
             embed.WithColor(Colors.Get("Iodem"));
-            embed.WithDescription($"Congratulations, {channel.Users.Where(u => u.Id == avatar.ID).FirstOrDefault().Mention}! You have unlocked the {series}!");
+            embed.WithDescription($"Congratulations, @{avatar.Name}! You have unlocked the {series}!");
+            if (channel == null)
+            {
+                return;
+            }
             await channel.SendMessageAsync("", false, embed.Build());
         }
 

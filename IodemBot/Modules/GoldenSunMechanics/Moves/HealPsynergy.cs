@@ -76,6 +76,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             {
                 var HPtoHeal = (uint)(healPower * Power / 100 + p.Stats.MaxHP * percentage / 100);
                 log.AddRange(p.Heal(HPtoHeal));
+                effects.ForEach(e => log.AddRange(e.Apply(User, p)));
                 if (User is PlayerFighter)
                 {
                     ((PlayerFighter)User).battleStats.HPhealed += HPtoHeal;
