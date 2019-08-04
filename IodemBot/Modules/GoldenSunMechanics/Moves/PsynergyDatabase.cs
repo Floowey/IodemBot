@@ -10,23 +10,22 @@ namespace IodemBot.Modules.GoldenSunMechanics
         private static Dictionary<string, OffensivePsynergy> offpsy = new Dictionary<string, OffensivePsynergy>(StringComparer.OrdinalIgnoreCase);
         private static Dictionary<string, HealPsynergy> healpsy = new Dictionary<string, HealPsynergy>(StringComparer.OrdinalIgnoreCase);
         private static Dictionary<string, StatusPsynergy> statpsy = new Dictionary<string, StatusPsynergy>(StringComparer.OrdinalIgnoreCase);
-        private static Dictionary<string, Psynergy> otherPsynergy = new Dictionary<string, Psynergy>(StringComparer.InvariantCultureIgnoreCase);
 
         static PsynergyDatabase()
         {
             try
             {
-                string json = File.ReadAllText("Resources/offpsy.json");
+                string json = File.ReadAllText("Resources/GoldenSun/Moves/offpsy.json");
                 offpsy = new Dictionary<string, OffensivePsynergy>(
                     JsonConvert.DeserializeObject<Dictionary<string, OffensivePsynergy>>(json),
                     StringComparer.OrdinalIgnoreCase);
 
-                json = File.ReadAllText("Resources/healpsy.json");
+                json = File.ReadAllText("Resources/GoldenSun/Moves/healpsy.json");
                 healpsy = new Dictionary<string, HealPsynergy>(
                     JsonConvert.DeserializeObject<Dictionary<string, HealPsynergy>>(json),
                     StringComparer.OrdinalIgnoreCase);
 
-                json = File.ReadAllText("Resources/statpsy.json");
+                json = File.ReadAllText("Resources/GoldenSun/Moves/statpsy.json");
                 statpsy = new Dictionary<string, StatusPsynergy>(
                     JsonConvert.DeserializeObject<Dictionary<string, StatusPsynergy>>(json),
                     StringComparer.OrdinalIgnoreCase);

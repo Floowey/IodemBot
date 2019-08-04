@@ -14,10 +14,10 @@ namespace IodemBot.Modules
         [Command("coin"), Alias("coinflip")]
         [Cooldown(4)]
         [Remarks("Heads or tails!")]
-        public async Task coinToss()
+        public async Task CoinToss()
         {
             var embed = new EmbedBuilder();
-            embed.WithColor(Colors.get("Iodem"));
+            embed.WithColor(Colors.Get("Iodem"));
             embed.WithDescription((new Random()).Next(0, 2) == 1 ? "<:Lucky_Medals:538050800342269973> Heads!" : "<:Gold:537214319591555073> Tails!");
             await Context.Channel.SendMessageAsync("", false, embed.Build());
         }
@@ -25,26 +25,26 @@ namespace IodemBot.Modules
         [Command("dice"), Alias("d")]
         [Cooldown(4)]
         [Remarks("Roll a n-sided dice!")]
-        public async Task coinToss([Remainder] uint sides = 6)
+        public async Task Dice([Remainder] uint sides = 6)
         {
             var embed = new EmbedBuilder();
-            embed.WithColor(Colors.get("Iodem"));
+            embed.WithColor(Colors.Get("Iodem"));
             embed.WithDescription($"🎲 {(new Random()).Next(0, (int)sides) + 1}");
             await Context.Channel.SendMessageAsync("", false, embed.Build());
         }
 
-        public enum rpsEnum { Rock, Paper, Scissors }
+        public enum RpsEnum { Rock, Paper, Scissors }
 
         [Command("rps")]
         [Cooldown(4)]
         [Remarks("Rock, Paper, Scissors")]
-        public async Task rps([Remainder] rpsEnum choice)
+        public async Task RockPaperScissorsAsync([Remainder] RpsEnum choice)
         {
             string[] emotesPlayer = { "🤜", "🖐️", "✌️" };
             string[] emotesCPU = { "🤛", "🖐️", "✌️" };
 
             var avatar = UserAccounts.GetAccount(Context.User);
-            rpsEnum cpuChoice = (rpsEnum)((new Random()).Next(0, 1000) % 3);
+            RpsEnum cpuChoice = (RpsEnum)((new Random()).Next(0, 1000) % 3);
             string result = "";
 
             switch ((int)choice - (int)cpuChoice)
@@ -68,7 +68,7 @@ namespace IodemBot.Modules
             }
 
             var embed = new EmbedBuilder();
-            embed.WithColor(Colors.get("Iodem"));
+            embed.WithColor(Colors.Get("Iodem"));
             embed.WithDescription($"{emotesPlayer[(int)choice]} vs {emotesCPU[(int)cpuChoice]}");
             embed.AddField("Result:", result);
 

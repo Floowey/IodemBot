@@ -1,5 +1,7 @@
-﻿using IodemBot.Modules.ColossoBattles;
+﻿using IodemBot.Extensions;
+using IodemBot.Modules.ColossoBattles;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
@@ -15,6 +17,9 @@ namespace IodemBot.Modules.GoldenSunMechanics
         {
             switch (Identifier)
             {
+                case "AttackWithTeammate":
+                    return new AttackWithTeammateEffect();
+
                 case "Break":
                     return new BreakEffect();
 
@@ -71,7 +76,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         protected virtual int InternalChooseBestTarget(List<ColossoFighter> targets)
         {
-            return Global.random.Next(0, targets.Count);
+            return targets.IndexOf(targets.Where(t => t.IsAlive).Random());
         }
 
         internal int ChooseBestTarget(List<ColossoFighter> targets)
@@ -83,11 +88,16 @@ namespace IodemBot.Modules.GoldenSunMechanics
         {
             return InternalValidSelection(User);
         }
+
+        public override string ToString()
+        {
+            return "Unspecified Effect";
+        }
     }
 
     public struct EffectImage
     {
-        public string id { get; set; }
-        public string[] args { get; set; }
+        public string Id { get; set; }
+        public string[] Args { get; set; }
     }
 }

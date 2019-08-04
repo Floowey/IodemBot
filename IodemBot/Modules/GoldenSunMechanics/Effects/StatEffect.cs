@@ -9,9 +9,9 @@ namespace IodemBot.Modules.GoldenSunMechanics
     {
         private string StatToBoost;
         private double Multiplier;
-        private int probability = 100;
+        private readonly int probability = 100;
         private bool OnTarget = true;
-        private int Turns = 5;
+        private int Turns = 7;
 
         public StatEffect(string StatToBoost, double Value, long probability = 100, bool OnTarget = true, int Duration = 5)
         {
@@ -49,27 +49,27 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public override string ToString()
         {
-            return $"{(probability == 100 ? "Guarantee to" : $"{probability}% Chance to")} {(Multiplier > 1 ? "raise" : "lower")} {StatToBoost} of {(OnTarget ? "target" : "user")} by {Multiplier}.";
+            return $"{(probability == 100 ? $"{(Multiplier > 1 ? "Raise" : "Lower")}" : $"{probability}% chance to {(Multiplier > 1 ? "raise" : "lower")}")} {StatToBoost} of {(OnTarget ? "target" : "user")} to {Multiplier * 100}%";
         }
 
         public override List<string> Apply(ColossoFighter User, ColossoFighter Target)
         {
             List<string> log = new List<string>();
-            if (!Target.IsAlive())
+            if (!Target.IsAlive)
             {
                 return log;
             }
 
-            if (Global.random.Next(1, 100) <= probability)
+            if (Global.Random.Next(1, 100) <= probability)
             {
                 if (OnTarget)
                 {
-                    Target.applyBuff(new Buff(StatToBoost, Multiplier, (uint)Turns));
+                    Target.ApplyBuff(new Buff(StatToBoost, Multiplier, (uint)Turns));
                     log.Add($"{Target.name}'s {StatToBoost} {(Multiplier > 1 ? "rises" : "lowers")}.");
                 }
                 else
                 {
-                    User.applyBuff(new Buff(StatToBoost, Multiplier, (uint)Turns));
+                    User.ApplyBuff(new Buff(StatToBoost, Multiplier, (uint)Turns));
                     log.Add($"{User.name}'s {StatToBoost} {(Multiplier > 1 ? "rises" : "lowers")}.");
                 }
             }

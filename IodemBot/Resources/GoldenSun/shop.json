@@ -1,0 +1,21 @@
+{
+    "shop": {
+        "lastDailyChest": "0001-01-01T00:00:00",
+        "chests": {
+            "Wooden": 0,
+            "Normal": 0,
+            "Silver": 0,
+            "Gold": 0,
+            "Adept": 0,
+            "Daily": 0
+        },
+        "InvString": [
+            "Lure Cap",
+            "Sol Blade"
+        ],
+        "WarriorGearString": [],
+        "MageGearString": [],
+        "Coins": 0
+    },
+    "lastReset": "2019-05-29T16:00:00"
+}

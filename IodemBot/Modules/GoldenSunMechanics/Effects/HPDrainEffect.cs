@@ -5,12 +5,17 @@ namespace IodemBot.Modules.GoldenSunMechanics
 {
     internal class HPDrainEffect : IEffect
     {
-        private uint percentage = 20;
+        private readonly uint percentage = 20;
+        private readonly uint probability = 100;
 
         public override List<string> Apply(ColossoFighter User, ColossoFighter Target)
         {
-            uint recovery = User.damageDoneThisTurn * percentage / 100;
-            return User.heal(recovery);
+            if (Global.Random.Next(0, 100) <= probability)
+            {
+                uint recovery = User.damageDoneThisTurn * percentage / 100;
+                return User.Heal(recovery);
+            }
+            return new List<string>();
         }
 
         public HPDrainEffect(string[] args)
@@ -19,11 +24,16 @@ namespace IodemBot.Modules.GoldenSunMechanics
             {
                 uint.TryParse(args[0], out percentage);
             }
+            else if (args.Length == 2)
+            {
+                uint.TryParse(args[0], out percentage);
+                uint.TryParse(args[1], out probability);
+            }
         }
 
         public override string ToString()
         {
-            return $"Restore {percentage}% of the damage done this turn in HP.";
+            return $"{(probability < 100 ? "Chance to restore" : "Restore")} {percentage}% of the damage done this turn in HP";
         }
     }
 }

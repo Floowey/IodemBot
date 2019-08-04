@@ -1,5 +1,6 @@
 ﻿using IodemBot.Modules.ColossoBattles;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
@@ -14,6 +15,11 @@ namespace IodemBot.Modules.GoldenSunMechanics
         {
             this.element = element;
             this.PPCost = PPCost;
+        }
+
+        public override bool InternalValidSelection(ColossoFighter User)
+        {
+            return User.stats.PP >= PPCost && !(PPCost > 1 && User.HasCondition(Condition.Seal));
         }
 
         protected override Validation Validate(ColossoFighter User)
@@ -40,6 +46,13 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 log.Add($"{User.name} has not enough PP to cast {this.name}.");
                 return new Validation(false, log);
             }
+            List<ColossoFighter> targets = GetTarget(User);
+            if (!effects.Any(i => i is ReviveEffect) && targets.TrueForAll(i => !i.IsAlive))
+            {
+                log.Add($"{User.name} wants to {(PPCost == 1 ? "use" : "cast")} {name}, but {(targets.Count == 1 ? "the target is" : "all the targets are")} down.");
+                return new Validation(false, log);
+            }
+
             User.stats.PP -= (int)PPCost;
 
             log.Add($"{emote} {User.name} {(PPCost == 1 ? "uses" : "casts")} {this.name}!");

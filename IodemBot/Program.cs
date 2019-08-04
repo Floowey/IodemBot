@@ -16,9 +16,6 @@ namespace IodemBot
 
         private static void Main(string[] args)
         {
-
-
-
             try
             {
                 new Program().StartAsync().GetAwaiter().GetResult();
@@ -37,25 +34,10 @@ namespace IodemBot
                 return;
             }
 
-            var version = System.Environment.OSVersion.Version;
-            if (version.Major == 6 && version.Minor == 1)
+            client = new DiscordSocketClient(new DiscordSocketConfig
             {
-                Console.WriteLine("Windows 7");
-                client = new DiscordSocketClient(new DiscordSocketConfig
-                {
-                    LogLevel = LogSeverity.Verbose,
-                    WebSocketProvider = Discord.Net.Providers.WS4Net.WS4NetProvider.Instance
-                });
-            }
-            else
-            {
-                Console.WriteLine("Not Windows 7");
-                client = new DiscordSocketClient(new DiscordSocketConfig
-                {
-                    LogLevel = LogSeverity.Verbose,
-                    //WebSocketProvider = Discord.Net.Providers.WS4Net.WS4NetProvider.Instance
-                });
-            }
+                LogLevel = LogSeverity.Info,
+            });
 
             Global.Client = client;
 
@@ -88,14 +70,15 @@ namespace IodemBot
             "Isaac gave a Hard Nut to {0}",
             "Felix gave a Hard Nut to {0}",
             "You're {0}? The one they're all talking about? I heard rumors that you were a huge, hulking man. I guess they were wrong.",
-            "Well, if it isn't {0}, too! Where do you all plan to go today?"
+            "Well, if it isn't {0}, too! Where do you all plan to go today?",
+            "Hello {0}! Is 150 coins for your Nut good?",
         };
 
         private async Task Client_UserJoined(SocketGuildUser user)
         {
             var embed = new EmbedBuilder();
-            embed.WithColor(Colors.get("Iodem"));
-            embed.WithDescription(String.Format(welcomeMsg[Global.random.Next(0, welcomeMsg.Length)], user.DisplayName()));
+            embed.WithColor(Colors.Get("Iodem"));
+            embed.WithDescription(String.Format(welcomeMsg[Global.Random.Next(0, welcomeMsg.Length)], user.DisplayName()));
 
             await user.AddRoleAsync(user.Guild.Roles.Where(r => r.Id == 355560889942016000).First());
             await ((SocketTextChannel)client.GetChannel(355558866282348575)).SendMessageAsync(embed: embed.Build());
@@ -109,7 +92,7 @@ namespace IodemBot
         private async Task Client_Ready()
         {
             //setup colosso
-            await client.SetGameAsync("in Babi's Palast.", "https://www.twitch.tv/directory/game/Golden%20Sun", ActivityType.Streaming);
+            await client.SetGameAsync("in Babi's Palace.", "https://www.twitch.tv/directory/game/Golden%20Sun", ActivityType.Streaming);
             Global.UpSince = DateTime.UtcNow;
         }
 

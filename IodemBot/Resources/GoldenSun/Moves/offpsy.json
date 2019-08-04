@@ -59,7 +59,7 @@
     "Annihilation": {
         "name": "Annihilation",
         "targetType": 3,
-        "emote": "<:Annihalation:536959197288464393>",
+        "emote": "<:Annihilation:536959197288464393>",
         "range": 1,
         "element": 0,
         "effectImages": [
@@ -84,7 +84,7 @@
         "name": "Quake",
         "targetType": 3,
         "emote": "<:Quake:536958036472889346>",
-        "range": 1,
+        "range": 2,
         "element": 0,
         "PPCost": 4,
         "power": 25
@@ -588,7 +588,7 @@
     "Dragon Cloud": {
         "name": "Dragon Cloud",
         "targetType": 3,
-        "emote": "<:Dragon_Fire:536964123234402314>",
+        "emote": "<:Dragon_Cloud:536964123234402314>",
         "range": 1,
         "element": 1,
         "PPCost": 6,
@@ -1106,7 +1106,7 @@
         "PPCost": 6,
         "power": 35
     },
-    "Super Cool": {
+    "Supercool": {
         "name": "Supercool",
         "targetType": 4,
         "emote": "<:Supercool:536969323244158977>",
@@ -1762,5 +1762,195 @@
         "range": 5,
         "element": 4,
         "PPCost": 0
+    },
+    "Power Crush": {
+        "name": "Power Crush",
+        "targetType": 3,
+        "emote": ":eight_pointed_black_star:",
+        "range": 1,
+        "element": 0,
+        "PPCost": 0,
+        "dmgMult": 1.2,
+        "effectImages": [
+            {
+                "id": "ReduceHPtoOne",
+                "args": [ "20" ]
+            }
+        ]
+    },
+    "Pike Assault": {
+        "name": "Pike Assault",
+        "targetType": 3,
+        "emote": ":trident:",
+        "range": 1,
+        "element": 2,
+        "PPCost": 0,
+        "dmgMult": 1.4,
+        "effectImages": [
+            {
+                "id": "MayIgnoreDefense",
+                "args": [ "50" ]
+            }
+        ]
+    },
+    "Heat Stun": {
+        "name": "Heat Stun",
+        "targetType": 3,
+        "emote": ":fire:",
+        "range": 1,
+        "element": 1,
+        "PPCost": 0,
+        "dmgMult": 1.3,
+        "effectImages": [
+            {
+                "id": "Condition",
+                "args": [ "Stun", "40" ]
+            }
+        ]
+    },
+    "Star Mine": {
+        "name": "Star Mine",
+        "targetType": 5,
+        "emote": ":fireworks:",
+        "range": 5,
+        "element": 1,
+        "PPCost": 0,
+        "percentageDamage": 30,
+        "power": 35
+    },
+    "Dark Blessing": {
+        "name": "Dark Blessing",
+        "targetType": 4,
+        "emote": ":skull:",
+        "range": 3,
+        "element": 1,
+        "PPCost": 0,
+        "power": 170,
+        "effectImages": [
+            {
+                "id": "Stat",
+                "args": [ "Def", "0.8", "30" ]
+            }
+        ]
+    },
+    "Thrash": {
+        "name": "Thrash",
+        "targetType": 3,
+        "emote": "<:Rampage:537766290031509524>",
+        "range": 1,
+        "element": 3,
+        "PPCost": 0,
+        "addDamage": 30,
+        "effectImages": [
+            {
+                "id": "ReduceHPtoOne",
+                "args": [ "20" ]
+            }
+        ]
+    },
+    "Rotten Blood": {
+        "name": "Rotten Blood",
+        "targetType": 3,
+        "emote": ":skull_crossbones:",
+        "range": 1,
+        "element": 1,
+        "PPCost": 0,
+        "power": 44,
+        "effectImages": [
+            {
+                "id": "Stat",
+                "args": [ "Def", "0.6", "25" ]
+            }
+        ]
+    },
+    "Sticky Poison": {
+        "name": "Sticky Poison",
+        "targetType": 3,
+        "emote": ":nauseated_face:",
+        "range": 1,
+        "element": 3,
+        "PPCost": 0,
+        "power": 16,
+        "effectImages": [
+            {
+                "id": "Condition",
+                "args": [ "Poison", "50" ]
+            }
+        ]
+    },
+    "Brute Force": {
+        "name": "Brute Force",
+        "targetType": 3,
+        "emote": "<:Rampage:537766290031509524>",
+        "range": 1,
+        "element": 0,
+        "PPCost": 0,
+        "dmgMult": 1.9
+    },
+    "Massive Swing": {
+        "name": "Massive Swing",
+        "targetType": 4,
+        "emote": "<:Rampage:537766290031509524>",
+        "range": 5,
+        "element": 0,
+        "PPCost": 0,
+        "addDamage": 50
+    },
+    "Gasping Breath": {
+        "name": "Gasping Breath",
+        "targetType": 3,
+        "emote": ":gear:",
+        "range": 1,
+        "element": 0,
+        "PPCost": 0,
+        "power": 18,
+        "effectImages": [
+            {
+                "id": "condition",
+                "args": [ "Haunt", "20" ]
+            }
+        ]
+    },
+    "Pebble Breath": {
+        "name": "Pebble Breath",
+        "targetType": 3,
+        "emote": ":gear:",
+        "range": 1,
+        "element": 0,
+        "PPCost": 0,
+        "power": 24
+    },
+    "Sizzle Breath": {
+        "name": "Sizzle Breath",
+        "targetType": 3,
+        "emote": ":gear:",
+        "range": 1,
+        "element": 0,
+        "PPCost": 0,
+        "power": 37,
+        "effectImages": [
+            {
+                "id": "Stat",
+                "args": [ "Def", "0.8", "25" ]
+            }
+        ]
+    },
+    "Meteor Blow": {
+        "name": "Meteor Blow",
+        "targetType": 3,
+        "emote": ":comet:",
+        "range": 1,
+        "element": 1,
+        "PPCost": 0,
+        "power": 250
+    },
+    "Rolling Flame": {
+        "name": "Rolling Flame",
+        "targetType": 4,
+        "emote": ":fireworks:",
+        "range": 3,
+        "element": 1,
+        "PPCost": 0,
+        "addDamage": 100
     }
 }

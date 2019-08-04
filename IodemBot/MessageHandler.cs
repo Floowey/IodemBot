@@ -5,7 +5,6 @@ using IodemBot.Core.Leveling;
 using IodemBot.Core.UserManagement;
 using System;
 using System.Collections.Generic;
-using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
@@ -14,68 +13,73 @@ namespace IodemBot
     public class MessageHandler
     {
         private DiscordSocketClient client;
-        private CommandService service;
-        private ulong[] whiteList = { 1234 };
+        private readonly ulong[] whiteList = { 1234 };
         private List<AutoResponse> responses;
 
         public async Task InitializeAsync(DiscordSocketClient client)
         {
             this.client = client;
-            service = new CommandService();
-            await service.AddModulesAsync(Assembly.GetEntryAssembly(), null);
             client.MessageReceived += HandleMessageAsync;
             client.ReactionAdded += HandleReactionAsync;
             //badWords = File.ReadAllLines("Resources/bad_words.txt");
 
-            responses = new List<AutoResponse>();
-            responses.Add(new AutoResponse(
-                new Regex("[Hh][y][a]*[h][o]*", RegexOptions.Compiled),
+            responses = new List<AutoResponse>
+            {
+                new AutoResponse(
+                new Regex("[Hh][y][a]+[h][o]+", RegexOptions.Compiled),
                 new Reaction("",
                     Emote.Parse("<:Keelhaul:537265959442841600>")),
-                5));
-            responses.Add(new AutoResponse(
-                new Regex("[H][Y][A]*[H][O]*", RegexOptions.Compiled),
+                5),
+                new AutoResponse(
+                new Regex("[H][Y][A]+[H][O]+", RegexOptions.Compiled),
                 new Reaction("",
                     Emote.Parse("<:Vicious_Chop:537265959384121366>")),
-                5));
-            responses.Add(new AutoResponse(
+                5),
+                new AutoResponse(
                 new Regex("Bubebo", RegexOptions.Compiled | RegexOptions.IgnoreCase),
                 new Reaction("Do you feel the earth rumbling? It must be Lord Babi rolling in his grave.",
                     Emote.Parse("<:sad:490015818063675392>")),
-                60));
-            responses.Add(new AutoResponse(
+                60),
+                new AutoResponse(
                 new Regex("(Air).*(Rock).*(Sol Blade)|(Sol Blade).*(Air).*(Rock)", RegexOptions.Compiled | RegexOptions.IgnoreCase),
                 new Reaction("I assume you are talking about the Air's Rock Glitch where you can get an early Sol Blade. Check TLPlexas video about it! https://www.youtube.com/watch?v=AIdt53_mqXQ&t=1s"),
-                30));
-            responses.Add(new AutoResponse(
+                30),
+                new AutoResponse(
                 new Regex(@"\¡\!", RegexOptions.Compiled | RegexOptions.IgnoreCase),
                 new Reaction("If you want to summon me to seek my assistance, use the prefix `i!` as in **I**odem."),
-                30));
-            responses.Add(new AutoResponse(
+                30),
+                new AutoResponse(
                 new Regex(@"(\#\^\@\%\!)", RegexOptions.Compiled),
                 new CurseReaction(),
-                2));
-            responses.Add(new AutoResponse(
+                2),
+                new AutoResponse(
                 new Regex(@"(^|\D)(420)(\D|$)", RegexOptions.Compiled),
                 new Reaction("",
                     Emote.Parse("<:Herb:543043292187590659>")),
-                60));
+                60),
+                new AutoResponse(
+                new Regex(@"Krakden", RegexOptions.Compiled | RegexOptions.IgnoreCase),
+                new Reaction("",
+                    Emote.Parse("<:Krakden:576856312500060161>")),
+                60)
+            };
+            await Task.CompletedTask;
         }
 
         private async Task HandleReactionAsync(Cacheable<IUserMessage, ulong> Message, ISocketMessageChannel Channel, SocketReaction Reaction)
         {
-            var User = (SocketGuildUser) Reaction.User;
+            var User = (SocketGuildUser)Reaction.User;
             if (User.IsBot)
             {
                 return;
             }
             Leveling.UserAddedReaction(User, Reaction);
+            await Task.CompletedTask;
         }
 
         private async Task HandleMessageAsync(SocketMessage s)
         {
-            SocketUserMessage msg = s as SocketUserMessage;
-            if (msg == null)
+            if (!(s is SocketUserMessage msg))
             {
                 return;
             }
@@ -104,7 +108,7 @@ namespace IodemBot
             {
                 await base.ReactAsync(msg);
                 var userAccount = UserAccounts.GetAccount(msg.Author);
-                userAccount.ServerStats.hasWrittenCurse = true;
+                userAccount.ServerStats.HasWrittenCurse = true;
                 UserAccounts.SaveAccounts();
                 await ServerGames.UserHasCursed((SocketGuildUser)msg.Author, (SocketTextChannel)msg.Channel);
             }
@@ -153,8 +157,8 @@ namespace IodemBot
 
         internal class Reaction
         {
-            private string text;
-            private IEmote[] emotes;
+            private readonly string text;
+            private readonly IEmote[] emotes;
 
             public Reaction(string text)
             {
@@ -184,7 +188,7 @@ namespace IodemBot
                 if (text != "")
                 {
                     var embed = new EmbedBuilder();
-                    embed.WithColor(Colors.get("Iodem"));
+                    embed.WithColor(Colors.Get("Iodem"));
                     embed.WithDescription(text);
                     await msg.Channel.SendMessageAsync("", false, embed.Build());
                 }

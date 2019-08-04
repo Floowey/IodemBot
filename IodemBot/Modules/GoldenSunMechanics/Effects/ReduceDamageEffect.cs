@@ -5,12 +5,12 @@ namespace IodemBot.Modules.GoldenSunMechanics
 {
     internal class ReduceDamageEffect : IEffect
     {
-        private int damageReduction = 0;
+        private readonly int damageReduction = 0;
 
         public override List<string> Apply(ColossoFighter User, ColossoFighter Target)
         {
             List<string> log = new List<string>();
-            if (!Target.IsAlive())
+            if (!Target.IsAlive)
             {
                 return log;
             }
@@ -30,7 +30,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public override string ToString()
         {
-            return $"Reduces damage taken by {damageReduction}%.";
+            return $"Reduces damage taken by {damageReduction}%";
         }
     }
 }

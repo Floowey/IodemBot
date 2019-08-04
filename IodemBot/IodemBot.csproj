@@ -251,7 +251,12 @@
     <Compile Include="Core\Leveling\ServerGames.cs" />
     <Compile Include="Extensions\DiscordSocketGuildExt.cs" />
     <Compile Include="Extensions\DiscordSocketGuildUserExt.cs" />
+    <Compile Include="Extensions\EmbedBuilderExtension.cs" />
+    <Compile Include="Extensions\IEnumerableExt.cs" />
+    <Compile Include="Extensions\ItemListExtension.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="MessageHandler.cs" />
+    <Compile Include="Modules\ColossoBattles\BattleCollector.cs" />
     <Compile Include="Modules\ColossoBattles\ColossoPvE.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Classes\AdeptClass.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Classes\AdeptClassSeries.cs" />
@@ -272,6 +277,7 @@
     <Compile Include="Modules\GoldenSunMechanics\Classes\Requirements\TeammatesRequirement.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Classes\Requirements\UnlockedClassesRequirement.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Effects\AddDamageEffect.cs" />
+    <Compile Include="Modules\GoldenSunMechanics\Effects\AttackWithTeammateEffect.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Effects\BreakEffect.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Effects\ChanceToOHKOEffect.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Effects\ConditionEffect.cs" />
@@ -323,21 +329,26 @@
     <Compile Include="Config.cs" />
     <Compile Include="Modules\Misc.cs" />
     <Compile Include="Program.cs" />
-    <None Include="Resources\archive.json" />
+    <None Include="Resources\GoldenSun\Battles\archive.json" />
     <Compile Include="Sprites.cs" />
     <Compile Include="Utilities.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-    <None Include="Resources\accounts.json" />
-    <None Include="Resources\AdeptClassSeries.json">
+    <None Include="Resources\Accounts\accounts.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\tutorialFighters.json">
+    <None Include="Resources\GoldenSun\AdeptClassSeries.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\bronzeFighters.json">
+    <None Include="Resources\GoldenSun\shop.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\GoldenSun\Battles\tutorialFighters.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\GoldenSun\Battles\bronzeFighters.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Resources\Colors.json">
@@ -348,28 +359,22 @@
     <None Include="Resources\config.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\goldFighters.json">
+    <None Include="Resources\GoldenSun\Battles\goldFighters.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\healpsy.json">
+    <None Include="Resources\GoldenSun\Moves\healpsy.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\items.json">
+    <None Include="Resources\GoldenSun\items.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\movepools.json">
+    <None Include="Resources\GoldenSun\Moves\offpsy.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\offpsy.json">
+    <None Include="Resources\GoldenSun\Battles\silverFighters.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\silverFighters.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\statpsy.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\stats.json">
+    <None Include="Resources\GoldenSun\Moves\statpsy.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SystemLang\quotes.json">

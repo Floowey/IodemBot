@@ -51,7 +51,10 @@
                 "JupiterRes": 80,
                 "MercuryAtk": 130,
                 "MercuryRes": 140
-            }
+            },
+            "isImmuneToConditions": [
+                "Haunt"
+            ]
         },
         {
             "name": "Wood Walker 2",
@@ -168,7 +171,7 @@
                 "Cure",
                 "Mad Growth",
                 "Spire",
-                "Earthquake",
+                "Earthquake"
             ],
             "stats": {
                 "maxHP": 400,
@@ -186,7 +189,14 @@
                 "JupiterRes": 25,
                 "MercuryAtk": 100,
                 "MercuryRes": 130
-            }
+            },
+            "isImmuneToConditions": [
+                "Poison",
+                "Venom",
+                "DeathCurse",
+                "Haunt"
+            ],
+            "isImmuneToOHKO": true
         }
     ],
     [
@@ -215,7 +225,14 @@
                 "JupiterRes": 130,
                 "MercuryAtk": 25,
                 "MercuryRes": 25
-            }
+            },
+            "isImmuneToConditions": [
+                "Stun",
+                "Flinch",
+                "DeathCurse",
+                "Haunt"
+            ],
+            "isImmuneToOHKO": true
         }
     ],
     [
@@ -244,7 +261,14 @@
                 "JupiterRes": 175,
                 "MercuryAtk": 100,
                 "MercuryRes": 130
-            }
+            },
+            "isImmuneToConditions": [
+                "Seal",
+                "Delusion",
+                "DeathCurse",
+                "Haunt"
+            ],
+            "isImmuneToOHKO": true
         }
     ],
     [
@@ -275,7 +299,14 @@
                 "JupiterRes": 130,
                 "MercuryAtk": 152,
                 "MercuryRes": 175
-            }
+            },
+            "isImmuneToConditions": [
+                "Sleep",
+                "Seal",
+                "DeathCurse",
+                "Haunt"
+            ],
+            "isImmuneToOHKO": true
         }
     ],
     [
@@ -524,7 +555,14 @@
                 "JupiterRes": 100,
                 "MercuryAtk": 110,
                 "MercuryRes": 120
-            }
+            },
+            "isImmuneToConditions": [
+                "Poison",
+                "Venom",
+                "DeathCurse",
+                "Haunt"
+            ],
+            "isImmuneToOHKO": true
         },
         {
             "name": "Skeleton 2",
@@ -550,7 +588,14 @@
                 "JupiterRes": 100,
                 "MercuryAtk": 110,
                 "MercuryRes": 120
-            }
+            },
+            "isImmuneToConditions": [
+                "Poison",
+                "Venom",
+                "DeathCurse",
+                "Haunt"
+            ],
+            "isImmuneToOHKO": true
         },
         {
             "name": "Skeleton 3",
@@ -576,7 +621,14 @@
                 "JupiterRes": 100,
                 "MercuryAtk": 110,
                 "MercuryRes": 120
-            }
+            },
+            "isImmuneToConditions": [
+                "Poison",
+                "Venom",
+                "DeathCurse",
+                "Haunt"
+            ],
+            "isImmuneToOHKO": true
         }
     ],
     [
@@ -615,7 +667,12 @@
                 "JupiterRes": 120,
                 "MercuryAtk": 120,
                 "MercuryRes": 110
-            }
+            },
+            "isImmuneToConditions": [
+                "Stun",
+                "DeathCurse"
+            ],
+            "isImmuneToOHKO": true
         }
     ],
     [
@@ -646,7 +703,11 @@
                 "JupiterRes": 100,
                 "MercuryAtk": 120,
                 "MercuryRes": 80
-            }
+            },
+            "isImmuneToConditions": [
+                "Stun",
+                "Flinch"
+            ]
         }
     ],
     [
@@ -682,7 +743,7 @@
             ],
             "stats": {
                 "maxHP": 600,
-                "maxPP": 00,
+                "maxPP": 0,
                 "Atk": 80,
                 "Def": 100,
                 "Spd": 40
@@ -697,7 +758,7 @@
                 "MercuryAtk": 110,
                 "MercuryRes": 80
             }
-        },
+        }
     ],
     [
         {
@@ -724,7 +785,16 @@
                 "JupiterRes": 127,
                 "MercuryAtk": 100,
                 "MercuryRes": 72
-            }
+            },
+            "isImmuneToConditions": [
+                "Poison",
+                "Venom",
+                "Sleep",
+                "Stun",
+                "DeathCurse"
+            ],
+            "isImmuneToOHKO": true,
+            "isImmuneToHPtoOne": true
         }
     ],
     [
@@ -1370,7 +1440,14 @@
                 "JupiterRes": 100,
                 "MercuryAtk": 100,
                 "MercuryRes": 72
-            }
+            },
+            "isImmuneToConditions": [
+                "Poison",
+                "Venom",
+                "Delusion",
+                "DeathCurse"
+            ],
+            "isImmuneToOHKO": true
         }
     ],
     [
@@ -1428,7 +1505,12 @@
                 "JupiterRes": 100,
                 "MercuryAtk": 100,
                 "MercuryRes": 175
-            }
+            },
+            "isImmuneToConditions": [
+                "DeathCurse"
+            ],
+            "isImmuneToOHKO": true,
+            "isImmuneToHPToOne": true
         }
     ],
     [
@@ -1495,7 +1577,7 @@
                 "maxPP": 0,
                 "Atk": 68,
                 "Def": 11,
-                "Spd": 30,
+                "Spd": 30
             },
             "elstats": {
                 "VenusAtk": 110,
@@ -1505,7 +1587,7 @@
                 "JupiterAtk": 85,
                 "JupiterRes": 72,
                 "MercuryAtk": 100,
-                "MercuryRes": 100,
+                "MercuryRes": 100
             }
         },
         {
@@ -1520,7 +1602,7 @@
                 "maxPP": 0,
                 "Atk": 68,
                 "Def": 11,
-                "Spd": 30,
+                "Spd": 30
             },
             "elstats": {
                 "VenusAtk": 110,
@@ -1530,8 +1612,36 @@
                 "JupiterAtk": 85,
                 "JupiterRes": 72,
                 "MercuryAtk": 100,
-                "MercuryRes": 100,
+                "MercuryRes": 100
             }
         }
     ],
+    [
+        {
+            "name": "Dim Dragon",
+            "imgurl": "https://goldensunwiki.net/w/images/7/77/DimDragon.jpg",
+            "movepool": [
+                "Sizzle Breath",
+                "Pebble Breath",
+                "Gasping Breath"
+            ],
+            "stats": {
+                "maxHP": 320,
+                "maxPP": 0,
+                "Atk": 44,
+                "Def": 12,
+                "Spd": 13
+            },
+            "elstats": {
+                "VenusAtk": 105,
+                "VenusRes": 72,
+                "MarsAtk": 80,
+                "MarsRes": 25,
+                "JupiterAtk": 100,
+                "JupiterRes": 100,
+                "MercuryAtk": 100,
+                "MercuryRes": 175
+            }
+        }
+    ]
 ]

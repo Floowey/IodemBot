@@ -212,7 +212,7 @@
     "Berserk": {
         "name": "Berserk",
         "targetType": 0,
-        "emote": "<:angry1:490015817908355072>",
+        "emote": "<:Rampage:537766290031509524>",
         "range": 1,
         "element": 1,
         "PPCost": 0,
@@ -447,6 +447,20 @@
             {
                 "id": "ReduceDamage",
                 "args": [ "50" ]
+            }
+        ]
+    },
+    "Delude": {
+        "name": "Delude",
+        "targetType": 4,
+        "emote": "<:Delude:536966813687349264>",
+        "range": 3,
+        "element": 2,
+        "PPCost": 4,
+        "effectImages": [
+            {
+                "id": "Condition",
+                "args": [ "Delusion", "30" ]
             }
         ]
     }

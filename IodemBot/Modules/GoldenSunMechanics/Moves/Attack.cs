@@ -1,4 +1,5 @@
-﻿using IodemBot.Modules.ColossoBattles;
+﻿using IodemBot.Extensions;
+using IodemBot.Modules.ColossoBattles;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,13 +20,13 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public override void InternalChooseBestTarget(ColossoFighter User)
         {
-            var aliveEnemies = User.getEnemies().Where(f => f.IsAlive()).ToList();
+            var aliveEnemies = User.GetEnemies().Where(f => f.IsAlive).ToList();
             if (aliveEnemies.Count == 0)
             {
                 targetNr = 0;
                 return;
             }
-            targetNr = User.getEnemies().IndexOf(aliveEnemies[Global.random.Next(0, aliveEnemies.Count)]);
+            targetNr = User.GetEnemies().IndexOf(aliveEnemies.Random());
         }
 
         public override bool InternalValidSelection(ColossoFighter User)
@@ -35,47 +36,57 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         protected override List<string> InternalUse(ColossoFighter User)
         {
-            var enemy = User.battle.getTeam(User.enemies)[targetNr];
+            if (User.Weapon != null)
+            {
+                emote = User.Weapon.Icon;
+            }
 
-            var log = new List<string>();
-            log.Add($"{emote} {User.name} attacks!");
-            if (!enemy.IsAlive())
+            var enemy = GetTarget(User).First();
+
+            var log = new List<string>
+            {
+                $"{emote} {User.name} attacks!"
+            };
+
+            if (!enemy.IsAlive)
             {
                 log.Add($"{enemy.name} is down already!");
                 return log;
             }
 
-            bool weaponUnleashed = User.Weapon != null && User.Weapon.IsUnleashable && Global.random.Next(0, 100) <= User.unleashRate;
+            int chanceToMiss = 16;
+            if (User.HasCondition(Condition.Delusion))
+            {
+                chanceToMiss = 2;
+            }
 
+            if (Global.Random.Next(0, chanceToMiss) == 0)
+            {
+                log.Add($"{enemy.name} dodges the blow!");
+                return log;
+            }
+
+            bool weaponUnleashed = User.Weapon != null && User.Weapon.IsUnleashable && Global.Random.Next(0, 100) <= User.unleashRate;
             if (weaponUnleashed)
             {
-                log.Add($"{User.Weapon.Icon} {User.name}'s {User.Weapon.Name} lets out a howl! {User.Weapon.unleash.UnleashName}!");
-                User.Weapon.unleash.effects
+                log.Add($"{User.Weapon.IconDisplay} {User.name}'s {User.Weapon.Name} lets out a howl! {User.Weapon.Unleash.UnleashName}!");
+                User.Weapon.Unleash.Effects
                     .Where(e => e.timeToActivate == IEffect.TimeToActivate.beforeDamge)
                     .ToList()
                     .ForEach(e => log.AddRange(e.Apply(User, enemy)));
             }
-            else
-            {
-                int chanceToMiss = 8;
-                if (User.HasCondition(Condition.Delusion))
-                {
-                    chanceToMiss = 3;
-                }
 
-                if (Global.random.Next(0, chanceToMiss) == 0)
-                {
-                    log.Add($"{enemy.name} dodges the blow!");
-                    return log;
-                }
+            if (!enemy.IsAlive)
+            {
+                return log;
             }
 
             var atk = User.stats.Atk * User.MultiplyBuffs("Attack");
-            var def = enemy.stats.Def * enemy.MultiplyBuffs("Defense");
-            uint damage = 1;
+            var def = enemy.stats.Def * enemy.MultiplyBuffs("Defense") * enemy.ignoreDefense;
+            uint damage = (uint)Global.Random.Next(0, 4);
             if (def < atk)
             {
-                damage = (uint)((atk - def) * enemy.defensiveMult / 2 + (uint)Global.random.Next(1, 4));
+                damage = (uint)((atk - def) * enemy.defensiveMult / 2);
             }
             damage += User.addDamage;
             damage = (uint)(damage * User.offensiveMult);
@@ -88,24 +99,26 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
             if (weaponUnleashed)
             {
-                element = User.Weapon.unleash.UnleashAlignment;
+                element = User.Weapon.Unleash.UnleashAlignment;
             }
 
-            var elMult = 1 + Math.Max(0.0, (int)User.elstats.GetPower(element) * User.MultiplyBuffs("Power") - (int)enemy.elstats.GetRes(element) * enemy.MultiplyBuffs("Resistance")) / 400;
+            //var elMult = 1 + Math.Max(0.0, (int)User.elstats.GetPower(element) * User.MultiplyBuffs("Power") - (int)enemy.elstats.GetRes(element) * enemy.MultiplyBuffs("Resistance")) / 400;
+            var elMult = 1 + (User.elstats.GetPower(element) * User.MultiplyBuffs("Power") - enemy.elstats.GetRes(element) * enemy.MultiplyBuffs("Resistance")) / 400;
+
             var punctuation = "!";
-            if (enemy.elstats.GetRes(element) == enemy.elstats.highestRes())
+            if (enemy.elstats.GetRes(element) == enemy.elstats.HighestRes())
             {
                 punctuation = ".";
             }
 
             damage = (uint)(damage * elMult);
 
-            if (enemy.elstats.GetRes(element) == enemy.elstats.leastRes())
+            if (enemy.elstats.GetRes(element) == enemy.elstats.LeastRes())
             {
                 punctuation = "!!!";
-                if (User is PlayerFighter)
+                if (User is PlayerFighter p)
                 {
-                    ((PlayerFighter)User).battleStats.attackedWeakness++;
+                    p.battleStats.AttackedWeakness++;
                 }
             }
             if (element == Psynergy.Element.none)
@@ -114,34 +127,31 @@ namespace IodemBot.Modules.GoldenSunMechanics
             }
 
             User.addDamage = 0;
-            if (!weaponUnleashed && Global.random.Next(0, 8) == 0)
+            if (!weaponUnleashed && Global.Random.Next(0, 8) == 0)
             {
                 log.Add("Critical!!");
-                damage = (uint)(damage * 1.25 + Global.random.Next(5, 15));
+                damage = (uint)(damage * 1.25 + Global.Random.Next(5, 15));
             }
-            if (damage == 0)
-            {
-                damage = 1;
-            }
+            damage = Math.Max(1, damage);
 
             log.AddRange(enemy.DealDamage(damage, punctuation));
             User.damageDoneThisTurn += damage;
             if (weaponUnleashed)
             {
-                User.Weapon.unleash.effects
+                User.Weapon.Unleash.Effects
                     .Where(e => e.timeToActivate == IEffect.TimeToActivate.afterDamage)
                     .ToList()
                     .ForEach(e => log.AddRange(e.Apply(User, enemy)));
             }
 
-            if (User is PlayerFighter)
+            if (User is PlayerFighter player)
             {
-                var player = (PlayerFighter)User;
-                player.battleStats.damageDealt += damage;
-                if (!enemy.IsAlive())
+                player.battleStats.DamageDealt += damage;
+                if (!enemy.IsAlive)
                 {
-                    player.battleStats.killsByHand++;
-                    player.battleStats.kills++;
+                    player.battleStats.KillsByHand++;
+                    player.battleStats.Kills++;
+                    player.battleStats.HighestDamage = Math.Max(player.battleStats.HighestDamage, damage);
                 }
             }
             return log;

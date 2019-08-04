@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Discord;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System;
 using System.Collections.Generic;
@@ -21,25 +22,52 @@ namespace IodemBot.Modules.GoldenSunMechanics
         Ring, Misc
     }
 
+    public enum ItemCategory
+    {
+        Weapon, ArmWear, ChestWear, HeadWear, UnderWear, FootWear, Accessoire, Other
+    }
+
     public class Item : ICloneable
     {
-        private static ItemType[] Weapons = { ItemType.LongSword, ItemType.Axe, ItemType.Staff, ItemType.LightBlade, ItemType.Mace, ItemType.Bow, ItemType.Claw };
-        private static ItemType[] ArmWear = { ItemType.Shield, ItemType.Bracelet, ItemType.Glove };
-        private static ItemType[] ChestWear = { ItemType.HeavyArmor, ItemType.Robe, ItemType.LightArmor };
-        private static ItemType[] HeadWear = { ItemType.Helmet, ItemType.Hat, ItemType.Circlet, ItemType.Crown };
-        private static ItemType[] UnderWear = { ItemType.UnderWear };
-        private static ItemType[] Footwear = { ItemType.Boots, ItemType.Greave };
-        private static ItemType[] Accessoires = { ItemType.Ring, ItemType.Misc };
+        private static readonly Dictionary<ItemCategory, ItemType[]> ItemCategorization = new Dictionary<ItemCategory, ItemType[]>()
+        {
+            { ItemCategory.Weapon, new [] { ItemType.LongSword, ItemType.Axe, ItemType.Staff, ItemType.LightBlade, ItemType.Mace, ItemType.Bow, ItemType.Claw } },
+            { ItemCategory.ArmWear, new [] { ItemType.Shield, ItemType.Bracelet, ItemType.Glove } },
+            { ItemCategory.ChestWear, new []  { ItemType.HeavyArmor, ItemType.Robe, ItemType.LightArmor } },
+            { ItemCategory.HeadWear, new []{ ItemType.Helmet, ItemType.Hat, ItemType.Circlet, ItemType.Crown } },
+            { ItemCategory.UnderWear, new[] { ItemType.UnderWear} },
+            { ItemCategory.FootWear, new [] { ItemType.Boots, ItemType.Greave } },
+            { ItemCategory.Accessoire, new []{ ItemType.Ring, ItemType.Misc } },
+            {ItemCategory.Other, new [] {ItemType.Collectible } }
+        };
+
+        public static readonly ItemCategory[] Equippables = new[] { ItemCategory.Weapon, ItemCategory.ArmWear, ItemCategory.ChestWear, ItemCategory.HeadWear, ItemCategory.UnderWear, ItemCategory.FootWear, ItemCategory.Accessoire };
 
         public string Name { get; set; }
+        internal string NameAndBroken { get { return $"{Name}{(IsBroken ? "(B)" : "")}"; } }
+        public string IconDisplay { get { return $"{(IsBroken ? "(" : "")}{Icon}{(IsBroken ? ")" : "")}"; } }
         public string Icon { get; set; }
         public uint Price { get; set; }
 
+        public Color Color
+        {
+            get
+            {
+                return (Category == ItemCategory.Weapon && IsUnleashable) ? Colors.Get(Unleash.UnleashAlignment.ToString()) :
+                     IsArtifact ? Colors.Get("Artifact") : Colors.Get("Exathi");
+            }
+        }
+
         [JsonIgnore]
-        public uint sellValue { get { return Price / 2; } }
+        public uint SellValue { get { return (uint)(Price / (IsBroken ? 10 : 2)); } }
 
         [JsonConverter(typeof(StringEnumConverter))]
         public ItemType ItemType { get; set; }
+
+        public ItemCategory Category
+        {
+            get { return ItemCategorization.Where(k => k.Value.Contains(ItemType)).First().Key; }
+        }
 
         public Element[] ExclusiveTo { get; set; }
         public bool IsStackable { get; set; }
@@ -47,18 +75,18 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public bool IsUsable { get; set; } = false;
         public bool IsArtifact { get; set; } = false;
 
-        public int increaseUnleashRate { get; set; }
+        public int IncreaseUnleashRate { get; set; }
 
         [DefaultValue(100)]
         public int ChanceToActivate { get; set; } = 80;
 
         public int ChanceToBreak { get; set; } = 100;
 
-        public bool isBroken { get; set; }
+        public bool IsBroken { get; set; }
 
-        public bool IsUnleashable { get { return unleash != null; } }
+        public bool IsUnleashable { get { return Unleash != null; } }
         public bool GrantsUnleash { get; set; }
-        public Unleash unleash { get; set; }
+        public Unleash Unleash { get; set; }
 
         [DefaultValue(Element.none)]
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
@@ -67,7 +95,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public bool IsCursed { get; set; }
         public bool CuresCurse { get; set; }
 
-        public bool IsEquippable { get; set; }
+        public bool IsEquippable { get { return Equippables.Contains(Category); } }
         public bool IsEquipped { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
@@ -81,27 +109,6 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public int HPRegen { get; set; }
         public int PPRegen { get; set; }
-
-        [JsonIgnore]
-        public bool IsWeapon { get { return Weapons.Contains(ItemType); } }
-
-        [JsonIgnore]
-        public bool IsHeadWear { get { return HeadWear.Contains(ItemType); } }
-
-        [JsonIgnore]
-        public bool IsChestWear { get { return ChestWear.Contains(ItemType); } }
-
-        [JsonIgnore]
-        public bool IsArmWear { get { return ArmWear.Contains(ItemType); } }
-
-        [JsonIgnore]
-        public bool IsUnderWear { get { return UnderWear.Contains(ItemType); } }
-
-        [JsonIgnore]
-        public bool IsFootWear { get { return Footwear.Contains(ItemType); } }
-
-        [JsonIgnore]
-        public bool IsAccessoire { get { return Accessoires.Contains(ItemType); } }
 
         public object Clone()
         {
@@ -127,9 +134,9 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 s.Append(MultStatsOnEquip.MultipliersToString());
                 s.Append("\n");
             }
-            if (AddElStatsOnEquip.NonZerosToSTring() != "")
+            if (AddElStatsOnEquip.NonZerosToString() != "")
             {
-                s.Append(AddElStatsOnEquip.NonZerosToSTring());
+                s.Append(AddElStatsOnEquip.NonZerosToString());
                 s.Append("\n");
             }
 
@@ -149,14 +156,14 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 various.Add($"PP Regen: {PPRegen}");
             }
 
-            if (increaseUnleashRate > 0)
+            if (IncreaseUnleashRate > 0)
             {
-                various.Add($"Increases Unleashrate");
+                various.Add($"Increases unleash Rate by {IncreaseUnleashRate}%");
             }
 
             if (IsUnleashable)
             {
-                various.Add($"{unleash.ToString()}");
+                various.Add($"{(Category == ItemCategory.Weapon ? "" : $"{(GrantsUnleash ? "Adds an Effect to your Artifacts Unleash: " : $"{(ChanceToActivate < 100 ? "May target" : "Targets")} the Wearer with an Effect: ")}")}{Unleash.ToString()}");
             }
 
             if (CuresCurse)
@@ -167,6 +174,11 @@ namespace IodemBot.Modules.GoldenSunMechanics
             if (IsCursed)
             {
                 various.Add($"Cursed");
+            }
+
+            if (Name == "Lure Cap")
+            {
+                various.Add("This cap illuminates the area and will make you and your team find chests more easily. But watch out, it might attract more enemies!");
             }
             s.Append(string.Join(" | ", various));
             return s.ToString();
@@ -181,20 +193,29 @@ namespace IodemBot.Modules.GoldenSunMechanics
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public Element UnleashAlignment { get; set; }
 
-        [DefaultValue(35)]
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
-        public int UnleashRate { get; set; }
+        [JsonIgnore] internal List<IEffect> DefaultEffects { get; set; }
+        [JsonProperty] internal List<EffectImage> EffectImages { get; set; }
+        [JsonIgnore] internal List<IEffect> AdditionalEffects { get; set; } = new List<IEffect>();
 
-        [JsonIgnore] public List<IEffect> effects { get; set; }
-        public List<EffectImage> effectImages { get; set; }
+        [JsonIgnore]
+        public List<IEffect> Effects
+        {
+            get
+            {
+                var eff = new List<IEffect>();
+                eff.AddRange(DefaultEffects);
+                eff.AddRange(AdditionalEffects);
+                return eff;
+            }
+        }
 
         public Unleash(List<EffectImage> effectImages)
         {
-            this.effects = new List<IEffect>();
-            this.effectImages = effectImages;
+            DefaultEffects = new List<IEffect>();
+            EffectImages = effectImages;
             if (effectImages != null)
             {
-                effectImages.ForEach(e => effects.Add(IEffect.EffectFactory(e.id, e.args)));
+                effectImages.ForEach(e => DefaultEffects.Add(IEffect.EffectFactory(e.Id, e.Args)));
             }
         }
 
@@ -206,7 +227,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 s.Append(UnleashName);
             }
 
-            if (effects.Count > 0)
+            if (Effects.Count > 0)
             {
                 if (UnleashName != null)
                 {
@@ -217,7 +238,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 {
                     s.Append(GoldenSun.ElementIcons[UnleashAlignment]);
                 }
-                s.Append(string.Join(", ", effects.Select(e => $"{e.ToString()}")));
+                s.Append(string.Join(", ", Effects.Select(e => $"{e.ToString()}")));
                 if (UnleashName != null)
                 {
                     s.Append(")");

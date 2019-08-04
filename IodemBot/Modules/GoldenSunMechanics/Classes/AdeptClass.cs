@@ -2,13 +2,13 @@
 {
     public class AdeptClass
     {
-        public string name { get; set; }
-        public string[] movepool { get; set; }
-        public Stats statMultipliers { get; set; }
+        public string Name { get; set; }
+        public string[] Movepool { get; set; }
+        public Stats StatMultipliers { get; set; }
 
         public AdeptClass(string name)
         {
-            this.name = name;
+            this.Name = name;
         }
     }
 }

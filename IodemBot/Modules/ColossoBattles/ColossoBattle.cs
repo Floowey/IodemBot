@@ -14,8 +14,23 @@ namespace IodemBot.Modules.ColossoBattles
 
         public List<ColossoFighter> TeamB = new List<ColossoFighter>();
         public bool isActive = false;
-        public uint sizeTeamA = 0;
-        public uint sizeTeamB = 0;
+
+        public int SizeTeamA
+        {
+            get
+            {
+                return TeamA.Count();
+            }
+        }
+
+        public int SizeTeamB
+        {
+            get
+            {
+                return TeamB.Count();
+            }
+        }
+
         public int turn = 0;
         public List<string> log = new List<string>();
         public bool turnActive = false;
@@ -33,16 +48,16 @@ namespace IodemBot.Modules.ColossoBattles
             {
                 if (p is NPCEnemy)
                 {
-                    p.selectRandom();
+                    p.SelectRandom();
                 }
 
                 if (p is PlayerFighter)
                 {
                     ((PlayerFighter)p).battleStats = new BattleStats();
-                    ((PlayerFighter)p).battleStats.totalTeamMates += TeamA.Count - 1;
+                    ((PlayerFighter)p).battleStats.TotalTeamMates += TeamA.Count - 1;
                     if (TeamA.Count == 1)
                     {
-                        ((PlayerFighter)p).battleStats.soloBattles++;
+                        ((PlayerFighter)p).battleStats.SoloBattles++;
                     }
                 }
             });
@@ -51,16 +66,16 @@ namespace IodemBot.Modules.ColossoBattles
             {
                 if (p is NPCEnemy)
                 {
-                    p.selectRandom();
+                    p.SelectRandom();
                 }
 
                 if (p is PlayerFighter)
                 {
                     ((PlayerFighter)p).battleStats = new BattleStats();
-                    ((PlayerFighter)p).battleStats.totalTeamMates += TeamB.Count - 1;
+                    ((PlayerFighter)p).battleStats.TotalTeamMates += TeamB.Count - 1;
                     if (TeamB.Count == 1)
                     {
-                        ((PlayerFighter)p).battleStats.soloBattles++;
+                        ((PlayerFighter)p).battleStats.SoloBattles++;
                     }
                 }
             });
@@ -82,7 +97,7 @@ namespace IodemBot.Modules.ColossoBattles
             {
                 if (!f.hasSelected)
                 {
-                    f.selectRandom();
+                    f.SelectRandom();
                     if (f is PlayerFighter)
                     {
                         ((PlayerFighter)f).AutoTurnPool--;
@@ -110,30 +125,41 @@ namespace IodemBot.Modules.ColossoBattles
             {
                 return false;
             }
+
+            if (SizeTeamB == 0)
+            {
+                Console.WriteLine("The stupid bug happened");
+                log.Add("Error occured. You win.");
+                isActive = false;
+                return true;
+            }
             turnActive = true;
-            bool b = true;
             log.Add($"Turn {++turn}");
-            //Stop Timer, just in Case
+
             Console.WriteLine("Starting to process Turn");
 
             //Start Turn for things like Defend
-            log.AddRange(StartTurn());
-            Console.WriteLine("Finished StartTurn()");
+            try
+            {
+                log.AddRange(StartTurn());
 
-            //Main Turn
-            log.AddRange(MainTurn());
-            Console.WriteLine("Finished MainTurn()");
+                //Main Turn
+                log.AddRange(MainTurn());
 
-            //Main Turn
-            log.AddRange(ExtraTurn());
-            Console.WriteLine("Finished ExtraTurn()");
+                //Main Turn
+                log.AddRange(ExtraTurn());
 
-            //End Turn
-            log.AddRange(EndTurn());
-            Console.WriteLine("Finished EndTurn()");
+                //End Turn
+                log.AddRange(EndTurn());
+            }
+            catch (Exception e)
+            {
+                log.Add(e.Message);
+                Console.WriteLine(e.Message);
+            }
 
             //Check for Game Over
-            if (gameOver())
+            if (GameOver())
             {
                 isActive = false;
             }
@@ -141,7 +167,7 @@ namespace IodemBot.Modules.ColossoBattles
 
             Console.WriteLine("Done processing Turn");
 
-            return b;
+            return true;
         }
 
         public void AddPlayer(ColossoFighter player, Team team)
@@ -161,20 +187,18 @@ namespace IodemBot.Modules.ColossoBattles
                 TeamA.Add(player);
                 player.party = Team.A;
                 player.enemies = Team.B;
-                sizeTeamA++;
             }
             else
             {
                 TeamB.Add(player);
                 player.party = Team.B;
                 player.enemies = Team.A;
-                sizeTeamB++;
             }
 
             player.battle = this;
         }
 
-        public List<ColossoFighter> getTeam(Team team)
+        public List<ColossoFighter> GetTeam(Team team)
         {
             if (team == Team.A)
             {
@@ -226,23 +250,14 @@ namespace IodemBot.Modules.ColossoBattles
             return turnLog;
         }
 
-        public void resetGame()
+        private bool GameOver()
         {
-            TeamA = new List<ColossoFighter>();
-            TeamB = new List<ColossoFighter>();
-            log.Clear();
-            turn = 0;
-            isActive = false;
+            return !TeamA.Any(p => p.IsAlive) || !TeamB.Any(p => p.IsAlive);
         }
 
-        private bool gameOver()
+        public Team GetWinner()
         {
-            return !TeamA.Where(p => p.IsAlive()).Any() || !TeamB.Where(p => p.IsAlive()).Any();
-        }
-
-        public Team getWinner()
-        {
-            if (TeamA.Where(p => p.IsAlive()).Any())
+            if (TeamA.Any(p => p.IsAlive))
             {
                 return Team.A;
             }

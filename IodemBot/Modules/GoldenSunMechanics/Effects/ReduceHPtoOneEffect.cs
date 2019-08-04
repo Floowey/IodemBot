@@ -5,7 +5,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 {
     public class ReduceHPtoOneEffect : IEffect
     {
-        private int Probability = 10;
+        private readonly int Probability = 10;
 
         public ReduceHPtoOneEffect(string[] args)
         {
@@ -18,16 +18,17 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public override List<string> Apply(ColossoFighter User, ColossoFighter Target)
         {
             var log = new List<string>();
-            if (Target.isImmuneToEffects)
+            if (Target.IsImmuneToHPtoOne)
             {
                 return log;
             }
 
-            if (Target.IsAlive())
+            if (Target.IsAlive)
             {
-                if (Global.random.Next(1, 100) <= Probability)
+                if (Global.Random.Next(1, 100) <= Probability)
                 {
                     Target.stats.HP = 1;
+                    log.Add($"{Target.name} barely holds on.");
                 }
             }
             return log;
@@ -35,7 +36,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public override string ToString()
         {
-            return $"{(Probability != 100 ? $"{Probability}% chance to set" : "Set")} targets HP to one.";
+            return $"{(Probability != 100 ? $"{Probability}% chance to set" : "Set")} targets HP to one";
         }
     }
 }

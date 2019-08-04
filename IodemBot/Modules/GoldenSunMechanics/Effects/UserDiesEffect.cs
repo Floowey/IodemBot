@@ -12,7 +12,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public override List<string> Apply(ColossoFighter User, ColossoFighter Target)
         {
-            if (!User.IsAlive())
+            if (!User.IsAlive)
             {
                 return new List<string>();
             }
@@ -23,7 +23,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public override string ToString()
         {
-            return $"User takes itself down.";
+            return $"User takes itself down";
         }
     }
 }
