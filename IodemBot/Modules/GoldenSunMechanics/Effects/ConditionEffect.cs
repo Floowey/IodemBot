@@ -74,7 +74,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             if (Global.Random.Next(1, 100) <= Probability)
             {
                 Target.AddCondition(Cond);
-                log.Add($"{Target.name} gets hit with {Cond.ToString()}!");
+                log.Add($"{Target.Name} gets hit with {Cond.ToString()}!");
             }
             return log;
         }

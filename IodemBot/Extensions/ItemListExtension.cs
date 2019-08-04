@@ -8,6 +8,11 @@ namespace IodemBot.Extensions
     {
         public static Item GetItem(this List<Item> list, ItemCategory cat)
         {
+            if (list == null)
+            {
+                return null;
+            }
+
             return list.Where(i => i.Category == cat).FirstOrDefault();
         }
 

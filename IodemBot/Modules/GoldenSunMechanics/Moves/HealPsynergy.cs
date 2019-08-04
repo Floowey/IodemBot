@@ -1,4 +1,5 @@
-﻿using IodemBot.Modules.ColossoBattles;
+﻿using IodemBot.Extensions;
+using IodemBot.Modules.ColossoBattles;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Linq;
@@ -43,8 +44,16 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 return;
             }
 
-            aliveFriends = aliveFriends.OrderBy(s => s.stats.HP / s.stats.MaxHP).ThenBy(s => s.stats.HP).ToList();
-            targetNr = User.GetTeam().IndexOf(aliveFriends.First());
+            aliveFriends = aliveFriends.OrderBy(s => s.Stats.HP / s.Stats.MaxHP).ThenBy(s => s.Stats.HP).ToList();
+
+            if (User.GetTeam().Any(d => d.Name.Contains("Star")))
+            {
+                targetNr = User.GetTeam().IndexOf(User.GetTeam().Where(d => d.Name.Contains("Star")).Random());
+            }
+            else
+            {
+                targetNr = User.GetTeam().IndexOf(aliveFriends.First());
+            }
         }
 
         public override bool InternalValidSelection(ColossoFighter User)
@@ -54,19 +63,20 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 return false;
             }
             return (User.battle.turn == 1 ||
-                User.GetTeam().Where(f => f.IsAlive).Any(f => (100 * f.stats.HP) / f.stats.MaxHP < 85));
+                User.GetTeam().Where(f => f.IsAlive).Any(f => (100 * f.Stats.HP) / f.Stats.MaxHP < 85));
         }
 
         protected override List<string> InternalUse(ColossoFighter User)
         {
             List<string> log = new List<string>();
-            int Power = User.elstats.GetPower(element);
+            int Power = User.ElStats.GetPower(element);
             List<ColossoFighter> targets = GetTarget(User);
 
             foreach (var p in targets)
             {
-                var HPtoHeal = (uint)(healPower * Power / 100 + p.stats.MaxHP * percentage / 100);
+                var HPtoHeal = (uint)(healPower * Power / 100 + p.Stats.MaxHP * percentage / 100);
                 log.AddRange(p.Heal(HPtoHeal));
+                effects.ForEach(e => log.AddRange(e.Apply(User, p)));
                 if (User is PlayerFighter)
                 {
                     ((PlayerFighter)User).battleStats.HPhealed += HPtoHeal;

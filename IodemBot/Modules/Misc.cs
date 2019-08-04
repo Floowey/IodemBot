@@ -278,6 +278,10 @@ namespace IodemBot.Modules
                         break;
                 }
             }
+            if (type == RankEnum.Solo)
+            {
+                embed.WithFooter("Honorary Mention: Smeecko - 81, by breaking the Time-Space Continuum");
+            }
             embed.WithDescription(builder.ToString());
 
             await Context.Channel.SendMessageAsync("", false, embed.Build());

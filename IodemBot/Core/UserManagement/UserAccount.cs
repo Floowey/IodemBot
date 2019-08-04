@@ -1,6 +1,7 @@
 ﻿using IodemBot.Modules.GoldenSunMechanics;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using static IodemBot.Modules.GoldenSunMechanics.Psynergy;
 
 namespace IodemBot.Core.UserManagement
@@ -81,6 +82,7 @@ namespace IodemBot.Core.UserManagement
         }
 
         public string[] BonusClasses = new string[] { };
+        public List<string> Dungeons = new List<string>() { };
 
         internal void HealedHP(long HPtoHeal)
         {

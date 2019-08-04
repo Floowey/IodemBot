@@ -349,7 +349,7 @@
                 },
                 {
                     "id": "MultiplyDamage",
-                    "args": [ "1.4, 2.0, 2.8", "60, 60, 60" ]
+                    "args": [ "2.8, 2.0, 1.4", "50, 50, 50" ]
                 },
                 {
                     "id": "Condition",
@@ -2331,7 +2331,7 @@
                 },
                 {
                     "id": "MultiplyDamage",
-                    "args": [ "3.0, 2.0", "50, 60" ]
+                    "args": [ "3.0, 2.0", "50, 40" ]
                 }
             ]
         }
@@ -4718,8 +4718,8 @@
         "ItemType": "Ring",
         "IsEquippable": true,
         "IsArtifact": true,
-        "ChanceToActivate": 30,
-        "ChanceToBreak": 20,
+        "ChanceToActivate": 25,
+        "ChanceToBreak": 10,
         "Unleash": {
             "effectImages": [
                 {
@@ -4771,7 +4771,7 @@
         "IsEquippable": true,
         "IsArtifact": true,
         "ChanceToActivate": 30,
-        "ChanceToBreak": 12,
+        "ChanceToBreak": 6,
         "Unleash": {
             "effectImages": [
                 {
@@ -4822,8 +4822,8 @@
         "Unleash": {
             "effectImages": [
                 {
-                    "id": "HPDrain",
-                    "args": [ "40", "20" ]
+                    "id": "PPDrain",
+                    "args": [ "10", "20" ]
                 }
             ]
         }
@@ -4840,7 +4840,7 @@
             "effectImages": [
                 {
                     "id": "HPDrain",
-                    "args": [ "60", "15" ]
+                    "args": [ "50", "20" ]
                 }
             ]
         }

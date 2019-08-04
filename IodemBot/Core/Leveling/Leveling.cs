@@ -32,6 +32,10 @@ namespace IodemBot.Core.Leveling
                 userAccount.LastXP = DateTime.UtcNow;
                 userAccount.XP += (uint)(new Random()).Next(30, 60);
             }
+            if (user.Roles.Count == 0 && !user.Roles.Any(r => r.Id == 355560889942016000))
+            {
+                await user.AddRoleAsync(user.Guild.Roles.Where(r => r.Id == 355560889942016000).First());
+            }
 
             if ((DateTime.Now.Date != userAccount.ServerStats.LastDayActive.Date))
             {
@@ -103,7 +107,7 @@ namespace IodemBot.Core.Leveling
 
         internal static async void UserAddedReaction(SocketGuildUser user, SocketReaction reaction)
         {
-            if (blackListedChannels.Contains(reaction.Channel.Id))
+            if (blackListedChannels.Contains(reaction.Channel.Id) || Modules.ColossoBattles.ColossoPvE.ChannelIds.Contains(reaction.Channel.Id))
             {
                 return;
             }
@@ -151,7 +155,7 @@ namespace IodemBot.Core.Leveling
             if (xp <= cutoff50)
             {
                 level = (uint)Math.Sqrt(xp / 50);
-                xpneeded = (uint)Math.Pow((level + 1), 2) * 50 - xp;
+                xpneeded = (uint)Math.Pow((level + 1), 2) * 50;
             }
             else if (xp <= cutoff80)
             {

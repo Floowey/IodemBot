@@ -76,13 +76,13 @@ namespace IodemBot.Core.UserManagement
                     sortedList = accounts.Where(d => d.ServerStats.ColossoHighestRoundEndlessQuad > 0)
                         .GroupBy(p => p.ServerStats.ColossoHighestRoundEndlessQuadNames)
                         .Select(group => group.First())
-                        .OrderByDescending(d => d.ServerStats.ColossoHighestRoundEndlessDuo)
+                        .OrderByDescending(d => d.ServerStats.ColossoHighestRoundEndlessQuad)
                         .ToList();
                     break;
 
                 default: break;
             }
-            return sortedList.Take(10).ToArray();
+            return sortedList.Take(Math.Min(sortedList.Count(), 10)).ToArray();
         }
 
         public static int GetRank(SocketUser user, Modules.Misc.RankEnum type = Modules.Misc.RankEnum.Level)
@@ -115,7 +115,7 @@ namespace IodemBot.Core.UserManagement
                     sortedList = accounts.Where(d => d.ServerStats.ColossoHighestRoundEndlessQuad > 0)
                        .GroupBy(p => p.ServerStats.ColossoHighestRoundEndlessQuadNames)
                        .Select(group => group.First())
-                       .OrderByDescending(d => d.ServerStats.ColossoHighestRoundEndlessDuo)
+                       .OrderByDescending(d => d.ServerStats.ColossoHighestRoundEndlessQuad)
                        .ToList();
                     break;
             }

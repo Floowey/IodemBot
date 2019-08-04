@@ -74,7 +74,12 @@
         "PPCost": 5,
         "healPower": 50,
         "percentage": 13,
-        "singleTarget": true
+        "singleTarget": true,
+        "effectImages": [
+            {
+                "id": "Restore"
+            }
+        ]
     },
     "Nature's Boon": {
         "name": "Nature's Boon",
@@ -85,7 +90,12 @@
         "PPCost": 8,
         "healPower": 100,
         "percentage": 25,
-        "singleTarget": true
+        "singleTarget": true,
+        "effectImages": [
+            {
+                "id": "Restore"
+            }
+        ]
     },
     "Vital Boon": {
         "name": "Vital Boon",
@@ -96,7 +106,12 @@
         "PPCost": 18,
         "healPower": 200,
         "percentage": 50,
-        "singleTarget": true
+        "singleTarget": true,
+        "effectImages": [
+            {
+                "id": "Restore"
+            }
+        ]
     },
     "Fresh Breeze": {
         "name": "Fresh Breeze",
@@ -155,6 +170,17 @@
     },
     "Pure Ply": {
         "name": "Pure Ply",
+        "targetType": 1,
+        "emote": "<:Pure_Ply:536969776036315136>",
+        "range": 1,
+        "element": 3,
+        "PPCost": 12,
+        "healPower": 1000,
+        "percentage": 0,
+        "singleTarget": true
+    },
+    "Earnest Ply": {
+        "name": "Earnest Ply",
         "targetType": 1,
         "emote": "<:Pure_Ply:536969776036315136>",
         "range": 1,

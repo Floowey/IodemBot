@@ -394,7 +394,7 @@
     [
         {
             "name": "Isaac",
-            "imgurl": "https://static.tvtropes.org/pmwiki/pub/images/golden-sun.jpg",
+            "imgurl": "https://pbs.twimg.com/media/D0rP9HCXgAE7YJR.jpg",
             "movepool": [
                 "Cure Well",
                 "Ragnarok",
@@ -612,7 +612,7 @@
     [
         {
             "name": "Venus Djinn",
-            "imgurl": "http://goldensunforums.thelostwaters.com/Themes/ThemeRC5Assassin/images/theme/Test.png",
+            "imgurl": "https://cdn.discordapp.com/attachments/571620744291942430/597598160399106058/goldensun_djinntower600px.png",
             "movepool": [
                 "Cure Well",
                 "Mad Growth",
@@ -1945,6 +1945,16 @@
                 "JupiterRes": 200,
                 "MercuryAtk": 100,
                 "MercuryRes": 150
+            },
+            "Weapon": {
+                "Name": "Great Axe",
+                "Price": 5200,
+                "Icon": "<:Great_Axe:569855200899104783>",
+                "ItemType": "Axe",
+                "IsEquippable": true,
+                "AddStatsOnEquip": {
+                    "Atk": 80
+                }
             }
         },
         {
@@ -1971,6 +1981,11 @@
                 "JupiterRes": 200,
                 "MercuryAtk": 100,
                 "MercuryRes": 150
+            },
+            "Weapon": {
+                "Name": "Apollos Axe",
+                "Price": 15200,
+                "Icon": "<:Apollos_Axe:569855200895041537>"
             }
         },
         {
@@ -1997,6 +2012,11 @@
                 "JupiterRes": 200,
                 "MercuryAtk": 100,
                 "MercuryRes": 150
+            },
+            "Weapon": {
+                "Name": "Tartarus Axe",
+                "Price": 10800,
+                "Icon": "<:Tartarus_Axe:569855201016807424>"
             }
         }
     ],
@@ -2392,7 +2412,7 @@
     [
         {
             "name": "Menardi",
-            "imgurl": "",
+            "imgurl": "https://cdn.discordapp.com/attachments/551174020515627029/551452575770345474/12.12.18_No_Background.png",
             "movepool": [
                 "Death Size",
                 "Nova",

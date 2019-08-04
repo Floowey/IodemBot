@@ -50,26 +50,29 @@
     <Reference Include="Accord.Statistics, Version=3.8.0.0, Culture=neutral, PublicKeyToken=fa1a88e29555ccf7, processorArchitecture=MSIL">
       <HintPath>..\packages\Accord.Statistics.3.8.0\lib\net462\Accord.Statistics.dll</HintPath>
     </Reference>
-    <Reference Include="Discord.Net.Commands, Version=2.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Discord.Net.Commands.2.0.1\lib\net46\Discord.Net.Commands.dll</HintPath>
+    <Reference Include="Discord.Net.Commands, Version=2.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Discord.Net.Commands.2.1.1\lib\net46\Discord.Net.Commands.dll</HintPath>
     </Reference>
-    <Reference Include="Discord.Net.Core, Version=2.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Discord.Net.Core.2.0.1\lib\net46\Discord.Net.Core.dll</HintPath>
+    <Reference Include="Discord.Net.Core, Version=2.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Discord.Net.Core.2.1.1\lib\net46\Discord.Net.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Discord.Net.Providers.WS4Net, Version=2.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Discord.Net.Providers.WS4Net.2.0.1\lib\netstandard1.3\Discord.Net.Providers.WS4Net.dll</HintPath>
+    <Reference Include="Discord.Net.Providers.WS4Net, Version=2.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Discord.Net.Providers.WS4Net.2.1.1\lib\netstandard1.3\Discord.Net.Providers.WS4Net.dll</HintPath>
     </Reference>
-    <Reference Include="Discord.Net.Rest, Version=2.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Discord.Net.Rest.2.0.1\lib\net46\Discord.Net.Rest.dll</HintPath>
+    <Reference Include="Discord.Net.Rest, Version=2.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Discord.Net.Rest.2.1.1\lib\net46\Discord.Net.Rest.dll</HintPath>
     </Reference>
     <Reference Include="Discord.Net.Rpc, Version=1.0.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Discord.Net.Rpc.1.0.2\lib\net45\Discord.Net.Rpc.dll</HintPath>
     </Reference>
-    <Reference Include="Discord.Net.Webhook, Version=2.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Discord.Net.Webhook.2.0.1\lib\netstandard1.3\Discord.Net.Webhook.dll</HintPath>
+    <Reference Include="Discord.Net.Webhook, Version=2.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Discord.Net.Webhook.2.1.1\lib\netstandard1.3\Discord.Net.Webhook.dll</HintPath>
     </Reference>
-    <Reference Include="Discord.Net.WebSocket, Version=2.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Discord.Net.WebSocket.2.0.1\lib\net46\Discord.Net.WebSocket.dll</HintPath>
+    <Reference Include="Discord.Net.WebSocket, Version=2.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Discord.Net.WebSocket.2.1.1\lib\net46\Discord.Net.WebSocket.dll</HintPath>
+    </Reference>
+    <Reference Include="JsonSubTypes, Version=1.6.0.0, Culture=neutral, PublicKeyToken=ee75fc290dbc1176, processorArchitecture=MSIL">
+      <HintPath>..\packages\JsonSubTypes.1.6.0\lib\net47\JsonSubTypes.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Extensions.DependencyInjection, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.2.2.0\lib\net461\Microsoft.Extensions.DependencyInjection.dll</HintPath>
@@ -83,7 +86,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="SuperSocket.ClientEngine, Version=0.10.0.0, Culture=neutral, PublicKeyToken=ee9af13f57f00acc, processorArchitecture=MSIL">
       <HintPath>..\packages\SuperSocket.ClientEngine.Core.0.10.0\lib\net45\SuperSocket.ClientEngine.dll</HintPath>
@@ -187,13 +190,13 @@
       <Private>True</Private>
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.Runtime, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Runtime.4.3.0\lib\net462\System.Runtime.dll</HintPath>
+    <Reference Include="System.Runtime, Version=4.1.1.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.4.3.1\lib\net462\System.Runtime.dll</HintPath>
       <Private>True</Private>
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.Runtime.Extensions, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Runtime.Extensions.4.3.0\lib\net462\System.Runtime.Extensions.dll</HintPath>
+    <Reference Include="System.Runtime.Extensions, Version=4.1.1.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.Extensions.4.3.1\lib\net462\System.Runtime.Extensions.dll</HintPath>
       <Private>True</Private>
       <Private>True</Private>
     </Reference>
@@ -228,7 +231,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Text.RegularExpressions, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Text.RegularExpressions.4.3.0\lib\net463\System.Text.RegularExpressions.dll</HintPath>
+      <HintPath>..\packages\System.Text.RegularExpressions.4.3.1\lib\net463\System.Text.RegularExpressions.dll</HintPath>
       <Private>True</Private>
       <Private>True</Private>
     </Reference>
@@ -248,16 +251,25 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Colors.cs" />
+    <Compile Include="Converter\JsonCreationConverter.cs" />
     <Compile Include="Core\Leveling\ServerGames.cs" />
     <Compile Include="Extensions\DiscordSocketGuildExt.cs" />
     <Compile Include="Extensions\DiscordSocketGuildUserExt.cs" />
     <Compile Include="Extensions\EmbedBuilderExtension.cs" />
     <Compile Include="Extensions\IEnumerableExt.cs" />
     <Compile Include="Extensions\ItemListExtension.cs" />
+    <Compile Include="Extensions\MoveExt.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="MessageHandler.cs" />
-    <Compile Include="Modules\ColossoBattles\BattleCollector.cs" />
     <Compile Include="Modules\ColossoBattles\ColossoPvE.cs" />
+    <Compile Include="Modules\ColossoBattles\BattleManagers\BattleEnvironment.cs" />
+    <Compile Include="Modules\ColossoBattles\BattleManagers\PvE\EndlessBattleEnvironment.cs" />
+    <Compile Include="Modules\ColossoBattles\BattleManagers\PvE\GauntletBattleEnvironment.cs" />
+    <Compile Include="Modules\ColossoBattles\BattleManagers\PvP\GoliathBattleEnvironment.cs" />
+    <Compile Include="Modules\ColossoBattles\BattleManagers\PvE\PvEEnvironment.cs" />
+    <Compile Include="Modules\ColossoBattles\BattleManagers\PvP\PvPEnvironment.cs" />
+    <Compile Include="Modules\ColossoBattles\BattleManagers\PvE\SingleBattleEnvironment.cs" />
+    <Compile Include="Modules\ColossoBattles\BattleManagers\PvP\TeamBattleEnvironment.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Classes\AdeptClass.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Classes\AdeptClassSeries.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Classes\AdeptClassSeriesManager.cs" />
@@ -282,6 +294,7 @@
     <Compile Include="Modules\GoldenSunMechanics\Effects\ChanceToOHKOEffect.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Effects\ConditionEffect.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Effects\CounterEffect.cs" />
+    <Compile Include="Modules\GoldenSunMechanics\Effects\MysticCallEffect.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Effects\PPDrainEffect.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Effects\HPDrainEffect.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Effects\IEffect.cs" />
@@ -310,6 +323,9 @@
     <Compile Include="Modules\ColossoBattles\Fighters\NPCEnemy.cs" />
     <Compile Include="Modules\ColossoBattles\Fighters\PlayerFighter.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Moves\PsynergyDatabase.cs" />
+    <Compile Include="Modules\GoldenSunMechanics\RewardSystem\Rewardable.cs" />
+    <Compile Include="Modules\GoldenSunMechanics\RewardSystem\Rewards.cs" />
+    <Compile Include="Modules\GoldenSunMechanics\RewardSystem\RewardTable.cs" />
     <Compile Include="Modules\GoldenSunMechanics\StatList.cs" />
     <Compile Include="Modules\RockPaperScissors.cs" />
     <Compile Include="Preconditions\Cooldown.cs" />
@@ -340,6 +356,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Resources\GoldenSun\AdeptClassSeries.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\GoldenSun\Battles\dungeons.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\GoldenSun\Battles\enemies.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Resources\GoldenSun\shop.json">

@@ -15,8 +15,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
         Collectible,
         LongSword, Axe, Staff, LightBlade, Mace, Bow, Claw,
         Shield, Bracelet, Glove,
-        Helmet, Hat, Circlet, Crown,
         HeavyArmor, Robe, LightArmor,
+        Helmet, Hat, Circlet, Crown,
         UnderWear,
         Boots, Greave,
         Ring, Misc

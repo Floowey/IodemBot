@@ -14,6 +14,8 @@ namespace IodemBot.Core.Leveling
 {
     internal static class ServerGames
     {
+        private static ITextChannel botspam = (SocketTextChannel)(Global.Client.GetChannel(358276942337671178) ?? Global.Client.GetChannel(564175057447026688));
+
         internal static async void UserWonColosso(SocketGuildUser user, SocketTextChannel channel)
         {
             var userAccount = UserAccounts.GetAccount(user);
@@ -57,6 +59,120 @@ namespace IodemBot.Core.Leveling
             await Task.CompletedTask;
         }
 
+        internal static async Task UserWonBattle(UserAccount userAccount, List<Rewardable> rewards, BattleStats battleStats, ITextChannel lobbyChannel, ITextChannel battleChannel, int winsInARow = 1, string nameOfTeamMates = "")
+        {
+            uint oldLevel = userAccount.LevelNumber;
+
+            userAccount.BattleStats += battleStats;
+            var bs = userAccount.BattleStats;
+            _ = UnlockClasses(userAccount, lobbyChannel);
+
+            var awardStrings = rewards.Select(f => f.Award(userAccount)).Where(s => s != null).ToList();
+            if (awardStrings.Count() > 0)
+            {
+                _ = WriteAndDeleteRewards(awardStrings, battleChannel);
+            }
+
+            userAccount.ServerStats.ColossoWins++;
+            userAccount.ServerStats.ColossoStreak++;
+            userAccount.ServerStats.ColossoHighestStreak = Math.Max(userAccount.ServerStats.ColossoHighestStreak, userAccount.ServerStats.ColossoStreak);
+            switch (battleStats.TotalTeamMates)
+            {
+                case 0:
+                    userAccount.ServerStats.ColossoHighestRoundEndlessSolo = Math.Max(userAccount.ServerStats.ColossoHighestRoundEndlessSolo, winsInARow);
+                    break;
+
+                case 1:
+                    if (winsInARow > userAccount.ServerStats.ColossoHighestRoundEndlessDuo)
+                    {
+                        userAccount.ServerStats.ColossoHighestRoundEndlessDuo = winsInARow;
+                        userAccount.ServerStats.ColossoHighestRoundEndlessDuoNames = nameOfTeamMates;
+                    }
+                    break;
+
+                case 2:
+                    if (winsInARow > userAccount.ServerStats.ColossoHighestRoundEndlessTrio)
+                    {
+                        userAccount.ServerStats.ColossoHighestRoundEndlessTrio = winsInARow;
+                        userAccount.ServerStats.ColossoHighestRoundEndlessTrioNames = nameOfTeamMates;
+                    }
+                    break;
+
+                case 3:
+                    if (winsInARow > userAccount.ServerStats.ColossoHighestRoundEndlessQuad)
+                    {
+                        userAccount.ServerStats.ColossoHighestRoundEndlessQuad = winsInARow;
+                        userAccount.ServerStats.ColossoHighestRoundEndlessQuadNames = nameOfTeamMates;
+                    }
+                    break;
+            }
+
+            UserAccounts.SaveAccounts();
+            uint newLevel = userAccount.LevelNumber;
+            if (oldLevel != newLevel)
+            {
+                var user = (SocketGuildUser)await lobbyChannel.GetUserAsync(userAccount.ID); // Where(s => s. == userAccount.ID).First();
+                Leveling.LevelUp(userAccount, user, (SocketTextChannel)lobbyChannel);
+            }
+
+            await Task.CompletedTask;
+        }
+
+        private static async Task WriteAndDeleteRewards(List<string> text, ITextChannel channel)
+        {
+            if (text.Count == 0)
+            {
+                return;
+            }
+
+            var embed = new EmbedBuilder();
+            embed.WithColor(Colors.Get("Iodem"));
+            embed.WithDescription($"{string.Join("\n", text)}");
+            _ = botspam.SendMessageAsync("", false, embed.Build());
+            var msg = await channel.SendMessageAsync("", false, embed.Build());
+            await Task.Delay(3000);
+            _ = msg.DeleteAsync();
+        }
+
+        private static async Task UnlockClasses(UserAccount userAccount, ITextChannel channel)
+        {
+            var bs = userAccount.BattleStats;
+            if (userAccount.ServerStats.ColossoWins >= 15)
+            {
+                await GoldenSun.AwardClassSeries("Brute Series", userAccount, channel);
+            }
+
+            if (bs.KillsByHand >= 161)
+            {
+                await GoldenSun.AwardClassSeries("Samurai Series", userAccount, channel);
+            }
+
+            if (bs.DamageDealt >= 666666)
+            {
+                await GoldenSun.AwardClassSeries("Ninja Series", userAccount, channel);
+            }
+
+            if (bs.SoloBattles >= 50)
+            {
+                await GoldenSun.AwardClassSeries("Ranger Series", userAccount, channel);
+            }
+
+            if (bs.TotalTeamMates >= 100)
+            {
+                await GoldenSun.AwardClassSeries("Dragoon Series", userAccount, channel);
+            }
+
+            if (bs.HPhealed >= 333333)
+            {
+                await GoldenSun.AwardClassSeries("White Mage Series", userAccount, channel);
+            }
+
+            if (bs.Revives >= 50)
+            {
+                await GoldenSun.AwardClassSeries("Medium Series", userAccount, channel);
+            }
+        }
+
         internal static async Task UserSentCommand(SocketGuildUser user, SocketTextChannel channel)
         {
             var userAccount = UserAccounts.GetAccount(user);
@@ -92,11 +208,11 @@ namespace IodemBot.Core.Leveling
             UserAccounts.SaveAccounts();
         }
 
-        internal static async Task UserWonBattle(UserAccount userAccount, int winsInARow, int LureCaps, BattleStats battleStats, BattleDifficulty diff, ITextChannel battleChannel, IEnumerable<ColossoFighter> winners, bool wasMimic)
+        internal static async Task UserWonBattle(UserAccount userAccount, int winsInARow, int LureCaps, BattleStats battleStats, BattleDifficulty diff, ITextChannel lobbyChannel, IEnumerable<ColossoFighter> winners, bool wasMimic)
         {
             uint oldLevel = userAccount.LevelNumber;
             var baseXP = 20 + 5 * LureCaps + winsInARow / 4;
-            var xpawarded = (uint)new Random().Next(baseXP, baseXP * 2) * Math.Max(3, (uint)Math.Pow(((int)diff + 1), 2));
+            var xpawarded = (uint)new Random().Next(baseXP, baseXP * 2) * Math.Max(3, (uint)Math.Pow((int)diff + 1, 2));
             userAccount.XP += xpawarded;
             userAccount.Inv.AddBalance(xpawarded / 2);
             uint newLevel = userAccount.LevelNumber;
@@ -114,7 +230,7 @@ namespace IodemBot.Core.Leveling
                     if (winsInARow > userAccount.ServerStats.ColossoHighestRoundEndlessDuo)
                     {
                         userAccount.ServerStats.ColossoHighestRoundEndlessDuo = winsInARow;
-                        userAccount.ServerStats.ColossoHighestRoundEndlessDuoNames = string.Join(", ", winners.Select(p => p.name));
+                        userAccount.ServerStats.ColossoHighestRoundEndlessDuoNames = string.Join(", ", winners.Select(p => p.Name));
                     }
                     break;
 
@@ -122,7 +238,7 @@ namespace IodemBot.Core.Leveling
                     if (winsInARow > userAccount.ServerStats.ColossoHighestRoundEndlessTrio)
                     {
                         userAccount.ServerStats.ColossoHighestRoundEndlessTrio = winsInARow;
-                        userAccount.ServerStats.ColossoHighestRoundEndlessTrioNames = string.Join(", ", winners.Select(p => p.name));
+                        userAccount.ServerStats.ColossoHighestRoundEndlessTrioNames = string.Join(", ", winners.Select(p => p.Name));
                     }
                     break;
 
@@ -130,64 +246,29 @@ namespace IodemBot.Core.Leveling
                     if (winsInARow > userAccount.ServerStats.ColossoHighestRoundEndlessQuad)
                     {
                         userAccount.ServerStats.ColossoHighestRoundEndlessQuad = winsInARow;
-                        userAccount.ServerStats.ColossoHighestRoundEndlessQuadNames = string.Join(", ", winners.Select(p => p.name));
+                        userAccount.ServerStats.ColossoHighestRoundEndlessQuadNames = string.Join(", ", winners.Select(p => p.Name));
                     }
                     break;
             }
 
             userAccount.BattleStats += battleStats;
-            var bs = userAccount.BattleStats;
+            _ = UnlockClasses(userAccount, lobbyChannel);
 
-            if (wasMimic || Global.Random.Next(0, 100) <= 7 + battleStats.TotalTeamMates * 2 + 4 * LureCaps + winsInARow / 10)
+            if (wasMimic || Global.Random.Next(0, 100) <= 7 + battleStats.TotalTeamMates * 2 + 4 * LureCaps + winsInARow / 10 - 1)
             {
                 ChestQuality awardedChest = GetRandomChest(diff);
                 userAccount.Inv.AwardChest(awardedChest);
                 var embed = new EmbedBuilder();
                 embed.WithColor(Colors.Get("Iodem"));
-                embed.WithDescription($"{((SocketTextChannel)battleChannel).Users.Where(u => u.Id == userAccount.ID).FirstOrDefault().Mention} found a {Inventory.ChestIcons[awardedChest]} {awardedChest} Chest!");
-                await battleChannel.SendMessageAsync("", false, embed.Build());
-            }
-
-            if (userAccount.ServerStats.ColossoWins >= 15)
-            {
-                await GoldenSun.AwardClassSeries("Brute Series", userAccount, (SocketTextChannel)battleChannel);
-            }
-
-            if (bs.KillsByHand >= 161)
-            {
-                await GoldenSun.AwardClassSeries("Samurai Series", userAccount, (SocketTextChannel)battleChannel);
-            }
-
-            if (bs.DamageDealt >= 666666)
-            {
-                await GoldenSun.AwardClassSeries("Ninja Series", userAccount, (SocketTextChannel)battleChannel);
-            }
-
-            if (bs.SoloBattles >= 50)
-            {
-                await GoldenSun.AwardClassSeries("Ranger Series", userAccount, (SocketTextChannel)battleChannel);
-            }
-
-            if (bs.TotalTeamMates >= 100)
-            {
-                await GoldenSun.AwardClassSeries("Dragoon Series", userAccount, (SocketTextChannel)battleChannel);
-            }
-
-            if (bs.HPhealed >= 333333)
-            {
-                await GoldenSun.AwardClassSeries("White Mage Series", userAccount, (SocketTextChannel)battleChannel);
-            }
-
-            if (bs.Revives >= 50)
-            {
-                await GoldenSun.AwardClassSeries("Medium Series", userAccount, (SocketTextChannel)battleChannel);
+                embed.WithDescription($"{((SocketTextChannel)lobbyChannel).Users.Where(u => u.Id == userAccount.ID).FirstOrDefault().Mention} found a {Inventory.ChestIcons[awardedChest]} {awardedChest} Chest!");
+                await lobbyChannel.SendMessageAsync("", false, embed.Build());
             }
 
             UserAccounts.SaveAccounts();
             if (oldLevel != newLevel)
             {
-                var user = (SocketGuildUser)await battleChannel.GetUserAsync(userAccount.ID); // Where(s => s. == userAccount.ID).First();
-                Leveling.LevelUp(userAccount, user, (SocketTextChannel)battleChannel);
+                var user = (SocketGuildUser)await lobbyChannel.GetUserAsync(userAccount.ID); // Where(s => s. == userAccount.ID).First();
+                Leveling.LevelUp(userAccount, user, (SocketTextChannel)lobbyChannel);
             }
 
             await Task.CompletedTask;
@@ -231,7 +312,7 @@ namespace IodemBot.Core.Leveling
             }
         }
 
-        internal static async Task UserLostBattle(UserAccount userAccount, BattleDifficulty diff, ITextChannel battleChannel)
+        internal static async Task UserLostBattle(UserAccount userAccount, ITextChannel battleChannel)
         {
             uint oldLevel = userAccount.LevelNumber;
             userAccount.XP += (uint)(new Random()).Next(0, 10);

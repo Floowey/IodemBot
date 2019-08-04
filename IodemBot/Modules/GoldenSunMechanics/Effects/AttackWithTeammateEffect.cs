@@ -18,13 +18,13 @@ namespace IodemBot.Modules.GoldenSunMechanics
             {
                 case 0:
                     User.offensiveMult *= 1.25;
-                    log.Add($"{User.name} charges alone.");
+                    log.Add($"{User.Name} charges alone.");
                     break;
 
                 default:
-                    var teamMate = User.GetTeam().Where(s => s.IsAlive).OrderByDescending(p => p.stats.Atk).FirstOrDefault();
-                    User.addDamage += (uint)(teamMate.stats.Atk * teamMate.MultiplyBuffs("Attack") / 2);
-                    log.Add($"{teamMate.name} assists the attack.");
+                    var teamMate = User.GetTeam().Where(s => s.IsAlive).OrderByDescending(p => p.Stats.Atk).FirstOrDefault();
+                    User.addDamage += (uint)(teamMate.Stats.Atk * teamMate.MultiplyBuffs("Attack") / 2);
+                    log.Add($"{teamMate.Name} assists the attack.");
                     break;
             }
             return log;

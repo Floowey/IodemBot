@@ -3,7 +3,6 @@ using Discord.WebSocket;
 using IodemBot.Extensions;
 using System;
 using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace IodemBot
@@ -80,7 +79,6 @@ namespace IodemBot
             embed.WithColor(Colors.Get("Iodem"));
             embed.WithDescription(String.Format(welcomeMsg[Global.Random.Next(0, welcomeMsg.Length)], user.DisplayName()));
 
-            await user.AddRoleAsync(user.Guild.Roles.Where(r => r.Id == 355560889942016000).First());
             await ((SocketTextChannel)client.GetChannel(355558866282348575)).SendMessageAsync(embed: embed.Build());
         }
 
@@ -105,7 +103,7 @@ namespace IodemBot
             {
                 if (msg.Exception != null)
                 {
-                    File.AppendAllText($"Logs/{date}_log.log", msg.Exception.InnerException.ToString() + "\n");
+                    Console.WriteLine(msg.Exception.ToString());
                 }
             }
             catch

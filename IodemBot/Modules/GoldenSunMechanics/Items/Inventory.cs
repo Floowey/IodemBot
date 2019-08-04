@@ -117,10 +117,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
             this.MageGearString = MageGearString ?? new List<string>();
 
             Inv = ItemDatabase.GetItems(InvString);
-            WarriorGear = Inv.Where(i => WarriorGearString.Contains(i.Name)).ToList();
-            MageGear = Inv.Where(i => MageGearString.Contains(i.Name)).ToList();
-            //WarriorGear = ItemDatabase.GetItems(WarriorGearString);
-            //MageGear = ItemDatabase.GetItems(MageGearString);
+            WarriorGear = WarriorGear ?? ItemDatabase.GetItems(WarriorGearString.Distinct());
+            MageGear = MageGear ?? ItemDatabase.GetItems(MageGearString.Distinct());
         }
 
         public Inventory()
@@ -175,9 +173,9 @@ namespace IodemBot.Modules.GoldenSunMechanics
             if (lastDailyChest.Date != DateTime.Now.Date && chests[ChestQuality.Daily] == 0)
             {
                 AwardChest(ChestQuality.Daily);
+                lastDailyChest = DateTime.Now;
+                UpdateStrings();
             }
-            lastDailyChest = DateTime.Now;
-            UpdateStrings();
         }
 
         public void AwardChest(ChestQuality chestQuality)
@@ -201,6 +199,27 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 }
             }
             return string.Join(" - ", s);
+        }
+
+        internal bool Remove(string item)
+        {
+            if (!HasItem(item))
+            {
+                return false;
+            }
+            var it = Inv.Where(i => i.Name.Equals(item, StringComparison.InvariantCultureIgnoreCase)).Last();
+            if (WarriorGear.Any(i => i.Name.Equals(it.Name, StringComparison.CurrentCultureIgnoreCase)) ||
+            MageGear.Any(i => i.Name.Equals(it.Name, StringComparison.CurrentCultureIgnoreCase)))
+            {
+                if (Inv.Where(i => string.Equals(i.Name, it.Name, StringComparison.InvariantCultureIgnoreCase)).Count() == 1)
+                {
+                    return false;
+                }
+            }
+
+            Inv.Remove(it);
+            UpdateStrings();
+            return true;
         }
 
         public enum Detail { none, True, Names, PriceAndName }

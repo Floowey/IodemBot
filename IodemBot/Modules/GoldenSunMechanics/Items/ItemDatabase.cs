@@ -61,7 +61,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         private static void Save()
         {
             string json = JsonConvert.SerializeObject(Shopstruct, Formatting.Indented);
-            File.WriteAllText("Resources/shop.json", json);
+            File.WriteAllText("Resources/GoldenSun/shop.json", json);
         }
 
         public static void RandomizeShop()
@@ -81,8 +81,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
             shop.Add(GetRandomItem(40, 0, RandomItemType.Any));
 
             shop.Add(GetRandomItem(20, 0, RandomItemType.Artifact));
-            shop.Add(GetRandomItem(35, 0, RandomItemType.Artifact));
-            shop.Add(GetRandomItem(45, 0, RandomItemType.Artifact));
+            shop.Add(GetRandomItem(40, 0, RandomItemType.Artifact));
+            shop.Add(GetRandomItem(50, 0, RandomItemType.Artifact));
 
             shopkeeper = Sprites.GetImageFromName(shopkeepers.Random());
 

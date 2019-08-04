@@ -78,31 +78,31 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
                 if (PPCost > 1 && t.IsImmuneToPsynergy)
                 {
-                    log.Add($"{t.name} protects themselves with a magical barrier.");
+                    log.Add($"{t.Name} protects themselves with a magical barrier.");
                     return log;
                 }
 
                 var baseDmg = Global.Random.Next(0, 4);
                 var dmg = attackBased ?
                     Math.Max(0,
-                    ((int)User.stats.Atk * User.MultiplyBuffs("Attack") - (int)t.stats.Def * t.ignoreDefense * t.MultiplyBuffs("Defense")) / 2)
+                    ((int)User.Stats.Atk * User.MultiplyBuffs("Attack") - (int)t.Stats.Def * t.ignoreDefense * t.MultiplyBuffs("Defense")) / 2)
                     : (int)power;
 
                 //                var elMult = 1 + Math.Max(0.0, (int)User.elstats.GetPower(element) * User.MultiplyBuffs("Power") - (int)t.elstats.GetRes(element) * t.MultiplyBuffs("Resistance")) / (attackBased ? 400 : 200);
-                var elMult = 1 + (User.elstats.GetPower(element) * User.MultiplyBuffs("Power") - t.elstats.GetRes(element) * t.MultiplyBuffs("Resistance")) / (attackBased ? 400 : 200);
-
+                var elMult = 1 + (User.ElStats.GetPower(element) * User.MultiplyBuffs("Power") - t.ElStats.GetRes(element) * t.MultiplyBuffs("Resistance")) / (attackBased ? 400 : 200);
+                elMult = Math.Max(0, elMult);
                 var distFromCenter = Math.Abs(enemyTeam.IndexOf(t) - targetNr);
                 var spreadMult = IgnoreSpread ? 1 : spread[distFromCenter];
-                var prctdmg = (uint)(t.stats.MaxHP * percentageDamage / 100);
+                var prctdmg = (uint)(t.Stats.MaxHP * percentageDamage / 100);
                 var realDmg = (uint)((baseDmg + dmg + addDamage) * dmgMult * elMult * spreadMult * t.defensiveMult * User.offensiveMult + prctdmg);
                 var punctuation = "!";
 
-                if (t.elstats.GetRes(element) == t.elstats.HighestRes())
+                if (t.ElStats.GetRes(element) == t.ElStats.HighestRes())
                 {
                     punctuation = ".";
                 }
 
-                if (t.elstats.GetRes(element) == t.elstats.LeastRes())
+                if (t.ElStats.GetRes(element) == t.ElStats.LeastRes())
                 {
                     punctuation = "!!!";
                     if (User is PlayerFighter)
@@ -131,7 +131,19 @@ namespace IodemBot.Modules.GoldenSunMechanics
                     }
                 }
 
-                //Counter
+                if (t.IsAlive && t.HasCondition(Condition.Counter))
+                {
+                    var counterAtk = t.Stats.Atk * t.MultiplyBuffs("Attack");
+                    var counterDef = User.Stats.Def * User.MultiplyBuffs("Defense") * User.ignoreDefense;
+                    uint CounterDamage = (uint)Global.Random.Next(0, 4);
+                    if (counterDef < counterAtk)
+                    {
+                        CounterDamage += (uint)((counterAtk - counterDef) * User.defensiveMult / 2);
+                    }
+                    log.Add($"{t.Name} strikes back!");
+                    log.AddRange(User.DealDamage(CounterDamage));
+                }
+
                 ii++;
             }
 

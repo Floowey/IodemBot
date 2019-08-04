@@ -17,12 +17,13 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public override void InternalChooseBestTarget(ColossoFighter User)
         {
+            targetNr = 0;
             return;
         }
 
         public override bool InternalValidSelection(ColossoFighter User)
         {
-            return true;
+            return User.battle.log.Count < 3;
         }
 
         protected override List<string> InternalUse(ColossoFighter User)
@@ -32,7 +33,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             {
                 ((PlayerFighter)User).battleStats.Defends++;
             }
-            return new List<string>() { $"{emote} {User.name} is defending." };
+            return new List<string>() { $"{emote} {User.Name} is defending." };
         }
     }
 }

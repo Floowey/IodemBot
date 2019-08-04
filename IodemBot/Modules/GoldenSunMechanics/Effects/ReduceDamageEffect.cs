@@ -1,5 +1,7 @@
-﻿using IodemBot.Modules.ColossoBattles;
+﻿using IodemBot.Extensions;
+using IodemBot.Modules.ColossoBattles;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
@@ -26,6 +28,12 @@ namespace IodemBot.Modules.GoldenSunMechanics
             {
                 int.TryParse(args[0], out damageReduction);
             }
+        }
+
+        protected override int InternalChooseBestTarget(List<ColossoFighter> targets)
+        {
+            var target = targets.Where(d => d.Name.Contains("Star")).FirstOrDefault() ?? targets.Random();
+            return targets.IndexOf(target);
         }
 
         public override string ToString()

@@ -74,7 +74,7 @@ namespace IodemBot.Modules
         [Command("Emotes")]
         public async Task Emotes()
         {
-            var s = string.Join("\n", Context.Guild.Emotes.Select(e => $"{e.ToString()} \\<:{e.Name}:{e.Id}>"));
+            var s = string.Join("\n", Context.Guild.Emotes.Select(e => $"{e.ToString()} \\<{(e.Animated ? "a" : "")}:{e.Name}:{e.Id}>"));
             if (s.Length > 2000)
             {
                 await Context.Channel.SendMessageAsync(s.Substring(0, 2000));

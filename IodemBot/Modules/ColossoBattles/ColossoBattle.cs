@@ -9,9 +9,7 @@ namespace IodemBot.Modules.ColossoBattles
     {
         public enum Team { A, B }
 
-        //public static NPCEnemy enemy;
         public List<ColossoFighter> TeamA = new List<ColossoFighter>();
-
         public List<ColossoFighter> TeamB = new List<ColossoFighter>();
         public bool isActive = false;
 
@@ -34,10 +32,6 @@ namespace IodemBot.Modules.ColossoBattles
         public int turn = 0;
         public List<string> log = new List<string>();
         public bool turnActive = false;
-
-        public ColossoBattle()
-        {
-        }
 
         public void Start()
         {
@@ -108,68 +102,6 @@ namespace IodemBot.Modules.ColossoBattles
             return Turn();
         }
 
-        public bool Turn()
-        {
-            if (!isActive)
-            {
-                return false;
-            }
-
-            if (turnActive)
-            {
-                return false;
-            }
-
-            log.Clear();
-            if (!(TeamA.All(p => p.hasSelected) && TeamB.All(p => p.hasSelected)))
-            {
-                return false;
-            }
-
-            if (SizeTeamB == 0)
-            {
-                Console.WriteLine("The stupid bug happened");
-                log.Add("Error occured. You win.");
-                isActive = false;
-                return true;
-            }
-            turnActive = true;
-            log.Add($"Turn {++turn}");
-
-            Console.WriteLine("Starting to process Turn");
-
-            //Start Turn for things like Defend
-            try
-            {
-                log.AddRange(StartTurn());
-
-                //Main Turn
-                log.AddRange(MainTurn());
-
-                //Main Turn
-                log.AddRange(ExtraTurn());
-
-                //End Turn
-                log.AddRange(EndTurn());
-            }
-            catch (Exception e)
-            {
-                log.Add(e.Message);
-                Console.WriteLine(e.Message);
-            }
-
-            //Check for Game Over
-            if (GameOver())
-            {
-                isActive = false;
-            }
-            turnActive = false;
-
-            Console.WriteLine("Done processing Turn");
-
-            return true;
-        }
-
         public void AddPlayer(ColossoFighter player, Team team)
         {
             if (isActive)
@@ -177,7 +109,7 @@ namespace IodemBot.Modules.ColossoBattles
                 return;
             }
 
-            if (TeamA.Any(p => p.imgUrl != "" && p.imgUrl == player.imgUrl))
+            if (TeamA.Any(p => p.ImgUrl != "" && p.ImgUrl == player.ImgUrl))
             {
                 return;
             }
@@ -210,12 +142,74 @@ namespace IodemBot.Modules.ColossoBattles
             }
         }
 
+        public bool Turn()
+        {
+            if (!isActive)
+            {
+                return false;
+            }
+
+            if (turnActive)
+            {
+                return false;
+            }
+
+            log.Clear();
+            if (!(TeamA.All(p => p.hasSelected) && TeamB.All(p => p.hasSelected)))
+            {
+                return false;
+            }
+
+            if (SizeTeamB == 0 || SizeTeamA == 0)
+            {
+                Console.WriteLine("The stupid bug happened");
+                log.Add("Error occured. You win.");
+                isActive = false;
+                return true;
+            }
+            turnActive = true;
+            log.Add($"Turn {++turn}");
+
+            Console.WriteLine("Starting to process Turn");
+
+            //Start Turn for things like Defend
+            try
+            {
+                log.AddRange(StartTurn());
+
+                //Main Turn
+                log.AddRange(MainTurn());
+
+                //Main Turn
+                log.AddRange(ExtraTurn());
+
+                //End Turn
+                log.AddRange(EndTurn());
+            }
+            catch (Exception e)
+            {
+                log.Add(e.ToString());
+                Console.WriteLine("Turn Processing Error: " + e.ToString());
+            }
+
+            //Check for Game Over
+            if (GameOver())
+            {
+                isActive = false;
+            }
+            turnActive = false;
+
+            Console.WriteLine("Done processing Turn");
+
+            return true;
+        }
+
         private List<string> StartTurn()
         {
             List<string> turnLog = new List<string>();
             List<ColossoFighter> fighters = new List<ColossoFighter>(TeamA);
             fighters.AddRange(TeamB);
-            fighters = fighters.OrderByDescending(f => f.stats.Spd * f.MultiplyBuffs("Speed")).ToList();
+            fighters = fighters.OrderByDescending(f => f.Stats.Spd * f.MultiplyBuffs("Speed")).ToList();
             fighters.ForEach(f => { turnLog.AddRange(f.StartTurn()); });
             return turnLog;
         }
@@ -225,7 +219,7 @@ namespace IodemBot.Modules.ColossoBattles
             List<string> turnLog = new List<string>();
             List<ColossoFighter> fighters = new List<ColossoFighter>(TeamA);
             fighters.AddRange(TeamB);
-            fighters = fighters.OrderByDescending(f => f.stats.Spd * f.MultiplyBuffs("Speed")).ToList();
+            fighters = fighters.OrderByDescending(f => f.Stats.Spd * f.MultiplyBuffs("Speed")).ToList();
             fighters.ForEach(f => { turnLog.AddRange(f.MainTurn()); });
             return turnLog;
         }
@@ -235,7 +229,7 @@ namespace IodemBot.Modules.ColossoBattles
             List<string> turnLog = new List<string>();
             List<ColossoFighter> fighters = new List<ColossoFighter>(TeamA);
             fighters.AddRange(TeamB);
-            fighters = fighters.OrderByDescending(f => f.stats.Spd * f.MultiplyBuffs("Speed")).ToList();
+            fighters = fighters.OrderByDescending(f => f.Stats.Spd * f.MultiplyBuffs("Speed")).ToList();
             fighters.ForEach(f => { turnLog.AddRange(f.ExtraTurn()); });
             return turnLog;
         }
@@ -245,7 +239,7 @@ namespace IodemBot.Modules.ColossoBattles
             List<string> turnLog = new List<string>();
             List<ColossoFighter> fighters = new List<ColossoFighter>(TeamA);
             fighters.AddRange(TeamB);
-            fighters = fighters.OrderByDescending(f => f.stats.Spd * f.MultiplyBuffs("Speed")).ToList();
+            fighters = fighters.OrderByDescending(f => f.Stats.Spd * f.MultiplyBuffs("Speed")).ToList();
             fighters.ForEach(f => { turnLog.AddRange(f.EndTurn()); });
             return turnLog;
         }

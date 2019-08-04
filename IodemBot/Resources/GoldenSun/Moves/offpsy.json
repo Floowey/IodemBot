@@ -82,7 +82,7 @@
     },
     "Quake": {
         "name": "Quake",
-        "targetType": 3,
+        "targetType": 4,
         "emote": "<:Quake:536958036472889346>",
         "range": 2,
         "element": 0,
@@ -1068,7 +1068,8 @@
         "range": 2,
         "element": 3,
         "PPCost": 15,
-        "power": 100
+        "power": 100,
+        "IgnoresSpread": true
     },
     "Ice": {
         "name": "Ice",
@@ -1121,8 +1122,8 @@
         "emote": "<:Megacool:536969361794269201>",
         "range": 4,
         "element": 3,
-        "PPCost": 33,
-        "power": 180
+        "PPCost": 32,
+        "power": 200
     },
     "Douse": {
         "name": "Douse",
@@ -1528,6 +1529,50 @@
         "element": 1,
         "PPCost": 0,
         "power": 200,
+        "effectImages": [
+            {
+                "id": "UserDies"
+            }
+        ]
+    },
+    "Angry Mine": {
+        "name": "Angry Mine",
+        "targetType": 4,
+        "emote": "<:Anger_Ball:600641755066531851>",
+        "range": 3,
+        "element": 0,
+        "PPCost": 0,
+        "power": 300,
+        "effectImages": [
+            {
+                "id": "UserDies"
+            }
+        ],
+        "ignoreSpread": true
+    },
+    "Trap": {
+        "name": "Trap!",
+        "targetType": 4,
+        "emote": ":bomb:",
+        "range": 5,
+        "element": 4,
+        "PPCost": 0,
+        "power": 2000,
+        "IgnoreSpread": true,
+        "effectImages": [
+            {
+                "id": "UserDies"
+            }
+        ]
+    },
+    "Disarm": {
+        "name": "Disarm",
+        "targetType": 4,
+        "emote": "🏳️",
+        "range": 3,
+        "element": 4,
+        "PPCost": 0,
+        "power": 0,
         "effectImages": [
             {
                 "id": "UserDies"
@@ -1951,6 +1996,16 @@
         "range": 3,
         "element": 1,
         "PPCost": 0,
-        "addDamage": 100
+        "addDamage": 100,
+        "IgnoreSpread": true
+    },
+    "Mine Ball": {
+        "name": "Mine Ball",
+        "targetType": 4,
+        "emote": "<:Mine_Ball:600642600390885376>",
+        "range": 3,
+        "element": 3,
+        "PPCost": 0,
+        "dmgMult": 1.5
     }
 }
