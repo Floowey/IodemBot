@@ -30,6 +30,8 @@ namespace IodemBot.Modules.ColossoBattles
         private readonly List<SocketGuildUser> playersWithBRole = new List<SocketGuildUser>();
         public static IRole TeamBRole;
 
+        internal override ulong[] GetIds => new[] { Teams[Team.A].teamChannel.Id, Teams[Team.B].teamChannel.Id };
+
         protected Dictionary<Team, PvPTeamCollector> Teams = new Dictionary<Team, PvPTeamCollector>()
         {
             {Team.A, new PvPTeamCollector(){team = Team.A, enemies = Team.B } },
@@ -159,7 +161,9 @@ namespace IodemBot.Modules.ColossoBattles
         {
             var winners = Battle.GetTeam(Battle.GetWinner());
             var losers = winners.First().battle.GetTeam(winners.First().enemies);
-
+            var Reward = new Reward()
+            {
+            };
             winners.ConvertAll(s => (PlayerFighter)s).ForEach(async p => await ServerGames.UserWonBattle(p.avatar, 1, 0, p.battleStats, BattleDifficulty.Easy, lobbyChannel, winners, false));
             losers.ConvertAll(s => (PlayerFighter)s).ForEach(async p => await ServerGames.UserLostBattle(p.avatar, lobbyChannel));
 

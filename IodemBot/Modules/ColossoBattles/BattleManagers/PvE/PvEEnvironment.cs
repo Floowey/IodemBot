@@ -22,6 +22,8 @@ namespace IodemBot.Modules.ColossoBattles
         protected Dictionary<IUserMessage, PlayerFighter> PlayerMessages = new Dictionary<IUserMessage, PlayerFighter>();
         protected bool wasJustReset = true;
 
+        internal override ulong[] GetIds => new[] { BattleChannel.Id };
+
         public PvEEnvironment(string Name, ITextChannel lobbyChannel, ITextChannel BattleChannel) : base(Name, lobbyChannel)
         {
             this.BattleChannel = BattleChannel;
@@ -85,7 +87,21 @@ namespace IodemBot.Modules.ColossoBattles
                 }
                 else if (reaction.Emote.Name == "Battle")
                 {
+                    File.AppendAllText("Logs/BattleStats.txt", $"{DateTime.Now},{Name}, {GetIds}\n");
                     _ = StartBattle();
+                    return;
+                }
+
+                if (new[] { "Bronze", "Silver", "Gold" }.Contains(reaction.Emote.Name) && this is SingleBattleEnvironment)
+                {
+                    Dictionary<string, BattleDifficulty> diff = new Dictionary<string, BattleDifficulty>()
+                    {
+                        { "Bronze", BattleDifficulty.Easy },
+                        { "Silver", BattleDifficulty.Medium },
+                        { "Gold", BattleDifficulty.Hard }
+                    };
+                    ((SingleBattleEnvironment)this).internalDiff = diff[reaction.Emote.Name];
+                    await Reset();
                     return;
                 }
 

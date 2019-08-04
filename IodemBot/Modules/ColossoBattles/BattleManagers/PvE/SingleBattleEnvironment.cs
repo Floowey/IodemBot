@@ -15,6 +15,87 @@ namespace IodemBot.Modules.ColossoBattles
     {
         private int LureCaps = 0;
 
+        private static Dictionary<BattleDifficulty, RewardTable> chestTable = new Dictionary<BattleDifficulty, RewardTable>()
+        {
+            {BattleDifficulty.Tutorial, new RewardTable(){
+                new ChestReward()
+            {
+                    Chest = ChestQuality.Wooden,
+            } } },
+            {BattleDifficulty.Easy, new RewardTable()
+            {
+                new ChestReward()
+                {
+                    Chest = ChestQuality.Wooden,
+                    Weight = 3
+                },
+                new ChestReward()
+                {
+                    Chest = ChestQuality.Normal,
+                    Weight = 5
+                },
+                new ChestReward()
+                {
+                    Chest = ChestQuality.Silver,
+                    Weight = 2
+                }
+            } },
+            {BattleDifficulty.Medium, new RewardTable()
+            {
+                new ChestReward()
+                {
+                    Chest = ChestQuality.Normal,
+                    Weight = 3
+                },
+                new ChestReward()
+                {
+                    Chest = ChestQuality.Silver,
+                    Weight = 5
+                },
+                new ChestReward()
+                {
+                    Chest = ChestQuality.Gold,
+                    Weight = 1
+                }
+            } },
+            {BattleDifficulty.MediumRare, new RewardTable()
+            {
+                new ChestReward()
+                {
+                    Chest = ChestQuality.Silver,
+                    Weight = 5
+                },
+                new ChestReward()
+                {
+                    Chest = ChestQuality.Gold,
+                    Weight = 4
+                },
+                new ChestReward()
+                {
+                    Chest = ChestQuality.Adept,
+                    Weight = 1
+                }
+            } },
+            {BattleDifficulty.Hard, new RewardTable()
+            {
+                new ChestReward()
+                {
+                    Chest = ChestQuality.Silver,
+                    Weight = 1
+                },
+                new ChestReward()
+                {
+                    Chest = ChestQuality.Gold,
+                    Weight = 7
+                },
+                new ChestReward()
+                {
+                    Chest = ChestQuality.Adept,
+                    Weight = 2
+                }
+            } }
+        };
+
         public SingleBattleEnvironment(string Name, ITextChannel lobbyChannel, ITextChannel BattleChannel, BattleDifficulty diff) : base(Name, lobbyChannel, BattleChannel)
         {
             internalDiff = diff;
@@ -22,7 +103,34 @@ namespace IodemBot.Modules.ColossoBattles
         }
 
         public override BattleDifficulty Difficulty => internalDiff;
-        private BattleDifficulty internalDiff = BattleDifficulty.Easy;
+        internal BattleDifficulty internalDiff = BattleDifficulty.Easy;
+
+        internal RewardTables rewards
+        {
+            get
+            {
+                var basexp = 20 + 5 * LureCaps;
+                var DiffFactor = (int)Math.Max(3, (uint)Math.Pow((int)Difficulty + 1, 2));
+                var xp = (uint)(Global.Random.Next(basexp, 2 * basexp) * DiffFactor);
+                return new RewardTables()
+                {
+                    new RewardTable()
+                    {
+                        new DefaultReward(){
+                            xp = xp,
+                            coins = xp/2,
+                            Weight = 3
+                        },
+                        new DefaultReward(){
+                            xp = xp*2
+                        },
+                        new DefaultReward(){
+                            coins = xp
+                        },
+                    }
+                };
+            }
+        }
 
         public override void SetEnemy(string Enemy)
         {
@@ -42,22 +150,20 @@ namespace IodemBot.Modules.ColossoBattles
             var factory = new PlayerFighterFactory();
             var p = factory.CreatePlayerFighter(player);
 
-            if (Name == "Bronze")
+            if (Difficulty == BattleDifficulty.Tutorial || Difficulty == BattleDifficulty.Easy)
             {
-                if (playerAvatar.LevelNumber < 10 && PlayerMessages.Count == 0)
+                if (playerAvatar.LevelNumber < 10 && Battle.SizeTeamA == 0)
                 {
                     internalDiff = BattleDifficulty.Tutorial;
                     SetNextEnemy();
                 }
-                else
+                else if (Difficulty == BattleDifficulty.Tutorial)
                 {
-                    if (Difficulty != BattleDifficulty.Easy)
-                    {
-                        internalDiff = BattleDifficulty.Easy;
-                        SetNextEnemy();
-                    }
+                    internalDiff = BattleDifficulty.Easy;
+                    SetNextEnemy();
                 }
             }
+
             if (playerAvatar.Inv.GetGear(AdeptClassSeriesManager.GetClassSeries(playerAvatar).Archtype).Any(i => i.Name == "Lure Cap"))
             {
                 LureCaps++;
@@ -95,9 +201,16 @@ namespace IodemBot.Modules.ColossoBattles
             }
             if (Battle.GetWinner() == ColossoBattle.Team.A)
             {
-                var wasMimic = Battle.TeamB.Any(e => e.Name.Contains("Mimic"));
-                winners.ConvertAll(s => (PlayerFighter)s).ForEach(async p => await ServerGames.UserWonBattle(p.avatar, 1, LureCaps, p.battleStats, Difficulty, lobbyChannel, winners, wasMimic));
-
+                var RewardTables = rewards;
+                var chests = chestTable[Difficulty];
+                chests.RemoveAll(s => s is DefaultReward);
+                if (!Battle.TeamB.Any(f => f.Name.Contains("Mimic")))
+                {
+                    chests.Add(new DefaultReward { Weight = chests.Weight * (14 - 2 * LureCaps) });
+                }
+                RewardTables.Add(chests);
+                winners.OfType<PlayerFighter>().ToList().ForEach(async p => await ServerGames.UserWonBattle(p.avatar, RewardTables.GetRewards(), p.battleStats, lobbyChannel, BattleChannel));
+                chests.RemoveAll(s => s is DefaultReward);
                 _ = WriteGameOver();
             }
             else
@@ -114,6 +227,27 @@ namespace IodemBot.Modules.ColossoBattles
         {
             LureCaps = 0;
             await base.Reset();
+
+            _ = EnemyMessage.AddReactionsAsync(new IEmote[]
+            {
+                    Emote.Parse("<:Bronze:537214232203100190>"),
+                    Emote.Parse("<:Silver:537214282891395072>"),
+                    Emote.Parse("<:Gold:537214319591555073>")
+            });
+            wasJustReset = true;
+        }
+
+        private static readonly Dictionary<BattleDifficulty, string> medals = new Dictionary<BattleDifficulty, string>(){
+            {BattleDifficulty.Tutorial , ""},
+            {BattleDifficulty.Easy, "<:Bronze:537214232203100190>" },
+            {BattleDifficulty.Medium, "<:Silver:537214282891395072>" },
+            {BattleDifficulty.Hard, "<:Gold:537214319591555073>" }
+        };
+
+        protected override string GetEnemyMessageString()
+
+        {
+            return $"Welcome to {Name} Battle! The difficulty is set to ***{medals[Difficulty]} {Difficulty} {medals[Difficulty]}***!\n\nReact with <:Fight:536919792813211648> to join the {Name} Battle and press <:Battle:536954571256365096> when you are ready to battle!";
         }
     }
 }

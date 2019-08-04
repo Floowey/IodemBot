@@ -13,9 +13,131 @@ namespace IodemBot.Modules.ColossoBattles
 {
     internal class EndlessBattleEnvironment : PvEEnvironment
     {
+        private static Dictionary<BattleDifficulty, RewardTable> chestTable = new Dictionary<BattleDifficulty, RewardTable>()
+        {
+            {BattleDifficulty.Tutorial, new RewardTable(){
+                new ChestReward()
+            {
+                    Chest = ChestQuality.Wooden,
+            } } },
+            {BattleDifficulty.Easy, new RewardTable()
+            {
+                new ChestReward()
+                {
+                    Chest = ChestQuality.Wooden,
+                    Weight = 3
+                },
+                new ChestReward()
+                {
+                    Chest = ChestQuality.Normal,
+                    Weight = 5
+                },
+                new ChestReward()
+                {
+                    Chest = ChestQuality.Silver,
+                    Weight = 2
+                }
+            } },
+            {BattleDifficulty.Medium, new RewardTable()
+            {
+                new ChestReward()
+                {
+                    Chest = ChestQuality.Normal,
+                    Weight = 3
+                },
+                new ChestReward()
+                {
+                    Chest = ChestQuality.Silver,
+                    Weight = 5
+                },
+                new ChestReward()
+                {
+                    Chest = ChestQuality.Gold,
+                    Weight = 1
+                }
+            } },
+            {BattleDifficulty.MediumRare, new RewardTable()
+            {
+                new ChestReward()
+                {
+                    Chest = ChestQuality.Silver,
+                    Weight = 5
+                },
+                new ChestReward()
+                {
+                    Chest = ChestQuality.Gold,
+                    Weight = 4
+                },
+                new ChestReward()
+                {
+                    Chest = ChestQuality.Adept,
+                    Weight = 1
+                }
+            } },
+            {BattleDifficulty.Hard, new RewardTable()
+            {
+                new ChestReward()
+                {
+                    Chest = ChestQuality.Silver,
+                    Weight = 1
+                },
+                new ChestReward()
+                {
+                    Chest = ChestQuality.Gold,
+                    Weight = 7
+                },
+                new ChestReward()
+                {
+                    Chest = ChestQuality.Adept,
+                    Weight = 2
+                }
+            } }
+        };
+
         private int LureCaps = 0;
         private int winsInARow = 0;
         private int StageLength { get; set; } = 12;
+
+        internal RewardTables rewards
+        {
+            get
+            {
+                var basexp = 20 + 5 * LureCaps + winsInARow / 4;
+                var DiffFactor = (int)Math.Max(3, (uint)Math.Pow((int)Difficulty + 1, 2));
+                return new RewardTables()
+                {
+                    new RewardTable()
+                    {
+                        new DefaultReward(){
+                            xp = (uint)(Global.Random.Next(basexp, 2*basexp)*DiffFactor),
+                            coins = (uint)(Global.Random.Next(basexp/2, basexp)*DiffFactor),
+                            Weight = 3
+                        },
+                        new DefaultReward(){
+                            xp = (uint)(Global.Random.Next(2*basexp, 3*basexp)*DiffFactor),
+                        },
+                        new DefaultReward(){
+                            coins = (uint)(Global.Random.Next(basexp, 2*basexp)*DiffFactor),
+                        },
+                    }
+                };
+            }
+        }
+
+        private double Boost
+        {
+            get
+            {
+                if (winsInARow < 4 * StageLength)
+                {
+                    return 1 + ((double)winsInARow % StageLength) / 30;
+                }
+                else
+                {
+                    return 1 + ((double)winsInARow - 4 * StageLength) / 30;
+                }
+            }
+        }
 
         public EndlessBattleEnvironment(string Name, ITextChannel lobbyChannel, ITextChannel BattleChannel) : base(Name, lobbyChannel, BattleChannel)
         {
@@ -34,7 +156,7 @@ namespace IodemBot.Modules.ColossoBattles
         public override void SetNextEnemy()
         {
             Battle.TeamB.Clear();
-            EnemiesDatabase.GetRandomEnemies(Difficulty).ForEach(f =>
+            EnemiesDatabase.GetRandomEnemies(Difficulty, Boost).ForEach(f =>
             {
                 Battle.AddPlayer(f, ColossoBattle.Team.B);
             }
@@ -44,7 +166,7 @@ namespace IodemBot.Modules.ColossoBattles
             {
                 if (Battle.SizeTeamB < 9)
                 {
-                    Battle.AddPlayer(EnemiesDatabase.GetRandomEnemies(Difficulty, 1).Random(), ColossoBattle.Team.B);
+                    Battle.AddPlayer(EnemiesDatabase.GetRandomEnemies(Difficulty, Boost).Random(), ColossoBattle.Team.B);
                 }
             }
             Console.WriteLine($"Up against {Battle.TeamB.First().Name}");
@@ -60,8 +182,17 @@ namespace IodemBot.Modules.ColossoBattles
             if (Battle.GetWinner() == ColossoBattle.Team.A)
             {
                 winsInARow++;
-                var wasMimic = Battle.TeamB.Any(e => e.Name.Contains("Mimic"));
-                winners.ConvertAll(s => (PlayerFighter)s).ForEach(async p => await ServerGames.UserWonBattle(p.avatar, winsInARow, LureCaps, p.battleStats, Difficulty, lobbyChannel, winners, wasMimic));
+                var RewardTables = rewards;
+                var chests = chestTable[Difficulty];
+                chests.RemoveAll(s => s is DefaultReward);
+                if (!Battle.TeamB.Any(f => f.Name.Contains("Mimic")))
+                {
+                    chests.Add(new DefaultReward { Weight = chests.Weight * (14 - 2 * LureCaps) });
+                }
+                RewardTables.Add(chests);
+                winners.OfType<PlayerFighter>().ToList().ForEach(async p => await ServerGames.UserWonBattle(p.avatar, RewardTables.GetRewards(), p.battleStats, lobbyChannel, BattleChannel, winsInARow, string.Join(", ", Battle.TeamA.Select(pl => pl.Name))));
+                chests.RemoveAll(s => s is DefaultReward);
+
                 Console.WriteLine("Winners rewarded.");
                 Battle.TeamA.ForEach(p =>
                 {

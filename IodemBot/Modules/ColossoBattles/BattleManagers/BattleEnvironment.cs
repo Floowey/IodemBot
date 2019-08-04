@@ -27,6 +27,8 @@ namespace IodemBot.Modules.ColossoBattles
         private bool isProcessing = false;
         public bool IsActive { get { return Battle.SizeTeamA > 0; } }
 
+        internal abstract ulong[] GetIds { get; }
+
         public BattleEnvironment(string Name, ITextChannel lobbyChannel)
         {
             this.Name = Name;
@@ -119,7 +121,6 @@ namespace IodemBot.Modules.ColossoBattles
                 s.Add($"{p.Stats.HP} / {p.Stats.MaxHP}HP");
                 s.Add($"{(p.hasSelected ? $"Selected {p.selected.name} at {p.selected.targetNr}" : "Not Selected")}");
                 s.Add("");
-                Console.WriteLine(JsonConvert.SerializeObject(p, Formatting.Indented));
             });
             s.Add($"\nTeam B:");
             Battle.TeamB.ForEach(p =>
@@ -128,10 +129,10 @@ namespace IodemBot.Modules.ColossoBattles
                 s.Add($"{p.Stats.HP} / {p.Stats.MaxHP}HP");
                 s.Add($"{(p.hasSelected ? $"Selected {p.selected.name} at {p.selected.targetNr}" : "Not Selected")}");
                 s.Add("");
-                Console.WriteLine(JsonConvert.SerializeObject(p, Formatting.Indented));
             });
-
-            File.WriteAllText($"Logs/Reports/Report_{Name}_{DateTime.Now.ToString("MM_dd_hh_mm")}.log", JsonConvert.SerializeObject(Battle, Formatting.Indented));
+            var BattleReport = JsonConvert.SerializeObject(Battle, Formatting.Indented).Replace("{", "").Replace("}", "").Replace("\"", "");
+            Console.WriteLine(BattleReport);
+            File.WriteAllText($"Logs/Reports/Report_{Name}_{DateTime.Now.ToString("MM_dd_hh_mm")}.log", BattleReport);
             return string.Join("\n", s);
         }
     }
