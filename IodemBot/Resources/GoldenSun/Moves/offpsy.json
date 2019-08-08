@@ -2007,5 +2007,15 @@
         "element": 3,
         "PPCost": 0,
         "dmgMult": 1.5
+    },
+    {
+    "Fatal Fang": {
+        "name": "Fatal Fang",
+        "targetType": 4,
+        "emote": "<:Rampage:537766290031509524>",
+        "range": 1,
+        "element": 4,
+        "PPCost": 0,
+        "addDamage": 11
     }
 }
