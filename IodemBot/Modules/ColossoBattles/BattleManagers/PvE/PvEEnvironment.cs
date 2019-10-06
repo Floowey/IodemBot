@@ -87,7 +87,7 @@ namespace IodemBot.Modules.ColossoBattles
                 }
                 else if (reaction.Emote.Name == "Battle")
                 {
-                    File.AppendAllText("Logs/BattleStats.txt", $"{DateTime.Now},{Name}, {GetIds}\n");
+                    //File.AppendAllText("Logs/BattleStats.txt", $"{DateTime.Now},{Name}, {GetIds}\n");
                     _ = StartBattle();
                     return;
                 }

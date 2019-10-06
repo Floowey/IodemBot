@@ -144,7 +144,7 @@
         "name": "Ancient Devil",
         "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Ancient_Devil.png",
         "stats": {
-            "maxhp": 11,
+            "maxhp": 11783,
             "maxpp": 400,
             "atk": 482,
             "def": 239,
