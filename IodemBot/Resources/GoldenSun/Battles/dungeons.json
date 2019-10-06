@@ -112,8 +112,8 @@
                 "FlavourText": "Watch out! A boulder is falling from Mount Aleph! You need to dodge it!"
             },
             {
-                "EnemyNames": [ "Vermin 1", "Mad Vermin", "Vermin 1" ],
-                "image": "https://goldensunwiki.net/wiki/Special:FilePath/Mad_Vermin.png",
+                "EnemyNames": [ "Vermin 1", "Wild Wolf", "Vermin 1" ],
+                "image": "https://goldensunwiki.net/w/images/2/2b/Wild_Wolf.png",
                 "RewardTables": [
                     [
                         {
