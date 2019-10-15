@@ -43,7 +43,7 @@ namespace IodemBot.Modules
             var embed = new EmbedBuilder();
             embed.WithColor(Colors.Get("Iodem"));
             QuoteStruct q = quoteList[(new Random()).Next(0, quoteList.Count)];
-            q.name = Utilities.toCaps(q.name);
+            q.name = Utilities.ToCaps(q.name);
             embed.WithAuthor(q.name);
             embed.WithThumbnailUrl(Sprites.GetImageFromName(q.name));
             embed.WithDescription(q.quote);
@@ -89,7 +89,7 @@ namespace IodemBot.Modules
             {
                 var quote = QuotesFromName[(new Random()).Next(0, QuotesFromName.Count)];
                 embed.WithThumbnailUrl(Sprites.GetImageFromName(quote.name));
-                embed.WithAuthor(Utilities.toCaps(quote.name));
+                embed.WithAuthor(Utilities.ToCaps(quote.name));
 
                 embed.WithDescription(quote.quote);
                 if (quote.quote.Contains(@"#^@%!"))
