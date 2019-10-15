@@ -3,6 +3,7 @@ using Discord.WebSocket;
 using IodemBot.Core.UserManagement;
 using IodemBot.Modules;
 using System;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -144,28 +145,52 @@ namespace IodemBot.Core.Leveling
             await Task.CompletedTask;
         }
 
-        internal static uint XPforNextLevel(uint xp)
+        internal static ulong XPforNextLevel(ulong xp)
         {
-            int rate50 = 200;
-            int cutoff50 = 125000;
-            int rate80 = 1000;
-            int cutoff80 = 605000;
+            ulong rate0 = 50;
+
+            ulong cutoff50 = 125000;
+            ulong rate50 = 200;
+
+            ulong cutoff80 = 605000;
+            ulong rate80 = 1000;
+
+            ulong cutoff90 = 1196934;
+            ulong rate90 = 2500;
+
+            ulong cutoff100 = 2540978;
+            ulong rate100 = 10000;
             uint level = 1;
-            uint xpneeded = 0;
+            ulong xpneeded = 0;
+
             if (xp <= cutoff50)
             {
-                level = (uint)Math.Sqrt(xp / 50);
-                xpneeded = (uint)Math.Pow((level + 1), 2) * 50;
+                level = (uint)Math.Sqrt(xp / rate0);
+                xpneeded = (ulong)Math.Pow((level + 1), 2) * rate0;
             }
             else if (xp <= cutoff80)
             {
                 level = (uint)(50 - Math.Sqrt(cutoff50 / rate50) + Math.Sqrt(xp / rate50));
-                xpneeded = (uint)(Math.Pow(level + 1 - 50 + Math.Sqrt(cutoff50 / rate50), 2) * rate50);
+                xpneeded = (ulong)(Math.Pow(level + 1 - 50 + Math.Sqrt(cutoff50 / rate50), 2) * rate50);
+            }
+            else if (xp <= cutoff90)
+            {
+                level = (uint)(80 - Math.Sqrt(cutoff80 / rate80) + Math.Sqrt(xp / rate80));
+                xpneeded = (ulong)(Math.Pow(level + 1 - 80 + Math.Sqrt(cutoff80 / rate80), 2) * rate80);
+            }
+            else if (xp <= cutoff100)
+            {
+                level = (uint)(90 - Math.Sqrt(cutoff90 / rate90) + Math.Sqrt(xp / rate90));
+                xpneeded = (ulong)(Math.Pow(level + 1 - 90 + Math.Sqrt(cutoff90 / rate90), 2) * rate90);
             }
             else
             {
-                level = (uint)(80 - Math.Sqrt(cutoff80 / rate80) + Math.Sqrt(xp / rate80));
-                xpneeded = (uint)(Math.Pow(level + 1 - 80 + Math.Sqrt(cutoff80 / rate80), 2) * rate80);
+                level = (uint)(100 - Math.Sqrt(cutoff100 / rate100) + Math.Sqrt(xp / rate100));
+                xpneeded = (ulong)(Math.Pow(level + 1 - 100 + Math.Sqrt(cutoff100 / rate100), 2) * rate100);
+            }
+            if (xpneeded < xp)
+            {
+                File.WriteAllText($"Logs/Reports/Report_XP_Error_{DateTime.Now.ToString("MM_dd_hh_mm")}.log", $"has {xp}, needs {xpneeded}. Level {level}");
             }
             return xpneeded - xp;
         }
