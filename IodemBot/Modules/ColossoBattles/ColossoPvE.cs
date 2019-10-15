@@ -30,7 +30,7 @@ namespace IodemBot.Modules.ColossoBattles
         }
 
         [Command("setup")]
-        [RequireUserPermission(ChannelPermission.ManageMessages)]
+        [RequireStaff]
         public async Task SetupColosso()
         {
             LobbyChannel = (SocketTextChannel)Context.Channel;
@@ -56,10 +56,15 @@ namespace IodemBot.Modules.ColossoBattles
 
             //battles.Add(new SingleBattleEnvironment("Gold", LobbyChannel, await PrepareBattleChannel("Gold"), BattleDifficulty.Hard));
             //battles.Add(new TeamBattleManager("OneVOne", LobbyChannel, await PrepareBattleChannel("OneVOneA", PermValue.Deny), await PrepareBattleChannel("OneVOneB", PermValue.Allow), 1));
+
+            if (Global.Client.Activity == null)
+            {
+                await Global.Client.SetGameAsync("in Babi's Palace.", "https://www.twitch.tv/directory/game/Golden%20Sun", ActivityType.Streaming);
+            }
         }
 
         [Command("reset")]
-        [RequireUserPermission(ChannelPermission.ManageMessages)]
+        [RequireStaff]
         public async Task Reset(string name)
         {
             await Context.Message.DeleteAsync();
@@ -71,7 +76,7 @@ namespace IodemBot.Modules.ColossoBattles
         }
 
         [Command("setEnemy")]
-        [RequireUserPermission(ChannelPermission.ManageMessages)]
+        [RequireStaff]
         public async Task SetEnemy(string name, [Remainder] string enemy)
         {
             await Context.Message.DeleteAsync();
@@ -84,7 +89,7 @@ namespace IodemBot.Modules.ColossoBattles
         }
 
         [Command("dungeon")]
-        [RequireUserPermission(ChannelPermission.ManageMessages)]
+        [RequireStaff]
         public async Task Dungeon([Remainder] string DungeonName)
         {
             var User = UserAccounts.GetAccount(Context.User);
@@ -115,7 +120,7 @@ namespace IodemBot.Modules.ColossoBattles
         }
 
         [Command("Status")]
-        [RequireUserPermission(ChannelPermission.ManageMessages)]
+        [RequireStaff]
         public async Task StatusOfBattle(string name)
         {
             await Context.Message.DeleteAsync();
