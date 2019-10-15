@@ -4,6 +4,7 @@ using Discord.WebSocket;
 using Iodembot.Preconditions;
 using IodemBot.Core.UserManagement;
 using System;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,19 +14,20 @@ namespace IodemBot.Modules
     public class Misc : ModuleBase<SocketCommandContext>
     {
         [Command("say")]
+        [RequireRole("Moderator")]
         [RequireUserPermission(GuildPermission.ManageGuild)]
         [Remarks("Are you me?")]
         public async Task Echo([Remainder] string message)
         {
-            var embed = new EmbedBuilder();
-            embed.WithColor(Colors.Get("Iodem"));
-            embed.WithDescription(message);
             await Context.Message.DeleteAsync();
-            await Context.Channel.SendMessageAsync("", false, embed.Build());
+            await Context.Channel.SendMessageAsync(embed: new EmbedBuilder()
+            .WithColor(Colors.Get("Iodem"))
+            .WithDescription(message)
+            .Build());
         }
 
         [Command("mock")]
-        [RequireUserPermission(GuildPermission.ManageGuild)]
+        [RequireRole("Moderator")]
         [Remarks("Are you me?")]
         public async Task Mock([Remainder] string message)
         {
@@ -48,10 +50,8 @@ namespace IodemBot.Modules
                 {
                     c = c.ToUpper();
                 }
-
                 s.Append(c);
             }
-
             return s.ToString();
         }
 
@@ -60,10 +60,10 @@ namespace IodemBot.Modules
         [Remarks("Pong")]
         public async Task Ping()
         {
-            var embed = new EmbedBuilder();
-            embed.WithColor(Colors.Get("Iodem"));
-            embed.WithDescription($"Pong!");
-            await Context.Channel.SendMessageAsync("", false, embed.Build());
+            await Context.Channel.SendMessageAsync(embed: new EmbedBuilder()
+                .WithColor(Colors.Get("Iodem"))
+                .WithDescription($"Pong!")
+                .Build());
         }
 
         [Command("wiki")]
@@ -71,16 +71,16 @@ namespace IodemBot.Modules
         [Remarks("Link to the wiki or a a specific search query.")]
         public async Task Wiki([Remainder] string searchQuery = "")
         {
-            var embed = new EmbedBuilder();
-            embed.WithColor(Colors.Get("Iodem"));
             string link = "https://goldensunwiki.net/wiki/Main_Page";
             if (searchQuery != "")
             {
                 link = $"https://goldensunwiki.net/w/index.php?Search&search={searchQuery.Trim().Replace(" ", "+")}";
             }
 
-            embed.WithDescription(link);
-            await Context.Channel.SendMessageAsync("", false, embed.Build());
+            await Context.Channel.SendMessageAsync(embed: new EmbedBuilder()
+                .WithColor(Colors.Get("Iodem"))
+                .WithDescription(link)
+                .Build());
         }
 
         [Command("subreddit"), Alias("sub")]
@@ -118,7 +118,27 @@ namespace IodemBot.Modules
         [Remarks("How long has the bot been running")]
         public async Task Uptime()
         {
-            await Context.Channel.SendMessageAsync($"Running since {Global.UpSince.ToLocalTime()}.");
+            await Context.Channel.SendMessageAsync(embed: new EmbedBuilder()
+            .AddField("Running since", $"{Global.RunningSince.ToLocalTime()} ({DateTime.Now.Subtract(Global.RunningSince.ToLocalTime()).ToString("d' 'hh':'mm':'ss")}")
+            .AddField("Connected since", $"{Global.UpSince.ToLocalTime()} ({DateTime.Now.Subtract(Global.UpSince.ToLocalTime()).ToString("d' 'hh':'mm':'ss")})")
+            .Build());
+        }
+
+        [Command("clock"), Alias("worldclock")]
+        public async Task Worldclock()
+        {
+            CultureInfo enAU = new CultureInfo("en-US");
+            string format = "HH':'mm', 'MMM dd";
+            await Context.Channel.SendMessageAsync("", false,
+                new EmbedBuilder()
+                .AddField(":globe_with_meridians: UTC", DateTime.UtcNow.ToString(format, enAU), true)
+                .AddField(":flag_at: Vienna", DateTime.Now.ToString(format, enAU), true)
+                .AddField(":flag_in: Mumbai", TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.Now, "India Standard Time").ToString(format, enAU), true)
+                .AddField(":flag_jp: Tokyo", TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.Now, "Tokyo Standard Time").ToString(format, enAU), true)
+                .AddField(":bridge_at_night: San Francisco", TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.Now, "Pacific Standard Time").ToString(format, enAU), true)
+                .AddField(":statue_of_liberty: New York", TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.Now, "Eastern Standard Time").ToString(format, enAU), true)
+                .Build()
+                );
         }
 
         [Command("roleinfo")]
@@ -139,17 +159,17 @@ namespace IodemBot.Modules
 
             var membercount = Context.Guild.Users.Where(u => u.Roles.Contains(mentionedRole)).Count();
 
-            var embed = new EmbedBuilder();
-            embed.WithColor(mentionedRole.Color);
-            embed.WithTitle(mentionedRole.Name);
-            embed.WithThumbnailUrl(Sprites.GetRandomSprite());
+            var embed = new EmbedBuilder()
+            .WithColor(mentionedRole.Color)
+            .WithTitle(mentionedRole.Name)
+            .WithThumbnailUrl(Sprites.GetRandomSprite())
+            .AddField("ID", mentionedRole.Id, true)
+            .AddField("Members", membercount, true)
+            .AddField("Color", mentionedRole.Color, true)
+            .AddField("Mentionable", mentionedRole.IsMentionable ? "Yes" : "No", true)
+            .AddField("Position", mentionedRole.Position, true)
+            .AddField("Created", mentionedRole.CreatedAt.Date, true);
 
-            embed.AddField("ID", mentionedRole.Id, true);
-            embed.AddField("Members", membercount, true);
-            embed.AddField("Color", mentionedRole.Color, true);
-            embed.AddField("Mentionable", mentionedRole.IsMentionable ? "Yes" : "No", true);
-            embed.AddField("Position", mentionedRole.Position, true);
-            embed.AddField("Created", mentionedRole.CreatedAt.Date, true);
             await Context.Channel.SendMessageAsync("", false, embed.Build());
         }
 
@@ -158,14 +178,13 @@ namespace IodemBot.Modules
         [Remarks("Display the number of users")]
         public async Task CountUsers()
         {
-            var count = Context.Guild.Users.Count;
-            var offline = Context.Guild.Users.Where(u => u.Status == UserStatus.Offline).Count();
-            var online = count - offline;
-            var embed = new EmbedBuilder();
-            embed.WithColor(Colors.Get("Iodem"));
-            embed.WithDescription($"{count} Users with {online} Online");
+            var count = Context.Guild.MemberCount;
+            var online = Context.Guild.Users.Where(u => u.Status != UserStatus.Offline).Count();
 
-            await Context.Channel.SendMessageAsync("", false, embed.Build());
+            await Context.Channel.SendMessageAsync(embed: new EmbedBuilder()
+            .WithColor(Colors.Get("Iodem"))
+            .WithDescription($"{count} Users with {online} Online")
+            .Build());
         }
 
         [Command("choose"), Alias("pick")]
@@ -182,11 +201,11 @@ namespace IodemBot.Modules
             {
                 c.Trim();
             }
-            var embed = new EmbedBuilder();
-            embed.WithColor(Colors.Get("Iodem"));
             var choice = choices[(new Random()).Next(0, choices.Length)];
-            embed.WithDescription($"➡️ {choice}");
-            await Context.Channel.SendMessageAsync("", false, embed.Build());
+            await Context.Channel.SendMessageAsync(embed: new EmbedBuilder()
+            .WithColor(Colors.Get("Iodem"))
+            .WithDescription($"➡️ {choice}")
+            .Build());
         }
 
         public enum RankEnum { Level, Solo, Duo, Trio, Quad }
@@ -290,19 +309,9 @@ namespace IodemBot.Modules
         [Command("Gladiator"), Alias("Streamer")]
         [Cooldown(60)]
         [Remarks("Give or remove the Gladiator Role")]
-        public async Task Gladiator([Remainder] string rem = "")
+        public async Task Gladiator([Remainder] SocketGuildUser user = null)
         {
-            var embed = new EmbedBuilder();
-            embed.WithColor(Colors.Get("Iodem"));
-            SocketGuildUser user;
-            if (Context.Message.MentionedUsers.FirstOrDefault() != null)
-            {
-                user = (SocketGuildUser)Context.Message.MentionedUsers.FirstOrDefault();
-            }
-            else
-            {
-                user = (SocketGuildUser)Context.User;
-            }
+            user = user ?? (SocketGuildUser)Context.User;
 
             var Role = Context.Guild.Roles.Where(r => r.Id == 511704880122036234).FirstOrDefault();
             if (Role == null)
@@ -310,17 +319,12 @@ namespace IodemBot.Modules
                 return;
             }
 
-            if (Role.Members.Where(m => m.Id == user.Id).FirstOrDefault() == null)
-            {
-                await user.AddRoleAsync(Role);
-            }
-            else
-            {
-                await user.RemoveRoleAsync(Role);
-            }
+            _ = user.Roles.Any(r => r.Id == Role.Id) ? user.RemoveRoleAsync(Role) : user.AddRoleAsync(Role);
 
-            embed.WithDescription($"{user.Nickname} is a {Role.Name} now!");
-            await Context.Channel.SendMessageAsync("", false, embed.Build());
+            await Context.Channel.SendMessageAsync(embed: new EmbedBuilder()
+                .WithColor(Colors.Get("Iodem"))
+                .WithDescription($"{user.Nickname} is a {Role.Name} now!")
+                .Build());
         }
     }
 }

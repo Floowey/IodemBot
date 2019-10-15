@@ -344,6 +344,9 @@
     <Compile Include="CommandHandler.cs" />
     <Compile Include="Config.cs" />
     <Compile Include="Modules\Misc.cs" />
+    <Compile Include="Preconditions\RequireModerator.cs" />
+    <Compile Include="Preconditions\RequireStaff.cs" />
+    <Compile Include="Preconditions\RolePrecondition.cs" />
     <Compile Include="Program.cs" />
     <None Include="Resources\GoldenSun\Battles\archive.json" />
     <Compile Include="Sprites.cs" />
