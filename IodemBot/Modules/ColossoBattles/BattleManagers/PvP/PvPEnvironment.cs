@@ -342,6 +342,7 @@ namespace IodemBot.Modules.ColossoBattles
             var factory = new PlayerFighterFactory()
             {
                 LevelOption = LevelOption.SetLevel,
+                SetLevel = 60
             };
             var p = factory.CreatePlayerFighter(player);
             await AddPlayer(p, team);

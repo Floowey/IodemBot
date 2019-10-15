@@ -13,7 +13,7 @@ namespace IodemBot.Modules.ColossoBattles
 {
     internal class EndlessBattleEnvironment : PvEEnvironment
     {
-        private static Dictionary<BattleDifficulty, RewardTable> chestTable = new Dictionary<BattleDifficulty, RewardTable>()
+        private static readonly Dictionary<BattleDifficulty, RewardTable> chestTable = new Dictionary<BattleDifficulty, RewardTable>()
         {
             {BattleDifficulty.Tutorial, new RewardTable(){
                 new ChestReward()
@@ -98,7 +98,7 @@ namespace IodemBot.Modules.ColossoBattles
         private int winsInARow = 0;
         private int StageLength { get; set; } = 12;
 
-        internal RewardTables rewards
+        internal RewardTables Rewards
         {
             get
             {
@@ -182,7 +182,7 @@ namespace IodemBot.Modules.ColossoBattles
             if (Battle.GetWinner() == ColossoBattle.Team.A)
             {
                 winsInARow++;
-                var RewardTables = rewards;
+                var RewardTables = Rewards;
                 var chests = chestTable[Difficulty];
                 chests.RemoveAll(s => s is DefaultReward);
                 if (!Battle.TeamB.Any(f => f.Name.Contains("Mimic")))
