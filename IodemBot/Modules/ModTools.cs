@@ -12,7 +12,7 @@ namespace IodemBot.Modules
     public class ModTools : ModuleBase<SocketCommandContext>
     {
         [Command("Ban")]
-        [RequireUserPermission(GuildPermission.BanMembers)]
+        [RequireModerator]
         [RequireBotPermission(GuildPermission.BanMembers)]
         public async Task BanUser(IGuildUser user, string reason = "No reason provided.")
         {
@@ -48,8 +48,7 @@ namespace IodemBot.Modules
         }
 
         [Command("Kick")]
-        [RequireUserPermission(GuildPermission.KickMembers)]
-        [RequireBotPermission(GuildPermission.KickMembers)]
+        [RequireModerator]
         public async Task KickUser(IGuildUser user, string reason = "No reason provided.")
         {
             await user.KickAsync(reason);
@@ -72,6 +71,7 @@ namespace IodemBot.Modules
         }
 
         [Command("Emotes")]
+        [RequireStaff]
         public async Task Emotes()
         {
             var s = string.Join("\n", Context.Guild.Emotes.Select(e => $"{e.ToString()} \\<{(e.Animated ? "a" : "")}:{e.Name}:{e.Id}>"));
