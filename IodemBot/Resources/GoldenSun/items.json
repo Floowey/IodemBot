@@ -54,7 +54,7 @@
     "Battle Mace": {
         "Name": "Battle Mace",
         "Price": 2600,
-        "Icon": "<:Heavy_Mace:569901405025075212>",
+        "Icon": "<:Battle_Mace:569901405025075231>",
         "ItemType": "Mace",
         "IsEquippable": true,
         "AddStatsOnEquip": {
@@ -2512,6 +2512,10 @@
                 {
                     "id": "MultiplyDamage",
                     "args": [ "2.2" ]
+                },
+                {
+                    "id": "Stat",
+                    "args": [ "Resistance", "0.6", "75" ]
                 }
             ]
         }
