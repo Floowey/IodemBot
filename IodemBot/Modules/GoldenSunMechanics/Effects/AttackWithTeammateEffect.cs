@@ -22,8 +22,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
                     break;
 
                 default:
-                    var teamMate = User.GetTeam().Where(s => s.IsAlive).OrderByDescending(p => p.Stats.Atk).FirstOrDefault();
-                    User.addDamage += (uint)(teamMate.Stats.Atk * teamMate.MultiplyBuffs("Attack") / 2);
+                    var teamMate = User.GetTeam().Where(s => s.IsAlive && !s.Equals(User)).OrderByDescending(p => p.Stats.Atk).FirstOrDefault();
+                    User.addDamage += (uint)(teamMate.Stats.Atk * teamMate.MultiplyBuffs("Attack") * 0.75);
                     log.Add($"{teamMate.Name} assists the attack.");
                     break;
             }
