@@ -20,6 +20,9 @@ namespace IodemBot.Modules.GoldenSunMechanics
         private static string[] shopkeepers = { "armor shopkeeper2", "armor shopkeeper3", "champa shopkeeper", "item shopkeeper", "izumo shopkeeper", "weapon shopkeeper", "weapon shopkeeper2", "sunshine", "armor shopkeeper" };
         private static string[] restockMessages = { "Next shipment in:", "Next restock in:", "New Merchant in:" };
 
+        private static readonly string shopLocation = "Resources/shop.json";
+        private static readonly string itemLocation = "Resources/GoldenSun/items.json";
+
         public static TimeSpan TimeToNextReset
         {
             get
@@ -32,13 +35,13 @@ namespace IodemBot.Modules.GoldenSunMechanics
         {
             try
             {
-                string json = File.ReadAllText("Resources/GoldenSun/items.json");
+                string json = File.ReadAllText(itemLocation);
                 itemsDatabase = new Dictionary<string, Item>(
                     JsonConvert.DeserializeObject<Dictionary<string, Item>>(json),
                     StringComparer.OrdinalIgnoreCase);
-                if (File.Exists("Resources/GoldenSun/shop.json"))
+                if (File.Exists(shopLocation))
                 {
-                    json = File.ReadAllText("Resources/GoldenSun/shop.json");
+                    json = File.ReadAllText(shopLocation);
                     var s = JsonConvert.DeserializeObject<ShopStruct>(json);
                     shop = s.shop;
                     lastReset = s.lastReset;
@@ -61,7 +64,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         private static void Save()
         {
             string json = JsonConvert.SerializeObject(Shopstruct, Formatting.Indented);
-            File.WriteAllText("Resources/GoldenSun/shop.json", json);
+            File.WriteAllText(shopLocation, json);
         }
 
         public static void RandomizeShop()
@@ -123,7 +126,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public static string GetRandomItem(uint level, double bonus = 0, RandomItemType rt = RandomItemType.Any)
         {
-            uint n = (uint)(level + Math.Sqrt(bonus / 50));
+            uint n = Math.Max((uint)(level + Math.Sqrt(bonus / 50)), 1);
+            n = Math.Min(n, 100);
             var rate = 0.0007671 * Math.Pow(n, 2) - 0.1537 * n;
             var pow = Math.Pow(Math.E, rate);
             var loc = 15000 * 1.13 / (1 + 299 * pow);
