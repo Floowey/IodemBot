@@ -103,6 +103,11 @@ namespace IodemBot
 
         private async Task Client_Ready()
         {
+            var channel = (SocketTextChannel)client.GetChannel(535209634408169492);
+            if (channel != null)
+            {
+                await channel.SendMessageAsync($"Hello, I am back up.");
+            }
             //setup colosso
             await client.SetStatusAsync(UserStatus.Idle);
             Global.UpSince = DateTime.UtcNow;

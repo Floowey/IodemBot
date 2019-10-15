@@ -402,7 +402,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             {
                 await Context.Channel.SendMessageAsync(embed: new EmbedBuilder()
                 .WithColor(Colors.Get("Error"))
-                .WithDescription($"You do not have that item.")
+                .WithDescription($":x: You do not have that item.")
                 .Build());
                 return;
             }
@@ -418,7 +418,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
             await Context.Channel.SendMessageAsync(embed: new EmbedBuilder()
                 .WithColor(Colors.Get("Error"))
-                .WithDescription($"{archType}s cannot equip {selectedItem.ItemType}s.")
+                .WithDescription($":x: {archType}s cannot equip {selectedItem.ItemType}s.")
                 .Build());
         }
 
@@ -493,7 +493,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             embed.WithAuthor($"{item.Name} {(item.IsArtifact ? " (Artifact)" : "")}");
 
             embed.AddField("Icon", item.IconDisplay, true);
-            embed.AddField("Value", $"<:coin:569836987767324672> item.Price", true);
+            embed.AddField("Value", $"<:coin:569836987767324672> {item.Price}", true);
             embed.AddField("Type", item.ItemType, true);
             embed.AddField("Description", item.Summary());
 
