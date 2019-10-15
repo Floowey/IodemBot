@@ -74,12 +74,32 @@ namespace IodemBot.Modules
         public async Task ClassToggle([Remainder] string name = "")
         {
             var account = UserAccounts.GetAccount(Context.User);
-            SetClass(account, name);
+            AdeptClassSeriesManager.TryGetClassSeries(account.GsClass, out AdeptClassSeries curSeries);
+            var gotClass = AdeptClassSeriesManager.TryGetClassSeries(name, out AdeptClassSeries series);
+            var embed = new EmbedBuilder().WithColor(Colors.Get(account.Element.ToString()));
 
-            var embed = new EmbedBuilder();
-            embed.WithDescription($"You are {Article(account.GsClass)} {account.GsClass} now, {((SocketGuildUser)Context.User).DisplayName()}.");
-            embed.WithColor(Colors.Get(account.Element.ToString()));
-            await Context.Channel.SendMessageAsync("", false, embed.Build());
+            if (gotClass)
+            {
+                var success = SetClass(account, series.Name);
+                if (curSeries.Name.Equals(series.Name) || success)
+                {
+                    await Context.Channel.SendMessageAsync(embed: embed
+                    .WithDescription($":x: You are {Article(account.GsClass)} {account.GsClass} now, {((SocketGuildUser)Context.User).DisplayName()}.")
+                    .Build());
+                    return;
+                }
+                else
+                {
+                    await Context.Channel.SendMessageAsync(embed: embed
+                        .WithDescription($":x: A {account.Element} Adept cannot get into the {series.Name}")
+                        .Build());
+                    return;
+                }
+            }
+
+            await Context.Channel.SendMessageAsync(embed: embed
+                .WithDescription($":x: I could not find the {name} class in your available classes.")
+                .Build());
         }
 
         [Command("xp"), Alias("level")]
@@ -111,46 +131,61 @@ namespace IodemBot.Modules
         {
             user = user ?? (SocketGuildUser)Context.User;
             var account = UserAccounts.GetAccount(user);
-            var embed = new EmbedBuilder();
             var factory = new PlayerFighterFactory();
             var p = factory.CreatePlayerFighter(user);
 
-            embed.WithColor(Colors.Get(account.Element.ToString()));
             var author = new EmbedAuthorBuilder();
             author.WithName($"{user.DisplayName()}");
             author.WithIconUrl(user.GetAvatarUrl());
-            embed.WithAuthor(author);
             //embed.WithThumbnailUrl(user.GetAvatarUrl());
             //embed.WithDescription($"Status.");
 
             //embed.AddField("Element", account.element, true);
 
-            embed.AddField("Level", account.LevelNumber, true);
-            embed.AddField("XP", $"{account.XP} - next in {Leveling.XPforNextLevel(account.XP)}", true);
-            embed.AddField("Rank", UserAccounts.GetRank(user) + 1, true);
+            var embed = new EmbedBuilder()
+            .WithColor(Colors.Get(account.Element.ToString()))
+            .WithAuthor(author)
+            .AddField("Level", account.LevelNumber, true)
+            .AddField("XP", $"{account.XP} - next in {Leveling.XPforNextLevel(account.XP)}", true)
+            .AddField("Rank", UserAccounts.GetRank(user) + 1, true)
 
-            embed.AddField("Class", account.GsClass, true);
-            embed.AddField("Colosso wins/streak", $"{account.ServerStats.ColossoWins} | {account.ServerStats.ColossoHighestStreak} ", true);
-            embed.AddField("Colosso/Showdown Streaks", $"Solo: {account.ServerStats.ColossoHighestRoundEndlessSolo} | Duo: {account.ServerStats.ColossoHighestRoundEndlessDuo} \nTrio: {account.ServerStats.ColossoHighestRoundEndlessTrio} | Quad: {account.ServerStats.ColossoHighestRoundEndlessQuad}", true);
+            .AddField("Class", account.GsClass, true)
+            .AddField("Colosso wins | streak", $"{account.ServerStats.ColossoWins} | {account.ServerStats.ColossoHighestStreak} ", true)
+            .AddField("Colosso | Showdown Streaks", $"Solo: {account.ServerStats.ColossoHighestRoundEndlessSolo} | Duo: {account.ServerStats.ColossoHighestRoundEndlessDuo} \nTrio: {account.ServerStats.ColossoHighestRoundEndlessTrio} | Quad: {account.ServerStats.ColossoHighestRoundEndlessQuad}", true)
 
-            embed.AddField("Current Equip", account.Inv.GearToString(AdeptClassSeriesManager.GetClassSeries(account).Archtype), true);
-            embed.AddField("Psynergy", p.GetMoves(false), false);
+            .AddField("Current Equip", account.Inv.GearToString(AdeptClassSeriesManager.GetClassSeries(account).Archtype), true)
+            .AddField("Psynergy", p.GetMoves(false), false)
 
-            embed.AddField("Stats", p.Stats.ToString(), true);
-            embed.AddField("Elemental Stats", p.ElStats.ToString(), true);
-            embed.AddField("Unlocked Classes", account.BonusClasses.Length == 0 ? "none" : string.Join(", ", account.BonusClasses));
+            .AddField("Stats", p.Stats.ToString(), true)
+            .AddField("Elemental Stats", p.ElStats.ToString(), true)
+            .AddField("Unlocked Classes", account.BonusClasses.Length == 0 ? "none" : string.Join(", ", account.BonusClasses));
 
             var Footer = new EmbedFooterBuilder();
             Footer.WithText("Joined this Server on " + user.JoinedAt.Value.Date.ToString("dd-MM-yyyy"));
             Footer.WithIconUrl(Sprites.GetImageFromName("Iodem"));
             embed.WithFooter(Footer);
-            var built = embed.Build();
             await Context.Channel.SendMessageAsync("", false, embed.Build());
+        }
+
+        [Command("patdown")]
+        [RequireStaff]
+        public async Task PatDown([Remainder] SocketGuildUser user = null)
+        {
+            var account = UserAccounts.GetAccount(user);
+
+            await Context.Channel.SendMessageAsync(embed:
+                new EmbedBuilder()
+                .WithAuthor(user)
+                .AddField("Account Created", user.CreatedAt)
+                .AddField("User Joined", user.JoinedAt)
+                .AddField("Status", user.Status, true)
+                .AddField("Last Activity", account.ServerStats.LastDayActive)
+                .Build());
         }
 
         [Command("hiddenstats"), Alias("tri")]
         [Cooldown(5)]
-        [RequireUserPermission(GuildPermission.ManageGuild)]
+        [RequireStaff]
         [Remarks("Hidden Information on Tri-Elemental Classes")]
         public async Task Tri([Remainder] SocketGuildUser user = null)
         {
@@ -398,7 +433,7 @@ namespace IodemBot.Modules
             UserAccounts.SaveAccounts();
             var embed = new EmbedBuilder();
             embed.WithColor(Colors.Get("Iodem"));
-            embed.WithDescription($"Congratulations, @{avatar.Name}! You have unlocked the {series}!");
+            embed.WithDescription($"Congratulations, <@{avatar.ID}>! You have unlocked the {series}!");
             if (channel == null)
             {
                 return;
@@ -424,15 +459,15 @@ namespace IodemBot.Modules
             await channel.SendMessageAsync("", false, embed.Build());
         }
 
-        private static void SetClass(UserAccount account, string name = "")
+        private static bool SetClass(UserAccount account, string name = "")
         {
+            string curClass = AdeptClassSeriesManager.GetClassSeries(account).Name;
             if (name == "")
             {
                 account.ClassToggle++;
             }
             else
             {
-                string curClass = AdeptClassSeriesManager.GetClassSeries(account).Name;
                 account.ClassToggle++;
                 while (AdeptClassSeriesManager.GetClassSeries(account).Name != curClass)
                 {
@@ -445,6 +480,7 @@ namespace IodemBot.Modules
                 }
             }
             UserAccounts.SaveAccounts();
+            return !curClass.Equals(AdeptClassSeriesManager.GetClassSeries(account).Name);
         }
 
         private string Article(string s)
