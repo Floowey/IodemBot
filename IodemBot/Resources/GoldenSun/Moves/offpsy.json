@@ -1987,7 +1987,8 @@
         "range": 1,
         "element": 1,
         "PPCost": 0,
-        "power": 250
+        "power": 120,
+        "percentageDamage": 35
     },
     "Rolling Flame": {
         "name": "Rolling Flame",
@@ -2008,7 +2009,7 @@
         "PPCost": 0,
         "dmgMult": 1.5
     },
-    {
+
     "Fatal Fang": {
         "name": "Fatal Fang",
         "targetType": 4,

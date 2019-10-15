@@ -317,7 +317,7 @@
                 "Speed Punch"
             ],
             "stats": {
-                "maxHP": 100,
+                "maxHP": 40,
                 "maxPP": 50,
                 "Atk": 50,
                 "Def": 20,
@@ -341,7 +341,7 @@
                 "Douse"
             ],
             "stats": {
-                "maxHP": 100,
+                "maxHP": 40,
                 "maxPP": 50,
                 "Atk": 50,
                 "Def": 20,
@@ -365,7 +365,7 @@
                 "Fireball"
             ],
             "stats": {
-                "maxHP": 100,
+                "maxHP": 40,
                 "maxPP": 50,
                 "Atk": 50,
                 "Def": 20,
@@ -389,7 +389,7 @@
                 "Spire"
             ],
             "stats": {
-                "maxHP": 100,
+                "maxHP": 40,
                 "maxPP": 50,
                 "Atk": 50,
                 "Def": 20,
@@ -413,14 +413,14 @@
                 "Speed Punch"
             ],
             "stats": {
-                "maxHP": 100,
+                "maxHP": 40,
                 "maxPP": 50,
                 "Atk": 50,
                 "Def": 20,
                 "Spd": 50
             },
             "elstats": {
-                "VenusAtk": 100,
+                "VenusAtk": 40,
                 "VenusRes": 80,
                 "MarsAtk": 130,
                 "MarsRes": 100,
@@ -437,7 +437,7 @@
                 "Fireball"
             ],
             "stats": {
-                "maxHP": 100,
+                "maxHP": 40,
                 "maxPP": 50,
                 "Atk": 50,
                 "Def": 20,
@@ -461,7 +461,7 @@
                 "Douse"
             ],
             "stats": {
-                "maxHP": 100,
+                "maxHP": 40,
                 "maxPP": 50,
                 "Atk": 50,
                 "Def": 20,
@@ -485,7 +485,7 @@
                 "Spire"
             ],
             "stats": {
-                "maxHP": 100,
+                "maxHP": 40,
                 "maxPP": 50,
                 "Atk": 50,
                 "Def": 20,
@@ -512,7 +512,7 @@
                 "Douse"
             ],
             "stats": {
-                "maxHP": 100,
+                "maxHP": 40,
                 "maxPP": 50,
                 "Atk": 75,
                 "Def": 30,
@@ -739,13 +739,14 @@
             "name": "Ouranos",
             "imgurl": "https://vignette.wikia.nocookie.net/goldensun/images/7/7d/OuranosIngame.gif/revision/latest?cb=20090708143842",
             "movepool": [
-                "Brutal Swing"
+                "Brutal Swing",
+                "Berserk"
             ],
             "stats": {
-                "maxHP": 600,
+                "maxHP": 550,
                 "maxPP": 0,
                 "Atk": 80,
-                "Def": 100,
+                "Def": 60,
                 "Spd": 40
             },
             "elstats": {

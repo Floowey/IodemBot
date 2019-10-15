@@ -15,7 +15,7 @@
             "mercuryres": 48,
             "jupiterres": 48,
             "marsres": 25,
-            "marspow": 90
+            "marsatk": 90
         },
         "extraturns": 0
     },
@@ -35,7 +35,7 @@
             "venusres": 127,
             "jupiterres": 100,
             "mercuryres": 72,
-            "marspow": 0
+            "marsatk": 0
         },
         "extraturns": 0
     },
@@ -55,8 +55,8 @@
             "venusres": 100,
             "jupiterres": 100,
             "marsres": 72,
-            "venuspow": 85,
-            "mercurypow": 100
+            "venusatk": 85,
+            "mercuryatk": 100
         },
         "extraturns": 0
     },
@@ -95,7 +95,7 @@
             "marsres": 72,
             "venusres": 48,
             "jupiterres": 7,
-            "venuspow": 100
+            "venusatk": 100
         },
         "extraturns": 0
     },
@@ -115,7 +115,7 @@
             "marsres": 72,
             "venusres": 48,
             "jupiterres": 7,
-            "venuspow": 100
+            "venusatk": 100
         },
         "extraturns": 0
     },
@@ -135,7 +135,7 @@
             "marsres": 72,
             "venusres": 48,
             "jupiterres": 7,
-            "venuspow": 100
+            "venusatk": 100
         },
         "extraturns": 0
     },
@@ -155,9 +155,9 @@
             "mercuryres": 100,
             "marsres": 100,
             "jupiterres": 72,
-            "marspow": 85,
-            "jupiterpow": 85,
-            "venuspow": 100
+            "marsatk": 85,
+            "jupiteratk": 85,
+            "venusatk": 100
         },
         "extraturns": 1
     },
@@ -177,7 +177,7 @@
             "venusres": 100,
             "jupiterres": 100,
             "mercuryres": 25,
-            "venuspow": 95
+            "venusatk": 95
         },
         "extraturns": 0,
         "hasdefend": false
@@ -198,7 +198,7 @@
             "venusres": 100,
             "jupiterres": 100,
             "mercuryres": 25,
-            "venuspow": 95
+            "venusatk": 95
         },
         "extraturns": 0,
         "hasdefend": false
@@ -219,7 +219,7 @@
             "venusres": 48,
             "jupiterres": 48,
             "marsres": 25,
-            "marspow": 90
+            "marsatk": 90
         },
         "extraturns": 0
     },
@@ -239,9 +239,9 @@
             "jupiterres": 100,
             "venusres": 100,
             "mercuryres": 25,
-            "jupiterpow": 95,
-            "venuspow": 95,
-            "marspow": 115
+            "jupiteratk": 95,
+            "venusatk": 95,
+            "marsatk": 115
         },
         "extraturns": 0
     },
@@ -261,7 +261,7 @@
             "venusres": 48,
             "mercuryres": 48,
             "marsres": 25,
-            "venuspow": 100
+            "venusatk": 100
         },
         "extraturns": 0
     },
@@ -281,7 +281,7 @@
             "venusres": 48,
             "mercuryres": 48,
             "marsres": 25,
-            "venuspow": 100
+            "venusatk": 100
         },
         "extraturns": 0
     },
@@ -301,7 +301,7 @@
             "venusres": 100,
             "jupiterres": 100,
             "marsres": 25,
-            "mercurypow": 115
+            "mercuryatk": 115
         },
         "extraturns": 0
     },
@@ -321,7 +321,7 @@
             "venusres": 100,
             "jupiterres": 100,
             "marsres": 25,
-            "mercurypow": 115
+            "mercuryatk": 115
         },
         "extraturns": 0
     },
@@ -341,9 +341,9 @@
             "venusres": 48,
             "jupiterres": 48,
             "marsres": 7,
-            "mercurypow": 125,
-            "jupiterpow": 95,
-            "venuspow": 95
+            "mercuryatk": 125,
+            "jupiteratk": 95,
+            "venusatk": 95
         },
         "extraturns": 0
     },
@@ -401,7 +401,7 @@
             "marsres": 100,
             "mercuryres": 100,
             "jupiterres": 72,
-            "venuspow": 100
+            "venusatk": 100
         },
         "extraturns": 0
     },
@@ -421,7 +421,7 @@
             "venusres": 100,
             "jupiterres": 100,
             "mercuryres": 25,
-            "marspow": 115
+            "marsatk": 115
         },
         "extraturns": 1
     },
@@ -479,7 +479,7 @@
             "mercuryres": 72,
             "marsres": 72,
             "jupiterres": 72,
-            "jupiterpow": 80
+            "jupiteratk": 80
         },
         "extraturns": 0
     },
@@ -499,7 +499,7 @@
             "mercuryres": 72,
             "marsres": 72,
             "jupiterres": 72,
-            "jupiterpow": 80
+            "jupiteratk": 80
         },
         "extraturns": 0
     },
@@ -538,7 +538,7 @@
             "mercuryres": 72,
             "marsres": 48,
             "jupiterres": 7,
-            "jupiterpow": 110
+            "jupiteratk": 110
         },
         "extraturns": 0
     },
@@ -558,7 +558,7 @@
             "mercuryres": 72,
             "marsres": 48,
             "jupiterres": 7,
-            "jupiterpow": 110
+            "jupiteratk": 110
         },
         "extraturns": 0
     },
@@ -616,7 +616,7 @@
             "venusres": 100,
             "jupiterres": 100,
             "marsres": 25,
-            "mercurypow": 115
+            "mercuryatk": 115
         },
         "extraturns": 0
     },
@@ -636,7 +636,7 @@
             "venusres": 100,
             "jupiterres": 100,
             "mercuryres": 25,
-            "marspow": 115
+            "marsatk": 115
         },
         "extraturns": 0
     },
@@ -656,7 +656,7 @@
             "marsres": 72,
             "jupiterres": 48,
             "venusres": 25,
-            "venuspow": 100
+            "venusatk": 100
         },
         "extraturns": 0
     },
@@ -676,7 +676,7 @@
             "marsres": 72,
             "jupiterres": 48,
             "venusres": 25,
-            "venuspow": 100
+            "venusatk": 100
         },
         "extraturns": 0
     },
@@ -696,7 +696,7 @@
             "jupiterres": 48,
             "venusres": 25,
             "marsres": 7,
-            "venuspow": 100
+            "venusatk": 100
         },
         "extraturns": 0
     },
@@ -716,8 +716,8 @@
             "venusres": 100,
             "jupiterres": 100,
             "mercuryres": 25,
-            "marspow": 125,
-            "venuspow": 95
+            "marsatk": 125,
+            "venusatk": 95
         },
         "extraturns": 0
     },
@@ -737,7 +737,7 @@
             "mercuryres": 72,
             "marsres": 72,
             "jupiterres": 72,
-            "jupiterpow": 80
+            "jupiteratk": 80
         },
         "extraturns": 0
     },
@@ -776,7 +776,7 @@
             "venusres": 48,
             "mercuryres": 48,
             "marsres": 25,
-            "venuspow": 100
+            "venusatk": 100
         },
         "extraturns": 0
     },
@@ -796,7 +796,7 @@
             "venusres": 48,
             "mercuryres": 48,
             "marsres": 25,
-            "venuspow": 100
+            "venusatk": 100
         },
         "extraturns": 0
     },
@@ -835,8 +835,8 @@
             "venusres": 48,
             "jupiterres": 48,
             "marsres": 7,
-            "mercurypow": 125,
-            "jupiterpow": 95
+            "mercuryatk": 125,
+            "jupiteratk": 95
         },
         "extraturns": 0
     },
@@ -851,7 +851,7 @@
             "def": 113,
             "spd": 119
         },
-        "elstats": { "mercurypow": 125 },
+        "elstats": { "mercuryatk": 125 },
         "extraturns": 0
     },
     "Cannibal Ghoul": {
@@ -870,7 +870,7 @@
             "jupiterres": 48,
             "venusres": 25,
             "marsres": 7,
-            "venuspow": 100
+            "venusatk": 100
         },
         "extraturns": 0
     },
@@ -890,7 +890,7 @@
             "venusres": 48,
             "mercuryres": 48,
             "marsres": 25,
-            "venuspow": 100
+            "venusatk": 100
         },
         "extraturns": 0
     },
@@ -910,7 +910,7 @@
             "venusres": 48,
             "mercuryres": 48,
             "marsres": 25,
-            "venuspow": 100
+            "venusatk": 100
         },
         "extraturns": 0
     },
@@ -930,9 +930,9 @@
             "venusres": 100,
             "jupiterres": 100,
             "marsres": 25,
-            "mercurypow": 115,
-            "venuspow": 95,
-            "jupiterpow": 95
+            "mercuryatk": 115,
+            "venusatk": 95,
+            "jupiteratk": 95
         },
         "extraturns": 0
     },
@@ -952,9 +952,9 @@
             "venusres": 100,
             "jupiterres": 100,
             "marsres": 25,
-            "venuspow": 95,
-            "mercurypow": 115,
-            "jupiterpow": 95
+            "venusatk": 95,
+            "mercuryatk": 115,
+            "jupiteratk": 95
         },
         "extraturns": 0
     },
@@ -1012,8 +1012,8 @@
             "marsres": 175,
             "mercuryres": 130,
             "jupiterres": 98,
-            "venuspow": 110,
-            "jupiterpow": 95
+            "venusatk": 110,
+            "jupiteratk": 95
         },
         "extraturns": 2
     },
@@ -1033,8 +1033,8 @@
             "marsres": 100,
             "mercuryres": 100,
             "venusres": 72,
-            "venuspow": 85,
-            "jupiterpow": 100
+            "venusatk": 85,
+            "jupiteratk": 100
         },
         "extraturns": 0
     },
@@ -1073,8 +1073,8 @@
             "venusres": 100,
             "jupiterres": 100,
             "mercuryres": 25,
-            "venuspow": 95,
-            "marspow": 115
+            "venusatk": 95,
+            "marsatk": 115
         },
         "extraturns": 0
     },
@@ -1094,8 +1094,8 @@
             "venusres": 100,
             "jupiterres": 100,
             "mercuryres": 25,
-            "marspow": 115,
-            "venuspow": 95
+            "marsatk": 115,
+            "venusatk": 95
         },
         "extraturns": 0
     },
@@ -1115,8 +1115,8 @@
             "venusres": 100,
             "jupiterres": 100,
             "mercuryres": 25,
-            "marspow": 115,
-            "venuspow": 95
+            "marsatk": 115,
+            "venusatk": 95
         },
         "extraturns": 0
     },
@@ -1136,8 +1136,8 @@
             "venusres": 100,
             "jupiterres": 100,
             "mercuryres": 25,
-            "marspow": 115,
-            "venuspow": 95
+            "marsatk": 115,
+            "venusatk": 95
         },
         "extraturns": 0
     },
@@ -1157,8 +1157,8 @@
             "venusres": 48,
             "jupiterres": 48,
             "marsres": 25,
-            "venuspow": 95,
-            "marspow": 90
+            "venusatk": 95,
+            "marsatk": 90
         },
         "extraturns": 0
     },
@@ -1178,8 +1178,8 @@
             "mercuryres": 100,
             "marsres": 100,
             "venusres": 48,
-            "venuspow": 100,
-            "jupiterpow": 95
+            "venusatk": 100,
+            "jupiteratk": 95
         },
         "extraturns": 0
     },
@@ -1218,7 +1218,7 @@
             "marsres": 72,
             "venusres": 48,
             "jupiterres": 7,
-            "mercurypow": 95
+            "mercuryatk": 95
         },
         "extraturns": 0
     },
@@ -1238,8 +1238,8 @@
             "marsres": 72,
             "venusres": 48,
             "jupiterres": 7,
-            "venuspow": 100,
-            "mercurypow": 95
+            "venusatk": 100,
+            "mercuryatk": 95
         },
         "extraturns": 0
     },
@@ -1259,7 +1259,7 @@
             "venusres": 100,
             "jupiterres": 100,
             "marsres": 25,
-            "mercurypow": 115
+            "mercuryatk": 115
         },
         "extraturns": 0
     },
@@ -1279,7 +1279,7 @@
             "mercuryres": 100,
             "marsres": 100,
             "jupiterres": 72,
-            "venuspow": 100
+            "venusatk": 100
         },
         "extraturns": 0
     },
@@ -1337,7 +1337,7 @@
             "marsres": 72,
             "jupiterres": 48,
             "venusres": 25,
-            "venuspow": 100
+            "venusatk": 100
         },
         "extraturns": 0
     },
@@ -1357,8 +1357,8 @@
             "venusres": 48,
             "jupiterres": 48,
             "marsres": 7,
-            "mercurypow": 125,
-            "venuspow": 95
+            "mercuryatk": 125,
+            "venusatk": 95
         },
         "extraturns": 0
     },
@@ -1378,8 +1378,8 @@
             "venusres": 48,
             "jupiterres": 48,
             "marsres": 7,
-            "mercurypow": 125,
-            "venuspow": 95
+            "mercuryatk": 125,
+            "venusatk": 95
         },
         "extraturns": 0
     },
@@ -1399,7 +1399,7 @@
             "jupiterres": 48,
             "venusres": 25,
             "marsres": 7,
-            "venuspow": 100
+            "venusatk": 100
         },
         "extraturns": 0
     },
@@ -1419,7 +1419,7 @@
             "marsres": 72,
             "venusres": 48,
             "jupiterres": 7,
-            "mercurypow": 95
+            "mercuryatk": 95
         },
         "extraturns": 0
     },
@@ -1477,7 +1477,7 @@
             "marsres": 72,
             "jupiterres": 48,
             "venusres": 25,
-            "venuspow": 100
+            "venusatk": 100
         },
         "extraturns": 0
     },
@@ -1497,8 +1497,8 @@
             "marsres": 72,
             "venusres": 48,
             "jupiterres": 7,
-            "venuspow": 100,
-            "mercurypow": 95
+            "venusatk": 100,
+            "mercuryatk": 95
         },
         "extraturns": 0
     },
@@ -1518,7 +1518,7 @@
             "jupiterres": 48,
             "venusres": 25,
             "marsres": 7,
-            "marspow": 80
+            "marsatk": 80
         },
         "extraturns": 0
     },
@@ -1538,9 +1538,9 @@
             "jupiterres": 152,
             "marsres": 127,
             "venusres": 72,
-            "mercurypow": 130,
-            "marspow": 120,
-            "jupiterpow": 110
+            "mercuryatk": 130,
+            "marsatk": 120,
+            "jupiteratk": 110
         },
         "extraturns": 1
     },
@@ -1598,7 +1598,7 @@
             "marsres": 72,
             "jupiterres": 48,
             "venusres": 25,
-            "jupiterpow": 80
+            "jupiteratk": 80
         },
         "extraturns": 0
     },
@@ -1637,7 +1637,7 @@
             "marsres": 72,
             "venusres": 48,
             "jupiterres": 7,
-            "jupiterpow": 80
+            "jupiteratk": 80
         },
         "extraturns": 0
     },
@@ -1657,8 +1657,8 @@
             "venusres": 100,
             "jupiterres": 100,
             "marsres": 25,
-            "marspow": 85,
-            "mercurypow": 115
+            "marsatk": 85,
+            "mercuryatk": 115
         },
         "extraturns": 0
     },
@@ -1678,7 +1678,7 @@
             "venusres": 72,
             "mercuryres": 72,
             "marsres": 48,
-            "venuspow": 95
+            "venusatk": 95
         },
         "extraturns": 0
     },
@@ -1698,7 +1698,7 @@
             "marsres": 72,
             "venusres": 48,
             "jupiterres": 7,
-            "marspow": 95
+            "marsatk": 95
         },
         "extraturns": 0
     },
@@ -1718,8 +1718,8 @@
             "jupiterres": 100,
             "venusres": 72,
             "marsres": 25,
-            "venuspow": 105,
-            "marspow": 80
+            "venusatk": 105,
+            "marsatk": 80
         },
         "extraturns": 0
     },
@@ -1739,8 +1739,8 @@
             "jupiterres": 100,
             "venusres": 72,
             "marsres": 25,
-            "venuspow": 105,
-            "marspow": 80
+            "venusatk": 105,
+            "marsatk": 80
         },
         "extraturns": 0
     },
@@ -1760,7 +1760,7 @@
             "mercuryres": 100,
             "marsres": 100,
             "jupiterres": 48,
-            "venuspow": 110
+            "venusatk": 110
         },
         "extraturns": 0
     },
@@ -1780,7 +1780,7 @@
             "mercuryres": 100,
             "marsres": 100,
             "jupiterres": 48,
-            "venuspow": 110
+            "venusatk": 110
         },
         "extraturns": 0
     },
@@ -1800,7 +1800,7 @@
             "venusres": 48,
             "mercuryres": 48,
             "marsres": 25,
-            "mercurypow": 80
+            "mercuryatk": 80
         },
         "extraturns": 0
     },
@@ -1820,7 +1820,7 @@
             "venusres": 48,
             "mercuryres": 48,
             "marsres": 25,
-            "mercurypow": 80
+            "mercuryatk": 80
         },
         "extraturns": 0
     },
@@ -1840,7 +1840,7 @@
             "mercuryres": 72,
             "marsres": 48,
             "jupiterres": 7,
-            "jupiterpow": 110
+            "jupiteratk": 110
         },
         "extraturns": 0
     },
@@ -1860,7 +1860,7 @@
             "mercuryres": 72,
             "marsres": 48,
             "jupiterres": 7,
-            "jupiterpow": 110
+            "jupiteratk": 110
         },
         "extraturns": 1
     },
@@ -1880,8 +1880,8 @@
             "venusres": 72,
             "mercuryres": 72,
             "marsres": 25,
-            "jupiterpow": 80,
-            "venuspow": 100
+            "jupiteratk": 80,
+            "venusatk": 100
         },
         "extraturns": 0
     },
@@ -1901,8 +1901,8 @@
             "venusres": 48,
             "mercuryres": 48,
             "marsres": 25,
-            "venuspow": 100,
-            "jupiterpow": 80
+            "venusatk": 100,
+            "jupiteratk": 80
         },
         "extraturns": 0
     },
@@ -1922,8 +1922,8 @@
             "jupiterres": 100,
             "venusres": 100,
             "mercuryres": 25,
-            "jupiterpow": 95,
-            "venuspow": 95
+            "jupiteratk": 95,
+            "venusatk": 95
         },
         "extraturns": 0
     },
@@ -1943,8 +1943,8 @@
             "marsres": 175,
             "mercuryres": 130,
             "jupiterres": 98,
-            "marspow": 105,
-            "venuspow": 110
+            "marsatk": 105,
+            "venusatk": 110
         },
         "extraturns": 3
     },
@@ -1964,8 +1964,8 @@
             "marsres": 175,
             "mercuryres": 130,
             "jupiterres": 98,
-            "marspow": 105,
-            "venuspow": 8
+            "marsatk": 105,
+            "venusatk": 8
         },
         "extraturns": 2
     },
@@ -1985,7 +1985,7 @@
             "marsres": 175,
             "mercuryres": 130,
             "jupiterres": 98,
-            "venuspow": 110
+            "venusatk": 110
         },
         "extraturns": 1
     },
@@ -2005,7 +2005,7 @@
             "mercuryres": 100,
             "marsres": 100,
             "jupiterres": 72,
-            "venuspow": 100
+            "venusatk": 100
         },
         "extraturns": 0
     },
@@ -2025,9 +2025,9 @@
             "venusres": 100,
             "jupiterres": 100,
             "mercuryres": 25,
-            "marspow": 115,
-            "venuspow": 95,
-            "jupiterpow": 95
+            "marsatk": 115,
+            "venusatk": 95,
+            "jupiteratk": 95
         },
         "extraturns": 0
     },
@@ -2047,9 +2047,9 @@
             "venusres": 100,
             "jupiterres": 100,
             "mercuryres": 25,
-            "marspow": 115,
-            "venuspow": 95,
-            "jupiterpow": 95
+            "marsatk": 115,
+            "venusatk": 95,
+            "jupiteratk": 95
         },
         "extraturns": 0
     },
@@ -2069,7 +2069,7 @@
             "mercuryres": 48,
             "marsres": 48,
             "jupiterres": 7,
-            "jupiterpow": 105
+            "jupiteratk": 105
         },
         "extraturns": 0
     },
@@ -2091,7 +2091,7 @@
             "mercuryres": 48,
             "marsres": 48,
             "jupiterres": 7,
-            "jupiterpow": 105
+            "jupiteratk": 105
         },
         "extraturns": 0
     },
@@ -2111,9 +2111,9 @@
             "venusres": 100,
             "jupiterres": 100,
             "marsres": 72,
-            "venuspow": 85,
-            "mercurypow": 100,
-            "jupiterpow": 85
+            "venusatk": 85,
+            "mercuryatk": 100,
+            "jupiteratk": 85
         },
         "extraturns": 0
     },
@@ -2133,8 +2133,8 @@
             "venusres": 150,
             "marsres": 130,
             "jupiterres": 110,
-            "jupiterpow": 100,
-            "venuspow": 7
+            "jupiteratk": 100,
+            "venusatk": 7
         },
         "extraturns": 2
     },
@@ -2154,7 +2154,7 @@
             "venusres": 150,
             "marsres": 130,
             "jupiterres": 110,
-            "venuspow": 110
+            "venusatk": 110
         },
         "extraturns": 2
     },
@@ -2174,7 +2174,7 @@
             "mercuryres": 100,
             "marsres": 100,
             "jupiterres": 25,
-            "venuspow": 120
+            "venusatk": 120
         },
         "extraturns": 0
     },
@@ -2194,8 +2194,8 @@
             "mercuryres": 100,
             "marsres": 100,
             "jupiterres": 25,
-            "marspow": 95,
-            "venuspow": 120
+            "marsatk": 95,
+            "venusatk": 120
         },
         "extraturns": 0
     },
@@ -2215,8 +2215,8 @@
             "mercuryres": 100,
             "marsres": 100,
             "jupiterres": 25,
-            "venuspow": 125,
-            "marspow": 95
+            "venusatk": 125,
+            "marsatk": 95
         },
         "extraturns": 0
     },
@@ -2236,7 +2236,7 @@
             "mercuryres": 72,
             "marsres": 48,
             "jupiterres": 7,
-            "jupiterpow": 110
+            "jupiteratk": 110
         },
         "extraturns": 0
     },
@@ -2256,7 +2256,7 @@
             "mercuryres": 100,
             "marsres": 72,
             "jupiterres": 25,
-            "jupiterpow": 110
+            "jupiteratk": 110
         },
         "extraturns": 0
     },
@@ -2276,7 +2276,7 @@
             "mercuryres": 100,
             "marsres": 72,
             "jupiterres": 25,
-            "jupiterpow": 110
+            "jupiteratk": 110
         },
         "extraturns": 0
     },
@@ -2296,7 +2296,7 @@
             "jupiterres": 48,
             "venusres": 25,
             "marsres": 7,
-            "marspow": 80
+            "marsatk": 80
         },
         "extraturns": 0
     },
@@ -2316,9 +2316,9 @@
             "venusres": 100,
             "jupiterres": 100,
             "marsres": 25,
-            "mercurypow": 115,
-            "venuspow": 95,
-            "jupiterpow": 95
+            "mercuryatk": 115,
+            "venusatk": 95,
+            "jupiteratk": 95
         },
         "extraturns": 0
     },
@@ -2338,9 +2338,9 @@
             "venusres": 100,
             "jupiterres": 100,
             "marsres": 25,
-            "mercurypow": 115,
-            "venuspow": 95,
-            "jupiterpow": 95
+            "mercuryatk": 115,
+            "venusatk": 95,
+            "jupiteratk": 95
         },
         "extraturns": 0
     },
@@ -2360,7 +2360,7 @@
             "jupiterres": 48,
             "venusres": 25,
             "marsres": 7,
-            "venuspow": 100
+            "venusatk": 100
         },
         "extraturns": 0
     },
@@ -2380,7 +2380,7 @@
             "mercuryres": 48,
             "marsres": 48,
             "jupiterres": 7,
-            "jupiterpow": 105
+            "jupiteratk": 105
         },
         "extraturns": 0
     },
@@ -2400,8 +2400,8 @@
             "mercuryres": 48,
             "marsres": 48,
             "jupiterres": 7,
-            "jupiterpow": 105,
-            "venuspow": 90
+            "jupiteratk": 105,
+            "venusatk": 90
         },
         "extraturns": 0
     },
@@ -2421,7 +2421,7 @@
             "mercuryres": 48,
             "marsres": 48,
             "jupiterres": 7,
-            "jupiterpow": 105
+            "jupiteratk": 105
         },
         "extraturns": 0
     },
@@ -2441,7 +2441,7 @@
             "venusres": 100,
             "jupiterres": 100,
             "mercuryres": 25,
-            "marspow": 125
+            "marsatk": 125
         },
         "extraturns": 1
     },
@@ -2461,7 +2461,7 @@
             "venusres": 100,
             "jupiterres": 100,
             "mercuryres": 25,
-            "marspow": 115
+            "marsatk": 115
         },
         "extraturns": 0
     },
@@ -2481,7 +2481,7 @@
             "venusres": 48,
             "jupiterres": 48,
             "marsres": 25,
-            "marspow": 90
+            "marsatk": 90
         },
         "extraturns": 0
     },
@@ -2501,7 +2501,7 @@
             "venusres": 100,
             "jupiterres": 100,
             "mercuryres": 25,
-            "marspow": 115
+            "marsatk": 115
         },
         "extraturns": 0
     },
@@ -2521,7 +2521,7 @@
             "venusres": 100,
             "jupiterres": 100,
             "mercuryres": 25,
-            "marspow": 115
+            "marsatk": 115
         },
         "extraturns": 0
     },
@@ -2541,7 +2541,7 @@
             "mercuryres": 48,
             "jupiterres": 48,
             "marsres": 25,
-            "jupiterpow": 85
+            "jupiteratk": 85
         },
         "extraturns": 0
     },
@@ -2580,7 +2580,7 @@
             "mercuryres": 72,
             "marsres": 48,
             "jupiterres": 7,
-            "jupiterpow": 110
+            "jupiteratk": 110
         },
         "extraturns": 0
     },
@@ -2600,7 +2600,7 @@
             "mercuryres": 72,
             "marsres": 48,
             "jupiterres": 7,
-            "jupiterpow": 110
+            "jupiteratk": 110
         },
         "extraturns": 0
     },
@@ -2620,7 +2620,7 @@
             "jupiterres": 48,
             "venusres": 25,
             "marsres": 7,
-            "venuspow": 100
+            "venusatk": 100
         },
         "extraturns": 0
     },
@@ -2640,7 +2640,7 @@
             "jupiterres": 48,
             "venusres": 25,
             "marsres": 7,
-            "venuspow": 100
+            "venusatk": 100
         },
         "extraturns": 0
     },
@@ -2660,7 +2660,7 @@
             "marsres": 100,
             "jupiterres": 100,
             "mercuryres": 100,
-            "mercurypow": 100
+            "mercuryatk": 100
         },
         "extraturns": 0
     },
@@ -2680,8 +2680,8 @@
             "mercuryres": 100,
             "marsres": 100,
             "jupiterres": 72,
-            "mercurypow": 85,
-            "jupiterpow": 85
+            "mercuryatk": 85,
+            "jupiteratk": 85
         },
         "extraturns": 0
     },
@@ -2701,8 +2701,8 @@
             "jupiterres": 127,
             "venusres": 127,
             "mercuryres": 72,
-            "marspow": 110,
-            "venuspow": 100
+            "marsatk": 110,
+            "venusatk": 100
         },
         "extraturns": 1
     },
@@ -2722,8 +2722,8 @@
             "mercuryres": 100,
             "marsres": 100,
             "venusres": 48,
-            "venuspow": 100,
-            "mercurypow": 100
+            "venusatk": 100,
+            "mercuryatk": 100
         },
         "extraturns": 0
     },
@@ -2743,7 +2743,7 @@
             "marsres": 72,
             "venusres": 48,
             "jupiterres": 7,
-            "venuspow": 100
+            "venusatk": 100
         },
         "extraturns": 0
     },
@@ -2763,7 +2763,7 @@
             "marsres": 72,
             "venusres": 48,
             "jupiterres": 7,
-            "venuspow": 100
+            "venusatk": 100
         },
         "extraturns": 0
     },
@@ -2783,7 +2783,7 @@
             "marsres": 100,
             "venusres": 72,
             "jupiterres": 25,
-            "jupiterpow": 95
+            "jupiteratk": 95
         },
         "extraturns": 0
     },
@@ -2803,8 +2803,8 @@
             "marsres": 72,
             "venusres": 48,
             "jupiterres": 7,
-            "venuspow": 100,
-            "jupiterpow": 95
+            "venusatk": 100,
+            "jupiteratk": 95
         },
         "extraturns": 0
     },
@@ -2824,8 +2824,8 @@
             "marsres": 72,
             "venusres": 48,
             "jupiterres": 7,
-            "venuspow": 100,
-            "jupiterpow": 95
+            "venusatk": 100,
+            "jupiteratk": 95
         },
         "extraturns": 0
     },
@@ -2845,7 +2845,7 @@
             "jupiterres": 48,
             "venusres": 25,
             "marsres": 7,
-            "venuspow": 100
+            "venusatk": 100
         },
         "extraturns": 0
     },
@@ -2884,7 +2884,7 @@
             "mercuryres": 72,
             "marsres": 48,
             "jupiterres": 7,
-            "jupiterpow": 110
+            "jupiteratk": 110
         },
         "extraturns": 0
     },
@@ -2904,8 +2904,8 @@
             "mercuryres": 72,
             "marsres": 48,
             "jupiterres": 7,
-            "jupiterpow": 110,
-            "venuspow": 95
+            "jupiteratk": 110,
+            "venusatk": 95
         },
         "extraturns": 0
     },
@@ -2925,7 +2925,7 @@
             "venusres": 100,
             "jupiterres": 100,
             "marsres": 72,
-            "mercurypow": 100
+            "mercuryatk": 100
         },
         "extraturns": 0
     },
@@ -2945,7 +2945,7 @@
             "venusres": 100,
             "jupiterres": 100,
             "marsres": 72,
-            "mercurypow": 100
+            "mercuryatk": 100
         },
         "extraturns": 0
     },
@@ -2965,7 +2965,7 @@
             "venusres": 100,
             "jupiterres": 100,
             "marsres": 72,
-            "mercurypow": 100
+            "mercuryatk": 100
         },
         "extraturns": 0
     },
@@ -2985,7 +2985,7 @@
             "venusres": 100,
             "jupiterres": 100,
             "marsres": 72,
-            "mercurypow": 100
+            "mercuryatk": 100
         },
         "extraturns": 0
     },
@@ -3005,7 +3005,7 @@
             "marsres": 100,
             "jupiterres": 100,
             "mercuryres": 100,
-            "mercurypow": 100
+            "mercuryatk": 100
         },
         "extraturns": 0
     },
@@ -3025,8 +3025,8 @@
             "venusres": 72,
             "jupiterres": 72,
             "mercuryres": 48,
-            "marspow": 100,
-            "jupiterpow": 85
+            "marsatk": 100,
+            "jupiteratk": 85
         },
         "extraturns": 0
     },
@@ -3046,8 +3046,8 @@
             "mercuryres": 72,
             "marsres": 72,
             "venusres": 48,
-            "jupiterpow": 100,
-            "marspow": 85
+            "jupiteratk": 100,
+            "marsatk": 85
         },
         "extraturns": 0
     },
@@ -3067,7 +3067,7 @@
             "mercuryres": 72,
             "marsres": 72,
             "jupiterres": 48,
-            "venuspow": 100
+            "venusatk": 100
         },
         "extraturns": 0
     },
@@ -3163,7 +3163,7 @@
             "mercuryres": 100,
             "marsres": 100,
             "jupiterres": 25,
-            "venuspow": 120
+            "venusatk": 120
         },
         "extraturns": 0
     },
@@ -3183,8 +3183,8 @@
             "venusres": 100,
             "jupiterres": 100,
             "mercuryres": 25,
-            "marspow": 115,
-            "venuspow": 95
+            "marsatk": 115,
+            "venusatk": 95
         },
         "extraturns": 0
     },
@@ -3204,8 +3204,8 @@
             "venusres": 100,
             "jupiterres": 100,
             "mercuryres": 25,
-            "marspow": 115,
-            "venuspow": 95
+            "marsatk": 115,
+            "venusatk": 95
         },
         "extraturns": 0
     },
@@ -3225,7 +3225,7 @@
             "mercuryres": 100,
             "marsres": 100,
             "jupiterres": 25,
-            "venuspow": 120
+            "venusatk": 120
         },
         "extraturns": 0
     },
@@ -3245,7 +3245,7 @@
             "jupiterres": 48,
             "venusres": 25,
             "marsres": 7,
-            "venuspow": 100
+            "venusatk": 100
         },
         "extraturns": 0
     },
@@ -3265,8 +3265,8 @@
             "venusres": 100,
             "jupiterres": 100,
             "mercuryres": 25,
-            "venuspow": 95,
-            "marspow": 115
+            "venusatk": 95,
+            "marsatk": 115
         },
         "extraturns": 0
     },
@@ -3286,7 +3286,7 @@
             "mercuryres": 72,
             "marsres": 48,
             "jupiterres": 7,
-            "jupiterpow": 110
+            "jupiteratk": 110
         },
         "extraturns": 0
     },
@@ -3306,7 +3306,7 @@
             "mercuryres": 100,
             "marsres": 100,
             "jupiterres": 72,
-            "marspow": 85
+            "marsatk": 85
         },
         "extraturns": 0
     },
@@ -3383,7 +3383,7 @@
             "mercuryres": 110,
             "marsres": 72,
             "jupiterres": 48,
-            "jupiterpow": 110
+            "jupiteratk": 110
         },
         "extraturns": 0
     },
@@ -3403,7 +3403,7 @@
             "mercuryres": 110,
             "marsres": 72,
             "jupiterres": 48,
-            "jupiterpow": 110
+            "jupiteratk": 110
         },
         "extraturns": 0
     },
@@ -3461,7 +3461,7 @@
             "mercuryres": 72,
             "marsres": 48,
             "jupiterres": 7,
-            "jupiterpow": 110
+            "jupiteratk": 110
         },
         "extraturns": 0
     },
@@ -3481,7 +3481,7 @@
             "mercuryres": 72,
             "marsres": 48,
             "jupiterres": 7,
-            "jupiterpow": 110
+            "jupiteratk": 110
         },
         "extraturns": 0
     },
@@ -3501,7 +3501,7 @@
             "mercuryres": 100,
             "marsres": 72,
             "jupiterres": 25,
-            "jupiterpow": 110
+            "jupiteratk": 110
         },
         "extraturns": 0
     },
@@ -3521,7 +3521,7 @@
             "mercuryres": 72,
             "marsres": 48,
             "jupiterres": 7,
-            "jupiterpow": 110
+            "jupiteratk": 110
         },
         "extraturns": 0
     },
@@ -3541,7 +3541,7 @@
             "marsres": 100,
             "venusres": 72,
             "jupiterres": 25,
-            "marspow": 95
+            "marsatk": 95
         },
         "extraturns": 0
     },
@@ -3637,7 +3637,7 @@
             "marsres": 72,
             "venusres": 48,
             "jupiterres": 7,
-            "mercurypow": 95
+            "mercuryatk": 95
         },
         "extraturns": 0
     },
@@ -3657,7 +3657,7 @@
             "venusres": 100,
             "jupiterres": 100,
             "marsres": 25,
-            "mercurypow": 115
+            "mercuryatk": 115
         },
         "extraturns": 0
     },
@@ -3677,7 +3677,7 @@
             "venusres": 100,
             "jupiterres": 100,
             "marsres": 25,
-            "mercurypow": 115
+            "mercuryatk": 115
         },
         "extraturns": 0
     },
@@ -3697,7 +3697,7 @@
             "venusres": 100,
             "jupiterres": 100,
             "marsres": 25,
-            "mercurypow": 125
+            "mercuryatk": 125
         },
         "extraturns": 0
     },
@@ -3717,8 +3717,8 @@
             "mercuryres": 100,
             "marsres": 100,
             "venusres": 48,
-            "venuspow": 100,
-            "mercurypow": 100
+            "venusatk": 100,
+            "mercuryatk": 100
         },
         "extraturns": 0
     },
@@ -3738,7 +3738,7 @@
             "venusres": 100,
             "jupiterres": 100,
             "marsres": 25,
-            "mercurypow": 125
+            "mercuryatk": 125
         },
         "extraturns": 0
     },
@@ -3758,7 +3758,7 @@
             "mercuryres": 100,
             "marsres": 100,
             "venusres": 25,
-            "jupiterpow": 120
+            "jupiteratk": 120
         },
         "extraturns": 0
     },
@@ -3778,7 +3778,7 @@
             "mercuryres": 100,
             "marsres": 100,
             "venusres": 25,
-            "jupiterpow": 120
+            "jupiteratk": 120
         },
         "extraturns": 0
     },
@@ -3798,7 +3798,7 @@
             "mercuryres": 100,
             "marsres": 100,
             "venusres": 25,
-            "jupiterpow": 120
+            "jupiteratk": 120
         },
         "extraturns": 0
     },
@@ -3818,7 +3818,7 @@
             "mercuryres": 100,
             "marsres": 100,
             "venusres": 25,
-            "jupiterpow": 120
+            "jupiteratk": 120
         },
         "extraturns": 0
     },
@@ -3838,7 +3838,7 @@
             "mercuryres": 100,
             "marsres": 100,
             "venusres": 25,
-            "jupiterpow": 120
+            "jupiteratk": 120
         },
         "extraturns": 0
     },
@@ -3858,7 +3858,7 @@
             "mercuryres": 100,
             "marsres": 100,
             "venusres": 25,
-            "jupiterpow": 120
+            "jupiteratk": 120
         },
         "extraturns": 0
     },
@@ -3878,7 +3878,7 @@
             "mercuryres": 100,
             "marsres": 100,
             "venusres": 25,
-            "jupiterpow": 120
+            "jupiteratk": 120
         },
         "extraturns": 0
     },
@@ -3898,7 +3898,7 @@
             "mercuryres": 100,
             "marsres": 100,
             "venusres": 25,
-            "jupiterpow": 120
+            "jupiteratk": 120
         },
         "extraturns": 0
     },
@@ -3918,7 +3918,7 @@
             "mercuryres": 100,
             "marsres": 100,
             "venusres": 25,
-            "jupiterpow": 120
+            "jupiteratk": 120
         },
         "extraturns": 0
     },
@@ -3938,7 +3938,7 @@
             "mercuryres": 100,
             "marsres": 100,
             "venusres": 25,
-            "jupiterpow": 120
+            "jupiteratk": 120
         },
         "extraturns": 0
     },
@@ -3958,7 +3958,7 @@
             "mercuryres": 100,
             "marsres": 100,
             "venusres": 25,
-            "jupiterpow": 120
+            "jupiteratk": 120
         },
         "extraturns": 0
     },
@@ -3978,7 +3978,7 @@
             "mercuryres": 100,
             "marsres": 100,
             "venusres": 25,
-            "jupiterpow": 120
+            "jupiteratk": 120
         },
         "extraturns": 0
     },
@@ -3998,7 +3998,7 @@
             "mercuryres": 100,
             "marsres": 100,
             "venusres": 25,
-            "jupiterpow": 120
+            "jupiteratk": 120
         },
         "extraturns": 0
     },
@@ -4018,7 +4018,7 @@
             "mercuryres": 100,
             "marsres": 100,
             "venusres": 25,
-            "jupiterpow": 120
+            "jupiteratk": 120
         },
         "extraturns": 0
     },
@@ -4038,7 +4038,7 @@
             "mercuryres": 100,
             "marsres": 100,
             "venusres": 25,
-            "jupiterpow": 120
+            "jupiteratk": 120
         },
         "extraturns": 0
     },
@@ -4058,7 +4058,7 @@
             "mercuryres": 100,
             "marsres": 100,
             "venusres": 25,
-            "jupiterpow": 120
+            "jupiteratk": 120
         },
         "extraturns": 0
     },
@@ -4078,7 +4078,7 @@
             "mercuryres": 100,
             "marsres": 100,
             "venusres": 25,
-            "jupiterpow": 120
+            "jupiteratk": 120
         },
         "extraturns": 0
     },
@@ -4098,7 +4098,7 @@
             "mercuryres": 100,
             "marsres": 100,
             "venusres": 25,
-            "jupiterpow": 120
+            "jupiteratk": 120
         },
         "extraturns": 0
     },
@@ -4118,7 +4118,7 @@
             "mercuryres": 100,
             "marsres": 100,
             "venusres": 25,
-            "jupiterpow": 120
+            "jupiteratk": 120
         },
         "extraturns": 0
     },
@@ -4138,8 +4138,8 @@
             "venusres": 127,
             "jupiterres": 100,
             "mercuryres": 72,
-            "venuspow": 100,
-            "marspow": 1
+            "venusatk": 100,
+            "marsatk": 1
         },
         "extraturns": 0
     },
@@ -4159,9 +4159,9 @@
             "venusres": 72,
             "mercuryres": 72,
             "marsres": 25,
-            "venuspow": 100,
-            "jupiterpow": 80,
-            "mercurypow": 80
+            "venusatk": 100,
+            "jupiteratk": 80,
+            "mercuryatk": 80
         },
         "extraturns": 0
     },
@@ -4181,8 +4181,8 @@
             "venusres": 48,
             "mercuryres": 48,
             "marsres": 25,
-            "venuspow": 100,
-            "jupiterpow": 80
+            "venusatk": 100,
+            "jupiteratk": 80
         },
         "extraturns": 0
     },
@@ -4202,7 +4202,7 @@
             "venusres": 72,
             "mercuryres": 72,
             "marsres": 48,
-            "venuspow": 95
+            "venusatk": 95
         },
         "extraturns": 0
     },
@@ -4317,8 +4317,8 @@
             "jupiterres": 100,
             "venusres": 100,
             "marsres": 25,
-            "venuspow": 95,
-            "mercurypow": 115
+            "venusatk": 95,
+            "mercuryatk": 115
         },
         "extraturns": 1
     },
@@ -4338,8 +4338,8 @@
             "mercuryres": 90,
             "marsres": 90,
             "jupiterres": 90,
-            "jupiterpow": 80,
-            "marspow": 80
+            "jupiteratk": 80,
+            "marsatk": 80
         },
         "extraturns": 0
     },
@@ -4359,8 +4359,8 @@
             "mercuryres": 90,
             "marsres": 90,
             "jupiterres": 90,
-            "jupiterpow": 80,
-            "marspow": 80
+            "jupiteratk": 80,
+            "marsatk": 80
         },
         "extraturns": 0
     },
@@ -4380,7 +4380,7 @@
             "mercuryres": 72,
             "marsres": 48,
             "jupiterres": 7,
-            "jupiterpow": 110
+            "jupiteratk": 110
         },
         "extraturns": 0
     },
@@ -4400,7 +4400,7 @@
             "mercuryres": 100,
             "marsres": 100,
             "jupiterres": 72,
-            "venuspow": 100
+            "venusatk": 100
         },
         "extraturns": 0
     },
@@ -4420,7 +4420,7 @@
             "mercuryres": 100,
             "marsres": 100,
             "jupiterres": 72,
-            "venuspow": 100
+            "venusatk": 100
         },
         "extraturns": 0
     },
@@ -4440,7 +4440,7 @@
             "marsres": 100,
             "venusres": 72,
             "jupiterres": 25,
-            "mercurypow": 95
+            "mercuryatk": 95
         },
         "extraturns": 0
     },
@@ -4460,7 +4460,7 @@
             "mercuryres": 100,
             "marsres": 100,
             "jupiterres": 72,
-            "marspow": 85
+            "marsatk": 85
         },
         "extraturns": 0
     },
@@ -4482,7 +4482,7 @@
             "marsres": 100,
             "venusres": 72,
             "jupiterres": 25,
-            "venuspow": 100
+            "venusatk": 100
         },
         "extraturns": 0
     },
@@ -4502,7 +4502,7 @@
             "venusres": 100,
             "jupiterres": 100,
             "marsres": 25,
-            "mercurypow": 125
+            "mercuryatk": 125
         },
         "extraturns": 0
     },
@@ -4545,7 +4545,7 @@
             "venusres": 100,
             "jupiterres": 100,
             "marsres": 72,
-            "mercurypow": 100
+            "mercuryatk": 100
         },
         "extraturns": 0
     },
@@ -4567,7 +4567,7 @@
             "venusres": 100,
             "jupiterres": 100,
             "marsres": 72,
-            "mercurypow": 100
+            "mercuryatk": 100
         },
         "extraturns": 0
     },
@@ -4587,7 +4587,7 @@
             "venusres": 100,
             "jupiterres": 100,
             "marsres": 72,
-            "mercurypow": 100
+            "mercuryatk": 100
         },
         "extraturns": 0
     },
@@ -4609,7 +4609,7 @@
             "venusres": 100,
             "jupiterres": 100,
             "marsres": 72,
-            "mercurypow": 100
+            "mercuryatk": 100
         },
         "extraturns": 0
     },
@@ -4631,7 +4631,7 @@
             "venusres": 72,
             "jupiterres": 72,
             "marsres": 48,
-            "mercurypow": 100
+            "mercuryatk": 100
         },
         "extraturns": 0
     },
@@ -4651,7 +4651,7 @@
             "venusres": 100,
             "jupiterres": 100,
             "marsres": 72,
-            "mercurypow": 100
+            "mercuryatk": 100
         },
         "extraturns": 0
     },
@@ -4671,7 +4671,7 @@
             "venusres": 100,
             "jupiterres": 100,
             "mercuryres": 25,
-            "marspow": 115
+            "marsatk": 115
         },
         "extraturns": 0
     },
@@ -4691,7 +4691,7 @@
             "mercuryres": 100,
             "marsres": 100,
             "jupiterres": 72,
-            "venuspow": 100
+            "venusatk": 100
         },
         "extraturns": 0
     },
@@ -4711,8 +4711,8 @@
             "mercuryres": 100,
             "marsres": 100,
             "jupiterres": 72,
-            "venuspow": 100,
-            "mercurypow": 85
+            "venusatk": 100,
+            "mercuryatk": 85
         },
         "extraturns": 0
     },
@@ -4732,7 +4732,7 @@
             "venusres": 48,
             "mercuryres": 48,
             "marsres": 25,
-            "venuspow": 100
+            "venusatk": 100
         },
         "extraturns": 0
     },
@@ -4752,7 +4752,7 @@
             "venusres": 48,
             "mercuryres": 48,
             "marsres": 25,
-            "venuspow": 100
+            "venusatk": 100
         },
         "extraturns": 0
     },
@@ -4774,7 +4774,7 @@
             "jupiterres": 72,
             "venusres": 48,
             "marsres": 7,
-            "venuspow": 105
+            "venusatk": 105
         },
         "extraturns": 0
     },
@@ -4796,7 +4796,7 @@
             "jupiterres": 72,
             "venusres": 48,
             "marsres": 7,
-            "venuspow": 105
+            "venusatk": 105
         },
         "extraturns": 0
     },
@@ -4816,7 +4816,7 @@
             "jupiterres": 72,
             "venusres": 48,
             "marsres": 7,
-            "venuspow": 105
+            "venusatk": 105
         },
         "extraturns": 0
     },
@@ -4836,7 +4836,7 @@
             "jupiterres": 72,
             "venusres": 48,
             "marsres": 7,
-            "venuspow": 105
+            "venusatk": 105
         },
         "extraturns": 0
     },
@@ -4856,8 +4856,8 @@
             "jupiterres": 72,
             "venusres": 48,
             "marsres": 7,
-            "jupiterpow": 70,
-            "venuspow": 105
+            "jupiteratk": 70,
+            "venusatk": 105
         },
         "extraturns": 0
     },
@@ -4917,7 +4917,7 @@
             "venusres": 48,
             "mercuryres": 48,
             "marsres": 25,
-            "venuspow": 100
+            "venusatk": 100
         },
         "extraturns": 0
     },
@@ -4937,8 +4937,8 @@
             "venusres": 100,
             "jupiterres": 100,
             "mercuryres": 25,
-            "marspow": 115,
-            "venuspow": 95
+            "marsatk": 115,
+            "venusatk": 95
         },
         "extraturns": 0
     },
@@ -4960,8 +4960,8 @@
             "venusres": 48,
             "jupiterres": 48,
             "marsres": 7,
-            "mercurypow": 125,
-            "venuspow": 95
+            "mercuryatk": 125,
+            "venusatk": 95
         },
         "extraturns": 0
     },
@@ -4981,8 +4981,8 @@
             "venusres": 48,
             "jupiterres": 48,
             "marsres": 7,
-            "mercurypow": 125,
-            "jupiterpow": 95
+            "mercuryatk": 125,
+            "jupiteratk": 95
         },
         "extraturns": 0
     },
@@ -5002,8 +5002,8 @@
             "venusres": 100,
             "jupiterres": 100,
             "mercuryres": 25,
-            "marspow": 115,
-            "venuspow": 95
+            "marsatk": 115,
+            "venusatk": 95
         },
         "extraturns": 1
     },
@@ -5023,8 +5023,8 @@
             "venusres": 100,
             "jupiterres": 100,
             "mercuryres": 25,
-            "venuspow": 95,
-            "marspow": 115
+            "venusatk": 95,
+            "marsatk": 115
         },
         "extraturns": 0
     },
@@ -5044,7 +5044,7 @@
             "venusres": 100,
             "jupiterres": 100,
             "mercuryres": 25,
-            "marspow": 125
+            "marsatk": 125
         },
         "extraturns": 0
     },
@@ -5066,7 +5066,7 @@
             "venusres": 100,
             "jupiterres": 100,
             "mercuryres": 25,
-            "marspow": 120
+            "marsatk": 120
         },
         "extraturns": 0
     },
@@ -5086,7 +5086,7 @@
             "venusres": 100,
             "jupiterres": 100,
             "mercuryres": 25,
-            "marspow": 120
+            "marsatk": 120
         },
         "extraturns": 0
     },
@@ -5106,7 +5106,7 @@
             "venusres": 100,
             "jupiterres": 100,
             "mercuryres": 25,
-            "marspow": 120
+            "marsatk": 120
         },
         "extraturns": 0
     },
@@ -5126,7 +5126,7 @@
             "venusres": 100,
             "jupiterres": 100,
             "mercuryres": 25,
-            "marspow": 120
+            "marsatk": 120
         },
         "extraturns": 0
     },
@@ -5146,7 +5146,7 @@
             "venusres": 100,
             "jupiterres": 100,
             "mercuryres": 25,
-            "marspow": 125
+            "marsatk": 125
         },
         "extraturns": 0
     },
@@ -5166,7 +5166,7 @@
             "venusres": 100,
             "jupiterres": 100,
             "mercuryres": 25,
-            "marspow": 125
+            "marsatk": 125
         },
         "extraturns": 0
     },
@@ -5186,7 +5186,7 @@
             "venusres": 100,
             "jupiterres": 100,
             "mercuryres": 25,
-            "marspow": 125
+            "marsatk": 125
         },
         "extraturns": 0
     },
@@ -5206,7 +5206,7 @@
             "venusres": 100,
             "jupiterres": 100,
             "mercuryres": 25,
-            "marspow": 125
+            "marsatk": 125
         },
         "extraturns": 0
     },
@@ -5226,7 +5226,7 @@
             "venusres": 100,
             "jupiterres": 100,
             "mercuryres": 25,
-            "marspow": 125
+            "marsatk": 125
         },
         "extraturns": 0
     },
@@ -5246,7 +5246,7 @@
             "venusres": 100,
             "jupiterres": 100,
             "mercuryres": 25,
-            "marspow": 125
+            "marsatk": 125
         },
         "extraturns": 0
     },
@@ -5266,7 +5266,7 @@
             "venusres": 100,
             "jupiterres": 100,
             "mercuryres": 25,
-            "marspow": 125
+            "marsatk": 125
         },
         "extraturns": 0
     },
@@ -5286,7 +5286,7 @@
             "venusres": 100,
             "jupiterres": 100,
             "mercuryres": 25,
-            "marspow": 125
+            "marsatk": 125
         },
         "extraturns": 0
     },
@@ -5369,9 +5369,9 @@
             "venusres": 127,
             "jupiterres": 100,
             "mercuryres": 72,
-            "marspow": 105,
-            "venuspow": 100,
-            "mercurypow": 95
+            "marsatk": 105,
+            "venusatk": 100,
+            "mercuryatk": 95
         },
         "extraturns": 0
     },
@@ -5391,7 +5391,7 @@
             "venusres": 100,
             "jupiterres": 100,
             "marsres": 25,
-            "mercurypow": 125
+            "mercuryatk": 125
         },
         "extraturns": 0
     },
@@ -5411,7 +5411,7 @@
             "venusres": 100,
             "jupiterres": 100,
             "marsres": 25,
-            "mercurypow": 125
+            "mercuryatk": 125
         },
         "extraturns": 0
     },
@@ -5431,7 +5431,7 @@
             "venusres": 100,
             "jupiterres": 100,
             "marsres": 25,
-            "mercurypow": 125
+            "mercuryatk": 125
         },
         "extraturns": 0
     },
@@ -5451,7 +5451,7 @@
             "venusres": 100,
             "jupiterres": 100,
             "marsres": 25,
-            "mercurypow": 120
+            "mercuryatk": 120
         },
         "extraturns": 0
     },
@@ -5471,7 +5471,7 @@
             "venusres": 100,
             "jupiterres": 100,
             "marsres": 25,
-            "mercurypow": 120
+            "mercuryatk": 120
         },
         "extraturns": 0
     },
@@ -5491,7 +5491,7 @@
             "venusres": 100,
             "jupiterres": 100,
             "marsres": 25,
-            "mercurypow": 120
+            "mercuryatk": 120
         },
         "extraturns": 0
     },
@@ -5511,7 +5511,7 @@
             "venusres": 100,
             "jupiterres": 100,
             "marsres": 25,
-            "mercurypow": 120
+            "mercuryatk": 120
         },
         "extraturns": 0
     },
@@ -5531,7 +5531,7 @@
             "venusres": 100,
             "jupiterres": 100,
             "marsres": 25,
-            "mercurypow": 120
+            "mercuryatk": 120
         },
         "extraturns": 0
     },
@@ -5551,7 +5551,7 @@
             "venusres": 100,
             "jupiterres": 100,
             "marsres": 25,
-            "mercurypow": 125
+            "mercuryatk": 125
         },
         "extraturns": 0
     },
@@ -5571,7 +5571,7 @@
             "venusres": 100,
             "jupiterres": 100,
             "marsres": 25,
-            "mercurypow": 125
+            "mercuryatk": 125
         },
         "extraturns": 0
     },
@@ -5591,7 +5591,7 @@
             "venusres": 100,
             "jupiterres": 100,
             "marsres": 25,
-            "mercurypow": 125
+            "mercuryatk": 125
         },
         "extraturns": 0
     },
@@ -5611,7 +5611,7 @@
             "venusres": 100,
             "jupiterres": 100,
             "marsres": 25,
-            "mercurypow": 125
+            "mercuryatk": 125
         },
         "extraturns": 0
     },
@@ -5631,7 +5631,7 @@
             "venusres": 100,
             "jupiterres": 100,
             "marsres": 25,
-            "mercurypow": 125
+            "mercuryatk": 125
         },
         "extraturns": 0
     },
@@ -5651,7 +5651,7 @@
             "venusres": 100,
             "jupiterres": 100,
             "marsres": 25,
-            "mercurypow": 125
+            "mercuryatk": 125
         },
         "extraturns": 0
     },
@@ -5671,7 +5671,7 @@
             "venusres": 100,
             "jupiterres": 100,
             "marsres": 25,
-            "mercurypow": 125
+            "mercuryatk": 125
         },
         "extraturns": 0
     },
@@ -5691,7 +5691,7 @@
             "venusres": 100,
             "jupiterres": 100,
             "marsres": 25,
-            "mercurypow": 125
+            "mercuryatk": 125
         },
         "extraturns": 0
     },
@@ -5713,7 +5713,7 @@
             "venusres": 100,
             "jupiterres": 100,
             "marsres": 72,
-            "mercurypow": 100
+            "mercuryatk": 100
         },
         "extraturns": 0
     },
@@ -5735,7 +5735,7 @@
             "venusres": 100,
             "jupiterres": 100,
             "marsres": 72,
-            "mercurypow": 100
+            "mercuryatk": 100
         },
         "extraturns": 0
     },
@@ -5757,7 +5757,7 @@
             "mercuryres": 127,
             "venusres": 100,
             "marsres": 25,
-            "mercurypow": 100
+            "mercuryatk": 100
         },
         "extraturns": 0
     },
@@ -5777,8 +5777,8 @@
             "mercuryres": 127,
             "venusres": 100,
             "marsres": 25,
-            "jupiterpow": 105,
-            "venuspow": 95
+            "jupiteratk": 105,
+            "venusatk": 95
         },
         "extraturns": 0
     },
@@ -5798,7 +5798,7 @@
             "mercuryres": 127,
             "venusres": 100,
             "marsres": 25,
-            "jupiterpow": 105
+            "jupiteratk": 105
         },
         "extraturns": 0
     },
@@ -5818,8 +5818,8 @@
             "mercuryres": 127,
             "venusres": 100,
             "marsres": 25,
-            "jupiterpow": 105,
-            "venuspow": 95
+            "jupiteratk": 105,
+            "venusatk": 95
         },
         "extraturns": 0
     },
@@ -5839,8 +5839,8 @@
             "mercuryres": 127,
             "venusres": 100,
             "marsres": 25,
-            "jupiterpow": 105,
-            "mercurypow": 100
+            "jupiteratk": 105,
+            "mercuryatk": 100
         },
         "extraturns": 0
     },
@@ -5860,8 +5860,8 @@
             "mercuryres": 127,
             "venusres": 100,
             "marsres": 25,
-            "jupiterpow": 105,
-            "venuspow": 95
+            "jupiteratk": 105,
+            "venusatk": 95
         },
         "extraturns": 0
     },
@@ -5881,7 +5881,7 @@
             "mercuryres": 127,
             "venusres": 100,
             "marsres": 25,
-            "jupiterpow": 105
+            "jupiteratk": 105
         },
         "extraturns": 0
     },
@@ -5901,7 +5901,7 @@
             "mercuryres": 127,
             "venusres": 100,
             "marsres": 25,
-            "jupiterpow": 105
+            "jupiteratk": 105
         },
         "extraturns": 0
     },
@@ -5921,8 +5921,8 @@
             "mercuryres": 127,
             "venusres": 100,
             "marsres": 25,
-            "jupiterpow": 105,
-            "venuspow": 95
+            "jupiteratk": 105,
+            "venusatk": 95
         },
         "extraturns": 0
     },
@@ -5942,7 +5942,7 @@
             "mercuryres": 127,
             "venusres": 100,
             "marsres": 25,
-            "jupiterpow": 105
+            "jupiteratk": 105
         },
         "extraturns": 0
     },
@@ -5962,7 +5962,7 @@
             "mercuryres": 127,
             "venusres": 100,
             "marsres": 25,
-            "jupiterpow": 105
+            "jupiteratk": 105
         },
         "extraturns": 0
     },
@@ -5984,7 +5984,7 @@
             "mercuryres": 127,
             "venusres": 100,
             "marsres": 25,
-            "jupiterpow": 105
+            "jupiteratk": 105
         },
         "extraturns": 0
     },
@@ -6004,7 +6004,7 @@
             "mercuryres": 127,
             "venusres": 100,
             "marsres": 25,
-            "jupiterpow": 105
+            "jupiteratk": 105
         },
         "extraturns": 0
     },
@@ -6024,8 +6024,8 @@
             "mercuryres": 127,
             "venusres": 100,
             "marsres": 25,
-            "jupiterpow": 105,
-            "venuspow": 95
+            "jupiteratk": 105,
+            "venusatk": 95
         },
         "extraturns": 0
     },
@@ -6045,8 +6045,8 @@
             "mercuryres": 127,
             "venusres": 100,
             "marsres": 25,
-            "jupiterpow": 105,
-            "mercurypow": 100
+            "jupiteratk": 105,
+            "mercuryatk": 100
         },
         "extraturns": 0
     },
@@ -6066,7 +6066,7 @@
             "mercuryres": 127,
             "venusres": 100,
             "marsres": 25,
-            "jupiterpow": 105
+            "jupiteratk": 105
         },
         "extraturns": 0
     },
@@ -6088,7 +6088,7 @@
             "mercuryres": 127,
             "venusres": 100,
             "marsres": 25,
-            "mercurypow": 100
+            "mercuryatk": 100
         },
         "extraturns": 0
     },
@@ -6110,7 +6110,7 @@
             "mercuryres": 127,
             "venusres": 100,
             "marsres": 25,
-            "venuspow": 95
+            "venusatk": 95
         },
         "extraturns": 0
     },
@@ -6130,8 +6130,8 @@
             "mercuryres": 127,
             "venusres": 100,
             "marsres": 25,
-            "mercurypow": 100,
-            "jupiterpow": 105
+            "mercuryatk": 100,
+            "jupiteratk": 105
         },
         "extraturns": 0
     },
@@ -6170,7 +6170,7 @@
             "mercuryres": 127,
             "venusres": 100,
             "marsres": 25,
-            "jupiterpow": 105
+            "jupiteratk": 105
         },
         "extraturns": 0
     },
@@ -6190,8 +6190,8 @@
             "mercuryres": 127,
             "venusres": 100,
             "marsres": 25,
-            "jupiterpow": 105,
-            "mercurypow": 100
+            "jupiteratk": 105,
+            "mercuryatk": 100
         },
         "extraturns": 0
     },
@@ -6211,7 +6211,7 @@
             "mercuryres": 127,
             "venusres": 100,
             "marsres": 25,
-            "jupiterpow": 105
+            "jupiteratk": 105
         },
         "extraturns": 0
     },
@@ -6250,7 +6250,7 @@
             "mercuryres": 100,
             "marsres": 100,
             "jupiterres": 48,
-            "venuspow": 110
+            "venusatk": 110
         },
         "extraturns": 0
     },
@@ -6270,7 +6270,7 @@
             "mercuryres": 100,
             "marsres": 100,
             "jupiterres": 48,
-            "venuspow": 110
+            "venusatk": 110
         },
         "extraturns": 0
     },
@@ -6290,7 +6290,7 @@
             "mercuryres": 100,
             "marsres": 100,
             "jupiterres": 48,
-            "venuspow": 110
+            "venusatk": 110
         },
         "extraturns": 0
     },
@@ -6310,7 +6310,7 @@
             "mercuryres": 100,
             "marsres": 100,
             "jupiterres": 48,
-            "venuspow": 110
+            "venusatk": 110
         },
         "extraturns": 0
     },
@@ -6332,7 +6332,7 @@
             "mercuryres": 100,
             "marsres": 100,
             "jupiterres": 48,
-            "venuspow": 110
+            "venusatk": 110
         },
         "extraturns": 0
     },
@@ -6354,7 +6354,7 @@
             "mercuryres": 100,
             "marsres": 100,
             "jupiterres": 48,
-            "venuspow": 110
+            "venusatk": 110
         },
         "extraturns": 0
     },
@@ -6437,7 +6437,7 @@
             "venusres": 48,
             "mercuryres": 48,
             "marsres": 25,
-            "venuspow": 100
+            "venusatk": 100
         },
         "extraturns": 0
     },
@@ -6457,7 +6457,7 @@
             "venusres": 48,
             "mercuryres": 48,
             "marsres": 25,
-            "venuspow": 100
+            "venusatk": 100
         },
         "extraturns": 0
     },
@@ -6479,7 +6479,7 @@
             "mercuryres": 72,
             "marsres": 48,
             "jupiterres": 7,
-            "jupiterpow": 110
+            "jupiteratk": 110
         },
         "extraturns": 0
     },
@@ -6501,7 +6501,7 @@
             "mercuryres": 72,
             "marsres": 48,
             "jupiterres": 7,
-            "jupiterpow": 110
+            "jupiteratk": 110
         },
         "extraturns": 0
     },
@@ -6521,9 +6521,9 @@
             "mercuryres": 100,
             "marsres": 72,
             "jupiterres": 25,
-            "jupiterpow": 110,
-            "marspow": 95,
-            "venuspow": 95
+            "jupiteratk": 110,
+            "marsatk": 95,
+            "venusatk": 95
         },
         "extraturns": 0
     },
@@ -6545,7 +6545,7 @@
             "jupiterres": 48,
             "venusres": 25,
             "marsres": 7,
-            "venuspow": 100
+            "venusatk": 100
         },
         "extraturns": 0
     },
@@ -6565,7 +6565,7 @@
             "jupiterres": 127,
             "venusres": 100,
             "mercuryres": 72,
-            "marspow": 110
+            "marsatk": 110
         },
         "extraturns": 0
     },
@@ -6585,8 +6585,8 @@
             "venusres": 127,
             "jupiterres": 100,
             "mercuryres": 72,
-            "venuspow": 100,
-            "marspow": 105
+            "venusatk": 100,
+            "marsatk": 105
         },
         "extraturns": 0
     },
@@ -6646,7 +6646,7 @@
             "venusres": 72,
             "mercuryres": 72,
             "marsres": 48,
-            "mercurypow": 85
+            "mercuryatk": 85
         },
         "extraturns": 0
     },
@@ -6666,8 +6666,8 @@
             "mercuryres": 100,
             "marsres": 100,
             "venusres": 72,
-            "jupiterpow": 100,
-            "marspow": 85
+            "jupiteratk": 100,
+            "marsatk": 85
         },
         "extraturns": 0
     },
@@ -6687,8 +6687,8 @@
             "mercuryres": 100,
             "marsres": 100,
             "venusres": 72,
-            "jupiterpow": 100,
-            "marspow": 85
+            "jupiteratk": 100,
+            "marsatk": 85
         },
         "extraturns": 0
     },
@@ -6708,8 +6708,8 @@
             "mercuryres": 48,
             "jupiterres": 48,
             "marsres": 25,
-            "marspow": 90,
-            "jupiterpow": 85
+            "marsatk": 90,
+            "jupiteratk": 85
         },
         "extraturns": 0
     },
@@ -6729,7 +6729,7 @@
             "venusres": 100,
             "jupiterres": 100,
             "marsres": 25,
-            "mercurypow": 115
+            "mercuryatk": 115
         },
         "extraturns": 0
     },
@@ -6825,7 +6825,7 @@
             "venusres": 48,
             "mercuryres": 48,
             "marsres": 25,
-            "venuspow": 100
+            "venusatk": 100
         },
         "extraturns": 1
     },
@@ -6845,7 +6845,7 @@
             "venusres": 48,
             "jupiterres": 48,
             "marsres": 7,
-            "mercurypow": 125
+            "mercuryatk": 125
         },
         "extraturns": 0
     },
@@ -6865,7 +6865,7 @@
             "venusres": 48,
             "jupiterres": 48,
             "marsres": 7,
-            "mercurypow": 125
+            "mercuryatk": 125
         },
         "extraturns": 0
     },
@@ -6887,7 +6887,7 @@
             "mercuryres": 72,
             "marsres": 72,
             "jupiterres": 48,
-            "venuspow": 100
+            "venusatk": 100
         },
         "extraturns": 0
     },
@@ -6907,7 +6907,7 @@
             "mercuryres": 72,
             "marsres": 72,
             "jupiterres": 48,
-            "venuspow": 100
+            "venusatk": 100
         },
         "extraturns": 0
     },
@@ -6927,7 +6927,7 @@
             "mercuryres": 100,
             "marsres": 100,
             "jupiterres": 72,
-            "venuspow": 100
+            "venusatk": 100
         },
         "extraturns": 0
     },
@@ -6947,7 +6947,7 @@
             "venusres": 100,
             "jupiterres": 100,
             "mercuryres": 25,
-            "marspow": 125
+            "marsatk": 125
         },
         "extraturns": 1
     },
@@ -6967,7 +6967,7 @@
             "mercuryres": 100,
             "marsres": 72,
             "jupiterres": 25,
-            "jupiterpow": 110
+            "jupiteratk": 110
         },
         "extraturns": 0
     },
@@ -6987,7 +6987,7 @@
             "mercuryres": 100,
             "marsres": 72,
             "jupiterres": 25,
-            "jupiterpow": 110
+            "jupiteratk": 110
         },
         "extraturns": 0
     },
@@ -7007,7 +7007,7 @@
             "venusres": 48,
             "mercuryres": 48,
             "marsres": 25,
-            "venuspow": 100
+            "venusatk": 100
         },
         "extraturns": 0
     },
@@ -7027,7 +7027,7 @@
             "venusres": 48,
             "mercuryres": 48,
             "marsres": 25,
-            "venuspow": 100
+            "venusatk": 100
         },
         "extraturns": 0
     },
@@ -7047,8 +7047,8 @@
             "venusres": 100,
             "jupiterres": 100,
             "marsres": 25,
-            "venuspow": 95,
-            "marspow": 85
+            "venusatk": 95,
+            "marsatk": 85
         },
         "extraturns": 0
     },
@@ -7068,7 +7068,7 @@
             "venusres": 100,
             "jupiterres": 100,
             "marsres": 25,
-            "mercurypow": 115
+            "mercuryatk": 115
         },
         "extraturns": 1
     },
@@ -7088,8 +7088,8 @@
             "mercuryres": 72,
             "marsres": 48,
             "jupiterres": 7,
-            "mercurypow": 95,
-            "jupiterpow": 110
+            "mercuryatk": 95,
+            "jupiteratk": 110
         },
         "extraturns": 0
     },
@@ -7130,7 +7130,7 @@
             "marsres": 100,
             "venusres": 72,
             "jupiterres": 25,
-            "venuspow": 100
+            "venusatk": 100
         },
         "extraturns": 0
     },
@@ -7150,8 +7150,8 @@
             "venusres": 100,
             "jupiterres": 100,
             "marsres": 25,
-            "mercurypow": 115,
-            "marspow": 85
+            "mercuryatk": 115,
+            "marsatk": 85
         },
         "extraturns": 0
     },
@@ -7171,8 +7171,8 @@
             "venusres": 100,
             "jupiterres": 100,
             "mercuryres": 25,
-            "mercurypow": 85,
-            "marspow": 115
+            "mercuryatk": 85,
+            "marsatk": 115
         },
         "extraturns": 0
     },
@@ -7192,8 +7192,8 @@
             "mercuryres": 72,
             "marsres": 48,
             "jupiterres": 7,
-            "jupiterpow": 110,
-            "venuspow": 95
+            "jupiteratk": 110,
+            "venusatk": 95
         },
         "extraturns": 0
     },
@@ -7213,8 +7213,8 @@
             "venusres": 100,
             "jupiterres": 100,
             "mercuryres": 25,
-            "marspow": 125,
-            "venuspow": 95
+            "marsatk": 125,
+            "venusatk": 95
         },
         "extraturns": 0
     },
@@ -7234,7 +7234,7 @@
             "mercuryres": 100,
             "marsres": 72,
             "jupiterres": 25,
-            "jupiterpow": 110
+            "jupiteratk": 110
         },
         "extraturns": 0
     },
@@ -7256,7 +7256,7 @@
             "mercuryres": 72,
             "marsres": 48,
             "jupiterres": 7,
-            "jupiterpow": 110
+            "jupiteratk": 110
         },
         "extraturns": 0
     },
@@ -7316,7 +7316,7 @@
             "venusres": 72,
             "jupiterres": 72,
             "marsres": 48,
-            "jupiterpow": 85
+            "jupiteratk": 85
         },
         "extraturns": 0
     },
@@ -7336,7 +7336,7 @@
             "venusres": 72,
             "jupiterres": 72,
             "marsres": 48,
-            "jupiterpow": 85
+            "jupiteratk": 85
         },
         "extraturns": 0
     },
@@ -7398,7 +7398,7 @@
             "venusres": 72,
             "jupiterres": 72,
             "marsres": 48,
-            "jupiterpow": 85
+            "jupiteratk": 85
         },
         "extraturns": 0
     },
@@ -7418,7 +7418,7 @@
             "venusres": 72,
             "jupiterres": 72,
             "marsres": 48,
-            "jupiterpow": 85
+            "jupiteratk": 85
         },
         "extraturns": 0
     },
@@ -7480,7 +7480,7 @@
             "jupiterres": 48,
             "mercuryres": 48,
             "marsres": 25,
-            "venuspow": 95
+            "venusatk": 95
         },
         "extraturns": 0
     },
@@ -7500,7 +7500,7 @@
             "jupiterres": 48,
             "mercuryres": 48,
             "marsres": 25,
-            "venuspow": 95
+            "venusatk": 95
         },
         "extraturns": 0
     },
@@ -7520,7 +7520,7 @@
             "mercuryres": 100,
             "marsres": 100,
             "jupiterres": 72,
-            "venuspow": 100
+            "venusatk": 100
         },
         "extraturns": 0
     },
@@ -7540,8 +7540,8 @@
             "mercuryres": 100,
             "marsres": 72,
             "jupiterres": 25,
-            "marspow": 95,
-            "jupiterpow": 110
+            "marsatk": 95,
+            "jupiteratk": 110
         },
         "extraturns": 0
     },
@@ -7561,7 +7561,7 @@
             "venusres": 100,
             "jupiterres": 100,
             "marsres": 25,
-            "mercurypow": 115
+            "mercuryatk": 115
         },
         "extraturns": 0
     },
@@ -7581,7 +7581,7 @@
             "venusres": 100,
             "jupiterres": 100,
             "marsres": 25,
-            "mercurypow": 115
+            "mercuryatk": 115
         },
         "extraturns": 0
     },
@@ -7601,9 +7601,9 @@
             "jupiterres": 100,
             "venusres": 100,
             "mercuryres": 25,
-            "jupiterpow": 95,
-            "venuspow": 95,
-            "marspow": 115
+            "jupiteratk": 95,
+            "venusatk": 95,
+            "marsatk": 115
         },
         "extraturns": 0
     },
@@ -7625,7 +7625,7 @@
             "mercuryres": 100,
             "marsres": 72,
             "jupiterres": 25,
-            "jupiterpow": 110
+            "jupiteratk": 110
         },
         "extraturns": 0
     },
@@ -7664,7 +7664,7 @@
             "venusres": 100,
             "jupiterres": 100,
             "mercuryres": 25,
-            "marspow": 125
+            "marsatk": 125
         },
         "extraturns": 0
     },
@@ -7684,7 +7684,7 @@
             "venusres": 100,
             "jupiterres": 100,
             "mercuryres": 25,
-            "marspow": 125
+            "marsatk": 125
         },
         "extraturns": 0
     },
@@ -7704,8 +7704,8 @@
             "venusres": 100,
             "jupiterres": 100,
             "mercuryres": 25,
-            "marspow": 125,
-            "venuspow": 95
+            "marsatk": 125,
+            "venusatk": 95
         },
         "extraturns": 0
     },
@@ -7725,7 +7725,7 @@
             "venusres": 72,
             "mercuryres": 72,
             "marsres": 48,
-            "venuspow": 95
+            "venusatk": 95
         },
         "extraturns": 0
     },
@@ -7783,7 +7783,7 @@
             "jupiterres": 127,
             "venusres": 100,
             "mercuryres": 72,
-            "marspow": 110
+            "marsatk": 110
         },
         "extraturns": 0
     },
@@ -7803,8 +7803,8 @@
             "jupiterres": 127,
             "venusres": 100,
             "mercuryres": 72,
-            "marspow": 110,
-            "venuspow": 100
+            "marsatk": 110,
+            "venusatk": 100
         },
         "extraturns": 0
     },
@@ -7826,7 +7826,7 @@
             "venusres": 100,
             "jupiterres": 100,
             "marsres": 25,
-            "mercurypow": 115
+            "mercuryatk": 115
         },
         "extraturns": 0
     },
@@ -7869,7 +7869,7 @@
             "venusres": 72,
             "mercuryres": 72,
             "marsres": 48,
-            "mercurypow": 85
+            "mercuryatk": 85
         },
         "extraturns": 0
     },
@@ -7891,7 +7891,7 @@
             "mercuryres": 72,
             "marsres": 48,
             "jupiterres": 7,
-            "jupiterpow": 110
+            "jupiteratk": 110
         },
         "extraturns": 0
     },
@@ -7913,7 +7913,7 @@
             "mercuryres": 72,
             "marsres": 48,
             "jupiterres": 7,
-            "jupiterpow": 110
+            "jupiteratk": 110
         },
         "extraturns": 0
     },
@@ -7933,9 +7933,9 @@
             "jupiterres": 152,
             "marsres": 127,
             "venusres": 72,
-            "venuspow": 100,
-            "marspow": 120,
-            "jupiterpow": 110
+            "venusatk": 100,
+            "marsatk": 120,
+            "jupiteratk": 110
         },
         "extraturns": 2
     },
@@ -7955,7 +7955,7 @@
             "marsres": 100,
             "mercuryres": 100,
             "jupiterres": 48,
-            "venuspow": 110
+            "venusatk": 110
         },
         "extraturns": 2
     },
@@ -7977,7 +7977,7 @@
             "marsres": 100,
             "jupiterres": 100,
             "mercuryres": 100,
-            "mercurypow": 100
+            "mercuryatk": 100
         },
         "extraturns": 0
     },
@@ -7997,7 +7997,7 @@
             "marsres": 72,
             "venusres": 48,
             "jupiterres": 7,
-            "mercurypow": 95
+            "mercuryatk": 95
         },
         "extraturns": 0
     },
@@ -8017,8 +8017,8 @@
             "marsres": 72,
             "venusres": 48,
             "jupiterres": 7,
-            "venuspow": 100,
-            "mercurypow": 95
+            "venusatk": 100,
+            "mercuryatk": 95
         },
         "extraturns": 0
     },
@@ -8038,7 +8038,7 @@
             "marsres": 72,
             "venusres": 48,
             "jupiterres": 7,
-            "jupiterpow": 80
+            "jupiteratk": 80
         },
         "extraturns": 0
     },
@@ -8079,7 +8079,7 @@
             "venusres": 100,
             "jupiterres": 100,
             "marsres": 72,
-            "mercurypow": 100
+            "mercuryatk": 100
         },
         "extraturns": 0
     },
@@ -8099,7 +8099,7 @@
             "venusres": 100,
             "jupiterres": 100,
             "marsres": 72,
-            "mercurypow": 100
+            "mercuryatk": 100
         },
         "extraturns": 0
     },
@@ -8121,7 +8121,7 @@
             "marsres": 72,
             "jupiterres": 48,
             "venusres": 25,
-            "venuspow": 100
+            "venusatk": 100
         },
         "extraturns": 0
     },
@@ -8143,7 +8143,7 @@
             "marsres": 72,
             "jupiterres": 48,
             "venusres": 25,
-            "venuspow": 100
+            "venusatk": 100
         },
         "extraturns": 0
     },
@@ -8163,7 +8163,7 @@
             "venusres": 72,
             "jupiterres": 72,
             "marsres": 48,
-            "jupiterpow": 85
+            "jupiteratk": 85
         },
         "extraturns": 0
     },
@@ -8183,7 +8183,7 @@
             "marsres": 72,
             "jupiterres": 48,
             "venusres": 25,
-            "venuspow": 100
+            "venusatk": 100
         },
         "extraturns": 0
     },
@@ -8203,7 +8203,7 @@
             "mercuryres": 100,
             "marsres": 72,
             "jupiterres": 25,
-            "jupiterpow": 110
+            "jupiteratk": 110
         },
         "extraturns": 0
     },
@@ -8223,8 +8223,8 @@
             "mercuryres": 100,
             "marsres": 72,
             "jupiterres": 25,
-            "jupiterpow": 110,
-            "mercurypow": 95
+            "jupiteratk": 110,
+            "mercuryatk": 95
         },
         "extraturns": 0
     },
@@ -8244,7 +8244,7 @@
             "marsres": 100,
             "mercuryres": 100,
             "jupiterres": 72,
-            "venuspow": 100
+            "venusatk": 100
         },
         "extraturns": 0
     },
@@ -8287,7 +8287,7 @@
             "venusres": 48,
             "jupiterres": 48,
             "marsres": 7,
-            "mercurypow": 125
+            "mercuryatk": 125
         },
         "extraturns": 0
     },
@@ -8309,7 +8309,7 @@
             "venusres": 48,
             "jupiterres": 48,
             "marsres": 7,
-            "mercurypow": 125
+            "mercuryatk": 125
         },
         "extraturns": 0
     },
@@ -8329,7 +8329,7 @@
             "venusres": 48,
             "jupiterres": 48,
             "marsres": 7,
-            "mercurypow": 125
+            "mercuryatk": 125
         },
         "extraturns": 0
     },
@@ -8349,7 +8349,7 @@
             "venusres": 48,
             "jupiterres": 48,
             "marsres": 7,
-            "mercurypow": 125
+            "mercuryatk": 125
         },
         "extraturns": 0
     },
@@ -8369,7 +8369,7 @@
             "marsres": 100,
             "venusres": 72,
             "jupiterres": 25,
-            "marspow": 95
+            "marsatk": 95
         },
         "extraturns": 0
     },
@@ -8389,7 +8389,7 @@
             "marsres": 100,
             "venusres": 72,
             "jupiterres": 25,
-            "jupiterpow": 95
+            "jupiteratk": 95
         },
         "extraturns": 0
     },
@@ -8472,7 +8472,7 @@
             "marsres": 72,
             "venusres": 48,
             "jupiterres": 7,
-            "mercurypow": 95
+            "mercuryatk": 95
         },
         "extraturns": 0
     },
@@ -8494,7 +8494,7 @@
             "mercuryres": 72,
             "marsres": 48,
             "jupiterres": 7,
-            "jupiterpow": 110
+            "jupiteratk": 110
         },
         "extraturns": 0
     },
@@ -8516,7 +8516,7 @@
             "mercuryres": 72,
             "marsres": 48,
             "jupiterres": 7,
-            "jupiterpow": 110
+            "jupiteratk": 110
         },
         "extraturns": 0
     },
@@ -8536,8 +8536,8 @@
             "jupiterres": 150,
             "venusres": 130,
             "marsres": 72,
-            "mercurypow": 105,
-            "jupiterpow": 95
+            "mercuryatk": 105,
+            "jupiteratk": 95
         },
         "extraturns": 1
     },
@@ -8557,8 +8557,8 @@
             "jupiterres": 150,
             "venusres": 130,
             "marsres": 72,
-            "mercurypow": 105,
-            "jupiterpow": 95
+            "mercuryatk": 105,
+            "jupiteratk": 95
         },
         "extraturns": 1
     },
@@ -8597,8 +8597,8 @@
             "venusres": 48,
             "jupiterres": 48,
             "mercuryres": 7,
-            "marspow": 125,
-            "venuspow": 95
+            "marsatk": 125,
+            "venusatk": 95
         },
         "extraturns": 0
     },
@@ -8618,7 +8618,7 @@
             "mercuryres": 100,
             "marsres": 100,
             "venusres": 48,
-            "jupiterpow": 110
+            "jupiteratk": 110
         },
         "extraturns": 1
     },
@@ -8638,8 +8638,8 @@
             "venusres": 100,
             "jupiterres": 100,
             "marsres": 72,
-            "mercurypow": 100,
-            "jupiterpow": 85
+            "mercuryatk": 100,
+            "jupiteratk": 85
         },
         "extraturns": 0
     },
@@ -8659,8 +8659,8 @@
             "venusres": 100,
             "jupiterres": 100,
             "marsres": 72,
-            "mercurypow": 100,
-            "jupiterpow": 85
+            "mercuryatk": 100,
+            "jupiteratk": 85
         },
         "extraturns": 0
     },
@@ -8682,7 +8682,7 @@
             "mercuryres": 72,
             "marsres": 48,
             "jupiterres": 7,
-            "jupiterpow": 110
+            "jupiteratk": 110
         },
         "extraturns": 0
     },
@@ -8702,7 +8702,7 @@
             "jupiterres": 72,
             "venusres": 48,
             "marsres": 7,
-            "venuspow": 105
+            "venusatk": 105
         },
         "extraturns": 0
     },
@@ -8722,7 +8722,7 @@
             "jupiterres": 48,
             "mercuryres": 48,
             "marsres": 25,
-            "venuspow": 95
+            "venusatk": 95
         },
         "extraturns": 0
     },
@@ -8742,7 +8742,7 @@
             "jupiterres": 48,
             "mercuryres": 48,
             "marsres": 25,
-            "venuspow": 95
+            "venusatk": 95
         },
         "extraturns": 0
     },
@@ -8762,7 +8762,7 @@
             "mercuryres": 100,
             "marsres": 100,
             "venusres": 48,
-            "jupiterpow": 110
+            "jupiteratk": 110
         },
         "extraturns": 1
     },
@@ -8820,7 +8820,7 @@
             "marsres": 100,
             "mercuryres": 100,
             "venusres": 48,
-            "jupiterpow": 110
+            "jupiteratk": 110
         },
         "extraturns": 0
     },
@@ -8840,7 +8840,7 @@
             "marsres": 100,
             "mercuryres": 100,
             "venusres": 48,
-            "jupiterpow": 110
+            "jupiteratk": 110
         },
         "extraturns": 0
     },
@@ -8862,7 +8862,7 @@
             "mercuryres": 100,
             "marsres": 100,
             "venusres": 25,
-            "jupiterpow": 120
+            "jupiteratk": 120
         },
         "extraturns": 0
     },
@@ -8882,7 +8882,7 @@
             "mercuryres": 100,
             "marsres": 100,
             "venusres": 25,
-            "jupiterpow": 125
+            "jupiteratk": 125
         },
         "extraturns": 0
     },
@@ -8923,8 +8923,8 @@
             "venusres": 100,
             "jupiterres": 100,
             "marsres": 25,
-            "marspow": 85,
-            "mercurypow": 115
+            "marsatk": 85,
+            "mercuryatk": 115
         },
         "extraturns": 0
     },
@@ -8944,7 +8944,7 @@
             "mercuryres": 100,
             "marsres": 100,
             "venusres": 48,
-            "jupiterpow": 110
+            "jupiteratk": 110
         },
         "extraturns": 1
     },
@@ -8964,7 +8964,7 @@
             "jupiterres": 100,
             "venusres": 72,
             "marsres": 25,
-            "venuspow": 105
+            "venusatk": 105
         },
         "extraturns": 0
     },
@@ -8986,7 +8986,7 @@
             "venusres": 48,
             "mercuryres": 48,
             "marsres": 25,
-            "venuspow": 100
+            "venusatk": 100
         },
         "extraturns": 0
     },
@@ -9008,7 +9008,7 @@
             "venusres": 48,
             "mercuryres": 48,
             "marsres": 25,
-            "venuspow": 100
+            "venusatk": 100
         },
         "extraturns": 0
     },
@@ -9047,7 +9047,7 @@
             "venusres": 100,
             "jupiterres": 100,
             "marsres": 25,
-            "mercurypow": 115
+            "mercuryatk": 115
         },
         "extraturns": 0
     },
@@ -9105,7 +9105,7 @@
             "venusres": 72,
             "mercuryres": 72,
             "marsres": 48,
-            "mercurypow": 85
+            "mercuryatk": 85
         },
         "extraturns": 0
     },
@@ -9125,7 +9125,7 @@
             "jupiterres": 100,
             "venusres": 100,
             "mercuryres": 60,
-            "venuspow": 95
+            "venusatk": 95
         },
         "extraturns": 1
     },
@@ -9145,8 +9145,8 @@
             "mercuryres": 72,
             "marsres": 48,
             "jupiterres": 7,
-            "jupiterpow": 110,
-            "venuspow": 95
+            "jupiteratk": 110,
+            "venusatk": 95
         },
         "extraturns": 0
     },
@@ -9166,7 +9166,7 @@
             "mercuryres": 100,
             "marsres": 100,
             "jupiterres": 25,
-            "venuspow": 120
+            "venusatk": 120
         },
         "extraturns": 0
     },
@@ -9186,7 +9186,7 @@
             "mercuryres": 100,
             "marsres": 100,
             "jupiterres": 25,
-            "venuspow": 120
+            "venusatk": 120
         },
         "extraturns": 0
     },
@@ -9206,7 +9206,7 @@
             "mercuryres": 100,
             "marsres": 100,
             "jupiterres": 25,
-            "venuspow": 120
+            "venusatk": 120
         },
         "extraturns": 0
     },
@@ -9226,7 +9226,7 @@
             "mercuryres": 100,
             "marsres": 100,
             "jupiterres": 25,
-            "venuspow": 120
+            "venusatk": 120
         },
         "extraturns": 0
     },
@@ -9246,7 +9246,7 @@
             "mercuryres": 100,
             "marsres": 100,
             "jupiterres": 25,
-            "venuspow": 120
+            "venusatk": 120
         },
         "extraturns": 0
     },
@@ -9266,7 +9266,7 @@
             "mercuryres": 100,
             "marsres": 100,
             "jupiterres": 25,
-            "venuspow": 120
+            "venusatk": 120
         },
         "extraturns": 0
     },
@@ -9286,7 +9286,7 @@
             "mercuryres": 100,
             "marsres": 100,
             "jupiterres": 25,
-            "venuspow": 120
+            "venusatk": 120
         },
         "extraturns": 0
     },
@@ -9306,7 +9306,7 @@
             "mercuryres": 100,
             "marsres": 100,
             "jupiterres": 25,
-            "venuspow": 120
+            "venusatk": 120
         },
         "extraturns": 0
     },
@@ -9326,7 +9326,7 @@
             "mercuryres": 100,
             "marsres": 100,
             "jupiterres": 25,
-            "venuspow": 120
+            "venusatk": 120
         },
         "extraturns": 0
     },
@@ -9346,7 +9346,7 @@
             "mercuryres": 100,
             "marsres": 100,
             "jupiterres": 25,
-            "venuspow": 120
+            "venusatk": 120
         },
         "extraturns": 0
     },
@@ -9366,7 +9366,7 @@
             "mercuryres": 100,
             "marsres": 100,
             "jupiterres": 25,
-            "venuspow": 120
+            "venusatk": 120
         },
         "extraturns": 0
     },
@@ -9386,7 +9386,7 @@
             "mercuryres": 100,
             "marsres": 100,
             "jupiterres": 25,
-            "venuspow": 120
+            "venusatk": 120
         },
         "extraturns": 0
     },
@@ -9406,7 +9406,7 @@
             "mercuryres": 100,
             "marsres": 100,
             "jupiterres": 25,
-            "venuspow": 120
+            "venusatk": 120
         },
         "extraturns": 0
     },
@@ -9426,7 +9426,7 @@
             "mercuryres": 100,
             "marsres": 100,
             "jupiterres": 25,
-            "venuspow": 120
+            "venusatk": 120
         },
         "extraturns": 0
     },
@@ -9446,7 +9446,7 @@
             "mercuryres": 100,
             "marsres": 100,
             "jupiterres": 25,
-            "venuspow": 120
+            "venusatk": 120
         },
         "extraturns": 0
     },
@@ -9466,7 +9466,7 @@
             "mercuryres": 100,
             "marsres": 100,
             "jupiterres": 25,
-            "venuspow": 120
+            "venusatk": 120
         },
         "extraturns": 0
     },
@@ -9524,7 +9524,7 @@
             "mercuryres": 72,
             "marsres": 48,
             "jupiterres": 7,
-            "jupiterpow": 110
+            "jupiteratk": 110
         },
         "extraturns": 0
     },
@@ -9544,7 +9544,7 @@
             "mercuryres": 72,
             "marsres": 48,
             "jupiterres": 7,
-            "jupiterpow": 110
+            "jupiteratk": 110
         },
         "extraturns": 0
     },
@@ -9564,7 +9564,7 @@
             "mercuryres": 72,
             "marsres": 48,
             "jupiterres": 7,
-            "jupiterpow": 110
+            "jupiteratk": 110
         },
         "extraturns": 0
     },
@@ -9584,7 +9584,7 @@
             "mercuryres": 72,
             "marsres": 48,
             "jupiterres": 7,
-            "jupiterpow": 110
+            "jupiteratk": 110
         },
         "extraturns": 0
     },
@@ -9642,8 +9642,8 @@
             "mercuryres": 48,
             "marsres": 48,
             "jupiterres": 7,
-            "jupiterpow": 105,
-            "venuspow": 90
+            "jupiteratk": 105,
+            "venusatk": 90
         },
         "extraturns": 0
     },
@@ -9663,8 +9663,8 @@
             "mercuryres": 100,
             "marsres": 72,
             "jupiterres": 25,
-            "jupiterpow": 110,
-            "mercurypow": 95
+            "jupiteratk": 110,
+            "mercuryatk": 95
         },
         "extraturns": 0
     },
@@ -9722,7 +9722,7 @@
             "jupiterres": 48,
             "venusres": 25,
             "marsres": 7,
-            "marspow": 80
+            "marsatk": 80
         },
         "extraturns": 0
     },
@@ -9742,7 +9742,7 @@
             "venusres": 48,
             "mercuryres": 48,
             "marsres": 25,
-            "venuspow": 100
+            "venusatk": 100
         },
         "extraturns": 0
     },
@@ -9762,7 +9762,7 @@
             "mercuryres": 110,
             "marsres": 72,
             "jupiterres": 48,
-            "jupiterpow": 110
+            "jupiteratk": 110
         },
         "extraturns": 0
     },
@@ -9782,7 +9782,7 @@
             "mercuryres": 110,
             "marsres": 72,
             "jupiterres": 48,
-            "jupiterpow": 110
+            "jupiteratk": 110
         },
         "extraturns": 0
     },
@@ -9821,7 +9821,7 @@
             "jupiterres": 72,
             "venusres": 48,
             "marsres": 7,
-            "venuspow": 105
+            "venusatk": 105
         },
         "extraturns": 0
     },
@@ -9879,7 +9879,7 @@
             "marsres": 72,
             "jupiterres": 48,
             "venusres": 25,
-            "marspow": 80
+            "marsatk": 80
         },
         "extraturns": 0
     },
@@ -9899,8 +9899,8 @@
             "marsres": 72,
             "jupiterres": 48,
             "venusres": 25,
-            "mercurypow": 95,
-            "jupiterpow": 80
+            "mercuryatk": 95,
+            "jupiteratk": 80
         },
         "extraturns": 0
     },
@@ -9920,7 +9920,7 @@
             "marsres": 72,
             "venusres": 48,
             "jupiterres": 7,
-            "marspow": 95
+            "marsatk": 95
         },
         "extraturns": 0
     },
@@ -9940,7 +9940,7 @@
             "mercuryres": 100,
             "marsres": 72,
             "jupiterres": 25,
-            "jupiterpow": 110
+            "jupiteratk": 110
         },
         "extraturns": 0
     },
@@ -9960,8 +9960,8 @@
             "mercuryres": 72,
             "marsres": 48,
             "jupiterres": 7,
-            "marspow": 95,
-            "jupiterpow": 110
+            "marsatk": 95,
+            "jupiteratk": 110
         },
         "extraturns": 0
     },
@@ -9981,7 +9981,7 @@
             "mercuryres": 110,
             "marsres": 72,
             "jupiterres": 48,
-            "jupiterpow": 110
+            "jupiteratk": 110
         },
         "extraturns": 0
     },
@@ -10001,7 +10001,7 @@
             "mercuryres": 110,
             "marsres": 72,
             "jupiterres": 48,
-            "jupiterpow": 110
+            "jupiteratk": 110
         },
         "extraturns": 0
     },
@@ -10021,7 +10021,7 @@
             "venusres": 72,
             "jupiterres": 72,
             "marsres": 48,
-            "jupiterpow": 85
+            "jupiteratk": 85
         },
         "extraturns": 0
     },
@@ -10041,7 +10041,7 @@
             "venusres": 72,
             "jupiterres": 72,
             "marsres": 48,
-            "jupiterpow": 85
+            "jupiteratk": 85
         },
         "extraturns": 0
     },
@@ -10061,7 +10061,7 @@
             "venusres": 72,
             "jupiterres": 72,
             "marsres": 48,
-            "jupiterpow": 85
+            "jupiteratk": 85
         },
         "extraturns": 0
     },
@@ -10081,7 +10081,7 @@
             "venusres": 72,
             "jupiterres": 72,
             "marsres": 48,
-            "jupiterpow": 85
+            "jupiteratk": 85
         },
         "extraturns": 0
     },
@@ -10101,7 +10101,7 @@
             "venusres": 100,
             "jupiterres": 100,
             "mercuryres": 25,
-            "marspow": 125
+            "marsatk": 125
         },
         "extraturns": 2
     },
@@ -10121,7 +10121,7 @@
             "jupiterres": 100,
             "venusres": 72,
             "marsres": 25,
-            "venuspow": 105
+            "venusatk": 105
         },
         "extraturns": 0
     },
@@ -10160,7 +10160,7 @@
             "mercuryres": 100,
             "marsres": 72,
             "jupiterres": 25,
-            "marspow": 95
+            "marsatk": 95
         },
         "extraturns": 0
     },
@@ -10180,8 +10180,8 @@
             "mercuryres": 100,
             "marsres": 72,
             "jupiterres": 25,
-            "marspow": 95,
-            "jupiterpow": 110
+            "marsatk": 95,
+            "jupiteratk": 110
         },
         "extraturns": 0
     },
@@ -10201,7 +10201,7 @@
             "mercuryres": 72,
             "marsres": 48,
             "jupiterres": 7,
-            "marspow": 95
+            "marsatk": 95
         },
         "extraturns": 0
     },
@@ -10389,7 +10389,7 @@
             "mercuryres": 72,
             "marsres": 72,
             "jupiterres": 72,
-            "jupiterpow": 80
+            "jupiteratk": 80
         }
     },
     "Gladiator": {

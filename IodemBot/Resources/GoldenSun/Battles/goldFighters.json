@@ -1017,7 +1017,7 @@
                 "marsres": 100,
                 "mercuryres": 100,
                 "venusres": 48,
-                "jupiterpow": 110
+                "jupiteratk": 110
             },
             "extraturns": 0
         },
@@ -1037,7 +1037,7 @@
                 "venusres": 100,
                 "jupiterres": 100,
                 "marsres": 25,
-                "mercurypow": 115
+                "mercuryatk": 115
             },
             "extraturns": 0
         }
