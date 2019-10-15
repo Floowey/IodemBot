@@ -3,6 +3,7 @@ using IodemBot.Core.UserManagement;
 using IodemBot.Extensions;
 using IodemBot.Modules.GoldenSunMechanics;
 using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -78,13 +79,13 @@ namespace IodemBot.Modules.ColossoBattles
         private static StatHolder MageStatHolder = new StatHolder(new Stats(28, 23, 9, 5, 9), new Stats(744, 280, 355, 160, 397));
         private static StatHolder AverageStatHolder = new StatHolder(new Stats(30, 20, 11, 6, 8), new Stats(775, 262, 368, 165, 384));
 
-        public LevelOption LevelOption { get; set; } = LevelOption.Default;
+        public LevelOption LevelOption { get; set; } = LevelOption.CappedLevel;
         public InventoryOption InventoryOption { get; set; } = InventoryOption.Default;
         public DjinnOption DjinnOption { get; set; } = DjinnOption.Default;
         public BaseStatOption BaseStatOption { get; set; } = BaseStatOption.Default;
         public BaseStatManipulationOption BaseStatManipulationOption { get; set; } = BaseStatManipulationOption.Default;
 
-        public uint SetLevel { get; set; } = 50;
+        public uint SetLevel { get; set; } = 100;
         public Stats StatMultiplier { get; set; } = new Stats(100, 100, 100, 100, 100);
 
         public ElementalStats ElStatMultiplier = new ElementalStats(100, 100, 100, 100, 100, 100, 100, 100);
@@ -199,10 +200,22 @@ namespace IodemBot.Modules.ColossoBattles
             var classSeries = AdeptClassSeriesManager.GetClassSeries(avatar);
             var adept = AdeptClassSeriesManager.GetClass(avatar);
             var classMultipliers = adept.StatMultipliers;
-            var level = LevelOption == LevelOption.Default
-                || (LevelOption == LevelOption.CappedLevel && avatar.LevelNumber <= SetLevel)
-                ? avatar.LevelNumber
-                : SetLevel;
+            uint level;
+            switch (LevelOption)
+            {
+                default:
+                case LevelOption.Default:
+                    level = avatar.LevelNumber;
+                    break;
+
+                case LevelOption.SetLevel:
+                    level = SetLevel;
+                    break;
+
+                case LevelOption.CappedLevel:
+                    level = Math.Min(avatar.LevelNumber, SetLevel);
+                    break;
+            };
             Stats Stats;
             switch (BaseStatOption)
             {
