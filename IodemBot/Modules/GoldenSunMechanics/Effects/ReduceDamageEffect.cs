@@ -7,7 +7,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
 {
     internal class ReduceDamageEffect : IEffect
     {
-        private readonly int damageReduction = 0;
+        public override string Type { get; } = "ReduceDamage";
+        private int damageReduction { get; set; } = 0;
 
         public override List<string> Apply(ColossoFighter User, ColossoFighter Target)
         {
@@ -20,14 +21,6 @@ namespace IodemBot.Modules.GoldenSunMechanics
             Target.defensiveMult *= (double)(100 - damageReduction) / 100;
 
             return log;
-        }
-
-        public ReduceDamageEffect(string[] args)
-        {
-            if (args.Length == 1)
-            {
-                int.TryParse(args[0], out damageReduction);
-            }
         }
 
         protected override int InternalChooseBestTarget(List<ColossoFighter> targets)

@@ -5,6 +5,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
 {
     internal class UserDiesEffect : IEffect
     {
+        public override string Type { get; } = "UserDies";
+
         public UserDiesEffect()
         {
             timeToActivate = TimeToActivate.beforeDamge;

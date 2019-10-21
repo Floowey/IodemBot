@@ -5,6 +5,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
 {
     public class CounterEffect : IEffect
     {
+        public override string Type { get; } = "Counter";
+
         public CounterEffect()
         {
         }

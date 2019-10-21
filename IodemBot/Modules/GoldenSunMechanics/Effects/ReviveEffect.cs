@@ -8,15 +8,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
 {
     public class ReviveEffect : IEffect
     {
-        private readonly uint percentage;
-
-        public ReviveEffect(string[] args)
-        {
-            if (args.Length == 1)
-            {
-                uint.TryParse(args[0], out percentage);
-            }
-        }
+        public override string Type { get; } = "Revive";
+        private uint percentage { get; set; } = 50;
 
         public override List<string> Apply(ColossoFighter User, ColossoFighter Target)
         {

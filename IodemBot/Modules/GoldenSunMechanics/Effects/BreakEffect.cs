@@ -5,6 +5,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
 {
     internal class BreakEffect : IEffect
     {
+        public override string Type { get; } = "Break";
+
         public override List<string> Apply(ColossoFighter User, ColossoFighter Target)
         {
             List<string> log = new List<string>();

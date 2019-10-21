@@ -11,6 +11,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
             timeToActivate = TimeToActivate.beforeDamge;
         }
 
+        public override string Type { get; } = "AttackWithTeammate";
+
         public override List<string> Apply(ColossoFighter User, ColossoFighter Target)
         {
             var log = new List<string>();

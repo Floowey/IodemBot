@@ -6,6 +6,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
 {
     public class RestoreEffect : IEffect
     {
+        public override string Type { get; } = "Restore";
+
         public override List<string> Apply(ColossoFighter User, ColossoFighter Target)
         {
             if (!Target.IsAlive)

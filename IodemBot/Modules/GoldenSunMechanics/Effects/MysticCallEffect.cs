@@ -8,12 +8,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
 {
     internal class MysticCallEffect : IEffect
     {
-        private List<string> EnemyNames;
-
-        public MysticCallEffect(string[] args)
-        {
-            EnemyNames = args.ToList();
-        }
+        public override string Type { get; } = "MysticCall";
+        private List<string> EnemyNames { get; set; }
 
         public override List<string> Apply(ColossoFighter User, ColossoFighter Target)
         {
