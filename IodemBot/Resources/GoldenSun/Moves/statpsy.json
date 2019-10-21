@@ -201,7 +201,7 @@
         "emote": "<:Weapon_Grace:537001160058601472>",
         "range": 1,
         "element": 0,
-        "PPCost": 5,
+        "PPCost": 12,
         "effectImages": [
             {
                 "id": "Stat",
@@ -274,6 +274,19 @@
         ]
     },
     "Restore": {
+        "name": "Restore",
+        "targetType": 1,
+        "emote": "<:Restore:536969958542802975>",
+        "range": 1,
+        "element": 3,
+        "PPCost": 4,
+        "effectImages": [
+            {
+                "id": "Restore"
+            }
+        ]
+    },
+    "Cure Poison": {
         "name": "Restore",
         "targetType": 1,
         "emote": "<:Restore:536969958542802975>",
@@ -461,6 +474,111 @@
             {
                 "id": "Condition",
                 "args": [ "Delusion", "30" ]
+            }
+        ]
+    },
+    "Curse": {
+        "name": "Curse",
+        "targetType": 4,
+        "emote": "<:Curse:536984898980806658>",
+        "range": 3,
+        "element": 2,
+        "PPCost": 0,
+        "effectImages": [
+            {
+                "id": "Condition",
+                "args": [ "DeathCurse", "50" ]
+            }
+        ]
+    },
+    "Haunt": {
+        "name": "Haunt",
+        "targetType": 4,
+        "emote": "<:Haunt:536984955322892310>",
+        "range": 3,
+        "element": 0,
+        "PPCost": 5,
+        "effectImages": [
+            {
+                "id": "Condition",
+                "args": [ "Haunt", "25" ]
+            }
+        ]
+    },
+    "Haunting": {
+        "name": "Haunting",
+        "targetType": 4,
+        "emote": "<:Haunt:536984955322892310>",
+        "range": 3,
+        "element": 0,
+        "PPCost": 0,
+        "effectImages": [
+            {
+                "id": "Condition",
+                "args": [ "Haunt", "25" ]
+            }
+        ]
+    },
+    "Condemn": {
+        "name": "Condemn",
+        "targetType": 4,
+        "emote": "<:Condemn:536986417130373130>",
+        "range": 3,
+        "element": 0,
+        "PPCost": 4,
+        "effectImages": [
+            {
+                "id": "ChanceToOHKO",
+                "args": [ " 30" ]
+            }
+        ]
+    },
+    "Sleep": {
+        "name": "Sleep",
+        "targetType": 4,
+        "emote": "<:Sleep:555427023519088671>",
+        "range": 3,
+        "element": 2,
+        "PPCost": 4,
+        "effectImages": [
+            {
+                "id": "Condition",
+                "args": [ "Sleep", "50" ]
+            }
+        ]
+    },
+    "Mystic Call": {
+        "name": "Mystic Call",
+        "targetType": 1,
+        "emote": "<a:Mystic_Call:600650247366115339>",
+        "range": 1,
+        "element": 3,
+        "PPCost": 0,
+        "effectImages": [
+            {
+                "id": "MysticCall",
+                "args": [ "Anger Ball 1", "Anger Ball 2", "Guardian Ball 1", "Guardian Ball 2", "Refresh Ball 1", "Refresh Ball 2", "Thunder Ball 1", "Thunder Ball 2", "Death Ball" ]
+            }
+        ]
+    },
+    "Flee": {
+        "name": "Flee",
+        "targetType": 0,
+        "emote": "<:Flee:597006812247490571>",
+        "EffectImages": [
+            {
+                "id": "NoEffect"
+            }
+        ]
+    },
+    "Guard Aura": {
+        "name": "Guard Aura",
+        "targetType": 1,
+        "emote": "<:Guardian_Ball:600641727421743104>",
+        "EffectImages": [
+            {
+                "id": "ReduceDamage",
+                "args": [ "90" ]
             }
         ]
     }

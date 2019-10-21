@@ -36,7 +36,7 @@ namespace IodemBot
 
             int argPos = 0;
 
-            if (msg.HasStringPrefix(Config.bot.cmdPrefix, ref argPos) || msg.HasMentionPrefix(client.CurrentUser, ref argPos))
+            if (msg.HasStringPrefix(Config.bot.cmdPrefix, ref argPos, StringComparison.InvariantCultureIgnoreCase) || msg.HasMentionPrefix(client.CurrentUser, ref argPos))
             {
                 var result = await service.ExecuteAsync(context, argPos, null);
                 if (!result.IsSuccess && result.Error != CommandError.UnknownCommand)

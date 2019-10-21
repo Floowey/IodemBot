@@ -1,4 +1,5 @@
-﻿using IodemBot.Modules.ColossoBattles;
+﻿using IodemBot.Extensions;
+using IodemBot.Modules.ColossoBattles;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,9 +40,14 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         protected override int InternalChooseBestTarget(List<ColossoFighter> targets)
         {
+            if (targets.All(s => s.IsAlive))
+            {
+                return 0;
+            }
+
             var deadFriends = targets.Where(s => !s.IsAlive).ToList();
             Console.WriteLine($"{deadFriends.Count} dead targets.");
-            return targets.IndexOf(deadFriends[Global.Random.Next(0, deadFriends.Count)]);
+            return targets.IndexOf(deadFriends.Random());
         }
 
         protected override bool InternalValidSelection(ColossoFighter user)

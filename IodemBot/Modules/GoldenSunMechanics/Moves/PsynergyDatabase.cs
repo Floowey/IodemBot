@@ -49,12 +49,17 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 return (HealPsynergy)hp.Clone();
             }
 
+            if (psynergy == "Mystic Call")
+            {
+                Console.Write("Hi");
+            }
             if (statpsy.TryGetValue(psynergy, out StatusPsynergy sp))
             {
                 return (StatusPsynergy)sp.Clone();
             }
 
-            return new OffensivePsynergy($"{psynergy} (Not Implemented!)", "⛔", Target.otherSingle, 1, new List<EffectImage>(), Psynergy.Element.none, 0, 1, 0, 1);
+            Console.WriteLine($"{psynergy} is not implemented.");
+            return new OffensivePsynergy($"{psynergy} (Not Implemented!)", "⛔", Target.otherSingle, 1, new List<EffectImage>() { new EffectImage() { Id = "NoEffect" } }, Psynergy.Element.none, 0, 1, 0, 1);
         }
 
         public static Psynergy[] GetPsynergy(string[] psynergiesString)

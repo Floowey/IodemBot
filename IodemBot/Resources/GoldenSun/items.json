@@ -54,7 +54,7 @@
     "Battle Mace": {
         "Name": "Battle Mace",
         "Price": 2600,
-        "Icon": "<:Heavy_Mace:569901405025075212>",
+        "Icon": "<:Battle_Mace:569901405025075231>",
         "ItemType": "Mace",
         "IsEquippable": true,
         "AddStatsOnEquip": {
@@ -349,7 +349,7 @@
                 },
                 {
                     "id": "MultiplyDamage",
-                    "args": [ "1.4, 2.0, 2.8", "60, 60, 60" ]
+                    "args": [ "2.8, 2.0, 1.4", "50, 50, 50" ]
                 },
                 {
                     "id": "Condition",
@@ -1048,7 +1048,9 @@
         "IsArtifact": true,
         "DamageAlignment": 0,
         "AddStatsOnEquip": {
-            "Atk": 135,
+            "Atk": 135
+        },
+        "AddElStatsOnEquip": {
             "VenusAtk": 20,
             "VenusRes": 20
         },
@@ -2331,7 +2333,7 @@
                 },
                 {
                     "id": "MultiplyDamage",
-                    "args": [ "3.0, 2.0", "50, 60" ]
+                    "args": [ "3.0, 2.0", "50, 40" ]
                 }
             ]
         }
@@ -2512,6 +2514,10 @@
                 {
                     "id": "MultiplyDamage",
                     "args": [ "2.2" ]
+                },
+                {
+                    "id": "Stat",
+                    "args": [ "Resistance", "0.6", "75" ]
                 }
             ]
         }
@@ -4388,7 +4394,7 @@
         "IsEquippable": true,
         "AddStatsOnEquip": {
             "Def": 37,
-            "Agi": 30
+            "Spd": 30
         },
         "AddElStatsOnEquip": {
             "JupiterAtk": 20
@@ -4718,8 +4724,8 @@
         "ItemType": "Ring",
         "IsEquippable": true,
         "IsArtifact": true,
-        "ChanceToActivate": 30,
-        "ChanceToBreak": 20,
+        "ChanceToActivate": 25,
+        "ChanceToBreak": 10,
         "Unleash": {
             "effectImages": [
                 {
@@ -4771,7 +4777,7 @@
         "IsEquippable": true,
         "IsArtifact": true,
         "ChanceToActivate": 30,
-        "ChanceToBreak": 12,
+        "ChanceToBreak": 6,
         "Unleash": {
             "effectImages": [
                 {
@@ -4822,8 +4828,8 @@
         "Unleash": {
             "effectImages": [
                 {
-                    "id": "HPDrain",
-                    "args": [ "40", "20" ]
+                    "id": "PPDrain",
+                    "args": [ "10", "20" ]
                 }
             ]
         }
@@ -4840,7 +4846,7 @@
             "effectImages": [
                 {
                     "id": "HPDrain",
-                    "args": [ "60", "15" ]
+                    "args": [ "50", "20" ]
                 }
             ]
         }

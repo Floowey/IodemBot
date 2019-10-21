@@ -18,7 +18,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             }
 
             User.Kill();
-            return new List<string>() { $"{User.name}'s goes down from exhaustion." };
+            return new List<string>() { $"{User.Name}'s goes down from exhaustion." };
         }
 
         public override string ToString()

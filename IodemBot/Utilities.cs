@@ -40,7 +40,7 @@ namespace IodemBot
             return GetFormattedAlert(key, new object[] { parameter });
         }
 
-        public static String toCaps(string input)
+        public static String ToCaps(string input)
         {
             string[] words = input.Split(' ');
             string output = "";

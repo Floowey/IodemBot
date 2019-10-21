@@ -74,12 +74,32 @@ namespace IodemBot.Modules
         public async Task ClassToggle([Remainder] string name = "")
         {
             var account = UserAccounts.GetAccount(Context.User);
-            SetClass(account, name);
+            AdeptClassSeriesManager.TryGetClassSeries(account.GsClass, out AdeptClassSeries curSeries);
+            var gotClass = AdeptClassSeriesManager.TryGetClassSeries(name, out AdeptClassSeries series);
+            var embed = new EmbedBuilder().WithColor(Colors.Get(account.Element.ToString()));
 
-            var embed = new EmbedBuilder();
-            embed.WithDescription($"You are {Article(account.GsClass)} {account.GsClass} now, {((SocketGuildUser)Context.User).DisplayName()}.");
-            embed.WithColor(Colors.Get(account.Element.ToString()));
-            await Context.Channel.SendMessageAsync("", false, embed.Build());
+            if (gotClass)
+            {
+                var success = SetClass(account, series.Name);
+                if (curSeries.Name.Equals(series.Name) || success)
+                {
+                    await Context.Channel.SendMessageAsync(embed: embed
+                    .WithDescription($"You are {Article(account.GsClass)} {account.GsClass} now, {((SocketGuildUser)Context.User).DisplayName()}.")
+                    .Build());
+                    return;
+                }
+                else
+                {
+                    await Context.Channel.SendMessageAsync(embed: embed
+                        .WithDescription($":x: A {account.Element} Adept cannot get into the {series.Name}")
+                        .Build());
+                    return;
+                }
+            }
+
+            await Context.Channel.SendMessageAsync(embed: embed
+                .WithDescription($":x: I could not find the {name} class in your available classes.")
+                .Build());
         }
 
         [Command("xp"), Alias("level")]
@@ -90,7 +110,8 @@ namespace IodemBot.Modules
             var user = (SocketGuildUser)Context.User;
             var account = UserAccounts.GetAccount(user);
             var embed = new EmbedBuilder();
-            var p = new PlayerFighter(user);
+            var factory = new PlayerFighterFactory();
+            var p = factory.CreatePlayerFighter(user);
 
             embed.WithColor(Colors.Get(account.Element.ToString()));
             var author = new EmbedAuthorBuilder();
@@ -106,56 +127,73 @@ namespace IodemBot.Modules
         [Command("status")]
         [Cooldown(5)]
         [Remarks("Get information about your level etc")]
-        public async Task Status(SocketGuildUser user = null)
+        public async Task Status([Remainder] SocketGuildUser user = null)
         {
             user = user ?? (SocketGuildUser)Context.User;
             var account = UserAccounts.GetAccount(user);
-            var embed = new EmbedBuilder();
-            var p = new PlayerFighter(user);
+            var factory = new PlayerFighterFactory();
+            var p = factory.CreatePlayerFighter(user);
 
-            embed.WithColor(Colors.Get(account.Element.ToString()));
             var author = new EmbedAuthorBuilder();
             author.WithName($"{user.DisplayName()}");
             author.WithIconUrl(user.GetAvatarUrl());
-            embed.WithAuthor(author);
             //embed.WithThumbnailUrl(user.GetAvatarUrl());
             //embed.WithDescription($"Status.");
 
             //embed.AddField("Element", account.element, true);
 
-            embed.AddField("Level", account.LevelNumber, true);
-            embed.AddField("XP", $"{account.XP} - next in {Leveling.XPforNextLevel(account.XP)}", true);
-            embed.AddField("Rank", UserAccounts.GetRank(user) + 1, true);
+            var embed = new EmbedBuilder()
+            .WithColor(Colors.Get(account.Element.ToString()))
+            .WithAuthor(author)
+            .AddField("Level", account.LevelNumber, true)
+            .AddField("XP", $"{account.XP} - next in {Leveling.XPforNextLevel(account.XP)}", true)
+            .AddField("Rank", UserAccounts.GetRank(user) + 1, true)
 
-            embed.AddField("Class", account.GsClass, true);
-            embed.AddField("Colosso wins/streak", $"{account.ServerStats.ColossoWins} | {account.ServerStats.ColossoHighestStreak} ", true);
-            embed.AddField("Colosso/Showdown Streaks", $"Solo: {account.ServerStats.ColossoHighestRoundEndlessSolo} | Duo: {account.ServerStats.ColossoHighestRoundEndlessDuo} \nTrio: {account.ServerStats.ColossoHighestRoundEndlessTrio} | Quad: {account.ServerStats.ColossoHighestRoundEndlessQuad}", true);
+            .AddField("Class", account.GsClass, true)
+            .AddField("Colosso wins | streak", $"{account.ServerStats.ColossoWins} | {account.ServerStats.ColossoHighestStreak} ", true)
+            .AddField("Colosso | Showdown Streaks", $"Solo: {account.ServerStats.ColossoHighestRoundEndlessSolo} | Duo: {account.ServerStats.ColossoHighestRoundEndlessDuo} \nTrio: {account.ServerStats.ColossoHighestRoundEndlessTrio} | Quad: {account.ServerStats.ColossoHighestRoundEndlessQuad}", true)
 
-            embed.AddField("Current Equip", account.Inv.GearToString(AdeptClassSeriesManager.GetClassSeries(account).Archtype), true);
-            embed.AddField("Psynergy", p.GetMoves(false), false);
+            .AddField("Current Equip", account.Inv.GearToString(AdeptClassSeriesManager.GetClassSeries(account).Archtype), true)
+            .AddField("Psynergy", p.GetMoves(false), false)
 
-            embed.AddField("Stats", p.stats.ToString(), true);
-            embed.AddField("Elemental Stats", p.elstats.ToString(), true);
-            embed.AddField("Unlocked Classes", account.BonusClasses.Length == 0 ? "none" : string.Join(", ", account.BonusClasses));
+            .AddField("Stats", p.Stats.ToString(), true)
+            .AddField("Elemental Stats", p.ElStats.ToString(), true)
+            .AddField("Unlocked Classes", account.BonusClasses.Length == 0 ? "none" : string.Join(", ", account.BonusClasses));
 
             var Footer = new EmbedFooterBuilder();
             Footer.WithText("Joined this Server on " + user.JoinedAt.Value.Date.ToString("dd-MM-yyyy"));
             Footer.WithIconUrl(Sprites.GetImageFromName("Iodem"));
             embed.WithFooter(Footer);
-
             await Context.Channel.SendMessageAsync("", false, embed.Build());
+        }
+
+        [Command("patdown")]
+        [RequireStaff]
+        public async Task PatDown([Remainder] SocketGuildUser user = null)
+        {
+            var account = UserAccounts.GetAccount(user);
+
+            await Context.Channel.SendMessageAsync(embed:
+                new EmbedBuilder()
+                .WithAuthor(user)
+                .AddField("Account Created", user.CreatedAt)
+                .AddField("User Joined", user.JoinedAt)
+                .AddField("Status", user.Status, true)
+                .AddField("Last Activity", account.LastXP)
+                .Build());
         }
 
         [Command("hiddenstats"), Alias("tri")]
         [Cooldown(5)]
-        [RequireUserPermission(GuildPermission.ManageGuild)]
+        [RequireStaff]
         [Remarks("Hidden Information on Tri-Elemental Classes")]
-        public async Task Tri(SocketGuildUser user = null)
+        public async Task Tri([Remainder] SocketGuildUser user = null)
         {
             user = user ?? (SocketGuildUser)Context.User;
             var account = UserAccounts.GetAccount(user);
             var embed = new EmbedBuilder();
-            var p = new PlayerFighter(user);
+            var factory = new PlayerFighterFactory();
+            var p = factory.CreatePlayerFighter(user);
 
             embed.WithColor(Colors.Get(account.Element.ToString()));
             var author = new EmbedAuthorBuilder();
@@ -163,9 +201,9 @@ namespace IodemBot.Modules
             author.WithIconUrl(user.GetAvatarUrl());
             embed.WithAuthor(author);
             embed.WithThumbnailUrl(user.GetAvatarUrl());
-            embed.AddField("Server Stats", JsonConvert.SerializeObject(account.ServerStats, Formatting.Indented));
-            embed.AddField("Battle Stats", JsonConvert.SerializeObject(account.BattleStats, Formatting.Indented));
-
+            embed.AddField("Server Stats", JsonConvert.SerializeObject(account.ServerStats, Formatting.Indented).Replace("{", "").Replace("}", "").Replace("\"", ""));
+            embed.AddField("Battle Stats", JsonConvert.SerializeObject(account.BattleStats, Formatting.Indented).Replace("{", "").Replace("}", "").Replace("\"", ""));
+            embed.AddField("Account Created:", user.CreatedAt);
             embed.AddField("Unlocked Classes", account.BonusClasses.Length == 0 ? "none" : string.Join(", ", account.BonusClasses));
 
             var Footer = new EmbedFooterBuilder();
@@ -175,12 +213,47 @@ namespace IodemBot.Modules
 
             //await Context.User.SendMessageAsync("", false, embed.Build());
             await Context.Channel.SendMessageAsync("", false, embed.Build());
+
+            Console.WriteLine(JsonConvert.SerializeObject(account, Formatting.Indented));
+        }
+
+        [Command("Dungeons")]
+        [Cooldown(5)]
+        public async Task ListDungeons()
+        {
+            var account = UserAccounts.GetAccount(Context.User);
+            var defaultDungeons = EnemiesDatabase.DefaultDungeons;
+            var availableDefaultDungeons = defaultDungeons.Where(d => d.Requirement.Applies(account)).Select(s => s.Name).ToArray();
+            var unavailableDefaultDungeons = defaultDungeons.Where(d => !d.Requirement.Applies(account)).Select(s => s.Name).ToArray();
+
+            var unlockedDungeons = account.Dungeons.Select(s => EnemiesDatabase.GetDungeon(s));
+            var availablePermUnlocks = unlockedDungeons.Where(d => !d.IsOneTimeOnly && d.Requirement.Applies(account)).Select(s => s.Name).ToArray();
+            var unavailablePermUnlocks = unlockedDungeons.Where(d => !d.IsOneTimeOnly && !d.Requirement.Applies(account)).Select(s => s.Name).ToArray();
+
+            var availableOneTimeUnlocks = unlockedDungeons.Where(d => d.IsOneTimeOnly && d.Requirement.Applies(account)).Select(s => s.Name).ToArray();
+            var unavailableOneTimeUnlocks = unlockedDungeons.Where(d => d.IsOneTimeOnly && !d.Requirement.Applies(account)).Select(s => s.Name).ToArray();
+
+            var embed = new EmbedBuilder();
+            embed.WithTitle("Dungeons");
+            if (defaultDungeons.Count() > 0)
+            {
+                embed.AddField("<:town:606236181243625493> Default Unlocks", $"Available: {string.Join(", ", availableDefaultDungeons)} \n Unavailable: {string.Join(", ", unavailableDefaultDungeons)}");
+            }
+            if (availablePermUnlocks.Count() > 0)
+            {
+                embed.AddField("<:mapopen:606236181503410176> Places Discovered", $"Available: {string.Join(", ", availablePermUnlocks)} \n Unavailable: {string.Join(", ", unavailablePermUnlocks)}");
+            }
+            if (availableOneTimeUnlocks.Count() > 0)
+            {
+                embed.AddField("<:dungeonkey:606237382047694919> Dungeon Keys", $"Available: {string.Join(", ", availableOneTimeUnlocks)} \n Unavailable: {string.Join(", ", unavailableOneTimeUnlocks)}");
+            }
+            await Context.Channel.SendMessageAsync("", false, embed.Build());
         }
 
         [Command("element"), Alias("el")]
         [Remarks("Get your current Element or set it to one of the four with e.g. `i!element Venus`")]
         [Cooldown(5)]
-        public async Task Element(Element chosenElement)
+        public async Task Element(Element chosenElement, [Remainder] string classSeriesName = null)
         {
             var embed = new EmbedBuilder();
             var account = UserAccounts.GetAccount(Context.User);
@@ -213,6 +286,11 @@ namespace IodemBot.Modules
 
             account.Element = chosenElement;
             account.ClassToggle = 0;
+            if (classSeriesName != null && classSeriesName != "")
+            {
+                SetClass(account, classSeriesName);
+            }
+
             UserAccounts.SaveAccounts();
             embed.WithColor(Colors.Get(chosenElement.ToString()));
             embed.WithDescription($"Welcome to the {chosenElement.ToString()} Clan, {account.GsClass} {((SocketGuildUser)Context.User).DisplayName()}!");
@@ -340,7 +418,7 @@ namespace IodemBot.Modules
             await AwardClassSeries(series, avatar, channel);
         }
 
-        internal static async Task AwardClassSeries(string series, UserAccount avatar, SocketTextChannel channel)
+        internal static async Task AwardClassSeries(string series, UserAccount avatar, ITextChannel channel)
         {
             if (avatar.BonusClasses.Contains(series))
             {
@@ -355,7 +433,11 @@ namespace IodemBot.Modules
             UserAccounts.SaveAccounts();
             var embed = new EmbedBuilder();
             embed.WithColor(Colors.Get("Iodem"));
-            embed.WithDescription($"Congratulations, {channel.Users.Where(u => u.Id == avatar.ID).FirstOrDefault().Mention}! You have unlocked the {series}!");
+            embed.WithDescription($"Congratulations, <@{avatar.ID}>! You have unlocked the {series}!");
+            if (channel == null)
+            {
+                return;
+            }
             await channel.SendMessageAsync("", false, embed.Build());
         }
 
@@ -377,15 +459,15 @@ namespace IodemBot.Modules
             await channel.SendMessageAsync("", false, embed.Build());
         }
 
-        private static void SetClass(UserAccount account, string name = "")
+        private static bool SetClass(UserAccount account, string name = "")
         {
+            string curClass = AdeptClassSeriesManager.GetClassSeries(account).Name;
             if (name == "")
             {
                 account.ClassToggle++;
             }
             else
             {
-                string curClass = AdeptClassSeriesManager.GetClassSeries(account).Name;
                 account.ClassToggle++;
                 while (AdeptClassSeriesManager.GetClassSeries(account).Name != curClass)
                 {
@@ -398,6 +480,7 @@ namespace IodemBot.Modules
                 }
             }
             UserAccounts.SaveAccounts();
+            return !curClass.Equals(AdeptClassSeriesManager.GetClassSeries(account).Name);
         }
 
         private string Article(string s)

@@ -3,7 +3,6 @@ using Discord.WebSocket;
 using IodemBot.Extensions;
 using System;
 using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace IodemBot
@@ -18,6 +17,7 @@ namespace IodemBot
         {
             try
             {
+                Global.RunningSince = DateTime.Now;
                 new Program().StartAsync().GetAwaiter().GetResult();
             }
             catch (Exception e)
@@ -76,12 +76,24 @@ namespace IodemBot
 
         private async Task Client_UserJoined(SocketGuildUser user)
         {
-            var embed = new EmbedBuilder();
-            embed.WithColor(Colors.Get("Iodem"));
-            embed.WithDescription(String.Format(welcomeMsg[Global.Random.Next(0, welcomeMsg.Length)], user.DisplayName()));
+            if (user.Guild.Id != Global.MainChannel)
+            {
+                return;
+            }
 
-            await user.AddRoleAsync(user.Guild.Roles.Where(r => r.Id == 355560889942016000).First());
-            await ((SocketTextChannel)client.GetChannel(355558866282348575)).SendMessageAsync(embed: embed.Build());
+            await ((SocketTextChannel)client.GetChannel(355558866282348575)).SendMessageAsync(embed:
+                new EmbedBuilder()
+                .WithColor(Colors.Get("Iodem"))
+                .WithDescription(String.Format(welcomeMsg[Global.Random.Next(0, welcomeMsg.Length)], user.DisplayName()))
+                .Build());
+
+            await ((SocketTextChannel)client.GetChannel(506961678928314368)).SendMessageAsync(embed:
+                new EmbedBuilder()
+                .WithAuthor(user)
+                .AddField("Account Created", user.CreatedAt)
+                .AddField("User Joined", user.JoinedAt)
+                .AddField("Status", user.Status, true)
+                .Build());
         }
 
         private async Task Client_UserLeft(SocketGuildUser user)
@@ -91,8 +103,13 @@ namespace IodemBot
 
         private async Task Client_Ready()
         {
+            var channel = (SocketTextChannel)client.GetChannel(535209634408169492);
+            if (channel != null)
+            {
+                await channel.SendMessageAsync($"Hello, I am back up.");
+            }
             //setup colosso
-            await client.SetGameAsync("in Babi's Palace.", "https://www.twitch.tv/directory/game/Golden%20Sun", ActivityType.Streaming);
+            await client.SetStatusAsync(UserStatus.Idle);
             Global.UpSince = DateTime.UtcNow;
         }
 
@@ -105,7 +122,7 @@ namespace IodemBot
             {
                 if (msg.Exception != null)
                 {
-                    File.AppendAllText($"Logs/{date}_log.log", msg.Exception.InnerException.ToString() + "\n");
+                    Console.WriteLine(msg.Exception.ToString());
                 }
             }
             catch

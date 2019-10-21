@@ -18,7 +18,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             {
                 ((PlayerFighter)User).battleStats.Supported++;
             }
-            return new List<string>() { $"{Target.name}'s Conditions were cured." };
+            return new List<string>() { $"{Target.Name}'s Conditions were cured." };
         }
 
         public override string ToString()

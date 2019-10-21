@@ -65,6 +65,10 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 case "AddDamage":
                     return new AddDamageEffect(args);
 
+                case "MysticCall":
+                    return new MysticCallEffect(args);
+
+                case "NoEffect":
                 default: return new NoEffect();
             }
         }
@@ -76,6 +80,11 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         protected virtual int InternalChooseBestTarget(List<ColossoFighter> targets)
         {
+            if (targets.Where(d => d.IsAlive).Count() == 0)
+            {
+                return 0;
+            }
+
             return targets.IndexOf(targets.Where(t => t.IsAlive).Random());
         }
 

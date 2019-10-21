@@ -54,6 +54,12 @@ namespace IodemBot.Modules.GoldenSunMechanics
             };
         }
 
+        internal AdeptClassSeries Clone()
+        {
+            var serialized = JsonConvert.SerializeObject(this);
+            return JsonConvert.DeserializeObject<AdeptClassSeries>(serialized);
+        }
+
         // Apprentice:       21 i!psy lookups | Level
         // Brute:            15 Colosso Wins | (0, 50, 150, 300, 500+10, 800+25 Wins + Streak)
         // Crusader:         - | same as Brute
