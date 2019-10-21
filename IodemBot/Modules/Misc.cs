@@ -14,8 +14,7 @@ namespace IodemBot.Modules
     public class Misc : ModuleBase<SocketCommandContext>
     {
         [Command("say")]
-        [RequireRole("Moderator")]
-        [RequireUserPermission(GuildPermission.ManageGuild)]
+        [RequireModerator]
         [Remarks("Are you me?")]
         public async Task Echo([Remainder] string message)
         {
@@ -27,7 +26,7 @@ namespace IodemBot.Modules
         }
 
         [Command("mock")]
-        [RequireRole("Moderator")]
+        [RequireModerator]
         [Remarks("Are you me?")]
         public async Task Mock([Remainder] string message)
         {
