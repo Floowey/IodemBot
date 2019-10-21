@@ -27,9 +27,9 @@ namespace IodemBot.Modules
         [Remarks("Roll a n-sided dice!")]
         public async Task Dice([Remainder] uint sides = 6)
         {
-            var embed = new EmbedBuilder();
-            embed.WithColor(Colors.Get("Iodem"));
-            embed.WithDescription($"🎲 {(new Random()).Next(0, (int)sides) + 1}");
+            var embed = new EmbedBuilder()
+            .WithColor(Colors.Get("Iodem"))
+            .WithDescription($"🎲 {(new Random()).Next(0, (int)sides) + 1}");
             await Context.Channel.SendMessageAsync("", false, embed.Build());
         }
 
@@ -40,8 +40,8 @@ namespace IodemBot.Modules
         [Remarks("Rock, Paper, Scissors")]
         public async Task RockPaperScissorsAsync([Remainder] RpsEnum choice)
         {
-            string[] emotesPlayer = { "🤜", "🖐️", "✌️" };
-            string[] emotesCPU = { "🤛", "🖐️", "✌️" };
+            string[] emotesPlayer = { "🤜", ":hand_splayed:", ":v:" };
+            string[] emotesCPU = { "🤛", ":hand_splayed:", ":v:" };
 
             var avatar = UserAccounts.GetAccount(Context.User);
             RpsEnum cpuChoice = (RpsEnum)((new Random()).Next(0, 1000) % 3);
