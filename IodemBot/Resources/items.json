@@ -2152,7 +2152,7 @@
                 },
                 {
                     "id": "Stat",
-                    "args": [ "Resistance", "0.6", "75" ]
+                    "args": [ "Resistance", "0.4", "75" ]
                 }
             ]
         }
