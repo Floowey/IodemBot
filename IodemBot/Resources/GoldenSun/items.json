@@ -1048,7 +1048,9 @@
         "IsArtifact": true,
         "DamageAlignment": 0,
         "AddStatsOnEquip": {
-            "Atk": 135,
+            "Atk": 135
+        },
+        "AddElStatsOnEquip": {
             "VenusAtk": 20,
             "VenusRes": 20
         },
@@ -4392,7 +4394,7 @@
         "IsEquippable": true,
         "AddStatsOnEquip": {
             "Def": 37,
-            "Agi": 30
+            "Spd": 30
         },
         "AddElStatsOnEquip": {
             "JupiterAtk": 20

@@ -325,61 +325,185 @@
             "MinLevel": 30
         }
     },
-    "Warrior Training Grounds": {
-        "Name": "Warrior Training Grounds",
-        "Image": "https://images-eu.ssl-images-amazon.com/images/I/81MYd8u7plL.png",
-        "FlavourText": "W.A.R.R.I.O.R. We Are Rough Ruffians In Ongoing Rough Scuffles.",
-        "Requirement": {
-            "Archtypes": [ 0 ]
-        },
+    "Vault": {
+        "Name": "Vault",
+        "Image": "https://cdn.discordapp.com/attachments/497696510688100352/595583507393150997/unknown.png",
+        "FlavourText": "A theft has been committed in Vault, who's the culprit?",
+        "IsDefault": true,
         "Matchups": [
             {
-                "EnemyNames": [ "Navampa 1" ],
-                "Reward": {
-                    "ItemProbability": 50,
-                    "Item": "Claymore"
-                }
+                "FlavourText": "It looks like that Slime gulped something! A stolen item perhaps?",
+                "EnemyNames": [ "Slime 2" ],
+                "RewardTables": [
+                    [
+                        {
+                            "xp": 25,
+                            "coins": 9,
+                            "Weight": 6
+                        }
+                    ],
+                    [
+                        {
+                            "Item": "Travel Vest",
+                            "Weight": 3
+                        },
+                        {
+                            "Weight": 1
+                        }
+                    ]
+                ]
+            },
+            {
+                "FlavourText": "Your investigations lead you to the cemetary. Wait, is that grave moving? Oh no...",
+                "EnemyNames": [ "Skeleton 1", "Zombie 1" ],
+                "RewardTables": [
+                    [
+                        {
+                            "xp": 40,
+                            "coins": 20,
+                            "Weight": 1
+                        }
+                    ],
+                    [
+                        {
+                            "Chest": "Wooden",
+                            "Weight": 3
+                        },
+                        {
+                            "Weight": 6
+                        }
+                    ]
+                ]
+            },
+            {
+                "FlavourText": "The Skeleton's bones have attracted a dog... and wolves! Protect the pup!",
+                "EnemyNames": [ "Wild Wolf 1", "Wild Wolf 1" ],
+                "RewardTables": [
+                    [
+                        {
+                            "xp": 45,
+                            "gold": 15,
+                            "Weight": 4
+                        }
+                    ],
+                    [
+                        {
+                            "Dungeon": "Vault Cave",
+                            "Weight": 1
+                        }
+                    ]
+                ]
+            },
+            {
+                "FlavourText": "Thankful for saving him, the dog leads you to the inn's attic where you find the stolen goods! You hear the thieves coming, it's time to face them!",
+                "EnemyNames": [ "Thief 1", "Bandit 1", "Thief 1" ],
+                "RewardTables": [
+                    [
+                        {
+                            "xp": 90,
+                            "gold": 75,
+                            "Weight": 5
+                        },
+                        {
+                            "Item": "Shamans Rod",
+                            "Weight": 4
+                        },
+                        {
+                            "Item": "Bandits Sword",
+                            "Weight": 1
+                        }
+                    ],
+                    [
+                        {
+                            "Dungeon": "Goma Cave"
+                        }
+                    ]
+                ]
             }
         ]
     },
-    "Miko Training Grounds": {
-        "Name": "Miko Training Grounds",
-        "Image": "https://cdn.discordapp.com/attachments/497696510688100352/595581189901910029/unknown.png",
-        "FlavourText": "Mikos train their spiritual powers in the holy ruins beneath Izumo.",
-        "Requirement": {
-            "ClassSeries": [ "Miko Series" ]
-        },
+    "Goma Cave": {
+        "Name": "Goma Cave",
+        "Image": "",
+        "IsOneTimeOnly": true,
+        "FlavourText": "A cave allowing you to pass through the Goma Range",
         "Matchups": [
             {
-                "EnemyNames": [ "Little Death" ],
-                "Reward": {
-                    "xp": 30,
-                    "gold": 7,
-                    "ItemProbability": 80,
-                    "Item": "Silver Armlet"
-                },
-
-                "FlavourText": "MIKO 1"
+                "FlavourText": "Is this the lost head of Dullahan?",
+                "EnemyNames": [ "Will Head" ],
+                "RewardTables": [
+                    [
+                        {
+                            "xp": 15,
+                            "coins": 10,
+                            "Weight": 9
+                        },
+                        {
+                            "Chest": "Wooden",
+                            "Weight": 1
+                        }
+                    ]
+                ]
             },
             {
-                "EnemyNames": [ "Death Cap" ],
-                "FlavourText": "MIKO 2",
-                "Reward": {
-                    "xp": 50,
-                    "gold": 7,
-                    "DungeonProbability": 80,
-                    "DungeonUnlock": "Gaia Rock"
-                }
+                "FlavourText": "Bats?! In a cave?! No way! And you don't have Repels...",
+                "EnemyNames": [ "Bat 2", "Bat 2", "Bat 2", "Bat 2" ],
+                "RewardTables": [
+                    [
+                        {
+                            "xp": 30,
+                            "coins": 15,
+                            "Weight": 1
+                        }
+                    ],
+                    [
+                        {
+                            "Weight": 1
+                        }
+                    ]
+                ]
             },
             {
-                "EnemyNames": [ "Death Cap", "Death Scuttler", "Little Death" ],
-                "FlavourText": "MIKO 3",
-                "Reward": {
-                    "ChestProbability": 50,
-                    "Chest": "Gold",
-                    "ItemProbability": 50,
-                    "Item": "Psynergy Rod"
-                }
+                "FlavourText": "As you advance further in the obscurity, you hear sinister laments.",
+                "EnemyNames": [ "Ghost 1", "Ghost 1" ],
+                "RewardTables": [
+                    [
+                        {
+                            "xp": 45,
+                            "gold": 20,
+                            "Weight": 4
+                        }
+                    ]
+                ]
+            },
+            {
+                "FlavourText": "The way out is near. But before enjoying the sun again you encounter a Djinni, catch it!",
+                "EnemyNames": [ "Mars Djinni 1" ],
+                "RewardTables": [
+                    [
+                        {
+                            "xp": 110,
+                            "gold": 50
+                        }
+                    ],
+                    [
+                        {
+                            "Dungeon": "Bilibin Cave",
+                            "Weight": 3
+                        },
+                        {
+                            "Dungeon": "Kolima",
+                            "Weight": 6
+                        },
+                        {
+                            "Dungeon": "Lunpa",
+                            "Weight": 1
+                        },
+                        {
+                            "Weight": 10
+                        }
+                    ]
+                ]
             }
         ]
     },
@@ -475,7 +599,7 @@
                     "xp": 2500,
                     "coins": 1200,
                     "ChestProbability": 100,
-                    "Chest": "silver"
+                    "Chest": "Silver"
                 }
             }
         ]
