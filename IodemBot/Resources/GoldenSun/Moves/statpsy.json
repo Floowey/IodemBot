@@ -581,5 +581,20 @@
                 "args": [ "90" ]
             }
         ]
-    }
+    },
+    "Sandstorm": {
+        "name": "Sandstorm",
+        "targetType": 3,
+        "emote": ":cloud_tornado:",
+        "range": 5,
+        "element": 2,
+        "PPCost": 0,
+        "percentageDamage": 20,
+        "effectImages": [
+            {
+                "id": "Condition",
+                "args": [ "Delusion", "100" ]
+            }
+        ]
+    },
 }
