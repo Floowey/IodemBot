@@ -10,13 +10,13 @@ namespace IodemBot.Extensions
             IEmote e;
             try
             {
-                if (m.emote.StartsWith("<"))
+                if (m.Emote.StartsWith("<"))
                 {
-                    e = Emote.Parse(m.emote);
+                    e = Emote.Parse(m.Emote);
                 }
                 else
                 {
-                    e = new Emoji(m.emote);
+                    e = new Emoji(m.Emote);
                 }
             }
             catch

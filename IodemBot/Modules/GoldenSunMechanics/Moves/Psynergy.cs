@@ -4,18 +4,12 @@ using System.Linq;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
+    public enum Element { Venus, Mars, Jupiter, Mercury, none };
+
     public abstract class Psynergy : Move
     {
-        public uint PPCost;
-        public Element element;
-
-        public enum Element { Venus, Mars, Jupiter, Mercury, none };
-
-        protected Psynergy(string name, string emote, Target targetType, uint range, List<EffectImage> effectImages, Element element, uint PPCost) : base(name, emote, targetType, range, effectImages)
-        {
-            this.element = element;
-            this.PPCost = PPCost;
-        }
+        public uint PPCost { get; set; }
+        public Element Element { get; set; }
 
         public override bool InternalValidSelection(ColossoFighter User)
         {
@@ -43,19 +37,19 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
             if (User.Stats.PP < PPCost)
             {
-                log.Add($"{User.Name} has not enough PP to cast {this.name}.");
+                log.Add($"{User.Name} has not enough PP to cast {this.Name}.");
                 return new Validation(false, log);
             }
             List<ColossoFighter> targets = GetTarget(User);
-            if (!effects.Any(i => i is ReviveEffect || i is MysticCallEffect) && targets.TrueForAll(i => !i.IsAlive))
+            if (!Effects.Any(i => i is ReviveEffect || i is MysticCallEffect) && targets.TrueForAll(i => !i.IsAlive))
             {
-                log.Add($"{User.Name} wants to {(PPCost == 1 ? "use" : "cast")} {name}, but {(targets.Count == 1 ? "the target is" : "all the targets are")} down.");
+                log.Add($"{User.Name} wants to {(PPCost == 1 ? "use" : "cast")} {Name}, but {(targets.Count == 1 ? "the target is" : "all the targets are")} down.");
                 return new Validation(false, log);
             }
 
             User.Stats.PP -= (int)PPCost;
 
-            log.Add($"{emote} {User.Name} {(PPCost == 1 ? "uses" : "casts")} {this.name}!");
+            log.Add($"{Emote} {User.Name} {(PPCost == 1 ? "uses" : "casts")} {this.Name}!");
             return new Validation(true, log);
         }
     }

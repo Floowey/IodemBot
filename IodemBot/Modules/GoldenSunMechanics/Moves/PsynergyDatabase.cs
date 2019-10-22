@@ -59,7 +59,10 @@ namespace IodemBot.Modules.GoldenSunMechanics
             }
 
             Console.WriteLine($"{psynergy} is not implemented.");
-            return new OffensivePsynergy($"{psynergy} (Not Implemented!)", "⛔", Target.otherSingle, 1, new List<EffectImage>() { new EffectImage() { Id = "NoEffect" } }, Psynergy.Element.none, 0, 1, 0, 1);
+            return new StatusPsynergy()
+            {
+                Name = $"{psynergy} (NOT IMPLEMENTED)"
+            };
         }
 
         public static Psynergy[] GetPsynergy(string[] psynergiesString)

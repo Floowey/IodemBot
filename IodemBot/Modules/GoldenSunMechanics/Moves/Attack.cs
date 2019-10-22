@@ -3,14 +3,17 @@ using IodemBot.Modules.ColossoBattles;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using static IodemBot.Modules.GoldenSunMechanics.Psynergy;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
     public class Attack : Move
     {
-        public Attack() : base("Attack", "<:Attack:536919809393295381>", Target.otherSingle, 1, new List<EffectImage>())
+        public Attack(string Emote = "<:Attack:536919809393295381>")
         {
+            Name = "Attack";
+            this.Emote = Emote;
+            TargetType = Target.otherSingle;
+            Range = 1;
         }
 
         public override object Clone()
@@ -23,10 +26,10 @@ namespace IodemBot.Modules.GoldenSunMechanics
             var aliveEnemies = User.GetEnemies().Where(f => f.IsAlive).ToList();
             if (aliveEnemies.Count == 0)
             {
-                targetNr = 0;
+                TargetNr = 0;
                 return;
             }
-            targetNr = User.GetEnemies().IndexOf(aliveEnemies.Random());
+            TargetNr = User.GetEnemies().IndexOf(aliveEnemies.Random());
         }
 
         public override bool InternalValidSelection(ColossoFighter User)
@@ -38,14 +41,14 @@ namespace IodemBot.Modules.GoldenSunMechanics
         {
             if (User.Weapon != null)
             {
-                emote = User.Weapon.Icon;
+                Emote = User.Weapon.Icon;
             }
 
             var enemy = GetTarget(User).First();
 
             var log = new List<string>
             {
-                $"{emote} {User.Name} attacks!"
+                $"{Emote} {User.Name} attacks!"
             };
 
             if (!enemy.IsAlive)
@@ -70,8 +73,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
             if (weaponUnleashed)
             {
                 log.Add($"{User.Weapon.IconDisplay} {User.Name}'s {User.Weapon.Name} lets out a howl! {User.Weapon.Unleash.UnleashName}!");
-                User.Weapon.Unleash.Effects
-                    .Where(e => e.timeToActivate == IEffect.TimeToActivate.beforeDamge)
+                User.Weapon.Unleash.AllEffects
+                    .Where(e => e.ActivationTime == Effect.TimeToActivate.beforeDamge)
                     .ToList()
                     .ForEach(e => log.AddRange(e.Apply(User, enemy)));
             }
@@ -122,7 +125,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                     p.battleStats.AttackedWeakness++;
                 }
             }
-            if (element == Psynergy.Element.none)
+            if (element == Element.none)
             {
                 punctuation = "!";
             }
@@ -139,8 +142,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
             User.damageDoneThisTurn += damage;
             if (weaponUnleashed)
             {
-                User.Weapon.Unleash.Effects
-                    .Where(e => e.timeToActivate == IEffect.TimeToActivate.afterDamage)
+                User.Weapon.Unleash.AllEffects
+                    .Where(e => e.ActivationTime == Effect.TimeToActivate.afterDamage)
                     .ToList()
                     .ForEach(e => log.AddRange(e.Apply(User, enemy)));
             }

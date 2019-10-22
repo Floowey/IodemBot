@@ -10,14 +10,13 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
     public abstract class Move : ICloneable
     {
-        public string name;
-        public string emote;
-        public Target targetType;
-        [JsonIgnore] public List<IEffect> effects;
-        public List<EffectImage> effectImages;
-        public int targetNr;
-        public uint range;
-        public bool hasPriority = false;
+        public string Name { get; set; } = "No Name";
+        public string Emote { get; set; } = "😶";
+        public Target TargetType { get; set; } = Target.self;
+        public List<Effect> Effects { get; set; } = new List<Effect>();
+        public int TargetNr { get; set; } = 0;
+        public uint Range { get; set; } = 0;
+        public bool HasPriority { get; set; } = false;
 
         public List<string> Use(ColossoFighter User)
         {
@@ -44,7 +43,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         {
             get
             {
-                return new Target[] { Target.otherSingle, Target.otherAll, Target.otherRange }.Contains(targetType);
+                return new Target[] { Target.otherSingle, Target.otherAll, Target.otherRange }.Contains(TargetType);
             }
         }
 
@@ -98,40 +97,26 @@ namespace IodemBot.Modules.GoldenSunMechanics
             }
         }
 
-        public Move(string name, string emote, Target targetType, uint range, List<EffectImage> effectImages)
-        {
-            this.name = name;
-            this.emote = emote;
-            this.targetType = targetType;
-            this.range = range;
-            this.effects = new List<IEffect>();
-            this.effectImages = effectImages;
-            if (effectImages != null)
-            {
-                effectImages.ForEach(e => effects.Add(IEffect.EffectFactory(e.Id, e.Args)));
-            }
-        }
-
         public List<ColossoFighter> GetTarget(ColossoFighter user)
         {
             List<ColossoFighter> targets = new List<ColossoFighter>();
             var playerCount = user.battle.GetTeam(user.party).Count - 1;
             var enemyCount = user.battle.GetTeam(user.enemies).Count - 1;
 
-            switch (targetType)
+            switch (TargetType)
             {
                 case Target.self:
                     targets.Add(user);
                     break;
 
                 case Target.ownAll:
-                    targetNr = Math.Min(targetNr, playerCount);
+                    TargetNr = Math.Min(TargetNr, playerCount);
                     targets.AddRange(user.battle.GetTeam(user.party));
                     break;
 
                 case Target.ownSingle:
-                    targetNr = Math.Min(targetNr, playerCount);
-                    targets.Add(user.battle.GetTeam(user.party)[targetNr]);
+                    TargetNr = Math.Min(TargetNr, playerCount);
+                    targets.Add(user.battle.GetTeam(user.party)[TargetNr]);
                     break;
 
                 case Target.otherAll:
@@ -139,18 +124,18 @@ namespace IodemBot.Modules.GoldenSunMechanics
                     break;
 
                 case Target.otherSingle:
-                    targetNr = Math.Min(targetNr, enemyCount);
-                    targets.Add(user.battle.GetTeam(user.enemies)[targetNr]);
+                    TargetNr = Math.Min(TargetNr, enemyCount);
+                    targets.Add(user.battle.GetTeam(user.enemies)[TargetNr]);
                     break;
 
                 case Target.otherRange:
-                    targetNr = Math.Min(targetNr, enemyCount);
+                    TargetNr = Math.Min(TargetNr, enemyCount);
                     var targetTeam = user.battle.GetTeam(user.enemies);
-                    for (int i = -(int)range + 1; i <= range - 1; i++)
+                    for (int i = -(int)Range + 1; i <= Range - 1; i++)
                     {
-                        if (targetNr + i >= 0 && targetNr + i < targetTeam.Count())
+                        if (TargetNr + i >= 0 && TargetNr + i < targetTeam.Count())
                         {
-                            targets.Add(targetTeam[targetNr + i]);
+                            targets.Add(targetTeam[TargetNr + i]);
                         }
                     }
                     break;
@@ -160,7 +145,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public override string ToString()
         {
-            return name;
+            return Name;
         }
 
         public abstract object Clone();
