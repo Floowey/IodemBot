@@ -119,7 +119,7 @@ namespace IodemBot.Modules.ColossoBattles
             {
                 s.Add(p.Name);
                 s.Add($"{p.Stats.HP} / {p.Stats.MaxHP}HP");
-                s.Add($"{(p.hasSelected ? $"Selected {p.selected.name} at {p.selected.targetNr}" : "Not Selected")}");
+                s.Add($"{(p.hasSelected ? $"Selected {p.selected.Name} at {p.selected.TargetNr}" : "Not Selected")}");
                 s.Add("");
             });
             s.Add($"\nTeam B:");
@@ -127,7 +127,7 @@ namespace IodemBot.Modules.ColossoBattles
             {
                 s.Add(p.Name);
                 s.Add($"{p.Stats.HP} / {p.Stats.MaxHP}HP");
-                s.Add($"{(p.hasSelected ? $"Selected {p.selected.name} at {p.selected.targetNr}" : "Not Selected")}");
+                s.Add($"{(p.hasSelected ? $"Selected {p.selected.Name} at {p.selected.TargetNr}" : "Not Selected")}");
                 s.Add("");
             });
             var BattleReport = JsonConvert.SerializeObject(Battle, Formatting.Indented).Replace("{", "").Replace("}", "").Replace("\"", "");

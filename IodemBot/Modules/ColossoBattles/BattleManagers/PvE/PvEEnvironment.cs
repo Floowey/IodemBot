@@ -505,7 +505,7 @@ namespace IodemBot.Modules.ColossoBattles
                     reactions.Remove(r);
                 }
                 embed.WithThumbnailUrl(fighter.ImgUrl);
-                embed.WithColor(Colors.Get(fighter.Moves.Where(m => m is Psynergy).Select(m => (Psynergy)m).Select(p => p.element.ToString()).ToArray()));
+                embed.WithColor(Colors.Get(fighter.Moves.Where(m => m is Psynergy).Select(m => (Psynergy)m).Select(p => p.Element.ToString()).ToArray()));
                 embed.AddField($"{numberEmotes[i]}{fighter.ConditionsToString()}", fighter.Name);
                 embed.AddField("HP", $"{fighter.Stats.HP} / {fighter.Stats.MaxHP}", true);
                 embed.AddField("PP", $"{fighter.Stats.PP} / {fighter.Stats.MaxPP}", true);
@@ -514,11 +514,11 @@ namespace IodemBot.Modules.ColossoBattles
                 {
                     if (m is Psynergy)
                     {
-                        s.Add($"{m.emote} {m.name} {((Psynergy)m).PPCost}");
+                        s.Add($"{m.Emote} {m.Name} {((Psynergy)m).PPCost}");
                     }
                     else
                     {
-                        s.Add($"{m.emote} {m.name}");
+                        s.Add($"{m.Emote} {m.Name}");
                     }
                 }
                 embed.AddField("Psynergy", string.Join(" | ", s));

@@ -298,11 +298,11 @@ namespace IodemBot.Modules.ColossoBattles
             {
                 if (item.IsUnleashable
                     && !item.IsBroken
-                    && item.Unleash.Effects.Any(e => e.ValidSelection(this))
+                    && item.Unleash.AllEffects.Any(e => e.ValidSelection(this))
                     && Global.Random.Next(0, 100) <= item.ChanceToActivate)
                 {
                     turnLog.Add($"{item.IconDisplay} {Name}'s {item.Name} starts to Glow.");
-                    foreach (var effect in item.Unleash.Effects)
+                    foreach (var effect in item.Unleash.AllEffects)
                     {
                         turnLog.AddRange(effect.Apply(this, this));
                     }
@@ -335,10 +335,10 @@ namespace IodemBot.Modules.ColossoBattles
 
         public string GetMoves(bool detailed = true)
         {
-            var relevantMoves = Moves.Where(m => m is Psynergy).ToList().Select(m => m.emote);
+            var relevantMoves = Moves.Where(m => m is Psynergy).ToList().Select(m => m.Emote);
             if (detailed)
             {
-                relevantMoves = Moves.Where(m => m is Psynergy).ToList().ConvertAll(m => (Psynergy)m).ConvertAll(p => $"{p.emote} {p.name} `{p.PPCost}`");
+                relevantMoves = Moves.Where(m => m is Psynergy).ToList().ConvertAll(m => (Psynergy)m).ConvertAll(p => $"{p.Emote} {p.Name} `{p.PPCost}`");
             }
             return string.Join(" - ", relevantMoves);
         }
@@ -417,7 +417,7 @@ namespace IodemBot.Modules.ColossoBattles
                 return turnLog;
             }
 
-            if (!selected.hasPriority)
+            if (!selected.HasPriority)
             {
                 turnLog.AddRange(selected.Use(this));
             }
@@ -508,7 +508,7 @@ namespace IodemBot.Modules.ColossoBattles
         {
             string[] numberEmotes = new string[] {"\u0030\u20E3", "1⃣", "\u0032\u20E3", "\u0033\u20E3", "\u0034\u20E3", "\u0035\u20E3",
             "\u0036\u20E3", "\u0037\u20E3", "\u0038\u20E3", "\u0039\u20E3" };
-            var trySelected = Moves.Where(m => m.emote == emote).FirstOrDefault() ?? Moves.Where(m => m.emote.Contains(emote)).FirstOrDefault();
+            var trySelected = Moves.Where(m => m.Emote == emote).FirstOrDefault() ?? Moves.Where(m => m.Emote.Contains(emote)).FirstOrDefault();
             if (!IsAlive)
             {
                 return false;
@@ -518,7 +518,7 @@ namespace IodemBot.Modules.ColossoBattles
             {
                 if (numberEmotes.Contains(emote) && selected != null)
                 {
-                    selected.targetNr = Array.IndexOf(numberEmotes, emote) - 1;
+                    selected.TargetNr = Array.IndexOf(numberEmotes, emote) - 1;
                     hasSelected = true;
                 }
                 else
@@ -538,15 +538,15 @@ namespace IodemBot.Modules.ColossoBattles
                 }
             }
 
-            if (selected.targetType == Target.self || selected.targetType == Target.ownAll || selected.targetType == Target.otherAll)
+            if (selected.TargetType == Target.self || selected.TargetType == Target.ownAll || selected.TargetType == Target.otherAll)
             {
                 hasSelected = true;
             }
 
-            if ((selected.targetType == Target.ownSingle && battle.GetTeam(party).Count == 1) ||
-                ((selected.targetType == Target.otherSingle || selected.targetType == Target.otherRange) && battle.GetTeam(enemies).Count <= 1))
+            if ((selected.TargetType == Target.ownSingle && battle.GetTeam(party).Count == 1) ||
+                ((selected.TargetType == Target.otherSingle || selected.TargetType == Target.otherRange) && battle.GetTeam(enemies).Count <= 1))
             {
-                selected.targetNr = 0;
+                selected.TargetNr = 0;
                 hasSelected = true;
             }
             if (this is PlayerFighter)
@@ -558,7 +558,7 @@ namespace IodemBot.Modules.ColossoBattles
 
         public void Select(int targetNr)
         {
-            selected.targetNr = targetNr;
+            selected.TargetNr = targetNr;
         }
 
         public void ReplaceWith(ColossoFighter otherFighter)
@@ -606,7 +606,7 @@ namespace IodemBot.Modules.ColossoBattles
                 }
                 catch (Exception e)
                 {
-                    throw new Exception($"{Name} failed to select random Move: {selected.name}", e);
+                    throw new Exception($"{Name} failed to select random Move: {selected.Name}", e);
                 }
             }
         }
@@ -614,7 +614,7 @@ namespace IodemBot.Modules.ColossoBattles
         public virtual List<string> StartTurn()
         {
             List<string> turnLog = new List<string>();
-            if (selected.hasPriority)
+            if (selected.HasPriority)
             {
                 turnLog.AddRange(selected.Use(this));
             }

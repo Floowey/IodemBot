@@ -161,7 +161,7 @@ namespace IodemBot.Modules.ColossoBattles
                             {
                                 if ((p.Weapon != null) && p.Weapon.IsUnleashable)
                                 {
-                                    p.Weapon.Unleash.AdditionalEffects.AddRange(g.Unleash.Effects);
+                                    p.Weapon.Unleash.AdditionalEffects.AddRange(g.Unleash.AllEffects);
                                 }
                             }
                             else
