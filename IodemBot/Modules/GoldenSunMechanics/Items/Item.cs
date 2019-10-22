@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
-using static IodemBot.Modules.GoldenSunMechanics.Psynergy;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
@@ -193,29 +192,20 @@ namespace IodemBot.Modules.GoldenSunMechanics
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public Element UnleashAlignment { get; set; }
 
-        [JsonIgnore] internal List<IEffect> DefaultEffects { get; set; }
-        [JsonProperty] internal List<EffectImage> EffectImages { get; set; }
-        [JsonIgnore] internal List<IEffect> AdditionalEffects { get; set; } = new List<IEffect>();
+        [JsonProperty]
+        public List<Effect> Effects { get; set; } = new List<Effect>();
+
+        [JsonIgnore] internal List<Effect> AdditionalEffects { get; set; } = new List<Effect>();
 
         [JsonIgnore]
-        public List<IEffect> Effects
+        public List<Effect> AllEffects
         {
             get
             {
-                var eff = new List<IEffect>();
-                eff.AddRange(DefaultEffects);
+                var eff = new List<Effect>();
+                eff.AddRange(Effects);
                 eff.AddRange(AdditionalEffects);
                 return eff;
-            }
-        }
-
-        public Unleash(List<EffectImage> effectImages)
-        {
-            DefaultEffects = new List<IEffect>();
-            EffectImages = effectImages;
-            if (effectImages != null)
-            {
-                effectImages.ForEach(e => DefaultEffects.Add(IEffect.EffectFactory(e.Id, e.Args)));
             }
         }
 
@@ -227,7 +217,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 s.Append(UnleashName);
             }
 
-            if (Effects.Count > 0)
+            if (AllEffects.Count > 0)
             {
                 if (UnleashName != null)
                 {
@@ -238,7 +228,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 {
                     s.Append(GoldenSun.ElementIcons[UnleashAlignment]);
                 }
-                s.Append(string.Join(", ", Effects.Select(e => $"{e.ToString()}")));
+                s.Append(string.Join(", ", AllEffects.Select(e => $"{e.ToString()}")));
                 if (UnleashName != null)
                 {
                     s.Append(")");
