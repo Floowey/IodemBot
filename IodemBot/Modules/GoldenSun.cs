@@ -12,7 +12,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using static IodemBot.Modules.GoldenSunMechanics.Psynergy;
 
 namespace IodemBot.Modules
 {
@@ -21,10 +20,10 @@ namespace IodemBot.Modules
         private enum RndElement { Venus, Mars, Jupiter, Mercury }
 
         internal static Dictionary<Element, string> ElementIcons = new Dictionary<Element, string>(){
-            {Psynergy.Element.Venus, "<:Venus_Element:573938340219584524>"},
-            { Psynergy.Element.Mars, "<:Mars_Element:573938340307402786>"},
-            { Psynergy.Element.Jupiter, "<:Jupiter_Element:573938340584488987>" },
-            { Psynergy.Element.Mercury, "<:Mercury_Element:573938340743872513>" }, {Psynergy.Element.none , ""}
+            {Element.Venus, "<:Venus_Element:573938340219584524>"},
+            {Element.Mars, "<:Mars_Element:573938340307402786>"},
+            {Element.Jupiter, "<:Jupiter_Element:573938340584488987>" },
+            {Element.Mercury, "<:Mercury_Element:573938340743872513>" }, {Element.none , ""}
         };
 
         //public enum Element { Venus, Mars, Jupiter, Mercury, None }
@@ -52,7 +51,7 @@ namespace IodemBot.Modules
                 var embed = new EmbedBuilder();
                 embed.WithAuthor($"{adeptClass.Name} - {series.Archtype}");
                 embed.WithColor(Colors.Get(series.Elements.Select(s => s.ToString()).ToArray()));
-                var relevantMoves = AdeptClassSeriesManager.GetMoveset(adeptClass).Where(m => m is Psynergy).ToList().ConvertAll(m => (Psynergy)m).ConvertAll(p => $"{p.emote} {p.name} `{p.PPCost}`");
+                var relevantMoves = AdeptClassSeriesManager.GetMoveset(adeptClass).Where(m => m is Psynergy).ToList().ConvertAll(m => (Psynergy)m).ConvertAll(p => $"{p.Emote} {p.Name} `{p.PPCost}`");
                 embed.AddField("Description", series.Description ?? "-");
                 embed.AddField("Stats", adeptClass.StatMultipliers, true);
                 embed.AddField("Elemental Stats", series.Elstats.ToString(), true);
@@ -137,10 +136,6 @@ namespace IodemBot.Modules
             var author = new EmbedAuthorBuilder();
             author.WithName($"{user.DisplayName()}");
             author.WithIconUrl(user.GetAvatarUrl());
-            //embed.WithThumbnailUrl(user.GetAvatarUrl());
-            //embed.WithDescription($"Status.");
-
-            //embed.AddField("Element", account.element, true);
 
             var embed = new EmbedBuilder()
             .WithColor(Colors.Get(account.Element.ToString()))
@@ -211,7 +206,6 @@ namespace IodemBot.Modules
             Footer.WithIconUrl(Sprites.GetImageFromName("Iodem"));
             embed.WithFooter(Footer);
 
-            //await Context.User.SendMessageAsync("", false, embed.Build());
             await Context.Channel.SendMessageAsync("", false, embed.Build());
 
             Console.WriteLine(JsonConvert.SerializeObject(account, Formatting.Indented));
@@ -253,7 +247,7 @@ namespace IodemBot.Modules
         [Command("element"), Alias("el")]
         [Remarks("Get your current Element or set it to one of the four with e.g. `i!element Venus`")]
         [Cooldown(5)]
-        public async Task Element(Element chosenElement, [Remainder] string classSeriesName = null)
+        public async Task ChooseElement(Element chosenElement, [Remainder] string classSeriesName = null)
         {
             var embed = new EmbedBuilder();
             var account = UserAccounts.GetAccount(Context.User);
@@ -308,7 +302,7 @@ namespace IodemBot.Modules
             }
 
             Psynergy psy = PsynergyDatabase.GetPsynergy(name);
-            if (psy.name.Contains("Not Implemented"))
+            if (psy.Name.Contains("Not Implemented"))
             {
                 var failEmbed = new EmbedBuilder();
                 failEmbed.WithColor(Colors.Get("Iodem"));
@@ -317,17 +311,17 @@ namespace IodemBot.Modules
                 return;
             }
             var embed = new EmbedBuilder();
-            embed.WithColor(Colors.Get(psy.element.ToString()));
-            embed.WithAuthor(psy.name);
-            embed.AddField("Emote", psy.emote, true);
+            embed.WithColor(Colors.Get(psy.Element.ToString()));
+            embed.WithAuthor(psy.Name);
+            embed.AddField("Emote", psy.Emote, true);
             embed.AddField("PP", psy.PPCost, true);
             //embed.AddField("Element", psy.element, true);
-            embed.AddField("Description", $"{psy.ToString()} {(psy.hasPriority ? "Always goes first." : "")}");
+            embed.AddField("Description", $"{psy.ToString()} {(psy.HasPriority ? "Always goes first." : "")}");
             var s = "none";
 
-            if (psy.effects.Count > 0)
+            if (psy.Effects.Count > 0)
             {
-                s = string.Join("\n", psy.effects.Select(e => $"{e.ToString()}"));
+                s = string.Join("\n", psy.Effects.Select(e => $"{e.ToString()}"));
             }
 
             embed.AddField("Effects", s);
