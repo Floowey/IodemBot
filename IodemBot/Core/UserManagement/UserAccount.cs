@@ -56,8 +56,8 @@ namespace IodemBot.Core.UserManagement
                 ulong cutoff90 = 1196934;
                 ulong rate90 = 2500;
 
-                ulong cutoff100 = 2540978;
-                ulong rate100 = 10000;
+                ulong cutoff100 = 2538160; //2540978
+                ulong rate100 = 25000;
 
                 uint level = 1;
 
