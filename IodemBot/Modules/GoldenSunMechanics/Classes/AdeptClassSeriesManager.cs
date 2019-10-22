@@ -36,11 +36,11 @@ namespace IodemBot.Modules.GoldenSunMechanics
             var gear = avatar.Inv.GetGear(classSeries.Archtype);
             if (gear.HasItem(ItemCategory.Weapon))
             {
-                moves.Where(m => m is Attack).First().emote = gear.GetItem(ItemCategory.Weapon).Icon;
+                moves.Where(m => m is Attack).First().Emote = gear.GetItem(ItemCategory.Weapon).Icon;
             }
             if (gear.HasItem(ItemCategory.ArmWear))
             {
-                moves.Where(m => m is Defend).First().emote = gear.GetItem(ItemCategory.ArmWear).Icon;
+                moves.Where(m => m is Defend).First().Emote = gear.GetItem(ItemCategory.ArmWear).Icon;
             }
             return moves.ToArray();
         }
@@ -64,13 +64,13 @@ namespace IodemBot.Modules.GoldenSunMechanics
             var els = GetClassSeries(User).Elstats;
             switch (User.Element)
             {
-                case Psynergy.Element.Venus:
+                case Element.Venus:
                     els += new ElementalStats() { VenusAtk = 10, VenusRes = 15, MarsAtk = 5, MarsRes = 5, JupiterAtk = -10, JupiterRes = -15 }; break;
-                case Psynergy.Element.Mars:
+                case Element.Mars:
                     els += new ElementalStats() { VenusAtk = 5, VenusRes = 5, MarsAtk = 10, MarsRes = 15, MercuryAtk = -10, MercuryRes = -15 }; break;
-                case Psynergy.Element.Jupiter:
+                case Element.Jupiter:
                     els += new ElementalStats() { VenusAtk = -10, VenusRes = -15, JupiterAtk = 10, JupiterRes = 15, MercuryAtk = 5, MercuryRes = 5 }; break;
-                case Psynergy.Element.Mercury:
+                case Element.Mercury:
                     els += new ElementalStats() { MarsAtk = -10, MarsRes = -15, JupiterAtk = 5, JupiterRes = 5, MercuryAtk = 10, MercuryRes = 15 }; break;
             }
             return els;
