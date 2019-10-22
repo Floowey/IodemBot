@@ -75,9 +75,9 @@
         "healPower": 50,
         "percentage": 13,
         "singleTarget": true,
-        "effectImages": [
+        "effects": [
             {
-                "id": "Restore"
+                "Type": "Restore"
             }
         ]
     },
@@ -91,9 +91,9 @@
         "healPower": 100,
         "percentage": 25,
         "singleTarget": true,
-        "effectImages": [
+        "effects": [
             {
-                "id": "Restore"
+                "Type": "Restore"
             }
         ]
     },
@@ -107,7 +107,7 @@
         "healPower": 200,
         "percentage": 50,
         "singleTarget": true,
-        "effectImages": [
+        "effects": [
             {
                 "id": "Restore"
             }

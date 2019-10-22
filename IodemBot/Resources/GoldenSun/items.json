@@ -23,10 +23,11 @@
         "Unleash": {
             "UnleashName": "Dutch Farmer",
             "UnleashAlignment": 0,
-            "effectImages": [
+            "effects": [
                 {
-                    "Id": "MultiplyDamage",
-                    "args": [ "10.0, 8.0, 6.0, 3.0", "5, 12, 17, 29" ]
+                    "Type": "MultiplyDamage",
+                    "Multipliers": [ 10.0, 8.0, 6.0, 3.0 ],
+                    "Probabilites": [ 5, 12, 17, 29 ]
                 }
             ]
         }
@@ -85,10 +86,10 @@
         "Unleash": {
             "UnleashName": "Terra Strike",
             "UnleashAlignment": 0,
-            "effectImages": [
+            "effects": [
                 {
-                    "Id": "AddDamage",
-                    "args": [ "20" ]
+                    "Type": "AddDamage",
+                    "addDamage": 20
                 }
             ]
         }
@@ -107,14 +108,15 @@
         "Unleash": {
             "UnleashName": "Blinding Smog",
             "UnleashAlignment": 2,
-            "effectImages": [
+            "effects": [
                 {
-                    "Id": "AddDamage",
-                    "args": [ "49" ]
+                    "Type": "AddDamage",
+                    "addDamage": 20
                 },
                 {
-                    "id": "Condition",
-                    "args": [ "Delusion", "30" ]
+                    "Type": "Condition",
+                    "Condition": "Delusion",
+                    "Probability": 30
                 }
             ]
         }
@@ -133,14 +135,15 @@
         "Unleash": {
             "UnleashName": "Poison Death",
             "UnleashAlignment": 0,
-            "effectImages": [
+            "effects": [
                 {
-                    "Id": "AddDamage",
-                    "args": [ "53" ]
+                    "Type": "AddDamage",
+                    "addDamage": 20
                 },
                 {
-                    "id": "Condition",
-                    "args": [ "Venom", "60" ]
+                    "Type": "Condition",
+                    "Condition": "Venom",
+                    "Probability": 60
                 }
             ]
         }
@@ -171,10 +174,10 @@
         "Unleash": {
             "UnleashName": "Boost Hack",
             "UnleashAlignment": 1,
-            "effectImages": [
+            "effects": [
                 {
-                    "Id": "AddDamage",
-                    "args": [ "17" ]
+                    "Type": "AddDamage",
+                    "addDamage": 17
                 }
             ]
         }
@@ -192,14 +195,16 @@
         "Unleash": {
             "UnleashName": "Ice Crush",
             "UnleashAlignment": 3,
-            "effectImages": [
+            "effects": [
                 {
-                    "Id": "AddDamage",
-                    "args": [ "34" ]
+                    "Type": "AddDamage",
+                    "addDamage": 34
                 },
                 {
-                    "id": "Stat",
-                    "args": [ "Defense", "0.25", "50" ]
+                    "Type": "Stat",
+                    "Stat": "Defense",
+                    "Multiplier": 0.25,
+                    "Probability": 50
                 }
             ]
         }
@@ -217,14 +222,15 @@
         "Unleash": {
             "UnleashName": "Wyrd Curse",
             "UnleashAlignment": 0,
-            "effectImages": [
+            "effects": [
                 {
-                    "Id": "AddDamage",
-                    "args": [ "41" ]
+                    "Type": "AddDamage",
+                    "addDamage": 41
                 },
                 {
-                    "id": "Condition",
-                    "args": [ "Haunt", "20" ]
+                    "Type": "Condition",
+                    "Condition": "Haunt",
+                    "Probability": 20
                 }
             ]
         }
@@ -242,14 +248,15 @@
         "Unleash": {
             "UnleashName": "Evil Eye",
             "UnleashAlignment": 0,
-            "effectImages": [
+            "effects": [
                 {
-                    "Id": "AddDamage",
-                    "args": [ "38" ]
+                    "Type": "AddDamage",
+                    "addDamage": 38
                 },
                 {
-                    "id": "Condition",
-                    "args": [ "Delusion", "33" ]
+                    "Type": "Condition",
+                    "Condition": "Delusion",
+                    "Probability": 33
                 }
             ]
         }
@@ -267,14 +274,14 @@
         "Unleash": {
             "UnleashName": "Heartbreak",
             "UnleashAlignment": 0,
-            "effectImages": [
+            "effects": [
                 {
-                    "Id": "AddDamage",
-                    "args": [ "42" ]
+                    "Type": "AddDamage",
+                    "addDamage": 42
                 },
                 {
-                    "id": "ChanceToOHKO",
-                    "args": [ "15" ]
+                    "Type": "OHKO",
+                    "Probability": 15
                 }
             ]
         }
@@ -292,14 +299,15 @@
         "Unleash": {
             "UnleashName": "High Vitals",
             "UnleashAlignment": 2,
-            "effectImages": [
+            "effects": [
                 {
-                    "Id": "AddDamage",
-                    "args": [ "52" ]
+                    "Type": "AddDamage",
+                    "addDamage": 52
                 },
                 {
-                    "Id": "HPDrain",
-                    "args": [ "100", "33" ]
+                    "Type": "HPDrain",
+                    "Percentage": 33,
+                    "Probability": 100
                 }
             ]
         }
@@ -317,14 +325,15 @@
         "Unleash": {
             "UnleashName": "Hammersphere",
             "UnleashAlignment": 0,
-            "effectImages": [
+            "effects": [
                 {
-                    "Id": "AddDamage",
-                    "args": [ "58" ]
+                    "Type": "AddDamage",
+                    "addDamage": 58
                 },
                 {
-                    "id": "MayIgnoreDefense",
-                    "args": [ "50", "50" ]
+                    "Type": "IgnoreDefense",
+                    "Percentage": 50,
+                    "Probability": 50
                 }
             ]
         }
@@ -342,18 +351,20 @@
         "Unleash": {
             "UnleashName": "Final Nemesis",
             "UnleashAlignment": 3,
-            "effectImages": [
+            "effects": [
                 {
-                    "Id": "AddDamage",
-                    "args": [ "17" ]
+                    "Type": "AddDamage",
+                    "addDamage": 17
                 },
                 {
-                    "id": "MultiplyDamage",
-                    "args": [ "2.8, 2.0, 1.4", "50, 50, 50" ]
+                    "Type": "Condition",
+                    "Condition": 50,
+                    "Probability": 25
                 },
                 {
-                    "id": "Condition",
-                    "args": [ "Stun", "25" ]
+                    "Type": "MultiplyDamage",
+                    "Multipliers": [ 2.8, 2.0, 1.4 ],
+                    "Probabilities": [ 50, 50, 50 ]
                 }
             ]
         }
@@ -383,14 +394,15 @@
         "Unleash": {
             "UnleashName": "Apocalypse",
             "UnleashAlignment": 2,
-            "effectImages": [
+            "effects": [
                 {
-                    "Id": "AddDamage",
-                    "args": [ "125" ]
+                    "Type": "AddDamage",
+                    "addDamage": 125
                 },
                 {
-                    "id": "Condition",
-                    "args": [ "DeathCurse", "20" ]
+                    "Type": "Condition",
+                    "Condition": "DeathCurse",
+                    "Probability": 20
                 }
             ]
         }
@@ -423,14 +435,15 @@
         "Unleash": {
             "UnleashName": "Stun Cloud",
             "UnleashAlignment": 3,
-            "effectImages": [
+            "effects": [
                 {
-                    "Id": "AddDamage",
-                    "args": [ "31" ]
+                    "Type": "AddDamage",
+                    "addDamage": 31
                 },
                 {
-                    "id": "Condition",
-                    "args": [ "Stun", "15" ]
+                    "Type": "Condition",
+                    "Condition": "Stun",
+                    "Probability": 25
                 }
             ]
         }
@@ -448,14 +461,15 @@
         "Unleash": {
             "UnleashName": "Psy Leech",
             "UnleashAlignment": 3,
-            "effectImages": [
+            "effects": [
                 {
-                    "Id": "AddDamage",
-                    "args": [ "22" ]
+                    "Type": "AddDamage",
+                    "addDamage": 22
                 },
                 {
-                    "Id": "PPDrain",
-                    "args": [ "10", "40" ]
+                    "Type": "PPDrain",
+                    "Percentage": 10,
+                    "Probability": 40
                 }
             ]
         }
@@ -473,14 +487,15 @@
         "Unleash": {
             "UnleashName": "Psyphon Seal",
             "UnleashAlignment": 2,
-            "effectImages": [
+            "effects": [
                 {
-                    "Id": "AddDamage",
-                    "args": [ "14" ]
+                    "Type": "AddDamage",
+                    "addDamage": 15
                 },
                 {
-                    "id": "Condition",
-                    "args": [ "Seal", "35" ]
+                    "Type": "Condition",
+                    "Condition": "Seal",
+                    "Probability": 35
                 }
             ]
         }
@@ -498,14 +513,15 @@
         "Unleash": {
             "UnleashName": "Aging Gas",
             "UnleashAlignment": 2,
-            "effectImages": [
+            "effects": [
                 {
-                    "Id": "AddDamage",
-                    "args": [ "45" ]
+                    "Type": "AddDamage",
+                    "addDamage": 45
                 },
                 {
-                    "Id": "HPDrain",
-                    "args": [ "100", "40" ]
+                    "Type": "HPDrain",
+                    "Percentage": 40,
+                    "Probability": 10
                 }
             ]
         }
@@ -523,14 +539,16 @@
         "Unleash": {
             "UnleashName": "Fire Dance",
             "UnleashAlignment": 1,
-            "effectImages": [
+            "effects": [
                 {
-                    "Id": "AddDamage",
-                    "args": [ "51" ]
+                    "Type": "AddDamage",
+                    "addDamage": 15
                 },
                 {
-                    "id": "Stat",
-                    "args": [ "Attack", "0.25", "35" ]
+                    "Type": "Stat",
+                    "Stat": "Attack",
+                    "Multiplier": 0.25,
+                    "Probability": 30
                 }
             ]
         }
@@ -548,14 +566,15 @@
         "Unleash": {
             "UnleashName": "Murk",
             "UnleashAlignment": 2,
-            "effectImages": [
+            "effects": [
                 {
-                    "Id": "AddDamage",
-                    "args": [ "10" ]
+                    "Type": "AddDamage",
+                    "addDamage": 10
                 },
                 {
-                    "id": "Condition",
-                    "args": [ "Sleep", "30" ]
+                    "Type": "Condition",
+                    "Condition": "Sleep",
+                    "Probability": 30
                 }
             ]
         }
@@ -573,14 +592,15 @@
         "Unleash": {
             "UnleashName": "Stun Voltage",
             "UnleashAlignment": 2,
-            "effectImages": [
+            "effects": [
                 {
-                    "Id": "AddDamage",
-                    "args": [ "12" ]
+                    "Type": "AddDamage",
+                    "addDamage": 12
                 },
                 {
-                    "id": "Condition",
-                    "args": [ "Stun", "25" ]
+                    "Type": "Condition",
+                    "Condition": "Stun",
+                    "Probability": 25
                 }
             ]
         }
@@ -598,14 +618,15 @@
         "Unleash": {
             "UnleashName": "Flash Force",
             "UnleashAlignment": 3,
-            "effectImages": [
+            "effects": [
                 {
-                    "Id": "AddDamage",
-                    "args": [ "44" ]
+                    "Type": "AddDamage",
+                    "addDamage": 44
                 },
                 {
-                    "id": "Condition",
-                    "args": [ "Seal", "35" ]
+                    "Type": "Condition",
+                    "Condition": "Seal",
+                    "Probability": 35
                 }
             ]
         }

@@ -32,10 +32,11 @@
         "emote": "<:Skull_Splitter:536959343153774652>",
         "range": 1,
         "element": 0,
-        "effectImages": [
+        "effects": [
             {
-                "id": "Stat",
-                "args": [ "Defense", "0.5", "80" ]
+                "Type": "Stat",
+                "Stat": "Defense",
+                "multiplier": 0.8
             }
         ],
         "PPCost": 8,
@@ -47,10 +48,10 @@
         "emote": "<:Skull_Splitter:536959343153774652>",
         "range": 1,
         "element": 0,
-        "effectImages": [
+        "effects": [
             {
-                "id": "ChanceToOHKO",
-                "args": [ "5" ]
+                "Type": "OHKO",
+                "probability": 5
             }
         ],
         "PPCost": 8,
@@ -62,10 +63,10 @@
         "emote": "<:Annihilation:536959197288464393>",
         "range": 1,
         "element": 0,
-        "effectImages": [
+        "effects": [
             {
-                "id": "ChanceToOHKO",
-                "args": [ "10" ]
+                "Type": "OHKO",
+                "probability": 10
             }
         ],
         "PPCost": 18,
@@ -194,14 +195,16 @@
         "emote": "<:curse:538074679492083742>",
         "range": 3,
         "element": 0,
-        "effectImages": [
+        "effects": [
             {
-                "id": "Condition",
-                "args": [ "Poison", "25" ]
+                "Type": "Condition",
+                "Condition": "Poison",
+                "Probability": 25
             },
             {
-                "id": "Condition",
-                "args": [ "Venom", "5" ]
+                "Type": "Condition",
+                "Condition": "Venom",
+                "Probability": 5
             }
         ],
         "PPCost": 23,
@@ -285,10 +288,11 @@
         "emote": "<:Nettle:536958600078426122>",
         "range": 3,
         "element": 0,
-        "effectImages": [
+        "effects": [
             {
-                "id": "Condition",
-                "args": [ "Poison", "10" ]
+                "Type": "Condition",
+                "Condition": "Poison",
+                "Probability": 10
             }
         ],
         "PPCost": 23,
@@ -327,10 +331,11 @@
         "emote": "<:Call_Zombie:536997673799122956>",
         "range": 1,
         "element": 0,
-        "effectImages": [
+        "effects": [
             {
-                "id": "Condition",
-                "args": [ "Haunt", "33" ]
+                "Type": "Condition",
+                "Condition": "Haunt",
+                "Probability": 25
             }
         ],
         "PPCost": 5,
@@ -342,10 +347,11 @@
         "emote": "💀",
         "range": 1,
         "element": 0,
-        "effectImages": [
+        "effects": [
             {
-                "id": "Condition",
-                "args": [ "Haunt", "44" ]
+                "Type": "Condition",
+                "Condition": "Haunt",
+                "Probability": 40
             }
         ],
         "PPCost": 15,
@@ -357,10 +363,11 @@
         "emote": "☠",
         "range": 1,
         "element": 0,
-        "effectImages": [
+        "effects": [
             {
-                "id": "Condition",
-                "args": [ "Haunt", "55" ]
+                "Type": "Condition",
+                "Condition": "Haunt",
+                "Probability": 55
             }
         ],
         "PPCost": 30,
@@ -627,14 +634,16 @@
         "emote": "<:Fiery_Blast:536965017434718212>",
         "range": 3,
         "element": 1,
-        "effectImages": [
+        "effects": [
             {
-                "id": "Condition",
-                "args": [ "Flinch", "5" ]
+                "Type": "Condition",
+                "Condition": "Stun",
+                "Probability": 15
             },
             {
-                "id": "Condition",
-                "args": [ "Delusion", "5" ]
+                "Type": "Condition",
+                "Condition": "Flinch",
+                "Probability": 40
             }
         ],
         "PPCost": 19,
@@ -664,10 +673,11 @@
         "emote": "<:Carpet_Bomb:536965454179336192>",
         "range": 3,
         "element": 1,
-        "effectImages": [
+        "effects": [
             {
-                "id": "Condition",
-                "args": [ "Flinch", "20" ]
+                "Type": "Condition",
+                "Condition": "Flinch",
+                "Probability": 16
             }
         ],
         "PPCost": 29,
@@ -887,10 +897,11 @@
         "emote": "<:Death_Plunge:536966770402000897>",
         "range": 1,
         "element": 2,
-        "effectImages": [
+        "effects": [
             {
-                "id": "Condition",
-                "args": [ "Stun", "10" ]
+                "Type": "Condition",
+                "Condition": "Stun",
+                "Probability": 10
             }
         ],
         "PPCost": 14,
@@ -902,10 +913,11 @@
         "emote": "<:Death_Leap:536966785363083264>",
         "range": 1,
         "element": 2,
-        "effectImages": [
+        "effects": [
             {
-                "id": "Condition",
-                "args": [ "Stun", "10" ]
+                "Type": "Condition",
+                "Condition": "Stun",
+                "Probability": 10
             }
         ],
         "PPCost": 22,
@@ -989,10 +1001,11 @@
         "emote": "<:Blue_Bolt:536966467543891968>",
         "range": 3,
         "element": 2,
-        "effectImages": [
+        "effects": [
             {
-                "id": "Condition",
-                "args": [ "Stun", "15" ]
+                "Type": "Condition",
+                "Condition": "Stun",
+                "Probability": 15
             }
         ],
         "PPCost": 20,
@@ -1241,10 +1254,11 @@
         "element": 1,
         "PPCost": 0,
         "addDamage": 20,
-        "effectImages": [
+        "effects": [
             {
-                "id": "Condition",
-                "args": [ "Delusion", "30" ]
+                "Type": "Condition",
+                "Condition": "Delusion",
+                "Probability": 35
             }
         ]
     },
@@ -1256,10 +1270,10 @@
         "element": 0,
         "PPCost": 0,
         "addDamage": 35,
-        "effectImages": [
+        "effects": [
             {
-                "id": "ChanceToOHKO",
-                "args": [ "20" ]
+                "Type": "OHKO",
+                "Probability": 15
             }
         ]
     },
@@ -1289,10 +1303,11 @@
         "element": 2,
         "PPCost": 0,
         "power": 70,
-        "effectImages": [
+        "effects": [
             {
-                "id": "Condition",
-                "args": [ "Flinch", "30" ]
+                "Type": "Condition",
+                "Condition": "Flinch",
+                "Probability": 35
             }
         ]
     },
@@ -1322,10 +1337,11 @@
         "element": 0,
         "PPCost": 0,
         "addDamage": 40,
-        "effectImages": [
+        "effects": [
             {
-                "id": "Condition",
-                "args": [ "Poison", "50" ]
+                "Type": "Condition",
+                "Condition": "Poison",
+                "Probability": 50
             }
         ]
     },
@@ -1346,10 +1362,11 @@
         "element": 2,
         "PPCost": 0,
         "addDamage": 30,
-        "effectImages": [
+        "effects": [
             {
-                "id": "MultiplyDamage",
-                "args": [ "2.0", "50" ]
+                "Type": "MultiplyDamage",
+                "Multipliers": [ 2.0 ],
+                "Probabilites": [ 50 ]
             }
         ]
     },
@@ -1379,10 +1396,11 @@
         "element": 0,
         "PPCost": 0,
         "addDamage": 36,
-        "effectImages": [
+        "effects": [
             {
-                "id": "Condition",
-                "args": [ "Venom", "25" ]
+                "Type": "Condition",
+                "Condition": "Venom",
+                "Probability": 28
             }
         ]
     },
@@ -1412,10 +1430,12 @@
         "element": 1,
         "PPCost": 0,
         "power": 170,
-        "effectImages": [
+        "effects": [
             {
-                "id": "Stat",
-                "args": [ "Defense", "0.8", "20" ]
+                "Type": "Stat",
+                "Stat": "Defense",
+                "Multiplier": 0.8,
+                "Probability": 20
             }
         ]
     },
@@ -1427,10 +1447,11 @@
         "element": 2,
         "PPCost": 0,
         "power": 170,
-        "effectImages": [
+        "effects": [
             {
-                "id": "Condition",
-                "args": [ "Stun", "20" ]
+                "Type": "Condition",
+                "Condition": "Stun",
+                "Probability": 20
             }
         ]
     },
@@ -1442,10 +1463,11 @@
         "element": 0,
         "PPCost": 0,
         "addDamage": 50,
-        "effectImages": [
+        "effects": [
             {
-                "id": "MultiplyDamage",
-                "args": [ "2.0", "50" ]
+                "Type": "MultiplyDamage",
+                "Multipliers": [ 2.0 ],
+                "Probabilites": [ 50 ]
             }
         ]
     },
@@ -1484,10 +1506,11 @@
         "element": 0,
         "PPCost": 0,
         "dmgMult": 1.3,
-        "effectImages": [
+        "effects": [
             {
-                "id": "Condition",
-                "args": [ "Stun", "20" ]
+                "Type": "Condition",
+                "Condition": "Stun",
+                "Probability": 20
             }
         ]
     },
@@ -1499,10 +1522,10 @@
         "element": 0,
         "PPCost": 0,
         "addDamage": 50,
-        "effectImages": [
+        "effects": [
             {
-                "id": "ChanceToOHKO",
-                "args": [ "10" ]
+                "Type": "OHKO",
+                "Probability": 10
             }
         ]
     },
@@ -1514,10 +1537,11 @@
         "element": 2,
         "PPCost": 0,
         "power": 45,
-        "effectImages": [
+        "effects": [
             {
-                "id": "Condition",
-                "args": [ "Flinch", "35" ]
+                "Type": "Condition",
+                "Condition": "Flinch",
+                "Probability": 35
             }
         ]
     },
@@ -1529,9 +1553,9 @@
         "element": 1,
         "PPCost": 0,
         "power": 200,
-        "effectImages": [
+        "effects": [
             {
-                "id": "UserDies"
+                "Type": "UserDies"
             }
         ]
     },
@@ -1543,9 +1567,9 @@
         "element": 0,
         "PPCost": 0,
         "power": 300,
-        "effectImages": [
+        "effects": [
             {
-                "id": "UserDies"
+                "Type": "UserDies"
             }
         ],
         "ignoreSpread": true
@@ -1559,9 +1583,9 @@
         "PPCost": 0,
         "power": 2000,
         "IgnoreSpread": true,
-        "effectImages": [
+        "effects": [
             {
-                "id": "UserDies"
+                "Type": "UserDies"
             }
         ]
     },
@@ -1573,9 +1597,9 @@
         "element": 4,
         "PPCost": 0,
         "power": 0,
-        "effectImages": [
+        "effects": [
             {
-                "id": "UserDies"
+                "Type": "UserDies"
             }
         ]
     },
@@ -1605,10 +1629,11 @@
         "element": 0,
         "PPCost": 0,
         "addDamage": 0,
-        "effectImages": [
+        "effects": [
             {
-                "id": "Condition",
-                "args": [ "Poison", "40" ]
+                "Type": "Condition",
+                "Condition": "Poison",
+                "Probability": 40
             }
         ]
     },
@@ -1663,10 +1688,12 @@
         "emote": ":name_badge:",
         "range": 1,
         "element": 0,
-        "effectImages": [
+        "effects": [
             {
-                "id": "Status",
-                "args": [ "Defense", "0.75", "50" ]
+                "Type": "Stat",
+                "Stat": "Defense",
+                "Multiplier": 0.75,
+                "Probability": 50
             }
         ],
         "PPCost": 0,
@@ -1689,10 +1716,11 @@
         "element": 2,
         "PPCost": 0,
         "addDamage": 39,
-        "effectImages": [
+        "effects": [
             {
-                "id": "MayIgnoreDefense",
-                "args": [ "100", "100" ]
+                "Type": "IgnoreDefense",
+                "IgnorePercent": 100,
+                "Probability": 100
             }
         ]
     },
@@ -1722,10 +1750,11 @@
         "element": 0,
         "PPCost": 0,
         "power": 35,
-        "effectImages": [
+        "effects": [
             {
-                "id": "Stat",
-                "args": [ "Defense", "0.8" ]
+                "Type": "Stat",
+                "Stat": "Defense",
+                "Multiplier": 0.8
             }
         ]
     },
@@ -1737,10 +1766,11 @@
         "element": 0,
         "PPCost": 0,
         "addDamage": 20,
-        "effectImages": [
+        "effects": [
             {
-                "id": "Condition",
-                "args": [ "Stun", "20" ]
+                "Type": "Condition",
+                "Condition": "Stun",
+                "Probability": 20
             }
         ]
     },
@@ -1752,10 +1782,11 @@
         "element": 0,
         "PPCost": 0,
         "addDamage": 35,
-        "effectImages": [
+        "effects": [
             {
-                "id": "Condition",
-                "args": [ "Poison", "20" ]
+                "Type": "Condition",
+                "Condition": "Poison",
+                "Probability": 20
             }
         ]
     },
@@ -1767,10 +1798,11 @@
         "element": 0,
         "PPCost": 0,
         "addDamage": 15,
-        "effectImages": [
+        "effects": [
             {
-                "id": "Condition",
-                "args": [ "Poison", "20" ]
+                "Type": "Condition",
+                "Condition": "Poison",
+                "Probability": 20
             }
         ]
     },
@@ -1816,10 +1848,10 @@
         "element": 0,
         "PPCost": 0,
         "dmgMult": 1.2,
-        "effectImages": [
+        "effects": [
             {
-                "id": "ReduceHPtoOne",
-                "args": [ "20" ]
+                "ReduceHPToOne": "ReduceHPToOne",
+                "Probability": 20
             }
         ]
     },
@@ -1831,10 +1863,10 @@
         "element": 2,
         "PPCost": 0,
         "dmgMult": 1.4,
-        "effectImages": [
+        "effects": [
             {
-                "id": "MayIgnoreDefense",
-                "args": [ "50" ]
+                "Type": "IgnoreDefense",
+                "IgnorePercent": 50
             }
         ]
     },
@@ -1846,10 +1878,11 @@
         "element": 1,
         "PPCost": 0,
         "dmgMult": 1.3,
-        "effectImages": [
+        "effects": [
             {
-                "id": "Condition",
-                "args": [ "Stun", "40" ]
+                "Type": "Condition",
+                "Condition": "Stun",
+                "Probability": 40
             }
         ]
     },
@@ -1871,10 +1904,12 @@
         "element": 1,
         "PPCost": 0,
         "power": 170,
-        "effectImages": [
+        "effects": [
             {
-                "id": "Stat",
-                "args": [ "Def", "0.8", "30" ]
+                "Type": "Stat",
+                "Stat": "Defense",
+                "Multiplier": 0.75,
+                "Probability": 50
             }
         ]
     },
@@ -1886,10 +1921,10 @@
         "element": 3,
         "PPCost": 0,
         "addDamage": 30,
-        "effectImages": [
+        "effects": [
             {
-                "id": "ReduceHPtoOne",
-                "args": [ "20" ]
+                "ReduceHPToOne": "ReduceHPToOne",
+                "Probability": 20
             }
         ]
     },
@@ -1901,10 +1936,12 @@
         "element": 1,
         "PPCost": 0,
         "power": 44,
-        "effectImages": [
+        "effects": [
             {
-                "id": "Stat",
-                "args": [ "Def", "0.6", "25" ]
+                "Type": "Stat",
+                "Stat": "Defense",
+                "Multiplier": 0.6,
+                "Probability": 25
             }
         ]
     },
@@ -1916,10 +1953,11 @@
         "element": 3,
         "PPCost": 0,
         "power": 16,
-        "effectImages": [
+        "effects": [
             {
-                "id": "Condition",
-                "args": [ "Poison", "50" ]
+                "Type": "Condition",
+                "Condition": "Poison",
+                "Probability": 50
             }
         ]
     },
@@ -1949,10 +1987,11 @@
         "element": 0,
         "PPCost": 0,
         "power": 18,
-        "effectImages": [
+        "effects": [
             {
-                "id": "condition",
-                "args": [ "Haunt", "20" ]
+                "Type": "Condition",
+                "Condition": "Haunt",
+                "Probability": 20
             }
         ]
     },
@@ -1973,10 +2012,12 @@
         "element": 0,
         "PPCost": 0,
         "power": 37,
-        "effectImages": [
+        "effects": [
             {
-                "id": "Stat",
-                "args": [ "Def", "0.8", "25" ]
+                "Type": "Stat",
+                "Stat": "Defense",
+                "Multiplier": 0.8,
+                "Probability": 25
             }
         ]
     },

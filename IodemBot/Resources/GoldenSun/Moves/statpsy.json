@@ -6,10 +6,11 @@
         "range": 1,
         "element": 2,
         "PPCost": 7,
-        "effectImages": [
+        "effects": [
             {
-                "id": "Stat",
-                "args": [ "Attack", "1.5" ]
+                "Type": "Stat",
+                "Stat": "Attack",
+                "Multiplier": 1.5
             }
         ]
     },
@@ -20,10 +21,11 @@
         "range": 4,
         "element": 2,
         "PPCost": 12,
-        "effectImages": [
+        "effects": [
             {
-                "id": "Stat",
-                "args": [ "Attack", "1.2" ]
+                "Type": "Stat",
+                "Stat": "Attack",
+                "Multiplier": 1.25
             }
         ]
     },
@@ -34,10 +36,11 @@
         "range": 1,
         "element": 2,
         "PPCost": 7,
-        "effectImages": [
+        "effects": [
             {
-                "id": "Stat",
-                "args": [ "Attack", "1.5" ]
+                "Type": "Stat",
+                "Stat": "Attack",
+                "Multiplier": 1.5
             }
         ]
     },
@@ -48,10 +51,11 @@
         "range": 4,
         "element": 2,
         "PPCost": 12,
-        "effectImages": [
+        "effects": [
             {
-                "id": "Stat",
-                "args": [ "Attack", "1.2" ]
+                "Type": "Stat",
+                "Stat": "Attack",
+                "Multiplier": 1.25
             }
         ]
     },
@@ -62,10 +66,11 @@
         "range": 4,
         "element": 1,
         "PPCost": 5,
-        "effectImages": [
+        "effects": [
             {
-                "id": "Stat",
-                "args": [ "Defense", "1.5" ]
+                "Type": "Stat",
+                "Stat": "Defense",
+                "Multiplier": 1.5
             }
         ]
     },
@@ -76,10 +81,11 @@
         "range": 4,
         "element": 1,
         "PPCost": 5,
-        "effectImages": [
+        "effects": [
             {
-                "id": "Stat",
-                "args": [ "Defense", "1.2" ]
+                "Type": "Stat",
+                "Stat": "Defense",
+                "Multiplier": 1.25
             }
         ]
     },
@@ -90,10 +96,11 @@
         "range": 4,
         "element": 1,
         "PPCost": 3,
-        "effectImages": [
+        "effects": [
             {
-                "id": "Stat",
-                "args": [ "Resistance", "1.5" ]
+                "Type": "Stat",
+                "Stat": "Resistance",
+                "Multiplier": 1.5
             }
         ]
     },
@@ -104,10 +111,11 @@
         "range": 1,
         "element": 1,
         "PPCost": 5,
-        "effectImages": [
+        "effects": [
             {
-                "id": "Stat",
-                "args": [ "Resistance", "1.2" ]
+                "Type": "Stat",
+                "Stat": "Resistance",
+                "Multiplier": 1.5
             }
         ]
     },
@@ -118,10 +126,11 @@
         "range": 4,
         "element": 1,
         "PPCost": 3,
-        "effectImages": [
+        "effects": [
             {
-                "id": "Stat",
-                "args": [ "Resistance", "1.5" ]
+                "Type": "Stat",
+                "Stat": "Resistance",
+                "Multiplier": 1.5
             }
         ]
     },
@@ -132,10 +141,11 @@
         "range": 1,
         "element": 1,
         "PPCost": 5,
-        "effectImages": [
+        "effects": [
             {
-                "id": "Stat",
-                "args": [ "Resistance", "1.2" ]
+                "Type": "Stat",
+                "Stat": "Resistance",
+                "Multiplier": 1.25
             }
         ]
     },
@@ -146,10 +156,11 @@
         "range": 3,
         "element": 1,
         "PPCost": 5,
-        "effectImages": [
+        "effects": [
             {
-                "id": "Stat",
-                "args": [ "Defense", "0.6" ]
+                "Type": "Stat",
+                "Stat": "Defense",
+                "Multiplier": 0.6
             }
         ]
     },
@@ -160,10 +171,11 @@
         "range": 3,
         "element": 1,
         "PPCost": 5,
-        "effectImages": [
+        "effects": [
             {
-                "id": "Stat",
-                "args": [ "Defense", "0.8" ]
+                "Type": "Stat",
+                "Stat": "Defense",
+                "Multiplier": 0.8
             }
         ]
     },
@@ -174,10 +186,11 @@
         "range": 3,
         "element": 1,
         "PPCost": 5,
-        "effectImages": [
+        "effects": [
             {
-                "id": "Stat",
-                "args": [ "Attack", "0.6" ]
+                "Type": "Stat",
+                "Stat": "Attack",
+                "Multiplier": 0.6
             }
         ]
     },
@@ -188,10 +201,11 @@
         "range": 3,
         "element": 1,
         "PPCost": 5,
-        "effectImages": [
+        "effects": [
             {
-                "id": "Stat",
-                "args": [ "Attack", "0.8" ]
+                "Type": "Stat",
+                "Stat": "Attack",
+                "Multiplier": 0.8
             }
         ]
     },
@@ -202,10 +216,11 @@
         "range": 1,
         "element": 0,
         "PPCost": 12,
-        "effectImages": [
+        "effects": [
             {
-                "id": "Stat",
-                "args": [ "Attack", "2.0" ]
+                "Type": "Stat",
+                "Stat": "Attack",
+                "Multiplier": 2.0
             }
         ]
     },
@@ -216,18 +231,21 @@
         "range": 1,
         "element": 1,
         "PPCost": 0,
-        "effectImages": [
+        "effects": [
             {
-                "id": "Stat",
-                "args": [ "Attack", "1.25" ]
+                "Type": "Stat",
+                "Stat": "Attack",
+                "Multiplier": 1.5
             },
             {
-                "id": "Stat",
-                "args": [ "Defense", "0.5" ]
+                "Type": "Stat",
+                "Stat": "Defense",
+                "Multiplier": 0.5
             },
             {
-                "id": "Stat",
-                "args": [ "Speed", "1.5" ]
+                "Type": "Stat",
+                "Stat": "Speed",
+                "Multiplier": 1.5
             }
         ]
     },
@@ -238,10 +256,11 @@
         "range": 1,
         "element": 1,
         "PPCost": 0,
-        "effectImages": [
+        "effects": [
             {
-                "id": "Stat",
-                "args": [ "Attack", "0.75" ]
+                "Type": "Stat",
+                "Stat": "Attack",
+                "Multiplier": 0.6
             }
         ]
     },
@@ -252,10 +271,11 @@
         "range": 3,
         "element": 1,
         "PPCost": 5,
-        "effectImages": [
+        "effects": [
             {
-                "id": "Stat",
-                "args": [ "Resistance", "0.8" ]
+                "Type": "Stat",
+                "Stat": "Resistance",
+                "Multiplier": 0.6
             }
         ]
     },
@@ -266,10 +286,11 @@
         "range": 5,
         "element": 1,
         "PPCost": 0,
-        "effectImages": [
+        "effects": [
             {
-                "id": "Stat",
-                "args": [ "Attack", "0.8" ]
+                "Type": "Stat",
+                "Stat": "Attack",
+                "Multiplier": 0.4
             }
         ]
     },
@@ -280,9 +301,9 @@
         "range": 1,
         "element": 3,
         "PPCost": 4,
-        "effectImages": [
+        "effects": [
             {
-                "id": "Restore"
+                "Type": "Restore"
             }
         ]
     },
@@ -293,9 +314,9 @@
         "range": 1,
         "element": 3,
         "PPCost": 4,
-        "effectImages": [
+        "effects": [
             {
-                "id": "Restore"
+                "Type": "Restore"
             }
         ]
     },
@@ -306,10 +327,10 @@
         "range": 1,
         "element": 0,
         "PPCost": 15,
-        "effectImages": [
+        "effects": [
             {
-                "id": "Revive",
-                "args": [ "75" ]
+                "Type": "Revive",
+                "Percentage": 75
             }
         ]
     },
@@ -320,10 +341,10 @@
         "range": 1,
         "element": 1,
         "PPCost": 10,
-        "effectImages": [
+        "effects": [
             {
-                "id": "Revive",
-                "args": [ "66" ]
+                "Type": "Revive",
+                "Percentage": 66
             }
         ]
     },
@@ -334,10 +355,10 @@
         "range": 2,
         "element": 4,
         "PPCost": 1,
-        "effectImages": [
+        "effects": [
             {
-                "id": "Revive",
-                "args": [ "100" ]
+                "Type": "Revive",
+                "Percentage": 100
             }
         ]
     },
@@ -347,9 +368,9 @@
         "emote": "<:Break:536969993490006036>",
         "element": 3,
         "PPCost": 5,
-        "effectImages": [
+        "effects": [
             {
-                "id": "Break"
+                "Type": "Break"
             }
         ]
     },
@@ -360,9 +381,9 @@
         "range": 1,
         "element": 1,
         "PPCost": 4,
-        "effectImages": [
+        "effects": [
             {
-                "id": "Restore"
+                "Type": "Break"
             }
         ]
     },
@@ -372,9 +393,9 @@
         "emote": "<:Blaze:551042852730175520>",
         "element": 1,
         "PPCost": 5,
-        "effectImages": [
+        "effects": [
             {
-                "id": "Break"
+                "Type": "Break"
             }
         ]
     },
@@ -384,13 +405,14 @@
         "emote": "<:Bind:549526931465568257>",
         "range": 1,
         "element": 2,
-        "effectImages": [
+        "PPCost": 5,
+        "effects": [
             {
-                "id": "Condition",
-                "args": [ "Seal", "70" ]
+                "Type": "Condition",
+                "Condition": "Seal",
+                "Probability": 80
             }
-        ],
-        "PPCost": 5
+        ]
     },
     "Smoke Bomb": {
         "name": "Smoke Bomb",
@@ -399,10 +421,11 @@
         "range": 1,
         "element": 0,
         "PPCost": 0,
-        "effectImages": [
+        "effects": [
             {
-                "id": "Condition",
-                "args": [ "Delusion", "35" ]
+                "Type": "Condition",
+                "Condition": "Delusion",
+                "Probability": 55
             }
         ]
     },
@@ -413,10 +436,11 @@
         "range": 1,
         "element": 0,
         "PPCost": 0,
-        "effectImages": [
+        "effects": [
             {
-                "id": "Condition",
-                "args": [ "Sleep", "35" ]
+                "Type": "Condition",
+                "Condition": "Sleep",
+                "Probability": 40
             }
         ]
     },
@@ -427,10 +451,11 @@
         "range": 1,
         "element": 1,
         "PPCost": 0,
-        "effectImages": [
+        "effects": [
             {
-                "id": "Stat",
-                "args": [ "Attack", "1.25" ]
+                "Type": "Stat",
+                "Stat": "Attack",
+                "Multiplier": 1.25
             }
         ]
     },
@@ -441,10 +466,11 @@
         "range": 3,
         "element": 0,
         "PPCost": 0,
-        "effectImages": [
+        "effects": [
             {
-                "id": "Condition",
-                "args": [ "Sleep", "25" ]
+                "Type": "Condition",
+                "Condition": "Sleep",
+                "Probability": 25
             }
         ]
     },
@@ -456,10 +482,10 @@
         "element": 0,
         "PPCost": 0,
         "hasPriority": true,
-        "effectImages": [
+        "effects": [
             {
-                "id": "ReduceDamage",
-                "args": [ "50" ]
+                "Type": "ReduceDamage",
+                "DamageReduction": 50
             }
         ]
     },
@@ -470,10 +496,11 @@
         "range": 3,
         "element": 2,
         "PPCost": 4,
-        "effectImages": [
+        "effects": [
             {
-                "id": "Condition",
-                "args": [ "Delusion", "30" ]
+                "Type": "Condition",
+                "Condition": "Delusion",
+                "Probability": 80
             }
         ]
     },
@@ -484,10 +511,11 @@
         "range": 3,
         "element": 2,
         "PPCost": 0,
-        "effectImages": [
+        "effects": [
             {
-                "id": "Condition",
-                "args": [ "DeathCurse", "50" ]
+                "Type": "Condition",
+                "Condition": "Death Curse",
+                "Probability": 45
             }
         ]
     },
@@ -498,10 +526,11 @@
         "range": 3,
         "element": 0,
         "PPCost": 5,
-        "effectImages": [
+        "effects": [
             {
-                "id": "Condition",
-                "args": [ "Haunt", "25" ]
+                "Type": "Condition",
+                "Condition": "Haunt",
+                "Probability": 30
             }
         ]
     },
@@ -512,10 +541,11 @@
         "range": 3,
         "element": 0,
         "PPCost": 0,
-        "effectImages": [
+        "effects": [
             {
-                "id": "Condition",
-                "args": [ "Haunt", "25" ]
+                "Type": "Condition",
+                "Condition": "Haunt",
+                "Probability": 26
             }
         ]
     },
@@ -526,10 +556,10 @@
         "range": 3,
         "element": 0,
         "PPCost": 4,
-        "effectImages": [
+        "effects": [
             {
-                "id": "ChanceToOHKO",
-                "args": [ " 30" ]
+                "Type": "OHKO",
+                "Probability": 30
             }
         ]
     },
@@ -540,10 +570,11 @@
         "range": 3,
         "element": 2,
         "PPCost": 4,
-        "effectImages": [
+        "effects": [
             {
-                "id": "Condition",
-                "args": [ "Sleep", "50" ]
+                "Type": "Condition",
+                "Condition": "Sleep",
+                "Probability": 66
             }
         ]
     },
@@ -554,10 +585,10 @@
         "range": 1,
         "element": 3,
         "PPCost": 0,
-        "effectImages": [
+        "effects": [
             {
-                "id": "MysticCall",
-                "args": [ "Anger Ball 1", "Anger Ball 2", "Guardian Ball 1", "Guardian Ball 2", "Refresh Ball 1", "Refresh Ball 2", "Thunder Ball 1", "Thunder Ball 2", "Death Ball" ]
+                "Type": "MysticCall",
+                "EnemyNames": [ "Anger Ball 1", "Anger Ball 2", "Guardian Ball 1", "Guardian Ball 2", "Refresh Ball 1", "Refresh Ball 2", "Thunder Ball 1", "Thunder Ball 2", "Death Ball" ]
             }
         ]
     },
@@ -565,9 +596,9 @@
         "name": "Flee",
         "targetType": 0,
         "emote": "<:Flee:597006812247490571>",
-        "EffectImages": [
+        "effects": [
             {
-                "id": "NoEffect"
+                "Type": "NoEffect"
             }
         ]
     },
@@ -575,10 +606,10 @@
         "name": "Guard Aura",
         "targetType": 1,
         "emote": "<:Guardian_Ball:600641727421743104>",
-        "EffectImages": [
+        "effects": [
             {
-                "id": "ReduceDamage",
-                "args": [ "90" ]
+                "Type": "ReduceDamage",
+                "DamageReduction": 90
             }
         ]
     },
@@ -589,12 +620,12 @@
         "range": 5,
         "element": 2,
         "PPCost": 0,
-        "percentageDamage": 20,
-        "effectImages": [
+        "effects": [
             {
-                "id": "Condition",
-                "args": [ "Delusion", "100" ]
+                "Type": "Condition",
+                "Condition": "Delusion",
+                "Probability": 100
             }
         ]
-    },
+    }
 }
