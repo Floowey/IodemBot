@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
-    internal class ConditionEffect : IEffect
+    internal class ConditionEffect : Effect
     {
         public override string Type { get; } = "Condition";
         private Condition Condition { get; set; }

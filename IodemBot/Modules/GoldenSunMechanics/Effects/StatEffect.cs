@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
-    internal class StatEffect : IEffect
+    internal class StatEffect : Effect
     {
         public override string Type { get; } = "Stat";
         private string Stat { get; set; }

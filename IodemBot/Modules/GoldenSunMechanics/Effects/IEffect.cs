@@ -8,15 +8,33 @@ using System.Linq;
 namespace IodemBot.Modules.GoldenSunMechanics
 {
     [JsonConverter(typeof(JsonSubtypes), "Type")]
-    public abstract class IEffect
+    [JsonSubtypes.FallBackSubType(typeof(NoEffect))]
+    [JsonSubtypes.KnownSubType(typeof(AddDamageEffect), "AddDamage")]
+    [JsonSubtypes.KnownSubType(typeof(AttackWithTeammateEffect), "AttackWithTeamMate")]
+    [JsonSubtypes.KnownSubType(typeof(BreakEffect), "Break")]
+    [JsonSubtypes.KnownSubType(typeof(ChancetoOHKOEffect), "OHKO")]
+    [JsonSubtypes.KnownSubType(typeof(ConditionEffect), "Condition")]
+    [JsonSubtypes.KnownSubType(typeof(CounterEffect), "Counter")]
+    [JsonSubtypes.KnownSubType(typeof(HPDrainEffect), "HPDrain")]
+    [JsonSubtypes.KnownSubType(typeof(MayIgnoreDefenseEffect), "IgnoreDefense")]
+    [JsonSubtypes.KnownSubType(typeof(MultiplyDamageEffect), "MultiplyDamage")]
+    [JsonSubtypes.KnownSubType(typeof(MysticCallEffect), "MysticCall")]
+    [JsonSubtypes.KnownSubType(typeof(NoEffect), "Nothing")]
+    [JsonSubtypes.KnownSubType(typeof(PPDrainEffect), "PPDrain")]
+    [JsonSubtypes.KnownSubType(typeof(ReduceDamageEffect), "ReduceDamage")]
+    [JsonSubtypes.KnownSubType(typeof(ReduceHPtoOneEffect), "ReduceHPToOne")]
+    [JsonSubtypes.KnownSubType(typeof(RestoreEffect), "Restore")]
+    [JsonSubtypes.KnownSubType(typeof(ReviveEffect), "Revive")]
+    [JsonSubtypes.KnownSubType(typeof(StatEffect), "Stat")]
+    [JsonSubtypes.KnownSubType(typeof(UserDiesEffect), "UserDies")]
+    public abstract class Effect
     {
         public enum TimeToActivate { beforeDamge, afterDamage };
 
-        public TimeToActivate timeToActivate = TimeToActivate.afterDamage;
+        public TimeToActivate ActivationTime { get; set; } = TimeToActivate.afterDamage;
+        public virtual string Type { get; } = "Nothing";
 
         public abstract List<string> Apply(ColossoFighter User, ColossoFighter Target);
-
-        public virtual string Type { get; } = "Nothing";
 
         protected virtual bool InternalValidSelection(ColossoFighter user)
         {
@@ -47,11 +65,5 @@ namespace IodemBot.Modules.GoldenSunMechanics
         {
             return "Unspecified Effect";
         }
-    }
-
-    public struct EffectImage
-    {
-        public string Id { get; set; }
-        public string[] Args { get; set; }
     }
 }

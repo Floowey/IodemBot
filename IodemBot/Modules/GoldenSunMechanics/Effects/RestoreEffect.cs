@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
-    public class RestoreEffect : IEffect
+    public class RestoreEffect : Effect
     {
         public override string Type { get; } = "Restore";
 

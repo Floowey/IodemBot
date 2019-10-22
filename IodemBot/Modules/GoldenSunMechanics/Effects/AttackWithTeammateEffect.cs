@@ -4,11 +4,11 @@ using System.Linq;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
-    internal class AttackWithTeammateEffect : IEffect
+    internal class AttackWithTeammateEffect : Effect
     {
         public AttackWithTeammateEffect()
         {
-            timeToActivate = TimeToActivate.beforeDamge;
+            ActivationTime = TimeToActivate.beforeDamge;
         }
 
         public override string Type { get; } = "AttackWithTeammate";

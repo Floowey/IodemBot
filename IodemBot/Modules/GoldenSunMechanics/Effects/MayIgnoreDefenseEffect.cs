@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
-    internal class MayIgnoreDefenseEffect : IEffect
+    internal class MayIgnoreDefenseEffect : Effect
     {
         public override string Type { get; } = "IgnoreDefense";
         private int IgnorePercent { get; set; } = 20;

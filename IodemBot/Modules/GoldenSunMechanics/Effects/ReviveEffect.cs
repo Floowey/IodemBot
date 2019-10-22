@@ -6,16 +6,16 @@ using System.Linq;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
-    public class ReviveEffect : IEffect
+    public class ReviveEffect : Effect
     {
         public override string Type { get; } = "Revive";
-        private uint percentage { get; set; } = 50;
+        private uint Percentage { get; set; } = 50;
 
         public override List<string> Apply(ColossoFighter User, ColossoFighter Target)
         {
             List<string> log = new List<string>();
             bool wasDead = !Target.IsAlive;
-            log.AddRange(Target.Revive(percentage));
+            log.AddRange(Target.Revive(Percentage));
             if (wasDead)
             {
                 if (User is PlayerFighter)
@@ -28,7 +28,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public override string ToString()
         {
-            return $"Revive the target to {percentage}% of its maximum Health";
+            return $"Revive the target to {Percentage}% of its maximum Health";
         }
 
         protected override int InternalChooseBestTarget(List<ColossoFighter> targets)

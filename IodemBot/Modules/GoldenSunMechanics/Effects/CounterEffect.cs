@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
-    public class CounterEffect : IEffect
+    public class CounterEffect : Effect
     {
         public override string Type { get; } = "Counter";
 

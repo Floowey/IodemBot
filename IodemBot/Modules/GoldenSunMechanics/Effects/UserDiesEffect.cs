@@ -3,13 +3,13 @@ using System.Collections.Generic;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
-    internal class UserDiesEffect : IEffect
+    internal class UserDiesEffect : Effect
     {
         public override string Type { get; } = "UserDies";
 
         public UserDiesEffect()
         {
-            timeToActivate = TimeToActivate.beforeDamge;
+            ActivationTime = TimeToActivate.beforeDamge;
         }
 
         public override List<string> Apply(ColossoFighter User, ColossoFighter Target)

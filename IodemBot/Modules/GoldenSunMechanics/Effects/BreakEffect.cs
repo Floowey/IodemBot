@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
-    internal class BreakEffect : IEffect
+    internal class BreakEffect : Effect
     {
         public override string Type { get; } = "Break";
 

@@ -3,19 +3,19 @@ using System.Collections.Generic;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
-    internal class MultiplyDamageEffect : IEffect
+    internal class MultiplyDamageEffect : Effect
     {
         public override string Type { get; } = "MultiplyDamage";
-        private double[] multipliers { get; set; } = { 2.0 };
-        private int[] probabilites { get; set; } = { 10 };
+        private double[] Multipliers { get; set; } = { 2.0 };
+        private int[] Probabilites { get; set; } = { 10 };
 
         public override List<string> Apply(ColossoFighter User, ColossoFighter Target)
         {
-            for (int i = 0; i < multipliers.Length; i++)
+            for (int i = 0; i < Multipliers.Length; i++)
             {
-                if (Global.Random.Next(0, 100) <= probabilites[i])
+                if (Global.Random.Next(0, 100) <= Probabilites[i])
                 {
-                    User.offensiveMult *= multipliers[i];
+                    User.offensiveMult *= Multipliers[i];
                     break;
                 }
             }
@@ -24,7 +24,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public override string ToString()
         {
-            return $"{(probabilites[0] == 100 ? "" : "Chance to do ")}{string.Join("x, ", multipliers)}x Damage";
+            return $"{(Probabilites[0] == 100 ? "" : "Chance to do ")}{string.Join("x, ", Multipliers)}x Damage";
         }
     }
 }

@@ -5,10 +5,10 @@ using System.Linq;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
-    internal class ReduceDamageEffect : IEffect
+    internal class ReduceDamageEffect : Effect
     {
         public override string Type { get; } = "ReduceDamage";
-        private int damageReduction { get; set; } = 0;
+        private int DamageReduction { get; set; } = 0;
 
         public override List<string> Apply(ColossoFighter User, ColossoFighter Target)
         {
@@ -18,7 +18,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 return log;
             }
 
-            Target.defensiveMult *= (double)(100 - damageReduction) / 100;
+            Target.defensiveMult *= (double)(100 - DamageReduction) / 100;
 
             return log;
         }
@@ -31,7 +31,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public override string ToString()
         {
-            return $"Reduces damage taken by {damageReduction}%";
+            return $"Reduces damage taken by {DamageReduction}%";
         }
     }
 }

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
-    internal class ChancetoOHKOEffect : IEffect
+    internal class ChancetoOHKOEffect : Effect
     {
-        private readonly int Probability = 0;
+        public int Probability { get; set; } = 0;
 
         public override string Type { get; } = "OHKO";
 

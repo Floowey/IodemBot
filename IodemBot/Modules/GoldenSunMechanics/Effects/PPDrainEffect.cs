@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
-    internal class PPDrainEffect : IEffect
+    internal class PPDrainEffect : Effect
     {
         public override string Type { get; } = "PPDrain";
         private uint Percentage { get; set; } = 20;

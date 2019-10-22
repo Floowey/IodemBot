@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
-    public class ReduceHPtoOneEffect : IEffect
+    public class ReduceHPtoOneEffect : Effect
     {
         public override string Type { get; } = "ReduceHPToOne";
         private int Probability { get; set; } = 10;

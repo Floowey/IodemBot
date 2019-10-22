@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
-    internal class MysticCallEffect : IEffect
+    internal class MysticCallEffect : Effect
     {
         public override string Type { get; } = "MysticCall";
         private List<string> EnemyNames { get; set; }
