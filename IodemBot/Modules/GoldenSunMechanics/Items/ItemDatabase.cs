@@ -71,7 +71,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         {
             if (shop == null)
             {
-                shop = new Inventory(new List<string>(), new List<string>(), new List<string>());
+                shop = new Inventory();
             }
 
             shop.Clear();
@@ -114,9 +114,13 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public static Item GetItem(string itemName)
         {
+            var isBroken = itemName.EndsWith("(B)");
+            itemName = isBroken ? itemName.Substring(0, itemName.Length - 3) : itemName;
             if (itemsDatabase.TryGetValue(itemName, out Item item))
             {
-                return (Item)item.Clone();
+                var i = (Item)item.Clone();
+                i.IsBroken = isBroken;
+                return i;
             }
 
             return new Item() { Name = $"{itemName} NOT IMPLEMENTED!" };
@@ -158,23 +162,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 return items;
             }
 
-            if (itemNames.Count() > 0)
-            {
-                foreach (var s in itemNames)
-                {
-                    if (s.EndsWith("(B)"))
-                    {
-                        var i = GetItem(s.Substring(0, s.Length - 3));
-                        i.IsBroken = true;
-                        items.Add(i);
-                    }
-                    else
-                    {
-                        items.Add(GetItem(s));
-                    }
-                }
-            }
-
+            itemNames.ToList().ForEach(i => items.Add(GetItem(i)));
             return items;
         }
 
