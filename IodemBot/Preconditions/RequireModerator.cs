@@ -4,26 +4,29 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 
-// Inherit from PreconditionAttribute
-public class RequireModerator : PreconditionAttribute
+namespace Iodembot.Preconditions
 {
-    // Override the CheckPermissions method
-    public override Task<PreconditionResult> CheckPermissionsAsync(ICommandContext context, CommandInfo command, IServiceProvider services)
+    // Inherit from PreconditionAttribute
+    public class RequireModerator : PreconditionAttribute
     {
-        if (context.User is SocketGuildUser gUser)
+        // Override the CheckPermissions method
+        public override Task<PreconditionResult> CheckPermissionsAsync(ICommandContext context, CommandInfo command, IServiceProvider services)
         {
-            if (gUser.Roles.Any(r => r.Name == "Admin" || r.Name == "Moderators" || r.Guild.Id == 447135557722832909))
+            if (context.User is SocketGuildUser gUser)
             {
-                return Task.FromResult(PreconditionResult.FromSuccess());
+                if (gUser.Roles.Any(r => r.Name == "Admin" || r.Name == "Moderators" || r.Guild.Id == 447135557722832909))
+                {
+                    return Task.FromResult(PreconditionResult.FromSuccess());
+                }
+                else
+                {
+                    return Task.FromResult(PreconditionResult.FromError($"You must be stuff to run this command."));
+                }
             }
             else
             {
-                return Task.FromResult(PreconditionResult.FromError($"You must be stuff to run this command."));
+                return Task.FromResult(PreconditionResult.FromError("You must be in /r/GoldenSun server to run this command."));
             }
-        }
-        else
-        {
-            return Task.FromResult(PreconditionResult.FromError("You must be in /r/GoldenSun server to run this command."));
         }
     }
 }

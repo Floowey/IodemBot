@@ -85,7 +85,7 @@ namespace IodemBot.Modules.ColossoBattles
         public BaseStatOption BaseStatOption { get; set; } = BaseStatOption.Default;
         public BaseStatManipulationOption BaseStatManipulationOption { get; set; } = BaseStatManipulationOption.Default;
 
-        public uint SetLevel { get; set; } = 100;
+        public uint SetLevel { get; set; } = 99;
         public Stats StatMultiplier { get; set; } = new Stats(100, 100, 100, 100, 100);
 
         public ElementalStats ElStatMultiplier = new ElementalStats(100, 100, 100, 100, 100, 100, 100, 100);

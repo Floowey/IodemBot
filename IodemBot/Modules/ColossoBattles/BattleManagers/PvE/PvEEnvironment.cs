@@ -363,7 +363,7 @@ namespace IodemBot.Modules.ColossoBattles
             }
             catch (HttpException e)
             {
-                Console.WriteLine("Failed drawing Battle, retrying." + e.ToString());
+                Console.WriteLine("Failed drawing Battle, retrying:" + e.ToString());
                 Battle.log.Add("Failed drawing Battle, retrying.");
                 await WriteStatusInit();
                 await WriteEnemiesInit();
@@ -371,7 +371,7 @@ namespace IodemBot.Modules.ColossoBattles
             }
             catch (Exception e)
             {
-                Console.WriteLine("Exception while writing Battle" + e.ToString());
+                Console.WriteLine("Exception while writing Battle:" + e.ToString());
                 throw new Exception("Exception while writing Battle", e);
             }
         }

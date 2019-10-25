@@ -8,13 +8,14 @@ namespace IodemBot.Modules.GoldenSunMechanics
 {
     public class OffensivePsynergy : Psynergy
     {
+        private static readonly double[] spread = new double[] { 1.0, 0.66, 0.5, 0.33, 0.25, 0.15, 0.1 };
+
         public uint Power { get; set; } = 0;
         public uint AddDamage { get; set; } = 0;
         public double DmgMult { get; set; } = 1;
         public uint PercentageDamage { get; set; } = 0;
         private bool AttackBased { get { return Power == 0; } }
         public bool IgnoreSpread { get; set; }
-        private readonly double[] spread = new double[] { 1.0, 0.66, 0.5, 0.33, 0.25, 0.15, 0.1 };
 
         public override object Clone()
         {

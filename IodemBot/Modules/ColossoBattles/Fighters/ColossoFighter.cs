@@ -49,7 +49,7 @@ namespace IodemBot.Modules.ColossoBattles
         public Stats Stats { get; set; } = new Stats(1, 1, 1, 1, 1);
         public ElementalStats ElStats { get; set; } = new ElementalStats();
         public string ImgUrl { get; set; }
-        [JsonIgnore] public Move[] Moves { get; set; }
+        [JsonIgnore] public List<Move> Moves { get; set; }
 
         [JsonProperty("Conditions", ItemConverterType = typeof(StringEnumConverter))]
         private List<Condition> Conditions = new List<Condition>();

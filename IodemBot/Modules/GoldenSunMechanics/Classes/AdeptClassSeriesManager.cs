@@ -20,7 +20,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             allClasses = data.ToObject<List<AdeptClassSeries>>();
         }
 
-        internal static Move[] GetMoveset(UserAccount avatar)
+        internal static List<Move> GetMoveset(UserAccount avatar)
         {
             List<Move> moves = new List<Move> { new Attack(), new Defend() };
 
@@ -42,7 +42,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             {
                 moves.Where(m => m is Defend).First().Emote = gear.GetItem(ItemCategory.ArmWear).Icon;
             }
-            return moves.ToArray();
+            return moves;
         }
 
         internal static Move[] GetMoveset(AdeptClass adeptClass)

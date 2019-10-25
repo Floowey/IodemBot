@@ -1,6 +1,7 @@
 ﻿using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
+using Iodembot.Preconditions;
 using IodemBot.Core.UserManagement;
 using System;
 using System.Collections.Generic;

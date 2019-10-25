@@ -83,7 +83,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             return psynergies.ToArray();
         }
 
-        public static Move[] GetMovepool(string[] psynergiesString, bool hasAttack, bool hasDefend)
+        public static List<Move> GetMovepool(string[] psynergiesString, bool hasAttack, bool hasDefend)
         {
             List<Move> moves = new List<Move>();
             if (hasAttack)
@@ -99,7 +99,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
             moves.AddRange(GetPsynergy(psynergiesString));
 
-            return moves.ToArray();
+            return moves;
         }
 
         public static T Clone<T>(T source)
