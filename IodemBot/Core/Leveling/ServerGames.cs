@@ -1,9 +1,7 @@
 ﻿using Discord;
 using Discord.WebSocket;
 using IodemBot.Core.UserManagement;
-using IodemBot.Extensions;
 using IodemBot.Modules;
-using IodemBot.Modules.ColossoBattles;
 using IodemBot.Modules.GoldenSunMechanics;
 using System;
 using System.Collections.Generic;
@@ -206,101 +204,6 @@ namespace IodemBot.Core.Leveling
             var userAccount = UserAccounts.GetAccount(user);
             userAccount.ServerStats.RpsStreak = 0;
             UserAccounts.SaveAccounts();
-        }
-
-        internal static async Task UserWonBattle(UserAccount userAccount, int winsInARow, int LureCaps, BattleStats battleStats, BattleDifficulty diff, ITextChannel lobbyChannel, IEnumerable<ColossoFighter> winners, bool wasMimic)
-        {
-            uint oldLevel = userAccount.LevelNumber;
-            var baseXP = 20 + 5 * LureCaps + winsInARow / 4;
-            var xpawarded = (uint)new Random().Next(baseXP, baseXP * 2) * Math.Max(3, (uint)Math.Pow((int)diff + 1, 2));
-            userAccount.XP += xpawarded;
-            userAccount.Inv.AddBalance(xpawarded / 2);
-            uint newLevel = userAccount.LevelNumber;
-
-            userAccount.ServerStats.ColossoWins++;
-            userAccount.ServerStats.ColossoStreak++;
-            userAccount.ServerStats.ColossoHighestStreak = Math.Max(userAccount.ServerStats.ColossoHighestStreak, userAccount.ServerStats.ColossoStreak);
-            switch (battleStats.TotalTeamMates)
-            {
-                case 0:
-                    userAccount.ServerStats.ColossoHighestRoundEndlessSolo = Math.Max(userAccount.ServerStats.ColossoHighestRoundEndlessSolo, winsInARow);
-                    break;
-
-                case 1:
-                    if (winsInARow > userAccount.ServerStats.ColossoHighestRoundEndlessDuo)
-                    {
-                        userAccount.ServerStats.ColossoHighestRoundEndlessDuo = winsInARow;
-                        userAccount.ServerStats.ColossoHighestRoundEndlessDuoNames = string.Join(", ", winners.Select(p => p.Name));
-                    }
-                    break;
-
-                case 2:
-                    if (winsInARow > userAccount.ServerStats.ColossoHighestRoundEndlessTrio)
-                    {
-                        userAccount.ServerStats.ColossoHighestRoundEndlessTrio = winsInARow;
-                        userAccount.ServerStats.ColossoHighestRoundEndlessTrioNames = string.Join(", ", winners.Select(p => p.Name));
-                    }
-                    break;
-
-                case 3:
-                    if (winsInARow > userAccount.ServerStats.ColossoHighestRoundEndlessQuad)
-                    {
-                        userAccount.ServerStats.ColossoHighestRoundEndlessQuad = winsInARow;
-                        userAccount.ServerStats.ColossoHighestRoundEndlessQuadNames = string.Join(", ", winners.Select(p => p.Name));
-                    }
-                    break;
-            }
-
-            userAccount.BattleStats += battleStats;
-            _ = UnlockClasses(userAccount, lobbyChannel);
-
-            if (wasMimic || Global.Random.Next(0, 100) <= 7 + battleStats.TotalTeamMates * 2 + 4 * LureCaps + winsInARow / 10 - 1)
-            {
-                ChestQuality awardedChest = GetRandomChest(diff);
-                userAccount.Inv.AwardChest(awardedChest);
-                var embed = new EmbedBuilder();
-                embed.WithColor(Colors.Get("Iodem"));
-                embed.WithDescription($"{((SocketTextChannel)lobbyChannel).Users.Where(u => u.Id == userAccount.ID).FirstOrDefault().Mention} found a {Inventory.ChestIcons[awardedChest]} {awardedChest} Chest!");
-                await lobbyChannel.SendMessageAsync("", false, embed.Build());
-            }
-
-            UserAccounts.SaveAccounts();
-            if (oldLevel != newLevel)
-            {
-                var user = (SocketGuildUser)await lobbyChannel.GetUserAsync(userAccount.ID); // Where(s => s. == userAccount.ID).First();
-                Leveling.LevelUp(userAccount, user, (SocketTextChannel)lobbyChannel);
-            }
-
-            await Task.CompletedTask;
-        }
-
-        private static ChestQuality GetRandomChest(BattleDifficulty diff)
-        {
-            ChestQuality[] chests;
-            switch (diff)
-            {
-                case BattleDifficulty.Tutorial:
-                    chests = new ChestQuality[] { ChestQuality.Wooden };
-                    return chests.Random();
-
-                case BattleDifficulty.Easy:
-                default:
-                    chests = new ChestQuality[] { ChestQuality.Wooden, ChestQuality.Wooden, ChestQuality.Normal, ChestQuality.Normal, ChestQuality.Normal, ChestQuality.Normal, ChestQuality.Normal, ChestQuality.Silver };
-                    break;
-
-                case BattleDifficulty.Medium:
-                    chests = new ChestQuality[] { ChestQuality.Normal, ChestQuality.Normal, ChestQuality.Normal, ChestQuality.Normal, ChestQuality.Normal, ChestQuality.Silver, ChestQuality.Silver, ChestQuality.Gold };
-                    break;
-
-                case BattleDifficulty.MediumRare:
-                    chests = new ChestQuality[] { ChestQuality.Silver, ChestQuality.Silver, ChestQuality.Silver, ChestQuality.Gold, ChestQuality.Gold };
-                    break;
-
-                case BattleDifficulty.Hard:
-                    chests = new ChestQuality[] { ChestQuality.Silver, ChestQuality.Gold, ChestQuality.Gold, ChestQuality.Gold, ChestQuality.Gold, ChestQuality.Adept };
-                    break;
-            }
-            return chests.Random();
         }
 
         internal static async Task UserHasCursed(SocketGuildUser user, SocketTextChannel channel)
