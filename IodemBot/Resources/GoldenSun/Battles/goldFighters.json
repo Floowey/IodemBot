@@ -153,9 +153,9 @@
     "Buff Fire Djinn" {
 "name": ":b:ire Djinn",
 "movepool": [ "Supernova", "Searing Beam", "Pyroclasm", "Dire Inferno", "Vicious Chop", "Epicenter", "Star Mine", "Meteor Blow" ],
-"imgurl": "https://pbs.twimg.com/media/DxrDsW8VYAAcXDr.jpg:large",
+"imgurl": "https://pbs.twimg.com/media/DxrDsW8VYAAcXDr.jpg",
 "stats": {
-"maxhp": 3000,
+"maxhp": 4444,
 "maxpp": 200,
 "atk": 450,
 "def": 147,
