@@ -201,7 +201,7 @@
         "emote": "<:Weapon_Grace:537001160058601472>",
         "range": 1,
         "element": 0,
-        "PPCost": 5,
+        "PPCost": 12,
         "effectImages": [
             {
                 "id": "Stat",

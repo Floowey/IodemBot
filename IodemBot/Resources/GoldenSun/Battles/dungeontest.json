@@ -1,0 +1,150 @@
+﻿{
+    "Tret Tree": {
+        "name": "Tret Tree",
+        "IsOneTimeOnly": true,
+        "FlavourText": "Inside the cursed tree, Tret",
+        "Image": "https://vignette.wikia.nocookie.net/goldensun/images/8/8f/KolimaForestTret.png",
+        "Matchups": [
+            {
+                "Flavourtext": "A respectable first fight, yet you sigh upon recalling the great size of Tret.",
+                "EnemyNames": [ "Rat 1", " Rat Soldier 1", " Rat 1" ],
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 3,
+                            "XP": 34,
+                            "Coins": 45
+                        }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "First there was the forest, now there's this tree maze, too.",
+                "EnemyNames": [ "Gnome", " Creeper 1", " Brutal Troll 1", " Rat 1" ],
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 3,
+                            "XP": 43,
+                            "Coins": 35
+                        },
+                        {
+                            "Weight": 1,
+                            "XP": 34,
+                            "Coins": 22,
+                            "Chest": "Wooden"
+                        }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "Since they were born, they've been stayin' alive",
+                "EnemyNames": [ "Drone Bee 1", " Gnome", " Gnome", " Gnome" ],
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "XP": 98,
+                            "Coins": 44
+                        }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "After some searching around a while, you find a room with a table of spiders playing cards, they immediately notice you, uh oh...",
+                "EnemyNames": [ "Spider 1", "Spider 1", "Spider 1", "Spider 1", "Spider 1" ],
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "XP": 77,
+                            "Coins": 56
+                        }
+                    ],
+                    [
+                        {
+                            "Weight": 1,
+                            "Chest": "Normal"
+                        },
+                        {
+                            "Weight": 4
+                        }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "You take the first exit you see, which surprisingly leads to a Jupiter Djinni. However, he's in a bad mood so wants to battle.",
+                "EnemyNames": [ "Jupiter Djinni 1" ],
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 4,
+                            "XP": 87,
+                            "Coins": 100
+                        },
+                        {
+                            "Weight": 1,
+                            "XP": 66,
+                            "Coins": 80,
+                            "Item": "Adepts Clothes"
+                        }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "You return to the third floor and notice some shadows in the corner, What is it? CREEPER! Aw man....",
+                "EnemyNames": [ "Creeper 1", "Creeper 1", "Creeper 1", "Creeper 1" ],
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "XP": 69,
+                            "Coins": 169
+                        }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "As you are about to check the chest in the room, a troll enters the room",
+                "EnemyNames": [ "Brutal Troll 1" ],
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "XP": 60,
+                            "Coins": 89
+                        }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "As you are about to check the chest AGAIN, more trolls enter the room. Someone likes to troll you.",
+                "EnemyNames": [ "Troll 1", " Troll 1", " Troll 1" ],
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "XP": 160,
+                            "Coins": 133,
+                            "Item": "Healing Ring"
+                        }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "You have had enough of this tree. You want to end this, so you jump down the middle of the tree. To your surprise, you found what you were looking for: Tret",
+                "EnemyNames": [ "Tret" ],
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "XP": 226,
+                            "Coins": 700,
+                            "Dungeon": "Fuchin Temple"
+                        }
+                    ]
+                ]
+            }
+        ]
+    }
+}

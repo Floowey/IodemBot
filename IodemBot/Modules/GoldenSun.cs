@@ -84,7 +84,7 @@ namespace IodemBot.Modules
                 if (curSeries.Name.Equals(series.Name) || success)
                 {
                     await Context.Channel.SendMessageAsync(embed: embed
-                    .WithDescription($":x: You are {Article(account.GsClass)} {account.GsClass} now, {((SocketGuildUser)Context.User).DisplayName()}.")
+                    .WithDescription($"You are {Article(account.GsClass)} {account.GsClass} now, {((SocketGuildUser)Context.User).DisplayName()}.")
                     .Build());
                     return;
                 }
@@ -179,7 +179,7 @@ namespace IodemBot.Modules
                 .AddField("Account Created", user.CreatedAt)
                 .AddField("User Joined", user.JoinedAt)
                 .AddField("Status", user.Status, true)
-                .AddField("Last Activity", account.ServerStats.LastDayActive)
+                .AddField("Last Activity", account.LastXP)
                 .Build());
         }
 
