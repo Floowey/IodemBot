@@ -240,7 +240,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                     return string.Join(", ", Inv.Select(i => $"{i.IconDisplay} {i.Name}{(i.IsBroken ? " (Broken)" : "")}").ToArray());
 
                 case (Detail.NameAndPrice):
-                    return string.Join("\n", Inv.Select(i => $"{i.IconDisplay} {i.Name} - <:coin:569836987767324672>{i.Price}").ToArray());
+                    return string.Join("\n", Inv.Select(i => $"{i.IconDisplay} {i.Name} - {(Count <= 60 ? "<:coin:569836987767324672>" : "")}{i.Price}").ToArray());
             }
         }
 

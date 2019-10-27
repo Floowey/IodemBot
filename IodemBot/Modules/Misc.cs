@@ -59,10 +59,32 @@ namespace IodemBot.Modules
         [Remarks("Pong")]
         public async Task Ping()
         {
+            //await TwitchListener.GetStreamers();
             await Context.Channel.SendMessageAsync(embed: new EmbedBuilder()
                 .WithColor(Colors.Get("Iodem"))
                 .WithDescription($"Pong!")
                 .Build());
+        }
+
+        [Command("pong")]
+        [Cooldown(5)]
+        [Remarks("Ping")]
+        public async Task Pong()
+        {
+            //await TwitchListener.GetStreamers();
+            await Context.Channel.SendMessageAsync(embed: new EmbedBuilder()
+                .WithColor(Colors.Get("Iodem"))
+                .WithDescription($"Ping!")
+                .Build());
+        }
+
+        [Command("AllStreams")]
+        [Cooldown(5)]
+        [RequireModerator]
+        public async Task AllStreams()
+        {
+            await Context.Message.DeleteAsync();
+            await TwitchListener.AllStreams(null, null);
         }
 
         [Command("wiki")]
@@ -87,10 +109,11 @@ namespace IodemBot.Modules
         [Remarks("Link the wiki")]
         public async Task Subreddit()
         {
-            var embed = new EmbedBuilder();
-            embed.WithColor(Colors.Get("Iodem"));
-            embed.WithDescription($"https://reddit.com/r/GoldenSun");
-            await Context.Channel.SendMessageAsync("", false, embed.Build());
+            var embed =
+            await Context.Channel.SendMessageAsync("", false, new EmbedBuilder()
+                .WithColor(Colors.Get("Iodem"))
+                .WithDescription($"https://reddit.com/r/GoldenSun")
+                .Build());
         }
 
         [Command("Game"), Alias("ChangeGame", "SetGame")]

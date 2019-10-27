@@ -314,6 +314,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Colors.cs" />
+    <Compile Include="TwitchConfig.cs" />
     <Compile Include="Converter\JsonCreationConverter.cs" />
     <Compile Include="Core\Leveling\ServerGames.cs" />
     <Compile Include="Extensions\DiscordSocketGuildExt.cs" />
@@ -391,7 +392,7 @@
     <Compile Include="Modules\GoldenSunMechanics\RewardSystem\RewardTable.cs" />
     <Compile Include="Modules\GoldenSunMechanics\StatList.cs" />
     <Compile Include="Modules\RockPaperScissors.cs" />
-    <Compile Include="Modules\TwitchListener.cs" />
+    <Compile Include="TwitchListener.cs" />
     <Compile Include="Preconditions\Cooldown.cs" />
     <Compile Include="Global.cs" />
     <Compile Include="Core\Leveling\Leveling.cs" />
@@ -465,6 +466,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Resources\GoldenSun\Moves\statpsy.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\twitch.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SystemLang\quotes.json">
