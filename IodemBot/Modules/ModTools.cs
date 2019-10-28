@@ -70,6 +70,21 @@ namespace IodemBot.Modules
             await Task.CompletedTask;
         }
 
+        [Command("Activity")]
+        public async Task Activity()
+        {
+            var acc = UserAccounts.GetAllAccounts();
+            await ReplyAsync("", false, new EmbedBuilder()
+                .WithDescription("Server activity")
+                .AddField("Total Members", acc.Count(), true)
+                .AddField("24h", acc.Count(a => DateTime.Now.Subtract(new TimeSpan(24, 0, 0)) < a.ServerStats.LastDayActive), true)
+                .AddField("3 Days", acc.Count(a => DateTime.Now.Subtract(new TimeSpan(3, 0, 0, 0)) < a.ServerStats.LastDayActive), true)
+                .AddField("7 Days", acc.Count(a => DateTime.Now.Subtract(new TimeSpan(7, 0, 0, 0)) < a.ServerStats.LastDayActive), true)
+                .AddField("30 Days", acc.Count(a => DateTime.Now.Subtract(new TimeSpan(30, 0, 0, 0)) < a.ServerStats.LastDayActive), true)
+                .AddField("All Time", acc.Count(a => DateTime.Now > DateTime.MinValue), true)
+                .Build());
+        }
+
         [Command("Emotes")]
         [RequireStaff]
         public async Task Emotes()
