@@ -30,6 +30,11 @@ namespace IodemBot.Core.UserManagement
             }
         }
 
+        public static IReadOnlyCollection<UserAccount> GetAllAccounts()
+        {
+            return accounts.AsReadOnly();
+        }
+
         public static void SaveAccounts()
         {
             try

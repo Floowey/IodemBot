@@ -104,7 +104,8 @@ namespace IodemBot.Modules.ColossoBattles
             }
             else
             {
-                throw new KeyNotFoundException(enemyKey);
+                Console.WriteLine($"{enemyKey} not found! Generating Dummy");
+                return new NPCEnemy($"{enemyKey} Not Implemented", Sprites.GetRandomSprite(), new Stats(), new ElementalStats(), new string[] { }, true, true);
             }
         }
 
@@ -172,7 +173,15 @@ namespace IodemBot.Modules.ColossoBattles
             [JsonConstructor]
             public DungeonMatchup(List<string> EnemyNames)
             {
-                EnemyNames.ForEach(s => Enemy.Add(GetEnemy(s)));
+                EnemyNames.ForEach(s =>
+                {
+                    var enemy = GetEnemy(s);
+                    if (EnemyNames.Count(e => e.Equals(s)) > 1)
+                    {
+                        enemy.Name = $"{enemy.Name} {Enemy.Count(e => e.Name.Contains(enemy.Name)) + 1}";
+                    }
+                    Enemy.Add(enemy);
+                });
                 this.EnemyNames = EnemyNames;
             }
 
@@ -180,27 +189,8 @@ namespace IodemBot.Modules.ColossoBattles
             public List<string> EnemyNames { get; set; }
             public string FlavourText { get; set; }
             public RewardTables RewardTables { get; set; } = new RewardTables();
-            public Reward Reward { get; set; } = new Reward();
             public string Image { get; set; }
         }
-    }
-
-    public class Reward
-    {
-        public uint XP { get; set; }
-        public uint Coins { get; set; }
-
-        public int ChestProbability { get; set; } = 0;
-        public ChestQuality Chest { get; set; }
-
-        public int ItemProbability { get; set; }
-        public string Item { get; set; }
-
-        public int DungeonProbability { get; set; }
-        public string DungeonUnlock { get; set; }
-
-        public int SecretDungeonProbability { get; set; }
-        public string SecretDungeon { get; set; }
     }
 
     public class Requirement
