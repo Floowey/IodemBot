@@ -5028,27 +5028,6 @@
         },
         "extraturns": 0
     },
-    "Magicore": {
-        "movepool": [ "Poison Tail", "Bind", "Sleep", "Nova" ],
-        "name": "Mangicore",
-        "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Manticore_King.png",
-        "stats": {
-            "maxhp": 321,
-            "maxpp": 34,
-            "atk": 253,
-            "def": 74,
-            "spd": 109
-        },
-        "elstats": {
-            "marsres": 175,
-            "venusres": 100,
-            "jupiterres": 100,
-            "mercuryres": 25,
-            "venusatk": 95,
-            "marsatk": 115
-        },
-        "extraturns": 0
-    },
     "Mars Djinni 1": {
         "movepool": [ "Flare", "Blast", "Flee" ],
         "name": "Mars Djinni",
@@ -5782,7 +5761,7 @@
         },
         "extraturns": 0
     },
-     "Mimic 7": {
+    "Mimic 7": {
         "movepool": [ "Curse", "Ice Missile", "Debilitate", "Psy Drain", "Sleep", "Condemn" ],
         "name": "Mimic",
         "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Mimic.png",
@@ -6192,26 +6171,6 @@
             "mercuryres": 127,
             "venusres": 100,
             "marsres": 25
-        },
-        "extraturns": 0
-    },
-    "Mimic 7": {
-        "movepool": [ "Debilitate", "Psy Drain", "Slash", "Sleep" ],
-        "name": "Mimic",
-        "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Mimic.png",
-        "stats": {
-            "maxhp": 207,
-            "maxpp": 12,
-            "atk": 47,
-            "def": 12,
-            "spd": 23
-        },
-        "elstats": {
-            "jupiterres": 152,
-            "mercuryres": 127,
-            "venusres": 100,
-            "marsres": 25,
-            "jupiteratk": 105
         },
         "extraturns": 0
     },
@@ -10472,8 +10431,8 @@
         },
         "extraturns": 0
     },
-     "Tornado Disarm": {
-        "movepool": ["Disarm"],
+    "Tornado Disarm": {
+        "movepool": [ "Disarm" ],
         "name": "Tornado",
         "imgurl": "https://goldensunwiki.net/w/images/b/bf/SuhallaDesert.jpg",
         "stats": {
@@ -10490,10 +10449,10 @@
             "jupiterres": 90
         },
         "hasDefend": "false",
-         "hasAttack": "false"
+        "hasAttack": "false"
     },
-     "Tornado Sandstorm": {
-        "movepool": ["Sandstorm"],
+    "Tornado Sandstorm": {
+        "movepool": [ "Sandstorm" ],
         "name": "Tornado",
         "imgurl": "https://goldensunwiki.net/w/images/b/bf/SuhallaDesert.jpg",
         "stats": {
@@ -10510,6 +10469,6 @@
             "jupiterres": 90
         },
         "hasDefend": "false",
-         "hasAttack": "false"
-    },
+        "hasAttack": "false"
+    }
 }
