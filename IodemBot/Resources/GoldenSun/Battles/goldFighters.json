@@ -150,6 +150,38 @@
         }
     ],
     [
+    "Buff Fire Djinn" {
+"name": ":b:ire Djinn",
+"movepool": [ "Supernova", "Searing Beam", "Pyroclasm", "Dire Inferno", "Vicious Chop", "Epicenter", "Star Mine", "Meteor Blow" ],
+"imgurl": "https://pbs.twimg.com/media/DxrDsW8VYAAcXDr.jpg",
+"stats": {
+"maxhp": 4444,
+"maxpp": 200,
+"atk": 450,
+"def": 147,
+"spd": 200
+},
+"elstats": {
+"marsres": 200,
+"venusres": 175,
+"jupiterres": 150,
+"mercuryres": 25,
+"marsatk": 150
+},
+"extraturns": 1,
+"HPRecovery": 300,
+"PPRecovery": 30
+"isImmuneToConditions": [
+    "Haunt",
+    "DeathCurse",
+    "Stun",
+    "Seal",
+    "Sleep"
+    ],
+"isImmuneToOHKO": true
+},
+],
+    [
         {
             "name": "Alex",
             "imgurl": "https://vignette.wikia.nocookie.net/goldensun/images/3/3c/GSAlex.jpg/revision/latest?cb=20120309174254",
