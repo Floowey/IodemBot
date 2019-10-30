@@ -15,8 +15,8 @@ namespace IodemBot
         private static TwitchAPI api;
 
         private static readonly Dictionary<string, string> GoldenSunIds = new Dictionary<string, string>() {
-            { "3916", "Golden Sun" },
-            { "252" , "Golden Sun: The Lost Age"},
+            { "252", "Golden Sun" },
+            { "3916" , "Golden Sun: The Lost Age"},
             { "24232" ,"Golden Sun: Dark Dawn" },
             //{ "32399","Counter-Strike: Global Offensive" },
             //{"33214", "Fortnite" }
@@ -41,7 +41,6 @@ namespace IodemBot
             timer.Elapsed += Timer_Elapsed;
             timer.Start();
             channel = ((ISocketMessageChannel)Global.Client.GetChannel(511702094672298044)) ?? ((ISocketMessageChannel)Global.Client.GetChannel(497696510688100352));
-            Timer_Elapsed(null, null);
             return Task.CompletedTask;
         }
 

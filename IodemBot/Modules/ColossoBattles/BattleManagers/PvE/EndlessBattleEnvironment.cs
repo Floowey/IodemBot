@@ -134,7 +134,7 @@ namespace IodemBot.Modules.ColossoBattles
                 }
                 else
                 {
-                    return 1 + ((double)winsInARow - 4 * StageLength) / 30;
+                    return 1 + ((double)winsInARow - 3 * StageLength) / 30;
                 }
             }
         }
@@ -157,9 +157,7 @@ namespace IodemBot.Modules.ColossoBattles
         {
             Battle.TeamB.Clear();
             EnemiesDatabase.GetRandomEnemies(Difficulty, Boost).ForEach(f =>
-            {
-                Battle.AddPlayer(f, ColossoBattle.Team.B);
-            }
+                Battle.AddPlayer(f, ColossoBattle.Team.B)
             );
 
             for (int i = 0; i < LureCaps; i++)

@@ -195,7 +195,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         }
 
         [Command("Yeet")]
-        [Remarks("Yeet and item and wave it goodbye forever.")]
+        [Remarks("Yeet an item and wave it goodbye forever.")]
         public async Task YeetItem([Remainder] string item)
         {
             var avatar = UserAccounts.GetAccount(Context.User);

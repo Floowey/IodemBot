@@ -445,8 +445,6 @@
     <None Include="Resources\Colors.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\config-Iodem.json" />
-    <None Include="Resources\config-Medoi.json" />
     <None Include="Resources\config.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
