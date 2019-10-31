@@ -396,7 +396,7 @@
     <Compile Include="Modules\GoldenSunMechanics\RewardSystem\RewardTable.cs" />
     <Compile Include="Modules\GoldenSunMechanics\StatList.cs" />
     <Compile Include="Modules\RockPaperScissors.cs" />
-    <Compile Include="Modules\TwitchListener.cs" />
+    <Compile Include="TwitchListener.cs" />
     <Compile Include="Preconditions\Cooldown.cs" />
     <Compile Include="Global.cs" />
     <Compile Include="Core\Leveling\Leveling.cs" />
@@ -452,8 +452,6 @@
     <None Include="Resources\Colors.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\config-Iodem.json" />
-    <None Include="Resources\config-Medoi.json" />
     <None Include="Resources\config.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -473,6 +471,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Resources\GoldenSun\Moves\statpsy.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\twitch.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SystemLang\quotes.json">

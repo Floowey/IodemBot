@@ -10451,54 +10451,41 @@
         },
         "extraturns": 0
     },
-    "Tornado Sandstorm": {
+    "Tornado Disarm": {
+        "movepool": [ "Disarm" ],
         "name": "Tornado",
         "imgurl": "https://goldensunwiki.net/w/images/b/bf/SuhallaDesert.jpg",
-        "movepool": [
-            "Sandstorm"
-        ],
         "stats": {
-            "maxHP": 1,
-            "maxPP": 0,
-            "Atk": 100,
-            "Def": 2,
-            "Spd": 3
+            "maxhp": 365,
+            "maxpp": 0,
+            "atk": 328,
+            "def": 66,
+            "spd": 134
         },
         "elstats": {
-            "VenusAtk": 100,
-            "VenusRes": 25,
-            "MarsAtk": 100,
-            "MarsRes": 25,
-            "JupiterAtk": 100,
-            "JupiterRes": 25,
-            "MercuryAtk": 100,
-            "MercuryRes": 25
+            "venusres": 90,
+            "mercuryres": 90,
+            "marsres": 90,
+            "jupiterres": 90
         },
-        "hasDefend": false,
-        "hasAttack": false
+        "hasDefend": "false",
+        "hasAttack": "false"
     },
     "Tornado Disarm": {
         "name": "Tornado",
         "imgurl": "https://goldensunwiki.net/w/images/b/bf/SuhallaDesert.jpg",
-        "movepool": [
-            "Disarm"
-        ],
         "stats": {
-            "maxHP": 1,
-            "maxPP": 0,
-            "Atk": 100,
-            "Def": 2,
-            "Spd": 3
+            "maxhp": 365,
+            "maxpp": 0,
+            "atk": 328,
+            "def": 66,
+            "spd": 134
         },
         "elstats": {
-            "VenusAtk": 100,
-            "VenusRes": 25,
-            "MarsAtk": 100,
-            "MarsRes": 25,
-            "JupiterAtk": 100,
-            "JupiterRes": 25,
-            "MercuryAtk": 100,
-            "MercuryRes": 25
+            "venusres": 90,
+            "mercuryres": 90,
+            "marsres": 90,
+            "jupiterres": 90
         },
         "hasDefend": false,
         "hasAttack": false

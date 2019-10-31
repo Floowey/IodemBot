@@ -15,7 +15,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public int MercuryAtk { get; set; }
         public int MercuryRes { get; set; }
 
-        public ElementalStats(int venusAtk, int venusRes, int marsAtk, int marsDef, int jupiterAtk, int jupiterDef, int mercuryAtk, int mercuryDef) : this()
+        public ElementalStats(int venusAtk = 100, int venusRes = 100, int marsAtk = 100, int marsDef = 100, int jupiterAtk = 100, int jupiterDef = 100, int mercuryAtk = 100, int mercuryDef = 100) : this()
         {
             VenusAtk = venusAtk;
             VenusRes = venusRes;
@@ -96,7 +96,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public int Def { get; set; }
         public int Spd { get; set; }
 
-        public Stats(int maxHP, int maxPP, int atk, int def, int spd)
+        public Stats(int maxHP = 10, int maxPP = 10, int atk = 10, int def = 10, int spd = 10)
         {
             this.MaxHP = maxHP;
             this.MaxPP = maxPP;

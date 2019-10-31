@@ -161,10 +161,8 @@ namespace IodemBot.Modules.ColossoBattles
         {
             var winners = Battle.GetTeam(Battle.GetWinner());
             var losers = winners.First().battle.GetTeam(winners.First().enemies);
-            var Reward = new Reward()
-            {
-            };
-            winners.ConvertAll(s => (PlayerFighter)s).ForEach(async p => await ServerGames.UserWonBattle(p.avatar, new List<Rewardable>(), p.battleStats, lobbyChannel, Teams[Team.A].teamChannel));
+
+            winners.ConvertAll(s => (PlayerFighter)s).ForEach(async p => await ServerGames.UserWonBattle(p.avatar, 1, 0, p.battleStats, BattleDifficulty.Easy, lobbyChannel, winners, false));
             losers.ConvertAll(s => (PlayerFighter)s).ForEach(async p => await ServerGames.UserLostBattle(p.avatar, lobbyChannel));
 
             _ = WriteGameOver();
