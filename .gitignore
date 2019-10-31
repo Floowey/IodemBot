@@ -65,3 +65,4 @@ dkms.conf
 /.vs
 /IodemBot/~$IodemClassSheet (version 1).xlsx
 /IodemBot/Resources/twitch.json
+/IodemBot/IodemBot.csproj.user
