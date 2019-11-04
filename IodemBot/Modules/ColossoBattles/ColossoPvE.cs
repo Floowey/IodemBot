@@ -46,14 +46,14 @@ namespace IodemBot.Modules.ColossoBattles
             battles.ForEach(old => old.Dispose());
             battles.Clear();
             battles.Add(new SingleBattleEnvironment("Wilds", LobbyChannel, await PrepareBattleChannel("Weyard-Wilds"), BattleDifficulty.Easy));
-            battles.Add(new SingleBattleEnvironment("Woods", LobbyChannel, await PrepareBattleChannel("Weyard-Woods"), BattleDifficulty.Medium));
-            battles.Add(new SingleBattleEnvironment("Wealds", LobbyChannel, await PrepareBattleChannel("Weyard-Wealds"), BattleDifficulty.Hard));
+            //battles.Add(new SingleBattleEnvironment("Woods", LobbyChannel, await PrepareBattleChannel("Weyard-Woods"), BattleDifficulty.Medium));
+            //battles.Add(new SingleBattleEnvironment("Wealds", LobbyChannel, await PrepareBattleChannel("Weyard-Wealds"), BattleDifficulty.Hard));
 
             battles.Add(new EndlessBattleEnvironment("Endless", LobbyChannel, await PrepareBattleChannel("Endless-Encounters")));
 
             //battles.Add(new GauntletBattleEnvironment("Dungeon", LobbyChannel, await PrepareBattleChannel("deep-dungeon"), "Vale"));
             //battles.Add(new GauntletBattleEnvironment("Catabombs", LobbyChannel, await PrepareBattleChannel("chilly-catacombs"), "Vale"));
-            battles.Add(new TeamBattleEnvironment("PvP", LobbyChannel, await PrepareBattleChannel("PvP-A", RoomVisibility.Private), await PrepareBattleChannel("PvP-B", RoomVisibility.TeamB)));
+            //battles.Add(new TeamBattleEnvironment("PvP", LobbyChannel, await PrepareBattleChannel("PvP-A", RoomVisibility.Private), await PrepareBattleChannel("PvP-B", RoomVisibility.TeamB)));
 
             //battles.Add(new SingleBattleEnvironment("Gold", LobbyChannel, await PrepareBattleChannel("Gold"), BattleDifficulty.Hard));
             //battles.Add(new TeamBattleManager("OneVOne", LobbyChannel, await PrepareBattleChannel("OneVOneA", PermValue.Deny), await PrepareBattleChannel("OneVOneB", PermValue.Allow), 1));

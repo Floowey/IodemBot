@@ -314,6 +314,12 @@ namespace IodemBot.Modules.ColossoBattles
                     }
                 }
             }
+
+            foreach (var djinn in Moves.OfType<Djinn>())
+            {
+                turnLog.AddRange(djinn.EndTurn(this));
+            }
+
             damageDoneThisTurn = 0;
             if (!IsAlive)
             {

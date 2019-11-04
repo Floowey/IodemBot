@@ -23,6 +23,7 @@ namespace IodemBot.Modules.ColossoBattles
             public ITextChannel teamChannel;
             public IUserMessage EnemyMessage = null;
             public IUserMessage StatusMessage = null;
+            public PlayerFighterFactory Factory = new PlayerFighterFactory() { LevelOption = LevelOption.SetLevel, SetLevel = 60 };
             public Dictionary<IUserMessage, PlayerFighter> PlayerMessages = new Dictionary<IUserMessage, PlayerFighter>();
         }
 
@@ -337,11 +338,7 @@ namespace IodemBot.Modules.ColossoBattles
             }
             var playerAvatar = UserAccounts.GetAccount(player);
 
-            var factory = new PlayerFighterFactory()
-            {
-                LevelOption = LevelOption.SetLevel,
-                SetLevel = 60
-            };
+            var factory = Teams[team].Factory;
             var p = factory.CreatePlayerFighter(player);
             await AddPlayer(p, team);
         }

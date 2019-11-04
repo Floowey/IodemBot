@@ -18,9 +18,11 @@ namespace IodemBot.Modules.ColossoBattles
         public abstract BattleDifficulty Difficulty { get; }
         protected IUserMessage EnemyMessage = null;
         protected IUserMessage StatusMessage = null;
+        protected IUserMessage SummonsMessage = null;
         protected ITextChannel BattleChannel = null;
         protected Dictionary<IUserMessage, PlayerFighter> PlayerMessages = new Dictionary<IUserMessage, PlayerFighter>();
         protected bool wasJustReset = true;
+        protected PlayerFighterFactory Factory { get; set; } = new PlayerFighterFactory();
 
         internal override ulong[] GetIds => new[] { BattleChannel.Id };
 
@@ -38,6 +40,7 @@ namespace IodemBot.Modules.ColossoBattles
                     Emote.Parse("<:Fight:536919792813211648>"),
                     Emote.Parse("<:Battle:536954571256365096>")
                 });
+            SummonsMessage = await BattleChannel.SendMessageAsync("Good Luck!");
             return;
         }
 
@@ -114,6 +117,10 @@ namespace IodemBot.Modules.ColossoBattles
                 {
                     c = EnemyMessage;
                 }
+                if (SummonsMessage.Id == reaction.MessageId)
+                {
+                    c = SummonsMessage;
+                }
                 if (PlayerMessages.Keys.Any(k => k.Id == reaction.MessageId))
                 {
                     c = PlayerMessages.Keys.Where(k => k.Id == reaction.MessageId).First();
@@ -181,7 +188,7 @@ namespace IodemBot.Modules.ColossoBattles
 
                 if (!numberEmotes.Contains(reaction.Emote.Name))
                 {
-                    if (reaction.MessageId != EnemyMessage.Id && reaction.MessageId != correctID)
+                    if (reaction.MessageId != EnemyMessage.Id && reaction.MessageId != SummonsMessage.Id && reaction.MessageId != correctID)
                     {
                         _ = c.RemoveReactionAsync(reaction.Emote, reaction.User.Value);
                         Console.WriteLine("Didn't click on own message.");
@@ -215,8 +222,7 @@ namespace IodemBot.Modules.ColossoBattles
             SocketGuildUser player = (SocketGuildUser)reaction.User.Value;
             var playerAvatar = UserAccounts.GetAccount(player);
 
-            var factory = new PlayerFighterFactory();
-            var p = factory.CreatePlayerFighter(player);
+            var p = Factory.CreatePlayerFighter(player);
             await AddPlayer(p);
         }
 
@@ -246,9 +252,14 @@ namespace IodemBot.Modules.ColossoBattles
 
             foreach (var k in PlayerMessages.Keys)
             {
+                PlayerMessages[k].Moves.OfType<Djinn>().ToList().ForEach(d =>
+                {
+                    d.CoolDown = 0; d.Summon(PlayerMessages[k]);
+                });
                 await k.DeleteAsync();
             }
-
+            Factory.uniqueDjinn.Clear();
+            Factory.summons.Clear();
             PlayerMessages.Clear();
 
             if (EnemyMessage == null)
@@ -266,6 +277,17 @@ namespace IodemBot.Modules.ColossoBattles
                 });
                 wasJustReset = true;
             }
+
+            if (SummonsMessage == null)
+            {
+                await Initialize();
+            }
+            else
+            {
+                _ = SummonsMessage.ModifyAsync(m => { m.Content = "Good Luck!"; m.Embed = null; });
+                _ = SummonsMessage.RemoveAllReactionsAsync();
+            }
+
             if (StatusMessage != null)
             {
                 _ = StatusMessage.DeleteAsync();
@@ -323,6 +345,8 @@ namespace IodemBot.Modules.ColossoBattles
                 return;
             }
 
+            PlayerMessages.Values.ToList().ForEach(p => p.Moves.AddRange(Factory.PossibleSummons));
+
             resetIfNotActive.Stop();
             Battle.Start();
             await WriteBattleInit();
@@ -335,6 +359,7 @@ namespace IodemBot.Modules.ColossoBattles
             try
             {
                 await WriteStatus();
+                await WriteSummons();
                 await WriteEnemies();
                 await WritePlayers();
             }
@@ -343,6 +368,7 @@ namespace IodemBot.Modules.ColossoBattles
                 Console.WriteLine("Failed drawing Battle, retrying." + e.ToString());
                 Battle.log.Add("Failed drawing Battle, retrying.");
                 await WriteStatus();
+                await WriteSummons();
                 await WriteEnemies();
                 await WritePlayers();
             }
@@ -358,6 +384,7 @@ namespace IodemBot.Modules.ColossoBattles
             try
             {
                 await WriteStatusInit();
+                await WriteSummonsInit();
                 await WriteEnemiesInit();
                 await WritePlayersInit();
             }
@@ -366,6 +393,7 @@ namespace IodemBot.Modules.ColossoBattles
                 Console.WriteLine("Failed drawing Battle, retrying:" + e.ToString());
                 Battle.log.Add("Failed drawing Battle, retrying.");
                 await WriteStatusInit();
+                await WriteSummonsInit();
                 await WriteEnemiesInit();
                 await WritePlayersInit();
             }
@@ -488,6 +516,65 @@ namespace IodemBot.Modules.ColossoBattles
             await Task.WhenAll(tasks);
         }
 
+        protected virtual async Task WriteSummonsInit()
+        {
+            _ = WriteSummonsReactions();
+            await WriteSummons();
+        }
+
+        protected virtual EmbedBuilder GetDjinnEmbedBuilder()
+        {
+            var allDjinn = PlayerMessages.Values.SelectMany(p => p.Moves.OfType<Djinn>()).ToList();
+            var standbyDjinn = allDjinn.Where(d => d.State == DjinnState.Standby);
+            var recoveryDjinn = allDjinn.Where(d => d.State == DjinnState.Recovery);
+            EmbedBuilder embed = new EmbedBuilder()
+                .WithThumbnailUrl("https://cdn.discordapp.com/attachments/497696510688100352/640300243820216336/unknown.png");
+
+            if (allDjinn.OfElement(Element.Venus).Count() > 0)
+            {
+                embed.AddField("Venus", $"{string.Join(" ", standbyDjinn.OfElement(Element.Venus).Select(d => d.Emote))} |" +
+                    $"{string.Join(" ", recoveryDjinn.OfElement(Element.Venus).Select(d => d.Emote))}", true);
+            }
+            if (allDjinn.OfElement(Element.Mars).Count() > 0)
+            {
+                embed.AddField("Mars", $"{string.Join(" ", standbyDjinn.OfElement(Element.Mars).Select(d => d.Emote))} |" +
+                    $"{string.Join(" ", recoveryDjinn.OfElement(Element.Mars).Select(d => d.Emote))}", true);
+            }
+            if (allDjinn.OfElement(Element.Jupiter).Count() > 0)
+            {
+                embed.AddField("Venus", $"{string.Join(" ", standbyDjinn.OfElement(Element.Jupiter).Select(d => d.Emote))} |" + $"{string.Join(" ", recoveryDjinn.OfElement(Element.Jupiter).Select(d => d.Emote))}", true);
+            }
+            if (allDjinn.OfElement(Element.Mercury).Count() > 0)
+            {
+                embed.AddField("Venus", $"{string.Join(" ", standbyDjinn.OfElement(Element.Mercury).Select(d => d.Emote))} |" + $"{string.Join(" ", recoveryDjinn.OfElement(Element.Mercury).Select(d => d.Emote))}", true);
+            }
+            return embed;
+        }
+
+        protected virtual async Task WriteSummonsReactions()
+        {
+            _ = SummonsMessage.AddReactionsAsync(Factory.PossibleSummons.Select(s => s.GetEmote()).ToArray());
+            await Task.CompletedTask;
+        }
+
+        protected virtual async Task WriteSummons()
+        {
+            var tasks = new List<Task>();
+            var embed = GetDjinnEmbedBuilder();
+            if (SummonsMessage.Embeds.Count == 0 || !SummonsMessage.Embeds.FirstOrDefault().ToEmbedBuilder().AllFieldsEqual(embed))
+            {
+                _ = SummonsMessage.ModifyAsync(m => m.Embed = embed.Build());
+            }
+
+            var validReactions = reactions.Where(r => r.MessageId == SummonsMessage.Id).ToList();
+            foreach (var r in validReactions)
+            {
+                tasks.Add(SummonsMessage.RemoveReactionAsync(r.Emote, r.User.Value));
+                reactions.Remove(r);
+            }
+            await Task.CompletedTask;
+        }
+
         protected virtual async Task WritePlayers()
         {
             int i = 1;
@@ -512,9 +599,12 @@ namespace IodemBot.Modules.ColossoBattles
                 var s = new List<string>();
                 foreach (var m in fighter.Moves)
                 {
-                    if (m is Psynergy)
+                    if (m is Psynergy p)
                     {
-                        s.Add($"{m.Emote} {m.Name} {((Psynergy)m).PPCost}");
+                        s.Add($"{m.Emote} {m.Name} {p.PPCost}");
+                    }
+                    else if (m is Summon summon)
+                    {
                     }
                     else
                     {
@@ -553,7 +643,10 @@ namespace IodemBot.Modules.ColossoBattles
                 }
                 foreach (var m in fighter.Moves)
                 {
-                    emotes.Add(m.GetEmote());
+                    if (!(m is Summon))
+                    {
+                        emotes.Add(m.GetEmote());
+                    }
                 }
                 emotes.RemoveAll(e => msg.Reactions.Any(r => r.Key.Name.Equals(e.Name, StringComparison.InvariantCultureIgnoreCase)));
                 tasks.Add(msg.AddReactionsAsync(emotes.ToArray()));
@@ -593,7 +686,6 @@ namespace IodemBot.Modules.ColossoBattles
         protected virtual async Task WriteGameOver()
         {
             await Task.Delay(3000);
-            var winners = Battle.GetTeam(Battle.GetWinner());
             var text = GetWinMessageString();
             await StatusMessage.ModifyAsync(m => { m.Content = text; m.Embed = null; });
             await Task.Delay(2000);

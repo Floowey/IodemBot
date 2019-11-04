@@ -85,6 +85,10 @@ namespace IodemBot.Modules.ColossoBattles
         public BaseStatOption BaseStatOption { get; set; } = BaseStatOption.Default;
         public BaseStatManipulationOption BaseStatManipulationOption { get; set; } = BaseStatManipulationOption.Default;
 
+        public List<Djinn> uniqueDjinn = new List<Djinn>();
+        public List<Summon> summons = new List<Summon>();
+        public List<Summon> PossibleSummons { get => summons.Where(s => s.CanSummon(uniqueDjinn)).Distinct().ToList(); }
+
         public uint SetLevel { get; set; } = 99;
         public Stats StatMultiplier { get; set; } = new Stats(100, 100, 100, 100, 100);
 
@@ -104,7 +108,6 @@ namespace IodemBot.Modules.ColossoBattles
                 p.guildUser = (SocketGuildUser)user;
             }
             p.Moves = AdeptClassSeriesManager.GetMoveset(avatar);
-
             var Class = AdeptClassSeriesManager.GetClass(avatar);
             var classSeries = AdeptClassSeriesManager.GetClassSeries(avatar);
             p.Stats = GetStats(avatar);
@@ -181,6 +184,16 @@ namespace IodemBot.Modules.ColossoBattles
             switch (DjinnOption)
             {
                 case DjinnOption.Default:
+                    var djinnToBeAdded = avatar.DjinnPocket.GetDjinns(uniqueDjinn);
+                    uniqueDjinn.AddRange(djinnToBeAdded);
+                    summons.AddRange(avatar.DjinnPocket.summons);
+                    p.Moves.AddRange(djinnToBeAdded);
+                    foreach (var djinn in djinnToBeAdded)
+                    {
+                        p.Stats *= djinn.Stats + new Stats(100, 100, 100, 100, 100);
+                        p.Stats *= 0.01;
+                        p.ElStats += djinn.ElementalStats;
+                    }
                     break;
 
                 case DjinnOption.NoDjinn:

@@ -149,8 +149,7 @@ namespace IodemBot.Modules.ColossoBattles
             }
             SocketGuildUser player = (SocketGuildUser)reaction.User.Value;
             var playerAvatar = UserAccounts.GetAccount(player);
-            var factory = new PlayerFighterFactory();
-            var p = factory.CreatePlayerFighter(player);
+            var p = Factory.CreatePlayerFighter(player);
 
             if (Difficulty == BattleDifficulty.Tutorial || Difficulty == BattleDifficulty.Easy)
             {
@@ -221,9 +220,11 @@ namespace IodemBot.Modules.ColossoBattles
             else
             {
                 var losers = winners.First().battle.GetTeam(winners.First().enemies);
+                losers.ForEach(p => p.Moves.OfType<Djinn>().ToList().ForEach(d => { d.Summon(p); d.CoolDown = 0; }));
                 losers.ConvertAll(s => (PlayerFighter)s).ForEach(async p => await ServerGames.UserLostBattle(p.avatar, lobbyChannel));
                 _ = WriteGameOver();
             }
+
             LureCaps = 0;
             await Task.CompletedTask;
         }
