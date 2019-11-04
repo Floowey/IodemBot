@@ -106,10 +106,6 @@ namespace IodemBot.Modules.GoldenSunMechanics
             Initialize();
         }
 
-        public Inventory()
-        {
-        }
-
         public int NumberOfItemType(ItemType type)
         {
             return Inv.Where(i => i.ItemType == type).Count();
