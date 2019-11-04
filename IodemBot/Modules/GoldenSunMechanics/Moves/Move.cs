@@ -24,7 +24,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public virtual Target TargetType { get; set; } = Target.self;
         public virtual List<Effect> Effects { get; set; } = new List<Effect>();
         public virtual int TargetNr { get; set; } = 0;
-        public virtual uint Range { get; set; } = 0;
+        public virtual uint Range { get; set; } = 1;
         public virtual bool HasPriority { get; set; } = false;
 
         [JsonIgnore]
@@ -51,7 +51,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             }
             catch (Exception e)
             {
-                Console.WriteLine("What!?" + e.Message);
+                Console.WriteLine("What!?" + e.ToString());
             }
             return log;
         }
