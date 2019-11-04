@@ -1,16 +1,19 @@
 ﻿using IodemBot.Modules.ColossoBattles;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
     internal class StatEffect : Effect
     {
         public override string Type { get; } = "Stat";
-        private string Stat { get; set; }
-        private double Multiplier { get; set; } = 1;
-        private int Probability { get; set; } = 100;
-        private bool OnTarget { get; set; } = true;
-        private int Turns { get; set; } = 7;
+        [JsonProperty] private string Stat { get; set; } = "OH NO";
+        [JsonProperty] private double Multiplier { get; set; } = 1;
+        [JsonProperty] private int Probability { get; set; } = 100;
+        [JsonProperty] private bool OnTarget { get; set; } = true;
+        [JsonProperty] private int Turns { get; set; } = 7;
 
         public override string ToString()
         {
@@ -23,6 +26,11 @@ namespace IodemBot.Modules.GoldenSunMechanics
             if (!Target.IsAlive)
             {
                 return log;
+            }
+
+            if (Stat == "OH NO")
+            {
+                Console.WriteLine(string.Join(", ", User.Moves.Select(s => s.Name)));
             }
 
             if (Global.Random.Next(1, 100) <= Probability)
