@@ -314,6 +314,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Colors.cs" />
+    <Compile Include="Extensions\DjinnListExtension.cs" />
+    <Compile Include="Modules\GoldenSunMechanics\DjinnAndSummons\DjinnPocket.cs" />
     <Compile Include="TwitchConfig.cs" />
     <Compile Include="Converter\JsonCreationConverter.cs" />
     <Compile Include="Core\Leveling\ServerGames.cs" />
@@ -326,14 +328,14 @@
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="MessageHandler.cs" />
     <Compile Include="Modules\ColossoBattles\ColossoPvE.cs" />
-    <Compile Include="Modules\ColossoBattles\BattleManagers\BattleEnvironment.cs" />
-    <Compile Include="Modules\ColossoBattles\BattleManagers\PvE\EndlessBattleEnvironment.cs" />
-    <Compile Include="Modules\ColossoBattles\BattleManagers\PvE\GauntletBattleEnvironment.cs" />
-    <Compile Include="Modules\ColossoBattles\BattleManagers\PvP\GoliathBattleEnvironment.cs" />
-    <Compile Include="Modules\ColossoBattles\BattleManagers\PvE\PvEEnvironment.cs" />
-    <Compile Include="Modules\ColossoBattles\BattleManagers\PvP\PvPEnvironment.cs" />
-    <Compile Include="Modules\ColossoBattles\BattleManagers\PvE\SingleBattleEnvironment.cs" />
-    <Compile Include="Modules\ColossoBattles\BattleManagers\PvP\TeamBattleEnvironment.cs" />
+    <Compile Include="Modules\ColossoBattles\BattleEnvironments\BattleEnvironment.cs" />
+    <Compile Include="Modules\ColossoBattles\BattleEnvironments\PvE\EndlessBattleEnvironment.cs" />
+    <Compile Include="Modules\ColossoBattles\BattleEnvironments\PvE\GauntletBattleEnvironment.cs" />
+    <Compile Include="Modules\ColossoBattles\BattleEnvironments\PvP\GoliathBattleEnvironment.cs" />
+    <Compile Include="Modules\ColossoBattles\BattleEnvironments\PvE\PvEEnvironment.cs" />
+    <Compile Include="Modules\ColossoBattles\BattleEnvironments\PvP\PvPEnvironment.cs" />
+    <Compile Include="Modules\ColossoBattles\BattleEnvironments\PvE\SingleBattleEnvironment.cs" />
+    <Compile Include="Modules\ColossoBattles\BattleEnvironments\PvP\TeamBattleEnvironment.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Classes\AdeptClass.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Classes\AdeptClassSeries.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Classes\AdeptClassSeriesManager.cs" />
@@ -417,6 +419,13 @@
     <Compile Include="Preconditions\RequireStaff.cs" />
     <Compile Include="Preconditions\RolePrecondition.cs" />
     <Compile Include="Program.cs" />
+    <None Include="Resources\GoldenSun\DjinnAndSummons\AllDjinn.json" />
+    <None Include="Resources\GoldenSun\DjinnAndSummons\Djinn.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\GoldenSun\DjinnAndSummons\Summons.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Resources\twitch.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

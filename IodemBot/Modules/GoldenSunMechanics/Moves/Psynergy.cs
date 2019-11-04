@@ -48,7 +48,6 @@ namespace IodemBot.Modules.GoldenSunMechanics
             }
 
             User.Stats.PP -= (int)PPCost;
-
             log.Add($"{Emote} {User.Name} {(PPCost == 1 ? "uses" : "casts")} {this.Name}!");
             return new Validation(true, log);
         }
