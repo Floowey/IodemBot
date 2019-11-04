@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 
-namespace IodemBot.Modules.GoldenSunMechanics.DjinnAndSummons
+namespace IodemBot.Modules.GoldenSunMechanics
 {
     internal class DjinnAndSummonsDatabase
     {
@@ -29,6 +29,46 @@ namespace IodemBot.Modules.GoldenSunMechanics.DjinnAndSummons
                 //Just for debugging.
                 Console.WriteLine(e.ToString());
             }
+        }
+
+        public static Djinn GetDjinn(string DjinnName)
+        {
+            if (!TryGetDjinn(DjinnName, out Djinn djinn))
+            {
+                djinn = new Djinn() { Element = Element.Venus, Name = $"{DjinnName} NOT IMPLEMENTED" };
+            }
+            return (Djinn)djinn.Clone();
+        }
+
+        public static Summon GetSummon(string SummonName)
+        {
+            if (!TryGetSummon(SummonName, out Summon summon))
+            {
+                summon = new Summon() { Name = $"{SummonName} NOT IMPLEMENTED" };
+            }
+            return summon;
+        }
+
+        public static bool TryGetDjinn(string DjinnName, out Djinn djinn)
+        {
+            if (DjinnDatabase.TryGetValue(DjinnName, out djinn))
+            {
+                return true;
+            }
+
+            Console.WriteLine($"Djinn {DjinnName} is not implemented.");
+            return false;
+        }
+
+        public static bool TryGetSummon(string SummonName, out Summon summon)
+        {
+            if (SummonsDatabase.TryGetValue(SummonName, out summon))
+            {
+                return true;
+            }
+
+            Console.WriteLine($"Summon {SummonName} is not implemented.");
+            return false;
         }
     }
 }

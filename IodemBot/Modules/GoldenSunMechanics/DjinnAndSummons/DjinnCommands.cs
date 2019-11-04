@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace IodemBot.Modules.GoldenSunMechanics.DjinnAndSummons
+﻿namespace IodemBot.Modules.GoldenSunMechanics
 {
-    class DjinnCommands
+    internal class DjinnCommands
     {
     }
 }

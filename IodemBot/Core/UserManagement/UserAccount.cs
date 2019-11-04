@@ -18,6 +18,8 @@ namespace IodemBot.Core.UserManagement
 
         public Inventory Inv { get; set; } = new Inventory();
 
+        public DjinnPocket DjinnPocket { get; set; } = new DjinnPocket();
+
         internal void Revived()
         {
             BattleStats.Revives++;

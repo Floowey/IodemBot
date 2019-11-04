@@ -1,21 +1,25 @@
-﻿using IodemBot.Modules.ColossoBattles;
+﻿using IodemBot.Extensions;
+using IodemBot.Modules.ColossoBattles;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace IodemBot.Modules.GoldenSunMechanics.DjinnAndSummons
+namespace IodemBot.Modules.GoldenSunMechanics
 {
     public class Summon : Move
     {
-        public override string Name { get => Move.Name; set => Move.Name = value; }
-        public override string Emote { get => Sprite; set => Move.Emote = value; }
-        public override Target TargetType { get => Move.TargetType; set => Move.TargetType = value; }
-        public override List<Effect> Effects { get => Move.Effects; set => Move.Effects = value; }
-        public override int TargetNr { get => Move.TargetNr; set => Move.TargetNr = value; }
-        public override uint Range { get => Move.Range; set => Move.Range = value; }
-        public override bool HasPriority { get => Move.HasPriority; set => Move.HasPriority = value; }
-        private string Sprite { get; set; }
-        private int[] DjinnNeeded { get; set; } = { 0, 0, 0, 0 };
-        private Move Move { get; set; }
+        [JsonProperty] private Move Move { get; set; }
+        [JsonIgnore] public override string Name { get => Move.Name; set => Move.Name = value; }
+        [JsonIgnore] public override string Emote { get => Move.Emote; set => Move.Emote = value; }
+        [JsonIgnore] public override Target TargetType { get => Move.TargetType; set => Move.TargetType = value; }
+        [JsonIgnore] public override List<Effect> Effects { get => Move.Effects; set => Move.Effects = value; }
+        [JsonIgnore] public override int TargetNr { get => Move.TargetNr; set => Move.TargetNr = value; }
+        [JsonIgnore] public override uint Range { get => Move.Range; set => Move.Range = value; }
+        [JsonIgnore] public override bool HasPriority { get => Move.HasPriority; set => Move.HasPriority = value; }
+        public int VenusNeeded { get; set; } = 0;
+        public int MarsNeeded { get; set; } = 0;
+        public int JupiterNeeded { get; set; } = 0;
+        public int MercuryNeeded { get; set; } = 0;
 
         public override object Clone()
         {
@@ -30,12 +34,20 @@ namespace IodemBot.Modules.GoldenSunMechanics.DjinnAndSummons
         public override bool InternalValidSelection(ColossoFighter User)
         {
             var PartyDjinn = User.GetTeam().SelectMany(u => u.Moves.OfType<Djinn>()).Distinct();
-            var ReadyDjinn = PartyDjinn.Where(d => d.State == DjinnState.Set);
-            return ReadyDjinn.Count(d => d.Element == Element.Venus) >= DjinnNeeded[1] &&
-                ReadyDjinn.Count(d => d.Element == Element.Mars) >= DjinnNeeded[2] &&
-                ReadyDjinn.Count(d => d.Element == Element.Jupiter) >= DjinnNeeded[3] &&
-                ReadyDjinn.Count(d => d.Element == Element.Mercury) >= DjinnNeeded[4] &&
-                Move.ValidSelection(User);
+            return ValidateSummon(PartyDjinn) && Move.ValidSelection(User);
+        }
+
+        public bool CanSummon(IEnumerable<Djinn> djinns)
+        {
+            return djinns.OfElement(Element.Venus).Count() >= VenusNeeded &&
+                djinns.OfElement(Element.Mars).Count() >= MarsNeeded &&
+                djinns.OfElement(Element.Jupiter).Count() >= JupiterNeeded &&
+                djinns.OfElement(Element.Mercury).Count() >= MercuryNeeded;
+        }
+
+        public bool ValidateSummon(IEnumerable<Djinn> djinns)
+        {
+            return CanSummon(djinns.Where(d => d.State == DjinnState.Standby));
         }
 
         protected override List<string> InternalUse(ColossoFighter User)
@@ -46,11 +58,11 @@ namespace IodemBot.Modules.GoldenSunMechanics.DjinnAndSummons
             }
 
             var PartyDjinn = User.GetTeam().SelectMany(u => u.Moves.OfType<Djinn>()).Distinct();
-            var ReadyDjinn = PartyDjinn.Where(d => d.State == DjinnState.Set).OrderBy(d => d.CoolDown).ToList();
-            ReadyDjinn.Where(d => d.Element == Element.Venus).Take(DjinnNeeded[1]).ToList().ForEach(d => d.Summon(User));
-            ReadyDjinn.Where(d => d.Element == Element.Mars).Take(DjinnNeeded[2]).ToList().ForEach(d => d.Summon(User));
-            ReadyDjinn.Where(d => d.Element == Element.Jupiter).Take(DjinnNeeded[3]).ToList().ForEach(d => d.Summon(User));
-            ReadyDjinn.Where(d => d.Element == Element.Mercury).Take(DjinnNeeded[4]).ToList().ForEach(d => d.Summon(User));
+            var ReadyDjinn = PartyDjinn.Where(d => d.State == DjinnState.Standby).OrderBy(d => d.Position).ToList();
+            ReadyDjinn.OfElement(Element.Venus).Take(VenusNeeded).ToList().ForEach(d => d.Summon(User));
+            ReadyDjinn.OfElement(Element.Mars).Take(MarsNeeded).ToList().ForEach(d => d.Summon(User));
+            ReadyDjinn.OfElement(Element.Jupiter).Take(JupiterNeeded).ToList().ForEach(d => d.Summon(User));
+            ReadyDjinn.OfElement(Element.Mercury).Take(MercuryNeeded).ToList().ForEach(d => d.Summon(User));
             return Move.Use(User);
         }
     }
