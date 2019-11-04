@@ -1,0 +1,84 @@
+﻿{
+    "Flint": {
+        "Djinnname": "Flint",
+        "Element": 0,
+        "SpriteNormal": "<a:DjinnDDIconFlint:640167151344549889>",
+        "SpriteShiny": "<a:flint:636451189344567300>",
+        "Move": {
+            "Name": "Flint",
+            "dmgMult": 1.6,
+            "Targettype": 3
+        },
+        "Stats": {
+            "MaxHP": 8,
+            "MaxPP": 4,
+            "Atk": 3
+        }
+    },
+    "Granite": {
+        "Djinnname": "Granite",
+        "Element": 0,
+        "SpriteNormal": "<a:DjinnDDIconGranite:640167151411396641>",
+        "SpriteShiny": "<a:flint:636451189344567300>",
+        "Move": {
+            "Name": "Granite",
+            "Targettype": 2,
+            "hasPriority": true,
+            "Effects": [
+                {
+                    "Type": "ReduceDamage",
+                    "DamageReduction": 50
+                }
+            ]
+        },
+        "Stats": {
+            "MaxHP": 9,
+            "Defense": 3,
+            "Spd": 2
+        }
+    },
+    "Quartz": {
+        "Djinnname": "Quartz",
+        "Element": 0,
+        "SpriteNormal": "<a:DjinnDDIconQuartz:640167151701065758>",
+        "SpriteShiny": "<a:flint:636451189344567300>",
+        "Move": {
+            "Name": "Quartz",
+            "Targettype": 1,
+            "effects": [
+                {
+                    "Type": "Revive",
+                    "Percentage": 50
+                }
+            ]
+        },
+        "Stats": {
+            "MaxHP": 10,
+            "MaxPP": 3,
+            "Spd": 3
+        }
+    },
+    "Forge": {
+        "Djinnname": "Forge",
+        "Element": 1,
+        "SpriteNormal": "<a:DjinnDDIconForge:640624960058032200>",
+        "SpriteShiny": "<a:ShinyForge:640625010372902942>",
+        "Move": {
+            "Name": "Forge",
+            "Targettype": 2,
+            "Element": 1,
+            "effects": [
+                {
+                    "Type": "Stat",
+                    "Stat": "Attack",
+                    "Multiplier": 1.25
+                }
+            ]
+        },
+        "Stats": {
+            "MaxHP": 10,
+            "Atk": 3,
+            "Spd": 3
+        }
+    }
+}

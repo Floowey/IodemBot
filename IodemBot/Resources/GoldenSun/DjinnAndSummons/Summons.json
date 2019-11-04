@@ -1,0 +1,418 @@
+﻿{
+    "Venus": {
+        "Move": {
+            "Name": "Venus",
+            "Emote": "<:Venus:636449223134412801>",
+            "Targettype": 4,
+            "Element": 0,
+            "power": 30,
+            "percentageDamage": 3,
+            "Range": 5,
+            "Effects": [
+                {
+                    "Type": "Stat",
+                    "Stat": "Power",
+                    "Multiplier": 1.1,
+                    "OnTarget": false
+                },
+                {
+                    "Type": "Stat",
+                    "Stat": "Resistance",
+                    "Multiplier": 1.1,
+                    "OnTarget": false
+                }
+            ]
+        },
+        "VenusNeeded": 1
+    },
+    "Ramses": {
+        "Move": {
+            "Name": "Ramses",
+            "Emote": "<:Ramses:636449223080017920>",
+            "Targettype": 4,
+            "Element": 0,
+            "power": 60,
+            "percentageDamage": 6,
+            "Range": 5,
+            "Effects": [
+                {
+                    "Type": "Stat",
+                    "Stat": "Power",
+                    "Multiplier": 1.3,
+                    "OnTarget": false
+                },
+                {
+                    "Type": "Stat",
+                    "Stat": "Resistance",
+                    "Multiplier": 1.3,
+                    "OnTarget": false
+                }
+            ]
+        },
+        "VenusNeeded": 2
+    },
+    "Cybele": {
+        "Move": {
+            "Name": "Cybele",
+            "Emote": "<:Cybele:636449222987874304>",
+            "Targettype": 4,
+            "Element": 0,
+            "power": 120,
+            "percentageDamage": 9,
+            "Range": 5,
+            "Effects": [
+                {
+                    "Type": "Stat",
+                    "Stat": "Power",
+                    "Multiplier": 1.60,
+                    "OnTarget": false
+                },
+                {
+                    "Type": "Stat",
+                    "Stat": "Resistance",
+                    "Multiplier": 1.60,
+                    "OnTarget": false
+                }
+            ]
+        },
+        "VenusNeeded": 3
+    },
+    "Judgement": {
+        "Move": {
+            "Name": "Judgement",
+            "Emote": "<:Judgment:636449222920503307>",
+            "Targettype": 4,
+            "Element": 0,
+            "power": 240,
+            "percentageDamage": 12,
+            "Range": 5,
+            "Effects": [
+                {
+                    "Type": "Stat",
+                    "Stat": "Power",
+                    "Multiplier": 2,
+                    "OnTarget": false
+                },
+                {
+                    "Type": "Stat",
+                    "Stat": "Resistance",
+                    "Multiplier": 2,
+                    "OnTarget": false
+                }
+            ]
+        },
+        "VenusNeeded": 4
+    },
+    "Mars": {
+        "Move": {
+            "Name": "Mars",
+            "Emote": "<:Mars:636449223147257866>",
+            "Targettype": 4,
+            "Element": 1,
+            "power": 30,
+            "percentageDamage": 3,
+            "Range": 5,
+            "Effects": [
+                {
+                    "Type": "Stat",
+                    "Stat": "Power",
+                    "Multiplier": 1.05,
+                    "OnTarget": false
+                },
+                {
+                    "Type": "Stat",
+                    "Stat": "Resistance",
+                    "Multiplier": 1.05,
+                    "OnTarget": false
+                }
+            ]
+        },
+        "MarsNeeded": 1
+    },
+    "Kirin": {
+        "Move": {
+            "Name": "Kirin",
+            "Emote": "<:Kirin:636449223012909057>",
+            "Targettype": 4,
+            "Element": 1,
+            "power": 60,
+            "percentageDamage": 6,
+            "Range": 5,
+            "Effects": [
+                {
+                    "Type": "Stat",
+                    "Stat": "Power",
+                    "Multiplier": 1.3,
+                    "OnTarget": false
+                },
+                {
+                    "Type": "Stat",
+                    "Stat": "Resistance",
+                    "Multiplier": 1.3,
+                    "OnTarget": false
+                }
+            ]
+        },
+        "MarsNeeded": 2
+    },
+    "Tiamat": {
+        "Move": {
+            "Name": "Tiamat",
+            "Emote": "<:Tiamat:636449223185006592>",
+            "Targettype": 4,
+            "Element": 1,
+            "power": 120,
+            "percentageDamage": 9,
+            "Range": 5,
+            "Effects": [
+                {
+                    "Type": "Stat",
+                    "Stat": "Power",
+                    "Multiplier": 1.60,
+                    "OnTarget": false
+                },
+                {
+                    "Type": "Stat",
+                    "Stat": "Resistance",
+                    "Multiplier": 1.60,
+                    "OnTarget": false
+                }
+            ]
+        },
+        "MarsNeeded": 3
+    },
+    "Meteor": {
+        "Move": {
+            "Name": "Meteor",
+            "Emote": "<:Meteor:636449223071760384>",
+            "Targettype": 4,
+            "Element": 1,
+            "power": 240,
+            "percentageDamage": 12,
+            "Range": 5,
+            "Effects": [
+                {
+                    "Type": "Stat",
+                    "Stat": "Power",
+                    "Multiplier": 2,
+                    "OnTarget": false
+                },
+                {
+                    "Type": "Stat",
+                    "Stat": "Resistance",
+                    "Multiplier": 2,
+                    "OnTarget": false
+                }
+            ]
+        },
+        "MarsNeeded": 4
+    },
+    "Jupiter": {
+        "Move": {
+            "Name": "Jupiter",
+            "Emote": "<:Jupiter:636449223143063562>",
+            "Targettype": 4,
+            "Element": 2,
+            "power": 30,
+            "percentageDamage": 3,
+            "Range": 5,
+            "Effects": [
+                {
+                    "Type": "Stat",
+                    "Stat": "Power",
+                    "Multiplier": 1.05,
+                    "OnTarget": false
+                },
+                {
+                    "Type": "Stat",
+                    "Stat": "Resistance",
+                    "Multiplier": 1.05,
+                    "OnTarget": false
+                }
+            ]
+        },
+        "JupiterNeeded": 1
+    },
+    "Atalanta": {
+        "Move": {
+            "Name": "Atalanta",
+            "Emote": "<:Atalanta:636449222958514176>",
+            "Targettype": 4,
+            "Element": 2,
+            "power": 60,
+            "percentageDamage": 6,
+            "Range": 5,
+            "Effects": [
+                {
+                    "Type": "Stat",
+                    "Stat": "Power",
+                    "Multiplier": 1.3,
+                    "OnTarget": false
+                },
+                {
+                    "Type": "Stat",
+                    "Stat": "Resistance",
+                    "Multiplier": 1.3,
+                    "OnTarget": false
+                }
+            ]
+        },
+        "JupiterNeeded": 2
+    },
+    "Procne": {
+        "Move": {
+            "Name": "Procne",
+            "Emote": "<:Procne:636449223021428756>",
+            "Targettype": 4,
+            "Element": 2,
+            "power": 120,
+            "percentageDamage": 9,
+            "Range": 5,
+            "Effects": [
+                {
+                    "Type": "Stat",
+                    "Stat": "Power",
+                    "Multiplier": 1.60,
+                    "OnTarget": false
+                },
+                {
+                    "Type": "Stat",
+                    "Stat": "Resistance",
+                    "Multiplier": 1.60,
+                    "OnTarget": false
+                }
+            ]
+        },
+        "JupiterNeeded": 3
+    },
+    "Thor": {
+        "Move": {
+            "Name": "Thor",
+            "Emote": "<:Thor:636449222886948866>",
+            "Targettype": 4,
+            "Element": 2,
+            "power": 240,
+            "percentageDamage": 12,
+            "Range": 5,
+            "Effects": [
+                {
+                    "Type": "Stat",
+                    "Stat": "Power",
+                    "Multiplier": 2,
+                    "OnTarget": false
+                },
+                {
+                    "Type": "Stat",
+                    "Stat": "Resistance",
+                    "Multiplier": 2,
+                    "OnTarget": false
+                }
+            ]
+        },
+        "JupiterNeeded": 4
+    },
+    "Mercury": {
+        "Move": {
+            "Name": "Mercury",
+            "Emote": "<:Mercury:636449222975291403>",
+            "Targettype": 4,
+            "Element": 3,
+            "power": 30,
+            "percentageDamage": 3,
+            "Range": 5,
+            "Effects": [
+                {
+                    "Type": "Stat",
+                    "Stat": "Power",
+                    "Multiplier": 1.05,
+                    "OnTarget": false
+                },
+                {
+                    "Type": "Stat",
+                    "Stat": "Resistance",
+                    "Multiplier": 1.05,
+                    "OnTarget": false
+                }
+            ]
+        },
+        "MercuryNeeded": 1
+    },
+    "Nereid": {
+        "Move": {
+            "Name": "Nereid",
+            "Emote": "<:Nereid:636449223184875530>",
+            "Targettype": 4,
+            "Element": 3,
+            "power": 60,
+            "percentageDamage": 6,
+            "Range": 5,
+            "Effects": [
+                {
+                    "Type": "Stat",
+                    "Stat": "Power",
+                    "Multiplier": 1.3,
+                    "OnTarget": false
+                },
+                {
+                    "Type": "Stat",
+                    "Stat": "Resistance",
+                    "Multiplier": 1.3,
+                    "OnTarget": false
+                }
+            ]
+        },
+        "MercuryNeeded": 2
+    },
+    "Neptune": {
+        "Move": {
+            "Name": "Neptune",
+            "Emote": "<:Neptune:636449222975029279>",
+            "Targettype": 4,
+            "Element": 3,
+            "power": 120,
+            "percentageDamage": 9,
+            "Range": 5,
+            "Effects": [
+                {
+                    "Type": "Stat",
+                    "Stat": "Power",
+                    "Multiplier": 1.60,
+                    "OnTarget": false
+                },
+                {
+                    "Type": "Stat",
+                    "Stat": "Resistance",
+                    "Multiplier": 1.60,
+                    "OnTarget": false
+                }
+            ]
+        },
+        "MercuryNeeded": 3
+    },
+    "Boreas": {
+        "Move": {
+            "Name": "Boreas",
+            "Emote": "<:Boreas:636449222551404545>",
+            "Targettype": 4,
+            "Element": 3,
+            "power": 240,
+            "percentageDamage": 12,
+            "Range": 5,
+            "Effects": [
+                {
+                    "Type": "Stat",
+                    "Stat": "Power",
+                    "Multiplier": 2,
+                    "OnTarget": false
+                },
+                {
+                    "Type": "Stat",
+                    "Stat": "Resistance",
+                    "Multiplier": 2,
+                    "OnTarget": false
+                }
+            ]
+        },
+        "MercuryNeeded": 4
+    }
+}
