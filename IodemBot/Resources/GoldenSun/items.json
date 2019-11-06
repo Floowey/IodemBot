@@ -372,7 +372,7 @@
     "Lachesis Rule": {
         "Name": "Lachesis Rule",
         "Price": 21700,
-        "Icon": "<:Lachesis_Rule:569855339084906497>",
+        "Icon": "<a:LachesisRule:641571494211878912>",
         "ItemType": "Staff",
         "IsEquippable": true,
         "IsArtifact": true,
@@ -387,6 +387,32 @@
                 {
                     "Id": "AddDamage",
                     "args": [ "125" ]
+                },
+                {
+                    "id": "Condition",
+                    "args": [ "DeathCurse", "20" ]
+                }
+            ]
+        }
+    },
+    "ǝlnɹ suᴉʌlɐƆ": {
+        "Name": "ǝlnɹ suᴉʌlɐƆ",
+        "Price": 66666,
+        "Icon": "<a:CalvinsRule:641571441162190849>",
+        "ItemType": "Staff",
+        "IsEquippable": true,
+        "IsArtifact": true,
+        "AddStatsOnEquip": {
+            "Atk": 177
+        },
+        "increaseUnleashRate": 15,
+        "Unleash": {
+            "UnleashName": "Apocalypse",
+            "UnleashAlignment": 2,
+            "effectImages": [
+                {
+                    "Id": "AddDamage",
+                    "args": [ "155" ]
                 },
                 {
                     "id": "Condition",
@@ -1042,7 +1068,7 @@
     "Gaia Blade": {
         "Name": "Gaia Blade",
         "Price": 17000,
-        "Icon": "<:Gaia_Blade:569855141499633664>",
+        "Icon": "<a:Gaia_Blade_a:641571305451159582>",
         "ItemType": "LongSword",
         "IsEquippable": true,
         "IsArtifact": true,
@@ -1321,7 +1347,7 @@
     "Fire Brand": {
         "Name": "Fire Brand",
         "Price": 23400,
-        "Icon": "<:Fire_Brand:581966770470912031>",
+        "Icon": "<a:Fire_Brand_a:641571305115615233>",
         "ItemType": "LongSword",
         "IsEquippable": true,
         "IsArtifact": true,
@@ -1347,7 +1373,7 @@
     "Darksword": {
         "Name": "Darksword",
         "Price": 24200,
-        "Icon": "<:Darksword:569855141495439360>",
+        "Icon": "<a:Darksword_a:641571305384050698>",
         "ItemType": "LongSword",
         "IsEquippable": true,
         "IsArtifact": true,
@@ -1398,7 +1424,7 @@
     "Sol Blade": {
         "Name": "Sol Blade",
         "Price": 31200,
-        "Icon": "<:Sol_Blade:569855141709348864>",
+        "Icon": "<a:Sol_Blade_a:641571305199763458>",
         "ItemType": "LongSword",
         "IsEquippable": true,
         "IsArtifact": true,
