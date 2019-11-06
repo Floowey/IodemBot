@@ -5,7 +5,6 @@
         "SpriteNormal": "<a:DjinnDDIconFlint:640167151344549889>",
         "SpriteShiny": "<a:flint:636451189344567300>",
         "Move": {
-            "Name": "Flint",
             "dmgMult": 1.6,
             "Targettype": 3
         },
@@ -21,7 +20,6 @@
         "SpriteNormal": "<a:DjinnDDIconGranite:640167151411396641>",
         "SpriteShiny": "<a:flint:636451189344567300>",
         "Move": {
-            "Name": "Granite",
             "Targettype": 2,
             "hasPriority": true,
             "Effects": [
@@ -33,7 +31,7 @@
         },
         "Stats": {
             "MaxHP": 9,
-            "Defense": 3,
+            "Def": 3,
             "Spd": 2
         }
     },
@@ -43,7 +41,6 @@
         "SpriteNormal": "<a:DjinnDDIconQuartz:640167151701065758>",
         "SpriteShiny": "<a:flint:636451189344567300>",
         "Move": {
-            "Name": "Quartz",
             "Targettype": 1,
             "effects": [
                 {
@@ -58,13 +55,139 @@
             "Spd": 3
         }
     },
+    "Flower": {
+        "Djinnname": "Flower",
+        "Element": 0,
+        "SpriteNormal": "<a:DjinnDDIconFlower:640167151570911232>",
+        "SpriteShiny": "<a:flint:636451189344567300>",
+        "Move": {
+            "targetType": 2,
+            "range": 4,
+            "element": 0,
+            "healPower": 0,
+            "percentage": 30,
+            "singleTarget": false
+        },
+        "Stats": {
+            "MaxHP": 12,
+            "MaxPP": 4
+        }
+    },
+    "Bark": {
+        "Djinnname": "Bark",
+        "Element": 0,
+        "SpriteNormal": "<a:DjinnDDIconBark:640167151482699816>",
+        "SpriteShiny": "<a:flint:636451189344567300>",
+        "Move": {
+            "Targettype": 2,
+            "hasPriority": true,
+            "Effects": [
+                {
+                    "Type": "ReduceDamage",
+                    "DamageReduction": 50
+                }
+            ]
+        },
+        "Stats": {
+            "MaxHP": 11,
+            "Def": 2,
+            "Spd": 4
+        }
+    },
+    "Steel": {
+        "Djinnname": "Steel",
+        "Element": 0,
+        "SpriteNormal": "<a:DjinnDDIconSteel:640167151709323264>",
+        "SpriteShiny": "<a:flint:636451189344567300>",
+        "Move": {
+            "Targettype": 3,
+            "dmgMult": 1.6,
+            "Effects": [
+                {
+                    "Type": "HPDrain",
+                    "Percentage": 50,
+                    "Probability": 100
+                }
+            ]
+        },
+        "Stats": {
+            "MaxHP": 9,
+            "Atk": 4,
+            "Def": 3
+        }
+    },
+    "Brick": {
+        "Djinnname": "Brick",
+        "Element": 0,
+        "SpriteNormal": "<a:DjinnDDIconForge:640624960058032200>",
+        "SpriteShiny": "<a:ShinyForge:640625010372902942>",
+        "Move": {
+            "Targettype": 2,
+            "Element": 0,
+            "effects": [
+                {
+                    "Type": "Stat",
+                    "Stat": "Defense",
+                    "Multiplier": 1.25
+                }
+            ]
+        },
+        "Stats": {
+            "MaxHP": 10,
+            "Def": 3,
+            "Spd": 3
+        }
+    },
+    "Vine": {
+        "Djinnname": "Vine",
+        "Element": 0,
+        "SpriteNormal": "<a:DjinnDDIconForge:640624960058032200>",
+        "SpriteShiny": "<a:ShinyForge:640625010372902942>",
+        "Move": {
+            "Targettype": 4,
+            "Element": 0,
+            "effects": [
+                {
+                    "Type": "Stat",
+                    "Stat": "Speed",
+                    "Multiplier": 0.5
+                }
+            ]
+        },
+        "Stats": {
+            "MaxHP": 12,
+            "MaxPP": 5,
+            "Def": 3
+        }
+    },
+    "Furrow": {
+        "Djinnname": "Furrow",
+        "Element": 0,
+        "SpriteNormal": "<a:DjinnDDIconForge:640624960058032200>",
+        "SpriteShiny": "<a:ShinyForge:640625010372902942>",
+        "Move": {
+            "Targettype": 3,
+            "addDamage": 50,
+            "Effects": [
+                {
+                    "Type": "HPDrain",
+                    "Percentage": 50,
+                    "Probability": 100
+                }
+            ]
+        },
+        "Stats": {
+            "MaxHP": 12,
+            "MaxPP": 5,
+            "Def": 3
+        }
+    },
     "Forge": {
         "Djinnname": "Forge",
         "Element": 1,
         "SpriteNormal": "<a:DjinnDDIconForge:640624960058032200>",
         "SpriteShiny": "<a:ShinyForge:640625010372902942>",
         "Move": {
-            "Name": "Forge",
             "Targettype": 2,
             "Element": 1,
             "effects": [
