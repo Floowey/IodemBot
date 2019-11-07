@@ -170,7 +170,7 @@
 },
 "extraturns": 1,
 "HPRecovery": 300,
-"PPRecovery": 30
+"PPRecovery": 30,
 "isImmuneToConditions": [
     "Haunt",
     "DeathCurse",
