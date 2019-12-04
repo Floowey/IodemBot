@@ -130,7 +130,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public override string ToString()
         {
-            return $"`HP: {MaxHP} Atk: {Atk} Agi: {Spd}`\n` PP: {MaxPP} Def: {Def}`";
+            return $"`HP: {MaxHP} Atk: {Atk} Agi: {Spd}`\n`PP: {MaxPP} Def: {Def}`";
         }
 
         public string NonZerosToString()

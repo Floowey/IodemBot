@@ -83,6 +83,7 @@ namespace IodemBot.Modules
                 .AddField("7 Days", acc.Count(a => DateTime.Now.Subtract(new TimeSpan(7, 0, 0, 0)) < a.ServerStats.LastDayActive), true)
                 .AddField("30 Days", acc.Count(a => DateTime.Now.Subtract(new TimeSpan(30, 0, 0, 0)) < a.ServerStats.LastDayActive), true)
                 .AddField("All Time", acc.Count(a => a.ServerStats.LastDayActive > DateTime.MinValue), true)
+                .AddField("Tried Colosso", acc.Count(a => a.ServerStats.ColossoStreak > 0), true)
                 .Build());
         }
 
