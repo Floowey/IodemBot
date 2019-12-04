@@ -91,6 +91,11 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public static bool TryGetClassSeries(string series, out AdeptClassSeries outSeries)
         {
+            if (series == "")
+            {
+                outSeries = null;
+                return false;
+            }
             var trySeries = allClasses.Where(s => s.Name.ToUpper().Contains(series.ToUpper()) || s.Classes.Any(c => c.Name.ToUpper().Contains(series.ToUpper())));
             if (trySeries.FirstOrDefault() == null)
             {

@@ -13,10 +13,11 @@ namespace IodemBot
             {
                 { "Iodem", new Color(133, 63, 177) },
                 { "Venus", new Color(227, 167, 63) },
-                { "Mars", new Color(179, 10, 0) },
-                { "Jupiter", new Color(166, 106, 207) },
-                { "Mercury", new Color(100, 149, 237) },
+                { "Mars", new Color(0xdd2e44) },
+                { "Jupiter", new Color(0xaa5dca) },
+                { "Mercury", new Color(0x6495ed) },
                 { "Exathi", new Color(0xc5c5d6)},
+                { "none", new Color(0xc5c5d6) },
                 { "Shop", new Color(0xf8f800)},
                 { "Artifact", new Color(0xffe493)},
                 { "Error", new Color(0x821f01)}

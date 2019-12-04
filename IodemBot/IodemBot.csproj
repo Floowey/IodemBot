@@ -314,6 +314,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Colors.cs" />
+    <Compile Include="Extensions\stringExt.cs" />
     <Compile Include="Extensions\DjinnListExtension.cs" />
     <Compile Include="Modules\GoldenSunMechanics\DjinnAndSummons\DjinnPocket.cs" />
     <Compile Include="TwitchConfig.cs" />

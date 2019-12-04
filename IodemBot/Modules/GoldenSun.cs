@@ -77,10 +77,10 @@ namespace IodemBot.Modules
             var gotClass = AdeptClassSeriesManager.TryGetClassSeries(name, out AdeptClassSeries series);
             var embed = new EmbedBuilder().WithColor(Colors.Get(account.Element.ToString()));
 
-            if (gotClass)
+            if (gotClass || name == "")
             {
-                var success = SetClass(account, series.Name);
-                if (curSeries.Name.Equals(series.Name) || success)
+                var success = SetClass(account, series?.Name ?? "");
+                if (curSeries.Name.Equals(series?.Name) || success)
                 {
                     await Context.Channel.SendMessageAsync(embed: embed
                     .WithDescription($"You are {Article(account.GsClass)} {account.GsClass} now, {((SocketGuildUser)Context.User).DisplayName()}.")
@@ -146,7 +146,7 @@ namespace IodemBot.Modules
 
             .AddField("Class", account.GsClass, true)
             .AddField("Colosso wins | streak", $"{account.ServerStats.ColossoWins} | {account.ServerStats.ColossoHighestStreak} ", true)
-            .AddField("Colosso | Showdown Streaks", $"Solo: {account.ServerStats.ColossoHighestRoundEndlessSolo} | Duo: {account.ServerStats.ColossoHighestRoundEndlessDuo} \nTrio: {account.ServerStats.ColossoHighestRoundEndlessTrio} | Quad: {account.ServerStats.ColossoHighestRoundEndlessQuad}", true)
+            .AddField("Endless Streaks", $"Solo: {account.ServerStats.ColossoHighestRoundEndlessSolo} | Duo: {account.ServerStats.ColossoHighestRoundEndlessDuo} \nTrio: {account.ServerStats.ColossoHighestRoundEndlessTrio} | Quad: {account.ServerStats.ColossoHighestRoundEndlessQuad}", true)
 
             .AddField("Current Equip", account.Inv.GearToString(AdeptClassSeriesManager.GetClassSeries(account).Archtype), true)
             .AddField("Psynergy", p.GetMoves(false), false)
@@ -253,17 +253,16 @@ namespace IodemBot.Modules
             var account = UserAccounts.GetAccount(Context.User);
 
             var role = Context.Guild.Roles.FirstOrDefault(x => x.Name == chosenElement.ToString() + " Adepts");
+            if (chosenElement == Psynergy.Element.none)
+            {
+                role = Context.Guild.Roles.FirstOrDefault(r => r.Name == "Exathi");
+            }
             var venusRole = Context.Guild.Roles.FirstOrDefault(x => x.Name == "Venus Adepts");
             var marsRole = Context.Guild.Roles.FirstOrDefault(x => x.Name == "Mars Adepts");
             var jupiterRole = Context.Guild.Roles.FirstOrDefault(x => x.Name == "Jupiter Adepts");
             var mercuryRole = Context.Guild.Roles.FirstOrDefault(x => x.Name == "Mercury Adepts");
             var exathi = Context.Guild.Roles.FirstOrDefault(x => x.Name == "Exathi") ?? venusRole;
-            if (role == null)
-            {
-                return;
-            }
-
-            if (chosenElement == account.Element)
+            if (role == null || chosenElement == account.Element)
             {
                 return;
             }
@@ -280,7 +279,7 @@ namespace IodemBot.Modules
 
             account.Element = chosenElement;
             account.ClassToggle = 0;
-            if (classSeriesName != null && classSeriesName != "")
+            if (!classSeriesName.IsNullOrEmpty())
             {
                 SetClass(account, classSeriesName);
             }
@@ -315,8 +314,7 @@ namespace IodemBot.Modules
             embed.WithAuthor(psy.Name);
             embed.AddField("Emote", psy.Emote, true);
             embed.AddField("PP", psy.PPCost, true);
-            //embed.AddField("Element", psy.element, true);
-            embed.AddField("Description", $"{psy.ToString()} {(psy.HasPriority ? "Always goes first." : "")}");
+            embed.AddField("Description", $"{psy.ToString()} {(psy.hasPriority ? "Always goes first." : "")}");
             var s = "none";
 
             if (psy.Effects.Count > 0)

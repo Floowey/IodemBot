@@ -25,8 +25,8 @@ namespace IodemBot.Core.UserManagement
             BattleStats.Revives++;
         }
 
-        public ulong XP { get; set; } = 0;
         public DateTime LastXP { get; set; }
+        public ulong XP { get; set; } = 0;
 
         [JsonIgnore]
         public uint LevelNumber

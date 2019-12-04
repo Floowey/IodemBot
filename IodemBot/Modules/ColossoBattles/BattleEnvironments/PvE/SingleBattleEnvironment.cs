@@ -45,7 +45,7 @@ namespace IodemBot.Modules.ColossoBattles
                 new ChestReward()
                 {
                     Chest = ChestQuality.Normal,
-                    Weight = 3
+                    Weight = 4
                 },
                 new ChestReward()
                 {

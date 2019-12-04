@@ -159,7 +159,7 @@ namespace IodemBot.Core.Leveling
             ulong rate90 = 2500;
 
             ulong cutoff100 = 2538160;
-            ulong rate100 = 10000;
+            ulong rate100 = 25000;
             uint level = 1;
             ulong xpneeded = 0;
 

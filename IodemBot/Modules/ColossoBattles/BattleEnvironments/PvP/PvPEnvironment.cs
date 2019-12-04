@@ -536,8 +536,8 @@ namespace IodemBot.Modules.ColossoBattles
                         reactions.Remove(r);
                     }
                     embed.WithThumbnailUrl(fighter.ImgUrl);
-                    embed.WithColor(Colors.Get(fighter.Moves.Where(m => m is Psynergy).Select(m => (Psynergy)m).Select((Func<Psynergy, string>)(p => (string)p.Element.ToString())).ToArray()));
-                    embed.AddField($"{numberEmotes[i]}{fighter.ConditionsToString()}", fighter.Name);
+                    embed.WithColor(Colors.Get(fighter.Moves.Where(m => m is Psynergy).Select(m => (Psynergy)m).Select(p => p.element.ToString()).ToArray()));
+                    embed.AddField($"{numberEmotes[i]}{fighter.ConditionsToString()}", fighter.Name, true);
                     embed.AddField("HP", $"{fighter.Stats.HP} / {fighter.Stats.MaxHP}", true);
                     embed.AddField("PP", $"{fighter.Stats.PP} / {fighter.Stats.MaxPP}", true);
                     var s = new List<string>();

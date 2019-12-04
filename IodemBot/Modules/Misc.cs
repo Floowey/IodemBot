@@ -3,7 +3,9 @@ using Discord.Commands;
 using Discord.WebSocket;
 using Iodembot.Preconditions;
 using IodemBot.Core.UserManagement;
+using IodemBot.Extensions;
 using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -141,6 +143,7 @@ namespace IodemBot.Modules
         public async Task Uptime()
         {
             await Context.Channel.SendMessageAsync(embed: new EmbedBuilder()
+            .WithColor(Colors.Get("Iodem"))
             .AddField("Running since", $"{Global.RunningSince.ToLocalTime()} ({DateTime.Now.Subtract(Global.RunningSince.ToLocalTime()).ToString("d' 'hh':'mm':'ss")}")
             .AddField("Connected since", $"{Global.UpSince.ToLocalTime()} ({DateTime.Now.Subtract(Global.UpSince.ToLocalTime()).ToString("d' 'hh':'mm':'ss")})")
             .Build());
@@ -262,7 +265,7 @@ namespace IodemBot.Modules
             await Context.Channel.SendMessageAsync("", false, embed.Build());
         }
 
-        [Command("showdown")]
+        [Command("endless"), Alias("showdown")]
         [Cooldown(15)]
         public async Task Showdown(RankEnum type = RankEnum.Solo)
         {
@@ -328,25 +331,38 @@ namespace IodemBot.Modules
             await Context.Channel.SendMessageAsync("", false, embed.Build());
         }
 
-        [Command("Gladiator"), Alias("Streamer")]
+        [Command("giveRole")]
         [Cooldown(60)]
-        [Remarks("Give or remove the Gladiator Role")]
-        public async Task Gladiator([Remainder] SocketGuildUser user = null)
+        [Remarks("Give or remove the `Gladiator` or `Colosso Adept` role")]
+        public async Task GiveRole([Remainder] string RoleName = "")
         {
-            user = user ?? (SocketGuildUser)Context.User;
-
-            var Role = Context.Guild.Roles.Where(r => r.Id == 511704880122036234).FirstOrDefault();
-            if (Role == null)
+            var user = (SocketGuildUser)Context.User;
+            var embed = new EmbedBuilder().WithColor(Colors.Get("Iodem")).WithThumbnailUrl(Sprites.GetImageFromName("Iodem"));
+            Dictionary<string, ulong> roles = new Dictionary<string, ulong>(StringComparer.CurrentCultureIgnoreCase)
             {
-                return;
+                {"Gladiator", 511704880122036234},
+                {"Colosso Adept", 644506247521107969 }
+            };
+
+            if (roles.TryGetValue(RoleName, out ulong roleId))
+            {
+                var Role = Context.Guild.GetRole(roleId);
+                if (user.Roles.Any(r => r.Id == roleId))
+                {
+                    embed.WithDescription($"{user.DisplayName()} is no longer a {Role.Name}!");
+                    await user.RemoveRoleAsync(Role);
+                }
+                else
+                {
+                    embed.WithDescription($"{user.DisplayName()} is a {Role.Name} now!");
+                    await user.AddRoleAsync(Role);
+                }
             }
-
-            _ = user.Roles.Any(r => r.Id == Role.Id) ? user.RemoveRoleAsync(Role) : user.AddRoleAsync(Role);
-
-            await Context.Channel.SendMessageAsync(embed: new EmbedBuilder()
-                .WithColor(Colors.Get("Iodem"))
-                .WithDescription($"{user.Nickname} is a {Role.Name} now!")
-                .Build());
+            else
+            {
+                embed.WithDescription($"Select any of the following available roles:\n```\n{string.Join("\n", roles.Keys)}```");
+            }
+            await Context.Channel.SendMessageAsync(embed: embed.Build());
         }
     }
 }
