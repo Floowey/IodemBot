@@ -6,8 +6,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
     internal class MayIgnoreDefenseEffect : Effect
     {
         public override string Type { get; } = "IgnoreDefense";
-        private int IgnorePercent { get; set; } = 20;
-        private int Probability { get; set; } = 10;
+        public int IgnorePercent { get; set; } = 20;
+        public int Probability { get; set; } = 10;
 
         public override List<string> Apply(ColossoFighter User, ColossoFighter Target)
         {

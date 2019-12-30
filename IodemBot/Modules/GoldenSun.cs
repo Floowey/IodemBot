@@ -253,7 +253,7 @@ namespace IodemBot.Modules
             var account = UserAccounts.GetAccount(Context.User);
 
             var role = Context.Guild.Roles.FirstOrDefault(x => x.Name == chosenElement.ToString() + " Adepts");
-            if (chosenElement == Psynergy.Element.none)
+            if (chosenElement == Element.none)
             {
                 role = Context.Guild.Roles.FirstOrDefault(r => r.Name == "Exathi");
             }
@@ -314,7 +314,7 @@ namespace IodemBot.Modules
             embed.WithAuthor(psy.Name);
             embed.AddField("Emote", psy.Emote, true);
             embed.AddField("PP", psy.PPCost, true);
-            embed.AddField("Description", $"{psy.ToString()} {(psy.hasPriority ? "Always goes first." : "")}");
+            embed.AddField("Description", $"{psy.ToString()} {(psy.HasPriority ? "Always goes first." : "")}");
             var s = "none";
 
             if (psy.Effects.Count > 0)
