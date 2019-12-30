@@ -1303,14 +1303,15 @@
         "Unleash": {
             "UnleashName": "Soul Shatter",
             "UnleashAlignment": 1,
-            "effectImages": [
+            "effects": [
                 {
-                    "Id": "AddDamage",
-                    "args": [ "50" ]
+                    "Type": "AddDamage",
+                    "addDamage": 50
                 },
                 {
-                    "Id": "PPDrain",
-                    "args": [ "10", "45" ]
+                    "Type": "PPDrain",
+                    "Percentage": 10,
+                    "Probability": 45
                 }
             ]
         }
@@ -1380,14 +1381,15 @@
         "Unleash": {
             "UnleashName": "Radiant Fire",
             "UnleashAlignment": 1,
-            "effectImages": [
+            "effects": [
                 {
-                    "Id": "AddDamage",
-                    "args": [ "66" ]
+                    "Type": "AddDamage",
+                    "addDamage": 66
                 },
                 {
-                    "Id": "MayIgnoreDefense",
-                    "args": [ "50", "50" ]
+                    "Type": "IgnoreDefense",
+                    "IgnorePercent": 50,
+                    "Probability": 50
                 }
             ]
         }
@@ -1459,14 +1461,15 @@
         "Unleash": {
             "UnleashName": "Legend",
             "UnleashAlignment": 2,
-            "effectImages": [
+            "effects": [
                 {
-                    "Id": "AddDamage",
-                    "args": [ "73" ]
+                    "Type": "AddDamage",
+                    "addDamage": 73
                 },
                 {
-                    "id": "MultiplyDamage",
-                    "args": [ "3.0", "60" ]
+                    "Type": "MultiplyDamage",
+                    "Multiplier": 3.0,
+                    "Probability": 60
                 }
             ]
         }
@@ -1485,10 +1488,11 @@
         "Unleash": {
             "UnleashName": "Megiddo",
             "UnleashAlignment": 0,
-            "effectImages": [
+            "effects": [
                 {
-                    "Id": "MultiplyDamage",
-                    "args": [ "3.0", "100" ]
+                    "Type": "MultiplyDamage",
+                    "Multiplier": 3.0,
+                    "Probability": 100
                 }
             ]
         }
@@ -1506,14 +1510,16 @@
         "Unleash": {
             "UnleashName": "Sunset Burst",
             "UnleashAlignment": 1,
-            "effectImages": [
+            "effects": [
                 {
-                    "Id": "MultiplyDamage",
-                    "args": [ "1.8", "100" ]
+                    "Type": "MultiplyDamage",
+                    "Multiplier": 1.8,
+                    "Probability": 100
                 },
                 {
-                    "Id": "Condition",
-                    "args": [ "Delusion", "30" ]
+                    "Type": "Condition",
+                    "Condition": "Delusion",
+                    "Probability": 30
                 }
             ]
         }
@@ -1589,10 +1595,10 @@
         "Unleash": {
             "UnleashName": "Broil",
             "UnleashAlignment": 1,
-            "effectImages": [
+            "effects": [
                 {
-                    "Id": "AddDamage",
-                    "args": [ "23" ]
+                    "Type": "AddDamage",
+                    "addDamage": 23
                 }
             ]
         }
@@ -1717,10 +1723,10 @@
         "Unleash": {
             "UnleashName": "Power Drive",
             "UnleashAlignment": 1,
-            "effectImages": [
+            "effects": [
                 {
-                    "Id": "AddDamage",
-                    "args": [ "24" ]
+                    "Type": "AddDamage",
+                    "addDamage": 24
                 }
             ]
         }
@@ -1752,14 +1758,15 @@
         "Unleash": {
             "UnleashName": "Vein Tap",
             "UnleashAlignment": 0,
-            "effectImages": [
+            "effects": [
                 {
-                    "Id": "AddDamage",
-                    "args": [ "43" ]
+                    "Type": "AddDamage",
+                    "addDamage": 43
                 },
                 {
-                    "Id": "HPDrain",
-                    "args": [ "100", "44" ]
+                    "Type": "HPDrain",
+                    "Percentage": 100,
+                    "Probability": 44
                 }
             ]
         }
@@ -1833,12 +1840,13 @@
             "UnleashAlignment": 1,
             "effectImages": [
                 {
-                    "Id": "AddDamage",
-                    "args": [ "54" ]
+                    "Type": "AddDamage",
+                    "addDamage": 54
                 },
                 {
-                    "Id": "HPDrain",
-                    "args": [ "100", "35" ]
+                    "Type": "HPDrain",
+                    "Percentage": 100,
+                    "Probability": 35
                 }
             ]
         }
@@ -1909,14 +1917,16 @@
         "Unleash": {
             "UnleashName": "Olympus Rage",
             "UnleashAlignment": 1,
-            "effectImages": [
+            "effects": [
                 {
-                    "Id": "MultiplyDamage",
-                    "args": [ "2.0" ]
+                    "Type": "MultiplyDamage",
+                    "Multiplier": 2.0,
+                    "Probability": 100
                 },
                 {
-                    "id": "ChanceToOHKO",
-                    "args": [ "10" ]
+                    "Type": "Condition",
+                    "Condition": "OHKO",
+                    "Probability": 10
                 }
             ]
         }
@@ -1984,10 +1994,11 @@
         "Unleash": {
             "UnleashName": "Rapid Smash",
             "UnleashAlignment": 2,
-            "effectImages": [
+            "effects": [
                 {
-                    "Id": "MultiplyDamage",
-                    "args": [ "0.9, 1.8", "50, 100" ]
+                    "Type": "MultiplyDamage",
+                    "Multipliers": [ 0.9, 1.8 ],
+                    "Probabilities": [ 50, 100 ]
                 }
             ]
         }
@@ -2007,10 +2018,10 @@
         "Unleash": {
             "UnleashName": "Vorpal Slash",
             "UnleashAlignment": 2,
-            "effectImages": [
+            "effects": [
                 {
-                    "Id": "AddDamage",
-                    "args": [ "16" ]
+                    "Type": "AddDamage",
+                    "addDamage": 16
                 }
             ]
         }
@@ -2028,14 +2039,15 @@
         "Unleash": {
             "UnleashName": "Life Nourish",
             "UnleashAlignment": 0,
-            "effectImages": [
+            "effects": [
                 {
-                    "Id": "AddDamage",
-                    "args": [ "25" ]
+                    "Type": "AddDamage",
+                    "addDamage": 25
                 },
                 {
-                    "Id": "HPDrain",
-                    "args": [ "100", "33" ]
+                    "Type": "HPDrain",
+                    "Percentage": 100,
+                    "Probability": 33
                 }
             ]
         }
@@ -2053,14 +2065,15 @@
         "Unleash": {
             "UnleashName": "Mortal Danger",
             "UnleashAlignment": 0,
-            "effectImages": [
+            "effects": [
                 {
-                    "Id": "AddDamage",
-                    "args": [ "28" ]
+                    "Type": "AddDamage",
+                    "addDamage": 28
                 },
                 {
-                    "id": "ChanceToOHKO",
-                    "args": [ "15" ]
+                    "Type": "Condition",
+                    "Condition": "OHKO",
+                    "Probability": 15
                 }
             ]
         }
@@ -2108,10 +2121,11 @@
         "Unleash": {
             "UnleashName": "Sonic Smash",
             "UnleashAlignment": 2,
-            "effectImages": [
+            "effects": [
                 {
-                    "Id": "MultiplyDamage",
-                    "args": [ "3.0", "35" ]
+                    "Type": "MultiplyDamage",
+                    "Multiplier": 3.0,
+                    "Probability": 35
                 }
             ]
         }
@@ -2129,14 +2143,15 @@
         "Unleash": {
             "UnleashName": "Asura",
             "UnleashAlignment": 2,
-            "effectImages": [
+            "effects": [
                 {
-                    "Id": "AddDamage",
-                    "args": [ "64" ]
+                    "Type": "AddDamage",
+                    "addDamage": 64
                 },
                 {
-                    "Id": "MayIgnoreDefense",
-                    "args": [ "50", "50" ]
+                    "Type": "IgnoreDefense",
+                    "IgnorePercent": 50,
+                    "Probability": 50
                 }
             ]
         }
@@ -2158,14 +2173,15 @@
         "Unleash": {
             "UnleashName": "Firebreak",
             "UnleashAlignment": 0,
-            "effectImages": [
+            "effects": [
                 {
-                    "Id": "AddDamage",
-                    "args": [ "47" ]
+                    "Type": "AddDamage",
+                    "addDamage": 47
                 },
                 {
-                    "id": "MultiplyDamage",
-                    "args": [ "1.2, 1.4, 1.6", "20, 20, 20" ]
+                    "Type": "MultiplyDamage",
+                    "Multipliers": [ 1.2, 1.4, 1.6 ],
+                    "Probabilities": [ 20, 20, 20 ]
                 }
             ]
         }
@@ -2290,14 +2306,15 @@
         "Unleash": {
             "UnleashName": "Mad Zephyr",
             "UnleashAlignment": 2,
-            "effectImages": [
+            "effects": [
                 {
-                    "Id": "AddDamage",
-                    "args": [ "40" ]
+                    "Type": "AddDamage",
+                    "addDamage": [ "40" ]
                 },
                 {
                     "id": "MultiplyDamage",
-                    "args": [ "2.0", "25" ]
+                    "Multiplier": 2.0,
+                    "Probability": 25
                 }
             ]
         }
@@ -2396,14 +2413,15 @@
         "Unleash": {
             "UnleashName": "Rising Dragon",
             "UnleashAlignment": 3,
-            "effectImages": [
+            "effects": [
                 {
-                    "Id": "AddDamage",
-                    "args": [ "62" ]
+                    "Type": "AddDamage",
+                    "addDamage": 62
                 },
                 {
-                    "id": "MultiplyDamage",
-                    "args": [ "2.0", "50" ]
+                    "Type": "MultiplyDamage",
+                    "Multiplier": 2.0,
+                    "Probability": 50
                 }
             ]
         }
@@ -2421,14 +2439,15 @@
         "Unleash": {
             "UnleashName": "Vengeance",
             "UnleashAlignment": 0,
-            "effectImages": [
+            "effects": [
                 {
-                    "Id": "AddDamage",
-                    "args": [ "71" ]
+                    "Type": "AddDamage",
+                    "addDamage": 71
                 },
                 {
-                    "id": "MultiplyDamage",
-                    "args": [ "3.0, 2.0", "50, 40" ]
+                    "Type": "MultiplyDamage",
+                    "Multipliers": [ 3.0, 2.0 ],
+                    "Probabilities": [ 50, 40 ]
                 }
             ]
         }
@@ -2447,14 +2466,16 @@
         "Unleash": {
             "UnleashName": "Emerald Blitz",
             "UnleashAlignment": 2,
-            "effectImages": [
+            "effects": [
                 {
-                    "id": "MultiplyDamage",
-                    "args": [ "2.0" ]
+                    "Type": "MultiplyDamage",
+                    "Multiplier": 2.0,
+                    "Probability": 100
                 },
                 {
-                    "id": "Condition",
-                    "args": [ "Seal", "45" ]
+                    "Type": "Condition",
+                    "Condition": "Seal",
+                    "Probability": 45
                 }
             ]
         }
@@ -2503,14 +2524,16 @@
         "Unleash": {
             "UnleashName": "Snipe Shot",
             "UnleashAlignment": 2,
-            "effectImages": [
+            "effects": [
                 {
-                    "id": "MultiplyDamage",
-                    "args": [ "1.6" ]
+                    "Type": "MultiplyDamage",
+                    "Multiplier": 1.6,
+                    "Prodability": 100
                 },
                 {
-                    "id": "MayIgnoreDefense",
-                    "args": [ "50", "50" ]
+                    "Type": "IgnoreDefense",
+                    "IgnorePercent": 50,
+                    "Probability": 50
                 }
             ]
         }
@@ -2584,19 +2607,21 @@
         "Unleash": {
             "UnleashName": "Undead Bane",
             "UnleashAlignment": 2,
-            "effectImages": [
+            "effects": [
                 {
-                    "id": "MultiplyDamage",
-                    "args": [ "1.7" ]
+                    "Type": "MultiplyDamage",
+                    "Multiplier": 1.7,
+                    "Probability": 100
                 },
                 {
-                    "id": "Condition",
-                    "args": [ "Sleep", "30" ]
+                    "Type": "Condition",
+                    "Condition": "Sleep",
+                    "Probability": 30
                 }
             ]
         }
-    },
-    "Sagittarius Bow": {
+     },
+     "Sagittarius Bow": {
         "Name": "Sagittarius Bow",
         "Price": 29000,
         "Icon": "<:Sagittarius_Bow:586639455327092766>",
@@ -2708,10 +2733,12 @@
         },
         "GrantsUnleash": true,
         "Unleash": {
-            "effectImages": [
+            "effects": [
                 {
-                    "id": "Stat",
-                    "args": [ "Attack", "0.8" ]
+                    "Type": "Stat",
+                    "Stat": "Attack",
+                    "Multiplier": 0.8,
+                    "Probability": 100
                 }
             ]
         }
@@ -2993,26 +3020,31 @@
         },
         "GrantsUnleash": true,
         "Unleash": {
-            "effectImages": [
+            "effects": [
                 {
-                    "id": "HPDrain",
-                    "args": [ "200", "100" ]
+                    "Type": "HPDrain",
+                    "Percentage": 200,
+                    "Probability": 100
                 },
                 {
-                    "id": "Condition",
-                    "args": [ "Seal", "20" ]
+                    "Type": "Condition",
+                    "Condition": "Seal",
+                    "Probability": 20
                 },
                 {
-                    "id": "Condition",
-                    "args": [ "Venom", "50" ]
+                    "Type": "Condition",
+                    "Condition": "Venom",
+                    "Probability": 50
                 },
                 {
-                    "id": "Condition",
-                    "args": [ "Sleep", "20" ]
+                    "Type": "Condition",
+                    "Condition": "Sleep",
+                    "Probability": 20
                 },
                 {
-                    "id": "ChanceToOHKO",
-                    "args": [ "1" ]
+                    "Type": "Condition",
+                    "Condition": "OHKO",
+                    "Probability": 1
                 }
             ]
         }
@@ -3079,10 +3111,10 @@
         },
         "GrantsUnleash": true,
         "Unleash": {
-            "effectImages": [
-                {
-                    "id": "Condition",
-                    "args": [ "Delusion", "30" ]
+            "effects
+                    "Type": "Condition",
+                    "Condition": "Delusion",
+                    "Probability": 30
                 }
             ]
         }
@@ -3349,10 +3381,11 @@
         },
         "GrantsUnleash": true,
         "Unleash": {
-            "effectImages": [
+            "effects": [
                 {
-                    "id": "Condition",
-                    "args": [ "Sleep", "15" ]
+                    "Type": "Condition",
+                    "Condition": "Sleep",
+                    "Probability": 15
                 }
             ]
         }
@@ -3742,8 +3775,9 @@
         "Unleash": {
             "effectImages": [
                 {
-                    "id": "Condition",
-                    "args": [ "DeathCurse", "10" ]
+                    "Type": "Condition",
+                    "Condition": "DeathCurse",
+                    "Probability": 10
                 }
             ]
         }
@@ -3867,10 +3901,11 @@
         },
         "GrantsUnleash": true,
         "Unleash": {
-            "effectImages": [
+            "effects": [
                 {
-                    "id": "ChanceToOHKO",
-                    "args": [ "5" ]
+                    "Type": "Condition",
+                    "Condition": "OHKO",
+                    "Probability": 5
                 }
             ]
         }
@@ -3920,10 +3955,11 @@
         },
         "GrantsUnleash": true,
         "Unleash": {
-            "effectImages": [
+            "effects": [
                 {
-                    "id": "Condition",
-                    "args": [ "Delusion", "25" ]
+                    "Type": "Condition",
+                    "Condition": "Delusion",
+                    "Probability": 25
                 }
             ]
         }
@@ -4311,10 +4347,11 @@
         },
         "GrantsUnleash": true,
         "Unleash": {
-            "effectImages": [
+            "effects": [
                 {
-                    "id": "Condition",
-                    "args": [ "Haunt", "10" ]
+                    "Type": "Condition",
+                    "Condition": "Haunt",
+                    "Probability": 10
                 }
             ]
         }
@@ -4404,9 +4441,9 @@
         "ChanceToActivate": 55,
         "ChanceToBreak": 30,
         "Unleash": {
-            "effectImages": [
+            "effects": [
                 {
-                    "id": "Restore"
+                    "Type": "Restore"
                 }
             ]
         }
@@ -4478,10 +4515,12 @@
         "ChanceToActivate": 30,
         "ChanceToBreak": 12,
         "Unleash": {
-            "effectImages": [
+            "effects": [
                 {
-                    "id": "Stat",
-                    "args": [ "Resistance", "1.2" ]
+                    "Type": "Stat",
+                    "Stat": "Defense",
+                    "Multiplier": 1.2,
+                    "Probability": 100
                 }
             ]
         }
@@ -4732,10 +4771,11 @@
         },
         "GrantsUnleash": true,
         "Unleash": {
-            "effectImages": [
+            "effects": [
                 {
-                    "id": "Condition",
-                    "args": [ "Delusion", "25" ]
+                    "Type": "Condition",
+                    "Condition": "Delusion",
+                    "Probability": 25
                 }
             ]
         }
@@ -4801,10 +4841,10 @@
         "ChanceToActivate": 100,
         "ChanceToBreak": 100,
         "Unleash": {
-            "effectImages": [
+            "effects": [
                 {
-                    "id": "Revive",
-                    "args": [ "33" ]
+                    "Type": "Revive",
+                    "Percentage": 33
                 }
             ]
         }
@@ -4828,9 +4868,9 @@
         "ChanceToActivate": 25,
         "ChanceToBreak": 10,
         "Unleash": {
-            "effectImages": [
+            "effects": [
                 {
-                    "id": "Restore"
+                    "Type": "Restore"
                 }
             ]
         }
@@ -4845,9 +4885,9 @@
         "ChanceToActivate": 80,
         "ChanceToBreak": 40,
         "Unleash": {
-            "effectImages": [
+            "effects": [
                 {
-                    "id": "Restore"
+                    "Type": "Restore"
                 }
             ]
         }
@@ -4880,10 +4920,12 @@
         "ChanceToActivate": 30,
         "ChanceToBreak": 6,
         "Unleash": {
-            "effectImages": [
+            "effects": [
                 {
-                    "id": "Stat",
-                    "args": [ "Attack", "1.2" ]
+                    "Type": "Stat",
+                    "Stat": "Attack",
+                    "Multiplier": 1.2,
+                    "Probability": 100
                 }
             ]
         }
@@ -4898,10 +4940,12 @@
         "ChanceToActivate": 30,
         "ChanceToBreak": 12,
         "Unleash": {
-            "effectImages": [
+            "effects": [
                 {
-                    "id": "Stat",
-                    "args": [ "Resistance", "1.2" ]
+                    "Type": "Stat",
+                    "Stat": "Resistance",
+                    "Multiplier": 1.2,
+                    "Probability": 100
                 }
             ]
         }
@@ -4927,10 +4971,11 @@
         "IsArtifact": true,
         "GrantsUnleash": true,
         "Unleash": {
-            "effectImages": [
+            "effects": [
                 {
-                    "id": "PPDrain",
-                    "args": [ "10", "20" ]
+                    "Type": "PPDrain",
+                    "Percentage": 10,
+                    "Probability": 20
                 }
             ]
         }
@@ -4944,10 +4989,11 @@
         "IsArtifact": true,
         "GrantsUnleash": true,
         "Unleash": {
-            "effectImages": [
+            "effects": [
                 {
-                    "id": "HPDrain",
-                    "args": [ "50", "20" ]
+                    "Type": "HPDrain",
+                    "Percentage": 50,
+                    "Probability": 20
                 }
             ]
         }
@@ -4965,10 +5011,11 @@
         },
         "GrantsUnleash": true,
         "Unleash": {
-            "effectImages": [
+            "effects": [
                 {
-                    "id": "HPDrain",
-                    "args": [ "10", "20" ]
+                    "Type": "HPDrain",
+                    "Percentage": 10,
+                    "Probability": 20
                 }
             ]
         }
@@ -4982,10 +5029,11 @@
         "IsArtifact": true,
         "GrantsUnleash": true,
         "Unleash": {
-            "effectImages": [
+            "effects": [
                 {
-                    "id": "Condition",
-                    "args": [ "Sleep", "15" ]
+                    "Type": "Condition",
+                    "Condition": "Sleep",
+                    "Probability": 15
                 }
             ]
         }
@@ -4999,10 +5047,11 @@
         "IsArtifact": true,
         "GrantsUnleash": true,
         "Unleash": {
-            "effectImages": [
+            "effects": [
                 {
-                    "id": "Condition",
-                    "args": [ "Seal", "30" ]
+                    "Type": "Condition",
+                    "Condition": "Seal",
+                    "Probability": 30
                 }
             ]
         }
@@ -5016,10 +5065,11 @@
         "IsArtifact": true,
         "GrantsUnleash": true,
         "Unleash": {
-            "effectImages": [
+            "effects": [
                 {
-                    "id": "Condition",
-                    "args": [ "Delusion", "40" ]
+                    "Type": "Condition",
+                    "Condition": "Delusion",
+                    "Probability": 40
                 }
             ]
         }
