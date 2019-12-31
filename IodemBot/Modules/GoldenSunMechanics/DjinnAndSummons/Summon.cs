@@ -65,5 +65,10 @@ namespace IodemBot.Modules.GoldenSunMechanics
             ReadyDjinn.OfElement(Element.Mercury).Take(MercuryNeeded).ToList().ForEach(d => d.Summon(User));
             return Move.Use(User);
         }
+
+        public override string ToString()
+        {
+            return Move.ToString();
+        }
     }
 }

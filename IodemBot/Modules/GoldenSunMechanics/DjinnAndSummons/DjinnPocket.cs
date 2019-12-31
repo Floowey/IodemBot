@@ -69,7 +69,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         private void UpdateStrings()
         {
             DjinnStorage = djinn.Select(d => new DjinnHolder() { Djinn = d.Djinnname, Nickname = d.Nickname, Shiny = d.IsShiny }).ToList();
-            SummonStorage = summons.Select(s => s.Name).ToList();
+            SummonStorage = summons.Select(s => new SummonHolder() { Summon = s.Name }).ToList();
         }
     }
 }
