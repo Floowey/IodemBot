@@ -414,5 +414,36 @@
             ]
         },
         "MercuryNeeded": 4
-    }
+    },
+     "Zagan": {
+         "Move": {
+             "Name": "Zagan",
+             "Emote": "<:Zagan:636449223159709706>",
+             "Targettype": 4,
+             "Element": 0,
+             "power": 50,
+             "percentageDamage": 6,
+             "Range": 5,
+             "Effects": [
+                 {
+                    "Type": "Stat",
+                    "Stat": "Power",
+                    "Multiplier": 1.1,
+                    "OnTarget": false
+                 }
+                 {
+                    "Type": "Stat",
+                    "Stat": "Resistance",
+                    "Multiplier": 1.1,
+                    "OnTarget": false
+                 }
+                 {
+                    "Type": "Stat",
+                    "Stat": "Defense",
+                    "Multiplier": 0.25,
+                    "Probability": 50
+                 }
+             ]
+        }
+    },
 }
