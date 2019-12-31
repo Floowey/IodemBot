@@ -1411,20 +1411,22 @@
         "SpriteNormal": "<a:DjinnDDIconChill:661163652807786507>",
         "SpriteShiny": "<a:ShinyForge:640625010372902942>",
         "Move": {
-            "Targettype": 2,
-            "Element": 1,
+            "Targettype": 3,
+            "addDamage": 40,
+            "Element": 3,
             "effects": [
                 {
                     "Type": "Stat",
-                    "Stat": "Attack",
-                    "Multiplier": 1.25
+                    "Stat": "Defense",
+                    "Multiplier": 0.75,
+                    "Probability": 33
                 }
             ]
         },
         "Stats": {
             "MaxHP": 10,
-            "Atk": 3,
-            "Spd": 3
+            "MaxPP": 3,
+            "Def": 3
         }
     },
     "Sleet": {
@@ -1433,20 +1435,21 @@
         "SpriteNormal": "<a:DjinnDDIconSleet:661163652946198568>",
         "SpriteShiny": "<a:ShinyForge:640625010372902942>",
         "Move": {
-            "Targettype": 2,
-            "Element": 1,
+            "Targettype": 3,
+            "addDamage": 30,
+            "Element": 3,
             "effects": [
                 {
                     "Type": "Stat",
                     "Stat": "Attack",
-                    "Multiplier": 1.25
+                    "Multiplier": 0.75,
+                    "Probability": 33
                 }
             ]
         },
         "Stats": {
-            "MaxHP": 10,
-            "Atk": 3,
-            "Spd": 3
+            "MaxHP": 12,
+            "Atk": 4
         }
     },
     "Surge": {
@@ -1455,20 +1458,15 @@
         "SpriteNormal": "<a:DjinnDDIconSurge:661163652790878219>",
         "SpriteShiny": "<a:ShinyForge:640625010372902942>",
         "Move": {
-            "Targettype": 2,
-            "Element": 1,
-            "effects": [
-                {
-                    "Type": "Stat",
-                    "Stat": "Attack",
-                    "Multiplier": 1.25
-                }
-            ]
+            "Element": 3,
+            "targetType": 2,
+            "range": 4,
+            "healPower": 0,
+            "percentage": 30
         },
         "Stats": {
-            "MaxHP": 10,
-            "Atk": 3,
-            "Spd": 3
+            "MaxHP": 12,
+            "Spd": 4
         }
     },
     "Mist": {
@@ -1477,20 +1475,19 @@
         "SpriteNormal": "<a:DjinnDDIconMist:661163652803592193>",
         "SpriteShiny": "<a:ShinyForge:640625010372902942>",
         "Move": {
-            "Targettype": 2,
-            "Element": 1,
-            "effects": [
+            "Targettype": 3,
+            "dmgMult": 1.3,
+            "Effects": [
                 {
-                    "Type": "Stat",
-                    "Stat": "Attack",
-                    "Multiplier": 1.25
+                    "Type": "Condition",
+                    "Condition": "Sleep",
+                    "Probability": 25
                 }
             ]
         },
         "Stats": {
-            "MaxHP": 10,
-            "Atk": 3,
-            "Spd": 3
+            "MaxHP": 11,
+            "Atk": 4
         }
     },
     "Mellow": {
@@ -1500,19 +1497,19 @@
         "SpriteShiny": "<a:ShinyForge:640625010372902942>",
         "Move": {
             "Targettype": 2,
-            "Element": 1,
+            "Element": 3,
             "effects": [
                 {
                     "Type": "Stat",
-                    "Stat": "Attack",
-                    "Multiplier": 1.25
+                    "Stat": "Resistance",
+                    "Multiplier": 1.40
                 }
             ]
         },
         "Stats": {
-            "MaxHP": 10,
-            "Atk": 3,
-            "Spd": 3
+            "MaxHP": 11,
+            "Def": 1,
+            "Spd": 2
         }
     },
     "Claw": {
@@ -1521,20 +1518,23 @@
         "SpriteNormal": "<a:DjinnDDIconClaw:661163652891541521>",
         "SpriteShiny": "<a:ShinyForge:640625010372902942>",
         "Move": {
-            "Targettype": 2,
-            "Element": 1,
+            "Targettype": 3,
+            "dmgMult": 1.5,
+            "Element": 3,
             "effects": [
                 {
                     "Type": "Stat",
-                    "Stat": "Attack",
-                    "Multiplier": 1.25
+                    "Stat": "Resistance",
+                    "Multiplier": 0.60,
+                    "Probability": 25
                 }
             ]
         },
         "Stats": {
-            "MaxHP": 10,
+            "MaxHP": 8,
+            "MaxPP": 3,
             "Atk": 3,
-            "Spd": 3
+            "Spd": 2
         }
     },
     "Serac": {
@@ -1543,20 +1543,19 @@
         "SpriteNormal": "<a:DjinnDDIconSerac:661163652887347241>",
         "SpriteShiny": "<a:ShinyForge:640625010372902942>",
         "Move": {
-            "Targettype": 2,
-            "Element": 1,
+            "Targettype": 3,
+            "addDamage": 70,
+            "Element": 3,
             "effects": [
                 {
-                    "Type": "Stat",
-                    "Stat": "Attack",
-                    "Multiplier": 1.25
+                    "Type": "OHKO",
+                    "Probability": 15
                 }
             ]
         },
         "Stats": {
-            "MaxHP": 10,
-            "Atk": 3,
-            "Spd": 3
+            "MaxHP": 12,
+            "Atk": 3
         }
     },
     "Dewdrop": {
@@ -1566,19 +1565,17 @@
         "SpriteShiny": "<a:ShinyForge:640625010372902942>",
         "Move": {
             "Targettype": 2,
-            "Element": 1,
+            "Element": 3,
             "effects": [
                 {
-                    "Type": "Stat",
-                    "Stat": "Attack",
-                    "Multiplier": 1.25
+                    "Type": "Restore"
                 }
             ]
         },
         "Stats": {
-            "MaxHP": 10,
-            "Atk": 3,
-            "Spd": 3
+            "MaxHP": 8,
+            "MaxPP": 4,
+            "Atk": 3
         }
     },
     "Torrent": {
@@ -1588,19 +1585,18 @@
         "SpriteShiny": "<a:ShinyForge:640625010372902942>",
         "Move": {
             "Targettype": 2,
-            "Element": 1,
+            "Element": 3,
             "effects": [
                 {
                     "Type": "Stat",
-                    "Stat": "Attack",
-                    "Multiplier": 1.25
+                    "Stat": "Spd",
+                    "Multiplier": 2.00
                 }
             ]
         },
         "Stats": {
-            "MaxHP": 10,
-            "Atk": 3,
-            "Spd": 3
+            "MaxHP": 9,
+            "Atk": 5
         }
     },
     "Coral": {
@@ -1609,20 +1605,16 @@
         "SpriteNormal": "<a:DjinnDDIconCoral:661163652937940992>",
         "SpriteShiny": "<a:ShinyForge:640625010372902942>",
         "Move": {
-            "Targettype": 2,
-            "Element": 1,
-            "effects": [
-                {
-                    "Type": "Stat",
-                    "Stat": "Attack",
-                    "Multiplier": 1.25
-                }
-            ]
+            "Element": 3,
+            "targetType": 2,
+            "range": 4,
+            "healPower": 0,
+            "percentage": 50
         },
         "Stats": {
-            "MaxHP": 10,
-            "Atk": 3,
-            "Spd": 3
+            "MaxHP": 8,
+            "MaxPP": 4,
+            "Def": 2
         }
     },
     "Spout": {
@@ -1631,42 +1623,42 @@
         "SpriteNormal": "<a:DjinnDDIconSpout:661163652950523924>",
         "SpriteShiny": "<a:ShinyForge:640625010372902942>",
         "Move": {
-            "Targettype": 2,
-            "Element": 1,
+            "Targettype": 3,
+            "addDamage": 80,
+            "Element": 3,
             "effects": [
                 {
-                    "Type": "Stat",
-                    "Stat": "Attack",
-                    "Multiplier": 1.25
+                    "Type": "Condition",
+                    "Condition": "Delusion",
+                    "Probability": 50
                 }
             ]
         },
         "Stats": {
-            "MaxHP": 10,
-            "Atk": 3,
+            "MaxHP": 9,
+            "Def": 2,
             "Spd": 3
         }
     },
     "Teardrop": {
         "Djinnname": "Teardrop",
-        "Element": 6,
+        "Element": 3,
         "SpriteNormal": "<a:DjinnDDIconTeardrop:661163652946067456>",
         "SpriteShiny": "<a:ShinyForge:640625010372902942>",
         "Move": {
-            "Targettype": 2,
-            "Element": 1,
+            "Targettype": 1,
             "effects": [
                 {
-                    "Type": "Stat",
-                    "Stat": "Attack",
-                    "Multiplier": 1.25
+                    "Type": "Revive",
+                    "Percentage": 60,
+                    "Probability": 70
                 }
             ]
         },
         "Stats": {
-            "MaxHP": 10,
-            "Atk": 3,
-            "Spd": 3
+            "MaxHP": 9,
+            "MaxPP": 5,
+            "Spd": 2
         }
     },
     "Pincer": {
@@ -1675,20 +1667,22 @@
         "SpriteNormal": "<a:DjinnDDIconPincer:661163652975427604>",
         "SpriteShiny": "<a:ShinyForge:640625010372902942>",
         "Move": {
-            "Targettype": 2,
-            "Element": 1,
+            "Targettype": 3,
+            "addDamage": 60,
+            "Element": 3,
             "effects": [
                 {
                     "Type": "Stat",
-                    "Stat": "Attack",
-                    "Multiplier": 1.25
+                    "Stat": "Resistance",
+                    "Multiplier": 0.60
                 }
             ]
         },
         "Stats": {
-            "MaxHP": 10,
-            "Atk": 3,
-            "Spd": 3
+            "MaxHP": 9,
+            "MaxPP": 3,
+            "Atk": 4,
+            "Def": 3
         }
     },
     "Spring": {
@@ -1697,20 +1691,14 @@
         "SpriteNormal": "<a:DjinnDDIconSpring:661163652975558686>",
         "SpriteShiny": "<a:ShinyForge:640625010372902942>",
         "Move": {
-            "Targettype": 2,
-            "Element": 1,
-            "effects": [
-                {
-                    "Type": "Stat",
-                    "Stat": "Attack",
-                    "Multiplier": 1.25
-                }
-            ]
+            "targetType": 1,
+            "element": 3,
+            "healPower": 0,
+            "percentage": 70
         },
         "Stats": {
-            "MaxHP": 10,
-            "Atk": 3,
-            "Spd": 3
+            "MaxHP": 11,
+            "MaxPP": 5
         }
     },
     "Foam": {
@@ -1719,20 +1707,20 @@
         "SpriteNormal": "<a:DjinnDDIconFoam:661163652925095981>",
         "SpriteShiny": "<a:ShinyForge:640625010372902942>",
         "Move": {
-            "Targettype": 2,
-            "Element": 1,
+            "Targettype": 4,
+            "Element": 3,
             "effects": [
                 {
                     "Type": "Stat",
-                    "Stat": "Attack",
-                    "Multiplier": 1.25
+                    "Stat": "Speed",
+                    "Multiplier": 0.5
                 }
             ]
         },
         "Stats": {
             "MaxHP": 10,
-            "Atk": 3,
-            "Spd": 3
+            "MaxPP": 3,
+            "Def": 2
         }
     },
     "Rime": {
@@ -1741,20 +1729,19 @@
         "SpriteNormal": "<a:DjinnDDIconRime:661163652782489611>",
         "SpriteShiny": "<a:ShinyForge:640625010372902942>",
         "Move": {
-            "Targettype": 2,
-            "Element": 1,
+            "Targettype": 3,
+            "Element": 3,
             "effects": [
                 {
-                    "Type": "Stat",
-                    "Stat": "Attack",
-                    "Multiplier": 1.25
+                    "Type": "Condition",
+                    "Condition": "Seal",
+                    "Probability": 100
                 }
             ]
         },
         "Stats": {
             "MaxHP": 10,
-            "Atk": 3,
-            "Spd": 3
+            "MaxPP": 6
         }
     },
     "Geyser": {
@@ -1763,20 +1750,19 @@
         "SpriteNormal": "<a:DjinnDDIconGeyser:661163652941873192>",
         "SpriteShiny": "<a:ShinyForge:640625010372902942>",
         "Move": {
-            "Targettype": 2,
-            "Element": 1,
+            "Targettype": 3,
+            "addDamage": 50,
+            "Element": 3,
             "effects": [
                 {
-                    "Type": "Stat",
-                    "Stat": "Attack",
-                    "Multiplier": 1.25
+                    "Type": "OHKO",
+                    "Probability": 15
                 }
             ]
         },
         "Stats": {
-            "MaxHP": 10,
-            "Atk": 3,
-            "Spd": 3
+            "MaxHP": 11,
+            "Atk": 5
         }
     },
     "Shell": {
@@ -1786,18 +1772,17 @@
         "SpriteShiny": "<a:ShinyForge:640625010372902942>",
         "Move": {
             "Targettype": 2,
-            "Element": 1,
-            "effects": [
+            "hasPriority": true,
+            "Effects": [
                 {
-                    "Type": "Stat",
-                    "Stat": "Attack",
-                    "Multiplier": 1.25
+                    "Type": "ReduceDamage",
+                    "DamageReduction": 60
                 }
             ]
         },
         "Stats": {
-            "MaxHP": 10,
-            "Atk": 3,
+            "MaxHP": 12,
+            "Def": 3,
             "Spd": 3
         }
     }
