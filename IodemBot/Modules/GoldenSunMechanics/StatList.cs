@@ -138,7 +138,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 $"{(MaxPP != 0 ? $"PP: {MaxPP} " : "")}" +
                 $"{(Atk != 0 ? $"Atk: {Atk} " : "")}" +
                 $"{(Def != 0 ? $"Def: {Def} " : "")}" +
-                $"{(Spd != 0 ? $"Agi: {Spd} " : "")}`";
+                $"{(Spd != 0 ? $"Agi: {Spd}" : "")}`";
         }
 
         public string MultipliersToString()
@@ -147,7 +147,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 $"{(MaxPP != 100 ? $"PP: x{((double)MaxPP / 100)} " : "")}" +
                 $"{(Atk != 100 ? $"Atk: x{((double)Atk / 100)} " : "")}" +
                 $"{(Def != 100 ? $"Def: x{((double)Def / 100)} " : "")}" +
-                $"{(Spd != 100 ? $"Agi: x{((double)Spd / 100)} " : "")}`";
+                $"{(Spd != 100 ? $"Agi: x{((double)Spd / 100)}" : "")}`";
         }
     }
 }

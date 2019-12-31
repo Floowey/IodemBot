@@ -126,13 +126,13 @@
         "SpriteShiny": "<a:ShinyForge:640625010372902942>",
         "Move": {
             "Targettype": 3,
-            "addDamage": 50,
+            "addDamage": 80,
             "Element": 0
         },
         "Stats": {
-            "MaxHP": 12,
-            "MaxPP": 5,
-            "Def": 3
+            "MaxHP": 8,
+            "MaxPP": 3,
+            "Atk": 4
         }
     },
     "Furrow": {
@@ -163,15 +163,8 @@
         "SpriteNormal": "<a:DjinnDDIconGarland:640167151654666240>",
         "SpriteShiny": "<a:ShinyForge:640625010372902942>",
         "Move": {
-            "Targettype": 3,
-            "addDamage": 50,
-            "Effects": [
-                {
-                    "Type": "HPDrain",
-                    "Percentage": 50,
-                    "Probability": 100
-                }
-            ]
+            "Targettype": 2,
+            "percentage": 60
         },
         "Stats": {
             "MaxHP": 8,
@@ -186,12 +179,12 @@
         "SpriteShiny": "<a:ShinyForge:640625010372902942>",
         "Move": {
             "Targettype": 3,
-            "addDamage": 50,
+            "dmgMult": 1.5,
             "Effects": [
                 {
-                    "Type": "HPDrain",
-                    "Percentage": 50,
-                    "Probability": 100
+                    "Type": "IgnoreDefense",
+                    "Percentage": 100,
+                    "Probability": 50
                 }
             ]
         },
@@ -206,13 +199,11 @@
         "SpriteNormal": "<a:DjinnDDIconChasm:640167151235235841>",
         "SpriteShiny": "<a:ShinyForge:640625010372902942>",
         "Move": {
-            "Targettype": 3,
-            "addDamage": 50,
+            "Targettype": 2,
             "Effects": [
                 {
-                    "Type": "HPDrain",
-                    "Percentage": 50,
-                    "Probability": 100
+                    "Type": "ReduceDamage",
+                    "DamageReduction": 90
                 }
             ]
         },
@@ -228,14 +219,7 @@
         "SpriteShiny": "<a:ShinyForge:640625010372902942>",
         "Move": {
             "Targettype": 3,
-            "addDamage": 50,
-            "Effects": [
-                {
-                    "Type": "HPDrain",
-                    "Percentage": 50,
-                    "Probability": 100
-                }
-            ]
+            "multDmg": 2
         },
         "Stats": {
             "MaxHP": 8,
@@ -249,13 +233,12 @@
         "SpriteNormal": " <a:DjinnDDIconBuckle:640167151545745419>",
         "SpriteShiny": "<a:ShinyForge:640625010372902942>",
         "Move": {
-            "Targettype": 3,
-            "addDamage": 50,
-            "Effects": [
+            "Targettype": 2,
+            "effects": [
                 {
-                    "Type": "HPDrain",
-                    "Percentage": 50,
-                    "Probability": 100
+                    "Type": "Stat",
+                    "Stat": "Defense",
+                    "Multiplier": 1.25
                 }
             ]
         },
@@ -271,13 +254,10 @@
         "SpriteNormal": "<a:DjinnDDIconClover:640167151570911242>",
         "SpriteShiny": "<a:ShinyForge:640625010372902942>",
         "Move": {
-            "Targettype": 3,
-            "addDamage": 50,
+            "Targettype": 2,
             "Effects": [
                 {
-                    "Type": "HPDrain",
-                    "Percentage": 50,
-                    "Probability": 100
+                    "Type": "Restore"
                 }
             ]
         },
@@ -295,12 +275,12 @@
         "SpriteShiny": "<a:ShinyForge:640625010372902942>",
         "Move": {
             "Targettype": 3,
-            "addDamage": 50,
+            "addDamage": 30,
             "Effects": [
                 {
-                    "Type": "HPDrain",
-                    "Percentage": 50,
-                    "Probability": 100
+                    "Type": "Condition",
+                    "Condition": "Stun",
+                    "Probability": 50
                 }
             ]
         },
@@ -317,14 +297,7 @@
         "SpriteShiny": "<a:ShinyForge:640625010372902942>",
         "Move": {
             "Targettype": 3,
-            "addDamage": 50,
-            "Effects": [
-                {
-                    "Type": "HPDrain",
-                    "Percentage": 50,
-                    "Probability": 100
-                }
-            ]
+            "multDmg": 1.9
         },
         "Stats": {
             "MaxHP": 12,
@@ -338,11 +311,11 @@
         "SpriteShiny": "<a:ShinyForge:640625010372902942>",
         "Move": {
             "Targettype": 3,
-            "addDamage": 50,
+            "hasPriority": true,
             "Effects": [
                 {
-                    "Type": "HPDrain",
-                    "Percentage": 50,
+                    "Type": "Condition",
+                    "Condition": "Flinch",
                     "Probability": 100
                 }
             ]
@@ -358,13 +331,12 @@
         "SpriteNormal": " <a:DjinnDDIconHemlock:640167151747203092>",
         "SpriteShiny": "<a:ShinyForge:640625010372902942>",
         "Move": {
-            "Targettype": 3,
-            "addDamage": 50,
+            "Targettype": 4,
             "Effects": [
                 {
-                    "Type": "HPDrain",
-                    "Percentage": 50,
-                    "Probability": 100
+                    "Type": "Condition",
+                    "Condition": "DeathCurse",
+                    "Probability": 15
                 }
             ]
         },
@@ -403,11 +375,11 @@
         "SpriteShiny": "<a:ShinyForge:640625010372902942>",
         "Move": {
             "Targettype": 3,
-            "addDamage": 50,
+            "hasPriority": true,
             "Effects": [
                 {
-                    "Type": "HPDrain",
-                    "Percentage": 50,
+                    "Type": "Condition",
+                    "Condition": "Flinch",
                     "Probability": 100
                 }
             ]
@@ -465,13 +437,10 @@
         "SpriteNormal": "<a:DjinnDDIconSalt:640167151692414986>",
         "SpriteShiny": "<a:ShinyForge:640625010372902942>",
         "Move": {
-            "Targettype": 3,
-            "addDamage": 50,
+            "Targettype": 2,
             "Effects": [
                 {
-                    "Type": "HPDrain",
-                    "Percentage": 50,
-                    "Probability": 100
+                    "Type": "Restore"
                 }
             ]
         },

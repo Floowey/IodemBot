@@ -113,5 +113,10 @@ namespace IodemBot.Modules.GoldenSunMechanics
                     return new List<string>() { $"{Name} {Nickname} is too tired." };
             }
         }
+
+        public override string ToString()
+        {
+            return Move.ToString();
+        }
     }
 }

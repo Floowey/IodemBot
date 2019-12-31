@@ -1924,8 +1924,7 @@
                     "Probability": 100
                 },
                 {
-                    "Type": "Condition",
-                    "Condition": "OHKO",
+                    "Type": "OHKO",
                     "Probability": 10
                 }
             ]
@@ -2071,8 +2070,7 @@
                     "addDamage": 28
                 },
                 {
-                    "Type": "Condition",
-                    "Condition": "OHKO",
+                    "Type": "OHKO",
                     "Probability": 15
                 }
             ]
@@ -2309,7 +2307,7 @@
             "effects": [
                 {
                     "Type": "AddDamage",
-                    "addDamage": [ "40" ]
+                    "addDamage": 40
                 },
                 {
                     "id": "MultiplyDamage",
@@ -2620,8 +2618,8 @@
                 }
             ]
         }
-     },
-     "Sagittarius Bow": {
+    },
+    "Sagittarius Bow": {
         "Name": "Sagittarius Bow",
         "Price": 29000,
         "Icon": "<:Sagittarius_Bow:586639455327092766>",
@@ -3042,8 +3040,7 @@
                     "Probability": 20
                 },
                 {
-                    "Type": "Condition",
-                    "Condition": "OHKO",
+                    "Type": "OHKO",
                     "Probability": 1
                 }
             ]
@@ -3111,7 +3108,7 @@
         },
         "GrantsUnleash": true,
         "Unleash": {
-            "effects":[
+            "effects": [
                 {
                     "Type": "Condition",
                     "Condition": "Delusion",
@@ -3904,8 +3901,7 @@
         "Unleash": {
             "effects": [
                 {
-                    "Type": "Condition",
-                    "Condition": "OHKO",
+                    "Type": "OHKO",
                     "Probability": 5
                 }
             ]

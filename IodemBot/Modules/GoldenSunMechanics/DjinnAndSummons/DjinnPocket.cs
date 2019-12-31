@@ -8,10 +8,10 @@ namespace IodemBot.Modules.GoldenSunMechanics
     public class DjinnPocket
     {
         public static readonly int MaxDjinn = 2;
-        private List<Djinn> djinn = new List<Djinn>();
+        [JsonIgnore] public List<Djinn> djinn = new List<Djinn>();
         [JsonIgnore] public List<Summon> summons = new List<Summon>();
-        [JsonProperty] private List<DjinnHolder> DjinnName = new List<DjinnHolder>();
-        [JsonProperty] private List<string> SummonNames = new List<string>();
+        [JsonProperty] private List<DjinnHolder> DjinnStorage = new List<DjinnHolder>();
+        [JsonProperty] private List<SummonHolder> SummonStorage = new List<SummonHolder>();
         public List<Element> DjinnSetup { get; set; } = new List<Element>();
 
         private class DjinnHolder
@@ -19,6 +19,11 @@ namespace IodemBot.Modules.GoldenSunMechanics
             public string Djinn { get; set; } = "";
             public string Nickname { get; set; } = "";
             public bool Shiny { get; set; } = false;
+        }
+
+        private class SummonHolder
+        {
+            public string Summon { get; set; } = "";
         }
 
         public List<Djinn> GetDjinns(List<Djinn> BlackList = null)
@@ -37,7 +42,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public void Initialize()
         {
-            DjinnName.ForEach(d =>
+            DjinnStorage.ForEach(d =>
             {
                 var x = DjinnAndSummonsDatabase.GetDjinn(d.Djinn);
                 x.IsShiny = d.Shiny;
@@ -46,7 +51,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 djinn.Add(x);
             }
             );
-            SummonNames.ForEach(s => summons.Add(DjinnAndSummonsDatabase.GetSummon(s)));
+            SummonStorage.ForEach(s => summons.Add(DjinnAndSummonsDatabase.GetSummon(s.Summon)));
         }
 
         [OnDeserialized]
@@ -63,8 +68,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         private void UpdateStrings()
         {
-            DjinnName = djinn.Select(d => new DjinnHolder() { Djinn = d.Djinnname, Nickname = d.Nickname, Shiny = d.IsShiny }).ToList();
-            SummonNames = summons.Select(s => s.Name).ToList();
+            DjinnStorage = djinn.Select(d => new DjinnHolder() { Djinn = d.Djinnname, Nickname = d.Nickname, Shiny = d.IsShiny }).ToList();
+            SummonStorage = summons.Select(s => s.Name).ToList();
         }
     }
 }

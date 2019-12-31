@@ -7,8 +7,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
     internal class ConditionEffect : Effect
     {
         public override string Type { get; } = "Condition";
-        private Condition Condition { get; set; }
-        private int Probability { get; set; } = 10;
+        public Condition Condition { get; set; }
+        public int Probability { get; set; } = 10;
 
         public override string ToString()
         {
