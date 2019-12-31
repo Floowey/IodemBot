@@ -514,7 +514,7 @@
         "effects": [
             {
                 "Type": "Condition",
-                "Condition": "Death Curse",
+                "Condition": "DeathCurse",
                 "Probability": 45
             }
         ]
