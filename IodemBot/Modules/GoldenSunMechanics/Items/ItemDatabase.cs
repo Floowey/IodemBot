@@ -126,6 +126,16 @@ namespace IodemBot.Modules.GoldenSunMechanics
             return new Item() { Name = $"{itemName} NOT IMPLEMENTED!" };
         }
 
+        public static bool TryGetItem(string ItemName, out Item item)
+        {
+            item = GetItem(ItemName);
+            if (item.Name.ToLower().Contains("not implemented"))
+            {
+                return false;
+            }
+            return true;
+        }
+
         public enum RandomItemType { Any, Artifact, NonArtifact }
 
         public static string GetRandomItem(uint level, double bonus = 0, RandomItemType rt = RandomItemType.Any)
@@ -162,7 +172,13 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 return items;
             }
 
-            itemNames.ToList().ForEach(i => items.Add(GetItem(i)));
+            itemNames.ToList().ForEach(i =>
+            {
+                if (TryGetItem(i, out var item))
+                {
+                    items.Add(item);
+                }
+            });
             return items;
         }
 

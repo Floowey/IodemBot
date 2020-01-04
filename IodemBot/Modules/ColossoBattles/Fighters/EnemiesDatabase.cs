@@ -6,7 +6,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using static IodemBot.Modules.GoldenSunMechanics.Psynergy;
 
 namespace IodemBot.Modules.ColossoBattles
 {
@@ -118,6 +117,18 @@ namespace IodemBot.Modules.ColossoBattles
             else
             {
                 throw new KeyNotFoundException(dungeonKey);
+            }
+        }
+
+        internal static bool TryGetDungeon(string dungeonKey, out Dungeon dungeon)
+        {
+            if (dungeons.TryGetValue(dungeonKey, out dungeon))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
 

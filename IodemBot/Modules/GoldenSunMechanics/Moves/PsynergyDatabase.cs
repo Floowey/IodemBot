@@ -61,8 +61,22 @@ namespace IodemBot.Modules.GoldenSunMechanics
             Console.WriteLine($"{psynergy} is not implemented.");
             return new StatusPsynergy()
             {
-                Name = $"{psynergy} (NOT IMPLEMENTED)"
+                Name = $"{psynergy} (NOT IMPLEMENTED)",
+                Effects = new List<Effect>() { new NoEffect() }
             };
+        }
+
+        public static bool TryGetPsynergy(string psynergy, out Psynergy psy)
+        {
+            psy = GetPsynergy(psynergy);
+            if (psy.Name.ToLower().Contains("not implemented"))
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
 
         public static Psynergy[] GetPsynergy(string[] psynergiesString)
