@@ -40,6 +40,22 @@ namespace IodemBot.Modules.GoldenSunMechanics
             return djinns;
         }
 
+        public void AddDjinn(Djinn newDjinn)
+        {
+            djinn.Add(newDjinn);
+        }
+
+        public void AddSummon(Summon newSummon)
+        {
+            summons.Add(newSummon);
+            summons = summons
+                .OrderBy(s => s.MercuryNeeded)
+                .ThenBy(s => s.JupiterNeeded)
+                .ThenBy(s => s.MarsNeeded)
+                .ThenBy(s => s.VenusNeeded)
+                .ToList();
+        }
+
         public void Initialize()
         {
             DjinnStorage.ForEach(d =>

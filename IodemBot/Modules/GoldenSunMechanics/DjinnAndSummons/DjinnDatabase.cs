@@ -1,7 +1,9 @@
-﻿using Newtonsoft.Json;
+﻿using IodemBot.Extensions;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
@@ -9,6 +11,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
     {
         private static Dictionary<string, Djinn> DjinnDatabase { get; set; } = new Dictionary<string, Djinn>();
         private static Dictionary<string, Summon> SummonsDatabase { get; set; } = new Dictionary<string, Summon>();
+        private static readonly string[] blacklist = new[] { "Kite", "Reflux", "Luff" };
 
         static DjinnAndSummonsDatabase()
         {
@@ -49,8 +52,18 @@ namespace IodemBot.Modules.GoldenSunMechanics
             return summon;
         }
 
+        public static Djinn GetRandomDjinn(params Element[] elements)
+        {
+            return DjinnDatabase.Values.Where(d => (elements.Count() > 0 ? elements.Contains(d.Element) : true) && !blacklist.Contains(d.Name)).Random();
+        }
+
         public static bool TryGetDjinn(string DjinnName, out Djinn djinn)
         {
+            if (DjinnName.IsNullOrEmpty())
+            {
+                djinn = null;
+                return false;
+            }
             if (DjinnDatabase.TryGetValue(DjinnName, out djinn))
             {
                 return true;
@@ -62,6 +75,11 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public static bool TryGetSummon(string SummonName, out Summon summon)
         {
+            if (SummonName.IsNullOrEmpty())
+            {
+                summon = null;
+                return false;
+            }
             if (SummonsDatabase.TryGetValue(SummonName, out summon))
             {
                 return true;
