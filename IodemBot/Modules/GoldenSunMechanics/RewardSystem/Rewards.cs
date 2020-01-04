@@ -1,74 +1,76 @@
 ﻿using IodemBot.Core.UserManagement;
+using IodemBot.Modules.ColossoBattles;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
-    internal class ChestReward : Rewardable
-    {
-        [JsonConverter(typeof(StringEnumConverter))]
-        public ChestQuality Chest { get; set; } = ChestQuality.Wooden;
-
-        public override string Award(UserAccount userAccount)
-        {
-            userAccount.Inv.AwardChest(Chest);
-            return $"{userAccount.Name} found a {Inventory.ChestIcons[Chest]} {Chest} chest!";
-        }
-    }
-
     public class DefaultReward : Rewardable
     {
         public uint coins = 0;
         public uint xp = 0;
-
-        public override string Award(UserAccount userAccount)
-        {
-            userAccount.XP += xp;
-            userAccount.Inv.AddBalance(coins);
-            return null;
-        }
-    }
-
-    public class ItemReward : Rewardable
-    {
         public string Item = "";
 
-        public override string Award(UserAccount userAccount)
-        {
-            var item = ItemDatabase.GetItem(Item);
-            if (item != null)
-            {
-                userAccount.Inv.Add(Item);
-                return $"{userAccount.Name} found a found a {item.Icon} {item.Name}!";
-            }
-            return null;
-        }
-    }
+        public bool HasChest = false;
 
-    public class DungeonReward : Rewardable
-    {
+        [JsonConverter(typeof(StringEnumConverter))]
+        public ChestQuality Chest { get; set; } = ChestQuality.Wooden;
+
         public string Dungeon = "";
+        public string Djinn = "";
+        public string Summon = "";
 
         public override string Award(UserAccount userAccount)
         {
-            var dungeon = ColossoBattles.EnemiesDatabase.GetDungeon(Dungeon);
-            if (dungeon != null)
+            List<string> awardLog = new List<string>();
+            userAccount.XP += xp;
+            userAccount.Inv.AddBalance(coins);
+
+            if (HasChest)
+            {
+                userAccount.Inv.AwardChest(Chest);
+                awardLog.Add($"{userAccount.Name} found a {Inventory.ChestIcons[Chest]} {Chest} chest!");
+            }
+            if (Item != "")
+            {
+                var item = ItemDatabase.GetItem(Item);
+                userAccount.Inv.Add(Item);
+                awardLog.Add($"{userAccount.Name} found a found a {item.Icon} {item.Name}!");
+            }
+
+            if (EnemiesDatabase.TryGetDungeon(Dungeon, out var dungeon))
             {
                 userAccount.Dungeons.Add(dungeon.Name);
-                return $"{userAccount.Name} found a found a {(dungeon.IsOneTimeOnly ? "<:dungeonkey:606237382047694919> Key" : "<:mapclosed:606236181486632985> Map")} to {dungeon.Name}!";
+                awardLog.Add($"{userAccount.Name} found a found a {(dungeon.IsOneTimeOnly ? "<:dungeonkey:606237382047694919> Key" : "<:mapclosed:606236181486632985> Map")} to {dungeon.Name}!");
             }
-            return null;
-        }
-    }
 
-    public class DjinnReward : Rewardable
-    {
-        public string Djinn = "";
+            if (DjinnAndSummonsDatabase.TryGetDjinn(Djinn, out var djinn))
+            {
+                if (!userAccount.DjinnPocket.djinn.Any(d => d.Djinnname == djinn.Djinnname))
+                {
+                    userAccount.DjinnPocket.AddDjinn(djinn);
+                    awardLog.Add($"{userAccount.Name} found a found the djinn a {djinn.Emote} {djinn.Name}!");
+                }
+            }
+            else if (Enum.TryParse<Element>(Djinn, out var element))
+            {
+                djinn = DjinnAndSummonsDatabase.GetRandomDjinn(element);
+                userAccount.DjinnPocket.AddDjinn(djinn);
+                awardLog.Add($"{userAccount.Name} found a found the djinn a {djinn.Emote} {djinn.Name}!");
+            }
 
-        public override string Award(UserAccount userAccount)
-        {
-            throw new NotImplementedException("DjinnReward");
+            if (DjinnAndSummonsDatabase.TryGetSummon(Summon, out var summon))
+            {
+                if (!userAccount.DjinnPocket.summons.Contains(summon))
+                {
+                    userAccount.DjinnPocket.AddSummon(summon);
+                    awardLog.Add($"{userAccount.Name} found a found the summon tablet for {summon.Emote} {summon.Name}!");
+                }
+            }
+            return string.Join("\n", awardLog);
         }
     }
 }

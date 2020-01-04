@@ -18,23 +18,23 @@ namespace IodemBot.Modules.ColossoBattles
         private static readonly Dictionary<BattleDifficulty, RewardTable> chestTable = new Dictionary<BattleDifficulty, RewardTable>()
         {
             {BattleDifficulty.Tutorial, new RewardTable(){
-                new ChestReward()
+                new DefaultReward()
             {
                     Chest = ChestQuality.Wooden,
             } } },
             {BattleDifficulty.Easy, new RewardTable()
             {
-                new ChestReward()
+                new DefaultReward()
                 {
                     Chest = ChestQuality.Wooden,
                     Weight = 3
                 },
-                new ChestReward()
+                new DefaultReward()
                 {
                     Chest = ChestQuality.Normal,
                     Weight = 5
                 },
-                new ChestReward()
+                new DefaultReward()
                 {
                     Chest = ChestQuality.Silver,
                     Weight = 2
@@ -42,17 +42,17 @@ namespace IodemBot.Modules.ColossoBattles
             } },
             {BattleDifficulty.Medium, new RewardTable()
             {
-                new ChestReward()
+                new DefaultReward()
                 {
                     Chest = ChestQuality.Normal,
                     Weight = 4
                 },
-                new ChestReward()
+                new DefaultReward()
                 {
                     Chest = ChestQuality.Silver,
                     Weight = 5
                 },
-                new ChestReward()
+                new DefaultReward()
                 {
                     Chest = ChestQuality.Gold,
                     Weight = 1
@@ -60,17 +60,17 @@ namespace IodemBot.Modules.ColossoBattles
             } },
             {BattleDifficulty.MediumRare, new RewardTable()
             {
-                new ChestReward()
+                new DefaultReward()
                 {
                     Chest = ChestQuality.Silver,
                     Weight = 5
                 },
-                new ChestReward()
+                new DefaultReward()
                 {
                     Chest = ChestQuality.Gold,
                     Weight = 4
                 },
-                new ChestReward()
+                new DefaultReward()
                 {
                     Chest = ChestQuality.Adept,
                     Weight = 1
@@ -78,17 +78,17 @@ namespace IodemBot.Modules.ColossoBattles
             } },
             {BattleDifficulty.Hard, new RewardTable()
             {
-                new ChestReward()
+                new DefaultReward()
                 {
                     Chest = ChestQuality.Silver,
                     Weight = 1
                 },
-                new ChestReward()
+                new DefaultReward()
                 {
                     Chest = ChestQuality.Gold,
                     Weight = 7
                 },
-                new ChestReward()
+                new DefaultReward()
                 {
                     Chest = ChestQuality.Adept,
                     Weight = 2

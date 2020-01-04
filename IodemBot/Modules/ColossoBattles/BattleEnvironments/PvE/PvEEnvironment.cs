@@ -542,11 +542,11 @@ namespace IodemBot.Modules.ColossoBattles
             }
             if (allDjinn.OfElement(Element.Jupiter).Count() > 0)
             {
-                embed.AddField("Venus", $"{string.Join(" ", standbyDjinn.OfElement(Element.Jupiter).Select(d => d.Emote))} |" + $"{string.Join(" ", recoveryDjinn.OfElement(Element.Jupiter).Select(d => d.Emote))}", true);
+                embed.AddField("Jupiter", $"{string.Join(" ", standbyDjinn.OfElement(Element.Jupiter).Select(d => d.Emote))} |" + $"{string.Join(" ", recoveryDjinn.OfElement(Element.Jupiter).Select(d => d.Emote))}", true);
             }
             if (allDjinn.OfElement(Element.Mercury).Count() > 0)
             {
-                embed.AddField("Venus", $"{string.Join(" ", standbyDjinn.OfElement(Element.Mercury).Select(d => d.Emote))} |" + $"{string.Join(" ", recoveryDjinn.OfElement(Element.Mercury).Select(d => d.Emote))}", true);
+                embed.AddField("Mercury", $"{string.Join(" ", standbyDjinn.OfElement(Element.Mercury).Select(d => d.Emote))} |" + $"{string.Join(" ", recoveryDjinn.OfElement(Element.Mercury).Select(d => d.Emote))}", true);
             }
             return embed;
         }
