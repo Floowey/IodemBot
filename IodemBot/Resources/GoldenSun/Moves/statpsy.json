@@ -605,6 +605,7 @@
     "Guard Aura": {
         "name": "Guard Aura",
         "targetType": 1,
+        "hasPriority": true,
         "emote": "<:Guardian_Ball:600641727421743104>",
         "effects": [
             {

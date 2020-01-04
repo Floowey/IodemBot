@@ -358,7 +358,7 @@
                 },
                 {
                     "Type": "Condition",
-                    "Condition": 50,
+                    "Condition": "Stun",
                     "Probability": 25
                 },
                 {

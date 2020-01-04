@@ -2,8 +2,8 @@
     "Flint": {
         "Djinnname": "Flint",
         "Element": 0,
-        "SpriteNormal": "<a:DjinnDDIconFlint:640167151344549889>",
-        "SpriteShiny": "<a:flint:636451189344567300>",
+        "SpriteNormal": "<a:Flint:662385861069111337>",
+        "SpriteShiny": "<a:FlintShiny:662389535690194955>",
         "Move": {
             "dmgMult": 1.6,
             "Targettype": 3
@@ -17,8 +17,8 @@
     "Flower": {
         "Djinnname": "Flower",
         "Element": 0,
-        "SpriteNormal": "<a:DjinnDDIconFlower:640167151570911232>",
-        "SpriteShiny": "<a:flint:636451189344567300>",
+        "SpriteNormal": "<a:Flower:662385861110923294>",
+        "SpriteShiny": "<a:FlowerShiny:662389533794369577>",
         "Move": {
             "targetType": 2,
             "range": 4,
@@ -35,8 +35,8 @@
     "Bark": {
         "Djinnname": "Bark",
         "Element": 0,
-        "SpriteNormal": "<a:DjinnDDIconBark:640167151482699816>",
-        "SpriteShiny": "<a:flint:636451189344567300>",
+        "SpriteNormal": "<a:Bark:662385859139600406>",
+        "SpriteShiny": "<a:BarkShiny:662389535828869160>",
         "Move": {
             "Targettype": 2,
             "hasPriority": true,
@@ -56,8 +56,8 @@
     "Steel": {
         "Djinnname": "Steel",
         "Element": 0,
-        "SpriteNormal": "<a:DjinnDDIconSteel:640167151709323264>",
-        "SpriteShiny": "<a:flint:636451189344567300>",
+        "SpriteNormal": "<a:Steel:662385859168960546>",
+        "SpriteShiny": "<a:SteelShiny:662389533987569725>",
         "Move": {
             "Targettype": 3,
             "dmgMult": 1.6,
@@ -78,8 +78,8 @@
     "Brick": {
         "Djinnname": "Brick",
         "Element": 0,
-        "SpriteNormal": "<a:DjinnDDIconBrick:640167151210070044>",
-        "SpriteShiny": "<a:ShinyForge:640625010372902942>",
+        "SpriteNormal": "<a:Brick:662385861287215144>",
+        "SpriteShiny": "<a:BrickShiny:662389534037901342>",
         "Move": {
             "Targettype": 2,
             "Element": 0,
@@ -100,8 +100,8 @@
     "Vine": {
         "Djinnname": "Vine",
         "Element": 0,
-        "SpriteNormal": "<a:DjinnDDIconVine:640167151717711872>",
-        "SpriteShiny": "<a:ShinyForge:640625010372902942>",
+        "SpriteNormal": "<a:Vine:662385859135275029>",
+        "SpriteShiny": "<a:VineShiny:662389533714808845>",
         "Move": {
             "Targettype": 4,
             "Element": 0,
@@ -122,8 +122,8 @@
     "Gears": {
         "Djinnname": "Gears",
         "Element": 0,
-        "SpriteNormal": "<a:DjinnDDIconGears:640167151260401665>",
-        "SpriteShiny": "<a:ShinyForge:640625010372902942>",
+        "SpriteNormal": "<a:Gears:662385859525345310>",
+        "SpriteShiny": "<a:GearsShiny:662389534121787412>",
         "Move": {
             "Targettype": 3,
             "addDamage": 80,
@@ -138,8 +138,8 @@
     "Furrow": {
         "Djinnname": "Furrow",
         "Element": 0,
-        "SpriteNormal": "<a:DjinnDDIconFurrow:640167151654928394>",
-        "SpriteShiny": "<a:ShinyForge:640625010372902942>",
+        "SpriteNormal": "<a:Furrow:662385861148803092>",
+        "SpriteShiny": "<a:FurrowShiny:662389535803572225>",
         "Move": {
             "Targettype": 3,
             "addDamage": 50,
@@ -160,8 +160,8 @@
     "Garland": {
         "Djinnname": "Garland",
         "Element": 0,
-        "SpriteNormal": "<a:DjinnDDIconGarland:640167151654666240>",
-        "SpriteShiny": "<a:ShinyForge:640625010372902942>",
+        "SpriteNormal": "<a:Garland:662385859370156061>",
+        "SpriteShiny": "<a:GarlandShiny:662389534138564623>",
         "Move": {
             "Targettype": 2,
             "percentage": 60
@@ -175,8 +175,8 @@
     "Pewter": {
         "Djinnname": "Pewter",
         "Element": 0,
-        "SpriteNormal": "<a:DjinnDDIconPewter:640167151541420045>",
-        "SpriteShiny": "<a:ShinyForge:640625010372902942>",
+        "SpriteNormal": "<a:Pewter:662385861266243594>",
+        "SpriteShiny": "<a:PewterShiny:662389535761498112>",
         "Move": {
             "Targettype": 3,
             "dmgMult": 1.5,
@@ -196,8 +196,8 @@
     "Chasm": {
         "Djinnname": "Chasm",
         "Element": 0,
-        "SpriteNormal": "<a:DjinnDDIconChasm:640167151235235841>",
-        "SpriteShiny": "<a:ShinyForge:640625010372902942>",
+        "SpriteNormal": "<a:Chasm:662385860989288451>",
+        "SpriteShiny": "<a:ChasmShiny:662389535425953795>",
         "Move": {
             "Targettype": 2,
             "Effects": [
@@ -215,8 +215,8 @@
     "Chain": {
         "Djinnname": "Chain",
         "Element": 0,
-        "SpriteNormal": "<a:DjinnDDIconChain:640167151348482049>",
-        "SpriteShiny": "<a:ShinyForge:640625010372902942>",
+        "SpriteNormal": "<a:Chain:662385859517087744>",
+        "SpriteShiny": "<a:ChainShiny:662389534046289986>",
         "Move": {
             "Targettype": 3,
             "multDmg": 2
@@ -230,8 +230,8 @@
     "Buckle": {
         "Djinnname": "Buckle",
         "Element": 0,
-        "SpriteNormal": " <a:DjinnDDIconBuckle:640167151545745419>",
-        "SpriteShiny": "<a:ShinyForge:640625010372902942>",
+        "SpriteNormal": "<a:Buckle:662385859344990267>",
+        "SpriteShiny": "<a:BuckleShiny:662389535824412672>",
         "Move": {
             "Targettype": 2,
             "effects": [
@@ -251,8 +251,8 @@
     "Clover": {
         "Djinnname": "Clover",
         "Element": 0,
-        "SpriteNormal": "<a:DjinnDDIconClover:640167151570911242>",
-        "SpriteShiny": "<a:ShinyForge:640625010372902942>",
+        "SpriteNormal": "<a:Clover:662385859533996043>",
+        "SpriteShiny": "<a:CloverShiny:662389535560433665>",
         "Move": {
             "Targettype": 2,
             "Effects": [
@@ -271,8 +271,8 @@
     "Magnet": {
         "Djinnname": "Magnet",
         "Element": 0,
-        "SpriteNormal": "<a:DjinnDDIconMagnet:640167151436562455>",
-        "SpriteShiny": "<a:ShinyForge:640625010372902942>",
+        "SpriteNormal": "<a:Magnet:662385859332538369>",
+        "SpriteShiny": "<a:MagnetShiny:662389535862292491>",
         "Move": {
             "Targettype": 3,
             "addDamage": 30,
@@ -293,8 +293,8 @@
     "Geode": {
         "Djinnname": "Geode",
         "Element": 0,
-        "SpriteNormal": "<a:DjinnDDIconGeode:640167151763980289>",
-        "SpriteShiny": "<a:ShinyForge:640625010372902942>",
+        "SpriteNormal": "<a:Geode:662385861383421984>",
+        "SpriteShiny": "<a:GeodeShiny:662389533911810060>",
         "Move": {
             "Targettype": 3,
             "multDmg": 1.9
@@ -307,8 +307,8 @@
     "Ivy": {
         "Djinnname": "Ivy",
         "Element": 0,
-        "SpriteNormal": "<a:DjinnDDIconIvy:640167151323447327>",
-        "SpriteShiny": "<a:ShinyForge:640625010372902942>",
+        "SpriteNormal": "<a:Ivy:662385860985225237>",
+        "SpriteShiny": "<a:IvyShiny:662389535816286218>",
         "Move": {
             "Targettype": 3,
             "hasPriority": true,
@@ -328,8 +328,8 @@
     "Hemlock": {
         "Djinnname": "Hemlock",
         "Element": 0,
-        "SpriteNormal": " <a:DjinnDDIconHemlock:640167151747203092>",
-        "SpriteShiny": "<a:ShinyForge:640625010372902942>",
+        "SpriteNormal": "<a:Hemlock:662385859110371330>",
+        "SpriteShiny": "<a:HemlockShiny:662389535652708352>",
         "Move": {
             "Targettype": 4,
             "Effects": [
@@ -349,8 +349,8 @@
     "Sap": {
         "Djinnname": "Sap",
         "Element": 0,
-        "SpriteNormal": "<a:DjinnDDIconSap:640167151717842945>",
-        "SpriteShiny": "<a:ShinyForge:640625010372902942>",
+        "SpriteNormal": "<a:Sap:662385859127148586>",
+        "SpriteShiny": "<a:SapShiny:662389533677060097>",
         "Move": {
             "Targettype": 3,
             "addDamage": 50,
@@ -371,8 +371,8 @@
     "Ground": {
         "Djinnname": "Ground",
         "Element": 0,
-        "SpriteNormal": "<a:DjinnDDIconGround:640167151738814484>",
-        "SpriteShiny": "<a:ShinyForge:640625010372902942>",
+        "SpriteNormal": "<a:Ground:662385859571744838>",
+        "SpriteShiny": "<a:GroundShiny:662389535409438751>",
         "Move": {
             "Targettype": 3,
             "hasPriority": true,
@@ -393,8 +393,8 @@
     "Granite": {
         "Djinnname": "Granite",
         "Element": 0,
-        "SpriteNormal": "<a:DjinnDDIconGranite:640167151411396641>",
-        "SpriteShiny": "<a:flint:636451189344567300>",
+        "SpriteNormal": "<a:Granite:662385859257040927>",
+        "SpriteShiny": "<a:GraniteShiny:662389535883264020>",
         "Move": {
             "Targettype": 2,
             "hasPriority": true,
@@ -414,8 +414,8 @@
     "Quartz": {
         "Djinnname": "Quartz",
         "Element": 0,
-        "SpriteNormal": "<a:DjinnDDIconQuartz:640167151701065758>",
-        "SpriteShiny": "<a:flint:636451189344567300>",
+        "SpriteNormal": "<a:Quartz:662385859462561802>",
+        "SpriteShiny": "<a:QuartzShiny:662389535832932352>",
         "Move": {
             "Targettype": 1,
             "effects": [
@@ -434,8 +434,8 @@
     "Salt": {
         "Djinnname": "Salt",
         "Element": 0,
-        "SpriteNormal": "<a:DjinnDDIconSalt:640167151692414986>",
-        "SpriteShiny": "<a:ShinyForge:640625010372902942>",
+        "SpriteNormal": "<a:Salt:662385859714351153>",
+        "SpriteShiny": "<a:SaltShiny:662389533886644246>",
         "Move": {
             "Targettype": 2,
             "Effects": [
@@ -453,7 +453,7 @@
     "Forge": {
         "Djinnname": "Forge",
         "Element": 1,
-        "SpriteNormal": "<a:DjinnDDIconForge:640624960058032200>",
+        "SpriteNormal": "<a:DjinnDDIconForge:661163313362763807>",
         "SpriteShiny": "<a:ShinyForge:640625010372902942>",
         "Move": {
             "Targettype": 2,
@@ -984,20 +984,21 @@
         "SpriteNormal": "<a:DjinnDDIconGust:661163409785618433>",
         "SpriteShiny": "<a:ShinyForge:640625010372902942>",
         "Move": {
-            "Targettype": 2,
-            "Element": 1,
+            "Targettype": 3,
+            "Element": 2,
+            "addDamage": 10,
             "effects": [
                 {
-                    "Type": "Stat",
-                    "Stat": "Attack",
-                    "Multiplier": 1.25
+                    "Type": "MultiplyDamage",
+                    "Multipliers": [ 2 ],
+                    "Probabilities": [ 50 ]
                 }
             ]
         },
         "Stats": {
-            "MaxHP": 10,
-            "Atk": 3,
-            "Spd": 3
+            "MaxHP": 9,
+            "Atk": 2,
+            "Spd": 2
         }
     },
     "Jolt": {
@@ -1010,22 +1011,21 @@
             "Element": 1,
             "effects": [
                 {
-                    "Type": "Stat",
-                    "Stat": "Attack",
-                    "Multiplier": 1.25
+                    "Type": "Revive",
+                    "Percentage": 50,
+                    "Probability": 50
                 }
             ]
         },
         "Stats": {
-            "MaxHP": 10,
-            "Atk": 3,
-            "Spd": 3
+            "MaxHP": 9,
+            "MaxPP": 7
         }
     },
     "Ether": {
         "Djinnname": "Ether",
         "Element": 2,
-        "SpriteNormal": "<a:DjinnDDIconForge:640624960058032200>",
+        "SpriteNormal": "<a:DjinnDDIconEther:661163409668046870>",
         "SpriteShiny": "<a:ShinyForge:640625010372902942>",
         "Move": {
             "Targettype": 2,
@@ -1039,9 +1039,8 @@
             ]
         },
         "Stats": {
-            "MaxHP": 10,
-            "Atk": 3,
-            "Spd": 3
+            "MaxHP": 8,
+            "MaxPP": 6
         }
     },
     "Breath": {
@@ -1050,20 +1049,14 @@
         "SpriteNormal": "<a:DjinnDDIconBreath:661163409823236096>",
         "SpriteShiny": "<a:ShinyForge:640625010372902942>",
         "Move": {
-            "Targettype": 2,
-            "Element": 1,
-            "effects": [
-                {
-                    "Type": "Stat",
-                    "Stat": "Attack",
-                    "Multiplier": 1.25
-                }
-            ]
+            "Targettype": 1,
+            "Element": 2,
+            "hasPriority": true,
+            "percentage": 40
         },
         "Stats": {
-            "MaxHP": 10,
-            "Atk": 3,
-            "Spd": 3
+            "MaxHP": 9,
+            "Spd": 7
         }
     },
     "Vortex": {
@@ -1072,20 +1065,20 @@
         "SpriteNormal": "<a:DjinnDDIconVortex:661163409953390622>",
         "SpriteShiny": "<a:ShinyForge:640625010372902942>",
         "Move": {
-            "Targettype": 2,
-            "Element": 1,
+            "Targettype": 3,
+            "Element": 2,
+            "dmgMult": 1.5,
             "effects": [
                 {
-                    "Type": "Stat",
-                    "Stat": "Attack",
-                    "Multiplier": 1.25
+                    "Type": "Condition",
+                    "Condition": "Delusion",
+                    "Probability": 80
                 }
             ]
         },
         "Stats": {
             "MaxHP": 10,
-            "Atk": 3,
-            "Spd": 3
+            "Atk": 5
         }
     },
     "Doldrum": {
@@ -1094,20 +1087,21 @@
         "SpriteNormal": "<a:DjinnDDIconDoldrum:661163409668177971>",
         "SpriteShiny": "<a:ShinyForge:640625010372902942>",
         "Move": {
-            "Targettype": 2,
-            "Element": 1,
+            "Targettype": 3,
+            "Element": 2,
+            "HasPriority": true,
             "effects": [
                 {
-                    "Type": "Stat",
-                    "Stat": "Attack",
-                    "Multiplier": 1.25
+                    "Type": "Condition",
+                    "Condition": "Flinch",
+                    "Probability": 100
                 }
             ]
         },
         "Stats": {
             "MaxHP": 10,
-            "Atk": 3,
-            "Spd": 3
+            "MaxPP": 3,
+            "Def": 3
         }
     },
     "Sirocco": {
@@ -1116,20 +1110,20 @@
         "SpriteNormal": "<a:DjinnDDIconSirocco:661163409940938752>",
         "SpriteShiny": "<a:ShinyForge:640625010372902942>",
         "Move": {
-            "Targettype": 2,
-            "Element": 1,
+            "Targettype": 3,
+            "Element": 2,
+            "addDamage": 60,
             "effects": [
                 {
-                    "Type": "Stat",
-                    "Stat": "Attack",
-                    "Multiplier": 1.25
+                    "Type": "Condition",
+                    "Condition": "Delusion",
+                    "Probability": 80
                 }
             ]
         },
         "Stats": {
-            "MaxHP": 10,
-            "Atk": 3,
-            "Spd": 3
+            "MaxHP": 11,
+            "Atk": 4
         }
     },
     "Wisp": {
@@ -1149,9 +1143,8 @@
             ]
         },
         "Stats": {
-            "MaxHP": 10,
-            "Atk": 3,
-            "Spd": 3
+            "MaxHP": 11,
+            "MaxPP": 5
         }
     },
     "Puff": {
@@ -1160,20 +1153,18 @@
         "SpriteNormal": "<a:DjinnDDIconPuff:661163409802395734>",
         "SpriteShiny": "<a:ShinyForge:640625010372902942>",
         "Move": {
-            "Targettype": 2,
-            "Element": 1,
+            "Targettype": 3,
+            "Element": 2,
             "effects": [
                 {
-                    "Type": "Stat",
-                    "Stat": "Attack",
-                    "Multiplier": 1.25
+                    "Type": "OHKO",
+                    "Probability": 12
                 }
             ]
         },
         "Stats": {
-            "MaxHP": 10,
-            "Atk": 3,
-            "Spd": 3
+            "MaxHP": 11,
+            "Atk": 4
         }
     },
     "Fleet": {
@@ -1187,14 +1178,14 @@
             "effects": [
                 {
                     "Type": "Stat",
-                    "Stat": "Attack",
-                    "Multiplier": 1.25
+                    "Stat": "Speed",
+                    "Multiplier": 200
                 }
             ]
         },
         "Stats": {
-            "MaxHP": 10,
-            "Atk": 3,
+            "MaxHP": 8,
+            "MaxPP": 4,
             "Spd": 3
         }
     },
@@ -1204,20 +1195,20 @@
         "SpriteNormal": "<a:DjinnDDIconWaft:661163409940676611>",
         "SpriteShiny": "<a:ShinyForge:640625010372902942>",
         "Move": {
-            "Targettype": 2,
-            "Element": 1,
+            "Targettype": 3,
+            "Element": 2,
+            "AddDamage": 40,
             "effects": [
                 {
-                    "Type": "Stat",
-                    "Stat": "Attack",
-                    "Multiplier": 1.25
+                    "Type": "Condition",
+                    "Condition": "Sleep",
+                    "Probability": 60
                 }
             ]
         },
         "Stats": {
-            "MaxHP": 10,
-            "Atk": 3,
-            "Spd": 3
+            "MaxHP": 11,
+            "Atk": 4
         }
     },
     "Bolt": {
@@ -1226,20 +1217,20 @@
         "SpriteNormal": "<a:DjinnDDIconBolt:661163409785487361>",
         "SpriteShiny": "<a:ShinyForge:640625010372902942>",
         "Move": {
-            "Targettype": 2,
-            "Element": 1,
+            "Targettype": 3,
+            "Element": 2,
+            "dmgMult": 1.4,
             "effects": [
                 {
-                    "Type": "Stat",
-                    "Stat": "Attack",
-                    "Multiplier": 1.25
+                    "Type": "Condition",
+                    "Condition": "Stun",
+                    "Probability": 50
                 }
             ]
         },
         "Stats": {
             "MaxHP": 10,
-            "Atk": 3,
-            "Spd": 3
+            "Atk": 5
         }
     },
     "Breeze": {
@@ -1249,19 +1240,19 @@
         "SpriteShiny": "<a:ShinyForge:640625010372902942>",
         "Move": {
             "Targettype": 2,
-            "Element": 1,
+            "Element": 2,
             "effects": [
                 {
                     "Type": "Stat",
-                    "Stat": "Attack",
-                    "Multiplier": 1.25
+                    "Stat": "Resistance",
+                    "Multiplier": 1.4
                 }
             ]
         },
         "Stats": {
-            "MaxHP": 10,
-            "Atk": 3,
-            "Spd": 3
+            "MaxHP": 12,
+            "MaxPP": 5,
+            "Def": 3
         }
     },
     "Haze": {
@@ -1270,20 +1261,19 @@
         "SpriteNormal": "<a:DjinnDDIconHaze:661163409714446338>",
         "SpriteShiny": "<a:ShinyForge:640625010372902942>",
         "Move": {
-            "Targettype": 2,
+            "Targettype": 1,
             "Element": 1,
             "effects": [
                 {
-                    "Type": "Stat",
-                    "Stat": "Attack",
-                    "Multiplier": 1.25
+                    "Type": "ReduceDamage",
+                    "DamageReduction": 100
                 }
             ]
         },
         "Stats": {
             "MaxHP": 10,
-            "Atk": 3,
-            "Spd": 3
+            "Def": 3,
+            "Spd": 4
         }
     },
     "Kite": {
@@ -1292,19 +1282,17 @@
         "SpriteNormal": "<a:DjinnDDIconKite:661163409747869697>",
         "SpriteShiny": "<a:ShinyForge:640625010372902942>",
         "Move": {
-            "Targettype": 2,
-            "Element": 1,
+            "Targettype": 0,
+            "Element": 2,
             "effects": [
                 {
-                    "Type": "Stat",
-                    "Stat": "Attack",
-                    "Multiplier": 1.25
+                    "Type": "UserDies"
                 }
             ]
         },
         "Stats": {
-            "MaxHP": 10,
-            "Atk": 3,
+            "MaxHP": 8,
+            "MaxPP": 4,
             "Spd": 3
         }
     },
@@ -1314,20 +1302,17 @@
         "SpriteNormal": "<a:DjinnDDIconLull:661163410070962196>",
         "SpriteShiny": "<a:ShinyForge:640625010372902942>",
         "Move": {
-            "Targettype": 2,
-            "Element": 1,
+            "Targettype": 0,
+            "Element": 2,
             "effects": [
                 {
-                    "Type": "Stat",
-                    "Stat": "Attack",
-                    "Multiplier": 1.25
+                    "Type": "UserDies"
                 }
             ]
         },
         "Stats": {
-            "MaxHP": 10,
-            "Atk": 3,
-            "Spd": 3
+            "MaxHP": 11,
+            "MaxPP": 6
         }
     },
     "Swift": {
@@ -1336,20 +1321,15 @@
         "SpriteNormal": "<a:DjinnDDIconSwift:661163409676697630>",
         "SpriteShiny": "<a:ShinyForge:640625010372902942>",
         "Move": {
-            "Targettype": 2,
+            "Targettype": 3,
             "Element": 1,
-            "effects": [
-                {
-                    "Type": "Stat",
-                    "Stat": "Attack",
-                    "Multiplier": 1.25
-                }
-            ]
+            "hasPriority": true,
+            "addDamage": 50
         },
         "Stats": {
             "MaxHP": 10,
             "Atk": 3,
-            "Spd": 3
+            "Def": 3
         }
     },
     "Simoom": {
@@ -1358,13 +1338,14 @@
         "SpriteNormal": "<a:DjinnDDIconSimoom:661163409878024203>",
         "SpriteShiny": "<a:ShinyForge:640625010372902942>",
         "Move": {
-            "Targettype": 2,
-            "Element": 1,
+            "Targettype": 3,
+            "Element": 2,
+            "addDamage": 40,
             "effects": [
                 {
-                    "Type": "Stat",
-                    "Stat": "Attack",
-                    "Multiplier": 1.25
+                    "Type": "Condition",
+                    "Condition": "Venom",
+                    "Probability": 30
                 }
             ]
         },

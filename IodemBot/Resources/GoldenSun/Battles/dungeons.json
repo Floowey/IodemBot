@@ -33,8 +33,27 @@
                 "RewardTables": [
                     [
                         {
-                            "xp": 20,
-                            "coins": 7
+                            "Weight": 4,
+                            "XP": 87,
+                            "Coins": 100
+                        },
+                        {
+                            "Weight": 1,
+                            "XP": 66,
+                            "Coins": 80,
+                            "Item": "Adepts Clothes",
+                            "Summon": "Jupiter"
+                        }
+                    ],
+                    [
+                        { "Weight": 5 },
+                        {
+                            "Weight": 4,
+                            "Djinn": "Breeze"
+                        },
+                        {
+                            "Weight": 1,
+                            "Djinn": "Jupiter"
                         }
                     ]
                 ]
@@ -50,6 +69,7 @@
                     ],
                     [
                         {
+                            "HasChest": true,
                             "chest": "Wooden",
                             "weight": 1
                         },
@@ -65,6 +85,7 @@
                 "RewardTables": [
                     [
                         {
+                            "haschest": true,
                             "chest": "Wooden",
                             "Weight": 1
                         },
@@ -217,26 +238,101 @@
         ]
     },
     "Star Chamber": {
-        "Name": "Star Chamber",
+        "name": "Star Chamber",
         "IsOneTimeOnly": true,
+        "FlavourText": "The mysterious star chamber. Watchout, it's slippery!",
+        "Image": "https://cdn.discordapp.com/attachments/497696510688100352/634419905508147220/unknown.png",
         "Matchups": [
             {
-                "EnemyNames": [ "Anger Ball 1", "Anger Ball 2" ],
-                "FlavourText": "What is going on? The Star Chamber appears to be alive! Watchout! Run!"
+                "Flavourtext": "What is going on? The Star Chamber appears to be alive! Watchout! Run!",
+                "EnemyNames": [ "Anger Ball 1", "Anger Ball 1" ],
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 3,
+                            "XP": 123,
+                            "Coins": 123
+                        },
+                        {
+                            "Weight": 1,
+                            "XP": 80,
+                            "Coins": 80,
+                            "Chest": "Silver",
+                            "HasChest": true
+                        }
+                    ]
+                ]
             },
             {
+                "Flavourtext": "That was close. Look! The guardians of the elemental stars are noticing you!",
                 "EnemyNames": [ "Venus Djinni 16", "Mars Djinni 11", "Jupiter Djinni 18", "Mercury Djinni 15" ],
-                "FlavourText": "That was close. Look! The guardians of the elemental stars are noticing you!"
+                "Image": "https://cdn.discordapp.com/attachments/571620744291942430/597598160399106058/goldensun_djinntower600px.png",
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 11,
+                            "XP": 100
+                        },
+                        {
+                            "Weight": 1,
+                            "Djinn": "Venus"
+                        },
+                        {
+                            "Weight": 1,
+                            "Djinn": "Mars"
+                        },
+                        {
+                            "Weight": 1,
+                            "Djinn": "Jupiter"
+                        },
+                        {
+                            "Weight": 1,
+                            "Djinn": "Mercury"
+                        }
+                    ]
+                ]
             },
             {
+                "Flavourtext": "It appears there's more going on than usual, what is happening? The creatues living in the water are climbing up to you.",
                 "EnemyNames": [ "Gillman Lord 1", "Aqua Hydra 1", "Gillman Lord 1" ],
-                "FlavourText": "It appears there's more going on than usual, what is happening? The creatues living in the water are climbing up to you."
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "XP": 100
+                        },
+                        { "Weight": 1 }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "You see more djinn in the distance. They appear to be approaching you! Wait a minute, those aren't djinn, they're more of these balls!",
+                "EnemyNames": [ "Anger Ball 1", "Refresh Ball 1", "Thunder Ball 1", "Thunder Ball 1", "Guardian Ball 1", "Guardian Ball 1", "Refresh Ball 1", "Anger Ball 1", "Thunder Ball 1" ],
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "XP": 100
+                        },
+                        { "Weight": 1 }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "From what appears to be water down below, a silhouette can me made out. 'I am the guardian of water. Well, his apprentice. And you have been busting my balls all day, so I'm slowly starting to get fed up'",
+                "EnemyNames": [ "Anger Ball 1", "Refresh Ball 1", "Star Apprentice", "Thunder Ball 1", "Guardian Ball 1" ],
+                "Image": "https://cdn.discordapp.com/attachments/497696510688100352/604984559242838018/starapprentice.png",
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "XP": 100
+                        },
+                        { "Weight": 1 }
+                    ]
+                ]
             }
-        ],
-        "FlavourText": "The mysterious star chamber. Watchout, it's slippery!",
-        "Requirement": {
-            "MinLevel": 50
-        }
+        ]
     },
     "Vale Cave": {
         "Name": "Vale Cave",
@@ -287,6 +383,7 @@
                 "RewardTables": [
                     [
                         {
+                            "haschest": true,
                             "Chest": "Silver"
                         },
                         {
@@ -366,6 +463,7 @@
                     ],
                     [
                         {
+                            "haschest": true,
                             "Chest": "Wooden",
                             "Weight": 3
                         },
@@ -439,6 +537,7 @@
                             "Weight": 9
                         },
                         {
+                            "haschest": true,
                             "Chest": "Wooden",
                             "Weight": 1
                         }
@@ -508,105 +607,168 @@
         ]
     },
     "Tret Tree": {
-        "Name": "Tret Tree",
-        "Image": "https://vignette.wikia.nocookie.net/goldensun/images/8/8f/KolimaForestTret.png/revision/latest?cb=20100212082034",
+        "name": "Tret Tree",
+        "IsOneTimeOnly": true,
         "FlavourText": "Inside the cursed tree, Tret",
+        "Image": "https://vignette.wikia.nocookie.net/goldensun/images/8/8f/KolimaForestTret.png",
         "Matchups": [
-
             {
+                "Flavourtext": "A respectable first fight, yet you sigh upon recalling the great size of Tret.",
                 "EnemyNames": [ "Rat 1", "Rat Soldier 1", "Rat 1" ],
-                "FlavourText": "A respectable first fight, yet you sigh upon recalling the great size of Tret.",
-                "reward": {
-                    "xp": 60,
-                    "coins": 60
-                }
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 3,
+                            "XP": 34,
+                            "Coins": 45
+                        }
+                    ]
+                ]
             },
             {
+                "Flavourtext": "First there was the forest, now there's this tree maze, too.",
                 "EnemyNames": [ "Gnome", "Creeper 1", "Brutal Troll 1", "Rat 1" ],
-                "FlavourText": "First there was the forest, now there's this tree maze, too.",
-                "reward": {
-                    "xp": 140,
-                    "coins": 100
-                }
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 3,
+                            "XP": 43,
+                            "Coins": 35
+                        },
+                        {
+                            "Weight": 1,
+                            "XP": 34,
+                            "Coins": 22,
+                            "Chest": "Wooden",
+                            "HasChest": true
+                        }
+                    ]
+                ]
             },
             {
+                "Flavourtext": "Since they were born, they've been stayin' alive",
                 "EnemyNames": [ "Drone Bee 1", "Gnome", "Gnome", "Gnome" ],
-                "FlavourText": "Since they were born, they've been stayin' alive.",
-                "Reward": {
-                    "xp": 120,
-                    "coins": 200
-                }
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "XP": 98,
+                            "Coins": 44
+                        }
+                    ]
+                ]
             },
             {
+                "Flavourtext": "After some searching around a while, you find a room with a table of spiders playing cards, they immediately notice you, uh oh...",
                 "EnemyNames": [ "Spider 1", "Spider 1", "Spider 1", "Spider 1", "Spider 1" ],
-                "FlavourText": "After some searching around a while, you find a room with a table of spiders playing cards, they quickly notice you, uh oh...",
-                "Reward": {
-                    "xp": 300,
-                    "coins": 400,
-                    "ChestProbability": 20,
-                    "Chest": "normal"
-                }
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "XP": 77,
+                            "Coins": 56
+                        }
+                    ],
+                    [
+                        {
+                            "Weight": 1,
+                            "Chest": "Normal",
+                            "HasChest": true
+                        },
+                        { "Weight": 4 }
+                    ]
+                ]
             },
             {
+                "Flavourtext": "You take the first exit you see, which surprisingly leads to a Jupiter Djinni. However, he's in a bad mood so wants to battle.",
                 "EnemyNames": [ "Jupiter Djinni 1" ],
-                "FlavourText": "You take the first exit you see, which leads to a jupiter Djinni.",
-                "Reward": {
-                    "xp": 100,
-                    "coins": 200
-                }
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 4,
+                            "XP": 87,
+                            "Coins": 100
+                        },
+                        {
+                            "Weight": 1,
+                            "XP": 66,
+                            "Coins": 80,
+                            "Item": "Adepts Clothes",
+                            "Summon": "Jupiter"
+                        }
+                    ],
+                    [
+                        { "Weight": 15 },
+                        {
+                            "Weight": 4,
+                            "Djinn": "Breeze"
+                        },
+                        {
+                            "Weight": 1,
+                            "Djinn": "Jupiter"
+                        }
+                    ]
+                ]
             },
             {
+                "Flavourtext": "You return to the third floor and notice some shadows in the corner, What is it? CREEPER! Aw man....",
                 "EnemyNames": [ "Creeper 1", "Creeper 1", "Creeper 1", "Creeper 1" ],
-                "FlavourText": "You enter the third floor and see a Creeper next to a chest.",
-                "Reward": {
-                    "FlavourText": "It turns out there was some creepers hiding inside the chest waiting to pounce.",
-                    "xp": 200,
-                    "coins": 140
-                }
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "XP": 69,
+                            "Coins": 169
+                        }
+                    ]
+                ]
             },
             {
+                "Flavourtext": "As you are about to check the chest in the room, a troll enters the room",
                 "EnemyNames": [ "Brutal Troll 1" ],
-                "FlavourText": "As you are about to check the chest again... another troll enters the room",
-                "Reward": {
-                    "xp": 60,
-                    "coins": 100
-                }
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "XP": 60,
+                            "Coins": 89
+                        }
+                    ]
+                ]
             },
             {
-                "EnemyNames": [ "Brutal Troll 1" ],
-                "FlavourText": "As you are about to check the chest AGAIN, another troll enters the room",
-                "Reward": {
-                    "xp": 60,
-                    "coins": 100,
-                    "FlavourText": "The chest has engraved within 'you only have a 30 percent chance of getting what's inside, this chest was made by a troll'",
-                    "ItemProbability": 30,
-                    "Item": "Healing Ring"
-                }
+                "Flavourtext": "As you are about to check the chest AGAIN, more trolls enter the room. Someone likes to troll you.",
+                "EnemyNames": [ "Troll 1", "Troll 1", "Troll 1" ],
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "XP": 160,
+                            "Coins": 133,
+                            "Item": "Healing Ring"
+                        }
+                    ]
+                ]
             },
             {
-                "EnemyNames": [ "Rat 1", "Rat Soldier 1", "Gnome" ],
-                "FlavourText": "You are greatly demoralized, you exit the room while pondering what made the hole in the middle of the room and spot some more meanies",
-                "reward": {
-                    "FlavourText": "You are overcome with frustration at this stupid tree and turn around",
-                    "xp": 80,
-                    "coins": 80
-                }
-            },
-            {
+                "Flavourtext": "You have had enough of this tree. You want to end this, so you jump down the middle of the tree. To your surprise, you found what you were looking for: Tret",
                 "EnemyNames": [ "Tret" ],
-                "FlavourText": "After deciding to try committing suicide out of frustration of the maze, you accidentally find Tret, yay!",
-                "Reward": {
-                    "xp": 2500,
-                    "coins": 1200,
-                    "ChestProbability": 100,
-                    "Chest": "Silver"
-                }
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "XP": 226,
+                            "Coins": 700,
+                            "Dungeon": "Fuchin Temple"
+                        }
+                    ]
+                ]
             }
         ]
     },
     "Tolbi": {
         "Name": "Tolbi",
-        "IsOneTimeOnly": true,
+        "IsOneTimeOnly": false,
         "Matchups": [
             {
                 "EnemyNames": [ "Calamar 1", "Crab", "Urchin Beast", "Calamar 1" ],
@@ -820,7 +982,8 @@
                     ],
                     [
                         {
-                            "Dungeon": "Suhalla Desert"
+                            "Dungeon": "Suhalla Desert",
+                            "Weight": 1
                         },
                         {
                             "Weight": 1
