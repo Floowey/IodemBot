@@ -1,4 +1,5 @@
 ﻿using IodemBot.Modules.ColossoBattles;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 
 namespace IodemBot.Modules.GoldenSunMechanics
@@ -6,14 +7,14 @@ namespace IodemBot.Modules.GoldenSunMechanics
     internal class MultiplyDamageEffect : Effect
     {
         public override string Type { get; } = "MultiplyDamage";
-        private double[] Multipliers { get; set; } = { 2.0 };
-        private int[] Probabilites { get; set; } = { 10 };
+        [JsonProperty] private double[] Multipliers { get; set; } = { 2.0 };
+        [JsonProperty] private int[] Probabilities { get; set; } = { 10 };
 
         public override List<string> Apply(ColossoFighter User, ColossoFighter Target)
         {
             for (int i = 0; i < Multipliers.Length; i++)
             {
-                if (Global.Random.Next(0, 100) <= Probabilites[i])
+                if (Global.Random.Next(0, 100) <= Probabilities[i])
                 {
                     User.offensiveMult *= Multipliers[i];
                     break;
@@ -24,7 +25,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public override string ToString()
         {
-            return $"{(Probabilites[0] == 100 ? "" : "Chance to do ")}{string.Join("x, ", Multipliers)}x Damage";
+            return $"{(Probabilities[0] == 100 ? "" : $"Chance to do ")}{string.Join("x, ", Multipliers)} x Damage";
         }
     }
 }
