@@ -10,5 +10,18 @@ namespace IodemBot.Extensions
         {
             return djinn.Where(d => d.Element == el);
         }
+
+        public static IEnumerable<Djinn> OfElement(this IEnumerable<Djinn> djinn, Element[] el)
+        {
+            return djinn.Where(d => el.Contains(d.Element));
+        }
+
+        public static string GetDisplay(this IEnumerable<Djinn> djinn, DjinnDetail detail)
+        {
+            var seperator = detail == DjinnDetail.Name ? ", " : "";
+            var s = string.Join(seperator, djinn.Select(d => $"{d.Emote}{(detail == DjinnDetail.Name ? $" {d.Name}" : "")}"));
+
+            return s.IsNullOrEmpty() ? "-" : s;
+        }
     }
 }
