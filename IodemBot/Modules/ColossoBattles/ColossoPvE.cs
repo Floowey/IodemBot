@@ -49,9 +49,9 @@ namespace IodemBot.Modules.ColossoBattles
             //battles.Add(new SingleBattleEnvironment("Woods", LobbyChannel, await PrepareBattleChannel("Weyard-Woods"), BattleDifficulty.Medium));
             //battles.Add(new SingleBattleEnvironment("Wealds", LobbyChannel, await PrepareBattleChannel("Weyard-Wealds"), BattleDifficulty.Hard));
 
-            battles.Add(new EndlessBattleEnvironment("Endless", LobbyChannel, await PrepareBattleChannel("Endless-Encounters")));
+            //battles.Add(new EndlessBattleEnvironment("Endless", LobbyChannel, await PrepareBattleChannel("Endless-Encounters")));
 
-            //battles.Add(new GauntletBattleEnvironment("Dungeon", LobbyChannel, await PrepareBattleChannel("deep-dungeon"), "Vale"));
+            battles.Add(new GauntletBattleEnvironment("Dungeon", LobbyChannel, await PrepareBattleChannel("deep-dungeon"), "Vale"));
             //battles.Add(new GauntletBattleEnvironment("Catabombs", LobbyChannel, await PrepareBattleChannel("chilly-catacombs"), "Vale"));
             //battles.Add(new TeamBattleEnvironment("PvP", LobbyChannel, await PrepareBattleChannel("PvP-A", RoomVisibility.Private), await PrepareBattleChannel("PvP-B", RoomVisibility.TeamB)));
 
@@ -161,7 +161,7 @@ namespace IodemBot.Modules.ColossoBattles
                 await channel.AddPermissionOverwriteAsync(Context.Guild.EveryoneRole, new OverwritePermissions(viewChannel: PermValue.Deny));
             }
             var messages = await channel.GetMessagesAsync(100).FlattenAsync();
-            await channel.DeleteMessagesAsync(messages);
+            await channel.DeleteMessagesAsync(messages.Where(m => m.Timestamp.AddDays(14) > DateTime.Now));
             return channel;
         }
 

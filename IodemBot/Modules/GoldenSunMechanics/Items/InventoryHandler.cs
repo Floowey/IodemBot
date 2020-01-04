@@ -469,7 +469,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             await Task.CompletedTask;
         }
 
-        [Command("iteminfo"), Alias("item", "i")]
+        [Command("iteminfo"), Alias("item", "i", "info")]
         [Cooldown(5)]
         [Remarks("Gets information on specified equipment. Example: `i!iteminfo Wheat Sword`")]
         public async Task ItemInfo([Remainder] string name = "")

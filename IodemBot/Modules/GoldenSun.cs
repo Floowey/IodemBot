@@ -37,7 +37,7 @@ namespace IodemBot.Modules
             await AwardClassSeries(series, user, (SocketTextChannel)Context.Channel);
         }
 
-        [Command("classInfo")]
+        [Command("classInfo"), Alias("ci")]
         public async Task ClassInfo([Remainder] string name = "")
         {
             if (name == "")
@@ -149,7 +149,8 @@ namespace IodemBot.Modules
             .AddField("Endless Streaks", $"Solo: {account.ServerStats.ColossoHighestRoundEndlessSolo} | Duo: {account.ServerStats.ColossoHighestRoundEndlessDuo} \nTrio: {account.ServerStats.ColossoHighestRoundEndlessTrio} | Quad: {account.ServerStats.ColossoHighestRoundEndlessQuad}", true)
 
             .AddField("Current Equip", account.Inv.GearToString(AdeptClassSeriesManager.GetClassSeries(account).Archtype), true)
-            .AddField("Psynergy", p.GetMoves(false), false)
+            .AddField("Psynergy", p.GetMoves(false), true)
+            .AddField("Djinn", account.DjinnPocket.GetDjinns().GetDisplay(DjinnDetail.None), true)
 
             .AddField("Stats", p.Stats.ToString(), true)
             .AddField("Elemental Stats", p.ElStats.ToString(), true)
@@ -301,7 +302,7 @@ namespace IodemBot.Modules
             }
 
             Psynergy psy = PsynergyDatabase.GetPsynergy(name);
-            if (psy.Name.Contains("Not Implemented"))
+            if (psy.Name.ToLower().Contains("not implemented"))
             {
                 var failEmbed = new EmbedBuilder();
                 failEmbed.WithColor(Colors.Get("Iodem"));

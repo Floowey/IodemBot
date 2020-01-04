@@ -1,6 +1,7 @@
 ﻿using Discord;
 using Discord.WebSocket;
 using IodemBot.Core.UserManagement;
+using IodemBot.Extensions;
 using IodemBot.Modules;
 using IodemBot.Modules.GoldenSunMechanics;
 using System;
@@ -65,7 +66,7 @@ namespace IodemBot.Core.Leveling
             var bs = userAccount.BattleStats;
             _ = UnlockClasses(userAccount, lobbyChannel);
 
-            var awardStrings = rewards.Select(f => f.Award(userAccount)).Where(s => s != null).ToList();
+            var awardStrings = rewards.Select(f => f.Award(userAccount)).Where(s => !s.IsNullOrEmpty()).ToList();
             if (awardStrings.Count() > 0)
             {
                 _ = WriteAndDeleteRewards(awardStrings, battleChannel);

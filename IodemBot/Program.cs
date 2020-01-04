@@ -23,7 +23,7 @@ namespace IodemBot
             catch (Exception e)
             {
                 var date = DateTime.Now.ToString("yyyy_mm_dd");
-                File.AppendAllText($"Logs/{date}_crash.log", e.Message + "\n" + e.InnerException.ToString());
+                File.AppendAllText($"Logs/{date}_crash.log", e.ToString());
             }
         }
 

@@ -45,7 +45,7 @@ namespace IodemBot.Modules
             var messages = await Context.Message.Channel.GetMessagesAsync(amountOfMessagesToDelete + 1).FlattenAsync();
             var result = messages.Where(x => x.CreatedAt >= DateTimeOffset.UtcNow.Subtract(TimeSpan.FromDays(14)));
 
-            await (Context.Message.Channel as SocketTextChannel).DeleteMessagesAsync(messages);
+            await (Context.Message.Channel as SocketTextChannel).DeleteMessagesAsync(result);
         }
 
         [Command("Kick")]
