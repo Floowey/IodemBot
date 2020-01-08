@@ -153,7 +153,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 var counterAtk = enemy.Stats.Atk * enemy.MultiplyBuffs("Attack");
                 var counterDef = User.Stats.Def * User.MultiplyBuffs("Defense") * User.ignoreDefense;
                 uint CounterDamage = (uint)Global.Random.Next(0, 4);
-                if (def < atk)
+                if (counterDef < counterAtk)
                 {
                     CounterDamage = (uint)((counterAtk - counterDef) * User.defensiveMult / 2);
                 }

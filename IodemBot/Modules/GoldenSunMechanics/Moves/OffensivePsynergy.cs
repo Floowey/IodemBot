@@ -139,7 +139,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public override string ToString()
         {
-            return $"Attack {(TargetType == Target.otherSingle ? "an enemy" : (TargetType == Target.otherAll ? $"all Enemies" : $"up to {Range * 2 - 1} Targets"))} with a base damage of {(AttackBased ? "a normal physical Attack" : $"{Power}")}{(AddDamage > 0 ? $" plus an additional {AddDamage} Points" : "")}{(DmgMult != 1 ? $" multiplied by {DmgMult}" : "")}{(PercentageDamage > 0 ? $" and takes {PercentageDamage}% of the targets Health" : "")}.{(TargetType == Target.self || TargetType == Target.ownSingle || TargetType == Target.ownAll ? "Target type set to hit your teammates! Probably an error..." : "")}";
+            return $"Attack {(TargetType == Target.otherSingle ? "an enemy" : (TargetType == Target.otherAll ? $"all Enemies" : $"up to {Range * 2 - 1} Targets"))} with a base damage of {GoldenSun.ElementIcons[Element]} {(AttackBased ? "a normal physical Attack" : $"{Power}")}{(AddDamage > 0 ? $" plus an additional {AddDamage} Points" : "")}{(DmgMult != 1 ? $" multiplied by {DmgMult}" : "")}{(PercentageDamage > 0 ? $" and takes {PercentageDamage}% of the targets Health" : "")}.{(TargetType == Target.self || TargetType == Target.ownSingle || TargetType == Target.ownAll ? "Target type set to hit your teammates! Probably an error..." : "")}";
         }
     }
 }
