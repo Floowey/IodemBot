@@ -16,7 +16,7 @@ namespace IodemBot.Modules.ColossoBattles
         private static readonly List<List<ColossoFighter>> silverFighters;
         private static readonly List<List<ColossoFighter>> goldFighters;
         private static readonly Dictionary<string, NPCEnemy> allEnemies;
-        private static readonly Dictionary<string, Dungeon> dungeons;
+        public static readonly Dictionary<string, Dungeon> dungeons;
 
         public static List<Dungeon> DefaultDungeons { get { return dungeons.Where(d => d.Value.IsDefault).Select(d => d.Value).ToList(); } }
 
