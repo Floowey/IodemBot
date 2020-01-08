@@ -1,5 +1,6 @@
 ﻿using IodemBot.Extensions;
 using IodemBot.Modules.ColossoBattles;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
     public class ReviveEffect : Effect
     {
         public override string Type { get; } = "Revive";
-        private uint Percentage { get; set; } = 50;
+        [JsonProperty] private uint Percentage { get; set; } = 50;
+        [JsonProperty] private uint Probability { get; set; } = 100;
 
         public override List<string> Apply(ColossoFighter User, ColossoFighter Target)
         {
@@ -28,7 +30,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public override string ToString()
         {
-            return $"Revive the target to {Percentage}% of its maximum Health";
+            return $"{Probability} chance to revive the target to {Percentage}% of its maximum Health";
         }
 
         protected override int InternalChooseBestTarget(List<ColossoFighter> targets)

@@ -1,5 +1,6 @@
 ﻿using IodemBot.Extensions;
 using IodemBot.Modules.ColossoBattles;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -8,7 +9,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
     internal class ReduceDamageEffect : Effect
     {
         public override string Type { get; } = "ReduceDamage";
-        private int DamageReduction { get; set; } = 0;
+        [JsonProperty] private int DamageReduction { get; set; } = 0;
 
         public override List<string> Apply(ColossoFighter User, ColossoFighter Target)
         {
