@@ -10289,7 +10289,7 @@
         "movepool": [
         ],
         "stats": {
-            "maxHP": 140,
+            "maxHP": 80,
             "maxPP": 0,
             "Atk": 0,
             "Def": 2,
@@ -10305,7 +10305,8 @@
             "MercuryAtk": 100,
             "MercuryRes": 25
         },
-        "hasAttack": false
+        "hasAttack": false,
+        "hasDefend": false
     },
     "Boulder": {
         "name": "Boulder",
@@ -10357,7 +10358,8 @@
             "MercuryRes": 25
         },
         "hasDefend": false,
-        "hasAttack": false
+        "hasAttack": false,
+        "isImmuneToPsynergy": true
     },
     "Statue Mockup": {
         "name": "Statue",
@@ -10367,6 +10369,33 @@
         ],
         "stats": {
             "maxHP": 20000,
+            "maxPP": 0,
+            "Atk": 20000,
+            "Def": 2,
+            "Spd": 3
+        },
+        "elstats": {
+            "VenusAtk": 100,
+            "VenusRes": 25,
+            "MarsAtk": 100,
+            "MarsRes": 25,
+            "JupiterAtk": 100,
+            "JupiterRes": 25,
+            "MercuryAtk": 100,
+            "MercuryRes": 25
+        },
+        "Conditions": [ "Counter" ],
+        "hasDefend": false,
+        "hasAttack": false
+    },
+    "ColossoFelix": {
+        "name": "Felix",
+        "imgurl": "https://goldensunwiki.net/w/images/c/ca/SolSanctumDisarm.png",
+        "movepool": [
+            "Trap"
+        ],
+        "stats": {
+            "maxHP": 1,
             "maxPP": 0,
             "Atk": 100,
             "Def": 2,
@@ -10382,6 +10411,385 @@
             "MercuryAtk": 100,
             "MercuryRes": 25
         },
+        "hasDefend": false,
+        "hasAttack": false,
+        "isImmuneToPsynergy": true
+    },
+    "ColossoIsaac": {
+        "name": "Isaac",
+        "imgurl": "https://goldensunwiki.net/w/images/c/ca/SolSanctumDisarm.png",
+        "movepool": [
+            "Disarm"
+        ],
+        "stats": {
+            "maxHP": 20000,
+            "maxPP": 0,
+            "Atk": 20000,
+            "Def": 2,
+            "Spd": 3
+        },
+        "elstats": {
+            "VenusAtk": 100,
+            "VenusRes": 25,
+            "MarsAtk": 100,
+            "MarsRes": 25,
+            "JupiterAtk": 100,
+            "JupiterRes": 25,
+            "MercuryAtk": 100,
+            "MercuryRes": 25
+        },
+        "Conditions": [ "Counter" ],
+        "hasDefend": false,
+        "hasAttack": false
+    },
+    "ColossoGaret": {
+        "name": "Garet",
+        "imgurl": "https://goldensunwiki.net/w/images/c/ca/SolSanctumDisarm.png",
+        "movepool": [
+            "Disarm"
+        ],
+        "stats": {
+            "maxHP": 20000,
+            "maxPP": 0,
+            "Atk": 20000,
+            "Def": 2,
+            "Spd": 3
+        },
+        "elstats": {
+            "VenusAtk": 100,
+            "VenusRes": 25,
+            "MarsAtk": 100,
+            "MarsRes": 25,
+            "JupiterAtk": 100,
+            "JupiterRes": 25,
+            "MercuryAtk": 100,
+            "MercuryRes": 25
+        },
+        "Conditions": [ "Counter" ],
+        "hasDefend": false,
+        "hasAttack": false
+    },
+    "ColossoPiers": {
+        "name": "Piers",
+        "imgurl": "https://goldensunwiki.net/w/images/c/ca/SolSanctumDisarm.png",
+        "movepool": [
+            "Disarm"
+        ],
+        "stats": {
+            "maxHP": 20000,
+            "maxPP": 0,
+            "Atk": 20000,
+            "Def": 2,
+            "Spd": 3
+        },
+        "elstats": {
+            "VenusAtk": 100,
+            "VenusRes": 25,
+            "MarsAtk": 100,
+            "MarsRes": 25,
+            "JupiterAtk": 100,
+            "JupiterRes": 25,
+            "MercuryAtk": 100,
+            "MercuryRes": 25
+        },
+        "Conditions": [ "Counter" ],
+        "hasDefend": false,
+        "hasAttack": false
+    },
+    "ColossoClericsRing": {
+        "name": "Clerics Ring",
+        "imgurl": "https://goldensunwiki.net/w/images/c/ca/SolSanctumDisarm.png",
+        "movepool": [
+            "Trap"
+        ],
+        "stats": {
+            "maxHP": 1,
+            "maxPP": 0,
+            "Atk": 100,
+            "Def": 2,
+            "Spd": 3
+        },
+        "elstats": {
+            "VenusAtk": 100,
+            "VenusRes": 25,
+            "MarsAtk": 100,
+            "MarsRes": 25,
+            "JupiterAtk": 100,
+            "JupiterRes": 25,
+            "MercuryAtk": 100,
+            "MercuryRes": 25
+        },
+        "hasDefend": false,
+        "hasAttack": false,
+        "isImmuneToPsynergy": true
+    },
+    "ColossoPriestRing": {
+        "name": "Priest Ring",
+        "imgurl": "https://goldensunwiki.net/w/images/c/ca/SolSanctumDisarm.png",
+        "movepool": [
+            "Disarm"
+        ],
+        "stats": {
+            "maxHP": 20000,
+            "maxPP": 0,
+            "Atk": 20000,
+            "Def": 2,
+            "Spd": 3
+        },
+        "elstats": {
+            "VenusAtk": 100,
+            "VenusRes": 25,
+            "MarsAtk": 100,
+            "MarsRes": 25,
+            "JupiterAtk": 100,
+            "JupiterRes": 25,
+            "MercuryAtk": 100,
+            "MercuryRes": 25
+        },
+        "Conditions": [ "Counter" ],
+        "hasDefend": false,
+        "hasAttack": false
+    },
+    "ColossoSpiritRing": {
+        "name": "Spirit Ring",
+        "imgurl": "https://goldensunwiki.net/w/images/c/ca/SolSanctumDisarm.png",
+        "movepool": [
+            "Disarm"
+        ],
+        "stats": {
+            "maxHP": 20000,
+            "maxPP": 0,
+            "Atk": 20000,
+            "Def": 2,
+            "Spd": 3
+        },
+        "elstats": {
+            "VenusAtk": 100,
+            "VenusRes": 25,
+            "MarsAtk": 100,
+            "MarsRes": 25,
+            "JupiterAtk": 100,
+            "JupiterRes": 25,
+            "MercuryAtk": 100,
+            "MercuryRes": 25
+        },
+        "Conditions": [ "Counter" ],
+        "hasDefend": false,
+        "hasAttack": false
+    },
+    "ColossoGuardianRing": {
+        "name": "Guardian Ring",
+        "imgurl": "https://goldensunwiki.net/w/images/c/ca/SolSanctumDisarm.png",
+        "movepool": [
+            "Disarm"
+        ],
+        "stats": {
+            "maxHP": 20000,
+            "maxPP": 0,
+            "Atk": 20000,
+            "Def": 2,
+            "Spd": 3
+        },
+        "elstats": {
+            "VenusAtk": 100,
+            "VenusRes": 25,
+            "MarsAtk": 100,
+            "MarsRes": 25,
+            "JupiterAtk": 100,
+            "JupiterRes": 25,
+            "MercuryAtk": 100,
+            "MercuryRes": 25
+        },
+        "Conditions": [ "Counter" ],
+        "hasDefend": false,
+        "hasAttack": false
+    },
+    "ColossoMiddle": {
+        "name": "Middle Shoot",
+        "imgurl": "https://goldensunwiki.net/w/images/c/ca/SolSanctumDisarm.png",
+        "movepool": [
+            "Trap"
+        ],
+        "stats": {
+            "maxHP": 1,
+            "maxPP": 0,
+            "Atk": 100,
+            "Def": 2,
+            "Spd": 3
+        },
+        "elstats": {
+            "VenusAtk": 100,
+            "VenusRes": 25,
+            "MarsAtk": 100,
+            "MarsRes": 25,
+            "JupiterAtk": 100,
+            "JupiterRes": 25,
+            "MercuryAtk": 100,
+            "MercuryRes": 25
+        },
+        "hasDefend": false,
+        "hasAttack": false,
+        "isImmuneToPsynergy": true
+    },
+    "ColossoLeft": {
+        "name": "Left Shoot",
+        "imgurl": "https://goldensunwiki.net/w/images/c/ca/SolSanctumDisarm.png",
+        "movepool": [
+            "Disarm"
+        ],
+        "stats": {
+            "maxHP": 20000,
+            "maxPP": 0,
+            "Atk": 20000,
+            "Def": 2,
+            "Spd": 3
+        },
+        "elstats": {
+            "VenusAtk": 100,
+            "VenusRes": 25,
+            "MarsAtk": 100,
+            "MarsRes": 25,
+            "JupiterAtk": 100,
+            "JupiterRes": 25,
+            "MercuryAtk": 100,
+            "MercuryRes": 25
+        },
+        "Conditions": [ "Counter" ],
+        "hasDefend": false,
+        "hasAttack": false
+    },
+    "ColossoRight": {
+        "name": "Right Shoot",
+        "imgurl": "https://goldensunwiki.net/w/images/c/ca/SolSanctumDisarm.png",
+        "movepool": [
+            "Disarm"
+        ],
+        "stats": {
+            "maxHP": 20000,
+            "maxPP": 0,
+            "Atk": 20000,
+            "Def": 2,
+            "Spd": 3
+        },
+        "elstats": {
+            "VenusAtk": 100,
+            "VenusRes": 25,
+            "MarsAtk": 100,
+            "MarsRes": 25,
+            "JupiterAtk": 100,
+            "JupiterRes": 25,
+            "MercuryAtk": 100,
+            "MercuryRes": 25
+        },
+        "Conditions": [ "Counter" ],
+        "hasDefend": false,
+        "hasAttack": false
+    },
+    "ColossoDekka": {
+        "name": "Dekka",
+        "imgurl": "https://goldensunwiki.net/w/images/c/ca/SolSanctumDisarm.png",
+        "movepool": [
+            "Trap"
+        ],
+        "stats": {
+            "maxHP": 1,
+            "maxPP": 0,
+            "Atk": 100,
+            "Def": 2,
+            "Spd": 3
+        },
+        "elstats": {
+            "VenusAtk": 100,
+            "VenusRes": 25,
+            "MarsAtk": 100,
+            "MarsRes": 25,
+            "JupiterAtk": 100,
+            "JupiterRes": 25,
+            "MercuryAtk": 100,
+            "MercuryRes": 25
+        },
+        "hasDefend": false,
+        "hasAttack": false,
+        "isImmuneToPsynergy": true
+    },
+    "ColossoBuford": {
+        "name": "Buford",
+        "imgurl": "https://goldensunwiki.net/w/images/c/ca/SolSanctumDisarm.png",
+        "movepool": [
+            "Disarm"
+        ],
+        "stats": {
+            "maxHP": 20000,
+            "maxPP": 0,
+            "Atk": 20000,
+            "Def": 2,
+            "Spd": 3
+        },
+        "elstats": {
+            "VenusAtk": 100,
+            "VenusRes": 25,
+            "MarsAtk": 100,
+            "MarsRes": 25,
+            "JupiterAtk": 100,
+            "JupiterRes": 25,
+            "MercuryAtk": 100,
+            "MercuryRes": 25
+        },
+        "Conditions": [ "Counter" ],
+        "hasDefend": false,
+        "hasAttack": false
+    },
+    "ColossoIsaac2": {
+        "name": "Isaac",
+        "imgurl": "https://goldensunwiki.net/w/images/c/ca/SolSanctumDisarm.png",
+        "movepool": [
+            "Disarm"
+        ],
+        "stats": {
+            "maxHP": 20000,
+            "maxPP": 0,
+            "Atk": 20000,
+            "Def": 2,
+            "Spd": 3
+        },
+        "elstats": {
+            "VenusAtk": 100,
+            "VenusRes": 25,
+            "MarsAtk": 100,
+            "MarsRes": 25,
+            "JupiterAtk": 100,
+            "JupiterRes": 25,
+            "MercuryAtk": 100,
+            "MercuryRes": 25
+        },
+        "Conditions": [ "Counter" ],
+        "hasDefend": false,
+        "hasAttack": false
+    },
+    "ColossoErec": {
+        "name": "Erec",
+        "imgurl": "https://goldensunwiki.net/w/images/c/ca/SolSanctumDisarm.png",
+        "movepool": [
+            "Disarm"
+        ],
+        "stats": {
+            "maxHP": 20000,
+            "maxPP": 0,
+            "Atk": 20000,
+            "Def": 2,
+            "Spd": 3
+        },
+        "elstats": {
+            "VenusAtk": 100,
+            "VenusRes": 25,
+            "MarsAtk": 100,
+            "MarsRes": 25,
+            "JupiterAtk": 100,
+            "JupiterRes": 25,
+            "MercuryAtk": 100,
+            "MercuryRes": 25
+        },
+        "Conditions": [ "Counter" ],
         "hasDefend": false,
         "hasAttack": false
     },
@@ -10529,5 +10937,81 @@
             "Haunt"
         ],
         "isImmuneToOHKO": true
+    },
+    "Buford": {
+        "movepool": [ "Smoke Bomb", "Sleep Bomb" ],
+        "name": "Buford",
+        "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Navampa.png",
+        "stats": {
+            "maxhp": 320,
+            "maxpp": 2,
+            "atk": 232,
+            "def": 54,
+            "spd": 84
+        },
+        "elstats": {
+            "venusres": 90,
+            "mercuryres": 90,
+            "marsres": 90,
+            "jupiterres": 90
+        },
+        "extraturns": 0
+    },
+    "Dekka": {
+        "movepool": [ "Smoke Bomb", "Sleep Bomb" ],
+        "name": "Dekka",
+        "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Navampa.png",
+        "stats": {
+            "maxhp": 420,
+            "maxpp": 2,
+            "atk": 232,
+            "def": 54,
+            "spd": 84
+        },
+        "elstats": {
+            "venusres": 90,
+            "mercuryres": 90,
+            "marsres": 90,
+            "jupiterres": 90
+        },
+        "extraturns": 0
+    },
+    "Galahad": {
+        "movepool": [ "Smoke Bomb", "Sleep Bomb" ],
+        "name": "Galahad",
+        "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Navampa.png",
+        "stats": {
+            "maxhp": 520,
+            "maxpp": 2,
+            "atk": 232,
+            "def": 54,
+            "spd": 84
+        },
+        "elstats": {
+            "venusres": 90,
+            "mercuryres": 90,
+            "marsres": 90,
+            "jupiterres": 90
+        },
+        "extraturns": 0
+    },
+    "Morgan": {
+        "movepool": [ "Smoke Bomb", "Sleep Bomb", "Nut" ],
+        "name": "Navampa",
+        "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Navampa.png",
+        "stats": {
+            "maxhp": 920,
+            "maxpp": 2,
+            "atk": 232,
+            "def": 54,
+            "spd": 84
+        },
+        "elstats": {
+            "venusres": 90,
+            "mercuryres": 90,
+            "marsres": 90,
+            "jupiterres": 90
+        },
+        "extraturns": 0
     }
 }

@@ -1565,7 +1565,7 @@
                 },
                 {
                     "Type": "Condition",
-                    "Condition": "Delusion",
+                    "Condition": "Stun",
                     "Probability": 25
                 }
             ]
