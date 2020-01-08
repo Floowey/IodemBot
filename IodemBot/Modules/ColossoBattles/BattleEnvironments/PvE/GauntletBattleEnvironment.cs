@@ -19,7 +19,7 @@ namespace IodemBot.Modules.ColossoBattles
         private bool EndOfDungeon = false;
         public bool HasPlayer { get { return Battle.SizeTeamA > 0; } }
         public DateTime LastEnemySet = DateTime.MinValue;
-        public bool IsReady { get { return !IsActive && !HasPlayer && DateTime.Now.Subtract(LastEnemySet).Seconds > 20; } }
+        public bool IsReady { get { return !IsActive && !HasPlayer && DateTime.Now.Subtract(LastEnemySet).TotalSeconds >= 20; } }
 
         public GauntletBattleEnvironment(string Name, ITextChannel lobbyChannel, ITextChannel BattleChannel, string DungeonName) : base(Name, lobbyChannel, BattleChannel)
         {
