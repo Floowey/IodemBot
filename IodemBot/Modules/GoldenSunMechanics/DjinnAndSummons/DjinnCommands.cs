@@ -173,6 +173,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             }
 
             chosenDjinn.Nickname = Nickname;
+            chosenDjinn.UpdateMove();
             await DjinnInv(DjinnDetail.Name);
         }
     }

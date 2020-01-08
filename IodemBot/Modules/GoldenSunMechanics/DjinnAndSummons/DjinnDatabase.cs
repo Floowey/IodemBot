@@ -11,7 +11,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
     {
         private static Dictionary<string, Djinn> DjinnDatabase { get; set; } = new Dictionary<string, Djinn>();
         private static Dictionary<string, Summon> SummonsDatabase { get; set; } = new Dictionary<string, Summon>();
-        private static readonly string[] blacklist = new[] { "Kite", "Reflux", "Luff" };
+        private static readonly string[] blacklist = new[] { "Kite", "Reflux", "Luff", "Eddy" };
 
         static DjinnAndSummonsDatabase()
         {
@@ -54,21 +54,24 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public static Djinn GetRandomDjinn(params Element[] elements)
         {
-            return DjinnDatabase.Values.Where(d => (elements.Count() > 0 ? elements.Contains(d.Element) : true) && !blacklist.Contains(d.Name)).Random();
+            return (Djinn)DjinnDatabase.Values
+                .Where(d => (elements.Count() > 0 ? elements.Contains(d.Element) : true) && !blacklist.Contains(d.Name))
+                .Random()
+                .Clone();
         }
 
         public static bool TryGetDjinn(string DjinnName, out Djinn djinn)
         {
+            djinn = null;
             if (DjinnName.IsNullOrEmpty())
             {
-                djinn = null;
                 return false;
             }
-            if (DjinnDatabase.TryGetValue(DjinnName, out djinn))
+            if (DjinnDatabase.TryGetValue(DjinnName, out Djinn d))
             {
+                djinn = (Djinn)d.Clone();
                 return true;
             }
-
             Console.WriteLine($"Djinn {DjinnName} is not implemented.");
             return false;
         }
