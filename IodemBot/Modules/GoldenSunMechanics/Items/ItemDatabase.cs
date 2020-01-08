@@ -145,7 +145,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             var rate = 0.0007671 * Math.Pow(n, 2) - 0.1537 * n;
             var pow = Math.Pow(Math.E, rate);
             var loc = 15000 * 1.13 / (1 + 299 * pow);
-            var scale = Math.Pow(n, 2.26);
+            var scale = Math.Pow(n, 2.255);
             var shape = 0.1 - n / 200;
             var dist = new Accord.Statistics.Distributions.Univariate.GeneralizedParetoDistribution(loc, scale, shape);
             var value = dist.Generate();
