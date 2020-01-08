@@ -3,6 +3,7 @@ using Discord.Commands;
 using Discord.WebSocket;
 using Iodembot.Preconditions;
 using IodemBot.Core.UserManagement;
+using IodemBot.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -118,6 +119,25 @@ namespace IodemBot.Modules.ColossoBattles
                 _ = Context.Message.DeleteAsync();
                 _ = Context.Channel.SendMessageAsync($"{openBattle.Name} has been prepared for your adventure to {Dungeon.Name}");
             }
+        }
+
+        [Command("dungeons")]
+        [RequireStaff]
+        public async Task AllDungeon()
+        {
+            await ReplyAsync(string.Join("\n", EnemiesDatabase.dungeons.Values.Select(d => d.Name)));
+        }
+
+        [Command("givedungeon")]
+        [RequireStaff]
+        public async Task GiveDungeon(SocketGuildUser user, [Remainder]string dungeonName)
+        {
+            if (EnemiesDatabase.TryGetDungeon(dungeonName, out var dungeon))
+            {
+                UserAccounts.GetAccount(user).Dungeons.Add(dungeon.Name);
+                _ = ReplyAsync($"{user.DisplayName()} got access to {dungeon.Name}");
+            }
+            await Task.CompletedTask;
         }
 
         [Command("Status")]

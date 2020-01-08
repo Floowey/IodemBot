@@ -52,14 +52,16 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 if (!userAccount.DjinnPocket.djinn.Any(d => d.Djinnname == djinn.Djinnname))
                 {
                     userAccount.DjinnPocket.AddDjinn(djinn);
-                    awardLog.Add($"{userAccount.Name} found a found the djinn a {djinn.Emote} {djinn.Name}!");
+                    awardLog.Add($"{userAccount.Name} found the djinn a {djinn.Emote} {djinn.Name}!");
                 }
             }
             else if (Enum.TryParse<Element>(Djinn, out var element))
             {
                 djinn = DjinnAndSummonsDatabase.GetRandomDjinn(element);
+                djinn.IsShiny = Global.Random.Next(0, 128) == 0;
+                djinn.UpdateMove();
                 userAccount.DjinnPocket.AddDjinn(djinn);
-                awardLog.Add($"{userAccount.Name} found a found the djinn a {djinn.Emote} {djinn.Name}!");
+                awardLog.Add($"{userAccount.Name} found a the djinn a {djinn.Emote} {djinn.Name}!");
             }
 
             if (DjinnAndSummonsDatabase.TryGetSummon(Summon, out var summon))
@@ -67,7 +69,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 if (!userAccount.DjinnPocket.summons.Contains(summon))
                 {
                     userAccount.DjinnPocket.AddSummon(summon);
-                    awardLog.Add($"{userAccount.Name} found a found the summon tablet for {summon.Emote} {summon.Name}!");
+                    awardLog.Add($"{userAccount.Name} found the summon tablet for {summon.Emote} {summon.Name}!");
                 }
             }
             return string.Join("\n", awardLog);

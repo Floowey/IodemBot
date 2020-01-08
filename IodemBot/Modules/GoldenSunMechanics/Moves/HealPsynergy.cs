@@ -11,6 +11,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public bool SingleTarget { get; set; }
         public int Percentage { get; set; }
         public int HealPower { get; set; }
+        public int PPHeal { get; set; }
+        public int PPPercent { get; set; }
 
         public override object Clone()
         {

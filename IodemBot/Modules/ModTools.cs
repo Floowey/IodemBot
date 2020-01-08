@@ -84,7 +84,7 @@ namespace IodemBot.Modules
                 .AddField("7 Days", acc.Count(a => DateTime.Now.Subtract(new TimeSpan(7, 0, 0, 0)) < a.ServerStats.LastDayActive), true)
                 .AddField("30 Days", acc.Count(a => DateTime.Now.Subtract(new TimeSpan(30, 0, 0, 0)) < a.ServerStats.LastDayActive), true)
                 .AddField("All Time", acc.Count(a => a.ServerStats.LastDayActive > DateTime.MinValue), true)
-                .AddField("Tried Colosso", acc.Count(a => a.ServerStats.ColossoStreak > 0), true)
+                .AddField("Tried Colosso", acc.Count(a => a.ServerStats.ColossoWins > 0), true)
                 .Build());
         }
 
@@ -92,7 +92,7 @@ namespace IodemBot.Modules
         [RequireStaff]
         public async Task Emotes()
         {
-            var s = string.Join("\n", Context.Guild.Emotes.Select(e => $"{e.ToString()} \\<{(e.Animated ? "a" : "")}:{e.Name}:{e.Id}>"));
+            var s = string.Join("\n", Context.Guild.Emotes.OrderBy(d => d.Name).Select(e => $"{e.ToString()} \\<{(e.Animated ? "a" : "")}:{e.Name}:{e.Id}>"));
             if (s.Length > 2000)
             {
                 await Context.Channel.SendMessageAsync(s.Substring(0, 2000));
