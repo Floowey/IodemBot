@@ -445,7 +445,7 @@ namespace IodemBot.Modules.ColossoBattles
             //Haunt Damage
             if (HasCondition(Condition.Haunt) && Global.Random.Next(0, 2) == 0)
             {
-                var hauntDmg = Math.Min(280, (uint)(Stats.HP * Global.Random.Next(20, 40) / 100));
+                var hauntDmg = damageDoneThisTurn / 4;
                 turnLog.AddRange(DealDamage(hauntDmg));
             }
 
