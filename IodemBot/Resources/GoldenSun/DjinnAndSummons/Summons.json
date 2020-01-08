@@ -477,7 +477,135 @@
                 }
             ]
         },
-        "JupiterNeeded": 1,
-        "VenusNeeded": 1
-    }
+         "JupiterNeeded": 1,
+         "VenusNeeded": 1
+    },
+    "Megaera": {
+        "Move": {
+            "Name": "Megaera",
+            "Emote": "<:Megaera:636449222706593803>",
+            "Targettype": 4,
+            "Element": 1,
+            "power": 40,
+            "percentageDamage": 6,
+            "Effects": [
+                {
+                    "Type": "Stat",
+                    "Stat": "Power",
+                    "Multiplier": 1.1,
+                    "OnTarget": false
+                },
+                {
+                    "Type": "Stat",
+                    "Stat": "Resistance",
+                    "Multiplier": 1.1,
+                    "OnTarget": false
+                },
+                {
+                    "Type": "Stat",
+                    "Stat": "Attack",
+                    "Multiplier": 1.25,
+                    "OnTarget": true
+                }
+             ]
+         },
+           "MarsNeeded": 1,
+           "JupiterNeeded": 1
+    },
+
+      "Moloch": {
+          "Move": {
+              "Name": "Moloch",
+              "Emote": "<:Moloch:636449223096926218>",
+              "Targettype": 4,
+              "Element": 3,
+              "power": 100,
+              "percentageDamage": 9,
+              "Effects": [
+                  {
+                      "Type": "Stat",
+                      "Stat": "Power",
+                      "Multiplier": 1.3,
+                      "OnTarget": false,
+                  },
+                  {
+                      "Type": "Stat",
+                      "Stat": "Resistance",
+                      "Multiplier": 1.3,
+                      "OnTarget": false
+                  },
+                  {
+                      "Type": "Stat",
+                      "Stat": "Agility",
+                      "Multiplier": 0.5,
+                      "Probability": 60
+                  }
+             ]
+        },
+           "MercuryNeeded": 1,
+           "JupiterNeeded": 1
+   },
+    "Ulysses": {
+        "Move": {
+            "Name": "Ulysses",
+            "Emote": "<:Ulysses:636449222933348363>",
+            "Targettype": 4,
+            "Element": 1,
+            "power": 160,
+            "percentageDamage": 12,
+            "Effects": [
+                {
+                    "Type": "Stat",
+                    "Stat": "Power",
+                    "Multiplier": 1.75,
+                    "OnTarget": false
+                },
+                {
+                    "Type": "Stat",
+                    "Stat": "Resistance",
+                    "Multiplier": 1.75,
+                    "OnTarget": false
+                },
+                {
+                    "Type": "Condition",
+                    "Condition": "Flinch",
+                    "Probability": 100
+                },
+            ]
+        },
+            "MarsNeeded": 2,
+            "MercuryNeeded": 2
+    },
+     "Eclipse": {
+         "Move": {
+             "Name": "Eclipse",
+             "Emote": "<:Eclipse:636449222589284373>",
+             "Targettype": 4,
+             "Element": 2,
+             "power": 300,
+             "percentageDamage": 15,
+             "Effects": [
+                 {
+                     "Type": "Stat",
+                     "Stat": "Power",
+                     "Multiplier": 1.75,
+                     "OnTarget": false
+                 },
+                 {
+                     "Type": "Stat",
+                     "Stat": "Resistance",
+                     "Multiplier": 1.75,
+                     "OnTarget": false
+                 },
+                 {
+                     "Type": "Stat",
+                     "Stat": "Attack",
+                     "Multiplier": 0.6,
+                     "Probability": 50
+                 },
+              ]
+         },
+            "JupiterNeeded": 2,
+            "MercuryNeeded": 2
+    },
 }
