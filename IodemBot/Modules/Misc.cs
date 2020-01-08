@@ -80,13 +80,16 @@ namespace IodemBot.Modules
                 .Build());
         }
 
-        [Command("AllStreams")]
+        [Command("Streams")]
         [Cooldown(5)]
-        [RequireModerator]
         public async Task AllStreams()
         {
-            await Context.Message.DeleteAsync();
-            await TwitchListener.AllStreams(null, null);
+            var embeds = await TwitchListener.AllStreamsEmbeds();
+            await ReplyAsync($"{embeds.Count} Golden Sun streams.");
+            foreach (var s in embeds)
+            {
+                _ = ReplyAsync(embed: s);
+            }
         }
 
         [Command("wiki")]

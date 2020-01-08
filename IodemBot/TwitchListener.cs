@@ -39,7 +39,7 @@ namespace IodemBot
                 AutoReset = true
             };
             timer.Elapsed += Timer_Elapsed;
-            timer.Start();
+            //timer.Start();
             channel = ((ISocketMessageChannel)Global.Client.GetChannel(511702094672298044)) ?? ((ISocketMessageChannel)Global.Client.GetChannel(497696510688100352));
             return Task.CompletedTask;
         }
@@ -69,9 +69,36 @@ namespace IodemBot
             }
         }
 
+        public static async Task<List<Stream>> AllStreams()
+        {
+            return (await api.Helix.Streams.GetStreamsAsync(gameIds: GoldenSunIds.Keys.ToList())).Streams.ToList();
+        }
+
+        public static async Task<List<Embed>> AllStreamsEmbeds()
+        {
+            var streams = await AllStreams();
+            var embeds = new List<Embed>();
+            var newStreams = streams;
+            //var newStreams = streams;
+            runningIds = streams.Select(d => d.Id).ToList();
+            Console.WriteLine($"Total Streams: {streams.Count()}, New Streams: {newStreams.Count()}");
+            foreach (Stream s in newStreams)
+            {
+                var user = (await api.Helix.Users.GetUsersAsync(new List<string>() { s.UserId })).Users.FirstOrDefault();
+                embeds.Add(new EmbedBuilder()
+                     .WithAuthor($"{user.DisplayName} is streaming { GoldenSunIds[s.GameId]}", user.ProfileImageUrl, $"https://twitch.tv/{user.Login}")
+                     .WithColor(100, 65, 100)
+                     .WithDescription($"{s.Title} \n\n Now live on: \n https://twitch.tv/{user.Login}")
+                     .WithThumbnailUrl(s.ThumbnailUrl.Replace("{width}", "300").Replace("{height}", "300"))
+                     .WithFooter(user.Description)
+                     .Build());
+            }
+            return embeds;
+        }
+
         public static async Task AllStreams(object sender, ElapsedEventArgs e)
         {
-            var streams = (await api.Helix.Streams.GetStreamsAsync(gameIds: GoldenSunIds.Keys.ToList())).Streams.ToList();
+            var streams = await AllStreams();
 
             var newStreams = streams;
             //var newStreams = streams;
