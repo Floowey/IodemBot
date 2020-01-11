@@ -11013,5 +11013,115 @@
             "jupiterres": 90
         },
         "extraturns": 0
+    },
+    "Red Key": {
+        "name": "Red Key",
+        "imgurl": "https://goldensunwiki.net/w/images/c/ca/SolSanctumDisarm.png",
+        "movepool": [
+            "Trap"
+        ],
+        "stats": {
+            "maxHP": 1,
+            "maxPP": 0,
+            "Atk": 1,
+            "Def": 1,
+            "Spd": 3
+        },
+        "elstats": {
+            "VenusAtk": 100,
+            "VenusRes": 25,
+            "MarsAtk": 100,
+            "MarsRes": 25,
+            "JupiterAtk": 100,
+            "JupiterRes": 25,
+            "MercuryAtk": 100,
+            "MercuryRes": 25
+        },
+        "hasDefend": false,
+        "hasAttack": false,
+        "isImmuneToPsynergy": true
+    },
+    "Blue Key": {
+        "name": "Blue Key",
+        "imgurl": "https://goldensunwiki.net/w/images/c/ca/SolSanctumDisarm.png",
+        "movepool": [
+            "Disarm"
+        ],
+        "stats": {
+            "maxHP": 20000,
+            "maxPP": 0,
+            "Atk": 20000,
+            "Def": 2,
+            "Spd": 3
+        },
+        "elstats": {
+            "VenusAtk": 100,
+            "VenusRes": 25,
+            "MarsAtk": 100,
+            "MarsRes": 25,
+            "JupiterAtk": 100,
+            "JupiterRes": 25,
+            "MercuryAtk": 100,
+            "MercuryRes": 25
+        },
+        "Conditions": [ "Counter" ],
+        "hasDefend": false,
+        "hasAttack": false,
+        "isImmuneToOHKO": true
+    },
+    "Green Key": {
+        "name": "Green Key",
+        "imgurl": "https://goldensunwiki.net/w/images/c/ca/SolSanctumDisarm.png",
+        "movepool": [
+            "Disarm"
+        ],
+        "stats": {
+            "maxHP": 20000,
+            "maxPP": 0,
+            "Atk": 20000,
+            "Def": 2,
+            "Spd": 3
+        },
+        "elstats": {
+            "VenusAtk": 100,
+            "VenusRes": 25,
+            "MarsAtk": 100,
+            "MarsRes": 25,
+            "JupiterAtk": 100,
+            "JupiterRes": 25,
+            "MercuryAtk": 100,
+            "MercuryRes": 25
+        },
+        "Conditions": [ "Counter" ],
+        "hasDefend": false,
+        "hasAttack": false,
+        "isImmuneToOHKO": true
+    },
+    "Fortress Guard": {
+        "name": "Fortress Guard",
+        "imgurl": "https://goldensunwiki.net/w/images/c/ca/SolSanctumDisarm.png",
+        "movepool": [
+            "Disarm"
+        ],
+        "stats": {
+            "maxHP": 20000,
+            "maxPP": 0,
+            "Atk": 20000,
+            "Def": 2,
+            "Spd": 3
+        },
+        "elstats": {
+            "VenusAtk": 100,
+            "VenusRes": 25,
+            "MarsAtk": 100,
+            "MarsRes": 25,
+            "JupiterAtk": 100,
+            "JupiterRes": 25,
+            "MercuryAtk": 100,
+            "MercuryRes": 25
+        },
+        "Conditions": [ "Counter" ],
+        "hasDefend": false,
+        "hasAttack": false
     }
 }
