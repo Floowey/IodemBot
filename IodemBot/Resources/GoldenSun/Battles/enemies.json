@@ -11123,5 +11123,88 @@
         "Conditions": [ "Counter" ],
         "hasDefend": false,
         "hasAttack": false
+    },
+    "MoveBilibin": {
+        "name": "Move",
+        "imgurl": "https://goldensunwiki.net/w/images/c/ca/SolSanctumDisarm.png",
+        "movepool": [
+            "Disarm"
+        ],
+        "stats": {
+            "maxHP": 1,
+            "maxPP": 0,
+            "Atk": 1,
+            "Def": 1,
+            "Spd": 3
+        },
+        "elstats": {
+            "VenusAtk": 100,
+            "VenusRes": 25,
+            "MarsAtk": 100,
+            "MarsRes": 25,
+            "JupiterAtk": 100,
+            "JupiterRes": 25,
+            "MercuryAtk": 100,
+            "MercuryRes": 25
+        },
+        "hasDefend": false,
+        "hasAttack": false,
+        "isImmuneToPsynergy": true
+    },
+    "CatchBilibin": {
+        "name": "Catch",
+        "imgurl": "https://goldensunwiki.net/w/images/c/ca/SolSanctumDisarm.png",
+        "movepool": [
+            "Disarm"
+        ],
+        "stats": {
+            "maxHP": 20000,
+            "maxPP": 0,
+            "Atk": 20000,
+            "Def": 2,
+            "Spd": 3
+        },
+        "elstats": {
+            "VenusAtk": 100,
+            "VenusRes": 25,
+            "MarsAtk": 100,
+            "MarsRes": 25,
+            "JupiterAtk": 100,
+            "JupiterRes": 25,
+            "MercuryAtk": 100,
+            "MercuryRes": 25
+        },
+        "Conditions": [ "Counter" ],
+        "hasDefend": false,
+        "hasAttack": false,
+        "isImmuneToOHKO": true
+    },
+    "RetreatBilibin": {
+        "name": "Retreat",
+        "imgurl": "https://goldensunwiki.net/w/images/c/ca/SolSanctumDisarm.png",
+        "movepool": [
+            "Disarm"
+        ],
+        "stats": {
+            "maxHP": 20000,
+            "maxPP": 0,
+            "Atk": 20000,
+            "Def": 2,
+            "Spd": 3
+        },
+        "elstats": {
+            "VenusAtk": 100,
+            "VenusRes": 25,
+            "MarsAtk": 100,
+            "MarsRes": 25,
+            "JupiterAtk": 100,
+            "JupiterRes": 25,
+            "MercuryAtk": 100,
+            "MercuryRes": 25
+        },
+        "Conditions": [ "Counter" ],
+        "hasDefend": false,
+        "hasAttack": false,
+        "isImmuneToOHKO": true
     }
 }
