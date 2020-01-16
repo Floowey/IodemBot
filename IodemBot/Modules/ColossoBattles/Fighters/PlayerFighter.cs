@@ -46,16 +46,6 @@ namespace IodemBot.Modules.ColossoBattles
         }
     }
 
-    public enum LevelOption { Default, SetLevel, CappedLevel }
-
-    public enum InventoryOption { Default, NoInventory }
-
-    public enum DjinnOption { Default, NoDjinn }
-
-    public enum BaseStatOption { Default, Average }
-
-    public enum BaseStatManipulationOption { Default, NoIncrease }
-
     internal class StatHolder
     {
         public Stats BaseStat;
@@ -69,7 +59,7 @@ namespace IodemBot.Modules.ColossoBattles
 
         public Stats GetStats(uint Level)
         {
-            return BaseStat + (FinalBaseStats - BaseStat) * ((double)Level / 99 / 1.5);
+            return BaseStat + (FinalBaseStats - BaseStat) * ((double)Level / 99 / 1.25);
         }
     }
 

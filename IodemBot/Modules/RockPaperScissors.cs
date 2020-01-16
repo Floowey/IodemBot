@@ -33,8 +33,6 @@ namespace IodemBot.Modules
             await Context.Channel.SendMessageAsync("", false, embed.Build());
         }
 
-        public enum RpsEnum { Rock, Paper, Scissors }
-
         [Command("rps")]
         [Cooldown(4)]
         [Remarks("Rock, Paper, Scissors")]

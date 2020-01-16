@@ -9,8 +9,6 @@ using System.Text;
 
 namespace IodemBot.Modules.ColossoBattles
 {
-    public enum Condition { Down, Poison, Venom, Seal, Stun, DeathCurse, Haunt, ItemCurse, Flinch, Delusion, Sleep, Counter }
-
     public struct Buff
     {
         public double multiplier;
@@ -62,12 +60,12 @@ namespace IodemBot.Modules.ColossoBattles
         public bool IsImmuneToPsynergy { get; set; }
         public bool IsImmuneToItemCurse { get; set; }
         public Item Weapon;
-        [JsonIgnore] public ColossoBattle.Team party;
+        [JsonIgnore] public Team party;
         [JsonIgnore] public Move selected;
         [JsonIgnore] public uint damageDoneThisTurn;
         [JsonIgnore] public ColossoBattle battle;
         [JsonIgnore] public List<Buff> Buffs = new List<Buff>();
-        [JsonIgnore] public ColossoBattle.Team enemies;
+        [JsonIgnore] public Team enemies;
         [JsonIgnore] public bool hasSelected = false;
         [JsonIgnore] public double offensiveMult = 1;
         [JsonIgnore] public double defensiveMult = 1;

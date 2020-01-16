@@ -7,8 +7,6 @@ namespace IodemBot.Modules.ColossoBattles
 {
     public class ColossoBattle
     {
-        public enum Team { A, B }
-
         public List<ColossoFighter> TeamA = new List<ColossoFighter>();
         public List<ColossoFighter> TeamB = new List<ColossoFighter>();
         public bool isActive = false;

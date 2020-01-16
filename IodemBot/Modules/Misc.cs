@@ -236,8 +236,6 @@ namespace IodemBot.Modules
             .Build());
         }
 
-        public enum RankEnum { Level, Solo, Duo, Trio, Quad }
-
         [Command("rank"), Alias("top", "top10")]
         [Cooldown(15)]
         [Remarks("Get the most active users and your rank")]

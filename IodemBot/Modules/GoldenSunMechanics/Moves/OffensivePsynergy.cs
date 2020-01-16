@@ -54,7 +54,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
                 //Effects that trigger before damage
                 Effects
-                    .Where(e => e.ActivationTime == Effect.TimeToActivate.beforeDamge)
+                    .Where(e => e.ActivationTime == TimeToActivate.beforeDamge)
                     .ToList()
                     .ForEach(e => log.AddRange(e.Apply(User, t)));
 
@@ -98,11 +98,11 @@ namespace IodemBot.Modules.GoldenSunMechanics
                     }
                 }
 
-                realDmg = Math.Max(0, realDmg);
+                realDmg = Math.Max(1, realDmg);
 
                 log.AddRange(t.DealDamage(realDmg, punctuation));
                 Effects
-                    .Where(e => e.ActivationTime == Effect.TimeToActivate.afterDamage)
+                    .Where(e => e.ActivationTime == TimeToActivate.afterDamage)
                     .ToList()
                     .ForEach(e => log.AddRange(e.Apply(User, t)));
 

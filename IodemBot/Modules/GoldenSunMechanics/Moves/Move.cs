@@ -7,8 +7,6 @@ using System.Linq;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
-    public enum Target { self, ownSingle, ownAll, otherSingle, otherRange, otherAll }
-
     [JsonConverter(typeof(JsonSubtypes))]
     [JsonSubtypes.KnownSubTypeWithProperty(typeof(OffensivePsynergy), "Power")]
     [JsonSubtypes.KnownSubTypeWithProperty(typeof(OffensivePsynergy), "AddDamage")]

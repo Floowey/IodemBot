@@ -4,8 +4,6 @@ using System.Linq;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
-    public enum Element { Venus, Mars, Jupiter, Mercury, none };
-
     public abstract class Psynergy : Move
     {
         public uint PPCost { get; set; }

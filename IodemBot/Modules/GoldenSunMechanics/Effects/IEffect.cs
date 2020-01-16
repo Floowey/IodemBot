@@ -29,8 +29,6 @@ namespace IodemBot.Modules.GoldenSunMechanics
     [JsonSubtypes.KnownSubType(typeof(UserDiesEffect), "UserDies")]
     public abstract class Effect
     {
-        public enum TimeToActivate { beforeDamge, afterDamage };
-
         public TimeToActivate ActivationTime { get; set; } = TimeToActivate.afterDamage;
         public virtual string Type { get; } = "Nothing";
 
