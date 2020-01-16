@@ -31,7 +31,7 @@ namespace IodemBot.Core.Leveling
             if (sinceLastXP.Minutes >= 2)
             {
                 userAccount.LastXP = DateTime.UtcNow;
-                userAccount.XP += (uint)(new Random()).Next(30, 60);
+                userAccount.AddXp((uint)(new Random()).Next(30, 60));
             }
             if (user.Roles.Count == 0 && !user.Roles.Any(r => r.Id == 355560889942016000))
             {

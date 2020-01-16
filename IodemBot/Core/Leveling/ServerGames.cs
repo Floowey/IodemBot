@@ -13,13 +13,13 @@ namespace IodemBot.Core.Leveling
 {
     internal static class ServerGames
     {
-        private static ITextChannel botspam = (SocketTextChannel)(Global.Client.GetChannel(358276942337671178) ?? Global.Client.GetChannel(564175057447026688));
+        private static ITextChannel botspam = (SocketTextChannel)(Global.Client.GetChannel(358276942337671178) ?? Global.Client.GetChannel(497696510688100352));
 
         internal static async void UserWonColosso(SocketGuildUser user, SocketTextChannel channel)
         {
             var userAccount = UserAccounts.GetAccount(user);
             uint oldLevel = userAccount.LevelNumber;
-            userAccount.XP += (uint)(new Random()).Next(40, 70);
+            userAccount.AddXp((uint)(new Random()).Next(40, 70));
             uint newLevel = userAccount.LevelNumber;
 
             userAccount.ServerStats.ColossoWins++;
@@ -46,7 +46,7 @@ namespace IodemBot.Core.Leveling
         {
             var userAccount = UserAccounts.GetAccount(user);
             uint oldLevel = userAccount.LevelNumber;
-            userAccount.XP += (uint)(new Random()).Next(1, 10);
+            userAccount.AddXp((uint)(new Random()).Next(1, 10));
             uint newLevel = userAccount.LevelNumber;
             userAccount.ServerStats.ColossoStreak = 0;
             UserAccounts.SaveAccounts();
@@ -219,7 +219,7 @@ namespace IodemBot.Core.Leveling
         internal static async Task UserLostBattle(UserAccount userAccount, ITextChannel battleChannel)
         {
             uint oldLevel = userAccount.LevelNumber;
-            userAccount.XP += (uint)(new Random()).Next(0, 10);
+            userAccount.AddXp((uint)(new Random()).Next(1, 10));
             uint newLevel = userAccount.LevelNumber;
 
             userAccount.ServerStats.ColossoStreak = 0;
