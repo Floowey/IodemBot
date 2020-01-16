@@ -10,9 +10,9 @@ namespace IodemBot.Modules.ColossoBattles
             _ = Reset();
         }
 
-        protected override async Task AddPlayer(PlayerFighter player, ColossoBattle.Team team)
+        protected override async Task AddPlayer(PlayerFighter player, Team team)
         {
-            if (team == ColossoBattle.Team.B)
+            if (team == Team.B)
             {
                 player.Stats *= new GoldenSunMechanics.Stats(1000, 100, 200, 200, 10);
                 player.Stats *= 0.01;

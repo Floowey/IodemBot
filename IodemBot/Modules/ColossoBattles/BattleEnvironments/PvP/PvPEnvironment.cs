@@ -10,7 +10,6 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Timers;
-using static IodemBot.Modules.ColossoBattles.ColossoBattle;
 
 namespace IodemBot.Modules.ColossoBattles
 {
@@ -142,12 +141,12 @@ namespace IodemBot.Modules.ColossoBattles
                 AutoReset = false,
                 Enabled = false
             };
-            resetIfNotActive.Elapsed += BattleWasNotStartetInTime;
+            resetIfNotActive.Elapsed += BattleWasNotStartedInTime;
 
             Console.WriteLine("Battle was reset.");
         }
 
-        private async void BattleWasNotStartetInTime(object sender, ElapsedEventArgs e)
+        private async void BattleWasNotStartedInTime(object sender, ElapsedEventArgs e)
         {
             await Reset();
         }
