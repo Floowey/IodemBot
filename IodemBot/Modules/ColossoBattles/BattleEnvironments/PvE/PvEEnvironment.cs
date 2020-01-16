@@ -233,7 +233,7 @@ namespace IodemBot.Modules.ColossoBattles
                 return;
             }
 
-            Battle.AddPlayer(player, ColossoBattle.Team.A);
+            Battle.AddPlayer(player, Team.A);
 
             var playerMsg = await BattleChannel.SendMessageAsync($"{player.Name} wants to battle!");
             PlayerMessages.Add(playerMsg, player);
@@ -450,11 +450,11 @@ namespace IodemBot.Modules.ColossoBattles
             var e = new EmbedBuilder();
             if (Battle.SizeTeamB > 0)
             {
-                e.WithThumbnailUrl(Battle.GetTeam(ColossoBattle.Team.B).FirstOrDefault().ImgUrl);
+                e.WithThumbnailUrl(Battle.GetTeam(Team.B).FirstOrDefault().ImgUrl);
             }
             var msg = EnemyMessage;
             var i = 1;
-            foreach (ColossoFighter fighter in Battle.GetTeam(ColossoBattle.Team.B))
+            foreach (ColossoFighter fighter in Battle.GetTeam(Team.B))
             {
                 e.AddField($"{numberEmotes[i]} {fighter.ConditionsToString()}", $"{fighter.Name}", true);
                 i++;

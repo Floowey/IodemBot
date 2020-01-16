@@ -137,7 +137,7 @@ namespace IodemBot.Modules.ColossoBattles
         public override void SetEnemy(string Enemy)
         {
             Battle.TeamB = new List<ColossoFighter>();
-            EnemiesDatabase.GetEnemies(Difficulty, Enemy).ForEach(f => Battle.AddPlayer(f, ColossoBattle.Team.B));
+            EnemiesDatabase.GetEnemies(Difficulty, Enemy).ForEach(f => Battle.AddPlayer(f, Team.B));
             Console.WriteLine($"Up against {Battle.TeamB.First().Name}");
         }
 
@@ -179,7 +179,7 @@ namespace IodemBot.Modules.ColossoBattles
             Battle.TeamB.Clear();
             EnemiesDatabase.GetRandomEnemies(Difficulty).ForEach(f =>
             {
-                Battle.AddPlayer(f, ColossoBattle.Team.B);
+                Battle.AddPlayer(f, Team.B);
             }
             );
 
@@ -187,7 +187,7 @@ namespace IodemBot.Modules.ColossoBattles
             {
                 if (Battle.SizeTeamB < 9)
                 {
-                    Battle.AddPlayer(EnemiesDatabase.GetRandomEnemies(Difficulty, 1).Random(), ColossoBattle.Team.B);
+                    Battle.AddPlayer(EnemiesDatabase.GetRandomEnemies(Difficulty, 1).Random(), Team.B);
                 }
             }
             Console.WriteLine($"Up against {Battle.TeamB.First().Name}");
@@ -200,7 +200,7 @@ namespace IodemBot.Modules.ColossoBattles
             {
                 Console.WriteLine("Game Over with no enemies existing.");
             }
-            if (Battle.GetWinner() == ColossoBattle.Team.A)
+            if (Battle.GetWinner() == Team.A)
             {
                 var RewardTables = Rewards;
                 // Get the appropiate chest rewards table
