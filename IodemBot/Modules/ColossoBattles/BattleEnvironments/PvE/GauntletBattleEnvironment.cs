@@ -16,13 +16,17 @@ namespace IodemBot.Modules.ColossoBattles
         public Dungeon Dungeon;
         public DungeonMatchup matchup;
         public List<DungeonMatchup>.Enumerator enumerator;
+        public readonly bool IsDeleted = false;
+        private bool WasReset = false;
         private bool EndOfDungeon = false;
+
         public bool HasPlayer { get { return Battle.SizeTeamA > 0; } }
         public DateTime LastEnemySet = DateTime.MinValue;
         public bool IsReady { get { return !IsActive && !HasPlayer && DateTime.Now.Subtract(LastEnemySet).TotalSeconds >= 20; } }
 
-        public GauntletBattleEnvironment(string Name, ITextChannel lobbyChannel, ITextChannel BattleChannel, string DungeonName) : base(Name, lobbyChannel, BattleChannel)
+        public GauntletBattleEnvironment(string Name, ITextChannel lobbyChannel, ITextChannel BattleChannel, string DungeonName, bool IsDeleted = false) : base(Name, lobbyChannel, BattleChannel)
         {
+            this.IsDeleted = IsDeleted;
             SetEnemy(DungeonName);
         }
 
@@ -31,6 +35,7 @@ namespace IodemBot.Modules.ColossoBattles
         public override void SetEnemy(string Enemy)
         {
             Dungeon = GetDungeon(Enemy);
+            PlayersToStart = Dungeon.MaxPlayer;
             enumerator = Dungeon.Matchups.GetEnumerator();
             LastEnemySet = DateTime.Now;
             _ = Reset();
@@ -42,7 +47,20 @@ namespace IodemBot.Modules.ColossoBattles
             {
                 matchup = enumerator.Current;
                 Battle.TeamB.Clear();
-                matchup.Enemy.ForEach(e => Battle.AddPlayer((NPCEnemy)e.Clone(), ColossoBattle.Team.B));
+                if (matchup.Shuffle)
+                {
+                    matchup.Enemy.Shuffle();
+                }
+                if (matchup.HealBefore)
+                {
+                    Battle.TeamA.ForEach(f =>
+                    {
+                        f.RemoveAllConditions();
+                        f.Heal(1000);
+                        f.RestorePP(1000);
+                    });
+                }
+                matchup.Enemy.ForEach(e => Battle.AddPlayer((NPCEnemy)e.Clone(), Team.B));
                 EndOfDungeon = false;
             }
             else
@@ -61,11 +79,22 @@ namespace IodemBot.Modules.ColossoBattles
             return builder;
         }
 
+        public override void Dispose()
+        {
+            base.Dispose();
+            _ = BattleChannel.DeleteAsync();
+        }
+
         public override async Task Reset()
         {
             enumerator = Dungeon.Matchups.GetEnumerator();
             matchup = enumerator.Current;
             await base.Reset();
+            if (IsDeleted && WasReset)
+            {
+                Dispose(); return;
+            }
+            WasReset = true;
             var e = new EmbedBuilder();
             e.WithThumbnailUrl(Dungeon.Image);
             e.WithDescription(EnemyMessage.Content);
@@ -108,9 +137,9 @@ namespace IodemBot.Modules.ColossoBattles
         protected override async Task GameOver()
         {
             var winners = Battle.GetTeam(Battle.GetWinner());
-            if (Battle.GetWinner() == ColossoBattle.Team.A)
+            if (Battle.GetWinner() == Team.A)
             {
-                if (Battle.GetWinner() == ColossoBattle.Team.A)
+                if (Battle.GetWinner() == Team.A)
                 {
                     winners.ConvertAll(s => (PlayerFighter)s).ForEach(async p => await ServerGames.UserWonBattle(p.avatar, matchup.RewardTables.GetRewards(), p.battleStats, lobbyChannel, BattleChannel));
                 }
