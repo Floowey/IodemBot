@@ -10,8 +10,6 @@ using System.Threading.Tasks;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
-    public enum DjinnDetail { None, Name }
-
     public class DjinnCommands : ModuleBase<SocketCommandContext>
     {
         [Command("djinninfo"), Alias("di")]
@@ -103,8 +101,9 @@ namespace IodemBot.Modules.GoldenSunMechanics
             foreach (Element e in new[] { Element.Venus, Element.Mars, Element.Jupiter, Element.Mercury })
             {
                 var djinnString = djinnPocket.djinn.OfElement(e).GetDisplay(detail);
-                embed.AddField($"{e.ToString()} Djinn", djinnString);
+                embed.AddField($"{e.ToString()} Djinn", djinnString, true);
             }
+            embed.WithFooter($"{djinnPocket.djinn.Count()}/{djinnPocket.PocketSize} Upgrade: {(djinnPocket.PocketUpgrades + 1) * 3000}");
 
             var summonString = string.Join(detail == DjinnDetail.Name ? ", " : "", djinnPocket.summons.Select(s => $"{s.Emote}{(detail == DjinnDetail.Name ? $" {s.Name}" : "")}"));
             if (summonString.IsNullOrEmpty())
@@ -113,6 +112,26 @@ namespace IodemBot.Modules.GoldenSunMechanics
             }
             embed.AddField("Summons", summonString);
             await ReplyAsync(embed: embed.Build());
+        }
+
+        [Command("UpgradeDjinn")]
+        public async Task DjinnUpgrade()
+        {
+            var acc = UserAccounts.GetAccount(Context.User);
+            var djinnPocket = acc.DjinnPocket;
+            var inv = acc.Inv;
+            var price = (uint)(djinnPocket.PocketUpgrades + 1) * 3000;
+            if (inv.RemoveBalance(price))
+            {
+                djinnPocket.PocketUpgrades++;
+                await DjinnInv();
+            }
+            else
+            {
+                await ReplyAsync(embed: new EmbedBuilder()
+                    .WithDescription($":x: Not enough funds. Next upgrade {price}<:coin:569836987767324672>.")
+                    .Build());
+            }
         }
 
         [Command("Djinn Take")]

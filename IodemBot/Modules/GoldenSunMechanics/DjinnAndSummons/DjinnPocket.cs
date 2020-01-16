@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿using IodemBot.Extensions;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -8,11 +10,15 @@ namespace IodemBot.Modules.GoldenSunMechanics
     public class DjinnPocket
     {
         public static readonly int MaxDjinn = 2;
+        public static readonly int BasePocketSize = 6;
+        public static readonly int AllowedDjinnGap = 3;
         [JsonIgnore] public List<Djinn> djinn = new List<Djinn>();
         [JsonIgnore] public List<Summon> summons = new List<Summon>();
         [JsonProperty] private List<DjinnHolder> DjinnStorage = new List<DjinnHolder>();
         [JsonProperty] private List<SummonHolder> SummonStorage = new List<SummonHolder>();
         public List<Element> DjinnSetup { get; set; } = new List<Element>();
+        public int PocketUpgrades = 0;
+        public int PocketSize { get { return BasePocketSize + PocketUpgrades * 2; } }
 
         private class DjinnHolder
         {
@@ -30,19 +36,52 @@ namespace IodemBot.Modules.GoldenSunMechanics
         {
             BlackList = BlackList ?? new List<Djinn>();
             var djinns = new List<Djinn>();
+
             foreach (var el in new[] { Element.Venus, Element.Mars, Element.Jupiter, Element.Mercury })
             {
                 if (djinns.Count < MaxDjinn)
                 {
-                    djinns.AddRange(djinn.Where(d => d.Element == el).Where(d => !BlackList.Any(k => k.Djinnname.Equals(d.Djinnname))).Take(DjinnSetup.Count(d => d == el)));
+                    var selected = djinn.OfElement(el).Where(d => !BlackList.Any(k => k.Djinnname.Equals(d.Djinnname))).Distinct(new DjinnComp()).Take(DjinnSetup.Count(d => d == el));
+                    djinns.AddRange(selected);
+                    BlackList.AddRange(selected);
                 }
             }
             return djinns;
         }
 
-        public void AddDjinn(Djinn newDjinn)
+        private class DjinnComp : EqualityComparer<Djinn>
         {
-            djinn.Add(newDjinn);
+            public override bool Equals(Djinn x, Djinn y)
+            {
+                return x.Djinnname.Equals(y.Djinnname, StringComparison.CurrentCultureIgnoreCase);
+            }
+
+            public override int GetHashCode(Djinn obj)
+            {
+                return obj.Djinnname.GetHashCode();
+            }
+        }
+
+        public bool AddDjinn(string DjinnName)
+        {
+            if (!DjinnAndSummonsDatabase.TryGetDjinn(DjinnName, out Djinn djinn))
+            {
+                return false;
+            }
+            return AddDjinn(djinn);
+        }
+
+        public bool AddDjinn(Djinn newDjinn)
+        {
+            var djinnOfElement = djinn.GroupBy(d => d.Element).Select(s => s.Count()).ToArray();
+            var minDjinn = 0;
+            minDjinn = djinnOfElement.Count() > 0 ? djinnOfElement.Min() : 0;
+            if (djinn.OfElement(newDjinn.Element).Count() - minDjinn < AllowedDjinnGap && djinn.Count < PocketSize)
+            {
+                djinn.Add(newDjinn);
+                return true;
+            }
+            return false;
         }
 
         public void AddSummon(Summon newSummon)
@@ -68,6 +107,14 @@ namespace IodemBot.Modules.GoldenSunMechanics
             }
             );
             SummonStorage.ForEach(s => summons.Add(DjinnAndSummonsDatabase.GetSummon(s.Summon)));
+        }
+
+        public void Clear()
+        {
+            djinn.Clear();
+            DjinnSetup.Clear();
+            summons.Clear();
+            PocketUpgrades = 0;
         }
 
         [OnDeserialized]
