@@ -102,7 +102,7 @@ namespace IodemBot.Modules.ColossoBattles
 
         public abstract Task Reset();
 
-        public void Dispose()
+        public virtual void Dispose()
         {
             Global.Client.ReactionAdded -= ProcessReaction;
         }

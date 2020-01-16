@@ -177,6 +177,7 @@ namespace IodemBot.Modules.ColossoBattles
             public string Image { get; set; }
             public bool IsOneTimeOnly { get; set; }
             public bool IsDefault { get; set; }
+            public uint MaxPlayer { get; set; } = 4;
         }
 
         public class DungeonMatchup
@@ -187,9 +188,9 @@ namespace IodemBot.Modules.ColossoBattles
                 EnemyNames.ForEach(s =>
                 {
                     var enemy = GetEnemy(s);
-                    if (EnemyNames.Count(e => e.Equals(s)) > 1)
+                    if (EnemyNames.Count(e => e.Contains(enemy.Name)) > 1)
                     {
-                        enemy.Name = $"{enemy.Name} {Enemy.Count(e => e.Name.Contains(enemy.Name)) + 1}";
+                        enemy.Name = $"{enemy.Name} {Enemy.Count(e => e.Name.Contains(enemy.Name)) + 1}".Trim();
                     }
                     Enemy.Add(enemy);
                 });
@@ -201,19 +202,31 @@ namespace IodemBot.Modules.ColossoBattles
             public string FlavourText { get; set; }
             public RewardTables RewardTables { get; set; } = new RewardTables();
             public string Image { get; set; }
+            public bool Shuffle { get; set; } = false;
+            public bool HealBefore { get; set; } = false;
         }
     }
 
     public class Requirement
     {
         public Element[] Elements { get; set; } = new Element[] { };
+
         public ArchType[] ArchTypes { get; set; } = new ArchType[] { };
+
         public string[] ClassSeries { get; set; } = new string[] { };
         public string[] Classes { get; set; } = new string[] { };
         public int MinLevel { get; set; } = 0;
-        public int MaxLevel { get; set; } = 100;
+        public int MaxLevel { get; set; } = 200;
 
-        public bool Applies(UserAccount playerAvatar)
+        public string[] TagsRequired { get; set; } = new string[] { };
+        public string[] TagsAny { get; set; } = new string[] { };
+        public int TagsHowMany { get; set; } = 0;
+        public string[] TagsLock { get; set; } = new string[] { };
+
+        public bool IsLocked(UserAccount playerAccount)
+        => (TagsLock.Count() > 0 && TagsLock.Any(t => playerAccount.Tags.Contains(t)));
+
+        public bool FulfilledRequirements(UserAccount playerAvatar)
         {
             if (Elements.Count() > 0 && !Elements.Contains(playerAvatar.Element))
             {
@@ -235,11 +248,26 @@ namespace IodemBot.Modules.ColossoBattles
                 return false;
             }
 
+            if (TagsRequired.Count() > 0 && !TagsRequired.All(t => playerAvatar.Tags.Contains(t)))
+            {
+                return false;
+            }
+
+            if (TagsAny.Count() > 0 && !TagsAny.All(t => playerAvatar.Tags.Contains(t)))
+            {
+                return false;
+            }
+
             if (MinLevel > playerAvatar.LevelNumber || MaxLevel < playerAvatar.LevelNumber)
             {
                 return false;
             }
             return true;
+        }
+
+        public bool Applies(UserAccount playerAvatar)
+        {
+            return FulfilledRequirements(playerAvatar) && !IsLocked(playerAvatar);
         }
     }
 }
