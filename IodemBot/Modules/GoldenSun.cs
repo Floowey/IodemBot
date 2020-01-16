@@ -17,8 +17,6 @@ namespace IodemBot.Modules
 {
     public class GoldenSun : ModuleBase<SocketCommandContext>
     {
-        private enum RndElement { Venus, Mars, Jupiter, Mercury }
-
         internal static Dictionary<Element, string> ElementIcons = new Dictionary<Element, string>(){
             {Element.Venus, "<:Venus_Element:573938340219584524>"},
             {Element.Mars, "<:Mars_Element:573938340307402786>"},
@@ -82,6 +80,12 @@ namespace IodemBot.Modules
                 var success = SetClass(account, series?.Name ?? "");
                 if (curSeries.Name.Equals(series?.Name) || success)
                 {
+                    if (!account.DjinnPocket.DjinnSetup.All(d => series.Elements.Contains(d)))
+                    {
+                        account.DjinnPocket.DjinnSetup.Clear();
+                        account.DjinnPocket.DjinnSetup.Add(account.Element);
+                        account.DjinnPocket.DjinnSetup.Add(account.Element);
+                    }
                     await Context.Channel.SendMessageAsync(embed: embed
                     .WithDescription($"You are {Article(account.GsClass)} {account.GsClass} now, {((SocketGuildUser)Context.User).DisplayName()}.")
                     .Build());
@@ -154,7 +158,7 @@ namespace IodemBot.Modules
 
             .AddField("Stats", p.Stats.ToString(), true)
             .AddField("Elemental Stats", p.ElStats.ToString(), true)
-            .AddField("Unlocked Classes", account.BonusClasses.Length == 0 ? "none" : string.Join(", ", account.BonusClasses));
+            .AddField("Unlocked Classes", account.BonusClasses.Count == 0 ? "none" : string.Join(", ", account.BonusClasses));
 
             var Footer = new EmbedFooterBuilder();
             Footer.WithText("Joined this Server on " + user.JoinedAt.Value.Date.ToString("dd-MM-yyyy"));
@@ -200,7 +204,7 @@ namespace IodemBot.Modules
             embed.AddField("Server Stats", JsonConvert.SerializeObject(account.ServerStats, Formatting.Indented).Replace("{", "").Replace("}", "").Replace("\"", ""));
             embed.AddField("Battle Stats", JsonConvert.SerializeObject(account.BattleStats, Formatting.Indented).Replace("{", "").Replace("}", "").Replace("\"", ""));
             embed.AddField("Account Created:", user.CreatedAt);
-            embed.AddField("Unlocked Classes", account.BonusClasses.Length == 0 ? "none" : string.Join(", ", account.BonusClasses));
+            embed.AddField("Unlocked Classes", account.BonusClasses.Count == 0 ? "none" : string.Join(", ", account.BonusClasses));
 
             var Footer = new EmbedFooterBuilder();
             Footer.WithText("Joined this Server on " + user.JoinedAt.Value.Date.ToString("dd-MM-yyyy"));
@@ -221,26 +225,33 @@ namespace IodemBot.Modules
             var availableDefaultDungeons = defaultDungeons.Where(d => d.Requirement.Applies(account)).Select(s => s.Name).ToArray();
             var unavailableDefaultDungeons = defaultDungeons.Where(d => !d.Requirement.Applies(account)).Select(s => s.Name).ToArray();
 
-            var unlockedDungeons = account.Dungeons.Select(s => EnemiesDatabase.GetDungeon(s));
-            var availablePermUnlocks = unlockedDungeons.Where(d => !d.IsOneTimeOnly && d.Requirement.Applies(account)).Select(s => s.Name).ToArray();
-            var unavailablePermUnlocks = unlockedDungeons.Where(d => !d.IsOneTimeOnly && !d.Requirement.Applies(account)).Select(s => s.Name).ToArray();
+            var unlockedDungeons = account.Dungeons.Select(s => EnemiesDatabase.GetDungeon(s)).Where(d => !d.Requirement.IsLocked(account));
+            var availablePermUnlocks = availableDefaultDungeons
+                .Concat(unlockedDungeons.Where(d =>
+                    !d.IsOneTimeOnly &&
+                    d.Requirement.FulfilledRequirements(account))
+                    .Select(s => s.Name)
+                    .ToArray());
+            var unavailablePermUnlocks = unavailableDefaultDungeons
+                .Concat(unlockedDungeons.Where(d =>
+                    !d.IsOneTimeOnly &&
+                    !d.Requirement.FulfilledRequirements(account))
+                    .Select(s => s.Name)
+                    .ToArray());
 
-            var availableOneTimeUnlocks = unlockedDungeons.Where(d => d.IsOneTimeOnly && d.Requirement.Applies(account)).Select(s => s.Name).ToArray();
-            var unavailableOneTimeUnlocks = unlockedDungeons.Where(d => d.IsOneTimeOnly && !d.Requirement.Applies(account)).Select(s => s.Name).ToArray();
+            var availableOneTimeUnlocks = unlockedDungeons.Where(d => d.IsOneTimeOnly && d.Requirement.FulfilledRequirements(account)).Select(s => s.Name).ToArray();
+            var unavailableOneTimeUnlocks = unlockedDungeons.Where(d => d.IsOneTimeOnly && !d.Requirement.FulfilledRequirements(account)).Select(s => s.Name).ToArray();
 
             var embed = new EmbedBuilder();
             embed.WithTitle("Dungeons");
-            if (defaultDungeons.Count() > 0)
-            {
-                embed.AddField("<:town:606236181243625493> Default Unlocks", $"Available: {string.Join(", ", availableDefaultDungeons)} \n Unavailable: {string.Join(", ", unavailableDefaultDungeons)}");
-            }
+
             if (availablePermUnlocks.Count() > 0)
             {
-                embed.AddField("<:mapopen:606236181503410176> Places Discovered", $"Available: {string.Join(", ", availablePermUnlocks)} \n Unavailable: {string.Join(", ", unavailablePermUnlocks)}");
+                embed.AddField("<:mapopen:606236181503410176> Places Discovered", $"Available: {string.Join(", ", availablePermUnlocks)} \nUnavailable: {string.Join(", ", unavailablePermUnlocks)}");
             }
-            if (availableOneTimeUnlocks.Count() > 0)
+            if (availableOneTimeUnlocks.Count() + unavailableOneTimeUnlocks.Count() > 0)
             {
-                embed.AddField("<:dungeonkey:606237382047694919> Dungeon Keys", $"Available: {string.Join(", ", availableOneTimeUnlocks)} \n Unavailable: {string.Join(", ", unavailableOneTimeUnlocks)}");
+                embed.AddField("<:dungeonkey:606237382047694919> Dungeon Keys", $"Available: {string.Join(", ", availableOneTimeUnlocks)} \nUnavailable: {string.Join(", ", unavailableOneTimeUnlocks)}");
             }
             await Context.Channel.SendMessageAsync("", false, embed.Build());
         }
@@ -284,7 +295,15 @@ namespace IodemBot.Modules
             {
                 SetClass(account, classSeriesName);
             }
-
+            else
+            {
+                account.DjinnPocket.DjinnSetup.Clear();
+                account.DjinnPocket.DjinnSetup.Add(account.Element);
+                account.DjinnPocket.DjinnSetup.Add(account.Element);
+            }
+            var tags = new[] { "VenusAdept", "MarsAdept", "JupiterAdept", "MercuryAdept" };
+            account.Tags.RemoveAll(s => tags.Contains(s));
+            account.Tags.Add(tags[(int)chosenElement]);
             UserAccounts.SaveAccounts();
             embed.WithColor(Colors.Get(chosenElement.ToString()));
             embed.WithDescription($"Welcome to the {chosenElement.ToString()} Clan, {account.GsClass} {((SocketGuildUser)Context.User).DisplayName()}!");
@@ -381,6 +400,25 @@ namespace IodemBot.Modules
             await RemoveClassSeries(series, user, (SocketTextChannel)Context.Channel);
         }
 
+        [Command("newgame+")]
+        public async Task NewGamePlus()
+        {
+            _ = NewGamePlusTask();
+            await Task.CompletedTask;
+        }
+
+        public async Task NewGamePlusTask()
+        {
+            var account = UserAccounts.GetAccount(Context.User);
+            await ReplyAsync("So you want to start over? Are you sure?");
+            await Context.Channel.AwaitMessage(m => m.Author == Context.User && m.Content.Equals("Yes", StringComparison.CurrentCultureIgnoreCase));
+            await ReplyAsync($"You will use all your progress so far, are you really sure? However, you will get a boost to your experience will increase from {account.XpBoost.ToString("F")} to {(account.XpBoost * (1 + 0.1 * (1 - Math.Exp(-(long)account.XP / 120000)))).ToString("F")}");
+            await Context.Channel.AwaitMessage(m => m.Author == Context.User && m.Content.Equals("Yes", StringComparison.CurrentCultureIgnoreCase));
+            await ReplyAsync("Let us reverse the cycle, to a stage where you were just beginning");
+            account.NewGame();
+            await Status();
+        }
+
         [Command("sprite"), Alias("portrait")]
         [Remarks("Get a random sprite or one of a given Character")]
         [Cooldown(5)]
@@ -419,9 +457,7 @@ namespace IodemBot.Modules
             }
 
             string curClass = AdeptClassSeriesManager.GetClassSeries(avatar).Name;
-            var list = new List<string>(avatar.BonusClasses) { series };
-            list.Sort();
-            avatar.BonusClasses = list.ToArray();
+            avatar.BonusClasses.Add(series);
             SetClass(avatar, curClass);
             UserAccounts.SaveAccounts();
             var embed = new EmbedBuilder();
@@ -442,9 +478,7 @@ namespace IodemBot.Modules
                 return;
             }
 
-            var list = new List<string>(avatar.BonusClasses);
-            list.Remove(series);
-            avatar.BonusClasses = list.ToArray();
+            avatar.BonusClasses.Remove(series);
             UserAccounts.SaveAccounts();
             var embed = new EmbedBuilder();
             embed.WithColor(Colors.Get("Iodem"));

@@ -9,10 +9,6 @@ using System.Text;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
-    public enum ArchType { Warrior, Mage }
-
-    public enum ChestQuality { Wooden, Normal, Silver, Gold, Adept, Daily }
-
     public class Inventory
     {
         public static readonly uint BaseInvSize = 30;
@@ -201,8 +197,6 @@ namespace IodemBot.Modules.GoldenSunMechanics
             return true;
         }
 
-        public enum Detail { none, Names, NameAndPrice }
-
         public string InventoryToString(Detail detail = Detail.none)
         {
             if (Inv.Count == 0)
@@ -237,6 +231,15 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public void Clear()
         {
             Inv.Clear();
+            WarriorGear.Clear();
+            MageGear.Clear();
+            chests = new Dictionary<ChestQuality, uint>()
+        {
+            { ChestQuality.Wooden, 0 }, {ChestQuality.Normal, 0}, {ChestQuality.Silver, 0}, {ChestQuality.Gold, 0}, {ChestQuality.Adept, 0}, {ChestQuality.Daily, 0}
+        };
+            Coins = 0;
+            Upgrades = 0;
+            lastDailyChest = DateTime.Now.Subtract(new TimeSpan(1, 0, 0, 0));
         }
 
         public string GearToString(ArchType archType, bool detailed = false)

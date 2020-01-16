@@ -16,13 +16,13 @@ namespace IodemBot.Modules.GoldenSunMechanics
         [Command("Inv"), Alias("Inventory", "Bag")]
         [Cooldown(10)]
         [Remarks("Displays inventory and current sets")]
-        public async Task ShowInventory(Inventory.Detail detail = Inventory.Detail.none)
+        public async Task ShowInventory(Detail detail = Detail.none)
         {
-            var split = new Dictionary<Inventory.Detail, char>()
+            var split = new Dictionary<Detail, char>()
             {
-                { Inventory.Detail.none, '>' },
-                {Inventory.Detail.Names,',' },
-                {Inventory.Detail.NameAndPrice, '\n' }
+                { Detail.none, '>' },
+                {Detail.Names,',' },
+                {Detail.NameAndPrice, '\n' }
             };
             var inv = UserAccounts.GetAccount(Context.User).Inv;
             var embed = new EmbedBuilder()
@@ -99,7 +99,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             var embed = new EmbedBuilder();
             embed.WithColor(new Color(66, 45, 45));
             embed.WithThumbnailUrl(ItemDatabase.shopkeeper);
-            embed.AddField("Shop:", shop.InventoryToString(Inventory.Detail.NameAndPrice), true);
+            embed.AddField("Shop:", shop.InventoryToString(Detail.NameAndPrice), true);
 
             var fb = new EmbedFooterBuilder();
             fb.WithText($"{ItemDatabase.restockMessage} {ItemDatabase.TimeToNextReset.ToString(@"hh\h\ mm\m")}");
@@ -347,7 +347,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 value = (((uint)cq) + 1) * 11;
             }
 
-            var itemName = ItemDatabase.GetRandomItem(value, bonus, (int)cq == 3 || (int)cq == 4 || ((int)cq == 5 && value >= 40) ? ItemDatabase.RandomItemType.Artifact : ItemDatabase.RandomItemType.Any);
+            var itemName = ItemDatabase.GetRandomItem(value, bonus, (int)cq == 3 || (int)cq == 4 || ((int)cq == 5 && value >= 40) ? RandomItemType.Artifact : RandomItemType.Any);
             var item = ItemDatabase.GetItem(itemName);
 
             var embed = new EmbedBuilder();

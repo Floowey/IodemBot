@@ -1,6 +1,5 @@
 ﻿using Discord;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,23 +8,6 @@ using System.Text;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
-    public enum ItemType
-    {
-        Collectible,
-        LongSword, Axe, Staff, LightBlade, Mace, Bow, Claw,
-        Shield, Bracelet, Glove,
-        HeavyArmor, Robe, LightArmor,
-        Helmet, Hat, Circlet, Crown,
-        UnderWear,
-        Boots, Greave,
-        Ring, Misc
-    }
-
-    public enum ItemCategory
-    {
-        Weapon, ArmWear, ChestWear, HeadWear, UnderWear, FootWear, Accessoire, Other
-    }
-
     public class Item : ICloneable
     {
         private static readonly Dictionary<ItemCategory, ItemType[]> ItemCategorization = new Dictionary<ItemCategory, ItemType[]>()
@@ -60,7 +42,6 @@ namespace IodemBot.Modules.GoldenSunMechanics
         [JsonIgnore]
         public uint SellValue { get { return (uint)(Price / (IsBroken ? 10 : 2)); } }
 
-        [JsonConverter(typeof(StringEnumConverter))]
         public ItemType ItemType { get; set; }
 
         public ItemCategory Category

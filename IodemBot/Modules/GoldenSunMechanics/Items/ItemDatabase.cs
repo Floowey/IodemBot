@@ -136,20 +136,21 @@ namespace IodemBot.Modules.GoldenSunMechanics
             return true;
         }
 
-        public enum RandomItemType { Any, Artifact, NonArtifact }
-
         public static string GetRandomItem(uint level, double bonus = 0, RandomItemType rt = RandomItemType.Any)
         {
             uint n = Math.Max((uint)(level + Math.Sqrt(bonus / 50)), 1);
             n = Math.Min(n, 100);
             var rate = 0.0007671 * Math.Pow(n, 2) - 0.1537 * n;
             var pow = Math.Pow(Math.E, rate);
-            var loc = 15000 * 1.13 / (1 + 299 * pow);
-            var scale = Math.Pow(n, 2.255);
+            var loc = 12000 * 1.13 / (1 + 299 * pow);
+            var scale = Math.Pow(n, 2.22);
             var shape = 0.1 - n / 200;
             var dist = new Accord.Statistics.Distributions.Univariate.GeneralizedParetoDistribution(loc, scale, shape);
             var value = dist.Generate();
-
+            foreach (int i in new[] { 5000, 10000, 15000, 20000, 25000, 30000, 35000 })
+            {
+                Console.WriteLine($"{i}: {(1 - dist.DistributionFunction(i)) * 100}%");
+            }
             var allItems = itemsDatabase.Values.OrderByDescending(d => d.Price);
             var it = allItems.Where(i => i.Price <= value
                 && (rt == RandomItemType.Artifact ? i.IsArtifact : true)

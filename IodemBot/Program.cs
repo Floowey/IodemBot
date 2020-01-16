@@ -118,7 +118,11 @@ namespace IodemBot
         {
             Console.WriteLine(msg.Message);
             var date = DateTime.Now.ToString("yyyy_MM_dd");
-            File.AppendAllText($"Logs/{date}_log.log", msg.Message + "\n");
+            try
+            {
+                File.AppendAllText($"Logs/{date}_log.log", msg.Message + "\n");
+            }
+            catch { }
             try
             {
                 if (msg.Exception != null)

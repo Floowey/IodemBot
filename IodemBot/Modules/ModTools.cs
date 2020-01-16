@@ -88,6 +88,32 @@ namespace IodemBot.Modules
                 .Build());
         }
 
+        [Command("Tags")]
+        [RequireOwner]
+        public async Task Tags(SocketGuildUser user)
+        {
+            var avatar = UserAccounts.GetAccount(user);
+            await ReplyAsync(string.Join(", ", avatar.Tags));
+        }
+
+        [Command("RemoveTag")]
+        [RequireOwner]
+        public async Task RemoveTag(SocketGuildUser user, string Tag)
+        {
+            var avatar = UserAccounts.GetAccount(user);
+            avatar.Tags.Remove(Tag);
+            await ReplyAsync("Tag Removed");
+        }
+
+        [Command("AddTag")]
+        [RequireOwner]
+        public async Task AddTag(SocketGuildUser user, string Tag)
+        {
+            var avatar = UserAccounts.GetAccount(user);
+            avatar.Tags.Add(Tag);
+            await ReplyAsync("Tag Added");
+        }
+
         [Command("Emotes")]
         [RequireStaff]
         public async Task Emotes()

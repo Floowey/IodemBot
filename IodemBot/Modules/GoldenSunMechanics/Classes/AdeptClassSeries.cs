@@ -6,7 +6,6 @@ using System.Collections.Generic;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
-    //public enum Requirement { Level, Colosso, Command};
     internal class AdeptClassSeries
     {
         public static Dictionary<string, IRequirement> DictReq;

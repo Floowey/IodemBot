@@ -6,7 +6,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
     {
         public int apply(UserAccount user)
         {
-            var nOfClasses = user.BonusClasses.Length;
+            var nOfClasses = user.BonusClasses.Count;
             if (nOfClasses >= 14) //War Adept
             {
                 return 4;
