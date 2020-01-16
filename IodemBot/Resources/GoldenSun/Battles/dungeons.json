@@ -2,9 +2,9 @@
     "Vale": {
         "name": "Vale",
         "IsOneTimeOnly": false,
-        "IsDefault": true,
         "FlavourText": "The calm town of Vale.",
         "Image": "https://cdn.discordapp.com/attachments/497696510688100352/595583507393150997/unknown.png",
+        "IsDefault": true,
         "Matchups": [
             {
                 "Flavourtext": "Valeans are training hard to protect their Village and Secrets. As a young adept, you are walking in their Footsteps.",
@@ -14,15 +14,27 @@
                         {
                             "Weight": 1,
                             "XP": 20,
-                            "Coins": 7
+                            "Coins": 10
                         }
                     ],
                     [
+                        { "Weight": 4 },
+                        {
+                            "Weight": 2,
+                            "Item": "Machete"
+                        },
+                        {
+                            "Weight": 1,
+                            "Item": "Mace"
+                        },
                         {
                             "Weight": 1,
                             "Item": "Short Sword"
                         },
-                        { "Weight": 2 }
+                        {
+                            "Weight": 1,
+                            "Item": "Short Bow"
+                        }
                     ]
                 ]
             },
@@ -33,8 +45,30 @@
                     [
                         {
                             "Weight": 1,
-                            "XP": 20,
-                            "Coins": 7
+                            "XP": 25,
+                            "Coins": 10
+                        }
+                    ],
+                    [
+                        { "Weight": 4 },
+                        {
+                            "Weight": 3,
+                            "Item": "Leather Cap"
+                        },
+                        {
+                            "Weight": 2,
+                            "Item": "Circlet"
+                        },
+                        {
+                            "Weight": 1,
+                            "Item": "Wooden Cap"
+                        }
+                    ],
+                    [
+                        { "Weight": 5 },
+                        {
+                            "Weight": 1,
+                            "Item": "Leather Boots"
                         }
                     ]
                 ]
@@ -46,17 +80,17 @@
                     [
                         {
                             "Weight": 1,
-                            "XP": 20,
-                            "Coins": 7
+                            "XP": 25,
+                            "Coins": 10
                         }
                     ],
                     [
+                        { "Weight": 4 },
                         {
                             "Weight": 1,
                             "Chest": "Wooden",
                             "HasChest": true
-                        },
-                        { "Weight": 4 }
+                        }
                     ]
                 ]
             },
@@ -67,10 +101,24 @@
                     [
                         {
                             "Weight": 1,
-                            "Chest": "Wooden",
-                            "HasChest": true
+                            "XP": 25,
+                            "Coins": 10
+                        }
+                    ],
+                    [
+                        { "Weight": 4 },
+                        {
+                            "Weight": 3,
+                            "Item": "Padded Gloves"
                         },
-                        { "Weight": 3 }
+                        {
+                            "Weight": 2,
+                            "Item": "Leather Armlet"
+                        },
+                        {
+                            "Weight": 1,
+                            "Item": "Leather Gloves"
+                        }
                     ]
                 ]
             },
@@ -82,15 +130,23 @@
                         {
                             "Weight": 1,
                             "XP": 20,
-                            "Coins": 7
+                            "Coins": 10
                         }
                     ],
                     [
+                        { "Weight": 4 },
+                        {
+                            "Weight": 3,
+                            "Item": "Casual Shirt"
+                        },
+                        {
+                            "Weight": 2,
+                            "Item": "Travel Vest"
+                        },
                         {
                             "Weight": 1,
-                            "Item": "Mace"
-                        },
-                        { "Weight": 3 }
+                            "Item": "Travel Robe"
+                        }
                     ]
                 ]
             },
@@ -101,13 +157,13 @@
                     [
                         {
                             "Weight": 1,
-                            "XP": 20,
-                            "Coins": 7
+                            "XP": 25,
+                            "Coins": 5
                         }
                     ],
                     [
                         {
-                            "Weight": 1,
+                            "Weight": 3,
                             "Dungeon": "Sol Sanctum"
                         },
                         { "Weight": 2 }
@@ -122,27 +178,42 @@
                         {
                             "Weight": 1,
                             "XP": 20,
-                            "Coins": 7
+                            "Coins": 10
                         }
                     ],
                     [
+                        { "Weight": 3 },
                         {
                             "Weight": 1,
                             "Dungeon": "Vale Cave"
-                        },
-                        { "Weight": 3 }
+                        }
                     ]
                 ]
             },
             {
                 "Flavourtext": "You spend the night at the towns inn. You contemplate what an interesting world you're living in and are excited to explore as much of it as possible.",
-                "EnemyNames": [ "Rat 1" ],
+                "EnemyNames": [ "Amaze 1" ],
                 "RewardTables": [
                     [
                         {
                             "Weight": 1,
-                            "XP": 20,
-                            "Coins": 7
+                            "XP": 90,
+                            "Coins": 60
+                        }
+                    ],
+                    [
+                        { "Weight": 4 },
+                        {
+                            "Weight": 1,
+                            "Chest": "Wooden",
+                            "HasChest": true
+                        }
+                    ],
+                    [
+                        { "Weight": 9 },
+                        {
+                            "Weight": 1,
+                            "Item": "Magic Rod"
                         }
                     ]
                 ]
@@ -150,86 +221,130 @@
         ]
     },
     "Sol Sanctum": {
-        "Name": "Sol Sanctum",
-        "Image": "https://cdn.discordapp.com/attachments/497696510688100352/595581189901910029/unknown.png",
-        "FlavourText": "The holy grounds above Vale. Watch out for falling rocks.",
+        "name": "Sol Sanctum",
         "IsOneTimeOnly": true,
+        "FlavourText": "The holy grounds above Vale. Watch out for falling rocks.",
+        "Image": "https://i.pinimg.com/736x/c8/02/1f/c8021fff57a87f19a74714c813396c17.jpg",
+        "IsDefault": false,
         "Matchups": [
             {
-                "EnemyNames": [ "Wild Mushroom 1", "Wild Mushroom 1" ],
-                "FlavourText": "The entrance of the Sanctuary is massive and impressive. You enter cautiously...",
+                "Flavourtext": "The entrance of the Sanctuary is impressively massive and massively impressive. You enter cautiously...",
+                "EnemyNames": [ "Wild Mushroom 1" ],
                 "RewardTables": [
                     [
                         {
-                            "xp": 30,
-                            "coins": 17
+                            "Weight": 1,
+                            "XP": 30,
+                            "Coins": 7
                         }
                     ]
                 ]
             },
             {
+                "Flavourtext": "As the hallway lights up, some monsters get scared and jump forward",
                 "EnemyNames": [ "Vermin 1", "Bat 2", "Vermin 1" ],
-                "FlavourText": "As the hallway lights up, some monsters get scared and jump forward",
                 "RewardTables": [
                     [
                         {
-                            "xp": 15,
-                            "coins": 30
+                            "Weight": 1,
+                            "XP": 15,
+                            "Coins": 30
                         }
                     ],
                     [
                         {
-                            "Item": "Herbed Shirt",
-                            "Weight": 1
+                            "Weight": 1,
+                            "Item": "Herbed Shirt"
                         },
-                        {
-                            "Weight": 4
-                        }
+                        { "Weight": 3 }
                     ]
                 ]
             },
             {
+                "Flavourtext": "As you solve the puzzles, you find some empty rooms. Well, not *completely* empty, anyways.",
                 "EnemyNames": [ "Giant Bat 1", "Bat 1" ],
-                "FlavourText": "As you solve the puzzles, you find some empty rooms. Well, not *completely* empty, anyways.",
                 "RewardTables": [
                     [
                         {
-                            "xp": 15,
-                            "coins": 30
+                            "Weight": 1,
+                            "XP": 15,
+                            "Coins": 30
                         }
                     ]
                 ]
             },
             {
+                "Flavourtext": "You reach a very distinct room. You have heard about that. You see a bunch of statues, but you can only move one. Which one will it be?",
                 "EnemyNames": [ "Statue Mockup", "Statue Trap", "Statue Mockup" ],
-                "Image": "https://cdn.discordapp.com/attachments/497696510688100352/595706918568198181/unknown.png",
-                "FlavourText": "You reach a very distinct room. You have heard about that. You see a bunch of statues, but you can only move one. Which one will it be?",
                 "RewardTables": [
                     [
                         {
-                            "xp": 0,
-                            "coins": 100
+                            "Weight": 1,
+                            "XP": 100,
+                            "Coins": 100
                         }
                     ]
                 ]
             },
             {
+                "Flavourtext": "You have solved the puzzle, you have reached the Star Chamber! Congratulations. Some nasty looking monsters are looking at you from afar, it would be better to turn back now than never!",
                 "EnemyNames": [ "Amaze 2", "Amaze 2", "Amaze 2" ],
-                "FlavourText": "You have solved the puzzle, you have reached the Star Chamber! Congratulations. Some nasty looking monsters are looking at you from afar, it would be better to turn back now than never!",
                 "RewardTables": [
                     [
                         {
-                            "xp": 20,
-                            "coins": 7
+                            "Weight": 1,
+                            "XP": 80,
+                            "Coins": 80
                         }
                     ],
                     [
                         {
-                            "Dungeon": "Star Chamber",
-                            "Weight": 1
+                            "Weight": 1,
+                            "Dungeon": "Star Chamber"
                         },
+                        { "Weight": 7 }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "On the ledge of the star chambers platform, high above the watery depths, you spot a person, sitting there with crossed legs. Startled by the commotion, the person stands up and slowly walks towards you. \n 'Welcome', the purple haired woman said calmly. 'My name is Hama. I like to come here amidst the spirits to meditate. I assume you also came here to learn more about the mystics of Alchemy. Perhaps it's your luck, perhaps it is destiny that our paths have crossed. Let me be your guide in showing you the world!'",
+                "EnemyNames": [ "Next" ],
+                "Image": "https://goldensunwiki.net/w/images/9/97/Hama.gif",
+                "RewardTables": [
+                    [
                         {
-                            "Weight": 7
+                            "Weight": 1,
+                            "RequireTag": [ "VenusAdept" ],
+                            "Tag": "Gaia0",
+                            "Obtainable": 1,
+                            "Dungeon": "Path Of Gaia I"
+                        }
+                    ],
+                    [
+                        {
+                            "Weight": 1,
+                            "RequireTag": [ "MarsAdept" ],
+                            "Tag": "Magma0",
+                            "Obtainable": 1,
+                            "Dungeon": "Path Of Magma I"
+                        }
+                    ],
+                    [
+                        {
+                            "Weight": 1,
+                            "RequireTag": [ "JupiterAdept" ],
+                            "Tag": "Air0",
+                            "Obtainable": 1,
+                            "Dungeon": "Path Of Air I"
+                        }
+                    ],
+                    [
+                        {
+                            "Weight": 1,
+                            "RequireTag": [ "MercuryAdept" ],
+                            "Tag": "Aqua0",
+                            "Obtainable": 1,
+                            "Dungeon": "Path Of Aqua I"
                         }
                     ]
                 ]
@@ -334,186 +449,218 @@
         ]
     },
     "Vale Cave": {
-        "Name": "Vale Cave",
+        "name": "Vale Cave",
         "IsOneTimeOnly": true,
+        "FlavourText": "Hidden behind Kraden's Cottage, there is a small cave. Whatever might be in there?",
+        "Image": "https://goldensunwiki.net/w/images/4/41/ValeCaveEntrance.png",
+        "IsDefault": false,
+        "Requirement": {
+            "MinLevel": "25"
+        },
         "Matchups": [
             {
+                "Flavourtext": "A bear is in the cave. What did you expect.",
                 "EnemyNames": [ "Grisly 1" ],
-                "FlavourText": "A bear is in the cave. I hope you're not surprised.",
                 "RewardTables": [
                     [
                         {
-                            "Item": "Fur Coat",
-                            "Weight": 1
-                        },
-                        {
-                            "Weight": 4
+                            "Weight": 1,
+                            "XP": 100,
+                            "Coins": 20
                         }
+                    ],
+                    [
+                        {
+                            "Weight": 1,
+                            "Item": "Fur Coat"
+                        },
+                        { "Weight": 3 }
                     ]
                 ]
             },
             {
+                "Flavourtext": "Wipe off the hair, let's go!",
                 "EnemyNames": [ "Mad Vermin", "Gressil", "Mad Vermin" ],
-                "FlavourText": "Wipe off the hair, let's go!",
                 "RewardTables": [
                     [
                         {
-                            "xp": 100,
-                            "coins": 20
-                        }
-                    ]
-                ]
-            },
-            {
-                "EnemyNames": [ "Death Cap", "Roach", "Roach", "Death Cap" ],
-                "FlavourText": "The cave is getting darker and danker..",
-                "RewardTables": [
-                    [
-                        {
-                            "xp": 80,
-                            "coins": 80
-                        }
-                    ]
-                ]
-            },
-            {
-                "EnemyNames": [ "Wight", "Undead 2", "Wight" ],
-                "FlavourText": "*We need to go deeper*",
-                "RewardTables": [
-                    [
-                        {
-                            "haschest": true,
-                            "Chest": "Silver"
-                        },
-                        {
-                            "Weight": 4
-                        }
-                    ]
-                ]
-            },
-            {
-                "EnemyNames": [ "Lich 2", "Ghost Mage 2" ],
-                "FlavourText": "The cave is getting spooky. You can see a yellow stone glimmering in the back.",
-                "RewardTables": [
-                    [
-                        {
-                            "xp": 50,
-                            "coins": 120
-                        }
-                    ]
-                ]
-            },
-            {
-                "EnemyNames": [ "Jupiter Djinni 10" ],
-                "FlavourText": "Oh hey! I guess it was worth it after all! Now let's quickly exit this creepy place...",
-                "RewardTables": [
-                    [
-                        {
-                            "xp": 500,
-                            "coins": 500
+                            "Weight": 1,
+                            "XP": 100,
+                            "Coins": 20
                         }
                     ]
                 ]
             }
-        ],
-        "FlavourText": "Hidden behind Kraden's Cottage, there is a small cave. Whatever might be in there?",
-        "Requirement": {
-            "MinLevel": 30
-        }
+        ]
     },
     "Vault": {
-        "Name": "Vault",
-        "Image": "https://goldensunwiki.net/w/images/7/73/VaultBottom.png",
+        "name": "Vault",
+        "IsOneTimeOnly": false,
         "FlavourText": "A theft has been committed in Vault, who's the culprit?",
+        "Image": "https://goldensunwiki.net/w/images/7/73/VaultBottom.png",
         "IsDefault": true,
         "Matchups": [
             {
-                "FlavourText": "It looks like that Slime gulped something! A stolen item perhaps?",
+                "Flavourtext": "It looks like that Slime gulped something! A stolen item perhaps?",
                 "EnemyNames": [ "Slime 2" ],
                 "RewardTables": [
                     [
                         {
-                            "xp": 25,
-                            "coins": 9,
-                            "Weight": 6
+                            "Weight": 1,
+                            "XP": 15,
+                            "Coins": 10
                         }
                     ],
                     [
+                        { "Weight": 3 },
                         {
-                            "Item": "Travel Vest",
-                            "Weight": 3
+                            "Weight": 3,
+                            "Item": "Casual Shirt"
                         },
                         {
-                            "Weight": 1
+                            "Weight": 2,
+                            "Item": "Travel Vest"
+                        },
+                        {
+                            "Weight": 1,
+                            "Item": "Leather Armor"
+                        }
+                    ],
+                    [
+                        { "Weight": 5 },
+                        {
+                            "Weight": 1,
+                            "Item": "Leather Boots"
                         }
                     ]
                 ]
             },
             {
-                "FlavourText": "Your investigations lead you to the cemetary. Wait, is that grave moving? Oh no...",
+                "Flavourtext": "Your investigations lead you to the cemetary. Wait, is that grave moving? Oh no...",
                 "EnemyNames": [ "Skeleton 1", "Zombie 1" ],
                 "RewardTables": [
                     [
                         {
-                            "xp": 40,
-                            "coins": 20,
-                            "Weight": 1
+                            "Weight": 1,
+                            "XP": 30,
+                            "Coins": 20
                         }
                     ],
                     [
+                        { "Weight": 3 },
                         {
-                            "haschest": true,
-                            "Chest": "Wooden",
-                            "Weight": 3
+                            "Weight": 2,
+                            "Item": "Mace"
                         },
                         {
-                            "Weight": 6
+                            "Weight": 2,
+                            "Item": "Short Sword"
+                        },
+                        {
+                            "Weight": 1,
+                            "Item": "Long Sword"
                         }
                     ]
                 ]
             },
             {
-                "FlavourText": "The Skeleton's bones have attracted a dog... and wolves! Protect the pup!",
-                "EnemyNames": [ "Wild Wolf 1", "Wild Wolf 1" ],
+                "Flavourtext": "The Skeleton's bones have attracted a dog... and wolves! Protect the pup!",
+                "EnemyNames": [ "Wild Wolf 2", "Wild Wolf 2" ],
                 "RewardTables": [
                     [
                         {
-                            "xp": 45,
-                            "gold": 15,
-                            "Weight": 4
+                            "Weight": 1,
+                            "XP": 35,
+                            "Coins": 15
                         }
                     ],
                     [
+                        { "Weight": 4 },
                         {
-                            "Dungeon": "Vault Cave",
-                            "Weight": 1
+                            "Weight": 1,
+                            "Dungeon": "Vault Cave"
+                        }
+                    ],
+                    [
+                        { "Weight": 3 },
+                        {
+                            "Weight": 3,
+                            "Item": "Leather Cap"
+                        },
+                        {
+                            "Weight": 2,
+                            "Item": "Open Helm"
+                        },
+                        {
+                            "Weight": 1,
+                            "Item": "Wooden Cap"
                         }
                     ]
                 ]
             },
             {
-                "FlavourText": "Thankful for saving him, the dog leads you to the inn's attic where you find the stolen goods! You hear the thieves coming, it's time to face them!",
+                "Flavourtext": "Thankful for saving him, the dog leads you to the inn's attic where you find the stolen goods! Nobody is here except a few rats.",
+                "EnemyNames": [ "Rat Soldier 2", "Rat 1" ],
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "XP": 50,
+                            "Coins": 55
+                        }
+                    ],
+                    [
+                        { "Weight": 3 },
+                        {
+                            "Weight": 1,
+                            "Chest": "Wooden",
+                            "HasChest": true
+                        }
+                    ],
+                    [
+                        {
+                            "Weight": 3,
+                            "Item": "Padded Gloves"
+                        },
+                        {
+                            "Weight": 2,
+                            "Item": "Wooden Shield"
+                        },
+                        {
+                            "Weight": 1,
+                            "Item": "Leather Gloves"
+                        }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "You hear the thieves coming and prepare an ambush, it's time to face them!",
                 "EnemyNames": [ "Thief 1", "Bandit 1", "Thief 1" ],
                 "RewardTables": [
                     [
                         {
-                            "xp": 90,
-                            "gold": 75,
-                            "Weight": 5
-                        },
-                        {
-                            "Item": "Shamans Rod",
-                            "Weight": 4
-                        },
-                        {
-                            "Item": "Bandits Sword",
-                            "Weight": 1
+                            "Weight": 1,
+                            "XP": 80,
+                            "Coins": 75
                         }
                     ],
                     [
                         {
+                            "Weight": 1,
+                            "Item": "Shamans Rod"
+                        },
+                        {
+                            "Weight": 1,
+                            "Item": "Bandits Sword"
+                        },
+                        { "Weight": 2 }
+                    ],
+                    [
+                        {
+                            "Weight": 2,
                             "Dungeon": "Goma Cave"
-                        }
+                        },
+                        { "Weight": 1 }
                     ]
                 ]
             }
@@ -524,9 +671,10 @@
         "IsOneTimeOnly": true,
         "FlavourText": "A cave allowing you to pass through the Goma Range",
         "Image": "",
+        "IsDefault": false,
         "Matchups": [
             {
-                "Flavourtext": "Is This the lost head of Dullahan?",
+                "Flavourtext": "Is this the lost head of Dullahan?",
                 "EnemyNames": [ "Will Head" ],
                 "RewardTables": [
                     [
@@ -573,6 +721,28 @@
                 ]
             },
             {
+                "Flavourtext": "Is there anything left that's alive in this cave?",
+                "EnemyNames": [ "Ghost 1", "Will Head", "Zombie 1" ],
+                "Shuffle": true,
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "XP": 55,
+                            "Coins": 25
+                        }
+                    ],
+                    [
+                        {
+                            "Weight": 1,
+                            "Chest": "Wooden",
+                            "HasChest": true
+                        },
+                        { "Weight": 6 }
+                    ]
+                ]
+            },
+            {
                 "Flavourtext": "The way out is near. But before enjoying the sun again, you encounter a Djinni. Catch it!",
                 "EnemyNames": [ "Mars Djinni 1" ],
                 "RewardTables": [
@@ -586,27 +756,264 @@
                     [
                         {
                             "Weight": 1,
+                            "Tag": "GomaDjinn",
+                            "Obtainable": 2,
                             "Djinn": "Mars"
                         },
                         {
-                            "Weight": 10,
+                            "Weight": 4,
+                            "Tag": "GomaDjinn",
+                            "Obtainable": 1,
+                            "Djinn": "Mars"
+                        },
+                        {
+                            "Weight": 11,
+                            "Tag": "GomaForge",
+                            "Obtainable": 1,
                             "Djinn": "Forge"
                         },
                         { "Weight": 20 }
                     ],
                     [
-                        { "Weight": 10 },
                         {
-                            "Weight": 6,
-                            "Dungeon": "Kolima"
-                        },
+                            "Weight": 1,
+                            "Dungeon": "Bilibin"
+                        }
+                    ]
+                ]
+            }
+        ]
+    },
+    "Bilibin": {
+        "name": "Bilibin",
+        "IsOneTimeOnly": false,
+        "FlavourText": "Bilibin Town & Cave",
+        "Image": "https://goldensunwiki.net/w/images/4/4c/Bilibin_city.PNG",
+        "IsDefault": false,
+        "Matchups": [
+            {
+                "Flavourtext": "A few critters on the way to Bilibin.",
+                "EnemyNames": [ "Rat Soldier 1", "Bat 2", "Bat 2", "Rat 1" ],
+                "Shuffle": true,
+                "RewardTables": [
+                    [
                         {
-                            "Weight": 3,
-                            "Dungeon": "Bilibin Cave"
+                            "Weight": 1,
+                            "XP": 60,
+                            "Coins": 30
+                        }
+                    ],
+                    [
+                        { "Weight": 6 },
+                        {
+                            "Weight": 1,
+                            "Item": "Bronze Shield"
+                        }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "Bilibin is a small town in the middle of Angara, just east of the Goma Range. At the town gate you see a tree trunk carved beautifully into the shape of a man. A sign in front tells the story of people being turned into trees. Weirdos.",
+                "EnemyNames": [ "Flutter Seed", "Drone Bee 1", "Kobold 2" ],
+                "RewardTables": [
+                    [
+                        { "Weight": 9 },
+                        {
+                            "Weight": 1,
+                            "Item": "Witchs Wand"
+                        }
+                    ],
+                    [
+                        {
+                            "Weight": 1,
+                            "XP": 50,
+                            "Coins": 20
+                        }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "In the middle of the town square, a golden statue dominates the small market. Lord McCoy, the Mayor who was passing by, shouts: 'Noice, isnae it laddie? What yeh see is a statue of my wife'. What a cult of personality...",
+                "EnemyNames": [ "Next" ],
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "XP": 10,
+                            "Coins": 10
+                        }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "What's that? A small gap between the statue and the ground reveals a little cave. Too bad, it doesn't lead anywhere except to a shelter for some shady people.",
+                "EnemyNames": [ "Thief 1", "Bandit 1", "Ruffian", "Ruffian", "Ruffian" ],
+                "Shuffle": true,
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "XP": 25,
+                            "Coins": 75
+                        }
+                    ],
+                    [
+                        { "Weight": 4 },
+                        {
+                            "Weight": 1,
+                            "Chest": "Wooden",
+                            "HasChest": true
+                        }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "You explore more of the town. After some parcouring through the town you find another entrance to the Mayor's Warehouse cave. From here you can use your Psynergy to free the way. Which one do you use?",
+                "EnemyNames": [ "MoveBilibin", "CatchBilibin", "RetreatBilibin" ],
+                "Shuffle": true,
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "XP": 150
+                        }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "This is what Lord McCoy was hiding here... a Jupiter Djinn!",
+                "EnemyNames": [ "Jupiter Djinni 1" ],
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "XP": 80,
+                            "Coins": 80
+                        }
+                    ],
+                    [
+                        { "Weight": 15 },
+                        {
+                            "Weight": 4,
+                            "Djinn": "Gust"
                         },
                         {
                             "Weight": 1,
-                            "Dungeon": "Lunpa"
+                            "Djinn": "Jupiter"
+                        }
+                    ],
+                    [
+                        { "Weight": 4 },
+                        {
+                            "Weight": 2,
+                            "Dungeon": "Kolima"
+                        },
+                        {
+                            "Weight": 1,
+                            "Dungeon": "Bilibin Cave"
+                        }
+                    ]
+                ]
+            }
+        ]
+    },
+    "Bilibin Cave": {
+        "name": "Bilibin Cave",
+        "IsOneTimeOnly": true,
+        "FlavourText": "A small cave in the mountains north of Bilibin.",
+        "Image": "https://goldensunwiki.net/w/images/8/88/BilibinCaveOutside.png",
+        "IsDefault": false,
+        "Matchups": [
+            {
+                "Flavourtext": "There is a small entrance to a cave. As you approach, you scare up some animals.",
+                "EnemyNames": [ "Bat 2", "Rabid Bat 2", "Giant Bat 1", "Dirge 1" ],
+                "Shuffle": true,
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "XP": 50,
+                            "Coins": 50
+                        }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "You enter the cave and quickly find yourself in a dead end. There seems to be a small ledge up there with a chest. If you *maybe* jump high enough, you might reach it. Watch out, it's a bit gooey.",
+                "EnemyNames": [ "Gnome", "Ooze", "Oooze" ],
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "XP": 60,
+                            "Coins": 80
+                        }
+                    ],
+                    [
+                        {
+                            "Weight": 1,
+                            "Item": "Elven Rapier"
+                        },
+                        { "Weight": 3 }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "You hear an annoyed growl. It's a bear! In a cave... What did you expect?",
+                "EnemyNames": [ "Mauler 1" ],
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "XP": 73,
+                            "Coins": 53
+                        }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "You notice the steam of your breath how the cave keeps getting colder and colder. What's up with that, huh?",
+                "EnemyNames": [ "Ooze 1", "Ooze 1", "Ooze 1", "Ooze 1", "Wolfkin Cub" ],
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "XP": 70,
+                            "Coins": 75
+                        }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "You start to see how the cave freezes over, except for the spots with torches. Truly shows the balance of nature..",
+                "EnemyNames": [ "Cuttle 1", "Cuttle 1" ],
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 4,
+                            "XP": 120,
+                            "Coins": 120
+                        },
+                        {
+                            "Weight": 1,
+                            "RequireTag": [ "Aqua1" ],
+                            "XP": 20,
+                            "Coins": 20,
+                            "Djinn": "Mercury"
+                        }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "At last you see a bright light, marking the end of this cold cave. Oh wait! It *keeps* getting colder!",
+                "EnemyNames": [ "Wolkin 2" ],
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "XP": 200,
+                            "Coins": 200,
+                            "Dungeon": "Imil"
                         }
                     ]
                 ]
@@ -616,12 +1023,14 @@
     "Kolima": {
         "name": "Kolima",
         "IsOneTimeOnly": false,
-        "FlavourText": "Kolima, Surroundings and Kolima Forest",
-        "Image": "",
+        "FlavourText": "Trees, trees and more trees. Quite the treey sceneary. You wood not want to get lost here.",
+        "Image": "https://goldensunwiki.net/w/images/2/24/DjinniGraniteOverworld.png",
+        "IsDefault": false,
         "Matchups": [
             {
                 "Flavourtext": "As you walk north along the coast of Angara, you are certain to pass this. What's this, the Queen of Rats or what?",
-                "EnemyNames": [ "Rat Soldier", "Rat", "Rat Soldier" ],
+                "EnemyNames": [ "Rat Soldier 1", "Rat 1", "Rat Soldier 1" ],
+                "Shuffle": true,
                 "RewardTables": [
                     [
                         {
@@ -641,7 +1050,7 @@
             },
             {
                 "Flavourtext": "In the distance you see some trees, but as you approach you realize that it's a town. It's surpringly calm and a bit overgrown. The perfect place for a Venus Djinni!",
-                "EnemyNames": [ "Venus Djinni 1" ],
+                "EnemyNames": [ "Venus Djinni 4" ],
                 "RewardTables": [
                     [
                         {
@@ -652,7 +1061,7 @@
                     ],
                     [
                         {
-                            "Weight": 11,
+                            "Weight": 15,
                             "XP": 1
                         },
                         {
@@ -661,14 +1070,14 @@
                         },
                         {
                             "Weight": 1,
-                            "Summon": "Venus"
+                            "Djinn": "Venus"
                         }
                     ]
                 ]
             },
             {
                 "Flavourtext": "There was not much going in the town, so you head out. Further north, you spot a forest you want to check out.",
-                "EnemyNames": [ "Wild Wolf", "Momonga" ],
+                "EnemyNames": [ "Wild Wolf 1", "Momonga 1" ],
                 "RewardTables": [
                     [
                         {
@@ -689,7 +1098,7 @@
             },
             {
                 "Flavourtext": "Some bees swarming around, totally normal.",
-                "EnemyNames": [ "Drone Bee", "Drone Bee", "Drone bee" ],
+                "EnemyNames": [ "Drone Bee 1", "Drone Bee 1", "Drone bee 1" ],
                 "RewardTables": [
                     [
                         {
@@ -702,7 +1111,8 @@
             },
             {
                 "Flavourtext": "Woops, something between the trees is moving. Totally normal, after all you've been rolling around logs all day.",
-                "EnemyNames": [ "Kobold", "Flutter Seed", "Flutter Seed" ],
+                "EnemyNames": [ "Kobold 1", "Flutter Seed", "Flutter Seed" ],
+                "Shuffle": true,
                 "RewardTables": [
                     [
                         {
@@ -722,7 +1132,8 @@
             },
             {
                 "Flavourtext": "The forest is getting deeper and deeper, take care you don't get lost. Unlike these guys, who were eaten by a troll.",
-                "EnemyNames": [ "Troll", "Skeleton", "Skeleton", "Skeleton" ],
+                "EnemyNames": [ "Troll 1", "Skeleton 1", "Skeleton 1", "Skeleton 1" ],
+                "Shuffle": true,
                 "RewardTables": [
                     [
                         {
@@ -768,6 +1179,7 @@
         "IsOneTimeOnly": true,
         "FlavourText": "Inside the cursed tree, Tret",
         "Image": "https://vignette.wikia.nocookie.net/goldensun/images/8/8f/KolimaForestTret.png",
+        "IsDefault": false,
         "Matchups": [
             {
                 "Flavourtext": "A respectable first fight, yet you sigh upon recalling the great size of Tret.",
@@ -785,6 +1197,7 @@
             {
                 "Flavourtext": "First there was the forest, now there's this tree maze, too.",
                 "EnemyNames": [ "Gnome", "Creeper 1", "Brutal Troll 1", "Rat 1" ],
+                "Shuffle": true,
                 "RewardTables": [
                     [
                         {
@@ -881,7 +1294,7 @@
             },
             {
                 "Flavourtext": "As you are about to check the chest in the room, a troll enters the room",
-                "EnemyNames": [ "Brutal Troll 1" ],
+                "EnemyNames": [ "Cave Troll 1" ],
                 "RewardTables": [
                     [
                         {
@@ -894,7 +1307,8 @@
             },
             {
                 "Flavourtext": "As you are about to check the chest AGAIN, more trolls enter the room. Someone likes to troll you.",
-                "EnemyNames": [ "Troll 1", "Troll 1", "Troll 1" ],
+                "EnemyNames": [ "Troll 1", "Troll 1", "Troll 2" ],
+                "Shuffle": true,
                 "RewardTables": [
                     [
                         {
@@ -922,239 +1336,881 @@
             }
         ]
     },
-    "Tolbi": {
-        "Name": "Tolbi",
+    "Imil": {
+        "name": "Imil",
         "IsOneTimeOnly": false,
+        "FlavourText": "Town of Imil, Cave in Imil",
+        "Image": "",
+        "IsDefault": false,
         "Matchups": [
             {
-                "EnemyNames": [ "Calamar 1", "Crab", "Urchin Beast", "Calamar 1" ],
-                "FlavourText": "Aaah, the glorious city of tolbi. You have heard a lot about it and you head straight to the famous fountain to try your luck. As you approach, you see that it is full of monsters...",
+                "Flavourtext": "Aproaching Imil, a gank of gnomes try to mug you...",
+                "EnemyNames": [ "Rat Soldier 1", "Gnome", "Gnome Mage", "Rat 1" ],
                 "RewardTables": [
                     [
                         {
-                            "Dungeon": "Karagol Sea"
-                        },
-                        {
-                            "Weight": 3
-                        }
-
-                    ],
-                    [
-                        {
-                            "Coins": 30,
-                            "XP": 30
+                            "Weight": 1,
+                            "XP": 75,
+                            "Coins": 65
                         }
                     ],
                     [
                         {
-                            "Item": "Assasin Blade"
+                            "Weight": 1,
+                            "Chest": "Normal",
+                            "HasChest": true
                         },
+                        { "Weight": 3 }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "You found a snowman at the entrance, when you aproached a monster attacked you from the inside of it!",
+                "EnemyNames": [ "Fiendish Ghoul" ],
+                "RewardTables": [
+                    [
                         {
-                            "Item": "Earth Shield"
-                        },
-                        {
-                            "Item": "Spirit Armor"
-                        },
-                        {
-                            "Item": "Adepts Helm"
-                        },
-                        {
-                            "Item": "Burning Axe"
-                        },
-                        {
-                            "Item": "Cocktail Dress"
-                        },
-                        {
-                            "Item": "Ninja Hood"
-                        },
-                        {
-                            "Item": "Kimono"
-                        },
-                        {
-                            "Item": "Battle Gloves"
-                        },
-                        {
-                            "Item": "Guardian Armlet"
-                        },
-                        {
-                            "Item": "Grievous Mace"
-                        },
-                        {
-                            "Weight": 30
+                            "Weight": 1,
+                            "XP": 80,
+                            "Coins": 120
                         }
                     ]
                 ]
             },
             {
-                "EnemyNames": [ "Mars Djinni 3" ],
-                "FlavourText": "While fighting those monsters, you saw a glowing shadow slipping by a house. You decide to follow it. Wait, a glowing shadow? That doesn't make any.. whooah, it's a Djinni",
+                "Flavourtext": "Once in the town, some townsmen tell you that there are some issues with wild animals. Kind as you are, you gladly help them.",
+                "EnemyNames": [ "Wild Wolf 1", "Mauler 1", "Ravager 1" ],
+                "Shuffle": true,
                 "RewardTables": [
                     [
                         {
-                            "xp": 90
-                        }
-                    ]
-                ]
-            },
-            {
-                "EnemyNames": [ "Ruffian", "Assassin", "Thief 2", "Bandit 2", "Ruffian" ],
-                "FlavourText": "As you come back to the main square, you witness some thugs trying to steal a poor merchants cob of corn. You must step in.",
-                "RewardTables": [
-                    [
-                        {
-                            "xp": 90
+                            "Weight": 1,
+                            "XP": 65,
+                            "Coins": 50
                         }
                     ],
                     [
                         {
-                            "Chest": "Wooden"
+                            "Weight": 1,
+                            "Item": "Fur Boots"
+                        },
+                        { "Weight": 3 }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "Taken care of that buisness, people tell you of the epedemics they used to have before the lighthouse was lit, while pointing towards the bright blue light.",
+                "EnemyNames": [ "Ooze 1" ],
+                "RewardTables": [
+                    [ { "Weight": 1 } ],
+                    [
+                        {
+                            "Weight": 1,
+                            "Dungeon": "Mercury Lighthouse"
+                        },
+                        { "Weight": 2 }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "You start to skate a bit on the frozen river, together with the other townfolk. Two little kids, calling themselves Justin and Megan ask you if you know a person called Mia. 'She is our hero!', they claim. Not wanting to upset them by not knowing said Mia.",
+                "EnemyNames": [ "Gnome 1", "Gnome 1" ],
+                "RewardTables": [
+                    [ { "Weight": 1 } ],
+                    [
+                        {
+                            "Weight": 1,
+                            "Chest": "Wooden",
+                            "HasChest": true
                         },
                         {
-                            "Chest": "Silver"
+                            "Weight": 1,
+                            "Chest": "Normal",
+                            "HasChest": true
+                        },
+                        { "Weight": 3 }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "Not knowing said Mia and not wanting to upset them, you skate off, when you slip and crush into the frozen waterfall. There is a warm cave behind it, where a Mars djinni is warming two bears throughout their hibernation.",
+                "EnemyNames": [ "Mars Djinni 1", "Mauler", "Mauler" ],
+                "RewardTables": [
+                    [ { "Weight": 1 } ],
+                    [
+                        {
+                            "Weight": 6,
+                            "Item": "Fur Coat"
+                        },
+                        { "Weight": 15 },
+                        {
+                            "Weight": 3,
+                            "Djinn": "Fever"
                         },
                         {
-                            "Weight": 4
+                            "Weight": 1,
+                            "RequireTag": [ "Magma1" ],
+                            "Djinn": "Mars"
                         }
                     ]
                 ]
             },
             {
-                "EnemyNames": [ "Tolbi Guard", "Guardian Ball 1", "Tolbi Guard", "Guardian Ball 1" ],
-                "FlavourText": "Sigh.. The commotion has alarmed the guards. You just wanted to help, right? You have destroyed the whole market and burned down half a house, but noone could have seen that coming, right? ......Right?",
+                "Flavourtext": "The town is friendly, but so called. Time to get out of here!",
+                "EnemyNames": [ "Aqua Jelly" ],
                 "RewardTables": [
+                    [ { "Weight": 1 } ],
                     [
                         {
-                            "coins": 30,
-                            "xp": 80
-                        }
+                            "Weight": 1,
+                            "RequireTag": [ "MercuryAdept", "Aqua1" ],
+                            "Item": "Frost Wand"
+                        },
+                        { "Weight": 7 }
                     ]
                 ]
-            },
+            }
+        ]
+    },
+    "Mercury Lighthouse": {
+        "name": "Mercury Lighthouse",
+        "IsOneTimeOnly": true,
+        "FlavourText": "The mystical Mercury Lighthouse, home to the power of water.",
+        "Image": "https://cdn.discordapp.com/attachments/497696510688100352/665882105292652554/tumblr_mzop0yrKcG1rpv933o1_500.png",
+        "IsDefault": false,
+        "Matchups": [
             {
-                "EnemyNames": [ "Gladiator", "Gladiator" ],
-                "FlavourText": "The guards tell you that you are under arrest. They can't bring you there themselves, because they're injured too much, but give you the directions. On the way there you walk by some gladiators training. Let's say hello!",
+                "Flavourtext": "As you step inside the entrance of Mercury Lighthouse, you are immediately accosted by a large humanoid lizard, adamant about blocking your way. You are provided with no option other than felling the reptile.",
+                "EnemyNames": [ "Lizard Man 1" ],
                 "RewardTables": [
                     [
                         {
-                            "xp": 300
+                            "Weight": 1,
+                            "XP": 100,
+                            "Coins": 200
                         }
                     ],
                     [
                         {
-                            "Dungeon": "Colosso"
+                            "Weight": 1,
+                            "Chest": "Wooden",
+                            "HasChest": true
                         },
                         {
-                            "Weight": 1
+                            "Weight": 2,
+                            "Item": "Witchs Wand"
+                        },
+                        { "Weight": 4 }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "After besting the Lizard Man and delving further into the Lighthouse, it becomes clear that the place has been taken over by monsters. They don't seem too thrilled by your presence, either.",
+                "EnemyNames": [ "Cuttle 1", "Cuttle 1", "Seabirb" ],
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "XP": 100
                         }
                     ]
                 ]
             },
             {
-                "EnemyNames": [ "Mole 1", "Mad Mole 1", "Mole Mage 1" ],
-                "FlavourText": "You're done with this city. Too big, too strange. You start exploring the outskirts.",
+                "Flavourtext": "Navigating through halls and waterfalls, you find a chest, sitting right out in the open. The prospect of easy loot sounds absolutely lovely, but you also are suspicious of the chest. You must make a choice: Open it, or leave it?",
+                "EnemyNames": [ "Mimic 1" ],
                 "RewardTables": [
                     [
                         {
-                            "coins": 40,
-                            "xp": 70
+                            "Weight": 1,
+                            "XP": 100
                         }
                     ],
                     [
                         {
-                            "Chest": "Gold"
+                            "Weight": 2,
+                            "Chest": "Normal",
+                            "HasChest": true
                         },
+                        { "Weight": 1 }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "Moving onward, you reach a large and magnificent statue, but some monsters seem to have beaten you here.",
+                "EnemyNames": [ "Harpy 1", "Siren 1" ],
+                "RewardTables": [
+                    [
                         {
-                            "Chest": "Silver",
-                            "Weight": 2
-                        },
-                        {
-                            "Weight": 4
+                            "Weight": 1,
+                            "XP": 100,
+                            "Coins": 25
                         }
                     ]
                 ]
             },
             {
-                "EnemyNames": [ "Mercury Djinni 2" ],
-                "FlavourText": "The sky becomes overcast and something hard hits your head.",
+                "Flavourtext": "The statue blesses you with the gift to traverse across the water's surface. I think those bears may be jealous...",
+                "EnemyNames": [ "Mauler 1", "Mauler 1", "Mauler 1" ],
                 "RewardTables": [
                     [
                         {
-                            "xp": 90
-                        }
-                    ]
-                ]
-            },
-            {
-                "EnemyNames": [ "Rabid Bat", "Giant Bat 2", "Vampire Bat" ],
-                "FlavourText": "Before the weather gets worse, you take shelter in a nearby cave.",
-                "RewardTables": [
-                    [
-                        {
-                            "coins": 40,
-                            "xp": 70
+                            "Weight": 1,
+                            "XP": 100,
+                            "Coins": 20
                         }
                     ],
                     [
                         {
-                            "Dungeon": "Altmiller Cave"
+                            "Weight": 1,
+                            "Chest": "Wooden",
+                            "HasChest": true
                         },
-                        {
-                            "Weight": 3
-                        }
+                        { "Weight": 4 }
                     ]
-
                 ]
             },
             {
-                "EnemyNames": [ "Gnome Mage", "Armored Rat 1", "Gnome Mage" ],
-                "FlavourText": "You realized that you are just walking around Karagol Sea. Let's head in the other direction.",
+                "Flavourtext": "More lizard men turn the corner. Best to do away with them now, before they learn about their fallen comrade at the entrance.",
+                "EnemyNames": [ "Lizard Man 1", "Lizard Man 1" ],
                 "RewardTables": [
                     [
                         {
-                            "coins": 40,
-                            "xp": 70
+                            "Weight": 1,
+                            "XP": 120,
+                            "Coins": 200
                         }
                     ],
                     [
                         {
-                            "Dungeon": "Gondowan Cave"
+                            "Weight": 1,
+                            "Item": "Psynergy Armor"
                         },
-                        {
-                            "Weight": 3
-                        }
+                        { "Weight": 2 }
                     ]
-
                 ]
             },
             {
-                "EnemyNames": [ "Orc Captain", "Dirty Ape 1", "Orc Lord" ],
-                "FlavourText": "As you cross over to the continent of Gondowan, you face a desert. Realizing that is going to be hot and that you won't be able to stop sweating, you wish you'd brought a change of clothes. Back to Tolbi, for now.",
+                "Flavourtext": "These monsters are still incessant on ruining your sightseeing in the Lighthouse...",
+                "EnemyNames": [ "Cuttle 1", "Siren 1", "Harpy 1", "Cuttle 1" ],
+                "Shuffle": true,
                 "RewardTables": [
                     [
                         {
-                            "coins": 40,
-                            "xp": 70
+                            "Weight": 1,
+                            "XP": 150,
+                            "Coins": 150,
+                            "Chest": "Normal",
+                            "HasChest": true
+                        }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "Some beasts in chains have you in their sights. Fortunately for you, they entered your sights first.",
+                "EnemyNames": [ "Ghoul", "Ghoul" ],
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "XP": 100,
+                            "Coins": 20
+                        }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "You check behind a waterfall, as you have the others you've passed. Behind this one happens to be a disgruntled Mercury Djinni.",
+                "EnemyNames": [ "Mercury Djinni 1" ],
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 3,
+                            "XP": 200,
+                            "Coins": 100
                         }
                     ],
                     [
+                        { "Weight": 15 },
                         {
-                            "Dungeon": "Suhalla Desert",
-                            "Weight": 1
+                            "Weight": 4,
+                            "Djinn": "Sleet"
                         },
                         {
-                            "Weight": 1
+                            "Weight": 1,
+                            "Djinn": "Mercury"
+                        }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "More bears... anyone want a bearskin rug?",
+                "EnemyNames": [ "Mauler 1", "Mauler 2", "Gnome" ],
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "XP": 100,
+                            "Coins": 25,
+                            "Chest": "Wooden",
+                            "HasChest": true
+                        }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "You come to one final waterfall, and with some prayers you reverse the flow of the water to carry to to the lighthouse aerie. Seems you have a farewell party as well.",
+                "EnemyNames": [ "Siren 1", "Siren 2", "Cuttle 1", "Ghoul" ],
+                "Shuffle": true,
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "XP": 150,
+                            "Coins": 30
+                        }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "Upon reaching the Aerie, you find the lighthouse beacon already lit, and none other than Saturos himself waiting. He seems to want to challenge your strength, and he likely won't take no for an answer.",
+                "EnemyNames": [ "Saturos 1" ],
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 3,
+                            "XP": 300,
+                            "Coins": 200,
+                            "Dungeon": "Kolima"
                         }
                     ]
                 ]
             }
-        ],
-        "FlavourText": "On the south side of Karagol sea lies the huge city of Tolbi under the leadership, or *regime* as it's told, of Babi. What might be his secrets? The town is full of tourists, merchants, soldiers, ... It looks like they are getting ready for an event!"
+        ]
+    },
+    "Altin": {
+        "name": "Altin",
+        "IsOneTimeOnly": false,
+        "FlavourText": "The winding, water-logged mining caverns hide many secrets and many dangers. An Adept who is clever, cautious, and courageous just might be able to navigate the mine's perils and reap rich rewards.",
+        "Image": "",
+        "IsDefault": false,
+        "Matchups": [
+            {
+                "Flavourtext": "No such thing as free loot.",
+                "EnemyNames": [ "Mimic" ],
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "XP": 200,
+                            "Coins": 100,
+                            "Chest": "Wooden",
+                            "HasChest": true
+                        }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "Mighty rat warriors have no tolerance for intruders!",
+                "EnemyNames": [ "Rat Fighter", "Rat Fighter", "Ape", "Rat Fighter" ],
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "XP": 80,
+                            "Coins": 90
+                        }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "The Halloween special!",
+                "EnemyNames": [ "Bone Fighter", "Tarantula", "Dirge" ],
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "XP": 80,
+                            "Coins": 20
+                        }
+                    ],
+                    [
+                        {
+                            "Weight": 1,
+                            "Item": "Prophets Hat"
+                        },
+                        { "Weight": 19 }
+                    ],
+                    [
+                        {
+                            "Weight": 1,
+                            "Chest": "Normal",
+                            "HasChest": true
+                        },
+                        { "Weight": 17 }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "Light and refreshing!",
+                "EnemyNames": [ "Mercury Djinni 8" ],
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "XP": 200,
+                            "Coins": 100
+                        }
+                    ],
+                    [
+                        {
+                            "Weight": 1,
+                            "Djinn": "Mercury"
+                        },
+                        {
+                            "Weight": 4,
+                            "Djinn": "Spritz"
+                        },
+                        {
+                            "Weight": 5,
+                            "Chest": "Silver",
+                            "HasChest": true
+                        },
+                        { "Weight": 15 }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "Careful, this could be a sticky situation!",
+                "EnemyNames": [ "Slime Beast", "Slime Beast", "Bone Fighter", "Slime Beast" ],
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "XP": 80,
+                            "Coins": 30
+                        }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "A dragon-like statue that spews water. It'd be kind of cute, if it wasn't attacking!",
+                "EnemyNames": [ "Living Statue" ],
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "XP": 120,
+                            "Coins": 50
+                        }
+                    ],
+                    [
+                        {
+                            "Weight": 1,
+                            "Chest": "Silver",
+                            "HasChest": true
+                        },
+                        { "Weight": 9 }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "Mo' Monsters, Mo' Problems",
+                "EnemyNames": [ "Living Statue", "Living Statue", "Living Statue" ],
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "XP": 360,
+                            "Coins": 150
+                        }
+                    ],
+                    [
+                        {
+                            "Weight": 1,
+                            "Chest": "Silver",
+                            "HasChest": true
+                        },
+                        {
+                            "Weight": 2,
+                            "Item": "Pure Circlet"
+                        },
+                        { "Weight": 9 }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "Here comes the big one!",
+                "EnemyNames": [ "Living Statue", "Hydros Statue", "Living Statue" ],
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "XP": 500,
+                            "Coins": 250,
+                            "Dungeon": "Kalay"
+                        }
+                    ],
+                    [
+                        { "Weight": 1 },
+                        {
+                            "Weight": 1,
+                            "Chest": "Gold",
+                            "HasChest": true
+                        }
+                    ]
+                ]
+            }
+        ]
+    },
+    "Kalay": {
+        "name": "Kalay",
+        "IsOneTimeOnly": false,
+        "FlavourText": "The bustling seaside trading hub in the heart of Angara.",
+        "Image": "",
+        "IsDefault": false,
+        "Matchups": [
+            {
+                "Flavourtext": "A wild Mars Djinni appears!",
+                "EnemyNames": [ "Mars Djinni 9" ],
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "XP": 200,
+                            "Coins": 100
+                        }
+                    ],
+                    [
+                        {
+                            "Weight": 1,
+                            "Djinn": "Mars"
+                        },
+                        {
+                            "Weight": 4,
+                            "Djinn": "Scorch"
+                        },
+                        {
+                            "Weight": 5,
+                            "Item": "War Ring"
+                        },
+                        { "Weight": 15 }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "Who'd've thunk this little guy would be out here in the middle of nowhere?",
+                "EnemyNames": [ "Venus Djinni 9" ],
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "XP": 200,
+                            "Coins": 100
+                        }
+                    ],
+                    [
+                        {
+                            "Weight": 1,
+                            "Djinn": "Venus"
+                        },
+                        {
+                            "Weight": 4,
+                            "Djinn": "Vine"
+                        },
+                        {
+                            "Weight": 5,
+                            "Chest": "Silver",
+                            "HasChest": true
+                        },
+                        { "Weight": 15 }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "Colosso hopefuls and local barflies who've all imbibed a bit too much and are looking for a fight.",
+                "EnemyNames": [ "Ruffian", "Bandit", "Thief", "Bandit", "Ruffian" ],
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 100,
+                            "XP": 30
+                        }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "Where there are merchants, there will be thieves.",
+                "EnemyNames": [ "Bandit", "Brigand", "Bandit" ],
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 400,
+                            "XP": 100
+                        }
+                    ],
+                    [
+                        { "Weight": 1 },
+                        {
+                            "Weight": 2,
+                            "Chest": "Wooden",
+                            "HasChest": true
+                        }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "Don't eat strange mushrooms...",
+                "EnemyNames": [ "Death Cap", "Undead", "Death Cap" ],
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "XP": 100,
+                            "Coins": 75
+                        }
+                    ],
+                    [
+                        { "Weight": 9 },
+                        {
+                            "Weight": 1,
+                            "Chest": "Wooden",
+                            "HasChest": true
+                        }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "They don't allow you to have bees in here.",
+                "EnemyNames": [ "Fighter Bee", "Fighter Bee", "Fighter Bee", "Fighter Bee", "Fighter Bee", "Fighter Bee", "Fighter Bee", "Fighter Bee", "Fighter Bee" ],
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "XP": 200,
+                            "Coins": 200
+                        }
+                    ],
+                    [
+                        {
+                            "Weight": 1,
+                            "Item": "Battle Rapier"
+                        },
+                        { "Weight": 4 }
+                    ]
+                ]
+            }
+        ]
+    },
+    "Tolbi": {
+        "name": "Tolbi",
+        "IsOneTimeOnly": false,
+        "FlavourText": "On the south side of Karagol sea lies the huge city of Tolbi under the leadership, or *regime* as it's told, of Babi. What might be his secrets? The town is full of tourists, merchants, soldiers, ... It looks like they are getting ready for an event!",
+        "Image": "",
+        "IsDefault": false,
+        "Matchups": [
+            {
+                "Flavourtext": "Aaah, the glorious city of tolbi. You have heard a lot about it and you head straight to the famous fountain to try your luck. As you approach, you see that it is full of monsters...",
+                "EnemyNames": [ "Calamar 1", "Crab", "Urchin Beast", "Calamar 1" ],
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "XP": 30,
+                            "Coins": 30
+                        }
+                    ],
+                    [
+                        {
+                            "Weight": 1,
+                            "Dungeon": "Karagol Sea"
+                        },
+                        { "Weight": 3 }
+                    ],
+                    [
+                        { "Weight": 33 },
+                        {
+                            "Weight": 1,
+                            "Item": "Assassin Blade"
+                        },
+                        {
+                            "Weight": 1,
+                            "Item": "Earth Shield"
+                        },
+                        {
+                            "Weight": 1,
+                            "Item": "Spirit Armor"
+                        },
+                        {
+                            "Weight": 1,
+                            "Item": "Adepts Helm"
+                        },
+                        {
+                            "Weight": 1,
+                            "Item": "Burning Axe"
+                        },
+                        {
+                            "Weight": 1,
+                            "Item": "Cocktail Dress"
+                        },
+                        {
+                            "Weight": 1,
+                            "Item": "Ninja Hood"
+                        },
+                        {
+                            "Weight": 1,
+                            "Item": "Kimono"
+                        },
+                        {
+                            "Weight": 1,
+                            "Item": "Battle Gloves"
+                        },
+                        {
+                            "Weight": 1,
+                            "Item": "Guardian Armlet"
+                        },
+                        {
+                            "Weight": 1,
+                            "Item": "Grievous Mace"
+                        }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "While fighting those monsters, you saw a glowing shadow slipping by a house. You decide to follow it. Wait, a glowing shadow? That doesn't make any.. whooah, it's a Djinni",
+                "EnemyNames": [ "Mars Djinni 3" ],
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "XP": 90
+                        }
+                    ],
+                    [
+                        {
+                            "Weight": 1,
+                            "Tag": "TolbiMars",
+                            "Obtainable": 1,
+                            "Djinn": "Mars"
+                        },
+                        {
+                            "Weight": 4,
+                            "Djinn": "Torch"
+                        },
+                        {
+                            "Weight": 5,
+                            "Chest": "Normal",
+                            "HasChest": true
+                        },
+                        { "Weight": 15 }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "As you come back to the main square, you witness some thugs trying to steal a poor merchants cob of corn. You must step in.",
+                "EnemyNames": [ "Ruffian", "Assassin", "Thief 2", "Bandit 2", "Ruffian" ],
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "XP": 90,
+                            "Coins": 80
+                        }
+                    ],
+                    [
+                        {
+                            "Weight": 1,
+                            "Chest": "Wooden",
+                            "HasChest": true
+                        },
+                        {
+                            "Weight": 1,
+                            "Chest": "Silver",
+                            "HasChest": true
+                        },
+                        { "Weight": 4 }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "Sigh.. The commotion has alarmed the guards. You just wanted to help, right? You have destroyed the whole market and burned down half a house, but noone could have seen that coming, right? ......Right?",
+                "EnemyNames": [ "Tolbi Guard", "Guardian Ball 1", "Tolbi Guard", "Guardian Ball 1" ],
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "XP": 80,
+                            "Coins": 30
+                        }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "The guards tell you that you are under arrest. They can't bring you there themselves, because they're injured too much, but give you the directions. On the way there you walk by some gladiators training. Let's say hello!",
+                "EnemyNames": [ "Gladiator", "Gladiator" ],
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "XP": 300
+                        }
+                    ],
+                    [
+                        {
+                            "Weight": 1,
+                            "Dungeon": "Colosso"
+                        },
+                        { "Weight": 1 }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "You're done with this city. Too big, too strange. You start exploring the outskirts.",
+                "EnemyNames": [ "Mole 1 Mad Mole 1", "Mole Mage 1" ],
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "XP": 70,
+                            "Coins": 40
+                        }
+                    ],
+                    [
+                        { "Weight": 4 },
+                        {
+                            "Weight": 2,
+                            "Chest": "Silver",
+                            "HasChest": true
+                        },
+                        {
+                            "Weight": 1,
+                            "Chest": "Gold",
+                            "HasChest": true
+                        }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "The sky becomes overcast and something hard hits your head.",
+                "EnemyNames": [ "Mercury Djinni 2" ],
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "XP": 90
+                        }
+                    ]
+                ]
+            }
+        ]
     },
     "Colosso Trials": {
         "name": "Colosso Trials",
         "IsOneTimeOnly": true,
         "FlavourText": "The Colosso tournament is the biggest event across Weyard. Warriors from all over the world are trying to compete in the tournament. Beat the trials, and you might have a shot as the finalist.",
         "Image": "https://goldensunwiki.net/w/images/c/c9/ColossoTrial.png",
+        "IsDefault": false,
+        "MaxPlayer": 1,
         "Matchups": [
             {
                 "Flavourtext": "Round 1: You're up against Buford. He looks threatening in his black armor, yet you can feel his fear deep inside.",
@@ -1287,10 +2343,13 @@
         "IsOneTimeOnly": true,
         "FlavourText": "You have made the finals! Contrary to previous year, you are asked to not just use your muscles, but also your head.",
         "Image": "https://cdn.discordapp.com/attachments/615112372171964436/634378720433537034/unknown.png",
+        "IsDefault": false,
+        "MaxPlayer": 1,
         "Matchups": [
             {
                 "Flavourtext": "The Warriors of Vale once saved Weyard from dying. Who is the oldest valian Hero? (Isaac, Garet, Felix or Piers)",
                 "EnemyNames": [ "ColossoIsaac", "ColossoGaret", "ColossoFelix", "ColossoPiers" ],
+                "Shuffle": true,
                 "RewardTables": [
                     [
                         {
@@ -1327,6 +2386,7 @@
             {
                 "Flavourtext": "Which Item protects its wearer from the effects of the curse effect? Spirit Ring, Priest Ring, Clerics Ring, Guardian Ring",
                 "EnemyNames": [ "ColossoPriestRing", "ColossoGuardianRing", "ColossoSpiritRing", "ColossoClericsRing" ],
+                "Shuffle": "TRUE",
                 "RewardTables": [
                     [
                         {
@@ -1398,8 +2458,9 @@
                 ]
             },
             {
-                "Flavourtext": "What's that, another story? Take a breath, think about this! You are facing four puppets dressed as Gladiators with nametags on them. Which is none of the competing Gladiators? Isaac, Buford, Dekka, x?",
+                "Flavourtext": "What's that, another story? Take a breath, think about this! You are facing four puppets dressed as Gladiators with nametags on them. Who is not competing in the tournament?",
                 "EnemyNames": [ "ColossoDekka", "ColossoErec", "ColossoIsaac", "ColossoBuford" ],
+                "Shuffle": "TRUE",
                 "RewardTables": [
                     [
                         {
@@ -1413,7 +2474,6 @@
             {
                 "Flavourtext": "Oh no. The rumors were true! A fourth fight! An unknown warrior, masked and cloaked. You sense psynergy, watch out.",
                 "EnemyNames": [ "Isaac Final" ],
-                "CustomImage": "https://cdn.discordapp.com/attachments/494638277987401739/664245208333942784/PicsArt_01-08-12.13.10.jpg",
                 "RewardTables": [
                     [
                         {
@@ -1423,6 +2483,1282 @@
                             "Chest": "Gold",
                             "HasChest": true,
                             "Item": "Lure Cap"
+                        }
+                    ]
+                ]
+            }
+        ]
+    },
+    "Path of Gaia I": {
+        "name": "Path of Gaia I",
+        "IsOneTimeOnly": false,
+        "FlavourText": "Text",
+        "Image": "",
+        "IsDefault": false,
+        "Requirement": {
+            "MinLevel": "5",
+            "Elements": [ "Venus" ],
+            "TagsLock": [ "Gaia1" ]
+        },
+        "Matchups": [
+            {
+                "Flavourtext": "Welcome, Adept. I see you carry the power of Earth inside of you. I will teach you what it is like to be a true Venus Adept. Being a Venus Adept means combining all the qualities of a virtuous fighter. You are the force and you are the wall.'",
+                "EnemyNames": [ "Vermin 2", "Vermin 2" ],
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "Tag": "Gaia1Reward1",
+                            "Obtainable": 1,
+                            "XP": 20,
+                            "Coins": 20
+                        }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "You are the the damage and you are the cure. So fight, fight like your life depends on it! Because it does...'",
+                "EnemyNames": [ "Drone Bee 1" ],
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "Tag": "Gaia1Reward2",
+                            "Obtainable": 1,
+                            "XP": 30,
+                            "Coins": 30,
+                            "Chest": "Wooden",
+                            "HasChest": true
+                        }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "You are life and you are death. Let your enemies feel the power of the earth.'",
+                "EnemyNames": [ "Zombie 2", "Skeleton 1" ],
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "Tag": "Gaia1Reward3",
+                            "Obtainable": 1,
+                            "XP": 40,
+                            "Coins": 40,
+                            "Item": "Blow Mace"
+                        }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "You are the judge and the execution. Keep that in mind. Make your choices with Weyard in mind. You have done well! To prove yourself as a Venus Adept, you must conquer the Venus spirit inside of you.'",
+                "EnemyNames": [ "VenusSummon" ],
+                "HealBefore": true,
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "Tag": "Gaia1Reward4",
+                            "Obtainable": 1,
+                            "XP": 200,
+                            "Coins": 200,
+                            "Summon": "Venus"
+                        }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "Very well, Adept! You have proven you can stand your ground. Next, I would like to show you the fantastic world of Weyard. Come to me again, once you have grown stronger and learned more about the secrets of Earth.'",
+                "EnemyNames": [ "Next" ],
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "Tag": "Gaia1",
+                            "Obtainable": 1,
+                            "Dungeon": "Path Of Gaia II",
+                            "Djinn": "Venus"
+                        }
+                    ]
+                ]
+            }
+        ]
+    },
+    "Path of Gaia II": {
+        "name": "Path of Gaia II",
+        "IsOneTimeOnly": false,
+        "FlavourText": "Dungeon Description",
+        "Image": "",
+        "IsDefault": false,
+        "Requirement": {
+            "MinLevel": "15",
+            "Elements": [ "Venus" ],
+            "TagsRequired": [ "Gaia1" ],
+            "TagsLock": [ "Gaia2" ]
+        },
+        "Matchups": [
+            {
+                "Flavourtext": "Welcome back. I see you have grown a lot stronger. Let me show you the origins of the Venus Clan. Take my hand, quick!'",
+                "EnemyNames": [ "Next" ],
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "Tag": "Gaia2Reward1",
+                            "Obtainable": 1,
+                            "XP": 140,
+                            "Coins": 140,
+                            "Chest": "Wooden",
+                            "HasChest": true
+                        }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "An ear ringing 'WHOOSH!' hollers through your ears and you feel warmth all over your body. As you opened your eyes, you find yourself surrounded by sand. In the distance, the peak of a lighthouse.",
+                "EnemyNames": [ "Mummy", "Mummy" ],
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "Tag": "Gaia2Reward2",
+                            "Obtainable": 1,
+                            "XP": 140,
+                            "Coins": 140,
+                            "Item": "Ixion Mail"
+                        }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "The Venus Clan once lived under the foot of the Venus Lighthouse. They built and protected it. You can see some remains of their culture buried in the sand.'",
+                "EnemyNames": [ "Mummy", "Orc" ],
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "Tag": "Gaia2Reward3",
+                            "Obtainable": 1,
+                            "XP": 140,
+                            "Coins": 140,
+                            "Item": "Demon Mace"
+                        }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "Jupiter stands opposed to Venus. They are natural counterparts. No, *not* natural enemies. However, you still need to keep in mind the balance of the elements. It was no accident the Venus Clan went extinct. The winds in the desert just grew too strong... they protected the lighthouse until their very end...'",
+                "EnemyNames": [ "Tornado Lizard" ],
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "Tag": "Gaia2Reward3",
+                            "Obtainable": 1,
+                            "XP": 140,
+                            "Coins": 140,
+                            "Item": "Quick Boots"
+                        }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "Slaying that beast was a challenge. Hama chuckles slightly after seeing you exhausted. 'Haha, did you *feel* the power of the wind?'. Take a quick break to replenish your energies.",
+                "EnemyNames": [ "Harpy 1" ],
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "Tag": "Gaia2Reward4",
+                            "Obtainable": 1,
+                            "XP": 140,
+                            "Coins": 140,
+                            "Chest": "Wooden",
+                            "HasChest": true
+                        }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "Then let me now reveal the last remainings of the Venus Clan. In here, we will find the spirit of the great king and leader, well the *pharaoh* of the lost tribe. ***Ramses.***'",
+                "EnemyNames": [ "RamsesSummons" ],
+                "HealBefore": true,
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "Tag": "Gaia2Reward5",
+                            "Obtainable": 1,
+                            "XP": 250,
+                            "Coins": 250,
+                            "Summon": "Ramses"
+                        }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "Do you now better understand the element of Earth? Yes? Here we witnessed death and devestation of an entire culture, buried under their own homeland. Continue your exploration throughout Weyard and visit me again when your are stronger. Next we will explore what *life* is capable of doing.'",
+                "EnemyNames": [ "Next" ],
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "Tag": "Gaia2",
+                            "Obtainable": 1,
+                            "XP": 140,
+                            "Coins": 140,
+                            "Dungeon": "Path Of Gaia III"
+                        }
+                    ]
+                ]
+            }
+        ]
+    },
+    "Path of Gaia III": {
+        "name": "Path of Gaia III",
+        "IsOneTimeOnly": false,
+        "FlavourText": "Dungeon Description",
+        "Image": "",
+        "IsDefault": false,
+        "Requirement": {
+            "MinLevel": "30",
+            "Elements": [ "Venus" ],
+            "TagsRequired": [ "Gaia2" ],
+            "TagsLock": [ "Gaia3" ]
+        },
+        "Matchups": [
+            {
+                "Flavourtext": "I was expecting your arrival. With each of our meetings, the aura of your Psynergy is becoming stronger and stronger. Take my hand. We are heading into the depths of Kolima forest, impassable by normal means.",
+                "EnemyNames": [ "Next" ],
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "Tag": "Gaia3Reward1",
+                            "Obtainable": 1,
+                            "XP": 180,
+                            "Coins": 180
+                        }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "With a 'WHOOSH!' you teleport onto a small glade. The air is fresh and smells of pine needles and all kinds of flowers. You are surrounded by trees as far as the eye can see.",
+                "EnemyNames": [ "Warrior Bee 1", "Warrior Bee 1", "Feary 1", "Weird Nymph", "Warrior Bee 2" ],
+                "Shuffle": true,
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "Tag": "Gaia3Reward2",
+                            "Obtainable": 1,
+                            "XP": 180,
+                            "Coins": 180,
+                            "Chest": "Silver",
+                            "HasChest": true
+                        }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "Those bees you just felled... they aren't evil monsters, they just try to protect their habitat. You also just tried to save your life, that is understandable. Life is a battle.\nThis area of the forest was practically never visited by mankind. However, it is said that some nature loathing elves are roaming the area.'",
+                "EnemyNames": [ "Dinox", "Goblin", "Earth Golem" ],
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "Tag": "Gaia3Reward3",
+                            "Obtainable": 1,
+                            "XP": 180,
+                            "Coins": 180,
+                            "Item": "Elven Shirt"
+                        }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "Let's head deeper into the woods. As you might have guessed, we are looking for something.",
+                "EnemyNames": [ "Wood Walker", "Raptor Seed", "Bulky Bugman", "Wood Walker", "Mad Plant 2" ],
+                "Shuffle": true,
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "Tag": "Gaia3Reward3",
+                            "Obtainable": 1,
+                            "XP": 180,
+                            "Coins": 180,
+                            "Item": "Wooden Stick"
+                        }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "The thicket is getting thicker and more dense. We ought to be close. The plants are *not* happy that we are here.",
+                "EnemyNames": [ "Mad Plant 1", "Mad Plant 2", "Mad Plant 3", "Mad Plant 4" ],
+                "Shuffle": true,
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "Tag": "Gaia3Reward4",
+                            "Obtainable": 1,
+                            "XP": 180,
+                            "Coins": 180,
+                            "Chest": "Silver",
+                            "HasChest": true
+                        }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "Through the thicket another small glade appears. In its middle, an enormous creature, a spirit grazes peacefully. As it hears the rustle of the branchwood, it looks towards you. Suddenly the plants around you move aside and you can walk through with ease. The spirit seems to sense the power of venus flowing through your veins. It lets out a grunt, and takes and readies itself, clearly wanting to fight.",
+                "EnemyNames": [ "CybeleSummon" ],
+                "HealBefore": true,
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "Obtainable": 1,
+                            "XP": 400,
+                            "Coins": 400,
+                            "Summon": "Cybele"
+                        }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "The spirit seems unharmed, visibly satisfied with the fight and willing to share its powers with you. 'Did you *see* that?', Hama shouts out with excitement. 'Being a Jupiter Adept, I never would have dreamt of getting so close to this magnificent creature. And you bested it on top of that! You clearly are a virtuous and strong Venus Adept. I will take you back to a safe place now. I wish you all the best, may Venus shine her light on you.'",
+                "EnemyNames": [ "Next" ],
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "Tag": "Gaia3",
+                            "Obtainable": 1,
+                            "XP": 180,
+                            "Coins": 180,
+                            "Dungeon": "Path Of Gaia IV"
+                        }
+                    ]
+                ]
+            }
+        ]
+    },
+    "Path of Magma I": {
+        "name": "Path of Magma I",
+        "IsOneTimeOnly": false,
+        "FlavourText": "Dungeon Description",
+        "Image": "",
+        "IsDefault": false,
+        "Requirement": {
+            "MinLevel": "5",
+            "Elements": [ "Mars" ],
+            "TagsLock": [ "Magma1" ]
+        },
+        "Matchups": [
+            {
+                "Flavourtext": "Hello, Adept of the Martian element. I can feel your energy from here! You might think that fire is all about force and destruction. You would be thinking wrong, in that case! Let me show you what it is like to be connected to Mars.'",
+                "EnemyNames": [ "Cuttle 1" ],
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "Tag": "Magma1Reward1",
+                            "Obtainable": 1,
+                            "XP": 20,
+                            "Coins": 20
+                        }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "You might be wondering what else there is, right? Fire itself causes destruction, is unstoppable and blind of rage. It can burn down whole continents if out of control. So you, young Mars Adept, must master that control over your element.'",
+                "EnemyNames": [ "Wild Mushroom 2", "Wild Mushroom 2", "Wild Mushroom 2" ],
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "Tag": "Magma1Reward2",
+                            "Obtainable": 1,
+                            "XP": 30,
+                            "Coins": 30,
+                            "Chest": "Wooden",
+                            "HasChest": true
+                        }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "Mars is warmth and light. A campfire at night, a torch in the dark. It can protect and provide safety. Let your fiery passion run, but be wise about it.'",
+                "EnemyNames": [ "Troll 1", "Troll 1" ],
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "Tag": "Magma1Reward3",
+                            "Obtainable": 1,
+                            "XP": 40,
+                            "Coins": 40,
+                            "Item": "Pirates Sword"
+                        }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "Halt for a moment! See how more and more enemies are attracted by the light you create? Let them have their comfort. Rather than fighting them, show me what you have learned. Can you feel and challenge the Mars spirit inside of you?'",
+                "EnemyNames": [ "MarsSummon" ],
+                "HealBefore": true,
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "XP": 200,
+                            "Coins": 200,
+                            "Summon": "Mars"
+                        }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "Well done, you have indeed understood. I would like to show you some of the Mars hotspots all over Weyard, but first you need to focus your energy on becoming stronger. Visit me again when you are ready!'",
+                "EnemyNames": [ "Next" ],
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "Tag": "Magma1",
+                            "Obtainable": 1,
+                            "Dungeon": "Path Of Magma II",
+                            "Djinn": "Mars"
+                        }
+                    ]
+                ]
+            }
+        ]
+    },
+    "Path of Magma II": {
+        "name": "Path of Magma II",
+        "IsOneTimeOnly": false,
+        "FlavourText": "Dungeon Description",
+        "Image": "",
+        "IsDefault": false,
+        "Requirement": {
+            "MinLevel": "15",
+            "Elements": [ "Mars" ],
+            "TagsRequired": [ "Magma1" ],
+            "TagsLock": [ "Magma2" ]
+        },
+        "Matchups": [
+            {
+                "Flavourtext": "So you have come! Your progress is noticeable. Let me show you the hot power of Weyard.",
+                "EnemyNames": [ "Next" ],
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "Tag": "Magma2Reward1",
+                            "Obtainable": 1,
+                            "XP": 140,
+                            "Coins": 140
+                        }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "With a quick 'Whoop!' Hama teleports the both of you. You find yourself in a dry heat, surrounding by sand and more sand. You are not sure if the heat is making you stronger or weaker, but it's an uncomfortable feeling, regardless. If you had only brought another set of clothes. 'Welcome to Lamakan! Believe it or not, but we are not far from my home, the Lama Temple. I see you feel the heat? Take it, bundle it, make the best of it. Here you can try the limits of your power!'",
+                "EnemyNames": [ "Fighter Bee", "Grub", "Rat Fighter" ],
+                "Shuffle": true,
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "Tag": "Magma2Reward2",
+                            "Obtainable": 1,
+                            "XP": 140,
+                            "Coins": 140,
+                            "Item": "Vambrace"
+                        }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "Let me cool off a bit.', the Jupiter Adept chuckles, while suddenly appearing soaking wet - and not from sweating. 'The desert is filled with small oases. A Jupiter Adept can reveal them! Hold still, you will find a lot of creatures coming closer to drink.'",
+                "EnemyNames": [ "Gillman", "Lizard Savage" ],
+                "Shuffle": true,
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "Tag": "Magma2Reward3",
+                            "Obtainable": 1,
+                            "XP": 140,
+                            "Coins": 140,
+                            "Item": "Vulcan axe"
+                        }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "Those oasis creatures give you quite the trouble, what? Naturally, they're water creatures! Keep in mind that as a Mars Adept you are still opposed to Mercury. These creatures right here have adapted very well to their surroundings. But the desert has more to offer.'",
+                "EnemyNames": [ "Roach", "Doodle Bug", "Ant Lion" ],
+                "Shuffle": true,
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "Tag": "Magma2Reward3",
+                            "Obtainable": 1,
+                            "XP": 140,
+                            "Coins": 140,
+                            "Item": "War Ring"
+                        }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "Salamanders are creatures we say are 'cold blooded'. They depend on the sun to regulate their inner temperature. You, on the other hand, are 'hot blooded'.\nYet, despite the natural fire you host, you have to be able to keep your composure at all times in order to take the good decision. This is a vital quality for a Mars Adept. But enough talk, fight these monsters with my advice in mind.'",
+                "EnemyNames": [ "Salamander", "Salamander", "Salamander" ],
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "Tag": "Magma2Reward4",
+                            "Obtainable": 1,
+                            "XP": 140,
+                            "Coins": 140,
+                            "Chest": "Normal",
+                            "HasChest": true
+                        }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "Time has come for the real secret of this desert. You are going to face a spirit considered to be the king of the animals. Kirin is its name, and it is said to appear near people with a formidable destiny.\nProve Kirin that you have what it takes to face anything!'",
+                "EnemyNames": [ "KirinSummon" ],
+                "HealBefore": true,
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "Tag": "Magma2Reward5",
+                            "Obtainable": 1,
+                            "XP": 225,
+                            "Coins": 225,
+                            "Summon": "Kirin"
+                        }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "Kirin stares at you intensely before roaring one last time and going away, as if the fight never happened. You look at Hama, who's nodding with a little smile. 'You have made some progress, but you'll need to become much stronger before your next lesson. Good luck, young Adept.'",
+                "EnemyNames": [ "Next" ],
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "Tag": "Magma2",
+                            "Obtainable": 1,
+                            "XP": 140,
+                            "Coins": 140,
+                            "Dungeon": "Path Of Magma III"
+                        }
+                    ]
+                ]
+            }
+        ]
+    },
+    "Path of Magma III": {
+        "name": "Path of Magma III",
+        "IsOneTimeOnly": false,
+        "FlavourText": "Dungeon Description",
+        "Image": "",
+        "IsDefault": false,
+        "Requirement": {
+            "MinLevel": "30",
+            "Elements": [ "Mars" ],
+            "TagsRequired": [ "Magma2" ],
+            "TagsLock": [ "Magma3" ]
+        },
+        "Matchups": [
+            {
+                "Flavourtext": "Our last adventure was an interesting ride. This time we will try to find the roots of Mars Adepts. We need to go to a place... not exactly screaming of Mars Psynergy, but don't let it deceive you.",
+                "EnemyNames": [ "Next" ],
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "Tag": "Magma2Reward1",
+                            "Obtainable": 1,
+                            "XP": 180,
+                            "Coins": 180
+                        }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "*WHOOP!*\nYou are surrounded by ice and mountains, in a corner a small cave. The horizon is lightened up by a faint, red glow. Hama was right, not exactly the place you expected. But you can clearly feel the heat and energy coming from deep below your feet.",
+                "EnemyNames": [ "White Wolf", "White Wolf", "White Wolf", "Winged Lizard" ],
+                "Shuffle": true,
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "Tag": "Magma2Reward2",
+                            "Obtainable": 1,
+                            "XP": 180,
+                            "Coins": 180,
+                            "Chest": "Normal",
+                            "HasChest": true
+                        }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "Have you ever heard of the tribe of Prox? The are the guardians of the Mars Lighthouse, they form the Mars Clan. Although they appear humanoid, they are distinct in that they have draconic features. They have adapted well and have no trouble surviving the eternal cold, here in the north.'",
+                "EnemyNames": [ "Winged Lizard", "Sky Dragon", "Sea Dragon" ],
+                "Shuffle": true,
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "Tag": "Magma2Reward3",
+                            "Obtainable": 1,
+                            "XP": 180,
+                            "Coins": 180,
+                            "Item": "Dragon Bow"
+                        }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "Dragons are said to master Mars Psynergy. This is not quite true. Although the majority of dragons breath fire, dragons can come aligned to any of the four elements.'",
+                "EnemyNames": [ "Fire Dragon", "Fire Dragon", "Ocean Dragon" ],
+                "Shuffle": true,
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "Tag": "Magma2Reward4",
+                            "Obtainable": 1,
+                            "XP": 180,
+                            "Coins": 180,
+                            "Item": "Dragon Axe"
+                        }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "This cave is full of fiery dragons, that's for sure. Watch them carefully, you can learn alot from them, like how to channel your inner flame most properly.'",
+                "EnemyNames": [ "Great Dragon" ],
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "Tag": "Magma2Reward5",
+                            "Obtainable": 1,
+                            "XP": 180,
+                            "Coins": 180,
+                            "Chest": "Gold",
+                            "HasChest": true
+                        }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "From the depths of the cave you hear a mighty roar. 'Could this be?', the purple haired woman wonders cautiously. You go deeper into the cave and encounter a massive dragon. Something is different to the others, though. The dragon looks much older, much more magical. It shoots a fire ball just above your heads, but it clearly didn't intend to hit you. It stands up and is even more impressive than before. It looks at you, slightly demanding, slightly condescending. Ready your weapon!",
+                "EnemyNames": [ "TiamatSummon" ],
+                "HealBefore": true,
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "XP": 400,
+                            "Coins": 400,
+                            "Summon": "Tiamat"
+                        }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "The dragon lets out a roar, clearly satisfied with itself, but just as much with you. 'Do you know who you just met?', the Jupiter Adept said, also just as satisfied. 'Tiamat. The mother, no, *queen* of dragons. Bow. *Bow*, I said. She is supposedly one of the oldest creatures living on this planet, even older than Poseidon. This is a great honor.'",
+                "EnemyNames": [ "Next" ],
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "Tag": "Magma3",
+                            "Obtainable": 1,
+                            "XP": 180,
+                            "Coins": 180,
+                            "Dungeon": "Path Of Magma IV"
+                        }
+                    ]
+                ]
+            }
+        ]
+    },
+    "Path of Air I": {
+        "name": "Path of Air I",
+        "IsOneTimeOnly": false,
+        "FlavourText": "Dungeon Description",
+        "Image": "",
+        "IsDefault": false,
+        "Requirement": {
+            "MinLevel": "5",
+            "Elements": [ "Jupiter" ],
+            "TagsLock": [ "Air1" ]
+        },
+        "Matchups": [
+            {
+                "Flavourtext": "Welcome, young Jupiter Adept. It has been a while since I have met a child of Anemos. Don't try to think that you will get a lighter treatment, though! Let me show you what it is like to be a Jupiter Adept.",
+                "EnemyNames": [ "Bat 1", "Bat 1", "Bat 1" ],
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "Tag": "Air1Reward1",
+                            "Obtainable": 1,
+                            "XP": 20,
+                            "Coins": 20
+                        }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "The skill of a Jupiter Adepts relies on one thing: Think fast. We need to be one step ahead of our opponent. Just being swifter than someone else is not always enough, we need to *know* what is going to happen.",
+                "EnemyNames": [ "Momonga 1", "Flutter Seed", "Willowisp 2" ],
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "Tag": "Air1Reward2",
+                            "Obtainable": 1,
+                            "XP": 30,
+                            "Coins": 30,
+                            "Chest": "Wooden",
+                            "HasChest": true
+                        }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "Having this swiftness comes at a cost. That is, our lighter setup often costs us some physical prowess and endurance. But we are one with wind. We make our way by flowing around obstacles, even squeezing through the tighest gaps.",
+                "EnemyNames": [ "Troll 1" ],
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "Tag": "Air1Reward3",
+                            "Obtainable": 1,
+                            "XP": 40,
+                            "Coins": 40,
+                            "Item": "Elven Rapier"
+                        }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "Now that I showed you the strengths of a Jupiter Adept, you need to show me what you've learned. You surely know what to expect.",
+                "EnemyNames": [ "JupiterSummon" ],
+                "HealBefore": true,
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "XP": 200,
+                            "Coins": 200,
+                            "Summon": "Jupiter"
+                        }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "Marvellous. Indeed you have the forces of the wind in your heart. Let me show you how high the wind can take us, all over Weyard. Prepare yourself first and get stronger, then meet me again.",
+                "EnemyNames": [ "NextHama" ],
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "Tag": "Air1",
+                            "Obtainable": 1,
+                            "Dungeon": "Path Of Air II",
+                            "Djinn": "Jupiter"
+                        }
+                    ]
+                ]
+            }
+        ]
+    },
+    "Path of Air II": {
+        "name": "Path of Air II",
+        "IsOneTimeOnly": false,
+        "FlavourText": "Dungeon Description",
+        "Image": "",
+        "IsDefault": false,
+        "Requirement": {
+            "MinLevel": "15",
+            "Elements": [ "Jupiter" ],
+            "TagsRequired": [ "Air1" ],
+            "TagsLock": [ "Air2" ]
+        },
+        "Matchups": [
+            {
+                "Flavourtext": "Welcome back! Congratluation, I nearly couldn't hear you approach. Your steps are silent and you are becoming swift like the wind. Come on, take my hand. Let me show you your origins.",
+                "EnemyNames": [ "NextHama" ],
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "Tag": "Air2Reward1",
+                            "Obtainable": 1,
+                            "XP": 140,
+                            "Coins": 140
+                        }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "You feel a silent '*swoosh*' and find yourself brighted by a large, purple sphere. You are being flooded by a massive amount of energy. Your hands and feet start to tingle, as if you were about to levitate. 'Welcome to the greatest source of Jupiter Psynergy, the Jupiter Lighthouse.'",
+                "EnemyNames": [ "Seabird", "Seabird", "Seabird" ],
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "Tag": "Air2Reward2",
+                            "Obtainable": 1,
+                            "XP": 140,
+                            "Coins": 140,
+                            "Chest": "Normal",
+                            "HasChest": true
+                        }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "This place was built a long time ago, by the brothers, sisters and children of Yegelos, the greatest hero of the Jupiter Clan.', the Jupiter Adept explains with an excited voice, unusual for the otherwise calm woman. 'Their tribe, the Anemos, left Weyard a long time ago. Legends say, they levitated a piece of this world which became our moon.'",
+                "EnemyNames": [ "Grand Golem" ],
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "Tag": "Air2Reward3",
+                            "Obtainable": 1,
+                            "XP": 140,
+                            "Coins": 140,
+                            "Item": "Muni Robe"
+                        }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "The legend of Yegelos and Hoabna is taught as a reminder to keep conflicts between Adepts and non Adepts at bay. We have the responsibility to not repeat mistakes of the past. Knowledge of your ancestors and history is necessary to achieve that.",
+                "EnemyNames": [ "Ghost Army", "Curse Demon" ],
+                "Shuffle": true,
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "Tag": "Air2Reward4",
+                            "Obtainable": 1,
+                            "XP": 140,
+                            "Coins": 140,
+                            "Item": "Mystery Blade"
+                        }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "All Jupiter Adepts are said to be decendants of the Anemos. Nobody quite knows if this is true. Yet one thing is certain, the spirit of a glorious huntress of the Anemos lives on in this Lighthouse. Look behind you, do you see the statue of the archer over at the smaller aerie? It is made in her likeness. If we are lucky, we'll be able to meet her.",
+                "EnemyNames": [ "Wyvern", "Gryphon" ],
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "Tag": "Air2Reward5",
+                            "Obtainable": 1,
+                            "XP": 140,
+                            "Coins": 140,
+                            "Chest": "Silver",
+                            "HasChest": true
+                        }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "Do you sense that? She must be close, so be aware... She's a huntress after all, a master of stealth and surprise...",
+                "EnemyNames": [ "AtalantaSummon" ],
+                "HealBefore": true,
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "XP": 250,
+                            "Coins": 250,
+                            "Summon": "Atalanta"
+                        }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "Atalanta puts her bow over a shoulder. She smiles at you invitingly and throws you an alluding wink, before she vanishes into thin air. 'Congratulations! You didn't let her surprise you. You cannot know history without knowing about both sides. We will explore the side of Yegelos' Rival, Hoabna, next. If you mastered your stealth and swiftness, visit me without me realizing.' ",
+                "EnemyNames": [ "NextHama" ],
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "Tag": "Air2",
+                            "Obtainable": 1,
+                            "XP": 140,
+                            "Coins": 140,
+                            "Dungeon": "Path Of Air III"
+                        }
+                    ]
+                ]
+            }
+        ]
+    },
+    "Path of Air III": {
+        "name": "Path of Air III",
+        "IsOneTimeOnly": false,
+        "FlavourText": "Dungeon Description",
+        "Image": "",
+        "IsDefault": false,
+        "Requirement": {
+            "MinLevel": "30",
+            "Elements": [ "Jupiter" ],
+            "TagsRequired": [ "Air2" ],
+            "TagsLock": [ "Air3" ]
+        },
+        "Matchups": [
+            {
+                "Flavourtext": "You see Hama from afar. She doesn't seem to have noticed you yet, so in order to demonstrate your skills, you blow a little whirly tornado in her direction. You notice her lips forming a faint smile. 'Well done, young one. Are you ready to explore the past of Hoabna? Take my hand.'",
+                "EnemyNames": [ "Next" ],
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "Tag": "Air3Reward1",
+                            "Obtainable": 1,
+                            "XP": 140,
+                            "Coins": 140
+                        }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "With a short '*swoosh*' you teleport. You feel some arid heat, not uncomfortable, yet unusual with a constant breeze blowing through your hair. You open your eyes. You're on a mountain top made of orange sand stone. On the floor is a red and blue drawing. Far in the skies a gigantic bird is soaring in circles. 'This is the peak of Trial Road, a sacred place for the nearby Shamans.",
+                "EnemyNames": [ "Great Seagull", "Great Seagull", "Great Seagull", "Great Seagull", "Great Seagull" ],
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "Tag": "Air3Reward2",
+                            "Obtainable": 1,
+                            "XP": 140,
+                            "Coins": 140,
+                            "Chest": "Normal",
+                            "HasChest": true
+                        }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "The legend of Yegelos and Hoabna tells that the two heros had a run to the top and a fight on this very spot. Consequently, the year long war between the Shamans and the Anemos ended.",
+                "EnemyNames": [ "Fire Bird", "Wise Gryphon 2", "Sky Dragon 1", "Harridan 2" ],
+                "Shuffle": true,
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "Tag": "Air3Reward3",
+                            "Obtainable": 1,
+                            "XP": 140,
+                            "Coins": 140,
+                            "Item": "Muni Robe"
+                        }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "Mind your step, it's a long way down and enemies like to hide in the ground. Venus is the greatest weakness to us Jupiter Adepts, as those elements are opposites of one another. Yet, without earth we would have nothing to stand on.' You hear a loud screech from the huge bird in the skys. It has lost a lot of elevation, it's on a slow letdown.",
+                "EnemyNames": [ "Ice Gargoyle", "Thunder Lizard 1", "Thunder Lizard 2", "Thunder Lizard 2" ],
+                "Shuffle": true,
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "Tag": "Air3Reward4",
+                            "Obtainable": 1,
+                            "XP": 140,
+                            "Coins": 140,
+                            "Item": "Mystery Blade"
+                        }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "The saying 'Kill two birds with one stone' bears misleading meaning. It makes the bird be afraid of the stone, yet without the stone the bird would need to fly with no break. It couldn't risk to roost or find bugs and seeds in the soil.",
+                "EnemyNames": [ "Talon Runner", "Talon Runner", "Talon Runner", "Raptor", "Raptor" ],
+                "Shuffle": true,
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "Tag": "Air3Reward5",
+                            "Obtainable": 1,
+                            "XP": 140,
+                            "Coins": 140,
+                            "Chest": "Silver",
+                            "HasChest": true
+                        }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "You hear the beats of wings and an ear shattering squeak and powerful energy warming your backside. You carefully turn around. You stand nose-to-beak with a gigantic bird. It is perfectly white with some golden feathers inbetween. It is nearly floating, barely touching the ground. You take a few steps back and ready your weapon.",
+                "EnemyNames": [ "ProcneSummon" ],
+                "HealBefore": true,
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "XP": 250,
+                            "Coins": 250,
+                            "Summon": "Procne"
+                        }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "The bird lost but one perfect, white feather. You pick it up in awe. Procne still has not touched the ground for one moment. She deeply looks into your eyes, and with one loud '***SCREEEEEEEEEE***' the spirit darts off vertically into the skies, where it disappears into the clouds.",
+                "EnemyNames": [ "Next" ],
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "Tag": "Air3",
+                            "Obtainable": 1,
+                            "XP": 140,
+                            "Coins": 140,
+                            "Dungeon": "Path Of Air IV"
+                        }
+                    ]
+                ]
+            }
+        ]
+    },
+    "Path of Aqua I": {
+        "name": "Path of Aqua I",
+        "IsOneTimeOnly": false,
+        "FlavourText": "Dungeon Description",
+        "Image": "",
+        "IsDefault": false,
+        "Requirement": {
+            "MinLevel": "5",
+            "Elements": [ "Mercury" ],
+            "TagsLock": [ "Aqua1" ]
+        },
+        "Matchups": [
+            {
+                "Flavourtext": "Welcome, Adept. Water flows through your aura like blood through your veins. Let me show you what it is like to be a Mercury Adept. Water is steady as a flowing river. Unlike us Jupiter Adepts, Mercury is not rash in the least. Where Jupiter has knowledge, Mercury has wisdom.",
+                "EnemyNames": [ "Gnome", "Gnome" ],
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "Tag": "Aqua1Reward1",
+                            "Obtainable": 1,
+                            "XP": 20,
+                            "Coins": 20
+                        }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "Mercury Adepts are masters at healing, unbeaten by the less spiritual powers of other elements. Where live is water, and where water is, is life.",
+                "EnemyNames": [ "Spider 1", "Tarantula 1" ],
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "Tag": "Aqua1Reward3",
+                            "Obtainable": 1,
+                            "XP": 30,
+                            "Coins": 30,
+                            "Chest": "Wooden",
+                            "HasChest": true
+                        }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "Water gets its power from its mass and omnipresence. Go on, flush away your enemies!",
+                "EnemyNames": [ "Angle Worm", "Angle Worm", "Angle Worm" ],
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "Tag": "Aqua1Reward3",
+                            "Obtainable": 1,
+                            "XP": 40,
+                            "Coins": 40,
+                            "Item": "Magic Rod"
+                        },
+                        {
+                            "Weight": 1,
+                            "Tag": "Aqua1Reward3",
+                            "Obtainable": 1,
+                            "XP": 40,
+                            "Coins": 40,
+                            "Item": "Witchs Wand"
+                        }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "You are good! If you think you have what it takes to be a Mercury Adept, show me the power of Water that flows inside of you!",
+                "EnemyNames": [ "MercurySummon" ],
+                "HealBefore": true,
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "XP": 200,
+                            "Coins": 200,
+                            "Summon": "Mercury"
+                        }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "As you can see, the art and power of a Mercury Adept does not lie in its offensive strength. But don't judge wrongly. A Mercury Adept wins through consistency and duration. And in tight situations, the freezing power of ice can cause massive destruction. I am willing to show you more of the secrets and power of Mercury, however first you need to grow stronger. Come back to me, when you are ready.",
+                "EnemyNames": [ "Next" ],
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "Tag": "Aqua1",
+                            "Obtainable": 1,
+                            "Dungeon": "Path Of Aqua II",
+                            "Djinn": "Mercury"
+                        }
+                    ]
+                ]
+            }
+        ]
+    },
+    "Path of Aqua II": {
+        "name": "Path of Aqua II",
+        "IsOneTimeOnly": false,
+        "FlavourText": "Dungeon Description",
+        "Image": "",
+        "IsDefault": false,
+        "Requirement": {
+            "MinLevel": "15",
+            "Elements": [ "Mercury" ],
+            "TagsRequired": [ "Aqua1" ],
+            "TagsLock": [ "Aqua2" ]
+        },
+        "Matchups": [
+            {
+                "Flavourtext": "Greetings, young Adept. I see that your moves are starting to look like the flow of a river. Now is the time to talk about the intricate relations between Mercury and Mars.'",
+                "EnemyNames": [ "Next" ],
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "Obtainable": 1,
+                            "XP": 140,
+                            "Coins": 140
+                        }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "Hama teleports you on a beach, with a gigantic blue mountain a bit further in the land. 'Can you feel this place overflowing with Mercury Psynergy?' Hama asks. You nod",
+                "EnemyNames": [ "Calamar 1", "Calamar 1" ],
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "Obtainable": 1,
+                            "XP": 140,
+                            "Coins": 140,
+                            "Chest": "Normal",
+                            "HasChest": true
+                        }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "That being said, as this place is located in a tropical sea, Mars creatures can also thrive here.'",
+                "EnemyNames": [ "Salamander 1" ],
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "Obtainable": 1,
+                            "XP": 140,
+                            "Coins": 140
+                        }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "A lot can be said about the way Mars and Mercury interract. Water can extinguish a fire, but at the same time, a fire may evaporate water. Or make ice thaw.'",
+                "EnemyNames": [ "Calamar 1", "Salamander 1", "Calamar 1" ],
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "Obtainable": 1,
+                            "XP": 140,
+                            "Coins": 140
+                        }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "We cannot easily grasp how Mars and Mercury will behave in the nature. On a battlefield however, what determines which element comes out victorious depends on one thing: The will of their users. Be as impetuous as a torrent!'",
+                "EnemyNames": [ "Gnome", "Living Statue", "Gnome" ],
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "Obtainable": 1,
+                            "XP": 140,
+                            "Coins": 140
+                        }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "Finally, she appears... Nereid, the daughter of Poseidon. Her looks are not deceiving, she's much more peaceful than her father. She does know how to defend herself if needed though. Today she's simply gonna test you and see if you're worthy of her help whether you should need it.'",
+                "EnemyNames": [ "NereidSummon" ],
+                "HealBefore": true,
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "XP": 250,
+                            "Coins": 250,
+                            "Summon": "Nereid"
+                        }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "After the fight is over, Nereid starts gi#ggling. You don't even have the time to feel insulted that you feel like if you were submerged in warm water. 'That looks like a success', Hama remarks. Nereid then puts her fan in front of her face while her turtle swims away, carrying her on its back.\n'As usual, I'll send you back to where we came from. Train once again, and come back when your practice paid off. The next time, we're gonna try to meet one of the most impressive beings of the seven seas.'",
+                "EnemyNames": [ "Next" ],
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "Tag": "Aqua2",
+                            "Obtainable": 1,
+                            "XP": 140,
+                            "Coins": 140,
+                            "Dungeon": "Path Of Aqua III"
                         }
                     ]
                 ]

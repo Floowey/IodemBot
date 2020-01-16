@@ -2310,9 +2310,9 @@
                     "addDamage": 40
                 },
                 {
-                    "id": "MultiplyDamage",
-                    "Multiplier": 2.0,
-                    "Probability": 25
+                    "Type": "MultiplyDamage",
+                    "Multipliers": [ 2.0 ],
+                    "Probabilities": [ 25 ]
                 }
             ]
         }

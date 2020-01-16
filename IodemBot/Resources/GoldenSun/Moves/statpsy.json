@@ -209,6 +209,21 @@
             }
         ]
     },
+    "Smell of Decay": {
+        "name": "Smell of Decay",
+        "targetType": 4,
+        "emote": "💩",
+        "range": 3,
+        "element": 0,
+        "PPCost": 0,
+        "effects": [
+            {
+                "Type": "Stat",
+                "Stat": "Attack",
+                "Multiplier": 0.8
+            }
+        ]
+    },
     "Weapon Grace": {
         "name": "Weapon Grace",
         "targetType": 1,
@@ -441,6 +456,20 @@
                 "Type": "Condition",
                 "Condition": "Sleep",
                 "Probability": 40
+            }
+        ]
+    },
+    "Disarm": {
+        "name": "Disarm",
+        "targetType": 4,
+        "emote": "🏳️",
+        "range": 3,
+        "element": 4,
+        "PPCost": 0,
+        "power": 0,
+        "effects": [
+            {
+                "Type": "UserDies"
             }
         ]
     },

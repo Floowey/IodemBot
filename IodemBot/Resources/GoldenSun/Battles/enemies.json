@@ -10316,7 +10316,7 @@
         "stats": {
             "maxHP": 20000,
             "maxPP": 0,
-            "Atk": 50,
+            "Atk": 5000,
             "Def": 2,
             "Spd": 3
         },
@@ -10330,9 +10330,10 @@
             "MercuryAtk": 100,
             "MercuryRes": 25
         },
-        "Conditions": [ "DeathCurse" ],
+        "Conditions": [ "DeathCurse", "Counter" ],
         "DeathCurseCounter": 1,
-        "hasDefend": false
+        "hasDefend": false,
+        "hasAttack": false
     },
     "Statue Trap": {
         "name": "Statue",
@@ -10685,8 +10686,8 @@
         "hasDefend": false,
         "hasAttack": false
     },
-    "ColossoDekka": {
-        "name": "Dekka",
+    "ColossoErec": {
+        "name": "Erec",
         "imgurl": "https://goldensunwiki.net/w/images/c/ca/SolSanctumDisarm.png",
         "movepool": [
             "Trap"
@@ -10766,8 +10767,8 @@
         "hasDefend": false,
         "hasAttack": false
     },
-    "ColossoErec": {
-        "name": "Erec",
+    "ColossoDekka": {
+        "name": "Dekka",
         "imgurl": "https://goldensunwiki.net/w/images/c/ca/SolSanctumDisarm.png",
         "movepool": [
             "Disarm"
@@ -10997,7 +10998,7 @@
     },
     "Morgan": {
         "movepool": [ "Smoke Bomb", "Sleep Bomb", "Nut" ],
-        "name": "Navampa",
+        "name": "Morgan",
         "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Navampa.png",
         "stats": {
             "maxhp": 920,
@@ -11013,5 +11014,391 @@
             "jupiterres": 90
         },
         "extraturns": 0
+    },
+    "NextHama": {
+        "movepool": [],
+        "name": "Next",
+        "imgurl": "https://cdn.discordapp.com/attachments/494638277987401739/665881619231539202/SunSagaHama.jpg",
+        "stats": {
+            "maxhp": 1,
+            "maxpp": 0,
+            "atk": 0,
+            "def": 0,
+            "spd": 1
+        },
+        "elstats": {
+            "venusres": 90,
+            "mercuryres": 90,
+            "marsres": 90,
+            "jupiterres": 90
+        },
+        "extraturns": 0,
+        "hasAttack": false,
+        "hasDefend": false
+    },
+    "VenusSummon": {
+        "movepool": [ "Earthquake", "Spire" ],
+        "name": "Venus",
+        "imgurl": "https://goldensunwiki.net/w/images/6/60/Venus-icon-dd.gif",
+        "stats": {
+            "maxhp": 349,
+            "maxpp": 25,
+            "atk": 127,
+            "def": 28,
+            "spd": 76
+        },
+        "elstats": {
+            "venusres": 193,
+            "mercuryres": 100,
+            "marsres": 100,
+            "jupiterres": 25,
+            "venusatk": 120
+        },
+        "extraturns": 0
+    },
+    "RamsesSummon": {
+        "movepool": [ "Rockslide", "Avalanche", "Quake Sphere", "Clay Spire" ],
+        "name": "Ramses",
+        "imgurl": "https://cdn.discordapp.com/attachments/497696510688100352/665884846656323594/Ramses.gif",
+        "stats": {
+            "maxhp": 849,
+            "maxpp": 25,
+            "atk": 127,
+            "def": 28,
+            "spd": 76
+        },
+        "elstats": {
+            "venusres": 193,
+            "mercuryres": 100,
+            "marsres": 100,
+            "jupiterres": 25,
+            "venusatk": 120
+        },
+        "extraturns": 0
+    },
+    "CybeleSummon": {
+        "movepool": [ "Nettle", "Wild Growth", "Cure Well" ],
+        "name": "Cybele",
+        "imgurl": "https://cdn.discordapp.com/attachments/497696510688100352/665884918449963011/Cybele.gif",
+        "stats": {
+            "maxhp": 3349,
+            "maxpp": 250,
+            "atk": 527,
+            "def": 355,
+            "spd": 120
+        },
+        "elstats": {
+            "venusres": 193,
+            "mercuryres": 100,
+            "marsres": 100,
+            "jupiterres": 25,
+            "venusatk": 120
+        },
+        "extraturns": 1
+    },
+    "JudgmentSummon": {
+        "movepool": [ "Earthquake", "Spire" ],
+        "name": "Venus",
+        "imgurl": "https://goldensunwiki.net/w/images/6/60/Venus-icon-dd.gif",
+        "stats": {
+            "maxhp": 349,
+            "maxpp": 25,
+            "atk": 127,
+            "def": 28,
+            "spd": 76
+        },
+        "elstats": {
+            "venusres": 193,
+            "mercuryres": 100,
+            "marsres": 100,
+            "jupiterres": 25,
+            "venusatk": 120
+        },
+        "extraturns": 0
+    },
+    "MarsSummon": {
+        "movepool": [ "Flare", "Blast" ],
+        "name": "Mars",
+        "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Mars_Djinni.png",
+        "stats": {
+            "maxhp": 172,
+            "maxpp": 14,
+            "atk": 45,
+            "def": 9,
+            "spd": 22
+        },
+        "elstats": {
+            "marsres": 193,
+            "venusres": 100,
+            "jupiterres": 100,
+            "mercuryres": 25,
+            "marsatk": 125
+        },
+        "extraturns": 0
+    },
+    "KirinSummon": {
+        "movepool": [ "Heat Flash", "Heat Flash", "Molten Bath", "Nova", "Rolling Flame" ],
+        "name": "Kirin",
+        "imgurl": "https://cdn.discordapp.com/attachments/497696510688100352/665884960611237888/Kirin.gif",
+        "stats": {
+            "maxhp": 1220,
+            "maxpp": 240,
+            "atk": 245,
+            "def": 190,
+            "spd": 220
+        },
+        "elstats": {
+            "marsres": 193,
+            "venusres": 100,
+            "jupiterres": 100,
+            "mercuryres": 25,
+            "marsatk": 125
+        },
+        "extraturns": 0
+    },
+    "TiamatSummon": {
+        "movepool": [ "Dragon Fume", "Fire Breath", "Blaze", "Liquifier", "Epicenter", "Rising Dragon" ],
+        "name": "Tiamat",
+        "imgurl": "https://cdn.discordapp.com/attachments/497696510688100352/665884850690981889/Tiamat.gif",
+        "stats": {
+            "maxhp": 3172,
+            "maxpp": 414,
+            "atk": 450,
+            "def": 345,
+            "spd": 640
+        },
+        "elstats": {
+            "marsres": 193,
+            "venusres": 100,
+            "jupiterres": 100,
+            "mercuryres": 25,
+            "marsatk": 125
+        },
+        "extraturns": 1
+    },
+    "JupiterSummon": {
+        "movepool": [ "Whirlwind", "Wind Slash", "Bind" ],
+        "name": "Jupiter",
+        "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Jupiter_Djinni.png",
+        "stats": {
+            "maxhp": 143,
+            "maxpp": 22,
+            "atk": 79,
+            "def": 20,
+            "spd": 999
+        },
+        "elstats": {
+            "jupiterres": 193,
+            "mercuryres": 100,
+            "marsres": 100,
+            "venusres": 25,
+            "jupiteratk": 120
+        },
+        "extraturns": 0
+    },
+    "AtalantaSummon": {
+        "movepool": [ "Boon" ],
+        "name": "Jupiter",
+        "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Jupiter_Djinni.png",
+        "stats": {
+            "maxhp": 543,
+            "maxpp": 20,
+            "atk": 279,
+            "def": 120,
+            "spd": 999
+        },
+        "elstats": {
+            "jupiterres": 193,
+            "mercuryres": 100,
+            "marsres": 100,
+            "venusres": 25,
+            "jupiteratk": 120
+        },
+        "Weapon": {
+            "Name": "Zephyrs Bow",
+
+            "Icon": "<:Zephyrs_Bow:578229622899081216>",
+            "Unleash": {
+                "UnleashName": "Cyclone Shot",
+                "UnleashAlignment": 2,
+                "effects": [
+                    {
+                        "Type": "MultiplyDamage",
+                        "MultiplyDamage": 1.4
+                    },
+                    {
+                        "Type": "Stat",
+                        "Stat": "Resistance",
+                        "Multiplier": 0.25,
+                        "Probability": 25
+                    }
+                ]
+            }
+        },
+        "extraturns": 0
+    },
+    "ProcneSummon": {
+        "movepool": [ "Wing Stroke", "Twin Beaks", "Hurricane", "Tornado" ],
+        "name": "Jupiter",
+        "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Jupiter_Djinni.png",
+        "stats": {
+            "maxhp": 143,
+            "maxpp": 22,
+            "atk": 79,
+            "def": 20,
+            "spd": 999
+        },
+        "elstats": {
+            "jupiterres": 193,
+            "mercuryres": 100,
+            "marsres": 100,
+            "venusres": 25,
+            "jupiteratk": 120
+        },
+        "extraturns": 1
+    },
+    "MercurySummon": {
+        "movepool": [ "Prism", "Cool", "Ice" ],
+        "name": "Mercury Djinni",
+        "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Mercury_Djinni.png",
+        "stats": {
+            "maxhp": 190,
+            "maxpp": 20,
+            "atk": 107,
+            "def": 24,
+            "spd": 58
+        },
+        "elstats": {
+            "mercuryres": 193,
+            "venusres": 100,
+            "jupiterres": 100,
+            "marsres": 25,
+            "mercuryatk": 125
+        },
+        "extraturns": 0
+    },
+    "NereidSummon": {
+        "movepool": [ "Cutting Edge", "Drench", "Froth" ],
+        "name": "Nereid",
+        "imgurl": "https://cdn.discordapp.com/attachments/497696510688100352/666219753597173760/Nereid.gif",
+        "stats": {
+            "maxhp": 590,
+            "maxpp": 320,
+            "atk": 207,
+            "def": 124,
+            "spd": 158
+        },
+        "elstats": {
+            "mercuryres": 193,
+            "venusres": 100,
+            "jupiterres": 100,
+            "marsres": 25,
+            "mercuryatk": 125
+        },
+        "extraturns": 0
+    },
+    "AzartFinal": {
+        "movepool": [ "Smoke Bomb", "Oil Drop" ],
+        "name": "Azart",
+        "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Navampa.png",
+        "stats": {
+            "maxhp": 535,
+            "maxpp": 3,
+            "atk": 368,
+            "def": 100,
+            "spd": 156
+        },
+        "elstats": {
+            "venusres": 90,
+            "mercuryres": 90,
+            "marsres": 90,
+            "jupiterres": 90
+        },
+        "Weapon": {
+            "Name": "Claymore",
+            "Icon": "<:Claymore:569855141117820943>"
+        },
+        "extraturns": 0
+    },
+    "SatrageFinal": {
+        "movepool": [ "Strong Hit", "Sleep Bomb", "Oil Drop" ],
+        "name": "Satrage",
+        "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Navampa.png",
+        "stats": {
+            "maxhp": 635,
+            "maxpp": 3,
+            "atk": 368,
+            "def": 100,
+            "spd": 156
+        },
+        "elstats": {
+            "venusres": 90,
+            "mercuryres": 90,
+            "marsres": 90,
+            "jupiterres": 90
+        },
+        "Weapon": {
+            "Name": "Claymore",
+            "Icon": "<:Claymore:569855141117820943>"
+        },
+        "extraturns": 0
+    },
+    "NavampaFinal": {
+        "movepool": [ "Strong Hit", "Smoke Bomb", "Sleep Bomb", "Oil Drop" ],
+        "name": "Navampa",
+        "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Navampa.png",
+        "stats": {
+            "maxhp": 735,
+            "maxpp": 5,
+            "atk": 368,
+            "def": 100,
+            "spd": 156
+        },
+        "elstats": {
+            "venusres": 90,
+            "mercuryres": 90,
+            "marsres": 90,
+            "jupiterres": 90
+        },
+        "Weapon": {
+            "Name": "Claymore",
+            "Icon": "<:Claymore:569855141117820943>"
+        },
+        "extraturns": 0
+    },
+    "IsaacFinal": {
+        "name": "Masked Adept",
+        "imgurl": "https://cdn.discordapp.com/attachments/494638277987401739/664245208333942784/PicsArt_01-08-12.13.10.jpg",
+        "movepool": [
+            "Cure",
+            "Cure Well",
+            "Ragnarok",
+            "Odyssey",
+            "Quake Sphere",
+            "Mother Gaia"
+        ],
+        "stats": {
+            "maxHP": 1450,
+            "maxPP": 175,
+            "Atk": 300,
+            "Def": 60,
+            "Spd": 70
+        },
+        "elstats": {
+            "VenusAtk": 150,
+            "VenusRes": 150,
+            "MarsAtk": 80,
+            "MarsRes": 80,
+            "JupiterAtk": 110,
+            "JupiterRes": 110,
+            "MercuryAtk": 110,
+            "MercuryRes": 110
+        },
+        "Weapon": {
+            "Name": "Claymore",
+            "Icon": "<:Claymore:569855141117820943>"
+        },
+        "isImmuneToOHKO": true,
+        "isImmuneToHPToOne": true
     }
 }

@@ -1589,20 +1589,7 @@
             }
         ]
     },
-    "Disarm": {
-        "name": "Disarm",
-        "targetType": 4,
-        "emote": "🏳️",
-        "range": 3,
-        "element": 4,
-        "PPCost": 0,
-        "power": 0,
-        "effects": [
-            {
-                "Type": "UserDies"
-            }
-        ]
-    },
+
     "Claw Attack": {
         "name": "Claw Attack",
         "targetType": 3,
