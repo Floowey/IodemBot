@@ -1038,7 +1038,8 @@
                 "name": "Brute",
                 "movepool": [
                     "Planet Diver",
-                    "Spire"
+                    "Spire",
+                    "Starburst"
                 ],
                 "statMultipliers": {
                     "maxHP": 100,
@@ -1053,6 +1054,7 @@
                 "movepool": [
                     "Planet Diver",
                     "Clay Spire",
+                    "Nova",
                     "Impair"
                 ],
                 "statMultipliers": {
@@ -1068,6 +1070,7 @@
                 "movepool": [
                     "Planet Diver",
                     "Clay Spire",
+                    "Nova",
                     "Impair",
                     "Revive"
                 ],
@@ -1084,6 +1087,7 @@
                 "movepool": [
                     "Planet Diver",
                     "Clay Spire",
+                    "Supernova",
                     "Debilitate",
                     "Revive"
                 ],
@@ -1100,6 +1104,7 @@
                 "movepool": [
                     "Planetary",
                     "Clay Spire",
+                    "Supernova",
                     "Debilitate",
                     "Revive"
                 ],
@@ -1116,6 +1121,7 @@
                 "movepool": [
                     "Planetary",
                     "Stone Spire",
+                    "Supernova",
                     "Debilitate",
                     "Revive"
                 ],
@@ -1154,7 +1160,8 @@
                 "name": "Apprentice",
                 "movepool": [
                     "Gaia",
-                    "Dull"
+                    "Dull",
+                    "Cure"
                 ],
                 "statMultipliers": {
                     "maxHP": 100,
@@ -1169,7 +1176,8 @@
                 "movepool": [
                     "Astral Blast",
                     "Gaia",
-                    "Dull"
+                    "Dull",
+                    "Cure Well"
                 ],
                 "statMultipliers": {
                     "maxHP": 120,
@@ -1185,7 +1193,8 @@
                     "Astral Blast",
                     "Mother Gaia",
                     "Blunt",
-                    "Impact"
+                    "Impact",
+                    "Cure Well"
                 ],
                 "statMultipliers": {
                     "maxHP": 140,
@@ -1201,7 +1210,8 @@
                     "Thunder Mine",
                     "Mother Gaia",
                     "Blunt",
-                    "High Impact"
+                    "High Impact",
+                    "Potent Cure"
                 ],
                 "statMultipliers": {
                     "maxHP": 170,
@@ -1217,7 +1227,8 @@
                     "Thunder Mine",
                     "Grand Gaia",
                     "Blunt",
-                    "High Impact"
+                    "High Impact",
+                    "Potent Cure"
                 ],
                 "statMultipliers": {
                     "maxHP": 190,
@@ -1284,6 +1295,7 @@
                 "movepool": [
                     "Cutting Edge",
                     "Briar",
+                    "Sand",
                     "Ply Well",
                     "Revive"
                 ],
@@ -1300,6 +1312,7 @@
                 "movepool": [
                     "Plume Edge",
                     "Briar",
+                    "Sand",
                     "Ply Well",
                     "Revive"
                 ],
@@ -1316,6 +1329,7 @@
                 "movepool": [
                     "Plume Edge",
                     "Nettle",
+                    "Sand",
                     "Pure Ply",
                     "Revive"
                 ],
@@ -1354,6 +1368,7 @@
                 "name": "Page",
                 "movepool": [
                     "Impact",
+                    "Volcano",
                     "Ward",
                     "Guard"
                 ],
@@ -1369,6 +1384,7 @@
                 "name": "Magma Illusionist",
                 "movepool": [
                     "Astral Blast",
+                    "Eruption",
                     "Impact",
                     "Ward",
                     "Guard"
@@ -1385,6 +1401,7 @@
                 "name": "Magma Enchanter",
                 "movepool": [
                     "Astral Blast",
+                    "Eruption",
                     "High Impact",
                     "Resist",
                     "Protect"
@@ -1401,6 +1418,7 @@
                 "name": "Magma Conjurer",
                 "movepool": [
                     "Thunder Mine",
+                    "Pyroclasm",
                     "High Impact",
                     "Resist",
                     "Protect"
@@ -1417,6 +1435,7 @@
                 "name": "Magma War Adept",
                 "movepool": [
                     "Thunder Mine",
+                    "Pyroclasm",
                     "High Impact",
                     "Resist",
                     "Protect"
@@ -1471,6 +1490,7 @@
                 "movepool": [
                     "Eruption",
                     "Plasma",
+                    "Bind",
                     "Ward"
                 ],
                 "statMultipliers": {
@@ -1486,6 +1506,7 @@
                 "movepool": [
                     "Eruption",
                     "Plasma",
+                    "Bind",
                     "Resist",
                     "Aura"
                 ],
@@ -1502,6 +1523,7 @@
                 "movepool": [
                     "Eruption",
                     "Shine Plasma",
+                    "Bind",
                     "Resist",
                     "Healing Aura"
                 ],
@@ -1518,6 +1540,7 @@
                 "movepool": [
                     "Pyroclasm",
                     "Spark Plasma",
+                    "Bind",
                     "Resist",
                     "Cool Aura"
                 ],
@@ -1555,8 +1578,9 @@
             {
                 "name": "Aqua Pilgrim",
                 "movepool": [
-                    "Volcano",
-                    "Prism"
+                    "Beam",
+                    "Prism",
+                    "Thermal"
                 ],
                 "statMultipliers": {
                     "maxHP": 90,
@@ -1569,8 +1593,9 @@
             {
                 "name": "Aqua Wanderer",
                 "movepool": [
-                    "Eruption",
+                    "Cycle Beam",
                     "Hail Prism",
+                    "Thermal",
                     "Wish"
                 ],
                 "statMultipliers": {
@@ -1584,8 +1609,9 @@
             {
                 "name": "Aqua Ascetic",
                 "movepool": [
-                    "Eruption",
+                    "Cycle Beam",
                     "Hail Prism",
+                    "Thermal",
                     "Wish",
                     "Phoenix"
                 ],
@@ -1600,8 +1626,9 @@
             {
                 "name": "Water Monk",
                 "movepool": [
-                    "Eruption",
+                    "Cycle Beam",
                     "Hail Prism",
+                    "Thermal",
                     "Wish Well",
                     "Phoenix"
                 ],
@@ -1616,8 +1643,9 @@
             {
                 "name": "Aqua Guru",
                 "movepool": [
-                    "Pyroclasm",
+                    "Searing Beam",
                     "Freeze Prism",
+                    "Thermal",
                     "Pure Wish",
                     "Phoenix"
                 ],
@@ -1657,7 +1685,7 @@
                 "movepool": [
                     "Bolt",
                     "Growth",
-                    "Fresh Breeze"
+                    "Cure"
                 ],
                 "statMultipliers": {
                     "maxHP": 90,
@@ -1672,7 +1700,8 @@
                 "movepool": [
                     "Flash Bolt",
                     "Mad Growth",
-                    "Healthy Wind"
+                    "Cure",
+                    "Fresh Breeze"
                 ],
                 "statMultipliers": {
                     "maxHP": 110,
@@ -1687,6 +1716,7 @@
                 "movepool": [
                     "Flash Bolt",
                     "Mad Growth",
+                    "Cure Well",
                     "Healthy Wind",
                     "Revive"
                 ],
@@ -1703,6 +1733,7 @@
                 "movepool": [
                     "Blue Bolt",
                     "Wild Growth",
+                    "Potent Cure",
                     "Healing Gust",
                     "Revive"
                 ],
@@ -1719,6 +1750,7 @@
                 "movepool": [
                     "Blue Bolt",
                     "Wild Growth",
+                    "Potent Cure",
                     "Healing Gust",
                     "Revive"
                 ],
@@ -1757,7 +1789,8 @@
                 "name": "Hermit",
                 "movepool": [
                     "Plasma",
-                    "Prism"
+                    "Prism",
+                    "Bind"
                 ],
                 "statMultipliers": {
                     "maxHP": 80,
@@ -1772,6 +1805,7 @@
                 "movepool": [
                     "Plasma",
                     "Hail Prism",
+                    "Bind",
                     "Impact",
                     "Wish"
                 ],
@@ -1788,6 +1822,7 @@
                 "movepool": [
                     "Plasma",
                     "Hail Prism",
+                    "Bind",
                     "Impact",
                     "Wish"
                 ],
@@ -1804,6 +1839,7 @@
                 "movepool": [
                     "Shine Plasma",
                     "Hail Prism",
+                    "Bind",
                     "High Impact",
                     "Wish Well"
                 ],
@@ -1820,6 +1856,7 @@
                 "movepool": [
                     "Shine Plasma",
                     "Freeze Prism",
+                    "Bind",
                     "High Impact",
                     "Wish Well"
                 ],
@@ -1836,6 +1873,7 @@
                 "movepool": [
                     "Spark Plasma",
                     "Freeze Prism",
+                    "Bind",
                     "High Impact",
                     "Pure Wish"
                 ],
@@ -1874,7 +1912,8 @@
                 "name": "Aqua Seer",
                 "movepool": [
                     "Froth",
-                    "Growth"
+                    "Growth",
+                    "Poison"
                 ],
                 "statMultipliers": {
                     "maxHP": 90,
@@ -1888,7 +1927,8 @@
                 "name": "Aqua Diviner",
                 "movepool": [
                     "Froth Sphere",
-                    "Mad Growth"
+                    "Mad Growth",
+                    "Poison"
                 ],
                 "statMultipliers": {
                     "maxHP": 110,
@@ -1903,6 +1943,7 @@
                 "movepool": [
                     "Froth Sphere",
                     "Mad Growth",
+                    "Poison",
                     "Elder Wood",
                     "Revive"
                 ],
@@ -1919,6 +1960,7 @@
                 "movepool": [
                     "Froth Spiral",
                     "Mad Growth",
+                    "Taint",
                     "Elder Wood",
                     "Revive"
                 ],
@@ -1935,6 +1977,7 @@
                 "movepool": [
                     "Froth Spiral",
                     "Wild Growth",
+                    "Taint",
                     "Estre Wood",
                     "Revive"
                 ],
@@ -1973,7 +2016,8 @@
                 "name": "Swordsman",
                 "movepool": [
                     "Blast",
-                    "Ply"
+                    "Ply",
+                    "Guard"
                 ],
                 "statMultipliers": {
                     "maxHP": 100,
@@ -1988,6 +2032,7 @@
                 "movepool": [
                     "Cutting Edge",
                     "Mad Blast",
+                    "Guard",
                     "Thermal",
                     "Ply"
                 ],
@@ -2004,6 +2049,7 @@
                 "movepool": [
                     "Cutting Edge",
                     "Mad Blast",
+                    "Guard",
                     "Thermal",
                     "Ply Well"
                 ],
@@ -2020,6 +2066,7 @@
                 "movepool": [
                     "Plume Edge",
                     "Fiery Blast",
+                    "Protect",
                     "Thermal",
                     "Ply Well"
                 ],
@@ -2036,6 +2083,7 @@
                 "movepool": [
                     "Plume Edge",
                     "Fiery Blast",
+                    "Protect",
                     "Thermal",
                     "Pure Ply"
                 ],
@@ -2074,7 +2122,8 @@
                 "name": "Curse Mage",
                 "movepool": [
                     "Undead Curse",
-                    "Raging Heat"
+                    "Raging Heat",
+                    "Impair"
                 ],
                 "statMultipliers": {
                     "maxHP": 80,
@@ -2089,7 +2138,8 @@
                 "movepool": [
                     "Undead Gloom",
                     "Fiery Abyss",
-                    "Impair"
+                    "Impair",
+                    "Condemn"
                 ],
                 "statMultipliers": {
                     "maxHP": 90,
@@ -2105,7 +2155,7 @@
                     "Undead Gloom",
                     "Fiery Abyss",
                     "Toxic Grit",
-                    "Debilitate"
+                    "Condemn"
                 ],
                 "statMultipliers": {
                     "maxHP": 120,
@@ -2121,7 +2171,8 @@
                     "Undead Gloom",
                     "Fiery Abyss",
                     "Toxic Grit",
-                    "Debilitate"
+                    "Debilitate",
+                    "Condemn"
                 ],
                 "statMultipliers": {
                     "maxHP": 130,
@@ -2137,7 +2188,8 @@
                     "Undead Gloom",
                     "Dire Inferno",
                     "Toxic Grit",
-                    "Debilitate"
+                    "Debilitate",
+                    "Condemn"
                 ],
                 "statMultipliers": {
                     "maxHP": 150,
@@ -2153,7 +2205,8 @@
                     "Undead Might",
                     "Dire Inferno",
                     "Toxic Grit",
-                    "Debilitate"
+                    "Debilitate",
+                    "Condemn"
                 ],
                 "statMultipliers": {
                     "maxHP": 170,
@@ -2190,7 +2243,8 @@
                 "name": "Scrapper",
                 "movepool": [
                     "Speed Punch",
-                    "Growth"
+                    "Growth",
+                    "Boon"
                 ],
                 "statMultipliers": {
                     "maxHP": 90,
@@ -2205,7 +2259,8 @@
                 "movepool": [
                     "Speed Punch",
                     "Psynergy Slam",
-                    "Growth"
+                    "Growth",
+                    "Boon"
                 ],
                 "statMultipliers": {
                     "maxHP": 110,
@@ -2220,7 +2275,8 @@
                 "movepool": [
                     "Speed Punch",
                     "Psynergy Slam",
-                    "Mad Growth"
+                    "Mad Growth",
+                    "Nature's Boon"
                 ],
                 "statMultipliers": {
                     "maxHP": 120,
@@ -2236,7 +2292,8 @@
                     "Speed Punch",
                     "Psynergy Slam",
                     "Psynergy Surge",
-                    "Mad Growth"
+                    "Mad Growth",
+                    "Nature's Boon"
                 ],
                 "statMultipliers": {
                     "maxHP": 150,
@@ -2252,7 +2309,8 @@
                     "Speed Punch",
                     "Psynergy Slam",
                     "Psynergy Surge",
-                    "Wild Growth"
+                    "Wild Growth",
+                    "Vital Boon"
                 ],
                 "statMultipliers": {
                     "maxHP": 170,

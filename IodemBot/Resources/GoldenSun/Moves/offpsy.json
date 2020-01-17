@@ -1232,7 +1232,7 @@
         "name": "Froth Spiral",
         "targetType": 4,
         "emote": "<:Froth_Spiral:536969197108985856>",
-        "range": 3,
+        "range": 4,
         "element": 3,
         "PPCost": 31,
         "power": 150
