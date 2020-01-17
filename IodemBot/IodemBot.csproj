@@ -321,6 +321,7 @@
     <Compile Include="Extensions\DjinnListExtension.cs" />
     <Compile Include="GuildSetup.cs" />
     <Compile Include="Modules\GoldenSunMechanics\DjinnAndSummons\DjinnPocket.cs" />
+    <Compile Include="Modules\GoldenSunMechanics\Effects\LingeringEffect.cs" />
     <Compile Include="TwitchConfig.cs" />
     <Compile Include="Converter\JsonCreationConverter.cs" />
     <Compile Include="Core\Leveling\ServerGames.cs" />

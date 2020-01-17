@@ -490,6 +490,89 @@
                         }
                     ]
                 ]
+            },
+            {
+                "Flavourtext": "The cave is getting darker and danker.. What will be at the end of it?",
+                "EnemyNames": [ "Death Cap", "Roach", "Roach", "Death Cap" ],
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "XP": 80,
+                            "Coins": 80
+                        }
+                    ],
+                    [
+                        {
+                            "Weight": 1,
+                            "Chest": "Wooden",
+                            "HasChest": true
+                        },
+                        { "Weight": 2 }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "'*We need to go deeper*' a voice inside of you whispers, full of curiousity. Another voice tells you that it's probably not worth it.",
+                "EnemyNames": [ "Wight", "Undead 2", "Wight" ],
+                "RewardTables": [
+                    [ { "Weight": 1 } ],
+                    [
+                        {
+                            "Weight": 1,
+                            "Chest": "Silver",
+                            "HasChest": true
+                        },
+                        { "Weight": 3 }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "The cave is getting spooky. You can see a yellow stone glimmering in the back. The voices inside you are in discord whether you should keep going.",
+                "EnemyNames": [ "Lich 2", "Ghost Mage 2" ],
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "XP": 50,
+                            "Coins": 120
+                        }
+                    ]
+                ]
+            },
+            {
+                "Flavourtext": "Oh hey! Looks like it was worth it after all! Now let's quickly exit this creepy place...",
+                "EnemyNames": [ "Jupiter Djinni 4" ],
+                "RewardTables": [
+                    [
+                        {
+                            "Weight": 1,
+                            "XP": 500,
+                            "Coins": 500
+                        }
+                    ],
+                    [
+                        {
+                            "Weight": 1,
+                            "Tag": "ValeCaveJupiter",
+                            "Obtainable": 3,
+                            "Djinn": "Jupiter"
+                        },
+                        {
+                            "Weight": 4,
+                            "Tag": "ValeCaveJupiter",
+                            "Obtainable": 2,
+                            "Djinn": "Jupiter"
+                        },
+                        {
+                            "Weight": 11,
+                            "Tag": "ValeCaveJupiter",
+                            "Obtainable": 1,
+                            "Djinn": "Jupiter"
+                        },
+                        { "Weight": 32 }
+                    ]
+                ]
             }
         ]
     },
@@ -670,7 +753,7 @@
         "name": "Goma Cave",
         "IsOneTimeOnly": true,
         "FlavourText": "A cave allowing you to pass through the Goma Range",
-        "Image": "",
+        "Image": "https://goldensunwiki.net/w/images/4/4a/GomaRange.png",
         "IsDefault": false,
         "Matchups": [
             {
@@ -772,7 +855,7 @@
                             "Obtainable": 1,
                             "Djinn": "Forge"
                         },
-                        { "Weight": 20 }
+                        { "Weight": 32 }
                     ],
                     [
                         {
@@ -892,25 +975,39 @@
                         }
                     ],
                     [
-                        { "Weight": 15 },
-                        {
-                            "Weight": 4,
-                            "Djinn": "Gust"
-                        },
                         {
                             "Weight": 1,
+                            "Tag": "BilibinDjinn",
+                            "Obtainable": 2,
                             "Djinn": "Jupiter"
-                        }
+                        },
+                        {
+                            "Weight": 4,
+                            "Tag": "BilibinDjinn",
+                            "Obtainable": 1,
+                            "Djinn": "Jupiter"
+                        },
+                        {
+                            "Weight": 11,
+                            "Tag": "BilibinGust",
+                            "Obtainable": 1,
+                            "Djinn": "Gust"
+                        },
+                        { "Weight": 32 }
                     ],
                     [
-                        { "Weight": 4 },
+                        { "Weight": 8 },
                         {
-                            "Weight": 2,
+                            "Weight": 4,
                             "Dungeon": "Kolima"
                         },
                         {
-                            "Weight": 1,
+                            "Weight": 2,
                             "Dungeon": "Bilibin Cave"
+                        },
+                        {
+                            "Weight": 1,
+                            "Dungeon": "Lunpa"
                         }
                     ]
                 ]
@@ -997,6 +1094,8 @@
                         {
                             "Weight": 1,
                             "RequireTag": [ "Aqua1" ],
+                            "Tag": "BilibinCaveMercury",
+                            "Obtainable": 1,
                             "XP": 20,
                             "Coins": 20,
                             "Djinn": "Mercury"
@@ -1061,17 +1160,24 @@
                     ],
                     [
                         {
-                            "Weight": 15,
-                            "XP": 1
+                            "Weight": 1,
+                            "Tag": "KolimaDjinn",
+                            "Obtainable": 2,
+                            "Djinn": "Venus"
                         },
                         {
                             "Weight": 4,
-                            "Djinn": "Bark"
+                            "Tag": "KolimaDjinn",
+                            "Obtainable": 1,
+                            "Djinn": "Venus"
                         },
                         {
-                            "Weight": 1,
-                            "Djinn": "Venus"
-                        }
+                            "Weight": 11,
+                            "Tag": "KolimaBark",
+                            "Obtainable": 1,
+                            "Djinn": "Bark"
+                        },
+                        { "Weight": 32 }
                     ]
                 ]
             },
@@ -1097,7 +1203,7 @@
                 ]
             },
             {
-                "Flavourtext": "Some bees swarming around, totally normal.",
+                "Flavourtext": "Some bees swarming around, pretty typical in this kind of place.",
                 "EnemyNames": [ "Drone Bee 1", "Drone Bee 1", "Drone bee 1" ],
                 "RewardTables": [
                     [
@@ -1111,7 +1217,7 @@
             },
             {
                 "Flavourtext": "Woops, something between the trees is moving. Totally normal, after all you've been rolling around logs all day.",
-                "EnemyNames": [ "Kobold 1", "Flutter Seed", "Flutter Seed" ],
+                "EnemyNames": [ "Kobold 2", "Flutter Seed", "Flutter Seed" ],
                 "Shuffle": true,
                 "RewardTables": [
                     [
@@ -1131,7 +1237,7 @@
                 ]
             },
             {
-                "Flavourtext": "The forest is getting deeper and deeper, take care you don't get lost. Unlike these guys, who were eaten by a troll.",
+                "Flavourtext": "You continue to advance deeper and deeper into the forest, take care you don't get lost. Unlike these guys, who were eaten by a troll.",
                 "EnemyNames": [ "Troll 1", "Skeleton 1", "Skeleton 1", "Skeleton 1" ],
                 "Shuffle": true,
                 "RewardTables": [
@@ -1154,7 +1260,7 @@
             },
             {
                 "Flavourtext": "Dusk is setting in. Either you find the way out now or try to survive the night.",
-                "EnemyNames": [ "Will Head", "Death Head", "Will Head" ],
+                "EnemyNames": [ "Will Head", "Creeper 1", "Will Head" ],
                 "RewardTables": [
                     [
                         {
@@ -3561,7 +3667,7 @@
         "Matchups": [
             {
                 "Flavourtext": "Welcome, Adept. Water flows through your aura like blood through your veins. Let me show you what it is like to be a Mercury Adept. Water is steady as a flowing river. Unlike us Jupiter Adepts, Mercury is not rash in the least. Where Jupiter has knowledge, Mercury has wisdom.",
-                "EnemyNames": [ "Gnome", "Gnome" ],
+                "EnemyNames": [ "Gnome", "Ghost" ],
                 "RewardTables": [
                     [
                         {
@@ -3576,12 +3682,12 @@
             },
             {
                 "Flavourtext": "Mercury Adepts are masters at healing, unbeaten by the less spiritual powers of other elements. Where live is water, and where water is, is life.",
-                "EnemyNames": [ "Spider 1", "Tarantula 1" ],
+                "EnemyNames": [ "Spider 1", "Mini-Goblin" ],
                 "RewardTables": [
                     [
                         {
                             "Weight": 1,
-                            "Tag": "Aqua1Reward3",
+                            "Tag": "Aqua1Reward2",
                             "Obtainable": 1,
                             "XP": 30,
                             "Coins": 30,
@@ -3667,6 +3773,7 @@
                     [
                         {
                             "Weight": 1,
+                            "Tag": "Aqua2Reward1",
                             "Obtainable": 1,
                             "XP": 140,
                             "Coins": 140
@@ -3681,6 +3788,7 @@
                     [
                         {
                             "Weight": 1,
+                            "Tag": "Aqua2Reward2",
                             "Obtainable": 1,
                             "XP": 140,
                             "Coins": 140,
@@ -3697,6 +3805,7 @@
                     [
                         {
                             "Weight": 1,
+                            "Tag": "Aqua2Reward3",
                             "Obtainable": 1,
                             "XP": 140,
                             "Coins": 140
@@ -3711,6 +3820,7 @@
                     [
                         {
                             "Weight": 1,
+                            "Tag": "Aqua2Reward4",
                             "Obtainable": 1,
                             "XP": 140,
                             "Coins": 140
@@ -3725,6 +3835,7 @@
                     [
                         {
                             "Weight": 1,
+                            "Tag": "Aqua2Reward5",
                             "Obtainable": 1,
                             "XP": 140,
                             "Coins": 140
@@ -3748,7 +3859,7 @@
                 ]
             },
             {
-                "Flavourtext": "After the fight is over, Nereid starts gi#ggling. You don't even have the time to feel insulted that you feel like if you were submerged in warm water. 'That looks like a success', Hama remarks. Nereid then puts her fan in front of her face while her turtle swims away, carrying her on its back.\n'As usual, I'll send you back to where we came from. Train once again, and come back when your practice paid off. The next time, we're gonna try to meet one of the most impressive beings of the seven seas.'",
+                "Flavourtext": "After the fight is over, Nereid starts giggling. You don't even have the time to feel insulted that you feel like if you were submerged in warm water. 'That looks like a success', Hama remarks. Nereid then puts her fan in front of her face while her turtle swims away, carrying her on its back.\n'As usual, I'll send you back to where we came from. Train once again, and come back when your practice paid off. The next time, we're gonna try to meet one of the most impressive beings of the seven seas.'",
                 "EnemyNames": [ "Next" ],
                 "RewardTables": [
                     [

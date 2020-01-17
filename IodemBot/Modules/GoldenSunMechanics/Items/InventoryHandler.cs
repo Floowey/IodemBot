@@ -3,6 +3,7 @@ using Discord.Commands;
 using Discord.WebSocket;
 using Iodembot.Preconditions;
 using IodemBot.Core.UserManagement;
+using IodemBot.Extensions;
 using IodemBot.Modules.ColossoBattles;
 using System;
 using System.Collections.Generic;
@@ -361,6 +362,12 @@ namespace IodemBot.Modules.GoldenSunMechanics
             await Task.Delay((int)cq * 700);
             _ = msg.ModifyAsync(m => m.Embed = embed.Build());
             inv.Add(item.Name);
+
+            var message = await Context.Channel.AwaitMessage(m => m.Author == Context.User);
+            if (message.Content.Equals("Sell"))
+            {
+                _ = SellItem(item.Name);
+            }
         }
 
         [Command("Inv Clear")]

@@ -46,9 +46,10 @@ namespace IodemBot.Modules.ColossoBattles
             var User = UserAccounts.GetAccount(Context.User);
             if (EnemiesDatabase.TryGetDungeon(DungeonName, out var Dungeon))
             {
-                if (!User.Dungeons.Contains(Dungeon.Name))
+                if (!User.Dungeons.Contains(Dungeon.Name) && !Dungeon.IsDefault && !ModPermission)
                 {
                     await ReplyAsync($"If you can't tell me where this place is, I can't take you there. And even if you knew, they probably wouldn't let you in! Bring me a map or show to me that you have the key to enter.");
+                    return;
                 }
 
                 if (!Dungeon.Requirement.Applies(User) && !ModPermission)

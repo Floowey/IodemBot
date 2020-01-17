@@ -159,7 +159,7 @@ namespace IodemBot.Modules.ColossoBattles
                     return;
                 }
 
-                if (reaction.Emote.Name == "⏸")
+                if (reaction.Emote.Name == "⏸️")
                 {
                     autoTurn.Stop();
                     return;
