@@ -687,5 +687,18 @@
                 "Probability": 10
             }
         ]
+    },
+    "Sand": {
+        "name": "Sand",
+        "targetType": 1,
+        "emote": "<:Sand:667747947194089478>",
+        "element": 0,
+        "PPCost": 8,
+        "effects": [
+            {
+                "Type": "ReduceDamage",
+                "DamageReduction": 75
+            }
+        ]
     }
 }
