@@ -582,7 +582,7 @@
         "name": "Condemn",
         "targetType": 4,
         "emote": "<:Condemn:536986417130373130>",
-        "range": 1
+        "range": 1,
         "element": 0,
         "PPCost": 4,
         "effects": [
@@ -660,8 +660,8 @@
     },
     "Poison": {
         "name": "Poison",
-        "targetType": 4,
-        "emote": "<:Poison:549526931847249920>,
+        "targetType": 3,
+        "emote": "<:Poison:549526931847249920>",
         "range": 1,
         "element": 0,
         "PPCost": 4,
@@ -675,7 +675,7 @@
     },
     "Taint": {
         "name": "Taint",
-        "targetType": 4,
+        "targetType": 3,
         "emote": "<:Venom:598458704400220160>",
         "range": 1,
         "element": 0,
@@ -687,5 +687,5 @@
                 "Probability": 10
             }
         ]
-    }   
+    }
 }
