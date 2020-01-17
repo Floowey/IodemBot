@@ -582,13 +582,13 @@
         "name": "Condemn",
         "targetType": 4,
         "emote": "<:Condemn:536986417130373130>",
-        "range": 3,
+        "range": 1
         "element": 0,
         "PPCost": 4,
         "effects": [
             {
                 "Type": "OHKO",
-                "Probability": 30
+                "Probability": 15
             }
         ]
     },
@@ -657,5 +657,35 @@
                 "Probability": 100
             }
         ]
-    }
+    },
+    "Poison": {
+        "name": "Poison",
+        "targetType": 4,
+        "emote": "<:Poison:549526931847249920>,
+        "range": 1,
+        "element": 0,
+        "PPCost": 4,
+        "effects": [
+            {
+                "Type": "Condition",
+                "Condition": "Poison",
+                "Probability": 15
+            }
+        ]
+    },
+    "Taint": {
+        "name": "Taint",
+        "targetType": 4,
+        "emote": "<:Venom:598458704400220160>",
+        "range": 1,
+        "element": 0,
+        "PPCost": 6,
+        "effects": [
+            {
+                "Type": "Condition",
+                "Condition": "Venom",
+                "Probability": 10
+            }
+        ]
+    }   
 }
