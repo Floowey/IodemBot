@@ -124,14 +124,15 @@ namespace IodemBot.Modules.ColossoBattles
 
         protected override string GetEnemyMessageString()
         {
-            return $"{base.GetEnemyMessageString()}\n{Dungeon?.FlavourText ?? "Poop"}";
+            return $"{base.GetEnemyMessageString()}\n{Dungeon?.FlavourText}";
         }
 
         protected override string GetStartBattleString()
         {
             string msg = PlayerMessages
                         .Aggregate("", (s, v) => s += $"<@{v.Value.avatar.ID}>, ");
-            return $"{matchup.FlavourText}\n{msg} get into Position!";
+            SummonsMessage.ModifyAsync(m => m.Content = matchup.FlavourText);
+            return $"{msg} get into Position!";
         }
 
         protected override async Task GameOver()
@@ -155,7 +156,8 @@ namespace IodemBot.Modules.ColossoBattles
 
                 if (!EndOfDungeon)
                 {
-                    var text = $"{winners.First().Name}'s Party wins Battle! \n{matchup.FlavourText}";
+                    await SummonsMessage.ModifyAsync(m => m.Content = matchup.FlavourText);
+                    var text = $"{winners.First().Name}'s Party wins Battle!";
                     await Task.Delay(2000);
                     await StatusMessage.ModifyAsync(m => { m.Content = text; m.Embed = null; });
                     await Task.Delay(2000);
