@@ -11488,11 +11488,12 @@
         "name": "Fortress Guard",
         "imgurl": "https://goldensunwiki.net/w/images/c/ca/SolSanctumDisarm.png",
         "movepool": [
-            "Disarm"
+            "Guard",
+            "Nut"
         ],
         "stats": {
             "maxHP": 20000,
-            "maxPP": 0,
+            "maxPP": 50,
             "Atk": 20000,
             "Def": 2,
             "Spd": 3
@@ -11507,7 +11508,8 @@
             "MercuryAtk": 100,
             "MercuryRes": 25
         },
-        "Conditions": [ "Counter" ],
+        "Conditions": [ "DeathCurse", "Counter" ],
+        "DeathCurseCounter": 3,
         "hasDefend": false,
         "hasAttack": false
     },
@@ -11515,12 +11517,11 @@
         "name": "Move",
         "imgurl": "https://goldensunwiki.net/w/images/c/ca/SolSanctumDisarm.png",
         "movepool": [
-            "Disarm"
         ],
         "stats": {
             "maxHP": 1,
             "maxPP": 0,
-            "Atk": 1,
+            "Atk": 20000,
             "Def": 1,
             "Spd": 3
         },
@@ -11535,7 +11536,6 @@
             "MercuryRes": 25
         },
         "hasDefend": false,
-        "hasAttack": false,
         "isImmuneToPsynergy": true
     },
     "CatchBilibin": {
