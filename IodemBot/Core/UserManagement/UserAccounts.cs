@@ -54,7 +54,7 @@ namespace IodemBot.Core.UserManagement
 
         public static UserAccount[] GetTop(int number, RankEnum type = RankEnum.Level)
         {
-            var sortedList = accounts.OrderByDescending(d => d.XP).ToList();
+            var sortedList = accounts.OrderByDescending(d => d.TotalXP).ToList();
             switch (type)
             {
                 case (RankEnum.Solo):
