@@ -148,7 +148,7 @@
         "name": "Punji Trap",
         "targetType": 4,
         "emote": "<:Punji_Trap:536958822841843722>",
-        "range": 3,
+        "range": 4,
         "element": 0,
         "PPCost": 13,
         "power": 85
@@ -662,7 +662,7 @@
         "name": "Cluster Bomb",
         "targetType": 4,
         "emote": "<:Cluster_Bomb:536965433094307841>",
-        "range": 2,
+        "range": 3,
         "element": 1,
         "PPCost": 11,
         "power": 65
@@ -671,7 +671,7 @@
         "name": "Carpet Bomb",
         "targetType": 4,
         "emote": "<:Carpet_Bomb:536965454179336192>",
-        "range": 3,
+        "range": 4,
         "element": 1,
         "effects": [
             {
@@ -705,7 +705,7 @@
         "name": "Supernova",
         "targetType": 4,
         "emote": "<:Supernova:536965117980573716>",
-        "range": 3,
+        "range": 4,
         "element": 1,
         "PPCost": 31,
         "power": 150
@@ -999,7 +999,7 @@
         "name": "Blue Bolt",
         "targetType": 4,
         "emote": "<:Blue_Bolt:536966467543891968>",
-        "range": 3,
+        "range": 2,
         "element": 2,
         "effects": [
             {
@@ -1033,7 +1033,7 @@
         "name": "Thunderhead",
         "targetType": 4,
         "emote": "<:Thunderstorm:536968389680168963>",
-        "range": 3,
+        "range": 4,
         "element": 2,
         "PPCost": 39,
         "power": 190
@@ -1235,7 +1235,7 @@
         "range": 3,
         "element": 3,
         "PPCost": 31,
-        "power": 130
+        "power": 150
     },
     "Drain": {
         "name": "Drain",
