@@ -1589,7 +1589,21 @@
             }
         ]
     },
-
+    "Wrong": {
+        "name": "Wrong!",
+        "targetType": 4,
+        "emote": "❌",
+        "range": 5,
+        "element": 4,
+        "PPCost": 0,
+        "power": 2000,
+        "IgnoreSpread": true,
+        "effects": [
+            {
+                "Type": "UserDies"
+            }
+        ]
+    },
     "Claw Attack": {
         "name": "Claw Attack",
         "targetType": 3,
