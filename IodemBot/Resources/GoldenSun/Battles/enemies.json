@@ -10316,7 +10316,7 @@
         "stats": {
             "maxHP": 20000,
             "maxPP": 0,
-            "Atk": 5000,
+            "Atk": 20000,
             "Def": 2,
             "Spd": 3
         },
@@ -10332,6 +10332,15 @@
         },
         "Conditions": [ "DeathCurse", "Counter" ],
         "DeathCurseCounter": 1,
+        "isImmuneToConditions": [
+            "Stun",
+            "Poison",
+            "Venom",
+            "Delusion",
+            "Sleep",
+            "Haunt",
+            "Flinch"
+        ],
         "hasDefend": false,
         "hasAttack": false
     },
@@ -10344,7 +10353,7 @@
         "stats": {
             "maxHP": 1,
             "maxPP": 0,
-            "Atk": 100,
+            "Atk": 20000,
             "Def": 2,
             "Spd": 3
         },
@@ -10358,6 +10367,15 @@
             "MercuryAtk": 100,
             "MercuryRes": 25
         },
+        "isImmuneToConditions": [
+            "Stun",
+            "Poison",
+            "Venom",
+            "Delusion",
+            "Sleep",
+            "Haunt",
+            "Flinch"
+        ],
         "hasDefend": false,
         "hasAttack": false,
         "isImmuneToPsynergy": true
@@ -10386,6 +10404,15 @@
             "MercuryRes": 25
         },
         "Conditions": [ "Counter" ],
+        "isImmuneToConditions": [
+            "Stun",
+            "Poison",
+            "Venom",
+            "Delusion",
+            "Sleep",
+            "Haunt",
+            "Flinch"
+        ],
         "hasDefend": false,
         "hasAttack": false
     },
@@ -11405,14 +11432,14 @@
         "name": "Red Key",
         "imgurl": "https://goldensunwiki.net/w/images/c/ca/SolSanctumDisarm.png",
         "movepool": [
-            "Trap"
+            "Wrong"
         ],
         "stats": {
             "maxHP": 1,
             "maxPP": 0,
             "Atk": 1,
             "Def": 1,
-            "Spd": 3
+            "Spd": 9
         },
         "elstats": {
             "VenusAtk": 100,
@@ -11424,6 +11451,15 @@
             "MercuryAtk": 100,
             "MercuryRes": 25
         },
+        "isImmuneToConditions": [
+            "Stun",
+            "Poison",
+            "Venom",
+            "Delusion",
+            "Sleep",
+            "Haunt",
+            "Flinch"
+        ],
         "hasDefend": false,
         "hasAttack": false,
         "isImmuneToPsynergy": true
@@ -11432,14 +11468,14 @@
         "name": "Blue Key",
         "imgurl": "https://goldensunwiki.net/w/images/c/ca/SolSanctumDisarm.png",
         "movepool": [
-            "Disarm"
+            "Correct"
         ],
         "stats": {
             "maxHP": 20000,
             "maxPP": 0,
             "Atk": 20000,
-            "Def": 2,
-            "Spd": 3
+            "Def": 1,
+            "Spd": 1
         },
         "elstats": {
             "VenusAtk": 100,
@@ -11452,6 +11488,15 @@
             "MercuryRes": 25
         },
         "Conditions": [ "Counter" ],
+        "isImmuneToConditions": [
+            "Stun",
+            "Poison",
+            "Venom",
+            "Delusion",
+            "Sleep",
+            "Haunt",
+            "Flinch"
+        ],
         "hasDefend": false,
         "hasAttack": false,
         "isImmuneToOHKO": true
@@ -11460,14 +11505,14 @@
         "name": "Green Key",
         "imgurl": "https://goldensunwiki.net/w/images/c/ca/SolSanctumDisarm.png",
         "movepool": [
-            "Disarm"
+            "Correct"
         ],
         "stats": {
             "maxHP": 20000,
             "maxPP": 0,
             "Atk": 20000,
-            "Def": 2,
-            "Spd": 3
+            "Def": 1,
+            "Spd": 1
         },
         "elstats": {
             "VenusAtk": 100,
@@ -11480,6 +11525,15 @@
             "MercuryRes": 25
         },
         "Conditions": [ "Counter" ],
+        "isImmuneToConditions": [
+            "Stun",
+            "Poison",
+            "Venom",
+            "Delusion",
+            "Sleep",
+            "Haunt",
+            "Flinch"
+        ],
         "hasDefend": false,
         "hasAttack": false,
         "isImmuneToOHKO": true
@@ -11489,7 +11543,7 @@
         "imgurl": "https://goldensunwiki.net/w/images/c/ca/SolSanctumDisarm.png",
         "movepool": [
             "Guard",
-            "Nut"
+            "Search"
         ],
         "stats": {
             "maxHP": 20000,
@@ -11510,6 +11564,15 @@
         },
         "Conditions": [ "DeathCurse", "Counter" ],
         "DeathCurseCounter": 3,
+        "isImmuneToConditions": [
+            "Stun",
+            "Poison",
+            "Venom",
+            "Delusion",
+            "Sleep",
+            "Haunt",
+            "Flinch"
+        ],
         "hasDefend": false,
         "hasAttack": false
     },
@@ -11517,13 +11580,14 @@
         "name": "Move",
         "imgurl": "https://goldensunwiki.net/w/images/c/ca/SolSanctumDisarm.png",
         "movepool": [
+            "Wrong"
         ],
         "stats": {
             "maxHP": 1,
             "maxPP": 0,
             "Atk": 20000,
             "Def": 1,
-            "Spd": 3
+            "Spd": 9
         },
         "elstats": {
             "VenusAtk": 100,
@@ -11535,6 +11599,7 @@
             "MercuryAtk": 100,
             "MercuryRes": 25
         },
+        "hasAttack": false,
         "hasDefend": false,
         "isImmuneToPsynergy": true
     },
@@ -11542,14 +11607,14 @@
         "name": "Catch",
         "imgurl": "https://goldensunwiki.net/w/images/c/ca/SolSanctumDisarm.png",
         "movepool": [
-            "Disarm"
+            "Correct"
         ],
         "stats": {
             "maxHP": 20000,
             "maxPP": 0,
             "Atk": 20000,
             "Def": 2,
-            "Spd": 3
+            "Spd": 1
         },
         "elstats": {
             "VenusAtk": 100,
@@ -11570,14 +11635,14 @@
         "name": "Retreat",
         "imgurl": "https://goldensunwiki.net/w/images/c/ca/SolSanctumDisarm.png",
         "movepool": [
-            "Disarm"
+            "Correct"
         ],
         "stats": {
             "maxHP": 20000,
             "maxPP": 0,
             "Atk": 20000,
             "Def": 2,
-            "Spd": 3
+            "Spd": 1
         },
         "elstats": {
             "VenusAtk": 100,
