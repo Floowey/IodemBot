@@ -11428,8 +11428,8 @@
         "isImmuneToOHKO": true,
         "isImmuneToHPToOne": true
     },
-    "Red Key": {
-        "name": "Red Key",
+    "Yellow Key": {
+        "name": "Yellow Key",
         "imgurl": "https://goldensunwiki.net/w/images/c/ca/SolSanctumDisarm.png",
         "movepool": [
             "Wrong"
@@ -11501,8 +11501,8 @@
         "hasAttack": false,
         "isImmuneToOHKO": true
     },
-    "Green Key": {
-        "name": "Green Key",
+    "Red Key": {
+        "name": "Red Key",
         "imgurl": "https://goldensunwiki.net/w/images/c/ca/SolSanctumDisarm.png",
         "movepool": [
             "Correct"
