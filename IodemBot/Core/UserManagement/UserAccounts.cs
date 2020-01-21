@@ -16,7 +16,7 @@ namespace IodemBot.Core.UserManagement
             {
                 if (DataStorage.SaveExists(accountsFile))
                 {
-                    accounts = DataStorage.LoadUserAccounts(accountsFile).ToList();
+                    accounts = DataStorage.LoadListFromFile<UserAccount>(accountsFile).ToList();
                 }
                 else
                 {

@@ -1,5 +1,4 @@
-﻿using IodemBot.Core.UserManagement;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -11,7 +10,7 @@ namespace IodemBot.Core
         private static bool isSaving = false;
 
         //Save All userAccounts
-        public static void SaveUserAccounts(IEnumerable<UserAccount> accounts, string filePath)
+        public static void SaveUserAccounts<T>(IEnumerable<T> accounts, string filePath)
         {
             try
             {
@@ -33,7 +32,7 @@ namespace IodemBot.Core
         }
 
         //Get All userAccounts
-        public static IEnumerable<UserAccount> LoadUserAccounts(string filePath)
+        public static IEnumerable<T> LoadListFromFile<T>(string filePath)
         {
             if (!File.Exists(filePath))
             {
@@ -41,7 +40,7 @@ namespace IodemBot.Core
             }
 
             string json = File.ReadAllText(filePath);
-            return JsonConvert.DeserializeObject<List<UserAccount>>(json);
+            return JsonConvert.DeserializeObject<List<T>>(json);
         }
 
         public static bool SaveExists(string filePath)
