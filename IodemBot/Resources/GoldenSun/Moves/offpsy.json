@@ -1244,7 +1244,14 @@
         "range": 1,
         "element": 2,
         "PPCost": 3,
-        "power": 50
+        "power": 50,
+        "effects": [
+                {
+                    "Type": "HPDrain",
+                    "Percentage": 100,
+                    "Probability": 100
+                }
+            ]
     },
     "Heat Flash": {
         "name": "Heat Flash",
@@ -1327,7 +1334,7 @@
         "range": 1,
         "element": 0,
         "PPCost": 0,
-        "power": 80
+        "power": 24
     },
     "Bacteria Rush": {
         "name": "Bacteria Rush",
