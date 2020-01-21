@@ -13,8 +13,6 @@ namespace IodemBot.Core.Leveling
 {
     internal static class ServerGames
     {
-        private static ITextChannel botspam = (SocketTextChannel)(Global.Client.GetChannel(358276942337671178) ?? Global.Client.GetChannel(497696510688100352));
-
         internal static async void UserWonColosso(SocketGuildUser user, SocketTextChannel channel)
         {
             var userAccount = UserAccounts.GetAccount(user);
@@ -127,7 +125,7 @@ namespace IodemBot.Core.Leveling
             var embed = new EmbedBuilder();
             embed.WithColor(Colors.Get("Iodem"));
             embed.WithDescription($"{string.Join("\n", text)}");
-            _ = botspam.SendMessageAsync("", false, embed.Build());
+            _ = GuildSetups.GetAccount(channel.Guild).CommandChannel.SendMessageAsync("", false, embed.Build());
             var msg = await channel.SendMessageAsync("", false, embed.Build());
             await Task.Delay(3000);
             _ = msg.DeleteAsync();

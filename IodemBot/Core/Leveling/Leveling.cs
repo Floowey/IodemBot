@@ -66,7 +66,7 @@ namespace IodemBot.Core.Leveling
                 }
             }
 
-            if (channel.Id == 546760009741107216)
+            if (channel.Id == GuildSetups.GetAccount(channel.Guild)?.ColossoChannel.Id)
             {
                 userAccount.ServerStats.MessagesInColossoTalks++;
                 if (userAccount.ServerStats.MessagesInColossoTalks >= 50)
@@ -90,7 +90,7 @@ namespace IodemBot.Core.Leveling
         {
             if (userAccount.LevelNumber < 10 && (userAccount.LevelNumber % 5) > 0)
             {
-                channel = (SocketTextChannel)user.Guild.Channels.Where(c => c.Id == 358276942337671178).FirstOrDefault();
+                channel = GuildSetups.GetAccount(user.Guild).CommandChannel;
             }
             if (channel == null)
             {
@@ -133,7 +133,7 @@ namespace IodemBot.Core.Leveling
             {
                 try
                 {
-                    await GoldenSun.AwardClassSeries("Aqua Pilgrim Series", user, (SocketTextChannel)Global.Client.GetChannel(546760009741107216));
+                    await GoldenSun.AwardClassSeries("Aqua Pilgrim Series", user, GuildSetups.GetAccount(user.Guild).ColossoChannel);
                 }
                 catch { }
             }
