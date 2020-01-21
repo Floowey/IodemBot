@@ -27,7 +27,7 @@ namespace IodemBot.Modules.ColossoBattles
             }
         }
 
-        public async Task setupDungeon(string DungeonName, bool ModPermission = false)
+        public async Task SetupDungeon(string DungeonName, bool ModPermission = false)
         {
             var User = UserAccounts.GetAccount(Context.User);
             if (EnemiesDatabase.TryGetDungeon(DungeonName, out var Dungeon))
@@ -84,7 +84,7 @@ namespace IodemBot.Modules.ColossoBattles
             await Task.CompletedTask;
         }
 
-        internal void removeBattle(string name)
+        internal void RemoveBattle(string name)
         {
             battles.RemoveAll(b => b.Name.Equals(name, StringComparison.CurrentCultureIgnoreCase));
         }
@@ -154,14 +154,14 @@ namespace IodemBot.Modules.ColossoBattles
         [RequireStaff]
         [RequireUserServer]
         public async Task Dungeon([Remainder] string DungeonName)
-        { _ = setupDungeon(DungeonName, false); await Task.CompletedTask; }
+        { _ = SetupDungeon(DungeonName, false); await Task.CompletedTask; }
 
         [Command("moddungeon")]
         [RequireStaff]
         [RequireUserServer]
         public async Task ModDungeon([Remainder] string DungeonName)
 
-        { _ = setupDungeon(DungeonName, true); await Task.CompletedTask; }
+        { _ = SetupDungeon(DungeonName, true); await Task.CompletedTask; }
 
         [Command("alldungeons")]
         [RequireStaff]
