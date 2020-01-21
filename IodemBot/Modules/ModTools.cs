@@ -15,7 +15,7 @@ namespace IodemBot.Modules
         [Command("Ban")]
         [RequireModerator]
         [RequireBotPermission(GuildPermission.BanMembers)]
-        public async Task BanUser(IGuildUser user, string reason = "No reason provided.")
+        public async Task BanUser(IGuildUser user, [Remainder] string reason = "No reason provided.")
         {
             await user.Guild.AddBanAsync(user, 5, reason);
         }
@@ -50,7 +50,7 @@ namespace IodemBot.Modules
 
         [Command("Kick")]
         [RequireModerator]
-        public async Task KickUser(IGuildUser user, string reason = "No reason provided.")
+        public async Task KickUser(IGuildUser user, [Remainder] string reason = "No reason provided.")
         {
             await user.KickAsync(reason);
         }

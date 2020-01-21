@@ -2,6 +2,7 @@
 using Discord.Commands;
 using Discord.WebSocket;
 using Iodembot.Preconditions;
+using IodemBot.Core;
 using IodemBot.Core.UserManagement;
 using IodemBot.Extensions;
 using System;
@@ -17,21 +18,6 @@ namespace IodemBot.Modules.ColossoBattles
             "\u0036\u20E3", "\u0037\u20E3", "\u0038\u20E3", "\u0039\u20E3" };
 
         private static List<BattleEnvironment> battles = new List<BattleEnvironment>();
-
-        public static SocketTextChannel LobbyChannel
-        {
-            get
-            {
-                if (LobbyChannelInternal == null)
-                {
-                    LobbyChannelInternal = (SocketTextChannel)Global.Client.GetChannel(546760009741107216) ?? (SocketTextChannel)Global.Client.GetChannel(564175057447026688);
-                }
-                return LobbyChannelInternal;
-            }
-            set { LobbyChannelInternal = value; }
-        }
-
-        private static SocketTextChannel LobbyChannelInternal;
 
         public static ulong[] ChannelIds
         {
@@ -75,7 +61,7 @@ namespace IodemBot.Modules.ColossoBattles
                             battles.Remove(gauntletFromUser);
                         }
                     }
-                    openBattle = new GauntletBattleEnvironment($"{Context.User.Username}", LobbyChannel, await PrepareBattleChannel($"{Dungeon.Name}-{Context.User.Username}"), Dungeon.Name, true);
+                    openBattle = new GauntletBattleEnvironment($"{Context.User.Username}", GuildSetups.GetAccount(Context.Guild).ColossoChannel, await PrepareBattleChannel($"{Dungeon.Name}-{Context.User.Username}"), Dungeon.Name, true);
 
                     battles.Add(openBattle);
                 }
@@ -105,9 +91,9 @@ namespace IodemBot.Modules.ColossoBattles
 
         [Command("c setup"), Alias("colosso setup")]
         [RequireStaff]
+        [RequireUserServer]
         public async Task SetupColosso()
         {
-            LobbyChannel = (SocketTextChannel)Context.Channel;
             PvPEnvironment.TeamBRole = Context.Guild.GetRole(592413472277528589) ?? Context.Guild.GetRole(602241074261524498); //Test: 592413472277528589, GS: 602241074261524498
 
             await Context.Message.DeleteAsync();
@@ -118,7 +104,7 @@ namespace IodemBot.Modules.ColossoBattles
         {
             battles.ForEach(old => old.Dispose());
             battles.Clear();
-            battles.Add(new SingleBattleEnvironment("Wilds", LobbyChannel, await PrepareBattleChannel("Weyard-Wilds"), BattleDifficulty.Easy));
+            battles.Add(new SingleBattleEnvironment("Wilds", GuildSetups.GetAccount(Context.Guild).ColossoChannel, await PrepareBattleChannel("Weyard-Wilds"), BattleDifficulty.Easy));
             //battles.Add(new SingleBattleEnvironment("Woods", LobbyChannel, await PrepareBattleChannel("Weyard-Woods"), BattleDifficulty.Medium));
             //battles.Add(new SingleBattleEnvironment("Wealds", LobbyChannel, await PrepareBattleChannel("Weyard-Wealds"), BattleDifficulty.Hard));
 
@@ -139,6 +125,7 @@ namespace IodemBot.Modules.ColossoBattles
 
         [Command("c reset")]
         [RequireStaff]
+        [RequireUserServer]
         public async Task Reset(string name)
         {
             await Context.Message.DeleteAsync();
@@ -151,6 +138,7 @@ namespace IodemBot.Modules.ColossoBattles
 
         [Command("c setEnemy")]
         [RequireStaff]
+        [RequireUserServer]
         public async Task SetEnemy(string name, [Remainder] string enemy)
         {
             await Context.Message.DeleteAsync();
@@ -164,13 +152,16 @@ namespace IodemBot.Modules.ColossoBattles
 
         [Command("dungeon")]
         [RequireStaff]
+        [RequireUserServer]
         public async Task Dungeon([Remainder] string DungeonName)
-         => _ = setupDungeon(DungeonName, false);
+        { _ = setupDungeon(DungeonName, false); await Task.CompletedTask; }
 
         [Command("moddungeon")]
         [RequireStaff]
+        [RequireUserServer]
         public async Task ModDungeon([Remainder] string DungeonName)
-        => _ = setupDungeon(DungeonName, true);
+
+        { _ = setupDungeon(DungeonName, true); await Task.CompletedTask; }
 
         [Command("alldungeons")]
         [RequireStaff]
@@ -208,8 +199,8 @@ namespace IodemBot.Modules.ColossoBattles
             var channel = await Context.Guild.GetOrCreateTextChannelAsync(Name);
             await channel.ModifyAsync(c =>
             {
-                c.CategoryId = LobbyChannel.CategoryId;
-                c.Position = LobbyChannel.Position + battles.Count + 1;
+                c.CategoryId = GuildSetups.GetAccount(Context.Guild).ColossoChannel.CategoryId;
+                c.Position = GuildSetups.GetAccount(Context.Guild).ColossoChannel.Position + battles.Count;
             });
             await channel.SyncPermissionsAsync();
 

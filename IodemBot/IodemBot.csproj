@@ -314,14 +314,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Colors.cs" />
+    <Compile Include="Core\GuildManagement\GuildSetups.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="Extensions\DiscordExtension.cs" />
+    <Compile Include="Extensions\EffectIEnumerableExtension.cs" />
     <Compile Include="Extensions\ListExtension.cs" />
     <Compile Include="Extensions\stringExt.cs" />
     <Compile Include="Extensions\DjinnListExtension.cs" />
-    <Compile Include="GuildSetup.cs" />
+    <Compile Include="Core\GuildManagement\GuildSetup.cs" />
     <Compile Include="Modules\GoldenSunMechanics\DjinnAndSummons\DjinnPocket.cs" />
     <Compile Include="Modules\GoldenSunMechanics\Effects\LingeringEffect.cs" />
+    <Compile Include="Preconditions\RequireUserServer.cs" />
     <Compile Include="TwitchConfig.cs" />
     <Compile Include="Converter\JsonCreationConverter.cs" />
     <Compile Include="Core\Leveling\ServerGames.cs" />

@@ -1,5 +1,6 @@
 ﻿using Discord;
 using Discord.WebSocket;
+using IodemBot.Core;
 using IodemBot.Extensions;
 using System;
 using System.IO;
@@ -82,13 +83,16 @@ namespace IodemBot
                 return;
             }
 
-            await ((SocketTextChannel)client.GetChannel(355558866282348575)).SendMessageAsync(embed:
-                new EmbedBuilder()
-                .WithColor(Colors.Get("Iodem"))
-                .WithDescription(String.Format(welcomeMsg[Global.Random.Next(0, welcomeMsg.Length)], user.DisplayName()))
-                .Build());
+            if (GuildSetups.GetAccount(user.Guild).sendWelcomeMessage)
+            {
+                await GuildSetups.GetAccount(user.Guild).MainChannel.SendMessageAsync(embed:
+                    new EmbedBuilder()
+                    .WithColor(Colors.Get("Iodem"))
+                    .WithDescription(String.Format(welcomeMsg[Global.Random.Next(0, welcomeMsg.Length)], user.DisplayName()))
+                    .Build());
+            }
 
-            await ((SocketTextChannel)client.GetChannel(506961678928314368)).SendMessageAsync(embed:
+            await GuildSetups.GetAccount(user.Guild).TestCommandChannel.SendMessageAsync(embed:
                 new EmbedBuilder()
                 .WithAuthor(user)
                 .AddField("Account Created", user.CreatedAt)
@@ -99,7 +103,10 @@ namespace IodemBot
 
         private async Task Client_UserLeft(SocketGuildUser user)
         {
-            await ((SocketTextChannel)client.GetChannel(506961678928314368)).SendMessageAsync($"{user.DisplayName()} left the party :(.");
+            if (GuildSetups.GetAccount(user.Guild).sendLeaveMessage)
+            {
+                await GuildSetups.GetAccount(user.Guild).TestCommandChannel.SendMessageAsync($"{user.DisplayName()} left the party :(.");
+            }
         }
 
         private async Task Client_Ready()

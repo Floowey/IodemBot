@@ -110,7 +110,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
                 default:
                 case DjinnState.Recovery:
-                    return new List<string>() { $"{Name} {Nickname} is too tired." };
+                    return new List<string>() { $"{User.Name} wants to summon his djinni, but {Name} {Nickname} is too tired." };
             }
         }
 

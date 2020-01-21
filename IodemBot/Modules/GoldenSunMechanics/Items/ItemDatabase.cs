@@ -76,16 +76,16 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
             shop.Clear();
             shop.Add(GetRandomItem(8, 0, RandomItemType.NonArtifact));
-            shop.Add(GetRandomItem(20, 0, RandomItemType.NonArtifact));
-            shop.Add(GetRandomItem(20, 0, RandomItemType.NonArtifact));
+            shop.Add(GetRandomItem(12, 0, RandomItemType.NonArtifact));
+            //shop.Add(GetRandomItem(18, 0, RandomItemType.NonArtifact));
 
-            shop.Add(GetRandomItem(30, 0, RandomItemType.Any));
-            shop.Add(GetRandomItem(35, 0, RandomItemType.Any));
-            shop.Add(GetRandomItem(40, 0, RandomItemType.Any));
+            shop.Add(GetRandomItem(25, 0, RandomItemType.Any));
+            //shop.Add(GetRandomItem(28, 0, RandomItemType.Any));
+            shop.Add(GetRandomItem(32, 0, RandomItemType.Any));
 
-            shop.Add(GetRandomItem(20, 0, RandomItemType.Artifact));
-            shop.Add(GetRandomItem(40, 0, RandomItemType.Artifact));
-            shop.Add(GetRandomItem(50, 0, RandomItemType.Artifact));
+            shop.Add(GetRandomItem(15, 0, RandomItemType.Artifact));
+            //shop.Add(GetRandomItem(24, 0, RandomItemType.Artifact));
+            shop.Add(GetRandomItem(38, 0, RandomItemType.Artifact));
 
             shopkeeper = Sprites.GetImageFromName(shopkeepers.Random());
 
@@ -142,8 +142,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
             n = Math.Min(n, 100);
             var rate = 0.0007671 * Math.Pow(n, 2) - 0.1537 * n;
             var pow = Math.Pow(Math.E, rate);
-            var loc = 12000 * 1.13 / (1 + 299 * pow);
-            var scale = Math.Pow(n, 2.22);
+            var loc = 11000 * 1.13 / (1 + 299 * pow);
+            var scale = Math.Pow(n, 2.21);
             var shape = 0.1 - n / 200;
             var dist = new Accord.Statistics.Distributions.Univariate.GeneralizedParetoDistribution(loc, scale, shape);
             var value = dist.Generate();

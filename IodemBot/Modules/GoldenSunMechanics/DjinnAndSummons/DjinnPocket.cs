@@ -35,15 +35,16 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public List<Djinn> GetDjinns(List<Djinn> BlackList = null)
         {
             BlackList = BlackList ?? new List<Djinn>();
+            var Added = new List<Djinn>();
             var djinns = new List<Djinn>();
 
             foreach (var el in new[] { Element.Venus, Element.Mars, Element.Jupiter, Element.Mercury })
             {
                 if (djinns.Count < MaxDjinn)
                 {
-                    var selected = djinn.OfElement(el).Where(d => !BlackList.Any(k => k.Djinnname.Equals(d.Djinnname))).Distinct(new DjinnComp()).Take(DjinnSetup.Count(d => d == el));
+                    var selected = djinn.OfElement(el).Where(d => !BlackList.Any(k => k.Djinnname.Equals(d.Djinnname)) && !Added.Any(k => k.Djinnname.Equals(d.Djinnname))).Distinct(new DjinnComp()).Take(DjinnSetup.Count(d => d == el));
                     djinns.AddRange(selected);
-                    BlackList.AddRange(selected);
+                    Added.AddRange(selected);
                 }
             }
             return djinns;

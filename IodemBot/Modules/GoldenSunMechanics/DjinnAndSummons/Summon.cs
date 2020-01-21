@@ -16,6 +16,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
         [JsonIgnore] public override int TargetNr { get => Move.TargetNr; set => Move.TargetNr = value; }
         [JsonIgnore] public override uint Range { get => Move.Range; set => Move.Range = value; }
         [JsonIgnore] public override bool HasPriority { get => Move.HasPriority; set => Move.HasPriority = value; }
+        public List<Effect> EffectsOnUser = null;
+        public List<Effect> EffectsOnParty = null;
         public int VenusNeeded { get; set; } = 0;
         public int MarsNeeded { get; set; } = 0;
         public int JupiterNeeded { get; set; } = 0;
@@ -54,7 +56,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         {
             if (!ValidSelection(User))
             {
-                return new List<string>() { $"Not enough Djinn!" };
+                return new List<string>() { $"{User} failed to summon {Emote} {Name}. Not enough Djinn!" };
             }
 
             var PartyDjinn = User.GetTeam().SelectMany(u => u.Moves.OfType<Djinn>()).Distinct();
@@ -63,7 +65,16 @@ namespace IodemBot.Modules.GoldenSunMechanics
             ReadyDjinn.OfElement(Element.Mars).Take(MarsNeeded).ToList().ForEach(d => d.Summon(User));
             ReadyDjinn.OfElement(Element.Jupiter).Take(JupiterNeeded).ToList().ForEach(d => d.Summon(User));
             ReadyDjinn.OfElement(Element.Mercury).Take(MercuryNeeded).ToList().ForEach(d => d.Summon(User));
-            return Move.Use(User);
+            var Text = Move.Use(User);
+            if (EffectsOnUser != null)
+            {
+                Text.AddRange(EffectsOnUser.ApplyAll(User, User));
+            }
+            if (EffectsOnParty != null)
+            {
+                User.battle.GetTeam(User.party).ForEach(p => Text.AddRange(EffectsOnParty.ApplyAll(User, p)));
+            }
+            return Text;
         }
 
         public override string ToString()

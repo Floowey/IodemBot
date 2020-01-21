@@ -80,7 +80,7 @@ namespace IodemBot.Modules
                 var success = SetClass(account, series?.Name ?? "");
                 if (curSeries.Name.Equals(series?.Name) || success)
                 {
-                    if (!account.DjinnPocket.DjinnSetup.All(d => series.Elements.Contains(d)))
+                    if (series != null && !account.DjinnPocket.DjinnSetup.All(d => series.Elements.Contains(d)))
                     {
                         account.DjinnPocket.DjinnSetup.Clear();
                         account.DjinnPocket.DjinnSetup.Add(account.Element);
@@ -221,11 +221,11 @@ namespace IodemBot.Modules
         public async Task ListDungeons()
         {
             var account = UserAccounts.GetAccount(Context.User);
-            var defaultDungeons = EnemiesDatabase.DefaultDungeons;
+            var defaultDungeons = EnemiesDatabase.DefaultDungeons.Where(d => !d.Requirement.IsLocked(account));
             var availableDefaultDungeons = defaultDungeons.Where(d => d.Requirement.Applies(account)).Select(s => s.Name).ToArray();
             var unavailableDefaultDungeons = defaultDungeons.Where(d => !d.Requirement.Applies(account)).Select(s => s.Name).ToArray();
 
-            var unlockedDungeons = account.Dungeons.Select(s => EnemiesDatabase.GetDungeon(s)).Where(d => !d.Requirement.IsLocked(account));
+            var unlockedDungeons = account.Dungeons.Where(s => EnemiesDatabase.HasDungeon(s)).Select(s => EnemiesDatabase.GetDungeon(s)).Where(d => !d.Requirement.IsLocked(account));
             var availablePermUnlocks = availableDefaultDungeons
                 .Concat(unlockedDungeons.Where(d =>
                     !d.IsOneTimeOnly &&
@@ -257,6 +257,7 @@ namespace IodemBot.Modules
         }
 
         [Command("element"), Alias("el")]
+        [RequireUserServer]
         [Remarks("Get your current Element or set it to one of the four with e.g. `i!element Venus`")]
         [Cooldown(5)]
         public async Task ChooseElement(Element chosenElement, [Remainder] string classSeriesName = null)
@@ -295,7 +296,9 @@ namespace IodemBot.Modules
             {
                 SetClass(account, classSeriesName);
             }
-            else
+
+            var series = AdeptClassSeriesManager.GetClassSeries(account);
+            if (series != null && !account.DjinnPocket.DjinnSetup.All(d => series.Elements.Contains(d)))
             {
                 account.DjinnPocket.DjinnSetup.Clear();
                 account.DjinnPocket.DjinnSetup.Add(account.Element);
@@ -335,14 +338,13 @@ namespace IodemBot.Modules
             embed.AddField("Emote", psy.Emote, true);
             embed.AddField("PP", psy.PPCost, true);
             embed.AddField("Description", $"{psy.ToString()} {(psy.HasPriority ? "Always goes first." : "")}");
-            var s = "none";
 
             if (psy.Effects.Count > 0)
             {
-                s = string.Join("\n", psy.Effects.Select(e => $"{e.ToString()}"));
+                var s = string.Join("\n", psy.Effects.Select(e => $"{e.ToString()}"));
+                embed.AddField("Effects", s);
             }
 
-            embed.AddField("Effects", s);
             await Context.Channel.SendMessageAsync("", false, embed.Build());
             _ = ServerGames.UserLookedUpPsynergy((SocketGuildUser)Context.User, (SocketTextChannel)Context.Channel);
         }

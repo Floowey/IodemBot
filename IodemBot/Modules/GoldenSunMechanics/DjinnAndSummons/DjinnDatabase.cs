@@ -11,7 +11,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
     {
         private static Dictionary<string, Djinn> DjinnDatabase { get; set; } = new Dictionary<string, Djinn>();
         private static Dictionary<string, Summon> SummonsDatabase { get; set; } = new Dictionary<string, Summon>();
-        private static readonly string[] blacklist = new[] { "Kite", "Reflux", "Luff", "Eddy" };
+        private static readonly string[] blacklist = new[] { "Kite", "Luff", "Eddy" };
 
         static DjinnAndSummonsDatabase()
         {

@@ -17,7 +17,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 if (Global.Random.Next(0, 100) <= Probabilities[i])
                 {
                     User.offensiveMult *= Multipliers[i];
-                    break;
+                    return new List<string>();
                 }
             }
             return new List<string>();
@@ -25,7 +25,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public override string ToString()
         {
-            return $"{(Probabilities[0] == 100 ? "" : $"Chance to do ")}{string.Join("x, ", Multipliers)} x Damage";
+            return $"{(Probabilities[0] == 100 ? "" : $"Chance to do ")}{string.Join("x, ", Multipliers)}x Damage";
         }
     }
 }

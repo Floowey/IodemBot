@@ -93,7 +93,7 @@ namespace IodemBot
             //Check for Profanity here
 
             // Auto Responses
-            responses.ForEach(async r => await r.Check(msg));
+            responses.ForEach(r => _ = r.Check(msg));
             Leveling.UserSentMessage((SocketGuildUser)context.User, (SocketTextChannel)context.Channel);
             await Task.CompletedTask;
         }
