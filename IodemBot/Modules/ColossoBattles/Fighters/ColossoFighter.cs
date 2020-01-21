@@ -9,7 +9,7 @@ using System.Text;
 
 namespace IodemBot.Modules.ColossoBattles
 {
-    public struct Buff
+    public class Buff
     {
         public double multiplier;
         public string stat;
@@ -102,7 +102,16 @@ namespace IodemBot.Modules.ColossoBattles
 
         public void ApplyBuff(Buff buff)
         {
-            Buffs.Add(buff);
+            var existingBuff = Buffs.Where(b => b.stat == buff.stat).FirstOrDefault();
+            if (existingBuff == null)
+            {
+                Buffs.Add(buff);
+            }
+            else
+            {
+                existingBuff.multiplier += (buff.multiplier - 1);
+                existingBuff.turns = Math.Max(existingBuff.turns, buff.turns);
+            }
         }
 
         public abstract object Clone();
@@ -136,7 +145,7 @@ namespace IodemBot.Modules.ColossoBattles
         {
             StringBuilder s = new StringBuilder();
 
-            if (Stats.HP != 0 && 100 * Stats.HP / Stats.MaxHP <= 5)
+            if (Stats.HP != 0 && 100 * Stats.HP / Stats.MaxHP <= 10)
             {
                 s.Append("<:Exclamatory:549529360604856323>");
             }
@@ -156,28 +165,36 @@ namespace IodemBot.Modules.ColossoBattles
 
             Conditions.ForEach(c => s.Append(ConditionStrings[c]));
 
-            if (MultiplyBuffs("Attack") != 1)
+            var stat = MultiplyBuffs("Attack");
+            if (stat != 1)
             {
-                s.Append($"<:attack_up:549526931423363093>`x{MultiplyBuffs("Attack")}`");
+                s.Append($"{(stat > 1 ? "<:Atk_Increase:669146889471393833>" : "<:Atk_Decrease:669147349859303433>")}`x{stat}`");
             }
 
-            if (MultiplyBuffs("Defense") != 1)
+            stat = MultiplyBuffs("Defense");
+            if (stat != 1)
             {
-                s.Append($"<:defense_up:549526931557842945>`x{MultiplyBuffs("Defense")}`");
+                s.Append($"{(stat > 1 ? "<:Def_Increase:669147527710375957>" : "<:Def_Decrease:669147401780461568>")}`x{stat}`");
             }
 
-            if (MultiplyBuffs("Speed") != 1)
+            stat = MultiplyBuffs("Resistance");
+            if (stat != 1)
             {
+                s.Append($"{(stat > 1 ? "<:Res_Increase:669147593963601960>" : "<:Res_Decrease:669147473373298698>")}`x{stat}`");
             }
 
-            if (MultiplyBuffs("Power") != 1)
+            stat = MultiplyBuffs("Power");
+            if (stat != 1)
             {
-                s.Append($"<:resist_up:549526931465437185>`x{MultiplyBuffs("Power")}`");
+                s.Append($"{(stat > 1 ? "<:Pow_Increase:669147830316695563>" : "<:Pow_Decrease:669147728651223040>")}`x{stat}`");
             }
 
-            if (MultiplyBuffs("Resistance") != 0)
+            stat = MultiplyBuffs("Speed");
+            if (stat != 1)
             {
+                s.Append($"{(stat > 1 ? "<:Spe_Increase:669147782732316682>" : "<:Spe_Decrease:669147666164350976>")}`x{stat}`");
             }
+
             return s.ToString();
         }
 
@@ -463,7 +480,7 @@ namespace IodemBot.Modules.ColossoBattles
                 mult = 0.4;
             }
 
-            return mult;
+            return Math.Round(mult, 2);
         }
 
         public void RemoveAllConditions()
