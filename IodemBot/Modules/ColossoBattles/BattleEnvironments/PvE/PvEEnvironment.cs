@@ -305,7 +305,7 @@ namespace IodemBot.Modules.ColossoBattles
             }
             autoTurn = new Timer()
             {
-                Interval = 25000,
+                Interval = 45000,
                 AutoReset = false,
                 Enabled = false
             };
