@@ -1,4 +1,5 @@
-﻿using IodemBot.Modules.ColossoBattles;
+﻿using IodemBot.Extensions;
+using IodemBot.Modules.ColossoBattles;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -52,21 +53,18 @@ namespace IodemBot.Modules.GoldenSunMechanics
                     continue;
                 }
 
+                if (PPCost > 1 && t.IsImmuneToPsynergy)
+                {
+                    log.Add($"{t.Name} protects themselves with a magical barrier.");
+                    continue;
+                }
+
                 //Effects that trigger before damage
-                Effects
-                    .Where(e => e.ActivationTime == TimeToActivate.beforeDamge)
-                    .ToList()
-                    .ForEach(e => log.AddRange(e.Apply(User, t)));
+                log.AddRange(Effects.Where(e => e.ActivationTime == TimeToActivate.beforeDamge).ApplyAll(User, t));
 
                 if (!t.IsAlive)
                 {
                     continue;
-                }
-
-                if (PPCost > 1 && t.IsImmuneToPsynergy)
-                {
-                    log.Add($"{t.Name} protects themselves with a magical barrier.");
-                    return log;
                 }
 
                 var baseDmg = Global.Random.Next(0, 4);
@@ -101,10 +99,9 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 realDmg = Math.Max(1, realDmg);
 
                 log.AddRange(t.DealDamage(realDmg, punctuation));
-                Effects
-                    .Where(e => e.ActivationTime == TimeToActivate.afterDamage)
-                    .ToList()
-                    .ForEach(e => log.AddRange(e.Apply(User, t)));
+                User.damageDoneThisTurn += realDmg;
+
+                log.AddRange(Effects.Where(e => e.ActivationTime == TimeToActivate.afterDamage).ApplyAll(User, t));
 
                 if (User is PlayerFighter)
                 {

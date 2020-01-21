@@ -22,7 +22,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public override string ToString()
         {
-            return $"Heals {(SingleTarget ? "one Player" : "the whole Party")} with a power of {HealPower} {(Percentage > 0 ? $"and additional {Percentage}%" : "")}.";
+            return $"Heals {(TargetType == Target.self ? "the user" : TargetType == Target.ownSingle ? "a team mate" : TargetType == Target.ownAll ? "the users party" : "someone else")}. {(HealPower > 0 ? $"Heals HP with a Power of {HealPower}." : "")}{(Percentage > 0 ? $"Heals HP by {Percentage}%." : "")}{(PPHeal > 0 ? $"Heals PP with a Power of {PPHeal}." : "")}{(PPPercent > 0 ? $"Heals PP by {PPPercent}%." : "")}";
         }
 
         public override void InternalChooseBestTarget(ColossoFighter User)
@@ -67,11 +67,22 @@ namespace IodemBot.Modules.GoldenSunMechanics
             int Power = User.ElStats.GetPower(Element);
             List<ColossoFighter> targets = GetTarget(User);
 
-            foreach (var p in targets)
+            foreach (var t in targets)
             {
-                var HPtoHeal = (uint)(HealPower * Power / 100 + p.Stats.MaxHP * Percentage / 100);
-                log.AddRange(p.Heal(HPtoHeal));
-                Effects.ForEach(e => log.AddRange(e.Apply(User, p)));
+                var HPtoHeal = (uint)(HealPower * Power / 100 + t.Stats.MaxHP * Percentage / 100);
+                if (HPtoHeal > 0)
+                {
+                    log.AddRange(t.Heal(HPtoHeal));
+                }
+
+                var PPToHeal = (uint)(PPHeal * Power / 100 + t.Stats.MaxPP * PPPercent / 100);
+                if (PPToHeal > 0)
+                {
+                    log.AddRange(t.RestorePP(PPToHeal));
+                }
+
+                log.AddRange(Effects.ApplyAll(User, t));
+
                 if (User is PlayerFighter)
                 {
                     ((PlayerFighter)User).battleStats.HPhealed += HPtoHeal;

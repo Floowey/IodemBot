@@ -1,4 +1,5 @@
-﻿using IodemBot.Modules.ColossoBattles;
+﻿using IodemBot.Extensions;
+using IodemBot.Modules.ColossoBattles;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 
@@ -51,9 +52,9 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 if (PPCost > 1 && User.GetEnemies().Contains(t) && t.IsImmuneToPsynergy)
                 {
                     log.Add($"{t.Name} protects themselves with a magical barrier.");
-                    return log;
+                    continue;
                 }
-                Effects.ForEach(e => log.AddRange(e.Apply(User, t)));
+                log.AddRange(Effects.ApplyAll(User, t));
                 if (User is PlayerFighter)
                 {
                     ((PlayerFighter)User).battleStats.Supported++;

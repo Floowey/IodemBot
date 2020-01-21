@@ -63,7 +63,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 chanceToMiss = 2;
             }
 
-            if (Global.Random.Next(0, chanceToMiss) == 0)
+            if (!enemy.HasCondition(Condition.Delusion) && enemy.Stats.Spd > 0 && Global.Random.Next(0, chanceToMiss) == 0)
             {
                 log.Add($"{enemy.Name} dodges the blow!");
                 return log;
