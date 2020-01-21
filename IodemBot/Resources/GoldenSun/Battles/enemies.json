@@ -11542,7 +11542,6 @@
         "name": "Fortress Guard",
         "imgurl": "https://goldensunwiki.net/w/images/c/ca/SolSanctumDisarm.png",
         "movepool": [
-            "Guard",
             "Search"
         ],
         "stats": {
