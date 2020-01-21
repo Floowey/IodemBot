@@ -1244,7 +1244,14 @@
         "range": 1,
         "element": 2,
         "PPCost": 3,
-        "power": 50
+        "power": 50,
+        "effects": [
+                {
+                    "Type": "HPDrain",
+                    "Percentage": 100,
+                    "Probability": 100
+                }
+            ]
     },
     "Heat Flash": {
         "name": "Heat Flash",
@@ -1327,7 +1334,7 @@
         "range": 1,
         "element": 0,
         "PPCost": 0,
-        "power": 80
+        "power": 24
     },
     "Bacteria Rush": {
         "name": "Bacteria Rush",
@@ -1589,7 +1596,21 @@
             }
         ]
     },
-
+    "Wrong": {
+        "name": "Wrong!",
+        "targetType": 4,
+        "emote": "❌",
+        "range": 5,
+        "element": 4,
+        "PPCost": 0,
+        "power": 2000,
+        "IgnoreSpread": true,
+        "effects": [
+            {
+                "Type": "UserDies"
+            }
+        ]
+    },
     "Claw Attack": {
         "name": "Claw Attack",
         "targetType": 3,

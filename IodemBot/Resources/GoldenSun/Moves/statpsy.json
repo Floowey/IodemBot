@@ -473,6 +473,20 @@
             }
         ]
     },
+    "Correct": {
+        "name": "Correct!",
+        "targetType": 4,
+        "emote": "✅",
+        "range": 4,
+        "element": 4,
+        "PPCost": 0,
+        "power": 0,
+        "effects": [
+            {
+                "Type": "UserDies"
+            }
+        ]
+    },
     "Beat Dance": {
         "name": "Beat Dance",
         "targetType": 0,
@@ -631,6 +645,17 @@
             }
         ]
     },
+    "Search": {
+        "name": "Search",
+        "targetType": 0,
+        "hasPriority": true,
+        "emote": "👀",
+        "effects": [
+            {
+                "Type": "Counter"
+            }
+        ]
+    },
     "Guard Aura": {
         "name": "Guard Aura",
         "targetType": 1,
@@ -697,7 +722,7 @@
         "effects": [
             {
                 "Type": "ReduceDamage",
-                "DamageReduction": 75
+                "DamageReduction": 60
             }
         ]
     }
