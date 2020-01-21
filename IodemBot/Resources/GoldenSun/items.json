@@ -1468,8 +1468,8 @@
                 },
                 {
                     "Type": "MultiplyDamage",
-                    "Multiplier": 3.0,
-                    "Probability": 60
+                    "Multipliers": [ 3.0 ],
+                    "Probabilities": [ 60 ]
                 }
             ]
         }
@@ -1491,8 +1491,8 @@
             "effects": [
                 {
                     "Type": "MultiplyDamage",
-                    "Multiplier": 3.0,
-                    "Probability": 100
+                    "Multipliers": [ 3.0 ],
+                    "Probabilities": [ 100 ]
                 }
             ]
         }
@@ -1513,8 +1513,8 @@
             "effects": [
                 {
                     "Type": "MultiplyDamage",
-                    "Multiplier": 1.8,
-                    "Probability": 100
+                    "Multipliers": [ 1.8 ],
+                    "Probabilities": [ 100 ]
                 },
                 {
                     "Type": "Condition",
@@ -1920,8 +1920,8 @@
             "effects": [
                 {
                     "Type": "MultiplyDamage",
-                    "Multiplier": 2.0,
-                    "Probability": 100
+                    "Multipliers": [ 2.0 ],
+                    "Probabilities": [ 100 ]
                 },
                 {
                     "Type": "OHKO",
@@ -2122,8 +2122,8 @@
             "effects": [
                 {
                     "Type": "MultiplyDamage",
-                    "Multiplier": 3.0,
-                    "Probability": 35
+                    "Multipliers": [ 3.0 ],
+                    "Probabilities": [ 35 ]
                 }
             ]
         }
@@ -2418,8 +2418,8 @@
                 },
                 {
                     "Type": "MultiplyDamage",
-                    "Multiplier": 2.0,
-                    "Probability": 50
+                    "Multipliers": [ 2.0 ],
+                    "Probabilities": [ 50 ]
                 }
             ]
         }
@@ -2467,8 +2467,8 @@
             "effects": [
                 {
                     "Type": "MultiplyDamage",
-                    "Multiplier": 2.0,
-                    "Probability": 100
+                    "Multipliers": [ 2.0 ],
+                    "Probabilities": [ 100 ]
                 },
                 {
                     "Type": "Condition",
@@ -2525,8 +2525,8 @@
             "effects": [
                 {
                     "Type": "MultiplyDamage",
-                    "Multiplier": 1.6,
-                    "Prodability": 100
+                    "Multipliers": [ 1.6 ],
+                    "Prodabilities": [ 100 ]
                 },
                 {
                     "Type": "IgnoreDefense",
@@ -2553,12 +2553,13 @@
             "effects": [
                 {
                     "Type": "MultiplyDamage",
-                    "Multiplier": 1.5
+                    "Multipliers": [ 1.6 ],
+                    "Probabilities": [ 100 ]
                 },
                 {
                     "Type": "Stat",
                     "Stat": "Attack",
-                    "Multiplier": 0.25,
+                    "Multiplier": 0.75,
                     "Probability": 75
                 }
             ]
@@ -2580,7 +2581,8 @@
             "effects": [
                 {
                     "Type": "MultiplyDamage",
-                    "MultiplyDamage": 1.4
+                    "Multipliers": [ 1.4 ],
+                    "Probabilities": [ 100 ]
                 },
                 {
                     "Type": "Stat",
@@ -2608,8 +2610,8 @@
             "effects": [
                 {
                     "Type": "MultiplyDamage",
-                    "Multiplier": 1.7,
-                    "Probability": 100
+                    "Multipliers": [ 1.7 ],
+                    "Probabilities": [ 100 ]
                 },
                 {
                     "Type": "Condition",
@@ -2635,7 +2637,8 @@
             "effects": [
                 {
                     "Type": "MultiplyDamage",
-                    "addDamage": 2.2
+                    "Multipliers": [ 2.2 ],
+                    "Probabilities": [ 100 ]
                 },
                 {
                     "Type": "Stat",

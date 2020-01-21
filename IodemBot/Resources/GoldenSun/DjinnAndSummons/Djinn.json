@@ -219,7 +219,7 @@
         "SpriteShiny": "<a:ChainShiny:663013986081439744>",
         "Move": {
             "Targettype": 3,
-            "multDmg": 2
+            "dmgMult": 2
         },
         "Stats": {
             "MaxHP": 8,
@@ -297,7 +297,7 @@
         "SpriteShiny": "<a:GeodeShiny:663013987851567135>",
         "Move": {
             "Targettype": 3,
-            "multDmg": 1.9
+            "dmgMult": 1.9
         },
         "Stats": {
             "MaxHP": 12,
@@ -962,13 +962,8 @@
         "Move": {
             "Targettype": 2,
             "Element": 1,
-            "effects": [
-                {
-                    "Type": "Stat",
-                    "Stat": "Attack",
-                    "Multiplier": 1.25
-                }
-            ]
+            "HealPower": 0,
+            "PPPercent": 7
         },
         "Stats": {
             "MaxHP": 10,
@@ -1156,13 +1151,8 @@
         "Move": {
             "Targettype": 2,
             "Element": 1,
-            "effects": [
-                {
-                    "Type": "Stat",
-                    "Stat": "Attack",
-                    "Multiplier": 1.25
-                }
-            ]
+            "HealPower": 0,
+            "PPPercent": 7
         },
         "Stats": {
             "MaxHP": 10,
@@ -1304,15 +1294,10 @@
         "SpriteNormal": "<a:Ether:662386482853576754>",
         "SpriteShiny": "<a:EtherShiny:663022462442668033>",
         "Move": {
-            "Targettype": 2,
+            "Targettype": 1,
             "Element": 1,
-            "effects": [
-                {
-                    "Type": "Stat",
-                    "Stat": "Attack",
-                    "Multiplier": 1.25
-                }
-            ]
+            "HealPower": 0,
+            "PPPercent": 30
         },
         "Stats": {
             "MaxHP": 8,
@@ -1410,13 +1395,8 @@
         "Move": {
             "Targettype": 2,
             "Element": 1,
-            "effects": [
-                {
-                    "Type": "Stat",
-                    "Stat": "Attack",
-                    "Multiplier": 1.25
-                }
-            ]
+            "HealPower": 0,
+            "PPPercent": 10
         },
         "Stats": {
             "MaxHP": 11,
@@ -1455,7 +1435,7 @@
                 {
                     "Type": "Stat",
                     "Stat": "Speed",
-                    "Multiplier": 200
+                    "Multiplier": 2
                 }
             ]
         },
@@ -1643,7 +1623,7 @@
                 {
                     "Type": "Stat",
                     "Stat": "Speed",
-                    "Multiplier": 200
+                    "Multiplier": 2
                 }
             ]
         },
@@ -1772,6 +1752,9 @@
         "SpriteNormal": "<a:Aroma:662386482740461584>",
         "SpriteShiny": "<a:AromaShiny:663022462522490880>",
         "Move": {
+            "TargetType": 2,
+            "HealPower": 0,
+            "PPPercent": 10
         },
         "Stats": {
             "MaxHP": 11,
@@ -2424,7 +2407,7 @@
                     "Probability": 33
                 }
             ],
-            "MultDmg": 1.5
+            "dmgMult": 1.5
         },
         "Stats": {
             "MaxHP": 9,

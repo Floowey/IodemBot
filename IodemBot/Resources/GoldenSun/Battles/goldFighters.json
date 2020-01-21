@@ -122,8 +122,8 @@
             ],
             "stats": {
                 "maxHP": 3333,
-                "maxPP": 400,
-                "Atk": 400,
+                "maxPP": 333,
+                "Atk": 333,
                 "Def": 200,
                 "Spd": 200
             },
@@ -151,13 +151,13 @@
     ],
     [
         {
-            "name": ":b:ire Djinn",
+            "name": ":b:ars Djinn",
             "movepool": [ "Supernova", "Searing Beam", "Pyroclasm", "Dire Inferno", "Vicious Chop", "Epicenter", "Star Mine", "Meteor Blow" ],
             "imgurl": "https://pbs.twimg.com/media/DxrDsW8VYAAcXDr.jpg",
             "stats": {
-                "maxhp": 4444,
+                "maxhp": 2222,
                 "maxpp": 200,
-                "atk": 450,
+                "atk": 420,
                 "def": 147,
                 "spd": 200
             },
@@ -166,11 +166,11 @@
                 "venusres": 175,
                 "jupiterres": 150,
                 "mercuryres": 25,
-                "marsatk": 150
+                "marsatk": 135
             },
             "extraturns": 1,
-            "HPRecovery": 300,
-            "PPRecovery": 30,
+            "HPRecovery": 222,
+            "PPRecovery": 22,
             "isImmuneToConditions": [
                 "Haunt",
                 "DeathCurse",
@@ -735,7 +735,6 @@
             "movepool": [
                 "Phoenix",
                 "Phoenix",
-                "Phoenix",
                 "Fire Dance",
                 "Pyroclasm",
                 "Searing Beam",
@@ -764,7 +763,6 @@
             "name": "Wonder Bird 2",
             "imgurl": "",
             "movepool": [
-                "Phoenix",
                 "Phoenix",
                 "Phoenix",
                 "Fire Dance",
@@ -943,7 +941,7 @@
                 "Massive Swing"
             ],
             "stats": {
-                "maxHP": 16066,
+                "maxHP": 12066,
                 "maxPP": 380,
                 "Atk": 637,
                 "Def": 242,
@@ -959,7 +957,7 @@
                 "MercuryAtk": 100,
                 "MercuryRes": 48
             },
-            "HPRecovery": 250,
+            "HPRecovery": 200,
             "extraTurns": 1,
             "isImmuneToConditions": [
                 "Stun",

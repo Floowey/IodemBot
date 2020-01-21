@@ -265,7 +265,7 @@
         },
         "extraturns": 0
     },
-    "Ape 4": {
+    "Ape 2": {
         "movepool": [ "Ransack" ],
         "name": "Ape",
         "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Ape.png",
@@ -1844,7 +1844,7 @@
         },
         "extraturns": 0
     },
-    "Dirge 4": {
+    "Dirge 2": {
         "movepool": [ "Swift Strike" ],
         "name": "Dirge",
         "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Dirge.png",
@@ -6420,7 +6420,7 @@
         },
         "extraturns": 0
     },
-    "Mole 4": {
+    "Mole 2": {
         "movepool": [
             "Mad Spatter"
         ],
@@ -7301,7 +7301,7 @@
         },
         "extraturns": 0
     },
-    "Rat 4": {
+    "Rat 2": {
         "movepool": [],
         "name": "Rat",
         "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Rat.png",
@@ -9730,7 +9730,7 @@
     "White Wolf": {
         "movepool": [ "Fatal Fang", "Bind" ],
         "name": "White Wolf",
-        "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/White_Wolf.png",
+        "imgurl": "https://goldensunwiki.net/w/images/7/71/GSDD-WhiteWolf.png",
         "stats": {
             "maxhp": 270,
             "maxpp": 10,
@@ -10065,7 +10065,7 @@
         },
         "extraturns": 0
     },
-    "Wolfkin 4": {
+    "Wolfkin 1": {
         "movepool": [ "Shriek", "Wolf Rush" ],
         "name": "Wolfkin",
         "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Wolfkin.png",
@@ -10318,7 +10318,7 @@
             "maxPP": 0,
             "Atk": 5000,
             "Def": 2,
-            "Spd": 3
+            "Spd": 0
         },
         "elstats": {
             "VenusAtk": 100,
@@ -10346,7 +10346,7 @@
             "maxPP": 0,
             "Atk": 100,
             "Def": 2,
-            "Spd": 3
+            "Spd": 0
         },
         "elstats": {
             "VenusAtk": 100,
@@ -10373,7 +10373,7 @@
             "maxPP": 0,
             "Atk": 20000,
             "Def": 2,
-            "Spd": 3
+            "Spd": 0
         },
         "elstats": {
             "VenusAtk": 100,
@@ -10400,7 +10400,7 @@
             "maxPP": 0,
             "Atk": 100,
             "Def": 2,
-            "Spd": 3
+            "Spd": 0
         },
         "elstats": {
             "VenusAtk": 100,
@@ -10427,7 +10427,7 @@
             "maxPP": 0,
             "Atk": 20000,
             "Def": 2,
-            "Spd": 3
+            "Spd": 0
         },
         "elstats": {
             "VenusAtk": 100,
@@ -10454,7 +10454,7 @@
             "maxPP": 0,
             "Atk": 20000,
             "Def": 2,
-            "Spd": 3
+            "Spd": 0
         },
         "elstats": {
             "VenusAtk": 100,
@@ -10481,7 +10481,7 @@
             "maxPP": 0,
             "Atk": 20000,
             "Def": 2,
-            "Spd": 3
+            "Spd": 0
         },
         "elstats": {
             "VenusAtk": 100,
@@ -10508,7 +10508,7 @@
             "maxPP": 0,
             "Atk": 100,
             "Def": 2,
-            "Spd": 3
+            "Spd": 0
         },
         "elstats": {
             "VenusAtk": 100,
@@ -10535,7 +10535,7 @@
             "maxPP": 0,
             "Atk": 20000,
             "Def": 2,
-            "Spd": 3
+            "Spd": 0
         },
         "elstats": {
             "VenusAtk": 100,
@@ -10562,7 +10562,7 @@
             "maxPP": 0,
             "Atk": 20000,
             "Def": 2,
-            "Spd": 3
+            "Spd": 0
         },
         "elstats": {
             "VenusAtk": 100,
@@ -10589,7 +10589,7 @@
             "maxPP": 0,
             "Atk": 20000,
             "Def": 2,
-            "Spd": 3
+            "Spd": 0
         },
         "elstats": {
             "VenusAtk": 100,
@@ -10616,7 +10616,7 @@
             "maxPP": 0,
             "Atk": 100,
             "Def": 2,
-            "Spd": 3
+            "Spd": 0
         },
         "elstats": {
             "VenusAtk": 100,
@@ -10643,7 +10643,7 @@
             "maxPP": 0,
             "Atk": 20000,
             "Def": 2,
-            "Spd": 3
+            "Spd": 0
         },
         "elstats": {
             "VenusAtk": 100,
@@ -10670,7 +10670,7 @@
             "maxPP": 0,
             "Atk": 20000,
             "Def": 2,
-            "Spd": 3
+            "Spd": 0
         },
         "elstats": {
             "VenusAtk": 100,
@@ -10697,7 +10697,7 @@
             "maxPP": 0,
             "Atk": 100,
             "Def": 2,
-            "Spd": 3
+            "Spd": 0
         },
         "elstats": {
             "VenusAtk": 100,
@@ -10724,7 +10724,7 @@
             "maxPP": 0,
             "Atk": 20000,
             "Def": 2,
-            "Spd": 3
+            "Spd": 0
         },
         "elstats": {
             "VenusAtk": 100,
@@ -10751,7 +10751,7 @@
             "maxPP": 0,
             "Atk": 20000,
             "Def": 2,
-            "Spd": 3
+            "Spd": 0
         },
         "elstats": {
             "VenusAtk": 100,
@@ -10778,7 +10778,7 @@
             "maxPP": 0,
             "Atk": 20000,
             "Def": 2,
-            "Spd": 3
+            "Spd": 0
         },
         "elstats": {
             "VenusAtk": 100,
@@ -11024,7 +11024,28 @@
             "maxpp": 0,
             "atk": 0,
             "def": 0,
-            "spd": 1
+            "spd": 0
+        },
+        "elstats": {
+            "venusres": 90,
+            "mercuryres": 90,
+            "marsres": 90,
+            "jupiterres": 90
+        },
+        "extraturns": 0,
+        "hasAttack": false,
+        "hasDefend": false
+    },
+    "Next": {
+        "movepool": [],
+        "name": "Next",
+        "imgurl": "https://vignette.wikia.nocookie.net/mcleodgaming/images/a/ab/Golden_Sun_symbol.svg/revision/latest/scale-to-width-down/340?cb=20190810235336",
+        "stats": {
+            "maxhp": 1,
+            "maxpp": 0,
+            "atk": 0,
+            "def": 0,
+            "spd": 0
         },
         "elstats": {
             "venusres": 90,
@@ -11041,11 +11062,11 @@
         "name": "Venus",
         "imgurl": "https://goldensunwiki.net/w/images/6/60/Venus-icon-dd.gif",
         "stats": {
-            "maxhp": 349,
+            "maxhp": 249,
             "maxpp": 25,
-            "atk": 127,
+            "atk": 92,
             "def": 28,
-            "spd": 76
+            "spd": 30
         },
         "elstats": {
             "venusres": 193,
@@ -11198,7 +11219,7 @@
     },
     "AtalantaSummon": {
         "movepool": [ "Boon" ],
-        "name": "Jupiter",
+        "name": "Atalanta",
         "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Jupiter_Djinni.png",
         "stats": {
             "maxhp": 543,
@@ -11259,7 +11280,7 @@
     },
     "MercurySummon": {
         "movepool": [ "Prism", "Cool", "Ice" ],
-        "name": "Mercury Djinni",
+        "name": "Mercury",
         "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Mercury_Djinni.png",
         "stats": {
             "maxhp": 190,
@@ -11412,7 +11433,7 @@
             "maxPP": 0,
             "Atk": 1,
             "Def": 1,
-            "Spd": 3
+            "Spd": 0
         },
         "elstats": {
             "VenusAtk": 100,
@@ -11439,7 +11460,7 @@
             "maxPP": 0,
             "Atk": 20000,
             "Def": 2,
-            "Spd": 3
+            "Spd": 0
         },
         "elstats": {
             "VenusAtk": 100,
@@ -11467,7 +11488,7 @@
             "maxPP": 0,
             "Atk": 20000,
             "Def": 2,
-            "Spd": 3
+            "Spd": 0
         },
         "elstats": {
             "VenusAtk": 100,
@@ -11496,7 +11517,7 @@
             "maxPP": 50,
             "Atk": 20000,
             "Def": 2,
-            "Spd": 3
+            "Spd": 0
         },
         "elstats": {
             "VenusAtk": 100,
@@ -11523,7 +11544,7 @@
             "maxPP": 0,
             "Atk": 20000,
             "Def": 1,
-            "Spd": 3
+            "Spd": 0
         },
         "elstats": {
             "VenusAtk": 100,
@@ -11549,7 +11570,7 @@
             "maxPP": 0,
             "Atk": 20000,
             "Def": 2,
-            "Spd": 3
+            "Spd": 0
         },
         "elstats": {
             "VenusAtk": 100,
@@ -11577,7 +11598,7 @@
             "maxPP": 0,
             "Atk": 20000,
             "Def": 2,
-            "Spd": 3
+            "Spd": 0
         },
         "elstats": {
             "VenusAtk": 100,
@@ -11593,5 +11614,65 @@
         "hasDefend": false,
         "hasAttack": false,
         "isImmuneToOHKO": true
+    },
+    "Elf": {
+        "movepool": [ "Growth", "Thorn" ],
+        "name": "Gnome",
+        "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Gnome.png",
+        "stats": {
+            "maxhp": 85,
+            "maxpp": 5,
+            "atk": 73,
+            "def": 15,
+            "spd": 38
+        },
+        "elstats": {
+            "marsres": 100,
+            "venusres": 72,
+            "jupiterres": 72,
+            "mercuryres": 48,
+            "marsatk": 100,
+            "jupiteratk": 85
+        },
+        "Weapon": {
+            "Name": "Elven Rapier",
+            "Icon": "<:Elven_Rapier:569855398442434570>",
+            "damageAlignment": 2,
+            "Unleash": {
+                "UnleashName": "Vorpal Slash",
+                "UnleashAlignment": 2,
+                "effects": [
+                    {
+                        "Type": "AddDamage",
+                        "addDamage": 16
+                    }
+                ]
+            }
+        },
+        "extraturns": 0
+    },
+    "Training Dummy": {
+        "name": "Training Dummy",
+        "imgurl": "https://cdn.discordapp.com/attachments/526565153760608266/571982000743776266/unknown.png",
+        "movepool": [
+        ],
+        "stats": {
+            "maxHP": 5,
+            "maxPP": 0,
+            "Atk": 2,
+            "Def": 5,
+            "Spd": 0
+        },
+        "elstats": {
+            "VenusAtk": 100,
+            "VenusRes": 20,
+            "Training Dummy": null,
+            "MarsAtk": 100,
+            "MarsRes": 20,
+            "JupiterAtk": 100,
+            "JupiterRes": 20,
+            "MercuryAtk": 100,
+            "MercuryRes": 20
+        }
     }
 }

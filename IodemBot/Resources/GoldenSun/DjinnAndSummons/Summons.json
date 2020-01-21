@@ -7,22 +7,20 @@
             "Element": 0,
             "power": 30,
             "percentageDamage": 3,
-            "Range": 5,
-            "Effects": [
-                {
-                    "Type": "Stat",
-                    "Stat": "Power",
-                    "Multiplier": 1.1,
-                    "OnTarget": false
-                },
-                {
-                    "Type": "Stat",
-                    "Stat": "Resistance",
-                    "Multiplier": 1.1,
-                    "OnTarget": false
-                }
-            ]
+            "Range": 5
         },
+        "EffectsOnUser": [
+            {
+                "Type": "Stat",
+                "Stat": "Power",
+                "Multiplier": 1.1
+            },
+            {
+                "Type": "Stat",
+                "Stat": "Resistance",
+                "Multiplier": 1.1
+            }
+        ],
         "VenusNeeded": 1
     },
     "Ramses": {
@@ -33,22 +31,20 @@
             "Element": 0,
             "power": 60,
             "percentageDamage": 6,
-            "Range": 5,
-            "Effects": [
-                {
-                    "Type": "Stat",
-                    "Stat": "Power",
-                    "Multiplier": 1.3,
-                    "OnTarget": false
-                },
-                {
-                    "Type": "Stat",
-                    "Stat": "Resistance",
-                    "Multiplier": 1.3,
-                    "OnTarget": false
-                }
-            ]
+            "Range": 5
         },
+        "EffectsOnUser": [
+            {
+                "Type": "Stat",
+                "Stat": "Power",
+                "Multiplier": 1.3
+            },
+            {
+                "Type": "Stat",
+                "Stat": "Resistance",
+                "Multiplier": 1.3
+            }
+        ],
         "VenusNeeded": 2
     },
     "Cybele": {
@@ -59,22 +55,20 @@
             "Element": 0,
             "power": 120,
             "percentageDamage": 9,
-            "Range": 5,
-            "Effects": [
-                {
-                    "Type": "Stat",
-                    "Stat": "Power",
-                    "Multiplier": 1.60,
-                    "OnTarget": false
-                },
-                {
-                    "Type": "Stat",
-                    "Stat": "Resistance",
-                    "Multiplier": 1.60,
-                    "OnTarget": false
-                }
-            ]
+            "Range": 5
         },
+        "EffectsOnUser": [
+            {
+                "Type": "Stat",
+                "Stat": "Power",
+                "Multiplier": 1.6
+            },
+            {
+                "Type": "Stat",
+                "Stat": "Resistance",
+                "Multiplier": 1.6
+            }
+        ],
         "VenusNeeded": 3
     },
     "Judgement": {
@@ -85,22 +79,20 @@
             "Element": 0,
             "power": 240,
             "percentageDamage": 12,
-            "Range": 5,
-            "Effects": [
-                {
-                    "Type": "Stat",
-                    "Stat": "Power",
-                    "Multiplier": 2,
-                    "OnTarget": false
-                },
-                {
-                    "Type": "Stat",
-                    "Stat": "Resistance",
-                    "Multiplier": 2,
-                    "OnTarget": false
-                }
-            ]
+            "Range": 5
         },
+        "EffectsOnUser": [
+            {
+                "Type": "Stat",
+                "Stat": "Power",
+                "Multiplier": 2
+            },
+            {
+                "Type": "Stat",
+                "Stat": "Resistance",
+                "Multiplier": 2
+            }
+        ],
         "VenusNeeded": 4
     },
     "Mars": {
@@ -111,22 +103,20 @@
             "Element": 1,
             "power": 30,
             "percentageDamage": 3,
-            "Range": 5,
-            "Effects": [
-                {
-                    "Type": "Stat",
-                    "Stat": "Power",
-                    "Multiplier": 1.05,
-                    "OnTarget": false
-                },
-                {
-                    "Type": "Stat",
-                    "Stat": "Resistance",
-                    "Multiplier": 1.05,
-                    "OnTarget": false
-                }
-            ]
+            "Range": 5
         },
+        "EffectsOnUser": [
+            {
+                "Type": "Stat",
+                "Stat": "Power",
+                "Multiplier": 1.1
+            },
+            {
+                "Type": "Stat",
+                "Stat": "Resistance",
+                "Multiplier": 1.1
+            }
+        ],
         "MarsNeeded": 1
     },
     "Kirin": {
@@ -137,22 +127,20 @@
             "Element": 1,
             "power": 60,
             "percentageDamage": 6,
-            "Range": 5,
-            "Effects": [
-                {
-                    "Type": "Stat",
-                    "Stat": "Power",
-                    "Multiplier": 1.3,
-                    "OnTarget": false
-                },
-                {
-                    "Type": "Stat",
-                    "Stat": "Resistance",
-                    "Multiplier": 1.3,
-                    "OnTarget": false
-                }
-            ]
+            "Range": 5
         },
+        "EffectsOnUser": [
+            {
+                "Type": "Stat",
+                "Stat": "Power",
+                "Multiplier": 1.3
+            },
+            {
+                "Type": "Stat",
+                "Stat": "Resistance",
+                "Multiplier": 1.3
+            }
+        ],
         "MarsNeeded": 2
     },
     "Tiamat": {
@@ -163,22 +151,20 @@
             "Element": 1,
             "power": 120,
             "percentageDamage": 9,
-            "Range": 5,
-            "Effects": [
-                {
-                    "Type": "Stat",
-                    "Stat": "Power",
-                    "Multiplier": 1.60,
-                    "OnTarget": false
-                },
-                {
-                    "Type": "Stat",
-                    "Stat": "Resistance",
-                    "Multiplier": 1.60,
-                    "OnTarget": false
-                }
-            ]
+            "Range": 5
         },
+        "EffectsOnUser": [
+            {
+                "Type": "Stat",
+                "Stat": "Power",
+                "Multiplier": 1.6
+            },
+            {
+                "Type": "Stat",
+                "Stat": "Resistance",
+                "Multiplier": 1.6
+            }
+        ],
         "MarsNeeded": 3
     },
     "Meteor": {
@@ -189,22 +175,20 @@
             "Element": 1,
             "power": 240,
             "percentageDamage": 12,
-            "Range": 5,
-            "Effects": [
-                {
-                    "Type": "Stat",
-                    "Stat": "Power",
-                    "Multiplier": 2,
-                    "OnTarget": false
-                },
-                {
-                    "Type": "Stat",
-                    "Stat": "Resistance",
-                    "Multiplier": 2,
-                    "OnTarget": false
-                }
-            ]
+            "Range": 5
         },
+        "EffectsOnUser": [
+            {
+                "Type": "Stat",
+                "Stat": "Power",
+                "Multiplier": 2
+            },
+            {
+                "Type": "Stat",
+                "Stat": "Resistance",
+                "Multiplier": 2
+            }
+        ],
         "MarsNeeded": 4
     },
     "Jupiter": {
@@ -215,22 +199,20 @@
             "Element": 2,
             "power": 30,
             "percentageDamage": 3,
-            "Range": 5,
-            "Effects": [
-                {
-                    "Type": "Stat",
-                    "Stat": "Power",
-                    "Multiplier": 1.05,
-                    "OnTarget": false
-                },
-                {
-                    "Type": "Stat",
-                    "Stat": "Resistance",
-                    "Multiplier": 1.05,
-                    "OnTarget": false
-                }
-            ]
+            "Range": 5
         },
+        "EffectsOnUser": [
+            {
+                "Type": "Stat",
+                "Stat": "Power",
+                "Multiplier": 1.1
+            },
+            {
+                "Type": "Stat",
+                "Stat": "Resistance",
+                "Multiplier": 1.1
+            }
+        ],
         "JupiterNeeded": 1
     },
     "Atalanta": {
@@ -241,22 +223,20 @@
             "Element": 2,
             "power": 60,
             "percentageDamage": 6,
-            "Range": 5,
-            "Effects": [
-                {
-                    "Type": "Stat",
-                    "Stat": "Power",
-                    "Multiplier": 1.3,
-                    "OnTarget": false
-                },
-                {
-                    "Type": "Stat",
-                    "Stat": "Resistance",
-                    "Multiplier": 1.3,
-                    "OnTarget": false
-                }
-            ]
+            "Range": 5
         },
+        "EffectsOnUser": [
+            {
+                "Type": "Stat",
+                "Stat": "Power",
+                "Multiplier": 1.3
+            },
+            {
+                "Type": "Stat",
+                "Stat": "Resistance",
+                "Multiplier": 1.3
+            }
+        ],
         "JupiterNeeded": 2
     },
     "Procne": {
@@ -267,22 +247,20 @@
             "Element": 2,
             "power": 120,
             "percentageDamage": 9,
-            "Range": 5,
-            "Effects": [
-                {
-                    "Type": "Stat",
-                    "Stat": "Power",
-                    "Multiplier": 1.60,
-                    "OnTarget": false
-                },
-                {
-                    "Type": "Stat",
-                    "Stat": "Resistance",
-                    "Multiplier": 1.60,
-                    "OnTarget": false
-                }
-            ]
+            "Range": 5
         },
+        "EffectsOnUser": [
+            {
+                "Type": "Stat",
+                "Stat": "Power",
+                "Multiplier": 1.6
+            },
+            {
+                "Type": "Stat",
+                "Stat": "Resistance",
+                "Multiplier": 1.6
+            }
+        ],
         "JupiterNeeded": 3
     },
     "Thor": {
@@ -293,22 +271,20 @@
             "Element": 2,
             "power": 240,
             "percentageDamage": 12,
-            "Range": 5,
-            "Effects": [
-                {
-                    "Type": "Stat",
-                    "Stat": "Power",
-                    "Multiplier": 2,
-                    "OnTarget": false
-                },
-                {
-                    "Type": "Stat",
-                    "Stat": "Resistance",
-                    "Multiplier": 2,
-                    "OnTarget": false
-                }
-            ]
+            "Range": 5
         },
+        "EffectsOnUser": [
+            {
+                "Type": "Stat",
+                "Stat": "Power",
+                "Multiplier": 2
+            },
+            {
+                "Type": "Stat",
+                "Stat": "Resistance",
+                "Multiplier": 2
+            }
+        ],
         "JupiterNeeded": 4
     },
     "Mercury": {
@@ -319,22 +295,20 @@
             "Element": 3,
             "power": 30,
             "percentageDamage": 3,
-            "Range": 5,
-            "Effects": [
-                {
-                    "Type": "Stat",
-                    "Stat": "Power",
-                    "Multiplier": 1.05,
-                    "OnTarget": false
-                },
-                {
-                    "Type": "Stat",
-                    "Stat": "Resistance",
-                    "Multiplier": 1.05,
-                    "OnTarget": false
-                }
-            ]
+            "Range": 5
         },
+        "EffectsOnUser": [
+            {
+                "Type": "Stat",
+                "Stat": "Power",
+                "Multiplier": 1.1
+            },
+            {
+                "Type": "Stat",
+                "Stat": "Resistance",
+                "Multiplier": 1.1
+            }
+        ],
         "MercuryNeeded": 1
     },
     "Nereid": {
@@ -345,22 +319,20 @@
             "Element": 3,
             "power": 60,
             "percentageDamage": 6,
-            "Range": 5,
-            "Effects": [
-                {
-                    "Type": "Stat",
-                    "Stat": "Power",
-                    "Multiplier": 1.3,
-                    "OnTarget": false
-                },
-                {
-                    "Type": "Stat",
-                    "Stat": "Resistance",
-                    "Multiplier": 1.3,
-                    "OnTarget": false
-                }
-            ]
+            "Range": 5
         },
+        "EffectsOnUser": [
+            {
+                "Type": "Stat",
+                "Stat": "Power",
+                "Multiplier": 1.3
+            },
+            {
+                "Type": "Stat",
+                "Stat": "Resistance",
+                "Multiplier": 1.3
+            }
+        ],
         "MercuryNeeded": 2
     },
     "Neptune": {
@@ -371,22 +343,20 @@
             "Element": 3,
             "power": 120,
             "percentageDamage": 9,
-            "Range": 5,
-            "Effects": [
-                {
-                    "Type": "Stat",
-                    "Stat": "Power",
-                    "Multiplier": 1.60,
-                    "OnTarget": false
-                },
-                {
-                    "Type": "Stat",
-                    "Stat": "Resistance",
-                    "Multiplier": 1.60,
-                    "OnTarget": false
-                }
-            ]
+            "Range": 5
         },
+        "EffectsOnUser": [
+            {
+                "Type": "Stat",
+                "Stat": "Power",
+                "Multiplier": 1.6
+            },
+            {
+                "Type": "Stat",
+                "Stat": "Resistance",
+                "Multiplier": 1.6
+            }
+        ],
         "MercuryNeeded": 3
     },
     "Boreas": {
@@ -397,22 +367,20 @@
             "Element": 3,
             "power": 240,
             "percentageDamage": 12,
-            "Range": 5,
-            "Effects": [
-                {
-                    "Type": "Stat",
-                    "Stat": "Power",
-                    "Multiplier": 2,
-                    "OnTarget": false
-                },
-                {
-                    "Type": "Stat",
-                    "Stat": "Resistance",
-                    "Multiplier": 2,
-                    "OnTarget": false
-                }
-            ]
+            "Range": 5
         },
+        "EffectsOnUser": [
+            {
+                "Type": "Stat",
+                "Stat": "Power",
+                "Multiplier": 2
+            },
+            {
+                "Type": "Stat",
+                "Stat": "Resistance",
+                "Multiplier": 2
+            }
+        ],
         "MercuryNeeded": 4
     },
     "Zagan": {
@@ -425,18 +393,7 @@
             "percentageDamage": 10,
             "Range": 5,
             "Effects": [
-                {
-                    "Type": "Stat",
-                    "Stat": "Power",
-                    "Multiplier": 1.1,
-                    "OnTarget": false
-                },
-                {
-                    "Type": "Stat",
-                    "Stat": "Resistance",
-                    "Multiplier": 1.1,
-                    "OnTarget": false
-                },
+
                 {
                     "Type": "Stat",
                     "Stat": "Defense",
@@ -445,6 +402,18 @@
                 }
             ]
         },
+        "EffectsOnUser": [
+            {
+                "Type": "Stat",
+                "Stat": "Power",
+                "Multiplier": 1.1
+            },
+            {
+                "Type": "Stat",
+                "Stat": "Resistance",
+                "Multiplier": 1.1
+            }
+        ],
         "VenusNeeded": 1,
         "MarsNeeded": 1
     },
@@ -458,18 +427,7 @@
             "percentageDamage": 9,
             "Range": 5,
             "Effects": [
-                {
-                    "Type": "Stat",
-                    "Stat": "Power",
-                    "Multiplier": 1.3,
-                    "OnTarget": false
-                },
-                {
-                    "Type": "Stat",
-                    "Stat": "Resistance",
-                    "Multiplier": 1.3,
-                    "OnTarget": false
-                },
+
                 {
                     "Type": "Condition",
                     "Condition": "Sleep",
@@ -477,6 +435,18 @@
                 }
             ]
         },
+        "EffectsOnUser": [
+            {
+                "Type": "Stat",
+                "Stat": "Power",
+                "Multiplier": 1.2
+            },
+            {
+                "Type": "Stat",
+                "Stat": "Resistance",
+                "Multiplier": 1.2
+            }
+        ],
         "JupiterNeeded": 1,
         "VenusNeeded": 1
     },
@@ -488,28 +458,28 @@
             "Element": 1,
             "power": 60,
             "percentageDamage": 8,
-            "range": 5,
-            "Effects": [
-                {
-                    "Type": "Stat",
-                    "Stat": "Power",
-                    "Multiplier": 1.1,
-                    "OnTarget": false
-                },
-                {
-                    "Type": "Stat",
-                    "Stat": "Resistance",
-                    "Multiplier": 1.1,
-                    "OnTarget": false
-                },
-                {
-                    "Type": "Stat",
-                    "Stat": "Attack",
-                    "Multiplier": 1.25,
-                    "OnTarget": false
-                }
-            ]
+            "range": 5
         },
+        "EffectsOnUser": [
+            {
+                "Type": "Stat",
+                "Stat": "Power",
+                "Multiplier": 1.1
+            },
+            {
+                "Type": "Stat",
+                "Stat": "Resistance",
+                "Multiplier": 1.1
+            }
+
+        ],
+        "EffectsOnParty": [
+            {
+                "Type": "Stat",
+                "Stat": "Attack",
+                "Multiplier": 1.25
+            }
+        ],
         "MarsNeeded": 1,
         "JupiterNeeded": 1
     },
@@ -523,18 +493,7 @@
             "power": 100,
             "percentageDamage": 9,
             "Effects": [
-                {
-                    "Type": "Stat",
-                    "Stat": "Power",
-                    "Multiplier": 1.3,
-                    "OnTarget": false
-                },
-                {
-                    "Type": "Stat",
-                    "Stat": "Resistance",
-                    "Multiplier": 1.3,
-                    "OnTarget": false
-                },
+
                 {
                     "Type": "Stat",
                     "Stat": "Agility",
@@ -543,6 +502,18 @@
                 }
             ]
         },
+        "EffectsOnUser": [
+            {
+                "Type": "Stat",
+                "Stat": "Power",
+                "Multiplier": 1.2
+            },
+            {
+                "Type": "Stat",
+                "Stat": "Resistance",
+                "Multiplier": 1.2
+            }
+        ],
         "MercuryNeeded": 1,
         "JupiterNeeded": 1
     },
@@ -556,18 +527,7 @@
             "percentageDamage": 14,
             "Range": 5,
             "Effects": [
-                {
-                    "Type": "Stat",
-                    "Stat": "Power",
-                    "Multiplier": 1.75,
-                    "OnTarget": false
-                },
-                {
-                    "Type": "Stat",
-                    "Stat": "Resistance",
-                    "Multiplier": 1.75,
-                    "OnTarget": false
-                },
+
                 {
                     "Type": "Condition",
                     "Condition": "Flinch",
@@ -575,6 +535,18 @@
                 }
             ]
         },
+        "EffectsOnUser": [
+            {
+                "Type": "Stat",
+                "Stat": "Power",
+                "Multiplier": 1.2
+            },
+            {
+                "Type": "Stat",
+                "Stat": "Resistance",
+                "Multiplier": 1.2
+            }
+        ],
         "MarsNeeded": 2,
         "MercuryNeeded": 2
     },
@@ -588,18 +560,7 @@
             "percentageDamage": 15,
             "Range": 5,
             "Effects": [
-                {
-                    "Type": "Stat",
-                    "Stat": "Power",
-                    "Multiplier": 1.75,
-                    "OnTarget": false
-                },
-                {
-                    "Type": "Stat",
-                    "Stat": "Resistance",
-                    "Multiplier": 1.75,
-                    "OnTarget": false
-                },
+
                 {
                     "Type": "Stat",
                     "Stat": "Attack",
@@ -608,6 +569,18 @@
                 }
             ]
         },
+        "EffectsOnUser": [
+            {
+                "Type": "Stat",
+                "Stat": "Power",
+                "Multiplier": 1.7
+            },
+            {
+                "Type": "Stat",
+                "Stat": "Resistance",
+                "Multiplier": 1.7
+            }
+        ],
         "JupiterNeeded": 2,
         "MercuryNeeded": 2
     }
