@@ -61,13 +61,13 @@ namespace IodemBot.Modules.ColossoBattles
                     p.SelectRandom();
                 }
 
-                if (p is PlayerFighter)
+                if (p is PlayerFighter player)
                 {
-                    ((PlayerFighter)p).battleStats = new BattleStats();
-                    ((PlayerFighter)p).battleStats.TotalTeamMates += TeamB.Count - 1;
+                    player.battleStats = new BattleStats();
+                    player.battleStats.TotalTeamMates += TeamB.Count - 1;
                     if (TeamB.Count == 1)
                     {
-                        ((PlayerFighter)p).battleStats.SoloBattles++;
+                        player.battleStats.SoloBattles++;
                     }
                 }
             });
@@ -90,10 +90,10 @@ namespace IodemBot.Modules.ColossoBattles
                 if (!f.hasSelected)
                 {
                     f.SelectRandom();
-                    if (f is PlayerFighter)
+                    if (f is PlayerFighter player)
                     {
-                        ((PlayerFighter)f).AutoTurnPool--;
-                        ((PlayerFighter)f).AutoTurnsInARow++;
+                        player.AutoTurnPool--;
+                        player.AutoTurnsInARow++;
                     }
                 }
             });
@@ -106,7 +106,7 @@ namespace IodemBot.Modules.ColossoBattles
             {
                 return;
             }
-
+            
             if (TeamA.Any(p => p.ImgUrl != "" && p.ImgUrl == player.ImgUrl))
             {
                 return;

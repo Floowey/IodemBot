@@ -12,8 +12,8 @@ namespace IodemBot.Modules.ColossoBattles
 {
     public abstract class BattleEnvironment : IDisposable
     {
-        protected static string[] numberEmotes = new string[] { "\u0030\u20E3", "\u0031\u20E3", "\u0032\u20E3", "\u0033\u20E3", "\u0034\u20E3", "\u0035\u20E3",
-            "\u0036\u20E3", "\u0037\u20E3", "\u0038\u20E3", "\u0039\u20E3" };
+        protected static string[] numberEmotes = new string[] { "0️⃣", "1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣",
+            "6️⃣", "7️⃣", "8️⃣", "9️⃣" };
 
         public string Name { get; private set; }
         protected uint PlayersToStart { get; set; } = 4;
@@ -86,9 +86,9 @@ namespace IodemBot.Modules.ColossoBattles
             }
             catch (Exception e)
             {
-                Console.WriteLine("Battle did not draw correctly:" + e.Message);
-                File.WriteAllText("Logs/DrawError_" + Global.DateString + ".txt", e.Message);
-                await WriteField();
+                Console.WriteLine("Battle did not draw correctly:" + e.ToString());
+                File.WriteAllText("Logs/DrawError_" + Global.DateString + ".txt", e.ToString());
+                //await WriteField();
             }
         }
 

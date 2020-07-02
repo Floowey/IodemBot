@@ -104,20 +104,23 @@ namespace IodemBot.Modules.ColossoBattles
             {
                 var basexp = 20 + 5 * LureCaps + winsInARow / 4;
                 var DiffFactor = (int)Math.Max(3, (uint)Math.Pow((int)Difficulty + 1, 2));
+                var xp = (uint)(Global.Random.Next(basexp, 2 * basexp) * DiffFactor);
                 return new RewardTables()
                 {
                     new RewardTable()
                     {
                         new DefaultReward(){
-                            xp = (uint)(Global.Random.Next(basexp, 2*basexp)*DiffFactor),
-                            coins = (uint)(Global.Random.Next(basexp/2, basexp)*DiffFactor),
+                            xp = xp,
+                            coins = xp/2,
                             Weight = 3
                         },
                         new DefaultReward(){
-                            xp = (uint)(Global.Random.Next(2*basexp, 3*basexp)*DiffFactor),
+                            xp = xp*2,
+                            coins = xp/4
                         },
                         new DefaultReward(){
-                            coins = (uint)(Global.Random.Next(basexp, 2*basexp)*DiffFactor),
+                            xp = xp/2,
+                            coins = xp
                         },
                     }
                 };

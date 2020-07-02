@@ -51,6 +51,15 @@ namespace IodemBot.Modules.ColossoBattles
                 {
                     matchup.Enemy.Shuffle();
                 }
+                matchup.Enemy.Reverse();
+                matchup.Enemy.ForEach(e =>
+                {
+                    if (matchup.Enemy.Count(p => p.Name.Equals(e.Name)) > 1)
+                    {
+                        e.Name = $"{e.Name} {matchup.Enemy.Count(p => p.Name.Equals(e.Name))}";
+                    }
+                });
+                matchup.Enemy.Reverse();
                 if (matchup.HealBefore)
                 {
                     Battle.TeamA.ForEach(f =>
@@ -60,7 +69,9 @@ namespace IodemBot.Modules.ColossoBattles
                         f.RestorePP(1000);
                     });
                 }
-                matchup.Enemy.ForEach(e => Battle.AddPlayer((NPCEnemy)e.Clone(), Team.B));
+                matchup.Enemy.ForEach(e => Battle.AddPlayer(e, Team.B));
+
+                //matchup.Enemy.ForEach(e => Battle.AddPlayer((NPCEnemy)e.Clone(), Team.B));
                 EndOfDungeon = false;
             }
             else
@@ -124,7 +135,7 @@ namespace IodemBot.Modules.ColossoBattles
 
         protected override string GetEnemyMessageString()
         {
-            return $"{base.GetEnemyMessageString()}\n{Dungeon?.FlavourText}";
+            return $"Welcome to {Dungeon.Name}!\n{Dungeon?.FlavourText}";
         }
 
         protected override string GetStartBattleString()

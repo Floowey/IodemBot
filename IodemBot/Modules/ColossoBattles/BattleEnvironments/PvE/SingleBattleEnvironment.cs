@@ -123,11 +123,11 @@ namespace IodemBot.Modules.ColossoBattles
                         },
                         new DefaultReward(){
                             xp = xp*2,
-                            coins = xp/10
+                            coins = xp/4
                         },
                         new DefaultReward(){
-                            coins = xp,
-                            xp = xp/10
+                            xp = xp/2,
+                            coins = xp
                         },
                     }
                 };

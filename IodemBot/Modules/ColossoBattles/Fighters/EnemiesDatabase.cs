@@ -41,7 +41,7 @@ namespace IodemBot.Modules.ColossoBattles
             }
             catch (Exception e) // Just for debugging
             {
-                Console.Write("Enemies not loaded correctly" + e.Message);
+                Console.Write("Enemies not loaded correctly" + e);
             }
         }
 
@@ -100,6 +100,38 @@ namespace IodemBot.Modules.ColossoBattles
             if (allEnemies.TryGetValue(enemyKey, out NPCEnemy enemy))
             {
                 return (NPCEnemy)enemy.Clone();
+            }
+            else if (enemyKey.StartsWith("DeathTrap"))
+            {
+                allEnemies.TryGetValue("DeathTrap", out var trapEnemy);
+                var clone = (NPCEnemy)trapEnemy.Clone();
+                clone.Name = enemyKey.Substring(9);
+                return clone;
+            }
+            else if (enemyKey.StartsWith("BoobyTrap"))
+            {
+                allEnemies.TryGetValue("BoobyTrap", out var trapEnemy);
+                var clone = (NPCEnemy)trapEnemy.Clone();
+                clone.Name = enemyKey.Substring(9);
+                return clone;
+            }
+            else if (enemyKey.StartsWith("Key"))
+            {
+                if (uint.TryParse(enemyKey.Substring(3).Substring(0, 2), out var damage))
+                {
+                    allEnemies.TryGetValue("Key20", out var trapEnemy);
+                    var clone = (NPCEnemy)trapEnemy.Clone();
+                    clone.Name = enemyKey.Substring(5);
+                    clone.Moves.OfType<OffensivePsynergy>().FirstOrDefault().PercentageDamage = damage;
+                    return clone;
+                }
+                else
+                {
+                    allEnemies.TryGetValue("Key", out var trapEnemy);
+                    var clone = (NPCEnemy)trapEnemy.Clone();
+                    clone.Name = enemyKey.Substring(3);
+                    return clone;
+                }
             }
             else
             {
@@ -185,19 +217,24 @@ namespace IodemBot.Modules.ColossoBattles
             [JsonConstructor]
             public DungeonMatchup(List<string> EnemyNames)
             {
-                EnemyNames.ForEach(s =>
-                {
-                    var enemy = GetEnemy(s);
-                    if (EnemyNames.Count(e => e.Contains(enemy.Name)) > 1)
-                    {
-                        enemy.Name = $"{enemy.Name} {Enemy.Count(e => e.Name.Contains(enemy.Name)) + 1}".Trim();
-                    }
-                    Enemy.Add(enemy);
-                });
                 this.EnemyNames = EnemyNames;
             }
 
-            [JsonIgnore] public List<NPCEnemy> Enemy { get; } = new List<NPCEnemy>();
+            [JsonIgnore]
+            public List<NPCEnemy> Enemy
+            {
+                get
+                {
+                    var enemies = new List<NPCEnemy>();
+                    EnemyNames.ForEach(s =>
+                    {
+                        var enemy = GetEnemy(s);
+                        enemies.Add(enemy);
+                    });
+                    return enemies;
+                }
+            }
+
             public List<string> EnemyNames { get; set; }
             public string FlavourText { get; set; }
             public RewardTables RewardTables { get; set; } = new RewardTables();
@@ -222,6 +259,40 @@ namespace IodemBot.Modules.ColossoBattles
         public string[] TagsAny { get; set; } = new string[] { };
         public int TagsHowMany { get; set; } = 0;
         public string[] TagsLock { get; set; } = new string[] { };
+
+        public string GetDescription()
+        {
+            var s = new List<string>();
+            if (ArchTypes.Length > 0)
+            {
+                s.Add($"For Archtypes: {string.Join(", ", ArchTypes.Select(a => a.ToString()))}");
+            }
+            if (ClassSeries.Length > 0)
+            {
+                s.Add($"For Class series: {string.Join(", ", ClassSeries.Select(a => a.ToString()))}");
+            }
+            if (Classes.Length > 0)
+            {
+                s.Add($"For Classes: {string.Join(", ", Classes.Select(a => a.ToString()))}");
+            }
+            if (Elements.Length > 0)
+            {
+                s.Add($"For Elements: {string.Join(", ", Elements.Select(a => a.ToString()))}");
+            }
+            if (MinLevel > 0)
+            {
+                s.Add($"Minimum Level: {MinLevel}");
+            }
+            if (MaxLevel < 200)
+            {
+                s.Add($"Maximum Level: {MaxLevel}");
+            }
+            if (s.Count == 0)
+            {
+                s.Add($"No Requirements");
+            }
+            return string.Join("\n", s);
+        }
 
         public bool IsLocked(UserAccount playerAccount)
         => (TagsLock.Count() > 0 && TagsLock.Any(t => playerAccount.Tags.Contains(t)));
@@ -253,7 +324,7 @@ namespace IodemBot.Modules.ColossoBattles
                 return false;
             }
 
-            if (TagsAny.Count() > 0 && !TagsAny.All(t => playerAvatar.Tags.Contains(t)))
+            if (TagsAny.Count() > 0 && TagsAny.Count(t => playerAvatar.Tags.Contains(t)) < TagsHowMany)
             {
                 return false;
             }

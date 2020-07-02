@@ -151,11 +151,7 @@ namespace IodemBot.Modules.ColossoBattles
                 if (reaction.Emote.Name == "🔄")
                 {
                     await c.RemoveReactionAsync(reaction.Emote, reaction.User.Value);
-                    autoTurn.Stop();
-                    Task.WaitAll(PlayerMessages.Select(m => m.Key.RemoveAllReactionsAsync()).Append(EnemyMessage.RemoveAllReactionsAsync()).ToArray());
-
-                    _ = WriteBattleInit();
-                    autoTurn.Start();
+                    _ = RedrawBattle();
                     return;
                 }
 
@@ -208,9 +204,19 @@ namespace IodemBot.Modules.ColossoBattles
             }
             catch (Exception e)
             {
-                Console.WriteLine("Colosso Turn Processing Error: " + e.Message);
-                File.WriteAllText($"Logs/Crashes/Error_{DateTime.Now.Date}.log", e.Message);
+                Console.WriteLine("Colosso Turn Processing Error: " + e);
+                File.WriteAllText($"Logs/Crashes/Error_{DateTime.Now.Date}.log", e.ToString());
             }
+        }
+
+        protected async Task RedrawBattle()
+        {
+            autoTurn.Stop();
+            wasJustReset = false;
+            Task.WaitAll(PlayerMessages.Select(m => m.Key.RemoveAllReactionsAsync()).Append(EnemyMessage.RemoveAllReactionsAsync()).ToArray());
+
+            await WriteBattleInit();
+            autoTurn.Start();
         }
 
         protected virtual async Task AddPlayer(SocketReaction reaction)

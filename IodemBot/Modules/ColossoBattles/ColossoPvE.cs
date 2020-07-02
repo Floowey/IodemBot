@@ -5,6 +5,7 @@ using Iodembot.Preconditions;
 using IodemBot.Core;
 using IodemBot.Core.UserManagement;
 using IodemBot.Extensions;
+using IodemBot.Modules.GoldenSunMechanics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -48,7 +49,7 @@ namespace IodemBot.Modules.ColossoBattles
                 if (openBattle == null)
                 {
                     var gauntletFromUser = battles.Where(b => b.Name.Equals(Context.User.Username, StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault();
-                    if (gauntletFromUser != null && gauntletFromUser.IsActive)
+                    if (gauntletFromUser != null)
                     {
                         if (gauntletFromUser.IsActive)
                         {
@@ -57,11 +58,11 @@ namespace IodemBot.Modules.ColossoBattles
                         }
                         else
                         {
-                            await gauntletFromUser.Reset();
+                            _ = gauntletFromUser.Reset();
                             battles.Remove(gauntletFromUser);
                         }
                     }
-                    openBattle = new GauntletBattleEnvironment($"{Context.User.Username}", GuildSetups.GetAccount(Context.Guild).ColossoChannel, await PrepareBattleChannel($"{Dungeon.Name}-{Context.User.Username}"), Dungeon.Name, true);
+                    openBattle = new GauntletBattleEnvironment($"{Context.User.Username}", GuildSettings.GetGuildSettings(Context.Guild).ColossoChannel, await PrepareBattleChannel($"{Dungeon.Name}-{Context.User.Username}"), Dungeon.Name, true);
 
                     battles.Add(openBattle);
                 }
@@ -89,6 +90,33 @@ namespace IodemBot.Modules.ColossoBattles
             battles.RemoveAll(b => b.Name.Equals(name, StringComparison.CurrentCultureIgnoreCase));
         }
 
+        [Command("DungeonInfo")]
+        public async Task DungeonInfo([Remainder] string DungeonName)
+        {
+            if (EnemiesDatabase.TryGetDungeon(DungeonName, out var dungeon))
+            {
+                var djinnTotal = dungeon.Matchups
+                    .SelectMany(m => m.RewardTables.SelectMany(t => t.OfType<DefaultReward>().Where(r => r.Djinn != "")));
+
+                var limittedDjinn = djinnTotal.GroupBy(d => d.Tag)
+                    .Select(k => k.OrderByDescending(d => d.Obtainable).First());
+
+                var unlimittedDjinn = djinnTotal.Where(d => d.Obtainable == 0);
+
+                var avatar = UserAccounts.GetAccount(Context.User);
+                var djinnobtained = avatar.Tags.Count(t => limittedDjinn.Any(r => r.Tag.Contains(t)));
+
+                _ = ReplyAsync(embed: new EmbedBuilder()
+                    .WithTitle(dungeon.Name)
+                    .WithDescription(dungeon.FlavourText)
+                    .WithThumbnailUrl(dungeon.Image)
+                    .AddField("Info", $"{(dungeon.IsDefault ? "Default " : "")}{(dungeon.IsOneTimeOnly ? "<:dungeonkey:606237382047694919> Dungeon" : "<:mapopen:606236181503410176> Town")} for up to {dungeon.MaxPlayer} {(dungeon.MaxPlayer == 1 ? "player" : "players")}. {dungeon.Matchups.Count()} stages.")
+                    .AddField("Requirement", $"{dungeon.Requirement.GetDescription()}")
+                    .AddField("Djinn", $"{(djinnTotal.Count() > 0 ? $"{djinnobtained}/{limittedDjinn.Sum(d => d.Obtainable)}{(unlimittedDjinn.Count() > 0 ? "+" : "")}" : "none")}")
+                    .Build());
+            }
+        }
+
         [Command("c setup"), Alias("colosso setup")]
         [RequireStaff]
         [RequireUserServer]
@@ -104,7 +132,7 @@ namespace IodemBot.Modules.ColossoBattles
         {
             battles.ForEach(old => old.Dispose());
             battles.Clear();
-            battles.Add(new SingleBattleEnvironment("Wilds", GuildSetups.GetAccount(Context.Guild).ColossoChannel, await PrepareBattleChannel("Weyard-Wilds"), BattleDifficulty.Easy));
+            battles.Add(new SingleBattleEnvironment("Wilds", GuildSettings.GetGuildSettings(Context.Guild).ColossoChannel, await PrepareBattleChannel("Weyard-Wilds"), BattleDifficulty.Easy));
             //battles.Add(new SingleBattleEnvironment("Woods", LobbyChannel, await PrepareBattleChannel("Weyard-Woods"), BattleDifficulty.Medium));
             //battles.Add(new SingleBattleEnvironment("Wealds", LobbyChannel, await PrepareBattleChannel("Weyard-Wealds"), BattleDifficulty.Hard));
 
@@ -196,12 +224,10 @@ namespace IodemBot.Modules.ColossoBattles
 
         private async Task<ITextChannel> PrepareBattleChannel(string Name, RoomVisibility visibility = RoomVisibility.All)
         {
-            var channel = await Context.Guild.GetOrCreateTextChannelAsync(Name);
-            await channel.ModifyAsync(c =>
-            {
-                c.CategoryId = GuildSetups.GetAccount(Context.Guild).ColossoChannel.CategoryId;
-                c.Position = GuildSetups.GetAccount(Context.Guild).ColossoChannel.Position + battles.Count;
-            });
+            var colossoChannel = GuildSettings.GetGuildSettings(Context.Guild).ColossoChannel;
+
+            var channel = await Context.Guild.GetOrCreateTextChannelAsync(Name, d => { d.CategoryId = colossoChannel.CategoryId; d.Position = colossoChannel.Position + battles.Count(); });
+
             await channel.SyncPermissionsAsync();
 
             if (visibility == RoomVisibility.TeamB)
