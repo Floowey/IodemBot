@@ -125,7 +125,7 @@ namespace IodemBot.Core.Leveling
             var embed = new EmbedBuilder();
             embed.WithColor(Colors.Get("Iodem"));
             embed.WithDescription($"{string.Join("\n", text)}");
-            _ = GuildSetups.GetAccount(channel.Guild).CommandChannel.SendMessageAsync("", false, embed.Build());
+            _ = GuildSettings.GetGuildSettings(channel.Guild).CommandChannel.SendMessageAsync("", false, embed.Build());
             var msg = await channel.SendMessageAsync("", false, embed.Build());
             await Task.Delay(3000);
             _ = msg.DeleteAsync();
@@ -170,7 +170,7 @@ namespace IodemBot.Core.Leveling
             }
         }
 
-        internal static async Task UserSentCommand(SocketGuildUser user, SocketTextChannel channel)
+        internal static async Task UserSentCommand(SocketUser user, IMessageChannel channel)
         {
             var userAccount = UserAccounts.GetAccount(user);
             userAccount.ServerStats.CommandsUsed++;

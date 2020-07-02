@@ -1,4 +1,5 @@
-﻿using IodemBot.Modules.GoldenSunMechanics;
+﻿using Accord.Statistics.Testing;
+using IodemBot.Modules.GoldenSunMechanics;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -126,48 +127,56 @@ namespace IodemBot.Core.UserManagement
         public DateTime LastXP { get; set; }
 
         [JsonIgnore]
+        private ulong[][] rates = new ulong[][] {
+                    new ulong[] { 2538160, 25000, 100 },
+                    new ulong[] { 1196934, 2500, 90 },
+                    new ulong[] { 605000, 1000, 80 },
+                    new ulong[]{ 125000, 200, 50 },
+                    new ulong[]{ 0, 50, 0 }
+            };
+
+        [JsonIgnore]
         public uint LevelNumber
         {
             get
             {
-                ulong rate0 = 50;
-
-                ulong cutoff50 = 125000;
-                ulong rate50 = 200;
-
-                ulong cutoff80 = 605000;
-                ulong rate80 = 1000;
-
-                ulong cutoff90 = 1196934;
-                ulong rate90 = 2500;
-
-                ulong cutoff100 = 2538160; //2540978
-                ulong rate100 = 25000;
-
-                uint level = 1;
-
-                if (XP <= cutoff50)
+                uint curLevel = 1;
+                foreach (var r in rates)
                 {
-                    level = (uint)Math.Sqrt(XP / rate0);
-                }
-                else if (XP <= cutoff80)
-                {
-                    level = (uint)(50 - Math.Sqrt(cutoff50 / rate50) + Math.Sqrt(XP / rate50));
-                }
-                else if (XP <= cutoff90)
-                {
-                    level = (uint)(80 - Math.Sqrt(cutoff80 / rate80) + Math.Sqrt(XP / rate80));
-                }
-                else if (XP <= cutoff100)
-                {
-                    level = (uint)(90 - Math.Sqrt(cutoff90 / rate90) + Math.Sqrt(XP / rate90));
-                }
-                else
-                {
-                    level = (uint)(100 - Math.Sqrt(cutoff100 / rate100) + Math.Sqrt(XP / rate100));
+                    var cutoff = r[0];
+                    var rate = (double)r[1];
+                    var level = r[2];
+                    if (XP >= cutoff)
+                    {
+                        curLevel = (uint)(level - Math.Sqrt(cutoff / rate) + Math.Sqrt(XP / rate));
+                        break;
+                    }
                 }
 
-                return Math.Max(1, level);
+                return Math.Max(1, curLevel);
+            }
+        }
+        [JsonIgnore]
+        public ulong XPneeded
+        {
+            get
+            {
+                var xpneeded = XP;
+                foreach (var r in rates)
+                {
+                    var cutoff = r[0];
+                    var rate = (double)r[1];
+                    var level = r[2];
+                    if (XP >= cutoff)
+                    {
+                        var wantedLvl = LevelNumber + 1;
+                        var rateFactor = Math.Sqrt(cutoff / rate);
+                        xpneeded = (ulong)(Math.Pow(wantedLvl - level + rateFactor, 2) * rate);
+                        break;
+                    }
+                }
+
+                return xpneeded - XP;
             }
         }
 
@@ -196,7 +205,7 @@ namespace IodemBot.Core.UserManagement
 
         public void NewGame()
         {
-            XpBoost *= 1 + 0.1 * (1 - Math.Exp(-(long)XP / 120000));
+            XpBoost *= 1 + 0.1 * (1 - Math.Exp(-(double)XP / 120000));
             XPLastGame = TotalXP;
             XP = 0;
             Inv.Clear();
@@ -209,7 +218,7 @@ namespace IodemBot.Core.UserManagement
             BattleStats = new BattleStats();
             ServerStats = new ServerStats();
             Tags.Clear();
-            Tags.Add($"{Element.ToString()}Adept");
+            Tags.Add($"{Element}Adept");
             NewGames++;
         }
 

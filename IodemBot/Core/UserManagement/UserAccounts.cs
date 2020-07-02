@@ -52,7 +52,7 @@ namespace IodemBot.Core.UserManagement
             return GetOrCreateAccount(user.Id, user.Username);
         }
 
-        public static UserAccount[] GetTop(int number, RankEnum type = RankEnum.Level)
+        public static List<UserAccount> GetTop(RankEnum type = RankEnum.Level)
         {
             var sortedList = accounts.OrderByDescending(d => d.TotalXP).ToList();
             switch (type)
@@ -87,43 +87,13 @@ namespace IodemBot.Core.UserManagement
 
                 default: break;
             }
-            return sortedList.Take(Math.Min(sortedList.Count(), 10)).ToArray();
+            return sortedList;
         }
 
         public static int GetRank(SocketUser user, RankEnum type = RankEnum.Level)
         {
             var account = GetAccount(user);
-            var sortedList = accounts.OrderByDescending(d => d.XP).ToList();
-            switch (type)
-            {
-                case (RankEnum.Solo):
-                    sortedList = accounts.OrderByDescending(d => d.ServerStats.ColossoHighestRoundEndlessSolo).ToList();
-                    break;
-
-                case (RankEnum.Duo):
-                    sortedList = accounts.Where(p => p.ServerStats.ColossoHighestRoundEndlessDuo > 0)
-                        .GroupBy(p => p.ServerStats.ColossoHighestRoundEndlessDuoNames)
-                        .Select(group => group.First())
-                        .OrderByDescending(d => d.ServerStats.ColossoHighestRoundEndlessDuo)
-                        .ToList();
-                    break;
-
-                case (RankEnum.Trio):
-                    sortedList = accounts.Where(p => p.ServerStats.ColossoHighestRoundEndlessTrio > 0)
-                         .GroupBy(p => p.ServerStats.ColossoHighestRoundEndlessTrioNames)
-                         .Select(group => group.First())
-                         .OrderByDescending(d => d.ServerStats.ColossoHighestRoundEndlessTrio)
-                         .ToList();
-                    break;
-
-                case (RankEnum.Quad):
-                    sortedList = accounts.Where(d => d.ServerStats.ColossoHighestRoundEndlessQuad > 0)
-                       .GroupBy(p => p.ServerStats.ColossoHighestRoundEndlessQuadNames)
-                       .Select(group => group.First())
-                       .OrderByDescending(d => d.ServerStats.ColossoHighestRoundEndlessQuad)
-                       .ToList();
-                    break;
-            }
+            var sortedList = GetTop(type);
             return sortedList.IndexOf(account);
         }
 

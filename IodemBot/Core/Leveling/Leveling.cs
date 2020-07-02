@@ -66,7 +66,7 @@ namespace IodemBot.Core.Leveling
                 }
             }
 
-            if (channel.Id == GuildSetups.GetAccount(channel.Guild)?.ColossoChannel.Id)
+            if (channel.Id == GuildSettings.GetGuildSettings(channel.Guild)?.ColossoChannel.Id)
             {
                 userAccount.ServerStats.MessagesInColossoTalks++;
                 if (userAccount.ServerStats.MessagesInColossoTalks >= 50)
@@ -90,7 +90,7 @@ namespace IodemBot.Core.Leveling
         {
             if (userAccount.LevelNumber < 10 && (userAccount.LevelNumber % 5) > 0)
             {
-                channel = GuildSetups.GetAccount(user.Guild).CommandChannel;
+                channel = GuildSettings.GetGuildSettings(user.Guild).CommandChannel;
             }
             if (channel == null)
             {
@@ -133,7 +133,7 @@ namespace IodemBot.Core.Leveling
             {
                 try
                 {
-                    await GoldenSun.AwardClassSeries("Aqua Pilgrim Series", user, GuildSetups.GetAccount(user.Guild).ColossoChannel);
+                    await GoldenSun.AwardClassSeries("Aqua Pilgrim Series", user, GuildSettings.GetGuildSettings(user.Guild).ColossoChannel);
                 }
                 catch { }
             }
@@ -143,56 +143,6 @@ namespace IodemBot.Core.Leveling
         internal static async void UserSentFile(SocketGuildUser user, SocketTextChannel channel)
         {
             await Task.CompletedTask;
-        }
-
-        internal static ulong XPforNextLevel(ulong xp)
-        {
-            ulong rate0 = 50;
-
-            ulong cutoff50 = 125000;
-            ulong rate50 = 200;
-
-            ulong cutoff80 = 605000;
-            ulong rate80 = 1000;
-
-            ulong cutoff90 = 1196934;
-            ulong rate90 = 2500;
-
-            ulong cutoff100 = 2538160;
-            ulong rate100 = 25000;
-            uint level = 1;
-            ulong xpneeded = 0;
-
-            if (xp <= cutoff50)
-            {
-                level = (uint)Math.Sqrt(xp / rate0);
-                xpneeded = (ulong)Math.Pow((level + 1), 2) * rate0;
-            }
-            else if (xp <= cutoff80)
-            {
-                level = (uint)(50 - Math.Sqrt(cutoff50 / rate50) + Math.Sqrt(xp / rate50));
-                xpneeded = (ulong)(Math.Pow(level + 1 - 50 + Math.Sqrt(cutoff50 / rate50), 2) * rate50);
-            }
-            else if (xp <= cutoff90)
-            {
-                level = (uint)(80 - Math.Sqrt(cutoff80 / rate80) + Math.Sqrt(xp / rate80));
-                xpneeded = (ulong)(Math.Pow(level + 1 - 80 + Math.Sqrt(cutoff80 / rate80), 2) * rate80);
-            }
-            else if (xp <= cutoff100)
-            {
-                level = (uint)(90 - Math.Sqrt(cutoff90 / rate90) + Math.Sqrt(xp / rate90));
-                xpneeded = (ulong)(Math.Pow(level + 1 - 90 + Math.Sqrt(cutoff90 / rate90), 2) * rate90);
-            }
-            else
-            {
-                level = (uint)(100 - Math.Sqrt(cutoff100 / rate100) + Math.Sqrt(xp / rate100));
-                xpneeded = (ulong)(Math.Pow(level + 1 - 100 + Math.Sqrt(cutoff100 / rate100), 2) * rate100);
-            }
-            if (xpneeded < xp)
-            {
-                File.WriteAllText($"Logs/Reports/Report_XP_Error_{DateTime.Now.ToString("MM_dd_hh_mm")}.log", $"has {xp}, needs {xpneeded}. Level {level}");
-            }
-            return xpneeded - xp;
         }
     }
 }
