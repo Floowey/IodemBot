@@ -10,6 +10,11 @@ namespace IodemBot.Modules.GoldenSunMechanics
         [JsonProperty] private double[] Multipliers { get; set; } = { 2.0 };
         [JsonProperty] private int[] Probabilities { get; set; } = { 10 };
 
+        public MultiplyDamageEffect()
+        {
+            ActivationTime = TimeToActivate.beforeDamge;
+        }
+
         public override List<string> Apply(ColossoFighter User, ColossoFighter Target)
         {
             for (int i = 0; i < Multipliers.Length; i++)
@@ -18,6 +23,9 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 {
                     User.offensiveMult *= Multipliers[i];
                     return new List<string>();
+                } else
+                {
+                    System.Console.WriteLine(i);
                 }
             }
             return new List<string>();

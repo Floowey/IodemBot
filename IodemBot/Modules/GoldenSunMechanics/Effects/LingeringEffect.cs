@@ -20,7 +20,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
         }
 
         public override string Type { get; } = "Lingering";
-        [JsonProperty] private Effect Effect;
+
+        [JsonProperty] private Effect Effect = new NoEffect();
         [JsonProperty] private int coolDown;
     }
 }

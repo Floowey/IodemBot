@@ -5,6 +5,11 @@ namespace IodemBot.Modules.GoldenSunMechanics
 {
     internal class ChancetoOHKOEffect : Effect
     {
+        public ChancetoOHKOEffect()
+        {
+            ActivationTime = TimeToActivate.beforeDamge;
+        }
+
         public int Probability { get; set; } = 0;
 
         public override string Type { get; } = "OHKO";
