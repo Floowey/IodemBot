@@ -18,8 +18,8 @@ namespace IodemBot.Extensions
 
         public static string GetDisplay(this IEnumerable<Djinn> djinn, DjinnDetail detail)
         {
-            var seperator = detail == DjinnDetail.Name ? ", " : "";
-            var s = string.Join(seperator, djinn.Select(d => $"{d.Emote}{(detail == DjinnDetail.Name ? $" {d.Name}" : "")}"));
+            var seperator = detail == DjinnDetail.Names ? ", " : "";
+            var s = string.Join(seperator, djinn.Select(d => $"{d.Emote}{(detail == DjinnDetail.Names ? $" {d.Name}" : "")}"));
 
             return s.IsNullOrEmpty() ? "-" : s;
         }

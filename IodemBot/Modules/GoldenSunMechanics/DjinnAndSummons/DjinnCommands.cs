@@ -105,7 +105,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             }
             embed.WithFooter($"{djinnPocket.djinn.Count()}/{djinnPocket.PocketSize} Upgrade: {(djinnPocket.PocketUpgrades + 1) * 3000}");
 
-            var summonString = string.Join(detail == DjinnDetail.Name ? ", " : "", djinnPocket.summons.Select(s => $"{s.Emote}{(detail == DjinnDetail.Name ? $" {s.Name}" : "")}"));
+            var summonString = string.Join(detail == DjinnDetail.Names ? ", " : "", djinnPocket.summons.Select(s => $"{s.Emote}{(detail == DjinnDetail.Names ? $" {s.Name}" : "")}"));
             if (summonString.IsNullOrEmpty())
             {
                 summonString = "-";
@@ -179,6 +179,34 @@ namespace IodemBot.Modules.GoldenSunMechanics
             }
         }
 
+        [Command("Djinn Release")]
+        public async Task ReleaseDjinn(string DjinnName)
+        {
+            _ = ReleaseDjinnHidden(DjinnName);
+            await Task.CompletedTask;
+        }
+
+        private async Task ReleaseDjinnHidden(string DjinnName)
+        {
+            var userDjinn = UserAccounts.GetAccount(Context.User).DjinnPocket;
+            var chosenDjinn = userDjinn.djinn
+                .Where(d => DjinnName.Equals(d.Djinnname, StringComparison.CurrentCultureIgnoreCase) || DjinnName.Equals(d.Nickname, StringComparison.CurrentCultureIgnoreCase))
+                .FirstOrDefault();
+            if (chosenDjinn == null)
+            {
+                return;
+            }
+            await ReplyAsync(embed: new EmbedBuilder()
+                .WithDescription($"Are you sure that you want to release your djinni {chosenDjinn.Emote} {chosenDjinn.Name}")
+                .Build());
+            var response = await Context.Channel.AwaitMessage(m => m.Author == Context.User);
+            if (response.Content.Equals("Yes", StringComparison.CurrentCultureIgnoreCase))
+            {
+                userDjinn.djinn.Remove(chosenDjinn);
+                _ = ReplyAsync(embed: new EmbedBuilder().WithDescription($"You set {chosenDjinn.Emote} {chosenDjinn.Name} free, who swiftly rushes off to find another master.").Build());
+            }
+        }
+
         [Command("Djinn Nickname")]
         public async Task NicknameDjinn(string DjinnName, string Nickname = "")
         {
@@ -193,7 +221,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
             chosenDjinn.Nickname = Nickname;
             chosenDjinn.UpdateMove();
-            await DjinnInv(DjinnDetail.Name);
+            await DjinnInv(DjinnDetail.Names);
         }
     }
 }

@@ -3,7 +3,7 @@ using Newtonsoft.Json.Converters;
 
 namespace IodemBot
 {
-    public enum DjinnDetail { None, Name }
+    public enum DjinnDetail { None, Names }
 
     public enum Team { A, B }
 
