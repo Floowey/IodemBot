@@ -84,7 +84,6 @@ namespace IodemBot.Modules.GoldenSunMechanics
             }
             return false;
         }
-
         public void AddSummon(Summon newSummon)
         {
             summons.Add(newSummon);

@@ -76,7 +76,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 CoolDown -= 1;
                 if (State == DjinnState.Set)
                 {
-                    log.Add($"{Sprite} {Name} was set to {User.Name}");
+                    log.Add($"{Emote} {Name} was set to {User.Name}");
                 }
             }
             return log;
@@ -106,11 +106,11 @@ namespace IodemBot.Modules.GoldenSunMechanics
                     IsSet = false;
                     User.Moves.OfType<Djinn>().Where(d => d.CoolDown > CoolDown).ToList().ForEach(d => d.CoolDown--);
                     CoolDown = 0;
-                    return new List<string>() { $"{Name} {Nickname} was set to {User.Name}." };
+                    return new List<string>() { $"{Emote} {Name} was set to {User.Name}." };
 
                 default:
                 case DjinnState.Recovery:
-                    return new List<string>() { $"{User.Name} wants to summon his djinni, but {Name} {Nickname} is too tired." };
+                    return new List<string>() { $"{User.Name} wants to summon {Emote} {Name}, but {Emote} {Name} is too tired." };
             }
         }
 
