@@ -398,7 +398,7 @@
         "PPCost": 4,
         "effects": [
             {
-                "Type": "Break"
+                "Type": "Restore"
             }
         ]
     },
@@ -435,7 +435,7 @@
         "emote": "<:Smoke_Bomb:551223599911141391>",
         "range": 1,
         "element": 0,
-        "PPCost": 0,
+        "PPCost": 1,
         "effects": [
             {
                 "Type": "Condition",
@@ -450,7 +450,7 @@
         "emote": "<:Sleep_Bomb:551223599894102026>",
         "range": 1,
         "element": 0,
-        "PPCost": 0,
+        "PPCost": 1,
         "effects": [
             {
                 "Type": "Condition",
@@ -460,8 +460,8 @@
         ]
     },
     "Disarm": {
-        "name": "Disarm",
-        "targetType": 4,
+        "name": "Pling",
+        "targetType": 0,
         "emote": "🏳️",
         "range": 3,
         "element": 4,

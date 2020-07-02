@@ -104,6 +104,7 @@
         "SpriteShiny": "<a:VineShiny:663013988468260869>",
         "Move": {
             "Targettype": 4,
+            "Range": 3,
             "Element": 0,
             "effects": [
                 {
@@ -1023,6 +1024,7 @@
         "Move": {
             "Targettype": 3,
             "addDamage": 60,
+            "element": 1,
             "Effects": [
                 {
                     "Type": "Condition",
@@ -1183,6 +1185,7 @@
         "Move": {
             "Targettype": 3,
             "addDamage": 50,
+            "element": 1,
             "Effects": [
                 {
                     "Type": "Condition",
@@ -1578,7 +1581,7 @@
         "SpriteShiny": "<a:SwiftShiny:663022462698520607>",
         "Move": {
             "Targettype": 3,
-            "Element": 1,
+            "Element": 2,
             "hasPriority": true,
             "addDamage": 50
         },
@@ -1790,7 +1793,7 @@
         "SpriteNormal": "<a:Gasp:662386482782404659>",
         "SpriteShiny": "<a:GaspShiny:663022462107123715>",
         "Move": {
-            "Targettype": 4,
+            "Targettype": 3,
             "Element": 2,
             "effects": [
                 {
@@ -1898,6 +1901,7 @@
         "SpriteShiny": "<a:MistShiny:663022350526054410>",
         "Move": {
             "Targettype": 3,
+            "Element": 3,
             "dmgMult": 1.3,
             "Effects": [
                 {

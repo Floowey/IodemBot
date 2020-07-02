@@ -2260,11 +2260,11 @@
                 "VenusAtk": 110,
                 "VenusRes": 25,
                 "MarsAtk": 100,
-                "MarsRes": 72,
+                "MarsRes": 25,
                 "JupiterAtk": 100,
-                "JupiterRes": 152,
+                "JupiterRes": 25,
                 "MercuryAtk": 100,
-                "MercuryRes": 100
+                "MercuryRes": 25
             },
             "HPRecovery": 20,
             "hasAttack": false,

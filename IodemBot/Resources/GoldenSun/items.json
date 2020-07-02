@@ -3774,7 +3774,7 @@
         },
         "GrantsUnleash": true,
         "Unleash": {
-            "effectImages": [
+            "effects": [
                 {
                     "Type": "Condition",
                     "Condition": "DeathCurse",

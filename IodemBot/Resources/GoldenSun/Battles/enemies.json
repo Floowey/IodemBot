@@ -3252,7 +3252,7 @@
     "Great Dragon": {
         "movepool": [ "Desert Gasp", "Dragon Fume", "Grand Gaia" ],
         "name": "Great Dragon",
-        "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Great_Dragon.png",
+        "imgurl": "https://goldensunwiki.net/w/images/2/22/GSDD-GreatDragon.png",
         "stats": {
             "maxhp": 2108,
             "maxpp": 144,
@@ -6174,26 +6174,6 @@
         },
         "extraturns": 0
     },
-    "Mimic Suhalla": {
-        "movepool": [ "Debilitate", "Psy Drain", "Slash", "Sleep" ],
-        "name": "Mimic",
-        "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Mimic.png",
-        "stats": {
-            "maxhp": 207,
-            "maxpp": 12,
-            "atk": 47,
-            "def": 12,
-            "spd": 23
-        },
-        "elstats": {
-            "jupiterres": 152,
-            "mercuryres": 127,
-            "venusres": 100,
-            "marsres": 25,
-            "jupiteratk": 105
-        },
-        "extraturns": 0
-    },
     "Mimic 8": {
         "movepool": [ "Debilitate", "Psy Drain", "Tundra", "Sleep" ],
         "name": "Mimic",
@@ -8968,26 +8948,6 @@
         },
         "extraturns": 1
     },
-    "Tornado Lizard 2": {
-        "movepool": [ "Wing Flutter", "Wind Slash", "Storm Ray", "Impact", "Tornado", "Ward" ],
-        "name": "Tornado Lizard",
-        "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Tornado_Lizard.png",
-        "stats": {
-            "maxhp": 530,
-            "maxpp": 37,
-            "atk": 267,
-            "def": 74,
-            "spd": 104
-        },
-        "elstats": {
-            "jupiterres": 152,
-            "mercuryres": 100,
-            "marsres": 100,
-            "venusres": 48,
-            "jupiteratk": 110
-        },
-        "extraturns": 1
-    },
     "Tret": {
         "movepool": [ "Sleep Star", "Thorn", "Quake", "Growth" ],
         "name": "Tret",
@@ -10344,8 +10304,8 @@
         "hasDefend": false,
         "hasAttack": false
     },
-    "Statue Trap": {
-        "name": "Statue",
+    "Key": {
+        "name": "Key",
         "imgurl": "https://goldensunwiki.net/w/images/c/ca/SolSanctumDisarm.png",
         "movepool": [
             "Trap"
@@ -10380,8 +10340,44 @@
         "hasAttack": false,
         "isImmuneToPsynergy": true
     },
-    "Statue Mockup": {
-        "name": "Statue",
+    "Key20": {
+        "name": "Key",
+        "imgurl": "https://goldensunwiki.net/w/images/c/ca/SolSanctumDisarm.png",
+        "movepool": [
+            "Trap20"
+        ],
+        "stats": {
+            "maxHP": 1,
+            "maxPP": 0,
+            "Atk": 20000,
+            "Def": 2,
+            "Spd": 0
+        },
+        "elstats": {
+            "VenusAtk": 100,
+            "VenusRes": 25,
+            "MarsAtk": 100,
+            "MarsRes": 25,
+            "JupiterAtk": 100,
+            "JupiterRes": 25,
+            "MercuryAtk": 100,
+            "MercuryRes": 25
+        },
+        "isImmuneToConditions": [
+            "Stun",
+            "Poison",
+            "Venom",
+            "Delusion",
+            "Sleep",
+            "Haunt",
+            "Flinch"
+        ],
+        "hasDefend": false,
+        "hasAttack": false,
+        "isImmuneToPsynergy": true
+    },
+    "DeathTrap": {
+        "name": "Trap",
         "imgurl": "https://goldensunwiki.net/w/images/c/ca/SolSanctumDisarm.png",
         "movepool": [
             "Disarm"
@@ -10404,6 +10400,41 @@
             "MercuryRes": 25
         },
         "Conditions": [ "Counter" ],
+        "isImmuneToConditions": [
+            "Stun",
+            "Poison",
+            "Venom",
+            "Delusion",
+            "Sleep",
+            "Haunt",
+            "Flinch"
+        ],
+        "hasDefend": false,
+        "hasAttack": false
+    },
+    "BoobyTrap": {
+        "name": "Trap",
+        "imgurl": "https://goldensunwiki.net/w/images/c/ca/SolSanctumDisarm.png",
+        "movepool": [
+            "Disarm"
+        ],
+        "stats": {
+            "maxHP": 20000,
+            "maxPP": 0,
+            "Atk": 20000,
+            "Def": 2,
+            "Spd": 0
+        },
+        "elstats": {
+            "VenusAtk": 100,
+            "VenusRes": 25,
+            "MarsAtk": 100,
+            "MarsRes": 25,
+            "JupiterAtk": 100,
+            "JupiterRes": 25,
+            "MercuryAtk": 100,
+            "MercuryRes": 25
+        },
         "isImmuneToConditions": [
             "Stun",
             "Poison",
@@ -10742,7 +10773,7 @@
     },
     "ColossoBuford": {
         "name": "Buford",
-        "imgurl": "https://goldensunwiki.net/w/images/c/ca/SolSanctumDisarm.png",
+        "imgurl": "https://cdn.discordapp.com/attachments/660152162202157100/670241988108484628/Azerot.gif",
         "movepool": [
             "Disarm"
         ],
@@ -11209,11 +11240,11 @@
         "name": "Tiamat",
         "imgurl": "https://cdn.discordapp.com/attachments/497696510688100352/665884850690981889/Tiamat.gif",
         "stats": {
-            "maxhp": 3172,
+            "maxhp": 2400,
             "maxpp": 414,
             "atk": 450,
             "def": 345,
-            "spd": 640
+            "spd": 320
         },
         "elstats": {
             "marsres": 193,
@@ -11224,26 +11255,26 @@
         },
         "extraturns": 1
     },
-    "JupiterSummon": {
-        "movepool": [ "Whirlwind", "Wind Slash", "Bind" ],
-        "name": "Jupiter",
-        "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Jupiter_Djinni.png",
-        "stats": {
-            "maxhp": 143,
-            "maxpp": 22,
-            "atk": 79,
-            "def": 20,
-            "spd": 999
-        },
-        "elstats": {
-            "jupiterres": 193,
-            "mercuryres": 100,
-            "marsres": 100,
-            "venusres": 25,
-            "jupiteratk": 120
-        },
-        "extraturns": 0
+  "JupiterSummon": {
+    "movepool": [ "Whirlwind", "Wind Slash", "Bind" ],
+    "name": "Jupiter",
+    "imgurl": "https://goldensunwiki.net/w/images/3/31/Jupiter-icon-dd.gif",
+    "stats": {
+      "maxhp": 143,
+      "maxpp": 22,
+      "atk": 79,
+      "def": 20,
+      "spd": 999
     },
+    "elstats": {
+      "jupiterres": 193,
+      "mercuryres": 100,
+      "marsres": 100,
+      "venusres": 25,
+      "jupiteratk": 120
+    },
+    "extraturns": 0
+  },
     "AtalantaSummon": {
         "movepool": [ "Boon" ],
         "name": "Atalanta",
@@ -11286,14 +11317,14 @@
         "extraturns": 0
     },
     "ProcneSummon": {
-        "movepool": [ "Wing Stroke", "Twin Beaks", "Hurricane", "Tornado" ],
-        "name": "Jupiter",
-        "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Jupiter_Djinni.png",
+        "movepool": [ "Wing Stroke", "Twin Beaks", "Hurricane", "Tornado", "Tempest" ],
+        "name": "Procne",
+        "imgurl": "https://cdn.discordapp.com/attachments/497696510688100352/665884838259195915/Procne.gif",
         "stats": {
-            "maxhp": 143,
-            "maxpp": 22,
-            "atk": 79,
-            "def": 20,
+            "maxhp": 2843,
+            "maxpp": 622,
+            "atk": 459,
+            "def": 240,
             "spd": 999
         },
         "elstats": {
@@ -11301,7 +11332,7 @@
             "mercuryres": 100,
             "marsres": 100,
             "venusres": 25,
-            "jupiteratk": 120
+            "jupiteratk": 170
         },
         "extraturns": 1
     },
@@ -11342,6 +11373,69 @@
             "jupiterres": 100,
             "marsres": 25,
             "mercuryatk": 125
+        },
+        "extraturns": 0
+    },
+    "ZaganSummon": {
+        "movepool": [ "Planet Diver", "Ragnarok", "Berserk", "Bear Claw", "Mad Dash", "Heat Stun" ],
+        "name": "Zagan",
+        "imgurl": "https://cdn.discordapp.com/attachments/497696510688100352/665884855573282827/Zagan.gif",
+        "stats": {
+            "maxhp": 1800,
+            "maxpp": 250,
+            "atk": 327,
+            "def": 185,
+            "spd": 120
+        },
+        "elstats": {
+            "venusres": 193,
+            "mercuryres": 55,
+            "marsres": 193,
+            "jupiterres": 45,
+            "venusatk": 120,
+            "marsatk": 120
+        },
+        "extraturns": 0
+    },
+    "MolochSummon": {
+        "movepool": [ "Sonic Wave", "Diamond Dust", "Diamond Berg", "Ice Breath", "Megacool", "Hurricane", "Tundra", "Glacier" ],
+        "name": "Moloch",
+        "imgurl": "https://cdn.discordapp.com/attachments/497696510688100352/665884972367740941/Moloch.gif",
+        "stats": {
+            "maxhp": 2100,
+            "maxpp": 450,
+            "atk": 287,
+            "def": 185,
+            "spd": 80
+        },
+        "elstats": {
+            "venusres": 193,
+            "mercuryres": 55,
+            "marsres": 25,
+            "jupiterres": 45,
+            "mercuryatk": 120,
+            "jupiteratk": 120
+        },
+        "extraturns": 0
+    },
+    "FloraSummon": {
+        "movepool": [ "Fresh Breeze", "Wild Growth", "Wind Slash", "Boon", "Tornado", "Nettle", "Sleep" ],
+        "name": "Flora",
+        "imgurl": "https://cdn.discordapp.com/attachments/497696510688100352/665884933943984130/Flora.gif",
+        "stats": {
+            "maxhp": 1500,
+            "maxpp": 450,
+            "atk": 210,
+            "def": 145,
+            "spd": 207
+        },
+        "elstats": {
+            "venusres": 193,
+            "mercuryres": 25,
+            "marsres": 55,
+            "jupiterres": 193,
+            "venusatk": 120,
+            "jupiteratk": 120
         },
         "extraturns": 0
     },
@@ -11737,6 +11831,80 @@
             "JupiterRes": 20,
             "MercuryAtk": 100,
             "MercuryRes": 20
+        }
+    },
+    "Sean": {
+        "name": "Sean",
+        "imgurl": "https://vignette.wikia.nocookie.net/goldensun/images/3/3b/SeanIngame.gif/revision/latest?cb=20090708143758",
+        "movepool": [
+            "Brutal Swing"
+        ],
+        "stats": {
+            "maxHP": 750,
+            "maxPP": 0,
+            "Atk": 270,
+            "Def": 250,
+            "Spd": 290
+        },
+        "elstats": {
+            "VenusAtk": 100,
+            "VenusRes": 80,
+            "MarsAtk": 100,
+            "MarsRes": 80,
+            "JupiterAtk": 100,
+            "JupiterRes": 80,
+            "MercuryAtk": 100,
+            "MercuryRes": 80
+        }
+    },
+    "Ouranos": {
+        "name": "Ouranos",
+        "imgurl": "https://vignette.wikia.nocookie.net/goldensun/images/7/7d/OuranosIngame.gif/revision/latest?cb=20090708143842",
+        "movepool": [
+            "Brutal Swing",
+            "Berserk"
+        ],
+        "stats": {
+            "maxHP": 1150,
+            "maxPP": 0,
+            "Atk": 480,
+            "Def": 260,
+            "Spd": 140
+        },
+        "elstats": {
+            "VenusAtk": 130,
+            "VenusRes": 80,
+            "MarsAtk": 100,
+            "MarsRes": 80,
+            "JupiterAtk": 100,
+            "JupiterRes": 80,
+            "MercuryAtk": 110,
+            "MercuryRes": 80
+        }
+    },
+    "Tentacle": {
+        "name": "Tentacle",
+        "imgurl": "",
+        "movepool": [
+            "Spinning Beat",
+            "Poison Beat"
+        ],
+        "stats": {
+            "maxHP": 65,
+            "maxPP": 0,
+            "Atk": 180,
+            "Def": 40,
+            "Spd": 140
+        },
+        "elstats": {
+            "VenusAtk": 130,
+            "VenusRes": 80,
+            "MarsAtk": 100,
+            "MarsRes": 80,
+            "JupiterAtk": 100,
+            "JupiterRes": 80,
+            "MercuryAtk": 110,
+            "MercuryRes": 80
         }
     }
 }
