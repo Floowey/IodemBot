@@ -84,12 +84,12 @@ namespace IodemBot.Modules
         [Cooldown(5)]
         public async Task AllStreams()
         {
-            var embeds = await TwitchListener.AllStreamsEmbeds();
-            await ReplyAsync($"{embeds.Count} Golden Sun streams.");
-            foreach (var s in embeds)
-            {
-                _ = ReplyAsync(embed: s);
-            }
+            //var embeds = await TwitchListener.AllStreamsEmbeds();
+            //await ReplyAsync($"{embeds.Count} Golden Sun streams.");
+            //foreach (var s in embeds)
+            //{
+             //   _ = ReplyAsync(embed: s);
+            //}
         }
 
         [Command("Credit"), Alias("Credits", "Info")]
