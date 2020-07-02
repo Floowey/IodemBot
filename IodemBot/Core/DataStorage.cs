@@ -27,7 +27,7 @@ namespace IodemBot.Core
             }
             catch (Exception e)
             {
-                Console.WriteLine("Error while saving:" + e.Message);
+                Console.WriteLine("Error while saving:" + e.ToString());
             }
         }
 
