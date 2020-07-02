@@ -14,13 +14,13 @@ namespace Iodembot.Preconditions
         {
             if (context.User is SocketGuildUser gUser)
             {
-                if (gUser.Roles.Any(r => r.Name == "Admin" || r.Name == "Moderators" || r.Guild.Id == 447135557722832909))
+                if (gUser.Roles.Any(r => r.Name == "Admin" || r.Name == "Moderators" || r.Guild.Id == 447135557722832909) || gUser.Id == 300339714311847936)
                 {
                     return Task.FromResult(PreconditionResult.FromSuccess());
                 }
                 else
                 {
-                    return Task.FromResult(PreconditionResult.FromError($"You must be stuff to run this command."));
+                    return Task.FromResult(PreconditionResult.FromError($"You must be moderator to run this command."));
                 }
             }
             else

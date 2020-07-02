@@ -14,18 +14,18 @@ namespace Iodembot.Preconditions
         {
             if (context.User is SocketGuildUser gUser)
             {
-                if (gUser.Roles.Any(r => r.Name == "Admin" || r.Name == "Moderators" || r.Name == "Colosso Guard" || r.Guild.Id != 355558866282348574))
+                if (gUser.Roles.Any(r => r.Name == "Admin" || r.Name == "Moderators" || r.Name == "Colosso Guard" || r.Guild.Id != 355558866282348574) || gUser.Id == 300339714311847936)
                 {
                     return Task.FromResult(PreconditionResult.FromSuccess());
                 }
                 else
                 {
-                    return Task.FromResult(PreconditionResult.FromError($"You must be stuff to run this command."));
+                    return Task.FromResult(PreconditionResult.FromError($"You must be staff to run this command."));
                 }
             }
             else
             {
-                return Task.FromResult(PreconditionResult.FromError("You must be in /r/GoldenSun server to run this command."));
+                return Task.FromResult(PreconditionResult.FromError("You must be on the /r/GoldenSun server to run this command."));
             }
         }
     }

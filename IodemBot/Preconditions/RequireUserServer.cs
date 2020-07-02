@@ -11,7 +11,7 @@ namespace Iodembot.Preconditions
         // Override the CheckPermissions method
         public override Task<PreconditionResult> CheckPermissionsAsync(ICommandContext context, CommandInfo command, IServiceProvider services)
         {
-            if (GuildSetups.GetAccount(context.Guild).isUserServer)
+            if (GuildSettings.GetGuildSettings(context.Guild).isUserServer)
             {
                 return Task.FromResult(PreconditionResult.FromSuccess());
             }
