@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace IodemBot.Core
 {
-    public class GuildSetup
+    public class GuildSetting
     {
         public ulong GuildID;
         public GuildSetupConfig guildConfig;
