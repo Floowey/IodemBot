@@ -5,6 +5,7 @@ using IodemBot.Core.Leveling;
 using IodemBot.Core.UserManagement;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
@@ -94,7 +95,17 @@ namespace IodemBot
 
             // Auto Responses
             responses.ForEach(r => _ = r.Check(msg));
-            Leveling.UserSentMessage((SocketGuildUser)context.User, (SocketTextChannel)context.Channel);
+            try
+            {
+                if (context.User is SocketGuildUser guildUser)
+                {
+                    Leveling.UserSentMessage(guildUser, (SocketTextChannel)context.Channel);
+                }
+            }
+            catch (Exception e) {
+                Console.WriteLine("UserSentMessage Error" + e);
+                File.WriteAllText("Logs/MessageError_" + Global.DateString + ".txt", e.ToString());
+            }
             await Task.CompletedTask;
         }
 

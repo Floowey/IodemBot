@@ -92,8 +92,18 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public void Initialize()
         {
             Inv = ItemDatabase.GetItems(InvString);
-            WarriorGear = ItemDatabase.GetItems(WarriorGearString.Distinct());
-            MageGear = ItemDatabase.GetItems(MageGearString.Distinct());
+            WarriorGear = new List<Item>();
+            foreach(var warriorgear in WarriorGearString.Distinct())
+            {
+                Equip(warriorgear, ArchType.Warrior);
+            }
+            MageGear = new List<Item>();
+            foreach (var magegear in MageGearString.Distinct())
+            {
+                Equip(magegear, ArchType.Mage);
+            }
+            //WarriorGear = ItemDatabase.GetItems(WarriorGearString.Distinct());
+            //MageGear = ItemDatabase.GetItems(MageGearString.Distinct());
         }
 
         [OnDeserialized]

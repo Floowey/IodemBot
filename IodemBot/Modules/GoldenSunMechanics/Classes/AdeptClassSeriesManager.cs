@@ -9,7 +9,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 {
     internal class AdeptClassSeriesManager
     {
-        private static List<AdeptClassSeries> allClasses;
+        public static List<AdeptClassSeries> allClasses;
         private static readonly string filePath = "Resources/GoldenSun/AdeptClassSeries.json";
 
         static AdeptClassSeriesManager()
@@ -60,7 +60,6 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         internal static ElementalStats GetElStats(UserAccount User)
         {
-            var classSeries = GetClassSeries(User);
             var els = GetClassSeries(User).Elstats;
             switch (User.Element)
             {

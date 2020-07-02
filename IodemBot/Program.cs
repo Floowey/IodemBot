@@ -83,16 +83,16 @@ namespace IodemBot
                 return;
             }
 
-            if (GuildSetups.GetAccount(user.Guild).sendWelcomeMessage)
+            if (GuildSettings.GetGuildSettings(user.Guild).sendWelcomeMessage)
             {
-                await GuildSetups.GetAccount(user.Guild).MainChannel.SendMessageAsync(embed:
+                await GuildSettings.GetGuildSettings(user.Guild).MainChannel.SendMessageAsync(embed:
                     new EmbedBuilder()
                     .WithColor(Colors.Get("Iodem"))
                     .WithDescription(String.Format(welcomeMsg[Global.Random.Next(0, welcomeMsg.Length)], user.DisplayName()))
                     .Build());
             }
 
-            await GuildSetups.GetAccount(user.Guild).TestCommandChannel.SendMessageAsync(embed:
+            await GuildSettings.GetGuildSettings(user.Guild).TestCommandChannel.SendMessageAsync(embed:
                 new EmbedBuilder()
                 .WithAuthor(user)
                 .AddField("Account Created", user.CreatedAt)
@@ -103,16 +103,16 @@ namespace IodemBot
 
         private async Task Client_UserLeft(SocketGuildUser user)
         {
-            if (GuildSetups.GetAccount(user.Guild).sendLeaveMessage)
+            if (GuildSettings.GetGuildSettings(user.Guild).sendLeaveMessage)
             {
-                await GuildSetups.GetAccount(user.Guild).TestCommandChannel.SendMessageAsync($"{user.DisplayName()} left the party :(.");
+                await GuildSettings.GetGuildSettings(user.Guild).TestCommandChannel.SendMessageAsync($"{user.DisplayName()} left the party :(.");
             }
         }
 
         private async Task Client_Ready()
         {
             var channel = (SocketTextChannel)client.GetChannel(535209634408169492);
-            if (channel != null)
+            if (channel != null && (Global.RunningSince - DateTime.Now).TotalSeconds < 5)
             {
                 await channel.SendMessageAsync($"Hello, I am back up.");
             }
@@ -135,6 +135,7 @@ namespace IodemBot
                 if (msg.Exception != null)
                 {
                     Console.WriteLine(msg.Exception.ToString());
+                    File.AppendAllText($"Logs/{date}_log.log", msg.Exception.ToString() + "\n");
                 }
             }
             catch

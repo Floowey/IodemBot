@@ -4,6 +4,7 @@ using Discord.WebSocket;
 using Iodembot.Preconditions;
 using IodemBot.Core.UserManagement;
 using IodemBot.Extensions;
+using IodemBot.Modules.ColossoBattles;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -94,6 +95,21 @@ namespace IodemBot.Modules
         {
             var avatar = UserAccounts.GetAccount(user);
             await ReplyAsync(string.Join(", ", avatar.Tags));
+        }
+
+        [Command("CleanupTags")]
+        public async Task CleanupTags(SocketGuildUser user)
+        {
+            var avatar = UserAccounts.GetAccount(user);
+            var allTags1 = EnemiesDatabase.dungeons.Values.SelectMany(c => c.Requirement.TagsAny);
+            var allTags2 = EnemiesDatabase.dungeons.Values.SelectMany(c => c.Requirement.TagsLock);
+            var allTags3 = EnemiesDatabase.dungeons.Values.SelectMany(c => c.Requirement.TagsRequired);
+            var allTags4 = EnemiesDatabase.dungeons.Values.SelectMany(c => c.Matchups.SelectMany(m => m.RewardTables.SelectMany(r => r.Select(w => w.Tag))));
+            var allTags5 = EnemiesDatabase.dungeons.Values.SelectMany(c => c.Matchups.SelectMany(m => m.RewardTables.SelectMany(r => r.SelectMany(w => w.RequireTag))));
+            var unusedTags = avatar.Tags.Where(t => !allTags1.Contains(t) && !allTags2.Contains(t) && !allTags3.Contains(t) && !allTags4.Contains(t) && !allTags5.Contains(t));
+
+            avatar.Tags.RemoveAll(t => unusedTags.Contains(t));
+            await ReplyAsync(string.Join(", ", unusedTags));
         }
 
         [Command("RemoveTag")]

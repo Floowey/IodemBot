@@ -92,6 +92,19 @@ namespace IodemBot.Modules
             }
         }
 
+        [Command("Credit"), Alias("Credits", "Info")]
+        public async Task Credit()
+        {
+            await ReplyAsync(embed: new EmbedBuilder()
+                .WithDescription("Iodem is a community project, designed to serve the /r/GoldenSun discord with a special, custom made battle system, that mirrors the battle system present in the GBA games")
+                .AddField("Project Lead", "Floowey")
+                .AddField("Co Producers", "Falgor, Gray, Primrose, Ultimastrike")
+                .AddField("Art Contributions", "bringobrongo, elTeh, Eon, Mimibits, Shawn, SpaceShaman, Virize")
+                .AddField("Contributions and Testers", "AlterEgo, ArcanusHaru, Dracobolt, DroneberryPi, Germaniac, IceFireFish, Lavtiz, MarcAustria, Ninja Frog, Ophi, Smeecko, RupeeHeart")
+                .AddField("Special thanks to", "Camelot, the Moderators, the Nut Council and you, the players, without whom this whole project wouldn't have come this far")
+                .Build());
+        }
+
         [Command("wiki")]
         [Cooldown(5)]
         [Remarks("Link to the wiki or a a specific search query.")]
@@ -241,7 +254,7 @@ namespace IodemBot.Modules
         [Remarks("Get the most active users and your rank")]
         public async Task Rank()
         {
-            var topAccounts = UserAccounts.GetTop(10, RankEnum.Level);
+            var topAccounts = UserAccounts.GetTop(RankEnum.Level);
             var embed = new EmbedBuilder();
             embed.WithColor(Colors.Get("Iodem"));
             string[] Emotes = new string[] { "🥇", "🥈", "🥈", "🥉", "🥉", "🥉", "   ", "   ", "   ", "   " };
@@ -270,14 +283,14 @@ namespace IodemBot.Modules
         [Cooldown(15)]
         public async Task Showdown(RankEnum type = RankEnum.Solo)
         {
-            var topAccounts = UserAccounts.GetTop(10, type);
+            var topAccounts = UserAccounts.GetTop(type).Take(10);
             var embed = new EmbedBuilder();
             embed.WithColor(Colors.Get("Iodem"));
             string[] Emotes = new string[] { "🥇", "🥈", "🥉", "", "" };
             var builder = new StringBuilder();
             for (int i = 0; i < Math.Min(topAccounts.Count(), 5); i++)
             {
-                var curAccount = topAccounts[i];
+                var curAccount = topAccounts.ElementAt(i);
                 switch (type)
                 {
                     case RankEnum.Solo:

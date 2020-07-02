@@ -364,7 +364,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             inv.Add(item.Name);
 
             var message = await Context.Channel.AwaitMessage(m => m.Author == Context.User);
-            if (message.Content.Equals("Sell"))
+            if (message.Content.Equals("Sell", StringComparison.OrdinalIgnoreCase))
             {
                 _ = SellItem(item.Name);
             }

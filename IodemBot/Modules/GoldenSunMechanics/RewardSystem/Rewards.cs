@@ -78,6 +78,10 @@ namespace IodemBot.Modules.GoldenSunMechanics
                         giveTag = false;
                     }
                 }
+                else
+                {
+                    giveTag = false;
+                }
             }
             else if (Enum.TryParse<Element>(Djinn, out var element))
             {

@@ -123,29 +123,30 @@ namespace IodemBot.Modules
             embed.WithAuthor(author);
             embed.AddField("Level", account.LevelNumber, true);
             embed.AddField("XP", account.XP, true);
-            embed.AddField("XP to level up", Leveling.XPforNextLevel(account.XP), true);
+            embed.AddField("XP to level up", account.XPneeded, true);
             await Context.Channel.SendMessageAsync("", false, embed.Build());
         }
 
         [Command("status")]
         [Cooldown(5)]
         [Remarks("Get information about your level etc")]
-        public async Task Status([Remainder] SocketGuildUser user = null)
+        public async Task Status([Remainder] SocketUser user = null)
         {
-            user = user ?? (SocketGuildUser)Context.User;
+            user = user ?? Context.User;
             var account = UserAccounts.GetAccount(user);
             var factory = new PlayerFighterFactory();
             var p = factory.CreatePlayerFighter(user);
 
             var author = new EmbedAuthorBuilder();
-            author.WithName($"{user.DisplayName()}");
+            author.WithName($"{(user is SocketGuildUser sguser ? sguser.DisplayName() : user.Username)}");
             author.WithIconUrl(user.GetAvatarUrl());
+
 
             var embed = new EmbedBuilder()
             .WithColor(Colors.Get(account.Element.ToString()))
             .WithAuthor(author)
             .AddField("Level", account.LevelNumber, true)
-            .AddField("XP", $"{account.XP} - next in {Leveling.XPforNextLevel(account.XP)}", true)
+            .AddField("XP", $"{account.XP} - next in {account.XPneeded}", true)
             .AddField("Rank", UserAccounts.GetRank(user) + 1, true)
 
             .AddField("Class", account.GsClass, true)
@@ -159,11 +160,14 @@ namespace IodemBot.Modules
             .AddField("Stats", p.Stats.ToString(), true)
             .AddField("Elemental Stats", p.ElStats.ToString(), true)
             .AddField("Unlocked Classes", account.BonusClasses.Count == 0 ? "none" : string.Join(", ", account.BonusClasses));
-
-            var Footer = new EmbedFooterBuilder();
-            Footer.WithText("Joined this Server on " + user.JoinedAt.Value.Date.ToString("dd-MM-yyyy"));
-            Footer.WithIconUrl(Sprites.GetImageFromName("Iodem"));
-            embed.WithFooter(Footer);
+            
+            if (user is SocketGuildUser socketGuildUser)
+            {
+                var Footer = new EmbedFooterBuilder();
+                Footer.WithText("Joined this Server on " + socketGuildUser.JoinedAt.Value.Date.ToString("dd-MM-yyyy"));
+                Footer.WithIconUrl(Sprites.GetImageFromName("Iodem"));
+                embed.WithFooter(Footer);
+            }
             await Context.Channel.SendMessageAsync("", false, embed.Build());
         }
 
@@ -345,6 +349,12 @@ namespace IodemBot.Modules
                 embed.AddField("Effects", s);
             }
 
+            var classWithMove = AdeptClassSeriesManager.allClasses.Where(d => d.Classes.Any(c => c.Movepool.Contains(psy.Name)));
+            if (classWithMove.Count() > 0)
+            {
+                embed.AddField("Learned by", string.Join(", ", classWithMove.Select(c => c.Name)));
+            }
+
             await Context.Channel.SendMessageAsync("", false, embed.Build());
             _ = ServerGames.UserLookedUpPsynergy((SocketGuildUser)Context.User, (SocketTextChannel)Context.Channel);
         }
@@ -413,9 +423,19 @@ namespace IodemBot.Modules
         {
             var account = UserAccounts.GetAccount(Context.User);
             await ReplyAsync("So you want to start over? Are you sure?");
-            await Context.Channel.AwaitMessage(m => m.Author == Context.User && m.Content.Equals("Yes", StringComparison.CurrentCultureIgnoreCase));
-            await ReplyAsync($"You will use all your progress so far, are you really sure? However, you will get a boost to your experience will increase from {account.XpBoost.ToString("F")} to {(account.XpBoost * (1 + 0.1 * (1 - Math.Exp(-(long)account.XP / 120000)))).ToString("F")}");
-            await Context.Channel.AwaitMessage(m => m.Author == Context.User && m.Content.Equals("Yes", StringComparison.CurrentCultureIgnoreCase));
+            var response = await Context.Channel.AwaitMessage(m => m.Author == Context.User);
+            if (!response.Content.Equals("Yes", StringComparison.CurrentCultureIgnoreCase))
+            {
+                return;
+            }
+
+            await ReplyAsync($"You will lose all your progress so far, are you really sure? However, you will get a boost to your experience will increase from {account.XpBoost.ToString("F")} to {(account.XpBoost * (1 + 0.1 * (1 - Math.Exp(-(double)account.XP / 120000)))).ToString("F")}");
+
+            response = await Context.Channel.AwaitMessage(m => m.Author == Context.User);
+            if (!response.Content.Equals("Yes", StringComparison.CurrentCultureIgnoreCase))
+            {
+                return;
+            }
             await ReplyAsync("Let us reverse the cycle, to a stage where you were just beginning");
             account.NewGame();
             await Status();
@@ -445,13 +465,13 @@ namespace IodemBot.Modules
             await Context.Channel.SendMessageAsync("", false, embed.Build());
         }
 
-        internal static async Task AwardClassSeries(string series, SocketGuildUser user, SocketTextChannel channel)
+        internal static async Task AwardClassSeries(string series, SocketUser user, IMessageChannel channel)
         {
             var avatar = UserAccounts.GetAccount(user);
             await AwardClassSeries(series, avatar, channel);
         }
 
-        internal static async Task AwardClassSeries(string series, UserAccount avatar, ITextChannel channel)
+        internal static async Task AwardClassSeries(string series, UserAccount avatar, IMessageChannel channel)
         {
             if (avatar.BonusClasses.Contains(series))
             {

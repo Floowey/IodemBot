@@ -75,12 +75,18 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
                 //                var elMult = 1 + Math.Max(0.0, (int)User.elstats.GetPower(element) * User.MultiplyBuffs("Power") - (int)t.elstats.GetRes(element) * t.MultiplyBuffs("Resistance")) / (attackBased ? 400 : 200);
                 var elMult = 1 + (User.ElStats.GetPower(Element) * User.MultiplyBuffs("Power") - t.ElStats.GetRes(Element) * t.MultiplyBuffs("Resistance")) / (AttackBased ? 400 : 200);
+                elMult = Math.Max(0.5, elMult);
                 elMult = Math.Max(0, elMult);
                 var distFromCenter = Math.Abs(enemyTeam.IndexOf(t) - TargetNr);
                 var spreadMult = IgnoreSpread ? 1 : spread[distFromCenter];
                 var prctdmg = (uint)(t.Stats.MaxHP * PercentageDamage / 100);
                 var realDmg = (uint)((baseDmg + dmg + AddDamage) * DmgMult * elMult * spreadMult * t.defensiveMult * User.offensiveMult + prctdmg);
                 var punctuation = "!";
+
+                if (User.offensiveMult > 1)
+                {
+                    Console.WriteLine($"{User.Name} uses {Name} with multiplier {User.offensiveMult}");
+                }
 
                 if (t.ElStats.GetRes(Element) == t.ElStats.HighestRes())
                 {
@@ -90,9 +96,9 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 if (t.ElStats.GetRes(Element) == t.ElStats.LeastRes())
                 {
                     punctuation = "!!!";
-                    if (User is PlayerFighter)
+                    if (User is PlayerFighter k)
                     {
-                        ((PlayerFighter)User).battleStats.AttackedWeakness++;
+                        k.battleStats.AttackedWeakness++;
                     }
                 }
 
@@ -127,7 +133,6 @@ namespace IodemBot.Modules.GoldenSunMechanics
                     log.Add($"{t.Name} strikes back!");
                     log.AddRange(User.DealDamage(CounterDamage));
                 }
-
                 ii++;
             }
 

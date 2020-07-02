@@ -73,10 +73,9 @@ namespace IodemBot.Modules.GoldenSunMechanics
             if (weaponUnleashed)
             {
                 log.Add($"{User.Weapon.IconDisplay} {User.Name}'s {User.Weapon.Name} lets out a howl! {User.Weapon.Unleash.UnleashName}!");
-                User.Weapon.Unleash.AllEffects
+                log.AddRange(User.Weapon.Unleash.AllEffects
                     .Where(e => e.ActivationTime == TimeToActivate.beforeDamge)
-                    .ToList()
-                    .ForEach(e => log.AddRange(e.Apply(User, enemy)));
+                    .ApplyAll(User, enemy));
             }
 
             if (!enemy.IsAlive)

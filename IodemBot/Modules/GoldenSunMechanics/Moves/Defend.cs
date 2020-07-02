@@ -26,7 +26,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public override bool InternalValidSelection(ColossoFighter User)
         {
-            return User.battle.log.Count < 3;
+            return User.battle.log.Count < 10;
         }
 
         protected override List<string> InternalUse(ColossoFighter User)

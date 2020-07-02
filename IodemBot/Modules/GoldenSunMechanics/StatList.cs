@@ -134,20 +134,20 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public string NonZerosToString()
         {
-            return ($"`{(MaxHP != 0 ? $"HP: {MaxHP} " : "")}" +
+            return "`" + ($"{(MaxHP != 0 ? $"HP: {MaxHP} " : "")}" +
                 $"{(MaxPP != 0 ? $" PP: {MaxPP}" : "")}" +
                 $"{(Atk != 0 ? $" Atk: {Atk}" : "")}" +
                 $"{(Def != 0 ? $" Def: {Def}" : "")}" +
-                $"{(Spd != 0 ? $" Agi: {Spd}" : "")}`").Trim();
+                $"{(Spd != 0 ? $" Agi: {Spd}" : "")}").Trim() + "`";
         }
 
         public string MultipliersToString()
         {
-            return ($"`{(MaxHP != 100 ? $"HP: x{((double)MaxHP / 100)} " : "")}" +
+            return "`" + $"{(MaxHP != 100 ? $"HP: x{((double)MaxHP / 100)} " : "")}" +
                 $"{(MaxPP != 100 ? $"PP: x{((double)MaxPP / 100)} " : "")}" +
                 $"{(Atk != 100 ? $"Atk: x{((double)Atk / 100)} " : "")}" +
                 $"{(Def != 100 ? $"Def: x{((double)Def / 100)} " : "")}" +
-                $"{(Spd != 100 ? $"Agi: x{((double)Spd / 100)}" : "")}`").Trim();
+                $"{(Spd != 100 ? $"Agi: x{((double)Spd / 100)}" : "")}".Trim() + "`";
         }
     }
 }
