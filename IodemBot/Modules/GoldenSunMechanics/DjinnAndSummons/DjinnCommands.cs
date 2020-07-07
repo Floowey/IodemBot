@@ -13,6 +13,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
     public class DjinnCommands : ModuleBase<SocketCommandContext>
     {
         [Command("djinninfo"), Alias("di")]
+        [Remarks("Shows information about the specified djinn")]
         [Cooldown(5)]
         public async Task DjinnInfo([Remainder] string name = "")
         {
@@ -34,7 +35,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             embed.WithAuthor($"{djinn.Name}");
             embed.AddField("Icon", djinn.Emote, true);
             embed.AddField("Stats", djinn.Stats.NonZerosToString(), true);
-            var effectList = djinn.Effects.Count > 0 ? string.Join("\n", djinn.Effects.Select(e => $"{e.ToString()}")) : "";
+            var effectList = djinn.Effects.Count > 0 ? string.Join("\n", djinn.Effects.Select(e => e.ToString())) : "";
             embed.AddField("Description", string.Join("\n", djinn.ToString(), effectList, djinn.HasPriority ? "Always goes first." : ""));
 
             embed.WithColor(Colors.Get(djinn.Element.ToString()));
@@ -44,6 +45,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         }
 
         [Command("summoninfo"), Alias("si")]
+        [Remarks("Shows information about the specified summon")]
         [Cooldown(5)]
         public async Task SummonInfo([Remainder] string name = "")
         {
@@ -70,7 +72,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 .Concat(Enumerable.Repeat(GoldenSun.ElementIcons[Element.Jupiter], summon.JupiterNeeded))
                 .Concat(Enumerable.Repeat(GoldenSun.ElementIcons[Element.Mercury], summon.MercuryNeeded))),
                 true);
-            var effectList = summon.Effects.Count > 0 ? string.Join("\n", summon.Effects.Select(e => $"{e.ToString()}")) : "";
+            var effectList = summon.Effects.Count > 0 ? string.Join("\n", summon.Effects.Select(e => e.ToString())) : "";
             embed.AddField("Description", string.Join("\n", summon.ToString(), effectList, summon.HasPriority ? "Always goes first." : ""));
 
             embed.WithColor(Colors.Get(
@@ -86,6 +88,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         }
 
         [Command("Djinn")]
+        [Remarks("Displays your Djinn pocket")]
         public async Task DjinnInv(DjinnDetail detail = DjinnDetail.None)
         {
             var djinnPocket = UserAccounts.GetAccount(Context.User).DjinnPocket;
@@ -101,7 +104,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             foreach (Element e in new[] { Element.Venus, Element.Mars, Element.Jupiter, Element.Mercury })
             {
                 var djinnString = djinnPocket.djinn.OfElement(e).GetDisplay(detail);
-                embed.AddField($"{e.ToString()} Djinn", djinnString, true);
+                embed.AddField($"{e} Djinn", djinnString, true);
             }
             embed.WithFooter($"{djinnPocket.djinn.Count()}/{djinnPocket.PocketSize} Upgrade: {(djinnPocket.PocketUpgrades + 1) * 3000}");
 
@@ -115,6 +118,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         }
 
         [Command("UpgradeDjinn")]
+        [Remarks("Increase the size of your djinn pocket by two slots.")]
         public async Task DjinnUpgrade()
         {
             var acc = UserAccounts.GetAccount(Context.User);
@@ -135,6 +139,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         }
 
         [Command("Djinn Take")]
+        [Remarks("Take up to two specified djinn on your journey (e.g. 'i!Djinn Take Flint Echo`")]
         public async Task TakeDjinn(params string[] Names)
         {
             if (Names.Count() == 0)

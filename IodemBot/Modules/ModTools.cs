@@ -134,16 +134,15 @@ namespace IodemBot.Modules
         [RequireStaff]
         public async Task Emotes()
         {
-            var s = string.Join("\n", Context.Guild.Emotes.OrderBy(d => d.Name).Select(e => $"{e.ToString()} \\<{(e.Animated ? "a" : "")}:{e.Name}:{e.Id}>"));
-            if (s.Length > 2000)
+            var s = string.Join("\n", Context.Guild.Emotes.OrderBy(d => d.Name).Select(e => $"{e} \\<{(e.Animated ? "a" : "")}:{e.Name}:{e.Id}>"));
+            while(s.Length > 2000)
             {
                 await Context.Channel.SendMessageAsync(s.Substring(0, 2000));
-                await Context.Channel.SendMessageAsync(s.Substring(2000));
+                s = s.Substring(2000);
             }
-            else
-            {
-                await Context.Channel.SendMessageAsync(s);
-            }
+            
+            await Context.Channel.SendMessageAsync(s);
+           
         }
     }
 }

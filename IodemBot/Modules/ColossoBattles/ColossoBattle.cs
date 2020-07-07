@@ -43,13 +43,13 @@ namespace IodemBot.Modules.ColossoBattles
                     p.SelectRandom();
                 }
 
-                if (p is PlayerFighter)
+                if (p is PlayerFighter fighter)
                 {
-                    ((PlayerFighter)p).battleStats = new BattleStats();
-                    ((PlayerFighter)p).battleStats.TotalTeamMates += TeamA.Count - 1;
+                    fighter.battleStats = new BattleStats();
+                    fighter.battleStats.TotalTeamMates += TeamA.Count - 1;
                     if (TeamA.Count == 1)
                     {
-                        ((PlayerFighter)p).battleStats.SoloBattles++;
+                        fighter.battleStats.SoloBattles++;
                     }
                 }
             });
@@ -211,7 +211,7 @@ namespace IodemBot.Modules.ColossoBattles
             fighters.ForEach(f => { turnLog.AddRange(f.StartTurn()); });
             return turnLog;
         }
-
+        
         private List<string> MainTurn()
         {
             List<string> turnLog = new List<string>();

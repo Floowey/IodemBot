@@ -56,7 +56,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         {
             if (!ValidSelection(User))
             {
-                return new List<string>() { $"{User} failed to summon {Emote} {Name}. Not enough Djinn!" };
+                return new List<string>() { $"{User.Name} failed to summon {Emote} {Name}. Not enough Djinn!" };
             }
 
             var PartyDjinn = User.GetTeam().SelectMany(u => u.Moves.OfType<Djinn>()).Distinct();

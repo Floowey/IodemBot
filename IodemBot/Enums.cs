@@ -54,6 +54,17 @@ namespace IodemBot
         Ring, Misc
     }
 
+    public enum ItemRarity
+    {
+        Common, Uncommon, Rare, Legendary, Mythical, Unique
+    }
+
+    // Wooden: 100% Common
+    // Norma: 50% Common, 50% uncommon
+    // Silver: 40% Uncommon, 50% Rare, 10% Legendary
+    // Gold: 60% Rare, 40% Legendary
+    // Adept: 30% Rare, 65% Legendary, 5% Mythical
+
     public enum RoomVisibility { All, TeamA, TeamB, Private }
 
     public enum RankEnum { Level, Solo, Duo, Trio, Quad }

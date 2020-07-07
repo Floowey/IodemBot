@@ -19,7 +19,7 @@ namespace IodemBot.Modules.ColossoBattles
         protected IUserMessage EnemyMessage = null;
         protected IUserMessage StatusMessage = null;
         protected IUserMessage SummonsMessage = null;
-        protected ITextChannel BattleChannel = null;
+        public ITextChannel BattleChannel = null;
         protected Dictionary<IUserMessage, PlayerFighter> PlayerMessages = new Dictionary<IUserMessage, PlayerFighter>();
         protected bool wasJustReset = true;
         protected PlayerFighterFactory Factory { get; set; } = new PlayerFighterFactory();
@@ -95,7 +95,7 @@ namespace IodemBot.Modules.ColossoBattles
                     return;
                 }
 
-                if (new[] { "Bronze", "Silver", "Gold" }.Contains(reaction.Emote.Name) && this is SingleBattleEnvironment)
+                if (new[] { "Bronze", "Silver", "Gold" }.Contains(reaction.Emote.Name) && this is SingleBattleEnvironment environment)
                 {
                     Dictionary<string, BattleDifficulty> diff = new Dictionary<string, BattleDifficulty>()
                     {
@@ -103,7 +103,7 @@ namespace IodemBot.Modules.ColossoBattles
                         { "Silver", BattleDifficulty.Medium },
                         { "Gold", BattleDifficulty.Hard }
                     };
-                    ((SingleBattleEnvironment)this).internalDiff = diff[reaction.Emote.Name];
+                    environment.internalDiff = diff[reaction.Emote.Name];
                     await Reset();
                     return;
                 }
@@ -192,7 +192,7 @@ namespace IodemBot.Modules.ColossoBattles
                     }
                 }
 
-                if (!curPlayer.Select(reaction.Emote.Name))
+                if (!curPlayer.Select(reaction.Emote))
                 {
                     _ = c.RemoveReactionAsync(reaction.Emote, reaction.User.Value);
                     Console.WriteLine("Couldn't select that move.");
@@ -452,13 +452,11 @@ namespace IodemBot.Modules.ColossoBattles
 
         protected virtual EmbedBuilder GetEnemyEmbedBuilder()
         {
-            var tasks = new List<Task>();
             var e = new EmbedBuilder();
             if (Battle.SizeTeamB > 0)
             {
                 e.WithThumbnailUrl(Battle.GetTeam(Team.B).FirstOrDefault().ImgUrl);
             }
-            var msg = EnemyMessage;
             var i = 1;
             foreach (ColossoFighter fighter in Battle.GetTeam(Team.B))
             {

@@ -40,8 +40,8 @@ namespace IodemBot.Modules
             await Context.Channel.SendMessageAsync("", false, embed.Build());
         }
 
-        [Command("set")]
-        [Remarks("<Optional: Type (3ds | switch | pogo)> Set your Friendcode for a given System")]
+        [Command("")]
+        [Remarks("Set your Friendcode for any of the following Systems: 3ds, switch, pogo. e.g. `i!fc 3ds 0123...")]
         public async Task SetCode(string type, [Remainder] string code)
         {
             var embed = new EmbedBuilder();

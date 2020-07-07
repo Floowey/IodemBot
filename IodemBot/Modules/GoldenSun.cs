@@ -221,6 +221,7 @@ namespace IodemBot.Modules
         }
 
         [Command("Dungeons")]
+        [Remarks("Shows the dungeons you have found so far")]
         [Cooldown(5)]
         public async Task ListDungeons()
         {
@@ -262,7 +263,7 @@ namespace IodemBot.Modules
 
         [Command("element"), Alias("el")]
         [RequireUserServer]
-        [Remarks("Get your current Element or set it to one of the four with e.g. `i!element Venus`")]
+        [Remarks("Set your Element to one of the four with e.g. `i!element Venus`")]
         [Cooldown(5)]
         public async Task ChooseElement(Element chosenElement, [Remainder] string classSeriesName = null)
         {
@@ -413,6 +414,7 @@ namespace IodemBot.Modules
         }
 
         [Command("newgame+")]
+        [Remarks("Reset and start a new game. Careful, your progress will be lost!")]
         public async Task NewGamePlus()
         {
             _ = NewGamePlusTask();

@@ -18,7 +18,7 @@ namespace IodemBot.Modules.ColossoBattles
         public static string[] numberEmotes = new string[] { "\u0030\u20E3", "\u0031\u20E3", "\u0032\u20E3", "\u0033\u20E3", "\u0034\u20E3", "\u0035\u20E3",
             "\u0036\u20E3", "\u0037\u20E3", "\u0038\u20E3", "\u0039\u20E3" };
 
-        private static List<BattleEnvironment> battles = new List<BattleEnvironment>();
+        private static readonly List<BattleEnvironment> battles = new List<BattleEnvironment>();
 
         public static ulong[] ChannelIds
         {
@@ -76,7 +76,7 @@ namespace IodemBot.Modules.ColossoBattles
                     User.Dungeons.Remove(Dungeon.Name);
                 }
                 _ = Context.Message.DeleteAsync();
-                _ = Context.Channel.SendMessageAsync($"{openBattle.Name} has been prepared for your adventure to {Dungeon.Name}");
+                _ = Context.Channel.SendMessageAsync($"{openBattle.BattleChannel.Mention} has been prepared for your adventure to {Dungeon.Name}");
             }
             else
             {
@@ -95,8 +95,11 @@ namespace IodemBot.Modules.ColossoBattles
         {
             if (EnemiesDatabase.TryGetDungeon(DungeonName, out var dungeon))
             {
-                var djinnTotal = dungeon.Matchups
-                    .SelectMany(m => m.RewardTables.SelectMany(t => t.OfType<DefaultReward>().Where(r => r.Djinn != "")));
+                var RewardTablesWithDjinn = dungeon.Matchups
+                    .SelectMany(m => m.RewardTables.Where(t => t.OfType<DefaultReward>().Any(r => r.Djinn != "")));
+
+
+                var djinnTotal = RewardTablesWithDjinn.SelectMany(t => t.OfType<DefaultReward>().Where(r => r.Djinn != ""));
 
                 var limittedDjinn = djinnTotal.GroupBy(d => d.Tag)
                     .Select(k => k.OrderByDescending(d => d.Obtainable).First());
@@ -106,14 +109,33 @@ namespace IodemBot.Modules.ColossoBattles
                 var avatar = UserAccounts.GetAccount(Context.User);
                 var djinnobtained = avatar.Tags.Count(t => limittedDjinn.Any(r => r.Tag.Contains(t)));
 
+                var probability = djinnTotal.Count() > 0 ? 1 - 1.0 / RewardTablesWithDjinn
+                    .Select(
+                        r => 1.0 / (1 - (
+                            r.Where(
+                                k => 
+                                k is DefaultReward dr 
+                                && dr.Djinn !=""
+                                && dr.RequireTag.All(t => avatar.Tags.Contains(t))
+                                && (dr.Obtainable == 0 || avatar.Tags.Count(t => t.Equals(dr.Tag)) < dr.Obtainable)
+                            )
+                            .Select(r => r.Weight).Sum() 
+                            / (double) r.Select(d => d.Weight).Sum()
+                            )
+                        )
+                    )
+                    .Aggregate((p, c) => p *= c)
+                    : 0.0;
+
                 _ = ReplyAsync(embed: new EmbedBuilder()
                     .WithTitle(dungeon.Name)
                     .WithDescription(dungeon.FlavourText)
                     .WithThumbnailUrl(dungeon.Image)
                     .AddField("Info", $"{(dungeon.IsDefault ? "Default " : "")}{(dungeon.IsOneTimeOnly ? "<:dungeonkey:606237382047694919> Dungeon" : "<:mapopen:606236181503410176> Town")} for up to {dungeon.MaxPlayer} {(dungeon.MaxPlayer == 1 ? "player" : "players")}. {dungeon.Matchups.Count()} stages.")
                     .AddField("Requirement", $"{dungeon.Requirement.GetDescription()}")
-                    .AddField("Djinn", $"{(djinnTotal.Count() > 0 ? $"{djinnobtained}/{limittedDjinn.Sum(d => d.Obtainable)}{(unlimittedDjinn.Count() > 0 ? "+" : "")}" : "none")}")
+                    .AddField("Djinn", $"{(djinnTotal.Count() > 0 ? $"{djinnobtained}/{limittedDjinn.Sum(d => d.Obtainable)}{(unlimittedDjinn.Count() > 0 ? "+" : "")} ({probability*100:N0}% success rate)" : "none")}")
                     .Build());
+                await Task.CompletedTask;
             }
         }
 

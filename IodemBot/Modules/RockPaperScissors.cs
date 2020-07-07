@@ -41,7 +41,6 @@ namespace IodemBot.Modules
             string[] emotesPlayer = { "🤜", ":hand_splayed:", ":v:" };
             string[] emotesCPU = { "🤛", ":hand_splayed:", ":v:" };
 
-            var avatar = UserAccounts.GetAccount(Context.User);
             RpsEnum cpuChoice = (RpsEnum)((new Random()).Next(0, 1000) % 3);
             string result = "";
 

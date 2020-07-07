@@ -1,4 +1,5 @@
-﻿using IodemBot.Extensions;
+﻿using Discord;
+using IodemBot.Extensions;
 using IodemBot.Modules.GoldenSunMechanics;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
@@ -25,7 +26,6 @@ namespace IodemBot.Modules.ColossoBattles
 
     public abstract class ColossoFighter : IComparable<ColossoFighter>, ICloneable
     {
-        private static readonly Random rnd = Global.Random;
 
         public static readonly Dictionary<Condition, string> ConditionStrings = new Dictionary<Condition, string>()
         {
@@ -55,6 +55,7 @@ namespace IodemBot.Modules.ColossoBattles
         [JsonProperty("isImmuneToConditions", ItemConverterType = typeof(StringEnumConverter))]
         public List<Condition> isImmuneToConditions = new List<Condition>();
 
+        [JsonIgnore] private List<Condition> conditionsAppliedThisTurn = new List<Condition>();
         public bool IsImmuneToOHKO { get; set; }
         public bool IsImmuneToHPtoOne { get; set; }
         public bool IsImmuneToPsynergy { get; set; }
@@ -97,6 +98,7 @@ namespace IodemBot.Modules.ColossoBattles
                 }
 
                 Conditions.Add(con);
+                conditionsAppliedThisTurn.Add(con);
             }
         }
 
@@ -212,7 +214,8 @@ namespace IodemBot.Modules.ColossoBattles
             if (Stats.HP > damage)
             {
                 Stats.HP -= (int)damage;
-                if (this is PlayerFighter)
+                ColossoFighter colossoFighter = this;
+                if (colossoFighter is PlayerFighter)
                 {
                     ((PlayerFighter)this).battleStats.DamageTanked += damage;
                 }
@@ -261,7 +264,7 @@ namespace IodemBot.Modules.ColossoBattles
             RemoveCondition(Condition.Flinch);
 
             //Chance to wake up
-            if (HasCondition(Condition.Sleep))
+            if (HasCondition(Condition.Sleep) && !conditionsAppliedThisTurn.Contains(Condition.Sleep))
             {
                 if (Global.Random.Next(0, 2) == 0)
                 {
@@ -270,7 +273,7 @@ namespace IodemBot.Modules.ColossoBattles
                 }
             }
             //Chance to remove Stun
-            if (HasCondition(Condition.Stun))
+            if (HasCondition(Condition.Stun) && !conditionsAppliedThisTurn.Contains(Condition.Stun))
             {
                 if (Global.Random.Next(0, 2) == 0)
                 {
@@ -279,7 +282,7 @@ namespace IodemBot.Modules.ColossoBattles
                 }
             }
             //Chance to remove Seal
-            if (HasCondition(Condition.Seal))
+            if (HasCondition(Condition.Seal) && !conditionsAppliedThisTurn.Contains(Condition.Seal))
             {
                 if (Global.Random.Next(0, 3) == 0)
                 {
@@ -288,7 +291,7 @@ namespace IodemBot.Modules.ColossoBattles
                 }
             }
             //Chance to remove Delusion
-            if (HasCondition(Condition.Delusion))
+            if (HasCondition(Condition.Delusion) && !conditionsAppliedThisTurn.Contains(Condition.Delusion))
             {
                 if (Global.Random.Next(0, 4) == 0)
                 {
@@ -308,6 +311,7 @@ namespace IodemBot.Modules.ColossoBattles
             }
 
             RemoveCondition(Condition.Counter);
+            conditionsAppliedThisTurn.Clear();
 
             foreach (var item in EquipmentWithEffect)
             {
@@ -525,11 +529,13 @@ namespace IodemBot.Modules.ColossoBattles
             return log;
         }
 
-        public bool Select(string emote)
+        public bool Select(IEmote emote)
         {
             string[] numberEmotes = new string[] { "0️⃣", "1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣",
             "6️⃣", "7️⃣", "8️⃣", "9️⃣" };
-            var trySelected = Moves.Where(m => m.Emote == emote).FirstOrDefault() ?? Moves.Where(m => m.Emote.Contains(emote)).FirstOrDefault();
+
+            var trySelected = Moves.FirstOrDefault(m => m.GetEmote().Equals(emote));
+            //var trySelected = Moves.Where(m => m.Emote == emote).FirstOrDefault() ?? Moves.Where(m => m.Emote.Contains(emote)).FirstOrDefault();
             if (!IsAlive)
             {
                 return false;
@@ -537,9 +543,9 @@ namespace IodemBot.Modules.ColossoBattles
 
             if (trySelected == null)
             {
-                if (numberEmotes.Contains(emote) && selected != null)
+                if (numberEmotes.Contains(emote.Name) && selected != null)
                 {
-                    selected.TargetNr = Array.IndexOf(numberEmotes, emote) - 1;
+                    selected.TargetNr = Array.IndexOf(numberEmotes, emote.Name) - 1;
                     hasSelected = true;
                 }
                 else
@@ -549,7 +555,7 @@ namespace IodemBot.Modules.ColossoBattles
             }
             else
             {
-                if (trySelected is Psynergy && ((Psynergy)trySelected).PPCost > Stats.PP)
+                if (trySelected is Psynergy psynergy && psynergy.PPCost > Stats.PP)
                 {
                     return false;
                 }
@@ -570,9 +576,9 @@ namespace IodemBot.Modules.ColossoBattles
                 selected.TargetNr = 0;
                 hasSelected = true;
             }
-            if (this is PlayerFighter)
+            if (this is PlayerFighter fighter)
             {
-                ((PlayerFighter)this).AutoTurnsInARow = 0;
+                fighter.AutoTurnsInARow = 0;
             }
             return true;
         }

@@ -84,12 +84,12 @@ namespace IodemBot.Modules
         [Cooldown(5)]
         public async Task AllStreams()
         {
-            //var embeds = await TwitchListener.AllStreamsEmbeds();
-            //await ReplyAsync($"{embeds.Count} Golden Sun streams.");
-            //foreach (var s in embeds)
-            //{
-             //   _ = ReplyAsync(embed: s);
-            //}
+            var embeds = await TwitchListener.AllStreamsEmbeds();
+            await ReplyAsync($"{embeds.Count} Golden Sun streams.");
+            foreach (var s in embeds)
+            {
+                _ = ReplyAsync(embed: s);
+            }
         }
 
         [Command("Credit"), Alias("Credits", "Info")]
@@ -127,7 +127,6 @@ namespace IodemBot.Modules
         [Remarks("Link the wiki")]
         public async Task Subreddit()
         {
-            var embed =
             await Context.Channel.SendMessageAsync("", false, new EmbedBuilder()
                 .WithColor(Colors.Get("Iodem"))
                 .WithDescription($"https://reddit.com/r/GoldenSun")
@@ -160,8 +159,8 @@ namespace IodemBot.Modules
         {
             await Context.Channel.SendMessageAsync(embed: new EmbedBuilder()
             .WithColor(Colors.Get("Iodem"))
-            .AddField("Running since", $"{Global.RunningSince.ToLocalTime()} ({DateTime.Now.Subtract(Global.RunningSince.ToLocalTime()).ToString("d' 'hh':'mm':'ss")}")
-            .AddField("Connected since", $"{Global.UpSince.ToLocalTime()} ({DateTime.Now.Subtract(Global.UpSince.ToLocalTime()).ToString("d' 'hh':'mm':'ss")})")
+            .AddField("Running since", $"{Global.RunningSince.ToLocalTime()} ({DateTime.Now.Subtract(Global.RunningSince.ToLocalTime()):d' 'hh':'mm':'ss}")
+            .AddField("Connected since", $"{Global.UpSince.ToLocalTime()} ({DateTime.Now.Subtract(Global.UpSince.ToLocalTime()):d' 'hh':'mm':'ss})")
             .Build());
         }
 
@@ -271,7 +270,7 @@ namespace IodemBot.Modules
             if (rank >= 10)
             {
                 builder.Append("... \n");
-                builder.Append($"`{rank + 1}` {Context.User.Username.PadRight(15)} - `Lv{account.LevelNumber}` - `{account.XP}xp`");
+                builder.Append($"`{rank + 1}` {Context.User.Username,-15} - `Lv{account.LevelNumber}` - `{account.XP}xp`");
             }
 
             embed.WithDescription(builder.ToString());
@@ -294,7 +293,7 @@ namespace IodemBot.Modules
                 switch (type)
                 {
                     case RankEnum.Solo:
-                        builder.Append($"`{i + 1}` {Emotes[i]} {curAccount.Name.PadRight(15)} - `{curAccount.ServerStats.ColossoHighestRoundEndlessSolo}`\n");
+                        builder.Append($"`{i + 1}` {Emotes[i]} {curAccount.Name,-15} - `{curAccount.ServerStats.ColossoHighestRoundEndlessSolo}`\n");
                         break;
 
                     case RankEnum.Duo:
@@ -320,7 +319,7 @@ namespace IodemBot.Modules
                 switch (type)
                 {
                     case RankEnum.Solo:
-                        builder.Append($"`{rank + 1}` {account.Name.PadRight(15)} - `{account.ServerStats.ColossoHighestRoundEndlessSolo}`");
+                        builder.Append($"`{rank + 1}` {account.Name,-15} - `{account.ServerStats.ColossoHighestRoundEndlessSolo}`");
                         break;
 
                     case RankEnum.Duo:

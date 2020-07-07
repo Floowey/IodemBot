@@ -56,7 +56,7 @@ namespace IodemBot
             await Task.Delay(-1);
         }
 
-        private string[] welcomeMsg = {
+        private readonly string[] welcomeMsg = {
             "Welcome, {0}! Just ignore that strange tree out front!",
             "Welcome, {0}! We'll forget that whole curse business in no time!",
             "Welcome, {0}! You may enter, so long as you do not disrupt the peace.",

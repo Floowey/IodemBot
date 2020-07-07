@@ -67,3 +67,6 @@ dkms.conf
 /IodemBot/Resources/twitch.json
 /IodemBot/IodemBot.csproj.user
 /IodemBot/Resources/Accounts/accounts_iodem.json
+/IodemBotWebApp
+/IodemBotWeb
+/IodemBot/Properties/PublishProfiles

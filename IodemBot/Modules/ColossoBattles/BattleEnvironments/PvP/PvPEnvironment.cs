@@ -299,8 +299,8 @@ namespace IodemBot.Modules.ColossoBattles
                         {
                         }
                     }
-
-                    if (!curPlayer.Select(reaction.Emote.Name))
+                    
+                    if (!curPlayer.Select(reaction.Emote))
                     {
                         _ = c.RemoveReactionAsync(reaction.Emote, reaction.User.Value);
                         Console.WriteLine("Couldn't select that move.");
@@ -445,7 +445,6 @@ namespace IodemBot.Modules.ColossoBattles
 
         protected virtual EmbedBuilder GetTeamAsEnemyEmbedBuilder(Team team)
         {
-            var tasks = new List<Task>();
             var e = new EmbedBuilder();
             if (Battle.SizeTeamB > 0)
             {
@@ -542,9 +541,9 @@ namespace IodemBot.Modules.ColossoBattles
                     var s = new List<string>();
                     foreach (var m in fighter.Moves)
                     {
-                        if (m is Psynergy)
+                        if (m is Psynergy psynergy)
                         {
-                            s.Add($"{m.Emote} {m.Name} {((Psynergy)m).PPCost}");
+                            s.Add($"{m.Emote} {m.Name} {psynergy.PPCost}");
                         }
                         else
                         {
@@ -558,9 +557,9 @@ namespace IodemBot.Modules.ColossoBattles
                         tasks.Add(msg.ModifyAsync(m => { m.Content = $""; m.Embed = embed.Build(); }));
                     }
 
-                    if (fighter is PlayerFighter && ((PlayerFighter)fighter).AutoTurnsInARow >= 2)
+                    if (fighter is PlayerFighter fighter1 && fighter.AutoTurnsInARow >= 2)
                     {
-                        var ping = await msg.Channel.SendMessageAsync($"<@{((PlayerFighter)fighter).avatar.ID}>");
+                        var ping = await msg.Channel.SendMessageAsync($"<@{fighter1.avatar.ID}>");
                         await ping.DeleteAsync();
                     }
                     i++;
