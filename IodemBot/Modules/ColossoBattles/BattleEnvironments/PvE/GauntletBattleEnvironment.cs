@@ -47,19 +47,22 @@ namespace IodemBot.Modules.ColossoBattles
             {
                 matchup = enumerator.Current;
                 Battle.TeamB.Clear();
+                var curEnemies = matchup.Enemy;
                 if (matchup.Shuffle)
                 {
-                    matchup.Enemy.Shuffle();
+                    curEnemies.Shuffle();
                 }
-                matchup.Enemy.Reverse();
-                matchup.Enemy.ForEach(e =>
+                curEnemies.Reverse();
+                curEnemies.ForEach(e =>
                 {
-                    if (matchup.Enemy.Count(p => p.Name.Equals(e.Name)) > 1)
+                    if (curEnemies.Count(p => p.Name.Equals(e.Name) || p.Name[0..^2].Equals(e.Name)) > 1)
                     {
-                        e.Name = $"{e.Name} {matchup.Enemy.Count(p => p.Name.Equals(e.Name))}";
+                        e.Name = $"{e.Name} {curEnemies.Count(p => p.Name.Equals(e.Name))}";
                     }
                 });
-                matchup.Enemy.Reverse();
+                curEnemies.Reverse();
+                curEnemies.ForEach(e => Battle.AddPlayer(e, Team.B));
+
                 if (matchup.HealBefore)
                 {
                     Battle.TeamA.ForEach(f =>
@@ -69,7 +72,6 @@ namespace IodemBot.Modules.ColossoBattles
                         f.RestorePP(1000);
                     });
                 }
-                matchup.Enemy.ForEach(e => Battle.AddPlayer(e, Team.B));
 
                 //matchup.Enemy.ForEach(e => Battle.AddPlayer((NPCEnemy)e.Clone(), Team.B));
                 EndOfDungeon = false;
