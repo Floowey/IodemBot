@@ -66,7 +66,7 @@ namespace IodemBot.Core.Leveling
                 }
             }
 
-            if (channel.Id == GuildSettings.GetGuildSettings(channel.Guild)?.ColossoChannel.Id)
+            if (channel.Id == GuildSettings.GetGuildSettings(channel.Guild)?.ColossoChannel?.Id)
             {
                 userAccount.ServerStats.MessagesInColossoTalks++;
                 if (userAccount.ServerStats.MessagesInColossoTalks >= 50)
