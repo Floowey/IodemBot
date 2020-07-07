@@ -30,6 +30,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public string Icon { get; set; }
         public uint Price { get; set; }
 
+        public ItemRarity Rarity { get; set; }
+
         public Color Color
         {
             get
@@ -143,7 +145,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
             if (IsUnleashable)
             {
-                various.Add($"{(Category == ItemCategory.Weapon ? "" : $"{(GrantsUnleash ? "Adds an Effect to your Artifacts Unleash: " : $"{(ChanceToActivate < 100 ? "May target" : "Targets")} the Wearer with an Effect: ")}")}{Unleash.ToString()}");
+                various.Add($"{(Category == ItemCategory.Weapon ? "" : $"{(GrantsUnleash ? "Adds an Effect to your Artifacts Unleash: " : $"{(ChanceToActivate < 100 ? "May target" : "Targets")} the Wearer with an Effect: ")}")}{Unleash}");
             }
 
             if (CuresCurse)
@@ -209,7 +211,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 {
                     s.Append(GoldenSun.ElementIcons[UnleashAlignment]);
                 }
-                s.Append(string.Join(", ", AllEffects.Select(e => $"{e.ToString()}")));
+                s.Append(string.Join(", ", AllEffects.Select(e => $"{e}")));
                 if (UnleashName != null)
                 {
                     s.Append(")");

@@ -213,18 +213,12 @@ namespace IodemBot.Modules.GoldenSunMechanics
             {
                 return "empty";
             }
-            switch (detail)
+            return detail switch
             {
-                case (Detail.none):
-                default:
-                    return string.Join("", Inv.Select(i => i.IconDisplay).ToArray());
-
-                case (Detail.Names):
-                    return string.Join(", ", Inv.Select(i => $"{i.IconDisplay} {i.Name}{(i.IsBroken ? " (Broken)" : "")}").ToArray());
-
-                case (Detail.NameAndPrice):
-                    return string.Join("\n", Inv.Select(i => $"{i.IconDisplay} {i.Name} - {(Count <= 60 ? "<:coin:569836987767324672>" : "")}{i.Price}").ToArray());
-            }
+                (Detail.Names) => string.Join(", ", Inv.Select(i => $"{i.IconDisplay} {i.Name}{(i.IsBroken ? " (Broken)" : "")}").ToArray()),
+                (Detail.NameAndPrice) => string.Join("\n", Inv.Select(i => $"{i.IconDisplay} {i.Name} - {(Count <= 60 ? "<:coin:569836987767324672>" : "")}{i.Price}").ToArray()),
+                _ => string.Join("", Inv.Select(i => i.IconDisplay).ToArray()),
+            };
         }
 
         internal bool HasChest(ChestQuality cq)
