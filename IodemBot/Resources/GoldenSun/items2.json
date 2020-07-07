@@ -1,4 +1,4 @@
-﻿{
+{
   "Wheat Sword": {
     "Name": "Wheat Sword",
     "Price": 999999,
@@ -167,8 +167,7 @@
       "Atk": 126
     },
     "HPRegen": 2,
-    "CuresCurse": true,
-    "Rarity": "Legendary"
+    "CuresCurse": true
   },
   "Blow Mace": {
     "Name": "Blow Mace",
@@ -1027,7 +1026,6 @@
     "Name": "Arctic Blade",
     "Price": 2600,
     "Icon": "<:Arctic_Blade:569855141474336789>",
-    "AnimatedIcon": "<a:Articblade:729714685267410979>",
     "ItemType": "LongSword",
     "IsEquippable": true,
     "IsArtifact": true,
@@ -1078,7 +1076,6 @@
     "Name": "Shamshir",
     "Price": 10000,
     "Icon": "<:Shamshir:569855141688115210>",
-    "AnimatedIcon": "<a:Shamshir:729714691932160020>",
     "ItemType": "LongSword",
     "IsEquippable": true,
     "IsArtifact": true,
@@ -1107,7 +1104,6 @@
     "Name": "Silver Blade",
     "Price": 12000,
     "Icon": "<:Silver_Blade:569855141264490508>",
-    "AnimatedIcon": "<a:SilverBlade:729714691856662539>",
     "ItemType": "LongSword",
     "IsEquippable": true,
     "IsArtifact": true,
@@ -1130,7 +1126,6 @@
     "Name": "Muramasa",
     "Price": 13600,
     "Icon": "<:Muramasa:582670194842009641>",
-    "AnimatedIcon": "<a:Muramasa:729714687721209886>",
     "ItemType": "LongSword",
     "IsEquippable": true,
     "IsArtifact": true,
@@ -1158,8 +1153,7 @@
   "Gaia Blade": {
     "Name": "Gaia Blade",
     "Price": 17000,
-    "AnimatedIcon": "<a:Gaia_Blade_a:641571305451159582>",
-    "Icon": "<:Gaia_Blade:569855141499633664>",
+    "Icon": "<a:Gaia_Blade_a:641571305451159582>",
     "ItemType": "LongSword",
     "IsEquippable": true,
     "IsArtifact": true,
@@ -1187,7 +1181,6 @@
     "Name": "Storm Brand",
     "Price": 3900,
     "Icon": "<:Storm_Brand:569855141667405824>",
-    "AnimatedIcon": "<a:StormBrand:729714691730964571>",
     "ItemType": "LongSword",
     "IsEquippable": true,
     "IsArtifact": true,
@@ -1216,7 +1209,6 @@
     "Name": "Robbers Blade",
     "Price": 7600,
     "Icon": "<:Robbers_Blade:569855141641977876>",
-    "AnimatedIcon": "<a:Robbers_Blade:729714691454009397>",
     "ItemType": "LongSword",
     "IsEquippable": true,
     "IsArtifact": true,
@@ -1245,7 +1237,6 @@
     "Name": "Lightning Sword",
     "Price": 11400,
     "Icon": "<:Lightning_Sword:569855141591646208>",
-    "AnimatedIcon": "<a:Lightning_Sword:729714692578082927>",
     "ItemType": "LongSword",
     "IsEquippable": true,
     "IsArtifact": true,
@@ -1273,7 +1264,6 @@
     "Name": "Cloud Brand",
     "Price": 11800,
     "Icon": "<:Cloud_Brand:582670195043074078>",
-    "AnimatedIcon": "<a:Cloud_Brand:729714685032529961>",
     "ItemType": "LongSword",
     "IsEquippable": true,
     "IsArtifact": true,
@@ -1302,7 +1292,6 @@
     "Name": "Hestia Blade",
     "Price": 12900,
     "Icon": "<:Hestia_Blade:569855141390581791>",
-    "AnimatedIcon": "<a:Hestia_Blade:729714686160797757>",
     "ItemType": "LongSword",
     "IsEquippable": true,
     "IsArtifact": true,
@@ -1360,7 +1349,6 @@
     "Name": "Soul Brand",
     "Price": 11600,
     "Icon": "<:Soul_Brand:569855141763612709>",
-    "AnimatedIcon": "<a:Soul_Brand:729714691970170950>",
     "ItemType": "LongSword",
     "IsEquippable": true,
     "IsArtifact": true,
@@ -1388,7 +1376,6 @@
     "Name": "Mythril Blade",
     "Price": 14600,
     "Icon": "<:Mythril_Blade:569855141444845569>",
-    "AnimatedIcon": "<a:Mythril_Blade:729714687490654290>",
     "ItemType": "LongSword",
     "IsEquippable": true,
     "IsArtifact": true,
@@ -1416,7 +1403,6 @@
     "Name": "Rune Blade",
     "Price": 15000,
     "Icon": "<:Rune_Blade:569855141608423424>",
-    "AnimatedIcon": "<a:RuneBlade:729714688962723950>",
     "ItemType": "LongSword",
     "IsEquippable": true,
     "IsArtifact": true,
@@ -1527,7 +1513,6 @@
     "Name": "Excalibur",
     "Price": 29200,
     "Icon": "<:Excalibur:569855141491245056>",
-    "AnimatedIcon": "<a:Excalibur:729714685535846414>",
     "ItemType": "LongSword",
     "IsEquippable": true,
     "IsArtifact": true,
@@ -1554,8 +1539,7 @@
   "Sol Blade": {
     "Name": "Sol Blade",
     "Price": 31200,
-    "AnimatedIcon": "<a:Sol_Blade_a:641571305199763458>",
-    "Icon": "<:Sol_Blade:569855141709348864>",
+    "Icon": "<a:Sol_Blade_a:641571305199763458>",
     "ItemType": "LongSword",
     "IsEquippable": true,
     "IsArtifact": true,
@@ -1834,7 +1818,7 @@
     "MultStatsOnEquip": {
       "Def": 120
     },
-    "Rarity": "Rare"
+    "Rarity": "Uncommon"
   },
   "Tartarus Axe": {
     "Name": "Tartarus Axe",
@@ -2833,7 +2817,7 @@
       "JupiterAtk": 20,
       "JupiterRes": 30
     },
-    "Rarity": "Legendary"
+    "Rarity": "Mythical"
   },
   "Mysterious Robe": {
     "Name": "Mysterious Robe",

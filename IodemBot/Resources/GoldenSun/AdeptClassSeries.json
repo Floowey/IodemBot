@@ -428,7 +428,7 @@
         "requirement": "Level",
         "isDefault": true,
         "archtype": "Mage",
-        "description": "Flame Users show the glistering magic of the Mars element, by reigning Justice from above"
+        "description": "Flame Users show the glistering magic of the Mars element, by raining Justice from above"
     },
     {
         "name": "Pirate Series",
@@ -1367,8 +1367,8 @@
             {
                 "name": "Page",
                 "movepool": [
-                    "Impact",
                     "Volcano",
+                    "Impact",
                     "Ward",
                     "Guard"
                 ],
