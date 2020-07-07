@@ -18,8 +18,7 @@ namespace IodemBot.Modules
         [Remarks("<Optional: name> Get your Friendcode or the the FC of someone else")]
         public async Task Codes(SocketUser target = null)
         {
-            var mentionedUser = Context.Message.MentionedUsers.FirstOrDefault();
-            target = target ?? Context.User;
+            target ??= Context.User;
 
             var user = UserAccounts.GetAccount(target);
             var embed = new EmbedBuilder();

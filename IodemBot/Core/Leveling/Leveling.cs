@@ -139,10 +139,5 @@ namespace IodemBot.Core.Leveling
             }
             UserAccounts.SaveAccounts();
         }
-
-        internal static async void UserSentFile(SocketGuildUser user, SocketTextChannel channel)
-        {
-            await Task.CompletedTask;
-        }
     }
 }

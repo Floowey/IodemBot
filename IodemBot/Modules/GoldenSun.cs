@@ -31,7 +31,6 @@ namespace IodemBot.Modules
         [RequireUserPermission(GuildPermission.ManageGuild)]
         public async Task AwardSeries(SocketGuildUser user, [Remainder] string series)
         {
-            var account = UserAccounts.GetAccount(Context.User);
             await AwardClassSeries(series, user, (SocketTextChannel)Context.Channel);
         }
 
@@ -113,8 +112,6 @@ namespace IodemBot.Modules
             var user = (SocketGuildUser)Context.User;
             var account = UserAccounts.GetAccount(user);
             var embed = new EmbedBuilder();
-            var factory = new PlayerFighterFactory();
-            var p = factory.CreatePlayerFighter(user);
 
             embed.WithColor(Colors.Get(account.Element.ToString()));
             var author = new EmbedAuthorBuilder();
@@ -132,7 +129,7 @@ namespace IodemBot.Modules
         [Remarks("Get information about your level etc")]
         public async Task Status([Remainder] SocketUser user = null)
         {
-            user = user ?? Context.User;
+            user ??= Context.User;
             var account = UserAccounts.GetAccount(user);
             var factory = new PlayerFighterFactory();
             var p = factory.CreatePlayerFighter(user);
@@ -193,11 +190,9 @@ namespace IodemBot.Modules
         [Remarks("Hidden Information on Tri-Elemental Classes")]
         public async Task Tri([Remainder] SocketGuildUser user = null)
         {
-            user = user ?? (SocketGuildUser)Context.User;
+            user ??= (SocketGuildUser)Context.User;
             var account = UserAccounts.GetAccount(user);
             var embed = new EmbedBuilder();
-            var factory = new PlayerFighterFactory();
-            var p = factory.CreatePlayerFighter(user);
 
             embed.WithColor(Colors.Get(account.Element.ToString()));
             var author = new EmbedAuthorBuilder();
@@ -314,7 +309,7 @@ namespace IodemBot.Modules
             account.Tags.Add(tags[(int)chosenElement]);
             UserAccounts.SaveAccounts();
             embed.WithColor(Colors.Get(chosenElement.ToString()));
-            embed.WithDescription($"Welcome to the {chosenElement.ToString()} Clan, {account.GsClass} {((SocketGuildUser)Context.User).DisplayName()}!");
+            embed.WithDescription($"Welcome to the {chosenElement} Clan, {account.GsClass} {((SocketGuildUser)Context.User).DisplayName()}!");
             await Context.Channel.SendMessageAsync("", false, embed.Build());
         }
 
@@ -342,11 +337,11 @@ namespace IodemBot.Modules
             embed.WithAuthor(psy.Name);
             embed.AddField("Emote", psy.Emote, true);
             embed.AddField("PP", psy.PPCost, true);
-            embed.AddField("Description", $"{psy.ToString()} {(psy.HasPriority ? "Always goes first." : "")}");
+            embed.AddField("Description", $"{psy} {(psy.HasPriority ? "Always goes first." : "")}");
 
             if (psy.Effects.Count > 0)
             {
-                var s = string.Join("\n", psy.Effects.Select(e => $"{e.ToString()}"));
+                var s = string.Join("\n", psy.Effects.Select(e => $"{e}"));
                 embed.AddField("Effects", s);
             }
 
@@ -409,7 +404,6 @@ namespace IodemBot.Modules
         [RequireUserPermission(GuildPermission.ManageGuild)]
         public async Task RemoveSeries(SocketGuildUser user, [Remainder] string series)
         {
-            var account = UserAccounts.GetAccount(Context.User);
             await RemoveClassSeries(series, user, (SocketTextChannel)Context.Channel);
         }
 
@@ -431,7 +425,7 @@ namespace IodemBot.Modules
                 return;
             }
 
-            await ReplyAsync($"You will lose all your progress so far, are you really sure? However, you will get a boost to your experience will increase from {account.XpBoost.ToString("F")} to {(account.XpBoost * (1 + 0.1 * (1 - Math.Exp(-(double)account.XP / 120000)))).ToString("F")}");
+            await ReplyAsync($"You will lose all your progress so far, are you really sure? However, you will get a boost to your experience will increase from {account.XpBoost:F} to {account.XpBoost * (1 + 0.1 * (1 - Math.Exp(-(double)account.XP / 120000))):F}");
 
             response = await Context.Channel.AwaitMessage(m => m.Author == Context.User);
             if (!response.Content.Equals("Yes", StringComparison.CurrentCultureIgnoreCase))

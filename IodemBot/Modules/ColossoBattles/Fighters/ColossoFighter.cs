@@ -55,7 +55,7 @@ namespace IodemBot.Modules.ColossoBattles
         [JsonProperty("isImmuneToConditions", ItemConverterType = typeof(StringEnumConverter))]
         public List<Condition> isImmuneToConditions = new List<Condition>();
 
-        [JsonIgnore] private List<Condition> conditionsAppliedThisTurn = new List<Condition>();
+        [JsonIgnore] private readonly List<Condition> conditionsAppliedThisTurn = new List<Condition>();
         public bool IsImmuneToOHKO { get; set; }
         public bool IsImmuneToHPtoOne { get; set; }
         public bool IsImmuneToPsynergy { get; set; }
