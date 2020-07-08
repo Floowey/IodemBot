@@ -154,7 +154,7 @@
           [
             {
               "Weight": 1,
-              "XP": 20,
+              "XP": 15,
               "Coins": 10
             }
           ],
@@ -186,7 +186,7 @@
           [
             {
               "Weight": 1,
-              "XP": 25,
+              "XP": 20,
               "Coins": 10
             }
           ],
@@ -221,7 +221,7 @@
           [
             {
               "Weight": 1,
-              "XP": 25,
+              "XP": 20,
               "Coins": 10
             }
           ],
@@ -242,7 +242,7 @@
           [
             {
               "Weight": 1,
-              "XP": 25,
+              "XP": 20,
               "Coins": 10
             }
           ],
@@ -270,7 +270,7 @@
           [
             {
               "Weight": 1,
-              "XP": 20,
+              "XP": 18,
               "Coins": 10
             }
           ],
@@ -298,7 +298,7 @@
           [
             {
               "Weight": 1,
-              "XP": 25,
+              "XP": 20,
               "Coins": 5
             }
           ],
@@ -318,7 +318,7 @@
           [
             {
               "Weight": 1,
-              "XP": 20,
+              "XP": 15,
               "Coins": 10
             }
           ],
@@ -339,8 +339,8 @@
           [
             {
               "Weight": 1,
-              "XP": 90,
-              "Coins": 60
+              "XP": 5,
+              "Coins": 10
             }
           ],
           [
@@ -404,7 +404,7 @@
       },
       {
         "Flavourtext": "As you solve the puzzles, you find some empty rooms. Well, not *completely* empty, anyways.",
-        "EnemyNames": [ "Giant Bat 1", "Bat 1" ],
+        "EnemyNames": [ "Bat 1", "Bat 1" ],
         "RewardTables": [
           [
             {
@@ -422,21 +422,21 @@
           [
             {
               "Weight": 1,
-              "XP": 100,
-              "Coins": 100
+              "XP": 30,
+              "Coins": 30
             }
           ]
         ]
       },
       {
         "Flavourtext": "You have solved the puzzle, you have reached the Star Chamber! Congratulations. Some nasty looking monsters are looking at you from afar, it would be better to turn back now than never!",
-        "EnemyNames": [ "Amaze 2", "Amaze 2", "Amaze 2" ],
+        "EnemyNames": [ "Amaze 1", "Amaze 2", "Amaze 1" ],
         "RewardTables": [
           [
             {
               "Weight": 1,
-              "XP": 80,
-              "Coins": 80
+              "XP": 35,
+              "Coins": 35
             }
           ],
           [
@@ -487,6 +487,13 @@
               "Tag": "Aqua0",
               "Obtainable": 1,
               "Dungeon": "Path Of Aqua I"
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "XP": 69,
+              "Coins": 15
             }
           ]
         ]
@@ -1094,7 +1101,7 @@
           [
             {
               "Weight": 1,
-              "XP": 60,
+              "XP": 40,
               "Coins": 30
             }
           ],
@@ -1121,7 +1128,7 @@
           [
             {
               "Weight": 1,
-              "XP": 50,
+              "XP": 45,
               "Coins": 20
             }
           ]
@@ -1172,7 +1179,7 @@
             {
               "Weight": 1,
               "XP": 25,
-              "Coins": 75
+              "Coins": 35
             }
           ],
           [
@@ -1193,7 +1200,7 @@
           [
             {
               "Weight": 1,
-              "XP": 150
+              "XP": 50
             }
           ]
         ]
@@ -1205,8 +1212,8 @@
           [
             {
               "Weight": 1,
-              "XP": 80,
-              "Coins": 80
+              "XP": 45,
+              "Coins": 45
             }
           ],
           [
@@ -1266,7 +1273,7 @@
           [
             {
               "Weight": 1,
-              "XP": 50,
+              "XP": 30,
               "Coins": 50
             }
           ]
@@ -1279,7 +1286,7 @@
           [
             {
               "Weight": 1,
-              "XP": 60,
+              "XP": 40,
               "Coins": 80
             }
           ],
@@ -1299,7 +1306,7 @@
           [
             {
               "Weight": 1,
-              "XP": 73,
+              "XP": 63,
               "Coins": 53
             }
           ]
@@ -1312,7 +1319,7 @@
           [
             {
               "Weight": 1,
-              "XP": 70,
+              "XP": 54,
               "Coins": 75
             }
           ]
@@ -1325,7 +1332,7 @@
           [
             {
               "Weight": 4,
-              "XP": 120,
+              "XP": 45,
               "Coins": 120
             },
             {
@@ -1347,8 +1354,8 @@
           [
             {
               "Weight": 1,
-              "XP": 200,
-              "Coins": 200
+              "XP": 45,
+              "Coins": 80
             }
           ]
         ]
@@ -1381,7 +1388,7 @@
           [
             {
               "Weight": 1,
-              "XP": 75,
+              "XP": 50,
               "Coins": 65
             }
           ],
@@ -1402,7 +1409,7 @@
           [
             {
               "Weight": 1,
-              "XP": 80,
+              "XP": 60,
               "Coins": 50
             }
           ]
@@ -1416,7 +1423,7 @@
           [
             {
               "Weight": 1,
-              "XP": 65,
+              "XP": 55,
               "Coins": 35
             }
           ],
@@ -1570,7 +1577,7 @@
           [
             {
               "Weight": 1,
-              "XP": 100,
+              "XP": 40,
               "Coins": 200
             }
           ],
@@ -1595,7 +1602,7 @@
           [
             {
               "Weight": 1,
-              "XP": 100
+              "XP": 50
             }
           ]
         ]
@@ -1607,17 +1614,17 @@
           [
             {
               "Weight": 1,
-              "XP": 100
+              "XP": 80
             }
           ],
           [
             {
-              "Weight": 3,
+              "Weight": 2,
               "Chest": "Normal",
               "HasChest": true
             },
             {
-              "Weight": 1,
+              "Weight": 2,
               "Chest": "Wooden",
               "HasChest": true
             }
@@ -1631,7 +1638,7 @@
           [
             {
               "Weight": 1,
-              "XP": 100,
+              "XP": 55,
               "Coins": 25
             }
           ]
@@ -1644,7 +1651,7 @@
           [
             {
               "Weight": 1,
-              "XP": 100,
+              "XP": 60,
               "Coins": 20
             }
           ],
@@ -1665,7 +1672,7 @@
           [
             {
               "Weight": 1,
-              "XP": 120,
+              "XP": 66,
               "Coins": 200
             }
           ],
@@ -1686,7 +1693,7 @@
           [
             {
               "Weight": 1,
-              "XP": 150,
+              "XP": 54,
               "Coins": 150
             }
           ],
@@ -1707,7 +1714,7 @@
           [
             {
               "Weight": 1,
-              "XP": 100,
+              "XP": 55,
               "Coins": 20
             }
           ]
@@ -1720,7 +1727,7 @@
           [
             {
               "Weight": 3,
-              "XP": 200,
+              "XP": 130,
               "Coins": 100
             }
           ],
@@ -1754,7 +1761,7 @@
           [
             {
               "Weight": 1,
-              "XP": 100,
+              "XP": 70,
               "Coins": 25
             }
           ],
@@ -1776,7 +1783,7 @@
           [
             {
               "Weight": 1,
-              "XP": 150,
+              "XP": 86,
               "Coins": 30
             }
           ]
@@ -1790,7 +1797,7 @@
             {
               "Weight": 3,
               "Tag": "MercLHComplete",
-              "XP": 300,
+              "XP": 250,
               "Coins": 200
             }
           ],
@@ -1848,17 +1855,15 @@
               "Weight": 5,
               "XP": 125,
               "Coins": 75
-            },
-            {
-              "Weight": 1,
-              "XP": 50,
-              "Coins": 25,
-              "Chest": "Normal",
-              "HasChest": true
             }
           ],
           [
-            { "Weight": 16 },
+            {
+              "Weight": 1,
+              "Chest": "Normal",
+              "HasChest": true
+            },
+            { "Weight": 15 },
             {
               "Weight": 1,
               "Item": "Silver Helm"
@@ -1897,19 +1902,17 @@
           [
             {
               "Weight": 7,
-              "XP": 175,
+              "XP": 137,
               "Coins": 125
-            },
-            {
-              "Weight": 1,
-              "XP": 100,
-              "Coins": 50,
-              "Chest": "Silver",
-              "HasChest": true
             }
           ],
           [
-            { "Weight": 16 },
+            {
+              "Weight": 1,
+              "Chest": "Silver",
+              "HasChest": true
+            },
+            { "Weight": 15 },
             {
               "Weight": 1,
               "Item": "Master Rapier"
@@ -1995,7 +1998,7 @@
           [
             {
               "Weight": 1,
-              "XP": 225,
+              "XP": 175,
               "Coins": 175
             }
           ],
@@ -2252,14 +2255,15 @@
         "RewardTables": [
           [
             {
-              "Weight": 3,
-              "XP": 43,
+              "Weight": 1,
+              "XP": 38,
               "Coins": 35
-            },
+            }
+          ],
+          [
+            { "Weight": 3 },
             {
               "Weight": 1,
-              "XP": 34,
-              "Coins": 22,
               "Chest": "Wooden",
               "HasChest": true
             }
@@ -2274,7 +2278,7 @@
           [
             {
               "Weight": 1,
-              "XP": 98,
+              "XP": 54,
               "Coins": 44
             }
           ]
@@ -2292,10 +2296,7 @@
             }
           ],
           [
-            {
-              "Weight": 4,
-              "Obtainable": 1
-            },
+            { "Weight": 4 },
             {
               "Weight": 1,
               "Chest": "Normal",
@@ -2311,7 +2312,7 @@
           [
             {
               "Weight": 7,
-              "XP": 100,
+              "XP": 75,
               "Coins": 80
             }
           ],
@@ -2345,7 +2346,7 @@
           [
             {
               "Weight": 1,
-              "XP": 69,
+              "XP": 55,
               "Coins": 169
             }
           ],
@@ -2365,7 +2366,7 @@
           [
             {
               "Weight": 1,
-              "XP": 90,
+              "XP": 60,
               "Coins": 60
             }
           ]
@@ -2378,7 +2379,7 @@
           [
             {
               "Weight": 1,
-              "XP": 160,
+              "XP": 80,
               "Coins": 133
             }
           ],
@@ -2390,7 +2391,6 @@
             },
             {
               "Weight": 1,
-              "Obtainable": 1,
               "Item": "Healing Ring"
             }
           ]
@@ -2458,14 +2458,15 @@
         "RewardTables": [
           [
             {
-              "Weight": 3,
+              "Weight": 1,
               "XP": 45,
               "Coins": 20
-            },
+            }
+          ],
+          [
+            { "Weight": 3 },
             {
               "Weight": 1,
-              "XP": 10,
-              "Coins": 10,
               "Chest": "Wooden",
               "HasChest": true
             }
@@ -2478,14 +2479,15 @@
         "RewardTables": [
           [
             {
-              "Weight": 3,
-              "XP": 75,
+              "Weight": 1,
+              "XP": 55,
               "Coins": 65
-            },
+            }
+          ],
+          [
+            { "Weight": 2 },
             {
-              "Weight": 2,
-              "XP": 50,
-              "Coins": 40,
+              "Weight": 3,
               "Chest": "Wooden",
               "HasChest": true
             }
@@ -2519,20 +2521,24 @@
           [
             {
               "Weight": 1,
-              "Tag": "FuchinMimic",
-              "Obtainable": 2,
-              "XP": 66,
-              "Coins": 66,
-              "Chest": "Normal",
-              "HasChest": true
-            },
-            {
-              "Weight": 2,
-              "Tag": "FuchinMimic",
-              "Obtainable": 2,
               "XP": 55,
-              "Coins": 55,
+              "Coins": 66
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "FuchinMimic" ],
               "Chest": "Wooden",
+              "HasChest": true
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "Tag": "FuchinMimic",
+              "Obtainable": 1,
+              "Chest": "Normal",
               "HasChest": true
             }
           ]
@@ -2545,7 +2551,7 @@
           [
             {
               "Weight": 1,
-              "XP": 90
+              "XP": 80
             }
           ],
           [
@@ -2579,13 +2585,12 @@
             {
               "Weight": 5,
               "XP": 99,
-              "Coins": 75,
-              "Dungeon": "Mogall Forest"
-            },
+              "Coins": 75
+            }
+          ],
+          [
             {
               "Weight": 3,
-              "XP": 60,
-              "Coins": 30,
               "Chest": "Normal",
               "HasChest": true
             },
@@ -2601,7 +2606,8 @@
             {
               "Weight": 1,
               "XP": 10,
-              "Coins": 10
+              "Coins": 10,
+              "Dungeon": "Mogall Forest"
             }
           ]
         ]
@@ -2621,14 +2627,15 @@
         "RewardTables": [
           [
             {
-              "Weight": 3,
+              "Weight": 1,
               "XP": 45,
               "Coins": 24
-            },
+            }
+          ],
+          [
+            { "Weight": 3 },
             {
               "Weight": 1,
-              "XP": 50,
-              "Coins": 12,
               "Chest": "Wooden",
               "HasChest": true
             }
@@ -2642,15 +2649,8 @@
           [
             {
               "Weight": 4,
-              "XP": 135,
-              "Coins": 30
-            },
-            {
-              "Weight": 1,
               "XP": 120,
-              "Coins": 10,
-              "Chest": "Normal",
-              "HasChest": true
+              "Coins": 30
             }
           ]
         ]
@@ -2669,12 +2669,12 @@
           [
             { "Weight": 9 },
             {
-              "Weight": 2,
+              "Weight": 1,
               "Item": "Elven shirt"
             },
             {
               "Weight": 2,
-              "Chest": "Wooden",
+              "Chest": "Normal",
               "HasChest": true
             }
           ]
@@ -2735,7 +2735,7 @@
             },
             {
               "Weight": 1,
-              "Chest": "Silver",
+              "Chest": "Normal",
               "HasChest": true
             }
           ]
@@ -2772,7 +2772,7 @@
               "Dungeon": "Xian"
             },
             {
-              "Weight": 2,
+              "Weight": 3,
               "Chest": "Wooden",
               "HasChest": true
             },
@@ -3346,7 +3346,7 @@
           [
             {
               "Weight": 1,
-              "XP": 45,
+              "XP": 55,
               "Coins": 43
             }
           ]
@@ -3359,7 +3359,7 @@
           [
             {
               "Weight": 1,
-              "XP": 55,
+              "XP": 80,
               "Coins": 65
             }
           ],
@@ -3450,7 +3450,7 @@
           [
             {
               "Weight": 1,
-              "XP": 100,
+              "XP": 65,
               "Coins": 75
             }
           ],
@@ -3475,20 +3475,20 @@
           [
             {
               "Weight": 1,
-              "XP": 200,
+              "XP": 80,
               "Coins": 100
             }
           ],
           [
             {
               "Weight": 1,
-              "Tag": "KalayVenus",
+              "Tag": "KalayDjinn",
               "Obtainable": 2,
               "Djinn": "Venus"
             },
             {
               "Weight": 4,
-              "Tag": "KalayVenus",
+              "Tag": "KalayDjinn",
               "Obtainable": 1,
               "Djinn": "Venus"
             },
@@ -3508,7 +3508,7 @@
         "RewardTables": [
           [
             {
-              "Weight": 100,
+              "Weight": 1,
               "XP": 30
             }
           ]
@@ -3520,8 +3520,8 @@
         "RewardTables": [
           [
             {
-              "Weight": 400,
-              "XP": 100
+              "Weight": 1,
+              "XP": 65
             }
           ],
           [
@@ -3541,26 +3541,26 @@
           [
             {
               "Weight": 1,
-              "XP": 200,
+              "XP": 120,
               "Coins": 100
             }
           ],
           [
             {
               "Weight": 1,
-              "Tag": "TretJupiter",
+              "Tag": "KalayDjinn",
               "Obtainable": 2,
               "Djinn": "Mars"
             },
             {
               "Weight": 4,
-              "Tag": "TretJupiter",
+              "Tag": "KalayDjinn",
               "Obtainable": 1,
               "Djinn": "Mars"
             },
             {
               "Weight": 11,
-              "Tag": "TretBreeze",
+              "Tag": "KalayScorch",
               "Obtainable": 1,
               "Djinn": "Scorch"
             },
@@ -3575,9 +3575,8 @@
           [
             {
               "Weight": 1,
-              "Tag": "KalayFinished",
               "Obtainable": 1,
-              "XP": 200,
+              "XP": 140,
               "Coins": 200
             }
           ],
@@ -3597,7 +3596,7 @@
           [
             {
               "Weight": 1,
-              "XP": 150,
+              "XP": 75,
               "Coins": 100,
               "Dungeon": "Karagol Sea"
             }
@@ -3611,7 +3610,7 @@
           [
             {
               "Weight": 2,
-              "XP": 50,
+              "XP": 45,
               "Coins": 50,
               "Dungeon": "Gondowan Cave"
             },
@@ -3631,6 +3630,7 @@
           [
             {
               "Weight": 1,
+              "Tag": "KalayFinished",
               "XP": 10,
               "Coins": 10
             }
@@ -3655,11 +3655,12 @@
               "Weight": 3,
               "XP": 107,
               "Coins": 87
-            },
+            }
+          ],
+          [
+            { "Weight": 3 },
             {
               "Weight": 1,
-              "XP": 87,
-              "Coins": 76,
               "Chest": "Normal",
               "HasChest": true
             }
@@ -3676,18 +3677,14 @@
               "Weight": 1,
               "XP": 100,
               "Coins": 57
-            },
+            }
+          ],
+          [
+            { "Weight": 3 },
             {
               "Weight": 1,
-              "XP": 89,
-              "Coins": 36,
               "Chest": "Wooden",
               "HasChest": true
-            },
-            {
-              "Weight": 1,
-              "XP": 110,
-              "Coins": 48
             }
           ]
         ]
@@ -3699,16 +3696,9 @@
         "RewardTables": [
           [
             {
-              "Weight": 3,
+              "Weight": 1,
               "XP": 126,
               "Coins": 73
-            },
-            {
-              "Weight": 1,
-              "XP": 102,
-              "Coins": 64,
-              "Chest": "Normal",
-              "HasChest": true
             }
           ]
         ]
@@ -3734,21 +3724,20 @@
         "RewardTables": [
           [
             {
-              "Weight": 7,
+              "Weight": 1,
               "XP": 196,
               "Coins": 134
-            },
+            }
+          ],
+          [
+            { "Weight": 7 },
             {
               "Weight": 3,
-              "XP": 179,
-              "Coins": 128,
               "Chest": "Normal",
               "HasChest": true
             },
             {
               "Weight": 5,
-              "XP": 173,
-              "Coins": 114,
               "Item": "Witch's Wand"
             }
           ]
@@ -3790,15 +3779,18 @@
         "RewardTables": [
           [
             {
-              "Weight": 2,
+              "Weight": 1,
               "XP": 124,
-              "Coins": 78,
+              "Coins": 78
+            }
+          ],
+          [
+            {
+              "Weight": 2,
               "Dungeon": "Kalay"
             },
             {
               "Weight": 2,
-              "XP": 136,
-              "Coins": 94,
               "Dungeon": "Tolbi"
             }
           ]
@@ -3890,7 +3882,13 @@
         "Flavourtext": "There's no time to rest. Despite your best efforts, some of the oarsmen have been injured by the swarm of monsters. A few of the warriors leave the deck to take up oars, lending their brawn to the cause. Passengers lend a hand as well, some less enthusiastically than others. Those of you who remain in the fight brace yourselves for the next attack.",
         "EnemyNames": [ "Man o' War 2", "Virago 2", "Lizard Fighter 2", "Virago 2", "Man o' War 2" ],
         "RewardTables": [
-          [ { "Weight": 1 } ],
+          [
+            {
+              "Weight": 1,
+              "XP": 86,
+              "Coins": 75
+            }
+          ],
           [
             { "Weight": 5 },
             {
@@ -3913,7 +3911,7 @@
           [
             {
               "Weight": 1,
-              "XP": 231,
+              "XP": 331,
               "Coins": 231
             }
           ],
@@ -3963,7 +3961,7 @@
     "IsDefault": false,
     "Matchups": [
       {
-        "Flavourtext": "Aaah, the glorious city of tolbi. You have heard a lot about it and you head straight to the famous fountain to try your luck. As you approach, you see that it is full of monsters...",
+        "Flavourtext": "Aaah, the glorious city of Tolbi. You have heard a lot about it and you head straight to the famous fountain to try your luck. As you approach, you see that it is full of monsters...",
         "EnemyNames": [ "Calamar 1", "Crab", "Urchin Beast", "Calamar 1" ],
         "RewardTables": [
           [
@@ -4036,18 +4034,20 @@
           [
             {
               "Weight": 1,
-              "XP": 90
+              "XP": 76
             }
           ],
           [
             {
               "Weight": 1,
-              "Tag": "TolbiMars",
-              "Obtainable": 2,
+              "Tag": "TolbiDjinn",
+              "Obtainable": 4,
               "Djinn": "Mars"
             },
             {
               "Weight": 4,
+              "Tag": "TolbiTorch",
+              "Obtainable": 1,
               "Djinn": "Torch"
             },
             {
@@ -4066,7 +4066,7 @@
           [
             {
               "Weight": 1,
-              "XP": 90,
+              "XP": 78,
               "Coins": 80
             }
           ],
@@ -4092,7 +4092,7 @@
           [
             {
               "Weight": 1,
-              "XP": 80,
+              "XP": 67,
               "Coins": 30
             }
           ]
@@ -4105,7 +4105,7 @@
           [
             {
               "Weight": 1,
-              "XP": 300
+              "XP": 120
             }
           ],
           [
@@ -4124,7 +4124,7 @@
           [
             {
               "Weight": 1,
-              "XP": 70,
+              "XP": 66,
               "Coins": 40
             }
           ],
@@ -4150,18 +4150,20 @@
           [
             {
               "Weight": 1,
-              "XP": 90
+              "XP": 66
             }
           ],
           [
             {
               "Weight": 2,
-              "Tag": "TolbiMercury",
-              "Obtainable": 2,
+              "Tag": "TolbiDjinn",
+              "Obtainable": 4,
               "Djinn": "Mercury"
             },
             {
               "Weight": 4,
+              "Tag": "TolbiHail",
+              "Obtainable": 1,
               "Djinn": "Hail"
             },
             {
@@ -4179,7 +4181,7 @@
           [
             {
               "Weight": 1,
-              "XP": 70,
+              "XP": 66,
               "Coins": 40
             }
           ],
@@ -4199,7 +4201,7 @@
           [
             {
               "Weight": 1,
-              "XP": 70,
+              "XP": 66,
               "Coins": 40
             }
           ],
@@ -4214,13 +4216,13 @@
       },
       {
         "Flavourtext": "As you cross over to the continent of Gondowan, you face a desert. Realizing that is going to be hot and that you won't be able to stop sweating, you wish you'd brought a change of clothes. Back to Tolbi, for now.",
-        "EnemyNames": [ "Orc Captain", "Dirty Ape 1", "Orc Lord" ],
+        "EnemyNames": [ "End" ],
         "RewardTables": [
           [
             {
               "Weight": 1,
-              "XP": 70,
-              "Coins": 40
+              "XP": 10,
+              "Coins": 10
             }
           ],
           [
@@ -4539,8 +4541,8 @@
           [
             {
               "Weight": 1,
-              "XP": 386,
-              "Coins": 512
+              "XP": 99,
+              "Coins": 200
             }
           ]
         ]
@@ -4552,8 +4554,8 @@
           [
             {
               "Weight": 1,
-              "XP": 1240,
-              "Coins": 944
+              "XP": 124,
+              "Coins": 300
             }
           ]
         ]
@@ -4565,8 +4567,8 @@
           [
             {
               "Weight": 1,
-              "XP": 425,
-              "Coins": 470
+              "XP": 43,
+              "Coins": 200
             }
           ]
         ]
@@ -4578,8 +4580,8 @@
           [
             {
               "Weight": 1,
-              "XP": 1240,
-              "Coins": 944
+              "XP": 124,
+              "Coins": 100
             }
           ]
         ]
@@ -4591,8 +4593,8 @@
           [
             {
               "Weight": 1,
-              "XP": 669,
-              "Coins": 547
+              "XP": 120,
+              "Coins": 400
             }
           ],
           [
@@ -4616,8 +4618,8 @@
           [
             {
               "Weight": 1,
-              "XP": 300,
-              "Coins": 380
+              "XP": 200,
+              "Coins": 300
             }
           ]
         ]
@@ -4629,8 +4631,8 @@
           [
             {
               "Weight": 1,
-              "XP": 1240,
-              "Coins": 944
+              "XP": 124,
+              "Coins": 300
             }
           ]
         ]
@@ -4642,7 +4644,7 @@
           [
             {
               "Weight": 1,
-              "XP": 500,
+              "XP": 20,
               "Coins": 0
             }
           ]
@@ -4655,8 +4657,8 @@
           [
             {
               "Weight": 1,
-              "XP": 686,
-              "Coins": 686
+              "XP": 70,
+              "Coins": 200
             }
           ],
           [
@@ -4681,8 +4683,8 @@
           [
             {
               "Weight": 1,
-              "XP": 507,
-              "Coins": 624
+              "XP": 50,
+              "Coins": 300
             }
           ],
           [
@@ -4706,9 +4708,8 @@
           [
             {
               "Weight": 1,
-              "XP": 1300,
-              "Coins": 1500,
-              "Dungeon": "Lalivero"
+              "XP": 300,
+              "Coins": 1500
             }
           ],
           [
@@ -4721,6 +4722,20 @@
               "Weight": 1,
               "Chest": "Gold",
               "HasChest": true
+            }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "ARGH, sand. It's coarse and rough and gets everwhere. You can't wait to lay foot on some sweet sweet green grass again.",
+        "EnemyNames": [ "End" ],
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "XP": 10,
+              "Coins": 10,
+              "Dungeon": "Lalivero"
             }
           ]
         ]
@@ -4741,25 +4756,28 @@
           [
             {
               "Weight": 1,
-              "XP": 2000,
-              "Coins": 400,
-              "Djinn": "Flash"
+              "XP": 450,
+              "Coins": 400
             }
           ],
           [
             {
               "Weight": 1,
+              "Tag": "SuhallaMars",
+              "Obtainable": 2,
               "Djinn": "Mars"
-            },
-            {
-              "Weight": 4,
-              "Djinn": "Flash"
             },
             {
               "Weight": 4,
               "Tag": "SuhallaMars",
               "Obtainable": 1,
               "Djinn": "Mars"
+            },
+            {
+              "Weight": 4,
+              "Tag": "SuhallaFlash",
+              "Obtainable": 1,
+              "Djinn": "Flash"
             },
             { "Weight": 15 }
           ]
@@ -4772,21 +4790,20 @@
           [
             {
               "Weight": 1,
-              "XP": 1300,
-              "Coins": 800,
-              "Dungeon": "Crossbone Isle"
-            },
-            {
-              "Weight": 9,
-              "XP": 1300,
+              "XP": 650,
               "Coins": 800
+            }
+          ],
+          [
+            { "Weight": 8 },
+            {
+              "Weight": 2,
+              "Chest": "Gold",
+              "HasChest": true
             },
             {
               "Weight": 1,
-              "XP": 1300,
-              "Coins": 800,
-              "Chest": "Gold",
-              "HasChest": true
+              "Dungeon": "Crossbone Isle"
             }
           ]
         ]
@@ -4808,7 +4825,7 @@
           [
             {
               "Weight": 1,
-              "XP": 98,
+              "XP": 89,
               "Coins": 78
             }
           ]
@@ -4818,7 +4835,13 @@
         "Flavourtext": "You nearly slip but another ledge catches your fall. Luckily, otherwise you wouldn't have met this little guy!",
         "EnemyNames": [ "Mercury Djinni 9" ],
         "RewardTables": [
-          [ { "Weight": 1 } ],
+          [
+            {
+              "Weight": 1,
+              "XP": 89,
+              "Coins": 78
+            }
+          ],
           [
             {
               "Weight": 1,
@@ -4849,7 +4872,7 @@
           [
             {
               "Weight": 1,
-              "XP": 87,
+              "XP": 78,
               "Coins": 67
             }
           ]
@@ -4863,7 +4886,7 @@
           [
             {
               "Weight": 1,
-              "XP": 86,
+              "XP": 68,
               "Coins": 97
             }
           ],
@@ -4884,16 +4907,16 @@
           [
             {
               "Weight": 1,
-              "XP": 93,
+              "XP": 87,
               "Coins": 82
             }
           ],
           [
             {
-              "Weight": 2,
+              "Weight": 3,
               "Dungeon": "Babis Lighthouse"
             },
-            { "Weight": 3 }
+            { "Weight": 2 }
           ]
         ]
       },
@@ -4904,8 +4927,14 @@
           [
             {
               "Weight": 1,
-              "XP": 67,
-              "Coins": 58,
+              "XP": 76,
+              "Coins": 58
+            }
+          ],
+          [
+            { "Weight": 3 },
+            {
+              "Weight": 1,
               "Item": "Warriors Helm"
             }
           ]
@@ -4918,7 +4947,7 @@
           [
             {
               "Weight": 1,
-              "XP": 86,
+              "XP": 68,
               "Coins": 78
             }
           ],
@@ -4947,7 +4976,7 @@
       },
       {
         "Flavourtext": "In the towns Inn you snap up stories from Faran about past stories. Lovely stories, but you need to move on.",
-        "EnemyNames": [ "Next" ],
+        "EnemyNames": [ "End" ],
         "RewardTables": [
           [
             {

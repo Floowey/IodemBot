@@ -2337,7 +2337,8 @@
         "SpriteNormal": "<a:Sour:662385332372766720>",
         "SpriteShiny": "<a:SourShiny:663022350534574080>",
         "Move": {
-            "Targettype": 3,
+          "Targettype": 3,
+          "Element": 3,
             "effects": [
                 {
                     "Type": "Stat",
