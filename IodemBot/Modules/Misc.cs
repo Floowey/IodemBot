@@ -2,8 +2,10 @@
 using Discord.Commands;
 using Discord.WebSocket;
 using Iodembot.Preconditions;
+using IodemBot.Core.Leveling;
 using IodemBot.Core.UserManagement;
 using IodemBot.Extensions;
+using IodemBot.Modules;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -17,7 +19,7 @@ namespace IodemBot.Modules
     {
         [Command("say")]
         [RequireModerator]
-        [Remarks("Are you me?")]
+        [Summary("Are you me?")]
         public async Task Echo([Remainder] string message)
         {
             await Context.Message.DeleteAsync();
@@ -29,7 +31,7 @@ namespace IodemBot.Modules
 
         [Command("mock")]
         [RequireModerator]
-        [Remarks("Are you me?")]
+        [Summary("Are you me?")]
         public async Task Mock([Remainder] string message)
         {
             var embed = new EmbedBuilder();
@@ -58,7 +60,7 @@ namespace IodemBot.Modules
 
         [Command("ping")]
         [Cooldown(5)]
-        [Remarks("Pong")]
+        [Summary("Pong")]
         public async Task Ping()
         {
             //await TwitchListener.GetStreamers();
@@ -70,7 +72,7 @@ namespace IodemBot.Modules
 
         [Command("pong")]
         [Cooldown(5)]
-        [Remarks("Ping")]
+        [Summary("Ping")]
         public async Task Pong()
         {
             //await TwitchListener.GetStreamers();
@@ -78,18 +80,6 @@ namespace IodemBot.Modules
                 .WithColor(Colors.Get("Iodem"))
                 .WithDescription($"Ping!")
                 .Build());
-        }
-
-        [Command("Streams")]
-        [Cooldown(5)]
-        public async Task AllStreams()
-        {
-            var embeds = await TwitchListener.AllStreamsEmbeds();
-            await ReplyAsync($"{embeds.Count} Golden Sun streams.");
-            foreach (var s in embeds)
-            {
-                _ = ReplyAsync(embed: s);
-            }
         }
 
         [Command("Credit"), Alias("Credits", "Info")]
@@ -107,7 +97,7 @@ namespace IodemBot.Modules
 
         [Command("wiki")]
         [Cooldown(5)]
-        [Remarks("Link to the wiki or a a specific search query.")]
+        [Summary("Link to the wiki or a a specific search query.")]
         public async Task Wiki([Remainder] string searchQuery = "")
         {
             string link = "https://goldensunwiki.net/wiki/Main_Page";
@@ -124,7 +114,7 @@ namespace IodemBot.Modules
 
         [Command("subreddit"), Alias("sub")]
         [Cooldown(5)]
-        [Remarks("Link the wiki")]
+        [Summary("Link the wiki")]
         public async Task Subreddit()
         {
             await Context.Channel.SendMessageAsync("", false, new EmbedBuilder()
@@ -134,7 +124,7 @@ namespace IodemBot.Modules
         }
 
         [Command("Game"), Alias("ChangeGame", "SetGame")]
-        [Remarks("Change what the bot is currently playing.")]
+        [Summary("Change what the bot is currently playing.")]
         [RequireOwner]
         public async Task SetGame([Remainder] string gamename)
         {
@@ -144,7 +134,7 @@ namespace IodemBot.Modules
 
         [Command("Bug")]
         [Cooldown(60)]
-        [Remarks("Send a bug report to @Floowey#0205")]
+        [Summary("Send a bug report to @Floowey#0205")]
         public async Task BugReport([Remainder] string bugreport)
         {
             var channel = await Context.Guild.Users.Where(u => u.Id == 300339714311847936).First().GetOrCreateDMChannelAsync();
@@ -154,7 +144,7 @@ namespace IodemBot.Modules
 
         [Command("uptime")]
         [Cooldown(60)]
-        [Remarks("How long has the bot been running")]
+        [Summary("How long has the bot been running")]
         public async Task Uptime()
         {
             await Context.Channel.SendMessageAsync(embed: new EmbedBuilder()
@@ -165,6 +155,7 @@ namespace IodemBot.Modules
         }
 
         [Command("clock"), Alias("worldclock")]
+        [Summary("View the current time across the globe")]
         public async Task Worldclock()
         {
             CultureInfo enAU = new CultureInfo("en-US");
@@ -183,7 +174,7 @@ namespace IodemBot.Modules
 
         [Command("roleinfo")]
         [Cooldown(10)]
-        [Remarks("Get information on a specific role")]
+        [Summary("Get information on a specific role")]
         public async Task RoleInfo([Remainder] string args)
         {
             args = args.ToLower();
@@ -215,7 +206,7 @@ namespace IodemBot.Modules
 
         [Command("Usercount"), Alias("members", "membercount")]
         [Cooldown(15)]
-        [Remarks("Display the number of users")]
+        [Summary("Display the number of users")]
         public async Task CountUsers()
         {
             var count = Context.Guild.MemberCount;
@@ -229,7 +220,7 @@ namespace IodemBot.Modules
 
         [Command("choose"), Alias("pick")]
         [Cooldown(15)]
-        [Remarks("Choose from several words or group of words seperated by ','")]
+        [Summary("Choose from several words or group of words seperated by ','")]
         public async Task Choose([Remainder] string s)
         {
             var choices = s.Split(' ');
@@ -250,7 +241,7 @@ namespace IodemBot.Modules
 
         [Command("rank"), Alias("top", "top10")]
         [Cooldown(15)]
-        [Remarks("Get the most active users and your rank")]
+        [Summary("Get the most active users and your rank")]
         public async Task Rank()
         {
             var topAccounts = UserAccounts.GetTop(RankEnum.Level);
@@ -279,6 +270,7 @@ namespace IodemBot.Modules
         }
 
         [Command("endless"), Alias("showdown")]
+        [Summary("Ranking of endless battles")]
         [Cooldown(15)]
         public async Task Showdown(RankEnum type = RankEnum.Solo)
         {
@@ -346,7 +338,7 @@ namespace IodemBot.Modules
 
         [Command("giveRole")]
         [Cooldown(60)]
-        [Remarks("Give or remove the `Gladiator` or `Colosso Adept` role")]
+        [Summary("Give or remove the `Gladiator` or `Colosso Adept` role")]
         public async Task GiveRole([Remainder] string RoleName = "")
         {
             var user = (SocketGuildUser)Context.User;
@@ -376,6 +368,91 @@ namespace IodemBot.Modules
                 embed.WithDescription($"Select any of the following available roles:\n```\n{string.Join("\n", roles.Keys)}```");
             }
             await Context.Channel.SendMessageAsync(embed: embed.Build());
+        }
+
+        [Command("addQuote")]
+        [RequireModerator]
+        [Summary("Add a Quote to the quoteList.")]
+        public async Task AddQuoteCommand(string name, [Remainder] string quote)
+        {
+            Quotes.AddQuote(name, quote);
+            var embed = new EmbedBuilder();
+            embed.WithColor(Colors.Get("Iodem"));
+            embed.WithDescription(Utilities.GetAlert("quote_added"));
+            await Context.Channel.SendMessageAsync("", false, embed.Build());
+        }
+        [Command("sprite"), Alias("portrait")]
+        [Summary("Get a random sprite or one of a given Character")]
+        [Cooldown(5)]
+        public async Task Sprite([Remainder] string name = "")
+        {
+            var embed = new EmbedBuilder();
+            embed.WithColor(Colors.Get("Iodem"));
+
+            if (Sprites.GetSpriteCount() == 0)
+            {
+                embed.WithDescription(Utilities.GetAlert("no_sprites"));
+            }
+            else if (name == "")
+            {
+                embed.WithImageUrl(Sprites.GetRandomSprite());
+            }
+            else
+            {
+                embed.WithImageUrl(Sprites.GetImageFromName(name));
+            }
+
+            await Context.Channel.SendMessageAsync("", false, embed.Build());
+        }
+        [Command("quote"), Alias("q")]
+        [Cooldown(10)]
+        [Summary("Get a random quote. Add a name to get a quote from that character")]
+        public async Task RandomQuote([Remainder] string name = "")
+        {
+            if (Quotes.GetQuotesCount() == 0)
+            {
+                await NoQuotes();
+                return;
+            }
+
+            var embed = new EmbedBuilder();
+            embed.WithColor(Colors.Get("Iodem"));
+
+            var q = Quotes.quoteList.Random();
+            if (!name.IsNullOrEmpty())
+            {
+                q = Quotes.quoteList.Where(q => q.name.Equals(name, StringComparison.OrdinalIgnoreCase)).Random();
+                if (q.name.IsNullOrEmpty())
+                {
+                    embed.WithDescription(Utilities.GetAlert("No_Quote_From_Name"));
+                    await ReplyAsync(embed: embed.Build());
+                    return;
+                }
+            }
+
+            q.name = Utilities.ToCaps(q.name);
+
+            embed.WithAuthor(q.name);
+            embed.WithThumbnailUrl(Sprites.GetImageFromName(q.name));
+            embed.WithDescription(q.quote);
+            if (q.quote.Contains(@"#^@%!"))
+            {
+                var userAccount = UserAccounts.GetAccount(Context.User);
+                userAccount.ServerStats.HasQuotedMatthew = true;
+                UserAccounts.SaveAccounts();
+                await ServerGames.UserHasCursed((SocketGuildUser)Context.User, (SocketTextChannel)Context.Channel);
+            }
+
+            await Context.Channel.SendMessageAsync("", false, embed.Build());
+            //await embed.WithDescription(Utilities.GetAlert("quote"));
+        }
+
+        private async Task NoQuotes()
+        {
+            var embed = new EmbedBuilder();
+            embed.WithColor(Colors.Get("Iodem"));
+            embed.WithDescription(Utilities.GetAlert("no_quotes"));
+            await Context.Channel.SendMessageAsync("", false, embed.Build());
         }
     }
 }

@@ -86,7 +86,7 @@ namespace IodemBot.Core.Leveling
             await Task.CompletedTask;
         }
 
-        internal static async void LevelUp(UserAccount userAccount, SocketGuildUser user, SocketTextChannel channel = null)
+        internal static async void LevelUp(UserAccount userAccount, SocketGuildUser user, IMessageChannel channel = null)
         {
             if (userAccount.LevelNumber < 10 && (userAccount.LevelNumber % 5) > 0)
             {

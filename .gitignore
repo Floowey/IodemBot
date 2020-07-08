@@ -70,3 +70,10 @@ dkms.conf
 /IodemBotWebApp
 /IodemBotWeb
 /IodemBot/Properties/PublishProfiles
+/obj/Docker
+/docker-compose.yml
+/docker-compose.override.yml
+/docker-compose.dcproj
+/.dockerignore
+/IodemBot/Dockerfile
+/IodemBot/Properties

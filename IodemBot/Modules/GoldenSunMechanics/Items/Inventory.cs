@@ -246,6 +246,11 @@ namespace IodemBot.Modules.GoldenSunMechanics
             lastDailyChest = DateTime.Now.Subtract(new TimeSpan(1, 0, 0, 0));
         }
 
+        internal Item GetItem(string item)
+        {
+            return Inv.Where(s => s.Name.Equals(item, StringComparison.CurrentCultureIgnoreCase) || s.Itemname.Equals(item, StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault();
+        }
+
         public string GearToString(ArchType archType, bool detailed = false)
         {
             var s = new StringBuilder();
@@ -263,11 +268,12 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         internal bool Repair(string item)
         {
-            var it = Inv.Where(i => i.Name.Equals(item, StringComparison.CurrentCultureIgnoreCase) && i.IsBroken).FirstOrDefault();
-            if (it == null)
+            if (!HasItem(item))
             {
                 return false;
             }
+            var it = GetItem(item);
+           
 
             if (!RemoveBalance(it.SellValue))
             {
@@ -279,9 +285,39 @@ namespace IodemBot.Modules.GoldenSunMechanics
             return true;
         }
 
+        internal bool Rename(string item, string newname = null)
+        {
+            if (!HasItem(item)) return false;
+            var it = GetItem(item);
+
+            if (!RemoveBalance(it.Price * 2))
+            {
+                return false;
+            }
+
+            it.Nickname = newname ?? "";
+            UserAccounts.SaveAccounts();
+            return true;
+        }
+
+        internal bool Polish(string item)
+        {
+            if (!HasItem(item)) return false;
+            var it = GetItem(item);
+            if (!it.CanBeAnimated) return false;
+            if (!RemoveBalance(it.Price * 10))
+            {
+                return false;
+            }
+
+            it.IsAnimated = true;
+            UserAccounts.SaveAccounts();
+            return true;
+        }
+
         public bool HasItem(string item)
         {
-            return Inv.Any(s => string.Equals(s.Name, item, StringComparison.CurrentCultureIgnoreCase));
+            return Inv.Any(s => s.Name.Equals(item, StringComparison.CurrentCultureIgnoreCase) || s.Itemname.Equals(item, StringComparison.CurrentCultureIgnoreCase));
         }
 
         public bool Equip(string item, ArchType archType)
@@ -291,7 +327,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 return false;
             }
 
-            var i = Inv.Where(s => s.Name.Equals(item, StringComparison.InvariantCultureIgnoreCase)).First();
+            var i = GetItem(item); 
             if (!i.IsEquippable)
             {
                 return false;
@@ -315,9 +351,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                     return false;
                 }
             }
-            Item g;
-
-            g = Gear.GetItem(i.Category);
+            Item g = Gear.GetItem(i.Category);
             if (g != null)
             {
                 if (g.IsCursed)
@@ -343,7 +377,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         private void UpdateStrings()
         {
             InvString.Clear();
-            Inv.ForEach(w => InvString?.Add(w.NameAndBroken));
+            Inv.ForEach(w => InvString?.Add(w.NameToSerialize));
 
             WarriorGear = WarriorGear.OrderBy(i => i.ItemType).ToList();
             WarriorGearString.Clear();
@@ -356,7 +390,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public bool Unequip(string item)
         {
-            var it = ItemDatabase.GetItem(item);
+            var it = GetItem(item);
             if (!WarriorGear.Any(i => i.Name.Equals(it.Name, StringComparison.CurrentCultureIgnoreCase)) &&
             !MageGear.Any(i => i.Name.Equals(it.Name, StringComparison.CurrentCultureIgnoreCase)))
             {

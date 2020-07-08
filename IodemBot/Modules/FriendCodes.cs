@@ -8,14 +8,15 @@ using System.Threading.Tasks;
 
 namespace IodemBot.Modules
 {
+    [Name("Friendcodes")]
     [Group("fc")]
-    [Cooldown(15)]
+    [Cooldown(10)]
     public class FriendCodes : ModuleBase<SocketCommandContext>
     {
         public enum Code { PoGo, Switch, DS, n3ds }
 
-        [Command("get"), Alias("")]
-        [Remarks("<Optional: name> Get your Friendcode or the the FC of someone else")]
+        [Command(""), Alias("")]
+        [Summary("Get your Friendcode or the the FC of someone else")]
         public async Task Codes(SocketUser target = null)
         {
             target ??= Context.User;
@@ -39,8 +40,9 @@ namespace IodemBot.Modules
             await Context.Channel.SendMessageAsync("", false, embed.Build());
         }
 
-        [Command("")]
-        [Remarks("Set your Friendcode for any of the following Systems: 3ds, switch, pogo. e.g. `i!fc 3ds 0123...")]
+        [Command("set")]
+        [Summary("Set your Friendcode for any of the following Systems: 3ds, switch, pogo")]
+        [Remarks("`i!fc 3ds 0123-4567-...`")]
         public async Task SetCode(string type, [Remainder] string code)
         {
             var embed = new EmbedBuilder();
@@ -77,7 +79,7 @@ namespace IodemBot.Modules
         }
 
         [Command("public")]
-        [Remarks("Everyone will be able to request your Friendcodes")]
+        [Summary("Everyone will be able to request your Friendcodes")]
         public async Task SetPublic()
         {
             var account = UserAccounts.GetAccount(Context.User);
@@ -90,7 +92,7 @@ namespace IodemBot.Modules
         }
 
         [Command("private")]
-        [Remarks("Only you can access your Friendcodes")]
+        [Summary("Only you can access your Friendcodes")]
         public async Task SetPrivate()
         {
             var account = UserAccounts.GetAccount(Context.User);

@@ -1,5 +1,6 @@
 ﻿using Discord.Commands;
 using Discord.WebSocket;
+using IodemBot.Core;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -14,7 +15,7 @@ namespace Iodembot.Preconditions
         {
             if (context.User is SocketGuildUser gUser)
             {
-                if (gUser.Roles.Any(r => r.Name == "Admin" || r.Name == "Moderators" || r.Name == "Colosso Guard" || r.Guild.Id != 355558866282348574) || gUser.Id == 300339714311847936)
+                if (gUser.Roles.Any(r => r.Name == "Admin" || r.Name == "Moderators" || r.Name == "Colosso Guard") || gUser.Id == 300339714311847936)
                 {
                     return Task.FromResult(PreconditionResult.FromSuccess());
                 }

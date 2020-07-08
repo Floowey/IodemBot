@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 
 namespace IodemBot.Modules.ColossoBattles
 {
+    [Name("Colosso")]
     public class ColossoPvE : ModuleBase<SocketCommandContext>
     {
         public static string[] numberEmotes = new string[] { "\u0030\u20E3", "\u0031\u20E3", "\u0032\u20E3", "\u0033\u20E3", "\u0034\u20E3", "\u0035\u20E3",
@@ -76,7 +77,7 @@ namespace IodemBot.Modules.ColossoBattles
                     User.Dungeons.Remove(Dungeon.Name);
                 }
                 _ = Context.Message.DeleteAsync();
-                _ = Context.Channel.SendMessageAsync($"{openBattle.BattleChannel.Mention} has been prepared for your adventure to {Dungeon.Name}");
+                _ = Context.Channel.SendMessageAsync($"{Context.User.Username}, {openBattle.BattleChannel.Mention} has been prepared for your adventure to {Dungeon.Name}");
             }
             else
             {
@@ -90,7 +91,8 @@ namespace IodemBot.Modules.ColossoBattles
             battles.RemoveAll(b => b.Name.Equals(name, StringComparison.CurrentCultureIgnoreCase));
         }
 
-        [Command("DungeonInfo")]
+        [Command("DungeonInfo"), Alias("dgi")]
+        [Summary("Get information about a dungeon")]
         public async Task DungeonInfo([Remainder] string DungeonName)
         {
             if (EnemiesDatabase.TryGetDungeon(DungeonName, out var dungeon))
@@ -201,7 +203,7 @@ namespace IodemBot.Modules.ColossoBattles
         }
 
         [Command("dungeon")]
-        [RequireStaff]
+        [Summary("Prepare a channel for an adventure to a specified dungeon")]
         [RequireUserServer]
         public async Task Dungeon([Remainder] string DungeonName)
         { _ = SetupDungeon(DungeonName, false); await Task.CompletedTask; }
@@ -242,6 +244,15 @@ namespace IodemBot.Modules.ColossoBattles
             {
                 await Context.Channel.SendMessageAsync(a.GetStatus());
             }
+        }
+
+        [Command("train")]
+        [Cooldown(15)]
+        [Summary("Prove your strength by battling a random opponent in Colosso")]
+        [RequireUserServer]
+        public async Task ColossoTrain()
+        {
+            await ReplyAsync(embed:Colosso.ColossoTrain((SocketGuildUser)Context.User, Context.Channel));
         }
 
         private async Task<ITextChannel> PrepareBattleChannel(string Name, RoomVisibility visibility = RoomVisibility.All)

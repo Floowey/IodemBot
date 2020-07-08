@@ -27,14 +27,15 @@ namespace IodemBot.Modules
         //public enum Element { Venus, Mars, Jupiter, Mercury, None }
 
         [Command("awardClassSeries")]
-        [Remarks("Awards a given Class Series to a User")]
-        [RequireUserPermission(GuildPermission.ManageGuild)]
+        [Summary("Awards a given Class Series to a User")]
+        [RequireModerator]
         public async Task AwardSeries(SocketGuildUser user, [Remainder] string series)
         {
             await AwardClassSeries(series, user, (SocketTextChannel)Context.Channel);
         }
 
         [Command("classInfo"), Alias("ci")]
+        [Summary("Show information about a class")]
         public async Task ClassInfo([Remainder] string name = "")
         {
             if (name == "")
@@ -65,7 +66,7 @@ namespace IodemBot.Modules
         }
 
         [Command("class")]
-        [Remarks("Assign yourself to a class of your current element, or toggle through your available list.")]
+        [Summary("Assign yourself to a class of your current element, or toggle through your available list.")]
         [Cooldown(2)]
         public async Task ClassToggle([Remainder] string name = "")
         {
@@ -106,7 +107,7 @@ namespace IodemBot.Modules
 
         [Command("xp"), Alias("level")]
         [Cooldown(5)]
-        [Remarks("Get information about your level etc")]
+        [Summary("See xp for your next level")]
         public async Task Xp()
         {
             var user = (SocketGuildUser)Context.User;
@@ -126,7 +127,7 @@ namespace IodemBot.Modules
 
         [Command("status")]
         [Cooldown(5)]
-        [Remarks("Get information about your level etc")]
+        [Summary("Get information about your level and more")]
         public async Task Status([Remainder] SocketUser user = null)
         {
             user ??= Context.User;
@@ -187,7 +188,6 @@ namespace IodemBot.Modules
         [Command("hiddenstats"), Alias("tri")]
         [Cooldown(5)]
         [RequireStaff]
-        [Remarks("Hidden Information on Tri-Elemental Classes")]
         public async Task Tri([Remainder] SocketGuildUser user = null)
         {
             user ??= (SocketGuildUser)Context.User;
@@ -216,7 +216,7 @@ namespace IodemBot.Modules
         }
 
         [Command("Dungeons")]
-        [Remarks("Shows the dungeons you have found so far")]
+        [Summary("Shows the dungeons you have discovered so far")]
         [Cooldown(5)]
         public async Task ListDungeons()
         {
@@ -258,7 +258,8 @@ namespace IodemBot.Modules
 
         [Command("element"), Alias("el")]
         [RequireUserServer]
-        [Remarks("Set your Element to one of the four with e.g. `i!element Venus`")]
+        [Summary("Set your Element to one of the four. Add a class to immediately change into it, if possible")]
+        [Remarks("`i!element Venus`, `i!element Mars Brute`")]
         [Cooldown(5)]
         public async Task ChooseElement(Element chosenElement, [Remainder] string classSeriesName = null)
         {
@@ -315,7 +316,7 @@ namespace IodemBot.Modules
 
         [Command("MoveInfo")]
         [Alias("Psynergy", "PsynergyInfo", "psy")]
-        [Remarks("Get information on moves and psynergies")]
+        [Summary("Get information on moves and psynergies")]
         public async Task MoveInfo([Remainder] string name = "")
         {
             if (name == "")
@@ -357,7 +358,7 @@ namespace IodemBot.Modules
 
         [Command("rndElement"), Alias("rndEl", "randElement")]
         [Cooldown(10)]
-        [Remarks("Get a random Element (Use `i!element` to assign one, however)")]
+        [Summary("Get a random Element (Use `i!element` to assign one, however)")]
         public async Task RandomElement()
         {
             var embed = new EmbedBuilder();
@@ -400,15 +401,15 @@ namespace IodemBot.Modules
         }
 
         [Command("removeClassSeries")]
-        [Remarks("Remove a given Class Series from a User")]
-        [RequireUserPermission(GuildPermission.ManageGuild)]
+        [Summary("Remove a given Class Series from a User")]
+        [RequireModerator]
         public async Task RemoveSeries(SocketGuildUser user, [Remainder] string series)
         {
             await RemoveClassSeries(series, user, (SocketTextChannel)Context.Channel);
         }
 
         [Command("newgame+")]
-        [Remarks("Reset and start a new game. Careful, your progress will be lost!")]
+        [Summary("Reset and start a new game. Careful, your progress will be lost!")]
         public async Task NewGamePlus()
         {
             _ = NewGamePlusTask();
@@ -437,29 +438,7 @@ namespace IodemBot.Modules
             await Status();
         }
 
-        [Command("sprite"), Alias("portrait")]
-        [Remarks("Get a random sprite or one of a given Character")]
-        [Cooldown(5)]
-        public async Task Sprite([Remainder] string name = "")
-        {
-            var embed = new EmbedBuilder();
-            embed.WithColor(Colors.Get("Iodem"));
-
-            if (Sprites.GetSpriteCount() == 0)
-            {
-                embed.WithDescription(Utilities.GetAlert("no_sprites"));
-            }
-            else if (name == "")
-            {
-                embed.WithImageUrl(Sprites.GetRandomSprite());
-            }
-            else
-            {
-                embed.WithImageUrl(Sprites.GetImageFromName(name));
-            }
-
-            await Context.Channel.SendMessageAsync("", false, embed.Build());
-        }
+        
 
         internal static async Task AwardClassSeries(string series, SocketUser user, IMessageChannel channel)
         {

@@ -1,4 +1,5 @@
-﻿using IodemBot.Modules.ColossoBattles;
+﻿using IodemBot.Extensions;
+using IodemBot.Modules.ColossoBattles;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
     public class Djinn : Move
     {
         [JsonProperty] private Move Move { get; set; }
-        public override string Name { get => Nickname == "" || Nickname == null ? Djinnname : Nickname; }
+        public override string Name { get => Nickname.IsNullOrEmpty() ? Djinnname : Nickname; }
         public string Nickname { get; set; } = "";
         public string Djinnname { get; set; } = "";
         [JsonIgnore] public override string Emote { get => Sprite; set => Move.Emote = value; }

@@ -1,4 +1,5 @@
 ﻿using Discord;
+using IodemBot.Extensions;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -24,10 +25,22 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public static readonly ItemCategory[] Equippables = new[] { ItemCategory.Weapon, ItemCategory.ArmWear, ItemCategory.ChestWear, ItemCategory.HeadWear, ItemCategory.UnderWear, ItemCategory.FootWear, ItemCategory.Accessoire };
 
-        public string Name { get; set; }
-        internal string NameAndBroken { get { return $"{Name}{(IsBroken ? "(B)" : "")}"; } }
+        public string Name { get { return Nickname.IsNullOrEmpty() ? Itemname : Nickname; } set { Itemname = value; } }
+
+        public string Nickname { get; set; }
+        public string Itemname { get; set; }
+
+        internal string NameToSerialize { get { return $"{Itemname}{(IsAnimated ? "(A)" : "")}{(IsBroken ? "(B)" : "")}{(!Nickname.IsNullOrEmpty() ? $"|{Nickname}" : "")}"; } }
         public string IconDisplay { get { return $"{(IsBroken ? "(" : "")}{Icon}{(IsBroken ? ")" : "")}"; } }
-        public string Icon { get; set; }
+        public string Icon { get { return IsAnimated ? AnimatedIcon : NormalIcon; } set { NormalIcon = value; } }
+
+        public string NormalIcon { get; set; }
+        public string AnimatedIcon { get; set; }
+        [JsonIgnore] internal bool IsAnimated = false;
+        [JsonIgnore] internal bool CanBeAnimated { get { return !IsAnimated && !AnimatedIcon.IsNullOrEmpty(); } }
+        
+        public string Sprite { get { return IsAnimated ? AnimatedIcon : Icon; } }
+        
         public uint Price { get; set; }
 
         public ItemRarity Rarity { get; set; }

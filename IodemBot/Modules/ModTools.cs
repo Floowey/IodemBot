@@ -98,6 +98,7 @@ namespace IodemBot.Modules
         }
 
         [Command("CleanupTags")]
+        [RequireModerator]
         public async Task CleanupTags(SocketGuildUser user)
         {
             var avatar = UserAccounts.GetAccount(user);

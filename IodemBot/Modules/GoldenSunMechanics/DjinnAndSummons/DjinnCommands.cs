@@ -10,10 +10,11 @@ using System.Threading.Tasks;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
+    [Name("Djinn and Summon")]
     public class DjinnCommands : ModuleBase<SocketCommandContext>
     {
         [Command("djinninfo"), Alias("di")]
-        [Remarks("Shows information about the specified djinn")]
+        [Summary("Shows information about the specified djinn")]
         [Cooldown(5)]
         public async Task DjinnInfo([Remainder] string name = "")
         {
@@ -45,7 +46,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         }
 
         [Command("summoninfo"), Alias("si")]
-        [Remarks("Shows information about the specified summon")]
+        [Summary("Shows information about the specified summon")]
         [Cooldown(5)]
         public async Task SummonInfo([Remainder] string name = "")
         {
@@ -88,7 +89,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         }
 
         [Command("Djinn")]
-        [Remarks("Displays your Djinn pocket")]
+        [Summary("Displays your Djinn pocket")]
         public async Task DjinnInv(DjinnDetail detail = DjinnDetail.None)
         {
             var djinnPocket = UserAccounts.GetAccount(Context.User).DjinnPocket;
@@ -118,7 +119,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         }
 
         [Command("UpgradeDjinn")]
-        [Remarks("Increase the size of your djinn pocket by two slots.")]
+        [Summary("Increase the size of your djinn pocket by two slots.")]
         public async Task DjinnUpgrade()
         {
             var acc = UserAccounts.GetAccount(Context.User);
@@ -139,7 +140,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
         }
 
         [Command("Djinn Take")]
-        [Remarks("Take up to two specified djinn on your journey (e.g. 'i!Djinn Take Flint Echo`")]
+        [Summary("Take up to two specified djinn on your journey")]
+        [Remarks("`i!Djinn Take Flint Echo`")]
         public async Task TakeDjinn(params string[] Names)
         {
             if (Names.Count() == 0)
@@ -185,6 +187,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         }
 
         [Command("Djinn Release")]
+        [Summary("Say goodbye to a djinn.")]
         public async Task ReleaseDjinn(string DjinnName)
         {
             _ = ReleaseDjinnHidden(DjinnName);
@@ -212,9 +215,20 @@ namespace IodemBot.Modules.GoldenSunMechanics
             }
         }
 
-        [Command("Djinn Nickname")]
-        public async Task NicknameDjinn(string DjinnName, string Nickname = "")
+        [Command("Djinn Rename")]
+        [Alias("Djinn Nickname")]
+        [Summary("Rename one of your djinn.")]
+        [Remarks("`i!djinn rename Echo, YODEL Yodel yodel`")]
+        public async Task NicknameDjinn([Remainder] string djinnandnewname)
         {
+            var DjinnName = djinnandnewname;
+            var newname = "";
+            if (djinnandnewname.Contains(','))
+            {
+                DjinnName = djinnandnewname.Split(',')[0].Trim();
+                newname = djinnandnewname.Split(',')[1].Trim();
+            }
+
             var userDjinn = UserAccounts.GetAccount(Context.User).DjinnPocket;
             var chosenDjinn = userDjinn.djinn
                 .Where(d => DjinnName.Equals(d.Djinnname, StringComparison.CurrentCultureIgnoreCase) || DjinnName.Equals(d.Nickname, StringComparison.CurrentCultureIgnoreCase))
@@ -224,7 +238,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 return;
             }
 
-            chosenDjinn.Nickname = Nickname;
+            chosenDjinn.Nickname = newname;
             chosenDjinn.UpdateMove();
             await DjinnInv(DjinnDetail.Names);
         }

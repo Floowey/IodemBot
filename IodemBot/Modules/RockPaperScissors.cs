@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace IodemBot.Modules
 {
+    [Name("Literally random things")]
     public class RockPaperScissors : ModuleBase<SocketCommandContext>
     {
         [Command("coin"), Alias("coinflip")]
@@ -24,7 +25,7 @@ namespace IodemBot.Modules
 
         [Command("dice"), Alias("d")]
         [Cooldown(4)]
-        [Remarks("Roll a n-sided dice!")]
+        [Remarks("Roll an n-sided dice!")]
         public async Task Dice([Remainder] uint sides = 6)
         {
             var embed = new EmbedBuilder()
@@ -68,7 +69,7 @@ namespace IodemBot.Modules
             embed.WithColor(Colors.Get("Iodem"));
             embed.WithDescription($"{emotesPlayer[(int)choice]} vs {emotesCPU[(int)cpuChoice]}");
             embed.AddField("Result:", result);
-
+            
             await Context.Channel.SendMessageAsync("", false, embed.Build());
         }
     }

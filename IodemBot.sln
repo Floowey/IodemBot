@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30225.117
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IodemBot", "IodemBot\IodemBot.csproj", "{29D59726-FF98-44F0-A8C7-96A022CF5D21}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IodemBotWebApp", "IodemBotWebApp\IodemBotWebApp.csproj", "{43456A10-D76C-419E-8E0B-080FB240FF22}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IodemBotWebApp", "IodemBotWebApp\IodemBotWebApp.csproj", "{43456A10-D76C-419E-8E0B-080FB240FF22}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

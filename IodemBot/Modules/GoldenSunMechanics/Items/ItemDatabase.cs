@@ -148,10 +148,16 @@ namespace IodemBot.Modules.GoldenSunMechanics
             var isAnimated = itemName.Contains("(A)");
             var hasName = itemName.Contains("|");
 
-            itemName = isBroken ? itemName[0..^3] : itemName;
-            if (itemsDatabase.TryGetValue(itemName, out Item item))
+            var justName = (isBroken || isAnimated ||hasName) ? string.Concat(itemName.TakeWhile(c => !(c == '(' || c == '|'))) : itemName;
+
+            if (itemsDatabase.TryGetValue(justName, out Item item))
             {
                 var i = (Item)item.Clone();
+                if (hasName)
+                {
+                    i.Nickname = string.Concat(itemName.SkipWhile(c => !c.Equals('|'))).Substring(1);
+                }
+                i.IsAnimated = isAnimated;
                 i.IsBroken = isBroken;
                 return i;
             }

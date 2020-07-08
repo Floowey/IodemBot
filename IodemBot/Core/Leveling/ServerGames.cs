@@ -13,7 +13,7 @@ namespace IodemBot.Core.Leveling
 {
     internal static class ServerGames
     {
-        internal static async void UserWonColosso(SocketGuildUser user, SocketTextChannel channel)
+        internal static async void UserWonColosso(SocketGuildUser user, IMessageChannel channel)
         {
             var userAccount = UserAccounts.GetAccount(user);
             uint oldLevel = userAccount.LevelNumber;
@@ -40,7 +40,7 @@ namespace IodemBot.Core.Leveling
             await Task.CompletedTask;
         }
 
-        internal static async void UserLostColosso(SocketGuildUser user, SocketTextChannel channel)
+        internal static async void UserLostColosso(SocketGuildUser user, IMessageChannel channel)
         {
             var userAccount = UserAccounts.GetAccount(user);
             uint oldLevel = userAccount.LevelNumber;
