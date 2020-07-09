@@ -1,11 +1,11 @@
-﻿using Discord;
-using IodemBot.Extensions;
-using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using Discord;
+using IodemBot.Extensions;
+using Newtonsoft.Json;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
@@ -38,9 +38,9 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public string AnimatedIcon { get; set; }
         [JsonIgnore] internal bool IsAnimated = false;
         [JsonIgnore] internal bool CanBeAnimated { get { return !IsAnimated && !AnimatedIcon.IsNullOrEmpty(); } }
-        
+
         public string Sprite { get { return IsAnimated ? AnimatedIcon : Icon; } }
-        
+
         public uint Price { get; set; }
 
         public ItemRarity Rarity { get; set; }

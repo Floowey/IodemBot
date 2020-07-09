@@ -1,10 +1,10 @@
-﻿using Discord;
-using Discord.WebSocket;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Timers;
+using Discord;
+using Discord.WebSocket;
 using TwitchLib.Api;
 using TwitchLib.Api.Helix.Models.Streams;
 

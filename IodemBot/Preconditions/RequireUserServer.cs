@@ -1,7 +1,7 @@
-﻿using Discord.Commands;
-using IodemBot.Core;
-using System;
+﻿using System;
 using System.Threading.Tasks;
+using Discord.Commands;
+using IodemBot.Core;
 
 namespace Iodembot.Preconditions
 {

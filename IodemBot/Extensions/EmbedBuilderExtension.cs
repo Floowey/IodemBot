@@ -1,5 +1,5 @@
-﻿using Discord;
-using System.Linq;
+﻿using System.Linq;
+using Discord;
 
 namespace IodemBot.Extensions
 {

@@ -1,11 +1,11 @@
-﻿using IodemBot.Core.UserManagement;
-using IodemBot.Extensions;
-using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
+using IodemBot.Core.UserManagement;
+using IodemBot.Extensions;
+using Newtonsoft.Json;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
@@ -93,7 +93,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         {
             Inv = ItemDatabase.GetItems(InvString);
             WarriorGear = new List<Item>();
-            foreach(var warriorgear in WarriorGearString.Distinct())
+            foreach (var warriorgear in WarriorGearString.Distinct())
             {
                 Equip(warriorgear, ArchType.Warrior);
             }
@@ -273,7 +273,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 return false;
             }
             var it = GetItem(item);
-           
+
 
             if (!RemoveBalance(it.SellValue))
             {
@@ -327,7 +327,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 return false;
             }
 
-            var i = GetItem(item); 
+            var i = GetItem(item);
             if (!i.IsEquippable)
             {
                 return false;
@@ -391,8 +391,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public bool Unequip(string item)
         {
             var it = GetItem(item);
-            if (!WarriorGear.Any(i => i.Name.Equals(it.Name, StringComparison.CurrentCultureIgnoreCase)) &&
-            !MageGear.Any(i => i.Name.Equals(it.Name, StringComparison.CurrentCultureIgnoreCase)))
+            if (item == null || (!WarriorGear.Any(i => i.Name.Equals(it.Name, StringComparison.CurrentCultureIgnoreCase)) &&
+            !MageGear.Any(i => i.Name.Equals(it.Name, StringComparison.CurrentCultureIgnoreCase))))
             {
                 return false;
             }

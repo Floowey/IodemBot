@@ -1,10 +1,10 @@
-﻿using Discord;
-using Discord.Commands;
-using Iodembot.Preconditions;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Discord;
+using Discord.Commands;
+using Iodembot.Preconditions;
 
 namespace IodemBot.Modules
 {
@@ -108,7 +108,7 @@ namespace IodemBot.Modules
                 var cmd = match.Command;
                 var parameters = cmd.Parameters.Select(p => string.IsNullOrEmpty(p.Summary) ? p.Name : p.Summary);
                 var paramsString = $"Parameters: {string.Join(", ", parameters)}" +
-                                   (string.IsNullOrEmpty(cmd.Summary) ? "" : $"\nSummary: {cmd.Summary}")+
+                                   (string.IsNullOrEmpty(cmd.Summary) ? "" : $"\nSummary: {cmd.Summary}") +
                                    (string.IsNullOrEmpty(cmd.Remarks) ? "" : $"\nRemarks: {cmd.Remarks}");
 
                 builder.AddField(x =>

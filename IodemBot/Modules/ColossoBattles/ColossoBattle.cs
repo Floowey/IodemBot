@@ -1,7 +1,7 @@
-﻿using IodemBot.Core.UserManagement;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using IodemBot.Core.UserManagement;
 
 namespace IodemBot.Modules.ColossoBattles
 {
@@ -106,7 +106,7 @@ namespace IodemBot.Modules.ColossoBattles
             {
                 return;
             }
-            
+
             if (TeamA.Any(p => p.ImgUrl != "" && p.ImgUrl == player.ImgUrl))
             {
                 return;
@@ -211,7 +211,7 @@ namespace IodemBot.Modules.ColossoBattles
             fighters.ForEach(f => { turnLog.AddRange(f.StartTurn()); });
             return turnLog;
         }
-        
+
         private List<string> MainTurn()
         {
             List<string> turnLog = new List<string>();

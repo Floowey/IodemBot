@@ -1,7 +1,7 @@
-﻿using IodemBot.Modules.ColossoBattles;
-using IodemBot.Modules.GoldenSunMechanics;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using IodemBot.Modules.ColossoBattles;
+using IodemBot.Modules.GoldenSunMechanics;
 
 namespace IodemBot.Extensions
 {

@@ -1,10 +1,10 @@
-﻿using IodemBot.Extensions;
-using IodemBot.Modules.GoldenSunMechanics.RewardSystem;
-using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using IodemBot.Extensions;
+using IodemBot.Modules.GoldenSunMechanics.RewardSystem;
+using Newtonsoft.Json;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
@@ -102,12 +102,12 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 )
             );
             shop.Add(GetRandomItem(new RewardGenerator<ItemRarity>(new[]
-                { ItemRarity.Rare, ItemRarity.Legendary, ItemRarity.Mythical}, new[] {75, 24, 1}).GenerateReward()
+                { ItemRarity.Rare, ItemRarity.Legendary, ItemRarity.Mythical}, new[] { 75, 24, 1 }).GenerateReward()
                 )
             );
             //shop.Add(GetRandomItem(8, RandomItemType.NonArtifact));
             //shop.Add(GetRandomItem(12, RandomItemType.NonArtifact));
-            ////shop.Add(GetRandomItem(18, RandomItemType.NonArtifact));
+            ////shop.Add(GetRandomItem98(18, RandomItemType.NonArtifact));
 
             //shop.Add(GetRandomItem(25, RandomItemType.Any));
             ////shop.Add(GetRandomItem(28, 0, RandomItemType.Any));
@@ -148,7 +148,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             var isAnimated = itemName.Contains("(A)");
             var hasName = itemName.Contains("|");
 
-            var justName = (isBroken || isAnimated ||hasName) ? string.Concat(itemName.TakeWhile(c => !(c == '(' || c == '|'))) : itemName;
+            var justName = (isBroken || isAnimated || hasName) ? string.Concat(itemName.TakeWhile(c => !(c == '(' || c == '|'))) : itemName;
 
             if (itemsDatabase.TryGetValue(justName, out Item item))
             {

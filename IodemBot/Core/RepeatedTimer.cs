@@ -1,6 +1,6 @@
-﻿using Discord.WebSocket;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using System.Timers;
+using Discord.WebSocket;
 
 namespace IodemBot.Core
 {

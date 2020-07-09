@@ -1,5 +1,5 @@
-﻿using IodemBot.Core.UserManagement;
-using System;
+﻿using System;
+using IodemBot.Core.UserManagement;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {

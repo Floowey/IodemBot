@@ -1,16 +1,6 @@
-﻿using Discord;
-using Discord.Commands;
-using Discord.WebSocket;
-using Iodembot.Preconditions;
-using IodemBot.Core.Leveling;
-using IodemBot.Core.UserManagement;
-using IodemBot.Extensions;
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace IodemBot.Modules
 {

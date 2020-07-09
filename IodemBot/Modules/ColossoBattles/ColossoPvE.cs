@@ -1,4 +1,8 @@
-﻿using Discord;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
 using Iodembot.Preconditions;
@@ -6,10 +10,6 @@ using IodemBot.Core;
 using IodemBot.Core.UserManagement;
 using IodemBot.Extensions;
 using IodemBot.Modules.GoldenSunMechanics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace IodemBot.Modules.ColossoBattles
 {
@@ -115,14 +115,14 @@ namespace IodemBot.Modules.ColossoBattles
                     .Select(
                         r => 1.0 / (1 - (
                             r.Where(
-                                k => 
-                                k is DefaultReward dr 
-                                && dr.Djinn !=""
+                                k =>
+                                k is DefaultReward dr
+                                && dr.Djinn != ""
                                 && dr.RequireTag.All(t => avatar.Tags.Contains(t))
                                 && (dr.Obtainable == 0 || avatar.Tags.Count(t => t.Equals(dr.Tag)) < dr.Obtainable)
                             )
-                            .Select(r => r.Weight).Sum() 
-                            / (double) r.Select(d => d.Weight).Sum()
+                            .Select(r => r.Weight).Sum()
+                            / (double)r.Select(d => d.Weight).Sum()
                             )
                         )
                     )
@@ -135,7 +135,7 @@ namespace IodemBot.Modules.ColossoBattles
                     .WithThumbnailUrl(dungeon.Image)
                     .AddField("Info", $"{(dungeon.IsDefault ? "Default " : "")}{(dungeon.IsOneTimeOnly ? "<:dungeonkey:606237382047694919> Dungeon" : "<:mapopen:606236181503410176> Town")} for up to {dungeon.MaxPlayer} {(dungeon.MaxPlayer == 1 ? "player" : "players")}. {dungeon.Matchups.Count()} stages.")
                     .AddField("Requirement", $"{dungeon.Requirement.GetDescription()}")
-                    .AddField("Djinn", $"{(djinnTotal.Count() > 0 ? $"{djinnobtained}/{limittedDjinn.Sum(d => d.Obtainable)}{(unlimittedDjinn.Count() > 0 ? "+" : "")} ({probability*100:N0}% success rate)" : "none")}")
+                    .AddField("Djinn", $"{(djinnTotal.Count() > 0 ? $"{djinnobtained}/{limittedDjinn.Sum(d => d.Obtainable)}{(unlimittedDjinn.Count() > 0 ? "+" : "")} ({probability * 100:N0}% success rate)" : "none")}")
                     .Build());
                 await Task.CompletedTask;
             }
@@ -224,7 +224,7 @@ namespace IodemBot.Modules.ColossoBattles
 
         [Command("givedungeon")]
         [RequireStaff]
-        public async Task GiveDungeon(SocketGuildUser user, [Remainder]string dungeonName)
+        public async Task GiveDungeon(SocketGuildUser user, [Remainder] string dungeonName)
         {
             if (EnemiesDatabase.TryGetDungeon(dungeonName, out var dungeon))
             {
@@ -252,7 +252,7 @@ namespace IodemBot.Modules.ColossoBattles
         [RequireUserServer]
         public async Task ColossoTrain()
         {
-            await ReplyAsync(embed:Colosso.ColossoTrain((SocketGuildUser)Context.User, Context.Channel));
+            await ReplyAsync(embed: Colosso.ColossoTrain((SocketGuildUser)Context.User, Context.Channel));
         }
 
         private async Task<ITextChannel> PrepareBattleChannel(string Name, RoomVisibility visibility = RoomVisibility.All)

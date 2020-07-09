@@ -1,8 +1,8 @@
-﻿using IodemBot.Core.UserManagement;
+﻿using System;
+using System.Collections.Generic;
+using IodemBot.Core.UserManagement;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using System;
-using System.Collections.Generic;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {

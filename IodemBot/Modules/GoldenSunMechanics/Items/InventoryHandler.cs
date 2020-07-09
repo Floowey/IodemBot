@@ -1,15 +1,14 @@
-﻿using Discord;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
 using Iodembot.Preconditions;
 using IodemBot.Core.UserManagement;
 using IodemBot.Extensions;
 using IodemBot.Modules.ColossoBattles;
-using IodemBot.Modules.GoldenSunMechanics.RewardSystem;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
@@ -223,7 +222,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 await Context.Channel.SendMessageAsync("", false, embed.Build());
             }
         }
-        
+
 
         [Command("Sell")]
         [Summary("Sell an unequipped item from your inventory")]
@@ -287,7 +286,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
             var embed = new EmbedBuilder();
             var it = inv.GetItem(item);
-            if(it != null && inv.Remove(item))
+            if (it != null && inv.Remove(item))
             {
                 var maxdist = p.Stats.Atk * Math.Sqrt(p.Stats.Spd) / Math.Log(Math.Max(it.Price / 2, 2)) / 6;
                 var level = Math.Min(avatar.LevelNumber, 100);
@@ -393,7 +392,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
             {
                 var value = user.LevelNumber;
                 itemName = ItemDatabase.GetRandomItem(value, (value >= 40) ? RandomItemType.Artifact : RandomItemType.Any);
-            } else
+            }
+            else
             {
                 var rarity = ItemDatabase.ChestValues[cq].GenerateReward();
                 itemName = ItemDatabase.GetRandomItem(rarity);

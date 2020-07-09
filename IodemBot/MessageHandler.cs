@@ -1,13 +1,13 @@
-﻿using Discord;
-using Discord.Commands;
-using Discord.WebSocket;
-using IodemBot.Core.Leveling;
-using IodemBot.Core.UserManagement;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using Discord;
+using Discord.Commands;
+using Discord.WebSocket;
+using IodemBot.Core.Leveling;
+using IodemBot.Core.UserManagement;
 
 namespace IodemBot
 {
@@ -102,7 +102,8 @@ namespace IodemBot
                     Leveling.UserSentMessage(guildUser, (SocketTextChannel)context.Channel);
                 }
             }
-            catch (Exception e) {
+            catch (Exception e)
+            {
                 Console.WriteLine("UserSentMessage Error" + e);
                 File.WriteAllText("Logs/MessageError_" + Global.DateString + ".txt", e.ToString());
             }

@@ -1,11 +1,10 @@
-﻿using Discord;
+﻿using System;
+using System.Linq;
+using System.Threading.Tasks;
+using Discord;
 using Discord.WebSocket;
 using IodemBot.Core.UserManagement;
 using IodemBot.Modules;
-using System;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace IodemBot.Core.Leveling
 {

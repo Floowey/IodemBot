@@ -1,10 +1,9 @@
-﻿using Discord;
+﻿using System.Threading.Tasks;
+using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
 using Iodembot.Preconditions;
 using IodemBot.Core.UserManagement;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace IodemBot.Modules
 {

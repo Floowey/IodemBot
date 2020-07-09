@@ -1,6 +1,6 @@
-﻿using IodemBot.Modules.ColossoBattles;
+﻿using System.Collections.Generic;
+using IodemBot.Modules.ColossoBattles;
 using Newtonsoft.Json;
-using System.Collections.Generic;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
@@ -23,7 +23,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 {
                     User.offensiveMult *= Multipliers[i];
                     return new List<string>();
-                } else
+                }
+                else
                 {
                     System.Console.WriteLine(i);
                 }

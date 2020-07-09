@@ -1,7 +1,7 @@
-﻿using Discord.WebSocket;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Discord.WebSocket;
 
 namespace IodemBot.Core.UserManagement
 {

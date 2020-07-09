@@ -1,4 +1,8 @@
-﻿using Discord;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
 using Iodembot.Preconditions;
@@ -8,10 +12,6 @@ using IodemBot.Extensions;
 using IodemBot.Modules.ColossoBattles;
 using IodemBot.Modules.GoldenSunMechanics;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace IodemBot.Modules
 {
@@ -158,7 +158,7 @@ namespace IodemBot.Modules
             .AddField("Stats", p.Stats.ToString(), true)
             .AddField("Elemental Stats", p.ElStats.ToString(), true)
             .AddField("Unlocked Classes", account.BonusClasses.Count == 0 ? "none" : string.Join(", ", account.BonusClasses));
-            
+
             if (user is SocketGuildUser socketGuildUser)
             {
                 var Footer = new EmbedFooterBuilder();
@@ -438,7 +438,7 @@ namespace IodemBot.Modules
             await Status();
         }
 
-        
+
 
         internal static async Task AwardClassSeries(string series, SocketUser user, IMessageChannel channel)
         {

@@ -1,11 +1,10 @@
-﻿using Discord;
+﻿using System;
+using System.Threading.Tasks;
+using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
 using Iodembot.Preconditions;
 using IodemBot.Core.Leveling;
-using IodemBot.Core.UserManagement;
-using System;
-using System.Threading.Tasks;
 
 namespace IodemBot.Modules
 {
@@ -69,7 +68,7 @@ namespace IodemBot.Modules
             embed.WithColor(Colors.Get("Iodem"));
             embed.WithDescription($"{emotesPlayer[(int)choice]} vs {emotesCPU[(int)cpuChoice]}");
             embed.AddField("Result:", result);
-            
+
             await Context.Channel.SendMessageAsync("", false, embed.Build());
         }
     }

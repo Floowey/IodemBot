@@ -1,5 +1,5 @@
-﻿using Discord.WebSocket;
-using System;
+﻿using System;
+using Discord.WebSocket;
 
 namespace IodemBot
 {

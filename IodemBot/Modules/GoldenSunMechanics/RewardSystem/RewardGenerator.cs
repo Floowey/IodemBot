@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using TwitchLib.Api.Core.Enums;
 
 namespace IodemBot.Modules.GoldenSunMechanics.RewardSystem
 {
@@ -12,11 +9,11 @@ namespace IodemBot.Modules.GoldenSunMechanics.RewardSystem
         readonly List<Reward> Rewards = new List<Reward>();
         public RewardGenerator(IEnumerable<T> rewards, IEnumerable<int> weights)
         {
-            if(rewards.Count() != weights.Count())
+            if (rewards.Count() != weights.Count())
             {
                 throw new ArgumentException("Length of rewards and weights must match up.");
             }
-            for(int i = 0; i < rewards.Count(); i++)
+            for (int i = 0; i < rewards.Count(); i++)
             {
                 AddReward(rewards.ElementAt(i), weights.ElementAt(i));
             }
@@ -43,7 +40,8 @@ namespace IodemBot.Modules.GoldenSunMechanics.RewardSystem
             return reward;
         }
 
-        private struct Reward {
+        private struct Reward
+        {
             internal T reward;
             internal int weight;
 

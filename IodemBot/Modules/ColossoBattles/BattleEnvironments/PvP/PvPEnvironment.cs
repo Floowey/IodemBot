@@ -1,15 +1,15 @@
-﻿using Discord;
-using Discord.WebSocket;
-using IodemBot.Core.Leveling;
-using IodemBot.Core.UserManagement;
-using IodemBot.Extensions;
-using IodemBot.Modules.GoldenSunMechanics;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Timers;
+using Discord;
+using Discord.WebSocket;
+using IodemBot.Core.Leveling;
+using IodemBot.Core.UserManagement;
+using IodemBot.Extensions;
+using IodemBot.Modules.GoldenSunMechanics;
 
 namespace IodemBot.Modules.ColossoBattles
 {
@@ -299,7 +299,7 @@ namespace IodemBot.Modules.ColossoBattles
                         {
                         }
                     }
-                    
+
                     if (!curPlayer.Select(reaction.Emote))
                     {
                         _ = c.RemoveReactionAsync(reaction.Emote, reaction.User.Value);

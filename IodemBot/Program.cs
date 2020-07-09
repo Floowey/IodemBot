@@ -1,10 +1,10 @@
-﻿using Discord;
+﻿using System;
+using System.IO;
+using System.Threading.Tasks;
+using Discord;
 using Discord.WebSocket;
 using IodemBot.Core;
 using IodemBot.Extensions;
-using System;
-using System.IO;
-using System.Threading.Tasks;
 
 namespace IodemBot
 {

@@ -1,11 +1,11 @@
-﻿using IodemBot.Core.UserManagement;
-using IodemBot.Extensions;
-using IodemBot.Modules.GoldenSunMechanics;
-using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using IodemBot.Core.UserManagement;
+using IodemBot.Extensions;
+using IodemBot.Modules.GoldenSunMechanics;
+using Newtonsoft.Json;
 
 namespace IodemBot.Modules.ColossoBattles
 {

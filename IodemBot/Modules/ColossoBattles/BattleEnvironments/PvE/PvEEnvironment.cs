@@ -1,15 +1,15 @@
-﻿using Discord;
-using Discord.Net;
-using Discord.WebSocket;
-using IodemBot.Core.UserManagement;
-using IodemBot.Extensions;
-using IodemBot.Modules.GoldenSunMechanics;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Timers;
+using Discord;
+using Discord.Net;
+using Discord.WebSocket;
+using IodemBot.Core.UserManagement;
+using IodemBot.Extensions;
+using IodemBot.Modules.GoldenSunMechanics;
 
 namespace IodemBot.Modules.ColossoBattles
 {

@@ -1,13 +1,13 @@
-﻿using Discord;
+﻿using System;
+using System.Linq;
+using System.Threading.Tasks;
+using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
 using Iodembot.Preconditions;
 using IodemBot.Core.UserManagement;
 using IodemBot.Extensions;
 using IodemBot.Modules.ColossoBattles;
-using System;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace IodemBot.Modules
 {
@@ -136,14 +136,14 @@ namespace IodemBot.Modules
         public async Task Emotes()
         {
             var s = string.Join("\n", Context.Guild.Emotes.OrderBy(d => d.Name).Select(e => $"{e} \\<{(e.Animated ? "a" : "")}:{e.Name}:{e.Id}>"));
-            while(s.Length > 2000)
+            while (s.Length > 2000)
             {
                 await Context.Channel.SendMessageAsync(s.Substring(0, 2000));
                 s = s.Substring(2000);
             }
-            
+
             await Context.Channel.SendMessageAsync(s);
-           
+
         }
     }
 }

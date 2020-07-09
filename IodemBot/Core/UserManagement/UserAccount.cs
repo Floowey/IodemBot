@@ -1,8 +1,7 @@
-﻿using Accord.Statistics.Testing;
+﻿using System;
+using System.Collections.Generic;
 using IodemBot.Modules.GoldenSunMechanics;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
 
 namespace IodemBot.Core.UserManagement
 {
