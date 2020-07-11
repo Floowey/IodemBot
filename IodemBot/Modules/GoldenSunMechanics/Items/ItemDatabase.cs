@@ -95,8 +95,11 @@ namespace IodemBot.Modules.GoldenSunMechanics
             shop.Clear();
             shop.Add(GetRandomItem(ItemRarity.Common));
             shop.Add(GetRandomItem(ItemRarity.Common));
-            shop.Add(GetRandomItem(ItemRarity.Common));
             shop.Add(GetRandomItem(ItemRarity.Uncommon));
+            shop.Add(GetRandomItem(new RewardGenerator<ItemRarity>(new[]
+                { ItemRarity.Uncommon, ItemRarity.Rare, ItemRarity.Legendary}, new[] { 60, 35, 5 }).GenerateReward()
+                )
+            );
             shop.Add(GetRandomItem(new RewardGenerator<ItemRarity>(new[]
                 { ItemRarity.Uncommon, ItemRarity.Rare, ItemRarity.Legendary}, new[] { 60, 35, 5 }).GenerateReward()
                 )

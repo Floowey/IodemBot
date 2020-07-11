@@ -69,6 +69,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
         [JsonProperty]
         private DateTime lastDailyChest;
 
+        [JsonProperty] public int dailiesInARow = 0;
+
         [JsonIgnore]
         private List<Item> WarriorGear { get; set; } = new List<Item>();
 
@@ -156,8 +158,15 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         private void CheckDaily()
         {
-            if (lastDailyChest.Date != DateTime.Now.Date && chests[ChestQuality.Daily] == 0)
+            if (lastDailyChest.Date < DateTime.Now.Date && chests[ChestQuality.Daily] == 0)
             {
+                if((DateTime.Now.Date - lastDailyChest.Date).TotalDays <= 1)
+                {
+                    dailiesInARow++;
+                } else
+                {
+                    dailiesInARow = 1;
+                }
                 AwardChest(ChestQuality.Daily);
                 lastDailyChest = DateTime.Now;
             }
@@ -391,7 +400,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public bool Unequip(string item)
         {
             var it = GetItem(item);
-            if (item == null || (!WarriorGear.Any(i => i.Name.Equals(it.Name, StringComparison.CurrentCultureIgnoreCase)) &&
+            if (it == null || (!WarriorGear.Any(i => i.Name.Equals(it.Name, StringComparison.CurrentCultureIgnoreCase)) &&
             !MageGear.Any(i => i.Name.Equals(it.Name, StringComparison.CurrentCultureIgnoreCase))))
             {
                 return false;

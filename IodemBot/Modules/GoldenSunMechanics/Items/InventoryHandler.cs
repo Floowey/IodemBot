@@ -388,10 +388,11 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 return;
             }
             var itemName = "";
+            var dailyRewards = new[] { 0,0,1,1,2};
             if (cq == ChestQuality.Daily)
             {
                 var value = user.LevelNumber;
-                itemName = ItemDatabase.GetRandomItem(value, (value >= 40) ? RandomItemType.Artifact : RandomItemType.Any);
+                itemName = ItemDatabase.GetRandomItem((ItemRarity)(dailyRewards[inv.dailiesInARow % dailyRewards.Length] + Math.Min(2,value/33)));
             }
             else
             {
@@ -402,13 +403,20 @@ namespace IodemBot.Modules.GoldenSunMechanics
             var item = ItemDatabase.GetItem(itemName);
 
             var embed = new EmbedBuilder();
+            
             embed.WithDescription($"Opening {cq} Chest {Inventory.ChestIcons[cq]}...");
+            
             embed.WithColor(Colors.Get("Iodem"));
             var msg = await Context.Channel.SendMessageAsync("", false, embed.Build());
 
             embed = new EmbedBuilder();
             embed.WithColor(item.Color);
+            if(cq == ChestQuality.Daily)
+            {
+                embed.WithFooter($"Current Reward: {inv.dailiesInARow%dailyRewards.Length+1}/{dailyRewards.Length} | Overall Streak: {inv.dailiesInARow+1}");
+            }
             embed.WithDescription($"{Inventory.ChestIcons[cq]} You found a {item.Name} {item.IconDisplay}");
+            
             await Task.Delay((int)cq * 700);
             _ = msg.ModifyAsync(m => m.Embed = embed.Build());
             inv.Add(item.Name);
@@ -457,7 +465,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             }
             var selectedItem = inv.GetItem(item);
 
-            if (selectedItem.ExclusiveTo != null && selectedItem.ExclusiveTo.Contains(account.Element))
+            if (selectedItem.ExclusiveTo?.Contains(account.Element) ?? true)
             {
                 if (inv.Equip(item, archType))
                 {

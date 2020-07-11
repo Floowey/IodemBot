@@ -27,10 +27,10 @@ namespace IodemBot.Core.Leveling
             var sinceLastXP = DateTime.UtcNow - userAccount.LastXP;
             uint oldLevel = userAccount.LevelNumber;
 
-            if (sinceLastXP.Minutes >= 2)
+            if (sinceLastXP.TotalMinutes >= 3)
             {
                 userAccount.LastXP = DateTime.UtcNow;
-                userAccount.AddXp((uint)(new Random()).Next(30, 60));
+                userAccount.AddXp((uint)(new Random()).Next(30, 50));
             }
             if (user.Roles.Count == 0 && !user.Roles.Any(r => r.Id == 355560889942016000))
             {
