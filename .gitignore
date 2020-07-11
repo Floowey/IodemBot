@@ -77,3 +77,4 @@ dkms.conf
 /.dockerignore
 /IodemBot/Dockerfile
 /IodemBot/Properties
+/MigrationBackup/1c82b64e/IodemBot
