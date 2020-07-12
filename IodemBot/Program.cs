@@ -24,6 +24,7 @@ namespace IodemBot
             catch (Exception e)
             {
                 var date = DateTime.Now.ToString("yyyy_mm_dd");
+                Console.WriteLine(e.ToString());
                 File.AppendAllText($"Logs/{date}_crash.log", e.ToString());
             }
         }
