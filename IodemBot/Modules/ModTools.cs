@@ -127,7 +127,6 @@ namespace IodemBot.Modules
 
                 Process process = Process.Start(ps);
                 process.WaitForExit();
-                Console.WriteLine("This shouldn't be reached.");
                 return;
 
             }
