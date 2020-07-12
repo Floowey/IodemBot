@@ -5,6 +5,7 @@
     "FlavourText": "Welcome! Let be introduced to the world of Weyard and Golden Sun!",
     "Image": "https://cdn.discordapp.com/attachments/497696510688100352/595583507393150997/unknown.png",
     "IsDefault": true,
+    "MaxPlayer": 1,
     "Requirement": {
       "TagsLock": [ "TutorialCompleted" ]
     },
@@ -121,7 +122,7 @@
         ]
       },
       {
-        "Flavourtext": "Well done! You are set and ready! You are starting off in the calm town of Vale. It is significant to the world of Golden Sun and the perfect place to start off an unforgetable adventure!",
+        "Flavourtext": "Well done! You are set and ready! You are starting off in the calm town of Vault. It is near the ruins of Vale, one of the most significant locations to the world of Golden Sun and the perfect place to start off an unforgetable adventure!",
         "EnemyNames": [ "End" ],
         "RewardTables": [
           [
@@ -133,7 +134,19 @@
               "Coins": 10,
               "Chest": "Wooden",
               "HasChest": true,
-              "message": "Quick summary:\n-Use commands in #gabomba-gears.\n-Select an element using `i!element Venus` or whichever you want. You can change it at any time.\n-Specify a class using `i!class Squire` (from what is available to you).\n-Pause a battle by reacting anywhere with :pause_button:. The timer will restart at the beginning of the next turn.\n-Don't forget to target on your enemy with the numbered icons.\n\nDon't be shy to ask questions in #colosso-talks or find team mates to brawl with!"
+              "message": "Quick summary:\n-Use commands in #gabomba-gears.\n-Select an element using `i!element Venus` or whichever you want. You can change it at any time.\n-Specify a class using `i!class Squire` (from what is available to you).\n-Pause a battle by reacting anywhere with :pause_button:. The timer will restart at the beginning of the next turn.\n-Don't forget to target your enemy with the numbered icons.\n\nDon't be shy to ask questions in #colosso-talks or find team mates to brawl with!"
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "Dungeon": "Vault"
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "Dungeon": "Vale"
             }
           ]
         ]
@@ -143,12 +156,12 @@
   "Vale": {
     "name": "Vale",
     "IsOneTimeOnly": false,
-    "FlavourText": "The calm town of Vale.",
+    "FlavourText": "What once was the calm town of Vale. The town has been abandonden and destroyed when the Golden Sun event happened.",
     "Image": "https://cdn.discordapp.com/attachments/497696510688100352/595583507393150997/unknown.png",
-    "IsDefault": true,
+    "IsDefault": false,
     "Matchups": [
       {
-        "Flavourtext": "Valeans are training hard to protect their Village and Secrets. As a young adept, you are walking in their Footsteps.",
+        "Flavourtext": "Valeans were training hard to protect their village and secrets. As a young adept, you are walking in their footsteps. ",
         "EnemyNames": [ "Vale Training" ],
         "RewardTables": [
           [
@@ -159,7 +172,7 @@
             }
           ],
           [
-            { "Weight": 5 },
+            { "Weight": 8 },
             {
               "Weight": 2,
               "Item": "Machete"
@@ -180,7 +193,7 @@
         ]
       },
       {
-        "Flavourtext": "A light Storm is coming up, watch out for critters coming forward.",
+        "Flavourtext": "A light Storm is coming up, watch out for the critters that have overrun the town since.",
         "EnemyNames": [ "Vermin 1" ],
         "RewardTables": [
           [
@@ -191,7 +204,7 @@
             }
           ],
           [
-            { "Weight": 4 },
+            { "Weight": 8 },
             {
               "Weight": 3,
               "Item": "Leather Cap"
@@ -236,7 +249,7 @@
         ]
       },
       {
-        "Flavourtext": "Bats Bats Bats",
+        "Flavourtext": "From one of the ruined house, a swarm of bats get's stirred up.",
         "EnemyNames": [ "Bat 1", "Bat 1", "Bat 1" ],
         "RewardTables": [
           [
@@ -247,7 +260,7 @@
             }
           ],
           [
-            { "Weight": 4 },
+            { "Weight": 6 },
             {
               "Weight": 3,
               "Item": "Padded Gloves"
@@ -275,7 +288,7 @@
             }
           ],
           [
-            { "Weight": 4 },
+            { "Weight": 6 },
             {
               "Weight": 3,
               "Item": "Casual Shirt"
@@ -333,7 +346,7 @@
         ]
       },
       {
-        "Flavourtext": "You spend the night at the towns inn. You contemplate what an interesting world you're living in and are excited to explore as much of it as possible.",
+        "Flavourtext": "You camp for the night. You contemplate what an interesting world you're living in and are excited to explore as much of it as possible.",
         "EnemyNames": [ "End" ],
         "RewardTables": [
           [
@@ -365,12 +378,12 @@
   "Sol Sanctum": {
     "name": "Sol Sanctum",
     "IsOneTimeOnly": true,
-    "FlavourText": "The holy grounds above Vale. Watch out for falling rocks.",
+    "FlavourText": "The destroyed holy grounds above Vale. Watch out for falling rocks.",
     "Image": "https://i.pinimg.com/736x/c8/02/1f/c8021fff57a87f19a74714c813396c17.jpg",
     "IsDefault": false,
     "Matchups": [
       {
-        "Flavourtext": "The entrance of the Sanctuary is impressively massive and massively impressive. You enter cautiously...",
+        "Flavourtext": "The broken down entrance of the Sanctuary is still impressively massive and massively impressive. You enter cautiously...",
         "EnemyNames": [ "Wild Mushroom 1" ],
         "RewardTables": [
           [
@@ -383,7 +396,7 @@
         ]
       },
       {
-        "Flavourtext": "As the hallway lights up, some monsters get scared and jump forward",
+        "Flavourtext": "As the way lights up, some monsters get scared and jump forward",
         "EnemyNames": [ "Vermin 1", "Bat 2", "Vermin 1" ],
         "RewardTables": [
           [
@@ -403,7 +416,7 @@
         ]
       },
       {
-        "Flavourtext": "As you solve the puzzles, you find some empty rooms. Well, not *completely* empty, anyways.",
+        "Flavourtext": "You solve some puzzles to free the way to empty rooms. Well, not *completely* empty, anyways.",
         "EnemyNames": [ "Bat 1", "Bat 1" ],
         "RewardTables": [
           [
@@ -416,7 +429,7 @@
         ]
       },
       {
-        "Flavourtext": "You reach a very distinct room. You have heard about that. You see a bunch of statues, but you can only move one. Which one will it be?",
+        "Flavourtext": "You reach a very distinct room. You have heard about it. You see a bunch of statues, but you can only move one. Which one will it be?",
         "EnemyNames": [ "DeathTrapStatue", "KeyStatue", "DeathTrapStatue" ],
         "RewardTables": [
           [
@@ -429,7 +442,7 @@
         ]
       },
       {
-        "Flavourtext": "You have solved the puzzle, you have reached the Star Chamber! Congratulations. Some nasty looking monsters are looking at you from afar, it would be better to turn back now than never!",
+        "Flavourtext": "You have solved the puzzle, you have reached the ruined Star Chamber! The roof of it has broken down and the room is exposed to directly to the Golden Sun. Some nasty looking monsters are looking at you from afar, it would be better to turn back now than never!",
         "EnemyNames": [ "Amaze 1", "Amaze 2", "Amaze 1" ],
         "RewardTables": [
           [
@@ -781,12 +794,12 @@
   "Vault": {
     "name": "Vault",
     "IsOneTimeOnly": false,
-    "FlavourText": "A theft has been committed in Vault, who's the culprit?",
+    "FlavourText": "Vault is a small town in the center of Angara. It has become the refuge for a lot of Valeans.",
     "Image": "https://goldensunwiki.net/w/images/7/73/VaultBottom.png",
-    "IsDefault": true,
+    "IsDefault": false,
     "Matchups": [
       {
-        "Flavourtext": "It looks like that Slime gulped something! A stolen item perhaps?",
+        "Flavourtext": "Since the events of the Golden Sun, a lot of Valeans moved to Vault. The amount of monsters around here is making a lot of them reconsider. A guy named Patcher has been talking about setting up shop nearby.",
         "EnemyNames": [ "Slime 2" ],
         "RewardTables": [
           [
@@ -821,7 +834,7 @@
         ]
       },
       {
-        "Flavourtext": "Your investigations lead you to the cemetary. Wait, is that grave moving? Oh no...",
+        "Flavourtext": "The local cemetery is unsettling a lot of the inhabitants.",
         "EnemyNames": [ "Skeleton 1", "Zombie 1" ],
         "RewardTables": [
           [
@@ -884,7 +897,7 @@
         ]
       },
       {
-        "Flavourtext": "Thankful for saving him, the dog leads you to the inn's attic where you find the stolen goods! Nobody is here except a few rats.",
+        "Flavourtext": "The dog is thankful for saving him and giving him a bone, he appears he to want to show you something [Vault Cave once implemented], but you are distracted by some rats.",
         "EnemyNames": [ "Rat Soldier 2", "Rat 1" ],
         "RewardTables": [
           [
@@ -920,7 +933,7 @@
         ]
       },
       {
-        "Flavourtext": "You hear the thieves coming and prepare an ambush, it's time to face them!",
+        "Flavourtext": "You head to the inn. You notice a bunch of thieves preparing a robbery, you need to stop them!",
         "EnemyNames": [ "Thief 1", "Bandit 1", "Thief 1" ],
         "RewardTables": [
           [
@@ -944,7 +957,7 @@
         ]
       },
       {
-        "Flavourtext": "Wow, what a dangerous neighborhood. Let's sleep for one more night and then get out of here!",
+        "Flavourtext": "Wow, what a dangerous neighborhood. No wonder the Valeans aren't happy here either. Let's sleep for one more night and then get out of here!",
         "EnemyNames": [ "End" ],
         "RewardTables": [
           [
@@ -1135,7 +1148,7 @@
         ]
       },
       {
-        "Flavourtext": "In the middle of the town square, a golden statue dominates the small market. Lord McCoy, the Mayor who was passing by, shouts: 'Noice, isnae it laddie? What yeh see is a statue of my wife'. What a cult of personality...",
+        "Flavourtext": "In the middle of the town square, a golden statue dominates the small market. Lord McCoy, the Mayor who was passing by, shouts: 'Noice day, isnae it laddie? What yeh see is a statue of my wife'. What a cult of personality...",
         "EnemyNames": [ "Next" ],
         "RewardTables": [
           [
@@ -1244,13 +1257,13 @@
         "EnemyNames": [ "End" ],
         "RewardTables": [
           [
-            { "Weight": 8 },
+            { "Weight": 2 },
             {
-              "Weight": 6,
+              "Weight": 3,
               "Dungeon": "Kolima"
             },
             {
-              "Weight": 5,
+              "Weight": 2,
               "Dungeon": "Bilibin Cave"
             }
           ]
@@ -1841,7 +1854,7 @@
   "Lunpa": {
     "name": "Lunpa",
     "IsOneTimeOnly": true,
-    "FlavourText": "The fortress of Lunpa, home of Dodonpa's family of thieves. You have to free Hammet from his jail!",
+    "FlavourText": "Lunpa, home of Dodonpa's family of thieves. It was known to be a fortress, but a big sign out front says 'Welcome to Lunpa! The strongest warriors may enter! Children and spectators, please talk to the guards!'",
     "Image": "",
     "IsDefault": false,
     "Matchups": [
@@ -3609,9 +3622,14 @@
         "RewardTables": [
           [
             {
-              "Weight": 2,
+              "Weight": 1,
               "XP": 45,
-              "Coins": 50,
+              "Coins": 50
+            }
+          ],
+          [
+            {
+              "Weight": 2,
               "Dungeon": "Gondowan Cave"
             },
             {
