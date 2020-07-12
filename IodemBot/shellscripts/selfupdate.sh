@@ -1,13 +1,11 @@
 #!/bin/bash
 # selfupdate.sh
 # Self Update, this should be able to be called from within the bot itself
-echo "Stopping Service"
-sudo systemctl stop IodemBotService
-echo "Service stopped"
+echo "Start Updating"
 cd ~/IodemBot/IodemBot/
 git pull
 echo "done pulling"
 dotnet publish -o /home/pi/bot/
 echo "done publishing"
-sudo systemctl start IodemBotService
+sudo systemctl restart IodemBotService
 echo "process started"
