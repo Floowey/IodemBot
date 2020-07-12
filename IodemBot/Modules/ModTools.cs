@@ -8,6 +8,8 @@ using Iodembot.Preconditions;
 using IodemBot.Core.UserManagement;
 using IodemBot.Extensions;
 using IodemBot.Modules.ColossoBattles;
+using System.Runtime.InteropServices;
+using System.Diagnostics;
 
 namespace IodemBot.Modules
 {
@@ -87,6 +89,26 @@ namespace IodemBot.Modules
                 .AddField("All Time", acc.Count(a => a.ServerStats.LastDayActive > DateTime.MinValue), true)
                 .AddField("Tried Colosso", acc.Count(a => a.ServerStats.ColossoWins > 0), true)
                 .Build());
+        }
+
+        [Command("UpdateIodem")]
+        [RequireOwner]
+        public async Task UpdateSelf()
+        {
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            {
+                Console.WriteLine("Closing for automatic update...");
+                var ps = new ProcessStartInfo();
+                ps.FileName ="shellscripts/selfupdate.sh";
+                ps.UseShellExecute = false;
+                ps.RedirectStandardOutput = true;
+                
+                Process process = Process.Start(ps);
+                process.WaitForExit();
+                Console.WriteLine("This shouldn't be reached.");
+                return;
+
+            }
         }
 
         [Command("Tags")]
