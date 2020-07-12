@@ -95,13 +95,14 @@ namespace IodemBot.Modules
         [RequireOwner]
         public async Task UpdateSelf()
         {
+            await ReplyAsync("Shutting down for automatic update...");
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
             {
                 Console.WriteLine("Closing for automatic update...");
                 var ps = new ProcessStartInfo();
                 ps.FileName ="shellscripts/selfupdate.sh";
-                ps.UseShellExecute = false;
-                ps.RedirectStandardOutput = true;
+                ps.UseShellExecute = true;
+                ps.RedirectStandardOutput = false;
                 
                 Process process = Process.Start(ps);
                 process.WaitForExit();
