@@ -149,7 +149,7 @@ namespace IodemBot.Modules
             await Context.Channel.SendMessageAsync(embed: new EmbedBuilder()
             .WithColor(Colors.Get("Iodem"))
             .AddField("Running since", $"{Global.RunningSince.ToLocalTime()} ({DateTime.Now.Subtract(Global.RunningSince.ToLocalTime()):d' 'hh':'mm':'ss})")
-            .AddField("Connected since", $"{Global.UpSince.ToLocalTime()} ({DateTime.Now.Subtract(Global.UpSince.ToLocalTime()):d' 'hh':'mm':'ss})")
+            .AddField("Connected since", $"{Global.UpSince.ToLocalTime()} ({DateTime.Now.Subtract(Global.UpSince.ToLocalTime()):d' 'hh':'mm':'ss}) hi")
             .AddField("Running on", System.Runtime.InteropServices.RuntimeInformation.OSDescription)
             .Build()) ;
         }
