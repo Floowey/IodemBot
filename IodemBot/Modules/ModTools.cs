@@ -112,6 +112,47 @@ namespace IodemBot.Modules
             }
         }
 
+        [Command("backupusers")]
+        [RequireOwner]
+        public async Task BackupUsers()
+        {
+            await ReplyAsync("Manually backing up users...");
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            {
+                Console.WriteLine("Closing for automatic update...");
+                var ps = new ProcessStartInfo();
+                ps.FileName = "shellscripts/backupusers.sh";
+                ps.UseShellExecute = false;
+                ps.RedirectStandardOutput = true;
+
+                Process process = Process.Start(ps);
+                process.WaitForExit();
+                Console.WriteLine("This shouldn't be reached.");
+                return;
+
+            }
+        }
+
+        [Command("pullusers")]
+        [RequireOwner]
+        public async Task PullUsers()
+        {
+            await ReplyAsync("Restoring users. Restart imminent...");
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            {
+                Console.WriteLine("Closing for automatic update...");
+                var ps = new ProcessStartInfo();
+                ps.FileName = "shellscripts/pullusers.sh";
+                ps.UseShellExecute = false;
+                ps.RedirectStandardOutput = true;
+
+                Process process = Process.Start(ps);
+                process.WaitForExit();
+                return;
+
+            }
+        }
+
         [Command("Tags")]
         [RequireOwner]
         public async Task Tags(SocketGuildUser user)

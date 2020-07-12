@@ -26,10 +26,10 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public static Dictionary<ChestQuality, RewardGenerator<ItemRarity>> ChestValues = new Dictionary<ChestQuality, RewardGenerator<ItemRarity>>() {
                 {ChestQuality.Wooden, new RewardGenerator<ItemRarity>(
-                    new []{ItemRarity.Common }, new []{ 100 })
+                    new []{ItemRarity.Common, ItemRarity.Uncommon }, new []{ 85, 15})
                 },
                 {ChestQuality.Normal, new RewardGenerator<ItemRarity>(
-                    new []{ItemRarity.Common, ItemRarity.Uncommon }, new []{ 60, 40})
+                    new []{ItemRarity.Common, ItemRarity.Uncommon }, new []{ 40, 60})
                 },
                 {ChestQuality.Silver, new RewardGenerator<ItemRarity>(
                     new []{ItemRarity.Uncommon, ItemRarity.Rare, ItemRarity.Legendary}, new []{ 40, 55, 5})
