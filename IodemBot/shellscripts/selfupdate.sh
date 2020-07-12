@@ -6,3 +6,4 @@ cd ~/IodemBot/IodemBot/
 git pull
 dotnet publish -o /home/pi/bot/
 sudo systemctl start IodemBotService
+
