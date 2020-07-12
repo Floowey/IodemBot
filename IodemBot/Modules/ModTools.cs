@@ -100,9 +100,10 @@ namespace IodemBot.Modules
             {
                 Console.WriteLine("Closing for automatic update...");
                 var ps = new ProcessStartInfo();
-                ps.FileName ="shellscripts/selfupdate.sh";
+                ps.FileName ="bash";
+                ps.Arguments ="sudo systemctl start selfupdateservice";
                 ps.UseShellExecute = true;
-                ps.RedirectStandardOutput = false;
+                ps.RedirectStandardOutput = true;
                 
                 Process process = Process.Start(ps);
                 process.WaitForExit();
