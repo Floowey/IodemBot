@@ -119,11 +119,11 @@ namespace IodemBot
 
             public override async Task ReactAsync(SocketUserMessage msg)
             {
-                await base.ReactAsync(msg);
+                _ = base.ReactAsync(msg);
                 var userAccount = UserAccounts.GetAccount(msg.Author);
                 userAccount.ServerStats.HasWrittenCurse = true;
                 UserAccounts.SaveAccounts();
-                await GoldenSun.AwardClassSeries("Curse Mage Series", msg.Author, msg.Channel);
+                _ = GoldenSun.AwardClassSeries("Curse Mage Series", msg.Author, msg.Channel);
             }
         }
 

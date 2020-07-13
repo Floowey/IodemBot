@@ -67,9 +67,9 @@ namespace IodemBot.Core.UserManagement
         public uint RpsWins { get; set; } = 0;
         public uint SpentMoneyOnArtifacts { get; set; }
         public int UniqueDaysActive { get; set; } = 0;
-        public int DungeonsCompleted { get; internal set; }
-        public string LastDungeon { get; internal set; }
-        public int SameDungeonInARow { get; internal set; }
+        public int DungeonsCompleted { get; internal set; } = 0;
+        public string LastDungeon { get; internal set; } = "";
+        public int SameDungeonInARow { get; internal set; } = 0;
 
         public static ServerStats operator +(ServerStats s1, ServerStats s2)
         {
@@ -94,7 +94,8 @@ namespace IodemBot.Core.UserManagement
                 CommandsUsed = s1.CommandsUsed + s2.CommandsUsed,
                 SpentMoneyOnArtifacts = s1.SpentMoneyOnArtifacts + s2.SpentMoneyOnArtifacts,
                 ReactionsAdded = s1.ReactionsAdded + s2.ReactionsAdded,
-                MessagesInColossoTalks = s1.MessagesInColossoTalks + s2.MessagesInColossoTalks
+                MessagesInColossoTalks = s1.MessagesInColossoTalks + s2.MessagesInColossoTalks,
+                DungeonsCompleted = s1.DungeonsCompleted + s2.DungeonsCompleted
             };
         }
     }
