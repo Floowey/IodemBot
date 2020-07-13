@@ -11,6 +11,7 @@ using Iodembot.Preconditions;
 using IodemBot.Core.Leveling;
 using IodemBot.Core.UserManagement;
 using IodemBot.Extensions;
+using System.Runtime.InteropServices
 
 namespace IodemBot.Modules
 {
@@ -160,16 +161,32 @@ namespace IodemBot.Modules
         {
             CultureInfo enAU = new CultureInfo("en-US");
             string format = "HH':'mm', 'MMM dd";
-            await Context.Channel.SendMessageAsync("", false,
-                new EmbedBuilder()
-                .AddField(":globe_with_meridians: UTC", DateTime.UtcNow.ToString(format, enAU), true)
-                .AddField(":flag_at: Vienna", DateTime.Now.ToString(format, enAU), true)
-                .AddField(":flag_in: Mumbai", TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.Now, "India Standard Time").ToString(format, enAU), true)
-                .AddField(":flag_jp: Tokyo", TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.Now, "Tokyo Standard Time").ToString(format, enAU), true)
-                .AddField(":bridge_at_night: San Francisco", TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.Now, "Pacific Standard Time").ToString(format, enAU), true)
-                .AddField(":statue_of_liberty: New York", TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.Now, "Eastern Standard Time").ToString(format, enAU), true)
-                .Build()
-                );
+            var names = new[] { ":globe_with_meridians: UTC", ":flag_at: Vienna", ":flag_in: Mumbai", ":flag_jp: Tokyo", ":bridge_at_night: San Francisco", ":statue_of_liberty: New York" };
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                await Context.Channel.SendMessageAsync("", false,
+                    new EmbedBuilder()
+                    .AddField(":globe_with_meridians: UTC", DateTime.UtcNow.ToString(format, enAU), true)
+                    .AddField(":flag_at: Vienna", DateTime.Now.ToString(format, enAU), true)
+                    .AddField(":flag_in: Mumbai", TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.Now, "India Standard Time").ToString(format, enAU), true)
+                    .AddField(":flag_jp: Tokyo", TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.Now, "Tokyo Standard Time").ToString(format, enAU), true)
+                    .AddField(":bridge_at_night: San Francisco", TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.Now, "Pacific Standard Time").ToString(format, enAU), true)
+                    .AddField(":statue_of_liberty: New York", TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.Now, "Eastern Standard Time").ToString(format, enAU), true)
+                    .Build()
+                    );
+            } else
+            {
+                await Context.Channel.SendMessageAsync("", false,
+                   new EmbedBuilder()
+                   .AddField(":globe_with_meridians: UTC", DateTime.UtcNow.ToString(format, enAU), true)
+                   .AddField(":flag_at: Vienna", DateTime.Now.ToString(format, enAU), true)
+                   .AddField(":flag_in: Mumbai", TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.Now, "Asia/Mumbai").ToString(format, enAU), true)
+                   .AddField(":flag_jp: Tokyo", TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.Now, "Asia/Tokyo").ToString(format, enAU), true)
+                   .AddField(":bridge_at_night: San Francisco", TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.Now, "America/San_Francisco").ToString(format, enAU), true)
+                   .AddField(":statue_of_liberty: New York", TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.Now, "America/New_York").ToString(format, enAU), true)
+                   .Build()
+                   );
+            }
         }
 
         [Command("roleinfo")]
