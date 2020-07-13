@@ -1,17 +1,21 @@
-﻿using Discord.WebSocket;
+﻿using Discord;
+using Discord.WebSocket;
 using Newtonsoft.Json;
 
 namespace IodemBot.Core
 {
     public class GuildSetting
     {
+        public string Name = "";
         public ulong GuildID;
         public GuildSetupConfig guildConfig;
-        public bool sendWelcomeMessage;
-        public bool sendLeaveMessage;
-        public bool isTestServer;
-        public bool isUserServer;
+        public bool sendWelcomeMessage = false;
+        public bool sendLeaveMessage = false;
+        public bool isTestServer = false;
+        public bool isUserServer = false;
+        public bool AutoSetup = false;
 
+        [JsonIgnore] public IRole TeamB { get => Global.Client.GetGuild(GuildID).GetRole(guildConfig.TeamBID); }
         [JsonIgnore] public SocketTextChannel MainChannel { get { return (SocketTextChannel)Global.Client.GetChannel(guildConfig.MainChannelID); } }
         [JsonIgnore] public SocketTextChannel ModChannel { get { return (SocketTextChannel)Global.Client.GetChannel(guildConfig.ModChannelID); } }
         [JsonIgnore] public SocketTextChannel CommandChannel { get { return (SocketTextChannel)Global.Client.GetChannel(guildConfig.CommandChannelID); } }
@@ -28,5 +32,6 @@ namespace IodemBot.Core
         public ulong ColossoChannelID { get; set; }
         public ulong TestCommandChannelID { get; set; }
         public ulong StreamChannelID { get; set; }
+        public ulong TeamBID { get; set; }
     }
 }

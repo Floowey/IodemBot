@@ -20,7 +20,7 @@ namespace IodemBot.Modules.ColossoBattles
             "\u0036\u20E3", "\u0037\u20E3", "\u0038\u20E3", "\u0039\u20E3" };
 
         private static readonly List<BattleEnvironment> battles = new List<BattleEnvironment>();
-
+        
         public static ulong[] ChannelIds
         {
             get
@@ -39,7 +39,7 @@ namespace IodemBot.Modules.ColossoBattles
                     await ReplyAsync($"If you can't tell me where this place is, I can't take you there. And even if you knew, they probably wouldn't let you in! Bring me a map or show to me that you have the key to enter.");
                     return;
                 }
-
+                
                 if (!Dungeon.Requirement.Applies(User) && !ModPermission)
                 {
                     await ReplyAsync($"I'm afraid that I can't take you to this place, it is too dangerous for you and me both.");
@@ -63,7 +63,7 @@ namespace IodemBot.Modules.ColossoBattles
                             battles.Remove(gauntletFromUser);
                         }
                     }
-                    openBattle = new GauntletBattleEnvironment($"{Context.User.Username}", GuildSettings.GetGuildSettings(Context.Guild).ColossoChannel, await PrepareBattleChannel($"{Dungeon.Name}-{Context.User.Username}"), Dungeon.Name, true);
+                    openBattle = new GauntletBattleEnvironment($"{Context.User.Username}", GuildSettings.GetGuildSettings(Context.Guild).ColossoChannel, await PrepareBattleChannel($"{Dungeon.Name}-{Context.User.Username}", Context.Guild), Dungeon.Name, true);
 
                     battles.Add(openBattle);
                 }
@@ -146,25 +146,24 @@ namespace IodemBot.Modules.ColossoBattles
         [RequireUserServer]
         public async Task SetupColosso()
         {
-            PvPEnvironment.TeamBRole = Context.Guild.GetRole(592413472277528589) ?? Context.Guild.GetRole(602241074261524498); //Test: 592413472277528589, GS: 602241074261524498
-
             await Context.Message.DeleteAsync();
-            _ = Setup();
+            _ = Setup(Context.Guild);
         }
 
-        private async Task Setup()
+        public static async Task Setup(SocketGuild guild)
         {
-            battles.ForEach(old => old.Dispose());
+            battles.Where(b=> guild.Channels.Any(c => b.GetIds.Contains(c.Id))).ToList().ForEach(old => old.Dispose());
             battles.Clear();
-            battles.Add(new SingleBattleEnvironment("Wilds", GuildSettings.GetGuildSettings(Context.Guild).ColossoChannel, await PrepareBattleChannel("Weyard-Wilds"), BattleDifficulty.Easy));
-            //battles.Add(new SingleBattleEnvironment("Woods", LobbyChannel, await PrepareBattleChannel("Weyard-Woods"), BattleDifficulty.Medium));
+            var gs = GuildSettings.GetGuildSettings(guild);
+            battles.Add(new SingleBattleEnvironment("Wilds", gs.ColossoChannel, await PrepareBattleChannel("Weyard-Wilds", guild), BattleDifficulty.Easy));
+            battles.Add(new SingleBattleEnvironment("Woods", gs.ColossoChannel, await PrepareBattleChannel("Weyard-Woods", guild), BattleDifficulty.Medium));
             //battles.Add(new SingleBattleEnvironment("Wealds", LobbyChannel, await PrepareBattleChannel("Weyard-Wealds"), BattleDifficulty.Hard));
 
-            //battles.Add(new EndlessBattleEnvironment("Endless", LobbyChannel, await PrepareBattleChannel("Endless-Encounters")));
+            battles.Add(new EndlessBattleEnvironment("Endless", gs.ColossoChannel, await PrepareBattleChannel("Endless-Encounters", guild)));
 
             //battles.Add(new GauntletBattleEnvironment("Dungeon", LobbyChannel, await PrepareBattleChannel("deep-dungeon"), "Vale"));
             //battles.Add(new GauntletBattleEnvironment("Catabombs", LobbyChannel, await PrepareBattleChannel("chilly-catacombs"), "Vale"));
-            //battles.Add(new TeamBattleEnvironment("PvP", LobbyChannel, await PrepareBattleChannel("PvP-A", RoomVisibility.Private), await PrepareBattleChannel("PvP-B", RoomVisibility.TeamB)));
+            battles.Add(new TeamBattleEnvironment("PvP", gs.ColossoChannel, await PrepareBattleChannel("PvP-A", guild, RoomVisibility.All), await PrepareBattleChannel("PvP-B", guild, RoomVisibility.TeamB), gs.TeamB));
 
             //battles.Add(new SingleBattleEnvironment("Gold", LobbyChannel, await PrepareBattleChannel("Gold"), BattleDifficulty.Hard));
             //battles.Add(new TeamBattleManager("OneVOne", LobbyChannel, await PrepareBattleChannel("OneVOneA", PermValue.Deny), await PrepareBattleChannel("OneVOneB", PermValue.Allow), 1));
@@ -255,29 +254,30 @@ namespace IodemBot.Modules.ColossoBattles
             await ReplyAsync(embed: Colosso.ColossoTrain((SocketGuildUser)Context.User, Context.Channel));
         }
 
-        private async Task<ITextChannel> PrepareBattleChannel(string Name, RoomVisibility visibility = RoomVisibility.All)
+        private static async Task<ITextChannel> PrepareBattleChannel(string Name, SocketGuild guild, RoomVisibility visibility = RoomVisibility.All)
         {
-            var colossoChannel = GuildSettings.GetGuildSettings(Context.Guild).ColossoChannel;
-
-            var channel = await Context.Guild.GetOrCreateTextChannelAsync(Name, d => { d.CategoryId = colossoChannel.CategoryId; d.Position = colossoChannel.Position + battles.Count(); });
+            var gs = GuildSettings.GetGuildSettings(guild);
+            var colossoChannel = gs.ColossoChannel;
+            var teamB = gs.TeamB;
+            var channel = await guild.GetOrCreateTextChannelAsync(Name, d => { d.CategoryId = colossoChannel.CategoryId; d.Position = colossoChannel.Position + battles.Count(); });
 
             await channel.SyncPermissionsAsync();
 
             if (visibility == RoomVisibility.TeamB)
             {
-                await channel.AddPermissionOverwriteAsync(PvPEnvironment.TeamBRole, new OverwritePermissions(viewChannel: PermValue.Allow));
-                await channel.AddPermissionOverwriteAsync(Context.Guild.EveryoneRole, new OverwritePermissions(viewChannel: PermValue.Deny));
+                await channel.AddPermissionOverwriteAsync(teamB, new OverwritePermissions(viewChannel: PermValue.Allow));
+                await channel.AddPermissionOverwriteAsync(guild.EveryoneRole, new OverwritePermissions(viewChannel: PermValue.Deny));
             }
 
             if (visibility == RoomVisibility.TeamA)
             {
-                await channel.AddPermissionOverwriteAsync(PvPEnvironment.TeamBRole, new OverwritePermissions(viewChannel: PermValue.Deny));
+                await channel.AddPermissionOverwriteAsync(teamB, new OverwritePermissions(viewChannel: PermValue.Deny));
             }
 
             if (visibility == RoomVisibility.Private)
             {
-                await channel.AddPermissionOverwriteAsync(PvPEnvironment.TeamBRole, new OverwritePermissions(viewChannel: PermValue.Deny));
-                await channel.AddPermissionOverwriteAsync(Context.Guild.EveryoneRole, new OverwritePermissions(viewChannel: PermValue.Deny));
+                await channel.AddPermissionOverwriteAsync(teamB, new OverwritePermissions(viewChannel: PermValue.Deny));
+                await channel.AddPermissionOverwriteAsync(guild.EveryoneRole, new OverwritePermissions(viewChannel: PermValue.Deny));
             }
             var messages = await channel.GetMessagesAsync(100).FlattenAsync();
             await channel.DeleteMessagesAsync(messages.Where(m => m.Timestamp.AddDays(14) > DateTime.Now));

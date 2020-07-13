@@ -28,7 +28,7 @@ namespace IodemBot.Modules.ColossoBattles
 
         private readonly uint PlayersToStartB = 4;
         private readonly List<SocketGuildUser> playersWithBRole = new List<SocketGuildUser>();
-        public static IRole TeamBRole;
+        public IRole TeamBRole;
 
         internal override ulong[] GetIds => new[] { Teams[Team.A].teamChannel.Id, Teams[Team.B].teamChannel.Id };
 
@@ -38,10 +38,11 @@ namespace IodemBot.Modules.ColossoBattles
             {Team.B, new PvPTeamCollector(){team = Team.B, enemies = Team.A } },
         };
 
-        public PvPEnvironment(string Name, ITextChannel lobbyChannel, ITextChannel teamAChannel, ITextChannel teamBChannel, uint playersToStart = 3, uint playersToStartB = 3) : base(Name, lobbyChannel)
+        public PvPEnvironment(string Name, ITextChannel lobbyChannel, ITextChannel teamAChannel, ITextChannel teamBChannel, IRole TeamBRole, uint playersToStart = 3, uint playersToStartB = 3) : base(Name, lobbyChannel)
         {
             PlayersToStart = playersToStart;
             PlayersToStartB = playersToStartB;
+            this.TeamBRole = TeamBRole;
             Teams[Team.A].teamChannel = teamAChannel;
             Teams[Team.B].teamChannel = teamBChannel;
             Initialize();
@@ -162,9 +163,8 @@ namespace IodemBot.Modules.ColossoBattles
             var winners = Battle.GetTeam(Battle.GetWinner());
             var losers = winners.First().battle.GetTeam(winners.First().enemies);
 
-            winners.ConvertAll(s => (PlayerFighter)s).ForEach(async p => await ServerGames.UserWonBattle(p.avatar, new List<Rewardable>(), p.battleStats, lobbyChannel, Teams[p.party].teamChannel));
-            losers.ConvertAll(s => (PlayerFighter)s).ForEach(async p => await ServerGames.UserLostBattle(p.avatar, lobbyChannel));
-
+            winners.ConvertAll(s => (PlayerFighter)s).ForEach(async p => await ServerGames.UserWonPvP(p.avatar, lobbyChannel, winners.Count, losers.Count));
+            
             _ = WriteGameOver();
             await Task.CompletedTask;
         }

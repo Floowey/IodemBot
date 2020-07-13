@@ -5,6 +5,8 @@ using Discord;
 using Discord.WebSocket;
 using IodemBot.Core;
 using IodemBot.Extensions;
+using IodemBot.Modules;
+using IodemBot.Modules.ColossoBattles;
 
 namespace IodemBot
 {
@@ -115,7 +117,16 @@ namespace IodemBot
             var channel = (SocketTextChannel)client.GetChannel(535209634408169492) ?? (SocketTextChannel)client.GetChannel(668443234292334612);
             if (channel != null && (DateTime.Now - Global.RunningSince).TotalSeconds < 15)
             {
-                await channel.SendMessageAsync($"Hello, I am back up.");
+                await channel.SendMessageAsync($"Hello, I am back up. {Environment.OSVersion}");
+                foreach (var guild in client.Guilds)
+                {
+                    var gs = GuildSettings.GetGuildSettings(guild);
+                    if(gs.AutoSetup && gs.ColossoChannel != null)
+                    {
+                        await ColossoPvE.Setup(guild);
+                        Console.WriteLine($"Setup in {gs.Name}");
+                    }
+                }
             }
             //setup colosso
             await client.SetStatusAsync(UserStatus.Idle);
@@ -128,7 +139,7 @@ namespace IodemBot
             var date = DateTime.Now.ToString("yyyy_MM_dd");
             try
             {
-                File.AppendAllText($"Logs/{date}_log.log", msg.Message + "\n");
+                File.AppendAllText($"Logs/{date}_log.log", msg.Message + Environment.NewLine);
             }
             catch { }
             try
@@ -136,7 +147,7 @@ namespace IodemBot
                 if (msg.Exception != null)
                 {
                     Console.WriteLine(msg.Exception.ToString());
-                    File.AppendAllText($"Logs/{date}_log.log", msg.Exception.ToString() + "\n");
+                    File.AppendAllText($"Logs/{date}_log.log", msg.Exception.ToString() + Environment.NewLine);
                 }
             }
             catch

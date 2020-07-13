@@ -5,7 +5,7 @@ namespace IodemBot.Modules.ColossoBattles
 {
     public class GoliathBattleEnvironment : PvPEnvironment
     {
-        public GoliathBattleEnvironment(string Name, ITextChannel lobbyChannel, ITextChannel teamAChannel, ITextChannel teamBChannel, uint playersToStart = 4) : base(Name, lobbyChannel, teamAChannel, teamBChannel, playersToStart, 1)
+        public GoliathBattleEnvironment(string Name, ITextChannel lobbyChannel, ITextChannel teamAChannel, ITextChannel teamBChannel, IRole TeamBRole, uint playersToStart = 4) : base(Name, lobbyChannel, teamAChannel, teamBChannel, TeamBRole, playersToStart, 1)
         {
             _ = Reset();
         }

@@ -192,6 +192,7 @@ namespace IodemBot.Modules.ColossoBattles
                 }
                 RewardTables.Add(chests);
                 winners.OfType<PlayerFighter>().ToList().ForEach(async p => await ServerGames.UserWonBattle(p.avatar, RewardTables.GetRewards(), p.battleStats, lobbyChannel, BattleChannel, winsInARow, string.Join(", ", Battle.TeamA.Select(pl => pl.Name))));
+                winners.OfType<PlayerFighter>().ToList().ForEach(async p => await ServerGames.UserFinishedEndless(p.avatar, lobbyChannel, winsInARow));
                 chests.RemoveAll(s => s is DefaultReward);
 
                 Console.WriteLine("Winners rewarded.");

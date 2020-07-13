@@ -214,6 +214,8 @@ namespace IodemBot.Modules.ColossoBattles
                 }
                 RewardTables.Add(chests);
                 winners.OfType<PlayerFighter>().ToList().ForEach(async p => await ServerGames.UserWonBattle(p.avatar, RewardTables.GetRewards(), p.battleStats, lobbyChannel, BattleChannel));
+                winners.OfType<PlayerFighter>().ToList().ForEach(async p => await ServerGames.UserWonSingleBattle(p.avatar, lobbyChannel, Difficulty));
+
                 chests.RemoveAll(s => s is DefaultReward);
                 _ = WriteGameOver();
             }

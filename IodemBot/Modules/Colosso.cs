@@ -16,8 +16,7 @@ namespace IodemBot.Modules
     {
         private static List<string> enemies = new List<string>();
         private static List<Result> results = new List<Result>();
-        private static bool lastMessageWasNuts;
-
+        
         public static Embed ColossoTrain(SocketGuildUser user, IMessageChannel channel)
         {
             var embed = new EmbedBuilder();
@@ -27,12 +26,6 @@ namespace IodemBot.Modules
 
             embed.WithAuthor(GetTitle(user, m.Enemy));
             embed.WithDescription(GetText(user, m));
-
-            lastMessageWasNuts = false;
-            if (m.Result.Text.Contains("nuts"))
-            {
-                lastMessageWasNuts = true;
-            }
 
             if (m.Result.IsWin)
             {

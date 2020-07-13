@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Discord;
@@ -14,12 +15,14 @@ namespace IodemBot.Core.Leveling
 {
     internal static class ServerGames
     {
+        internal static string BattleFile = $"Logs/Battles_{Global.DateString}.log";
         internal static async void UserWonColosso(SocketGuildUser user, IMessageChannel channel)
         {
             var userAccount = UserAccounts.GetAccount(user);
             uint oldLevel = userAccount.LevelNumber;
             userAccount.AddXp((uint)(new Random()).Next(40, 70));
             uint newLevel = userAccount.LevelNumber;
+     
 
             userAccount.ServerStats.ColossoWins++;
             userAccount.ServerStats.ColossoStreak++;
@@ -171,6 +174,21 @@ namespace IodemBot.Core.Leveling
             }
         }
 
+        internal static async Task UserWonPvP(UserAccount avatar, ITextChannel lobbyChannel, int numberOfWinners, int numberOfLosers)
+        {
+            _ = GoldenSun.AwardClassSeries("Swordsman Series", avatar, lobbyChannel);
+            string csvline = $"{DateTime.Now.TimeOfDay},PvP,{numberOfWinners}vs{numberOfLosers},{avatar.Name}{Environment.NewLine}";
+            File.AppendAllText(BattleFile, csvline);
+            await Task.CompletedTask;
+        }
+
+        internal static async Task UserFinishedEndless(UserAccount avatar, ITextChannel lobbyChannel, int winsInARow)
+        {
+            string csvline = $"{DateTime.Now.TimeOfDay},Endless,{winsInARow},{avatar.Name}{Environment.NewLine}";
+            File.AppendAllText(BattleFile, csvline);
+            await Task.CompletedTask;
+        }
+
         internal static async Task UserWonDungeon(UserAccount avatar, EnemiesDatabase.Dungeon dungeon, ITextChannel channel)
         {
             avatar.ServerStats.DungeonsCompleted++;
@@ -199,6 +217,16 @@ namespace IodemBot.Core.Leveling
                 _ = GoldenSun.AwardClassSeries("Air Pilgrim Series", avatar, channel);
 
             }
+            string csvline = $"{DateTime.Now.TimeOfDay},Dungeon,{dungeon.Name},{avatar.Name}{Environment.NewLine}";
+            File.AppendAllText(BattleFile, csvline);
+
+            await Task.CompletedTask;
+        }
+
+        internal static async Task UserWonSingleBattle(UserAccount avatar, ITextChannel lobbyChannel, BattleDifficulty difficulty)
+        {
+            string csvline = $"{DateTime.Now.TimeOfDay},Single,{difficulty},{avatar.Name}{Environment.NewLine}";
+            File.AppendAllText(BattleFile, csvline);
             await Task.CompletedTask;
         }
 

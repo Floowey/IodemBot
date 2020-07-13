@@ -124,6 +124,7 @@ namespace IodemBot
                 userAccount.ServerStats.HasWrittenCurse = true;
                 UserAccounts.SaveAccounts();
                 _ = GoldenSun.AwardClassSeries("Curse Mage Series", msg.Author, msg.Channel);
+                await Task.CompletedTask;
             }
         }
 
