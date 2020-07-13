@@ -32,1005 +32,1005 @@
         "requirement": "Level",
         "isDefault": true
     },
-    {
-        "name": "Squire Series",
-        "classes": [
-            {
-                "name": "Squire",
-                "movepool": [
-                    "Quake",
-                    "Cure"
-                ],
-                "statMultipliers": {
-                    "maxHP": 110,
-                    "maxPP": 80,
-                    "Atk": 110,
-                    "Def": 100,
-                    "Spd": 110
-                }
-            },
-            {
-                "name": "Knight",
-                "movepool": [
-                    "Ragnarok",
-                    "Earthquake",
-                    "Cure"
-                ],
-                "statMultipliers": {
-                    "maxHP": 130,
-                    "maxPP": 90,
-                    "Atk": 120,
-                    "Def": 110,
-                    "Spd": 120
-                }
-            },
-            {
-                "name": "Gallant",
-                "movepool": [
-                    "Ragnarok",
-                    "Quake Sphere",
-                    "Cure Well",
-                    "Revive"
-                ],
-                "statMultipliers": {
-                    "maxHP": 150,
-                    "maxPP": 100,
-                    "Atk": 130,
-                    "Def": 120,
-                    "Spd": 130
-                }
-            },
-            {
-                "name": "Lord",
-                "movepool": [
-                    "Odyssey",
-                    "Mother Gaia",
-                    "Cure Well",
-                    "Revive"
-                ],
-                "statMultipliers": {
-                    "maxHP": 170,
-                    "maxPP": 110,
-                    "Atk": 140,
-                    "Def": 130,
-                    "Spd": 140
-                }
-            },
-            {
-                "name": "Slayer",
-                "movepool": [
-                    "Odyssey",
-                    "Grand Gaia",
-                    "Potent Cure",
-                    "Revive"
-                ],
-                "statMultipliers": {
-                    "maxHP": 190,
-                    "maxPP": 120,
-                    "Atk": 150,
-                    "Def": 140,
-                    "Spd": 150
-                }
-            }
+  {
+    "name": "Squire Series",
+    "classes": [
+      {
+        "name": "Squire",
+        "movepool": [
+          "Quake",
+          "Cure"
         ],
-        "elements": [
-            0
+        "statMultipliers": {
+          "maxHP": 110,
+          "maxPP": 80,
+          "Atk": 110,
+          "Def": 100,
+          "Spd": 110
+        }
+      },
+      {
+        "name": "Knight",
+        "movepool": [
+          "Ragnarok",
+          "Earthquake",
+          "Cure"
         ],
-        "elstats": {
-            "VenusAtk": 140,
-            "VenusRes": 140,
-            "MarsAtk": 80,
-            "MarsRes": 80,
-            "JupiterAtk": 100,
-            "JupiterRes": 100,
-            "MercuryAtk": 100,
-            "MercuryRes": 100
-        },
-        "requirement": "Level",
-        "isDefault": true,
-        "archtype": "Warrior",
-        "description": "Stoic and rooted to the soil, Adepts of the Squire Series excell in leadership and versatility."
+        "statMultipliers": {
+          "maxHP": 130,
+          "maxPP": 90,
+          "Atk": 120,
+          "Def": 110,
+          "Spd": 120
+        }
+      },
+      {
+        "name": "Gallant",
+        "movepool": [
+          "Ragnarok",
+          "Quake Sphere",
+          "Cure Well",
+          "Revive"
+        ],
+        "statMultipliers": {
+          "maxHP": 150,
+          "maxPP": 100,
+          "Atk": 130,
+          "Def": 120,
+          "Spd": 130
+        }
+      },
+      {
+        "name": "Lord",
+        "movepool": [
+          "Odyssey",
+          "Mother Gaia",
+          "Cure Well",
+          "Revive"
+        ],
+        "statMultipliers": {
+          "maxHP": 170,
+          "maxPP": 110,
+          "Atk": 140,
+          "Def": 130,
+          "Spd": 140
+        }
+      },
+      {
+        "name": "Slayer",
+        "movepool": [
+          "Odyssey",
+          "Grand Gaia",
+          "Potent Cure",
+          "Revive"
+        ],
+        "statMultipliers": {
+          "maxHP": 190,
+          "maxPP": 120,
+          "Atk": 150,
+          "Def": 140,
+          "Spd": 150
+        }
+      }
+    ],
+    "elements": [
+      0
+    ],
+    "elstats": {
+      "VenusAtk": 140,
+      "VenusRes": 140,
+      "MarsAtk": 80,
+      "MarsRes": 80,
+      "JupiterAtk": 100,
+      "JupiterRes": 100,
+      "MercuryAtk": 100,
+      "MercuryRes": 100
     },
-    {
-        "name": "Miko Series",
-        "classes": [
-            {
-                "name": "Miko",
-                "movepool": [
-                    "Growth",
-                    "Cure"
-                ],
-                "statMultipliers": {
-                    "maxHP": 80,
-                    "maxPP": 150,
-                    "Atk": 70,
-                    "Def": 90,
-                    "Spd": 120
-                }
-            },
-            {
-                "name": "High Miko",
-                "movepool": [
-                    "Mad Growth",
-                    "Weapon Grace",
-                    "Cure Well"
-                ],
-                "statMultipliers": {
-                    "maxHP": 90,
-                    "maxPP": 160,
-                    "Atk": 80,
-                    "Def": 100,
-                    "Spd": 130
-                }
-            },
-            {
-                "name": "Master Miko",
-                "movepool": [
-                    "Roaring Dragon",
-                    "Weapon Grace",
-                    "Cure Well",
-                    "Revive"
-                ],
-                "statMultipliers": {
-                    "maxHP": 110,
-                    "maxPP": 170,
-                    "Atk": 90,
-                    "Def": 110,
-                    "Spd": 140
-                }
-            },
-            {
-                "name": "Mystic Miko",
-                "movepool": [
-                    "Slaying Dragon",
-                    "Weapon Grace",
-                    "Cure Well",
-                    "Revive"
-                ],
-                "statMultipliers": {
-                    "maxHP": 130,
-                    "maxPP": 180,
-                    "Atk": 100,
-                    "Def": 120,
-                    "Spd": 150
-                }
-            },
-            {
-                "name": "Radiant Miko",
-                "movepool": [
-                    "Reigning Dragon",
-                    "Weapon Grace",
-                    "Potent Cure",
-                    "Revive"
-                ],
-                "statMultipliers": {
-                    "maxHP": 150,
-                    "maxPP": 190,
-                    "Atk": 110,
-                    "Def": 130,
-                    "Spd": 160
-                }
-            }
+    "requirement": "VenusDjinn",
+    "isDefault": true,
+    "archtype": "Warrior",
+    "description": "Stoic and rooted to the soil, Adepts of the Squire Series excell in leadership and versatility."
+  },
+  {
+    "name": "Miko Series",
+    "classes": [
+      {
+        "name": "Miko",
+        "movepool": [
+          "Growth",
+          "Cure"
         ],
-        "elements": [
-            0
+        "statMultipliers": {
+          "maxHP": 80,
+          "maxPP": 150,
+          "Atk": 70,
+          "Def": 90,
+          "Spd": 120
+        }
+      },
+      {
+        "name": "High Miko",
+        "movepool": [
+          "Mad Growth",
+          "Weapon Grace",
+          "Cure Well"
         ],
-        "elstats": {
-            "VenusAtk": 140,
-            "VenusRes": 140,
-            "MarsAtk": 110,
-            "MarsRes": 110,
-            "JupiterAtk": 70,
-            "JupiterRes": 70,
-            "MercuryAtk": 100,
-            "MercuryRes": 100
-        },
-        "requirement": "Level",
-        "isDefault": true,
-        "archtype": "Mage",
-        "description": "Miko are trained to express astronomic power by funneling their inner spirits."
+        "statMultipliers": {
+          "maxHP": 90,
+          "maxPP": 160,
+          "Atk": 80,
+          "Def": 100,
+          "Spd": 130
+        }
+      },
+      {
+        "name": "Master Miko",
+        "movepool": [
+          "Roaring Dragon",
+          "Weapon Grace",
+          "Cure Well",
+          "Revive"
+        ],
+        "statMultipliers": {
+          "maxHP": 110,
+          "maxPP": 170,
+          "Atk": 90,
+          "Def": 110,
+          "Spd": 140
+        }
+      },
+      {
+        "name": "Mystic Miko",
+        "movepool": [
+          "Slaying Dragon",
+          "Weapon Grace",
+          "Cure Well",
+          "Revive"
+        ],
+        "statMultipliers": {
+          "maxHP": 130,
+          "maxPP": 180,
+          "Atk": 100,
+          "Def": 120,
+          "Spd": 150
+        }
+      },
+      {
+        "name": "Radiant Miko",
+        "movepool": [
+          "Reigning Dragon",
+          "Weapon Grace",
+          "Potent Cure",
+          "Revive"
+        ],
+        "statMultipliers": {
+          "maxHP": 150,
+          "maxPP": 190,
+          "Atk": 110,
+          "Def": 130,
+          "Spd": 160
+        }
+      }
+    ],
+    "elements": [
+      0
+    ],
+    "elstats": {
+      "VenusAtk": 140,
+      "VenusRes": 140,
+      "MarsAtk": 110,
+      "MarsRes": 110,
+      "JupiterAtk": 70,
+      "JupiterRes": 70,
+      "MercuryAtk": 100,
+      "MercuryRes": 100
     },
-    {
-        "name": "Guard Series",
-        "classes": [
-            {
-                "name": "Guard",
-                "movepool": [
-                    "Fireball",
-                    "Guard",
-                    "Impair"
-                ],
-                "statMultipliers": {
-                    "maxHP": 110,
-                    "maxPP": 80,
-                    "Atk": 100,
-                    "Def": 110,
-                    "Spd": 70
-                }
-            },
-            {
-                "name": "Soldier",
-                "movepool": [
-                    "Heat Wave",
-                    "Fireball",
-                    "Guard",
-                    "Impair"
-                ],
-                "statMultipliers": {
-                    "maxHP": 130,
-                    "maxPP": 90,
-                    "Atk": 100,
-                    "Def": 120,
-                    "Spd": 80
-                }
-            },
-            {
-                "name": "Warrior",
-                "movepool": [
-                    "Heat Wave",
-                    "Fireball",
-                    "Protect",
-                    "Impair"
-                ],
-                "statMultipliers": {
-                    "maxHP": 150,
-                    "maxPP": 100,
-                    "Atk": 130,
-                    "Def": 140,
-                    "Spd": 100
-                }
-            },
-            {
-                "name": "Champion",
-                "movepool": [
-                    "Liquifier",
-                    "Inferno",
-                    "Protect",
-                    "Debilitate"
-                ],
-                "statMultipliers": {
-                    "maxHP": 170,
-                    "maxPP": 110,
-                    "Atk": 130,
-                    "Def": 140,
-                    "Spd": 100
-                }
-            },
-            {
-                "name": "Hero",
-                "movepool": [
-                    "Liquifier",
-                    "Inferno",
-                    "Protect",
-                    "Debilitate"
-                ],
-                "statMultipliers": {
-                    "maxHP": 190,
-                    "maxPP": 120,
-                    "Atk": 140,
-                    "Def": 150,
-                    "Spd": 110
-                }
-            }
+    "requirement": "VenusDjinn",
+    "isDefault": true,
+    "archtype": "Mage",
+    "description": "Miko are trained to express astronomic power by funneling their inner spirits."
+  },
+  {
+    "name": "Guard Series",
+    "classes": [
+      {
+        "name": "Guard",
+        "movepool": [
+          "Fireball",
+          "Guard",
+          "Impair"
         ],
-        "elements": [
-            1
+        "statMultipliers": {
+          "maxHP": 110,
+          "maxPP": 80,
+          "Atk": 100,
+          "Def": 110,
+          "Spd": 70
+        }
+      },
+      {
+        "name": "Soldier",
+        "movepool": [
+          "Heat Wave",
+          "Fireball",
+          "Guard",
+          "Impair"
         ],
-        "elstats": {
-            "VenusAtk": 100,
-            "VenusRes": 100,
-            "MarsAtk": 140,
-            "MarsRes": 140,
-            "JupiterAtk": 100,
-            "JupiterRes": 100,
-            "MercuryAtk": 80,
-            "MercuryRes": 80
-        },
-        "requirement": "Level",
-        "isDefault": true,
-        "archtype": "Warrior",
-        "description": "In the heat of the battle, the Guards will heroically protect their own."
+        "statMultipliers": {
+          "maxHP": 130,
+          "maxPP": 90,
+          "Atk": 100,
+          "Def": 120,
+          "Spd": 80
+        }
+      },
+      {
+        "name": "Warrior",
+        "movepool": [
+          "Heat Wave",
+          "Fireball",
+          "Protect",
+          "Impair"
+        ],
+        "statMultipliers": {
+          "maxHP": 150,
+          "maxPP": 100,
+          "Atk": 130,
+          "Def": 140,
+          "Spd": 100
+        }
+      },
+      {
+        "name": "Champion",
+        "movepool": [
+          "Liquifier",
+          "Inferno",
+          "Protect",
+          "Debilitate"
+        ],
+        "statMultipliers": {
+          "maxHP": 170,
+          "maxPP": 110,
+          "Atk": 130,
+          "Def": 140,
+          "Spd": 100
+        }
+      },
+      {
+        "name": "Hero",
+        "movepool": [
+          "Liquifier",
+          "Inferno",
+          "Protect",
+          "Debilitate"
+        ],
+        "statMultipliers": {
+          "maxHP": 190,
+          "maxPP": 120,
+          "Atk": 140,
+          "Def": 150,
+          "Spd": 110
+        }
+      }
+    ],
+    "elements": [
+      1
+    ],
+    "elstats": {
+      "VenusAtk": 100,
+      "VenusRes": 100,
+      "MarsAtk": 140,
+      "MarsRes": 140,
+      "JupiterAtk": 100,
+      "JupiterRes": 100,
+      "MercuryAtk": 80,
+      "MercuryRes": 80
     },
-    {
-        "name": "Flame User Series",
-        "classes": [
-            {
-                "name": "Flame User",
-                "movepool": [
-                    "Fume",
-                    "Beam"
-                ],
-                "statMultipliers": {
-                    "maxHP": 100,
-                    "maxPP": 120,
-                    "Atk": 100,
-                    "Def": 100,
-                    "Spd": 120
-                }
-            },
-            {
-                "name": "Witch",
-                "movepool": [
-                    "Fume",
-                    "Cycle Beam",
-                    "Blaze"
-                ],
-                "statMultipliers": {
-                    "maxHP": 110,
-                    "maxPP": 130,
-                    "Atk": 110,
-                    "Def": 110,
-                    "Spd": 130
-                }
-            },
-            {
-                "name": "Hex",
-                "movepool": [
-                    "Serpent Fume",
-                    "Cycle Beam",
-                    "Blaze",
-                    "Aura"
-                ],
-                "statMultipliers": {
-                    "maxHP": 130,
-                    "maxPP": 140,
-                    "Atk": 120,
-                    "Def": 120,
-                    "Spd": 140
-                }
-            },
-            {
-                "name": "Flame Master",
-                "movepool": [
-                    "Serpent Fume",
-                    "Searing Beam",
-                    "Blaze",
-                    "Healing Aura"
-                ],
-                "statMultipliers": {
-                    "maxHP": 150,
-                    "maxPP": 150,
-                    "Atk": 130,
-                    "Def": 130,
-                    "Spd": 150
-                }
-            },
-            {
-                "name": "Justice",
-                "movepool": [
-                    "Dragon Fume",
-                    "Searing Beam",
-                    "Blaze",
-                    "Cool Aura"
-                ],
-                "statMultipliers": {
-                    "maxHP": 170,
-                    "maxPP": 160,
-                    "Atk": 140,
-                    "Def": 140,
-                    "Spd": 160
-                }
-            }
+    "requirement": "MarsDjinn",
+    "isDefault": true,
+    "archtype": "Warrior",
+    "description": "In the heat of the battle, the Guards will heroically protect their own."
+  },
+  {
+    "name": "Flame User Series",
+    "classes": [
+      {
+        "name": "Flame User",
+        "movepool": [
+          "Fume",
+          "Beam"
         ],
-        "elements": [
-            1
+        "statMultipliers": {
+          "maxHP": 100,
+          "maxPP": 120,
+          "Atk": 100,
+          "Def": 100,
+          "Spd": 120
+        }
+      },
+      {
+        "name": "Witch",
+        "movepool": [
+          "Fume",
+          "Cycle Beam",
+          "Blaze"
         ],
-        "elstats": {
-            "VenusAtk": 100,
-            "VenusRes": 100,
-            "MarsAtk": 140,
-            "MarsRes": 140,
-            "JupiterAtk": 100,
-            "JupiterRes": 100,
-            "MercuryAtk": 80,
-            "MercuryRes": 80
-        },
-        "requirement": "Level",
-        "isDefault": true,
-        "archtype": "Mage",
-        "description": "Flame Users show the glistering magic of the Mars element, by raining Justice from above"
+        "statMultipliers": {
+          "maxHP": 110,
+          "maxPP": 130,
+          "Atk": 110,
+          "Def": 110,
+          "Spd": 130
+        }
+      },
+      {
+        "name": "Hex",
+        "movepool": [
+          "Serpent Fume",
+          "Cycle Beam",
+          "Blaze",
+          "Aura"
+        ],
+        "statMultipliers": {
+          "maxHP": 130,
+          "maxPP": 140,
+          "Atk": 120,
+          "Def": 120,
+          "Spd": 140
+        }
+      },
+      {
+        "name": "Flame Master",
+        "movepool": [
+          "Serpent Fume",
+          "Searing Beam",
+          "Blaze",
+          "Healing Aura"
+        ],
+        "statMultipliers": {
+          "maxHP": 150,
+          "maxPP": 150,
+          "Atk": 130,
+          "Def": 130,
+          "Spd": 150
+        }
+      },
+      {
+        "name": "Justice",
+        "movepool": [
+          "Dragon Fume",
+          "Searing Beam",
+          "Blaze",
+          "Cool Aura"
+        ],
+        "statMultipliers": {
+          "maxHP": 170,
+          "maxPP": 160,
+          "Atk": 140,
+          "Def": 140,
+          "Spd": 160
+        }
+      }
+    ],
+    "elements": [
+      1
+    ],
+    "elstats": {
+      "VenusAtk": 100,
+      "VenusRes": 100,
+      "MarsAtk": 140,
+      "MarsRes": 140,
+      "JupiterAtk": 100,
+      "JupiterRes": 100,
+      "MercuryAtk": 80,
+      "MercuryRes": 80
     },
-    {
-        "name": "Pirate Series",
-        "classes": [
-            {
-                "name": "Pirate",
-                "movepool": [
-                    "Fume",
-                    "Beam",
-                    "Thermal"
-                ],
-                "statMultipliers": {
-                    "maxHP": 110,
-                    "maxPP": 90,
-                    "Atk": 100,
-                    "Def": 100,
-                    "Spd": 90
-                }
-            },
-            {
-                "name": "Cannoneer",
-                "movepool": [
-                    "Keelhaul",
-                    "Fume",
-                    "Cycle Beam",
-                    "Thermal"
-                ],
-                "statMultipliers": {
-                    "maxHP": 130,
-                    "maxPP": 100,
-                    "Atk": 110,
-                    "Def": 110,
-                    "Spd": 100
-                }
-            },
-            {
-                "name": "Corsair",
-                "movepool": [
-                    "Keelhaul",
-                    "Serpent Fume",
-                    "Cycle Beam",
-                    "Thermal"
-                ],
-                "statMultipliers": {
-                    "maxHP": 150,
-                    "maxPP": 110,
-                    "Atk": 120,
-                    "Def": 120,
-                    "Spd": 110
-                }
-            },
-            {
-                "name": "Pirate King",
-                "movepool": [
-                    "Vicious Chop",
-                    "Serpent Fume",
-                    "Searing Beam",
-                    "Thermal"
-                ],
-                "statMultipliers": {
-                    "maxHP": 170,
-                    "maxPP": 120,
-                    "Atk": 130,
-                    "Def": 130,
-                    "Spd": 120
-                }
-            },
-            {
-                "name": "Hull Reaver",
-                "movepool": [
-                    "Vicious Chop",
-                    "Dragon Fume",
-                    "Searing Beam",
-                    "Thermal"
-                ],
-                "statMultipliers": {
-                    "maxHP": 190,
-                    "maxPP": 130,
-                    "Atk": 140,
-                    "Def": 140,
-                    "Spd": 120
-                }
-            }
+    "requirement": "MarsDjinn",
+    "isDefault": true,
+    "archtype": "Mage",
+    "description": "Flame Users show the glistering magic of the Mars element, by raining Justice from above"
+  },
+  {
+    "name": "Pirate Series",
+    "classes": [
+      {
+        "name": "Pirate",
+        "movepool": [
+          "Fume",
+          "Beam",
+          "Thermal"
         ],
-        "elements": [
-            1
+        "statMultipliers": {
+          "maxHP": 110,
+          "maxPP": 90,
+          "Atk": 100,
+          "Def": 100,
+          "Spd": 90
+        }
+      },
+      {
+        "name": "Cannoneer",
+        "movepool": [
+          "Keelhaul",
+          "Fume",
+          "Cycle Beam",
+          "Thermal"
         ],
-        "elstats": {
-            "VenusAtk": 70,
-            "VenusRes": 70,
-            "MarsAtk": 140,
-            "MarsRes": 140,
-            "JupiterAtk": 100,
-            "JupiterRes": 100,
-            "MercuryAtk": 110,
-            "MercuryRes": 110
-        },
-        "requirement": "Level",
-        "isDefault": true,
-        "archtype": "Warrior",
-        "description": "Crossing and plundering throughout the Eastern Seas, Pirates fear the lands more than the depths below."
+        "statMultipliers": {
+          "maxHP": 130,
+          "maxPP": 100,
+          "Atk": 110,
+          "Def": 110,
+          "Spd": 100
+        }
+      },
+      {
+        "name": "Corsair",
+        "movepool": [
+          "Keelhaul",
+          "Serpent Fume",
+          "Cycle Beam",
+          "Thermal"
+        ],
+        "statMultipliers": {
+          "maxHP": 150,
+          "maxPP": 110,
+          "Atk": 120,
+          "Def": 120,
+          "Spd": 110
+        }
+      },
+      {
+        "name": "Pirate King",
+        "movepool": [
+          "Vicious Chop",
+          "Serpent Fume",
+          "Searing Beam",
+          "Thermal"
+        ],
+        "statMultipliers": {
+          "maxHP": 170,
+          "maxPP": 120,
+          "Atk": 130,
+          "Def": 130,
+          "Spd": 120
+        }
+      },
+      {
+        "name": "Hull Reaver",
+        "movepool": [
+          "Vicious Chop",
+          "Dragon Fume",
+          "Searing Beam",
+          "Thermal"
+        ],
+        "statMultipliers": {
+          "maxHP": 190,
+          "maxPP": 130,
+          "Atk": 140,
+          "Def": 140,
+          "Spd": 120
+        }
+      }
+    ],
+    "elements": [
+      1
+    ],
+    "elstats": {
+      "VenusAtk": 70,
+      "VenusRes": 70,
+      "MarsAtk": 140,
+      "MarsRes": 140,
+      "JupiterAtk": 100,
+      "JupiterRes": 100,
+      "MercuryAtk": 110,
+      "MercuryRes": 110
     },
-    {
-        "name": "Wind Seer Series",
-        "classes": [
-            {
-                "name": "Wind Seer",
-                "movepool": [
-                    "Plasma",
-                    "Fresh Breeze"
-                ],
-                "statMultipliers": {
-                    "maxHP": 80,
-                    "maxPP": 140,
-                    "Atk": 80,
-                    "Def": 90,
-                    "Spd": 130
-                }
-            },
-            {
-                "name": "Magician",
-                "movepool": [
-                    "Shine Plasma",
-                    "Impact",
-                    "Healthy Wind"
-                ],
-                "statMultipliers": {
-                    "maxHP": 90,
-                    "maxPP": 150,
-                    "Atk": 90,
-                    "Def": 100,
-                    "Spd": 140
-                }
-            },
-            {
-                "name": "Mage",
-                "movepool": [
-                    "Shine Plasma",
-                    "Bind",
-                    "High Impact",
-                    "Healthy Wind"
-                ],
-                "statMultipliers": {
-                    "maxHP": 110,
-                    "maxPP": 160,
-                    "Atk": 100,
-                    "Def": 110,
-                    "Spd": 150
-                }
-            },
-            {
-                "name": "Magister",
-                "movepool": [
-                    "Shine Plasma",
-                    "Bind",
-                    "High Impact",
-                    "Healing Gust"
-                ],
-                "statMultipliers": {
-                    "maxHP": 130,
-                    "maxPP": 170,
-                    "Atk": 110,
-                    "Def": 120,
-                    "Spd": 160
-                }
-            },
-            {
-                "name": "Sorcerer",
-                "movepool": [
-                    "Spark Plasma",
-                    "Bind",
-                    "High Impact",
-                    "Healing Gust"
-                ],
-                "statMultipliers": {
-                    "maxHP": 150,
-                    "maxPP": 180,
-                    "Atk": 120,
-                    "Def": 130,
-                    "Spd": 170
-                }
-            }
+    "requirement": "MarsDjinn",
+    "isDefault": true,
+    "archtype": "Warrior",
+    "description": "Crossing and plundering throughout the Eastern Seas, Pirates fear the lands more than the depths below."
+  },
+  {
+    "name": "Wind Seer Series",
+    "classes": [
+      {
+        "name": "Wind Seer",
+        "movepool": [
+          "Plasma",
+          "Fresh Breeze"
         ],
-        "elements": [
-            2
+        "statMultipliers": {
+          "maxHP": 80,
+          "maxPP": 140,
+          "Atk": 80,
+          "Def": 90,
+          "Spd": 130
+        }
+      },
+      {
+        "name": "Magician",
+        "movepool": [
+          "Shine Plasma",
+          "Impact",
+          "Healthy Wind"
         ],
-        "elstats": {
-            "VenusAtk": 70,
-            "VenusRes": 70,
-            "MarsAtk": 100,
-            "MarsRes": 100,
-            "JupiterAtk": 150,
-            "JupiterRes": 150,
-            "MercuryAtk": 100,
-            "MercuryRes": 100
-        },
-        "requirement": "Level",
-        "isDefault": true,
-        "archtype": "Mage",
-        "description": "Windseers inherit the wisdom and tempestuousness of the Anemos."
+        "statMultipliers": {
+          "maxHP": 90,
+          "maxPP": 150,
+          "Atk": 90,
+          "Def": 100,
+          "Spd": 140
+        }
+      },
+      {
+        "name": "Mage",
+        "movepool": [
+          "Shine Plasma",
+          "Bind",
+          "High Impact",
+          "Healthy Wind"
+        ],
+        "statMultipliers": {
+          "maxHP": 110,
+          "maxPP": 160,
+          "Atk": 100,
+          "Def": 110,
+          "Spd": 150
+        }
+      },
+      {
+        "name": "Magister",
+        "movepool": [
+          "Shine Plasma",
+          "Bind",
+          "High Impact",
+          "Healing Gust"
+        ],
+        "statMultipliers": {
+          "maxHP": 130,
+          "maxPP": 170,
+          "Atk": 110,
+          "Def": 120,
+          "Spd": 160
+        }
+      },
+      {
+        "name": "Sorcerer",
+        "movepool": [
+          "Spark Plasma",
+          "Bind",
+          "High Impact",
+          "Healing Gust"
+        ],
+        "statMultipliers": {
+          "maxHP": 150,
+          "maxPP": 180,
+          "Atk": 120,
+          "Def": 130,
+          "Spd": 170
+        }
+      }
+    ],
+    "elements": [
+      2
+    ],
+    "elstats": {
+      "VenusAtk": 70,
+      "VenusRes": 70,
+      "MarsAtk": 100,
+      "MarsRes": 100,
+      "JupiterAtk": 150,
+      "JupiterRes": 150,
+      "MercuryAtk": 100,
+      "MercuryRes": 100
     },
-    {
-        "name": "Beastling Series",
-        "classes": [
-            {
-                "name": "Beastling",
-                "movepool": [
-                    "Slash",
-                    "Ray",
-                    "Boon"
-                ],
-                "statMultipliers": {
-                    "maxHP": 110,
-                    "maxPP": 120,
-                    "Atk": 90,
-                    "Def": 100,
-                    "Spd": 110
-                }
-            },
-            {
-                "name": "Wildrunner",
-                "movepool": [
-                    "Speed Punch",
-                    "Wind Slash",
-                    "Ray",
-                    "Nature's Boon"
-                ],
-                "statMultipliers": {
-                    "maxHP": 130,
-                    "maxPP": 130,
-                    "Atk": 100,
-                    "Def": 110,
-                    "Spd": 120
-                }
-            },
-            {
-                "name": "Shapeshifter",
-                "movepool": [
-                    "Speed Punch",
-                    "Wind Slash",
-                    "Storm Ray",
-                    "Vital Boon"
-                ],
-                "statMultipliers": {
-                    "maxHP": 150,
-                    "maxPP": 140,
-                    "Atk": 110,
-                    "Def": 120,
-                    "Spd": 130
-                }
-            },
-            {
-                "name": "Beast Master",
-                "movepool": [
-                    "Speed Punch",
-                    "Sonic Slash",
-                    "Storm Ray",
-                    "Vital Boon"
-                ],
-                "statMultipliers": {
-                    "maxHP": 170,
-                    "maxPP": 160,
-                    "Atk": 130,
-                    "Def": 130,
-                    "Spd": 140
-                }
-            },
-            {
-                "name": "Prime Beast",
-                "movepool": [
-                    "Speed Punch",
-                    "Sonic Slash",
-                    "Destruct Ray",
-                    "Vital Boon"
-                ],
-                "statMultipliers": {
-                    "maxHP": 190,
-                    "maxPP": 170,
-                    "Atk": 140,
-                    "Def": 140,
-                    "Spd": 150
-                }
-            }
+    "requirement": "JupiterDjinn",
+    "isDefault": true,
+    "archtype": "Mage",
+    "description": "Windseers inherit the wisdom and tempestuousness of the Anemos."
+  },
+  {
+    "name": "Beastling Series",
+    "classes": [
+      {
+        "name": "Beastling",
+        "movepool": [
+          "Slash",
+          "Ray",
+          "Boon"
         ],
-        "elements": [
-            2
+        "statMultipliers": {
+          "maxHP": 110,
+          "maxPP": 120,
+          "Atk": 90,
+          "Def": 100,
+          "Spd": 110
+        }
+      },
+      {
+        "name": "Wildrunner",
+        "movepool": [
+          "Speed Punch",
+          "Wind Slash",
+          "Ray",
+          "Nature's Boon"
         ],
-        "elstats": {
-            "VenusAtk": 80,
-            "VenusRes": 80,
-            "MarsAtk": 100,
-            "MarsRes": 100,
-            "JupiterAtk": 140,
-            "JupiterRes": 140,
-            "MercuryAtk": 100,
-            "MercuryRes": 100
-        },
-        "requirement": "Level",
-        "isDefault": true,
-        "archtype": "Mage",
-        "description": "Their connection to nature lets Beastlings become one with the wild."
+        "statMultipliers": {
+          "maxHP": 130,
+          "maxPP": 130,
+          "Atk": 100,
+          "Def": 110,
+          "Spd": 120
+        }
+      },
+      {
+        "name": "Shapeshifter",
+        "movepool": [
+          "Speed Punch",
+          "Wind Slash",
+          "Storm Ray",
+          "Vital Boon"
+        ],
+        "statMultipliers": {
+          "maxHP": 150,
+          "maxPP": 140,
+          "Atk": 110,
+          "Def": 120,
+          "Spd": 130
+        }
+      },
+      {
+        "name": "Beast Master",
+        "movepool": [
+          "Speed Punch",
+          "Sonic Slash",
+          "Storm Ray",
+          "Vital Boon"
+        ],
+        "statMultipliers": {
+          "maxHP": 170,
+          "maxPP": 160,
+          "Atk": 130,
+          "Def": 130,
+          "Spd": 140
+        }
+      },
+      {
+        "name": "Prime Beast",
+        "movepool": [
+          "Speed Punch",
+          "Sonic Slash",
+          "Destruct Ray",
+          "Vital Boon"
+        ],
+        "statMultipliers": {
+          "maxHP": 190,
+          "maxPP": 170,
+          "Atk": 140,
+          "Def": 140,
+          "Spd": 150
+        }
+      }
+    ],
+    "elements": [
+      2
+    ],
+    "elstats": {
+      "VenusAtk": 80,
+      "VenusRes": 80,
+      "MarsAtk": 100,
+      "MarsRes": 100,
+      "JupiterAtk": 140,
+      "JupiterRes": 140,
+      "MercuryAtk": 100,
+      "MercuryRes": 100
     },
-    {
-        "name": "Water Seer Series",
-        "classes": [
-            {
-                "name": "Water Seer",
-                "movepool": [
-                    "Ice",
-                    "Ply"
-                ],
-                "statMultipliers": {
-                    "maxHP": 90,
-                    "maxPP": 130,
-                    "Atk": 90,
-                    "Def": 100,
-                    "Spd": 80
-                }
-            },
-            {
-                "name": "Scribe",
-                "movepool": [
-                    "Ice Horn",
-                    "Restore",
-                    "Ply Well"
-                ],
-                "statMultipliers": {
-                    "maxHP": 100,
-                    "maxPP": 140,
-                    "Atk": 100,
-                    "Def": 110,
-                    "Spd": 90
-                }
-            },
-            {
-                "name": "Cleric",
-                "movepool": [
-                    "Ice Horn",
-                    "Restore",
-                    "Ply Well",
-                    "Wish"
-                ],
-                "statMultipliers": {
-                    "maxHP": 120,
-                    "maxPP": 150,
-                    "Atk": 110,
-                    "Def": 120,
-                    "Spd": 100
-                }
-            },
-            {
-                "name": "Paragon",
-                "movepool": [
-                    "Ice Missile",
-                    "Restore",
-                    "Pure Ply",
-                    "Wish Well"
-                ],
-                "statMultipliers": {
-                    "maxHP": 140,
-                    "maxPP": 160,
-                    "Atk": 120,
-                    "Def": 130,
-                    "Spd": 110
-                }
-            },
-            {
-                "name": "Angel",
-                "movepool": [
-                    "Ice Missile",
-                    "Restore",
-                    "Pure Ply",
-                    "Pure Wish"
-                ],
-                "statMultipliers": {
-                    "maxHP": 160,
-                    "maxPP": 170,
-                    "Atk": 130,
-                    "Def": 140,
-                    "Spd": 120
-                }
-            }
+    "requirement": "JupiterDjinn",
+    "isDefault": true,
+    "archtype": "Mage",
+    "description": "Their connection to nature lets Beastlings become one with the wild."
+  },
+  {
+    "name": "Water Seer Series",
+    "classes": [
+      {
+        "name": "Water Seer",
+        "movepool": [
+          "Ice",
+          "Ply"
         ],
-        "elements": [
-            3
+        "statMultipliers": {
+          "maxHP": 90,
+          "maxPP": 130,
+          "Atk": 90,
+          "Def": 100,
+          "Spd": 80
+        }
+      },
+      {
+        "name": "Scribe",
+        "movepool": [
+          "Ice Horn",
+          "Restore",
+          "Ply Well"
         ],
-        "elstats": {
-            "VenusAtk": 100,
-            "VenusRes": 100,
-            "MarsAtk": 100,
-            "MarsRes": 100,
-            "JupiterAtk": 80,
-            "JupiterRes": 80,
-            "MercuryAtk": 140,
-            "MercuryRes": 140
-        },
-        "requirement": "Level",
-        "isDefault": true,
-        "archtype": "Mage",
-        "description": "The heirs of the Mercury Clan use the chill of water to heal."
+        "statMultipliers": {
+          "maxHP": 100,
+          "maxPP": 140,
+          "Atk": 100,
+          "Def": 110,
+          "Spd": 90
+        }
+      },
+      {
+        "name": "Cleric",
+        "movepool": [
+          "Ice Horn",
+          "Restore",
+          "Ply Well",
+          "Wish"
+        ],
+        "statMultipliers": {
+          "maxHP": 120,
+          "maxPP": 150,
+          "Atk": 110,
+          "Def": 120,
+          "Spd": 100
+        }
+      },
+      {
+        "name": "Paragon",
+        "movepool": [
+          "Ice Missile",
+          "Restore",
+          "Pure Ply",
+          "Wish Well"
+        ],
+        "statMultipliers": {
+          "maxHP": 140,
+          "maxPP": 160,
+          "Atk": 120,
+          "Def": 130,
+          "Spd": 110
+        }
+      },
+      {
+        "name": "Angel",
+        "movepool": [
+          "Ice Missile",
+          "Restore",
+          "Pure Ply",
+          "Pure Wish"
+        ],
+        "statMultipliers": {
+          "maxHP": 160,
+          "maxPP": 170,
+          "Atk": 130,
+          "Def": 140,
+          "Spd": 120
+        }
+      }
+    ],
+    "elements": [
+      3
+    ],
+    "elstats": {
+      "VenusAtk": 100,
+      "VenusRes": 100,
+      "MarsAtk": 100,
+      "MarsRes": 100,
+      "JupiterAtk": 80,
+      "JupiterRes": 80,
+      "MercuryAtk": 140,
+      "MercuryRes": 140
     },
-    {
-        "name": "Mariner Series",
-        "classes": [
-            {
-                "name": "Mariner",
-                "movepool": [
-                    "Frost",
-                    "Cool",
-                    "Ply"
-                ],
-                "statMultipliers": {
-                    "maxHP": 110,
-                    "maxPP": 90,
-                    "Atk": 100,
-                    "Def": 100,
-                    "Spd": 90
-                }
-            },
-            {
-                "name": "Privateer",
-                "movepool": [
-                    "Diamond Dust",
-                    "Tundra",
-                    "Supercool",
-                    "Ply"
-                ],
-                "statMultipliers": {
-                    "maxHP": 130,
-                    "maxPP": 100,
-                    "Atk": 110,
-                    "Def": 110,
-                    "Spd": 100
-                }
-            },
-            {
-                "name": "Commander",
-                "movepool": [
-                    "Diamond Dust",
-                    "Glacier",
-                    "Supercool",
-                    "Ply Well"
-                ],
-                "statMultipliers": {
-                    "maxHP": 150,
-                    "maxPP": 110,
-                    "Atk": 120,
-                    "Def": 120,
-                    "Spd": 110
-                }
-            },
-            {
-                "name": "Captain",
-                "movepool": [
-                    "Diamond Berg",
-                    "Glacier",
-                    "Supercool",
-                    "Pure Ply"
-                ],
-                "statMultipliers": {
-                    "maxHP": 170,
-                    "maxPP": 120,
-                    "Atk": 130,
-                    "Def": 130,
-                    "Spd": 120
-                }
-            },
-            {
-                "name": "Admiral",
-                "movepool": [
-                    "Diamond Berg",
-                    "Glacier",
-                    "Megacool",
-                    "Pure Ply"
-                ],
-                "statMultipliers": {
-                    "maxHP": 190,
-                    "maxPP": 130,
-                    "Atk": 140,
-                    "Def": 140,
-                    "Spd": 130
-                }
-            }
+    "requirement": "MercuryDjinn",
+    "isDefault": true,
+    "archtype": "Mage",
+    "description": "The heirs of the Mercury Clan use the chill of water to heal."
+  },
+  {
+    "name": "Mariner Series",
+    "classes": [
+      {
+        "name": "Mariner",
+        "movepool": [
+          "Frost",
+          "Cool",
+          "Ply"
         ],
-        "elements": [
-            3
+        "statMultipliers": {
+          "maxHP": 110,
+          "maxPP": 90,
+          "Atk": 100,
+          "Def": 100,
+          "Spd": 90
+        }
+      },
+      {
+        "name": "Privateer",
+        "movepool": [
+          "Diamond Dust",
+          "Tundra",
+          "Supercool",
+          "Ply"
         ],
-        "elstats": {
-            "VenusAtk": 70,
-            "VenusRes": 70,
-            "MarsAtk": 100,
-            "MarsRes": 100,
-            "JupiterAtk": 110,
-            "JupiterRes": 110,
-            "MercuryAtk": 140,
-            "MercuryRes": 140
-        },
-        "requirement": "Level",
-        "isDefault": true,
-        "archtype": "Warrior",
-        "description": "Mastering the seas allows Mariners to cross waters even the roughest conditions."
+        "statMultipliers": {
+          "maxHP": 130,
+          "maxPP": 100,
+          "Atk": 110,
+          "Def": 110,
+          "Spd": 100
+        }
+      },
+      {
+        "name": "Commander",
+        "movepool": [
+          "Diamond Dust",
+          "Glacier",
+          "Supercool",
+          "Ply Well"
+        ],
+        "statMultipliers": {
+          "maxHP": 150,
+          "maxPP": 110,
+          "Atk": 120,
+          "Def": 120,
+          "Spd": 110
+        }
+      },
+      {
+        "name": "Captain",
+        "movepool": [
+          "Diamond Berg",
+          "Glacier",
+          "Supercool",
+          "Pure Ply"
+        ],
+        "statMultipliers": {
+          "maxHP": 170,
+          "maxPP": 120,
+          "Atk": 130,
+          "Def": 130,
+          "Spd": 120
+        }
+      },
+      {
+        "name": "Admiral",
+        "movepool": [
+          "Diamond Berg",
+          "Glacier",
+          "Megacool",
+          "Pure Ply"
+        ],
+        "statMultipliers": {
+          "maxHP": 190,
+          "maxPP": 130,
+          "Atk": 140,
+          "Def": 140,
+          "Spd": 130
+        }
+      }
+    ],
+    "elements": [
+      3
+    ],
+    "elstats": {
+      "VenusAtk": 70,
+      "VenusRes": 70,
+      "MarsAtk": 100,
+      "MarsRes": 100,
+      "JupiterAtk": 110,
+      "JupiterRes": 110,
+      "MercuryAtk": 140,
+      "MercuryRes": 140
     },
-    {
-        "name": "Aqua Squire Series",
-        "classes": [
-            {
-                "name": "Aqua Squire",
-                "movepool": [
-                    "Douse",
-                    "Ply"
-                ],
-                "statMultipliers": {
-                    "maxHP": 110,
-                    "maxPP": 80,
-                    "Atk": 110,
-                    "Def": 100,
-                    "Spd": 110
-                }
-            },
-            {
-                "name": "Aqua Knight",
-                "movepool": [
-                    "Diamond Dust",
-                    "Drench",
-                    "Break",
-                    "Ply"
-                ],
-                "statMultipliers": {
-                    "maxHP": 130,
-                    "maxPP": 90,
-                    "Atk": 120,
-                    "Def": 110,
-                    "Spd": 120
-                }
-            },
-            {
-                "name": "Aqua Prince",
-                "movepool": [
-                    "Diamond Dust",
-                    "Deluge",
-                    "Break",
-                    "Ply Well"
-                ],
-                "statMultipliers": {
-                    "maxHP": 150,
-                    "maxPP": 100,
-                    "Atk": 130,
-                    "Def": 120,
-                    "Spd": 130
-                }
-            },
-            {
-                "name": "Aqua Lord",
-                "movepool": [
-                    "Diamond Berg",
-                    "Deluge",
-                    "Break",
-                    "Pure Ply"
-                ],
-                "statMultipliers": {
-                    "maxHP": 170,
-                    "maxPP": 110,
-                    "Atk": 140,
-                    "Def": 130,
-                    "Spd": 140
-                }
-            },
-            {
-                "name": "Aqua Master",
-                "movepool": [
-                    "Diamond Berg",
-                    "Deluge",
-                    "Break",
-                    "Pure Ply"
-                ],
-                "statMultipliers": {
-                    "maxHP": 190,
-                    "maxPP": 120,
-                    "Atk": 150,
-                    "Def": 140,
-                    "Spd": 150
-                }
-            }
+    "requirement": "MercuryDjinn",
+    "isDefault": true,
+    "archtype": "Warrior",
+    "description": "Mastering the seas allows Mariners to cross waters even the roughest conditions."
+  },
+  {
+    "name": "Aqua Squire Series",
+    "classes": [
+      {
+        "name": "Aqua Squire",
+        "movepool": [
+          "Douse",
+          "Ply"
         ],
-        "elements": [
-            3
+        "statMultipliers": {
+          "maxHP": 110,
+          "maxPP": 80,
+          "Atk": 110,
+          "Def": 100,
+          "Spd": 110
+        }
+      },
+      {
+        "name": "Aqua Knight",
+        "movepool": [
+          "Diamond Dust",
+          "Drench",
+          "Break",
+          "Ply"
         ],
-        "elstats": {
-            "VenusAtk": 110,
-            "VenusRes": 110,
-            "MarsAtk": 110,
-            "MarsRes": 110,
-            "JupiterAtk": 80,
-            "JupiterRes": 80,
-            "MercuryAtk": 120,
-            "MercuryRes": 120
-        },
-        "requirement": "Level",
-        "isDefault": true,
-        "archtype": "Mage",
-        "description": "The Ayuthay pledge to become reputable representatives of their folk to rise from a mere Aqua Squire to reigning their country. `(Dev-note: Unlike the games, the stats of the Aqua Squire series follow those of the Squire Series, and not the Mariner Series)`"
+        "statMultipliers": {
+          "maxHP": 130,
+          "maxPP": 90,
+          "Atk": 120,
+          "Def": 110,
+          "Spd": 120
+        }
+      },
+      {
+        "name": "Aqua Prince",
+        "movepool": [
+          "Diamond Dust",
+          "Deluge",
+          "Break",
+          "Ply Well"
+        ],
+        "statMultipliers": {
+          "maxHP": 150,
+          "maxPP": 100,
+          "Atk": 130,
+          "Def": 120,
+          "Spd": 130
+        }
+      },
+      {
+        "name": "Aqua Lord",
+        "movepool": [
+          "Diamond Berg",
+          "Deluge",
+          "Break",
+          "Pure Ply"
+        ],
+        "statMultipliers": {
+          "maxHP": 170,
+          "maxPP": 110,
+          "Atk": 140,
+          "Def": 130,
+          "Spd": 140
+        }
+      },
+      {
+        "name": "Aqua Master",
+        "movepool": [
+          "Diamond Berg",
+          "Deluge",
+          "Break",
+          "Pure Ply"
+        ],
+        "statMultipliers": {
+          "maxHP": 190,
+          "maxPP": 120,
+          "Atk": 150,
+          "Def": 140,
+          "Spd": 150
+        }
+      }
+    ],
+    "elements": [
+      3
+    ],
+    "elstats": {
+      "VenusAtk": 110,
+      "VenusRes": 110,
+      "MarsAtk": 110,
+      "MarsRes": 110,
+      "JupiterAtk": 80,
+      "JupiterRes": 80,
+      "MercuryAtk": 120,
+      "MercuryRes": 120
     },
+    "requirement": "MercuryDjinn",
+    "isDefault": true,
+    "archtype": "Mage",
+    "description": "The Ayuthay pledge to become reputable representatives of their folk to rise from a mere Aqua Squire to reigning their country. `(Dev-note: Unlike the games, the stats of the Aqua Squire series follow those of the Squire Series, and not the Mariner Series)`"
+  },
     {
         "name": "Brute Series",
         "classes": [
