@@ -252,7 +252,7 @@ namespace IodemBot.Modules
             for (int i = 0; i < Math.Min(topAccounts.Count(), 10); i++)
             {
                 var curAccount = topAccounts[i];
-                builder.Append($"`{i + 1}` {Emotes[i]} {curAccount.Name?.PadRight(15) ?? curAccount.ID.ToString()} - `Lv{curAccount.LevelNumber}` - `{curAccount.XP}xp`\n");
+                builder.Append($"`{i + 1}` {Emotes[i]} {curAccount.Name?.PadRight(15) ?? curAccount.ID.ToString()} - `Lv{curAccount.LevelNumber}` - `{curAccount.XP}xp`{(curAccount.NewGames > 1 ? $"- `({curAccount.TotalXP}xp total)`" : "")}\n");
             }
 
             var rank = UserAccounts.GetRank(Context.User);

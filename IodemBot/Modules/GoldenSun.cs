@@ -144,7 +144,7 @@ namespace IodemBot.Modules
             .WithColor(Colors.Get(account.Element.ToString()))
             .WithAuthor(author)
             .AddField("Level", account.LevelNumber, true)
-            .AddField("XP", $"{account.XP} - next in {account.XPneeded}", true)
+            .AddField("XP", $"{account.XP} - next in {account.XPneeded}{(account.NewGames > 1 ? $"\n({account.TotalXP} total | {account.NewGames} resets)" : "")}", true)
             .AddField("Rank", UserAccounts.GetRank(user) + 1, true)
 
             .AddField("Class", account.GsClass, true)
