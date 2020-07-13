@@ -1153,214 +1153,214 @@
         "archtype": "Warrior",
         "description": "A Brutes mere interest is to fight and prove superiority."
     },
-    {
-        "name": "Apprentice Series",
-        "classes": [
-            {
-                "name": "Apprentice",
-                "movepool": [
-                    "Gaia",
-                    "Dull",
-                    "Cure"
-                ],
-                "statMultipliers": {
-                    "maxHP": 100,
-                    "maxPP": 120,
-                    "Atk": 110,
-                    "Def": 100,
-                    "Spd": 120
-                }
-            },
-            {
-                "name": "Gaia Illusionist",
-                "movepool": [
-                    "Astral Blast",
-                    "Gaia",
-                    "Dull",
-                    "Cure Well"
-                ],
-                "statMultipliers": {
-                    "maxHP": 120,
-                    "maxPP": 130,
-                    "Atk": 120,
-                    "Def": 110,
-                    "Spd": 130
-                }
-            },
-            {
-                "name": "Gaia Enchanter",
-                "movepool": [
-                    "Astral Blast",
-                    "Mother Gaia",
-                    "Blunt",
-                    "Impact",
-                    "Cure Well"
-                ],
-                "statMultipliers": {
-                    "maxHP": 140,
-                    "maxPP": 140,
-                    "Atk": 130,
-                    "Def": 120,
-                    "Spd": 140
-                }
-            },
-            {
-                "name": "Gaia Conjurer",
-                "movepool": [
-                    "Thunder Mine",
-                    "Mother Gaia",
-                    "Blunt",
-                    "High Impact",
-                    "Potent Cure"
-                ],
-                "statMultipliers": {
-                    "maxHP": 170,
-                    "maxPP": 160,
-                    "Atk": 140,
-                    "Def": 130,
-                    "Spd": 160
-                }
-            },
-            {
-                "name": "Gaia War Adept",
-                "movepool": [
-                    "Thunder Mine",
-                    "Grand Gaia",
-                    "Blunt",
-                    "High Impact",
-                    "Potent Cure"
-                ],
-                "statMultipliers": {
-                    "maxHP": 190,
-                    "maxPP": 170,
-                    "Atk": 150,
-                    "Def": 140,
-                    "Spd": 170
-                }
-            }
+  {
+    "name": "Apprentice Series",
+    "classes": [
+      {
+        "name": "Apprentice",
+        "movepool": [
+          "Gaia",
+          "Dull",
+          "Cure"
         ],
-        "elements": [
-            0,
-            2
+        "statMultipliers": {
+          "maxHP": 100,
+          "maxPP": 120,
+          "Atk": 110,
+          "Def": 100,
+          "Spd": 120
+        }
+      },
+      {
+        "name": "Gaia Illusionist",
+        "movepool": [
+          "Astral Blast",
+          "Gaia",
+          "Dull",
+          "Cure Well"
         ],
-        "elstats": {
-            "VenusAtk": 130,
-            "VenusRes": 130,
-            "MarsAtk": 65,
-            "MarsRes": 65,
-            "JupiterAtk": 130,
-            "JupiterRes": 130,
-            "MercuryAtk": 85,
-            "MercuryRes": 85
-        },
-        "requirement": "Level",
-        "isDefault": false,
-        "archtype": "Warrior",
-        "description": "The study of Alchemy and the answer of the universe is the center of the Apprentices education, with the goal to support all of their fellows."
+        "statMultipliers": {
+          "maxHP": 120,
+          "maxPP": 130,
+          "Atk": 120,
+          "Def": 110,
+          "Spd": 130
+        }
+      },
+      {
+        "name": "Gaia Enchanter",
+        "movepool": [
+          "Astral Blast",
+          "Mother Gaia",
+          "Blunt",
+          "Impact",
+          "Cure Well"
+        ],
+        "statMultipliers": {
+          "maxHP": 140,
+          "maxPP": 140,
+          "Atk": 130,
+          "Def": 120,
+          "Spd": 140
+        }
+      },
+      {
+        "name": "Gaia Conjurer",
+        "movepool": [
+          "Thunder Mine",
+          "Mother Gaia",
+          "Blunt",
+          "High Impact",
+          "Potent Cure"
+        ],
+        "statMultipliers": {
+          "maxHP": 170,
+          "maxPP": 160,
+          "Atk": 140,
+          "Def": 130,
+          "Spd": 160
+        }
+      },
+      {
+        "name": "Gaia War Adept",
+        "movepool": [
+          "Thunder Mine",
+          "Grand Gaia",
+          "Blunt",
+          "High Impact",
+          "Potent Cure"
+        ],
+        "statMultipliers": {
+          "maxHP": 190,
+          "maxPP": 170,
+          "Atk": 150,
+          "Def": 140,
+          "Spd": 170
+        }
+      }
+    ],
+    "elements": [
+      0,
+      2
+    ],
+    "elstats": {
+      "VenusAtk": 130,
+      "VenusRes": 130,
+      "MarsAtk": 65,
+      "MarsRes": 65,
+      "JupiterAtk": 130,
+      "JupiterRes": 130,
+      "MercuryAtk": 85,
+      "MercuryRes": 85
     },
-    {
-        "name": "Crusader Series",
-        "classes": [
-            {
-                "name": "Crusader",
-                "movepool": [
-                    "Thorn",
-                    "Ply"
-                ],
-                "statMultipliers": {
-                    "maxHP": 100,
-                    "maxPP": 90,
-                    "Atk": 110,
-                    "Def": 110,
-                    "Spd": 90
-                }
-            },
-            {
-                "name": "Gaia Defender",
-                "movepool": [
-                    "Cutting Edge",
-                    "Briar",
-                    "Ply"
-                ],
-                "statMultipliers": {
-                    "maxHP": 120,
-                    "maxPP": 100,
-                    "Atk": 120,
-                    "Def": 120,
-                    "Spd": 100
-                }
-            },
-            {
-                "name": "Gaia Cavalier",
-                "movepool": [
-                    "Cutting Edge",
-                    "Briar",
-                    "Sand",
-                    "Ply Well",
-                    "Revive"
-                ],
-                "statMultipliers": {
-                    "maxHP": 140,
-                    "maxPP": 110,
-                    "Atk": 130,
-                    "Def": 130,
-                    "Spd": 110
-                }
-            },
-            {
-                "name": "Guardian",
-                "movepool": [
-                    "Plume Edge",
-                    "Briar",
-                    "Sand",
-                    "Ply Well",
-                    "Revive"
-                ],
-                "statMultipliers": {
-                    "maxHP": 170,
-                    "maxPP": 130,
-                    "Atk": 140,
-                    "Def": 140,
-                    "Spd": 130
-                }
-            },
-            {
-                "name": "Protector",
-                "movepool": [
-                    "Plume Edge",
-                    "Nettle",
-                    "Sand",
-                    "Pure Ply",
-                    "Revive"
-                ],
-                "statMultipliers": {
-                    "maxHP": 190,
-                    "maxPP": 140,
-                    "Atk": 150,
-                    "Def": 150,
-                    "Spd": 140
-                }
-            }
+    "requirement": "UnlockedClasses",
+    "isDefault": false,
+    "archtype": "Warrior",
+    "description": "The study of Alchemy and the answer of the universe is the center of the Apprentices education, with the goal to support all of their fellows."
+  },
+  {
+    "name": "Crusader Series",
+    "classes": [
+      {
+        "name": "Crusader",
+        "movepool": [
+          "Thorn",
+          "Ply"
         ],
-        "elements": [
-            0,
-            3
+        "statMultipliers": {
+          "maxHP": 100,
+          "maxPP": 90,
+          "Atk": 110,
+          "Def": 110,
+          "Spd": 90
+        }
+      },
+      {
+        "name": "Gaia Defender",
+        "movepool": [
+          "Cutting Edge",
+          "Briar",
+          "Ply"
         ],
-        "elstats": {
-            "VenusAtk": 130,
-            "VenusRes": 130,
-            "MarsAtk": 90,
-            "MarsRes": 90,
-            "JupiterAtk": 65,
-            "JupiterRes": 65,
-            "MercuryAtk": 130,
-            "MercuryRes": 130
-        },
-        "requirement": "ColossoWins",
-        "isDefault": false,
-        "archtype": "Warrior",
-        "description": "Crusaders are treasure hunters and try to pick up a bargain whenever possible."
+        "statMultipliers": {
+          "maxHP": 120,
+          "maxPP": 100,
+          "Atk": 120,
+          "Def": 120,
+          "Spd": 100
+        }
+      },
+      {
+        "name": "Gaia Cavalier",
+        "movepool": [
+          "Cutting Edge",
+          "Briar",
+          "Sand",
+          "Ply Well",
+          "Revive"
+        ],
+        "statMultipliers": {
+          "maxHP": 140,
+          "maxPP": 110,
+          "Atk": 130,
+          "Def": 130,
+          "Spd": 110
+        }
+      },
+      {
+        "name": "Guardian",
+        "movepool": [
+          "Plume Edge",
+          "Briar",
+          "Sand",
+          "Ply Well",
+          "Revive"
+        ],
+        "statMultipliers": {
+          "maxHP": 170,
+          "maxPP": 130,
+          "Atk": 140,
+          "Def": 140,
+          "Spd": 130
+        }
+      },
+      {
+        "name": "Protector",
+        "movepool": [
+          "Plume Edge",
+          "Nettle",
+          "Sand",
+          "Pure Ply",
+          "Revive"
+        ],
+        "statMultipliers": {
+          "maxHP": 190,
+          "maxPP": 140,
+          "Atk": 150,
+          "Def": 150,
+          "Spd": 140
+        }
+      }
+    ],
+    "elements": [
+      0,
+      3
+    ],
+    "elstats": {
+      "VenusAtk": 130,
+      "VenusRes": 130,
+      "MarsAtk": 90,
+      "MarsRes": 90,
+      "JupiterAtk": 65,
+      "JupiterRes": 65,
+      "MercuryAtk": 130,
+      "MercuryRes": 130
     },
+    "requirement": "DungeonsCompleted",
+    "isDefault": false,
+    "archtype": "Warrior",
+    "description": "Crusaders are treasure hunters and try to pick up a bargain whenever possible."
+  },
     {
         "name": "Page Series",
         "classes": [
@@ -1468,215 +1468,215 @@
         "archtype": "Warrior",
         "description": "The Pages study the strategies and abilities of their peers, so they may better support them."
     },
-    {
-        "name": "Air Pilgrim Series",
-        "classes": [
-            {
-                "name": "Air Pilgrim",
-                "movepool": [
-                    "Volcano",
-                    "Plasma"
-                ],
-                "statMultipliers": {
-                    "maxHP": 90,
-                    "maxPP": 120,
-                    "Atk": 90,
-                    "Def": 100,
-                    "Spd": 120
-                }
-            },
-            {
-                "name": "Air Wanderer",
-                "movepool": [
-                    "Eruption",
-                    "Plasma",
-                    "Bind",
-                    "Ward"
-                ],
-                "statMultipliers": {
-                    "maxHP": 110,
-                    "maxPP": 130,
-                    "Atk": 100,
-                    "Def": 110,
-                    "Spd": 130
-                }
-            },
-            {
-                "name": "Air Ascetic",
-                "movepool": [
-                    "Eruption",
-                    "Plasma",
-                    "Bind",
-                    "Resist",
-                    "Aura"
-                ],
-                "statMultipliers": {
-                    "maxHP": 120,
-                    "maxPP": 140,
-                    "Atk": 110,
-                    "Def": 120,
-                    "Spd": 140
-                }
-            },
-            {
-                "name": "Air Fire Monk",
-                "movepool": [
-                    "Eruption",
-                    "Shine Plasma",
-                    "Bind",
-                    "Resist",
-                    "Healing Aura"
-                ],
-                "statMultipliers": {
-                    "maxHP": 150,
-                    "maxPP": 160,
-                    "Atk": 130,
-                    "Def": 140,
-                    "Spd": 160
-                }
-            },
-            {
-                "name": "Air Guru",
-                "movepool": [
-                    "Pyroclasm",
-                    "Spark Plasma",
-                    "Bind",
-                    "Resist",
-                    "Cool Aura"
-                ],
-                "statMultipliers": {
-                    "maxHP": 170,
-                    "maxPP": 170,
-                    "Atk": 140,
-                    "Def": 150,
-                    "Spd": 170
-                }
-            }
+  {
+    "name": "Air Pilgrim Series",
+    "classes": [
+      {
+        "name": "Air Pilgrim",
+        "movepool": [
+          "Volcano",
+          "Plasma"
         ],
-        "elements": [
-            1,
-            2
+        "statMultipliers": {
+          "maxHP": 90,
+          "maxPP": 120,
+          "Atk": 90,
+          "Def": 100,
+          "Spd": 120
+        }
+      },
+      {
+        "name": "Air Wanderer",
+        "movepool": [
+          "Eruption",
+          "Plasma",
+          "Bind",
+          "Ward"
         ],
-        "elstats": {
-            "VenusAtk": 70,
-            "VenusRes": 70,
-            "MarsAtk": 130,
-            "MarsRes": 130,
-            "JupiterAtk": 130,
-            "JupiterRes": 130,
-            "MercuryAtk": 80,
-            "MercuryRes": 80
-        },
-        "requirement": "Level",
-        "isDefault": false,
-        "archtype": "Mage",
-        "description": "The Air Pilgrims don't have a home. They travel from place to place with the winds."
+        "statMultipliers": {
+          "maxHP": 110,
+          "maxPP": 130,
+          "Atk": 100,
+          "Def": 110,
+          "Spd": 130
+        }
+      },
+      {
+        "name": "Air Ascetic",
+        "movepool": [
+          "Eruption",
+          "Plasma",
+          "Bind",
+          "Resist",
+          "Aura"
+        ],
+        "statMultipliers": {
+          "maxHP": 120,
+          "maxPP": 140,
+          "Atk": 110,
+          "Def": 120,
+          "Spd": 140
+        }
+      },
+      {
+        "name": "Air Fire Monk",
+        "movepool": [
+          "Eruption",
+          "Shine Plasma",
+          "Bind",
+          "Resist",
+          "Healing Aura"
+        ],
+        "statMultipliers": {
+          "maxHP": 150,
+          "maxPP": 160,
+          "Atk": 130,
+          "Def": 140,
+          "Spd": 160
+        }
+      },
+      {
+        "name": "Air Guru",
+        "movepool": [
+          "Pyroclasm",
+          "Spark Plasma",
+          "Bind",
+          "Resist",
+          "Cool Aura"
+        ],
+        "statMultipliers": {
+          "maxHP": 170,
+          "maxPP": 170,
+          "Atk": 140,
+          "Def": 150,
+          "Spd": 170
+        }
+      }
+    ],
+    "elements": [
+      1,
+      2
+    ],
+    "elstats": {
+      "VenusAtk": 70,
+      "VenusRes": 70,
+      "MarsAtk": 130,
+      "MarsRes": 130,
+      "JupiterAtk": 130,
+      "JupiterRes": 130,
+      "MercuryAtk": 80,
+      "MercuryRes": 80
     },
-    {
-        "name": "Aqua Pilgrim Series",
-        "classes": [
-            {
-                "name": "Aqua Pilgrim",
-                "movepool": [
-                    "Beam",
-                    "Prism",
-                    "Thermal"
-                ],
-                "statMultipliers": {
-                    "maxHP": 90,
-                    "maxPP": 120,
-                    "Atk": 90,
-                    "Def": 100,
-                    "Spd": 120
-                }
-            },
-            {
-                "name": "Aqua Wanderer",
-                "movepool": [
-                    "Cycle Beam",
-                    "Hail Prism",
-                    "Thermal",
-                    "Wish"
-                ],
-                "statMultipliers": {
-                    "maxHP": 110,
-                    "maxPP": 130,
-                    "Atk": 100,
-                    "Def": 110,
-                    "Spd": 130
-                }
-            },
-            {
-                "name": "Aqua Ascetic",
-                "movepool": [
-                    "Cycle Beam",
-                    "Hail Prism",
-                    "Thermal",
-                    "Wish",
-                    "Phoenix"
-                ],
-                "statMultipliers": {
-                    "maxHP": 120,
-                    "maxPP": 140,
-                    "Atk": 110,
-                    "Def": 120,
-                    "Spd": 140
-                }
-            },
-            {
-                "name": "Water Monk",
-                "movepool": [
-                    "Cycle Beam",
-                    "Hail Prism",
-                    "Thermal",
-                    "Wish Well",
-                    "Phoenix"
-                ],
-                "statMultipliers": {
-                    "maxHP": 150,
-                    "maxPP": 160,
-                    "Atk": 130,
-                    "Def": 140,
-                    "Spd": 160
-                }
-            },
-            {
-                "name": "Aqua Guru",
-                "movepool": [
-                    "Searing Beam",
-                    "Freeze Prism",
-                    "Thermal",
-                    "Pure Wish",
-                    "Phoenix"
-                ],
-                "statMultipliers": {
-                    "maxHP": 170,
-                    "maxPP": 170,
-                    "Atk": 140,
-                    "Def": 150,
-                    "Spd": 170
-                }
-            }
+    "requirement": "DungeonsCompleted",
+    "isDefault": false,
+    "archtype": "Mage",
+    "description": "The Air Pilgrims don't have a home. They travel from place to place with the winds."
+  },
+  {
+    "name": "Aqua Pilgrim Series",
+    "classes": [
+      {
+        "name": "Aqua Pilgrim",
+        "movepool": [
+          "Beam",
+          "Prism",
+          "Thermal"
         ],
-        "elements": [
-            1,
-            3
+        "statMultipliers": {
+          "maxHP": 90,
+          "maxPP": 120,
+          "Atk": 90,
+          "Def": 100,
+          "Spd": 120
+        }
+      },
+      {
+        "name": "Aqua Wanderer",
+        "movepool": [
+          "Cycle Beam",
+          "Hail Prism",
+          "Thermal",
+          "Wish"
         ],
-        "elstats": {
-            "VenusAtk": 70,
-            "VenusRes": 70,
-            "MarsAtk": 130,
-            "MarsRes": 130,
-            "JupiterAtk": 75,
-            "JupiterRes": 75,
-            "MercuryAtk": 130,
-            "MercuryRes": 130
-        },
-        "requirement": "Level",
-        "isDefault": false,
-        "archtype": "Mage",
-        "description": "On their journeys through all sorts of terrains, Aqua Pilgrims leave riddled markings to mark their way."
+        "statMultipliers": {
+          "maxHP": 110,
+          "maxPP": 130,
+          "Atk": 100,
+          "Def": 110,
+          "Spd": 130
+        }
+      },
+      {
+        "name": "Aqua Ascetic",
+        "movepool": [
+          "Cycle Beam",
+          "Hail Prism",
+          "Thermal",
+          "Wish",
+          "Phoenix"
+        ],
+        "statMultipliers": {
+          "maxHP": 120,
+          "maxPP": 140,
+          "Atk": 110,
+          "Def": 120,
+          "Spd": 140
+        }
+      },
+      {
+        "name": "Water Monk",
+        "movepool": [
+          "Cycle Beam",
+          "Hail Prism",
+          "Thermal",
+          "Wish Well",
+          "Phoenix"
+        ],
+        "statMultipliers": {
+          "maxHP": 150,
+          "maxPP": 160,
+          "Atk": 130,
+          "Def": 140,
+          "Spd": 160
+        }
+      },
+      {
+        "name": "Aqua Guru",
+        "movepool": [
+          "Searing Beam",
+          "Freeze Prism",
+          "Thermal",
+          "Pure Wish",
+          "Phoenix"
+        ],
+        "statMultipliers": {
+          "maxHP": 170,
+          "maxPP": 170,
+          "Atk": 140,
+          "Def": 150,
+          "Spd": 170
+        }
+      }
+    ],
+    "elements": [
+      1,
+      3
+    ],
+    "elstats": {
+      "VenusAtk": 70,
+      "VenusRes": 70,
+      "MarsAtk": 130,
+      "MarsRes": 130,
+      "JupiterAtk": 75,
+      "JupiterRes": 75,
+      "MercuryAtk": 130,
+      "MercuryRes": 130
     },
+    "requirement": "DungeonsCompleted",
+    "isDefault": false,
+    "archtype": "Mage",
+    "description": "On their journeys through all sorts of terrains, Aqua Pilgrims leave riddled markings to mark their way."
+  },
     {
         "name": "Air Seer Series",
         "classes": [
@@ -1777,7 +1777,7 @@
             "MercuryAtk": 85,
             "MercuryRes": 85
         },
-        "requirement": "Level",
+        "requirement": "Djinn",
         "isDefault": false,
         "archtype": "Mage",
         "description": "Air Seers meditate in Canyons, to make predictions about the future."
@@ -2004,7 +2004,7 @@
             "MercuryAtk": 130,
             "MercuryRes": 130
         },
-        "requirement": "Level",
+        "requirement": "Djinn",
         "isDefault": false,
         "archtype": "Mage",
         "description": "The energy of swamps lets Aqua Seers anticipate future events."

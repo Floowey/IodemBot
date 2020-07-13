@@ -6,7 +6,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
     {
         public int apply(UserAccount user)
         {
-            return user.BattleStats.TotalTeamMates >= 450 ? 2 : user.BattleStats.TotalTeamMates >= 250 ? 1 : 0;
+            return user.BattleStats.TotalTeamMates >= 400 ? 2 : user.BattleStats.TotalTeamMates >= 200 ? 1 : 0;
         }
     }
 }

@@ -6,7 +6,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
     {
         public int apply(UserAccount user)
         {
-            return (int)(user.LevelNumber / 10);
+            return (int)(user.LevelNumber / 12);
         }
     }
 }

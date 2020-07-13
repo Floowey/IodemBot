@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using IodemBot.Core;
+using IodemBot.Core.Leveling;
 using IodemBot.Core.UserManagement;
 using IodemBot.Modules.ColossoBattles;
 

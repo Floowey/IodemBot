@@ -113,7 +113,7 @@ namespace IodemBot
         private async Task Client_Ready()
         {
             var channel = (SocketTextChannel)client.GetChannel(535209634408169492) ?? (SocketTextChannel)client.GetChannel(668443234292334612);
-            if (channel != null && (Global.RunningSince - DateTime.Now).TotalSeconds < 10)
+            if (channel != null && (DateTime.Now - Global.RunningSince).TotalSeconds < 5)
             {
                 await channel.SendMessageAsync($"Hello, I am back up.");
             }

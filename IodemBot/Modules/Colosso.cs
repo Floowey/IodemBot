@@ -126,16 +126,6 @@ namespace IodemBot.Modules
                 string jsonR = File.ReadAllText("SystemLang/results.json");
                 results = JsonConvert.DeserializeObject<List<Result>>(jsonR);
             }
-
-            Global.Client.ReactionAdded += Client_ReactionAdded;
-        }
-
-        private static async Task Client_ReactionAdded(Cacheable<IUserMessage, ulong> Message, ISocketMessageChannel Channel, SocketReaction Reaction)
-        {
-            if (Reaction.Emote.Name == "hard_nut" && lastMessageWasNuts)
-            {
-                await GoldenSun.AwardClassSeries("Crusader Series", (SocketGuildUser)Reaction.User, (SocketTextChannel)Reaction.Channel);
-            }
         }
 
         private static bool ValidateStorageFile(string file)

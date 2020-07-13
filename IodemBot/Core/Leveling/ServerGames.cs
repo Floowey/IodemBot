@@ -7,6 +7,7 @@ using Discord.WebSocket;
 using IodemBot.Core.UserManagement;
 using IodemBot.Extensions;
 using IodemBot.Modules;
+using IodemBot.Modules.ColossoBattles;
 using IodemBot.Modules.GoldenSunMechanics;
 
 namespace IodemBot.Core.Leveling
@@ -62,7 +63,7 @@ namespace IodemBot.Core.Leveling
 
             userAccount.BattleStats += battleStats;
             var bs = userAccount.BattleStats;
-            _ = UnlockClasses(userAccount, lobbyChannel);
+            _ = UnlockBattleClasses(userAccount, lobbyChannel);
 
             var awardStrings = rewards.Select(f => f.Award(userAccount)).Where(s => !s.IsNullOrEmpty()).ToList();
             if (awardStrings.Count() > 0)
@@ -131,15 +132,15 @@ namespace IodemBot.Core.Leveling
             _ = msg.DeleteAsync();
         }
 
-        private static async Task UnlockClasses(UserAccount userAccount, ITextChannel channel)
+        private static async Task UnlockBattleClasses(UserAccount userAccount, ITextChannel channel)
         {
             var bs = userAccount.BattleStats;
-            if (userAccount.ServerStats.ColossoWins >= 15)
+            if (userAccount.ServerStats.ColossoWins >= 20)
             {
                 await GoldenSun.AwardClassSeries("Brute Series", userAccount, channel);
             }
 
-            if (bs.KillsByHand >= 161)
+            if (bs.KillsByHand >= 210)
             {
                 await GoldenSun.AwardClassSeries("Samurai Series", userAccount, channel);
             }
@@ -149,7 +150,7 @@ namespace IodemBot.Core.Leveling
                 await GoldenSun.AwardClassSeries("Ninja Series", userAccount, channel);
             }
 
-            if (bs.SoloBattles >= 50)
+            if (bs.SoloBattles >= 100)
             {
                 await GoldenSun.AwardClassSeries("Ranger Series", userAccount, channel);
             }
@@ -164,10 +165,41 @@ namespace IodemBot.Core.Leveling
                 await GoldenSun.AwardClassSeries("White Mage Series", userAccount, channel);
             }
 
-            if (bs.Revives >= 50)
+            if (bs.Revives >= 25)
             {
                 await GoldenSun.AwardClassSeries("Medium Series", userAccount, channel);
             }
+        }
+
+        internal static async Task UserWonDungeon(UserAccount avatar, EnemiesDatabase.Dungeon dungeon, ITextChannel channel)
+        {
+            avatar.ServerStats.DungeonsCompleted++;
+            if(avatar.ServerStats.LastDungeon == dungeon.Name)
+            {
+                avatar.ServerStats.SameDungeonInARow++;
+                if(avatar.ServerStats.SameDungeonInARow >= 5)
+                {
+                    _ = GoldenSun.AwardClassSeries("Hermit Series", avatar, channel);
+                }
+            }
+            avatar.ServerStats.LastDungeon = dungeon.Name;
+            if(dungeon.Name == "Mercury Lighthouse")
+            {
+                _ = GoldenSun.AwardClassSeries("Aqua Pilgrim Series", avatar, channel);
+            }
+
+            //Unlock Crusader
+            if (avatar.Dungeons.Count >= 6)
+            {
+                _ = GoldenSun.AwardClassSeries("Crusader Series", avatar, channel);
+            }
+
+            if(avatar.ServerStats.DungeonsCompleted >= 10)
+            {
+                _ = GoldenSun.AwardClassSeries("Air Pilgrim Series", avatar, channel);
+
+            }
+            await Task.CompletedTask;
         }
 
         internal static async Task UserSentCommand(SocketUser user, IMessageChannel channel)
@@ -187,12 +219,7 @@ namespace IodemBot.Core.Leveling
             userAccount.ServerStats.RpsStreak++;
             UserAccounts.SaveAccounts();
 
-            if (userAccount.ServerStats.RpsStreak == 4)
-            {
-                await GoldenSun.AwardClassSeries("Air Seer Series", user, channel);
-            }
-
-            if (userAccount.ServerStats.RpsWins == 15)
+            if (userAccount.ServerStats.RpsWins == 3)
             {
                 await GoldenSun.AwardClassSeries("Aqua Seer Series", user, channel);
             }
@@ -203,15 +230,6 @@ namespace IodemBot.Core.Leveling
             var userAccount = UserAccounts.GetAccount(user);
             userAccount.ServerStats.RpsStreak = 0;
             UserAccounts.SaveAccounts();
-        }
-
-        internal static async Task UserHasCursed(SocketGuildUser user, SocketTextChannel channel)
-        {
-            var userAccount = UserAccounts.GetAccount(user);
-            if (userAccount.ServerStats.HasQuotedMatthew && userAccount.ServerStats.HasWrittenCurse)
-            {
-                await GoldenSun.AwardClassSeries("Curse Mage Series", user, channel);
-            }
         }
 
         internal static async Task UserLostBattle(UserAccount userAccount, ITextChannel battleChannel)

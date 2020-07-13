@@ -11,15 +11,15 @@ namespace IodemBot.Modules.GoldenSunMechanics
             {
                 return 4;
             }
-            else if (nOfClasses >= 9) // Conjurer
+            else if (nOfClasses >= 11) // Conjurer
             {
                 return 3;
             }
-            else if (nOfClasses >= 6) // Enchanter
+            else if (nOfClasses >= 7) // Enchanter
             {
                 return 2;
             }
-            else if (nOfClasses >= 3) // Illusionist
+            else if (nOfClasses >= 4) // Illusionist
             {
                 return 1;
             }

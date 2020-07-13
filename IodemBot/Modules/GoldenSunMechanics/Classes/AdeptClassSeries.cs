@@ -48,7 +48,9 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 { "SoloBattles", new SoloBattleRequirement() },
                 { "Teammates", new TeammatesRequirement() },
                 { "DaysActive", new DaysActiveRequirement() },
-                { "UnlockedClasses", new UnlockedClassesRequirement() }
+                { "UnlockedClasses", new UnlockedClassesRequirement() },
+                { "Djinn", new DjinnRequirement() },
+                { "DungeonsCompleted", new DungeonsCompletedRequirement()}
             };
         }
 

@@ -155,7 +155,7 @@ namespace IodemBot.Modules.ColossoBattles
             {
                 if (Battle.GetWinner() == Team.A)
                 {
-                    winners.ConvertAll(s => (PlayerFighter)s).ForEach(async p => await ServerGames.UserWonBattle(p.avatar, matchup.RewardTables.GetRewards(), p.battleStats, lobbyChannel, BattleChannel));
+                    winners.OfType<PlayerFighter>().ToList().ForEach(async p => await ServerGames.UserWonBattle(p.avatar, matchup.RewardTables.GetRewards(), p.battleStats, lobbyChannel, BattleChannel));
                 }
 
                 Battle.TeamA.ForEach(p =>
@@ -179,6 +179,7 @@ namespace IodemBot.Modules.ColossoBattles
                 }
                 else
                 {
+                    winners.OfType<PlayerFighter>().ToList().ForEach(async p => await ServerGames.UserWonDungeon(p.avatar, Dungeon, lobbyChannel));
                     _ = WriteGameOver();
                 }
             }

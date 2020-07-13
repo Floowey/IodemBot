@@ -127,15 +127,7 @@ namespace IodemBot.Core.Leveling
                 userAccount.ServerStats.ReactionsAdded += 5;
                 userAccount.ServerStats.MostRecentChannel = reaction.MessageId;
             }
-
-            if (userAccount.ServerStats.ReactionsAdded >= 50)
-            {
-                try
-                {
-                    await GoldenSun.AwardClassSeries("Aqua Pilgrim Series", user, GuildSettings.GetGuildSettings(user.Guild).ColossoChannel);
-                }
-                catch { }
-            }
+            await Task.CompletedTask;
             UserAccounts.SaveAccounts();
         }
     }

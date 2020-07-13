@@ -67,6 +67,9 @@ namespace IodemBot.Core.UserManagement
         public uint RpsWins { get; set; } = 0;
         public uint SpentMoneyOnArtifacts { get; set; }
         public int UniqueDaysActive { get; set; } = 0;
+        public int DungeonsCompleted { get; internal set; }
+        public string LastDungeon { get; internal set; }
+        public int SameDungeonInARow { get; internal set; }
 
         public static ServerStats operator +(ServerStats s1, ServerStats s2)
         {

@@ -186,14 +186,6 @@ namespace IodemBot.Modules.GoldenSunMechanics
             if (inv.Buy(item))
             {
                 _ = ShowInventory();
-                if (ItemDatabase.GetItem(item).IsArtifact)
-                {
-                    account.ServerStats.SpentMoneyOnArtifacts += ItemDatabase.GetItem(item).Price;
-                    if (account.ServerStats.SpentMoneyOnArtifacts >= 18000)
-                    {
-                        await GoldenSun.AwardClassSeries("Crusader Series", (SocketGuildUser)Context.User, (SocketTextChannel)Context.Channel);
-                    }
-                }
             }
             else
             {

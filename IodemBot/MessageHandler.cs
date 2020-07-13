@@ -8,6 +8,7 @@ using Discord.Commands;
 using Discord.WebSocket;
 using IodemBot.Core.Leveling;
 using IodemBot.Core.UserManagement;
+using IodemBot.Modules;
 
 namespace IodemBot
 {
@@ -122,7 +123,7 @@ namespace IodemBot
                 var userAccount = UserAccounts.GetAccount(msg.Author);
                 userAccount.ServerStats.HasWrittenCurse = true;
                 UserAccounts.SaveAccounts();
-                await ServerGames.UserHasCursed((SocketGuildUser)msg.Author, (SocketTextChannel)msg.Channel);
+                await GoldenSun.AwardClassSeries("Curse Mage Series", msg.Author, msg.Channel);
             }
         }
 
