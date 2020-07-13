@@ -11,7 +11,7 @@ using Iodembot.Preconditions;
 using IodemBot.Core.Leveling;
 using IodemBot.Core.UserManagement;
 using IodemBot.Extensions;
-using System.Runtime.InteropServices
+using System.Runtime.InteropServices;
 
 namespace IodemBot.Modules
 {
@@ -151,7 +151,7 @@ namespace IodemBot.Modules
             .WithColor(Colors.Get("Iodem"))
             .AddField("Running since", $"{Global.RunningSince.ToLocalTime()} ({DateTime.Now.Subtract(Global.RunningSince.ToLocalTime()):d' 'hh':'mm':'ss})")
             .AddField("Connected since", $"{Global.UpSince.ToLocalTime()} ({DateTime.Now.Subtract(Global.UpSince.ToLocalTime()):d' 'hh':'mm':'ss})")
-            .AddField("Running on", System.Runtime.InteropServices.RuntimeInformation.OSArchitecture)
+            .AddField("Running on", RuntimeInformation.OSDescription)
             .Build()) ;
         }
 
