@@ -63,6 +63,8 @@
           [
             {
               "Weight": 1,
+              "Tag": "TutorialItem",
+              "Obtainable": 3,
               "Chest": "Wooden",
               "HasChest": true,
               "Item": "Machete"
@@ -71,12 +73,16 @@
           [
             {
               "Weight": 1,
+              "Tag": "TutorialItem",
+              "Obtainable": 3,
               "Item": "Leather Cap"
             }
           ],
           [
             {
               "Weight": 1,
+              "Tag": "TutorialItem",
+              "Obtainable": 3,
               "Item": "Padded Gloves"
             }
           ]
@@ -122,7 +128,7 @@
         ]
       },
       {
-        "Flavourtext": "Well done! You are set and ready! You are starting off in the calm town of Vault. It is near the ruins of Vale, one of the most significant locations to the world of Golden Sun and the perfect place to start off an unforgetable adventure!",
+        "Flavourtext": "Well done! You are set and ready! You are starting off in the calm town of Vault. It is near the Ruins of Vale, one of the most significant locations to the world of Golden Sun and the perfect place to start off an unforgetable adventure!",
         "EnemyNames": [ "End" ],
         "RewardTables": [
           [
@@ -140,13 +146,13 @@
           [
             {
               "Weight": 1,
-              "Dungeon": "Vault"
+              "Dungeon": "Vale"
             }
           ],
           [
             {
               "Weight": 1,
-              "Dungeon": "Vale"
+              "Dungeon": "Vault"
             }
           ]
         ]
@@ -249,7 +255,7 @@
         ]
       },
       {
-        "Flavourtext": "From one of the ruined house, a swarm of bats get's stirred up.",
+        "Flavourtext": "Out of one of the ruined houses, a swarm of bats get's stirred up.",
         "EnemyNames": [ "Bat 1", "Bat 1", "Bat 1" ],
         "RewardTables": [
           [
@@ -317,10 +323,19 @@
           ],
           [
             {
-              "Weight": 3,
+              "Weight": 2,
+              "Tag": "SolSanctumUnlocked",
+              "Obtainable": 1,
               "Dungeon": "Sol Sanctum"
             },
-            { "Weight": 2 }
+            { "Weight": 3 }
+          ],
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "SolSanctumUnlocked" ],
+              "Dungeon": "Sol Sanctum"
+            }
           ]
         ]
       },
@@ -442,7 +457,7 @@
         ]
       },
       {
-        "Flavourtext": "You have solved the puzzle, you have reached the ruined Star Chamber! The roof of it has broken down and the room is exposed to directly to the Golden Sun. Some nasty looking monsters are looking at you from afar, it would be better to turn back now than never!",
+        "Flavourtext": "You have solved the puzzle, you have reached the ruined Star Chamber! The roof of it has broken down and the room is exposed directly to the Golden Sun. Some nasty looking monsters are looking at you from afar, it would be better to turn back now than never!",
         "EnemyNames": [ "Amaze 1", "Amaze 2", "Amaze 1" ],
         "RewardTables": [
           [
@@ -750,7 +765,7 @@
               "Weight": 1,
               "XP": 500,
               "Coins": 500,
-              "Djinn": "Kalay"
+              "Dungeon": "Kalay"
             }
           ],
           [
@@ -897,7 +912,7 @@
         ]
       },
       {
-        "Flavourtext": "The dog is thankful for saving him and giving him a bone, he appears he to want to show you something [Vault Cave once implemented], but you are distracted by some rats.",
+        "Flavourtext": "The dog is thankful for saving him and giving him a bone, he appears it to wants to show you something [Vault Cave once implemented], but you are distracted by some rats.",
         "EnemyNames": [ "Rat Soldier 2", "Rat 1" ],
         "RewardTables": [
           [
@@ -1253,11 +1268,11 @@
         ]
       },
       {
-        "Flavourtext": "Onto the next shenangigans, before the guards figure out that you found the hideout.",
+        "Flavourtext": "Onto the next shenanigans, before the guards figure out that you found the hideout.",
         "EnemyNames": [ "End" ],
         "RewardTables": [
           [
-            { "Weight": 2 },
+            { "Weight": 1 },
             {
               "Weight": 3,
               "Dungeon": "Kolima"
@@ -1396,7 +1411,7 @@
     "Matchups": [
       {
         "Flavourtext": "Approaching Imil, a gang of gnomes try to mug you...",
-        "EnemyNames": [ "Rat Soldier 1", "Gnome", "Gnome Mage", "Rat 1" ],
+        "EnemyNames": [ "Rat Soldier 1", "Gnome", "Momonga", "Rat 1" ],
         "RewardTables": [
           [
             {
@@ -1489,7 +1504,7 @@
               "Weight": 1,
               "Dungeon": "Mercury Lighthouse"
             },
-            { "Weight": 2 }
+            { "Weight": 1 }
           ]
         ]
       },
@@ -3056,7 +3071,7 @@
     "IsDefault": false,
     "Matchups": [
       {
-        "Flavourtext": "Mighty rat warriors have no tolerance for intruders!",
+        "Flavourtext": "At the outskirts of Altin, you are ambushed by mighty rat warriors with no tolerance for intruders!",
         "EnemyNames": [ "Rat Fighter 1", "Rat Fighter 1", "Ape 1", "Rat Fighter 1" ],
         "RewardTables": [
           [
@@ -3069,14 +3084,29 @@
         ]
       },
       {
-        "Flavourtext": "No such thing as free loot.",
+        "Flavourtext": "Altin is partially flooded!  The townsfolk point you to the mine's entrance.  The first thing you see is a treasure chest!  But there's no such thing as free loot...",
         "EnemyNames": [ "Mimic 18" ],
         "RewardTables": [
           [
             {
               "Weight": 1,
-              "XP": 200,
-              "Coins": 100,
+              "XP": 150,
+              "Coins": 100
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "AltinMimic" ],
+              "Chest": "Wooden",
+              "HasChest": true
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "Tag": "AltinMimic",
+              "Obtainable": 1,
               "Chest": "Normal",
               "HasChest": true
             }
@@ -3084,7 +3114,7 @@
         ]
       },
       {
-        "Flavourtext": "The Halloween special!",
+        "Flavourtext": "As you follow the railroad tracks deeper into the mine, the Halloween special assaults you!",
         "EnemyNames": [ "Bone Fighter 1", "Tarantula 1", "Dirge 1" ],
         "Shuffle": true,
         "RewardTables": [
@@ -3118,13 +3148,13 @@
         ]
       },
       {
-        "Flavourtext": "Light and refreshing!",
+        "Flavourtext": "A djinni is playing in the floodwaters here.  Light and refreshing!",
         "EnemyNames": [ "Mercury Djinni 8" ],
         "RewardTables": [
           [
             {
               "Weight": 1,
-              "XP": 226,
+              "XP": 186,
               "Coins": 190
             }
           ],
@@ -3132,16 +3162,19 @@
             { "Weight": 32 },
             {
               "Weight": 11,
+              "Tag": "AltinSpritz",
               "Obtainable": 1,
               "Djinn": "Spritz"
             },
             {
               "Weight": 4,
+              "Tag": "AltinMercury",
               "Obtainable": 1,
               "Djinn": "Mercury"
             },
             {
               "Weight": 1,
+              "Tag": "AltinMercury",
               "Obtainable": 2,
               "Djinn": "Mercury"
             }
@@ -3149,7 +3182,7 @@
         ]
       },
       {
-        "Flavourtext": "Careful, this could be a sticky situation!",
+        "Flavourtext": "A trail of ooze leads you onward.  Careful, this could be a sticky situation!",
         "EnemyNames": [ "Slime Beast 1", "Slime Beast 1", "Bone Fighter 1", "Slime Beast 1" ],
         "Shuffle": true,
         "RewardTables": [
@@ -3163,13 +3196,13 @@
         ]
       },
       {
-        "Flavourtext": "A dragon-like statue that spews water. It'd be kind of cute, if it wasn't attacking!",
+        "Flavourtext": "Beyond the ooze trail in, you find a dragon-like statue that spews water. It'd be kind of cute, if it wasn't attacking!",
         "EnemyNames": [ "Living Statue" ],
         "RewardTables": [
           [
             {
               "Weight": 1,
-              "XP": 120,
+              "XP": 110,
               "Coins": 50
             }
           ],
@@ -3184,18 +3217,18 @@
         ]
       },
       {
-        "Flavourtext": "Mo' Monsters, Mo' Problems",
+        "Flavourtext": "The floodwaters recede after you defeat the first one, but it seems they've banded together now!  Mo' Monsters, Mo' Problems.",
         "EnemyNames": [ "Living Statue", "Living Statue", "Living Statue" ],
         "RewardTables": [
           [
             {
               "Weight": 1,
-              "XP": 360,
+              "XP": 240,
               "Coins": 150
             }
           ],
           [
-            { "Weight": 9 },
+            { "Weight": 7 },
             {
               "Weight": 1,
               "Item": "Worn Dragon Shield"
@@ -3204,13 +3237,13 @@
         ]
       },
       {
-        "Flavourtext": "Here comes the big one!",
+        "Flavourtext": "The waters recede again, and a new path down is revealed. You reach the final chamber... Here comes the big one!",
         "EnemyNames": [ "Living Statue", "Hydros Statue", "Living Statue" ],
         "RewardTables": [
           [
             {
               "Weight": 1,
-              "XP": 500,
+              "XP": 400,
               "Coins": 250
             }
           ],
@@ -3419,7 +3452,7 @@
           [
             {
               "Weight": 1,
-              "XP": 300,
+              "XP": 450,
               "Coins": 300
             }
           ],
@@ -5035,7 +5068,7 @@
         ]
       },
       {
-        "Flavourtext": "You are the the damage and you are the cure. So fight, fight like your life depends on it! Because it does...'",
+        "Flavourtext": "You are the damage and you are the cure. So fight, fight like your life depends on it! Because it does...'",
         "EnemyNames": [ "Drone Bee 1" ],
         "RewardTables": [
           [
@@ -5197,7 +5230,7 @@
         ]
       },
       {
-        "Flavourtext": "Then let me now reveal the last remainings of the Venus Clan. In here, we will find the spirit of the great king and leader, well the *pharaoh* of the lost tribe. ***Ramses.***'",
+        "Flavourtext": "Then let me now reveal the last remains of the Venus Clan. In here, we will find the spirit of the great king and leader, well the *pharaoh* of the lost tribe. ***Ramses.***'",
         "EnemyNames": [ "RamsesSummon" ],
         "HealBefore": true,
         "RewardTables": [
@@ -5743,7 +5776,7 @@
         ]
       },
       {
-        "Flavourtext": "The skill of a Jupiter Adepts relies on one thing: Think fast. We need to be one step ahead of our opponent. Just being swifter than someone else is not always enough, we need to *know* what is going to happen.",
+        "Flavourtext": "The skill of a Jupiter Adept relies on one thing: Think fast. We need to be one step ahead of our opponent. Just being swifter than someone else is not always enough, we need to *know* what is going to happen.",
         "EnemyNames": [ "Momonga 1", "Flutter Seed", "Willowisp 2" ],
         "RewardTables": [
           [
@@ -6093,7 +6126,7 @@
         ]
       },
       {
-        "Flavourtext": "Mercury Adepts are masters at healing, unbeaten by the less spiritual powers of other elements. Where live is water, and where water is, is life.",
+        "Flavourtext": "Mercury Adepts are masters at healing, unbeaten by the less spiritual powers of other elements. Where life is, is water, and where water is, is life.",
         "EnemyNames": [ "Spider 1", "Mini-Goblin" ],
         "RewardTables": [
           [
@@ -6194,7 +6227,7 @@
         ]
       },
       {
-        "Flavourtext": "Hama teleports you on a beach, with a gigantic blue mountain a bit further in the land. 'Can you feel this place overflowing with Mercury Psynergy?' Hama asks. You nod",
+        "Flavourtext": "Hama teleports you on a beach, with a gigantic blue mountain a bit further in the land. 'Can you feel this place overflowing with Mercury Psynergy?' Hama asks. You nod.",
         "EnemyNames": [ "Calamar 1", "Calamar 1" ],
         "RewardTables": [
           [
