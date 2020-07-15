@@ -10,7 +10,7 @@ using IodemBot.Extensions;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
-    [Name("Djinn and Summon")]
+    [Name("DjinnAndSummons")]
     public class DjinnCommands : ModuleBase<SocketCommandContext>
     {
         [Command("djinninfo"), Alias("di")]
@@ -119,7 +119,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         }
 
         [Command("UpgradeDjinn")]
-        [Summary("Increase the size of your djinn pocket by two slots.")]
+        [Summary("Increase the size of your djinn pocket by two slots")]
         public async Task DjinnUpgrade()
         {
             var acc = UserAccounts.GetAccount(Context.User);
@@ -141,7 +141,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         [Command("Djinn Take")]
         [Summary("Take up to two specified djinn on your journey")]
-        [Remarks("`i!Djinn Take Flint Echo`")]
+        [Remarks("`i!djinn Take Flint Echo`")]
         public async Task TakeDjinn(params string[] Names)
         {
             if (Names.Count() == 0)
@@ -217,7 +217,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         [Command("Djinn Rename")]
         [Alias("Djinn Nickname")]
-        [Summary("Rename one of your djinn.")]
+        [Summary("Rename one of your djinn")]
         [Remarks("`i!djinn rename Echo, YODEL Yodel yodel`")]
         public async Task NicknameDjinn([Remainder] string djinnandnewname)
         {
