@@ -4372,9 +4372,6 @@
     "Image": "https://goldensunwiki.net/w/images/c/c9/ColossoTrial.png",
     "IsDefault": false,
     "MaxPlayer": 1,
-    "Requirement": {
-      "Archtypes": [ "Warrior" ]
-    },
     "Matchups": [
       {
         "Flavourtext": "Round 1: You're up against Buford. He looks threatening in his black armor, yet you can feel his fear deep inside.",
@@ -4508,10 +4505,7 @@
     "FlavourText": "You have made the finals! Contrary to previous years, you are asked to not just use your muscles, but also your head.",
     "Image": "https://cdn.discordapp.com/attachments/615112372171964436/634378720433537034/unknown.png",
     "IsDefault": false,
-    "MaxPlayer": 1,
-    "Requirement": {
-      "Archtypes": [ "Warrior" ]
-    },
+    "MaxPlayer": 1
     "Matchups": [
       {
         "Flavourtext": "The Warriors of Vale once saved Weyard from dying. Who is the oldest valean Hero?",
