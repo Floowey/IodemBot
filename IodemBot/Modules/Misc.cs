@@ -90,7 +90,7 @@ namespace IodemBot.Modules
                 .AddField("Project Lead", "Floowey")
                 .AddField("Co Producers", "Falgor, Gray, Primrose, Ultimastrike")
                 .AddField("Art Contributions", "bringobrongo, elTeh, Eon, Mimibits, Shawn, SpaceShaman, Virize, Volk")
-                .AddField("Contributions and Testers", "AlterEgo, Arcblade, ArcanusHaru, Dracobolt, DroneberryPi, Germaniac, IceFireFish, Joschlumpf, Lavtiz, MarcAustria, Ninja Frog, Ophi, Smeecko, Random, RupeeHeart")
+                .AddField("Contributions and Testers", "AlterEgo, Arcblade, ArcanusHaru, Dracobolt, DroneberryPi, Germaniac, IceFireFish, joschlumpf, Lavtiz, MarcAustria, Ninja Frog, Ophi, Smeecko, Random, RupeeHeart")
                 .AddField("Special thanks to", "Camelot, the Moderators, the Nut Council and you, the players, without whom this whole project wouldn't have come this far")
                 .Build());
         }

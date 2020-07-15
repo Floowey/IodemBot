@@ -98,7 +98,7 @@ namespace IodemBot.Modules
             await ReplyAsync("Shutting down for automatic update...");
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
             {
-                Console.WriteLine("Closing for automatic update...");
+                Console.WriteLine("Closing for manual update...");
                 var ps = new ProcessStartInfo();
                 ps.FileName ="shellscripts/selfupdate.sh";
                 ps.UseShellExecute = false;
@@ -119,7 +119,7 @@ namespace IodemBot.Modules
             await ReplyAsync("Manually backing up users...");
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
             {
-                Console.WriteLine("Closing for automatic update...");
+                Console.WriteLine("Saving Users manually...");
                 var ps = new ProcessStartInfo();
                 ps.FileName = "shellscripts/backupusers.sh";
                 ps.UseShellExecute = false;

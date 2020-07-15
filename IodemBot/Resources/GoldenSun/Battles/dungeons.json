@@ -128,6 +128,13 @@
         ]
       },
       {
+        "Flavourtext": "At points during your journey, you may face longer pieces of text or puzzles. If you want to read these carefully, react with :pause_button: in the channel. This will pause the turn until you're ready. You can find :pause_button: in the default Discord emotes. If you don't use :pause_button:, a move will be chosen for you after about 30 seconds, and the next round will begin. Here is a puzzle, then: What is the world of Golden Sun called?",
+        "EnemyNames": [ "Key10Weyard", "TrapMiddle-earth", "TrapNarnia", "TrapDiscworld" ],
+        "RewardTables": [
+          [ { "Weight": } ]
+        ]
+      },
+      {
         "Flavourtext": "Well done! You are set and ready! You are starting off in the calm town of Vault. It is near the Ruins of Vale, one of the most significant locations to the world of Golden Sun and the perfect place to start off an unforgetable adventure!",
         "EnemyNames": [ "End" ],
         "RewardTables": [
@@ -411,7 +418,7 @@
         ]
       },
       {
-        "Flavourtext": "As the way lights up, some monsters get scared and jump forward",
+        "Flavourtext": "As the way lights up, some monsters get scared and jump forward!",
         "EnemyNames": [ "Vermin 1", "Bat 2", "Vermin 1" ],
         "RewardTables": [
           [
@@ -2627,7 +2634,7 @@
         ]
       },
       {
-        "Flavourtext": "The monks of the temple deem you worthy. They mentioned something about talking to monkeys in the forest? Whatever..",
+        "Flavourtext": "The monks of the temple deem you worthy. They mentioned something about talking to monkeys in the forest? Whatever...",
         "EnemyNames": [ "End" ],
         "RewardTables": [
           [
@@ -4162,6 +4169,14 @@
           [
             {
               "Weight": 1,
+              "RequireTag": [ "AltmillerLetter" ],
+              "Dungeon": "Colosso Finals",
+              "message": "You show the guards the letter you found in hidden in Altmiller Cave. Baffled by Iodems signature, they point you to the finalists VIP area."
+            }
+          ],
+          [
+            {
+              "Weight": 1,
               "Dungeon": "Colosso Trials"
             },
             { "Weight": 1 }
@@ -4282,6 +4297,69 @@
               "Dungeon": "Suhalla Desert"
             },
             { "Weight": 1 }
+          ]
+        ]
+      }
+    ]
+  },
+  "Altmiller Cave": {
+    "name": "Altmiller Cave",
+    "IsOneTimeOnly": true,
+    "FlavourText": "Providing shelter from the rain, you realize just how massive the cave system is. What might it hide?",
+    "Image": "",
+    "IsDefault": false,
+    "Matchups": [
+      {
+        "Flavourtext": "Battle 1 Text",
+        "EnemyNames": [ "CybeleSummon" ],
+        "HealBefore": true,
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "XP": 1
+            }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "Battle 2 Text",
+        "EnemyNames": [ "TiamatSummon" ],
+        "HealBefore": true,
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "XP": 1
+            }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "Battle 3Text",
+        "EnemyNames": [ "ProcneSummon" ],
+        "HealBefore": true,
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "XP": 1
+            }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "The stones start radiating and a previously hidden door appears in the stone wall, revealing a small room. It smells like a pharmacy, but it's completely empty, except for a small letter.",
+        "EnemyNames": [ "End" ],
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "Tag": "AltmillerLetter",
+              "Obtainable": 1,
+              "XP": 1,
+              "message": "'Congratulations, Adept. You have mastered the puzzles put in by our late Lord Babi. He surely would have admired your skills, and thus your talent shall be rewarded. Show this letter to the guards at Colosso. You may proudly show your strength at the Colosso Tournament.\n\nLord Iodem'"
+            }
           ]
         ]
       }

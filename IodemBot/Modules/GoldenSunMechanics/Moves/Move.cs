@@ -112,7 +112,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
             if (User.HasCondition(Condition.Stun))
             {
-                log.Add($"{User.Name} can't move");
+                log.Add($"{User.Name} can't move.");
                 return new Validation(false, log);
             }
 
@@ -124,14 +124,14 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
             if (User.HasCondition(Condition.Flinch))
             {
-                log.Add($"{User.Name} can't move");
+                log.Add($"{User.Name} can't move.");
                 User.RemoveCondition(Condition.Flinch);
                 return new Validation(false, log);
             }
 
             if (User.HasCondition(Condition.ItemCurse) && !User.IsImmuneToItemCurse && Global.Random.Next(0, 3) == 0)
             {
-                log.Add($"{User.Name} can't move");
+                log.Add($"{User.Name} can't move.");
                 return new Validation(false, log);
             }
 
