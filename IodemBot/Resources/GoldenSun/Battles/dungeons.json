@@ -131,7 +131,7 @@
         "Flavourtext": "At points during your journey, you may face longer pieces of text or puzzles. If you want to read these carefully, react with :pause_button: in the channel. This will pause the turn until you're ready. You can find :pause_button: in the default Discord emotes. If you don't use :pause_button:, a move will be chosen for you after about 30 seconds, and the next round will begin. Here is a puzzle, then: What is the world of Golden Sun called?",
         "EnemyNames": [ "Key10Weyard", "TrapMiddle-earth", "TrapNarnia", "TrapDiscworld" ],
         "RewardTables": [
-          [ { "Weight": } ]
+          [ { "Weight":1, "Coins": 10 } ]
         ]
       },
       {
