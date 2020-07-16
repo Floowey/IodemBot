@@ -2010,7 +2010,7 @@
     "extraturns": 0
   },
   "Dread Hound 1": {
-    "movepool": [ "{{tt|Fire Breath|Fire Blessing in Golden Sun}}", "Double Fang", "Wicked Howl" ],
+    "movepool": [ "Fire Blessing", "Double Fang", "Wicked Howl" ],
     "name": "Dread Hound",
     "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Dread_Hound.png",
     "stats": {
@@ -4123,7 +4123,7 @@
     "extraturns": 0
   },
   "Karst": {
-    "movepool": [ "{{tt|Death Scythe|This is the exact Death Size ability that Menardi had in Golden Sun, only with its name fixed.}}", "Fiery Blast", "Djinnfest", "Supernova", "Healing Aura", "Break", "Heat Kiss" ],
+    "movepool": [ "Death Scythe", "Fiery Blast", "Djinnfest", "Supernova", "Healing Aura", "Break", "Heat Kiss" ],
     "name": "Karst",
     "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Karst.png",
     "stats": {
@@ -7649,7 +7649,7 @@
     "extraturns": 0
   },
   "Salamander 1": {
-    "movepool": [ "{{tt|Fire Breath|Fire Blessing in Golden Sun}}", "Fireball", "{{tt|Blast|The Psynergy that was renamed Starburst in Dark Dawn}}", "Guard" ],
+    "movepool": [ "Fire Breath", "Fireball", "Star Burst", "Guard" ],
     "name": "Salamander",
     "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Salamander.png",
     "stats": {
@@ -8908,7 +8908,7 @@
     "extraturns": 0
   },
   "Toadonpa": {
-    "movepool": [ "{{tt|Dark Blessing|This is mis-named with the name of the actual, different Dark Blessing ability. It it is actually a lower-powered copy of Acid Blessing}}", "Thrash", "Rotten Blood", "Sticky Poison" ],
+    "movepool": [ "Acid Blessing", "Thrash", "Rotten Blood", "Sticky Poison" ],
     "name": "Toadonpa",
     "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Toadonpa.png",
     "stats": {
@@ -11184,7 +11184,7 @@
     "stats": {
       "maxhp": 849,
       "maxpp": 25,
-      "atk": 127,
+      "atk": 187,
       "def": 28,
       "spd": 76
     },
@@ -11324,7 +11324,7 @@
     "stats": {
       "maxhp": 543,
       "maxpp": 20,
-      "atk": 279,
+      "atk": 269,
       "def": 120,
       "spd": 999
     },

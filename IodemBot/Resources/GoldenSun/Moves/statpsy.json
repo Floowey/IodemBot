@@ -1,729 +1,789 @@
 {
-    "Impact": {
-        "name": "Impact",
-        "targetType": 1,
-        "emote": "<:Impact:536967217581916160>",
-        "range": 1,
-        "element": 2,
-        "PPCost": 7,
-        "effects": [
-            {
-                "Type": "Stat",
-                "Stat": "Attack",
-                "Multiplier": 1.5
-            }
-        ]
-    },
-    "High Impact": {
-        "name": "High Impact",
-        "targetType": 2,
-        "emote": "<:High_Impact:536967233646100481>",
-        "range": 4,
-        "element": 2,
-        "PPCost": 12,
-        "effects": [
-            {
-                "Type": "Stat",
-                "Stat": "Attack",
-                "Multiplier": 1.25
-            }
-        ]
-    },
-    "Demon Spear": {
-        "name": "Demon Spear",
-        "targetType": 1,
-        "emote": "<:Demon_Spear:536966867831619584>",
-        "range": 1,
-        "element": 2,
-        "PPCost": 7,
-        "effects": [
-            {
-                "Type": "Stat",
-                "Stat": "Attack",
-                "Multiplier": 1.5
-            }
-        ]
-    },
-    "Angel Spear": {
-        "name": "Angel Spear",
-        "targetType": 2,
-        "emote": "<:Angel_Spear:536966880888619028>",
-        "range": 4,
-        "element": 2,
-        "PPCost": 12,
-        "effects": [
-            {
-                "Type": "Stat",
-                "Stat": "Attack",
-                "Multiplier": 1.25
-            }
-        ]
-    },
-    "Guard": {
-        "name": "Guard",
-        "targetType": 1,
-        "emote": "<:Guard:537705488306012179>",
-        "range": 4,
-        "element": 1,
-        "PPCost": 5,
-        "effects": [
-            {
-                "Type": "Stat",
-                "Stat": "Defense",
-                "Multiplier": 1.5
-            }
-        ]
-    },
-    "Protect": {
-        "name": "Protect",
-        "targetType": 2,
-        "emote": "<:Protect:537705526038102016>",
-        "range": 4,
-        "element": 1,
-        "PPCost": 5,
-        "effects": [
-            {
-                "Type": "Stat",
-                "Stat": "Defense",
-                "Multiplier": 1.25
-            }
-        ]
-    },
-    "Ward": {
-        "name": "Ward",
-        "targetType": 1,
-        "emote": "<:Ward:536967348448657440>",
-        "range": 4,
-        "element": 1,
-        "PPCost": 3,
-        "effects": [
-            {
-                "Type": "Stat",
-                "Stat": "Resistance",
-                "Multiplier": 1.5
-            }
-        ]
-    },
-    "Resist": {
-        "name": "Resist",
-        "targetType": 2,
-        "emote": "<:Resist:536967379129991198>",
-        "range": 1,
-        "element": 1,
-        "PPCost": 5,
-        "effects": [
-            {
-                "Type": "Stat",
-                "Stat": "Resistance",
-                "Multiplier": 1.5
-            }
-        ]
-    },
-    "Magic Shell": {
-        "name": "Magic Shell",
-        "targetType": 1,
-        "emote": "<:Magic_Shell:547524710888505364>",
-        "range": 4,
-        "element": 1,
-        "PPCost": 3,
-        "effects": [
-            {
-                "Type": "Stat",
-                "Stat": "Resistance",
-                "Multiplier": 1.5
-            }
-        ]
-    },
-    "Magic Shield": {
-        "name": "Magic Shield",
-        "targetType": 2,
-        "emote": "<:Magic_Shield:547524710930317312>",
-        "range": 1,
-        "element": 1,
-        "PPCost": 5,
-        "effects": [
-            {
-                "Type": "Stat",
-                "Stat": "Resistance",
-                "Multiplier": 1.25
-            }
-        ]
-    },
-    "Impair": {
-        "name": "Impair",
-        "targetType": 3,
-        "emote": "<:Impair:538289498690420736>",
-        "range": 3,
-        "element": 1,
-        "PPCost": 5,
-        "effects": [
-            {
-                "Type": "Stat",
-                "Stat": "Defense",
-                "Multiplier": 0.6
-            }
-        ]
-    },
-    "Debilitate": {
-        "name": "Debilitate",
-        "targetType": 4,
-        "emote": "<:Debilitate:548922397017767956>",
-        "range": 3,
-        "element": 1,
-        "PPCost": 5,
-        "effects": [
-            {
-                "Type": "Stat",
-                "Stat": "Defense",
-                "Multiplier": 0.8
-            }
-        ]
-    },
-    "Dull": {
-        "name": "Dull",
-        "targetType": 3,
-        "emote": "<:Dull:536966947879780366>",
-        "range": 3,
-        "element": 1,
-        "PPCost": 5,
-        "effects": [
-            {
-                "Type": "Stat",
-                "Stat": "Attack",
-                "Multiplier": 0.6
-            }
-        ]
-    },
-    "Blunt": {
-        "name": "Blunt",
-        "targetType": 4,
-        "emote": "<:Blunt:536966988388368394>",
-        "range": 3,
-        "element": 1,
-        "PPCost": 5,
-        "effects": [
-            {
-                "Type": "Stat",
-                "Stat": "Attack",
-                "Multiplier": 0.8
-            }
-        ]
-    },
-    "Smell of Decay": {
-        "name": "Smell of Decay",
-        "targetType": 4,
-        "emote": "💩",
-        "range": 3,
-        "element": 0,
-        "PPCost": 0,
-        "effects": [
-            {
-                "Type": "Stat",
-                "Stat": "Attack",
-                "Multiplier": 0.8
-            }
-        ]
-    },
-    "Weapon Grace": {
-        "name": "Weapon Grace",
-        "targetType": 1,
-        "emote": "<:Weapon_Grace:537001160058601472>",
-        "range": 1,
-        "element": 0,
-        "PPCost": 12,
-        "effects": [
-            {
-                "Type": "Stat",
-                "Stat": "Attack",
-                "Multiplier": 2.0
-            }
-        ]
-    },
-    "Berserk": {
-        "name": "Berserk",
-        "targetType": 0,
-        "emote": "<:Rampage:537766290031509524>",
-        "range": 1,
-        "element": 1,
-        "PPCost": 0,
-        "effects": [
-            {
-                "Type": "Stat",
-                "Stat": "Attack",
-                "Multiplier": 1.5
-            },
-            {
-                "Type": "Stat",
-                "Stat": "Defense",
-                "Multiplier": 0.5
-            },
-            {
-                "Type": "Stat",
-                "Stat": "Speed",
-                "Multiplier": 1.5
-            }
-        ]
-    },
-    "Heartrender": {
-        "name": "Heartrender",
-        "targetType": 3,
-        "emote": "💗",
-        "range": 1,
-        "element": 1,
-        "PPCost": 0,
-        "effects": [
-            {
-                "Type": "Stat",
-                "Stat": "Attack",
-                "Multiplier": 0.6
-            }
-        ]
-    },
-    "Enfeeble": {
-        "name": "Enfeeble",
-        "targetType": 4,
-        "emote": "🔱",
-        "range": 3,
-        "element": 1,
-        "PPCost": 5,
-        "effects": [
-            {
-                "Type": "Stat",
-                "Stat": "Resistance",
-                "Multiplier": 0.6
-            }
-        ]
-    },
-    "Heartbreaker": {
-        "name": "Heartbreaker",
-        "targetType": 4,
-        "emote": "💔",
-        "range": 5,
-        "element": 1,
-        "PPCost": 0,
-        "effects": [
-            {
-                "Type": "Stat",
-                "Stat": "Attack",
-                "Multiplier": 0.4
-            }
-        ]
-    },
-    "Restore": {
-        "name": "Restore",
-        "targetType": 1,
-        "emote": "<:Restore:536969958542802975>",
-        "range": 1,
-        "element": 3,
-        "PPCost": 4,
-        "effects": [
-            {
-                "Type": "Restore"
-            }
-        ]
-    },
-    "Cure Poison": {
-        "name": "Restore",
-        "targetType": 1,
-        "emote": "<:Restore:536969958542802975>",
-        "range": 1,
-        "element": 3,
-        "PPCost": 4,
-        "effects": [
-            {
-                "Type": "Restore"
-            }
-        ]
-    },
-    "Revive": {
-        "name": "Revive",
-        "targetType": 1,
-        "emote": "<:Revive:536957965513785347>",
-        "range": 1,
-        "element": 0,
-        "PPCost": 15,
-        "effects": [
-            {
-                "Type": "Revive",
-                "Percentage": 75
-            }
-        ]
-    },
-    "Phoenix": {
-        "name": "Phoenix",
-        "targetType": 1,
-        "emote": "<:Phoenix:539166682132906005>",
-        "range": 1,
-        "element": 1,
-        "PPCost": 10,
-        "effects": [
-            {
-                "Type": "Revive",
-                "Percentage": 66
-            }
-        ]
-    },
-    "Signal Whistle": {
-        "name": "Signal Whistle",
-        "targetType": 2,
-        "emote": ":trumpet:",
-        "range": 2,
-        "element": 4,
-        "PPCost": 1,
-        "effects": [
-            {
-                "Type": "Revive",
-                "Percentage": 100
-            }
-        ]
-    },
-    "Break": {
-        "name": "Break",
-        "targetType": 5,
-        "emote": "<:Break:536969993490006036>",
-        "element": 3,
-        "PPCost": 5,
-        "effects": [
-            {
-                "Type": "Break"
-            }
-        ]
-    },
-    "Thermal": {
-        "name": "Thermal",
-        "targetType": 1,
-        "emote": "<:Blaze:551042852730175520>",
-        "range": 1,
-        "element": 1,
-        "PPCost": 4,
-        "effects": [
-            {
-                "Type": "Restore"
-            }
-        ]
-    },
-    "Blaze": {
-        "name": "Blaze",
-        "targetType": 5,
-        "emote": "<:Blaze:551042852730175520>",
-        "element": 1,
-        "PPCost": 5,
-        "effects": [
-            {
-                "Type": "Break"
-            }
-        ]
-    },
-    "Bind": {
-        "name": "Bind",
-        "targetType": 3,
-        "emote": "<:Bind:549526931465568257>",
-        "range": 1,
-        "element": 2,
-        "PPCost": 5,
-        "effects": [
-            {
-                "Type": "Condition",
-                "Condition": "Seal",
-                "Probability": 80
-            }
-        ]
-    },
-    "Smoke Bomb": {
-        "name": "Smoke Bomb",
-        "targetType": 3,
-        "emote": "<:Smoke_Bomb:551223599911141391>",
-        "range": 1,
-        "element": 0,
-        "PPCost": 1,
-        "effects": [
-            {
-                "Type": "Condition",
-                "Condition": "Delusion",
-                "Probability": 55
-            }
-        ]
-    },
-    "Sleep Bomb": {
-        "name": "Sleep Bomb",
-        "targetType": 3,
-        "emote": "<:Sleep_Bomb:551223599894102026>",
-        "range": 1,
-        "element": 0,
-        "PPCost": 1,
-        "effects": [
-            {
-                "Type": "Condition",
-                "Condition": "Sleep",
-                "Probability": 40
-            }
-        ]
-    },
-    "Disarm": {
-        "name": "Pling",
-        "targetType": 0,
-        "emote": "🏳️",
-        "range": 3,
-        "element": 4,
-        "PPCost": 0,
-        "power": 0,
-        "effects": [
-            {
-                "Type": "UserDies"
-            }
-        ]
-    },
-    "Correct": {
-        "name": "Correct!",
-        "targetType": 4,
-        "emote": "✅",
-        "range": 4,
-        "element": 4,
-        "PPCost": 0,
-        "power": 0,
-        "effects": [
-            {
-                "Type": "UserDies"
-            }
-        ]
-    },
-    "Beat Dance": {
-        "name": "Beat Dance",
-        "targetType": 0,
-        "emote": ":musical_note:",
-        "range": 1,
-        "element": 1,
-        "PPCost": 0,
-        "effects": [
-            {
-                "Type": "Stat",
-                "Stat": "Attack",
-                "Multiplier": 1.25
-            }
-        ]
-    },
-    "Sleep Star": {
-        "name": "Sleep Star",
-        "targetType": 4,
-        "emote": "<:Sleep:555427023519088671>",
-        "range": 3,
-        "element": 0,
-        "PPCost": 0,
-        "effects": [
-            {
-                "Type": "Condition",
-                "Condition": "Sleep",
-                "Probability": 25
-            }
-        ]
-    },
-    "Pack Defense": {
-        "name": "Pack Defense",
-        "targetType": 2,
-        "emote": "<:Maha:568133448645214219>",
-        "range": 1,
-        "element": 0,
-        "PPCost": 0,
-        "hasPriority": true,
-        "effects": [
-            {
-                "Type": "ReduceDamage",
-                "DamageReduction": 50
-            }
-        ]
-    },
-    "Delude": {
-        "name": "Delude",
-        "targetType": 4,
-        "emote": "<:Delude:536966813687349264>",
-        "range": 3,
-        "element": 2,
-        "PPCost": 4,
-        "effects": [
-            {
-                "Type": "Condition",
-                "Condition": "Delusion",
-                "Probability": 80
-            }
-        ]
-    },
-    "Curse": {
-        "name": "Curse",
-        "targetType": 4,
-        "emote": "<:Curse:536984898980806658>",
-        "range": 3,
-        "element": 2,
-        "PPCost": 0,
-        "effects": [
-            {
-                "Type": "Condition",
-                "Condition": "DeathCurse",
-                "Probability": 45
-            }
-        ]
-    },
-    "Haunt": {
-        "name": "Haunt",
-        "targetType": 4,
-        "emote": "<:Haunt:536984955322892310>",
-        "range": 3,
-        "element": 0,
-        "PPCost": 5,
-        "effects": [
-            {
-                "Type": "Condition",
-                "Condition": "Haunt",
-                "Probability": 30
-            }
-        ]
-    },
-    "Haunting": {
-        "name": "Haunting",
-        "targetType": 4,
-        "emote": "<:Haunt:536984955322892310>",
-        "range": 3,
-        "element": 0,
-        "PPCost": 0,
-        "effects": [
-            {
-                "Type": "Condition",
-                "Condition": "Haunt",
-                "Probability": 26
-            }
-        ]
-    },
-    "Condemn": {
-        "name": "Condemn",
-        "targetType": 4,
-        "emote": "<:Condemn:536986417130373130>",
-        "range": 1,
-        "element": 0,
-        "PPCost": 4,
-        "effects": [
-            {
-                "Type": "OHKO",
-                "Probability": 15
-            }
-        ]
-    },
-    "Sleep": {
-        "name": "Sleep",
-        "targetType": 4,
-        "emote": "<:Sleep:555427023519088671>",
-        "range": 3,
-        "element": 2,
-        "PPCost": 4,
-        "effects": [
-            {
-                "Type": "Condition",
-                "Condition": "Sleep",
-                "Probability": 66
-            }
-        ]
-    },
-    "Mystic Call": {
-        "name": "Mystic Call",
-        "targetType": 1,
-        "emote": "<a:Mystic_Call:600650247366115339>",
-        "range": 1,
-        "element": 3,
-        "PPCost": 0,
-        "effects": [
-            {
-                "Type": "MysticCall",
-                "EnemyNames": [ "Anger Ball 1", "Anger Ball 2", "Guardian Ball 1", "Guardian Ball 2", "Refresh Ball 1", "Refresh Ball 2", "Thunder Ball 1", "Thunder Ball 2", "Death Ball" ]
-            }
-        ]
-    },
-    "Flee": {
-        "name": "Flee",
-        "targetType": 0,
-        "emote": "<:Flee:597006812247490571>",
-        "effects": [
-            {
-                "Type": "NoEffect"
-            }
-        ]
-    },
-    "Search": {
-        "name": "Search",
-        "targetType": 0,
-        "hasPriority": true,
-        "emote": "👀",
-        "effects": [
-            {
-                "Type": "Counter"
-            }
-        ]
-    },
-    "Guard Aura": {
-        "name": "Guard Aura",
-        "targetType": 1,
-        "hasPriority": true,
-        "emote": "<:Guardian_Ball:600641727421743104>",
-        "effects": [
-            {
-                "Type": "ReduceDamage",
-                "DamageReduction": 90
-            }
-        ]
-    },
-    "Sandstorm": {
-        "name": "Sandstorm",
-        "targetType": 3,
-        "emote": ":cloud_tornado:",
-        "range": 5,
-        "element": 2,
-        "PPCost": 0,
-        "effects": [
-            {
-                "Type": "Condition",
-                "Condition": "Delusion",
-                "Probability": 100
-            }
-        ]
-    },
-    "Poison": {
-        "name": "Poison",
-        "targetType": 3,
-        "emote": "<:Poison:549526931847249920>",
-        "range": 1,
-        "element": 0,
-        "PPCost": 4,
-        "effects": [
-            {
-                "Type": "Condition",
-                "Condition": "Poison",
-                "Probability": 15
-            }
-        ]
-    },
-    "Taint": {
-        "name": "Taint",
-        "targetType": 3,
-        "emote": "<:Venom:598458704400220160>",
-        "range": 1,
-        "element": 0,
-        "PPCost": 6,
-        "effects": [
-            {
-                "Type": "Condition",
-                "Condition": "Venom",
-                "Probability": 10
-            }
-        ]
-    },
-    "Sand": {
-        "name": "Sand",
-        "targetType": 1,
-        "emote": "<:Sand:667747947194089478>",
-        "element": 0,
-        "PPCost": 8,
-        "effects": [
-            {
-                "Type": "ReduceDamage",
-                "DamageReduction": 60
-            }
-        ]
-    }
+  "Impact": {
+    "name": "Impact",
+    "targetType": 1,
+    "emote": "<:Impact:536967217581916160>",
+    "range": 1,
+    "element": 2,
+    "PPCost": 7,
+    "effects": [
+      {
+        "Type": "Stat",
+        "Stat": "Attack",
+        "Multiplier": 1.5
+      }
+    ]
+  },
+  "High Impact": {
+    "name": "High Impact",
+    "targetType": 2,
+    "emote": "<:High_Impact:536967233646100481>",
+    "range": 4,
+    "element": 2,
+    "PPCost": 12,
+    "effects": [
+      {
+        "Type": "Stat",
+        "Stat": "Attack",
+        "Multiplier": 1.25
+      }
+    ]
+  },
+  "Demon Spear": {
+    "name": "Demon Spear",
+    "targetType": 1,
+    "emote": "<:Demon_Spear:536966867831619584>",
+    "range": 1,
+    "element": 2,
+    "PPCost": 7,
+    "effects": [
+      {
+        "Type": "Stat",
+        "Stat": "Attack",
+        "Multiplier": 1.5
+      }
+    ]
+  },
+  "Angel Spear": {
+    "name": "Angel Spear",
+    "targetType": 2,
+    "emote": "<:Angel_Spear:536966880888619028>",
+    "range": 4,
+    "element": 2,
+    "PPCost": 12,
+    "effects": [
+      {
+        "Type": "Stat",
+        "Stat": "Attack",
+        "Multiplier": 1.25
+      }
+    ]
+  },
+  "Guard": {
+    "name": "Guard",
+    "targetType": 1,
+    "emote": "<:Guard:537705488306012179>",
+    "range": 4,
+    "element": 1,
+    "PPCost": 5,
+    "effects": [
+      {
+        "Type": "Stat",
+        "Stat": "Defense",
+        "Multiplier": 1.5
+      }
+    ]
+  },
+  "Protect": {
+    "name": "Protect",
+    "targetType": 2,
+    "emote": "<:Protect:537705526038102016>",
+    "range": 4,
+    "element": 1,
+    "PPCost": 5,
+    "effects": [
+      {
+        "Type": "Stat",
+        "Stat": "Defense",
+        "Multiplier": 1.25
+      }
+    ]
+  },
+  "Ward": {
+    "name": "Ward",
+    "targetType": 1,
+    "emote": "<:Ward:536967348448657440>",
+    "range": 4,
+    "element": 1,
+    "PPCost": 3,
+    "effects": [
+      {
+        "Type": "Stat",
+        "Stat": "Resistance",
+        "Multiplier": 1.5
+      }
+    ]
+  },
+  "Resist": {
+    "name": "Resist",
+    "targetType": 2,
+    "emote": "<:Resist:536967379129991198>",
+    "range": 1,
+    "element": 1,
+    "PPCost": 5,
+    "effects": [
+      {
+        "Type": "Stat",
+        "Stat": "Resistance",
+        "Multiplier": 1.5
+      }
+    ]
+  },
+  "Magic Shell": {
+    "name": "Magic Shell",
+    "targetType": 1,
+    "emote": "<:Magic_Shell:547524710888505364>",
+    "range": 4,
+    "element": 1,
+    "PPCost": 3,
+    "effects": [
+      {
+        "Type": "Stat",
+        "Stat": "Resistance",
+        "Multiplier": 1.5
+      }
+    ]
+  },
+  "Magic Shield": {
+    "name": "Magic Shield",
+    "targetType": 2,
+    "emote": "<:Magic_Shield:547524710930317312>",
+    "range": 1,
+    "element": 1,
+    "PPCost": 5,
+    "effects": [
+      {
+        "Type": "Stat",
+        "Stat": "Resistance",
+        "Multiplier": 1.25
+      }
+    ]
+  },
+  "Impair": {
+    "name": "Impair",
+    "targetType": 3,
+    "emote": "<:Impair:538289498690420736>",
+    "range": 3,
+    "element": 1,
+    "PPCost": 5,
+    "effects": [
+      {
+        "Type": "Stat",
+        "Stat": "Defense",
+        "Multiplier": 0.6
+      }
+    ]
+  },
+  "Debilitate": {
+    "name": "Debilitate",
+    "targetType": 4,
+    "emote": "<:Debilitate:548922397017767956>",
+    "range": 3,
+    "element": 1,
+    "PPCost": 5,
+    "effects": [
+      {
+        "Type": "Stat",
+        "Stat": "Defense",
+        "Multiplier": 0.8
+      }
+    ]
+  },
+  "Dull": {
+    "name": "Dull",
+    "targetType": 3,
+    "emote": "<:Dull:536966947879780366>",
+    "range": 3,
+    "element": 1,
+    "PPCost": 5,
+    "effects": [
+      {
+        "Type": "Stat",
+        "Stat": "Attack",
+        "Multiplier": 0.6
+      }
+    ]
+  },
+  "Blunt": {
+    "name": "Blunt",
+    "targetType": 4,
+    "emote": "<:Blunt:536966988388368394>",
+    "range": 3,
+    "element": 1,
+    "PPCost": 5,
+    "effects": [
+      {
+        "Type": "Stat",
+        "Stat": "Attack",
+        "Multiplier": 0.8
+      }
+    ]
+  },
+  "Smell of Decay": {
+    "name": "Smell of Decay",
+    "targetType": 4,
+    "emote": "💩",
+    "range": 3,
+    "element": 0,
+    "PPCost": 0,
+    "effects": [
+      {
+        "Type": "Stat",
+        "Stat": "Attack",
+        "Multiplier": 0.8
+      }
+    ]
+  },
+  "Weapon Grace": {
+    "name": "Weapon Grace",
+    "targetType": 1,
+    "emote": "<:Weapon_Grace:537001160058601472>",
+    "range": 1,
+    "element": 0,
+    "PPCost": 12,
+    "effects": [
+      {
+        "Type": "Stat",
+        "Stat": "Attack",
+        "Multiplier": 2.0
+      }
+    ]
+  },
+  "Berserk": {
+    "name": "Berserk",
+    "targetType": 0,
+    "emote": "<:Rampage:537766290031509524>",
+    "range": 1,
+    "element": 1,
+    "PPCost": 0,
+    "effects": [
+      {
+        "Type": "Stat",
+        "Stat": "Attack",
+        "Multiplier": 1.5
+      },
+      {
+        "Type": "Stat",
+        "Stat": "Defense",
+        "Multiplier": 0.5
+      },
+      {
+        "Type": "Stat",
+        "Stat": "Speed",
+        "Multiplier": 1.5
+      }
+    ]
+  },
+  "Heartrender": {
+    "name": "Heartrender",
+    "targetType": 3,
+    "emote": "💗",
+    "range": 1,
+    "element": 1,
+    "PPCost": 0,
+    "effects": [
+      {
+        "Type": "Stat",
+        "Stat": "Attack",
+        "Multiplier": 0.6
+      }
+    ]
+  },
+  "Enfeeble": {
+    "name": "Enfeeble",
+    "targetType": 4,
+    "emote": "🔱",
+    "range": 3,
+    "element": 1,
+    "PPCost": 5,
+    "effects": [
+      {
+        "Type": "Stat",
+        "Stat": "Resistance",
+        "Multiplier": 0.6
+      }
+    ]
+  },
+  "Heartbreaker": {
+    "name": "Heartbreaker",
+    "targetType": 4,
+    "emote": "💔",
+    "range": 5,
+    "element": 1,
+    "PPCost": 0,
+    "effects": [
+      {
+        "Type": "Stat",
+        "Stat": "Attack",
+        "Multiplier": 0.4
+      }
+    ]
+  },
+  "Restore": {
+    "name": "Restore",
+    "targetType": 1,
+    "emote": "<:Restore:536969958542802975>",
+    "range": 1,
+    "element": 3,
+    "PPCost": 4,
+    "effects": [
+      {
+        "Type": "Restore"
+      }
+    ]
+  },
+  "Cure Poison": {
+    "name": "Restore",
+    "targetType": 1,
+    "emote": "<:Restore:536969958542802975>",
+    "range": 1,
+    "element": 3,
+    "PPCost": 4,
+    "effects": [
+      {
+        "Type": "Restore"
+      }
+    ]
+  },
+  "Revive": {
+    "name": "Revive",
+    "targetType": 1,
+    "emote": "<:Revive:536957965513785347>",
+    "range": 1,
+    "element": 0,
+    "PPCost": 15,
+    "effects": [
+      {
+        "Type": "Revive",
+        "Percentage": 75
+      }
+    ]
+  },
+  "Phoenix": {
+    "name": "Phoenix",
+    "targetType": 1,
+    "emote": "<:Phoenix:539166682132906005>",
+    "range": 1,
+    "element": 1,
+    "PPCost": 10,
+    "effects": [
+      {
+        "Type": "Revive",
+        "Percentage": 66
+      }
+    ]
+  },
+  "Signal Whistle": {
+    "name": "Signal Whistle",
+    "targetType": 2,
+    "emote": ":trumpet:",
+    "range": 2,
+    "element": 4,
+    "PPCost": 1,
+    "effects": [
+      {
+        "Type": "Revive",
+        "Percentage": 100
+      }
+    ]
+  },
+  "Break": {
+    "name": "Break",
+    "targetType": 5,
+    "emote": "<:Break:536969993490006036>",
+    "element": 3,
+    "PPCost": 5,
+    "effects": [
+      {
+        "Type": "Break"
+      }
+    ]
+  },
+  "Thermal": {
+    "name": "Thermal",
+    "targetType": 1,
+    "emote": "<:Blaze:551042852730175520>",
+    "range": 1,
+    "element": 1,
+    "PPCost": 4,
+    "effects": [
+      {
+        "Type": "Restore"
+      }
+    ]
+  },
+  "Blaze": {
+    "name": "Blaze",
+    "targetType": 5,
+    "emote": "<:Blaze:551042852730175520>",
+    "element": 1,
+    "PPCost": 5,
+    "effects": [
+      {
+        "Type": "Break"
+      }
+    ]
+  },
+  "Bind": {
+    "name": "Bind",
+    "targetType": 3,
+    "emote": "<:Bind:549526931465568257>",
+    "range": 1,
+    "element": 2,
+    "PPCost": 5,
+    "effects": [
+      {
+        "Type": "Condition",
+        "Condition": "Seal",
+        "Probability": 80
+      }
+    ]
+  },
+  "Smoke Bomb": {
+    "name": "Smoke Bomb",
+    "targetType": 3,
+    "emote": "<:Smoke_Bomb:551223599911141391>",
+    "range": 1,
+    "element": 0,
+    "PPCost": 1,
+    "effects": [
+      {
+        "Type": "Condition",
+        "Condition": "Delusion",
+        "Probability": 55
+      }
+    ]
+  },
+  "Sleep Bomb": {
+    "name": "Sleep Bomb",
+    "targetType": 3,
+    "emote": "<:Sleep_Bomb:551223599894102026>",
+    "range": 1,
+    "element": 0,
+    "PPCost": 1,
+    "effects": [
+      {
+        "Type": "Condition",
+        "Condition": "Sleep",
+        "Probability": 40
+      }
+    ]
+  },
+  "Disarm": {
+    "name": "Pling",
+    "targetType": 0,
+    "emote": "🏳️",
+    "range": 3,
+    "element": 4,
+    "PPCost": 0,
+    "power": 0,
+    "effects": [
+      {
+        "Type": "UserDies"
+      }
+    ]
+  },
+  "Correct": {
+    "name": "Correct!",
+    "targetType": 4,
+    "emote": "✅",
+    "range": 4,
+    "element": 4,
+    "PPCost": 0,
+    "power": 0,
+    "effects": [
+      {
+        "Type": "UserDies"
+      }
+    ]
+  },
+  "Beat Dance": {
+    "name": "Beat Dance",
+    "targetType": 0,
+    "emote": ":musical_note:",
+    "range": 1,
+    "element": 1,
+    "PPCost": 0,
+    "effects": [
+      {
+        "Type": "Stat",
+        "Stat": "Attack",
+        "Multiplier": 1.25
+      }
+    ]
+  },
+  "Sleep Star": {
+    "name": "Sleep Star",
+    "targetType": 4,
+    "emote": "<:Sleep:555427023519088671>",
+    "range": 3,
+    "element": 0,
+    "PPCost": 0,
+    "effects": [
+      {
+        "Type": "Condition",
+        "Condition": "Sleep",
+        "Probability": 25
+      }
+    ]
+  },
+  "Pack Defense": {
+    "name": "Pack Defense",
+    "targetType": 2,
+    "emote": "<:Maha:568133448645214219>",
+    "range": 1,
+    "element": 0,
+    "PPCost": 0,
+    "hasPriority": true,
+    "effects": [
+      {
+        "Type": "ReduceDamage",
+        "DamageReduction": 50
+      }
+    ]
+  },
+  "Total Defense": {
+    "name": "Total Defense",
+    "targetType": 0,
+    "emote": ":bricks:",
+    "range": 1,
+    "element": 0,
+    "PPCost": 0,
+    "hasPriority": true,
+    "effects": [
+      {
+        "Type": "ReduceDamage",
+        "DamageReduction": 50
+      }
+    ]
+  },
+  "Delude": {
+    "name": "Delude",
+    "targetType": 4,
+    "emote": "<:Delude:536966813687349264>",
+    "range": 3,
+    "element": 2,
+    "PPCost": 4,
+    "effects": [
+      {
+        "Type": "Condition",
+        "Condition": "Delusion",
+        "Probability": 80
+      }
+    ]
+  },
+  "Curse": {
+    "name": "Curse",
+    "targetType": 4,
+    "emote": "<:Curse:536984898980806658>",
+    "range": 3,
+    "element": 2,
+    "PPCost": 0,
+    "effects": [
+      {
+        "Type": "Condition",
+        "Condition": "DeathCurse",
+        "Probability": 45
+      }
+    ]
+  },
+  "Haunt": {
+    "name": "Haunt",
+    "targetType": 4,
+    "emote": "<:Haunt:536984955322892310>",
+    "range": 3,
+    "element": 0,
+    "PPCost": 5,
+    "effects": [
+      {
+        "Type": "Condition",
+        "Condition": "Haunt",
+        "Probability": 30
+      }
+    ]
+  },
+  "Haunting": {
+    "name": "Haunting",
+    "targetType": 4,
+    "emote": "<:Haunt:536984955322892310>",
+    "range": 3,
+    "element": 0,
+    "PPCost": 0,
+    "effects": [
+      {
+        "Type": "Condition",
+        "Condition": "Haunt",
+        "Probability": 26
+      }
+    ]
+  },
+  "Condemn": {
+    "name": "Condemn",
+    "targetType": 4,
+    "emote": "<:Condemn:536986417130373130>",
+    "range": 1,
+    "element": 0,
+    "PPCost": 4,
+    "effects": [
+      {
+        "Type": "OHKO",
+        "Probability": 15
+      }
+    ]
+  },
+  "Sleep": {
+    "name": "Sleep",
+    "targetType": 4,
+    "emote": "<:Sleep:555427023519088671>",
+    "range": 3,
+    "element": 2,
+    "PPCost": 4,
+    "effects": [
+      {
+        "Type": "Condition",
+        "Condition": "Sleep",
+        "Probability": 66
+      }
+    ]
+  },
+  "Cage": {
+    "name": "Cage",
+    "targetType": 3,
+    "emote": ":chains:",
+    "range": 3,
+    "element": 1,
+    "PPCost": 0,
+    "effects": [
+      {
+        "Type": "Condition",
+        "Condition": "Flinch",
+        "Probability": 100
+      }
+    ]
+  },
+  "Mystic Call": {
+    "name": "Mystic Call",
+    "targetType": 1,
+    "emote": "<a:Mystic_Call:600650247366115339>",
+    "range": 1,
+    "element": 3,
+    "PPCost": 0,
+    "effects": [
+      {
+        "Type": "MysticCall",
+        "EnemyNames": [ "Anger Ball 1", "Anger Ball 2", "Guardian Ball 1", "Guardian Ball 2", "Refresh Ball 1", "Refresh Ball 2", "Thunder Ball 1", "Thunder Ball 2", "Death Ball" ]
+      }
+    ]
+  },
+  "Flee": {
+    "name": "Flee",
+    "targetType": 0,
+    "emote": "<:Flee:597006812247490571>",
+    "effects": [
+      {
+        "Type": "NoEffect"
+      }
+    ]
+  },
+  "Contain": {
+    "name": "Contain",
+    "targetType": 0,
+    "emote": "<:Flee:597006812247490571>",
+    "effects": [
+      {
+        "Type": "NoEffect"
+      }
+    ]
+  },
+  "Threaten": {
+    "name": "Threaten",
+    "targetType": 0,
+    "emote": "<:Flee:597006812247490571>",
+    "effects": [
+      {
+        "Type": "NoEffect"
+      }
+    ]
+  },
+  "Tremble": {
+    "name": "Tremble",
+    "targetType": 0,
+    "emote": "<:Flee:597006812247490571>",
+    "effects": [
+      {
+        "Type": "NoEffect"
+      }
+    ]
+  },
+  "Search": {
+    "name": "Search",
+    "targetType": 0,
+    "hasPriority": true,
+    "emote": "👀",
+    "effects": [
+      {
+        "Type": "Counter"
+      }
+    ]
+  },
+  "Guard Aura": {
+    "name": "Guard Aura",
+    "targetType": 1,
+    "hasPriority": true,
+    "emote": "<:Guardian_Ball:600641727421743104>",
+    "effects": [
+      {
+        "Type": "ReduceDamage",
+        "DamageReduction": 90
+      }
+    ]
+  },
+  "Sandstorm": {
+    "name": "Sandstorm",
+    "targetType": 3,
+    "emote": ":cloud_tornado:",
+    "range": 5,
+    "element": 2,
+    "PPCost": 0,
+    "effects": [
+      {
+        "Type": "Condition",
+        "Condition": "Delusion",
+        "Probability": 100
+      }
+    ]
+  },
+  "Poison": {
+    "name": "Poison",
+    "targetType": 3,
+    "emote": "<:Poison:549526931847249920>",
+    "range": 1,
+    "element": 0,
+    "PPCost": 4,
+    "effects": [
+      {
+        "Type": "Condition",
+        "Condition": "Poison",
+        "Probability": 15
+      }
+    ]
+  },
+  "Taint": {
+    "name": "Taint",
+    "targetType": 3,
+    "emote": "<:Venom:598458704400220160>",
+    "range": 1,
+    "element": 0,
+    "PPCost": 6,
+    "effects": [
+      {
+        "Type": "Condition",
+        "Condition": "Venom",
+        "Probability": 10
+      }
+    ]
+  },
+  "Sand": {
+    "name": "Sand",
+    "targetType": 1,
+    "emote": "<:Sand:667747947194089478>",
+    "element": 0,
+    "PPCost": 8,
+    "effects": [
+      {
+        "Type": "ReduceDamage",
+        "DamageReduction": 60
+      }
+    ]
+  }
 }

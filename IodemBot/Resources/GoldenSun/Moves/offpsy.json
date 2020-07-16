@@ -373,6 +373,38 @@
     "PPCost": 30,
     "power": 250
   },
+  "Demon Night": {
+    "name": "Demon Night",
+    "targetType": 4,
+    "emote": "<:Demon_Night:536958935081549843>",
+    "range": 1,
+    "element": 0,
+    "effects": [
+      {
+        "Type": "Condition",
+        "Condition": "Haunt",
+        "Probability": 25
+      }
+    ],
+    "PPCost": 12,
+    "power": 60
+  },
+  "Thorny Grave": {
+    "name": "Thorny Grave",
+    "targetType": 4,
+    "emote": "<:Thorny_Grave:536958993269260289>",
+    "range": 1,
+    "element": 0,
+    "effects": [
+      {
+        "Type": "Condition",
+        "Condition": "Haunt",
+        "Probability": 25
+      }
+    ],
+    "PPCost": 24,
+    "power": 170
+  },
   "Psynergy Slam": {
     "name": "Psynergy Slam",
     "targetType": 3,
@@ -1300,6 +1332,21 @@
       }
     ]
   },
+  "Death Scythe": {
+    "name": "Death Scythe",
+    "targetType": 3,
+    "emote": ":skull_crossbones:",
+    "range": 1,
+    "element": 0,
+    "PPCost": 0,
+    "addDamage": 35,
+    "effects": [
+      {
+        "Type": "OHKO",
+        "Probability": 15
+      }
+    ]
+  },
   "Ransack": {
     "name": "Ransack",
     "targetType": 3,
@@ -1375,14 +1422,82 @@
       }
     ]
   },
+  "Toxic Breath": {
+    "name": "Toxic Breath",
+    "targetType": 4,
+    "emote": "<:Venom:598458704400220160>",
+    "range": 1,
+    "element": 0,
+    "PPCost": 0,
+    "addDamage": 60,
+    "effects": [
+      {
+        "Type": "Condition",
+        "Condition": "Poison",
+        "Probability": 40
+      }
+    ]
+  },
   "Wing Flutter": {
     "name": "Wing Flutter",
     "targetType": 4,
     "emote": "🦅",
-    "range": 3,
+    "range": 1,
     "element": 2,
     "PPCost": 0,
     "power": 70
+  },
+  "Wing Stroke": {
+    "name": "Wing Stroke",
+    "targetType": 4,
+    "emote": "🦅",
+    "range": 1,
+    "element": 2,
+    "PPCost": 0,
+    "power": 140
+  },
+  "Wing Slash": {
+    "name": "Wing Slash",
+    "targetType": 3,
+    "emote": "🦅",
+    "range": 1,
+    "element": 2,
+    "PPCost": 0,
+    "dmgMult": 1.6
+  },
+  "Buffeting Wings": {
+    "name": "Buffeting Wings",
+    "targetType": 4,
+    "emote": "🦅",
+    "range": 1,
+    "element": 2,
+    "PPCost": 0,
+    "Power": 140
+  },
+  "Wicked Howl": {
+    "name": "Wicked Howl",
+    "targetType": 4,
+    "emote": ":anger_right:",
+    "range": 2,
+    "element": 2,
+    "PPCost": 0,
+    "power": 35,
+    "effects": [
+      {
+        "Type": "Condition",
+        "Condition": "Flinch",
+        "Probability": 20
+      }
+    ]
+  },
+  "Wing Beat": {
+    "name": "Wing Beat",
+    "targetType": 4,
+    "emote": "🦅",
+    "range": 2,
+    "element": 2,
+    "PPCost": 0,
+    "power": 35
   },
   "Twin Beaks": {
     "name": "Twin Beaks",
@@ -1404,10 +1519,28 @@
     "name": "Ice Blessing",
     "targetType": 4,
     "emote": "❄",
-    "range": 3,
+    "range": 1,
     "element": 3,
     "PPCost": 0,
     "power": 140
+  },
+  "Ice Breath": {
+    "name": "Ice Breath",
+    "targetType": 4,
+    "emote": "❄",
+    "range": 1,
+    "element": 3,
+    "PPCost": 0,
+    "power": 120
+  },
+  "Chill Breath": {
+    "name": "Chill Breath",
+    "targetType": 4,
+    "emote": "❄",
+    "range": 1,
+    "element": 3,
+    "PPCost": 0,
+    "power": 270
   },
   "Headbutt": {
     "name": "Headbutt",
@@ -1452,6 +1585,33 @@
     "PPCost": 0,
     "power": 120
   },
+  "Angle Spike": {
+    "name": "Angle Spike",
+    "targetType": 4,
+    "emote": ":fishing_pole_and_fish:",
+    "range": 3,
+    "element": 1,
+    "PPCost": 0,
+    "addDamage": 15
+  },
+  "Beast Needle": {
+    "name": "Beast Needle",
+    "targetType": 4,
+    "emote": ":fishing_pole_and_fish:",
+    "range": 3,
+    "element": 3,
+    "PPCost": 0,
+    "addDamage": 15
+  },
+  "Triple Chomp": {
+    "name": "Triple Chomp",
+    "targetType": 4,
+    "emote": ":trident:",
+    "range": 3,
+    "element": 3,
+    "PPCost": 0,
+    "dmgMult": 2.4
+  },
   "Acid Breath": {
     "name": "Acid Breath",
     "targetType": 4,
@@ -1465,6 +1625,56 @@
         "Type": "Stat",
         "Stat": "Defense",
         "Multiplier": 0.8,
+        "Probability": 20
+      }
+    ]
+  },
+  "Acid Blessing": {
+    "name": "Acid Blessing",
+    "targetType": 4,
+    "emote": "☣",
+    "range": 3,
+    "element": 1,
+    "PPCost": 0,
+    "power": 170,
+    "effects": [
+      {
+        "Type": "Stat",
+        "Stat": "Defense",
+        "Multiplier": 0.8,
+        "Probability": 20
+      }
+    ]
+  },
+  "Acid Bite": {
+    "name": "Acid Bite",
+    "targetType": 4,
+    "emote": "☣",
+    "range": 3,
+    "element": 1,
+    "PPCost": 0,
+    "addDamage": 36,
+    "effects": [
+      {
+        "Type": "Stat",
+        "Stat": "Defense",
+        "Multiplier": 0.8,
+        "Probability": 20
+      }
+    ]
+  },
+  "Formic Acid": {
+    "name": "Formic Acid",
+    "targetType": 3,
+    "emote": ":ant:",
+    "range": 3,
+    "element": 2,
+    "PPCost": 0,
+    "power": 15,
+    "effects": [
+      {
+        "Type": "Condition",
+        "Condition": "Stun",
         "Probability": 20
       }
     ]
@@ -1493,6 +1703,22 @@
     "element": 0,
     "PPCost": 0,
     "addDamage": 50,
+    "effects": [
+      {
+        "Type": "MultiplyDamage",
+        "Multipliers": [ 2.0 ],
+        "Probabilites": [ 50 ]
+      }
+    ]
+  },
+  "Triple Fang": {
+    "name": "Triple Fang",
+    "targetType": 3,
+    "emote": "🐶",
+    "range": 1,
+    "element": 0,
+    "PPCost": 0,
+    "addDamage": 35,
     "effects": [
       {
         "Type": "MultiplyDamage",
@@ -1659,6 +1885,32 @@
     "PPCost": 0,
     "addDamage": 20
   },
+  "Claw Frenzy": {
+    "name": "Claw Frenzy",
+    "targetType": 3,
+    "emote": "<:Rampage:537766290031509524>",
+    "range": 1,
+    "element": 4,
+    "PPCost": 0,
+    "addDamage": 40,
+    "effects": [
+      {
+        "Type": "Stat",
+        "Stat": "Attack",
+        "Multiplier": 0.75,
+        "Probability": 50
+      }
+    ]
+  },
+  "Claw Slash": {
+    "name": "Claw Slash",
+    "targetType": 3,
+    "emote": "<:Rampage:537766290031509524>",
+    "range": 1,
+    "element": 2,
+    "PPCost": 0,
+    "addDamage": 16
+  },
   "Fire Dance": {
     "name": "Fire Dance",
     "targetType": 3,
@@ -1719,6 +1971,15 @@
     "element": 3,
     "PPCost": 0,
     "power": 100
+  },
+  "Water Blessing": {
+    "name": "Water Blessing",
+    "targetType": 4,
+    "emote": ":sweat_drops:",
+    "range": 2,
+    "element": 3,
+    "PPCost": 0,
+    "power": 25
   },
   "Black Ice": {
     "name": "Black Ice",
@@ -1853,10 +2114,35 @@
       }
     ]
   },
+  "Witchlight": {
+    "name": "Witchlight",
+    "targetType": 3,
+    "emote": ":woman_mage:",
+    "range": 1,
+    "element": 1,
+    "PPCost": 0,
+    "addDamage": 30,
+    "effects": [
+      {
+        "Type": "Condition",
+        "Condition": "Haunt",
+        "Probability": 20
+      }
+    ]
+  },
   "Ur Flash": {
     "name": "Ur Flash",
     "targetType": 3,
     "emote": "<:Rampage:537766290031509524>",
+    "range": 1,
+    "element": 2,
+    "PPCost": 0,
+    "dmgMult": 1.4
+  },
+  "Wolf Rush": {
+    "name": "Wolf Rush",
+    "targetType": 3,
+    "emote": ":wolf:",
     "range": 1,
     "element": 2,
     "PPCost": 0,
@@ -1902,6 +2188,67 @@
       }
     ]
   },
+  "Bestial Attack": {
+    "name": "Bestial Attack",
+    "targetType": 3,
+    "emote": ":boar:",
+    "range": 1,
+    "element": 0,
+    "PPCost": 0,
+    "dmgMult": 1.2,
+    "effects": [
+      {
+        "ReduceHPToOne": "ReduceHPToOne",
+        "Probability": 20
+      }
+    ]
+  },
+  "Vampiric Fang": {
+    "name": "Vampiric Fang",
+    "targetType": 3,
+    "emote": ":vampire:",
+    "range": 1,
+    "element": 0,
+    "PPCost": 3,
+    "power": 35,
+    "effects": [
+      {
+        "Type": "HPDrain",
+        "Percentage": 50,
+        "Probability": 100
+      }
+    ]
+  },
+  "Vital Moon": {
+    "name": "Vital Moon",
+    "targetType": 3,
+    "emote": ":last_quarter_moon_with_face:",
+    "range": 1,
+    "element": 0,
+    "PPCost": 0,
+    "dmgMult": 1.4,
+    "effects": [
+      {
+        "ReduceHPToOne": "ReduceHPToOne",
+        "Probability": 10
+      }
+    ]
+  },
+  "Vital Barrage": {
+    "name": "Vital Barrage",
+    "targetType": 3,
+    "emote": ":first_quarter_moon_with_face:",
+    "range": 1,
+    "element": 0,
+    "PPCost": 0,
+    "dmgMult": 1.4,
+    "effects": [
+      {
+        "ReduceHPToOne": "ReduceHPToOne",
+        "Probability": 10
+      }
+    ]
+  },
   "Pike Assault": {
     "name": "Pike Assault",
     "targetType": 3,
@@ -1916,6 +2263,24 @@
         "IgnorePercent": 50
       }
     ]
+  },
+  "Bone Charge": {
+    "name": "Bone Charge",
+    "targetType": 3,
+    "emote": ":bone:",
+    "range": 1,
+    "element": 0,
+    "PPCost": 0,
+    "dmgMult": 1.7
+  },
+  "Bone Chiller": {
+    "name": "Bone Chiller",
+    "targetType": 3,
+    "emote": ":bone:",
+    "range": 1,
+    "element": 3,
+    "PPCost": 0,
+    "power": 7
   },
   "Heat Stun": {
     "name": "Heat Stun",
@@ -1975,6 +2340,21 @@
       }
     ]
   },
+  "Truncheon Fist": {
+    "name": "Truncheon Fist",
+    "targetType": 3,
+    "emote": ":right_facing_fist:",
+    "range": 1,
+    "element": 0,
+    "PPCost": 0,
+    "addDamage": 60,
+    "effects": [
+      {
+        "ReduceHPToOne": "ReduceHPToOne",
+        "Probability": 10
+      }
+    ]
+  },
   "Rotten Blood": {
     "name": "Rotten Blood",
     "targetType": 3,
@@ -2026,6 +2406,15 @@
     "PPCost": 0,
     "addDamage": 50
   },
+  "Undead Sword": {
+    "name": "Undead Sword",
+    "targetType": 3,
+    "emote": ":crossed_swords:",
+    "range": 0,
+    "element": 0,
+    "PPCost": 0,
+    "addDamage": 15
+  },
   "Gasping Breath": {
     "name": "Gasping Breath",
     "targetType": 3,
@@ -2039,6 +2428,22 @@
         "Type": "Condition",
         "Condition": "Haunt",
         "Probability": 20
+      }
+    ]
+  },
+  "Vanish Claw": {
+    "name": "Vanish Claw",
+    "targetType": 3,
+    "emote": ":gear:",
+    "range": 1,
+    "element": 0,
+    "PPCost": 0,
+    "power": 21,
+    "effects": [
+      {
+        "Type": "Condition",
+        "Condition": "Delusion",
+        "Probability": 35
       }
     ]
   },
@@ -2065,6 +2470,23 @@
         "Stat": "Defense",
         "Multiplier": 0.8,
         "Probability": 25
+      }
+    ]
+  },
+  "Blast Breath": {
+    "name": "Blast Breath",
+    "targetType": 3,
+    "emote": "<:Planetary:536963471766454272>",
+    "range": 1,
+    "element": 1,
+    "PPCost": 0,
+    "power": 170,
+    "effects": [
+      {
+        "Type": "Stat",
+        "Stat": "Defense",
+        "Multiplier": 0.75,
+        "Probability": 35
       }
     ]
   },
@@ -2097,7 +2519,6 @@
     "PPCost": 0,
     "dmgMult": 1.5
   },
-
   "Fatal Fang": {
     "name": "Fatal Fang",
     "targetType": 4,

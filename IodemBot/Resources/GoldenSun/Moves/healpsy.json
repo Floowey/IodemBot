@@ -1,270 +1,281 @@
 {
-    "Cure": {
-        "name": "Cure",
-        "targetType": 1,
-        "emote": "<:Cure:536957799670743070>",
-        "range": 1,
-        "element": 0,
-        "PPCost": 3,
-        "healPower": 50,
-        "percentage": 10,
-        "singleTarget": true
-    },
-    "Cure Well": {
-        "name": "Cure Well",
-        "targetType": 1,
-        "emote": "<:Cure_Well:536957817563774996>",
-        "range": 1,
-        "element": 0,
-        "PPCost": 7,
-        "healPower": 100,
-        "percentage": 20,
-        "singleTarget": true
-    },
-    "Potent Cure": {
-        "name": "Potent Cure",
-        "targetType": 1,
-        "emote": "<:Potent_Cure:536957933217644554>",
-        "range": 1,
-        "element": 0,
-        "PPCost": 10,
-        "healPower": 200,
-        "percentage": 30,
-        "singleTarget": true
-    },
-    "Aura": {
-        "name": "Aura",
-        "targetType": 2,
-        "emote": "<:Aura:536963105226489865>",
-        "range": 4,
-        "element": 1,
-        "PPCost": 11,
-        "healPower": 50,
-        "percentage": 0,
-        "singleTarget": false
-    },
-    "Healing Aura": {
-        "name": "Healing Aura",
-        "targetType": 2,
-        "emote": "<:Healing_Aura:536963179125932032>",
-        "range": 4,
-        "element": 1,
-        "PPCost": 11,
-        "healPower": 100,
-        "percentage": 0,
-        "singleTarget": false
-    },
-    "Cool Aura": {
-        "name": "Cool Aura",
-        "targetType": 2,
-        "emote": "<:Cool_Aura:536963140244602893>",
-        "range": 4,
-        "element": 1,
-        "PPCost": 16,
-        "healPower": 200,
-        "percentage": 0,
-        "singleTarget": false
-    },
-    "Boon": {
-        "name": "Boon",
-        "targetType": 1,
-        "emote": "<:Boon:551203547098906624>",
-        "range": 3,
-        "element": 2,
-        "PPCost": 5,
-        "healPower": 50,
-        "percentage": 13,
-        "singleTarget": true,
-        "effects": [
-            {
-                "Type": "Restore"
-            }
-        ]
-    },
-    "Nature's Boon": {
-        "name": "Nature's Boon",
-        "targetType": 1,
-        "emote": "<:Natures_Boon:537001159630782465>",
-        "range": 3,
-        "element": 2,
-        "PPCost": 8,
-        "healPower": 100,
-        "percentage": 25,
-        "singleTarget": true,
-        "effects": [
-            {
-                "Type": "Restore"
-            }
-        ]
-    },
-    "Vital Boon": {
-        "name": "Vital Boon",
-        "targetType": 1,
-        "emote": "<:Vital_Boon:551203547274936324>",
-        "range": 3,
-        "element": 2,
-        "PPCost": 18,
-        "healPower": 200,
-        "percentage": 50,
-        "singleTarget": true,
-        "effects": [
-            {
-                "Type": "Restore"
-            }
-        ]
-    },
-    "Fresh Breeze": {
-        "name": "Fresh Breeze",
-        "targetType": 2,
-        "emote": "<:Fresh_Breeze:551205173159002126>",
-        "range": 3,
-        "element": 2,
-        "PPCost": 5,
-        "healPower": 75,
-        "percentage": 15,
-        "singleTarget": false
-    },
-    "Healthy Wind": {
-        "name": "Healthy Wind",
-        "targetType": 2,
-        "emote": "<:Healthy_Wind:551205173167521811>",
-        "range": 3,
-        "element": 2,
-        "PPCost": 8,
-        "healPower": 100,
-        "percentage": 15,
-        "singleTarget": false
-    },
-    "Healing Gust": {
-        "name": "Healing Gust",
-        "targetType": 2,
-        "emote": "<:Healing_Gust:551205173154938899>",
-        "range": 3,
-        "element": 2,
-        "PPCost": 14,
-        "healPower": 140,
-        "percentage": 20,
-        "singleTarget": false
-    },
-    "Ply": {
-        "name": "Ply",
-        "targetType": 1,
-        "emote": "<:Ply:536969730636906498>",
-        "range": 1,
-        "element": 3,
-        "PPCost": 4,
-        "healPower": 100,
-        "percentage": 0,
-        "singleTarget": true
-    },
-    "Ply Well": {
-        "name": "Ply Well",
-        "targetType": 1,
-        "emote": "<:Ply_Well:536969749859532800>",
-        "range": 1,
-        "element": 3,
-        "PPCost": 8,
-        "healPower": 200,
-        "percentage": 0,
-        "singleTarget": true
-    },
-    "Pure Ply": {
-        "name": "Pure Ply",
-        "targetType": 1,
-        "emote": "<:Pure_Ply:536969776036315136>",
-        "range": 1,
-        "element": 3,
-        "PPCost": 12,
-        "healPower": 1000,
-        "percentage": 0,
-        "singleTarget": true
-    },
-    "Earnest Ply": {
-        "name": "Earnest Ply",
-        "targetType": 1,
-        "emote": "<:Pure_Ply:536969776036315136>",
-        "range": 1,
-        "element": 3,
-        "PPCost": 12,
-        "healPower": 1000,
-        "percentage": 0,
-        "singleTarget": true
-    },
-    "Wish": {
-        "name": "Wish",
-        "targetType": 2,
-        "emote": "<:Wish:536969825793212436>",
-        "range": 3,
-        "element": 3,
-        "PPCost": 9,
-        "healPower": 80,
-        "percentage": 0,
-        "singleTarget": false
-    },
-    "Wish Well": {
-        "name": "Wish Well",
-        "targetType": 2,
-        "emote": "<:Wish_Well:536969842016911381>",
-        "range": 3,
-        "element": 3,
-        "PPCost": 13,
-        "healPower": 160,
-        "percentage": 0,
-        "singleTarget": false
-    },
-    "Pure Wish": {
-        "name": "Pure Wish",
-        "targetType": 2,
-        "emote": "<:Pure_Wish:536969896265777162>",
-        "range": 3,
-        "element": 3,
-        "PPCost": 20,
-        "healPower": 400,
-        "percentage": 0,
-        "singleTarget": false
-    },
-    "Elder Wood": {
-        "name": "Elder Wood",
-        "targetType": 2,
-        "emote": "<:Estre_Wood:551067651670016020>",
-        "range": 3,
-        "element": 3,
-        "PPCost": 9,
-        "healPower": 120,
-        "percentage": 0,
-        "singleTarget": false
-    },
-    "Estre Wood": {
-        "name": "Estre Wood",
-        "targetType": 2,
-        "emote": "<:Estre_Wood:551067651670016020>",
-        "range": 3,
-        "element": 3,
-        "PPCost": 16,
-        "healPower": 280,
-        "percentage": 0,
-        "singleTarget": false
-    },
-    "Nut": {
-        "name": "Nut",
-        "targetType": 1,
-        "emote": "<:Nut:548636122402783243>",
-        "range": 1,
-        "element": 3,
-        "PPCost": 1,
-        "healPower": 200,
-        "percentage": 0,
-        "singleTarget": true
-    },
-    "Herb": {
-        "name": "Herb",
-        "targetType": 1,
-        "emote": "<:Herb:543043292187590659>",
-        "range": 1,
-        "element": 3,
-        "PPCost": 1,
-        "healPower": 70,
-        "percentage": 0,
-        "singleTarget": true
-    }
+  "Cure": {
+    "name": "Cure",
+    "targetType": 1,
+    "emote": "<:Cure:536957799670743070>",
+    "range": 1,
+    "element": 0,
+    "PPCost": 3,
+    "healPower": 50,
+    "percentage": 10,
+    "singleTarget": true
+  },
+  "Cure Well": {
+    "name": "Cure Well",
+    "targetType": 1,
+    "emote": "<:Cure_Well:536957817563774996>",
+    "range": 1,
+    "element": 0,
+    "PPCost": 7,
+    "healPower": 100,
+    "percentage": 20,
+    "singleTarget": true
+  },
+  "Potent Cure": {
+    "name": "Potent Cure",
+    "targetType": 1,
+    "emote": "<:Potent_Cure:536957933217644554>",
+    "range": 1,
+    "element": 0,
+    "PPCost": 10,
+    "healPower": 200,
+    "percentage": 30,
+    "singleTarget": true
+  },
+  "Aura": {
+    "name": "Aura",
+    "targetType": 2,
+    "emote": "<:Aura:536963105226489865>",
+    "range": 4,
+    "element": 1,
+    "PPCost": 11,
+    "healPower": 50,
+    "percentage": 0,
+    "singleTarget": false
+  },
+  "Healing Aura": {
+    "name": "Healing Aura",
+    "targetType": 2,
+    "emote": "<:Healing_Aura:536963179125932032>",
+    "range": 4,
+    "element": 1,
+    "PPCost": 11,
+    "healPower": 100,
+    "percentage": 0,
+    "singleTarget": false
+  },
+  "Cool Aura": {
+    "name": "Cool Aura",
+    "targetType": 2,
+    "emote": "<:Cool_Aura:536963140244602893>",
+    "range": 4,
+    "element": 1,
+    "PPCost": 16,
+    "healPower": 200,
+    "percentage": 0,
+    "singleTarget": false
+  },
+  "Boon": {
+    "name": "Boon",
+    "targetType": 1,
+    "emote": "<:Boon:551203547098906624>",
+    "range": 3,
+    "element": 2,
+    "PPCost": 5,
+    "healPower": 50,
+    "percentage": 13,
+    "singleTarget": true,
+    "effects": [
+      {
+        "Type": "Restore"
+      }
+    ]
+  },
+  "Nature's Boon": {
+    "name": "Nature's Boon",
+    "targetType": 1,
+    "emote": "<:Natures_Boon:537001159630782465>",
+    "range": 3,
+    "element": 2,
+    "PPCost": 8,
+    "healPower": 100,
+    "percentage": 25,
+    "singleTarget": true,
+    "effects": [
+      {
+        "Type": "Restore"
+      }
+    ]
+  },
+  "Vital Boon": {
+    "name": "Vital Boon",
+    "targetType": 1,
+    "emote": "<:Vital_Boon:551203547274936324>",
+    "range": 3,
+    "element": 2,
+    "PPCost": 18,
+    "healPower": 200,
+    "percentage": 50,
+    "singleTarget": true,
+    "effects": [
+      {
+        "Type": "Restore"
+      }
+    ]
+  },
+  "Fresh Breeze": {
+    "name": "Fresh Breeze",
+    "targetType": 2,
+    "emote": "<:Fresh_Breeze:551205173159002126>",
+    "range": 3,
+    "element": 2,
+    "PPCost": 5,
+    "healPower": 75,
+    "percentage": 15,
+    "singleTarget": false
+  },
+  "Healthy Wind": {
+    "name": "Healthy Wind",
+    "targetType": 2,
+    "emote": "<:Healthy_Wind:551205173167521811>",
+    "range": 3,
+    "element": 2,
+    "PPCost": 8,
+    "healPower": 100,
+    "percentage": 15,
+    "singleTarget": false
+  },
+  "Healing Gust": {
+    "name": "Healing Gust",
+    "targetType": 2,
+    "emote": "<:Healing_Gust:551205173154938899>",
+    "range": 3,
+    "element": 2,
+    "PPCost": 14,
+    "healPower": 140,
+    "percentage": 20,
+    "singleTarget": false
+  },
+  "Ply": {
+    "name": "Ply",
+    "targetType": 1,
+    "emote": "<:Ply:536969730636906498>",
+    "range": 1,
+    "element": 3,
+    "PPCost": 4,
+    "healPower": 100,
+    "percentage": 0,
+    "singleTarget": true
+  },
+  "Ply Well": {
+    "name": "Ply Well",
+    "targetType": 1,
+    "emote": "<:Ply_Well:536969749859532800>",
+    "range": 1,
+    "element": 3,
+    "PPCost": 8,
+    "healPower": 200,
+    "percentage": 0,
+    "singleTarget": true
+  },
+  "Pure Ply": {
+    "name": "Pure Ply",
+    "targetType": 1,
+    "emote": "<:Pure_Ply:536969776036315136>",
+    "range": 1,
+    "element": 3,
+    "PPCost": 12,
+    "healPower": 1000,
+    "percentage": 0,
+    "singleTarget": true
+  },
+  "Earnest Ply": {
+    "name": "Earnest Ply",
+    "targetType": 1,
+    "emote": "<:Pure_Ply:536969776036315136>",
+    "range": 1,
+    "element": 3,
+    "PPCost": 12,
+    "healPower": 1000,
+    "percentage": 0,
+    "singleTarget": true
+  },
+  "Wish": {
+    "name": "Wish",
+    "targetType": 2,
+    "emote": "<:Wish:536969825793212436>",
+    "range": 3,
+    "element": 3,
+    "PPCost": 9,
+    "healPower": 80,
+    "percentage": 0,
+    "singleTarget": false
+  },
+  "Wish Well": {
+    "name": "Wish Well",
+    "targetType": 2,
+    "emote": "<:Wish_Well:536969842016911381>",
+    "range": 3,
+    "element": 3,
+    "PPCost": 13,
+    "healPower": 160,
+    "percentage": 0,
+    "singleTarget": false
+  },
+  "Pure Wish": {
+    "name": "Pure Wish",
+    "targetType": 2,
+    "emote": "<:Pure_Wish:536969896265777162>",
+    "range": 3,
+    "element": 3,
+    "PPCost": 20,
+    "healPower": 400,
+    "percentage": 0,
+    "singleTarget": false
+  },
+  "Elder Wood": {
+    "name": "Elder Wood",
+    "targetType": 2,
+    "emote": "<:Estre_Wood:551067651670016020>",
+    "range": 3,
+    "element": 3,
+    "PPCost": 9,
+    "healPower": 120,
+    "percentage": 0,
+    "singleTarget": false
+  },
+  "Estre Wood": {
+    "name": "Estre Wood",
+    "targetType": 2,
+    "emote": "<:Estre_Wood:551067651670016020>",
+    "range": 3,
+    "element": 3,
+    "PPCost": 16,
+    "healPower": 280,
+    "percentage": 0,
+    "singleTarget": false
+  },
+  "Nut": {
+    "name": "Nut",
+    "targetType": 1,
+    "emote": "<:Nut:548636122402783243>",
+    "range": 1,
+    "element": 3,
+    "PPCost": 1,
+    "healPower": 200,
+    "percentage": 0,
+    "singleTarget": true
+  },
+  "Herb": {
+    "name": "Herb",
+    "targetType": 1,
+    "emote": "<:Herb:543043292187590659>",
+    "range": 1,
+    "element": 3,
+    "PPCost": 1,
+    "healPower": 70,
+    "percentage": 0,
+    "singleTarget": true
+  },
+  "Worms": {
+    "name": "Worms",
+    "targetType": 0,
+    "emote": ":bug:",
+    "range": 1,
+    "element": 0,
+    "PPCost": 0,
+    "healPower": 50,
+    "percentage": 0,
+    "singleTarget": true
+  }
 }
