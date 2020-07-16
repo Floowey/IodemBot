@@ -10,7 +10,10 @@ namespace IodemBot.Modules.GoldenSunMechanics
     {
         public int apply(UserAccount user)
         {
-            return user.Inv.GetGear(ArchType.Mage).Count(i => i.IsCursed);
+            var cursedGearWorn = user.Inv.GetGear(ArchType.Mage).Count(it => it.IsCursed);
+            if (cursedGearWorn == 0) return 0;
+
+            return user.Inv.CursedGear().Select(i => i.Itemname).Distinct().Count()/2+cursedGearWorn;
         }
     }
 }

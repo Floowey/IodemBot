@@ -1612,7 +1612,7 @@
     "IsDefault": false,
     "Matchups": [
       {
-        "Flavourtext": "error",
+        "Flavourtext": "You reach the Mercury Lighthouse, and you notice the fountain of Hermes Water. Having heard about it's ability to heal those even on the brink of death, you decide to scoop some in a bottle on your way in for safe keeping. As you make your way in the entrance of the lighthouse, you are immediately accosted by a large humanoid lizard, adamant about blocking your way. You are provided with no option other than felling the reptile.",
         "EnemyNames": [ "Lizard Man 1" ],
         "RewardTables": [
           [
@@ -1882,29 +1882,45 @@
   "Lunpa": {
     "name": "Lunpa",
     "IsOneTimeOnly": true,
-    "FlavourText": "Lunpa, home of Dodonpa's family of thieves. It was known to be a fortress, but a big sign out front says 'Welcome to Lunpa! The strongest warriors may enter! Children and spectators, please talk to the guards!'",
+    "FlavourText": "Lunpa, home of Dodonpa's family of thieves. It was known to be a fortress, but a big sign out front says, 'Welcome to Lunpa! The strongest warriors may enter! Children and spectators, please talk to the guards!'",
     "Image": "",
     "IsDefault": false,
+    "Requirement": {
+      "MinLevel": "25"
+    },
     "Matchups": [
       {
-        "Flavourtext": "As you sneak in, you notice the monsters here seem more intelligent than the humans, as they quickly manage to spot you!",
+        "Flavourtext": "Welcome to Lunpa, home of the great Dodonpa,' a bored-sounding town crier intones.  'Run the gauntlet, prove your strength and stealth, do battle with the Mighty Toadonpa, and win a mystery prize.  Tickets are 500 coins.'  He gets a closer look at you and your equipment, and pauses.  Lowering his voice, he whispers to you, 'Actually, you look halfway competant and the guards are getting really bored.'  He hands you a ticket and gestures you towards the fortress gates.  'Just, please give them a decent fight, and don't tell Lord Dodonpa.'",
+        "EnemyNames": [ "Next" ],
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "XP": 1,
+              "Coins": 1
+            }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "You hand your ticket in at the fortress gates.  They tell you to 'fearlessly meet the Fortress Challenges, find the key, and fight the monster,' and wave you in.  Before you can get very far, you're accosted by some sneaky monsters.",
         "EnemyNames": [ "Rat Warrior 1", "Kobold 1", "Vile Dirge 1" ],
         "Shuffle": true,
         "RewardTables": [
           [
             {
-              "Weight": 5,
+              "Weight": 1,
               "XP": 125,
               "Coins": 75
             }
           ],
           [
+            { "Weight": 12 },
             {
-              "Weight": 1,
+              "Weight": 2,
               "Chest": "Normal",
               "HasChest": true
             },
-            { "Weight": 15 },
             {
               "Weight": 1,
               "Item": "Silver Helm"
@@ -1912,20 +1928,12 @@
             {
               "Weight": 1,
               "Item": "Platinum Circlet"
-            },
-            {
-              "Weight": 1,
-              "Item": "Silver Armlet"
-            },
-            {
-              "Weight": 1,
-              "Item": "Plate Mail"
             }
           ]
         ]
       },
       {
-        "Flavourtext": "A guard is coming, quick, hide in the shadows and wait 'til he goes away!",
+        "Flavourtext": "A guard is pacing slowly down the hall.  He announces loudly every 15 feet or so, 'I sure hope I don't find any INTRUDERS in the fortress, or they'll lose the challenge and I'll have to escort them out.'   Quick, hide in the shadows and wait 'til he goes away?",
         "EnemyNames": [ "Fortress Guard" ],
         "RewardTables": [
           [
@@ -1937,44 +1945,36 @@
         ]
       },
       {
-        "Flavourtext": "You hear a group of henchmen talking about a yellow door, but there's no way to avoid them this time... neutralize them all before they can alert the whole fortress!",
+        "Flavourtext": "A group of fortress guards are talking amongst themselves here.  As you walk up, they straighten up and ready their weapons.  'A challenger!  About time,' they say.  ",
         "EnemyNames": [ "Brigand", "Brigand", "Brigand" ],
         "RewardTables": [
           [
             {
-              "Weight": 7,
+              "Weight": 1,
               "XP": 137,
               "Coins": 125
             }
           ],
           [
+            { "Weight": 11 },
             {
-              "Weight": 1,
+              "Weight": 2,
               "Chest": "Silver",
               "HasChest": true
             },
-            { "Weight": 15 },
             {
               "Weight": 1,
               "Item": "Master Rapier"
             },
             {
               "Weight": 1,
-              "Item": "Great Axe"
-            },
-            {
-              "Weight": 1,
               "Item": "Great Sword"
-            },
-            {
-              "Weight": 1,
-              "Item": "War Mace"
             }
           ]
         ]
       },
       {
-        "Flavourtext": "You're getting thirsty searching for the key to open that door... hey, this might quench you!",
+        "Flavourtext": "As you search through numerous rooms for the way forward, you interrupt a Mercury djinni relaxing on a barstool in front of a counter. Annoyed, it attacks!",
         "EnemyNames": [ "Mercury Djinni 4" ],
         "RewardTables": [
           [
@@ -2008,8 +2008,8 @@
         ]
       },
       {
-        "Flavourtext": "On a table you see three keys, grab one! Choose wisely, you only have the time to get one of them!",
-        "EnemyNames": [ "Red Key", "Blue Key", "Yellow Key" ],
+        "Flavourtext": "Another side room holds a table with three keys.  Just up the passage you hear another bored-sounding guard announcing that if he spots you, you lose the challenge, so choose wisely!",
+        "EnemyNames": [ "Key10RedKey", "TrapBlueKey", "TrapYellowKey" ],
         "Shuffle": true,
         "Image": "https://imgur.com/6oB3CBd",
         "RewardTables": [
@@ -2033,7 +2033,7 @@
         ]
       },
       {
-        "Flavourtext": "You keep going deeper into the stronghold. Uh oh... seems like it's the right way because you bump into another group of guards! No mercy for them!",
+        "Flavourtext": "You keep going deeper into the stronghold. Seems like it's the right way, because you bump into another group of guards! They grin and draw their weapons.",
         "EnemyNames": [ "Brigand", "Thief 2", "Bandit 2", "Thief 2", "Brigand" ],
         "RewardTables": [
           [
@@ -2056,21 +2056,21 @@
         ]
       },
       {
-        "Flavourtext": "Finally, Hammet's cell! You see the red door, but a huge monster keeps a globulous eye on it... you'll have to slay that oversized frog to save the merchant once and for all!",
+        "Flavourtext": "Finally, you enter a large room and spot a red door with a sign that reads 'Winner's Exit.'  But as soon as you do, a huge toad-like monster also spots you.  It bellows and attacks!",
         "EnemyNames": [ "Toadonpa" ],
         "RewardTables": [
           [
             {
               "Weight": 1,
-              "XP": 300,
-              "Coins": 300
+              "XP": 400,
+              "Coins": 400
             }
           ],
           [
-            { "Weight": 32 },
             {
-              "Weight": 1,
-              "Item": "Demonic Staff"
+              "Weight": 75,
+              "Chest": "Normal",
+              "HasChest": true
             },
             {
               "Weight": 1,
@@ -2083,12 +2083,22 @@
             {
               "Weight": 1,
               "Item": "Shamshir"
+            },
+            {
+              "Weight": 7,
+              "Chest": "Gold",
+              "HasChest": true
+            },
+            {
+              "Weight": 15,
+              "Chest": "Silver",
+              "HasChest": true
             }
           ]
         ]
       },
       {
-        "Flavourtext": "Let's get out where you came in. Better use that cloak again, though...",
+        "Flavourtext": "Having defeated the monster, you proceed through the exit.  The town crier nods to you as you leave the city.  What a weird place.",
         "EnemyNames": [ "End" ],
         "RewardTables": [
           [
@@ -4316,8 +4326,8 @@
     "IsDefault": false,
     "Matchups": [
       {
-        "Flavourtext": "Battle 1 Text",
-        "EnemyNames": [ "CybeleSummon" ],
+        "Flavourtext": "You immediately come face to face with some stone monsters, ready to sock it to you. What a lousy greeting party...",
+        "EnemyNames": [ "Golem", "Clay Gargoyle" ],
         "HealBefore": true,
         "RewardTables": [
           [
@@ -4329,8 +4339,8 @@
         ]
       },
       {
-        "Flavourtext": "Battle 2 Text",
-        "EnemyNames": [ "TiamatSummon" ],
+        "Flavourtext": "Having been...greeted, more creatures come your way. Quite the popular one, aren't you?",
+        "EnemyNames": [ "Wight", "Wight", "Mad Mole", "Mad Mole" ],
         "HealBefore": true,
         "RewardTables": [
           [
@@ -4342,7 +4352,7 @@
         ]
       },
       {
-        "Flavourtext": "Battle 3Text",
+        "Flavourtext": "Battle 3 Text",
         "EnemyNames": [ "ProcneSummon" ],
         "HealBefore": true,
         "RewardTables": [
@@ -4352,6 +4362,14 @@
               "XP": 1
             }
           ]
+        ]
+      },
+      {
+        "Flavourtext": "Battle 4 Text",
+        "EnemyNames": [ "NeptuneSummon" ],
+        "HealBefore": true,
+        "RewardTables": [
+          [ { "Weight":"1" } ]
         ]
       },
       {
@@ -4378,6 +4396,9 @@
     "Image": "https://goldensunwiki.net/w/images/c/c9/ColossoTrial.png",
     "IsDefault": false,
     "MaxPlayer": 1,
+    "Requirement": {
+      "Archtypes": [ "Warrior" ]
+    },
     "Matchups": [
       {
         "Flavourtext": "Round 1: You're up against Buford. He looks threatening in his black armor, yet you can feel his fear deep inside.",

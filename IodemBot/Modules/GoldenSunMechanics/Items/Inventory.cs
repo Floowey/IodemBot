@@ -417,6 +417,11 @@ namespace IodemBot.Modules.GoldenSunMechanics
             return true;
         }
 
+        public List<Item> CursedGear()
+        {
+            return Inv.Where(i => i.IsCursed).ToList();
+        }
+
         public bool RemoveCursedEquipment()
         {
             if (!MageGear.Any(w => w.IsCursed) && !WarriorGear.Any(w => w.IsCursed))
