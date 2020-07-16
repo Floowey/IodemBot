@@ -4386,9 +4386,6 @@
     "Image": "https://goldensunwiki.net/w/images/c/c9/ColossoTrial.png",
     "IsDefault": false,
     "MaxPlayer": 1,
-    "Requirement": {
-      "Archtypes": [ "Warrior" ]
-    },
     "Matchups": [
       {
         "Flavourtext": "Round 1: You're up against Buford. He looks threatening in his black armor, yet you can feel his fear deep inside.",
