@@ -1612,15 +1612,7 @@
     "IsDefault": false,
     "Matchups": [
       {
-        "Flavourtext": "\"\"You",
-        "reach" "the",
-        "Mercury" "Lighthouse",
-        "and" "you",
-        "notice" "the",
-        "fountain" "of",
-        "Hermes" "Water.",
-        "Having" "heard",
-        "about" "it's ability to heal those even on the brink of death, you decide to scoop some in a bottle on your way in for safe keeping. As you make your way in the entrance of the lighthouse, you are immediately accosted by a large humanoid lizard, adamant about blocking your way. You are provided with no option other than felling the reptile.\",",
+        "Flavourtext": "error",
         "EnemyNames": [ "Lizard Man 1" ],
         "RewardTables": [
           [
