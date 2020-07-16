@@ -11417,6 +11417,26 @@
       "mercuryatk": 125
     },
     "extraturns": 0
+  }, 
+     "NeptuneSummon": {
+    "movepool": [ "Watery Grave", "Aqua Breath", "Typhoon Blow", "Plume Edge", "Deluge", "Froth Spiral", "Ply Well", "Break" ],
+    "name": "Neptune",
+    "imgurl": "https://cdn.discordapp.com/attachments/497696510688100352/665884979833864192/Neptune_2.gif",
+    "stats": {
+      "maxhp": 3100,
+      "maxpp": 427,
+      "atk": 434,
+      "def": 371,
+      "spd": 202
+    },
+    "elstats": {
+      "marsres": 25,
+      "venusres": 100,
+      "jupiterres": 100,
+      "mercuryres": 193,
+      "mercuryatk": 125
+    },
+    "extraturns": 1
   },
   "ZaganSummon": {
     "movepool": [ "Planet Diver", "Ragnarok", "Berserk", "Bear Claw", "Mad Dash", "Heat Stun" ],
