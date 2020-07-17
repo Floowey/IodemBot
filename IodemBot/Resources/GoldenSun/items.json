@@ -1935,7 +1935,7 @@
     "Unleash": {
       "UnleashName": "Flare Burst",
       "UnleashAlignment": 1,
-      "effectImages": [
+      "effects": [
         {
           "Type": "AddDamage",
           "addDamage": 54
