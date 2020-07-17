@@ -4536,7 +4536,7 @@
       },
       {
         "Flavourtext": "You'd heard from somewhere that a previous party of Adepts had found and rescued Tolbi's late leader, Babi from these caves. He wanted them to find some 'draught' of some kind deep in the cave. Being the explorer you are, you decide to play scavenger, to see if there's anything remaining down there.",
-        "EnemyNames": [ "Armored Rat", "Golem", "Worm" ],
+        "EnemyNames": [ "Armored Rat 1", "Golem", "Worm" ],
         "Image": "",
         "RewardTables": [
           [
@@ -4551,7 +4551,7 @@
       },
       {
         "Flavourtext": "You find a chest...and wouldn't you know it, the chest is angry. Not your day, is it?",
-        "EnemyNames": [ "Mimic" ],
+        "EnemyNames": [ "Mimic 6" ],
         "Image": "",
         "RewardTables": [
           [
@@ -4565,7 +4565,7 @@
       },
       {
         "Flavourtext": "Reaping your rewards, and questioning whether or not they were worth it, you continue onward.",
-        "EnemyNames": [ "Worm", "Worm", "Worm", "Dread Hound" ],
+        "EnemyNames": [ "Worm", "Worm", "Worm", "Dread Hound 1" ],
         "Image": "",
         "RewardTables": [
           [
@@ -4579,7 +4579,7 @@
       },
       {
         "Flavourtext": "Monsters, monsters, monsters....who *doesn't* love monsters, right?",
-        "EnemyNames": [ "Armored Rat", "Armored Rat", "Foul Dirge" ],
+        "EnemyNames": [ "Armored Rat 1", "Armored Rat 1", "Foul Dirge 1" ],
         "Image": "",
         "RewardTables": [
           [
@@ -4593,7 +4593,7 @@
       },
       {
         "Flavourtext": "You enter a room with fallen pillars, and start pushing them around, finding a Djinni. He's *also* angry today, and it looks like he's itching for a fight.",
-        "EnemyNames": [ "Jupiter Djinni" ],
+        "EnemyNames": [ "Jupiter Djinni 3" ],
         "Image": "",
         "RewardTables": [
           [
@@ -4607,7 +4607,7 @@
       },
       {
         "Flavourtext": "You're largely sick of these caves by now, but you're the one who decided to explore down here. Bet you wish you had thought otherwise, hmm?",
-        "EnemyNames": [ "Dread Hound", "Dread Hound", "Clay Gargoyle" ],
+        "EnemyNames": [ "Dread Hound 1", "Dread Hound 1", "Clay Gargoyle" ],
         "Image": "",
         "RewardTables": [
           [
@@ -4620,8 +4620,8 @@
         ]
       },
       {
-        "Flavourtext": "You eventually find a room with five stones placed in a specific fashion, with more strange stones on the wall. Attached to the wall is a note, and it reads the following:\n```Blue is next to Green\nRed is on an edge\nWhite is not next to Red and Yellow\nBlue and Yellow share a Neighbour\nWhite is further left than Red.```\n'Unsure of why it mentions colors, you try Reveal, and learn that the stones indead have colors. You've come this far, might as well attempt to solve the riddle. (You may want to pause this with :pause_button: and look over the puzzle here).",
-        "EnemyNames": [ "Puzzle" ],
+        "Flavourtext": "`(A puzzle is coming up, you may want to pause this with` :pause_button: `to have time to figure it out!)`\nYou eventually find a room with five stones placed in a specific fashion, with more strange stones on the wall. Attached to the wall is a note, and it reads the following:\n```Blue is next to Green\nRed is on an edge\nWhite is not next to Red and Yellow\nBlue and Yellow share a Neighbour\nWhite is further left than Red.\n\nWhere is Yellow?```\nUnsure of why it mentions colors, you try Reveal, and learn that the stones indeed have colors. You've come this far, might as well attempt to solve the riddle.",
+        "EnemyNames": [ "TrapFirst", "TrapSecond", "TrapThird", "KeyFourth", "TrapFifth" ],
         "Image": "",
         "RewardTables": [
           [
@@ -4634,7 +4634,15 @@
         ]
       },
       {
-        "Flavourtext": "The stones start radiating and a previously hidden door appears in the stone wall, revealing a small room. It smells like a pharmacy, but it's completely empty, except for a small letter.",
+        "Flavourtext": "As you touch the correct stone, you a voice is heard inside your head. ```Which stone is in the middle?```",
+        "EnemyNames": [ "KeyGreen", "TrapRed", "TrapBlue", "TrapYellow", "TrapWhite" ],
+        "Keywords": [ "Shuffle" ],
+        "RewardTables": [
+          [ { "Weight":1 } ]
+        ]
+      },
+      {
+        "Flavourtext": "You shout the answer. The stones start radiating and a previously hidden door appears in the stone wall, revealing a small room. It smells like a pharmacy, but it's completely empty, except for a small letter.",
         "EnemyNames": [ "End" ],
         "Image": "",
         "RewardTables": [
