@@ -249,7 +249,7 @@ namespace IodemBot.Modules.ColossoBattles
             public bool Shuffle { get => Keywords.Contains("Shuffle"); }
             public bool HealBefore { get => Keywords.Contains("Heal"); }
 
-            public List<string> Keywords { get; set; }
+            public List<string> Keywords { get; set; } = new List<string>();
         }
     }
 

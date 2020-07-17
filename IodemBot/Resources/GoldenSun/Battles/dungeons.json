@@ -2185,8 +2185,7 @@
         ]
       },
       {
-        "Flavourtext": "\"Having defeated the monster, you collect \"mystery",
-        "item\" and proceed through the exit.  The town crier nods to you as you leave the city.  What a weird place.\"",
+        "Flavourtext": "Having defeated the monster, you collect 'mystery item' and proceed through the exit.  The town crier nods to you as you leave the city.  What a weird place.",
         "EnemyNames": [ "End" ],
         "Image": "",
         "RewardTables": [
@@ -4523,7 +4522,7 @@
       },
       {
         "Flavourtext": "Having been...greeted, more creatures come your way. Quite the popular one, aren't you?",
-        "EnemyNames": [ "Wight", "Wight", "Mad Mole", "Mad Mole" ],
+        "EnemyNames": [ "Wight", "Wight", "Mad Mole 1", "Mad Mole 1" ],
         "Image": "",
         "RewardTables": [
           [
@@ -4621,32 +4620,7 @@
         ]
       },
       {
-        "Flavourtext": "\"You eventually find a room with five stones placed in a specific fashion, with more strange stones on the wall. Attached to the wall is a note, and it reads the following:\\n```Blue is next to Green\\nRed is on an edge\\n",
-        "White" "is",
-        "not" "next",
-        "to" "Red",
-        "and" "Yellow\\n",
-        "Blue" "and",
-        "Yellow" "share",
-        "a" "Neighbour\\n",
-        "White" "is",
-        "further" "left",
-        "than" "Red.```",
-        "'Unsure of why it mentions colors, you try Reveal, and learn that the stones indead have colors. You've" "come",
-        "this" "far",
-        "might" "as",
-        "well" "attempt",
-        "to" "solve",
-        "the" "riddle.",
-        "(You" "may",
-        "want" "to",
-        "pause" "this",
-        "with": "pause_button"
-        null,
-        : "and",
-        "look" "over",
-        "the" "puzzle",
-        "here).\",": null,
+        "Flavourtext": "You eventually find a room with five stones placed in a specific fashion, with more strange stones on the wall. Attached to the wall is a note, and it reads the following:\n```Blue is next to Green\nRed is on an edge\nWhite is not next to Red and Yellow\nBlue and Yellow share a Neighbour\nWhite is further left than Red.```\n'Unsure of why it mentions colors, you try Reveal, and learn that the stones indead have colors. You've come this far, might as well attempt to solve the riddle. (You may want to pause this with :pause_button: and look over the puzzle here).",
         "EnemyNames": [ "Puzzle" ],
         "Image": "",
         "RewardTables": [
