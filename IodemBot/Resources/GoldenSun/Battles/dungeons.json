@@ -5740,7 +5740,7 @@
     "Matchups": [
       {
         "Flavourtext": "The welcoming committee has been waiting for you... for way too long, it seems.",
-        "EnemyNames": [ "Skull Warrior", "Skull", "Warrior", "Willowisp", "Willowisp", "Recluse" ],
+        "EnemyNames": [ "Skull Warrior", "Skull Warrior", "Willowisp 1", "Willowisp 1", "Recluse 1" ],
         "Keywords": [ "Shuffle" ],
         "Image": "",
         "RewardTables": [
@@ -5755,7 +5755,7 @@
       },
       {
         "Flavourtext": "You find a gap too big to be jumped above and strange grey carved blocks. It looks like you can use them to cross, what do you use?",
-        "EnemyNames": [ "Move", "Carry", "Lift" ],
+        "EnemyNames": [ "TrapMove", "KeyCarry", "TrapLift" ],
         "Keywords": [ "Shuffle" ],
         "Image": "",
         "RewardTables": [
@@ -5776,7 +5776,7 @@
       },
       {
         "Flavourtext": "Fire, Ice, Lightning. Now that one's a common trope.",
-        "EnemyNames": [ "Willowisp", "Ice Gargoyle", "Thunder Lizard" ],
+        "EnemyNames": [ "Willowisp 1", "Ice Gargoyle", "Thunder Lizard 1" ],
         "Image": "",
         "RewardTables": [
           [
@@ -5818,7 +5818,7 @@
       },
       {
         "Flavourtext": "An army of mythical beasts is trying to stop you from climbing the lighthouse!",
-        "EnemyNames": [ "Fenrir", "Manticore King", "Chimera Mage", "Wild Gryphon" ],
+        "EnemyNames": [ "Fenrir 1", "Manticore King", "Chimera Mage 1", "Wild Gryphon 1" ],
         "Keywords": [ "Shuffle" ],
         "Image": "",
         "RewardTables": [
@@ -5833,7 +5833,7 @@
       },
       {
         "Flavourtext": "A bunch of energy lines are etched into the floor. An electrician should probably fix those, they could be a potential safety hazard. Watch out, don't get zapped.",
-        "EnemyNames": [ "Thunder Lizard", "Thunder Lizard", "Thunder Lizard" ],
+        "EnemyNames": [ "Thunder Lizard 1", "Thunder Lizard 1", "Thunder Lizard 1" ],
         "Image": "",
         "RewardTables": [
           [
@@ -5847,7 +5847,7 @@
       },
       {
         "Flavourtext": "Even now those lizards left a bit of an electric aftertaste.\nThe place is completely dried out. What looks like were water lines, is now filled with sand. It's incredibly hard to move around in this maze, as if some ghostly spirits were messing with you. But you _really_ need to get to this chest!",
-        "EnemyNames": [ "Horned Ghost", "Horned Ghost", "Willowisp" ],
+        "EnemyNames": [ "Horned Ghost", "Horned Ghost", "Willowisp 1" ],
         "Keywords": [ "StatusStun" ],
         "Image": "",
         "RewardTables": [
@@ -5873,7 +5873,7 @@
         "RewardTables": [
           [
             {
-              "Weight": 1,
+              "Weight":1,
               "XP": 138,
               "Coins": 10
             }
@@ -5882,7 +5882,7 @@
       },
       {
         "Flavourtext": "As you enter the next room, you're surprised by some royalty and their guard dogs.",
-        "EnemyNames": [ "Fenrir", "Manticore King", "Manticore King", "Fenrir" ],
+        "EnemyNames": [ "Fenrir 1", "Manticore King", "Manticore King", "Fenrir 1" ],
         "Image": "",
         "RewardTables": [
           [
@@ -5907,7 +5907,7 @@
       },
       {
         "Flavourtext": "You climb and climb higher, you're getting closer to the top. From a window a bunch of feathered beasts ambush you. They seem very unimpressed by the intense Venus psynergy that surrounds this place.",
-        "EnemyNames": [ "Wild Gryphon", "Wild Gryphon", "Wild Gryphon", "Wild Gryphon" ],
+        "EnemyNames": [ "Wild Gryphon 1", "Wild Gryphon 1", "Wild Gryphon 1", "Wild Gryphon 1" ],
         "Image": "",
         "RewardTables": [
           [
@@ -5951,7 +5951,7 @@
       },
       {
         "Flavourtext": "The lighthouse illuminates the aerie with its powerful Venus star. Similarly to the top of Mercury Lighthouse, you're met with the faces of the two legendary warriors. By now you're aware that they are illusions, created by the Lighthouse in self-defense. The illusions of Saturos and Menardi are prepared to defend the lighthouse.",
-        "EnemyNames": [ "Saturos", "Menardi" ],
+        "EnemyNames": [ "Saturos 2", "Menardi" ],
         "Image": "",
         "RewardTables": [
           [
@@ -6014,7 +6014,7 @@
               "Chest": "Adept",
               "HasChest": true,
               "Dungeon": "The Way Southwards",
-              "message": "(Story parts for {0}, will contain spoilers for everyone else!)\n||As you leave for the lighthouses elevator, a thunder resounds. You wonder how a thunder can sound so angry. While you can, you take the chance to look out south. On the horizon you can make out the black-red storm clouds, that blackened the sky above you earlier. Is this where your path will lead you next?||\n\n`Thank you for playing the first part of this discord fan game! I sincerely hope you enjoyed it. The continuation is already in the works, so make sure to stick around for when it is done! You can give yourself the Colosso Adept role using `i!giverole ColossoAdept`, to get informed when it is done as soon as possible. Until then, spend your time keep exploring, break your record in endless battles or engage in PvP brawls and most importantly, stay awesome!\n\n~Floowey"
+              "message": "(Story parts for {0}, will contain spoilers for everyone else!)\n||As you leave for the lighthouses elevator, a thunder resounds. You wonder how a thunder can sound so angry. While you can, you take the chance to look out south. On the horizon you can make out the black-red storm clouds, that blackened the sky above you earlier. Is this where your path will lead you next?||\n\n> Thank you for playing the first part of this discord fan game! I sincerely hope you enjoyed it. The continuation is already in the works, so make sure to stick around for when it is done! You can give yourself the Colosso Adept role using `i!giverole ColossoAdept`, to get informed when it is done as soon as possible. Until then, spend your time keep exploring, break your record in endless battles or engage in PvP brawls and most importantly, stay awesome!\n\n~Floowey"
             }
           ]
         ]
@@ -6030,7 +6030,7 @@
     "Matchups": [
       {
         "Flavourtext": "Even before you can enter, a bouncer and his two assistants try to stop you. Is this place booked by the stars of monsters?",
-        "EnemyNames": [ "Plated Rat", "Orc Lord", "Plated Rat" ],
+        "EnemyNames": [ "Plated Rat 1", "Orc Lord", "Plated Rat 1" ],
         "Image": "",
         "RewardTables": [
           [
@@ -6051,8 +6051,8 @@
         ]
       },
       {
-        "Flavourtext": "This version of White Snow and the Seven Dwarves might not end as well as the original...",
-        "EnemyNames": [ "Nightmare", "Gnome Wizard", "Gnome Wizard", "Gnome Wizard", "Gnome Wizard", "Gnome Wizard", "Gnome Wizard", "Gnome Wizard" ],
+        "Flavourtext": "This version of Snow White and the Seven Dwarves might not end as well as the original...",
+        "EnemyNames": [ "Nightmare 1", "Gnome Wizard", "Gnome Wizard", "Gnome Wizard", "Gnome Wizard", "Gnome Wizard", "Gnome Wizard", "Gnome Wizard" ],
         "Keywords": [ "Shuffle" ],
         "Image": "",
         "RewardTables": [
@@ -6122,7 +6122,7 @@
       },
       {
         "Flavourtext": "The bouncer you beat at the entry called some backup! Let's get this party started!",
-        "EnemyNames": [ "Orc Lord", "Skull Warrior", "Ice Gargoyle", "Chimera Mage" ],
+        "EnemyNames": [ "Orc Lord", "Skull Warrior", "Ice Gargoyle", "Chimera Mage 1" ],
         "Keywords": [ "Shuffle" ],
         "Image": "",
         "RewardTables": [
@@ -6137,7 +6137,7 @@
       },
       {
         "Flavourtext": "You've now reached the Tunnel Ruins. One thing doesn't change: Monsters are there to make it difficult.",
-        "EnemyNames": [ "Chimera Mage", "Chimera Mage" ],
+        "EnemyNames": [ "Chimera Mage 1", "Chimera Mage 1" ],
         "Image": "",
         "RewardTables": [
           [
@@ -6157,8 +6157,8 @@
         ]
       },
       {
-        "Flavourtext": "You puzzle your way through the riddles and riddle yourself through the puzzles. A choice is to be made whether to go left or right, but seeing how it'll probably involve treasure you will go both ways. Let's start left.\nIt looks like a party of warriors has tried this before you though...",
-        "EnemyNames": [ "Skull Warrior", "Skull Warrior", "Skull Warrior", "Skull Warrior," ],
+        "Flavourtext": "You puzzle your way through the riddles and riddle yourself through the puzzles. A choice is to be made whether to go left or right, but seeing how it'll probably involve treasure you will go both ways anyways. Let's start left.\nIt looks like a party of warriors has tried this before you though...",
+        "EnemyNames": [ "Skull Warrior", "Skull Warrior", "Skull Warrior", "Skull Warrior" ],
         "Image": "",
         "RewardTables": [
           [
@@ -6179,7 +6179,7 @@
       },
       {
         "Flavourtext": "That party was well suited. Time to check out the other path. You stumble upon some sort of a secret, monsterous society...",
-        "EnemyNames": [ "Chimera Mage", "Gnome Wizard", "Chimer Mage", "Gnome Wizard" ],
+        "EnemyNames": [ "Chimera Mage 1", "Gnome Wizard", "Chimer Mage", "Gnome Wizard 1" ],
         "Image": "",
         "RewardTables": [
           [

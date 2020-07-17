@@ -32,13 +32,13 @@ namespace IodemBot.Modules.GoldenSunMechanics
                     new []{ItemRarity.Common, ItemRarity.Uncommon }, new []{ 40, 60})
                 },
                 {ChestQuality.Silver, new RewardGenerator<ItemRarity>(
-                    new []{ItemRarity.Uncommon, ItemRarity.Rare, ItemRarity.Legendary}, new []{ 40, 55, 5})
+                    new []{ItemRarity.Uncommon, ItemRarity.Rare, ItemRarity.Legendary}, new []{ 40, 50, 10})
                 },
                 {ChestQuality.Gold, new RewardGenerator<ItemRarity>(
-                    new []{ItemRarity.Rare, ItemRarity.Legendary, ItemRarity.Mythical}, new []{ 59, 40, 1})
+                    new []{ItemRarity.Rare, ItemRarity.Legendary, ItemRarity.Mythical}, new []{ 45, 40, 5})
                 },
                 {ChestQuality.Adept, new RewardGenerator<ItemRarity>(
-                    new []{ItemRarity.Rare, ItemRarity.Legendary, ItemRarity.Mythical}, new []{ 30, 65, 5})
+                    new []{ItemRarity.Rare, ItemRarity.Legendary, ItemRarity.Mythical}, new []{ 80, 20})
                 }
             };
         public static TimeSpan TimeToNextReset

@@ -11419,8 +11419,8 @@
       "mercuryatk": 125
     },
     "extraturns": 0
-  }, 
-     "NeptuneSummon": {
+  },
+  "NeptuneSummon": {
     "movepool": [ "Watery Grave", "Aqua Breath", "Typhoon Blow", "Plume Edge", "Deluge", "Froth Spiral", "Ply Well", "Break" ],
     "name": "Neptune",
     "imgurl": "https://cdn.discordapp.com/attachments/497696510688100352/665884979833864192/Neptune_2.gif",
@@ -11458,6 +11458,28 @@
       "jupiterres": 45,
       "venusatk": 120,
       "marsatk": 120
+    },
+    "extraturns": 0
+  },
+  "MegaeraSummon": {
+    "movepool": [ "Planet Diver", "Planetary", "Ragnarok", "Thunder Mine", "Blue Bolt", "Cycle Beam", "Weapon Grace" ],
+    "name": "Megaera",
+    "imgurl": "https://cdn.discordapp.com/attachments/497696510688100352/665884964629250048/Megaera.gif",
+    "stats": {
+      "maxhp": 2300,
+      "maxpp": 250,
+      "atk": 357,
+      "def": 165,
+      "spd": 135
+    },
+    "elstats": {
+      "venusres": 45,
+      "mercuryres": 55,
+      "marsres": 193,
+      "jupiterres": 193,
+      "venusatk": 100,
+      "marsatk": 120,
+      "jupiteratk": 120
     },
     "extraturns": 0
   },
