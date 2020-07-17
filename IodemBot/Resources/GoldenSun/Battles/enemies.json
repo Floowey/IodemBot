@@ -703,7 +703,7 @@
   "Boulder Beast": {
     "movepool": [ "Mad Blast", "Headbutt", "Dynamite" ],
     "name": "Boulder Beast",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Boulder_Beast.png",
+    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Boulder_Beast.PNG",
     "stats": {
       "maxhp": 211,
       "maxpp": 14,
@@ -803,7 +803,7 @@
   "Bulky Bugman": {
     "movepool": [ "Ally Search" ],
     "name": "Bulky Bugman",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Bulky_Bugman.png",
+    "imgurl": "https://goldensunwiki.net/w/images/0/00/GSDD-BulkyBugman.png",
     "stats": {
       "maxhp": 180,
       "maxpp": 0,
@@ -917,7 +917,7 @@
   "Cerberus": {
     "movepool": [ "Ice Breath", "Triple Fang", "Wicked Howl", "Ice Horn" ],
     "name": "Cerberus",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Cerberus.png",
+    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Cerebus.png",
     "stats": {
       "maxhp": 512,
       "maxpp": 28,
@@ -1747,7 +1747,7 @@
   "Dino": {
     "movepool": [ "Power Bite" ],
     "name": "Dino",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Dino.png",
+    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Dino.PNG",
     "stats": {
       "maxhp": 82,
       "maxpp": 0,
@@ -3745,7 +3745,7 @@
   "Jupiter Djinni 1": {
     "movepool": [ "Whirlwind", "Ray", "Flash Bolt", "Plasma", "Wind Slash", "Flee" ],
     "name": "Jupiter Djinni",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Jupiter_Djinni.png",
+    "imgurl": "https://thelostwaters.com/gallery/galleries/goldensun/official/JupiterDjinn.png",
     "stats": {
       "maxhp": 243,
       "maxpp": 22,
@@ -3765,7 +3765,7 @@
   "Jupiter Djinni 10": {
     "movepool": [ "Spark Plasma", "Tempest", "Destruct Ray", "Sonic Slash", "Blue Bolt", "Flee" ],
     "name": "Jupiter Djinni",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Jupiter_Djinni.png",
+    "imgurl": "https://thelostwaters.com/gallery/galleries/goldensun/official/JupiterDjinn.png",
     "stats": {
       "maxhp": 870,
       "maxpp": 81,
@@ -3785,7 +3785,7 @@
   "Jupiter Djinni 11": {
     "movepool": [ "Spark Plasma", "Tempest", "Destruct Ray", "Sonic Slash", "Flee" ],
     "name": "Jupiter Djinni",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Jupiter_Djinni.png",
+    "imgurl": "https://thelostwaters.com/gallery/galleries/goldensun/official/JupiterDjinn.png",
     "stats": {
       "maxhp": 980,
       "maxpp": 92,
@@ -3805,7 +3805,7 @@
   "Jupiter Djinni 12": {
     "movepool": [ "Bolt", "Whirlwind" ],
     "name": "Jupiter Djinni",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Jupiter_Djinni.png",
+    "imgurl": "https://thelostwaters.com/gallery/galleries/goldensun/official/JupiterDjinn.png",
     "stats": {
       "maxhp": 151,
       "maxpp": 16,
@@ -3825,7 +3825,7 @@
   "Jupiter Djinni 13": {
     "movepool": [ "Bolt", "Ray", "Slash" ],
     "name": "Jupiter Djinni",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Jupiter_Djinni.png",
+    "imgurl": "https://thelostwaters.com/gallery/galleries/goldensun/official/JupiterDjinn.png",
     "stats": {
       "maxhp": 221,
       "maxpp": 26,
@@ -3845,7 +3845,7 @@
   "Jupiter Djinni 14": {
     "movepool": [ "Ray", "Slash", "Flash Bolt", "Flee" ],
     "name": "Jupiter Djinni",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Jupiter_Djinni.png",
+    "imgurl": "https://thelostwaters.com/gallery/galleries/goldensun/official/JupiterDjinn.png",
     "stats": {
       "maxhp": 264,
       "maxpp": 34,
@@ -3865,7 +3865,7 @@
   "Jupiter Djinni 15": {
     "movepool": [ "Flash Bolt", "Plasma", "Ray" ],
     "name": "Jupiter Djinni",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Jupiter_Djinni.png",
+    "imgurl": "https://thelostwaters.com/gallery/galleries/goldensun/official/JupiterDjinn.png",
     "stats": {
       "maxhp": 355,
       "maxpp": 50,
@@ -3885,7 +3885,7 @@
   "Jupiter Djinni 16": {
     "movepool": [ "Flash Bolt", "Plasma", "Wind Slash" ],
     "name": "Jupiter Djinni",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Jupiter_Djinni.png",
+    "imgurl": "https://thelostwaters.com/gallery/galleries/goldensun/official/JupiterDjinn.png",
     "stats": {
       "maxhp": 422,
       "maxpp": 64,
@@ -3905,7 +3905,7 @@
   "Jupiter Djinni 17": {
     "movepool": [ "Storm Ray", "Tornado", "Wind Slash" ],
     "name": "Jupiter Djinni",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Jupiter_Djinni.png",
+    "imgurl": "https://thelostwaters.com/gallery/galleries/goldensun/official/JupiterDjinn.png",
     "stats": {
       "maxhp": 637,
       "maxpp": 90,
@@ -3925,7 +3925,7 @@
   "Jupiter Djinni 18": {
     "movepool": [ "Bind", "Shine Plasma", "Storm Ray" ],
     "name": "Jupiter Djinni",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Jupiter_Djinni.png",
+    "imgurl": "https://thelostwaters.com/gallery/galleries/goldensun/official/JupiterDjinn.png",
     "stats": {
       "maxhp": 949,
       "maxpp": 125,
@@ -3945,7 +3945,7 @@
   "Jupiter Djinni 19": {
     "movepool": [ "Sleep", "Tornado", "Blue Bolt", "Flee" ],
     "name": "Jupiter Djinni",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Jupiter_Djinni.png",
+    "imgurl": "https://thelostwaters.com/gallery/galleries/goldensun/official/JupiterDjinn.png",
     "stats": {
       "maxhp": 949,
       "maxpp": 125,
@@ -3965,7 +3965,7 @@
   "Jupiter Djinni 2": {
     "movepool": [ "Whirlwind", "Flash Bolt", "Plasma", "Wind Slash", "Storm Ray", "Flee" ],
     "name": "Jupiter Djinni",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Jupiter_Djinni.png",
+    "imgurl": "https://thelostwaters.com/gallery/galleries/goldensun/official/JupiterDjinn.png",
     "stats": {
       "maxhp": 314,
       "maxpp": 25,
@@ -3985,7 +3985,7 @@
   "Jupiter Djinni 3": {
     "movepool": [ "Plasma", "Wind Slash", "Storm Ray", "Tornado", "Blue Bolt", "Flee" ],
     "name": "Jupiter Djinni",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Jupiter_Djinni.png",
+    "imgurl": "https://thelostwaters.com/gallery/galleries/goldensun/official/JupiterDjinn.png",
     "stats": {
       "maxhp": 481,
       "maxpp": 40,
@@ -4005,7 +4005,7 @@
   "Jupiter Djinni 4": {
     "movepool": [ "Wind Slash", "Tornado", "Blue Bolt", "Shine Plasma", "Destruct Ray", "Flee" ],
     "name": "Jupiter Djinni",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Jupiter_Djinni.png",
+    "imgurl": "https://thelostwaters.com/gallery/galleries/goldensun/official/JupiterDjinn.png",
     "stats": {
       "maxhp": 688,
       "maxpp": 62,
@@ -4025,7 +4025,7 @@
   "Jupiter Djinni 5": {
     "movepool": [ "Bolt", "Slash", "Whirlwind", "Flee" ],
     "name": "Jupiter Djinni",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Jupiter_Djinni.png",
+    "imgurl": "https://thelostwaters.com/gallery/galleries/goldensun/official/JupiterDjinn.png",
     "stats": {
       "maxhp": 184,
       "maxpp": 16,
@@ -4045,7 +4045,7 @@
   "Jupiter Djinni 6": {
     "movepool": [ "Ray", "Slash", "Bolt", "Whirlwind", "Flee" ],
     "name": "Jupiter Djinni",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Jupiter_Djinni.png",
+    "imgurl": "https://thelostwaters.com/gallery/galleries/goldensun/official/JupiterDjinn.png",
     "stats": {
       "maxhp": 267,
       "maxpp": 24,
@@ -4065,7 +4065,7 @@
   "Jupiter Djinni 7": {
     "movepool": [ "Storm Ray", "Wind Slash", "Plasma", "Flash Bolt", "Whirlwind", "Flee" ],
     "name": "Jupiter Djinni",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Jupiter_Djinni.png",
+    "imgurl": "https://thelostwaters.com/gallery/galleries/goldensun/official/JupiterDjinn.png",
     "stats": {
       "maxhp": 440,
       "maxpp": 40,
@@ -4085,7 +4085,7 @@
   "Jupiter Djinni 8": {
     "movepool": [ "Destruct Ray", "Sonic Slash", "Shine Plasma", "Blue Bolt", "Tornado", "Flee" ],
     "name": "Jupiter Djinni",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Jupiter_Djinni.png",
+    "imgurl": "https://thelostwaters.com/gallery/galleries/goldensun/official/JupiterDjinn.png",
     "stats": {
       "maxhp": 740,
       "maxpp": 68,
@@ -4105,7 +4105,7 @@
   "Jupiter Djinni 9": {
     "movepool": [ "Spark Plasma", "Tempest", "Destruct Ray", "Sonic Slash", "Blue Bolt", "Flee" ],
     "name": "Jupiter Djinni",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Jupiter_Djinni.png",
+    "imgurl": "https://thelostwaters.com/gallery/galleries/goldensun/official/JupiterDjinn.png",
     "stats": {
       "maxhp": 852,
       "maxpp": 78,
@@ -4228,7 +4228,7 @@
   "Kobold 1": {
     "movepool": [],
     "name": "Kobold",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Kobold.png",
+    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Kobold_Goblin.png",
     "stats": {
       "maxhp": 220,
       "maxpp": 0,
@@ -4247,7 +4247,7 @@
   "Kobold 2": {
     "movepool": [],
     "name": "Kobold",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Kobold.png",
+    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Kobold_Wargold.png",
     "stats": {
       "maxhp": 77,
       "maxpp": 0,
@@ -4266,7 +4266,7 @@
   "Kobold 3": {
     "movepool": [],
     "name": "Kobold",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Kobold.png",
+    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/GSDD-Kobold.png",
     "stats": {
       "maxhp": 89,
       "maxpp": 0,
@@ -9132,7 +9132,7 @@
   "Vampire Bat": {
     "movepool": [ "Sonic Wave", "Vampiric Fang" ],
     "name": "Vampire Bat",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Vampire_Bat.png",
+    "imgurl": "https://goldensunwiki.net/w/images/d/d4/GSDD-VampireBat.png",
     "stats": {
       "maxhp": 144,
       "maxpp": 0,
@@ -10908,6 +10908,25 @@
     "stats": {
       "maxhp": 365,
       "maxpp": 0,
+      "atk": 298,
+      "def": 66,
+      "spd": 134
+    },
+    "elstats": {
+      "venusres": 90,
+      "mercuryres": 90,
+      "marsres": 90,
+      "jupiterres": 90
+    },
+    "extraturns": 0
+  },
+  "Hsu": {
+    "movepool": [],
+    "name": "Hsu",
+    "imgurl": "https://goldensunwiki.net/w/images/9/94/Hsu.gif",
+    "stats": {
+      "maxhp": 365,
+      "maxpp": 0,
       "atk": 328,
       "def": 66,
       "spd": 134
@@ -11322,7 +11341,7 @@
   "AtalantaSummon": {
     "movepool": [ "Boon" ],
     "name": "Atalanta",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Jupiter_Djinni.png",
+    "imgurl": "https://cdn.discordapp.com/attachments/497696510688100352/665884859620917248/Atalanta.gif",
     "stats": {
       "maxhp": 543,
       "maxpp": 20,

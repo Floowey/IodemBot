@@ -201,7 +201,7 @@ namespace IodemBot.Modules.ColossoBattles
             }
         }
 
-        [Command("dungeon")]
+        [Command("dungeon"), Alias("dg")]
         [Summary("Prepare a channel for an adventure to a specified dungeon")]
         [RequireUserServer]
         public async Task Dungeon([Remainder] string DungeonName)

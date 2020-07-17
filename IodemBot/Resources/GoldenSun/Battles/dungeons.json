@@ -39,7 +39,7 @@
         ]
       },
       {
-        "Flavourtext": "As you are an aspiring adept too, you will want to align yourself with one of these elements, if you haven't done so yet. Go to #gabomba-gears and use the command `i!element Venus`, or any other elemental path you would like to pursue. Generally, all commands are to be used in this channel. Note, that you can change your element at any time and as often as you want!",
+        "Flavourtext": "As you are an aspiring adept too, you will want to align yourself with one of these elements, if you haven't done so yet. Go to #gabomba-gears and use the command `i!element Venus`, or any other elemental path you would like to pursue. Generally, all commands are to be used in this channel. Note that you can change your element at any time and as often as you want!",
         "EnemyNames": [ "Next" ],
         "Image": "",
         "RewardTables": [
@@ -53,7 +53,7 @@
         ]
       },
       {
-        "Flavourtext": "You will see that you have been put into a class. This class determines the your stats and the abilities (the psynergy) you have access too. Furthermore, any given class is either a Warrior or a Mage, which determines the type of equipment you can wield.",
+        "Flavourtext": "You will see that you have been put into a class. This class determines the your stats and the abilities (the Psynergy) you have access to. Furthermore, any given class is either a Warrior or a Mage, which determines the type of equipment you can wield.",
         "EnemyNames": [ "Next" ],
         "Image": "",
         "RewardTables": [
@@ -107,7 +107,7 @@
         ]
       },
       {
-        "Flavourtext": "At last, let's talk about battles. Bringing a fighters HP to zero puts them down. You can use a variety of different moves, psynergies, including attacks that either target a single enemy or a range, healing moves or status moves. Watch how using psynergy takes up Psynergy Point (PP), the equivalent of Mana. Make sure to have enough to spare to get out of a pinch! Now, try to take down this little critter.",
+        "Flavourtext": "At last, let's talk about battles. Bringing a fighter's HP to zero knocks them out. You can use a variety of different Psynergy, including attacks that either target a single enemy or area-of-effect moves, healing moves, or status moves. Watch how using Psynergy takes up Psynergy Point (PP), the equivalent of mana. Make sure to have enough to spare to get out of a pinch! Now, try to take down this little critter.",
         "EnemyNames": [ "Vermin 1" ],
         "Image": "",
         "RewardTables": [
@@ -121,7 +121,7 @@
         ]
       },
       {
-        "Flavourtext": "If there are multiple enemies you need to set your target. First select the move you want to use and then use the number icons to target the enemy with that number. In the case of ranged attacks, the selected enemy is the center most enemy which will take most of the damage.",
+        "Flavourtext": "If there are multiple enemies, you need to select your target. First choose the move you want to use, and then use the number icons to target the enemy with that number. In the case of area-of-effect attacks, the selected enemy is the centermost enemy which will take most of the damage.",
         "EnemyNames": [ "Training Dummy", "Training Dummy", "Training Dummy" ],
         "Image": "",
         "RewardTables": [
@@ -149,7 +149,7 @@
         ]
       },
       {
-        "Flavourtext": "Well done! You are set and ready! You are starting off in the calm town of Vault. It is near the Ruins of Vale, one of the most significant locations to the world of Golden Sun and the perfect place to start off an unforgetable adventure!",
+        "Flavourtext": "Well done! You are set and ready! You are starting off in the calm town of Vault. It is near the Ruins of Vale, one of the most significant locations to the world of Golden Sun and the perfect place to start an unforgetable adventure!",
         "EnemyNames": [ "End" ],
         "Image": "",
         "RewardTables": [
@@ -184,12 +184,12 @@
   "Vale": {
     "name": "Vale",
     "IsOneTimeOnly": false,
-    "FlavourText": "What once was the calm town of Vale. The town has been abandonden and destroyed when the Golden Sun event happened.",
+    "FlavourText": "The site of the once calm town of Vale. It was destroyed and then abandoned when the Golden Sun rose, but the ruins are steeped in history.",
     "Image": "https://cdn.discordapp.com/attachments/497696510688100352/595583507393150997/unknown.png",
     "IsDefault": false,
     "Matchups": [
       {
-        "Flavourtext": "Valeans were training hard to protect their village and secrets. As a young adept, you are walking in their footsteps. ",
+        "Flavourtext": "You arrive in the mountainous area that once housed Vale, and begin making your way up the slopes past abandoned houses, smashed pathways, and shattered stairs. Among these ruins, Valeans trained hard to protect their village and secrets. As a young adept, you are walking in their footsteps. ",
         "EnemyNames": [ "Vale Training" ],
         "Image": "",
         "RewardTables": [
@@ -222,7 +222,7 @@
         ]
       },
       {
-        "Flavourtext": "A light Storm is coming up, watch out for the critters that have overrun the town since.",
+        "Flavourtext": "As you finish climbing the first slope, a light storm rises.  You find the town was only abandoned by people... the critters have taken over.",
         "EnemyNames": [ "Vermin 1" ],
         "Image": "",
         "RewardTables": [
@@ -258,7 +258,7 @@
         ]
       },
       {
-        "Flavourtext": "The storm gets harsher, more critters attack.",
+        "Flavourtext": "The storm gets harsher and the wind and rain pick up.  More critters attack!",
         "EnemyNames": [ "Vermin 1", "Bat 1", "Vermin 1" ],
         "Image": "",
         "RewardTables": [
@@ -280,7 +280,7 @@
         ]
       },
       {
-        "Flavourtext": "Out of one of the ruined houses, a swarm of bats get's stirred up.",
+        "Flavourtext": "The noise of your battles has attracted attention. Out of one of the ruined houses, a swarm of bats gets stirred up.",
         "EnemyNames": [ "Bat 1", "Bat 1", "Bat 1" ],
         "Image": "",
         "RewardTables": [
@@ -309,7 +309,7 @@
         ]
       },
       {
-        "Flavourtext": "Did you eat something funny? Why are the Mushroom walking!?",
+        "Flavourtext": "You pause to rest after those fights. Did you eat something funny? Why are the mushrooms walking!?",
         "EnemyNames": [ "Wild Mushroom 1", "Wild Mushroom 1" ],
         "Image": "",
         "RewardTables": [
@@ -338,7 +338,7 @@
         ]
       },
       {
-        "Flavourtext": "Watch out! A boulder is falling from Mount Aleph! You need to dodge it!",
+        "Flavourtext": "You reach the river and begin to try making your way across. Watch out! A boulder is falling from Mount Aleph! You need to dodge it!",
         "EnemyNames": [ "Boulder" ],
         "Image": "",
         "RewardTables": [
@@ -368,7 +368,7 @@
         ]
       },
       {
-        "Flavourtext": "The storm appears to calm down, but a few critters are still roaming around.",
+        "Flavourtext": "The storm starts to subside, but a few critters are still roaming around.",
         "EnemyNames": [ "Vermin 1", "Wild Wolf 1", "Vermin 1" ],
         "Image": "",
         "RewardTables": [
@@ -390,7 +390,7 @@
         ]
       },
       {
-        "Flavourtext": "You camp for the night. You contemplate what an interesting world you're living in and are excited to explore as much of it as possible.",
+        "Flavourtext": "You reach the highest part of Vale and make camp for the night.  Like the Valean adepts of old, you will set out tomorrow to explore Weyard. Adventures, monsters, and treasures await you!",
         "EnemyNames": [ "End" ],
         "Image": "",
         "RewardTables": [
@@ -512,7 +512,7 @@
         ]
       },
       {
-        "Flavourtext": "On the ledge of the star chambers platform, high above the watery depths, you spot a person, sitting there with crossed legs. Startled by the commotion, the person stands up and slowly walks towards you. \n'Welcome', the purple haired woman said calmly. 'My name is Hama. I like to come here amidst the spirits to meditate. I assume you also came here to learn more about the mystics of Alchemy. Perhaps it's your luck, perhaps it is destiny that our paths have crossed. Let me be your guide in showing you the world!'",
+        "Flavourtext": "On the ledge of the star chambers platform, high above the watery depths, you spot a person, sitting there with crossed legs. Startled by the commotion, the person stands up and slowly walks towards you. \n'Welcome', the purple haired woman said calmly. 'My name is Hama. I like to come here amidst the spirits to meditate. I assume you also came here to learn more about the mysteries of Alchemy. Perhaps it's your luck, perhaps it is destiny that our paths have crossed. Let me be your guide in showing you the world!'",
         "EnemyNames": [ "EndHama" ],
         "Image": "https://goldensunwiki.net/w/images/9/97/Hama.gif",
         "RewardTables": [
@@ -1048,6 +1048,9 @@
     "FlavourText": "From the top of the watchtower in Vault, you see a Djinni! It looks like it's in a tree. Maybe ringing the town bell will scare it?",
     "Image": "https://goldensunwiki.net/w/images/b/b1/Vault_cave_entrance.png",
     "IsDefault": false,
+    "Requirement": {
+      "MinLevel": "25"
+    },
     "Matchups": [
       {
         "Flavourtext": "Trying to find an access a way to reach the Djinni, you go back to Vault's cemetary and notice a strange pattern in the tombstones. You see the dog you saved from the wolves! What should you do?",
@@ -1161,7 +1164,7 @@
       },
       {
         "Flavourtext": "Oh no, an adept must have died and became a ghost... Let's put this mage to rest.",
-        "EnemyNames": [ "Ghost Mage" ],
+        "EnemyNames": [ "Ghost Mage 1" ],
         "Image": "",
         "RewardTables": [
           [
@@ -1175,7 +1178,7 @@
       },
       {
         "Flavourtext": "I didn't think bears came in green. The more you know.",
-        "EnemyNames": [ "Ravager" ],
+        "EnemyNames": [ "Ravager 1" ],
         "Image": "",
         "RewardTables": [
           [
@@ -1489,7 +1492,7 @@
         "Flavourtext": "You explore more of the town. After some parcouring through the town you find another entrance to the Mayor's Warehouse cave. From here you can use your Psynergy to free the way. Which one do you use?",
         "EnemyNames": [ "KeyMove", "DeathTrapCatch", "DeathTrapRetreat" ],
         "Keywords": [ "Shuffle" ],
-        "Image": "",
+        "Image": "https://cdn.discordapp.com/attachments/668443234292334612/733732549725126718/unknown.png",
         "RewardTables": [
           [
             {
@@ -1626,7 +1629,7 @@
         ]
       },
       {
-        "Flavourtext": "You start to see how the cave freezes over, except for the spots with torches. Truly shows the balance of nature...",
+        "Flavourtext": "You start to see how the cave freezes over, except for the spots with torches. Truly shows the balance of nature... A Mercury Adept could surely use this place to get these powers under his control.",
         "EnemyNames": [ "Cuttle 1", "Cuttle 1" ],
         "Image": "",
         "RewardTables": [
@@ -2167,7 +2170,7 @@
     "name": "Lunpa",
     "IsOneTimeOnly": false,
     "FlavourText": "Lunpa, home of Dodonpa's reknowned family of thieves. It's supposed to be a fortress, but a big sign out front says, 'Welcome to Lunpa! The strongest warriors may enter! Children and spectators, please talk to the guards!'",
-    "Image": "",
+    "Image": "https://goldensunwiki.net/w/images/7/79/Lunpa.PNG",
     "IsDefault": false,
     "Requirement": {
       "MinLevel": "25"
@@ -2810,7 +2813,7 @@
     "name": "Fuchin Temple",
     "IsOneTimeOnly": false,
     "FlavourText": "Just a small trek away from Kolima Bridge awaits Fuchin Temple. Upon entrance, you see a waterfall and in front of it, a monk... perhaps he is guarding something?",
-    "Image": "",
+    "Image": "https://goldensunwiki.net/w/images/c/c1/FuchinTemple.png",
     "IsDefault": false,
     "Matchups": [
       {
@@ -2987,7 +2990,7 @@
     "name": "Mogall Forest",
     "IsOneTimeOnly": true,
     "FlavourText": "With the Fuchin monk's advice in mind, you enter the twisted sinister maze of a forest.",
-    "Image": "",
+    "Image": "https://goldensunwiki.net/w/images/3/31/MogallForestPuzzle.png",
     "IsDefault": false,
     "Matchups": [
       {
@@ -3188,7 +3191,7 @@
     "name": "Xian",
     "IsOneTimeOnly": false,
     "FlavourText": "Xian is a small town in the far east of Angara. It is the beginning of the silk road and is close to the fabled Lama Temple.",
-    "Image": "",
+    "Image": "https://goldensunwiki.net/w/images/6/62/Lama_Temple.PNG",
     "IsDefault": false,
     "Matchups": [
       {
@@ -3423,7 +3426,7 @@
     "name": "Altin",
     "IsOneTimeOnly": false,
     "FlavourText": "The winding, water-logged mining caverns hide many secrets and many dangers. An Adept who is clever, cautious, and courageous just might be able to navigate the mine's perils and reap rich rewards.",
-    "Image": "",
+    "Image": "https://goldensunwiki.net/w/images/9/95/AltinPeakOutside.png",
     "IsDefault": false,
     "Matchups": [
       {
@@ -3635,7 +3638,7 @@
     "name": "Lamakan Desert",
     "IsOneTimeOnly": true,
     "FlavourText": "The hottest desert in Weyard has no mercy. You will need Hamas clearance to cross it. Let's hope that you and Feizhi don't lose your path.",
-    "Image": "",
+    "Image": "https://goldensunwiki.net/w/images/b/bf/LamakanDesertStoneRing.png",
     "IsDefault": false,
     "Requirement": {
       "TagsRequired": [ "HamaLamakan" ]
@@ -3861,7 +3864,7 @@
     "name": "Kalay",
     "IsOneTimeOnly": false,
     "FlavourText": "The bustling seaside trading hub in the heart of Angara.",
-    "Image": "",
+    "Image": "https://goldensunwiki.net/w/images/f/f3/Kalay.PNG",
     "IsDefault": false,
     "Matchups": [
       {
@@ -4245,7 +4248,7 @@
     "name": "Karagol Sea",
     "IsOneTimeOnly": true,
     "FlavourText": "The vast Karagol Sea! Its waters have claimed many an incautious sailor's life, and its monsters still more.",
-    "Image": "",
+    "Image": "https://goldensunwiki.net/w/images/5/58/Kalay_docks.PNG",
     "IsDefault": false,
     "Requirement": {
       "TagsAny": [ "KalayFinished", "TolbiFinished" ],
@@ -4406,7 +4409,7 @@
     "name": "Tolbi",
     "IsOneTimeOnly": false,
     "FlavourText": "On the south side of Karagol sea lies the huge city of Tolbi under the leadership, or *regime* as it's told, of Babi. What might be his secrets? The town is full of tourists, merchants, soldiers, ... It looks like they are getting ready for an event!",
-    "Image": "",
+    "Image": "https://goldensunwiki.net/w/images/1/15/Enter_Tolbi.png",
     "IsDefault": false,
     "Matchups": [
       {
@@ -4566,6 +4569,8 @@
             {
               "Weight": 1,
               "RequireTag": [ "AltmillerLetter" ],
+              "Tag": "TolbiFinals",
+              "Obtainable": 1,
               "Dungeon": "Colosso Finals",
               "message": "You show the guards the letter you found in hidden in Altmiller Cave. Baffled by Iodems signature, they point you to the finalists VIP area."
             }
@@ -4707,7 +4712,7 @@
               "Obtainable": 1,
               "XP": 10,
               "Coins": 10,
-              "Dungeon": "Megaeras Challenge",
+              "Dungeon": "MegaerasChallenge",
               "message": "You once again spot the spirit you have been seeing. 'You... You can see me? So that's why you followed me... You must be an Adept. I am looking for someone I can trust. Follow me and show me what you're capable of.'"
             }
           ]
@@ -4719,7 +4724,7 @@
     "name": "Altmiller Cave",
     "IsOneTimeOnly": true,
     "FlavourText": "Providing shelter from the rain, you realize just how massive the cave system is. What might it hide?",
-    "Image": "",
+    "Image": "https://goldensunwiki.net/w/images/6/68/DjinniSquallOverworld.png",
     "IsDefault": false,
     "Matchups": [
       {
@@ -5250,7 +5255,7 @@
     "name": "Suhalla Desert",
     "IsOneTimeOnly": true,
     "FlavourText": "Suhalla Desert",
-    "Image": "",
+    "Image": "https://goldensunwiki.net/w/images/b/bf/SuhallaDesert.jpg",
     "IsDefault": false,
     "Matchups": [
       {
@@ -5478,7 +5483,7 @@
     "name": "Suhalla Junction",
     "IsOneTimeOnly": true,
     "FlavourText": "Suhalla Junction",
-    "Image": "",
+    "Image": "https://goldensunwiki.net/w/images/6/6e/PinkTornado.jpg",
     "IsDefault": false,
     "Matchups": [
       {
@@ -5548,7 +5553,7 @@
     "name": "Lalivero",
     "IsOneTimeOnly": false,
     "FlavourText": "Town of Lalivero",
-    "Image": "",
+    "Image": "https://goldensunwiki.net/w/images/9/98/DjinniTorchOverworld.png",
     "IsDefault": false,
     "Matchups": [
       {
@@ -5735,7 +5740,7 @@
     "name": "Venus Lighthouse",
     "IsOneTimeOnly": true,
     "FlavourText": "The Lighthouse holding the power of Earth. It might be the end of your journey... or the beginning of a new one?",
-    "Image": "",
+    "Image": "https://goldensunwiki.net/w/images/6/69/VenusLighthouseConnectingRoom.png",
     "IsDefault": false,
     "Matchups": [
       {
@@ -5870,10 +5875,11 @@
       {
         "Flavourtext": "This place is complete madness. There's more monsters than you could have every imagined.",
         "EnemyNames": [ "Boulder Beast", "Ice Gargoyle" ],
+        "Image": "",
         "RewardTables": [
           [
             {
-              "Weight":1,
+              "Weight": 1,
               "XP": 138,
               "Coins": 10
             }
@@ -5942,6 +5948,7 @@
           [
             {
               "Weight": 1,
+              "RequireTag": [ "MegaeraFinished" ],
               "Tag": "VenusLHStory1",
               "Obtainable": 1,
               "message": "(Story parts for {0}, will contain spoilers for everyone else!)\n||You reach the aerie. On the ledge of the middle platform, a blonde woman and a blue haired man are waiting silently. The flickering of the light can only indicate a spirit drawing on its power. They spot you, and without a moment of hesitation, start to charge you.||"
@@ -5964,6 +5971,7 @@
           [
             {
               "Weight": 1,
+              "RequireTag": [ "MegaeraFinished" ],
               "Tag": "VenusLHStory2",
               "Obtainable": 1,
               "message": "(Story parts for {0}, will contain spoilers for everyone else!)\n||You defeated Saturos and Menardi. Dark clouds are covering the sky and a red mist appears. The lighthouse is starting to tremble enormously, its light becoming dimmer and dimmer. From behind the Lighthouses star, you start to see a shadow. A colossal black figurine is hovering in the air. It is wearing a demon-horned helm and is covered with weapons up to its teeth. A gigantic sword and shield are floating by its side. The lighthouse is shaking even stronger now.\nA deep roar resounds as the lighthouse summons its image of a gargantuan, two headed dragon. The dragon immediately goes for the dark spirit, but you are caught up in the cross fire. Watch out!||"
@@ -5988,7 +5996,9 @@
           [
             {
               "Weight": 1,
+              "RequireTag": [ "MegaeraFinished" ],
               "Tag": "VenusLHStory3",
+              "Obtainable": 1,
               "message": "(Story parts for {0}, will contain spoilers for everyone else!)\n||At some point during the fight, the black spirit dissappeared, leaving just you and the dragon to brawl each other. You slayed the dragon and it as well dissappears into thin air. The sky is clear again and the red mist has vanished. 'This is the danger I was afraid of. We must stop it.'. Megaera is right. This is a danger to all of Weyard.||"
             }
           ]
@@ -6009,6 +6019,7 @@
           [
             {
               "Weight": 1,
+              "RequireTag": [ "MegaeraFinished" ],
               "Tag": "VenusLHCompleted",
               "Obtainable": 1,
               "Chest": "Adept",
@@ -6784,7 +6795,7 @@
       },
       {
         "Flavourtext": "Those oasis creatures give you quite the trouble, what? Naturally, they're water creatures! Keep in mind that as a Mars Adept you are still opposed to Mercury. These creatures right here have adapted very well to their surroundings. But the desert has more to offer. Don't worry, I realize that Mars is not exactly known to have healing qualities. Let me get you back up on your feet!'",
-        "EnemyNames": [ "Roach", "Doodle Bug", "Ant Lion" ],
+        "EnemyNames": [ "Roach", "Ant Lion" ],
         "Keywords": [ "Shuffle", "Heal" ],
         "Image": "",
         "RewardTables": [
@@ -7349,7 +7360,7 @@
         ]
       },
       {
-        "Flavourtext": "You hear the beats of wings, an ear-shattering scream, and feel powerful energy warming your backside. You carefully turn around. You stand nose-to-beak with a gigantic bird. It is perfectly white, save a few golden feathers peppered amongst its plumage. It is nearly floating, barely touching the ground. You take a few steps back and ready your weapon.",
+        "Flavourtext": "You hear the beats of wings, an ear-shattering scream, and feel powerful energy warming your back. You carefully turn around. You stand nose-to-beak with a gigantic bird. It is perfectly white, save a few golden feathers peppered amongst its plumage. It is nearly floating, barely touching the ground. You take a few steps back and ready your weapon.",
         "EnemyNames": [ "ProcneSummon" ],
         "Keywords": [ "Heal" ],
         "Image": "",
@@ -7806,7 +7817,7 @@
     "name": "Forest Den",
     "IsOneTimeOnly": false,
     "FlavourText": "The creatue hid in a small den, you need to challenge it before it cuts down the trees and threatens the serenity of Kolima.",
-    "Image": "",
+    "Image": "https://cdn.discordapp.com/attachments/668443234292334612/733732921441124362/unknown.png",
     "IsDefault": false,
     "Requirement": {
       "TagsRequired": [ "McCoyTask1" ],
@@ -7863,7 +7874,7 @@
     "name": "Snowy Cavern",
     "IsOneTimeOnly": false,
     "FlavourText": "A snow covered cavern serves as the hideout for a certain creature...",
-    "Image": "",
+    "Image": "https://discordapp.com/channels/668442573899300894/668443234292334612/733734405327290408",
     "IsDefault": false,
     "Requirement": {
       "TagsRequired": [ "MolochQuest2" ],
@@ -7920,7 +7931,7 @@
     "name": "Bloomy Glade",
     "IsOneTimeOnly": false,
     "FlavourText": "In the middle of Mogall Forest, a small glade is filled with an aromatic breeze...",
-    "Image": "",
+    "Image": "https://cdn.discordapp.com/attachments/668443234292334612/733735136469713027/unknown.png",
     "IsDefault": false,
     "Requirement": {
       "TagsRequired": [ "HamaMegaera1" ],
@@ -7976,7 +7987,7 @@
   "Megaeras Challenge": {
     "name": "Megaeras Challenge",
     "IsOneTimeOnly": false,
-    "FlavourText": "In the middle of Mogall Forest, a small glade is filled with an aromatic breeze...",
+    "FlavourText": "Megaera invites you to battle her. If you win her respect, she might tell you what is going on.",
     "Image": "",
     "IsDefault": false,
     "Requirement": {
@@ -7985,7 +7996,7 @@
     },
     "Matchups": [
       {
-        "Flavourtext": "So you came. The spirits are in unrest, you may have noticed. It has been eons since that much energy has been available to us. But before I tell you more, you me what you've got.'",
+        "Flavourtext": "So you came. The spirits are in unrest, you may have noticed. It has been eons since that much energy has been available to us. But before I tell you more, show me what you've got.'",
         "EnemyNames": [ "Next" ],
         "Image": "",
         "RewardTables": [
