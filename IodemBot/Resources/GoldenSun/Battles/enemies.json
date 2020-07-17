@@ -10410,7 +10410,8 @@
       "Flinch"
     ],
     "hasDefend": false,
-    "hasAttack": false
+    "hasAttack": false,
+    "isImmuneToPsynergy": true
   },
   "BoobyTrap": {
     "name": "Trap",
@@ -10445,7 +10446,8 @@
       "Flinch"
     ],
     "hasDefend": false,
-    "hasAttack": false
+    "hasAttack": false,
+    "isImmuneToPsynergy": true
   },
   "ColossoFelix": {
     "name": "Felix",

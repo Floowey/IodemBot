@@ -73,6 +73,20 @@ namespace IodemBot.Modules.ColossoBattles
                     });
                 }
 
+                if (matchup.Keywords.Contains("Cure"))
+                {
+                    Battle.TeamA.ForEach(f =>
+                    {
+                        f.RemoveAllConditions();
+                    });
+                }
+
+                matchup.Keywords
+                    .Where(s => s.StartsWith("Status"))
+                    .Select(s => s.Substring(6))
+                    .Select(s => Enum.Parse<Condition>(s, true)).ToList()
+                    .ForEach(c => Battle.TeamA.ForEach(p => p.AddCondition(c)));
+
                 //matchup.Enemy.ForEach(e => Battle.AddPlayer((NPCEnemy)e.Clone(), Team.B));
                 EndOfDungeon = false;
             }

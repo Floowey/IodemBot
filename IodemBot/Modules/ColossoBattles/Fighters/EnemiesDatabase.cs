@@ -115,6 +115,13 @@ namespace IodemBot.Modules.ColossoBattles
                 clone.Name = enemyKey.Substring(9);
                 return clone;
             }
+            else if (enemyKey.StartsWith("Trap"))
+            {
+                allEnemies.TryGetValue("BoobyTrap", out var trapEnemy);
+                var clone = (NPCEnemy)trapEnemy.Clone();
+                clone.Name = enemyKey.Substring(4);
+                return clone;
+            }
             else if (enemyKey.StartsWith("Key"))
             {
                 if (uint.TryParse(enemyKey.Substring(3).Substring(0, 2), out var damage))
@@ -239,8 +246,10 @@ namespace IodemBot.Modules.ColossoBattles
             public string FlavourText { get; set; }
             public RewardTables RewardTables { get; set; } = new RewardTables();
             public string Image { get; set; }
-            public bool Shuffle { get; set; } = false;
-            public bool HealBefore { get; set; } = false;
+            public bool Shuffle { get => Keywords.Contains("Shuffle"); }
+            public bool HealBefore { get => Keywords.Contains("Heal"); }
+
+            public List<string> Keywords { get; set; }
         }
     }
 
