@@ -31,7 +31,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             {
                 return "";
             }
-
+            
             if (Obtainable > 0 && userAccount.Tags.Count(r => r.Equals(Tag)) >= Obtainable)
             {
                 return "";

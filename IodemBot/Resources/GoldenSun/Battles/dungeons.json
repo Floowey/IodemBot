@@ -1042,6 +1042,209 @@
       }
     ]
   },
+  "Vault Cave": {
+    "name": "Vault Cave",
+    "IsOneTimeOnly": true,
+    "FlavourText": "From the top of the watchtower in Vault, you see a Djinni! It looks like it's in a tree. Maybe ringing the town bell will scare it?",
+    "Image": "https://goldensunwiki.net/w/images/b/b1/Vault_cave_entrance.png",
+    "IsDefault": false,
+    "Matchups": [
+      {
+        "Flavourtext": "Trying to find an access a way to reach the Djinni, you go back to Vault's cemetary and notice a strange pattern in the tombstones. You see the dog you saved from the wolves! What should you do?",
+        "EnemyNames": [ "KeyMind Read", "TrapRetreat", "TrapCatch" ],
+        "Keywords": [ "Shuffle" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "XP": 75
+            }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "*'A careful search will reveal a passage leading underground nearby'*. Bingo, using Reveal, you found an entrance! The rumors about the cemetary you heard when investigating on the theft were correct after all.",
+        "EnemyNames": [ "Next" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "XP": 10,
+              "Coins": 10
+            }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "That's a nice chest, I wonder what it's doing so close to the entrance?",
+        "EnemyNames": [ "Mimic 19" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "XP": 321,
+              "Coins": 356
+            }
+          ],
+          [
+            {
+              "Weight": 7,
+              "Chest": "Normal",
+              "HasChest": true
+            },
+            {
+              "Weight": 2,
+              "Chest": "Silver",
+              "HasChest": true
+            },
+            {
+              "Weight": 1,
+              "Chest": "Gold",
+              "HasChest": true
+            }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "Hey, time for a mushroom salad with honey before going further! ... wait, those are Death Caps!",
+        "EnemyNames": [ "Death Cap", "Death Cap", "Fighter Bee", "Fighter Bee" ],
+        "Keywords": [ "Shuffle" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "XP": 230,
+              "Coins": 292
+            }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "What a large fellow, maybe he'll want to... oh nevermind it's a Cave Troll.",
+        "EnemyNames": [ "Cave Troll" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "XP": 106,
+              "Coins": 134
+            }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "What incredible statues! I wonder what would happen if I boop them on the snoot...",
+        "EnemyNames": [ "Gargoyle", "Gargoyle", "Gargoyle" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "XP": 168,
+              "Coins": 238
+            }
+          ],
+          [
+            { "Weight": 5 },
+            {
+              "Weight": 1,
+              "Chest": "Normal",
+              "HasChest": true
+            }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "Oh no, an adept must have died and became a ghost... Let's put this mage to rest.",
+        "EnemyNames": [ "Ghost Mage" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "XP": 80,
+              "Coins": 110
+            }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "I didn't think bears came in green. The more you know.",
+        "EnemyNames": [ "Ravager" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "XP": 90,
+              "Coins": 95
+            }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "What is with all of these dead people in caves. How many people could have died in a hidden cave beneath a seemingly peaceful town?",
+        "EnemyNames": [ "Undead" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "XP": 74,
+              "Coins": 90
+            }
+          ],
+          [
+            { "Weight": 7 },
+            {
+              "Weight": 1,
+              "Item": "Vambrace"
+            }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "Finally the outdoors. Hey is that the Djinn from ealier? Let's get him!",
+        "EnemyNames": [ "Venus Djinni 16" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "XP": 90,
+              "Coins": 95
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "Tag": "VaultCaveDjinn",
+              "Obtainable": 2,
+              "Djinn": "Venus"
+            },
+            {
+              "Weight": 4,
+              "Tag": "VaultCaveDjinn",
+              "Obtainable": 1,
+              "Djinn": "Venus"
+            },
+            {
+              "Weight": 11,
+              "Tag": "VaultCaveSap",
+              "Obtainable": 1,
+              "Djinn": "Sap"
+            },
+            { "Weight": 32 }
+          ]
+        ]
+      }
+    ]
+  },
   "Goma Cave": {
     "name": "Goma Cave",
     "IsOneTimeOnly": true,
@@ -1429,17 +1632,18 @@
         "RewardTables": [
           [
             {
-              "Weight": 4,
+              "Weight": 1,
               "XP": 45,
               "Coins": 120
-            },
+            }
+          ],
+          [
+            { "Weight": 2 },
             {
               "Weight": 1,
               "RequireTag": [ "Aqua1", "MercuryAdept" ],
               "Tag": "BilibinCaveMercury",
               "Obtainable": 1,
-              "XP": 20,
-              "Coins": 20,
               "Djinn": "Mercury"
             }
           ]
@@ -2677,7 +2881,7 @@
       },
       {
         "Flavourtext": "You make your way to a chest and open it, but hairy legs sprout out from under it. The chest is alive!",
-        "EnemyNames": [ "Mimic 2" ],
+        "EnemyNames": [ "Mimic 17" ],
         "Image": "",
         "RewardTables": [
           [
@@ -4477,7 +4681,7 @@
         ]
       },
       {
-        "Flavourtext": "As you cross over to the continent of Gondowan, you face a desert. Realizing that is going to be hot and that you won't be able to stop sweating, you wish you'd brought a change of clothes. Back to Tolbi, for now.",
+        "Flavourtext": "As you cross over to the continent of Gondowan, you face a desert. It surely is is going to be hot and you won't be able to stop sweating. You wish you'd brought a change of clothes. Back to Tolbi, for now.",
         "EnemyNames": [ "End" ],
         "Image": "",
         "RewardTables": [
@@ -4494,6 +4698,18 @@
               "Dungeon": "Suhalla Desert"
             },
             { "Weight": 1 }
+          ],
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "HamaMegaera1" ],
+              "Tag": "MegaeraChallenge",
+              "Obtainable": 1,
+              "XP": 10,
+              "Coins": 10,
+              "Dungeon": "Megaeras Challenge",
+              "message": "You once again spot the spirit you have been seeing. 'You... You can see me? So that's why you followed me... You must be an Adept. I am looking for someone I can trust. Follow me and show me what you're capable of.'"
+            }
           ]
         ]
       }
@@ -4543,15 +4759,14 @@
             {
               "Weight": 1,
               "XP": 135,
-              "Coins": 80,
-              "Djinn": "Squall"
+              "Coins": 80
             }
           ]
         ]
       },
       {
         "Flavourtext": "You find a chest...and wouldn't you know it, the chest is angry. Not your day, is it?",
-        "EnemyNames": [ "Mimic 6" ],
+        "EnemyNames": [ "Mimic 21" ],
         "Image": "",
         "RewardTables": [
           [
@@ -4559,6 +4774,40 @@
               "Weight": 1,
               "XP": 135,
               "Coins": 80
+            }
+          ],
+          [
+            {
+              "Weight": 6,
+              "RequireTag": [ "AltmillerMimic" ]
+            },
+            {
+              "Weight": 3,
+              "RequireTag": [ "AltmillerMimic" ],
+              "Chest": "Silver",
+              "HasChest": true
+            },
+            {
+              "Weight": 1,
+              "RequireTag": [ "AltmillerMimic" ],
+              "Chest": "Gold",
+              "HasChest": true
+            }
+          ],
+          [
+            {
+              "Weight": 3,
+              "Tag": "AltmillerMimic",
+              "Obtainable": 1,
+              "Chest": "Silver",
+              "HasChest": true
+            },
+            {
+              "Weight": 1,
+              "Tag": "AltmillerMimic",
+              "Obtainable": 1,
+              "Chest": "Gold",
+              "HasChest": true
             }
           ]
         ]
@@ -4602,6 +4851,27 @@
               "XP": 135,
               "Coins": 80
             }
+          ],
+          [
+            {
+              "Weight": 1,
+              "Tag": "AltmillerJupiter",
+              "Obtainable": 2,
+              "Djinn": "Jupiter"
+            },
+            {
+              "Weight": 4,
+              "Tag": "AltmillerJupiter",
+              "Obtainable": 1,
+              "Djinn": "Jupiter"
+            },
+            {
+              "Weight": 11,
+              "Tag": "AltmillerSquall",
+              "Obtainable": 1,
+              "Djinn": "Squall"
+            },
+            { "Weight": 32 }
           ]
         ]
       },
@@ -4616,11 +4886,18 @@
               "XP": 135,
               "Coins": 80
             }
+          ],
+          [
+            {
+              "Weight": 1,
+              "Item": "Prophets Hat"
+            },
+            { "Weight": 5 }
           ]
         ]
       },
       {
-        "Flavourtext": "`(A puzzle is coming up, you may want to pause this with` :pause_button: `to have time to figure it out!)`\nYou eventually find a room with five stones placed in a specific fashion, with more strange stones on the wall. Attached to the wall is a note, and it reads the following:\n```Blue is next to Green\nRed is on an edge\nWhite is not next to Red and Yellow\nBlue and Yellow share a Neighbour\nWhite is further left than Red.\n\nWhere is Yellow?```\nUnsure of why it mentions colors, you try Reveal, and learn that the stones indeed have colors. You've come this far, might as well attempt to solve the riddle.",
+        "Flavourtext": "`(A puzzle is coming up, you may want to pause this by reacting anywhere with ` :pause_button: `to have time to figure it out!)`\nYou eventually find a room with five stones placed in a specific fashion, with more strange stones on the wall. Attached to the wall is a note, and it reads the following:\n```Blue is next to Green\nRed is on an edge\nWhite is not next to Red and Yellow\nBlue and Yellow share a Neighbour\nWhite is further left than Red.\n\nWhere is Yellow?```\nUnsure of why it mentions colors, you try Reveal, and learn that the stones indeed have colors. You've come this far, might as well attempt to solve the riddle.",
         "EnemyNames": [ "TrapFirst", "TrapSecond", "TrapThird", "KeyFourth", "TrapFifth" ],
         "Image": "",
         "RewardTables": [
@@ -4637,8 +4914,15 @@
         "Flavourtext": "As you touch the correct stone, you a voice is heard inside your head. ```Which stone is in the middle?```",
         "EnemyNames": [ "KeyGreen", "TrapRed", "TrapBlue", "TrapYellow", "TrapWhite" ],
         "Keywords": [ "Shuffle" ],
+        "Image": "",
         "RewardTables": [
-          [ { "Weight":1 } ]
+          [
+            {
+              "Weight": 1,
+              "XP": 1,
+              "Coins": 5
+            }
+          ]
         ]
       },
       {
@@ -5026,8 +5310,9 @@
         ]
       },
       {
-        "Flavourtext": "Going further, the winds started to slow down, but in front was a chest! Upon opening it, it turned out to be a Mimic!",
+        "Flavourtext": "Going further, the winds starts to slow down. You still have some trouble seeing, but can make barely make out a chest! Upon opening it, it turned out to be a Mimic!",
         "EnemyNames": [ "Mimic 5" ],
+        "Keywords": [ "StatusDelusion" ],
         "Image": "",
         "RewardTables": [
           [
@@ -5244,7 +5529,7 @@
             }
           ],
           [
-            { "Weight": 8 },
+            { "Weight": 7 },
             {
               "Weight": 2,
               "Chest": "Gold",
@@ -5440,6 +5725,498 @@
               "Weight": 1,
               "XP": 1,
               "Coins": 1
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  "Venus Lighthouse": {
+    "name": "Venus Lighthouse",
+    "IsOneTimeOnly": true,
+    "FlavourText": "The Lighthouse holding the power of Earth. It might be the end of your journey... or the beginning of a new one?",
+    "Image": "",
+    "IsDefault": false,
+    "Matchups": [
+      {
+        "Flavourtext": "The welcoming committee has been waiting for you... for way too long, it seems.",
+        "EnemyNames": [ "Skull Warrior", "Skull", "Warrior", "Willowisp", "Willowisp", "Recluse" ],
+        "Keywords": [ "Shuffle" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "XP": 129,
+              "Coins": 849
+            }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "You find a gap too big to be jumped above and strange grey carved blocks. It looks like you can use them to cross, what do you use?",
+        "EnemyNames": [ "Move", "Carry", "Lift" ],
+        "Keywords": [ "Shuffle" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "XP": 50
+            }
+          ],
+          [
+            { "Weight": 14 },
+            {
+              "Weight": 1,
+              "Item": "Lucky Cap"
+            }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "Fire, Ice, Lightning. Now that one's a common trope.",
+        "EnemyNames": [ "Willowisp", "Ice Gargoyle", "Thunder Lizard" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "XP": 195,
+              "Coins": 551
+            }
+          ],
+          [
+            { "Weight": 14 },
+            {
+              "Weight": 1,
+              "Item": "Blessed Mace"
+            }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "These lumps of clay are blocking the way to flush this place with their sanded down relatives.",
+        "EnemyNames": [ "Boulder Beast", "Grand Golem", "Boulder Beast" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "XP": 168,
+              "Coins": 536
+            }
+          ],
+          [
+            { "Weight": 14 },
+            {
+              "Weight": 1,
+              "Item": "Zodiac Wand"
+            }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "An army of mythical beasts is trying to stop you from climbing the lighthouse!",
+        "EnemyNames": [ "Fenrir", "Manticore King", "Chimera Mage", "Wild Gryphon" ],
+        "Keywords": [ "Shuffle" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "XP": 138,
+              "Coins": 10
+            }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "A bunch of energy lines are etched into the floor. An electrician should probably fix those, they could be a potential safety hazard. Watch out, don't get zapped.",
+        "EnemyNames": [ "Thunder Lizard", "Thunder Lizard", "Thunder Lizard" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "XP": 138,
+              "Coins": 10
+            }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "Even now those lizards left a bit of an electric aftertaste.\nThe place is completely dried out. What looks like were water lines, is now filled with sand. It's incredibly hard to move around in this maze, as if some ghostly spirits were messing with you. But you _really_ need to get to this chest!",
+        "EnemyNames": [ "Horned Ghost", "Horned Ghost", "Willowisp" ],
+        "Keywords": [ "StatusStun" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "XP": 138,
+              "Coins": 10
+            }
+          ],
+          [
+            { "Weight": 14 },
+            {
+              "Weight": 1,
+              "Item": "Gaia Blade"
+            }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "This place is complete madness. There's more monsters than you could have every imagined.",
+        "EnemyNames": [ "Boulder Beast", "Ice Gargoyle" ],
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "XP": 138,
+              "Coins": 10
+            }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "As you enter the next room, you're surprised by some royalty and their guard dogs.",
+        "EnemyNames": [ "Fenrir", "Manticore King", "Manticore King", "Fenrir" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "XP": 145,
+              "Coins": 10
+            }
+          ],
+          [
+            { "Weight": 13 },
+            {
+              "Weight": 1,
+              "Item": "Thorn Crown"
+            },
+            {
+              "Weight": 1,
+              "Item": "Kikuichimonji"
+            }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "You climb and climb higher, you're getting closer to the top. From a window a bunch of feathered beasts ambush you. They seem very unimpressed by the intense Venus psynergy that surrounds this place.",
+        "EnemyNames": [ "Wild Gryphon", "Wild Gryphon", "Wild Gryphon", "Wild Gryphon" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "XP": 152,
+              "Coins": 10
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "Item": "Feathered Robe"
+            },
+            { "Weight": 14 }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "At last you reach the aerie. Something tells you that things similar to the events at the peak of the Mercury Lighthouse will wait for you. You take a break and heal up before you take the elevator to the aerie.",
+        "EnemyNames": [ "Next" ],
+        "Keywords": [ "Heal" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "XP": 10,
+              "Coins": 10
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "Tag": "VenusLHStory1",
+              "Obtainable": 1,
+              "message": "(Story parts for {0}, will contain spoilers for everyone else!)\n||You reach the aerie. On the ledge of the middle platform, a blonde woman and a blue haired man are waiting silently. The flickering of the light can only indicate a spirit drawing on its power. They spot you, and without a moment of hesitation, start to charge you.||"
+            }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "The lighthouse illuminates the aerie with its powerful Venus star. Similarly to the top of Mercury Lighthouse, you're met with the faces of the two legendary warriors. By now you're aware that they are illusions, created by the Lighthouse in self-defense. The illusions of Saturos and Menardi are prepared to defend the lighthouse.",
+        "EnemyNames": [ "Saturos", "Menardi" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "XP": 425,
+              "Coins": 1200
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "Tag": "VenusLHStory2",
+              "Obtainable": 1,
+              "message": "(Story parts for {0}, will contain spoilers for everyone else!)\n||You defeated Saturos and Menardi. Dark clouds are covering the sky and a red mist appears. The lighthouse is starting to tremble enormously, its light becoming dimmer and dimmer. From behind the Lighthouses star, you start to see a shadow. A colossal black figurine is hovering in the air. It is wearing a demon-horned helm and is covered with weapons up to its teeth. A gigantic sword and shield are floating by its side. The lighthouse is shaking even stronger now.\nA deep roar resounds as the lighthouse summons its image of a gargantuan, two headed dragon. The dragon immediately goes for the dark spirit, but you are caught up in the cross fire. Watch out!||"
+            }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "Seemingly unharmed, the illusions of Saturos and Menardi flicker and dissappear into thing air. You feel the ground underneath your feet tremble... Something big is coming.",
+        "EnemyNames": [ "Fusion Dragon" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "XP": 525,
+              "Coins": 1200,
+              "Chest": "Gold",
+              "HasChest": true
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "Tag": "VenusLHStory3",
+              "message": "(Story parts for {0}, will contain spoilers for everyone else!)\n||At some point during the fight, the black spirit dissappeared, leaving just you and the dragon to brawl each other. You slayed the dragon and it as well dissappears into thin air. The sky is clear again and the red mist has vanished. 'This is the danger I was afraid of. We must stop it.'. Megaera is right. This is a danger to all of Weyard.||"
+            }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "You have won the fight, but at what cost. There is nothing left to do on this lighthouse, other than leaving and finally getting some good rest. Well done.",
+        "EnemyNames": [ "End" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "XP": 10,
+              "Coins": 10
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "Tag": "VenusLHCompleted",
+              "Obtainable": 1,
+              "Chest": "Adept",
+              "HasChest": true,
+              "Dungeon": "The Way Southwards",
+              "message": "(Story parts for {0}, will contain spoilers for everyone else!)\n||As you leave for the lighthouses elevator, a thunder resounds. You wonder how a thunder can sound so angry. While you can, you take the chance to look out south. On the horizon you can make out the black-red storm clouds, that blackened the sky above you earlier. Is this where your path will lead you next?||\n\n`Thank you for playing the first part of this discord fan game! I sincerely hope you enjoyed it. The continuation is already in the works, so make sure to stick around for when it is done! You can give yourself the Colosso Adept role using `i!giverole ColossoAdept`, to get informed when it is done as soon as possible. Until then, spend your time keep exploring, break your record in endless battles or engage in PvP brawls and most importantly, stay awesome!\n\n~Floowey"
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  "Babis Lighthouse": {
+    "name": "Babis Lighthouse",
+    "IsOneTimeOnly": true,
+    "FlavourText": "A Lighthouse built by Babi in order to find the city of Lemuria. The tower is built on top of the Tunnel Ruins, the passage way to Venus Lighthouse...",
+    "Image": "",
+    "IsDefault": false,
+    "Matchups": [
+      {
+        "Flavourtext": "Even before you can enter, a bouncer and his two assistants try to stop you. Is this place booked by the stars of monsters?",
+        "EnemyNames": [ "Plated Rat", "Orc Lord", "Plated Rat" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "XP": 167,
+              "Coins": 68
+            }
+          ],
+          [
+            { "Weight": 15 },
+            {
+              "Weight": 1,
+              "Chest": "Silver",
+              "HasChest": true
+            }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "This version of White Snow and the Seven Dwarves might not end as well as the original...",
+        "EnemyNames": [ "Nightmare", "Gnome Wizard", "Gnome Wizard", "Gnome Wizard", "Gnome Wizard", "Gnome Wizard", "Gnome Wizard", "Gnome Wizard" ],
+        "Keywords": [ "Shuffle" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "XP": 177,
+              "Coins": 143
+            }
+          ],
+          [
+            { "Weight": 9 },
+            {
+              "Weight": 1,
+              "Item": "Healing Ring"
+            }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "You went up as much as you could, now you're left with a choice: Go down the left or the right chute? Make the right choice!",
+        "EnemyNames": [ "BabiLeft", "BabiRight" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "XP": 75
+            }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "That leap of faith was awarded by a meeting with a Djinni!",
+        "EnemyNames": [ "Jupiter Djinni 4" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "XP": 167,
+              "Coins": 150
+            }
+          ],
+          [
+            { "Weight": 32 },
+            {
+              "Weight": 11,
+              "Tag": "BabiLuff",
+              "Obtainable": 1,
+              "Djinn": "Luff"
+            },
+            {
+              "Weight": 4,
+              "Tag": "BabiJupiter",
+              "Obtainable": 1,
+              "Djinn": "Jupiter"
+            },
+            {
+              "Weight": 1,
+              "Tag": "BabiJupiter",
+              "Obtainable": 2,
+              "Djinn": "Jupiter"
+            }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "The bouncer you beat at the entry called some backup! Let's get this party started!",
+        "EnemyNames": [ "Orc Lord", "Skull Warrior", "Ice Gargoyle", "Chimera Mage" ],
+        "Keywords": [ "Shuffle" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "XP": 123,
+              "Coins": 185
+            }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "You've now reached the Tunnel Ruins. One thing doesn't change: Monsters are there to make it difficult.",
+        "EnemyNames": [ "Chimera Mage", "Chimera Mage" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "XP": 132,
+              "Coins": 150
+            }
+          ],
+          [
+            { "Weight": 15 },
+            {
+              "Weight": 1,
+              "Item": "Spiked Armor"
+            }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "You puzzle your way through the riddles and riddle yourself through the puzzles. A choice is to be made whether to go left or right, but seeing how it'll probably involve treasure you will go both ways. Let's start left.\nIt looks like a party of warriors has tried this before you though...",
+        "EnemyNames": [ "Skull Warrior", "Skull Warrior", "Skull Warrior", "Skull Warrior," ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "XP": 166,
+              "Coins": 177
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "Item": "Asuras Armor"
+            },
+            { "Weight": 7 }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "That party was well suited. Time to check out the other path. You stumble upon some sort of a secret, monsterous society...",
+        "EnemyNames": [ "Chimera Mage", "Gnome Wizard", "Chimer Mage", "Gnome Wizard" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "XP": 213,
+              "Coins": 213
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "Item": "Oracles Robe"
+            },
+            { "Weight": 7 }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "You're met with a room of statues and you can sense they're part of a riddle. Whatever riddle it may be?",
+        "EnemyNames": [ "Next" ],
+        "Image": "",
+        "RewardTables": [
+          [ { "Weight": 1 } ]
+        ]
+      },
+      {
+        "Flavourtext": "The statues start to glow and you hear the opening of a door. You start hearing some powerful music... This must be the way to Venus Lighthouse!",
+        "EnemyNames": [ "End" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "XP": 10,
+              "Coins": 10,
+              "Dungeon": "Venus Lighthouse"
             }
           ]
         ]
@@ -6006,9 +6783,9 @@
         ]
       },
       {
-        "Flavourtext": "Those oasis creatures give you quite the trouble, what? Naturally, they're water creatures! Keep in mind that as a Mars Adept you are still opposed to Mercury. These creatures right here have adapted very well to their surroundings. But the desert has more to offer.'",
+        "Flavourtext": "Those oasis creatures give you quite the trouble, what? Naturally, they're water creatures! Keep in mind that as a Mars Adept you are still opposed to Mercury. These creatures right here have adapted very well to their surroundings. But the desert has more to offer. Don't worry, I realize that Mars is not exactly known to have healing qualities. Let me get you back up on your feet!'",
         "EnemyNames": [ "Roach", "Doodle Bug", "Ant Lion" ],
-        "Keywords": [ "Shuffle" ],
+        "Keywords": [ "Shuffle", "Heal" ],
         "Image": "",
         "RewardTables": [
           [
@@ -7192,6 +7969,84 @@
               "Summon": "Flora"
             }
           ]
+        ]
+      }
+    ]
+  },
+  "Megaeras Challenge": {
+    "name": "Megaeras Challenge",
+    "IsOneTimeOnly": false,
+    "FlavourText": "In the middle of Mogall Forest, a small glade is filled with an aromatic breeze...",
+    "Image": "",
+    "IsDefault": false,
+    "Requirement": {
+      "TagsRequired": [ "MegaerasChallenge" ],
+      "TagsLock": [ "MegaeraFinished" ]
+    },
+    "Matchups": [
+      {
+        "Flavourtext": "So you came. The spirits are in unrest, you may have noticed. It has been eons since that much energy has been available to us. But before I tell you more, you me what you've got.'",
+        "EnemyNames": [ "Next" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "XP": 10,
+              "Coins": 10
+            }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "Megaera grabs the two massive swords that are floating by her side. Try your best!",
+        "EnemyNames": [ "MegaeraSummon" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "Tag": "Megaera1",
+              "Obtainable": 1,
+              "Item": "Spirit Ring"
+            }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "Indeed, you are strong. I feel like I can trust you. The spirits are trying to claim the energy set free by the unleash of Alchemy for themselves. You may have met some of them already, but believe me when I say that a lot more powerful ones are out there. My task is to protect the human race. The lighthouses you created are nearly unlimitted sources of energies and the spirits may be attracted to them. I am on route to Venus Lighthouse. Will you help me prevemt the worst?'",
+        "EnemyNames": [ "End" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "Tag": "MegaeraFinished",
+              "Obtainable": 1,
+              "Summon": "Megaera"
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  "The Way Southwards": {
+    "name": "The Way Southwards",
+    "IsOneTimeOnly": false,
+    "FlavourText": "On the horizon you can make out the black-red storm clouds, that blackened the sky above you earlier. Is this where your path will lead you next? Please stay patient until this chapter becomes available!",
+    "Image": "",
+    "IsDefault": false,
+    "Requirement": {
+      "MinLevel": "999",
+      "TagsRequired": [ "VenusLHCompleted" ]
+    },
+    "Matchups": [
+      {
+        "Flavourtext": "You shouldn't be here.",
+        "EnemyNames": [ "Rat" ],
+        "Image": "",
+        "RewardTables": [
+          [ { "Weight": 1 } ]
         ]
       }
     ]
