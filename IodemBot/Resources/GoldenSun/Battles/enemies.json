@@ -2098,7 +2098,7 @@
   "Druj": {
     "movepool": [ "Human Hunt", "Megacool", "Demon Eye", "Psy Drain" ],
     "name": "Druj",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Druj.png",
+    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Druj.PNG",
     "stats": {
       "maxhp": 672,
       "maxpp": 66,
@@ -2548,7 +2548,7 @@
   "Flutter Seed": {
     "movepool": [],
     "name": "Flutter Seed",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Flutter_Seed.png",
+    "imgurl": "https://goldensunwiki.net/w/images/3/3c/GSDD-FlutterSeed.png",
     "stats": {
       "maxhp": 12,
       "maxpp": 0,
@@ -2667,7 +2667,7 @@
   "Fury Demon": {
     "movepool": [ "Demon Eye", "Seething Rage", "Megacool", "Psy Drain", "Curse" ],
     "name": "Fury Demon",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Fury_Demon.png",
+    "imgurl": "https://goldensunwiki.net/w/images/5/5c/GSDD-FuryDemon.png",
     "stats": {
       "maxhp": 594,
       "maxpp": 108,
@@ -2992,7 +2992,7 @@
   "Gloom Skorpna": {
     "movepool": [ "Drag Down" ],
     "name": "Gloom Skorpna",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Gloom_Skorpna.png",
+    "imgurl": "https://goldensunwiki.net/w/images/4/41/GSDD-GloomSkorpna.png",
     "stats": {
       "maxhp": 347,
       "maxpp": 0,
@@ -3112,7 +3112,7 @@
   "Gobling": {
     "movepool": [],
     "name": "Gobling",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Gobling.png",
+    "imgurl": "https://goldensunwiki.net/w/images/b/b5/GSDD-Gobling.png",
     "stats": {
       "maxhp": 50,
       "maxpp": 0,
@@ -3131,7 +3131,7 @@
   "Goblord": {
     "movepool": [],
     "name": "Goblord",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Goblord.png",
+    "imgurl": "https://goldensunwiki.net/w/images/6/6b/GSDD-Goblord.png",
     "stats": {
       "maxhp": 416,
       "maxpp": 0,
@@ -3528,7 +3528,7 @@
   "Haunt Skull": {
     "movepool": [ "Witchlight" ],
     "name": "Haunt Skull",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Haunt_Skull.png",
+    "imgurl": "https://goldensunwiki.net/w/images/0/0d/GSDD-HauntSkull.png",
     "stats": {
       "maxhp": 416,
       "maxpp": 0,
@@ -3548,7 +3548,7 @@
   "Hobble": {
     "movepool": [],
     "name": "Hobble",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Hobble.png",
+    "imgurl": "https://goldensunwiki.net/w/images/c/ce/GSDD-Hobble.png",
     "stats": {
       "maxhp": 91,
       "maxpp": 0,
@@ -3567,7 +3567,7 @@
   "Hobblegob": {
     "movepool": [],
     "name": "Hobblegob",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Hobblegob.png",
+    "imgurl": "https://goldensunwiki.net/w/images/6/60/GSDD-Hobblegob.png",
     "stats": {
       "maxhp": 133,
       "maxpp": 0,
@@ -3684,7 +3684,7 @@
   "Hydros Statue": {
     "movepool": [ "Froth Sphere", "Restore", "Tundra", "Water Blessing", "Drench", "Ice Horn" ],
     "name": "Hydros Statue",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Hydros_Statue.png",
+    "imgurl": "https://cdn.discordapp.com/attachments/696352535568711711/731788905065611314/Document_3_2.jpg",
     "stats": {
       "maxhp": 1300,
       "maxpp": 80,
@@ -3725,7 +3725,7 @@
   "Ice Queen": {
     "movepool": [ "Icy Kiss", "Illusion Veil", "Break", "Frostbite", "Ice Missile", "Ply Well" ],
     "name": "Ice Queen",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Ice_Queen.png",
+    "imgurl": "https://goldensunwiki.net/w/images/b/bb/IceQueenBattle.jpg",
     "stats": {
       "maxhp": 1603,
       "maxpp": 132,
@@ -4367,7 +4367,7 @@
   "Leaf Bat": {
     "movepool": [ "Sonic Wave" ],
     "name": "Leaf Bat",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Leaf_Bat.png",
+    "imgurl": "https://goldensunwiki.net/w/images/4/45/GSDD-LeafBat.png",
     "stats": {
       "maxhp": 126,
       "maxpp": 0,
@@ -4407,7 +4407,7 @@
   "Lich 1": {
     "movepool": [ "Nettle", "Haunt", "Curse", "Condemn" ],
     "name": "Lich",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Lich.png",
+    "imgurl": "https://goldensunwiki.net/w/images/0/05/Lich_Doomsayer.png",
     "stats": {
       "maxhp": 187,
       "maxpp": 30,
@@ -4427,7 +4427,7 @@
   "Lich 2": {
     "movepool": [ "Glacier", "Revive", "Curse", "Enfeeble", "Haunt", "Debilitate", "Bind" ],
     "name": "Lich",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Lich.png",
+    "imgurl": "https://goldensunwiki.net/w/images/6/6a/Lich_Ghost.png",
     "stats": {
       "maxhp": 900,
       "maxpp": 52,
@@ -4719,7 +4719,7 @@
   "Mad Mole 1": {
     "movepool": [ "Mad Spatter", "Worms" ],
     "name": "Mad Mole",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Mad_Mole.png",
+    "imgurl": "https://goldensunwiki.net/w/images/e/e6/GSDD-MadMole.png",
     "stats": {
       "maxhp": 156,
       "maxpp": 0,
@@ -4761,7 +4761,7 @@
       "Poisonous Bite"
     ],
     "name": "Mad Plant",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Mad_Plant.png",
+    "imgurl": "https://goldensunwiki.net/w/images/a/aa/GSDD-MadPlant1.png",
     "stats": {
       "maxhp": 449,
       "maxpp": 0,
@@ -4783,7 +4783,7 @@
       "Poisonous Bite"
     ],
     "name": "Mad Plant",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Mad_Plant.png",
+    "imgurl": "https://goldensunwiki.net/w/images/a/aa/GSDD-MadPlant1.png",
     "stats": {
       "maxhp": 518,
       "maxpp": 0,
@@ -4803,7 +4803,7 @@
   "Mad Plant 3": {
     "movepool": [ "Poisonous Bite", "Maneater" ],
     "name": "Mad Plant",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Mad_Plant.png",
+    "imgurl": "https://goldensunwiki.net/w/images/a/aa/GSDD-MadPlant1.png",
     "stats": {
       "maxhp": 566,
       "maxpp": 0,
@@ -4823,7 +4823,7 @@
   "Mad Plant 4": {
     "movepool": [ "Poisonous Bite", "Maneater" ],
     "name": "Mad Plant",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Mad_Plant.png",
+    "imgurl": "https://goldensunwiki.net/w/images/a/aa/GSDD-MadPlant1.png",
     "stats": {
       "maxhp": 726,
       "maxpp": 0,
@@ -4843,7 +4843,7 @@
   "Mad Plant 5": {
     "movepool": [ "Maneater", "Electric Bite", "Poisonous Bite" ],
     "name": "Mad Plant",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Mad_Plant.png",
+    "imgurl": "https://goldensunwiki.net/w/images/a/aa/GSDD-MadPlant1.png",
     "stats": {
       "maxhp": 730,
       "maxpp": 0,
@@ -4864,7 +4864,7 @@
   "Mad Plant 6": {
     "movepool": [],
     "name": "Mad Plant",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Mad_Plant.png",
+    "imgurl": "https://goldensunwiki.net/w/images/a/aa/GSDD-MadPlant1.png",
     "stats": {
       "maxhp": 272,
       "maxpp": 0,
@@ -4883,7 +4883,7 @@
   "Mad Plant 7": {
     "movepool": [],
     "name": "Mad Plant",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Mad_Plant.png",
+    "imgurl": "https://goldensunwiki.net/w/images/a/aa/GSDD-MadPlant1.png",
     "stats": {
       "maxhp": 449,
       "maxpp": 0,
@@ -4947,7 +4947,7 @@
       "Poison Ink"
     ],
     "name": "Man o' War",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Man_o'_War.png",
+    "imgurl": "https://goldensunwiki.net/w/images/7/7d/Man_o%27_War.png",
     "stats": {
       "maxhp": 137,
       "maxpp": 0,
@@ -4968,7 +4968,7 @@
   "Man o' War 2": {
     "movepool": [ "Electric Sting", "Ally Search" ],
     "name": "Man o' War",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Man_o'_War.png",
+    "imgurl": "https://goldensunwiki.net/w/images/7/7d/Man_o%27_War.png",
     "stats": {
       "maxhp": 182,
       "maxpp": 0,
@@ -7243,7 +7243,7 @@
       "Sonic Wave"
     ],
     "name": "Raptor Seed",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Raptor_Seed.png",
+    "imgurl": "https://goldensunwiki.net/w/images/8/8a/GSDD-RaptorSeed.png",
     "stats": {
       "maxhp": 209,
       "maxpp": 0,
@@ -7284,7 +7284,7 @@
   "Rat 2": {
     "movepool": [],
     "name": "Rat",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Rat.png",
+    "imgurl": "https://goldensunwiki.net/w/images/1/13/GSDD-Rat.png",
     "stats": {
       "maxhp": 35,
       "maxpp": 0,
@@ -7303,7 +7303,7 @@
   "Rat Fighter 1": {
     "movepool": [ "Slice", "Flee" ],
     "name": "Rat Fighter",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Rat_Fighter.png",
+    "imgurl": "https://goldensunwiki.net/w/images/thumb/8/89/Rat_Soldier_Dark_Dawn.jpg/120px-Rat_Soldier_Dark_Dawn.jpg",
     "stats": {
       "maxhp": 143,
       "maxpp": 0,
@@ -7323,7 +7323,7 @@
   "Rat Fighter 2": {
     "movepool": [ "Speed Slice", "Flee" ],
     "name": "Rat Fighter",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Rat_Fighter.png",
+    "imgurl": "https://goldensunwiki.net/w/images/thumb/8/89/Rat_Soldier_Dark_Dawn.jpg/120px-Rat_Soldier_Dark_Dawn.jpg",
     "stats": {
       "maxhp": 164,
       "maxpp": 0,
@@ -7548,7 +7548,7 @@
   "Refresh Ball 1": {
     "movepool": [ "Earnest Ply", "Cure Poison", "Restore" ],
     "name": "Refresh Ball",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Refresh_Ball.png",
+    "imgurl": "https://goldensunwiki.net/w/images/4/4d/GSDD-RedWyvern.png",
     "stats": {
       "maxhp": 360,
       "maxpp": 43,
@@ -7770,7 +7770,7 @@
   "Saturos 1": {
     "movepool": [ "Fireball", "Heat Flash", "Eruption" ],
     "name": "Saturos",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Saturos.png",
+    "imgurl": "https://goldensunwiki.net/w/images/2/21/GSSaturos.jpg",
     "stats": {
       "maxhp": 1200,
       "maxpp": 160,
@@ -7942,7 +7942,7 @@
   "Serpent": {
     "movepool": [ "Toxic Breath", "Mighty Press", "Black Ice", "Briar", "Quake Sphere", "Cure Well", "Toxic Breath", "Mighty Press", "Black Ice", "Briar", "Quake Sphere", "Cure Well" ],
     "name": "Serpent",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Serpent.png",
+    "imgurl": "https://cdn.discordapp.com/attachments/696352535568711711/731505520787062814/Document_3_2.jpg",
     "stats": {
       "maxhp": 3536,
       "maxpp": 160,
@@ -8584,7 +8584,7 @@
   "Stone Soldier": {
     "movepool": [ "Blast", "Mad Blast", "Headbutt", "Dynamite" ],
     "name": "Stone Soldier",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Stone_Soldier.png",
+    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Stone_Soldier.PNG",
     "stats": {
       "maxhp": 179,
       "maxpp": 6,
@@ -8689,7 +8689,7 @@
   "Tangle Bloom": {
     "movepool": [ "Bramble Seed", "Phantom Spore", "Sleep Spore", "Vine Lash", "Examine Situation" ],
     "name": "Tangle Bloom",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Tangle_Bloom.png",
+    "imgurl": "https://goldensunwiki.net/w/images/1/13/TangleBloom.jpg",
     "stats": {
       "maxhp": 300,
       "maxpp": 0,
@@ -8891,7 +8891,7 @@
       "Ally Search"
     ],
     "name": "Titan Bugman",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Titan_Bugman.png",
+    "imgurl": "https://goldensunwiki.net/w/images/5/5b/GSDD-TitanBugman.png",
     "stats": {
       "maxhp": 239,
       "maxpp": 0,
@@ -9153,7 +9153,7 @@
   "Venus Djinni 1": {
     "movepool": [ "Earthquake", "Spire", "Gaia", "Mad Growth", "Briar", "Flee" ],
     "name": "Venus Djinni",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Venus_Djinni.png",
+    "imgurl": "https://media.discordapp.net/attachments/494638277987401739/556350801036181517/Flint_Cartoon_Outlines.png",
     "stats": {
       "maxhp": 349,
       "maxpp": 25,
@@ -9173,7 +9173,7 @@
   "Venus Djinni 10": {
     "movepool": [ "Grand Gaia", "Thorny Grave", "Stone Spire", "Nettle", "Wild Growth", "Flee" ],
     "name": "Venus Djinni",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Venus_Djinni.png",
+    "imgurl": "https://media.discordapp.net/attachments/494638277987401739/556350801036181517/Flint_Cartoon_Outlines.png",
     "stats": {
       "maxhp": 990,
       "maxpp": 94,
@@ -9193,7 +9193,7 @@
   "Venus Djinni 11": {
     "movepool": [ "Growth", "Quake", "Thorn" ],
     "name": "Venus Djinni",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Venus_Djinni.png",
+    "imgurl": "https://media.discordapp.net/attachments/494638277987401739/556350801036181517/Flint_Cartoon_Outlines.png",
     "stats": {
       "maxhp": 264,
       "maxpp": 34,
@@ -9213,7 +9213,7 @@
   "Venus Djinni 12": {
     "movepool": [ "Mad Growth", "Spire", "Quake Sphere", "Flee" ],
     "name": "Venus Djinni",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Venus_Djinni.png",
+    "imgurl": "https://media.discordapp.net/attachments/494638277987401739/556350801036181517/Flint_Cartoon_Outlines.png",
     "stats": {
       "maxhp": 515,
       "maxpp": 77,
@@ -9233,7 +9233,7 @@
   "Venus Djinni 13": {
     "movepool": [ "Mad Growth", "Spire", "Quake Sphere", "Flee" ],
     "name": "Venus Djinni",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Venus_Djinni.png",
+    "imgurl": "https://media.discordapp.net/attachments/494638277987401739/556350801036181517/Flint_Cartoon_Outlines.png",
     "stats": {
       "maxhp": 515,
       "maxpp": 77,
@@ -9253,7 +9253,7 @@
   "Venus Djinni 14": {
     "movepool": [ "Mad Growth", "Briar", "Quake Sphere" ],
     "name": "Venus Djinni",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Venus_Djinni.png",
+    "imgurl": "https://media.discordapp.net/attachments/494638277987401739/556350801036181517/Flint_Cartoon_Outlines.png",
     "stats": {
       "maxhp": 660,
       "maxpp": 93,
@@ -9273,7 +9273,7 @@
   "Venus Djinni 15": {
     "movepool": [ "Mad Growth", "Clay Spire", "Quake Sphere" ],
     "name": "Venus Djinni",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Venus_Djinni.png",
+    "imgurl": "https://media.discordapp.net/attachments/494638277987401739/556350801036181517/Flint_Cartoon_Outlines.png",
     "stats": {
       "maxhp": 732,
       "maxpp": 101,
@@ -9293,7 +9293,7 @@
   "Venus Djinni 16": {
     "movepool": [ "Curse", "Haunt", "Mother Gaia" ],
     "name": "Venus Djinni",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Venus_Djinni.png",
+    "imgurl": "https://media.discordapp.net/attachments/494638277987401739/556350801036181517/Flint_Cartoon_Outlines.png",
     "stats": {
       "maxhp": 972,
       "maxpp": 128,
@@ -9313,7 +9313,7 @@
   "Venus Djinni 2": {
     "movepool": [ "Gaia", "Mad Growth", "Quake Sphere", "Briar", "Clay Spire", "Flee" ],
     "name": "Venus Djinni",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Venus_Djinni.png",
+    "imgurl": "https://media.discordapp.net/attachments/494638277987401739/556350801036181517/Flint_Cartoon_Outlines.png",
     "stats": {
       "maxhp": 421,
       "maxpp": 30,
@@ -9333,7 +9333,7 @@
   "Venus Djinni 3": {
     "movepool": [ "Quake Sphere", "Briar", "Clay Spire", "Mother Gaia", "Wild Growth", "Flee" ],
     "name": "Venus Djinni",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Venus_Djinni.png",
+    "imgurl": "https://media.discordapp.net/attachments/494638277987401739/556350801036181517/Flint_Cartoon_Outlines.png",
     "stats": {
       "maxhp": 623,
       "maxpp": 51,
@@ -9353,7 +9353,7 @@
   "Venus Djinni 4": {
     "movepool": [ "Growth", "Quake", "Flee" ],
     "name": "Venus Djinni",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Venus_Djinni.png",
+    "imgurl": "https://media.discordapp.net/attachments/494638277987401739/556350801036181517/Flint_Cartoon_Outlines.png",
     "stats": {
       "maxhp": 223,
       "maxpp": 20,
@@ -9373,7 +9373,7 @@
   "Venus Djinni 5": {
     "movepool": [ "Briar", "Quake Sphere", "Mad Growth", "Gaia", "Spire", "Flee" ],
     "name": "Venus Djinni",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Venus_Djinni.png",
+    "imgurl": "https://media.discordapp.net/attachments/494638277987401739/556350801036181517/Flint_Cartoon_Outlines.png",
     "stats": {
       "maxhp": 466,
       "maxpp": 46,
@@ -9393,7 +9393,7 @@
   "Venus Djinni 6": {
     "movepool": [ "Briar", "Quake Sphere", "Mad Growth", "Gaia", "Spire", "Flee" ],
     "name": "Venus Djinni",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Venus_Djinni.png",
+    "imgurl": "https://media.discordapp.net/attachments/494638277987401739/556350801036181517/Flint_Cartoon_Outlines.png",
     "stats": {
       "maxhp": 500,
       "maxpp": 44,
@@ -9413,7 +9413,7 @@
   "Venus Djinni 7": {
     "movepool": [ "Mother Gaia", "Clay Spire", "Briar", "Quake Sphere", "Mad Growth", "Flee" ],
     "name": "Venus Djinni",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Venus_Djinni.png",
+    "imgurl": "https://media.discordapp.net/attachments/494638277987401739/556350801036181517/Flint_Cartoon_Outlines.png",
     "stats": {
       "maxhp": 590,
       "maxpp": 53,
@@ -9433,7 +9433,7 @@
   "Venus Djinni 8": {
     "movepool": [ "Nettle", "Wild Growth", "Mother Gaia", "Clay Spire", "Quake Sphere", "Flee" ],
     "name": "Venus Djinni",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Venus_Djinni.png",
+    "imgurl": "https://media.discordapp.net/attachments/494638277987401739/556350801036181517/Flint_Cartoon_Outlines.png",
     "stats": {
       "maxhp": 710,
       "maxpp": 65,
@@ -9453,7 +9453,7 @@
   "Venus Djinni 9": {
     "movepool": [ "Stone Spire", "Briar", "Wild Growth", "Mother Gaia", "Quake Sphere", "Flee" ],
     "name": "Venus Djinni",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Venus_Djinni.png",
+    "imgurl": "https://media.discordapp.net/attachments/494638277987401739/556350801036181517/Flint_Cartoon_Outlines.png",
     "stats": {
       "maxhp": 830,
       "maxpp": 77,

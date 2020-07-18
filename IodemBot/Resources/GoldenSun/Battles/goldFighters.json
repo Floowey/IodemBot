@@ -661,37 +661,37 @@
         }
     ],
     [
-        {
-            "name": "Serpent",
-            "imgurl": "https://goldensunwiki.net/w/images/8/89/Serpent.png",
-            "movepool": [
-                "Briar",
-                "Quake Sphere",
-                "Cure",
-                "Toxic Grit",
-                "Mighty Press",
-                "Black Ice"
-            ],
-            "stats": {
-                "maxHP": 3536,
-                "maxPP": 249,
-                "Atk": 516,
-                "Def": 76,
-                "Spd": 87
-            },
-            "elstats": {
-                "VenusAtk": 110,
-                "VenusRes": 152,
-                "MarsAtk": 100,
-                "MarsRes": 100,
-                "JupiterAtk": 100,
-                "JupiterRes": 48,
-                "MercuryAtk": 100,
-                "MercuryRes": 100
-            },
-            "HPRecovery": 270,
-            "extraTurns": 2
-        }
+      {
+        "name": "Serpent",
+        "imgurl": "https://cdn.discordapp.com/attachments/696352535568711711/731505520787062814/Document_3_2.jpg",
+        "movepool": [
+          "Briar",
+          "Quake Sphere",
+          "Cure",
+          "Toxic Grit",
+          "Mighty Press",
+          "Black Ice"
+        ],
+        "stats": {
+          "maxHP": 3536,
+          "maxPP": 249,
+          "Atk": 516,
+          "Def": 76,
+          "Spd": 87
+        },
+        "elstats": {
+          "VenusAtk": 110,
+          "VenusRes": 152,
+          "MarsAtk": 100,
+          "MarsRes": 100,
+          "JupiterAtk": 100,
+          "JupiterRes": 48,
+          "MercuryAtk": 100,
+          "MercuryRes": 100
+        },
+        "HPRecovery": 270,
+        "extraTurns": 2
+      }
     ],
     [
         {

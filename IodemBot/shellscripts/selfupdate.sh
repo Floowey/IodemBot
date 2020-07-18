@@ -2,10 +2,10 @@
 # selfupdate.sh
 # Self Update, this should be able to be called from within the bot itself
 echo "Start Updating"
-cd ~/IodemBot/IodemBot/
+cd ~/IodemBot/IodemBot/ # Folder of Repository
 git pull
 echo "done pulling"
-dotnet publish -o /home/pi/bot/
+dotnet publish -o /home/pi/bot/ # Folder of compiled program
 echo "done publishing"
-sudo systemctl restart IodemBotService
+sudo systemctl restart IodemBotService # Background service linked to /home/pi/bot/IodemBot.dll
 echo "process started"
