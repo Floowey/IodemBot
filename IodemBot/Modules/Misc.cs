@@ -12,6 +12,7 @@ using IodemBot.Core.Leveling;
 using IodemBot.Core.UserManagement;
 using IodemBot.Extensions;
 using System.Runtime.InteropServices;
+using System.Device.Gpio;
 
 namespace IodemBot.Modules
 {
@@ -68,6 +69,14 @@ namespace IodemBot.Modules
                 .WithColor(Colors.Get("Iodem"))
                 .WithDescription($"Pong!")
                 .Build());
+
+            int ledPin1 = 17;
+            GpioController controller = new GpioController();
+            // Sets the pin to output mode so we can switch something on
+            controller.OpenPin(ledPin1, PinMode.Output);
+            controller.Write(ledPin1, PinValue.High);
+            await Task.Delay(1000);
+            controller.Write(ledPin1, PinValue.Low);
         }
 
         [Command("pong")]
@@ -90,7 +99,7 @@ namespace IodemBot.Modules
                 .AddField("Project Lead", "Floowey")
                 .AddField("Co Producers", "Falgor, Gray, Primrose, Ultimastrike")
                 .AddField("Art Contributions", "bringobrongo, elTeh, Eon, Mimibits, Shawn, SpaceShaman, Virize, Volk")
-                .AddField("Contributions and Testers", "AlterEgo, Arcblade, ArcanusHaru, Dracobolt, DroneberryPi, Germaniac, IceFireFish, joschlumpf, Lavtiz, MarcAustria, Ninja Frog, Ophi, Smeecko, Random, RupeeHeart")
+                .AddField("Contributions and Testers", "AlterEgo, Arcblade, ArcanusHaru, Dracobolt, DroneberryPi, Germaniac, IceFireFish, jpingoschlumpf, Lavtiz, MarcAustria, Ninja Frog, Ophi, Smeecko, Random, RupeeHeart")
                 .AddField("Special thanks to", "Camelot, the Moderators, the Nut Council and you, the players, without whom this whole project wouldn't have come this far")
                 .Build());
         }
