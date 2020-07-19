@@ -7,7 +7,7 @@ namespace IodemBot
 
     public enum Team { A, B }
 
-    public enum Condition { Down, Poison, Venom, Seal, Stun, DeathCurse, Haunt, ItemCurse, Flinch, Delusion, Sleep, Counter }
+    public enum Condition { Down, Poison, Venom, Seal, Stun, DeathCurse, Haunt, ItemCurse, Flinch, Delusion, Sleep, Counter, Decoy, Key, Trap }
 
     public enum RndElement { Venus, Mars, Jupiter, Mercury }
 

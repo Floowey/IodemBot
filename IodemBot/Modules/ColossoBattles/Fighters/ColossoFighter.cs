@@ -165,7 +165,7 @@ namespace IodemBot.Modules.ColossoBattles
                 }
             }
 
-            Conditions.ForEach(c => s.Append(ConditionStrings[c]));
+            Conditions.ForEach(c => s.Append(ConditionStrings.GetValueOrDefault(c, "")));
 
             var stat = MultiplyBuffs("Attack");
             if (stat != 1)
@@ -489,7 +489,7 @@ namespace IodemBot.Modules.ColossoBattles
 
         public void RemoveAllConditions()
         {
-            Condition[] dontRemove = new Condition[] { Condition.Down, Condition.Counter, Condition.ItemCurse, Condition.Haunt };
+            Condition[] dontRemove = new Condition[] { Condition.Down, Condition.Counter, Condition.ItemCurse, Condition.Key, Condition.Trap, Condition.Decoy };
             Conditions.RemoveAll(c => !dontRemove.Contains(c));
             DeathCurseCounter = 4;
         }

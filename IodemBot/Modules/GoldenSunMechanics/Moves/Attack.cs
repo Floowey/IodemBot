@@ -160,6 +160,42 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 log.AddRange(User.DealDamage(CounterDamage));
             }
 
+            if (enemy.IsAlive && enemy.HasCondition(Condition.Trap))
+            {
+                var counterAtk = enemy.Stats.Atk * enemy.MultiplyBuffs("Attack");
+                var counterDef = User.Stats.Def;
+                uint CounterDamage = (uint)Global.Random.Next(0, 4);
+                if (counterDef < counterAtk)
+                {
+                    CounterDamage = (uint)((counterAtk - counterDef) * User.defensiveMult / 2);
+                }
+                log.Add($"{enemy.Name} strikes back!");
+                log.AddRange(User.DealDamage(CounterDamage));
+            }
+
+            if (enemy.HasCondition(Condition.Key))
+            {
+                if(enemy.GetTeam().Count(e => e.IsAlive && e.HasCondition(Condition.Key)) == 0)
+                {
+                    enemy.GetTeam().ForEach(e => e.Kill());
+                }
+                log.Add($"Your choice was correct!");
+            }
+
+            if (enemy.HasCondition(Condition.Decoy))
+            {
+                var counterAtk = enemy.Stats.Atk * enemy.MultiplyBuffs("Attack");
+                var counterDef = User.Stats.Def * User.MultiplyBuffs("Defense") * User.ignoreDefense;
+                uint CounterDamage = (uint)Global.Random.Next(0, 4);
+                if (counterDef < counterAtk)
+                {
+                    CounterDamage = (uint)(User.Stats.MaxHP * enemy.Stats.Atk / 100);
+                }
+                log.Add($"{enemy.Name} strikes back!");
+                log.AddRange(User.DealDamage(CounterDamage));
+                enemy.GetTeam().ForEach(e => e.Kill());
+            }
+
             if (User is PlayerFighter player)
             {
                 player.battleStats.DamageDealt += damage;

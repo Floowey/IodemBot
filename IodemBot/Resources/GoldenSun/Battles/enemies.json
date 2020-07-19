@@ -10308,8 +10308,8 @@
     "name": "Key",
     "imgurl": "https://goldensunwiki.net/w/images/c/ca/SolSanctumDisarm.png",
     "movepool": [
-      "Trap"
     ],
+    "Conditions": [ "Key" ],
     "stats": {
       "maxHP": 1,
       "maxPP": 0,
@@ -10344,8 +10344,8 @@
     "name": "Key",
     "imgurl": "https://goldensunwiki.net/w/images/c/ca/SolSanctumDisarm.png",
     "movepool": [
-      "Trap20"
     ],
+    "Conditions": [ "Key" ],
     "stats": {
       "maxHP": 1,
       "maxPP": 0,
@@ -10380,7 +10380,6 @@
     "name": "Trap",
     "imgurl": "https://goldensunwiki.net/w/images/c/ca/SolSanctumDisarm.png",
     "movepool": [
-      "Disarm"
     ],
     "stats": {
       "maxHP": 20000,
@@ -10399,7 +10398,7 @@
       "MercuryAtk": 100,
       "MercuryRes": 25
     },
-    "Conditions": [ "Counter" ],
+    "Conditions": [ "Trap" ],
     "isImmuneToConditions": [
       "Stun",
       "Poison",
@@ -10411,6 +10410,7 @@
     ],
     "hasDefend": false,
     "hasAttack": false,
+    "isImmuneToOHKO": true,
     "isImmuneToPsynergy": true
   },
   "BoobyTrap": {
@@ -10422,7 +10422,7 @@
     "stats": {
       "maxHP": 20000,
       "maxPP": 0,
-      "Atk": 20000,
+      "Atk": 20,
       "Def": 2,
       "Spd": 0
     },
@@ -10436,6 +10436,7 @@
       "MercuryAtk": 100,
       "MercuryRes": 25
     },
+    "Conditions": [ "Decoy" ],
     "isImmuneToConditions": [
       "Stun",
       "Poison",

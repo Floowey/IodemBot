@@ -117,7 +117,7 @@ namespace IodemBot.Modules.ColossoBattles
             }
             else if (enemyKey.StartsWith("Trap"))
             {
-                allEnemies.TryGetValue("BoobyTrap", out var trapEnemy);
+                allEnemies.TryGetValue("DeathTrap", out var trapEnemy);
                 var clone = (NPCEnemy)trapEnemy.Clone();
                 clone.Name = enemyKey.Substring(4);
                 return clone;
@@ -129,7 +129,6 @@ namespace IodemBot.Modules.ColossoBattles
                     allEnemies.TryGetValue("Key20", out var trapEnemy);
                     var clone = (NPCEnemy)trapEnemy.Clone();
                     clone.Name = enemyKey.Substring(5);
-                    clone.Moves.OfType<OffensivePsynergy>().FirstOrDefault().PercentageDamage = damage;
                     return clone;
                 }
                 else
