@@ -458,7 +458,7 @@
               "Weight": 1,
               "Item": "Herbed Shirt"
             },
-            { "Weight": 3 }
+            { "Weight": 5 }
           ]
         ]
       },
@@ -763,7 +763,7 @@
           [
             {
               "Weight": 1,
-              "Chest": "Wooden",
+              "Chest": "Normal",
               "HasChest": true
             },
             { "Weight": 2 }
@@ -1293,7 +1293,8 @@
       },
       {
         "Flavourtext": "As you advance further in the obscurity, you hear sinister laments.",
-        "EnemyNames": [ "Ghost 1", "Ghost 1" ],
+        "EnemyNames": [ "Ghost 1", "Gobling" ],
+        "Keywords": [ "Shuffle" ],
         "Image": "",
         "RewardTables": [
           [
@@ -1690,7 +1691,7 @@
     "Matchups": [
       {
         "Flavourtext": "Approaching Imil, a gang of gnomes try to mug you...",
-        "EnemyNames": [ "Rat Soldier 1", "Gnome", "Momonga", "Rat 1" ],
+        "EnemyNames": [ "Rat Soldier 1", "Gnome", "Momonga 1", "Rat 1" ],
         "Image": "",
         "RewardTables": [
           [
@@ -2118,7 +2119,7 @@
         "Flavourtext": "Upon reaching the Aerie, you find the lighthouse beacon already lit, and none other than Saturos himself waiting. He seems to want to challenge your strength, and he likely won't take no for an answer. You drink your bottle of Hermes Water and prepare for the battle...",
         "EnemyNames": [ "Saturos 1" ],
         "Keywords": [ "Cure" ],
-        "Image": "",
+        "Image": "https://cdn.discordapp.com/attachments/668443234292334612/734321542707675196/EcqCcPPXoAAKMks.jpg",
         "RewardTables": [
           [
             {
@@ -2827,14 +2828,6 @@
               "XP": 45,
               "Coins": 20
             }
-          ],
-          [
-            { "Weight": 3 },
-            {
-              "Weight": 1,
-              "Chest": "Wooden",
-              "HasChest": true
-            }
           ]
         ]
       },
@@ -3004,14 +2997,6 @@
               "XP": 45,
               "Coins": 24
             }
-          ],
-          [
-            { "Weight": 3 },
-            {
-              "Weight": 1,
-              "Chest": "Wooden",
-              "HasChest": true
-            }
           ]
         ]
       },
@@ -3146,17 +3131,9 @@
             }
           ],
           [
-            {
-              "Weight": 10,
-              "Dungeon": "Xian"
-            },
+            { "Weight": 7 },
             {
               "Weight": 3,
-              "Chest": "Wooden",
-              "HasChest": true
-            },
-            {
-              "Weight": 2,
               "Chest": "Normal",
               "HasChest": true
             },
@@ -3182,6 +3159,13 @@
               "Dungeon": "Bloomy Glade",
               "message": "As you leave the forest, a soft breeze blows from the side. It smells of fresh of flowers and sweet. The source of the twirl is a shape floating in the air over a heather. The figure looks young, a girl with flowers plugged into her hair. You try to sneak up, but she notices you, visibly startled. She floats away, throwing you cautious looks over her shoulder until she went down into the midst of Mogall Forest. You start to feel the same breeze flowing through the endless woods. You must track her down!"
             }
+          ],
+          [
+            {
+              "Weight": 7,
+              "Dungeon": "Xian"
+            },
+            { "Weight": 4 }
           ]
         ]
       }
@@ -3345,7 +3329,7 @@
         ]
       },
       {
-        "Flavourtext": "'Welcome! So you have made it'. A purple haired woman greets you. 'This is the one I was talking about! They are very talented!', a different, much younger purple haired woman claims. 'Very well. You must be very talented indeed, then. If you are ready to study under my ward, I may have a task a task or another for you.'",
+        "Flavourtext": "'Welcome! So you have made it'. A purple haired woman greets you. 'This is the one I was talking about! They are very talented!', a different, much younger purple haired woman claims. 'Very well. You must be very talented indeed, then. If you are ready to study under my ward, I may have a task or another for you.'",
         "EnemyNames": [ "EndHama" ],
         "Image": "",
         "RewardTables": [
@@ -3459,7 +3443,7 @@
             {
               "Weight": 1,
               "RequireTag": [ "AltinMimic" ],
-              "Chest": "Wooden",
+              "Chest": "Normal",
               "HasChest": true
             }
           ],
@@ -3468,7 +3452,7 @@
               "Weight": 1,
               "Tag": "AltinMimic",
               "Obtainable": 1,
-              "Chest": "Normal",
+              "Chest": "Silver",
               "HasChest": true
             }
           ]
@@ -3488,14 +3472,13 @@
             }
           ],
           [
-            { "Weight": 8 },
+            { "Weight": 14 },
             {
               "Weight": 1,
               "Item": "Prophets Hat"
             },
             {
               "Weight": 1,
-              "Obtainable": 1,
               "Item": "Pure Circlet"
             }
           ],
@@ -3572,7 +3555,7 @@
             }
           ],
           [
-            { "Weight": 9 },
+            { "Weight": 7 },
             {
               "Weight": 1,
               "Chest": "Silver",
@@ -3605,6 +3588,7 @@
       {
         "Flavourtext": "The waters recede again, and a new path down is revealed. You reach the final chamber... Here comes the big one!",
         "EnemyNames": [ "Living Statue", "Hydros Statue", "Living Statue" ],
+        "Keywords": [ "https://cdn.discordapp.com/attachments/696352535568711711/731788905065611314/Document_3_2.jpg" ],
         "Image": "",
         "RewardTables": [
           [
@@ -3615,7 +3599,7 @@
             }
           ],
           [
-            { "Weight": 19 },
+            { "Weight": 14 },
             {
               "Weight": 1,
               "Chest": "Gold",
@@ -3655,14 +3639,6 @@
               "XP": 82,
               "Coins": 81
             }
-          ],
-          [
-            {
-              "Weight": 1,
-              "Chest": "Wooden",
-              "HasChest": true
-            },
-            { "Weight": 4 }
           ]
         ]
       },
@@ -3884,11 +3860,6 @@
             {
               "Weight": 1,
               "Item": "War Ring"
-            },
-            {
-              "Weight": 1,
-              "Chest": "Wooden",
-              "HasChest": true
             }
           ]
         ]
@@ -3956,7 +3927,7 @@
             { "Weight": 1 },
             {
               "Weight": 2,
-              "Chest": "Wooden",
+              "Chest": "Normal",
               "HasChest": true
             }
           ]
@@ -4053,7 +4024,7 @@
             },
             {
               "Weight": 1,
-              "Chest": "Wooden",
+              "Chest": "Normal",
               "HasChest": true
             },
             { "Weight": 3 }
@@ -4081,7 +4052,7 @@
     "name": "Gondowan Cave",
     "IsOneTimeOnly": true,
     "FlavourText": "The dank environment of Gondowan Cave makes for the perfect home for trolls and ogres alike. Having been unexplored for ages, who knows what else could be lurking about?",
-    "Image": "",
+    "Image": "https://cdn.discordapp.com/attachments/668443234292334612/734107056541401098/unknown.png",
     "IsDefault": false,
     "Matchups": [
       {
@@ -4117,14 +4088,6 @@
               "Weight": 1,
               "XP": 100,
               "Coins": 57
-            }
-          ],
-          [
-            { "Weight": 3 },
-            {
-              "Weight": 1,
-              "Chest": "Wooden",
-              "HasChest": true
             }
           ]
         ]
@@ -4317,7 +4280,7 @@
           [
             {
               "Weight": 2,
-              "Chest": "Wooden",
+              "Chest": "Normal",
               "HasChest": true
             },
             {
@@ -4368,11 +4331,11 @@
           ],
           [
             {
-              "Weight": 1,
+              "Weight": 2,
               "Chest": "Gold",
               "HasChest": true
             },
-            { "Weight": 8 },
+            { "Weight": 12 },
             {
               "Weight": 1,
               "Dungeon": "Crossbone Isle"
@@ -4528,7 +4491,7 @@
           [
             {
               "Weight": 1,
-              "Chest": "Wooden",
+              "Chest": "Normal",
               "HasChest": true
             },
             {
@@ -4902,7 +4865,7 @@
         ]
       },
       {
-        "Flavourtext": "`(A puzzle is coming up, you may want to pause this by reacting anywhere with ` :pause_button: `to have time to figure it out!)`\nYou eventually find a room with five stones placed in a specific fashion, with more strange stones on the wall. Attached to the wall is a note, and it reads the following:\n```Blue is next to Green\nRed is on an edge\nWhite is not next to Red and Yellow\nBlue and Yellow share a Neighbour\nWhite is further left than Red.\n\nWhere is Yellow?```\nUnsure of why it mentions colors, you try Reveal, and learn that the stones indeed have colors. You've come this far, might as well attempt to solve the riddle.",
+        "Flavourtext": "`(A puzzle is coming up, you may want to pause this by reacting anywhere with ` :pause_button: `to have time to figure it out!)`\n\nYou eventually find a room with five stones placed in a specific fashion, with more strange stones on the wall. Attached to the wall is a note, and it reads the following:\n```Blue is next to Green\nRed is on an edge\nWhite is not next to Red and Yellow\nBlue and Yellow share a Neighbour\nWhite is further left than Red.\n\nWhere is Yellow?```\nUnsure of why it mentions colors, you try Reveal, and learn that the stones indeed have colors. You've come this far, might as well attempt to solve the riddle.",
         "EnemyNames": [ "TrapFirst", "TrapSecond", "TrapThird", "KeyFourth", "TrapFifth" ],
         "Image": "",
         "RewardTables": [
@@ -5241,7 +5204,22 @@
             {
               "Weight": 1,
               "XP": 800,
-              "Coins": 800,
+              "Coins": 800
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "ColossoCompleted" ],
+              "Chest": "Silver",
+              "HasChest": true
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "Tag": "ColossoCompleted",
+              "Obtainable": 1,
               "Chest": "Gold",
               "HasChest": true,
               "Item": "Lure Cap"
@@ -5449,11 +5427,11 @@
             }
           ],
           [
+            { "Weight": 6 },
             {
               "Weight": 2,
               "Dungeon": "Suhalla Junction"
             },
-            { "Weight": 6 },
             {
               "Weight": 1,
               "Chest": "Gold",
@@ -5959,7 +5937,7 @@
       {
         "Flavourtext": "The lighthouse illuminates the aerie with its powerful Venus star. Similarly to the top of Mercury Lighthouse, you're met with the faces of the two legendary warriors. By now you're aware that they are illusions, created by the Lighthouse in self-defense. The illusions of Saturos and Menardi are prepared to defend the lighthouse.",
         "EnemyNames": [ "Saturos 2", "Menardi" ],
-        "Image": "",
+        "Image": "https://cdn.discordapp.com/attachments/497696510688100352/604995233356447764/unknown.png",
         "RewardTables": [
           [
             {
@@ -6210,8 +6188,9 @@
         ]
       },
       {
-        "Flavourtext": "You're met with a room of statues and you can sense they're part of a riddle. Whatever riddle it may be?",
-        "EnemyNames": [ "Next" ],
+        "Flavourtext": "`(A puzzle is coming up, you may want to pause this by reacting anywhere with ` :pause_button: `to have time to figure it out!)`\n\nYIn the room are five, colorful statues (Red, Blue, Yellow, Green and Purple) standing in a cross formation:\n```\nR...B\n..Y..\nG...P\n```\nThe statues are speaking to your soul...\n```\nOh Adept, we can feel your glance. Will you help to make us dance?\n\nBlue and Red are swapping spots, around the clock we move one slot.\nSwitching now are Blue and Green. Purple, meanwhile, is going in.\nYellow and Blue are locking their eyes, the group dances one step counterclockwise.\nGreen wants the center, as Red tries to enter. The one further right will have to surrender.\nWithout a delay, we'll dance our ballet. The one who's south-east will get the midway.\n\nNow tell us the answer to our small riddle, which color is now in the middle?\n```",
+        "EnemyNames": [ "KeyBlue", "TrapYellow", "TrapRed", "TrapGreen", "Trap Purple" ],
+        "Keywords": [ "Shuffle" ],
         "Image": "",
         "RewardTables": [
           [ { "Weight": 1 } ]
@@ -6228,6 +6207,285 @@
               "XP": 10,
               "Coins": 10,
               "Dungeon": "Venus Lighthouse"
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  "Crossbone Isle": {
+    "name": "Crossbone Isle",
+    "IsOneTimeOnly": true,
+    "FlavourText": "Dungeon Description",
+    "Image": "https://goldensunwiki.net/w/images/9/90/CrossboneIsleOverworld.png",
+    "IsDefault": false,
+    "Matchups": [
+      {
+        "Flavourtext": "Battle 1 Text",
+        "EnemyNames": [ "Virago 2", "Hobgoblin 1", "Virago 2" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "XP": 28,
+              "Coins": 111
+            }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "Battle 2 Text",
+        "EnemyNames": [ "Grisly 1", "Succubus 1", "Grisly 1" ],
+        "Keywords": [ "https://cdn.discordapp.com/attachments/535209634408169492/556079984091856907/succubus.png" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "XP": 56,
+              "Coins": 222
+            }
+          ],
+          [
+            { "Weight": 7 },
+            {
+              "Weight": 1,
+              "Item": "Mystery Blade"
+            }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "Battle 3 Text",
+        "EnemyNames": [ "Fiendish Ghoul", "Lich 2", "Fiendish Ghoul" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "XP": 83,
+              "Coins": 333
+            }
+          ],
+          [
+            { "Weight": 7 },
+            {
+              "Weight": 1,
+              "Item": "Fairy Ring"
+            }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "Battle 4 Text",
+        "EnemyNames": [ "Gryphon 1", "Gryphon 1" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "XP": 111,
+              "Coins": 444
+            }
+          ],
+          [
+            { "Weight": 7 },
+            {
+              "Weight": 1,
+              "Item": "Storm Gear"
+            }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "Battle 5 Text",
+        "EnemyNames": [ "Stone Soldier", "Lizard King", "Harridan 2", "Stone Soldier" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "XP": 139,
+              "Coins": 555
+            }
+          ],
+          [
+            { "Weight": 7 },
+            {
+              "Weight": 1,
+              "Item": "Ninja Garb"
+            }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "Battle 6 Text",
+        "EnemyNames": [ "Chimera 3", "Chimera 3" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "XP": 167,
+              "Coins": 666
+            }
+          ],
+          [
+            { "Weight": 7 },
+            {
+              "Weight": 1,
+              "Item": "Demon Axe"
+            }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "Battle 7 Text",
+        "EnemyNames": [ "Venus Djinni 10" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "XP": 10,
+              "Coins": 10
+            }
+          ],
+          [
+            {
+              "Weight": 4,
+              "Djinn": "Venus"
+            },
+            {
+              "Weight": 12,
+              "Tag": "CrossboneDjinn",
+              "Obtainable": 1,
+              "Djinn": "Bane"
+            },
+            { "Weight": 32 }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "Battle 8 Text",
+        "EnemyNames": [ "Earth Lizard 1", "Earth Lizard 1" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "XP": 194,
+              "Coins": 777
+            }
+          ],
+          [
+            { "Weight": 7 },
+            {
+              "Weight": 1,
+              "Item": "Wicked Mace"
+            }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "Battle 9 Text",
+        "EnemyNames": [ "Poison Toad", "Thunder Lizard 2" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "XP": 222,
+              "Coins": 888
+            }
+          ],
+          [
+            { "Weight": 7 },
+            {
+              "Weight": 1,
+              "Item": "Clerics Ring"
+            }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "Battle 10 Text",
+        "EnemyNames": [ "Cerebus", "Cerebus" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "XP": 250,
+              "Coins": 999
+            }
+          ],
+          [
+            { "Weight": 7 },
+            {
+              "Weight": 1,
+              "Item": "Muramasa"
+            }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "Battle 11 Text",
+        "EnemyNames": [ "Mimic 23" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "XP": 350,
+              "Coins": 1010,
+              "Chest": "Gold",
+              "HasChest": true
+            }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "Battle 12 Text",
+        "EnemyNames": [ "Deadbeard" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "XP": 550,
+              "Coins": 1111
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "Tag": "CrossboneIsleCompleted",
+              "Obtainable": 1,
+              "Chest": "Adept",
+              "HasChest": true
+            }
+          ],
+          [
+            { "Weight": 7 },
+            {
+              "Weight": 1,
+              "Item": "Demon Mail"
+            }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "End",
+        "EnemyNames": [ "End" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "XP": 1,
+              "Coins": 1
             }
           ]
         ]
@@ -6537,7 +6795,7 @@
       },
       {
         "Flavourtext": "Let's head deeper into the woods. As you might have guessed, we are looking for something.",
-        "EnemyNames": [ "Wood Walker", "Raptor Seed", "Bulky Bugman", "Wood Walker", "Mad Plant 2" ],
+        "EnemyNames": [ "Wood Walker", "Raptor Seed", "Bulky Bugman", "Wood Walker", "Mad Plant 2", "Tangle Bloom" ],
         "Keywords": [ "Shuffle" ],
         "Image": "",
         "RewardTables": [
@@ -7206,7 +7464,7 @@
       },
       {
         "Flavourtext": "All Jupiter Adepts are said to be decendants of the Anemos. Nobody quite knows if this is true. Yet one thing is certain, the spirit of a glorious huntress of the Anemos lives on in this Lighthouse. Look behind you, do you see the statue of the archer at the smaller aerie? It is made in her likeness. If we are fortunate, we'll be able to meet her.",
-        "EnemyNames": [ "Wyvern 2", "Gryphon 1" ],
+        "EnemyNames": [ "Wyvern 2", "Gryphon 2" ],
         "Image": "",
         "RewardTables": [
           [
@@ -7988,7 +8246,7 @@
     "name": "Megaeras Challenge",
     "IsOneTimeOnly": false,
     "FlavourText": "Megaera invites you to battle her. If you win her respect, she might tell you what is going on.",
-    "Image": "",
+    "Image": "https://cdn.discordapp.com/attachments/668443234292334612/734107382422044823/unknown.png",
     "IsDefault": false,
     "Requirement": {
       "TagsRequired": [ "MegaerasChallenge" ],
