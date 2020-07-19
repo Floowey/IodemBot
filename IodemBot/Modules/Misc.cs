@@ -70,7 +70,7 @@ namespace IodemBot.Modules
                 .WithDescription($"Pong!")
                 .Build());
 
-            int ledPin1 = 8;
+            int ledPin1 = 15;
             GpioController controller = new GpioController();
             // Sets the pin to output mode so we can switch something on
             controller.OpenPin(ledPin1, PinMode.Output);
