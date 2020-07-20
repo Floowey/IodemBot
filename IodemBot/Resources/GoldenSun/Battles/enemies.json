@@ -2,7 +2,7 @@
   "Acid Maggot": {
     "movepool": [ "Acid Bite", "Flee" ],
     "name": "Acid Maggot",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Acid_Maggot.png",
+    "imgurl": "https://goldensunwiki.net/w/images/2/22/Acid_Maggot.png",
     "stats": {
       "maxhp": 160,
       "maxpp": 0,
@@ -22,7 +22,7 @@
   "Agatio": {
     "movepool": [ "Rolling Flame", "Rising Dragon", "Meteor Blow", "Cage", "Stun Muscle", "Eruption", "Debilitate" ],
     "name": "Agatio",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Agatio.png",
+    "imgurl": "https://goldensunwiki.net/w/images/6/6e/Agatio.png",
     "stats": {
       "maxhp": 4248,
       "maxpp": 280,
@@ -42,7 +42,7 @@
   "Aka Manah": {
     "movepool": [ "Human Hunt", "Curse", "Freeze Prism", "Demon Eye" ],
     "name": "Aka Manah",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Aka_Manah.png",
+    "imgurl": "https://goldensunwiki.net/w/images/d/d4/Aka_Manah.PNG",
     "stats": {
       "maxhp": 479,
       "maxpp": 70,
@@ -63,7 +63,7 @@
   "Alec Goblin": {
     "movepool": [],
     "name": "Alec Goblin",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Alec_Goblin.png",
+    "imgurl": "https://goldensunwiki.net/w/images/1/17/Alec_Goblin.png",
     "stats": {
       "maxhp": 147,
       "maxpp": 0,
@@ -82,7 +82,7 @@
   "Amaze 1": {
     "movepool": [ "Rumble" ],
     "name": "Amaze",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Amaze.png",
+    "imgurl": "https://goldensunwiki.net/w/images/thumb/c/ce/Amaze_Dark_Dawn.jpg/250px-Amaze_Dark_Dawn.jpg",
     "stats": {
       "maxhp": 28,
       "maxpp": 0,
@@ -102,7 +102,7 @@
   "Amaze 2": {
     "movepool": [ "Rumble" ],
     "name": "Amaze",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Amaze.png",
+    "imgurl": "https://goldensunwiki.net/w/images/9/9f/Amaze.png",
     "stats": {
       "maxhp": 39,
       "maxpp": 0,
@@ -122,7 +122,7 @@
   "Amaze 3": {
     "movepool": [ "Rumble" ],
     "name": "Amaze",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Amaze.png",
+    "imgurl": "https://goldensunwiki.net/w/images/9/9f/Amaze.png",
     "stats": {
       "maxhp": 108,
       "maxpp": 10,
@@ -142,7 +142,7 @@
   "Ancient Devil": {
     "movepool": [ "Curse", "Dire Inferno", "Psy Drain" ],
     "name": "Ancient Devil",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Ancient_Devil.png",
+    "imgurl": "https://goldensunwiki.net/w/images/f/f4/AncientDevilDD.jpg",
     "stats": {
       "maxhp": 11783,
       "maxpp": 400,
@@ -164,7 +164,7 @@
   "Anger Ball 1": {
     "movepool": [ "Angry Mine" ],
     "name": "Anger Ball",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Anger_Ball.png",
+    "imgurl": "https://goldensunwiki.net/w/images/3/3f/Anger_Ball.png",
     "stats": {
       "maxhp": 460,
       "maxpp": 43,
@@ -185,7 +185,7 @@
   "Anger Ball 2": {
     "movepool": [ "Angry Mine" ],
     "name": "Anger Ball",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Anger_Ball.png",
+    "imgurl": "https://goldensunwiki.net/w/images/3/3f/Anger_Ball.png",
     "stats": {
       "maxhp": 590,
       "maxpp": 22,
@@ -206,7 +206,7 @@
   "Angle Worm": {
     "movepool": [ "Angle Spike" ],
     "name": "Angle Worm",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Angle_Worm.png",
+    "imgurl": "https://goldensunwiki.net/w/images/7/7b/Angle_Worm.png",
     "stats": {
       "maxhp": 37,
       "maxpp": 0,
@@ -226,7 +226,7 @@
   "Ant Lion": {
     "movepool": [ "Sonic Wave", "Earthquake", "Flare Wall" ],
     "name": "Ant Lion",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Ant_Lion.png",
+    "imgurl": "https://goldensunwiki.net/w/images/6/69/Ant_Lion.png",
     "stats": {
       "maxhp": 400,
       "maxpp": 32,
@@ -248,7 +248,7 @@
   "Ape 1": {
     "movepool": [ "Ransack" ],
     "name": "Ape",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Ape.png",
+    "imgurl": "https://goldensunwiki.net/w/images/thumb/8/87/Ape_Dark_Dawn.jpg/200px-Ape_Dark_Dawn.jpg",
     "stats": {
       "maxhp": 290,
       "maxpp": 0,
@@ -268,7 +268,7 @@
   "Ape 2": {
     "movepool": [ "Ransack" ],
     "name": "Ape",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Ape.png",
+    "imgurl": "https://goldensunwiki.net/w/images/4/45/Ape.png",
     "stats": {
       "maxhp": 74,
       "maxpp": 0,
@@ -288,7 +288,7 @@
   "Aqua Hydra 1": {
     "movepool": [ "Raging Flood", "Triple Chomp", "Rising Venom", "Drench", "Slaver" ],
     "name": "Aqua Hydra",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Aqua_Hydra.png",
+    "imgurl": "https://goldensunwiki.net/w/images/c/cb/Aqua_Hydra.png",
     "stats": {
       "maxhp": 2776,
       "maxpp": 70,
@@ -308,7 +308,7 @@
   "Aqua Hydra 2": {
     "movepool": [ "Triple Chomp", "Mesmerize", "Rising Venom", "Drench" ],
     "name": "Aqua Hydra",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Aqua_Hydra.png",
+    "imgurl": "https://goldensunwiki.net/w/images/8/8c/GSDD-AquaHydra.png",
     "stats": {
       "maxhp": 264,
       "maxpp": 23,
@@ -328,7 +328,7 @@
   "Aqua Jelly": {
     "movepool": [ "Douse", "Electric Bite", "Poisonous Bite" ],
     "name": "Aqua Jelly",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Aqua_Jelly.png",
+    "imgurl": "https://goldensunwiki.net/w/images/f/f2/Aqua_Jelly.png",
     "stats": {
       "maxhp": 225,
       "maxpp": 5,
@@ -350,7 +350,7 @@
   "Armored Rat 1": {
     "movepool": [ "Fortify", "Total Defense" ],
     "name": "Armored Rat",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Armored_Rat.png",
+    "imgurl": "https://goldensunwiki.net/w/images/1/15/GSDD-ArmoredRat.png",
     "stats": {
       "maxhp": 147,
       "maxpp": 0,
@@ -369,7 +369,7 @@
   "Armored Rat 2": {
     "movepool": [ "Total Defense" ],
     "name": "Armored Rat",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Armored_Rat.png",
+    "imgurl": "https://goldensunwiki.net/w/images/1/15/GSDD-ArmoredRat.png",
     "stats": {
       "maxhp": 237,
       "maxpp": 0,
@@ -388,7 +388,7 @@
   "Assassin": {
     "movepool": [ "Poison Sting" ],
     "name": "Assassin",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Assassin.png",
+    "imgurl": "https://goldensunwiki.net/w/images/6/69/Assassin.png",
     "stats": {
       "maxhp": 129,
       "maxpp": 0,
@@ -408,7 +408,7 @@
   "Avimander": {
     "movepool": [ "Fire Breath", "Star Mine", "Heat Stun", "Fiery Blast", "Guard", "Impair" ],
     "name": "Avimander",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Avimander.png",
+    "imgurl": "https://goldensunwiki.net/w/images/7/70/Avimander.png",
     "stats": {
       "maxhp": 3792,
       "maxpp": 87,
@@ -428,7 +428,7 @@
   "Azart 1": {
     "movepool": [],
     "name": "Azart",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Azart.png",
+    "imgurl": "https://goldensunwiki.net/w/images/9/94/Azart.png",
     "stats": {
       "maxhp": 450,
       "maxpp": 0,
@@ -447,7 +447,7 @@
   "Azart 2": {
     "movepool": [],
     "name": "Azart",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Azart.png",
+    "imgurl": "https://goldensunwiki.net/w/images/9/94/Azart.png",
     "stats": {
       "maxhp": 365,
       "maxpp": 0,
@@ -466,7 +466,7 @@
   "Bandit 1": {
     "movepool": [ "Slice", "Threaten" ],
     "name": "Bandit",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Bandit.png",
+    "imgurl": "https://goldensunwiki.net/w/images/1/1f/Bandit.png",
     "stats": {
       "maxhp": 244,
       "maxpp": 0,
@@ -486,7 +486,7 @@
   "Bandit 2": {
     "movepool": [ "Slice", "Threaten" ],
     "name": "Bandit",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Bandit.png",
+    "imgurl": "https://goldensunwiki.net/w/images/1/1f/Bandit.png",
     "stats": {
       "maxhp": 346,
       "maxpp": 0,
@@ -506,7 +506,7 @@
   "Bat 1": {
     "movepool": [],
     "name": "Bat",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Bat.png",
+    "imgurl": "https://goldensunwiki.net/w/images/d/d4/GSDD-Bat.png",
     "stats": {
       "maxhp": 17,
       "maxpp": 0,
@@ -525,7 +525,7 @@
   "Bat 2": {
     "movepool": [ "Sonic Wave" ],
     "name": "Bat",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Bat.png",
+    "imgurl": "https://goldensunwiki.net/w/images/d/d4/GSDD-Bat.png",
     "stats": {
       "maxhp": 30,
       "maxpp": 0,
@@ -545,7 +545,7 @@
   "Bat 5": {
     "movepool": [ "Sonic Wave" ],
     "name": "Bat",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Bat.png",
+    "imgurl": "https://goldensunwiki.net/w/images/d/d4/GSDD-Bat.png",
     "stats": {
       "maxhp": 54,
       "maxpp": 0,
@@ -565,7 +565,7 @@
   "Blados 1": {
     "movepool": [ "Punish", "Shadow Shield" ],
     "name": "Blados",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Blados.png",
+    "imgurl": "https://goldensunwiki.net/w/images/6/61/BladosBattle.jpg",
     "stats": {
       "maxhp": 1931,
       "maxpp": 0,
@@ -584,7 +584,7 @@
   "Blados 2": {
     "movepool": [ "Punish", "Shadow Shield" ],
     "name": "Blados",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Blados.png",
+    "imgurl": "https://goldensunwiki.net/w/images/6/61/BladosBattle.jpg",
     "stats": {
       "maxhp": 3052,
       "maxpp": 0,
@@ -603,7 +603,7 @@
   "Blue Dragon": {
     "movepool": [ "Ice Breath" ],
     "name": "Blue Dragon",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Blue_Dragon.png",
+    "imgurl": "https://goldensunwiki.net/w/images/8/85/Blue_Dragon.jpg",
     "stats": {
       "maxhp": 408,
       "maxpp": 0,
@@ -623,7 +623,7 @@
   "Bombander": {
     "movepool": [ "Heat Stun", "Fiery Blast", "Dragon Fume", "Supernova" ],
     "name": "Bombander",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Bombander.png",
+    "imgurl": "https://goldensunwiki.net/w/images/5/57/Bombander.png",
     "stats": {
       "maxhp": 548,
       "maxpp": 110,
@@ -643,7 +643,7 @@
   "Bone Fighter 1": {
     "movepool": [ "Undead Sword" ],
     "name": "Bone Fighter",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Bone_Fighter.png",
+    "imgurl": "https://goldensunwiki.net/w/images/0/0d/GSDD-BoneFighter.png",
     "stats": {
       "maxhp": 122,
       "maxpp": 0,
@@ -663,7 +663,7 @@
   "Bone Fighter 2": {
     "movepool": [ "Bone Charge" ],
     "name": "Bone Fighter",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Bone_Fighter.png",
+    "imgurl": "https://goldensunwiki.net/w/images/c/c8/Bone_Fighter.png",
     "stats": {
       "maxhp": 195,
       "maxpp": 0,
@@ -683,7 +683,7 @@
   "Bone Gnawer": {
     "movepool": [ "Cannibal Fang", "Festering Rake" ],
     "name": "Bone Gnawer",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Bone_Gnawer.png",
+    "imgurl": "https://goldensunwiki.net/w/images/b/bf/GSDD-BoneGnawer.png",
     "stats": {
       "maxhp": 458,
       "maxpp": 0,
@@ -703,7 +703,7 @@
   "Boulder Beast": {
     "movepool": [ "Mad Blast", "Headbutt", "Dynamite" ],
     "name": "Boulder Beast",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Boulder_Beast.PNG",
+    "imgurl": "https://goldensunwiki.net/w/images/2/23/Boulder_Beast.PNG",
     "stats": {
       "maxhp": 211,
       "maxpp": 14,
@@ -724,7 +724,7 @@
   "Brigand": {
     "movepool": [ "Slice" ],
     "name": "Brigand",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Brigand.png",
+    "imgurl": "https://goldensunwiki.net/w/images/7/7b/Brigand.png",
     "stats": {
       "maxhp": 421,
       "maxpp": 0,
@@ -744,7 +744,7 @@
   "Briggs": {
     "movepool": [ "Echo Cut" ],
     "name": "Briggs",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Briggs.png",
+    "imgurl": "https://goldensunwiki.net/w/images/c/c9/Briggs.png",
     "stats": {
       "maxhp": 984,
       "maxpp": 0,
@@ -763,7 +763,7 @@
   "Brutal Troll 1": {
     "movepool": [ "Brute Force", "Berserk" ],
     "name": "Brutal Troll",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Brutal_Troll.png",
+    "imgurl": "https://goldensunwiki.net/w/images/3/30/Brutal_Troll.png",
     "stats": {
       "maxhp": 291,
       "maxpp": 0,
@@ -783,7 +783,7 @@
   "Brutal Troll 2": {
     "movepool": [ "Double Chop", "Berserk" ],
     "name": "Brutal Troll",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Brutal_Troll.png",
+    "imgurl": "https://goldensunwiki.net/w/images/b/b7/GSDD-BrutalTroll.png",
     "stats": {
       "maxhp": 540,
       "maxpp": 0,
@@ -822,7 +822,7 @@
   "Calamar 1": {
     "movepool": [ "Electric Bite", "Ally Search" ],
     "name": "Calamar",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Calamar.png",
+    "imgurl": "https://goldensunwiki.net/w/images/2/23/Calamar.png",
     "stats": {
       "maxhp": 104,
       "maxpp": 0,
@@ -843,7 +843,7 @@
   "Calamar 2": {
     "movepool": [ "Poison Ink" ],
     "name": "Calamar",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Calamar.png",
+    "imgurl": "https://goldensunwiki.net/w/images/4/4f/GSDD-Calamar.png",
     "stats": {
       "maxhp": 231,
       "maxpp": 0,
@@ -857,7 +857,7 @@
   "Cannibal Ghoul": {
     "movepool": [ "Decompose", "Cannibal Fang", "Ally Search" ],
     "name": "Cannibal Ghoul",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Cannibal_Ghoul.png",
+    "imgurl": "https://goldensunwiki.net/w/images/3/38/Cannibal_Ghoul.png",
     "stats": {
       "maxhp": 249,
       "maxpp": 0,
@@ -877,7 +877,7 @@
   "Cave Troll 1": {
     "movepool": [ "Brute Force" ],
     "name": "Cave Troll",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Cave_Troll.png",
+    "imgurl": "https://goldensunwiki.net/w/images/e/e1/Cave_Troll.png",
     "stats": {
       "maxhp": 212,
       "maxpp": 0,
@@ -897,7 +897,7 @@
   "Cave Troll 2": {
     "movepool": [ "Double Chop", "Berserk" ],
     "name": "Cave Troll",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Cave_Troll.png",
+    "imgurl": "https://goldensunwiki.net/w/images/d/da/GSDD-CaveTroll.png",
     "stats": {
       "maxhp": 266,
       "maxpp": 0,
@@ -917,7 +917,7 @@
   "Cerberus": {
     "movepool": [ "Ice Breath", "Triple Fang", "Wicked Howl", "Ice Horn" ],
     "name": "Cerberus",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Cerebus.png",
+    "imgurl": "https://goldensunwiki.net/w/images/7/72/Cerebus.png",
     "stats": {
       "maxhp": 512,
       "maxpp": 28,
@@ -939,7 +939,7 @@
   "Cerebus": {
     "movepool": [ "Double Fang", "Ice Blessing", "Restore", "Wicked Howl", "Ice Missile" ],
     "name": "Cerebus",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Cerebus.png",
+    "imgurl": "https://goldensunwiki.net/w/images/7/76/GSDD-DreadHound.png",
     "stats": {
       "maxhp": 2200,
       "maxpp": 42,
@@ -961,7 +961,7 @@
   "Chalis 1": {
     "movepool": [ "Scornful Caress", "Shadow Shield" ],
     "name": "Chalis",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Chalis.png",
+    "imgurl": "https://goldensunwiki.net/w/images/e/e8/ChalisBattle.jpg",
     "stats": {
       "maxhp": 1830,
       "maxpp": 0,
@@ -980,7 +980,7 @@
   "Chalis 2": {
     "movepool": [ "Shadow Shield", "Scornful Caress" ],
     "name": "Chalis",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Chalis.png",
+    "imgurl": "https://goldensunwiki.net/w/images/e/e8/ChalisBattle.jpg",
     "stats": {
       "maxhp": 2892,
       "maxpp": 0,
@@ -999,7 +999,7 @@
   "Chaos Chimera": {
     "movepool": [ "Chaos Upheaval", "Darksol Gasp" ],
     "name": "Chaos Chimera",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Chaos_Chimera.png",
+    "imgurl": "https://goldensunwiki.net/w/images/thumb/3/31/Chaos_Chimera_Art.jpg/256px-Chaos_Chimera_Art.jpg",
     "stats": {
       "maxhp": 9640,
       "maxpp": 0,
@@ -1020,7 +1020,7 @@
   "Chaos Hound": {
     "movepool": [ "Dark Blow" ],
     "name": "Chaos Hound",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Chaos_Hound.png",
+    "imgurl": "https://goldensunwiki.net/w/images/4/44/ChaosHoundCloseup.jpg",
     "stats": {
       "maxhp": 3374,
       "maxpp": 0,
@@ -1041,7 +1041,7 @@
   "Chestbeater": {
     "movepool": [ "Claw Attack", "Beat Dance" ],
     "name": "Chestbeater",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Chestbeater.png",
+    "imgurl": "https://goldensunwiki.net/w/images/e/eb/Chestbeater.png",
     "stats": {
       "maxhp": 155,
       "maxpp": 0,
@@ -1057,10 +1057,10 @@
     },
     "extraturns": 0
   },
-  "Chimera 3": {
+  "Chimera 1": {
     "movepool": [ "Rabid Fang", "Mad Dash", "Fire Blessing", "Flare Storm", "Guard", "Impair", "Bind" ],
     "name": "Chimera",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Chimera.png",
+    "imgurl": "https://goldensunwiki.net/w/images/3/36/Chimera.png",
     "stats": {
       "maxhp": 1350,
       "maxpp": 48,
@@ -1078,10 +1078,10 @@
     },
     "extraturns": 0
   },
-  "Chimera 6": {
+  "Chimera 2": {
     "movepool": [ "Fire Breath", "Poison Tail", "Mad Dash", "Guard" ],
     "name": "Chimera",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Chimera.png",
+    "imgurl": "https://goldensunwiki.net/w/images/d/d4/GSDD-Chimera.png",
     "stats": {
       "maxhp": 286,
       "maxpp": 20,
@@ -1102,7 +1102,7 @@
   "Chimera Mage 1": {
     "movepool": [ "Fire Blessing", "Recovery", "Rabid Fang", "Mad Dash", "Eruption" ],
     "name": "Chimera Mage",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Chimera_Mage.png",
+    "imgurl": "https://goldensunwiki.net/w/images/b/b6/Chimera_Mage.png",
     "stats": {
       "maxhp": 413,
       "maxpp": 28,
@@ -1123,7 +1123,7 @@
   "Chimera Mage 2": {
     "movepool": [ "Fire Breath", "Poison Tail", "Mad Dash", "Recovery", "Eruption", "Bind" ],
     "name": "Chimera Mage",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Chimera_Mage.png",
+    "imgurl": "https://goldensunwiki.net/w/images/6/67/GSDD-ChimeraMage.png",
     "stats": {
       "maxhp": 381,
       "maxpp": 26,
@@ -1144,7 +1144,7 @@
   "Chimera Worm": {
     "movepool": [ "Briar", "Angle Spike" ],
     "name": "Chimera Worm",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Chimera_Worm.png",
+    "imgurl": "https://goldensunwiki.net/w/images/5/56/Chimera_Worm.png",
     "stats": {
       "maxhp": 251,
       "maxpp": 22,
@@ -1165,7 +1165,7 @@
   "Clay Gargoyle": {
     "movepool": [ "Guard", "Spire", "Sonic Wave" ],
     "name": "Clay Gargoyle",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Clay_Gargoyle.png",
+    "imgurl": "https://goldensunwiki.net/w/images/0/00/Clay_Gargoyle.png",
     "stats": {
       "maxhp": 209,
       "maxpp": 24,
@@ -1186,7 +1186,7 @@
   "Conch Shell": {
     "movepool": [ "Mucous Gel" ],
     "name": "Conch Shell",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Conch_Shell.png",
+    "imgurl": "https://goldensunwiki.net/w/images/e/ed/Conch_Shell.png",
     "stats": {
       "maxhp": 102,
       "maxpp": 0,
@@ -1205,7 +1205,7 @@
   "Creeper 1": {
     "movepool": [ "Frost", "Douse" ],
     "name": "Creeper",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Creeper.png",
+    "imgurl": "https://goldensunwiki.net/w/images/0/0a/Creeper.png",
     "stats": {
       "maxhp": 89,
       "maxpp": 6,
@@ -1225,7 +1225,7 @@
   "Creeper 2": {
     "movepool": [ "Rumble", "Douse" ],
     "name": "Creeper",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Creeper.png",
+    "imgurl": "https://goldensunwiki.net/w/images/9/93/GSDD-Creeper.png",
     "stats": {
       "maxhp": 251,
       "maxpp": 27,
@@ -1246,7 +1246,7 @@
   "Cruel Dragon": {
     "movepool": [ "Ice Breath", "Freeze Prism" ],
     "name": "Cruel Dragon",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Cruel_Dragon.png",
+    "imgurl": "https://goldensunwiki.net/w/images/d/de/Cruel_Dragon.png",
     "stats": {
       "maxhp": 636,
       "maxpp": 65,
@@ -1266,7 +1266,7 @@
   "Curse Demon": {
     "movepool": [ "Demon Eye", "Vital Barrage", "Stone Spire", "Mad Growth", "Condemn" ],
     "name": "Curse Demon",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Curse_Demon.png",
+    "imgurl": "https://goldensunwiki.net/w/images/thumb/5/58/Curse_Demon.jpg/200px-Curse_Demon.jpg",
     "stats": {
       "maxhp": 202,
       "maxpp": 40,
@@ -1286,7 +1286,7 @@
   "Curse Scuttler": {
     "movepool": [ "Bloodcurdle" ],
     "name": "Curse Scuttler",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Curse_Scuttler.png",
+    "imgurl": "https://goldensunwiki.net/w/images/2/2e/GSDD-CurseScuttler.png",
     "stats": {
       "maxhp": 394,
       "maxpp": 0,
@@ -1305,7 +1305,7 @@
   "Curse Skull": {
     "movepool": [ "Curse", "Condemn" ],
     "name": "Curse Skull",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Curse_Skull.png",
+    "imgurl": "https://goldensunwiki.net/w/images/c/c4/GSDD-CurseSkull.png",
     "stats": {
       "maxhp": 294,
       "maxpp": 41,
@@ -1324,7 +1324,7 @@
   "Cursed Soldier": {
     "movepool": [ "Bone Charge" ],
     "name": "Cursed Soldier",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Cursed_Soldier.png",
+    "imgurl": "https://goldensunwiki.net/w/images/9/9e/GSDD-CursedSoldier.png",
     "stats": {
       "maxhp": 460,
       "maxpp": 0,
@@ -1344,7 +1344,7 @@
   "Cuttle 1": {
     "movepool": [ "Poisonous Bite" ],
     "name": "Cuttle",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Cuttle.png",
+    "imgurl": "https://goldensunwiki.net/w/images/thumb/b/b1/Cuttle_Dark_Dawn.jpg/150px-Cuttle_Dark_Dawn.jpg",
     "stats": {
       "maxhp": 80,
       "maxpp": 0,
@@ -1365,7 +1365,7 @@
   "Cuttle 2": {
     "movepool": [ "Poisonous Bite" ],
     "name": "Cuttle",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Cuttle.png",
+    "imgurl": "https://goldensunwiki.net/w/images/3/37/GSDD-Cuttle.png",
     "stats": {
       "maxhp": 104,
       "maxpp": 0,
@@ -1386,7 +1386,7 @@
   "Dark Devourer": {
     "movepool": [ "Cannibal Fang", "Festering Rake" ],
     "name": "Dark Devourer",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Dark_Devourer.png",
+    "imgurl": "https://goldensunwiki.net/w/images/thumb/d/d2/Dark_Devourer.jpg/220px-Dark_Devourer.jpg",
     "stats": {
       "maxhp": 1474,
       "maxpp": 0,
@@ -1406,7 +1406,7 @@
   "Dark Ghost": {
     "movepool": [ "Haunting", "Ice Horn", "Hail Prism" ],
     "name": "Dark Ghost",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Dark_Ghost.png",
+    "imgurl": "https://goldensunwiki.net/w/images/8/86/GSDD-DarkGhost.png",
     "stats": {
       "maxhp": 444,
       "maxpp": 49,
@@ -1426,7 +1426,7 @@
   "Dark Scuttler": {
     "movepool": [ "Bloodcurdle" ],
     "name": "Dark Scuttler",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Dark_Scuttler.png",
+    "imgurl": "https://goldensunwiki.net/w/images/c/c5/GSDD-DarkScuttler.png",
     "stats": {
       "maxhp": 316,
       "maxpp": 0,
@@ -1445,7 +1445,7 @@
   "Dark Skull": {
     "movepool": [ "Curse", "Condemn" ],
     "name": "Dark Skull",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Dark_Skull.png",
+    "imgurl": "https://goldensunwiki.net/w/images/a/af/GSDD-DarkSkull.png",
     "stats": {
       "maxhp": 382,
       "maxpp": 56,
@@ -1464,7 +1464,7 @@
   "Dark Soldier": {
     "movepool": [ "Bone Charge" ],
     "name": "Dark Soldier",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Dark_Soldier.png",
+    "imgurl": "https://goldensunwiki.net/w/images/8/8b/GSDD-DarkSoldier.png",
     "stats": {
       "maxhp": 382,
       "maxpp": 0,
@@ -1484,7 +1484,7 @@
   "Dark Spirit": {
     "movepool": [ "Rumble", "Cold Snap" ],
     "name": "Dark Spirit",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Dark_Spirit.png",
+    "imgurl": "https://goldensunwiki.net/w/images/1/1b/GSDD-DarkSpirit.png",
     "stats": {
       "maxhp": 391,
       "maxpp": 39,
@@ -1505,7 +1505,7 @@
   "Dark Wight": {
     "movepool": [ "Smell of Decay", "Rotten Blood" ],
     "name": "Dark Wight",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Dark_Wight.png",
+    "imgurl": "https://goldensunwiki.net/w/images/7/76/GSDD-DarkWight.png",
     "stats": {
       "maxhp": 388,
       "maxpp": 0,
@@ -1525,7 +1525,7 @@
   "Deadbeard": {
     "movepool": [ "Freeze Prism", "Break", "Impact", "Ward", "Inferno", "Guard", "Spark Plasma" ],
     "name": "Deadbeard",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Deadbeard.png",
+    "imgurl": "https://goldensunwiki.net/w/images/e/e1/Deadbeard.gif",
     "stats": {
       "maxhp": 6000,
       "maxpp": 600,
@@ -1547,7 +1547,7 @@
   "Death Ball": {
     "movepool": [ "Condemn", "Haunt", "Curse" ],
     "name": "Death Ball",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Death_Ball.png",
+    "imgurl": "https://goldensunwiki.net/w/images/7/78/GSDD-DeathBall.png",
     "stats": {
       "maxhp": 412,
       "maxpp": 56,
@@ -1566,7 +1566,7 @@
   "Death Cap": {
     "movepool": [ "Sleep Star" ],
     "name": "Death Cap",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Death_Cap.png",
+    "imgurl": "https://goldensunwiki.net/w/images/0/04/Death_Cap.png",
     "stats": {
       "maxhp": 117,
       "maxpp": 0,
@@ -1585,7 +1585,7 @@
   "Death Head": {
     "movepool": [ "Slash", "Impair" ],
     "name": "Death Head",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Death_Head.png",
+    "imgurl": "https://goldensunwiki.net/w/images/0/08/Death_Head.png",
     "stats": {
       "maxhp": 128,
       "maxpp": 15,
@@ -1605,7 +1605,7 @@
   "Death Scuttler": {
     "movepool": [ "Bloodcurdle" ],
     "name": "Death Scuttler",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Death_Scuttler.png",
+    "imgurl": "https://goldensunwiki.net/w/images/d/d9/GSDD-DeathScuttler.png",
     "stats": {
       "maxhp": 471,
       "maxpp": 0,
@@ -1624,7 +1624,7 @@
   "Deathwisp": {
     "movepool": [ "Slash", "Curse" ],
     "name": "Deathwisp",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Deathwisp.png",
+    "imgurl": "https://goldensunwiki.net/w/images/f/f3/GSDD-Deathwisp.png",
     "stats": {
       "maxhp": 302,
       "maxpp": 17,
@@ -1644,7 +1644,7 @@
   "Devil Frog": {
     "movepool": [ "Rotten Blood", "Thrash", "Acid Breath" ],
     "name": "Devil Frog",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Devil_Frog.png",
+    "imgurl": "https://goldensunwiki.net/w/images/9/98/Devil_Frog.png",
     "stats": {
       "maxhp": 282,
       "maxpp": 0,
@@ -1665,7 +1665,7 @@
   "Devil Scorpion": {
     "movepool": [ "Twin Shear", "Sand Breath", "Poison Tail" ],
     "name": "Devil Scorpion",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Devil_Scorpion.png",
+    "imgurl": "https://goldensunwiki.net/w/images/f/f7/Devil_Scorpion.png",
     "stats": {
       "maxhp": 181,
       "maxpp": 0,
@@ -1685,7 +1685,7 @@
   "Devilwisp": {
     "movepool": [ "Impair", "Mystic Flame" ],
     "name": "Devilwisp",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Devilwisp.png",
+    "imgurl": "https://goldensunwiki.net/w/images/5/52/GSDD-Devilwisp.png",
     "stats": {
       "maxhp": 233,
       "maxpp": 13,
@@ -1705,7 +1705,7 @@
   "Dim Dragon": {
     "movepool": [ "Out of Order", "Repair", "Gasping Breath", "Pebble Breath", "Scary Jinx", "Sizzle Breath" ],
     "name": "Dim Dragon",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Dim_Dragon.png",
+    "imgurl": "https://goldensunwiki.net/w/images/7/77/DimDragon.jpg",
     "stats": {
       "maxhp": 320,
       "maxpp": 0,
@@ -1726,7 +1726,7 @@
   "Dim Dragon Plus": {
     "movepool": [ "Out of Order", "Repair", "Gasping Breath", "Pebble Breath", "Scary Jinx", "Sizzle Breath", "Djinn Burp" ],
     "name": "Dim Dragon Plus",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Dim_Dragon_Plus.png",
+    "imgurl": "https://goldensunwiki.net/w/images/3/38/DimDragonPlus.jpg",
     "stats": {
       "maxhp": 500,
       "maxpp": 0,
@@ -1747,7 +1747,7 @@
   "Dino": {
     "movepool": [ "Power Bite" ],
     "name": "Dino",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Dino.PNG",
+    "imgurl": "https://goldensunwiki.net/w/images/5/56/Dino.PNG",
     "stats": {
       "maxhp": 82,
       "maxpp": 0,
@@ -1767,7 +1767,7 @@
   "Dinox": {
     "movepool": [ "Terrible Bite" ],
     "name": "Dinox",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Dinox.png",
+    "imgurl": "https://goldensunwiki.net/w/images/8/83/Dinox.png",
     "stats": {
       "maxhp": 172,
       "maxpp": 0,
@@ -1787,7 +1787,7 @@
   "Dire Wolf 1": {
     "movepool": [ "Fatal Fang", "Ice Breath" ],
     "name": "Dire Wolf",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Dire_Wolf.png",
+    "imgurl": "https://goldensunwiki.net/w/images/3/32/Dire_Wolf.png",
     "stats": {
       "maxhp": 155,
       "maxpp": 0,
@@ -1807,7 +1807,7 @@
   "Dire Wolf 2": {
     "movepool": [ "Fatal Fang", "Ice Breath" ],
     "name": "Dire Wolf",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Dire_Wolf.png",
+    "imgurl": "https://goldensunwiki.net/w/images/2/25/GSDD-DireWolf.png",
     "stats": {
       "maxhp": 147,
       "maxpp": 0,
@@ -1827,7 +1827,7 @@
   "Dirge 1": {
     "movepool": [ "Flying Attack" ],
     "name": "Dirge",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Dirge.png",
+    "imgurl": "https://goldensunwiki.net/w/images/2/25/Dirge.png",
     "stats": {
       "maxhp": 91,
       "maxpp": 0,
@@ -1847,7 +1847,7 @@
   "Dirge 2": {
     "movepool": [ "Swift Strike" ],
     "name": "Dirge",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Dirge.png",
+    "imgurl": "https://goldensunwiki.net/w/images/b/b3/GSDD-Dirge.png",
     "stats": {
       "maxhp": 149,
       "maxpp": 0,
@@ -1867,7 +1867,7 @@
   "Dirty Ape 1": {
     "movepool": [ "War Cry", "Freebite Rush" ],
     "name": "Dirty Ape",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Dirty_Ape.png",
+    "imgurl": "https://goldensunwiki.net/w/images/a/a2/Dirty_Ape.png",
     "stats": {
       "maxhp": 230,
       "maxpp": 0,
@@ -1888,7 +1888,7 @@
   "Dirty Ape 2": {
     "movepool": [ "Claw Frenzy", "War Cry" ],
     "name": "Dirty Ape",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Dirty_Ape.png",
+    "imgurl": "https://goldensunwiki.net/w/images/7/7f/GSDD-DirtyApe.png",
     "stats": {
       "maxhp": 313,
       "maxpp": 0,
@@ -1909,7 +1909,7 @@
   "Doodle Bug": {
     "movepool": [ "Sonic Wave", "Briar", "Wild Growth" ],
     "name": "Doodle Bug",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Doodle_Bug.png",
+    "imgurl": "https://goldensunwiki.net/w/images/a/ab/Doodle_Bug.png",
     "stats": {
       "maxhp": 202,
       "maxpp": 22,
@@ -1930,7 +1930,7 @@
   "Doom Dragon 1": {
     "movepool": [ "Blast Breath", "Cure", "Curse", "Djinn Blast", "Earth Force", "Earthquake", "Fiery Blast", "Flare Storm" ],
     "name": "Doom Dragon",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Doom_Dragon.png",
+    "imgurl": "https://goldensunwiki.net/w/images/e/e1/Doom-Dragon.gif",
     "stats": {
       "maxhp": 5000,
       "maxpp": 500,
@@ -1951,7 +1951,7 @@
   "Doom Dragon 2": {
     "movepool": [ "Blast Breath", "Briar", "Clay Spire", "Cruel Ruin", "Curse", "Desert Gasp", "Djinn Blast", "Earth Force", "Guard Aura" ],
     "name": "Doom Dragon",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Doom_Dragon.png",
+    "imgurl": "https://goldensunwiki.net/w/images/4/45/Doom_Dragon_2Heads.gif",
     "stats": {
       "maxhp": 4200,
       "maxpp": 500,
@@ -1972,7 +1972,7 @@
   "Doom Dragon 3": {
     "movepool": [ "Cruel Ruin", "Darksol Gasp", "Djinn Storm", "Earth Force", "Guard Aura", "Nettle", "Stone Spire" ],
     "name": "Doom Dragon",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Doom_Dragon.png",
+    "imgurl": "https://goldensunwiki.net/w/images/1/17/Doom_Dragon_1Head.gif",
     "stats": {
       "maxhp": 4000,
       "maxpp": 500,
@@ -1992,7 +1992,7 @@
   "Doomsayer": {
     "movepool": [ "Clay Spire", "Curse", "Condemn" ],
     "name": "Doomsayer",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Doomsayer.png",
+    "imgurl": "https://goldensunwiki.net/w/images/6/6c/Doomsayer.png",
     "stats": {
       "maxhp": 107,
       "maxpp": 30,
@@ -2012,7 +2012,7 @@
   "Dread Hound 1": {
     "movepool": [ "Fire Blessing", "Double Fang", "Wicked Howl" ],
     "name": "Dread Hound",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Dread_Hound.png",
+    "imgurl": "https://goldensunwiki.net/w/images/2/29/Dread_Hound.png",
     "stats": {
       "maxhp": 252,
       "maxpp": 0,
@@ -2034,7 +2034,7 @@
   "Dread Hound 2": {
     "movepool": [ "Fire Breath", "Triple Fang", "Wicked Howl" ],
     "name": "Dread Hound",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Dread_Hound.png",
+    "imgurl": "https://goldensunwiki.net/w/images/7/76/GSDD-DreadHound.png",
     "stats": {
       "maxhp": 280,
       "maxpp": 0,
@@ -2056,7 +2056,7 @@
   "Drone Bee 1": {
     "movepool": [ "Numbing Sting" ],
     "name": "Drone Bee",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Drone_Bee.png",
+    "imgurl": "https://goldensunwiki.net/w/images/7/7a/GSDD-DroneBee.png",
     "stats": {
       "maxhp": 63,
       "maxpp": 0,
@@ -2078,7 +2078,7 @@
       "Numbing Sting"
     ],
     "name": "Drone Bee",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Drone_Bee.png",
+    "imgurl": "https://goldensunwiki.net/w/images/thumb/1/1f/Drone_Bee_Dark_Dawn.jpg/150px-Drone_Bee_Dark_Dawn.jpg",
     "stats": {
       "maxhp": 46,
       "maxpp": 0,
@@ -2098,7 +2098,7 @@
   "Druj": {
     "movepool": [ "Human Hunt", "Megacool", "Demon Eye", "Psy Drain" ],
     "name": "Druj",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Druj.PNG",
+    "imgurl": "https://goldensunwiki.net/w/images/a/a4/Druj.PNG",
     "stats": {
       "maxhp": 672,
       "maxpp": 66,
@@ -2120,7 +2120,7 @@
   "Dullahan 1": {
     "movepool": [ "Bind", "Break", "Charon", "Condemn", "Curse", "Djinn Storm", "Element Swap", "Formina Sage" ],
     "name": "Dullahan",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Dullahan.png",
+    "imgurl": "https://goldensunwiki.net/w/images/thumb/9/95/Dullahan_Dark_Dawn.jpg/230px-Dullahan_Dark_Dawn.jpg",
     "stats": {
       "maxhp": 16000,
       "maxpp": 300,
@@ -2141,7 +2141,7 @@
   "Dullahan 2": {
     "movepool": [ "Bind", "Break", "Charon", "Condemn", "Crucible", "Curse", "Dark Contact", "Djinn Storm" ],
     "name": "Dullahan",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Dullahan.png",
+    "imgurl": "https://goldensunwiki.net/w/images/thumb/9/95/Dullahan_Dark_Dawn.jpg/230px-Dullahan_Dark_Dawn.jpg",
     "stats": {
       "maxhp": 16000,
       "maxpp": 351,
@@ -2161,7 +2161,7 @@
   "Earth Golem": {
     "movepool": [ "Truncheon Fist" ],
     "name": "Earth Golem",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Earth_Golem.png",
+    "imgurl": "https://goldensunwiki.net/w/images/b/ba/Earth_Golem.png",
     "stats": {
       "maxhp": 298,
       "maxpp": 0,
@@ -2181,7 +2181,7 @@
   "Earth Lizard 1": {
     "movepool": [ "Acid Blessing", "Clay Spire", "Quake Sphere", "Mother Gaia", "Cure Well" ],
     "name": "Earth Lizard",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Earth_Lizard.png",
+    "imgurl": "https://goldensunwiki.net/w/images/d/de/Earth_Lizard.png",
     "stats": {
       "maxhp": 1550,
       "maxpp": 48,
@@ -2202,7 +2202,7 @@
   "Earth Lizard 2": {
     "movepool": [ "Clay Spire", "Quake Sphere", "Mother Gaia", "Acid Breath", "Cure Well" ],
     "name": "Earth Lizard",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Earth_Lizard.png",
+    "imgurl": "https://goldensunwiki.net/w/images/4/4a/GSDD-EarthLizard.png",
     "stats": {
       "maxhp": 461,
       "maxpp": 38,
@@ -2223,7 +2223,7 @@
   "Emu": {
     "movepool": [ "Claw Slash" ],
     "name": "Emu",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Emu.png",
+    "imgurl": "https://goldensunwiki.net/w/images/5/5d/Emu.png",
     "stats": {
       "maxhp": 98,
       "maxpp": 0,
@@ -2243,7 +2243,7 @@
   "Faery 1": {
     "movepool": [ "Sleep", "Psy Drain", "Tornado", "Wind Slash" ],
     "name": "Faery",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Faery.png",
+    "imgurl": "https://goldensunwiki.net/w/images/7/75/Faery.png",
     "stats": {
       "maxhp": 105,
       "maxpp": 30,
@@ -2263,7 +2263,7 @@
   "Faery 2": {
     "movepool": [ "Psy Drain", "Sleep", "Tornado", "Wind Slash" ],
     "name": "Faery",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Faery.png",
+    "imgurl": "https://goldensunwiki.net/w/images/4/41/GSDD-Faery.png",
     "stats": {
       "maxhp": 84,
       "maxpp": 24,
@@ -2283,7 +2283,7 @@
   "Fell Dead": {
     "movepool": [ "Smell of Decay", "Rotten Blood" ],
     "name": "Fell Dead",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Fell_Dead.png",
+    "imgurl": "https://goldensunwiki.net/w/images/b/b0/GSDD-FellDead.png",
     "stats": {
       "maxhp": 400,
       "maxpp": 0,
@@ -2303,7 +2303,7 @@
   "Fenrir 1": {
     "movepool": [ "Ice Blessing", "Double Fang", "Wicked Howl" ],
     "name": "Fenrir",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Fenrir.png",
+    "imgurl": "https://goldensunwiki.net/w/images/6/6a/Fenrir.png",
     "stats": {
       "maxhp": 406,
       "maxpp": 0,
@@ -2325,7 +2325,7 @@
   "Fenrir 2": {
     "movepool": [ "Ice Breath", "Triple Fang", "Wicked Howl", "Ice Missile" ],
     "name": "Fenrir",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Fenrir.png",
+    "imgurl": "https://goldensunwiki.net/w/images/7/72/GSDD-Fenrir.png",
     "stats": {
       "maxhp": 612,
       "maxpp": 33,
@@ -2347,7 +2347,7 @@
   "Fiendish Ghoul": {
     "movepool": [ "Cannibal Fang", "Bacteria Rush" ],
     "name": "Fiendish Ghoul",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Fiendish_Ghoul.png",
+    "imgurl": "https://goldensunwiki.net/w/images/1/16/Fiendish_Ghoul.png",
     "stats": {
       "maxhp": 609,
       "maxpp": 0,
@@ -2367,7 +2367,7 @@
   "Fighter Bee 1": {
     "movepool": [ "Ally Search", "Numbing Sting" ],
     "name": "Fighter Bee",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Fighter_Bee.png",
+    "imgurl": "https://goldensunwiki.net/w/images/d/d2/Fighter_Bee.png",
     "stats": {
       "maxhp": 116,
       "maxpp": 0,
@@ -2387,7 +2387,7 @@
   "Fighter Bee 2": {
     "movepool": [ "Ally Search", "Numbing Sting", "Mortal Blow" ],
     "name": "Fighter Bee",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Fighter_Bee.png",
+    "imgurl": "https://goldensunwiki.net/w/images/1/16/GSDD-FighterBee.png",
     "stats": {
       "maxhp": 164,
       "maxpp": 0,
@@ -2408,7 +2408,7 @@
   "Fighter Bee 3": {
     "movepool": [ "Ally Search", "Numbing Sting" ],
     "name": "Fighter Bee",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Fighter_Bee.png",
+    "imgurl": "https://goldensunwiki.net/w/images/1/16/GSDD-FighterBee.png",
     "stats": {
       "maxhp": 242,
       "maxpp": 0,
@@ -2428,7 +2428,7 @@
   "Fire Bird": {
     "movepool": [ "Regen Dance", "Fire Dance", "Searing Beam", "Supernova", "Inferno", "Flee" ],
     "name": "Fire Bird",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Fire_Bird.png",
+    "imgurl": "https://goldensunwiki.net/w/images/2/23/Fire_Bird.png",
     "stats": {
       "maxhp": 303,
       "maxpp": 98,
@@ -2448,7 +2448,7 @@
   "Fire Dragon": {
     "movepool": [ "Fire Breath", "Dragon Fume" ],
     "name": "Fire Dragon",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Fire_Dragon.png",
+    "imgurl": "https://goldensunwiki.net/w/images/b/b6/Fire_Dragon.png",
     "stats": {
       "maxhp": 648,
       "maxpp": 40,
@@ -2468,7 +2468,7 @@
   "Fire Worm": {
     "movepool": [ "Fire Breath", "Angle Spike" ],
     "name": "Fire Worm",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Fire_Worm.png",
+    "imgurl": "https://goldensunwiki.net/w/images/7/72/Fire_Worm.png",
     "stats": {
       "maxhp": 97,
       "maxpp": 0,
@@ -2488,7 +2488,7 @@
   "Flame Dragon 1": {
     "movepool": [ "Rolling Flame", "Rising Dragon", "Meteor Blow", "Flame Breath", "Cage", "Stun Muscle" ],
     "name": "Flame Dragon",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Flame_Dragon.png",
+    "imgurl": "https://goldensunwiki.net/w/images/2/20/Flame_Dragon_Big.png",
     "stats": {
       "maxhp": 5724,
       "maxpp": 250,
@@ -2508,7 +2508,7 @@
   "Flame Dragon 2": {
     "movepool": [ "Flame Breath", "Fiery Blast", "Djinnfest", "Supernova", "Healing Aura", "Break", "Heat Kiss" ],
     "name": "Flame Dragon",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Flame_Dragon.png",
+    "imgurl": "https://goldensunwiki.net/w/images/8/80/Flame_Dragon_Small.png",
     "stats": {
       "maxhp": 5348,
       "maxpp": 320,
@@ -2528,7 +2528,7 @@
   "Flash Ant": {
     "movepool": [ "Flash Punch" ],
     "name": "Flash Ant",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Flash_Ant.png",
+    "imgurl": "https://goldensunwiki.net/w/images/5/55/Flash_Ant.png",
     "stats": {
       "maxhp": 76,
       "maxpp": 0,
@@ -2567,7 +2567,7 @@
   "Foul Dirge 1": {
     "movepool": [ "Swift Strike" ],
     "name": "Foul Dirge",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Foul_Dirge.png",
+    "imgurl": "https://goldensunwiki.net/w/images/3/34/Foul_Dirge.png",
     "stats": {
       "maxhp": 149,
       "maxpp": 0,
@@ -2587,7 +2587,7 @@
   "Foul Dirge 2": {
     "movepool": [ "Swift Strike", "Wing Beat" ],
     "name": "Foul Dirge",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Foul_Dirge.png",
+    "imgurl": "https://goldensunwiki.net/w/images/5/55/GSDD-FoulDirge.png",
     "stats": {
       "maxhp": 216,
       "maxpp": 0,
@@ -2607,7 +2607,7 @@
   "Foul Glutton": {
     "movepool": [ "Cannibal Fang", "Festering Rake", "Smell of Decay" ],
     "name": "Foul Glutton",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Foul_Glutton.png",
+    "imgurl": "https://goldensunwiki.net/w/images/b/b8/GSDD-FoulGlutton.png",
     "stats": {
       "maxhp": 472,
       "maxpp": 0,
@@ -2627,7 +2627,7 @@
   "Foul Mummy": {
     "movepool": [ "Crusher Grip" ],
     "name": "Foul Mummy",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Foul_Mummy.png",
+    "imgurl": "https://goldensunwiki.net/w/images/2/2d/Foul_Mummy.png",
     "stats": {
       "maxhp": 238,
       "maxpp": 0,
@@ -2647,7 +2647,7 @@
   "Foul Skorpna": {
     "movepool": [ "Drag Down" ],
     "name": "Foul Skorpna",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Foul_Skorpna.png",
+    "imgurl": "https://goldensunwiki.net/w/images/3/37/GSDD-FoulSkorpna.png",
     "stats": {
       "maxhp": 445,
       "maxpp": 0,
@@ -2688,7 +2688,7 @@
   "Fusion Dragon": {
     "movepool": [ "Outer Space", "Evil Blessing", "Dragon Driver", "Break", "Drain Fang", "Deadly Gas", "Severe Blow" ],
     "name": "Fusion Dragon",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Fusion_Dragon.png",
+    "imgurl": "https://goldensunwiki.net/w/images/9/95/Fusion_Dragon.gif",
     "stats": {
       "maxhp": 5000,
       "maxpp": 500,
@@ -2709,7 +2709,7 @@
   "Gargoyle": {
     "movepool": [ "Guard", "Quake Sphere", "Ice Blessing" ],
     "name": "Gargoyle",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Gargoyle.png",
+    "imgurl": "https://goldensunwiki.net/w/images/4/44/Gargoyle.png",
     "stats": {
       "maxhp": 176,
       "maxpp": 21,
@@ -2730,7 +2730,7 @@
   "Ghost 1": {
     "movepool": [ "Rumble", "Impair" ],
     "name": "Ghost",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Ghost.png",
+    "imgurl": "https://goldensunwiki.net/w/images/thumb/5/5e/Ghost_Dark_Dawn.jpg/200px-Ghost_Dark_Dawn.jpg",
     "stats": {
       "maxhp": 56,
       "maxpp": 6,
@@ -2747,10 +2747,10 @@
     },
     "extraturns": 0
   },
-  "Ghost 4": {
+  "Ghost 2": {
     "movepool": [ "Rumble" ],
     "name": "Ghost",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Ghost.png",
+    "imgurl": "https://goldensunwiki.net/w/images/a/ab/Ghost.png",
     "stats": {
       "maxhp": 108,
       "maxpp": 12,
@@ -2770,7 +2770,7 @@
   "Ghost Army": {
     "movepool": [ "Pike Assault", "Sonic Slash" ],
     "name": "Ghost Army",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Ghost_Army.png",
+    "imgurl": "https://goldensunwiki.net/w/images/d/d4/Ghost_Army.png",
     "stats": {
       "maxhp": 250,
       "maxpp": 18,
@@ -2790,7 +2790,7 @@
   "Ghost Mage 1": {
     "movepool": [ "Haunting", "Spire", "Whirlwind" ],
     "name": "Ghost Mage",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Ghost_Mage.png",
+    "imgurl": "https://goldensunwiki.net/w/images/e/ec/Ghost_Mage.png",
     "stats": {
       "maxhp": 161,
       "maxpp": 19,
@@ -2811,7 +2811,7 @@
   "Ghost Mage 2": {
     "movepool": [ "Haunting", "Spire", "Whirlwind" ],
     "name": "Ghost Mage",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Ghost_Mage.png",
+    "imgurl": "https://goldensunwiki.net/w/images/d/dd/GSDD-GhostMage.png",
     "stats": {
       "maxhp": 294,
       "maxpp": 35,
@@ -2832,7 +2832,7 @@
   "Ghoul": {
     "movepool": [ "Cannibal Fang" ],
     "name": "Ghoul",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Ghoul.png",
+    "imgurl": "https://goldensunwiki.net/w/images/e/e3/Ghoul.png",
     "stats": {
       "maxhp": 99,
       "maxpp": 0,
@@ -2852,7 +2852,7 @@
   "Ghoul Ball": {
     "movepool": [ "Consume Djinn" ],
     "name": "Ghoul Ball",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Ghoul_Ball.png",
+    "imgurl": "https://goldensunwiki.net/w/images/0/07/GSDD-GhoulBall.png",
     "stats": {
       "maxhp": 850,
       "maxpp": 24,
@@ -2871,7 +2871,7 @@
   "Giant Bat 1": {
     "movepool": [ "Sonic Wave" ],
     "name": "Giant Bat",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Giant_Bat.png",
+    "imgurl": "https://goldensunwiki.net/w/images/3/3f/Giant_Bat.png",
     "stats": {
       "maxhp": 32,
       "maxpp": 0,
@@ -2891,7 +2891,7 @@
   "Giant Bat 2": {
     "movepool": [ "Sonic Wave", "Vampiric Fang" ],
     "name": "Giant Bat",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Giant_Bat.png",
+    "imgurl": "https://goldensunwiki.net/w/images/3/37/GSDD-GiantBat.png",
     "stats": {
       "maxhp": 232,
       "maxpp": 0,
@@ -2912,7 +2912,7 @@
   "Gillman 1": {
     "movepool": [ "Hydro Slash" ],
     "name": "Gillman",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Gillman.png",
+    "imgurl": "https://goldensunwiki.net/w/images/6/6b/Gillman.png",
     "stats": {
       "maxhp": 234,
       "maxpp": 0,
@@ -2929,10 +2929,10 @@
     },
     "extraturns": 0
   },
-  "Gillman 3": {
+  "Gillman 2": {
     "movepool": [ "Hydro Slash" ],
     "name": "Gillman",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Gillman.png",
+    "imgurl": "https://goldensunwiki.net/w/images/2/2a/GSDD-Gillman.png",
     "stats": {
       "maxhp": 226,
       "maxpp": 0,
@@ -2952,7 +2952,7 @@
   "Gillman Lord 1": {
     "movepool": [ "Hydro Slash" ],
     "name": "Gillman Lord",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Gillman_Lord.png",
+    "imgurl": "https://goldensunwiki.net/w/images/9/93/Gillman_Lord.png",
     "stats": {
       "maxhp": 284,
       "maxpp": 0,
@@ -2972,7 +2972,7 @@
   "Gillman Lord 2": {
     "movepool": [ "Hydro Slash" ],
     "name": "Gillman Lord",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Gillman_Lord.png",
+    "imgurl": "https://goldensunwiki.net/w/images/4/47/GSDD-GillmanLord.png",
     "stats": {
       "maxhp": 258,
       "maxpp": 0,
@@ -3012,7 +3012,7 @@
   "Gnome": {
     "movepool": [ "Flare", "Bolt", "Guard", "Flee" ],
     "name": "Gnome",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Gnome.png",
+    "imgurl": "https://goldensunwiki.net/w/images/7/78/Gnome.png",
     "stats": {
       "maxhp": 85,
       "maxpp": 5,
@@ -3033,7 +3033,7 @@
   "Gnome Mage": {
     "movepool": [ "Flash Bolt", "Fireball", "Delude" ],
     "name": "Gnome Mage",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Gnome_Mage.png",
+    "imgurl": "https://goldensunwiki.net/w/images/8/8b/Gnome_Mage.png",
     "stats": {
       "maxhp": 162,
       "maxpp": 24,
@@ -3054,7 +3054,7 @@
   "Gnome Wizard": {
     "movepool": [ "Sleep", "Impact", "Mother Gaia" ],
     "name": "Gnome Wizard",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Gnome_Wizard.png",
+    "imgurl": "https://goldensunwiki.net/w/images/4/4f/Gnome_Wizard.png",
     "stats": {
       "maxhp": 215,
       "maxpp": 32,
@@ -3074,7 +3074,7 @@
   "Goblin 1": {
     "movepool": [],
     "name": "Goblin",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Goblin.png",
+    "imgurl": "https://goldensunwiki.net/w/images/d/d2/Goblin.png",
     "stats": {
       "maxhp": 268,
       "maxpp": 0,
@@ -3090,10 +3090,10 @@
     },
     "extraturns": 0
   },
-  "Goblin 5": {
+  "Goblin 2": {
     "movepool": [],
     "name": "Goblin",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Goblin.png",
+    "imgurl": "https://goldensunwiki.net/w/images/2/2d/GSDD-Goblin.png",
     "stats": {
       "maxhp": 283,
       "maxpp": 0,
@@ -3150,7 +3150,7 @@
   "Golem": {
     "movepool": [ "Forcible Arm" ],
     "name": "Golem",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Golem.png",
+    "imgurl": "https://goldensunwiki.net/w/images/c/ce/Golem.png",
     "stats": {
       "maxhp": 266,
       "maxpp": 0,
@@ -3170,7 +3170,7 @@
   "Grand Chimera 1": {
     "movepool": [ "Fire Breath", "Recovery", "Rabid Fang", "Mad Dash", "Eruption" ],
     "name": "Grand Chimera",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Grand_Chimera.png",
+    "imgurl": "https://goldensunwiki.net/w/images/6/66/Grand_Chimera.png",
     "stats": {
       "maxhp": 313,
       "maxpp": 48,
@@ -3191,7 +3191,7 @@
   "Grand Chimera 2": {
     "movepool": [ "Fire Breath", "Poison Tail", "Mad Dash", "Recovery", "Pyroclasm", "Bind" ],
     "name": "Grand Chimera",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Grand_Chimera.png",
+    "imgurl": "https://goldensunwiki.net/w/images/d/db/GSDD-GrandChimera.png",
     "stats": {
       "maxhp": 909,
       "maxpp": 45,
@@ -3212,7 +3212,7 @@
   "Grand Golem": {
     "movepool": [ "Truncheon Fist" ],
     "name": "Grand Golem",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Grand_Golem.png",
+    "imgurl": "https://goldensunwiki.net/w/images/a/ac/Grand_Golem.png",
     "stats": {
       "maxhp": 476,
       "maxpp": 0,
@@ -3232,7 +3232,7 @@
   "Grave Wight": {
     "movepool": [ "Crusher Grip", "Haunt" ],
     "name": "Grave Wight",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Grave_Wight.png",
+    "imgurl": "https://goldensunwiki.net/w/images/4/48/Grave_Wight.png",
     "stats": {
       "maxhp": 460,
       "maxpp": 20,
@@ -3273,7 +3273,7 @@
   "Great Seagull": {
     "movepool": [ "Wing Flutter" ],
     "name": "Great Seagull",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Great_Seagull.png",
+    "imgurl": "https://goldensunwiki.net/w/images/2/20/Great_Seagull.png",
     "stats": {
       "maxhp": 266,
       "maxpp": 0,
@@ -3293,7 +3293,7 @@
   "Gressil": {
     "movepool": [ "Nova", "Curse" ],
     "name": "Gressil",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Gressil.png",
+    "imgurl": "https://goldensunwiki.net/w/images/6/66/Gressil.png",
     "stats": {
       "maxhp": 175,
       "maxpp": 30,
@@ -3313,7 +3313,7 @@
   "Grisly 1": {
     "movepool": [ "Bear Claw", "Berserk" ],
     "name": "Grisly",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Grisly.png",
+    "imgurl": "https://goldensunwiki.net/w/images/8/85/Grisly.png",
     "stats": {
       "maxhp": 800,
       "maxpp": 0,
@@ -3332,7 +3332,7 @@
   "Grisly 2": {
     "movepool": [ "Berserk", "Bear Claw" ],
     "name": "Grisly",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Grisly.png",
+    "imgurl": "https://goldensunwiki.net/w/images/a/af/GSDD-Grisly.png",
     "stats": {
       "maxhp": 483,
       "maxpp": 0,
@@ -3351,7 +3351,7 @@
   "Grub": {
     "movepool": [],
     "name": "Grub",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Grub.png",
+    "imgurl": "https://goldensunwiki.net/w/images/0/0c/Grub.png",
     "stats": {
       "maxhp": 102,
       "maxpp": 0,
@@ -3370,7 +3370,7 @@
   "Gryphon 1": {
     "movepool": [ "Wing Flutter", "Tornado", "Twin Beaks", "Impact", "Sonic Slash", "Bind", "Ward" ],
     "name": "Gryphon",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Gryphon.png",
+    "imgurl": "https://goldensunwiki.net/w/images/thumb/f/f7/Gryphon_Dark_Dawn.jpg/250px-Gryphon_Dark_Dawn.jpg",
     "stats": {
       "maxhp": 1100,
       "maxpp": 36,
@@ -3387,10 +3387,10 @@
     },
     "extraturns": 0
   },
-  "Gryphon 4": {
+  "Gryphon 2": {
     "movepool": [ "Wing Flutter", "Tornado", "Twin Beaks", "Impact", "Bind", "Ward" ],
     "name": "Gryphon",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Gryphon.png",
+    "imgurl": "https://goldensunwiki.net/w/images/6/60/GSDD-Gryphon.png",
     "stats": {
       "maxhp": 228,
       "maxpp": 18,
@@ -3410,7 +3410,7 @@
   "Guardian Ball 1": {
     "movepool": [ "Guard Aura", "Guard Aura", "Guard Aura" ],
     "name": "Guardian Ball",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Guardian_Ball.png",
+    "imgurl": "https://goldensunwiki.net/w/images/8/8f/Guardian_Ball.png",
     "stats": {
       "maxhp": 520,
       "maxpp": 43,
@@ -3429,7 +3429,7 @@
   "Guardian Ball 2": {
     "movepool": [ "Guard Aura" ],
     "name": "Guardian Ball",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Guardian_Ball.png",
+    "imgurl": "https://goldensunwiki.net/w/images/9/94/GSDD-GuardianBall.png",
     "stats": {
       "maxhp": 664,
       "maxpp": 37,
@@ -3448,7 +3448,7 @@
   "Harpy 1": {
     "movepool": [ "Shriek" ],
     "name": "Harpy",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Harpy.png",
+    "imgurl": "https://goldensunwiki.net/w/images/thumb/d/d4/Harpy_Dark_Dawn.jpg/150px-Harpy_Dark_Dawn.jpg",
     "stats": {
       "maxhp": 105,
       "maxpp": 0,
@@ -3468,7 +3468,7 @@
   "Harpy 2": {
     "movepool": [ "Shriek" ],
     "name": "Harpy",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Harpy.png",
+    "imgurl": "https://goldensunwiki.net/w/images/f/ff/GSDD-Harpy.png",
     "stats": {
       "maxhp": 113,
       "maxpp": 0,
@@ -3488,7 +3488,7 @@
   "Harridan 1": {
     "movepool": [ "Banshee Howl", "Crazy Voice", "Wind Slash" ],
     "name": "Harridan",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Harridan.png",
+    "imgurl": "https://goldensunwiki.net/w/images/d/d5/Harridan.png",
     "stats": {
       "maxhp": 231,
       "maxpp": 29,
@@ -3508,7 +3508,7 @@
   "Harridan 2": {
     "movepool": [ "Stunning Shriek", "Crazy Voice", "Wind Slash" ],
     "name": "Harridan",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Harridan.png",
+    "imgurl": "https://goldensunwiki.net/w/images/f/fa/GSDD-Harridan.png",
     "stats": {
       "maxhp": 346,
       "maxpp": 20,
@@ -3586,7 +3586,7 @@
   "Hobgoblin 1": {
     "movepool": [],
     "name": "Hobgoblin",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Hobgoblin.png",
+    "imgurl": "https://goldensunwiki.net/w/images/3/31/Hobgoblin.png",
     "stats": {
       "maxhp": 650,
       "maxpp": 0,
@@ -3605,7 +3605,7 @@
   "Hobgoblin 2": {
     "movepool": [],
     "name": "Hobgoblin",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Hobgoblin.png",
+    "imgurl": "https://goldensunwiki.net/w/images/3/39/GSDD-Hobgoblin.png",
     "stats": {
       "maxhp": 316,
       "maxpp": 0,
@@ -3624,7 +3624,7 @@
   "Horned Ghost": {
     "movepool": [ "Haunting", "Ice Horn", "Hail Prism" ],
     "name": "Horned Ghost",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Horned_Ghost.png",
+    "imgurl": "https://goldensunwiki.net/w/images/4/40/Horned_Ghost.png",
     "stats": {
       "maxhp": 236,
       "maxpp": 32,
@@ -3641,10 +3641,10 @@
     },
     "extraturns": 0
   },
-  "Hydra 2": {
+  "Hydra 1": {
     "movepool": [ "Triple Chomp", "Slaver" ],
     "name": "Hydra",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Hydra.png",
+    "imgurl": "https://goldensunwiki.net/w/images/9/9d/Hydra.png",
     "stats": {
       "maxhp": 276,
       "maxpp": 0,
@@ -3661,10 +3661,10 @@
     },
     "extraturns": 0
   },
-  "Hydra 3": {
+  "Hydra 2": {
     "movepool": [ "Triple Chomp", "Mesmerize" ],
     "name": "Hydra",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Hydra.png",
+    "imgurl": "https://goldensunwiki.net/w/images/e/e5/GSDD-Hydra.png",
     "stats": {
       "maxhp": 123,
       "maxpp": 0,
@@ -3704,7 +3704,7 @@
   "Ice Gargoyle": {
     "movepool": [ "Guard", "Mother Gaia", "Ice Blessing" ],
     "name": "Ice Gargoyle",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Ice_Gargoyle.png",
+    "imgurl": "https://goldensunwiki.net/w/images/2/27/Ice_Gargoyle.png",
     "stats": {
       "maxhp": 304,
       "maxpp": 21,
@@ -4125,7 +4125,7 @@
   "Karst": {
     "movepool": [ "Death Scythe", "Fiery Blast", "Djinnfest", "Supernova", "Healing Aura", "Break", "Heat Kiss" ],
     "name": "Karst",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Karst.png",
+    "imgurl": "https://goldensunwiki.net/w/images/1/17/GSKarst.jpg",
     "stats": {
       "maxhp": 3186,
       "maxpp": 320,
@@ -4146,7 +4146,7 @@
   "Killer Ape 1": {
     "movepool": [ "Ransack", "Bind", "War Cry", "Douse", "Debilitate" ],
     "name": "Killer Ape",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Killer_Ape.png",
+    "imgurl": "https://goldensunwiki.net/w/images/1/15/Killer_Ape.png",
     "stats": {
       "maxhp": 1000,
       "maxpp": 45,
@@ -4168,7 +4168,7 @@
   "Killer Ape 2": {
     "movepool": [ "Claw Frenzy", "War Cry" ],
     "name": "Killer Ape",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Killer_Ape.png",
+    "imgurl": "https://goldensunwiki.net/w/images/4/49/GSDD-KillerApe.png",
     "stats": {
       "maxhp": 219,
       "maxpp": 0,
@@ -4189,7 +4189,7 @@
   "King Scorpion": {
     "movepool": [ "Twin Shear", "Sand Breath", "Desert Gasp", "Paralytail", "Poison Tail" ],
     "name": "King Scorpion",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/King_Scorpion.png",
+    "imgurl": "https://goldensunwiki.net/w/images/5/52/King_Scorpion.png",
     "stats": {
       "maxhp": 1064,
       "maxpp": 0,
@@ -4209,7 +4209,7 @@
   "Knight": {
     "movepool": [ "Strong Hit" ],
     "name": "Knight",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Knight.png",
+    "imgurl": "https://goldensunwiki.net/w/images/6/6b/Knight.png",
     "stats": {
       "maxhp": 1954,
       "maxpp": 0,
@@ -4228,7 +4228,7 @@
   "Kobold 1": {
     "movepool": [],
     "name": "Kobold",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Kobold_Goblin.png",
+    "imgurl": "https://goldensunwiki.net/w/images/d/d2/Goblin.png",
     "stats": {
       "maxhp": 220,
       "maxpp": 0,
@@ -4247,7 +4247,7 @@
   "Kobold 2": {
     "movepool": [],
     "name": "Kobold",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Kobold_Wargold.png",
+    "imgurl": "https://goldensunwiki.net/w/images/e/e3/Kobold_Wargold.png",
     "stats": {
       "maxhp": 77,
       "maxpp": 0,
@@ -4266,7 +4266,7 @@
   "Kobold 3": {
     "movepool": [],
     "name": "Kobold",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/GSDD-Kobold.png",
+    "imgurl": "https://goldensunwiki.net/w/images/d/d6/GSDD-Kobold.png",
     "stats": {
       "maxhp": 89,
       "maxpp": 0,
@@ -4285,7 +4285,7 @@
   "Kobold King": {
     "movepool": [ "Doublestep" ],
     "name": "Kobold King",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Kobold_King.png",
+    "imgurl": "https://goldensunwiki.net/w/images/0/09/GSDD-KoboldKing.png",
     "stats": {
       "maxhp": 572,
       "maxpp": 0,
@@ -4304,7 +4304,7 @@
   "Kraken": {
     "movepool": [ "Dark Blessing", "Spinning Beat", "Water Blessing", "Poison Beat", "Ply", "Drench", "Froth Sphere" ],
     "name": "Kraken",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Kraken.png",
+    "imgurl": "https://goldensunwiki.net/w/images/d/d3/Kraken.png",
     "stats": {
       "maxhp": 2400,
       "maxpp": 46,
@@ -4325,7 +4325,7 @@
   "Ku-Embra": {
     "movepool": [ "Cyclone Slash", "Inspiring Speech", "Zealous Fury" ],
     "name": "Ku-Embra",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Ku-Embra.png",
+    "imgurl": "https://goldensunwiki.net/w/images/7/76/KuEmbraBattle.jpg",
     "stats": {
       "maxhp": 898,
       "maxpp": 0,
@@ -4346,7 +4346,7 @@
   "Ku-Tsung": {
     "movepool": [ "Dragon Spark", "Gong of Battle", "Pure Hatred" ],
     "name": "Ku-Tsung",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Ku-Tsung.png",
+    "imgurl": "https://goldensunwiki.net/w/images/9/9c/KuTsungBattle.jpg",
     "stats": {
       "maxhp": 831,
       "maxpp": 0,
@@ -4387,7 +4387,7 @@
   "Lesser Demon": {
     "movepool": [ "Vital Moon", "Stone Spire" ],
     "name": "Lesser Demon",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Lesser_Demon.png",
+    "imgurl": "https://goldensunwiki.net/w/images/b/bf/Lesser_Demon.png",
     "stats": {
       "maxhp": 410,
       "maxpp": 44,
@@ -4447,7 +4447,7 @@
   "Little Death": {
     "movepool": [ "Supernova", "Curse", "Condemn" ],
     "name": "Little Death",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Little_Death.png",
+    "imgurl": "https://goldensunwiki.net/w/images/5/5f/Little_Death.png",
     "stats": {
       "maxhp": 222,
       "maxpp": 40,
@@ -4469,7 +4469,7 @@
       "Power Crush"
     ],
     "name": "Living Armor",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Living_Armor.png",
+    "imgurl": "https://goldensunwiki.net/w/images/d/d0/Living_Armor.png",
     "stats": {
       "maxhp": 201,
       "maxpp": 0,
@@ -4489,7 +4489,7 @@
   "Living Statue": {
     "movepool": [ "Tundra", "Water Blessing" ],
     "name": "Living Statue",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Living_Statue.png",
+    "imgurl": "https://goldensunwiki.net/w/images/5/55/Living_Statue.png",
     "stats": {
       "maxhp": 540,
       "maxpp": 34,
@@ -4511,7 +4511,7 @@
       "Berserk"
     ],
     "name": "Lizard Brute",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Lizard_Brute.png",
+    "imgurl": "https://goldensunwiki.net/w/images/8/86/Lizard_Brute.png",
     "stats": {
       "maxhp": 407,
       "maxpp": 0,
@@ -4532,7 +4532,7 @@
       "Water Breath"
     ],
     "name": "Lizard Fighter",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Lizard_Fighter.png",
+    "imgurl": "https://goldensunwiki.net/w/images/6/6f/Lizard_Fighter.png",
     "stats": {
       "maxhp": 212,
       "maxpp": 0,
@@ -4554,7 +4554,7 @@
       "Aqua Breath"
     ],
     "name": "Lizard Fighter",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Lizard_Fighter.png",
+    "imgurl": "https://goldensunwiki.net/w/images/4/4f/GSDD-LizardFighter.png",
     "stats": {
       "maxhp": 511,
       "maxpp": 0,
@@ -4574,7 +4574,7 @@
   "Lizard King": {
     "movepool": [ "Ice Blessing", "Debilitate", "High Impact", "Hail Prism", "Blunt", "Bind" ],
     "name": "Lizard King",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Lizard_King.png",
+    "imgurl": "https://goldensunwiki.net/w/images/6/68/Lizard_King.png",
     "stats": {
       "maxhp": 2000,
       "maxpp": 52,
@@ -4596,7 +4596,7 @@
       "Water Blessing"
     ],
     "name": "Lizard Man",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Lizard_Man.png",
+    "imgurl": "https://goldensunwiki.net/w/images/thumb/d/d8/Lizard_Man_Dark_Dawn.jpg/200px-Lizard_Man_Dark_Dawn.jpg",
     "stats": {
       "maxhp": 129,
       "maxpp": 0,
@@ -4618,7 +4618,7 @@
       "Aqua Breath"
     ],
     "name": "Lizard Man",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Lizard_Man.png",
+    "imgurl": "https://goldensunwiki.net/w/images/2/25/Lizard_Man.png",
     "stats": {
       "maxhp": 166,
       "maxpp": 0,
@@ -4638,7 +4638,7 @@
   "Lizard Savage": {
     "movepool": [ "Berserk", "Debilitate", "Hail Prism" ],
     "name": "Lizard Savage",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Lizard_Savage.png",
+    "imgurl": "https://goldensunwiki.net/w/images/4/4a/Lizard_Savage.png",
     "stats": {
       "maxhp": 562,
       "maxpp": 20,
@@ -4658,7 +4658,7 @@
   "Macetail": {
     "movepool": [ "Heat Stun", "Guard" ],
     "name": "Macetail",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Macetail.png",
+    "imgurl": "https://goldensunwiki.net/w/images/7/75/Macetail.png",
     "stats": {
       "maxhp": 284,
       "maxpp": 28,
@@ -4678,7 +4678,7 @@
   "Mad Demon 1": {
     "movepool": [ "Vital Moon", "Grand Gaia", "Thorny Grave", "Condemn" ],
     "name": "Mad Demon",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Mad_Demon.png",
+    "imgurl": "https://goldensunwiki.net/w/images/3/3c/Mad_Demon.png",
     "stats": {
       "maxhp": 745,
       "maxpp": 96,
@@ -4698,7 +4698,7 @@
   "Mad Demon 2": {
     "movepool": [ "Demon Eye", "Vital Barrage", "Seething Rage", "Grand Gaia", "Freeze Prism" ],
     "name": "Mad Demon",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Mad_Demon.png",
+    "imgurl": "https://goldensunwiki.net/w/images/a/a2/GSDD-MadDemon.png",
     "stats": {
       "maxhp": 376,
       "maxpp": 74,
@@ -4739,7 +4739,7 @@
   "Mad Mole 2": {
     "movepool": [ "Mad Spatter", "Worms" ],
     "name": "Mad Mole",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Mad_Mole.png",
+    "imgurl": "https://goldensunwiki.net/w/images/e/e6/GSDD-MadMole.png",
     "stats": {
       "maxhp": 139,
       "maxpp": 0,
@@ -4904,7 +4904,7 @@
       "Onslaught"
     ],
     "name": "Mad Vermin",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Mad_Vermin.png",
+    "imgurl": "https://goldensunwiki.net/w/images/0/02/Mad_Vermin.png",
     "stats": {
       "maxhp": 131,
       "maxpp": 0,
@@ -4924,7 +4924,7 @@
   "Magicore": {
     "movepool": [ "Nova", "Poison Tail", "Bind", "Sleep" ],
     "name": "Magicore",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Magicore.png",
+    "imgurl": "https://goldensunwiki.net/w/images/c/c4/Magicore.png",
     "stats": {
       "maxhp": 321,
       "maxpp": 34,
@@ -4989,7 +4989,7 @@
   "Manticore": {
     "movepool": [ "Mad Blast", "Poison Tail", "Curse", "Nova", "Delude", "Poison Tail", "Impair" ],
     "name": "Manticore",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Manticore.png",
+    "imgurl": "https://goldensunwiki.net/w/images/f/f7/GSDD-Manticore.png",
     "stats": {
       "maxhp": 1700,
       "maxpp": 83,
@@ -5010,7 +5010,7 @@
   "Manticore King": {
     "movepool": [ "Poison Tail", "Bind", "Lucid Prophecy", "Eruption" ],
     "name": "Manticore King",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Manticore_King.png",
+    "imgurl": "https://goldensunwiki.net/w/images/a/a0/Manticore_King.png",
     "stats": {
       "maxhp": 348,
       "maxpp": 33,
@@ -5031,7 +5031,7 @@
   "Mars Djinni 1": {
     "movepool": [ "Flare", "Blast", "Flee" ],
     "name": "Mars Djinni",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Mars_Djinni.png",
+    "imgurl": "https://goldensunwiki.net/w/images/9/98/MarsDjinniGif.gif",
     "stats": {
       "maxhp": 172,
       "maxpp": 14,
@@ -5053,7 +5053,7 @@
       "Flare"
     ],
     "name": "Mars Djinni",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Mars_Djinni.png",
+    "imgurl": "https://goldensunwiki.net/w/images/9/98/MarsDjinniGif.gif",
     "stats": {
       "maxhp": 70,
       "maxpp": 10,
@@ -5073,7 +5073,7 @@
   "Mars Djinni 11": {
     "movepool": [ "Mad Blast", "Raging Heat", "Volcano" ],
     "name": "Mars Djinni",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Mars_Djinni.png",
+    "imgurl": "https://goldensunwiki.net/w/images/9/98/MarsDjinniGif.gif",
     "stats": {
       "maxhp": 563,
       "maxpp": 82,
@@ -5093,7 +5093,7 @@
   "Mars Djinni 12": {
     "movepool": [ "Fire Orb", "Nova", "Flare Storm", "Flee" ],
     "name": "Mars Djinni",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Mars_Djinni.png",
+    "imgurl": "https://goldensunwiki.net/w/images/9/98/MarsDjinniGif.gif",
     "stats": {
       "maxhp": 756,
       "maxpp": 104,
@@ -5113,7 +5113,7 @@
   "Mars Djinni 13": {
     "movepool": [ "Cycle Beam", "Eruption", "Flare Storm" ],
     "name": "Mars Djinni",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Mars_Djinni.png",
+    "imgurl": "https://goldensunwiki.net/w/images/9/98/MarsDjinniGif.gif",
     "stats": {
       "maxhp": 949,
       "maxpp": 125,
@@ -5133,7 +5133,7 @@
   "Mars Djinni 2": {
     "movepool": [ "Flare Wall", "Volcano", "Mad Blast", "Fireball", "Nova", "Flee" ],
     "name": "Mars Djinni",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Mars_Djinni.png",
+    "imgurl": "https://goldensunwiki.net/w/images/9/98/MarsDjinniGif.gif",
     "stats": {
       "maxhp": 355,
       "maxpp": 24,
@@ -5153,7 +5153,7 @@
   "Mars Djinni 3": {
     "movepool": [ "Fireball", "Nova", "Flare Storm", "Eruption", "Fiery Blast", "Flee" ],
     "name": "Mars Djinni",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Mars_Djinni.png",
+    "imgurl": "https://goldensunwiki.net/w/images/9/98/MarsDjinniGif.gif",
     "stats": {
       "maxhp": 592,
       "maxpp": 52,
@@ -5173,7 +5173,7 @@
   "Mars Djinni 4": {
     "movepool": [ "Flare", "Blast", "Flee" ],
     "name": "Mars Djinni",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Mars_Djinni.png",
+    "imgurl": "https://goldensunwiki.net/w/images/9/98/MarsDjinniGif.gif",
     "stats": {
       "maxhp": 203,
       "maxpp": 18,
@@ -5193,7 +5193,7 @@
   "Mars Djinni 5": {
     "movepool": [ "Mad Blast", "Fume", "Beam", "Blast", "Flare Wall", "Flee" ],
     "name": "Mars Djinni",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Mars_Djinni.png",
+    "imgurl": "https://goldensunwiki.net/w/images/9/98/MarsDjinniGif.gif",
     "stats": {
       "maxhp": 403,
       "maxpp": 37,
@@ -5213,7 +5213,7 @@
   "Mars Djinni 6": {
     "movepool": [ "Supernova", "Inferno", "Serpent Fume", "Fiery Blast", "Eruption", "Flee" ],
     "name": "Mars Djinni",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Mars_Djinni.png",
+    "imgurl": "https://goldensunwiki.net/w/images/9/98/MarsDjinniGif.gif",
     "stats": {
       "maxhp": 756,
       "maxpp": 69,
@@ -5233,7 +5233,7 @@
   "Mars Djinni 7": {
     "movepool": [ "Searing Beam", "Pyroclasm", "Serpent Fume", "Supernova", "Inferno", "Flee" ],
     "name": "Mars Djinni",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Mars_Djinni.png",
+    "imgurl": "https://goldensunwiki.net/w/images/9/98/MarsDjinniGif.gif",
     "stats": {
       "maxhp": 840,
       "maxpp": 79,
@@ -5253,7 +5253,7 @@
   "Mars Djinni 8": {
     "movepool": [ "Dire Inferno", "Pyroclasm", "Searing Beam", "Supernova", "Inferno", "Flee" ],
     "name": "Mars Djinni",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Mars_Djinni.png",
+    "imgurl": "https://goldensunwiki.net/w/images/9/98/MarsDjinniGif.gif",
     "stats": {
       "maxhp": 890,
       "maxpp": 83,
@@ -5273,7 +5273,7 @@
   "Mars Djinni 9": {
     "movepool": [ "Dragon Fume", "Fiery Juggle", "Dire Inferno", "Searing Beam", "Pyroclasm", "Flee" ],
     "name": "Mars Djinni",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Mars_Djinni.png",
+    "imgurl": "https://goldensunwiki.net/w/images/9/98/MarsDjinniGif.gif",
     "stats": {
       "maxhp": 950,
       "maxpp": 89,
@@ -5295,7 +5295,7 @@
       "Bear Claw"
     ],
     "name": "Mauler",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Mauler.png",
+    "imgurl": "https://goldensunwiki.net/w/images/6/60/Mauler.png",
     "stats": {
       "maxhp": 109,
       "maxpp": 0,
@@ -5316,7 +5316,7 @@
       "Bear Claw"
     ],
     "name": "Mauler",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Mauler.png",
+    "imgurl": "https://goldensunwiki.net/w/images/2/24/GSDD-Mauler.png",
     "stats": {
       "maxhp": 257,
       "maxpp": 0,
@@ -5337,7 +5337,7 @@
       "Ally Search"
     ],
     "name": "Mean Bugman",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Mean_Bugman.png",
+    "imgurl": "https://goldensunwiki.net/w/images/f/fb/GSDD-MeanBugman.png",
     "stats": {
       "maxhp": 145,
       "maxpp": 0,
@@ -5356,7 +5356,7 @@
   "Menardi": {
     "movepool": [ "Fiery Blast", "Death Size", "Impact", "Flare Storm", "Supernova", "Resist", "Wish" ],
     "name": "Menardi",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Menardi.png",
+    "imgurl": "https://cdn.discordapp.com/attachments/551174020515627029/551305503708282880/12.12.18_Menardi.png",
     "stats": {
       "maxhp": 2600,
       "maxpp": 300,
@@ -5378,7 +5378,7 @@
   "Mercury Djinni 1": {
     "movepool": [ "Prism", "Tundra", "Drench", "Froth Sphere", "Flee" ],
     "name": "Mercury Djinni",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Mercury_Djinni.png",
+    "imgurl": "https://goldensunwiki.net/w/images/0/0c/MercuryDjinniGif.gif",
     "stats": {
       "maxhp": 290,
       "maxpp": 20,
@@ -5398,7 +5398,7 @@
   "Mercury Djinni 10": {
     "movepool": [ "Freeze Prism", "Megacool", "Ice Missile", "Froth Spiral", "Deluge", "Flee" ],
     "name": "Mercury Djinni",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Mercury_Djinni.png",
+    "imgurl": "https://goldensunwiki.net/w/images/0/0c/MercuryDjinniGif.gif",
     "stats": {
       "maxhp": 940,
       "maxpp": 88,
@@ -5418,7 +5418,7 @@
   "Mercury Djinni 11": {
     "movepool": [ "Freeze Prism", "Megacool", "Ice Missile", "Froth Spiral", "Flee" ],
     "name": "Mercury Djinni",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Mercury_Djinni.png",
+    "imgurl": "https://goldensunwiki.net/w/images/0/0c/MercuryDjinniGif.gif",
     "stats": {
       "maxhp": 920,
       "maxpp": 86,
@@ -5438,7 +5438,7 @@
   "Mercury Djinni 12": {
     "movepool": [ "Douse", "Froth", "Ice" ],
     "name": "Mercury Djinni",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Mercury_Djinni.png",
+    "imgurl": "https://goldensunwiki.net/w/images/0/0c/MercuryDjinniGif.gif",
     "stats": {
       "maxhp": 309,
       "maxpp": 42,
@@ -5458,7 +5458,7 @@
   "Mercury Djinni 13": {
     "movepool": [ "Cool", "Prism", "Ice" ],
     "name": "Mercury Djinni",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Mercury_Djinni.png",
+    "imgurl": "https://goldensunwiki.net/w/images/0/0c/MercuryDjinniGif.gif",
     "stats": {
       "maxhp": 400,
       "maxpp": 58,
@@ -5478,7 +5478,7 @@
   "Mercury Djinni 14": {
     "movepool": [ "Drench", "Froth Sphere", "Prism" ],
     "name": "Mercury Djinni",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Mercury_Djinni.png",
+    "imgurl": "https://goldensunwiki.net/w/images/0/0c/MercuryDjinniGif.gif",
     "stats": {
       "maxhp": 539,
       "maxpp": 80,
@@ -5498,7 +5498,7 @@
   "Mercury Djinni 15": {
     "movepool": [ "Ice Horn", "Supercool", "Hail Prism" ],
     "name": "Mercury Djinni",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Mercury_Djinni.png",
+    "imgurl": "https://goldensunwiki.net/w/images/0/0c/MercuryDjinniGif.gif",
     "stats": {
       "maxhp": 925,
       "maxpp": 122,
@@ -5518,7 +5518,7 @@
   "Mercury Djinni 16": {
     "movepool": [ "Froth Sphere", "Hail Prism", "Froth Spiral", "Flee" ],
     "name": "Mercury Djinni",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Mercury_Djinni.png",
+    "imgurl": "https://goldensunwiki.net/w/images/0/0c/MercuryDjinniGif.gif",
     "stats": {
       "maxhp": 949,
       "maxpp": 125,
@@ -5538,7 +5538,7 @@
   "Mercury Djinni 2": {
     "movepool": [ "Tundra", "Drench", "Froth Sphere", "Ice Horn", "Hail Prism", "Flee" ],
     "name": "Mercury Djinni",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Mercury_Djinni.png",
+    "imgurl": "https://goldensunwiki.net/w/images/0/0c/MercuryDjinniGif.gif",
     "stats": {
       "maxhp": 361,
       "maxpp": 27,
@@ -5558,7 +5558,7 @@
   "Mercury Djinni 3": {
     "movepool": [ "Tundra", "Drench", "Froth Sphere", "Ice Horn", "Hail Prism", "Flee" ],
     "name": "Mercury Djinni",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Mercury_Djinni.png",
+    "imgurl": "https://goldensunwiki.net/w/images/0/0c/MercuryDjinniGif.gif",
     "stats": {
       "maxhp": 466,
       "maxpp": 46,
@@ -5578,7 +5578,7 @@
   "Mercury Djinni 4": {
     "movepool": [ "Froth Sphere", "Ice Horn", "Hail Prism", "Glacier", "Deluge", "Flee" ],
     "name": "Mercury Djinni",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Mercury_Djinni.png",
+    "imgurl": "https://goldensunwiki.net/w/images/0/0c/MercuryDjinniGif.gif",
     "stats": {
       "maxhp": 654,
       "maxpp": 59,
@@ -5598,7 +5598,7 @@
   "Mercury Djinni 5": {
     "movepool": [ "Frost", "Douse", "Flee" ],
     "name": "Mercury Djinni",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Mercury_Djinni.png",
+    "imgurl": "https://goldensunwiki.net/w/images/0/0c/MercuryDjinniGif.gif",
     "stats": {
       "maxhp": 165,
       "maxpp": 14,
@@ -5618,7 +5618,7 @@
   "Mercury Djinni 6": {
     "movepool": [ "Cool", "Ice", "Froth", "Douse", "Frost", "Flee" ],
     "name": "Mercury Djinni",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Mercury_Djinni.png",
+    "imgurl": "https://goldensunwiki.net/w/images/0/0c/MercuryDjinniGif.gif",
     "stats": {
       "maxhp": 291,
       "maxpp": 26,
@@ -5638,7 +5638,7 @@
   "Mercury Djinni 7": {
     "movepool": [ "Drench", "Tundra", "Prism", "Ice", "Cool", "Flee" ],
     "name": "Mercury Djinni",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Mercury_Djinni.png",
+    "imgurl": "https://goldensunwiki.net/w/images/0/0c/MercuryDjinniGif.gif",
     "stats": {
       "maxhp": 414,
       "maxpp": 37,
@@ -5658,7 +5658,7 @@
   "Mercury Djinni 8": {
     "movepool": [ "Glacier", "Hail Prism", "Supercool", "Ice Horn", "Froth Sphere", "Flee" ],
     "name": "Mercury Djinni",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Mercury_Djinni.png",
+    "imgurl": "https://goldensunwiki.net/w/images/0/0c/MercuryDjinniGif.gif",
     "stats": {
       "maxhp": 620,
       "maxpp": 56,
@@ -5678,7 +5678,7 @@
   "Mercury Djinni 9": {
     "movepool": [ "Freeze Prism", "Megacool", "Ice Missile", "Froth Spiral", "Deluge", "Flee" ],
     "name": "Mercury Djinni",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Mercury_Djinni.png",
+    "imgurl": "https://goldensunwiki.net/w/images/0/0c/MercuryDjinniGif.gif",
     "stats": {
       "maxhp": 860,
       "maxpp": 80,
@@ -5700,7 +5700,7 @@
       "Hydro Slash"
     ],
     "name": "Merman",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Merman.png",
+    "imgurl": "https://goldensunwiki.net/w/images/e/e1/Merman.png",
     "stats": {
       "maxhp": 162,
       "maxpp": 0,
@@ -5722,7 +5722,7 @@
       "Hydro Slash"
     ],
     "name": "Merman",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Merman.png",
+    "imgurl": "https://goldensunwiki.net/w/images/6/68/GSDD-Merman.png",
     "stats": {
       "maxhp": 102,
       "maxpp": 0,
@@ -5744,7 +5744,7 @@
       "Ice Horn"
     ],
     "name": "Mimic",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Mimic.png",
+    "imgurl": "https://goldensunwiki.net/w/images/thumb/f/f6/Mimic_Dark_Dawn.jpg/300px-Mimic_Dark_Dawn.jpg",
     "stats": {
       "maxhp": 426,
       "maxpp": 37,
@@ -5764,7 +5764,7 @@
   "Mimic 7": {
     "movepool": [ "Curse", "Ice Missile", "Debilitate", "Psy Drain", "Sleep", "Condemn" ],
     "name": "Mimic",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Mimic.png",
+    "imgurl": "https://goldensunwiki.net/w/images/thumb/f/f6/Mimic_Dark_Dawn.jpg/300px-Mimic_Dark_Dawn.jpg",
     "stats": {
       "maxhp": 997,
       "maxpp": 60,
@@ -5784,7 +5784,7 @@
   "Mimic 10": {
     "movepool": [ "Debilitate", "Psy Drain", "Wild Growth", "Sleep" ],
     "name": "Mimic",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Mimic.png",
+    "imgurl": "https://goldensunwiki.net/w/images/thumb/f/f6/Mimic_Dark_Dawn.jpg/300px-Mimic_Dark_Dawn.jpg",
     "stats": {
       "maxhp": 676,
       "maxpp": 62,
@@ -5805,7 +5805,7 @@
   "Mimic 11": {
     "movepool": [ "Curse", "Debilitate", "Psy Drain", "Sonic Slash", "Sleep" ],
     "name": "Mimic",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Mimic.png",
+    "imgurl": "https://goldensunwiki.net/w/images/thumb/f/f6/Mimic_Dark_Dawn.jpg/300px-Mimic_Dark_Dawn.jpg",
     "stats": {
       "maxhp": 707,
       "maxpp": 64,
@@ -5825,7 +5825,7 @@
   "Mimic 12": {
     "movepool": [ "Curse", "Debilitate", "Psy Drain", "Nettle", "Sleep" ],
     "name": "Mimic",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Mimic.png",
+    "imgurl": "https://goldensunwiki.net/w/images/thumb/f/f6/Mimic_Dark_Dawn.jpg/300px-Mimic_Dark_Dawn.jpg",
     "stats": {
       "maxhp": 879,
       "maxpp": 76,
@@ -5846,7 +5846,7 @@
   "Mimic 13": {
     "movepool": [ "Curse", "Debilitate", "Psy Drain", "Ice Missile", "Sleep", "Condemn" ],
     "name": "Mimic",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Mimic.png",
+    "imgurl": "https://goldensunwiki.net/w/images/thumb/f/f6/Mimic_Dark_Dawn.jpg/300px-Mimic_Dark_Dawn.jpg",
     "stats": {
       "maxhp": 907,
       "maxpp": 78,
@@ -5867,7 +5867,7 @@
   "Mimic 14": {
     "movepool": [ "Curse", "Debilitate", "Psy Drain", "Stone Spire", "Sleep", "Condemn" ],
     "name": "Mimic",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Mimic.png",
+    "imgurl": "https://goldensunwiki.net/w/images/thumb/f/f6/Mimic_Dark_Dawn.jpg/300px-Mimic_Dark_Dawn.jpg",
     "stats": {
       "maxhp": 936,
       "maxpp": 80,
@@ -5888,7 +5888,7 @@
   "Mimic 15": {
     "movepool": [ "Curse", "Debilitate", "Psy Drain", "Spark Plasma", "Sleep", "Condemn" ],
     "name": "Mimic",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Mimic.png",
+    "imgurl": "https://goldensunwiki.net/w/images/thumb/f/f6/Mimic_Dark_Dawn.jpg/300px-Mimic_Dark_Dawn.jpg",
     "stats": {
       "maxhp": 1008,
       "maxpp": 84,
@@ -5908,7 +5908,7 @@
   "Mimic 16": {
     "movepool": [ "Debilitate", "Psy Drain", "Wind Slash", "Sleep" ],
     "name": "Mimic",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Mimic.png",
+    "imgurl": "https://goldensunwiki.net/w/images/thumb/f/f6/Mimic_Dark_Dawn.jpg/300px-Mimic_Dark_Dawn.jpg",
     "stats": {
       "maxhp": 468,
       "maxpp": 24,
@@ -5928,7 +5928,7 @@
   "Mimic 17": {
     "movepool": [ "Debilitate", "Psy Drain", "Briar", "Sleep" ],
     "name": "Mimic",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Mimic.png",
+    "imgurl": "https://goldensunwiki.net/w/images/thumb/f/f6/Mimic_Dark_Dawn.jpg/300px-Mimic_Dark_Dawn.jpg",
     "stats": {
       "maxhp": 506,
       "maxpp": 26,
@@ -5949,7 +5949,7 @@
   "Mimic 18": {
     "movepool": [ "Debilitate", "Psy Drain", "Shine Plasma", "Sleep" ],
     "name": "Mimic",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Mimic.png",
+    "imgurl": "https://goldensunwiki.net/w/images/thumb/f/f6/Mimic_Dark_Dawn.jpg/300px-Mimic_Dark_Dawn.jpg",
     "stats": {
       "maxhp": 579,
       "maxpp": 32,
@@ -5969,7 +5969,7 @@
   "Mimic 19": {
     "movepool": [ "Debilitate", "Psy Drain", "Sonic Slash", "Sleep" ],
     "name": "Mimic",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Mimic.png",
+    "imgurl": "https://goldensunwiki.net/w/images/thumb/f/f6/Mimic_Dark_Dawn.jpg/300px-Mimic_Dark_Dawn.jpg",
     "stats": {
       "maxhp": 690,
       "maxpp": 42,
@@ -5991,7 +5991,7 @@
       "Blue Bolt"
     ],
     "name": "Mimic",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Mimic.png",
+    "imgurl": "https://goldensunwiki.net/w/images/thumb/f/f6/Mimic_Dark_Dawn.jpg/300px-Mimic_Dark_Dawn.jpg",
     "stats": {
       "maxhp": 504,
       "maxpp": 48,
@@ -6011,7 +6011,7 @@
   "Mimic 20": {
     "movepool": [ "Curse", "Debilitate", "Psy Drain", "Sonic Slash", "Sleep" ],
     "name": "Mimic",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Mimic.png",
+    "imgurl": "https://goldensunwiki.net/w/images/thumb/f/f6/Mimic_Dark_Dawn.jpg/300px-Mimic_Dark_Dawn.jpg",
     "stats": {
       "maxhp": 729,
       "maxpp": 44,
@@ -6031,7 +6031,7 @@
   "Mimic 21": {
     "movepool": [ "Curse", "Debilitate", "Psy Drain", "Nettle", "Sleep" ],
     "name": "Mimic",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Mimic.png",
+    "imgurl": "https://goldensunwiki.net/w/images/thumb/f/f6/Mimic_Dark_Dawn.jpg/300px-Mimic_Dark_Dawn.jpg",
     "stats": {
       "maxhp": 767,
       "maxpp": 48,
@@ -6052,7 +6052,7 @@
   "Mimic 22": {
     "movepool": [ "Curse", "Debilitate", "Psy Drain", "Ice Missile", "Sleep", "Condemn" ],
     "name": "Mimic",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Mimic.png",
+    "imgurl": "https://goldensunwiki.net/w/images/thumb/f/f6/Mimic_Dark_Dawn.jpg/300px-Mimic_Dark_Dawn.jpg",
     "stats": {
       "maxhp": 997,
       "maxpp": 60,
@@ -6073,7 +6073,7 @@
   "Mimic 23": {
     "movepool": [ "Curse", "Debilitate", "Psy Drain", "Spark Plasma", "Sleep", "Condemn" ],
     "name": "Mimic",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Mimic.png",
+    "imgurl": "https://goldensunwiki.net/w/images/thumb/f/f6/Mimic_Dark_Dawn.jpg/300px-Mimic_Dark_Dawn.jpg",
     "stats": {
       "maxhp": 1206,
       "maxpp": 68,
@@ -6095,7 +6095,7 @@
       "Hail Prism"
     ],
     "name": "Mimic",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Mimic.png",
+    "imgurl": "https://goldensunwiki.net/w/images/thumb/f/f6/Mimic_Dark_Dawn.jpg/300px-Mimic_Dark_Dawn.jpg",
     "stats": {
       "maxhp": 1110,
       "maxpp": 92,
@@ -6117,7 +6117,7 @@
       "Toxic Grit"
     ],
     "name": "Mimic",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Mimic.png",
+    "imgurl": "https://goldensunwiki.net/w/images/thumb/f/f6/Mimic_Dark_Dawn.jpg/300px-Mimic_Dark_Dawn.jpg",
     "stats": {
       "maxhp": 1138,
       "maxpp": 98,
@@ -6137,7 +6137,7 @@
   "Mimic 5": {
     "movepool": [ "Ice Missile", "Psy Drain" ],
     "name": "Mimic",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Mimic.png",
+    "imgurl": "https://goldensunwiki.net/w/images/thumb/f/f6/Mimic_Dark_Dawn.jpg/300px-Mimic_Dark_Dawn.jpg",
     "stats": {
       "maxhp": 1370,
       "maxpp": 110,
@@ -6158,7 +6158,7 @@
   "Mimic 6": {
     "movepool": [ "Curse", "Condemn" ],
     "name": "Mimic",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Mimic.png",
+    "imgurl": "https://goldensunwiki.net/w/images/thumb/f/f6/Mimic_Dark_Dawn.jpg/300px-Mimic_Dark_Dawn.jpg",
     "stats": {
       "maxhp": 1370,
       "maxpp": 110,
@@ -6177,7 +6177,7 @@
   "Mimic 8": {
     "movepool": [ "Debilitate", "Psy Drain", "Tundra", "Sleep" ],
     "name": "Mimic",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Mimic.png",
+    "imgurl": "https://goldensunwiki.net/w/images/thumb/f/f6/Mimic_Dark_Dawn.jpg/300px-Mimic_Dark_Dawn.jpg",
     "stats": {
       "maxhp": 431,
       "maxpp": 36,
@@ -6198,7 +6198,7 @@
   "Mimic 9": {
     "movepool": [ "Debilitate", "Psy Drain", "Tornado", "Sleep" ],
     "name": "Mimic",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Mimic.png",
+    "imgurl": "https://goldensunwiki.net/w/images/thumb/f/f6/Mimic_Dark_Dawn.jpg/300px-Mimic_Dark_Dawn.jpg",
     "stats": {
       "maxhp": 536,
       "maxpp": 50,
@@ -6218,7 +6218,7 @@
   "Mini-Goblin": {
     "movepool": [],
     "name": "Mini-Goblin",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Mini-Goblin.png",
+    "imgurl": "https://goldensunwiki.net/w/images/8/8d/Mini-Goblin.png",
     "stats": {
       "maxhp": 62,
       "maxpp": 0,
@@ -6237,7 +6237,7 @@
   "Minos Knight 1": {
     "movepool": [ "Power Crush", "Sack" ],
     "name": "Minos Knight",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Minos_Knight.png",
+    "imgurl": "https://goldensunwiki.net/w/images/d/da/Minos_Knight.png",
     "stats": {
       "maxhp": 454,
       "maxpp": 0,
@@ -6257,7 +6257,7 @@
   "Minos Knight 2": {
     "movepool": [ "Seethe", "Bestial Attack" ],
     "name": "Minos Knight",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Minos_Knight.png",
+    "imgurl": "https://goldensunwiki.net/w/images/0/01/GSDD-MinosKnight.png",
     "stats": {
       "maxhp": 1018,
       "maxpp": 0,
@@ -6277,7 +6277,7 @@
   "Minos Warrior 1": {
     "movepool": [ "Power Crush", "Sack" ],
     "name": "Minos Warrior",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Minos_Warrior.png",
+    "imgurl": "https://goldensunwiki.net/w/images/a/a8/Minos_Warrior.png",
     "stats": {
       "maxhp": 353,
       "maxpp": 0,
@@ -6297,7 +6297,7 @@
   "Minos Warrior 2": {
     "movepool": [ "Seethe", "Bestial Attack" ],
     "name": "Minos Warrior",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Minos_Warrior.png",
+    "imgurl": "https://goldensunwiki.net/w/images/5/59/GSDD-MinosWarrior.png",
     "stats": {
       "maxhp": 394,
       "maxpp": 0,
@@ -6319,7 +6319,7 @@
       "Power Crush"
     ],
     "name": "Minotaurus",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Minotaurus.png",
+    "imgurl": "https://goldensunwiki.net/w/images/thumb/6/66/Minotaurus_Dark_Dawn.jpg/250px-Minotaurus_Dark_Dawn.jpg",
     "stats": {
       "maxhp": 268,
       "maxpp": 0,
@@ -6341,7 +6341,7 @@
       "Bestial Attack"
     ],
     "name": "Minotaurus",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Minotaurus.png",
+    "imgurl": "https://goldensunwiki.net/w/images/1/1d/Minotaurus.png",
     "stats": {
       "maxhp": 215,
       "maxpp": 0,
@@ -6363,7 +6363,7 @@
       "Bosca Hit"
     ],
     "name": "Moapa",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Moapa.png",
+    "imgurl": "https://goldensunwiki.net/w/images/c/c5/Moapa.png",
     "stats": {
       "maxhp": 3042,
       "maxpp": 0,
@@ -6384,7 +6384,7 @@
       "Mad Spatter"
     ],
     "name": "Mole",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Mole.png",
+    "imgurl": "https://goldensunwiki.net/w/images/thumb/8/80/Mole_Dark_Dawn.jpg/250px-Mole_Dark_Dawn.jpg",
     "stats": {
       "maxhp": 96,
       "maxpp": 0,
@@ -6405,7 +6405,7 @@
       "Mad Spatter"
     ],
     "name": "Mole",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Mole.png",
+    "imgurl": "https://goldensunwiki.net/w/images/6/63/Mole.png",
     "stats": {
       "maxhp": 89,
       "maxpp": 0,
@@ -6424,7 +6424,7 @@
   "Mole Mage 1": {
     "movepool": [ "Mad Spatter", "Worms", "Mad Growth" ],
     "name": "Mole Mage",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Mole_Mage.png",
+    "imgurl": "https://goldensunwiki.net/w/images/f/fc/Mole_Mage.png",
     "stats": {
       "maxhp": 199,
       "maxpp": 14,
@@ -6444,7 +6444,7 @@
   "Mole Mage 2": {
     "movepool": [ "Mad Spatter", "Worms", "Mad Growth" ],
     "name": "Mole Mage",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Mole_Mage.png",
+    "imgurl": "https://goldensunwiki.net/w/images/9/9f/GSDD-MoleMage.png",
     "stats": {
       "maxhp": 217,
       "maxpp": 10,
@@ -6466,7 +6466,7 @@
       "Quick Slash"
     ],
     "name": "Momonga",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Momonga.png",
+    "imgurl": "https://goldensunwiki.net/w/images/thumb/3/3b/Momonga_Dark_Dawn.jpg/240px-Momonga_Dark_Dawn.jpg",
     "stats": {
       "maxhp": 53,
       "maxpp": 0,
@@ -6488,7 +6488,7 @@
       "Quick Slash"
     ],
     "name": "Momonga",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Momonga.png",
+    "imgurl": "https://goldensunwiki.net/w/images/a/a0/Momonga.png",
     "stats": {
       "maxhp": 75,
       "maxpp": 0,
@@ -6508,7 +6508,7 @@
   "Mountain Roc": {
     "movepool": [ "Tempest", "Fire Breath", "Nerve Shattering Shriek", "Seismic Stomp", "Stone Molt", "Upward Blast", "Nerve Shattering Shriek", "Seismic Stomp", "Upward Blast", "Potent Cure", "Stone Spire" ],
     "name": "Mountain Roc",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Mountain_Roc.png",
+    "imgurl": "https://goldensunwiki.net/w/images/b/b1/GSDD-Mountain-Roc-Upward-Blast.png",
     "stats": {
       "maxhp": 3136,
       "maxpp": 147,
@@ -6532,7 +6532,7 @@
       "Vanish Claw"
     ],
     "name": "Mummy",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Mummy.png",
+    "imgurl": "https://goldensunwiki.net/w/images/7/70/Mummy.png",
     "stats": {
       "maxhp": 113,
       "maxpp": 0,
@@ -6552,7 +6552,7 @@
   "Mystery Man": {
     "movepool": [ "Fireball", "Eruption", "Heat Flash" ],
     "name": "Mystery Man",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Mystery_Man.png",
+    "imgurl": "https://goldensunwiki.net/w/images/f/fc/Saturos_Battle.gif",
     "stats": {
       "maxhp": 3000,
       "maxpp": 260,
@@ -6572,7 +6572,7 @@
   "Mystery Woman": {
     "movepool": [ "Death Size", "Nova", "Flare Wall", "Mad Blast" ],
     "name": "Mystery Woman",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Mystery_Woman.png",
+    "imgurl": "https://goldensunwiki.net/w/images/4/46/Menardi_Front.gif",
     "stats": {
       "maxhp": 2600,
       "maxpp": 300,
@@ -6593,7 +6593,7 @@
   "Navampa 1": {
     "movepool": [],
     "name": "Navampa",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Navampa.png",
+    "imgurl": "https://goldensunwiki.net/w/images/9/97/Navampa.png",
     "stats": {
       "maxhp": 820,
       "maxpp": 0,
@@ -6612,7 +6612,7 @@
   "Navampa 2": {
     "movepool": [],
     "name": "Navampa",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Navampa.png",
+    "imgurl": "https://goldensunwiki.net/w/images/9/97/Navampa.png",
     "stats": {
       "maxhp": 735,
       "maxpp": 0,
@@ -6633,7 +6633,7 @@
       "Poison Sting"
     ],
     "name": "Needle Egg",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Needle_Egg.png",
+    "imgurl": "https://goldensunwiki.net/w/images/e/e0/Needle_Egg.png",
     "stats": {
       "maxhp": 119,
       "maxpp": 0,
@@ -6653,7 +6653,7 @@
   "Nightmare 1": {
     "movepool": [ "Shine Plasma", "Fireball", "Bind", "Heartrender" ],
     "name": "Nightmare",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Nightmare.png",
+    "imgurl": "https://goldensunwiki.net/w/images/9/9b/Nightmare.png",
     "stats": {
       "maxhp": 258,
       "maxpp": 28,
@@ -6674,7 +6674,7 @@
   "Nightmare 2": {
     "movepool": [ "Shine Plasma", "Fire Orb", "Bind", "Heartrender" ],
     "name": "Nightmare",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Nightmare.png",
+    "imgurl": "https://goldensunwiki.net/w/images/3/33/GSDD-Nightmare.png",
     "stats": {
       "maxhp": 521,
       "maxpp": 53,
@@ -6695,7 +6695,7 @@
   "Numb Ant": {
     "movepool": [ "Formic Acid", "Flash Punch" ],
     "name": "Numb Ant",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Numb_Ant.png",
+    "imgurl": "https://goldensunwiki.net/w/images/0/01/Numb_Ant.png",
     "stats": {
       "maxhp": 101,
       "maxpp": 0,
@@ -6716,7 +6716,7 @@
   "Ocean Dragon": {
     "movepool": [ "Chill Breath", "Deluge" ],
     "name": "Ocean Dragon",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Ocean_Dragon.png",
+    "imgurl": "https://goldensunwiki.net/w/images/c/cd/Ocean_Dragon.png",
     "stats": {
       "maxhp": 473,
       "maxpp": 32,
@@ -6736,7 +6736,7 @@
   "Ogre Titan 1": {
     "movepool": [],
     "name": "Ogre Titan 1",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Ogre_Titan_1.png",
+    "imgurl": "https://goldensunwiki.net/w/images/5/5c/OgreTitan.jpg",
     "stats": {
       "maxhp": 964,
       "maxpp": 0,
@@ -6755,7 +6755,7 @@
   "Ogre Titan 2": {
     "movepool": [],
     "name": "Ogre Titan 2",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Ogre_Titan_2.png",
+    "imgurl": "https://goldensunwiki.net/w/images/f/fd/OgreTitan2.jpg",
     "stats": {
       "maxhp": 1928,
       "maxpp": 0,
@@ -6774,7 +6774,7 @@
   "Ogre Titan 3": {
     "movepool": [],
     "name": "Ogre Titan 3",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Ogre_Titan_3.png",
+    "imgurl": "https://goldensunwiki.net/w/images/thumb/4/47/OgreTitan3.jpg/120px-OgreTitan3.jpg",
     "stats": {
       "maxhp": 4016,
       "maxpp": 0,
@@ -6793,7 +6793,7 @@
   "Ogre Titan 4": {
     "movepool": [],
     "name": "Ogre Titan 4",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Ogre_Titan_4.png",
+    "imgurl": "https://goldensunwiki.net/w/images/thumb/9/94/OgreTitan4.jpg/120px-OgreTitan4.jpg",
     "stats": {
       "maxhp": 8033,
       "maxpp": 0,
@@ -6812,7 +6812,7 @@
   "Ogre Titan 5": {
     "movepool": [ "Brute Force", "Massive Swing", "Brute Force" ],
     "name": "Ogre Titan 5",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Ogre_Titan_5.png",
+    "imgurl": "https://goldensunwiki.net/w/images/thumb/a/a2/OgreTitan5.jpg/120px-OgreTitan5.jpg",
     "stats": {
       "maxhp": 16066,
       "maxpp": 0,
@@ -6832,7 +6832,7 @@
   "Ooze 1": {
     "movepool": [ "Sticky Goo", "Speed Surge" ],
     "name": "Ooze",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Ooze.png",
+    "imgurl": "https://goldensunwiki.net/w/images/5/50/Ooze.png",
     "stats": {
       "maxhp": 72,
       "maxpp": 0,
@@ -6852,7 +6852,7 @@
   "Ooze 2": {
     "movepool": [ "Sticky Goo", "Divide" ],
     "name": "Ooze",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Ooze.png",
+    "imgurl": "https://goldensunwiki.net/w/images/c/c2/GSDD-Ooze.png",
     "stats": {
       "maxhp": 174,
       "maxpp": 0,
@@ -6874,7 +6874,7 @@
       "Spasm"
     ],
     "name": "Orc",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Orc.png",
+    "imgurl": "https://goldensunwiki.net/w/images/b/bf/Orc.png",
     "stats": {
       "maxhp": 148,
       "maxpp": 0,
@@ -6894,7 +6894,7 @@
   "Orc Captain": {
     "movepool": [ "Stand Ready", "Spasm" ],
     "name": "Orc Captain",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Orc_Captain.png",
+    "imgurl": "https://goldensunwiki.net/w/images/1/13/Orc_Captain.png",
     "stats": {
       "maxhp": 231,
       "maxpp": 0,
@@ -6914,7 +6914,7 @@
   "Orc Lord": {
     "movepool": [ "Sleep", "Spasm" ],
     "name": "Orc Lord",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Orc_Lord.png",
+    "imgurl": "https://goldensunwiki.net/w/images/6/6c/Orc_Lord.png",
     "stats": {
       "maxhp": 278,
       "maxpp": 18,
@@ -6934,7 +6934,7 @@
   "Phoenix": {
     "movepool": [ "Regen Dance", "Fire Dance", "Supernova", "Inferno", "Fiery Blast", "Flee" ],
     "name": "Phoenix",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Phoenix.png",
+    "imgurl": "https://goldensunwiki.net/w/images/thumb/4/4c/GSPhoenix.jpg/200px-GSPhoenix.jpg",
     "stats": {
       "maxhp": 281,
       "maxpp": 80,
@@ -6954,7 +6954,7 @@
   "Pixie 1": {
     "movepool": [ "Sleep", "Bind", "Wind Slash" ],
     "name": "Pixie",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Pixie.png",
+    "imgurl": "https://goldensunwiki.net/w/images/thumb/1/11/Pixie_Dark_Dawn.jpg/140px-Pixie_Dark_Dawn.jpg",
     "stats": {
       "maxhp": 75,
       "maxpp": 30,
@@ -6974,7 +6974,7 @@
   "Pixie 2": {
     "movepool": [ "Sleep", "Bind", "Wind Slash" ],
     "name": "Pixie",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Pixie.png",
+    "imgurl": "https://goldensunwiki.net/w/images/2/22/Pixie.png",
     "stats": {
       "maxhp": 48,
       "maxpp": 12,
@@ -6994,7 +6994,7 @@
   "Plated Rat 1": {
     "movepool": [ "Total Defense", "Counterstrike" ],
     "name": "Plated Rat",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Plated_Rat.png",
+    "imgurl": "https://goldensunwiki.net/w/images/3/3e/Plated_Rat.png",
     "stats": {
       "maxhp": 203,
       "maxpp": 0,
@@ -7014,7 +7014,7 @@
   "Plated Rat 2": {
     "movepool": [ "Total Defense", "Counterstrike" ],
     "name": "Plated Rat",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Plated_Rat.png",
+    "imgurl": "https://goldensunwiki.net/w/images/8/8e/GSDD-PlatedRat.png",
     "stats": {
       "maxhp": 270,
       "maxpp": 0,
@@ -7034,7 +7034,7 @@
   "Poison Toad": {
     "movepool": [ "Rabid Fang", "Acid Blessing", "Rotten Blood" ],
     "name": "Poison Toad",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Poison_Toad.png",
+    "imgurl": "https://goldensunwiki.net/w/images/c/cf/Poison_Toad.png",
     "stats": {
       "maxhp": 2250,
       "maxpp": 0,
@@ -7055,7 +7055,7 @@
   "Poseidon": {
     "movepool": [ "Counter-rush", "Deluge", "Ice Missile", "Ocean Fist", "Ply Well", "Typhoon Blow", "Watery Grave" ],
     "name": "Poseidon",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Poseidon.png",
+    "imgurl": "https://goldensunwiki.net/w/images/4/43/Poseidon.png",
     "stats": {
       "maxhp": 4905,
       "maxpp": 162,
@@ -7075,7 +7075,7 @@
   "Pteranodon": {
     "movepool": [ "Ice Breath", "Banshee Howl" ],
     "name": "Pteranodon",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Pteranodon.png",
+    "imgurl": "https://goldensunwiki.net/w/images/2/22/Pteranodon.png",
     "stats": {
       "maxhp": 242,
       "maxpp": 0,
@@ -7096,7 +7096,7 @@
   "Punch Ant": {
     "movepool": [],
     "name": "Punch Ant",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Punch_Ant.png",
+    "imgurl": "https://goldensunwiki.net/w/images/thumb/1/1e/Punch_Ant_Art.jpg/110px-Punch_Ant_Art.jpg",
     "stats": {
       "maxhp": 26,
       "maxpp": 0,
@@ -7117,7 +7117,7 @@
       "Power Crush"
     ],
     "name": "Puppet Warrior",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Puppet_Warrior.png",
+    "imgurl": "https://goldensunwiki.net/w/images/d/d7/Puppet_Warrior.png",
     "stats": {
       "maxhp": 310,
       "maxpp": 0,
@@ -7137,7 +7137,7 @@
   "Pyrodra 1": {
     "movepool": [ "Triple Chomp", "Fire Breath", "Rising Venom" ],
     "name": "Pyrodra",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Pyrodra.png",
+    "imgurl": "https://goldensunwiki.net/w/images/b/b3/Pyrodra.png",
     "stats": {
       "maxhp": 384,
       "maxpp": 0,
@@ -7158,7 +7158,7 @@
   "Pyrodra 2": {
     "movepool": [ "Triple Chomp", "Fire Breath", "Rising Venom" ],
     "name": "Pyrodra",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Pyrodra.png",
+    "imgurl": "https://goldensunwiki.net/w/images/a/ae/GSDD-Pyrodra.png",
     "stats": {
       "maxhp": 379,
       "maxpp": 0,
@@ -7179,7 +7179,7 @@
   "Rabid Bat": {
     "movepool": [ "Sonic Wave", "Vampiric Fang" ],
     "name": "Rabid Bat",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Rabid_Bat.png",
+    "imgurl": "https://goldensunwiki.net/w/images/0/0c/Rabid_Bat.png",
     "stats": {
       "maxhp": 125,
       "maxpp": 0,
@@ -7200,7 +7200,7 @@
   "Raging Rock": {
     "movepool": [ "Fiery Blast", "Headbutt", "Dynamite" ],
     "name": "Raging Rock",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Raging_Rock.png",
+    "imgurl": "https://goldensunwiki.net/w/images/9/92/Raging_Rock.png",
     "stats": {
       "maxhp": 186,
       "maxpp": 20,
@@ -7221,7 +7221,7 @@
   "Raptor": {
     "movepool": [ "Wing Flutter", "Twin Beaks" ],
     "name": "Raptor",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Raptor.png",
+    "imgurl": "https://goldensunwiki.net/w/images/0/08/Raptor.png",
     "stats": {
       "maxhp": 366,
       "maxpp": 0,
@@ -7265,7 +7265,7 @@
       "Fortify"
     ],
     "name": "Rat",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Rat.png",
+    "imgurl": "https://goldensunwiki.net/w/images/thumb/8/8b/Rat_Dark_Dawn.jpg/140px-Rat_Dark_Dawn.jpg",
     "stats": {
       "maxhp": 49,
       "maxpp": 0,
@@ -7303,7 +7303,7 @@
   "Rat Fighter 1": {
     "movepool": [ "Slice", "Flee" ],
     "name": "Rat Fighter",
-    "imgurl": "https://goldensunwiki.net/w/images/thumb/8/89/Rat_Soldier_Dark_Dawn.jpg/120px-Rat_Soldier_Dark_Dawn.jpg",
+    "imgurl": "https://goldensunwiki.net/w/images/a/ac/Rat_Fighter.png",
     "stats": {
       "maxhp": 143,
       "maxpp": 0,
@@ -7323,7 +7323,7 @@
   "Rat Fighter 2": {
     "movepool": [ "Speed Slice", "Flee" ],
     "name": "Rat Fighter",
-    "imgurl": "https://goldensunwiki.net/w/images/thumb/8/89/Rat_Soldier_Dark_Dawn.jpg/120px-Rat_Soldier_Dark_Dawn.jpg",
+    "imgurl": "https://goldensunwiki.net/w/images/b/be/GSDD-RatFighter.png",
     "stats": {
       "maxhp": 164,
       "maxpp": 0,
@@ -7345,7 +7345,7 @@
       "Flee"
     ],
     "name": "Rat Soldier",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Rat_Soldier.png",
+    "imgurl": "https://goldensunwiki.net/w/images/thumb/8/89/Rat_Soldier_Dark_Dawn.jpg/120px-Rat_Soldier_Dark_Dawn.jpg",
     "stats": {
       "maxhp": 69,
       "maxpp": 0,
@@ -7366,7 +7366,7 @@
       "Flee"
     ],
     "name": "Rat Soldier",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Rat_Soldier.png",
+    "imgurl": "https://goldensunwiki.net/w/images/e/ec/Rat_Soldier.png",
     "stats": {
       "maxhp": 39,
       "maxpp": 0,
@@ -7385,7 +7385,7 @@
   "Rat Warrior 1": {
     "movepool": [ "Slice", "Flee" ],
     "name": "Rat Warrior",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Rat_Warrior.png",
+    "imgurl": "https://goldensunwiki.net/w/images/1/10/Rat_Warrior.png",
     "stats": {
       "maxhp": 208,
       "maxpp": 0,
@@ -7405,7 +7405,7 @@
   "Rat Warrior 2": {
     "movepool": [ "Speed Slice", "Flee" ],
     "name": "Rat Warrior",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Rat_Warrior.png",
+    "imgurl": "https://goldensunwiki.net/w/images/8/85/GSDD-RatWarrior.png",
     "stats": {
       "maxhp": 348,
       "maxpp": 0,
@@ -7427,7 +7427,7 @@
       "Bear Claw"
     ],
     "name": "Ravager",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Ravager.png",
+    "imgurl": "https://goldensunwiki.net/w/images/c/ca/Ravager.png",
     "stats": {
       "maxhp": 189,
       "maxpp": 0,
@@ -7448,7 +7448,7 @@
       "Bear Claw"
     ],
     "name": "Ravager",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Ravager.png",
+    "imgurl": "https://goldensunwiki.net/w/images/8/89/GSDD-Ravager.png",
     "stats": {
       "maxhp": 370,
       "maxpp": 0,
@@ -7467,7 +7467,7 @@
   "Recluse 1": {
     "movepool": [ "Rabid Fang", "Spider Web" ],
     "name": "Recluse",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Recluse.png",
+    "imgurl": "https://goldensunwiki.net/w/images/0/02/Recluse.png",
     "stats": {
       "maxhp": 221,
       "maxpp": 0,
@@ -7487,7 +7487,7 @@
   "Recluse 2": {
     "movepool": [ "Spider Web", "Rabid Fang" ],
     "name": "Recluse",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Recluse.png",
+    "imgurl": "https://goldensunwiki.net/w/images/f/f7/GSDD-Recluse.png",
     "stats": {
       "maxhp": 404,
       "maxpp": 0,
@@ -7507,7 +7507,7 @@
   "Red Demon": {
     "movepool": [ "Vital Moon", "Mad Growth" ],
     "name": "Red Demon",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Red_Demon.png",
+    "imgurl": "https://goldensunwiki.net/w/images/1/16/Red_Demon.png",
     "stats": {
       "maxhp": 228,
       "maxpp": 10,
@@ -7527,7 +7527,7 @@
   "Red Wyvern": {
     "movepool": [ "Acid Breath", "Stunning Shriek" ],
     "name": "Red Wyvern",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Red_Wyvern.png",
+    "imgurl": "https://goldensunwiki.net/w/images/4/4d/GSDD-RedWyvern.png",
     "stats": {
       "maxhp": 685,
       "maxpp": 0,
@@ -7548,7 +7548,7 @@
   "Refresh Ball 1": {
     "movepool": [ "Earnest Ply", "Cure Poison", "Restore" ],
     "name": "Refresh Ball",
-    "imgurl": "https://goldensunwiki.net/w/images/4/4d/GSDD-RedWyvern.png",
+    "imgurl": "https://goldensunwiki.net/w/images/d/d4/Refresh_Ball.png",
     "stats": {
       "maxhp": 360,
       "maxpp": 43,
@@ -7568,7 +7568,7 @@
   "Refresh Ball 2": {
     "movepool": [ "Pure Ply", "Cure Poison", "Restore" ],
     "name": "Refresh Ball",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Refresh_Ball.png",
+    "imgurl": "https://goldensunwiki.net/w/images/d/d4/Refresh_Ball.png",
     "stats": {
       "maxhp": 462,
       "maxpp": 61,
@@ -7588,7 +7588,7 @@
   "Roach": {
     "movepool": [ "Sonic Wave", "Quake Sphere", "Flare Wall" ],
     "name": "Roach",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Roach.png",
+    "imgurl": "https://goldensunwiki.net/w/images/6/62/Roach.png",
     "stats": {
       "maxhp": 211,
       "maxpp": 27,
@@ -7612,7 +7612,7 @@
       "Wing Flutter"
     ],
     "name": "Roc",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Roc.png",
+    "imgurl": "https://goldensunwiki.net/w/images/0/00/Roc.png",
     "stats": {
       "maxhp": 245,
       "maxpp": 0,
@@ -7632,7 +7632,7 @@
   "Ruffian": {
     "movepool": [],
     "name": "Ruffian",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Ruffian.png",
+    "imgurl": "https://goldensunwiki.net/w/images/f/f6/Ruffian.png",
     "stats": {
       "maxhp": 29,
       "maxpp": 0,
@@ -7651,7 +7651,7 @@
   "Salamander 1": {
     "movepool": [ "Fire Breath", "Fireball", "Star Burst", "Guard" ],
     "name": "Salamander",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Salamander.png",
+    "imgurl": "https://goldensunwiki.net/w/images/thumb/6/65/Salamander_Dark_Dawn.jpg/120px-Salamander_Dark_Dawn.jpg",
     "stats": {
       "maxhp": 212,
       "maxpp": 18,
@@ -7671,7 +7671,7 @@
   "Salamander 2": {
     "movepool": [ "Fire Breath", "Fire Orb", "Starburst", "Guard" ],
     "name": "Salamander",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Salamander.png",
+    "imgurl": "https://goldensunwiki.net/w/images/5/53/Salamander.png",
     "stats": {
       "maxhp": 224,
       "maxpp": 19,
@@ -7691,7 +7691,7 @@
   "Sand Prince": {
     "movepool": [ "Arid Blast", "Earthquake", "Eruption" ],
     "name": "Sand Prince",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Sand_Prince.png",
+    "imgurl": "https://goldensunwiki.net/w/images/5/5c/SandPrinceBattle.jpg",
     "stats": {
       "maxhp": 1239,
       "maxpp": 90,
@@ -7712,7 +7712,7 @@
   "Sand Scorpion": {
     "movepool": [ "Curse", "Twin Shear", "Desert Gasp" ],
     "name": "Sand Scorpion",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Sand_Scorpion.png",
+    "imgurl": "https://goldensunwiki.net/w/images/a/a7/Sand_Scorpion.png",
     "stats": {
       "maxhp": 259,
       "maxpp": 12,
@@ -7732,7 +7732,7 @@
   "Satrage 1": {
     "movepool": [],
     "name": "Satrage",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Satrage.png",
+    "imgurl": "https://goldensunwiki.net/w/images/a/a0/Satrage.png",
     "stats": {
       "maxhp": 570,
       "maxpp": 0,
@@ -7751,7 +7751,7 @@
   "Satrage 2": {
     "movepool": [],
     "name": "Satrage",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Satrage.png",
+    "imgurl": "https://goldensunwiki.net/w/images/a/a0/Satrage.png",
     "stats": {
       "maxhp": 485,
       "maxpp": 0,
@@ -7790,7 +7790,7 @@
   "Saturos 2": {
     "movepool": [ "Heat Flash", "Inferno", "Break", "Pyroclasm", "Protect", "Haunt", "Potent Cure" ],
     "name": "Saturos",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Saturos.png",
+    "imgurl": "https://goldensunwiki.net/w/images/2/21/GSSaturos.jpg",
     "stats": {
       "maxhp": 3000,
       "maxpp": 260,
@@ -7813,7 +7813,7 @@
       "Water Breath"
     ],
     "name": "Sea Dragon",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Sea_Dragon.png",
+    "imgurl": "https://goldensunwiki.net/w/images/a/aa/Sea_Dragon.png",
     "stats": {
       "maxhp": 270,
       "maxpp": 0,
@@ -7835,7 +7835,7 @@
       "Echo Cut"
     ],
     "name": "Sea Fighter",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Sea_Fighter.png",
+    "imgurl": "https://goldensunwiki.net/w/images/a/a8/Sea_Fighter.png",
     "stats": {
       "maxhp": 197,
       "maxpp": 0,
@@ -7856,7 +7856,7 @@
       "Stun Sting"
     ],
     "name": "Sea Hedgehog",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Sea_Hedgehog.png",
+    "imgurl": "https://goldensunwiki.net/w/images/8/86/Sea_Hedgehog.png",
     "stats": {
       "maxhp": 177,
       "maxpp": 0,
@@ -7878,7 +7878,7 @@
       "Wing Beat"
     ],
     "name": "Seabird",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Seabird.png",
+    "imgurl": "https://goldensunwiki.net/w/images/5/5e/Seabird.png",
     "stats": {
       "maxhp": 133,
       "maxpp": 0,
@@ -7900,7 +7900,7 @@
       "Wing Beat"
     ],
     "name": "Seafowl",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Seafowl.png",
+    "imgurl": "https://goldensunwiki.net/w/images/7/7b/Seafowl.png",
     "stats": {
       "maxhp": 191,
       "maxpp": 0,
@@ -7920,7 +7920,7 @@
   "Sentinel": {
     "movepool": [ "Armor Crush", "Break", "Guard" ],
     "name": "Sentinel",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Sentinel.png",
+    "imgurl": "https://goldensunwiki.net/w/images/9/91/Sentinel.png",
     "stats": {
       "maxhp": 8736,
       "maxpp": 780,
@@ -7964,7 +7964,7 @@
       "Drag Down"
     ],
     "name": "Shade Skorpna",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/GSDD-Shade_Skorpna.png",
+    "imgurl": "https://goldensunwiki.net/w/images/6/64/GSDD-ShadeSkorpna.png",
     "stats": {
       "maxhp": 433,
       "maxpp": 0,
@@ -7984,7 +7984,7 @@
   "Shadow Curse": {
     "movepool": [ "Haunting", "Ice Horn", "Hail Prism" ],
     "name": "Shadow Curse",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Shadow_Curse.png",
+    "imgurl": "https://goldensunwiki.net/w/images/2/2c/GSDD-ShadowCurse.png",
     "stats": {
       "maxhp": 369,
       "maxpp": 42,
@@ -8004,7 +8004,7 @@
   "Shadow Spirit": {
     "movepool": [ "Rumble", "Cold Snap" ],
     "name": "Shadow Spirit",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Shadow_Spirit.png",
+    "imgurl": "https://goldensunwiki.net/w/images/c/c3/GSDD-ShadowSpirit.png",
     "stats": {
       "maxhp": 380,
       "maxpp": 38,
@@ -8025,7 +8025,7 @@
   "Shadowisp": {
     "movepool": [ "Slash", "Curse" ],
     "name": "Shadowisp",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Shadowisp.png",
+    "imgurl": "https://goldensunwiki.net/w/images/3/3d/GSDD-Shadowisp.png",
     "stats": {
       "maxhp": 292,
       "maxpp": 16,
@@ -8047,7 +8047,7 @@
       "Sludge Shield"
     ],
     "name": "Shield Skull",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Shield_Skull.png",
+    "imgurl": "https://goldensunwiki.net/w/images/b/ba/GSDD-ShieldSkull.png",
     "stats": {
       "maxhp": 320,
       "maxpp": 0,
@@ -8066,7 +8066,7 @@
   "Siren 1": {
     "movepool": [ "Froth", "Sleep", "Heartrender" ],
     "name": "Siren",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Siren.png",
+    "imgurl": "https://goldensunwiki.net/w/images/thumb/2/21/Siren_Dark_Dawn.jpg/150px-Siren_Dark_Dawn.jpg",
     "stats": {
       "maxhp": 116,
       "maxpp": 12,
@@ -8086,7 +8086,7 @@
   "Siren 2": {
     "movepool": [ "Heartrender", "Sleep", "Froth" ],
     "name": "Siren",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Siren.png",
+    "imgurl": "https://goldensunwiki.net/w/images/0/0a/Siren.png",
     "stats": {
       "maxhp": 169,
       "maxpp": 19,
@@ -8108,7 +8108,7 @@
       "Bone Charge"
     ],
     "name": "Skeleton",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Skeleton.png",
+    "imgurl": "https://goldensunwiki.net/w/images/thumb/9/97/Skeleton_Dark_Dawn.jpg/250px-Skeleton_Dark_Dawn.jpg",
     "stats": {
       "maxhp": 60,
       "maxpp": 0,
@@ -8130,7 +8130,7 @@
       "Bone Charge"
     ],
     "name": "Skeleton",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Skeleton.png",
+    "imgurl": "https://goldensunwiki.net/w/images/2/23/Skeleton.png",
     "stats": {
       "maxhp": 112,
       "maxpp": 0,
@@ -8150,7 +8150,7 @@
   "Skinwalker": {
     "movepool": [ "Shriek", "Wolf Rush" ],
     "name": "Skinwalker",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Skinwalker.png",
+    "imgurl": "https://goldensunwiki.net/w/images/7/72/Skinwalker.png",
     "stats": {
       "maxhp": 332,
       "maxpp": 0,
@@ -8170,7 +8170,7 @@
   "Skull Warrior": {
     "movepool": [ "Bone Charge", "Dull" ],
     "name": "Skull Warrior",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Skull_Warrior.png",
+    "imgurl": "https://goldensunwiki.net/w/images/1/10/Skull_Warrior.png",
     "stats": {
       "maxhp": 283,
       "maxpp": 16,
@@ -8190,7 +8190,7 @@
   "Sky Dragon 1": {
     "movepool": [ "Storm Breath", "Poison Flow", "Spark Plasma" ],
     "name": "Sky Dragon",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Sky_Dragon.png",
+    "imgurl": "https://goldensunwiki.net/w/images/1/1c/Sky_Dragon.png",
     "stats": {
       "maxhp": 657,
       "maxpp": 111,
@@ -8210,7 +8210,7 @@
   "Sky Dragon 2": {
     "movepool": [ "Wing Slash", "Ice Breath", "Hail Prism" ],
     "name": "Sky Dragon",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Sky_Dragon.png",
+    "imgurl": "https://goldensunwiki.net/w/images/9/9c/GSDD-SkyDragon.png",
     "stats": {
       "maxhp": 304,
       "maxpp": 30,
@@ -8231,7 +8231,7 @@
   "Slayer": {
     "movepool": [ "Kill Sting", "Poison Sting" ],
     "name": "Slayer",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Slayer.png",
+    "imgurl": "https://goldensunwiki.net/w/images/6/6e/Slayer.png",
     "stats": {
       "maxhp": 220,
       "maxpp": 0,
@@ -8253,7 +8253,7 @@
       "Flee"
     ],
     "name": "Slime",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Slime.png",
+    "imgurl": "https://goldensunwiki.net/w/images/thumb/2/2a/Slime_Dark_Dawn.jpg/100px-Slime_Dark_Dawn.jpg",
     "stats": {
       "maxhp": 22,
       "maxpp": 0,
@@ -8274,7 +8274,7 @@
       "Bone Chiller"
     ],
     "name": "Slime",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Slime.png",
+    "imgurl": "https://goldensunwiki.net/w/images/thumb/2/2a/Slime_Dark_Dawn.jpg/100px-Slime_Dark_Dawn.jpg",
     "stats": {
       "maxhp": 32,
       "maxpp": 0,
@@ -8291,12 +8291,12 @@
     },
     "extraturns": 0
   },
-  "Slime 4": {
+  "Slime 3": {
     "movepool": [
       "Bone Chiller"
     ],
     "name": "Slime",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Slime.png",
+    "imgurl": "https://goldensunwiki.net/w/images/thumb/2/2a/Slime_Dark_Dawn.jpg/100px-Slime_Dark_Dawn.jpg",
     "stats": {
       "maxhp": 18,
       "maxpp": 0,
@@ -8316,7 +8316,7 @@
   "Slime Beast 1": {
     "movepool": [ "Sticky Poison", "Speed Surge" ],
     "name": "Slime Beast",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Slime_Beast.png",
+    "imgurl": "https://goldensunwiki.net/w/images/c/c9/Slime_Beast.png",
     "stats": {
       "maxhp": 99,
       "maxpp": 0,
@@ -8336,7 +8336,7 @@
   "Slime Beast 2": {
     "movepool": [ "Sticky Poison", "Divide" ],
     "name": "Slime Beast",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Slime_Beast.png",
+    "imgurl": "https://goldensunwiki.net/w/images/6/67/GSDD-SlimeBeast.png",
     "stats": {
       "maxhp": 252,
       "maxpp": 0,
@@ -8356,7 +8356,7 @@
   "Sludge": {
     "movepool": [ "Call Skull", "Tail Slap", "Crush", "Healing" ],
     "name": "Sludge",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Sludge.png",
+    "imgurl": "https://goldensunwiki.net/w/images/d/dc/Sludge.jpg",
     "stats": {
       "maxhp": 1906,
       "maxpp": 44,
@@ -8376,7 +8376,7 @@
   "Soul Army": {
     "movepool": [ "Pike Assault", "Destruct Ray", "Tempest" ],
     "name": "Soul Army",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Soul_Army.png",
+    "imgurl": "https://goldensunwiki.net/w/images/f/f6/Soul_Army.png",
     "stats": {
       "maxhp": 356,
       "maxpp": 54,
@@ -8398,7 +8398,7 @@
       "Spider Web"
     ],
     "name": "Spider",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Spider.png",
+    "imgurl": "https://goldensunwiki.net/w/images/thumb/0/04/Spider_Dark_Dawn.jpg/225px-Spider_Dark_Dawn.jpg",
     "stats": {
       "maxhp": 69,
       "maxpp": 0,
@@ -8419,7 +8419,7 @@
       "Spider Web"
     ],
     "name": "Spider",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Spider.png",
+    "imgurl": "https://goldensunwiki.net/w/images/8/84/Spider.png",
     "stats": {
       "maxhp": 78,
       "maxpp": 0,
@@ -8440,7 +8440,7 @@
       "Poison Gel"
     ],
     "name": "Spiral Shell",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Spiral_Shell.png",
+    "imgurl": "https://goldensunwiki.net/w/images/d/d8/Spiral_Shell.png",
     "stats": {
       "maxhp": 155,
       "maxpp": 0,
@@ -8459,7 +8459,7 @@
   "Spirit": {
     "movepool": [ "Ice", "Douse" ],
     "name": "Spirit",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Spirit.png",
+    "imgurl": "https://goldensunwiki.net/w/images/9/97/Spirit.png",
     "stats": {
       "maxhp": 116,
       "maxpp": 11,
@@ -8481,7 +8481,7 @@
       "Quick Slash"
     ],
     "name": "Squirrelfang",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Squirrelfang.png",
+    "imgurl": "https://goldensunwiki.net/w/images/2/21/Squirrelfang.png",
     "stats": {
       "maxhp": 130,
       "maxpp": 0,
@@ -8503,7 +8503,7 @@
       "Quick Slash"
     ],
     "name": "Squirrelfang",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Squirrelfang.png",
+    "imgurl": "https://goldensunwiki.net/w/images/4/45/GSDD-Squirrelfang.png",
     "stats": {
       "maxhp": 98,
       "maxpp": 0,
@@ -8523,7 +8523,7 @@
   "Star Magician 1": {
     "movepool": [ "Mystic Call", "Mine Ball", "Spark Plasma", "Megacool" ],
     "name": "Star Magician",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Star_Magician.png",
+    "imgurl": "https://goldensunwiki.net/w/images/0/07/Star_Magician.png",
     "stats": {
       "maxhp": 7486,
       "maxpp": 560,
@@ -8544,7 +8544,7 @@
   "Star Magician 2": {
     "movepool": [ "Mystic Call", "Mine Ball", "Spark Plasma", "Megacool" ],
     "name": "Star Magician",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Star_Magician.png",
+    "imgurl": "https://goldensunwiki.net/w/images/0/07/Star_Magician.png",
     "stats": {
       "maxhp": 9595,
       "maxpp": 690,
@@ -8565,7 +8565,7 @@
   "Stealthy Scout": {
     "movepool": [ "Paralysis Shot", "Stifle Shot", "Scouting the Area" ],
     "name": "Stealthy Scout",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Stealthy_Scout.png",
+    "imgurl": "https://goldensunwiki.net/w/images/thumb/5/58/Stealthy_Scout.jpg/100px-Stealthy_Scout.jpg",
     "stats": {
       "maxhp": 354,
       "maxpp": 0,
@@ -8584,7 +8584,7 @@
   "Stone Soldier": {
     "movepool": [ "Blast", "Mad Blast", "Headbutt", "Dynamite" ],
     "name": "Stone Soldier",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Stone_Soldier.PNG",
+    "imgurl": "https://goldensunwiki.net/w/images/9/98/Stone_Soldier.PNG",
     "stats": {
       "maxhp": 179,
       "maxpp": 6,
@@ -8605,7 +8605,7 @@
   "Storm Lizard": {
     "movepool": [ "Wing Stroke", "Sonic Slash", "Storm Ray", "Impact", "Tempest", "Ward" ],
     "name": "Storm Lizard",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Storm_Lizard.png",
+    "imgurl": "https://goldensunwiki.net/w/images/2/27/Storm_Lizard.png",
     "stats": {
       "maxhp": 2900,
       "maxpp": 42,
@@ -8625,7 +8625,7 @@
   "Succubus 1": {
     "movepool": [ "Hail Prism", "Wind Slash", "Heartrender" ],
     "name": "Succubus",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Succubus.png",
+    "imgurl": "https://goldensunwiki.net/w/images/e/ec/Succubus.png",
     "stats": {
       "maxhp": 529,
       "maxpp": 56,
@@ -8646,7 +8646,7 @@
   "Succubus 2": {
     "movepool": [ "Heartrender", "Hail Prism", "Wind Slash" ],
     "name": "Succubus",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Succubus.png",
+    "imgurl": "https://goldensunwiki.net/w/images/4/43/GSDD-Succubus.png",
     "stats": {
       "maxhp": 268,
       "maxpp": 31,
@@ -8669,7 +8669,7 @@
       "Mega Slash"
     ],
     "name": "Talon Runner",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Talon_Runner.png",
+    "imgurl": "https://goldensunwiki.net/w/images/0/0e/Talon_Runner.png",
     "stats": {
       "maxhp": 228,
       "maxpp": 0,
@@ -8709,7 +8709,7 @@
   "Tarantula 1": {
     "movepool": [ "Spider Web", "Poison Fang" ],
     "name": "Tarantula",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Tarantula.png",
+    "imgurl": "https://goldensunwiki.net/w/images/f/f4/Tarantula.png",
     "stats": {
       "maxhp": 108,
       "maxpp": 0,
@@ -8729,7 +8729,7 @@
   "Tarantula 2": {
     "movepool": [ "Spider Web", "Poison Fang" ],
     "name": "Tarantula",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Tarantula.png",
+    "imgurl": "https://goldensunwiki.net/w/images/d/df/GSDD-Tarantula.png",
     "stats": {
       "maxhp": 190,
       "maxpp": 0,
@@ -8749,7 +8749,7 @@
   "Tempest Lizard": {
     "movepool": [ "Wing Stroke", "Sonic Slash", "Storm Ray", "Impact", "Tempest", "Ward" ],
     "name": "Tempest Lizard",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Tempest_Lizard.png",
+    "imgurl": "https://goldensunwiki.net/w/images/b/ba/Tempest_Lizard.png",
     "stats": {
       "maxhp": 3000,
       "maxpp": 45,
@@ -8769,7 +8769,7 @@
   "Thief 1": {
     "movepool": [ "Tremble", "Threaten", "Stand Ready" ],
     "name": "Thief",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Thief.png",
+    "imgurl": "https://goldensunwiki.net/w/images/f/fc/Thief.png",
     "stats": {
       "maxhp": 110,
       "maxpp": 0,
@@ -8788,7 +8788,7 @@
   "Thief 2": {
     "movepool": [ "Tremble", "Threaten", "Stand Ready" ],
     "name": "Thief",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Thief.png",
+    "imgurl": "https://goldensunwiki.net/w/images/f/fc/Thief.png",
     "stats": {
       "maxhp": 212,
       "maxpp": 0,
@@ -8807,7 +8807,7 @@
   "Thunder Ball 1": {
     "movepool": [ "Flash Bolt", "Storm Ray", "Shine Plasma" ],
     "name": "Thunder Ball",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Thunder_Ball.png",
+    "imgurl": "https://goldensunwiki.net/w/images/3/3d/Thunder_Ball.png",
     "stats": {
       "maxhp": 280,
       "maxpp": 43,
@@ -8827,7 +8827,7 @@
   "Thunder Ball 2": {
     "movepool": [ "Flash Bolt", "Storm Ray", "Shine Plasma" ],
     "name": "Thunder Ball",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Thunder_Ball.png",
+    "imgurl": "https://goldensunwiki.net/w/images/3/3d/Thunder_Ball.png",
     "stats": {
       "maxhp": 360,
       "maxpp": 58,
@@ -8849,7 +8849,7 @@
       "Storm Blessing"
     ],
     "name": "Thunder Lizard",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Thunder_Lizard.png",
+    "imgurl": "https://goldensunwiki.net/w/images/2/20/Thunder_Lizard.png",
     "stats": {
       "maxhp": 456,
       "maxpp": 0,
@@ -8869,7 +8869,7 @@
   "Thunder Lizard 2": {
     "movepool": [ "Storm Breath", "Blue Bolt", "Tempest" ],
     "name": "Thunder Lizard",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Thunder_Lizard.png",
+    "imgurl": "https://goldensunwiki.net/w/images/b/ba/GSDD-ThunderLizard.png",
     "stats": {
       "maxhp": 1071,
       "maxpp": 55,
@@ -8910,7 +8910,7 @@
   "Toadonpa": {
     "movepool": [ "Acid Blessing", "Thrash", "Rotten Blood", "Sticky Poison" ],
     "name": "Toadonpa",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Toadonpa.png",
+    "imgurl": "https://goldensunwiki.net/w/images/2/26/Toadonpa.png",
     "stats": {
       "maxhp": 2800,
       "maxpp": 0,
@@ -8931,7 +8931,7 @@
   "Tornado Lizard": {
     "movepool": [ "Wing Flutter", "Wind Slash", "Storm Ray", "Impact", "Tornado", "Ward" ],
     "name": "Tornado Lizard",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Tornado_Lizard.png",
+    "imgurl": "https://goldensunwiki.net/w/images/e/e4/Tornado_Lizard.png",
     "stats": {
       "maxhp": 530,
       "maxpp": 37,
@@ -8951,7 +8951,7 @@
   "Tret": {
     "movepool": [ "Sleep Star", "Thorn", "Quake", "Growth" ],
     "name": "Tret",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Tret.png",
+    "imgurl": "https://goldensunwiki.net/w/images/6/68/Tret_Battle.gif",
     "stats": {
       "maxhp": 710,
       "maxpp": 36,
@@ -8973,7 +8973,7 @@
       "Brute Force"
     ],
     "name": "Troll",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Troll.png",
+    "imgurl": "https://goldensunwiki.net/w/images/f/f3/Troll.png",
     "stats": {
       "maxhp": 101,
       "maxpp": 0,
@@ -8990,12 +8990,12 @@
     },
     "extraturns": 0
   },
-  "Troll 4": {
+  "Troll 2": {
     "movepool": [
       "Double Chop"
     ],
     "name": "Troll",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Troll.png",
+    "imgurl": "https://goldensunwiki.net/w/images/f/f3/Troll.png",
     "stats": {
       "maxhp": 150,
       "maxpp": 0,
@@ -9015,7 +9015,7 @@
   "Tua Warrior": {
     "movepool": [ "Paralysis Shot", "Stifle Shot", "Scouting the Area" ],
     "name": "Tua Warrior",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Tua_Warrior.png",
+    "imgurl": "https://goldensunwiki.net/w/images/2/22/GSDD-TuaWarrior.png",
     "stats": {
       "maxhp": 482,
       "maxpp": 0,
@@ -9034,7 +9034,7 @@
   "Turtle Dragon": {
     "movepool": [ "Aqua Breath" ],
     "name": "Turtle Dragon",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Turtle_Dragon.png",
+    "imgurl": "https://goldensunwiki.net/w/images/c/c1/Turtle_Dragon.png",
     "stats": {
       "maxhp": 340,
       "maxpp": 0,
@@ -9054,7 +9054,7 @@
   "Undead 1": {
     "movepool": [ "Decompose", "Ally Search" ],
     "name": "Undead",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Undead.png",
+    "imgurl": "https://goldensunwiki.net/w/images/b/bf/Undead.png",
     "stats": {
       "maxhp": 165,
       "maxpp": 0,
@@ -9073,7 +9073,7 @@
   "Undead 2": {
     "movepool": [ "Smell of Decay", "Ally Search" ],
     "name": "Undead",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Undead.png",
+    "imgurl": "https://goldensunwiki.net/w/images/6/60/GSDD-Undead.png",
     "stats": {
       "maxhp": 166,
       "maxpp": 0,
@@ -9092,7 +9092,7 @@
   "Urchin Beast": {
     "movepool": [ "Beast Needle" ],
     "name": "Urchin Beast",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Urchin_Beast.png",
+    "imgurl": "https://goldensunwiki.net/w/images/f/fa/Urchin_Beast.png",
     "stats": {
       "maxhp": 89,
       "maxpp": 0,
@@ -9112,7 +9112,7 @@
   "Valukar": {
     "movepool": [ "Crucible", "Djinn Stun", "Stun Jip" ],
     "name": "Valukar",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Valukar.png",
+    "imgurl": "https://goldensunwiki.net/w/images/9/9e/ValukarSpr.gif",
     "stats": {
       "maxhp": 12960,
       "maxpp": 0,
@@ -9473,7 +9473,7 @@
   "Vermin 1": {
     "movepool": [],
     "name": "Vermin",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Vermin.png",
+    "imgurl": "https://goldensunwiki.net/w/images/0/01/Vermin.png",
     "stats": {
       "maxhp": 20,
       "maxpp": 0,
@@ -9492,7 +9492,7 @@
   "Vermin 2": {
     "movepool": [],
     "name": "Vermin",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Vermin.png",
+    "imgurl": "https://goldensunwiki.net/w/images/0/01/Vermin.png",
     "stats": {
       "maxhp": 36,
       "maxpp": 0,
@@ -9511,7 +9511,7 @@
   "Vile Dirge 1": {
     "movepool": [ "Wing Beat", "Flying Attack" ],
     "name": "Vile Dirge",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Vile_Dirge.png",
+    "imgurl": "https://goldensunwiki.net/w/images/b/bc/Vile_Dirge.png",
     "stats": {
       "maxhp": 173,
       "maxpp": 0,
@@ -9531,7 +9531,7 @@
   "Vile Dirge 2": {
     "movepool": [ "Wing Beat", "Swift Strike" ],
     "name": "Vile Dirge",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Vile_Dirge.png",
+    "imgurl": "https://goldensunwiki.net/w/images/8/8f/GSDD-VileDirge.png",
     "stats": {
       "maxhp": 267,
       "maxpp": 0,
@@ -9551,7 +9551,7 @@
   "Virago 1": {
     "movepool": [ "Banshee Howl" ],
     "name": "Virago",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Virago.png",
+    "imgurl": "https://goldensunwiki.net/w/images/4/4b/Virago.png",
     "stats": {
       "maxhp": 185,
       "maxpp": 0,
@@ -9571,7 +9571,7 @@
   "Virago 2": {
     "movepool": [ "Stunning Shriek" ],
     "name": "Virago",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Virago.png",
+    "imgurl": "https://goldensunwiki.net/w/images/e/e3/GSDD-Virago.png",
     "stats": {
       "maxhp": 284,
       "maxpp": 0,
@@ -9591,7 +9591,7 @@
   "Wargold 1": {
     "movepool": [ "Doublestep" ],
     "name": "Wargold",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Wargold.png",
+    "imgurl": "https://goldensunwiki.net/w/images/7/7c/Wargold.png",
     "stats": {
       "maxhp": 202,
       "maxpp": 0,
@@ -9610,7 +9610,7 @@
   "Wargold 2": {
     "movepool": [ "Doublestep" ],
     "name": "Wargold",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Wargold.png",
+    "imgurl": "https://goldensunwiki.net/w/images/a/af/GSDD-Wargold.png",
     "stats": {
       "maxhp": 261,
       "maxpp": 0,
@@ -9629,7 +9629,7 @@
   "Warrior Bee": {
     "movepool": [ "Ally Search", "Numbing Sting", "Mortal Blow" ],
     "name": "Warrior Bee",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Warrior_Bee.png",
+    "imgurl": "https://goldensunwiki.net/w/images/b/b9/Warrior_Bee.png",
     "stats": {
       "maxhp": 361,
       "maxpp": 0,
@@ -9650,7 +9650,7 @@
   "Weird Nymph": {
     "movepool": [ "Bind", "Psy Drain", "Sleep", "Shine Plasma", "Wind Slash", "Wish" ],
     "name": "Weird Nymph",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Weird_Nymph.png",
+    "imgurl": "https://goldensunwiki.net/w/images/2/25/GSDD-WeirdNymph.png",
     "stats": {
       "maxhp": 180,
       "maxpp": 45,
@@ -9671,7 +9671,7 @@
   "Whisper Skull": {
     "movepool": [ "Curse", "Condemn" ],
     "name": "Whisper Skull",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Whisper_Skull.png",
+    "imgurl": "https://goldensunwiki.net/w/images/a/a5/GSDD-WhisperSkull.png",
     "stats": {
       "maxhp": 460,
       "maxpp": 65,
@@ -9709,7 +9709,7 @@
   "Wight": {
     "movepool": [ "Decompose", "Rotten Blood" ],
     "name": "Wight",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Wight.png",
+    "imgurl": "https://goldensunwiki.net/w/images/e/ec/Wight.png",
     "stats": {
       "maxhp": 192,
       "maxpp": 0,
@@ -9729,7 +9729,7 @@
   "Wild Gorilla": {
     "movepool": [ "Ransack", "Beat Dance" ],
     "name": "Wild Gorilla",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Wild_Gorilla.png",
+    "imgurl": "https://goldensunwiki.net/w/images/c/cf/Wild_Gorilla.png",
     "stats": {
       "maxhp": 130,
       "maxpp": 0,
@@ -9749,7 +9749,7 @@
   "Wild Gryphon 1": {
     "movepool": [ "Twin Beaks", "Bind", "Wing Stroke" ],
     "name": "Wild Gryphon",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Wild_Gryphon.png",
+    "imgurl": "https://goldensunwiki.net/w/images/2/2c/Wild_Gryphon.png",
     "stats": {
       "maxhp": 370,
       "maxpp": 8,
@@ -9769,7 +9769,7 @@
   "Wild Gryphon 2": {
     "movepool": [ "Buffeting Wings", "Twin Beaks", "Bind" ],
     "name": "Wild Gryphon",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Wild_Gryphon.png",
+    "imgurl": "https://goldensunwiki.net/w/images/5/5e/GSDD-WildGryphon.png",
     "stats": {
       "maxhp": 362,
       "maxpp": 28,
@@ -9789,7 +9789,7 @@
   "Wild Mushroom 1": {
     "movepool": [ "Contain" ],
     "name": "Wild Mushroom",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Wild_Mushroom.png",
+    "imgurl": "https://goldensunwiki.net/w/images/1/12/Wild_Mushroom.png",
     "stats": {
       "maxhp": 18,
       "maxpp": 0,
@@ -9808,7 +9808,7 @@
   "Wild Mushroom 2": {
     "movepool": [ "Soothing Star" ],
     "name": "Wild Mushroom",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Wild_Mushroom.png",
+    "imgurl": "https://goldensunwiki.net/w/images/1/12/Wild_Mushroom.png",
     "stats": {
       "maxhp": 34,
       "maxpp": 0,
@@ -9828,7 +9828,7 @@
   "Wild Wolf 1": {
     "movepool": [ "Fatal Fang" ],
     "name": "Wild Wolf",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Wild_Wolf.png",
+    "imgurl": "https://goldensunwiki.net/w/images/2/2b/Wild_Wolf.png",
     "stats": {
       "maxhp": 45,
       "maxpp": 0,
@@ -9847,7 +9847,7 @@
   "Wild Wolf 2": {
     "movepool": [ "Fatal Fang" ],
     "name": "Wild Wolf",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Wild_Wolf.png",
+    "imgurl": "https://goldensunwiki.net/w/images/0/0f/GSDD-WildWolf.png",
     "stats": {
       "maxhp": 29,
       "maxpp": 0,
@@ -9866,7 +9866,7 @@
   "Will Head": {
     "movepool": [ "Mystic Flame" ],
     "name": "Will Head",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Will_Head.png",
+    "imgurl": "https://goldensunwiki.net/w/images/3/39/Will_Head.png",
     "stats": {
       "maxhp": 54,
       "maxpp": 0,
@@ -9886,7 +9886,7 @@
   "Willowisp 1": {
     "movepool": [ "Haunting", "Tundra", "Drain", "Blue Bolt" ],
     "name": "Willowisp",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Willowisp.png",
+    "imgurl": "https://goldensunwiki.net/w/images/d/d1/Willowisp.png",
     "stats": {
       "maxhp": 209,
       "maxpp": 12,
@@ -9907,7 +9907,7 @@
   "Willowisp 2": {
     "movepool": [ "Mystic Flame" ],
     "name": "Willowisp",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Willowisp.png",
+    "imgurl": "https://goldensunwiki.net/w/images/f/f6/Willowisp_Dark_Dawn.jpg",
     "stats": {
       "maxhp": 35,
       "maxpp": 0,
@@ -9927,7 +9927,7 @@
   "Winged Dragon": {
     "movepool": [ "Wing Slash", "Storm Breath", "Tempest" ],
     "name": "Winged Dragon",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Winged_Dragon.png",
+    "imgurl": "https://goldensunwiki.net/w/images/6/6e/Winged_Dragon.png",
     "stats": {
       "maxhp": 433,
       "maxpp": 40,
@@ -9947,7 +9947,7 @@
   "Winged Lizard": {
     "movepool": [ "Fire Breath", "Banshee Howl" ],
     "name": "Winged Lizard",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Winged_Lizard.png",
+    "imgurl": "https://goldensunwiki.net/w/images/b/b7/Winged_Lizard.png",
     "stats": {
       "maxhp": 337,
       "maxpp": 0,
@@ -9968,7 +9968,7 @@
   "Wise Gryphon 1": {
     "movepool": [ "Twin Beaks", "Bind", "Wing Stroke" ],
     "name": "Wise Gryphon",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Wise_Gryphon.png",
+    "imgurl": "https://goldensunwiki.net/w/images/5/5e/Wise_Gryphon.png",
     "stats": {
       "maxhp": 297,
       "maxpp": 33,
@@ -9988,7 +9988,7 @@
   "Wise Gryphon 2": {
     "movepool": [ "Buffeting Wings", "Twin Beaks", "Bind" ],
     "name": "Wise Gryphon",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Wise_Gryphon.png",
+    "imgurl": "https://goldensunwiki.net/w/images/d/d3/GSDD-WiseGryphon.png",
     "stats": {
       "maxhp": 553,
       "maxpp": 40,
@@ -10008,7 +10008,7 @@
   "Wolfkin 2": {
     "movepool": [ "Ur Flash", "Shriek" ],
     "name": "Wolfkin",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Wolfkin.png",
+    "imgurl": "https://goldensunwiki.net/w/images/5/57/Wolfkin.png",
     "stats": {
       "maxhp": 213,
       "maxpp": 0,
@@ -10028,7 +10028,7 @@
   "Wolfkin 1": {
     "movepool": [ "Shriek", "Wolf Rush" ],
     "name": "Wolfkin",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Wolfkin.png",
+    "imgurl": "https://goldensunwiki.net/w/images/2/25/GSDD-Wolfkin.png",
     "stats": {
       "maxhp": 164,
       "maxpp": 0,
@@ -10048,7 +10048,7 @@
   "Wolfkin Cub 1": {
     "movepool": [ "Ur Flash" ],
     "name": "Wolfkin Cub",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Wolfkin_Cub.png",
+    "imgurl": "https://goldensunwiki.net/w/images/thumb/1/1f/Wolfkin_Cub_Dark_Dawn.jpg/300px-Wolfkin_Cub_Dark_Dawn.jpg",
     "stats": {
       "maxhp": 115,
       "maxpp": 0,
@@ -10068,7 +10068,7 @@
   "Wolfkin Cub 2": {
     "movepool": [ "Wolf Rush" ],
     "name": "Wolfkin Cub",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Wolfkin_Cub.png",
+    "imgurl": "https://goldensunwiki.net/w/images/thumb/1/1f/Wolfkin_Cub_Dark_Dawn.jpg/300px-Wolfkin_Cub_Dark_Dawn.jpg",
     "stats": {
       "maxhp": 64,
       "maxpp": 0,
@@ -10088,7 +10088,7 @@
   "Wonder Bird": {
     "movepool": [ "Regen Dance", "Fire Dance", "Pyroclasm", "Searing Beam", "Supernova", "Flee" ],
     "name": "Wonder Bird",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Wonder_Bird.png",
+    "imgurl": "https://goldensunwiki.net/w/images/1/1f/Wonder_Bird.png",
     "stats": {
       "maxhp": 424,
       "maxpp": 102,
@@ -10108,7 +10108,7 @@
   "Wood Walker": {
     "movepool": [ "Briar", "Mad Growth" ],
     "name": "Wood Walker",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Wood_Walker.png",
+    "imgurl": "https://goldensunwiki.net/w/images/a/aa/Wood_Walker.png",
     "stats": {
       "maxhp": 230,
       "maxpp": 21,
@@ -10128,7 +10128,7 @@
   "Worm": {
     "movepool": [],
     "name": "Worm",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Worm.png",
+    "imgurl": "https://goldensunwiki.net/w/images/5/52/Worm.png",
     "stats": {
       "maxhp": 132,
       "maxpp": 0,
@@ -10147,7 +10147,7 @@
   "Wyvern 1": {
     "movepool": [ "Fire Breath" ],
     "name": "Wyvern",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Wyvern.png",
+    "imgurl": "https://goldensunwiki.net/w/images/c/c1/Wyvern.png",
     "stats": {
       "maxhp": 340,
       "maxpp": 0,
@@ -10164,10 +10164,10 @@
     },
     "extraturns": 0
   },
-  "Wyvern 3": {
+  "Wyvern 2": {
     "movepool": [ "Fire Breath", "Stunning Shriek" ],
     "name": "Wyvern",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Wyvern.png",
+    "imgurl": "https://goldensunwiki.net/w/images/8/82/GSDD-Wyvern.png",
     "stats": {
       "maxhp": 201,
       "maxpp": 0,
@@ -10188,7 +10188,7 @@
   "Wyvern Chick": {
     "movepool": [ "Fire Breath" ],
     "name": "Wyvern Chick",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Wyvern_Chick.png",
+    "imgurl": "https://goldensunwiki.net/w/images/3/34/Wyvern_Chick.png",
     "stats": {
       "maxhp": 124,
       "maxpp": 0,
@@ -10208,7 +10208,7 @@
   "Zombie 1": {
     "movepool": [],
     "name": "Zombie",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Zombie.png",
+    "imgurl": "https://goldensunwiki.net/w/images/thumb/b/b4/Zombie_Dark_Dawn.jpg/250px-Zombie_Dark_Dawn.jpg",
     "stats": {
       "maxhp": 55,
       "maxpp": 0,
@@ -10227,7 +10227,7 @@
   "Zombie 2": {
     "movepool": [ "Smell of Decay" ],
     "name": "Zombie",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Zombie.png",
+    "imgurl": "https://goldensunwiki.net/w/images/thumb/b/b4/Zombie_Dark_Dawn.jpg/250px-Zombie_Dark_Dawn.jpg",
     "stats": {
       "maxhp": 103,
       "maxpp": 0,
@@ -10905,7 +10905,7 @@
   "Gladiator": {
     "movepool": [],
     "name": "Gladiator",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Azart.png",
+    "imgurl": "https://cdn.discordapp.com/attachments/660152162202157100/670260231208566804/Sin_nombre.gif",
     "stats": {
       "maxhp": 365,
       "maxpp": 0,
@@ -11022,7 +11022,7 @@
   "Buford": {
     "movepool": [ "Smoke Bomb", "Sleep Bomb" ],
     "name": "Buford",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Navampa.png",
+    "imgurl": "https://cdn.discordapp.com/attachments/660152162202157100/670241988108484628/Azerot.gif",
     "stats": {
       "maxhp": 320,
       "maxpp": 2,
@@ -11041,7 +11041,7 @@
   "Dekka": {
     "movepool": [ "Smoke Bomb", "Sleep Bomb" ],
     "name": "Dekka",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Navampa.png",
+    "imgurl": "https://cdn.discordapp.com/attachments/660152162202157100/670261696291405824/Cyan.gif",
     "stats": {
       "maxhp": 420,
       "maxpp": 2,
@@ -11060,7 +11060,7 @@
   "Galahad": {
     "movepool": [ "Smoke Bomb", "Sleep Bomb" ],
     "name": "Galahad",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Navampa.png",
+    "imgurl": "https://cdn.discordapp.com/attachments/660152162202157100/670263214189314049/Purple.gif",
     "stats": {
       "maxhp": 520,
       "maxpp": 2,
@@ -11079,7 +11079,7 @@
   "Morgan": {
     "movepool": [ "Smoke Bomb", "Sleep Bomb", "Nut" ],
     "name": "Morgan",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Navampa.png",
+    "imgurl": "https://cdn.discordapp.com/attachments/660152162202157100/670263215434891264/Blue.gif",
     "stats": {
       "maxhp": 920,
       "maxpp": 2,
@@ -11262,7 +11262,7 @@
   "MarsSummon": {
     "movepool": [ "Flare", "Blast" ],
     "name": "Mars",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Mars_Djinni.png",
+    "imgurl": "https://goldensunwiki.net/w/images/9/98/MarsDjinniGif.gif",
     "stats": {
       "maxhp": 172,
       "maxpp": 14,
@@ -11403,7 +11403,7 @@
   "MercurySummon": {
     "movepool": [ "Prism", "Cool", "Ice" ],
     "name": "Mercury",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Mercury_Djinni.png",
+    "imgurl": "https://goldensunwiki.net/w/images/b/b4/Mercury-icon-dd.gif",
     "stats": {
       "maxhp": 190,
       "maxpp": 20,
@@ -11548,7 +11548,7 @@
   "AzartFinal": {
     "movepool": [ "Smoke Bomb", "Oil Drop" ],
     "name": "Azart",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Navampa.png",
+    "imgurl": "https://goldensunwiki.net/w/images/9/94/Azart.png",
     "stats": {
       "maxhp": 535,
       "maxpp": 3,
@@ -11571,7 +11571,7 @@
   "SatrageFinal": {
     "movepool": [ "Strong Hit", "Sleep Bomb", "Oil Drop" ],
     "name": "Satrage",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Navampa.png",
+    "imgurl": "https://goldensunwiki.net/w/images/a/a0/Satrage.png",
     "stats": {
       "maxhp": 635,
       "maxpp": 3,
@@ -11594,7 +11594,7 @@
   "NavampaFinal": {
     "movepool": [ "Strong Hit", "Smoke Bomb", "Sleep Bomb", "Oil Drop" ],
     "name": "Navampa",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Navampa.png",
+    "imgurl": "https://goldensunwiki.net/w/images/9/97/Navampa.png",
     "stats": {
       "maxhp": 735,
       "maxpp": 5,
@@ -11649,240 +11649,10 @@
     "isImmuneToOHKO": true,
     "isImmuneToHPToOne": true
   },
-  "Yellow Key": {
-    "name": "Yellow Key",
-    "imgurl": "https://goldensunwiki.net/w/images/c/ca/SolSanctumDisarm.png",
-    "movepool": [
-      "Wrong"
-    ],
-    "stats": {
-      "maxHP": 1,
-      "maxPP": 0,
-      "Atk": 1,
-      "Def": 1,
-      "Spd": 0
-    },
-    "elstats": {
-      "VenusAtk": 100,
-      "VenusRes": 25,
-      "MarsAtk": 100,
-      "MarsRes": 25,
-      "JupiterAtk": 100,
-      "JupiterRes": 25,
-      "MercuryAtk": 100,
-      "MercuryRes": 25
-    },
-    "isImmuneToConditions": [
-      "Stun",
-      "Poison",
-      "Venom",
-      "Delusion",
-      "Sleep",
-      "Haunt",
-      "Flinch"
-    ],
-    "hasDefend": false,
-    "hasAttack": false,
-    "isImmuneToPsynergy": true
-  },
-  "Blue Key": {
-    "name": "Blue Key",
-    "imgurl": "https://goldensunwiki.net/w/images/c/ca/SolSanctumDisarm.png",
-    "movepool": [
-      "Correct"
-    ],
-    "stats": {
-      "maxHP": 20000,
-      "maxPP": 0,
-      "Atk": 20000,
-      "Def": 2,
-      "Spd": 0
-    },
-    "elstats": {
-      "VenusAtk": 100,
-      "VenusRes": 25,
-      "MarsAtk": 100,
-      "MarsRes": 25,
-      "JupiterAtk": 100,
-      "JupiterRes": 25,
-      "MercuryAtk": 100,
-      "MercuryRes": 25
-    },
-    "Conditions": [ "Counter" ],
-    "isImmuneToConditions": [
-      "Stun",
-      "Poison",
-      "Venom",
-      "Delusion",
-      "Sleep",
-      "Haunt",
-      "Flinch"
-    ],
-    "hasDefend": false,
-    "hasAttack": false,
-    "isImmuneToOHKO": true
-  },
-  "Red Key": {
-    "name": "Red Key",
-    "imgurl": "https://goldensunwiki.net/w/images/c/ca/SolSanctumDisarm.png",
-    "movepool": [
-      "Correct"
-    ],
-    "stats": {
-      "maxHP": 20000,
-      "maxPP": 0,
-      "Atk": 20000,
-      "Def": 2,
-      "Spd": 0
-    },
-    "elstats": {
-      "VenusAtk": 100,
-      "VenusRes": 25,
-      "MarsAtk": 100,
-      "MarsRes": 25,
-      "JupiterAtk": 100,
-      "JupiterRes": 25,
-      "MercuryAtk": 100,
-      "MercuryRes": 25
-    },
-    "Conditions": [ "Counter" ],
-    "isImmuneToConditions": [
-      "Stun",
-      "Poison",
-      "Venom",
-      "Delusion",
-      "Sleep",
-      "Haunt",
-      "Flinch"
-    ],
-    "hasDefend": false,
-    "hasAttack": false,
-    "isImmuneToOHKO": true
-  },
-  "Fortress Guard": {
-    "name": "Fortress Guard",
-    "imgurl": "https://goldensunwiki.net/w/images/c/ca/SolSanctumDisarm.png",
-    "movepool": [
-      "Search"
-    ],
-    "stats": {
-      "maxHP": 20000,
-      "maxPP": 50,
-      "Atk": 20000,
-      "Def": 2,
-      "Spd": 0
-    },
-    "elstats": {
-      "VenusAtk": 100,
-      "VenusRes": 25,
-      "MarsAtk": 100,
-      "MarsRes": 25,
-      "JupiterAtk": 100,
-      "JupiterRes": 25,
-      "MercuryAtk": 100,
-      "MercuryRes": 25
-    },
-    "Conditions": [ "DeathCurse", "Counter" ],
-    "DeathCurseCounter": 3,
-    "isImmuneToConditions": [
-      "Stun",
-      "Poison",
-      "Venom",
-      "Delusion",
-      "Sleep",
-      "Haunt",
-      "Flinch"
-    ],
-    "hasDefend": false,
-    "hasAttack": false
-  },
-  "MoveBilibin": {
-    "name": "Move",
-    "imgurl": "https://goldensunwiki.net/w/images/c/ca/SolSanctumDisarm.png",
-    "movepool": [
-      "Wrong"
-    ],
-    "stats": {
-      "maxHP": 1,
-      "maxPP": 0,
-      "Atk": 20000,
-      "Def": 1,
-      "Spd": 0
-    },
-    "elstats": {
-      "VenusAtk": 100,
-      "VenusRes": 25,
-      "MarsAtk": 100,
-      "MarsRes": 25,
-      "JupiterAtk": 100,
-      "JupiterRes": 25,
-      "MercuryAtk": 100,
-      "MercuryRes": 25
-    },
-    "hasAttack": false,
-    "hasDefend": false,
-    "isImmuneToPsynergy": true
-  },
-  "CatchBilibin": {
-    "name": "Catch",
-    "imgurl": "https://goldensunwiki.net/w/images/c/ca/SolSanctumDisarm.png",
-    "movepool": [
-      "Correct"
-    ],
-    "stats": {
-      "maxHP": 20000,
-      "maxPP": 0,
-      "Atk": 20000,
-      "Def": 2,
-      "Spd": 0
-    },
-    "elstats": {
-      "VenusAtk": 100,
-      "VenusRes": 25,
-      "MarsAtk": 100,
-      "MarsRes": 25,
-      "JupiterAtk": 100,
-      "JupiterRes": 25,
-      "MercuryAtk": 100,
-      "MercuryRes": 25
-    },
-    "Conditions": [ "Counter" ],
-    "hasDefend": false,
-    "hasAttack": false,
-    "isImmuneToOHKO": true
-  },
-  "RetreatBilibin": {
-    "name": "Retreat",
-    "imgurl": "https://goldensunwiki.net/w/images/c/ca/SolSanctumDisarm.png",
-    "movepool": [
-      "Correct"
-    ],
-    "stats": {
-      "maxHP": 20000,
-      "maxPP": 0,
-      "Atk": 20000,
-      "Def": 2,
-      "Spd": 0
-    },
-    "elstats": {
-      "VenusAtk": 100,
-      "VenusRes": 25,
-      "MarsAtk": 100,
-      "MarsRes": 25,
-      "JupiterAtk": 100,
-      "JupiterRes": 25,
-      "MercuryAtk": 100,
-      "MercuryRes": 25
-    },
-    "Conditions": [ "Counter" ],
-    "hasDefend": false,
-    "hasAttack": false,
-    "isImmuneToOHKO": true
-  },
   "Elf": {
     "movepool": [ "Growth", "Thorn" ],
     "name": "Gnome",
-    "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Gnome.png",
+    "imgurl": "https://goldensunwiki.net/w/images/7/78/Gnome.png",
     "stats": {
       "maxhp": 85,
       "maxpp": 5,
@@ -11971,9 +11741,9 @@
       "Berserk"
     ],
     "stats": {
-      "maxHP": 1150,
+      "maxHP": 850,
       "maxPP": 0,
-      "Atk": 480,
+      "Atk": 420,
       "Def": 260,
       "Spd": 140
     },

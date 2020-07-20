@@ -12,7 +12,6 @@ using IodemBot.Core.Leveling;
 using IodemBot.Core.UserManagement;
 using IodemBot.Extensions;
 using System.Runtime.InteropServices;
-using System.Device.Gpio;
 
 namespace IodemBot.Modules
 {
@@ -69,14 +68,6 @@ namespace IodemBot.Modules
                 .WithColor(Colors.Get("Iodem"))
                 .WithDescription($"Pong!")
                 .Build());
-
-            int ledPin1 = 15;
-            GpioController controller = new GpioController();
-            // Sets the pin to output mode so we can switch something on
-            controller.OpenPin(ledPin1, PinMode.Output);
-            controller.Write(ledPin1, PinValue.High);
-            await Task.Delay(1000);
-            controller.Write(ledPin1, PinValue.Low);
         }
 
         [Command("pong")]
