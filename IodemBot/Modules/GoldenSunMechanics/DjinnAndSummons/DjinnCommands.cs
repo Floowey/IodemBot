@@ -149,6 +149,12 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 return;
             }
             var user = UserAccounts.GetAccount(Context.User);
+            TakeDjinn(user, Names);
+            await DjinnInv();
+        }
+
+        public static void TakeDjinn(UserAccount user, string[] Names)
+        {
             var userDjinn = user.DjinnPocket;
             var chosenDjinn = userDjinn.djinn
                 .OfElement(AdeptClassSeriesManager.GetClassSeries(user).Elements)
@@ -161,7 +167,6 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 userDjinn.djinn.Remove(d);
                 userDjinn.djinn = userDjinn.djinn.Prepend(d).ToList();
             });
-            await DjinnInv();
         }
 
         [Command("GiveDjinn")]

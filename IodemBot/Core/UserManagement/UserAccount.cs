@@ -100,8 +100,11 @@ namespace IodemBot.Core.UserManagement
         }
     }
 
+
     public class UserAccount
     {
+        public ulong ID { get; set; }
+        public string Name { get; set; }
         public bool arePublicCodes = false;
 
         public List<string> BonusClasses = new List<string> { };
@@ -114,6 +117,7 @@ namespace IodemBot.Core.UserManagement
         public DjinnPocket DjinnPocket { get; set; } = new DjinnPocket();
 
         public Element Element { get; set; } = Element.none;
+        public Loadouts loadouts { get; set; } = new Loadouts();
 
         [JsonIgnore]
         public string GsClass
@@ -124,7 +128,6 @@ namespace IodemBot.Core.UserManagement
             }
         }
 
-        public ulong ID { get; set; }
         public Inventory Inv { get; set; } = new Inventory();
         public DateTime LastClaimed { get; set; }
         public DateTime LastXP { get; set; }
@@ -184,7 +187,6 @@ namespace IodemBot.Core.UserManagement
         }
 
         public string N3DSCode { get; set; } = "0000-0000-0000";
-        public string Name { get; set; }
         public int NewGames { get; set; } = 0;
         public string PoGoCode { get; set; } = "0000-0000-0000";
         public ServerStats ServerStats { get; set; } = new ServerStats();

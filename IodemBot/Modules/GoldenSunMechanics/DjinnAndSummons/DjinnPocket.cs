@@ -85,6 +85,12 @@ namespace IodemBot.Modules.GoldenSunMechanics
             }
             return false;
         }
+        public Djinn GetDjinn(string DjinnName)
+        {
+            return djinn
+                .Where(d => DjinnName.Equals(d.Djinnname, StringComparison.CurrentCultureIgnoreCase) || DjinnName.Equals(d.Nickname, StringComparison.CurrentCultureIgnoreCase))
+                .FirstOrDefault();
+        }
         public void AddSummon(Summon newSummon)
         {
             summons.Add(newSummon);

@@ -105,6 +105,52 @@ namespace IodemBot.Modules
                 .Build());
         }
 
+        public enum LoadoutAction {Show, Save, Load };
+        [Command("loadout"), Alias("loadouts")]
+        public async Task LoadoutTask(LoadoutAction action = LoadoutAction.Show, [Remainder] string loadoutName = "")
+        {
+            var user = UserAccounts.GetAccount(Context.User);
+            switch (action)
+            {
+                case LoadoutAction.Show:
+                    var embed = new EmbedBuilder();
+                    if(user.loadouts.loadouts.Count > 0)
+                    {
+                        foreach (var item in user.loadouts.loadouts)
+                        {
+                            embed.AddField(item.LoadoutName, $"{ElementIcons[item.element]} {item.classSeries}\n" +
+                                $"{string.Join("",item.gear.Select(i => user.Inv.GetItem(i).Icon))}\n" +
+                                $"{string.Join("",item.djinn.Select(d => user.DjinnPocket.GetDjinn(d)?.Emote))}", inline:true);
+                        }
+
+                    } else
+                    {
+                        embed.WithDescription("No loadouts saved.");
+                    }
+                    _ = ReplyAsync(embed: embed.Build());
+                    break;
+                case LoadoutAction.Save:
+                    if (loadoutName == "") return;
+                    if (user.loadouts.loadouts.Count >= 6) return;
+                    var newLoadout = Loadout.GetLoadout(user);
+                    newLoadout.LoadoutName = loadoutName;
+                    user.loadouts.SaveLoadout(newLoadout);
+                    _ = LoadoutTask(LoadoutAction.Show);
+                    UserAccounts.SaveAccounts();
+                    break;
+                case LoadoutAction.Load:
+                    var loadedLoadout = user.loadouts.GetLoadout(loadoutName);
+                    if(loadedLoadout != null)
+                    {
+                        await SetElement(user, loadedLoadout.element);
+                        loadedLoadout.ApplyLoadout(user);
+                        _ = Status();
+                    }
+                    break;
+            }
+            await Task.CompletedTask;
+        }
+
         [Command("xp"), Alias("level")]
         [Cooldown(5)]
         [Summary("See xp for your next level")]
@@ -314,6 +360,11 @@ namespace IodemBot.Modules
             await Context.Channel.SendMessageAsync("", false, embed.Build());
         }
 
+        public static async Task SetElement(UserAccount user, Element element)
+        {
+
+        }
+
         [Command("MoveInfo")]
         [Alias("Psynergy", "PsynergyInfo", "psy")]
         [Summary("Get information on moves and psynergies")]
@@ -483,7 +534,7 @@ namespace IodemBot.Modules
             await channel.SendMessageAsync("", false, embed.Build());
         }
 
-        private static bool SetClass(UserAccount account, string name = "")
+        internal static bool SetClass(UserAccount account, string name = "")
         {
             string curClass = AdeptClassSeriesManager.GetClassSeries(account).Name;
             if (name == "")
@@ -524,5 +575,6 @@ namespace IodemBot.Modules
                     return "a";
             }
         }
+        
     }
 }
