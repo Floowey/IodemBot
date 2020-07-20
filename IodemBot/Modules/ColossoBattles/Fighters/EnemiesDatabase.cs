@@ -101,43 +101,39 @@ namespace IodemBot.Modules.ColossoBattles
             {
                 return (NPCEnemy)enemy.Clone();
             }
-            else if (enemyKey.StartsWith("DeathTrap"))
+            else if (enemyKey.StartsWith("Trap:"))
             {
                 allEnemies.TryGetValue("DeathTrap", out var trapEnemy);
                 var clone = (NPCEnemy)trapEnemy.Clone();
-                clone.Name = enemyKey.Substring(9);
+                clone.Name = enemyKey.Split(':').Last();
                 return clone;
             }
-            else if (enemyKey.StartsWith("BoobyTrap"))
+            else if (enemyKey.StartsWith("BoobyTrap:"))
             {
                 allEnemies.TryGetValue("BoobyTrap", out var trapEnemy);
                 var clone = (NPCEnemy)trapEnemy.Clone();
-                clone.Name = enemyKey.Substring(9);
+                clone.Name = enemyKey.Split(':').Last();
+                var args = enemyKey.Split(':').First();
+                foreach(var arg in args.Split('-').Skip(1))
+                {
+                    if (int.TryParse(arg, out int damage))
+                    {
+                        clone.Stats.Atk = damage;
+                    } else if (Enum.TryParse<Condition>(arg, out Condition c)) {
+                        clone.EquipmentWithEffect.Add(new Item() { Unleash = new Unleash() { Effects = new List<Effect>() { new ConditionEffect() { Condition = c } } } } );
+                    }
+                    
+                }
                 return clone;
             }
-            else if (enemyKey.StartsWith("Trap"))
+            
+            else if (enemyKey.StartsWith("Key:"))
             {
-                allEnemies.TryGetValue("DeathTrap", out var trapEnemy);
+                allEnemies.TryGetValue("Key", out var trapEnemy);
                 var clone = (NPCEnemy)trapEnemy.Clone();
-                clone.Name = enemyKey.Substring(4);
+                clone.Name = enemyKey.Split(':').Last();
                 return clone;
-            }
-            else if (enemyKey.StartsWith("Key"))
-            {
-                if (uint.TryParse(enemyKey.Substring(3).Substring(0, 2), out var damage))
-                {
-                    allEnemies.TryGetValue("Key20", out var trapEnemy);
-                    var clone = (NPCEnemy)trapEnemy.Clone();
-                    clone.Name = enemyKey.Substring(5);
-                    return clone;
-                }
-                else
-                {
-                    allEnemies.TryGetValue("Key", out var trapEnemy);
-                    var clone = (NPCEnemy)trapEnemy.Clone();
-                    clone.Name = enemyKey.Substring(3);
-                    return clone;
-                }
+                
             }
             else
             {

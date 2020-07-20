@@ -136,7 +136,8 @@
       },
       {
         "Flavourtext": "At points during your journey, you may face longer pieces of text or puzzles. If you want to read these carefully, react with :pause_button: in the channel. This will pause the turn until you're ready. You can find :pause_button: in the default Discord emotes. If you don't use :pause_button:, a move will be chosen for you after about 30 seconds, and the next round will begin. Here is a puzzle, then: What is the world of Golden Sun called?",
-        "EnemyNames": [ "Key10Weyard", "TrapMiddle-earth", "TrapNarnia", "TrapDiscworld" ],
+        "EnemyNames": [ "Key:Weyard", "BoobyTrap-10:Middle-earth", "BoobyTrap-10:Narnia", "BoobyTrap-10:Discworld" ],
+        "Keywords": [ "Shuffle" ],
         "Image": "",
         "RewardTables": [
           [
@@ -464,7 +465,7 @@
       },
       {
         "Flavourtext": "You solve some puzzles to free the way to empty rooms. Well, not *completely* empty, anyways.",
-        "EnemyNames": [ "Bat 1", "Bat 1" ],
+        "EnemyNames": [ "Bat 1", "Bat 2" ],
         "Image": "",
         "RewardTables": [
           [
@@ -478,7 +479,7 @@
       },
       {
         "Flavourtext": "You reach a very distinct room. You have heard about it. You see a bunch of statues, but you can only move one. Which one will it be?",
-        "EnemyNames": [ "DeathTrapStatue", "KeyStatue", "DeathTrapStatue" ],
+        "EnemyNames": [ "Trap:Statue", "Key:Statue", "Trap:Statue" ],
         "Image": "",
         "RewardTables": [
           [
@@ -493,6 +494,7 @@
       {
         "Flavourtext": "You have solved the puzzle, you have reached the ruined Star Chamber! The roof of it has broken down and the room is exposed directly to the Golden Sun. Some nasty looking monsters are looking at you from afar, it would be better to turn back now than never!",
         "EnemyNames": [ "Amaze 1", "Amaze 2", "Amaze 1" ],
+        "Keywords": [ "Shuffle" ],
         "Image": "",
         "RewardTables": [
           [
@@ -1054,7 +1056,7 @@
     "Matchups": [
       {
         "Flavourtext": "Trying to find an access a way to reach the Djinni, you go back to Vault's cemetary and notice a strange pattern in the tombstones. You see the dog you saved from the wolves! What should you do?",
-        "EnemyNames": [ "KeyMind Read", "TrapRetreat", "TrapCatch" ],
+        "EnemyNames": [ "Key:Mind Read", "Trap:Retreat", "Trap:Catch" ],
         "Keywords": [ "Shuffle" ],
         "Image": "",
         "RewardTables": [
@@ -1279,7 +1281,8 @@
       },
       {
         "Flavourtext": "Bats?! In a cave?! No way! And you don't have Repels...",
-        "EnemyNames": [ "Bat 2", "Bat 2", "Bat 2", "Bat 2" ],
+        "EnemyNames": [ "Bat 2", "Bat 1", "Bat 2", "Bat 3" ],
+        "Keywords": [ "Shuffle" ],
         "Image": "",
         "RewardTables": [
           [
@@ -1388,7 +1391,7 @@
     "Matchups": [
       {
         "Flavourtext": "A few critters on the way to Bilibin.",
-        "EnemyNames": [ "Rat Soldier 1", "Bat 2", "Bat 2", "Rat 1" ],
+        "EnemyNames": [ "Rat Soldier 1", "Bat 2", "Bat 3", "Rat 1" ],
         "Keywords": [ "Shuffle" ],
         "Image": "",
         "RewardTables": [
@@ -1491,7 +1494,7 @@
       },
       {
         "Flavourtext": "You explore more of the town. After some parcouring through the town you find another entrance to the Mayor's Warehouse cave. From here you can use your Psynergy to free the way. Which one do you use?",
-        "EnemyNames": [ "KeyMove", "DeathTrapCatch", "DeathTrapRetreat" ],
+        "EnemyNames": [ "Key:Move", "Trap:Catch", "Trap:Retreat" ],
         "Keywords": [ "Shuffle" ],
         "Image": "https://cdn.discordapp.com/attachments/668443234292334612/733732549725126718/unknown.png",
         "RewardTables": [
@@ -1582,7 +1585,8 @@
       },
       {
         "Flavourtext": "You enter the cave and quickly find yourself in a dead end. There seems to be a small ledge up there with a chest. If you jump high enough, you *might* reach it. Watch out, it's a bit gooey.",
-        "EnemyNames": [ "Gnome", "Ooze 1", "Ooze 1" ],
+        "EnemyNames": [ "Gnome", "Ooze 1", "Ooze 2" ],
+        "Keywords": [ "Shuffle" ],
         "Image": "",
         "RewardTables": [
           [
@@ -1617,7 +1621,8 @@
       },
       {
         "Flavourtext": "You notice with the steam of your breath how the cave keeps getting colder and colder. What's up with that, huh?",
-        "EnemyNames": [ "Ghoul", "Ooze 1", "Ooze 1", "Ooze 1", "Ghoul" ],
+        "EnemyNames": [ "Ghoul", "Ooze 1", "Ooze 2", "Ooze 1", "Ghoul" ],
+        "Keywords": [ "Shuffle" ],
         "Image": "",
         "RewardTables": [
           [
@@ -1655,7 +1660,8 @@
       },
       {
         "Flavourtext": "At last you see a bright light, marking the end of this cold cave. Oh wait! It *keeps* getting colder! And now you're being attacked by a pack of Wolfkins. Great.",
-        "EnemyNames": [ "Wolfkin Cub 1", "Wolfkin Cub 1", "Wolfkin Cub 1" ],
+        "EnemyNames": [ "Wolfkin Cub 1", "Wolfkin Cub 1", "Wolfkin Cub 2" ],
+        "Keywords": [ "Shuffle" ],
         "Image": "",
         "RewardTables": [
           [
@@ -1913,7 +1919,7 @@
       },
       {
         "Flavourtext": "After besting the Lizard Man and delving further into the Lighthouse, it becomes clear that the place has been taken over by monsters. They don't seem too thrilled by your presence, either.",
-        "EnemyNames": [ "Cuttle 1", "Cuttle 1", "Seabird" ],
+        "EnemyNames": [ "Cuttle 1", "Cuttle 2", "Seabird" ],
         "Image": "",
         "RewardTables": [
           [
@@ -2302,7 +2308,7 @@
       },
       {
         "Flavourtext": "Another side room holds a table with three keys.  Just up the passage you hear another bored-sounding guard announcing that if he spots you, you lose the challenge, so choose wisely!",
-        "EnemyNames": [ "Key10RedKey", "TrapBlueKey", "TrapYellowKey" ],
+        "EnemyNames": [ "Key:RedKey", "BoobyTrap-10:BlueKey", "BoobyTrap-10:YellowKey" ],
         "Keywords": [ "Shuffle" ],
         "Image": "https://imgur.com/6oB3CBd",
         "RewardTables": [
@@ -2497,6 +2503,7 @@
       {
         "Flavourtext": "Some bees swarming around decide to attack you.  Pretty typical in this kind of place.",
         "EnemyNames": [ "Drone Bee 1", "Drone Bee 1", "Drone bee 1" ],
+        "Keywords": [ "Shuffle" ],
         "Image": "",
         "RewardTables": [
           [
@@ -2532,7 +2539,7 @@
       },
       {
         "Flavourtext": "You continue to advance deeper and deeper into the forest, taking care that you don't get lost. Unlike these guys, who were eaten by a troll.",
-        "EnemyNames": [ "Troll 1", "Skeleton 1", "Skeleton 1", "Skeleton 1" ],
+        "EnemyNames": [ "Troll 1", "Skeleton 1", "Skeleton 1", "Skeleton 2" ],
         "Keywords": [ "Shuffle" ],
         "Image": "",
         "RewardTables": [
@@ -2592,7 +2599,8 @@
     "Matchups": [
       {
         "Flavourtext": "Rodents of unusual size!  A respectable first fight, yet you sigh upon recalling the great size of Tret.",
-        "EnemyNames": [ "Rat 1", "Rat Soldier 1", "Rat 1" ],
+        "EnemyNames": [ "Rat 1", "Rat Soldier 1", "Rat 2" ],
+        "Keywords": [ "Shuffle" ],
         "Image": "",
         "RewardTables": [
           [
@@ -2644,7 +2652,8 @@
       },
       {
         "Flavourtext": "After searching around a while, you find a room with a table of spiders playing cards.  They immediately notice you, uh oh...",
-        "EnemyNames": [ "Spider 1", "Spider 1", "Spider 1", "Spider 1", "Spider 1" ],
+        "EnemyNames": [ "Spider 1", "Spider 2", "Spider 1", "Spider 2 Spider 1" ],
+        "Keywords": [ "Shuffle" ],
         "Image": "",
         "RewardTables": [
           [
@@ -2722,7 +2731,7 @@
       },
       {
         "Flavourtext": "As you are about to check the chest in the room, a troll enters the room.",
-        "EnemyNames": [ "Troll 4" ],
+        "EnemyNames": [ "Troll 2" ],
         "Image": "",
         "RewardTables": [
           [
@@ -2820,6 +2829,7 @@
       {
         "Flavourtext": "The cave turns out to be writhing with monsters! They weren't joking about a test!",
         "EnemyNames": [ "Rat 1", "Mole 1", "Mole 2", "Mole 1", "Rat 2" ],
+        "Keywords": [ "Shuffle" ],
         "Image": "",
         "RewardTables": [
           [
@@ -2942,7 +2952,8 @@
       },
       {
         "Flavourtext": "An intense battle with the Djinni left you fatigued. After witnessing your tired form, a bony group rush you.",
-        "EnemyNames": [ "Skeleton 1", "Skeleton 2", "Bone Fighter 2", "Skeleton 2", "Skeleton 1" ],
+        "EnemyNames": [ "Skeleton 1", "Skeleton 2", "Bone Fighter 2", "Skeleton 2", "Bone Fighter 1" ],
+        "Keywords": [ "Shuffle" ],
         "Image": "",
         "RewardTables": [
           [
@@ -3002,7 +3013,8 @@
       },
       {
         "Flavourtext": "After the battle with the furious ape, you proceed past the stump. Having heard quiet running from behind, you turn to see another ape coming at you. Turns out the first ape wasn't the only one in the trunk, and this time, there's a bunch!",
-        "EnemyNames": [ "Ape 1", "Ape 1", "Ape 1" ],
+        "EnemyNames": [ "Ape 1", "Ape 2", "Ape 2" ],
+        "Keywords": [ "Shuffle" ],
         "Image": "",
         "RewardTables": [
           [
@@ -3415,7 +3427,8 @@
     "Matchups": [
       {
         "Flavourtext": "At the outskirts of Altin, you are ambushed by mighty rat warriors with no tolerance for intruders!",
-        "EnemyNames": [ "Rat Fighter 1", "Rat Fighter 1", "Ape 1", "Rat Fighter 1" ],
+        "EnemyNames": [ "Rat Fighter 1", "Rat Fighter 2", "Ape 1", "Rat Fighter 2" ],
+        "Keywords": [ "Shuffle" ],
         "Image": "",
         "RewardTables": [
           [
@@ -3460,7 +3473,7 @@
       },
       {
         "Flavourtext": "As you follow the railroad tracks deeper into the mine, the Halloween special assaults you!",
-        "EnemyNames": [ "Bone Fighter 1", "Tarantula 1", "Dirge 1" ],
+        "EnemyNames": [ "Bone Fighter 1", "Tarantula 2", "Dirge 2" ],
         "Keywords": [ "Shuffle" ],
         "Image": "",
         "RewardTables": [
@@ -3529,7 +3542,7 @@
       },
       {
         "Flavourtext": "A trail of ooze leads you onward.  Careful, this could be a sticky situation!",
-        "EnemyNames": [ "Slime Beast 1", "Slime Beast 1", "Bone Fighter 1", "Slime Beast 1" ],
+        "EnemyNames": [ "Slime Beast 1", "Slime Beast 2", "Bone Fighter 1", "Slime Beast 1" ],
         "Keywords": [ "Shuffle" ],
         "Image": "",
         "RewardTables": [
@@ -3644,7 +3657,8 @@
       },
       {
         "Flavourtext": "'This desert has some oases, but a lot of them are just mirages. My powers are not very strong yet, so we need to pick carefully'",
-        "EnemyNames": [ "BoobyTrapOasis", "Key20Oasis" ],
+        "EnemyNames": [ "BoobyTrap-Delusion-Stun:Oasis", "Key:Oasis" ],
+        "Keywords": [ "Shuffle" ],
         "Image": "",
         "RewardTables": [
           [
@@ -3681,6 +3695,7 @@
       {
         "Flavourtext": "While the desert is hot, a lot have adapted to the environment.",
         "EnemyNames": [ "Orc", "Orc", "Salamander 1" ],
+        "Keywords": [ "Shuffle" ],
         "Image": "",
         "RewardTables": [
           [
@@ -3701,7 +3716,8 @@
       },
       {
         "Flavourtext": "Let's take a halt, and hopefully freshen up",
-        "EnemyNames": [ "BoobyTrapOasis", "Key20Oasis" ],
+        "EnemyNames": [ "BoobyTrap-Delusion-Stun:Oasis", "Key:Oasis" ],
+        "Keywords": [ "Shuffle" ],
         "Image": "",
         "RewardTables": [
           [
@@ -3785,7 +3801,8 @@
       },
       {
         "Flavourtext": "'Oh no, it is really getting dark. Let's take one more break, we are close to the other side!'",
-        "EnemyNames": [ "BoobyTrapOasis", "Key20Oasis" ],
+        "EnemyNames": [ "BoobyTrap-Delusion-Stun:Oasis", "Key:Oasis" ],
+        "Keywords": [ "Shuffle" ],
         "Image": "",
         "RewardTables": [
           [
@@ -3846,6 +3863,7 @@
       {
         "Flavourtext": "Sure, it's been days since you last had a warm meal, but still. Don't eat strange mushrooms...",
         "EnemyNames": [ "Death Cap", "Undead 1", "Death Cap" ],
+        "Keywords": [ "Shuffle" ],
         "Image": "",
         "RewardTables": [
           [
@@ -3901,7 +3919,8 @@
       },
       {
         "Flavourtext": "Colosso hopefuls and local barflies who've all imbibed a bit too much and are looking for a fight.",
-        "EnemyNames": [ "Ruffian", "Bandit 1", "Thief 1", "Bandit 1", "Ruffian" ],
+        "EnemyNames": [ "Ruffian", "Bandit 2", "Thief 2", "Bandit 2", "Ruffian" ],
+        "Keywords": [ "Shuffle" ],
         "Image": "",
         "RewardTables": [
           [
@@ -3914,7 +3933,7 @@
       },
       {
         "Flavourtext": "Where there are merchants, there will be thieves.",
-        "EnemyNames": [ "Bandit 1", "Brigand", "Bandit 1" ],
+        "EnemyNames": [ "Bandit 2", "Brigand", "Bandit 2" ],
         "Image": "",
         "RewardTables": [
           [
@@ -3970,7 +3989,8 @@
       },
       {
         "Flavourtext": "They don't allow you to have bees in here.",
-        "EnemyNames": [ "Fighter Bee 1", "Fighter Bee 1", "Fighter Bee 1", "Fighter Bee 1", "Fighter Bee 1", "Fighter Bee 1", "Fighter Bee 1", "Fighter Bee 1", "Fighter Bee 1" ],
+        "EnemyNames": [ "Fighter Bee 1", "Fighter Bee 2", "Fighter Bee 1", "Fighter Bee 2", "Fighter Bee 1", "Fighter Bee 2", "Fighter Bee 1", "Fighter Bee 2", "Fighter Bee 1" ],
+        "Keywords": [ "Shuffle" ],
         "Image": "",
         "RewardTables": [
           [
@@ -4249,6 +4269,7 @@
       {
         "Flavourtext": "Your defeat of both Sean and Ouranos seems to have gained you their respect. The three of you spend the afternoon swapping stories and cementing your new friendship. An interruption comes all too soon, however, with a cry from the crow's nest: 'Monsters sighted off the port side! All hands, prepare for boarders!'",
         "EnemyNames": [ "Man o' War 2", "Man o' War 1", "Man o' War 2" ],
+        "Keywords": [ "Shuffle" ],
         "Image": "",
         "RewardTables": [
           [
@@ -4294,6 +4315,7 @@
       {
         "Flavourtext": "There's no time to rest. Despite your best efforts, some of the oarsmen have been injured by the swarm of monsters. A few of the warriors leave the deck to take up oars, lending their brawn to the cause. Passengers lend a hand as well, some less enthusiastically than others. Those of you who remain in the fight brace yourselves for the next attack.",
         "EnemyNames": [ "Man o' War 2", "Virago 2", "Lizard Fighter 2", "Virago 2", "Man o' War 2" ],
+        "Keywords": [ "Shuffle" ],
         "Image": "",
         "RewardTables": [
           [
@@ -4549,7 +4571,8 @@
       },
       {
         "Flavourtext": "You're done with this city. Too big, too strange. You start exploring the outskirts.",
-        "EnemyNames": [ "Mole 1", "Mad Mole 1", "Mole Mage 1" ],
+        "EnemyNames": [ "Mole 1", "Mad Mole 1", "Mole Mage 1", "Mole 2", "Mad Mole 2", "Mole Mage 2" ],
+        "Keywords": [ "Shuffle" ],
         "Image": "",
         "RewardTables": [
           [
@@ -4707,6 +4730,7 @@
       {
         "Flavourtext": "Having been...greeted, more creatures come your way. Quite the popular one, aren't you?",
         "EnemyNames": [ "Wight", "Wight", "Mad Mole 1", "Mad Mole 1" ],
+        "Keywords": [ "Shuffle" ],
         "Image": "",
         "RewardTables": [
           [
@@ -4796,7 +4820,8 @@
       },
       {
         "Flavourtext": "Monsters, monsters, monsters....who *doesn't* love monsters, right?",
-        "EnemyNames": [ "Armored Rat 1", "Armored Rat 1", "Foul Dirge 1" ],
+        "EnemyNames": [ "Armored Rat 1", "Armored Rat 2", "Foul Dirge 1" ],
+        "Keywords": [ "Shuffle" ],
         "Image": "",
         "RewardTables": [
           [
@@ -4866,7 +4891,7 @@
       },
       {
         "Flavourtext": "`(A puzzle is coming up, you may want to pause this by reacting anywhere with ` :pause_button: `to have time to figure it out!)`\n\nYou eventually find a room with five stones placed in a specific fashion, with more strange stones on the wall. Attached to the wall is a note, and it reads the following:\n```Blue is next to Green\nRed is on an edge\nWhite is not next to Red and Yellow\nBlue and Yellow share a Neighbour\nWhite is further left than Red.\n\nWhere is Yellow?```\nUnsure of why it mentions colors, you try Reveal, and learn that the stones indeed have colors. You've come this far, might as well attempt to solve the riddle.",
-        "EnemyNames": [ "TrapFirst", "TrapSecond", "TrapThird", "KeyFourth", "TrapFifth" ],
+        "EnemyNames": [ "Trap:First", "Trap:Second", "Trap:Third", "Key:Fourth", "Trap:Fifth" ],
         "Image": "",
         "RewardTables": [
           [
@@ -4880,7 +4905,7 @@
       },
       {
         "Flavourtext": "As you touch the correct stone, you a voice is heard inside your head. ```Which stone is in the middle?```",
-        "EnemyNames": [ "KeyGreen", "TrapRed", "TrapBlue", "TrapYellow", "TrapWhite" ],
+        "EnemyNames": [ "Key:Green", "Trap:Red", "Trap:Blue", "Trap:Yellow", "Trap:White" ],
         "Keywords": [ "Shuffle" ],
         "Image": "",
         "RewardTables": [
@@ -5066,7 +5091,7 @@
     "Matchups": [
       {
         "Flavourtext": "The Warriors of Vale once saved Weyard from dying. Who is the oldest valean Hero?",
-        "EnemyNames": [ "ColossoIsaac", "ColossoGaret", "ColossoFelix", "ColossoPiers" ],
+        "EnemyNames": [ "Trap:Isaac", "Trap:Garret", "Key:Felix", "Trap:Piers" ],
         "Keywords": [ "Shuffle" ],
         "Image": "",
         "RewardTables": [
@@ -5105,7 +5130,7 @@
       },
       {
         "Flavourtext": "Which Item protects its wearer from the effects of the curse effect?",
-        "EnemyNames": [ "ColossoPriestRing", "ColossoGuardianRing", "ColossoSpiritRing", "ColossoClericsRing" ],
+        "EnemyNames": [ "Key:Priest Ring", "Trap:Guardian Ring", "Trap:Spirit Ring", "Key:Clerics Ring" ],
         "Keywords": [ "Shuffle" ],
         "Image": "",
         "RewardTables": [
@@ -5144,7 +5169,7 @@
       },
       {
         "Flavourtext": "Which chute do you slide down from?",
-        "EnemyNames": [ "ColossoLeft", "ColossoMiddle", "ColossoRight" ],
+        "EnemyNames": [ "Trap:Left", "Key:Middle", "Trap:Right" ],
         "Image": "https://cdn.discordapp.com/attachments/615112372171964436/634371761026105354/unknown.png",
         "RewardTables": [
           [
@@ -5182,7 +5207,7 @@
       },
       {
         "Flavourtext": "What's that, another puzzle? Take a breath, think about this! You are facing four puppets dressed as Gladiators with nametags on them. Who is not competing in the tournament?",
-        "EnemyNames": [ "ColossoDekka", "ColossoErec", "ColossoIsaac", "ColossoBuford" ],
+        "EnemyNames": [ "Trap:Dekka", "Key:Erec", "Trap:Isaac", "Trap:Buford" ],
         "Keywords": [ "Shuffle" ],
         "Image": "",
         "RewardTables": [
@@ -5349,7 +5374,8 @@
       },
       {
         "Flavourtext": "It seems as if the wind's picked up fiercely... and on top of that you're caught in a Tornado! Which Psynergy do you use?",
-        "EnemyNames": [ "KeyDouse", "DeathTrapRetreat", "DeathTrapWhirlwind" ],
+        "EnemyNames": [ "Key:Douse", "BoobyTrap-Stun:Retreat", "BoobyTrap-Delusion:Whirlwind" ],
+        "Keywords": [ "https://cdn.discordapp.com/attachments/668443234292334612/734760672151339118/unknown.png" ],
         "Image": "",
         "RewardTables": [
           [
@@ -5738,9 +5764,9 @@
       },
       {
         "Flavourtext": "You find a gap too big to be jumped above and strange grey carved blocks. It looks like you can use them to cross, what do you use?",
-        "EnemyNames": [ "TrapMove", "KeyCarry", "TrapLift" ],
+        "EnemyNames": [ "Trap:Move", "Key:Carry", "Trap:Lift" ],
         "Keywords": [ "Shuffle" ],
-        "Image": "",
+        "Image": "https://cdn.discordapp.com/attachments/668443234292334612/734753917648371723/unknown.png",
         "RewardTables": [
           [
             {
@@ -5816,7 +5842,7 @@
       },
       {
         "Flavourtext": "A bunch of energy lines are etched into the floor. An electrician should probably fix those, they could be a potential safety hazard. Watch out, don't get zapped.",
-        "EnemyNames": [ "Thunder Lizard 1", "Thunder Lizard 1", "Thunder Lizard 1" ],
+        "EnemyNames": [ "Thunder Lizard 1", "Thunder Lizard 1", "Thunder Lizard 2" ],
         "Image": "",
         "RewardTables": [
           [
@@ -5866,7 +5892,8 @@
       },
       {
         "Flavourtext": "As you enter the next room, you're surprised by some royalty and their guard dogs.",
-        "EnemyNames": [ "Fenrir 1", "Manticore King", "Manticore King", "Fenrir 1" ],
+        "EnemyNames": [ "Fenrir 1", "Manticore King", "Manticore King", "Fenrir 2" ],
+        "Keywords": [ "Shuffle" ],
         "Image": "",
         "RewardTables": [
           [
@@ -5891,7 +5918,8 @@
       },
       {
         "Flavourtext": "You climb and climb higher, you're getting closer to the top. From a window a bunch of feathered beasts ambush you. They seem very unimpressed by the intense Venus psynergy that surrounds this place.",
-        "EnemyNames": [ "Wild Gryphon 1", "Wild Gryphon 1", "Wild Gryphon 1", "Wild Gryphon 1" ],
+        "EnemyNames": [ "Wild Gryphon 1", "Wild Gryphon 2", "Wild Gryphon 1", "Wild Gryphon 2" ],
+        "Keywords": [ "Shuffle" ],
         "Image": "",
         "RewardTables": [
           [
@@ -6019,7 +6047,8 @@
     "Matchups": [
       {
         "Flavourtext": "Even before you can enter, a bouncer and his two assistants try to stop you. Is this place booked by the stars of monsters?",
-        "EnemyNames": [ "Plated Rat 1", "Orc Lord", "Plated Rat 1" ],
+        "EnemyNames": [ "Plated Rat 1", "Orc Lord", "Plated Rat 2" ],
+        "Keywords": [ "Shuffle" ],
         "Image": "",
         "RewardTables": [
           [
@@ -6169,6 +6198,7 @@
       {
         "Flavourtext": "That party was well suited. Time to check out the other path. You stumble upon some sort of a secret, monsterous society...",
         "EnemyNames": [ "Chimera Mage 1", "Gnome Wizard", "Chimer Mage", "Gnome Wizard 1" ],
+        "Keywords": [ "Shuffle" ],
         "Image": "",
         "RewardTables": [
           [
@@ -6189,7 +6219,7 @@
       },
       {
         "Flavourtext": "`(A puzzle is coming up, you may want to pause this by reacting anywhere with ` :pause_button: `to have time to figure it out!)`\n\nYIn the room are five, colorful statues (Red, Blue, Yellow, Green and Purple) standing in a cross formation:\n```\nR...B\n..Y..\nG...P\n```\nThe statues are speaking to your soul...\n```\nOh Adept, we can feel your glance. Will you help to make us dance?\n\nBlue and Red are swapping spots, around the clock we move one slot.\nSwitching now are Blue and Green. Purple, meanwhile, is going in.\nYellow and Blue are locking their eyes, the group dances one step counterclockwise.\nGreen wants the center, as Red tries to enter. The one further right will have to surrender.\nWithout a delay, we'll dance our ballet. The one who's south-east will get the midway.\n\nNow tell us the answer to our small riddle, which color is now in the middle?\n```",
-        "EnemyNames": [ "KeyBlue", "TrapYellow", "TrapRed", "TrapGreen", "Trap Purple" ],
+        "EnemyNames": [ "Key:Blue", "Trap:Yellow", "Trap:Red", "Trap:Green", "Trap:Purple" ],
         "Keywords": [ "Shuffle" ],
         "Image": "",
         "RewardTables": [

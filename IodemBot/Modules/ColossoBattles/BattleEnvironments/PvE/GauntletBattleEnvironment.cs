@@ -99,7 +99,7 @@ namespace IodemBot.Modules.ColossoBattles
         protected override EmbedBuilder GetEnemyEmbedBuilder()
         {
             var builder = base.GetEnemyEmbedBuilder();
-            if (matchup.Image != null)
+            if (!matchup.Image.IsNullOrEmpty())
             {
                 builder.WithThumbnailUrl(matchup.Image);
             }

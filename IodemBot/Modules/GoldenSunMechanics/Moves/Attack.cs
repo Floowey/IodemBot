@@ -193,6 +193,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 }
                 log.Add($"{enemy.Name} strikes back!");
                 log.AddRange(User.DealDamage(CounterDamage));
+                enemy.EquipmentWithEffect.ForEach(i => i.Unleash.AllEffects.ForEach(e => log.AddRange(e.Apply(enemy, User))));
                 enemy.GetTeam().ForEach(e => e.Kill());
             }
 
