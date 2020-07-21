@@ -7083,7 +7083,7 @@
       },
       {
         "Flavourtext": "Those oasis creatures give you quite the trouble, what? Naturally, they're water creatures! Keep in mind that as a Mars Adept you are still opposed to Mercury. These creatures right here have adapted very well to their surroundings. But the desert has more to offer. Don't worry, I realize that Mars is not exactly known to have healing qualities. Let me get you back up on your feet!'",
-        "EnemyNames": [ "Ant Lion", "Ant Lion" ],
+        "EnemyNames": [ "Ant Lion"],
         "Keywords": [ "Shuffle", "Heal" ],
         "Image": "",
         "RewardTables": [
