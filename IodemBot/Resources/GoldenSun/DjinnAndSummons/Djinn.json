@@ -562,9 +562,9 @@
             "Targettype": 1,
             "element": 0,
             "effects": [
-                {
-                    "Type": "AttackWithTeammate"
-                }
+              {
+                "Type": "AttackWithTeammate"
+              }
             ]
         },
         "Stats": {

@@ -963,7 +963,7 @@
         ]
       },
       {
-        "Flavourtext": "The dog is thankful for saving him and giving him a bone, he appears it to wants to show you something [Vault Cave once implemented], but you are distracted by some rats.",
+        "Flavourtext": "The dog is thankful for saving him and giving him a bone, he appears it to wants to show you something, but you are distracted by some rats.",
         "EnemyNames": [ "Rat Soldier 2", "Rat 1" ],
         "Image": "",
         "RewardTables": [
@@ -1194,7 +1194,7 @@
       },
       {
         "Flavourtext": "What is with all of these dead people in caves. How many people could have died in a hidden cave beneath a seemingly peaceful town?",
-        "EnemyNames": [ "Undead" ],
+        "EnemyNames": [ "Undead 2" ],
         "Image": "",
         "RewardTables": [
           [
@@ -1245,6 +1245,20 @@
               "Djinn": "Sap"
             },
             { "Weight": 32 }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "Well _this_ was interesting! And now aaaall the way back...",
+        "EnemyNames": [ "End" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "XP": 1,
+              "Coins": 1
+            }
           ]
         ]
       }
@@ -3624,7 +3638,8 @@
               "Weight": 1,
               "RequireTag": [ "HamaAltin" ],
               "Tag": "AltinFinished",
-              "Obtainable": 1
+              "Obtainable": 1,
+              "message": "You slayed the beast. It lets out a roar and magically turns into stone. You fulfilled Hamas task. As you head out, you see a silhouette gliding away, dissappearing in the sky. What could that have been? Yet another reason to head back to Hama and report your sighting."
             }
           ]
         ]
@@ -3847,6 +3862,15 @@
               "XP": 10,
               "Coins": 10,
               "Dungeon": "Kalay"
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "MegaeraSeen" ],
+              "Tag": "HamaMegaera1",
+              "Obtainable": 1,
+              "message": "Wait!', shouts Feizhi, as you were about to head into a more open area. 'ARGH, my head. It hurts. I think it's Hama. I think she's trying to tell us something. Please, slow down and let me sit. one second..'\n> So you saw another spirit? One with two swords? The elements are out of balance more than I anticipated. The spirits are loose and mischievous, they will probably hide in places full of an element's psynergy and drain it. We need to seek them, but be careful! Perhaps you could revisit the lighthouse or the forests you have already been in.'"
             }
           ]
         ]
@@ -6246,12 +6270,12 @@
   "Crossbone Isle": {
     "name": "Crossbone Isle",
     "IsOneTimeOnly": true,
-    "FlavourText": "Dungeon Description",
+    "FlavourText": "The fabled home of the pirate king, Deadbeard, who is said to guard a treasure hoard.",
     "Image": "https://goldensunwiki.net/w/images/9/90/CrossboneIsleOverworld.png",
     "IsDefault": false,
     "Matchups": [
       {
-        "Flavourtext": "Battle 1 Text",
+        "Flavourtext": "You've made it to the island!  It's a quick walk to the cave entrance.  As you enter cautiously, some monsters take exception to your presence here!",
         "EnemyNames": [ "Virago 2", "Hobgoblin 1", "Virago 2" ],
         "Image": "",
         "RewardTables": [
@@ -6265,7 +6289,7 @@
         ]
       },
       {
-        "Flavourtext": "Battle 2 Text",
+        "Flavourtext": "After hopping across dozens of platforms, you exit the first room and travel down the staircase... only to find company waiting for you.",
         "EnemyNames": [ "Grisly 1", "Succubus 1", "Grisly 1" ],
         "Keywords": [ "https://cdn.discordapp.com/attachments/535209634408169492/556079984091856907/succubus.png" ],
         "Image": "",
@@ -6287,7 +6311,7 @@
         ]
       },
       {
-        "Flavourtext": "Battle 3 Text",
+        "Flavourtext": "Having heaved fallen columns out of your way, you pass through the second room.  The guardians of the next level await...",
         "EnemyNames": [ "Fiendish Ghoul", "Lich 2", "Fiendish Ghoul" ],
         "Image": "",
         "RewardTables": [
@@ -6308,7 +6332,7 @@
         ]
       },
       {
-        "Flavourtext": "Battle 4 Text",
+        "Flavourtext": "You collect the key from the third room and pass through the final door and down the stairs.  A matched pair of gryphons greets you.",
         "EnemyNames": [ "Gryphon 1", "Gryphon 1" ],
         "Image": "",
         "RewardTables": [
@@ -6329,7 +6353,7 @@
         ]
       },
       {
-        "Flavourtext": "Battle 5 Text",
+        "Flavourtext": "The statue's sharp eyes in the next room were no match for your stealth and Psynergy.  You peer downward, and the staircase seems endless, disappearing into darkness...",
         "EnemyNames": [ "Stone Soldier", "Lizard King", "Harridan 2", "Stone Soldier" ],
         "Image": "",
         "RewardTables": [
@@ -6350,7 +6374,7 @@
         ]
       },
       {
-        "Flavourtext": "Battle 6 Text",
+        "Flavourtext": "After an eternity of fiddling with logs and underground dam controls, you exit the fifth room and head downwards once more.  A pair of chimeras swoops down from above to challenge you.",
         "EnemyNames": [ "Chimera 3", "Chimera 3" ],
         "Image": "",
         "RewardTables": [
@@ -6371,7 +6395,7 @@
         ]
       },
       {
-        "Flavourtext": "Battle 7 Text",
+        "Flavourtext": "As you work your way through the maze of ladders and pillars, you spy the familiar shape of a djinni!",
         "EnemyNames": [ "Venus Djinni 10" ],
         "Image": "",
         "RewardTables": [
@@ -6398,7 +6422,7 @@
         ]
       },
       {
-        "Flavourtext": "Battle 8 Text",
+        "Flavourtext": "With the sixth room behind you, the stairway down beckons.  You answer its siren call, and find guards awaiting you at the next puzzle room door.",
         "EnemyNames": [ "Earth Lizard 1", "Earth Lizard 1" ],
         "Image": "",
         "RewardTables": [
@@ -6419,7 +6443,7 @@
         ]
       },
       {
-        "Flavourtext": "Battle 9 Text",
+        "Flavourtext": "You're beginning to tire from so many battles and using your Psynergy so much, but you gamely haul block around until you can escape the room.  You squint down the staircase... surely it can't be long now.  In the meantime, more monsters stand between you and your goal.",
         "EnemyNames": [ "Poison Toad", "Thunder Lizard 2" ],
         "Image": "",
         "RewardTables": [
@@ -6440,7 +6464,7 @@
         ]
       },
       {
-        "Flavourtext": "Battle 10 Text",
+        "Flavourtext": "A quartet of eerie howls meet your ears as you exit the puzzle room and begin down the stairs once more.  Oh boy...",
         "EnemyNames": [ "Cerebus", "Cerebus" ],
         "Image": "",
         "RewardTables": [
@@ -6461,7 +6485,7 @@
         ]
       },
       {
-        "Flavourtext": "Battle 11 Text",
+        "Flavourtext": "You enter the door and begin rolling logs across the pool.  As you do, you spot a treasure chest.  Is this the legendary treasure cache?  As you reach for it, the chest sprouts teeth.  Guess not!",
         "EnemyNames": [ "Mimic 23" ],
         "Image": "",
         "RewardTables": [
@@ -6477,7 +6501,7 @@
         ]
       },
       {
-        "Flavourtext": "Battle 12 Text",
+        "Flavourtext": "You finally reach the bottom of the stairs.  A rotting ship lies here, so you climb aboard, searching for the fabled treasure.  The rattle of bones and the clatter of armor greets you instead.  Glowing yellow eyes lurch toward you with remarkable speed! ",
         "EnemyNames": [ "Deadbeard" ],
         "Image": "",
         "RewardTables": [
@@ -6507,7 +6531,7 @@
         ]
       },
       {
-        "Flavourtext": "End",
+        "Flavourtext": "You don't see the vast piles of treasure you'd hoped for, but you help yourself to some of the nice things you spot after the fight is over.  Deadbeard has been vanquished, and you are very ready for a long nap.  ",
         "EnemyNames": [ "End" ],
         "Image": "",
         "RewardTables": [

@@ -10485,7 +10485,26 @@
     "stats": {
       "maxhp": 421,
       "maxpp": 0,
-      "atk": 251,
+      "atk": 281,
+      "def": 69,
+      "spd": 104
+    },
+    "elstats": {
+      "venusres": 72,
+      "mercuryres": 72,
+      "marsres": 72,
+      "jupiterres": 72,
+      "jupiteratk": 80
+    }
+  },
+  "Lunpa Guard": {
+    "movepool": [ "Slice" ],
+    "name": "Lunpa Guard",
+    "imgurl": "https://www.spriters-resource.com/resources/sheet_icons/79/82607.png",
+    "stats": {
+      "maxhp": 421,
+      "maxpp": 0,
+      "atk": 281,
       "def": 69,
       "spd": 104
     },
@@ -11126,7 +11145,7 @@
     "stats": {
       "maxhp": 1500,
       "maxpp": 450,
-      "atk": 210,
+      "atk": 250,
       "def": 145,
       "spd": 207
     },
