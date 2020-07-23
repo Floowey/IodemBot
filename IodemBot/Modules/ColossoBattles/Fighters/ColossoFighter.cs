@@ -451,7 +451,7 @@ namespace IodemBot.Modules.ColossoBattles
             //Poison Damage
             if (HasCondition(Condition.Poison))
             {
-                var damage = Math.Min(200, (uint)(Stats.MaxHP * Global.Random.Next(5, 10) / 100));
+                var damage = Math.Min(200, (uint)(Stats .MaxHP * Global.Random.Next(5, 10) / 100));
                 turnLog.Add($"{Name} is damaged by the Poison.");
                 turnLog.AddRange(DealDamage(damage));
             }
@@ -474,16 +474,8 @@ namespace IodemBot.Modules.ColossoBattles
         public double MultiplyBuffs(string stat)
         {
             var mult = Buffs.Where(b => b.stat.Equals(stat, StringComparison.InvariantCultureIgnoreCase) && b.multiplier > 0).Aggregate(1.0, (p, s) => p *= s.multiplier);
-            if (mult > 2.0)
-            {
-                mult = 2.0;
-            }
-
-            if (mult < 0.4)
-            {
-                mult = 0.4;
-            }
-
+            mult = Math.Min(mult, 2.0);
+            mult = Math.Max(mult, 0.4);
             return Math.Round(mult, 2);
         }
 

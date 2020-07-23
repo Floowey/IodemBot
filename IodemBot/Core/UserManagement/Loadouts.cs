@@ -18,8 +18,13 @@ namespace IodemBot.Core.UserManagement
 
         public void SaveLoadout(Loadout loadout)
         {
-            loadouts.RemoveAll(l => l.LoadoutName == loadout.LoadoutName);
+            RemoveLoadout(loadout.LoadoutName);
             loadouts.Add(loadout);
+        }
+
+        public void RemoveLoadout(string name)
+        {
+            loadouts.RemoveAll(l => l.LoadoutName == name);
         }
     }
 

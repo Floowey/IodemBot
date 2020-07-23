@@ -24,9 +24,8 @@ namespace IodemBot.Modules.ColossoBattles
         public DateTime LastEnemySet = DateTime.MinValue;
         public bool IsReady { get { return !IsActive && !HasPlayer && DateTime.Now.Subtract(LastEnemySet).TotalSeconds >= 20; } }
 
-        public GauntletBattleEnvironment(string Name, ITextChannel lobbyChannel, ITextChannel BattleChannel, string DungeonName, bool IsDeleted = false) : base(Name, lobbyChannel, BattleChannel)
+        public GauntletBattleEnvironment(string Name, ITextChannel lobbyChannel, ITextChannel BattleChannel, string DungeonName, bool isPersistent) : base(Name, lobbyChannel, isPersistent, BattleChannel)
         {
-            this.IsDeleted = IsDeleted;
             SetEnemy(DungeonName);
         }
 
@@ -109,7 +108,7 @@ namespace IodemBot.Modules.ColossoBattles
         public override void Dispose()
         {
             base.Dispose();
-            _ = BattleChannel.DeleteAsync();
+            
         }
 
         public override async Task Reset()

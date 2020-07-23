@@ -22,11 +22,11 @@ namespace IodemBot.Modules.ColossoBattles
         public ITextChannel BattleChannel = null;
         protected Dictionary<IUserMessage, PlayerFighter> PlayerMessages = new Dictionary<IUserMessage, PlayerFighter>();
         protected bool wasJustReset = true;
-        protected PlayerFighterFactory Factory { get; set; } = new PlayerFighterFactory();
+        public PlayerFighterFactory Factory { get; set; } = new PlayerFighterFactory();
 
         internal override ulong[] GetIds => new[] { BattleChannel.Id };
 
-        public PvEEnvironment(string Name, ITextChannel lobbyChannel, ITextChannel BattleChannel) : base(Name, lobbyChannel)
+        public PvEEnvironment(string Name, ITextChannel lobbyChannel, bool isPersistent, ITextChannel BattleChannel) : base(Name, lobbyChannel, isPersistent)
         {
             this.BattleChannel = BattleChannel;
             this.lobbyChannel = lobbyChannel;
@@ -42,6 +42,15 @@ namespace IodemBot.Modules.ColossoBattles
                 });
             SummonsMessage = await BattleChannel.SendMessageAsync("Good Luck!");
             return;
+        }
+
+        public override void Dispose()
+        {
+            base.Dispose();
+            if (!isPersistent)
+            {
+                _ = BattleChannel.DeleteAsync();
+            }
         }
 
         protected virtual string GetEnemyMessageString()
@@ -78,17 +87,14 @@ namespace IodemBot.Modules.ColossoBattles
                 if (reaction.User.Value.IsBot)
                 {
                     return;
-                }
-                if (channel.Id != BattleChannel.Id)
+                } else if (channel.Id != BattleChannel.Id)
                 {
                     return;
-                }
-                if (reaction.Emote.Name == "Fight")
+                } else if (reaction.Emote.Name == "Fight")
                 {
                     _ = AddPlayer(reaction);
                     return;
-                }
-                else if (reaction.Emote.Name == "Battle")
+                } else if (reaction.Emote.Name == "Battle")
                 {
                     //File.AppendAllText("Logs/BattleStats.txt", $"{DateTime.Now},{Name}, {GetIds}\n");
                     _ = StartBattle();
@@ -531,6 +537,10 @@ namespace IodemBot.Modules.ColossoBattles
             var allDjinn = PlayerMessages.Values.SelectMany(p => p.Moves.OfType<Djinn>()).ToList();
             var standbyDjinn = allDjinn.Where(d => d.State == DjinnState.Standby);
             var recoveryDjinn = allDjinn.Where(d => d.State == DjinnState.Recovery);
+            if(allDjinn.Count == 0)
+            {
+                return null;
+            }
             EmbedBuilder embed = new EmbedBuilder()
                 .WithThumbnailUrl("https://cdn.discordapp.com/attachments/497696510688100352/640300243820216336/unknown.png");
 
@@ -565,7 +575,7 @@ namespace IodemBot.Modules.ColossoBattles
         {
             var tasks = new List<Task>();
             var embed = GetDjinnEmbedBuilder();
-            if (SummonsMessage.Embeds.Count == 0 || !SummonsMessage.Embeds.FirstOrDefault().ToEmbedBuilder().AllFieldsEqual(embed))
+            if (embed != null && (SummonsMessage.Embeds.Count == 0 || !SummonsMessage.Embeds.FirstOrDefault().ToEmbedBuilder().AllFieldsEqual(embed)))
             {
                 _ = SummonsMessage.ModifyAsync(m => m.Embed = embed.Build());
             }

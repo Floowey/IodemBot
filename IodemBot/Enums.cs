@@ -15,7 +15,7 @@ namespace IodemBot
 
     public enum InventoryOption { Default, NoInventory }
 
-    public enum DjinnOption { Default, NoDjinn }
+    public enum DjinnOption { Unique, Any, NoDjinn }
 
     public enum BaseStatOption { Default, Average }
 

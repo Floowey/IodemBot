@@ -105,7 +105,7 @@ namespace IodemBot.Modules
                 .Build());
         }
 
-        public enum LoadoutAction {Show, Save, Load };
+        public enum LoadoutAction {Show, Save, Load, Remove };
         [Command("loadout"), Alias("loadouts")]
         public async Task LoadoutTask(LoadoutAction action = LoadoutAction.Show, [Remainder] string loadoutName = "")
         {
@@ -130,7 +130,7 @@ namespace IodemBot.Modules
                     _ = ReplyAsync(embed: embed.Build());
                     break;
                 case LoadoutAction.Save:
-                    if (loadoutName == "") return;
+                    if (loadoutName.IsNullOrEmpty()) return;
                     if (user.loadouts.loadouts.Count >= 6) return;
                     var newLoadout = Loadout.GetLoadout(user);
                     newLoadout.LoadoutName = loadoutName;
@@ -142,10 +142,15 @@ namespace IodemBot.Modules
                     var loadedLoadout = user.loadouts.GetLoadout(loadoutName);
                     if(loadedLoadout != null)
                     {
-                        await SetElement(user, loadedLoadout.element);
+                        await ChooseElement(loadedLoadout.element);
                         loadedLoadout.ApplyLoadout(user);
                         _ = Status();
                     }
+                    break;
+                case LoadoutAction.Remove:
+                    if (loadoutName.IsNullOrEmpty()) return;
+                    user.loadouts.RemoveLoadout(loadoutName);
+                    _ = LoadoutTask(LoadoutAction.Show);
                     break;
             }
             await Task.CompletedTask;
@@ -189,13 +194,10 @@ namespace IodemBot.Modules
             var embed = new EmbedBuilder()
             .WithColor(Colors.Get(account.Element.ToString()))
             .WithAuthor(author)
-            .AddField("Level", account.LevelNumber, true)
+            .WithTitle($"Level {account.LevelNumber} {account.GsClass}{string.Join("", account.TrophyCase.trophies.Select(t => t.Icon))}")
             .AddField("XP", $"{account.XP} - next in {account.XPneeded}{(account.NewGames > 1 ? $"\n({account.TotalXP} total | {account.NewGames} resets)" : "")}", true)
             .AddField("Rank", UserAccounts.GetRank(user) + 1, true)
-
-            .AddField("Class", account.GsClass, true)
-            .AddField("Colosso wins | streak", $"{account.ServerStats.ColossoWins} | {account.ServerStats.ColossoHighestStreak} ", true)
-            .AddField("Endless Streaks", $"Solo: {account.ServerStats.ColossoHighestRoundEndlessSolo} | Duo: {account.ServerStats.ColossoHighestRoundEndlessDuo} \nTrio: {account.ServerStats.ColossoHighestRoundEndlessTrio} | Quad: {account.ServerStats.ColossoHighestRoundEndlessQuad}", true)
+            .AddField("Colosso wins | Endless Streaks", $"{account.ServerStats.ColossoWins}\nSolo: {account.ServerStats.ColossoHighestRoundEndlessSolo} | Duo: {account.ServerStats.ColossoHighestRoundEndlessDuo} \nTrio: {account.ServerStats.ColossoHighestRoundEndlessTrio} | Quad: {account.ServerStats.ColossoHighestRoundEndlessQuad}", true)
 
             .AddField("Current Equip", account.Inv.GearToString(AdeptClassSeriesManager.GetClassSeries(account).Archtype), true)
             .AddField("Psynergy", p.GetMoves(false), true)
@@ -261,7 +263,7 @@ namespace IodemBot.Modules
             Console.WriteLine(JsonConvert.SerializeObject(account, Formatting.Indented));
         }
 
-        [Command("Dungeons")]
+        [Command("Dungeons"), Alias("dgs")]
         [Summary("Shows the dungeons you have discovered so far")]
         [Cooldown(5)]
         public async Task ListDungeons()
@@ -297,7 +299,7 @@ namespace IodemBot.Modules
             }
             if (availableOneTimeUnlocks.Count() + unavailableOneTimeUnlocks.Count() > 0)
             {
-                embed.AddField("<:dungeonkey:606237382047694919> Dungeon Keys", $"Available: {string.Join(", ", availableOneTimeUnlocks)} \nUnavailable: {string.Join(", ", unavailableOneTimeUnlocks)}");
+                embed.AddField("<:cave:607402486562684944> Dungeon Keys", $"Available: {string.Join(", ", availableOneTimeUnlocks)} \nUnavailable: {string.Join(", ", unavailableOneTimeUnlocks)}");
             }
             await Context.Channel.SendMessageAsync("", false, embed.Build());
         }

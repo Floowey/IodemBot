@@ -71,7 +71,7 @@ namespace IodemBot.Modules.ColossoBattles
 
         public LevelOption LevelOption { get; set; } = LevelOption.CappedLevel;
         public InventoryOption InventoryOption { get; set; } = InventoryOption.Default;
-        public DjinnOption DjinnOption { get; set; } = DjinnOption.Default;
+        public DjinnOption DjinnOption { get; set; } = DjinnOption.Unique;
         public BaseStatOption BaseStatOption { get; set; } = BaseStatOption.Default;
         public BaseStatManipulationOption BaseStatManipulationOption { get; set; } = BaseStatManipulationOption.Default;
 
@@ -173,7 +173,18 @@ namespace IodemBot.Modules.ColossoBattles
 
             switch (DjinnOption)
             {
-                case DjinnOption.Default:
+                case DjinnOption.Any:
+                    var djinnToAdd = avatar.DjinnPocket.GetDjinns();
+                    summons.AddRange(avatar.DjinnPocket.summons);
+                    p.Moves.AddRange(djinnToAdd);
+                    foreach (var djinn in djinnToAdd)
+                    {
+                        p.Stats *= djinn.Stats + new Stats(100, 100, 100, 100, 100);
+                        p.Stats *= 0.01;
+                        p.ElStats += djinn.ElementalStats;
+                    }
+                    break;
+                case DjinnOption.Unique:
                     var djinnToBeAdded = avatar.DjinnPocket.GetDjinns(uniqueDjinn);
                     uniqueDjinn.AddRange(djinnToBeAdded);
                     summons.AddRange(avatar.DjinnPocket.summons);

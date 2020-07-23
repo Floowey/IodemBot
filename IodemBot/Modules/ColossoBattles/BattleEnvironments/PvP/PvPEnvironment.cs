@@ -22,6 +22,7 @@ namespace IodemBot.Modules.ColossoBattles
             public ITextChannel teamChannel;
             public IUserMessage EnemyMessage = null;
             public IUserMessage StatusMessage = null;
+            public IUserMessage SummonsMessage = null;
             public PlayerFighterFactory Factory = new PlayerFighterFactory() { LevelOption = LevelOption.SetLevel, SetLevel = 60 };
             public Dictionary<IUserMessage, PlayerFighter> PlayerMessages = new Dictionary<IUserMessage, PlayerFighter>();
         }
@@ -38,7 +39,7 @@ namespace IodemBot.Modules.ColossoBattles
             {Team.B, new PvPTeamCollector(){team = Team.B, enemies = Team.A } },
         };
 
-        public PvPEnvironment(string Name, ITextChannel lobbyChannel, ITextChannel teamAChannel, ITextChannel teamBChannel, IRole TeamBRole, uint playersToStart = 3, uint playersToStartB = 3) : base(Name, lobbyChannel)
+        public PvPEnvironment(string Name, ITextChannel lobbyChannel, bool isPersistent, ITextChannel teamAChannel, ITextChannel teamBChannel, IRole TeamBRole, uint playersToStart = 3, uint playersToStartB = 3) : base(Name, lobbyChannel, isPersistent)
         {
             PlayersToStart = playersToStart;
             PlayersToStartB = playersToStartB;
@@ -60,8 +61,9 @@ namespace IodemBot.Modules.ColossoBattles
                     Emote.Parse("<:Fight_B:592374736248373279>"),
                     Emote.Parse("<:Battle:536954571256365096>")
                 });
-
+            A.SummonsMessage = await A.teamChannel.SendMessageAsync("Good Luck!");
             B.EnemyMessage = await B.teamChannel.SendMessageAsync($"Welcome to {Name}, Team B. Please wait til the battle has started.");
+            B.SummonsMessage = await B.teamChannel.SendMessageAsync("Good Luck!");
             return;
         }
 
@@ -486,6 +488,71 @@ namespace IodemBot.Modules.ColossoBattles
             await WriteStatus();
         }
 
+        protected virtual async Task WriteSummonsInit()
+        {
+            _ = WriteSummonsReactions();
+            await WriteSummons();
+        }
+
+        protected virtual EmbedBuilder GetDjinnEmbedBuilder(PvPTeamCollector V)
+        {
+            var allDjinn = V.PlayerMessages.Values.SelectMany(p => p.Moves.OfType<Djinn>()).ToList();
+            var standbyDjinn = allDjinn.Where(d => d.State == DjinnState.Standby);
+            var recoveryDjinn = allDjinn.Where(d => d.State == DjinnState.Recovery);
+            if (allDjinn.Count == 0) return null;
+            EmbedBuilder embed = new EmbedBuilder()
+                .WithThumbnailUrl("https://cdn.discordapp.com/attachments/497696510688100352/640300243820216336/unknown.png");
+
+            if (allDjinn.OfElement(Element.Venus).Count() > 0)
+            {
+                embed.AddField("Venus", $"{string.Join(" ", standbyDjinn.OfElement(Element.Venus).Select(d => d.Emote))} |" +
+                    $"{string.Join(" ", recoveryDjinn.OfElement(Element.Venus).Select(d => d.Emote))}", true);
+            }
+            if (allDjinn.OfElement(Element.Mars).Count() > 0)
+            {
+                embed.AddField("Mars", $"{string.Join(" ", standbyDjinn.OfElement(Element.Mars).Select(d => d.Emote))} |" +
+                    $"{string.Join(" ", recoveryDjinn.OfElement(Element.Mars).Select(d => d.Emote))}", true);
+            }
+            if (allDjinn.OfElement(Element.Jupiter).Count() > 0)
+            {
+                embed.AddField("Jupiter", $"{string.Join(" ", standbyDjinn.OfElement(Element.Jupiter).Select(d => d.Emote))} |" + $"{string.Join(" ", recoveryDjinn.OfElement(Element.Jupiter).Select(d => d.Emote))}", true);
+            }
+            if (allDjinn.OfElement(Element.Mercury).Count() > 0)
+            {
+                embed.AddField("Mercury", $"{string.Join(" ", standbyDjinn.OfElement(Element.Mercury).Select(d => d.Emote))} |" + $"{string.Join(" ", recoveryDjinn.OfElement(Element.Mercury).Select(d => d.Emote))}", true);
+            }
+            return embed;
+        }
+
+        protected virtual async Task WriteSummonsReactions()
+        {
+            Teams.Values.ToList().ForEach(async V =>
+            {
+                _ = V.SummonsMessage.AddReactionsAsync(V.Factory.PossibleSummons.Select(s => s.GetEmote()).ToArray());
+            });
+            await Task.CompletedTask;
+        }
+
+        protected virtual async Task WriteSummons()
+        {
+            Teams.Values.ToList().ForEach(async V =>
+            {
+                var tasks = new List<Task>();
+                var embed = GetDjinnEmbedBuilder(V);
+                if (embed != null && (V.SummonsMessage.Embeds.Count == 0 || !V.SummonsMessage.Embeds.FirstOrDefault().ToEmbedBuilder().AllFieldsEqual(embed)))
+                {
+                    _ = V.SummonsMessage.ModifyAsync(m => m.Embed = embed.Build());
+                }
+
+                var validReactions = reactions.Where(r => r.MessageId == V.SummonsMessage.Id).ToList();
+                foreach (var r in validReactions)
+                {
+                    tasks.Add(V.SummonsMessage.RemoveReactionAsync(r.Emote, r.User.Value));
+                    reactions.Remove(r);
+                }
+            });
+            await Task.CompletedTask;
+        }
         protected virtual async Task WriteStatus()
         {
             List<Task> tasks = new List<Task>();

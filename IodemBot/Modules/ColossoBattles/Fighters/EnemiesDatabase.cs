@@ -101,14 +101,14 @@ namespace IodemBot.Modules.ColossoBattles
             {
                 return (NPCEnemy)enemy.Clone();
             }
-            else if (enemyKey.StartsWith("Trap:"))
+            else if (enemyKey.StartsWith("Trap"))
             {
                 allEnemies.TryGetValue("DeathTrap", out var trapEnemy);
                 var clone = (NPCEnemy)trapEnemy.Clone();
                 clone.Name = enemyKey.Split(':').Last();
                 return clone;
             }
-            else if (enemyKey.StartsWith("BoobyTrap:"))
+            else if (enemyKey.StartsWith("BoobyTrap"))
             {
                 allEnemies.TryGetValue("BoobyTrap", out var trapEnemy);
                 var clone = (NPCEnemy)trapEnemy.Clone();
@@ -126,8 +126,7 @@ namespace IodemBot.Modules.ColossoBattles
                 }
                 return clone;
             }
-            
-            else if (enemyKey.StartsWith("Key:"))
+            else if (enemyKey.StartsWith("Key"))
             {
                 allEnemies.TryGetValue("Key", out var trapEnemy);
                 var clone = (NPCEnemy)trapEnemy.Clone();

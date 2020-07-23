@@ -118,6 +118,7 @@ namespace IodemBot.Core.UserManagement
 
         public Element Element { get; set; } = Element.none;
         public Loadouts loadouts { get; set; } = new Loadouts();
+        public TrophyCase TrophyCase { get; set; } = new TrophyCase();
 
         [JsonIgnore]
         public string GsClass

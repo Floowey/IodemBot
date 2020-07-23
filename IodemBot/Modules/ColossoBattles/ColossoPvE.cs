@@ -155,15 +155,15 @@ namespace IodemBot.Modules.ColossoBattles
             battles.Where(b=> guild.Channels.Any(c => b.GetIds.Contains(c.Id))).ToList().ForEach(old => old.Dispose());
             battles.Clear();
             var gs = GuildSettings.GetGuildSettings(guild);
-            battles.Add(new SingleBattleEnvironment("Wilds", gs.ColossoChannel, await PrepareBattleChannel("Weyard-Wilds", guild), BattleDifficulty.Easy));
-            battles.Add(new SingleBattleEnvironment("Woods", gs.ColossoChannel, await PrepareBattleChannel("Weyard-Woods", guild), BattleDifficulty.Medium));
+            battles.Add(new SingleBattleEnvironment("Wilds", gs.ColossoChannel, false, await PrepareBattleChannel("Weyard-Wilds", guild), BattleDifficulty.Easy));
+            battles.Add(new SingleBattleEnvironment("Woods", gs.ColossoChannel, false, await PrepareBattleChannel("Weyard-Woods", guild), BattleDifficulty.Medium));
             //battles.Add(new SingleBattleEnvironment("Wealds", LobbyChannel, await PrepareBattleChannel("Weyard-Wealds"), BattleDifficulty.Hard));
 
-            battles.Add(new EndlessBattleEnvironment("Endless", gs.ColossoChannel, await PrepareBattleChannel("Endless-Encounters", guild)));
+            battles.Add(new EndlessBattleEnvironment("Endless", gs.ColossoChannel, false, await PrepareBattleChannel("Endless-Encounters", guild)));
 
             //battles.Add(new GauntletBattleEnvironment("Dungeon", LobbyChannel, await PrepareBattleChannel("deep-dungeon"), "Vale"));
             //battles.Add(new GauntletBattleEnvironment("Catabombs", LobbyChannel, await PrepareBattleChannel("chilly-catacombs"), "Vale"));
-            battles.Add(new TeamBattleEnvironment("PvP", gs.ColossoChannel, await PrepareBattleChannel("PvP-A", guild, RoomVisibility.All), await PrepareBattleChannel("PvP-B", guild, RoomVisibility.TeamB), gs.TeamB));
+            battles.Add(new TeamBattleEnvironment("PvP", gs.ColossoChannel, false, await PrepareBattleChannel("PvP-A", guild, RoomVisibility.All), await PrepareBattleChannel("PvP-B", guild, RoomVisibility.TeamB), gs.TeamB));
 
             //battles.Add(new SingleBattleEnvironment("Gold", LobbyChannel, await PrepareBattleChannel("Gold"), BattleDifficulty.Hard));
             //battles.Add(new TeamBattleManager("OneVOne", LobbyChannel, await PrepareBattleChannel("OneVOneA", PermValue.Deny), await PrepareBattleChannel("OneVOneB", PermValue.Allow), 1));
@@ -198,6 +198,21 @@ namespace IodemBot.Modules.ColossoBattles
             {
                 a.SetEnemy(enemy);
                 //_ = a.Reset();
+            }
+        }
+
+        public enum EndlessMode {Default, Legacy }
+        [Command("endless")]
+        public async Task ColossoEndless(EndlessMode mode = EndlessMode.Default)
+        {
+            var guild = Context.Guild;
+            var gs = GuildSettings.GetGuildSettings(guild);
+            if(mode == EndlessMode.Default)
+            {
+                battles.Add(new EndlessBattleEnvironment("Endless", gs.ColossoChannel, true, await PrepareBattleChannel($"Endless-Legacy-{Context.User.Username}", guild)));
+            } else
+            {
+                battles.Add(new EndlessBattleEnvironment("Endless", gs.ColossoChannel, true, await PrepareBattleChannel($"Endless-Legacy-{Context.User.Username}", guild)) {Factory = new PlayerFighterFactory() {DjinnOption = DjinnOption.NoDjinn } });
             }
         }
 

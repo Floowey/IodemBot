@@ -42,7 +42,11 @@ namespace IodemBot.Modules.GoldenSunMechanics
             {
                 if (djinns.Count < MaxDjinn)
                 {
-                    var selected = djinn.OfElement(el).Where(d => !BlackList.Any(k => k.Djinnname.Equals(d.Djinnname)) && !Added.Any(k => k.Djinnname.Equals(d.Djinnname))).Distinct(new DjinnComp()).Take(DjinnSetup.Count(d => d == el));
+                    var selected = djinn.OfElement(el)
+                        .Where(d => !BlackList.Any(k => k.Djinnname.Equals(d.Djinnname)) && !Added.Any(k => k.Djinnname.Equals(d.Djinnname)))
+                        .Distinct(new DjinnComp())
+                        .Take(DjinnSetup.Count(d => d == el));
+
                     djinns.AddRange(selected);
                     Added.AddRange(selected);
                 }
@@ -101,7 +105,6 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 .ThenBy(s => s.VenusNeeded)
                 .ToList();
         }
-
         public void Initialize()
         {
             DjinnStorage.ForEach(d =>
@@ -115,7 +118,6 @@ namespace IodemBot.Modules.GoldenSunMechanics
             );
             SummonStorage.ForEach(s => summons.Add(DjinnAndSummonsDatabase.GetSummon(s.Summon)));
         }
-
         public void Clear()
         {
             djinn.Clear();

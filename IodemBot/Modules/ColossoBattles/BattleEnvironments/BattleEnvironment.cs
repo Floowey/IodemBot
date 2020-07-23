@@ -28,11 +28,13 @@ namespace IodemBot.Modules.ColossoBattles
         public bool IsActive { get { return Battle.SizeTeamA > 0; } }
 
         internal abstract ulong[] GetIds { get; }
+        public bool isPersistent { get; set; } = true;
 
-        public BattleEnvironment(string Name, ITextChannel lobbyChannel)
+        public BattleEnvironment(string Name, ITextChannel lobbyChannel, bool isPersistent)
         {
             this.Name = Name;
             this.lobbyChannel = lobbyChannel;
+            this.isPersistent = isPersistent;
             Global.Client.ReactionAdded += ProcessReaction;
         }
 

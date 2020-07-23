@@ -142,7 +142,7 @@ namespace IodemBot.Modules.ColossoBattles
             }
         }
 
-        public EndlessBattleEnvironment(string Name, ITextChannel lobbyChannel, ITextChannel BattleChannel) : base(Name, lobbyChannel, BattleChannel)
+        public EndlessBattleEnvironment(string Name, ITextChannel lobbyChannel, bool isPersistent, ITextChannel BattleChannel) : base(Name, lobbyChannel, isPersistent, BattleChannel)
         {
             _ = Reset();
         }

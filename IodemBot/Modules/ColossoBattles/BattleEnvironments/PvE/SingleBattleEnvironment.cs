@@ -96,7 +96,7 @@ namespace IodemBot.Modules.ColossoBattles
             } }
         };
 
-        public SingleBattleEnvironment(string Name, ITextChannel lobbyChannel, ITextChannel BattleChannel, BattleDifficulty diff) : base(Name, lobbyChannel, BattleChannel)
+        public SingleBattleEnvironment(string Name, ITextChannel lobbyChannel, bool isPersistent, ITextChannel BattleChannel, BattleDifficulty diff) : base(Name, lobbyChannel, isPersistent, BattleChannel)
         {
             internalDiff = diff;
             _ = Reset();
