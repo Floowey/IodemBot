@@ -63,7 +63,7 @@ namespace IodemBot.Modules.ColossoBattles
                             battles.Remove(gauntletFromUser);
                         }
                     }
-                    openBattle = new GauntletBattleEnvironment($"{Context.User.Username}", GuildSettings.GetGuildSettings(Context.Guild).ColossoChannel, await PrepareBattleChannel($"{Dungeon.Name}-{Context.User.Username}", Context.Guild), Dungeon.Name, true);
+                    openBattle = new GauntletBattleEnvironment($"{Context.User.Username}", GuildSettings.GetGuildSettings(Context.Guild).ColossoChannel, await PrepareBattleChannel($"{Dungeon.Name}-{Context.User.Username}", Context.Guild), Dungeon.Name, false);
 
                     battles.Add(openBattle);
                 }
