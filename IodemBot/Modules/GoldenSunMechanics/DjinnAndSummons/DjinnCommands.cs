@@ -140,21 +140,20 @@ namespace IodemBot.Modules.GoldenSunMechanics
         }
 
         [Command("Djinn Take")]
-        [Summary("Take up to two specified djinn on your journey")]
-        [Remarks("`i!djinn Take Flint Echo`")]
-        public async Task TakeDjinn(params string[] Names)
+        [Summary("Take a specified djinn on your journey")]
+        [Remarks("`i!djinn Take Flint`")]
+        public async Task TakeDjinn([Remainder] string Names)
         {
             if (Names.Count() == 0)
             {
                 return;
             }
-            if (Names[0].Contains(',')) Names = Names[0].Split(',').Select(p => p.Trim()).ToArray();
             var user = UserAccounts.GetAccount(Context.User);
             TakeDjinn(user, Names);
             await DjinnInv();
         }
 
-        public static void TakeDjinn(UserAccount user, string[] Names)
+        public static void TakeDjinn(UserAccount user, params string[] Names)
         {
             var userDjinn = user.DjinnPocket;
             var userclass = AdeptClassSeriesManager.GetClassSeries(user);
