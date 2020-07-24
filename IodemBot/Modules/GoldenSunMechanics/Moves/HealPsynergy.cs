@@ -83,9 +83,9 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
                 log.AddRange(Effects.ApplyAll(User, t));
 
-                if (User is PlayerFighter)
+                if (User is PlayerFighter p)
                 {
-                    ((PlayerFighter)User).battleStats.HPhealed += HPtoHeal;
+                    p.battleStats.HPhealed += HPtoHeal;
                 }
             }
             return log;

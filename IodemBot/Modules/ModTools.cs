@@ -99,11 +99,13 @@ namespace IodemBot.Modules
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
             {
                 Console.WriteLine("Closing for manual update...");
-                var ps = new ProcessStartInfo();
-                ps.FileName ="shellscripts/selfupdate.sh";
-                ps.UseShellExecute = false;
-                ps.RedirectStandardOutput = true;
-                
+                var ps = new ProcessStartInfo
+                {
+                    FileName = "shellscripts/selfupdate.sh",
+                    UseShellExecute = false,
+                    RedirectStandardOutput = true
+                };
+
                 Process process = Process.Start(ps);
                 process.WaitForExit();
                 Console.WriteLine("This shouldn't be reached.");
@@ -120,10 +122,12 @@ namespace IodemBot.Modules
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
             {
                 Console.WriteLine("Saving Users manually...");
-                var ps = new ProcessStartInfo();
-                ps.FileName = "shellscripts/backupusers.sh";
-                ps.UseShellExecute = false;
-                ps.RedirectStandardOutput = true;
+                var ps = new ProcessStartInfo
+                {
+                    FileName = "shellscripts/backupusers.sh",
+                    UseShellExecute = false,
+                    RedirectStandardOutput = true
+                };
 
                 Process process = Process.Start(ps);
                 process.WaitForExit();
@@ -140,10 +144,12 @@ namespace IodemBot.Modules
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
             {
                 Console.WriteLine("Closing for automatic update...");
-                var ps = new ProcessStartInfo();
-                ps.FileName = "shellscripts/pullusers.sh";
-                ps.UseShellExecute = false;
-                ps.RedirectStandardOutput = true;
+                var ps = new ProcessStartInfo
+                {
+                    FileName = "shellscripts/pullusers.sh",
+                    UseShellExecute = false,
+                    RedirectStandardOutput = true
+                };
 
                 Process process = Process.Start(ps);
                 process.WaitForExit();

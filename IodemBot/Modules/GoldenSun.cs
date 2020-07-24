@@ -114,13 +114,13 @@ namespace IodemBot.Modules
             {
                 case LoadoutAction.Show:
                     var embed = new EmbedBuilder();
-                    if(user.loadouts.loadouts.Count > 0)
+                    if(user.Loadouts.loadouts.Count > 0)
                     {
-                        foreach (var item in user.loadouts.loadouts)
+                        foreach (var item in user.Loadouts.loadouts)
                         {
-                            embed.AddField(item.LoadoutName, $"{ElementIcons[item.element]} {item.classSeries}\n" +
-                                $"{string.Join("",item.gear.Select(i => user.Inv.GetItem(i).Icon))}\n" +
-                                $"{string.Join("",item.djinn.Select(d => user.DjinnPocket.GetDjinn(d)?.Emote))}", inline:true);
+                            embed.AddField(item.LoadoutName, $"{ElementIcons[item.Element]} {item.ClassSeries}\n" +
+                                $"{string.Join("",item.Gear.Select(i => user.Inv.GetItem(i).Icon))}\n" +
+                                $"{string.Join("",item.Djinn.Select(d => user.DjinnPocket.GetDjinn(d)?.Emote))}", inline:true);
                         }
 
                     } else
@@ -131,25 +131,25 @@ namespace IodemBot.Modules
                     break;
                 case LoadoutAction.Save:
                     if (loadoutName.IsNullOrEmpty()) return;
-                    if (user.loadouts.loadouts.Count >= 6) return;
+                    if (user.Loadouts.loadouts.Count >= 6) return;
                     var newLoadout = Loadout.GetLoadout(user);
                     newLoadout.LoadoutName = loadoutName;
-                    user.loadouts.SaveLoadout(newLoadout);
+                    user.Loadouts.SaveLoadout(newLoadout);
                     _ = LoadoutTask(LoadoutAction.Show);
                     UserAccounts.SaveAccounts();
                     break;
                 case LoadoutAction.Load:
-                    var loadedLoadout = user.loadouts.GetLoadout(loadoutName);
+                    var loadedLoadout = user.Loadouts.GetLoadout(loadoutName);
                     if(loadedLoadout != null)
                     {
-                        await ChooseElement(loadedLoadout.element);
+                        await ChooseElement(loadedLoadout.Element);
                         loadedLoadout.ApplyLoadout(user);
                         _ = Status();
                     }
                     break;
                 case LoadoutAction.Remove:
                     if (loadoutName.IsNullOrEmpty()) return;
-                    user.loadouts.RemoveLoadout(loadoutName);
+                    user.Loadouts.RemoveLoadout(loadoutName);
                     _ = LoadoutTask(LoadoutAction.Show);
                     break;
             }
@@ -194,7 +194,7 @@ namespace IodemBot.Modules
             var embed = new EmbedBuilder()
             .WithColor(Colors.Get(account.Element.ToString()))
             .WithAuthor(author)
-            .WithTitle($"Level {account.LevelNumber} {account.GsClass}{string.Join("", account.TrophyCase.trophies.Select(t => t.Icon))}")
+            .WithTitle($"Level {account.LevelNumber} {account.GsClass}{string.Join("", account.TrophyCase.Trophies.Select(t => t.Icon))}")
             .AddField("XP", $"{account.XP} - next in {account.XPneeded}{(account.NewGames > 1 ? $"\n({account.TotalXP} total | {account.NewGames} resets)" : "")}", true)
             .AddField("Rank", UserAccounts.GetRank(user) + 1, true)
             .AddField("Colosso wins | Endless Streaks", $"{account.ServerStats.ColossoWins}\nSolo: {account.ServerStats.ColossoHighestRoundEndlessSolo} | Duo: {account.ServerStats.ColossoHighestRoundEndlessDuo} \nTrio: {account.ServerStats.ColossoHighestRoundEndlessTrio} | Quad: {account.ServerStats.ColossoHighestRoundEndlessQuad}", true)
@@ -362,10 +362,6 @@ namespace IodemBot.Modules
             await Context.Channel.SendMessageAsync("", false, embed.Build());
         }
 
-        public static async Task SetElement(UserAccount user, Element element)
-        {
-
-        }
 
         [Command("MoveInfo")]
         [Alias("Psynergy", "PsynergyInfo", "psy")]

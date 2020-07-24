@@ -5,7 +5,7 @@ namespace IodemBot
 {
     public static class Colors
     {
-        private static Dictionary<string, Color> colors;
+        private static readonly Dictionary<string, Color> colors;
 
         static Colors()
         {

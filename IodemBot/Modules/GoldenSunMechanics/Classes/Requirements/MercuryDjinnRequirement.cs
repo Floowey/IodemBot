@@ -9,7 +9,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 {
     class MercuryDjinnRequirement : IRequirement
     {
-        public int apply(UserAccount user)
+        public int Apply(UserAccount user)
         {
             return user.DjinnPocket.djinn.OfElement(Element.Mercury).Count() / 2;
         }

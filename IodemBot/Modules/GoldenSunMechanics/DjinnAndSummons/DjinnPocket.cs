@@ -34,7 +34,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public List<Djinn> GetDjinns(List<Djinn> BlackList = null)
         {
-            BlackList = BlackList ?? new List<Djinn>();
+            BlackList ??= new List<Djinn>();
             var Added = new List<Djinn>();
             var djinns = new List<Djinn>();
 

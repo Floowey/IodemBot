@@ -47,7 +47,7 @@ namespace IodemBot.Modules.ColossoBattles
         public override void Dispose()
         {
             base.Dispose();
-            if (!isPersistent)
+            if (!IsPersistent)
             {
                 _ = BattleChannel.DeleteAsync();
             }

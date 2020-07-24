@@ -7,7 +7,7 @@ namespace IodemBot
 {
     internal class Utilities
     {
-        private static Dictionary<string, string> alerts;
+        private static readonly Dictionary<string, string> alerts;
 
         static Utilities()
         {

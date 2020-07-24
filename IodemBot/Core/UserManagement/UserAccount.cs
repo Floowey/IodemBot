@@ -117,7 +117,7 @@ namespace IodemBot.Core.UserManagement
         public DjinnPocket DjinnPocket { get; set; } = new DjinnPocket();
 
         public Element Element { get; set; } = Element.none;
-        public Loadouts loadouts { get; set; } = new Loadouts();
+        public Loadouts Loadouts { get; set; } = new Loadouts();
         public TrophyCase TrophyCase { get; set; } = new TrophyCase();
 
         [JsonIgnore]
@@ -134,7 +134,7 @@ namespace IodemBot.Core.UserManagement
         public DateTime LastXP { get; set; }
 
         [JsonIgnore]
-        private ulong[][] rates = new ulong[][] {
+        private readonly ulong[][] rates = new ulong[][] {
                     new ulong[] { 2538160, 25000, 100 },
                     new ulong[] { 1196934, 2500, 90 },
                     new ulong[] { 605000, 1000, 80 },

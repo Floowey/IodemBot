@@ -65,9 +65,9 @@ namespace IodemBot.Modules.ColossoBattles
 
     public class PlayerFighterFactory
     {
-        private static StatHolder WarriorStatHolder = new StatHolder(new Stats(31, 19, 12, 7, 7), new Stats(807, 245, 381, 171, 371));
-        private static StatHolder MageStatHolder = new StatHolder(new Stats(28, 23, 9, 5, 9), new Stats(744, 280, 355, 160, 397));
-        private static StatHolder AverageStatHolder = new StatHolder(new Stats(30, 20, 11, 6, 8), new Stats(775, 262, 368, 165, 384));
+        private static readonly StatHolder WarriorStatHolder = new StatHolder(new Stats(31, 19, 12, 7, 7), new Stats(807, 245, 381, 171, 371));
+        private static readonly StatHolder MageStatHolder = new StatHolder(new Stats(28, 23, 9, 5, 9), new Stats(744, 280, 355, 160, 397));
+        private static readonly StatHolder AverageStatHolder = new StatHolder(new Stats(30, 20, 11, 6, 8), new Stats(775, 262, 368, 165, 384));
 
         public LevelOption LevelOption { get; set; } = LevelOption.CappedLevel;
         public InventoryOption InventoryOption { get; set; } = InventoryOption.Default;
@@ -89,13 +89,13 @@ namespace IodemBot.Modules.ColossoBattles
             var p = new PlayerFighter();
             var avatar = UserAccounts.GetAccount(user);
 
-            p.Name = (user is SocketGuildUser) ? ((SocketGuildUser)user).DisplayName() : user.Username;
+            p.Name = (user is SocketGuildUser u) ? u.DisplayName() : user.Username;
             p.avatar = avatar;
             p.ImgUrl = user.GetAvatarUrl();
             p.factory = this;
-            if (user is SocketGuildUser)
+            if (user is SocketGuildUser gu)
             {
-                p.guildUser = (SocketGuildUser)user;
+                p.guildUser = gu;
             }
             p.Moves = AdeptClassSeriesManager.GetMoveset(avatar);
             var Class = AdeptClassSeriesManager.GetClass(avatar);
@@ -212,36 +212,18 @@ namespace IodemBot.Modules.ColossoBattles
         private Stats GetStats(UserAccount avatar)
         {
             var classSeries = AdeptClassSeriesManager.GetClassSeries(avatar);
-            var adept = AdeptClassSeriesManager.GetClass(avatar);
-            var classMultipliers = adept.StatMultipliers;
-            uint level;
-            switch (LevelOption)
+            var level = LevelOption switch
             {
-                default:
-                case LevelOption.Default:
-                    level = avatar.LevelNumber;
-                    break;
-
-                case LevelOption.SetLevel:
-                    level = SetLevel;
-                    break;
-
-                case LevelOption.CappedLevel:
-                    level = Math.Min(avatar.LevelNumber, SetLevel);
-                    break;
+                LevelOption.SetLevel => SetLevel,
+                LevelOption.CappedLevel => Math.Min(avatar.LevelNumber, SetLevel),
+                _ => avatar.LevelNumber,
             };
-            Stats Stats;
-            switch (BaseStatOption)
+            ;
+            Stats Stats = BaseStatOption switch
             {
-                case BaseStatOption.Default:
-                    Stats = classSeries.Archtype == ArchType.Warrior ? WarriorStatHolder.GetStats(level) : MageStatHolder.GetStats(level);
-                    break;
-
-                case BaseStatOption.Average:
-                default:
-                    Stats = AverageStatHolder.GetStats(level);
-                    break;
-            }
+                BaseStatOption.Default => classSeries.Archtype == ArchType.Warrior ? WarriorStatHolder.GetStats(level) : MageStatHolder.GetStats(level),
+                _ => AverageStatHolder.GetStats(level),
+            };
             return Stats;
         }
     }

@@ -161,7 +161,6 @@ namespace IodemBot.Modules
         {
             CultureInfo enAU = new CultureInfo("en-US");
             string format = "HH':'mm', 'MMM dd";
-            var names = new[] { ":globe_with_meridians: UTC", ":flag_at: Vienna", ":flag_in: Mumbai", ":flag_jp: Tokyo", ":bridge_at_night: San Francisco", ":statue_of_liberty: New York" };
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
                 await Context.Channel.SendMessageAsync("", false,

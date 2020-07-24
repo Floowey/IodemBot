@@ -63,26 +63,26 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         internal int GetPower(Element e)
         {
-            switch (e)
+            return e switch
             {
-                case Element.Venus: return VenusAtk;
-                case Element.Mars: return MarsAtk;
-                case Element.Jupiter: return JupiterAtk;
-                case Element.Mercury: return MercuryAtk;
-                default: return 100;
-            }
+                Element.Venus => VenusAtk,
+                Element.Mars => MarsAtk,
+                Element.Jupiter => JupiterAtk,
+                Element.Mercury => MercuryAtk,
+                _ => 100,
+            };
         }
 
         internal int GetRes(Element e)
         {
-            switch (e)
+            return e switch
             {
-                case Element.Venus: return VenusRes;
-                case Element.Mars: return MarsRes;
-                case Element.Jupiter: return JupiterRes;
-                case Element.Mercury: return MercuryRes;
-                default: return 100;
-            }
+                Element.Venus => VenusRes,
+                Element.Mars => MarsRes,
+                Element.Jupiter => JupiterRes,
+                Element.Mercury => MercuryRes,
+                _ => 100,
+            };
         }
     }
 

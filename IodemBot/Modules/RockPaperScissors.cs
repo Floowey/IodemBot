@@ -34,7 +34,7 @@ namespace IodemBot.Modules
             await Context.Channel.SendMessageAsync("", false, embed.Build());
         }
 
-        private string[] oracleResults = new[]
+        private readonly string[] oracleResults = new[]
         {
             "It is certain.",
             "It is decidedly so.",

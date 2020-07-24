@@ -16,9 +16,9 @@ namespace IodemBot.Modules.GoldenSunMechanics
             }
 
             Target.RemoveAllConditions();
-            if (User is PlayerFighter)
+            if (User is PlayerFighter p)
             {
-                ((PlayerFighter)User).battleStats.Supported++;
+                p.battleStats.Supported++;
             }
             return new List<string>() { $"{Target.Name}'s Conditions were cured." };
         }

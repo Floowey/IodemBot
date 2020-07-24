@@ -526,7 +526,7 @@ namespace IodemBot.Modules.ColossoBattles
 
         protected virtual async Task WriteSummonsReactions()
         {
-            Teams.Values.ToList().ForEach(async V =>
+            Teams.Values.ToList().ForEach(V =>
             {
                 _ = V.SummonsMessage.AddReactionsAsync(V.Factory.PossibleSummons.Select(s => s.GetEmote()).ToArray());
             });
@@ -535,7 +535,7 @@ namespace IodemBot.Modules.ColossoBattles
 
         protected virtual async Task WriteSummons()
         {
-            Teams.Values.ToList().ForEach(async V =>
+            Teams.Values.ToList().ForEach(V =>
             {
                 var tasks = new List<Task>();
                 var embed = GetDjinnEmbedBuilder(V);

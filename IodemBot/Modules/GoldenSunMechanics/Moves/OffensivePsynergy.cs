@@ -109,15 +109,15 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
                 log.AddRange(Effects.Where(e => e.ActivationTime == TimeToActivate.afterDamage).ApplyAll(User, t));
 
-                if (User is PlayerFighter)
+                if (User is PlayerFighter p)
                 {
-                    ((PlayerFighter)User).avatar.DealtDmg(realDmg);
+                    p.avatar.DealtDmg(realDmg);
                     if (!t.IsAlive)
                     {
                         if (AttackBased && Range == 1)
                         {
-                            ((PlayerFighter)User).battleStats.KillsByHand++;
-                        } ((PlayerFighter)User).battleStats.Kills++;
+                            p.battleStats.KillsByHand++;
+                        } p.battleStats.Kills++;
                     }
                 }
 

@@ -31,28 +31,30 @@ namespace IodemBot.Core.UserManagement
     public class Loadout
     {
         public string LoadoutName { get; set; } = "";
-        public Element element { get; set; } 
-        public string classSeries { get; set; } = "";
-        public List<string> gear { get; set; } = new List<string>();
-        public List<string> djinn { get; set; } = new List<string>();
+        public Element Element { get; set; } 
+        public string ClassSeries { get; set; } = "";
+        public List<string> Gear { get; set; } = new List<string>();
+        public List<string> Djinn { get; set; } = new List<string>();
 
         public static Loadout GetLoadout(UserAccount account)
         {
-            Loadout L = new Loadout();
-            L.djinn = account.DjinnPocket.GetDjinns().Select(d => d.Name).ToList();
-            L.element = account.Element;
+            Loadout L = new Loadout
+            {
+                Djinn = account.DjinnPocket.GetDjinns().Select(d => d.Name).ToList(),
+                Element = account.Element
+            };
             var classSeries = AdeptClassSeriesManager.GetClassSeries(account);
-            L.classSeries = classSeries.Name;
-            L.gear = account.Inv.GetGear(classSeries.Archtype).Select(i => i.Name).ToList();
+            L.ClassSeries = classSeries.Name;
+            L.Gear = account.Inv.GetGear(classSeries.Archtype).Select(i => i.Name).ToList();
             return L;
         }
 
         public void ApplyLoadout(UserAccount account)
         {
             var inv = account.Inv;
-            GoldenSun.SetClass(account, classSeries);
-            gear.ForEach(i => inv.Equip(i, AdeptClassSeriesManager.GetClassSeries(account).Archtype));
-            DjinnCommands.TakeDjinn(account, djinn.ToArray());
+            GoldenSun.SetClass(account, ClassSeries);
+            Gear.ForEach(i => inv.Equip(i, AdeptClassSeriesManager.GetClassSeries(account).Archtype));
+            DjinnCommands.TakeDjinn(account, Djinn.ToArray());
 
         }
     }

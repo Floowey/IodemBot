@@ -55,7 +55,6 @@ namespace IodemBot
             await handler.InitializeAsync(client);
             msgHandler = new MessageHandler();
             await msgHandler.InitializeAsync(client);
-            client.Ready += TwitchListener.InitializeAsync;
             await Task.Delay(-1);
         }
 

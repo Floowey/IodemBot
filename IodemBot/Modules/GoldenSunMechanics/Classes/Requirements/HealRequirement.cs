@@ -4,7 +4,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 {
     internal class HealRequirement : IRequirement
     {
-        public int apply(UserAccount user)
+        public int Apply(UserAccount user)
         {
             return user.BattleStats.HPhealed >= 999999 ? 1 : 0;
         }

@@ -7,7 +7,7 @@ namespace IodemBot.Core
 {
     public class GuildSettings
     {
-        private static List<GuildSetting> guilds;
+        private static readonly List<GuildSetting> guilds;
         private static readonly string guildsFile = "Resources/Accounts/guilds.json";
 
         static GuildSettings()

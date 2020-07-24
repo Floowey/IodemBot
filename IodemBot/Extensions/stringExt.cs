@@ -4,7 +4,7 @@
     {
         public static bool IsNullOrEmpty(this string s)
         {
-            return (s == null || s == "") ? true : false;
+            return (s == null || s == "");
         }
     }
 }
