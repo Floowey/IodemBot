@@ -16,7 +16,7 @@ namespace IodemBot.Modules
     {
         private static readonly List<string> enemies = new List<string>();
         private static readonly List<Result> results = new List<Result>();
-        
+
         public static Embed ColossoTrain(SocketGuildUser user, IMessageChannel channel)
         {
             var embed = new EmbedBuilder();

@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using IodemBot.Modules;
 using IodemBot.Modules.GoldenSunMechanics;
 
@@ -31,7 +29,7 @@ namespace IodemBot.Core.UserManagement
     public class Loadout
     {
         public string LoadoutName { get; set; } = "";
-        public Element Element { get; set; } 
+        public Element Element { get; set; }
         public string ClassSeries { get; set; } = "";
         public List<string> Gear { get; set; } = new List<string>();
         public List<string> Djinn { get; set; } = new List<string>();

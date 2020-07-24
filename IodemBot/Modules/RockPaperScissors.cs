@@ -78,7 +78,7 @@ namespace IodemBot.Modules
                 .WithAuthor(teller, sprite)
                 .Build());
 
-            if(teller == "Seer" && response.Contains("spirits"))
+            if (teller == "Seer" && response.Contains("spirits"))
             {
                 _ = GoldenSun.AwardClassSeries("Air Seer Series", Context.User, Context.Channel);
             }

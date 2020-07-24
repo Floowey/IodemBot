@@ -451,7 +451,7 @@ namespace IodemBot.Modules.ColossoBattles
             //Poison Damage
             if (HasCondition(Condition.Poison))
             {
-                var damage = Math.Min(200, (uint)(Stats .MaxHP * Global.Random.Next(5, 10) / 100));
+                var damage = Math.Min(200, (uint)(Stats.MaxHP * Global.Random.Next(5, 10) / 100));
                 turnLog.Add($"{Name} is damaged by the Poison.");
                 turnLog.AddRange(DealDamage(damage));
             }

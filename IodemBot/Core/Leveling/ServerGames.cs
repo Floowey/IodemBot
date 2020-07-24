@@ -22,7 +22,7 @@ namespace IodemBot.Core.Leveling
             uint oldLevel = userAccount.LevelNumber;
             userAccount.AddXp((uint)(new Random()).Next(40, 70));
             uint newLevel = userAccount.LevelNumber;
-     
+
 
             userAccount.ServerStats.ColossoWins++;
             userAccount.ServerStats.ColossoStreak++;
@@ -192,16 +192,16 @@ namespace IodemBot.Core.Leveling
         internal static async Task UserWonDungeon(UserAccount avatar, EnemiesDatabase.Dungeon dungeon, ITextChannel channel)
         {
             avatar.ServerStats.DungeonsCompleted++;
-            if(avatar.ServerStats.LastDungeon == dungeon.Name)
+            if (avatar.ServerStats.LastDungeon == dungeon.Name)
             {
                 avatar.ServerStats.SameDungeonInARow++;
-                if(avatar.ServerStats.SameDungeonInARow >= 5)
+                if (avatar.ServerStats.SameDungeonInARow >= 5)
                 {
                     _ = GoldenSun.AwardClassSeries("Hermit Series", avatar, channel);
                 }
             }
             avatar.ServerStats.LastDungeon = dungeon.Name;
-            if(dungeon.Name == "Mercury Lighthouse")
+            if (dungeon.Name == "Mercury Lighthouse")
             {
                 _ = GoldenSun.AwardClassSeries("Aqua Pilgrim Series", avatar, channel);
             }
@@ -212,7 +212,7 @@ namespace IodemBot.Core.Leveling
                 _ = GoldenSun.AwardClassSeries("Crusader Series", avatar, channel);
             }
 
-            if(avatar.ServerStats.DungeonsCompleted >= 10)
+            if (avatar.ServerStats.DungeonsCompleted >= 10)
             {
                 _ = GoldenSun.AwardClassSeries("Air Pilgrim Series", avatar, channel);
 

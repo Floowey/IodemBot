@@ -117,7 +117,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
                         if (AttackBased && Range == 1)
                         {
                             p.battleStats.KillsByHand++;
-                        } p.battleStats.Kills++;
+                        }
+                        p.battleStats.Kills++;
                     }
                 }
 

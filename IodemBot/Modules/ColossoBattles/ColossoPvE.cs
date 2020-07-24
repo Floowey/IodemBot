@@ -20,7 +20,7 @@ namespace IodemBot.Modules.ColossoBattles
             "\u0036\u20E3", "\u0037\u20E3", "\u0038\u20E3", "\u0039\u20E3" };
 
         private static readonly List<BattleEnvironment> battles = new List<BattleEnvironment>();
-        
+
         public static ulong[] ChannelIds
         {
             get
@@ -39,7 +39,7 @@ namespace IodemBot.Modules.ColossoBattles
                     await ReplyAsync($"If you can't tell me where this place is, I can't take you there. And even if you knew, they probably wouldn't let you in! Bring me a map or show to me that you have the key to enter.");
                     return;
                 }
-                
+
                 if (!Dungeon.Requirement.Applies(User) && !ModPermission)
                 {
                     await ReplyAsync($"I'm afraid that I can't take you to this place, it is too dangerous for you and me both.");
@@ -152,7 +152,7 @@ namespace IodemBot.Modules.ColossoBattles
 
         public static async Task Setup(SocketGuild guild)
         {
-            battles.Where(b=> guild.Channels.Any(c => b.GetIds.Contains(c.Id))).ToList().ForEach(old => old.Dispose());
+            battles.Where(b => guild.Channels.Any(c => b.GetIds.Contains(c.Id))).ToList().ForEach(old => old.Dispose());
             battles.Clear();
             var gs = GuildSettings.GetGuildSettings(guild);
             battles.Add(new SingleBattleEnvironment("Wilds", gs.ColossoChannel, false, await PrepareBattleChannel("Weyard-Wilds", guild), BattleDifficulty.Easy));
@@ -201,18 +201,19 @@ namespace IodemBot.Modules.ColossoBattles
             }
         }
 
-        public enum EndlessMode {Default, Legacy }
+        public enum EndlessMode { Default, Legacy }
         [Command("endless")]
         public async Task ColossoEndless(EndlessMode mode = EndlessMode.Default)
         {
             var guild = Context.Guild;
             var gs = GuildSettings.GetGuildSettings(guild);
-            if(mode == EndlessMode.Default)
+            if (mode == EndlessMode.Default)
             {
                 battles.Add(new EndlessBattleEnvironment("Endless", gs.ColossoChannel, false, await PrepareBattleChannel($"Endless-Legacy-{Context.User.Username}", guild)));
-            } else
+            }
+            else
             {
-                battles.Add(new EndlessBattleEnvironment("Endless", gs.ColossoChannel, false, await PrepareBattleChannel($"Endless-Legacy-{Context.User.Username}", guild)) {Factory = new PlayerFighterFactory() {DjinnOption = DjinnOption.NoDjinn } });
+                battles.Add(new EndlessBattleEnvironment("Endless", gs.ColossoChannel, false, await PrepareBattleChannel($"Endless-Legacy-{Context.User.Username}", guild)) { Factory = new PlayerFighterFactory() { DjinnOption = DjinnOption.NoDjinn } });
             }
         }
 

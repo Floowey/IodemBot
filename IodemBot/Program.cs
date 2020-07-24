@@ -5,7 +5,6 @@ using Discord;
 using Discord.WebSocket;
 using IodemBot.Core;
 using IodemBot.Extensions;
-using IodemBot.Modules;
 using IodemBot.Modules.ColossoBattles;
 
 namespace IodemBot
@@ -120,7 +119,7 @@ namespace IodemBot
                 foreach (var guild in client.Guilds)
                 {
                     var gs = GuildSettings.GetGuildSettings(guild);
-                    if(gs.AutoSetup && gs.ColossoChannel != null)
+                    if (gs.AutoSetup && gs.ColossoChannel != null)
                     {
                         await ColossoPvE.Setup(guild);
                         Console.WriteLine($"Setup in {gs.Name}");

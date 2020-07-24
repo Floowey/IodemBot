@@ -166,7 +166,7 @@ namespace IodemBot.Modules.ColossoBattles
             var losers = winners.First().battle.GetTeam(winners.First().enemies);
 
             winners.ConvertAll(s => (PlayerFighter)s).ForEach(async p => await ServerGames.UserWonPvP(p.avatar, lobbyChannel, winners.Count, losers.Count));
-            
+
             _ = WriteGameOver();
             await Task.CompletedTask;
         }

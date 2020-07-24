@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using Discord;
 using Discord.Commands;
@@ -8,8 +10,6 @@ using Iodembot.Preconditions;
 using IodemBot.Core.UserManagement;
 using IodemBot.Extensions;
 using IodemBot.Modules.ColossoBattles;
-using System.Runtime.InteropServices;
-using System.Diagnostics;
 
 namespace IodemBot.Modules
 {

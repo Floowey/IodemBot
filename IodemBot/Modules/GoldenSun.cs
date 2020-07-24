@@ -105,7 +105,7 @@ namespace IodemBot.Modules
                 .Build());
         }
 
-        public enum LoadoutAction {Show, Save, Load, Remove };
+        public enum LoadoutAction { Show, Save, Load, Remove };
         [Command("loadout"), Alias("loadouts")]
         public async Task LoadoutTask(LoadoutAction action = LoadoutAction.Show, [Remainder] string loadoutName = "")
         {
@@ -114,16 +114,17 @@ namespace IodemBot.Modules
             {
                 case LoadoutAction.Show:
                     var embed = new EmbedBuilder();
-                    if(user.Loadouts.loadouts.Count > 0)
+                    if (user.Loadouts.loadouts.Count > 0)
                     {
                         foreach (var item in user.Loadouts.loadouts)
                         {
                             embed.AddField(item.LoadoutName, $"{ElementIcons[item.Element]} {item.ClassSeries}\n" +
-                                $"{string.Join("",item.Gear.Select(i => user.Inv.GetItem(i).Icon))}\n" +
-                                $"{string.Join("",item.Djinn.Select(d => user.DjinnPocket.GetDjinn(d)?.Emote))}", inline:true);
+                                $"{string.Join("", item.Gear.Select(i => user.Inv.GetItem(i).Icon))}\n" +
+                                $"{string.Join("", item.Djinn.Select(d => user.DjinnPocket.GetDjinn(d)?.Emote))}", inline: true);
                         }
 
-                    } else
+                    }
+                    else
                     {
                         embed.WithDescription("No loadouts saved.");
                     }
@@ -140,7 +141,7 @@ namespace IodemBot.Modules
                     break;
                 case LoadoutAction.Load:
                     var loadedLoadout = user.Loadouts.GetLoadout(loadoutName);
-                    if(loadedLoadout != null)
+                    if (loadedLoadout != null)
                     {
                         await ChooseElement(loadedLoadout.Element);
                         loadedLoadout.ApplyLoadout(user);
@@ -573,6 +574,6 @@ namespace IodemBot.Modules
                     return "a";
             }
         }
-        
+
     }
 }

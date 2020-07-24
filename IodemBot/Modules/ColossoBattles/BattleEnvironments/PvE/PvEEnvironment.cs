@@ -87,14 +87,17 @@ namespace IodemBot.Modules.ColossoBattles
                 if (reaction.User.Value.IsBot)
                 {
                     return;
-                } else if (channel.Id != BattleChannel.Id)
+                }
+                else if (channel.Id != BattleChannel.Id)
                 {
                     return;
-                } else if (reaction.Emote.Name == "Fight")
+                }
+                else if (reaction.Emote.Name == "Fight")
                 {
                     _ = AddPlayer(reaction);
                     return;
-                } else if (reaction.Emote.Name == "Battle")
+                }
+                else if (reaction.Emote.Name == "Battle")
                 {
                     //File.AppendAllText("Logs/BattleStats.txt", $"{DateTime.Now},{Name}, {GetIds}\n");
                     _ = StartBattle();
@@ -537,7 +540,7 @@ namespace IodemBot.Modules.ColossoBattles
             var allDjinn = PlayerMessages.Values.SelectMany(p => p.Moves.OfType<Djinn>()).ToList();
             var standbyDjinn = allDjinn.Where(d => d.State == DjinnState.Standby);
             var recoveryDjinn = allDjinn.Where(d => d.State == DjinnState.Recovery);
-            if(allDjinn.Count == 0)
+            if (allDjinn.Count == 0)
             {
                 return null;
             }

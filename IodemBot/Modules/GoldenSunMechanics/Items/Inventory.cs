@@ -160,10 +160,11 @@ namespace IodemBot.Modules.GoldenSunMechanics
         {
             if (lastDailyChest.Date < DateTime.Now.Date && chests[ChestQuality.Daily] == 0)
             {
-                if((DateTime.Now.Date - lastDailyChest.Date).TotalDays <= 1)
+                if ((DateTime.Now.Date - lastDailyChest.Date).TotalDays <= 1)
                 {
                     dailiesInARow++;
-                } else
+                }
+                else
                 {
                     dailiesInARow = 1;
                 }

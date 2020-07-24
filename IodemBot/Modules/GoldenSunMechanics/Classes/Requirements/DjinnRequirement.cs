@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Linq;
 using IodemBot.Core.UserManagement;
 
 namespace IodemBot.Modules.GoldenSunMechanics
@@ -11,7 +8,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public int Apply(UserAccount user)
         {
             var elements = new[] { Element.Venus, Element.Mars, Element.Jupiter, Element.Mercury };
-            return (elements.Select(e => user.DjinnPocket.djinn.Count(d => d.Element == e)).Min()+1) / 2;
+            return (elements.Select(e => user.DjinnPocket.djinn.Count(d => d.Element == e)).Min() + 1) / 2;
         }
     }
 }

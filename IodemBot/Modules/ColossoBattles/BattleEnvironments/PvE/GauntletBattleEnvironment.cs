@@ -108,7 +108,7 @@ namespace IodemBot.Modules.ColossoBattles
         public override void Dispose()
         {
             base.Dispose();
-            
+
         }
 
         public override async Task Reset()

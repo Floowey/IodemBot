@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using IodemBot.Core.UserManagement;
+﻿using IodemBot.Core.UserManagement;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {

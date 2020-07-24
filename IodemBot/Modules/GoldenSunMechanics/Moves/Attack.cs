@@ -175,7 +175,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
             if (enemy.HasCondition(Condition.Key))
             {
-                if(enemy.GetTeam().Count(e => e.IsAlive && e.HasCondition(Condition.Key)) == 0)
+                if (enemy.GetTeam().Count(e => e.IsAlive && e.HasCondition(Condition.Key)) == 0)
                 {
                     enemy.GetTeam().ForEach(e => e.Kill());
                 }

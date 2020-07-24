@@ -21,7 +21,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             else if (user.ServerStats.ColossoWins >= 250) //Savage
             {
                 return 2;
-            }   
+            }
             else if (user.ServerStats.ColossoWins >= 50) //Ruffian
             {
                 return 1;

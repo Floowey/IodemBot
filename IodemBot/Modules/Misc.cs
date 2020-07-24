@@ -2,16 +2,15 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
 using Iodembot.Preconditions;
-using IodemBot.Core.Leveling;
 using IodemBot.Core.UserManagement;
 using IodemBot.Extensions;
-using System.Runtime.InteropServices;
 
 namespace IodemBot.Modules
 {
@@ -150,7 +149,7 @@ namespace IodemBot.Modules
             .AddField("Running since", $"{Global.RunningSince.ToLocalTime()} ({DateTime.Now.Subtract(Global.RunningSince.ToLocalTime()):d' 'hh':'mm':'ss})")
             .AddField("Connected since", $"{Global.UpSince.ToLocalTime()} ({DateTime.Now.Subtract(Global.UpSince.ToLocalTime()):d' 'hh':'mm':'ss})")
             .AddField("Running on", RuntimeInformation.OSDescription)
-            .Build()) ;
+            .Build());
         }
 
         [Command("clock"), Alias("worldclock")]
@@ -171,7 +170,8 @@ namespace IodemBot.Modules
                     .AddField(":statue_of_liberty: New York", TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.Now, "Eastern Standard Time").ToString(format, enAU), true)
                     .Build()
                     );
-            } else
+            }
+            else
             {
                 await Context.Channel.SendMessageAsync("", false,
                    new EmbedBuilder()
