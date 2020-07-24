@@ -167,7 +167,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             {
                 userDjinn.djinn.Remove(d);
                 userDjinn.djinn = userDjinn.djinn.Prepend(d).ToList();
-                userDjinn.DjinnSetup.Prepend(d.Element);
+                userDjinn.DjinnSetup = userDjinn.DjinnSetup.Prepend(d.Element).ToList();
             });
             userDjinn.DjinnSetup = userDjinn.DjinnSetup.Take(2).ToList();
         }
