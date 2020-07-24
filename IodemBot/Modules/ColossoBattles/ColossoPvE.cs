@@ -209,10 +209,10 @@ namespace IodemBot.Modules.ColossoBattles
             var gs = GuildSettings.GetGuildSettings(guild);
             if(mode == EndlessMode.Default)
             {
-                battles.Add(new EndlessBattleEnvironment("Endless", gs.ColossoChannel, true, await PrepareBattleChannel($"Endless-Legacy-{Context.User.Username}", guild)));
+                battles.Add(new EndlessBattleEnvironment("Endless", gs.ColossoChannel, false, await PrepareBattleChannel($"Endless-Legacy-{Context.User.Username}", guild)));
             } else
             {
-                battles.Add(new EndlessBattleEnvironment("Endless", gs.ColossoChannel, true, await PrepareBattleChannel($"Endless-Legacy-{Context.User.Username}", guild)) {Factory = new PlayerFighterFactory() {DjinnOption = DjinnOption.NoDjinn } });
+                battles.Add(new EndlessBattleEnvironment("Endless", gs.ColossoChannel, false, await PrepareBattleChannel($"Endless-Legacy-{Context.User.Username}", guild)) {Factory = new PlayerFighterFactory() {DjinnOption = DjinnOption.NoDjinn } });
             }
         }
 
