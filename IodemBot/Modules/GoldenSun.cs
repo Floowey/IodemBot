@@ -195,18 +195,20 @@ namespace IodemBot.Modules
             var embed = new EmbedBuilder()
             .WithColor(Colors.Get(account.Element.ToString()))
             .WithAuthor(author)
-            .WithTitle($"Level {account.LevelNumber} {account.GsClass}{string.Join("", account.TrophyCase.Trophies.Select(t => t.Icon))}")
-            .AddField("XP", $"{account.XP} - next in {account.XPneeded}{(account.NewGames > 1 ? $"\n({account.TotalXP} total | {account.NewGames} resets)" : "")}", true)
-            .AddField("Rank", UserAccounts.GetRank(user) + 1, true)
-            .AddField("Colosso wins | Endless Streaks", $"{account.ServerStats.ColossoWins}\nSolo: {account.ServerStats.ColossoHighestRoundEndlessSolo} | Duo: {account.ServerStats.ColossoHighestRoundEndlessDuo} \nTrio: {account.ServerStats.ColossoHighestRoundEndlessTrio} | Quad: {account.ServerStats.ColossoHighestRoundEndlessQuad}", true)
-
+            .WithTitle($"Level {account.LevelNumber} {account.GsClass}{string.Join("", account.TrophyCase.Trophies.Select(t => t.Icon))} (Rank {UserAccounts.GetRank(user) + 1})")
             .AddField("Current Equip", account.Inv.GearToString(AdeptClassSeriesManager.GetClassSeries(account).Archtype), true)
             .AddField("Psynergy", p.GetMoves(false), true)
             .AddField("Djinn", account.DjinnPocket.GetDjinns().GetDisplay(DjinnDetail.None), true)
 
             .AddField("Stats", p.Stats.ToString(), true)
             .AddField("Elemental Stats", p.ElStats.ToString(), true)
-            .AddField("Unlocked Classes", account.BonusClasses.Count == 0 ? "none" : string.Join(", ", account.BonusClasses));
+
+            .AddField("Unlocked Classes", account.BonusClasses.Count == 0 ? "none" : string.Join(", ", account.BonusClasses))
+
+            .AddField("XP", $"{account.XP} - next in {account.XPneeded}{(account.NewGames > 1 ? $"\n({account.TotalXP} total | {account.NewGames} resets)" : "")}", true)
+            .AddField("Colosso wins | Endless Streaks", $"{account.ServerStats.ColossoWins}", true)
+            .AddField("Endless Streaks", $"Solo: { account.ServerStats.ColossoHighestRoundEndlessSolo} | Duo: { account.ServerStats.ColossoHighestRoundEndlessDuo} \nTrio: { account.ServerStats.ColossoHighestRoundEndlessTrio} | Quad: { account.ServerStats.ColossoHighestRoundEndlessQuad}", true);
+            
 
             if (user is SocketGuildUser socketGuildUser)
             {
