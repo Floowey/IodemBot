@@ -63,7 +63,6 @@ namespace IodemBot.Modules
         [Summary("Pong")]
         public async Task Ping()
         {
-            //await TwitchListener.GetStreamers();
             await Context.Channel.SendMessageAsync(embed: new EmbedBuilder()
                 .WithColor(Colors.Get("Iodem"))
                 .WithDescription($"Pong!")
@@ -75,7 +74,6 @@ namespace IodemBot.Modules
         [Summary("Ping")]
         public async Task Pong()
         {
-            //await TwitchListener.GetStreamers();
             await Context.Channel.SendMessageAsync(embed: new EmbedBuilder()
                 .WithColor(Colors.Get("Iodem"))
                 .WithDescription($"Ping!")
