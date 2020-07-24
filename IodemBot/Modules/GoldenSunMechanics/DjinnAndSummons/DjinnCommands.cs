@@ -148,6 +148,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             {
                 return;
             }
+            if (Names[0].Contains(',')) Names = Names[0].Split(',').Select(p => p.Trim()).ToArray();
             var user = UserAccounts.GetAccount(Context.User);
             TakeDjinn(user, Names);
             await DjinnInv();
@@ -156,17 +157,19 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public static void TakeDjinn(UserAccount user, string[] Names)
         {
             var userDjinn = user.DjinnPocket;
-            var chosenDjinn = userDjinn.djinn
-                .OfElement(AdeptClassSeriesManager.GetClassSeries(user).Elements)
-                .Where(d => Names.Any(n => n.Equals(d.Djinnname, StringComparison.CurrentCultureIgnoreCase)) || Names.Any(n => n.Equals(d.Nickname, StringComparison.CurrentCultureIgnoreCase)))
+            var userclass = AdeptClassSeriesManager.GetClassSeries(user);
+            var chosenDjinn = Names
+                .Select(n => userDjinn.GetDjinn(n))
+                .OfElement(userclass.Elements)
                 .Take(DjinnPocket.MaxDjinn)
                 .ToList();
-            userDjinn.DjinnSetup = chosenDjinn.Select(d => d.Element).ToList();
+               
             chosenDjinn.ForEach(d =>
             {
                 userDjinn.djinn.Remove(d);
                 userDjinn.djinn = userDjinn.djinn.Prepend(d).ToList();
             });
+            userDjinn.DjinnSetup = chosenDjinn.Select(d => d.Element).ToList();
         }
 
         [Command("GiveDjinn")]

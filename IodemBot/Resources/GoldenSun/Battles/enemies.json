@@ -1542,7 +1542,17 @@
       "marsatk": 120,
       "jupiteratk": 110
     },
-    "extraturns": 1
+    "extraturns": 1,
+    "isImmuneToConditions": [
+      "Stun",
+      "Poison",
+      "Venom",
+      "Delusion",
+      "Sleep",
+      "DeathCurse",
+      "Haunt"
+    ],
+    "isImmuneToOHKO": true
   },
   "Death Ball": {
     "movepool": [ "Condemn", "Haunt", "Curse" ],
@@ -1946,7 +1956,17 @@
       "marsatk": 105,
       "venusatk": 110
     },
-    "extraturns": 3
+    "extraturns": 3,
+    "isImmuneToConditions": [
+      "Stun",
+      "Poison",
+      "Venom",
+      "Delusion",
+      "Sleep",
+      "DeathCurse",
+      "Haunt"
+    ],
+    "isImmuneToOHKO": true
   },
   "Doom Dragon 2": {
     "movepool": [ "Blast Breath", "Briar", "Clay Spire", "Cruel Ruin", "Curse", "Desert Gasp", "Djinn Blast", "Earth Force", "Guard Aura" ],
@@ -1967,7 +1987,17 @@
       "marsatk": 105,
       "venusatk": 8
     },
-    "extraturns": 2
+    "extraturns": 2,
+    "isImmuneToConditions": [
+      "Stun",
+      "Poison",
+      "Venom",
+      "Delusion",
+      "Sleep",
+      "DeathCurse",
+      "Haunt"
+    ],
+    "isImmuneToOHKO": true
   },
   "Doom Dragon 3": {
     "movepool": [ "Cruel Ruin", "Darksol Gasp", "Djinn Storm", "Earth Force", "Guard Aura", "Nettle", "Stone Spire" ],
@@ -1987,7 +2017,17 @@
       "jupiterres": 98,
       "venusatk": 110
     },
-    "extraturns": 1
+    "extraturns": 1,
+    "isImmuneToConditions": [
+      "Stun",
+      "Poison",
+      "Venom",
+      "Delusion",
+      "Sleep",
+      "DeathCurse",
+      "Haunt"
+    ],
+    "isImmuneToOHKO": true
   },
   "Doomsayer": {
     "movepool": [ "Clay Spire", "Curse", "Condemn" ],
@@ -2690,9 +2730,9 @@
     "name": "Fusion Dragon",
     "imgurl": "https://goldensunwiki.net/w/images/9/95/Fusion_Dragon.gif",
     "stats": {
-      "maxhp": 5000,
+      "maxhp": 7000,
       "maxpp": 500,
-      "atk": 439,
+      "atk": 539,
       "def": 150,
       "spd": 190
     },
@@ -2704,7 +2744,17 @@
       "marsatk": 110,
       "venusatk": 100
     },
-    "extraturns": 1
+    "extraturns": 1,
+    "isImmuneToConditions": [
+      "Stun",
+      "Poison",
+      "Venom",
+      "Delusion",
+      "Sleep",
+      "DeathCurse",
+      "Haunt"
+    ],
+    "isImmuneToOHKO": true
   },
   "Gargoyle": {
     "movepool": [ "Guard", "Quake Sphere", "Ice Blessing" ],
@@ -5005,7 +5055,17 @@
       "marsatk": 115,
       "venusatk": 95
     },
-    "extraturns": 1
+    "extraturns": 1,
+    "isImmuneToConditions": [
+      "Stun",
+      "Poison",
+      "Venom",
+      "Delusion",
+      "Sleep",
+      "DeathCurse",
+      "Haunt"
+    ],
+    "isImmuneToOHKO": true
   },
   "Manticore King": {
     "movepool": [ "Poison Tail", "Bind", "Lucid Prophecy", "Eruption" ],
@@ -5373,7 +5433,17 @@
       "venusatk": 100,
       "mercuryatk": 95
     },
-    "extraturns": 0
+    "extraturns": 0,
+    "isImmuneToConditions": [
+      "Stun",
+      "Poison",
+      "Venom",
+      "Delusion",
+      "Sleep",
+      "DeathCurse",
+      "Haunt"
+    ],
+    "isImmuneToOHKO": true
   },
   "Mercury Djinni 1": {
     "movepool": [ "Prism", "Tundra", "Drench", "Froth Sphere", "Flee" ],
@@ -7785,7 +7855,17 @@
       "mercuryres": 72,
       "marsatk": 110
     },
-    "extraturns": 0
+    "extraturns": 0,
+    "isImmuneToConditions": [
+      "Stun",
+      "Poison",
+      "Venom",
+      "Delusion",
+      "Sleep",
+      "DeathCurse",
+      "Haunt"
+    ],
+    "isImmuneToOHKO": true
   },
   "Saturos 2": {
     "movepool": [ "Heat Flash", "Inferno", "Break", "Pyroclasm", "Protect", "Haunt", "Potent Cure" ],
@@ -7806,7 +7886,17 @@
       "marsatk": 110,
       "venusatk": 100
     },
-    "extraturns": 0
+    "extraturns": 0,
+    "isImmuneToConditions": [
+      "Stun",
+      "Poison",
+      "Venom",
+      "Delusion",
+      "Sleep",
+      "DeathCurse",
+      "Haunt"
+    ],
+    "isImmuneToOHKO": true
   },
   "Sea Dragon": {
     "movepool": [
@@ -8620,7 +8710,17 @@
       "venusres": 48,
       "jupiteratk": 110
     },
-    "extraturns": 1
+    "extraturns": 1,
+    "isImmuneToConditions": [
+      "Stun",
+      "Poison",
+      "Venom",
+      "Delusion",
+      "Sleep",
+      "DeathCurse",
+      "Haunt"
+    ],
+    "isImmuneToOHKO": true
   },
   "Succubus 1": {
     "movepool": [ "Hail Prism", "Wind Slash", "Heartrender" ],
@@ -10621,7 +10721,7 @@
       "MercuryAtk": 110,
       "MercuryRes": 180
     },
-    "extraTurns": 1,
+    "extraTurns": 2,
     "isImmuneToConditions": [
       "Stun",
       "Poison",
