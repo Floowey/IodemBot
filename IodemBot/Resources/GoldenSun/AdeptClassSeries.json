@@ -1,37 +1,37 @@
 [
-    {
-        "name": "Exathi Series",
-        "classes": [
-            {
-                "name": "Exathi",
-                "movepool": [
-                    "Brutal Swing"
-                ],
-                "statMultipliers": {
-                    "maxHP": 100,
-                    "maxPP": 0,
-                    "Atk": 100,
-                    "Def": 100,
-                    "Spd": 100
-                }
-            }
+  {
+    "name": "Exathi Series",
+    "classes": [
+      {
+        "name": "Exathi",
+        "movepool": [
+          "Brutal Swing"
         ],
-        "elements": [
-            4
-        ],
-        "elstats": {
-            "VenusAtk": 100,
-            "VenusRes": 100,
-            "MarsAtk": 100,
-            "MarsRes": 100,
-            "JupiterAtk": 100,
-            "JupiterRes": 100,
-            "MercuryAtk": 100,
-            "MercuryRes": 100
-        },
-        "requirement": "Level",
-        "isDefault": true
+        "statMultipliers": {
+          "maxHP": 100,
+          "maxPP": 0,
+          "Atk": 100,
+          "Def": 100,
+          "Spd": 100
+        }
+      }
+    ],
+    "elements": [
+      4
+    ],
+    "elstats": {
+      "VenusAtk": 100,
+      "VenusRes": 100,
+      "MarsAtk": 100,
+      "MarsRes": 100,
+      "JupiterAtk": 100,
+      "JupiterRes": 100,
+      "MercuryAtk": 100,
+      "MercuryRes": 100
     },
+    "requirement": "Level",
+    "isDefault": true
+  },
   {
     "name": "Squire Series",
     "classes": [

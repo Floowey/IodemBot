@@ -16,7 +16,6 @@ namespace IodemBot.Modules.ColossoBattles
         public Dungeon Dungeon;
         public DungeonMatchup matchup;
         public List<DungeonMatchup>.Enumerator enumerator;
-        public readonly bool IsDeleted = false;
         private bool WasReset = false;
         private bool EndOfDungeon = false;
 
@@ -105,18 +104,12 @@ namespace IodemBot.Modules.ColossoBattles
             return builder;
         }
 
-        public override void Dispose()
-        {
-            base.Dispose();
-
-        }
-
         public override async Task Reset()
         {
             enumerator = Dungeon.Matchups.GetEnumerator();
             matchup = enumerator.Current;
             await base.Reset();
-            if (IsDeleted && WasReset)
+            if (!IsPersistent && WasReset)
             {
                 Dispose(); return;
             }

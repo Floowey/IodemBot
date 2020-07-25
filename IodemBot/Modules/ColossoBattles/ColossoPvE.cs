@@ -46,7 +46,7 @@ namespace IodemBot.Modules.ColossoBattles
                     return;
                 }
 
-                var openBattle = battles.OfType<GauntletBattleEnvironment>().Where(b => b.IsReady && !b.IsDeleted).FirstOrDefault();
+                var openBattle = battles.OfType<GauntletBattleEnvironment>().Where(b => b.IsReady && b.IsPersistent).FirstOrDefault();
                 if (openBattle == null)
                 {
                     var gauntletFromUser = battles.Where(b => b.Name.Equals(Context.User.Username, StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault();
@@ -179,11 +179,11 @@ namespace IodemBot.Modules.ColossoBattles
         [RequireUserServer]
         public async Task Reset(string name)
         {
-            await Context.Message.DeleteAsync();
             var a = battles.Where(b => b.Name.Equals(name, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
             if (a != null)
             {
                 _ = a.Reset();
+                await Context.Message.DeleteAsync();
             }
         }
 

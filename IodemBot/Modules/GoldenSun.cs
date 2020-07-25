@@ -209,7 +209,6 @@ namespace IodemBot.Modules
             .AddField("Colosso wins | Endless Streaks", $"{account.ServerStats.ColossoWins}", true)
             .AddField("Endless Streaks", $"Solo: { account.ServerStats.ColossoHighestRoundEndlessSolo} | Duo: { account.ServerStats.ColossoHighestRoundEndlessDuo} \nTrio: { account.ServerStats.ColossoHighestRoundEndlessTrio} | Quad: { account.ServerStats.ColossoHighestRoundEndlessQuad}", true);
             
-
             if (user is SocketGuildUser socketGuildUser)
             {
                 var Footer = new EmbedFooterBuilder();
