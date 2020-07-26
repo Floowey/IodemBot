@@ -23,10 +23,7 @@ namespace IodemBot.Modules.ColossoBattles
 
         public static ulong[] ChannelIds
         {
-            get
-            {
-                return battles.Select(b => b.GetIds).SelectMany(item => item).Distinct().ToArray();
-            }
+            get => battles.Select(b => b.GetIds).SelectMany(item => item).Distinct().ToArray();
         }
 
         public async Task SetupDungeon(string DungeonName, bool ModPermission = false)
@@ -202,17 +199,19 @@ namespace IodemBot.Modules.ColossoBattles
         }
 
         [Command("endless")]
+        [Summary("Prepare a channel for an endless gamemode. 'Legacy' will be without djinn")]
+        [RequireUserServer]
         public async Task ColossoEndless(EndlessMode mode = EndlessMode.Default)
         {
             var guild = Context.Guild;
             var gs = GuildSettings.GetGuildSettings(guild);
             if (mode == EndlessMode.Default)
             {
-                battles.Add(new EndlessBattleEnvironment("Endless", gs.ColossoChannel, false, await PrepareBattleChannel($"Endless-Legacy-{Context.User.Username}", guild)));
+                battles.Add(new EndlessBattleEnvironment($"Endless-{Context.User.Username}", gs.ColossoChannel, false, await PrepareBattleChannel($"Endless-{Context.User.Username}", guild)));
             }
             else
             {
-                battles.Add(new EndlessBattleEnvironment("Endless", gs.ColossoChannel, false, await PrepareBattleChannel($"Endless-Legacy-{Context.User.Username}", guild), EndlessMode.Legacy));
+                battles.Add(new EndlessBattleEnvironment($"Endless-{Context.User.Username}", gs.ColossoChannel, false, await PrepareBattleChannel($"Endless-Legacy-{Context.User.Username}", guild), EndlessMode.Legacy));
             }
         }
 
