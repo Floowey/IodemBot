@@ -11,6 +11,7 @@ using Discord.WebSocket;
 using Iodembot.Preconditions;
 using IodemBot.Core.UserManagement;
 using IodemBot.Extensions;
+using IodemBot.Modules.ColossoBattles;
 
 namespace IodemBot.Modules
 {
@@ -286,9 +287,9 @@ namespace IodemBot.Modules
         [Command("endless"), Alias("showdown")]
         [Summary("Ranking of endless battles")]
         [Cooldown(15)]
-        public async Task Showdown(RankEnum type = RankEnum.Solo)
+        public async Task Showdown(RankEnum type = RankEnum.Solo, EndlessMode mode = EndlessMode.Default)
         {
-            var topAccounts = UserAccounts.GetTop(type).Take(10);
+            var topAccounts = UserAccounts.GetTop(type, mode).Take(10);
             var embed = new EmbedBuilder();
             embed.WithColor(Colors.Get("Iodem"));
             string[] Emotes = new string[] { "🥇", "🥈", "🥉", "", "" };
@@ -296,22 +297,23 @@ namespace IodemBot.Modules
             for (int i = 0; i < Math.Min(topAccounts.Count(), 5); i++)
             {
                 var curAccount = topAccounts.ElementAt(i);
+                var streak = mode == EndlessMode.Default ? curAccount.ServerStats.EndlessStreak : curAccount.ServerStats.LegacyStreak;
                 switch (type)
                 {
                     case RankEnum.Solo:
-                        builder.Append($"`{i + 1}` {Emotes[i]} {curAccount.Name,-15} - `{curAccount.ServerStats.ColossoHighestRoundEndlessSolo}`\n");
+                        builder.Append($"`{i + 1}` {Emotes[i]} {curAccount.Name,-15} - `{streak.Solo}`\n");
                         break;
 
                     case RankEnum.Duo:
-                        builder.Append($"`{i + 1}` {Emotes[i]} {curAccount.ServerStats.ColossoHighestRoundEndlessDuoNames} - `{curAccount.ServerStats.ColossoHighestRoundEndlessDuo}`\n");
+                        builder.Append($"`{i + 1}` {Emotes[i]} {streak.DuoNames} - `{streak.Duo}`\n");
                         break;
 
                     case RankEnum.Trio:
-                        builder.Append($"`{i + 1}` {Emotes[i]} {curAccount.ServerStats.ColossoHighestRoundEndlessTrioNames} - `{curAccount.ServerStats.ColossoHighestRoundEndlessTrio}`\n");
+                        builder.Append($"`{i + 1}` {Emotes[i]} {streak.TrioNames} - `{streak.Trio}`\n");
                         break;
 
                     case RankEnum.Quad:
-                        builder.Append($"`{i + 1}` {Emotes[i]} {curAccount.ServerStats.ColossoHighestRoundEndlessQuadNames} - `{curAccount.ServerStats.ColossoHighestRoundEndlessQuad}`\n");
+                        builder.Append($"`{i + 1}` {Emotes[i]} {streak.Quad} - `{streak.QuadNames}\n");
                         break;
                 }
             }
@@ -322,22 +324,23 @@ namespace IodemBot.Modules
             if (rank >= 5)
             {
                 builder.Append("... \n");
+                var streak = mode == EndlessMode.Default ? account.ServerStats.EndlessStreak : account.ServerStats.LegacyStreak;
                 switch (type)
                 {
                     case RankEnum.Solo:
-                        builder.Append($"`{rank + 1}` {account.Name,-15} - `{account.ServerStats.ColossoHighestRoundEndlessSolo}`");
+                        builder.Append($"`{rank + 1}` {account.Name,-15} - `{streak.Solo}`");
                         break;
 
                     case RankEnum.Duo:
-                        builder.Append($"`{rank + 1}` {account.ServerStats.ColossoHighestRoundEndlessDuoNames} - `{account.ServerStats.ColossoHighestRoundEndlessDuo}`");
+                        builder.Append($"`{rank + 1}` {streak.DuoNames} - `{streak.Duo}`");
                         break;
 
                     case RankEnum.Trio:
-                        builder.Append($"`{rank + 1}` {account.ServerStats.ColossoHighestRoundEndlessTrioNames} - `{account.ServerStats.ColossoHighestRoundEndlessTrio}`");
+                        builder.Append($"`{rank + 1}` {streak.TrioNames} - `{streak.Trio}`");
                         break;
 
                     case RankEnum.Quad:
-                        builder.Append($"`{rank + 1}` {account.ServerStats.ColossoHighestRoundEndlessQuadNames} - `{account.ServerStats.ColossoHighestRoundEndlessQuad}`");
+                        builder.Append($"`{rank + 1}` {streak.QuadNames} - `{streak.Quad}`");
                         break;
                 }
             }

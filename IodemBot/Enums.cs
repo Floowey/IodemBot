@@ -16,7 +16,7 @@ namespace IodemBot
     public enum InventoryOption { Default, NoInventory }
 
     public enum DjinnOption { Unique, Any, NoDjinn }
-
+    public enum EndlessMode { Default, Legacy };
     public enum BaseStatOption { Default, Average }
 
     public enum BaseStatManipulationOption { Default, NoIncrease }

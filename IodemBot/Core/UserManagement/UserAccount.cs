@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using IodemBot.Modules.ColossoBattles;
 using IodemBot.Modules.GoldenSunMechanics;
 using Newtonsoft.Json;
 
@@ -50,6 +51,23 @@ namespace IodemBot.Core.UserManagement
         public int Quad { get; set; } = 0;
         public string QuadNames { get; set; } = "";
 
+        public Tuple<int, string> GetEntry(RankEnum rank)
+        {
+            switch (rank)
+            {
+                default:
+                case RankEnum.Level:
+                    return null;
+                case RankEnum.Solo:
+                    return new Tuple<int, string>(Solo, "");
+                case RankEnum.Duo:
+                    return new Tuple<int, string>(Duo, DuoNames);
+                case RankEnum.Trio:
+                    return new Tuple<int, string>(Trio, TrioNames);
+                case RankEnum.Quad:
+                    return new Tuple<int, string>(Quad, QuadNames);
+            }
+        }
         public void AddStreak(int streak, int players = 1, string Names = "")
         {
             switch (players)
@@ -84,6 +102,7 @@ namespace IodemBot.Core.UserManagement
                 default: break;
             }
         }
+        
 
         public static EndlessStreak operator +(EndlessStreak s1, EndlessStreak s2)
         {
@@ -132,6 +151,8 @@ namespace IodemBot.Core.UserManagement
         public int DungeonsCompleted { get; internal set; } = 0;
         public string LastDungeon { get; internal set; } = "";
         public int SameDungeonInARow { get; internal set; } = 0;
+
+        public EndlessStreak GetStreak(EndlessMode mode) => mode == EndlessMode.Default ? EndlessStreak : LegacyStreak;
 
         public static ServerStats operator +(ServerStats s1, ServerStats s2)
         {
