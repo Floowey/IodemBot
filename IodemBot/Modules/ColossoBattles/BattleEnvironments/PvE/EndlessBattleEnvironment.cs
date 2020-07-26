@@ -103,8 +103,8 @@ namespace IodemBot.Modules.ColossoBattles
         {
             get
             {
-                var basexp = 20 + 5 * LureCaps + winsInARow / 4;
-                var DiffFactor = (int)Math.Max(3, (uint)Math.Pow((int)Difficulty + 1, 2));
+                var basexp = 15 + 3 * LureCaps + winsInARow / 4;
+                var DiffFactor = (int)Math.Max(2, (uint)Math.Pow((int)Difficulty + 1, 2));
                 var xp = (uint)(Global.Random.Next(basexp, 2 * basexp) * DiffFactor);
                 return new RewardTables()
                 {
