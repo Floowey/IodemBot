@@ -11,6 +11,7 @@ using IodemBot.Modules.GoldenSunMechanics;
 
 namespace IodemBot.Modules.ColossoBattles
 {
+    public enum EndlessMode { Default, Legacy };
     internal class EndlessBattleEnvironment : PvEEnvironment
     {
         private static readonly Dictionary<BattleDifficulty, RewardTable> chestTable = new Dictionary<BattleDifficulty, RewardTable>()
@@ -97,6 +98,7 @@ namespace IodemBot.Modules.ColossoBattles
         private int LureCaps = 0;
         private int winsInARow = 0;
         private int StageLength { get; set; } = 12;
+        private EndlessMode mode = EndlessMode.Default;
 
         internal RewardTables Rewards
         {
@@ -142,8 +144,13 @@ namespace IodemBot.Modules.ColossoBattles
             }
         }
 
-        public EndlessBattleEnvironment(string Name, ITextChannel lobbyChannel, bool isPersistent, ITextChannel BattleChannel) : base(Name, lobbyChannel, isPersistent, BattleChannel)
+        public EndlessBattleEnvironment(string Name, ITextChannel lobbyChannel, bool isPersistent, ITextChannel BattleChannel, EndlessMode mode = EndlessMode.Default) : base(Name, lobbyChannel, isPersistent, BattleChannel)
         {
+            this.mode = mode;
+            if(mode == EndlessMode.Legacy)
+            {
+                Factory = new PlayerFighterFactory() { DjinnOption = DjinnOption.NoDjinn };
+            }
             _ = Reset();
         }
 
@@ -191,11 +198,11 @@ namespace IodemBot.Modules.ColossoBattles
                     chests.Add(new DefaultReward { Weight = chests.Weight * (14 - 2 * LureCaps) });
                 }
                 RewardTables.Add(chests);
-                winners.OfType<PlayerFighter>().ToList().ForEach(async p => await ServerGames.UserWonBattle(p.avatar, RewardTables.GetRewards(), p.battleStats, lobbyChannel, BattleChannel, winsInARow, string.Join(", ", Battle.TeamA.Select(pl => pl.Name))));
-                winners.OfType<PlayerFighter>().ToList().ForEach(async p => await ServerGames.UserFinishedEndless(p.avatar, lobbyChannel, winsInARow));
+                winners.OfType<PlayerFighter>().ToList().ForEach(async p => await ServerGames.UserWonBattle(p.avatar, RewardTables.GetRewards(), p.battleStats, lobbyChannel, BattleChannel));
+                winners.OfType<PlayerFighter>().ToList().ForEach(async p => await ServerGames.UserWonEndless(p.avatar, lobbyChannel, winsInARow, mode, p.battleStats.TotalTeamMates+1, string.Join(", ", Battle.TeamA.Select(pl => pl.Name))));
+
                 chests.RemoveAll(s => s is DefaultReward);
 
-                Console.WriteLine("Winners rewarded.");
                 Battle.TeamA.ForEach(p =>
                 {
                     p.PPrecovery += (winsInARow <= 8 * 4 && winsInARow % 4 == 0) ? 1 : 0;
@@ -218,6 +225,7 @@ namespace IodemBot.Modules.ColossoBattles
             {
                 var losers = winners.First().battle.GetTeam(winners.First().enemies);
                 losers.ConvertAll(s => (PlayerFighter)s).ForEach(async p => await ServerGames.UserLostBattle(p.avatar, lobbyChannel));
+                winners.OfType<PlayerFighter>().ToList().ForEach(async p => await ServerGames.UserFinishedEndless(p.avatar, lobbyChannel, winsInARow, mode));
                 _ = WriteGameOver();
             }
         }

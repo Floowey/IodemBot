@@ -60,7 +60,7 @@ namespace IodemBot.Core.Leveling
             await Task.CompletedTask;
         }
 
-        internal static async Task UserWonBattle(UserAccount userAccount, List<Rewardable> rewards, BattleStats battleStats, ITextChannel lobbyChannel, ITextChannel battleChannel, int winsInARow = 1, string nameOfTeamMates = "")
+        internal static async Task UserWonBattle(UserAccount userAccount, List<Rewardable> rewards, BattleStats battleStats, ITextChannel lobbyChannel, ITextChannel battleChannel)
         {
             uint oldLevel = userAccount.LevelNumber;
 
@@ -77,36 +77,6 @@ namespace IodemBot.Core.Leveling
             userAccount.ServerStats.ColossoWins++;
             userAccount.ServerStats.ColossoStreak++;
             userAccount.ServerStats.ColossoHighestStreak = Math.Max(userAccount.ServerStats.ColossoHighestStreak, userAccount.ServerStats.ColossoStreak);
-            switch (battleStats.TotalTeamMates)
-            {
-                case 0:
-                    userAccount.ServerStats.ColossoHighestRoundEndlessSolo = Math.Max(userAccount.ServerStats.ColossoHighestRoundEndlessSolo, winsInARow);
-                    break;
-
-                case 1:
-                    if (winsInARow > userAccount.ServerStats.ColossoHighestRoundEndlessDuo)
-                    {
-                        userAccount.ServerStats.ColossoHighestRoundEndlessDuo = winsInARow;
-                        userAccount.ServerStats.ColossoHighestRoundEndlessDuoNames = nameOfTeamMates;
-                    }
-                    break;
-
-                case 2:
-                    if (winsInARow > userAccount.ServerStats.ColossoHighestRoundEndlessTrio)
-                    {
-                        userAccount.ServerStats.ColossoHighestRoundEndlessTrio = winsInARow;
-                        userAccount.ServerStats.ColossoHighestRoundEndlessTrioNames = nameOfTeamMates;
-                    }
-                    break;
-
-                case 3:
-                    if (winsInARow > userAccount.ServerStats.ColossoHighestRoundEndlessQuad)
-                    {
-                        userAccount.ServerStats.ColossoHighestRoundEndlessQuad = winsInARow;
-                        userAccount.ServerStats.ColossoHighestRoundEndlessQuadNames = nameOfTeamMates;
-                    }
-                    break;
-            }
 
             UserAccounts.SaveAccounts();
             uint newLevel = userAccount.LevelNumber;
@@ -131,7 +101,7 @@ namespace IodemBot.Core.Leveling
             embed.WithDescription($"{string.Join("\n", text)}");
             _ = GuildSettings.GetGuildSettings(channel.Guild).CommandChannel.SendMessageAsync("", false, embed.Build());
             var msg = await channel.SendMessageAsync("", false, embed.Build());
-            await Task.Delay(3000);
+            await Task.Delay(5000);
             _ = msg.DeleteAsync();
         }
 
@@ -182,9 +152,22 @@ namespace IodemBot.Core.Leveling
             await Task.CompletedTask;
         }
 
-        internal static async Task UserFinishedEndless(UserAccount avatar, ITextChannel lobbyChannel, int winsInARow)
+        internal static async Task UserWonEndless(UserAccount avatar, ITextChannel lobbyChannel, int winsInARow, EndlessMode mode, int nOfPlayers, string TeamMatesNames)
         {
-            string csvline = $"{DateTime.Now.TimeOfDay},Endless,{winsInARow},{avatar.Name}{Environment.NewLine}";
+            if(mode == EndlessMode.Default)
+            {
+                avatar.ServerStats.EndlessStreak.AddStreak(winsInARow, nOfPlayers, TeamMatesNames);
+            } else
+            {
+                avatar.ServerStats.LegacyStreak.AddStreak(winsInARow, nOfPlayers, TeamMatesNames);
+            }
+
+            await Task.CompletedTask;
+        }
+
+        internal static async Task UserFinishedEndless(UserAccount avatar, ITextChannel lobbyChannel, int winsInARow, EndlessMode mode)
+        {
+            string csvline = $"{DateTime.Now.TimeOfDay},Endless {mode},{winsInARow},{avatar.Name}{Environment.NewLine}";
             File.AppendAllText(BattleFile, csvline);
             await Task.CompletedTask;
         }

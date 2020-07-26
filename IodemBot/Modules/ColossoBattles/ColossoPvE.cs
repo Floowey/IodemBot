@@ -201,7 +201,6 @@ namespace IodemBot.Modules.ColossoBattles
             }
         }
 
-        public enum EndlessMode { Default, Legacy }
         [Command("endless")]
         public async Task ColossoEndless(EndlessMode mode = EndlessMode.Default)
         {
@@ -213,7 +212,7 @@ namespace IodemBot.Modules.ColossoBattles
             }
             else
             {
-                battles.Add(new EndlessBattleEnvironment("Endless", gs.ColossoChannel, false, await PrepareBattleChannel($"Endless-Legacy-{Context.User.Username}", guild)) { Factory = new PlayerFighterFactory() { DjinnOption = DjinnOption.NoDjinn } });
+                battles.Add(new EndlessBattleEnvironment("Endless", gs.ColossoChannel, false, await PrepareBattleChannel($"Endless-Legacy-{Context.User.Username}", guild), EndlessMode.Legacy));
             }
         }
 

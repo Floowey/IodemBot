@@ -40,9 +40,71 @@ namespace IodemBot.Core.UserManagement
         }
     }
 
+    public class EndlessStreak
+    {
+        public int Solo { get; set; }
+        public int Duo { get; set; } = 0;
+        public string DuoNames { get; set; } = "";
+        public int Trio { get; set; } = 0;
+        public string TrioNames { get; set; } = "";
+        public int Quad { get; set; } = 0;
+        public string QuadNames { get; set; } = "";
+
+        public void AddStreak(int streak, int players = 1, string Names = "")
+        {
+            switch (players)
+            {
+                case 1:
+                    Solo = Math.Max(Solo, streak);
+                    break;
+
+                case 2:
+                    if (streak > Duo)
+                    {
+                        Duo = streak;
+                        DuoNames = Names;
+                    }
+                    break;
+
+                case 3:
+                    if (streak > Trio)
+                    {
+                        Trio = streak;
+                        TrioNames = Names;
+                    }
+                    break;
+
+                case 4:
+                    if (streak > Quad)
+                    {
+                        Quad = streak;
+                        QuadNames = Names;
+                    }
+                    break;
+                default: break;
+            }
+        }
+
+        public static EndlessStreak operator +(EndlessStreak s1, EndlessStreak s2)
+        {
+            return new EndlessStreak()
+            {
+                Solo = Math.Max(s1.Solo, s2.Solo),
+                Duo = Math.Max(s1.Duo, s2.Duo),
+                Trio = Math.Max(s1.Trio, s2.Trio),
+                Quad = Math.Max(s1.Quad, s2.Quad),
+                DuoNames = s1.Duo > s2.Duo ? s1.DuoNames : s2.DuoNames,
+                TrioNames= s1.Trio > s2.Trio ? s1.TrioNames : s2.TrioNames,
+                QuadNames= s1.Quad > s2.Quad ? s1.QuadNames : s2.QuadNames,
+            };
+        }
+    }
+
     public class ServerStats
     {
         public ulong ChannelSwitches { get; set; } = 0;
+        public EndlessStreak EndlessStreak { get; set; } = new EndlessStreak();
+        public EndlessStreak LegacyStreak { get; set; } = new EndlessStreak();
         public int ColossoHighestRoundEndless { get; set; } = 0;
         public int ColossoHighestRoundEndlessDuo { get; set; } = 0;
         public string ColossoHighestRoundEndlessDuoNames { get; set; } = "";
@@ -84,7 +146,8 @@ namespace IodemBot.Core.UserManagement
                 ColossoHighestRoundEndlessTrioNames = s1.ColossoHighestRoundEndlessTrio >= s2.ColossoHighestRoundEndlessTrio ? s1.ColossoHighestRoundEndlessTrioNames : s2.ColossoHighestRoundEndlessTrioNames,
                 ColossoHighestRoundEndlessQuadNames = s1.ColossoHighestRoundEndlessDuo >= s2.ColossoHighestRoundEndlessQuad ? s1.ColossoHighestRoundEndlessQuadNames : s2.ColossoHighestRoundEndlessQuadNames,
                 ColossoHighestStreak = Math.Max(s1.ColossoHighestStreak, s2.ColossoHighestStreak),
-
+                EndlessStreak = s1.EndlessStreak + s2.EndlessStreak,
+                LegacyStreak = s1.LegacyStreak + s2.LegacyStreak,
                 ChannelSwitches = s1.ChannelSwitches + s2.ChannelSwitches,
                 RpsWins = s1.RpsWins + s2.RpsWins,
                 UniqueDaysActive = s1.UniqueDaysActive + s2.UniqueDaysActive,

@@ -68,6 +68,16 @@ namespace IodemBot.Modules
                 var account = UserAccounts.GetAccount(user);
 
                 account.Name = user.DisplayName();
+                account.ServerStats.LegacyStreak = new EndlessStreak()
+                {
+                    Solo = account.ServerStats.ColossoHighestRoundEndlessSolo,
+                    Duo = account.ServerStats.ColossoHighestRoundEndlessDuo,
+                    DuoNames = account.ServerStats.ColossoHighestRoundEndlessDuoNames,
+                    Trio = account.ServerStats.ColossoHighestRoundEndlessTrio,
+                    TrioNames = account.ServerStats.ColossoHighestRoundEndlessTrioNames,
+                    Quad = account.ServerStats.ColossoHighestRoundEndlessQuad,
+                    QuadNames = account.ServerStats.ColossoHighestRoundEndlessQuadNames
+                };
             }
             UserAccounts.SaveAccounts();
             await Task.CompletedTask;
