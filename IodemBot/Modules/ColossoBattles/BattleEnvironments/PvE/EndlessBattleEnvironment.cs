@@ -244,8 +244,7 @@ namespace IodemBot.Modules.ColossoBattles
             }
             SocketGuildUser player = (SocketGuildUser)reaction.User.Value;
             var playerAvatar = UserAccounts.GetAccount(player);
-            var factory = new PlayerFighterFactory();
-            var p = factory.CreatePlayerFighter(player);
+            var p = Factory.CreatePlayerFighter(player);
 
             if (playerAvatar.Inv.GetGear(AdeptClassSeriesManager.GetClassSeries(playerAvatar).Archtype).Any(i => i.Name == "Lure Cap"))
             {
