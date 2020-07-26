@@ -284,7 +284,7 @@ namespace IodemBot.Modules
             await Context.Channel.SendMessageAsync("", false, embed.Build());
         }
 
-        [Command("endless"), Alias("showdown")]
+        [Command("streak"), Alias("showdown")]
         [Summary("Ranking of endless battles")]
         [Cooldown(15)]
         public async Task Showdown(RankEnum type = RankEnum.Solo, EndlessMode mode = EndlessMode.Default)
