@@ -97,7 +97,7 @@ namespace IodemBot.Modules.ColossoBattles
         private int LureCaps = 0;
         private int winsInARow = 0;
         private int StageLength { get; set; } = 12;
-        private EndlessMode mode = EndlessMode.Default;
+        private readonly EndlessMode mode = EndlessMode.Default;
 
         internal RewardTables Rewards
         {

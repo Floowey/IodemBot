@@ -207,7 +207,7 @@ namespace IodemBot.Modules
 
             .AddField("XP", $"{account.XP} - next in {account.XPneeded}{(account.NewGames > 1 ? $"\n({account.TotalXP} total | {account.NewGames} resets)" : "")}", true)
             .AddField("Colosso wins | Endless Streaks", $"{account.ServerStats.ColossoWins}", true)
-            .AddField("Endless Streaks", $"Solo: { account.ServerStats.ColossoHighestRoundEndlessSolo} | Duo: { account.ServerStats.ColossoHighestRoundEndlessDuo} \nTrio: { account.ServerStats.ColossoHighestRoundEndlessTrio} | Quad: { account.ServerStats.ColossoHighestRoundEndlessQuad}", true);
+            .AddField("Endless Streaks", $"Solo: {account.ServerStats.EndlessStreak.Solo} | Duo: {account.ServerStats.EndlessStreak.Duo} \nTrio: {account.ServerStats.EndlessStreak.Trio} | Quad: {account.ServerStats.EndlessStreak.Quad}", true);
             
             if (user is SocketGuildUser socketGuildUser)
             {
