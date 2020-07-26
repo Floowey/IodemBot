@@ -41,7 +41,7 @@ namespace IodemBot.Modules
         }
 
         [Command("purge")]
-        [Remarks("Purges A User's Last Messages. Default Amount To Purge Is 100")]
+        [Remarks("Purges A User's Last Messages. Default Amount To Purge is 100")]
         [RequireUserPermission(ChannelPermission.ManageMessages)]
         public async Task Clear(int amountOfMessagesToDelete = 2)
         {
@@ -84,7 +84,7 @@ namespace IodemBot.Modules
         }
 
         [Command("Activity")]
-        [RequireOwner]
+        [RequireModerator]
         public async Task Activity()
         {
             var acc = UserAccounts.GetAllAccounts();

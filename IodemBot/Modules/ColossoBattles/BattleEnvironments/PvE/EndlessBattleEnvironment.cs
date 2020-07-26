@@ -11,7 +11,6 @@ using IodemBot.Modules.GoldenSunMechanics;
 
 namespace IodemBot.Modules.ColossoBattles
 {
-
     internal class EndlessBattleEnvironment : PvEEnvironment
     {
         private static readonly Dictionary<BattleDifficulty, RewardTable> chestTable = new Dictionary<BattleDifficulty, RewardTable>()
