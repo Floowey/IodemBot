@@ -344,7 +344,7 @@ namespace IodemBot.Modules
                         break;
                 }
             }
-            if (type == RankEnum.Solo)
+            if (type == RankEnum.Solo && mode == EndlessMode.Legacy)
             {
                 embed.WithFooter("Honorary Mention: Smeecko - 81, by breaking the Time-Space Continuum");
             }
@@ -455,8 +455,6 @@ namespace IodemBot.Modules
             if (q.quote.Contains(@"#^@%!"))
             {
                 var userAccount = UserAccounts.GetAccount(Context.User);
-                userAccount.ServerStats.HasQuotedMatthew = true;
-                UserAccounts.SaveAccounts();
                 await GoldenSun.AwardClassSeries("Curse Mage Series", Context.User, Context.Channel);
             }
 

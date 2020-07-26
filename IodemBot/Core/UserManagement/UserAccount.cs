@@ -136,8 +136,6 @@ namespace IodemBot.Core.UserManagement
         public uint ColossoStreak { get; set; } = 0;
         public uint ColossoWins { get; set; } = 0;
         public uint CommandsUsed { get; set; } = 0;
-        public bool HasQuotedMatthew { get; set; } = false;
-        public bool HasWrittenCurse { get; set; } = false;
         public DateTime LastDayActive { get; set; }
         public int LookedUpClass { get; set; }
         public int LookedUpInformation { get; set; } = 0;
