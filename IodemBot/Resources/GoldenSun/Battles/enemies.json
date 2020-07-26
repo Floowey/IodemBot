@@ -10597,9 +10597,9 @@
       "jupiteratk": 80
     }
   },
-  "Lunpa Guard": {
+  "Fortress Guard": {
     "movepool": [ "Slice" ],
-    "name": "Lunpa Guard",
+    "name": "Fortress Guard",
     "imgurl": "https://www.spriters-resource.com/resources/sheet_icons/79/82607.png",
     "stats": {
       "maxhp": 421,
