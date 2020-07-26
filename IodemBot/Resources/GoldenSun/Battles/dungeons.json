@@ -5906,9 +5906,10 @@
               "Coins": 10
             }
           ]
+        ]
       },
       {
-        "Flavourtext": "",
+        "Flavourtext": "Those lizards left a bit of an electric aftertaste in your mouth.\nThe place is completely dried out. What looks like were once water lines are now filled with sand. It's incredibly hard to move around in this maze, as if some ghostly spirits were messing with you. But you _really_ need to get to this chest!",
         "EnemyNames": [ "Horned Ghost", "Horned Ghost", "Willowisp 1" ],
         "Keywords": [ "StatusStun" ],
         "Image": "",
