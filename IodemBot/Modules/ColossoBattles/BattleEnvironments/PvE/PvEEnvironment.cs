@@ -22,6 +22,7 @@ namespace IodemBot.Modules.ColossoBattles
         public ITextChannel BattleChannel = null;
         protected Dictionary<IUserMessage, PlayerFighter> PlayerMessages = new Dictionary<IUserMessage, PlayerFighter>();
         protected bool wasJustReset = true;
+        private bool WasReset = false;
         public PlayerFighterFactory Factory { get; set; } = new PlayerFighterFactory();
 
         internal override ulong[] GetIds => new[] { BattleChannel.Id };
@@ -264,7 +265,11 @@ namespace IodemBot.Modules.ColossoBattles
         public override async Task Reset()
         {
             Battle = new ColossoBattle();
-
+            if (!IsPersistent && WasReset)
+            {
+                Dispose(); return;
+            }
+            WasReset = true;
             foreach (var k in PlayerMessages.Keys)
             {
                 PlayerMessages[k].Moves.OfType<Djinn>().ToList().ForEach(d =>

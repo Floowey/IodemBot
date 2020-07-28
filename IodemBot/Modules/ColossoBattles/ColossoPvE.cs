@@ -214,7 +214,7 @@ namespace IodemBot.Modules.ColossoBattles
                 }
                 else
                 {
-                    _ = gauntletFromUser.Reset();
+                    await gauntletFromUser.Reset();
                     battles.Remove(gauntletFromUser);
                 }
             }
@@ -290,8 +290,14 @@ namespace IodemBot.Modules.ColossoBattles
             var colossoChannel = gs.ColossoChannel;
             var teamB = gs.TeamB;
             var channel = await guild.GetOrCreateTextChannelAsync(Name, d => { d.CategoryId = colossoChannel.CategoryId; d.Position = colossoChannel.Position + battles.Count(); });
-
-            await channel.SyncPermissionsAsync();
+            try
+            {
+                await channel.SyncPermissionsAsync();
+            } catch (Discord.Net.HttpException e)
+            {
+                channel = await guild.GetOrCreateTextChannelAsync($"{Name}1", d => { d.CategoryId = colossoChannel.CategoryId; d.Position = colossoChannel.Position + battles.Count(); });
+                await channel.SyncPermissionsAsync();
+            }
 
             if (visibility == RoomVisibility.TeamB)
             {

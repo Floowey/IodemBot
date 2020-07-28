@@ -16,7 +16,6 @@ namespace IodemBot.Modules.ColossoBattles
         public Dungeon Dungeon;
         public DungeonMatchup matchup;
         public List<DungeonMatchup>.Enumerator enumerator;
-        private bool WasReset = false;
         private bool EndOfDungeon = false;
 
         public bool HasPlayer { get { return Battle.SizeTeamA > 0; } }
@@ -109,11 +108,6 @@ namespace IodemBot.Modules.ColossoBattles
             enumerator = Dungeon.Matchups.GetEnumerator();
             matchup = enumerator.Current;
             await base.Reset();
-            if (!IsPersistent && WasReset)
-            {
-                Dispose(); return;
-            }
-            WasReset = true;
             var e = new EmbedBuilder();
             e.WithThumbnailUrl(Dungeon.Image);
             e.WithDescription(EnemyMessage.Content);
