@@ -73,7 +73,6 @@ namespace IodemBot.Modules.ColossoBattles
                 {
                     User.Dungeons.Remove(Dungeon.Name);
                 }
-                _ = Context.Message.DeleteAsync();
                 _ = Context.Channel.SendMessageAsync($"{Context.User.Username}, {openBattle.BattleChannel.Mention} has been prepared for your adventure to {Dungeon.Name}");
             }
             else
@@ -205,14 +204,31 @@ namespace IodemBot.Modules.ColossoBattles
         {
             var guild = Context.Guild;
             var gs = GuildSettings.GetGuildSettings(guild);
+            var gauntletFromUser = battles.Where(b => b.Name.Equals(Context.User.Username, StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault();
+            if (gauntletFromUser != null)
+            {
+                if (gauntletFromUser.IsActive)
+                {
+                    await ReplyAsync($"What? You already are on an adventure!");
+                    return;
+                }
+                else
+                {
+                    _ = gauntletFromUser.Reset();
+                    battles.Remove(gauntletFromUser);
+                }
+            }
+            PvEEnvironment openBattle;
             if (mode == EndlessMode.Default)
             {
-                battles.Add(new EndlessBattleEnvironment($"Endless-{Context.User.Username}", gs.ColossoChannel, false, await PrepareBattleChannel($"Endless-{Context.User.Username}", guild)));
+                openBattle = new EndlessBattleEnvironment($"Endless-{Context.User.Username}", gs.ColossoChannel, false, await PrepareBattleChannel($"Endless-{Context.User.Username}", guild));
             }
             else
             {
-                battles.Add(new EndlessBattleEnvironment($"Endless-{Context.User.Username}", gs.ColossoChannel, false, await PrepareBattleChannel($"Endless-Legacy-{Context.User.Username}", guild), EndlessMode.Legacy));
+                openBattle = new EndlessBattleEnvironment($"Endless-{Context.User.Username}", gs.ColossoChannel, false, await PrepareBattleChannel($"Endless-Legacy-{Context.User.Username}", guild), EndlessMode.Legacy);
             }
+            battles.Add(openBattle);
+            _ = Context.Channel.SendMessageAsync($"{Context.User.Username}, {openBattle.BattleChannel.Mention} has been prepared for an endless adventure!");
         }
 
         [Command("dungeon"), Alias("dg")]
