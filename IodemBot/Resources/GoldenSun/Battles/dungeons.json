@@ -1015,7 +1015,7 @@
         ]
       },
       {
-        "Flavourtext": "You head to the inn. You notice a bunch of thieves preparing for a robbery, you need to stop them!",
+        "Flavourtext": "You head to the inn, book a room and take a quick nap. You wake up as a bunch of thieves are rummaging through your stuff, you need to stop them!",
         "EnemyNames": [ "Thief 1", "Bandit 1", "Thief 1" ],
         "Image": "",
         "RewardTables": [
@@ -4929,7 +4929,7 @@
         ]
       },
       {
-        "Flavourtext": "`(A puzzle is coming up, you may want to pause this by reacting anywhere with ` :pause_button: `to have time to figure it out!)`\n\nYou eventually find a room with five stones placed in a line, with strange lights on the wall. Attached to the wall is a note, and it reads the following:\n```Blue is next to Green\nRed is on an edge\nWhite is not next to Red and Yellow\nBlue and Yellow share a Neighbour\nWhite is further left than Red.\n\nWhere is Yellow?```\nUnsure of why it mentions colors, you wish you would know how to use Reveal. Perhaps the stones indeed have colors? You've come this far, might as well attempt to solve the riddle.",
+        "Flavourtext": "`(A puzzle is coming up, you may want to pause this by reacting anywhere with ` :pause_button: `to have time to figure it out!)`\n\nYou eventually find a room with five stones placed in a line, with strange lights on the wall. Attached to the wall is a note. It reads:\n```Blue is next to Green\nRed is on an edge\nWhite is not next to Red and Yellow\nBlue and Yellow share a Neighbour\nWhite is further left than Red.\n\nWhere is Yellow?```\nUnsure of why it mentions colors, you wish Feizhi had accompanied you on this trip. Perhaps Reveal would show the colors of the stones? You've come this far, might as well attempt to solve the riddle.",
         "EnemyNames": [ "Trap:First", "Trap:Second", "Trap:Third", "Key:Fourth", "Trap:Fifth" ],
         "Image": "https://cdn.discordapp.com/attachments/668443234292334612/736913356807602187/unknown.png",
         "RewardTables": [

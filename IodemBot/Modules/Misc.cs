@@ -155,10 +155,14 @@ namespace IodemBot.Modules
 
         [Command("clock"), Alias("worldclock")]
         [Summary("View the current time across the globe")]
-        public async Task Worldclock()
+        public async Task Worldclock(int time = 24)
         {
             CultureInfo enAU = new CultureInfo("en-US");
             string format = "HH':'mm', 'MMM dd";
+            if(time == 12)
+            {
+                format = "hh':'mm t'M , 'MMM dd";
+            }
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
                 await Context.Channel.SendMessageAsync("", false,

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using IodemBot.Core.UserManagement;
+using IodemBot.Extensions;
 
 namespace IodemBot.Modules.ColossoBattles
 {
@@ -207,6 +208,7 @@ namespace IodemBot.Modules.ColossoBattles
             List<string> turnLog = new List<string>();
             List<ColossoFighter> fighters = new List<ColossoFighter>(TeamA);
             fighters.AddRange(TeamB);
+            fighters.Shuffle();
             fighters = fighters.OrderByDescending(f => f.Stats.Spd * f.MultiplyBuffs("Speed")).ToList();
             fighters.ForEach(f => { turnLog.AddRange(f.StartTurn()); });
             return turnLog;
@@ -217,6 +219,7 @@ namespace IodemBot.Modules.ColossoBattles
             List<string> turnLog = new List<string>();
             List<ColossoFighter> fighters = new List<ColossoFighter>(TeamA);
             fighters.AddRange(TeamB);
+            fighters.Shuffle();
             fighters = fighters.OrderByDescending(f => f.Stats.Spd * f.MultiplyBuffs("Speed")).ToList();
             fighters.ForEach(f => { turnLog.AddRange(f.MainTurn()); });
             return turnLog;
@@ -227,6 +230,7 @@ namespace IodemBot.Modules.ColossoBattles
             List<string> turnLog = new List<string>();
             List<ColossoFighter> fighters = new List<ColossoFighter>(TeamA);
             fighters.AddRange(TeamB);
+            fighters.Shuffle();
             fighters = fighters.OrderByDescending(f => f.Stats.Spd * f.MultiplyBuffs("Speed")).ToList();
             fighters.ForEach(f => { turnLog.AddRange(f.ExtraTurn()); });
             return turnLog;
@@ -237,6 +241,7 @@ namespace IodemBot.Modules.ColossoBattles
             List<string> turnLog = new List<string>();
             List<ColossoFighter> fighters = new List<ColossoFighter>(TeamA);
             fighters.AddRange(TeamB);
+            fighters.Shuffle();
             fighters = fighters.OrderByDescending(f => f.Stats.Spd * f.MultiplyBuffs("Speed")).ToList();
             fighters.ForEach(f => { turnLog.AddRange(f.EndTurn()); });
             return turnLog;
