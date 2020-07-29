@@ -102,7 +102,7 @@
   },
   "Righteous Mace": {
     "Name": "Righteous Mace",
-    "Price": 8400,
+    "Price": 9500,
     "Icon": "<:Righteous_Mace:569901405200973829>",
     "ItemType": "Mace",
     "IsEquippable": true,
@@ -130,7 +130,7 @@
   },
   "Wicked Mace": {
     "Name": "Wicked Mace",
-    "Price": 13800,
+    "Price": 15800,
     "Icon": "<:Wicked_Mace:569901405528260618>",
     "ItemType": "Mace",
     "IsEquippable": true,
@@ -195,7 +195,7 @@
   },
   "Comet Mace": {
     "Name": "Comet Mace",
-    "Price": 8000,
+    "Price": 9000,
     "Icon": "<:Comet_Mace:569901405402562570>",
     "ItemType": "Mace",
     "IsEquippable": true,
@@ -223,7 +223,7 @@
   },
   "Hagbone Mace": {
     "Name": "Hagbone Mace",
-    "Price": 8400,
+    "Price": 8800,
     "Icon": "<:Hagbone_Mace:569901405410820116>",
     "ItemType": "Mace",
     "IsEquippable": true,
@@ -250,7 +250,7 @@
   },
   "Demon Mace": {
     "Name": "Demon Mace",
-    "Price": 9200,
+    "Price": 10000,
     "Icon": "<:Demon_Mace:569901405226139669>",
     "ItemType": "Mace",
     "IsEquippable": true,
@@ -277,7 +277,7 @@
   },
   "Thanatos Mace": {
     "Name": "Thanatos Mace",
-    "Price": 10400,
+    "Price": 15000,
     "Icon": "<:Thanatos_Mace:569901405264150545>",
     "ItemType": "Mace",
     "IsEquippable": true,
@@ -303,7 +303,7 @@
   },
   "Rising Mace": {
     "Name": "Rising Mace",
-    "Price": 13900,
+    "Price": 17000,
     "Icon": "<:Rising_Mace:569901405520003072>",
     "ItemType": "Mace",
     "IsEquippable": true,
@@ -330,7 +330,7 @@
   },
   "Tungsten Mace": {
     "Name": "Tungsten Mace",
-    "Price": 14700,
+    "Price": 18000,
     "Icon": "<:Tungsten_Mace:569901405440049156>",
     "ItemType": "Mace",
     "IsEquippable": true,
@@ -458,7 +458,7 @@
   },
   "Firemans Pole": {
     "Name": "Firemans Pole",
-    "Price": 8200,
+    "Price": 10000,
     "Icon": "<:Firemans_Pole:569855339244290059>",
     "ItemType": "Staff",
     "IsEquippable": true,
@@ -474,7 +474,7 @@
   },
   "Cloud Wand": {
     "Name": "Cloud Wand",
-    "Price": 7000,
+    "Price": 8500,
     "Icon": "<:Cloud_Wand:569855339281776675>",
     "ItemType": "Staff",
     "IsEquippable": true,
@@ -664,7 +664,7 @@
   },
   "Glower Staff": {
     "Name": "Glower Staff",
-    "Price": 10100,
+    "Price": 11800,
     "Icon": "<:Glower_Staff:569855339634098176>",
     "ItemType": "Staff",
     "IsEquippable": true,
@@ -718,7 +718,7 @@
   },
   "Demonic Staff": {
     "Name": "Demonic Staff",
-    "Price": 10000,
+    "Price": 8200,
     "Icon": "<:Demonic_Staff:569855339667783681>",
     "ItemType": "Staff",
     "IsEquippable": true,
@@ -746,7 +746,7 @@
   },
   "Goblins Rod": {
     "Name": "Goblins Rod",
-    "Price": 9800,
+    "Price": 12500,
     "Icon": "<:Goblins_Rod:569855339676303360>",
     "ItemType": "Staff",
     "IsEquippable": true,
@@ -768,7 +768,7 @@
         }
       ]
     },
-    "Rarity": "Rare"
+    "Rarity": "Legendary"
   },
   "Clothos Distaff": {
     "Name": "Clothos Distaff",
@@ -859,7 +859,7 @@
   },
   "Crystal Rod": {
     "Name": "Crystal Rod",
-    "Price": 13400,
+    "Price": 11000,
     "Icon": "<:Crystal_Rod:569855339722309643>",
     "ItemType": "Staff",
     "IsEquippable": true,
@@ -939,7 +939,7 @@
   },
   "Staff of Anubis": {
     "Name": "Staff of Anubis",
-    "Price": 5500,
+    "Price": 6200,
     "Icon": "<:Staff_of_Anubis:569855339789287424>",
     "ItemType": "Staff",
     "IsEquippable": true,
@@ -966,7 +966,7 @@
   },
   "Zodiac Wand": {
     "Name": "Zodiac Wand",
-    "Price": 11400,
+    "Price": 10500,
     "Icon": "<:Zodiac_Wand:569855339827298305>",
     "ItemType": "Staff",
     "IsEquippable": true,
@@ -1216,7 +1216,7 @@
   },
   "Robbers Blade": {
     "Name": "Robbers Blade",
-    "Price": 7600,
+    "Price": 10200,
     "Icon": "<:Robbers_Blade:569855141641977876>",
     "AnimatedIcon": "<a:Robbers_Blade:729714691454009397>",
     "ItemType": "LongSword",
@@ -1245,7 +1245,7 @@
   },
   "Lightning Sword": {
     "Name": "Lightning Sword",
-    "Price": 11400,
+    "Price": 14000,
     "Icon": "<:Lightning_Sword:569855141591646208>",
     "AnimatedIcon": "<a:Lightning_Sword:729714692578082927>",
     "ItemType": "LongSword",
@@ -1273,7 +1273,7 @@
   },
   "Cloud Brand": {
     "Name": "Cloud Brand",
-    "Price": 11800,
+    "Price": 15000,
     "Icon": "<:Cloud_Brand:582670195043074078>",
     "AnimatedIcon": "<a:Cloud_Brand:729714685032529961>",
     "ItemType": "LongSword",
@@ -1302,7 +1302,7 @@
   },
   "Hestia Blade": {
     "Name": "Hestia Blade",
-    "Price": 12900,
+    "Price": 15000,
     "Icon": "<:Hestia_Blade:569855141390581791>",
     "AnimatedIcon": "<a:Hestia_Blade:729714686160797757>",
     "ItemType": "LongSword",
@@ -1331,7 +1331,7 @@
   },
   "Huge Sword": {
     "Name": "Huge Sword",
-    "Price": 14000,
+    "Price": 18000,
     "Icon": "<:Huge_Sword:569855141545771008>",
     "ItemType": "LongSword",
     "IsEquippable": true,
@@ -1360,7 +1360,7 @@
   },
   "Soul Brand": {
     "Name": "Soul Brand",
-    "Price": 11600,
+    "Price": 14500,
     "Icon": "<:Soul_Brand:569855141763612709>",
     "AnimatedIcon": "<a:Soul_Brand:729714691970170950>",
     "ItemType": "LongSword",
@@ -1388,7 +1388,7 @@
   },
   "Mythril Blade": {
     "Name": "Mythril Blade",
-    "Price": 14600,
+    "Price": 17500,
     "Icon": "<:Mythril_Blade:569855141444845569>",
     "AnimatedIcon": "<a:Mythril_Blade:729714687490654290>",
     "ItemType": "LongSword",
@@ -1416,7 +1416,7 @@
   },
   "Rune Blade": {
     "Name": "Rune Blade",
-    "Price": 15000,
+    "Price": 17800,
     "Icon": "<:Rune_Blade:569855141608423424>",
     "AnimatedIcon": "<a:RuneBlade:729714688962723950>",
     "ItemType": "LongSword",
@@ -1444,7 +1444,7 @@
   },
   "Levatine": {
     "Name": "Levatine",
-    "Price": 19700,
+    "Price": 21500,
     "Icon": "<:Levatine:569855141369610241>",
     "ItemType": "LongSword",
     "IsEquippable": true,
@@ -1471,7 +1471,7 @@
   },
   "Fire Brand": {
     "Name": "Fire Brand",
-    "Price": 23400,
+    "Price": 20500,
     "Icon": "<a:Fire_Brand:730011785847111771>",
     "ItemType": "LongSword",
     "IsEquippable": true,
@@ -1580,7 +1580,7 @@
   },
   "Sword of Dusk": {
     "Name": "Sword of Dusk",
-    "Price": 11500,
+    "Price": 12500,
     "Icon": "<:Sword_Of_Dusk:581966887429079054>",
     "ItemType": "LongSword",
     "IsEquippable": true,
@@ -1619,7 +1619,7 @@
   },
   "Broad Axe": {
     "Name": "Broad Axe",
-    "Price": 1400,
+    "Price": 2200,
     "Icon": "<:Broad_Axe:569855200748240936>",
     "ItemType": "Axe",
     "IsEquippable": true,
@@ -1630,7 +1630,7 @@
   },
   "Vulcan Axe": {
     "Name": "Vulcan Axe",
-    "Price": 4600,
+    "Price": 6000,
     "Icon": "<:Vulcan_Axe:569855200756760597>",
     "ItemType": "Axe",
     "IsEquippable": true,
@@ -1719,7 +1719,7 @@
   },
   "Giant Axe": {
     "Name": "Giant Axe",
-    "Price": 14000,
+    "Price": 12200,
     "Icon": "<:Giant_Axe:569855200878395402>",
     "ItemType": "Axe",
     "IsEquippable": true,
@@ -1804,7 +1804,7 @@
   },
   "Disk Axe": {
     "Name": "Disk Axe",
-    "Price": 4700,
+    "Price": 5500,
     "Icon": "<:Disk_Axe:569855200626737169>",
     "ItemType": "Axe",
     "IsEquippable": true,
@@ -1826,7 +1826,7 @@
   },
   "Captains Axe": {
     "Name": "Captains Axe",
-    "Price": 6800,
+    "Price": 7000,
     "Icon": "<:Captains_Axe:569855200702234633>",
     "ItemType": "Axe",
     "IsEquippable": true,
@@ -1841,7 +1841,7 @@
   },
   "Tartarus Axe": {
     "Name": "Tartarus Axe",
-    "Price": 10800,
+    "Price": 13000,
     "Icon": "<:Tartarus_Axe:569855201016807424>",
     "ItemType": "Axe",
     "IsEquippable": true,
@@ -1868,7 +1868,7 @@
   },
   "Viking Axe": {
     "Name": "Viking Axe",
-    "Price": 11000,
+    "Price": 13800,
     "Icon": "<:Viking_Axe:569855200928727040>",
     "ItemType": "Axe",
     "IsEquippable": true,
@@ -1895,7 +1895,7 @@
   },
   "Mighty Axe": {
     "Name": "Mighty Axe",
-    "Price": 11900,
+    "Price": 15500,
     "Icon": "<:Mighty_Axe:569855200903561251>",
     "ItemType": "Axe",
     "IsEquippable": true,
@@ -1923,7 +1923,7 @@
   },
   "Apollos Axe": {
     "Name": "Apollos Axe",
-    "Price": 15200,
+    "Price": 16500,
     "Icon": "<:Apollos_Axe:569855200895041537>",
     "ItemType": "Axe",
     "IsEquippable": true,
@@ -1951,7 +1951,7 @@
   },
   "Gaias Axe": {
     "Name": "Gaias Axe",
-    "Price": 16400,
+    "Price": 18000,
     "Icon": "<:Gaias_Axe:569855200848773120>",
     "ItemType": "Axe",
     "IsEquippable": true,
@@ -1979,7 +1979,7 @@
   },
   "Stellar Axe": {
     "Name": "Stellar Axe",
-    "Price": 19700,
+    "Price": 20000,
     "Icon": "<:Stellar_Axe:569855200567754753>",
     "ItemType": "Axe",
     "IsEquippable": true,
@@ -2089,7 +2089,7 @@
   },
   "Bandits Sword": {
     "Name": "Bandits Sword",
-    "Price": 700,
+    "Price": 350,
     "Icon": "<:Bandits_Sword:569855398442696705>",
     "ItemType": "LightBlade",
     "IsEquippable": true,
@@ -2112,7 +2112,7 @@
   },
   "Elven Rapier": {
     "Name": "Elven Rapier",
-    "Price": 2200,
+    "Price": 2800,
     "Icon": "<:Elven_Rapier:569855398442434570>",
     "ItemType": "LightBlade",
     "IsEquippable": true,
@@ -2136,7 +2136,7 @@
   },
   "Mystery Blade": {
     "Name": "Mystery Blade",
-    "Price": 6400,
+    "Price": 7000,
     "Icon": "<:Mystery_Blade:569855398610337792>",
     "ItemType": "LightBlade",
     "IsEquippable": true,
@@ -2163,7 +2163,7 @@
   },
   "Assassin Blade": {
     "Name": "Assassin Blade",
-    "Price": 7800,
+    "Price": 9500,
     "Icon": "<:Assassin_Blade:569855398413205504>",
     "ItemType": "LightBlade",
     "IsEquippable": true,
@@ -2185,11 +2185,11 @@
         }
       ]
     },
-    "Rarity": "Legendary"
+    "Rarity": "Rare"
   },
   "Ninja Blade": {
     "Name": "Ninja Blade",
-    "Price": 8800,
+    "Price": 9000,
     "Icon": "<:Ninja_Blade:569855398606274560>",
     "ItemType": "LightBlade",
     "IsEquippable": true,
@@ -2243,7 +2243,7 @@
   },
   "Kikuichimonji": {
     "Name": "Kikuichimonji",
-    "Price": 13400,
+    "Price": 12500,
     "Icon": "<:Kikuichimonji:569855398417268749>",
     "ItemType": "LightBlade",
     "IsEquippable": true,
@@ -2270,7 +2270,7 @@
   },
   "Kusanagi": {
     "Name": "Kusanagi",
-    "Price": 13200,
+    "Price": 13500,
     "Icon": "<:Kunasagi:569855398270730251>",
     "ItemType": "LightBlade",
     "IsEquippable": true,
@@ -2328,7 +2328,7 @@
   },
   "Hypnos Sword": {
     "Name": "Hypnos Sword",
-    "Price": 2900,
+    "Price": 3500,
     "Icon": "<:Hypnos_Sword:569855398560137216>",
     "ItemType": "LightBlade",
     "IsEquippable": true,
@@ -2355,7 +2355,7 @@
   },
   "Corsairs Edge": {
     "Name": "Corsairs Edge",
-    "Price": 6300,
+    "Price": 8200,
     "Icon": "<:Corsairs_Edge:569855398626983936>",
     "ItemType": "LightBlade",
     "IsEquippable": true,
@@ -2383,7 +2383,7 @@
   },
   "Mist Sabre": {
     "Name": "Mist Sabre",
-    "Price": 8600,
+    "Price": 10000,
     "Icon": "<:Mist_Sabre:569855398169804811>",
     "ItemType": "LightBlade",
     "IsEquippable": true,
@@ -2410,7 +2410,7 @@
   },
   "Sylph Rapier": {
     "Name": "Sylph Rapier",
-    "Price": 10100,
+    "Price": 11000,
     "Icon": "<:Sylph_Rapier:569855398316605482>",
     "ItemType": "LightBlade",
     "IsEquippable": true,
@@ -2439,7 +2439,7 @@
   },
   "Pirates Sabre": {
     "Name": "Pirates Sabre",
-    "Price": 10600,
+    "Price": 13200,
     "Icon": "<:Pirates_Sabre:569855398572458004>",
     "ItemType": "LightBlade",
     "IsEquippable": true,
@@ -2466,7 +2466,7 @@
   },
   "Phaetons Blade": {
     "Name": "Phaetons Blade",
-    "Price": 13600,
+    "Price": 15000,
     "Icon": "<:Phaetons_Blade:569855398467862559>",
     "ItemType": "LightBlade",
     "IsEquippable": true,
@@ -2493,7 +2493,7 @@
   },
   "Burning Sword": {
     "Name": "Burning Sword",
-    "Price": 14600,
+    "Price": 15500,
     "Icon": "<:Burning_Sword:569855398451085332>",
     "ItemType": "LightBlade",
     "IsEquippable": true,
@@ -2522,7 +2522,7 @@
   },
   "Masamune": {
     "Name": "Masamune",
-    "Price": 16400,
+    "Price": 19000,
     "Icon": "<:Masamune:571315510185164800>",
     "ItemType": "LightBlade",
     "IsEquippable": true,
@@ -2579,7 +2579,7 @@
   },
   "Verdant Sword": {
     "Name": "Verdant Sword",
-    "Price": 18000,
+    "Price": 20000,
     "Icon": "<:Verdant_Sword:581967321351061504>",
     "ItemType": "LightBlade",
     "IsEquippable": true,
@@ -2667,7 +2667,7 @@
         }
       ]
     },
-    "Rarity": "Legendary"
+    "Rarity": "Rare"
   },
   "Dragon Bow": {
     "Name": "Dragon Bow",
@@ -2755,7 +2755,7 @@
         }
       ]
     },
-    "Rarity": "Legendary"
+    "Rarity": "Mythical"
   },
   "Sagittarius Bow": {
     "Name": "Sagittarius Bow",
@@ -2825,7 +2825,7 @@
   },
   "Feathered Robe": {
     "Name": "Feathered Robe",
-    "Price": 14000,
+    "Price": 11800,
     "Icon": "<:Feathered_Robe:569854449871224863>",
     "ItemType": "Robe",
     "IsEquippable": true,
@@ -2842,7 +2842,7 @@
   },
   "Mysterious Robe": {
     "Name": "Mysterious Robe",
-    "Price": 36500,
+    "Price": 22000,
     "Icon": "<:Mysterious_Robe:569854449875550231>",
     "ItemType": "Robe",
     "IsEquippable": true,
@@ -2867,7 +2867,7 @@
   },
   "China Dress": {
     "Name": "China Dress",
-    "Price": 1600,
+    "Price": 2000,
     "Icon": "<:China_Dress:569854450135597067>",
     "ItemType": "Robe",
     "IsEquippable": true,
@@ -2901,7 +2901,7 @@
   },
   "Aeolian Cassock": {
     "Name": "Aeolian Cassock",
-    "Price": 11400,
+    "Price": 14000,
     "Icon": "<:Aeolian_Cassock:569854450156568576>",
     "ItemType": "Robe",
     "IsEquippable": true,
@@ -2916,7 +2916,7 @@
   },
   "Dragon Robe": {
     "Name": "Dragon Robe",
-    "Price": 8900,
+    "Price": 10000,
     "Icon": "<:Dragon_Robe:569854450160762880>",
     "ItemType": "Robe",
     "IsEquippable": true,
@@ -2932,7 +2932,7 @@
   },
   "Iris Robe": {
     "Name": "Iris Robe",
-    "Price": 16600,
+    "Price": 24000,
     "Icon": "<:Iris_Robe:569854450164957196>",
     "ItemType": "Robe",
     "IsEquippable": true,
@@ -2964,7 +2964,7 @@
   },
   "Muni Robe": {
     "Name": "Muni Robe",
-    "Price": 6300,
+    "Price": 8200,
     "Icon": "<:Muni_Robe:569854450169282580>",
     "ItemType": "Robe",
     "IsEquippable": true,
@@ -3004,7 +3004,7 @@
   },
   "Ardagh Robe": {
     "Name": "Ardagh Robe",
-    "Price": 9900,
+    "Price": 11200,
     "Icon": "<:Ardagh_Robe:569854450307563521>",
     "ItemType": "Robe",
     "IsEquippable": true,
@@ -3032,7 +3032,7 @@
   },
   "Psynergy Armor": {
     "Name": "Psynergy Armor",
-    "Price": 1000,
+    "Price": 2200,
     "Icon": "<:Psynergy_Armor:582671911776026654>",
     "ItemType": "HeavyArmor",
     "IsEquippable": true,
@@ -3066,7 +3066,7 @@
   },
   "Spirit Armor": {
     "Name": "Spirit Armor",
-    "Price": 4000,
+    "Price": 4800,
     "Icon": "<:Spirit_Armor:569854622974476289>",
     "ItemType": "HeavyArmor",
     "IsEquippable": true,
@@ -3095,7 +3095,7 @@
   },
   "Steel Armor": {
     "Name": "Steel Armor",
-    "Price": 4900,
+    "Price": 5500,
     "Icon": "<:Steel_Armor:569823327531565067>",
     "ItemType": "HeavyArmor",
     "IsEquippable": true,
@@ -3106,7 +3106,7 @@
   },
   "Spiked Armor": {
     "Name": "Spiked Armor",
-    "Price": 14000,
+    "Price": 9000,
     "Icon": "<:Spiked_Armor:569854623246974977>",
     "ItemType": "HeavyArmor",
     "IsEquippable": true,
@@ -3134,7 +3134,7 @@
   },
   "Dragon Scales": {
     "Name": "Dragon Scales",
-    "Price": 17000,
+    "Price": 13000,
     "Icon": "<:Dragon_Scales:569854623154962452>",
     "ItemType": "HeavyArmor",
     "IsEquippable": true,
@@ -3146,7 +3146,7 @@
       "MercuryRes": 30,
       "MarsRes": 30
     },
-    "Rarity": "Rare"
+    "Rarity": "Legendary"
   },
   "Grays Armor": {
     "Name": "Grays Armor",
@@ -3231,7 +3231,7 @@
   },
   "Ixion Mail": {
     "Name": "Ixion Mail",
-    "Price": 1300,
+    "Price": 2800,
     "Icon": "<:Ixion_Mail:569854623305957376>",
     "ItemType": "HeavyArmor",
     "IsEquippable": true,
@@ -3247,7 +3247,7 @@
   },
   "Planet Armor": {
     "Name": "Planet Armor",
-    "Price": 4800,
+    "Price": 6500,
     "Icon": "<:Planet_Armor:569854623255625728>",
     "ItemType": "HeavyArmor",
     "IsEquippable": true,
@@ -3265,7 +3265,7 @@
   },
   "Phantasmal Mail": {
     "Name": "Phantasmal Mail",
-    "Price": 5800,
+    "Price": 8000,
     "Icon": "<:Phantasmal_Mail:569854623242911744>",
     "ItemType": "HeavyArmor",
     "IsEquippable": true,
@@ -3290,7 +3290,7 @@
   },
   "Erebus Armor": {
     "Name": "Erebus Armor",
-    "Price": 9000,
+    "Price": 10500,
     "Icon": "<:Erebus_Armor:569854623196774410>",
     "ItemType": "HeavyArmor",
     "IsEquippable": true,
@@ -3303,7 +3303,7 @@
   },
   "Dragon Mail": {
     "Name": "Dragon Mail",
-    "Price": 9700,
+    "Price": 12000,
     "Icon": "<:Dragon_Mail:569854623461015573>",
     "ItemType": "HeavyArmor",
     "IsEquippable": true,
@@ -3315,11 +3315,11 @@
       "MercuryRes": 15,
       "MarsRes": 15
     },
-    "Rarity": "Rare"
+    "Rarity": "Legendary"
   },
   "Chronos Mail": {
     "Name": "Chronos Mail",
-    "Price": 13100,
+    "Price": 14000,
     "Icon": "<:Chronos_Mail:569854622940921867>",
     "ItemType": "HeavyArmor",
     "IsEquippable": true,
@@ -3332,7 +3332,7 @@
   },
   "Stealth Armor": {
     "Name": "Stealth Armor",
-    "Price": 14000,
+    "Price": 15500,
     "Icon": "<:Stealth_Armor:569854623251169280>",
     "ItemType": "HeavyArmor",
     "IsEquippable": true,
@@ -3398,7 +3398,7 @@
   },
   "Fur Coat": {
     "Name": "Fur Coat",
-    "Price": 400,
+    "Price": 600,
     "Icon": "<:Fur_Coat:569854675797409802>",
     "ItemType": "LightArmor",
     "IsEquippable": true,
@@ -3426,7 +3426,7 @@
   },
   "Elven Shirt": {
     "Name": "Elven Shirt",
-    "Price": 1700,
+    "Price": 3000,
     "Icon": "<:Elven_Shirt:569854675679969280>",
     "ItemType": "LightArmor",
     "IsEquippable": true,
@@ -3441,7 +3441,7 @@
   },
   "Kimono": {
     "Name": "Kimono",
-    "Price": 2800,
+    "Price": 3500,
     "Icon": "<:Kimono:569854675738820629>",
     "ItemType": "LightArmor",
     "IsEquippable": true,
@@ -3457,7 +3457,7 @@
   },
   "Water Jacket": {
     "Name": "Water Jacket",
-    "Price": 3000,
+    "Price": 4000,
     "Icon": "<:Water_Jacket:569854675860455424>",
     "ItemType": "LightArmor",
     "IsEquippable": true,
@@ -3469,7 +3469,7 @@
       "MercuryRes": 30,
       "MarsRes": 20
     },
-    "Rarity": "Uncommon"
+    "Rarity": "Rare"
   },
   "Silver Vest": {
     "Name": "Silver Vest",
@@ -3485,7 +3485,7 @@
   },
   "Ninja Garb": {
     "Name": "Ninja Garb",
-    "Price": 6900,
+    "Price": 7500,
     "Icon": "<:Ninja_Garb:569854675839352832>",
     "ItemType": "LightArmor",
     "IsEquippable": true,
@@ -3501,7 +3501,7 @@
   },
   "Storm Gear": {
     "Name": "Storm Gear",
-    "Price": 9800,
+    "Price": 10000,
     "Icon": "<:Storm_Gear:569854675512459266>",
     "ItemType": "LightArmor",
     "IsEquippable": true,
@@ -3530,7 +3530,7 @@
   },
   "Festival Coat": {
     "Name": "Festival Coat",
-    "Price": 2800,
+    "Price": 3800,
     "Icon": "<:Festival_Coat:569854675780632576>",
     "ItemType": "LightArmor",
     "IsEquippable": true,
@@ -3542,11 +3542,11 @@
     "AddElStatsOnEquip": {
       "VenusRes": 25
     },
-    "Rarity": "Rare"
+    "Rarity": "Uncommon"
   },
   "Wild Coat": {
     "Name": "Wild Coat",
-    "Price": 4000,
+    "Price": 7800,
     "Icon": "<:Wild_Coat:569854675940147230>",
     "ItemType": "LightArmor",
     "IsEquippable": true,
@@ -3559,7 +3559,7 @@
   },
   "Floral Dress": {
     "Name": "Floral Dress",
-    "Price": 6600,
+    "Price": 7500,
     "Icon": "<:Floral_Dress:569854675793215488>",
     "ItemType": "Robe",
     "IsEquippable": true,
@@ -3581,7 +3581,7 @@
   },
   "Faery Vest": {
     "Name": "Faery Vest",
-    "Price": 6900,
+    "Price": 8200,
     "Icon": "<:Faery_Vest:569854675340361729>",
     "ItemType": "LightArmor",
     "IsEquippable": true,
@@ -3596,7 +3596,7 @@
   },
   "Erinyes Tunic": {
     "Name": "Erinyes Tunic",
-    "Price": 10400,
+    "Price": 12000,
     "Icon": "<:Erinyes_Tunic:569854675705266198>",
     "ItemType": "LightArmor",
     "IsEquippable": true,
@@ -4921,7 +4921,7 @@
       "Def": 32,
       "Atk": 10
     },
-    "Rarity": "Uncommon"
+    "Rarity": "Rare"
   },
   "Crafted Gloves": {
     "Name": "Crafted Gloves",
@@ -4934,7 +4934,7 @@
       "Def": 35,
       "Atk": 5
     },
-    "Rarity": "Uncommon"
+    "Rarity": "Rare"
   },
   "Bronze Shield": {
     "Name": "Bronze Shield",
@@ -5173,7 +5173,7 @@
         }
       ]
     },
-    "Rarity": "Uncommon"
+    "Rarity": "Common"
   },
   "Fairy Ring": {
     "Name": "Fairy Ring",
@@ -5211,7 +5211,7 @@
     "IsEquippable": true,
     "IsArtifact": true,
     "HPregen": 7,
-    "Rarity": "Uncommon"
+    "Rarity": "Common"
   },
   "War Ring": {
     "Name": "War Ring",
@@ -5232,7 +5232,7 @@
         }
       ]
     },
-    "Rarity": "Uncommon"
+    "Rarity": "Rare"
   },
   "Golden Ring": {
     "Name": "Golden Ring",
@@ -5266,7 +5266,7 @@
       "Def": 4,
       "maxHP": 20
     },
-    "Rarity": "Rare"
+    "Rarity": "Uncommon"
   },
   "Aroma Ring": {
     "Name": "Aroma Ring",
@@ -5384,7 +5384,7 @@
         }
       ]
     },
-    "Rarity": "Uncommon"
+    "Rarity": "Common"
   },
   "Zol Ring": {
     "Name": "Zol Ring",
