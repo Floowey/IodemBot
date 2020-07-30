@@ -84,7 +84,6 @@ namespace IodemBot.Modules.ColossoBattles
                     .Select(s => Enum.Parse<Condition>(s, true)).ToList()
                     .ForEach(c => Battle.TeamA.ForEach(p => p.AddCondition(c)));
 
-                //matchup.Enemy.ForEach(e => Battle.AddPlayer((NPCEnemy)e.Clone(), Team.B));
                 EndOfDungeon = false;
             }
             else

@@ -151,11 +151,11 @@ namespace IodemBot.Modules.ColossoBattles
             battles.Where(b => guild.Channels.Any(c => b.GetIds.Contains(c.Id))).ToList().ForEach(old => old.Dispose());
             battles.Clear();
             var gs = GuildSettings.GetGuildSettings(guild);
-            battles.Add(new SingleBattleEnvironment("Wilds", gs.ColossoChannel, false, await PrepareBattleChannel("Weyard-Wilds", guild), BattleDifficulty.Easy));
-            battles.Add(new SingleBattleEnvironment("Woods", gs.ColossoChannel, false, await PrepareBattleChannel("Weyard-Woods", guild), BattleDifficulty.Medium));
+            battles.Add(new SingleBattleEnvironment("Wilds", gs.ColossoChannel, true, await PrepareBattleChannel("Weyard-Wilds", guild), BattleDifficulty.Easy));
+            battles.Add(new SingleBattleEnvironment("Woods", gs.ColossoChannel, true, await PrepareBattleChannel("Weyard-Woods", guild), BattleDifficulty.Medium));
             //battles.Add(new SingleBattleEnvironment("Wealds", LobbyChannel, await PrepareBattleChannel("Weyard-Wealds"), BattleDifficulty.Hard));
 
-            battles.Add(new EndlessBattleEnvironment("Endless", gs.ColossoChannel, false, await PrepareBattleChannel("Endless-Encounters", guild)));
+            battles.Add(new EndlessBattleEnvironment("Endless", gs.ColossoChannel, true, await PrepareBattleChannel("Endless-Encounters", guild)));
 
             //battles.Add(new GauntletBattleEnvironment("Dungeon", LobbyChannel, await PrepareBattleChannel("deep-dungeon"), "Vale"));
             //battles.Add(new GauntletBattleEnvironment("Catabombs", LobbyChannel, await PrepareBattleChannel("chilly-catacombs"), "Vale"));
