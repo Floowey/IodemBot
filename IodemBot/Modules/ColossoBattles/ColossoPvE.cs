@@ -205,6 +205,8 @@ namespace IodemBot.Modules.ColossoBattles
             var guild = Context.Guild;
             var gs = GuildSettings.GetGuildSettings(guild);
             var gauntletFromUser = battles.Where(b => b.Name.Equals(Context.User.Username, StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault();
+            var acc = UserAccounts.GetAccount(Context.User);
+            if (acc.LevelNumber < 50 && !acc.Tags.Contains("ColossoCompleted")) return;
             if (gauntletFromUser != null)
             {
                 if (gauntletFromUser.IsActive)
