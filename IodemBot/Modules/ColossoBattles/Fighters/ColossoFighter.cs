@@ -305,8 +305,17 @@ namespace IodemBot.Modules.ColossoBattles
                 DeathCurseCounter--;
                 if (DeathCurseCounter <= 0)
                 {
-                    Kill();
-                    turnLog.Add($":x: {Name}'s light goes out.");
+                    if(GetTeam().Count == 1 && this is PlayerFighter p)
+                    {
+                        p.Stats.HP = 1;
+                        RemoveCondition(Condition.DeathCurse);
+                        turnLog.Add($":x: {Name} barely holds on.");
+                    }
+                    else
+                    {
+                        Kill();
+                        turnLog.Add($":x: {Name}'s light goes out.");
+                    }
                 }
             }
 
