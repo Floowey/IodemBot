@@ -105,7 +105,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             }
 
             //var elMult = 1 + Math.Max(0.0, (int)User.elstats.GetPower(element) * User.MultiplyBuffs("Power") - (int)enemy.elstats.GetRes(element) * enemy.MultiplyBuffs("Resistance")) / 400;
-            var elMult = 1 + (User.ElStats.GetPower(element) * User.MultiplyBuffs("Power") - enemy.ElStats.GetRes(element) * enemy.MultiplyBuffs("Resistance")) / 400;
+            var elMult = 1.0 + (User.ElStats.GetPower(element) * User.MultiplyBuffs("Power") - enemy.ElStats.GetRes(element) * enemy.MultiplyBuffs("Resistance")) / 400.0;
 
             var punctuation = "!";
             if (enemy.ElStats.GetRes(element) == enemy.ElStats.HighestRes())
@@ -202,7 +202,10 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 player.battleStats.DamageDealt += damage;
                 if (!enemy.IsAlive)
                 {
-                    player.battleStats.KillsByHand++;
+                    if(enemy.Stats.Spd > 0 && weaponUnleashed)
+                    {
+                        player.battleStats.KillsByHand++;
+                    }
                     player.battleStats.Kills++;
                     player.battleStats.HighestDamage = Math.Max(player.battleStats.HighestDamage, damage);
                 }
