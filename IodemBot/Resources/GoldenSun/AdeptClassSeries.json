@@ -1359,7 +1359,7 @@
     "requirement": "DungeonsCompleted",
     "isDefault": false,
     "archtype": "Warrior",
-    "description": "Crusaders are treasure hunters and try to pick up a bargain whenever possible."
+    "description": "Crusaders are treasure hunters. They travel through weyard and gain their strength from having seen the world."
   },
     {
         "name": "Page Series",
@@ -1466,7 +1466,7 @@
         "requirement": "UnlockedClasses",
         "isDefault": false,
         "archtype": "Warrior",
-        "description": "The Pages study the strategies and abilities of their peers, so they may better support them."
+        "description": "The Pages study the strategies and abilities of their peers, so they may better support them. Knowledge about classes gives them their strength."
     },
   {
     "name": "Air Pilgrim Series",
@@ -1675,7 +1675,7 @@
     "requirement": "DungeonsCompleted",
     "isDefault": false,
     "archtype": "Mage",
-    "description": "On their journeys through all sorts of terrains, Aqua Pilgrims leave riddled markings to mark their way."
+    "description": "Aqua Pilgrims travel the world and spread their wisdom. Most find their destiny at the same, holy place..."
   },
     {
         "name": "Air Seer Series",
@@ -1780,7 +1780,7 @@
         "requirement": "Djinn",
         "isDefault": false,
         "archtype": "Mage",
-        "description": "Air Seers meditate in Canyons, to make predictions about the future."
+        "description": "Air Seers traverse the canyons of weyard to find their connection to the spirits."
     },
     {
         "name": "Hermit Series",
@@ -1900,10 +1900,10 @@
             "MercuryAtk": 140,
             "MercuryRes": 140
         },
-        "requirement": "DaysActive",
+        "requirement": "Level",
         "isDefault": false,
         "archtype": "Mage",
-        "description": "Hermits stay at one place to find their inner peace."
+        "description": "Hermits stay in one place to find their inner peace."
     },
     {
         "name": "Aqua Seer Series",
@@ -2007,7 +2007,7 @@
         "requirement": "Djinn",
         "isDefault": false,
         "archtype": "Mage",
-        "description": "The energy of swamps lets Aqua Seers anticipate future events."
+        "description": "The energy of swamps lets Aqua Seers anticipate future events. The spirits in the swamps give them power."
     },
     {
         "name": "Swordsman Series",

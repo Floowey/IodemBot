@@ -6,7 +6,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 {
     public class RewardTable : List<Rewardable>
     {
-        public int Weight { get { return this.Aggregate(0, (s, f) => s += f.Weight); } }
+        public int Weight { get { return this.Sum(f => f.Weight); } }
 
         public Rewardable RollReward()
         {

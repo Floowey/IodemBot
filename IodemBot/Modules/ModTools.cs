@@ -197,8 +197,7 @@ namespace IodemBot.Modules
         public async Task RemoveTag(SocketGuildUser user, string Tag)
         {
             var avatar = UserAccounts.GetAccount(user);
-            avatar.Tags.Remove(Tag);
-            await ReplyAsync("Tag Removed");
+            await ReplyAsync($"Tag Removed {avatar.Tags.Remove(Tag)}");
         }
 
         [Command("AddTag")]

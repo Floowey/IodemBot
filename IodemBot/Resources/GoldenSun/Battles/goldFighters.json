@@ -67,14 +67,19 @@
         {
             "name": "Cursed Saturos",
             "imgurl": "https://cdn.discordapp.com/attachments/535823094489677824/536542531949953024/emo_saturos.png",
-            "movepool": [
-                "Liquifier",
-                "Planetary",
-                "Dire Inferno",
-                "Rolling Flame",
-                "Meteor Blow",
-                "Vicious Chop"
-            ],
+          "movepool": [
+            "Liquifier",
+            "Liquifier",
+            "Planetary",
+            "Planetary",
+            "Rolling Flame",
+            "Rolling Flame",
+            "Dire Inferno",
+            "Dire Inferno",
+            "Vicious Chop",
+            "Vicious Chop",
+            "Meteor Blow"
+          ],
             "stats": {
                 "maxHP": 66666,
                 "maxPP": 666,
