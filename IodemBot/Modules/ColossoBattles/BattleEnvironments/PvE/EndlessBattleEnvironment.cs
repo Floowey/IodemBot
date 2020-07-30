@@ -25,17 +25,17 @@ namespace IodemBot.Modules.ColossoBattles
                 new DefaultReward()
                 {
                     Chest = ChestQuality.Wooden,
-                    Weight = 3
+                    Weight = 4
                 },
                 new DefaultReward()
                 {
                     Chest = ChestQuality.Normal,
-                    Weight = 5
+                    Weight = 4
                 },
                 new DefaultReward()
                 {
                     Chest = ChestQuality.Silver,
-                    Weight = 2
+                    Weight = 1
                 }
             } },
             {BattleDifficulty.Medium, new RewardTable()
@@ -43,12 +43,12 @@ namespace IodemBot.Modules.ColossoBattles
                 new DefaultReward()
                 {
                     Chest = ChestQuality.Normal,
-                    Weight = 3
+                    Weight = 4
                 },
                 new DefaultReward()
                 {
                     Chest = ChestQuality.Silver,
-                    Weight = 5
+                    Weight = 4
                 },
                 new DefaultReward()
                 {
@@ -61,7 +61,7 @@ namespace IodemBot.Modules.ColossoBattles
                 new DefaultReward()
                 {
                     Chest = ChestQuality.Silver,
-                    Weight = 5
+                    Weight = 6
                 },
                 new DefaultReward()
                 {
@@ -79,7 +79,7 @@ namespace IodemBot.Modules.ColossoBattles
                 new DefaultReward()
                 {
                     Chest = ChestQuality.Silver,
-                    Weight = 1
+                    Weight = 2
                 },
                 new DefaultReward()
                 {
@@ -89,7 +89,7 @@ namespace IodemBot.Modules.ColossoBattles
                 new DefaultReward()
                 {
                     Chest = ChestQuality.Adept,
-                    Weight = 2
+                    Weight = 1
                 }
             } }
         };
@@ -191,12 +191,38 @@ namespace IodemBot.Modules.ColossoBattles
                 winsInARow++;
                 var RewardTables = Rewards;
                 var chests = chestTable[Difficulty];
-                chests.RemoveAll(s => s is DefaultReward);
+                chests.RemoveAll(s => s is DefaultReward d && !d.HasChest);
+                var lurCapBonus = new[] { 16, 12, 10, 9, 8 };
                 if (!Battle.TeamB.Any(f => f.Name.Contains("Mimic")))
                 {
-                    chests.Add(new DefaultReward { Weight = chests.Weight * (14 - 2 * LureCaps) });
+                    chests.Add(new DefaultReward { Weight = chests.Weight * lurCapBonus[LureCaps] });
                 }
                 RewardTables.Add(chests);
+
+                if (Battle.TeamB.Any(f => f.Name.Contains("Djinn")))
+                {
+                    var djinnTable = new RewardTable();
+                    var djinnWeight = (int)Difficulty;
+                    if (Battle.TeamB.Any(f => f.Name.Contains("Venus Djinn")))
+                    {
+                        djinnTable.Add(new DefaultReward() { Djinn = "Venus", Weight = 1 });
+                    }
+                    if (Battle.TeamB.Any(f => f.Name.Contains("Mars Djinn")))
+                    {
+                        djinnTable.Add(new DefaultReward() { Djinn = "Mars", Weight = 1 });
+                    }
+                    if (Battle.TeamB.Any(f => f.Name.Contains("Jupiter Djinn")))
+                    {
+                        djinnTable.Add(new DefaultReward() { Djinn = "Jupiter", Weight = 1 });
+                    }
+                    if (Battle.TeamB.Any(f => f.Name.Contains("Mercury Djinn")))
+                    {
+                        djinnTable.Add(new DefaultReward() { Djinn = "Mercury", Weight = 1 });
+                    }
+                    djinnTable.Add(new DefaultReward() { Weight = djinnTable.Weight * (10 - (int)Difficulty) * 3 });
+                    RewardTables.Add(djinnTable);
+                }
+
                 winners.OfType<PlayerFighter>().ToList().ForEach(async p => await ServerGames.UserWonBattle(p.avatar, RewardTables.GetRewards(), p.battleStats, lobbyChannel, BattleChannel));
                 winners.OfType<PlayerFighter>().ToList().ForEach(async p => await ServerGames.UserWonEndless(p.avatar, lobbyChannel, winsInARow, mode, p.battleStats.TotalTeamMates+1, string.Join(", ", Battle.TeamA.Select(pl => pl.Name))));
 
@@ -244,6 +270,9 @@ namespace IodemBot.Modules.ColossoBattles
             }
             SocketGuildUser player = (SocketGuildUser)reaction.User.Value;
             var playerAvatar = UserAccounts.GetAccount(player);
+
+            if (playerAvatar.LevelNumber < 50 && !playerAvatar.Tags.Contains("ColossoCompleted")) return;
+            
             var p = Factory.CreatePlayerFighter(player);
 
             if (playerAvatar.Inv.GetGear(AdeptClassSeriesManager.GetClassSeries(playerAvatar).Archtype).Any(i => i.Name == "Lure Cap"))
@@ -263,6 +292,11 @@ namespace IodemBot.Modules.ColossoBattles
             e.WithFooter(footerBuilder);
 
             return e;
+        }
+
+        protected override string GetEnemyMessageString()
+        {
+            return $"Welcome to Endless Battles! Show your strength and climb the leaderboards, see how far you can get. You must have reached at least level 50 to join or otherwise proofen your strength in the Colosso Finals!";
         }
     }
 }

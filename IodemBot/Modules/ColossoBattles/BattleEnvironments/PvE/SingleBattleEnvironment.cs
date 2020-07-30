@@ -27,17 +27,17 @@ namespace IodemBot.Modules.ColossoBattles
                 new DefaultReward()
                 {
                     Chest = ChestQuality.Wooden,
-                    Weight = 3
+                    Weight = 4
                 },
                 new DefaultReward()
                 {
                     Chest = ChestQuality.Normal,
-                    Weight = 5
+                    Weight = 4
                 },
                 new DefaultReward()
                 {
                     Chest = ChestQuality.Silver,
-                    Weight = 2
+                    Weight = 1
                 }
             } },
             {BattleDifficulty.Medium, new RewardTable()
@@ -50,7 +50,7 @@ namespace IodemBot.Modules.ColossoBattles
                 new DefaultReward()
                 {
                     Chest = ChestQuality.Silver,
-                    Weight = 5
+                    Weight = 4
                 },
                 new DefaultReward()
                 {
@@ -63,7 +63,7 @@ namespace IodemBot.Modules.ColossoBattles
                 new DefaultReward()
                 {
                     Chest = ChestQuality.Silver,
-                    Weight = 5
+                    Weight = 6
                 },
                 new DefaultReward()
                 {
@@ -81,7 +81,7 @@ namespace IodemBot.Modules.ColossoBattles
                 new DefaultReward()
                 {
                     Chest = ChestQuality.Silver,
-                    Weight = 1
+                    Weight = 2
                 },
                 new DefaultReward()
                 {
@@ -91,7 +91,7 @@ namespace IodemBot.Modules.ColossoBattles
                 new DefaultReward()
                 {
                     Chest = ChestQuality.Adept,
-                    Weight = 2
+                    Weight = 1
                 }
             } }
         };
@@ -153,17 +153,22 @@ namespace IodemBot.Modules.ColossoBattles
 
             if (Difficulty == BattleDifficulty.Tutorial || Difficulty == BattleDifficulty.Easy)
             {
-                if (playerAvatar.LevelNumber < 10 && Battle.SizeTeamA == 0)
+                if (Battle.SizeTeamA == 0)
                 {
-                    internalDiff = BattleDifficulty.Tutorial;
-                    SetNextEnemy();
-                }
-                else if (Difficulty == BattleDifficulty.Tutorial)
-                {
-                    internalDiff = BattleDifficulty.Easy;
+                    if (playerAvatar.LevelNumber < 10)
+                    {
+                        internalDiff = BattleDifficulty.Tutorial;
+                    } else
+                    {
+                        internalDiff = BattleDifficulty.Easy;
+                    }
                     SetNextEnemy();
                 }
             }
+
+            if (Difficulty == BattleDifficulty.Easy && playerAvatar.LevelNumber < 10) return;
+            if (Difficulty == BattleDifficulty.Medium && playerAvatar.LevelNumber < 30) return;
+            if (Difficulty == BattleDifficulty.Hard && playerAvatar.LevelNumber < 50) return;
 
             if (playerAvatar.Inv.GetGear(AdeptClassSeriesManager.GetClassSeries(playerAvatar).Archtype).Any(i => i.Name == "Lure Cap"))
             {
@@ -205,14 +210,40 @@ namespace IodemBot.Modules.ColossoBattles
                 var RewardTables = Rewards;
                 // Get the appropiate chest rewards table
                 var chests = chestTable[Difficulty];
-                chests.RemoveAll(s => s is DefaultReward);
+                chests.RemoveAll(s => s is DefaultReward d && !d.HasChest);
 
                 // If there was *no* mimic, add a counter weight
+                var lurCapBonus = new[] { 16, 12, 10, 9, 8 };
                 if (!Battle.TeamB.Any(f => f.Name.Contains("Mimic")))
                 {
-                    chests.Add(new DefaultReward { Weight = chests.Weight * (14 - 2 * LureCaps - Battle.SizeTeamA) });
+                    chests.Add(new DefaultReward() { Weight = chests.Weight * lurCapBonus[LureCaps] });
                 }
                 RewardTables.Add(chests);
+
+                if (Battle.TeamB.Any(f => f.Name.Contains("Djinn")))
+                {
+                    var djinnTable = new RewardTable();
+                    var djinnWeight = (int)Difficulty;
+                    if(Battle.TeamB.Any(f => f.Name.Contains("Venus Djinn")))
+                    {
+                        djinnTable.Add(new DefaultReward() { Djinn = "Venus", Weight = 1 });
+                    }
+                    if (Battle.TeamB.Any(f => f.Name.Contains("Mars Djinn")))
+                    {
+                        djinnTable.Add(new DefaultReward() { Djinn = "Mars", Weight = 1 });
+                    }
+                    if (Battle.TeamB.Any(f => f.Name.Contains("Jupiter Djinn")))
+                    {
+                        djinnTable.Add(new DefaultReward() { Djinn = "Jupiter", Weight = 1 });
+                    }
+                    if (Battle.TeamB.Any(f => f.Name.Contains("Mercury Djinn")))
+                    {
+                        djinnTable.Add(new DefaultReward() { Djinn = "Mercury", Weight = 1 });
+                    }
+                    djinnTable.Add(new DefaultReward() { Weight = djinnTable.Weight*(10-(int)Difficulty)*3 });
+                    RewardTables.Add(djinnTable);
+                }
+                
                 winners.OfType<PlayerFighter>().ToList().ForEach(async p => await ServerGames.UserWonBattle(p.avatar, RewardTables.GetRewards(), p.battleStats, lobbyChannel, BattleChannel));
                 winners.OfType<PlayerFighter>().ToList().ForEach(async p => await ServerGames.UserWonSingleBattle(p.avatar, lobbyChannel, Difficulty));
 
@@ -252,10 +283,17 @@ namespace IodemBot.Modules.ColossoBattles
             {BattleDifficulty.Hard, "<:Gold:537214319591555073>" }
         };
 
-        protected override string GetEnemyMessageString()
-
+        private static readonly Dictionary<BattleDifficulty, int> limits = new Dictionary<BattleDifficulty, int>()
         {
-            return $"Welcome to {Name} Battle! The difficulty is set to {medals[Difficulty]} ***{Difficulty}*** {medals[Difficulty]}!\n\nReact with <:Fight:536919792813211648> to join the {Name} Battle and press <:Battle:536954571256365096> when you are ready to battle!";
+            {BattleDifficulty.Tutorial , 0},
+            {BattleDifficulty.Easy, 10},
+            {BattleDifficulty.Medium, 30},
+            {BattleDifficulty.Hard, 50 }
+        };
+
+        protected override string GetEnemyMessageString()
+        {
+            return $"Welcome to {Name} Battle! The difficulty is set to {medals[Difficulty]} ***{Difficulty}*** {medals[Difficulty]}!\n\nReact with <:Fight:536919792813211648> to join the {Name} Battle and press <:Battle:536954571256365096> when you are ready to battle! You must have reached level {limits[Difficulty]} to enter.";
         }
     }
 }
