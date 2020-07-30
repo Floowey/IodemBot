@@ -195,7 +195,7 @@ namespace IodemBot.Core.Leveling
                 _ = GoldenSun.AwardClassSeries("Crusader Series", avatar, channel);
             }
 
-            if (avatar.ServerStats.DungeonsCompleted >= 10)
+            if (avatar.ServerStats.DungeonsCompleted >= 12)
             {
                 _ = GoldenSun.AwardClassSeries("Air Pilgrim Series", avatar, channel);
 
