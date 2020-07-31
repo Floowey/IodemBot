@@ -10,7 +10,6 @@ namespace IodemBot
         internal static ulong MessageIdToTrack { get; set; }
         internal static Random Random { get; set; } = new Random();
         internal static DateTime UpSince { get; set; }
-        internal static ulong MainChannel = 355558866282348574;
 
         internal static string DateString
         {

@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Discord;
 using Discord.WebSocket;
 using IodemBot.Core;
+using IodemBot.Core.UserManagement;
 using IodemBot.Extensions;
 using IodemBot.Modules.ColossoBattles;
 
@@ -48,6 +49,7 @@ namespace IodemBot
             client.Ready += Client_Ready;
             client.UserLeft += Client_UserLeft;
             client.UserJoined += Client_UserJoined;
+            client.GuildMemberUpdated += Client_GuildMemberUpdated;
             await client.LoginAsync(TokenType.Bot, Config.bot.token);
             await client.StartAsync();
             handler = new CommandHandler();
@@ -55,6 +57,17 @@ namespace IodemBot
             msgHandler = new MessageHandler();
             await msgHandler.InitializeAsync(client);
             await Task.Delay(-1);
+        }
+
+        private async Task Client_GuildMemberUpdated(SocketGuildUser before, SocketGuildUser after)
+        {
+            if(before.DisplayName() != after.DisplayName())
+            {
+                UserAccounts.GetAccount(after).Name = after.DisplayName();
+                await GuildSettings.GetGuildSettings(after.Guild).TestCommandChannel
+                    .SendMessageAsync($"{after.Mention} changed Nickname from {before.DisplayName()} to {after.DisplayName()}");
+            }
+            await Task.CompletedTask;
         }
 
         private readonly string[] welcomeMsg = {
@@ -79,17 +92,12 @@ namespace IodemBot
 
         private async Task Client_UserJoined(SocketGuildUser user)
         {
-            if (user.Guild.Id != Global.MainChannel)
-            {
-                return;
-            }
-
             if (GuildSettings.GetGuildSettings(user.Guild).sendWelcomeMessage)
             {
                 await GuildSettings.GetGuildSettings(user.Guild).MainChannel.SendMessageAsync(embed:
                     new EmbedBuilder()
                     .WithColor(Colors.Get("Iodem"))
-                    .WithDescription(String.Format(welcomeMsg[Global.Random.Next(0, welcomeMsg.Length)], user.DisplayName()))
+                    .WithDescription(string.Format(welcomeMsg[Global.Random.Next(0, welcomeMsg.Length)], user.DisplayName()))
                     .Build());
             }
 

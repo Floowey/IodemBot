@@ -7,6 +7,7 @@ using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
 using Iodembot.Preconditions;
+using IodemBot.Core;
 using IodemBot.Core.UserManagement;
 using IodemBot.Extensions;
 using IodemBot.Modules.ColossoBattles;
@@ -79,7 +80,15 @@ namespace IodemBot.Modules
                     QuadNames = account.ServerStats.ColossoHighestRoundEndlessQuadNames
                 };
             }
+
+            foreach(SocketGuild guild in Global.Client.Guilds)
+            {
+                var gs = GuildSettings.GetGuildSettings(guild);
+                gs.Name = guild.Name;
+            }
+            Console.WriteLine(Global.Client.Guilds.Sum(g => g.Emotes.Count));
             UserAccounts.SaveAccounts();
+            GuildSettings.SaveGuilds();
             await Task.CompletedTask;
         }
 
