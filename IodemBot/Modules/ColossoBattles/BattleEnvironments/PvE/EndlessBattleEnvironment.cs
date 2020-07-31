@@ -231,7 +231,7 @@ namespace IodemBot.Modules.ColossoBattles
                     {
                         djinnTable.Add(new DefaultReward() { Djinn = "Mercury", Weight = 1 });
                     }
-                    djinnTable.Add(new DefaultReward() { Weight = djinnTable.Weight * (10 - (int)Difficulty) * 3 });
+                    djinnTable.Add(new DefaultReward() { Weight = djinnTable.Weight * (10 - (int)Difficulty) * 2 - djinnTable.Weight } );
                     RewardTables.Add(djinnTable);
                 }
 
