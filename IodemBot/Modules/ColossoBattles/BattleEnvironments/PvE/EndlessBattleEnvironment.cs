@@ -25,16 +25,19 @@ namespace IodemBot.Modules.ColossoBattles
                 new DefaultReward()
                 {
                     Chest = ChestQuality.Wooden,
+                    HasChest=true,
                     Weight = 4
                 },
                 new DefaultReward()
                 {
                     Chest = ChestQuality.Normal,
+                    HasChest=true,
                     Weight = 4
                 },
                 new DefaultReward()
                 {
                     Chest = ChestQuality.Silver,
+                    HasChest=true,
                     Weight = 1
                 }
             } },
@@ -43,16 +46,19 @@ namespace IodemBot.Modules.ColossoBattles
                 new DefaultReward()
                 {
                     Chest = ChestQuality.Normal,
+                    HasChest=true,
                     Weight = 4
                 },
                 new DefaultReward()
                 {
                     Chest = ChestQuality.Silver,
+                    HasChest=true,
                     Weight = 4
                 },
                 new DefaultReward()
                 {
                     Chest = ChestQuality.Gold,
+                    HasChest=true,
                     Weight = 1
                 }
             } },
@@ -61,16 +67,19 @@ namespace IodemBot.Modules.ColossoBattles
                 new DefaultReward()
                 {
                     Chest = ChestQuality.Silver,
+                    HasChest=true,
                     Weight = 6
                 },
                 new DefaultReward()
                 {
                     Chest = ChestQuality.Gold,
+                    HasChest=true,
                     Weight = 4
                 },
                 new DefaultReward()
                 {
                     Chest = ChestQuality.Adept,
+                    HasChest=true,
                     Weight = 1
                 }
             } },
@@ -79,17 +88,20 @@ namespace IodemBot.Modules.ColossoBattles
                 new DefaultReward()
                 {
                     Chest = ChestQuality.Silver,
+                    HasChest=true,
                     Weight = 2
                 },
                 new DefaultReward()
                 {
                     Chest = ChestQuality.Gold,
+                    HasChest=true,
                     Weight = 7
                 },
                 new DefaultReward()
                 {
                     Chest = ChestQuality.Adept,
-                    Weight = 1
+                    HasChest=true,
+                    Weight = 2
                 }
             } }
         };
@@ -226,7 +238,7 @@ namespace IodemBot.Modules.ColossoBattles
                 winners.OfType<PlayerFighter>().ToList().ForEach(async p => await ServerGames.UserWonBattle(p.avatar, RewardTables.GetRewards(), p.battleStats, lobbyChannel, BattleChannel));
                 winners.OfType<PlayerFighter>().ToList().ForEach(async p => await ServerGames.UserWonEndless(p.avatar, lobbyChannel, winsInARow, mode, p.battleStats.TotalTeamMates+1, string.Join(", ", Battle.TeamA.Select(pl => pl.Name))));
 
-                chests.RemoveAll(s => s is DefaultReward);
+                chests.RemoveAll(s => s is DefaultReward d && !d.HasChest);
 
                 Battle.TeamA.ForEach(p =>
                 {
@@ -237,10 +249,10 @@ namespace IodemBot.Modules.ColossoBattles
                 });
 
                 var text = $"{winners.First().Name}'s Party wins Battle {winsInARow}! Battle will reset shortly";
-                await Task.Delay(2000);
+                await Task.Delay(3000);
                 await StatusMessage.ModifyAsync(m => { m.Content = text; m.Embed = null; });
 
-                await Task.Delay(2000);
+                await Task.Delay(3000);
 
                 SetNextEnemy();
                 Battle.turn = 0;

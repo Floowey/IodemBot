@@ -8,18 +8,18 @@ namespace IodemBot.Modules.GoldenSunMechanics
 {
     public class DefaultReward : Rewardable
     {
-        public uint coins = 0;
-        public uint xp = 0;
-        public string Item = "";
+        public uint coins { get; set; } = 0;
+        public uint xp { get; set; } = 0;
+        public string Item { get; set; } = "";
 
-        public bool HasChest = false;
+        public bool HasChest { get; set; } = false;
 
         public ChestQuality Chest { get; set; } = ChestQuality.Wooden;
 
-        public string Dungeon = "";
-        public string Djinn = "";
-        public string Summon = "";
-        public string Message = "";
+        public string Dungeon { get; set; } = "";
+        public string Djinn { get; set; } = "";
+        public string Summon { get; set; } = "";
+        public string Message { get; set; } = "";
 
         public override string Award(UserAccount userAccount)
         {

@@ -27,16 +27,19 @@ namespace IodemBot.Modules.ColossoBattles
                 new DefaultReward()
                 {
                     Chest = ChestQuality.Wooden,
+                    HasChest=true,
                     Weight = 4
                 },
                 new DefaultReward()
                 {
                     Chest = ChestQuality.Normal,
+                    HasChest=true,
                     Weight = 4
                 },
                 new DefaultReward()
                 {
                     Chest = ChestQuality.Silver,
+                    HasChest=true,
                     Weight = 1
                 }
             } },
@@ -45,16 +48,19 @@ namespace IodemBot.Modules.ColossoBattles
                 new DefaultReward()
                 {
                     Chest = ChestQuality.Normal,
+                    HasChest=true,
                     Weight = 4
                 },
                 new DefaultReward()
                 {
                     Chest = ChestQuality.Silver,
+                    HasChest=true,
                     Weight = 4
                 },
                 new DefaultReward()
                 {
                     Chest = ChestQuality.Gold,
+                    HasChest=true,
                     Weight = 1
                 }
             } },
@@ -63,16 +69,19 @@ namespace IodemBot.Modules.ColossoBattles
                 new DefaultReward()
                 {
                     Chest = ChestQuality.Silver,
+                    HasChest=true,
                     Weight = 6
                 },
                 new DefaultReward()
                 {
                     Chest = ChestQuality.Gold,
+                    HasChest=true,
                     Weight = 4
                 },
                 new DefaultReward()
                 {
                     Chest = ChestQuality.Adept,
+                    HasChest=true,
                     Weight = 1
                 }
             } },
@@ -81,17 +90,20 @@ namespace IodemBot.Modules.ColossoBattles
                 new DefaultReward()
                 {
                     Chest = ChestQuality.Silver,
+                    HasChest=true,
                     Weight = 2
                 },
                 new DefaultReward()
                 {
                     Chest = ChestQuality.Gold,
+                    HasChest=true,
                     Weight = 7
                 },
                 new DefaultReward()
                 {
                     Chest = ChestQuality.Adept,
-                    Weight = 1
+                    HasChest=true,
+                    Weight = 2
                 }
             } }
         };
@@ -151,19 +163,14 @@ namespace IodemBot.Modules.ColossoBattles
             var playerAvatar = UserAccounts.GetAccount(player);
             var p = Factory.CreatePlayerFighter(player);
 
-            if (Difficulty == BattleDifficulty.Tutorial || Difficulty == BattleDifficulty.Easy)
+            if (Battle.SizeTeamA == 0 && Difficulty == BattleDifficulty.Easy && playerAvatar.LevelNumber < 10)
             {
-                if (Battle.SizeTeamA == 0)
-                {
-                    if (playerAvatar.LevelNumber < 10)
-                    {
-                        internalDiff = BattleDifficulty.Tutorial;
-                    } else
-                    {
-                        internalDiff = BattleDifficulty.Easy;
-                    }
-                    SetNextEnemy();
-                }
+                internalDiff = BattleDifficulty.Tutorial;
+                SetNextEnemy();
+            } else if (Difficulty == BattleDifficulty.Tutorial && playerAvatar.LevelNumber >= 10)
+            {
+                internalDiff = BattleDifficulty.Easy;
+                SetNextEnemy();
             }
 
             if (Difficulty == BattleDifficulty.Easy && playerAvatar.LevelNumber < 10) return;
@@ -240,14 +247,14 @@ namespace IodemBot.Modules.ColossoBattles
                     {
                         djinnTable.Add(new DefaultReward() { Djinn = "Mercury", Weight = 1 });
                     }
-                    djinnTable.Add(new DefaultReward() { Weight = djinnTable.Weight*(10-(int)Difficulty)*3 });
+                    djinnTable.Add(new DefaultReward() { Weight = djinnTable.Weight*(10-(int)Difficulty)*2 });
                     RewardTables.Add(djinnTable);
                 }
                 
                 winners.OfType<PlayerFighter>().ToList().ForEach(async p => await ServerGames.UserWonBattle(p.avatar, RewardTables.GetRewards(), p.battleStats, lobbyChannel, BattleChannel));
                 winners.OfType<PlayerFighter>().ToList().ForEach(async p => await ServerGames.UserWonSingleBattle(p.avatar, lobbyChannel, Difficulty));
 
-                chests.RemoveAll(s => s is DefaultReward);
+                chests.RemoveAll(s => s is DefaultReward d && !d.HasChest);
                 _ = WriteGameOver();
             }
             else
@@ -258,7 +265,6 @@ namespace IodemBot.Modules.ColossoBattles
                 _ = WriteGameOver();
             }
 
-            LureCaps = 0;
             await Task.CompletedTask;
         }
 

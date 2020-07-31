@@ -149,7 +149,6 @@ namespace IodemBot.Modules.ColossoBattles
         public static async Task Setup(SocketGuild guild)
         {
             battles.Where(b => guild.Channels.Any(c => b.GetIds.Contains(c.Id))).ToList().ForEach(old => old.Dispose());
-            battles.Clear();
             var gs = GuildSettings.GetGuildSettings(guild);
             battles.Add(new SingleBattleEnvironment("Wilds", gs.ColossoChannel, true, await PrepareBattleChannel("Weyard-Wilds", guild), BattleDifficulty.Easy));
             battles.Add(new SingleBattleEnvironment("Woods", gs.ColossoChannel, true, await PrepareBattleChannel("Weyard-Woods", guild), BattleDifficulty.Medium));
@@ -175,7 +174,9 @@ namespace IodemBot.Modules.ColossoBattles
         [RequireUserServer]
         public async Task Reset(string name)
         {
-            var a = battles.Where(b => b.Name.Equals(name, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
+            var a = battles.Where(b => Context.Guild.Channels.Any(c => b.GetIds.Contains(c.Id))
+                && b.Name.Equals(name, StringComparison.InvariantCultureIgnoreCase))
+                .FirstOrDefault();
             if (a != null)
             {
                 _ = a.Reset();
@@ -189,7 +190,10 @@ namespace IodemBot.Modules.ColossoBattles
         public async Task SetEnemy(string name, [Remainder] string enemy)
         {
             await Context.Message.DeleteAsync();
-            var a = battles.OfType<PvEEnvironment>().Where(b => b.Name.Equals(name, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
+            var a = battles.OfType<PvEEnvironment>()
+                .Where(b => b.BattleChannel.GuildId == Context.Guild.Id 
+                && b.Name.Equals(name, StringComparison.InvariantCultureIgnoreCase))
+                .FirstOrDefault();
             if (a != null)
             {
                 a.SetEnemy(enemy);
