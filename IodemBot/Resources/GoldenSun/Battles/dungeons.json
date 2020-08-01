@@ -163,7 +163,7 @@
               "Coins": 10,
               "Chest": "Wooden",
               "HasChest": true,
-              "message": "Quick summary:\n-Use commands in #gabomba-gears.\n-Select an element using `i!element Venus` or whichever you want. You can change it at any time.\n-Specify a class using `i!class Squire` (from what is available to you).\n-Pause a battle by reacting anywhere with :pause_button:. The timer will restart at the beginning of the next turn.\n-Don't forget to target your enemy with the numbered icons.\n\nDon't be shy to ask questions in #colosso-talks or find team mates to brawl with!"
+              "message": "Quick summary:\n-Use commands in #gabomba-gears.\n-Select an element using `i!element Venus` or whichever you want. You can change it at any time.\n-Specify a class using `i!class Squire` (from what is available to you).\n-Pause a battle by reacting anywhere with :pause_button:. The timer will restart at the beginning of the next turn.\n-Don't forget to target your enemy with the numbered icons.\n-Open your chests with `i!chest`, view your inventory with `i!inv` and equip gear using `i!equip Warrior/Mage itemname`\n\nDon't be shy to ask questions in #colosso-talks or find team mates to brawl with! A lot of information is also pinned!"
             }
           ],
           [
@@ -478,7 +478,7 @@
         ]
       },
       {
-        "Flavourtext": "You reach a very distinct room. You have heard about it. You see a bunch of statues, but you can only move one. Which one will it be?",
+        "Flavourtext": "You reach a very distinct room. You have heard about it. You see a bunch of statues, but you can only move one to disarm the famous trap. Which one will it be?",
         "EnemyNames": [ "Trap:Statue", "Key:Statue", "Trap:Statue" ],
         "Image": "",
         "RewardTables": [
@@ -1017,6 +1017,7 @@
       {
         "Flavourtext": "You head to the inn, book a room and take a quick nap. You wake up as a bunch of thieves are rummaging through your stuff, you need to stop them!",
         "EnemyNames": [ "Thief 1", "Bandit 1", "Thief 1" ],
+        "Keywords": [ "Heal" ],
         "Image": "",
         "RewardTables": [
           [
@@ -4115,7 +4116,7 @@
     "IsDefault": false,
     "Matchups": [
       {
-        "Flavourtext": "You enter the cave, where an Ogre is standing guard at the entrance. Calling out for his friends, he lashes out violently at you!",
+        "Flavourtext": "You enter the cave, where an Orc is standing guard at the entrance. Calling out for his friends, he lashes out violently at you!",
         "EnemyNames": [ "Orc Lord" ],
         "Image": "",
         "RewardTables": [
@@ -4733,12 +4734,19 @@
             {
               "Weight": 1,
               "RequireTag": [ "HamaMegaera1" ],
-              "Tag": "MegaeraChallenge",
+              "Tag": "MegaerasChallenge",
               "Obtainable": 1,
               "XP": 10,
               "Coins": 10,
-              "Dungeon": "MegaerasChallenge",
+              "Dungeon": "Megaeras Challenge",
               "message": "You once again spot the spirit you have been seeing. 'You... You can see me? So that's why you followed me... You must be an Adept. I am looking for someone I can trust. Follow me and show me what you're capable of.'"
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "Tag": "TolbiCompleted",
+              "Obtainable": 1
             }
           ]
         ]
@@ -5286,7 +5294,8 @@
               "Obtainable": 1,
               "Chest": "Gold",
               "HasChest": true,
-              "Item": "Lure Cap"
+              "Item": "Lure Cap",
+              "message": "Congratulations, Adept! You've proven to be exceedingly strong! You are now granted to engage in the endless-battles mode!"
             }
           ]
         ]
@@ -5552,8 +5561,6 @@
           [
             {
               "Weight": 1,
-              "Tag": "SuhallaMars",
-              "Obtainable": 2,
               "Djinn": "Mars"
             },
             {
@@ -6096,7 +6103,7 @@
     "name": "Babis Lighthouse",
     "IsOneTimeOnly": true,
     "FlavourText": "A Lighthouse built by Babi in order to find the city of Lemuria. The tower is built on top of the Tunnel Ruins, the passage way to Venus Lighthouse...",
-    "Image": "",
+    "Image": "https://cdn.discordapp.com/attachments/668443234292334612/738713208809979974/unknown.png",
     "IsDefault": false,
     "Requirement": {
       "TagsRequired": [ "LaliveroCompleted" ]
@@ -6188,8 +6195,6 @@
             },
             {
               "Weight": 1,
-              "Tag": "BabiJupiter",
-              "Obtainable": 2,
               "Djinn": "Jupiter"
             }
           ]
@@ -8377,7 +8382,7 @@
         ]
       },
       {
-        "Flavourtext": "Indeed, you are strong. I feel like I can trust you. The spirits are trying to claim the energy set free by the unleashing of Alchemy for themselves. You may have met some of them already, but believe me when I say that a lot more powerful ones are out there. My task is to protect the human race. The lighthouses you created are nearly unlimitted sources of energies and the spirits may be attracted to them. I am enroute to Venus Lighthouse. Will you help me prevent the worst?'",
+        "Flavourtext": "Indeed, you are strong. I feel like I can trust you. The spirits are trying to claim the energy set free by the unleashing of Alchemy for themselves. You may have met some of them already, but believe me when I say that a lot more powerful ones are out there. My task is to protect the human race. The lighthouses you humans created are nearly unlimitted sources of energies and the spirits may be attracted to them. I am enroute to Venus Lighthouse. Will you help me prevent the worst?'",
         "EnemyNames": [ "End" ],
         "Image": "",
         "RewardTables": [
