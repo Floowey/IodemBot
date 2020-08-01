@@ -195,7 +195,7 @@ namespace IodemBot.Modules
             var embed = new EmbedBuilder()
             .WithColor(Colors.Get(account.Element.ToString()))
             .WithAuthor(author)
-            .WithTitle($"Level {account.LevelNumber} {account.GsClass}{string.Join("", account.TrophyCase.Trophies.Select(t => t.Icon))} (Rank {UserAccounts.GetRank(user) + 1})")
+            .WithTitle($"Level {account.LevelNumber} {account.GsClass} {string.Join("", account.TrophyCase.Trophies.Select(t => t.Icon))} (Rank {UserAccounts.GetRank(user) + 1})")
             .AddField("Current Equip", account.Inv.GearToString(AdeptClassSeriesManager.GetClassSeries(account).Archtype), true)
             .AddField("Psynergy", p.GetMoves(false), true)
             .AddField("Djinn", account.DjinnPocket.GetDjinns().GetDisplay(DjinnDetail.None), true)
@@ -219,7 +219,20 @@ namespace IodemBot.Modules
             await Context.Channel.SendMessageAsync("", false, embed.Build());
         }
 
-        [Command("patdown")]
+        [Command("Trophy"), Alias("Trophies")]
+        public async Task Trophies([Remainder] SocketUser user = null)
+        {
+            user ??= Context.User;
+            var acc = UserAccounts.GetAccount(user);
+            if (acc.TrophyCase.Trophies.Count == 0) return;
+            var embed = new EmbedBuilder()
+                .WithTitle($"Trophies of {acc.Name}");
+            acc.TrophyCase.Trophies.ForEach(t => embed.AddField("Trophy", $"{t.Icon}\n{t.Text}\nObtained on:{t.ObtainedOn.Date}"));
+            _ = ReplyAsync(embed: embed.Build());
+            await Task.CompletedTask;
+        }
+
+            [Command("patdown")]
         [RequireStaff]
         public async Task PatDown([Remainder] SocketGuildUser user = null)
         {
@@ -459,7 +472,7 @@ namespace IodemBot.Modules
             await RemoveClassSeries(series, user, (SocketTextChannel)Context.Channel);
         }
 
-        [Command("newgame+")]
+        [Command("newgame")]
         [Summary("Reset and start a new game. Careful, your progress will be lost!")]
         public async Task NewGamePlus()
         {
@@ -489,8 +502,6 @@ namespace IodemBot.Modules
             await Status();
         }
 
-
-
         internal static async Task AwardClassSeries(string series, SocketUser user, IMessageChannel channel)
         {
             var avatar = UserAccounts.GetAccount(user);
@@ -506,6 +517,7 @@ namespace IodemBot.Modules
 
             string curClass = AdeptClassSeriesManager.GetClassSeries(avatar).Name;
             avatar.BonusClasses.Add(series);
+            avatar.BonusClasses.Sort();
             SetClass(avatar, curClass);
             UserAccounts.SaveAccounts();
             var embed = new EmbedBuilder();
