@@ -227,7 +227,7 @@ namespace IodemBot.Modules
             if (acc.TrophyCase.Trophies.Count == 0) return;
             var embed = new EmbedBuilder()
                 .WithTitle($"Trophies of {acc.Name}");
-            acc.TrophyCase.Trophies.ForEach(t => embed.AddField("Trophy", $"{t.Icon}\n{t.Text}\nObtained on:{t.ObtainedOn.Date}"));
+            acc.TrophyCase.Trophies.ForEach(t => embed.AddField("Trophy", $"{t.Icon}\n{t.Text}\nObtained on: {t.ObtainedOn.Date:d}", true));
             _ = ReplyAsync(embed: embed.Build());
             await Task.CompletedTask;
         }
