@@ -3630,7 +3630,7 @@
       },
       {
         "Flavourtext": "The waters recede again, and a new path down is revealed. You reach the final chamber... Here comes the big one!",
-        "EnemyNames": [ "Living Statue", "Hydros Statue", "Living Statue" ],
+        "EnemyNames": [ "Hydros Statue" ],
         "Keywords": [ "https://cdn.discordapp.com/attachments/696352535568711711/731788905065611314/Document_3_2.jpg" ],
         "Image": "",
         "RewardTables": [
