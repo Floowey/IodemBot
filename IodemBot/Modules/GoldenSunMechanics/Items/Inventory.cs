@@ -166,7 +166,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 }
                 else
                 {
-                    dailiesInARow = 1;
+                    dailiesInARow = 0;
                 }
                 AwardChest(ChestQuality.Daily);
                 lastDailyChest = DateTime.Now;

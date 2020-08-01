@@ -303,7 +303,7 @@ namespace IodemBot.Modules
             for (int i = 0; i < Math.Min(topAccounts.Count(), 5); i++)
             {
                 var curAccount = topAccounts.ElementAt(i);
-                var streak = mode == EndlessMode.Default ? curAccount.ServerStats.EndlessStreak : curAccount.ServerStats.LegacyStreak;
+                var streak = mode == EndlessMode.Default ? curAccount.ServerStats.EndlessStreak + curAccount.ServerStatsTotal.EndlessStreak : curAccount.ServerStats.LegacyStreak + curAccount.ServerStats.EndlessStreak;
                 switch (type)
                 {
                     case RankEnum.Solo:
@@ -330,7 +330,7 @@ namespace IodemBot.Modules
             if (rank >= 5)
             {
                 builder.Append("... \n");
-                var streak = mode == EndlessMode.Default ? account.ServerStats.EndlessStreak : account.ServerStats.LegacyStreak;
+                var streak = mode == EndlessMode.Default ? account.ServerStats.EndlessStreak + account.ServerStatsTotal.EndlessStreak : account.ServerStats.LegacyStreak + account.ServerStats.EndlessStreak;
                 switch (type)
                 {
                     case RankEnum.Solo:
@@ -371,6 +371,12 @@ namespace IodemBot.Modules
                 {"Gladiator", 511704880122036234},
                 {"Colosso Adept", 644506247521107969 }
             };
+
+            if(RoleName == "Gladiator" && UserAccounts.GetAccount(Context.User).LevelNumber < 5)
+            {
+                _ = ReplyAsync("Please participate in the server more before you can announce your streams. We would like to be a community and not just be used as an advertising platform!");
+                return;
+            }
 
             if (roles.TryGetValue(RoleName, out ulong roleId))
             {

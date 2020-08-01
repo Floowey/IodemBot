@@ -405,7 +405,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             embed.WithColor(item.Color);
             if (cq == ChestQuality.Daily)
             {
-                embed.WithFooter($"Current Reward: {inv.dailiesInARow % dailyRewards.Length + 1}/{dailyRewards.Length} | Overall Streak: {inv.dailiesInARow + 1}");
+                embed.WithFooter($"Current Reward: {inv.dailiesInARow % dailyRewards.Length +1}/{dailyRewards.Length} | Overall Streak: {inv.dailiesInARow +1}");
             }
             embed.WithDescription($"{Inventory.ChestIcons[cq]} You found a {item.Name} {item.IconDisplay}");
 

@@ -149,8 +149,19 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 return;
             }
             var user = UserAccounts.GetAccount(Context.User);
-            TakeDjinn(user, Names);
-            await DjinnInv();
+            if(Names == "none")
+            {
+                user.DjinnPocket.DjinnSetup.Clear();
+            } else if (Names.Contains(','))
+            {
+                var parts = Names.Split(',').Select(s => s.Trim()).ToArray();
+                TakeDjinn(user, parts);
+            } else
+            {
+                TakeDjinn(user, Names);
+            }
+            _ = DjinnInv();
+            await Task.CompletedTask;
         }
 
         public static void TakeDjinn(UserAccount user, params string[] Names)

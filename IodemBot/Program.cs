@@ -64,7 +64,7 @@ namespace IodemBot
             if(before.DisplayName() != after.DisplayName())
             {
                 UserAccounts.GetAccount(after).Name = after.DisplayName();
-                await GuildSettings.GetGuildSettings(after.Guild).TestCommandChannel
+                _ = GuildSettings.GetGuildSettings(after.Guild).TestCommandChannel
                     .SendMessageAsync($"{after.Mention} changed Nickname from {before.DisplayName()} to {after.DisplayName()}");
             }
             await Task.CompletedTask;
@@ -94,28 +94,30 @@ namespace IodemBot
         {
             if (GuildSettings.GetGuildSettings(user.Guild).sendWelcomeMessage)
             {
-                await GuildSettings.GetGuildSettings(user.Guild).MainChannel.SendMessageAsync(embed:
+                _ = GuildSettings.GetGuildSettings(user.Guild).MainChannel.SendMessageAsync(embed:
                     new EmbedBuilder()
                     .WithColor(Colors.Get("Iodem"))
                     .WithDescription(string.Format(welcomeMsg[Global.Random.Next(0, welcomeMsg.Length)], user.DisplayName()))
                     .Build());
             }
 
-            await GuildSettings.GetGuildSettings(user.Guild).TestCommandChannel.SendMessageAsync(embed:
+            _ = GuildSettings.GetGuildSettings(user.Guild).TestCommandChannel.SendMessageAsync(embed:
                 new EmbedBuilder()
                 .WithAuthor(user)
                 .AddField("Account Created", user.CreatedAt)
                 .AddField("User Joined", user.JoinedAt)
                 .AddField("Status", user.Status, true)
                 .Build());
+            await Task.CompletedTask;
         }
 
         private async Task Client_UserLeft(SocketGuildUser user)
         {
             if (GuildSettings.GetGuildSettings(user.Guild).sendLeaveMessage)
             {
-                await GuildSettings.GetGuildSettings(user.Guild).TestCommandChannel.SendMessageAsync($"{user.DisplayName()} left the party :(.");
+                _ = GuildSettings.GetGuildSettings(user.Guild).TestCommandChannel.SendMessageAsync($"{user.DisplayName()} left the party :(.");
             }
+            await Task.CompletedTask;
         }
 
         private async Task Client_Ready()

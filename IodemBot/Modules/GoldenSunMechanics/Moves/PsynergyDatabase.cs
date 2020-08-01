@@ -54,7 +54,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 return (StatusPsynergy)sp.Clone();
             }
 
-            //Console.WriteLine($"{psynergy} is not implemented.");
+            Console.WriteLine($"{psynergy} is not implemented.");
             return new StatusPsynergy()
             {
                 Name = $"{psynergy} (NOT IMPLEMENTED)",
