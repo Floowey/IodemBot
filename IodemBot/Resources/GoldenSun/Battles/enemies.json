@@ -10372,6 +10372,7 @@
     "name": "Boulder",
     "imgurl": "https://cdn.discordapp.com/attachments/497696510688100352/595677509253857280/unknown.png",
     "movepool": [
+      "BoulderFall"
     ],
     "stats": {
       "maxHP": 20000,
@@ -10390,7 +10391,7 @@
       "MercuryAtk": 100,
       "MercuryRes": 25
     },
-    "Conditions": [ "DeathCurse", "Counter" ],
+    "Conditions": [ "Counter" ],
     "DeathCurseCounter": 1,
     "isImmuneToConditions": [
       "Stun",
@@ -10406,7 +10407,7 @@
   },
   "Key": {
     "name": "Key",
-    "imgurl": "https://goldensunwiki.net/w/images/c/ca/SolSanctumDisarm.png",
+    "imgurl": "https://cdn.discordapp.com/attachments/668443234292334612/739418614158983238/unknown.png",
     "movepool": [
     ],
     "Conditions": [ "Key" ],
@@ -10442,7 +10443,7 @@
   },
   "Key20": {
     "name": "Key",
-    "imgurl": "https://goldensunwiki.net/w/images/c/ca/SolSanctumDisarm.png",
+    "imgurl": "https://cdn.discordapp.com/attachments/668443234292334612/739418614158983238/unknown.png",
     "movepool": [
     ],
     "Conditions": [ "Key" ],
@@ -10478,7 +10479,7 @@
   },
   "DeathTrap": {
     "name": "Trap",
-    "imgurl": "https://goldensunwiki.net/w/images/c/ca/SolSanctumDisarm.png",
+    "imgurl": "https://cdn.discordapp.com/attachments/668443234292334612/739418614158983238/unknown.png",
     "movepool": [
     ],
     "stats": {
@@ -10515,9 +10516,8 @@
   },
   "BoobyTrap": {
     "name": "Trap",
-    "imgurl": "https://goldensunwiki.net/w/images/c/ca/SolSanctumDisarm.png",
+    "imgurl": "https://cdn.discordapp.com/attachments/668443234292334612/739418614158983238/unknown.png",
     "movepool": [
-      "Disarm"
     ],
     "stats": {
       "maxHP": 20000,
@@ -10598,15 +10598,16 @@
     }
   },
   "Fortress Guard": {
-    "movepool": [ "Slice" ],
+    "movepool": [ "Search" ],
     "name": "Fortress Guard",
     "imgurl": "https://www.spriters-resource.com/resources/sheet_icons/79/82607.png",
+    "Conditions": ["Counter"],
     "stats": {
-      "maxhp": 421,
+      "maxhp": 999,
       "maxpp": 0,
-      "atk": 281,
+      "atk": 888,
       "def": 69,
-      "spd": 104
+      "spd": 1
     },
     "elstats": {
       "venusres": 72,
@@ -10614,7 +10615,9 @@
       "marsres": 72,
       "jupiterres": 72,
       "jupiteratk": 80
-    }
+    },
+    "hasDefend": false,
+    "hasAttack": false
   },
   "Gladiator": {
     "movepool": [],

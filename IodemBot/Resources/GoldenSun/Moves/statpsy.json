@@ -862,13 +862,24 @@
     ]
   },
   "Search": {
-    "name": "Search",
+    "name": "the time to search somewhere else",
     "targetType": 0,
     "hasPriority": true,
     "emote": "👀",
     "effects": [
       {
-        "Type": "Counter"
+        "Type": "UserDies"
+      }
+    ]
+  },
+  "BoulderFall": {
+    "name": "_boing boing boing splash_",
+    "targetType": 0,
+    "hasPriority": true,
+    "emote": "<:Avalanche:536959102019174411>",
+    "effects": [
+      {
+        "Type": "UserDies"
       }
     ]
   },

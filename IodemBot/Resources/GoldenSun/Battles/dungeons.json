@@ -3690,7 +3690,7 @@
         "Flavourtext": "'This desert has some oases, but a lot of them are just mirages. My powers are not very strong yet, so we need to pick carefully'",
         "EnemyNames": [ "BoobyTrap-Delusion-Stun:Oasis", "Key:Oasis" ],
         "Keywords": [ "Shuffle" ],
-        "Image": "",
+        "Image": "https://vignette.wikia.nocookie.net/goldensun/images/b/bf/LamakanDesertStoneRing.png/revision/latest/scale-to-width-down/340?cb=20100216004055",
         "RewardTables": [
           [
             {
@@ -3749,7 +3749,7 @@
         "Flavourtext": "Let's take a halt, and hopefully freshen up.",
         "EnemyNames": [ "BoobyTrap-Delusion-Stun:Oasis", "Key:Oasis" ],
         "Keywords": [ "Shuffle" ],
-        "Image": "",
+        "Image": "https://vignette.wikia.nocookie.net/goldensun/images/b/bf/LamakanDesertStoneRing.png/revision/latest/scale-to-width-down/340?cb=20100216004055",
         "RewardTables": [
           [
             {
@@ -3834,7 +3834,7 @@
         "Flavourtext": "'Oh no, it is really getting dark. Let's take one more break, we are close to the other side!'",
         "EnemyNames": [ "BoobyTrap-Delusion-Stun:Oasis", "Key:Oasis" ],
         "Keywords": [ "Shuffle" ],
-        "Image": "",
+        "Image": "https://vignette.wikia.nocookie.net/goldensun/images/b/bf/LamakanDesertStoneRing.png/revision/latest/scale-to-width-down/340?cb=20100216004055",
         "RewardTables": [
           [
             {
@@ -4954,7 +4954,7 @@
         "Flavourtext": "As you touch the correct stone, you a voice is heard inside your head. ```Which stone is in the middle?```",
         "EnemyNames": [ "Key:Green", "Trap:Red", "Trap:Blue", "Trap:Yellow", "Trap:White" ],
         "Keywords": [ "Shuffle" ],
-        "Image": "",
+        "Image": "https://cdn.discordapp.com/attachments/668443234292334612/736913356807602187/unknown.png",
         "RewardTables": [
           [
             {
@@ -5177,7 +5177,7 @@
       },
       {
         "Flavourtext": "Which Item protects its wearer from the effects of the curse effect?",
-        "EnemyNames": [ "Key:Priest Ring", "Trap:Guardian Ring", "Trap:Spirit Ring", "Key:Clerics Ring" ],
+        "EnemyNames": [ "Trap:Priest Ring", "Trap:Guardian Ring", "Trap:Spirit Ring", "Key:Clerics Ring" ],
         "Keywords": [ "Shuffle" ],
         "Image": "",
         "RewardTables": [
@@ -5341,7 +5341,7 @@
         ]
       },
       {
-        "Flavourtext": "After defeating the Lizard, you come to a junction.  Even with the winds blowing, monsters teem within this desert.",
+        "Flavourtext": "After defeating the Lizard, you come to a junction. Even with the winds blowing, monsters teem within this desert.",
         "EnemyNames": [ "Orc Captain", "Harridan 1", "Harridan 1" ],
         "Image": "",
         "RewardTables": [
@@ -5428,7 +5428,7 @@
         ]
       },
       {
-        "Flavourtext": "As you round a bend, the canyon opens up.  You start to stroll across the flat area, when a tornado swoops in from behind and catches you!  As your feet begin to rise off the ground, you must deicde: Which Psynergy do you use?",
+        "Flavourtext": "As you round a bend, the canyon opens up. You start to stroll across the flat area, when a tornado swoops in from behind and catches you! As your feet begin to rise off the ground, you must deicde: Which Psynergy do you use?",
         "EnemyNames": [ "Key:Douse", "BoobyTrap-Stun:Retreat", "BoobyTrap-Delusion:Whirlwind" ],
         "Image": "https://cdn.discordapp.com/attachments/668443234292334612/734760672151339118/unknown.png",
         "RewardTables": [
@@ -5619,7 +5619,7 @@
     "Matchups": [
       {
         "Flavourtext": "A small narrow passage way makes travel tricky. It's not *that* hard, but the monsters in your way don't make it any easier.",
-        "EnemyNames": [ "Nightmare", "Earth Golem", "Nightmare", "Earth Golem" ],
+        "EnemyNames": [ "Nightmare 1", "Earth Golem", "Nightmare 1", "Earth Golem" ],
         "Keywords": [ "Shuffle" ],
         "Image": "",
         "RewardTables": [
@@ -5648,7 +5648,6 @@
             {
               "Weight": 1,
               "Tag": "LaliveroDjinn",
-              "Obtainable": 5,
               "Djinn": "Mercury"
             },
             {
@@ -5683,7 +5682,7 @@
       },
       {
         "Flavourtext": "On the horizon Lalivero's city wall start to appear. From the roadside, however, some monsters are trying to stop you from getting there.",
-        "EnemyNames": [ "Orc Captain", "Brutal Troll", "Orc Captain", "Orc Captain", "Brutal Troll" ],
+        "EnemyNames": [ "Orc Captain", "Brutal Troll 1", "Orc Captain", "Orc Captain", "Brutal Troll 2" ],
         "Keywords": [ "Shuffle" ],
         "Image": "",
         "RewardTables": [
@@ -6150,19 +6149,6 @@
             {
               "Weight": 1,
               "Item": "Healing Ring"
-            }
-          ]
-        ]
-      },
-      {
-        "Flavourtext": "You went up as much as you could, now you're left with a choice: Go down the left or the right chute? Make the right choice!",
-        "EnemyNames": [ "BabiLeft", "BabiRight" ],
-        "Image": "",
-        "RewardTables": [
-          [
-            {
-              "Weight": 1,
-              "XP": 75
             }
           ]
         ]
@@ -7545,7 +7531,7 @@
         ]
       },
       {
-        "Flavourtext": "The legend of Yegelos and Hoabna is taught as a reminder to keep conflicts between Adepts and non Adepts at bay. We have the responsibility to not repeat the mistakes of the past. Knowledge of your ancestors and history is necessary to achieve that goal.",
+        "Flavourtext": "Ever since this lighthouse got relit, we can see Weyard change around it. Even before the full unseal of Alchemy we saw new Jupiter Adepts gaining power and the climate around us became harsher. Wind my often be stagnant and retained, but it's full power may sneak up on you like a sudden summer storm. ",
         "EnemyNames": [ "Red Demon" ],
         "Image": "",
         "RewardTables": [
@@ -7644,7 +7630,7 @@
         ]
       },
       {
-        "Flavourtext": "With a short '*swoosh*' you teleport. You feel some arid heat, not uncomfortable, yet unusual with a constant breeze blowing through your hair. You open your eyes. You're on a mountain top made of orange sandstone. On the floor is a red and blue drawing. Far in the skies a gigantic bird is soaring in circles. 'This is the peak of Trial Road, a sacred place to the nearby Shamans.'",
+        "Flavourtext": "With a short '*swoosh*' you teleport. You feel some arid heat, not uncomfortable, yet unusual with a constant breeze blowing through your hair. You open your eyes. You're on a mountain top made of orange sandstone. On the floor are red and blue drawings. Far in the skies a gigantic bird is soaring in circles. 'This is the peak of Trial Road, a sacred place to the nearby Shamans.'",
         "EnemyNames": [ "Great Seagull", "Great Seagull", "Great Seagull" ],
         "Image": "",
         "RewardTables": [
@@ -7662,7 +7648,7 @@
         ]
       },
       {
-        "Flavourtext": "The legend of Yegelos and Hoabna tells that the two heroes ran to the top of the road and fought on this very spot. Consequently, the years-long war between the Shamans and the Anemos ended.",
+        "Flavourtext": "The legend of Yegelos and Hoabna tells that the two heroes ran to the top of the road and fought on this very spot. Their mutual respect in doing so and their fame and heroism brought the years-long war between the Shamans and the Anemos to an end.",
         "EnemyNames": [ "Phoenix", "Wild Gryphon 2", "Sky Dragon 2", "Harridan 2" ],
         "Keywords": [ "Shuffle" ],
         "Image": "",
@@ -7698,7 +7684,7 @@
         ]
       },
       {
-        "Flavourtext": "The saying 'kill two birds with one stone' bears a misleading meaning. The bird might be afraid of the stone, yet without the stone the bird would need to fly ceaselessly. It couldn't risk roosting, nor find bugs and seeds in the soil.",
+        "Flavourtext": "Some people might say 'kill two birds with one stone', but don't be fooled. It will only make the bird more afraid of the stone, yet without the stone the bird would need to fly ceaselessly. It needs the stone to roost and find bugs and seeds in the soil.",
         "EnemyNames": [ "Talon Runner", "Talon Runner", "Talon Runner", "Raptor", "Raptor" ],
         "Keywords": [ "Shuffle" ],
         "Image": "",

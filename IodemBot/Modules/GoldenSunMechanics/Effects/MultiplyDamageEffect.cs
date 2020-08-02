@@ -24,10 +24,6 @@ namespace IodemBot.Modules.GoldenSunMechanics
                     User.offensiveMult *= Multipliers[i];
                     return new List<string>();
                 }
-                else
-                {
-                    System.Console.WriteLine(i);
-                }
             }
             return new List<string>();
         }
