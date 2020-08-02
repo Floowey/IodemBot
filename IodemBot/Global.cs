@@ -1,5 +1,8 @@
 ﻿using System;
 using Discord.WebSocket;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace IodemBot
 {
@@ -15,7 +18,7 @@ namespace IodemBot
         {
             get
             {
-                return DateTime.Now.ToString("MM_dd_HH-mm-ss");
+                return $"{DateTime.Now:s}";
             }
         }
     }

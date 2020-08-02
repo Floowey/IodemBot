@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using IodemBot.Modules;
 using IodemBot.Modules.GoldenSunMechanics;
@@ -11,7 +12,7 @@ namespace IodemBot.Core.UserManagement
 
         public Loadout GetLoadout(string name)
         {
-            return loadouts.FirstOrDefault(l => l.LoadoutName == name);
+            return loadouts.FirstOrDefault(l => l.LoadoutName.Equals(name, StringComparison.CurrentCultureIgnoreCase));
         }
 
         public void SaveLoadout(Loadout loadout)

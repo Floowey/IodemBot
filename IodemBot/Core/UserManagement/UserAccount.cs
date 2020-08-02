@@ -295,6 +295,43 @@ namespace IodemBot.Core.UserManagement
         {
             XpBoost *= 1 + 0.1 * (1 - Math.Exp(-(double)XP / 120000));
             XPLastGame = TotalXP;
+
+            if(LevelNumber >= 99)
+            {
+                TrophyCase.Trophies.Add(new Trophy() {
+                    Icon = "<:99Trophy:739170181745475601>", 
+                    Text = $"Awarded for resetting their character at level {LevelNumber}", 
+                    ObtainedOn = DateTime.Now }
+                );
+            } else if(LevelNumber >= 90)
+            {
+                TrophyCase.Trophies.Add(new Trophy()
+                {
+                    Icon = "<:90Trophy:739170181359599687>",
+                    Text = $"Awarded for resetting their character at level {LevelNumber}",
+                    ObtainedOn = DateTime.Now
+                }
+                );
+            } else if(LevelNumber >= 75)
+            {
+                TrophyCase.Trophies.Add(new Trophy()
+                {
+                    Icon = "<:75Trophy:739170181334695978>",
+                    Text = $"Awarded for resetting their character at level {LevelNumber}",
+                    ObtainedOn = DateTime.Now
+                }
+                );
+            } else if(LevelNumber >= 50)
+            {
+                TrophyCase.Trophies.Add(new Trophy()
+                {
+                    Icon = "<:50Trophy:739170181602869289>",
+                    Text = $"Awarded for resetting their character at level {LevelNumber}",
+                    ObtainedOn = DateTime.Now
+                }
+                );
+            }
+
             XP = 0;
             Inv.Clear();
             DjinnPocket.Clear();

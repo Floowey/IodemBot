@@ -173,15 +173,15 @@ namespace IodemBot.Modules.ColossoBattles
 
         private async Task WriteGameOver()
         {
-            await Task.Delay(2000);
+            await Task.Delay(5000);
             var winners = Battle.GetTeam(Battle.GetWinner());
-            var text = $"{winners.FirstOrDefault().Name}'s Party wins! Battle will reset shortly";
+            var text = $"{winners.FirstOrDefault().Name}'s Party wins! Battle will reset shortly.";
 
             _ = Teams[Team.A].StatusMessage.ModifyAsync(m => { m.Content = text; m.Embed = null; });
             _ = Teams[Team.B].StatusMessage.ModifyAsync(m => { m.Content = text; m.Embed = null; });
 
-            await Task.Delay(2000);
-            await Reset();
+            await Task.Delay(5000);
+            _ = Reset();
         }
 
         protected override async Task ProcessReaction(Cacheable<IUserMessage, ulong> cache, ISocketMessageChannel channel, SocketReaction reaction)

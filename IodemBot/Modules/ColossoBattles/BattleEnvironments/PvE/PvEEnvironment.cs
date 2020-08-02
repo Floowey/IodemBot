@@ -69,7 +69,7 @@ namespace IodemBot.Modules.ColossoBattles
         protected virtual string GetWinMessageString()
         {
             var winners = Battle.GetTeam(Battle.GetWinner());
-            return $"{winners.FirstOrDefault().Name}'s Party wins! Battle will reset shortly";
+            return $"{winners.FirstOrDefault().Name}'s Party wins! Battle will reset shortly.";
         }
 
         protected virtual string GetLossMessage()
