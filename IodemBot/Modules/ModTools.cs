@@ -167,7 +167,8 @@ namespace IodemBot.Modules
                 {
                     FileName = "shellscripts/pullusers.sh",
                     UseShellExecute = false,
-                    RedirectStandardOutput = true
+                    RedirectStandardOutput = true,
+                    Arguments = Global.Client.CurrentUser.Username == "Medoi" ? "MedoiBotService" : "IodemBotService"
                 };
 
                 Process process = Process.Start(ps);
