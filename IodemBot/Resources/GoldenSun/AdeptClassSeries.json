@@ -5,7 +5,8 @@
       {
         "name": "Exathi",
         "movepool": [
-          "Brutal Swing"
+          "Brutal Swing",
+          "Sack"
         ],
         "statMultipliers": {
           "maxHP": 100,
