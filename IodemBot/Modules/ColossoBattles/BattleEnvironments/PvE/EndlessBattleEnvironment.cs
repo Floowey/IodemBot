@@ -160,7 +160,7 @@ namespace IodemBot.Modules.ColossoBattles
             this.mode = mode;
             if(mode == EndlessMode.Legacy)
             {
-                Factory = new PlayerFighterFactory() { DjinnOption = DjinnOption.NoDjinn };
+                Factory = new PlayerFighterFactory() { DjinnOption = DjinnOption.NoDjinn, ReductionFactor = 1.5 };
             }
             _ = Reset();
         }

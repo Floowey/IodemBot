@@ -2113,7 +2113,7 @@
         "requirement": "ColossoWins",
         "isDefault": false,
         "archtype": "Warrior",
-        "description": "Eager to show their strengths, young Swordsmen hang about in the vicinity of the battle grounds."
+        "description": "Eager to measure their strengths against other warriors, young Swordsmen hang about in the vicinity of the battle grounds."
     },
     {
         "name": "Curse Mage Series",
@@ -2234,7 +2234,7 @@
         "requirement": "ColossoWins",
         "isDefault": false,
         "archtype": "Mage",
-        "description": "Mikos turn to dark, but powerful curses, when they have lost their way."
+        "description": "Mikos turn to dark, but powerful curses, when they have lost their way. They draw their powers from being around cursed equipment and don't seem to be affected by their dangerous side effects."
     },
     {
         "name": "Scrapper Series",
@@ -2751,6 +2751,6 @@
         "requirement": "Revives",
         "isDefault": false,
         "archtype": "Mage",
-        "description": "Mediums talk to the fallen and harness their powers."
+        "description": "Mediums talk to the fallen and harness their powers. Their powers aren't stopped by cursed gear."
     }
 ]

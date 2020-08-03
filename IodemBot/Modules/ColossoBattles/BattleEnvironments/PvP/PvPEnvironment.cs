@@ -133,14 +133,14 @@ namespace IodemBot.Modules.ColossoBattles
             }
             autoTurn = new Timer()
             {
-                Interval = 25000,
+                Interval = 60000,
                 AutoReset = false,
                 Enabled = false
             };
             autoTurn.Elapsed += TurnTimeElapsed;
             resetIfNotActive = new Timer()
             {
-                Interval = 120000,
+                Interval = 240000,
                 AutoReset = false,
                 Enabled = false
             };
@@ -387,14 +387,16 @@ namespace IodemBot.Modules.ColossoBattles
             {
                 WriteStatus(),
                 WriteEnemies(),
+                WriteSummons(),
                 WritePlayers()
-            });
+            }); ;
         }
 
         protected override async Task WriteBattleInit()
         {
             await WriteStatusInit();
             await WriteEnemiesInit();
+            await WriteSummonsInit();
             await WritePlayersInit();
         }
 

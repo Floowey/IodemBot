@@ -57,9 +57,9 @@ namespace IodemBot.Modules.ColossoBattles
             FinalBaseStats = finalBaseStats;
         }
 
-        public Stats GetStats(uint Level)
+        public Stats GetStats(uint Level, double ReductionFactor = 1.25)
         {
-            return BaseStat + (FinalBaseStats - BaseStat) * ((double)Level / 99 / 1.25);
+            return BaseStat + (FinalBaseStats - BaseStat) * ((double)Level / 99 / ReductionFactor);
         }
     }
 
@@ -79,6 +79,7 @@ namespace IodemBot.Modules.ColossoBattles
         public List<Summon> summons = new List<Summon>();
         public List<Summon> PossibleSummons { get => summons.Where(s => s.CanSummon(uniqueDjinn)).Distinct().ToList(); }
 
+        public double ReductionFactor = 1.25;
         public uint SetLevel { get; set; } = 99;
         public Stats StatMultiplier { get; set; } = new Stats(100, 100, 100, 100, 100);
 
@@ -221,7 +222,7 @@ namespace IodemBot.Modules.ColossoBattles
             ;
             Stats Stats = BaseStatOption switch
             {
-                BaseStatOption.Default => classSeries.Archtype == ArchType.Warrior ? WarriorStatHolder.GetStats(level) : MageStatHolder.GetStats(level),
+                BaseStatOption.Default => classSeries.Archtype == ArchType.Warrior ? WarriorStatHolder.GetStats(level, ReductionFactor) : MageStatHolder.GetStats(level, ReductionFactor),
                 _ => AverageStatHolder.GetStats(level),
             };
             return Stats;
