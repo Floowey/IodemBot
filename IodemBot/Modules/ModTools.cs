@@ -121,13 +121,13 @@ namespace IodemBot.Modules
                 var ps = new ProcessStartInfo
                 {
                     FileName = "shellscripts/selfupdate.sh",
-                    UseShellExecute = true,
+                    UseShellExecute = false,
                     RedirectStandardOutput = true
                 };
 
                 Process process = Process.Start(ps);
                 process.WaitForExit();
-                Console.WriteLine("This shouldn't be reached.");
+                Console.WriteLine("This shouldn't be reached but did.");
                 return;
 
             }
