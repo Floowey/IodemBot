@@ -80,17 +80,44 @@ namespace IodemBot.Modules
                 .Build());
         }
 
+        [Command("Music")]
+        [Cooldown(5)]
+        [Summary("Golden Sun Soundtracks to listen to")]
+        public async Task Music()
+        {
+            await Context.Channel.SendMessageAsync(embed: new EmbedBuilder()
+                .WithColor(Colors.Get("Iodem"))
+                .WithDescription($"While we do not have a dedicated music bot, check out these fantastic playlists to listen to during your adventure:")
+                .AddField("OCRemix of the Golden Sun Soundtrack on Soundcloud (it's marvellous)", "https://soundcloud.com/ocremix/sets/golden-sun-a-world-reignited")
+                .AddField("Original Sound Track playlist on YouTube:", "https://www.youtube.com/watch?v=rl16-7wZmFY&list=PLCD5E70634946E090")
+                .Build());
+        }
+
+        [Command("FAQ"), Alias("Changelog", "Links", "Support", "Repo")]
+        public async Task FAQ()
+        {
+            await Context.Channel.SendMessageAsync(embed: new EmbedBuilder()
+                .WithColor(Colors.Get("Iodem"))
+                .WithDescription("Here's a handful of useful links:")
+                .AddField("FAQ", "https://github.com/Floowey/IodemBot/wiki/FAQ")
+                .AddField("Changelog", "https://github.com/Floowey/IodemBot/wiki/Changelog")
+                .AddField("Repository", "https://github.com/Floowey/IodemBot")
+                .AddField("Support", "https://ko-fi.com/floowey")
+                .Build());
+        }
+
         [Command("Credit"), Alias("Credits", "Info")]
         public async Task Credit()
         {
             await ReplyAsync(embed: new EmbedBuilder()
                 .WithTitle("Credits")
-                .WithDescription("Iodem is a community project, designed to add a special, custom made battle system, that mirrors the battle system present in the GBA games to the /r/GoldenSun discord. \nCheck out the repository:\nhttps://github.com/Floowey/IodemBot/\nIf you want to support this, you can buy Floowey a Ko-Fi!\n https://ko-fi.com/floowey")
+                .WithDescription("Iodem is a community project, designed to add a special, custom made battle system, that mirrors the battle system present in the GBA games to the /r/GoldenSun discord.")
                 .AddField("Project Lead", "Floowey")
                 .AddField("Co Producers", "Falgor, Gray, Primrose, Ultimastrike")
                 .AddField("Art Contributions", "bringobrongo, elTeh, Eon, Mimibits, Shawn, SpaceShaman, Virize, Volk")
                 .AddField("Contributions and Testers", "AlterEgo, Arcblade, ArcanusHaru, Dracobolt, DroneberryPi, Germaniac, IceFireFish, joschlumpf, Lavtiz, MarcAustria, Ninja Frog, Ophi, Smeecko, Random, RupeeHeart")
                 .AddField("Special thanks to", "Camelot, the Moderators, the Nut Council and you, the players, without whom this whole project wouldn't have come this far")
+                .AddField("Support and Links", "Check out the repository:\nhttps://github.com/Floowey/IodemBot/\nIf you want to support this, you can buy Floowey a Ko-Fi!\n https://ko-fi.com/floowey")
                 .WithThumbnailUrl("https://cdn.discordapp.com/attachments/668443234292334612/738400124497035284/5ca5bf1dff3c03fbf7cc9b3c_Kofi_logo_RGB_rounded.png")
                 .Build());
         }

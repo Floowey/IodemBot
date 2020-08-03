@@ -2,6 +2,7 @@
 # selfupdate.sh
 # Self Update, this should be able to be called from within the bot itself
 echo "Start Updating"
+echo $PWD
 cd ~/IodemBot/IodemBot/ # Folder of Repository
 git pull
 echo "done pulling"
