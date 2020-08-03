@@ -18,7 +18,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         [JsonProperty] private List<SummonHolder> SummonStorage = new List<SummonHolder>();
         public List<Element> DjinnSetup { get; set; } = new List<Element>();
         public int PocketUpgrades = 0;
-        public int PocketSize { get => Math.Min(BasePocketSize + PocketUpgrades * 2); }
+        public int PocketSize { get => Math.Min(60, BasePocketSize + PocketUpgrades * 2); }
 
         private class DjinnHolder
         {
@@ -79,7 +79,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public bool AddDjinn(Djinn newDjinn)
         {
             var djinnOfElement = djinn.GroupBy(d => d.Element).Select(s => s.Count()).ToArray();
-            var minDjinn = 0;
+            //var minDjinn = 0;
             //minDjinn = djinnOfElement.Count() > 0 ? djinnOfElement.Min() : 0;
             //if (djinn.OfElement(newDjinn.Element).Count() - minDjinn < AllowedDjinnGap && djinn.Count < PocketSize)
             if (djinn.Count < PocketSize)
