@@ -380,6 +380,13 @@ namespace IodemBot.Modules.ColossoBattles
                 return;
             }
 
+
+            foreach (var V in Teams.Values)
+            {
+                V.PlayerMessages.Values.ToList().ForEach(p => p.Moves.AddRange(V.Factory.PossibleSummons));
+            }
+
+
             resetIfNotActive.Stop();
             Battle.Start();
             await WriteBattleInit();
