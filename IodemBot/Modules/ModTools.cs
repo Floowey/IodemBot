@@ -121,7 +121,7 @@ namespace IodemBot.Modules
                 var ps = new ProcessStartInfo
                 {
                     FileName = "shellscripts/selfupdate.sh",
-                    UseShellExecute = false,
+                    UseShellExecute = true,
                     RedirectStandardOutput = true
                 };
 
