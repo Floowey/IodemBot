@@ -1,15 +1,15 @@
-﻿using IodemBot.Core.UserManagement;
-using IodemBot.Extensions;
-using Newtonsoft.Json;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using IodemBot.Core.UserManagement;
+using IodemBot.Extensions;
+using Newtonsoft.Json;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
     internal class AdeptClassSeriesManager
     {
-        private static List<AdeptClassSeries> allClasses;
+        public static List<AdeptClassSeries> allClasses;
         private static readonly string filePath = "Resources/GoldenSun/AdeptClassSeries.json";
 
         static AdeptClassSeriesManager()
@@ -20,7 +20,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             allClasses = data.ToObject<List<AdeptClassSeries>>();
         }
 
-        internal static Move[] GetMoveset(UserAccount avatar)
+        internal static List<Move> GetMoveset(UserAccount avatar)
         {
             List<Move> moves = new List<Move> { new Attack(), new Defend() };
 
@@ -36,13 +36,13 @@ namespace IodemBot.Modules.GoldenSunMechanics
             var gear = avatar.Inv.GetGear(classSeries.Archtype);
             if (gear.HasItem(ItemCategory.Weapon))
             {
-                moves.Where(m => m is Attack).First().emote = gear.GetItem(ItemCategory.Weapon).Icon;
+                moves.Where(m => m is Attack).First().Emote = gear.GetItem(ItemCategory.Weapon).Icon;
             }
             if (gear.HasItem(ItemCategory.ArmWear))
             {
-                moves.Where(m => m is Defend).First().emote = gear.GetItem(ItemCategory.ArmWear).Icon;
+                moves.Where(m => m is Defend).First().Emote = gear.GetItem(ItemCategory.ArmWear).Icon;
             }
-            return moves.ToArray();
+            return moves;
         }
 
         internal static Move[] GetMoveset(AdeptClass adeptClass)
@@ -60,17 +60,16 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         internal static ElementalStats GetElStats(UserAccount User)
         {
-            var classSeries = GetClassSeries(User);
             var els = GetClassSeries(User).Elstats;
             switch (User.Element)
             {
-                case Psynergy.Element.Venus:
+                case Element.Venus:
                     els += new ElementalStats() { VenusAtk = 10, VenusRes = 15, MarsAtk = 5, MarsRes = 5, JupiterAtk = -10, JupiterRes = -15 }; break;
-                case Psynergy.Element.Mars:
+                case Element.Mars:
                     els += new ElementalStats() { VenusAtk = 5, VenusRes = 5, MarsAtk = 10, MarsRes = 15, MercuryAtk = -10, MercuryRes = -15 }; break;
-                case Psynergy.Element.Jupiter:
+                case Element.Jupiter:
                     els += new ElementalStats() { VenusAtk = -10, VenusRes = -15, JupiterAtk = 10, JupiterRes = 15, MercuryAtk = 5, MercuryRes = 5 }; break;
-                case Psynergy.Element.Mercury:
+                case Element.Mercury:
                     els += new ElementalStats() { MarsAtk = -10, MarsRes = -15, JupiterAtk = 5, JupiterRes = 5, MercuryAtk = 10, MercuryRes = 15 }; break;
             }
             return els;

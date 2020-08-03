@@ -1,13 +1,13 @@
-﻿using Newtonsoft.Json;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Newtonsoft.Json;
 
 namespace IodemBot
 {
     public class Sprites
     {
-        private static Dictionary<string, string> sprites;
+        private static readonly Dictionary<string, string> sprites;
 
         public static string GetImageFromName(string name)
         {

@@ -1,13 +1,13 @@
-﻿using Discord;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Discord;
 using Discord.WebSocket;
 using IodemBot.Core.Leveling;
 using IodemBot.Core.UserManagement;
 using IodemBot.Extensions;
 using IodemBot.Modules.GoldenSunMechanics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace IodemBot.Modules.ColossoBattles
 {
@@ -16,79 +16,91 @@ namespace IodemBot.Modules.ColossoBattles
         private static readonly Dictionary<BattleDifficulty, RewardTable> chestTable = new Dictionary<BattleDifficulty, RewardTable>()
         {
             {BattleDifficulty.Tutorial, new RewardTable(){
-                new ChestReward()
+                new DefaultReward()
             {
                     Chest = ChestQuality.Wooden,
             } } },
             {BattleDifficulty.Easy, new RewardTable()
             {
-                new ChestReward()
+                new DefaultReward()
                 {
                     Chest = ChestQuality.Wooden,
-                    Weight = 3
+                    HasChest=true,
+                    Weight = 4
                 },
-                new ChestReward()
+                new DefaultReward()
                 {
                     Chest = ChestQuality.Normal,
-                    Weight = 5
+                    HasChest=true,
+                    Weight = 4
                 },
-                new ChestReward()
+                new DefaultReward()
                 {
                     Chest = ChestQuality.Silver,
-                    Weight = 2
+                    HasChest=true,
+                    Weight = 1
                 }
             } },
             {BattleDifficulty.Medium, new RewardTable()
             {
-                new ChestReward()
+                new DefaultReward()
                 {
                     Chest = ChestQuality.Normal,
-                    Weight = 3
+                    HasChest=true,
+                    Weight = 4
                 },
-                new ChestReward()
+                new DefaultReward()
                 {
                     Chest = ChestQuality.Silver,
-                    Weight = 5
+                    HasChest=true,
+                    Weight = 4
                 },
-                new ChestReward()
+                new DefaultReward()
                 {
                     Chest = ChestQuality.Gold,
+                    HasChest=true,
                     Weight = 1
                 }
             } },
             {BattleDifficulty.MediumRare, new RewardTable()
             {
-                new ChestReward()
+                new DefaultReward()
                 {
                     Chest = ChestQuality.Silver,
-                    Weight = 5
+                    HasChest=true,
+                    Weight = 6
                 },
-                new ChestReward()
+                new DefaultReward()
                 {
                     Chest = ChestQuality.Gold,
+                    HasChest=true,
                     Weight = 4
                 },
-                new ChestReward()
+                new DefaultReward()
                 {
                     Chest = ChestQuality.Adept,
+                    HasChest=true,
                     Weight = 1
                 }
             } },
             {BattleDifficulty.Hard, new RewardTable()
             {
-                new ChestReward()
+                new DefaultReward()
                 {
                     Chest = ChestQuality.Silver,
-                    Weight = 1
+                    HasChest=true,
+                    Weight = 2
                 },
-                new ChestReward()
+                new DefaultReward()
                 {
                     Chest = ChestQuality.Gold,
+                    HasChest=true,
                     Weight = 7
                 },
-                new ChestReward()
+                new DefaultReward()
                 {
                     Chest = ChestQuality.Adept,
+                    HasChest=true,
                     Weight = 2
                 }
             } }
@@ -97,27 +109,31 @@ namespace IodemBot.Modules.ColossoBattles
         private int LureCaps = 0;
         private int winsInARow = 0;
         private int StageLength { get; set; } = 12;
+        private readonly EndlessMode mode = EndlessMode.Default;
 
         internal RewardTables Rewards
         {
             get
             {
-                var basexp = 20 + 5 * LureCaps + winsInARow / 4;
-                var DiffFactor = (int)Math.Max(3, (uint)Math.Pow((int)Difficulty + 1, 2));
+                var basexp = 15 + 3 * LureCaps + winsInARow / 4;
+                var DiffFactor = (int)Math.Max(2, (uint)Math.Pow((int)Difficulty + 1, 2));
+                var xp = (uint)(Global.Random.Next(basexp, 2 * basexp) * DiffFactor);
                 return new RewardTables()
                 {
                     new RewardTable()
                     {
                         new DefaultReward(){
-                            xp = (uint)(Global.Random.Next(basexp, 2*basexp)*DiffFactor),
-                            coins = (uint)(Global.Random.Next(basexp/2, basexp)*DiffFactor),
+                            xp = xp,
+                            coins = xp/2,
                             Weight = 3
                         },
                         new DefaultReward(){
-                            xp = (uint)(Global.Random.Next(2*basexp, 3*basexp)*DiffFactor),
+                            xp = xp*2,
+                            coins = xp/4
                         },
                         new DefaultReward(){
-                            coins = (uint)(Global.Random.Next(basexp, 2*basexp)*DiffFactor),
+                            xp = xp/2,
+                            coins = xp
                         },
                     }
                 };
@@ -139,8 +155,13 @@ namespace IodemBot.Modules.ColossoBattles
             }
         }
 
-        public EndlessBattleEnvironment(string Name, ITextChannel lobbyChannel, ITextChannel BattleChannel) : base(Name, lobbyChannel, BattleChannel)
+        public EndlessBattleEnvironment(string Name, ITextChannel lobbyChannel, bool isPersistent, ITextChannel BattleChannel, EndlessMode mode = EndlessMode.Default) : base(Name, lobbyChannel, isPersistent, BattleChannel)
         {
+            this.mode = mode;
+            if(mode == EndlessMode.Legacy)
+            {
+                Factory = new PlayerFighterFactory() { DjinnOption = DjinnOption.NoDjinn, ReductionFactor = 1.5 };
+            }
             _ = Reset();
         }
 
@@ -149,7 +170,7 @@ namespace IodemBot.Modules.ColossoBattles
         public override void SetEnemy(string Enemy)
         {
             Battle.TeamB = new List<ColossoFighter>();
-            EnemiesDatabase.GetEnemies(Difficulty, Enemy).ForEach(f => Battle.AddPlayer(f, ColossoBattle.Team.B));
+            EnemiesDatabase.GetEnemies(Difficulty, Enemy).ForEach(f => Battle.AddPlayer(f, Team.B));
             Console.WriteLine($"Up against {Battle.TeamB.First().Name}");
         }
 
@@ -157,14 +178,14 @@ namespace IodemBot.Modules.ColossoBattles
         {
             Battle.TeamB.Clear();
             EnemiesDatabase.GetRandomEnemies(Difficulty, Boost).ForEach(f =>
-                Battle.AddPlayer(f, ColossoBattle.Team.B)
+                Battle.AddPlayer(f, Team.B)
             );
 
             for (int i = 0; i < LureCaps; i++)
             {
                 if (Battle.SizeTeamB < 9)
                 {
-                    Battle.AddPlayer(EnemiesDatabase.GetRandomEnemies(Difficulty, Boost).Random(), ColossoBattle.Team.B);
+                    Battle.AddPlayer(EnemiesDatabase.GetRandomEnemies(Difficulty, Boost).Random(), Team.B);
                 }
             }
             Console.WriteLine($"Up against {Battle.TeamB.First().Name}");
@@ -177,21 +198,48 @@ namespace IodemBot.Modules.ColossoBattles
             {
                 Console.WriteLine("Game Over with no enemies existing.");
             }
-            if (Battle.GetWinner() == ColossoBattle.Team.A)
+            if (Battle.GetWinner() == Team.A)
             {
                 winsInARow++;
                 var RewardTables = Rewards;
                 var chests = chestTable[Difficulty];
-                chests.RemoveAll(s => s is DefaultReward);
+                chests.RemoveAll(s => s is DefaultReward d && !d.HasChest);
+                var lurCapBonus = new[] { 16, 12, 10, 9, 8 };
                 if (!Battle.TeamB.Any(f => f.Name.Contains("Mimic")))
                 {
-                    chests.Add(new DefaultReward { Weight = chests.Weight * (14 - 2 * LureCaps) });
+                    chests.Add(new DefaultReward { Weight = chests.Weight * lurCapBonus[LureCaps] });
                 }
                 RewardTables.Add(chests);
-                winners.OfType<PlayerFighter>().ToList().ForEach(async p => await ServerGames.UserWonBattle(p.avatar, RewardTables.GetRewards(), p.battleStats, lobbyChannel, BattleChannel, winsInARow, string.Join(", ", Battle.TeamA.Select(pl => pl.Name))));
-                chests.RemoveAll(s => s is DefaultReward);
 
-                Console.WriteLine("Winners rewarded.");
+                if (Battle.TeamB.Any(f => f.Name.Contains("Djinn")))
+                {
+                    var djinnTable = new RewardTable();
+                    var djinnWeight = (int)Difficulty;
+                    if (Battle.TeamB.Any(f => f.Name.Contains("Venus Djinn")))
+                    {
+                        djinnTable.Add(new DefaultReward() { Djinn = "Venus", Weight = 1 });
+                    }
+                    if (Battle.TeamB.Any(f => f.Name.Contains("Mars Djinn")))
+                    {
+                        djinnTable.Add(new DefaultReward() { Djinn = "Mars", Weight = 1 });
+                    }
+                    if (Battle.TeamB.Any(f => f.Name.Contains("Jupiter Djinn")))
+                    {
+                        djinnTable.Add(new DefaultReward() { Djinn = "Jupiter", Weight = 1 });
+                    }
+                    if (Battle.TeamB.Any(f => f.Name.Contains("Mercury Djinn")))
+                    {
+                        djinnTable.Add(new DefaultReward() { Djinn = "Mercury", Weight = 1 });
+                    }
+                    djinnTable.Add(new DefaultReward() { Weight = djinnTable.Weight * (10 - (int)Difficulty) * 2 - djinnTable.Weight } );
+                    RewardTables.Add(djinnTable);
+                }
+
+                winners.OfType<PlayerFighter>().ToList().ForEach(async p => await ServerGames.UserWonBattle(p.avatar, RewardTables.GetRewards(), p.battleStats, lobbyChannel, BattleChannel));
+                winners.OfType<PlayerFighter>().ToList().ForEach(async p => await ServerGames.UserWonEndless(p.avatar, lobbyChannel, winsInARow, mode, p.battleStats.TotalTeamMates+1, string.Join(", ", Battle.TeamA.Select(pl => pl.Name))));
+
+                chests.RemoveAll(s => s is DefaultReward d && !d.HasChest);
+
                 Battle.TeamA.ForEach(p =>
                 {
                     p.PPrecovery += (winsInARow <= 8 * 4 && winsInARow % 4 == 0) ? 1 : 0;
@@ -200,11 +248,11 @@ namespace IodemBot.Modules.ColossoBattles
                     p.Heal((uint)(p.Stats.HP * 5 / 100));
                 });
 
-                var text = $"{winners.First().Name}'s Party wins Battle {winsInARow}! Battle will reset shortly";
-                await Task.Delay(2000);
+                var text = $"{winners.First().Name}'s Party wins Battle {winsInARow}! Battle will reset shortly.";
+                await Task.Delay(3000);
                 await StatusMessage.ModifyAsync(m => { m.Content = text; m.Embed = null; });
 
-                await Task.Delay(2000);
+                await Task.Delay(3000);
 
                 SetNextEnemy();
                 Battle.turn = 0;
@@ -214,6 +262,7 @@ namespace IodemBot.Modules.ColossoBattles
             {
                 var losers = winners.First().battle.GetTeam(winners.First().enemies);
                 losers.ConvertAll(s => (PlayerFighter)s).ForEach(async p => await ServerGames.UserLostBattle(p.avatar, lobbyChannel));
+                winners.OfType<PlayerFighter>().ToList().ForEach(async p => await ServerGames.UserFinishedEndless(p.avatar, lobbyChannel, winsInARow, mode));
                 _ = WriteGameOver();
             }
         }
@@ -233,8 +282,10 @@ namespace IodemBot.Modules.ColossoBattles
             }
             SocketGuildUser player = (SocketGuildUser)reaction.User.Value;
             var playerAvatar = UserAccounts.GetAccount(player);
-            var factory = new PlayerFighterFactory();
-            var p = factory.CreatePlayerFighter(player);
+
+            if (playerAvatar.LevelNumber < 50 && !playerAvatar.Tags.Contains("ColossoCompleted")) return;
+            
+            var p = Factory.CreatePlayerFighter(player);
 
             if (playerAvatar.Inv.GetGear(AdeptClassSeriesManager.GetClassSeries(playerAvatar).Archtype).Any(i => i.Name == "Lure Cap"))
             {
@@ -253,6 +304,11 @@ namespace IodemBot.Modules.ColossoBattles
             e.WithFooter(footerBuilder);
 
             return e;
+        }
+
+        protected override string GetEnemyMessageString()
+        {
+            return $"Welcome to Endless Battles! Show your strength and climb the leaderboards, see how far you can get. You must have reached at least level 50 to join or otherwise proofen your strength in the Colosso Finals!";
         }
     }
 }

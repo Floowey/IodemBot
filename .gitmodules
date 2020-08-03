@@ -1,0 +1,3 @@
+[submodule "IodemBot/bin/Debug/netcoreapp3.1/Resources/Accounts/IodemAccounts"]
+	path = IodemBot/bin/Debug/netcoreapp3.1/Resources/Accounts/IodemAccounts
+	url = https://github.com/Floowey/IodemAccounts.git

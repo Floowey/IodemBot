@@ -1,13 +1,16 @@
-﻿using IodemBot.Modules.ColossoBattles;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using IodemBot.Modules.ColossoBattles;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
     public class Defend : Move
     {
-        public Defend() : base("Defend", "<:Defend:536919830507552768>", Target.self, 1, new List<EffectImage>())
+        public Defend(string Emote = "<:Defend:536919830507552768>")
         {
-            hasPriority = true;
+            Name = "Defend";
+            this.Emote = Emote;
+            TargetType = Target.self;
+            HasPriority = true;
         }
 
         public override object Clone()
@@ -17,23 +20,23 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public override void InternalChooseBestTarget(ColossoFighter User)
         {
-            targetNr = 0;
+            TargetNr = 0;
             return;
         }
 
         public override bool InternalValidSelection(ColossoFighter User)
         {
-            return User.battle.log.Count < 3;
+            return User.battle.log.Count < 10;
         }
 
         protected override List<string> InternalUse(ColossoFighter User)
         {
             User.defensiveMult *= 0.5;
-            if (User is PlayerFighter)
+            if (User is PlayerFighter p)
             {
-                ((PlayerFighter)User).battleStats.Defends++;
+                p.battleStats.Defends++;
             }
-            return new List<string>() { $"{emote} {User.Name} is defending." };
+            return new List<string>() { $"{Emote} {User.Name} is defending." };
         }
     }
 }

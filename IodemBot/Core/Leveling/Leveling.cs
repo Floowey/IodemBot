@@ -1,11 +1,10 @@
-﻿using Discord;
+﻿using System;
+using System.Linq;
+using System.Threading.Tasks;
+using Discord;
 using Discord.WebSocket;
 using IodemBot.Core.UserManagement;
 using IodemBot.Modules;
-using System;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace IodemBot.Core.Leveling
 {
@@ -22,20 +21,18 @@ namespace IodemBot.Core.Leveling
                 return;
             }
 
+            if (channel.Id == GuildSettings.GetGuildSettings(channel.Guild).ColossoChannel?.Id) return;
+
             var userAccount = UserAccounts.GetAccount(user);
 
             // if the user has a timeout, ignore them
             var sinceLastXP = DateTime.UtcNow - userAccount.LastXP;
             uint oldLevel = userAccount.LevelNumber;
 
-            if (sinceLastXP.Minutes >= 2)
+            if (sinceLastXP.TotalMinutes >= 3)
             {
                 userAccount.LastXP = DateTime.UtcNow;
-                userAccount.XP += (uint)(new Random()).Next(30, 60);
-            }
-            if (user.Roles.Count == 0 && !user.Roles.Any(r => r.Id == 355560889942016000))
-            {
-                await user.AddRoleAsync(user.Guild.Roles.Where(r => r.Id == 355560889942016000).First());
+                userAccount.AddXp((uint)(new Random()).Next(30, 50));
             }
 
             if ((DateTime.Now.Date != userAccount.ServerStats.LastDayActive.Date))
@@ -66,7 +63,7 @@ namespace IodemBot.Core.Leveling
                 }
             }
 
-            if (channel.Id == 546760009741107216)
+            if (channel.Id == GuildSettings.GetGuildSettings(channel.Guild)?.ColossoChannel?.Id)
             {
                 userAccount.ServerStats.MessagesInColossoTalks++;
                 if (userAccount.ServerStats.MessagesInColossoTalks >= 50)
@@ -86,11 +83,11 @@ namespace IodemBot.Core.Leveling
             await Task.CompletedTask;
         }
 
-        internal static async void LevelUp(UserAccount userAccount, SocketGuildUser user, SocketTextChannel channel = null)
+        internal static async void LevelUp(UserAccount userAccount, SocketGuildUser user, IMessageChannel channel = null)
         {
             if (userAccount.LevelNumber < 10 && (userAccount.LevelNumber % 5) > 0)
             {
-                channel = (SocketTextChannel)user.Guild.Channels.Where(c => c.Id == 358276942337671178).FirstOrDefault();
+                channel = GuildSettings.GetGuildSettings(user.Guild).CommandChannel;
             }
             if (channel == null)
             {
@@ -103,6 +100,16 @@ namespace IodemBot.Core.Leveling
             embed.WithDescription("<:Up_Arrow:571309108289077258> " + userAccount.GsClass + " " + user.Mention + " just leveled up!");
             embed.AddField("LEVEL", userAccount.LevelNumber, true);
             embed.AddField("XP", userAccount.XP, true);
+            if(userAccount.LevelNumber == 10)
+            {
+                embed.AddField("Congratulations!", "You have unlocked Easy mode in the Weyard battle channels!");
+            } else if (userAccount.LevelNumber == 30)
+            {
+                embed.AddField("Congratulations!", "You have unlocked Medium mode in the Weyard battle channels!");
+            } else if (userAccount.LevelNumber == 50)
+            {
+                embed.AddField("Congratulations!", "You have unlocked Hard mode in the Weyard battle channels, as well as the Endless mode!");
+            }
             await channel.SendMessageAsync("", embed: embed.Build());
         }
 
@@ -128,71 +135,8 @@ namespace IodemBot.Core.Leveling
                 userAccount.ServerStats.ReactionsAdded += 5;
                 userAccount.ServerStats.MostRecentChannel = reaction.MessageId;
             }
-
-            if (userAccount.ServerStats.ReactionsAdded >= 50)
-            {
-                try
-                {
-                    await GoldenSun.AwardClassSeries("Aqua Pilgrim Series", user, (SocketTextChannel)Global.Client.GetChannel(546760009741107216));
-                }
-                catch { }
-            }
-            UserAccounts.SaveAccounts();
-        }
-
-        internal static async void UserSentFile(SocketGuildUser user, SocketTextChannel channel)
-        {
             await Task.CompletedTask;
-        }
-
-        internal static ulong XPforNextLevel(ulong xp)
-        {
-            ulong rate0 = 50;
-
-            ulong cutoff50 = 125000;
-            ulong rate50 = 200;
-
-            ulong cutoff80 = 605000;
-            ulong rate80 = 1000;
-
-            ulong cutoff90 = 1196934;
-            ulong rate90 = 2500;
-
-            ulong cutoff100 = 2538160;
-            ulong rate100 = 25000;
-            uint level = 1;
-            ulong xpneeded = 0;
-
-            if (xp <= cutoff50)
-            {
-                level = (uint)Math.Sqrt(xp / rate0);
-                xpneeded = (ulong)Math.Pow((level + 1), 2) * rate0;
-            }
-            else if (xp <= cutoff80)
-            {
-                level = (uint)(50 - Math.Sqrt(cutoff50 / rate50) + Math.Sqrt(xp / rate50));
-                xpneeded = (ulong)(Math.Pow(level + 1 - 50 + Math.Sqrt(cutoff50 / rate50), 2) * rate50);
-            }
-            else if (xp <= cutoff90)
-            {
-                level = (uint)(80 - Math.Sqrt(cutoff80 / rate80) + Math.Sqrt(xp / rate80));
-                xpneeded = (ulong)(Math.Pow(level + 1 - 80 + Math.Sqrt(cutoff80 / rate80), 2) * rate80);
-            }
-            else if (xp <= cutoff100)
-            {
-                level = (uint)(90 - Math.Sqrt(cutoff90 / rate90) + Math.Sqrt(xp / rate90));
-                xpneeded = (ulong)(Math.Pow(level + 1 - 90 + Math.Sqrt(cutoff90 / rate90), 2) * rate90);
-            }
-            else
-            {
-                level = (uint)(100 - Math.Sqrt(cutoff100 / rate100) + Math.Sqrt(xp / rate100));
-                xpneeded = (ulong)(Math.Pow(level + 1 - 100 + Math.Sqrt(cutoff100 / rate100), 2) * rate100);
-            }
-            if (xpneeded < xp)
-            {
-                File.WriteAllText($"Logs/Reports/Report_XP_Error_{DateTime.Now.ToString("MM_dd_hh_mm")}.log", $"has {xp}, needs {xpneeded}. Level {level}");
-            }
-            return xpneeded - xp;
+            UserAccounts.SaveAccounts();
         }
     }
 }

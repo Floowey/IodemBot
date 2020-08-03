@@ -1,7 +1,7 @@
-﻿using IodemBot.Modules.GoldenSunMechanics;
-using Newtonsoft.Json;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
+using IodemBot.Modules.GoldenSunMechanics;
+using Newtonsoft.Json;
 
 namespace IodemBot.Modules.ColossoBattles
 {

@@ -1,12 +1,15 @@
-﻿using IodemBot.Modules.ColossoBattles;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using IodemBot.Modules.ColossoBattles;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
     internal class Nothing : Move
     {
-        public Nothing() : base("Nothing", "😶", Target.self, 0, new List<EffectImage>())
+        public Nothing()
         {
+            Name = "Nothing";
+            Emote = "😶";
+            TargetType = Target.self;
         }
 
         public override object Clone()

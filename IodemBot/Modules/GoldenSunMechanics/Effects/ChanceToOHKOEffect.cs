@@ -1,11 +1,18 @@
-﻿using IodemBot.Modules.ColossoBattles;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using IodemBot.Modules.ColossoBattles;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
-    internal class ChancetoOHKOEffect : IEffect
+    internal class ChancetoOHKOEffect : Effect
     {
-        private readonly int Probability = 0;
+        public ChancetoOHKOEffect()
+        {
+            ActivationTime = TimeToActivate.beforeDamge;
+        }
+
+        public int Probability { get; set; } = 0;
+
+        public override string Type { get; } = "OHKO";
 
         public override List<string> Apply(ColossoFighter User, ColossoFighter Target)
         {
@@ -21,16 +28,6 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 log.Add($":x: {Target.Name}'s life was taken.");
             }
             return log;
-        }
-
-        public ChancetoOHKOEffect(string[] args)
-        {
-            timeToActivate = TimeToActivate.beforeDamge;
-
-            if (args.Length == 1)
-            {
-                int.TryParse(args[0], out Probability);
-            }
         }
 
         public override string ToString()

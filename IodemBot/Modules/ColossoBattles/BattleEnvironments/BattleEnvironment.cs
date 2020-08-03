@@ -1,19 +1,19 @@
-﻿using Discord;
-using Discord.WebSocket;
-using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Timers;
+using Discord;
+using Discord.WebSocket;
+using Newtonsoft.Json;
 
 namespace IodemBot.Modules.ColossoBattles
 {
     public abstract class BattleEnvironment : IDisposable
     {
-        protected static string[] numberEmotes = new string[] { "\u0030\u20E3", "\u0031\u20E3", "\u0032\u20E3", "\u0033\u20E3", "\u0034\u20E3", "\u0035\u20E3",
-            "\u0036\u20E3", "\u0037\u20E3", "\u0038\u20E3", "\u0039\u20E3" };
+        protected static string[] numberEmotes = new string[] { "0️⃣", "1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣",
+            "6️⃣", "7️⃣", "8️⃣", "9️⃣" };
 
         public string Name { get; private set; }
         protected uint PlayersToStart { get; set; } = 4;
@@ -28,11 +28,13 @@ namespace IodemBot.Modules.ColossoBattles
         public bool IsActive { get { return Battle.SizeTeamA > 0; } }
 
         internal abstract ulong[] GetIds { get; }
+        public bool IsPersistent { get; set; } = true;
 
-        public BattleEnvironment(string Name, ITextChannel lobbyChannel)
+        public BattleEnvironment(string Name, ITextChannel lobbyChannel, bool isPersistent)
         {
             this.Name = Name;
             this.lobbyChannel = lobbyChannel;
+            this.IsPersistent = isPersistent;
             Global.Client.ReactionAdded += ProcessReaction;
         }
 
@@ -86,9 +88,9 @@ namespace IodemBot.Modules.ColossoBattles
             }
             catch (Exception e)
             {
-                Console.WriteLine("Battle did not draw correctly:" + e.Message);
-                File.WriteAllText("Logs/DrawError_" + Global.DateString + ".txt", e.Message);
-                await WriteField();
+                Console.WriteLine("Battle did not draw correctly:" + e.ToString());
+                File.WriteAllText("Logs/DrawError_" + Global.DateString + ".txt", e.ToString());
+                //await WriteField();
             }
         }
 
@@ -102,7 +104,7 @@ namespace IodemBot.Modules.ColossoBattles
 
         public abstract Task Reset();
 
-        public void Dispose()
+        public virtual void Dispose()
         {
             Global.Client.ReactionAdded -= ProcessReaction;
         }
@@ -119,7 +121,7 @@ namespace IodemBot.Modules.ColossoBattles
             {
                 s.Add(p.Name);
                 s.Add($"{p.Stats.HP} / {p.Stats.MaxHP}HP");
-                s.Add($"{(p.hasSelected ? $"Selected {p.selected.name} at {p.selected.targetNr}" : "Not Selected")}");
+                s.Add($"{(p.hasSelected ? $"Selected {p.selected.Name} at {p.selected.TargetNr}" : "Not Selected")}");
                 s.Add("");
             });
             s.Add($"\nTeam B:");
@@ -127,12 +129,12 @@ namespace IodemBot.Modules.ColossoBattles
             {
                 s.Add(p.Name);
                 s.Add($"{p.Stats.HP} / {p.Stats.MaxHP}HP");
-                s.Add($"{(p.hasSelected ? $"Selected {p.selected.name} at {p.selected.targetNr}" : "Not Selected")}");
+                s.Add($"{(p.hasSelected ? $"Selected {p.selected.Name} at {p.selected.TargetNr}" : "Not Selected")}");
                 s.Add("");
             });
             var BattleReport = JsonConvert.SerializeObject(Battle, Formatting.Indented).Replace("{", "").Replace("}", "").Replace("\"", "");
             Console.WriteLine(BattleReport);
-            File.WriteAllText($"Logs/Reports/Report_{Name}_{DateTime.Now.ToString("MM_dd_hh_mm")}.log", BattleReport);
+            File.WriteAllText($"Logs/Reports/Report_{Name}_{DateTime.Now:MM_dd_hh_mm}.log", BattleReport);
             return string.Join("\n", s);
         }
     }

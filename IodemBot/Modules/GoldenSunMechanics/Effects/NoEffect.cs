@@ -1,10 +1,12 @@
-﻿using IodemBot.Modules.ColossoBattles;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using IodemBot.Modules.ColossoBattles;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
-    internal class NoEffect : IEffect
+    internal class NoEffect : Effect
     {
+        public override string Type { get; } = "NoEffect";
+
         public override List<string> Apply(ColossoFighter User, ColossoFighter Target)
         {
             return new List<string>();

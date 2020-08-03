@@ -1,33 +1,28 @@
-﻿using IodemBot.Extensions;
-using IodemBot.Modules.ColossoBattles;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using IodemBot.Extensions;
+using IodemBot.Modules.ColossoBattles;
+using Newtonsoft.Json;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
-    public class ReviveEffect : IEffect
+    public class ReviveEffect : Effect
     {
-        private readonly uint percentage;
-
-        public ReviveEffect(string[] args)
-        {
-            if (args.Length == 1)
-            {
-                uint.TryParse(args[0], out percentage);
-            }
-        }
+        public override string Type { get; } = "Revive";
+        [JsonProperty] private uint Percentage { get; set; } = 50;
+        [JsonProperty] private uint Probability { get; set; } = 100;
 
         public override List<string> Apply(ColossoFighter User, ColossoFighter Target)
         {
             List<string> log = new List<string>();
             bool wasDead = !Target.IsAlive;
-            log.AddRange(Target.Revive(percentage));
+            log.AddRange(Target.Revive(Percentage));
             if (wasDead)
             {
-                if (User is PlayerFighter)
+                if (User is PlayerFighter p)
                 {
-                    ((PlayerFighter)User).battleStats.Revives++;
+                    p.battleStats.Revives++;
                 }
             }
             return log;
@@ -35,7 +30,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public override string ToString()
         {
-            return $"Revive the target to {percentage}% of its maximum Health";
+            return $"{Probability} chance to revive the target to {Percentage}% of its maximum Health";
         }
 
         protected override int InternalChooseBestTarget(List<ColossoFighter> targets)

@@ -1,28 +1,30 @@
-﻿using Discord;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
 using Iodembot.Preconditions;
 using IodemBot.Core.UserManagement;
+using IodemBot.Extensions;
 using IodemBot.Modules.ColossoBattles;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
+    [Name("Inventory and Items")]
     public class InventoryHandler : ModuleBase<SocketCommandContext>
     {
-        [Command("Inv"), Alias("Inventory", "Bag")]
+        [Command("Inv")]
         [Cooldown(10)]
-        [Remarks("Displays inventory and current sets")]
-        public async Task ShowInventory(Inventory.Detail detail = Inventory.Detail.none)
+        [Summary("Displays inventory and current sets")]
+        public async Task ShowInventory(Detail detail = Detail.none)
         {
-            var split = new Dictionary<Inventory.Detail, char>()
+            var split = new Dictionary<Detail, char>()
             {
-                { Inventory.Detail.none, '>' },
-                {Inventory.Detail.Names,',' },
-                {Inventory.Detail.NameAndPrice, '\n' }
+                { Detail.none, '>' },
+                {Detail.Names,',' },
+                {Detail.NameAndPrice, '\n' }
             };
             var inv = UserAccounts.GetAccount(Context.User).Inv;
             var embed = new EmbedBuilder()
@@ -64,6 +66,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         }
 
         [Command("UpgradeInventory")]
+        [Summary("Increase the slots of your inventory by 10")]
         public async Task IncreaseBagSize()
         {
             var inv = UserAccounts.GetAccount(Context.User).Inv;
@@ -92,17 +95,17 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         [Command("Shop")]
         [Cooldown(10)]
-        [Remarks("View the current shop rotation.")]
+        [Summary("See the current shop rotation")]
         public async Task Shop()
         {
             var shop = ItemDatabase.GetShop();
             var embed = new EmbedBuilder();
             embed.WithColor(new Color(66, 45, 45));
             embed.WithThumbnailUrl(ItemDatabase.shopkeeper);
-            embed.AddField("Shop:", shop.InventoryToString(Inventory.Detail.NameAndPrice), true);
+            embed.AddField("Shop:", shop.InventoryToString(Detail.NameAndPrice), true);
 
             var fb = new EmbedFooterBuilder();
-            fb.WithText($"{ItemDatabase.restockMessage} {ItemDatabase.TimeToNextReset.ToString(@"hh\h\ mm\m")}");
+            fb.WithText($"{ItemDatabase.restockMessage} {ItemDatabase.TimeToNextReset:hh\\h\\ mm\\m}");
             embed.WithFooter(fb);
             await Context.Channel.SendMessageAsync("", false, embed.Build());
         }
@@ -115,8 +118,56 @@ namespace IodemBot.Modules.GoldenSunMechanics
             await Shop();
         }
 
+        [Command("item rename")]
+        [Alias("item nickname")]
+        [Summary("Rename one of your items")]
+        [Remarks("`i!item rename Disk Axe, Pizza Cutter`")]
+        public async Task RenameItem([Remainder] string itemandnewname)
+        {
+            var inv = UserAccounts.GetAccount(Context.User).Inv;
+            var embed = new EmbedBuilder();
+            embed.WithColor(Colors.Get("Iodem"));
+
+            var item = itemandnewname;
+            var newname = "";
+            if (itemandnewname.Contains(','))
+            {
+                item = itemandnewname.Split(',')[0].Trim();
+                newname = itemandnewname.Split(',')[1].Trim();
+            }
+
+            if (inv.Rename(item, newname))
+            {
+                embed.WithDescription($"Item renamed successfully.");
+            }
+            else
+            {
+                embed.WithDescription($":x: No such item to rename, or not enough funds. The cost for renaming is x2 the items price.");
+            }
+            await Context.Channel.SendMessageAsync("", false, embed.Build());
+        }
+
+        [Command("item polish")]
+        [Summary("Polish an item to get its animated sprite")]
+        public async Task PolishItem([Remainder] string item)
+        {
+            var inv = UserAccounts.GetAccount(Context.User).Inv;
+            var embed = new EmbedBuilder();
+            embed.WithColor(Colors.Get("Iodem"));
+
+            if (inv.Polish(item))
+            {
+                embed.WithDescription($"Item polished successfully.");
+            }
+            else
+            {
+                embed.WithDescription($":x: No such item to polish, or not enough funds. Polishing costs x10 the items price and can only be done with selected artifacts.");
+            }
+            await Context.Channel.SendMessageAsync("", false, embed.Build());
+        }
+
         [Command("Buy")]
-        [Remarks("Buy an item currently in the shop. Example: `i!buy clear circlet`")]
+        [Summary("Buy an item currently in the shop")]
         public async Task AddItem([Remainder] string item)
         {
             var account = UserAccounts.GetAccount(Context.User);
@@ -135,14 +186,6 @@ namespace IodemBot.Modules.GoldenSunMechanics
             if (inv.Buy(item))
             {
                 _ = ShowInventory();
-                if (ItemDatabase.GetItem(item).IsArtifact)
-                {
-                    account.ServerStats.SpentMoneyOnArtifacts += ItemDatabase.GetItem(item).Price;
-                    if (account.ServerStats.SpentMoneyOnArtifacts >= 18000)
-                    {
-                        await GoldenSun.AwardClassSeries("Crusader Series", (SocketGuildUser)Context.User, (SocketTextChannel)Context.Channel);
-                    }
-                }
             }
             else
             {
@@ -172,30 +215,60 @@ namespace IodemBot.Modules.GoldenSunMechanics
             }
         }
 
+
         [Command("Sell")]
-        [Remarks("Sell an unequipped item from your inventory.")]
+        [Summary("Sell an unequipped item from your inventory")]
         public async Task SellItem([Remainder] string item)
         {
+            var items = new string[0];
+            if (item.Contains(','))
+            {
+                items = item.Split(',');
+            }
+
             var inv = UserAccounts.GetAccount(Context.User).Inv;
             var embed = new EmbedBuilder();
-            if (inv.Sell(item))
-            {
-                var it = ItemDatabase.GetItem(item);
-                embed.WithDescription($"Sold {it.Icon}{it.Name} for <:coin:569836987767324672> {it.SellValue}.");
-                embed.WithColor(it.Color);
 
-                await Context.Channel.SendMessageAsync("", false, embed.Build());
+            if (items.Length > 0)
+            {
+                uint sum = 0;
+                uint successfull = 0;
+                foreach (string i in items)
+                {
+                    if (inv.HasItem(i.Trim()))
+                    {
+                        var it = inv.GetItem(i.Trim());
+
+                        if (inv.Sell(it.Name))
+                        {
+                            sum += it.SellValue;
+                            successfull++;
+                        }
+                    }
+                }
+                embed.WithDescription($"Sold {successfull} items for <:coin:569836987767324672> {sum}.");
+                embed.WithColor(Colors.Get("Iodem"));
+
             }
             else
             {
-                embed.WithDescription(":x: You can only sell unequipped items in your possession.");
-                embed.WithColor(Colors.Get("Error"));
-                await Context.Channel.SendMessageAsync("", false, embed.Build());
+                var it = inv.GetItem(item);
+                if (inv.Sell(item))
+                {
+                    embed.WithDescription($"Sold {it.Icon}{it.Name} for <:coin:569836987767324672> {it.SellValue}.");
+                    embed.WithColor(it.Color);
+                }
+                else
+                {
+                    embed.WithDescription(":x: You can only sell unequipped items in your possession.");
+                    embed.WithColor(Colors.Get("Error"));
+                }
             }
+            await Context.Channel.SendMessageAsync("", false, embed.Build());
         }
 
         [Command("Yeet")]
-        [Remarks("Yeet an item and wave it goodbye forever.")]
+        [Summary("Yeet an item and wave goodbye to it forever")]
         public async Task YeetItem([Remainder] string item)
         {
             var avatar = UserAccounts.GetAccount(Context.User);
@@ -204,10 +277,9 @@ namespace IodemBot.Modules.GoldenSunMechanics
             var inv = avatar.Inv;
 
             var embed = new EmbedBuilder();
-            if (inv.Remove(item))
+            var it = inv.GetItem(item);
+            if (it != null && inv.Remove(item))
             {
-                var it = ItemDatabase.GetItem(item);
-
                 var maxdist = p.Stats.Atk * Math.Sqrt(p.Stats.Spd) / Math.Log(Math.Max(it.Price / 2, 2)) / 6;
                 var level = Math.Min(avatar.LevelNumber, 100);
                 var a = 5 + ((double)level) / 2;
@@ -236,10 +308,11 @@ namespace IodemBot.Modules.GoldenSunMechanics
         }
 
         [Command("Chest")]
-        [Remarks("Open a chest in your inventory Example: `i!chest Wooden`")]
+        [Summary("Open a chest in your inventory")]
+        [Remarks("`i!chest Wooden`")]
         public async Task OpenChest(ChestQuality cq)
         {
-            _ = OpenChestAsync(Context, cq, 0);
+            _ = OpenChestAsync(Context, cq);
             await Task.CompletedTask;
         }
 
@@ -251,7 +324,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             {
                 if (inv.HasChest(cq))
                 {
-                    _ = OpenChestAsync(Context, cq, 0);
+                    _ = OpenChestAsync(Context, cq);
                     break;
                 }
             }
@@ -259,35 +332,11 @@ namespace IodemBot.Modules.GoldenSunMechanics
         }
 
         [Command("Daily")]
-        public async Task Daily(uint bonusCount = 0)
+        [Summary("Open your daily chest")]
+        public async Task Daily()
         {
-            _ = OpenChestAsync(Context, ChestQuality.Daily, bonusCount);
+            _ = OpenChestAsync(Context, ChestQuality.Daily);
             await Task.CompletedTask;
-        }
-
-        [Command("Claim")]
-        [Remarks("Claim your starting gold and chest. Redeemable only in June, once.")]
-        public async Task Claim()
-        {
-            var account = UserAccounts.GetAccount(Context.User);
-            var inv = account.Inv;
-
-            if (DateTime.Now <= new DateTime(2019, 7, 1) && account.LastClaimed < new DateTime(2019, 6, 1))
-            {
-                var coins = account.LevelNumber * 120;
-                inv.AddBalance(coins);
-                var chest1 = (ChestQuality)Math.Max(0, Math.Min(4, ((int)account.LevelNumber / 11) - 1));
-                var chest2 = (ChestQuality)Math.Max(0, Math.Min(4, ((int)account.LevelNumber / 11 - 2)));
-                inv.AwardChest(chest1);
-                inv.AwardChest(chest2);
-
-                var embed = new EmbedBuilder();
-                embed.WithColor(Colors.Get("Iodem"));
-                embed.WithDescription($"Thank you for being part of this server! I hope you have fun with the new items. Here, take this: \n <:coin:569836987767324672>{coins}\n Also, take these to start off your journey: \n{Inventory.ChestIcons[chest2]} {Inventory.ChestIcons[chest1]} ");
-                embed.WithThumbnailUrl(Sprites.GetImageFromName("Iodem"));
-                account.LastClaimed = DateTime.Now;
-                await Context.Channel.SendMessageAsync("", false, embed.Build());
-            }
         }
 
         [Command("AddBalance")]
@@ -299,7 +348,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             await Task.CompletedTask;
         }
 
-        private async Task OpenChestAsync(SocketCommandContext Context, ChestQuality cq, uint bonusCount = 0)
+        private async Task OpenChestAsync(SocketCommandContext Context, ChestQuality cq)
         {
             var user = UserAccounts.GetAccount(Context.User);
             var inv = user.Inv;
@@ -313,22 +362,13 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 return;
             }
 
-            if (!inv.RemoveBalance(bonusCount))
-            {
-                var emb = new EmbedBuilder();
-                emb.WithDescription(":x: Not enough Funds!");
-                emb.WithColor(Colors.Get("Error"));
-                await Context.Channel.SendMessageAsync("", false, emb.Build());
-                return;
-            }
-
             if (!inv.OpenChest(cq))
             {
                 var emb = new EmbedBuilder();
 
                 if (cq == ChestQuality.Daily)
                 {
-                    emb.WithDescription($":x: No {cq} Chests remaining! Next Daily Chest in: {DateTime.Today.AddDays(1).Subtract(DateTime.Now).ToString(@"hh\h\ mm\m")}");
+                    emb.WithDescription($":x: No {cq} Chests remaining! Next Daily Chest in: {DateTime.Today.AddDays(1).Subtract(DateTime.Now):hh\\h\\ mm\\m}");
                 }
                 else
                 {
@@ -339,28 +379,45 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 await Context.Channel.SendMessageAsync("", false, emb.Build());
                 return;
             }
-
-            double bonus = (bonusCount > 0 ? Math.Log(bonusCount) / Math.Log(5) : 0);
-            var value = user.LevelNumber;
-            if (cq != ChestQuality.Daily)
+            var itemName = "";
+            var dailyRewards = new[] { 0, 0, 1, 1, 2 };
+            if (cq == ChestQuality.Daily)
             {
-                value = (((uint)cq) + 1) * 11;
+                var value = user.LevelNumber;
+                itemName = ItemDatabase.GetRandomItem((ItemRarity)(dailyRewards[inv.dailiesInARow % dailyRewards.Length] + Math.Min(2, value / 33)));
+            }
+            else
+            {
+                var rarity = ItemDatabase.ChestValues[cq].GenerateReward();
+                itemName = ItemDatabase.GetRandomItem(rarity);
             }
 
-            var itemName = ItemDatabase.GetRandomItem(value, bonus, (int)cq == 3 || (int)cq == 4 || ((int)cq == 5 && value >= 40) ? ItemDatabase.RandomItemType.Artifact : ItemDatabase.RandomItemType.Any);
             var item = ItemDatabase.GetItem(itemName);
 
             var embed = new EmbedBuilder();
+
             embed.WithDescription($"Opening {cq} Chest {Inventory.ChestIcons[cq]}...");
+
             embed.WithColor(Colors.Get("Iodem"));
             var msg = await Context.Channel.SendMessageAsync("", false, embed.Build());
 
             embed = new EmbedBuilder();
             embed.WithColor(item.Color);
+            if (cq == ChestQuality.Daily)
+            {
+                embed.WithFooter($"Current Reward: {inv.dailiesInARow % dailyRewards.Length +1}/{dailyRewards.Length} | Overall Streak: {inv.dailiesInARow +1}");
+            }
             embed.WithDescription($"{Inventory.ChestIcons[cq]} You found a {item.Name} {item.IconDisplay}");
+
             await Task.Delay((int)cq * 700);
             _ = msg.ModifyAsync(m => m.Embed = embed.Build());
             inv.Add(item.Name);
+
+            var message = await Context.Channel.AwaitMessage(m => m.Author == Context.User);
+            if (message != null && message.Content.Equals("Sell", StringComparison.OrdinalIgnoreCase))
+            {
+                _ = SellItem(item.Name);
+            }
         }
 
         [Command("Inv Clear")]
@@ -372,8 +429,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
             await Task.CompletedTask;
         }
 
-        [Command("Inv Sort"), Alias("Bag Sort", "Inventory Sort")]
-        [Remarks("Sort your inventory.")]
+        [Command("Inv Sort")]
+        [Summary("Sort your inventory")]
         public async Task SortInventory()
         {
             var inv = UserAccounts.GetAccount(Context.User).Inv;
@@ -383,22 +440,14 @@ namespace IodemBot.Modules.GoldenSunMechanics
         }
 
         [Command("Equip")]
-        [Remarks("Equips an item to Mage or Warrior set. Examples: `i!equip warrior sol blade`, `i!equip mage iris robe`")]
+        [Summary("Equips an item to Mage or Warrior set")]
+        [Remarks("`i!equip warrior sol blade`, `i!equip mage iris robe`")]
         public async Task Equip(ArchType archType, [Remainder] string item)
         {
             var account = UserAccounts.GetAccount(Context.User);
             var inv = account.Inv;
-            var selectedItem = ItemDatabase.GetItem(item);
-            if (selectedItem.Name.Contains("NOT IMPLEMENTED"))
-            {
-                var emb = new EmbedBuilder();
-                emb.WithDescription(":x: I asked our treasurer, the weapon smith, the priest, the librarian and a cool looking kid walking by, and no one has heard of that item!");
-                emb.WithColor(Colors.Get("Error"));
-                await Context.Channel.SendMessageAsync("", false, emb.Build());
-                return;
-            }
 
-            if (!inv.HasItem(selectedItem.Name))
+            if (!inv.HasItem(item))
             {
                 await Context.Channel.SendMessageAsync(embed: new EmbedBuilder()
                 .WithColor(Colors.Get("Error"))
@@ -406,8 +455,9 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 .Build());
                 return;
             }
+            var selectedItem = inv.GetItem(item);
 
-            if (selectedItem.ExclusiveTo == null || (selectedItem.ExclusiveTo != null && selectedItem.ExclusiveTo.Contains(account.Element)))
+            if (selectedItem.ExclusiveTo?.Contains(account.Element) ?? true)
             {
                 if (inv.Equip(item, archType))
                 {
@@ -423,7 +473,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         }
 
         [Command("Unequip")]
-        [Remarks("Unequip an item from all sets.")]
+        [Summary("Unequip an item from all sets")]
         public async Task Unequip([Remainder] string item)
         {
             var inv = UserAccounts.GetAccount(Context.User).Inv;
@@ -434,8 +484,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
             await Task.CompletedTask;
         }
 
-        [Command("Repair")]
-        [Remarks("Repair broken equipment.")]
+        [Command("item repair")]
+        [Summary("Repair broken equipment")]
         public async Task Repair([Remainder] string item)
         {
             var inv = UserAccounts.GetAccount(Context.User).Inv;
@@ -448,7 +498,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
             if (inv.Repair(item))
             {
-                embed.WithDescription($"Item repaired successfully.");
+                embed.WithDescription($"Item repaired successfully");
             }
             else
             {
@@ -458,7 +508,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         }
 
         [Command("removeCursed")]
-        [Remarks("Removes all Cursed Gear")]
+        [Summary("Removes all cursed gear for a small fee of 10k coins")]
         public async Task RemoveCursed()
         {
             var inv = UserAccounts.GetAccount(Context.User).Inv;
@@ -469,9 +519,9 @@ namespace IodemBot.Modules.GoldenSunMechanics
             await Task.CompletedTask;
         }
 
-        [Command("iteminfo"), Alias("item", "i")]
+        [Command("iteminfo"), Alias("i")]
         [Cooldown(5)]
-        [Remarks("Gets information on specified equipment. Example: `i!iteminfo Wheat Sword`")]
+        [Summary("Gets information on a specified piece of equipment")]
         public async Task ItemInfo([Remainder] string name = "")
         {
             if (name == "")
@@ -490,7 +540,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             }
 
             var embed = new EmbedBuilder();
-            embed.WithAuthor($"{item.Name} {(item.IsArtifact ? " (Artifact)" : "")}");
+            embed.WithAuthor($"{item.Name} - {item.Rarity}{(item.IsArtifact ? " Artifact" : "")}");
 
             embed.AddField("Icon", item.IconDisplay, true);
             embed.AddField("Value", $"<:coin:569836987767324672> {item.Price}", true);

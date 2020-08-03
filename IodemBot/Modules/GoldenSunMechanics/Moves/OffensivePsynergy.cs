@@ -1,34 +1,22 @@
-﻿using IodemBot.Modules.ColossoBattles;
-using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using IodemBot.Extensions;
+using IodemBot.Modules.ColossoBattles;
+using Newtonsoft.Json;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
     public class OffensivePsynergy : Psynergy
     {
-        public uint power = 0;
-        public uint addDamage = 0;
-        public double dmgMult = 1;
-        public uint percentageDamage = 0;
-        private readonly bool attackBased;
+        private static readonly double[] spread = new double[] { 1.0, 0.66, 0.5, 0.33, 0.25, 0.15, 0.1 };
+
+        public uint Power { get; set; } = 0;
+        public uint AddDamage { get; set; } = 0;
+        public double DmgMult { get; set; } = 1;
+        public uint PercentageDamage { get; set; } = 0;
+        private bool AttackBased { get { return Power == 0; } }
         public bool IgnoreSpread { get; set; }
-        private readonly double[] spread = new double[] { 1.0, 0.66, 0.5, 0.33, 0.25, 0.15, 0.1 };
-
-        [JsonConstructor]
-        public OffensivePsynergy(string name, string emote, Target targetType, uint range, List<EffectImage> effectImages, Element element, uint PPCost, uint power = 0, uint addDamage = 0, double dmgMult = 1) : base(name, emote, targetType, range, effectImages, element, PPCost)
-        {
-            this.power = power;
-            this.addDamage = addDamage;
-            this.dmgMult = dmgMult;
-            if (this.dmgMult == 0)
-            {
-                this.dmgMult = 1;
-            }
-
-            attackBased = power == 0;
-        }
 
         public override object Clone()
         {
@@ -41,10 +29,10 @@ namespace IodemBot.Modules.GoldenSunMechanics
             var aliveEnemies = User.GetEnemies().Where(f => f.IsAlive).ToList();
             if (aliveEnemies.Count == 0)
             {
-                targetNr = 0;
+                TargetNr = 0;
                 return;
             }
-            targetNr = User.GetEnemies().IndexOf(aliveEnemies[Global.Random.Next(0, aliveEnemies.Count)]);
+            TargetNr = User.GetEnemies().IndexOf(aliveEnemies[Global.Random.Next(0, aliveEnemies.Count)]);
         }
 
         protected override List<string> InternalUse(ColossoFighter User)
@@ -53,7 +41,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             List<string> log = new List<string>();
 
             //Get enemies and targeted enemies
-            double[] actualSpread = new double[2 * range - 1];
+            double[] actualSpread = new double[2 * Range - 1];
             List<ColossoFighter> enemyTeam = User.battle.GetTeam(User.enemies);
             List<ColossoFighter> targets = GetTarget(User);
 
@@ -65,69 +53,72 @@ namespace IodemBot.Modules.GoldenSunMechanics
                     continue;
                 }
 
+                if (PPCost > 1 && t.IsImmuneToPsynergy || t.HasCondition(Condition.Key) || t.HasCondition(Condition.Trap) || t.HasCondition(Condition.Decoy))
+                {
+                    log.Add($"A magical barrier is protecting {t.Name}.");
+                    continue;
+                }
+
                 //Effects that trigger before damage
-                effects
-                    .Where(e => e.timeToActivate == IEffect.TimeToActivate.beforeDamge)
-                    .ToList()
-                    .ForEach(e => log.AddRange(e.Apply(User, t)));
+                log.AddRange(Effects.Where(e => e.ActivationTime == TimeToActivate.beforeDamge).ApplyAll(User, t));
 
                 if (!t.IsAlive)
                 {
                     continue;
                 }
 
-                if (PPCost > 1 && t.IsImmuneToPsynergy)
-                {
-                    log.Add($"{t.Name} protects themselves with a magical barrier.");
-                    return log;
-                }
-
                 var baseDmg = Global.Random.Next(0, 4);
-                var dmg = attackBased ?
+                var dmg = AttackBased ?
                     Math.Max(0,
                     ((int)User.Stats.Atk * User.MultiplyBuffs("Attack") - (int)t.Stats.Def * t.ignoreDefense * t.MultiplyBuffs("Defense")) / 2)
-                    : (int)power;
+                    : (int)Power;
 
                 //                var elMult = 1 + Math.Max(0.0, (int)User.elstats.GetPower(element) * User.MultiplyBuffs("Power") - (int)t.elstats.GetRes(element) * t.MultiplyBuffs("Resistance")) / (attackBased ? 400 : 200);
-                var elMult = 1 + (User.ElStats.GetPower(element) * User.MultiplyBuffs("Power") - t.ElStats.GetRes(element) * t.MultiplyBuffs("Resistance")) / (attackBased ? 400 : 200);
+                var elMult = 1 + (User.ElStats.GetPower(Element) * User.MultiplyBuffs("Power") - t.ElStats.GetRes(Element) * t.MultiplyBuffs("Resistance")) / (AttackBased ? 400 : 200);
+                elMult = Math.Max(0.5, elMult);
                 elMult = Math.Max(0, elMult);
-                var distFromCenter = Math.Abs(enemyTeam.IndexOf(t) - targetNr);
+                var distFromCenter = Math.Abs(enemyTeam.IndexOf(t) - TargetNr);
                 var spreadMult = IgnoreSpread ? 1 : spread[distFromCenter];
-                var prctdmg = (uint)(t.Stats.MaxHP * percentageDamage / 100);
-                var realDmg = (uint)((baseDmg + dmg + addDamage) * dmgMult * elMult * spreadMult * t.defensiveMult * User.offensiveMult + prctdmg);
+                var prctdmg = (uint)(t.Stats.MaxHP * PercentageDamage / 100);
+                var realDmg = (uint)((baseDmg + dmg + AddDamage) * DmgMult * elMult * spreadMult * t.defensiveMult * User.offensiveMult + prctdmg);
                 var punctuation = "!";
 
-                if (t.ElStats.GetRes(element) == t.ElStats.HighestRes())
+                if (User.offensiveMult > 1)
+                {
+                    Console.WriteLine($"{User.Name} uses {Name} with multiplier {User.offensiveMult}");
+                }
+
+                if (t.ElStats.GetRes(Element) == t.ElStats.HighestRes())
                 {
                     punctuation = ".";
                 }
 
-                if (t.ElStats.GetRes(element) == t.ElStats.LeastRes())
+                if (t.ElStats.GetRes(Element) == t.ElStats.LeastRes())
                 {
                     punctuation = "!!!";
-                    if (User is PlayerFighter)
+                    if (User is PlayerFighter k)
                     {
-                        ((PlayerFighter)User).battleStats.AttackedWeakness++;
+                        k.battleStats.AttackedWeakness++;
                     }
                 }
 
-                realDmg = Math.Max(0, realDmg);
+                realDmg = Math.Max(1, realDmg);
 
                 log.AddRange(t.DealDamage(realDmg, punctuation));
-                effects
-                    .Where(e => e.timeToActivate == IEffect.TimeToActivate.afterDamage)
-                    .ToList()
-                    .ForEach(e => log.AddRange(e.Apply(User, t)));
+                User.damageDoneThisTurn += realDmg;
 
-                if (User is PlayerFighter)
+                log.AddRange(Effects.Where(e => e.ActivationTime == TimeToActivate.afterDamage).ApplyAll(User, t));
+
+                if (User is PlayerFighter p)
                 {
-                    ((PlayerFighter)User).avatar.DealtDmg(realDmg);
+                    p.avatar.DealtDmg(realDmg);
                     if (!t.IsAlive)
                     {
-                        if (attackBased && range == 1)
+                        if (AttackBased && Range == 1)
                         {
-                            ((PlayerFighter)User).battleStats.KillsByHand++;
-                        } ((PlayerFighter)User).battleStats.Kills++;
+                            p.battleStats.KillsByHand++;
+                        }
+                        p.battleStats.Kills++;
                     }
                 }
 
@@ -143,7 +134,6 @@ namespace IodemBot.Modules.GoldenSunMechanics
                     log.Add($"{t.Name} strikes back!");
                     log.AddRange(User.DealDamage(CounterDamage));
                 }
-
                 ii++;
             }
 
@@ -152,7 +142,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public override string ToString()
         {
-            return $"Attack {(targetType == Target.otherSingle ? "an enemy" : (targetType == Target.otherAll ? $"all Enemies" : $"up to {range * 2 - 1} Targets"))} with a base damage of {(attackBased ? "a normal physical Attack" : $"{power}")}{(addDamage > 0 ? $" plus an additional {addDamage} Points" : "")}{(dmgMult != 1 ? $" multiplied by {dmgMult}" : "")}{(percentageDamage > 0 ? $" and takes {percentageDamage}% of the targets Health" : "")}.";
+            return $"Attack {(TargetType == Target.otherSingle ? "an enemy" : (TargetType == Target.otherAll ? $"all Enemies" : $"up to {Range * 2 - 1} Targets"))} with a base damage of {GoldenSun.ElementIcons[Element]} {(AttackBased ? "a normal physical Attack" : $"{Power}")}{(AddDamage > 0 ? $" plus an additional {AddDamage} Points" : "")}{(DmgMult != 1 ? $" multiplied by {DmgMult}" : "")}{(PercentageDamage > 0 ? $" + {PercentageDamage}% of the targets health as damage" : "")}.{(TargetType == Target.self || TargetType == Target.ownSingle || TargetType == Target.ownAll ? "Target type set to hit your teammates! Probably an error..." : "")}";
         }
     }
 }

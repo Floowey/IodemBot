@@ -1,13 +1,14 @@
-﻿using Discord;
-using Discord.WebSocket;
+﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
+using Discord;
+using Discord.WebSocket;
 
 namespace IodemBot
 {
     public static class DiscordSocketGuildExt
     {
-        public static async Task<ITextChannel> GetOrCreateTextChannelAsync(this SocketGuild guild, string channelName)
+        public static async Task<ITextChannel> GetOrCreateTextChannelAsync(this SocketGuild guild, string channelName, Action<TextChannelProperties> func = null)
         {
             var existingChannel = guild.TextChannels.Where(c => c.Name == channelName.ToLower().Replace(' ', '-')).FirstOrDefault();
             if (existingChannel != null)
@@ -16,7 +17,7 @@ namespace IodemBot
             }
             else
             {
-                return await guild.CreateTextChannelAsync(channelName);
+                return await guild.CreateTextChannelAsync(channelName, func);
             }
         }
     }

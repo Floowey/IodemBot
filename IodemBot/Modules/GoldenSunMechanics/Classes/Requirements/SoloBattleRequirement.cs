@@ -4,9 +4,9 @@ namespace IodemBot.Modules.GoldenSunMechanics
 {
     internal class SoloBattleRequirement : IRequirement
     {
-        public int apply(UserAccount user)
+        public int Apply(UserAccount user)
         {
-            return user.BattleStats.SoloBattles >= 400 ? 2 : user.BattleStats.SoloBattles >= 200 ? 1 : 0;
+            return user.BattleStats.SoloBattles >= 500 ? 2 : user.BattleStats.SoloBattles >= 300 ? 1 : 0;
         }
     }
 }

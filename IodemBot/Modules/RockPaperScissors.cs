@@ -1,14 +1,15 @@
-﻿using Discord;
+﻿using System;
+using System.Threading.Tasks;
+using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
 using Iodembot.Preconditions;
 using IodemBot.Core.Leveling;
-using IodemBot.Core.UserManagement;
-using System;
-using System.Threading.Tasks;
+using IodemBot.Extensions;
 
 namespace IodemBot.Modules
 {
+    [Name("Literally random things")]
     public class RockPaperScissors : ModuleBase<SocketCommandContext>
     {
         [Command("coin"), Alias("coinflip")]
@@ -24,7 +25,7 @@ namespace IodemBot.Modules
 
         [Command("dice"), Alias("d")]
         [Cooldown(4)]
-        [Remarks("Roll a n-sided dice!")]
+        [Remarks("Roll an n-sided dice!")]
         public async Task Dice([Remainder] uint sides = 6)
         {
             var embed = new EmbedBuilder()
@@ -33,7 +34,56 @@ namespace IodemBot.Modules
             await Context.Channel.SendMessageAsync("", false, embed.Build());
         }
 
-        public enum RpsEnum { Rock, Paper, Scissors }
+        private readonly string[] oracleResults = new[]
+        {
+            "It is certain.",
+            "It is decidedly so.",
+            "Without a doubt.",
+            "Yes, definitely.",
+            "You may rely on it.",
+            "As I see it, yes.",
+            "Most likely.",
+            "The outlook is good.",
+            "Yes.",
+            "The spirits point to yes.",
+            "The spirits are hazy, try again",
+            "*zzzZZzzz*... Ask again later...",
+            "Better not tell you now",
+            "Don't count on it.",
+            "My reply is no.",
+            "The spirits say no.",
+            "The outlook is not so good.",
+            "You will see...",
+            "Very doubtful"
+        };
+        [Command("8ball"), Alias("Oracle", "Fortune Teller", "Seer")]
+        [Cooldown(5)]
+        [Remarks("Ask the Oracle about your future.")]
+        public async Task Oracle([Remainder] string question)
+        {
+            var teller = new[] { "Seer", "Fortune Teller" }.Random();
+            var sprite = Sprites.GetImageFromName(teller);
+            var beginning = teller == "Seer" ? "Hoolabaloo! Ballabahoo! Hoolabaloola! I can see it clearly... " : "I see... ";
+            var response = oracleResults.Random();
+            if (!question.EndsWith('?'))
+            {
+                _ = ReplyAsync(embed: new EmbedBuilder()
+                    .WithDescription("So, you'd like to hear your fortune, would you?")
+                    .WithAuthor(teller, sprite)
+                    .Build());
+                return;
+            }
+            _ = ReplyAsync(embed: new EmbedBuilder()
+                .WithDescription(beginning + response)
+                .WithAuthor(teller, sprite)
+                .Build());
+
+            if (teller == "Seer" && response.Contains("spirits"))
+            {
+                _ = GoldenSun.AwardClassSeries("Air Seer Series", Context.User, Context.Channel);
+            }
+            await Task.CompletedTask;
+        }
 
         [Command("rps")]
         [Cooldown(4)]
@@ -43,7 +93,6 @@ namespace IodemBot.Modules
             string[] emotesPlayer = { "🤜", ":hand_splayed:", ":v:" };
             string[] emotesCPU = { "🤛", ":hand_splayed:", ":v:" };
 
-            var avatar = UserAccounts.GetAccount(Context.User);
             RpsEnum cpuChoice = (RpsEnum)((new Random()).Next(0, 1000) % 3);
             string result = "";
 

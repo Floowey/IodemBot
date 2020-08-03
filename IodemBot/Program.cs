@@ -1,9 +1,12 @@
-﻿using Discord;
-using Discord.WebSocket;
-using IodemBot.Extensions;
-using System;
+﻿using System;
 using System.IO;
 using System.Threading.Tasks;
+using Discord;
+using Discord.WebSocket;
+using IodemBot.Core;
+using IodemBot.Core.UserManagement;
+using IodemBot.Extensions;
+using IodemBot.Modules.ColossoBattles;
 
 namespace IodemBot
 {
@@ -23,7 +26,8 @@ namespace IodemBot
             catch (Exception e)
             {
                 var date = DateTime.Now.ToString("yyyy_mm_dd");
-                File.AppendAllText($"Logs/{date}_crash.log", e.Message + "\n" + e.InnerException.ToString());
+                Console.WriteLine(e.ToString());
+                File.AppendAllText($"Logs/{date}_crash.log", e.ToString());
             }
         }
 
@@ -45,17 +49,28 @@ namespace IodemBot
             client.Ready += Client_Ready;
             client.UserLeft += Client_UserLeft;
             client.UserJoined += Client_UserJoined;
+            client.GuildMemberUpdated += Client_GuildMemberUpdated;
             await client.LoginAsync(TokenType.Bot, Config.bot.token);
             await client.StartAsync();
             handler = new CommandHandler();
             await handler.InitializeAsync(client);
             msgHandler = new MessageHandler();
             await msgHandler.InitializeAsync(client);
-            client.Ready += TwitchListener.InitializeAsync;
             await Task.Delay(-1);
         }
 
-        private string[] welcomeMsg = {
+        private async Task Client_GuildMemberUpdated(SocketGuildUser before, SocketGuildUser after)
+        {
+            if(before.DisplayName() != after.DisplayName())
+            {
+                UserAccounts.GetAccount(after).Name = after.DisplayName();
+                _ = GuildSettings.GetGuildSettings(after.Guild).TestCommandChannel
+                    .SendMessageAsync($"{after.Mention} changed Nickname from {before.DisplayName()} to {after.DisplayName()}");
+            }
+            await Task.CompletedTask;
+        }
+
+        private readonly string[] welcomeMsg = {
             "Welcome, {0}! Just ignore that strange tree out front!",
             "Welcome, {0}! We'll forget that whole curse business in no time!",
             "Welcome, {0}! You may enter, so long as you do not disrupt the peace.",
@@ -77,37 +92,49 @@ namespace IodemBot
 
         private async Task Client_UserJoined(SocketGuildUser user)
         {
-            if (user.Guild.Id != Global.MainChannel)
+            if (GuildSettings.GetGuildSettings(user.Guild).sendWelcomeMessage)
             {
-                return;
+                _ = GuildSettings.GetGuildSettings(user.Guild).MainChannel.SendMessageAsync(embed:
+                    new EmbedBuilder()
+                    .WithColor(Colors.Get("Iodem"))
+                    .WithDescription(string.Format(welcomeMsg[Global.Random.Next(0, welcomeMsg.Length)], user.DisplayName()))
+                    .Build());
             }
 
-            await ((SocketTextChannel)client.GetChannel(355558866282348575)).SendMessageAsync(embed:
-                new EmbedBuilder()
-                .WithColor(Colors.Get("Iodem"))
-                .WithDescription(String.Format(welcomeMsg[Global.Random.Next(0, welcomeMsg.Length)], user.DisplayName()))
-                .Build());
-
-            await ((SocketTextChannel)client.GetChannel(506961678928314368)).SendMessageAsync(embed:
+            _ = GuildSettings.GetGuildSettings(user.Guild).TestCommandChannel.SendMessageAsync(embed:
                 new EmbedBuilder()
                 .WithAuthor(user)
                 .AddField("Account Created", user.CreatedAt)
                 .AddField("User Joined", user.JoinedAt)
                 .AddField("Status", user.Status, true)
                 .Build());
+            await Task.CompletedTask;
         }
 
         private async Task Client_UserLeft(SocketGuildUser user)
         {
-            await ((SocketTextChannel)client.GetChannel(506961678928314368)).SendMessageAsync($"{user.DisplayName()} left the party :(.");
+            if (GuildSettings.GetGuildSettings(user.Guild).sendLeaveMessage)
+            {
+                _ = GuildSettings.GetGuildSettings(user.Guild).TestCommandChannel.SendMessageAsync($"{user.DisplayName()} left the party :(.");
+            }
+            await Task.CompletedTask;
         }
 
         private async Task Client_Ready()
         {
-            var channel = (SocketTextChannel)client.GetChannel(535209634408169492);
-            if (channel != null)
+            var channel = (SocketTextChannel)client.GetChannel(535209634408169492) ?? (SocketTextChannel)client.GetChannel(668443234292334612);
+            if (channel != null && (DateTime.Now - Global.RunningSince).TotalSeconds < 15)
             {
-                await channel.SendMessageAsync($"Hello, I am back up.");
+                await channel.SendMessageAsync($"Hello, I am back up. {Environment.OSVersion}");
+                foreach (var guild in client.Guilds)
+                {
+                    var gs = GuildSettings.GetGuildSettings(guild);
+                    if (gs.AutoSetup && gs.ColossoChannel != null)
+                    {
+                        await ColossoPvE.Setup(guild);
+                        Console.WriteLine($"Setup in {gs.Name}");
+                    }
+                }
             }
             //setup colosso
             await client.SetStatusAsync(UserStatus.Idle);
@@ -118,12 +145,17 @@ namespace IodemBot
         {
             Console.WriteLine(msg.Message);
             var date = DateTime.Now.ToString("yyyy_MM_dd");
-            File.AppendAllText($"Logs/{date}_log.log", msg.Message + "\n");
+            try
+            {
+                File.AppendAllText($"Logs/{date}_log.log", msg.Message + Environment.NewLine);
+            }
+            catch { }
             try
             {
                 if (msg.Exception != null)
                 {
                     Console.WriteLine(msg.Exception.ToString());
+                    File.AppendAllText($"Logs/{date}_log.log", msg.Exception.ToString() + Environment.NewLine);
                 }
             }
             catch

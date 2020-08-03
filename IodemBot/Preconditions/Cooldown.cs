@@ -1,8 +1,8 @@
-﻿using Discord;
-using Discord.Commands;
-using System;
+﻿using System;
 using System.Collections.Concurrent;
 using System.Threading.Tasks;
+using Discord;
+using Discord.Commands;
 
 namespace Iodembot.Preconditions
 {
@@ -52,7 +52,7 @@ namespace Iodembot.Preconditions
                 // Display message if command is on cooldown
                 if (difference.Ticks > 0)
                 {
-                    return Task.FromResult(PreconditionResult.FromError($"You can use this command in {difference.ToString(@"mm\:ss")}"));
+                    return Task.FromResult(PreconditionResult.FromError($"You can use this command in {difference:mm\\:ss}"));
                 }
                 // Update cooldown time
                 var time = DateTime.UtcNow.Add(CooldownLength);

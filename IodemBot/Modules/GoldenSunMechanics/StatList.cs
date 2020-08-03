@@ -1,7 +1,6 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Linq;
-using static IodemBot.Modules.GoldenSunMechanics.Psynergy;
+using Newtonsoft.Json;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
@@ -35,21 +34,21 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public override string ToString()
         {
-            return $"{((VenusAtk != 0 || VenusRes != 0) ? $"{GoldenSun.ElementIcons[Element.Venus]} `{VenusAtk} | {VenusRes}` " : "")}" +
+            return ($"{((VenusAtk != 0 || VenusRes != 0) ? $"{GoldenSun.ElementIcons[Element.Venus]} `{VenusAtk} | {VenusRes}` " : "")}" +
                 $"{((MercuryAtk != 0 || MercuryRes != 0) ? $"{GoldenSun.ElementIcons[Element.Mercury]} `{MercuryAtk} | {MercuryRes}` " : "")}" +
                 "\n" +
                 $"{((MarsAtk != 0 || MarsRes != 0) ? $"{GoldenSun.ElementIcons[Element.Mars]} `{MarsAtk} | {MarsRes}` " : "")}" +
-                $"{((JupiterAtk != 0 || JupiterRes != 0) ? $"{GoldenSun.ElementIcons[Element.Jupiter]} `{JupiterAtk} | {JupiterRes}` " : "")}";
+                $"{((JupiterAtk != 0 || JupiterRes != 0) ? $"{GoldenSun.ElementIcons[Element.Jupiter]} `{JupiterAtk} | {JupiterRes}` " : "")}").Trim();
             //return $"`VnPow: {VenusAtk} MrPow: {MarsAtk} JpPow: {JupiterAtk} McPow: {MercuryAtk}`\n" +
             //    $"`VnRes: {VenusRes} MrRes: {MarsRes} JpRes: {JupiterRes} McRes: {MercuryRes}`";
         }
 
         public string NonZerosToString()
         {
-            return $"{((VenusAtk != 0 || VenusRes != 0) ? $"{GoldenSun.ElementIcons[Element.Venus]} `{VenusAtk} | {VenusRes}` " : "")}" +
+            return ($"{((VenusAtk != 0 || VenusRes != 0) ? $"{GoldenSun.ElementIcons[Element.Venus]} `{VenusAtk} | {VenusRes}` " : "")}" +
                 $"{((MarsAtk != 0 || MarsRes != 0) ? $"{GoldenSun.ElementIcons[Element.Mars]} `{MarsAtk} | {MarsRes}` " : "")}" +
                 $"{((JupiterAtk != 0 || JupiterRes != 0) ? $"{GoldenSun.ElementIcons[Element.Jupiter]} `{JupiterAtk} | {JupiterRes}` " : "")}" +
-                $"{((MercuryAtk != 0 || MercuryRes != 0) ? $"{GoldenSun.ElementIcons[Element.Mercury]} `{MercuryAtk} | {MercuryRes}` " : "")}";
+                $"{((MercuryAtk != 0 || MercuryRes != 0) ? $"{GoldenSun.ElementIcons[Element.Mercury]} `{MercuryAtk} | {MercuryRes}` " : "")}").Trim();
         }
 
         internal int LeastRes()
@@ -64,26 +63,26 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         internal int GetPower(Element e)
         {
-            switch (e)
+            return e switch
             {
-                case Element.Venus: return VenusAtk;
-                case Element.Mars: return MarsAtk;
-                case Element.Jupiter: return JupiterAtk;
-                case Element.Mercury: return MercuryAtk;
-                default: return 100;
-            }
+                Element.Venus => VenusAtk,
+                Element.Mars => MarsAtk,
+                Element.Jupiter => JupiterAtk,
+                Element.Mercury => MercuryAtk,
+                _ => 100,
+            };
         }
 
         internal int GetRes(Element e)
         {
-            switch (e)
+            return e switch
             {
-                case Element.Venus: return VenusRes;
-                case Element.Mars: return MarsRes;
-                case Element.Jupiter: return JupiterRes;
-                case Element.Mercury: return MercuryRes;
-                default: return 100;
-            }
+                Element.Venus => VenusRes,
+                Element.Mars => MarsRes,
+                Element.Jupiter => JupiterRes,
+                Element.Mercury => MercuryRes,
+                _ => 100,
+            };
         }
     }
 
@@ -130,25 +129,25 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public override string ToString()
         {
-            return $"`HP: {MaxHP} Atk: {Atk} Agi: {Spd}`\n`PP: {MaxPP} Def: {Def}`";
+            return $"`{$"HP: {MaxHP} Atk: {Atk} Agi: {Spd}`\n`PP: {MaxPP} Def: {Def}".Trim()}`";
         }
 
         public string NonZerosToString()
         {
-            return $"`{(MaxHP != 0 ? $"HP: {MaxHP} " : "")}" +
-                $"{(MaxPP != 0 ? $"PP: {MaxPP} " : "")}" +
-                $"{(Atk != 0 ? $"Atk: {Atk} " : "")}" +
-                $"{(Def != 0 ? $"Def: {Def} " : "")}" +
-                $"{(Spd != 0 ? $"Agi: {Spd} " : "")}`";
+            return "`" + ($"{(MaxHP != 0 ? $"HP: {MaxHP} " : "")}" +
+                $"{(MaxPP != 0 ? $" PP: {MaxPP}" : "")}" +
+                $"{(Atk != 0 ? $" Atk: {Atk}" : "")}" +
+                $"{(Def != 0 ? $" Def: {Def}" : "")}" +
+                $"{(Spd != 0 ? $" Agi: {Spd}" : "")}").Trim() + "`";
         }
 
         public string MultipliersToString()
         {
-            return $"`{(MaxHP != 100 ? $"HP: x{((double)MaxHP / 100)} " : "")}" +
+            return "`" + $"{(MaxHP != 100 ? $"HP: x{((double)MaxHP / 100)} " : "")}" +
                 $"{(MaxPP != 100 ? $"PP: x{((double)MaxPP / 100)} " : "")}" +
                 $"{(Atk != 100 ? $"Atk: x{((double)Atk / 100)} " : "")}" +
                 $"{(Def != 100 ? $"Def: x{((double)Def / 100)} " : "")}" +
-                $"{(Spd != 100 ? $"Agi: x{((double)Spd / 100)} " : "")}`";
+                $"{(Spd != 100 ? $"Agi: x{((double)Spd / 100)}" : "")}".Trim() + "`";
         }
     }
 }

@@ -1,11 +1,11 @@
-﻿using Discord;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Discord;
 
 namespace IodemBot
 {
     public static class Colors
     {
-        private static Dictionary<string, Color> colors;
+        private static readonly Dictionary<string, Color> colors;
 
         static Colors()
         {

@@ -1,55 +1,23 @@
-﻿using IodemBot.Modules.ColossoBattles;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
+using System.Linq;
+using IodemBot.Modules.ColossoBattles;
+using Newtonsoft.Json;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
-    internal class StatEffect : IEffect
+    internal class StatEffect : Effect
     {
-        private string StatToBoost;
-        private double Multiplier;
-        private readonly int probability = 100;
-        private bool OnTarget = true;
-        private int Turns = 7;
-
-        public StatEffect(string StatToBoost, double Value, long probability = 100, bool OnTarget = true, int Duration = 5)
-        {
-            Init(StatToBoost, Value, probability, OnTarget, Duration);
-        }
-
-        public StatEffect(params string[] args)
-        {
-            CultureInfo[] cultures = { new CultureInfo("en-US"),
-                                 new CultureInfo("fr-FR"),
-                                 new CultureInfo("it-IT"),
-                                 new CultureInfo("de-DE") };
-            switch (args.Length)
-            {
-                case 5: int.TryParse(args[4], out Turns); goto case 4;
-                case 4: bool.TryParse(args[3], out OnTarget); goto case 3;
-                case 3: int.TryParse(args[2], out probability); goto case 2;
-                case 2:
-                    double.TryParse(args[1], NumberStyles.Number, new CultureInfo("en-GB"), out Multiplier);
-
-                    StatToBoost = args[0];
-                    break;
-
-                default: throw new ArgumentException("Stat Effects take 2-5 string arguments");
-            }
-        }
-
-        private void Init(string StatToBoost, double Value, long probability = 100, bool OnTarget = true, int Duration = 5)
-        {
-            this.StatToBoost = StatToBoost;
-            this.Multiplier = Value;
-            this.OnTarget = OnTarget;
-            this.Turns = Duration;
-        }
+        public override string Type { get; } = "Stat";
+        [JsonProperty] private string Stat { get; set; } = "OH NO";
+        [JsonProperty] private double Multiplier { get; set; } = 1;
+        [JsonProperty] private int Probability { get; set; } = 100;
+        [JsonProperty] private bool OnTarget { get; set; } = true;
+        [JsonProperty] private int Turns { get; set; } = 7;
 
         public override string ToString()
         {
-            return $"{(probability == 100 ? $"{(Multiplier > 1 ? "Raise" : "Lower")}" : $"{probability}% chance to {(Multiplier > 1 ? "raise" : "lower")}")} {StatToBoost} of {(OnTarget ? "target" : "user")} to {Multiplier * 100}%";
+            return $"{(Probability == 100 ? $"{(Multiplier > 1 ? "Raise" : "Lower")}" : $"{Probability}% chance to {(Multiplier > 1 ? "raise" : "lower")}")} {Stat} of {(OnTarget ? "target" : "user")} to {Multiplier * 100}%";
         }
 
         public override List<string> Apply(ColossoFighter User, ColossoFighter Target)
@@ -60,17 +28,22 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 return log;
             }
 
-            if (Global.Random.Next(1, 100) <= probability)
+            if (Stat == "OH NO")
+            {
+                Console.WriteLine(string.Join(", ", User.Moves.Select(s => s.Name)));
+            }
+
+            if (Global.Random.Next(1, 100) <= Probability)
             {
                 if (OnTarget)
                 {
-                    Target.ApplyBuff(new Buff(StatToBoost, Multiplier, (uint)Turns));
-                    log.Add($"{Target.Name}'s {StatToBoost} {(Multiplier > 1 ? "rises" : "lowers")}.");
+                    Target.ApplyBuff(new Buff(Stat, Multiplier, (uint)Turns));
+                    log.Add($"{Target.Name}'s {Stat} {(Multiplier > 1 ? "rises" : "lowers")}.");
                 }
                 else
                 {
-                    User.ApplyBuff(new Buff(StatToBoost, Multiplier, (uint)Turns));
-                    log.Add($"{User.Name}'s {StatToBoost} {(Multiplier > 1 ? "rises" : "lowers")}.");
+                    User.ApplyBuff(new Buff(Stat, Multiplier, (uint)Turns));
+                    log.Add($"{User.Name}'s {Stat} {(Multiplier > 1 ? "rises" : "lowers")}.");
                 }
             }
 

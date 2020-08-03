@@ -1,56 +1,46 @@
-﻿using Discord;
-using Discord.Commands;
-using Discord.WebSocket;
-using Iodembot.Preconditions;
-using IodemBot.Core.Leveling;
-using IodemBot.Extensions;
-using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
+using Discord;
+using Discord.Commands;
+using Discord.WebSocket;
+using IodemBot.Core.Leveling;
+using IodemBot.Extensions;
+using Newtonsoft.Json;
 
 namespace IodemBot.Modules
 {
+    [Name("Colosso")]
     public class Colosso : ModuleBase<SocketCommandContext>
     {
-        private static List<string> enemies = new List<string>();
-        private static List<Result> results = new List<Result>();
-        private static bool lastMessageWasNuts;
+        private static readonly List<string> enemies = new List<string>();
+        private static readonly List<Result> results = new List<Result>();
 
-        [Command("colosso")]
-        [Cooldown(15)]
-        [Remarks("Proof your strength by battling a random opponent in Colosso")]
-        public async Task ColossoTrain()
+        public static Embed ColossoTrain(SocketGuildUser user, IMessageChannel channel)
         {
             var embed = new EmbedBuilder();
             embed.WithColor(Colors.Get("Iodem"));
 
             Matchup m = GetRandomMatchup();
 
-            embed.WithAuthor(GetTitle(Context.User, m.Enemy));
-            embed.WithDescription(GetText(Context.User, m));
+            embed.WithAuthor(GetTitle(user, m.Enemy));
+            embed.WithDescription(GetText(user, m));
 
-            lastMessageWasNuts = false;
-            if (m.Result.Text.Contains("nuts"))
-            {
-                lastMessageWasNuts = true;
-            }
-
-            await Context.Channel.SendMessageAsync("", false, embed.Build());
             if (m.Result.IsWin)
             {
-                ServerGames.UserWonColosso((SocketGuildUser)Context.User, (SocketTextChannel)Context.Channel);
+                ServerGames.UserWonColosso(user, channel);
             }
             else
             {
-                ServerGames.UserLostColosso((SocketGuildUser)Context.User, (SocketTextChannel)Context.Channel);
+                ServerGames.UserLostColosso(user, channel);
             }
+            return embed.Build();
         }
 
         [Command("colossoAddEnemy")]
         [RequireUserPermission(GuildPermission.Administrator)]
-        [Remarks("Add an enemy to the Colosso beastiary")]
+        [Summary("Add an enemy to the Colosso beastiary")]
         public async Task ColossoAddEnemy([Remainder] string enemy)
         {
             if (AddEnemy(enemy))
@@ -65,14 +55,14 @@ namespace IodemBot.Modules
 
         [Command("colossoAddResult")]
         [RequireUserPermission(GuildPermission.Administrator)]
-        [Remarks("Add a Result to the Colosso outcomes")]
+        [Summary("Add a Result to the Colosso outcomes")]
         public async Task ColossoAddResult(bool isWin, [Remainder] string result)
         {
             AddResult(isWin, result);
             await Context.Channel.SendMessageAsync(Utilities.GetAlert("RESULT_ADDED"));
         }
 
-        private string GetText(SocketUser user, Matchup m)
+        private static string GetText(SocketUser user, Matchup m)
         {
             return String.Format(m.Result.Text, ((SocketGuildUser)user).DisplayName(), m.Enemy);
         }
@@ -128,16 +118,6 @@ namespace IodemBot.Modules
             {
                 string jsonR = File.ReadAllText("SystemLang/results.json");
                 results = JsonConvert.DeserializeObject<List<Result>>(jsonR);
-            }
-
-            Global.Client.ReactionAdded += Client_ReactionAdded;
-        }
-
-        private static async Task Client_ReactionAdded(Cacheable<IUserMessage, ulong> Message, ISocketMessageChannel Channel, SocketReaction Reaction)
-        {
-            if (Reaction.Emote.Name == "hard_nut" && lastMessageWasNuts)
-            {
-                await GoldenSun.AwardClassSeries("Crusader Series", (SocketGuildUser)Reaction.User, (SocketTextChannel)Reaction.Channel);
             }
         }
 

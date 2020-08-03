@@ -1,39 +1,29 @@
-﻿using IodemBot.Modules.ColossoBattles;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using IodemBot.Modules.ColossoBattles;
+using Newtonsoft.Json;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
-    internal class HPDrainEffect : IEffect
+    internal class HPDrainEffect : Effect
     {
-        private readonly uint percentage = 20;
-        private readonly uint probability = 100;
+        [JsonProperty] private uint Percentage { get; set; } = 20;
+        [JsonProperty] private uint Probability { get; set; } = 100;
+
+        public override string Type { get; } = "HPDrain";
 
         public override List<string> Apply(ColossoFighter User, ColossoFighter Target)
         {
-            if (Global.Random.Next(0, 100) <= probability)
+            if (Global.Random.Next(0, 100) <= Probability)
             {
-                uint recovery = User.damageDoneThisTurn * percentage / 100;
+                uint recovery = User.damageDoneThisTurn * Percentage / 100;
                 return User.Heal(recovery);
             }
             return new List<string>();
         }
 
-        public HPDrainEffect(string[] args)
-        {
-            if (args.Length == 1)
-            {
-                uint.TryParse(args[0], out percentage);
-            }
-            else if (args.Length == 2)
-            {
-                uint.TryParse(args[0], out percentage);
-                uint.TryParse(args[1], out probability);
-            }
-        }
-
         public override string ToString()
         {
-            return $"{(probability < 100 ? "Chance to restore" : "Restore")} {percentage}% of the damage done this turn in HP";
+            return $"{(Probability < 100 ? "Chance to restore" : "Restore")} {Percentage}% of the damage done this turn in HP";
         }
     }
 }

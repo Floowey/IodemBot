@@ -1,36 +1,27 @@
-﻿using IodemBot.Modules.ColossoBattles;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using IodemBot.Modules.ColossoBattles;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
-    internal class MayIgnoreDefenseEffect : IEffect
+    internal class MayIgnoreDefenseEffect : Effect
     {
-        private readonly int ignorePercent = 20;
-        private readonly int probability = 10;
+        public override string Type { get; } = "IgnoreDefense";
+        public int IgnorePercent { get; set; } = 20;
+        public int Probability { get; set; } = 10;
 
         public override List<string> Apply(ColossoFighter User, ColossoFighter Target)
         {
-            if (Global.Random.Next(1, 100) <= probability)
+            if (Global.Random.Next(1, 100) <= Probability)
             {
-                Target.ignoreDefense = (1 - ignorePercent / 100);
+                Target.ignoreDefense = (1 - IgnorePercent / 100);
             }
 
             return new List<string>();
         }
 
-        public MayIgnoreDefenseEffect(string[] args)
-        {
-            timeToActivate = TimeToActivate.beforeDamge;
-            if (args.Length == 2)
-            {
-                int.TryParse(args[0], out ignorePercent);
-                int.TryParse(args[1], out probability);
-            }
-        }
-
         public override string ToString()
         {
-            return $"{(probability != 100 ? $"{probability}% chance to ignore " : "Ignore")} {ignorePercent}% of Defense";
+            return $"{(Probability != 100 ? $"{Probability}% chance to ignore " : "Ignore")} {IgnorePercent}% of Defense";
         }
     }
 }

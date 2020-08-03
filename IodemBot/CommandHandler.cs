@@ -1,9 +1,9 @@
-using Discord.Commands;
-using Discord.WebSocket;
-using IodemBot.Core.Leveling;
 using System;
 using System.Reflection;
 using System.Threading.Tasks;
+using Discord.Commands;
+using Discord.WebSocket;
+using IodemBot.Core.Leveling;
 
 namespace IodemBot
 {
@@ -41,10 +41,13 @@ namespace IodemBot
                 var result = await service.ExecuteAsync(context, argPos, null);
                 if (!result.IsSuccess && result.Error != CommandError.UnknownCommand)
                 {
+                    if (result is ExecuteResult execResult)
+                    {
+                        Console.WriteLine(execResult.Exception);
+                    }
                     Console.WriteLine(result.ErrorReason);
                 }
-
-                await ServerGames.UserSentCommand((SocketGuildUser)context.User, (SocketTextChannel)context.Channel);
+                await ServerGames.UserSentCommand(context.User, context.Channel);
             }
         }
     }

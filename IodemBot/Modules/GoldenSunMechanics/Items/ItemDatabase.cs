@@ -1,15 +1,16 @@
-﻿using IodemBot.Extensions;
-using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using IodemBot.Extensions;
+using IodemBot.Modules.GoldenSunMechanics.RewardSystem;
+using Newtonsoft.Json;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
     public class ItemDatabase
     {
-        private static Dictionary<string, Item> itemsDatabase = new Dictionary<string, Item>(StringComparer.OrdinalIgnoreCase);
+        private static readonly Dictionary<string, Item> itemsDatabase = new Dictionary<string, Item>(StringComparer.OrdinalIgnoreCase);
         private static Inventory shop;
         private static DateTime lastReset;
 
@@ -17,12 +18,29 @@ namespace IodemBot.Modules.GoldenSunMechanics
         private static readonly int HoursForReset = 8;
         public static string shopkeeper;
         public static string restockMessage;
-        private static string[] shopkeepers = { "armor shopkeeper2", "armor shopkeeper3", "champa shopkeeper", "item shopkeeper", "izumo shopkeeper", "weapon shopkeeper", "weapon shopkeeper2", "sunshine", "armor shopkeeper" };
-        private static string[] restockMessages = { "Next shipment in:", "Next restock in:", "New Merchant in:" };
+        private static readonly string[] shopkeepers = { "armor shopkeeper2", "armor shopkeeper3", "champa shopkeeper", "item shopkeeper", "izumo shopkeeper", "weapon shopkeeper", "weapon shopkeeper2", "sunshine", "armor shopkeeper" };
+        private static readonly string[] restockMessages = { "Next shipment in:", "Next restock in:", "New Merchant in:" };
 
         private static readonly string shopLocation = "Resources/shop.json";
         private static readonly string itemLocation = "Resources/GoldenSun/items.json";
 
+        public static Dictionary<ChestQuality, RewardGenerator<ItemRarity>> ChestValues = new Dictionary<ChestQuality, RewardGenerator<ItemRarity>>() {
+                {ChestQuality.Wooden, new RewardGenerator<ItemRarity>(
+                    new []{ItemRarity.Common, ItemRarity.Uncommon }, new []{ 85, 15})
+                },
+                {ChestQuality.Normal, new RewardGenerator<ItemRarity>(
+                    new []{ItemRarity.Common, ItemRarity.Uncommon }, new []{ 40, 60})
+                },
+                {ChestQuality.Silver, new RewardGenerator<ItemRarity>(
+                    new []{ItemRarity.Uncommon, ItemRarity.Rare, ItemRarity.Legendary}, new []{ 40, 50, 10})
+                },
+                {ChestQuality.Gold, new RewardGenerator<ItemRarity>(
+                    new []{ItemRarity.Rare, ItemRarity.Legendary, ItemRarity.Mythical}, new []{ 45, 40, 5})
+                },
+                {ChestQuality.Adept, new RewardGenerator<ItemRarity>(
+                    new []{ItemRarity.Legendary, ItemRarity.Mythical}, new []{ 80, 20})
+                }
+            };
         public static TimeSpan TimeToNextReset
         {
             get
@@ -71,21 +89,36 @@ namespace IodemBot.Modules.GoldenSunMechanics
         {
             if (shop == null)
             {
-                shop = new Inventory(new List<string>(), new List<string>(), new List<string>());
+                shop = new Inventory();
             }
 
             shop.Clear();
-            shop.Add(GetRandomItem(8, 0, RandomItemType.NonArtifact));
-            shop.Add(GetRandomItem(20, 0, RandomItemType.NonArtifact));
-            shop.Add(GetRandomItem(20, 0, RandomItemType.NonArtifact));
+            shop.Add(GetRandomItem(ItemRarity.Common));
+            shop.Add(GetRandomItem(ItemRarity.Common));
+            shop.Add(GetRandomItem(ItemRarity.Uncommon));
+            shop.Add(GetRandomItem(new RewardGenerator<ItemRarity>(new[]
+                { ItemRarity.Uncommon, ItemRarity.Rare, ItemRarity.Legendary}, new[] { 60, 35, 5 }).GenerateReward()
+                )
+            );
+            shop.Add(GetRandomItem(new RewardGenerator<ItemRarity>(new[]
+                { ItemRarity.Uncommon, ItemRarity.Rare, ItemRarity.Legendary}, new[] { 60, 35, 5 }).GenerateReward()
+                )
+            );
+            shop.Add(GetRandomItem(new RewardGenerator<ItemRarity>(new[]
+                { ItemRarity.Rare, ItemRarity.Legendary, ItemRarity.Mythical}, new[] { 75, 24, 1 }).GenerateReward()
+                )
+            );
+            //shop.Add(GetRandomItem(8, RandomItemType.NonArtifact));
+            //shop.Add(GetRandomItem(12, RandomItemType.NonArtifact));
+            ////shop.Add(GetRandomItem98(18, RandomItemType.NonArtifact));
 
-            shop.Add(GetRandomItem(30, 0, RandomItemType.Any));
-            shop.Add(GetRandomItem(35, 0, RandomItemType.Any));
-            shop.Add(GetRandomItem(40, 0, RandomItemType.Any));
+            //shop.Add(GetRandomItem(25, RandomItemType.Any));
+            ////shop.Add(GetRandomItem(28, 0, RandomItemType.Any));
+            //shop.Add(GetRandomItem(32, RandomItemType.Any));
 
-            shop.Add(GetRandomItem(20, 0, RandomItemType.Artifact));
-            shop.Add(GetRandomItem(40, 0, RandomItemType.Artifact));
-            shop.Add(GetRandomItem(50, 0, RandomItemType.Artifact));
+            //shop.Add(GetRandomItem(15, RandomItemType.Artifact));
+            ////shop.Add(GetRandomItem(24, RandomItemType.Artifact));
+            //shop.Add(GetRandomItem(38, RandomItemType.Artifact));
 
             shopkeeper = Sprites.GetImageFromName(shopkeepers.Random());
 
@@ -114,32 +147,61 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public static Item GetItem(string itemName)
         {
-            if (itemsDatabase.TryGetValue(itemName, out Item item))
+            var isBroken = itemName.Contains("(B)");
+            var isAnimated = itemName.Contains("(A)");
+            var hasName = itemName.Contains("|");
+
+            var justName = (isBroken || isAnimated || hasName) ? string.Concat(itemName.TakeWhile(c => !(c == '(' || c == '|'))) : itemName;
+
+            if (itemsDatabase.TryGetValue(justName, out Item item))
             {
-                return (Item)item.Clone();
+                var i = (Item)item.Clone();
+                if (hasName)
+                {
+                    i.Nickname = string.Concat(itemName.SkipWhile(c => !c.Equals('|'))).Substring(1);
+                }
+                i.IsAnimated = isAnimated;
+                i.IsBroken = isBroken;
+                return i;
             }
 
             return new Item() { Name = $"{itemName} NOT IMPLEMENTED!" };
         }
 
-        public enum RandomItemType { Any, Artifact, NonArtifact }
-
-        public static string GetRandomItem(uint level, double bonus = 0, RandomItemType rt = RandomItemType.Any)
+        public static bool TryGetItem(string ItemName, out Item item)
         {
-            uint n = Math.Max((uint)(level + Math.Sqrt(bonus / 50)), 1);
+            item = GetItem(ItemName);
+            if (item.Name.ToLower().Contains("not implemented"))
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public static string GetRandomItem(ItemRarity rarity)
+        {
+            return itemsDatabase.Values.Where(i => i.Rarity == rarity).Random().Name;
+        }
+
+        public static string GetRandomItem(uint level, RandomItemType rt = RandomItemType.Any)
+        {
+            uint n = Math.Max(level, 1);
             n = Math.Min(n, 100);
             var rate = 0.0007671 * Math.Pow(n, 2) - 0.1537 * n;
             var pow = Math.Pow(Math.E, rate);
-            var loc = 15000 * 1.13 / (1 + 299 * pow);
-            var scale = Math.Pow(n, 2.26);
+            var loc = 11000 * 1.13 / (1 + 299 * pow);
+            var scale = Math.Pow(n, 2.2055);
             var shape = 0.1 - n / 200;
             var dist = new Accord.Statistics.Distributions.Univariate.GeneralizedParetoDistribution(loc, scale, shape);
             var value = dist.Generate();
-
+            foreach (int i in new[] { 5000, 10000, 15000, 20000, 25000, 30000, 35000 })
+            {
+                Console.WriteLine($"{i}: {(1 - dist.DistributionFunction(i)) * 100}%");
+            }
             var allItems = itemsDatabase.Values.OrderByDescending(d => d.Price);
             var it = allItems.Where(i => i.Price <= value
-                && (rt == RandomItemType.Artifact ? i.IsArtifact : true)
-                && (rt == RandomItemType.NonArtifact ? !i.IsArtifact : true));
+                && (rt != RandomItemType.Artifact || i.IsArtifact)
+                && (rt != RandomItemType.NonArtifact || !i.IsArtifact));
 
             Item price = allItems.OrderBy(i => i.Price).Take(10).Random();
             if (it != null && it.Count() >= 5)
@@ -158,23 +220,13 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 return items;
             }
 
-            if (itemNames.Count() > 0)
+            itemNames.ToList().ForEach(i =>
             {
-                foreach (var s in itemNames)
+                if (TryGetItem(i, out var item))
                 {
-                    if (s.EndsWith("(B)"))
-                    {
-                        var i = GetItem(s.Substring(0, s.Length - 3));
-                        i.IsBroken = true;
-                        items.Add(i);
-                    }
-                    else
-                    {
-                        items.Add(GetItem(s));
-                    }
+                    items.Add(item);
                 }
-            }
-
+            });
             return items;
         }
 

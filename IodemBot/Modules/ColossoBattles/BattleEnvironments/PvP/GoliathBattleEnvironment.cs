@@ -1,18 +1,18 @@
-﻿using Discord;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using Discord;
 
 namespace IodemBot.Modules.ColossoBattles
 {
     public class GoliathBattleEnvironment : PvPEnvironment
     {
-        public GoliathBattleEnvironment(string Name, ITextChannel lobbyChannel, ITextChannel teamAChannel, ITextChannel teamBChannel, uint playersToStart = 4) : base(Name, lobbyChannel, teamAChannel, teamBChannel, playersToStart, 1)
+        public GoliathBattleEnvironment(string Name, ITextChannel lobbyChannel, bool isPersistent, ITextChannel teamAChannel, ITextChannel teamBChannel, IRole TeamBRole, uint playersToStart = 4) : base(Name, lobbyChannel, isPersistent, teamAChannel, teamBChannel, TeamBRole, playersToStart, 1)
         {
             _ = Reset();
         }
 
-        protected override async Task AddPlayer(PlayerFighter player, ColossoBattle.Team team)
+        protected override async Task AddPlayer(PlayerFighter player, Team team)
         {
-            if (team == ColossoBattle.Team.B)
+            if (team == Team.B)
             {
                 player.Stats *= new GoldenSunMechanics.Stats(1000, 100, 200, 200, 10);
                 player.Stats *= 0.01;

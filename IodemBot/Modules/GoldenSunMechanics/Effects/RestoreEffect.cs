@@ -1,11 +1,13 @@
-﻿using IodemBot.Modules.ColossoBattles;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using IodemBot.Modules.ColossoBattles;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
-    public class RestoreEffect : IEffect
+    public class RestoreEffect : Effect
     {
+        public override string Type { get; } = "Restore";
+
         public override List<string> Apply(ColossoFighter User, ColossoFighter Target)
         {
             if (!Target.IsAlive)
@@ -14,9 +16,9 @@ namespace IodemBot.Modules.GoldenSunMechanics
             }
 
             Target.RemoveAllConditions();
-            if (User is PlayerFighter)
+            if (User is PlayerFighter p)
             {
-                ((PlayerFighter)User).battleStats.Supported++;
+                p.battleStats.Supported++;
             }
             return new List<string>() { $"{Target.Name}'s Conditions were cured." };
         }

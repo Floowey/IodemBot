@@ -1,16 +1,19 @@
-﻿using IodemBot.Extensions;
-using IodemBot.Modules.ColossoBattles;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using static IodemBot.Modules.GoldenSunMechanics.Psynergy;
+using IodemBot.Extensions;
+using IodemBot.Modules.ColossoBattles;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
     public class Attack : Move
     {
-        public Attack() : base("Attack", "<:Attack:536919809393295381>", Target.otherSingle, 1, new List<EffectImage>())
+        public Attack(string Emote = "<:Attack:536919809393295381>")
         {
+            Name = "Attack";
+            this.Emote = Emote;
+            TargetType = Target.otherSingle;
+            Range = 1;
         }
 
         public override object Clone()
@@ -23,10 +26,10 @@ namespace IodemBot.Modules.GoldenSunMechanics
             var aliveEnemies = User.GetEnemies().Where(f => f.IsAlive).ToList();
             if (aliveEnemies.Count == 0)
             {
-                targetNr = 0;
+                TargetNr = 0;
                 return;
             }
-            targetNr = User.GetEnemies().IndexOf(aliveEnemies.Random());
+            TargetNr = User.GetEnemies().IndexOf(aliveEnemies.Random());
         }
 
         public override bool InternalValidSelection(ColossoFighter User)
@@ -38,14 +41,14 @@ namespace IodemBot.Modules.GoldenSunMechanics
         {
             if (User.Weapon != null)
             {
-                emote = User.Weapon.Icon;
+                Emote = User.Weapon.Icon;
             }
 
             var enemy = GetTarget(User).First();
 
             var log = new List<string>
             {
-                $"{emote} {User.Name} attacks!"
+                $"{Emote} {User.Name} attacks!"
             };
 
             if (!enemy.IsAlive)
@@ -60,7 +63,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 chanceToMiss = 2;
             }
 
-            if (Global.Random.Next(0, chanceToMiss) == 0)
+            if (!enemy.HasCondition(Condition.Delusion) && enemy.Stats.Spd > 0 && Global.Random.Next(0, chanceToMiss) == 0)
             {
                 log.Add($"{enemy.Name} dodges the blow!");
                 return log;
@@ -70,10 +73,9 @@ namespace IodemBot.Modules.GoldenSunMechanics
             if (weaponUnleashed)
             {
                 log.Add($"{User.Weapon.IconDisplay} {User.Name}'s {User.Weapon.Name} lets out a howl! {User.Weapon.Unleash.UnleashName}!");
-                User.Weapon.Unleash.Effects
-                    .Where(e => e.timeToActivate == IEffect.TimeToActivate.beforeDamge)
-                    .ToList()
-                    .ForEach(e => log.AddRange(e.Apply(User, enemy)));
+                log.AddRange(User.Weapon.Unleash.AllEffects
+                    .Where(e => e.ActivationTime == TimeToActivate.beforeDamge)
+                    .ApplyAll(User, enemy));
             }
 
             if (!enemy.IsAlive)
@@ -103,7 +105,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             }
 
             //var elMult = 1 + Math.Max(0.0, (int)User.elstats.GetPower(element) * User.MultiplyBuffs("Power") - (int)enemy.elstats.GetRes(element) * enemy.MultiplyBuffs("Resistance")) / 400;
-            var elMult = 1 + (User.ElStats.GetPower(element) * User.MultiplyBuffs("Power") - enemy.ElStats.GetRes(element) * enemy.MultiplyBuffs("Resistance")) / 400;
+            var elMult = 1.0 + (User.ElStats.GetPower(element) * User.MultiplyBuffs("Power") - enemy.ElStats.GetRes(element) * enemy.MultiplyBuffs("Resistance")) / 400.0;
 
             var punctuation = "!";
             if (enemy.ElStats.GetRes(element) == enemy.ElStats.HighestRes())
@@ -122,7 +124,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                     p.battleStats.AttackedWeakness++;
                 }
             }
-            if (element == Psynergy.Element.none)
+            if (element == Element.none)
             {
                 punctuation = "!";
             }
@@ -139,8 +141,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
             User.damageDoneThisTurn += damage;
             if (weaponUnleashed)
             {
-                User.Weapon.Unleash.Effects
-                    .Where(e => e.timeToActivate == IEffect.TimeToActivate.afterDamage)
+                User.Weapon.Unleash.AllEffects
+                    .Where(e => e.ActivationTime == TimeToActivate.afterDamage)
                     .ToList()
                     .ForEach(e => log.AddRange(e.Apply(User, enemy)));
             }
@@ -150,7 +152,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 var counterAtk = enemy.Stats.Atk * enemy.MultiplyBuffs("Attack");
                 var counterDef = User.Stats.Def * User.MultiplyBuffs("Defense") * User.ignoreDefense;
                 uint CounterDamage = (uint)Global.Random.Next(0, 4);
-                if (def < atk)
+                if (counterDef < counterAtk)
                 {
                     CounterDamage = (uint)((counterAtk - counterDef) * User.defensiveMult / 2);
                 }
@@ -158,12 +160,52 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 log.AddRange(User.DealDamage(CounterDamage));
             }
 
+            if (enemy.IsAlive && enemy.HasCondition(Condition.Trap))
+            {
+                var counterAtk = enemy.Stats.Atk * enemy.MultiplyBuffs("Attack");
+                var counterDef = User.Stats.Def;
+                uint CounterDamage = (uint)Global.Random.Next(0, 4);
+                if (counterDef < counterAtk)
+                {
+                    CounterDamage = (uint)((counterAtk - counterDef) * User.defensiveMult / 2);
+                }
+                log.Add($"{enemy.Name} strikes back!");
+                log.AddRange(User.DealDamage(CounterDamage));
+            }
+
+            if (enemy.HasCondition(Condition.Key))
+            {
+                if (enemy.GetTeam().Count(e => e.IsAlive && e.HasCondition(Condition.Key)) == 0)
+                {
+                    enemy.GetTeam().ForEach(e => e.Kill());
+                }
+                log.Add($"Your choice was correct!");
+            }
+
+            if (enemy.HasCondition(Condition.Decoy))
+            {
+                var counterAtk = enemy.Stats.Atk * enemy.MultiplyBuffs("Attack");
+                var counterDef = User.Stats.Def * User.MultiplyBuffs("Defense") * User.ignoreDefense;
+                uint CounterDamage = (uint)Global.Random.Next(0, 4);
+                if (counterDef < counterAtk)
+                {
+                    CounterDamage = (uint)(User.Stats.MaxHP * enemy.Stats.Atk / 100);
+                }
+                log.Add($"{enemy.Name} strikes back!");
+                log.AddRange(User.DealDamage(CounterDamage));
+                enemy.EquipmentWithEffect.ForEach(i => i.Unleash.AllEffects.ForEach(e => log.AddRange(e.Apply(enemy, User))));
+                enemy.GetTeam().ForEach(e => e.Kill());
+            }
+
             if (User is PlayerFighter player)
             {
                 player.battleStats.DamageDealt += damage;
                 if (!enemy.IsAlive)
                 {
-                    player.battleStats.KillsByHand++;
+                    if(enemy.Stats.Spd > 0 && weaponUnleashed)
+                    {
+                        player.battleStats.KillsByHand++;
+                    }
                     player.battleStats.Kills++;
                     player.battleStats.HighestDamage = Math.Max(player.battleStats.HighestDamage, damage);
                 }

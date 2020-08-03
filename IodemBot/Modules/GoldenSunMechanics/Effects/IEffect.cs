@@ -1,77 +1,38 @@
-﻿using IodemBot.Extensions;
-using IodemBot.Modules.ColossoBattles;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using IodemBot.Extensions;
+using IodemBot.Modules.ColossoBattles;
+using JsonSubTypes;
+using Newtonsoft.Json;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
-    public abstract class IEffect
+    [JsonConverter(typeof(JsonSubtypes), "Type")]
+    [JsonSubtypes.FallBackSubType(typeof(NoEffect))]
+    [JsonSubtypes.KnownSubType(typeof(AddDamageEffect), "AddDamage")]
+    [JsonSubtypes.KnownSubType(typeof(AttackWithTeammateEffect), "AttackWithTeammate")]
+    [JsonSubtypes.KnownSubType(typeof(BreakEffect), "Break")]
+    [JsonSubtypes.KnownSubType(typeof(ChancetoOHKOEffect), "OHKO")]
+    [JsonSubtypes.KnownSubType(typeof(ConditionEffect), "Condition")]
+    [JsonSubtypes.KnownSubType(typeof(CounterEffect), "Counter")]
+    [JsonSubtypes.KnownSubType(typeof(HPDrainEffect), "HPDrain")]
+    [JsonSubtypes.KnownSubType(typeof(MayIgnoreDefenseEffect), "IgnoreDefense")]
+    [JsonSubtypes.KnownSubType(typeof(MultiplyDamageEffect), "MultiplyDamage")]
+    [JsonSubtypes.KnownSubType(typeof(MysticCallEffect), "MysticCall")]
+    [JsonSubtypes.KnownSubType(typeof(NoEffect), "Nothing")]
+    [JsonSubtypes.KnownSubType(typeof(PPDrainEffect), "PPDrain")]
+    [JsonSubtypes.KnownSubType(typeof(ReduceDamageEffect), "ReduceDamage")]
+    [JsonSubtypes.KnownSubType(typeof(ReduceHPtoOneEffect), "ReduceHPToOne")]
+    [JsonSubtypes.KnownSubType(typeof(RestoreEffect), "Restore")]
+    [JsonSubtypes.KnownSubType(typeof(ReviveEffect), "Revive")]
+    [JsonSubtypes.KnownSubType(typeof(StatEffect), "Stat")]
+    [JsonSubtypes.KnownSubType(typeof(UserDiesEffect), "UserDies")]
+    public abstract class Effect
     {
-        public enum TimeToActivate { beforeDamge, afterDamage };
-
-        public TimeToActivate timeToActivate = TimeToActivate.afterDamage;
+        public TimeToActivate ActivationTime { get; set; } = TimeToActivate.afterDamage;
+        public virtual string Type { get; } = "Nothing";
 
         public abstract List<string> Apply(ColossoFighter User, ColossoFighter Target);
-
-        public static IEffect EffectFactory(string Identifier, params string[] args)
-        {
-            switch (Identifier)
-            {
-                case "AttackWithTeammate":
-                    return new AttackWithTeammateEffect();
-
-                case "Break":
-                    return new BreakEffect();
-
-                case "ChanceToOHKO":
-                    return new ChancetoOHKOEffect(args);
-
-                case "Condition":
-                    return new ConditionEffect(args);
-
-                case "Counter":
-                    return new CounterEffect();
-
-                case "HPDrain":
-                    return new HPDrainEffect(args);
-
-                case "MayIgnoreDefense":
-                    return new MayIgnoreDefenseEffect(args);
-
-                case "MultiplyDamage":
-                    return new MultiplyDamageEffect(args);
-
-                case "PPDrain":
-                    return new PPDrainEffect(args);
-
-                case "ReduceHPtoOne":
-                    return new ReduceHPtoOneEffect(args);
-
-                case "Restore":
-                    return new RestoreEffect();
-
-                case "Revive":
-                    return new ReviveEffect(args);
-
-                case "Stat":
-                    return new StatEffect(args);
-
-                case "UserDies":
-                    return new UserDiesEffect();
-
-                case "ReduceDamage":
-                    return new ReduceDamageEffect(args);
-
-                case "AddDamage":
-                    return new AddDamageEffect(args);
-
-                case "MysticCall":
-                    return new MysticCallEffect(args);
-
-                case "NoEffect":
-                default: return new NoEffect();
-            }
-        }
 
         protected virtual bool InternalValidSelection(ColossoFighter user)
         {
@@ -102,11 +63,5 @@ namespace IodemBot.Modules.GoldenSunMechanics
         {
             return "Unspecified Effect";
         }
-    }
-
-    public struct EffectImage
-    {
-        public string Id { get; set; }
-        public string[] Args { get; set; }
     }
 }

@@ -1,16 +1,15 @@
-﻿using Discord;
-using Discord.WebSocket;
-using IodemBot.Core.Leveling;
-using IodemBot.Core.UserManagement;
-using IodemBot.Extensions;
-using IodemBot.Modules.GoldenSunMechanics;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Timers;
-using static IodemBot.Modules.ColossoBattles.ColossoBattle;
+using Discord;
+using Discord.WebSocket;
+using IodemBot.Core.Leveling;
+using IodemBot.Core.UserManagement;
+using IodemBot.Extensions;
+using IodemBot.Modules.GoldenSunMechanics;
 
 namespace IodemBot.Modules.ColossoBattles
 {
@@ -23,12 +22,14 @@ namespace IodemBot.Modules.ColossoBattles
             public ITextChannel teamChannel;
             public IUserMessage EnemyMessage = null;
             public IUserMessage StatusMessage = null;
+            public IUserMessage SummonsMessage = null;
+            public PlayerFighterFactory Factory = new PlayerFighterFactory() { LevelOption = LevelOption.SetLevel, SetLevel = 60 };
             public Dictionary<IUserMessage, PlayerFighter> PlayerMessages = new Dictionary<IUserMessage, PlayerFighter>();
         }
 
         private readonly uint PlayersToStartB = 4;
         private readonly List<SocketGuildUser> playersWithBRole = new List<SocketGuildUser>();
-        public static IRole TeamBRole;
+        public IRole TeamBRole;
 
         internal override ulong[] GetIds => new[] { Teams[Team.A].teamChannel.Id, Teams[Team.B].teamChannel.Id };
 
@@ -38,10 +39,11 @@ namespace IodemBot.Modules.ColossoBattles
             {Team.B, new PvPTeamCollector(){team = Team.B, enemies = Team.A } },
         };
 
-        public PvPEnvironment(string Name, ITextChannel lobbyChannel, ITextChannel teamAChannel, ITextChannel teamBChannel, uint playersToStart = 3, uint playersToStartB = 3) : base(Name, lobbyChannel)
+        public PvPEnvironment(string Name, ITextChannel lobbyChannel, bool isPersistent, ITextChannel teamAChannel, ITextChannel teamBChannel, IRole TeamBRole, uint playersToStart = 3, uint playersToStartB = 3) : base(Name, lobbyChannel, isPersistent)
         {
             PlayersToStart = playersToStart;
             PlayersToStartB = playersToStartB;
+            this.TeamBRole = TeamBRole;
             Teams[Team.A].teamChannel = teamAChannel;
             Teams[Team.B].teamChannel = teamBChannel;
             Initialize();
@@ -59,8 +61,9 @@ namespace IodemBot.Modules.ColossoBattles
                     Emote.Parse("<:Fight_B:592374736248373279>"),
                     Emote.Parse("<:Battle:536954571256365096>")
                 });
-
+            A.SummonsMessage = await A.teamChannel.SendMessageAsync("Good Luck!");
             B.EnemyMessage = await B.teamChannel.SendMessageAsync($"Welcome to {Name}, Team B. Please wait til the battle has started.");
+            B.SummonsMessage = await B.teamChannel.SendMessageAsync("Good Luck!");
             return;
         }
 
@@ -130,23 +133,23 @@ namespace IodemBot.Modules.ColossoBattles
             }
             autoTurn = new Timer()
             {
-                Interval = 25000,
+                Interval = 60000,
                 AutoReset = false,
                 Enabled = false
             };
             autoTurn.Elapsed += TurnTimeElapsed;
             resetIfNotActive = new Timer()
             {
-                Interval = 120000,
+                Interval = 240000,
                 AutoReset = false,
                 Enabled = false
             };
-            resetIfNotActive.Elapsed += BattleWasNotStartetInTime;
+            resetIfNotActive.Elapsed += BattleWasNotStartedInTime;
 
             Console.WriteLine("Battle was reset.");
         }
 
-        private async void BattleWasNotStartetInTime(object sender, ElapsedEventArgs e)
+        private async void BattleWasNotStartedInTime(object sender, ElapsedEventArgs e)
         {
             await Reset();
         }
@@ -162,8 +165,7 @@ namespace IodemBot.Modules.ColossoBattles
             var winners = Battle.GetTeam(Battle.GetWinner());
             var losers = winners.First().battle.GetTeam(winners.First().enemies);
 
-            winners.ConvertAll(s => (PlayerFighter)s).ForEach(async p => await ServerGames.UserWonBattle(p.avatar, 1, 0, p.battleStats, BattleDifficulty.Easy, lobbyChannel, winners, false));
-            losers.ConvertAll(s => (PlayerFighter)s).ForEach(async p => await ServerGames.UserLostBattle(p.avatar, lobbyChannel));
+            winners.ConvertAll(s => (PlayerFighter)s).ForEach(async p => await ServerGames.UserWonPvP(p.avatar, lobbyChannel, winners.Count, losers.Count));
 
             _ = WriteGameOver();
             await Task.CompletedTask;
@@ -171,15 +173,15 @@ namespace IodemBot.Modules.ColossoBattles
 
         private async Task WriteGameOver()
         {
-            await Task.Delay(2000);
+            await Task.Delay(5000);
             var winners = Battle.GetTeam(Battle.GetWinner());
-            var text = $"{winners.FirstOrDefault().Name}'s Party wins! Battle will reset shortly";
+            var text = $"{winners.FirstOrDefault().Name}'s Party wins! Battle will reset shortly.";
 
             _ = Teams[Team.A].StatusMessage.ModifyAsync(m => { m.Content = text; m.Embed = null; });
             _ = Teams[Team.B].StatusMessage.ModifyAsync(m => { m.Content = text; m.Embed = null; });
 
-            await Task.Delay(2000);
-            await Reset();
+            await Task.Delay(5000);
+            _ = Reset();
         }
 
         protected override async Task ProcessReaction(Cacheable<IUserMessage, ulong> cache, ISocketMessageChannel channel, SocketReaction reaction)
@@ -300,7 +302,7 @@ namespace IodemBot.Modules.ColossoBattles
                         }
                     }
 
-                    if (!curPlayer.Select(reaction.Emote.Name))
+                    if (!curPlayer.Select(reaction.Emote))
                     {
                         _ = c.RemoveReactionAsync(reaction.Emote, reaction.User.Value);
                         Console.WriteLine("Couldn't select that move.");
@@ -337,11 +339,7 @@ namespace IodemBot.Modules.ColossoBattles
             }
             var playerAvatar = UserAccounts.GetAccount(player);
 
-            var factory = new PlayerFighterFactory()
-            {
-                LevelOption = LevelOption.SetLevel,
-                SetLevel = 60
-            };
+            var factory = Teams[team].Factory;
             var p = factory.CreatePlayerFighter(player);
             await AddPlayer(p, team);
         }
@@ -389,14 +387,16 @@ namespace IodemBot.Modules.ColossoBattles
             {
                 WriteStatus(),
                 WriteEnemies(),
+                WriteSummons(),
                 WritePlayers()
-            });
+            }); ;
         }
 
         protected override async Task WriteBattleInit()
         {
             await WriteStatusInit();
             await WriteEnemiesInit();
+            await WriteSummonsInit();
             await WritePlayersInit();
         }
 
@@ -449,7 +449,6 @@ namespace IodemBot.Modules.ColossoBattles
 
         protected virtual EmbedBuilder GetTeamAsEnemyEmbedBuilder(Team team)
         {
-            var tasks = new List<Task>();
             var e = new EmbedBuilder();
             if (Battle.SizeTeamB > 0)
             {
@@ -491,6 +490,71 @@ namespace IodemBot.Modules.ColossoBattles
             await WriteStatus();
         }
 
+        protected virtual async Task WriteSummonsInit()
+        {
+            _ = WriteSummonsReactions();
+            await WriteSummons();
+        }
+
+        protected virtual EmbedBuilder GetDjinnEmbedBuilder(PvPTeamCollector V)
+        {
+            var allDjinn = V.PlayerMessages.Values.SelectMany(p => p.Moves.OfType<Djinn>()).ToList();
+            var standbyDjinn = allDjinn.Where(d => d.State == DjinnState.Standby);
+            var recoveryDjinn = allDjinn.Where(d => d.State == DjinnState.Recovery);
+            if (allDjinn.Count == 0) return null;
+            EmbedBuilder embed = new EmbedBuilder()
+                .WithThumbnailUrl("https://cdn.discordapp.com/attachments/497696510688100352/640300243820216336/unknown.png");
+
+            if (allDjinn.OfElement(Element.Venus).Count() > 0)
+            {
+                embed.AddField("Venus", $"{string.Join(" ", standbyDjinn.OfElement(Element.Venus).Select(d => d.Emote))} |" +
+                    $"{string.Join(" ", recoveryDjinn.OfElement(Element.Venus).Select(d => d.Emote))}", true);
+            }
+            if (allDjinn.OfElement(Element.Mars).Count() > 0)
+            {
+                embed.AddField("Mars", $"{string.Join(" ", standbyDjinn.OfElement(Element.Mars).Select(d => d.Emote))} |" +
+                    $"{string.Join(" ", recoveryDjinn.OfElement(Element.Mars).Select(d => d.Emote))}", true);
+            }
+            if (allDjinn.OfElement(Element.Jupiter).Count() > 0)
+            {
+                embed.AddField("Jupiter", $"{string.Join(" ", standbyDjinn.OfElement(Element.Jupiter).Select(d => d.Emote))} |" + $"{string.Join(" ", recoveryDjinn.OfElement(Element.Jupiter).Select(d => d.Emote))}", true);
+            }
+            if (allDjinn.OfElement(Element.Mercury).Count() > 0)
+            {
+                embed.AddField("Mercury", $"{string.Join(" ", standbyDjinn.OfElement(Element.Mercury).Select(d => d.Emote))} |" + $"{string.Join(" ", recoveryDjinn.OfElement(Element.Mercury).Select(d => d.Emote))}", true);
+            }
+            return embed;
+        }
+
+        protected virtual async Task WriteSummonsReactions()
+        {
+            Teams.Values.ToList().ForEach(V =>
+            {
+                _ = V.SummonsMessage.AddReactionsAsync(V.Factory.PossibleSummons.Select(s => s.GetEmote()).ToArray());
+            });
+            await Task.CompletedTask;
+        }
+
+        protected virtual async Task WriteSummons()
+        {
+            Teams.Values.ToList().ForEach(V =>
+            {
+                var tasks = new List<Task>();
+                var embed = GetDjinnEmbedBuilder(V);
+                if (embed != null && (V.SummonsMessage.Embeds.Count == 0 || !V.SummonsMessage.Embeds.FirstOrDefault().ToEmbedBuilder().AllFieldsEqual(embed)))
+                {
+                    _ = V.SummonsMessage.ModifyAsync(m => m.Embed = embed.Build());
+                }
+
+                var validReactions = reactions.Where(r => r.MessageId == V.SummonsMessage.Id).ToList();
+                foreach (var r in validReactions)
+                {
+                    tasks.Add(V.SummonsMessage.RemoveReactionAsync(r.Emote, r.User.Value));
+                    reactions.Remove(r);
+                }
+            });
+            await Task.CompletedTask;
+        }
         protected virtual async Task WriteStatus()
         {
             List<Task> tasks = new List<Task>();
@@ -523,7 +587,7 @@ namespace IodemBot.Modules.ColossoBattles
         protected virtual async Task WritePlayers()
         {
             var tasks = new List<Task>();
-            Teams.Values.ToList().ForEach(async V =>
+            Teams.Values.ToList().ForEach((Action<PvPTeamCollector>)(async V =>
             {
                 int i = 1;
                 foreach (KeyValuePair<IUserMessage, PlayerFighter> k in V.PlayerMessages)
@@ -539,20 +603,20 @@ namespace IodemBot.Modules.ColossoBattles
                         reactions.Remove(r);
                     }
                     embed.WithThumbnailUrl(fighter.ImgUrl);
-                    embed.WithColor(Colors.Get(fighter.Moves.Where(m => m is Psynergy).Select(m => (Psynergy)m).Select(p => p.element.ToString()).ToArray()));
+                    embed.WithColor(Colors.Get(fighter.Moves.Where(m => m is Psynergy).Select(m => (Psynergy)m).Select(p => p.Element.ToString()).ToArray()));
                     embed.AddField($"{numberEmotes[i]}{fighter.ConditionsToString()}", fighter.Name, true);
                     embed.AddField("HP", $"{fighter.Stats.HP} / {fighter.Stats.MaxHP}", true);
                     embed.AddField("PP", $"{fighter.Stats.PP} / {fighter.Stats.MaxPP}", true);
                     var s = new List<string>();
                     foreach (var m in fighter.Moves)
                     {
-                        if (m is Psynergy)
+                        if (m is Psynergy psynergy)
                         {
-                            s.Add($"{m.emote} {m.name} {((Psynergy)m).PPCost}");
+                            s.Add($"{m.Emote} {m.Name} {psynergy.PPCost}");
                         }
                         else
                         {
-                            s.Add($"{m.emote} {m.name}");
+                            s.Add($"{m.Emote} {m.Name}");
                         }
                     }
                     embed.AddField("Psynergy", string.Join(" | ", s));
@@ -562,14 +626,14 @@ namespace IodemBot.Modules.ColossoBattles
                         tasks.Add(msg.ModifyAsync(m => { m.Content = $""; m.Embed = embed.Build(); }));
                     }
 
-                    if (fighter is PlayerFighter && ((PlayerFighter)fighter).AutoTurnsInARow >= 2)
+                    if (fighter is PlayerFighter fighter1 && fighter.AutoTurnsInARow >= 2)
                     {
-                        var ping = await msg.Channel.SendMessageAsync($"<@{((PlayerFighter)fighter).avatar.ID}>");
+                        var ping = await msg.Channel.SendMessageAsync($"<@{fighter1.avatar.ID}>");
                         await ping.DeleteAsync();
                     }
                     i++;
                 }
-            });
+            }));
             await Task.WhenAll(tasks);
         }
 

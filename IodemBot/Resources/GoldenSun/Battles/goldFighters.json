@@ -67,14 +67,19 @@
         {
             "name": "Cursed Saturos",
             "imgurl": "https://cdn.discordapp.com/attachments/535823094489677824/536542531949953024/emo_saturos.png",
-            "movepool": [
-                "Liquifier",
-                "Planetary",
-                "Dire Inferno",
-                "Rolling Flame",
-                "Meteor Blow",
-                "Vicious Chop"
-            ],
+          "movepool": [
+            "Liquifier",
+            "Liquifier",
+            "Planetary",
+            "Planetary",
+            "Rolling Flame",
+            "Rolling Flame",
+            "Dire Inferno",
+            "Dire Inferno",
+            "Vicious Chop",
+            "Vicious Chop",
+            "Meteor Blow"
+          ],
             "stats": {
                 "maxHP": 66666,
                 "maxPP": 666,
@@ -122,8 +127,8 @@
             ],
             "stats": {
                 "maxHP": 3333,
-                "maxPP": 400,
-                "Atk": 400,
+                "maxPP": 333,
+                "Atk": 333,
                 "Def": 200,
                 "Spd": 200
             },
@@ -151,13 +156,13 @@
     ],
     [
         {
-            "name": ":b:ire Djinn",
+            "name": ":b:ars Djinn",
             "movepool": [ "Supernova", "Searing Beam", "Pyroclasm", "Dire Inferno", "Vicious Chop", "Epicenter", "Star Mine", "Meteor Blow" ],
             "imgurl": "https://pbs.twimg.com/media/DxrDsW8VYAAcXDr.jpg",
             "stats": {
-                "maxhp": 4444,
+                "maxhp": 2222,
                 "maxpp": 200,
-                "atk": 450,
+                "atk": 420,
                 "def": 147,
                 "spd": 200
             },
@@ -166,11 +171,11 @@
                 "venusres": 175,
                 "jupiterres": 150,
                 "mercuryres": 25,
-                "marsatk": 150
+                "marsatk": 135
             },
             "extraturns": 1,
-            "HPRecovery": 300,
-            "PPRecovery": 30,
+            "HPRecovery": 222,
+            "PPRecovery": 22,
             "isImmuneToConditions": [
                 "Haunt",
                 "DeathCurse",
@@ -661,37 +666,37 @@
         }
     ],
     [
-        {
-            "name": "Serpent",
-            "imgurl": "https://goldensunwiki.net/w/images/8/89/Serpent.png",
-            "movepool": [
-                "Briar",
-                "Quake Sphere",
-                "Cure",
-                "Toxic Grit",
-                "Mighty Press",
-                "Black Ice"
-            ],
-            "stats": {
-                "maxHP": 3536,
-                "maxPP": 249,
-                "Atk": 516,
-                "Def": 76,
-                "Spd": 87
-            },
-            "elstats": {
-                "VenusAtk": 110,
-                "VenusRes": 152,
-                "MarsAtk": 100,
-                "MarsRes": 100,
-                "JupiterAtk": 100,
-                "JupiterRes": 48,
-                "MercuryAtk": 100,
-                "MercuryRes": 100
-            },
-            "HPRecovery": 270,
-            "extraTurns": 2
-        }
+      {
+        "name": "Serpent",
+        "imgurl": "https://cdn.discordapp.com/attachments/696352535568711711/731505520787062814/Document_3_2.jpg",
+        "movepool": [
+          "Briar",
+          "Quake Sphere",
+          "Cure",
+          "Toxic Grit",
+          "Mighty Press",
+          "Black Ice"
+        ],
+        "stats": {
+          "maxHP": 3536,
+          "maxPP": 249,
+          "Atk": 516,
+          "Def": 76,
+          "Spd": 87
+        },
+        "elstats": {
+          "VenusAtk": 110,
+          "VenusRes": 152,
+          "MarsAtk": 100,
+          "MarsRes": 100,
+          "JupiterAtk": 100,
+          "JupiterRes": 48,
+          "MercuryAtk": 100,
+          "MercuryRes": 100
+        },
+        "HPRecovery": 270,
+        "extraTurns": 2
+      }
     ],
     [
         {
@@ -735,7 +740,6 @@
             "movepool": [
                 "Phoenix",
                 "Phoenix",
-                "Phoenix",
                 "Fire Dance",
                 "Pyroclasm",
                 "Searing Beam",
@@ -764,7 +768,6 @@
             "name": "Wonder Bird 2",
             "imgurl": "",
             "movepool": [
-                "Phoenix",
                 "Phoenix",
                 "Phoenix",
                 "Fire Dance",
@@ -943,7 +946,7 @@
                 "Massive Swing"
             ],
             "stats": {
-                "maxHP": 16066,
+                "maxHP": 12066,
                 "maxPP": 380,
                 "Atk": 637,
                 "Def": 242,
@@ -959,7 +962,7 @@
                 "MercuryAtk": 100,
                 "MercuryRes": 48
             },
-            "HPRecovery": 250,
+            "HPRecovery": 200,
             "extraTurns": 1,
             "isImmuneToConditions": [
                 "Stun",

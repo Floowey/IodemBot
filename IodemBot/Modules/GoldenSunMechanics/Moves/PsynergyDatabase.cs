@@ -1,15 +1,15 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using Newtonsoft.Json;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
     public class PsynergyDatabase
     {
-        private static Dictionary<string, OffensivePsynergy> offpsy = new Dictionary<string, OffensivePsynergy>(StringComparer.OrdinalIgnoreCase);
-        private static Dictionary<string, HealPsynergy> healpsy = new Dictionary<string, HealPsynergy>(StringComparer.OrdinalIgnoreCase);
-        private static Dictionary<string, StatusPsynergy> statpsy = new Dictionary<string, StatusPsynergy>(StringComparer.OrdinalIgnoreCase);
+        private static readonly Dictionary<string, OffensivePsynergy> offpsy = new Dictionary<string, OffensivePsynergy>(StringComparer.OrdinalIgnoreCase);
+        private static readonly Dictionary<string, HealPsynergy> healpsy = new Dictionary<string, HealPsynergy>(StringComparer.OrdinalIgnoreCase);
+        private static readonly Dictionary<string, StatusPsynergy> statpsy = new Dictionary<string, StatusPsynergy>(StringComparer.OrdinalIgnoreCase);
 
         static PsynergyDatabase()
         {
@@ -49,17 +49,30 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 return (HealPsynergy)hp.Clone();
             }
 
-            if (psynergy == "Mystic Call")
-            {
-                Console.Write("Hi");
-            }
             if (statpsy.TryGetValue(psynergy, out StatusPsynergy sp))
             {
                 return (StatusPsynergy)sp.Clone();
             }
 
-            Console.WriteLine($"{psynergy} is not implemented.");
-            return new OffensivePsynergy($"{psynergy} (Not Implemented!)", "⛔", Target.otherSingle, 1, new List<EffectImage>() { new EffectImage() { Id = "NoEffect" } }, Psynergy.Element.none, 0, 1, 0, 1);
+            //Console.WriteLine($"{psynergy} is not implemented.");
+            return new StatusPsynergy()
+            {
+                Name = $"{psynergy} (NOT IMPLEMENTED)",
+                Effects = new List<Effect>() { new NoEffect() }
+            };
+        }
+
+        public static bool TryGetPsynergy(string psynergy, out Psynergy psy)
+        {
+            psy = GetPsynergy(psynergy);
+            if (psy.Name.ToLower().Contains("not implemented"))
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
 
         public static Psynergy[] GetPsynergy(string[] psynergiesString)
@@ -80,7 +93,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             return psynergies.ToArray();
         }
 
-        public static Move[] GetMovepool(string[] psynergiesString, bool hasAttack, bool hasDefend)
+        public static List<Move> GetMovepool(string[] psynergiesString, bool hasAttack, bool hasDefend)
         {
             List<Move> moves = new List<Move>();
             if (hasAttack)
@@ -96,7 +109,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
             moves.AddRange(GetPsynergy(psynergiesString));
 
-            return moves.ToArray();
+            return moves;
         }
 
         public static T Clone<T>(T source)

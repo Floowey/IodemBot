@@ -1,13 +1,11 @@
-﻿using IodemBot.Core.UserManagement;
+﻿using System;
+using System.Collections.Generic;
+using IodemBot.Core.UserManagement;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using System;
-using System.Collections.Generic;
-using static IodemBot.Modules.GoldenSunMechanics.Psynergy;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
-    //public enum Requirement { Level, Colosso, Command};
     internal class AdeptClassSeries
     {
         public static Dictionary<string, IRequirement> DictReq;
@@ -27,7 +25,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             int classNr;
             try
             {
-                classNr = Math.Min(Classes.Length - 1, DictReq[Requirement].apply(User));
+                classNr = Math.Min(Classes.Length - 1, DictReq[Requirement].Apply(User));
             }
             catch
             {
@@ -50,7 +48,13 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 { "SoloBattles", new SoloBattleRequirement() },
                 { "Teammates", new TeammatesRequirement() },
                 { "DaysActive", new DaysActiveRequirement() },
-                { "UnlockedClasses", new UnlockedClassesRequirement() }
+                { "UnlockedClasses", new UnlockedClassesRequirement() },
+                { "Djinn", new DjinnRequirement() },
+                { "DungeonsCompleted", new DungeonsCompletedRequirement()},
+                { "VenusDjinn", new VenusDjinnRequirement()},
+                { "MarsDjinn", new MarsDjinnRequirement()},
+                { "JupiterDjinn", new JupiterDjinnRequirement()},
+                { "MercuryDjinn", new MercuryDjinnRequirement()}
             };
         }
 

@@ -1,16 +1,16 @@
-﻿using Discord;
-using Discord.Commands;
-using Iodembot.Preconditions;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Discord;
+using Discord.Commands;
+using Iodembot.Preconditions;
 
 namespace IodemBot.Modules
 {
     public class Help : ModuleBase<SocketCommandContext>
     {
-        private CommandService _service;
+        private readonly CommandService _service;
         private int _fieldRange = 10;
 
         public Help(CommandService service)
@@ -31,11 +31,11 @@ namespace IodemBot.Modules
             var builder = new EmbedBuilder()
             {
                 Title = "Help",
-                Description = $"These are the commands you can use in {contextString}",
+                Description = $"These are the commands you can use in {contextString}. Brackets `( )` denote alternative usages.",
                 Color = new Color(114, 137, 218)
             };
 
-            foreach (var module in _service.Modules)
+            foreach (var module in _service.Modules.OrderBy(m => m.Name))
             {
                 await AddModuleEmbedField(module, builder);
             }
@@ -108,8 +108,8 @@ namespace IodemBot.Modules
                 var cmd = match.Command;
                 var parameters = cmd.Parameters.Select(p => string.IsNullOrEmpty(p.Summary) ? p.Name : p.Summary);
                 var paramsString = $"Parameters: {string.Join(", ", parameters)}" +
-                                   (string.IsNullOrEmpty(cmd.Remarks) ? "" : $"\nRemarks: {cmd.Remarks}") +
-                                   (string.IsNullOrEmpty(cmd.Summary) ? "" : $"\nSummary: {cmd.Summary}");
+                                   (string.IsNullOrEmpty(cmd.Summary) ? "" : $"\nSummary: {cmd.Summary}") +
+                                   (string.IsNullOrEmpty(cmd.Remarks) ? "" : $"\nRemarks: {cmd.Remarks}");
 
                 builder.AddField(x =>
                 {
@@ -139,7 +139,7 @@ namespace IodemBot.Modules
 
             var descriptionBuilder = new List<string>();
             var duplicateChecker = new List<string>();
-            foreach (var cmd in module.Commands)
+            foreach (var cmd in module.Commands.OrderBy(c => c.Name))
             {
                 var result = await cmd.CheckPreconditionsAsync(Context);
                 if (!result.IsSuccess || duplicateChecker.Contains(cmd.Aliases.First()))
@@ -148,7 +148,10 @@ namespace IodemBot.Modules
                 }
 
                 duplicateChecker.Add(cmd.Aliases.First());
-                var cmdDescription = $"`{cmd.Aliases.First()}`";
+                var addDesc = string.Join("`, `", cmd.Aliases.Where(c => c.Length <= 3 && c != cmd.Aliases.First()));
+                addDesc = addDesc.Length > 0 ? $" (`{addDesc}`)" : "";
+                var cmdDescription = $"`{cmd.Aliases.First()}`{addDesc}";
+                //var cmdDescription = $"`{string.Join("`, `", cmd.Aliases)}`";
                 if (!string.IsNullOrEmpty(cmd.Summary))
                 {
                     cmdDescription += $" | {cmd.Summary}";
@@ -174,7 +177,9 @@ namespace IodemBot.Modules
             var testLength = builtString.Length;
             if (testLength >= 1024)
             {
-                throw new ArgumentException("Value cannot exceed 1024 characters");
+                Console.WriteLine(testLength);
+                builtString = builtString.Substring(0, 1000);
+                //throw new ArgumentException("Value cannot exceed 1024 characters");
             }
             var moduleNotes = "";
             if (!string.IsNullOrEmpty(module.Summary))

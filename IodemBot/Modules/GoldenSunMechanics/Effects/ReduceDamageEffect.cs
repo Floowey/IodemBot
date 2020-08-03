@@ -1,13 +1,15 @@
-﻿using IodemBot.Extensions;
-using IodemBot.Modules.ColossoBattles;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using IodemBot.Extensions;
+using IodemBot.Modules.ColossoBattles;
+using Newtonsoft.Json;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
-    internal class ReduceDamageEffect : IEffect
+    internal class ReduceDamageEffect : Effect
     {
-        private readonly int damageReduction = 0;
+        public override string Type { get; } = "ReduceDamage";
+        [JsonProperty] private int DamageReduction { get; set; } = 0;
 
         public override List<string> Apply(ColossoFighter User, ColossoFighter Target)
         {
@@ -17,28 +19,29 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 return log;
             }
 
-            Target.defensiveMult *= (double)(100 - damageReduction) / 100;
+            Target.defensiveMult *= (double)(100 - DamageReduction) / 100;
 
             return log;
         }
 
-        public ReduceDamageEffect(string[] args)
-        {
-            if (args.Length == 1)
-            {
-                int.TryParse(args[0], out damageReduction);
-            }
-        }
-
         protected override int InternalChooseBestTarget(List<ColossoFighter> targets)
         {
-            var target = targets.Where(d => d.Name.Contains("Star")).FirstOrDefault() ?? targets.Random();
+            var target = targets.Where(d => d.Name.Contains("Star")).FirstOrDefault() ?? targets.Where(t => t.IsAlive).Random();
             return targets.IndexOf(target);
+        }
+
+        protected override bool InternalValidSelection(ColossoFighter user)
+        {
+            if (base.InternalValidSelection(user))
+            {
+                return user.GetTeam().Count(t => t.IsAlive) > 1;
+            }
+            return false;
         }
 
         public override string ToString()
         {
-            return $"Reduces damage taken by {damageReduction}%";
+            return $"Reduces damage taken by {DamageReduction}%";
         }
     }
 }

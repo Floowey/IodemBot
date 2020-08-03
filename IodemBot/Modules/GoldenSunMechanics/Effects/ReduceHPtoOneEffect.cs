@@ -1,19 +1,12 @@
-﻿using IodemBot.Modules.ColossoBattles;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using IodemBot.Modules.ColossoBattles;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
-    public class ReduceHPtoOneEffect : IEffect
+    public class ReduceHPtoOneEffect : Effect
     {
-        private readonly int Probability = 10;
-
-        public ReduceHPtoOneEffect(string[] args)
-        {
-            if (args.Length == 1)
-            {
-                int.TryParse(args[0], out Probability);
-            }
-        }
+        public override string Type { get; } = "ReduceHPToOne";
+        private int Probability { get; set; } = 10;
 
         public override List<string> Apply(ColossoFighter User, ColossoFighter Target)
         {

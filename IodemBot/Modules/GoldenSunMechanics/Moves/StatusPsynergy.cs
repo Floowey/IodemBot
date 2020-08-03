@@ -1,15 +1,12 @@
-﻿using IodemBot.Modules.ColossoBattles;
+﻿using System.Collections.Generic;
+using IodemBot.Extensions;
+using IodemBot.Modules.ColossoBattles;
 using Newtonsoft.Json;
-using System.Collections.Generic;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
     internal class StatusPsynergy : Psynergy
     {
-        public StatusPsynergy(string name, string emote, Target targetType, uint range, List<EffectImage> effectImages, Element element, uint PPCost) : base(name, emote, targetType, range, effectImages, element, PPCost)
-        {
-        }
-
         public override object Clone()
         {
             var serialized = JsonConvert.SerializeObject(this);
@@ -19,13 +16,13 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public override void InternalChooseBestTarget(ColossoFighter User)
         {
-            if (effects.Count > 0)
+            if (Effects.Count > 0)
             {
-                targetNr = effects[0].ChooseBestTarget(OnEnemy ? User.GetEnemies() : User.GetTeam());
+                TargetNr = Effects[0].ChooseBestTarget(OnEnemy ? User.GetEnemies() : User.GetTeam());
             }
             else
             {
-                targetNr = 0;
+                TargetNr = 0;
             }
         }
 
@@ -36,9 +33,9 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 return false;
             }
 
-            if (effects.Count > 0)
+            if (Effects.Count > 0)
             {
-                return effects[0].ValidSelection(User);
+                return Effects[0].ValidSelection(User);
             }
 
             return true;
@@ -55,12 +52,12 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 if (PPCost > 1 && User.GetEnemies().Contains(t) && t.IsImmuneToPsynergy)
                 {
                     log.Add($"{t.Name} protects themselves with a magical barrier.");
-                    return log;
+                    continue;
                 }
-                effects.ForEach(e => log.AddRange(e.Apply(User, t)));
-                if (User is PlayerFighter)
+                log.AddRange(Effects.ApplyAll(User, t));
+                if (User is PlayerFighter p)
                 {
-                    ((PlayerFighter)User).battleStats.Supported++;
+                    p.battleStats.Supported++;
                 }
             }
 
@@ -70,13 +67,13 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public override string ToString()
         {
             string target = "";
-            switch (targetType)
+            switch (TargetType)
             {
                 case Target.self: target = "the User"; break;
                 case Target.ownSingle: target = "a party member"; break;
                 case Target.ownAll: target = "the Party"; break;
                 case Target.otherSingle: target = "an enemy"; break;
-                case Target.otherRange: target = $"a range of {range} enemies"; break;
+                case Target.otherRange: target = $"a range of {Range} enemies"; break;
                 case Target.otherAll: target = "all enemies"; break;
             }
             return $"Apply an Effect to {target}.";

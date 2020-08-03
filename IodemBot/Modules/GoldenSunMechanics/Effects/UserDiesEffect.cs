@@ -1,13 +1,15 @@
-﻿using IodemBot.Modules.ColossoBattles;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using IodemBot.Modules.ColossoBattles;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
-    internal class UserDiesEffect : IEffect
+    internal class UserDiesEffect : Effect
     {
+        public override string Type { get; } = "UserDies";
+
         public UserDiesEffect()
         {
-            timeToActivate = TimeToActivate.beforeDamge;
+            ActivationTime = TimeToActivate.beforeDamge;
         }
 
         public override List<string> Apply(ColossoFighter User, ColossoFighter Target)
@@ -18,7 +20,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             }
 
             User.Kill();
-            return new List<string>() { $"{User.Name}'s goes down from exhaustion." };
+            return new List<string>() { $"{User.Name} goes down from exhaustion." };
         }
 
         public override string ToString()

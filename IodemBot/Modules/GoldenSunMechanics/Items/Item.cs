@@ -1,32 +1,14 @@
-﻿using Discord;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
-using static IodemBot.Modules.GoldenSunMechanics.Psynergy;
+using Discord;
+using IodemBot.Extensions;
+using Newtonsoft.Json;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
-    public enum ItemType
-    {
-        Collectible,
-        LongSword, Axe, Staff, LightBlade, Mace, Bow, Claw,
-        Shield, Bracelet, Glove,
-        HeavyArmor, Robe, LightArmor,
-        Helmet, Hat, Circlet, Crown,
-        UnderWear,
-        Boots, Greave,
-        Ring, Misc
-    }
-
-    public enum ItemCategory
-    {
-        Weapon, ArmWear, ChestWear, HeadWear, UnderWear, FootWear, Accessoire, Other
-    }
-
     public class Item : ICloneable
     {
         private static readonly Dictionary<ItemCategory, ItemType[]> ItemCategorization = new Dictionary<ItemCategory, ItemType[]>()
@@ -43,11 +25,25 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public static readonly ItemCategory[] Equippables = new[] { ItemCategory.Weapon, ItemCategory.ArmWear, ItemCategory.ChestWear, ItemCategory.HeadWear, ItemCategory.UnderWear, ItemCategory.FootWear, ItemCategory.Accessoire };
 
-        public string Name { get; set; }
-        internal string NameAndBroken { get { return $"{Name}{(IsBroken ? "(B)" : "")}"; } }
+        public string Name { get { return Nickname.IsNullOrEmpty() ? Itemname : Nickname; } set { Itemname = value; } }
+
+        public string Nickname { get; set; }
+        public string Itemname { get; set; }
+
+        internal string NameToSerialize { get { return $"{Itemname}{(IsAnimated ? "(A)" : "")}{(IsBroken ? "(B)" : "")}{(!Nickname.IsNullOrEmpty() ? $"|{Nickname}" : "")}"; } }
         public string IconDisplay { get { return $"{(IsBroken ? "(" : "")}{Icon}{(IsBroken ? ")" : "")}"; } }
-        public string Icon { get; set; }
+        public string Icon { get { return IsAnimated ? AnimatedIcon : NormalIcon; } set { NormalIcon = value; } }
+
+        public string NormalIcon { get; set; }
+        public string AnimatedIcon { get; set; }
+        [JsonIgnore] internal bool IsAnimated = false;
+        [JsonIgnore] internal bool CanBeAnimated { get { return !IsAnimated && !AnimatedIcon.IsNullOrEmpty(); } }
+
+        public string Sprite { get { return IsAnimated ? AnimatedIcon : Icon; } }
+
         public uint Price { get; set; }
+
+        public ItemRarity Rarity { get; set; }
 
         public Color Color
         {
@@ -61,7 +57,6 @@ namespace IodemBot.Modules.GoldenSunMechanics
         [JsonIgnore]
         public uint SellValue { get { return (uint)(Price / (IsBroken ? 10 : 2)); } }
 
-        [JsonConverter(typeof(StringEnumConverter))]
         public ItemType ItemType { get; set; }
 
         public ItemCategory Category
@@ -163,7 +158,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
             if (IsUnleashable)
             {
-                various.Add($"{(Category == ItemCategory.Weapon ? "" : $"{(GrantsUnleash ? "Adds an Effect to your Artifacts Unleash: " : $"{(ChanceToActivate < 100 ? "May target" : "Targets")} the Wearer with an Effect: ")}")}{Unleash.ToString()}");
+                various.Add($"{(Category == ItemCategory.Weapon ? "" : $"{(GrantsUnleash ? "Adds an Effect to your Artifacts Unleash: " : $"{(ChanceToActivate < 100 ? "May target" : "Targets")} the Wearer with an Effect: ")}")}{Unleash}");
             }
 
             if (CuresCurse)
@@ -180,6 +175,11 @@ namespace IodemBot.Modules.GoldenSunMechanics
             {
                 various.Add("This cap illuminates the area and will make you and your team find chests more easily. But watch out, it might attract more enemies!");
             }
+
+            if (CanBeAnimated)
+            {
+                various.Add($"Polishable");
+            }
             s.Append(string.Join(" | ", various));
             return s.ToString();
         }
@@ -193,29 +193,20 @@ namespace IodemBot.Modules.GoldenSunMechanics
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         public Element UnleashAlignment { get; set; }
 
-        [JsonIgnore] internal List<IEffect> DefaultEffects { get; set; }
-        [JsonProperty] internal List<EffectImage> EffectImages { get; set; }
-        [JsonIgnore] internal List<IEffect> AdditionalEffects { get; set; } = new List<IEffect>();
+        [JsonProperty]
+        public List<Effect> Effects { get; set; } = new List<Effect>();
+
+        [JsonIgnore] internal List<Effect> AdditionalEffects { get; set; } = new List<Effect>();
 
         [JsonIgnore]
-        public List<IEffect> Effects
+        public List<Effect> AllEffects
         {
             get
             {
-                var eff = new List<IEffect>();
-                eff.AddRange(DefaultEffects);
+                var eff = new List<Effect>();
+                eff.AddRange(Effects);
                 eff.AddRange(AdditionalEffects);
                 return eff;
-            }
-        }
-
-        public Unleash(List<EffectImage> effectImages)
-        {
-            DefaultEffects = new List<IEffect>();
-            EffectImages = effectImages;
-            if (effectImages != null)
-            {
-                effectImages.ForEach(e => DefaultEffects.Add(IEffect.EffectFactory(e.Id, e.Args)));
             }
         }
 
@@ -227,7 +218,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 s.Append(UnleashName);
             }
 
-            if (Effects.Count > 0)
+            if (AllEffects.Count > 0)
             {
                 if (UnleashName != null)
                 {
@@ -238,7 +229,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 {
                     s.Append(GoldenSun.ElementIcons[UnleashAlignment]);
                 }
-                s.Append(string.Join(", ", Effects.Select(e => $"{e.ToString()}")));
+                s.Append(string.Join(", ", AllEffects.Select(e => $"{e}")));
                 if (UnleashName != null)
                 {
                     s.Append(")");

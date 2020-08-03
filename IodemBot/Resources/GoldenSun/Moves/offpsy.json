@@ -1,2022 +1,3003 @@
 {
-    "Brutal Swing": {
-        "name": "Brutal Swing",
-        "targetType": 4,
-        "emote": "<:Rampage:537766290031509524>",
-        "range": 2,
-        "element": 4,
-        "PPCost": 0,
-        "dmgMult": 0.8
-    },
-    "Ragnarok": {
-        "name": "Ragnarok",
-        "targetType": 3,
-        "emote": "<:Ragnarok:536958312164622346>",
-        "range": 1,
-        "element": 0,
-        "PPCost": 7,
-        "addDamage": 35
-    },
-    "Odyssey": {
-        "name": "Odyssey",
-        "targetType": 3,
-        "emote": "<:Odyssey:536958332229910529>",
-        "range": 1,
-        "element": 0,
-        "PPCost": 18,
-        "addDamage": 95
-    },
-    "Helm Splitter": {
-        "name": "Helm Splitter",
-        "targetType": 3,
-        "emote": "<:Skull_Splitter:536959343153774652>",
-        "range": 1,
-        "element": 0,
-        "effectImages": [
-            {
-                "id": "Stat",
-                "args": [ "Defense", "0.5", "80" ]
-            }
-        ],
-        "PPCost": 8,
-        "addDamage": 30
-    },
-    "Skull Splitter": {
-        "name": "Skull Splitter",
-        "targetType": 3,
-        "emote": "<:Skull_Splitter:536959343153774652>",
-        "range": 1,
-        "element": 0,
-        "effectImages": [
-            {
-                "id": "ChanceToOHKO",
-                "args": [ "5" ]
-            }
-        ],
-        "PPCost": 8,
-        "addDamage": 30
-    },
-    "Annihilation": {
-        "name": "Annihilation",
-        "targetType": 3,
-        "emote": "<:Annihilation:536959197288464393>",
-        "range": 1,
-        "element": 0,
-        "effectImages": [
-            {
-                "id": "ChanceToOHKO",
-                "args": [ "10" ]
-            }
-        ],
-        "PPCost": 18,
-        "dmgMult": 1.5
-    },
-    "Call Demon": {
-        "name": "Call Demon",
-        "targetType": 3,
-        "emote": "<:Call_Demon:536984582503792640>",
-        "range": 1,
-        "element": 0,
-        "PPCost": 13,
-        "dmgMult": 1.9
-    },
-    "Quake": {
-        "name": "Quake",
-        "targetType": 4,
-        "emote": "<:Quake:536958036472889346>",
-        "range": 2,
-        "element": 0,
-        "PPCost": 4,
-        "power": 25
-    },
-    "Earthquake": {
-        "name": "Earthquake",
-        "targetType": 4,
-        "emote": "<:Earthquake:536958057930948658>",
-        "range": 3,
-        "element": 0,
-        "PPCost": 7,
-        "power": 45
-    },
-    "Quake Sphere": {
-        "name": "Quake Sphere",
-        "targetType": 4,
-        "emote": "<:Quake_Sphere:536958077837246503>",
-        "range": 4,
-        "element": 0,
-        "PPCost": 15,
-        "power": 65
-    },
-    "Growth": {
-        "name": "Growth",
-        "targetType": 3,
-        "emote": "<:Growth:536958420855554048>",
-        "range": 1,
-        "element": 0,
-        "PPCost": 4,
-        "power": 25
-    },
-    "Mad Growth": {
-        "name": "Mad Growth",
-        "targetType": 4,
-        "emote": "<:Mad_Growth:536958442364207105>",
-        "range": 2,
-        "element": 0,
-        "PPCost": 10,
-        "power": 60
-    },
-    "Wild Growth": {
-        "name": "Wild Growth",
-        "targetType": 4,
-        "emote": "<:Wild_Growth:536958522252984334>",
-        "range": 3,
-        "element": 0,
-        "PPCost": 19,
-        "power": 110
-    },
-    "Punji": {
-        "name": "Punji",
-        "targetType": 4,
-        "emote": "<:Punji:536958777413337088>",
-        "range": 3,
-        "element": 0,
-        "PPCost": 7,
-        "power": 45
-    },
-    "Punji Trap": {
-        "name": "Punji Trap",
-        "targetType": 4,
-        "emote": "<:Punji_Trap:536958822841843722>",
-        "range": 3,
-        "element": 0,
-        "PPCost": 13,
-        "power": 85
-    },
-    "Punji Strike": {
-        "name": "Punji Strike",
-        "targetType": 4,
-        "emote": "<:Punji_Strike:536958839434641408>",
-        "range": 5,
-        "element": 0,
-        "PPCost": 24,
-        "power": 150
-    },
-    "Spire": {
-        "name": "Spire",
-        "targetType": 3,
-        "emote": "<:Spire:536957587594149899>",
-        "range": 1,
-        "element": 0,
-        "PPCost": 5,
-        "power": 40
-    },
-    "Clay Spire": {
-        "name": "Clay Spire",
-        "targetType": 4,
-        "emote": "<:Clay_Spire:536957628581150740>",
-        "range": 2,
-        "element": 0,
-        "PPCost": 13,
-        "power": 85
-    },
-    "Stone Spire": {
-        "name": "Stone Spire",
-        "targetType": 4,
-        "emote": "<:Stone_Spire:536957723422490646>",
-        "range": 2,
-        "element": 0,
-        "PPCost": 22,
-        "power": 160
-    },
-    "Toxic Grit": {
-        "name": "Toxic Grit",
-        "targetType": 4,
-        "emote": "<:curse:538074679492083742>",
-        "range": 3,
-        "element": 0,
-        "effectImages": [
-            {
-                "id": "Condition",
-                "args": [ "Poison", "25" ]
-            },
-            {
-                "id": "Condition",
-                "args": [ "Venom", "5" ]
-            }
-        ],
-        "PPCost": 23,
-        "power": 125
-    },
-    "Gaia": {
-        "name": "Gaia",
-        "targetType": 4,
-        "emote": "<:Gaia:536958106425491466>",
-        "range": 2,
-        "element": 0,
-        "PPCost": 7,
-        "power": 40
-    },
-    "Mother Gaia": {
-        "name": "Mother Gaia",
-        "targetType": 4,
-        "emote": "<:Mother_Gaia:536958190009712650>",
-        "range": 3,
-        "element": 0,
-        "PPCost": 17,
-        "power": 100
-    },
-    "Grand Gaia": {
-        "name": "Grand Gaia",
-        "targetType": 4,
-        "emote": "<:Grand_Gaia:536958235685552140>",
-        "range": 4,
-        "element": 0,
-        "PPCost": 32,
-        "power": 200
-    },
-    "Rockfall": {
-        "name": "Rockfall",
-        "targetType": 4,
-        "emote": "<:Rockfall:536959048948514816>",
-        "range": 2,
-        "element": 0,
-        "PPCost": 5,
-        "power": 30
-    },
-    "Rockslide": {
-        "name": "Rockslide",
-        "targetType": 4,
-        "emote": "<:Rockslide:536959083006263297>",
-        "range": 3,
-        "element": 0,
-        "PPCost": 15,
-        "power": 90
-    },
-    "Avalanche": {
-        "name": "Avalanche",
-        "targetType": 4,
-        "emote": "<:Avalanche:536959102019174411>",
-        "range": 4,
-        "element": 0,
-        "PPCost": 30,
-        "power": 160
-    },
-    "Thorn": {
-        "name": "Thorn",
-        "targetType": 4,
-        "emote": "<:Thorn:536958717888036865>",
-        "range": 2,
-        "element": 0,
-        "PPCost": 6,
-        "power": 35
-    },
-    "Briar": {
-        "name": "Briar",
-        "targetType": 4,
-        "emote": "<:Briar:536958574128136193>",
-        "range": 2,
-        "element": 0,
-        "PPCost": 11,
-        "power": 70
-    },
-    "Nettle": {
-        "name": "Nettle",
-        "targetType": 4,
-        "emote": "<:Nettle:536958600078426122>",
-        "range": 3,
-        "element": 0,
-        "effectImages": [
-            {
-                "id": "Condition",
-                "args": [ "Poison", "10" ]
-            }
-        ],
-        "PPCost": 23,
-        "power": 140
-    },
-    "Roaring Dragon": {
-        "name": "Roaring Dragon",
-        "targetType": 4,
-        "emote": "<:Roaring_Dragon:537985876173651968>",
-        "range": 2,
-        "element": 0,
-        "PPCost": 16,
-        "power": 120
-    },
-    "Slaying Dragon": {
-        "name": "Slaying Dragon",
-        "targetType": 4,
-        "emote": "<:Slaying_Dragon:537985876450344971>",
-        "range": 2,
-        "element": 0,
-        "PPCost": 32,
-        "power": 200
-    },
-    "Reigning Dragon": {
-        "name": "Reigning Dragon",
-        "targetType": 4,
-        "emote": "<:Reigning_Dragon:537985876421246986>",
-        "range": 2,
-        "element": 0,
-        "PPCost": 39,
-        "power": 280
-    },
-    "Undead Curse": {
-        "name": "Undead Curse",
-        "targetType": 3,
-        "emote": "<:Call_Zombie:536997673799122956>",
-        "range": 1,
-        "element": 0,
-        "effectImages": [
-            {
-                "id": "Condition",
-                "args": [ "Haunt", "33" ]
-            }
-        ],
-        "PPCost": 5,
-        "power": 40
-    },
-    "Undead Gloom": {
-        "name": "Undead Gloom",
-        "targetType": 3,
-        "emote": "💀",
-        "range": 1,
-        "element": 0,
-        "effectImages": [
-            {
-                "id": "Condition",
-                "args": [ "Haunt", "44" ]
-            }
-        ],
-        "PPCost": 15,
-        "power": 140
-    },
-    "Undead Might": {
-        "name": "Undead Might",
-        "targetType": 3,
-        "emote": "☠",
-        "range": 1,
-        "element": 0,
-        "effectImages": [
-            {
-                "id": "Condition",
-                "args": [ "Haunt", "55" ]
-            }
-        ],
-        "PPCost": 30,
-        "power": 250
-    },
-    "Psynergy Slam": {
-        "name": "Psynergy Slam",
-        "targetType": 3,
-        "emote": "<:Psynergy_Slam:537001160083767296>",
-        "range": 1,
-        "element": 0,
-        "PPCost": 12,
-        "dmgMult": 1.6
-    },
-    "Psynergy Surge": {
-        "name": "Psynergy Surge",
-        "targetType": 3,
-        "emote": "<:Psynergy_Surge:537368723770703875>",
-        "range": 1,
-        "element": 0,
-        "PPCost": 20,
-        "addDamage": 108
-    },
-    "Heat Wave": {
-        "name": "Heat Wave",
-        "targetType": 3,
-        "emote": "<:Heat_Wave:536963222201303060>",
-        "range": 1,
-        "element": 1,
-        "PPCost": 6,
-        "addDamage": 33
-    },
-    "Liquifier": {
-        "name": "Liquifier",
-        "targetType": 3,
-        "emote": "<:Liquifier:536963283601850394>",
-        "range": 1,
-        "element": 1,
-        "PPCost": 17,
-        "addDamage": 90
-    },
-    "Keelhaul": {
-        "name": "Keelhaul",
-        "targetType": 3,
-        "emote": "<:Keelhaul:537265959442841600>",
-        "range": 1,
-        "element": 1,
-        "PPCost": 6,
-        "power": 0,
-        "addDamage": 20,
-        "dmgMult": 1.4
-    },
-    "Vicious Chop": {
-        "name": "Vicious Chop",
-        "targetType": 3,
-        "emote": "<:Vicious_Chop:537265959384121366>",
-        "range": 1,
-        "element": 1,
-        "PPCost": 15,
-        "addDamage": 16,
-        "dmgMult": 2.0
-    },
-    "Fume": {
-        "name": "Fume",
-        "targetType": 3,
-        "emote": "<:Fume:536963958524084226>",
-        "range": 1,
-        "element": 1,
-        "PPCost": 6,
-        "power": 50
-    },
-    "Serpent Fume": {
-        "name": "Serpent Fume",
-        "targetType": 3,
-        "emote": "<:Serpent_Fume:536963980233670685>",
-        "range": 1,
-        "element": 1,
-        "PPCost": 14,
-        "power": 130
-    },
-    "Dragon Fume": {
-        "name": "Dragon Fume",
-        "targetType": 3,
-        "emote": "<:Dragon_Fume:536964000269860871>",
-        "range": 1,
-        "element": 1,
-        "PPCost": 35,
-        "power": 230
-    },
-    "Beam": {
-        "name": "Beam",
-        "targetType": 4,
-        "emote": "<:Beam:536963509519384587>",
-        "range": 2,
-        "element": 1,
-        "PPCost": 7,
-        "power": 45
-    },
-    "Cycle Beam": {
-        "name": "Cycle Beam",
-        "targetType": 4,
-        "emote": "<:Cycle_Beam:536963591719354369>",
-        "range": 3,
-        "element": 1,
-        "PPCost": 14,
-        "power": 80
-    },
-    "Searing Beam": {
-        "name": "Searing Beam",
-        "targetType": 4,
-        "emote": "<:Searing_Beam:536963764147322881>",
-        "range": 4,
-        "element": 1,
-        "PPCost": 36,
-        "power": 170
-    },
-    "Flare": {
-        "name": "Flare",
-        "targetType": 4,
-        "emote": "<:Flare:536965231201484829>",
-        "range": 2,
-        "element": 1,
-        "PPCost": 4,
-        "power": 15
-    },
-    "Flare Wall": {
-        "name": "Flare Wall",
-        "targetType": 4,
-        "emote": "<:Flare_Wall:536965259294933012>",
-        "range": 2,
-        "element": 1,
-        "PPCost": 7,
-        "power": 40
-    },
-    "Flare Storm": {
-        "name": "Flare Storm",
-        "targetType": 4,
-        "emote": "<:Flare_Storm:536965282627846154>",
-        "range": 3,
-        "element": 1,
-        "PPCost": 12,
-        "power": 80
-    },
-    "Fireball": {
-        "name": "Fireball",
-        "targetType": 4,
-        "emote": "<:Fire:536964317040607242>",
-        "range": 1,
-        "element": 1,
-        "PPCost": 6,
-        "power": 35
-    },
-    "Fire Orb": {
-        "name": "Fire Orb",
-        "targetType": 4,
-        "emote": "<:Fireball:536964348833431552>",
-        "range": 2,
-        "element": 1,
-        "PPCost": 12,
-        "power": 65
-    },
-    "Inferno": {
-        "name": "Inferno",
-        "targetType": 4,
-        "emote": "<:Inferno:536964368303390731>",
-        "range": 3,
-        "element": 1,
-        "PPCost": 23,
-        "power": 140
-    },
-    "Volcano": {
-        "name": "Volcano",
-        "targetType": 4,
-        "emote": "<:Volcano:536963373775060992>",
-        "range": 1,
-        "element": 1,
-        "PPCost": 6,
-        "power": 45
-    },
-    "Eruption": {
-        "name": "Eruption",
-        "targetType": 4,
-        "emote": "<:Eruption:536963393513455638>",
-        "range": 2,
-        "element": 1,
-        "PPCost": 14,
-        "power": 90
-    },
-    "Pyroclasm": {
-        "name": "Pyroclasm",
-        "targetType": 4,
-        "emote": "<:Pyroclasm:536963423679021087>",
-        "range": 3,
-        "element": 1,
-        "PPCost": 29,
-        "power": 180
-    },
-    "Lava Shower": {
-        "name": "Lava Shower",
-        "targetType": 4,
-        "emote": "<:Lava_Shower:536965869394198545>",
-        "range": 1,
-        "element": 1,
-        "PPCost": 4,
-        "power": 40
-    },
-    "Molten Bath": {
-        "name": "Molten Bath",
-        "targetType": 4,
-        "emote": "<:Molten_Bath:536965890910978048>",
-        "range": 2,
-        "element": 1,
-        "PPCost": 12,
-        "power": 80
-    },
-    "Magma Storm": {
-        "name": "Magma Storm",
-        "targetType": 4,
-        "emote": "<:Magma_Storm:536965913019285513>",
-        "range": 3,
-        "element": 1,
-        "PPCost": 27,
-        "power": 160
-    },
-    "Dragon Cloud": {
-        "name": "Dragon Cloud",
-        "targetType": 3,
-        "emote": "<:Dragon_Cloud:536964123234402314>",
-        "range": 1,
-        "element": 1,
-        "PPCost": 6,
-        "power": 80
-    },
-    "Epicenter": {
-        "name": "Epicenter",
-        "targetType": 3,
-        "emote": "<:Epicenter:536964146135171072>",
-        "range": 1,
-        "element": 1,
-        "PPCost": 33,
-        "power": 210
-    },
-    "Blast": {
-        "name": "Blast",
-        "targetType": 4,
-        "emote": "<:Blast:536964872877899799>",
-        "range": 2,
-        "element": 1,
-        "PPCost": 5,
-        "power": 25
-    },
-    "Mad Blast": {
-        "name": "Mad Blast",
-        "targetType": 4,
-        "emote": "<:Mad_Blast:536964946337071114>",
-        "range": 2,
-        "element": 1,
-        "PPCost": 9,
-        "power": 50
-    },
-    "Fiery Blast": {
-        "name": "Fiery Blast",
-        "targetType": 4,
-        "emote": "<:Fiery_Blast:536965017434718212>",
-        "range": 3,
-        "element": 1,
-        "effectImages": [
-            {
-                "id": "Condition",
-                "args": [ "Flinch", "5" ]
-            },
-            {
-                "id": "Condition",
-                "args": [ "Delusion", "5" ]
-            }
-        ],
-        "PPCost": 19,
-        "power": 110
-    },
-    "Fire Bomb": {
-        "name": "Fire Bomb",
-        "targetType": 4,
-        "emote": "<:Fire_Bomb:536965398663266305>",
-        "range": 2,
-        "element": 1,
-        "PPCost": 5,
-        "power": 35
-    },
-    "Cluster Bomb": {
-        "name": "Cluster Bomb",
-        "targetType": 4,
-        "emote": "<:Cluster_Bomb:536965433094307841>",
-        "range": 2,
-        "element": 1,
-        "PPCost": 11,
-        "power": 65
-    },
-    "Carpet Bomb": {
-        "name": "Carpet Bomb",
-        "targetType": 4,
-        "emote": "<:Carpet_Bomb:536965454179336192>",
-        "range": 3,
-        "element": 1,
-        "effectImages": [
-            {
-                "id": "Condition",
-                "args": [ "Flinch", "20" ]
-            }
-        ],
-        "PPCost": 29,
-        "power": 130
-    },
-    "Starburst": {
-        "name": "Starburst",
-        "targetType": 4,
-        "emote": "<:Starburst:536965032374960149>",
-        "range": 2,
-        "element": 1,
-        "PPCost": 7,
-        "power": 40
-    },
-    "Nova": {
-        "name": "Nova",
-        "targetType": 4,
-        "emote": "<:Nova:536965092722606099>",
-        "range": 3,
-        "element": 1,
-        "PPCost": 19,
-        "power": 70
-    },
-    "Supernova": {
-        "name": "Supernova",
-        "targetType": 4,
-        "emote": "<:Supernova:536965117980573716>",
-        "range": 3,
-        "element": 1,
-        "PPCost": 31,
-        "power": 150
-    },
-    "Planet Diver": {
-        "name": "Planet Diver",
-        "targetType": 3,
-        "emote": "<:Planet_Diver:536963450665041941>",
-        "range": 1,
-        "element": 1,
-        "PPCost": 7,
-        "addDamage": 36
-    },
-    "Planetary": {
-        "name": "Planetary",
-        "targetType": 3,
-        "emote": "<:Planetary:536963471766454272>",
-        "range": 1,
-        "element": 1,
-        "PPCost": 19,
-        "addDamage": 98
-    },
-    "Raging Heat": {
-        "name": "Raging Heat",
-        "targetType": 4,
-        "emote": "<:Raging_Heat:536964496997220354>",
-        "range": 2,
-        "element": 1,
-        "PPCost": 9,
-        "power": 45
-    },
-    "Fiery Abyss": {
-        "name": "Fiery Abyss",
-        "targetType": 4,
-        "emote": "<:Fiery_Abyss:536964517909889049>",
-        "range": 3,
-        "element": 1,
-        "PPCost": 18,
-        "power": 90
-    },
-    "Dire Inferno": {
-        "name": "Dire Inferno",
-        "targetType": 4,
-        "emote": "<:Dire_Inferno:536964545428717568>",
-        "range": 4,
-        "element": 1,
-        "PPCost": 32,
-        "power": 200
-    },
-    "Ray": {
-        "name": "Ray",
-        "targetType": 4,
-        "emote": "<:Ray:536967664841523200>",
-        "range": 2,
-        "element": 2,
-        "PPCost": 6,
-        "power": 35
-    },
-    "Storm Ray": {
-        "name": "Storm Ray",
-        "targetType": 4,
-        "emote": "<:Storm_Ray:536967681451098122>",
-        "range": 2,
-        "element": 2,
-        "PPCost": 10,
-        "power": 65
-    },
-    "Destruct Ray": {
-        "name": "Destruct Ray",
-        "targetType": 4,
-        "emote": "<:Destruct_Ray:536967705857753099>",
-        "range": 2,
-        "element": 2,
-        "PPCost": 21,
-        "power": 150
-    },
-    "Whirlwind": {
-        "name": "Whirlwind",
-        "targetType": 4,
-        "emote": "<:Whirlwind:536968745835560972>",
-        "range": 2,
-        "element": 2,
-        "PPCost": 5,
-        "power": 20
-    },
-    "Tornado": {
-        "name": "Tornado",
-        "targetType": 4,
-        "emote": "<:Tornado:536968779343593482>",
-        "range": 3,
-        "element": 2,
-        "PPCost": 14,
-        "power": 80
-    },
-    "Tempest": {
-        "name": "Tempest",
-        "targetType": 4,
-        "emote": "<:Tempest:536968799359074304>",
-        "range": 3,
-        "element": 2,
-        "PPCost": 27,
-        "power": 160
-    },
-    "Gale": {
-        "name": "Gale",
-        "targetType": 4,
-        "emote": "<:Gale:536967143972143125>",
-        "range": 2,
-        "element": 2,
-        "PPCost": 3,
-        "power": 12
-    },
-    "Typhoon": {
-        "name": "Typhoon",
-        "targetType": 4,
-        "emote": "<:Typhoon:536967160438980619>",
-        "range": 3,
-        "element": 2,
-        "PPCost": 12,
-        "power": 76
-    },
-    "Hurricane": {
-        "name": "Hurricane",
-        "targetType": 4,
-        "emote": "<:Hurricane:536967175563640864>",
-        "range": 3,
-        "element": 2,
-        "PPCost": 25,
-        "power": 150
-    },
-    "Speed Punch": {
-        "name": "Speed Punch",
-        "targetType": 3,
-        "emote": "<:Speed_Punch_4_1:537465193626730517>",
-        "range": 1,
-        "element": 2,
-        "PPCost": 6,
-        "power": 0,
-        "addDamage": 35
-    },
-    "Astral Blast": {
-        "name": "Astral Blast",
-        "targetType": 3,
-        "emote": "<:Astral_Blast:536966358085402646>",
-        "range": 1,
-        "element": 2,
-        "PPCost": 5,
-        "addDamage": 32
-    },
-    "Thunder Mine": {
-        "name": "Thunder Mine",
-        "targetType": 3,
-        "emote": "<:Thunder_Mine:536966380319408160>",
-        "range": 1,
-        "element": 2,
-        "PPCost": 16,
-        "addDamage": 85
-    },
-    "Shuriken": {
-        "name": "Shuriken",
-        "targetType": 4,
-        "emote": "<:Shuriken:536967796182089769>",
-        "range": 2,
-        "element": 2,
-        "PPCost": 8,
-        "dmgMult": 0.8
-    },
-    "Quick Strike": {
-        "name": "Quick Strike",
-        "targetType": 3,
-        "emote": "<:Quick_Strike:536967616451837973>",
-        "range": 1,
-        "element": 2,
-        "PPCost": 12,
-        "dmgMult": 1.8
-    },
-    "Call Dullahan": {
-        "name": "Call Dullahan",
-        "targetType": 3,
-        "emote": "<:Call_Dullahan:536966728572338187>",
-        "range": 1,
-        "element": 2,
-        "PPCost": 21,
-        "dmgMult": 3
-    },
-    "Death Plunge": {
-        "name": "Death Plunge",
-        "targetType": 3,
-        "emote": "<:Death_Plunge:536966770402000897>",
-        "range": 1,
-        "element": 2,
-        "effectImages": [
-            {
-                "id": "Condition",
-                "args": [ "Stun", "10" ]
-            }
-        ],
-        "PPCost": 14,
-        "addDamage": 40
-    },
-    "Death Leap": {
-        "name": "Death Leap",
-        "targetType": 3,
-        "emote": "<:Death_Leap:536966785363083264>",
-        "range": 1,
-        "element": 2,
-        "effectImages": [
-            {
-                "id": "Condition",
-                "args": [ "Stun", "10" ]
-            }
-        ],
-        "PPCost": 22,
-        "addDamage": 110
-    },
-    "Plasma": {
-        "name": "Plasma",
-        "targetType": 4,
-        "emote": "<:Plasma:536967421379084308>",
-        "range": 2,
-        "element": 2,
-        "PPCost": 8,
-        "power": 45
-    },
-    "Shine Plasma": {
-        "name": "Shine Plasma",
-        "targetType": 4,
-        "emote": "<:Shine_Plasma:536967499007262740>",
-        "range": 3,
-        "element": 2,
-        "PPCost": 16,
-        "power": 100
-    },
-    "Spark Plasma": {
-        "name": "Spark Plasma",
-        "targetType": 4,
-        "emote": "<:Spark_Plasma:536967465801089024>",
-        "range": 4,
-        "element": 2,
-        "PPCost": 37,
-        "power": 180
-    },
-    "Slash": {
-        "name": "Slash",
-        "targetType": 4,
-        "emote": "<:Slash:536967859121815552>",
-        "range": 2,
-        "element": 2,
-        "PPCost": 4,
-        "power": 25
-    },
-    "Wind Slash": {
-        "name": "Wind Slash",
-        "targetType": 4,
-        "emote": "<:Wind_Slash:536967884518195221>",
-        "range": 2,
-        "element": 2,
-        "PPCost": 9,
-        "power": 50
-    },
-    "Sonic Slash": {
-        "name": "Sonic Slash",
-        "targetType": 4,
-        "emote": "<:Sonic_Slash:536967899638792192>",
-        "range": 3,
-        "element": 2,
-        "PPCost": 20,
-        "power": 120
-    },
-    "Bolt": {
-        "name": "Bolt",
-        "targetType": 4,
-        "emote": "<:Bolt:536966414284750855>",
-        "range": 2,
-        "element": 2,
-        "PPCost": 4,
-        "power": 25
-    },
-    "Flash Bolt": {
-        "name": "Flash Bolt",
-        "targetType": 4,
-        "emote": "<:Flash_Bolt:536966441862299678>",
-        "range": 2,
-        "element": 2,
-        "PPCost": 9,
-        "power": 50
-    },
-    "Blue Bolt": {
-        "name": "Blue Bolt",
-        "targetType": 4,
-        "emote": "<:Blue_Bolt:536966467543891968>",
-        "range": 3,
-        "element": 2,
-        "effectImages": [
-            {
-                "id": "Condition",
-                "args": [ "Stun", "15" ]
-            }
-        ],
-        "PPCost": 20,
-        "power": 120
-    },
-    "Thunderclap": {
-        "name": "Thunderclap",
-        "targetType": 4,
-        "emote": "<:Thunderclap:536968294750486575>",
-        "range": 2,
-        "element": 2,
-        "PPCost": 9,
-        "power": 50
-    },
-    "Thunderbolt": {
-        "name": "Thunderbolt",
-        "targetType": 4,
-        "emote": "<:Thunderbolt:536968327189364753>",
-        "range": 2,
-        "element": 2,
-        "PPCost": 19,
-        "power": 110
-    },
-    "Thunderhead": {
-        "name": "Thunderhead",
-        "targetType": 4,
-        "emote": "<:Thunderstorm:536968389680168963>",
-        "range": 3,
-        "element": 2,
-        "PPCost": 39,
-        "power": 190
-    },
-    "Diamond Dust": {
-        "name": "Diamond Dust",
-        "targetType": 3,
-        "emote": "<:Diamond_Dust:536969677415645187>",
-        "range": 1,
-        "element": 3,
-        "PPCost": 7,
-        "addDamage": 35
-    },
-    "Diamond Berg": {
-        "name": "Diamond Berg",
-        "targetType": 3,
-        "emote": "<:Diamond_Berg:536969707824087040>",
-        "range": 1,
-        "element": 3,
-        "PPCost": 18,
-        "addDamage": 90
-    },
-    "Frost": {
-        "name": "Frost",
-        "targetType": 4,
-        "emote": "<:Frost:536968927993921537>",
-        "range": 2,
-        "element": 3,
-        "PPCost": 5,
-        "power": 20
-    },
-    "Tundra": {
-        "name": "Tundra",
-        "targetType": 4,
-        "emote": "<:Tundra:536968944939040768>",
-        "range": 2,
-        "element": 3,
-        "PPCost": 8,
-        "power": 50
-    },
-    "Glacier": {
-        "name": "Glacier",
-        "targetType": 4,
-        "emote": "<:Glacier:536968989684006912>",
-        "range": 2,
-        "element": 3,
-        "PPCost": 15,
-        "power": 100,
-        "IgnoresSpread": true
-    },
-    "Ice": {
-        "name": "Ice",
-        "targetType": 4,
-        "emote": "<:Ice:536969244538044426>",
-        "range": 1,
-        "element": 3,
-        "PPCost": 5,
-        "power": 35
-    },
-    "Ice Horn": {
-        "name": "Ice Horn",
-        "targetType": 4,
-        "emote": "<:Ice_Horn:536969265597906964>",
-        "range": 2,
-        "element": 3,
-        "PPCost": 11,
-        "power": 70
-    },
-    "Ice Missile": {
-        "name": "Ice Missile",
-        "targetType": 4,
-        "emote": "<:Ice_Missile:536969287848558604>",
-        "range": 2,
-        "element": 3,
-        "PPCost": 23,
-        "power": 160
-    },
-    "Cool": {
-        "name": "Cool",
-        "targetType": 4,
-        "emote": "<:Cool:536969306442039296>",
-        "range": 2,
-        "element": 3,
-        "PPCost": 6,
-        "power": 35
-    },
-    "Supercool": {
-        "name": "Supercool",
-        "targetType": 4,
-        "emote": "<:Supercool:536969323244158977>",
-        "range": 3,
-        "element": 3,
-        "PPCost": 14,
-        "power": 80
-    },
-    "Megacool": {
-        "name": "Megacool",
-        "targetType": 4,
-        "emote": "<:Megacool:536969361794269201>",
-        "range": 4,
-        "element": 3,
-        "PPCost": 32,
-        "power": 200
-    },
-    "Douse": {
-        "name": "Douse",
-        "targetType": 4,
-        "emote": "<:Douse:536969010974294016>",
-        "range": 2,
-        "element": 3,
-        "PPCost": 5,
-        "power": 25
-    },
-    "Drench": {
-        "name": "Drench",
-        "targetType": 4,
-        "emote": "<:Drench:536969028632051733>",
-        "range": 2,
-        "element": 3,
-        "PPCost": 10,
-        "power": 60
-    },
-    "Deluge": {
-        "name": "Deluge",
-        "targetType": 4,
-        "emote": "<:Deluge:536969093958336547>",
-        "range": 3,
-        "element": 3,
-        "PPCost": 20,
-        "power": 120
-    },
-    "Cutting Edge": {
-        "name": "Cutting Edge",
-        "targetType": 3,
-        "emote": "<:Cutting_Edge:536969614039580689>",
-        "range": 1,
-        "element": 3,
-        "PPCost": 5,
-        "addDamage": 32
-    },
-    "Plume Edge": {
-        "name": "Plume Edge",
-        "targetType": 3,
-        "emote": "<:Plume_Edge:536969641684107264>",
-        "range": 1,
-        "element": 3,
-        "PPCost": 15,
-        "addDamage": 80
-    },
-    "Prism": {
-        "name": "Prism",
-        "targetType": 4,
-        "emote": "<:Prism:536969536050692117>",
-        "range": 2,
-        "element": 3,
-        "PPCost": 7,
-        "power": 40
-    },
-    "Hail Prism": {
-        "name": "Hail Prism",
-        "targetType": 4,
-        "emote": "<:Hail_Prism:536969551729000468>",
-        "range": 3,
-        "element": 3,
-        "PPCost": 16,
-        "power": 90
-    },
-    "Freeze Prism": {
-        "name": "Freeze Prism",
-        "targetType": 4,
-        "emote": "<:Freeze_Prism:536969587254755368>",
-        "range": 3,
-        "element": 3,
-        "PPCost": 31,
-        "power": 190
-    },
-    "Froth": {
-        "name": "Froth",
-        "targetType": 4,
-        "emote": "<:Froth:536969145053347858>",
-        "range": 3,
-        "element": 3,
-        "PPCost": 5,
-        "power": 28
-    },
-    "Froth Sphere": {
-        "name": "Froth Sphere",
-        "targetType": 4,
-        "emote": "<:Froth_Sphere:536969175965499431>",
-        "range": 3,
-        "element": 3,
-        "PPCost": 12,
-        "power": 65
-    },
-    "Froth Spiral": {
-        "name": "Froth Spiral",
-        "targetType": 4,
-        "emote": "<:Froth_Spiral:536969197108985856>",
-        "range": 3,
-        "element": 3,
-        "PPCost": 31,
-        "power": 130
-    },
-    "Drain": {
-        "name": "Drain",
-        "targetType": 3,
-        "emote": "💉",
-        "range": 1,
-        "element": 2,
-        "PPCost": 3,
-        "power": 50
-    },
-    "Heat Flash": {
-        "name": "Heat Flash",
-        "targetType": 3,
-        "emote": ":cloud:",
-        "range": 1,
-        "element": 1,
-        "PPCost": 0,
-        "addDamage": 20,
-        "effectImages": [
-            {
-                "id": "Condition",
-                "args": [ "Delusion", "30" ]
-            }
-        ]
-    },
-    "Death Size": {
-        "name": "Death Size",
-        "targetType": 3,
-        "emote": ":skull_crossbones:",
-        "range": 1,
-        "element": 0,
-        "PPCost": 0,
-        "addDamage": 35,
-        "effectImages": [
-            {
-                "id": "ChanceToOHKO",
-                "args": [ "20" ]
-            }
-        ]
-    },
-    "Ransack": {
-        "name": "Ransack",
-        "targetType": 3,
-        "emote": "<:Rampage:537766290031509524>",
-        "range": 1,
-        "element": 0,
-        "PPCost": 0,
-        "addDamage": 35
-    },
-    "Crystal Powder": {
-        "name": "Crystal Powder",
-        "targetType": 4,
-        "emote": "<:Crystal_Powder:548636060947709965>",
-        "range": 5,
-        "element": 3,
-        "PPCost": 1,
-        "power": 90
-    },
-    "Banshee Howl": {
-        "name": "Banshee Howl",
-        "targetType": 3,
-        "emote": "😱",
-        "range": 1,
-        "element": 2,
-        "PPCost": 0,
-        "power": 70,
-        "effectImages": [
-            {
-                "id": "Condition",
-                "args": [ "Flinch", "30" ]
-            }
-        ]
-    },
-    "Bear Claw": {
-        "name": "Bear Claw",
-        "targetType": 3,
-        "emote": "🐻",
-        "range": 1,
-        "element": 4,
-        "PPCost": 0,
-        "dmgMult": 1.6
-    },
-    "Cannibal Fang": {
-        "name": "Cannibal Fang",
-        "targetType": 3,
-        "emote": "✴",
-        "range": 1,
-        "element": 0,
-        "PPCost": 0,
-        "power": 80
-    },
-    "Bacteria Rush": {
-        "name": "Bacteria Rush",
-        "targetType": 3,
-        "emote": "🤢",
-        "range": 1,
-        "element": 0,
-        "PPCost": 0,
-        "addDamage": 40,
-        "effectImages": [
-            {
-                "id": "Condition",
-                "args": [ "Poison", "50" ]
-            }
-        ]
-    },
-    "Wing Flutter": {
-        "name": "Wing Flutter",
-        "targetType": 4,
-        "emote": "🦅",
-        "range": 3,
-        "element": 2,
-        "PPCost": 0,
-        "power": 70
-    },
-    "Twin Beaks": {
-        "name": "Twin Beaks",
-        "targetType": 3,
-        "emote": "🦅",
-        "range": 1,
-        "element": 2,
-        "PPCost": 0,
-        "addDamage": 30,
-        "effectImages": [
-            {
-                "id": "MultiplyDamage",
-                "args": [ "2.0", "50" ]
-            }
-        ]
-    },
-    "Ice Blessing": {
-        "name": "Ice Blessing",
-        "targetType": 4,
-        "emote": "❄",
-        "range": 3,
-        "element": 3,
-        "PPCost": 0,
-        "power": 140
-    },
-    "Headbutt": {
-        "name": "Headbutt",
-        "targetType": 3,
-        "emote": "🤕",
-        "range": 1,
-        "element": 0,
-        "PPCost": 0,
-        "addDamage": 60
-    },
-    "Rabid Fang": {
-        "name": "Rabid Fang",
-        "targetType": 3,
-        "emote": "✴",
-        "range": 1,
-        "element": 0,
-        "PPCost": 0,
-        "addDamage": 36,
-        "effectImages": [
-            {
-                "id": "Condition",
-                "args": [ "Venom", "25" ]
-            }
-        ]
-    },
-    "Mad Dash": {
-        "name": "Mad Dash",
-        "targetType": 3,
-        "emote": "<:Rampage:537766290031509524>",
-        "range": 1,
-        "element": 0,
-        "PPCost": 0,
-        "addDamage": 70
-    },
-    "Fire Breath": {
-        "name": "Fire Breath",
-        "targetType": 4,
-        "emote": "🔥",
-        "range": 3,
-        "element": 1,
-        "PPCost": 0,
-        "power": 120
-    },
-    "Acid Breath": {
-        "name": "Acid Breath",
-        "targetType": 4,
-        "emote": "☣",
-        "range": 3,
-        "element": 1,
-        "PPCost": 0,
-        "power": 170,
-        "effectImages": [
-            {
-                "id": "Stat",
-                "args": [ "Defense", "0.8", "20" ]
-            }
-        ]
-    },
-    "Storm Breath": {
-        "name": "Storm Breath",
-        "targetType": 4,
-        "emote": "🌩",
-        "range": 3,
-        "element": 2,
-        "PPCost": 0,
-        "power": 170,
-        "effectImages": [
-            {
-                "id": "Condition",
-                "args": [ "Stun", "20" ]
-            }
-        ]
-    },
-    "Double Fang": {
-        "name": "Double Fang",
-        "targetType": 3,
-        "emote": "🐶",
-        "range": 1,
-        "element": 0,
-        "PPCost": 0,
-        "addDamage": 50,
-        "effectImages": [
-            {
-                "id": "MultiplyDamage",
-                "args": [ "2.0", "50" ]
-            }
-        ]
-    },
-    "Oil Drop": {
-        "name": "Oil Drop",
-        "targetType": 4,
-        "emote": "<:Oil_Drop:548636061144711178>",
-        "range": 3,
-        "element": 1,
-        "PPCost": 1,
-        "power": 80
-    },
-    "Bramble Seed": {
-        "name": "Bramble Seed",
-        "targetType": 4,
-        "emote": "<:Bramble_Seed:548673643690065930>",
-        "range": 5,
-        "element": 0,
-        "PPCost": 1,
-        "power": 110
-    },
-    "Slice": {
-        "name": "Slice",
-        "targetType": 3,
-        "emote": "<:Rampage:537766290031509524>",
-        "range": 1,
-        "element": 4,
-        "PPCost": 0,
-        "dmgMult": 2
-    },
-    "Crusher Grip": {
-        "name": "Crusher Grip",
-        "targetType": 3,
-        "emote": "<:Rampage:537766290031509524>",
-        "range": 1,
-        "element": 0,
-        "PPCost": 0,
-        "dmgMult": 1.3,
-        "effectImages": [
-            {
-                "id": "Condition",
-                "args": [ "Stun", "20" ]
-            }
-        ]
-    },
-    "Mighty Press": {
-        "name": "Mighty Press",
-        "targetType": 3,
-        "emote": ":compression:",
-        "range": 1,
-        "element": 0,
-        "PPCost": 0,
-        "addDamage": 50,
-        "effectImages": [
-            {
-                "id": "ChanceToOHKO",
-                "args": [ "10" ]
-            }
-        ]
-    },
-    "War Cry": {
-        "name": "War Cry",
-        "targetType": 3,
-        "emote": "<:Rampage:537766290031509524>",
-        "range": 1,
-        "element": 2,
-        "PPCost": 0,
-        "power": 45,
-        "effectImages": [
-            {
-                "id": "Condition",
-                "args": [ "Flinch", "35" ]
-            }
-        ]
-    },
-    "Dynamite": {
-        "name": "Dynamite",
-        "targetType": 4,
-        "emote": ":bomb:",
-        "range": 3,
-        "element": 1,
-        "PPCost": 0,
-        "power": 200,
-        "effectImages": [
-            {
-                "id": "UserDies"
-            }
-        ]
-    },
-    "Angry Mine": {
-        "name": "Angry Mine",
-        "targetType": 4,
-        "emote": "<:Anger_Ball:600641755066531851>",
-        "range": 3,
-        "element": 0,
-        "PPCost": 0,
-        "power": 300,
-        "effectImages": [
-            {
-                "id": "UserDies"
-            }
-        ],
-        "ignoreSpread": true
-    },
-    "Trap": {
-        "name": "Trap!",
-        "targetType": 4,
-        "emote": ":bomb:",
-        "range": 5,
-        "element": 4,
-        "PPCost": 0,
-        "power": 2000,
-        "IgnoreSpread": true,
-        "effectImages": [
-            {
-                "id": "UserDies"
-            }
-        ]
-    },
-    "Disarm": {
-        "name": "Disarm",
-        "targetType": 4,
-        "emote": "🏳️",
-        "range": 3,
-        "element": 4,
-        "PPCost": 0,
-        "power": 0,
-        "effectImages": [
-            {
-                "id": "UserDies"
-            }
-        ]
-    },
-    "Claw Attack": {
-        "name": "Claw Attack",
-        "targetType": 3,
-        "emote": "<:Rampage:537766290031509524>",
-        "range": 1,
-        "element": 4,
-        "PPCost": 0,
-        "addDamage": 20
-    },
-    "Fire Dance": {
-        "name": "Fire Dance",
-        "targetType": 3,
-        "emote": "<:Blaze:551042852730175520>",
-        "range": 1,
-        "element": 1,
-        "PPCost": 0,
-        "dmgMult": 1.3
-    },
-    "Poison Fang": {
-        "name": "Poison Fang",
-        "targetType": 3,
-        "emote": ":snake:",
-        "range": 1,
-        "element": 0,
-        "PPCost": 0,
-        "addDamage": 0,
-        "effectImages": [
-            {
-                "id": "Condition",
-                "args": [ "Poison", "40" ]
-            }
-        ]
-    },
-    "Twin Shear": {
-        "name": "Twin Shear",
-        "targetType": 3,
-        "emote": ":scissors:",
-        "range": 1,
-        "element": 0,
-        "PPCost": 0,
-        "dmgMult": 1.8
-    },
-    "Echo Cut": {
-        "name": "Echo Cut",
-        "targetType": 3,
-        "emote": ":scissors:",
-        "range": 1,
-        "element": 4,
-        "PPCost": 0,
-        "addDamage": 30
-    },
-    "Aqua Breath": {
-        "name": "Aqua Breath",
-        "targetType": 4,
-        "emote": ":sweat_drops:",
-        "range": 2,
-        "element": 3,
-        "PPCost": 0,
-        "power": 120
-    },
-    "Water Breath": {
-        "name": "Water Breath",
-        "targetType": 4,
-        "emote": ":sweat_drops:",
-        "range": 2,
-        "element": 3,
-        "PPCost": 0,
-        "power": 100
-    },
-    "Black Ice": {
-        "name": "Black Ice",
-        "targetType": 4,
-        "emote": ":chocolate_bar:",
-        "range": 3,
-        "element": 0,
-        "PPCost": 0,
-        "power": 80
-    },
-    "Armor Crush": {
-        "name": "Armor Crush",
-        "targetType": 3,
-        "emote": ":name_badge:",
-        "range": 1,
-        "element": 0,
-        "effectImages": [
-            {
-                "id": "Status",
-                "args": [ "Defense", "0.75", "50" ]
-            }
-        ],
-        "PPCost": 0,
-        "dmgMult": 1.4
-    },
-    "Mega Slash": {
-        "name": "Mega Slash",
-        "targetType": 3,
-        "emote": ":turkey:",
-        "range": 1,
-        "element": 2,
-        "PPCost": 0,
-        "dmgMult": 1.4
-    },
-    "Raiden's Wrath": {
-        "name": "Raiden's Wrath",
-        "targetType": 3,
-        "emote": "<:Cloud_Brand:555843776174882826>",
-        "range": 1,
-        "element": 2,
-        "PPCost": 0,
-        "addDamage": 39,
-        "effectImages": [
-            {
-                "id": "MayIgnoreDefense",
-                "args": [ "100", "100" ]
-            }
-        ]
-    },
-    "Strong Hit": {
-        "name": "Strong Hit",
-        "targetType": 3,
-        "emote": "<:Rampage:537766290031509524>",
-        "range": 1,
-        "element": 4,
-        "PPCost": 0,
-        "dmgMult": 1.4
-    },
-    "Sand Breath": {
-        "name": "Sand Breath",
-        "targetType": 4,
-        "emote": ":hourglass_flowing_sand:",
-        "range": 3,
-        "element": 0,
-        "PPCost": 0,
-        "power": 35
-    },
-    "Desert Gasp": {
-        "name": "Desert Gasp",
-        "targetType": 4,
-        "emote": ":hourglass_flowing_sand:",
-        "range": 3,
-        "element": 0,
-        "PPCost": 0,
-        "power": 35,
-        "effectImages": [
-            {
-                "id": "Stat",
-                "args": [ "Defense", "0.8" ]
-            }
-        ]
-    },
-    "Paralytail": {
-        "name": "Paralytail",
-        "targetType": 3,
-        "emote": ":scorpion:",
-        "range": 1,
-        "element": 0,
-        "PPCost": 0,
-        "addDamage": 20,
-        "effectImages": [
-            {
-                "id": "Condition",
-                "args": [ "Stun", "20" ]
-            }
-        ]
-    },
-    "Poison Tail": {
-        "name": "Poison Tail",
-        "targetType": 3,
-        "emote": ":scorpion:",
-        "range": 1,
-        "element": 0,
-        "PPCost": 0,
-        "addDamage": 35,
-        "effectImages": [
-            {
-                "id": "Condition",
-                "args": [ "Poison", "20" ]
-            }
-        ]
-    },
-    "Poisonous Bite": {
-        "name": "Poisonous Bite",
-        "targetType": 3,
-        "emote": "<:Rampage:537766290031509524>",
-        "range": 1,
-        "element": 0,
-        "PPCost": 0,
-        "addDamage": 15,
-        "effectImages": [
-            {
-                "id": "Condition",
-                "args": [ "Poison", "20" ]
-            }
-        ]
-    },
-    "Ur Flash": {
-        "name": "Ur Flash",
-        "targetType": 3,
-        "emote": "<:Rampage:537766290031509524>",
-        "range": 1,
-        "element": 2,
-        "PPCost": 0,
-        "dmgMult": 1.4
-    },
-    "Shriek": {
-        "name": "Shriek",
-        "targetType": 3,
-        "emote": "<:Rampage:537766290031509524>",
-        "range": 1,
-        "element": 2,
-        "PPCost": 0,
-        "power": 30
-    },
-    "Maul": {
-        "name": "Maul",
-        "targetType": 3,
-        "emote": ":feet:",
-        "range": 1,
-        "element": 4,
-        "PPCost": 0
-    },
-    "Rampage": {
-        "name": "Rampage",
-        "targetType": 5,
-        "emote": ":wolf:",
-        "range": 5,
-        "element": 4,
-        "PPCost": 0
-    },
-    "Power Crush": {
-        "name": "Power Crush",
-        "targetType": 3,
-        "emote": ":eight_pointed_black_star:",
-        "range": 1,
-        "element": 0,
-        "PPCost": 0,
-        "dmgMult": 1.2,
-        "effectImages": [
-            {
-                "id": "ReduceHPtoOne",
-                "args": [ "20" ]
-            }
-        ]
-    },
-    "Pike Assault": {
-        "name": "Pike Assault",
-        "targetType": 3,
-        "emote": ":trident:",
-        "range": 1,
-        "element": 2,
-        "PPCost": 0,
-        "dmgMult": 1.4,
-        "effectImages": [
-            {
-                "id": "MayIgnoreDefense",
-                "args": [ "50" ]
-            }
-        ]
-    },
-    "Heat Stun": {
-        "name": "Heat Stun",
-        "targetType": 3,
-        "emote": ":fire:",
-        "range": 1,
-        "element": 1,
-        "PPCost": 0,
-        "dmgMult": 1.3,
-        "effectImages": [
-            {
-                "id": "Condition",
-                "args": [ "Stun", "40" ]
-            }
-        ]
-    },
-    "Star Mine": {
-        "name": "Star Mine",
-        "targetType": 5,
-        "emote": ":fireworks:",
-        "range": 5,
-        "element": 1,
-        "PPCost": 0,
-        "percentageDamage": 30,
-        "power": 35
-    },
-    "Dark Blessing": {
-        "name": "Dark Blessing",
-        "targetType": 4,
-        "emote": ":skull:",
-        "range": 3,
-        "element": 1,
-        "PPCost": 0,
-        "power": 170,
-        "effectImages": [
-            {
-                "id": "Stat",
-                "args": [ "Def", "0.8", "30" ]
-            }
-        ]
-    },
-    "Thrash": {
-        "name": "Thrash",
-        "targetType": 3,
-        "emote": "<:Rampage:537766290031509524>",
-        "range": 1,
-        "element": 3,
-        "PPCost": 0,
-        "addDamage": 30,
-        "effectImages": [
-            {
-                "id": "ReduceHPtoOne",
-                "args": [ "20" ]
-            }
-        ]
-    },
-    "Rotten Blood": {
-        "name": "Rotten Blood",
-        "targetType": 3,
-        "emote": ":skull_crossbones:",
-        "range": 1,
-        "element": 1,
-        "PPCost": 0,
-        "power": 44,
-        "effectImages": [
-            {
-                "id": "Stat",
-                "args": [ "Def", "0.6", "25" ]
-            }
-        ]
-    },
-    "Sticky Poison": {
-        "name": "Sticky Poison",
-        "targetType": 3,
-        "emote": ":nauseated_face:",
-        "range": 1,
-        "element": 3,
-        "PPCost": 0,
-        "power": 16,
-        "effectImages": [
-            {
-                "id": "Condition",
-                "args": [ "Poison", "50" ]
-            }
-        ]
-    },
-    "Brute Force": {
-        "name": "Brute Force",
-        "targetType": 3,
-        "emote": "<:Rampage:537766290031509524>",
-        "range": 1,
-        "element": 0,
-        "PPCost": 0,
-        "dmgMult": 1.9
-    },
-    "Massive Swing": {
-        "name": "Massive Swing",
-        "targetType": 4,
-        "emote": "<:Rampage:537766290031509524>",
-        "range": 5,
-        "element": 0,
-        "PPCost": 0,
-        "addDamage": 50
-    },
-    "Gasping Breath": {
-        "name": "Gasping Breath",
-        "targetType": 3,
-        "emote": ":gear:",
-        "range": 1,
-        "element": 0,
-        "PPCost": 0,
-        "power": 18,
-        "effectImages": [
-            {
-                "id": "condition",
-                "args": [ "Haunt", "20" ]
-            }
-        ]
-    },
-    "Pebble Breath": {
-        "name": "Pebble Breath",
-        "targetType": 3,
-        "emote": ":gear:",
-        "range": 1,
-        "element": 0,
-        "PPCost": 0,
-        "power": 24
-    },
-    "Sizzle Breath": {
-        "name": "Sizzle Breath",
-        "targetType": 3,
-        "emote": ":gear:",
-        "range": 1,
-        "element": 0,
-        "PPCost": 0,
-        "power": 37,
-        "effectImages": [
-            {
-                "id": "Stat",
-                "args": [ "Def", "0.8", "25" ]
-            }
-        ]
-    },
-    "Meteor Blow": {
-        "name": "Meteor Blow",
-        "targetType": 3,
-        "emote": ":comet:",
-        "range": 1,
-        "element": 1,
-        "PPCost": 0,
-        "power": 120,
-        "percentageDamage": 35
-    },
-    "Rolling Flame": {
-        "name": "Rolling Flame",
-        "targetType": 4,
-        "emote": ":fireworks:",
-        "range": 3,
-        "element": 1,
-        "PPCost": 0,
-        "addDamage": 100,
-        "IgnoreSpread": true
-    },
-    "Mine Ball": {
-        "name": "Mine Ball",
-        "targetType": 4,
-        "emote": "<:Mine_Ball:600642600390885376>",
-        "range": 3,
-        "element": 3,
-        "PPCost": 0,
-        "dmgMult": 1.5
-    },
-
-    "Fatal Fang": {
-        "name": "Fatal Fang",
-        "targetType": 4,
-        "emote": "<:Rampage:537766290031509524>",
-        "range": 1,
-        "element": 4,
-        "PPCost": 0,
-        "addDamage": 11
-    }
+  "Brutal Swing": {
+    "name": "Brutal Swing",
+    "targetType": 4,
+    "emote": "<:Rampage:537766290031509524>",
+    "range": 2,
+    "element": 4,
+    "PPCost": 0,
+    "dmgMult": 0.8
+  },
+  "Ragnarok": {
+    "name": "Ragnarok",
+    "targetType": 3,
+    "emote": "<:Ragnarok:536958312164622346>",
+    "range": 1,
+    "element": 0,
+    "PPCost": 7,
+    "addDamage": 35
+  },
+  "Odyssey": {
+    "name": "Odyssey",
+    "targetType": 3,
+    "emote": "<:Odyssey:536958332229910529>",
+    "range": 1,
+    "element": 0,
+    "PPCost": 18,
+    "addDamage": 95
+  },
+  "Helm Splitter": {
+    "name": "Helm Splitter",
+    "targetType": 3,
+    "emote": "<:Skull_Splitter:536959343153774652>",
+    "range": 1,
+    "element": 0,
+    "effects": [
+      {
+        "Type": "Stat",
+        "Stat": "Defense",
+        "multiplier": 0.8
+      }
+    ],
+    "PPCost": 8,
+    "addDamage": 30
+  },
+  "Skull Splitter": {
+    "name": "Skull Splitter",
+    "targetType": 3,
+    "emote": "<:Skull_Splitter:536959343153774652>",
+    "range": 1,
+    "element": 0,
+    "effects": [
+      {
+        "Type": "OHKO",
+        "probability": 5
+      }
+    ],
+    "PPCost": 8,
+    "addDamage": 30
+  },
+  "Annihilation": {
+    "name": "Annihilation",
+    "targetType": 3,
+    "emote": "<:Annihilation:536959197288464393>",
+    "range": 1,
+    "element": 0,
+    "effects": [
+      {
+        "Type": "OHKO",
+        "probability": 10
+      }
+    ],
+    "PPCost": 18,
+    "dmgMult": 1.5
+  },
+  "Call Demon": {
+    "name": "Call Demon",
+    "targetType": 3,
+    "emote": "<:Call_Demon:536984582503792640>",
+    "range": 1,
+    "element": 0,
+    "PPCost": 13,
+    "dmgMult": 1.9
+  },
+  "Quake": {
+    "name": "Quake",
+    "targetType": 4,
+    "emote": "<:Quake:536958036472889346>",
+    "range": 2,
+    "element": 0,
+    "PPCost": 4,
+    "power": 25
+  },
+  "Earthquake": {
+    "name": "Earthquake",
+    "targetType": 4,
+    "emote": "<:Earthquake:536958057930948658>",
+    "range": 3,
+    "element": 0,
+    "PPCost": 7,
+    "power": 45
+  },
+  "Quake Sphere": {
+    "name": "Quake Sphere",
+    "targetType": 4,
+    "emote": "<:Quake_Sphere:536958077837246503>",
+    "range": 4,
+    "element": 0,
+    "PPCost": 15,
+    "power": 65
+  },
+  "Growth": {
+    "name": "Growth",
+    "targetType": 3,
+    "emote": "<:Growth:536958420855554048>",
+    "range": 1,
+    "element": 0,
+    "PPCost": 4,
+    "power": 25
+  },
+  "Mad Growth": {
+    "name": "Mad Growth",
+    "targetType": 4,
+    "emote": "<:Mad_Growth:536958442364207105>",
+    "range": 2,
+    "element": 0,
+    "PPCost": 10,
+    "power": 60
+  },
+  "Wild Growth": {
+    "name": "Wild Growth",
+    "targetType": 4,
+    "emote": "<:Wild_Growth:536958522252984334>",
+    "range": 3,
+    "element": 0,
+    "PPCost": 19,
+    "power": 110
+  },
+  "Punji": {
+    "name": "Punji",
+    "targetType": 4,
+    "emote": "<:Punji:536958777413337088>",
+    "range": 3,
+    "element": 0,
+    "PPCost": 7,
+    "power": 45
+  },
+  "Punji Trap": {
+    "name": "Punji Trap",
+    "targetType": 4,
+    "emote": "<:Punji_Trap:536958822841843722>",
+    "range": 4,
+    "element": 0,
+    "PPCost": 13,
+    "power": 85
+  },
+  "Punji Strike": {
+    "name": "Punji Strike",
+    "targetType": 4,
+    "emote": "<:Punji_Strike:536958839434641408>",
+    "range": 5,
+    "element": 0,
+    "PPCost": 24,
+    "power": 150
+  },
+  "Spire": {
+    "name": "Spire",
+    "targetType": 3,
+    "emote": "<:Spire:536957587594149899>",
+    "range": 1,
+    "element": 0,
+    "PPCost": 5,
+    "power": 40
+  },
+  "Clay Spire": {
+    "name": "Clay Spire",
+    "targetType": 4,
+    "emote": "<:Clay_Spire:536957628581150740>",
+    "range": 2,
+    "element": 0,
+    "PPCost": 13,
+    "power": 85
+  },
+  "Stone Spire": {
+    "name": "Stone Spire",
+    "targetType": 4,
+    "emote": "<:Stone_Spire:536957723422490646>",
+    "range": 2,
+    "element": 0,
+    "PPCost": 22,
+    "power": 160
+  },
+  "Toxic Grit": {
+    "name": "Toxic Grit",
+    "targetType": 4,
+    "emote": "<:curse:538074679492083742>",
+    "range": 3,
+    "element": 0,
+    "effects": [
+      {
+        "Type": "Condition",
+        "Condition": "Poison",
+        "Probability": 25
+      },
+      {
+        "Type": "Condition",
+        "Condition": "Venom",
+        "Probability": 5
+      }
+    ],
+    "PPCost": 23,
+    "power": 125
+  },
+  "Gaia": {
+    "name": "Gaia",
+    "targetType": 4,
+    "emote": "<:Gaia:536958106425491466>",
+    "range": 2,
+    "element": 0,
+    "PPCost": 7,
+    "power": 40
+  },
+  "Mother Gaia": {
+    "name": "Mother Gaia",
+    "targetType": 4,
+    "emote": "<:Mother_Gaia:536958190009712650>",
+    "range": 3,
+    "element": 0,
+    "PPCost": 17,
+    "power": 100
+  },
+  "Grand Gaia": {
+    "name": "Grand Gaia",
+    "targetType": 4,
+    "emote": "<:Grand_Gaia:536958235685552140>",
+    "range": 3,
+    "element": 0,
+    "PPCost": 32,
+    "power": 200
+  },
+  "Rockfall": {
+    "name": "Rockfall",
+    "targetType": 4,
+    "emote": "<:Rockfall:536959048948514816>",
+    "range": 2,
+    "element": 0,
+    "PPCost": 5,
+    "power": 30
+  },
+  "Rockslide": {
+    "name": "Rockslide",
+    "targetType": 4,
+    "emote": "<:Rockslide:536959083006263297>",
+    "range": 3,
+    "element": 0,
+    "PPCost": 15,
+    "power": 90
+  },
+  "Avalanche": {
+    "name": "Avalanche",
+    "targetType": 4,
+    "emote": "<:Avalanche:536959102019174411>",
+    "range": 3,
+    "element": 0,
+    "PPCost": 30,
+    "power": 160
+  },
+  "Thorn": {
+    "name": "Thorn",
+    "targetType": 4,
+    "emote": "<:Thorn:536958717888036865>",
+    "range": 2,
+    "element": 0,
+    "PPCost": 6,
+    "power": 35
+  },
+  "Briar": {
+    "name": "Briar",
+    "targetType": 4,
+    "emote": "<:Briar:536958574128136193>",
+    "range": 2,
+    "element": 0,
+    "PPCost": 11,
+    "power": 70
+  },
+  "Nettle": {
+    "name": "Nettle",
+    "targetType": 4,
+    "emote": "<:Nettle:536958600078426122>",
+    "range": 3,
+    "element": 0,
+    "effects": [
+      {
+        "Type": "Condition",
+        "Condition": "Poison",
+        "Probability": 10
+      }
+    ],
+    "PPCost": 23,
+    "power": 140
+  },
+  "Roaring Dragon": {
+    "name": "Roaring Dragon",
+    "targetType": 4,
+    "emote": "<:Roaring_Dragon:537985876173651968>",
+    "range": 2,
+    "element": 0,
+    "PPCost": 16,
+    "power": 120
+  },
+  "Slaying Dragon": {
+    "name": "Slaying Dragon",
+    "targetType": 4,
+    "emote": "<:Slaying_Dragon:537985876450344971>",
+    "range": 2,
+    "element": 0,
+    "PPCost": 32,
+    "power": 200
+  },
+  "Reigning Dragon": {
+    "name": "Reigning Dragon",
+    "targetType": 4,
+    "emote": "<:Reigning_Dragon:537985876421246986>",
+    "range": 2,
+    "element": 0,
+    "PPCost": 39,
+    "power": 280
+  },
+  "Undead Curse": {
+    "name": "Undead Curse",
+    "targetType": 3,
+    "emote": "<:Call_Zombie:536997673799122956>",
+    "range": 1,
+    "element": 0,
+    "effects": [
+      {
+        "Type": "Condition",
+        "Condition": "Haunt",
+        "Probability": 25
+      }
+    ],
+    "PPCost": 5,
+    "power": 40
+  },
+  "Undead Gloom": {
+    "name": "Undead Gloom",
+    "targetType": 3,
+    "emote": "💀",
+    "range": 1,
+    "element": 0,
+    "effects": [
+      {
+        "Type": "Condition",
+        "Condition": "Haunt",
+        "Probability": 40
+      }
+    ],
+    "PPCost": 15,
+    "power": 140
+  },
+  "Undead Might": {
+    "name": "Undead Might",
+    "targetType": 3,
+    "emote": "☠",
+    "range": 1,
+    "element": 0,
+    "effects": [
+      {
+        "Type": "Condition",
+        "Condition": "Haunt",
+        "Probability": 55
+      }
+    ],
+    "PPCost": 30,
+    "power": 250
+  },
+  "Demon Night": {
+    "name": "Demon Night",
+    "targetType": 4,
+    "emote": "<:Demon_Night:536958935081549843>",
+    "range": 1,
+    "element": 0,
+    "effects": [
+      {
+        "Type": "Condition",
+        "Condition": "Haunt",
+        "Probability": 25
+      }
+    ],
+    "PPCost": 12,
+    "power": 60
+  },
+  "Thorny Grave": {
+    "name": "Thorny Grave",
+    "targetType": 4,
+    "emote": "<:Thorny_Grave:536958993269260289>",
+    "range": 1,
+    "element": 0,
+    "effects": [
+      {
+        "Type": "Condition",
+        "Condition": "Haunt",
+        "Probability": 25
+      }
+    ],
+    "PPCost": 24,
+    "power": 170
+  },
+  "Psynergy Slam": {
+    "name": "Psynergy Slam",
+    "targetType": 3,
+    "emote": "<:Psynergy_Slam:537001160083767296>",
+    "range": 1,
+    "element": 0,
+    "PPCost": 12,
+    "dmgMult": 1.6
+  },
+  "Psynergy Surge": {
+    "name": "Psynergy Surge",
+    "targetType": 3,
+    "emote": "<:Psynergy_Surge:537368723770703875>",
+    "range": 1,
+    "element": 0,
+    "PPCost": 20,
+    "addDamage": 108
+  },
+  "Heat Wave": {
+    "name": "Heat Wave",
+    "targetType": 3,
+    "emote": "<:Heat_Wave:536963222201303060>",
+    "range": 1,
+    "element": 1,
+    "PPCost": 6,
+    "addDamage": 33
+  },
+  "Liquifier": {
+    "name": "Liquifier",
+    "targetType": 3,
+    "emote": "<:Liquifier:536963283601850394>",
+    "range": 1,
+    "element": 1,
+    "PPCost": 17,
+    "addDamage": 90
+  },
+  "Keelhaul": {
+    "name": "Keelhaul",
+    "targetType": 3,
+    "emote": "<:Keelhaul:537265959442841600>",
+    "range": 1,
+    "element": 1,
+    "PPCost": 6,
+    "power": 0,
+    "addDamage": 20,
+    "dmgMult": 1.4
+  },
+  "Vicious Chop": {
+    "name": "Vicious Chop",
+    "targetType": 3,
+    "emote": "<:Vicious_Chop:537265959384121366>",
+    "range": 1,
+    "element": 1,
+    "PPCost": 15,
+    "addDamage": 16,
+    "dmgMult": 2.0
+  },
+  "Fume": {
+    "name": "Fume",
+    "targetType": 3,
+    "emote": "<:Fume:536963958524084226>",
+    "range": 1,
+    "element": 1,
+    "PPCost": 6,
+    "power": 50
+  },
+  "Serpent Fume": {
+    "name": "Serpent Fume",
+    "targetType": 3,
+    "emote": "<:Serpent_Fume:536963980233670685>",
+    "range": 1,
+    "element": 1,
+    "PPCost": 14,
+    "power": 130
+  },
+  "Dragon Fume": {
+    "name": "Dragon Fume",
+    "targetType": 3,
+    "emote": "<:Dragon_Fume:536964000269860871>",
+    "range": 1,
+    "element": 1,
+    "PPCost": 35,
+    "power": 230
+  },
+  "Beam": {
+    "name": "Beam",
+    "targetType": 4,
+    "emote": "<:Beam:536963509519384587>",
+    "range": 2,
+    "element": 1,
+    "PPCost": 7,
+    "power": 45
+  },
+  "Cycle Beam": {
+    "name": "Cycle Beam",
+    "targetType": 4,
+    "emote": "<:Cycle_Beam:536963591719354369>",
+    "range": 3,
+    "element": 1,
+    "PPCost": 14,
+    "power": 80
+  },
+  "Searing Beam": {
+    "name": "Searing Beam",
+    "targetType": 4,
+    "emote": "<:Searing_Beam:536963764147322881>",
+    "range": 4,
+    "element": 1,
+    "PPCost": 36,
+    "power": 170
+  },
+  "Flare": {
+    "name": "Flare",
+    "targetType": 4,
+    "emote": "<:Flare:536965231201484829>",
+    "range": 2,
+    "element": 1,
+    "PPCost": 4,
+    "power": 15
+  },
+  "Flare Wall": {
+    "name": "Flare Wall",
+    "targetType": 4,
+    "emote": "<:Flare_Wall:536965259294933012>",
+    "range": 2,
+    "element": 1,
+    "PPCost": 7,
+    "power": 40
+  },
+  "Flare Storm": {
+    "name": "Flare Storm",
+    "targetType": 4,
+    "emote": "<:Flare_Storm:536965282627846154>",
+    "range": 3,
+    "element": 1,
+    "PPCost": 12,
+    "power": 80
+  },
+  "Fireball": {
+    "name": "Fireball",
+    "targetType": 4,
+    "emote": "<:Fire:536964317040607242>",
+    "range": 1,
+    "element": 1,
+    "PPCost": 6,
+    "power": 35
+  },
+  "Fire Orb": {
+    "name": "Fire Orb",
+    "targetType": 4,
+    "emote": "<:Fireball:536964348833431552>",
+    "range": 2,
+    "element": 1,
+    "PPCost": 12,
+    "power": 65
+  },
+  "Inferno": {
+    "name": "Inferno",
+    "targetType": 4,
+    "emote": "<:Inferno:536964368303390731>",
+    "range": 3,
+    "element": 1,
+    "PPCost": 23,
+    "power": 140
+  },
+  "Volcano": {
+    "name": "Volcano",
+    "targetType": 4,
+    "emote": "<:Volcano:536963373775060992>",
+    "range": 1,
+    "element": 1,
+    "PPCost": 6,
+    "power": 45
+  },
+  "Eruption": {
+    "name": "Eruption",
+    "targetType": 4,
+    "emote": "<:Eruption:536963393513455638>",
+    "range": 2,
+    "element": 1,
+    "PPCost": 14,
+    "power": 90
+  },
+  "Pyroclasm": {
+    "name": "Pyroclasm",
+    "targetType": 4,
+    "emote": "<:Pyroclasm:536963423679021087>",
+    "range": 3,
+    "element": 1,
+    "PPCost": 29,
+    "power": 180
+  },
+  "Lava Shower": {
+    "name": "Lava Shower",
+    "targetType": 4,
+    "emote": "<:Lava_Shower:536965869394198545>",
+    "range": 1,
+    "element": 1,
+    "PPCost": 4,
+    "power": 40
+  },
+  "Molten Bath": {
+    "name": "Molten Bath",
+    "targetType": 4,
+    "emote": "<:Molten_Bath:536965890910978048>",
+    "range": 2,
+    "element": 1,
+    "PPCost": 12,
+    "power": 80
+  },
+  "Magma Storm": {
+    "name": "Magma Storm",
+    "targetType": 4,
+    "emote": "<:Magma_Storm:536965913019285513>",
+    "range": 3,
+    "element": 1,
+    "PPCost": 27,
+    "power": 160
+  },
+  "Dragon Cloud": {
+    "name": "Dragon Cloud",
+    "targetType": 3,
+    "emote": "<:Dragon_Cloud:536964123234402314>",
+    "range": 1,
+    "element": 1,
+    "PPCost": 6,
+    "power": 80
+  },
+  "Epicenter": {
+    "name": "Epicenter",
+    "targetType": 3,
+    "emote": "<:Epicenter:536964146135171072>",
+    "range": 1,
+    "element": 1,
+    "PPCost": 33,
+    "power": 210
+  },
+  "Blast": {
+    "name": "Blast",
+    "targetType": 4,
+    "emote": "<:Blast:536964872877899799>",
+    "range": 2,
+    "element": 1,
+    "PPCost": 5,
+    "power": 25
+  },
+  "Mad Blast": {
+    "name": "Mad Blast",
+    "targetType": 4,
+    "emote": "<:Mad_Blast:536964946337071114>",
+    "range": 2,
+    "element": 1,
+    "PPCost": 9,
+    "power": 50
+  },
+  "Fiery Blast": {
+    "name": "Fiery Blast",
+    "targetType": 4,
+    "emote": "<:Fiery_Blast:536965017434718212>",
+    "range": 3,
+    "element": 1,
+    "effects": [
+      {
+        "Type": "Condition",
+        "Condition": "Stun",
+        "Probability": 15
+      },
+      {
+        "Type": "Condition",
+        "Condition": "Flinch",
+        "Probability": 40
+      }
+    ],
+    "PPCost": 19,
+    "power": 110
+  },
+  "Fire Bomb": {
+    "name": "Fire Bomb",
+    "targetType": 4,
+    "emote": "<:Fire_Bomb:536965398663266305>",
+    "range": 2,
+    "element": 1,
+    "PPCost": 5,
+    "power": 35
+  },
+  "Cluster Bomb": {
+    "name": "Cluster Bomb",
+    "targetType": 4,
+    "emote": "<:Cluster_Bomb:536965433094307841>",
+    "range": 3,
+    "element": 1,
+    "PPCost": 11,
+    "power": 65
+  },
+  "Carpet Bomb": {
+    "name": "Carpet Bomb",
+    "targetType": 4,
+    "emote": "<:Carpet_Bomb:536965454179336192>",
+    "range": 4,
+    "element": 1,
+    "effects": [
+      {
+        "Type": "Condition",
+        "Condition": "Flinch",
+        "Probability": 16
+      }
+    ],
+    "PPCost": 29,
+    "power": 130
+  },
+  "Starburst": {
+    "name": "Starburst",
+    "targetType": 4,
+    "emote": "<:Starburst:536965032374960149>",
+    "range": 2,
+    "element": 1,
+    "PPCost": 7,
+    "power": 40
+  },
+  "Nova": {
+    "name": "Nova",
+    "targetType": 4,
+    "emote": "<:Nova:536965092722606099>",
+    "range": 3,
+    "element": 1,
+    "PPCost": 19,
+    "power": 70
+  },
+  "Supernova": {
+    "name": "Supernova",
+    "targetType": 4,
+    "emote": "<:Supernova:536965117980573716>",
+    "range": 4,
+    "element": 1,
+    "PPCost": 31,
+    "power": 150
+  },
+  "Planet Diver": {
+    "name": "Planet Diver",
+    "targetType": 3,
+    "emote": "<:Planet_Diver:536963450665041941>",
+    "range": 1,
+    "element": 1,
+    "PPCost": 7,
+    "addDamage": 36
+  },
+  "Planetary": {
+    "name": "Planetary",
+    "targetType": 3,
+    "emote": "<:Planetary:536963471766454272>",
+    "range": 1,
+    "element": 1,
+    "PPCost": 19,
+    "addDamage": 98
+  },
+  "Raging Heat": {
+    "name": "Raging Heat",
+    "targetType": 4,
+    "emote": "<:Raging_Heat:536964496997220354>",
+    "range": 2,
+    "element": 1,
+    "PPCost": 9,
+    "power": 45
+  },
+  "Fiery Abyss": {
+    "name": "Fiery Abyss",
+    "targetType": 4,
+    "emote": "<:Fiery_Abyss:536964517909889049>",
+    "range": 3,
+    "element": 1,
+    "PPCost": 18,
+    "power": 90
+  },
+  "Dire Inferno": {
+    "name": "Dire Inferno",
+    "targetType": 4,
+    "emote": "<:Dire_Inferno:536964545428717568>",
+    "range": 4,
+    "element": 1,
+    "PPCost": 32,
+    "power": 200
+  },
+  "Ray": {
+    "name": "Ray",
+    "targetType": 4,
+    "emote": "<:Ray:536967664841523200>",
+    "range": 2,
+    "element": 2,
+    "PPCost": 6,
+    "power": 35
+  },
+  "Storm Ray": {
+    "name": "Storm Ray",
+    "targetType": 4,
+    "emote": "<:Storm_Ray:536967681451098122>",
+    "range": 2,
+    "element": 2,
+    "PPCost": 10,
+    "power": 65
+  },
+  "Destruct Ray": {
+    "name": "Destruct Ray",
+    "targetType": 4,
+    "emote": "<:Destruct_Ray:536967705857753099>",
+    "range": 2,
+    "element": 2,
+    "PPCost": 21,
+    "power": 150
+  },
+  "Whirlwind": {
+    "name": "Whirlwind",
+    "targetType": 4,
+    "emote": "<:Whirlwind:536968745835560972>",
+    "range": 2,
+    "element": 2,
+    "PPCost": 5,
+    "power": 20
+  },
+  "Tornado": {
+    "name": "Tornado",
+    "targetType": 4,
+    "emote": "<:Tornado:536968779343593482>",
+    "range": 3,
+    "element": 2,
+    "PPCost": 14,
+    "power": 80
+  },
+  "Tempest": {
+    "name": "Tempest",
+    "targetType": 4,
+    "emote": "<:Tempest:536968799359074304>",
+    "range": 3,
+    "element": 2,
+    "PPCost": 27,
+    "power": 160
+  },
+  "Gale": {
+    "name": "Gale",
+    "targetType": 4,
+    "emote": "<:Gale:536967143972143125>",
+    "range": 2,
+    "element": 2,
+    "PPCost": 3,
+    "power": 12
+  },
+  "Typhoon": {
+    "name": "Typhoon",
+    "targetType": 4,
+    "emote": "<:Typhoon:536967160438980619>",
+    "range": 3,
+    "element": 2,
+    "PPCost": 12,
+    "power": 76
+  },
+  "Hurricane": {
+    "name": "Hurricane",
+    "targetType": 4,
+    "emote": "<:Hurricane:536967175563640864>",
+    "range": 3,
+    "element": 2,
+    "PPCost": 25,
+    "power": 150
+  },
+  "Speed Punch": {
+    "name": "Speed Punch",
+    "targetType": 3,
+    "emote": "<:Speed_Punch_4_1:537465193626730517>",
+    "range": 1,
+    "element": 2,
+    "PPCost": 6,
+    "power": 0,
+    "addDamage": 35
+  },
+  "Astral Blast": {
+    "name": "Astral Blast",
+    "targetType": 3,
+    "emote": "<:Astral_Blast:536966358085402646>",
+    "range": 1,
+    "element": 2,
+    "PPCost": 5,
+    "addDamage": 32
+  },
+  "Thunder Mine": {
+    "name": "Thunder Mine",
+    "targetType": 3,
+    "emote": "<:Thunder_Mine:536966380319408160>",
+    "range": 1,
+    "element": 2,
+    "PPCost": 16,
+    "addDamage": 85
+  },
+  "Shuriken": {
+    "name": "Shuriken",
+    "targetType": 4,
+    "emote": "<:Shuriken:536967796182089769>",
+    "range": 2,
+    "element": 2,
+    "PPCost": 8,
+    "dmgMult": 0.8
+  },
+  "Quick Strike": {
+    "name": "Quick Strike",
+    "targetType": 3,
+    "emote": "<:Quick_Strike:536967616451837973>",
+    "range": 1,
+    "element": 2,
+    "PPCost": 12,
+    "dmgMult": 1.8
+  },
+  "Call Dullahan": {
+    "name": "Call Dullahan",
+    "targetType": 3,
+    "emote": "<:Call_Dullahan:536966728572338187>",
+    "range": 1,
+    "element": 2,
+    "PPCost": 21,
+    "dmgMult": 3
+  },
+  "Death Plunge": {
+    "name": "Death Plunge",
+    "targetType": 3,
+    "emote": "<:Death_Plunge:536966770402000897>",
+    "range": 1,
+    "element": 2,
+    "effects": [
+      {
+        "Type": "Condition",
+        "Condition": "Stun",
+        "Probability": 10
+      }
+    ],
+    "PPCost": 14,
+    "addDamage": 40
+  },
+  "Death Leap": {
+    "name": "Death Leap",
+    "targetType": 3,
+    "emote": "<:Death_Leap:536966785363083264>",
+    "range": 1,
+    "element": 2,
+    "effects": [
+      {
+        "Type": "Condition",
+        "Condition": "Stun",
+        "Probability": 10
+      }
+    ],
+    "PPCost": 22,
+    "addDamage": 110
+  },
+  "Plasma": {
+    "name": "Plasma",
+    "targetType": 4,
+    "emote": "<:Plasma:536967421379084308>",
+    "range": 2,
+    "element": 2,
+    "PPCost": 8,
+    "power": 45
+  },
+  "Shine Plasma": {
+    "name": "Shine Plasma",
+    "targetType": 4,
+    "emote": "<:Shine_Plasma:536967499007262740>",
+    "range": 3,
+    "element": 2,
+    "PPCost": 16,
+    "power": 100
+  },
+  "Spark Plasma": {
+    "name": "Spark Plasma",
+    "targetType": 4,
+    "emote": "<:Spark_Plasma:536967465801089024>",
+    "range": 4,
+    "element": 2,
+    "PPCost": 37,
+    "power": 180
+  },
+  "Slash": {
+    "name": "Slash",
+    "targetType": 4,
+    "emote": "<:Slash:536967859121815552>",
+    "range": 2,
+    "element": 2,
+    "PPCost": 4,
+    "power": 25
+  },
+  "Wind Slash": {
+    "name": "Wind Slash",
+    "targetType": 4,
+    "emote": "<:Wind_Slash:536967884518195221>",
+    "range": 2,
+    "element": 2,
+    "PPCost": 9,
+    "power": 50
+  },
+  "Sonic Slash": {
+    "name": "Sonic Slash",
+    "targetType": 4,
+    "emote": "<:Sonic_Slash:536967899638792192>",
+    "range": 3,
+    "element": 2,
+    "PPCost": 20,
+    "power": 120
+  },
+  "Bolt": {
+    "name": "Bolt",
+    "targetType": 4,
+    "emote": "<:Bolt:536966414284750855>",
+    "range": 2,
+    "element": 2,
+    "PPCost": 4,
+    "power": 25
+  },
+  "Flash Bolt": {
+    "name": "Flash Bolt",
+    "targetType": 4,
+    "emote": "<:Flash_Bolt:536966441862299678>",
+    "range": 2,
+    "element": 2,
+    "PPCost": 9,
+    "power": 50
+  },
+  "Blue Bolt": {
+    "name": "Blue Bolt",
+    "targetType": 4,
+    "emote": "<:Blue_Bolt:536966467543891968>",
+    "range": 2,
+    "element": 2,
+    "effects": [
+      {
+        "Type": "Condition",
+        "Condition": "Stun",
+        "Probability": 15
+      }
+    ],
+    "PPCost": 20,
+    "power": 120
+  },
+  "Thunderclap": {
+    "name": "Thunderclap",
+    "targetType": 4,
+    "emote": "<:Thunderclap:536968294750486575>",
+    "range": 2,
+    "element": 2,
+    "PPCost": 9,
+    "power": 50
+  },
+  "Thunderbolt": {
+    "name": "Thunderbolt",
+    "targetType": 4,
+    "emote": "<:Thunderbolt:536968327189364753>",
+    "range": 2,
+    "element": 2,
+    "PPCost": 19,
+    "power": 110
+  },
+  "Thunderhead": {
+    "name": "Thunderhead",
+    "targetType": 4,
+    "emote": "<:Thunderstorm:536968389680168963>",
+    "range": 4,
+    "element": 2,
+    "PPCost": 39,
+    "power": 190
+  },
+  "Diamond Dust": {
+    "name": "Diamond Dust",
+    "targetType": 3,
+    "emote": "<:Diamond_Dust:536969677415645187>",
+    "range": 1,
+    "element": 3,
+    "PPCost": 7,
+    "addDamage": 35
+  },
+  "Diamond Berg": {
+    "name": "Diamond Berg",
+    "targetType": 3,
+    "emote": "<:Diamond_Berg:536969707824087040>",
+    "range": 1,
+    "element": 3,
+    "PPCost": 18,
+    "addDamage": 90
+  },
+  "Frost": {
+    "name": "Frost",
+    "targetType": 4,
+    "emote": "<:Frost:536968927993921537>",
+    "range": 2,
+    "element": 3,
+    "PPCost": 5,
+    "power": 20
+  },
+  "Tundra": {
+    "name": "Tundra",
+    "targetType": 4,
+    "emote": "<:Tundra:536968944939040768>",
+    "range": 2,
+    "element": 3,
+    "PPCost": 8,
+    "power": 50
+  },
+  "Glacier": {
+    "name": "Glacier",
+    "targetType": 4,
+    "emote": "<:Glacier:536968989684006912>",
+    "range": 2,
+    "element": 3,
+    "PPCost": 15,
+    "power": 100,
+    "IgnoresSpread": true
+  },
+  "Ice": {
+    "name": "Ice",
+    "targetType": 4,
+    "emote": "<:Ice:536969244538044426>",
+    "range": 1,
+    "element": 3,
+    "PPCost": 5,
+    "power": 35
+  },
+  "Ice Horn": {
+    "name": "Ice Horn",
+    "targetType": 4,
+    "emote": "<:Ice_Horn:536969265597906964>",
+    "range": 2,
+    "element": 3,
+    "PPCost": 11,
+    "power": 70
+  },
+  "Ice Missile": {
+    "name": "Ice Missile",
+    "targetType": 4,
+    "emote": "<:Ice_Missile:536969287848558604>",
+    "range": 2,
+    "element": 3,
+    "PPCost": 23,
+    "power": 160
+  },
+  "Cool": {
+    "name": "Cool",
+    "targetType": 4,
+    "emote": "<:Cool:536969306442039296>",
+    "range": 2,
+    "element": 3,
+    "PPCost": 6,
+    "power": 35
+  },
+  "Supercool": {
+    "name": "Supercool",
+    "targetType": 4,
+    "emote": "<:Supercool:536969323244158977>",
+    "range": 3,
+    "element": 3,
+    "PPCost": 14,
+    "power": 80
+  },
+  "Megacool": {
+    "name": "Megacool",
+    "targetType": 4,
+    "emote": "<:Megacool:536969361794269201>",
+    "range": 4,
+    "element": 3,
+    "PPCost": 32,
+    "power": 200
+  },
+  "Douse": {
+    "name": "Douse",
+    "targetType": 4,
+    "emote": "<:Douse:536969010974294016>",
+    "range": 2,
+    "element": 3,
+    "PPCost": 5,
+    "power": 25
+  },
+  "Drench": {
+    "name": "Drench",
+    "targetType": 4,
+    "emote": "<:Drench:536969028632051733>",
+    "range": 2,
+    "element": 3,
+    "PPCost": 10,
+    "power": 60
+  },
+  "Deluge": {
+    "name": "Deluge",
+    "targetType": 4,
+    "emote": "<:Deluge:536969093958336547>",
+    "range": 3,
+    "element": 3,
+    "PPCost": 20,
+    "power": 120
+  },
+  "Cutting Edge": {
+    "name": "Cutting Edge",
+    "targetType": 3,
+    "emote": "<:Cutting_Edge:536969614039580689>",
+    "range": 1,
+    "element": 3,
+    "PPCost": 5,
+    "addDamage": 32
+  },
+  "Plume Edge": {
+    "name": "Plume Edge",
+    "targetType": 3,
+    "emote": "<:Plume_Edge:536969641684107264>",
+    "range": 1,
+    "element": 3,
+    "PPCost": 15,
+    "addDamage": 80
+  },
+  "Prism": {
+    "name": "Prism",
+    "targetType": 4,
+    "emote": "<:Prism:536969536050692117>",
+    "range": 2,
+    "element": 3,
+    "PPCost": 7,
+    "power": 40
+  },
+  "Hail Prism": {
+    "name": "Hail Prism",
+    "targetType": 4,
+    "emote": "<:Hail_Prism:536969551729000468>",
+    "range": 3,
+    "element": 3,
+    "PPCost": 16,
+    "power": 90
+  },
+  "Freeze Prism": {
+    "name": "Freeze Prism",
+    "targetType": 4,
+    "emote": "<:Freeze_Prism:536969587254755368>",
+    "range": 3,
+    "element": 3,
+    "PPCost": 31,
+    "power": 190
+  },
+  "Froth": {
+    "name": "Froth",
+    "targetType": 4,
+    "emote": "<:Froth:536969145053347858>",
+    "range": 3,
+    "element": 3,
+    "PPCost": 5,
+    "power": 28
+  },
+  "Froth Sphere": {
+    "name": "Froth Sphere",
+    "targetType": 4,
+    "emote": "<:Froth_Sphere:536969175965499431>",
+    "range": 3,
+    "element": 3,
+    "PPCost": 12,
+    "power": 65
+  },
+  "Froth Spiral": {
+    "name": "Froth Spiral",
+    "targetType": 4,
+    "emote": "<:Froth_Spiral:536969197108985856>",
+    "range": 4,
+    "element": 3,
+    "PPCost": 31,
+    "power": 150
+  },
+  "Drain": {
+    "name": "Drain",
+    "targetType": 3,
+    "emote": "💉",
+    "range": 1,
+    "element": 2,
+    "PPCost": 3,
+    "power": 50,
+    "effects": [
+      {
+        "Type": "HPDrain",
+        "Percentage": 50,
+        "Probability": 100
+      }
+    ]
+  },
+  "Psy Drain": {
+    "name": "Psy Drain",
+    "targetType": 3,
+    "emote": "💉",
+    "range": 1,
+    "element": 2,
+    "PPCost": 3,
+    "power": 50,
+    "effects": [
+      {
+        "Type": "PPDrain",
+        "Percentage": 50,
+        "Probability": 100
+      }
+    ]
+  },
+  "Heat Flash": {
+    "name": "Heat Flash",
+    "targetType": 3,
+    "emote": ":cloud:",
+    "range": 1,
+    "element": 1,
+    "PPCost": 0,
+    "addDamage": 20,
+    "effects": [
+      {
+        "Type": "Condition",
+        "Condition": "Delusion",
+        "Probability": 35
+      }
+    ]
+  },
+  "Death Size": {
+    "name": "Death Size",
+    "targetType": 3,
+    "emote": ":skull_crossbones:",
+    "range": 1,
+    "element": 0,
+    "PPCost": 0,
+    "addDamage": 35,
+    "effects": [
+      {
+        "Type": "OHKO",
+        "Probability": 15
+      }
+    ]
+  },
+  "Death Scythe": {
+    "name": "Death Scythe",
+    "targetType": 3,
+    "emote": ":skull_crossbones:",
+    "range": 1,
+    "element": 0,
+    "PPCost": 0,
+    "addDamage": 35,
+    "effects": [
+      {
+        "Type": "OHKO",
+        "Probability": 15
+      }
+    ]
+  },
+  "Ransack": {
+    "name": "Ransack",
+    "targetType": 3,
+    "emote": "<:Rampage:537766290031509524>",
+    "range": 1,
+    "element": 0,
+    "PPCost": 0,
+    "addDamage": 35
+  },
+  "Crystal Powder": {
+    "name": "Crystal Powder",
+    "targetType": 4,
+    "emote": "<:Crystal_Powder:548636060947709965>",
+    "range": 5,
+    "element": 3,
+    "PPCost": 1,
+    "power": 90
+  },
+  "Banshee Howl": {
+    "name": "Banshee Howl",
+    "targetType": 3,
+    "emote": "😱",
+    "range": 1,
+    "element": 2,
+    "PPCost": 0,
+    "power": 70,
+    "effects": [
+      {
+        "Type": "Condition",
+        "Condition": "Flinch",
+        "Probability": 35
+      }
+    ]
+  },
+  "Bear Claw": {
+    "name": "Bear Claw",
+    "targetType": 3,
+    "emote": "🐻",
+    "range": 1,
+    "element": 4,
+    "PPCost": 0,
+    "dmgMult": 1.6
+  },
+  "Cannibal Fang": {
+    "name": "Cannibal Fang",
+    "targetType": 3,
+    "emote": "✴",
+    "range": 1,
+    "element": 0,
+    "PPCost": 0,
+    "power": 24,
+    "effects": [
+      {
+        "Type": "HPDrain",
+        "Percentage": 50,
+        "Probability": 100
+      }
+    ]
+  },
+  "Bacteria Rush": {
+    "name": "Bacteria Rush",
+    "targetType": 3,
+    "emote": ":microbe:",
+    "range": 1,
+    "element": 0,
+    "PPCost": 0,
+    "addDamage": 40,
+    "effects": [
+      {
+        "Type": "Condition",
+        "Condition": "Poison",
+        "Probability": 50
+      }
+    ]
+  },
+  "Toxic Breath": {
+    "name": "Toxic Breath",
+    "targetType": 4,
+    "emote": "<:Venom:598458704400220160>",
+    "range": 1,
+    "element": 0,
+    "PPCost": 0,
+    "addDamage": 60,
+    "effects": [
+      {
+        "Type": "Condition",
+        "Condition": "Poison",
+        "Probability": 40
+      }
+    ]
+  },
+  "Wing Flutter": {
+    "name": "Wing Flutter",
+    "targetType": 4,
+    "emote": "🦅",
+    "range": 1,
+    "element": 2,
+    "PPCost": 0,
+    "power": 70
+  },
+  "Wing Stroke": {
+    "name": "Wing Stroke",
+    "targetType": 4,
+    "emote": "🦅",
+    "range": 1,
+    "element": 2,
+    "PPCost": 0,
+    "power": 140
+  },
+  "Wing Slash": {
+    "name": "Wing Slash",
+    "targetType": 3,
+    "emote": "🦅",
+    "range": 1,
+    "element": 2,
+    "PPCost": 0,
+    "dmgMult": 1.6
+  },
+  "Buffeting Wings": {
+    "name": "Buffeting Wings",
+    "targetType": 4,
+    "emote": "🦅",
+    "range": 1,
+    "element": 2,
+    "PPCost": 0,
+    "Power": 140
+  },
+  "Wicked Howl": {
+    "name": "Wicked Howl",
+    "targetType": 4,
+    "emote": ":anger_right:",
+    "range": 2,
+    "element": 2,
+    "PPCost": 0,
+    "power": 35,
+    "effects": [
+      {
+        "Type": "Condition",
+        "Condition": "Flinch",
+        "Probability": 20
+      }
+    ]
+  },
+  "Wing Beat": {
+    "name": "Wing Beat",
+    "targetType": 4,
+    "emote": "🦅",
+    "range": 2,
+    "element": 2,
+    "PPCost": 0,
+    "power": 35
+  },
+  "Twin Beaks": {
+    "name": "Twin Beaks",
+    "targetType": 3,
+    "emote": "🦅",
+    "range": 1,
+    "element": 2,
+    "PPCost": 0,
+    "addDamage": 30,
+    "effects": [
+      {
+        "Type": "MultiplyDamage",
+        "Multipliers": [ 2.0 ],
+        "Probabilites": [ 50 ]
+      }
+    ]
+  },
+  "Ice Blessing": {
+    "name": "Ice Blessing",
+    "targetType": 4,
+    "emote": "❄",
+    "range": 1,
+    "element": 3,
+    "PPCost": 0,
+    "power": 140
+  },
+  "Ice Breath": {
+    "name": "Ice Breath",
+    "targetType": 4,
+    "emote": "❄",
+    "range": 1,
+    "element": 3,
+    "PPCost": 0,
+    "power": 120
+  },
+  "Chill Breath": {
+    "name": "Chill Breath",
+    "targetType": 4,
+    "emote": "❄",
+    "range": 1,
+    "element": 3,
+    "PPCost": 0,
+    "power": 270
+  },
+  "Headbutt": {
+    "name": "Headbutt",
+    "targetType": 3,
+    "emote": "🤕",
+    "range": 1,
+    "element": 0,
+    "PPCost": 0,
+    "addDamage": 60
+  },
+  "Rabid Fang": {
+    "name": "Rabid Fang",
+    "targetType": 3,
+    "emote": "✴",
+    "range": 1,
+    "element": 0,
+    "PPCost": 0,
+    "addDamage": 36,
+    "effects": [
+      {
+        "Type": "Condition",
+        "Condition": "Venom",
+        "Probability": 28
+      }
+    ]
+  },
+  "Mad Dash": {
+    "name": "Mad Dash",
+    "targetType": 3,
+    "emote": "<:Rampage:537766290031509524>",
+    "range": 1,
+    "element": 0,
+    "PPCost": 0,
+    "addDamage": 70
+  },
+  "Fire Breath": {
+    "name": "Fire Breath",
+    "targetType": 4,
+    "emote": "🔥",
+    "range": 3,
+    "element": 1,
+    "PPCost": 0,
+    "power": 120
+  },
+  "Angle Spike": {
+    "name": "Angle Spike",
+    "targetType": 4,
+    "emote": ":fishing_pole_and_fish:",
+    "range": 3,
+    "element": 1,
+    "PPCost": 0,
+    "addDamage": 15
+  },
+  "Beast Needle": {
+    "name": "Beast Needle",
+    "targetType": 4,
+    "emote": ":fishing_pole_and_fish:",
+    "range": 3,
+    "element": 3,
+    "PPCost": 0,
+    "addDamage": 15
+  },
+  "Triple Chomp": {
+    "name": "Triple Chomp",
+    "targetType": 4,
+    "emote": ":trident:",
+    "range": 3,
+    "element": 3,
+    "PPCost": 0,
+    "dmgMult": 2.4
+  },
+  "Acid Breath": {
+    "name": "Acid Breath",
+    "targetType": 4,
+    "emote": "☣",
+    "range": 3,
+    "element": 1,
+    "PPCost": 0,
+    "power": 170,
+    "effects": [
+      {
+        "Type": "Stat",
+        "Stat": "Defense",
+        "Multiplier": 0.8,
+        "Probability": 20
+      }
+    ]
+  },
+  "Acid Blessing": {
+    "name": "Acid Blessing",
+    "targetType": 4,
+    "emote": "☣",
+    "range": 3,
+    "element": 1,
+    "PPCost": 0,
+    "power": 170,
+    "effects": [
+      {
+        "Type": "Stat",
+        "Stat": "Defense",
+        "Multiplier": 0.8,
+        "Probability": 20
+      }
+    ]
+  },
+  "Acid Bite": {
+    "name": "Acid Bite",
+    "targetType": 4,
+    "emote": "☣",
+    "range": 3,
+    "element": 1,
+    "PPCost": 0,
+    "addDamage": 36,
+    "effects": [
+      {
+        "Type": "Stat",
+        "Stat": "Defense",
+        "Multiplier": 0.8,
+        "Probability": 20
+      }
+    ]
+  },
+  "Formic Acid": {
+    "name": "Formic Acid",
+    "targetType": 3,
+    "emote": ":ant:",
+    "range": 3,
+    "element": 2,
+    "PPCost": 0,
+    "power": 15,
+    "effects": [
+      {
+        "Type": "Condition",
+        "Condition": "Stun",
+        "Probability": 20
+      }
+    ]
+  },
+  "Storm Breath": {
+    "name": "Storm Breath",
+    "targetType": 4,
+    "emote": "🌩",
+    "range": 3,
+    "element": 2,
+    "PPCost": 0,
+    "power": 170,
+    "effects": [
+      {
+        "Type": "Condition",
+        "Condition": "Stun",
+        "Probability": 20
+      }
+    ]
+  },
+  "Double Fang": {
+    "name": "Double Fang",
+    "targetType": 3,
+    "emote": "🐶",
+    "range": 1,
+    "element": 0,
+    "PPCost": 0,
+    "addDamage": 50,
+    "effects": [
+      {
+        "Type": "MultiplyDamage",
+        "Multipliers": [ 2.0 ],
+        "Probabilites": [ 50 ]
+      }
+    ]
+  },
+  "Triple Fang": {
+    "name": "Triple Fang",
+    "targetType": 3,
+    "emote": "🐶",
+    "range": 1,
+    "element": 0,
+    "PPCost": 0,
+    "addDamage": 35,
+    "effects": [
+      {
+        "Type": "MultiplyDamage",
+        "Multipliers": [ 2.0 ],
+        "Probabilites": [ 50 ]
+      }
+    ]
+  },
+  "Oil Drop": {
+    "name": "Oil Drop",
+    "targetType": 4,
+    "emote": "<:Oil_Drop:548636061144711178>",
+    "range": 3,
+    "element": 1,
+    "PPCost": 1,
+    "power": 80
+  },
+  "Bramble Seed": {
+    "name": "Bramble Seed",
+    "targetType": 4,
+    "emote": "<:Bramble_Seed:548673643690065930>",
+    "range": 5,
+    "element": 0,
+    "PPCost": 1,
+    "power": 110
+  },
+  "Slice": {
+    "name": "Slice",
+    "targetType": 3,
+    "emote": "<:Rampage:537766290031509524>",
+    "range": 1,
+    "element": 4,
+    "PPCost": 0,
+    "dmgMult": 2
+  },
+  "Crusher Grip": {
+    "name": "Crusher Grip",
+    "targetType": 3,
+    "emote": "<:Rampage:537766290031509524>",
+    "range": 1,
+    "element": 0,
+    "PPCost": 0,
+    "dmgMult": 1.3,
+    "effects": [
+      {
+        "Type": "Condition",
+        "Condition": "Stun",
+        "Probability": 20
+      }
+    ]
+  },
+  "Mighty Press": {
+    "name": "Mighty Press",
+    "targetType": 3,
+    "emote": ":compression:",
+    "range": 1,
+    "element": 0,
+    "PPCost": 0,
+    "addDamage": 50,
+    "effects": [
+      {
+        "Type": "OHKO",
+        "Probability": 10
+      }
+    ]
+  },
+  "Ocean Fist": {
+    "name": "Ocean Fist",
+    "targetType": 3,
+    "emote": ":ocean:",
+    "range": 1,
+    "element": 0,
+    "PPCost": 0,
+    "addDamage": 50,
+    "effects": [
+      {
+        "Type": "ReduceHPToOne",
+        "Probability": 15
+      }
+    ]
+  },
+  "War Cry": {
+    "name": "War Cry",
+    "targetType": 3,
+    "emote": "<:Rampage:537766290031509524>",
+    "range": 1,
+    "element": 2,
+    "PPCost": 0,
+    "power": 45,
+    "effects": [
+      {
+        "Type": "Condition",
+        "Condition": "Flinch",
+        "Probability": 35
+      }
+    ]
+  },
+  "Dynamite": {
+    "name": "Dynamite",
+    "targetType": 4,
+    "emote": ":bomb:",
+    "range": 3,
+    "element": 1,
+    "PPCost": 0,
+    "power": 200,
+    "effects": [
+      {
+        "Type": "UserDies"
+      }
+    ]
+  },
+  "Angry Mine": {
+    "name": "Angry Mine",
+    "targetType": 4,
+    "emote": "<:Anger_Ball:600641755066531851>",
+    "range": 3,
+    "element": 0,
+    "PPCost": 0,
+    "power": 300,
+    "effects": [
+      {
+        "Type": "UserDies"
+      }
+    ],
+    "ignoreSpread": true
+  },
+  "Trap": {
+    "name": "Boom!",
+    "targetType": 4,
+    "emote": ":bomb:",
+    "range": 5,
+    "element": 4,
+    "PPCost": 0,
+    "power": 2000,
+    "IgnoreSpread": true,
+    "effects": [
+      {
+        "Type": "UserDies"
+      }
+    ]
+  },
+  "Trap20": {
+    "name": "Boom!",
+    "targetType": 4,
+    "emote": ":bomb:",
+    "range": 5,
+    "element": 4,
+    "PPCost": 0,
+    "Power": 1,
+    "percentageDamage": 20,
+    "IgnoreSpread": true,
+    "effects": [
+      {
+        "Type": "UserDies"
+      }
+    ]
+  },
+  "Wrong": {
+    "name": "Wrong!",
+    "targetType": 4,
+    "emote": "❌",
+    "range": 5,
+    "element": 4,
+    "PPCost": 0,
+    "power": 2000,
+    "IgnoreSpread": true,
+    "effects": [
+      {
+        "Type": "UserDies"
+      }
+    ]
+  },
+  "Claw Attack": {
+    "name": "Claw Attack",
+    "targetType": 3,
+    "emote": "<:Rampage:537766290031509524>",
+    "range": 1,
+    "element": 4,
+    "PPCost": 0,
+    "addDamage": 20
+  },
+  "Claw Frenzy": {
+    "name": "Claw Frenzy",
+    "targetType": 3,
+    "emote": "<:Rampage:537766290031509524>",
+    "range": 1,
+    "element": 4,
+    "PPCost": 0,
+    "addDamage": 40,
+    "effects": [
+      {
+        "Type": "Stat",
+        "Stat": "Attack",
+        "Multiplier": 0.75,
+        "Probability": 50
+      }
+    ]
+  },
+  "Claw Slash": {
+    "name": "Claw Slash",
+    "targetType": 3,
+    "emote": "<:Rampage:537766290031509524>",
+    "range": 1,
+    "element": 2,
+    "PPCost": 0,
+    "addDamage": 16
+  },
+  "Fire Dance": {
+    "name": "Fire Dance",
+    "targetType": 3,
+    "emote": "<:Blaze:551042852730175520>",
+    "range": 1,
+    "element": 1,
+    "PPCost": 0,
+    "dmgMult": 1.3
+  },
+  "Poison Fang": {
+    "name": "Poison Fang",
+    "targetType": 3,
+    "emote": ":snake:",
+    "range": 1,
+    "element": 0,
+    "PPCost": 0,
+    "addDamage": 0,
+    "effects": [
+      {
+        "Type": "Condition",
+        "Condition": "Poison",
+        "Probability": 40
+      }
+    ]
+  },
+  "Twin Shear": {
+    "name": "Twin Shear",
+    "targetType": 3,
+    "emote": ":scissors:",
+    "range": 1,
+    "element": 0,
+    "PPCost": 0,
+    "dmgMult": 1.8
+  },
+  "Echo Cut": {
+    "name": "Echo Cut",
+    "targetType": 3,
+    "emote": ":scissors:",
+    "range": 1,
+    "element": 4,
+    "PPCost": 0,
+    "addDamage": 30
+  },
+  "Aqua Breath": {
+    "name": "Aqua Breath",
+    "targetType": 4,
+    "emote": ":sweat_drops:",
+    "range": 2,
+    "element": 3,
+    "PPCost": 0,
+    "power": 120
+  },
+  "Water Breath": {
+    "name": "Water Breath",
+    "targetType": 4,
+    "emote": ":sweat_drops:",
+    "range": 2,
+    "element": 3,
+    "PPCost": 0,
+    "power": 100
+  },
+  "Water Blessing": {
+    "name": "Water Blessing",
+    "targetType": 4,
+    "emote": ":sweat_drops:",
+    "range": 2,
+    "element": 3,
+    "PPCost": 0,
+    "power": 25
+  },
+  "Black Ice": {
+    "name": "Black Ice",
+    "targetType": 4,
+    "emote": ":chocolate_bar:",
+    "range": 3,
+    "element": 0,
+    "PPCost": 0,
+    "power": 80
+  },
+  "Armor Crush": {
+    "name": "Armor Crush",
+    "targetType": 3,
+    "emote": ":name_badge:",
+    "range": 1,
+    "element": 0,
+    "effects": [
+      {
+        "Type": "Stat",
+        "Stat": "Defense",
+        "Multiplier": 0.75,
+        "Probability": 50
+      }
+    ],
+    "PPCost": 0,
+    "dmgMult": 1.4
+  },
+  "Mega Slash": {
+    "name": "Mega Slash",
+    "targetType": 3,
+    "emote": ":turkey:",
+    "range": 1,
+    "element": 2,
+    "PPCost": 0,
+    "dmgMult": 1.4
+  },
+  "Raiden's Wrath": {
+    "name": "Raiden's Wrath",
+    "targetType": 3,
+    "emote": "<:Cloud_Brand:555843776174882826>",
+    "range": 1,
+    "element": 2,
+    "PPCost": 0,
+    "addDamage": 39,
+    "effects": [
+      {
+        "Type": "IgnoreDefense",
+        "IgnorePercent": 100,
+        "Probability": 100
+      }
+    ]
+  },
+  "Strong Hit": {
+    "name": "Strong Hit",
+    "targetType": 3,
+    "emote": "<:Rampage:537766290031509524>",
+    "range": 1,
+    "element": 4,
+    "PPCost": 0,
+    "dmgMult": 1.4
+  },
+  "Sand Breath": {
+    "name": "Sand Breath",
+    "targetType": 4,
+    "emote": ":hourglass_flowing_sand:",
+    "range": 3,
+    "element": 0,
+    "PPCost": 0,
+    "power": 35
+  },
+  "Desert Gasp": {
+    "name": "Desert Gasp",
+    "targetType": 4,
+    "emote": ":hourglass_flowing_sand:",
+    "range": 3,
+    "element": 0,
+    "PPCost": 0,
+    "power": 35,
+    "effects": [
+      {
+        "Type": "Stat",
+        "Stat": "Defense",
+        "Multiplier": 0.8
+      }
+    ]
+  },
+  "Paralytail": {
+    "name": "Paralytail",
+    "targetType": 3,
+    "emote": ":scorpion:",
+    "range": 1,
+    "element": 0,
+    "PPCost": 0,
+    "addDamage": 20,
+    "effects": [
+      {
+        "Type": "Condition",
+        "Condition": "Stun",
+        "Probability": 20
+      }
+    ]
+  },
+  "Poison Tail": {
+    "name": "Poison Tail",
+    "targetType": 3,
+    "emote": ":scorpion:",
+    "range": 1,
+    "element": 0,
+    "PPCost": 0,
+    "addDamage": 35,
+    "effects": [
+      {
+        "Type": "Condition",
+        "Condition": "Poison",
+        "Probability": 20
+      }
+    ]
+  },
+  "Poisonous Bite": {
+    "name": "Poisonous Bite",
+    "targetType": 3,
+    "emote": "<:Rampage:537766290031509524>",
+    "range": 1,
+    "element": 0,
+    "PPCost": 0,
+    "addDamage": 15,
+    "effects": [
+      {
+        "Type": "Condition",
+        "Condition": "Poison",
+        "Probability": 20
+      }
+    ]
+  },
+  "Witchlight": {
+    "name": "Witchlight",
+    "targetType": 3,
+    "emote": ":woman_mage:",
+    "range": 1,
+    "element": 1,
+    "PPCost": 0,
+    "addDamage": 30,
+    "effects": [
+      {
+        "Type": "Condition",
+        "Condition": "Haunt",
+        "Probability": 20
+      }
+    ]
+  },
+  "Ur Flash": {
+    "name": "Ur Flash",
+    "targetType": 3,
+    "emote": "<:Rampage:537766290031509524>",
+    "range": 1,
+    "element": 2,
+    "PPCost": 0,
+    "dmgMult": 1.4
+  },
+  "Wolf Rush": {
+    "name": "Wolf Rush",
+    "targetType": 3,
+    "emote": ":wolf:",
+    "range": 1,
+    "element": 2,
+    "PPCost": 0,
+    "dmgMult": 1.4
+  },
+  "Shriek": {
+    "name": "Shriek",
+    "targetType": 3,
+    "emote": "<:Rampage:537766290031509524>",
+    "range": 1,
+    "element": 2,
+    "PPCost": 0,
+    "power": 30
+  },
+  "Maul": {
+    "name": "Maul",
+    "targetType": 3,
+    "emote": ":feet:",
+    "range": 1,
+    "element": 4,
+    "PPCost": 0
+  },
+  "Rampage": {
+    "name": "Rampage",
+    "targetType": 5,
+    "emote": ":wolf:",
+    "range": 5,
+    "element": 4,
+    "PPCost": 0
+  },
+  "Power Crush": {
+    "name": "Power Crush",
+    "targetType": 3,
+    "emote": ":eight_pointed_black_star:",
+    "range": 1,
+    "element": 0,
+    "PPCost": 0,
+    "dmgMult": 1.2,
+    "effects": [
+      {
+        "Type": "ReduceHPToOne",
+        "Probability": 20
+      }
+    ]
+  },
+  "Bestial Attack": {
+    "name": "Bestial Attack",
+    "targetType": 3,
+    "emote": ":boar:",
+    "range": 1,
+    "element": 0,
+    "PPCost": 0,
+    "dmgMult": 1.2,
+    "effects": [
+      {
+        "ReduceHPToOne": "ReduceHPToOne",
+        "Probability": 20
+      }
+    ]
+  },
+  "Vampiric Fang": {
+    "name": "Vampiric Fang",
+    "targetType": 3,
+    "emote": ":vampire:",
+    "range": 1,
+    "element": 0,
+    "PPCost": 3,
+    "power": 35,
+    "effects": [
+      {
+        "Type": "HPDrain",
+        "Percentage": 50,
+        "Probability": 100
+      }
+    ]
+  },
+  "Vital Moon": {
+    "name": "Vital Moon",
+    "targetType": 3,
+    "emote": ":last_quarter_moon_with_face:",
+    "range": 1,
+    "element": 0,
+    "PPCost": 0,
+    "dmgMult": 1.4,
+    "effects": [
+      {
+        "ReduceHPToOne": "ReduceHPToOne",
+        "Probability": 10
+      }
+    ]
+  },
+  "Vital Barrage": {
+    "name": "Vital Barrage",
+    "targetType": 3,
+    "emote": ":first_quarter_moon_with_face:",
+    "range": 1,
+    "element": 0,
+    "PPCost": 0,
+    "dmgMult": 1.4,
+    "effects": [
+      {
+        "ReduceHPToOne": "ReduceHPToOne",
+        "Probability": 10
+      }
+    ]
+  },
+  "Pike Assault": {
+    "name": "Pike Assault",
+    "targetType": 3,
+    "emote": ":trident:",
+    "range": 1,
+    "element": 2,
+    "PPCost": 0,
+    "dmgMult": 1.4,
+    "effects": [
+      {
+        "Type": "IgnoreDefense",
+        "IgnorePercent": 50
+      }
+    ]
+  },
+  "Bone Charge": {
+    "name": "Bone Charge",
+    "targetType": 3,
+    "emote": ":bone:",
+    "range": 1,
+    "element": 0,
+    "PPCost": 0,
+    "dmgMult": 1.7
+  },
+  "Bone Chiller": {
+    "name": "Bone Chiller",
+    "targetType": 3,
+    "emote": ":bone:",
+    "range": 1,
+    "element": 3,
+    "PPCost": 0,
+    "power": 7
+  },
+  "Heat Stun": {
+    "name": "Heat Stun",
+    "targetType": 3,
+    "emote": ":fire:",
+    "range": 1,
+    "element": 1,
+    "PPCost": 0,
+    "dmgMult": 1.3,
+    "effects": [
+      {
+        "Type": "Condition",
+        "Condition": "Stun",
+        "Probability": 40
+      }
+    ]
+  },
+  "Star Mine": {
+    "name": "Star Mine",
+    "targetType": 5,
+    "emote": ":fireworks:",
+    "range": 5,
+    "element": 1,
+    "PPCost": 0,
+    "percentageDamage": 30,
+    "power": 35
+  },
+  "Dark Blessing": {
+    "name": "Dark Blessing",
+    "targetType": 4,
+    "emote": ":skull:",
+    "range": 3,
+    "element": 1,
+    "PPCost": 0,
+    "power": 170,
+    "effects": [
+      {
+        "Type": "Stat",
+        "Stat": "Defense",
+        "Multiplier": 0.75,
+        "Probability": 50
+      }
+    ]
+  },
+  "Thrash": {
+    "name": "Thrash",
+    "targetType": 3,
+    "emote": "<:Rampage:537766290031509524>",
+    "range": 1,
+    "element": 3,
+    "PPCost": 0,
+    "addDamage": 30,
+    "effects": [
+      {
+        "ReduceHPToOne": "ReduceHPToOne",
+        "Probability": 20
+      }
+    ]
+  },
+  "Truncheon Fist": {
+    "name": "Truncheon Fist",
+    "targetType": 3,
+    "emote": ":right_facing_fist:",
+    "range": 1,
+    "element": 0,
+    "PPCost": 0,
+    "addDamage": 60,
+    "effects": [
+      {
+        "ReduceHPToOne": "ReduceHPToOne",
+        "Probability": 10
+      }
+    ]
+  },
+  "Rotten Blood": {
+    "name": "Rotten Blood",
+    "targetType": 3,
+    "emote": ":skull_crossbones:",
+    "range": 1,
+    "element": 1,
+    "PPCost": 0,
+    "power": 44,
+    "effects": [
+      {
+        "Type": "Stat",
+        "Stat": "Defense",
+        "Multiplier": 0.6,
+        "Probability": 25
+      }
+    ]
+  },
+  "Sticky Poison": {
+    "name": "Sticky Poison",
+    "targetType": 3,
+    "emote": ":nauseated_face:",
+    "range": 1,
+    "element": 3,
+    "PPCost": 0,
+    "power": 16,
+    "effects": [
+      {
+        "Type": "Condition",
+        "Condition": "Poison",
+        "Probability": 50
+      }
+    ]
+  },
+  "Brute Force": {
+    "name": "Brute Force",
+    "targetType": 3,
+    "emote": "<:Rampage:537766290031509524>",
+    "range": 1,
+    "element": 0,
+    "PPCost": 0,
+    "dmgMult": 1.9
+  },
+  "Massive Swing": {
+    "name": "Massive Swing",
+    "targetType": 4,
+    "emote": "<:Rampage:537766290031509524>",
+    "range": 5,
+    "element": 0,
+    "PPCost": 0,
+    "addDamage": 50
+  },
+  "Undead Sword": {
+    "name": "Undead Sword",
+    "targetType": 3,
+    "emote": ":crossed_swords:",
+    "range": 0,
+    "element": 0,
+    "PPCost": 0,
+    "addDamage": 15
+  },
+  "Gasping Breath": {
+    "name": "Gasping Breath",
+    "targetType": 3,
+    "emote": ":gear:",
+    "range": 1,
+    "element": 0,
+    "PPCost": 0,
+    "power": 18,
+    "effects": [
+      {
+        "Type": "Condition",
+        "Condition": "Haunt",
+        "Probability": 20
+      }
+    ]
+  },
+  "Vanish Claw": {
+    "name": "Vanish Claw",
+    "targetType": 3,
+    "emote": ":gear:",
+    "range": 1,
+    "element": 0,
+    "PPCost": 0,
+    "power": 21,
+    "effects": [
+      {
+        "Type": "Condition",
+        "Condition": "Delusion",
+        "Probability": 35
+      }
+    ]
+  },
+  "Deadly Gas": {
+    "name": "Deadly Gas",
+    "targetType": 4,
+    "emote": ":biohazard:",
+    "range": 1,
+    "element": 0,
+    "PPCost": 0,
+    "power": 30,
+    "effects": [
+      {
+        "Type": "Condition",
+        "Condition": "Venom",
+        "Probability": 35
+      }
+    ]
+  },
+  "Pebble Breath": {
+    "name": "Pebble Breath",
+    "targetType": 3,
+    "emote": ":gear:",
+    "range": 1,
+    "element": 0,
+    "PPCost": 0,
+    "power": 24
+  },
+  "Sizzle Breath": {
+    "name": "Sizzle Breath",
+    "targetType": 3,
+    "emote": ":gear:",
+    "range": 1,
+    "element": 0,
+    "PPCost": 0,
+    "power": 37,
+    "effects": [
+      {
+        "Type": "Stat",
+        "Stat": "Defense",
+        "Multiplier": 0.8,
+        "Probability": 25
+      }
+    ]
+  },
+  "Blast Breath": {
+    "name": "Blast Breath",
+    "targetType": 3,
+    "emote": "<:Planetary:536963471766454272>",
+    "range": 1,
+    "element": 1,
+    "PPCost": 0,
+    "power": 170,
+    "effects": [
+      {
+        "Type": "Stat",
+        "Stat": "Defense",
+        "Multiplier": 0.75,
+        "Probability": 35
+      }
+    ]
+  },
+  "Meteor Blow": {
+    "name": "Meteor Blow",
+    "targetType": 3,
+    "emote": ":comet:",
+    "range": 1,
+    "element": 1,
+    "PPCost": 0,
+    "power": 120,
+    "percentageDamage": 35
+  },
+  "Rolling Flame": {
+    "name": "Rolling Flame",
+    "targetType": 4,
+    "emote": ":fireworks:",
+    "range": 3,
+    "element": 1,
+    "PPCost": 0,
+    "addDamage": 100,
+    "IgnoreSpread": true
+  },
+  "Dragon Driver": {
+    "name": "Dragon Driver",
+    "targetType": 4,
+    "emote": ":dragon_face:",
+    "range": 3,
+    "element": 1,
+    "PPCost": 0,
+    "power": 120,
+    "IgnoreSpread": true
+  },
+  "Mine Ball": {
+    "name": "Mine Ball",
+    "targetType": 4,
+    "emote": "<:Mine_Ball:600642600390885376>",
+    "range": 3,
+    "element": 3,
+    "PPCost": 0,
+    "dmgMult": 1.5
+  },
+  "Fatal Fang": {
+    "name": "Fatal Fang",
+    "targetType": 4,
+    "emote": "<:Rampage:537766290031509524>",
+    "range": 1,
+    "element": 4,
+    "PPCost": 0,
+    "addDamage": 11
+  },
+  "Counterstrike": {
+    "name": "Counterstrike",
+    "targetType": 3,
+    "emote": "<:Rampage:537766290031509524>",
+    "range": 1,
+    "element": 0,
+    "PPCost": 0,
+    "addDamage": 50
+  },
+  "Bosca Hit": {
+    "name": "Bosca Hit",
+    "targetType": 3,
+    "emote": ":axe:",
+    "range": 1,
+    "element": 4,
+    "PPCost": 0,
+    "dmgMult": 1.7
+  },
+  "Douplestep": {
+    "name": "Douplestep",
+    "targetType": 3,
+    "emote": ":footprints:",
+    "range": 1,
+    "element": 4,
+    "PPCost": 0,
+    "dmgMult": 1.8
+  },
+  "Drain Fang": {
+    "name": "Drain Fang",
+    "targetType": 3,
+    "emote": ":drop_of_blood:",
+    "range": 1,
+    "element": 0,
+    "PPCost": 0,
+    "power": 80,
+    "effects": [
+      {
+        "Type": "HPDrain",
+        "Percentage": 100,
+        "Probability": 100
+      }
+    ]
+  },
+  "Electric Bite": {
+    "name": "Electric Bite",
+    "targetType": 3,
+    "emote": ":zap:",
+    "range": 3,
+    "element": 2,
+    "PPCost": 0,
+    "dmgMult": 1.01,
+    "effects": [
+      {
+        "Type": "Condition",
+        "Condition": "Stun",
+        "Probability": 35
+      }
+    ]
+  },
+  "Numbing Sting": {
+    "name": "Numbing Sting",
+    "targetType": 3,
+    "emote": ":bee:",
+    "range": 3,
+    "element": 2,
+    "PPCost": 0,
+    "dmgMult": 0.8,
+    "effects": [
+      {
+        "Type": "Condition",
+        "Condition": "Stun",
+        "Probability": 40
+      }
+    ]
+  },
+  "Evil Blessing": {
+    "name": "Evil Blessing",
+    "targetType": 4,
+    "emote": "<:Annihilation:536959197288464393>",
+    "range": 1,
+    "element": 1,
+    "PPCost": 0,
+    "power": 80,
+    "effects": [
+      {
+        "Type": "Condition",
+        "Condition": "Haunt",
+        "Probability": 35
+      }
+    ]
+  },
+  "Flame Breath": {
+    "name": "Flame Breath",
+    "targetType": 4,
+    "emote": "<:Fire_Breath:536966024486977557>",
+    "range": 1,
+    "element": 1,
+    "PPCost": 0,
+    "power": 170
+  },
+  "Mytic Flame": {
+    "name": "Mystic Flame",
+    "targetType": 4,
+    "emote": "<:Flare:536965231201484829>",
+    "range": 1,
+    "element": 1,
+    "PPCost": 0,
+    "power": 16
+  },
+  "Outer Space": {
+    "name": "Outer Space",
+    "targetType": 4,
+    "emote": "<:Meteor:636449223071760384>",
+    "range": 1,
+    "element": 1,
+    "PPCost": 0,
+    "power": 200
+  },
+  "Flash Punch": {
+    "name": "Flash Punch",
+    "targetType": 3,
+    "emote": "<:Speed_Punch:537465193626730517>",
+    "range": 1,
+    "element": 2,
+    "PPCost": 0,
+    "addDamage": 10,
+    "effects": [
+      {
+        "Type": "Condition",
+        "Condition": "Delusion",
+        "Probability": 60
+      }
+    ]
+  },
+  "Flying Attack": {
+    "name": "Flying Attack",
+    "targetType": 3,
+    "emote": ":comet:",
+    "range": 1,
+    "element": 2,
+    "PPCost": 0,
+    "addDamage": 8,
+    "effects": [
+      {
+        "Type": "MultiplyDamage",
+        "Multipliers": [ 2.0 ],
+        "Probabilites": [ 50 ]
+      }
+    ]
+  },
+  "Forcible Arm": {
+    "name": "Forcible Arm",
+    "targetType": 3,
+    "emote": ":muscle:",
+    "range": 1,
+    "element": 0,
+    "PPCost": 0,
+    "addDamage": 40
+  },
+  "Freebite Rush": {
+    "name": "Freebite Rush",
+    "targetType": 3,
+    "emote": "<:Rampage:537766290031509524>",
+    "range": 1,
+    "element": 0,
+    "PPCost": 0,
+    "addDamage": 40,
+    "effects": [
+      {
+        "Type": "Stat",
+        "Stat": "Attack",
+        "Multiplier": 0.75,
+        "Probability": 50
+      }
+    ]
+  },
+  "Formina Sage": {
+    "name": "Formina Sage",
+    "targetType": 3,
+    "emote": "<:Call_Dullahan:536966728572338187>",
+    "range": 1,
+    "element": 2,
+    "PPCost": 0,
+    "dmgMult": 2.8
+  },
+  "Human Hunt": {
+    "name": "Human Hunt",
+    "targetType": 3,
+    "emote": "<:Skull_Splitter:536959343153774652>",
+    "range": 1,
+    "element": 0,
+    "PPCost": 0,
+    "power": 1,
+    "effects": [
+      {
+        "Type": "OHKO",
+        "probability": 15
+      }
+    ]
+  },
+  "Kill Sting": {
+    "name": "Kill Sting",
+    "targetType": 3,
+    "emote": ":dagger:",
+    "range": 1,
+    "element": 0,
+    "PPCost": 0,
+    "dmgMult": 1.1,
+    "effects": [
+      {
+        "Type": "OHKO",
+        "probability": 7
+      }
+    ]
+  },
+  "Hydro Slash": {
+    "name": "Hydro Slash",
+    "targetType": 3,
+    "emote": "<:Cutting_Edge:536969614039580689>",
+    "range": 1,
+    "element": 3,
+    "PPCost": 0,
+    "dmgMult": 1.4
+  },
+  "Man Eater": {
+    "name": "Man Eater",
+    "targetType": 3,
+    "emote": ":meat_on_bone:",
+    "range": 1,
+    "element": 2,
+    "PPCost": 3,
+    "power": 50,
+    "effects": [
+      {
+        "Type": "HPDrain",
+        "Percentage": 75,
+        "Probability": 100
+      }
+    ]
+  },
+  "Mortal Blow": {
+    "name": "Mortal Blow",
+    "targetType": 3,
+    "emote": ":wind_blowing_face:",
+    "range": 1,
+    "element": 0,
+    "PPCost": 0,
+    "dmgMult": 1.1,
+    "effects": [
+      {
+        "Type": "UserDies"
+      }
+    ]
+  },
+  "Onslaught": {
+    "name": "Onslaught",
+    "targetType": 3,
+    "emote": "<:Rampage:537766290031509524>",
+    "range": 1,
+    "element": 0,
+    "PPCost": 0,
+    "addDamage": 24
+  },
+  "Poison Ink": {
+    "name": "Poison Ink",
+    "targetType": 3,
+    "emote": "<:Poison:549526931847249920>",
+    "range": 1,
+    "element": 0,
+    "PPCost": 0,
+    "addDamage": 1,
+    "effects": [
+      {
+        "Type": "Condition",
+        "Condition": "Venom",
+        "Probability": 10
+      }
+    ]
+  },
+  "Poison Sting": {
+    "name": "Poison Sting",
+    "targetType": 3,
+    "emote": "<:Poison:549526931847249920>",
+    "range": 1,
+    "element": 0,
+    "PPCost": 0,
+    "dmgMult": 1.2,
+    "effects": [
+      {
+        "Type": "Condition",
+        "Condition": "Poison",
+        "Probability": 15
+      }
+    ]
+  },
+  "Power Bite": {
+    "name": "Power Bite",
+    "targetType": 3,
+    "emote": ":tooth:",
+    "range": 1,
+    "element": 0,
+    "PPCost": 0,
+    "addDamage": 12
+  },
+  "Quick Slash": {
+    "name": "Quick Slash",
+    "targetType": 3,
+    "emote": ":feet:",
+    "range": 1,
+    "element": 2,
+    "PPCost": 0,
+    "dmgMult": 1.3
+  },
+  "Raging Flood": {
+    "name": "Raging Flood",
+    "targetType": 4,
+    "emote": ":ocean:",
+    "range": 4,
+    "element": 3,
+    "PPCost": 0,
+    "dmgMult": 1.3,
+    "ignoreSpread": true
+  },
+  "Rising Venom": {
+    "name": "Rising Venom",
+    "targetType": 3,
+    "emote": "<:Poison:549526931847249920>",
+    "range": 1,
+    "element": 3,
+    "PPCost": 0,
+    "addDamage": 30,
+    "effects": [
+      {
+        "Type": "Condition",
+        "Condition": "Poison",
+        "Probability": 15
+      }
+    ]
+  },
+  "Rumble": {
+    "name": "Rumble",
+    "targetType": 3,
+    "emote": ":ghost:",
+    "range": 1,
+    "element": 0,
+    "PPCost": 0,
+    "Power": 9
+  },
+  "Severe Blow": {
+    "name": "Severe Blow",
+    "targetType": 3,
+    "emote": "<:Skull_Splitter:536959343153774652>",
+    "range": 1,
+    "element": 0,
+    "PPCost": 0,
+    "dmgMult": 1.2,
+    "effects": [
+      {
+        "Type": "ReduceHPToOne",
+        "Probability": 15
+      }
+    ]
+  },
+  "Spinning Beat": {
+    "name": "Spinning Beat",
+    "targetType": 3,
+    "emote": ":dizzy:",
+    "range": 1,
+    "element": 3,
+    "PPCost": 0,
+    "addDamage": 40,
+    "effects": [
+      {
+        "Type": "IgnoreDefense",
+        "IgnorePercent": 50,
+        "Probability": 50
+      }
+    ]
+  },
+  "Sticky Goo": {
+    "name": "Sticky Goo",
+    "targetType": 3,
+    "emote": ":sweat_drops:",
+    "range": 1,
+    "element": 3,
+    "PPCost": 0,
+    "addDamage": 40,
+    "effects": [
+      {
+        "Type": "Stat",
+        "Stat": "Defense",
+        "Multiplier": 0.75,
+        "Probability": 25
+      }
+    ]
+  },
+  "Storm Blessing": {
+    "name": "Storm Blessing",
+    "targetType": 4,
+    "emote": "🌩",
+    "range": 3,
+    "element": 2,
+    "PPCost": 0,
+    "power": 190
+  },
+  "Typhoon Blow": {
+    "name": "Typhoon Blow",
+    "targetType": 4,
+    "emote": ":cyclone:",
+    "range": 1,
+    "element": 3,
+    "PPCost": 0,
+    "power": 150,
+    "ignoreSpread": true
+  },
+  "Watery Grace": {
+    "name": "Watery Grave",
+    "targetType": 4,
+    "emote": ":ocean:",
+    "range": 1,
+    "element": 4,
+    "PPCost": 0,
+    "power": 130,
+    "ignoreSpread": true,
+    "effects": [
+      {
+        "Type": "OHKO",
+        "probability": 10
+      }
+    ]
+  }
 }

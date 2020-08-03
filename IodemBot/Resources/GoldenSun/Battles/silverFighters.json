@@ -721,31 +721,31 @@
         }
     ],
     [
-        {
-            "name": "Living Statue 1",
-            "imgurl": "https://goldensunwiki.net/w/images/a/a6/HydrosStatueSS.png",
-            "movepool": [
-                "Tundra",
-                "Ice Horn"
-            ],
-            "stats": {
-                "maxHP": 540,
-                "maxPP": 34,
-                "Atk": 199,
-                "Def": 44,
-                "Spd": 56
-            },
-            "elstats": {
-                "VenusAtk": 100,
-                "VenusRes": 100,
-                "MarsAtk": 25,
-                "MarsRes": 25,
-                "JupiterAtk": 100,
-                "JupiterRes": 100,
-                "MercuryAtk": 125,
-                "MercuryRes": 193
-            }
+      {
+        "name": "Living Statue 1",
+        "imgurl": "https://cdn.discordapp.com/attachments/696352535568711711/731788905065611314/Document_3_2.jpg",
+        "movepool": [
+          "Tundra",
+          "Ice Horn"
+        ],
+        "stats": {
+          "maxHP": 540,
+          "maxPP": 34,
+          "Atk": 199,
+          "Def": 44,
+          "Spd": 56
         },
+        "elstats": {
+          "VenusAtk": 100,
+          "VenusRes": 100,
+          "MarsAtk": 25,
+          "MarsRes": 25,
+          "JupiterAtk": 100,
+          "JupiterRes": 100,
+          "MercuryAtk": 125,
+          "MercuryRes": 193
+        }
+      },
         {
             "name": "Hydros Statue",
             "imgurl": "",
@@ -2260,11 +2260,11 @@
                 "VenusAtk": 110,
                 "VenusRes": 25,
                 "MarsAtk": 100,
-                "MarsRes": 72,
+                "MarsRes": 25,
                 "JupiterAtk": 100,
-                "JupiterRes": 152,
+                "JupiterRes": 25,
                 "MercuryAtk": 100,
-                "MercuryRes": 100
+                "MercuryRes": 25
             },
             "HPRecovery": 20,
             "hasAttack": false,

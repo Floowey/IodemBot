@@ -1,10 +1,12 @@
-﻿using IodemBot.Modules.ColossoBattles;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using IodemBot.Modules.ColossoBattles;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
-    public class CounterEffect : IEffect
+    public class CounterEffect : Effect
     {
+        public override string Type { get; } = "Counter";
+
         public CounterEffect()
         {
         }

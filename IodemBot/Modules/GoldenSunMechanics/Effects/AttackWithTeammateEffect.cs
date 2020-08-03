@@ -1,15 +1,18 @@
-﻿using IodemBot.Modules.ColossoBattles;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using IodemBot.Modules.ColossoBattles;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
-    internal class AttackWithTeammateEffect : IEffect
+    internal class AttackWithTeammateEffect : Effect
     {
         public AttackWithTeammateEffect()
         {
-            timeToActivate = TimeToActivate.beforeDamge;
+            ActivationTime = TimeToActivate.beforeDamge;
         }
+
+        public override string Type { get; } = "AttackWithTeammate";
+        public int TeamMates { get; set; } = 1;
 
         public override List<string> Apply(ColossoFighter User, ColossoFighter Target)
         {
@@ -22,9 +25,12 @@ namespace IodemBot.Modules.GoldenSunMechanics
                     break;
 
                 default:
-                    var teamMate = User.GetTeam().Where(s => s.IsAlive && !s.Equals(User)).OrderByDescending(p => p.Stats.Atk).FirstOrDefault();
-                    User.addDamage += (uint)(teamMate.Stats.Atk * teamMate.MultiplyBuffs("Attack") * 0.75);
-                    log.Add($"{teamMate.Name} assists the attack.");
+                    var teamMate = User.GetTeam().Where(s => s.IsAlive && !s.Equals(User)).OrderByDescending(p => p.Stats.Atk).Take(TeamMates).ToList();
+                    teamMate.ForEach(m =>
+                    {
+                        User.addDamage += (uint)(m.Stats.Atk * m.MultiplyBuffs("Attack") * 0.75);
+                        log.Add($"{m.Name} assists the attack.");
+                    });
                     break;
             }
             return log;

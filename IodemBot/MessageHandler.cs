@@ -1,19 +1,20 @@
-﻿using Discord;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
+using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
 using IodemBot.Core.Leveling;
 using IodemBot.Core.UserManagement;
-using System;
-using System.Collections.Generic;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+using IodemBot.Modules;
 
 namespace IodemBot
 {
     public class MessageHandler
     {
         private DiscordSocketClient client;
-        private readonly ulong[] whiteList = { 1234 };
         private List<AutoResponse> responses;
 
         public async Task InitializeAsync(DiscordSocketClient client)
@@ -93,8 +94,19 @@ namespace IodemBot
             //Check for Profanity here
 
             // Auto Responses
-            responses.ForEach(async r => await r.Check(msg));
-            Leveling.UserSentMessage((SocketGuildUser)context.User, (SocketTextChannel)context.Channel);
+            responses.ForEach(r => _ = r.Check(msg));
+            try
+            {
+                if (context.User is SocketGuildUser guildUser)
+                {
+                    Leveling.UserSentMessage(guildUser, (SocketTextChannel)context.Channel);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("UserSentMessage Error" + e);
+                File.WriteAllText("Logs/MessageError_" + Global.DateString + ".txt", e.ToString());
+            }
             await Task.CompletedTask;
         }
 
@@ -106,23 +118,10 @@ namespace IodemBot
 
             public override async Task ReactAsync(SocketUserMessage msg)
             {
-                await base.ReactAsync(msg);
-                var userAccount = UserAccounts.GetAccount(msg.Author);
-                userAccount.ServerStats.HasWrittenCurse = true;
-                UserAccounts.SaveAccounts();
-                await ServerGames.UserHasCursed((SocketGuildUser)msg.Author, (SocketTextChannel)msg.Channel);
+                _ = base.ReactAsync(msg);
+                _ = GoldenSun.AwardClassSeries("Curse Mage Series", msg.Author, msg.Channel);
+                await Task.CompletedTask;
             }
-        }
-
-        private bool ContainsBadWord(SocketUserMessage msg)
-        {
-            //you should do this once and not every function call
-            return false;
-        }
-
-        internal async Task CheckProfanity(SocketUserMessage msg)
-        {
-            await Task.CompletedTask;
         }
 
         internal class AutoResponse

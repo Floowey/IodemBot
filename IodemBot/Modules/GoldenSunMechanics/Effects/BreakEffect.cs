@@ -1,10 +1,12 @@
-﻿using IodemBot.Modules.ColossoBattles;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using IodemBot.Modules.ColossoBattles;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
-    internal class BreakEffect : IEffect
+    internal class BreakEffect : Effect
     {
+        public override string Type { get; } = "Break";
+
         public override List<string> Apply(ColossoFighter User, ColossoFighter Target)
         {
             List<string> log = new List<string>();
@@ -25,9 +27,9 @@ namespace IodemBot.Modules.GoldenSunMechanics
                     newBuffs.Add(b);
                 }
             }
-            if (User is PlayerFighter)
+            if (User is PlayerFighter p)
             {
-                ((PlayerFighter)User).battleStats.Supported++;
+                p.battleStats.Supported++;
             }
             Target.Buffs = newBuffs;
             return log;
