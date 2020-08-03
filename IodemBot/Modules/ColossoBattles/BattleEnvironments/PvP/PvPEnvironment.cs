@@ -615,16 +615,19 @@ namespace IodemBot.Modules.ColossoBattles
                         reactions.Remove(r);
                     }
                     embed.WithThumbnailUrl(fighter.ImgUrl);
-                    embed.WithColor(Colors.Get(fighter.Moves.Where(m => m is Psynergy).Select(m => (Psynergy)m).Select(p => p.Element.ToString()).ToArray()));
+                    embed.WithColor(Colors.Get(fighter.Moves.OfType<Psynergy>().Select(p => p.Element.ToString()).ToArray()));
                     embed.AddField($"{numberEmotes[i]}{fighter.ConditionsToString()}", fighter.Name, true);
                     embed.AddField("HP", $"{fighter.Stats.HP} / {fighter.Stats.MaxHP}", true);
                     embed.AddField("PP", $"{fighter.Stats.PP} / {fighter.Stats.MaxPP}", true);
                     var s = new List<string>();
                     foreach (var m in fighter.Moves)
                     {
-                        if (m is Psynergy psynergy)
+                        if (m is Psynergy p)
                         {
-                            s.Add($"{m.Emote} {m.Name} {psynergy.PPCost}");
+                            s.Add($"{m.Emote} {m.Name} {p.PPCost}");
+                        }
+                        else if (m is Summon summon)
+                        {
                         }
                         else
                         {
@@ -666,7 +669,10 @@ namespace IodemBot.Modules.ColossoBattles
                     }
                     foreach (var m in fighter.Moves)
                     {
-                        emotes.Add(m.GetEmote());
+                        if (!(m is Summon))
+                        {
+                            emotes.Add(m.GetEmote());
+                        }
                     }
                     emotes.RemoveAll(e => msg.Reactions.Any(r => r.Key.Name.Equals(e.Name, StringComparison.InvariantCultureIgnoreCase)));
                     tasks.Add(msg.AddReactionsAsync(emotes.ToArray()));
