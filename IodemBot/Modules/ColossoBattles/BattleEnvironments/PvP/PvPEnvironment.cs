@@ -217,6 +217,7 @@ namespace IodemBot.Modules.ColossoBattles
                     var StatusMessage = V.StatusMessage;
                     var PlayerMessages = V.PlayerMessages;
                     var EnemyMessage = V.EnemyMessage;
+                    var SummonsMessage = V.SummonsMessage;
                     if (channel.Id != V.teamChannel.Id)
                     {
                         return;
@@ -229,6 +230,10 @@ namespace IodemBot.Modules.ColossoBattles
                     if (EnemyMessage.Id == reaction.MessageId)
                     {
                         c = EnemyMessage;
+                    }
+                    if (SummonsMessage.Id == reaction.MessageId)
+                    {
+                        c = SummonsMessage;
                     }
                     if (PlayerMessages.Keys.Any(k => k.Id == reaction.MessageId))
                     {
