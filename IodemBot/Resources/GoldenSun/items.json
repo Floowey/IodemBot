@@ -596,13 +596,13 @@
       "effects": [
         {
           "Type": "AddDamage",
-          "addDamage": 15
+          "addDamage": 51
         },
         {
           "Type": "Stat",
           "Stat": "Attack",
-          "Multiplier": 0.25,
-          "Probability": 30
+          "Multiplier": 0.75,
+          "Probability": 35 
         }
       ]
     },
@@ -1160,7 +1160,7 @@
   "Gaia Blade": {
     "Name": "Gaia Blade",
     "Price": 17000,
-    "AnimatedIcon": "<a:Gaia_Blade_a:641571305451159582>",
+    "AnimatedIcon": "<a:Gaia_Blade:729794832679174185>",
     "Icon": "<:Gaia_Blade:569855141499633664>",
     "ItemType": "LongSword",
     "IsEquippable": true,
@@ -1472,7 +1472,8 @@
   "Fire Brand": {
     "Name": "Fire Brand",
     "Price": 20500,
-    "Icon": "<a:Fire_Brand:730011785847111771>",
+    "Icon": "<:Fire_Brand:581966770470912031>",
+    "AnimatedIcon": "<a:Fire_Brand:730011785847111771>",
     "ItemType": "LongSword",
     "IsEquippable": true,
     "IsArtifact": true,
@@ -1500,7 +1501,8 @@
   "Darksword": {
     "Name": "Darksword",
     "Price": 24200,
-    "Icon": "<a:Darksword:729794276761927700>",
+    "Icon": "<:Darksword:569855141495439360>",
+    "AnimatedIcon": "<a:Darksword:729794276761927700>",
     "ItemType": "LongSword",
     "IsEquippable": true,
     "IsArtifact": true,
