@@ -28,11 +28,13 @@ namespace IodemBot.Modules.ColossoBattles
         public bool IsActive { get { return Battle.SizeTeamA > 0; } }
 
         internal abstract ulong[] GetIds { get; }
+        public bool IsPersistent { get; set; } = true;
 
-        public BattleEnvironment(string Name, ITextChannel lobbyChannel)
+        public BattleEnvironment(string Name, ITextChannel lobbyChannel, bool isPersistent)
         {
             this.Name = Name;
             this.lobbyChannel = lobbyChannel;
+            this.IsPersistent = isPersistent;
             Global.Client.ReactionAdded += ProcessReaction;
         }
 
@@ -132,7 +134,7 @@ namespace IodemBot.Modules.ColossoBattles
             });
             var BattleReport = JsonConvert.SerializeObject(Battle, Formatting.Indented).Replace("{", "").Replace("}", "").Replace("\"", "");
             Console.WriteLine(BattleReport);
-            File.WriteAllText($"Logs/Reports/Report_{Name}_{DateTime.Now.ToString("MM_dd_hh_mm")}.log", BattleReport);
+            File.WriteAllText($"Logs/Reports/Report_{Name}_{DateTime.Now:MM_dd_hh_mm}.log", BattleReport);
             return string.Join("\n", s);
         }
     }

@@ -4,7 +4,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 {
     internal class DaysActiveRequirement : IRequirement
     {
-        public int apply(UserAccount user)
+        public int Apply(UserAccount user)
         {
             if (user.ServerStats.UniqueDaysActive >= 70) //Wizard
             {

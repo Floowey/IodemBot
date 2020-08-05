@@ -140,28 +140,47 @@ namespace IodemBot.Modules.GoldenSunMechanics
         }
 
         [Command("Djinn Take")]
-        [Summary("Take up to two specified djinn on your journey")]
-        [Remarks("`i!djinn Take Flint Echo`")]
-        public async Task TakeDjinn(params string[] Names)
+        [Summary("Take a specified djinn on your journey")]
+        [Remarks("`i!djinn Take Flint`")]
+        public async Task TakeDjinn([Remainder] string Names)
         {
             if (Names.Count() == 0)
             {
                 return;
             }
             var user = UserAccounts.GetAccount(Context.User);
+            if(Names == "none")
+            {
+                user.DjinnPocket.DjinnSetup.Clear();
+            } else if (Names.Contains(','))
+            {
+                var parts = Names.Split(',').Select(s => s.Trim()).ToArray();
+                TakeDjinn(user, parts);
+            } else
+            {
+                TakeDjinn(user, Names);
+            }
+            _ = DjinnInv();
+            await Task.CompletedTask;
+        }
+
+        public static void TakeDjinn(UserAccount user, params string[] Names)
+        {
             var userDjinn = user.DjinnPocket;
-            var chosenDjinn = userDjinn.djinn
-                .OfElement(AdeptClassSeriesManager.GetClassSeries(user).Elements)
-                .Where(d => Names.Any(n => n.Equals(d.Djinnname, StringComparison.CurrentCultureIgnoreCase)) || Names.Any(n => n.Equals(d.Nickname, StringComparison.CurrentCultureIgnoreCase)))
+            var userclass = AdeptClassSeriesManager.GetClassSeries(user);
+            var chosenDjinn = Names
+                .Select(n => userDjinn.GetDjinn(n))
+                .OfElement(userclass.Elements)
                 .Take(DjinnPocket.MaxDjinn)
                 .ToList();
-            userDjinn.DjinnSetup = chosenDjinn.Select(d => d.Element).ToList();
+               
             chosenDjinn.ForEach(d =>
             {
                 userDjinn.djinn.Remove(d);
                 userDjinn.djinn = userDjinn.djinn.Prepend(d).ToList();
+                userDjinn.DjinnSetup = userDjinn.DjinnSetup.Prepend(d.Element).ToList();
             });
-            await DjinnInv();
+            userDjinn.DjinnSetup = userDjinn.DjinnSetup.Take(2).ToList();
         }
 
         [Command("GiveDjinn")]

@@ -55,9 +55,9 @@ namespace IodemBot.Modules.GoldenSunMechanics
                     continue;
                 }
                 log.AddRange(Effects.ApplyAll(User, t));
-                if (User is PlayerFighter)
+                if (User is PlayerFighter p)
                 {
-                    ((PlayerFighter)User).battleStats.Supported++;
+                    p.battleStats.Supported++;
                 }
             }
 

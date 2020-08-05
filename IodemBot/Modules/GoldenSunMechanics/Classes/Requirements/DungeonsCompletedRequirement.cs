@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using IodemBot.Core.UserManagement;
+﻿using IodemBot.Core.UserManagement;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
     class DungeonsCompletedRequirement : IRequirement
     {
-        public int apply(UserAccount user)
+        public int Apply(UserAccount user)
         {
             if (user.ServerStats.DungeonsCompleted >= 200) //Berserker
             {

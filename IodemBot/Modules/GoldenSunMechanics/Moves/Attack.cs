@@ -54,6 +54,10 @@ namespace IodemBot.Modules.GoldenSunMechanics
             if (!enemy.IsAlive)
             {
                 log.Add($"{enemy.Name} is down already!");
+                if(User.Moves.FirstOrDefault(m => m is Defend) != null)
+                {
+                    log.AddRange(User.Moves.FirstOrDefault(m => m is Defend).Use(User));
+                }
                 return log;
             }
 
@@ -105,7 +109,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             }
 
             //var elMult = 1 + Math.Max(0.0, (int)User.elstats.GetPower(element) * User.MultiplyBuffs("Power") - (int)enemy.elstats.GetRes(element) * enemy.MultiplyBuffs("Resistance")) / 400;
-            var elMult = 1 + (User.ElStats.GetPower(element) * User.MultiplyBuffs("Power") - enemy.ElStats.GetRes(element) * enemy.MultiplyBuffs("Resistance")) / 400;
+            var elMult = 1.0 + (User.ElStats.GetPower(element) * User.MultiplyBuffs("Power") - enemy.ElStats.GetRes(element) * enemy.MultiplyBuffs("Resistance")) / 400.0;
 
             var punctuation = "!";
             if (enemy.ElStats.GetRes(element) == enemy.ElStats.HighestRes())
@@ -160,12 +164,52 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 log.AddRange(User.DealDamage(CounterDamage));
             }
 
+            if (enemy.IsAlive && enemy.HasCondition(Condition.Trap))
+            {
+                var counterAtk = enemy.Stats.Atk * enemy.MultiplyBuffs("Attack");
+                var counterDef = User.Stats.Def;
+                uint CounterDamage = (uint)Global.Random.Next(0, 4);
+                if (counterDef < counterAtk)
+                {
+                    CounterDamage = (uint)((counterAtk - counterDef) * User.defensiveMult / 2);
+                }
+                log.Add($"{enemy.Name} strikes back!");
+                log.AddRange(User.DealDamage(CounterDamage));
+            }
+
+            if (enemy.HasCondition(Condition.Key))
+            {
+                if (enemy.GetTeam().Count(e => e.IsAlive && e.HasCondition(Condition.Key)) == 0)
+                {
+                    enemy.GetTeam().ForEach(e => e.Kill());
+                }
+                log.Add($"Your choice was correct!");
+            }
+
+            if (enemy.HasCondition(Condition.Decoy))
+            {
+                var counterAtk = enemy.Stats.Atk * enemy.MultiplyBuffs("Attack");
+                var counterDef = User.Stats.Def * User.MultiplyBuffs("Defense") * User.ignoreDefense;
+                uint CounterDamage = (uint)Global.Random.Next(0, 4);
+                if (counterDef < counterAtk)
+                {
+                    CounterDamage = (uint)(User.Stats.MaxHP * enemy.Stats.Atk / 100);
+                }
+                log.Add($"{enemy.Name} strikes back!");
+                log.AddRange(User.DealDamage(CounterDamage));
+                enemy.EquipmentWithEffect.ForEach(i => i.Unleash.AllEffects.ForEach(e => log.AddRange(e.Apply(enemy, User))));
+                enemy.GetTeam().ForEach(e => e.Kill());
+            }
+
             if (User is PlayerFighter player)
             {
                 player.battleStats.DamageDealt += damage;
                 if (!enemy.IsAlive)
                 {
-                    player.battleStats.KillsByHand++;
+                    if(enemy.Stats.Spd > 0 && weaponUnleashed)
+                    {
+                        player.battleStats.KillsByHand++;
+                    }
                     player.battleStats.Kills++;
                     player.battleStats.HighestDamage = Math.Max(player.battleStats.HighestDamage, damage);
                 }

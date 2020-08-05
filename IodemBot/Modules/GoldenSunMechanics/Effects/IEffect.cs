@@ -10,7 +10,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
     [JsonConverter(typeof(JsonSubtypes), "Type")]
     [JsonSubtypes.FallBackSubType(typeof(NoEffect))]
     [JsonSubtypes.KnownSubType(typeof(AddDamageEffect), "AddDamage")]
-    [JsonSubtypes.KnownSubType(typeof(AttackWithTeammateEffect), "AttackWithTeamMate")]
+    [JsonSubtypes.KnownSubType(typeof(AttackWithTeammateEffect), "AttackWithTeammate")]
     [JsonSubtypes.KnownSubType(typeof(BreakEffect), "Break")]
     [JsonSubtypes.KnownSubType(typeof(ChancetoOHKOEffect), "OHKO")]
     [JsonSubtypes.KnownSubType(typeof(ConditionEffect), "Condition")]

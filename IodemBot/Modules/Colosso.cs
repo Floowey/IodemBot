@@ -14,9 +14,9 @@ namespace IodemBot.Modules
     [Name("Colosso")]
     public class Colosso : ModuleBase<SocketCommandContext>
     {
-        private static List<string> enemies = new List<string>();
-        private static List<Result> results = new List<Result>();
-        
+        private static readonly List<string> enemies = new List<string>();
+        private static readonly List<Result> results = new List<Result>();
+
         public static Embed ColossoTrain(SocketGuildUser user, IMessageChannel channel)
         {
             var embed = new EmbedBuilder();

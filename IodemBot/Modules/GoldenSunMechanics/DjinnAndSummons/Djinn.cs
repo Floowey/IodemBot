@@ -109,8 +109,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
                     CoolDown = 0;
                     return new List<string>() { $"{Emote} {Name} was set to {User.Name}." };
 
-                default:
                 case DjinnState.Recovery:
+                default:
                     return new List<string>() { $"{User.Name} wants to summon {Emote} {Name}, but {Emote} {Name} is too tired." };
             }
         }

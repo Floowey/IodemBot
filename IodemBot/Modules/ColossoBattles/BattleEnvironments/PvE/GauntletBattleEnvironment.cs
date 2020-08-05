@@ -16,17 +16,14 @@ namespace IodemBot.Modules.ColossoBattles
         public Dungeon Dungeon;
         public DungeonMatchup matchup;
         public List<DungeonMatchup>.Enumerator enumerator;
-        public readonly bool IsDeleted = false;
-        private bool WasReset = false;
         private bool EndOfDungeon = false;
 
         public bool HasPlayer { get { return Battle.SizeTeamA > 0; } }
         public DateTime LastEnemySet = DateTime.MinValue;
         public bool IsReady { get { return !IsActive && !HasPlayer && DateTime.Now.Subtract(LastEnemySet).TotalSeconds >= 20; } }
 
-        public GauntletBattleEnvironment(string Name, ITextChannel lobbyChannel, ITextChannel BattleChannel, string DungeonName, bool IsDeleted = false) : base(Name, lobbyChannel, BattleChannel)
+        public GauntletBattleEnvironment(string Name, ITextChannel lobbyChannel, ITextChannel BattleChannel, string DungeonName, bool isPersistent) : base(Name, lobbyChannel, isPersistent, BattleChannel)
         {
-            this.IsDeleted = IsDeleted;
             SetEnemy(DungeonName);
         }
 
@@ -87,7 +84,6 @@ namespace IodemBot.Modules.ColossoBattles
                     .Select(s => Enum.Parse<Condition>(s, true)).ToList()
                     .ForEach(c => Battle.TeamA.ForEach(p => p.AddCondition(c)));
 
-                //matchup.Enemy.ForEach(e => Battle.AddPlayer((NPCEnemy)e.Clone(), Team.B));
                 EndOfDungeon = false;
             }
             else
@@ -99,17 +95,11 @@ namespace IodemBot.Modules.ColossoBattles
         protected override EmbedBuilder GetEnemyEmbedBuilder()
         {
             var builder = base.GetEnemyEmbedBuilder();
-            if (matchup.Image != null)
+            if (!matchup.Image.IsNullOrEmpty())
             {
                 builder.WithThumbnailUrl(matchup.Image);
             }
             return builder;
-        }
-
-        public override void Dispose()
-        {
-            base.Dispose();
-            _ = BattleChannel.DeleteAsync();
         }
 
         public override async Task Reset()
@@ -117,11 +107,6 @@ namespace IodemBot.Modules.ColossoBattles
             enumerator = Dungeon.Matchups.GetEnumerator();
             matchup = enumerator.Current;
             await base.Reset();
-            if (IsDeleted && WasReset)
-            {
-                Dispose(); return;
-            }
-            WasReset = true;
             var e = new EmbedBuilder();
             e.WithThumbnailUrl(Dungeon.Image);
             e.WithDescription(EnemyMessage.Content);

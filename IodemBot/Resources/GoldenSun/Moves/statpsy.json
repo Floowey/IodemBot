@@ -279,6 +279,21 @@
       }
     ]
   },
+  "Heat Kiss": {
+    "name": "Heat Kiss",
+    "targetType": 4,
+    "emote": "💗",
+    "range": 1,
+    "element": 1,
+    "PPCost": 0,
+    "effects": [
+      {
+        "Type": "Stat",
+        "Stat": "Attack",
+        "Multiplier": 0.6
+      }
+    ]
+  },
   "Enfeeble": {
     "name": "Enfeeble",
     "targetType": 4,
@@ -306,6 +321,21 @@
         "Type": "Stat",
         "Stat": "Attack",
         "Multiplier": 0.4
+      }
+    ]
+  },
+  "Decompose": {
+    "name": "Decompose",
+    "targetType": 4,
+    "emote": ":zombie:",
+    "range": 1,
+    "element": 1,
+    "PPCost": 0,
+    "effects": [
+      {
+        "Type": "Stat",
+        "Stat": "Attack",
+        "Multiplier": 0.6
       }
     ]
   },
@@ -444,6 +474,81 @@
       }
     ]
   },
+  "Mad Spatter": {
+    "name": "Mad Spatter",
+    "targetType": 4,
+    "emote": "<:Healthy_Wind:551205173167521811>",
+    "range": 1,
+    "element": 0,
+    "PPCost": 0,
+    "effects": [
+      {
+        "Type": "Condition",
+        "Condition": "Delusion",
+        "Probability": 55
+      }
+    ]
+  },
+  "Mucous Gel": {
+    "name": "Mucous Gel",
+    "targetType": 3,
+    "emote": ":custard:",
+    "range": 1,
+    "element": 0,
+    "PPCost": 0,
+    "effects": [
+      {
+        "Type": "Condition",
+        "Condition": "Delusion",
+        "Probability": 85
+      }
+    ]
+  },
+  "Demon Eye": {
+    "name": "Demon Eye",
+    "targetType": 4,
+    "emote": ":eye:",
+    "range": 1,
+    "element": 0,
+    "PPCost": 1,
+    "effects": [
+      {
+        "Type": "Condition",
+        "Condition": "Haunt",
+        "Probability": 25
+      }
+    ]
+  },
+  "Lucid Prophecy": {
+    "name": "Lucid Prophecy",
+    "targetType": 3,
+    "emote": "<:Curse:536984898980806658>",
+    "range": 1,
+    "element": 0,
+    "PPCost": 1,
+    "effects": [
+      {
+        "Type": "Condition",
+        "Condition": "DeathCurse",
+        "Probability": 20
+      }
+    ]
+  },
+  "Earth Force": {
+    "name": "Earth Force",
+    "targetType": 3,
+    "emote": ":earth_africa:",
+    "range": 1,
+    "element": 0,
+    "PPCost": 0,
+    "effects": [
+      {
+        "Type": "Condition",
+        "Condition": "Flinch",
+        "Probability": 90
+      }
+    ]
+  },
   "Sleep Bomb": {
     "name": "Sleep Bomb",
     "targetType": 3,
@@ -534,6 +639,36 @@
   },
   "Total Defense": {
     "name": "Total Defense",
+    "targetType": 0,
+    "emote": ":bricks:",
+    "range": 1,
+    "element": 0,
+    "PPCost": 0,
+    "hasPriority": true,
+    "effects": [
+      {
+        "Type": "ReduceDamage",
+        "DamageReduction": 50
+      }
+    ]
+  },
+  "Stand Ready": {
+    "name": "Stand Ready",
+    "targetType": 0,
+    "emote": ":person_standing:",
+    "range": 1,
+    "element": 0,
+    "PPCost": 0,
+    "hasPriority": true,
+    "effects": [
+      {
+        "Type": "ReduceDamage",
+        "DamageReduction": 50
+      }
+    ]
+  },
+  "Fortify": {
+    "name": "Fortify",
     "targetType": 0,
     "emote": ":bricks:",
     "range": 1,
@@ -675,6 +810,16 @@
       }
     ]
   },
+  "Ally Search": {
+    "name": "Ally Search",
+    "targetType": 0,
+    "emote": "<:Flee:597006812247490571>",
+    "effects": [
+      {
+        "Type": "NoEffect"
+      }
+    ]
+  },
   "Contain": {
     "name": "Contain",
     "targetType": 0,
@@ -684,6 +829,17 @@
         "Type": "NoEffect"
       }
     ]
+  },
+  "Counter-rush": {
+    "name": "Counter-rush",
+    "targetType": 0,
+    "emote": "<:Flee:597006812247490571>",
+    "effects": [
+      {
+        "Type": "Counter"
+      }
+    ],
+    "hasPriority": true
   },
   "Threaten": {
     "name": "Threaten",
@@ -706,13 +862,24 @@
     ]
   },
   "Search": {
-    "name": "Search",
+    "name": "the time to search somewhere else",
     "targetType": 0,
     "hasPriority": true,
     "emote": "👀",
     "effects": [
       {
-        "Type": "Counter"
+        "Type": "UserDies"
+      }
+    ]
+  },
+  "BoulderFall": {
+    "name": "_boing boing boing splash_",
+    "targetType": 0,
+    "hasPriority": true,
+    "emote": "<:Avalanche:536959102019174411>",
+    "effects": [
+      {
+        "Type": "UserDies"
       }
     ]
   },
@@ -783,6 +950,80 @@
       {
         "Type": "ReduceDamage",
         "DamageReduction": 60
+      }
+    ]
+  },
+  "Poison Gel": {
+    "name": "Poison Gel",
+    "targetType": 3,
+    "emote": "<:Poison:549526931847249920>",
+    "range": 1,
+    "element": 3,
+    "PPCost": 0,
+    "effects": [
+      {
+        "Type": "Condition",
+        "Condition": "Venom",
+        "Probability": 20
+      }
+    ]
+  },
+  "Regen Dance": {
+    "name": "Regen Dance",
+    "targetType": 1,
+    "emote": "<:Phoenix:539166682132906005>",
+    "range": 1,
+    "element": 1,
+    "PPCost": 0,
+    "effects": [
+      {
+        "Type": "Revive",
+        "Percentage": 66
+      }
+    ]
+  },
+  "Sack": {
+    "name": "Sack",
+    "targetType": 0,
+    "emote": ":axe:",
+    "range": 1,
+    "element": 1,
+    "PPCost": 0,
+    "effects": [
+      {
+        "Type": "Stat",
+        "Stat": "Attack",
+        "Multiplier": 1.25
+      }
+    ]
+  },
+  "Slaver": {
+    "name": "Slaver",
+    "targetType": 4,
+    "emote": ":link:",
+    "range": 1,
+    "element": 1,
+    "PPCost": 0,
+    "effects": [
+      {
+        "Type": "Stat",
+        "Stat": "Defense",
+        "Multiplier": 0.6
+      }
+    ]
+  },
+  "Spider Web": {
+    "name": "Spider Web",
+    "targetType": 3,
+    "emote": ":spider_web:",
+    "range": 1,
+    "element": 1,
+    "PPCost": 0,
+    "effects": [
+      {
+        "Type": "Stat",
+        "Stat": "Speed",
+        "Multiplier": 0.6
       }
     ]
   }

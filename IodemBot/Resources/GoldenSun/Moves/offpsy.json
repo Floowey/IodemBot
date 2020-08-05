@@ -36,7 +36,8 @@
       {
         "Type": "Stat",
         "Stat": "Defense",
-        "multiplier": 0.8
+        "multiplier": 0.75,
+        "Probability": 80
       }
     ],
     "PPCost": 8,
@@ -50,11 +51,17 @@
     "element": 0,
     "effects": [
       {
+        "Type": "Stat",
+        "Stat": "Defense",
+        "multiplier": 0.75,
+        "Probability": 80
+      },
+      {
         "Type": "OHKO",
         "probability": 5
       }
     ],
-    "PPCost": 8,
+    "PPCost": 10,
     "addDamage": 30
   },
   "Annihilation": {
@@ -1409,7 +1416,7 @@
   "Bacteria Rush": {
     "name": "Bacteria Rush",
     "targetType": 3,
-    "emote": "🤢",
+    "emote": ":microbe:",
     "range": 1,
     "element": 0,
     "PPCost": 0,
@@ -1782,6 +1789,21 @@
       {
         "Type": "OHKO",
         "Probability": 10
+      }
+    ]
+  },
+  "Ocean Fist": {
+    "name": "Ocean Fist",
+    "targetType": 3,
+    "emote": ":ocean:",
+    "range": 1,
+    "element": 0,
+    "PPCost": 0,
+    "addDamage": 50,
+    "effects": [
+      {
+        "Type": "ReduceHPToOne",
+        "Probability": 15
       }
     ]
   },
@@ -2183,7 +2205,7 @@
     "dmgMult": 1.2,
     "effects": [
       {
-        "ReduceHPToOne": "ReduceHPToOne",
+        "Type": "ReduceHPToOne",
         "Probability": 20
       }
     ]
@@ -2447,6 +2469,22 @@
       }
     ]
   },
+  "Deadly Gas": {
+    "name": "Deadly Gas",
+    "targetType": 4,
+    "emote": ":biohazard:",
+    "range": 1,
+    "element": 0,
+    "PPCost": 0,
+    "power": 30,
+    "effects": [
+      {
+        "Type": "Condition",
+        "Condition": "Venom",
+        "Probability": 35
+      }
+    ]
+  },
   "Pebble Breath": {
     "name": "Pebble Breath",
     "targetType": 3,
@@ -2510,6 +2548,16 @@
     "addDamage": 100,
     "IgnoreSpread": true
   },
+  "Dragon Driver": {
+    "name": "Dragon Driver",
+    "targetType": 4,
+    "emote": ":dragon_face:",
+    "range": 3,
+    "element": 1,
+    "PPCost": 0,
+    "power": 120,
+    "IgnoreSpread": true
+  },
   "Mine Ball": {
     "name": "Mine Ball",
     "targetType": 4,
@@ -2527,5 +2575,436 @@
     "element": 4,
     "PPCost": 0,
     "addDamage": 11
+  },
+  "Counterstrike": {
+    "name": "Counterstrike",
+    "targetType": 3,
+    "emote": "<:Rampage:537766290031509524>",
+    "range": 1,
+    "element": 0,
+    "PPCost": 0,
+    "addDamage": 50
+  },
+  "Bosca Hit": {
+    "name": "Bosca Hit",
+    "targetType": 3,
+    "emote": ":axe:",
+    "range": 1,
+    "element": 4,
+    "PPCost": 0,
+    "dmgMult": 1.7
+  },
+  "Douplestep": {
+    "name": "Douplestep",
+    "targetType": 3,
+    "emote": ":footprints:",
+    "range": 1,
+    "element": 4,
+    "PPCost": 0,
+    "dmgMult": 1.8
+  },
+  "Drain Fang": {
+    "name": "Drain Fang",
+    "targetType": 3,
+    "emote": ":drop_of_blood:",
+    "range": 1,
+    "element": 0,
+    "PPCost": 0,
+    "power": 80,
+    "effects": [
+      {
+        "Type": "HPDrain",
+        "Percentage": 100,
+        "Probability": 100
+      }
+    ]
+  },
+  "Electric Bite": {
+    "name": "Electric Bite",
+    "targetType": 3,
+    "emote": ":zap:",
+    "range": 3,
+    "element": 2,
+    "PPCost": 0,
+    "dmgMult": 1.01,
+    "effects": [
+      {
+        "Type": "Condition",
+        "Condition": "Stun",
+        "Probability": 35
+      }
+    ]
+  },
+  "Numbing Sting": {
+    "name": "Numbing Sting",
+    "targetType": 3,
+    "emote": ":bee:",
+    "range": 3,
+    "element": 2,
+    "PPCost": 0,
+    "dmgMult": 0.8,
+    "effects": [
+      {
+        "Type": "Condition",
+        "Condition": "Stun",
+        "Probability": 40
+      }
+    ]
+  },
+  "Evil Blessing": {
+    "name": "Evil Blessing",
+    "targetType": 4,
+    "emote": "<:Annihilation:536959197288464393>",
+    "range": 1,
+    "element": 1,
+    "PPCost": 0,
+    "power": 80,
+    "effects": [
+      {
+        "Type": "Condition",
+        "Condition": "Haunt",
+        "Probability": 35
+      }
+    ]
+  },
+  "Flame Breath": {
+    "name": "Flame Breath",
+    "targetType": 4,
+    "emote": "<:Fire_Breath:536966024486977557>",
+    "range": 1,
+    "element": 1,
+    "PPCost": 0,
+    "power": 170
+  },
+  "Mytic Flame": {
+    "name": "Mystic Flame",
+    "targetType": 4,
+    "emote": "<:Flare:536965231201484829>",
+    "range": 1,
+    "element": 1,
+    "PPCost": 0,
+    "power": 16
+  },
+  "Outer Space": {
+    "name": "Outer Space",
+    "targetType": 4,
+    "emote": "<:Meteor:636449223071760384>",
+    "range": 1,
+    "element": 1,
+    "PPCost": 0,
+    "power": 200
+  },
+  "Flash Punch": {
+    "name": "Flash Punch",
+    "targetType": 3,
+    "emote": "<:Speed_Punch:537465193626730517>",
+    "range": 1,
+    "element": 2,
+    "PPCost": 0,
+    "addDamage": 10,
+    "effects": [
+      {
+        "Type": "Condition",
+        "Condition": "Delusion",
+        "Probability": 60
+      }
+    ]
+  },
+  "Flying Attack": {
+    "name": "Flying Attack",
+    "targetType": 3,
+    "emote": ":comet:",
+    "range": 1,
+    "element": 2,
+    "PPCost": 0,
+    "addDamage": 8,
+    "effects": [
+      {
+        "Type": "MultiplyDamage",
+        "Multipliers": [ 2.0 ],
+        "Probabilites": [ 50 ]
+      }
+    ]
+  },
+  "Forcible Arm": {
+    "name": "Forcible Arm",
+    "targetType": 3,
+    "emote": ":muscle:",
+    "range": 1,
+    "element": 0,
+    "PPCost": 0,
+    "addDamage": 40
+  },
+  "Freebite Rush": {
+    "name": "Freebite Rush",
+    "targetType": 3,
+    "emote": "<:Rampage:537766290031509524>",
+    "range": 1,
+    "element": 0,
+    "PPCost": 0,
+    "addDamage": 40,
+    "effects": [
+      {
+        "Type": "Stat",
+        "Stat": "Attack",
+        "Multiplier": 0.75,
+        "Probability": 50
+      }
+    ]
+  },
+  "Formina Sage": {
+    "name": "Formina Sage",
+    "targetType": 3,
+    "emote": "<:Call_Dullahan:536966728572338187>",
+    "range": 1,
+    "element": 2,
+    "PPCost": 0,
+    "dmgMult": 2.8
+  },
+  "Human Hunt": {
+    "name": "Human Hunt",
+    "targetType": 3,
+    "emote": "<:Skull_Splitter:536959343153774652>",
+    "range": 1,
+    "element": 0,
+    "PPCost": 0,
+    "power": 1,
+    "effects": [
+      {
+        "Type": "OHKO",
+        "probability": 15
+      }
+    ]
+  },
+  "Kill Sting": {
+    "name": "Kill Sting",
+    "targetType": 3,
+    "emote": ":dagger:",
+    "range": 1,
+    "element": 0,
+    "PPCost": 0,
+    "dmgMult": 1.1,
+    "effects": [
+      {
+        "Type": "OHKO",
+        "probability": 7
+      }
+    ]
+  },
+  "Hydro Slash": {
+    "name": "Hydro Slash",
+    "targetType": 3,
+    "emote": "<:Cutting_Edge:536969614039580689>",
+    "range": 1,
+    "element": 3,
+    "PPCost": 0,
+    "dmgMult": 1.4
+  },
+  "Man Eater": {
+    "name": "Man Eater",
+    "targetType": 3,
+    "emote": ":meat_on_bone:",
+    "range": 1,
+    "element": 2,
+    "PPCost": 3,
+    "power": 50,
+    "effects": [
+      {
+        "Type": "HPDrain",
+        "Percentage": 75,
+        "Probability": 100
+      }
+    ]
+  },
+  "Mortal Blow": {
+    "name": "Mortal Blow",
+    "targetType": 3,
+    "emote": ":wind_blowing_face:",
+    "range": 1,
+    "element": 0,
+    "PPCost": 0,
+    "dmgMult": 1.1,
+    "effects": [
+      {
+        "Type": "UserDies"
+      }
+    ]
+  },
+  "Onslaught": {
+    "name": "Onslaught",
+    "targetType": 3,
+    "emote": "<:Rampage:537766290031509524>",
+    "range": 1,
+    "element": 0,
+    "PPCost": 0,
+    "addDamage": 24
+  },
+  "Poison Ink": {
+    "name": "Poison Ink",
+    "targetType": 3,
+    "emote": "<:Poison:549526931847249920>",
+    "range": 1,
+    "element": 0,
+    "PPCost": 0,
+    "addDamage": 1,
+    "effects": [
+      {
+        "Type": "Condition",
+        "Condition": "Venom",
+        "Probability": 10
+      }
+    ]
+  },
+  "Poison Sting": {
+    "name": "Poison Sting",
+    "targetType": 3,
+    "emote": "<:Poison:549526931847249920>",
+    "range": 1,
+    "element": 0,
+    "PPCost": 0,
+    "dmgMult": 1.2,
+    "effects": [
+      {
+        "Type": "Condition",
+        "Condition": "Poison",
+        "Probability": 15
+      }
+    ]
+  },
+  "Power Bite": {
+    "name": "Power Bite",
+    "targetType": 3,
+    "emote": ":tooth:",
+    "range": 1,
+    "element": 0,
+    "PPCost": 0,
+    "addDamage": 12
+  },
+  "Quick Slash": {
+    "name": "Quick Slash",
+    "targetType": 3,
+    "emote": ":feet:",
+    "range": 1,
+    "element": 2,
+    "PPCost": 0,
+    "dmgMult": 1.3
+  },
+  "Raging Flood": {
+    "name": "Raging Flood",
+    "targetType": 4,
+    "emote": ":ocean:",
+    "range": 4,
+    "element": 3,
+    "PPCost": 0,
+    "dmgMult": 1.3,
+    "ignoreSpread": true
+  },
+  "Rising Venom": {
+    "name": "Rising Venom",
+    "targetType": 3,
+    "emote": "<:Poison:549526931847249920>",
+    "range": 1,
+    "element": 3,
+    "PPCost": 0,
+    "addDamage": 30,
+    "effects": [
+      {
+        "Type": "Condition",
+        "Condition": "Poison",
+        "Probability": 15
+      }
+    ]
+  },
+  "Rumble": {
+    "name": "Rumble",
+    "targetType": 3,
+    "emote": ":ghost:",
+    "range": 1,
+    "element": 0,
+    "PPCost": 0,
+    "Power": 9
+  },
+  "Severe Blow": {
+    "name": "Severe Blow",
+    "targetType": 3,
+    "emote": "<:Skull_Splitter:536959343153774652>",
+    "range": 1,
+    "element": 0,
+    "PPCost": 0,
+    "dmgMult": 1.2,
+    "effects": [
+      {
+        "Type": "ReduceHPToOne",
+        "Probability": 15
+      }
+    ]
+  },
+  "Spinning Beat": {
+    "name": "Spinning Beat",
+    "targetType": 3,
+    "emote": ":dizzy:",
+    "range": 1,
+    "element": 3,
+    "PPCost": 0,
+    "addDamage": 40,
+    "effects": [
+      {
+        "Type": "IgnoreDefense",
+        "IgnorePercent": 50,
+        "Probability": 50
+      }
+    ]
+  },
+  "Sticky Goo": {
+    "name": "Sticky Goo",
+    "targetType": 3,
+    "emote": ":sweat_drops:",
+    "range": 1,
+    "element": 3,
+    "PPCost": 0,
+    "addDamage": 40,
+    "effects": [
+      {
+        "Type": "Stat",
+        "Stat": "Defense",
+        "Multiplier": 0.75,
+        "Probability": 25
+      }
+    ]
+  },
+  "Storm Blessing": {
+    "name": "Storm Blessing",
+    "targetType": 4,
+    "emote": "🌩",
+    "range": 3,
+    "element": 2,
+    "PPCost": 0,
+    "power": 190
+  },
+  "Typhoon Blow": {
+    "name": "Typhoon Blow",
+    "targetType": 4,
+    "emote": ":cyclone:",
+    "range": 1,
+    "element": 3,
+    "PPCost": 0,
+    "power": 150,
+    "ignoreSpread": true
+  },
+  "Watery Grace": {
+    "name": "Watery Grave",
+    "targetType": 4,
+    "emote": ":ocean:",
+    "range": 1,
+    "element": 4,
+    "PPCost": 0,
+    "power": 130,
+    "ignoreSpread": true,
+    "effects": [
+      {
+        "Type": "OHKO",
+        "probability": 10
+      }
+    ]
   }
 }

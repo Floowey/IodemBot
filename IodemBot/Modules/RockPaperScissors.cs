@@ -34,7 +34,7 @@ namespace IodemBot.Modules
             await Context.Channel.SendMessageAsync("", false, embed.Build());
         }
 
-        private string[] oracleResults = new[]
+        private readonly string[] oracleResults = new[]
         {
             "It is certain.",
             "It is decidedly so.",
@@ -78,7 +78,7 @@ namespace IodemBot.Modules
                 .WithAuthor(teller, sprite)
                 .Build());
 
-            if(teller == "Seer" && response.Contains("spirits"))
+            if (teller == "Seer" && response.Contains("spirits"))
             {
                 _ = GoldenSun.AwardClassSeries("Air Seer Series", Context.User, Context.Channel);
             }

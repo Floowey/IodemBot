@@ -562,9 +562,9 @@
             "Targettype": 1,
             "element": 0,
             "effects": [
-                {
-                    "Type": "AttackWithTeammate"
-                }
+              {
+                "Type": "AttackWithTeammate"
+              }
             ]
         },
         "Stats": {
@@ -813,7 +813,8 @@
         "SpriteShiny": "<a:ChiliShiny:663018696268054536>",
         "Move": {
             "Targettype": 3,
-            "addDamage": 80,
+          "addDamage": 80,
+          "element": 1,
             "Effects": [
                 {
                     "Type": "Condition",

@@ -198,8 +198,7 @@
     "element": 3,
     "PPCost": 9,
     "healPower": 80,
-    "percentage": 0,
-    "singleTarget": false
+    "percentage": 0
   },
   "Wish Well": {
     "name": "Wish Well",
@@ -277,5 +276,34 @@
     "healPower": 50,
     "percentage": 0,
     "singleTarget": true
+  },
+  "Recovery": {
+    "name": "Recovery",
+    "targetType": 1,
+    "emote": ":star2:",
+    "range": 1,
+    "element": 0,
+    "PPCost": 0,
+    "healPower": 150,
+    "singleTarget": true
+  },
+  "Spasm": {
+    "name": "Spasm",
+    "targetType": 1,
+    "emote": ":star2:",
+    "range": 1,
+    "element": 0,
+    "PPCost": 0,
+    "healPower": 40,
+    "singleTarget": true
+  },
+  "Soothing Star": {
+    "name": "Soothing Star",
+    "targetType": 2,
+    "emote": ":star2:",
+    "range": 1,
+    "element": 0,
+    "PPCost": 0,
+    "healPower": 10
   }
 }

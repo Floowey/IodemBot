@@ -165,7 +165,7 @@ namespace IodemBot.Modules.ColossoBattles
                 }
             }
 
-            Conditions.ForEach(c => s.Append(ConditionStrings[c]));
+            Conditions.ForEach(c => s.Append(ConditionStrings.GetValueOrDefault(c, "")));
 
             var stat = MultiplyBuffs("Attack");
             if (stat != 1)
@@ -305,8 +305,17 @@ namespace IodemBot.Modules.ColossoBattles
                 DeathCurseCounter--;
                 if (DeathCurseCounter <= 0)
                 {
-                    Kill();
-                    turnLog.Add($":x: {Name}'s light goes out.");
+                    if(GetTeam().Count == 1 && this is PlayerFighter p)
+                    {
+                        p.Stats.HP = 1;
+                        RemoveCondition(Condition.DeathCurse);
+                        turnLog.Add($":x: {Name} barely holds on.");
+                    }
+                    else
+                    {
+                        Kill();
+                        turnLog.Add($":x: {Name}'s light goes out.");
+                    }
                 }
             }
 
@@ -474,22 +483,14 @@ namespace IodemBot.Modules.ColossoBattles
         public double MultiplyBuffs(string stat)
         {
             var mult = Buffs.Where(b => b.stat.Equals(stat, StringComparison.InvariantCultureIgnoreCase) && b.multiplier > 0).Aggregate(1.0, (p, s) => p *= s.multiplier);
-            if (mult > 2.0)
-            {
-                mult = 2.0;
-            }
-
-            if (mult < 0.4)
-            {
-                mult = 0.4;
-            }
-
+            mult = Math.Min(mult, 2.0);
+            mult = Math.Max(mult, 0.4);
             return Math.Round(mult, 2);
         }
 
         public void RemoveAllConditions()
         {
-            Condition[] dontRemove = new Condition[] { Condition.Down, Condition.Counter, Condition.ItemCurse, Condition.Haunt };
+            Condition[] dontRemove = new Condition[] { Condition.Down, Condition.Counter, Condition.ItemCurse, Condition.Key, Condition.Trap, Condition.Decoy };
             Conditions.RemoveAll(c => !dontRemove.Contains(c));
             DeathCurseCounter = 4;
         }
@@ -538,6 +539,7 @@ namespace IodemBot.Modules.ColossoBattles
             //var trySelected = Moves.Where(m => m.Emote == emote).FirstOrDefault() ?? Moves.Where(m => m.Emote.Contains(emote)).FirstOrDefault();
             if (!IsAlive)
             {
+                Console.WriteLine("Dead Players can't select");
                 return false;
             }
 
@@ -550,6 +552,7 @@ namespace IodemBot.Modules.ColossoBattles
                 }
                 else
                 {
+                    Console.WriteLine($"{emote.Name} {emote} not in {Moves.Select(m => m.Emote)}");
                     return false;
                 }
             }
@@ -557,6 +560,7 @@ namespace IodemBot.Modules.ColossoBattles
             {
                 if (trySelected is Psynergy psynergy && psynergy.PPCost > Stats.PP)
                 {
+                    Console.WriteLine("Not enough PP");
                     return false;
                 }
                 else

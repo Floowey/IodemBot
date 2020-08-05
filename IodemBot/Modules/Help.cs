@@ -10,7 +10,7 @@ namespace IodemBot.Modules
 {
     public class Help : ModuleBase<SocketCommandContext>
     {
-        private CommandService _service;
+        private readonly CommandService _service;
         private int _fieldRange = 10;
 
         public Help(CommandService service)

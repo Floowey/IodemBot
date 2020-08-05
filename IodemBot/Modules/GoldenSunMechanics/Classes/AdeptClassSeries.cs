@@ -25,7 +25,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             int classNr;
             try
             {
-                classNr = Math.Min(Classes.Length - 1, DictReq[Requirement].apply(User));
+                classNr = Math.Min(Classes.Length - 1, DictReq[Requirement].Apply(User));
             }
             catch
             {

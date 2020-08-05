@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
 using Iodembot.Preconditions;
-using IodemBot.Core.Leveling;
 using IodemBot.Core.UserManagement;
 using IodemBot.Extensions;
-using System.Runtime.InteropServices;
+using IodemBot.Modules.ColossoBattles;
 
 namespace IodemBot.Modules
 {
@@ -63,10 +63,9 @@ namespace IodemBot.Modules
         [Summary("Pong")]
         public async Task Ping()
         {
-            //await TwitchListener.GetStreamers();
             await Context.Channel.SendMessageAsync(embed: new EmbedBuilder()
                 .WithColor(Colors.Get("Iodem"))
-                .WithDescription($"Pong!")
+                .WithDescription($"Pong! {Global.Client.Latency}")
                 .Build());
         }
 
@@ -75,10 +74,35 @@ namespace IodemBot.Modules
         [Summary("Ping")]
         public async Task Pong()
         {
-            //await TwitchListener.GetStreamers();
             await Context.Channel.SendMessageAsync(embed: new EmbedBuilder()
                 .WithColor(Colors.Get("Iodem"))
                 .WithDescription($"Ping!")
+                .Build());
+        }
+
+        [Command("Music")]
+        [Cooldown(5)]
+        [Summary("Golden Sun Soundtracks to listen to")]
+        public async Task Music()
+        {
+            await Context.Channel.SendMessageAsync(embed: new EmbedBuilder()
+                .WithColor(Colors.Get("Iodem"))
+                .WithDescription($"While we do not have a dedicated music bot, check out these fantastic playlists to listen to during your adventure:")
+                .AddField("OCRemix of the Golden Sun Soundtrack on Soundcloud (it's marvellous)", "https://soundcloud.com/ocremix/sets/golden-sun-a-world-reignited")
+                .AddField("Original Sound Track playlist on YouTube:", "https://www.youtube.com/watch?v=rl16-7wZmFY&list=PLCD5E70634946E090")
+                .Build());
+        }
+
+        [Command("FAQ"), Alias("Changelog", "Links", "Support", "Repo")]
+        public async Task FAQ()
+        {
+            await Context.Channel.SendMessageAsync(embed: new EmbedBuilder()
+                .WithColor(Colors.Get("Iodem"))
+                .WithDescription("Here's a handful of useful links:")
+                .AddField("FAQ", "https://github.com/Floowey/IodemBot/wiki/FAQ")
+                .AddField("Changelog", "https://github.com/Floowey/IodemBot/wiki/Changelog")
+                .AddField("Repository", "https://github.com/Floowey/IodemBot")
+                .AddField("Support", "https://ko-fi.com/floowey")
                 .Build());
         }
 
@@ -86,12 +110,15 @@ namespace IodemBot.Modules
         public async Task Credit()
         {
             await ReplyAsync(embed: new EmbedBuilder()
-                .WithDescription("Iodem is a community project, designed to serve the /r/GoldenSun discord with a special, custom made battle system, that mirrors the battle system present in the GBA games")
+                .WithTitle("Credits")
+                .WithDescription("Iodem is a community project, designed to add a special, custom made battle system, that mirrors the battle system present in the GBA games to the /r/GoldenSun discord.")
                 .AddField("Project Lead", "Floowey")
                 .AddField("Co Producers", "Falgor, Gray, Primrose, Ultimastrike")
                 .AddField("Art Contributions", "bringobrongo, elTeh, Eon, Mimibits, Shawn, SpaceShaman, Virize, Volk")
                 .AddField("Contributions and Testers", "AlterEgo, Arcblade, ArcanusHaru, Dracobolt, DroneberryPi, Germaniac, IceFireFish, joschlumpf, Lavtiz, MarcAustria, Ninja Frog, Ophi, Smeecko, Random, RupeeHeart")
                 .AddField("Special thanks to", "Camelot, the Moderators, the Nut Council and you, the players, without whom this whole project wouldn't have come this far")
+                .AddField("Support and Links", "Check out the repository:\nhttps://github.com/Floowey/IodemBot/\nIf you want to support this, you can buy Floowey a Ko-Fi!\n https://ko-fi.com/floowey")
+                .WithThumbnailUrl("https://cdn.discordapp.com/attachments/668443234292334612/738400124497035284/5ca5bf1dff3c03fbf7cc9b3c_Kofi_logo_RGB_rounded.png")
                 .Build());
         }
 
@@ -152,16 +179,19 @@ namespace IodemBot.Modules
             .AddField("Running since", $"{Global.RunningSince.ToLocalTime()} ({DateTime.Now.Subtract(Global.RunningSince.ToLocalTime()):d' 'hh':'mm':'ss})")
             .AddField("Connected since", $"{Global.UpSince.ToLocalTime()} ({DateTime.Now.Subtract(Global.UpSince.ToLocalTime()):d' 'hh':'mm':'ss})")
             .AddField("Running on", RuntimeInformation.OSDescription)
-            .Build()) ;
+            .Build());
         }
 
         [Command("clock"), Alias("worldclock")]
         [Summary("View the current time across the globe")]
-        public async Task Worldclock()
+        public async Task Worldclock(int time = 24)
         {
             CultureInfo enAU = new CultureInfo("en-US");
             string format = "HH':'mm', 'MMM dd";
-            var names = new[] { ":globe_with_meridians: UTC", ":flag_at: Vienna", ":flag_in: Mumbai", ":flag_jp: Tokyo", ":bridge_at_night: San Francisco", ":statue_of_liberty: New York" };
+            if(time == 12)
+            {
+                format = "hh':'mm t'M , 'MMM dd";
+            }
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
                 await Context.Channel.SendMessageAsync("", false,
@@ -174,7 +204,8 @@ namespace IodemBot.Modules
                     .AddField(":statue_of_liberty: New York", TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.Now, "Eastern Standard Time").ToString(format, enAU), true)
                     .Build()
                     );
-            } else
+            }
+            else
             {
                 await Context.Channel.SendMessageAsync("", false,
                    new EmbedBuilder()
@@ -183,7 +214,7 @@ namespace IodemBot.Modules
                    .AddField(":flag_in: New Delhi", TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.Now, "Asia/Kolkata").ToString(format, enAU), true)
                    .AddField(":flag_jp: Tokyo", TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.Now, "Asia/Tokyo").ToString(format, enAU), true)
                    .AddField(":bridge_at_night: San Francisco", TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.Now, "America/Vancouver").ToString(format, enAU), true)
-                   .AddField(":classical_building: Washington, D.C.", TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.Now, "America/New_York").ToString(format, enAU), true)
+                   .AddField(":statue_of_liberty: New York", TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.Now, "America/New_York").ToString(format, enAU), true)
                    .Build()
                    );
             }
@@ -286,12 +317,12 @@ namespace IodemBot.Modules
             await Context.Channel.SendMessageAsync("", false, embed.Build());
         }
 
-        [Command("endless"), Alias("showdown")]
+        [Command("streak"), Alias("showdown")]
         [Summary("Ranking of endless battles")]
         [Cooldown(15)]
-        public async Task Showdown(RankEnum type = RankEnum.Solo)
+        public async Task Showdown(RankEnum type = RankEnum.Solo, EndlessMode mode = EndlessMode.Default)
         {
-            var topAccounts = UserAccounts.GetTop(type).Take(10);
+            var topAccounts = UserAccounts.GetTop(type, mode).Take(10);
             var embed = new EmbedBuilder();
             embed.WithColor(Colors.Get("Iodem"));
             string[] Emotes = new string[] { "🥇", "🥈", "🥉", "", "" };
@@ -299,22 +330,23 @@ namespace IodemBot.Modules
             for (int i = 0; i < Math.Min(topAccounts.Count(), 5); i++)
             {
                 var curAccount = topAccounts.ElementAt(i);
+                var streak = mode == EndlessMode.Default ? curAccount.ServerStats.EndlessStreak + curAccount.ServerStatsTotal.EndlessStreak : curAccount.ServerStats.LegacyStreak + curAccount.ServerStats.EndlessStreak;
                 switch (type)
                 {
                     case RankEnum.Solo:
-                        builder.Append($"`{i + 1}` {Emotes[i]} {curAccount.Name,-15} - `{curAccount.ServerStats.ColossoHighestRoundEndlessSolo}`\n");
+                        builder.Append($"`{i + 1}` {Emotes[i]} {curAccount.Name,-15} - `{streak.Solo}`\n");
                         break;
 
                     case RankEnum.Duo:
-                        builder.Append($"`{i + 1}` {Emotes[i]} {curAccount.ServerStats.ColossoHighestRoundEndlessDuoNames} - `{curAccount.ServerStats.ColossoHighestRoundEndlessDuo}`\n");
+                        builder.Append($"`{i + 1}` {Emotes[i]} {streak.DuoNames} - `{streak.Duo}`\n");
                         break;
 
                     case RankEnum.Trio:
-                        builder.Append($"`{i + 1}` {Emotes[i]} {curAccount.ServerStats.ColossoHighestRoundEndlessTrioNames} - `{curAccount.ServerStats.ColossoHighestRoundEndlessTrio}`\n");
+                        builder.Append($"`{i + 1}` {Emotes[i]} {streak.TrioNames} - `{streak.Trio}`\n");
                         break;
 
                     case RankEnum.Quad:
-                        builder.Append($"`{i + 1}` {Emotes[i]} {curAccount.ServerStats.ColossoHighestRoundEndlessQuadNames} - `{curAccount.ServerStats.ColossoHighestRoundEndlessQuad}`\n");
+                        builder.Append($"`{i + 1}` {Emotes[i]} {streak.Quad} - `{streak.QuadNames}\n");
                         break;
                 }
             }
@@ -325,26 +357,27 @@ namespace IodemBot.Modules
             if (rank >= 5)
             {
                 builder.Append("... \n");
+                var streak = mode == EndlessMode.Default ? account.ServerStats.EndlessStreak + account.ServerStatsTotal.EndlessStreak : account.ServerStats.LegacyStreak + account.ServerStats.EndlessStreak;
                 switch (type)
                 {
                     case RankEnum.Solo:
-                        builder.Append($"`{rank + 1}` {account.Name,-15} - `{account.ServerStats.ColossoHighestRoundEndlessSolo}`");
+                        builder.Append($"`{rank + 1}` {account.Name,-15} - `{streak.Solo}`");
                         break;
 
                     case RankEnum.Duo:
-                        builder.Append($"`{rank + 1}` {account.ServerStats.ColossoHighestRoundEndlessDuoNames} - `{account.ServerStats.ColossoHighestRoundEndlessDuo}`");
+                        builder.Append($"`{rank + 1}` {streak.DuoNames} - `{streak.Duo}`");
                         break;
 
                     case RankEnum.Trio:
-                        builder.Append($"`{rank + 1}` {account.ServerStats.ColossoHighestRoundEndlessTrioNames} - `{account.ServerStats.ColossoHighestRoundEndlessTrio}`");
+                        builder.Append($"`{rank + 1}` {streak.TrioNames} - `{streak.Trio}`");
                         break;
 
                     case RankEnum.Quad:
-                        builder.Append($"`{rank + 1}` {account.ServerStats.ColossoHighestRoundEndlessQuadNames} - `{account.ServerStats.ColossoHighestRoundEndlessQuad}`");
+                        builder.Append($"`{rank + 1}` {streak.QuadNames} - `{streak.Quad}`");
                         break;
                 }
             }
-            if (type == RankEnum.Solo)
+            if (type == RankEnum.Solo && mode == EndlessMode.Legacy)
             {
                 embed.WithFooter("Honorary Mention: Smeecko - 81, by breaking the Time-Space Continuum");
             }
@@ -365,6 +398,12 @@ namespace IodemBot.Modules
                 {"Gladiator", 511704880122036234},
                 {"Colosso Adept", 644506247521107969 }
             };
+
+            if(RoleName == "Gladiator" && UserAccounts.GetAccount(Context.User).LevelNumber < 5)
+            {
+                _ = ReplyAsync("Please participate in the server more before you can announce your streams. We would like to be a community and not just be used as an advertising platform!");
+                return;
+            }
 
             if (roles.TryGetValue(RoleName, out ulong roleId))
             {
@@ -455,8 +494,6 @@ namespace IodemBot.Modules
             if (q.quote.Contains(@"#^@%!"))
             {
                 var userAccount = UserAccounts.GetAccount(Context.User);
-                userAccount.ServerStats.HasQuotedMatthew = true;
-                UserAccounts.SaveAccounts();
                 await GoldenSun.AwardClassSeries("Curse Mage Series", Context.User, Context.Channel);
             }
 

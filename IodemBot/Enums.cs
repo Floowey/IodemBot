@@ -7,7 +7,7 @@ namespace IodemBot
 
     public enum Team { A, B }
 
-    public enum Condition { Down, Poison, Venom, Seal, Stun, DeathCurse, Haunt, ItemCurse, Flinch, Delusion, Sleep, Counter }
+    public enum Condition { Down, Poison, Venom, Seal, Stun, DeathCurse, Haunt, ItemCurse, Flinch, Delusion, Sleep, Counter, Decoy, Key, Trap }
 
     public enum RndElement { Venus, Mars, Jupiter, Mercury }
 
@@ -15,8 +15,8 @@ namespace IodemBot
 
     public enum InventoryOption { Default, NoInventory }
 
-    public enum DjinnOption { Default, NoDjinn }
-
+    public enum DjinnOption { Unique, Any, NoDjinn }
+    public enum EndlessMode { Default, Legacy };
     public enum BaseStatOption { Default, Average }
 
     public enum BaseStatManipulationOption { Default, NoIncrease }

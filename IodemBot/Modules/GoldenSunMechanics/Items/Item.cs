@@ -175,6 +175,11 @@ namespace IodemBot.Modules.GoldenSunMechanics
             {
                 various.Add("This cap illuminates the area and will make you and your team find chests more easily. But watch out, it might attract more enemies!");
             }
+
+            if (CanBeAnimated)
+            {
+                various.Add($"Polishable");
+            }
             s.Append(string.Join(" | ", various));
             return s.ToString();
         }

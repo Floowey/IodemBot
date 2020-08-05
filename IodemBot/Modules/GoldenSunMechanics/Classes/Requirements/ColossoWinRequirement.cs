@@ -4,7 +4,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 {
     internal class ColossoWinRequirement : IRequirement
     {
-        public int apply(UserAccount user)
+        public int Apply(UserAccount user)
         {
             if (user.ServerStats.ColossoWins >= 1200 && user.ServerStats.ColossoHighestStreak >= 35) //Chaos Lord
             {
@@ -21,7 +21,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             else if (user.ServerStats.ColossoWins >= 250) //Savage
             {
                 return 2;
-            }   
+            }
             else if (user.ServerStats.ColossoWins >= 50) //Ruffian
             {
                 return 1;

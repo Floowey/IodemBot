@@ -57,21 +57,21 @@ namespace IodemBot.Modules.ColossoBattles
             FinalBaseStats = finalBaseStats;
         }
 
-        public Stats GetStats(uint Level)
+        public Stats GetStats(uint Level, double ReductionFactor = 1.25)
         {
-            return BaseStat + (FinalBaseStats - BaseStat) * ((double)Level / 99 / 1.25);
+            return BaseStat + (FinalBaseStats - BaseStat) * ((double)Level / 99 / ReductionFactor);
         }
     }
 
     public class PlayerFighterFactory
     {
-        private static StatHolder WarriorStatHolder = new StatHolder(new Stats(31, 19, 12, 7, 7), new Stats(807, 245, 381, 171, 371));
-        private static StatHolder MageStatHolder = new StatHolder(new Stats(28, 23, 9, 5, 9), new Stats(744, 280, 355, 160, 397));
-        private static StatHolder AverageStatHolder = new StatHolder(new Stats(30, 20, 11, 6, 8), new Stats(775, 262, 368, 165, 384));
+        private static readonly StatHolder WarriorStatHolder = new StatHolder(new Stats(31, 19, 12, 7, 7), new Stats(807, 245, 381, 171, 371));
+        private static readonly StatHolder MageStatHolder = new StatHolder(new Stats(28, 23, 9, 5, 9), new Stats(744, 280, 355, 160, 397));
+        private static readonly StatHolder AverageStatHolder = new StatHolder(new Stats(30, 20, 11, 6, 8), new Stats(775, 262, 368, 165, 384));
 
         public LevelOption LevelOption { get; set; } = LevelOption.CappedLevel;
         public InventoryOption InventoryOption { get; set; } = InventoryOption.Default;
-        public DjinnOption DjinnOption { get; set; } = DjinnOption.Default;
+        public DjinnOption DjinnOption { get; set; } = DjinnOption.Unique;
         public BaseStatOption BaseStatOption { get; set; } = BaseStatOption.Default;
         public BaseStatManipulationOption BaseStatManipulationOption { get; set; } = BaseStatManipulationOption.Default;
 
@@ -79,6 +79,7 @@ namespace IodemBot.Modules.ColossoBattles
         public List<Summon> summons = new List<Summon>();
         public List<Summon> PossibleSummons { get => summons.Where(s => s.CanSummon(uniqueDjinn)).Distinct().ToList(); }
 
+        public double ReductionFactor = 1.25;
         public uint SetLevel { get; set; } = 99;
         public Stats StatMultiplier { get; set; } = new Stats(100, 100, 100, 100, 100);
 
@@ -89,23 +90,31 @@ namespace IodemBot.Modules.ColossoBattles
             var p = new PlayerFighter();
             var avatar = UserAccounts.GetAccount(user);
 
-            p.Name = (user is SocketGuildUser) ? ((SocketGuildUser)user).DisplayName() : user.Username;
+            p.Name = (user is SocketGuildUser u) ? u.DisplayName() : user.Username;
             p.avatar = avatar;
             p.ImgUrl = user.GetAvatarUrl();
             p.factory = this;
-            if (user is SocketGuildUser)
+            if (user is SocketGuildUser gu)
             {
-                p.guildUser = (SocketGuildUser)user;
+                p.guildUser = gu;
             }
             p.Moves = AdeptClassSeriesManager.GetMoveset(avatar);
             var Class = AdeptClassSeriesManager.GetClass(avatar);
             var classSeries = AdeptClassSeriesManager.GetClassSeries(avatar);
-            p.Stats = GetStats(avatar);
-            p.ElStats = AdeptClassSeriesManager.GetElStats(avatar);
             if (classSeries.Name == "Curse Mage Series" || classSeries.Name == "Medium Series")
             {
                 p.IsImmuneToItemCurse = true;
             }
+
+            var level = LevelOption switch
+            {
+                LevelOption.SetLevel => SetLevel,
+                LevelOption.CappedLevel => Math.Min(avatar.LevelNumber, SetLevel),
+                _ => avatar.LevelNumber,
+            };
+
+            p.Stats = GetStats(avatar, level);
+            p.ElStats = AdeptClassSeriesManager.GetElStats(avatar);
 
             switch (InventoryOption)
             {
@@ -163,7 +172,7 @@ namespace IodemBot.Modules.ColossoBattles
                             }
                         }
                     });
-                    p.HPrecovery = (int)(p.HPrecovery * (1 + (double)avatar.LevelNumber / 33));
+                    p.HPrecovery = (int)(p.HPrecovery * (1 + (double)level / 33));
 
                     break;
 
@@ -173,7 +182,18 @@ namespace IodemBot.Modules.ColossoBattles
 
             switch (DjinnOption)
             {
-                case DjinnOption.Default:
+                case DjinnOption.Any:
+                    var djinnToAdd = avatar.DjinnPocket.GetDjinns();
+                    summons.AddRange(avatar.DjinnPocket.summons);
+                    p.Moves.AddRange(djinnToAdd);
+                    foreach (var djinn in djinnToAdd)
+                    {
+                        p.Stats *= djinn.Stats + new Stats(100, 100, 100, 100, 100);
+                        p.Stats *= 0.01;
+                        p.ElStats += djinn.ElementalStats;
+                    }
+                    break;
+                case DjinnOption.Unique:
                     var djinnToBeAdded = avatar.DjinnPocket.GetDjinns(uniqueDjinn);
                     uniqueDjinn.AddRange(djinnToBeAdded);
                     summons.AddRange(avatar.DjinnPocket.summons);
@@ -198,39 +218,15 @@ namespace IodemBot.Modules.ColossoBattles
             return p;
         }
 
-        private Stats GetStats(UserAccount avatar)
+        private Stats GetStats(UserAccount avatar, uint level)
         {
             var classSeries = AdeptClassSeriesManager.GetClassSeries(avatar);
-            var adept = AdeptClassSeriesManager.GetClass(avatar);
-            var classMultipliers = adept.StatMultipliers;
-            uint level;
-            switch (LevelOption)
+           
+            Stats Stats = BaseStatOption switch
             {
-                default:
-                case LevelOption.Default:
-                    level = avatar.LevelNumber;
-                    break;
-
-                case LevelOption.SetLevel:
-                    level = SetLevel;
-                    break;
-
-                case LevelOption.CappedLevel:
-                    level = Math.Min(avatar.LevelNumber, SetLevel);
-                    break;
+                BaseStatOption.Default => classSeries.Archtype == ArchType.Warrior ? WarriorStatHolder.GetStats(level, ReductionFactor) : MageStatHolder.GetStats(level, ReductionFactor),
+                _ => AverageStatHolder.GetStats(level),
             };
-            Stats Stats;
-            switch (BaseStatOption)
-            {
-                case BaseStatOption.Default:
-                    Stats = classSeries.Archtype == ArchType.Warrior ? WarriorStatHolder.GetStats(level) : MageStatHolder.GetStats(level);
-                    break;
-
-                case BaseStatOption.Average:
-                default:
-                    Stats = AverageStatHolder.GetStats(level);
-                    break;
-            }
             return Stats;
         }
     }

@@ -4,7 +4,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 {
     internal class LevelRequirement : IRequirement
     {
-        public int apply(UserAccount user)
+        public int Apply(UserAccount user)
         {
             return (int)(user.LevelNumber / 12);
         }

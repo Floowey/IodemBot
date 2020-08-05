@@ -105,6 +105,58 @@ namespace IodemBot.Modules
                 .Build());
         }
 
+        public enum LoadoutAction { Show, Save, Load, Remove };
+        [Command("loadout"), Alias("loadouts")]
+        public async Task LoadoutTask(LoadoutAction action = LoadoutAction.Show, [Remainder] string loadoutName = "")
+        {
+            var user = UserAccounts.GetAccount(Context.User);
+            switch (action)
+            {
+                case LoadoutAction.Show:
+                    var embed = new EmbedBuilder();
+                    if (user.Loadouts.loadouts.Count > 0)
+                    {
+                        foreach (var item in user.Loadouts.loadouts)
+                        {
+                            embed.AddField(item.LoadoutName, $"{ElementIcons[item.Element]} {item.ClassSeries}\n" +
+                                $"{string.Join("", item.Gear.Select(i => user.Inv.GetItem(i).Icon))}\n" +
+                                $"{string.Join("", item.Djinn.Select(d => user.DjinnPocket.GetDjinn(d)?.Emote))}", inline: true);
+                        }
+
+                    }
+                    else
+                    {
+                        embed.WithDescription("No loadouts saved.");
+                    }
+                    _ = ReplyAsync(embed: embed.Build());
+                    break;
+                case LoadoutAction.Save:
+                    if (loadoutName.IsNullOrEmpty()) return;
+                    if (user.Loadouts.loadouts.Count >= 6) return;
+                    var newLoadout = Loadout.GetLoadout(user);
+                    newLoadout.LoadoutName = loadoutName;
+                    user.Loadouts.SaveLoadout(newLoadout);
+                    _ = LoadoutTask(LoadoutAction.Show);
+                    UserAccounts.SaveAccounts();
+                    break;
+                case LoadoutAction.Load:
+                    var loadedLoadout = user.Loadouts.GetLoadout(loadoutName);
+                    if (loadedLoadout != null)
+                    {
+                        await ChooseElement(loadedLoadout.Element);
+                        loadedLoadout.ApplyLoadout(user);
+                        _ = Status();
+                    }
+                    break;
+                case LoadoutAction.Remove:
+                    if (loadoutName.IsNullOrEmpty()) return;
+                    user.Loadouts.RemoveLoadout(loadoutName);
+                    _ = LoadoutTask(LoadoutAction.Show);
+                    break;
+            }
+            await Task.CompletedTask;
+        }
+
         [Command("xp"), Alias("level")]
         [Cooldown(5)]
         [Summary("See xp for your next level")]
@@ -143,22 +195,20 @@ namespace IodemBot.Modules
             var embed = new EmbedBuilder()
             .WithColor(Colors.Get(account.Element.ToString()))
             .WithAuthor(author)
-            .AddField("Level", account.LevelNumber, true)
-            .AddField("XP", $"{account.XP} - next in {account.XPneeded}{(account.NewGames > 1 ? $"\n({account.TotalXP} total | {account.NewGames} resets)" : "")}", true)
-            .AddField("Rank", UserAccounts.GetRank(user) + 1, true)
-
-            .AddField("Class", account.GsClass, true)
-            .AddField("Colosso wins | streak", $"{account.ServerStats.ColossoWins} | {account.ServerStats.ColossoHighestStreak} ", true)
-            .AddField("Endless Streaks", $"Solo: {account.ServerStats.ColossoHighestRoundEndlessSolo} | Duo: {account.ServerStats.ColossoHighestRoundEndlessDuo} \nTrio: {account.ServerStats.ColossoHighestRoundEndlessTrio} | Quad: {account.ServerStats.ColossoHighestRoundEndlessQuad}", true)
-
+            .WithTitle($"Level {account.LevelNumber} {account.GsClass} {string.Join("", account.TrophyCase.Trophies.Select(t => t.Icon))} (Rank {UserAccounts.GetRank(user) + 1})")
             .AddField("Current Equip", account.Inv.GearToString(AdeptClassSeriesManager.GetClassSeries(account).Archtype), true)
             .AddField("Psynergy", p.GetMoves(false), true)
             .AddField("Djinn", account.DjinnPocket.GetDjinns().GetDisplay(DjinnDetail.None), true)
 
             .AddField("Stats", p.Stats.ToString(), true)
             .AddField("Elemental Stats", p.ElStats.ToString(), true)
-            .AddField("Unlocked Classes", account.BonusClasses.Count == 0 ? "none" : string.Join(", ", account.BonusClasses));
 
+            .AddField("Unlocked Classes", account.BonusClasses.Count == 0 ? "none" : string.Join(", ", account.BonusClasses))
+
+            .AddField("XP", $"{account.XP} - next in {account.XPneeded}{(account.NewGames > 1 ? $"\n({account.TotalXP} total | {account.NewGames} resets)" : "")}", true)
+            .AddField("Colosso wins | Endless Streaks", $"{account.ServerStats.ColossoWins}", true)
+            .AddField("Endless Streaks", $"Solo: {account.ServerStats.EndlessStreak.Solo} | Duo: {account.ServerStats.EndlessStreak.Duo} \nTrio: {account.ServerStats.EndlessStreak.Trio} | Quad: {account.ServerStats.EndlessStreak.Quad}", true);
+            
             if (user is SocketGuildUser socketGuildUser)
             {
                 var Footer = new EmbedFooterBuilder();
@@ -169,7 +219,20 @@ namespace IodemBot.Modules
             await Context.Channel.SendMessageAsync("", false, embed.Build());
         }
 
-        [Command("patdown")]
+        [Command("Trophy"), Alias("Trophies")]
+        public async Task Trophies([Remainder] SocketUser user = null)
+        {
+            user ??= Context.User;
+            var acc = UserAccounts.GetAccount(user);
+            if (acc.TrophyCase.Trophies.Count == 0) return;
+            var embed = new EmbedBuilder()
+                .WithTitle($"Trophies of {acc.Name}");
+            acc.TrophyCase.Trophies.ForEach(t => embed.AddField("Trophy", $"{t.Icon}\n{t.Text}\nObtained on: {t.ObtainedOn.Date:d}", true));
+            _ = ReplyAsync(embed: embed.Build());
+            await Task.CompletedTask;
+        }
+
+            [Command("patdown")]
         [RequireStaff]
         public async Task PatDown([Remainder] SocketGuildUser user = null)
         {
@@ -215,7 +278,7 @@ namespace IodemBot.Modules
             Console.WriteLine(JsonConvert.SerializeObject(account, Formatting.Indented));
         }
 
-        [Command("Dungeons")]
+        [Command("Dungeons"), Alias("dgs")]
         [Summary("Shows the dungeons you have discovered so far")]
         [Cooldown(5)]
         public async Task ListDungeons()
@@ -251,7 +314,7 @@ namespace IodemBot.Modules
             }
             if (availableOneTimeUnlocks.Count() + unavailableOneTimeUnlocks.Count() > 0)
             {
-                embed.AddField("<:dungeonkey:606237382047694919> Dungeon Keys", $"Available: {string.Join(", ", availableOneTimeUnlocks)} \nUnavailable: {string.Join(", ", unavailableOneTimeUnlocks)}");
+                embed.AddField("<:cave:607402486562684944> Dungeon Keys", $"Available: {string.Join(", ", availableOneTimeUnlocks)} \nUnavailable: {string.Join(", ", unavailableOneTimeUnlocks)}");
             }
             await Context.Channel.SendMessageAsync("", false, embed.Build());
         }
@@ -313,6 +376,7 @@ namespace IodemBot.Modules
             embed.WithDescription($"Welcome to the {chosenElement} Clan, {account.GsClass} {((SocketGuildUser)Context.User).DisplayName()}!");
             await Context.Channel.SendMessageAsync("", false, embed.Build());
         }
+
 
         [Command("MoveInfo")]
         [Alias("Psynergy", "PsynergyInfo", "psy")]
@@ -408,7 +472,7 @@ namespace IodemBot.Modules
             await RemoveClassSeries(series, user, (SocketTextChannel)Context.Channel);
         }
 
-        [Command("newgame+")]
+        [Command("newgame")]
         [Summary("Reset and start a new game. Careful, your progress will be lost!")]
         public async Task NewGamePlus()
         {
@@ -438,8 +502,6 @@ namespace IodemBot.Modules
             await Status();
         }
 
-
-
         internal static async Task AwardClassSeries(string series, SocketUser user, IMessageChannel channel)
         {
             var avatar = UserAccounts.GetAccount(user);
@@ -455,6 +517,7 @@ namespace IodemBot.Modules
 
             string curClass = AdeptClassSeriesManager.GetClassSeries(avatar).Name;
             avatar.BonusClasses.Add(series);
+            avatar.BonusClasses.Sort();
             SetClass(avatar, curClass);
             UserAccounts.SaveAccounts();
             var embed = new EmbedBuilder();
@@ -483,7 +546,7 @@ namespace IodemBot.Modules
             await channel.SendMessageAsync("", false, embed.Build());
         }
 
-        private static bool SetClass(UserAccount account, string name = "")
+        internal static bool SetClass(UserAccount account, string name = "")
         {
             string curClass = AdeptClassSeriesManager.GetClassSeries(account).Name;
             if (name == "")
@@ -524,5 +587,6 @@ namespace IodemBot.Modules
                     return "a";
             }
         }
+
     }
 }

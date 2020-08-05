@@ -1,37 +1,38 @@
 [
-    {
-        "name": "Exathi Series",
-        "classes": [
-            {
-                "name": "Exathi",
-                "movepool": [
-                    "Brutal Swing"
-                ],
-                "statMultipliers": {
-                    "maxHP": 100,
-                    "maxPP": 0,
-                    "Atk": 100,
-                    "Def": 100,
-                    "Spd": 100
-                }
-            }
+  {
+    "name": "Exathi Series",
+    "classes": [
+      {
+        "name": "Exathi",
+        "movepool": [
+          "Brutal Swing",
+          "Sack"
         ],
-        "elements": [
-            4
-        ],
-        "elstats": {
-            "VenusAtk": 100,
-            "VenusRes": 100,
-            "MarsAtk": 100,
-            "MarsRes": 100,
-            "JupiterAtk": 100,
-            "JupiterRes": 100,
-            "MercuryAtk": 100,
-            "MercuryRes": 100
-        },
-        "requirement": "Level",
-        "isDefault": true
+        "statMultipliers": {
+          "maxHP": 100,
+          "maxPP": 0,
+          "Atk": 100,
+          "Def": 100,
+          "Spd": 100
+        }
+      }
+    ],
+    "elements": [
+      4
+    ],
+    "elstats": {
+      "VenusAtk": 100,
+      "VenusRes": 100,
+      "MarsAtk": 100,
+      "MarsRes": 100,
+      "JupiterAtk": 100,
+      "JupiterRes": 100,
+      "MercuryAtk": 100,
+      "MercuryRes": 100
     },
+    "requirement": "Level",
+    "isDefault": true
+  },
   {
     "name": "Squire Series",
     "classes": [
@@ -1359,7 +1360,7 @@
     "requirement": "DungeonsCompleted",
     "isDefault": false,
     "archtype": "Warrior",
-    "description": "Crusaders are treasure hunters and try to pick up a bargain whenever possible."
+    "description": "Crusaders are treasure hunters. They travel through weyard and gain their strength from having seen the world."
   },
     {
         "name": "Page Series",
@@ -1466,7 +1467,7 @@
         "requirement": "UnlockedClasses",
         "isDefault": false,
         "archtype": "Warrior",
-        "description": "The Pages study the strategies and abilities of their peers, so they may better support them."
+        "description": "The Pages study the strategies and abilities of their peers, so they may better support them. Knowledge about classes gives them their strength."
     },
   {
     "name": "Air Pilgrim Series",
@@ -1675,7 +1676,7 @@
     "requirement": "DungeonsCompleted",
     "isDefault": false,
     "archtype": "Mage",
-    "description": "On their journeys through all sorts of terrains, Aqua Pilgrims leave riddled markings to mark their way."
+    "description": "Aqua Pilgrims travel the world and spread their wisdom. Most find their destiny at the same, holy place..."
   },
     {
         "name": "Air Seer Series",
@@ -1780,7 +1781,7 @@
         "requirement": "Djinn",
         "isDefault": false,
         "archtype": "Mage",
-        "description": "Air Seers meditate in Canyons, to make predictions about the future."
+        "description": "Air Seers traverse the canyons of weyard to find their connection to the spirits."
     },
     {
         "name": "Hermit Series",
@@ -1900,10 +1901,10 @@
             "MercuryAtk": 140,
             "MercuryRes": 140
         },
-        "requirement": "DaysActive",
+        "requirement": "Level",
         "isDefault": false,
         "archtype": "Mage",
-        "description": "Hermits stay at one place to find their inner peace."
+        "description": "Hermits stay in one place to find their inner peace."
     },
     {
         "name": "Aqua Seer Series",
@@ -2007,7 +2008,7 @@
         "requirement": "Djinn",
         "isDefault": false,
         "archtype": "Mage",
-        "description": "The energy of swamps lets Aqua Seers anticipate future events."
+        "description": "The energy of swamps lets Aqua Seers anticipate future events. The spirits in the swamps give them power."
     },
     {
         "name": "Swordsman Series",
@@ -2113,7 +2114,7 @@
         "requirement": "ColossoWins",
         "isDefault": false,
         "archtype": "Warrior",
-        "description": "Eager to show their strengths, young Swordsmen hang about in the vicinity of the battle grounds."
+        "description": "Eager to measure their strengths against other warriors, young Swordsmen hang about in the vicinity of the battle grounds."
     },
     {
         "name": "Curse Mage Series",
@@ -2234,7 +2235,7 @@
         "requirement": "ColossoWins",
         "isDefault": false,
         "archtype": "Mage",
-        "description": "Mikos turn to dark, but powerful curses, when they have lost their way."
+        "description": "Mikos turn to dark, but powerful curses, when they have lost their way. They draw their powers from being around cursed equipment and don't seem to be affected by their dangerous side effects."
     },
     {
         "name": "Scrapper Series",
@@ -2751,6 +2752,6 @@
         "requirement": "Revives",
         "isDefault": false,
         "archtype": "Mage",
-        "description": "Mediums talk to the fallen and harness their powers."
+        "description": "Mediums talk to the fallen and harness their powers. Their powers aren't stopped by cursed gear."
     }
 ]

@@ -53,9 +53,9 @@ namespace IodemBot.Modules.GoldenSunMechanics
                     continue;
                 }
 
-                if (PPCost > 1 && t.IsImmuneToPsynergy)
+                if (PPCost > 1 && t.IsImmuneToPsynergy || t.HasCondition(Condition.Key) || t.HasCondition(Condition.Trap) || t.HasCondition(Condition.Decoy))
                 {
-                    log.Add($"{t.Name} protects themselves with a magical barrier.");
+                    log.Add($"A magical barrier is protecting {t.Name}.");
                     continue;
                 }
 
@@ -109,15 +109,16 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
                 log.AddRange(Effects.Where(e => e.ActivationTime == TimeToActivate.afterDamage).ApplyAll(User, t));
 
-                if (User is PlayerFighter)
+                if (User is PlayerFighter p)
                 {
-                    ((PlayerFighter)User).avatar.DealtDmg(realDmg);
+                    p.avatar.DealtDmg(realDmg);
                     if (!t.IsAlive)
                     {
                         if (AttackBased && Range == 1)
                         {
-                            ((PlayerFighter)User).battleStats.KillsByHand++;
-                        } ((PlayerFighter)User).battleStats.Kills++;
+                            p.battleStats.KillsByHand++;
+                        }
+                        p.battleStats.Kills++;
                     }
                 }
 
@@ -141,7 +142,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public override string ToString()
         {
-            return $"Attack {(TargetType == Target.otherSingle ? "an enemy" : (TargetType == Target.otherAll ? $"all Enemies" : $"up to {Range * 2 - 1} Targets"))} with a base damage of {GoldenSun.ElementIcons[Element]} {(AttackBased ? "a normal physical Attack" : $"{Power}")}{(AddDamage > 0 ? $" plus an additional {AddDamage} Points" : "")}{(DmgMult != 1 ? $" multiplied by {DmgMult}" : "")}{(PercentageDamage > 0 ? $" and takes {PercentageDamage}% of the targets Health" : "")}.{(TargetType == Target.self || TargetType == Target.ownSingle || TargetType == Target.ownAll ? "Target type set to hit your teammates! Probably an error..." : "")}";
+            return $"Attack {(TargetType == Target.otherSingle ? "an enemy" : (TargetType == Target.otherAll ? $"all Enemies" : $"up to {Range * 2 - 1} Targets"))} with a base damage of {GoldenSun.ElementIcons[Element]} {(AttackBased ? "a normal physical Attack" : $"{Power}")}{(AddDamage > 0 ? $" plus an additional {AddDamage} Points" : "")}{(DmgMult != 1 ? $" multiplied by {DmgMult}" : "")}{(PercentageDamage > 0 ? $" + {PercentageDamage}% of the targets health as damage" : "")}.{(TargetType == Target.self || TargetType == Target.ownSingle || TargetType == Target.ownAll ? "Target type set to hit your teammates! Probably an error..." : "")}";
         }
     }
 }

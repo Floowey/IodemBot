@@ -4,8 +4,8 @@ using System.Threading.Tasks;
 using Discord;
 using Discord.WebSocket;
 using IodemBot.Core;
+using IodemBot.Core.UserManagement;
 using IodemBot.Extensions;
-using IodemBot.Modules;
 using IodemBot.Modules.ColossoBattles;
 
 namespace IodemBot
@@ -49,14 +49,25 @@ namespace IodemBot
             client.Ready += Client_Ready;
             client.UserLeft += Client_UserLeft;
             client.UserJoined += Client_UserJoined;
+            client.GuildMemberUpdated += Client_GuildMemberUpdated;
             await client.LoginAsync(TokenType.Bot, Config.bot.token);
             await client.StartAsync();
             handler = new CommandHandler();
             await handler.InitializeAsync(client);
             msgHandler = new MessageHandler();
             await msgHandler.InitializeAsync(client);
-            client.Ready += TwitchListener.InitializeAsync;
             await Task.Delay(-1);
+        }
+
+        private async Task Client_GuildMemberUpdated(SocketGuildUser before, SocketGuildUser after)
+        {
+            if(before.DisplayName() != after.DisplayName())
+            {
+                UserAccounts.GetAccount(after).Name = after.DisplayName();
+                _ = GuildSettings.GetGuildSettings(after.Guild).TestCommandChannel
+                    .SendMessageAsync($"{after.Mention} changed Nickname from {before.DisplayName()} to {after.DisplayName()}");
+            }
+            await Task.CompletedTask;
         }
 
         private readonly string[] welcomeMsg = {
@@ -81,35 +92,32 @@ namespace IodemBot
 
         private async Task Client_UserJoined(SocketGuildUser user)
         {
-            if (user.Guild.Id != Global.MainChannel)
-            {
-                return;
-            }
-
             if (GuildSettings.GetGuildSettings(user.Guild).sendWelcomeMessage)
             {
-                await GuildSettings.GetGuildSettings(user.Guild).MainChannel.SendMessageAsync(embed:
+                _ = GuildSettings.GetGuildSettings(user.Guild).MainChannel.SendMessageAsync(embed:
                     new EmbedBuilder()
                     .WithColor(Colors.Get("Iodem"))
-                    .WithDescription(String.Format(welcomeMsg[Global.Random.Next(0, welcomeMsg.Length)], user.DisplayName()))
+                    .WithDescription(string.Format(welcomeMsg[Global.Random.Next(0, welcomeMsg.Length)], user.DisplayName()))
                     .Build());
             }
 
-            await GuildSettings.GetGuildSettings(user.Guild).TestCommandChannel.SendMessageAsync(embed:
+            _ = GuildSettings.GetGuildSettings(user.Guild).TestCommandChannel.SendMessageAsync(embed:
                 new EmbedBuilder()
                 .WithAuthor(user)
                 .AddField("Account Created", user.CreatedAt)
                 .AddField("User Joined", user.JoinedAt)
                 .AddField("Status", user.Status, true)
                 .Build());
+            await Task.CompletedTask;
         }
 
         private async Task Client_UserLeft(SocketGuildUser user)
         {
             if (GuildSettings.GetGuildSettings(user.Guild).sendLeaveMessage)
             {
-                await GuildSettings.GetGuildSettings(user.Guild).TestCommandChannel.SendMessageAsync($"{user.DisplayName()} left the party :(.");
+                _ = GuildSettings.GetGuildSettings(user.Guild).TestCommandChannel.SendMessageAsync($"{user.DisplayName()} left the party :(.");
             }
+            await Task.CompletedTask;
         }
 
         private async Task Client_Ready()
@@ -121,7 +129,7 @@ namespace IodemBot
                 foreach (var guild in client.Guilds)
                 {
                     var gs = GuildSettings.GetGuildSettings(guild);
-                    if(gs.AutoSetup && gs.ColossoChannel != null)
+                    if (gs.AutoSetup && gs.ColossoChannel != null)
                     {
                         await ColossoPvE.Setup(guild);
                         Console.WriteLine($"Setup in {gs.Name}");

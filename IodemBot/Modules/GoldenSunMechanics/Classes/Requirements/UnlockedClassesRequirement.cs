@@ -4,7 +4,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 {
     internal class UnlockedClassesRequirement : IRequirement
     {
-        public int apply(UserAccount user)
+        public int Apply(UserAccount user)
         {
             var nOfClasses = user.BonusClasses.Count;
             if (nOfClasses >= 14) //War Adept

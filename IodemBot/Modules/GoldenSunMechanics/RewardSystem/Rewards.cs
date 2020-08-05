@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using IodemBot.Core;
-using IodemBot.Core.Leveling;
 using IodemBot.Core.UserManagement;
 using IodemBot.Modules.ColossoBattles;
 
@@ -10,18 +8,18 @@ namespace IodemBot.Modules.GoldenSunMechanics
 {
     public class DefaultReward : Rewardable
     {
-        public uint coins = 0;
-        public uint xp = 0;
-        public string Item = "";
+        public uint coins { get; set; } = 0;
+        public uint xp { get; set; } = 0;
+        public string Item { get; set; } = "";
 
-        public bool HasChest = false;
+        public bool HasChest { get; set; } = false;
 
         public ChestQuality Chest { get; set; } = ChestQuality.Wooden;
 
-        public string Dungeon = "";
-        public string Djinn = "";
-        public string Summon = "";
-        public string Message = "";
+        public string Dungeon { get; set; } = "";
+        public string Djinn { get; set; } = "";
+        public string Summon { get; set; } = "";
+        public string Message { get; set; } = "";
 
         public override string Award(UserAccount userAccount)
         {
@@ -31,7 +29,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             {
                 return "";
             }
-            
+
             if (Obtainable > 0 && userAccount.Tags.Count(r => r.Equals(Tag)) >= Obtainable)
             {
                 return "";
@@ -74,7 +72,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                     if (userAccount.DjinnPocket.AddDjinn(djinn))
                     {
                         awardLog.Add($"{userAccount.Name} found the {djinn.Element} djinni {djinn.Emote} {djinn.Name}!");
-                        if(userAccount.DjinnPocket.djinn.Count == 1)
+                        if (userAccount.DjinnPocket.djinn.Count == 1)
                         {
                             awardLog.Add($"You have found your first djinni, the {djinn.Element} djinni {djinn.Emote} {djinn.Name}. " +
                                 $"To view what it can do, use the djinninfo command `i!di {djinn.Name}` and to take it with you on your journey, use `i!djinn take {djinn.Name}`. " +

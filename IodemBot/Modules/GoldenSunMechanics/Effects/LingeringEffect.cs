@@ -8,9 +8,9 @@ namespace IodemBot.Modules.GoldenSunMechanics
     {
         public override List<string> Apply(ColossoFighter User, ColossoFighter Target)
         {
-            if (coolDown > 0)
+            if (CoolDown > 0)
             {
-                coolDown--;
+                CoolDown--;
                 return new List<string>();
             }
             else
@@ -21,7 +21,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public override string Type { get; } = "Lingering";
 
-        [JsonProperty] private Effect Effect = new NoEffect();
-        [JsonProperty] private int coolDown;
+        [JsonProperty] private Effect Effect { get; set; } = new NoEffect();
+        [JsonProperty] private int CoolDown { get; set; }
     }
 }

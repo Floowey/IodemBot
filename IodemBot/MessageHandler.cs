@@ -15,7 +15,6 @@ namespace IodemBot
     public class MessageHandler
     {
         private DiscordSocketClient client;
-        private readonly ulong[] whiteList = { 1234 };
         private List<AutoResponse> responses;
 
         public async Task InitializeAsync(DiscordSocketClient client)
@@ -120,23 +119,9 @@ namespace IodemBot
             public override async Task ReactAsync(SocketUserMessage msg)
             {
                 _ = base.ReactAsync(msg);
-                var userAccount = UserAccounts.GetAccount(msg.Author);
-                userAccount.ServerStats.HasWrittenCurse = true;
-                UserAccounts.SaveAccounts();
                 _ = GoldenSun.AwardClassSeries("Curse Mage Series", msg.Author, msg.Channel);
                 await Task.CompletedTask;
             }
-        }
-
-        private bool ContainsBadWord(SocketUserMessage msg)
-        {
-            //you should do this once and not every function call
-            return false;
-        }
-
-        internal async Task CheckProfanity(SocketUserMessage msg)
-        {
-            await Task.CompletedTask;
         }
 
         internal class AutoResponse

@@ -1,15 +1,16 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
 using Iodembot.Preconditions;
+using IodemBot.Core;
 using IodemBot.Core.UserManagement;
 using IodemBot.Extensions;
 using IodemBot.Modules.ColossoBattles;
-using System.Runtime.InteropServices;
-using System.Diagnostics;
 
 namespace IodemBot.Modules
 {
@@ -41,7 +42,7 @@ namespace IodemBot.Modules
         }
 
         [Command("purge")]
-        [Remarks("Purges A User's Last Messages. Default Amount To Purge Is 100")]
+        [Remarks("Purges A User's Last Messages. Default Amount To Purge is 100")]
         [RequireUserPermission(ChannelPermission.ManageMessages)]
         public async Task Clear(int amountOfMessagesToDelete = 2)
         {
@@ -68,13 +69,31 @@ namespace IodemBot.Modules
                 var account = UserAccounts.GetAccount(user);
 
                 account.Name = user.DisplayName();
+                account.ServerStats.LegacyStreak = new EndlessStreak()
+                {
+                    Solo = account.ServerStats.ColossoHighestRoundEndlessSolo,
+                    Duo = account.ServerStats.ColossoHighestRoundEndlessDuo,
+                    DuoNames = account.ServerStats.ColossoHighestRoundEndlessDuoNames,
+                    Trio = account.ServerStats.ColossoHighestRoundEndlessTrio,
+                    TrioNames = account.ServerStats.ColossoHighestRoundEndlessTrioNames,
+                    Quad = account.ServerStats.ColossoHighestRoundEndlessQuad,
+                    QuadNames = account.ServerStats.ColossoHighestRoundEndlessQuadNames
+                };
             }
+
+            foreach(SocketGuild guild in Global.Client.Guilds)
+            {
+                var gs = GuildSettings.GetGuildSettings(guild);
+                gs.Name = guild.Name;
+            }
+            Console.WriteLine(Global.Client.Guilds.Sum(g => g.Emotes.Count));
             UserAccounts.SaveAccounts();
+            GuildSettings.SaveGuilds();
             await Task.CompletedTask;
         }
 
         [Command("Activity")]
-        [RequireOwner]
+        [RequireModerator]
         public async Task Activity()
         {
             var acc = UserAccounts.GetAllAccounts();
@@ -99,14 +118,17 @@ namespace IodemBot.Modules
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
             {
                 Console.WriteLine("Closing for manual update...");
-                var ps = new ProcessStartInfo();
-                ps.FileName ="shellscripts/selfupdate.sh";
-                ps.UseShellExecute = false;
-                ps.RedirectStandardOutput = true;
-                
+                var ps = new ProcessStartInfo
+                {
+                    FileName = "shellscripts/selfupdate.sh",
+                    UseShellExecute = false,
+                    RedirectStandardOutput = true,
+                    Arguments = Global.Client.CurrentUser.Username == "Medoi" ? "MedoiBotService" : "IodemBotService"
+                };
+
                 Process process = Process.Start(ps);
                 process.WaitForExit();
-                Console.WriteLine("This shouldn't be reached.");
+                Console.WriteLine("This shouldn't be reached but did.");
                 return;
 
             }
@@ -120,10 +142,12 @@ namespace IodemBot.Modules
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
             {
                 Console.WriteLine("Saving Users manually...");
-                var ps = new ProcessStartInfo();
-                ps.FileName = "shellscripts/backupusers.sh";
-                ps.UseShellExecute = false;
-                ps.RedirectStandardOutput = true;
+                var ps = new ProcessStartInfo
+                {
+                    FileName = "shellscripts/backupusers.sh",
+                    UseShellExecute = false,
+                    RedirectStandardOutput = true
+                };
 
                 Process process = Process.Start(ps);
                 process.WaitForExit();
@@ -140,10 +164,13 @@ namespace IodemBot.Modules
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
             {
                 Console.WriteLine("Closing for automatic update...");
-                var ps = new ProcessStartInfo();
-                ps.FileName = "shellscripts/pullusers.sh";
-                ps.UseShellExecute = false;
-                ps.RedirectStandardOutput = true;
+                var ps = new ProcessStartInfo
+                {
+                    FileName = "shellscripts/pullusers.sh",
+                    UseShellExecute = false,
+                    RedirectStandardOutput = true,
+                    Arguments = Global.Client.CurrentUser.Username == "Medoi" ? "MedoiBotService" : "IodemBotService"
+                };
 
                 Process process = Process.Start(ps);
                 process.WaitForExit();
@@ -181,8 +208,7 @@ namespace IodemBot.Modules
         public async Task RemoveTag(SocketGuildUser user, string Tag)
         {
             var avatar = UserAccounts.GetAccount(user);
-            avatar.Tags.Remove(Tag);
-            await ReplyAsync("Tag Removed");
+            await ReplyAsync($"Tag Removed {avatar.Tags.Remove(Tag)}");
         }
 
         [Command("AddTag")]
