@@ -54,6 +54,10 @@ namespace IodemBot.Modules.GoldenSunMechanics
             if (!enemy.IsAlive)
             {
                 log.Add($"{enemy.Name} is down already!");
+                if(User.Moves.FirstOrDefault(m => m is Defend) != null)
+                {
+                    log.AddRange(User.Moves.FirstOrDefault(m => m is Defend).Use(User));
+                }
                 return log;
             }
 

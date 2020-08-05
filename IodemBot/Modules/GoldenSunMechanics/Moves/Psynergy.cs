@@ -42,6 +42,10 @@ namespace IodemBot.Modules.GoldenSunMechanics
             if (!Effects.Any(i => i is ReviveEffect || i is MysticCallEffect) && targets.TrueForAll(i => !i.IsAlive))
             {
                 log.Add($"{User.Name} wants to {(PPCost == 1 ? "use" : "cast")} {Name}, but {(targets.Count == 1 ? "the target is" : "all the targets are")} down.");
+                if (User.Moves.FirstOrDefault(m => m is Defend) != null)
+                {
+                    log.AddRange(User.Moves.FirstOrDefault(m => m is Defend).Use(User));
+                }
                 return new Validation(false, log);
             }
 
