@@ -1293,7 +1293,7 @@
         },
         {
           "Type": "IgnoreDefense",
-          "IgnorePercent": 100,
+          "Percentage": 100,
           "Probability": 30
         }
       ]
@@ -1462,7 +1462,7 @@
         },
         {
           "Type": "IgnoreDefense",
-          "IgnorePercent": 50,
+          "Percentage": 50,
           "Probability": 50
         }
       ]
@@ -2263,7 +2263,7 @@
         },
         {
           "Type": "IgnoreDefense",
-          "IgnorePercent": 50,
+          "Percentage": 50,
           "Probability": 50
         }
       ]
@@ -2664,7 +2664,7 @@
         },
         {
           "Type": "IgnoreDefense",
-          "IgnorePercent": 50,
+          "Percentage": 50,
           "Probability": 50
         }
       ]

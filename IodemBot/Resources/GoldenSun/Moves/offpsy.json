@@ -36,7 +36,8 @@
       {
         "Type": "Stat",
         "Stat": "Defense",
-        "multiplier": 0.8
+        "multiplier": 0.75,
+        "Probability": 80
       }
     ],
     "PPCost": 8,
@@ -50,11 +51,17 @@
     "element": 0,
     "effects": [
       {
+        "Type": "Stat",
+        "Stat": "Defense",
+        "multiplier": 0.75,
+        "Probability": 80
+      },
+      {
         "Type": "OHKO",
         "probability": 5
       }
     ],
-    "PPCost": 8,
+    "PPCost": 10,
     "addDamage": 30
   },
   "Annihilation": {

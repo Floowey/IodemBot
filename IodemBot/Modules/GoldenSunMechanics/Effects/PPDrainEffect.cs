@@ -1,13 +1,14 @@
 ﻿using System.Collections.Generic;
 using IodemBot.Modules.ColossoBattles;
+using Newtonsoft.Json;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
     internal class PPDrainEffect : Effect
     {
         public override string Type { get; } = "PPDrain";
-        private uint Percentage { get; set; } = 20;
-        private uint Probability { get; set; } = 100;
+        [JsonProperty] private uint Percentage { get; set; } = 20;
+        [JsonProperty] private uint Probability { get; set; } = 100;
 
         public override List<string> Apply(ColossoFighter User, ColossoFighter Target)
         {
