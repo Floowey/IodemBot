@@ -65,7 +65,7 @@ namespace IodemBot.Modules
         {
             await Context.Channel.SendMessageAsync(embed: new EmbedBuilder()
                 .WithColor(Colors.Get("Iodem"))
-                .WithDescription($"Pong!")
+                .WithDescription($"Pong! {Global.Client.Latency}")
                 .Build());
         }
 

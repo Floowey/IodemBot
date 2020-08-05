@@ -247,7 +247,6 @@ namespace IodemBot.Modules.ColossoBattles
         [RequireStaff]
         [RequireUserServer]
         public async Task ModDungeon([Remainder] string DungeonName)
-
         { _ = SetupDungeon(DungeonName, true); await Task.CompletedTask; }
 
         [Command("alldungeons")]

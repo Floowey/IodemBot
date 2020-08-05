@@ -101,12 +101,20 @@ namespace IodemBot.Modules.ColossoBattles
             p.Moves = AdeptClassSeriesManager.GetMoveset(avatar);
             var Class = AdeptClassSeriesManager.GetClass(avatar);
             var classSeries = AdeptClassSeriesManager.GetClassSeries(avatar);
-            p.Stats = GetStats(avatar);
-            p.ElStats = AdeptClassSeriesManager.GetElStats(avatar);
             if (classSeries.Name == "Curse Mage Series" || classSeries.Name == "Medium Series")
             {
                 p.IsImmuneToItemCurse = true;
             }
+
+            var level = LevelOption switch
+            {
+                LevelOption.SetLevel => SetLevel,
+                LevelOption.CappedLevel => Math.Min(avatar.LevelNumber, SetLevel),
+                _ => avatar.LevelNumber,
+            };
+
+            p.Stats = GetStats(avatar, level);
+            p.ElStats = AdeptClassSeriesManager.GetElStats(avatar);
 
             switch (InventoryOption)
             {
@@ -164,7 +172,7 @@ namespace IodemBot.Modules.ColossoBattles
                             }
                         }
                     });
-                    p.HPrecovery = (int)(p.HPrecovery * (1 + (double)avatar.LevelNumber / 33));
+                    p.HPrecovery = (int)(p.HPrecovery * (1 + (double)level / 33));
 
                     break;
 
@@ -210,16 +218,10 @@ namespace IodemBot.Modules.ColossoBattles
             return p;
         }
 
-        private Stats GetStats(UserAccount avatar)
+        private Stats GetStats(UserAccount avatar, uint level)
         {
             var classSeries = AdeptClassSeriesManager.GetClassSeries(avatar);
-            var level = LevelOption switch
-            {
-                LevelOption.SetLevel => SetLevel,
-                LevelOption.CappedLevel => Math.Min(avatar.LevelNumber, SetLevel),
-                _ => avatar.LevelNumber,
-            };
-            ;
+           
             Stats Stats = BaseStatOption switch
             {
                 BaseStatOption.Default => classSeries.Archtype == ArchType.Warrior ? WarriorStatHolder.GetStats(level, ReductionFactor) : MageStatHolder.GetStats(level, ReductionFactor),

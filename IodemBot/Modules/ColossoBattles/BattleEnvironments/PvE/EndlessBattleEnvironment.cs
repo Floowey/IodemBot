@@ -308,7 +308,7 @@ namespace IodemBot.Modules.ColossoBattles
 
         protected override string GetEnemyMessageString()
         {
-            return $"Welcome to Endless Battles! Show your strength and climb the leaderboards, see how far you can get. You must have reached at least level 50 to join or otherwise proofen your strength in the Colosso Finals!";
+            return $"Welcome to Endless Battles! Show your strength and climb the leaderboards, see how far you can get. You must have reached at least level 50 to join or otherwise proven your strength in the Colosso Finals!";
         }
     }
 }

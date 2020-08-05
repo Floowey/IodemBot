@@ -596,13 +596,13 @@
       "effects": [
         {
           "Type": "AddDamage",
-          "addDamage": 15
+          "addDamage": 51
         },
         {
           "Type": "Stat",
           "Stat": "Attack",
-          "Multiplier": 0.25,
-          "Probability": 30
+          "Multiplier": 0.75,
+          "Probability": 35 
         }
       ]
     },
@@ -1146,12 +1146,12 @@
       "effects": [
         {
           "Type": "AddDamage",
-          "addDamage": 34
+          "addDamage": 60
         },
         {
           "Type": "Condition",
           "Condition": "Haunt",
-          "Probability": 33
+          "Probability": 35
         }
       ]
     },
@@ -1160,7 +1160,7 @@
   "Gaia Blade": {
     "Name": "Gaia Blade",
     "Price": 17000,
-    "AnimatedIcon": "<a:Gaia_Blade_a:641571305451159582>",
+    "AnimatedIcon": "<a:Gaia_Blade:729794832679174185>",
     "Icon": "<:Gaia_Blade:569855141499633664>",
     "ItemType": "LongSword",
     "IsEquippable": true,
@@ -1202,7 +1202,7 @@
       "effects": [
         {
           "Type": "AddDamage",
-          "addDamage": 34
+          "addDamage": 21
         },
         {
           "Type": "Stat",
@@ -1293,7 +1293,7 @@
         },
         {
           "Type": "IgnoreDefense",
-          "IgnorePercent": 100,
+          "Percentage": 100,
           "Probability": 30
         }
       ]
@@ -1323,7 +1323,7 @@
           "Type": "Stat",
           "Stat": "Speed",
           "Multiplier": 0.5,
-          "Probability": 50
+          "Probability": 25
         }
       ]
     },
@@ -1462,7 +1462,7 @@
         },
         {
           "Type": "IgnoreDefense",
-          "IgnorePercent": 50,
+          "Percentage": 50,
           "Probability": 50
         }
       ]
@@ -1472,7 +1472,8 @@
   "Fire Brand": {
     "Name": "Fire Brand",
     "Price": 20500,
-    "Icon": "<a:Fire_Brand:730011785847111771>",
+    "Icon": "<:Fire_Brand:581966770470912031>",
+    "AnimatedIcon": "<a:Fire_Brand:730011785847111771>",
     "ItemType": "LongSword",
     "IsEquippable": true,
     "IsArtifact": true,
@@ -1500,7 +1501,8 @@
   "Darksword": {
     "Name": "Darksword",
     "Price": 24200,
-    "Icon": "<a:Darksword:729794276761927700>",
+    "Icon": "<:Darksword:569855141495439360>",
+    "AnimatedIcon": "<a:Darksword:729794276761927700>",
     "ItemType": "LongSword",
     "IsEquippable": true,
     "IsArtifact": true,
@@ -1711,7 +1713,7 @@
         {
           "Type": "Condition",
           "Condition": "Delusion",
-          "Probability": 26
+          "Probability": 35
         }
       ]
     },
@@ -1795,8 +1797,8 @@
         {
           "Type": "Stat",
           "Stat": "Speed",
-          "Multiplier": 0.4,
-          "Probability": 40
+          "Multiplier": 0.5,
+          "Probability": 20
         }
       ]
     },
@@ -1909,12 +1911,12 @@
       "effects": [
         {
           "Type": "AddDamage",
-          "addDamage": 33
+          "addDamage": 41
         },
         {
           "Type": "Stat",
           "Stat": "Resistance",
-          "Multiplier": 0.75,
+          "Multiplier": 0.6,
           "Probability": 75
         }
       ]
@@ -2208,8 +2210,8 @@
         {
           "Type": "Stat",
           "Stat": "Resistance",
-          "Multiplier": 0.38,
-          "Probability": 38
+          "Multiplier": 0.4,
+          "Probability": 40
         }
       ]
     },
@@ -2261,7 +2263,7 @@
         },
         {
           "Type": "IgnoreDefense",
-          "IgnorePercent": 50,
+          "Percentage": 50,
           "Probability": 50
         }
       ]
@@ -2373,7 +2375,7 @@
         },
         {
           "Type": "Stat",
-          "Stat": "Defense",
+          "Stat": "Resistance",
           "Multiplier": 0.4,
           "Probability": 75
         }
@@ -2662,7 +2664,7 @@
         },
         {
           "Type": "IgnoreDefense",
-          "IgnorePercent": 50,
+          "Percentage": 50,
           "Probability": 50
         }
       ]

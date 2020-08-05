@@ -18,7 +18,7 @@ namespace IodemBot
         {
             get
             {
-                return $"{DateTime.Now:s}";
+                return $"{DateTime.Now:s}".Replace(":", ".");
             }
         }
     }

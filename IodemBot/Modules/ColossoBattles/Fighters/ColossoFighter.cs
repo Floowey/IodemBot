@@ -539,6 +539,7 @@ namespace IodemBot.Modules.ColossoBattles
             //var trySelected = Moves.Where(m => m.Emote == emote).FirstOrDefault() ?? Moves.Where(m => m.Emote.Contains(emote)).FirstOrDefault();
             if (!IsAlive)
             {
+                Console.WriteLine("Dead Players can't select");
                 return false;
             }
 
@@ -551,6 +552,7 @@ namespace IodemBot.Modules.ColossoBattles
                 }
                 else
                 {
+                    Console.WriteLine($"{emote.Name} {emote} not in {Moves.Select(m => m.Emote)}");
                     return false;
                 }
             }
@@ -558,6 +560,7 @@ namespace IodemBot.Modules.ColossoBattles
             {
                 if (trySelected is Psynergy psynergy && psynergy.PPCost > Stats.PP)
                 {
+                    Console.WriteLine("Not enough PP");
                     return false;
                 }
                 else

@@ -217,6 +217,7 @@ namespace IodemBot.Modules.ColossoBattles
                     var StatusMessage = V.StatusMessage;
                     var PlayerMessages = V.PlayerMessages;
                     var EnemyMessage = V.EnemyMessage;
+                    var SummonsMessage = V.SummonsMessage;
                     if (channel.Id != V.teamChannel.Id)
                     {
                         return;
@@ -229,6 +230,10 @@ namespace IodemBot.Modules.ColossoBattles
                     if (EnemyMessage.Id == reaction.MessageId)
                     {
                         c = EnemyMessage;
+                    }
+                    if (SummonsMessage.Id == reaction.MessageId)
+                    {
+                        c = SummonsMessage;
                     }
                     if (PlayerMessages.Keys.Any(k => k.Id == reaction.MessageId))
                     {
@@ -374,6 +379,13 @@ namespace IodemBot.Modules.ColossoBattles
             {
                 return;
             }
+
+
+            foreach (var V in Teams.Values)
+            {
+                V.PlayerMessages.Values.ToList().ForEach(p => p.Moves.AddRange(V.Factory.PossibleSummons));
+            }
+
 
             resetIfNotActive.Stop();
             Battle.Start();
@@ -603,16 +615,19 @@ namespace IodemBot.Modules.ColossoBattles
                         reactions.Remove(r);
                     }
                     embed.WithThumbnailUrl(fighter.ImgUrl);
-                    embed.WithColor(Colors.Get(fighter.Moves.Where(m => m is Psynergy).Select(m => (Psynergy)m).Select(p => p.Element.ToString()).ToArray()));
+                    embed.WithColor(Colors.Get(fighter.Moves.OfType<Psynergy>().Select(p => p.Element.ToString()).ToArray()));
                     embed.AddField($"{numberEmotes[i]}{fighter.ConditionsToString()}", fighter.Name, true);
                     embed.AddField("HP", $"{fighter.Stats.HP} / {fighter.Stats.MaxHP}", true);
                     embed.AddField("PP", $"{fighter.Stats.PP} / {fighter.Stats.MaxPP}", true);
                     var s = new List<string>();
                     foreach (var m in fighter.Moves)
                     {
-                        if (m is Psynergy psynergy)
+                        if (m is Psynergy p)
                         {
-                            s.Add($"{m.Emote} {m.Name} {psynergy.PPCost}");
+                            s.Add($"{m.Emote} {m.Name} {p.PPCost}");
+                        }
+                        else if (m is Summon summon)
+                        {
                         }
                         else
                         {
@@ -654,7 +669,10 @@ namespace IodemBot.Modules.ColossoBattles
                     }
                     foreach (var m in fighter.Moves)
                     {
-                        emotes.Add(m.GetEmote());
+                        if (!(m is Summon))
+                        {
+                            emotes.Add(m.GetEmote());
+                        }
                     }
                     emotes.RemoveAll(e => msg.Reactions.Any(r => r.Key.Name.Equals(e.Name, StringComparison.InvariantCultureIgnoreCase)));
                     tasks.Add(msg.AddReactionsAsync(emotes.ToArray()));
