@@ -1146,12 +1146,12 @@
       "effects": [
         {
           "Type": "AddDamage",
-          "addDamage": 34
+          "addDamage": 60
         },
         {
           "Type": "Condition",
           "Condition": "Haunt",
-          "Probability": 33
+          "Probability": 35
         }
       ]
     },
@@ -1202,7 +1202,7 @@
       "effects": [
         {
           "Type": "AddDamage",
-          "addDamage": 34
+          "addDamage": 21
         },
         {
           "Type": "Stat",
@@ -1323,7 +1323,7 @@
           "Type": "Stat",
           "Stat": "Speed",
           "Multiplier": 0.5,
-          "Probability": 50
+          "Probability": 25
         }
       ]
     },
@@ -1713,7 +1713,7 @@
         {
           "Type": "Condition",
           "Condition": "Delusion",
-          "Probability": 26
+          "Probability": 35
         }
       ]
     },
@@ -1797,8 +1797,8 @@
         {
           "Type": "Stat",
           "Stat": "Speed",
-          "Multiplier": 0.4,
-          "Probability": 40
+          "Multiplier": 0.5,
+          "Probability": 20
         }
       ]
     },
@@ -1911,12 +1911,12 @@
       "effects": [
         {
           "Type": "AddDamage",
-          "addDamage": 33
+          "addDamage": 41
         },
         {
           "Type": "Stat",
           "Stat": "Resistance",
-          "Multiplier": 0.75,
+          "Multiplier": 0.6,
           "Probability": 75
         }
       ]
@@ -2210,8 +2210,8 @@
         {
           "Type": "Stat",
           "Stat": "Resistance",
-          "Multiplier": 0.38,
-          "Probability": 38
+          "Multiplier": 0.4,
+          "Probability": 40
         }
       ]
     },
@@ -2375,7 +2375,7 @@
         },
         {
           "Type": "Stat",
-          "Stat": "Defense",
+          "Stat": "Resistance",
           "Multiplier": 0.4,
           "Probability": 75
         }
