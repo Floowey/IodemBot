@@ -611,7 +611,7 @@
     ],
     [
         {
-            "name": "Venus Djinn",
+          "name": "Venus Djinni",
             "imgurl": "https://cdn.discordapp.com/attachments/571620744291942430/597598160399106058/goldensun_djinntower600px.png",
             "movepool": [
                 "Cure Well",
@@ -638,7 +638,7 @@
             }
         },
         {
-            "name": "Mars Djinn",
+            "name": "Mars Djinni",
             "imgurl": "",
             "movepool": [
                 "Fireball",
@@ -665,7 +665,7 @@
             }
         },
         {
-            "name": "Jupiter Djinn",
+            "name": "Jupiter Djinni",
             "imgurl": "",
             "movepool": [
                 "Tornado",
@@ -693,7 +693,7 @@
             }
         },
         {
-            "name": "Mercury Djinn",
+            "name": "Mercury Djinni",
             "imgurl": "",
             "movepool": [
                 "Wish Well",

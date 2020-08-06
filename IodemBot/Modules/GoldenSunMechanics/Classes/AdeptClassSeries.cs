@@ -64,24 +64,26 @@ namespace IodemBot.Modules.GoldenSunMechanics
             return JsonConvert.DeserializeObject<AdeptClassSeries>(serialized);
         }
 
-        // Apprentice:       21 i!psy lookups | Level
-        // Brute:            15 Colosso Wins | (0, 50, 150, 300, 500+10, 800+25 Wins + Streak)
-        // Crusader:         - | same as Brute
-        // Curse Mage:       i!quote Matthew + #^@%! | same as Brute
-        // Hermit:           30 Days since joining the Server | (0, 7, 14, 30, 45, 70 *active* Days)
-        // Page:             21 i!classinfo lookups | (0, 3, 6, 9, 14) Unlocked Classes
-        // Pilgrim (Jup):    14 "Switchpoints" between Channels (+2 for switch, -1 for staying) | Level
-        // Pilgrim (Mer):    - | Level
-        // Scrapper:         Bot Commands | same as Brute
-        // Seer (Jup):       15 RPS Wins | Level
-        // Seer (Mer):       4 RPS Wins in a row | Level
-        // Swordsman:        50 Messages in ColossoTalks | same as Brute
+        // Mono elementals:  0,2,4,6,8 Djinn of the corresponding element
 
-        // Dragoon: People in Battle (100, 250, 450) (+0 for Solo, +3 for full party)
-        // Samurai: Kills By Hand (161, 666)
-        // Medium: Revives (50, 120, 200)
-        // Ranger: Solo Battles (50, 200, 400)
+        // Apprentice:       21 i!psy lookups | Unlocked (0, 4, 8, 12, 16) Class Series
+        // Brute:            20 Colosso Wins | (0, 50, 250, 500, 800+25, 1200+35) Wins + Endless Solo Streak
+        // Crusader:         Find 6 Dungeons + Keys | Complete (0, 25, 66, 123, 200) Dungeons
+        // Curse Mage:       i!quote Matthew OR #^@%! | Wear cursed gear; Number of Unique Cursed items in inv / 2 + cursed gear worn
+        // Hermit:           30 Days since joining the Server OR finish same dungeon 5 times in a row | Levels (0, 12, 24, 36, 48, 60)
+        // Page:             11 i!classinfo lookups | See Apprentice
+        // Pilgrim (Jup):    14 "Switchpoints" between Channels (+2 for switch, -1 for staying) OR Complete 12 dungeons | See Crusader
+        // Pilgrim (Mer):    Finish Mercury LH | See Crusader
+        // Scrapper:         Use 100 Bot Commands | same as Brute
+        // Seer (Jup):       use i!seer, get the SEER (not the fortune teller) to mention "spirits" | (0,1,3,5,7) as lowest number of djinn of elements
+        // Seer (Mer):       3 RPS Wins, overall | Same as Air Seer
+        // Swordsman:        50 Messages in ColossoTalks OR Win 1 PvP match | same as Brute
+
+        // Dragoon: (100, 200, 400) People in Battle  (+0 for Solo, +3 for full party)
+        // Samurai: (161, 666) Kills By UNLEASH or Melee Psynergy (i.e. Ragnarok). "Next" and "End" enemies don't count.
+        // Medium: (25, 66, 111) Revives 
+        // Ranger: Solo Battles (100, 300, 500)
         // Ninja: Total Damage (666 666, 999 999, 3 333 333)
-        // White Mage: Points Healed (333 333, 999 999)
+        // White Mage: Points Healed (222 222, 555 555)
     }
 }

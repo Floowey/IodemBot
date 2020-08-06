@@ -231,19 +231,19 @@ namespace IodemBot.Modules.ColossoBattles
                 {
                     var djinnTable = new RewardTable();
                     var djinnWeight = (int)Difficulty;
-                    if(Battle.TeamB.Any(f => f.Name.Contains("Venus Djinn")))
+                    if(Battle.TeamB.Any(f => f.Name.Contains("enus Djinn")))
                     {
                         djinnTable.Add(new DefaultReward() { Djinn = "Venus", Weight = 1 });
                     }
-                    if (Battle.TeamB.Any(f => f.Name.Contains("Mars Djinn")))
+                    if (Battle.TeamB.Any(f => f.Name.Contains("ars Djinn")))
                     {
                         djinnTable.Add(new DefaultReward() { Djinn = "Mars", Weight = 1 });
                     }
-                    if (Battle.TeamB.Any(f => f.Name.Contains("Jupiter Djinn")))
+                    if (Battle.TeamB.Any(f => f.Name.Contains("upiter Djinn")))
                     {
                         djinnTable.Add(new DefaultReward() { Djinn = "Jupiter", Weight = 1 });
                     }
-                    if (Battle.TeamB.Any(f => f.Name.Contains("Mercury Djinn")))
+                    if (Battle.TeamB.Any(f => f.Name.Contains("ercury Djinn")))
                     {
                         djinnTable.Add(new DefaultReward() { Djinn = "Mercury", Weight = 1 });
                     }

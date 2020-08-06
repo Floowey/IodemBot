@@ -123,7 +123,7 @@ namespace IodemBot.Modules
                     FileName = "shellscripts/selfupdate.sh",
                     UseShellExecute = false,
                     RedirectStandardOutput = true,
-                    Arguments = Global.Client.CurrentUser.Username == "Medoi" ? "MedoiBotService" : "IodemBotService"
+                    Arguments = Global.Client.CurrentUser.Username == "Faran" ? "MedoiBotService" : "IodemBotService"
                 };
 
                 Process process = Process.Start(ps);
@@ -169,7 +169,7 @@ namespace IodemBot.Modules
                     FileName = "shellscripts/pullusers.sh",
                     UseShellExecute = false,
                     RedirectStandardOutput = true,
-                    Arguments = Global.Client.CurrentUser.Username == "Medoi" ? "MedoiBotService" : "IodemBotService"
+                    Arguments = Global.Client.CurrentUser.Username == "Faran" ? "MedoiBotService" : "IodemBotService"
                 };
 
                 Process process = Process.Start(ps);

@@ -325,7 +325,7 @@ namespace IodemBot.Modules.ColossoBattles
             }
             await Task.CompletedTask;
         }
-
+       
         protected virtual async Task AddPlayer(SocketReaction reaction, Team team)
         {
             if (Teams[Team.A].PlayerMessages.Values.Any(s => (s.avatar.ID == reaction.UserId)))

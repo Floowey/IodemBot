@@ -7,15 +7,15 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public int Apply(UserAccount user)
         {
             var nOfClasses = user.BonusClasses.Count;
-            if (nOfClasses >= 14) //War Adept
+            if (nOfClasses >= 16) //War Adept
             {
                 return 4;
             }
-            else if (nOfClasses >= 11) // Conjurer
+            else if (nOfClasses >= 12) // Conjurer
             {
                 return 3;
             }
-            else if (nOfClasses >= 7) // Enchanter
+            else if (nOfClasses >= 8) // Enchanter
             {
                 return 2;
             }

@@ -2689,7 +2689,7 @@
                     "Froth Spiral",
                     "Call Demon",
                     "Cure Well",
-                    "Revive"
+                    "Lich"
                 ],
                 "statMultipliers": {
                     "maxHP": 130,
@@ -2706,7 +2706,7 @@
                     "Froth Spiral",
                     "Call Demon",
                     "Potent Cure",
-                    "Revive"
+                    "Lich"
                 ],
                 "statMultipliers": {
                     "maxHP": 150,
@@ -2723,7 +2723,7 @@
                     "Froth Spiral",
                     "Call Dullahan",
                     "Potent Cure",
-                    "Revive"
+                    "Lich"
                 ],
                 "statMultipliers": {
                     "maxHP": 170,

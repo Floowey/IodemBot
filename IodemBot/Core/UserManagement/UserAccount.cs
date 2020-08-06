@@ -146,9 +146,9 @@ namespace IodemBot.Core.UserManagement
         public uint RpsWins { get; set; } = 0;
         public uint SpentMoneyOnArtifacts { get; set; }
         public int UniqueDaysActive { get; set; } = 0;
-        public int DungeonsCompleted { get; internal set; } = 0;
-        public string LastDungeon { get; internal set; } = "";
-        public int SameDungeonInARow { get; internal set; } = 0;
+        public int DungeonsCompleted { get; set; } = 0;
+        public string LastDungeon { get; set; } = "";
+        public int SameDungeonInARow { get; set; } = 0;
 
         public EndlessStreak GetStreak(EndlessMode mode) => mode == EndlessMode.Default ? EndlessStreak : LegacyStreak;
 

@@ -36,11 +36,6 @@ namespace IodemBot.Core.Leveling
             {
                 Leveling.LevelUp(userAccount, user, channel);
             }
-            if (userAccount.ServerStats.ColossoWins >= 15)
-            {
-                await GoldenSun.AwardClassSeries("Brute Series", user, channel);
-            }
-
             await Task.CompletedTask;
         }
 
@@ -113,7 +108,7 @@ namespace IodemBot.Core.Leveling
                 await GoldenSun.AwardClassSeries("Brute Series", userAccount, channel);
             }
 
-            if (bs.KillsByHand >= 210)
+            if (bs.KillsByHand >= 161)
             {
                 await GoldenSun.AwardClassSeries("Samurai Series", userAccount, channel);
             }
@@ -133,7 +128,7 @@ namespace IodemBot.Core.Leveling
                 await GoldenSun.AwardClassSeries("Dragoon Series", userAccount, channel);
             }
 
-            if (bs.HPhealed >= 333333)
+            if (bs.HPhealed >= 222222)
             {
                 await GoldenSun.AwardClassSeries("White Mage Series", userAccount, channel);
             }
@@ -279,7 +274,7 @@ namespace IodemBot.Core.Leveling
             userAccount.ServerStats.LookedUpClass++;
             UserAccounts.SaveAccounts();
 
-            if (userAccount.ServerStats.LookedUpClass >= 21)
+            if (userAccount.ServerStats.LookedUpClass >= 11)
             {
                 await GoldenSun.AwardClassSeries("Page Series", user, channel);
             }

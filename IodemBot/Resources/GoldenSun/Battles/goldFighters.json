@@ -1,1080 +1,1144 @@
 [
-    [
-        {
-            "name": "Mimic",
-            "imgurl": "https://cdn.discordapp.com/attachments/497831661896073289/536228514345779203/Untitled.png",
-            "movepool": [
-                "Quake Sphere",
-                "Clay Spire",
-                "Stone Spire",
-                "Grand Gaia",
-                "Nettle",
-                "Reigning Dragon",
-                "Undead Might",
-                "Dragon Fume",
-                "Searing Beam",
-                "Eruption",
-                "Pyroclasm",
-                "Fiery Blast",
-                "Supernova",
-                "Fiery Abyss",
-                "Dire Inferno",
-                "Storm Ray",
-                "Destruct Ray",
-                "Tempest",
-                "Spark Plasma",
-                "Thunderhead",
-                "Ice Missile",
-                "Megacool",
-                "Freeze Prism",
-                "Froth Spiral",
-                "Ward",
-                "Guard",
-                "Impair",
-                "Debilitate"
-            ],
-            "stats": {
-                "maxHP": 5500,
-                "maxPP": 500,
-                "Atk": 400,
-                "Def": 250,
-                "Spd": 151
+  [
+    {
+      "name": "Mimic",
+      "imgurl": "https://cdn.discordapp.com/attachments/497831661896073289/536228514345779203/Untitled.png",
+      "movepool": [
+        "Quake Sphere",
+        "Clay Spire",
+        "Stone Spire",
+        "Grand Gaia",
+        "Nettle",
+        "Reigning Dragon",
+        "Undead Might",
+        "Dragon Fume",
+        "Searing Beam",
+        "Eruption",
+        "Pyroclasm",
+        "Fiery Blast",
+        "Supernova",
+        "Fiery Abyss",
+        "Dire Inferno",
+        "Storm Ray",
+        "Destruct Ray",
+        "Tempest",
+        "Spark Plasma",
+        "Thunderhead",
+        "Ice Missile",
+        "Megacool",
+        "Freeze Prism",
+        "Froth Spiral",
+        "Ward",
+        "Guard",
+        "Impair",
+        "Debilitate"
+      ],
+      "stats": {
+        "maxHP": 5500,
+        "maxPP": 500,
+        "Atk": 400,
+        "Def": 250,
+        "Spd": 151
+      },
+      "elstats": {
+        "VenusAtk": 113,
+        "VenusRes": 113,
+        "MarsAtk": 83,
+        "MarsRes": 83,
+        "JupiterAtk": 113,
+        "JupiterRes": 113,
+        "MercuryAtk": 113,
+        "MercuryRes": 113
+      },
+      "isImmuneToConditions": [
+        "Poison",
+        "Venom",
+        "Seal",
+        "Delusion",
+        "Stun",
+        "DeathCurse",
+        "Haunt"
+      ],
+      "isImmuneToOHKO": true,
+      "extraTurns": 1
+    }
+  ],
+  [
+    {
+      "name": "Cursed Saturos",
+      "imgurl": "https://cdn.discordapp.com/attachments/535823094489677824/536542531949953024/emo_saturos.png",
+      "movepool": [
+        "Liquifier",
+        "Liquifier",
+        "Planetary",
+        "Planetary",
+        "Rolling Flame",
+        "Rolling Flame",
+        "Dire Inferno",
+        "Dire Inferno",
+        "Vicious Chop",
+        "Vicious Chop",
+        "Meteor Blow"
+      ],
+      "stats": {
+        "maxHP": 66666,
+        "maxPP": 666,
+        "Atk": 666,
+        "Def": 150,
+        "Spd": 200
+      },
+      "elstats": {
+        "VenusAtk": 140,
+        "VenusRes": 140,
+        "MarsAtk": 200,
+        "MarsRes": 200,
+        "JupiterAtk": 140,
+        "JupiterRes": 140,
+        "MercuryAtk": 80,
+        "MercuryRes": 80
+      },
+      "extraTurns": 2,
+      "Conditions": [ "DeathCurse" ],
+      "isImmuneToConditions": [
+        "Poison",
+        "Venom",
+        "Seal",
+        "Haunt",
+        "Stun",
+        "Sleep",
+        "Delusion"
+      ],
+      "isImmuneToOHKO": true,
+      "hasDefend": false,
+      "hasAttack": false
+    }
+  ],
+  [
+    {
+      "name": "🅱️enus Djinn",
+      "imgurl": "https://cdn.discordapp.com/attachments/535209634408169492/536863442590498826/buff_djinni.png",
+      "movepool": [
+        "Quake Sphere",
+        "Stone Spire",
+        "Odyssey",
+        "Ragnarok",
+        "Grand Gaia",
+        "Nettle"
+      ],
+      "stats": {
+        "maxHP": 3333,
+        "maxPP": 333,
+        "Atk": 333,
+        "Def": 200,
+        "Spd": 200
+      },
+      "elstats": {
+        "VenusAtk": 180,
+        "VenusRes": 200,
+        "MarsAtk": 120,
+        "MarsRes": 120,
+        "JupiterAtk": 25,
+        "JupiterRes": 25,
+        "MercuryAtk": 120,
+        "MercuryRes": 120
+      },
+      "HPRecovery": 333,
+      "PPRecovery": 33,
+      "isImmuneToConditions": [
+        "Haunt",
+        "DeathCurse",
+        "Stun",
+        "Seal",
+        "Sleep"
+      ],
+      "isImmuneToOHKO": true
+    }
+  ],
+  [
+    {
+      "name": ":b:ars Djinn",
+      "movepool": [ "Supernova", "Searing Beam", "Pyroclasm", "Dire Inferno", "Vicious Chop", "Epicenter", "Star Mine", "Meteor Blow", "Outer Space" ],
+      "imgurl": "https://pbs.twimg.com/media/DxrDsW8VYAAcXDr.jpg",
+      "stats": {
+        "maxhp": 2222,
+        "maxpp": 200,
+        "atk": 420,
+        "def": 147,
+        "spd": 200
+      },
+      "elstats": {
+        "marsres": 200,
+        "venusres": 175,
+        "jupiterres": 150,
+        "mercuryres": 25,
+        "marsatk": 135
+      },
+      "extraturns": 1,
+      "HPRecovery": 222,
+      "PPRecovery": 22,
+      "isImmuneToConditions": [
+        "Haunt",
+        "DeathCurse",
+        "Stun",
+        "Seal",
+        "Sleep"
+      ],
+      "isImmuneToOHKO": true
+    }
+  ],
+  [
+    {
+      "name": ":b:upiter Djinn",
+      "movepool": [ "Spark Plasma", "Thunderhead", "Thunder Mine", "Tempest", "Quick Strike", "Impact", "Ward", "Sleep", "Bind", "Storm Breath" ],
+      "imgurl": "https://i.pinimg.com/originals/ce/ea/d5/ceead543c65e28bc5c915429b5c0570e.jpg",
+      "stats": {
+        "maxhp": 2222,
+        "maxpp": 400,
+        "atk": 404,
+        "def": 137,
+        "spd": 999
+      },
+      "elstats": {
+        "venusres": 25,
+        "marsres": 150,
+        "jupiterres": 200,
+        "mercuryres": 175,
+        "jupiteratk": 150
+      },
+      "extraturns": 1,
+      "HPRecovery": 123,
+      "PPRecovery": 32,
+      "isImmuneToConditions": [
+        "Haunt",
+        "DeathCurse",
+        "Stun",
+        "Seal",
+        "Sleep"
+      ],
+      "isImmuneToOHKO": true
+    }
+  ],
+  [
+    {
+      "name": ":b:ercury Djinn",
+      "movepool": [ "Ice Missile", "Megacool", "Freeze Prism", "Diamond Berg", "Triple Chomp", "Raging Flood", "Typhoon Blow" ],
+      "imgurl": "https://www.gutekueche.ch/upload/rezept/12394/gin-tonic.jpg",
+      "stats": {
+        "maxhp": 4321,
+        "maxpp": 300,
+        "atk": 432,
+        "def": 147,
+        "spd": 200
+      },
+      "elstats": {
+        "marsres": 200,
+        "venusres": 175,
+        "jupiterres": 150,
+        "mercuryres": 25,
+        "marsatk": 135
+      },
+      "extraturns": 1,
+      "HPRecovery": 222,
+      "PPRecovery": 22,
+      "isImmuneToConditions": [
+        "Haunt",
+        "DeathCurse",
+        "Stun",
+        "Seal",
+        "Sleep"
+      ],
+      "isImmuneToOHKO": true
+    }
+  ],
+  [
+    {
+      "name": "Alex",
+      "imgurl": "https://vignette.wikia.nocookie.net/goldensun/images/3/3c/GSAlex.jpg/revision/latest?cb=20120309174254",
+      "movepool": [
+        "Diamond Berg",
+        "Wish Well",
+        "Thunder Mine",
+        "Psynergy Surge",
+        "Break"
+      ],
+      "stats": {
+        "maxHP": 5000,
+        "maxPP": 400,
+        "Atk": 500,
+        "Def": 150,
+        "Spd": 250
+      },
+      "elstats": {
+        "VenusAtk": 140,
+        "VenusRes": 140,
+        "MarsAtk": 80,
+        "MarsRes": 80,
+        "JupiterAtk": 140,
+        "JupiterRes": 140,
+        "MercuryAtk": 200,
+        "MercuryRes": 200
+      },
+      "extraTurns": 1,
+      "PPRecovery": 12,
+      "isImmuneToConditions": [
+        "Poison",
+        "Venom",
+        "Seal",
+        "Sleep",
+        "Stun",
+        "DeathCurse",
+        "Haunt",
+        "Flinch"
+      ],
+      "isImmuneToOHKO": true
+    }
+  ],
+  [
+    {
+      "name": "Saturos",
+      "imgurl": "https://cdn.discordapp.com/attachments/497696510688100352/604995233356447764/unknown.png",
+      "movepool": [
+        "Heat Flash",
+        "Inferno",
+        "Pyroclasm",
+        "Protect",
+        "Potent Cure",
+        "Break"
+      ],
+      "stats": {
+        "maxHP": 3000,
+        "maxPP": 260,
+        "Atk": 409,
+        "Def": 140,
+        "Spd": 160
+      },
+      "elstats": {
+        "VenusAtk": 100,
+        "VenusRes": 100,
+        "MarsAtk": 110,
+        "MarsRes": 175,
+        "JupiterAtk": 100,
+        "JupiterRes": 127,
+        "MercuryAtk": 100,
+        "MercuryRes": 72
+      },
+      "isImmuneToConditions": [
+        "Poison",
+        "Venom",
+        "Sleep",
+        "DeathCurse",
+        "Haunt",
+        "Stun"
+      ],
+      "isImmuneToOHKO": true
+    },
+    {
+      "name": "Menardi",
+      "imgurl": "",
+      "movepool": [
+        "Fiery Blast",
+        "Cool Aura",
+        "Impact",
+        "Supernova",
+        "Resist",
+        "Death Size",
+        "Death Size"
+      ],
+      "stats": {
+        "maxHP": 2600,
+        "maxPP": 300,
+        "Atk": 389,
+        "Def": 134,
+        "Spd": 220
+      },
+      "elstats": {
+        "VenusAtk": 100,
+        "VenusRes": 127,
+        "MarsAtk": 105,
+        "MarsRes": 175,
+        "JupiterAtk": 100,
+        "JupiterRes": 100,
+        "MercuryAtk": 95,
+        "MercuryRes": 72
+      },
+      "isImmuneToConditions": [
+        "Poison",
+        "Venom",
+        "Sleep",
+        "DeathCurse",
+        "Haunt",
+        "Stun"
+      ],
+      "isImmuneToOHKO": true
+    }
+  ],
+  [
+    {
+      "name": "Deadbeard",
+      "imgurl": "https://goldensunwiki.net/w/images/2/21/Deadbeard.png",
+      "movepool": [
+        "Freeze Prism",
+        "Freeze Prism",
+        "Impact",
+        "Ward",
+        "Inferno",
+        "Inferno",
+        "Guard",
+        "Spark Plasma",
+        "Spark Plasma"
+      ],
+      "stats": {
+        "maxHP": 6000,
+        "maxPP": 600,
+        "Atk": 468,
+        "Def": 178,
+        "Spd": 180
+      },
+      "elstats": {
+        "VenusAtk": 100,
+        "VenusRes": 72,
+        "MarsAtk": 120,
+        "MarsRes": 127,
+        "JupiterAtk": 110,
+        "JupiterRes": 152,
+        "MercuryAtk": 130,
+        "MercuryRes": 193
+      },
+      "extraTurns": 1,
+      "isImmuneToConditions": [
+        "Poison",
+        "Venom",
+        "Sleep",
+        "DeathCurse",
+        "Haunt",
+        "Stun",
+        "Delusion",
+        "Seal"
+      ],
+      "isImmuneToOHKO": true
+    }
+  ],
+  [
+    {
+      "name": "Jenna",
+      "imgurl": "http://thelostwaters.com/gallery/galleries/goldensun/official/official_sneaking.jpg",
+      "movepool": [
+        "Thunder Mine",
+        "Pyroclasm",
+        "High Impact",
+        "High Impact",
+        "Resist",
+        "Protect"
+      ],
+      "stats": {
+        "maxHP": 613,
+        "maxPP": 297,
+        "Atk": 400,
+        "Def": 233,
+        "Spd": 268
+      },
+      "elstats": {
+        "VenusAtk": 76,
+        "VenusRes": 86,
+        "MarsAtk": 114,
+        "MarsRes": 124,
+        "JupiterAtk": 113,
+        "JupiterRes": 123,
+        "MercuryAtk": 77,
+        "MercuryRes": 87
+      },
+      "Weapon": {
+        "Name": "Salamander Rod",
+        "Icon": "<:Salamander_Rod:569855339420188674>",
+        "Unleash": {
+          "UnleashName": "Fire Dance",
+          "UnleashAlignment": 1,
+          "effectImages": [
+            {
+              "Id": "AddDamage",
+              "args": [ "51" ]
             },
-            "elstats": {
-                "VenusAtk": 113,
-                "VenusRes": 113,
-                "MarsAtk": 83,
-                "MarsRes": 83,
-                "JupiterAtk": 113,
-                "JupiterRes": 113,
-                "MercuryAtk": 113,
-                "MercuryRes": 113
-            },
-            "isImmuneToConditions": [
-                "Poison",
-                "Venom",
-                "Seal",
-                "Delusion",
-                "Stun",
-                "DeathCurse",
-                "Haunt"
-            ],
-            "isImmuneToOHKO": true,
-            "extraTurns": 1
-        }
-    ],
-    [
-        {
-            "name": "Cursed Saturos",
-            "imgurl": "https://cdn.discordapp.com/attachments/535823094489677824/536542531949953024/emo_saturos.png",
-          "movepool": [
-            "Liquifier",
-            "Liquifier",
-            "Planetary",
-            "Planetary",
-            "Rolling Flame",
-            "Rolling Flame",
-            "Dire Inferno",
-            "Dire Inferno",
-            "Vicious Chop",
-            "Vicious Chop",
-            "Meteor Blow"
-          ],
-            "stats": {
-                "maxHP": 66666,
-                "maxPP": 666,
-                "Atk": 666,
-                "Def": 150,
-                "Spd": 200
-            },
-            "elstats": {
-                "VenusAtk": 140,
-                "VenusRes": 140,
-                "MarsAtk": 200,
-                "MarsRes": 200,
-                "JupiterAtk": 140,
-                "JupiterRes": 140,
-                "MercuryAtk": 80,
-                "MercuryRes": 80
-            },
-            "extraTurns": 2,
-            "Conditions": [ "DeathCurse" ],
-            "isImmuneToConditions": [
-                "Poison",
-                "Venom",
-                "Seal",
-                "Haunt",
-                "Stun",
-                "Sleep",
-                "Delusion"
-            ],
-            "isImmuneToOHKO": true,
-            "hasDefend": false,
-            "hasAttack": false
-        }
-    ],
-    [
-        {
-            "name": "🅱️enus Djinn",
-            "imgurl": "https://cdn.discordapp.com/attachments/535209634408169492/536863442590498826/buff_djinni.png",
-            "movepool": [
-                "Quake Sphere",
-                "Stone Spire",
-                "Odyssey",
-                "Ragnarok",
-                "Grand Gaia",
-                "Nettle"
-            ],
-            "stats": {
-                "maxHP": 3333,
-                "maxPP": 333,
-                "Atk": 333,
-                "Def": 200,
-                "Spd": 200
-            },
-            "elstats": {
-                "VenusAtk": 180,
-                "VenusRes": 200,
-                "MarsAtk": 120,
-                "MarsRes": 120,
-                "JupiterAtk": 25,
-                "JupiterRes": 25,
-                "MercuryAtk": 120,
-                "MercuryRes": 120
-            },
-            "HPRecovery": 333,
-            "PPRecovery": 33,
-            "isImmuneToConditions": [
-                "Haunt",
-                "DeathCurse",
-                "Stun",
-                "Seal",
-                "Sleep"
-            ],
-            "isImmuneToOHKO": true
-        }
-    ],
-    [
-        {
-            "name": ":b:ars Djinn",
-            "movepool": [ "Supernova", "Searing Beam", "Pyroclasm", "Dire Inferno", "Vicious Chop", "Epicenter", "Star Mine", "Meteor Blow" ],
-            "imgurl": "https://pbs.twimg.com/media/DxrDsW8VYAAcXDr.jpg",
-            "stats": {
-                "maxhp": 2222,
-                "maxpp": 200,
-                "atk": 420,
-                "def": 147,
-                "spd": 200
-            },
-            "elstats": {
-                "marsres": 200,
-                "venusres": 175,
-                "jupiterres": 150,
-                "mercuryres": 25,
-                "marsatk": 135
-            },
-            "extraturns": 1,
-            "HPRecovery": 222,
-            "PPRecovery": 22,
-            "isImmuneToConditions": [
-                "Haunt",
-                "DeathCurse",
-                "Stun",
-                "Seal",
-                "Sleep"
-            ],
-            "isImmuneToOHKO": true
-        }
-    ],
-    [
-        {
-            "name": "Alex",
-            "imgurl": "https://vignette.wikia.nocookie.net/goldensun/images/3/3c/GSAlex.jpg/revision/latest?cb=20120309174254",
-            "movepool": [
-                "Diamond Berg",
-                "Wish Well",
-                "Thunder Mine",
-                "Psynergy Surge",
-                "Break"
-            ],
-            "stats": {
-                "maxHP": 5000,
-                "maxPP": 400,
-                "Atk": 400,
-                "Def": 150,
-                "Spd": 250
-            },
-            "elstats": {
-                "VenusAtk": 140,
-                "VenusRes": 140,
-                "MarsAtk": 80,
-                "MarsRes": 80,
-                "JupiterAtk": 140,
-                "JupiterRes": 140,
-                "MercuryAtk": 200,
-                "MercuryRes": 200
-            },
-            "extraTurns": 1,
-            "PPRecovery": 12,
-            "isImmuneToConditions": [
-                "Poison",
-                "Venom",
-                "Seal",
-                "Sleep",
-                "Stun",
-                "DeathCurse",
-                "Haunt",
-                "Flinch"
-            ],
-            "isImmuneToOHKO": true
-        }
-    ],
-    [
-        {
-            "name": "Saturos",
-            "imgurl": "https://cdn.discordapp.com/attachments/497696510688100352/604995233356447764/unknown.png",
-            "movepool": [
-                "Heat Flash",
-                "Inferno",
-                "Pyroclasm",
-                "Protect",
-                "Potent Cure",
-                "Break"
-            ],
-            "stats": {
-                "maxHP": 3000,
-                "maxPP": 260,
-                "Atk": 409,
-                "Def": 140,
-                "Spd": 160
-            },
-            "elstats": {
-                "VenusAtk": 100,
-                "VenusRes": 100,
-                "MarsAtk": 110,
-                "MarsRes": 175,
-                "JupiterAtk": 100,
-                "JupiterRes": 127,
-                "MercuryAtk": 100,
-                "MercuryRes": 72
-            },
-            "isImmuneToConditions": [
-                "Poison",
-                "Venom",
-                "Sleep",
-                "DeathCurse",
-                "Haunt",
-                "Stun"
-            ],
-            "isImmuneToOHKO": true
-        },
-        {
-            "name": "Menardi",
-            "imgurl": "",
-            "movepool": [
-                "Fiery Blast",
-                "Cool Aura",
-                "Impact",
-                "Supernova",
-                "Resist",
-                "Death Size",
-                "Death Size"
-            ],
-            "stats": {
-                "maxHP": 2600,
-                "maxPP": 300,
-                "Atk": 389,
-                "Def": 134,
-                "Spd": 220
-            },
-            "elstats": {
-                "VenusAtk": 100,
-                "VenusRes": 127,
-                "MarsAtk": 105,
-                "MarsRes": 175,
-                "JupiterAtk": 100,
-                "JupiterRes": 100,
-                "MercuryAtk": 95,
-                "MercuryRes": 72
-            },
-            "isImmuneToConditions": [
-                "Poison",
-                "Venom",
-                "Sleep",
-                "DeathCurse",
-                "Haunt",
-                "Stun"
-            ],
-            "isImmuneToOHKO": true
-        }
-    ],
-    [
-        {
-            "name": "Deadbeard",
-            "imgurl": "https://goldensunwiki.net/w/images/2/21/Deadbeard.png",
-            "movepool": [
-                "Freeze Prism",
-                "Freeze Prism",
-                "Impact",
-                "Ward",
-                "Inferno",
-                "Inferno",
-                "Guard",
-                "Spark Plasma",
-                "Spark Plasma"
-            ],
-            "stats": {
-                "maxHP": 6000,
-                "maxPP": 600,
-                "Atk": 468,
-                "Def": 178,
-                "Spd": 180
-            },
-            "elstats": {
-                "VenusAtk": 100,
-                "VenusRes": 72,
-                "MarsAtk": 120,
-                "MarsRes": 127,
-                "JupiterAtk": 110,
-                "JupiterRes": 152,
-                "MercuryAtk": 130,
-                "MercuryRes": 193
-            },
-            "extraTurns": 1,
-            "isImmuneToConditions": [
-                "Poison",
-                "Venom",
-                "Sleep",
-                "DeathCurse",
-                "Haunt",
-                "Stun",
-                "Delusion",
-                "Seal"
-            ],
-            "isImmuneToOHKO": true
-        }
-    ],
-    [
-        {
-            "name": "Jenna",
-            "imgurl": "http://thelostwaters.com/gallery/galleries/goldensun/official/official_sneaking.jpg",
-            "movepool": [
-                "Thunder Mine",
-                "Pyroclasm",
-                "High Impact",
-                "High Impact",
-                "Resist",
-                "Protect"
-            ],
-            "stats": {
-                "maxHP": 613,
-                "maxPP": 297,
-                "Atk": 400,
-                "Def": 233,
-                "Spd": 268
-            },
-            "elstats": {
-                "VenusAtk": 76,
-                "VenusRes": 86,
-                "MarsAtk": 114,
-                "MarsRes": 124,
-                "JupiterAtk": 113,
-                "JupiterRes": 123,
-                "MercuryAtk": 77,
-                "MercuryRes": 87
-            },
-            "Weapon": {
-                "Name": "Salamander Rod",
-                "Icon": "<:Salamander_Rod:569855339420188674>",
-                "Unleash": {
-                    "UnleashName": "Fire Dance",
-                    "UnleashAlignment": 1,
-                    "effectImages": [
-                        {
-                            "Id": "AddDamage",
-                            "args": [ "51" ]
-                        },
-                        {
-                            "id": "Stat",
-                            "args": [ "Attack", "0.25", "35" ]
-                        }
-                    ]
-                }
+            {
+              "id": "Stat",
+              "args": [ "Attack", "0.25", "35" ]
             }
-        },
-        {
-            "name": "Isaac",
-            "imgurl": "",
-            "movepool": [
-                "Planetary",
-                "Planetary",
-                "Clay Spire",
-                "Revive",
-                "Revive",
-                "Revive"
-            ],
-            "stats": {
-                "maxHP": 733,
-                "maxPP": 147,
-                "Atk": 520,
-                "Def": 247,
-                "Spd": 253
-            },
-            "elstats": {
-                "VenusAtk": 114,
-                "VenusRes": 124,
-                "MarsAtk": 111,
-                "MarsRes": 121,
-                "JupiterAtk": 77,
-                "JupiterRes": 87,
-                "MercuryAtk": 78,
-                "MercuryRes": 88
-            },
-            "Weapon": {
-                "Name": "Sol Blade",
-                "Icon": "<:Sol_Blade:569855141709348864>",
-                "Unleash": {
-                    "UnleashName": "Megiddo",
-                    "UnleashAlignment": 0,
-                    "effectImages": [
-                        {
-                            "Id": "MultiplyDamage",
-                            "args": [ "3.0", "100" ]
-                        }
-                    ]
-                }
-            }
-        },
-        {
-            "name": "Felix",
-            "imgurl": "",
-            "movepool": [
-                "Planetary",
-                "Clay Spire",
-                "Debilitate",
-                "Revive",
-                "Revive",
-                "Revive"
-            ],
-            "stats": {
-                "maxHP": 660,
-                "maxPP": 120,
-                "Atk": 493,
-                "Def": 227,
-                "Spd": 200
-            },
-            "elstats": {
-                "VenusAtk": 114,
-                "VenusRes": 124,
-                "MarsAtk": 111,
-                "MarsRes": 121,
-                "JupiterAtk": 77,
-                "JupiterRes": 87,
-                "MercuryAtk": 78,
-                "MercuryRes": 88
-            },
-            "Weapon": {
-                "Name": "Excalibur",
-                "Icon": "<:Excalibur:569855141491245056>",
-                "Unleash": {
-                    "UnleashName": "Legend",
-                    "UnleashAlignment": 2,
-                    "effectImages": [
-                        {
-                            "Id": "AddDamage",
-                            "args": [ "73" ]
-                        },
-                        {
-                            "id": "MultiplyDamage",
-                            "args": [ "3.0", "60" ]
-                        }
-                    ]
-                }
-            }
-        },
-        {
-            "name": "Mia",
-            "imgurl": "",
-            "movepool": [
-                "High Impact",
-                "High Impact",
-                "Pure Wish",
-                "Pure Wish",
-                "Freeze Prism",
-                "Spark Plasma",
-                "Restore",
-                "Restore",
-                "Restore",
-                "Break"
-            ],
-            "stats": {
-                "maxHP": 593,
-                "maxPP": 260,
-                "Atk": 333,
-                "Def": 230,
-                "Spd": 257
-            },
-            "elstats": {
-                "VenusAtk": 78,
-                "VenusRes": 98,
-                "MarsAtk": 77,
-                "MarsRes": 127,
-                "JupiterAtk": 111,
-                "JupiterRes": 121,
-                "MercuryAtk": 139,
-                "MercuryRes": 134
-            },
-            "PPRecovery": 12,
-            "Weapon": {
-                "Name": "Clothos Distaff",
-                "Icon": "<:Clothos_Distaff:569855339692818472>",
-                "Unleash": {
-                    "UnleashName": "Leech of Fate",
-                    "UnleashAlignment": 3,
-                    "EffectImages": [
-                        {
-                            "Id": "AddDamage",
-                            "args": [ "26" ]
-                        },
-                        {
-                            "id": "HPDrain",
-                            "args": [ "80", "30" ]
-                        },
-                        {
-                            "id": "PPDrain",
-                            "args": [ "10", "30" ]
-                        }
-                    ]
-                }
-            }
+          ]
         }
-    ],
-    [
-        {
-            "name": "Azart",
-            "imgurl": "https://vignette.wikia.nocookie.net/goldensun/images/9/94/Azart.png/revision/latest?cb=20080105061632",
-            "movepool": [
-                "Oil Drop",
-                "Crystal Powder",
-                "Bramble Seed",
-                "Nut"
-            ],
-            "stats": {
-                "maxHP": 1500,
-                "maxPP": 15,
-                "Atk": 250,
-                "Def": 80,
-                "Spd": 150
-            },
-            "elstats": {
-                "VenusAtk": 100,
-                "VenusRes": 90,
-                "MarsAtk": 100,
-                "MarsRes": 90,
-                "JupiterAtk": 100,
-                "JupiterRes": 90,
-                "MercuryAtk": 100,
-                "MercuryRes": 90
-            }
-        },
-        {
-            "name": "Satrage",
-            "imgurl": "https://vignette.wikia.nocookie.net/goldensun/images/a/a0/Satrage.png/revision/latest?cb=20080105061855",
-            "movepool": [
-                "Oil Drop",
-                "Crystal Powder",
-                "Bramble Seed",
-                "Nut"
-            ],
-            "stats": {
-                "maxHP": 1500,
-                "maxPP": 15,
-                "Atk": 300,
-                "Def": 56,
-                "Spd": 170
-            },
-            "elstats": {
-                "VenusAtk": 100,
-                "VenusRes": 90,
-                "MarsAtk": 100,
-                "MarsRes": 90,
-                "JupiterAtk": 100,
-                "JupiterRes": 90,
-                "MercuryAtk": 100,
-                "MercuryRes": 90
-            }
-        },
-        {
-            "name": "Navampa",
-            "imgurl": "https://vignette.wikia.nocookie.net/goldensun/images/9/97/Navampa.png/revision/latest?cb=20080105062200",
-            "movepool": [
-                "Oil Drop",
-                "Crystal Powder",
-                "Bramble Seed",
-                "Nut"
-            ],
-            "stats": {
-                "maxHP": 1500,
-                "maxPP": 15,
-                "Atk": 350,
-                "Def": 118,
-                "Spd": 168
-            },
-            "elstats": {
-                "VenusAtk": 100,
-                "VenusRes": 90,
-                "MarsAtk": 100,
-                "MarsRes": 90,
-                "JupiterAtk": 100,
-                "JupiterRes": 90,
-                "MercuryAtk": 100,
-                "MercuryRes": 90
-            }
-        }
-    ],
-    [
-        {
-            "name": "Serpent",
-            "imgurl": "https://goldensunwiki.net/w/images/8/89/Serpent.png",
-            "movepool": [
-                "Briar",
-                "Quake Sphere",
-                "Cure",
-                "Toxic Grit",
-                "Mighty Press",
-                "Black Ice"
-            ],
-            "stats": {
-                "maxHP": 5306,
-                "maxPP": 160,
-                "Atk": 387,
-                "Def": 95,
-                "Spd": 87
-            },
-            "elstats": {
-                "VenusAtk": 110,
-                "VenusRes": 152,
-                "MarsAtk": 100,
-                "MarsRes": 100,
-                "JupiterAtk": 100,
-                "JupiterRes": 48,
-                "MercuryAtk": 100,
-                "MercuryRes": 100
-            },
-            "HPRecovery": 90,
-            "extraTurns": 2
-        }
-    ],
-    [
-      {
-        "name": "Serpent",
-        "imgurl": "https://cdn.discordapp.com/attachments/696352535568711711/731505520787062814/Document_3_2.jpg",
-        "movepool": [
-          "Briar",
-          "Quake Sphere",
-          "Cure",
-          "Toxic Grit",
-          "Mighty Press",
-          "Black Ice"
-        ],
-        "stats": {
-          "maxHP": 3536,
-          "maxPP": 249,
-          "Atk": 516,
-          "Def": 76,
-          "Spd": 87
-        },
-        "elstats": {
-          "VenusAtk": 110,
-          "VenusRes": 152,
-          "MarsAtk": 100,
-          "MarsRes": 100,
-          "JupiterAtk": 100,
-          "JupiterRes": 48,
-          "MercuryAtk": 100,
-          "MercuryRes": 100
-        },
-        "HPRecovery": 270,
-        "extraTurns": 2
       }
-    ],
-    [
-        {
-            "name": "Sentinelino",
-            "imgurl": "https://cdn.discordapp.com/attachments/497696510688100352/604992159258509323/sentinelino.png",
-            "movepool": [
-                "Break",
-                "Guard",
-                "Armor Crush",
-                "Searing Beam",
-                "Spark Plasma",
-                "Destruct Ray"
-            ],
-            "stats": {
-                "maxHP": 3536,
-                "maxPP": 380,
-                "Atk": 304,
-                "Def": 108,
-                "Spd": 85
-            },
-            "elstats": {
-                "VenusAtk": 100,
-                "VenusRes": 72,
-                "MarsAtk": 120,
-                "MarsRes": 127,
-                "JupiterAtk": 110,
-                "JupiterRes": 152,
-                "MercuryAtk": 100,
-                "MercuryRes": 193
-            },
-            "HPRecovery": 200,
-            "PPRecovery": 30,
-            "extraTurns": 1,
-            "isImmuneToPsynergy": true
+    },
+    {
+      "name": "Isaac",
+      "imgurl": "",
+      "movepool": [
+        "Planetary",
+        "Planetary",
+        "Clay Spire",
+        "Revive",
+        "Revive",
+        "Revive"
+      ],
+      "stats": {
+        "maxHP": 733,
+        "maxPP": 147,
+        "Atk": 520,
+        "Def": 247,
+        "Spd": 253
+      },
+      "elstats": {
+        "VenusAtk": 114,
+        "VenusRes": 124,
+        "MarsAtk": 111,
+        "MarsRes": 121,
+        "JupiterAtk": 77,
+        "JupiterRes": 87,
+        "MercuryAtk": 78,
+        "MercuryRes": 88
+      },
+      "Weapon": {
+        "Name": "Sol Blade",
+        "Icon": "<:Sol_Blade:569855141709348864>",
+        "Unleash": {
+          "UnleashName": "Megiddo",
+          "UnleashAlignment": 0,
+          "effectImages": [
+            {
+              "Id": "MultiplyDamage",
+              "args": [ "3.0", "100" ]
+            }
+          ]
         }
-    ],
-    [
-        {
-            "name": "Wonder Bird 1",
-            "imgurl": "https://goldensunwiki.net/w/images/1/1f/Wonder_Bird.png",
-            "movepool": [
-                "Phoenix",
-                "Phoenix",
-                "Fire Dance",
-                "Pyroclasm",
-                "Searing Beam",
-                "Supernova"
-            ],
-            "stats": {
-                "maxHP": 636,
-                "maxPP": 380,
-                "Atk": 510,
-                "Def": 190,
-                "Spd": 285
+      }
+    },
+    {
+      "name": "Felix",
+      "imgurl": "",
+      "movepool": [
+        "Planetary",
+        "Clay Spire",
+        "Debilitate",
+        "Revive",
+        "Revive",
+        "Revive"
+      ],
+      "stats": {
+        "maxHP": 660,
+        "maxPP": 120,
+        "Atk": 493,
+        "Def": 227,
+        "Spd": 200
+      },
+      "elstats": {
+        "VenusAtk": 114,
+        "VenusRes": 124,
+        "MarsAtk": 111,
+        "MarsRes": 121,
+        "JupiterAtk": 77,
+        "JupiterRes": 87,
+        "MercuryAtk": 78,
+        "MercuryRes": 88
+      },
+      "Weapon": {
+        "Name": "Excalibur",
+        "Icon": "<:Excalibur:569855141491245056>",
+        "Unleash": {
+          "UnleashName": "Legend",
+          "UnleashAlignment": 2,
+          "effectImages": [
+            {
+              "Id": "AddDamage",
+              "args": [ "73" ]
             },
-            "elstats": {
-                "VenusAtk": 100,
-                "VenusRes": 100,
-                "MarsAtk": 125,
-                "MarsRes": 193,
-                "JupiterAtk": 100,
-                "JupiterRes": 100,
-                "MercuryAtk": 100,
-                "MercuryRes": 25
-            },
-            "extraTurns": 2
-        },
-        {
-            "name": "Wonder Bird 2",
-            "imgurl": "",
-            "movepool": [
-                "Phoenix",
-                "Phoenix",
-                "Fire Dance",
-                "Pyroclasm",
-                "Searing Beam",
-                "Supernova"
-            ],
-            "stats": {
-                "maxHP": 636,
-                "maxPP": 380,
-                "Atk": 510,
-                "Def": 190,
-                "Spd": 285
-            },
-            "elstats": {
-                "VenusAtk": 100,
-                "VenusRes": 100,
-                "MarsAtk": 125,
-                "MarsRes": 193,
-                "JupiterAtk": 100,
-                "JupiterRes": 100,
-                "MercuryAtk": 100,
-                "MercuryRes": 25
-            },
-            "extraTurns": 2
+            {
+              "id": "MultiplyDamage",
+              "args": [ "3.0", "60" ]
+            }
+          ]
         }
-    ],
-    [
-        {
-            "name": "Ogre Titan 1",
-            "imgurl": "https://goldensunwiki.net/w/images/5/5c/OgreTitan.jpg",
-            "movepool": [
-                "Brute Force"
-            ],
-            "stats": {
-                "maxHP": 964,
-                "maxPP": 0,
-                "Atk": 546,
-                "Def": 223,
-                "Spd": 202
+      }
+    },
+    {
+      "name": "Mia",
+      "imgurl": "",
+      "movepool": [
+        "High Impact",
+        "High Impact",
+        "Pure Wish",
+        "Pure Wish",
+        "Freeze Prism",
+        "Spark Plasma",
+        "Restore",
+        "Restore",
+        "Restore",
+        "Break"
+      ],
+      "stats": {
+        "maxHP": 593,
+        "maxPP": 260,
+        "Atk": 333,
+        "Def": 230,
+        "Spd": 257
+      },
+      "elstats": {
+        "VenusAtk": 78,
+        "VenusRes": 98,
+        "MarsAtk": 77,
+        "MarsRes": 127,
+        "JupiterAtk": 111,
+        "JupiterRes": 121,
+        "MercuryAtk": 139,
+        "MercuryRes": 134
+      },
+      "PPRecovery": 12,
+      "Weapon": {
+        "Name": "Clothos Distaff",
+        "Icon": "<:Clothos_Distaff:569855339692818472>",
+        "Unleash": {
+          "UnleashName": "Leech of Fate",
+          "UnleashAlignment": 3,
+          "EffectImages": [
+            {
+              "Id": "AddDamage",
+              "args": [ "26" ]
             },
-            "elstats": {
-                "VenusAtk": 100,
-                "VenusRes": 48,
-                "MarsAtk": 125,
-                "MarsRes": 25,
-                "JupiterAtk": 100,
-                "JupiterRes": 72,
-                "MercuryAtk": 100,
-                "MercuryRes": 48
+            {
+              "id": "HPDrain",
+              "args": [ "80", "30" ]
             },
-            "HPRecovery": 40,
-            "isImmuneToConditions": [
-                "Stun",
-                "Poison",
-                "Venom",
-                "Delusion",
-                "Sleep",
-                "DeathCurse",
-                "Haunt"
-            ],
-            "isImmuneToOHKO": true
-        },
-        {
-            "name": "Ogre Titan 2",
-            "imgurl": "",
-            "movepool": [
-                "Brute Force"
-            ],
-            "stats": {
-                "maxHP": 1928,
-                "maxPP": 380,
-                "Atk": 568,
-                "Def": 235,
-                "Spd": 213
-            },
-            "elstats": {
-                "VenusAtk": 100,
-                "VenusRes": 48,
-                "MarsAtk": 125,
-                "MarsRes": 25,
-                "JupiterAtk": 100,
-                "JupiterRes": 72,
-                "MercuryAtk": 100,
-                "MercuryRes": 48
-            },
-            "HPRecovery": 80,
-            "isImmuneToConditions": [
-                "Stun",
-                "Poison",
-                "Venom",
-                "Delusion",
-                "Sleep",
-                "DeathCurse",
-                "Haunt"
-            ],
-            "isImmuneToOHKO": true
-        },
-        {
-            "name": "Ogre Titan 3",
-            "imgurl": "",
-            "movepool": [
-                "Brute Force"
-            ],
-            "stats": {
-                "maxHP": 4016,
-                "maxPP": 591,
-                "Atk": 591,
-                "Def": 238,
-                "Spd": 225
-            },
-            "elstats": {
-                "VenusAtk": 100,
-                "VenusRes": 48,
-                "MarsAtk": 125,
-                "MarsRes": 25,
-                "JupiterAtk": 100,
-                "JupiterRes": 72,
-                "MercuryAtk": 100,
-                "MercuryRes": 48
-            },
-            "HPRecovery": 120,
-            "isImmuneToConditions": [
-                "Stun",
-                "Poison",
-                "Venom",
-                "Delusion",
-                "Sleep",
-                "DeathCurse",
-                "Haunt"
-            ],
-            "isImmuneToOHKO": true
-        },
-        {
-            "name": "Ogre Titan 4",
-            "imgurl": "",
-            "movepool": [
-                "Brute Force"
-            ],
-            "stats": {
-                "maxHP": 8033,
-                "maxPP": 380,
-                "Atk": 614,
-                "Def": 240,
-                "Spd": 236
-            },
-            "elstats": {
-                "VenusAtk": 100,
-                "VenusRes": 48,
-                "MarsAtk": 125,
-                "MarsRes": 25,
-                "JupiterAtk": 100,
-                "JupiterRes": 72,
-                "MercuryAtk": 100,
-                "MercuryRes": 48
-            },
-            "HPRecovery": 160,
-            "isImmuneToConditions": [
-                "Stun",
-                "Poison",
-                "Venom",
-                "Delusion",
-                "Sleep",
-                "DeathCurse",
-                "Haunt"
-            ],
-            "isImmuneToOHKO": true
+            {
+              "id": "PPDrain",
+              "args": [ "10", "30" ]
+            }
+          ]
         }
-    ],
-    [
-        {
-            "name": "Ogre Titan 5",
-            "imgurl": "https://goldensunwiki.net/w/images/a/a2/OgreTitan5.jpg",
-            "movepool": [
-                "Brute Force",
-                "Massive Swing"
-            ],
-            "stats": {
-                "maxHP": 12066,
-                "maxPP": 380,
-                "Atk": 637,
-                "Def": 242,
-                "Spd": 247
-            },
-            "elstats": {
-                "VenusAtk": 100,
-                "VenusRes": 48,
-                "MarsAtk": 125,
-                "MarsRes": 25,
-                "JupiterAtk": 100,
-                "JupiterRes": 72,
-                "MercuryAtk": 100,
-                "MercuryRes": 48
-            },
-            "HPRecovery": 200,
-            "extraTurns": 1,
-            "isImmuneToConditions": [
-                "Stun",
-                "Poison",
-                "Venom",
-                "Delusion",
-                "Sleep",
-                "DeathCurse",
-                "Haunt"
-            ],
-            "isImmuneToOHKO": true
-        }
-    ],
-    [
-        {
-            "name": "Star Apprentice",
-            "imgurl": "https://cdn.discordapp.com/attachments/497696510688100352/604984559242838018/starapprentice.png",
-            "movepool": [
-                "Mystic Call",
-                "Mystic Call",
-                "Mystic Call",
-                "Mine Ball",
-                "Spark Plasma",
-                "Megacool"
-            ],
-            "stats": {
-                "maxhp": 7486,
-                "maxpp": 560,
-                "atk": 460,
-                "def": 139,
-                "spd": 268
-            },
-            "elstats": {
-                "VenusAtk": 100,
-                "VenusRes": 130,
-                "MarsAtk": 100,
-                "MarsRes": 72,
-                "JupiterAtk": 95,
-                "JupiterRes": 150,
-                "MercuryAtk": 110,
-                "MercuryRes": 180
-            },
-            "extraTurns": 1,
-            "isImmuneToConditions": [
-                "Stun",
-                "Poison",
-                "Venom",
-                "Delusion",
-                "Sleep",
-                "DeathCurse",
-                "Haunt"
-            ],
-            "isImmuneToOHKO": true
-        },
-        {
-            "movepool": [ "Guard Aura" ],
-            "name": "Guardian Ball",
-            "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Guardian_Ball.png",
-            "stats": {
-                "maxhp": 520,
-                "maxpp": 43,
-                "atk": 317,
-                "def": 127,
-                "spd": 292
-            },
-            "elstats": {
-                "venusres": 152,
-                "marsres": 100,
-                "mercuryres": 100,
-                "jupiterres": 48
-            },
-            "extraturns": 0
-        },
-        {
-            "movepool": [ "Flash Bolt", "Storm Ray", "Shine Plasma" ],
-            "name": "Thunder Ball",
-            "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Thunder_Ball.png",
-            "stats": {
-                "maxhp": 280,
-                "maxpp": 43,
-                "atk": 329,
-                "def": 125,
-                "spd": 219
-            },
-            "elstats": {
-                "jupiterres": 152,
-                "marsres": 100,
-                "mercuryres": 100,
-                "venusres": 48,
-                "jupiteratk": 110
-            },
-            "extraturns": 0
-        },
-        {
-            "movepool": [ "Earnest Ply", "Cure Poison", "Restore" ],
-            "name": "Refresh Ball",
-            "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Refresh_Ball.png",
-            "stats": {
-                "maxhp": 360,
-                "maxpp": 43,
-                "atk": 317,
-                "def": 124,
-                "spd": 136
-            },
-            "elstats": {
-                "mercuryres": 175,
-                "venusres": 100,
-                "jupiterres": 100,
-                "marsres": 25,
-                "mercuryatk": 115
-            },
-            "extraturns": 0
-        }
-    ]
+      }
+    }
+  ],
+  [
+    {
+      "name": "Azart",
+      "imgurl": "https://vignette.wikia.nocookie.net/goldensun/images/9/94/Azart.png/revision/latest?cb=20080105061632",
+      "movepool": [
+        "Oil Drop",
+        "Crystal Powder",
+        "Bramble Seed",
+        "Nut"
+      ],
+      "stats": {
+        "maxHP": 1500,
+        "maxPP": 15,
+        "Atk": 250,
+        "Def": 80,
+        "Spd": 150
+      },
+      "elstats": {
+        "VenusAtk": 100,
+        "VenusRes": 90,
+        "MarsAtk": 100,
+        "MarsRes": 90,
+        "JupiterAtk": 100,
+        "JupiterRes": 90,
+        "MercuryAtk": 100,
+        "MercuryRes": 90
+      }
+    },
+    {
+      "name": "Satrage",
+      "imgurl": "https://vignette.wikia.nocookie.net/goldensun/images/a/a0/Satrage.png/revision/latest?cb=20080105061855",
+      "movepool": [
+        "Oil Drop",
+        "Crystal Powder",
+        "Bramble Seed",
+        "Nut"
+      ],
+      "stats": {
+        "maxHP": 1500,
+        "maxPP": 15,
+        "Atk": 300,
+        "Def": 56,
+        "Spd": 170
+      },
+      "elstats": {
+        "VenusAtk": 100,
+        "VenusRes": 90,
+        "MarsAtk": 100,
+        "MarsRes": 90,
+        "JupiterAtk": 100,
+        "JupiterRes": 90,
+        "MercuryAtk": 100,
+        "MercuryRes": 90
+      }
+    },
+    {
+      "name": "Navampa",
+      "imgurl": "https://vignette.wikia.nocookie.net/goldensun/images/9/97/Navampa.png/revision/latest?cb=20080105062200",
+      "movepool": [
+        "Oil Drop",
+        "Crystal Powder",
+        "Bramble Seed",
+        "Nut"
+      ],
+      "stats": {
+        "maxHP": 1500,
+        "maxPP": 15,
+        "Atk": 350,
+        "Def": 118,
+        "Spd": 168
+      },
+      "elstats": {
+        "VenusAtk": 100,
+        "VenusRes": 90,
+        "MarsAtk": 100,
+        "MarsRes": 90,
+        "JupiterAtk": 100,
+        "JupiterRes": 90,
+        "MercuryAtk": 100,
+        "MercuryRes": 90
+      }
+    }
+  ],
+  [
+    {
+      "name": "Serpent",
+      "imgurl": "https://goldensunwiki.net/w/images/8/89/Serpent.png",
+      "movepool": [
+        "Briar",
+        "Quake Sphere",
+        "Cure",
+        "Toxic Grit",
+        "Mighty Press",
+        "Black Ice"
+      ],
+      "stats": {
+        "maxHP": 5306,
+        "maxPP": 160,
+        "Atk": 387,
+        "Def": 95,
+        "Spd": 87
+      },
+      "elstats": {
+        "VenusAtk": 110,
+        "VenusRes": 152,
+        "MarsAtk": 100,
+        "MarsRes": 100,
+        "JupiterAtk": 100,
+        "JupiterRes": 48,
+        "MercuryAtk": 100,
+        "MercuryRes": 100
+      },
+      "HPRecovery": 90,
+      "extraTurns": 2
+    }
+  ],
+  [
+    {
+      "name": "Serpent",
+      "imgurl": "https://cdn.discordapp.com/attachments/696352535568711711/731505520787062814/Document_3_2.jpg",
+      "movepool": [
+        "Briar",
+        "Quake Sphere",
+        "Cure",
+        "Toxic Grit",
+        "Mighty Press",
+        "Black Ice"
+      ],
+      "stats": {
+        "maxHP": 3536,
+        "maxPP": 249,
+        "Atk": 516,
+        "Def": 76,
+        "Spd": 87
+      },
+      "elstats": {
+        "VenusAtk": 110,
+        "VenusRes": 152,
+        "MarsAtk": 100,
+        "MarsRes": 100,
+        "JupiterAtk": 100,
+        "JupiterRes": 48,
+        "MercuryAtk": 100,
+        "MercuryRes": 100
+      },
+      "HPRecovery": 270,
+      "extraTurns": 2
+    }
+  ],
+  [
+    {
+      "name": "Sentinelino",
+      "imgurl": "https://cdn.discordapp.com/attachments/497696510688100352/604992159258509323/sentinelino.png",
+      "movepool": [
+        "Break",
+        "Guard",
+        "Armor Crush",
+        "Searing Beam",
+        "Spark Plasma",
+        "Destruct Ray"
+      ],
+      "stats": {
+        "maxHP": 3536,
+        "maxPP": 380,
+        "Atk": 304,
+        "Def": 108,
+        "Spd": 85
+      },
+      "elstats": {
+        "VenusAtk": 100,
+        "VenusRes": 72,
+        "MarsAtk": 120,
+        "MarsRes": 127,
+        "JupiterAtk": 110,
+        "JupiterRes": 152,
+        "MercuryAtk": 100,
+        "MercuryRes": 193
+      },
+      "HPRecovery": 200,
+      "PPRecovery": 30,
+      "extraTurns": 1,
+      "isImmuneToPsynergy": true
+    }
+  ],
+  [
+    {
+      "name": "Wonder Bird 1",
+      "imgurl": "https://goldensunwiki.net/w/images/1/1f/Wonder_Bird.png",
+      "movepool": [
+        "Phoenix",
+        "Phoenix",
+        "Fire Dance",
+        "Pyroclasm",
+        "Searing Beam",
+        "Supernova"
+      ],
+      "stats": {
+        "maxHP": 636,
+        "maxPP": 380,
+        "Atk": 510,
+        "Def": 190,
+        "Spd": 285
+      },
+      "elstats": {
+        "VenusAtk": 100,
+        "VenusRes": 100,
+        "MarsAtk": 125,
+        "MarsRes": 193,
+        "JupiterAtk": 100,
+        "JupiterRes": 100,
+        "MercuryAtk": 100,
+        "MercuryRes": 25
+      },
+      "extraTurns": 2
+    },
+    {
+      "name": "Wonder Bird 2",
+      "imgurl": "",
+      "movepool": [
+        "Phoenix",
+        "Phoenix",
+        "Fire Dance",
+        "Pyroclasm",
+        "Searing Beam",
+        "Supernova"
+      ],
+      "stats": {
+        "maxHP": 636,
+        "maxPP": 380,
+        "Atk": 510,
+        "Def": 190,
+        "Spd": 285
+      },
+      "elstats": {
+        "VenusAtk": 100,
+        "VenusRes": 100,
+        "MarsAtk": 125,
+        "MarsRes": 193,
+        "JupiterAtk": 100,
+        "JupiterRes": 100,
+        "MercuryAtk": 100,
+        "MercuryRes": 25
+      },
+      "extraTurns": 2
+    }
+  ],
+  [
+    {
+      "name": "Ogre Titan 1",
+      "imgurl": "https://goldensunwiki.net/w/images/5/5c/OgreTitan.jpg",
+      "movepool": [
+        "Brute Force"
+      ],
+      "stats": {
+        "maxHP": 964,
+        "maxPP": 0,
+        "Atk": 546,
+        "Def": 223,
+        "Spd": 202
+      },
+      "elstats": {
+        "VenusAtk": 100,
+        "VenusRes": 48,
+        "MarsAtk": 125,
+        "MarsRes": 25,
+        "JupiterAtk": 100,
+        "JupiterRes": 72,
+        "MercuryAtk": 100,
+        "MercuryRes": 48
+      },
+      "HPRecovery": 40,
+      "isImmuneToConditions": [
+        "Stun",
+        "Poison",
+        "Venom",
+        "Delusion",
+        "Sleep",
+        "DeathCurse",
+        "Haunt"
+      ],
+      "isImmuneToOHKO": true
+    },
+    {
+      "name": "Ogre Titan 2",
+      "imgurl": "",
+      "movepool": [
+        "Brute Force"
+      ],
+      "stats": {
+        "maxHP": 1928,
+        "maxPP": 380,
+        "Atk": 568,
+        "Def": 235,
+        "Spd": 213
+      },
+      "elstats": {
+        "VenusAtk": 100,
+        "VenusRes": 48,
+        "MarsAtk": 125,
+        "MarsRes": 25,
+        "JupiterAtk": 100,
+        "JupiterRes": 72,
+        "MercuryAtk": 100,
+        "MercuryRes": 48
+      },
+      "HPRecovery": 80,
+      "isImmuneToConditions": [
+        "Stun",
+        "Poison",
+        "Venom",
+        "Delusion",
+        "Sleep",
+        "DeathCurse",
+        "Haunt"
+      ],
+      "isImmuneToOHKO": true
+    },
+    {
+      "name": "Ogre Titan 3",
+      "imgurl": "",
+      "movepool": [
+        "Brute Force"
+      ],
+      "stats": {
+        "maxHP": 4016,
+        "maxPP": 591,
+        "Atk": 591,
+        "Def": 238,
+        "Spd": 225
+      },
+      "elstats": {
+        "VenusAtk": 100,
+        "VenusRes": 48,
+        "MarsAtk": 125,
+        "MarsRes": 25,
+        "JupiterAtk": 100,
+        "JupiterRes": 72,
+        "MercuryAtk": 100,
+        "MercuryRes": 48
+      },
+      "HPRecovery": 120,
+      "isImmuneToConditions": [
+        "Stun",
+        "Poison",
+        "Venom",
+        "Delusion",
+        "Sleep",
+        "DeathCurse",
+        "Haunt"
+      ],
+      "isImmuneToOHKO": true
+    },
+    {
+      "name": "Ogre Titan 4",
+      "imgurl": "",
+      "movepool": [
+        "Brute Force"
+      ],
+      "stats": {
+        "maxHP": 8033,
+        "maxPP": 380,
+        "Atk": 614,
+        "Def": 240,
+        "Spd": 236
+      },
+      "elstats": {
+        "VenusAtk": 100,
+        "VenusRes": 48,
+        "MarsAtk": 125,
+        "MarsRes": 25,
+        "JupiterAtk": 100,
+        "JupiterRes": 72,
+        "MercuryAtk": 100,
+        "MercuryRes": 48
+      },
+      "HPRecovery": 160,
+      "isImmuneToConditions": [
+        "Stun",
+        "Poison",
+        "Venom",
+        "Delusion",
+        "Sleep",
+        "DeathCurse",
+        "Haunt"
+      ],
+      "isImmuneToOHKO": true
+    }
+  ],
+  [
+    {
+      "name": "Ogre Titan 5",
+      "imgurl": "https://goldensunwiki.net/w/images/a/a2/OgreTitan5.jpg",
+      "movepool": [
+        "Brute Force",
+        "Massive Swing"
+      ],
+      "stats": {
+        "maxHP": 12066,
+        "maxPP": 380,
+        "Atk": 637,
+        "Def": 242,
+        "Spd": 247
+      },
+      "elstats": {
+        "VenusAtk": 100,
+        "VenusRes": 48,
+        "MarsAtk": 125,
+        "MarsRes": 25,
+        "JupiterAtk": 100,
+        "JupiterRes": 72,
+        "MercuryAtk": 100,
+        "MercuryRes": 48
+      },
+      "HPRecovery": 200,
+      "extraTurns": 1,
+      "isImmuneToConditions": [
+        "Stun",
+        "Poison",
+        "Venom",
+        "Delusion",
+        "Sleep",
+        "DeathCurse",
+        "Haunt"
+      ],
+      "isImmuneToOHKO": true
+    }
+  ],
+  [
+    {
+      "name": "Star Apprentice",
+      "imgurl": "https://cdn.discordapp.com/attachments/497696510688100352/604984559242838018/starapprentice.png",
+      "movepool": [
+        "Mystic Call",
+        "Mystic Call",
+        "Mystic Call",
+        "Mine Ball",
+        "Spark Plasma",
+        "Megacool"
+      ],
+      "stats": {
+        "maxhp": 7486,
+        "maxpp": 560,
+        "atk": 460,
+        "def": 139,
+        "spd": 268
+      },
+      "elstats": {
+        "VenusAtk": 100,
+        "VenusRes": 130,
+        "MarsAtk": 100,
+        "MarsRes": 72,
+        "JupiterAtk": 95,
+        "JupiterRes": 150,
+        "MercuryAtk": 110,
+        "MercuryRes": 180
+      },
+      "extraTurns": 1,
+      "isImmuneToConditions": [
+        "Stun",
+        "Poison",
+        "Venom",
+        "Delusion",
+        "Sleep",
+        "DeathCurse",
+        "Haunt"
+      ],
+      "isImmuneToOHKO": true
+    },
+    {
+      "movepool": [ "Guard Aura" ],
+      "name": "Guardian Ball",
+      "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Guardian_Ball.png",
+      "stats": {
+        "maxhp": 520,
+        "maxpp": 43,
+        "atk": 317,
+        "def": 127,
+        "spd": 292
+      },
+      "elstats": {
+        "venusres": 152,
+        "marsres": 100,
+        "mercuryres": 100,
+        "jupiterres": 48
+      },
+      "extraturns": 0
+    },
+    {
+      "movepool": [ "Flash Bolt", "Storm Ray", "Shine Plasma" ],
+      "name": "Thunder Ball",
+      "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Thunder_Ball.png",
+      "stats": {
+        "maxhp": 280,
+        "maxpp": 43,
+        "atk": 329,
+        "def": 125,
+        "spd": 219
+      },
+      "elstats": {
+        "jupiterres": 152,
+        "marsres": 100,
+        "mercuryres": 100,
+        "venusres": 48,
+        "jupiteratk": 110
+      },
+      "extraturns": 0
+    },
+    {
+      "movepool": [ "Earnest Ply", "Cure Poison", "Restore" ],
+      "name": "Refresh Ball",
+      "imgurl": "https://goldensunwiki.net/wiki/Special:FilePath/Refresh_Ball.png",
+      "stats": {
+        "maxhp": 360,
+        "maxpp": 43,
+        "atk": 317,
+        "def": 124,
+        "spd": 136
+      },
+      "elstats": {
+        "mercuryres": 175,
+        "venusres": 100,
+        "jupiterres": 100,
+        "marsres": 25,
+        "mercuryatk": 115
+      },
+      "extraturns": 0
+    }
+  ]
 ]

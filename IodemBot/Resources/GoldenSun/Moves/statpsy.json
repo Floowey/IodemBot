@@ -379,6 +379,20 @@
       }
     ]
   },
+  "Lich": {
+    "name": "Lich",
+    "targetType": 1,
+    "emote": "<:Lich:740659510808543352>",
+    "range": 1,
+    "element": 0,
+    "PPCost": 10,
+    "effects": [
+      {
+        "Type": "Revive",
+        "Percentage": 100
+      }
+    ]
+  },
   "Phoenix": {
     "name": "Phoenix",
     "targetType": 1,
