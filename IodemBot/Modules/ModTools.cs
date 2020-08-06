@@ -117,7 +117,7 @@ namespace IodemBot.Modules
             await ReplyAsync("Shutting down for automatic update...");
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
             {
-                Console.WriteLine("Closing for manual update...");
+                Console.WriteLine($"Closing {Global.Client.CurrentUser.Username } for manual update...");
                 var ps = new ProcessStartInfo
                 {
                     FileName = "shellscripts/selfupdate.sh",
