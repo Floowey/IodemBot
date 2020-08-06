@@ -117,7 +117,7 @@
       "effects": [
         {
           "Type": "AddDamage",
-          "addDamage": 20
+          "addDamage": 49
         },
         {
           "Type": "Condition",
@@ -321,8 +321,8 @@
         },
         {
           "Type": "HPDrain",
-          "Percentage": 33,
-          "Probability": 100
+          "Percentage": 100,
+          "Probability": 33
         }
       ]
     },
@@ -493,7 +493,7 @@
         {
           "Type": "Condition",
           "Condition": "Stun",
-          "Probability": 25
+          "Probability": 15
         }
       ]
     },
@@ -542,7 +542,7 @@
       "effects": [
         {
           "Type": "AddDamage",
-          "addDamage": 15
+          "addDamage": 14
         },
         {
           "Type": "Condition",
@@ -573,7 +573,7 @@
         },
         {
           "Type": "HPDrain",
-          "Percentage": 40,
+          "Percentage": 100,
           "Probability": 10
         }
       ]
@@ -705,7 +705,7 @@
       "effects": [
         {
           "Type": "AddDamage",
-          "addDamage": 125
+          "addDamage": 29
         },
         {
           "Type": "HPDrain",
@@ -764,7 +764,7 @@
         },
         {
           "Type": "OHKO",
-          "Probability": 11
+          "Probability": 10
         }
       ]
     },
@@ -786,7 +786,7 @@
       "effects": [
         {
           "Type": "AddDamage",
-          "addDamage": 25
+          "addDamage": 26
         },
         {
           "Type": "HPDrain",
@@ -846,7 +846,7 @@
       "effects": [
         {
           "Type": "AddDamage",
-          "addDamage": 125
+          "addDamage": 58
         },
         {
           "Type": "PPDrain",
@@ -903,7 +903,7 @@
         },
         {
           "Type": "PPDrain",
-          "Percentage": 15,
+          "Percentage": 10,
           "Probability": 40
         }
       ]
@@ -2723,8 +2723,8 @@
         {
           "Type": "Stat",
           "Stat": "Resistance",
-          "Multiplier": 0.25,
-          "Probability": 25
+          "Multiplier": 0.6,
+          "Probability": 75
         }
       ]
     },
@@ -2781,8 +2781,8 @@
         {
           "Type": "Stat",
           "Stat": "Resistance",
-          "Multiplier": 0.4,
-          "Probability": 60
+          "Multiplier": 0.6,
+          "Probability": 75
         }
       ]
     },
