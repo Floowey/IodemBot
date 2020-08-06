@@ -232,7 +232,7 @@ namespace IodemBot.Modules
             await Task.CompletedTask;
         }
 
-            [Command("patdown")]
+        [Command("patdown")]
         [RequireStaff]
         public async Task PatDown([Remainder] SocketGuildUser user = null)
         {

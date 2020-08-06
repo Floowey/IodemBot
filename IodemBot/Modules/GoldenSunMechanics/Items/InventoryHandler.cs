@@ -215,6 +215,15 @@ namespace IodemBot.Modules.GoldenSunMechanics
             }
         }
 
+        [Command("GiveItem")]
+        [RequireModerator]
+        public async Task GiveItem(SocketUser user, [Remainder] string item)
+        {
+            var inv = UserAccounts.GetAccount(user).Inv;
+            inv.Add(item);
+            await Task.CompletedTask;
+        }
+
 
         [Command("Sell")]
         [Summary("Sell an unequipped item from your inventory")]
