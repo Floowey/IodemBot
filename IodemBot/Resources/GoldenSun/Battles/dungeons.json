@@ -1071,7 +1071,7 @@
     },
     "Matchups": [
       {
-        "Flavourtext": "Trying to find an access a way to reach the Djinni, you go back to Vault's cemetary and notice a strange pattern in the tombstones. You see the dog you saved from the wolves looking at you expectantly. What should you do?",
+        "Flavourtext": "Trying to find a way to reach the Djinni, you go back to Vault's cemetary and notice a strange pattern in the tombstones. You see the dog you saved from the wolves looking at you expectantly. What should you do?",
         "EnemyNames": [ "Key:Mind Read", "Trap:Retreat", "Trap:Catch" ],
         "Keywords": [ "Shuffle" ],
         "Image": "",
@@ -1230,7 +1230,7 @@
         ]
       },
       {
-        "Flavourtext": "The smell of fresh air beckons, and you push through into sunlight!  Finally the outdoors. Hey is that the Djinn from ealier? Let's get him!",
+        "Flavourtext": "The smell of fresh air beckons, and you push through into sunlight!  Finally the outdoors. Hey is that the Djinni from ealier? Let's get him!",
         "EnemyNames": [ "Venus Djinni 14" ],
         "Image": "",
         "RewardTables": [
@@ -1480,7 +1480,7 @@
               "RequireTag": [ "HamaMegaera1" ],
               "Tag": "McCoyTask1",
               "Obtainable": 1,
-              "message": "Oi, laddie! Yeh, you, adept, or what you might be. I have a task for ye. Some time ago me men cut down some trees. It mad the ole tree, Tret, mad and turned me men into wood themselves! Ever since we didnae touch a single branch of the ole spud, but now he accuses me men to clear too much woodland again! I swear it wasnae me men, I swear! So go tae the ole hag and tell him that it wasnae us who did it. None of me men can walk intae the woods and return. What areya standing there, rooted to the ground, go!"
+              "message": "Oi, laddie! Yeh, you, adept, or what you might be. I have a task for ye. Some time ago me men cut down some trees. It mad the ole tree, Tret, mad and turned me men into wood themselves! Ever since we didnae touch a single branch of the ole spud, but now he accuses me men to clear too much woodland again! It wasnae me men, I swear! So go tae the ole bloke and tell him that it wasnae us who did it. None of me men can walk intae the woods and return. What areya standing there rooted to the ground fer? Go!"
             }
           ],
           [
@@ -1494,7 +1494,7 @@
               "Chest": "Wooden",
               "HasChest": true,
               "Item": "Machete",
-              "message": "It wae a spirit, you say? Ye, yer kin an yer magic stuff, only bringing trouble all the time! Get lost before we burst up in flames or the ground unde yae feet rips open, be gone, I said!"
+              "message": "It wae a spirit, you say? Ye, yer kin an yer magic stuff, only bringing trouble all the time! Get lost before we burst up in flames or the ground unde yae feet rips open. Be gone, I said!"
             }
           ]
         ]
@@ -1537,7 +1537,7 @@
         ]
       },
       {
-        "Flavourtext": "This is what Lord McCoy was hiding here... a Jupiter Djinn!",
+        "Flavourtext": "This is what Lord McCoy was hiding here... a Jupiter Djinni!",
         "EnemyNames": [ "Jupiter Djinni 1" ],
         "Image": "",
         "RewardTables": [
@@ -1856,7 +1856,7 @@
         ]
       },
       {
-        "Flavourtext": "Not knowing this Mia and not wanting to upset them, you skate off.  But then you slip and crash into the frozen waterfall! There is a warm cave behind it, where a Mars djinni is keeping two bears comfortable as they hibernate.",
+        "Flavourtext": "Not knowing this Mia and not wanting to upset them, you skate off.  But then you slip and crash into the frozen waterfall! There is a warm cave behind it, where a Mars Djinni is keeping two bears comfortable as they hibernate.",
         "EnemyNames": [ "Mars Djinni 1", "Mauler 1", "Mauler 1" ],
         "Image": "",
         "RewardTables": [
@@ -2172,7 +2172,7 @@
               "Tag": "DrawBridge",
               "Obtainable": 1,
               "Dungeon": "Fuchin Temple",
-              "message": "A girl approaches you, she watched you battle the monster and you think you saw her back in the depths of Kolima. 'Oh young Adept! You have shown remarkable strength! I will let the guard allow you to pass over the draw bridge after Kolima. I'm in a hurry, are you on your way to Lama Temple? Let's meet there! Oh, sorry, I forgot to mention. My Name is Feizhi! Nice to meet you!'"
+              "message": "A girl approaches you, she watched you battle the monster and you think you saw her back in the depths of Kolima. 'Oh young Adept! You have shown remarkable strength! I will let the guard allow you to pass over the draw bridge after Kolima. I'm in a hurry, are you on your way to Lama Temple? Let us meet there! Oh, sorry, I forgot to mention. My Name is Feizhi! Nice to meet you, bye!'"
             }
           ],
           [
@@ -2182,7 +2182,7 @@
               "Tag": "MolochQuest2",
               "Obtainable": 1,
               "Dungeon": "Snowy Cavern",
-              "message": "You succesfully defeated Saturos, but instead of the warrior going to the ground, he appears well and healthy. Without a word the Proxian turns on the spot and swiftly runs to one of the side towers, floating even. You feel an ice cold breeze blowing towards the side tower, the light of the lighthouse begins to shine dimmer and brighter again. A huge, white beast, with long fur and shaped like a gigantic dog with one giant horn on in the middle of its head. In one continuous breath the creature is sucking in the air, the snow and the psynergy radiating from the lighthouse. Saturos clearly tries to attack the beast, but comes too late. The monster floats away and dissappears in the distance, near the shore of the icy sea. You try to remember the spot, this must be one of the spirits Hama was talking about!"
+              "message": "You successfully defeated Saturos, but instead of the warrior going to the ground, he appears well and healthy. Without a word the Proxian turns on the spot and swiftly runs to one of the side towers, almost floating. You feel an ice cold breeze blowing towards the side tower, the light of the lighthouse begins to flicker. A huge, white beast appears, with long fur and shaped like a gigantic dog with one giant horn on in the middle of its head. In one continuous breath the creature is sucking in the air, the snow and the psynergy radiating from the lighthouse. Saturos clearly tries to attack the beast, but comes too late. The monster floats away and dissappears in the distance, near the shore of the icy sea. You try to remember the spot, this must be one of the spirits Hama was talking about!"
             }
           ]
         ]
@@ -2302,7 +2302,7 @@
         ]
       },
       {
-        "Flavourtext": "As you search through numerous rooms for the way forward, you interrupt a Mercury djinni relaxing on a barstool in front of a counter. Annoyed, it attacks!",
+        "Flavourtext": "As you search through numerous rooms for the way forward, you interrupt a Mercury Djinni relaxing on a barstool in front of a counter. Annoyed, it attacks!",
         "EnemyNames": [ "Mercury Djinni 4" ],
         "Image": "",
         "RewardTables": [
@@ -2947,7 +2947,7 @@
         ]
       },
       {
-        "Flavourtext": "You spot a purple speck in the corner of your eye. Could it be? You finess your away around to it, and lo and behold, a Jupiter Djinn!",
+        "Flavourtext": "You spot a purple speck in the corner of your eye. Could it be? You finess your away around to it, and lo and behold, a Jupiter Djinni!",
         "EnemyNames": [ "Jupiter Djinni 2" ],
         "Image": "",
         "RewardTables": [
@@ -3199,7 +3199,7 @@
               "Tag": "FloraQuest1",
               "Obtainable": 1,
               "Dungeon": "Bloomy Glade",
-              "message": "As you leave the forest, a soft breeze blows from the side. It smells of fresh of flowers and sweet. The source of the twirl is a shape floating in the air over a heather. The figure looks young, a girl with flowers plugged into her hair. You try to sneak up, but she notices you, visibly startled. She floats away, throwing you cautious looks over her shoulder until she went down into the midst of Mogall Forest. You start to feel the same breeze flowing through the endless woods. You must track her down!"
+              "message": "As you leave the forest, a soft breeze blows from the side. It smells of fresh flowers and plants. The source of the twirl is a shape floating in the air over a heather. The figure looks young, a girl with flowers twined through her hair. You try to sneak up, but she notices you, visibly startled. She floats away, throwing you cautious looks over her shoulder until she went down into the midst of Mogall Forest. You start to feel the same breeze flowing through the endless woods. You must track her down!"
             }
           ],
           [
@@ -3381,7 +3381,7 @@
               "Tag": "HamaAltin",
               "Obtainable": 1,
               "Dungeon": "Altin",
-              "message": "'One year ago, the seal of alchemy was removed. In the process, the elemental forces have yet to find their balance again. The road ahead leads to Lamakan desert, a very dangerous place. Before you get my guidance to pass through, I need you to explore an old mining town, just to the north from here. An ancient culture used to live there, and now their antics often start to go wild and swirl up the town. Can you take care of this matter?"
+              "message": "'One year ago, the seal of alchemy was removed. Because of this, the elemental forces have yet to find their balance again. The road ahead leads to Lamakan desert, a very dangerous place. Before you get my guidance to pass through, I need you to explore an old mining town, just to the north from here. An ancient culture used to live there, and now their protectors often start to go wild and stir up trouble in the town. Can you take care of this matter?"
             }
           ],
           [
@@ -3406,7 +3406,7 @@
               "RequireTag": [ "MegaeraSeen" ],
               "Tag": "HamaMegaera1",
               "Obtainable": 1,
-              "message": "So you saw another spirit? One with two swords? The elements are out of balance more than I anticipated. The spirits are loose and mischievous, they will probably hide in places full of an element's psynergy and drain it. We need to seek them, but be careful!"
+              "message": "So you saw another spirit? One with two swords? The elements are out of balance more than I anticipated. The spirits are loose and mischievous, they will probably hide in places full of elemental psynergy and drain them if left unchecked. We need to seek the spirits out, but be careful!"
             }
           ],
           [
@@ -3415,7 +3415,7 @@
               "RequireTag": [ "MolochFinished" ],
               "Tag": "HamaMoloch1",
               "Obtainable": 1,
-              "message": "'Oh my, you look like you walked right into a snowstorm. Oh! You found Moloch, the spirit of the north wind absorbing the power of Mercury in order to freeze over the world. Long ago, the world was one enormous lump of ice, and Weyard since experience eras of intense cold. But to think that Weyard should become a white wasteland yet again is inconceivable. Thank you for taking care of the matter, and let me know if more spirits are up for such mischievousness.'"
+              "message": "'Oh my, you look like you walked right into a snowstorm. Oh! You found Moloch, the spirit of the north wind absorbing the power of Mercury in order to freeze over the world. Long ago, the world was one enormous lump of ice, and Weyard since experience eras of intense cold. But to think that Weyard should become a white wasteland yet again is inconceivable. Thank you for taking care of the matter, and let me know if more spirits are up to similar mischief.'"
             }
           ],
           [
@@ -3433,7 +3433,7 @@
               "RequireTag": [ "FloraFinished" ],
               "Tag": "HamaFlora1",
               "Obtainable": 1,
-              "message": "'Do you have news for me? Interesting. I felt the winds and aromatic breezes, I wasn't sure what to make of them. I had a feeling Flora, the flower spirit, was behind it. Before humans ruled the animals, and before that Weyard was filled with plants and flowers of all kinds and of incredible sizes. The plants won their reign over the cold wasteland that Weyard once was, but had to learn to live side by side with animals, and at last us humans. At last, maybe her powers can be used to bring balance between the dominant natural forces.'"
+              "message": "'Do you have news for me? Interesting. I felt the winds and aromatic breezes, I wasn't sure what to make of them. I had a feeling Flora, the flower spirit, was behind it. Before humans ruled the animals, and before that Weyard was filled with plants and flowers of all kinds and of incredible sizes. The plants won their reign over the cold wasteland that Weyard once was, but had to learn to live side by side with animals, and then us humans. At last, maybe her powers can be used to bring balance between the dominant natural forces.'"
             }
           ],
           [
@@ -3536,7 +3536,7 @@
         ]
       },
       {
-        "Flavourtext": "A djinni is playing in the floodwaters here.  Light and refreshing!",
+        "Flavourtext": "A Djinni is playing in the floodwaters here.  Light and refreshing!",
         "EnemyNames": [ "Mercury Djinni 8" ],
         "Image": "",
         "RewardTables": [
@@ -3655,7 +3655,7 @@
               "RequireTag": [ "HamaAltin" ],
               "Tag": "AltinFinished",
               "Obtainable": 1,
-              "message": "You slayed the beast. It lets out a roar and magically turns into stone. You fulfilled Hamas task. As you head out, you see a silhouette gliding away, dissappearing in the sky. What could that have been? Yet another reason to head back to Hama and report your sighting."
+              "message": "You slew the beast. It lets out a roar and magically turns into stone. You have fulfilled Hama's task. As you head out, you see a silhouette gliding away, disappearing in the sky. What could that have been? Yet another reason to head back to Hama and report this sighting."
             }
           ]
         ]
@@ -3796,7 +3796,7 @@
         ]
       },
       {
-        "Flavourtext": "Feizhi tries to cast Reveal on an Oasis spot but when she does, sensing her Jupiter Psynergy, a djinni manifests itself and whirls up some sand.",
+        "Flavourtext": "Feizhi tries to cast Reveal on an Oasis spot but when she does, sensing her Jupiter Psynergy, a Djinni manifests itself and whirls up some sand.",
         "EnemyNames": [ "Jupiter Djinni 3" ],
         "Image": "",
         "RewardTables": [
@@ -3862,7 +3862,7 @@
               "Weight": 1,
               "Tag": "MegaeraSeen",
               "Obtainable": 1,
-              "message": "You defeated the giant monster, thank goodness! Now it's time to leave this hellish desert. Night is setting in, but it's hard to imagine that this place is going to get any nicer. All of a sudden, you hear a mischievous chuckle, spooky even. 'What's so funny?', Feizhi asks, but it was neither of the two of you. You turn around and in the distance, a few meters above the sand, a figure hovers. It's a girl, with the wings of an angel and two mighty blades in hands. It notices your glance, and flies off to the south.\n'That must have been another spirit!', the Jupiter Adept declares. 'We need to inform Master Hama about it. Let's rest in Kalay and then we'll go back to the Lama Temple.'"
+              "message": "You defeated the giant monster, thank goodness! Now it's time to leave this hellish desert. Night is setting in, but it's hard to imagine that this place is going to get any nicer. All of a sudden, you hear a mischievous chuckle, spooky even. 'What's so funny?', Feizhi asks, but it was neither of the two of you. You turn around and in the distance, a few meters above the sand, a figure hovers. It's a girl, with the wings of an angel and two mighty blades in hands. She notices your glance, and flies off to the south.\n'That must have been another spirit!', the Jupiter Adept declares. 'We need to inform Master Hama about it. Let's rest in Kalay and then we'll go back to the Lama Temple.'"
             }
           ]
         ]
@@ -4597,7 +4597,7 @@
               "Tag": "TolbiFinals",
               "Obtainable": 1,
               "Dungeon": "Colosso Finals",
-              "message": "You show the guards the letter you found in hidden in Altmiller Cave. Baffled by Iodems signature, they point you to the finalists VIP area."
+              "message": "You show the guards the letter you found in hidden in Altmiller Cave. Baffled by Iodem's signature, they point you to the finalists' VIP area."
             }
           ],
           [
@@ -4937,7 +4937,7 @@
         ]
       },
       {
-        "Flavourtext": "`(A puzzle is coming up, you may want to pause this by reacting anywhere with ` :pause_button: `to have time to figure it out!)`\n\nYou eventually find a room with five stones placed in a line, with strange lights on the wall. Attached to the wall is a note. It reads:\n```Blue is next to Green\nRed is on an edge\nWhite is not next to Red and Yellow\nBlue and Yellow share a Neighbour\nWhite is further left than Red.\n\nWhere is Yellow?```\nUnsure of why it mentions colors, you wish Feizhi had accompanied you on this trip. Perhaps Reveal would show the colors of the stones? You've come this far, might as well attempt to solve the riddle.",
+        "Flavourtext": "`(A puzzle is coming up, you may want to pause this by reacting anywhere with ` :pause_button: `to have time to figure it out!)`\n\nYou eventually find a room with five stones placed in a line, with strange lights on the wall. Attached to the wall is a note. It reads:\n```Blue is next to Green\nRed is on an edge\nWhite is neither next to Red nor Yellow\nBlue and Yellow share a Neighbour\nWhite is further left than Red.\n\nWhere is Yellow?```\nUnsure of why it mentions colors, you wish Feizhi had accompanied you on this trip. Perhaps Reveal would show the colors of the stones? You've come this far, might as well attempt to solve the riddle.",
         "EnemyNames": [ "Trap:First", "Trap:Second", "Trap:Third", "Key:Fourth", "Trap:Fifth" ],
         "Image": "https://cdn.discordapp.com/attachments/668443234292334612/736913356807602187/unknown.png",
         "RewardTables": [
@@ -4951,7 +4951,7 @@
         ]
       },
       {
-        "Flavourtext": "As you touch the correct stone, you a voice is heard inside your head. ```Which stone is in the middle?```",
+        "Flavourtext": "As you touch the correct stone, you hear a voice inside your head. ```Which stone is in the middle?```",
         "EnemyNames": [ "Key:Green", "Trap:Red", "Trap:Blue", "Trap:Yellow", "Trap:White" ],
         "Keywords": [ "Shuffle" ],
         "Image": "https://cdn.discordapp.com/attachments/668443234292334612/736913356807602187/unknown.png",
@@ -5138,7 +5138,7 @@
     "Matchups": [
       {
         "Flavourtext": "The Warriors of Vale once saved Weyard from dying. Who is the oldest valean Hero?",
-        "EnemyNames": [ "Trap:Isaac", "Trap:Garret", "Key:Felix", "Trap:Piers" ],
+        "EnemyNames": [ "Trap:Isaac", "Trap:Garet", "Key:Felix", "Trap:Piers" ],
         "Keywords": [ "Shuffle" ],
         "Image": "",
         "RewardTables": [
@@ -5295,7 +5295,7 @@
               "Chest": "Gold",
               "HasChest": true,
               "Item": "Lure Cap",
-              "message": "Congratulations, Adept! You've proven to be exceedingly strong! You are now granted to engage in the endless-battles mode!"
+              "message": "Congratulations, Adept! You've proven to be exceedingly strong! You may now fight in the Endless battle mode!"
             }
           ]
         ]
@@ -6017,7 +6017,7 @@
               "RequireTag": [ "MegaeraFinished" ],
               "Tag": "VenusLHStory1",
               "Obtainable": 1,
-              "message": "(Story parts for {0}, will contain spoilers for everyone else!)\n||You reach the aerie. On the ledge of the middle platform, a blonde woman and a blue haired man are waiting silently. The flickering of the light can only indicate a spirit drawing on its power. They spot you, and without a moment of hesitation, start to charge you.||"
+              "message": "(Story parts for {0}, will contain spoilers for everyone else!)\n||You reach the aerie. On the ledge of the middle platform, a blonde woman and a blue haired man are waiting silently. The flickering of the beacon's light can only indicate a spirit drawing on its power. They spot you, and without a moment of hesitation, start to charge!||"
             }
           ]
         ]
@@ -6040,7 +6040,7 @@
               "RequireTag": [ "MegaeraFinished" ],
               "Tag": "VenusLHStory2",
               "Obtainable": 1,
-              "message": "(Story parts for {0}, will contain spoilers for everyone else!)\n||You defeated Saturos and Menardi. Dark clouds are covering the sky and a red mist appears. The lighthouse is starting to tremble enormously, its light becoming dimmer and dimmer. From behind the Lighthouses star, you start to see a shadow. A colossal black figurine is hovering in the air. It is wearing a demon-horned helm and is covered with weapons up to its teeth. A gigantic sword and shield are floating by its side. The lighthouse is shaking even stronger now.\nA deep roar resounds as the lighthouse summons its image of a gargantuan, two headed dragon. The dragon immediately goes for the dark spirit, but you are caught up in the cross fire. Watch out!||"
+              "message": "(Story parts for {0}, will contain spoilers for everyone else!)\n||You defeated Saturos and Menardi. As you look up, dark clouds cover the sky and a red mist appears in the air around you. The lighthouse is starting to shake under your feet, its light becoming dimmer and dimmer. From behind the glow of the Lighthouse beacon, you start to see a shadow. A colossal black figurine hovers in the air. It is wearing a demon-horned helm and is armed to the teeth. A gigantic sword and shield float by its side. The earthquake intensifies, and you struggle to keep your balance.\nA deep roar resounds as the lighthouse summons its image of a gargantuan, two headed dragon. The dragon immediately goes for the dark spirit, but you are caught up in the cross fire. Watch out!||"
             }
           ]
         ]
@@ -6065,7 +6065,7 @@
               "RequireTag": [ "MegaeraFinished" ],
               "Tag": "VenusLHStory3",
               "Obtainable": 1,
-              "message": "(Story parts for {0}, will contain spoilers for everyone else!)\n||At some point during the fight, the black spirit dissappeared, leaving just you and the dragon to brawl each other. You slayed the dragon and it also disappears into thin air. The sky is clear again and the red mist has vanished. 'This is the danger I was afraid of. We must stop it.' Megaera is right. This is a danger to all of Weyard.||"
+              "message": "(Story parts for {0}, will contain spoilers for everyone else!)\n||At some point during the fight, the black spirit withdrew, leaving just you and the dragon to brawl against each other. As you slay the dragon, it disappears into thin air. The sky begins to clear and the red mist rolls away, heading south.  'That was the danger I was afraid of. We must stop it.' Megaera is right. This is a danger to all of Weyard.||"
             }
           ]
         ]
@@ -6091,7 +6091,7 @@
               "Chest": "Adept",
               "HasChest": true,
               "Dungeon": "The Way Southwards",
-              "message": "(Story parts for {0}, will contain spoilers for everyone else!)\n||As you leave for the lighthouses elevator, a thunder resounds. You wonder how a thunder can sound so angry. While you can, you take the chance to look out south. On the horizon you can make out the black-red storm clouds, that blackened the sky above you earlier. Is this where your path will lead you next?||\n\n> Thank you for playing the first part of this discord fan game! I sincerely hope you enjoyed it. The continuation is already in the works, so make sure to stick around for when it is done! You can give yourself the Colosso Adept role using `i!giverole ColossoAdept`, to get informed when it is done as soon as possible. Until then, spend your time keep exploring, break your record in endless battles or engage in PvP brawls and most importantly, stay awesome!\n\n~Floowey"
+              "message": "(Story parts for {0}, will contain spoilers for everyone else!)\n||As you leave for the lighthouse elevator, thunder booms, shaking the very air around you. You wonder how a thunder can sound so angry. While you can, you take the chance to look south. On the horizon you can make out the black-red storm clouds that blackened the sky above you earlier. Is this where your path will lead you next?||\n\n> Thank you for playing the first part of this Discord fan game! I sincerely hope you enjoyed it. The continuation is already in the works, so make sure to stick around for when it is done! You can give yourself the Colosso Adept role using `i!giverole ColossoAdept`, to get informed when it is done as soon as possible. Until then, spend your time keep exploring, break your record in endless battles or engage in PvP brawls and most importantly, stay awesome!\n\n~Floowey"
             }
           ]
         ]
@@ -6133,7 +6133,7 @@
       },
       {
         "Flavourtext": "As you work your way up the lighthouse, you find more monsters.  This version of Snow White and the Seven Dwarves might not end as well as the original...",
-        "EnemyNames": [ "Nightmare 1", "Gnome Wizard", "Gnome Wizard", "Gnome Wizard", "Gnome Wizard", "Gnome Wizard", "Gnome Wizard", "Gnome Wizard" ],
+        "EnemyNames": [ "Nightmare 1", "Gnome Wizard", "Gnome Wizard", "Gnome Wizard", "Gnome Mage", "Gnome Mage", "Gnome", "Gnome" ],
         "Keywords": [ "Shuffle" ],
         "Image": "",
         "RewardTables": [
@@ -6426,7 +6426,7 @@
         ]
       },
       {
-        "Flavourtext": "As you work your way through the maze of ladders and pillars, you spy the familiar shape of a djinni!",
+        "Flavourtext": "As you work your way through the maze of ladders and pillars, you spy the familiar shape of a Djinni!",
         "EnemyNames": [ "Venus Djinni 10" ],
         "Image": "",
         "RewardTables": [
@@ -7531,7 +7531,7 @@
         ]
       },
       {
-        "Flavourtext": "Ever since this lighthouse got relit, we can see Weyard change around it. Even before the full unseal of Alchemy we saw new Jupiter Adepts gaining power and the climate around us became harsher. Wind my often be stagnant and retained, but it's full power may sneak up on you like a sudden summer storm. ",
+        "Flavourtext": "Ever since this lighthouse was relit, we have seen Weyard change around it. Even before the full unsealing of Alchemy, we saw new Jupiter Adepts gaining power and the climate around us became harsher. Wind may often be still and restrained, but its full power may sneak up on you like a sudden summer storm. ",
         "EnemyNames": [ "Red Demon" ],
         "Image": "",
         "RewardTables": [
