@@ -5,7 +5,7 @@
     "FlavourText": "Welcome! Be introduced to the world of Weyard and Golden Sun!",
     "Image": "https://cdn.discordapp.com/attachments/497696510688100352/595583507393150997/unknown.png",
     "IsDefault": true,
-    "MaxPlayer": 1,
+    "MaxPlayer": 4,
     "Requirement": {
       "TagsLock": [ "TutorialCompleted" ]
     },
@@ -699,7 +699,7 @@
               "Obtainable": 1,
               "Chest": "Adept",
               "HasChest": true,
-              "message": "Nice work, {0}! You beat the greatest dungeon so far! Stay tuned for more!"
+              "message": "Nice work, {0}! You beat the first optional side dungeon! Keep your eyes open for others!"
             }
           ]
         ]
@@ -6266,7 +6266,7 @@
         ]
       },
       {
-        "Flavourtext": "`(A puzzle is coming up, you may want to pause this by reacting anywhere with ` :pause_button: `to have time to figure it out!)`\n\nYIn the room are five colorful statues (Red, Blue, Yellow, Green and Purple) standing in a cross formation:\n```\nR...B\n..Y..\nG...P\n```\nThe statues are speaking to your soul...\n```\nOh Adept, we can feel your glance. Will you help to make us dance?\n\nBlue and Red are swapping spots, around the clock we move one slot.\nSwitching now are Blue and Green. Purple, meanwhile, is going in.\nYellow and Blue are locking their eyes, the group dances one step counterclockwise.\nGreen wants the center, as Red tries to enter. The one further right will have to surrender.\nWithout a delay, we'll dance our ballet. The one who's south-east will get in midway.\n\nNow tell us the answer to our small riddle, which color is now in the middle?\n```",
+        "Flavourtext": "`(A puzzle is coming up, you may want to pause this by reacting anywhere with ` :pause_button: `to have time to figure it out!)`\n\nIn the room are five colorful statues (Red, Blue, Yellow, Green and Purple) standing in a cross formation:\n```\nR...B\n..Y..\nG...P\n```\nThe statues are speaking to your soul...\n```\nOh Adept, we can feel your glance. Will you help to make us dance?\n\nBlue and Red are swapping spots, around the clock we move one slot.\nSwitching now are Blue and Green. Purple, meanwhile, is going in.\nYellow and Blue are locking their eyes, the group dances one step counterclockwise.\nGreen wants the center, as Red tries to enter. The one further right will have to surrender.\nWithout a delay, we'll dance our ballet. The one who's south-west will get in midway.\n\nNow tell us the answer to our small riddle, which color is now in the middle?\n```",
         "EnemyNames": [ "Key:Blue", "Trap:Yellow", "Trap:Red", "Trap:Green", "Trap:Purple" ],
         "Keywords": [ "Shuffle" ],
         "Image": "https://cdn.discordapp.com/attachments/668443234292334612/733974266499825674/TunnelRuinsStatues.png",
