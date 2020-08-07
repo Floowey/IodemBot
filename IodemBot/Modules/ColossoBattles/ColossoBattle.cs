@@ -169,7 +169,7 @@ namespace IodemBot.Modules.ColossoBattles
             turnActive = true;
             log.Add($"Turn {++turn}");
 
-            Console.WriteLine("Starting to process Turn");
+            //Console.WriteLine("Starting to process Turn");
 
             //Start Turn for things like Defend
             try
@@ -198,7 +198,7 @@ namespace IodemBot.Modules.ColossoBattles
             }
             turnActive = false;
 
-            Console.WriteLine("Done processing Turn");
+            //Console.WriteLine("Done processing Turn");
 
             return true;
         }

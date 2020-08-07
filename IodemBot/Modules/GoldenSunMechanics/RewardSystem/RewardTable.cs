@@ -16,7 +16,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             }
 
             int roll = Global.Random.Next(0, Weight);
-            Console.WriteLine($"{roll + 1}/{Weight}");
+            //Console.WriteLine($"{roll + 1}/{Weight}");
             var sortedRewards = this.OrderByDescending(d => d.Weight).ToList();
             var reward = sortedRewards.SkipWhile(r => (roll -= r.Weight) >= 0).FirstOrDefault();
             if (reward == null)
