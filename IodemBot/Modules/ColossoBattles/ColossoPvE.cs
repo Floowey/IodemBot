@@ -325,7 +325,7 @@ namespace IodemBot.Modules.ColossoBattles
         public async Task SetAcceptBattles(bool acceptBattles)
         {
             AcceptBattles = acceptBattles;
-            await Task.CompletedTask;
+            await ReplyAsync($"AcceptBattles: {acceptBattles}");
         }
 
         [Command("train")]
