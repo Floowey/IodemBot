@@ -2,7 +2,7 @@
   "Tutorial": {
     "name": "Tutorial",
     "IsOneTimeOnly": false,
-    "FlavourText": "Welcome! Be introduced to the world of Weyard and Golden Sun!",
+    "FlavourText": "Welcome! Be introduced to the world of Weyard and Golden Sun! React with <:Fight:536919792813211648> to join a battle and press <:Battle:536954571256365096> when you are ready to start the Tutorial!",
     "Image": "https://cdn.discordapp.com/attachments/497696510688100352/595583507393150997/unknown.png",
     "IsDefault": true,
     "MaxPlayer": 4,
@@ -480,8 +480,7 @@
       {
         "Flavourtext": "You reach a very distinct room. You have heard about it. You see a bunch of statues, but you can only move one to disarm the famous trap. Which one will it be?",
         "EnemyNames": [ "Trap:Statue", "Key:Statue", "Trap:Statue" ],
-        "Keywords": [ "https://goldensunwiki.net/w/images/c/ca/SolSanctumDisarm.png" ],
-        "Image": "",
+        "Image": "https://goldensunwiki.net/w/images/c/ca/SolSanctumDisarm.png",
         "RewardTables": [
           [
             {
@@ -1481,6 +1480,7 @@
               "RequireTag": [ "HamaMegaera1" ],
               "Tag": "McCoyTask1",
               "Obtainable": 1,
+              "Dungeon": "Tret Tree",
               "message": "Oi, laddie! Yeh, you, adept, or what you might be. I have a task for ye. Some time ago me men cut down some trees. It mad the ole tree, Tret, mad and turned me men into wood themselves! Ever since we didnae touch a single branch of the ole spud, but now he accuses me men to clear too much woodland again! It wasnae me men, I swear! So go tae the ole bloke and tell him that it wasnae us who did it. None of me men can walk intae the woods and return. What areya standing there rooted to the ground fer? Go!"
             }
           ],
@@ -2683,7 +2683,7 @@
       },
       {
         "Flavourtext": "After searching around a while, you find a room with a table of spiders playing cards.  They immediately notice you, uh oh...",
-        "EnemyNames": [ "Spider 1", "Spider 2", "Spider 1", "Spider 2 Spider 1" ],
+        "EnemyNames": [ "Spider 1", "Spider 2", "Spider 1", "Spider 2", "Spider 1" ],
         "Keywords": [ "Shuffle" ],
         "Image": "",
         "RewardTables": [
