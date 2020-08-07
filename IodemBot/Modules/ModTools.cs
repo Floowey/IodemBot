@@ -79,6 +79,8 @@ namespace IodemBot.Modules
                     Quad = account.ServerStats.ColossoHighestRoundEndlessQuad,
                     QuadNames = account.ServerStats.ColossoHighestRoundEndlessQuadNames
                 };
+                account.Tags.RemoveAll(t => t.Contains("Adept"));
+                account.Tags.Add($"{account.Element}Adept");
             }
 
             foreach(SocketGuild guild in Global.Client.Guilds)

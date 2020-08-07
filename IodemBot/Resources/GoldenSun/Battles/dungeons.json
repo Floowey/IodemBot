@@ -480,6 +480,7 @@
       {
         "Flavourtext": "You reach a very distinct room. You have heard about it. You see a bunch of statues, but you can only move one to disarm the famous trap. Which one will it be?",
         "EnemyNames": [ "Trap:Statue", "Key:Statue", "Trap:Statue" ],
+        "Keywords": [ "https://goldensunwiki.net/w/images/c/ca/SolSanctumDisarm.png" ],
         "Image": "",
         "RewardTables": [
           [
