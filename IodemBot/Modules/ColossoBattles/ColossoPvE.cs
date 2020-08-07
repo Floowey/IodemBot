@@ -288,6 +288,7 @@ namespace IodemBot.Modules.ColossoBattles
 
         [Command("c status")]
         [RequireStaff]
+        [RequireUserServer]
         public async Task StatusOfBattle(string name = "")
         {
             await Context.Message.DeleteAsync();
@@ -308,6 +309,7 @@ namespace IodemBot.Modules.ColossoBattles
 
         [Command("c status")]
         [RequireStaff]
+        [RequireUserServer]
         public async Task StatusOfBattle(ulong id)
         {
             await Context.Message.DeleteAsync();
@@ -322,6 +324,7 @@ namespace IodemBot.Modules.ColossoBattles
 
         [Command("c AcceptBattles")]
         [RequireStaff]
+        [RequireUserServer]
         public async Task SetAcceptBattles(bool acceptBattles)
         {
             AcceptBattles = acceptBattles;
