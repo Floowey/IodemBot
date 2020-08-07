@@ -57,7 +57,10 @@ namespace IodemBot.Modules
                 embed.AddField($"Other Classes in {series.Name}", string.Join(", ", series.Classes.Select(s => s.Name)), true);
                 embed.AddField("Elements", string.Join(", ", series.Elements.Select(e => e.ToString())), true);
                 await Context.Channel.SendMessageAsync("", false, embed.Build());
-                _ = ServerGames.UserLookedUpClass((SocketGuildUser)Context.User, (SocketTextChannel)Context.Channel);
+                if(Context.User is SocketGuildUser sgu)
+                {
+                    _ = ServerGames.UserLookedUpClass(sgu, (SocketTextChannel)Context.Channel);
+                }
             }
             else
             {
@@ -417,7 +420,10 @@ namespace IodemBot.Modules
             }
 
             await Context.Channel.SendMessageAsync("", false, embed.Build());
-            _ = ServerGames.UserLookedUpPsynergy((SocketGuildUser)Context.User, (SocketTextChannel)Context.Channel);
+            if (Context.User is SocketGuildUser sgu)
+            {
+                _ = ServerGames.UserLookedUpPsynergy(sgu, (SocketTextChannel)Context.Channel);
+            }
         }
 
         [Command("rndElement"), Alias("rndEl", "randElement")]

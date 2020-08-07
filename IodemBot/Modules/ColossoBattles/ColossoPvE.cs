@@ -20,7 +20,7 @@ namespace IodemBot.Modules.ColossoBattles
             "\u0036\u20E3", "\u0037\u20E3", "\u0038\u20E3", "\u0039\u20E3" };
 
         private static readonly List<BattleEnvironment> battles = new List<BattleEnvironment>();
-
+        private static bool AcceptBattles = true;
         public static ulong[] ChannelIds
         {
             get => battles.Select(b => b.GetIds).SelectMany(item => item).Distinct().ToArray();
@@ -28,6 +28,7 @@ namespace IodemBot.Modules.ColossoBattles
 
         public async Task SetupDungeon(string DungeonName, bool ModPermission = false)
         {
+            if (!AcceptBattles) return;
             var User = UserAccounts.GetAccount(Context.User);
             if (EnemiesDatabase.TryGetDungeon(DungeonName, out var Dungeon))
             {
@@ -167,6 +168,7 @@ namespace IodemBot.Modules.ColossoBattles
             {
                 await Global.Client.SetGameAsync("in Babi's Palace.", "https://www.twitch.tv/directory/game/Golden%20Sun", ActivityType.Streaming);
             }
+            AcceptBattles = true;
         }
 
         [Command("c reset")]
@@ -176,6 +178,21 @@ namespace IodemBot.Modules.ColossoBattles
         {
             var a = battles.Where(b => Context.Guild.Channels.Any(c => b.GetIds.Contains(c.Id))
                 && b.Name.Equals(name, StringComparison.InvariantCultureIgnoreCase))
+                .FirstOrDefault();
+            if (a != null)
+            {
+                _ = a.Reset();
+                await Context.Message.DeleteAsync();
+            }
+        }
+
+        [Command("c reset")]
+        [RequireStaff]
+        [RequireUserServer]
+        public async Task Reset(ulong id)
+        {
+            var a = battles.OfType<PvEEnvironment>().Where(b => Context.Guild.Channels.Any(c => b.GetIds.Contains(c.Id))
+                && b.BattleChannel.Id == id)
                 .FirstOrDefault();
             if (a != null)
             {
@@ -206,6 +223,7 @@ namespace IodemBot.Modules.ColossoBattles
         [RequireUserServer]
         public async Task ColossoEndless(EndlessMode mode = EndlessMode.Default)
         {
+            if (!AcceptBattles) return;
             var guild = Context.Guild;
             var gs = GuildSettings.GetGuildSettings(guild);
             var gauntletFromUser = battles.Where(b => b.Name.Equals(Context.User.Username, StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault();
@@ -268,16 +286,46 @@ namespace IodemBot.Modules.ColossoBattles
             await Task.CompletedTask;
         }
 
-        [Command("Status")]
+        [Command("c status")]
         [RequireStaff]
-        public async Task StatusOfBattle(string name)
+        public async Task StatusOfBattle(string name = "")
         {
             await Context.Message.DeleteAsync();
-            var a = battles.Where(b => b.Name.Equals(name, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
+            var a = battles.Where(b => Context.Guild.Channels.Any(c => b.GetIds.Contains(c.Id))
+                && b.Name.Equals(name, StringComparison.InvariantCultureIgnoreCase))
+                .FirstOrDefault();
             if (a != null)
             {
                 await Context.Channel.SendMessageAsync(a.GetStatus());
             }
+            if(name == "")
+            {
+                await ReplyAsync(string.Join("\n", 
+                    battles.Where(b => Context.Guild.Channels.Any(c => b.GetIds.Contains(c.Id)))
+                    .Select(b => $"Name: {b.Name} ({b.GetType()}) Ids:{b.GetIds[0]} Active:{b.IsActive} Permanent:{b.IsPersistent}")));
+            }
+        }
+
+        [Command("c status")]
+        [RequireStaff]
+        public async Task StatusOfBattle(ulong id)
+        {
+            await Context.Message.DeleteAsync();
+            var a = battles.OfType<PvEEnvironment>().Where(b => Context.Guild.Channels.Any(c => b.GetIds.Contains(c.Id))
+                && b.BattleChannel.Id == id)
+                .FirstOrDefault();
+            if (a != null)
+            {
+                await Context.Channel.SendMessageAsync(a.GetStatus());
+            }
+        }
+
+        [Command("c AcceptBattles")]
+        [RequireStaff]
+        public async Task SetAcceptBattles(bool acceptBattles)
+        {
+            AcceptBattles = acceptBattles;
+            await Task.CompletedTask;
         }
 
         [Command("train")]

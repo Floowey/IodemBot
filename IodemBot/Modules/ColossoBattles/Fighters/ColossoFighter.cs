@@ -552,7 +552,7 @@ namespace IodemBot.Modules.ColossoBattles
                 }
                 else
                 {
-                    Console.WriteLine($"{emote.Name} {emote} not in {Moves.Select(m => m.Emote)}");
+                    Console.WriteLine($"{Name}: {emote.Name} {emote} not in {string.Join(",", Moves.Select(m => m.Emote)}"));
                     return false;
                 }
             }
