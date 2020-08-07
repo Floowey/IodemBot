@@ -1,8 +1,8 @@
 #!/bin/bash
 # pullusers.sh
 # Backup users to git, override everything
-cd /Resources/Accounts/
-git commit -a -m "Backup Accounts"
+cd Resources/Accounts/
+git commit -a -m "Backup Accounts before Pulling"
 git pull -s recursive -X theirs
 git push
 

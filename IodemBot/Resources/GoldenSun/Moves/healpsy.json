@@ -279,7 +279,7 @@
   },
   "Recovery": {
     "name": "Recovery",
-    "targetType": 1,
+    "targetType": 0,
     "emote": ":star2:",
     "range": 1,
     "element": 0,
@@ -289,7 +289,7 @@
   },
   "Spasm": {
     "name": "Spasm",
-    "targetType": 1,
+    "targetType": 0,
     "emote": ":star2:",
     "range": 1,
     "element": 0,
