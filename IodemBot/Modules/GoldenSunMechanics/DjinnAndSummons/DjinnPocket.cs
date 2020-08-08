@@ -18,7 +18,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         [JsonProperty] private List<SummonHolder> SummonStorage = new List<SummonHolder>();
         public List<Element> DjinnSetup { get; set; } = new List<Element>();
         public int PocketUpgrades = 0;
-        public int PocketSize { get => Math.Min(60, BasePocketSize + PocketUpgrades * 2); }
+        [JsonIgnore] public int PocketSize { get => Math.Min(60, BasePocketSize + PocketUpgrades * 2); }
 
         private class DjinnHolder
         {

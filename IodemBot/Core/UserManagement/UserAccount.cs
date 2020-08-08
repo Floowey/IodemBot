@@ -126,14 +126,6 @@ namespace IodemBot.Core.UserManagement
         public ulong ChannelSwitches { get; set; } = 0;
         public EndlessStreak EndlessStreak { get; set; } = new EndlessStreak();
         public EndlessStreak LegacyStreak { get; set; } = new EndlessStreak();
-        public int ColossoHighestRoundEndless { get; set; } = 0;
-        public int ColossoHighestRoundEndlessDuo { get; set; } = 0;
-        public string ColossoHighestRoundEndlessDuoNames { get; set; } = "";
-        public int ColossoHighestRoundEndlessQuad { get; set; } = 0;
-        public string ColossoHighestRoundEndlessQuadNames { get; set; } = "";
-        public int ColossoHighestRoundEndlessSolo { get; set; }
-        public int ColossoHighestRoundEndlessTrio { get; set; } = 0;
-        public string ColossoHighestRoundEndlessTrioNames { get; set; } = "";
         public uint ColossoHighestStreak { get; set; } = 0;
         public uint ColossoStreak { get; set; } = 0;
         public uint ColossoWins { get; set; } = 0;
@@ -158,14 +150,6 @@ namespace IodemBot.Core.UserManagement
         {
             return new ServerStats()
             {
-                ColossoHighestRoundEndless = Math.Max(s1.ColossoHighestRoundEndless, s2.ColossoHighestRoundEndless),
-                ColossoHighestRoundEndlessSolo = Math.Max(s1.ColossoHighestRoundEndlessSolo, s2.ColossoHighestRoundEndlessSolo),
-                ColossoHighestRoundEndlessDuo = Math.Max(s1.ColossoHighestRoundEndlessDuo, s2.ColossoHighestRoundEndlessDuo),
-                ColossoHighestRoundEndlessTrio = Math.Max(s1.ColossoHighestRoundEndlessTrio, s2.ColossoHighestRoundEndlessTrio),
-                ColossoHighestRoundEndlessQuad = Math.Max(s1.ColossoHighestRoundEndlessQuad, s2.ColossoHighestRoundEndlessQuad),
-                ColossoHighestRoundEndlessDuoNames = s1.ColossoHighestRoundEndlessDuo >= s2.ColossoHighestRoundEndlessDuo ? s1.ColossoHighestRoundEndlessDuoNames : s2.ColossoHighestRoundEndlessDuoNames,
-                ColossoHighestRoundEndlessTrioNames = s1.ColossoHighestRoundEndlessTrio >= s2.ColossoHighestRoundEndlessTrio ? s1.ColossoHighestRoundEndlessTrioNames : s2.ColossoHighestRoundEndlessTrioNames,
-                ColossoHighestRoundEndlessQuadNames = s1.ColossoHighestRoundEndlessDuo >= s2.ColossoHighestRoundEndlessQuad ? s1.ColossoHighestRoundEndlessQuadNames : s2.ColossoHighestRoundEndlessQuadNames,
                 ColossoHighestStreak = Math.Max(s1.ColossoHighestStreak, s2.ColossoHighestStreak),
                 EndlessStreak = s1.EndlessStreak + s2.EndlessStreak,
                 LegacyStreak = s1.LegacyStreak + s2.LegacyStreak,

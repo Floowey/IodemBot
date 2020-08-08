@@ -60,7 +60,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         [JsonIgnore]
         private List<Item> Inv { get; set; } = new List<Item>();
 
-        [JsonProperty]
+        [JsonIgnore]
         public uint MaxInvSize
         {
             get { return BaseInvSize + 10 * Upgrades; }
