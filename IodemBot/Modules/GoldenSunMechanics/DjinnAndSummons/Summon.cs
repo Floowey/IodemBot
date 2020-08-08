@@ -8,7 +8,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 {
     public class Summon : Move
     {
-        [JsonProperty] private Move Move { get; set; }
+        [JsonProperty] private Move Move { get; set; } = new Nothing();
         [JsonIgnore] public override string Name { get => Move.Name; set => Move.Name = value; }
         [JsonIgnore] public override string Emote { get => Move.Emote; set => Move.Emote = value; }
         [JsonIgnore] public override Target TargetType { get => Move.TargetType; set => Move.TargetType = value; }

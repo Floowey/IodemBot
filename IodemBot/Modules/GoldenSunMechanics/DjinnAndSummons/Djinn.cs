@@ -11,7 +11,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
     public class Djinn : Move
     {
-        [JsonProperty] private Move Move { get; set; }
+        [JsonProperty] private Move Move { get; set; } = new Nothing();
         public override string Name { get => Nickname.IsNullOrEmpty() ? Djinnname : Nickname; }
         public string Nickname { get; set; } = "";
         public string Djinnname { get; set; } = "";
