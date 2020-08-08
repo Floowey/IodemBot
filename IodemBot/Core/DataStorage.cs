@@ -22,6 +22,10 @@ namespace IodemBot.Core
 
                 isSaving = true;
                 string json = JsonConvert.SerializeObject(accounts, Formatting.Indented);
+                if (json.Length < 5)
+                {
+                    throw new JsonException($"Length of json string appears to be corrupted: {json.Length}. Aborting Saving.");
+                }
                 File.WriteAllText(filePath, json);
                 isSaving = false;
             }

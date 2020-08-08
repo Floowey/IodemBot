@@ -6,6 +6,8 @@ using Newtonsoft.Json;
 
 namespace IodemBot.Core.UserManagement
 {
+
+    
     public class BattleStats
     {
         public int AttackedWeakness { get; set; } = 0;
@@ -185,18 +187,22 @@ namespace IodemBot.Core.UserManagement
 
     public class UserAccount
     {
+        public static ulong[][] rates = new ulong[][] {
+                    new ulong[] { 2538160, 25000, 100 },
+                    new ulong[] { 1196934, 2500, 90 },
+                    new ulong[] { 605000, 1000, 80 },
+                    new ulong[]{ 125000, 200, 50 },
+                    new ulong[]{ 0, 50, 0 }
+        };
         public ulong ID { get; set; }
         public string Name { get; set; }
-        public bool arePublicCodes = false;
 
-        public List<string> BonusClasses = new List<string> { };
+        public Inventory Inv { get; set; } = new Inventory();
         public List<string> Dungeons = new List<string>() { };
-        public BattleStats BattleStats { get; set; } = new BattleStats();
-
-        public BattleStats BattleStatsTotal { get; set; } = new BattleStats();
-
-        public int ClassToggle { get; set; } = 0;
+        public List<string> Tags { get; set; } = new List<string>();
         public DjinnPocket DjinnPocket { get; set; } = new DjinnPocket();
+        public int ClassToggle { get; set; } = 0;
+        public List<string> BonusClasses = new List<string> { };
 
         public Element Element { get; set; } = Element.none;
         public Loadouts Loadouts { get; set; } = new Loadouts();
@@ -211,18 +217,8 @@ namespace IodemBot.Core.UserManagement
             }
         }
 
-        public Inventory Inv { get; set; } = new Inventory();
         public DateTime LastClaimed { get; set; }
         public DateTime LastXP { get; set; }
-
-        [JsonIgnore]
-        private readonly ulong[][] rates = new ulong[][] {
-                    new ulong[] { 2538160, 25000, 100 },
-                    new ulong[] { 1196934, 2500, 90 },
-                    new ulong[] { 605000, 1000, 80 },
-                    new ulong[]{ 125000, 200, 50 },
-                    new ulong[]{ 0, 50, 0 }
-            };
 
         [JsonIgnore]
         public uint LevelNumber
@@ -268,23 +264,24 @@ namespace IodemBot.Core.UserManagement
                 return xpneeded - XP;
             }
         }
-
+        public bool arePublicCodes = false;
         public string N3DSCode { get; set; } = "0000-0000-0000";
         public int NewGames { get; set; } = 0;
         public string PoGoCode { get; set; } = "0000-0000-0000";
-        public ServerStats ServerStats { get; set; } = new ServerStats();
-        public ServerStats ServerStatsTotal { get; set; } = new ServerStats();
+       
         public string SwitchCode { get; set; } = "0000-0000-0000";
 
-        public List<string> Tags { get; set; } = new List<string>();
-
-        public ulong TotalXP { get { return XPLastGame + XP; } }
+        [JsonIgnore] public ulong TotalXP { get { return XPLastGame + XP; } }
 
         public ulong XP { get; set; } = 0;
 
         public double XpBoost { get; set; } = 1;
 
         public ulong XPLastGame { get; set; } = 0;
+        public ServerStats ServerStats { get; set; } = new ServerStats();
+        public ServerStats ServerStatsTotal { get; set; } = new ServerStats();
+        public BattleStats BattleStats { get; set; } = new BattleStats();
+        public BattleStats BattleStatsTotal { get; set; } = new BattleStats();
 
         public void AddXp(ulong xp)
         {

@@ -49,7 +49,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             }
             catch (Exception e)
             {
-                Console.WriteLine("What!?" + e.ToString());
+                Console.WriteLine($"{Name} from {User.Name} has raised an error:\n" + e.ToString());
             }
             return log;
         }
