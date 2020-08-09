@@ -97,14 +97,16 @@ namespace IodemBot.Modules.ColossoBattles
                 await ReplyAsync($"I don't know where that place is.");
             }
 
+            List<SocketGuildUser> toBeRemoved = new List<SocketGuildUser>();
             foreach (var entry in FighterRoles)
             {
                 if ((DateTime.Now - entry.Value).TotalMinutes > 3)
                 {
                     _ = entry.Key.RemoveRoleAsync(gs.FighterRole);
-                    FighterRoles.Remove(entry.Key);
+                    toBeRemoved.Add(entry.Key);
                 }
             }
+            toBeRemoved.ForEach(d => FighterRoles.Remove(d));
             await Task.CompletedTask;
         }
 
@@ -292,15 +294,17 @@ namespace IodemBot.Modules.ColossoBattles
                     FighterRoles.Add(user, DateTime.Now);
                 }
             }
-
+            List<SocketGuildUser> toBeRemoved = new List<SocketGuildUser>();
             foreach (var entry in FighterRoles)
             {
                 if ((DateTime.Now - entry.Value).TotalMinutes > 3)
                 {
                     _ = entry.Key.RemoveRoleAsync(gs.FighterRole);
-                    FighterRoles.Remove(entry.Key);
+                    toBeRemoved.Add(entry.Key);
                 }
             }
+            toBeRemoved.ForEach(d => FighterRoles.Remove(d));
+            await Task.CompletedTask;
 
         }
 
