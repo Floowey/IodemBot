@@ -16,7 +16,7 @@ namespace IodemBot.Core
         public bool AutoSetup = false;
 
         [JsonIgnore] public IRole TeamBRole { get => Global.Client.GetGuild(GuildID).GetRole(guildConfig.TeamBID); }
-        [JsonIgnore] public IRole FighterRole { get => Global.Client.GetGuild(GuildID).GetRole(guildConfig.TeamBID); }
+        [JsonIgnore] public IRole FighterRole { get => Global.Client.GetGuild(GuildID).GetRole(guildConfig.FighterID); }
         [JsonIgnore] public SocketTextChannel MainChannel { get { return (SocketTextChannel)Global.Client.GetChannel(guildConfig.MainChannelID); } }
         [JsonIgnore] public SocketTextChannel ModChannel { get { return (SocketTextChannel)Global.Client.GetChannel(guildConfig.ModChannelID); } }
         [JsonIgnore] public SocketTextChannel CommandChannel { get { return (SocketTextChannel)Global.Client.GetChannel(guildConfig.CommandChannelID); } }
