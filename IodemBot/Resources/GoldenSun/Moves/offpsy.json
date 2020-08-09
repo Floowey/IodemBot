@@ -2962,7 +2962,7 @@
     "range": 1,
     "element": 3,
     "PPCost": 0,
-    "addDamage": 40,
+    "power": 13,
     "effects": [
       {
         "Type": "Stat",
