@@ -8,30 +8,32 @@ namespace IodemBot.Core
     public static class DataStorage
     {
         private static bool isSaving = false;
+        private static readonly object dataLock = new object();
 
         //Save All userAccounts
         public static void SaveUserAccounts<T>(IEnumerable<T> accounts, string filePath)
         {
             try
             {
-                //prevent crashes.
-                if (isSaving)
+                if (isSaving) return;
+                lock (dataLock)
                 {
-                    return;
+                    isSaving = true;
+                    string json = JsonConvert.SerializeObject(accounts, Formatting.Indented);
+                    if (json.Length < 5)
+                    {
+                        throw new JsonException($"Length of json string appears to be corrupted: {json.Length}. Aborting Saving.");
+                    }
+                    File.WriteAllText(filePath, json);
                 }
-
-                isSaving = true;
-                string json = JsonConvert.SerializeObject(accounts, Formatting.Indented);
-                if (json.Length < 5)
-                {
-                    throw new JsonException($"Length of json string appears to be corrupted: {json.Length}. Aborting Saving.");
-                }
-                File.WriteAllText(filePath, json);
-                isSaving = false;
             }
             catch (Exception e)
             {
                 Console.WriteLine("Error while saving:" + e.ToString());
+            }
+            finally
+            {
+                isSaving = false;
             }
         }
 
