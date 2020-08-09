@@ -33,6 +33,7 @@ namespace IodemBot.Modules.ColossoBattles
             if (!(Context.User is SocketGuildUser user)) return;
             var acc = UserAccounts.GetAccount(Context.User);
             var gs = GuildSettings.GetGuildSettings(Context.Guild);
+            _ = RemoveFighterRoles();
             if (EnemiesDatabase.TryGetDungeon(DungeonName, out var Dungeon))
             {
                 if (!acc.Dungeons.Contains(Dungeon.Name) && !Dungeon.IsDefault && !ModPermission)
@@ -80,33 +81,49 @@ namespace IodemBot.Modules.ColossoBattles
                 }
                 _ = Context.Channel.SendMessageAsync($"{Context.User.Username}, {openBattle.BattleChannel.Mention} has been prepared for your adventure to {Dungeon.Name}");
 
-                if (!user.Roles.Any(r => r.Id == gs.FighterRole.Id))
-                {
-                    _ = user.AddRoleAsync(gs.FighterRole);
-                    if(FighterRoles.TryGetValue(user, out var roleAdded)){
-                        roleAdded = DateTime.Now;
-                    } else
-                    {
-                        FighterRoles.Add(user, DateTime.Now);
-                    }
-                }
-                
+                _ = AddFighterRole();
             }
             else
             {
                 await ReplyAsync($"I don't know where that place is.");
             }
 
+            await Task.CompletedTask;
+        }
+
+        private async Task RemoveFighterRoles()
+        {
+            var gs = GuildSettings.GetGuildSettings(Context.Guild);
             List<SocketGuildUser> toBeRemoved = new List<SocketGuildUser>();
             foreach (var entry in FighterRoles)
             {
                 if ((DateTime.Now - entry.Value).TotalMinutes > 10)
                 {
+                    if(entry.Key.Roles.Any(r => r.Id == gs.FighterRole.Id))
                     _ = entry.Key.RemoveRoleAsync(gs.FighterRole);
                     toBeRemoved.Add(entry.Key);
                 }
             }
             toBeRemoved.ForEach(d => FighterRoles.Remove(d));
+            await Task.CompletedTask;
+        }
+
+        private async Task AddFighterRole()
+        {
+            var gs = GuildSettings.GetGuildSettings(Context.Guild);
+            if (!(Context.User is SocketGuildUser user)) return;
+            if (!user.Roles.Any(r => r.Id == gs.FighterRole.Id))
+            {
+                _ = user.AddRoleAsync(gs.FighterRole);
+                if (FighterRoles.TryGetValue(user, out var roleAdded))
+                {
+                    roleAdded = DateTime.Now;
+                }
+                else
+                {
+                    FighterRoles.Add(user, DateTime.Now);
+                }
+            }
             await Task.CompletedTask;
         }
 
@@ -254,6 +271,7 @@ namespace IodemBot.Modules.ColossoBattles
             if (!(Context.User is SocketGuildUser user)) return;
             var guild = Context.Guild;
             var gs = GuildSettings.GetGuildSettings(guild);
+            _ = RemoveFighterRoles();
             var gauntletFromUser = battles.Where(b => b.Name.Equals(Context.User.Username, StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault();
             var acc = UserAccounts.GetAccount(Context.User);
             if (acc.LevelNumber < 50 && !acc.Tags.Contains("ColossoCompleted")) return;
@@ -282,28 +300,7 @@ namespace IodemBot.Modules.ColossoBattles
             battles.Add(openBattle);
             _ = Context.Channel.SendMessageAsync($"{Context.User.Username}, {openBattle.BattleChannel.Mention} has been prepared for an endless adventure!");
 
-            if (!user.Roles.Any(r => r.Id == gs.FighterRole.Id))
-            {
-                _ = user.AddRoleAsync(gs.FighterRole);
-                if (FighterRoles.TryGetValue(user, out var roleAdded))
-                {
-                    roleAdded = DateTime.Now;
-                }
-                else
-                {
-                    FighterRoles.Add(user, DateTime.Now);
-                }
-            }
-            List<SocketGuildUser> toBeRemoved = new List<SocketGuildUser>();
-            foreach (var entry in FighterRoles)
-            {
-                if ((DateTime.Now - entry.Value).TotalMinutes > 3)
-                {
-                    _ = entry.Key.RemoveRoleAsync(gs.FighterRole);
-                    toBeRemoved.Add(entry.Key);
-                }
-            }
-            toBeRemoved.ForEach(d => FighterRoles.Remove(d));
+            _ = AddFighterRole();
             await Task.CompletedTask;
 
         }

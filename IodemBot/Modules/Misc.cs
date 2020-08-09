@@ -65,7 +65,7 @@ namespace IodemBot.Modules
         {
             await Context.Channel.SendMessageAsync(embed: new EmbedBuilder()
                 .WithColor(Colors.Get("Iodem"))
-                .WithDescription($"Pong! {Global.Client.Latency}ms")
+                .WithDescription($"Pong! {Global.Client.Latency} ms")
                 .Build());
         }
 
@@ -397,7 +397,7 @@ namespace IodemBot.Modules
             {
                 {"Gladiator", 511704880122036234},
                 {"Colosso Adept", 644506247521107969 },
-                {"Fighter", 741994390125281352 }
+                {"Fighter", 742060001031618590 }
             };
 
             if(RoleName == "Gladiator" && UserAccounts.GetAccount(Context.User).LevelNumber < 5)
