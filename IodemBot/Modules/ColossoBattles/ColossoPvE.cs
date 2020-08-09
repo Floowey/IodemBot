@@ -100,7 +100,7 @@ namespace IodemBot.Modules.ColossoBattles
             List<SocketGuildUser> toBeRemoved = new List<SocketGuildUser>();
             foreach (var entry in FighterRoles)
             {
-                if ((DateTime.Now - entry.Value).TotalMinutes > 3)
+                if ((DateTime.Now - entry.Value).TotalMinutes > 10)
                 {
                     _ = entry.Key.RemoveRoleAsync(gs.FighterRole);
                     toBeRemoved.Add(entry.Key);
@@ -273,11 +273,11 @@ namespace IodemBot.Modules.ColossoBattles
             PvEEnvironment openBattle;
             if (mode == EndlessMode.Default)
             {
-                openBattle = new EndlessBattleEnvironment($"{Context.User.Username}", gs.ColossoChannel, false, await PrepareBattleChannel($"Endless-{Context.User.Username}", guild));
+                openBattle = new EndlessBattleEnvironment($"{Context.User.Username}", gs.ColossoChannel, false, await PrepareBattleChannel($"Endless-{Context.User.Username}", guild, persistent: false));
             }
             else
             {
-                openBattle = new EndlessBattleEnvironment($"{Context.User.Username}", gs.ColossoChannel, false, await PrepareBattleChannel($"Endless-Legacy-{Context.User.Username}", guild), EndlessMode.Legacy);
+                openBattle = new EndlessBattleEnvironment($"{Context.User.Username}", gs.ColossoChannel, false, await PrepareBattleChannel($"Endless-Legacy-{Context.User.Username}", guild, persistent:false), EndlessMode.Legacy);
             }
             battles.Add(openBattle);
             _ = Context.Channel.SendMessageAsync($"{Context.User.Username}, {openBattle.BattleChannel.Mention} has been prepared for an endless adventure!");
