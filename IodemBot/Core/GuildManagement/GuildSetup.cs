@@ -15,13 +15,15 @@ namespace IodemBot.Core
         public bool isUserServer = false;
         public bool AutoSetup = false;
 
-        [JsonIgnore] public IRole TeamB { get => Global.Client.GetGuild(GuildID).GetRole(guildConfig.TeamBID); }
+        [JsonIgnore] public IRole TeamBRole { get => Global.Client.GetGuild(GuildID).GetRole(guildConfig.TeamBID); }
+        [JsonIgnore] public IRole FighterRole { get => Global.Client.GetGuild(GuildID).GetRole(guildConfig.TeamBID); }
         [JsonIgnore] public SocketTextChannel MainChannel { get { return (SocketTextChannel)Global.Client.GetChannel(guildConfig.MainChannelID); } }
         [JsonIgnore] public SocketTextChannel ModChannel { get { return (SocketTextChannel)Global.Client.GetChannel(guildConfig.ModChannelID); } }
         [JsonIgnore] public SocketTextChannel CommandChannel { get { return (SocketTextChannel)Global.Client.GetChannel(guildConfig.CommandChannelID); } }
         [JsonIgnore] public SocketTextChannel ColossoChannel { get { return (SocketTextChannel)Global.Client.GetChannel(guildConfig.ColossoChannelID); } }
         [JsonIgnore] public SocketTextChannel TestCommandChannel { get { return (SocketTextChannel)Global.Client.GetChannel(guildConfig.TestCommandChannelID); } }
         [JsonIgnore] public SocketTextChannel StreamChannel { get { return (SocketTextChannel)Global.Client.GetChannel(guildConfig.StreamChannelID); } }
+        [JsonIgnore] public SocketCategoryChannel CustomBattlesCateogry { get { return (SocketCategoryChannel)Global.Client.GetChannel(guildConfig.StreamChannelID); } }
     }
 
     public struct GuildSetupConfig
@@ -30,8 +32,10 @@ namespace IodemBot.Core
         public ulong ModChannelID { get; set; }
         public ulong CommandChannelID { get; set; }
         public ulong ColossoChannelID { get; set; }
+        public ulong CustomBattlesCateogryID { get; set; }
         public ulong TestCommandChannelID { get; set; }
         public ulong StreamChannelID { get; set; }
         public ulong TeamBID { get; set; }
+        public ulong FighterID { get; set; }
     }
 }

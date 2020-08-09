@@ -21,24 +21,26 @@ namespace IodemBot.Modules.ColossoBattles
 
         private static readonly List<BattleEnvironment> battles = new List<BattleEnvironment>();
         private static bool AcceptBattles = true;
+        private static Dictionary<SocketGuildUser, DateTime> FighterRoles = new Dictionary<SocketGuildUser, DateTime>();
         public static ulong[] ChannelIds
         {
-            get => battles.Select(b => b.GetIds).SelectMany(item => item).Distinct().ToArray();
+            get => battles.Select(b => b.GetChannelIds).SelectMany(item => item).Distinct().ToArray();
         }
 
         public async Task SetupDungeon(string DungeonName, bool ModPermission = false)
         {
             if (!AcceptBattles) return;
-            var User = UserAccounts.GetAccount(Context.User);
+            if (!(Context.User is SocketGuildUser user)) return;
+            var acc = UserAccounts.GetAccount(Context.User);
             if (EnemiesDatabase.TryGetDungeon(DungeonName, out var Dungeon))
             {
-                if (!User.Dungeons.Contains(Dungeon.Name) && !Dungeon.IsDefault && !ModPermission)
+                if (!acc.Dungeons.Contains(Dungeon.Name) && !Dungeon.IsDefault && !ModPermission)
                 {
                     await ReplyAsync($"If you can't tell me where this place is, I can't take you there. And even if you knew, they probably wouldn't let you in! Bring me a map or show to me that you have the key to enter.");
                     return;
                 }
 
-                if (!Dungeon.Requirement.Applies(User) && !ModPermission)
+                if (!Dungeon.Requirement.Applies(acc) && !ModPermission)
                 {
                     await ReplyAsync($"I'm afraid that I can't take you to this place, it is too dangerous for you and me both.");
                     return;
@@ -47,12 +49,13 @@ namespace IodemBot.Modules.ColossoBattles
                 var openBattle = battles.OfType<GauntletBattleEnvironment>().Where(b => b.IsReady && b.IsPersistent).FirstOrDefault();
                 if (openBattle == null)
                 {
-                    var gauntletFromUser = battles.Where(b => b.Name.Equals(Context.User.Username, StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault();
+                    var gauntletFromUser = battles.OfType<GauntletBattleEnvironment>().Where(b => b.Name.Equals(Context.User.Username, StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault();
                     if (gauntletFromUser != null)
                     {
                         if (gauntletFromUser.IsActive)
                         {
                             await ReplyAsync($"What? You already are on an adventure!");
+                            Console.WriteLine($"User Active in: {gauntletFromUser.Name}; {gauntletFromUser.BattleChannel.Id}");
                             return;
                         }
                         else
@@ -61,7 +64,7 @@ namespace IodemBot.Modules.ColossoBattles
                             battles.Remove(gauntletFromUser);
                         }
                     }
-                    openBattle = new GauntletBattleEnvironment($"{Context.User.Username}", GuildSettings.GetGuildSettings(Context.Guild).ColossoChannel, await PrepareBattleChannel($"{Dungeon.Name}-{Context.User.Username}", Context.Guild), Dungeon.Name, false);
+                    openBattle = new GauntletBattleEnvironment($"{Context.User.Username}", GuildSettings.GetGuildSettings(Context.Guild).ColossoChannel, await PrepareBattleChannel($"{Dungeon.Name}-{Context.User.Username}", Context.Guild, persistent: false), Dungeon.Name, false);
 
                     battles.Add(openBattle);
                 }
@@ -72,13 +75,35 @@ namespace IodemBot.Modules.ColossoBattles
 
                 if (Dungeon.IsOneTimeOnly && !ModPermission)
                 {
-                    User.Dungeons.Remove(Dungeon.Name);
+                    acc.Dungeons.Remove(Dungeon.Name);
                 }
                 _ = Context.Channel.SendMessageAsync($"{Context.User.Username}, {openBattle.BattleChannel.Mention} has been prepared for your adventure to {Dungeon.Name}");
+
+                var gs = GuildSettings.GetGuildSettings(Context.Guild);
+                if (user.Roles.Any(r => r.Id == gs.FighterRole.Id))
+                {
+                    _ = user.AddRoleAsync(gs.FighterRole);
+                    if(FighterRoles.TryGetValue(user, out var roleAdded)){
+                        roleAdded = DateTime.Now;
+                    } else
+                    {
+                        FighterRoles.Add(user, DateTime.Now);
+                    }
+                }
+                
             }
             else
             {
                 await ReplyAsync($"I don't know where that place is.");
+            }
+
+            foreach (var entry in FighterRoles)
+            {
+                if ((DateTime.Now - entry.Value).TotalMinutes > 3)
+                {
+                    _ = entry.Key.RemoveRoleAsync(gs.FighterRole);
+                    FighterRoles.Remove(entry.Key);
+                }
             }
             await Task.CompletedTask;
         }
@@ -149,7 +174,7 @@ namespace IodemBot.Modules.ColossoBattles
 
         public static async Task Setup(SocketGuild guild)
         {
-            battles.Where(b => guild.Channels.Any(c => b.GetIds.Contains(c.Id))).ToList().ForEach(old => old.Dispose());
+            battles.Where(b => guild.Channels.Any(c => b.GetChannelIds.Contains(c.Id))).ToList().ForEach(old => old.Dispose());
             var gs = GuildSettings.GetGuildSettings(guild);
             battles.Add(new SingleBattleEnvironment("Wilds", gs.ColossoChannel, true, await PrepareBattleChannel("Weyard-Wilds", guild), BattleDifficulty.Easy));
             battles.Add(new SingleBattleEnvironment("Woods", gs.ColossoChannel, true, await PrepareBattleChannel("Weyard-Woods", guild), BattleDifficulty.Medium));
@@ -159,7 +184,7 @@ namespace IodemBot.Modules.ColossoBattles
 
             //battles.Add(new GauntletBattleEnvironment("Dungeon", LobbyChannel, await PrepareBattleChannel("deep-dungeon"), "Vale"));
             //battles.Add(new GauntletBattleEnvironment("Catabombs", LobbyChannel, await PrepareBattleChannel("chilly-catacombs"), "Vale"));
-            battles.Add(new TeamBattleEnvironment("PvP", gs.ColossoChannel, false, await PrepareBattleChannel("PvP-A", guild, RoomVisibility.All), await PrepareBattleChannel("PvP-B", guild, RoomVisibility.TeamB), gs.TeamB));
+            battles.Add(new TeamBattleEnvironment("PvP", gs.ColossoChannel, false, await PrepareBattleChannel("PvP-A", guild, RoomVisibility.All), await PrepareBattleChannel("PvP-B", guild, RoomVisibility.TeamB), gs.TeamBRole));
 
             //battles.Add(new SingleBattleEnvironment("Gold", LobbyChannel, await PrepareBattleChannel("Gold"), BattleDifficulty.Hard));
             //battles.Add(new TeamBattleManager("OneVOne", LobbyChannel, await PrepareBattleChannel("OneVOneA", PermValue.Deny), await PrepareBattleChannel("OneVOneB", PermValue.Allow), 1));
@@ -176,7 +201,7 @@ namespace IodemBot.Modules.ColossoBattles
         [RequireUserServer]
         public async Task Reset(string name)
         {
-            var a = battles.Where(b => Context.Guild.Channels.Any(c => b.GetIds.Contains(c.Id))
+            var a = battles.Where(b => Context.Guild.Channels.Any(c => b.GetChannelIds.Contains(c.Id))
                 && b.Name.Equals(name, StringComparison.InvariantCultureIgnoreCase))
                 .FirstOrDefault();
             if (a != null)
@@ -191,7 +216,7 @@ namespace IodemBot.Modules.ColossoBattles
         [RequireUserServer]
         public async Task Reset(ulong id)
         {
-            var a = battles.OfType<PvEEnvironment>().Where(b => Context.Guild.Channels.Any(c => b.GetIds.Contains(c.Id))
+            var a = battles.OfType<PvEEnvironment>().Where(b => Context.Guild.Channels.Any(c => b.GetChannelIds.Contains(c.Id))
                 && b.BattleChannel.Id == id)
                 .FirstOrDefault();
             if (a != null)
@@ -224,6 +249,7 @@ namespace IodemBot.Modules.ColossoBattles
         public async Task ColossoEndless(EndlessMode mode = EndlessMode.Default)
         {
             if (!AcceptBattles) return;
+            if (!(Context.User is SocketGuildUser user)) return;
             var guild = Context.Guild;
             var gs = GuildSettings.GetGuildSettings(guild);
             var gauntletFromUser = battles.Where(b => b.Name.Equals(Context.User.Username, StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault();
@@ -253,6 +279,29 @@ namespace IodemBot.Modules.ColossoBattles
             }
             battles.Add(openBattle);
             _ = Context.Channel.SendMessageAsync($"{Context.User.Username}, {openBattle.BattleChannel.Mention} has been prepared for an endless adventure!");
+
+            if (user.Roles.Any(r => r.Id == gs.FighterRole.Id))
+            {
+                _ = user.AddRoleAsync(gs.FighterRole);
+                if (FighterRoles.TryGetValue(user, out var roleAdded))
+                {
+                    roleAdded = DateTime.Now;
+                }
+                else
+                {
+                    FighterRoles.Add(user, DateTime.Now);
+                }
+            }
+
+            foreach (var entry in FighterRoles)
+            {
+                if ((DateTime.Now - entry.Value).TotalMinutes > 3)
+                {
+                    _ = entry.Key.RemoveRoleAsync(gs.FighterRole);
+                    FighterRoles.Remove(entry.Key);
+                }
+            }
+
         }
 
         [Command("dungeon"), Alias("dg")]
@@ -292,7 +341,7 @@ namespace IodemBot.Modules.ColossoBattles
         public async Task StatusOfBattle(string name = "")
         {
             await Context.Message.DeleteAsync();
-            var a = battles.Where(b => Context.Guild.Channels.Any(c => b.GetIds.Contains(c.Id))
+            var a = battles.Where(b => Context.Guild.Channels.Any(c => b.GetChannelIds.Contains(c.Id))
                 && b.Name.Equals(name, StringComparison.InvariantCultureIgnoreCase))
                 .FirstOrDefault();
             if (a != null)
@@ -302,8 +351,8 @@ namespace IodemBot.Modules.ColossoBattles
             if(name == "")
             {
                 await ReplyAsync(string.Join("\n", 
-                    battles.Where(b => Context.Guild.Channels.Any(c => b.GetIds.Contains(c.Id)))
-                    .Select(b => $"Name: {b.Name} ({b.GetType()}) Ids:{b.GetIds[0]} Active:{b.IsActive} Permanent:{b.IsPersistent}")));
+                    battles.Where(b => Context.Guild.Channels.Any(c => b.GetChannelIds.Contains(c.Id)))
+                    .Select(b => $"Name: {b.Name} ({b.GetType()}) Ids:{b.GetChannelIds[0]} Active:{b.IsActive} Permanent:{b.IsPersistent}")));
             }
         }
 
@@ -313,7 +362,7 @@ namespace IodemBot.Modules.ColossoBattles
         public async Task StatusOfBattle(ulong id)
         {
             await Context.Message.DeleteAsync();
-            var a = battles.OfType<PvEEnvironment>().Where(b => Context.Guild.Channels.Any(c => b.GetIds.Contains(c.Id))
+            var a = battles.OfType<PvEEnvironment>().Where(b => Context.Guild.Channels.Any(c => b.GetChannelIds.Contains(c.Id))
                 && b.BattleChannel.Id == id)
                 .FirstOrDefault();
             if (a != null)
@@ -340,18 +389,19 @@ namespace IodemBot.Modules.ColossoBattles
             await ReplyAsync(embed: Colosso.ColossoTrain((SocketGuildUser)Context.User, Context.Channel));
         }
 
-        private static async Task<ITextChannel> PrepareBattleChannel(string Name, SocketGuild guild, RoomVisibility visibility = RoomVisibility.All)
+        private static async Task<ITextChannel> PrepareBattleChannel(string Name, SocketGuild guild, RoomVisibility visibility = RoomVisibility.All, bool persistent = false)
         {
             var gs = GuildSettings.GetGuildSettings(guild);
             var colossoChannel = gs.ColossoChannel;
-            var teamB = gs.TeamB;
-            var channel = await guild.GetOrCreateTextChannelAsync(Name, d => { d.CategoryId = colossoChannel.CategoryId; d.Position = colossoChannel.Position + battles.Count(); });
+            var categoryID = persistent ? colossoChannel.Id : gs.CustomBattlesCateogry?.Id ?? colossoChannel.Id;
+            var teamB = gs.TeamBRole;
+            var channel = await guild.GetOrCreateTextChannelAsync(Name, d => { d.CategoryId = categoryID; d.Position = colossoChannel.Position + battles.Count(); });
             try
             {
                 await channel.SyncPermissionsAsync();
             } catch (Discord.Net.HttpException e)
             {
-                channel = await guild.GetOrCreateTextChannelAsync($"{Name}1", d => { d.CategoryId = colossoChannel.CategoryId; d.Position = colossoChannel.Position + battles.Count(); });
+                channel = await guild.GetOrCreateTextChannelAsync($"{Name}1", d => { d.CategoryId = categoryID; d.Position = colossoChannel.Position + battles.Count(); });
                 await channel.SyncPermissionsAsync();
             }
 

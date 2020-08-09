@@ -27,7 +27,7 @@ namespace IodemBot.Modules.ColossoBattles
         private bool isProcessing = false;
         public bool IsActive { get { return Battle.SizeTeamA > 0; } }
 
-        internal abstract ulong[] GetIds { get; }
+        internal abstract ulong[] GetChannelIds { get; }
         public bool IsPersistent { get; set; } = true;
 
         public BattleEnvironment(string Name, ITextChannel lobbyChannel, bool isPersistent)

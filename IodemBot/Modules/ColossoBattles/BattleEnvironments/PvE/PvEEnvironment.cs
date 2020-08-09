@@ -25,7 +25,7 @@ namespace IodemBot.Modules.ColossoBattles
         private bool WasReset = false;
         public PlayerFighterFactory Factory { get; set; } = new PlayerFighterFactory();
 
-        internal override ulong[] GetIds => new[] { BattleChannel.Id };
+        internal override ulong[] GetChannelIds => new[] { BattleChannel.Id };
 
         public PvEEnvironment(string Name, ITextChannel lobbyChannel, bool isPersistent, ITextChannel BattleChannel) : base(Name, lobbyChannel, isPersistent)
         {

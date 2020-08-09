@@ -31,7 +31,7 @@ namespace IodemBot.Modules.ColossoBattles
         private readonly List<SocketGuildUser> playersWithBRole = new List<SocketGuildUser>();
         public IRole TeamBRole;
 
-        internal override ulong[] GetIds => new[] { Teams[Team.A].teamChannel.Id, Teams[Team.B].teamChannel.Id };
+        internal override ulong[] GetChannelIds => new[] { Teams[Team.A].teamChannel.Id, Teams[Team.B].teamChannel.Id };
 
         protected Dictionary<Team, PvPTeamCollector> Teams = new Dictionary<Team, PvPTeamCollector>()
         {

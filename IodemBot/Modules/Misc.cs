@@ -396,7 +396,8 @@ namespace IodemBot.Modules
             Dictionary<string, ulong> roles = new Dictionary<string, ulong>(StringComparer.CurrentCultureIgnoreCase)
             {
                 {"Gladiator", 511704880122036234},
-                {"Colosso Adept", 644506247521107969 }
+                {"Colosso Adept", 644506247521107969 },
+                {"Fighter", 741994390125281352 }
             };
 
             if(RoleName == "Gladiator" && UserAccounts.GetAccount(Context.User).LevelNumber < 5)

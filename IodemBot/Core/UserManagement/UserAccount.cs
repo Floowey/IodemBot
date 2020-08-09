@@ -6,8 +6,6 @@ using Newtonsoft.Json;
 
 namespace IodemBot.Core.UserManagement
 {
-
-    
     public class BattleStats
     {
         public int AttackedWeakness { get; set; } = 0;
