@@ -80,7 +80,7 @@ namespace IodemBot.Modules.ColossoBattles
                 }
                 _ = Context.Channel.SendMessageAsync($"{Context.User.Username}, {openBattle.BattleChannel.Mention} has been prepared for your adventure to {Dungeon.Name}");
 
-                if (user.Roles.Any(r => r.Id == gs.FighterRole.Id))
+                if (!user.Roles.Any(r => r.Id == gs.FighterRole.Id))
                 {
                     _ = user.AddRoleAsync(gs.FighterRole);
                     if(FighterRoles.TryGetValue(user, out var roleAdded)){
@@ -282,7 +282,7 @@ namespace IodemBot.Modules.ColossoBattles
             battles.Add(openBattle);
             _ = Context.Channel.SendMessageAsync($"{Context.User.Username}, {openBattle.BattleChannel.Mention} has been prepared for an endless adventure!");
 
-            if (user.Roles.Any(r => r.Id == gs.FighterRole.Id))
+            if (!user.Roles.Any(r => r.Id == gs.FighterRole.Id))
             {
                 _ = user.AddRoleAsync(gs.FighterRole);
                 if (FighterRoles.TryGetValue(user, out var roleAdded))
