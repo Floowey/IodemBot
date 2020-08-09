@@ -23,7 +23,7 @@ namespace IodemBot.Core
         [JsonIgnore] public SocketTextChannel ColossoChannel { get { return (SocketTextChannel)Global.Client.GetChannel(guildConfig.ColossoChannelID); } }
         [JsonIgnore] public SocketTextChannel TestCommandChannel { get { return (SocketTextChannel)Global.Client.GetChannel(guildConfig.TestCommandChannelID); } }
         [JsonIgnore] public SocketTextChannel StreamChannel { get { return (SocketTextChannel)Global.Client.GetChannel(guildConfig.StreamChannelID); } }
-        [JsonIgnore] public SocketCategoryChannel CustomBattlesCateogry { get { return (SocketCategoryChannel)Global.Client.GetChannel(guildConfig.StreamChannelID); } }
+        [JsonIgnore] public SocketCategoryChannel CustomBattlesCateogry { get { return (SocketCategoryChannel)Global.Client.GetChannel(guildConfig.CustomBattlesCateogryID); } }
     }
 
     public struct GuildSetupConfig
