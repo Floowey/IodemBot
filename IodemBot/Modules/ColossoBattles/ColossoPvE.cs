@@ -32,6 +32,7 @@ namespace IodemBot.Modules.ColossoBattles
             if (!AcceptBattles) return;
             if (!(Context.User is SocketGuildUser user)) return;
             var acc = UserAccounts.GetAccount(Context.User);
+            var gs = GuildSettings.GetGuildSettings(Context.Guild);
             if (EnemiesDatabase.TryGetDungeon(DungeonName, out var Dungeon))
             {
                 if (!acc.Dungeons.Contains(Dungeon.Name) && !Dungeon.IsDefault && !ModPermission)
@@ -79,7 +80,6 @@ namespace IodemBot.Modules.ColossoBattles
                 }
                 _ = Context.Channel.SendMessageAsync($"{Context.User.Username}, {openBattle.BattleChannel.Mention} has been prepared for your adventure to {Dungeon.Name}");
 
-                var gs = GuildSettings.GetGuildSettings(Context.Guild);
                 if (user.Roles.Any(r => r.Id == gs.FighterRole.Id))
                 {
                     _ = user.AddRoleAsync(gs.FighterRole);
