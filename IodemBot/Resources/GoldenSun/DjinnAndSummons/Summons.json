@@ -71,9 +71,9 @@
         ],
         "VenusNeeded": 3
     },
-    "Judgement": {
+    "Judgment": {
         "Move": {
-            "Name": "Judgement",
+            "Name": "Judgment",
             "Emote": "<:Judgment:636449222920503307>",
             "Targettype": 4,
             "Element": 0,
