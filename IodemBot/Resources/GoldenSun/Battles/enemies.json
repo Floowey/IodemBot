@@ -10439,7 +10439,9 @@
     ],
     "hasDefend": false,
     "hasAttack": false,
-    "isImmuneToPsynergy": true
+    "isImmuneToPsynergy": true,
+    "isImmuneToOHKO": true,
+    "isImmuneToHPToOne": true
   },
   "Key20": {
     "name": "Key",
@@ -10475,7 +10477,9 @@
     ],
     "hasDefend": false,
     "hasAttack": false,
-    "isImmuneToPsynergy": true
+    "isImmuneToPsynergy": true,
+    "isImmuneToOHKO": true,
+    "isImmuneToHPToOne": true
   },
   "DeathTrap": {
     "name": "Trap",
@@ -10512,6 +10516,7 @@
     "hasDefend": false,
     "hasAttack": false,
     "isImmuneToOHKO": true,
+    "isImmuneToHPToOne": true,
     "isImmuneToPsynergy": true
   },
   "BoobyTrap": {
@@ -10548,7 +10553,9 @@
     ],
     "hasDefend": false,
     "hasAttack": false,
-    "isImmuneToPsynergy": true
+    "isImmuneToPsynergy": true,
+    "isImmuneToOHKO": true,
+    "isImmuneToHPToOne": true
   },
   "Crab": {
     "name": "Crab",
@@ -10741,10 +10748,10 @@
     "name": "Buford",
     "imgurl": "https://cdn.discordapp.com/attachments/660152162202157100/670241988108484628/Azerot.gif",
     "stats": {
-      "maxhp": 320,
+      "maxhp": 420,
       "maxpp": 2,
-      "atk": 232,
-      "def": 54,
+      "atk": 222,
+      "def": 154,
       "spd": 84
     },
     "elstats": {
@@ -10756,14 +10763,14 @@
     "extraturns": 0
   },
   "Dekka": {
-    "movepool": [ "Smoke Bomb", "Sleep Bomb" ],
+    "movepool": [ "Smoke Bomb", "Sleep Bomb", "Crystal Powder", "Crystal Powder" ],
     "name": "Dekka",
     "imgurl": "https://cdn.discordapp.com/attachments/660152162202157100/670261696291405824/Cyan.gif",
     "stats": {
-      "maxhp": 420,
-      "maxpp": 2,
-      "atk": 232,
-      "def": 54,
+      "maxhp": 460,
+      "maxpp": 3,
+      "atk": 252,
+      "def": 154,
       "spd": 84
     },
     "elstats": {
@@ -10772,17 +10779,18 @@
       "marsres": 90,
       "jupiterres": 90
     },
+    "hasDefense": false,
     "extraturns": 0
   },
   "Galahad": {
-    "movepool": [ "Smoke Bomb", "Sleep Bomb" ],
+    "movepool": [ "Smoke Bomb", "Sleep Bomb", "Bramble Seed" ],
     "name": "Galahad",
     "imgurl": "https://cdn.discordapp.com/attachments/660152162202157100/670263214189314049/Purple.gif",
     "stats": {
       "maxhp": 520,
       "maxpp": 2,
-      "atk": 232,
-      "def": 54,
+      "atk": 282,
+      "def": 164,
       "spd": 84
     },
     "elstats": {
@@ -10800,8 +10808,8 @@
     "stats": {
       "maxhp": 920,
       "maxpp": 2,
-      "atk": 232,
-      "def": 54,
+      "atk": 332,
+      "def": 154,
       "spd": 84
     },
     "elstats": {
@@ -11267,7 +11275,7 @@
     "name": "Azart",
     "imgurl": "https://goldensunwiki.net/w/images/9/94/Azart.png",
     "stats": {
-      "maxhp": 535,
+      "maxhp": 835,
       "maxpp": 3,
       "atk": 368,
       "def": 100,
@@ -11290,7 +11298,7 @@
     "name": "Satrage",
     "imgurl": "https://goldensunwiki.net/w/images/a/a0/Satrage.png",
     "stats": {
-      "maxhp": 635,
+      "maxhp": 835,
       "maxpp": 3,
       "atk": 368,
       "def": 100,
@@ -11313,7 +11321,7 @@
     "name": "Navampa",
     "imgurl": "https://goldensunwiki.net/w/images/9/97/Navampa.png",
     "stats": {
-      "maxhp": 735,
+      "maxhp": 835,
       "maxpp": 5,
       "atk": 368,
       "def": 100,
@@ -11343,11 +11351,11 @@
       "Mother Gaia"
     ],
     "stats": {
-      "maxHP": 1450,
+      "maxHP": 1750,
       "maxPP": 175,
-      "Atk": 300,
+      "Atk": 390,
       "Def": 60,
-      "Spd": 70
+      "Spd": 120
     },
     "elstats": {
       "VenusAtk": 150,
@@ -11430,7 +11438,8 @@
     "name": "Sean",
     "imgurl": "https://vignette.wikia.nocookie.net/goldensun/images/3/3b/SeanIngame.gif/revision/latest?cb=20090708143758",
     "movepool": [
-      "Brutal Swing"
+      "Brutal Swing",
+      "Echo Cut"
     ],
     "stats": {
       "maxHP": 750,
@@ -11455,13 +11464,14 @@
     "imgurl": "https://vignette.wikia.nocookie.net/goldensun/images/7/7d/OuranosIngame.gif/revision/latest?cb=20090708143842",
     "movepool": [
       "Brutal Swing",
-      "Berserk"
+      "Berserk",
+      "Echo Cut"
     ],
     "stats": {
       "maxHP": 850,
       "maxPP": 0,
-      "Atk": 420,
-      "Def": 260,
+      "Atk": 360,
+      "Def": 250,
       "Spd": 140
     },
     "elstats": {

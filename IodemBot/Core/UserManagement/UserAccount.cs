@@ -131,7 +131,7 @@ namespace IodemBot.Core.UserManagement
         public DateTime LastDayActive { get; set; }
         public int LookedUpClass { get; set; }
         public int LookedUpInformation { get; set; } = 0;
-        public int MessagesInColossoTalks { get; set; }
+        public int MessagesInColossoTalks { get; set; } = 0;
         public ulong MostRecentChannel { get; set; } = 0;
         public int ReactionsAdded { get; set; }
         public uint RpsStreak { get; set; } = 0;

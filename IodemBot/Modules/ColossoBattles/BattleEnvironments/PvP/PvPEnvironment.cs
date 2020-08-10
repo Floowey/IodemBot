@@ -123,6 +123,18 @@ namespace IodemBot.Modules.ColossoBattles
                 B.StatusMessage = null;
             }
 
+            if (A.SummonsMessage == null || B.SummonsMessage == null)
+            {
+                Initialize();
+            }
+            else
+            {
+                _ = A.SummonsMessage.ModifyAsync(m => { m.Content = "Good Luck!"; m.Embed = null; });
+                _ = A.SummonsMessage.RemoveAllReactionsAsync();
+                _ = B.SummonsMessage.ModifyAsync(m => { m.Content = "Good Luck!"; m.Embed = null; });
+                _ = B.SummonsMessage.RemoveAllReactionsAsync();
+            }
+
             if (autoTurn != null)
             {
                 autoTurn.Dispose();
@@ -211,7 +223,7 @@ namespace IodemBot.Modules.ColossoBattles
                     _ = StartBattle();
                     return;
                 }
-
+                if (!Battle.isActive) return;
                 Teams.Values.ToList().ForEach(async V =>
                 {
                     var StatusMessage = V.StatusMessage;

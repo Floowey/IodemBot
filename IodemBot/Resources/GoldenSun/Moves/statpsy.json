@@ -889,7 +889,6 @@
   "BoulderFall": {
     "name": "_boing boing boing splash_",
     "targetType": 0,
-    "hasPriority": true,
     "emote": "<:Avalanche:536959102019174411>",
     "effects": [
       {

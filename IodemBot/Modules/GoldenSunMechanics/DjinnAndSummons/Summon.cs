@@ -58,6 +58,13 @@ namespace IodemBot.Modules.GoldenSunMechanics
             {
                 return new List<string>() { $"{User.Name} failed to summon {Emote} {Name}. Not enough Djinn!" };
             }
+            var log = new List<string>();
+            var t = Validate(User);
+            log.AddRange(t.log);
+            if (!t.isValid)
+            {
+                return log;
+            }
 
             var PartyDjinn = User.GetTeam().SelectMany(u => u.Moves.OfType<Djinn>()).Distinct();
             var ReadyDjinn = PartyDjinn.Where(d => d.State == DjinnState.Standby).OrderBy(d => d.Position).ToList();
@@ -65,16 +72,16 @@ namespace IodemBot.Modules.GoldenSunMechanics
             ReadyDjinn.OfElement(Element.Mars).Take(MarsNeeded).ToList().ForEach(d => d.Summon(User));
             ReadyDjinn.OfElement(Element.Jupiter).Take(JupiterNeeded).ToList().ForEach(d => d.Summon(User));
             ReadyDjinn.OfElement(Element.Mercury).Take(MercuryNeeded).ToList().ForEach(d => d.Summon(User));
-            var Text = Move.Use(User);
+            log.AddRange(Move.Use(User));
             if (EffectsOnUser != null)
             {
-                Text.AddRange(EffectsOnUser.ApplyAll(User, User));
+                log.AddRange(EffectsOnUser.ApplyAll(User, User));
             }
             if (EffectsOnParty != null)
             {
-                User.battle.GetTeam(User.party).ForEach(p => Text.AddRange(EffectsOnParty.ApplyAll(User, p)));
+                User.battle.GetTeam(User.party).ForEach(p => log.AddRange(EffectsOnParty.ApplyAll(User, p)));
             }
-            return Text;
+            return log;
         }
 
         public override string ToString()

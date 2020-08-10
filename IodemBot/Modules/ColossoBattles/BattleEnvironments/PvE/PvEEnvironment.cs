@@ -272,10 +272,11 @@ namespace IodemBot.Modules.ColossoBattles
             WasReset = true;
             foreach (var k in PlayerMessages.Keys)
             {
-                PlayerMessages[k].Moves.OfType<Djinn>().ToList().ForEach(d =>
+                foreach(var d in PlayerMessages[k].Moves.OfType<Djinn>())
                 {
-                    d.CoolDown = 0; d.Summon(PlayerMessages[k]);
-                });
+                    d.CoolDown = 0;
+                    d.Summon(PlayerMessages[k]);
+                }
                 await k.DeleteAsync();
             }
             Factory.uniqueDjinn.Clear();
