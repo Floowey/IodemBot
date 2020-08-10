@@ -1085,7 +1085,7 @@
         ]
       },
       {
-        "Flavourtext": "*'A careful search will reveal a passage leading underground nearby,'* the dog informs you. Bingo, using Reveal, you found an entrance! The rumors about the cemetary you heard when you were in Vault before were correct after all.",
+        "Flavourtext": "*'A careful search will reveal a passage leading underground nearby,'* the dog informs you. Bingo, you look more carefully and find an entrance! The rumors about the cemetary you heard when you were in Vault before were correct after all.",
         "EnemyNames": [ "Next" ],
         "Image": "",
         "RewardTables": [
@@ -2138,7 +2138,7 @@
         ]
       },
       {
-        "Flavourtext": "You come to one final waterfall, and with some prayers you reverse the flow of the water to carry to to the lighthouse aerie. Seems you have a farewell party as well.",
+        "Flavourtext": "You come to one final waterfall, and with some prayers you reverse the flow of the water to carry you to the lighthouse aerie. Seems you have a farewell party as well.",
         "EnemyNames": [ "Siren 1", "Siren 2", "Cuttle 1", "Ghoul" ],
         "Keywords": [ "Shuffle" ],
         "Image": "",
@@ -2215,7 +2215,7 @@
     },
     "Matchups": [
       {
-        "Flavourtext": "Welcome to Lunpa, home of the great Dodonpa,' a bored-sounding town crier intones.  'Run the gauntlet, prove your strength and stealth, do battle with the Mighty Toadonpa, and win a mystery prize.  Tickets are 500 coins.'  He gets a closer look at you and your equipment, and pauses.  Lowering his voice, he whispers to you, 'Actually, you look halfway competant and the guards are getting really bored.'  He hands you a ticket and gestures you towards the fortress gates.  'Just, please give them a decent fight, and don't tell Lord Dodonpa.'",
+        "Flavourtext": "'Welcome to Lunpa, home of the great Dodonpa,' a bored-sounding town crier intones.  'Run the gauntlet, prove your strength and stealth, do battle with the Mighty Toadonpa, and win a mystery prize.  Tickets are 500 coins.'  He gets a closer look at you and your equipment, and pauses.  Lowering his voice, he whispers to you, 'Actually, you look halfway competant and the guards are getting really bored.'  He hands you a ticket and gestures you towards the fortress gates.  'Just, please give them a decent fight, and don't tell Lord Dodonpa.'",
         "EnemyNames": [ "Next" ],
         "Image": "",
         "RewardTables": [
@@ -3200,7 +3200,7 @@
               "Tag": "FloraQuest1",
               "Obtainable": 1,
               "Dungeon": "Bloomy Glade",
-              "message": "As you leave the forest, a soft breeze blows from the side. It smells of fresh flowers and plants. The source of the twirl is a shape floating in the air over a heather. The figure looks young, a girl with flowers twined through her hair. You try to sneak up, but she notices you, visibly startled. She floats away, throwing you cautious looks over her shoulder until she went down into the midst of Mogall Forest. You start to feel the same breeze flowing through the endless woods. You must track her down!"
+              "message": "As you leave the forest, a soft breeze blows from the side. It smells of fresh flowers and plants. The source of the twirl is a shape floating in the air over the heather. The figure looks young, a girl with flowers twined through her hair. You try to sneak up, but she notices you, visibly startled. She floats away, throwing you cautious looks over her shoulder until she disappears into Mogall Forest. You start to feel the same breeze flowing through the endless woods. You must track her down!"
             }
           ],
           [
@@ -4434,7 +4434,7 @@
   "Tolbi": {
     "name": "Tolbi",
     "IsOneTimeOnly": false,
-    "FlavourText": "On the south side of Karagol sea lies the huge city of Tolbi under the leadership, or *regime* as it's told, of Babi. What might be his secrets? The town is full of tourists, merchants, soldiers, ... It looks like they are getting ready for an event!",
+    "FlavourText": "On the south side of Karagol sea lies the huge city of Tolbi. One year ago it was under the leadership, or *regime* as it's told, of Babi, but now Iodem sits on the throne. What might be his secrets? The town is full of tourists, merchants, soldiers, ... It looks like they are getting ready for an event!",
     "Image": "https://goldensunwiki.net/w/images/1/15/Enter_Tolbi.png",
     "IsDefault": false,
     "Matchups": [
@@ -5069,7 +5069,7 @@
         ]
       },
       {
-        "Flavourtext": "Round 5: Galahad's name incites the stories of the fabled knight of the round table, but by the clanking of Galahad's armor, you *know* that he is more afraid of you, than you are of him.",
+        "Flavourtext": "Round 5: Galahad's name incites the stories of the fabled knight of the round table. But by the clanking of Galahad's armor, you *know* that he is more afraid of you than you are of him.",
         "EnemyNames": [ "Galahad" ],
         "Image": "",
         "RewardTables": [
@@ -5091,7 +5091,7 @@
         ]
       },
       {
-        "Flavourtext": "Round 6: Azart trusts no one. You saw him in the audience of the previous battles, he watched you every move. Careful, and good luck.",
+        "Flavourtext": "Round 6: Azart trusts no one. You saw him in the audience of the previous battles, he watched your every move. Careful, and good luck.",
         "EnemyNames": [ "Azart 1" ],
         "Image": "",
         "RewardTables": [
@@ -7174,7 +7174,7 @@
         ]
       },
       {
-        "Flavourtext": "The time has come for the real secret of this desert. You are going to face a spirit considered to be the king of the animals. Kirin is its name, and it is said to appear near people with a formidable destiny.\nProve Kirin that you have what it takes to face anything!'",
+        "Flavourtext": "The time has come for the real secret of this desert. You are going to face a spirit considered to be the king of the animals. Kirin is its name, and it is said to appear near people with a formidable destiny.\nProve to Kirin that you have what it takes to face anything!'",
         "EnemyNames": [ "KirinSummon" ],
         "Keywords": [ "Heal" ],
         "Image": "",
@@ -8369,7 +8369,7 @@
         ]
       },
       {
-        "Flavourtext": "Indeed, you are strong. I feel like I can trust you. The spirits are trying to claim the energy set free by the unleashing of Alchemy for themselves. You may have met some of them already, but believe me when I say that a lot more powerful ones are out there. My task is to protect the human race. The lighthouses you humans created are nearly unlimitted sources of energies and the spirits may be attracted to them. I am enroute to Venus Lighthouse. Will you help me prevent the worst?'",
+        "Flavourtext": "Indeed, you are strong. I feel like I can trust you. The spirits are trying to claim the energy set free by the unleashing of Alchemy for themselves. You may have met some of them already, but believe me when I say that a lot more powerful ones are out there. My task is to protect the human race. The lighthouses you humans created are nearly unlimited sources of energies and the spirits may be attracted to them. I am enroute to Venus Lighthouse. Will you help me prevent the worst?'",
         "EnemyNames": [ "End" ],
         "Image": "",
         "RewardTables": [

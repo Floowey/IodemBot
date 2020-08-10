@@ -485,23 +485,24 @@
     },
 
     "Moloch": {
-        "Move": {
-            "Name": "Moloch",
-            "Emote": "<:Moloch:636449223096926218>",
-            "Targettype": 4,
-            "Element": 3,
-            "power": 100,
-            "percentageDamage": 9,
-            "Effects": [
+      "Move": {
+        "Name": "Moloch",
+        "Emote": "<:Moloch:636449223096926218>",
+        "Targettype": 4,
+        "Element": 3,
+        "power": 100,
+        "percentageDamage": 9,
+        "range": 5,
+        "Effects": [
 
-                {
-                    "Type": "Stat",
-                    "Stat": "Agility",
-                    "Multiplier": 0.5,
-                    "Probability": 60
-                }
-            ]
-        },
+          {
+            "Type": "Stat",
+            "Stat": "Agility",
+            "Multiplier": 0.5,
+            "Probability": 60
+          }
+        ]
+      },
         "EffectsOnUser": [
             {
                 "Type": "Stat",
