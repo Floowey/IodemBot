@@ -125,7 +125,7 @@ namespace IodemBot.Modules.ColossoBattles
 
             if (A.SummonsMessage == null || B.SummonsMessage == null)
             {
-                Initialize();
+                //Initialize();
             }
             else
             {

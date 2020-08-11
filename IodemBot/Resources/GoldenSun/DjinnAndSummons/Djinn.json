@@ -747,7 +747,7 @@
             "element": 1,
             "Effects": [
                 {
-                    "Type": "Condiition",
+                    "Type": "Condition",
                     "Condition": "Delusion",
                     "Probability": 33
                 }

@@ -225,7 +225,7 @@ namespace IodemBot.Core.Leveling
             userAccount.ServerStats.RpsStreak++;
             UserAccounts.SaveAccounts();
 
-            if (userAccount.ServerStats.RpsWins == 3)
+            if (userAccount.ServerStats.RpsWins >= 3)
             {
                 await GoldenSun.AwardClassSeries("Aqua Seer Series", user, channel);
             }

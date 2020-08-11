@@ -121,8 +121,8 @@ namespace IodemBot.Modules
                     {
                         foreach (var item in user.Loadouts.loadouts)
                         {
-                            var items = item.Gear.Count > 0 ? string.Join("", item.Gear.Select(i => user.Inv.GetItem(i).Icon)) : "no gear";
-                            var djinn = item.Djinn.Count > 0 ? string.Join("", item.Djinn.Select(d => user.DjinnPocket.GetDjinn(d)?.Emote)) : "no Djinn";
+                            var items = item.Gear.Count > 0 ? string.Join("", item.Gear.Select(i => user.Inv.GetItem(i)?.Icon ?? "-")) : "no gear";
+                            var djinn = item.Djinn.Count > 0 ? string.Join("", item.Djinn.Select(d => user.DjinnPocket.GetDjinn(d)?.Emote ?? "-")) : "no Djinn";
                             embed.AddField(item.LoadoutName, $"{ElementIcons[item.Element]} {item.ClassSeries}\n" +
                                 $"{items}\n" +
                                 $"{djinn}", inline: true);

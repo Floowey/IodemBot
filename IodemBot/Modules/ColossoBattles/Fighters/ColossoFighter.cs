@@ -111,7 +111,7 @@ namespace IodemBot.Modules.ColossoBattles
             }
             else
             {
-                existingBuff.multiplier += (buff.multiplier - 1);
+                existingBuff.multiplier = Math.Max(0, existingBuff.multiplier + (buff.multiplier - 1));
                 existingBuff.turns = Math.Max(existingBuff.turns, buff.turns);
             }
         }

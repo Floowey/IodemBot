@@ -400,7 +400,7 @@ namespace IodemBot.Modules
                 {"Fighter", 742060001031618590 }
             };
 
-            if(RoleName == "Gladiator" && UserAccounts.GetAccount(Context.User).LevelNumber < 5)
+            if(RoleName.Equals("Gladiator", StringComparison.CurrentCultureIgnoreCase) && UserAccounts.GetAccount(Context.User).LevelNumber < 5)
             {
                 _ = ReplyAsync("Please participate in the server more before you can announce your streams. We would like to be a community and not just be used as an advertising platform!");
                 return;
