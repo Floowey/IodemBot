@@ -1131,7 +1131,7 @@
       },
       {
         "Flavourtext": "You feel hungry after that fight.  Hey, time for a mushroom salad with honey before going further! ... wait, those are Death Caps!",
-        "EnemyNames": [ "Death Cap", "Death Cap", "Fighter Bee", "Fighter Bee" ],
+        "EnemyNames": [ "Death Cap", "Death Cap", "Fighter Bee 1", "Fighter Bee 1" ],
         "Keywords": [ "Shuffle" ],
         "Image": "",
         "RewardTables": [
@@ -1146,7 +1146,7 @@
       },
       {
         "Flavourtext": "You move further down the cave.  What a large fellow, maybe he'll want to... oh nevermind it's a Cave Troll.",
-        "EnemyNames": [ "Cave Troll" ],
+        "EnemyNames": [ "Cave Troll 1" ],
         "Image": "",
         "RewardTables": [
           [
@@ -6407,7 +6407,7 @@
       },
       {
         "Flavourtext": "After an eternity of fiddling with logs and underground dam controls, you exit the fifth room and head downwards once more.  A pair of chimeras swoops down from above to challenge you.",
-        "EnemyNames": [ "Chimera 3", "Chimera 3" ],
+        "EnemyNames": [ "Chimera 2", "Chimera 2" ],
         "Image": "",
         "RewardTables": [
           [
@@ -6864,7 +6864,7 @@
       },
       {
         "Flavourtext": "Those bees you just felled... they aren't evil monsters, they just try to protect their habitat. You also just tried to save your life, that is understandable. Life is a battle.\nThis area of the forest was practically never visited by mankind. However, it is said that some nature-loathing elves are roaming the area.'",
-        "EnemyNames": [ "Dinox", "Goblin", "Earth Golem" ],
+        "EnemyNames": [ "Dinox", "Goblin 2", "Earth Golem" ],
         "Image": "",
         "RewardTables": [
           [
