@@ -75,17 +75,33 @@ namespace IodemBot.Modules.ColossoBattles
 
             playersWithBRole.Where(p => p.Roles.Any(r => r.Name == "TeamB")).ToList().ForEach(a => _ = a.RemoveRoleAsync(TeamBRole));
 
-            foreach (var k in A.PlayerMessages.Keys)
+            foreach (var team in new[] { A, B })
             {
-                await k.DeleteAsync();
-            }
-            foreach (var k in B.PlayerMessages.Keys)
-            {
-                await k.DeleteAsync();
-            }
+                foreach (var k in team.PlayerMessages.Keys)
+                {
+                    foreach (var d in team.PlayerMessages[k].Moves.OfType<Djinn>())
+                    {
+                        d.CoolDown = 0;
+                        d.Summon(team.PlayerMessages[k]);
+                    }
+                    await k.DeleteAsync();
+                }
+                team.Factory.uniqueDjinn.Clear();
+                team.Factory.summons.Clear();
+                team.PlayerMessages.Clear();
 
-            A.PlayerMessages.Clear();
-            B.PlayerMessages.Clear();
+                if (team.StatusMessage != null)
+                {
+                    _ = team.StatusMessage.DeleteAsync();
+                    team.StatusMessage = null;
+                }
+
+                if (team.SummonsMessage != null)
+                {
+                    _ = team.SummonsMessage.ModifyAsync(m => { m.Content = "Good Luck!"; m.Embed = null; });
+                    _ = team.SummonsMessage.RemoveAllReactionsAsync();
+                }
+            }
 
             if (A.EnemyMessage != null)
             {
@@ -110,29 +126,6 @@ namespace IodemBot.Modules.ColossoBattles
                     m.Content = $"Welcome to {Name}, Team B. Please wait til the battle has started.";
                     m.Embed = null;
                 });
-            }
-            if (A.StatusMessage != null)
-            {
-                _ = A.StatusMessage.DeleteAsync();
-                A.StatusMessage = null;
-            }
-
-            if (B.StatusMessage != null)
-            {
-                _ = B.StatusMessage.DeleteAsync();
-                B.StatusMessage = null;
-            }
-
-            if (A.SummonsMessage == null || B.SummonsMessage == null)
-            {
-                //Initialize();
-            }
-            else
-            {
-                _ = A.SummonsMessage.ModifyAsync(m => { m.Content = "Good Luck!"; m.Embed = null; });
-                _ = A.SummonsMessage.RemoveAllReactionsAsync();
-                _ = B.SummonsMessage.ModifyAsync(m => { m.Content = "Good Luck!"; m.Embed = null; });
-                _ = B.SummonsMessage.RemoveAllReactionsAsync();
             }
 
             if (autoTurn != null)

@@ -2232,7 +2232,7 @@
             "MercuryAtk": 45,
             "MercuryRes": 45
         },
-        "requirement": "ColossoWins",
+        "requirement": "CursedItems",
         "isDefault": false,
         "archtype": "Mage",
         "description": "Mikos turn to dark, but powerful curses, when they have lost their way. They draw their powers from being around cursed equipment and don't seem to be affected by their dangerous side effects."

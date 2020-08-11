@@ -2432,7 +2432,7 @@
     "name": "Undead Sword",
     "targetType": 3,
     "emote": ":crossed_swords:",
-    "range": 0,
+    "range": 1,
     "element": 0,
     "PPCost": 0,
     "addDamage": 15

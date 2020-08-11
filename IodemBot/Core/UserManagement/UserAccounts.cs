@@ -60,16 +60,16 @@ namespace IodemBot.Core.UserManagement
             switch (type)
             {
                 case (RankEnum.Solo):
-                    sortedList = accounts.OrderByDescending(d => d.ServerStats.GetStreak(mode).Solo).ToList();
+                    sortedList = accounts.OrderByDescending(d => (d.ServerStats.GetStreak(mode) + d.ServerStatsTotal.GetStreak(mode)).Solo).ToList();
                     break;
 
                 case (RankEnum.Duo):
                 case (RankEnum.Trio):
                 case (RankEnum.Quad):
-                    sortedList = accounts.Where(p => p.ServerStats.GetStreak(mode).GetEntry(type).Item1 > 0)
-                        .GroupBy(p => p.ServerStats.GetStreak(mode).GetEntry(type).Item2)
+                    sortedList = accounts.Where(p => (p.ServerStats.GetStreak(mode) + p.ServerStatsTotal.GetStreak(mode)).GetEntry(type).Item1 > 0)
+                        .GroupBy(p => (p.ServerStats.GetStreak(mode) + p.ServerStatsTotal.GetStreak(mode)).GetEntry(type).Item2)
                         .Select(group => group.First())
-                        .OrderByDescending(d => d.ServerStats.GetStreak(mode).GetEntry(type).Item1)
+                        .OrderByDescending(d => (d.ServerStats.GetStreak(mode) + d.ServerStatsTotal.GetStreak(mode)).GetEntry(type).Item1)
                         .ToList();
                     break;
 

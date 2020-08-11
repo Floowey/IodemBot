@@ -73,11 +73,6 @@ namespace IodemBot.Modules
                 account.Tags.Add($"{account.Element}Adept");
             }
 
-            foreach(SocketGuild guild in Global.Client.Guilds)
-            {
-                var gs = GuildSettings.GetGuildSettings(guild);
-                gs.Name = guild.Name;
-            }
             Console.WriteLine(Global.Client.Guilds.Sum(g => g.Emotes.Count));
             UserAccounts.SaveAccounts();
             GuildSettings.SaveGuilds();

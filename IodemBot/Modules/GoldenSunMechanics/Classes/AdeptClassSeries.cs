@@ -52,6 +52,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 { "Djinn", new DjinnRequirement() },
                 { "DungeonsCompleted", new DungeonsCompletedRequirement()},
                 { "VenusDjinn", new VenusDjinnRequirement()},
+                { "CursedItems", new CursedItemsRequirement()},
                 { "MarsDjinn", new MarsDjinnRequirement()},
                 { "JupiterDjinn", new JupiterDjinnRequirement()},
                 { "MercuryDjinn", new MercuryDjinnRequirement()}

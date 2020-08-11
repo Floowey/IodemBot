@@ -330,7 +330,7 @@ namespace IodemBot.Modules
             for (int i = 0; i < Math.Min(topAccounts.Count(), 5); i++)
             {
                 var curAccount = topAccounts.ElementAt(i);
-                var streak = mode == EndlessMode.Default ? curAccount.ServerStats.EndlessStreak + curAccount.ServerStatsTotal.EndlessStreak : curAccount.ServerStats.LegacyStreak + curAccount.ServerStats.EndlessStreak;
+                var streak = mode == EndlessMode.Default ? curAccount.ServerStats.EndlessStreak + curAccount.ServerStatsTotal.EndlessStreak : curAccount.ServerStats.LegacyStreak + curAccount.ServerStatsTotal.LegacyStreak;
                 switch (type)
                 {
                     case RankEnum.Solo:
@@ -357,7 +357,7 @@ namespace IodemBot.Modules
             if (rank >= 5)
             {
                 builder.Append("... \n");
-                var streak = mode == EndlessMode.Default ? account.ServerStats.EndlessStreak + account.ServerStatsTotal.EndlessStreak : account.ServerStats.LegacyStreak + account.ServerStats.EndlessStreak;
+                var streak = mode == EndlessMode.Default ? account.ServerStats.EndlessStreak + account.ServerStatsTotal.EndlessStreak : account.ServerStats.LegacyStreak + account.ServerStatsTotal.LegacyStreak;
                 switch (type)
                 {
                     case RankEnum.Solo:
