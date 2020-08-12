@@ -2569,7 +2569,7 @@
   },
   "Fatal Fang": {
     "name": "Fatal Fang",
-    "targetType": 4,
+    "targetType": 3,
     "emote": "<:Rampage:537766290031509524>",
     "range": 1,
     "element": 4,

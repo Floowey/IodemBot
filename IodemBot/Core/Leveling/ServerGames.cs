@@ -113,7 +113,7 @@ namespace IodemBot.Core.Leveling
                 await GoldenSun.AwardClassSeries("Samurai Series", userAccount, channel);
             }
 
-            if (bs.DamageDealt >= 666666)
+            if (bs.DamageDealt >= 222222)
             {
                 await GoldenSun.AwardClassSeries("Ninja Series", userAccount, channel);
             }

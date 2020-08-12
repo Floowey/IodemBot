@@ -10631,9 +10631,9 @@
     "name": "Gladiator",
     "imgurl": "https://cdn.discordapp.com/attachments/660152162202157100/670260231208566804/Sin_nombre.gif",
     "stats": {
-      "maxhp": 365,
+      "maxhp": 320,
       "maxpp": 0,
-      "atk": 298,
+      "atk": 260,
       "def": 66,
       "spd": 134
     },

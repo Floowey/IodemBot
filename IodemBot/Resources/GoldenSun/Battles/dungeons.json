@@ -1365,7 +1365,7 @@
       {
         "Flavourtext": "The way out is near. But before enjoying the sun again, you encounter a Djinni!",
         "EnemyNames": [ "Mars Djinni 1" ],
-        "Image": "",
+        "Image": "https://cdn.discordapp.com/attachments/742023207917453322/742023312615538779/1596978861230.png",
         "RewardTables": [
           [
             {
@@ -1578,13 +1578,12 @@
         "Image": "",
         "RewardTables": [
           [
-            { "Weight": 1 },
             {
               "Weight": 3,
               "Dungeon": "Kolima"
             },
             {
-              "Weight": 2,
+              "Weight": 3,
               "Dungeon": "Bilibin Cave"
             }
           ]
@@ -1727,7 +1726,7 @@
     "IsDefault": false,
     "Matchups": [
       {
-        "Flavourtext": "Approaching Imil, a gang of gnomes try to mug you...",
+        "Flavourtext": "Approaching Imil, a gang of critters led by a gnome try to mug you...",
         "EnemyNames": [ "Rat Soldier 1", "Gnome", "Momonga 1", "Rat 1" ],
         "Image": "",
         "RewardTables": [
@@ -2339,9 +2338,9 @@
       },
       {
         "Flavourtext": "Another side room holds a table with three keys.  Just up the passage you hear another bored-sounding guard announcing that if he spots you, you lose the challenge, so choose wisely!",
-        "EnemyNames": [ "Key:RedKey", "BoobyTrap-10:BlueKey", "BoobyTrap-10:YellowKey" ],
+        "EnemyNames": [ "BoobyTrap-10:RedKey", "BoobyTrap-10:BlueKey", "Key:YellowKey" ],
         "Keywords": [ "Shuffle" ],
-        "Image": "https://imgur.com/6oB3CBd",
+        "Image": "https://i.imgur.com/6oB3CBd.png",
         "RewardTables": [
           [
             {
@@ -2387,7 +2386,7 @@
         ]
       },
       {
-        "Flavourtext": "Finally, you enter a wide, arena-like room and spot a red door with a sign that reads 'Winner's Exit.'  But as soon as you do, a huge toad-like monster also spots you.  It bellows and attacks!",
+        "Flavourtext": "Finally, you enter a wide, arena-like room and spot a yellow door with a sign that reads 'Winner's Exit.'  But as soon as you do, a huge toad-like monster also spots you.  It bellows and attacks!",
         "EnemyNames": [ "Toadonpa" ],
         "Image": "",
         "RewardTables": [
@@ -2761,7 +2760,7 @@
         ]
       },
       {
-        "Flavourtext": "As you are about to check the chest in the room, a troll enters the room.",
+        "Flavourtext": "As you are about to check the chest, a troll enters the room.",
         "EnemyNames": [ "Troll 2" ],
         "Image": "",
         "RewardTables": [
@@ -3086,7 +3085,7 @@
       {
         "Flavourtext": "A puzzle of logs and stumps form a barricade in front of a small space between the woods, and chilling there, is a Venus Djinni! Disturbed, it attacks in a grumpy rage!",
         "EnemyNames": [ "Venus Djinni 1" ],
-        "Image": "",
+        "Image": "https://cdn.discordapp.com/attachments/742023207917453322/742023312200433681/1596965757877.png",
         "RewardTables": [
           [
             {
@@ -3260,7 +3259,7 @@
       {
         "Flavourtext": "Well *that* was underwhelming. And no one is wanting to fight you either, everyone is just looking for a certain Feizhi... Luckily, a little Djinni is playing in a puddle just outside!",
         "EnemyNames": [ "Mercury Djinni 3" ],
-        "Image": "",
+        "Image": "https://cdn.discordapp.com/attachments/742023207917453322/742023311982198875/1596978910749.png",
         "RewardTables": [
           [
             {
@@ -3925,7 +3924,7 @@
       },
       {
         "Flavourtext": "Whoa! You nearly tripped. Who'd've thunk this little guy would be out here in the middle of nowhere?",
-        "EnemyNames": [ "Venus Djinni 9" ],
+        "EnemyNames": [ "Venus Djinni 1" ],
         "Image": "",
         "RewardTables": [
           [
@@ -3995,7 +3994,7 @@
       },
       {
         "Flavourtext": "A wild Mars Djinni appears! Seems this spitfire will need some convincing before it joins your team.",
-        "EnemyNames": [ "Mars Djinni 9" ],
+        "EnemyNames": [ "Mars Djinni 3" ],
         "Image": "",
         "RewardTables": [
           [
@@ -6750,7 +6749,7 @@
           [
             {
               "Weight": 1,
-              "Tag": "Gaia2Reward3",
+              "Tag": "Gaia2Reward4",
               "Obtainable": 1,
               "XP": 140,
               "Coins": 140,
@@ -6767,7 +6766,7 @@
           [
             {
               "Weight": 1,
-              "Tag": "Gaia2Reward4",
+              "Tag": "Gaia2Reward5",
               "Obtainable": 1,
               "XP": 140,
               "Coins": 140,
@@ -6786,7 +6785,6 @@
           [
             {
               "Weight": 1,
-              "Tag": "Gaia2Reward5",
               "Obtainable": 1,
               "XP": 250,
               "Coins": 250,
@@ -6888,7 +6886,7 @@
           [
             {
               "Weight": 1,
-              "Tag": "Gaia3Reward3",
+              "Tag": "Gaia3Reward4",
               "Obtainable": 1,
               "XP": 180,
               "Coins": 180,
@@ -6906,7 +6904,7 @@
           [
             {
               "Weight": 1,
-              "Tag": "Gaia3Reward4",
+              "Tag": "Gaia3Reward5",
               "Obtainable": 1,
               "XP": 180,
               "Coins": 180,
@@ -7146,7 +7144,7 @@
           [
             {
               "Weight": 1,
-              "Tag": "Magma2Reward3",
+              "Tag": "Magma2Reward4",
               "Obtainable": 1,
               "XP": 140,
               "Coins": 140,
@@ -7163,7 +7161,7 @@
           [
             {
               "Weight": 1,
-              "Tag": "Magma2Reward4",
+              "Tag": "Magma2Reward5",
               "Obtainable": 1,
               "XP": 140,
               "Coins": 140,
@@ -7182,7 +7180,6 @@
           [
             {
               "Weight": 1,
-              "Tag": "Magma2Reward5",
               "Obtainable": 1,
               "XP": 225,
               "Coins": 225,
@@ -7231,7 +7228,7 @@
           [
             {
               "Weight": 1,
-              "Tag": "Magma2Reward1",
+              "Tag": "Magma3Reward1",
               "Obtainable": 1,
               "XP": 180,
               "Coins": 180
@@ -7248,7 +7245,7 @@
           [
             {
               "Weight": 1,
-              "Tag": "Magma2Reward2",
+              "Tag": "Magma3Reward2",
               "Obtainable": 1,
               "XP": 180,
               "Coins": 180,
@@ -7267,7 +7264,7 @@
           [
             {
               "Weight": 1,
-              "Tag": "Magma2Reward3",
+              "Tag": "Magma3Reward3",
               "Obtainable": 1,
               "XP": 180,
               "Coins": 180,
@@ -7285,7 +7282,7 @@
           [
             {
               "Weight": 1,
-              "Tag": "Magma2Reward4",
+              "Tag": "Magma3Reward4",
               "Obtainable": 1,
               "XP": 180,
               "Coins": 180,
@@ -7302,7 +7299,7 @@
           [
             {
               "Weight": 1,
-              "Tag": "Magma2Reward5",
+              "Tag": "Magma3Reward5",
               "Obtainable": 1,
               "XP": 180,
               "Coins": 180,
@@ -7819,14 +7816,6 @@
               "Obtainable": 1,
               "XP": 40,
               "Coins": 40,
-              "Item": "Witchs Wand"
-            }
-          ],
-          [
-            {
-              "Weight": 1,
-              "Tag": "Aqua1Reward3",
-              "Obtainable": 1,
               "Item": "Nurses Cap"
             }
           ]
@@ -8029,7 +8018,7 @@
       },
       {
         "Flavourtext": "Perhaps you're wondering where exactly on the ocean we are? We're on the Great Eastern Sea, not too far off from the Sea of Time and Lemuria itself. Lemurians had quite the time exploring these waters eons ago, as the Sea of Time is a cruel part of the Great Eastern Sea. They say numerous ships have gone down both entering and leaving Lemuria. Fortunately for us, we haven't the need to bear it today.'",
-        "EnemyNames": [ "Great Seagull", "Sea Hedgehog", "Sea Hedgehog", "Hydra" ],
+        "EnemyNames": [ "Great Seagull", "Sea Hedgehog", "Sea Hedgehog", "Hydra 1" ],
         "Image": "",
         "RewardTables": [
           [
@@ -8065,7 +8054,7 @@
       },
       {
         "Flavourtext": "Some of these struggles were held on land itself, clashing blades and pitting armies against those that challenged them. Other battles were held on the oceans, where navies sought reign over the waters near the land they coveted; cannonballs were exchanged between sides, ships would close in on others to send in their best warriors in hopes of slaying the enemy crews. It is truly a violent past to behold, one that shouldn't be overlooked.'",
-        "EnemyNames": [ "Aqua Hydra", "Pyrdodra" ],
+        "EnemyNames": [ "Aqua Hydra 1", "Pyrdodra 1" ],
         "Keywords": [ "Shuffle" ],
         "Image": "",
         "RewardTables": [

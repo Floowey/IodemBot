@@ -164,7 +164,7 @@
         "SpriteNormal": "<a:Garland:662385859370156061>",
         "SpriteShiny": "<a:GarlandShiny:663013986106867713>",
         "Move": {
-            "Targettype": 2,
+            "Targettype": 1,
             "percentage": 60
         },
         "Stats": {
@@ -2316,7 +2316,8 @@
         "SpriteNormal": "<a:Fog:662385332137885697>",
         "SpriteShiny": "<a:FogShiny:663022347808407553>",
         "Move": {
-            "Targettype": 3,
+          "Targettype": 3,
+          "Element": 3,
             "effects": [
                 {
                     "Type": "Condition",

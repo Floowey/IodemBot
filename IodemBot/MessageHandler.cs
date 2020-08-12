@@ -69,7 +69,7 @@ namespace IodemBot
 
         private async Task HandleReactionAsync(Cacheable<IUserMessage, ulong> Message, ISocketMessageChannel Channel, SocketReaction Reaction)
         {
-            var User = (SocketGuildUser)Reaction.User;
+            if (!(Reaction.User.Value is SocketGuildUser User)) return;
             if (User.IsBot)
             {
                 return;

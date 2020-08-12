@@ -258,7 +258,11 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         internal Item GetItem(string item)
         {
-            return Inv.Where(s => s.Name.Equals(item, StringComparison.CurrentCultureIgnoreCase) || s.Itemname.Equals(item, StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault();
+            Item i = null;
+            i ??= Inv.FirstOrDefault(d => item.Equals(d.Itemname, StringComparison.CurrentCultureIgnoreCase) && !item.Equals(d.Nickname));
+            i ??= Inv.FirstOrDefault(d => item.Equals(d.Itemname, StringComparison.CurrentCultureIgnoreCase));
+            i ??= Inv.FirstOrDefault(d => item.Equals(d.Nickname, StringComparison.CurrentCultureIgnoreCase));
+            return i;
         }
 
         public string GearToString(ArchType archType, bool detailed = false)

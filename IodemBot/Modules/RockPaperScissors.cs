@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using Discord;
 using Discord.Commands;
@@ -31,6 +32,27 @@ namespace IodemBot.Modules
             var embed = new EmbedBuilder()
             .WithColor(Colors.Get("Iodem"))
             .WithDescription($"🎲 {(new Random()).Next(0, (int)sides) + 1}");
+            await Context.Channel.SendMessageAsync("", false, embed.Build());
+        }
+
+        [Command("dice"), Alias("d")]
+        [Cooldown(4)]
+        [Remarks("Roll an n-sided dice!")]
+        public async Task Dice([Remainder] string syntax = "")
+        {
+            syntax = syntax.ToLower();
+            int nSides = 6;
+            int nThrows = 1;
+            if (syntax.Contains('d'))
+            {
+                var parts = syntax.Split('d');
+                int.TryParse(parts[0], out nThrows);
+                int.TryParse(parts[1], out nSides);
+            }
+            
+            var embed = new EmbedBuilder()
+            .WithColor(Colors.Get("Iodem"))
+            .WithDescription($"🎲 {nThrows}d{nSides}:{string.Join(", ",Enumerable.Range(0, nThrows).Select(i => Global.Random.Next(0, nSides) + 1))}");
             await Context.Channel.SendMessageAsync("", false, embed.Build());
         }
 

@@ -6,11 +6,11 @@ namespace IodemBot.Modules.GoldenSunMechanics
     {
         public int Apply(UserAccount user)
         {
-            if (user.ServerStats.ColossoWins >= 1200 && user.ServerStats.EndlessStreak.Solo >= 35) //Chaos Lord
+            if (user.ServerStats.ColossoWins >= 1200 && user.ServerStats.EndlessStreak.Solo >= 27) //Chaos Lord
             {
                 return 5;
             }
-            else if (user.ServerStats.ColossoWins >= 800 && user.ServerStats.EndlessStreak.Solo>= 25) //Berserker
+            else if (user.ServerStats.ColossoWins >= 800 && user.ServerStats.EndlessStreak.Solo>= 20) //Berserker
             {
                 return 4;
             }

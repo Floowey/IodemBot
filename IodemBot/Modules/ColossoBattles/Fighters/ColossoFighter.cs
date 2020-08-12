@@ -309,7 +309,7 @@ namespace IodemBot.Modules.ColossoBattles
                     {
                         p.Stats.HP = 1;
                         RemoveCondition(Condition.DeathCurse);
-                        turnLog.Add($":x: {Name} barely holds on.");
+                        turnLog.Add($"<:DeathCurse1:583645163499552791> {Name} barely holds on.");
                     }
                     else
                     {

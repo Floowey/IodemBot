@@ -216,9 +216,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         private async Task ReleaseDjinnHidden(string DjinnName)
         {
             var userDjinn = UserAccounts.GetAccount(Context.User).DjinnPocket;
-            var chosenDjinn = userDjinn.djinn
-                .Where(d => DjinnName.Equals(d.Djinnname, StringComparison.CurrentCultureIgnoreCase) || DjinnName.Equals(d.Nickname, StringComparison.CurrentCultureIgnoreCase))
-                .FirstOrDefault();
+            var chosenDjinn = userDjinn.GetDjinn(DjinnName);
             if (chosenDjinn == null)
             {
                 return;
@@ -249,9 +247,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             }
 
             var userDjinn = UserAccounts.GetAccount(Context.User).DjinnPocket;
-            var chosenDjinn = userDjinn.djinn
-                .Where(d => DjinnName.Equals(d.Djinnname, StringComparison.CurrentCultureIgnoreCase) || DjinnName.Equals(d.Nickname, StringComparison.CurrentCultureIgnoreCase))
-                .FirstOrDefault();
+            var chosenDjinn = userDjinn.GetDjinn(DjinnName);
             if (chosenDjinn == null)
             {
                 return;
