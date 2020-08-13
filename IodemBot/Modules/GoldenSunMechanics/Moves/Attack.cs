@@ -173,7 +173,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 {
                     CounterDamage = (uint)((counterAtk - counterDef) * User.defensiveMult / 2);
                 }
-                log.Add($"{enemy.Name} strikes back!");
+                log.Add($"It was a Trap!");
                 log.AddRange(User.DealDamage(CounterDamage));
             }
 
@@ -195,7 +195,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 {
                     CounterDamage = (uint)(User.Stats.MaxHP * enemy.Stats.Atk / 100);
                 }
-                log.Add($"{enemy.Name} strikes back!");
+                log.Add($"It was a Trap!");
                 log.AddRange(User.DealDamage(CounterDamage));
                 enemy.EquipmentWithEffect.ForEach(i => i.Unleash.AllEffects.ForEach(e => log.AddRange(e.Apply(enemy, User))));
                 enemy.GetTeam().ForEach(e => e.Kill());

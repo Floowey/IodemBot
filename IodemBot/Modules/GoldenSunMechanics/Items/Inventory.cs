@@ -259,7 +259,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         internal Item GetItem(string item)
         {
             Item i = null;
-            i ??= Inv.FirstOrDefault(d => item.Equals(d.Itemname, StringComparison.CurrentCultureIgnoreCase) && !item.Equals(d.Nickname));
+            i ??= Inv.FirstOrDefault(d => item.Equals(d.Itemname, StringComparison.CurrentCultureIgnoreCase) && d.Nickname.IsNullOrEmpty());
             i ??= Inv.FirstOrDefault(d => item.Equals(d.Itemname, StringComparison.CurrentCultureIgnoreCase));
             i ??= Inv.FirstOrDefault(d => item.Equals(d.Nickname, StringComparison.CurrentCultureIgnoreCase));
             return i;
@@ -498,7 +498,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             {
                 return false;
             }
-            var it = Inv.Where(i => i.Name.Equals(item, StringComparison.InvariantCultureIgnoreCase)).Last();
+            var it = GetItem(item);
             if (WarriorGear.Any(i => i.Name.Equals(it.Name, StringComparison.CurrentCultureIgnoreCase)) ||
             MageGear.Any(i => i.Name.Equals(it.Name, StringComparison.CurrentCultureIgnoreCase)))
             {

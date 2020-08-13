@@ -328,6 +328,7 @@ namespace IodemBot.Modules.ColossoBattles
                     && !item.IsBroken
                     && item.Unleash.AllEffects.Any(e => e.ValidSelection(this))
                     && Global.Random.Next(0, 100) <= item.ChanceToActivate)
+                    && !HasCondition(Condition.Decoy)
                 {
                     turnLog.Add($"{item.IconDisplay} {Name}'s {item.Name} starts to Glow.");
                     foreach (var effect in item.Unleash.AllEffects)
@@ -490,7 +491,7 @@ namespace IodemBot.Modules.ColossoBattles
 
         public void RemoveAllConditions()
         {
-            Condition[] dontRemove = new Condition[] { Condition.Down, Condition.Counter, Condition.ItemCurse, Condition.Key, Condition.Trap, Condition.Decoy };
+            Condition[] dontRemove = new Condition[] { Condition.Down, Condition.Counter, Condition.ItemCurse, Condition.Key, Condition.Trap, Condition. };
             Conditions.RemoveAll(c => !dontRemove.Contains(c));
             DeathCurseCounter = 4;
         }

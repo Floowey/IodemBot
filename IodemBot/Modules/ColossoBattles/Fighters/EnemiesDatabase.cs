@@ -120,9 +120,9 @@ namespace IodemBot.Modules.ColossoBattles
                     {
                         clone.Stats.Atk = damage;
                     }
-                    else if (Enum.TryParse<Condition>(arg, out Condition c))
+                    else if (Enum.TryParse(arg, out Condition c))
                     {
-                        clone.EquipmentWithEffect.Add(new Item() { Unleash = new Unleash() { Effects = new List<Effect>() { new ConditionEffect() { Condition = c } } } });
+                        clone.EquipmentWithEffect.Add(new Item() { Unleash = new Unleash() { Effects = new List<Effect>() { new ConditionEffect() { Condition = c } } }, ChanceToActivate=100, ChanceToBreak=0 });
                     }
 
                 }

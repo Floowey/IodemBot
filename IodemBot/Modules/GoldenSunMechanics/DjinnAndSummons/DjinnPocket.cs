@@ -92,7 +92,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public Djinn GetDjinn(string DjinnName)
         {
             Djinn d = null;
-            d ??= djinn.FirstOrDefault(d => DjinnName.Equals(d.Djinnname, StringComparison.CurrentCultureIgnoreCase) && !DjinnName.Equals(d.Nickname));
+            d ??= djinn.FirstOrDefault(d => DjinnName.Equals(d.Djinnname, StringComparison.CurrentCultureIgnoreCase) && d.Nickname.IsNullOrEmpty());
             d ??= djinn.FirstOrDefault(d => DjinnName.Equals(d.Djinnname, StringComparison.CurrentCultureIgnoreCase));
             d ??= djinn.FirstOrDefault(d => DjinnName.Equals(d.Nickname, StringComparison.CurrentCultureIgnoreCase));
             return d;
