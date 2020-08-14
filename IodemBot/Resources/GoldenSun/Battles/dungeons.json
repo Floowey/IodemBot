@@ -2214,7 +2214,7 @@
     },
     "Matchups": [
       {
-        "Flavourtext": "'Welcome to Lunpa, home of the great Dodonpa,' a bored-sounding town crier intones.  'Run the gauntlet, prove your strength and stealth, do battle with the Mighty Toadonpa, and win a mystery prize.  Tickets are 500 coins.'  He gets a closer look at you and your equipment, and pauses.  Lowering his voice, he whispers to you, 'Actually, you look halfway competant and the guards are getting really bored.'  He hands you a ticket and gestures you towards the fortress gates.  'Just, please give them a decent fight, and don't tell Lord Dodonpa.'",
+        "Flavourtext": "'Welcome to Lunpa, home of the great Dodonpa,' a bored-sounding town crier intones.  'Run the gauntlet, prove your strength and stealth, do battle with the Mighty Toadonpa, and win a mystery prize.  Tickets are 500 coins.'  He gets a closer look at you and your equipment, and pauses.  Lowering his voice, he whispers to you, 'Actually, you look halfway competent and the guards are getting really bored.'  He hands you a ticket and gestures you towards the fortress gates.  'Just, please give them a decent fight, and don't tell Lord Dodonpa.'",
         "EnemyNames": [ "Next" ],
         "Image": "",
         "RewardTables": [
@@ -4028,7 +4028,7 @@
         ]
       },
       {
-        "Flavourtext": "They don't allow you to have bees in here, but nobody told that to these bees!",
+        "Flavourtext": "You hear angry buzzing from nearby.  What is it?  Oh no, not the bees!  Not the beeeeees!  ",
         "EnemyNames": [ "Fighter Bee 1", "Fighter Bee 2", "Fighter Bee 1", "Fighter Bee 2", "Fighter Bee 1", "Fighter Bee 2", "Fighter Bee 1", "Fighter Bee 2", "Fighter Bee 1" ],
         "Keywords": [ "Shuffle" ],
         "Image": "",
@@ -5592,15 +5592,31 @@
             }
           ],
           [
-            { "Weight": 7 },
+            { "Weight": 8 },
             {
               "Weight": 2,
               "Chest": "Gold",
               "HasChest": true
-            },
+            }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "Well that was a weird encounter? The lizard starts spinning and flies off as a colorful tornado. Where does it go, though? If you're fast enough you can follow it!",
+        "EnemyNames": [ "End" ],
+        "Image": "",
+        "RewardTables": [
+          [
             {
               "Weight": 1,
+              "XP": 1,
+              "Coins": 1,
               "Dungeon": "Crossbone Isle"
+            },
+            {
+              "Weight": 9,
+              "XP": 1,
+              "Coins": 1
             }
           ]
         ]
@@ -6406,7 +6422,7 @@
       },
       {
         "Flavourtext": "After an eternity of fiddling with logs and underground dam controls, you exit the fifth room and head downwards once more.  A pair of chimeras swoops down from above to challenge you.",
-        "EnemyNames": [ "Chimera 2", "Chimera 2" ],
+        "EnemyNames": [ "Chimera 1", "Chimera 1" ],
         "Image": "",
         "RewardTables": [
           [
@@ -6475,7 +6491,7 @@
       },
       {
         "Flavourtext": "You're beginning to tire from so many battles and using your Psynergy so much, but you gamely haul block around until you can escape the room.  You squint down the staircase... surely it can't be long now.  In the meantime, more monsters stand between you and your goal.",
-        "EnemyNames": [ "Poison Toad", "Thunder Lizard 2" ],
+        "EnemyNames": [ "Thunder Lizard 2", "Poison Toad", "Thunder Lizard 2" ],
         "Image": "",
         "RewardTables": [
           [
@@ -8017,7 +8033,7 @@
         ]
       },
       {
-        "Flavourtext": "Perhaps you're wondering where exactly on the ocean we are? We're on the Great Eastern Sea, not too far off from the Sea of Time and Lemuria itself. Lemurians had quite the time exploring these waters eons ago, as the Sea of Time is a cruel part of the Great Eastern Sea. They say numerous ships have gone down both entering and leaving Lemuria. Fortunately for us, we haven't the need to bear it today.'",
+        "Flavourtext": "Perhaps you're wondering where exactly on the ocean we are? We're on the Great Eastern Sea, not too far off from the Sea of Time and Lemuria itself. Lemurians had quite the time exploring these waters eons ago, as the Sea of Time is a cruel part of the Great Eastern Sea. They say numerous ships have gone down both entering and leaving Lemuria. Fortunately for us, we won't need to navigate it today.'",
         "EnemyNames": [ "Great Seagull", "Sea Hedgehog", "Sea Hedgehog", "Hydra 1" ],
         "Image": "",
         "RewardTables": [

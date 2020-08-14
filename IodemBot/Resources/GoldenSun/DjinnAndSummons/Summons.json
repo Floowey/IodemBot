@@ -397,7 +397,7 @@
                 {
                     "Type": "Stat",
                     "Stat": "Defense",
-                    "Multiplier": 0.25,
+                    "Multiplier": 0.75,
                     "Probability": 50
                 }
             ]

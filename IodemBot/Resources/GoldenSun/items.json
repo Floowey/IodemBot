@@ -1351,8 +1351,8 @@
         {
           "Type": "Stat",
           "Stat": "Defense",
-          "Multiplier": 0.25,
-          "Probability": 25
+          "Multiplier": 0.75,
+          "Probability": 30
         }
       ]
     },
@@ -1558,7 +1558,7 @@
   "Sol Blade": {
     "Name": "Sol Blade",
     "Price": 31200,
-    "AnimatedIcon": "<a:Sol_Blade_a:641571305199763458>",
+    "AnimatedIcon": "<a:Sol_Blade:729792659475922984>",
     "Icon": "<:Sol_Blade:569855141709348864>",
     "ItemType": "LongSword",
     "IsEquippable": true,

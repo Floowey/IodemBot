@@ -2251,7 +2251,7 @@
     "dmgMult": 1.4,
     "effects": [
       {
-        "ReduceHPToOne": "ReduceHPToOne",
+        "Type": "ReduceHPToOne",
         "Probability": 10
       }
     ]

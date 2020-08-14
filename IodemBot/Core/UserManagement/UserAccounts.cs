@@ -78,10 +78,10 @@ namespace IodemBot.Core.UserManagement
             return sortedList;
         }
 
-        public static int GetRank(SocketUser user, RankEnum type = RankEnum.Level)
+        public static int GetRank(SocketUser user, RankEnum type = RankEnum.Level, EndlessMode mode = EndlessMode.Default)
         {
             var account = GetAccount(user);
-            var sortedList = GetTop(type);
+            var sortedList = GetTop(type, mode);
             return sortedList.IndexOf(account);
         }
 

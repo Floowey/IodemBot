@@ -222,7 +222,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 return;
             }
             await ReplyAsync(embed: new EmbedBuilder()
-                .WithDescription($"Are you sure that you want to release your djinni {chosenDjinn.Emote} {chosenDjinn.Name}")
+                .WithDescription($"Are you sure that you want to release your djinni {chosenDjinn.Emote} {chosenDjinn.Name}?")
                 .Build());
             var response = await Context.Channel.AwaitMessage(m => m.Author == Context.User);
             if (response.Content.Equals("Yes", StringComparison.CurrentCultureIgnoreCase))

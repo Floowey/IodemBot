@@ -558,15 +558,16 @@
         "Element": 0,
         "SpriteNormal": "<a:Meld:662385859320086539>",
         "SpriteShiny": "<a:MeldShiny:663013988388306955>",
-        "Move": {
-            "Targettype": 1,
-            "element": 0,
-            "effects": [
-              {
-                "Type": "AttackWithTeammate"
-              }
-            ]
-        },
+      "Move": {
+        "Targettype": 1,
+        "element": 0,
+        "addDamage": 0,
+        "effects": [
+          {
+            "Type": "AttackWithTeammate"
+          }
+        ]
+      },
         "Stats": {
             "MaxHP": 9,
             "Spd": 5
@@ -2134,7 +2135,7 @@
         "SpriteNormal": "<a:Foam:662385332297138176>",
         "SpriteShiny": "<a:FoamShiny:663022348148015104>",
         "Move": {
-            "Targettype": 4,
+            "Targettype": 3,
             "Element": 3,
             "effects": [
                 {

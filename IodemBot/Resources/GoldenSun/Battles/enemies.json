@@ -7633,7 +7633,8 @@
       "marsres": 25,
       "mercuryatk": 115
     },
-    "extraturns": 0
+    "extraturns": 0,
+    "PPRecovery": 10
   },
   "Refresh Ball 2": {
     "movepool": [ "Pure Ply", "Cure Poison", "Restore" ],
@@ -7653,7 +7654,8 @@
       "marsres": 25,
       "mercuryatk": 115
     },
-    "extraturns": 0
+    "extraturns": 0,
+    "PPRecovery": 10
   },
   "Roach": {
     "movepool": [ "Sonic Wave", "Quake Sphere", "Flare Wall" ],
@@ -8922,7 +8924,8 @@
       "venusres": 48,
       "jupiteratk": 110
     },
-    "extraturns": 0
+    "extraturns": 0,
+    "PPRecovery": 10
   },
   "Thunder Ball 2": {
     "movepool": [ "Flash Bolt", "Storm Ray", "Shine Plasma" ],
@@ -8942,7 +8945,8 @@
       "venusres": 48,
       "jupiteratk": 110
     },
-    "extraturns": 0
+    "extraturns": 0,
+    "PPRecovery": 10
   },
   "Thunder Lizard 1": {
     "movepool": [
@@ -10375,7 +10379,7 @@
       "BoulderFall"
     ],
     "stats": {
-      "maxHP": 20000,
+      "maxHP": 3000,
       "maxPP": 0,
       "Atk": 20000,
       "Def": 2,

@@ -2397,7 +2397,7 @@
         "requirement": "KillsByHand",
         "isDefault": false,
         "archtype": "Warrior",
-        "description": "Samurais are trained to have the upper hand in Hand-On-Hand combat."
+        "description": "Samurai are trained to have the upper hand in Hand-On-Hand combat."
     },
     {
         "name": "Ninja Series",
