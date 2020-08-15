@@ -804,7 +804,7 @@
         ]
       },
       {
-        "Flavourtext": "The cave is getting spooky. You can see a yellow stone glimmering in the back. The voices inside you argue cacaophonously about whether you should keep going.",
+        "Flavourtext": "The cave is getting spooky. You can see a yellow stone glimmering in the back. The voices inside you argue cacophonously about whether you should keep going.",
         "EnemyNames": [ "Lich 2", "Ghost Mage 2" ],
         "Image": "",
         "RewardTables": [
@@ -5510,7 +5510,7 @@
             { "Weight": 6 },
             {
               "Weight": 2,
-              "Dungeon": "Suhalla Junction"
+              "Dungeon": "Suhalla Desert Junction"
             },
             {
               "Weight": 1,
@@ -6842,7 +6842,7 @@
     },
     "Matchups": [
       {
-        "Flavourtext": "I was expecting your arrival. With each of our meetings, the aura of your Psynergy is becoming stronger and stronger. Take my hand. We are heading into the depths of Kolima forest, impassable by normal means.",
+        "Flavourtext": "I was expecting your arrival. Every time we've met, the aura of your Psynergy has become stronger and stronger. Take my hand. We are heading into the depths of Kolima forest, impassable by normal means.",
         "EnemyNames": [ "NextHama" ],
         "Image": "",
         "RewardTables": [
@@ -6877,7 +6877,7 @@
         ]
       },
       {
-        "Flavourtext": "Those bees you just felled... they aren't evil monsters, they just try to protect their habitat. You also just tried to save your life, that is understandable. Life is a battle.\nThis area of the forest was practically never visited by mankind. However, it is said that some nature-loathing elves are roaming the area.'",
+        "Flavourtext": "Those bees you just felled... they aren't evil monsters, they just try to protect their habitat. You also just tried to save your life, that is understandable. Life is a battle.\nThis area of the forest was practically never visited by mankind. However, it is said that some sylvan-dwelling elves are roaming the area.'",
         "EnemyNames": [ "Dinox", "Goblin 2", "Earth Golem" ],
         "Image": "",
         "RewardTables": [
@@ -6912,7 +6912,7 @@
         ]
       },
       {
-        "Flavourtext": "The thicket is getting thicker and more dense. We ought to be close. The plants are *not* happy that we are here.",
+        "Flavourtext": "The thicket is getting thicker and more dense. We ought to be close. The plants are *not* happy that we are here.'",
         "EnemyNames": [ "Mad Plant 1", "Mad Plant 2", "Mad Plant 3", "Mad Plant 4" ],
         "Keywords": [ "Shuffle" ],
         "Image": "",
@@ -6931,7 +6931,7 @@
         ]
       },
       {
-        "Flavourtext": "Through the thicket another small glade appears. In its middle, an enormous creature, a spirit grazes peacefully. As it hears the rustle of the branchwood, it looks towards you. Suddenly the plants around you move aside and you can walk through with ease. The spirit seems to sense the power of venus flowing through your veins. It lets out a grunt, and takes and readies itself, clearly wanting to fight.",
+        "Flavourtext": "Through the thicket another small glade appears. In its middle, an enormous creature - a spirit - grazes peacefully. As it hears the rustle of your passage through the briars, it looks towards you. Suddenly the plants around you move aside and you can walk through with ease. The spirit seems to sense the power of Venus flowing through your veins. It lets out a grunt, and readies itself, clearly wanting to fight.",
         "EnemyNames": [ "CybeleSummon" ],
         "Keywords": [ "Heal" ],
         "Image": "",
@@ -7663,7 +7663,7 @@
       },
       {
         "Flavourtext": "The legend of Yegelos and Hoabna tells that the two heroes ran to the top of the road and fought on this very spot. Their mutual respect in doing so and their fame and heroism brought the years-long war between the Shamans and the Anemos to an end.",
-        "EnemyNames": [ "Phoenix", "Wild Gryphon 2", "Sky Dragon 2", "Harridan 2" ],
+        "EnemyNames": [ "Phoenix", "Wild Gryphon 2", "Sky Dragon 2" ],
         "Keywords": [ "Shuffle" ],
         "Image": "",
         "RewardTables": [
@@ -8070,7 +8070,7 @@
       },
       {
         "Flavourtext": "Some of these struggles were held on land itself, clashing blades and pitting armies against those that challenged them. Other battles were held on the oceans, where navies sought reign over the waters near the land they coveted; cannonballs were exchanged between sides, ships would close in on others to send in their best warriors in hopes of slaying the enemy crews. It is truly a violent past to behold, one that shouldn't be overlooked.'",
-        "EnemyNames": [ "Aqua Hydra 1", "Pyrdodra 1" ],
+        "EnemyNames": [ "Aqua Hydra 1", "Pyrodra" ],
         "Keywords": [ "Shuffle" ],
         "Image": "",
         "RewardTables": [
@@ -8088,7 +8088,7 @@
       },
       {
         "Flavourtext": "Many explorers in the past have witnessed some of the frightful creatures the oceans have to offer. Before you is one of the mightiest, the Kraken. It is a powerful beast, with a reputation to sink ships with little trouble. Part of your test today requires you to fell one yourself.'",
-        "EnemyNames": [ "Kraken", "Man O' War", "Man O' War" ],
+        "EnemyNames": [ "Kraken", "Man O' War 1", "Man O' War 2" ],
         "Image": "",
         "RewardTables": [
           [

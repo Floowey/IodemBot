@@ -133,7 +133,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             if (itemandnewname.Contains(','))
             {
                 item = itemandnewname.Split(',')[0].Trim();
-                newname = itemandnewname.Split(',')[1].Trim();
+                newname = itemandnewname.Split(',')[1].Trim().Replace("\"","");
             }
 
             if (inv.Rename(item, newname))

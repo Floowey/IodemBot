@@ -596,7 +596,7 @@
         "SpriteNormal": "<a:Crystal:662385859504504870>",
         "SpriteShiny": "<a:CrystalShiny:663013986173976606>",
         "Move": {
-            "Targettype": 1,
+            "Targettype": 2,
             "healpower": 0,
             "Percentage": 50
         },

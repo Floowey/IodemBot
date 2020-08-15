@@ -6,15 +6,15 @@ namespace IodemBot.Modules.GoldenSunMechanics
     {
         public int Apply(UserAccount user)
         {
-            if (user.ServerStats.DungeonsCompleted >= 200) //Berserker
+            if (user.ServerStats.DungeonsCompleted >= 150) //Berserker
             {
                 return 4;
             }
-            else if (user.ServerStats.DungeonsCompleted >= 123) //Barbarian
+            else if (user.ServerStats.DungeonsCompleted >= 100) //Barbarian
             {
                 return 3;
             }
-            else if (user.ServerStats.DungeonsCompleted >= 66) //Savage
+            else if (user.ServerStats.DungeonsCompleted >= 50) //Savage
             {
                 return 2;
             }

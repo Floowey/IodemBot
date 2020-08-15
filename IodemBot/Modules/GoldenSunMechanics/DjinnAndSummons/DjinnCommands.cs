@@ -243,7 +243,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             if (djinnandnewname.Contains(','))
             {
                 DjinnName = djinnandnewname.Split(',')[0].Trim();
-                newname = djinnandnewname.Split(',')[1].Trim();
+                newname = djinnandnewname.Split(',')[1].Trim().Replace("\"", "");
             }
 
             var userDjinn = UserAccounts.GetAccount(Context.User).DjinnPocket;

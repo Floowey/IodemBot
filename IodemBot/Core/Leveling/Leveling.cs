@@ -31,7 +31,7 @@ namespace IodemBot.Core.Leveling
 
             if (sinceLastXP.TotalMinutes >= 3)
             {
-                userAccount.LastXP = DateTime.UtcNow;
+                userAccount.LastXP = DateTime.UtcNow;   
                 userAccount.AddXp((uint)(new Random()).Next(30, 50));
             }
 

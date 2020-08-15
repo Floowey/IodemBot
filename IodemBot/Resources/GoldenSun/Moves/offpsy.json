@@ -1797,7 +1797,7 @@
     "targetType": 3,
     "emote": ":ocean:",
     "range": 1,
-    "element": 0,
+    "element": 3,
     "PPCost": 0,
     "addDamage": 50,
     "effects": [
@@ -2689,7 +2689,7 @@
     "name": "Outer Space",
     "targetType": 4,
     "emote": "<:Meteor:636449223071760384>",
-    "range": 1,
+    "range": 5,
     "element": 1,
     "PPCost": 0,
     "power": 200
@@ -2893,10 +2893,10 @@
     "name": "Raging Flood",
     "targetType": 4,
     "emote": ":ocean:",
-    "range": 4,
+    "range": 7,
     "element": 3,
     "PPCost": 0,
-    "dmgMult": 1.3,
+    "power": 110,
     "ignoreSpread": true
   },
   "Rising Venom": {

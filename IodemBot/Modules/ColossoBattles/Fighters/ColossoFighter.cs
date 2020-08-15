@@ -72,7 +72,7 @@ namespace IodemBot.Modules.ColossoBattles
         [JsonIgnore] public double defensiveMult = 1;
         [JsonIgnore] public double ignoreDefense = 1;
         public int unleashRate = 35;
-        [JsonIgnore] public uint addDamage;
+        [JsonIgnore] public uint addDamage { get; set; } = 0;
         public List<Item> EquipmentWithEffect = new List<Item>();
         public int HPrecovery { get; set; } = 0;
         public int PPrecovery { get; set; } = 0;
