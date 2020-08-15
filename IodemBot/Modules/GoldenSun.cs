@@ -124,8 +124,9 @@ namespace IodemBot.Modules
                             var items = item.Gear.Count > 0 ? string.Join("", item.Gear.Select(i => user.Inv.GetItem(i)?.Icon ?? "-")) : "no gear";
                             var djinn = item.Djinn.Count > 0 ? string.Join("", item.Djinn.Select(d => user.DjinnPocket.GetDjinn(d)?.Emote ?? "-")) : "no Djinn";
                             embed.AddField(item.LoadoutName,
-                                $"{items} - {djinn}\n" +
-                                $"{ElementIcons[item.Element]} {item.ClassSeries}"
+                                $"{ElementIcons[item.Element]} {item.ClassSeries}\n" +
+                                $"{items}\n" +
+                                $"{djinn}"
                                 , inline: true);
                         }
                     }
