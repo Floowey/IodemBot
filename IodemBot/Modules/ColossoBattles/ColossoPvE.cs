@@ -115,11 +115,13 @@ namespace IodemBot.Modules.ColossoBattles
             if (!user.Roles.Any(r => r.Id == gs.FighterRole.Id))
             {
                 _ = user.AddRoleAsync(gs.FighterRole);
-                if (FighterRoles.TryGetValue(user, out var roleAdded))
-                {
-                    FighterRoles.Remove(user);
-                }
                 FighterRoles.Add(user, DateTime.Now);
+            } else
+            {
+                if (FighterRoles.Remove(user))
+                {
+                    FighterRoles.Add(user, DateTime.Now);
+                }
             }
             await Task.CompletedTask;
         }
@@ -260,7 +262,7 @@ namespace IodemBot.Modules.ColossoBattles
         }
 
         [Command("endless")]
-        [Summary("Prepare a channel for an endless gamemode. 'Legacy' will be without djinn")]
+        [Summary("Prepare a channel for an endless gamemode. 'Legacy' will be without djinn. Endless unlocks at level 50 or once you completed the Colosso Finals!")]
         [RequireUserServer]
         public async Task ColossoEndless(EndlessMode mode = EndlessMode.Default)
         {

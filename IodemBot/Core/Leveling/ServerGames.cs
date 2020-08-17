@@ -15,7 +15,7 @@ namespace IodemBot.Core.Leveling
 {
     internal static class ServerGames
     {
-        internal static string BattleFile = $"Logs/Battles_{Global.DateString}.log";
+        internal static string BattleFile { get => $"Logs/Battles_{DateTime.Now:yyyy-MM-dd}.log"; }
         internal static async void UserWonColosso(SocketGuildUser user, IMessageChannel channel)
         {
             var userAccount = UserAccounts.GetAccount(user);
@@ -142,7 +142,7 @@ namespace IodemBot.Core.Leveling
         internal static async Task UserWonPvP(UserAccount avatar, ITextChannel lobbyChannel, int numberOfWinners, int numberOfLosers)
         {
             _ = GoldenSun.AwardClassSeries("Swordsman Series", avatar, lobbyChannel);
-            string csvline = $"{DateTime.Now.TimeOfDay},PvP,{numberOfWinners}vs{numberOfLosers},{avatar.Name}{Environment.NewLine}";
+            string csvline = $"{DateTime.Now:s},PvP,{numberOfWinners}vs{numberOfLosers},{avatar.Name}{Environment.NewLine}";
             File.AppendAllText(BattleFile, csvline);
             await Task.CompletedTask;
         }
@@ -162,7 +162,7 @@ namespace IodemBot.Core.Leveling
 
         internal static async Task UserFinishedEndless(UserAccount avatar, ITextChannel lobbyChannel, int winsInARow, EndlessMode mode)
         {
-            string csvline = $"{DateTime.Now.TimeOfDay},Endless {mode},{winsInARow},{avatar.Name}{Environment.NewLine}";
+            string csvline = $"{DateTime.Now:s},Endless {mode},{winsInARow},{avatar.Name}{Environment.NewLine}";
             File.AppendAllText(BattleFile, csvline);
             await Task.CompletedTask;
         }
@@ -195,7 +195,7 @@ namespace IodemBot.Core.Leveling
                 _ = GoldenSun.AwardClassSeries("Air Pilgrim Series", avatar, channel);
 
             }
-            string csvline = $"{DateTime.Now.TimeOfDay},Dungeon,{dungeon.Name},{avatar.Name}{Environment.NewLine}";
+            string csvline = $"{DateTime.Now:s},Dungeon,{dungeon.Name},{avatar.Name}{Environment.NewLine}";
             File.AppendAllText(BattleFile, csvline);
 
             await Task.CompletedTask;
@@ -203,7 +203,7 @@ namespace IodemBot.Core.Leveling
 
         internal static async Task UserWonSingleBattle(UserAccount avatar, ITextChannel lobbyChannel, BattleDifficulty difficulty)
         {
-            string csvline = $"{DateTime.Now.TimeOfDay},Single,{difficulty},{avatar.Name}{Environment.NewLine}";
+            string csvline = $"{DateTime.Now:s},Single,{difficulty},{avatar.Name}{Environment.NewLine}";
             File.AppendAllText(BattleFile, csvline);
             await Task.CompletedTask;
         }

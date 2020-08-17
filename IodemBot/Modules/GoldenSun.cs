@@ -138,7 +138,12 @@ namespace IodemBot.Modules
                     break;
                 case LoadoutAction.Save:
                     if (loadoutName.IsNullOrEmpty()) return;
-                    if (user.Loadouts.loadouts.Count >= 6) return;
+                    user.Loadouts.RemoveLoadout(loadoutName);
+                    if (user.Loadouts.loadouts.Count >= 6)
+                    {
+                        _ = ReplyAsync("Loadout limit of 6 reached.");
+                        return;
+                    }
                     var newLoadout = Loadout.GetLoadout(user);
                     newLoadout.LoadoutName = loadoutName;
                     user.Loadouts.SaveLoadout(newLoadout);

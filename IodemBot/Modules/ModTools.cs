@@ -69,8 +69,14 @@ namespace IodemBot.Modules
                 var account = UserAccounts.GetAccount(user);
 
                 account.Name = user.DisplayName();
-                account.Tags.RemoveAll(t => t.Contains("Adept"));
-                account.Tags.Add($"{account.Element}Adept");
+                if(account.Tags.RemoveAll( s => s == "LaliveroCompleted") > 0)
+                {
+                    account.Tags.Add("LaliveroCompleted");
+                }
+                if (account.Tags.RemoveAll(s => s == "KalayCompleted") > 0)
+                {
+                    account.Tags.Add("KalayCompleted");
+                }
             }
 
             Console.WriteLine(Global.Client.Guilds.Sum(g => g.Emotes.Count));
