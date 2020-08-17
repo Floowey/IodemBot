@@ -559,7 +559,8 @@
         "SpriteNormal": "<a:Meld:662385859320086539>",
         "SpriteShiny": "<a:MeldShiny:663013988388306955>",
       "Move": {
-        "Targettype": 1,
+        "Targettype": 3,
+        "Range": 1,
         "element": 0,
         "addDamage": 0,
         "effects": [
@@ -595,7 +596,7 @@
         "SpriteNormal": "<a:Crystal:662385859504504870>",
         "SpriteShiny": "<a:CrystalShiny:663013986173976606>",
         "Move": {
-            "Targettype": 1,
+            "Targettype": 2,
             "healpower": 0,
             "Percentage": 50
         },

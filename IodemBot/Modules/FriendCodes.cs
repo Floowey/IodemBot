@@ -4,6 +4,7 @@ using Discord.Commands;
 using Discord.WebSocket;
 using Iodembot.Preconditions;
 using IodemBot.Core.UserManagement;
+using IodemBot.Extensions;
 
 namespace IodemBot.Modules
 {
@@ -49,7 +50,7 @@ namespace IodemBot.Modules
             embed.WithColor(Colors.Get("Iodem"));
             embed.WithThumbnailUrl(Sprites.GetImageFromName("Iodem"));
             var account = UserAccounts.GetAccount(Context.User);
-
+            code = code.RemoveBadChars();
             switch (type)
             {
                 case "3ds":

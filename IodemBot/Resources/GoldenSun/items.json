@@ -145,7 +145,7 @@
       "effects": [
         {
           "Type": "AddDamage",
-          "addDamage": 20
+          "addDamage": 53
         },
         {
           "Type": "Condition",

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Discord;
 using Discord.Commands;
@@ -243,7 +244,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             if (djinnandnewname.Contains(','))
             {
                 DjinnName = djinnandnewname.Split(',')[0].Trim();
-                newname = djinnandnewname.Split(',')[1].Trim();
+                newname = djinnandnewname.Split(',')[1].Trim().RemoveBadChars();
             }
 
             var userDjinn = UserAccounts.GetAccount(Context.User).DjinnPocket;

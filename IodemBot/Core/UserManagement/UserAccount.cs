@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using IodemBot.Extensions;
 using IodemBot.Modules.ColossoBattles;
 using IodemBot.Modules.GoldenSunMechanics;
 using Newtonsoft.Json;
@@ -177,7 +178,9 @@ namespace IodemBot.Core.UserManagement
                     new ulong[]{ 0, 50, 0 }
         };
         public ulong ID { get; set; }
-        public string Name { get; set; }
+        [JsonIgnore] public string Name { get => HiddenName; set => HiddenName = value.RemoveBadChars(); }
+
+        [JsonProperty] private string HiddenName;
 
         public Inventory Inv { get; set; } = new Inventory();
         public List<string> Dungeons = new List<string>() { };
@@ -198,8 +201,6 @@ namespace IodemBot.Core.UserManagement
                 return AdeptClassSeriesManager.GetClass(this).Name; //GoldenSun.getClass(element, LevelNumber, (uint) classToggle);
             }
         }
-
-        public DateTime LastClaimed { get; set; }
         public DateTime LastXP { get; set; }
 
         [JsonIgnore]

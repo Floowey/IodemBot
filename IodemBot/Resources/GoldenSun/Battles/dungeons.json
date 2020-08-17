@@ -424,7 +424,7 @@
   "Sol Sanctum": {
     "name": "Sol Sanctum",
     "IsOneTimeOnly": true,
-    "FlavourText": "The destroyed holy grounds above Vale. Watch out for falling rocks.",
+    "FlavourText": "The destroyed holy grounds above Vale. The Sanctum still stands, though its corridors have fallen into disrepair and are infested with monsters.",
     "Image": "https://i.pinimg.com/736x/c8/02/1f/c8021fff57a87f19a74714c813396c17.jpg",
     "IsDefault": false,
     "Matchups": [
@@ -804,7 +804,7 @@
         ]
       },
       {
-        "Flavourtext": "The cave is getting spooky. You can see a yellow stone glimmering in the back. The voices inside you argue cacaophonously about whether you should keep going.",
+        "Flavourtext": "The cave is getting spooky. You can see a yellow stone glimmering in the back. The voices inside you argue cacophonously about whether you should keep going.",
         "EnemyNames": [ "Lich 2", "Ghost Mage 2" ],
         "Image": "",
         "RewardTables": [
@@ -1283,7 +1283,7 @@
   "Goma Cave": {
     "name": "Goma Cave",
     "IsOneTimeOnly": true,
-    "FlavourText": "A cave allowing you to pass through the Goma Range",
+    "FlavourText": "A cave through the Goma mountain range. A river runs through it. Though dark, it leads to Bilibin, and perhaps contains other surprises...",
     "Image": "https://goldensunwiki.net/w/images/4/4a/GomaRange.png",
     "IsDefault": false,
     "Matchups": [
@@ -1415,7 +1415,7 @@
   "Bilibin": {
     "name": "Bilibin",
     "IsOneTimeOnly": false,
-    "FlavourText": "Bilibin Town & Cave",
+    "FlavourText": "Bilibin, ruled by Lord McCoy, is a medium sized town situated just north of the Goma mountain range. Travelers headed to Imil stop here before turning north on their trek. There are also rumors of an underground passage holding the lord's treasures.",
     "Image": "https://goldensunwiki.net/w/images/4/4c/Bilibin_city.PNG",
     "IsDefault": false,
     "Matchups": [
@@ -1444,6 +1444,7 @@
       {
         "Flavourtext": "Bilibin is a small town in the middle of Angara, just east of the Goma Range. At the town gate you see a tree trunk carved beautifully into the shape of a man. A sign in front tells the story of people being turned into trees. Weirdos.",
         "EnemyNames": [ "Flutter Seed", "Drone Bee 1", "Kobold 2" ],
+        "Keywords": [ "Shuffle" ],
         "Image": "",
         "RewardTables": [
           [
@@ -1594,7 +1595,7 @@
   "Bilibin Cave": {
     "name": "Bilibin Cave",
     "IsOneTimeOnly": true,
-    "FlavourText": "A small cave in the mountains north of Bilibin.",
+    "FlavourText": "A small cave through the mountains north of Bilibin. Though twisty and dangerous, it provides passage for travelers headed for Imil, the frozen town near Mercury Lighthouse.",
     "Image": "https://goldensunwiki.net/w/images/8/88/BilibinCaveOutside.png",
     "IsDefault": false,
     "Matchups": [
@@ -1615,7 +1616,7 @@
       },
       {
         "Flavourtext": "You enter the cave and quickly find yourself in a dead end. There seems to be a small ledge up there with a chest. If you jump high enough, you *might* reach it. Watch out, it's a bit gooey.",
-        "EnemyNames": [ "Gnome", "Ooze 1", "Ooze 2" ],
+        "EnemyNames": [ "Gnome", "Ooze 1" ],
         "Keywords": [ "Shuffle" ],
         "Image": "",
         "RewardTables": [
@@ -1651,7 +1652,7 @@
       },
       {
         "Flavourtext": "You notice with the steam of your breath how the cave keeps getting colder and colder. What's up with that, huh?",
-        "EnemyNames": [ "Ghoul", "Ooze 1", "Ooze 2", "Ooze 1", "Ghoul" ],
+        "EnemyNames": [ "Ghoul", "Ooze 1", "Ooze 1", "Ghoul" ],
         "Keywords": [ "Shuffle" ],
         "Image": "",
         "RewardTables": [
@@ -1721,7 +1722,7 @@
   "Imil": {
     "name": "Imil",
     "IsOneTimeOnly": false,
-    "FlavourText": "Town of Imil, Cave in Imil",
+    "FlavourText": "Imil, the frozen town at the northernmost part of Angara. It's said that the Mercury Clan lived here in times past, and tended to both this town and the nearby Mercury Lighthouse.",
     "Image": "https://eldonreevescom.files.wordpress.com/2018/01/imil.png",
     "IsDefault": false,
     "Matchups": [
@@ -2623,7 +2624,7 @@
   "Tret Tree": {
     "name": "Tret Tree",
     "IsOneTimeOnly": true,
-    "FlavourText": "Inside the cursed tree, Tret",
+    "FlavourText": "The thick forest around the sentient elder tree, Tret. He seems to be sleeping and his branches are thronged with wild creatures. Dare you wake him?",
     "Image": "https://vignette.wikia.nocookie.net/goldensun/images/8/8f/KolimaForestTret.png",
     "IsDefault": false,
     "Matchups": [
@@ -2706,7 +2707,7 @@
       {
         "Flavourtext": "After cleaning webs off yourself, you take the first exit you see, which surprisingly leads to a Jupiter Djinni! However, he's in a bad mood so he wants to battle.",
         "EnemyNames": [ "Jupiter Djinni 1" ],
-        "Image": "",
+        "Image": "https://cdn.discordapp.com/attachments/742023207917453322/742023312401760296/1596969351803.png",
         "RewardTables": [
           [
             {
@@ -2947,7 +2948,7 @@
         ]
       },
       {
-        "Flavourtext": "You spot a purple speck in the corner of your eye. Could it be? You finess your away around to it, and lo and behold, a Jupiter Djinni!",
+        "Flavourtext": "You spot a purple speck in the corner of your eye. Could it be? You finesse your away around to it, and lo and behold, a Jupiter Djinni!",
         "EnemyNames": [ "Jupiter Djinni 2" ],
         "Image": "",
         "RewardTables": [
@@ -3665,7 +3666,7 @@
   "Lamakan Desert": {
     "name": "Lamakan Desert",
     "IsOneTimeOnly": true,
-    "FlavourText": "The hottest desert in Weyard has no mercy. You will need Hamas clearance to cross it. Let's hope that you and Feizhi don't lose your path.",
+    "FlavourText": "The hottest desert in Weyard has no mercy. You will need Hama's clearance to cross it. Let's hope that you and Feizhi don't lose your path.",
     "Image": "https://goldensunwiki.net/w/images/b/bf/LamakanDesertStoneRing.png",
     "IsDefault": false,
     "Requirement": {
@@ -4100,6 +4101,7 @@
             {
               "Weight": 1,
               "Tag": "KalayFinished",
+              "Obtainable": 1,
               "XP": 10,
               "Coins": 10
             }
@@ -4433,7 +4435,7 @@
   "Tolbi": {
     "name": "Tolbi",
     "IsOneTimeOnly": false,
-    "FlavourText": "On the south side of Karagol sea lies the huge city of Tolbi. One year ago it was under the leadership, or *regime* as it's told, of Babi, but now Iodem sits on the throne. What might be his secrets? The town is full of tourists, merchants, soldiers, ... It looks like they are getting ready for an event!",
+    "FlavourText": "On the south side of Karagol sea lies the huge city of Tolbi. One year ago it was under the leadership, or *regime* as it's told, of Babi, but now Iodem sits on the throne. What might be his secrets? The town is full of tourists, merchants, soldiers... It looks like they are getting ready for an event!",
     "Image": "https://goldensunwiki.net/w/images/1/15/Enter_Tolbi.png",
     "IsDefault": false,
     "Matchups": [
@@ -4541,6 +4543,7 @@
       {
         "Flavourtext": "As you come back to the main square, you witness some thugs trying to steal a poor merchants cob of corn. You step in.",
         "EnemyNames": [ "Ruffian", "Assassin", "Thief 2", "Bandit 2", "Ruffian" ],
+        "Keywords": [ "Shuffle" ],
         "Image": "",
         "RewardTables": [
           [
@@ -4691,7 +4694,7 @@
         ]
       },
       {
-        "Flavourtext": "You realized that you are just walking around Karagol Sea. Let's head in the other direction.",
+        "Flavourtext": "You realized that you are just walking around Karagol Sea. Let's head in the other direction!",
         "EnemyNames": [ "Gnome Mage", "Armored Rat 1", "Gnome Mage" ],
         "Image": "",
         "RewardTables": [
@@ -5111,16 +5114,31 @@
           [
             {
               "Weight": 1,
-              "Chest": "Silver",
-              "HasChest": true
-            },
-            { "Weight": 3 }
+              "XP": 250,
+              "Coins": 250
+            }
           ],
           [
             {
               "Weight": 1,
-              "XP": 250,
-              "Coins": 250,
+              "Chest": "Silver",
+              "HasChest": true
+            },
+            { "Weight": 3 }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "Morgan falls, defeated, and the crowd cheers.  You have completed the Trials, and shown yourself worthy to fight in the Finals.  The Tolbi guards nod respectfully to you as you leave the arena.",
+        "EnemyNames": [ "End" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "Obtainable": 1,
+              "XP": 1,
+              "Coins": 1,
               "Dungeon": "Colosso Finals"
             }
           ]
@@ -5278,6 +5296,26 @@
               "XP": 800,
               "Coins": 800
             }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "The Adept nods to you, acknowledging defeat.  The crowd roars their approval around you as you are presented with your prizes.  As the guards of Tolbi escort you out of the arena, they slap you on the shoulder in congratulation, and tell you that you can now join the Tolbi Guard if you ever want to give up the adventuring business.  ",
+        "EnemyNames": [ "End" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "Tag": "ColossoCompleted",
+              "Obtainable": 1,
+              "XP": 1,
+              "Coins": 1,
+              "Chest": "Gold",
+              "HasChest": true,
+              "Item": "Lure Cap",
+              "message": "Congratulations, Adept! You've proven to be exceedingly strong! You may now fight in the Endless battle mode!"
+            }
           ],
           [
             {
@@ -5285,17 +5323,6 @@
               "RequireTag": [ "ColossoCompleted" ],
               "Chest": "Silver",
               "HasChest": true
-            }
-          ],
-          [
-            {
-              "Weight": 1,
-              "Tag": "ColossoCompleted",
-              "Obtainable": 1,
-              "Chest": "Gold",
-              "HasChest": true,
-              "Item": "Lure Cap",
-              "message": "Congratulations, Adept! You've proven to be exceedingly strong! You may now fight in the Endless battle mode!"
             }
           ]
         ]
@@ -5369,7 +5396,7 @@
         ]
       },
       {
-        "Flavourtext": "Going further, the winds starts to slow down. You still have some trouble seeing, but can make barely make out a chest! Upon opening it, it turned out to be a Mimic!",
+        "Flavourtext": "Going further, the winds starts to slow down. You still have some trouble seeing, but can barely make out a chest! Upon opening it, it turned out to be a Mimic!",
         "EnemyNames": [ "Mimic 5" ],
         "Keywords": [ "StatusDelusion" ],
         "Image": "",
@@ -5428,7 +5455,7 @@
         ]
       },
       {
-        "Flavourtext": "As you round a bend, the canyon opens up. You start to stroll across the flat area, when a tornado swoops in from behind and catches you! As your feet begin to rise off the ground, you must deicde: Which Psynergy do you use?",
+        "Flavourtext": "As you round a bend, the canyon opens up. You start to stroll across the flat area, when a tornado swoops in from behind and catches you! As your feet begin to rise off the ground, you must decide: Which Psynergy do you use?",
         "EnemyNames": [ "Key:Douse", "BoobyTrap-Stun:Retreat", "BoobyTrap-Delusion:Whirlwind" ],
         "Image": "https://cdn.discordapp.com/attachments/668443234292334612/734760672151339118/unknown.png",
         "RewardTables": [
@@ -5510,7 +5537,7 @@
             { "Weight": 6 },
             {
               "Weight": 2,
-              "Dungeon": "Suhalla Junction"
+              "Dungeon": "Suhalla Desert Junction"
             },
             {
               "Weight": 1,
@@ -5539,12 +5566,15 @@
       }
     ]
   },
-  "Suhalla Junction": {
-    "name": "Suhalla Junction",
+  "Suhalla Desert Junction": {
+    "name": "Suhalla Desert Junction",
     "IsOneTimeOnly": true,
-    "FlavourText": "Suhalla Junction",
+    "FlavourText": "Backtracking into the windswept desert, you see a path you didn't follow on the way through... Perhaps something interesting lurks this way?",
     "Image": "https://goldensunwiki.net/w/images/6/6e/PinkTornado.jpg",
     "IsDefault": false,
+    "Requirement": {
+      "TagsRequired": [ "SuhallaCompleted" ]
+    },
     "Matchups": [
       {
         "Flavourtext": "After backtracking from the Storm Lizard, you look back at the chasm you couldn't cross.   Hmm... is that a secret passage across the way there?  You climb carefully down the wall... then something blinding catches your eye!",
@@ -5626,7 +5656,7 @@
   "Lalivero": {
     "name": "Lalivero",
     "IsOneTimeOnly": false,
-    "FlavourText": "Town of Lalivero",
+    "FlavourText": "Lalivero, the town under the shadow of two lighthouses. The inhabitants are somewhat mistrustful of outsiders due to being forced to build one of them by the nearby city of Tolbi, but the inn will happily take your coins before you continue on your journey.",
     "Image": "https://goldensunwiki.net/w/images/9/98/DjinniTorchOverworld.png",
     "IsDefault": false,
     "Requirement": {
@@ -5805,6 +5835,7 @@
             {
               "Weight": 1,
               "Tag": "LaliveroCompleted",
+              "Obtainable": 1,
               "XP": 1,
               "Coins": 1
             }
@@ -6842,7 +6873,7 @@
     },
     "Matchups": [
       {
-        "Flavourtext": "I was expecting your arrival. With each of our meetings, the aura of your Psynergy is becoming stronger and stronger. Take my hand. We are heading into the depths of Kolima forest, impassable by normal means.",
+        "Flavourtext": "I was expecting your arrival. Every time we've met, the aura of your Psynergy has become stronger and stronger. Take my hand. We are heading into the depths of Kolima forest, impassable by normal means.",
         "EnemyNames": [ "NextHama" ],
         "Image": "",
         "RewardTables": [
@@ -6877,7 +6908,7 @@
         ]
       },
       {
-        "Flavourtext": "Those bees you just felled... they aren't evil monsters, they just try to protect their habitat. You also just tried to save your life, that is understandable. Life is a battle.\nThis area of the forest was practically never visited by mankind. However, it is said that some nature-loathing elves are roaming the area.'",
+        "Flavourtext": "Those bees you just felled... they aren't evil monsters, they just try to protect their habitat. You also just tried to save your life, that is understandable. Life is a battle.\nThis area of the forest was practically never visited by mankind. However, it is said that some sylvan-dwelling elves are roaming the area.'",
         "EnemyNames": [ "Dinox", "Goblin 2", "Earth Golem" ],
         "Image": "",
         "RewardTables": [
@@ -6912,7 +6943,7 @@
         ]
       },
       {
-        "Flavourtext": "The thicket is getting thicker and more dense. We ought to be close. The plants are *not* happy that we are here.",
+        "Flavourtext": "The thicket is getting thicker and more dense. We ought to be close. The plants are *not* happy that we are here.'",
         "EnemyNames": [ "Mad Plant 1", "Mad Plant 2", "Mad Plant 3", "Mad Plant 4" ],
         "Keywords": [ "Shuffle" ],
         "Image": "",
@@ -6931,7 +6962,7 @@
         ]
       },
       {
-        "Flavourtext": "Through the thicket another small glade appears. In its middle, an enormous creature, a spirit grazes peacefully. As it hears the rustle of the branchwood, it looks towards you. Suddenly the plants around you move aside and you can walk through with ease. The spirit seems to sense the power of venus flowing through your veins. It lets out a grunt, and takes and readies itself, clearly wanting to fight.",
+        "Flavourtext": "Through the thicket another small glade appears. In its middle, an enormous creature - a spirit - grazes peacefully. As it hears the rustle of your passage through the briars, it looks towards you. Suddenly the plants around you move aside and you can walk through with ease. The spirit seems to sense the power of Venus flowing through your veins. It lets out a grunt, and readies itself, clearly wanting to fight.",
         "EnemyNames": [ "CybeleSummon" ],
         "Keywords": [ "Heal" ],
         "Image": "",
@@ -7663,7 +7694,7 @@
       },
       {
         "Flavourtext": "The legend of Yegelos and Hoabna tells that the two heroes ran to the top of the road and fought on this very spot. Their mutual respect in doing so and their fame and heroism brought the years-long war between the Shamans and the Anemos to an end.",
-        "EnemyNames": [ "Phoenix", "Wild Gryphon 2", "Sky Dragon 2", "Harridan 2" ],
+        "EnemyNames": [ "Phoenix", "Wild Gryphon 2", "Sky Dragon 2" ],
         "Keywords": [ "Shuffle" ],
         "Image": "",
         "RewardTables": [
@@ -8006,7 +8037,7 @@
   "Path of Aqua III": {
     "name": "Path of Aqua III",
     "IsOneTimeOnly": false,
-    "FlavourText": "Find out about the past of Mercury Adepts, by joining Hama in the middle of the big blue.",
+    "FlavourText": "Find out about the past of Mercury Adepts, by joining Hama in the middle of the big blue ocean.",
     "Image": "",
     "IsDefault": false,
     "Requirement": {
@@ -8070,7 +8101,7 @@
       },
       {
         "Flavourtext": "Some of these struggles were held on land itself, clashing blades and pitting armies against those that challenged them. Other battles were held on the oceans, where navies sought reign over the waters near the land they coveted; cannonballs were exchanged between sides, ships would close in on others to send in their best warriors in hopes of slaying the enemy crews. It is truly a violent past to behold, one that shouldn't be overlooked.'",
-        "EnemyNames": [ "Aqua Hydra 1", "Pyrdodra 1" ],
+        "EnemyNames": [ "Aqua Hydra 1", "Pyrodra" ],
         "Keywords": [ "Shuffle" ],
         "Image": "",
         "RewardTables": [
@@ -8088,7 +8119,7 @@
       },
       {
         "Flavourtext": "Many explorers in the past have witnessed some of the frightful creatures the oceans have to offer. Before you is one of the mightiest, the Kraken. It is a powerful beast, with a reputation to sink ships with little trouble. Part of your test today requires you to fell one yourself.'",
-        "EnemyNames": [ "Kraken", "Man O' War", "Man O' War" ],
+        "EnemyNames": [ "Kraken", "Man O' War 1", "Man O' War 2" ],
         "Image": "",
         "RewardTables": [
           [

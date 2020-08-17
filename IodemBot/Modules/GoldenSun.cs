@@ -123,9 +123,11 @@ namespace IodemBot.Modules
                         {
                             var items = item.Gear.Count > 0 ? string.Join("", item.Gear.Select(i => user.Inv.GetItem(i)?.Icon ?? "-")) : "no gear";
                             var djinn = item.Djinn.Count > 0 ? string.Join("", item.Djinn.Select(d => user.DjinnPocket.GetDjinn(d)?.Emote ?? "-")) : "no Djinn";
-                            embed.AddField(item.LoadoutName, $"{ElementIcons[item.Element]} {item.ClassSeries}\n" +
+                            embed.AddField(item.LoadoutName,
+                                $"{ElementIcons[item.Element]} {item.ClassSeries}\n" +
                                 $"{items}\n" +
-                                $"{djinn}", inline: true);
+                                $"{djinn}"
+                                , inline: true);
                         }
                     }
                     else
@@ -136,7 +138,12 @@ namespace IodemBot.Modules
                     break;
                 case LoadoutAction.Save:
                     if (loadoutName.IsNullOrEmpty()) return;
-                    if (user.Loadouts.loadouts.Count >= 6) return;
+                    user.Loadouts.RemoveLoadout(loadoutName);
+                    if (user.Loadouts.loadouts.Count >= 6)
+                    {
+                        _ = ReplyAsync("Loadout limit of 6 reached.");
+                        return;
+                    }
                     var newLoadout = Loadout.GetLoadout(user);
                     newLoadout.LoadoutName = loadoutName;
                     user.Loadouts.SaveLoadout(newLoadout);
@@ -210,7 +217,7 @@ namespace IodemBot.Modules
             .AddField("Unlocked Classes", account.BonusClasses.Count == 0 ? "none" : string.Join(", ", account.BonusClasses))
 
             .AddField("XP", $"{account.XP} - next in {account.XPneeded}{(account.NewGames > 1 ? $"\n({account.TotalXP} total | {account.NewGames} resets)" : "")}", true)
-            .AddField("Colosso wins | Endless Streaks", $"{account.ServerStats.ColossoWins}", true)
+            .AddField("Colosso wins | Dungeon Wins", $"{account.ServerStats.ColossoWins} | {account.ServerStats.DungeonsCompleted}", true)
             .AddField("Endless Streaks", $"Solo: {account.ServerStats.EndlessStreak.Solo} | Duo: {account.ServerStats.EndlessStreak.Duo} \nTrio: {account.ServerStats.EndlessStreak.Trio} | Quad: {account.ServerStats.EndlessStreak.Quad}", true);
             
             if (user is SocketGuildUser socketGuildUser)

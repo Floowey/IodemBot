@@ -12,9 +12,9 @@ namespace IodemBot.Modules.ColossoBattles
 {
     public class Buff
     {
-        public double multiplier;
-        public string stat;
-        public uint turns;
+        public double multiplier = 1;
+        public string stat = "";
+        public uint turns = 5;
 
         public Buff(string stat, double multiplier, uint turns)
         {
@@ -72,7 +72,7 @@ namespace IodemBot.Modules.ColossoBattles
         [JsonIgnore] public double defensiveMult = 1;
         [JsonIgnore] public double ignoreDefense = 1;
         public int unleashRate = 35;
-        [JsonIgnore] public uint addDamage;
+        [JsonIgnore] public uint addDamage { get; set; } = 0;
         public List<Item> EquipmentWithEffect = new List<Item>();
         public int HPrecovery { get; set; } = 0;
         public int PPrecovery { get; set; } = 0;
@@ -104,14 +104,14 @@ namespace IodemBot.Modules.ColossoBattles
 
         public void ApplyBuff(Buff buff)
         {
-            var existingBuff = Buffs.Where(b => b.stat == buff.stat).FirstOrDefault();
+            var existingBuff = Buffs.Where(b => b.stat == buff.stat && ((b.multiplier-1) * (buff.multiplier-1) >= 0) ).FirstOrDefault();
             if (existingBuff == null)
             {
                 Buffs.Add(buff);
             }
             else
             {
-                existingBuff.multiplier = Math.Max(0, existingBuff.multiplier + (buff.multiplier - 1));
+                existingBuff.multiplier = Math.Max(0.001, existingBuff.multiplier + (buff.multiplier - 1));
                 existingBuff.turns = Math.Max(existingBuff.turns, buff.turns);
             }
         }
@@ -263,6 +263,25 @@ namespace IodemBot.Modules.ColossoBattles
 
             RemoveCondition(Condition.Flinch);
 
+            if (HasCondition(Condition.Poison))
+            {
+                var damage = Math.Min(200, (uint)(Stats.MaxHP * Global.Random.Next(5, 10) / 100));
+                turnLog.Add($"{Name} is damaged by the Poison.");
+                turnLog.AddRange(DealDamage(damage));
+            }
+            if (HasCondition(Condition.Venom))
+            {
+                var damage = Math.Min(400, (uint)(Stats.MaxHP * Global.Random.Next(10, 20) / 100));
+                turnLog.Add($"{Name} is damaged by the Venom.");
+                turnLog.AddRange(DealDamage(damage));
+            }
+            //Haunt Damage
+            if (HasCondition(Condition.Haunt) && Global.Random.Next(0, 2) == 0)
+            {
+                var hauntDmg = damageDoneThisTurn / 4;
+                turnLog.AddRange(DealDamage(hauntDmg));
+            }
+
             //Chance to wake up
             if (HasCondition(Condition.Sleep) && !conditionsAppliedThisTurn.Contains(Condition.Sleep))
             {
@@ -327,8 +346,8 @@ namespace IodemBot.Modules.ColossoBattles
                 if (item.IsUnleashable
                     && !item.IsBroken
                     && item.Unleash.AllEffects.Any(e => e.ValidSelection(this))
-                    && Global.Random.Next(0, 100) <= item.ChanceToActivate)
-                    && !HasCondition(Condition.Decoy)
+                    && Global.Random.Next(0, 100) <= item.ChanceToActivate
+                    && !HasCondition(Condition.Decoy))
                 {
                     turnLog.Add($"{item.IconDisplay} {Name}'s {item.Name} starts to Glow.");
                     foreach (var effect in item.Unleash.AllEffects)
@@ -458,32 +477,13 @@ namespace IodemBot.Modules.ColossoBattles
             }
 
             RemoveCondition(Condition.Flinch);
-            //Poison Damage
-            if (HasCondition(Condition.Poison))
-            {
-                var damage = Math.Min(200, (uint)(Stats.MaxHP * Global.Random.Next(5, 10) / 100));
-                turnLog.Add($"{Name} is damaged by the Poison.");
-                turnLog.AddRange(DealDamage(damage));
-            }
-            if (HasCondition(Condition.Venom))
-            {
-                var damage = Math.Min(400, (uint)(Stats.MaxHP * Global.Random.Next(10, 20) / 100));
-                turnLog.Add($"{Name} is damaged by the Venom.");
-                turnLog.AddRange(DealDamage(damage));
-            }
-            //Haunt Damage
-            if (HasCondition(Condition.Haunt) && Global.Random.Next(0, 2) == 0)
-            {
-                var hauntDmg = damageDoneThisTurn / 4;
-                turnLog.AddRange(DealDamage(hauntDmg));
-            }
-
+            
             return turnLog;
         }
 
         public double MultiplyBuffs(string stat)
         {
-            var mult = Buffs.Where(b => b.stat.Equals(stat, StringComparison.InvariantCultureIgnoreCase) && b.multiplier > 0).Aggregate(1.0, (p, s) => p *= s.multiplier);
+            var mult = Buffs.Where(b => b.stat.Equals(stat, StringComparison.InvariantCultureIgnoreCase)).Aggregate(1.0, (p, s) => p *= s.multiplier);
             mult = Math.Min(mult, 2.0);
             mult = Math.Max(mult, 0.4);
             return Math.Round(mult, 2);
@@ -491,7 +491,7 @@ namespace IodemBot.Modules.ColossoBattles
 
         public void RemoveAllConditions()
         {
-            Condition[] dontRemove = new Condition[] { Condition.Down, Condition.Counter, Condition.ItemCurse, Condition.Key, Condition.Trap, Condition. };
+            Condition[] dontRemove = new Condition[] { Condition.Down, Condition.Counter, Condition.ItemCurse, Condition.Key, Condition.Trap, Condition.Decoy };
             Conditions.RemoveAll(c => !dontRemove.Contains(c));
             DeathCurseCounter = 4;
         }

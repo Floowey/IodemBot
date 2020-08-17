@@ -261,8 +261,8 @@ namespace IodemBot.Modules.ColossoBattles
             else
             {
                 var losers = winners.First().battle.GetTeam(winners.First().enemies);
-                losers.ConvertAll(s => (PlayerFighter)s).ForEach(async p => await ServerGames.UserLostBattle(p.avatar, lobbyChannel));
-                winners.OfType<PlayerFighter>().ToList().ForEach(async p => await ServerGames.UserFinishedEndless(p.avatar, lobbyChannel, winsInARow, mode));
+                losers.OfType<PlayerFighter>().ToList().ForEach(async p => await ServerGames.UserLostBattle(p.avatar, lobbyChannel));
+                losers.OfType<PlayerFighter>().ToList().ForEach(async p => await ServerGames.UserFinishedEndless(p.avatar, lobbyChannel, winsInARow, mode));
                 _ = WriteGameOver();
             }
         }
