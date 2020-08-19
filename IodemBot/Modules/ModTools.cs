@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -64,21 +65,30 @@ namespace IodemBot.Modules
         [RequireOwner]
         public async Task SetupIodem()
         {
+            await Context.Guild.DownloadUsersAsync();
+            var UsersWhoTalked = new List<string>();
+            var UsersWhoNeverTalked = new List<string>();
+            foreach(UserAccount user in UserAccounts.GetAllAccounts())
+            {
+                if(!Context.Guild.Users.Any(u => u.Id == user.ID))
+                {
+                    if(user.LevelNumber > 2)
+                    {
+                        UsersWhoTalked.Add(user.Name);
+                    } else
+                    {
+                        UsersWhoNeverTalked.Add(user.Name);
+                    }
+                }
+            }
             foreach (SocketGuildUser user in Context.Guild.Users)
             {
                 var account = UserAccounts.GetAccount(user);
 
                 account.Name = user.DisplayName();
-                if(account.Tags.RemoveAll( s => s == "LaliveroCompleted") > 0)
-                {
-                    account.Tags.Add("LaliveroCompleted");
-                }
-                if (account.Tags.RemoveAll(s => s == "KalayCompleted") > 0)
-                {
-                    account.Tags.Add("KalayCompleted");
-                }
             }
-
+            _ = ReplyAsync(string.Join(", ", UsersWhoTalked));
+            _ = ReplyAsync(string.Join(", ", UsersWhoNeverTalked));
             Console.WriteLine(Global.Client.Guilds.Sum(g => g.Emotes.Count));
             UserAccounts.SaveAccounts();
             GuildSettings.SaveGuilds();
