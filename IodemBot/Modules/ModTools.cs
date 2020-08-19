@@ -78,6 +78,7 @@ namespace IodemBot.Modules
             {
                 if (!Context.Guild.Users.Any(u => u.Id == user.ID))
                 {
+                    Console.WriteLine($"{user.ID}, {user.Name}");
                     if (user.LevelNumber > 2)
                     {
                         UsersWhoTalked.Add($"<@{user.ID}>");
@@ -94,6 +95,9 @@ namespace IodemBot.Modules
 
                 account.Name = user.DisplayName();
             }
+            Console.WriteLine($"{UsersWhoTalked.Count}, {UsersWhoNeverTalked.Count}");
+            await ReplyAsync($"{UsersWhoTalked.Count}, {UsersWhoNeverTalked.Count}");
+
             await ReplyAsync("Talked at one point");
             await ReplyAsync(string.Join(", ", UsersWhoTalked));
             await ReplyAsync("Never really talked");
