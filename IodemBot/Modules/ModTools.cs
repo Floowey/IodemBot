@@ -65,17 +65,23 @@ namespace IodemBot.Modules
         [RequireOwner]
         public async Task SetupIodem()
         {
+            _ = SetupIodemTask();
+        }
+
+        private async Task SetupIodemTask()
+        {
             await Context.Guild.DownloadUsersAsync();
             var UsersWhoTalked = new List<string>();
             var UsersWhoNeverTalked = new List<string>();
-            foreach(UserAccount user in UserAccounts.GetAllAccounts())
+            foreach (UserAccount user in UserAccounts.GetAllAccounts())
             {
-                if(!Context.Guild.Users.Any(u => u.Id == user.ID))
+                if (!Context.Guild.Users.Any(u => u.Id == user.ID))
                 {
-                    if(user.LevelNumber > 2)
+                    if (user.LevelNumber > 2)
                     {
                         UsersWhoTalked.Add(user.Name);
-                    } else
+                    }
+                    else
                     {
                         UsersWhoNeverTalked.Add(user.Name);
                     }
