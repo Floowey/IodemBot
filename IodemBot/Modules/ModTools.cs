@@ -85,7 +85,7 @@ namespace IodemBot.Modules
                     }
                     else
                     {
-                        UsersWhoTalked.Add($"<@{user.ID}>");
+                        UsersWhoNeverTalked.Add($"<@{user.ID}>");
                     }
                 }
             }
@@ -98,10 +98,8 @@ namespace IodemBot.Modules
             Console.WriteLine($"{UsersWhoTalked.Count}, {UsersWhoNeverTalked.Count}");
             await ReplyAsync($"{UsersWhoTalked.Count}, {UsersWhoNeverTalked.Count}");
 
-            await ReplyAsync("Talked at one point");
-            await ReplyAsync(string.Join(", ", UsersWhoTalked));
-            await ReplyAsync("Never really talked");
-            await ReplyAsync(string.Join(", ", UsersWhoNeverTalked));
+            await ReplyAsync($"Talked at one point: {string.Join(", ", UsersWhoTalked)}");
+            await ReplyAsync($"Never really talked: {string.Join(", ", UsersWhoNeverTalked)}");
 
             Console.WriteLine(Global.Client.Guilds.Sum(g => g.Emotes.Count));
             UserAccounts.SaveAccounts();
