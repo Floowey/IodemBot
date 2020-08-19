@@ -79,11 +79,11 @@ namespace IodemBot.Modules
                 {
                     if (user.LevelNumber > 2)
                     {
-                        UsersWhoTalked.Add(user.Name);
+                        UsersWhoTalked.Add($"<@{user.ID}>");
                     }
                     else
                     {
-                        UsersWhoNeverTalked.Add(user.Name);
+                        UsersWhoTalked.Add($"<@{user.ID}>");
                     }
                 }
             }
