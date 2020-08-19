@@ -145,7 +145,7 @@
       "effects": [
         {
           "Type": "AddDamage",
-          "addDamage": 20
+          "addDamage": 53
         },
         {
           "Type": "Condition",
@@ -3667,7 +3667,7 @@
   },
   "Mythril Shirt": {
     "Name": "Mythril Shirt",
-    "Price": 2900,
+    "Price": 2200,
     "Icon": "<:Mythril_Shirt:569854290894520340>",
     "ItemType": "UnderWear",
     "IsEquippable": true,
@@ -3676,7 +3676,7 @@
       "Def": 10,
       "MaxHP": 5
     },
-    "Rarity": "Legendary"
+    "Rarity": "Rare"
   },
   "Casual Shirt": {
     "Name": "Casual Shirt",

@@ -115,7 +115,7 @@ namespace IodemBot.Modules.ColossoBattles
         {
             get
             {
-                var basexp = 15 + 3 * LureCaps + winsInARow / 4;
+                var basexp = 12 + 3 * LureCaps + winsInARow / 4;
                 var DiffFactor = (int)Math.Max(2, (uint)Math.Pow((int)Difficulty + 1, 2));
                 var xp = (uint)(Global.Random.Next(basexp, 2 * basexp) * DiffFactor);
                 return new RewardTables()
@@ -126,15 +126,7 @@ namespace IodemBot.Modules.ColossoBattles
                             xp = xp,
                             coins = xp/2,
                             Weight = 3
-                        },
-                        new DefaultReward(){
-                            xp = xp*2,
-                            coins = xp/4
-                        },
-                        new DefaultReward(){
-                            xp = xp/2,
-                            coins = xp
-                        },
+                        }
                     }
                 };
             }
@@ -261,8 +253,8 @@ namespace IodemBot.Modules.ColossoBattles
             else
             {
                 var losers = winners.First().battle.GetTeam(winners.First().enemies);
-                losers.ConvertAll(s => (PlayerFighter)s).ForEach(async p => await ServerGames.UserLostBattle(p.avatar, lobbyChannel));
-                winners.OfType<PlayerFighter>().ToList().ForEach(async p => await ServerGames.UserFinishedEndless(p.avatar, lobbyChannel, winsInARow, mode));
+                losers.OfType<PlayerFighter>().ToList().ForEach(async p => await ServerGames.UserLostBattle(p.avatar, lobbyChannel));
+                losers.OfType<PlayerFighter>().ToList().ForEach(async p => await ServerGames.UserFinishedEndless(p.avatar, lobbyChannel, winsInARow, mode));
                 _ = WriteGameOver();
             }
         }

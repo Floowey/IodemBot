@@ -30,7 +30,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public override string ToString()
         {
-            return $"{Probability} chance to revive the target to {Percentage}% of its maximum Health";
+            return $"{Probability}% chance to revive the target to {Percentage}% of its maximum Health";
         }
 
         protected override int InternalChooseBestTarget(List<ColossoFighter> targets)

@@ -190,7 +190,7 @@
     {
       "name": ":b:upiter Djinn",
       "movepool": [ "Spark Plasma", "Thunderhead", "Thunder Mine", "Tempest", "Quick Strike", "Impact", "Ward", "Sleep", "Bind", "Storm Breath" ],
-      "imgurl": "https://cdn.discordapp.com/attachments/494638277987401739/740919208279408680/Untitled26.png",
+      "imgurl": "https://cdn.discordapp.com/attachments/546760009741107216/744185792557219920/Untitled26.png",
       "stats": {
         "maxhp": 2222,
         "maxpp": 400,
@@ -231,10 +231,10 @@
         "spd": 200
       },
       "elstats": {
-        "marsres": 200,
-        "venusres": 175,
-        "jupiterres": 150,
-        "mercuryres": 25,
+        "marsres": 25,
+        "venusres": 150,
+        "jupiterres": 175,
+        "mercuryres": 200,
         "marsatk": 135
       },
       "extraturns": 1,

@@ -71,7 +71,7 @@ namespace IodemBot.Modules.ColossoBattles
 
         public LevelOption LevelOption { get; set; } = LevelOption.CappedLevel;
         public InventoryOption InventoryOption { get; set; } = InventoryOption.Default;
-        public DjinnOption DjinnOption { get; set; } = DjinnOption.Unique;
+        public DjinnOption DjinnOption { get; set; } = DjinnOption.Any;
         public BaseStatOption BaseStatOption { get; set; } = BaseStatOption.Default;
         public BaseStatManipulationOption BaseStatManipulationOption { get; set; } = BaseStatManipulationOption.Default;
 

@@ -23,7 +23,7 @@ namespace IodemBot.Modules.ColossoBattles
             public IUserMessage EnemyMessage = null;
             public IUserMessage StatusMessage = null;
             public IUserMessage SummonsMessage = null;
-            public PlayerFighterFactory Factory = new PlayerFighterFactory() { LevelOption = LevelOption.SetLevel, SetLevel = 60 };
+            public PlayerFighterFactory Factory = new PlayerFighterFactory() { LevelOption = LevelOption.SetLevel, SetLevel = 60, DjinnOption = DjinnOption.Unique };
             public Dictionary<IUserMessage, PlayerFighter> PlayerMessages = new Dictionary<IUserMessage, PlayerFighter>();
         }
 

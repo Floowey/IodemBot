@@ -16,7 +16,7 @@ namespace IodemBot.Core.Leveling
 
         internal static async void UserSentMessage(SocketGuildUser user, SocketTextChannel channel)
         {
-            if (blackListedChannels.Contains(channel.Id))
+            if (blackListedChannels.Contains(channel.Id) || channel == null || user == null)
             {
                 return;
             }
@@ -31,7 +31,7 @@ namespace IodemBot.Core.Leveling
 
             if (sinceLastXP.TotalMinutes >= 3)
             {
-                userAccount.LastXP = DateTime.UtcNow;
+                userAccount.LastXP = DateTime.UtcNow;   
                 userAccount.AddXp((uint)(new Random()).Next(30, 50));
             }
 
@@ -40,10 +40,10 @@ namespace IodemBot.Core.Leveling
                 userAccount.ServerStats.UniqueDaysActive++;
                 userAccount.ServerStats.LastDayActive = DateTime.Now.Date;
 
-                if ((DateTime.Now - user.JoinedAt).Value.TotalDays > 30)
-                {
-                    await GoldenSun.AwardClassSeries("Hermit Series", user, channel);
-                }
+                //if ((DateTime.Now - user.JoinedAt).Value.TotalDays > 30)
+                //{
+                //    await GoldenSun.AwardClassSeries("Hermit Series", user, channel);
+                //}
             }
 
             if (channel.Id != userAccount.ServerStats.MostRecentChannel)

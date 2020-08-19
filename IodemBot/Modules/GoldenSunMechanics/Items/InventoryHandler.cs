@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Discord;
 using Discord.Commands;
@@ -58,7 +59,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             }
 
             var fb = new EmbedFooterBuilder();
-            fb.WithText($"{inv.Count} / {inv.MaxInvSize} {(inv.Upgrades < 3 ? $"Upgrade {50000 * Math.Pow(2, inv.Upgrades)}": "")}");
+            fb.WithText($"{inv.Count} / {inv.MaxInvSize} {(inv.Upgrades < 3 ? $"Upgrade: {50000 * Math.Pow(2, inv.Upgrades)}": "")}");
             embed.AddField("Coin", $"<:coin:569836987767324672> {inv.Coins}");
             embed.WithColor(Colors.Get("Iodem"));
             embed.WithFooter(fb);
@@ -133,7 +134,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             if (itemandnewname.Contains(','))
             {
                 item = itemandnewname.Split(',')[0].Trim();
-                newname = itemandnewname.Split(',')[1].Trim();
+                newname = itemandnewname.Split(',')[1].Trim().RemoveBadChars();
             }
 
             if (inv.Rename(item, newname))
@@ -273,6 +274,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                     embed.WithColor(Colors.Get("Error"));
                 }
             }
+            UserAccounts.SaveAccounts();
             await Context.Channel.SendMessageAsync("", false, embed.Build());
         }
 
