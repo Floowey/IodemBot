@@ -510,7 +510,6 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
             Inv.Remove(it);
             Coins += it.SellValue;
-            UserAccounts.SaveAccounts();
             return true;
         }
 

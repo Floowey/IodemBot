@@ -67,23 +67,16 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
             if (DjinnAndSummonsDatabase.TryGetDjinn(Djinn, out var djinn))
             {
-                if (!userAccount.DjinnPocket.djinn.Any(d => d.Djinnname == djinn.Djinnname))
+                if (userAccount.DjinnPocket.AddDjinn(djinn))
                 {
-                    if (userAccount.DjinnPocket.AddDjinn(djinn))
+                    awardLog.Add($"{userAccount.Name} found the {djinn.Element} djinni {djinn.Emote} {djinn.Name}!");
+                    if (userAccount.DjinnPocket.djinn.Count == 1)
                     {
-                        awardLog.Add($"{userAccount.Name} found the {djinn.Element} djinni {djinn.Emote} {djinn.Name}!");
-                        if (userAccount.DjinnPocket.djinn.Count == 1)
-                        {
-                            awardLog.Add($"You have found your first djinni, the {djinn.Element} djinni {djinn.Emote} {djinn.Name}. " +
-                                $"To view what it can do, use the djinninfo command `i!di {djinn.Name}` and to take it with you on your journey, use `i!djinn take {djinn.Name}`. " +
-                                $"In battle you can use a djinn to unleash its powers. After that it will go into \"Ready\" mode. From there you can use it to call a summon. After summoning, a djinn will take some turns to recover. " +
-                                $"You can also team up with other people to use a higher number of djinn in even more powerful summon sequences! " +
-                                $"Make sure to check `i!help DjinnAndSummons` for a full list of the commands related to djinn!");
-                        }
-                    }
-                    else
-                    {
-                        giveTag = false;
+                        awardLog.Add($"You have found your first djinni, the {djinn.Element} djinni {djinn.Emote} {djinn.Name}. " +
+                            $"To view what it can do, use the djinninfo command `i!di {djinn.Name}` and to take it with you on your journey, use `i!djinn take {djinn.Name}`. " +
+                            $"In battle you can use a djinn to unleash its powers. After that it will go into \"Ready\" mode. From there you can use it to call a summon. After summoning, a djinn will take some turns to recover. " +
+                            $"You can also team up with other people to use a higher number of djinn in even more powerful summon sequences! " +
+                            $"Make sure to check `i!help DjinnAndSummons` for a full list of the commands related to djinn!");
                     }
                 }
                 else
@@ -94,7 +87,12 @@ namespace IodemBot.Modules.GoldenSunMechanics
             else if (Enum.TryParse<Element>(Djinn, out var element))
             {
                 djinn = DjinnAndSummonsDatabase.GetRandomDjinn(element);
-                djinn.IsShiny = Global.Random.Next(0, 128) == 0;
+                var isShiny = Global.Random.Next(0, 128) == 0;
+                if(!isShiny && userAccount.DjinnPocket.djinn.Any(d => d.Djinnname == djinn.Djinnname))
+                {
+                    djinn = DjinnAndSummonsDatabase.GetRandomDjinn(element);
+                }
+                djinn.IsShiny = isShiny;
                 djinn.UpdateMove();
                 if (userAccount.DjinnPocket.AddDjinn(djinn))
                 {

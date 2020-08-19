@@ -40,10 +40,10 @@ namespace IodemBot.Core.Leveling
                 userAccount.ServerStats.UniqueDaysActive++;
                 userAccount.ServerStats.LastDayActive = DateTime.Now.Date;
 
-                if ((DateTime.Now - user?.JoinedAt).Value.TotalDays > 30)
-                {
-                    await GoldenSun.AwardClassSeries("Hermit Series", user, channel);
-                }
+                //if ((DateTime.Now - user.JoinedAt).Value.TotalDays > 30)
+                //{
+                //    await GoldenSun.AwardClassSeries("Hermit Series", user, channel);
+                //}
             }
 
             if (channel.Id != userAccount.ServerStats.MostRecentChannel)

@@ -121,7 +121,7 @@ namespace IodemBot.Modules.ColossoBattles
         {
             get
             {
-                var basexp = 12 + 5 * LureCaps;
+                var basexp = 12 + 3 * LureCaps;
                 var DiffFactor = (int)Math.Max(3, (uint)Math.Pow((int)Difficulty + 1, 2));
                 var xp = (uint)(Global.Random.Next(basexp, 2 * basexp) * DiffFactor);
                 return new RewardTables()
@@ -132,15 +132,7 @@ namespace IodemBot.Modules.ColossoBattles
                             xp = xp,
                             coins = xp/2,
                             Weight = 3
-                        },
-                        new DefaultReward(){
-                            xp = xp*2,
-                            coins = xp/4
-                        },
-                        new DefaultReward(){
-                            xp = xp/2,
-                            coins = xp
-                        },
+                        }
                     }
                 };
             }

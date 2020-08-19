@@ -317,6 +317,7 @@ namespace IodemBot.Core.UserManagement
             DjinnPocket.Clear();
             BonusClasses.Clear();
             Dungeons.Clear();
+            Loadouts.loadouts.Clear();
 
             BattleStatsTotal += BattleStats;
             ServerStatsTotal += ServerStats;

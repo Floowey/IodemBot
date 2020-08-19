@@ -1231,7 +1231,8 @@
         "SpriteShiny": "<a:CoreShiny:663018696444215296>",
         "Move": {
             "Targettype": 3,
-            "addDamage": 40,
+          "addDamage": 40,
+          "element": 1,
             "Effects": [
                 {
                     "Type": "IgnoreDefense",
@@ -1695,10 +1696,9 @@
                 {
                     "Type": "Condition",
                     "Condition": "Seal",
-                    "Probability": 60
+                    "Probability": 100
                 }
-            ],
-            "addDamage": 40
+            ]
         },
         "Stats": {
             "MaxHP": 13,

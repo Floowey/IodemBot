@@ -22,7 +22,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public override string ToString()
         {
-            return $"Heals {(TargetType == Target.self ? "the user" : TargetType == Target.ownSingle ? "a team mate" : TargetType == Target.ownAll ? "the users party" : "someone else")}. {(HealPower > 0 ? $"Heals HP with a Power of {HealPower}." : "")}{(Percentage > 0 ? $"Heals HP by {Percentage}%." : "")}{(PPHeal > 0 ? $"Heals PP with a Power of {PPHeal}." : "")}{(PPPercent > 0 ? $"Heals PP by {PPPercent}%." : "")}";
+            return $"Heals {(TargetType == Target.self ? "the user" : TargetType == Target.ownSingle ? "a teammate" : TargetType == Target.ownAll ? "the users party" : "someone else")}. {(HealPower > 0 ? $"Heals HP with a Power of {HealPower}." : "")}{(Percentage > 0 ? $"Heals HP by {Percentage}%." : "")}{(PPHeal > 0 ? $"Heals PP with a Power of {PPHeal}." : "")}{(PPPercent > 0 ? $"Heals PP by {PPPercent}%." : "")}";
         }
 
         public override void InternalChooseBestTarget(ColossoFighter User)

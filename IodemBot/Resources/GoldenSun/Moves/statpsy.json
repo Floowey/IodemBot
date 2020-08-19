@@ -878,7 +878,6 @@
   "Search": {
     "name": "the time to search somewhere else",
     "targetType": 0,
-    "hasPriority": true,
     "emote": "👀",
     "effects": [
       {

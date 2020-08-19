@@ -313,6 +313,12 @@ namespace IodemBot.Modules.ColossoBattles
         public async Task Dungeon([Remainder] string DungeonName)
         { _ = SetupDungeon(DungeonName, false); await Task.CompletedTask; }
 
+        [Command("Tutorial")]
+        [Summary("Enter the Tutorial and start your adventure!")]
+        [RequireUserServer]
+        public async Task Tutorial()
+        { _ = SetupDungeon("Tutorial", false); await Task.CompletedTask; }
+
         [Command("moddungeon")]
         [RequireStaff]
         [RequireUserServer]

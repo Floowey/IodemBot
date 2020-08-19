@@ -274,6 +274,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                     embed.WithColor(Colors.Get("Error"));
                 }
             }
+            UserAccounts.SaveAccounts();
             await Context.Channel.SendMessageAsync("", false, embed.Build());
         }
 
