@@ -41,6 +41,9 @@ namespace IodemBot
             client = new DiscordSocketClient(new DiscordSocketConfig
             {
                 LogLevel = LogSeverity.Info,
+                MessageCacheSize = 10,
+                AlwaysDownloadUsers = true
+
             });
 
             Global.Client = client;

@@ -74,7 +74,7 @@ namespace IodemBot.Modules
             await Context.Guild.DownloadUsersAsync();
             var UsersWhoTalked = new List<string>();
             var UsersWhoNeverTalked = new List<string>();
-            foreach (UserAccount user in UserAccounts.GetAllAccounts())
+            foreach (UserAccount user in UserAccounts.GetAllAccounts().ToList())
             {
                 if (!Context.Guild.Users.Any(u => u.Id == user.ID))
                 {
@@ -88,7 +88,7 @@ namespace IodemBot.Modules
                     }
                 }
             }
-            foreach (SocketGuildUser user in Context.Guild.Users)
+            foreach (SocketGuildUser user in Context.Guild.Users.ToList())
             {
                 var account = UserAccounts.GetAccount(user);
 
