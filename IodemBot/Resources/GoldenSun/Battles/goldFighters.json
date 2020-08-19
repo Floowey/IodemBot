@@ -231,10 +231,10 @@
         "spd": 200
       },
       "elstats": {
-        "marsres": 200,
-        "venusres": 175,
-        "jupiterres": 150,
-        "mercuryres": 25,
+        "marsres": 25,
+        "venusres": 150,
+        "jupiterres": 175,
+        "mercuryres": 200,
         "marsatk": 135
       },
       "extraturns": 1,
