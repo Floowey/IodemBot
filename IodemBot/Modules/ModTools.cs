@@ -66,6 +66,7 @@ namespace IodemBot.Modules
         public async Task SetupIodem()
         {
             _ = SetupIodemTask();
+            await Task.CompletedTask;
         }
 
         private async Task SetupIodemTask()
@@ -93,8 +94,11 @@ namespace IodemBot.Modules
 
                 account.Name = user.DisplayName();
             }
-            _ = ReplyAsync(string.Join(", ", UsersWhoTalked));
-            _ = ReplyAsync(string.Join(", ", UsersWhoNeverTalked));
+            await ReplyAsync("Talked at one point");
+            await ReplyAsync(string.Join(", ", UsersWhoTalked));
+            await ReplyAsync("Never really talked");
+            await ReplyAsync(string.Join(", ", UsersWhoNeverTalked));
+
             Console.WriteLine(Global.Client.Guilds.Sum(g => g.Emotes.Count));
             UserAccounts.SaveAccounts();
             GuildSettings.SaveGuilds();
