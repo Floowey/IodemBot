@@ -19,7 +19,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         {
             for (int i = 0; i < Multipliers.Length; i++)
             {
-                if (Global.Random.Next(0, 100) <= Probabilities[i])
+                if (Global.RandomNumber(0, 100) <= Probabilities[i])
                 {
                     User.offensiveMult *= Multipliers[i];
                     return new List<string>();

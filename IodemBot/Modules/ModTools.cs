@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -64,20 +65,41 @@ namespace IodemBot.Modules
         [RequireOwner]
         public async Task SetupIodem()
         {
-            foreach (SocketGuildUser user in Context.Guild.Users)
+            _ = SetupIodemTask();
+            await Task.CompletedTask;
+        }
+
+        private async Task SetupIodemTask()
+        {
+            await Context.Guild.DownloadUsersAsync();
+            var UsersWhoTalked = new List<string>();
+            var UsersWhoNeverTalked = new List<string>();
+            foreach (UserAccount user in UserAccounts.GetAllAccounts().ToList())
+            {
+                if (!Context.Guild.Users.Any(u => u.Id == user.ID))
+                {
+                    Console.WriteLine($"{user.ID}, {user.Name}");
+                    if (user.LevelNumber > 2)
+                    {
+                        UsersWhoTalked.Add($"<@{user.ID}>");
+                    }
+                    else
+                    {
+                        UsersWhoNeverTalked.Add($"<@{user.ID}>");
+                    }
+                }
+            }
+            foreach (SocketGuildUser user in Context.Guild.Users.ToList())
             {
                 var account = UserAccounts.GetAccount(user);
 
                 account.Name = user.DisplayName();
-                if(account.Tags.RemoveAll( s => s == "LaliveroCompleted") > 0)
-                {
-                    account.Tags.Add("LaliveroCompleted");
-                }
-                if (account.Tags.RemoveAll(s => s == "KalayCompleted") > 0)
-                {
-                    account.Tags.Add("KalayCompleted");
-                }
             }
+            Console.WriteLine($"{UsersWhoTalked.Count}, {UsersWhoNeverTalked.Count}");
+            await ReplyAsync($"{UsersWhoTalked.Count}, {UsersWhoNeverTalked.Count}");
+
+            await ReplyAsync($"Talked at one point: {string.Join(", ", UsersWhoTalked)}");
+            await ReplyAsync($"Never really talked: {string.Join(", ", UsersWhoNeverTalked)}");
 
             Console.WriteLine(Global.Client.Guilds.Sum(g => g.Emotes.Count));
             UserAccounts.SaveAccounts();

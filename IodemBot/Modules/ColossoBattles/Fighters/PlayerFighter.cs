@@ -75,9 +75,9 @@ namespace IodemBot.Modules.ColossoBattles
         public BaseStatOption BaseStatOption { get; set; } = BaseStatOption.Default;
         public BaseStatManipulationOption BaseStatManipulationOption { get; set; } = BaseStatManipulationOption.Default;
 
-        public List<Djinn> uniqueDjinn = new List<Djinn>();
+        public List<Djinn> djinn = new List<Djinn>();
         public List<Summon> summons = new List<Summon>();
-        public List<Summon> PossibleSummons { get => summons.Where(s => s.CanSummon(uniqueDjinn)).Distinct().ToList(); }
+        public List<Summon> PossibleSummons { get => summons.Where(s => s.CanSummon(djinn)).Distinct().ToList(); }
 
         public double ReductionFactor = 1.25;
         public uint SetLevel { get; set; } = 99;
@@ -184,6 +184,7 @@ namespace IodemBot.Modules.ColossoBattles
             {
                 case DjinnOption.Any:
                     var djinnToAdd = avatar.DjinnPocket.GetDjinns();
+                    djinn.AddRange(djinnToAdd);
                     summons.AddRange(avatar.DjinnPocket.summons);
                     p.Moves.AddRange(djinnToAdd);
                     foreach (var djinn in djinnToAdd)
@@ -194,8 +195,8 @@ namespace IodemBot.Modules.ColossoBattles
                     }
                     break;
                 case DjinnOption.Unique:
-                    var djinnToBeAdded = avatar.DjinnPocket.GetDjinns(uniqueDjinn);
-                    uniqueDjinn.AddRange(djinnToBeAdded);
+                    var djinnToBeAdded = avatar.DjinnPocket.GetDjinns(djinn);
+                    djinn.AddRange(djinnToBeAdded);
                     summons.AddRange(avatar.DjinnPocket.summons);
                     p.Moves.AddRange(djinnToBeAdded);
                     foreach (var djinn in djinnToBeAdded)

@@ -33,7 +33,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 Console.WriteLine(string.Join(", ", User.Moves.Select(s => s.Name)));
             }
 
-            if (Global.Random.Next(1, 100) <= Probability)
+            if (Global.RandomNumber(0, 100) <= Probability)
             {
                 if (OnTarget)
                 {

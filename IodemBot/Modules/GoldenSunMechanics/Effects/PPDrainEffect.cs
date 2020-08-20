@@ -12,7 +12,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public override List<string> Apply(ColossoFighter User, ColossoFighter Target)
         {
-            if (Global.Random.Next(0, 100) <= Probability)
+            if (Global.RandomNumber(0, 100) <= Probability)
             {
                 uint recovery = User.damageDoneThisTurn * Percentage / 100;
                 return User.RestorePP(recovery);

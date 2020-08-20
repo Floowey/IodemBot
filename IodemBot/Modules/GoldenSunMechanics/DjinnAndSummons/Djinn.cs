@@ -69,6 +69,12 @@ namespace IodemBot.Modules.GoldenSunMechanics
             IsSet = false;
         }
 
+        public void Reset()
+        {
+            IsSet = false;
+            CoolDown = 0;
+        }
+
         public List<string> EndTurn(ColossoFighter User)
         {
             var log = new List<string>();

@@ -86,7 +86,7 @@ namespace IodemBot.Modules.ColossoBattles
                     }
                     await k.DeleteAsync();
                 }
-                team.Factory.uniqueDjinn.Clear();
+                team.Factory.djinn.Clear();
                 team.Factory.summons.Clear();
                 team.PlayerMessages.Clear();
 

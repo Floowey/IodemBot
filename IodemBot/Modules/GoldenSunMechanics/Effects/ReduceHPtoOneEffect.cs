@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using IodemBot.Modules.ColossoBattles;
 
 namespace IodemBot.Modules.GoldenSunMechanics
@@ -18,9 +19,15 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
             if (Target.IsAlive)
             {
-                if (Global.Random.Next(1, 100) <= Probability)
+                if (Global.RandomNumber(0, 100) <= Probability)
                 {
-                    Target.Stats.HP = 1;
+                    if(Target.GetTeam().Count > 1)
+                    {
+                        Target.Stats.HP = 1;
+                    } else
+                    {
+                        Target.Stats.HP = Math.Min(Target.Stats.HP, (int)(Target.Stats.MaxHP * 0.15));
+                    }
                     log.Add($"<:Exclamatory:549529360604856323> {Target.Name} barely holds on.");
                 }
             }

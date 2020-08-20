@@ -87,7 +87,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             else if (Enum.TryParse<Element>(Djinn, out var element))
             {
                 djinn = DjinnAndSummonsDatabase.GetRandomDjinn(element);
-                var isShiny = Global.Random.Next(0, 128) == 0;
+                var isShiny = Global.RandomNumber(0, 128) == 0;
                 if(!isShiny && userAccount.DjinnPocket.djinn.Any(d => d.Djinnname == djinn.Djinnname))
                 {
                     djinn = DjinnAndSummonsDatabase.GetRandomDjinn(element);

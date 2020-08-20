@@ -12,7 +12,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public override List<string> Apply(ColossoFighter User, ColossoFighter Target)
         {
-            if (Global.Random.Next(1, 100) <= Probability)
+            if (Global.RandomNumber(1, 100) <= Probability)
             {
                 Target.ignoreDefense = (1 - Percentage / 100);
             }
