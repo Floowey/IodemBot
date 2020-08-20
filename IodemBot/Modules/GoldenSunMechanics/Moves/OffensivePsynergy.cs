@@ -32,7 +32,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 TargetNr = 0;
                 return;
             }
-            TargetNr = User.GetEnemies().IndexOf(aliveEnemies[Global.Random.Next(0, aliveEnemies.Count)]);
+            TargetNr = User.GetEnemies().IndexOf(aliveEnemies.Random());
         }
 
         protected override List<string> InternalUse(ColossoFighter User)
@@ -67,7 +67,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                     continue;
                 }
 
-                var baseDmg = Global.Random.Next(0, 4);
+                var baseDmg = Global.RandomNumber(0, 4);
                 var dmg = AttackBased ?
                     Math.Max(0,
                     ((int)User.Stats.Atk * User.MultiplyBuffs("Attack") - (int)t.Stats.Def * t.ignoreDefense * t.MultiplyBuffs("Defense")) / 2)
@@ -126,7 +126,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 {
                     var counterAtk = t.Stats.Atk * t.MultiplyBuffs("Attack");
                     var counterDef = User.Stats.Def * User.MultiplyBuffs("Defense") * User.ignoreDefense;
-                    uint CounterDamage = (uint)Global.Random.Next(0, 4);
+                    uint CounterDamage = (uint)Global.RandomNumber(0, 4);
                     if (counterDef < counterAtk)
                     {
                         CounterDamage += (uint)((counterAtk - counterDef) * User.defensiveMult / 2);

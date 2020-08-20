@@ -100,7 +100,7 @@ namespace IodemBot
                 _ = GuildSettings.GetGuildSettings(user.Guild).MainChannel.SendMessageAsync(embed:
                     new EmbedBuilder()
                     .WithColor(Colors.Get("Iodem"))
-                    .WithDescription(string.Format(welcomeMsg[Global.Random.Next(0, welcomeMsg.Length)], user.DisplayName()))
+                    .WithDescription(string.Format(welcomeMsg.Random(), user.DisplayName()))
                     .Build());
             }
 

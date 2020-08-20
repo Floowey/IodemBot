@@ -11,7 +11,16 @@ namespace IodemBot
         public static DateTime RunningSince { get; internal set; }
         internal static DiscordSocketClient Client { get; set; }
         internal static ulong MessageIdToTrack { get; set; }
-        internal static Random Random { get; set; } = new Random();
+        public static Random Random { get; set; } = new Random();
+
+        private static readonly object synclock = new object();
+        internal static int RandomNumber(int low, int high)
+        {
+            lock (synclock)
+            {
+                return Random.Next(low, high);
+            }
+        }
         internal static DateTime UpSince { get; set; }
 
         internal static string DateString

@@ -265,18 +265,18 @@ namespace IodemBot.Modules.ColossoBattles
 
             if (HasCondition(Condition.Poison))
             {
-                var damage = Math.Min(200, (uint)(Stats.MaxHP * Global.Random.Next(5, 10) / 100));
+                var damage = Math.Min(200, (uint)(Stats.MaxHP * Global.RandomNumber(5, 10) / 100));
                 turnLog.Add($"{Name} is damaged by the Poison.");
                 turnLog.AddRange(DealDamage(damage));
             }
             if (HasCondition(Condition.Venom))
             {
-                var damage = Math.Min(400, (uint)(Stats.MaxHP * Global.Random.Next(10, 20) / 100));
+                var damage = Math.Min(400, (uint)(Stats.MaxHP * Global.RandomNumber(10, 20) / 100));
                 turnLog.Add($"{Name} is damaged by the Venom.");
                 turnLog.AddRange(DealDamage(damage));
             }
             //Haunt Damage
-            if (HasCondition(Condition.Haunt) && Global.Random.Next(0, 2) == 0)
+            if (HasCondition(Condition.Haunt) && Global.RandomNumber(0, 2) == 0)
             {
                 var hauntDmg = damageDoneThisTurn / 4;
                 turnLog.AddRange(DealDamage(hauntDmg));
@@ -285,7 +285,7 @@ namespace IodemBot.Modules.ColossoBattles
             //Chance to wake up
             if (HasCondition(Condition.Sleep) && !conditionsAppliedThisTurn.Contains(Condition.Sleep))
             {
-                if (Global.Random.Next(0, 2) == 0)
+                if (Global.RandomNumber(0, 2) == 0)
                 {
                     RemoveCondition(Condition.Sleep);
                     turnLog.Add($"{Name} wakes up.");
@@ -294,7 +294,7 @@ namespace IodemBot.Modules.ColossoBattles
             //Chance to remove Stun
             if (HasCondition(Condition.Stun) && !conditionsAppliedThisTurn.Contains(Condition.Stun))
             {
-                if (Global.Random.Next(0, 2) == 0)
+                if (Global.RandomNumber(0, 2) == 0)
                 {
                     RemoveCondition(Condition.Stun);
                     turnLog.Add($"{Name} can move again.");
@@ -303,7 +303,7 @@ namespace IodemBot.Modules.ColossoBattles
             //Chance to remove Seal
             if (HasCondition(Condition.Seal) && !conditionsAppliedThisTurn.Contains(Condition.Seal))
             {
-                if (Global.Random.Next(0, 3) == 0)
+                if (Global.RandomNumber(0, 3) == 0)
                 {
                     RemoveCondition(Condition.Seal);
                     turnLog.Add($"{Name}'s Psynergy is no longer sealed.");
@@ -312,7 +312,7 @@ namespace IodemBot.Modules.ColossoBattles
             //Chance to remove Delusion
             if (HasCondition(Condition.Delusion) && !conditionsAppliedThisTurn.Contains(Condition.Delusion))
             {
-                if (Global.Random.Next(0, 4) == 0)
+                if (Global.RandomNumber(0, 4) == 0)
                 {
                     RemoveCondition(Condition.Delusion);
                     turnLog.Add($"{Name} can see clearly again.");
@@ -346,7 +346,7 @@ namespace IodemBot.Modules.ColossoBattles
                 if (item.IsUnleashable
                     && !item.IsBroken
                     && item.Unleash.AllEffects.Any(e => e.ValidSelection(this))
-                    && Global.Random.Next(0, 100) <= item.ChanceToActivate
+                    && Global.RandomNumber(0, 100) <= item.ChanceToActivate
                     && !HasCondition(Condition.Decoy))
                 {
                     turnLog.Add($"{item.IconDisplay} {Name}'s {item.Name} starts to Glow.");
@@ -355,7 +355,7 @@ namespace IodemBot.Modules.ColossoBattles
                         turnLog.AddRange(effect.Apply(this, this));
                     }
 
-                    if (Global.Random.Next(0, 100) <= item.ChanceToBreak)
+                    if (Global.RandomNumber(0, 100) <= item.ChanceToBreak)
                     {
                         item.IsBroken = true;
                         turnLog.Add($"{item.IconDisplay} {Name}'s {item.Name} breaks;");

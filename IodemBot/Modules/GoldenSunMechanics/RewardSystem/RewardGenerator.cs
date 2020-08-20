@@ -33,7 +33,7 @@ namespace IodemBot.Modules.GoldenSunMechanics.RewardSystem
 
             var weight = Rewards.Sum(d => d.weight);
 
-            int roll = Global.Random.Next(0, weight);
+            int roll = Global.RandomNumber(0, weight);
             var sortedRewards = Rewards.OrderByDescending(d => d.weight).ToList();
             var reward = sortedRewards.SkipWhile(r => (roll -= r.weight) >= 0).FirstOrDefault().reward;
 

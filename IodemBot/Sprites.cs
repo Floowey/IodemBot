@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using IodemBot.Extensions;
 using Newtonsoft.Json;
 
 namespace IodemBot
@@ -34,8 +35,7 @@ namespace IodemBot
 
         public static string GetRandomSprite()
         {
-            int r = Global.Random.Next(0, sprites.Count);
-            return sprites.ElementAt(r).Value;
+            return sprites.Random().Value;
         }
     }
 }
