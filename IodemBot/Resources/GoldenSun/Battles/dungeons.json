@@ -108,7 +108,7 @@
       },
       {
         "Flavourtext": "At last, let's talk about battles. Bringing a fighter's HP to zero knocks them out. You can use a variety of different Psynergy, including attacks that either target a single enemy or area-of-effect moves, healing moves, or status moves. Watch how using Psynergy takes up Psynergy Point (PP), the equivalent of mana. Make sure to have enough to spare to get out of a pinch! Now, try to take down this little critter.",
-        "EnemyNames": [ "Vermin 1" ],
+        "EnemyNames": [ "Training Dummy" ],
         "Image": "",
         "RewardTables": [
           [
@@ -4726,7 +4726,7 @@
         ]
       },
       {
-        "Flavourtext": "As you cross over to the continent of Gondowan, you face a desert. It surely is is going to be hot and you won't be able to stop sweating. You wish you'd brought a change of clothes. Back to Tolbi, for now.",
+        "Flavourtext": "As you cross over to the continent of Gondowan, you face a desert. It surely is going to be hot and you won't be able to stop sweating. You wish you'd brought a change of clothes. Back to Tolbi, for now.",
         "EnemyNames": [ "End" ],
         "Image": "",
         "RewardTables": [

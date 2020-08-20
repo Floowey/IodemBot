@@ -11436,7 +11436,9 @@
       "JupiterRes": 20,
       "MercuryAtk": 100,
       "MercuryRes": 20
-    }
+    },
+    "hasAttack": false,
+    "hasDefend": false
   },
   "Sean": {
     "name": "Sean",
