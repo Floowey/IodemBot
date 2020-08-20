@@ -223,7 +223,11 @@ namespace IodemBot.Modules.ColossoBattles
         {
             autoTurn.Stop();
             wasJustReset = false;
-            Task.WaitAll(PlayerMessages.Select(m => m.Key.RemoveAllReactionsAsync()).Append(EnemyMessage.RemoveAllReactionsAsync()).ToArray());
+            Task.WaitAll(PlayerMessages.Select(m => m.Key.RemoveAllReactionsAsync())
+                .Append(EnemyMessage.RemoveAllReactionsAsync())
+                .Append(SummonsMessage.RemoveAllReactionsAsync())
+                .ToArray()
+            );
 
             await WriteBattleInit();
             autoTurn.Start();
@@ -270,16 +274,17 @@ namespace IodemBot.Modules.ColossoBattles
                 Dispose(); return;
             }
             WasReset = true;
+            PlayerMessages
+                .Values
+                .SelectMany(u => u.Moves.OfType<Djinn>())
+                .ToList()
+                .ForEach(d => d.Reset());
+
             foreach (var k in PlayerMessages.Keys)
             {
-                foreach(var d in PlayerMessages[k].Moves.OfType<Djinn>())
-                {
-                    d.CoolDown = 0;
-                    d.Summon(PlayerMessages[k]);
-                }
                 await k.DeleteAsync();
             }
-            Factory.uniqueDjinn.Clear();
+            Factory.djinn.Clear();
             Factory.summons.Clear();
             PlayerMessages.Clear();
 
