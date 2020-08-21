@@ -158,7 +158,7 @@ namespace IodemBot.Core.Leveling
             {
                 avatar.ServerStats.LegacyStreak.AddStreak(winsInARow, nOfPlayers, TeamMatesNames);
             }
-
+            UserAccountProvider.StoreUser(avatar);
             await Task.CompletedTask;
         }
 
@@ -214,6 +214,7 @@ namespace IodemBot.Core.Leveling
         {
             var userAccount = EntityConverter.ConvertUser(user);
             userAccount.ServerStats.CommandsUsed++;
+            UserAccountProvider.StoreUser(userAccount);
             if (userAccount.ServerStats.CommandsUsed >= 100)
             {
                 await GoldenSun.AwardClassSeries("Scrapper Series", user, channel);
