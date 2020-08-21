@@ -14,7 +14,7 @@ using IodemBot.Modules.ColossoBattles;
 namespace IodemBot.Modules.GoldenSunMechanics
 {
     [Name("Inventory and Items")]
-    public class InventoryHandler : ModuleBase<SocketCommandContext>
+    public class InventoryCommands : ModuleBase<SocketCommandContext>
     {
         [Command("Inv")]
         [Cooldown(10)]
