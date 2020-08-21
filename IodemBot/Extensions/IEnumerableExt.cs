@@ -7,7 +7,11 @@ namespace IodemBot.Extensions
     {
         public static T Random<T>(this IEnumerable<T> ts)
         {
-            if (ts.Count() == 0) return default;
+            if (ts.Count() == 0)
+            {
+                return default;
+            }
+
             return ts.ElementAt(Global.RandomNumber(0, ts.Count()));
         }
     }

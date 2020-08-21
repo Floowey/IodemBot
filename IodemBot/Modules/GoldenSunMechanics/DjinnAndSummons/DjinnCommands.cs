@@ -130,6 +130,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             if (inv.RemoveBalance(price))
             {
                 djinnPocket.PocketUpgrades++;
+                UserAccountProvider.StoreUser(acc);
                 await DjinnInv();
             }
             else
@@ -163,6 +164,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             {
                 TakeDjinn(user, Names);
             }
+
             _ = DjinnInv();
             await Task.CompletedTask;
         }
@@ -184,6 +186,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 userDjinn.DjinnSetup = userDjinn.DjinnSetup.Prepend(d.Element).ToList();
             });
             userDjinn.DjinnSetup = userDjinn.DjinnSetup.Take(2).ToList();
+            UserAccountProvider.StoreUser(user);
         }
 
         [Command("GiveDjinn")]
@@ -192,8 +195,9 @@ namespace IodemBot.Modules.GoldenSunMechanics
         {
             if (DjinnAndSummonsDatabase.TryGetDjinn(djinnName, out Djinn djinn))
             {
-                EntityConverter.ConvertUser(user ?? Context.User).DjinnPocket.AddDjinn(djinn);
-                await DjinnInv();
+                var acc = EntityConverter.ConvertUser(user ?? Context.User);
+                acc.DjinnPocket.AddDjinn(djinn);
+                UserAccountProvider.StoreUser(acc);
             }
         }
 
@@ -203,8 +207,9 @@ namespace IodemBot.Modules.GoldenSunMechanics
         {
             if (DjinnAndSummonsDatabase.TryGetSummon(summonName, out Summon summon))
             {
-                EntityConverter.ConvertUser(user ?? Context.User).DjinnPocket.AddSummon(summon);
-                await DjinnInv();
+                var acc = EntityConverter.ConvertUser(user ?? Context.User);
+                acc.DjinnPocket.AddSummon(summon);
+                UserAccountProvider.StoreUser(acc);
             }
         }
 
@@ -218,7 +223,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         private async Task ReleaseDjinnHidden(string DjinnName)
         {
-            var userDjinn = EntityConverter.ConvertUser(Context.User).DjinnPocket;
+            var acc = EntityConverter.ConvertUser(Context.User);
+            var userDjinn = acc.DjinnPocket;
             var chosenDjinn = userDjinn.GetDjinn(DjinnName);
             if (chosenDjinn == null)
             {
@@ -231,6 +237,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             if (response.Content.Equals("Yes", StringComparison.CurrentCultureIgnoreCase))
             {
                 userDjinn.Djinn.Remove(chosenDjinn);
+                UserAccountProvider.StoreUser(acc);
                 _ = ReplyAsync(embed: new EmbedBuilder().WithDescription($"You set {chosenDjinn.Emote} {chosenDjinn.Name} free, who swiftly rushes off to find another master.").Build());
             }
         }

@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using IodemBot.Extensions;
 using LiteDB;
-using Newtonsoft.Json;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
@@ -72,9 +71,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public uint Coins { get; set; }
         public uint Upgrades { get; set; }
 
-
-        [JsonIgnore]
-        public uint MaxInvSize
+        internal uint MaxInvSize
         {
             get { return BaseInvSize + 10 * Upgrades; }
         }
@@ -82,18 +79,20 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public DateTime LastDailyChest { get; set; }
         public int DailiesInARow { get; set; }
 
-        [JsonIgnore]
-        public int Count
+        internal int Count
         { get { return Inv.Count; } }
 
-        [JsonIgnore] public bool IsFull { get { return Count >= MaxInvSize; } }
+        public bool IsFull { get { return Count >= MaxInvSize; } }
+        internal bool HasDuplicate { get { return Inv.Any(i => Inv.Where(j => j.Name.Equals(i.Name)).Count() > 1); } }
 
-        [JsonIgnore] public bool HasDuplicate { get { return Inv.Any(i => Inv.Where(j => j.Name.Equals(i.Name)).Count() > 1); } }
-
-        [JsonProperty]
-        private Dictionary<ChestQuality, uint> chests = new Dictionary<ChestQuality, uint>()
+        public Dictionary<ChestQuality, uint> chests { get; set; } = new Dictionary<ChestQuality, uint>()
         {
-            { ChestQuality.Wooden, 0 }, {ChestQuality.Normal, 0}, {ChestQuality.Silver, 0}, {ChestQuality.Gold, 0}, {ChestQuality.Adept, 0}, {ChestQuality.Daily, 0}
+            {ChestQuality.Wooden, 0},
+            {ChestQuality.Normal, 0},
+            {ChestQuality.Silver, 0},
+            {ChestQuality.Gold, 0},
+            {ChestQuality.Adept, 0},
+            {ChestQuality.Daily, 0}
         };
 
         public int NumberOfItemType(ItemType type)
@@ -279,7 +278,11 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         internal bool Rename(string item, string newname = null)
         {
-            if (!HasItem(item)) return false;
+            if (!HasItem(item))
+            {
+                return false;
+            }
+
             var it = GetItem(item);
 
             if (!RemoveBalance(it.Price * 2))
@@ -293,9 +296,17 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         internal bool Polish(string item)
         {
-            if (!HasItem(item)) return false;
+            if (!HasItem(item))
+            {
+                return false;
+            }
+
             var it = GetItem(item);
-            if (!it.CanBeAnimated) return false;
+            if (!it.CanBeAnimated)
+            {
+                return false;
+            }
+
             if (!RemoveBalance(it.Price * 10))
             {
                 return false;

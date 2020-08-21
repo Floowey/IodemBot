@@ -333,7 +333,11 @@ namespace IodemBot.Core.UserManagement
 
         public bool Equals([AllowNull] UserAccount other)
         {
-            if (other == null) return false;
+            if (other == null)
+            {
+                return false;
+            }
+
             return ID == other.ID;
         }
     }

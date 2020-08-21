@@ -70,7 +70,7 @@ namespace IodemBot.Modules
         private async Task SetupIodemTask()
         {
             await Context.Guild.DownloadUsersAsync();
-            foreach (var user in UserAccounts.GetAllAccounts())
+            foreach (var user in UserAccounts.GetAllAccounts().Where(p => p.TotalXP > 1000))
             {
                 UserAccountProvider.GetById(user.ID);
             }
@@ -81,7 +81,7 @@ namespace IodemBot.Modules
         [RequireModerator]
         public async Task Activity()
         {
-            var acc = UserAccounts.GetAllAccounts();
+            var acc = UserAccountProvider.GetAllUsers();
             await ReplyAsync("", false, new EmbedBuilder()
                 .WithDescription("Server activity")
                 .AddField("Total Members ever", acc.Count(), true)
@@ -160,7 +160,6 @@ namespace IodemBot.Modules
                 Process process = Process.Start(ps);
                 process.WaitForExit();
                 return;
-
             }
         }
 
@@ -185,6 +184,7 @@ namespace IodemBot.Modules
             var unusedTags = avatar.Tags.Where(t => !allTags1.Contains(t) && !allTags2.Contains(t) && !allTags3.Contains(t) && !allTags4.Contains(t) && !allTags5.Contains(t));
 
             avatar.Tags.RemoveAll(t => unusedTags.Contains(t));
+            UserAccountProvider.StoreUser(avatar);
             await ReplyAsync(string.Join(", ", unusedTags));
         }
 
@@ -193,7 +193,8 @@ namespace IodemBot.Modules
         public async Task RemoveTag(SocketGuildUser user, string Tag)
         {
             var avatar = EntityConverter.ConvertUser(user);
-            await ReplyAsync($"Tag Removed {avatar.Tags.Remove(Tag)}");
+            _ = ReplyAsync($"Tag Removed {avatar.Tags.Remove(Tag)}");
+            UserAccountProvider.StoreUser(avatar);
         }
 
         [Command("AddTag")]
@@ -202,6 +203,7 @@ namespace IodemBot.Modules
         {
             var avatar = EntityConverter.ConvertUser(user);
             avatar.Tags.Add(Tag);
+            UserAccountProvider.StoreUser(avatar);
             await ReplyAsync("Tag Added");
         }
 

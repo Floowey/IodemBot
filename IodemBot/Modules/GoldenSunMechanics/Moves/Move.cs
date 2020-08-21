@@ -174,7 +174,11 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public bool Equals([AllowNull] Move other)
         {
-            if (other == null) return false;
+            if (other == null)
+            {
+                return false;
+            }
+
             return Name == other.Name && Emote == other.Emote;
         }
     }

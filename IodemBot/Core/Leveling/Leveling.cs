@@ -22,7 +22,10 @@ namespace IodemBot.Core.Leveling
                 return;
             }
 
-            if (channel.Id == GuildSettings.GetGuildSettings(channel.Guild).ColossoChannel?.Id) return;
+            if (channel.Id == GuildSettings.GetGuildSettings(channel.Guild).ColossoChannel?.Id)
+            {
+                return;
+            }
 
             var userAccount = EntityConverter.ConvertUser(user);
 

@@ -167,9 +167,20 @@ namespace IodemBot.Modules.ColossoBattles
                 SetNextEnemy();
             }
 
-            if (Difficulty == BattleDifficulty.Easy && playerAvatar.LevelNumber < 10) return;
-            if (Difficulty == BattleDifficulty.Medium && playerAvatar.LevelNumber < 30) return;
-            if (Difficulty == BattleDifficulty.Hard && playerAvatar.LevelNumber < 50) return;
+            if (Difficulty == BattleDifficulty.Easy && playerAvatar.LevelNumber < 10)
+            {
+                return;
+            }
+
+            if (Difficulty == BattleDifficulty.Medium && playerAvatar.LevelNumber < 30)
+            {
+                return;
+            }
+
+            if (Difficulty == BattleDifficulty.Hard && playerAvatar.LevelNumber < 50)
+            {
+                return;
+            }
 
             if (playerAvatar.Inv.GetGear(AdeptClassSeriesManager.GetClassSeries(playerAvatar).Archtype).Any(i => i.Name == "Lure Cap"))
             {

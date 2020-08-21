@@ -23,7 +23,7 @@ namespace IodemBot.Modules.ColossoBattles
 
         private static readonly List<BattleEnvironment> battles = new List<BattleEnvironment>();
         private static bool AcceptBattles = true;
-        private static Dictionary<SocketGuildUser, DateTime> FighterRoles = new Dictionary<SocketGuildUser, DateTime>();
+        private static readonly Dictionary<SocketGuildUser, DateTime> FighterRoles = new Dictionary<SocketGuildUser, DateTime>();
         public static ulong[] ChannelIds
         {
             get => battles.Select(b => b.GetChannelIds).SelectMany(item => item).Distinct().ToArray();
@@ -31,8 +31,16 @@ namespace IodemBot.Modules.ColossoBattles
 
         public async Task SetupDungeon(string DungeonName, bool ModPermission = false)
         {
-            if (!AcceptBattles) return;
-            if (!(Context.User is SocketGuildUser user)) return;
+            if (!AcceptBattles)
+            {
+                return;
+            }
+
+            if (!(Context.User is SocketGuildUser user))
+            {
+                return;
+            }
+
             var acc = EntityConverter.ConvertUser(Context.User);
             var gs = GuildSettings.GetGuildSettings(Context.Guild);
             _ = RemoveFighterRoles();
@@ -103,7 +111,10 @@ namespace IodemBot.Modules.ColossoBattles
                 if ((DateTime.Now - entry.Value).TotalMinutes > 10)
                 {
                     if (entry.Key.Roles.Any(r => r.Id == gs.FighterRole.Id))
+                    {
                         _ = entry.Key.RemoveRoleAsync(gs.FighterRole);
+                    }
+
                     toBeRemoved.Add(entry.Key);
                 }
             }
@@ -114,7 +125,11 @@ namespace IodemBot.Modules.ColossoBattles
         private async Task AddFighterRole()
         {
             var gs = GuildSettings.GetGuildSettings(Context.Guild);
-            if (!(Context.User is SocketGuildUser user)) return;
+            if (!(Context.User is SocketGuildUser user))
+            {
+                return;
+            }
+
             if (!user.Roles.Any(r => r.Id == gs.FighterRole.Id))
             {
                 _ = user.AddRoleAsync(gs.FighterRole);
@@ -270,8 +285,16 @@ namespace IodemBot.Modules.ColossoBattles
         [RequireUserServer]
         public async Task ColossoEndless(EndlessMode mode = EndlessMode.Default)
         {
-            if (!AcceptBattles) return;
-            if (!(Context.User is SocketGuildUser user)) return;
+            if (!AcceptBattles)
+            {
+                return;
+            }
+
+            if (!(Context.User is SocketGuildUser user))
+            {
+                return;
+            }
+
             var guild = Context.Guild;
             var gs = GuildSettings.GetGuildSettings(guild);
             _ = RemoveFighterRoles();
@@ -279,7 +302,10 @@ namespace IodemBot.Modules.ColossoBattles
                 Context.Guild.Channels.Any(c => b.GetChannelIds.Contains(c.Id)) &&
                 b.Name.Equals(Context.User.Username, StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault();
             var acc = EntityConverter.ConvertUser(Context.User);
-            if (acc.LevelNumber < 50 && !acc.Tags.Contains("ColossoCompleted")) return;
+            if (acc.LevelNumber < 50 && !acc.Tags.Contains("ColossoCompleted"))
+            {
+                return;
+            }
 
             if (gauntletFromUser != null)
             {
@@ -415,7 +441,7 @@ namespace IodemBot.Modules.ColossoBattles
             {
                 await channel.SyncPermissionsAsync();
             }
-            catch (HttpException e)
+            catch (HttpException)
             {
                 channel = await guild.GetOrCreateTextChannelAsync($"{Name}1", d => { d.CategoryId = categoryID; d.Position = colossoChannel.Position + battles.Count(); });
                 await channel.SyncPermissionsAsync();

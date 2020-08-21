@@ -217,7 +217,11 @@ namespace IodemBot.Modules.ColossoBattles
                     _ = StartBattle();
                     return;
                 }
-                if (!Battle.isActive) return;
+                if (!Battle.isActive)
+                {
+                    return;
+                }
+
                 Teams.Values.ToList().ForEach(async V =>
                 {
                     var StatusMessage = V.StatusMessage;
@@ -519,7 +523,11 @@ namespace IodemBot.Modules.ColossoBattles
             var allDjinn = V.PlayerMessages.Values.SelectMany(p => p.Moves.OfType<Djinn>()).ToList();
             var standbyDjinn = allDjinn.Where(d => d.State == DjinnState.Standby);
             var recoveryDjinn = allDjinn.Where(d => d.State == DjinnState.Recovery);
-            if (allDjinn.Count == 0) return null;
+            if (allDjinn.Count == 0)
+            {
+                return null;
+            }
+
             EmbedBuilder embed = new EmbedBuilder()
                 .WithThumbnailUrl("https://cdn.discordapp.com/attachments/497696510688100352/640300243820216336/unknown.png");
 
@@ -605,7 +613,7 @@ namespace IodemBot.Modules.ColossoBattles
         protected virtual async Task WritePlayers()
         {
             var tasks = new List<Task>();
-            Teams.Values.ToList().ForEach((Action<PvPTeamCollector>)(async V =>
+            Teams.Values.ToList().ForEach(async V =>
             {
                 int i = 1;
                 foreach (KeyValuePair<IUserMessage, PlayerFighter> k in V.PlayerMessages)
@@ -654,7 +662,7 @@ namespace IodemBot.Modules.ColossoBattles
                     }
                     i++;
                 }
-            }));
+            });
             await Task.WhenAll(tasks);
         }
 

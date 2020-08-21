@@ -276,7 +276,10 @@ namespace IodemBot.Modules.ColossoBattles
             SocketGuildUser player = (SocketGuildUser)reaction.User.Value;
             var playerAvatar = EntityConverter.ConvertUser(player);
 
-            if (playerAvatar.LevelNumber < 50 && !playerAvatar.Tags.Contains("ColossoCompleted")) return;
+            if (playerAvatar.LevelNumber < 50 && !playerAvatar.Tags.Contains("ColossoCompleted"))
+            {
+                return;
+            }
 
             var p = Factory.CreatePlayerFighter(playerAvatar);
 

@@ -115,7 +115,11 @@ namespace IodemBot.Modules
         [RequireUserServer]
         public async Task LoadoutTask(LoadoutAction action = LoadoutAction.Show, [Remainder] string loadoutName = "")
         {
-            if (!(Context.User is SocketGuildUser sgu)) return;
+            if (!(Context.User is SocketGuildUser sgu))
+            {
+                return;
+            }
+
             var user = EntityConverter.ConvertUser(sgu);
             switch (action)
             {
@@ -141,7 +145,11 @@ namespace IodemBot.Modules
                     _ = ReplyAsync(embed: embed.Build());
                     break;
                 case LoadoutAction.Save:
-                    if (loadoutName.IsNullOrEmpty()) return;
+                    if (loadoutName.IsNullOrEmpty())
+                    {
+                        return;
+                    }
+
                     user.Loadouts.RemoveLoadout(loadoutName);
                     if (user.Loadouts.loadouts.Count >= 6)
                     {
@@ -166,7 +174,11 @@ namespace IodemBot.Modules
                     }
                     break;
                 case LoadoutAction.Remove:
-                    if (loadoutName.IsNullOrEmpty()) return;
+                    if (loadoutName.IsNullOrEmpty())
+                    {
+                        return;
+                    }
+
                     user.Loadouts.RemoveLoadout(loadoutName);
                     UserAccountProvider.StoreUser(user);
                     _ = LoadoutTask(LoadoutAction.Show);
@@ -242,7 +254,11 @@ namespace IodemBot.Modules
         {
             user ??= Context.User;
             var acc = EntityConverter.ConvertUser(user);
-            if (acc.TrophyCase.Trophies.Count == 0) return;
+            if (acc.TrophyCase.Trophies.Count == 0)
+            {
+                return;
+            }
+
             var embed = new EmbedBuilder()
                 .WithTitle($"Trophies of {acc.Name}");
             acc.TrophyCase.Trophies.ForEach(t => embed.AddField("Trophy", $"{t.Icon}\n{t.Text}\nObtained on: {t.ObtainedOn.Date:d}", true));
@@ -344,7 +360,11 @@ namespace IodemBot.Modules
         [Cooldown(5)]
         public async Task ChooseElement(Element chosenElement, [Remainder] string classSeriesName = null)
         {
-            if (!(Context.User is SocketGuildUser user)) return;
+            if (!(Context.User is SocketGuildUser user))
+            {
+                return;
+            }
+
             var embed = new EmbedBuilder();
             var account = EntityConverter.ConvertUser(Context.User);
             _ = GiveElementRole(user, chosenElement);

@@ -4,7 +4,7 @@ namespace IodemBot.Core.UserManagement
 {
     public static class UserAccountProvider
     {
-        private static PersistentStorage _persistentStorage;
+        private static readonly PersistentStorage _persistentStorage;
 
         static UserAccountProvider()
         {

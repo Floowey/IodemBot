@@ -15,7 +15,11 @@ namespace IodemBot.Core
         {
             try
             {
-                if (isSaving) return;
+                if (isSaving)
+                {
+                    return;
+                }
+
                 lock (dataLock)
                 {
                     isSaving = true;

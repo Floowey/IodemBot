@@ -70,7 +70,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 var baseDmg = Global.RandomNumber(0, 4);
                 var dmg = AttackBased ?
                     Math.Max(0,
-                    ((int)User.Stats.Atk * User.MultiplyBuffs("Attack") - (int)t.Stats.Def * t.ignoreDefense * t.MultiplyBuffs("Defense")) / 2)
+                    (User.Stats.Atk * User.MultiplyBuffs("Attack") - t.Stats.Def * t.ignoreDefense * t.MultiplyBuffs("Defense")) / 2)
                     : (int)Power;
 
                 //                var elMult = 1 + Math.Max(0.0, (int)User.elstats.GetPower(element) * User.MultiplyBuffs("Power") - (int)t.elstats.GetRes(element) * t.MultiplyBuffs("Resistance")) / (attackBased ? 400 : 200);

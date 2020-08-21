@@ -8,13 +8,21 @@ namespace IodemBot.Extensions
     {
         public static IEnumerable<Djinn> OfElement(this IEnumerable<Djinn> djinn, Element el)
         {
-            if (djinn == null) return null;
+            if (djinn == null)
+            {
+                return null;
+            }
+
             return djinn.Where(d => d.Element == el);
         }
 
         public static IEnumerable<Djinn> OfElement(this IEnumerable<Djinn> djinn, Element[] el)
         {
-            if (djinn == null) return null;
+            if (djinn == null)
+            {
+                return null;
+            }
+
             return djinn.Where(d => el.Contains(d.Element));
         }
 
