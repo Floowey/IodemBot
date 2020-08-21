@@ -11,8 +11,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public static readonly int MaxDjinn = 2;
         public static readonly int BasePocketSize = 6;
         public static readonly int AllowedDjinnGap = 3;
-        [BsonIgnore] public List<Djinn> Djinn { get; set; }
-        [BsonIgnore] public List<Summon> Summons { get; set; }
+        [BsonIgnore] public List<Djinn> Djinn { get; set; } = new List<Djinn>();
+        [BsonIgnore] public List<Summon> Summons { get; set; } = new List<Summon>();
 
         public IEnumerable<DjinnHolder> DjinnStorage
         {
