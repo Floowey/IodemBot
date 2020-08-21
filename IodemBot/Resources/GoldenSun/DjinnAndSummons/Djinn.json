@@ -332,7 +332,7 @@
         "SpriteNormal": "<a:Hemlock:662385859110371330>",
         "SpriteShiny": "<a:HemlockShiny:663013988291837981>",
         "Move": {
-            "Targettype": 4,
+            "Targettype": 3,
             "Effects": [
                 {
                     "Type": "Condition",
@@ -580,7 +580,7 @@
         "SpriteNormal": "<a:Mold:662385859571744806>",
         "SpriteShiny": "<a:MoldShiny:663013988136779802>",
         "Move": {
-            "Targettype": 1,
+            "Targettype": 3,
             "addDamage": 80,
             "element": 0
         },

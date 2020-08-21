@@ -179,8 +179,7 @@ namespace IodemBot.Core.UserManagement
         };
         public ulong ID { get; set; }
         public string Name { get => HiddenName; set => HiddenName = value.RemoveBadChars(); }
-
-        private string HiddenName;
+        [JsonProperty]private string HiddenName { get; set; }
 
         public Inventory Inv { get; set; } = new Inventory();
         public List<string> Dungeons { get; set; } = new List<string>();
