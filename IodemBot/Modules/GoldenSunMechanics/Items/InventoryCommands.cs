@@ -457,21 +457,14 @@ namespace IodemBot.Modules.GoldenSunMechanics
             }
         }
 
-        [Command("Inv Clear")]
-        [RequireModerator]
-        public async Task ClearInventory()
-        {
-            var inv = EntityConverter.ConvertUser(Context.User).Inv;
-            inv.Clear();
-            await Task.CompletedTask;
-        }
-
         [Command("Inv Sort")]
         [Summary("Sort your inventory")]
         public async Task SortInventory()
         {
-            var inv = EntityConverter.ConvertUser(Context.User).Inv;
+            var account = EntityConverter.ConvertUser(Context.User);
+            var inv = account.Inv;
             inv.Sort();
+            UserAccountProvider.StoreUser(account);
             _ = ShowInventory();
             await Task.CompletedTask;
         }
