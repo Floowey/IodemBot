@@ -70,7 +70,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 if (userAccount.DjinnPocket.AddDjinn(djinn))
                 {
                     awardLog.Add($"{userAccount.Name} found the {djinn.Element} djinni {djinn.Emote} {djinn.Name}!");
-                    if (userAccount.DjinnPocket.djinn.Count == 1)
+                    if (userAccount.DjinnPocket.Djinn.Count == 1)
                     {
                         awardLog.Add($"You have found your first djinni, the {djinn.Element} djinni {djinn.Emote} {djinn.Name}. " +
                             $"To view what it can do, use the djinninfo command `i!di {djinn.Name}` and to take it with you on your journey, use `i!djinn take {djinn.Name}`. " +
@@ -88,7 +88,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             {
                 djinn = DjinnAndSummonsDatabase.GetRandomDjinn(element);
                 var isShiny = Global.RandomNumber(0, 128) == 0;
-                if(!isShiny && userAccount.DjinnPocket.djinn.Any(d => d.Djinnname == djinn.Djinnname))
+                if(!isShiny && userAccount.DjinnPocket.Djinn.Any(d => d.Djinnname == djinn.Djinnname))
                 {
                     djinn = DjinnAndSummonsDatabase.GetRandomDjinn(element);
                 }
@@ -97,7 +97,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 if (userAccount.DjinnPocket.AddDjinn(djinn))
                 {
                     awardLog.Add($"{userAccount.Name} found the {djinn.Element} djinni {djinn.Emote} {djinn.Name}!");
-                    if (userAccount.DjinnPocket.djinn.Count == 1)
+                    if (userAccount.DjinnPocket.Djinn.Count == 1)
                     {
                         awardLog.Add($"You have found your first djinni, the {djinn.Element} djinni {djinn.Emote} {djinn.Name}. " +
                             $"To view what it can do, use the djinninfo command `i!di {djinn.Name}` and to take it with you on your journey, use `i!djinn take {djinn.Name}` as long as it matches one of your classes elements. " +
@@ -115,7 +115,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
             if (DjinnAndSummonsDatabase.TryGetSummon(Summon, out var summon))
             {
-                if (!userAccount.DjinnPocket.summons.Contains(summon))
+                if (!userAccount.DjinnPocket.Summons.Contains(summon))
                 {
                     userAccount.DjinnPocket.AddSummon(summon);
                     awardLog.Add($"{userAccount.Name} found the summon tablet for {summon.Emote} {summon.Name}!");

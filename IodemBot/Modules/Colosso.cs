@@ -64,7 +64,7 @@ namespace IodemBot.Modules
 
         private static string GetText(SocketUser user, Matchup m)
         {
-            return String.Format(m.Result.Text, ((SocketGuildUser)user).DisplayName(), m.Enemy);
+            return string.Format(m.Result.Text, ((SocketGuildUser)user).DisplayName(), m.Enemy);
         }
 
         private static Matchup GetRandomMatchup()

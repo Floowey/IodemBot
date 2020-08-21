@@ -11,8 +11,7 @@ namespace IodemBot.Modules.ColossoBattles
 {
     public class PlayerFighter : ColossoFighter
     {
-        [JsonIgnore] public UserAccount avatar;
-        [JsonIgnore] public SocketGuildUser guildUser;
+        [JsonIgnore] public ulong Id;
         [JsonIgnore] public PlayerFighterFactory factory;
 
         public BattleStats battleStats = new BattleStats();
@@ -42,7 +41,7 @@ namespace IodemBot.Modules.ColossoBattles
 
         public override object Clone()
         {
-            return factory.CreatePlayerFighter(guildUser);
+            return factory.CreatePlayerFighter(UserAccountProvider.GetById(Id));
         }
     }
 
@@ -85,19 +84,14 @@ namespace IodemBot.Modules.ColossoBattles
 
         public ElementalStats ElStatMultiplier = new ElementalStats(100, 100, 100, 100, 100, 100, 100, 100);
 
-        public PlayerFighter CreatePlayerFighter(SocketUser user)
+        public PlayerFighter CreatePlayerFighter(UserAccount avatar)
         {
             var p = new PlayerFighter();
-            var avatar = UserAccounts.GetAccount(user);
 
-            p.Name = (user is SocketGuildUser u) ? u.DisplayName() : user.Username;
-            p.avatar = avatar;
-            p.ImgUrl = user.GetAvatarUrl();
+            p.Name = avatar.Name;
+            p.ImgUrl = avatar.ImgUrl;
             p.factory = this;
-            if (user is SocketGuildUser gu)
-            {
-                p.guildUser = gu;
-            }
+            p.Id = avatar.ID;
             p.Moves = AdeptClassSeriesManager.GetMoveset(avatar);
             var Class = AdeptClassSeriesManager.GetClass(avatar);
             var classSeries = AdeptClassSeriesManager.GetClassSeries(avatar);
@@ -185,7 +179,7 @@ namespace IodemBot.Modules.ColossoBattles
                 case DjinnOption.Any:
                     var djinnToAdd = avatar.DjinnPocket.GetDjinns();
                     djinn.AddRange(djinnToAdd);
-                    summons.AddRange(avatar.DjinnPocket.summons);
+                    summons.AddRange(avatar.DjinnPocket.Summons);
                     p.Moves.AddRange(djinnToAdd);
                     foreach (var djinn in djinnToAdd)
                     {
@@ -197,7 +191,7 @@ namespace IodemBot.Modules.ColossoBattles
                 case DjinnOption.Unique:
                     var djinnToBeAdded = avatar.DjinnPocket.GetDjinns(djinn);
                     djinn.AddRange(djinnToBeAdded);
-                    summons.AddRange(avatar.DjinnPocket.summons);
+                    summons.AddRange(avatar.DjinnPocket.Summons);
                     p.Moves.AddRange(djinnToBeAdded);
                     foreach (var djinn in djinnToBeAdded)
                     {

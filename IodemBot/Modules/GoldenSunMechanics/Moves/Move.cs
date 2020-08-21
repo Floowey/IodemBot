@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using IodemBot.Modules.ColossoBattles;
 using JsonSubTypes;
@@ -15,7 +16,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
     [JsonSubtypes.KnownSubTypeWithProperty(typeof(HealPsynergy), "HealPower")]
     [JsonSubtypes.KnownSubTypeWithProperty(typeof(HealPsynergy), "Percentage")]
     [JsonSubtypes.FallBackSubType(typeof(StatusPsynergy))]
-    public abstract class Move : ICloneable
+    public abstract class Move : ICloneable, IEquatable<Move>
     {
         public virtual string Name { get; set; } = "No Name";
         public virtual string Emote { get; set; } = "😶";
@@ -169,6 +170,12 @@ namespace IodemBot.Modules.GoldenSunMechanics
         internal void ChooseBestTarget(ColossoFighter User)
         {
             InternalChooseBestTarget(User);
+        }
+
+        public bool Equals([AllowNull] Move other)
+        {
+            if (other == null) return false;
+            return Name == other.Name && Emote == other.Emote;
         }
     }
 }

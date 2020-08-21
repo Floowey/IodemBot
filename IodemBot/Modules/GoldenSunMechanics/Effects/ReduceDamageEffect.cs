@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using IodemBot.Extensions;
 using IodemBot.Modules.ColossoBattles;
@@ -19,7 +20,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 return log;
             }
 
-            Target.defensiveMult *= (double)(100 - DamageReduction) / 100;
+            Target.defensiveMult = Math.Min(Target.defensiveMult, (double)(100 - DamageReduction) / 100);
 
             return log;
         }

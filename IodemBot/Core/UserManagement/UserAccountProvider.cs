@@ -1,13 +1,16 @@
 ﻿
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using IodemBot.Discord;
 
 namespace IodemBot.Core.UserManagement
 {
-    public static class MiunieUserProvider
+    public static class UserAccountProvider
     {
         private static PersistentStorage _persistentStorage;
 
-        static MiunieUserProvider()
+        static UserAccountProvider()
         {
             _persistentStorage = new PersistentStorage();
         }
@@ -45,14 +48,9 @@ namespace IodemBot.Core.UserManagement
         {
             if (user is null)
             {
-                user = new UserAccount
-                {
-                    ID=userId
-
-                };
+                user = UserAccounts.GetAccount(userId);
                 StoreUser(user);
             }
-
             return user;
         }
     }

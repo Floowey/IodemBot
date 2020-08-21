@@ -10,8 +10,8 @@ using Discord.Commands;
 using Discord.WebSocket;
 using Iodembot.Preconditions;
 using IodemBot.Core.UserManagement;
+using IodemBot.Discord;
 using IodemBot.Extensions;
-using IodemBot.Modules.ColossoBattles;
 
 namespace IodemBot.Modules
 {
@@ -292,7 +292,7 @@ namespace IodemBot.Modules
         [Summary("Get the most active users and your rank")]
         public async Task Rank()
         {
-            var topAccounts = UserAccounts.GetTop(RankEnum.Level);
+            var topAccounts = UserAccountProvider.GetAllUsers().OrderByDescending(u => u.TotalXP).ToList();
             var embed = new EmbedBuilder();
             embed.WithColor(Colors.Get("Iodem"));
             string[] Emotes = new string[] { "🥇", "🥈", "🥈", "🥉", "🥉", "🥉", "   ", "   ", "   ", "   " };
@@ -303,13 +303,13 @@ namespace IodemBot.Modules
                 builder.Append($"`{i + 1}` {Emotes[i]} {curAccount.Name?.PadRight(15) ?? curAccount.ID.ToString()} - `Lv{curAccount.LevelNumber}` - `{curAccount.XP}xp`{(curAccount.NewGames >= 1 ? $"- `({curAccount.TotalXP}xp total)`" : "")}\n");
             }
 
-            var rank = UserAccounts.GetRank(Context.User);
             //Console.WriteLine(rank);
-            var account = UserAccounts.GetAccount(Context.User);
+            var account = EntityConverter.ConvertUser(Context.User);
+            var rank = topAccounts.IndexOf(account);
             if (rank >= 10)
             {
                 builder.Append("... \n");
-                builder.Append($"`{rank + 1}` {Context.User.Username,-15} - `Lv{account.LevelNumber}` - `{account.XP}xp`");
+                builder.Append($"`{rank + 1}` {Context.User.Username,-15} - `Lv{account.LevelNumber}` - `{account.XP}xp`{(account.NewGames >= 1 ? $"- `({account.TotalXP}xp total)`" : "")}");
             }
 
             embed.WithDescription(builder.ToString());
@@ -322,7 +322,19 @@ namespace IodemBot.Modules
         [Cooldown(15)]
         public async Task Showdown(RankEnum type = RankEnum.Solo, EndlessMode mode = EndlessMode.Default)
         {
-            var topAccounts = UserAccounts.GetTop(type, mode).Take(10);
+            var topAccounts = UserAccountProvider.GetAllUsers().ToList();
+
+            if(type == RankEnum.Solo)
+            {
+                topAccounts= topAccounts.OrderByDescending(d => (d.ServerStats.GetStreak(mode) + d.ServerStatsTotal.GetStreak(mode)).Solo).ToList();
+            } else
+            {
+                topAccounts = topAccounts.Where(p => (p.ServerStats.GetStreak(mode) + p.ServerStatsTotal.GetStreak(mode)).GetEntry(type).Item1 > 0)
+                        .GroupBy(p => (p.ServerStats.GetStreak(mode) + p.ServerStatsTotal.GetStreak(mode)).GetEntry(type).Item2)
+                        .Select(group => group.First())
+                        .OrderByDescending(d => (d.ServerStats.GetStreak(mode) + d.ServerStatsTotal.GetStreak(mode)).GetEntry(type).Item1)
+                        .ToList();
+            }
             var embed = new EmbedBuilder();
             embed.WithColor(Colors.Get("Iodem"));
             string[] Emotes = new string[] { "🥇", "🥈", "🥉", "", "" };
@@ -351,9 +363,9 @@ namespace IodemBot.Modules
                 }
             }
 
-            var rank = UserAccounts.GetRank(Context.User, type, mode);
             //Console.WriteLine(rank);
-            var account = UserAccounts.GetAccount(Context.User);
+            var account = EntityConverter.ConvertUser(Context.User);
+            var rank = topAccounts.IndexOf(account);
             if (rank >= 5)
             {
                 builder.Append("... \n");
@@ -400,7 +412,7 @@ namespace IodemBot.Modules
                 {"Fighter", 742060001031618590 }
             };
 
-            if(RoleName.Equals("Gladiator", StringComparison.CurrentCultureIgnoreCase) && UserAccounts.GetAccount(Context.User).LevelNumber < 5)
+            if(RoleName.Equals("Gladiator", StringComparison.CurrentCultureIgnoreCase) && EntityConverter.ConvertUser(Context.User).LevelNumber < 5)
             {
                 _ = ReplyAsync("Please participate in the server more before you can announce your streams. We would like to be a community and not just be used as an advertising platform!");
                 return;
@@ -494,7 +506,7 @@ namespace IodemBot.Modules
             embed.WithDescription(q.quote);
             if (q.quote.Contains(@"#^@%!"))
             {
-                var userAccount = UserAccounts.GetAccount(Context.User);
+                var userAccount = EntityConverter.ConvertUser(Context.User);
                 await GoldenSun.AwardClassSeries("Curse Mage Series", Context.User, Context.Channel);
             }
 

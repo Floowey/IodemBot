@@ -17,7 +17,6 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public bool IsDefault { get; set; }
         public string Description { get; set; }
 
-        [JsonConverter(typeof(StringEnumConverter))]
         public ArchType Archtype { get; set; }
 
         public AdeptClass GetClass(UserAccount User)

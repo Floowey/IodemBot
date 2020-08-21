@@ -111,7 +111,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
                 if (User is PlayerFighter p)
                 {
-                    p.avatar.DealtDmg(realDmg);
+                    p.battleStats.DamageDealt += realDmg;
                     if (!t.IsAlive)
                     {
                         if (AttackBased && Range == 1)

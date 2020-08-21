@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Discord;
 using Discord.WebSocket;
 using IodemBot.Core.UserManagement;
+using IodemBot.Discord;
 using IodemBot.Modules;
 
 namespace IodemBot.Core.Leveling
@@ -23,7 +24,7 @@ namespace IodemBot.Core.Leveling
 
             if (channel.Id == GuildSettings.GetGuildSettings(channel.Guild).ColossoChannel?.Id) return;
 
-            var userAccount = UserAccounts.GetAccount(user);
+            var userAccount = EntityConverter.ConvertUser(user);
 
             // if the user has a timeout, ignore them
             var sinceLastXP = DateTime.UtcNow - userAccount.LastXP;
@@ -35,7 +36,7 @@ namespace IodemBot.Core.Leveling
                 userAccount.AddXp((uint)(new Random()).Next(30, 50));
             }
 
-            if ((DateTime.Now.Date != userAccount.ServerStats.LastDayActive.Date))
+            if (DateTime.Now.Date != userAccount.ServerStats.LastDayActive.Date)
             {
                 userAccount.ServerStats.UniqueDaysActive++;
                 userAccount.ServerStats.LastDayActive = DateTime.Now.Date;
@@ -72,7 +73,7 @@ namespace IodemBot.Core.Leveling
                 }
             }
 
-            UserAccounts.SaveAccounts();
+            UserAccountProvider.StoreUser(userAccount);
             uint newLevel = userAccount.LevelNumber;
 
             if (oldLevel != newLevel)
@@ -125,7 +126,7 @@ namespace IodemBot.Core.Leveling
                 return;
             }
 
-            var userAccount = UserAccounts.GetAccount(user);
+            var userAccount = EntityConverter.ConvertUser(user);
             if (reaction.MessageId == userAccount.ServerStats.MostRecentChannel)
             {
                 userAccount.ServerStats.ReactionsAdded++;
@@ -136,7 +137,7 @@ namespace IodemBot.Core.Leveling
                 userAccount.ServerStats.MostRecentChannel = reaction.MessageId;
             }
             await Task.CompletedTask;
-            UserAccounts.SaveAccounts();
+            UserAccountProvider.StoreUser(userAccount);
         }
     }
 }

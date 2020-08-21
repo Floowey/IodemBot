@@ -8,6 +8,7 @@ using Discord.WebSocket;
 using Iodembot.Preconditions;
 using IodemBot.Core.Leveling;
 using IodemBot.Core.UserManagement;
+using IodemBot.Discord;
 using IodemBot.Extensions;
 using IodemBot.Modules.ColossoBattles;
 using IodemBot.Modules.GoldenSunMechanics;
@@ -31,7 +32,7 @@ namespace IodemBot.Modules
         [RequireModerator]
         public async Task AwardSeries(SocketGuildUser user, [Remainder] string series)
         {
-            await AwardClassSeries(series, user, (SocketTextChannel)Context.Channel);
+            await AwardClassSeries(series, user, Context.Channel);
         }
 
         [Command("classInfo"), Alias("ci")]
@@ -73,7 +74,7 @@ namespace IodemBot.Modules
         [Cooldown(2)]
         public async Task ClassToggle([Remainder] string name = "")
         {
-            var account = UserAccounts.GetAccount(Context.User);
+            var account = EntityConverter.ConvertUser(Context.User);
             AdeptClassSeriesManager.TryGetClassSeries(account.GsClass, out AdeptClassSeries curSeries);
             var gotClass = AdeptClassSeriesManager.TryGetClassSeries(name, out AdeptClassSeries series);
             var embed = new EmbedBuilder().WithColor(Colors.Get(account.Element.ToString()));
@@ -89,8 +90,9 @@ namespace IodemBot.Modules
                         account.DjinnPocket.DjinnSetup.Add(account.Element);
                         account.DjinnPocket.DjinnSetup.Add(account.Element);
                     }
+                    UserAccountProvider.StoreUser(account);
                     await Context.Channel.SendMessageAsync(embed: embed
-                    .WithDescription($"You are {Article(account.GsClass)} {account.GsClass} now, {((SocketGuildUser)Context.User).DisplayName()}.")
+                    .WithDescription($"You are {Article(account.GsClass)} {account.GsClass} now, {account.Name}.")
                     .Build());
                     return;
                 }
@@ -110,9 +112,11 @@ namespace IodemBot.Modules
 
         public enum LoadoutAction { Show, Save, Load, Remove };
         [Command("loadout"), Alias("loadouts")]
+        [RequireUserServer]
         public async Task LoadoutTask(LoadoutAction action = LoadoutAction.Show, [Remainder] string loadoutName = "")
         {
-            var user = UserAccounts.GetAccount(Context.User);
+            if (!(Context.User is SocketGuildUser sgu)) return;
+            var user = EntityConverter.ConvertUser(sgu);
             switch (action)
             {
                 case LoadoutAction.Show:
@@ -147,21 +151,24 @@ namespace IodemBot.Modules
                     var newLoadout = Loadout.GetLoadout(user);
                     newLoadout.LoadoutName = loadoutName;
                     user.Loadouts.SaveLoadout(newLoadout);
+                    UserAccountProvider.StoreUser(user);
                     _ = LoadoutTask(LoadoutAction.Show);
-                    UserAccounts.SaveAccounts();
                     break;
                 case LoadoutAction.Load:
                     var loadedLoadout = user.Loadouts.GetLoadout(loadoutName);
                     if (loadedLoadout != null)
                     {
-                        await ChooseElement(loadedLoadout.Element);
+                        await GiveElementRole(sgu, loadedLoadout.Element);
+                        await ChangeElement(user, loadedLoadout.Element);
                         loadedLoadout.ApplyLoadout(user);
+                        UserAccountProvider.StoreUser(user);
                         _ = Status();
                     }
                     break;
                 case LoadoutAction.Remove:
                     if (loadoutName.IsNullOrEmpty()) return;
                     user.Loadouts.RemoveLoadout(loadoutName);
+                    UserAccountProvider.StoreUser(user);
                     _ = LoadoutTask(LoadoutAction.Show);
                     break;
             }
@@ -174,7 +181,7 @@ namespace IodemBot.Modules
         public async Task Xp()
         {
             var user = (SocketGuildUser)Context.User;
-            var account = UserAccounts.GetAccount(user);
+            var account = EntityConverter.ConvertUser(user);
             var embed = new EmbedBuilder();
 
             embed.WithColor(Colors.Get(account.Element.ToString()));
@@ -194,9 +201,9 @@ namespace IodemBot.Modules
         public async Task Status([Remainder] SocketUser user = null)
         {
             user ??= Context.User;
-            var account = UserAccounts.GetAccount(user);
+            var account = EntityConverter.ConvertUser(user);
             var factory = new PlayerFighterFactory();
-            var p = factory.CreatePlayerFighter(user);
+            var p = factory.CreatePlayerFighter(account);
 
             var author = new EmbedAuthorBuilder();
             author.WithName($"{(user is SocketGuildUser sguser ? sguser.DisplayName() : user.Username)}");
@@ -234,7 +241,7 @@ namespace IodemBot.Modules
         public async Task Trophies([Remainder] SocketUser user = null)
         {
             user ??= Context.User;
-            var acc = UserAccounts.GetAccount(user);
+            var acc = EntityConverter.ConvertUser(user);
             if (acc.TrophyCase.Trophies.Count == 0) return;
             var embed = new EmbedBuilder()
                 .WithTitle($"Trophies of {acc.Name}");
@@ -247,7 +254,7 @@ namespace IodemBot.Modules
         [RequireStaff]
         public async Task PatDown([Remainder] SocketGuildUser user = null)
         {
-            var account = UserAccounts.GetAccount(user);
+            var account = EntityConverter.ConvertUser(user);
 
             await Context.Channel.SendMessageAsync(embed:
                 new EmbedBuilder()
@@ -265,7 +272,7 @@ namespace IodemBot.Modules
         public async Task Tri([Remainder] SocketGuildUser user = null)
         {
             user ??= (SocketGuildUser)Context.User;
-            var account = UserAccounts.GetAccount(user);
+            var account = EntityConverter.ConvertUser(user);
             var embed = new EmbedBuilder();
 
             embed.WithColor(Colors.Get(account.Element.ToString()));
@@ -294,7 +301,7 @@ namespace IodemBot.Modules
         [Cooldown(5)]
         public async Task ListDungeons()
         {
-            var account = UserAccounts.GetAccount(Context.User);
+            var account = EntityConverter.ConvertUser(Context.User);
             var defaultDungeons = EnemiesDatabase.DefaultDungeons.Where(d => !d.Requirement.IsLocked(account));
             var availableDefaultDungeons = defaultDungeons.Where(d => d.Requirement.Applies(account)).Select(s => s.Name).ToArray();
             var unavailableDefaultDungeons = defaultDungeons.Where(d => !d.Requirement.Applies(account)).Select(s => s.Name).ToArray();
@@ -337,9 +344,48 @@ namespace IodemBot.Modules
         [Cooldown(5)]
         public async Task ChooseElement(Element chosenElement, [Remainder] string classSeriesName = null)
         {
+            if (!(Context.User is SocketGuildUser user)) return;
             var embed = new EmbedBuilder();
-            var account = UserAccounts.GetAccount(Context.User);
+            var account = EntityConverter.ConvertUser(Context.User);
+            _ = GiveElementRole(user, chosenElement);
+            await ChangeElement(account, chosenElement, classSeriesName);
+            UserAccountProvider.StoreUser(account);
+            embed.WithColor(Colors.Get(chosenElement.ToString()));
+            embed.WithDescription($"Welcome to the {chosenElement} Clan, {account.GsClass} {((SocketGuildUser)Context.User).DisplayName()}!");
+            await Context.Channel.SendMessageAsync("", false, embed.Build());
+        }
 
+        public async Task ChangeElement(UserAccount user, Element chosenElement, string classSeriesName = "")
+        {
+            foreach (string removed in user.Inv.UnequipExclusiveTo(user.Element))
+            {
+                var removedEmbed = new EmbedBuilder();
+                removedEmbed.WithDescription($"<:Exclamatory:571309036473942026> Your {removed} was unequipped.");
+                await Context.Channel.SendMessageAsync("", false, removedEmbed.Build());
+            }
+
+            user.Element = chosenElement;
+            user.ClassToggle = 0;
+            if (!classSeriesName.IsNullOrEmpty())
+            {
+                SetClass(user, classSeriesName);
+            }
+
+            var series = AdeptClassSeriesManager.GetClassSeries(user);
+            if (series != null && !user.DjinnPocket.DjinnSetup.All(d => series.Elements.Contains(d)))
+            {
+                user.DjinnPocket.DjinnSetup.Clear();
+                user.DjinnPocket.DjinnSetup.Add(user.Element);
+                user.DjinnPocket.DjinnSetup.Add(user.Element);
+            }
+
+            var tags = new[] { "VenusAdept", "MarsAdept", "JupiterAdept", "MercuryAdept" };
+            user.Tags.RemoveAll(s => tags.Contains(s));
+            user.Tags.Add(tags[(int)chosenElement]);
+        }
+
+        public async Task GiveElementRole(SocketGuildUser user, Element chosenElement)
+        {
             var role = Context.Guild.Roles.FirstOrDefault(x => x.Name == chosenElement.ToString() + " Adepts");
             if (chosenElement == Element.none)
             {
@@ -350,42 +396,9 @@ namespace IodemBot.Modules
             var jupiterRole = Context.Guild.Roles.FirstOrDefault(x => x.Name == "Jupiter Adepts");
             var mercuryRole = Context.Guild.Roles.FirstOrDefault(x => x.Name == "Mercury Adepts");
             var exathi = Context.Guild.Roles.FirstOrDefault(x => x.Name == "Exathi") ?? venusRole;
-            if (role == null || chosenElement == account.Element)
-            {
-                return;
-            }
 
-            await (Context.User as IGuildUser).RemoveRolesAsync(new IRole[] { venusRole, marsRole, jupiterRole, mercuryRole, exathi });
-            await (Context.User as IGuildUser).AddRoleAsync(role);
-
-            foreach (string removed in account.Inv.UnequipExclusiveTo(account.Element))
-            {
-                var removedEmbed = new EmbedBuilder();
-                removedEmbed.WithDescription($"<:Exclamatory:571309036473942026> Your {removed} was unequipped.");
-                await Context.Channel.SendMessageAsync("", false, removedEmbed.Build());
-            }
-
-            account.Element = chosenElement;
-            account.ClassToggle = 0;
-            if (!classSeriesName.IsNullOrEmpty())
-            {
-                SetClass(account, classSeriesName);
-            }
-
-            var series = AdeptClassSeriesManager.GetClassSeries(account);
-            if (series != null && !account.DjinnPocket.DjinnSetup.All(d => series.Elements.Contains(d)))
-            {
-                account.DjinnPocket.DjinnSetup.Clear();
-                account.DjinnPocket.DjinnSetup.Add(account.Element);
-                account.DjinnPocket.DjinnSetup.Add(account.Element);
-            }
-            var tags = new[] { "VenusAdept", "MarsAdept", "JupiterAdept", "MercuryAdept" };
-            account.Tags.RemoveAll(s => tags.Contains(s));
-            account.Tags.Add(tags[(int)chosenElement]);
-            UserAccounts.SaveAccounts();
-            embed.WithColor(Colors.Get(chosenElement.ToString()));
-            embed.WithDescription($"Welcome to the {chosenElement} Clan, {account.GsClass} {((SocketGuildUser)Context.User).DisplayName()}!");
-            await Context.Channel.SendMessageAsync("", false, embed.Build());
+            await user.RemoveRolesAsync(new IRole[] { venusRole, marsRole, jupiterRole, mercuryRole, exathi });
+            _ = user.AddRoleAsync(role);
         }
 
 
@@ -496,7 +509,7 @@ namespace IodemBot.Modules
 
         public async Task NewGamePlusTask()
         {
-            var account = UserAccounts.GetAccount(Context.User);
+            var account = EntityConverter.ConvertUser(Context.User);
             await ReplyAsync("So you want to start over? Are you sure?");
             var response = await Context.Channel.AwaitMessage(m => m.Author == Context.User);
             if (!response.Content.Equals("Yes", StringComparison.CurrentCultureIgnoreCase))
@@ -513,12 +526,13 @@ namespace IodemBot.Modules
             }
             await ReplyAsync("Let us reverse the cycle, to a stage where you were just beginning");
             account.NewGame();
+            UserAccountProvider.StoreUser(account);
             await Status();
         }
 
         internal static async Task AwardClassSeries(string series, SocketUser user, IMessageChannel channel)
         {
-            var avatar = UserAccounts.GetAccount(user);
+            var avatar = EntityConverter.ConvertUser(user);
             await AwardClassSeries(series, avatar, channel);
         }
 
@@ -533,7 +547,8 @@ namespace IodemBot.Modules
             avatar.BonusClasses.Add(series);
             avatar.BonusClasses.Sort();
             SetClass(avatar, curClass);
-            UserAccounts.SaveAccounts();
+            UserAccountProvider.StoreUser(avatar);
+
             var embed = new EmbedBuilder();
             embed.WithColor(Colors.Get("Iodem"));
             embed.WithDescription($"Congratulations, <@{avatar.ID}>! You have unlocked the {series}!");
@@ -546,14 +561,14 @@ namespace IodemBot.Modules
 
         internal static async Task RemoveClassSeries(string series, SocketGuildUser user, SocketTextChannel channel)
         {
-            var avatar = UserAccounts.GetAccount(user);
+            var avatar = EntityConverter.ConvertUser(user);
             if (!avatar.BonusClasses.Contains(series))
             {
                 return;
             }
 
             avatar.BonusClasses.Remove(series);
-            UserAccounts.SaveAccounts();
+            UserAccountProvider.StoreUser(avatar);
             var embed = new EmbedBuilder();
             embed.WithColor(Colors.Get("Iodem"));
             embed.WithDescription($"{series} was removed from {user.Mention}.");
@@ -580,7 +595,6 @@ namespace IodemBot.Modules
                     account.ClassToggle++;
                 }
             }
-            UserAccounts.SaveAccounts();
             return !curClass.Equals(AdeptClassSeriesManager.GetClassSeries(account).Name);
         }
 

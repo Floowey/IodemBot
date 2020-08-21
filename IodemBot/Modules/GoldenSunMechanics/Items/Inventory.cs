@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
-using IodemBot.Core.UserManagement;
 using IodemBot.Extensions;
+using LiteDB;
 using Newtonsoft.Json;
 
 namespace IodemBot.Modules.GoldenSunMechanics
@@ -49,33 +49,39 @@ namespace IodemBot.Modules.GoldenSunMechanics
             {ItemCategory.Accessoire, "<:Rings:572526110060052482>"}
         };
 
-        [JsonProperty] private List<string> InvString { get; set; } = new List<string>();
-        [JsonProperty] private List<string> WarriorGearString { get; set; } = new List<string>();
-        [JsonProperty] private List<string> MageGearString { get; set; } = new List<string>();
+        public IEnumerable<string> InvString
+        {
+            get => Inv?.Select(i => i.NameToSerialize);
+            set => Inv = ItemDatabase.GetItems(value).ToList();
+        }
+        public IEnumerable<string> WarriorGearString
+        {
+            get => WarriorGear?.Select(i => i.Name);
+            set => WarriorGear = value.Select(i => GetItem(i)).ToList();
+        }
+        public IEnumerable<string> MageGearString
+        {
+            get => MageGear?.Select(i => i.Name);
+            set => MageGear = value.Select(i => GetItem(i)).ToList();
+        }
+        private List<Item> Inv;
 
-        [JsonProperty] public uint Coins { get; set; }
-        [JsonProperty] public uint Upgrades { get; set; }
-        [JsonIgnore] public bool IsInitialized { get { return Inv != null; } }
+        private List<Item> WarriorGear;
 
-        [JsonIgnore]
-        private List<Item> Inv { get; set; } = new List<Item>();
+        private List<Item> MageGear;
 
+        public uint Coins { get; set; }
+        public uint Upgrades { get; set; }
+
+       
         [JsonIgnore]
         public uint MaxInvSize
         {
             get { return BaseInvSize + 10 * Upgrades; }
         }
 
-        [JsonProperty]
-        private DateTime lastDailyChest;
-
-        [JsonProperty] public int dailiesInARow = 0;
-
-        [JsonIgnore]
-        private List<Item> WarriorGear { get; set; } = new List<Item>();
-
-        [JsonIgnore]
-        private List<Item> MageGear { get; set; } = new List<Item>();
+        public DateTime LastDailyChest { get; set; }
+        public int DailiesInARow { get; set; }
 
         [JsonIgnore]
         public int Count
@@ -90,29 +96,6 @@ namespace IodemBot.Modules.GoldenSunMechanics
         {
             { ChestQuality.Wooden, 0 }, {ChestQuality.Normal, 0}, {ChestQuality.Silver, 0}, {ChestQuality.Gold, 0}, {ChestQuality.Adept, 0}, {ChestQuality.Daily, 0}
         };
-
-        public void Initialize()
-        {
-            Inv = ItemDatabase.GetItems(InvString);
-            WarriorGear = new List<Item>();
-            foreach (var warriorgear in WarriorGearString.Distinct())
-            {
-                Equip(warriorgear, ArchType.Warrior);
-            }
-            MageGear = new List<Item>();
-            foreach (var magegear in MageGearString.Distinct())
-            {
-                Equip(magegear, ArchType.Mage);
-            }
-            //WarriorGear = ItemDatabase.GetItems(WarriorGearString.Distinct());
-            //MageGear = ItemDatabase.GetItems(MageGearString.Distinct());
-        }
-
-        [OnDeserialized]
-        public void OnDeserialized(StreamingContext context)
-        {
-            Initialize();
-        }
 
         public int NumberOfItemType(ItemType type)
         {
@@ -158,28 +141,26 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         private void CheckDaily()
         {
-            if (lastDailyChest.Date < DateTime.Now.Date && chests[ChestQuality.Daily] == 0)
+            if (LastDailyChest.Date < DateTime.Now.Date && chests[ChestQuality.Daily] == 0)
             {
-                if ((DateTime.Now.Date - lastDailyChest.Date).TotalDays <= 1)
+                if ((DateTime.Now.Date - LastDailyChest.Date).TotalDays <= 1)
                 {
-                    dailiesInARow++;
+                    DailiesInARow++;
                 }
                 else
                 {
-                    dailiesInARow = 0;
+                    DailiesInARow = 0;
                 }
                 AwardChest(ChestQuality.Daily);
-                lastDailyChest = DateTime.Now;
+                LastDailyChest = DateTime.Now;
             }
         }
 
         public void AwardChest(ChestQuality chestQuality)
         {
             chests.TryGetValue(chestQuality, out uint nOfChests);
-
             chests.Remove(chestQuality);
             chests.Add(chestQuality, ++nOfChests);
-            UserAccounts.SaveAccounts();
         }
 
         public string GetChestsToString()
@@ -213,7 +194,6 @@ namespace IodemBot.Modules.GoldenSunMechanics
             }
 
             Inv.Remove(it);
-            UserAccounts.SaveAccounts();
             return true;
         }
 
@@ -253,7 +233,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         };
             Coins = 0;
             Upgrades = 0;
-            lastDailyChest = DateTime.Now.Subtract(new TimeSpan(1, 0, 0, 0));
+            LastDailyChest = DateTime.Now.Subtract(new TimeSpan(1, 0, 0, 0));
         }
 
         internal Item GetItem(string item)
@@ -295,7 +275,6 @@ namespace IodemBot.Modules.GoldenSunMechanics
             }
 
             it.IsBroken = false;
-            UserAccounts.SaveAccounts();
             return true;
         }
 
@@ -310,7 +289,6 @@ namespace IodemBot.Modules.GoldenSunMechanics
             }
 
             it.Nickname = newname ?? "";
-            UserAccounts.SaveAccounts();
             return true;
         }
 
@@ -325,7 +303,6 @@ namespace IodemBot.Modules.GoldenSunMechanics
             }
 
             it.IsAnimated = true;
-            UserAccounts.SaveAccounts();
             return true;
         }
 
@@ -382,26 +359,6 @@ namespace IodemBot.Modules.GoldenSunMechanics
             return true;
         }
 
-        [OnSerializing]
-        public void OnSerializing(StreamingContext context)
-        {
-            UpdateStrings();
-        }
-
-        private void UpdateStrings()
-        {
-            InvString.Clear();
-            Inv.ForEach(w => InvString?.Add(w.NameToSerialize));
-
-            WarriorGear = WarriorGear.OrderBy(i => i.ItemType).ToList();
-            WarriorGearString.Clear();
-            WarriorGear.ForEach(w => WarriorGearString.Add(w.Name));
-
-            MageGear = MageGear.OrderBy(i => i.ItemType).ToList();
-            MageGearString.Clear();
-            MageGear.ForEach(w => MageGearString.Add(w.Name));
-        }
-
         public bool Unequip(string item)
         {
             var it = GetItem(item);
@@ -418,7 +375,6 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
             WarriorGear.RemoveAll(i => i.Name.Equals(it.Name, StringComparison.CurrentCultureIgnoreCase));
             MageGear.RemoveAll(i => i.Name.Equals(it.Name, StringComparison.CurrentCultureIgnoreCase));
-            UserAccounts.SaveAccounts();
             return true;
         }
 
@@ -459,7 +415,6 @@ namespace IodemBot.Modules.GoldenSunMechanics
             }
 
             Inv.Add(i);
-            UserAccounts.SaveAccounts();
             return true;
         }
 

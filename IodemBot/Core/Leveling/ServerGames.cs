@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Discord;
 using Discord.WebSocket;
 using IodemBot.Core.UserManagement;
+using IodemBot.Discord;
 using IodemBot.Extensions;
 using IodemBot.Modules;
 using IodemBot.Modules.ColossoBattles;
@@ -18,7 +19,7 @@ namespace IodemBot.Core.Leveling
         internal static string BattleFile { get => $"Logs/Battles_{DateTime.Now:yyyy-MM-dd}.log"; }
         internal static async void UserWonColosso(SocketGuildUser user, IMessageChannel channel)
         {
-            var userAccount = UserAccounts.GetAccount(user);
+            var userAccount = EntityConverter.ConvertUser(user);
             uint oldLevel = userAccount.LevelNumber;
             userAccount.AddXp((uint)(new Random()).Next(40, 70));
             uint newLevel = userAccount.LevelNumber;
@@ -31,7 +32,7 @@ namespace IodemBot.Core.Leveling
                 userAccount.ServerStats.ColossoHighestStreak = userAccount.ServerStats.ColossoStreak;
             }
 
-            UserAccounts.SaveAccounts();
+            UserAccountProvider.StoreUser(userAccount);
             if (oldLevel != newLevel)
             {
                 Leveling.LevelUp(userAccount, user, channel);
@@ -41,12 +42,12 @@ namespace IodemBot.Core.Leveling
 
         internal static async void UserLostColosso(SocketGuildUser user, IMessageChannel channel)
         {
-            var userAccount = UserAccounts.GetAccount(user);
+            var userAccount = EntityConverter.ConvertUser(user);
             uint oldLevel = userAccount.LevelNumber;
             userAccount.AddXp((uint)(new Random()).Next(1, 10));
             uint newLevel = userAccount.LevelNumber;
             userAccount.ServerStats.ColossoStreak = 0;
-            UserAccounts.SaveAccounts();
+            UserAccountProvider.StoreUser(userAccount);
 
             if (oldLevel != newLevel)
             {
@@ -73,7 +74,7 @@ namespace IodemBot.Core.Leveling
             userAccount.ServerStats.ColossoStreak++;
             userAccount.ServerStats.ColossoHighestStreak = Math.Max(userAccount.ServerStats.ColossoHighestStreak, userAccount.ServerStats.ColossoStreak);
 
-            UserAccounts.SaveAccounts();
+            UserAccountProvider.StoreUser(userAccount);
             uint newLevel = userAccount.LevelNumber;
             if (oldLevel != newLevel)
             {
@@ -210,7 +211,7 @@ namespace IodemBot.Core.Leveling
 
         internal static async Task UserSentCommand(SocketUser user, IMessageChannel channel)
         {
-            var userAccount = UserAccounts.GetAccount(user);
+            var userAccount = EntityConverter.ConvertUser(user);
             userAccount.ServerStats.CommandsUsed++;
             if (userAccount.ServerStats.CommandsUsed >= 100)
             {
@@ -220,10 +221,10 @@ namespace IodemBot.Core.Leveling
 
         internal static async Task UserWonRPS(SocketGuildUser user, SocketTextChannel channel)
         {
-            var userAccount = UserAccounts.GetAccount(user);
+            var userAccount = EntityConverter.ConvertUser(user);
             userAccount.ServerStats.RpsWins++;
             userAccount.ServerStats.RpsStreak++;
-            UserAccounts.SaveAccounts();
+            UserAccountProvider.StoreUser(userAccount);
 
             if (userAccount.ServerStats.RpsWins >= 3)
             {
@@ -233,9 +234,9 @@ namespace IodemBot.Core.Leveling
 
         internal static void UserDidNotWinRPS(SocketGuildUser user)
         {
-            var userAccount = UserAccounts.GetAccount(user);
+            var userAccount = EntityConverter.ConvertUser(user);
             userAccount.ServerStats.RpsStreak = 0;
-            UserAccounts.SaveAccounts();
+            UserAccountProvider.StoreUser(userAccount);
         }
 
         internal static async Task UserLostBattle(UserAccount userAccount, ITextChannel battleChannel)
@@ -246,7 +247,7 @@ namespace IodemBot.Core.Leveling
 
             userAccount.ServerStats.ColossoStreak = 0;
 
-            UserAccounts.SaveAccounts();
+            UserAccountProvider.StoreUser(userAccount);
             if (oldLevel != newLevel)
             {
                 var user = (SocketGuildUser)await battleChannel.GetUserAsync(userAccount.ID); // Where(s => s. == userAccount.ID).First();
@@ -258,9 +259,9 @@ namespace IodemBot.Core.Leveling
 
         internal static async Task UserLookedUpPsynergy(SocketGuildUser user, SocketTextChannel channel)
         {
-            var userAccount = UserAccounts.GetAccount(user);
+            var userAccount = EntityConverter.ConvertUser(user);
             userAccount.ServerStats.LookedUpInformation++;
-            UserAccounts.SaveAccounts();
+            UserAccountProvider.StoreUser(userAccount);
 
             if (userAccount.ServerStats.LookedUpInformation >= 21)
             {
@@ -270,9 +271,9 @@ namespace IodemBot.Core.Leveling
 
         internal static async Task UserLookedUpClass(SocketGuildUser user, SocketTextChannel channel)
         {
-            var userAccount = UserAccounts.GetAccount(user);
+            var userAccount = EntityConverter.ConvertUser(user);
             userAccount.ServerStats.LookedUpClass++;
-            UserAccounts.SaveAccounts();
+            UserAccountProvider.StoreUser(userAccount);
 
             if (userAccount.ServerStats.LookedUpClass >= 11)
             {

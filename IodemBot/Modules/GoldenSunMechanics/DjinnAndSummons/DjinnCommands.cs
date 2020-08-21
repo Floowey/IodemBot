@@ -7,6 +7,7 @@ using Discord.Commands;
 using Discord.WebSocket;
 using Iodembot.Preconditions;
 using IodemBot.Core.UserManagement;
+using IodemBot.Discord;
 using IodemBot.Extensions;
 
 namespace IodemBot.Modules.GoldenSunMechanics
@@ -93,7 +94,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         [Summary("Displays your Djinn pocket")]
         public async Task DjinnInv(DjinnDetail detail = DjinnDetail.None)
         {
-            var djinnPocket = UserAccounts.GetAccount(Context.User).DjinnPocket;
+            var djinnPocket = EntityConverter.ConvertUser(Context.User).DjinnPocket;
             var embed = new EmbedBuilder();
 
             var equippedstring = string.Join("", djinnPocket.GetDjinns().Select(d => GoldenSun.ElementIcons[d.Element]));
@@ -105,12 +106,12 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
             foreach (Element e in new[] { Element.Venus, Element.Mars, Element.Jupiter, Element.Mercury })
             {
-                var djinnString = djinnPocket.djinn.OfElement(e).GetDisplay(detail);
+                var djinnString = djinnPocket.Djinn.OfElement(e).GetDisplay(detail);
                 embed.AddField($"{e} Djinn", djinnString, true);
             }
-            embed.WithFooter($"{djinnPocket.djinn.Count()}/{djinnPocket.PocketSize} Upgrade: {(djinnPocket.PocketUpgrades + 1) * 3000}");
+            embed.WithFooter($"{djinnPocket.Djinn.Count()}/{djinnPocket.PocketSize} Upgrade: {(djinnPocket.PocketUpgrades + 1) * 3000}");
 
-            var summonString = string.Join(detail == DjinnDetail.Names ? ", " : "", djinnPocket.summons.Select(s => $"{s.Emote}{(detail == DjinnDetail.Names ? $" {s.Name}" : "")}"));
+            var summonString = string.Join(detail == DjinnDetail.Names ? ", " : "", djinnPocket.Summons.Select(s => $"{s.Emote}{(detail == DjinnDetail.Names ? $" {s.Name}" : "")}"));
             if (summonString.IsNullOrEmpty())
             {
                 summonString = "-";
@@ -123,7 +124,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         [Summary("Increase the size of your djinn pocket by two slots")]
         public async Task DjinnUpgrade()
         {
-            var acc = UserAccounts.GetAccount(Context.User);
+            var acc = EntityConverter.ConvertUser(Context.User);
             var djinnPocket = acc.DjinnPocket;
             var inv = acc.Inv;
             var price = (uint)(djinnPocket.PocketUpgrades + 1) * 3000;
@@ -149,7 +150,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             {
                 return;
             }
-            var user = UserAccounts.GetAccount(Context.User);
+            var user = EntityConverter.ConvertUser(Context.User);
             if(Names == "none")
             {
                 user.DjinnPocket.DjinnSetup.Clear();
@@ -177,8 +178,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
                
             chosenDjinn.ForEach(d =>
             {
-                userDjinn.djinn.Remove(d);
-                userDjinn.djinn = userDjinn.djinn.Prepend(d).ToList();
+                userDjinn.Djinn.Remove(d);
+                userDjinn.Djinn = userDjinn.Djinn.Prepend(d).ToList();
                 userDjinn.DjinnSetup = userDjinn.DjinnSetup.Prepend(d.Element).ToList();
             });
             userDjinn.DjinnSetup = userDjinn.DjinnSetup.Take(2).ToList();
@@ -190,7 +191,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         {
             if (DjinnAndSummonsDatabase.TryGetDjinn(djinnName, out Djinn djinn))
             {
-                UserAccounts.GetAccount(user ?? Context.User).DjinnPocket.AddDjinn(djinn);
+                EntityConverter.ConvertUser(user ?? Context.User).DjinnPocket.AddDjinn(djinn);
                 await DjinnInv();
             }
         }
@@ -201,7 +202,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         {
             if (DjinnAndSummonsDatabase.TryGetSummon(summonName, out Summon summon))
             {
-                UserAccounts.GetAccount(user ?? Context.User).DjinnPocket.AddSummon(summon);
+                EntityConverter.ConvertUser(user ?? Context.User).DjinnPocket.AddSummon(summon);
                 await DjinnInv();
             }
         }
@@ -216,7 +217,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         private async Task ReleaseDjinnHidden(string DjinnName)
         {
-            var userDjinn = UserAccounts.GetAccount(Context.User).DjinnPocket;
+            var userDjinn = EntityConverter.ConvertUser(Context.User).DjinnPocket;
             var chosenDjinn = userDjinn.GetDjinn(DjinnName);
             if (chosenDjinn == null)
             {
@@ -228,7 +229,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             var response = await Context.Channel.AwaitMessage(m => m.Author == Context.User);
             if (response.Content.Equals("Yes", StringComparison.CurrentCultureIgnoreCase))
             {
-                userDjinn.djinn.Remove(chosenDjinn);
+                userDjinn.Djinn.Remove(chosenDjinn);
                 _ = ReplyAsync(embed: new EmbedBuilder().WithDescription($"You set {chosenDjinn.Emote} {chosenDjinn.Name} free, who swiftly rushes off to find another master.").Build());
             }
         }
@@ -247,7 +248,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 newname = djinnandnewname.Split(',')[1].Trim().RemoveBadChars();
             }
 
-            var userDjinn = UserAccounts.GetAccount(Context.User).DjinnPocket;
+            var account = EntityConverter.ConvertUser(Context.User);
+            var userDjinn = account.DjinnPocket;
             var chosenDjinn = userDjinn.GetDjinn(DjinnName);
             if (chosenDjinn == null)
             {
@@ -256,6 +258,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
             chosenDjinn.Nickname = newname;
             chosenDjinn.UpdateMove();
+            UserAccountProvider.StoreUser(account);
             await DjinnInv(DjinnDetail.Names);
         }
     }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using IodemBot.Extensions;
 using IodemBot.Modules.ColossoBattles;
 using IodemBot.Modules.GoldenSunMechanics;
@@ -168,7 +169,7 @@ namespace IodemBot.Core.UserManagement
     }
 
 
-    public class UserAccount
+    public class UserAccount : IEquatable<UserAccount>
     {
         public static ulong[][] rates = new ulong[][] {
                     new ulong[] { 2538160, 25000, 100 },
@@ -178,17 +179,16 @@ namespace IodemBot.Core.UserManagement
                     new ulong[]{ 0, 50, 0 }
         };
         public ulong ID { get; set; }
-        [JsonIgnore] public string Name { get => HiddenName; set => HiddenName = value.RemoveBadChars(); }
+        public string Name { get => HiddenName; set => HiddenName = value.RemoveBadChars(); }
 
-        [JsonProperty] private string HiddenName;
+        private string HiddenName;
 
         public Inventory Inv { get; set; } = new Inventory();
-        public List<string> Dungeons = new List<string>() { };
+        public List<string> Dungeons { get; set; } = new List<string>();
         public List<string> Tags { get; set; } = new List<string>();
         public DjinnPocket DjinnPocket { get; set; } = new DjinnPocket();
         public int ClassToggle { get; set; } = 0;
-        public List<string> BonusClasses = new List<string> { };
-
+        public List<string> BonusClasses { get; set; } = new List<string>();
         public Element Element { get; set; } = Element.none;
         public Loadouts Loadouts { get; set; } = new Loadouts();
         public TrophyCase TrophyCase { get; set; } = new TrophyCase();
@@ -247,13 +247,11 @@ namespace IodemBot.Core.UserManagement
                 return xpneeded - XP;
             }
         }
-        public bool arePublicCodes = false;
+        public bool arePublicCodes { get; set; } = false;
         public string N3DSCode { get; set; } = "0000-0000-0000";
         public int NewGames { get; set; } = 0;
         public string PoGoCode { get; set; } = "0000-0000-0000";
-       
         public string SwitchCode { get; set; } = "0000-0000-0000";
-
         [JsonIgnore] public ulong TotalXP { get { return XPLastGame + XP; } }
 
         public ulong XP { get; set; } = 0;
@@ -265,6 +263,7 @@ namespace IodemBot.Core.UserManagement
         public ServerStats ServerStatsTotal { get; set; } = new ServerStats();
         public BattleStats BattleStats { get; set; } = new BattleStats();
         public BattleStats BattleStatsTotal { get; set; } = new BattleStats();
+        public string ImgUrl { get; set; }
 
         public void AddXp(ulong xp)
         {
@@ -328,24 +327,10 @@ namespace IodemBot.Core.UserManagement
             NewGames++;
         }
 
-        internal void DealtDmg(uint damage)
+        public bool Equals([AllowNull] UserAccount other)
         {
-            BattleStats.DamageDealt += damage;
-        }
-
-        internal void HealedHP(long HPtoHeal)
-        {
-            BattleStats.HPhealed += (uint)HPtoHeal;
-        }
-
-        internal void KilledByHand()
-        {
-            BattleStats.KillsByHand++;
-        }
-
-        internal void Revived()
-        {
-            BattleStats.Revives++;
+            if (other == null) return false;
+            return ID == other.ID;
         }
     }
 }

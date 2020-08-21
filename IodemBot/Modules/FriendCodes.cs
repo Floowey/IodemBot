@@ -4,6 +4,7 @@ using Discord.Commands;
 using Discord.WebSocket;
 using Iodembot.Preconditions;
 using IodemBot.Core.UserManagement;
+using IodemBot.Discord;
 using IodemBot.Extensions;
 
 namespace IodemBot.Modules
@@ -21,7 +22,7 @@ namespace IodemBot.Modules
         {
             target ??= Context.User;
 
-            var user = UserAccounts.GetAccount(target);
+            var user = EntityConverter.ConvertUser(target);
             var embed = new EmbedBuilder();
             embed.WithColor(Colors.Get("Iodem"));
             embed.WithAuthor(target);
@@ -49,7 +50,7 @@ namespace IodemBot.Modules
             type = type.ToLower();
             embed.WithColor(Colors.Get("Iodem"));
             embed.WithThumbnailUrl(Sprites.GetImageFromName("Iodem"));
-            var account = UserAccounts.GetAccount(Context.User);
+            var account = EntityConverter.ConvertUser(Context.User);
             code = code.RemoveBadChars();
             switch (type)
             {
@@ -74,7 +75,7 @@ namespace IodemBot.Modules
                     embed.WithDescription(Utilities.GetAlert("FC_CODE_UNKNOWN"));
                     break;
             }
-            UserAccounts.SaveAccounts();
+            UserAccountProvider.StoreUser(account);
             await Context.Channel.SendMessageAsync("", false, embed.Build());
         }
 
@@ -82,11 +83,13 @@ namespace IodemBot.Modules
         [Summary("Everyone will be able to request your Friendcodes")]
         public async Task SetPublic()
         {
-            var account = UserAccounts.GetAccount(Context.User);
+            var account = EntityConverter.ConvertUser(Context.User);
+            account.arePublicCodes = true;
+            UserAccountProvider.StoreUser(account);
+
             var embed = new EmbedBuilder();
             embed.WithColor(Colors.Get("Iodem"));
             embed.WithThumbnailUrl(Sprites.GetImageFromName("Iodem"));
-            account.arePublicCodes = true;
             embed.WithDescription(Utilities.GetAlert("FC_PUBLIC"));
             await Context.Channel.SendMessageAsync("", false, embed.Build());
         }
@@ -95,11 +98,13 @@ namespace IodemBot.Modules
         [Summary("Only you can access your Friendcodes")]
         public async Task SetPrivate()
         {
-            var account = UserAccounts.GetAccount(Context.User);
+            var account = EntityConverter.ConvertUser(Context.User);
+            account.arePublicCodes = false;
+            UserAccountProvider.StoreUser(account);
+
             var embed = new EmbedBuilder();
             embed.WithColor(Colors.Get("Iodem"));
             embed.WithThumbnailUrl(Sprites.GetImageFromName("Iodem"));
-            account.arePublicCodes = false;
             embed.WithDescription(Utilities.GetAlert("FC_PRIVATE"));
             await Context.Channel.SendMessageAsync("", false, embed.Build());
         }

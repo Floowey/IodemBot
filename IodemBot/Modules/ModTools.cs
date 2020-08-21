@@ -10,6 +10,7 @@ using Discord.WebSocket;
 using Iodembot.Preconditions;
 using IodemBot.Core;
 using IodemBot.Core.UserManagement;
+using IodemBot.Discord;
 using IodemBot.Extensions;
 using IodemBot.Modules.ColossoBattles;
 
@@ -72,38 +73,10 @@ namespace IodemBot.Modules
         private async Task SetupIodemTask()
         {
             await Context.Guild.DownloadUsersAsync();
-            var UsersWhoTalked = new List<string>();
-            var UsersWhoNeverTalked = new List<string>();
-            foreach (UserAccount user in UserAccounts.GetAllAccounts().ToList())
+            foreach(var user in UserAccounts.GetAllAccounts())
             {
-                if (!Context.Guild.Users.Any(u => u.Id == user.ID))
-                {
-                    Console.WriteLine($"{user.ID}, {user.Name}");
-                    if (user.LevelNumber > 2)
-                    {
-                        UsersWhoTalked.Add($"<@{user.ID}>");
-                    }
-                    else
-                    {
-                        UsersWhoNeverTalked.Add($"<@{user.ID}>");
-                    }
-                }
+                UserAccountProvider.GetById(user.ID);
             }
-            foreach (SocketGuildUser user in Context.Guild.Users.ToList())
-            {
-                var account = UserAccounts.GetAccount(user);
-
-                account.Name = user.DisplayName();
-            }
-            Console.WriteLine($"{UsersWhoTalked.Count}, {UsersWhoNeverTalked.Count}");
-            await ReplyAsync($"{UsersWhoTalked.Count}, {UsersWhoNeverTalked.Count}");
-
-            await ReplyAsync($"Talked at one point: {string.Join(", ", UsersWhoTalked)}");
-            await ReplyAsync($"Never really talked: {string.Join(", ", UsersWhoNeverTalked)}");
-
-            Console.WriteLine(Global.Client.Guilds.Sum(g => g.Emotes.Count));
-            UserAccounts.SaveAccounts();
-            GuildSettings.SaveGuilds();
             await Task.CompletedTask;
         }
 
@@ -198,7 +171,7 @@ namespace IodemBot.Modules
         [RequireOwner]
         public async Task Tags(SocketGuildUser user)
         {
-            var avatar = UserAccounts.GetAccount(user);
+            var avatar = EntityConverter.ConvertUser(user);
             await ReplyAsync(string.Join(", ", avatar.Tags));
         }
 
@@ -206,7 +179,7 @@ namespace IodemBot.Modules
         [RequireModerator]
         public async Task CleanupTags(SocketGuildUser user)
         {
-            var avatar = UserAccounts.GetAccount(user);
+            var avatar = EntityConverter.ConvertUser(user);
             var allTags1 = EnemiesDatabase.dungeons.Values.SelectMany(c => c.Requirement.TagsAny);
             var allTags2 = EnemiesDatabase.dungeons.Values.SelectMany(c => c.Requirement.TagsLock);
             var allTags3 = EnemiesDatabase.dungeons.Values.SelectMany(c => c.Requirement.TagsRequired);
@@ -222,7 +195,7 @@ namespace IodemBot.Modules
         [RequireOwner]
         public async Task RemoveTag(SocketGuildUser user, string Tag)
         {
-            var avatar = UserAccounts.GetAccount(user);
+            var avatar = EntityConverter.ConvertUser(user);
             await ReplyAsync($"Tag Removed {avatar.Tags.Remove(Tag)}");
         }
 
@@ -230,7 +203,7 @@ namespace IodemBot.Modules
         [RequireOwner]
         public async Task AddTag(SocketGuildUser user, string Tag)
         {
-            var avatar = UserAccounts.GetAccount(user);
+            var avatar = EntityConverter.ConvertUser(user);
             avatar.Tags.Add(Tag);
             await ReplyAsync("Tag Added");
         }

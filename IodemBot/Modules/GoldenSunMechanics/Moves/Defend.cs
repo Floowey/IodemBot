@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using IodemBot.Modules.ColossoBattles;
 
 namespace IodemBot.Modules.GoldenSunMechanics
@@ -31,7 +32,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         protected override List<string> InternalUse(ColossoFighter User)
         {
-            User.defensiveMult *= 0.5;
+            User.defensiveMult = Math.Min(0.5, User.defensiveMult);
             if (User is PlayerFighter p)
             {
                 p.battleStats.Defends++;

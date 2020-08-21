@@ -8,7 +8,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
     {
         public int Apply(UserAccount user)
         {
-            return user.DjinnPocket.djinn.OfElement(Element.Mars).Count() / 2;
+            return user.DjinnPocket.Djinn.OfElement(Element.Mars).Count() / 2;
         }
     }
 }

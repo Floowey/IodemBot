@@ -8,6 +8,7 @@ using Discord;
 using Discord.Net;
 using Discord.WebSocket;
 using IodemBot.Core.UserManagement;
+using IodemBot.Discord;
 using IodemBot.Extensions;
 using IodemBot.Modules.GoldenSunMechanics;
 
@@ -61,8 +62,7 @@ namespace IodemBot.Modules.ColossoBattles
 
         protected virtual string GetStartBattleString()
         {
-            string msg = PlayerMessages
-                        .Aggregate("", (s, v) => s += $"<@{v.Value.avatar.ID}>, ");
+            string msg = string.Join(", ", PlayerMessages.Select(v => $"<@{v.Value.Id}>"));
             return $"{msg} get into Position!";
         }
 
@@ -183,14 +183,14 @@ namespace IodemBot.Modules.ColossoBattles
                     return;
                 }
 
-                var curPlayer = PlayerMessages.Values.Where(p => p.avatar.ID == reaction.User.Value.Id).FirstOrDefault();
+                var curPlayer = PlayerMessages.Values.Where(p => p.Id == reaction.User.Value.Id).FirstOrDefault();
                 if (curPlayer == null)
                 {
                     _ = c.RemoveReactionAsync(reaction.Emote, reaction.User.Value);
                     Console.WriteLine("Player not in this room.");
                     return;
                 }
-                var correctID = PlayerMessages.Keys.Where(key => PlayerMessages[key].avatar.ID == curPlayer.avatar.ID).First().Id;
+                var correctID = PlayerMessages.Keys.Where(key => PlayerMessages[key].Id == curPlayer.Id).First().Id;
 
                 if (!numberEmotes.Contains(reaction.Emote.Name))
                 {
@@ -235,14 +235,14 @@ namespace IodemBot.Modules.ColossoBattles
 
         protected virtual async Task AddPlayer(SocketReaction reaction)
         {
-            if (PlayerMessages.Values.Any(s => (s.avatar.ID == reaction.UserId)))
+            if (PlayerMessages.Values.Any(s => (s.Id == reaction.UserId)))
             {
                 return;
             }
             SocketGuildUser player = (SocketGuildUser)reaction.User.Value;
-            var playerAvatar = UserAccounts.GetAccount(player);
+            var playerAvatar = EntityConverter.ConvertUser(player);
 
-            var p = Factory.CreatePlayerFighter(player);
+            var p = Factory.CreatePlayerFighter(playerAvatar);
             await AddPlayer(p);
         }
 
@@ -648,7 +648,7 @@ namespace IodemBot.Modules.ColossoBattles
 
                 if (fighter is PlayerFighter && (fighter).AutoTurnsInARow >= 2)
                 {
-                    var ping = await msg.Channel.SendMessageAsync($"<@{(fighter).avatar.ID}>");
+                    var ping = await msg.Channel.SendMessageAsync($"<@{fighter.Id}>");
                     await ping.DeleteAsync();
                 }
                 i++;

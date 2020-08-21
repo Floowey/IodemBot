@@ -6,6 +6,7 @@ using Discord;
 using Discord.WebSocket;
 using IodemBot.Core.Leveling;
 using IodemBot.Core.UserManagement;
+using IodemBot.Discord;
 using IodemBot.Extensions;
 using static IodemBot.Modules.ColossoBattles.EnemiesDatabase;
 
@@ -119,12 +120,12 @@ namespace IodemBot.Modules.ColossoBattles
 
         protected override async Task AddPlayer(SocketReaction reaction)
         {
-            if (PlayerMessages.Values.Any(s => (s.avatar.ID == reaction.UserId)))
+            if (PlayerMessages.Values.Any(s => (s.Id == reaction.UserId)))
             {
                 return;
             }
             SocketGuildUser player = (SocketGuildUser)reaction.User.Value;
-            var playerAvatar = UserAccounts.GetAccount(player);
+            var playerAvatar = EntityConverter.ConvertUser(player);
 
             if (!Dungeon.Requirement.Applies(playerAvatar))
             {
@@ -141,8 +142,7 @@ namespace IodemBot.Modules.ColossoBattles
 
         protected override string GetStartBattleString()
         {
-            string msg = PlayerMessages
-                        .Aggregate("", (s, v) => s += $"<@{v.Value.avatar.ID}>, ");
+            string msg = string.Join(", ", PlayerMessages.Select(v => $"<@{v.Value.Id}>"));
             SummonsMessage.ModifyAsync(m => m.Content = matchup.FlavourText);
             return $"{msg} get into Position!";
         }
@@ -154,7 +154,7 @@ namespace IodemBot.Modules.ColossoBattles
             {
                 if (Battle.GetWinner() == Team.A)
                 {
-                    winners.OfType<PlayerFighter>().ToList().ForEach(async p => await ServerGames.UserWonBattle(p.avatar, matchup.RewardTables.GetRewards(), p.battleStats, lobbyChannel, BattleChannel));
+                    winners.OfType<PlayerFighter>().ToList().ForEach(async p => await ServerGames.UserWonBattle(UserAccountProvider.GetById(p.Id), matchup.RewardTables.GetRewards(), p.battleStats, lobbyChannel, BattleChannel));
                 }
 
                 Battle.TeamA.ForEach(p =>
@@ -178,7 +178,7 @@ namespace IodemBot.Modules.ColossoBattles
                 }
                 else
                 {
-                    winners.OfType<PlayerFighter>().ToList().ForEach(async p => await ServerGames.UserWonDungeon(p.avatar, Dungeon, lobbyChannel));
+                    winners.OfType<PlayerFighter>().ToList().ForEach(async p => await ServerGames.UserWonDungeon(UserAccountProvider.GetById(p.Id), Dungeon, lobbyChannel));
                     _ = WriteGameOver();
                 }
             }
@@ -186,7 +186,7 @@ namespace IodemBot.Modules.ColossoBattles
             {
                 var losers = winners.First().battle.GetTeam(winners.First().enemies);
 
-                losers.ConvertAll(s => (PlayerFighter)s).ForEach(async p => await ServerGames.UserLostBattle(p.avatar, lobbyChannel));
+                losers.ConvertAll(s => (PlayerFighter)s).ForEach(async p => await ServerGames.UserLostBattle(UserAccountProvider.GetById(p.Id), lobbyChannel));
 
                 _ = WriteGameOver();
             }

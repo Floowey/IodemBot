@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using IodemBot.Extensions;
 using Newtonsoft.Json;
+using static IodemBot.Modules.GoldenSunMechanics.DjinnPocket;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
@@ -41,6 +42,15 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 djinn = new Djinn() { Element = Element.Venus, Name = $"{DjinnName} NOT IMPLEMENTED" };
             }
             return (Djinn)djinn.Clone();
+        }
+
+        public static Djinn GetDjinn(DjinnHolder djinn)
+        {
+            var d = GetDjinn(djinn.Djinn);
+            d.IsShiny = djinn.Shiny;
+            d.Nickname = djinn.Nickname;
+            d.UpdateMove();
+            return d;
         }
 
         public static Summon GetSummon(string SummonName)

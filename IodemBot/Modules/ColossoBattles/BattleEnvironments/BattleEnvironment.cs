@@ -42,7 +42,7 @@ namespace IodemBot.Modules.ColossoBattles
 
         public bool ContainsPlayer(ulong UserId)
         {
-            return Battle.TeamA.OfType<PlayerFighter>().Any(p => p.guildUser.Id == UserId) || Battle.TeamB.OfType<PlayerFighter>().Any(p => p.guildUser.Id == UserId);
+            return Battle.TeamA.OfType<PlayerFighter>().Any(p => p.Id == UserId) || Battle.TeamB.OfType<PlayerFighter>().Any(p => p.Id == UserId);
         }
 
         public async Task ProcessTurn(bool forced)

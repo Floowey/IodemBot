@@ -40,7 +40,7 @@ namespace IodemBot.Core.UserManagement
         {
             try
             {
-                DataStorage.SaveUserAccounts(accounts, accountsFile);
+                //DataStorage.SaveUserAccounts(accounts, accountsFile);
             }
             catch (Exception e)
             {
@@ -50,7 +50,12 @@ namespace IodemBot.Core.UserManagement
 
         public static UserAccount GetAccount(SocketUser user)
         {
-            return GetOrCreateAccount(user.Id, user.Username);
+            return GetOrCreateAccount(user.Id);
+        }
+
+        public static UserAccount GetAccount(ulong id)
+        {
+            return GetOrCreateAccount(id);
         }
 
         public static List<UserAccount> GetTop(RankEnum type = RankEnum.Level, EndlessMode mode = EndlessMode.Default)
@@ -85,7 +90,7 @@ namespace IodemBot.Core.UserManagement
             return sortedList.IndexOf(account);
         }
 
-        private static UserAccount GetOrCreateAccount(ulong id, string name)
+        private static UserAccount GetOrCreateAccount(ulong id)
         {
             var result = from a in accounts
                          where a.ID == id
@@ -94,18 +99,17 @@ namespace IodemBot.Core.UserManagement
             var account = result.FirstOrDefault();
             if (account == null)
             {
-                account = CreateUserAccount(id, name);
+                account = CreateUserAccount(id);
             }
 
             return account;
         }
 
-        private static UserAccount CreateUserAccount(ulong id, string name)
+        private static UserAccount CreateUserAccount(ulong id)
         {
             var newAccount = new UserAccount()
             {
-                ID = id,
-                Name = name
+                ID = id
             };
             accounts.Add(newAccount);
             SaveAccounts();

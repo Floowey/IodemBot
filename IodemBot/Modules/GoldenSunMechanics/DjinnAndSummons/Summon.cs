@@ -25,7 +25,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public override object Clone()
         {
-            throw new System.NotImplementedException();
+            return DjinnAndSummonsDatabase.GetSummon(Name);
         }
 
         public override void InternalChooseBestTarget(ColossoFighter User)

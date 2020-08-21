@@ -8,7 +8,7 @@ namespace IodemBot.Core.UserManagement
 {
     public class Loadouts
     {
-        public List<Loadout> loadouts = new List<Loadout>();
+        public List<Loadout> loadouts { get; set; } = new List<Loadout>();
 
         public Loadout GetLoadout(string name)
         {

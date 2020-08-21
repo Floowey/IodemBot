@@ -6,6 +6,7 @@ using Discord;
 using Discord.WebSocket;
 using IodemBot.Core.Leveling;
 using IodemBot.Core.UserManagement;
+using IodemBot.Discord;
 using IodemBot.Extensions;
 using IodemBot.Modules.GoldenSunMechanics;
 
@@ -227,8 +228,8 @@ namespace IodemBot.Modules.ColossoBattles
                     RewardTables.Add(djinnTable);
                 }
 
-                winners.OfType<PlayerFighter>().ToList().ForEach(async p => await ServerGames.UserWonBattle(p.avatar, RewardTables.GetRewards(), p.battleStats, lobbyChannel, BattleChannel));
-                winners.OfType<PlayerFighter>().ToList().ForEach(async p => await ServerGames.UserWonEndless(p.avatar, lobbyChannel, winsInARow, mode, p.battleStats.TotalTeamMates+1, string.Join(", ", Battle.TeamA.Select(pl => pl.Name))));
+                winners.OfType<PlayerFighter>().ToList().ForEach(async p => await ServerGames.UserWonBattle(UserAccountProvider.GetById(p.Id), RewardTables.GetRewards(), p.battleStats, lobbyChannel, BattleChannel));
+                winners.OfType<PlayerFighter>().ToList().ForEach(async p => await ServerGames.UserWonEndless(UserAccountProvider.GetById(p.Id), lobbyChannel, winsInARow, mode, p.battleStats.TotalTeamMates+1, string.Join(", ", Battle.TeamA.Select(pl => pl.Name))));
 
                 chests.RemoveAll(s => s is DefaultReward d && !d.HasChest);
 
@@ -253,8 +254,8 @@ namespace IodemBot.Modules.ColossoBattles
             else
             {
                 var losers = winners.First().battle.GetTeam(winners.First().enemies);
-                losers.OfType<PlayerFighter>().ToList().ForEach(async p => await ServerGames.UserLostBattle(p.avatar, lobbyChannel));
-                losers.OfType<PlayerFighter>().ToList().ForEach(async p => await ServerGames.UserFinishedEndless(p.avatar, lobbyChannel, winsInARow, mode));
+                losers.OfType<PlayerFighter>().ToList().ForEach(async p => await ServerGames.UserLostBattle(UserAccountProvider.GetById(p.Id), lobbyChannel));
+                losers.OfType<PlayerFighter>().ToList().ForEach(async p => await ServerGames.UserFinishedEndless(UserAccountProvider.GetById(p.Id), lobbyChannel, winsInARow, mode));
                 _ = WriteGameOver();
             }
         }
@@ -268,16 +269,16 @@ namespace IodemBot.Modules.ColossoBattles
 
         protected override async Task AddPlayer(SocketReaction reaction)
         {
-            if (PlayerMessages.Values.Any(s => (s.avatar.ID == reaction.UserId)))
+            if (PlayerMessages.Values.Any(s => (s.Id == reaction.UserId)))
             {
                 return;
             }
             SocketGuildUser player = (SocketGuildUser)reaction.User.Value;
-            var playerAvatar = UserAccounts.GetAccount(player);
+            var playerAvatar = EntityConverter.ConvertUser(player);
 
             if (playerAvatar.LevelNumber < 50 && !playerAvatar.Tags.Contains("ColossoCompleted")) return;
             
-            var p = Factory.CreatePlayerFighter(player);
+            var p = Factory.CreatePlayerFighter(playerAvatar);
 
             if (playerAvatar.Inv.GetGear(AdeptClassSeriesManager.GetClassSeries(playerAvatar).Archtype).Any(i => i.Name == "Lure Cap"))
             {

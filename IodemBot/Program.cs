@@ -5,6 +5,7 @@ using Discord;
 using Discord.WebSocket;
 using IodemBot.Core;
 using IodemBot.Core.UserManagement;
+using IodemBot.Discord;
 using IodemBot.Extensions;
 using IodemBot.Modules.ColossoBattles;
 
@@ -41,9 +42,7 @@ namespace IodemBot
             client = new DiscordSocketClient(new DiscordSocketConfig
             {
                 LogLevel = LogSeverity.Info,
-                MessageCacheSize = 10,
-                AlwaysDownloadUsers = true
-
+                MessageCacheSize = 10
             });
 
             Global.Client = client;
@@ -66,7 +65,7 @@ namespace IodemBot
         {
             if(before.DisplayName() != after.DisplayName())
             {
-                UserAccounts.GetAccount(after).Name = after.DisplayName();
+                EntityConverter.ConvertUser(after).Name = after.DisplayName();
                 _ = GuildSettings.GetGuildSettings(after.Guild).TestCommandChannel
                     .SendMessageAsync($"{after.Mention} changed Nickname from {before.DisplayName()} to {after.DisplayName()}");
             }

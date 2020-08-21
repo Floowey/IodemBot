@@ -72,8 +72,6 @@ namespace IodemBot.Modules.ColossoBattles
                     }
                 }
             });
-
-            UserAccounts.SaveAccounts();
         }
 
         public bool ForceTurn()

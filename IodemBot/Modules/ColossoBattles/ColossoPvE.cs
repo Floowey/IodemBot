@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Discord;
+using Discord.Net;
 using Discord.Commands;
 using Discord.WebSocket;
 using Iodembot.Preconditions;
@@ -10,6 +11,7 @@ using IodemBot.Core;
 using IodemBot.Core.UserManagement;
 using IodemBot.Extensions;
 using IodemBot.Modules.GoldenSunMechanics;
+using IodemBot.Discord;
 
 namespace IodemBot.Modules.ColossoBattles
 {
@@ -31,7 +33,7 @@ namespace IodemBot.Modules.ColossoBattles
         {
             if (!AcceptBattles) return;
             if (!(Context.User is SocketGuildUser user)) return;
-            var acc = UserAccounts.GetAccount(Context.User);
+            var acc = EntityConverter.ConvertUser(Context.User);
             var gs = GuildSettings.GetGuildSettings(Context.Guild);
             _ = RemoveFighterRoles();
             if (EnemiesDatabase.TryGetDungeon(DungeonName, out var Dungeon))
@@ -78,6 +80,7 @@ namespace IodemBot.Modules.ColossoBattles
                 if (Dungeon.IsOneTimeOnly && !ModPermission)
                 {
                     acc.Dungeons.Remove(Dungeon.Name);
+                    UserAccountProvider.StoreUser(acc);
                 }
                 _ = Context.Channel.SendMessageAsync($"{Context.User.Username}, {openBattle.BattleChannel.Mention} has been prepared for your adventure to {Dungeon.Name}");
 
@@ -148,7 +151,7 @@ namespace IodemBot.Modules.ColossoBattles
 
                 var unlimittedDjinn = djinnTotal.Where(d => d.Obtainable == 0);
 
-                var avatar = UserAccounts.GetAccount(Context.User);
+                var avatar = EntityConverter.ConvertUser(Context.User);
                 var djinnobtained = avatar.Tags.Count(t => limittedDjinn.Any(r => r.Tag.Contains(t)));
 
                 var probability = djinnTotal.Count() > 0 ? 1 - 1.0 / RewardTablesWithDjinn
@@ -274,7 +277,7 @@ namespace IodemBot.Modules.ColossoBattles
             var gauntletFromUser = battles.Where(b => 
                 Context.Guild.Channels.Any(c => b.GetChannelIds.Contains(c.Id)) &&
                 b.Name.Equals(Context.User.Username, StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault();
-            var acc = UserAccounts.GetAccount(Context.User);
+            var acc = EntityConverter.ConvertUser(Context.User);
             if (acc.LevelNumber < 50 && !acc.Tags.Contains("ColossoCompleted")) return;
 
             if (gauntletFromUser != null)
@@ -338,7 +341,9 @@ namespace IodemBot.Modules.ColossoBattles
         {
             if (EnemiesDatabase.TryGetDungeon(dungeonName, out var dungeon))
             {
-                UserAccounts.GetAccount(user).Dungeons.Add(dungeon.Name);
+                var acc = EntityConverter.ConvertUser(user);
+                acc.Dungeons.Add(dungeon.Name);
+                UserAccountProvider.StoreUser(acc);
                 _ = ReplyAsync($"{user.DisplayName()} got access to {dungeon.Name}");
             }
             await Task.CompletedTask;
@@ -408,7 +413,7 @@ namespace IodemBot.Modules.ColossoBattles
             try
             {
                 await channel.SyncPermissionsAsync();
-            } catch (Discord.Net.HttpException e)
+            } catch (HttpException e)
             {
                 channel = await guild.GetOrCreateTextChannelAsync($"{Name}1", d => { d.CategoryId = categoryID; d.Position = colossoChannel.Position + battles.Count(); });
                 await channel.SyncPermissionsAsync();
