@@ -150,10 +150,11 @@ namespace IodemBot.Core.Leveling
 
         internal static async Task UserWonEndless(UserAccount avatar, ITextChannel lobbyChannel, int winsInARow, EndlessMode mode, int nOfPlayers, string TeamMatesNames)
         {
-            if(mode == EndlessMode.Default)
+            if (mode == EndlessMode.Default)
             {
                 avatar.ServerStats.EndlessStreak.AddStreak(winsInARow, nOfPlayers, TeamMatesNames);
-            } else
+            }
+            else
             {
                 avatar.ServerStats.LegacyStreak.AddStreak(winsInARow, nOfPlayers, TeamMatesNames);
             }

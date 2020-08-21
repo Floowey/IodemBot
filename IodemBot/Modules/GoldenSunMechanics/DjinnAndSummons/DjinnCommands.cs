@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Linq;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Discord;
 using Discord.Commands;
@@ -151,14 +150,16 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 return;
             }
             var user = EntityConverter.ConvertUser(Context.User);
-            if(Names == "none")
+            if (Names == "none")
             {
                 user.DjinnPocket.DjinnSetup.Clear();
-            } else if (Names.Contains(','))
+            }
+            else if (Names.Contains(','))
             {
                 var parts = Names.Split(',').Select(s => s.Trim()).ToArray();
                 TakeDjinn(user, parts);
-            } else
+            }
+            else
             {
                 TakeDjinn(user, Names);
             }
@@ -175,7 +176,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 .OfElement(userclass.Elements)
                 .Take(DjinnPocket.MaxDjinn)
                 .ToList();
-               
+
             chosenDjinn.ForEach(d =>
             {
                 userDjinn.Djinn.Remove(d);

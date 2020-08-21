@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using IodemBot.Extensions;
-using IodemBot.Modules.ColossoBattles;
 using IodemBot.Modules.GoldenSunMechanics;
 using Newtonsoft.Json;
 
@@ -104,7 +103,7 @@ namespace IodemBot.Core.UserManagement
                 default: break;
             }
         }
-        
+
 
         public static EndlessStreak operator +(EndlessStreak s1, EndlessStreak s2)
         {
@@ -115,8 +114,8 @@ namespace IodemBot.Core.UserManagement
                 Trio = Math.Max(s1.Trio, s2.Trio),
                 Quad = Math.Max(s1.Quad, s2.Quad),
                 DuoNames = s1.Duo > s2.Duo ? s1.DuoNames : s2.DuoNames,
-                TrioNames= s1.Trio > s2.Trio ? s1.TrioNames : s2.TrioNames,
-                QuadNames= s1.Quad > s2.Quad ? s1.QuadNames : s2.QuadNames,
+                TrioNames = s1.Trio > s2.Trio ? s1.TrioNames : s2.TrioNames,
+                QuadNames = s1.Quad > s2.Quad ? s1.QuadNames : s2.QuadNames,
             };
         }
     }
@@ -275,14 +274,17 @@ namespace IodemBot.Core.UserManagement
             XpBoost *= 1 + 0.1 * (1 - Math.Exp(-(double)XP / 120000));
             XPLastGame = TotalXP;
 
-            if(LevelNumber >= 99)
+            if (LevelNumber >= 99)
             {
-                TrophyCase.Trophies.Add(new Trophy() {
-                    Icon = "<:99Trophy:739170181745475601>", 
-                    Text = $"Awarded for resetting their character at level {LevelNumber}", 
-                    ObtainedOn = DateTime.Now }
+                TrophyCase.Trophies.Add(new Trophy()
+                {
+                    Icon = "<:99Trophy:739170181745475601>",
+                    Text = $"Awarded for resetting their character at level {LevelNumber}",
+                    ObtainedOn = DateTime.Now
+                }
                 );
-            } else if(LevelNumber >= 90)
+            }
+            else if (LevelNumber >= 90)
             {
                 TrophyCase.Trophies.Add(new Trophy()
                 {
@@ -291,7 +293,8 @@ namespace IodemBot.Core.UserManagement
                     ObtainedOn = DateTime.Now
                 }
                 );
-            } else if(LevelNumber >= 75)
+            }
+            else if (LevelNumber >= 75)
             {
                 TrophyCase.Trophies.Add(new Trophy()
                 {
@@ -300,7 +303,8 @@ namespace IodemBot.Core.UserManagement
                     ObtainedOn = DateTime.Now
                 }
                 );
-            } else if(LevelNumber >= 50)
+            }
+            else if (LevelNumber >= 50)
             {
                 TrophyCase.Trophies.Add(new Trophy()
                 {

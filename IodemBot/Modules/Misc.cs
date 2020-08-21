@@ -188,7 +188,7 @@ namespace IodemBot.Modules
         {
             CultureInfo enAU = new CultureInfo("en-US");
             string format = "HH':'mm', 'MMM dd";
-            if(time == 12)
+            if (time == 12)
             {
                 format = "hh':'mm t'M , 'MMM dd";
             }
@@ -288,7 +288,7 @@ namespace IodemBot.Modules
         }
 
         [Command("rank"), Alias("top", "top10")]
-        [Cooldown(15)]
+        [Cooldown(5)]
         [Summary("Get the most active users and your rank")]
         public async Task Rank()
         {
@@ -319,15 +319,16 @@ namespace IodemBot.Modules
 
         [Command("streak"), Alias("showdown")]
         [Summary("Ranking of endless battles")]
-        [Cooldown(15)]
+        [Cooldown(5)]
         public async Task Showdown(RankEnum type = RankEnum.Solo, EndlessMode mode = EndlessMode.Default)
         {
             var topAccounts = UserAccountProvider.GetAllUsers().ToList();
 
-            if(type == RankEnum.Solo)
+            if (type == RankEnum.Solo)
             {
-                topAccounts= topAccounts.OrderByDescending(d => (d.ServerStats.GetStreak(mode) + d.ServerStatsTotal.GetStreak(mode)).Solo).ToList();
-            } else
+                topAccounts = topAccounts.OrderByDescending(d => (d.ServerStats.GetStreak(mode) + d.ServerStatsTotal.GetStreak(mode)).Solo).ToList();
+            }
+            else
             {
                 topAccounts = topAccounts.Where(p => (p.ServerStats.GetStreak(mode) + p.ServerStatsTotal.GetStreak(mode)).GetEntry(type).Item1 > 0)
                         .GroupBy(p => (p.ServerStats.GetStreak(mode) + p.ServerStatsTotal.GetStreak(mode)).GetEntry(type).Item2)
@@ -412,7 +413,7 @@ namespace IodemBot.Modules
                 {"Fighter", 742060001031618590 }
             };
 
-            if(RoleName.Equals("Gladiator", StringComparison.CurrentCultureIgnoreCase) && EntityConverter.ConvertUser(Context.User).LevelNumber < 5)
+            if (RoleName.Equals("Gladiator", StringComparison.CurrentCultureIgnoreCase) && EntityConverter.ConvertUser(Context.User).LevelNumber < 5)
             {
                 _ = ReplyAsync("Please participate in the server more before you can announce your streams. We would like to be a community and not just be used as an advertising platform!");
                 return;

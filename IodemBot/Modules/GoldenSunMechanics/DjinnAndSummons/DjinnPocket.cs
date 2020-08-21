@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Serialization;
 using IodemBot.Extensions;
 using LiteDB;
-using Newtonsoft.Json;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
@@ -20,7 +18,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         {
             get { return Djinn?.Select(d => new DjinnHolder() { Djinn = d.Djinnname, Nickname = d.Nickname, Shiny = d.IsShiny }); }
 
-            set { Djinn = value.Select(s => DjinnAndSummonsDatabase.GetDjinn(s)).ToList() ; }
+            set { Djinn = value.Select(s => DjinnAndSummonsDatabase.GetDjinn(s)).ToList(); }
         }
         public IEnumerable<SummonHolder> SummonStorage
         {

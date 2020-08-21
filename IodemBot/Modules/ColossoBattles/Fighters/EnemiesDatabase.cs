@@ -122,7 +122,7 @@ namespace IodemBot.Modules.ColossoBattles
                     }
                     else if (Enum.TryParse(arg, out Condition c))
                     {
-                        clone.EquipmentWithEffect.Add(new Item() { Unleash = new Unleash() { Effects = new List<Effect>() { new ConditionEffect() { Condition = c } } }, ChanceToActivate=100, ChanceToBreak=0 });
+                        clone.EquipmentWithEffect.Add(new Item() { Unleash = new Unleash() { Effects = new List<Effect>() { new ConditionEffect() { Condition = c } } }, ChanceToActivate = 100, ChanceToBreak = 0 });
                     }
 
                 }

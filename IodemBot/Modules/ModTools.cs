@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -8,10 +7,8 @@ using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
 using Iodembot.Preconditions;
-using IodemBot.Core;
 using IodemBot.Core.UserManagement;
 using IodemBot.Discord;
-using IodemBot.Extensions;
 using IodemBot.Modules.ColossoBattles;
 
 namespace IodemBot.Modules
@@ -73,7 +70,7 @@ namespace IodemBot.Modules
         private async Task SetupIodemTask()
         {
             await Context.Guild.DownloadUsersAsync();
-            foreach(var user in UserAccounts.GetAllAccounts())
+            foreach (var user in UserAccounts.GetAllAccounts())
             {
                 UserAccountProvider.GetById(user.ID);
             }

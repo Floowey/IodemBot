@@ -58,7 +58,7 @@ namespace IodemBot.Modules
                 embed.AddField($"Other Classes in {series.Name}", string.Join(", ", series.Classes.Select(s => s.Name)), true);
                 embed.AddField("Elements", string.Join(", ", series.Elements.Select(e => e.ToString())), true);
                 await Context.Channel.SendMessageAsync("", false, embed.Build());
-                if(Context.User is SocketGuildUser sgu)
+                if (Context.User is SocketGuildUser sgu)
                 {
                     _ = ServerGames.UserLookedUpClass(sgu, (SocketTextChannel)Context.Channel);
                 }
@@ -226,7 +226,7 @@ namespace IodemBot.Modules
             .AddField("XP", $"{account.XP} - next in {account.XPneeded}{(account.NewGames > 1 ? $"\n({account.TotalXP} total | {account.NewGames} resets)" : "")}", true)
             .AddField("Colosso wins | Dungeon Wins", $"{account.ServerStats.ColossoWins} | {account.ServerStats.DungeonsCompleted}", true)
             .AddField("Endless Streaks", $"Solo: {account.ServerStats.EndlessStreak.Solo} | Duo: {account.ServerStats.EndlessStreak.Duo} \nTrio: {account.ServerStats.EndlessStreak.Trio} | Quad: {account.ServerStats.EndlessStreak.Quad}", true);
-            
+
             if (user is SocketGuildUser socketGuildUser)
             {
                 var Footer = new EmbedFooterBuilder();

@@ -49,10 +49,10 @@ namespace IodemBot.Modules
                 int.TryParse(parts[0], out nThrows);
                 int.TryParse(parts[1], out nSides);
             }
-            
+
             var embed = new EmbedBuilder()
             .WithColor(Colors.Get("Iodem"))
-            .WithDescription($"🎲 {nThrows}d{nSides}: {string.Join(", ",Enumerable.Range(0, nThrows).Select(i => Global.RandomNumber(0, nSides) + 1))}");
+            .WithDescription($"🎲 {nThrows}d{nSides}: {string.Join(", ", Enumerable.Range(0, nThrows).Select(i => Global.RandomNumber(0, nSides) + 1))}");
             await Context.Channel.SendMessageAsync("", false, embed.Build());
         }
 

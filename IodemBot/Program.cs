@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 using Discord;
 using Discord.WebSocket;
 using IodemBot.Core;
-using IodemBot.Core.UserManagement;
 using IodemBot.Discord;
 using IodemBot.Extensions;
 using IodemBot.Modules.ColossoBattles;
@@ -63,7 +62,7 @@ namespace IodemBot
 
         private async Task Client_GuildMemberUpdated(SocketGuildUser before, SocketGuildUser after)
         {
-            if(before.DisplayName() != after.DisplayName())
+            if (before.DisplayName() != after.DisplayName())
             {
                 EntityConverter.ConvertUser(after).Name = after.DisplayName();
                 _ = GuildSettings.GetGuildSettings(after.Guild).TestCommandChannel

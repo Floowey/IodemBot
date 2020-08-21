@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Discord;
 using Discord.Commands;
@@ -61,7 +60,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             }
 
             var fb = new EmbedFooterBuilder();
-            fb.WithText($"{inv.Count} / {inv.MaxInvSize} {(inv.Upgrades < 3 ? $"Upgrade: {50000 * Math.Pow(2, inv.Upgrades)}": "")}");
+            fb.WithText($"{inv.Count} / {inv.MaxInvSize} {(inv.Upgrades < 3 ? $"Upgrade: {50000 * Math.Pow(2, inv.Upgrades)}" : "")}");
             embed.AddField("Coin", $"<:coin:569836987767324672> {inv.Coins}");
             embed.WithColor(Colors.Get("Iodem"));
             embed.WithFooter(fb);
@@ -254,7 +253,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 items = item.Split(',');
             }
             var account = EntityConverter.ConvertUser(Context.User);
-            var inv = account.Inv; 
+            var inv = account.Inv;
             var embed = new EmbedBuilder();
 
             if (items.Length > 0)
@@ -444,7 +443,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             embed.WithColor(item.Color);
             if (cq == ChestQuality.Daily)
             {
-                embed.WithFooter($"Current Reward: {inv.DailiesInARow % dailyRewards.Length +1}/{dailyRewards.Length} | Overall Streak: {inv.DailiesInARow +1}");
+                embed.WithFooter($"Current Reward: {inv.DailiesInARow % dailyRewards.Length + 1}/{dailyRewards.Length} | Overall Streak: {inv.DailiesInARow + 1}");
             }
             embed.WithDescription($"{Inventory.ChestIcons[cq]} You found a {item.Name} {item.IconDisplay}");
 

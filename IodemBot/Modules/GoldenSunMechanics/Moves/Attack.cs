@@ -54,7 +54,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             if (!enemy.IsAlive)
             {
                 log.Add($"{enemy.Name} is down already!");
-                if(User.Moves.FirstOrDefault(m => m is Defend) != null)
+                if (User.Moves.FirstOrDefault(m => m is Defend) != null)
                 {
                     log.AddRange(User.Moves.FirstOrDefault(m => m is Defend).Use(User));
                 }
@@ -200,7 +200,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 player.battleStats.DamageDealt += damage;
                 if (!enemy.IsAlive)
                 {
-                    if(enemy.Stats.Spd > 0 && weaponUnleashed)
+                    if (enemy.Stats.Spd > 0 && weaponUnleashed)
                     {
                         player.battleStats.KillsByHand++;
                     }

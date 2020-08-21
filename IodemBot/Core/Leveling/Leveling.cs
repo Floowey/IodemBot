@@ -32,7 +32,7 @@ namespace IodemBot.Core.Leveling
 
             if (sinceLastXP.TotalMinutes >= 3)
             {
-                userAccount.LastXP = DateTime.UtcNow;   
+                userAccount.LastXP = DateTime.UtcNow;
                 userAccount.AddXp((uint)(new Random()).Next(30, 50));
             }
 
@@ -101,13 +101,15 @@ namespace IodemBot.Core.Leveling
             embed.WithDescription("<:Up_Arrow:571309108289077258> " + userAccount.GsClass + " " + user.Mention + " just leveled up!");
             embed.AddField("LEVEL", userAccount.LevelNumber, true);
             embed.AddField("XP", userAccount.XP, true);
-            if(userAccount.LevelNumber == 10)
+            if (userAccount.LevelNumber == 10)
             {
                 embed.AddField("Congratulations!", "You have unlocked Easy mode in the Weyard battle channels!");
-            } else if (userAccount.LevelNumber == 30)
+            }
+            else if (userAccount.LevelNumber == 30)
             {
                 embed.AddField("Congratulations!", "You have unlocked Medium mode in the Weyard battle channels!");
-            } else if (userAccount.LevelNumber == 50)
+            }
+            else if (userAccount.LevelNumber == 50)
             {
                 embed.AddField("Congratulations!", "You have unlocked Hard mode in the Weyard battle channels, as well as the Endless mode!");
             }

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Serialization;
 using System.Text;
 using IodemBot.Extensions;
 using LiteDB;
@@ -73,7 +72,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public uint Coins { get; set; }
         public uint Upgrades { get; set; }
 
-       
+
         [JsonIgnore]
         public uint MaxInvSize
         {

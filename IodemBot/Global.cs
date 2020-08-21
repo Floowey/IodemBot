@@ -1,8 +1,5 @@
 ﻿using System;
 using Discord.WebSocket;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace IodemBot
 {

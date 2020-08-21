@@ -10,7 +10,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             {
                 return 5;
             }
-            else if (user.ServerStats.ColossoWins >= 800 && user.ServerStats.EndlessStreak.Solo>= 20) //Berserker
+            else if (user.ServerStats.ColossoWins >= 800 && user.ServerStats.EndlessStreak.Solo >= 20) //Berserker
             {
                 return 4;
             }

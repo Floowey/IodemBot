@@ -88,7 +88,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             {
                 djinn = DjinnAndSummonsDatabase.GetRandomDjinn(element);
                 var isShiny = Global.RandomNumber(0, 128) == 0;
-                if(!isShiny && userAccount.DjinnPocket.Djinn.Any(d => d.Djinnname == djinn.Djinnname))
+                if (!isShiny && userAccount.DjinnPocket.Djinn.Any(d => d.Djinnname == djinn.Djinnname))
                 {
                     djinn = DjinnAndSummonsDatabase.GetRandomDjinn(element);
                 }

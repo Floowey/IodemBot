@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Discord;
-using Discord.Net;
 using Discord.Commands;
+using Discord.Net;
 using Discord.WebSocket;
 using Iodembot.Preconditions;
 using IodemBot.Core;
 using IodemBot.Core.UserManagement;
+using IodemBot.Discord;
 using IodemBot.Extensions;
 using IodemBot.Modules.GoldenSunMechanics;
-using IodemBot.Discord;
 
 namespace IodemBot.Modules.ColossoBattles
 {
@@ -102,8 +102,8 @@ namespace IodemBot.Modules.ColossoBattles
             {
                 if ((DateTime.Now - entry.Value).TotalMinutes > 10)
                 {
-                    if(entry.Key.Roles.Any(r => r.Id == gs.FighterRole.Id))
-                    _ = entry.Key.RemoveRoleAsync(gs.FighterRole);
+                    if (entry.Key.Roles.Any(r => r.Id == gs.FighterRole.Id))
+                        _ = entry.Key.RemoveRoleAsync(gs.FighterRole);
                     toBeRemoved.Add(entry.Key);
                 }
             }
@@ -119,7 +119,8 @@ namespace IodemBot.Modules.ColossoBattles
             {
                 _ = user.AddRoleAsync(gs.FighterRole);
                 FighterRoles.Add(user, DateTime.Now);
-            } else
+            }
+            else
             {
                 if (FighterRoles.Remove(user))
                 {
@@ -254,7 +255,7 @@ namespace IodemBot.Modules.ColossoBattles
         {
             await Context.Message.DeleteAsync();
             var a = battles.OfType<PvEEnvironment>()
-                .Where(b => b.BattleChannel.GuildId == Context.Guild.Id 
+                .Where(b => b.BattleChannel.GuildId == Context.Guild.Id
                 && b.Name.Equals(name, StringComparison.InvariantCultureIgnoreCase))
                 .FirstOrDefault();
             if (a != null)
@@ -274,7 +275,7 @@ namespace IodemBot.Modules.ColossoBattles
             var guild = Context.Guild;
             var gs = GuildSettings.GetGuildSettings(guild);
             _ = RemoveFighterRoles();
-            var gauntletFromUser = battles.Where(b => 
+            var gauntletFromUser = battles.Where(b =>
                 Context.Guild.Channels.Any(c => b.GetChannelIds.Contains(c.Id)) &&
                 b.Name.Equals(Context.User.Username, StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault();
             var acc = EntityConverter.ConvertUser(Context.User);
@@ -300,7 +301,7 @@ namespace IodemBot.Modules.ColossoBattles
             }
             else
             {
-                openBattle = new EndlessBattleEnvironment($"{Context.User.Username}", gs.ColossoChannel, false, await PrepareBattleChannel($"Endless-Legacy-{Context.User.Username}", guild, persistent:false), EndlessMode.Legacy);
+                openBattle = new EndlessBattleEnvironment($"{Context.User.Username}", gs.ColossoChannel, false, await PrepareBattleChannel($"Endless-Legacy-{Context.User.Username}", guild, persistent: false), EndlessMode.Legacy);
             }
             battles.Add(openBattle);
             _ = Context.Channel.SendMessageAsync($"{Context.User.Username}, {openBattle.BattleChannel.Mention} has been prepared for an endless adventure!");
@@ -362,9 +363,9 @@ namespace IodemBot.Modules.ColossoBattles
             {
                 await Context.Channel.SendMessageAsync(a.GetStatus());
             }
-            if(name == "")
+            if (name == "")
             {
-                await ReplyAsync(string.Join("\n", 
+                await ReplyAsync(string.Join("\n",
                     battles.Where(b => Context.Guild.Channels.Any(c => b.GetChannelIds.Contains(c.Id)))
                     .Select(b => $"Name: {b.Name} ({b.GetType()}) Ids:{b.GetChannelIds[0]} Active:{b.IsActive} Permanent:{b.IsPersistent}")));
             }
@@ -413,7 +414,8 @@ namespace IodemBot.Modules.ColossoBattles
             try
             {
                 await channel.SyncPermissionsAsync();
-            } catch (HttpException e)
+            }
+            catch (HttpException e)
             {
                 channel = await guild.GetOrCreateTextChannelAsync($"{Name}1", d => { d.CategoryId = categoryID; d.Position = colossoChannel.Position + battles.Count(); });
                 await channel.SyncPermissionsAsync();

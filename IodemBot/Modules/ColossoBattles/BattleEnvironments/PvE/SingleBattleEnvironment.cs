@@ -160,7 +160,8 @@ namespace IodemBot.Modules.ColossoBattles
             {
                 internalDiff = BattleDifficulty.Tutorial;
                 SetNextEnemy();
-            } else if (Difficulty == BattleDifficulty.Tutorial && playerAvatar.LevelNumber >= 10)
+            }
+            else if (Difficulty == BattleDifficulty.Tutorial && playerAvatar.LevelNumber >= 10)
             {
                 internalDiff = BattleDifficulty.Easy;
                 SetNextEnemy();
@@ -224,7 +225,7 @@ namespace IodemBot.Modules.ColossoBattles
                 {
                     var djinnTable = new RewardTable();
                     var djinnWeight = (int)Difficulty;
-                    if(Battle.TeamB.Any(f => f.Name.Contains("enus Djinn")))
+                    if (Battle.TeamB.Any(f => f.Name.Contains("enus Djinn")))
                     {
                         djinnTable.Add(new DefaultReward() { Djinn = "Venus", Weight = 1 });
                     }
@@ -240,10 +241,10 @@ namespace IodemBot.Modules.ColossoBattles
                     {
                         djinnTable.Add(new DefaultReward() { Djinn = "Mercury", Weight = 1 });
                     }
-                    djinnTable.Add(new DefaultReward() { Weight = djinnTable.Weight*(10-(int)Difficulty)*3-djinnTable.Weight });
+                    djinnTable.Add(new DefaultReward() { Weight = djinnTable.Weight * (10 - (int)Difficulty) * 3 - djinnTable.Weight });
                     RewardTables.Add(djinnTable);
                 }
-                
+
                 winners.OfType<PlayerFighter>().ToList().ForEach(async p => await ServerGames.UserWonBattle(UserAccountProvider.GetById(p.Id), RewardTables.GetRewards(), p.battleStats, lobbyChannel, BattleChannel));
                 winners.OfType<PlayerFighter>().ToList().ForEach(async p => await ServerGames.UserWonSingleBattle(UserAccountProvider.GetById(p.Id), lobbyChannel, Difficulty));
 

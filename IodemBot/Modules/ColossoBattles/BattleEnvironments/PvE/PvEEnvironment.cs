@@ -7,7 +7,6 @@ using System.Timers;
 using Discord;
 using Discord.Net;
 using Discord.WebSocket;
-using IodemBot.Core.UserManagement;
 using IodemBot.Discord;
 using IodemBot.Extensions;
 using IodemBot.Modules.GoldenSunMechanics;
@@ -398,10 +397,19 @@ namespace IodemBot.Modules.ColossoBattles
                 await WriteEnemies();
                 await WritePlayers();
             }
+            catch (TimeoutException e)
+            {
+                Console.WriteLine("Timed out while drawing Battle, retrying." + e.ToString());
+                Battle.log.Add("Timed out while drawing Battle, retrying in 30s.");
+                var msg = await BattleChannel.SendMessageAsync("Timed out while drawing Battle, retrying in 30s.");
+                await Task.Delay(300000);
+                await msg.DeleteAsync();
+                await WriteBattle();
+            }
             catch (Exception e)
             {
-                Console.WriteLine("Exception while writing Battle" + e.ToString());
-                throw new Exception("Exception while writing Battle", e);
+                Console.WriteLine("Exception while writing Battle: " + e.ToString());
+                throw new Exception("Exception while writing Battle: ", e);
             }
         }
 
@@ -416,12 +424,19 @@ namespace IodemBot.Modules.ColossoBattles
             }
             catch (HttpException e)
             {
-                Console.WriteLine("Failed drawing Battle, retrying:" + e.ToString());
+                Console.WriteLine("Failed drawing Battle, retrying: " + e.ToString());
                 Battle.log.Add("Failed drawing Battle, retrying.");
                 await WriteStatusInit();
                 await WriteSummonsInit();
                 await WriteEnemiesInit();
                 await WritePlayersInit();
+            }
+            catch (TimeoutException e)
+            {
+                Console.WriteLine("Timed out while drawing Battle, retrying: " + e.ToString());
+                Battle.log.Add("Timed out while drawing Battle, retrying in 30s");
+                await Task.Delay(300000);
+                await WriteBattleInit();
             }
             catch (Exception e)
             {
@@ -646,10 +661,10 @@ namespace IodemBot.Modules.ColossoBattles
                     tasks.Add(msg.ModifyAsync(m => { m.Content = $""; m.Embed = embed.Build(); }));
                 }
 
-                if (fighter is PlayerFighter && (fighter).AutoTurnsInARow >= 2)
+                if (fighter.AutoTurnsInARow >= 2)
                 {
                     var ping = await msg.Channel.SendMessageAsync($"<@{fighter.Id}>");
-                    await ping.DeleteAsync();
+                    _ = ping.DeleteAsync();
                 }
                 i++;
             }

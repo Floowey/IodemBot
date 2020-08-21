@@ -21,10 +21,11 @@ namespace IodemBot.Modules.GoldenSunMechanics
             {
                 if (Global.RandomNumber(0, 100) <= Probability)
                 {
-                    if(Target.GetTeam().Count > 1)
+                    if (Target.GetTeam().Count > 1)
                     {
                         Target.Stats.HP = 1;
-                    } else
+                    }
+                    else
                     {
                         Target.Stats.HP = Math.Min(Target.Stats.HP, (int)(Target.Stats.MaxHP * 0.15));
                     }

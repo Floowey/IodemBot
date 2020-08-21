@@ -104,7 +104,7 @@ namespace IodemBot.Modules.ColossoBattles
 
         public void ApplyBuff(Buff buff)
         {
-            var existingBuff = Buffs.Where(b => b.stat == buff.stat && ((b.multiplier-1) * (buff.multiplier-1) >= 0) ).FirstOrDefault();
+            var existingBuff = Buffs.Where(b => b.stat == buff.stat && ((b.multiplier - 1) * (buff.multiplier - 1) >= 0)).FirstOrDefault();
             if (existingBuff == null)
             {
                 Buffs.Add(buff);
@@ -324,7 +324,7 @@ namespace IodemBot.Modules.ColossoBattles
                 DeathCurseCounter--;
                 if (DeathCurseCounter <= 0)
                 {
-                    if(GetTeam().Count == 1 && this is PlayerFighter p)
+                    if (GetTeam().Count == 1 && this is PlayerFighter p)
                     {
                         p.Stats.HP = 1;
                         RemoveCondition(Condition.DeathCurse);
@@ -477,7 +477,7 @@ namespace IodemBot.Modules.ColossoBattles
             }
 
             RemoveCondition(Condition.Flinch);
-            
+
             return turnLog;
         }
 

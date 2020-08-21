@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using IodemBot.Extensions;
 using Newtonsoft.Json;
 

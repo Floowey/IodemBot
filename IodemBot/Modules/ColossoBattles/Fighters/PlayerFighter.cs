@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Discord.WebSocket;
 using IodemBot.Core.UserManagement;
-using IodemBot.Extensions;
 using IodemBot.Modules.GoldenSunMechanics;
 using Newtonsoft.Json;
 
@@ -216,7 +214,7 @@ namespace IodemBot.Modules.ColossoBattles
         private Stats GetStats(UserAccount avatar, uint level)
         {
             var classSeries = AdeptClassSeriesManager.GetClassSeries(avatar);
-           
+
             Stats Stats = BaseStatOption switch
             {
                 BaseStatOption.Default => classSeries.Archtype == ArchType.Warrior ? WarriorStatHolder.GetStats(level, ReductionFactor) : MageStatHolder.GetStats(level, ReductionFactor),

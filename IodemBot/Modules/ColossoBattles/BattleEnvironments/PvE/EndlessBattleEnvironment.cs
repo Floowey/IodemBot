@@ -151,7 +151,7 @@ namespace IodemBot.Modules.ColossoBattles
         public EndlessBattleEnvironment(string Name, ITextChannel lobbyChannel, bool isPersistent, ITextChannel BattleChannel, EndlessMode mode = EndlessMode.Default) : base(Name, lobbyChannel, isPersistent, BattleChannel)
         {
             this.mode = mode;
-            if(mode == EndlessMode.Legacy)
+            if (mode == EndlessMode.Legacy)
             {
                 Factory = new PlayerFighterFactory() { DjinnOption = DjinnOption.NoDjinn, ReductionFactor = 1.5 };
             }
@@ -224,12 +224,12 @@ namespace IodemBot.Modules.ColossoBattles
                     {
                         djinnTable.Add(new DefaultReward() { Djinn = "Mercury", Weight = 1 });
                     }
-                    djinnTable.Add(new DefaultReward() { Weight = djinnTable.Weight * (10 - (int)Difficulty) * 2 - djinnTable.Weight } );
+                    djinnTable.Add(new DefaultReward() { Weight = djinnTable.Weight * (10 - (int)Difficulty) * 2 - djinnTable.Weight });
                     RewardTables.Add(djinnTable);
                 }
 
                 winners.OfType<PlayerFighter>().ToList().ForEach(async p => await ServerGames.UserWonBattle(UserAccountProvider.GetById(p.Id), RewardTables.GetRewards(), p.battleStats, lobbyChannel, BattleChannel));
-                winners.OfType<PlayerFighter>().ToList().ForEach(async p => await ServerGames.UserWonEndless(UserAccountProvider.GetById(p.Id), lobbyChannel, winsInARow, mode, p.battleStats.TotalTeamMates+1, string.Join(", ", Battle.TeamA.Select(pl => pl.Name))));
+                winners.OfType<PlayerFighter>().ToList().ForEach(async p => await ServerGames.UserWonEndless(UserAccountProvider.GetById(p.Id), lobbyChannel, winsInARow, mode, p.battleStats.TotalTeamMates + 1, string.Join(", ", Battle.TeamA.Select(pl => pl.Name))));
 
                 chests.RemoveAll(s => s is DefaultReward d && !d.HasChest);
 
@@ -277,7 +277,7 @@ namespace IodemBot.Modules.ColossoBattles
             var playerAvatar = EntityConverter.ConvertUser(player);
 
             if (playerAvatar.LevelNumber < 50 && !playerAvatar.Tags.Contains("ColossoCompleted")) return;
-            
+
             var p = Factory.CreatePlayerFighter(playerAvatar);
 
             if (playerAvatar.Inv.GetGear(AdeptClassSeriesManager.GetClassSeries(playerAvatar).Archtype).Any(i => i.Name == "Lure Cap"))
