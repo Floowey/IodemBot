@@ -47,19 +47,19 @@ namespace IodemBot.Modules.GoldenSunMechanics
             {ItemCategory.Accessoire, "<:Rings:572526110060052482>"}
         };
 
-        public IEnumerable<string> InvString
+        public List<string> InvString
         {
-            get => Inv?.Select(i => i.NameToSerialize) ?? new List<string>();
+            get => Inv?.Select(i => i.NameToSerialize).ToList() ?? new List<string>();
             set => Inv = ItemDatabase.GetItems(value).ToList();
         }
-        public IEnumerable<string> WarriorGearString
+        public List<string> WarriorGearString
         {
-            get => WarriorGear?.Select(i => i.Name) ?? new List<string>();
+            get => WarriorGear?.Select(i => i.Name).ToList() ?? new List<string>();
             set => WarriorGear = value.Select(i => GetItem(i)).ToList();
         }
-        public IEnumerable<string> MageGearString
+        public List<string> MageGearString
         {
-            get => MageGear?.Select(i => i.Name) ?? new List<string>();
+            get => MageGear?.Select(i => i.Name).ToList() ?? new List<string>();
             set => MageGear = value.Select(i => GetItem(i)).ToList();
         }
         private List<Item> Inv = new List<Item>();

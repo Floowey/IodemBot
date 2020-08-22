@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json.Serialization;
 using IodemBot.Extensions;
 using LiteDB;
 
@@ -11,18 +12,18 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public static readonly int MaxDjinn = 2;
         public static readonly int BasePocketSize = 6;
         public static readonly int AllowedDjinnGap = 3;
-        [BsonIgnore] public List<Djinn> Djinn { get; set; } = new List<Djinn>();
-        [BsonIgnore] public List<Summon> Summons { get; set; } = new List<Summon>();
+        [BsonIgnore] [JsonIgnore] public List<Djinn> Djinn { get; set; } = new List<Djinn>();
+        [BsonIgnore] [JsonIgnore] public List<Summon> Summons { get; set; } = new List<Summon>();
 
-        public IEnumerable<DjinnHolder> DjinnStorage
+        public List<DjinnHolder> DjinnStorage
         {
-            get { return Djinn?.Select(d => new DjinnHolder() { Djinn = d.Djinnname, Nickname = d.Nickname, Shiny = d.IsShiny }); }
+            get { return Djinn?.Select(d => new DjinnHolder() { Djinn = d.Djinnname, Nickname = d.Nickname, Shiny = d.IsShiny }).ToList(); }
 
             set { Djinn = value.Select(s => DjinnAndSummonsDatabase.GetDjinn(s)).ToList(); }
         }
-        public IEnumerable<SummonHolder> SummonStorage
+        public List<SummonHolder> SummonStorage
         {
-            get { return Summons?.Select(d => new SummonHolder() { Summon = d.Name }); }
+            get { return Summons?.Select(d => new SummonHolder() { Summon = d.Name }).ToList(); }
 
             set { Summons = value.Select(s => DjinnAndSummonsDatabase.GetSummon(s.Summon)).ToList(); }
         }
