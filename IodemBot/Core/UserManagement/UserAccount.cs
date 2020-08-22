@@ -129,12 +129,12 @@ namespace IodemBot.Core.UserManagement
         public uint ColossoStreak { get; set; } = 0;
         public uint ColossoWins { get; set; } = 0;
         public uint CommandsUsed { get; set; } = 0;
-        public DateTime LastDayActive { get; set; }
-        public int LookedUpClass { get; set; }
+        public DateTime LastDayActive { get; set; } = DateTime.Now;
+        public int LookedUpClass { get; set; }= 0
         public int LookedUpInformation { get; set; } = 0;
         public int MessagesInColossoTalks { get; set; } = 0;
         public ulong MostRecentChannel { get; set; } = 0;
-        public int ReactionsAdded { get; set; }
+        public int ReactionsAdded { get; set; } =0
         public uint RpsStreak { get; set; } = 0;
         public uint RpsWins { get; set; } = 0;
         public uint SpentMoneyOnArtifacts { get; set; }

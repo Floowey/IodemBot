@@ -27,8 +27,6 @@ namespace IodemBot.Core
         {
             using var db = new LiteDatabase(_dbFileName);
             var collection = db.GetCollection<T>();
-            Console.WriteLine(collection.Count());
-            Console.WriteLine(collection.FindAll().Count());
             return collection.FindAll().ToArray();
         }
 

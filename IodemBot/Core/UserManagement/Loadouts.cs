@@ -30,7 +30,7 @@ namespace IodemBot.Core.UserManagement
     public class Loadout
     {
         public string LoadoutName { get; set; } = "";
-        public Element Element { get; set; }
+        public Element Element { get; set; } = Element.none;
         public string ClassSeries { get; set; } = "";
         public List<string> Gear { get; set; } = new List<string>();
         public List<string> Djinn { get; set; } = new List<string>();

@@ -72,7 +72,14 @@ namespace IodemBot.Modules
             await Context.Guild.DownloadUsersAsync();
             foreach (var user in UserAccounts.GetAllAccounts().Where(p => p.TotalXP > 200))
             {
-                UserAccountProvider.GetById(user.ID);
+                try
+                {
+                    UserAccountProvider.GetById(user.ID);
+                } catch (Exception e)
+                {
+                    Console.WriteLine($"{user.ID}: {e}");
+                    UserAccountProvider.RemoveUser(user);
+                }
             }
             await Task.CompletedTask;
         }
