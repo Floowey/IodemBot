@@ -232,10 +232,10 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         internal struct ShopStruct
         {
-            [JsonProperty] internal Inventory shop;
-            [JsonProperty] internal DateTime lastReset;
-            [JsonProperty] internal string shopkeeper;
-            [JsonProperty] internal string restockmessage;
+            [JsonProperty] internal Inventory shop { get; set; }
+            [JsonProperty] internal DateTime lastReset { get; set; }
+            [JsonProperty] internal string shopkeeper { get; set; }
+            [JsonProperty] internal string restockmessage { get; set; }
         }
     }
 }

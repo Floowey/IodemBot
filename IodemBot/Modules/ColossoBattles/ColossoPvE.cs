@@ -130,7 +130,7 @@ namespace IodemBot.Modules.ColossoBattles
                 return;
             }
 
-            if (!user.Roles.Any(r => r.Id == gs.FighterRole.Id))
+            if (!user.Roles.Any(r => r.Id == gs.FighterRole.Id) && !UserInBattle(user.Id))
             {
                 _ = user.AddRoleAsync(gs.FighterRole);
                 FighterRoles.Add(user, DateTime.Now);
@@ -471,6 +471,11 @@ namespace IodemBot.Modules.ColossoBattles
         public static bool UserInBattle(UserAccount player)
         {
             return battles.Any(s => s.ContainsPlayer(player.ID));
+        }
+
+        public static bool UserInBattle(ulong playerID)
+        {
+            return battles.Any(s => s.ContainsPlayer(playerID));
         }
     }
 }

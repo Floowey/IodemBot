@@ -49,20 +49,20 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public List<string> InvString
         {
-            get => Inv?.Select(i => i.NameToSerialize).ToList() ?? new List<string>();
+            get => Inv.Count == 0 ? null : Inv?.Select(i => i.NameToSerialize).ToList();
             set => Inv = ItemDatabase.GetItems(value).ToList();
         }
         public List<string> WarriorGearString
         {
-            get => WarriorGear?.Select(i => i.Name).ToList() ?? new List<string>();
+            get => WarriorGear.Count == 0 ? null : WarriorGear?.Select(i => i.Name).ToList();
             set => WarriorGear = value.Select(i => GetItem(i)).ToList();
         }
         public List<string> MageGearString
         {
-            get => MageGear?.Select(i => i.Name).ToList() ?? new List<string>();
+            get => MageGear.Count == 0 ? null : MageGear?.Select(i => i.Name).ToList();
             set => MageGear = value.Select(i => GetItem(i)).ToList();
         }
-        private List<Item> Inv = new List<Item>();
+        private List<Item> Inv { get; set; } = new List<Item>();
 
         private List<Item> WarriorGear = new List<Item>();
 

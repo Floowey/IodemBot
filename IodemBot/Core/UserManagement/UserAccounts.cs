@@ -100,7 +100,7 @@ namespace IodemBot.Core.UserManagement
             {
                 account = CreateUserAccount(id);
             }
-
+//            return CreateUserAccount(id);
             return account;
         }
 

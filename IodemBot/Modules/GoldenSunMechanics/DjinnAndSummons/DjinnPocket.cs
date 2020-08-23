@@ -17,13 +17,13 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public List<DjinnHolder> DjinnStorage
         {
-            get { return Djinn?.Select(d => new DjinnHolder() { Djinn = d.Djinnname, Nickname = d.Nickname, Shiny = d.IsShiny }).ToList(); }
+            get { return Djinn.Count == 0 ? null : Djinn?.Select(d => new DjinnHolder() { Djinn = d.Djinnname, Nickname = d.Nickname, Shiny = d.IsShiny }).ToList(); }
 
             set { Djinn = value.Select(s => DjinnAndSummonsDatabase.GetDjinn(s)).ToList(); }
         }
         public List<SummonHolder> SummonStorage
         {
-            get { return Summons?.Select(d => new SummonHolder() { Summon = d.Name }).ToList(); }
+            get { return Djinn.Count == 0 ? null : Summons?.Select(d => new SummonHolder() { Summon = d.Name }).ToList(); }
 
             set { Summons = value.Select(s => DjinnAndSummonsDatabase.GetSummon(s.Summon)).ToList(); }
         }
