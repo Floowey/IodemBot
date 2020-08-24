@@ -190,7 +190,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         }
 
         [Command("GiveDjinn")]
-        [RequireModerator]
+        [RequireStaff]
         public async Task GiveDjinn(string djinnName, [Remainder] SocketGuildUser user = null)
         {
             if (DjinnAndSummonsDatabase.TryGetDjinn(djinnName, out Djinn djinn))
@@ -202,7 +202,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         }
 
         [Command("GiveSummon")]
-        [RequireModerator]
+        [RequireStaff]
         public async Task GiveSummon(string summonName, [Remainder] SocketGuildUser user = null)
         {
             if (DjinnAndSummonsDatabase.TryGetSummon(summonName, out Summon summon))

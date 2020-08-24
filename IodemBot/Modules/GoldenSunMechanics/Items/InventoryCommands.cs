@@ -232,7 +232,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         }
 
         [Command("GiveItem")]
-        [RequireModerator]
+        [RequireStaff]
         public async Task GiveItem(SocketUser user, [Remainder] string item)
         {
             var account = EntityConverter.ConvertUser(user);
@@ -329,7 +329,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         }
 
         [Command("GiveChest")]
-        [RequireModerator]
+        [RequireStaff]
         public async Task GiveChest(ChestQuality cq, SocketUser user = null)
         {
             var account = EntityConverter.ConvertUser(user ?? Context.User);
@@ -374,7 +374,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         }
 
         [Command("AddBalance")]
-        [RequireModerator]
+        [RequireStaff]
         public async Task AddBalance(uint amount, SocketUser user = null)
         {
             var account = EntityConverter.ConvertUser(user ?? Context.User);
