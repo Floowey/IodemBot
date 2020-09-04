@@ -70,18 +70,8 @@ namespace IodemBot.Modules
         private async Task SetupIodemTask()
         {
             await Context.Guild.DownloadUsersAsync();
-            Console.Write(UserAccountProvider.Rebuild());
-            foreach (var user in UserAccounts.GetAllAccounts().Where(p => p.TotalXP > 200))
-            {
-                try
-                {
-                    UserAccountProvider.GetById(user.ID);
-                } catch (Exception e)
-                {
-                    Console.WriteLine($"{user.ID}: {e}");
-                    UserAccountProvider.RemoveUser(user);
-                }
-            }
+            Console.WriteLine(UserAccountProvider.Rebuild());
+            Console.WriteLine("hi.");
             await Task.CompletedTask;
         }
 
