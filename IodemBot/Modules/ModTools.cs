@@ -70,6 +70,7 @@ namespace IodemBot.Modules
         private async Task SetupIodemTask()
         {
             await Context.Guild.DownloadUsersAsync();
+            Console.Write(UserAccountProvider.Rebuild());
             foreach (var user in UserAccounts.GetAllAccounts().Where(p => p.TotalXP > 200))
             {
                 try

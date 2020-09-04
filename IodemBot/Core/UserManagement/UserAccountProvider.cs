@@ -17,6 +17,11 @@ namespace IodemBot.Core.UserManagement
             return EnsureExists(user, userId);
         }
 
+        public static long Rebuild()
+        {
+            return _persistentStorage.Rebuild();
+        }
+
         public static void StoreUser(UserAccount user)
         {
             if (_persistentStorage.Exists<UserAccount>(u => u.ID == user.ID))

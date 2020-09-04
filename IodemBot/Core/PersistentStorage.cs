@@ -16,6 +16,12 @@ namespace IodemBot.Core
             _dbFileName = Path.Combine("Resources", "Accounts", "Accounts.db");
         }
 
+        public long Rebuild()
+        {
+            using var db = new LiteDatabase(_dbFileName);
+            return db.Rebuild();
+        }
+
         public IEnumerable<T> RestoreMany<T>(Expression<Func<T, bool>> predicate)
         {
             using var db = new LiteDatabase(_dbFileName);

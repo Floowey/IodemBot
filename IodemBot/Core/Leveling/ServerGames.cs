@@ -181,6 +181,7 @@ namespace IodemBot.Core.Leveling
                 }
             }
             avatar.ServerStats.LastDungeon = dungeon.Name;
+            UserAccountProvider.StoreUser(avatar);
             if (dungeon.Name == "Mercury Lighthouse")
             {
                 _ = GoldenSun.AwardClassSeries("Aqua Pilgrim Series", avatar, channel);
