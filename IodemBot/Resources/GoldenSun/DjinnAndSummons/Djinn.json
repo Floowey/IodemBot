@@ -153,9 +153,7 @@
             ]
         },
         "Stats": {
-            "MaxHP": 10,
-            "Atk": 5,
-            "Def": 2
+            "MaxHP": 12
         }
     },
     "Garland": {
@@ -264,8 +262,8 @@
         },
         "Stats": {
             "MaxHP": 8,
-            "MaxPP": 3,
-            "Def": 2,
+            "MaxPP": 4,
+            "Def": 3,
             "Spd": 3
         }
     },
@@ -343,8 +341,7 @@
         },
         "Stats": {
             "MaxHP": 12,
-            "MaxPP": 5,
-            "Def": 3
+            "MaxPP": 5
         }
     },
     "Sap": {
@@ -446,9 +443,8 @@
             ]
         },
         "Stats": {
-            "MaxHP": 12,
-            "MaxPP": 5,
-            "Def": 3
+            "MaxHP": 9,
+            "MaxPP": 6,
         }
     },
     "Bane": {
@@ -587,7 +583,7 @@
         "Stats": {
             "MaxHP": 8,
             "Atk": 4,
-            "Spd": 2
+            "Spd": 3
         }
     },
     "Crystal": {
@@ -661,7 +657,7 @@
                 {
                     "Type": "Revive",
                     "Percentage": 60,
-                    "Probability": 60
+                    "Probability": 70
                 }
             ]
         },
@@ -782,9 +778,8 @@
             ]
         },
         "Stats": {
-            "MaxHP": 10,
-            "Atk": 3,
-            "Spd": 3
+            "MaxHP": 9,
+            "Def": 5
         }
     },
     "Wrath": {
@@ -793,7 +788,7 @@
         "SpriteNormal": "<a:Wrath:662386330814382101>",
         "SpriteShiny": "<a:WrathShiny:663018697128149002>",
         "Move": {
-            "dmgMult": 1.6,
+            "dmgMult": 1.4,
             "Targettype": 3,
             "element": 1,
             "Effects": [
@@ -842,14 +837,14 @@
                 {
                     "Type": "Revive",
                     "Percentage": 80,
-                    "Probability": 80
+                    "Probability": 90
                 }
             ]
         },
         "Stats": {
-            "MaxHP": 10,
+            "MaxHP": 9,
             "MaxPP": 4,
-            "Def": 3
+            "Def": 4
         }
     },
     "Stoke": {
@@ -931,9 +926,9 @@
             ]
         },
         "Stats": {
-            "MaxHP": 10,
-            "Atk": 3,
-            "Spd": 3
+            "MaxHP": 11,
+            "MaxPP": 4,
+            "Def": 2
         }
     },
     "Sizzle": {
@@ -970,9 +965,9 @@
             "PPPercent": 7
         },
         "Stats": {
-            "MaxHP": 10,
-            "Atk": 3,
-            "Spd": 3
+            "MaxHP": 11,
+            "MaxPP": 5,
+            "Def": 3
         }
     },
     "Aurora": {
@@ -993,8 +988,8 @@
         },
         "Stats": {
             "MaxHP": 10,
-            "Atk": 3,
-            "Spd": 3
+            "Def": 3,
+            "Spd": 4
         }
     },
     "Torch": {
@@ -1070,12 +1065,12 @@
         "SpriteNormal": "<a:Spark:662386330751336470>",
         "SpriteShiny": "<a:SparkShiny:663018696784085023>",
         "Move": {
-            "Range": 1,
+            "Targettype": 1,
             "effects": [
                 {
                     "Type": "Revive",
                     "Percentage": 60,
-                    "Probability": 60
+                    "Probability": 70
                 }
             ]
         },
@@ -1160,9 +1155,10 @@
             "PPPercent": 7
         },
         "Stats": {
-            "MaxHP": 10,
-            "Atk": 3,
-            "Spd": 3
+            "MaxHP": 9,
+            "MaxPP": 4,
+            "Def": 2,
+            "Spd": 2
         }
     },
     "Cannon": {
@@ -1280,13 +1276,13 @@
         "SpriteNormal": "<a:Jolt:662386482861965332>",
         "SpriteShiny": "<a:JoltShiny:663022462887264266>",
         "Move": {
-            "Targettype": 2,
+            "Targettype": 1,
             "Element": 1,
             "effects": [
                 {
                     "Type": "Revive",
                     "Percentage": 50,
-                    "Probability": 50
+                    "Probability": 60
                 }
             ]
         },
@@ -1308,7 +1304,8 @@
         },
         "Stats": {
             "MaxHP": 8,
-            "MaxPP": 6
+            "MaxPP": 6,
+            "Spd": 3
         }
     },
     "Breath": {
@@ -1324,7 +1321,8 @@
         },
         "Stats": {
             "MaxHP": 9,
-            "Spd": 7
+            "Spd": 4,
+            "Def": 3
         }
     },
     "Vortex": {
@@ -1610,12 +1608,11 @@
                     "Probability": 30
                 }
             ],
-            "addDamage": 40
+            "addDamage": 70
         },
         "Stats": {
-            "MaxHP": 10,
-            "Atk": 3,
-            "Spd": 3
+            "MaxHP": 12,
+            "Atk": 2
         }
     },
     "Zephyr": {
@@ -1785,7 +1782,7 @@
             "addDamage": 40
         },
         "Stats": {
-            "MaxHP": 9,
+            "MaxHP": 11,
             "Atk": 4,
             "Def": 2
         }
@@ -2025,7 +2022,8 @@
         },
         "Stats": {
             "MaxHP": 9,
-            "Atk": 5
+            "Def": 3,
+            "Spd": 2
         }
     },
     "Coral": {
@@ -2064,9 +2062,8 @@
             "addDamage": 80
         },
         "Stats": {
-            "MaxHP": 9,
-            "Spd": 3,
-            "Def": 2
+            "MaxHP": 10,
+            "Atk": 6
         }
     },
     "Teardrop": {
@@ -2136,7 +2133,7 @@
         "SpriteNormal": "<a:Foam:662385332297138176>",
         "SpriteShiny": "<a:FoamShiny:663022348148015104>",
         "Move": {
-            "Targettype": 3,
+            "Targettype": 4,
             "Element": 3,
             "effects": [
                 {
@@ -2211,7 +2208,7 @@
         },
         "Stats": {
             "MaxHP": 12,
-            "Spd": 3,
+            "Spd": 4,
             "Def": 3
         }
     },
@@ -2302,7 +2299,7 @@
                 {
                     "Type": "Revive",
                     "Percentage": 80,
-                    "Probability": 80
+                    "Probability": 90
                 }
             ]
         },
@@ -2330,9 +2327,9 @@
             "addDamage": 30
         },
         "Stats": {
-            "MaxHP": 12,
+            "MaxHP": 9,
             "Spd": 3,
-            "Def": 3
+            "Def": 2
         }
     },
     "Sour": {
@@ -2454,7 +2451,7 @@
             "Effects": [
                 {
                     "Type": "Revive",
-                    "Probability": 60,
+                    "Probability": 70,
                     "Percentage": 60
                 }
             ]
