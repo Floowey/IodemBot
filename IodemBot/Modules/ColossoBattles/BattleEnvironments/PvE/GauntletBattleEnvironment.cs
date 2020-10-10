@@ -8,6 +8,7 @@ using IodemBot.Core.Leveling;
 using IodemBot.Core.UserManagement;
 using IodemBot.Discord;
 using IodemBot.Extensions;
+using IodemBot.Modules.GoldenSunMechanics;
 using static IodemBot.Modules.ColossoBattles.EnemiesDatabase;
 
 namespace IodemBot.Modules.ColossoBattles
@@ -186,6 +187,11 @@ namespace IodemBot.Modules.ColossoBattles
             {
                 var losers = winners.First().battle.GetTeam(winners.First().enemies);
 
+                if (DateTime.Now <= new DateTime(2020, 11, 8) && Global.Random.Next(5) == 0)
+                {
+                    var r = new List<Rewardable>() { new DefaultReward() { Dungeon = "Halloween Special" } };
+                    winners.OfType<PlayerFighter>().ToList().ForEach(async p => await ServerGames.UserWonBattle(UserAccountProvider.GetById(p.Id), r, new BattleStats(), lobbyChannel, BattleChannel));
+                }
                 losers.ConvertAll(s => (PlayerFighter)s).ForEach(async p => await ServerGames.UserLostBattle(UserAccountProvider.GetById(p.Id), lobbyChannel));
 
                 _ = WriteGameOver();

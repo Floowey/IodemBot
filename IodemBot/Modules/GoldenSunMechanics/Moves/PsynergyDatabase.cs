@@ -37,34 +37,44 @@ namespace IodemBot.Modules.GoldenSunMechanics
             }
         }
 
-        public static Psynergy GetPsynergy(string psynergy)
+        public static Move GetMove(string move)
         {
-            if (offpsy.TryGetValue(psynergy, out OffensivePsynergy op))
+            if (offpsy.TryGetValue(move, out OffensivePsynergy op))
             {
                 return (OffensivePsynergy)op.Clone();
             }
 
-            if (healpsy.TryGetValue(psynergy, out HealPsynergy hp))
+            if (healpsy.TryGetValue(move, out HealPsynergy hp))
             {
                 return (HealPsynergy)hp.Clone();
             }
 
-            if (statpsy.TryGetValue(psynergy, out StatusPsynergy sp))
+            if (statpsy.TryGetValue(move, out StatusPsynergy sp))
             {
                 return (StatusPsynergy)sp.Clone();
+            }
+
+            if (DjinnAndSummonsDatabase.TryGetDjinn(move, out Djinn d))
+            {
+                return d;
+            }
+
+            if (DjinnAndSummonsDatabase.TryGetSummon(move, out Summon s))
+            {
+                return s;
             }
 
             //Console.WriteLine($"{psynergy} is not implemented.");
             return new StatusPsynergy()
             {
-                Name = $"{psynergy} (NOT IMPLEMENTED)",
+                Name = $"{move} (NOT IMPLEMENTED)",
                 Effects = new List<Effect>() { new NoEffect() }
             };
         }
 
-        public static bool TryGetPsynergy(string psynergy, out Psynergy psy)
+        public static bool TryGetMove(string move, out Move psy)
         {
-            psy = GetPsynergy(psynergy);
+            psy = GetMove(move);
             if (psy.Name.ToLower().Contains("not implemented"))
             {
                 return false;
@@ -75,22 +85,22 @@ namespace IodemBot.Modules.GoldenSunMechanics
             }
         }
 
-        public static Psynergy[] GetPsynergy(string[] psynergiesString)
+        public static IEnumerable<Move> GetMove(string[] movesString)
         {
-            List<Psynergy> psynergies = new List<Psynergy>();
-            if (psynergiesString == null)
+            List<Move> moves = new List<Move>();
+            if (movesString == null)
             {
-                return psynergies.ToArray();
+                return moves;
             }
 
-            if (psynergiesString.Length > 0)
+            if (movesString.Length > 0)
             {
-                foreach (var s in psynergiesString)
+                foreach (var s in movesString)
                 {
-                    psynergies.Add(GetPsynergy(s));
+                    moves.Add(GetMove(s));
                 }
             }
-            return psynergies.ToArray();
+            return moves.ToArray();
         }
 
         public static List<Move> GetMovepool(string[] psynergiesString, bool hasAttack, bool hasDefend)
@@ -107,7 +117,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 moves.Add(new Defend());
             }
 
-            moves.AddRange(GetPsynergy(psynergiesString));
+            moves.AddRange(GetMove(psynergiesString));
 
             return moves;
         }

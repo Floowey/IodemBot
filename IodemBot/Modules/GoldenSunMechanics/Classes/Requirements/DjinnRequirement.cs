@@ -8,7 +8,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public int Apply(UserAccount user)
         {
             var elements = new[] { Element.Venus, Element.Mars, Element.Jupiter, Element.Mercury };
-            return (elements.Select(e => user.DjinnPocket.Djinn.Count(d => d.Element == e)).Min() + 1) / 2;
+            return (elements.Select(e => user.DjinnPocket.Djinn.Count(d => !d.IsEvent && d.Element == e)).Min() + 1) / 2;
         }
     }
 }

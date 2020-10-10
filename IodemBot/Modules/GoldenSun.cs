@@ -432,7 +432,11 @@ namespace IodemBot.Modules
                 return;
             }
 
-            Psynergy psy = PsynergyDatabase.GetPsynergy(name);
+            Move m = PsynergyDatabase.GetMove(name);
+            if(!(m is Psynergy psy))
+            {
+                return;
+            }
             if (psy.Name.ToLower().Contains("not implemented"))
             {
                 var failEmbed = new EmbedBuilder();

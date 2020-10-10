@@ -78,6 +78,14 @@ namespace IodemBot.Modules.GoldenSunMechanics
                             $"You can also team up with other people to use a higher number of djinn in even more powerful summon sequences! " +
                             $"Make sure to check `i!help DjinnAndSummons` for a full list of the commands related to djinn!");
                     }
+
+                    if (djinn.IsEvent && userAccount.DjinnPocket.Djinn.Count(d => d.IsEvent) == 1)
+                    {
+                        awardLog.Add($"Congratulations, You have found an Event Djinni! They are custom made djinni, only available within the event, as a small trinket for your participation. " +
+                            $"They behave differently to other djinn, in that they will not towards your Djinn Pocket limit or any class upgrades" +
+                            $"They will not be allowed in any upcoming tournaments." +
+                            $"However will carry over if you decide to reset your game :)");
+                    }
                 }
                 else
                 {
@@ -92,7 +100,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 {
                     djinn = DjinnAndSummonsDatabase.GetRandomDjinn(element);
                 }
-                djinn.IsShiny = isShiny;
+                djinn.IsShiny = isShiny && djinn.CanBeShiny;
                 djinn.UpdateMove();
                 if (userAccount.DjinnPocket.AddDjinn(djinn))
                 {

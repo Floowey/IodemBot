@@ -108,7 +108,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 var djinnString = djinnPocket.Djinn.OfElement(e).GetDisplay(detail);
                 embed.AddField($"{e} Djinn", djinnString, true);
             }
-            embed.WithFooter($"{djinnPocket.Djinn.Count()}/{djinnPocket.PocketSize} Upgrade: {(djinnPocket.PocketUpgrades + 1) * 3000}");
+            var eventDjinn = djinnPocket.Djinn.Count(d => d.IsEvent);
+            embed.WithFooter($"{djinnPocket.Djinn.Count()}/{djinnPocket.PocketSize}{(eventDjinn > 0 ? $"(+{eventDjinn})" : "")} Upgrade: {(djinnPocket.PocketUpgrades + 1) * 3000}");
 
             var summonString = string.Join(detail == DjinnDetail.Names ? ", " : "", djinnPocket.Summons.Select(s => $"{s.Emote}{(detail == DjinnDetail.Names ? $" {s.Name}" : "")}"));
             if (summonString.IsNullOrEmpty())

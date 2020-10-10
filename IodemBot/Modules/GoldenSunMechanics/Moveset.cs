@@ -9,7 +9,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             List<Move> moves = new List<Move> { new Attack(), new Defend() };
             foreach (string s in moveNames)
             {
-                Move m = PsynergyDatabase.GetPsynergy(s);
+                Move m = PsynergyDatabase.GetMove(s);
                 moves.Add(m);
             }
             return moves.ToArray();

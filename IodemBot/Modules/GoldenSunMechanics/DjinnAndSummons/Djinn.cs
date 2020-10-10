@@ -27,6 +27,10 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         [JsonProperty] private string SpriteNormal { get; set; }
         [JsonProperty] private string SpriteShiny { get; set; }
+
+        public string Event { get; set; }
+        public bool IsEvent { get => !Event.IsNullOrEmpty(); }
+        public bool CanBeShiny { get => !SpriteShiny.IsNullOrEmpty() && !IsShiny; }
         public bool IsShiny { get; set; } = false;
         public Stats Stats { get; set; }
 
@@ -47,7 +51,6 @@ namespace IodemBot.Modules.GoldenSunMechanics
         }
 
         [JsonIgnore] public DjinnState State => IsSet ? DjinnState.Standby : (CoolDown > 0 ? DjinnState.Recovery : DjinnState.Set);
-
         [JsonIgnore] public int CoolDown { get; set; }
         [JsonIgnore] public int Position { get; set; }
 

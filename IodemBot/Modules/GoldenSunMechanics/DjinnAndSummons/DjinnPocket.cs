@@ -29,7 +29,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         }
         public List<Element> DjinnSetup { get; set; } = new List<Element>();
         public int PocketUpgrades { get; set; } = 0;
-        [BsonIgnore] public int PocketSize { get => Math.Min(60, BasePocketSize + PocketUpgrades * 2); }
+        [BsonIgnore] public int PocketSize { get => Math.Min(60, BasePocketSize + PocketUpgrades * 2) + Djinn.Count(d => d.IsEvent); }
 
         public class DjinnHolder
         {
@@ -121,7 +121,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         }
         public void Clear()
         {
-            Djinn.RemoveAll(d => !d.IsShiny);
+            Djinn.RemoveAll(d => !(d.IsShiny || d.IsEvent));
             DjinnSetup.Clear();
             Summons.Clear();
             PocketUpgrades = 0;

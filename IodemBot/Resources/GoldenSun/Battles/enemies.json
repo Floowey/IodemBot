@@ -10612,7 +10612,7 @@
     "movepool": [ "Search" ],
     "name": "Fortress Guard",
     "imgurl": "https://www.spriters-resource.com/resources/sheet_icons/79/82607.png",
-    "Conditions": ["Counter"],
+    "Conditions": [ "Counter" ],
     "stats": {
       "maxhp": 999,
       "maxpp": 0,
@@ -11515,5 +11515,138 @@
       "MercuryAtk": 110,
       "MercuryRes": 80
     }
+  },
+  "Estre Wood": {
+    "movepool": [ "Nettle", "Wild Growth", "Haunting", "Undead Gloom", "Demon Night", "Thorny Grave", "Haunt", "Curse", "Witchlight", "Estre Wood", "Poison Flow" ],
+    "name": "Estre Wood",
+    "imgurl": "https://goldensunwiki.net/w/images/b/b5/Estre_Wood.png",
+    "stats": {
+      "maxhp": 4630,
+      "maxpp": 800,
+      "atk": 313,
+      "def": 275,
+      "spd": 94
+    },
+    "elstats": {
+      "mercuryres": 175,
+      "jupiterres": 100,
+      "venusres": 72,
+      "marsres": 25,
+      "venusatk": 105
+    },
+    "isImmuneToConditions": [
+      "Stun",
+      "Poison",
+      "Venom",
+      "Delusion",
+      "Sleep",
+      "DeathCurse",
+      "Haunt"
+    ],
+    "extraturns": 0,
+    "PPregen": 10,
+    "HPRegen": 31,
+    "isImmuneToOHKO": true,
+    "isImmuneToHPToOne": true
+  },
+  "Venus Djinni Halloween": {
+    "movepool": [ "Grand Gaia", "Thorny Grave", "Stone Spire", "Nettle", "Wild Growth", "Leaf", "Venus" ],
+    "name": "Venus Djinni",
+    "imgurl": "https://media.discordapp.net/attachments/494638277987401739/556350801036181517/Flint_Cartoon_Outlines.png",
+    "stats": {
+      "maxhp": 990,
+      "maxpp": 94,
+      "atk": 309,
+      "def": 97,
+      "spd": 280
+    },
+    "elstats": {
+      "venusres": 193,
+      "mercuryres": 100,
+      "marsres": 100,
+      "jupiterres": 25,
+      "venusatk": 120
+    },
+    "extraturns": 0
+  },
+  "Mars Djinni Halloween": {
+    "movepool": [ "Cycle Beam", "Eruption", "Flare Storm", "Lantern","Mars" ],
+    "name": "Mars Djinni",
+    "imgurl": "https://goldensunwiki.net/w/images/9/98/MarsDjinniGif.gif",
+    "stats": {
+      "maxhp": 949,
+      "maxpp": 125,
+      "atk": 377,
+      "def": 186,
+      "spd": 261
+    },
+    "elstats": {
+      "marsres": 193,
+      "venusres": 100,
+      "jupiterres": 100,
+      "mercuryres": 25,
+      "marsatk": 120
+    },
+    "extraturns": 0
+  },
+  "Jupiter Djinni Halloween": {
+    "movepool": [ "Spark Plasma", "Tempest", "Destruct Ray", "Sonic Slash", "Flutter", "Jupiter" ],
+    "name": "Jupiter Djinni",
+    "imgurl": "https://thelostwaters.com/gallery/galleries/goldensun/official/JupiterDjinn.png",
+    "stats": {
+      "maxhp": 980,
+      "maxpp": 92,
+      "atk": 309,
+      "def": 97,
+      "spd": 277
+    },
+    "elstats": {
+      "jupiterres": 193,
+      "mercuryres": 100,
+      "marsres": 100,
+      "venusres": 25,
+      "jupiteratk": 120
+    },
+    "extraturns": 0
+  },
+  "Mercury Djinni Halloween": {
+    "movepool": [ "Freeze Prism", "Megacool", "Ice Missile", "Froth Spiral", "Deluge", "Shiver", "Mercury" ],
+    "name": "Mercury Djinni",
+    "imgurl": "https://goldensunwiki.net/w/images/0/0c/MercuryDjinniGif.gif",
+    "stats": {
+      "maxhp": 940,
+      "maxpp": 88,
+      "atk": 300,
+      "def": 94,
+      "spd": 261
+    },
+    "elstats": {
+      "mercuryres": 193,
+      "venusres": 100,
+      "jupiterres": 100,
+      "marsres": 25,
+      "mercuryatk": 125
+    },
+    "extraturns": 0
+  },
+  "Mimic Halloween": {
+    "movepool": [ "Curse", "Ice Missile", "Debilitate", "Psy Drain", "Sleep", "Condemn", "Haunt", "Poison Flow", "Wicked Howl" ],
+    "name": "Mimic",
+    "imgurl": "https://goldensunwiki.net/w/images/thumb/f/f6/Mimic_Dark_Dawn.jpg/300px-Mimic_Dark_Dawn.jpg",
+    "stats": {
+      "maxhp": 997,
+      "maxpp": 60,
+      "atk": 303,
+      "def": 94,
+      "spd": 139
+    },
+    "elstats": {
+      "jupiterres": 152,
+      "mercuryres": 127,
+      "venusres": 100,
+      "marsres": 25,
+      "mercuryatk": 100
+    },
+    "extraturns": 0
   }
 }
