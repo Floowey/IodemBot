@@ -221,7 +221,7 @@ namespace IodemBot.Modules.ColossoBattles
 
             //battles.Add(new GauntletBattleEnvironment("Dungeon", LobbyChannel, await PrepareBattleChannel("deep-dungeon"), "Vale"));
             //battles.Add(new GauntletBattleEnvironment("Catabombs", LobbyChannel, await PrepareBattleChannel("chilly-catacombs"), "Vale"));
-            battles.Add(new TeamBattleEnvironment("PvP", gs.ColossoChannel, false, await PrepareBattleChannel("PvP-A", guild, RoomVisibility.All, persistent: true), await PrepareBattleChannel("PvP-B", guild, RoomVisibility.TeamB), gs.TeamBRole));
+            battles.Add(new TeamBattleEnvironment("PvP", gs.ColossoChannel, false, await PrepareBattleChannel("PvP-A", guild, RoomVisibility.All, persistent: true), await PrepareBattleChannel("PvP-B", guild, RoomVisibility.TeamB, true), gs.TeamBRole));
 
             //battles.Add(new SingleBattleEnvironment("Gold", LobbyChannel, await PrepareBattleChannel("Gold"), BattleDifficulty.Hard));
             //battles.Add(new TeamBattleManager("OneVOne", LobbyChannel, await PrepareBattleChannel("OneVOneA", PermValue.Deny), await PrepareBattleChannel("OneVOneB", PermValue.Allow), 1));

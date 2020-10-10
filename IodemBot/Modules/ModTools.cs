@@ -195,6 +195,15 @@ namespace IodemBot.Modules
             UserAccountProvider.StoreUser(avatar);
         }
 
+        [Command("SetXP")]
+        [RequireOwner]
+        public async Task SetXP(SocketGuildUser user, uint xp)
+        {
+            var avatar = EntityConverter.ConvertUser(user);
+            avatar.XP = xp;
+            UserAccountProvider.StoreUser(avatar);
+        }
+
         [Command("AddTag")]
         [RequireOwner]
         public async Task AddTag(SocketGuildUser user, string Tag)

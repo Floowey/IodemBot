@@ -2478,7 +2478,8 @@
           "Stat": "Resistance",
           "Multiplier": 1.2
         }
-      ]
+      ],
+      "hasPriority": true
     },
     "Stats": {
       "MaxHP": 5,
