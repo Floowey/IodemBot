@@ -2432,7 +2432,8 @@
         {
           "Type": "ReduceDamage",
           "DamageReduction": 60
-        }
+        },
+
       ]
     },
     "Stats": {
@@ -2469,9 +2470,13 @@
       "Targettype": 2,
       "Effects": [
         {
-          "Type": "Revive",
-          "Probability": 70,
-          "Percentage": 60
+          "Type": "ReduceDamage",
+          "Percentage": 55
+        },
+        {
+          "Type": "Stat",
+          "Stat": "Resistance",
+          "Multiplier": 1.2
         }
       ]
     },
@@ -2545,6 +2550,7 @@
     "Event": "Halloween20",
     "Move": {
       "Targettype": 4,
+      "Range": 2,
       "effects": [
         {
           "Type": "Condition",
