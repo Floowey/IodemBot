@@ -213,15 +213,15 @@ namespace IodemBot.Modules.ColossoBattles
         {
             battles.Where(b => guild.Channels.Any(c => b.GetChannelIds.Contains(c.Id))).ToList().ForEach(old => old.Dispose());
             var gs = GuildSettings.GetGuildSettings(guild);
-            battles.Add(new SingleBattleEnvironment("Wilds", gs.ColossoChannel, true, await PrepareBattleChannel("Weyard-Wilds", guild), BattleDifficulty.Easy));
-            battles.Add(new SingleBattleEnvironment("Woods", gs.ColossoChannel, true, await PrepareBattleChannel("Weyard-Woods", guild), BattleDifficulty.Medium));
+            battles.Add(new SingleBattleEnvironment("Wilds", gs.ColossoChannel, true, await PrepareBattleChannel("Weyard-Wilds", guild, persistent:true), BattleDifficulty.Easy));
+            battles.Add(new SingleBattleEnvironment("Woods", gs.ColossoChannel, true, await PrepareBattleChannel("Weyard-Woods", guild, persistent: true), BattleDifficulty.Medium));
             //battles.Add(new SingleBattleEnvironment("Wealds", LobbyChannel, await PrepareBattleChannel("Weyard-Wealds"), BattleDifficulty.Hard));
 
-            battles.Add(new EndlessBattleEnvironment("Endless", gs.ColossoChannel, true, await PrepareBattleChannel("Endless-Encounters", guild)));
+            battles.Add(new EndlessBattleEnvironment("Endless", gs.ColossoChannel, true, await PrepareBattleChannel("Endless-Encounters", guild, persistent: true)));
 
             //battles.Add(new GauntletBattleEnvironment("Dungeon", LobbyChannel, await PrepareBattleChannel("deep-dungeon"), "Vale"));
             //battles.Add(new GauntletBattleEnvironment("Catabombs", LobbyChannel, await PrepareBattleChannel("chilly-catacombs"), "Vale"));
-            battles.Add(new TeamBattleEnvironment("PvP", gs.ColossoChannel, false, await PrepareBattleChannel("PvP-A", guild, RoomVisibility.All), await PrepareBattleChannel("PvP-B", guild, RoomVisibility.TeamB), gs.TeamBRole));
+            battles.Add(new TeamBattleEnvironment("PvP", gs.ColossoChannel, false, await PrepareBattleChannel("PvP-A", guild, RoomVisibility.All, persistent: true), await PrepareBattleChannel("PvP-B", guild, RoomVisibility.TeamB), gs.TeamBRole));
 
             //battles.Add(new SingleBattleEnvironment("Gold", LobbyChannel, await PrepareBattleChannel("Gold"), BattleDifficulty.Hard));
             //battles.Add(new TeamBattleManager("OneVOne", LobbyChannel, await PrepareBattleChannel("OneVOneA", PermValue.Deny), await PrepareBattleChannel("OneVOneB", PermValue.Allow), 1));
