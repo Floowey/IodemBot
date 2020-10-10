@@ -59,7 +59,7 @@
     "SpriteShiny": "<a:SteelShiny:663013988388306944>",
     "Move": {
       "Targettype": 3,
-      "dmgMult": 1.6,
+      "dmgMult": 1.3,
       "Effects": [
         {
           "Type": "HPDrain",
@@ -103,7 +103,7 @@
     "SpriteShiny": "<a:VineShiny:663013988468260869>",
     "Move": {
       "Targettype": 4,
-      "Range": 3,
+      "Range": 4,
       "Element": 0,
       "effects": [
         {
@@ -512,6 +512,7 @@
     "SpriteShiny": "<a:MudShiny:663013988363141136>",
     "Move": {
       "Targettype": 4,
+      "Range": 4,
       "Element": 0,
       "effects": [
         {
@@ -2471,7 +2472,7 @@
       "Effects": [
         {
           "Type": "ReduceDamage",
-          "Percentage": 55
+          "DamageReduction": 50
         },
         {
           "Type": "Stat",
