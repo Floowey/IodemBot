@@ -23,7 +23,6 @@
       "targetType": 2,
       "range": 4,
       "element": 0,
-      "healPower": 0,
       "percentage": 30,
       "singleTarget": false
     },
@@ -2468,8 +2467,13 @@
     "Event": "Halloween20",
     "Move": {
       "Targettype": 2,
-      "healpower": 0,
-      "Percentage": 50
+      "Effects": [
+        {
+          "Type": "Revive",
+          "Probability": 70,
+          "Percentage": 60
+        }
+      ]
     },
     "Stats": {
       "MaxHP": 5,
@@ -2484,6 +2488,7 @@
     "Event": "Halloween20",
     "Move": {
       "Targettype": 4,
+      "Range": 4,
       "effects": [
         {
           "Type": "Condition",
@@ -2555,9 +2560,9 @@
       ]
     },
     "Stats": {
-      "MaxHP": 10,
-      "MaxPP": 5,
-      "Def": 2
+      "MaxHP": 8,
+      "Def": 5,
+      "Spd": 3
     }
   }
 }

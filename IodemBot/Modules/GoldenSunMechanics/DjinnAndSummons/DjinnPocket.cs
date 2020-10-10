@@ -19,13 +19,13 @@ namespace IodemBot.Modules.GoldenSunMechanics
         {
             get { return Djinn.Count == 0 ? null : Djinn?.Select(d => new DjinnHolder() { Djinn = d.Djinnname, Nickname = d.Nickname, Shiny = d.IsShiny }).ToList(); }
 
-            set { Djinn = value?.Select(s => DjinnAndSummonsDatabase.GetDjinn(s)).ToList() ?? new List<Djinn>(); }
+            set { Djinn = value?.Select(s => DjinnAndSummonsDatabase.TryGetDjinn(s.Djinn, out Djinn dj) ? dj : null).Where(c => c != null).ToList() ?? new List<Djinn>(); }
         }
         public List<SummonHolder> SummonStorage
         {
             get { return Summons.Count == 0 ? null : Summons?.Select(d => new SummonHolder() { Summon = d.Name }).ToList(); }
 
-            set { Summons = value?.Select(s => DjinnAndSummonsDatabase.GetSummon(s.Summon)).ToList() ?? new List<Summon>(); }
+            set { Summons = value?.Select(s => DjinnAndSummonsDatabase.TryGetSummon(s.Summon, out Summon sum) ? sum : null).Where(c => c != null).ToList() ?? new List<Summon>(); }
         }
         public List<Element> DjinnSetup { get; set; } = new List<Element>();
         public int PocketUpgrades { get; set; } = 0;

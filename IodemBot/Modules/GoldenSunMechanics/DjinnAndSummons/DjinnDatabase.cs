@@ -82,7 +82,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 djinn = (Djinn)d.Clone();
                 return true;
             }
-            Console.WriteLine($"Djinn {DjinnName} is not implemented.");
+        //    Console.WriteLine($"Djinn {DjinnName} is not implemented.");
             return false;
         }
 
@@ -98,7 +98,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 return true;
             }
 
-            Console.WriteLine($"Summon {SummonName} is not implemented.");
+            //Console.WriteLine($"Summon {SummonName} is not implemented.");
             return false;
         }
     }
