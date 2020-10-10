@@ -3654,8 +3654,7 @@
               "Weight": 1,
               "Chest": "Gold",
               "HasChest": true
-            },
-            { "Weight": }
+            }
           ]
         ]
       },
@@ -8444,10 +8443,10 @@
       }
     ]
   },
-  "Twisted Forest": {
-    "name": "Twisted Forest",
+  "Halloween Special": {
+    "name": "Halloween Special",
     "IsOneTimeOnly": true,
-    "FlavourText": "Happy Halloween!  A twisted forest, with unknown dangers.  Dare you enter?",
+    "FlavourText": "Happy Halloween! A twisted forest, with unknown dangers.  Dare you enter?",
     "Image": "",
     "IsDefault": false,
     "Matchups": [
@@ -8568,7 +8567,7 @@
       },
       {
         "Flavourtext": "The pumpkin shatters, revealing some loot. You collect it quickly, but before you can try to convince the Mars Djinni to join you, it zooms away!  Hoping it might know the way out, you follow the light it sheds, and come face-to-face with its friends.  ",
-        "EnemyNames": [ "Mars Djinni Halloween", "Jupiter Djinni", "Halloween", "Venus Djinni Halloween", "Mercury Djinni Halloween" ],
+        "EnemyNames": [ "Mars Djinni Halloween", "Jupiter Djinni Halloween", "Venus Djinni Halloween", "Mercury Djinni Halloween" ],
         "Keywords": [ "Shuffle" ],
         "Image": "https://media.discordapp.net/attachments/494638277987401739/763709260713426974/Document_3_2.jpg?width=849&height=679",
         "RewardTables": [
