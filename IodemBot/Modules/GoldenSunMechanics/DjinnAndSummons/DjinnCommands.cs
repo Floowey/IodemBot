@@ -176,6 +176,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             var userclass = AdeptClassSeriesManager.GetClassSeries(user);
             var chosenDjinn = Names
                 .Select(n => userDjinn.GetDjinn(n))
+                .Where(d => d != null)
                 .OfElement(userclass.Elements)
                 .Take(DjinnPocket.MaxDjinn)
                 .ToList();
