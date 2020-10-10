@@ -2311,7 +2311,7 @@
         ]
       },
       {
-        "Flavourtext": "As you search through numerous rooms for the way forward, you interrupt a Mercury Djinni relaxing on a barstool in front of a counter. Annoyed, it attacks!",
+        "Flavourtext": "Having thrashed the guards soundly, they nod and let you pass. One of them whispers, 'Dodonpa's favorite color' to you as you move by.  The fortress contains dozens of rooms, which you methodically search through. One of them contains a Mercury Djinni relaxing on a barstool in front of a counter. Annoyed, it attacks!",
         "EnemyNames": [ "Mercury Djinni 4" ],
         "Image": "",
         "RewardTables": [
@@ -2346,8 +2346,29 @@
         ]
       },
       {
+        "Flavourtext": "You keep going deeper into the stronghold. Seems like it's the right way, because you bump into another group of guards! They grin and draw their weapons.",
+        "EnemyNames": [ "Brigand", "Thief 2", "Bandit 2", "Thief 2", "Brigand" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "XP": 187,
+              "Coins": 175
+            }
+          ],
+          [
+            { "Weight": 9 },
+            {
+              "Weight": 1,
+              "Item": "Mythril Circlet"
+            }
+          ]
+        ]
+      },
+      {
         "Flavourtext": "Another side room holds a table with three keys.  Just up the passage you hear another bored-sounding guard announcing that if he spots you, you lose the challenge, so choose wisely!",
-        "EnemyNames": [ "BoobyTrap-10:RedKey", "BoobyTrap-10:BlueKey", "Key:YellowKey" ],
+        "EnemyNames": [ "BoobyTrap-60:RedKey", "BoobyTrap-60:BlueKey", "Key:YellowKey" ],
         "Keywords": [ "Shuffle" ],
         "Image": "https://i.imgur.com/6oB3CBd.png",
         "RewardTables": [
@@ -2366,27 +2387,6 @@
             {
               "Weight": 1,
               "Item": "War Gloves"
-            }
-          ]
-        ]
-      },
-      {
-        "Flavourtext": "You keep going deeper into the stronghold. Seems like it's the right way, because you bump into another group of guards! They grin and draw their weapons.",
-        "EnemyNames": [ "Brigand", "Thief 2", "Bandit 2", "Thief 2", "Brigand" ],
-        "Image": "",
-        "RewardTables": [
-          [
-            {
-              "Weight": 1,
-              "XP": 187,
-              "Coins": 175
-            }
-          ],
-          [
-            { "Weight": 9 },
-            {
-              "Weight": 1,
-              "Item": "Mythril Circlet"
             }
           ]
         ]
@@ -3654,8 +3654,16 @@
               "Weight": 1,
               "Chest": "Gold",
               "HasChest": true
-            }
-          ],
+            },
+            { "Weight": }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "End",
+        "EnemyNames": [ "With all the statues defeated", "the waters sink back down into the earth.  Altin is still soaked", "but it will dry out in time.  You've done a very good deed today." ],
+        "Image": "",
+        "RewardTables": [
           [
             {
               "Weight": 1,
@@ -4327,10 +4335,13 @@
               "Weight": 2,
               "XP": 175,
               "Coins": 140
-            },
+            }
+          ],
+          [
+            { "Weight": 2 },
             {
               "Weight": 1,
-              "Chest": "Wooden",
+              "Chest": "Normal",
               "HasChest": true
             }
           ]
@@ -4448,7 +4459,7 @@
     "IsDefault": false,
     "Matchups": [
       {
-        "Flavourtext": "Aaah, the glorious city of Tolbi. You have heard a lot about it and you head straight to the famous fountain to try your luck. As you approach, you see that it is full of monsters...",
+        "Flavourtext": "Ahh, the glorious city of Tolbi. You have heard a lot about it and you head straight to the famous fountain to try your luck. As you approach, you see that it is full of monsters...",
         "EnemyNames": [ "Calamar 1", "Crab", "Urchin Beast", "Calamar 1" ],
         "Image": "",
         "RewardTables": [
@@ -4831,33 +4842,13 @@
           ],
           [
             {
-              "Weight": 6,
-              "RequireTag": [ "AltmillerMimic" ]
-            },
-            {
               "Weight": 3,
-              "RequireTag": [ "AltmillerMimic" ],
-              "Chest": "Silver",
-              "HasChest": true
-            },
-            {
-              "Weight": 1,
-              "RequireTag": [ "AltmillerMimic" ],
-              "Chest": "Gold",
-              "HasChest": true
-            }
-          ],
-          [
-            {
-              "Weight": 3,
-              "Tag": "AltmillerMimic",
               "Obtainable": 1,
               "Chest": "Silver",
               "HasChest": true
             },
             {
               "Weight": 1,
-              "Tag": "AltmillerMimic",
               "Obtainable": 1,
               "Chest": "Gold",
               "HasChest": true
@@ -5166,7 +5157,7 @@
     "MaxPlayer": 1,
     "Matchups": [
       {
-        "Flavourtext": "The Warriors of Vale once saved Weyard from dying. Who is the oldest valean Hero?",
+        "Flavourtext": "The Warriors of Vale once saved Weyard from dying. Who is the oldest Valean Hero?",
         "EnemyNames": [ "Trap:Isaac", "Trap:Garet", "Key:Felix", "Trap:Piers" ],
         "Keywords": [ "Shuffle" ],
         "Image": "",
@@ -5989,7 +5980,7 @@
         ]
       },
       {
-        "Flavourtext": "This place is complete madness. There's more monsters than you could have every imagined.",
+        "Flavourtext": "This place is complete madness. There's more monsters than you could have ever imagined.",
         "EnemyNames": [ "Boulder Beast", "Ice Gargoyle" ],
         "Image": "",
         "RewardTables": [
@@ -6019,7 +6010,7 @@
             { "Weight": 13 },
             {
               "Weight": 1,
-              "Item": "Thorn Crown"
+              "Item": "Thunder Crown"
             },
             {
               "Weight": 1,
@@ -8449,6 +8440,256 @@
         "Image": "",
         "RewardTables": [
           [ { "Weight": 1 } ]
+        ]
+      }
+    ]
+  },
+  "Twisted Forest": {
+    "name": "Twisted Forest",
+    "IsOneTimeOnly": true,
+    "FlavourText": "Happy Halloween!  A twisted forest, with unknown dangers.  Dare you enter?",
+    "Image": "",
+    "IsDefault": false,
+    "Matchups": [
+      {
+        "Flavourtext": "You find yourself in a graveyard surrounded by unfamiliar trees...  The air is deadly silent and chill.  As you try to orient yourself, hands sprout from the grave sites beneath you!",
+        "EnemyNames": [ "Zombie 1", "Zombie 2", "Zombie 1", "Zombie 2", "Zombie 1" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "XP": 100,
+              "Coins": 100
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "Chest": "Wooden",
+              "HasChest": true
+            },
+            { "Weight": 3 }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "Having returned the corpses to their rest, you look around and realize you are quite lost.  You pick a direction and start moving into the forest... but several of the trees start moving towards you!",
+        "EnemyNames": [ "Wood Walker", "Wood Walker", "Wood Walker", "Gloom Skorpna" ],
+        "Keywords": [ "Shuffle" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "XP": 100,
+              "Coins": 100
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "Chest": "Wooden",
+              "HasChest": true
+            },
+            { "Weight": 3 },
+            {
+              "Weight": 1,
+              "Item": "Hagbone Mace"
+            }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "Stepping over the splinters of the mobile trees, you continue through the forest hoping to find a way out, or a safe place to rest. The woods get darker and darker, and more unearthly sounds assault your ears...",
+        "EnemyNames": [ "Dark Wight", "Shadowisp", "Shadow Spirit", "Dark Ghost" ],
+        "Keywords": [ "Shuffle" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "XP": 200,
+              "Coins": 200
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "Chest": "Normal",
+              "HasChest": true
+            },
+            { "Weight": 3 }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "Before you can catch your breath, ghosts swirl around you, leaving you dizzy.",
+        "EnemyNames": [ "Dark Spirit", "Doomsayer", "Dark Ghost", "Fell Dead", "Lich 1" ],
+        "Keywords": [ "StatusDelusion", "Shuffle" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "XP": 200,
+              "Coins": 200
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "Item": "Bone Armlet"
+            },
+            {
+              "Weight": 1,
+              "Chest": "Normal",
+              "HasChest": true
+            },
+            { "Weight": 3 }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "You spot a glow between the trees, and head towards it.  A giant pumpkin, lit from the inside, leers at you toothily.  You go to look inside... out flies an agitated Mars Djinni!  While you're still processing that, the pumpkin sprouts insectoid legs and a stinger and tries to bite!",
+        "EnemyNames": [ "Mimic Halloween", "Mars Djinni Halloween" ],
+        "Image": "https://cdn.discordapp.com/attachments/696352535568711711/764111444253343745/pumic.gif",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "XP": 400,
+              "Coins": 400,
+              "Chest": "Silver",
+              "HasChest": true
+            }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "The pumpkin shatters, revealing some loot. You collect it quickly, but before you can try to convince the Mars Djinni to join you, it zooms away!  Hoping it might know the way out, you follow the light it sheds, and come face-to-face with its friends.  ",
+        "EnemyNames": [ "Mars Djinni Halloween", "Jupiter Djinni", "Halloween", "Venus Djinni Halloween", "Mercury Djinni Halloween" ],
+        "Keywords": [ "Shuffle" ],
+        "Image": "https://media.discordapp.net/attachments/494638277987401739/763709260713426974/Document_3_2.jpg?width=849&height=679",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "XP": 400,
+              "Coins": 400
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "Tag": "Halloween20Leaf",
+              "Obtainable": 1,
+              "Djinn": "Leaf"
+            },
+            {
+              "Weight": 1,
+              "Tag": "Halloween20Lantern",
+              "Obtainable": 1,
+              "Djinn": "Lantern"
+            },
+            {
+              "Weight": 1,
+              "Tag": "Halloween20Flutter",
+              "Obtainable": 1,
+              "Djinn": "Flutter"
+            },
+            {
+              "Weight": 1,
+              "Tag": "Halloween20Shiver",
+              "Obtainable": 1,
+              "Djinn": "Shiver"
+            },
+            { "Weight": 12 }
+          ],
+          [
+            {
+              "Weight": 1,
+              "Chest": "Silver",
+              "HasChest": true
+            },
+            { "Weight": 3 }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "Howls begin behind you.  The baying of hounds chasing their prey.  Instinctively, you know who they're hunting: you.  You take off running, trying to find any place to hide, but to no avail... after several pulse-pounding minutes, the Wild Hunt has found you.  The hounds go for your throat.  ",
+        "EnemyNames": [ "Cerberus 1", "Living Armor", "Hobgoblin", "Red Demon", "Cerberus 2" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "XP": 800,
+              "Coins": 800
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "Chest": "Gold",
+              "HasChest": true
+            },
+            { "Weight": 3 }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "Breathing hard, you pause for a moment by a massive, gnarled oak tree.  There seems to be no way out of this forest, and you're tired from fighting for your life.  So naturally, the oaks begins to move, opening two brilliant red glowing eyes each, and taking a swipe at you.  ",
+        "EnemyNames": [ "Estre Wood", "Estre Wood" ],
+        "Image": "https://static.wikia.nocookie.net/goldensun/images/b/b5/Estre_Wood.png/",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "XP": 1200,
+              "Coins": 1200
+            }
+          ],
+          [
+            { "Weight": 13 },
+            {
+              "Weight": 1,
+              "Dungeon": "Star Chamber"
+            },
+            {
+              "Weight": 1,
+              "Dungeon": "Crossbone Isle"
+            },
+            {
+              "Weight": 1,
+              "Dungeon": "Venus Lighthouse"
+            },
+            {
+              "Weight": 1,
+              "Chest": "Adept",
+              "HasChest": true
+            },
+            {
+              "Weight": 3,
+              "Chest": "Gold",
+              "HasChest": true
+            }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "As the hellish light fades from the massive tree's eyes, your vision suddenly becomes blurry and everything fades to black.  You slowly regain consciousness where you last remember being, but your exhaustion and heavier gold pouch tells you this was no dream.  ",
+        "EnemyNames": [ "End" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "Tag": "HalloweenFinished",
+              "XP": 10,
+              "Coins": 10
+            }
+          ]
         ]
       }
     ]
