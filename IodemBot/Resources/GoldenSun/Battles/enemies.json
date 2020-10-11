@@ -11521,7 +11521,7 @@
     "name": "Estre Wood",
     "imgurl": "https://goldensunwiki.net/w/images/b/b5/Estre_Wood.png",
     "stats": {
-      "maxhp": 4630,
+      "maxhp": 2630,
       "maxpp": 800,
       "atk": 313,
       "def": 275,
@@ -11550,7 +11550,7 @@
     "isImmuneToHPToOne": true
   },
   "Venus Djinni Halloween": {
-    "movepool": [ "Grand Gaia", "Thorny Grave", "Stone Spire", "Nettle", "Wild Growth", "Leaf", "Venus" ],
+    "movepool": [ "Thorny Grave", "Nettle", "Wild Growth", "Leaf", "Venus" ],
     "name": "Venus Djinni",
     "imgurl": "https://media.discordapp.net/attachments/494638277987401739/556350801036181517/Flint_Cartoon_Outlines.png",
     "stats": {
@@ -11570,7 +11570,7 @@
     "extraturns": 0
   },
   "Mars Djinni Halloween": {
-    "movepool": [ "Cycle Beam", "Eruption", "Flare Storm", "Lantern","Mars" ],
+    "movepool": [ "Witchlight", "Eruption", "Flare Storm", "Lantern", "Mars" ],
     "name": "Mars Djinni",
     "imgurl": "https://goldensunwiki.net/w/images/9/98/MarsDjinniGif.gif",
     "stats": {
@@ -11590,11 +11590,11 @@
     "extraturns": 0
   },
   "Jupiter Djinni Halloween": {
-    "movepool": [ "Spark Plasma", "Tempest", "Destruct Ray", "Sonic Slash", "Flutter", "Jupiter" ],
+    "movepool": [ "Spark Plasma", "Destruct Ray", "Sonic Slash", "Flutter", "Jupiter" ],
     "name": "Jupiter Djinni",
     "imgurl": "https://thelostwaters.com/gallery/galleries/goldensun/official/JupiterDjinn.png",
     "stats": {
-      "maxhp": 980,
+      "maxhp": 680,
       "maxpp": 92,
       "atk": 309,
       "def": 97,
@@ -11610,11 +11610,11 @@
     "extraturns": 0
   },
   "Mercury Djinni Halloween": {
-    "movepool": [ "Freeze Prism", "Megacool", "Ice Missile", "Froth Spiral", "Deluge", "Shiver", "Mercury" ],
+    "movepool": [ "Freeze Prism", "Megacool", "Ice Missile", "Shiver", "Mercury" ],
     "name": "Mercury Djinni",
     "imgurl": "https://goldensunwiki.net/w/images/0/0c/MercuryDjinniGif.gif",
     "stats": {
-      "maxhp": 940,
+      "maxhp": 740,
       "maxpp": 88,
       "atk": 300,
       "def": 94,
@@ -11634,7 +11634,7 @@
     "name": "Mimic",
     "imgurl": "https://goldensunwiki.net/w/images/thumb/f/f6/Mimic_Dark_Dawn.jpg/300px-Mimic_Dark_Dawn.jpg",
     "stats": {
-      "maxhp": 997,
+      "maxhp": 1297,
       "maxpp": 60,
       "atk": 303,
       "def": 94,
