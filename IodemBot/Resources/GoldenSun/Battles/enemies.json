@@ -11550,11 +11550,11 @@
     "isImmuneToHPToOne": true
   },
   "Venus Djinni Halloween": {
-    "movepool": [ "Thorny Grave", "Nettle", "Wild Growth", "Leaf", "Venus" ],
+    "movepool": [ "Thorny Grave", "Nettle", "Mad Growth", "Leaf", "Venus" ],
     "name": "Venus Djinni",
     "imgurl": "https://media.discordapp.net/attachments/494638277987401739/556350801036181517/Flint_Cartoon_Outlines.png",
     "stats": {
-      "maxhp": 990,
+      "maxhp": 790,
       "maxpp": 94,
       "atk": 309,
       "def": 97,
@@ -11574,7 +11574,7 @@
     "name": "Mars Djinni",
     "imgurl": "https://goldensunwiki.net/w/images/9/98/MarsDjinniGif.gif",
     "stats": {
-      "maxhp": 949,
+      "maxhp": 749,
       "maxpp": 125,
       "atk": 377,
       "def": 186,
@@ -11590,11 +11590,11 @@
     "extraturns": 0
   },
   "Jupiter Djinni Halloween": {
-    "movepool": [ "Spark Plasma", "Destruct Ray", "Sonic Slash", "Flutter", "Jupiter" ],
+    "movepool": [ "Shine Plasma", "Destruct Ray", "Sonic Slash", "Flutter", "Jupiter" ],
     "name": "Jupiter Djinni",
     "imgurl": "https://thelostwaters.com/gallery/galleries/goldensun/official/JupiterDjinn.png",
     "stats": {
-      "maxhp": 680,
+      "maxhp": 480,
       "maxpp": 92,
       "atk": 309,
       "def": 97,
@@ -11610,11 +11610,11 @@
     "extraturns": 0
   },
   "Mercury Djinni Halloween": {
-    "movepool": [ "Freeze Prism", "Megacool", "Ice Missile", "Shiver", "Mercury" ],
+    "movepool": [ "Hail Prism", "Megacool", "Ice Missile", "Shiver", "Mercury" ],
     "name": "Mercury Djinni",
     "imgurl": "https://goldensunwiki.net/w/images/0/0c/MercuryDjinniGif.gif",
     "stats": {
-      "maxhp": 740,
+      "maxhp": 540,
       "maxpp": 88,
       "atk": 300,
       "def": 94,

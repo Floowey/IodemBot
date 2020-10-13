@@ -8617,7 +8617,7 @@
       },
       {
         "Flavourtext": "Howls begin behind you.  The baying of hounds chasing their prey.  Instinctively, you know who they're hunting: you.  You take off running, trying to find any place to hide, but to no avail... after several pulse-pounding minutes, the Wild Hunt has found you.  The hounds go for your throat.  ",
-        "EnemyNames": [ "Cerberus 1", "Living Armor", "Hobgoblin", "Red Demon", "Cerberus 2" ],
+        "EnemyNames": [ "Cerberus", "Living Armor", "Hobgoblin 1", "Red Demon", "Cerberus" ],
         "Image": "",
         "RewardTables": [
           [
