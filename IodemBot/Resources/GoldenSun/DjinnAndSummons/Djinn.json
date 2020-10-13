@@ -2525,7 +2525,7 @@
   "Flutter": {
     "Djinnname": "Flutter",
     "Element": 2,
-    "SpriteNormal": "<a:Flutter:764417003053514753>",
+    "SpriteNormal": "<a:Flutter:765593130275045448>",
     "Event": "Halloween20",
     "Move": {
       "Targettype": 3,
@@ -2548,7 +2548,7 @@
   "Shiver": {
     "Djinnname": "Shiver",
     "Element": 3,
-    "SpriteNormal": "<a:Shiver:764417202694127617>",
+    "SpriteNormal": "<a:Shiver:765593206334816266>",
     "Event": "Halloween20",
     "Move": {
       "Targettype": 4,
