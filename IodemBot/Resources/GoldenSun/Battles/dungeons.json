@@ -8568,7 +8568,7 @@
       {
         "Flavourtext": "The pumpkin shatters, revealing some loot. You collect it quickly, but before you can try to convince the Mars Djinni to join you, it zooms away!  Hoping it might know the way out, you follow the light it sheds, and come face-to-face with its friends.  ",
         "EnemyNames": [ "Mars Djinni Halloween", "Jupiter Djinni Halloween", "Venus Djinni Halloween", "Mercury Djinni Halloween" ],
-        "Keywords": [ "Shuffle" ],
+        "Keywords": [ "Heal", "Shuffle" ],
         "Image": "https://media.discordapp.net/attachments/494638277987401739/763709260713426974/Document_3_2.jpg?width=849&height=679",
         "RewardTables": [
           [
@@ -8618,13 +8618,14 @@
       {
         "Flavourtext": "Howls begin behind you.  The baying of hounds chasing their prey.  Instinctively, you know who they're hunting: you.  You take off running, trying to find any place to hide, but to no avail... after several pulse-pounding minutes, the Wild Hunt has found you.  The hounds go for your throat.  ",
         "EnemyNames": [ "Cerberus", "Living Armor", "Hobgoblin 1", "Red Demon", "Cerberus" ],
+        "Keywords": [ "Heal" ],
         "Image": "",
         "RewardTables": [
           [
             {
               "Weight": 1,
-              "XP": 800,
-              "Coins": 800
+              "XP": 400,
+              "Coins": 400
             }
           ],
           [
@@ -8638,19 +8639,28 @@
         ]
       },
       {
-        "Flavourtext": "Breathing hard, you pause for a moment by a pair of massive, gnarled oak trees.  There seems to be no way out of this forest, and you're tired from fighting for your life.  So naturally, the oaks begins to move, opening two brilliant red glowing eyes each, and take swipes at you.  ",
+        "Flavourtext": "Breathing hard, you pause for a moment by a pair of massive, gnarled oak trees.  There seems to be no way out of this forest, and you're tired from fighting for your life.  So naturally, the oaks begin to move, opening two brilliant red glowing eyes each, and taking swipes at you.  ",
         "EnemyNames": [ "Estre Wood", "Estre Wood" ],
+        "Keywords": [ "Heal" ],
         "Image": "https://static.wikia.nocookie.net/goldensun/images/b/b5/Estre_Wood.png/",
         "RewardTables": [
           [
             {
               "Weight": 1,
-              "XP": 1200,
-              "Coins": 1200
+              "XP": 800,
+              "Coins": 800
             }
           ],
           [
-            { "Weight": 13 },
+            {
+              "Weight": 8,
+              "XP": 400,
+              "Coins": 400
+            },
+            {
+              "Weight": 1,
+              "Dungeon": "Suhalla Desert Junction"
+            },
             {
               "Weight": 1,
               "Dungeon": "Star Chamber"
@@ -8685,6 +8695,7 @@
             {
               "Weight": 1,
               "Tag": "HalloweenFinished",
+              "Obtainable": 1,
               "XP": 10,
               "Coins": 10
             }

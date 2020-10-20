@@ -11521,7 +11521,7 @@
     "name": "Estre Wood",
     "imgurl": "https://goldensunwiki.net/w/images/b/b5/Estre_Wood.png",
     "stats": {
-      "maxhp": 2130,
+      "maxhp": 1830,
       "maxpp": 800,
       "atk": 313,
       "def": 275,
@@ -11556,7 +11556,7 @@
     "stats": {
       "maxhp": 790,
       "maxpp": 94,
-      "atk": 309,
+      "atk": 249,
       "def": 97,
       "spd": 280
     },
@@ -11576,7 +11576,7 @@
     "stats": {
       "maxhp": 749,
       "maxpp": 125,
-      "atk": 377,
+      "atk": 267,
       "def": 186,
       "spd": 261
     },
@@ -11596,7 +11596,7 @@
     "stats": {
       "maxhp": 480,
       "maxpp": 92,
-      "atk": 309,
+      "atk": 249,
       "def": 97,
       "spd": 277
     },
@@ -11616,7 +11616,7 @@
     "stats": {
       "maxhp": 540,
       "maxpp": 88,
-      "atk": 300,
+      "atk": 230,
       "def": 94,
       "spd": 261
     },
