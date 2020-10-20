@@ -180,6 +180,13 @@ namespace IodemBot.Modules.ColossoBattles
                 else
                 {
                     winners.OfType<PlayerFighter>().ToList().ForEach(async p => await ServerGames.UserWonDungeon(UserAccountProvider.GetById(p.Id), Dungeon, lobbyChannel));
+
+                    if (DateTime.Now <= new DateTime(2020, 11, 8) && Global.Random.Next(5) == 0)
+                    {
+                        var r = new List<Rewardable>() { new DefaultReward() { Dungeon = "Halloween Special" } };
+                        winners.OfType<PlayerFighter>().ToList().ForEach(async p => await ServerGames.UserWonBattle(UserAccountProvider.GetById(p.Id), r, new BattleStats(), lobbyChannel, BattleChannel));
+                    }
+
                     _ = WriteGameOver();
                 }
             }
@@ -187,11 +194,7 @@ namespace IodemBot.Modules.ColossoBattles
             {
                 var losers = winners.First().battle.GetTeam(winners.First().enemies);
 
-                if (DateTime.Now <= new DateTime(2020, 11, 8) && Global.Random.Next(5) == 0)
-                {
-                    var r = new List<Rewardable>() { new DefaultReward() { Dungeon = "Halloween Special" } };
-                    winners.OfType<PlayerFighter>().ToList().ForEach(async p => await ServerGames.UserWonBattle(UserAccountProvider.GetById(p.Id), r, new BattleStats(), lobbyChannel, BattleChannel));
-                }
+                
                 losers.ConvertAll(s => (PlayerFighter)s).ForEach(async p => await ServerGames.UserLostBattle(UserAccountProvider.GetById(p.Id), lobbyChannel));
 
                 _ = WriteGameOver();
