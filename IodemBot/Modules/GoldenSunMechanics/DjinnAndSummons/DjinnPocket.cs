@@ -19,7 +19,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         {
             get { return Djinn.Count == 0 ? null : Djinn?.Select(d => new DjinnHolder() { Djinn = d.Djinnname, Nickname = d.Nickname, Shiny = d.IsShiny }).ToList(); }
 
-            set { Djinn = value?.Select(s => DjinnAndSummonsDatabase.TryGetDjinn(s.Djinn, out Djinn dj) ? dj : null).Where(c => c != null).ToList() ?? new List<Djinn>(); }
+            set { Djinn = value?.Select(s => DjinnAndSummonsDatabase.TryGetDjinn(s, out Djinn dj) ? dj : null).Where(c => c != null).ToList() ?? new List<Djinn>(); }
         }
         public List<SummonHolder> SummonStorage
         {
