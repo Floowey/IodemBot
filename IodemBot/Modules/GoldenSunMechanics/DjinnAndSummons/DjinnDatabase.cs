@@ -86,6 +86,24 @@ namespace IodemBot.Modules.GoldenSunMechanics
             return false;
         }
 
+        public static bool TryGetDjinn(DjinnHolder DjinnHolder, out Djinn djinn)
+        {
+            djinn = null;
+            if (DjinnHolder.Djinn.IsNullOrEmpty())
+            {
+                return false;
+            }
+            if (DjinnDatabase.TryGetValue(DjinnHolder.Djinn, out Djinn d))
+            {
+                djinn = (Djinn)d.Clone();
+                djinn.Nickname = DjinnHolder.Nickname;
+                djinn.IsShiny = DjinnHolder.Shiny;
+                return true;
+            }
+            //    Console.WriteLine($"Djinn {DjinnName} is not implemented.");
+            return false;
+        }
+
         public static bool TryGetSummon(string SummonName, out Summon summon)
         {
             if (SummonName.IsNullOrEmpty())

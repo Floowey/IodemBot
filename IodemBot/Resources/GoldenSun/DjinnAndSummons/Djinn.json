@@ -2134,6 +2134,7 @@
     "SpriteShiny": "<a:FoamShiny:663022348148015104>",
     "Move": {
       "Targettype": 4,
+      "range": 5,
       "Element": 3,
       "effects": [
         {

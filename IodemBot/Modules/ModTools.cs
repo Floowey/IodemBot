@@ -214,6 +214,21 @@ namespace IodemBot.Modules
             await ReplyAsync("Tag Added");
         }
 
+        [Command("Shiny")]
+        [RequireOwner]
+        public async Task ShinyDjinn(SocketGuildUser user, bool shiny, [Remainder] string djinn)
+        {
+            var acc = EntityConverter.ConvertUser(user);
+            var userDjinn = acc.DjinnPocket;
+            var chosenDjinn = userDjinn.GetDjinn(djinn);
+            if (chosenDjinn == null)
+            {
+                return;
+            }
+            chosenDjinn.IsShiny = shiny;
+            UserAccountProvider.StoreUser(acc);
+        }
+
         [Command("Emotes")]
         [RequireStaff]
         public async Task Emotes()

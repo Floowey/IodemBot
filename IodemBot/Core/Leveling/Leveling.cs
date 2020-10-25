@@ -49,11 +49,30 @@ namespace IodemBot.Core.Leveling
                 //    await GoldenSun.AwardClassSeries("Hermit Series", user, channel);
                 //}
             }
+            
+
+            if (channel.Id == GuildSettings.GetGuildSettings(channel.Guild)?.ColossoChannel?.Id)
+            {
+                userAccount.ServerStats.MessagesInColossoTalks++;
+                if (userAccount.ServerStats.MessagesInColossoTalks >= 50)
+                {
+                    await GoldenSun.AwardClassSeries("Swordsman Series", user, channel);
+                }
+            }
+
+            
+            uint newLevel = userAccount.LevelNumber;
+
+            if (oldLevel != newLevel)
+            {
+                LevelUp(userAccount, user, channel);
+            }
 
             if (channel.Id != userAccount.ServerStats.MostRecentChannel)
             {
                 userAccount.ServerStats.MostRecentChannel = channel.Id;
                 userAccount.ServerStats.ChannelSwitches += 2;
+                UserAccountProvider.StoreUser(userAccount);
                 if (userAccount.ServerStats.ChannelSwitches >= 14)
                 {
                     await GoldenSun.AwardClassSeries("Air Pilgrim Series", user, channel);
@@ -65,23 +84,7 @@ namespace IodemBot.Core.Leveling
                 {
                     userAccount.ServerStats.ChannelSwitches--;
                 }
-            }
-
-            if (channel.Id == GuildSettings.GetGuildSettings(channel.Guild)?.ColossoChannel?.Id)
-            {
-                userAccount.ServerStats.MessagesInColossoTalks++;
-                if (userAccount.ServerStats.MessagesInColossoTalks >= 50)
-                {
-                    await GoldenSun.AwardClassSeries("Swordsman Series", user, channel);
-                }
-            }
-
-            UserAccountProvider.StoreUser(userAccount);
-            uint newLevel = userAccount.LevelNumber;
-
-            if (oldLevel != newLevel)
-            {
-                LevelUp(userAccount, user, channel);
+                UserAccountProvider.StoreUser(userAccount);
             }
 
             await Task.CompletedTask;
@@ -93,10 +96,11 @@ namespace IodemBot.Core.Leveling
             {
                 channel = GuildSettings.GetGuildSettings(user.Guild).CommandChannel;
             }
-            if (channel == null)
+            if (channel == null || userAccount == null )
             {
                 return;
             }
+           
             // the user leveled up
             var embed = new EmbedBuilder();
             embed.WithColor(Colors.Get(userAccount.Element.ToString()));

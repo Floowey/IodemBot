@@ -2988,7 +2988,7 @@
         ]
       },
       {
-        "Flavourtext": "An intense battle with the Djinni left you fatigued. After witnessing your tired form, a bony group rush you.",
+        "Flavourtext": "An intense battle with the Djinni left you fatigued. After witnessing your tired form, a bony group rushes you.",
         "EnemyNames": [ "Skeleton 1", "Skeleton 2", "Bone Fighter 2", "Skeleton 2", "Bone Fighter 1" ],
         "Keywords": [ "Shuffle" ],
         "Image": "",
@@ -3659,8 +3659,8 @@
         ]
       },
       {
-        "Flavourtext": "End",
-        "EnemyNames": [ "With all the statues defeated", "the waters sink back down into the earth.  Altin is still soaked", "but it will dry out in time.  You've done a very good deed today." ],
+        "Flavourtext": "With all the statues defeated, the waters sink back down into the earth.  Altin is still soaked, but it will dry out in time.  You've done a very good deed today.",
+        "EnemyNames": [ "End" ],
         "Image": "",
         "RewardTables": [
           [
@@ -4241,7 +4241,7 @@
         ]
       },
       {
-        "Flavourtext": "The third and final beast gang arrive just as another demon emerges from the ritual and blocks the exit. Battle!",
+        "Flavourtext": "The third and final beast gang arrives just as another demon emerges from the ritual and blocks the exit. Battle!",
         "EnemyNames": [ "Troll 1", "Numb Ant", "Red Demon", "Rat Fighter 1", "Skeleton 1" ],
         "Keywords": [ "Shuffle" ],
         "Image": "",
@@ -5287,7 +5287,7 @@
         ]
       },
       {
-        "Flavourtext": "Oh no. The rumors were true! A fourth fight! An unknown warrior, masked and cloaked. You sense psynergy, watch out.",
+        "Flavourtext": "Oh no. The rumors were true! A fourth fight! An unknown warrior, masked and cloaked. You sense Psynergy, watch out.",
         "EnemyNames": [ "IsaacFinal" ],
         "Image": "",
         "RewardTables": [
@@ -5722,7 +5722,7 @@
         ]
       },
       {
-        "Flavourtext": "On the horizon Lalivero's city wall start to appear. From the roadside, however, some monsters are trying to stop you from getting there.",
+        "Flavourtext": "On the horizon Lalivero's city wall starts to appear. From the roadside, however, some monsters are trying to stop you from getting there.",
         "EnemyNames": [ "Orc Captain", "Brutal Troll 1", "Orc Captain", "Orc Captain", "Brutal Troll 2" ],
         "Keywords": [ "Shuffle" ],
         "Image": "",
