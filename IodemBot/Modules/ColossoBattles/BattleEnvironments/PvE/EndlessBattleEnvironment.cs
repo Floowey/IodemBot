@@ -228,8 +228,8 @@ namespace IodemBot.Modules.ColossoBattles
                     RewardTables.Add(djinnTable);
                 }
 
-                winners.OfType<PlayerFighter>().ToList().ForEach(async p => await ServerGames.UserWonBattle(UserAccountProvider.GetById(p.Id), RewardTables.GetRewards(), p.battleStats, lobbyChannel, BattleChannel));
-                winners.OfType<PlayerFighter>().ToList().ForEach(async p => await ServerGames.UserWonEndless(UserAccountProvider.GetById(p.Id), lobbyChannel, winsInARow, mode, p.battleStats.TotalTeamMates + 1, string.Join(", ", Battle.TeamA.Select(pl => pl.Name))));
+                winners.OfType<PlayerFighter>().ToList().ForEach(p => _ = ServerGames.UserWonBattle(UserAccountProvider.GetById(p.Id), RewardTables.GetRewards(), p.battleStats, lobbyChannel, BattleChannel));
+                winners.OfType<PlayerFighter>().ToList().ForEach(p => _ = ServerGames.UserWonEndless(UserAccountProvider.GetById(p.Id), lobbyChannel, winsInARow, mode, p.battleStats.TotalTeamMates + 1, string.Join(", ", Battle.TeamA.Select(pl => pl.Name))));
 
                 chests.RemoveAll(s => s is DefaultReward d && !d.HasChest);
 

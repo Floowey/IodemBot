@@ -56,7 +56,7 @@ namespace IodemBot.Core.Leveling
                 userAccount.ServerStats.MessagesInColossoTalks++;
                 if (userAccount.ServerStats.MessagesInColossoTalks >= 50)
                 {
-                    await GoldenSun.AwardClassSeries("Swordsman Series", user, channel);
+                    _ = GoldenSun.AwardClassSeries("Swordsman Series", user, channel);
                 }
             }
 
@@ -75,7 +75,7 @@ namespace IodemBot.Core.Leveling
                 UserAccountProvider.StoreUser(userAccount);
                 if (userAccount.ServerStats.ChannelSwitches >= 14)
                 {
-                    await GoldenSun.AwardClassSeries("Air Pilgrim Series", user, channel);
+                    _ = GoldenSun.AwardClassSeries("Air Pilgrim Series", user, channel);
                 }
             }
             else
@@ -120,7 +120,7 @@ namespace IodemBot.Core.Leveling
             {
                 embed.AddField("Congratulations!", "You have unlocked Hard mode in the Weyard battle channels, as well as the Endless mode!");
             }
-            await channel.SendMessageAsync("", embed: embed.Build());
+            _ = channel.SendMessageAsync("", embed: embed.Build());
         }
 
         internal static async void UserAddedReaction(SocketGuildUser user, SocketReaction reaction)

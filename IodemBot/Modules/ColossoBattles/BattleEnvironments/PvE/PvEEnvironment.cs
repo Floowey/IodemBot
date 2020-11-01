@@ -268,11 +268,7 @@ namespace IodemBot.Modules.ColossoBattles
         public override async Task Reset()
         {
             Battle = new ColossoBattle();
-            if (!IsPersistent && WasReset)
-            {
-                Dispose(); return;
-            }
-            WasReset = true;
+            
             PlayerMessages
                 .Values
                 .SelectMany(u => u.Moves.OfType<Djinn>())
@@ -342,6 +338,12 @@ namespace IodemBot.Modules.ColossoBattles
                 Enabled = false
             };
             resetIfNotActive.Elapsed += BattleWasNotStartetInTime;
+
+            if (!IsPersistent && WasReset)
+            {
+                Dispose(); return;
+            }
+            WasReset = true;
 
             Console.WriteLine("Battle was reset.");
         }

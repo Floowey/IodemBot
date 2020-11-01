@@ -47,7 +47,7 @@ namespace IodemBot
                     }
                     Console.WriteLine(result.ErrorReason);
                 }
-                await ServerGames.UserSentCommand(context.User, context.Channel);
+                _ = ServerGames.UserSentCommand(context.User, context.Channel);
             }
         }
     }

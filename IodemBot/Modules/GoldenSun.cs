@@ -32,7 +32,8 @@ namespace IodemBot.Modules
         [RequireModerator]
         public async Task AwardSeries(SocketGuildUser user, [Remainder] string series)
         {
-            await AwardClassSeries(series, user, Context.Channel);
+            _ = AwardClassSeries(series, user, Context.Channel);
+            await Task.CompletedTask;
         }
 
         [Command("classInfo"), Alias("ci")]

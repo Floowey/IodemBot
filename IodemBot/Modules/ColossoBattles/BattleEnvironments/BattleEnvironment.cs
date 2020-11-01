@@ -35,7 +35,21 @@ namespace IodemBot.Modules.ColossoBattles
             this.Name = Name;
             this.lobbyChannel = lobbyChannel;
             this.IsPersistent = isPersistent;
-            Global.Client.ReactionAdded += ProcessReaction;
+            Global.Client.ReactionAdded += ReactionAdded;
+        }
+
+        public async Task ReactionAdded(Cacheable<IUserMessage, ulong> cache, ISocketMessageChannel message, SocketReaction reaction)
+        {
+            try
+            {
+                _ = ProcessReaction(cache, message, reaction);
+            }
+            catch (Exception e)
+            {
+                Console.Write("Reaction Error: " + e.ToString());
+                File.WriteAllText("Logs/ReactionError_" + Global.DateString + ".txt", e.ToString());
+            }
+            await Task.CompletedTask;
         }
 
         protected abstract Task ProcessReaction(Cacheable<IUserMessage, ulong> cache, ISocketMessageChannel message, SocketReaction reaction);
@@ -106,7 +120,7 @@ namespace IodemBot.Modules.ColossoBattles
 
         public virtual void Dispose()
         {
-            Global.Client.ReactionAdded -= ProcessReaction;
+            Global.Client.ReactionAdded -= ReactionAdded;
         }
 
         internal string GetStatus()

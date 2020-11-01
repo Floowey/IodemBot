@@ -41,7 +41,9 @@ namespace IodemBot
             client = new DiscordSocketClient(new DiscordSocketConfig
             {
                 LogLevel = LogSeverity.Info,
-                MessageCacheSize = 10
+                MessageCacheSize = 10,
+                DefaultRetryMode = RetryMode.AlwaysRetry,
+                ExclusiveBulkDelete = true
             });
 
             Global.Client = client;

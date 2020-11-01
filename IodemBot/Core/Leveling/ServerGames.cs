@@ -268,7 +268,7 @@ namespace IodemBot.Core.Leveling
 
             if (userAccount.ServerStats.LookedUpInformation >= 21)
             {
-                await GoldenSun.AwardClassSeries("Apprentice Series", user, channel);
+                _ = GoldenSun.AwardClassSeries("Apprentice Series", user, channel);
             }
         }
 
@@ -280,7 +280,7 @@ namespace IodemBot.Core.Leveling
 
             if (userAccount.ServerStats.LookedUpClass >= 11)
             {
-                await GoldenSun.AwardClassSeries("Page Series", user, channel);
+                _ = GoldenSun.AwardClassSeries("Page Series", user, channel);
             }
         }
     }

@@ -123,7 +123,7 @@ namespace IodemBot.Modules
                 case 1:
                 case -2:
                     result = "You read me like an open book! You win!";
-                    await ServerGames.UserWonRPS((SocketGuildUser)Context.User, (SocketTextChannel)Context.Channel);
+                    _ = ServerGames.UserWonRPS((SocketGuildUser)Context.User, (SocketTextChannel)Context.Channel);
                     break;
 
                 case 0:
@@ -143,7 +143,7 @@ namespace IodemBot.Modules
             embed.WithDescription($"{emotesPlayer[(int)choice]} vs {emotesCPU[(int)cpuChoice]}");
             embed.AddField("Result:", result);
 
-            await Context.Channel.SendMessageAsync("", false, embed.Build());
+            _ = Context.Channel.SendMessageAsync("", false, embed.Build());
         }
     }
 }

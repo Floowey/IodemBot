@@ -190,7 +190,7 @@ namespace IodemBot.Modules
             string format = "HH':'mm', 'MMM dd";
             if (time == 12)
             {
-                format = "hh':'mm t'M , 'MMM dd";
+                format = "hh':'mm t'M, 'MMM dd";
             }
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
