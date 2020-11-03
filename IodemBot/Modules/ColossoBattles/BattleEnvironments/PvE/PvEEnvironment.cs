@@ -385,10 +385,15 @@ namespace IodemBot.Modules.ColossoBattles
         {
             try
             {
+                await Task.Delay(500);
                 await WriteStatus();
+                await Task.Delay(500);
                 await WriteSummons();
+                await Task.Delay(500);
                 await WriteEnemies();
+                await Task.Delay(500);
                 await WritePlayers();
+                await Task.Delay(500);
             }
             catch (HttpException e)
             {
