@@ -8,6 +8,7 @@ namespace IodemBot.Core.UserManagement
     public static class UserAccounts
     {
         private static readonly List<UserAccount> accounts;
+        //private static readonly string accountsFile = "Resources/Accounts/accounts.json";
         private static readonly string accountsFile = "Resources/Accounts/accounts.json";
 
         static UserAccounts()
@@ -59,18 +60,29 @@ namespace IodemBot.Core.UserManagement
 
         public static List<UserAccount> GetTop(RankEnum type = RankEnum.Level, EndlessMode mode = EndlessMode.Default)
         {
-            var sortedList = accounts.OrderByDescending(d => d.TotalXP).ToList();
-
+            List<UserAccount> sortedList = null;
             switch (type)
             {
+                case (RankEnum.Level):
                 case (RankEnum.Solo):
-                    sortedList = accounts.OrderByDescending(d => (d.ServerStats.GetStreak(mode) + d.ServerStatsTotal.GetStreak(mode)).Solo).ToList();
-                    break;
+                    try
+                    {
+                        sortedList = UserAccountProvider.GetLeaderBoard(type, mode)
+                            .Take(10)
+                            .ToList()
+                            .Select(id => UserAccountProvider.GetById(id.Key))
+                            .ToList();
 
+                    } catch (Exception e){
+                        break;
+                    }
+                    break;
                 case (RankEnum.Duo):
                 case (RankEnum.Trio):
                 case (RankEnum.Quad):
-                    sortedList = accounts.Where(p => (p.ServerStats.GetStreak(mode) + p.ServerStatsTotal.GetStreak(mode)).GetEntry(type).Item1 > 0)
+                    sortedList = UserAccountProvider.GetLeaderBoard(type, mode)
+                        .Take(20)
+                        .Select(id => UserAccountProvider.GetById(id.Key))
                         .GroupBy(p => (p.ServerStats.GetStreak(mode) + p.ServerStatsTotal.GetStreak(mode)).GetEntry(type).Item2)
                         .Select(group => group.First())
                         .OrderByDescending(d => (d.ServerStats.GetStreak(mode) + d.ServerStatsTotal.GetStreak(mode)).GetEntry(type).Item1)
@@ -82,11 +94,9 @@ namespace IodemBot.Core.UserManagement
             return sortedList;
         }
 
-        public static int GetRank(SocketUser user, RankEnum type = RankEnum.Level, EndlessMode mode = EndlessMode.Default)
+        public static int GetRank(UserAccount user, RankEnum type = RankEnum.Level, EndlessMode mode = EndlessMode.Default)
         {
-            var account = GetAccount(user);
-            var sortedList = GetTop(type, mode);
-            return sortedList.IndexOf(account);
+            return UserAccountProvider.GetLeaderBoard(type, mode).IndexOf(user.ID);
         }
 
         private static UserAccount GetOrCreateAccount(ulong id)
@@ -100,7 +110,7 @@ namespace IodemBot.Core.UserManagement
             {
                 account = CreateUserAccount(id);
             }
-//            return CreateUserAccount(id);
+
             return account;
         }
 

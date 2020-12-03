@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using IodemBot.Extensions;
-using LiteDB;
+//using LiteDB;
+using Newtonsoft.Json;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
@@ -47,6 +48,9 @@ namespace IodemBot.Modules.GoldenSunMechanics
             {ItemCategory.Accessoire, "<:Rings:572526110060052482>"}
         };
 
+        /// <summary>
+        /// Serialized and deserialized a list of strings to their Item object equivalent
+        /// </summary>
         public List<string> InvString
         {
             get => Inv.Count == 0 ? null : Inv?.Select(i => i.NameToSerialize).ToList();
@@ -62,11 +66,11 @@ namespace IodemBot.Modules.GoldenSunMechanics
             get => MageGear.Count == 0 ? null : MageGear?.Select(i => i.Name).ToList();
             set => MageGear = value?.Select(i => GetItem(i)).ToList() ?? new List<Item>();
         }
-        private List<Item> Inv { get; set; } = new List<Item>();
+        [JsonIgnore] private List<Item> Inv { get; set; } = new List<Item>();
 
-        private List<Item> WarriorGear { get; set; } = new List<Item>();
+        [JsonIgnore] private List<Item> WarriorGear { get; set; } = new List<Item>();
 
-        private List<Item> MageGear { get; set; } = new List<Item>();
+        [JsonIgnore] private List<Item> MageGear { get; set; } = new List<Item>();
 
         public uint Coins { get; set; }
         public uint Upgrades { get; set; }

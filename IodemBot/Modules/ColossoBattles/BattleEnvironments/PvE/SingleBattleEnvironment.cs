@@ -284,7 +284,6 @@ namespace IodemBot.Modules.ColossoBattles
                     Emote.Parse("<:Silver:537214282891395072>"),
                     Emote.Parse("<:Gold:537214319591555073>")
             });
-            wasJustReset = true;
         }
 
         private static readonly Dictionary<BattleDifficulty, string> medals = new Dictionary<BattleDifficulty, string>(){

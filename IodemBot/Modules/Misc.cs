@@ -292,7 +292,7 @@ namespace IodemBot.Modules
         [Summary("Get the most active users and your rank")]
         public async Task Rank()
         {
-            var topAccounts = UserAccountProvider.GetAllUsers().OrderByDescending(u => u.TotalXP).ToList();
+            var topAccounts = UserAccounts.GetTop();
             var embed = new EmbedBuilder();
             embed.WithColor(Colors.Get("Iodem"));
             string[] Emotes = new string[] { "🥇", "🥈", "🥈", "🥉", "🥉", "🥉", "   ", "   ", "   ", "   " };
@@ -305,7 +305,7 @@ namespace IodemBot.Modules
 
             //Console.WriteLine(rank);
             var account = EntityConverter.ConvertUser(Context.User);
-            var rank = topAccounts.IndexOf(account);
+            var rank = UserAccounts.GetRank(account);
             if (rank >= 10)
             {
                 builder.Append("... \n");
@@ -322,7 +322,7 @@ namespace IodemBot.Modules
         [Cooldown(5)]
         public async Task Showdown(RankEnum type = RankEnum.Solo, EndlessMode mode = EndlessMode.Default)
         {
-            var topAccounts = UserAccountProvider.GetAllUsers().ToList();
+            var topAccounts = UserAccounts.GetTop(type, mode);
 
             if (type == RankEnum.Solo)
             {
@@ -359,14 +359,14 @@ namespace IodemBot.Modules
                         break;
 
                     case RankEnum.Quad:
-                        builder.Append($"`{i + 1}` {Emotes[i]} {streak.Quad} - `{streak.QuadNames}`\n");
+                        builder.Append($"`{i + 1}` {Emotes[i]} {streak.QuadNames} - `{streak.Quad}`\n");
                         break;
                 }
             }
 
             //Console.WriteLine(rank);
             var account = EntityConverter.ConvertUser(Context.User);
-            var rank = topAccounts.IndexOf(account);
+            var rank = UserAccounts.GetRank(account, type, mode );
             if (rank >= 5)
             {
                 builder.Append("... \n");
@@ -378,15 +378,15 @@ namespace IodemBot.Modules
                         break;
 
                     case RankEnum.Duo:
-                        builder.Append($"`{rank + 1}` {streak.DuoNames} - `{streak.Duo}`");
+                        builder.Append($"{streak.DuoNames} - `{streak.Duo}`");
                         break;
 
                     case RankEnum.Trio:
-                        builder.Append($"`{rank + 1}` {streak.TrioNames} - `{streak.Trio}`");
+                        builder.Append($"{streak.TrioNames} - `{streak.Trio}`");
                         break;
 
                     case RankEnum.Quad:
-                        builder.Append($"`{rank + 1}` {streak.QuadNames} - `{streak.Quad}`");
+                        builder.Append($"{streak.QuadNames} - `{streak.Quad}`");
                         break;
                 }
             }

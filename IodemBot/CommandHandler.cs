@@ -15,7 +15,7 @@ namespace IodemBot
         public async Task InitializeAsync(DiscordSocketClient client)
         {
             this.client = client;
-            service = new CommandService();
+            service = new CommandService(new CommandServiceConfig() {DefaultRunMode = RunMode.Async});
             await service.AddModulesAsync(Assembly.GetEntryAssembly(), null);
             client.MessageReceived += HandleCommandAsync;
             Global.Client = client;

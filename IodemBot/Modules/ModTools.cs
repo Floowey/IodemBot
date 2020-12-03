@@ -70,8 +70,23 @@ namespace IodemBot.Modules
         private async Task SetupIodemTask()
         {
             await Context.Guild.DownloadUsersAsync();
-            Console.WriteLine(UserAccountProvider.Rebuild());
-            Console.WriteLine("hi.");
+            foreach (var gm in Context.Guild.Users)
+            {
+                var user = EntityConverter.ConvertUser(gm);
+                Console.WriteLine($"{user.Name} registered");
+
+                var elRole = gm.Roles.FirstOrDefault(r => r.Name.Contains("Adepts"));
+                if(elRole != null && user.Element == Element.none)
+                {
+                    var chosenElement = new[] { Element.Venus, Element.Mars, Element.Jupiter, Element.Mercury }
+                        .First(e => elRole.Name.Contains(e.ToString()));
+                    user.Element = chosenElement;
+                    var tags = new[] { "VenusAdept", "MarsAdept", "JupiterAdept", "MercuryAdept" };
+                    user.Tags.RemoveAll(s => tags.Contains(s));
+                    user.Tags.Add(tags[(int)chosenElement]);
+                    Console.WriteLine($"Updated Element for {user.Name}.");
+                }
+            }
             await Task.CompletedTask;
         }
 

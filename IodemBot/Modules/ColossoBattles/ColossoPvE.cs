@@ -244,8 +244,15 @@ namespace IodemBot.Modules.ColossoBattles
             if (a != null)
             {
                 _ = a.Reset();
-                await Context.Message.DeleteAsync();
             }
+        }
+
+        [Command("c reset")]
+        [RequireStaff]
+        [RequireUserServer]
+        public async Task Reset(IMessageChannel channel)
+        {
+            Reset(channel.Id);
         }
 
         [Command("c reset")]
@@ -259,7 +266,6 @@ namespace IodemBot.Modules.ColossoBattles
             if (a != null)
             {
                 _ = a.Reset();
-                await Context.Message.DeleteAsync();
             }
         }
 

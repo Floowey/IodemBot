@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text.Json.Serialization;
 using IodemBot.Extensions;
-using LiteDB;
+using Newtonsoft.Json;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
@@ -12,8 +11,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public static readonly int MaxDjinn = 2;
         public static readonly int BasePocketSize = 6;
         public static readonly int AllowedDjinnGap = 3;
-        [BsonIgnore] [JsonIgnore] public List<Djinn> Djinn { get; set; } = new List<Djinn>();
-        [BsonIgnore] [JsonIgnore] public List<Summon> Summons { get; set; } = new List<Summon>();
+        [JsonIgnore] public List<Djinn> Djinn { get; set; } = new List<Djinn>();
+        [JsonIgnore] public List<Summon> Summons { get; set; } = new List<Summon>();
 
         public List<DjinnHolder> DjinnStorage
         {
@@ -29,7 +28,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         }
         public List<Element> DjinnSetup { get; set; } = new List<Element>();
         public int PocketUpgrades { get; set; } = 0;
-        [BsonIgnore] public int PocketSize { get => Math.Min(60, BasePocketSize + PocketUpgrades * 2) + Djinn.Count(d => d.IsEvent); }
+        [JsonIgnore] public int PocketSize { get => Math.Min(60, BasePocketSize + PocketUpgrades * 2) + Djinn.Count(d => d.IsEvent); }
 
         public class DjinnHolder
         {

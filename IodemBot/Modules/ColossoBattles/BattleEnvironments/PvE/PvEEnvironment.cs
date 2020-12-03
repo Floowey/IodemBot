@@ -265,6 +265,23 @@ namespace IodemBot.Modules.ColossoBattles
             }
         }
 
+        private static string[] tutorialTips = new[]
+        {
+            "Djinn are your friends! Use them make up for weaknesses in your class!",
+            "You want to play with multiple setups? Save your loadout with `i!loadout save <My Loadout Name>` to access it later!",
+            "Make sure to keep opening your daily chests! Every 5th item will be better than the ones before!",
+            "Struggling to beat a dungeon? Keep on grinding, you might find good gear to help you progress!",
+            "Some dungeons might feature riddles, take your time to solve them by reacting with :pause_button:",
+            "i!colosso is a great way to earn some solo xp if running solo battles are a little too difficult.",
+            "The @colosso guard are here to ensure that things run smoothly on Iodem's side.  Be sure to ping them if you have any questions regarding stability.",
+            "Remember to keep commands locked away in <#358276942337671178> to ensure that the <#546760009741107216> channel doesn't get flooded with shenanigans.",
+            "No djinn were harmed in the making of this code.  Except for Flint, but he had it coming.",
+            "Take your time, especially if a lot of people are playing. Iodem can only do so much at once!",
+            "Collecting Djinn of your class element can help you power up in more ways than one!",
+            "There are a lot of classes in Golden Sun.  Try them out!  Each has strengths and weaknesses that may help you if you get stuck.",
+            "Be sure to check the pins in #colosso-talks !  A lot of good information is saved there.",
+            "You have two equipment sets: warrior and mage.  Items can be equipped to one or both sets!"
+        };
         public override async Task Reset()
         {
             Battle = new ColossoBattle();
@@ -291,7 +308,7 @@ namespace IodemBot.Modules.ColossoBattles
             {
                 await EnemyMessage.ModifyAsync(c => { c.Content = GetEnemyMessageString(); c.Embed = null; });
                 await EnemyMessage.RemoveAllReactionsAsync();
-                _ = EnemyMessage.AddReactionsAsync(new IEmote[]
+                await EnemyMessage.AddReactionsAsync(new IEmote[]
                 {
                         Emote.Parse("<:Fight:536919792813211648>"),
                         Emote.Parse("<:Battle:536954571256365096>")
@@ -305,7 +322,7 @@ namespace IodemBot.Modules.ColossoBattles
             }
             else
             {
-                _ = SummonsMessage.ModifyAsync(m => { m.Content = "Good Luck!"; m.Embed = null; });
+                _ = SummonsMessage.ModifyAsync(m => { m.Content = $"Good Luck!\n{tutorialTips.Random()}"; m.Embed = null; });
                 _ = SummonsMessage.RemoveAllReactionsAsync();
             }
 
@@ -372,7 +389,10 @@ namespace IodemBot.Modules.ColossoBattles
                 return;
             }
 
-            PlayerMessages.Values.ToList().ForEach(p => p.Moves.AddRange(Factory.PossibleSummons));
+            if (wasJustReset)
+            {
+                PlayerMessages.Values.ToList().ForEach(p => p.Moves.AddRange(Factory.PossibleSummons));
+            }
 
             resetIfNotActive.Stop();
             Battle.Start();
@@ -385,15 +405,16 @@ namespace IodemBot.Modules.ColossoBattles
         {
             try
             {
-                await Task.Delay(500);
+                var delay = Global.Client.Latency / 2;
+                await Task.Delay(delay);
                 await WriteStatus();
-                await Task.Delay(500);
+                await Task.Delay(delay);
                 await WriteSummons();
-                await Task.Delay(500);
+                await Task.Delay(delay);
                 await WriteEnemies();
-                await Task.Delay(500);
+                await Task.Delay(delay);
                 await WritePlayers();
-                await Task.Delay(500);
+                await Task.Delay(delay);
             }
             catch (HttpException e)
             {
@@ -502,7 +523,7 @@ namespace IodemBot.Modules.ColossoBattles
             var i = 1;
             foreach (ColossoFighter fighter in Battle.GetTeam(Team.B))
             {
-                e.AddField($"{numberEmotes[i]} {fighter.ConditionsToString()}", $"{fighter.Name}", true);
+                e.AddField($"{numberEmotes[i]} {fighter.ConditionsToString()}".Trim(), $"{fighter.Name}", true);
                 i++;
             }
             return e;
@@ -580,24 +601,15 @@ namespace IodemBot.Modules.ColossoBattles
             EmbedBuilder embed = new EmbedBuilder()
                 .WithThumbnailUrl("https://cdn.discordapp.com/attachments/497696510688100352/640300243820216336/unknown.png");
 
-            if (allDjinn.OfElement(Element.Venus).Count() > 0)
+            foreach (var el in new[] {Element.Venus, Element.Mars, Element.Jupiter, Element.Mercury })
             {
-                embed.AddField("Venus", $"{string.Join(" ", standbyDjinn.OfElement(Element.Venus).Select(d => d.Emote))} |" +
-                    $"{string.Join(" ", recoveryDjinn.OfElement(Element.Venus).Select(d => d.Emote))}", true);
+                if (allDjinn.OfElement(el).Count() > 0)
+                {
+                    embed.AddField(el.ToString(), ($"{string.Join(" ", standbyDjinn.OfElement(el).Select(d => d.Emote))} | " +
+                        $"{string.Join(" ", recoveryDjinn.OfElement(el).Select(d => d.Emote))}").Trim(), true);
+                }
             }
-            if (allDjinn.OfElement(Element.Mars).Count() > 0)
-            {
-                embed.AddField("Mars", $"{string.Join(" ", standbyDjinn.OfElement(Element.Mars).Select(d => d.Emote))} |" +
-                    $"{string.Join(" ", recoveryDjinn.OfElement(Element.Mars).Select(d => d.Emote))}", true);
-            }
-            if (allDjinn.OfElement(Element.Jupiter).Count() > 0)
-            {
-                embed.AddField("Jupiter", $"{string.Join(" ", standbyDjinn.OfElement(Element.Jupiter).Select(d => d.Emote))} |" + $"{string.Join(" ", recoveryDjinn.OfElement(Element.Jupiter).Select(d => d.Emote))}", true);
-            }
-            if (allDjinn.OfElement(Element.Mercury).Count() > 0)
-            {
-                embed.AddField("Mercury", $"{string.Join(" ", standbyDjinn.OfElement(Element.Mercury).Select(d => d.Emote))} |" + $"{string.Join(" ", recoveryDjinn.OfElement(Element.Mercury).Select(d => d.Emote))}", true);
-            }
+
             return embed;
         }
 

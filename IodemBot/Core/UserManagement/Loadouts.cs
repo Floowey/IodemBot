@@ -44,7 +44,7 @@ namespace IodemBot.Core.UserManagement
             };
             var classSeries = AdeptClassSeriesManager.GetClassSeries(account);
             L.ClassSeries = classSeries.Name;
-            L.Gear = account.Inv.GetGear(classSeries.Archtype).Select(i => i.Name).ToList();
+            L.Gear = account.Inv.GetGear(classSeries.Archtype).OrderBy(i => i.ItemType).Select(i => i.Name).ToList();
             return L;
         }
 
