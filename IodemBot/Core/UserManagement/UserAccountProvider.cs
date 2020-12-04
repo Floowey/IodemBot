@@ -12,8 +12,6 @@ namespace IodemBot.Core.UserManagement
         private static readonly Dictionary<Tuple<RankEnum, EndlessMode>, LeaderBoard> leaderBoards
             = new Dictionary<Tuple<RankEnum, EndlessMode>, LeaderBoard>();
 
-
-
         static UserAccountProvider()
         {
             //_persistentStorage = new PersistentStorage<UserAccount>();

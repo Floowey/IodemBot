@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Runtime.Caching;
 using System.Text;
+using System.Threading;
 using IodemBot.Core.UserManagement;
 using Newtonsoft.Json;
 
@@ -14,7 +16,7 @@ namespace IodemBot.Core
     {
         private static readonly string FolderPath = "Resources/Accounts/AccountFiles";
         private static readonly string BackupPath = "Resources/Accounts/BackupAccountFiles";
-        private static readonly Dictionary<ulong, object> locks = new Dictionary<ulong, object>();
+        private static readonly ConcurrentDictionary<ulong, object> locks = new ConcurrentDictionary<ulong, object>();
         private static readonly MemoryCache cache = MemoryCache.Default;
 
         static UserDataFileStorage()
@@ -52,14 +54,14 @@ namespace IodemBot.Core
                 }
             }
         }
+        private static readonly object locklock = new object();
         private static object GetLock(ulong id)
         {
-            if (!locks.TryGetValue(id, out object datalock))
+            lock (locklock)
             {
-                datalock = new object();
-                locks.Add(id, datalock);
+                object datalock = new object();
+                return locks.GetOrAdd(id, datalock);
             }
-            return datalock;
         }
         public UserAccount RestoreSingle(ulong id, bool doCache)
         {
@@ -74,8 +76,10 @@ namespace IodemBot.Core
         {
             try
             {
-                lock (GetLock(id))
+                object lockobj = GetLock(id);
+                lock (lockobj)
                 {
+                    Console.WriteLine($"{id} ({lockobj.GetHashCode()}) entered on thread {Thread.CurrentThread.ManagedThreadId}");
                     UserAccount user = cache[$"{id}_user"] as UserAccount;
                     if(user == null)
                     {
@@ -105,11 +109,10 @@ namespace IodemBot.Core
                             user = JsonConvert.DeserializeObject<UserAccount>(json);
                         }
                     }
-                   
+                    Console.WriteLine($"{id} ({lockobj.GetHashCode()}) exits on thread {Thread.CurrentThread.ManagedThreadId}");
                     return user;
                 }       
             } catch (Exception e) {
-                //Go on to load back up file
                 Console.WriteLine($"Loading user {id} critically failed: {e}");
                 return null;
             }

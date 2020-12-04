@@ -40,10 +40,10 @@ namespace IodemBot
 
             client = new DiscordSocketClient(new DiscordSocketConfig
             {
-                LogLevel = LogSeverity.Debug,
+                LogLevel = LogSeverity.Info,
                 MessageCacheSize = 10,
                 DefaultRetryMode = RetryMode.AlwaysRetry,
-                ExclusiveBulkDelete = true,
+                ExclusiveBulkDelete = true
             });
 
             Global.Client = client;
@@ -134,8 +134,8 @@ namespace IodemBot
                     var gs = GuildSettings.GetGuildSettings(guild);
                     if (gs.AutoSetup && gs.ColossoChannel != null)
                     {
-                        //await ColossoPvE.Setup(guild);
-                        //Console.WriteLine($"Setup in {gs.Name}");
+                        await ColossoPvE.Setup(guild);
+                        Console.WriteLine($"Setup in {gs.Name}");
                     }
                 }
             }
