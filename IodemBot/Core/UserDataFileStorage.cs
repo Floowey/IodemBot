@@ -79,7 +79,6 @@ namespace IodemBot.Core
                 object lockobj = GetLock(id);
                 lock (lockobj)
                 {
-                    Console.WriteLine($"{id} ({lockobj.GetHashCode()}) entered on thread {Thread.CurrentThread.ManagedThreadId}");
                     UserAccount user = cache[$"{id}_user"] as UserAccount;
                     if(user == null)
                     {
@@ -109,7 +108,6 @@ namespace IodemBot.Core
                             user = JsonConvert.DeserializeObject<UserAccount>(json);
                         }
                     }
-                    Console.WriteLine($"{id} ({lockobj.GetHashCode()}) exits on thread {Thread.CurrentThread.ManagedThreadId}");
                     return user;
                 }       
             } catch (Exception e) {
