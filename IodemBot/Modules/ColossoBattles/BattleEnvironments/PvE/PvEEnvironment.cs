@@ -267,13 +267,13 @@ namespace IodemBot.Modules.ColossoBattles
 
         private static string[] tutorialTips = new[]
         {
-            "Djinn are your friends! Use them make up for weaknesses in your class!",
+            "Djinn are your friends! Use them to make up for weaknesses in your class!",
             "You want to play with multiple setups? Save your loadout with `i!loadout save <My Loadout Name>` to access it later!",
             "Make sure to keep opening your daily chests! Every 5th item will be better than the ones before!",
             "Struggling to beat a dungeon? Keep on grinding, you might find good gear to help you progress!",
             "Some dungeons might feature riddles, take your time to solve them by reacting with :pause_button:",
-            "i!colosso is a great way to earn some solo xp if running solo battles are a little too difficult.",
-            "The @colosso guard are here to ensure that things run smoothly on Iodem's side.  Be sure to ping them if you have any questions regarding stability.",
+            "i!train is a great way to earn some solo xp if running solo battles are a little too difficult.",
+            "The @Colosso Guard are here to ensure that things run smoothly on Iodem's side.  Be sure to ping them if you have any questions regarding stability.",
             "Remember to keep commands locked away in <#358276942337671178> to ensure that the <#546760009741107216> channel doesn't get flooded with shenanigans.",
             "No djinn were harmed in the making of this code.  Except for Flint, but he had it coming.",
             "Take your time, especially if a lot of people are playing. Iodem can only do so much at once!",
@@ -389,7 +389,7 @@ namespace IodemBot.Modules.ColossoBattles
                 return;
             }
 
-            if (wasJustReset)
+            if (!PlayerMessages.Values.Any(p => p.Moves.Any(m => m is Summon))
             {
                 PlayerMessages.Values.ToList().ForEach(p => p.Moves.AddRange(Factory.PossibleSummons));
             }
