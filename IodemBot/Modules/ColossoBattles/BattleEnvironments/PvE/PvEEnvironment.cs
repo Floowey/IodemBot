@@ -389,7 +389,7 @@ namespace IodemBot.Modules.ColossoBattles
                 return;
             }
 
-            if (!PlayerMessages.Values.Any(p => p.Moves.Any(m => m is Summon))
+            if (!PlayerMessages.Values.Any(p => p.Moves.Any(m => m is Summon)))
             {
                 PlayerMessages.Values.ToList().ForEach(p => p.Moves.AddRange(Factory.PossibleSummons));
             }
