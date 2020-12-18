@@ -720,7 +720,7 @@
     "Name": "Demonic Staff",
     "Price": 8200,
     "Icon": "<:Demonic_Staff:569855339667783681>",
-    "AnimatedIcon": "<a:Crystal_Rod:789177053374054441>",
+    "AnimatedIcon": "<a:Demonic_Staff:789177261172981810>",
     "ItemType": "Staff",
     "IsEquippable": true,
     "IsArtifact": true,
