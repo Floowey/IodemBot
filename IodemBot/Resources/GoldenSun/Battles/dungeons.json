@@ -1532,7 +1532,7 @@
         ]
       },
       {
-        "Flavourtext": "You explore more of the town. After some parcouring through the town you find another entrance to the Mayor's Warehouse cave. From here you can use your Psynergy to free the way. Which one do you use?",
+        "Flavourtext": "You explore more of the town. After some parkouring through the town you find another entrance to the Mayor's Warehouse cave. From here you can use your Psynergy to free the way. Which one do you use?",
         "EnemyNames": [ "Key:Move", "Trap:Catch", "Trap:Retreat" ],
         "Keywords": [ "Shuffle" ],
         "Image": "https://cdn.discordapp.com/attachments/668443234292334612/733732549725126718/unknown.png",
