@@ -402,7 +402,10 @@ namespace IodemBot.Modules
 
             var tags = new[] { "VenusAdept", "MarsAdept", "JupiterAdept", "MercuryAdept" };
             user.Tags.RemoveAll(s => tags.Contains(s));
-            user.Tags.Add(tags[(int)chosenElement]);
+            if((int)chosenElement < tags.Length)
+            {
+                user.Tags.Add(tags[(int)chosenElement]);
+            }
         }
 
         public async Task GiveElementRole(SocketGuildUser user, Element chosenElement)
