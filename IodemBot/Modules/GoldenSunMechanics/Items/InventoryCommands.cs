@@ -156,6 +156,32 @@ namespace IodemBot.Modules.GoldenSunMechanics
             await Context.Channel.SendMessageAsync("", false, embed.Build());
         }
 
+        [Command("polishes")]
+        [RequireStaff]
+        public async Task Polishes()
+        {
+            var allitems = ItemDatabase.GetAllItems();
+            var weapons = allitems.Where(i => i.Category == ItemCategory.Weapon);
+            var invstring = string.Join(' ', weapons.Where(w => w.CanBeAnimated).Select(i => i.AnimatedIcon));
+            invstring += string.Join(", ", weapons.Where(w => !w.CanBeAnimated).Select(i => i.Name));
+            var embed = new EmbedBuilder();
+            var remainingstring = invstring;
+            List<string> parts = new List<string>();
+            while (remainingstring.Length >= 1024)
+            {
+                var lastitem = remainingstring.Take(1024).ToList().FindLastIndex(s => s.Equals(' ')) + 1;
+                parts.Add(string.Join("", remainingstring.Take(lastitem)));
+                remainingstring = string.Join("", remainingstring.Skip(lastitem));
+            }
+            parts.Add(remainingstring);
+            foreach (var (value, index) in parts.Select((v, i) => (v, i)))
+            {
+                embed.AddField($"{index + 1}/{parts.Count}", value);
+            }
+
+            _ = ReplyAsync(embed: embed.Build());
+        }
+
         [Command("item polish")]
         [Summary("Polish an item to get its animated sprite")]
         public async Task PolishItem([Remainder] string item)

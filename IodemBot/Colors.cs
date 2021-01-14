@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Discord;
 
 namespace IodemBot
@@ -34,11 +35,15 @@ namespace IodemBot
             return new Color(255, 255, 255);
         }
 
-        public static Color Get(string[] keys)
+        public static Color Get(IEnumerable<string> keys)
         {
+            if (keys.Count() == 0){
+                return Color.LightGrey;
+            }
             int r = 0;
             int g = 0;
             int b = 0;
+
             foreach (string c in keys)
             {
                 var col = Get(c);
@@ -46,7 +51,7 @@ namespace IodemBot
                 g += col.G;
                 b += col.B;
             }
-            return new Color(r / keys.Length, g / keys.Length, b / keys.Length);
+            return new Color(r / keys.Count(), g / keys.Count(), b / keys.Count());
         }
     }
 }

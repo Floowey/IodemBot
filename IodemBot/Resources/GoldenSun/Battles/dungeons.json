@@ -11,7 +11,7 @@
     },
     "Matchups": [
       {
-        "Flavourtext": "Welcome to the marvelous world of Weyard, aspiring adept. I will introduce you to the setting of Golden Sun and how the mechanics are going to work. If you want to take your time while doing this, you can react with :pause_button: to stop a battle from automatically going forward. To continue, click on the 'Attack' reaction.",
+        "Flavourtext": "Welcome to the marvelous world of Weyard, aspiring Adept. I will introduce you to the setting of Golden Sun and how the mechanics are going to work. If you want to take your time while doing this, you can react with :pause_button: to stop a battle from automatically going forward. To continue, click on the 'Attack' reaction.",
         "EnemyNames": [ "Next" ],
         "Image": "",
         "RewardTables": [
@@ -25,7 +25,7 @@
         ]
       },
       {
-        "Flavourtext": "Weyard is a world filled with the power of Alchemy. This means, that everything consists of the four classical elements.\nVenus, the element of Earth,\nMars, the element of Fire,\nJupiter, the element of Wind and\nMercury, the element of Water.\nAn adept is a human who inherited the power of one of these elements.",
+        "Flavourtext": "Weyard is a world filled with the power of Alchemy. This means that everything consists of the four classical elements.\nVenus, the element of Earth,\nMars, the element of Fire,\nJupiter, the element of Wind, and\nMercury, the element of Water.\nAn Adept is a human who inherited the power of one of these elements.",
         "EnemyNames": [ "Next" ],
         "Image": "",
         "RewardTables": [
@@ -39,7 +39,7 @@
         ]
       },
       {
-        "Flavourtext": "As you are an aspiring adept too, you will want to align yourself with one of these elements, if you haven't done so yet. Go to #gabomba-gears and use the command `i!element Venus`, or any other elemental path you would like to pursue. Generally, all commands are to be used in this channel. Note that you can change your element at any time and as often as you want!",
+        "Flavourtext": "As you are an aspiring Adept too, you will want to align yourself with one of these elements, if you haven't done so yet. Go to #gabomba-gears and use the command `i!element Venus`, or any other elemental path you would like to pursue. Generally, all commands are to be used in this channel. Note that you can change your element at any time and as often as you want!",
         "EnemyNames": [ "Next" ],
         "Image": "",
         "RewardTables": [
@@ -107,7 +107,7 @@
         ]
       },
       {
-        "Flavourtext": "At last, let's talk about battles. Bringing a fighter's HP to zero knocks them out. You can use a variety of different Psynergy, including attacks that either target a single enemy or area-of-effect moves, healing moves, or status moves. Watch how using Psynergy takes up Psynergy Point (PP), the equivalent of mana. Make sure to have enough to spare to get out of a pinch! Now, try to take down this little critter.",
+        "Flavourtext": "At last, let's talk about battles. Bringing a fighter's HP to zero knocks them out. You can use a variety of different Psynergy, including attacks that either target a single enemy or area-of-effect moves, healing moves, or status moves. Watch how using Psynergy takes up Psynergy Points (PP), the equivalent of mana. Make sure to have enough to spare to get out of a pinch! Now, try to take down this opponent.",
         "EnemyNames": [ "Training Dummy" ],
         "Image": "",
         "RewardTables": [
@@ -150,7 +150,7 @@
         ]
       },
       {
-        "Flavourtext": "Well done! You are set and ready! You are starting off in the calm town of Vault. It is near the Ruins of Vale, one of the most significant locations to the world of Golden Sun and the perfect place to start an unforgetable adventure!",
+        "Flavourtext": "Well done! You are set and ready! You are starting off in the calm town of Vault. It is near the Ruins of Vale, one of the most significant locations to the world of Golden Sun and the perfect place to start an unforgettable adventure!",
         "EnemyNames": [ "End" ],
         "Image": "",
         "RewardTables": [
@@ -1532,7 +1532,7 @@
         ]
       },
       {
-        "Flavourtext": "You explore more of the town. After some parkouring through the town you find another entrance to the Mayor's Warehouse cave. From here you can use your Psynergy to free the way. Which one do you use?",
+        "Flavourtext": "You explore more of the town. After some parcouring through the town you find another entrance to the Mayor's Warehouse cave. From here you can use your Psynergy to free the way. Which one do you use?",
         "EnemyNames": [ "Key:Move", "Trap:Catch", "Trap:Retreat" ],
         "Keywords": [ "Shuffle" ],
         "Image": "https://cdn.discordapp.com/attachments/668443234292334612/733732549725126718/unknown.png",
@@ -2215,7 +2215,7 @@
   "Lunpa": {
     "name": "Lunpa",
     "IsOneTimeOnly": false,
-    "FlavourText": "Lunpa, home of Dodonpa's reknowned family of thieves. It's supposed to be a fortress, but a big sign out front says, 'Welcome to Lunpa! The strongest warriors may enter! Children and spectators, please talk to the guards!'",
+    "FlavourText": "Lunpa, home of Dodonpa's renowned family of thieves. It's supposed to be a fortress, but a big sign out front says, 'Welcome to Lunpa! The strongest warriors may enter! Children and spectators, please talk to the guards!'",
     "Image": "https://goldensunwiki.net/w/images/7/79/Lunpa.PNG",
     "IsDefault": false,
     "Requirement": {
@@ -3170,7 +3170,7 @@
       {
         "Flavourtext": "After all of those battles and ambushes, you cannot wait to rest at the next town. Your hope, however, is crushed by an ape that stumbles in your path, trying to get a Tarantula out of its hair.",
         "EnemyNames": [ "Tarantula 1", "Killer Ape 1" ],
-        "Image": "",
+        "Image": "https://goldensunwiki.net/w/images/1/15/Killer_Ape.png",
         "RewardTables": [
           [
             {
@@ -4546,9 +4546,9 @@
             },
             {
               "Weight": 4,
-              "Tag": "TolbiTorch",
+              "Tag": "TolbiEmber",
               "Obtainable": 1,
-              "Djinn": "Torch"
+              "Djinn": "Ember"
             },
             {
               "Weight": 5,
@@ -8102,7 +8102,7 @@
       },
       {
         "Flavourtext": "Some of these struggles were held on land itself, clashing blades and pitting armies against those that challenged them. Other battles were held on the oceans, where navies sought reign over the waters near the land they coveted; cannonballs were exchanged between sides, ships would close in on others to send in their best warriors in hopes of slaying the enemy crews. It is truly a violent past to behold, one that shouldn't be overlooked.'",
-        "EnemyNames": [ "Aqua Hydra 1", "Pyrodra" ],
+        "EnemyNames": [ "Aqua Hydra 1,Pyrodra" ],
         "Keywords": [ "Shuffle" ],
         "Image": "",
         "RewardTables": [

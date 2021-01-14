@@ -403,9 +403,10 @@ namespace IodemBot.Modules.ColossoBattles
 
         protected override async Task WriteBattle()
         {
+            var delay = Global.Client.Latency / 2;
             try
             {
-                var delay = Global.Client.Latency / 2;
+                
                 await Task.Delay(delay);
                 await WriteStatus();
                 await Task.Delay(delay);
@@ -421,8 +422,11 @@ namespace IodemBot.Modules.ColossoBattles
                 Console.WriteLine("Failed drawing Battle, retrying." + e.ToString());
                 Battle.log.Add("Failed drawing Battle, retrying.");
                 await WriteStatus();
+                await Task.Delay(delay);
                 await WriteSummons();
+                await Task.Delay(delay);
                 await WriteEnemies();
+                await Task.Delay(delay);
                 await WritePlayers();
             }
             catch (TimeoutException e)
@@ -443,11 +447,15 @@ namespace IodemBot.Modules.ColossoBattles
 
         protected override async Task WriteBattleInit()
         {
+            var delay = Global.Client.Latency / 2;
             try
             {
                 await WriteStatusInit();
+                await Task.Delay(delay);
                 await WriteSummonsInit();
+                await Task.Delay(delay);
                 await WriteEnemiesInit();
+                await Task.Delay(delay);
                 await WritePlayersInit();
             }
             catch (HttpException e)
@@ -455,8 +463,11 @@ namespace IodemBot.Modules.ColossoBattles
                 Console.WriteLine("Failed drawing Battle, retrying: " + e.ToString());
                 Battle.log.Add("Failed drawing Battle, retrying.");
                 await WriteStatusInit();
+                await Task.Delay(delay);
                 await WriteSummonsInit();
+                await Task.Delay(delay);
                 await WriteEnemiesInit();
+                await Task.Delay(delay);
                 await WritePlayersInit();
             }
             catch (TimeoutException e)
@@ -598,15 +609,24 @@ namespace IodemBot.Modules.ColossoBattles
             {
                 return null;
             }
-            EmbedBuilder embed = new EmbedBuilder()
-                .WithThumbnailUrl("https://cdn.discordapp.com/attachments/497696510688100352/640300243820216336/unknown.png");
+            EmbedBuilder embed = new EmbedBuilder();
+                //.WithThumbnailUrl("https://cdn.discordapp.com/attachments/497696510688100352/640300243820216336/unknown.png");
 
             foreach (var el in new[] {Element.Venus, Element.Mars, Element.Jupiter, Element.Mercury })
             {
                 if (allDjinn.OfElement(el).Count() > 0)
                 {
-                    embed.AddField(el.ToString(), ($"{string.Join(" ", standbyDjinn.OfElement(el).Select(d => d.Emote))} | " +
-                        $"{string.Join(" ", recoveryDjinn.OfElement(el).Select(d => d.Emote))}").Trim(), true);
+                    var standby = string.Join(" ", standbyDjinn.OfElement(el).Select(d => d.Emote));
+                    var recovery = string.Join(" ", recoveryDjinn.OfElement(el).Select(d => d.Emote));
+                    embed.WithColor(Colors.Get(standbyDjinn.Select(e => e.Element.ToString()).ToList()));
+
+                    embed.AddField(GoldenSun.ElementIcons[el], ($"{standby}" +
+                        $"{(!standby.IsNullOrEmpty() && !recovery.IsNullOrEmpty() ? "\n" : "\u200b")}" +
+                        $"{(recovery.IsNullOrEmpty() ? "" : $"({recovery})")}").Trim(), true);
+                    if(embed.Fields.Count == 2 || embed.Fields.Count == 5)
+                    {
+                        embed.AddField("\u200b", "\u200b", true);
+                    }
                 }
             }
 

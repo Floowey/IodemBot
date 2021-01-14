@@ -92,7 +92,7 @@ namespace IodemBot.Modules.ColossoBattles
                 {
                     Chest = ChestQuality.Silver,
                     HasChest=true,
-                    Weight = 2
+                    Weight = 1
                 },
                 new DefaultReward()
                 {
@@ -225,7 +225,9 @@ namespace IodemBot.Modules.ColossoBattles
                 chests.RemoveAll(s => s is DefaultReward d && !d.HasChest);
 
                 // If there was *no* mimic, add a counter weight
-                var lurCapBonus = new[] { 16, 12, 10, 9, 8 };
+                //var lurCapBonus = new[] { 16, 12, 10, 9, 8 };
+                var lurCapBonus = new[] { 12, 10, 9, 8, 7};
+
                 if (!Battle.TeamB.Any(f => f.Name.Contains("Mimic")))
                 {
                     chests.Add(new DefaultReward() { Weight = chests.Weight * lurCapBonus[LureCaps] });
@@ -252,7 +254,7 @@ namespace IodemBot.Modules.ColossoBattles
                     {
                         djinnTable.Add(new DefaultReward() { Djinn = "Mercury", Weight = 1 });
                     }
-                    djinnTable.Add(new DefaultReward() { Weight = djinnTable.Weight * (10 - (int)Difficulty) * 3 - djinnTable.Weight });
+                    djinnTable.Add(new DefaultReward() { Weight = djinnTable.Weight * (9 - (int)Difficulty) * 3 - djinnTable.Weight });
                     RewardTables.Add(djinnTable);
                 }
 

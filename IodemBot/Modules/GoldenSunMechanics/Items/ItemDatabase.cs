@@ -178,6 +178,11 @@ namespace IodemBot.Modules.GoldenSunMechanics
             return true;
         }
 
+        public static IEnumerable<Item> GetAllItems()
+        {
+            return itemsDatabase.Values.ToList().AsReadOnly();
+        }
+
         public static string GetRandomItem(ItemRarity rarity)
         {
             return itemsDatabase.Values.Where(i => i.Rarity == rarity).Random().Name;

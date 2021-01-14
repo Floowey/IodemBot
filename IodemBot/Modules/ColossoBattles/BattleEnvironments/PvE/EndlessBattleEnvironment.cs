@@ -116,7 +116,7 @@ namespace IodemBot.Modules.ColossoBattles
         {
             get
             {
-                var basexp = 12 + 3 * LureCaps + winsInARow / 4;
+                var basexp = 15 + 3 * LureCaps + winsInARow / 4;
                 var DiffFactor = (int)Math.Max(2, (uint)Math.Pow((int)Difficulty + 1, 2));
                 var xp = (uint)(Global.RandomNumber(basexp, 2 * basexp) * DiffFactor);
                 return new RewardTables()
@@ -197,7 +197,7 @@ namespace IodemBot.Modules.ColossoBattles
                 var RewardTables = Rewards;
                 var chests = chestTable[Difficulty];
                 chests.RemoveAll(s => s is DefaultReward d && !d.HasChest);
-                var lurCapBonus = new[] { 16, 12, 10, 9, 8 };
+                var lurCapBonus = new[] { 12, 10, 9, 8, 7 };
                 if (!Battle.TeamB.Any(f => f.Name.Contains("Mimic")))
                 {
                     chests.Add(new DefaultReward { Weight = chests.Weight * lurCapBonus[LureCaps] });
@@ -224,7 +224,7 @@ namespace IodemBot.Modules.ColossoBattles
                     {
                         djinnTable.Add(new DefaultReward() { Djinn = "Mercury", Weight = 1 });
                     }
-                    djinnTable.Add(new DefaultReward() { Weight = djinnTable.Weight * (10 - (int)Difficulty) * 2 - djinnTable.Weight });
+                    djinnTable.Add(new DefaultReward() { Weight = djinnTable.Weight * (9 - (int)Difficulty) * 2 - djinnTable.Weight });
                     RewardTables.Add(djinnTable);
                 }
 

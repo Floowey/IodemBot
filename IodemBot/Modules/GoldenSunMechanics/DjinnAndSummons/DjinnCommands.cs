@@ -103,10 +103,17 @@ namespace IodemBot.Modules.GoldenSunMechanics
             }
             embed.AddField("Equipped", equippedstring);
 
-            foreach (Element e in new[] { Element.Venus, Element.Mars, Element.Jupiter, Element.Mercury })
+            foreach (Element e in new[] { Element.Venus, Element.Mars, Element.none, Element.Jupiter, Element.Mercury, Element.none })
             {
-                var djinnString = djinnPocket.Djinn.OfElement(e).GetDisplay(detail);
-                embed.AddField($"{e} Djinn", djinnString, true);
+                if(e == Element.none)
+                {
+                    embed.AddField("\u200b", "\u200b", true);
+                }
+                else
+                {
+                    var djinnString = djinnPocket.Djinn.OfElement(e).GetDisplay(detail);
+                    embed.AddField($"{e} Djinn", djinnString, true);
+                }
             }
             var eventDjinn = djinnPocket.Djinn.Count(d => d.IsEvent);
             embed.WithFooter($"{djinnPocket.Djinn.Count()}/{djinnPocket.PocketSize}{(eventDjinn > 0 ? $"(+{eventDjinn})" : "")} Upgrade: {(djinnPocket.PocketUpgrades + 1) * 3000}");
