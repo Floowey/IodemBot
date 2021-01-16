@@ -133,6 +133,10 @@ namespace IodemBot.Modules.ColossoBattles
             }
         }
 
+        public void SetStreak(int streak)
+        {
+            winsInARow = streak;
+        }
         private double Boost
         {
             get
@@ -203,6 +207,18 @@ namespace IodemBot.Modules.ColossoBattles
                     chests.Add(new DefaultReward { Weight = chests.Weight * lurCapBonus[LureCaps] });
                 }
                 RewardTables.Add(chests);
+
+                if(winsInARow % 10 == 0) {
+                    var rt = new RewardTable
+                    {
+                        new DefaultReward()
+                        {
+                            Chest = (ChestQuality)(Math.Min(4, winsInARow / 10)),
+                            HasChest = true
+                        }
+                    };
+                    RewardTables.Add(rt);
+                }
 
                 if (Battle.TeamB.Any(f => f.Name.Contains("Djinn")))
                 {

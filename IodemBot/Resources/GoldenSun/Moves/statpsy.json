@@ -997,7 +997,7 @@
   "Sack": {
     "name": "Sack",
     "targetType": 0,
-    "emote": ":axe:",
+    "emote": "🪓",
     "range": 1,
     "element": 1,
     "PPCost": 0,

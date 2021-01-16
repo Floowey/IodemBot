@@ -286,10 +286,12 @@ namespace IodemBot.Modules.ColossoBattles
             }
         }
 
+        public enum FastTrackOption { SlowTrack, FastTrack };
+
         [Command("endless")]
-        [Summary("Prepare a channel for an endless gamemode. 'Legacy' will be without djinn. Endless unlocks at level 50 or once you completed the Colosso Finals!")]
+        [Summary("Prepare a channel for an endless gamemode. 'Legacy' will be without djinn. Endless unlocks at level 50 or once you completed the Colosso Finals! Using `i!endless default true` will let you skip ahead to round 13 for a fee of 10.000 coins")]
         [RequireUserServer]
-        public async Task ColossoEndless(EndlessMode mode = EndlessMode.Default)
+        public async Task ColossoEndless(EndlessMode mode = EndlessMode.Default, FastTrackOption fastTrackOption = FastTrackOption.SlowTrack)
         {
             if (!AcceptBattles)
             {
@@ -326,10 +328,14 @@ namespace IodemBot.Modules.ColossoBattles
                     battles.Remove(gauntletFromUser);
                 }
             }
-            PvEEnvironment openBattle;
+            EndlessBattleEnvironment openBattle;
             if (mode == EndlessMode.Default)
             {
                 openBattle = new EndlessBattleEnvironment($"{Context.User.Username}", gs.ColossoChannel, false, await PrepareBattleChannel($"Endless-{Context.User.Username}", guild, persistent: false));
+                if (fastTrackOption == FastTrackOption.FastTrack && acc.Inv.RemoveBalance(10000))
+                {                
+                    openBattle.SetStreak(12);
+                }
             }
             else
             {

@@ -265,7 +265,7 @@ namespace IodemBot.Modules.ColossoBattles
             }
         }
 
-        private static string[] tutorialTips = new[]
+        private static readonly string[] tutorialTips = new[]
         {
             "Djinn are your friends! Use them to make up for weaknesses in your class!",
             "You want to play with multiple setups? Save your loadout with `i!loadout save <My Loadout Name>` to access it later!",
@@ -300,6 +300,11 @@ namespace IodemBot.Modules.ColossoBattles
             Factory.summons.Clear();
             PlayerMessages.Clear();
 
+            if (!IsPersistent && WasReset)
+            {
+                Dispose(); return;
+            }
+
             if (EnemyMessage == null)
             {
                 await Initialize();
@@ -310,8 +315,8 @@ namespace IodemBot.Modules.ColossoBattles
                 await EnemyMessage.RemoveAllReactionsAsync();
                 await EnemyMessage.AddReactionsAsync(new IEmote[]
                 {
-                        Emote.Parse("<:Fight:536919792813211648>"),
-                        Emote.Parse("<:Battle:536954571256365096>")
+                    Emote.Parse("<:Fight:536919792813211648>"),
+                    Emote.Parse("<:Battle:536954571256365096>")
                 });
                 wasJustReset = true;
             }
@@ -352,14 +357,11 @@ namespace IodemBot.Modules.ColossoBattles
             {
                 Interval = 120000,
                 AutoReset = false,
-                Enabled = false
+                Enabled = !IsPersistent
             };
             resetIfNotActive.Elapsed += BattleWasNotStartetInTime;
 
-            if (!IsPersistent && WasReset)
-            {
-                Dispose(); return;
-            }
+           
             WasReset = true;
 
             Console.WriteLine("Battle was reset.");
@@ -730,8 +732,16 @@ namespace IodemBot.Modules.ColossoBattles
                         emotes.Add(m.GetEmote());
                     }
                 }
-                emotes.RemoveAll(e => msg.Reactions.Any(r => r.Key.Name.Equals(e.Name, StringComparison.InvariantCultureIgnoreCase)));
-                tasks.Add(msg.AddReactionsAsync(emotes.ToArray()));
+
+                //emotes.RemoveAll(e => 
+                //    msg.Reactions.Where(r => r.Key != null)
+                //    .Any(r => r.Key.Name.Equals(e.Name, StringComparison.InvariantCultureIgnoreCase))
+                //);
+                tasks.Add(
+                    msg.AddReactionsAsync(
+                        emotes.Except(msg.Reactions.Keys).ToArray()
+                    )
+                );
                 i++;
             }
             tasks.Add(WritePlayers());
