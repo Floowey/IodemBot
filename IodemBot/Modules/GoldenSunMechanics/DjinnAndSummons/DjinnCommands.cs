@@ -162,6 +162,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             if (Names == "none")
             {
                 user.DjinnPocket.DjinnSetup.Clear();
+                UserAccountProvider.StoreUser(user);
             }
             else if (Names.Contains(','))
             {

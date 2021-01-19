@@ -60,7 +60,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             }
 
             var fb = new EmbedFooterBuilder();
-            fb.WithText($"{inv.Count} / {inv.MaxInvSize} {(inv.Upgrades < 3 ? $"Upgrade: {50000 * Math.Pow(2, inv.Upgrades)}" : "")}");
+            fb.WithText($"{inv.Count} / {inv.MaxInvSize} {(inv.Upgrades < 4 ? $"Upgrade: {50000 * Math.Pow(2, inv.Upgrades)}" : "")}");
             embed.AddField("Coin", $"<:coin:569836987767324672> {inv.Coins}");
             embed.WithColor(Colors.Get("Iodem"));
             embed.WithFooter(fb);
@@ -74,7 +74,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             var account = EntityConverter.ConvertUser(Context.User);
             var inv = account.Inv;
 
-            if (inv.Upgrades >= 3)
+            if (inv.Upgrades >= 4)
             {
                 var embed = new EmbedBuilder();
                 embed.WithDescription(":x: Maximum Inventory capacity reached.");
