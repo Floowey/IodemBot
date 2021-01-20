@@ -150,7 +150,7 @@
         ]
       },
       {
-        "Flavourtext": "Well done! You are set and ready! You are starting off in the calm town of Vault. It is near the Ruins of Vale, one of the most significant locations to the world of Golden Sun and the perfect place to start an unforgettable adventure!",
+        "Flavourtext": "Well done! You are set and ready! You are starting off in the calm town of Vault. It is near the Ruins of Vale, one of the most significant locations to the world of Golden Sun and the perfect place to start an unforgettable adventure! To visit one of these places, use `i!dungeon Vale` (or Vault, respectively)",
         "EnemyNames": [ "End" ],
         "Image": "",
         "RewardTables": [
@@ -163,7 +163,7 @@
               "Coins": 10,
               "Chest": "Wooden",
               "HasChest": true,
-              "message": "Quick summary:\n-Use commands in #gabomba-gears.\n-Select an element using `i!element Venus` or whichever you want. You can change it at any time.\n-Specify a class using `i!class Squire` (from what is available to you).\n-Pause a battle by reacting anywhere with :pause_button:. The timer will restart at the beginning of the next turn.\n-Don't forget to target your enemy with the numbered icons.\n-Open your chests with `i!chest`, view your inventory with `i!inv` and equip gear using `i!equip Warrior/Mage itemname`\n\nDon't be shy to ask questions in #colosso-talks or find team mates to brawl with! A lot of information is also pinned!"
+              "message": "Quick summary:\n-Use commands in #gabomba-gears.\n-Select an element using `i!element Venus` or whichever you want. You can change it at any time.\n-Specify a class using `i!class Squire` (from what is available to you).\n-Pause a battle by reacting anywhere with :pause_button:. The timer will restart at the beginning of the next turn.\n-Don't forget to target your enemy with the numbered icons.\n-Open your chests with `i!chest`, view your inventory with `i!inv` and equip gear using `i!equip Warrior/Mage itemname`\nVisit your newly discoverd places with`i!dungeon Vale` (or Vault)\n\nDon't be shy to ask questions in #colosso-talks or find team mates to brawl with! A lot of information is also pinned!"
             }
           ],
           [
