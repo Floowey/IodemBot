@@ -135,6 +135,13 @@ namespace IodemBot.Modules.GoldenSunMechanics
             var djinnPocket = acc.DjinnPocket;
             var inv = acc.Inv;
             var price = (uint)(djinnPocket.PocketUpgrades + 1) * 3000;
+            if(djinnPocket.PocketSize >= 70)
+            {
+                await ReplyAsync(embed: new EmbedBuilder()
+                    .WithDescription($"Max Djinn pocket size reached")
+                    .Build());
+            }
+        
             if (inv.RemoveBalance(price))
             {
                 djinnPocket.PocketUpgrades++;

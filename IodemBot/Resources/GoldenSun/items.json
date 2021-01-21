@@ -2950,6 +2950,7 @@
     "Icon": "<:Aeolian_Cassock:569854450156568576>",
     "ItemType": "Robe",
     "IsEquippable": true,
+    "IsArtifact": true,
     "AddStatsOnEquip": {
       "Def": 46
     },
