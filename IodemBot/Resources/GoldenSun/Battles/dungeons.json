@@ -1052,10 +1052,10 @@
         "RewardTables": [
           [
             {
-              "Weight": 5,
+              "Weight": 6,
               "Dungeon": "Goma Cave"
             },
-            { "Weight": 3 },
+            { "Weight": 2 },
             {
               "Weight": 1,
               "Dungeon": "Lunpa"
@@ -1440,6 +1440,13 @@
             }
           ],
           [
+            {
+              "Weight": 1,
+              "Dungeon": "Goma Cave"
+            },
+            { "Weight": 1 }
+          ],
+          [
             { "Weight": 6 },
             {
               "Weight": 1,
@@ -1593,6 +1600,12 @@
             {
               "Weight": 3,
               "Dungeon": "Bilibin Cave"
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "Dungeon": "Goma Cave"
             }
           ]
         ]
@@ -5669,6 +5682,12 @@
               "Weight": 1,
               "XP": 111,
               "Coins": 78
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "Dungeon": "Suhalla Desert"
             }
           ]
         ]
