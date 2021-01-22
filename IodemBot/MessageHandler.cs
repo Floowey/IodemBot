@@ -154,6 +154,7 @@ namespace IodemBot
                     _ = reaction.ReactAsync(msg);
                     lastUse = DateTime.Now;
                 }
+                await Task.CompletedTask;
             }
         }
 

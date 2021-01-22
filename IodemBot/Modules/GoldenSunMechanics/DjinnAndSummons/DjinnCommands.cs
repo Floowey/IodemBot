@@ -216,6 +216,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 acc.DjinnPocket.AddDjinn(djinn);
                 UserAccountProvider.StoreUser(acc);
             }
+            await Task.CompletedTask;
         }
 
         [Command("GiveSummon")]
@@ -228,6 +229,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 acc.DjinnPocket.AddSummon(summon);
                 UserAccountProvider.StoreUser(acc);
             }
+            await Task.CompletedTask;
         }
 
         [Command("Djinn Release")]

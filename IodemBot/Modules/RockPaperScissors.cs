@@ -144,6 +144,7 @@ namespace IodemBot.Modules
             embed.AddField("Result:", result);
 
             _ = Context.Channel.SendMessageAsync("", false, embed.Build());
+            await Task.CompletedTask;
         }
     }
 }

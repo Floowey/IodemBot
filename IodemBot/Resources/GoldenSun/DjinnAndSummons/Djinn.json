@@ -2434,8 +2434,7 @@
         {
           "Type": "ReduceDamage",
           "DamageReduction": 60
-        },
-
+        }
       ]
     },
     "Stats": {

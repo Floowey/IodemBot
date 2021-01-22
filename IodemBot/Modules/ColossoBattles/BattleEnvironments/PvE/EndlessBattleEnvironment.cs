@@ -124,8 +124,8 @@ namespace IodemBot.Modules.ColossoBattles
                     new RewardTable()
                     {
                         new DefaultReward(){
-                            xp = xp,
-                            coins = xp/2,
+                            Xp = xp,
+                            Coins = xp/2,
                             Weight = 3
                         }
                     }
@@ -245,7 +245,7 @@ namespace IodemBot.Modules.ColossoBattles
                 }
 
                 winners.OfType<PlayerFighter>().ToList().ForEach(p => _ = ServerGames.UserWonBattle(UserAccountProvider.GetById(p.Id), RewardTables.GetRewards(), p.battleStats, lobbyChannel, BattleChannel));
-                winners.OfType<PlayerFighter>().ToList().ForEach(p => _ = ServerGames.UserWonEndless(UserAccountProvider.GetById(p.Id), lobbyChannel, winsInARow, mode, p.battleStats.TotalTeamMates + 1, string.Join(", ", Battle.TeamA.Select(pl => pl.Name))));
+                winners.OfType<PlayerFighter>().ToList().ForEach(p => _ = ServerGames.UserWonEndless(UserAccountProvider.GetById(p.Id), winsInARow, mode, p.battleStats.TotalTeamMates + 1, string.Join(", ", Battle.TeamA.Select(pl => pl.Name))));
 
                 chests.RemoveAll(s => s is DefaultReward d && !d.HasChest);
 
@@ -271,7 +271,7 @@ namespace IodemBot.Modules.ColossoBattles
             {
                 var losers = winners.First().battle.GetTeam(winners.First().enemies);
                 losers.OfType<PlayerFighter>().ToList().ForEach(async p => await ServerGames.UserLostBattle(UserAccountProvider.GetById(p.Id), lobbyChannel));
-                losers.OfType<PlayerFighter>().ToList().ForEach(async p => await ServerGames.UserFinishedEndless(UserAccountProvider.GetById(p.Id), lobbyChannel, winsInARow, mode));
+                losers.OfType<PlayerFighter>().ToList().ForEach(async p => await ServerGames.UserFinishedEndless(UserAccountProvider.GetById(p.Id), winsInARow, mode));
                 _ = WriteGameOver();
             }
         }

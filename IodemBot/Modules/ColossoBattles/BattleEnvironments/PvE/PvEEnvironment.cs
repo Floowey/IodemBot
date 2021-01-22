@@ -118,21 +118,21 @@ namespace IodemBot.Modules.ColossoBattles
                 }
 
                 IUserMessage c = null;
-                if (StatusMessage.Id == reaction.MessageId)
+                if ((StatusMessage?.Id ?? 0) == reaction.MessageId)
                 {
                     c = StatusMessage;
                 }
-                if (EnemyMessage.Id == reaction.MessageId)
+                if ((EnemyMessage?.Id ?? 0) == reaction.MessageId)
                 {
                     c = EnemyMessage;
                 }
-                if (SummonsMessage.Id == reaction.MessageId)
+                if ((SummonsMessage?.Id ?? 0) == reaction.MessageId)
                 {
                     c = SummonsMessage;
                 }
                 if (PlayerMessages.Keys.Any(k => k.Id == reaction.MessageId))
                 {
-                    c = PlayerMessages.Keys.Where(k => k.Id == reaction.MessageId).First();
+                    c = PlayerMessages.Keys.Where(k => k.Id == reaction.MessageId).FirstOrDefault();
                 }
 
                 if (c == null)
@@ -140,20 +140,6 @@ namespace IodemBot.Modules.ColossoBattles
                     c = (IUserMessage)await channel.GetMessageAsync(reaction.MessageId);
                     _ = c.RemoveReactionAsync(reaction.Emote, reaction.User.Value);
                     Console.WriteLine("No matching Message for User found.");
-                    return;
-                }
-
-                if (!Battle.isActive)
-                {
-                    _ = c.RemoveReactionAsync(reaction.Emote, reaction.User.Value);
-                    Console.WriteLine("Battle not active.");
-                    return;
-                }
-
-                if (Battle.turnActive)
-                {
-                    _ = c.RemoveReactionAsync(reaction.Emote, reaction.User.Value);
-                    Console.WriteLine("Not so fast");
                     return;
                 }
 
@@ -213,7 +199,7 @@ namespace IodemBot.Modules.ColossoBattles
             }
             catch (Exception e)
             {
-                Console.WriteLine("Colosso Turn Processing Error: " + e);
+                Console.WriteLine($"Colosso Turn Processing Error {reaction.Emote}: " + e);
                 File.WriteAllText($"Logs/Crashes/Error_{DateTime.Now.Date}.log", e.ToString());
             }
         }
@@ -228,6 +214,7 @@ namespace IodemBot.Modules.ColossoBattles
                 .ToArray()
             );
 
+            await Task.Delay(3000);
             await WriteBattleInit();
             autoTurn.Start();
         }
@@ -261,7 +248,7 @@ namespace IodemBot.Modules.ColossoBattles
 
             if (PlayerMessages.Count == PlayersToStart)
             {
-                await StartBattle();
+                _ = StartBattle();
             }
         }
 

@@ -94,7 +94,7 @@ namespace IodemBot.Core.UserManagement
             {
                 func = function;
             }
-            private static Comparer<ulong> descendingComparer = Comparer<ulong>.Create((x, y) => y.CompareTo(x));
+
             private void Sort()
             {
                 dict.Sort((x, y) => y.Value.CompareTo(x.Value));

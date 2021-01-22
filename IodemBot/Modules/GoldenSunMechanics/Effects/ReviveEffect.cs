@@ -19,6 +19,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             bool wasDead = !Target.IsAlive;
             if (Global.RandomNumber(0, 100) > Probability)
             {
+                log.Add($"But it has no effect on {Target.Name}");
                 return log;
             }
             log.AddRange(Target.Revive(Percentage));

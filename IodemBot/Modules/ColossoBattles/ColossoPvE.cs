@@ -245,6 +245,7 @@ namespace IodemBot.Modules.ColossoBattles
             {
                 _ = a.Reset();
             }
+            await Task.CompletedTask;
         }
 
         [Command("c reset")]
@@ -252,7 +253,8 @@ namespace IodemBot.Modules.ColossoBattles
         [RequireUserServer]
         public async Task Reset(IMessageChannel channel)
         {
-            Reset(channel.Id);
+            _ = Reset(channel.Id);
+            await Task.CompletedTask;
         }
 
         [Command("c reset")]
@@ -267,6 +269,7 @@ namespace IodemBot.Modules.ColossoBattles
             {
                 _ = a.Reset();
             }
+            await Task.CompletedTask;
         }
 
         [Command("c setEnemy")]
@@ -393,7 +396,6 @@ namespace IodemBot.Modules.ColossoBattles
         [RequireUserServer]
         public async Task StatusOfBattle(string name = "")
         {
-            await Context.Message.DeleteAsync();
             var a = battles.Where(b => Context.Guild.Channels.Any(c => b.GetChannelIds.Contains(c.Id))
                 && b.Name.Equals(name, StringComparison.InvariantCultureIgnoreCase))
                 .FirstOrDefault();
@@ -414,7 +416,6 @@ namespace IodemBot.Modules.ColossoBattles
         [RequireUserServer]
         public async Task StatusOfBattle(ulong id)
         {
-            await Context.Message.DeleteAsync();
             var a = battles.OfType<PvEEnvironment>().Where(b => Context.Guild.Channels.Any(c => b.GetChannelIds.Contains(c.Id))
                 && b.BattleChannel.Id == id)
                 .FirstOrDefault();
@@ -423,6 +424,16 @@ namespace IodemBot.Modules.ColossoBattles
                 await Context.Channel.SendMessageAsync(a.GetStatus());
             }
         }
+
+        [Command("c status")]
+        [RequireStaff]
+        [RequireUserServer]
+        public async Task StatusOfBattle(IMessageChannel channel)
+        {
+            _=StatusOfBattle(channel.Id);
+            await Task.CompletedTask;
+        }
+
 
         [Command("c AcceptBattles")]
         [RequireStaff]
@@ -459,22 +470,23 @@ namespace IodemBot.Modules.ColossoBattles
                 await channel.SyncPermissionsAsync();
             }
 
-            if (visibility == RoomVisibility.TeamB)
+            switch (visibility)
             {
-                await channel.AddPermissionOverwriteAsync(teamB, new OverwritePermissions(viewChannel: PermValue.Allow));
-                await channel.AddPermissionOverwriteAsync(guild.EveryoneRole, new OverwritePermissions(viewChannel: PermValue.Deny));
+                case RoomVisibility.All:
+                    break;
+                case RoomVisibility.TeamA:
+                    _ = channel.AddPermissionOverwriteAsync(teamB, new OverwritePermissions(viewChannel: PermValue.Deny));
+                    break;
+                case RoomVisibility.TeamB:
+                    _ = channel.AddPermissionOverwriteAsync(teamB, new OverwritePermissions(viewChannel: PermValue.Allow));
+                    _ = channel.AddPermissionOverwriteAsync(guild.EveryoneRole, new OverwritePermissions(viewChannel: PermValue.Deny, sendMessages: PermValue.Deny));
+                    break;
+                case RoomVisibility.Private:
+                    _ = channel.AddPermissionOverwriteAsync(teamB, new OverwritePermissions(viewChannel: PermValue.Deny));
+                    _ = channel.AddPermissionOverwriteAsync(guild.EveryoneRole, new OverwritePermissions(viewChannel: PermValue.Deny));
+                    break;
             }
 
-            if (visibility == RoomVisibility.TeamA)
-            {
-                await channel.AddPermissionOverwriteAsync(teamB, new OverwritePermissions(viewChannel: PermValue.Deny));
-            }
-
-            if (visibility == RoomVisibility.Private)
-            {
-                await channel.AddPermissionOverwriteAsync(teamB, new OverwritePermissions(viewChannel: PermValue.Deny));
-                await channel.AddPermissionOverwriteAsync(guild.EveryoneRole, new OverwritePermissions(viewChannel: PermValue.Deny));
-            }
             var messages = await channel.GetMessagesAsync(100).FlattenAsync();
             await channel.DeleteMessagesAsync(messages.Where(m => m.Timestamp.AddDays(14) > DateTime.Now));
             return channel;

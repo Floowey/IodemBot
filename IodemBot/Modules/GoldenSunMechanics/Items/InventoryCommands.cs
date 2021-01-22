@@ -151,7 +151,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             }
             else
             {
-                embed.WithDescription($":x: No such item to rename, or not enough funds. The cost for renaming is x2 the items price.");
+                embed.WithDescription($":x: You don't have such item to polish.");
             }
             await Context.Channel.SendMessageAsync("", false, embed.Build());
         }
@@ -180,6 +180,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             }
 
             _ = ReplyAsync(embed: embed.Build());
+            await Task.CompletedTask;
         }
 
         [Command("item polish")]

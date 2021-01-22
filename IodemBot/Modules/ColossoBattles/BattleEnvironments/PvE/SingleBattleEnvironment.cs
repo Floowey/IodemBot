@@ -130,8 +130,8 @@ namespace IodemBot.Modules.ColossoBattles
                     new RewardTable()
                     {
                         new DefaultReward(){
-                            xp = xp,
-                            coins = xp/2,
+                            Xp = xp,
+                            Coins = xp/2,
                             Weight = 3
                         }
                     }
@@ -143,7 +143,7 @@ namespace IodemBot.Modules.ColossoBattles
         {
             Battle.TeamB = new List<ColossoFighter>();
             EnemiesDatabase.GetEnemies(Difficulty, Enemy).ForEach(f => Battle.AddPlayer(f, Team.B));
-            Console.WriteLine($"Up against {Battle.TeamB.First().Name}");
+            // Console.WriteLine($"Up against {Battle.TeamB.First().Name}");
         }
 
         protected override async Task AddPlayer(SocketReaction reaction)
@@ -167,17 +167,7 @@ namespace IodemBot.Modules.ColossoBattles
                 SetNextEnemy();
             }
 
-            if (Difficulty == BattleDifficulty.Easy && playerAvatar.LevelNumber < 10)
-            {
-                return;
-            }
-
-            if (Difficulty == BattleDifficulty.Medium && playerAvatar.LevelNumber < 30)
-            {
-                return;
-            }
-
-            if (Difficulty == BattleDifficulty.Hard && playerAvatar.LevelNumber < 50)
+            if(playerAvatar.LevelNumber < limits[Difficulty])
             {
                 return;
             }
@@ -195,9 +185,7 @@ namespace IodemBot.Modules.ColossoBattles
         {
             Battle.TeamB.Clear();
             EnemiesDatabase.GetRandomEnemies(Difficulty).ForEach(f =>
-            {
-                Battle.AddPlayer(f, Team.B);
-            }
+                Battle.AddPlayer(f, Team.B)
             );
 
             for (int i = 0; i < LureCaps; i++)
@@ -258,8 +246,8 @@ namespace IodemBot.Modules.ColossoBattles
                     RewardTables.Add(djinnTable);
                 }
 
-                winners.OfType<PlayerFighter>().ToList().ForEach(async p => await ServerGames.UserWonBattle(UserAccountProvider.GetById(p.Id), RewardTables.GetRewards(), p.battleStats, lobbyChannel, BattleChannel));
-                winners.OfType<PlayerFighter>().ToList().ForEach(async p => await ServerGames.UserWonSingleBattle(UserAccountProvider.GetById(p.Id), lobbyChannel, Difficulty));
+                winners.OfType<PlayerFighter>().ToList().ForEach(p => _ = ServerGames.UserWonBattle(UserAccountProvider.GetById(p.Id), RewardTables.GetRewards(), p.battleStats, lobbyChannel, BattleChannel));
+                winners.OfType<PlayerFighter>().ToList().ForEach(p => _ = ServerGames.UserWonSingleBattle(UserAccountProvider.GetById(p.Id), Difficulty));
 
                 chests.RemoveAll(s => s is DefaultReward d && !d.HasChest);
                 _ = WriteGameOver();
@@ -268,7 +256,7 @@ namespace IodemBot.Modules.ColossoBattles
             {
                 var losers = winners.First().battle.GetTeam(winners.First().enemies);
                 losers.ForEach(p => p.Moves.OfType<Djinn>().ToList().ForEach(d => { d.Summon(p); d.CoolDown = 0; }));
-                losers.ConvertAll(s => (PlayerFighter)s).ForEach(async p => await ServerGames.UserLostBattle(UserAccountProvider.GetById(p.Id), lobbyChannel));
+                losers.ConvertAll(s => (PlayerFighter)s).ForEach(p => _ = ServerGames.UserLostBattle(UserAccountProvider.GetById(p.Id), lobbyChannel));
                 _ = WriteGameOver();
             }
 

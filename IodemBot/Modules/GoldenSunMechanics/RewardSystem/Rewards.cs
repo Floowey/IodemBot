@@ -8,8 +8,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
 {
     public class DefaultReward : Rewardable
     {
-        public uint coins { get; set; } = 0;
-        public uint xp { get; set; } = 0;
+        public uint Coins { get; set; } = 0;
+        public uint Xp { get; set; } = 0;
         public string Item { get; set; } = "";
 
         public bool HasChest { get; set; } = false;
@@ -35,8 +35,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 return "";
             }
             var giveTag = true;
-            userAccount.AddXp(xp);
-            userAccount.Inv.AddBalance(coins);
+            userAccount.AddXp(Xp);
+            userAccount.Inv.AddBalance(Coins);
 
             if (HasChest)
             {

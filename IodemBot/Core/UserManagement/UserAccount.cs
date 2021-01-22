@@ -54,20 +54,14 @@ namespace IodemBot.Core.UserManagement
 
         public Tuple<int, string> GetEntry(RankEnum rank)
         {
-            switch (rank)
+            return rank switch
             {
-                default:
-                case RankEnum.Level:
-                    return null;
-                case RankEnum.Solo:
-                    return new Tuple<int, string>(Solo, "");
-                case RankEnum.Duo:
-                    return new Tuple<int, string>(Duo, DuoNames);
-                case RankEnum.Trio:
-                    return new Tuple<int, string>(Trio, TrioNames);
-                case RankEnum.Quad:
-                    return new Tuple<int, string>(Quad, QuadNames);
-            }
+                RankEnum.Solo => new Tuple<int, string>(Solo, ""),
+                RankEnum.Duo => new Tuple<int, string>(Duo, DuoNames),
+                RankEnum.Trio => new Tuple<int, string>(Trio, TrioNames),
+                RankEnum.Quad => new Tuple<int, string>(Quad, QuadNames),
+                _ => null,
+            };
         }
         public void AddStreak(int streak, int players = 1, string Names = "")
         {
