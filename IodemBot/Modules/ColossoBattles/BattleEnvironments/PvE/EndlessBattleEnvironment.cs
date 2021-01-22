@@ -159,7 +159,7 @@ namespace IodemBot.Modules.ColossoBattles
             {
                 Factory = new PlayerFighterFactory() { DjinnOption = DjinnOption.NoDjinn, ReductionFactor = 1.5 };
             }
-            _ = Reset();
+            _ = Reset($"Endless {Name} initialized");
         }
 
         public override BattleDifficulty Difficulty => (BattleDifficulty)Math.Min(4, 1 + winsInARow / StageLength);
@@ -276,11 +276,11 @@ namespace IodemBot.Modules.ColossoBattles
             }
         }
 
-        public override async Task Reset()
+        public override async Task Reset(string msg = "")
         {
             LureCaps = 0;
             winsInARow = 0;
-            await base.Reset();
+            await base.Reset(msg);
         }
 
         protected override async Task AddPlayer(SocketReaction reaction)

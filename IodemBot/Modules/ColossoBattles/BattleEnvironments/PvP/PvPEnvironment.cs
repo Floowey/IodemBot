@@ -68,7 +68,7 @@ namespace IodemBot.Modules.ColossoBattles
             return;
         }
 
-        public override async Task Reset()
+        public override async Task Reset(string msg = "")
         {
             Battle = new ColossoBattle();
             var A = Teams[Team.A];
@@ -157,7 +157,7 @@ namespace IodemBot.Modules.ColossoBattles
 
         private async void BattleWasNotStartedInTime(object sender, ElapsedEventArgs e)
         {
-            await Reset();
+            await Reset("Not started in time");
         }
 
         private async void TurnTimeElapsed(object sender, ElapsedEventArgs e)
@@ -181,13 +181,13 @@ namespace IodemBot.Modules.ColossoBattles
         {
             await Task.Delay(5000);
             var winners = Battle.GetTeam(Battle.GetWinner());
-            var text = $"{winners.FirstOrDefault().Name}'s Party wins! Battle will reset shortly.";
+            var text = $"{winners.FirstOrDefault()?.Name ?? "Nobodys!?"}'s Party wins! Battle will reset shortly.";
 
             _ = Teams[Team.A].StatusMessage.ModifyAsync(m => { m.Content = text; m.Embed = null; });
             _ = Teams[Team.B].StatusMessage.ModifyAsync(m => { m.Content = text; m.Embed = null; });
 
             await Task.Delay(5000);
-            _ = Reset();
+            _ = Reset($"Game over: {text}");
         }
 
         protected override async Task ProcessReaction(Cacheable<IUserMessage, ulong> cache, ISocketMessageChannel channel, SocketReaction reaction)

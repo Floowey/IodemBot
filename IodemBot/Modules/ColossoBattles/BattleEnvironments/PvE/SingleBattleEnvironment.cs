@@ -112,7 +112,7 @@ namespace IodemBot.Modules.ColossoBattles
         public SingleBattleEnvironment(string Name, ITextChannel lobbyChannel, bool isPersistent, ITextChannel BattleChannel, BattleDifficulty diff) : base(Name, lobbyChannel, isPersistent, BattleChannel)
         {
             internalDiff = diff;
-            _ = Reset();
+            _ = Reset("init");
         }
 
         public override BattleDifficulty Difficulty => internalDiff;
@@ -263,10 +263,10 @@ namespace IodemBot.Modules.ColossoBattles
             await Task.CompletedTask;
         }
 
-        public override async Task Reset()
+        public override async Task Reset(string msg = "")
         {
             LureCaps = 0;
-            await base.Reset();
+            await base.Reset(msg);
 
             _ = EnemyMessage.AddReactionsAsync(new IEmote[]
             {

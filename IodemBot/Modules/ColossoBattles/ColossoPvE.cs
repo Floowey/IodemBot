@@ -72,7 +72,7 @@ namespace IodemBot.Modules.ColossoBattles
                         }
                         else
                         {
-                            _ = gauntletFromUser.Reset();
+                            _ = gauntletFromUser.Reset($"{gauntletFromUser.Name} overridden");
                             battles.Remove(gauntletFromUser);
                         }
                     }
@@ -243,7 +243,7 @@ namespace IodemBot.Modules.ColossoBattles
                 .FirstOrDefault();
             if (a != null)
             {
-                _ = a.Reset();
+                _ = a.Reset("manual reset");
             }
             await Task.CompletedTask;
         }
@@ -267,7 +267,7 @@ namespace IodemBot.Modules.ColossoBattles
                 .FirstOrDefault();
             if (a != null)
             {
-                _ = a.Reset();
+                _ = a.Reset("manual reset");
             }
             await Task.CompletedTask;
         }
@@ -327,7 +327,7 @@ namespace IodemBot.Modules.ColossoBattles
                 }
                 else
                 {
-                    await gauntletFromUser.Reset();
+                    await gauntletFromUser.Reset("Battle override");
                     battles.Remove(gauntletFromUser);
                 }
             }

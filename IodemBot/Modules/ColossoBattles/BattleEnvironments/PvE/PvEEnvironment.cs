@@ -113,7 +113,7 @@ namespace IodemBot.Modules.ColossoBattles
                         { "Gold", BattleDifficulty.Hard }
                     };
                     environment.internalDiff = diff[reaction.Emote.Name];
-                    await Reset();
+                    await Reset($"Difficulty changed");
                     return;
                 }
 
@@ -260,7 +260,7 @@ namespace IodemBot.Modules.ColossoBattles
             "Struggling to beat a dungeon? Keep on grinding, you might find good gear to help you progress!",
             "Some dungeons might feature riddles, take your time to solve them by reacting with :pause_button:",
             "i!train is a great way to earn some solo xp if running solo battles are a little too difficult.",
-            "The @Colosso Guard are here to ensure that things run smoothly on Iodem's side.  Be sure to ping them if you have any questions regarding stability.",
+            "The @Colosso Guard are here to ensure that things run smoothly. If there are any issues, let them know. Note that they cannot fix delays or lag.",
             "Remember to keep commands locked away in <#358276942337671178> to ensure that the <#546760009741107216> channel doesn't get flooded with shenanigans.",
             "No djinn were harmed in the making of this code.  Except for Flint, but he had it coming.",
             "Take your time, especially if a lot of people are playing. Iodem can only do so much at once!",
@@ -269,7 +269,7 @@ namespace IodemBot.Modules.ColossoBattles
             "Be sure to check the pins in #colosso-talks !  A lot of good information is saved there.",
             "You have two equipment sets: warrior and mage.  Items can be equipped to one or both sets!"
         };
-        public override async Task Reset()
+        public override async Task Reset(string msg = "")
         {
             Battle = new ColossoBattle();
             
@@ -351,12 +351,12 @@ namespace IodemBot.Modules.ColossoBattles
            
             WasReset = true;
 
-            Console.WriteLine("Battle was reset.");
+            Console.WriteLine($"{Name} was reset: {msg}");
         }
 
         private async void BattleWasNotStartetInTime(object sender, ElapsedEventArgs e)
         {
-            _ = Reset();
+            _ = Reset("Not started in time");
             await Task.CompletedTask;
         }
 
@@ -768,7 +768,7 @@ namespace IodemBot.Modules.ColossoBattles
             var text = GetWinMessageString();
             await StatusMessage.ModifyAsync(m => { m.Content = text; m.Embed = null; });
             await Task.Delay(2000);
-            await Reset();
+            await Reset("Game Over");
         }
     }
 }
