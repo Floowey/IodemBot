@@ -83,6 +83,7 @@ namespace IodemBot.Modules
             if (gotClass || name == "")
             {
                 var success = SetClass(account, series?.Name ?? "");
+                series = AdeptClassSeriesManager.GetClassSeries(account);
                 if (curSeries.Name.Equals(series?.Name) || success)
                 {
                     if (series != null && !account.DjinnPocket.DjinnSetup.All(d => series.Elements.Contains(d)))

@@ -959,9 +959,14 @@
             }
           ],
           [
-            { "Weight": 4 },
+            { "Weight": 2 },
             {
               "Weight": 1,
+              "Dungeon": "Vault Cave"
+            },
+            {
+              "Weight": 2,
+              "RequireTag": [ "VaultCaveCompleted" ],
               "Dungeon": "Vault Cave"
             }
           ],
@@ -1277,6 +1282,8 @@
           [
             {
               "Weight": 1,
+              "Tag": "VaultCaveCompleted",
+              "Obtainable": 1,
               "XP": 1,
               "Coins": 1
             }
@@ -4659,7 +4666,7 @@
             }
           ],
           [
-            { "Weight": 4 },
+            { "Weight": 5 },
             {
               "Weight": 2,
               "Chest": "Silver",

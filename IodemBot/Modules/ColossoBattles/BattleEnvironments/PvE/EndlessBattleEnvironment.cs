@@ -159,7 +159,7 @@ namespace IodemBot.Modules.ColossoBattles
             {
                 Factory = new PlayerFighterFactory() { DjinnOption = DjinnOption.NoDjinn, ReductionFactor = 1.5 };
             }
-            _ = Reset($"Endless {Name} initialized");
+            _ = Reset($"init");
         }
 
         public override BattleDifficulty Difficulty => (BattleDifficulty)Math.Min(4, 1 + winsInARow / StageLength);

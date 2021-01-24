@@ -195,7 +195,7 @@ namespace IodemBot.Modules.ColossoBattles
                     Battle.AddPlayer(EnemiesDatabase.GetRandomEnemies(Difficulty, 1).Random(), Team.B);
                 }
             }
-            Console.WriteLine($"Up against {Battle.TeamB.First().Name}");
+            //Console.WriteLine($"Up against {Battle.TeamB.First().Name}");
         }
 
         protected override async Task GameOver()

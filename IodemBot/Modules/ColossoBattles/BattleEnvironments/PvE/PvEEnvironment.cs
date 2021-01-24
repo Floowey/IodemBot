@@ -48,6 +48,8 @@ namespace IodemBot.Modules.ColossoBattles
         public override void Dispose()
         {
             base.Dispose();
+            autoTurn?.Dispose();
+            resetIfNotActive?.Dispose();
             if (!IsPersistent)
             {
                 _ = BattleChannel.DeleteAsync();
@@ -241,10 +243,11 @@ namespace IodemBot.Modules.ColossoBattles
 
             Battle.AddPlayer(player, Team.A);
 
-            var playerMsg = await BattleChannel.SendMessageAsync($"{player.Name} wants to battle!");
-            PlayerMessages.Add(playerMsg, player);
             resetIfNotActive.Stop();
             resetIfNotActive.Start();
+
+            var playerMsg = await BattleChannel.SendMessageAsync($"{player.Name} wants to battle!");
+            PlayerMessages.Add(playerMsg, player);
 
             if (PlayerMessages.Count == PlayersToStart)
             {
@@ -289,6 +292,7 @@ namespace IodemBot.Modules.ColossoBattles
 
             if (!IsPersistent && WasReset)
             {
+                Console.WriteLine($"{Name} was disposed: {msg}");
                 Dispose(); return;
             }
 
@@ -348,15 +352,19 @@ namespace IodemBot.Modules.ColossoBattles
             };
             resetIfNotActive.Elapsed += BattleWasNotStartetInTime;
 
-           
             WasReset = true;
-
             Console.WriteLine($"{Name} was reset: {msg}");
         }
 
         private async void BattleWasNotStartetInTime(object sender, ElapsedEventArgs e)
         {
-            _ = Reset("Not started in time");
+            if (!IsActive)
+            {
+                _ = Reset("Not started in time");
+            } else
+            {
+                Console.WriteLine("Battle tried to reset while active. Timer Status: " + resetIfNotActive.Enabled);
+            }
             await Task.CompletedTask;
         }
 
@@ -395,7 +403,6 @@ namespace IodemBot.Modules.ColossoBattles
             var delay = Global.Client.Latency / 2;
             try
             {
-                
                 await Task.Delay(delay);
                 await WriteStatus();
                 await Task.Delay(delay);

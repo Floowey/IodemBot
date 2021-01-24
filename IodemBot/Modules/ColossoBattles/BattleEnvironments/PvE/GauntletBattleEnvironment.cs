@@ -37,7 +37,7 @@ namespace IodemBot.Modules.ColossoBattles
             PlayersToStart = Dungeon.MaxPlayer;
             enumerator = Dungeon.Matchups.GetEnumerator();
             LastEnemySet = DateTime.Now;
-            _ = Reset($"Enemy set in {Name}: {Enemy}");
+            _ = Reset($"Enemy set : {Enemy}");
         }
 
         public override void SetNextEnemy()
