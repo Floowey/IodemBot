@@ -2669,7 +2669,7 @@
         ]
       },
       {
-        "Flavourtext": "First there was the forest, now there's this tree maze, too.",
+        "Flavourtext": "First there was the forest, now there's this tree maze, too, and a few forest denizens bar your way.  It feels like there's eyes assessing your abilities from somewhere in the branches.  A trained Venus adept might be able to use a localized earthquake to shake the observer from their perch...",
         "EnemyNames": [ "Gnome", "Creeper 1", "Troll 1", "Rat 1" ],
         "Keywords": [ "Shuffle" ],
         "Image": "",
@@ -2688,6 +2688,16 @@
               "Chest": "Wooden",
               "HasChest": true
             }
+          ],
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "Gaia1", "VenusAdept" ],
+              "Tag": "TretTreeVenus",
+              "Obtainable": 1,
+              "Djinn": "Pewter"
+            },
+            { "Weight": 2 }
           ]
         ]
       },
@@ -4262,7 +4272,7 @@
       },
       {
         "Flavourtext": "Hsu bows in recognition of your prowess, and tells you he thought he spotted something of interest at a particular corner of this cave system.  Following his directions, and after solving a puzzle, you come face-to-snout with a Djinni!",
-        "EnemyNames": [ "Venus Djinni" ],
+        "EnemyNames": [ "Venus Djinni 14" ],
         "Image": "",
         "RewardTables": [
           [
@@ -4276,16 +4286,19 @@
             {
               "Weight": 5,
               "Tag": "GondowanVenus",
+              "Obtainable": 1,
               "Djinn": "Venus"
             },
             {
               "Weight": 10,
               "Tag": "GondowanVenus",
+              "Obtainable": 1,
               "Djinn": "Venus"
             },
             {
               "Weight": 20,
               "Tag": "GondowanGround",
+              "Obtainable": 1,
               "Djinn": "Ground"
             },
             { "Weight": 65 }
@@ -7126,7 +7139,7 @@
         ]
       },
       {
-        "Flavourtext": "Fight Judgement",
+        "Flavourtext": "Fight Judgement ('You showed to have your heart in a virtuous place. But what worth is that if you cannot enforce your judgment')",
         "EnemyNames": [ "Rat" ],
         "Image": "",
         "RewardTables": [
