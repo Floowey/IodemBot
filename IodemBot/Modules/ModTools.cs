@@ -248,7 +248,7 @@ namespace IodemBot.Modules
         }
 
         [Command("Emotes")]
-        [RequireStaff]
+        [RequireUserPermission(GuildPermission.ManageEmojis)]
         public async Task Emotes()
         {
             var s = string.Join("\n", Context.Guild.Emotes.OrderBy(d => d.Name).Select(e => $"{e} \\<{(e.Animated ? "a" : "")}:{e.Name}:{e.Id}>"));

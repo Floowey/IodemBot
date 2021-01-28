@@ -75,7 +75,9 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 .Concat(Enumerable.Repeat(GoldenSun.ElementIcons[Element.Mercury], summon.MercuryNeeded))),
                 true);
             var effectList = summon.Effects.Count > 0 ? string.Join("\n", summon.Effects.Select(e => e.ToString())) : "";
-            embed.AddField("Description", string.Join("\n", summon.ToString(), effectList, summon.HasPriority ? "Always goes first." : ""));
+            var UserList = summon.EffectsOnUser?.Count > 0 ? "On User:\n" + string.Join("\n", summon.EffectsOnUser.Select(e => e.ToString())) : "";
+            var PartyList = summon.EffectsOnParty?.Count > 0 ? "On Party:\n" + string.Join("\n", summon.EffectsOnParty.Select(e => e.ToString())) : "";
+            embed.AddField("Description", string.Join("\n", summon.ToString(), effectList, UserList, PartyList, summon.HasPriority ? "Always goes first." : ""));
 
             embed.WithColor(Colors.Get(
                 Enumerable.Repeat(Element.Venus.ToString(), summon.VenusNeeded)
@@ -140,6 +142,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 await ReplyAsync(embed: new EmbedBuilder()
                     .WithDescription($"Max Djinn pocket size reached")
                     .Build());
+                return;
             }
         
             if (inv.RemoveBalance(price))

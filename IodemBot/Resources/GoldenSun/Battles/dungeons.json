@@ -2,7 +2,7 @@
   "Tutorial": {
     "name": "Tutorial",
     "IsOneTimeOnly": false,
-    "FlavourText": "Welcome! Be introduced to the world of Weyard and Golden Sun! React with <:Fight:536919792813211648> to join a battle and press <:Battle:536954571256365096> when you are ready to start the Tutorial!",
+    "FlavourText": "Welcome! Be introduced to the world of Weyard and Golden Sun!\nReact with <:Fight:536919792813211648> to join a battle.\nThen, press <:Battle:536954571256365096> when you are ready to start the Tutorial!",
     "Image": "https://cdn.discordapp.com/attachments/497696510688100352/595583507393150997/unknown.png",
     "IsDefault": true,
     "MaxPlayer": 4,
@@ -121,7 +121,7 @@
         ]
       },
       {
-        "Flavourtext": "If there are multiple enemies, you need to select your target. First choose the move you want to use, and then use the number icons to target the enemy with that number. In the case of area-of-effect attacks, the selected enemy is the centermost enemy which will take most of the damage.",
+        "Flavourtext": "If there are multiple enemies, you need to select your target. First choose the move you want to use, and then use the number icons (:one: to :three:) to target the enemy with that number. In the case of area-of-effect attacks, the selected enemy is the centermost enemy which will take most of the damage. If you are on mobile, you might need to scroll up to see the numbers!",
         "EnemyNames": [ "Training Dummy", "Training Dummy", "Training Dummy" ],
         "Image": "",
         "RewardTables": [
@@ -157,18 +157,6 @@
           [
             {
               "Weight": 1,
-              "Tag": "TutorialCompleted",
-              "Obtainable": 1,
-              "XP": 10,
-              "Coins": 10,
-              "Chest": "Wooden",
-              "HasChest": true,
-              "message": "Quick summary:\n-Use commands in #gabomba-gears.\n-Select an element using `i!element Venus` or whichever you want. You can change it at any time.\n-Specify a class using `i!class Squire` (from what is available to you).\n-Pause a battle by reacting anywhere with :pause_button:. The timer will restart at the beginning of the next turn.\n-Don't forget to target your enemy with the numbered icons.\n-Open your chests with `i!chest`, view your inventory with `i!inv` and equip gear using `i!equip Warrior/Mage itemname`\nVisit your newly discoverd places with`i!dungeon Vale` (or Vault)\n\nDon't be shy to ask questions in #colosso-talks or find team mates to brawl with! A lot of information is also pinned!"
-            }
-          ],
-          [
-            {
-              "Weight": 1,
               "Dungeon": "Vale"
             }
           ],
@@ -176,6 +164,18 @@
             {
               "Weight": 1,
               "Dungeon": "Vault"
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "Tag": "TutorialCompleted",
+              "Obtainable": 1,
+              "XP": 10,
+              "Coins": 10,
+              "Chest": "Wooden",
+              "HasChest": true,
+              "message": "**Quick summary**:\n-Use commands in #gabomba-gears.\n-Select an element using `i!element Venus` or whichever you want. You can change it at any time.\n-Specify a class using `i!class Squire` (from what is available to you).\n-Pause a battle by reacting anywhere with :pause_button:. The timer will restart at the beginning of the next turn.\n-Don't forget to target your enemy with the numbered icons.\n-Open your chests with `i!chest`, view your inventory with `i!inv` and equip gear using `i!equip Warrior/Mage itemname`\nVisit your newly discoverd places with`i!dungeon Vale` (or Vault)\n\nDon't be shy to ask questions in #colosso-talks or find team mates to brawl with! A lot of information is also pinned!"
             }
           ]
         ]
@@ -381,9 +381,9 @@
             }
           ],
           [
-            { "Weight": 3 },
+            { "Weight": 5 },
             {
-              "Weight": 1,
+              "Weight": 5,
               "RequireTag": [ "AltinFinished" ],
               "Dungeon": "Vale Cave"
             }
@@ -506,10 +506,10 @@
           ],
           [
             {
-              "Weight": 1,
+              "Weight": 15,
               "Dungeon": "Star Chamber"
             },
-            { "Weight": 7 }
+            { "Weight": 85 }
           ]
         ]
       },
@@ -607,7 +607,7 @@
         "RewardTables": [
           [
             {
-              "Weight": 28,
+              "Weight": 16,
               "XP": 310,
               "Coins": 300
             },
@@ -837,24 +837,24 @@
           ],
           [
             {
-              "Weight": 1,
+              "Weight": 5,
               "Tag": "ValeCaveJupiter",
               "Obtainable": 3,
               "Djinn": "Jupiter"
             },
             {
-              "Weight": 4,
+              "Weight": 10,
               "Tag": "ValeCaveJupiter",
               "Obtainable": 2,
               "Djinn": "Jupiter"
             },
             {
-              "Weight": 11,
+              "Weight": 20,
               "Tag": "ValeCaveJupiter",
               "Obtainable": 1,
               "Djinn": "Jupiter"
             },
-            { "Weight": 32 }
+            { "Weight": 65 }
           ]
         ]
       },
@@ -1253,24 +1253,24 @@
           ],
           [
             {
-              "Weight": 1,
+              "Weight": 5,
               "Tag": "VaultCaveDjinn",
               "Obtainable": 2,
               "Djinn": "Venus"
             },
             {
-              "Weight": 4,
+              "Weight": 10,
               "Tag": "VaultCaveDjinn",
               "Obtainable": 1,
               "Djinn": "Venus"
             },
             {
-              "Weight": 11,
+              "Weight": 20,
               "Tag": "VaultCaveSap",
               "Obtainable": 1,
               "Djinn": "Sap"
             },
-            { "Weight": 32 }
+            { "Weight": 65 }
           ]
         ]
       },
@@ -1388,24 +1388,24 @@
           ],
           [
             {
-              "Weight": 1,
+              "Weight": 5,
               "Tag": "GomaDjinn",
               "Obtainable": 2,
               "Djinn": "Mars"
             },
             {
-              "Weight": 4,
+              "Weight": 10,
               "Tag": "GomaDjinn",
               "Obtainable": 1,
               "Djinn": "Mars"
             },
             {
-              "Weight": 11,
+              "Weight": 20,
               "Tag": "GomaForge",
               "Obtainable": 1,
               "Djinn": "Forge"
             },
-            { "Weight": 32 }
+            { "Weight": 65 }
           ]
         ]
       },
@@ -1573,24 +1573,24 @@
           ],
           [
             {
-              "Weight": 1,
+              "Weight": 5,
               "Tag": "BilibinDjinn",
               "Obtainable": 2,
               "Djinn": "Jupiter"
             },
             {
-              "Weight": 4,
+              "Weight": 10,
               "Tag": "BilibinDjinn",
               "Obtainable": 1,
               "Djinn": "Jupiter"
             },
             {
-              "Weight": 11,
+              "Weight": 20,
               "Tag": "BilibinGust",
               "Obtainable": 1,
               "Djinn": "Gust"
             },
-            { "Weight": 32 }
+            { "Weight": 65 }
           ]
         ]
       },
@@ -1693,7 +1693,7 @@
         ]
       },
       {
-        "Flavourtext": "You start to see how the cave freezes over, except for the spots with torches. Truly shows the balance of nature... A Mercury Adept could surely use this place to get these powers under his control.",
+        "Flavourtext": "You start to see how the cave freezes over, except for the spots with torches. Truly shows the balance of nature... A Mercury Adept could surely use this place to get these powers under their control.",
         "EnemyNames": [ "Cuttle 1", "Cuttle 1" ],
         "Image": "",
         "RewardTables": [
@@ -1850,7 +1850,7 @@
           ],
           [
             {
-              "Weight": 1,
+              "Weight": 2,
               "Dungeon": "Mercury Lighthouse"
             },
             { "Weight": 1 }
@@ -2122,24 +2122,24 @@
           ],
           [
             {
-              "Weight": 1,
+              "Weight": 5,
               "Tag": "MercuryDjinn",
               "Obtainable": 2,
               "Djinn": "Mercury"
             },
             {
-              "Weight": 4,
+              "Weight": 10,
               "Tag": "MercuryDjinn",
               "Obtainable": 1,
               "Djinn": "Mercury"
             },
             {
-              "Weight": 11,
+              "Weight": 20,
               "Tag": "MercurySleet",
               "Obtainable": 1,
               "Djinn": "Sleet"
             },
-            { "Weight": 32 }
+            { "Weight": 65 }
           ]
         ]
       },
@@ -2344,24 +2344,24 @@
           ],
           [
             {
-              "Weight": 1,
+              "Weight": 5,
               "Tag": "LunpaMercury",
               "Obtainable": 2,
               "Djinn": "Mercury"
             },
             {
-              "Weight": 4,
+              "Weight": 10,
               "Tag": "LunpaMercury",
               "Obtainable": 1,
               "Djinn": "Mercury"
             },
             {
-              "Weight": 11,
+              "Weight": 20,
               "Tag": "LunpaTonic",
               "Obtainable": 1,
               "Djinn": "Tonic"
             },
-            { "Weight": 32 }
+            { "Weight": 65 }
           ]
         ]
       },
@@ -2513,24 +2513,24 @@
           ],
           [
             {
-              "Weight": 1,
+              "Weight": 5,
               "Tag": "KolimaDjinn",
               "Obtainable": 2,
               "Djinn": "Venus"
             },
             {
-              "Weight": 4,
+              "Weight": 10,
               "Tag": "KolimaDjinn",
               "Obtainable": 1,
               "Djinn": "Venus"
             },
             {
-              "Weight": 11,
+              "Weight": 20,
               "Tag": "KolimaBark",
               "Obtainable": 1,
               "Djinn": "Bark"
             },
-            { "Weight": 32 }
+            { "Weight": 65 }
           ]
         ]
       },
@@ -2743,24 +2743,24 @@
           ],
           [
             {
-              "Weight": 1,
+              "Weight": 5,
               "Tag": "TretJupiter",
               "Obtainable": 2,
               "Djinn": "Jupiter"
             },
             {
-              "Weight": 4,
+              "Weight": 10,
               "Tag": "TretJupiter",
               "Obtainable": 1,
               "Djinn": "Jupiter"
             },
             {
-              "Weight": 11,
+              "Weight": 20,
               "Tag": "TretBreeze",
               "Obtainable": 1,
               "Djinn": "Breeze"
             },
-            { "Weight": 32 }
+            { "Weight": 65 }
           ]
         ]
       },
@@ -2986,24 +2986,24 @@
           ],
           [
             {
-              "Weight": 1,
+              "Weight": 5,
               "Tag": "FuchinDjinn",
               "Obtainable": 2,
               "Djinn": "Jupiter"
             },
             {
-              "Weight": 4,
+              "Weight": 10,
               "Tag": "FuchinDjinn",
               "Obtainable": 1,
               "Djinn": "Jupiter"
             },
             {
-              "Weight": 11,
+              "Weight": 20,
               "Tag": "FuchinZephyr",
               "Obtainable": 1,
               "Djinn": "Zephyr"
             },
-            { "Weight": 32 }
+            { "Weight": 65 }
           ]
         ]
       },
@@ -3122,25 +3122,25 @@
             }
           ],
           [
-            { "Weight": 32 },
             {
-              "Weight": 11,
+              "Weight": 5,
+              "Tag": "MogallDjinn",
+              "Obtainable": 1,
+              "Djinn": "Venus"
+            },
+            {
+              "Weight": 10,
+              "Tag": "MogallDjinn",
+              "Obtainable": 2,
+              "Djinn": "Venus"
+            },
+            {
+              "Weight": 20,
               "Tag": "MogallQuartz",
               "Obtainable": 1,
               "Djinn": "Quartz"
             },
-            {
-              "Weight": 4,
-              "Tag": "MogallDjinn",
-              "Obtainable": 1,
-              "Djinn": "Venus"
-            },
-            {
-              "Weight": 1,
-              "Tag": "MogallDjinn",
-              "Obtainable": 2,
-              "Djinn": "Venus"
-            }
+            { "Weight": 65 }
           ]
         ]
       },
@@ -3297,24 +3297,24 @@
           ],
           [
             {
-              "Weight": 1,
+              "Weight": 5,
               "Tag": "XianDjinn",
               "Obtainable": 4,
               "Djinn": "Mercury"
             },
             {
-              "Weight": 4,
+              "Weight": 10,
               "Tag": "XianDjinn",
               "Obtainable": 2,
               "Djinn": "Mercury"
             },
             {
-              "Weight": 11,
+              "Weight": 20,
               "Tag": "XianMist",
               "Obtainable": 1,
               "Djinn": "Mist"
             },
-            { "Weight": 32 }
+            { "Weight": 65 }
           ]
         ]
       },
@@ -3355,24 +3355,24 @@
           ],
           [
             {
-              "Weight": 1,
+              "Weight": 5,
               "Tag": "XianDjinn",
               "Obtainable": 4,
               "Djinn": "Mars"
             },
             {
-              "Weight": 4,
+              "Weight": 10,
               "Tag": "XianDjinn",
               "Obtainable": 2,
               "Djinn": "Mars"
             },
             {
-              "Weight": 11,
+              "Weight": 20,
               "Tag": "XianChili",
               "Obtainable": 1,
               "Djinn": "Chili"
             },
-            { "Weight": 32 }
+            { "Weight": 65 }
           ]
         ]
       },
@@ -3575,25 +3575,25 @@
             }
           ],
           [
-            { "Weight": 32 },
             {
-              "Weight": 11,
+              "Weight": 5,
+              "Tag": "AltinMercury",
+              "Obtainable": 1,
+              "Djinn": "Mercury"
+            },
+            {
+              "Weight": 10,
+              "Tag": "AltinMercury",
+              "Obtainable": 2,
+              "Djinn": "Mercury"
+            },
+            {
+              "Weight": 20,
               "Tag": "AltinSpritz",
               "Obtainable": 1,
               "Djinn": "Spritz"
             },
-            {
-              "Weight": 4,
-              "Tag": "AltinMercury",
-              "Obtainable": 1,
-              "Djinn": "Mercury"
-            },
-            {
-              "Weight": 1,
-              "Tag": "AltinMercury",
-              "Obtainable": 2,
-              "Djinn": "Mercury"
-            }
+            { "Weight": 65 }
           ]
         ]
       },
@@ -3843,24 +3843,24 @@
           ],
           [
             {
-              "Weight": 1,
+              "Weight": 5,
               "Tag": "LamakanJupiter",
               "Obtainable": 3,
               "Djinn": "Jupiter"
             },
             {
-              "Weight": 4,
+              "Weight": 10,
               "Tag": "LamakanJupiter",
               "Obtainable": 1,
               "Djinn": "Jupiter"
             },
             {
-              "Weight": 11,
+              "Weight": 20,
               "Tag": "LamakanSmog",
               "Obtainable": 1,
               "Djinn": "Smog"
             },
-            { "Weight": 32 }
+            { "Weight": 65 }
           ]
         ]
       },
@@ -3970,24 +3970,24 @@
           ],
           [
             {
-              "Weight": 1,
+              "Weight": 5,
               "Tag": "KalayDjinn",
               "Obtainable": 2,
               "Djinn": "Venus"
             },
             {
-              "Weight": 4,
+              "Weight": 10,
               "Tag": "KalayDjinn",
               "Obtainable": 1,
               "Djinn": "Venus"
             },
             {
-              "Weight": 11,
+              "Weight": 20,
               "Tag": "KalayVine",
               "Obtainable": 1,
               "Djinn": "Vine"
             },
-            { "Weight": 32 }
+            { "Weight": 65 }
           ]
         ]
       },
@@ -4261,6 +4261,38 @@
         ]
       },
       {
+        "Flavourtext": "Hsu bows in recognition of your prowess, and tells you he thought he spotted something of interest at a particular corner of this cave system.  Following his directions, and after solving a puzzle, you come face-to-snout with a Djinni!",
+        "EnemyNames": [ "Venus Djinni" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "XP": 160,
+              "Coins": 111
+            }
+          ],
+          [
+            {
+              "Weight": 5,
+              "Tag": "GondowanVenus",
+              "Djinn": "Venus"
+            },
+            {
+              "Weight": 10,
+              "Tag": "GondowanVenus",
+              "Djinn": "Venus"
+            },
+            {
+              "Weight": 20,
+              "Tag": "GondowanGround",
+              "Djinn": "Ground"
+            },
+            { "Weight": 65 }
+          ]
+        ]
+      },
+      {
         "Flavourtext": "The third and final beast gang arrives just as another demon emerges from the ritual and blocks the exit. Battle!",
         "EnemyNames": [ "Troll 1", "Numb Ant", "Red Demon", "Rat Fighter 1", "Skeleton 1" ],
         "Keywords": [ "Shuffle" ],
@@ -4270,7 +4302,12 @@
             {
               "Weight": 1,
               "XP": 174,
-              "Coins": 122,
+              "Coins": 122
+            }
+          ],
+          [
+            {
+              "Weight": 1,
               "Chest": "Silver",
               "HasChest": true
             },
@@ -4420,8 +4457,9 @@
         ]
       },
       {
-        "Flavourtext": "'Land ho!' A frantic voice calls from the lookout. You spare a moment to squint at the horizon. Is that Tolbi already...? A mighty wave rises out of the Karagol, blocking the shore from view and sending you stumbling as the ship heaves. When you regain your footing, your stomach drops. There, lounging on the foredeck, tentacles wrapped around the bowsprit, sits a beast you thought mere legend - a Kraken.",
+        "Flavourtext": "'Land ho!' A frantic voice calls from the lookout. You wake up from the quick nap you took. It's hard to make out what you are squinting at on the horizon. Is that Tolbi already...? A mighty wave rises out of the Karagol, blocking the shore from view and sending you stumbling as the ship heaves. When you regain your footing, your stomach drops. There, lounging on the foredeck, tentacles wrapped around the bowsprit, sits a beast you thought mere legend - a Kraken.",
         "EnemyNames": [ "Tentacle", "Tentacle", "Tentacle", "Tentacle", "Kraken", "Tentacle", "Tentacle", "Tentacle", "Tentacle" ],
+        "Keywords": [ "Heal" ],
         "Image": "https://cdn.discordapp.com/attachments/497696510688100352/672471448442634240/Kraken.gif",
         "RewardTables": [
           [
@@ -4437,7 +4475,7 @@
               "Chest": "Gold",
               "HasChest": true
             },
-            { "Weight": 12 },
+            { "Weight": 7 },
             {
               "Weight": 1,
               "Dungeon": "Crossbone Isle"
@@ -4918,24 +4956,24 @@
           ],
           [
             {
-              "Weight": 1,
+              "Weight": 5,
               "Tag": "AltmillerJupiter",
               "Obtainable": 2,
               "Djinn": "Jupiter"
             },
             {
-              "Weight": 4,
+              "Weight": 10,
               "Tag": "AltmillerJupiter",
               "Obtainable": 1,
               "Djinn": "Jupiter"
             },
             {
-              "Weight": 11,
+              "Weight": 20,
               "Tag": "AltmillerSquall",
               "Obtainable": 1,
               "Djinn": "Squall"
             },
-            { "Weight": 32 }
+            { "Weight": 65 }
           ]
         ]
       },
@@ -5555,7 +5593,7 @@
             }
           ],
           [
-            { "Weight": 6 },
+            { "Weight": 4 },
             {
               "Weight": 2,
               "Dungeon": "Suhalla Desert Junction"
@@ -5611,17 +5649,11 @@
           ],
           [
             {
-              "Weight": 1,
+              "Weight": 4,
               "Djinn": "Mars"
             },
             {
-              "Weight": 4,
-              "Tag": "SuhallaMars",
-              "Obtainable": 1,
-              "Djinn": "Mars"
-            },
-            {
-              "Weight": 4,
+              "Weight": 5,
               "Tag": "SuhallaFlash",
               "Obtainable": 1,
               "Djinn": "Flash"
@@ -5662,7 +5694,7 @@
               "Weight": 1,
               "Dungeon": "Crossbone Isle"
             },
-            { "Weight": 9 }
+            { "Weight": 3 }
           ]
         ]
       }
@@ -5713,23 +5745,23 @@
           ],
           [
             {
-              "Weight": 1,
+              "Weight": 5,
               "Tag": "LaliveroDjinn",
               "Djinn": "Mercury"
             },
             {
-              "Weight": 4,
+              "Weight": 10,
               "Tag": "LaliveroDjinn",
               "Obtainable": 2,
               "Djinn": "Mercury"
             },
             {
-              "Weight": 11,
+              "Weight": 20,
               "Tag": "LaliveroDew",
               "Obtainable": 1,
               "Djinn": "Dew"
             },
-            { "Weight": 32 }
+            { "Weight": 65 }
           ]
         ]
       },
@@ -5826,24 +5858,24 @@
           ],
           [
             {
-              "Weight": 1,
+              "Weight": 5,
               "Tag": "LaliveroDjinn",
               "Obtainable": 5,
               "Djinn": "Mars"
             },
             {
-              "Weight": 4,
+              "Weight": 10,
               "Tag": "LaliveroDjinn",
               "Obtainable": 2,
               "Djinn": "Mars"
             },
             {
-              "Weight": 11,
+              "Weight": 20,
               "Tag": "LaliveroTorch",
               "Obtainable": 1,
               "Djinn": "Torch"
             },
-            { "Weight": 32 }
+            { "Weight": 65 }
           ]
         ]
       },
@@ -6234,23 +6266,23 @@
             }
           ],
           [
-            { "Weight": 32 },
             {
-              "Weight": 11,
-              "Tag": "BabiLuff",
-              "Obtainable": 1,
-              "Djinn": "Luff"
+              "Weight": 5,
+              "Djinn": "Jupiter"
             },
             {
-              "Weight": 4,
+              "Weight": 10,
               "Tag": "BabiJupiter",
               "Obtainable": 1,
               "Djinn": "Jupiter"
             },
             {
-              "Weight": 1,
-              "Djinn": "Jupiter"
-            }
+              "Weight": 20,
+              "Tag": "BabiLuff",
+              "Obtainable": 1,
+              "Djinn": "Luff"
+            },
+            { "Weight": 65 }
           ]
         ]
       },
@@ -6517,12 +6549,12 @@
               "Djinn": "Venus"
             },
             {
-              "Weight": 12,
+              "Weight": 5,
               "Tag": "CrossboneDjinn",
               "Obtainable": 1,
               "Djinn": "Bane"
             },
-            { "Weight": 32 }
+            { "Weight": 15 }
           ]
         ]
       },
@@ -6982,7 +7014,7 @@
               "Obtainable": 1,
               "XP": 180,
               "Coins": 180,
-              "Chest": "Silver",
+              "Chest": "Gold",
               "HasChest": true
             }
           ]
@@ -7038,7 +7070,71 @@
     },
     "Matchups": [
       {
-        "Flavourtext": "You shouldn't be here.",
+        "Flavourtext": "Hama doesnt know what to do with you. 'As a wise Venus Adept once said. _This is your journey now_'",
+        "EnemyNames": [ "Rat" ],
+        "Image": "",
+        "RewardTables": [
+          [ { "Weight": 1 } ]
+        ]
+      },
+      {
+        "Flavourtext": "Farmers cottage in the middle of a field. You walk up to it and notice a bear attacking the farmer. Will you help the farmer?",
+        "EnemyNames": [ "Rat" ],
+        "Image": "",
+        "RewardTables": [
+          [ { "Weight": 1 } ]
+        ]
+      },
+      {
+        "Flavourtext": "Fight the bear",
+        "EnemyNames": [ "Rat" ],
+        "Image": "",
+        "RewardTables": [
+          [ { "Weight": 1 } ]
+        ]
+      },
+      {
+        "Flavourtext": "The farmer thanks you and invites you to eat. Roasted Mutton. Scraggy fox approaches with cubs hiding out in the woods. Farmer heads out, armed with a pitchfork. (Share the meat)",
+        "EnemyNames": [ "Rat" ],
+        "Image": "",
+        "RewardTables": [
+          [ { "Weight": 1 } ]
+        ]
+      },
+      {
+        "Flavourtext": "Farmer thanks you, reveals he's a local count who owns the land. Has a job for you gives you gaias axe and wants you to either chop wood or hunt down the wolves that kill lumberjacks. (decline)",
+        "EnemyNames": [ "Rat" ],
+        "Image": "",
+        "RewardTables": [
+          [ { "Weight": 1 } ]
+        ]
+      },
+      {
+        "Flavourtext": "Fight the counts guards",
+        "EnemyNames": [ "Rat" ],
+        "Image": "",
+        "RewardTables": [
+          [ { "Weight": 1 } ]
+        ]
+      },
+      {
+        "Flavourtext": "You head into the woods, wanting to stop the lumberjacks. You findyourself on a glade, surrounded by 9 enemies (Defend)",
+        "EnemyNames": [ "Rat" ],
+        "Image": "",
+        "RewardTables": [
+          [ { "Weight": 1 } ]
+        ]
+      },
+      {
+        "Flavourtext": "Fight Judgement",
+        "EnemyNames": [ "Rat" ],
+        "Image": "",
+        "RewardTables": [
+          [ { "Weight": 1 } ]
+        ]
+      },
+      {
+        "Flavourtext": "End",
         "EnemyNames": [ "Rat" ],
         "Image": "",
         "RewardTables": [
@@ -8128,7 +8224,7 @@
       },
       {
         "Flavourtext": "Some of these struggles were held on land itself, clashing blades and pitting armies against those that challenged them. Other battles were held on the oceans, where navies sought reign over the waters near the land they coveted; cannonballs were exchanged between sides, ships would close in on others to send in their best warriors in hopes of slaying the enemy crews. It is truly a violent past to behold, one that shouldn't be overlooked.'",
-        "EnemyNames": [ "Aqua Hydra 1,Pyrodra" ],
+        "EnemyNames": [ "Aqua Hydra 1", "Pyrodra 1" ],
         "Keywords": [ "Shuffle" ],
         "Image": "",
         "RewardTables": [
@@ -8281,7 +8377,7 @@
     "name": "Snowy Cavern",
     "IsOneTimeOnly": false,
     "FlavourText": "A snow covered cavern serves as the hideout for a certain creature...",
-    "Image": "https://discordapp.com/channels/668442573899300894/668443234292334612/733734405327290408",
+    "Image": "https://media.discordapp.net/attachments/668443234292334612/733734405163712613/unknown.png",
     "IsDefault": false,
     "Requirement": {
       "TagsRequired": [ "MolochQuest2" ],

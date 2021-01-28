@@ -238,9 +238,10 @@ namespace IodemBot.Modules.GoldenSunMechanics
             LastDailyChest = DateTime.Now.Subtract(new TimeSpan(1, 0, 0, 0));
         }
 
-        internal Item GetItem(string item)
+        internal Item GetItem(string item, Func<Item, bool> pre = null)
         {
             Item i = null;
+            var preselection = Inv.Where(i => pre?.Invoke(i) ?? true);
             i ??= Inv.FirstOrDefault(d => item.Equals(d.Itemname, StringComparison.CurrentCultureIgnoreCase) && d.Nickname.IsNullOrEmpty());
             i ??= Inv.FirstOrDefault(d => item.Equals(d.Itemname, StringComparison.CurrentCultureIgnoreCase));
             i ??= Inv.FirstOrDefault(d => item.Equals(d.Nickname, StringComparison.CurrentCultureIgnoreCase));
@@ -264,20 +265,14 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         internal bool Repair(string item)
         {
-            if (!HasItem(item))
+            var it = GetItem(item, i => i.IsBroken);
+            if (it != null && RemoveBalance(it.SellValue))
             {
-                return false;
-            }
-            var it = GetItem(item);
-
-
-            if (!RemoveBalance(it.SellValue))
-            {
-                return false;
+                it.IsBroken = false;
+                return true;
             }
 
-            it.IsBroken = false;
-            return true;
+            return false;
         }
 
         internal bool Rename(string item, string newname = null)

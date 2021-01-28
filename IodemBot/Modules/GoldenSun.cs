@@ -379,6 +379,9 @@ namespace IodemBot.Modules
 
         public async Task ChangeElement(UserAccount user, Element chosenElement, string classSeriesName = "")
         {
+            if(user.Element == chosenElement) {
+                return;
+            }
             foreach (string removed in user.Inv.UnequipExclusiveTo(user.Element))
             {
                 var removedEmbed = new EmbedBuilder();

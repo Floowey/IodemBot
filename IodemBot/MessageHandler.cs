@@ -36,9 +36,9 @@ namespace IodemBot
                     Emote.Parse("<:Vicious_Chop:537265959384121366>")),
                 5),
                 new AutoResponse(
-                new Regex("Bubebo", RegexOptions.Compiled | RegexOptions.IgnoreCase),
+                new Regex("(Bubebo)", RegexOptions.Compiled | RegexOptions.IgnoreCase),
                 new Reaction("Do you feel the earth rumbling? It must be Lord Babi rolling in his grave.",
-                    Emote.Parse("<:sad:490015818063675392>")),
+                    Emote.Parse("<:sad:685656410352386127>")),
                 60),
                 new AutoResponse(
                 new Regex("(Air).*(Rock).*(Sol Blade)|(Sol Blade).*(Air).*(Rock)", RegexOptions.Compiled | RegexOptions.IgnoreCase),
@@ -185,7 +185,7 @@ namespace IodemBot
             {
                 if (emotes.Length > 0)
                 {
-                    await msg.AddReactionsAsync(emotes);
+                    _ = msg.AddReactionsAsync(emotes);
                 }
 
                 if (text != "")
@@ -193,8 +193,9 @@ namespace IodemBot
                     var embed = new EmbedBuilder();
                     embed.WithColor(Colors.Get("Iodem"));
                     embed.WithDescription(text);
-                    await msg.Channel.SendMessageAsync("", false, embed.Build());
+                    _ = msg.Channel.SendMessageAsync("", false, embed.Build());
                 }
+                await Task.CompletedTask;
             }
         }
     }
