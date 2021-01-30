@@ -149,9 +149,12 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 {
                     DailiesInARow++;
                 }
-                else
+                else if (DateTime.Now.Date >= new DateTime(day: 1, month: 2, year: 2021))
                 {
                     DailiesInARow = 0;
+                } else
+                {
+                    DailiesInARow++;
                 }
                 AwardChest(ChestQuality.Daily);
                 LastDailyChest = DateTime.Now;
