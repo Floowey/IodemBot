@@ -94,7 +94,7 @@ namespace IodemBot.Core.UserManagement
             {
                 func = function;
             }
-            private static Comparer<ulong> descendingComparer = Comparer<ulong>.Create((x, y) => y.CompareTo(x));
+
             private void Sort()
             {
                 dict.Sort((x, y) => y.Value.CompareTo(x.Value));
@@ -214,12 +214,19 @@ namespace IodemBot.Core.UserManagement
 
             public bool TryGetValue(ulong key, [MaybeNullWhen(false)] out ulong value)
             {
-                if (ContainsKey(key))
+                try
                 {
-                    value = this[key];
-                    return true;
-                } else
-                {
+                    if (ContainsKey(key))
+                    {
+                        value = this[key];
+                        return true;
+                    } else
+                    {
+                        value = 0;
+                        return false;
+                    }
+                } catch (InvalidOperationException ioe){
+                    Console.WriteLine(ioe);
                     value = 0;
                     return false;
                 }

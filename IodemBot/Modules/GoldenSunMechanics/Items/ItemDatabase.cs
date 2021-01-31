@@ -14,7 +14,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         private static Inventory shop;
         private static DateTime lastReset;
 
-        private static ShopStruct Shopstruct { get { return new ShopStruct() { shop = shop, lastReset = lastReset, restockmessage = restockMessage, shopkeeper = shopkeeper }; } }
+        private static ShopStruct Shopstruct { get { return new ShopStruct() { Shop = shop, LastReset = lastReset, RestockMessage = restockMessage, Shopkeeper = shopkeeper }; } }
         private static readonly int HoursForReset = 8;
         public static string shopkeeper;
         public static string restockMessage;
@@ -35,10 +35,10 @@ namespace IodemBot.Modules.GoldenSunMechanics
                     new []{ItemRarity.Uncommon, ItemRarity.Rare, ItemRarity.Legendary}, new []{ 40, 50, 10})
                 },
                 {ChestQuality.Gold, new RewardGenerator<ItemRarity>(
-                    new []{ItemRarity.Rare, ItemRarity.Legendary, ItemRarity.Mythical}, new []{ 48, 50, 2})
+                    new []{ItemRarity.Rare, ItemRarity.Legendary, ItemRarity.Mythical}, new []{ 40, 50, 10})
                 },
                 {ChestQuality.Adept, new RewardGenerator<ItemRarity>(
-                    new []{ItemRarity.Legendary, ItemRarity.Mythical}, new []{ 80, 20})
+                    new []{ItemRarity.Legendary, ItemRarity.Mythical}, new []{ 65, 35})
                 }
             };
         public static TimeSpan TimeToNextReset
@@ -61,10 +61,10 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 {
                     json = File.ReadAllText(shopLocation);
                     var s = JsonConvert.DeserializeObject<ShopStruct>(json);
-                    shop = s.shop;
-                    lastReset = s.lastReset;
-                    shopkeeper = s.shopkeeper;
-                    restockMessage = s.restockmessage;
+                    shop = s.Shop;
+                    lastReset = s.LastReset;
+                    shopkeeper = s.Shopkeeper;
+                    restockMessage = s.RestockMessage;
                 }
 
                 var longestItem = itemsDatabase.Select(d => d.Value).OrderByDescending(d => $"{d.Icon} - {d.Name},".Length).First();
@@ -178,6 +178,11 @@ namespace IodemBot.Modules.GoldenSunMechanics
             return true;
         }
 
+        public static IEnumerable<Item> GetAllItems()
+        {
+            return itemsDatabase.Values.ToList().AsReadOnly();
+        }
+
         public static string GetRandomItem(ItemRarity rarity)
         {
             return itemsDatabase.Values.Where(i => i.Rarity == rarity).Random().Name;
@@ -232,10 +237,10 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         internal struct ShopStruct
         {
-            [JsonProperty] internal Inventory shop { get; set; }
-            [JsonProperty] internal DateTime lastReset { get; set; }
-            [JsonProperty] internal string shopkeeper { get; set; }
-            [JsonProperty] internal string restockmessage { get; set; }
+            [JsonProperty] internal Inventory Shop { get; set; }
+            [JsonProperty] internal DateTime LastReset { get; set; }
+            [JsonProperty] internal string Shopkeeper { get; set; }
+            [JsonProperty] internal string RestockMessage { get; set; }
         }
     }
 }

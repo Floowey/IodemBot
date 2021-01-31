@@ -8,8 +8,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
 {
     public class DefaultReward : Rewardable
     {
-        public uint coins { get; set; } = 0;
-        public uint xp { get; set; } = 0;
+        public uint Coins { get; set; } = 0;
+        public uint Xp { get; set; } = 0;
         public string Item { get; set; } = "";
 
         public bool HasChest { get; set; } = false;
@@ -35,8 +35,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 return "";
             }
             var giveTag = true;
-            userAccount.AddXp(xp);
-            userAccount.Inv.AddBalance(coins);
+            userAccount.AddXp(Xp);
+            userAccount.Inv.AddBalance(Coins);
 
             if (HasChest)
             {
@@ -85,7 +85,13 @@ namespace IodemBot.Modules.GoldenSunMechanics
                                 $"They behave differently to other djinn, in that they will not towards your Djinn Pocket limit or any class upgrades. " +
                                 $", however they will carry over if you decide to reset your game :)" +
                                 $"(Event Djinn will not be allowed in any upcoming tournaments.)");
-                        }
+                    }
+
+                    if(userAccount.DjinnPocket.Djinn.Count == userAccount.DjinnPocket.PocketSize)
+                    {
+                        awardLog.Add($"Attention! Your Djinn Pocket has reached its limit. " +
+                            $"In order to further obtain djinn, you must either make space by releasing djinn or upgrading it using `i!upgradedjinn`!");
+                    }
                 }
                 else
                 {
@@ -113,6 +119,12 @@ namespace IodemBot.Modules.GoldenSunMechanics
                             $"You can also team up with other people to use a higher number of djinn in even more powerful summon sequences! " +
                             $"Find more djinn by battling them in various towns and locations, and with some luck they will join you." +
                             $"Make sure to check `i!help DjinnAndSummons` for a full list of the commands related to djinn!");
+                    }
+
+                    if (userAccount.DjinnPocket.Djinn.Count == userAccount.DjinnPocket.PocketSize)
+                    {
+                        awardLog.Add($"Attention! Your Djinn Pocket has reached its limit. " +
+                            $"In order to further obtain djinn, you must either make space by releasing djinn or upgrading it using `i!upgradedjinn`!");
                     }
                 }
                 else

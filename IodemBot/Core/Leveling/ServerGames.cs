@@ -148,7 +148,7 @@ namespace IodemBot.Core.Leveling
             await Task.CompletedTask;
         }
 
-        internal static async Task UserWonEndless(UserAccount avatar, ITextChannel lobbyChannel, int winsInARow, EndlessMode mode, int nOfPlayers, string TeamMatesNames)
+        internal static async Task UserWonEndless(UserAccount avatar, int winsInARow, EndlessMode mode, int nOfPlayers, string TeamMatesNames)
         {
             if (mode == EndlessMode.Default)
             {
@@ -162,7 +162,7 @@ namespace IodemBot.Core.Leveling
             await Task.CompletedTask;
         }
 
-        internal static async Task UserFinishedEndless(UserAccount avatar, ITextChannel lobbyChannel, int winsInARow, EndlessMode mode)
+        internal static async Task UserFinishedEndless(UserAccount avatar, int winsInARow, EndlessMode mode)
         {
             string csvline = $"{DateTime.Now:s},Endless {mode},{winsInARow},{avatar.Name}{Environment.NewLine}";
             File.AppendAllText(BattleFile, csvline);
@@ -204,7 +204,7 @@ namespace IodemBot.Core.Leveling
             await Task.CompletedTask;
         }
 
-        internal static async Task UserWonSingleBattle(UserAccount avatar, ITextChannel lobbyChannel, BattleDifficulty difficulty)
+        internal static async Task UserWonSingleBattle(UserAccount avatar, BattleDifficulty difficulty)
         {
             string csvline = $"{DateTime.Now:s},Single,{difficulty},{avatar.Name}{Environment.NewLine}";
             File.AppendAllText(BattleFile, csvline);
@@ -270,6 +270,7 @@ namespace IodemBot.Core.Leveling
             {
                 _ = GoldenSun.AwardClassSeries("Apprentice Series", user, channel);
             }
+            await Task.CompletedTask;
         }
 
         internal static async Task UserLookedUpClass(SocketGuildUser user, SocketTextChannel channel)
@@ -282,6 +283,7 @@ namespace IodemBot.Core.Leveling
             {
                 _ = GoldenSun.AwardClassSeries("Page Series", user, channel);
             }
+            await Task.CompletedTask;
         }
     }
 }

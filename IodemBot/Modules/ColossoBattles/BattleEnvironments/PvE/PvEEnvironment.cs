@@ -48,6 +48,8 @@ namespace IodemBot.Modules.ColossoBattles
         public override void Dispose()
         {
             base.Dispose();
+            autoTurn?.Dispose();
+            resetIfNotActive?.Dispose();
             if (!IsPersistent)
             {
                 _ = BattleChannel.DeleteAsync();
@@ -113,26 +115,26 @@ namespace IodemBot.Modules.ColossoBattles
                         { "Gold", BattleDifficulty.Hard }
                     };
                     environment.internalDiff = diff[reaction.Emote.Name];
-                    await Reset();
+                    await Reset($"Difficulty changed");
                     return;
                 }
 
                 IUserMessage c = null;
-                if (StatusMessage.Id == reaction.MessageId)
+                if ((StatusMessage?.Id ?? 0) == reaction.MessageId)
                 {
                     c = StatusMessage;
                 }
-                if (EnemyMessage.Id == reaction.MessageId)
+                if ((EnemyMessage?.Id ?? 0) == reaction.MessageId)
                 {
                     c = EnemyMessage;
                 }
-                if (SummonsMessage.Id == reaction.MessageId)
+                if ((SummonsMessage?.Id ?? 0) == reaction.MessageId)
                 {
                     c = SummonsMessage;
                 }
                 if (PlayerMessages.Keys.Any(k => k.Id == reaction.MessageId))
                 {
-                    c = PlayerMessages.Keys.Where(k => k.Id == reaction.MessageId).First();
+                    c = PlayerMessages.Keys.Where(k => k.Id == reaction.MessageId).FirstOrDefault();
                 }
 
                 if (c == null)
@@ -140,20 +142,6 @@ namespace IodemBot.Modules.ColossoBattles
                     c = (IUserMessage)await channel.GetMessageAsync(reaction.MessageId);
                     _ = c.RemoveReactionAsync(reaction.Emote, reaction.User.Value);
                     Console.WriteLine("No matching Message for User found.");
-                    return;
-                }
-
-                if (!Battle.isActive)
-                {
-                    _ = c.RemoveReactionAsync(reaction.Emote, reaction.User.Value);
-                    Console.WriteLine("Battle not active.");
-                    return;
-                }
-
-                if (Battle.turnActive)
-                {
-                    _ = c.RemoveReactionAsync(reaction.Emote, reaction.User.Value);
-                    Console.WriteLine("Not so fast");
                     return;
                 }
 
@@ -213,7 +201,7 @@ namespace IodemBot.Modules.ColossoBattles
             }
             catch (Exception e)
             {
-                Console.WriteLine("Colosso Turn Processing Error: " + e);
+                Console.WriteLine($"Colosso Turn Processing Error {reaction.Emote}: " + e);
                 File.WriteAllText($"Logs/Crashes/Error_{DateTime.Now.Date}.log", e.ToString());
             }
         }
@@ -228,6 +216,7 @@ namespace IodemBot.Modules.ColossoBattles
                 .ToArray()
             );
 
+            await Task.Delay(3000);
             await WriteBattleInit();
             autoTurn.Start();
         }
@@ -254,26 +243,27 @@ namespace IodemBot.Modules.ColossoBattles
 
             Battle.AddPlayer(player, Team.A);
 
-            var playerMsg = await BattleChannel.SendMessageAsync($"{player.Name} wants to battle!");
-            PlayerMessages.Add(playerMsg, player);
             resetIfNotActive.Stop();
             resetIfNotActive.Start();
 
+            var playerMsg = await BattleChannel.SendMessageAsync($"{player.Name} wants to battle!");
+            PlayerMessages.Add(playerMsg, player);
+
             if (PlayerMessages.Count == PlayersToStart)
             {
-                await StartBattle();
+                _ = StartBattle();
             }
         }
 
-        private static string[] tutorialTips = new[]
+        private static readonly string[] tutorialTips = new[]
         {
-            "Djinn are your friends! Use them make up for weaknesses in your class!",
+            "Djinn are your friends! Use them to make up for weaknesses in your class!",
             "You want to play with multiple setups? Save your loadout with `i!loadout save <My Loadout Name>` to access it later!",
             "Make sure to keep opening your daily chests! Every 5th item will be better than the ones before!",
             "Struggling to beat a dungeon? Keep on grinding, you might find good gear to help you progress!",
             "Some dungeons might feature riddles, take your time to solve them by reacting with :pause_button:",
-            "i!colosso is a great way to earn some solo xp if running solo battles are a little too difficult.",
-            "The @colosso guard are here to ensure that things run smoothly on Iodem's side.  Be sure to ping them if you have any questions regarding stability.",
+            "i!train is a great way to earn some solo xp if running solo battles are a little too difficult.",
+            "The @Colosso Guard are here to ensure that things run smoothly. If there are any issues, let them know. Note that they cannot fix delays or lag.",
             "Remember to keep commands locked away in <#358276942337671178> to ensure that the <#546760009741107216> channel doesn't get flooded with shenanigans.",
             "No djinn were harmed in the making of this code.  Except for Flint, but he had it coming.",
             "Take your time, especially if a lot of people are playing. Iodem can only do so much at once!",
@@ -282,7 +272,7 @@ namespace IodemBot.Modules.ColossoBattles
             "Be sure to check the pins in #colosso-talks !  A lot of good information is saved there.",
             "You have two equipment sets: warrior and mage.  Items can be equipped to one or both sets!"
         };
-        public override async Task Reset()
+        public override async Task Reset(string msg = "")
         {
             Battle = new ColossoBattle();
             
@@ -300,6 +290,12 @@ namespace IodemBot.Modules.ColossoBattles
             Factory.summons.Clear();
             PlayerMessages.Clear();
 
+            if (!IsPersistent && WasReset)
+            {
+                Console.WriteLine($"{Name} was disposed: {msg}");
+                Dispose(); return;
+            }
+
             if (EnemyMessage == null)
             {
                 await Initialize();
@@ -310,8 +306,8 @@ namespace IodemBot.Modules.ColossoBattles
                 await EnemyMessage.RemoveAllReactionsAsync();
                 await EnemyMessage.AddReactionsAsync(new IEmote[]
                 {
-                        Emote.Parse("<:Fight:536919792813211648>"),
-                        Emote.Parse("<:Battle:536954571256365096>")
+                    Emote.Parse("<:Fight:536919792813211648>"),
+                    Emote.Parse("<:Battle:536954571256365096>")
                 });
                 wasJustReset = true;
             }
@@ -352,22 +348,23 @@ namespace IodemBot.Modules.ColossoBattles
             {
                 Interval = 120000,
                 AutoReset = false,
-                Enabled = false
+                Enabled = !IsPersistent
             };
             resetIfNotActive.Elapsed += BattleWasNotStartetInTime;
 
-            if (!IsPersistent && WasReset)
-            {
-                Dispose(); return;
-            }
             WasReset = true;
-
-            Console.WriteLine("Battle was reset.");
+            Console.WriteLine($"{Name} was reset: {msg}");
         }
 
         private async void BattleWasNotStartetInTime(object sender, ElapsedEventArgs e)
         {
-            _ = Reset();
+            if (!IsActive)
+            {
+                _ = Reset("Not started in time");
+            } else
+            {
+                Console.WriteLine("Battle tried to reset while active. Timer Status: " + resetIfNotActive.Enabled);
+            }
             await Task.CompletedTask;
         }
 
@@ -389,7 +386,7 @@ namespace IodemBot.Modules.ColossoBattles
                 return;
             }
 
-            if (wasJustReset)
+            if (!PlayerMessages.Values.Any(p => p.Moves.Any(m => m is Summon)))
             {
                 PlayerMessages.Values.ToList().ForEach(p => p.Moves.AddRange(Factory.PossibleSummons));
             }
@@ -403,9 +400,9 @@ namespace IodemBot.Modules.ColossoBattles
 
         protected override async Task WriteBattle()
         {
+            var delay = Global.Client.Latency / 2;
             try
             {
-                var delay = Global.Client.Latency / 2;
                 await Task.Delay(delay);
                 await WriteStatus();
                 await Task.Delay(delay);
@@ -421,8 +418,11 @@ namespace IodemBot.Modules.ColossoBattles
                 Console.WriteLine("Failed drawing Battle, retrying." + e.ToString());
                 Battle.log.Add("Failed drawing Battle, retrying.");
                 await WriteStatus();
+                await Task.Delay(delay);
                 await WriteSummons();
+                await Task.Delay(delay);
                 await WriteEnemies();
+                await Task.Delay(delay);
                 await WritePlayers();
             }
             catch (TimeoutException e)
@@ -443,11 +443,15 @@ namespace IodemBot.Modules.ColossoBattles
 
         protected override async Task WriteBattleInit()
         {
+            var delay = Global.Client.Latency / 2;
             try
             {
                 await WriteStatusInit();
+                await Task.Delay(delay);
                 await WriteSummonsInit();
+                await Task.Delay(delay);
                 await WriteEnemiesInit();
+                await Task.Delay(delay);
                 await WritePlayersInit();
             }
             catch (HttpException e)
@@ -455,8 +459,11 @@ namespace IodemBot.Modules.ColossoBattles
                 Console.WriteLine("Failed drawing Battle, retrying: " + e.ToString());
                 Battle.log.Add("Failed drawing Battle, retrying.");
                 await WriteStatusInit();
+                await Task.Delay(delay);
                 await WriteSummonsInit();
+                await Task.Delay(delay);
                 await WriteEnemiesInit();
+                await Task.Delay(delay);
                 await WritePlayersInit();
             }
             catch (TimeoutException e)
@@ -598,15 +605,24 @@ namespace IodemBot.Modules.ColossoBattles
             {
                 return null;
             }
-            EmbedBuilder embed = new EmbedBuilder()
-                .WithThumbnailUrl("https://cdn.discordapp.com/attachments/497696510688100352/640300243820216336/unknown.png");
+            EmbedBuilder embed = new EmbedBuilder();
+                //.WithThumbnailUrl("https://cdn.discordapp.com/attachments/497696510688100352/640300243820216336/unknown.png");
 
             foreach (var el in new[] {Element.Venus, Element.Mars, Element.Jupiter, Element.Mercury })
             {
                 if (allDjinn.OfElement(el).Count() > 0)
                 {
-                    embed.AddField(el.ToString(), ($"{string.Join(" ", standbyDjinn.OfElement(el).Select(d => d.Emote))} | " +
-                        $"{string.Join(" ", recoveryDjinn.OfElement(el).Select(d => d.Emote))}").Trim(), true);
+                    var standby = string.Join(" ", standbyDjinn.OfElement(el).Select(d => d.Emote));
+                    var recovery = string.Join(" ", recoveryDjinn.OfElement(el).Select(d => d.Emote));
+                    embed.WithColor(Colors.Get(standbyDjinn.Select(e => e.Element.ToString()).ToList()));
+
+                    embed.AddField(GoldenSun.ElementIcons[el], ($"{standby}" +
+                        $"{(!standby.IsNullOrEmpty() && !recovery.IsNullOrEmpty() ? "\n" : "\u200b")}" +
+                        $"{(recovery.IsNullOrEmpty() ? "" : $"({recovery})")}").Trim(), true);
+                    if(embed.Fields.Count == 2 || embed.Fields.Count == 5)
+                    {
+                        embed.AddField("\u200b", "\u200b", true);
+                    }
                 }
             }
 
@@ -710,8 +726,16 @@ namespace IodemBot.Modules.ColossoBattles
                         emotes.Add(m.GetEmote());
                     }
                 }
-                emotes.RemoveAll(e => msg.Reactions.Any(r => r.Key.Name.Equals(e.Name, StringComparison.InvariantCultureIgnoreCase)));
-                tasks.Add(msg.AddReactionsAsync(emotes.ToArray()));
+
+                //emotes.RemoveAll(e => 
+                //    msg.Reactions.Where(r => r.Key != null)
+                //    .Any(r => r.Key.Name.Equals(e.Name, StringComparison.InvariantCultureIgnoreCase))
+                //);
+                tasks.Add(
+                    msg.AddReactionsAsync(
+                        emotes.Except(msg.Reactions.Keys).ToArray()
+                    )
+                );
                 i++;
             }
             tasks.Add(WritePlayers());
@@ -751,7 +775,7 @@ namespace IodemBot.Modules.ColossoBattles
             var text = GetWinMessageString();
             await StatusMessage.ModifyAsync(m => { m.Content = text; m.Embed = null; });
             await Task.Delay(2000);
-            await Reset();
+            await Reset("Game Over");
         }
     }
 }

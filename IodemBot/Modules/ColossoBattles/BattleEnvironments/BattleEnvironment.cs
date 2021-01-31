@@ -116,7 +116,7 @@ namespace IodemBot.Modules.ColossoBattles
 
         protected abstract Task StartBattle();
 
-        public abstract Task Reset();
+        public abstract Task Reset(string msg = "");
 
         public virtual void Dispose()
         {

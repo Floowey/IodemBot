@@ -208,6 +208,7 @@ namespace IodemBot.Modules
             var avatar = EntityConverter.ConvertUser(user);
             _ = ReplyAsync($"Tag Removed {avatar.Tags.Remove(Tag)}");
             UserAccountProvider.StoreUser(avatar);
+            await Task.CompletedTask;
         }
 
         [Command("SetXP")]
@@ -217,6 +218,7 @@ namespace IodemBot.Modules
             var avatar = EntityConverter.ConvertUser(user);
             avatar.XP = xp;
             UserAccountProvider.StoreUser(avatar);
+            await Task.CompletedTask;
         }
 
         [Command("AddTag")]
@@ -242,10 +244,11 @@ namespace IodemBot.Modules
             }
             chosenDjinn.IsShiny = shiny;
             UserAccountProvider.StoreUser(acc);
+            await Task.CompletedTask;
         }
 
         [Command("Emotes")]
-        [RequireStaff]
+        [RequireUserPermission(GuildPermission.ManageEmojis)]
         public async Task Emotes()
         {
             var s = string.Join("\n", Context.Guild.Emotes.OrderBy(d => d.Name).Select(e => $"{e} \\<{(e.Animated ? "a" : "")}:{e.Name}:{e.Id}>"));

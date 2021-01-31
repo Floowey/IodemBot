@@ -7,7 +7,7 @@ namespace IodemBot.Modules.ColossoBattles
     {
         public GoliathBattleEnvironment(string Name, ITextChannel lobbyChannel, bool isPersistent, ITextChannel teamAChannel, ITextChannel teamBChannel, IRole TeamBRole, uint playersToStart = 4) : base(Name, lobbyChannel, isPersistent, teamAChannel, teamBChannel, TeamBRole, playersToStart, 1)
         {
-            _ = Reset();
+            _ = Reset("init");
         }
 
         protected override async Task AddPlayer(PlayerFighter player, Team team)

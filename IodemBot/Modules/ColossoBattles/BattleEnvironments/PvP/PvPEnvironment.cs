@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Timers;
 using Discord;
+using Discord.Net;
 using Discord.WebSocket;
 using IodemBot.Core.Leveling;
 using IodemBot.Core.UserManagement;
@@ -68,7 +69,7 @@ namespace IodemBot.Modules.ColossoBattles
             return;
         }
 
-        public override async Task Reset()
+        public override async Task Reset(string msg = "")
         {
             Battle = new ColossoBattle();
             var A = Teams[Team.A];
@@ -157,7 +158,7 @@ namespace IodemBot.Modules.ColossoBattles
 
         private async void BattleWasNotStartedInTime(object sender, ElapsedEventArgs e)
         {
-            await Reset();
+            await Reset("Not started in time");
         }
 
         private async void TurnTimeElapsed(object sender, ElapsedEventArgs e)
@@ -181,13 +182,13 @@ namespace IodemBot.Modules.ColossoBattles
         {
             await Task.Delay(5000);
             var winners = Battle.GetTeam(Battle.GetWinner());
-            var text = $"{winners.FirstOrDefault().Name}'s Party wins! Battle will reset shortly.";
+            var text = $"{winners.FirstOrDefault()?.Name ?? "Nobodys!?"}'s Party wins! Battle will reset shortly.";
 
             _ = Teams[Team.A].StatusMessage.ModifyAsync(m => { m.Content = text; m.Embed = null; });
             _ = Teams[Team.B].StatusMessage.ModifyAsync(m => { m.Content = text; m.Embed = null; });
 
             await Task.Delay(5000);
-            _ = Reset();
+            _ = Reset($"Game over: {text}");
         }
 
         protected override async Task ProcessReaction(Cacheable<IUserMessage, ulong> cache, ISocketMessageChannel channel, SocketReaction reaction)
@@ -283,7 +284,7 @@ namespace IodemBot.Modules.ColossoBattles
                         return;
                     }
 
-                    if (reaction.Emote.Name == "⏸")
+                    if (reaction.Emote.Name == "⏸️")
                     {
                         autoTurn.Stop();
                         return;
@@ -312,8 +313,11 @@ namespace IodemBot.Modules.ColossoBattles
 
                     if (!numberEmotes.Contains(reaction.Emote.Name))
                     {
-                        if (reaction.MessageId != EnemyMessage.Id && reaction.MessageId != correctID)
+                        if (reaction.MessageId != EnemyMessage.Id && reaction.MessageId != SummonsMessage.Id && reaction.MessageId != correctID)
                         {
+                            _ = c.RemoveReactionAsync(reaction.Emote, reaction.User.Value);
+                            Console.WriteLine("Didn't click on own message.");
+                            return;
                         }
                     }
 
@@ -330,8 +334,8 @@ namespace IodemBot.Modules.ColossoBattles
             }
             catch (Exception e)
             {
-                Console.WriteLine("Colosso Turn Processing Error: " + e.Message);
-                File.WriteAllText($"Logs/Crashes/Error_{DateTime.Now.Date}.log", e.Message);
+                Console.WriteLine("Colosso Turn Processing Error: {reaction.Emote}" + e);
+                File.WriteAllText($"Logs/Crashes/Error_{DateTime.Now.Date}.log", e.ToString());
             }
             await Task.CompletedTask;
         }
@@ -405,21 +409,82 @@ namespace IodemBot.Modules.ColossoBattles
 
         protected override async Task WriteBattle()
         {
-            await Task.WhenAll(new[]
+            var delay = Global.Client.Latency / 2;
+            try
             {
-                WriteStatus(),
-                WriteEnemies(),
-                WriteSummons(),
-                WritePlayers()
-            }); ;
+                await Task.Delay(delay);
+                await WriteStatus();
+                await Task.Delay(delay);
+                await WriteSummons();
+                await Task.Delay(delay);
+                await WriteEnemies();
+                await Task.Delay(delay);
+                await WritePlayers();
+                await Task.Delay(delay);
+            }
+            catch (HttpException e)
+            {
+                Console.WriteLine("Failed drawing Battle, retrying." + e.ToString());
+                Battle.log.Add("Failed drawing Battle, retrying.");
+                await WriteStatus();
+                await Task.Delay(delay);
+                await WriteSummons();
+                await Task.Delay(delay);
+                await WriteEnemies();
+                await Task.Delay(delay);
+                await WritePlayers();
+            }
+            catch (TimeoutException e)
+            {
+                Console.WriteLine("Timed out while drawing Battle, retrying." + e.ToString());
+                Battle.log.Add("Timed out while drawing Battle, retrying in 30s.");
+                await Task.Delay(300000);
+                await WriteBattle();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Exception while writing Battle: " + e.ToString());
+                throw new Exception("Exception while writing Battle: ", e);
+            }
         }
 
         protected override async Task WriteBattleInit()
         {
-            await WriteStatusInit();
-            await WriteEnemiesInit();
-            await WriteSummonsInit();
-            await WritePlayersInit();
+            var delay = Global.Client.Latency / 2;
+            try
+            {
+                await WriteStatusInit();
+                await Task.Delay(delay);
+                await WriteSummonsInit();
+                await Task.Delay(delay);
+                await WriteEnemiesInit();
+                await Task.Delay(delay);
+                await WritePlayersInit();
+            }
+            catch (HttpException e)
+            {
+                Console.WriteLine("Failed drawing Battle, retrying: " + e.ToString());
+                Battle.log.Add("Failed drawing Battle, retrying.");
+                await WriteStatusInit();
+                await Task.Delay(delay);
+                await WriteSummonsInit();
+                await Task.Delay(delay);
+                await WriteEnemiesInit();
+                await Task.Delay(delay);
+                await WritePlayersInit();
+            }
+            catch (TimeoutException e)
+            {
+                Console.WriteLine("Timed out while drawing Battle, retrying: " + e.ToString());
+                Battle.log.Add("Timed out while drawing Battle, retrying in 30s");
+                await Task.Delay(300000);
+                await WriteBattleInit();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Exception while writing Battle:" + e.ToString());
+                throw new Exception("Exception while writing Battle", e);
+            }
         }
 
         protected virtual async Task WriteEnemies()
@@ -479,7 +544,7 @@ namespace IodemBot.Modules.ColossoBattles
             var i = 1;
             foreach (ColossoFighter fighter in Battle.GetTeam(team))
             {
-                e.AddField($"{numberEmotes[i]} {fighter.ConditionsToString()}", $"{fighter.Name}", true);
+                e.AddField($"{numberEmotes[i]} {fighter.ConditionsToString()}".Trim(), $"{fighter.Name}", true);
                 i++;
             }
             return e;
@@ -528,27 +593,27 @@ namespace IodemBot.Modules.ColossoBattles
                 return null;
             }
 
-            EmbedBuilder embed = new EmbedBuilder()
-                .WithThumbnailUrl("https://cdn.discordapp.com/attachments/497696510688100352/640300243820216336/unknown.png");
+            EmbedBuilder embed = new EmbedBuilder();
+            //.WithThumbnailUrl("https://cdn.discordapp.com/attachments/497696510688100352/640300243820216336/unknown.png");
 
-            if (allDjinn.OfElement(Element.Venus).Count() > 0)
+            foreach (var el in new[] { Element.Venus, Element.Mars, Element.Jupiter, Element.Mercury })
             {
-                embed.AddField("Venus", $"{string.Join(" ", standbyDjinn.OfElement(Element.Venus).Select(d => d.Emote))} |" +
-                    $"{string.Join(" ", recoveryDjinn.OfElement(Element.Venus).Select(d => d.Emote))}", true);
+                if (allDjinn.OfElement(el).Count() > 0)
+                {
+                    var standby = string.Join(" ", standbyDjinn.OfElement(el).Select(d => d.Emote));
+                    var recovery = string.Join(" ", recoveryDjinn.OfElement(el).Select(d => d.Emote));
+                    embed.WithColor(Colors.Get(standbyDjinn.Select(e => e.Element.ToString()).ToList()));
+
+                    embed.AddField(GoldenSun.ElementIcons[el], ($"{standby}" +
+                        $"{(!standby.IsNullOrEmpty() && !recovery.IsNullOrEmpty() ? "\n" : "\u200b")}" +
+                        $"{(recovery.IsNullOrEmpty() ? "" : $"({recovery})")}").Trim(), true);
+                    if (embed.Fields.Count == 2 || embed.Fields.Count == 5)
+                    {
+                        embed.AddField("\u200b", "\u200b", true);
+                    }
+                }
             }
-            if (allDjinn.OfElement(Element.Mars).Count() > 0)
-            {
-                embed.AddField("Mars", $"{string.Join(" ", standbyDjinn.OfElement(Element.Mars).Select(d => d.Emote))} |" +
-                    $"{string.Join(" ", recoveryDjinn.OfElement(Element.Mars).Select(d => d.Emote))}", true);
-            }
-            if (allDjinn.OfElement(Element.Jupiter).Count() > 0)
-            {
-                embed.AddField("Jupiter", $"{string.Join(" ", standbyDjinn.OfElement(Element.Jupiter).Select(d => d.Emote))} |" + $"{string.Join(" ", recoveryDjinn.OfElement(Element.Jupiter).Select(d => d.Emote))}", true);
-            }
-            if (allDjinn.OfElement(Element.Mercury).Count() > 0)
-            {
-                embed.AddField("Mercury", $"{string.Join(" ", standbyDjinn.OfElement(Element.Mercury).Select(d => d.Emote))} |" + $"{string.Join(" ", recoveryDjinn.OfElement(Element.Mercury).Select(d => d.Emote))}", true);
-            }
+
             return embed;
         }
 
@@ -688,8 +753,13 @@ namespace IodemBot.Modules.ColossoBattles
                             emotes.Add(m.GetEmote());
                         }
                     }
-                    emotes.RemoveAll(e => msg.Reactions.Any(r => r.Key.Name.Equals(e.Name, StringComparison.InvariantCultureIgnoreCase)));
-                    tasks.Add(msg.AddReactionsAsync(emotes.ToArray()));
+                    //emotes.RemoveAll(e => msg.Reactions.Any(r => r.Key.Name.Equals(e.Name, StringComparison.InvariantCultureIgnoreCase)));
+                    //tasks.Add(msg.AddReactionsAsync(emotes.ToArray()));
+                    tasks.Add(
+                    msg.AddReactionsAsync(
+                        emotes.Except(msg.Reactions.Keys).ToArray()
+                    )
+                );
                     i++;
                 }
             });

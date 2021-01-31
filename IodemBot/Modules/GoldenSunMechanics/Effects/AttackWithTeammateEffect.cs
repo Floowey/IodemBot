@@ -28,7 +28,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                     var teamMate = User.GetTeam().Where(s => s.IsAlive && !s.Equals(User)).OrderByDescending(p => p.Stats.Atk).Take(TeamMates).ToList();
                     teamMate.ForEach(m =>
                     {
-                        User.addDamage += (uint)(m.Stats.Atk * m.MultiplyBuffs("Attack") * 0.75);
+                        User.addDamage += (uint)(m.Stats.Atk * m.MultiplyBuffs("Attack"));
                         log.Add($"{m.Name} assists the attack.");
                     });
                     break;

@@ -345,7 +345,8 @@ namespace IodemBot.Modules.ColossoBattles
             {
                 if (item.IsUnleashable
                     && !item.IsBroken
-                    && item.Unleash.AllEffects.Any(e => e.ValidSelection(this))
+                    && (item.Unleash.AllEffects.Where(e => !(e is ReviveEffect)).Any(e => e.ValidSelection(this))
+                    || item.Unleash.AllEffects.Any(e => e is ReviveEffect r && !IsAlive))
                     && Global.RandomNumber(0, 100) <= item.ChanceToActivate
                     && !HasCondition(Condition.Decoy))
                 {

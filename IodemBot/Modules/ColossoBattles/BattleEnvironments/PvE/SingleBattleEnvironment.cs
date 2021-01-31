@@ -92,7 +92,7 @@ namespace IodemBot.Modules.ColossoBattles
                 {
                     Chest = ChestQuality.Silver,
                     HasChest=true,
-                    Weight = 2
+                    Weight = 1
                 },
                 new DefaultReward()
                 {
@@ -112,7 +112,7 @@ namespace IodemBot.Modules.ColossoBattles
         public SingleBattleEnvironment(string Name, ITextChannel lobbyChannel, bool isPersistent, ITextChannel BattleChannel, BattleDifficulty diff) : base(Name, lobbyChannel, isPersistent, BattleChannel)
         {
             internalDiff = diff;
-            _ = Reset();
+            _ = Reset("init");
         }
 
         public override BattleDifficulty Difficulty => internalDiff;
@@ -122,7 +122,7 @@ namespace IodemBot.Modules.ColossoBattles
         {
             get
             {
-                var basexp = 12 + 3 * LureCaps;
+                var basexp = 16 + 3 * LureCaps;
                 var DiffFactor = (int)Math.Max(3, (uint)Math.Pow((int)Difficulty + 1, 2));
                 var xp = (uint)(Global.RandomNumber(basexp, 2 * basexp) * DiffFactor);
                 return new RewardTables()
@@ -130,8 +130,8 @@ namespace IodemBot.Modules.ColossoBattles
                     new RewardTable()
                     {
                         new DefaultReward(){
-                            xp = xp,
-                            coins = xp/2,
+                            Xp = xp,
+                            Coins = xp/2,
                             Weight = 3
                         }
                     }
@@ -143,7 +143,7 @@ namespace IodemBot.Modules.ColossoBattles
         {
             Battle.TeamB = new List<ColossoFighter>();
             EnemiesDatabase.GetEnemies(Difficulty, Enemy).ForEach(f => Battle.AddPlayer(f, Team.B));
-            Console.WriteLine($"Up against {Battle.TeamB.First().Name}");
+            // Console.WriteLine($"Up against {Battle.TeamB.First().Name}");
         }
 
         protected override async Task AddPlayer(SocketReaction reaction)
@@ -167,17 +167,7 @@ namespace IodemBot.Modules.ColossoBattles
                 SetNextEnemy();
             }
 
-            if (Difficulty == BattleDifficulty.Easy && playerAvatar.LevelNumber < 10)
-            {
-                return;
-            }
-
-            if (Difficulty == BattleDifficulty.Medium && playerAvatar.LevelNumber < 30)
-            {
-                return;
-            }
-
-            if (Difficulty == BattleDifficulty.Hard && playerAvatar.LevelNumber < 50)
+            if(playerAvatar.LevelNumber < limits[Difficulty])
             {
                 return;
             }
@@ -195,9 +185,7 @@ namespace IodemBot.Modules.ColossoBattles
         {
             Battle.TeamB.Clear();
             EnemiesDatabase.GetRandomEnemies(Difficulty).ForEach(f =>
-            {
-                Battle.AddPlayer(f, Team.B);
-            }
+                Battle.AddPlayer(f, Team.B)
             );
 
             for (int i = 0; i < LureCaps; i++)
@@ -207,7 +195,7 @@ namespace IodemBot.Modules.ColossoBattles
                     Battle.AddPlayer(EnemiesDatabase.GetRandomEnemies(Difficulty, 1).Random(), Team.B);
                 }
             }
-            Console.WriteLine($"Up against {Battle.TeamB.First().Name}");
+            //Console.WriteLine($"Up against {Battle.TeamB.First().Name}");
         }
 
         protected override async Task GameOver()
@@ -225,7 +213,9 @@ namespace IodemBot.Modules.ColossoBattles
                 chests.RemoveAll(s => s is DefaultReward d && !d.HasChest);
 
                 // If there was *no* mimic, add a counter weight
-                var lurCapBonus = new[] { 16, 12, 10, 9, 8 };
+                //var lurCapBonus = new[] { 16, 12, 10, 9, 8 };
+                var lurCapBonus = new[] { 12, 10, 9, 8, 7};
+
                 if (!Battle.TeamB.Any(f => f.Name.Contains("Mimic")))
                 {
                     chests.Add(new DefaultReward() { Weight = chests.Weight * lurCapBonus[LureCaps] });
@@ -252,12 +242,12 @@ namespace IodemBot.Modules.ColossoBattles
                     {
                         djinnTable.Add(new DefaultReward() { Djinn = "Mercury", Weight = 1 });
                     }
-                    djinnTable.Add(new DefaultReward() { Weight = djinnTable.Weight * (10 - (int)Difficulty) * 3 - djinnTable.Weight });
+                    djinnTable.Add(new DefaultReward() { Weight = djinnTable.Weight * (9 - (int)Difficulty) * 3 - djinnTable.Weight });
                     RewardTables.Add(djinnTable);
                 }
 
-                winners.OfType<PlayerFighter>().ToList().ForEach(async p => await ServerGames.UserWonBattle(UserAccountProvider.GetById(p.Id), RewardTables.GetRewards(), p.battleStats, lobbyChannel, BattleChannel));
-                winners.OfType<PlayerFighter>().ToList().ForEach(async p => await ServerGames.UserWonSingleBattle(UserAccountProvider.GetById(p.Id), lobbyChannel, Difficulty));
+                winners.OfType<PlayerFighter>().ToList().ForEach(p => _ = ServerGames.UserWonBattle(UserAccountProvider.GetById(p.Id), RewardTables.GetRewards(), p.battleStats, lobbyChannel, BattleChannel));
+                winners.OfType<PlayerFighter>().ToList().ForEach(p => _ = ServerGames.UserWonSingleBattle(UserAccountProvider.GetById(p.Id), Difficulty));
 
                 chests.RemoveAll(s => s is DefaultReward d && !d.HasChest);
                 _ = WriteGameOver();
@@ -266,17 +256,17 @@ namespace IodemBot.Modules.ColossoBattles
             {
                 var losers = winners.First().battle.GetTeam(winners.First().enemies);
                 losers.ForEach(p => p.Moves.OfType<Djinn>().ToList().ForEach(d => { d.Summon(p); d.CoolDown = 0; }));
-                losers.ConvertAll(s => (PlayerFighter)s).ForEach(async p => await ServerGames.UserLostBattle(UserAccountProvider.GetById(p.Id), lobbyChannel));
+                losers.ConvertAll(s => (PlayerFighter)s).ForEach(p => _ = ServerGames.UserLostBattle(UserAccountProvider.GetById(p.Id), lobbyChannel));
                 _ = WriteGameOver();
             }
 
             await Task.CompletedTask;
         }
 
-        public override async Task Reset()
+        public override async Task Reset(string msg = "")
         {
             LureCaps = 0;
-            await base.Reset();
+            await base.Reset(msg);
 
             _ = EnemyMessage.AddReactionsAsync(new IEmote[]
             {

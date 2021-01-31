@@ -116,7 +116,7 @@ namespace IodemBot.Modules.ColossoBattles
         {
             get
             {
-                var basexp = 12 + 3 * LureCaps + winsInARow / 4;
+                var basexp = 15 + 3 * LureCaps + winsInARow / 4;
                 var DiffFactor = (int)Math.Max(2, (uint)Math.Pow((int)Difficulty + 1, 2));
                 var xp = (uint)(Global.RandomNumber(basexp, 2 * basexp) * DiffFactor);
                 return new RewardTables()
@@ -124,8 +124,8 @@ namespace IodemBot.Modules.ColossoBattles
                     new RewardTable()
                     {
                         new DefaultReward(){
-                            xp = xp,
-                            coins = xp/2,
+                            Xp = xp,
+                            Coins = xp/2,
                             Weight = 3
                         }
                     }
@@ -133,6 +133,10 @@ namespace IodemBot.Modules.ColossoBattles
             }
         }
 
+        public void SetStreak(int streak)
+        {
+            winsInARow = streak;
+        }
         private double Boost
         {
             get
@@ -155,7 +159,7 @@ namespace IodemBot.Modules.ColossoBattles
             {
                 Factory = new PlayerFighterFactory() { DjinnOption = DjinnOption.NoDjinn, ReductionFactor = 1.5 };
             }
-            _ = Reset();
+            _ = Reset($"init");
         }
 
         public override BattleDifficulty Difficulty => (BattleDifficulty)Math.Min(4, 1 + winsInARow / StageLength);
@@ -197,12 +201,24 @@ namespace IodemBot.Modules.ColossoBattles
                 var RewardTables = Rewards;
                 var chests = chestTable[Difficulty];
                 chests.RemoveAll(s => s is DefaultReward d && !d.HasChest);
-                var lurCapBonus = new[] { 16, 12, 10, 9, 8 };
+                var lurCapBonus = new[] { 12, 10, 9, 8, 7 };
                 if (!Battle.TeamB.Any(f => f.Name.Contains("Mimic")))
                 {
                     chests.Add(new DefaultReward { Weight = chests.Weight * lurCapBonus[LureCaps] });
                 }
                 RewardTables.Add(chests);
+
+                if(winsInARow % 10 == 0) {
+                    var rt = new RewardTable
+                    {
+                        new DefaultReward()
+                        {
+                            Chest = (ChestQuality)(Math.Min(4, winsInARow / 10)),
+                            HasChest = true
+                        }
+                    };
+                    RewardTables.Add(rt);
+                }
 
                 if (Battle.TeamB.Any(f => f.Name.Contains("Djinn")))
                 {
@@ -224,12 +240,12 @@ namespace IodemBot.Modules.ColossoBattles
                     {
                         djinnTable.Add(new DefaultReward() { Djinn = "Mercury", Weight = 1 });
                     }
-                    djinnTable.Add(new DefaultReward() { Weight = djinnTable.Weight * (10 - (int)Difficulty) * 2 - djinnTable.Weight });
+                    djinnTable.Add(new DefaultReward() { Weight = djinnTable.Weight * (9 - (int)Difficulty) * 2 - djinnTable.Weight });
                     RewardTables.Add(djinnTable);
                 }
 
                 winners.OfType<PlayerFighter>().ToList().ForEach(p => _ = ServerGames.UserWonBattle(UserAccountProvider.GetById(p.Id), RewardTables.GetRewards(), p.battleStats, lobbyChannel, BattleChannel));
-                winners.OfType<PlayerFighter>().ToList().ForEach(p => _ = ServerGames.UserWonEndless(UserAccountProvider.GetById(p.Id), lobbyChannel, winsInARow, mode, p.battleStats.TotalTeamMates + 1, string.Join(", ", Battle.TeamA.Select(pl => pl.Name))));
+                winners.OfType<PlayerFighter>().ToList().ForEach(p => _ = ServerGames.UserWonEndless(UserAccountProvider.GetById(p.Id), winsInARow, mode, p.battleStats.TotalTeamMates + 1, string.Join(", ", Battle.TeamA.Select(pl => pl.Name))));
 
                 chests.RemoveAll(s => s is DefaultReward d && !d.HasChest);
 
@@ -255,16 +271,16 @@ namespace IodemBot.Modules.ColossoBattles
             {
                 var losers = winners.First().battle.GetTeam(winners.First().enemies);
                 losers.OfType<PlayerFighter>().ToList().ForEach(async p => await ServerGames.UserLostBattle(UserAccountProvider.GetById(p.Id), lobbyChannel));
-                losers.OfType<PlayerFighter>().ToList().ForEach(async p => await ServerGames.UserFinishedEndless(UserAccountProvider.GetById(p.Id), lobbyChannel, winsInARow, mode));
+                losers.OfType<PlayerFighter>().ToList().ForEach(async p => await ServerGames.UserFinishedEndless(UserAccountProvider.GetById(p.Id), winsInARow, mode));
                 _ = WriteGameOver();
             }
         }
 
-        public override async Task Reset()
+        public override async Task Reset(string msg = "")
         {
             LureCaps = 0;
             winsInARow = 0;
-            await base.Reset();
+            await base.Reset(msg);
         }
 
         protected override async Task AddPlayer(SocketReaction reaction)

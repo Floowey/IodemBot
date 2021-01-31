@@ -74,6 +74,7 @@ namespace IodemBot.Core.UserManagement
                             .ToList();
 
                     } catch (Exception e){
+                        Console.WriteLine(e);
                         break;
                     }
                     break;

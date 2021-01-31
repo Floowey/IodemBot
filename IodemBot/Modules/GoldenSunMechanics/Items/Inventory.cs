@@ -89,7 +89,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public bool IsFull { get { return Count >= MaxInvSize; } }
         internal bool HasDuplicate { get { return Inv.Any(i => Inv.Where(j => j.Name.Equals(i.Name)).Count() > 1); } }
 
-        public Dictionary<ChestQuality, uint> chests { get; set; } = new Dictionary<ChestQuality, uint>()
+        public Dictionary<ChestQuality, uint> Chests { get; set; } = new Dictionary<ChestQuality, uint>()
         {
             {ChestQuality.Wooden, 0},
             {ChestQuality.Normal, 0},
@@ -129,29 +129,32 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public bool OpenChest(ChestQuality chestQuality)
         {
             CheckDaily();
-            chests.TryGetValue(chestQuality, out uint nOfChests);
+            Chests.TryGetValue(chestQuality, out uint nOfChests);
 
             if (nOfChests == 0)
             {
                 return false;
             }
 
-            chests.Remove(chestQuality);
-            chests.Add(chestQuality, nOfChests - 1);
+            Chests.Remove(chestQuality);
+            Chests.Add(chestQuality, nOfChests - 1);
             return true;
         }
 
         private void CheckDaily()
         {
-            if (LastDailyChest.Date < DateTime.Now.Date && chests[ChestQuality.Daily] == 0)
+            if (LastDailyChest.Date < DateTime.Now.Date && Chests[ChestQuality.Daily] == 0)
             {
                 if ((DateTime.Now.Date - LastDailyChest.Date).TotalDays <= 1)
                 {
                     DailiesInARow++;
                 }
-                else
+                else if (DateTime.Now.Date >= new DateTime(day: 1, month: 2, year: 2021))
                 {
                     DailiesInARow = 0;
+                } else
+                {
+                    DailiesInARow++;
                 }
                 AwardChest(ChestQuality.Daily);
                 LastDailyChest = DateTime.Now;
@@ -160,9 +163,9 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public void AwardChest(ChestQuality chestQuality)
         {
-            chests.TryGetValue(chestQuality, out uint nOfChests);
-            chests.Remove(chestQuality);
-            chests.Add(chestQuality, ++nOfChests);
+            Chests.TryGetValue(chestQuality, out uint nOfChests);
+            Chests.Remove(chestQuality);
+            Chests.Add(chestQuality, ++nOfChests);
         }
 
         public string GetChestsToString()
@@ -171,9 +174,9 @@ namespace IodemBot.Modules.GoldenSunMechanics
             List<string> s = new List<string>();
             foreach (var cq in chestQualities)
             {
-                if (chests[cq] > 0)
+                if (Chests[cq] > 0)
                 {
-                    s.Add($"{ChestIcons[cq]}: {chests[cq]}");
+                    s.Add($"{ChestIcons[cq]}: {Chests[cq]}");
                 }
             }
             return string.Join(" - ", s);
@@ -216,7 +219,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         internal bool HasChest(ChestQuality cq)
         {
             CheckDaily();
-            return chests[cq] > 0;
+            return Chests[cq] > 0;
         }
 
         internal bool HasItem(ItemCategory cat)
@@ -229,7 +232,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             Inv.Clear();
             WarriorGear.Clear();
             MageGear.Clear();
-            chests = new Dictionary<ChestQuality, uint>()
+            Chests = new Dictionary<ChestQuality, uint>()
         {
             { ChestQuality.Wooden, 0 }, {ChestQuality.Normal, 0}, {ChestQuality.Silver, 0}, {ChestQuality.Gold, 0}, {ChestQuality.Adept, 0}, {ChestQuality.Daily, 0}
         };
@@ -238,16 +241,17 @@ namespace IodemBot.Modules.GoldenSunMechanics
             LastDailyChest = DateTime.Now.Subtract(new TimeSpan(1, 0, 0, 0));
         }
 
-        internal Item GetItem(string item)
+        internal Item GetItem(string item, Func<Item, bool> pre = null)
         {
             Item i = null;
+            var preselection = Inv.Where(i => pre?.Invoke(i) ?? true);
             i ??= Inv.FirstOrDefault(d => item.Equals(d.Itemname, StringComparison.CurrentCultureIgnoreCase) && d.Nickname.IsNullOrEmpty());
             i ??= Inv.FirstOrDefault(d => item.Equals(d.Itemname, StringComparison.CurrentCultureIgnoreCase));
             i ??= Inv.FirstOrDefault(d => item.Equals(d.Nickname, StringComparison.CurrentCultureIgnoreCase));
             return i;
         }
 
-        public string GearToString(ArchType archType, bool detailed = false)
+        public string GearToString(ArchType archType)
         {
             var s = new StringBuilder();
             var Gear = GetGear(archType);
@@ -264,20 +268,14 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         internal bool Repair(string item)
         {
-            if (!HasItem(item))
+            var it = GetItem(item, i => i.IsBroken);
+            if (it != null && RemoveBalance(it.SellValue))
             {
-                return false;
-            }
-            var it = GetItem(item);
-
-
-            if (!RemoveBalance(it.SellValue))
-            {
-                return false;
+                it.IsBroken = false;
+                return true;
             }
 
-            it.IsBroken = false;
-            return true;
+            return false;
         }
 
         internal bool Rename(string item, string newname = null)
@@ -288,11 +286,6 @@ namespace IodemBot.Modules.GoldenSunMechanics
             }
 
             var it = GetItem(item);
-
-            if (!RemoveBalance(it.Price * 2))
-            {
-                return false;
-            }
 
             it.Nickname = newname ?? "";
             return true;

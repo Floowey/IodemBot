@@ -83,6 +83,7 @@ namespace IodemBot.Modules
             if (gotClass || name == "")
             {
                 var success = SetClass(account, series?.Name ?? "");
+                series = AdeptClassSeriesManager.GetClassSeries(account);
                 if (curSeries.Name.Equals(series?.Name) || success)
                 {
                     if (series != null && !account.DjinnPocket.DjinnSetup.All(d => series.Elements.Contains(d)))
@@ -236,7 +237,7 @@ namespace IodemBot.Modules
 
             .AddField("Unlocked Classes", account.BonusClasses.Count == 0 ? "none" : string.Join(", ", account.BonusClasses))
 
-            .AddField("XP", $"{account.XP} - next in {account.XPneeded}{(account.NewGames > 1 ? $"\n({account.TotalXP} total | {account.NewGames} resets)" : "")}", true)
+            .AddField("XP", $"{account.XP} - next in {account.XPneeded}{(account.NewGames >= 1 ? $"\n({account.TotalXP} total | {account.NewGames} resets)" : "")}", true)
             .AddField("Colosso wins | Dungeon Wins", $"{account.ServerStats.ColossoWins} | {account.ServerStats.DungeonsCompleted}", true)
             .AddField("Endless Streaks", $"Solo: {account.ServerStats.EndlessStreak.Solo} | Duo: {account.ServerStats.EndlessStreak.Duo} \nTrio: {account.ServerStats.EndlessStreak.Trio} | Quad: {account.ServerStats.EndlessStreak.Quad}", true);
 
@@ -378,6 +379,9 @@ namespace IodemBot.Modules
 
         public async Task ChangeElement(UserAccount user, Element chosenElement, string classSeriesName = "")
         {
+            if(user.Element == chosenElement) {
+                return;
+            }
             foreach (string removed in user.Inv.UnequipExclusiveTo(user.Element))
             {
                 var removedEmbed = new EmbedBuilder();
@@ -402,7 +406,10 @@ namespace IodemBot.Modules
 
             var tags = new[] { "VenusAdept", "MarsAdept", "JupiterAdept", "MercuryAdept" };
             user.Tags.RemoveAll(s => tags.Contains(s));
-            user.Tags.Add(tags[(int)chosenElement]);
+            if((int)chosenElement < tags.Length)
+            {
+                user.Tags.Add(tags[(int)chosenElement]);
+            }
         }
 
         public async Task GiveElementRole(SocketGuildUser user, Element chosenElement)

@@ -13,7 +13,6 @@ namespace IodemBot.Modules.ColossoBattles
         [JsonIgnore] public PlayerFighterFactory factory;
 
         public BattleStats battleStats = new BattleStats();
-        public int AutoTurnPool = 10;
         public int AutoTurnsInARow = 0;
 
         public PlayerFighter() : base()
@@ -84,13 +83,14 @@ namespace IodemBot.Modules.ColossoBattles
 
         public PlayerFighter CreatePlayerFighter(UserAccount avatar)
         {
-            var p = new PlayerFighter();
-
-            p.Name = avatar.Name;
-            p.ImgUrl = avatar.ImgUrl;
-            p.factory = this;
-            p.Id = avatar.ID;
-            p.Moves = AdeptClassSeriesManager.GetMoveset(avatar);
+            var p = new PlayerFighter
+            {
+                Name = avatar.Name,
+                ImgUrl = avatar.ImgUrl,
+                factory = this,
+                Id = avatar.ID,
+                Moves = AdeptClassSeriesManager.GetMoveset(avatar)
+            };
             var Class = AdeptClassSeriesManager.GetClass(avatar);
             var classSeries = AdeptClassSeriesManager.GetClassSeries(avatar);
             if (classSeries.Name == "Curse Mage Series" || classSeries.Name == "Medium Series")

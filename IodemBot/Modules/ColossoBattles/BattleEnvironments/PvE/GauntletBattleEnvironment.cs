@@ -37,7 +37,7 @@ namespace IodemBot.Modules.ColossoBattles
             PlayersToStart = Dungeon.MaxPlayer;
             enumerator = Dungeon.Matchups.GetEnumerator();
             LastEnemySet = DateTime.Now;
-            _ = Reset();
+            _ = Reset($"Enemy set : {Enemy}");
         }
 
         public override void SetNextEnemy()
@@ -104,11 +104,11 @@ namespace IodemBot.Modules.ColossoBattles
             return builder;
         }
 
-        public override async Task Reset()
+        public override async Task Reset(string msg = "")
         {
             enumerator = Dungeon.Matchups.GetEnumerator();
             matchup = enumerator.Current;
-            await base.Reset();
+            await base.Reset(msg);
             var e = new EmbedBuilder();
             e.WithThumbnailUrl(Dungeon.Image);
             e.WithDescription(EnemyMessage.Content);

@@ -53,6 +53,7 @@ namespace IodemBot
             client.UserLeft += Client_UserLeft;
             client.UserJoined += Client_UserJoined;
             client.GuildMemberUpdated += Client_GuildMemberUpdated;
+            
             await client.LoginAsync(TokenType.Bot, Config.bot.token);
             await client.StartAsync();
             handler = new CommandHandler();

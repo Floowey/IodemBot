@@ -121,6 +121,7 @@ namespace IodemBot.Core.Leveling
                 embed.AddField("Congratulations!", "You have unlocked Hard mode in the Weyard battle channels, as well as the Endless mode!");
             }
             _ = channel.SendMessageAsync("", embed: embed.Build());
+            await Task.CompletedTask;
         }
 
         internal static async void UserAddedReaction(SocketGuildUser user, SocketReaction reaction)

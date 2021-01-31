@@ -91,7 +91,6 @@ namespace IodemBot.Modules.ColossoBattles
                     f.SelectRandom();
                     if (f is PlayerFighter player)
                     {
-                        player.AutoTurnPool--;
                         player.AutoTurnsInARow++;
                     }
                 }

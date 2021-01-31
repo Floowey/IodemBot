@@ -75,7 +75,9 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 .Concat(Enumerable.Repeat(GoldenSun.ElementIcons[Element.Mercury], summon.MercuryNeeded))),
                 true);
             var effectList = summon.Effects.Count > 0 ? string.Join("\n", summon.Effects.Select(e => e.ToString())) : "";
-            embed.AddField("Description", string.Join("\n", summon.ToString(), effectList, summon.HasPriority ? "Always goes first." : ""));
+            var UserList = summon.EffectsOnUser?.Count > 0 ? "On User:\n" + string.Join("\n", summon.EffectsOnUser.Select(e => e.ToString())) : "";
+            var PartyList = summon.EffectsOnParty?.Count > 0 ? "On Party:\n" + string.Join("\n", summon.EffectsOnParty.Select(e => e.ToString())) : "";
+            embed.AddField("Description", string.Join("\n", summon.ToString(), effectList, UserList, PartyList, summon.HasPriority ? "Always goes first." : ""));
 
             embed.WithColor(Colors.Get(
                 Enumerable.Repeat(Element.Venus.ToString(), summon.VenusNeeded)
@@ -103,10 +105,17 @@ namespace IodemBot.Modules.GoldenSunMechanics
             }
             embed.AddField("Equipped", equippedstring);
 
-            foreach (Element e in new[] { Element.Venus, Element.Mars, Element.Jupiter, Element.Mercury })
+            foreach (Element e in new[] { Element.Venus, Element.Mars, Element.none, Element.Jupiter, Element.Mercury, Element.none })
             {
-                var djinnString = djinnPocket.Djinn.OfElement(e).GetDisplay(detail);
-                embed.AddField($"{e} Djinn", djinnString, true);
+                if(e == Element.none)
+                {
+                    embed.AddField("\u200b", "\u200b", true);
+                }
+                else
+                {
+                    var djinnString = djinnPocket.Djinn.OfElement(e).GetDisplay(detail);
+                    embed.AddField($"{e} Djinn", djinnString, true);
+                }
             }
             var eventDjinn = djinnPocket.Djinn.Count(d => d.IsEvent);
             embed.WithFooter($"{djinnPocket.Djinn.Count()}/{djinnPocket.PocketSize}{(eventDjinn > 0 ? $"(+{eventDjinn})" : "")} Upgrade: {(djinnPocket.PocketUpgrades + 1) * 3000}");
@@ -128,6 +137,14 @@ namespace IodemBot.Modules.GoldenSunMechanics
             var djinnPocket = acc.DjinnPocket;
             var inv = acc.Inv;
             var price = (uint)(djinnPocket.PocketUpgrades + 1) * 3000;
+            if(djinnPocket.PocketSize >= 70)
+            {
+                await ReplyAsync(embed: new EmbedBuilder()
+                    .WithDescription($"Max Djinn pocket size reached")
+                    .Build());
+                return;
+            }
+        
             if (inv.RemoveBalance(price))
             {
                 djinnPocket.PocketUpgrades++;
@@ -155,6 +172,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             if (Names == "none")
             {
                 user.DjinnPocket.DjinnSetup.Clear();
+                UserAccountProvider.StoreUser(user);
             }
             else if (Names.Contains(','))
             {
@@ -201,6 +219,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 acc.DjinnPocket.AddDjinn(djinn);
                 UserAccountProvider.StoreUser(acc);
             }
+            await Task.CompletedTask;
         }
 
         [Command("GiveSummon")]
@@ -213,6 +232,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 acc.DjinnPocket.AddSummon(summon);
                 UserAccountProvider.StoreUser(acc);
             }
+            await Task.CompletedTask;
         }
 
         [Command("Djinn Release")]

@@ -60,7 +60,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             }
 
             var fb = new EmbedFooterBuilder();
-            fb.WithText($"{inv.Count} / {inv.MaxInvSize} {(inv.Upgrades < 3 ? $"Upgrade: {50000 * Math.Pow(2, inv.Upgrades)}" : "")}");
+            fb.WithText($"{inv.Count} / {inv.MaxInvSize} {(inv.Upgrades < 4 ? $"Upgrade: {50000 * Math.Pow(2, inv.Upgrades)}" : "")}");
             embed.AddField("Coin", $"<:coin:569836987767324672> {inv.Coins}");
             embed.WithColor(Colors.Get("Iodem"));
             embed.WithFooter(fb);
@@ -74,7 +74,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             var account = EntityConverter.ConvertUser(Context.User);
             var inv = account.Inv;
 
-            if (inv.Upgrades >= 3)
+            if (inv.Upgrades >= 4)
             {
                 var embed = new EmbedBuilder();
                 embed.WithDescription(":x: Maximum Inventory capacity reached.");
@@ -151,9 +151,36 @@ namespace IodemBot.Modules.GoldenSunMechanics
             }
             else
             {
-                embed.WithDescription($":x: No such item to rename, or not enough funds. The cost for renaming is x2 the items price.");
+                embed.WithDescription($":x: You don't have such item to polish.");
             }
             await Context.Channel.SendMessageAsync("", false, embed.Build());
+        }
+
+        [Command("polishes")]
+        [RequireStaff]
+        public async Task Polishes()
+        {
+            var allitems = ItemDatabase.GetAllItems();
+            var weapons = allitems.Where(i => i.Category == ItemCategory.Weapon);
+            var invstring = string.Join(' ', weapons.Where(w => w.CanBeAnimated).Select(i => i.AnimatedIcon));
+            invstring += string.Join(", ", weapons.Where(w => !w.CanBeAnimated).Select(i => i.Name));
+            var embed = new EmbedBuilder();
+            var remainingstring = invstring;
+            List<string> parts = new List<string>();
+            while (remainingstring.Length >= 1024)
+            {
+                var lastitem = remainingstring.Take(1024).ToList().FindLastIndex(s => s.Equals(' ')) + 1;
+                parts.Add(string.Join("", remainingstring.Take(lastitem)));
+                remainingstring = string.Join("", remainingstring.Skip(lastitem));
+            }
+            parts.Add(remainingstring);
+            foreach (var (value, index) in parts.Select((v, i) => (v, i)))
+            {
+                embed.AddField($"{index + 1}/{parts.Count}", value);
+            }
+
+            _ = ReplyAsync(embed: embed.Build());
+            await Task.CompletedTask;
         }
 
         [Command("item polish")]

@@ -217,7 +217,13 @@
     "SpriteShiny": "<a:ChainShiny:663013986081439744>",
     "Move": {
       "Targettype": 3,
-      "dmgMult": 2
+      "dmgMult": 1,
+      "effects": [
+        {
+          "Type": "AttackWithTeammate",
+          "TeamMates": 3
+        }
+      ]
     },
     "Stats": {
       "MaxHP": 8,
@@ -897,6 +903,7 @@
     "SpriteShiny": "<a:TinderShiny:663018697148858388>",
     "Move": {
       "Range": 1,
+      "Targettype": 1,
       "effects": [
         {
           "Type": "Revive",
@@ -1524,6 +1531,7 @@
     "Move": {
       "Targettype": 1,
       "Element": 1,
+      "HasPriority": true,
       "effects": [
         {
           "Type": "ReduceDamage",
@@ -2434,8 +2442,7 @@
         {
           "Type": "ReduceDamage",
           "DamageReduction": 60
-        },
-
+        }
       ]
     },
     "Stats": {

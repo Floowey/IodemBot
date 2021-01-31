@@ -17,6 +17,11 @@ namespace IodemBot.Modules.GoldenSunMechanics
         {
             List<string> log = new List<string>();
             bool wasDead = !Target.IsAlive;
+            if (Global.RandomNumber(0, 100) > Probability)
+            {
+                log.Add($"But it has no effect on {Target.Name}");
+                return log;
+            }
             log.AddRange(Target.Revive(Percentage));
             if (wasDead)
             {
@@ -41,7 +46,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             }
 
             var deadFriends = targets.Where(s => !s.IsAlive).ToList();
-            Console.WriteLine($"{deadFriends.Count} dead targets.");
+            //Console.WriteLine($"{deadFriends.Count} dead targets.");
             return targets.IndexOf(deadFriends.Random());
         }
 

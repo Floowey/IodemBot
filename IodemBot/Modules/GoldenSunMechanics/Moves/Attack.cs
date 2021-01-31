@@ -117,8 +117,11 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 punctuation = ".";
             }
 
-            damage = (uint)(damage * elMult);
-            damage = (uint)(damage * enemy.defensiveMult);
+            if (!weaponUnleashed && Global.RandomNumber(0, 8) == 0)
+            {
+                log.Add("Critical!!");
+                damage = (uint)(damage * 1.25 + Global.RandomNumber(5, 15));
+            }
 
             if (enemy.ElStats.GetRes(element) == enemy.ElStats.LeastRes())
             {
@@ -133,16 +136,14 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 punctuation = "!";
             }
 
-            User.addDamage = 0;
-            if (!weaponUnleashed && Global.RandomNumber(0, 8) == 0)
-            {
-                log.Add("Critical!!");
-                damage = (uint)(damage * 1.25 + Global.RandomNumber(5, 15));
-            }
-            damage = Math.Max(1, damage);
+            damage = (uint)(damage * elMult);
+            damage = (uint)(damage * enemy.defensiveMult);
+            damage = (uint) Math.Max(enemy.defensiveMult <= 0 ? 0 : 1, damage);
 
             log.AddRange(enemy.DealDamage(damage, punctuation));
+
             User.damageDoneThisTurn += damage;
+            User.addDamage = 0;
             if (weaponUnleashed)
             {
                 User.Weapon.Unleash.AllEffects
