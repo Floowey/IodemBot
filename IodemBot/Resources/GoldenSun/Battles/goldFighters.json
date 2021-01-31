@@ -189,7 +189,7 @@
   [
     {
       "name": ":b:upiter Djinn",
-      "movepool": [ "Spark Plasma", "Thunderhead", "Thunder Mine", "Tempest", "Quick Strike", "Impact", "Ward", "Sleep", "Bind", "Storm Breath" ],
+      "movepool": [ "Spark Plasma", "Thunderhead", "Thunder Mine", "Tempest", "Quick Strike", "Impact", "Ward", "Sleep", "Bind" ],
       "imgurl": "https://cdn.discordapp.com/attachments/546760009741107216/744185792557219920/Untitled26.png",
       "stats": {
         "maxhp": 2222,
