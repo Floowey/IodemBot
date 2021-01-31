@@ -2006,7 +2006,7 @@
   "Black Ice": {
     "name": "Black Ice",
     "targetType": 4,
-    "emote": ":chocolate_bar:",
+    "emote": "<:Black_Ice:805099834372915220>",
     "range": 3,
     "element": 0,
     "PPCost": 0,
