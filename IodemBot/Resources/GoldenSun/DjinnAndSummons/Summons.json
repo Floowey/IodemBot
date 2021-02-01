@@ -5,8 +5,8 @@
             "Emote": "<:Venus:636449223134412801>",
             "Targettype": 4,
             "Element": 0,
-            "power": 30,
-            "percentageDamage": 3,
+            "power": 50,
+            "percentageDamage": 5,
             "Range": 5
         },
         "EffectsOnUser": [
@@ -29,8 +29,8 @@
             "Emote": "<:Ramses:636449223080017920>",
             "Targettype": 4,
             "Element": 0,
-            "power": 60,
-            "percentageDamage": 6,
+            "power": 100,
+            "percentageDamage": 9,
             "Range": 5
         },
         "EffectsOnUser": [
@@ -53,8 +53,8 @@
             "Emote": "<:Cybele:636449222987874304>",
             "Targettype": 4,
             "Element": 0,
-            "power": 120,
-            "percentageDamage": 9,
+            "power": 150,
+            "percentageDamage": 10,
             "Range": 5
         },
         "EffectsOnUser": [
@@ -101,8 +101,8 @@
             "Emote": "<:Mars:636449223147257866>",
             "Targettype": 4,
             "Element": 1,
-            "power": 30,
-            "percentageDamage": 3,
+            "power": 50,
+            "percentageDamage": 5,
             "Range": 5
         },
         "EffectsOnUser": [
@@ -125,8 +125,8 @@
             "Emote": "<:Kirin:636449223012909057>",
             "Targettype": 4,
             "Element": 1,
-            "power": 60,
-            "percentageDamage": 6,
+            "power": 100,
+            "percentageDamage": 9,
             "Range": 5
         },
         "EffectsOnUser": [
@@ -149,8 +149,8 @@
             "Emote": "<:Tiamat:636449223185006592>",
             "Targettype": 4,
             "Element": 1,
-            "power": 120,
-            "percentageDamage": 9,
+            "power": 150,
+            "percentageDamage": 10,
             "Range": 5
         },
         "EffectsOnUser": [
@@ -197,8 +197,8 @@
             "Emote": "<:Jupiter:636449223143063562>",
             "Targettype": 4,
             "Element": 2,
-            "power": 30,
-            "percentageDamage": 3,
+            "power": 50,
+            "percentageDamage": 5,
             "Range": 5
         },
         "EffectsOnUser": [
@@ -221,8 +221,8 @@
             "Emote": "<:Atalanta:636449222958514176>",
             "Targettype": 4,
             "Element": 2,
-            "power": 60,
-            "percentageDamage": 6,
+            "power": 100,
+            "percentageDamage": 9,
             "Range": 5
         },
         "EffectsOnUser": [
@@ -245,8 +245,8 @@
             "Emote": "<:Procne:636449223021428756>",
             "Targettype": 4,
             "Element": 2,
-            "power": 120,
-            "percentageDamage": 9,
+            "power": 150,
+            "percentageDamage": 10,
             "Range": 5
         },
         "EffectsOnUser": [
@@ -293,8 +293,8 @@
             "Emote": "<:Mercury:636449222975291403>",
             "Targettype": 4,
             "Element": 3,
-            "power": 30,
-            "percentageDamage": 3,
+            "power": 50,
+            "percentageDamage": 5,
             "Range": 5
         },
         "EffectsOnUser": [
@@ -317,8 +317,8 @@
             "Emote": "<:Nereid:636449223184875530>",
             "Targettype": 4,
             "Element": 3,
-            "power": 60,
-            "percentageDamage": 6,
+            "power": 100,
+            "percentageDamage": 9,
             "Range": 5
         },
         "EffectsOnUser": [
@@ -341,8 +341,8 @@
             "Emote": "<:Neptune:636449222975029279>",
             "Targettype": 4,
             "Element": 3,
-            "power": 120,
-            "percentageDamage": 9,
+            "power": 150,
+            "percentageDamage": 10,
             "Range": 5
         },
         "EffectsOnUser": [
@@ -389,8 +389,8 @@
             "Emote": "<:Zagan:636449223159709706>",
             "Targettype": 4,
             "Element": 0,
-            "power": 50,
-            "percentageDamage": 10,
+            "power": 80,
+            "percentageDamage": 9,
             "Range": 5,
             "Effects": [
 
@@ -406,12 +406,12 @@
             {
                 "Type": "Stat",
                 "Stat": "Power",
-                "Multiplier": 1.1
+                "Multiplier": 1.2
             },
             {
                 "Type": "Stat",
                 "Stat": "Resistance",
-                "Multiplier": 1.1
+                "Multiplier": 1.2
             }
         ],
         "VenusNeeded": 1,
@@ -456,20 +456,20 @@
             "Emote": "<:Megaera:636449222706593803>",
             "Targettype": 4,
             "Element": 1,
-            "power": 60,
-            "percentageDamage": 8,
+            "power": 80,
+            "percentageDamage": 9,
             "range": 5
         },
         "EffectsOnUser": [
             {
                 "Type": "Stat",
                 "Stat": "Power",
-                "Multiplier": 1.1
+                "Multiplier": 1.2
             },
             {
                 "Type": "Stat",
                 "Stat": "Resistance",
-                "Multiplier": 1.1
+                "Multiplier": 1.2
             }
 
         ],
@@ -490,7 +490,7 @@
         "Emote": "<:Moloch:636449223096926218>",
         "Targettype": 4,
         "Element": 3,
-        "power": 100,
+        "power": 80,
         "percentageDamage": 9,
         "range": 5,
         "Effects": [
