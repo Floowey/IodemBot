@@ -180,7 +180,7 @@
       "Effects": [
         {
           "Type": "IgnoreDefense",
-          "Percentage": 100,
+          "Percentage": 50,
           "Probability": 50
         }
       ],
