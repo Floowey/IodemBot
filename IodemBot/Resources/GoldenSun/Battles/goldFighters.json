@@ -235,7 +235,7 @@
         "venusres": 150,
         "jupiterres": 175,
         "mercuryres": 200,
-        "marsatk": 135
+        "mercuryatk": 135
       },
       "extraturns": 1,
       "HPRecovery": 222,
