@@ -180,7 +180,7 @@
       "Effects": [
         {
           "Type": "IgnoreDefense",
-          "Percentage": 100,
+          "Percentage": 50,
           "Probability": 50
         }
       ],
@@ -336,10 +336,11 @@
     "SpriteShiny": "<a:HemlockShiny:663013988291837981>",
     "Move": {
       "Targettype": 3,
+      "Range": 4,
       "Effects": [
         {
           "Type": "Condition",
-          "Probability": 15,
+          "Probability": 40,
           "Condition": "DeathCurse"
         }
       ]
@@ -1802,12 +1803,13 @@
     "SpriteShiny": "<a:GaspShiny:663022462107123715>",
     "Move": {
       "Targettype": 3,
+      "Range": 4,
       "Element": 2,
       "effects": [
         {
           "Type": "Condition",
           "Condition": "DeathCurse",
-          "Probability": 25
+          "Probability": 40
         }
       ]
     },
