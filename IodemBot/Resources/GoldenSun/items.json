@@ -1690,13 +1690,14 @@
       "effects": [
         {
           "Type": "AddDamage",
-          "addDamage": 73
+          "addDamage": 80
         },
         {
           "Type": "Stat",
           "Stat": "Defense",
           "Multiplier": 1.1,
-          "Probability": 8
+          "Probability": 8,
+          "OnTarget": false
         },
         {
           "Type": "HPDrain",
