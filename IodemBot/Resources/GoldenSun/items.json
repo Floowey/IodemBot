@@ -1634,6 +1634,7 @@
     "Name": "Proxian Sword",
     "Price": 31700,
     "Icon": "<:Proxian_Sword:806104681885597776>",
+    "AnimatedIcon": "<a:Proxian_Sword:806463043197337650>",
     "ItemType": "LongSword",
     "IsEquippable": true,
     "IsArtifact": true,
@@ -1659,6 +1660,52 @@
       ]
     },
     "Rarity": "Unique"
+  },
+   "Nut Sword": {
+    "Name": "Nut Sword",
+    "Price": 80085,
+    "Icon": "<:Nut_Sword:806462931595165776>",
+    "AnimatedIcon": "<a:Nut_Sword:806465529119375371>",
+    "ItemType": "LongSword",
+    "IsArtifact": true,
+    "IsEquippable": true,
+    "AddStatsOnEquip": {
+      "Atk": 80
+    },
+    "Rarity": "Unique",
+    "AddElStatsOnEquip": {
+      "VenusAtk": 80,
+      "VenusRes": 80,
+      "MarsAtk": 80,
+      "MarsRes": 80,
+      "JupiterAtk": 80,
+      "JupiterRes": 80,
+      "MercuryAtk": 80,
+      "MercuryRes": 80
+    },
+    "increaseUnleashRate": 8,
+    "Unleash": {
+      "UnleashName": "The Nut Council",
+      "UnleashAlignment": 3,
+      "effects": [
+        {
+          "Type": "AddDamage",
+          "Damage": 80
+        },
+        {
+          "Type":"Stat",
+          "Stat":"Def",
+          "Multiplier": 1.1,
+          "Probability": 8
+        }
+        {
+          "Type": "RestoreHP",
+          "Heal": 200,
+          "Probability": 20
+        }
+      ]
+    },
+    "Rarity": "Unique",
   },
   "Battle Axe": {
     "Name": "Battle Axe",
