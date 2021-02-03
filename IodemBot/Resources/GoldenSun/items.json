@@ -218,7 +218,7 @@
         {
           "Type": "Stat",
           "Stat": "Defense",
-          "Multiplier": 0.25,
+          "Multiplier": 0.75,
           "Probability": 50
         }
       ]
@@ -1254,7 +1254,7 @@
         {
           "Type": "Stat",
           "Stat": "Defense",
-          "Multiplier": 0.25,
+          "Multiplier": 0.75,
           "Probability": 25
         }
       ]
@@ -1628,6 +1628,37 @@
       ]
     },
     "Rarity": "Legendary"
+  },
+  "Proxian Sword": {
+
+    "Name": "Proxian Sword",
+    "Price": 31700,
+    "Icon": "<:Proxian_Sword:806104681885597776>",
+    "ItemType": "LongSword",
+    "IsEquippable": true,
+    "IsArtifact": true,
+    "AddStatsOnEquip": {
+      "Atk": 255,
+  },
+   "increaseUnleashRate": 5,
+   "Unleash": {
+      "UnleashName": "Heat Flash",
+      "UnleashAlignment": 1,
+      "effects": [
+        {
+           "Type": "MultiplyDamage",
+           "Multipliers": [ 2.3 ],
+           "Probabilities": [ 100 ],
+        },
+
+        {
+          "Type": "Condition",
+          "Condition": "Delusion",
+          "Probability": 50
+        }
+      ]
+    },
+    "Rarity": "Unique"
   },
   "Battle Axe": {
     "Name": "Battle Axe",
@@ -2704,7 +2735,7 @@
         {
           "Type": "MultiplyDamage",
           "Multipliers": [ 1.6 ],
-          "Prodabilities": [ 100 ]
+          "Probabilities": [ 100 ]
         },
         {
           "Type": "IgnoreDefense",
