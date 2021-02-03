@@ -2479,10 +2479,10 @@
             {
                 "name": "Ranger",
                 "movepool": [
-                    "Molten Bath",
-                    "Typhoon",
-                    "Drench",
-                    "Nature's Boon"
+                    "Lava Shower",
+                    "Gale",
+                    "Douse",
+                    "Boon"
                 ],
                 "statMultipliers": {
                     "maxHP": 130,

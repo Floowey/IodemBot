@@ -1630,6 +1630,7 @@
     "Rarity": "Legendary"
   },
   "Proxian Sword": {
+
     "Name": "Proxian Sword",
     "Price": 31700,
     "Icon": "<:Proxian_Sword:806104681885597776>",
@@ -1649,6 +1650,7 @@
            "Multipliers": [ 2.3 ],
            "Probabilities": [ 100 ],
         },
+
         {
           "Type": "Condition",
           "Condition": "Delusion",
@@ -1656,8 +1658,8 @@
         }
       ]
     },
-   "Rarity": "Unique"
- },
+    "Rarity": "Unique"
+  },
   "Battle Axe": {
     "Name": "Battle Axe",
     "Price": 280,
