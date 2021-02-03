@@ -1686,15 +1686,15 @@
     "increaseUnleashRate": 8,
     "Unleash": {
       "UnleashName": "The Nut Council",
-      "UnleashAlignment": 3,
+      "UnleashAlignment": 2,
       "effects": [
         {
           "Type": "AddDamage",
-          "Damage": 80
+          "addDamage": 73
         },
         {
-          "Type":"Stat",
-          "Stat":"Defense",
+          "Type": "Stat",
+          "Stat": "Defense",
           "Multiplier": 1.1,
           "Probability": 8
         },
