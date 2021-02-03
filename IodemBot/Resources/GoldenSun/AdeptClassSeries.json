@@ -2479,9 +2479,9 @@
             {
                 "name": "Ranger",
                 "movepool": [
-                    "Molten Bath",
-                    "Typhoon",
-                    "Drench",
+                    "Lava Shower",
+                    "Gale",
+                    "Douse",
                     "Boon"
                 ],
                 "statMultipliers": {
