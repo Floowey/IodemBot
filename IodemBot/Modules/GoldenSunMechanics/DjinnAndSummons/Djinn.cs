@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 using IodemBot.Extensions;
@@ -108,7 +109,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             {
                 case DjinnState.Set:
                     IsSet = true;
-                    CoolDown = User.Moves.OfType<Djinn>().Max(d => d.CoolDown) + 2;
+                    CoolDown = Math.Max(2,User.Moves.OfType<Djinn>().Max(d => d.CoolDown) + 1);
                     Position = User.GetTeam().SelectMany(p => p.Moves.OfType<Djinn>()).Max(d => d.Position) + 1;
                     return Move.Use(User);
 
