@@ -134,6 +134,7 @@
     "Name": "Wicked Mace",
     "Price": 15800,
     "Icon": "<:Wicked_Mace:569901405528260618>",
+    "AnimatedIcon": "<a:Wicked_Mace:808765881014157342>",
     "ItemType": "Mace",
     "IsEquippable": true,
     "IsArtifact": true,
@@ -340,6 +341,7 @@
     "Name": "Tungsten Mace",
     "Price": 18000,
     "Icon": "<:Tungsten_Mace:569901405440049156>",
+    "AnimatedIcon": "<a:Tungsten_Mace:808729745046241280>",
     "ItemType": "Mace",
     "IsEquippable": true,
     "IsArtifact": true,
@@ -469,6 +471,7 @@
     "Name": "Firemans Pole",
     "Price": 10000,
     "Icon": "<:Firemans_Pole:569855339244290059>",
+    "AnimatedIcon": "<a:Firemans_Pole:808751286005661726>",
     "ItemType": "Staff",
     "IsEquippable": true,
     "IsArtifact": true,
@@ -595,6 +598,7 @@
     "Name": "Salamander Rod",
     "Price": 14300,
     "Icon": "<:Salamander_Rod:569855339420188674>",
+    "AnimatedIcon": "<a:Salamander_Rod:808733486986559509>",
     "ItemType": "Staff",
     "IsEquippable": true,
     "IsArtifact": true,
@@ -623,6 +627,7 @@
     "Name": "Magic Rod",
     "Price": 380,
     "Icon": "<:Magic_Rod:569855339508400138>",
+    "AnimatedIcon": "<a:Magic_Rod:808766919292878880>",
     "ItemType": "Staff",
     "IsEquippable": true,
     "IsArtifact": true,
@@ -650,6 +655,7 @@
     "Name": "Witchs Wand",
     "Price": 860,
     "Icon": "<:Witchs_Wand:569855339533697030>",
+    "AnimatedIcon": "<a:Witchs_Wand:808737143824318464>",
     "ItemType": "Staff",
     "IsEquippable": true,
     "IsArtifact": true,
@@ -762,6 +768,7 @@
     "Name": "Goblins Rod",
     "Price": 12500,
     "Icon": "<:Goblins_Rod:569855339676303360>",
+    "AnimatedIcon": "<a:Goblins_Rod:808750776062705665>",
     "ItemType": "Staff",
     "IsEquippable": true,
     "IsArtifact": true,
@@ -961,6 +968,7 @@
     "Name": "Staff of Anubis",
     "Price": 6200,
     "Icon": "<:Staff_of_Anubis:569855339789287424>",
+    "AnimatedIcon": "<a:Staff_Of_Anubis:808763145031122997>",
     "ItemType": "Staff",
     "IsEquippable": true,
     "IsArtifact": true,
@@ -1016,6 +1024,7 @@
     "Name": "Shamans Rod",
     "Price": 160,
     "Icon": "<:Shamans_Rod:569855339906727939>",
+    "AnimatedIcon": "<a:Shamans_Rod:808750929808982017>",
     "ItemType": "Staff",
     "IsEquippable": true,
     "IsArtifact": true,
@@ -1070,7 +1079,7 @@
           "Type": "Stat",
           "Stat": "Attack",
           "Probability": 25,
-          "Multiplier": 0.25
+          "Multiplier": 0.75
         }
       ]
     }
@@ -1120,7 +1129,7 @@
           "Type": "Stat",
           "Stat": "Attack",
           "Probability": 25,
-          "Multiplier": 0.25
+          "Multiplier": 0.75
         }
       ]
     },
@@ -1228,7 +1237,7 @@
         {
           "Type": "Stat",
           "Stat": "Attack",
-          "Multiplier": 0.25,
+          "Multiplier": 0.75,
           "Probability": 25
         }
       ]
@@ -2311,6 +2320,7 @@
     "Name": "Ninja Blade",
     "Price": 9000,
     "Icon": "<:Ninja_Blade:569855398606274560>",
+    "AnimatedIcon": "<a:Ninja_Blade:808755986063163393>",
     "ItemType": "LightBlade",
     "IsEquippable": true,
     "IsArtifact": true,
@@ -2339,6 +2349,7 @@
     "Name": "Swift Sword",
     "Price": 9400,
     "Icon": "<:Swift_Blade:569855398451085343>",
+    "AnimatedIcon": "<a:Swift_Sword:808759481454428170>",
     "ItemType": "LightBlade",
     "IsEquippable": true,
     "IsArtifact": true,
@@ -2538,6 +2549,7 @@
     "Name": "Sylph Rapier",
     "Price": 11000,
     "Icon": "<:Sylph_Rapier:569855398316605482>",
+    "AnimatedIcon": "<a:Sylph_Rapier:808337399775756289>",
     "ItemType": "LightBlade",
     "IsEquippable": true,
     "IsArtifact": true,
