@@ -340,7 +340,6 @@
     "Name": "Tungsten Mace",
     "Price": 18000,
     "Icon": "<:Tungsten_Mace:569901405440049156>",
-    "AnimatedIcon": "<a:Tungsten_Mace:807597053831413770>",
     "ItemType": "Mace",
     "IsEquippable": true,
     "IsArtifact": true,
