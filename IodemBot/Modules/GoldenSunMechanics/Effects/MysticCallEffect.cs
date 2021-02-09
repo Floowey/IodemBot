@@ -28,6 +28,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         protected override int InternalChooseBestTarget(List<ColossoFighter> targets)
         {
+            friends ??= EnemyNames.Select(e => EnemiesDatabase.GetEnemy(e)).ToList();
             var deadFriends = targets.Where(s => friends.Any(f => f.Name.Equals(s.Name) && !s.IsAlive)).ToList();
             //Console.WriteLine($"{deadFriends.Count} dead targets.({targets.First().Name})");
             return targets.IndexOf(deadFriends.Random());
@@ -35,6 +36,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         protected override bool InternalValidSelection(ColossoFighter user)
         {
+            friends ??= EnemyNames.Select(e => EnemiesDatabase.GetEnemy(e)).ToList();
             return user.GetTeam().Any(s => friends.Any(f => f.Name.Equals(s.Name) && !s.IsAlive));
         }
     }
