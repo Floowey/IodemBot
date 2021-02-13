@@ -92,7 +92,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             else
             {
                 var embed = new EmbedBuilder();
-                embed.WithDescription(":x: Not enough funds. The three upgrades cost in order <:coin:569836987767324672> 50 000, <:coin:569836987767324672> 100 000 and <:coin:569836987767324672> 200 000 <:coin:569836987767324672>");
+                embed.WithDescription(":x: Not enough funds. The four upgrades cost, in order:\n<:coin:569836987767324672> 50 000\n<:coin:569836987767324672> 100 000\n<:coin:569836987767324672> 200 000 and\n<:coin:569836987767324672> 400 000");
                 embed.WithColor(Colors.Get("Error"));
                 _ = Context.Channel.SendMessageAsync("", false, embed.Build());
             }

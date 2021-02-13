@@ -108,17 +108,6 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 { ItemRarity.Rare, ItemRarity.Legendary, ItemRarity.Mythical}, new[] { 75, 24, 1 }).GenerateReward()
                 )
             );
-            //shop.Add(GetRandomItem(8, RandomItemType.NonArtifact));
-            //shop.Add(GetRandomItem(12, RandomItemType.NonArtifact));
-            ////shop.Add(GetRandomItem98(18, RandomItemType.NonArtifact));
-
-            //shop.Add(GetRandomItem(25, RandomItemType.Any));
-            ////shop.Add(GetRandomItem(28, 0, RandomItemType.Any));
-            //shop.Add(GetRandomItem(32, RandomItemType.Any));
-
-            //shop.Add(GetRandomItem(15, RandomItemType.Artifact));
-            ////shop.Add(GetRandomItem(24, RandomItemType.Artifact));
-            //shop.Add(GetRandomItem(38, RandomItemType.Artifact));
 
             shopkeeper = Sprites.GetImageFromName(shopkeepers.Random());
 

@@ -549,7 +549,7 @@ namespace IodemBot.Modules
                 return;
             }
 
-            await ReplyAsync($"You will lose all your progress so far, are you really sure? However, you will get a boost to your experience will increase from {account.XpBoost:F} to {account.XpBoost * (1 + 0.1 * (1 - Math.Exp(-(double)account.XP / 120000))):F}");
+            await ReplyAsync($"You will lose all your progress so far, are you really sure? However, you will get an experience boost from x{account.XpBoost:F} to x{Math.Min(2,account.XpBoost * (1 + 0.1 * (1 - Math.Exp(-(double)account.XP / 120000)))):F}");
 
             response = await Context.Channel.AwaitMessage(m => m.Author == Context.User);
             if (!response.Content.Equals("Yes", StringComparison.CurrentCultureIgnoreCase))

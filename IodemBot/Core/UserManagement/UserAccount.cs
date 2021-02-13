@@ -265,6 +265,7 @@ namespace IodemBot.Core.UserManagement
         public void NewGame()
         {
             XpBoost *= 1 + 0.1 * (1 - Math.Exp(-(double)XP / 120000));
+            XpBoost = Math.Min(2, XpBoost);
             XPLastGame = TotalXP;
 
             if (LevelNumber >= 99)
