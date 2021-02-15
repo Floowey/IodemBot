@@ -2548,6 +2548,15 @@
     "addDamage": 100,
     "IgnoreSpread": true
   },
+  "Rising Dragon": {
+    "name": "Rising Dragon",
+    "targetType": 3,
+    "emote": "<:Rising_Dragon:810188503731535922>",
+    "range": 1,
+    "element": 1,
+    "PPCost": 37,
+    "power": 250,
+  }, 
   "Dragon Driver": {
     "name": "Dragon Driver",
     "targetType": 4,
