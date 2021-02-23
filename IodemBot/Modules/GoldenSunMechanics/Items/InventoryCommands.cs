@@ -108,6 +108,13 @@ namespace IodemBot.Modules.GoldenSunMechanics
             var embed = new EmbedBuilder();
             embed.WithColor(new Color(66, 45, 45));
             embed.WithThumbnailUrl(ItemDatabase.shopkeeper);
+
+            if (DateTime.Now.Date >= new DateTime(day: 1, month: 3, year: 2021) &&
+                DateTime.Now.Date < new DateTime(day: 15, month: 3, year: 2021))
+            {
+                embed.WithDescription("It's the Tolbi market! Up until March 14th you'll get a chance to find more and rarer gear! With this many, the stalls are rotated every 6 hours!");
+            }
+
             embed.AddField("Shop:", shop.InventoryToString(Detail.NameAndPrice), true);
 
             var fb = new EmbedFooterBuilder();

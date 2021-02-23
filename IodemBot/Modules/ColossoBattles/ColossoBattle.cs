@@ -166,20 +166,11 @@ namespace IodemBot.Modules.ColossoBattles
             turnActive = true;
             log.Add($"Turn {++turn}");
 
-            //Console.WriteLine("Starting to process Turn");
-
-            //Start Turn for things like Defend
             try
             {
-                log.AddRange(StartTurn());
-
-                //Main Turn
+                log.AddRange(StartTurn()); // moves with priority
                 log.AddRange(MainTurn());
-
-                //Main Turn
-                log.AddRange(ExtraTurn());
-
-                //End Turn
+                log.AddRange(ExtraTurn()); // extra Turns
                 log.AddRange(EndTurn());
             }
             catch (Exception e)
@@ -194,9 +185,6 @@ namespace IodemBot.Modules.ColossoBattles
                 isActive = false;
             }
             turnActive = false;
-
-            //Console.WriteLine("Done processing Turn");
-
             return true;
         }
 
