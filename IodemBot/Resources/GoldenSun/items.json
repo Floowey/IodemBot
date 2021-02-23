@@ -1681,7 +1681,7 @@
     "Price": 80085,
     "Icon": "<:Nut_Sword:806462931595165776>",
     "AnimatedIcon": "<a:Nut_Sword:806465529119375371>",
-    "ItemType": "LongSword",
+    "ItemType": "LightBlade",
     "IsArtifact": true,
     "IsEquippable": true,
     "AddStatsOnEquip": {
@@ -1858,7 +1858,7 @@
         {
           "Type": "Stat",
           "Stat": "Defense",
-          "Multiplier": 0.25,
+          "Multiplier": 0.75,
           "Probability": 25
         }
       ]
@@ -2658,7 +2658,7 @@
         {
           "Type": "Stat",
           "Stat": "Defense",
-          "Multiplier": 0.25,
+          "Multiplier": 0.75,
           "Probability": 25
         }
       ]
