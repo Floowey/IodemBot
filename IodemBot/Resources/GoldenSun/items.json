@@ -202,7 +202,7 @@
     "Name": "Comet Mace",
     "Price": 9000,
     "Icon": "<:Comet_Mace:569901405402562570>",
-    "AnimatedIcon": "<a:Comet_Mace:792199170508193824>",
+    "AnimatedIcon": "<a:Comet_Mace2:856742564807049266>",
     "ItemType": "Mace",
     "IsEquippable": true,
     "IsArtifact": true,
@@ -1649,7 +1649,7 @@
     "Name": "Proxian Sword",
     "Price": 31700,
     "Icon": "<:Proxian_Sword:806104681885597776>",
-    "AnimatedIcon": "<a:Proxian_Sword:806463043197337650>",
+    "AnimatedIcon": "<a:Proxian_Sword2:856742359412113408>",
     "ItemType": "LongSword",
     "IsEquippable": true,
     "IsArtifact": true,
@@ -1685,7 +1685,7 @@
     "IsArtifact": true,
     "IsEquippable": true,
     "AddStatsOnEquip": {
-      "Atk": 80
+      "Atk": 455
     },
     "Rarity": "Unique",
     "AddElStatsOnEquip": {
@@ -2611,7 +2611,7 @@
     "Name": "Phaetons Blade",
     "Price": 15000,
     "Icon": "<:Phaetons_Blade:569855398467862559>",
-    "AnimatedIcon": "<a:Phaetons_Blade:789589053355458600>",
+    "AnimatedIcon": "<a:Phaetons_Blade2:856742147038773259>",
     "ItemType": "LightBlade",
     "IsEquippable": true,
     "IsArtifact": true,
