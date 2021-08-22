@@ -164,8 +164,14 @@ namespace IodemBot.Modules
         [Summary("Send a bug report to @Floowey#0205")]
         public async Task BugReport([Remainder] string bugreport)
         {
-            var channel = await Context.Guild.Users.Where(u => u.Id == 300339714311847936).First().GetOrCreateDMChannelAsync();
-            await channel.SendMessageAsync($"{Context.User.Username} reports: {bugreport}");
+            await Global.Owner?.SendMessageAsync($"{Context.User.Mention} reports: {bugreport}");
+
+            ISocketMessageChannel guard_channel = Global.Client.GetGuild(355558866282348574)?.GetTextChannel(535209634408169492);
+            if(guard_channel != null)
+            {
+                await guard_channel.SendMessageAsync($"{Context.User.Mention} reports: {bugreport}");
+            }
+
             await Context.Channel.SendMessageAsync($"Thank you for your feedback!");
         }
 

@@ -297,15 +297,30 @@
   "Enfeeble": {
     "name": "Enfeeble",
     "targetType": 4,
-    "emote": "🔱",
-    "range": 3,
-    "element": 1,
-    "PPCost": 5,
+    "emote": "<:Enfeeble:878922824545357844>",
+    "range": 2,
+    "element": 2,
+    "PPCost": 6,
     "effects": [
       {
         "Type": "Stat",
         "Stat": "Resistance",
         "Multiplier": 0.6
+      }
+    ]
+  },
+  "Weaken": {
+    "name": "Weaken",
+    "targetType": 3,
+    "emote": "<:Weaken:878922824767639552>",
+    "range": 1,
+    "element": 2,
+    "PPCost": 4,
+    "effects": [
+      {
+        "Type": "Stat",
+        "Stat": "Resistance",
+        "Multiplier": 0.5
       }
     ]
   },

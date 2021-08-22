@@ -1,4 +1,5 @@
 ﻿using System;
+using Discord;
 using Discord.WebSocket;
 
 namespace IodemBot
@@ -19,6 +20,19 @@ namespace IodemBot
             }
         }
         internal static DateTime UpSince { get; set; }
+
+        internal static IUser Owner
+        {
+            get
+            {
+                if (_Owner is null)
+                {
+                    _Owner = Client.GetApplicationInfoAsync().Result.Owner;
+                }
+                return _Owner;
+            }
+        }
+        private static IUser _Owner { get; set; }
 
         internal static string DateString
         {

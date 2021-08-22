@@ -2183,7 +2183,7 @@
       {
         "Flavourtext": "Upon reaching the Aerie, you find the lighthouse beacon already lit, and none other than Saturos himself waiting. He seems to want to challenge your strength, and he likely won't take no for an answer. You drink your bottle of Hermes Water and prepare for the battle...",
         "EnemyNames": [ "Saturos 1" ],
-        "Keywords": [ "Cure" ],
+        "Keywords": [ "Cure", "Heal" ],
         "Image": "https://cdn.discordapp.com/attachments/668443234292334612/734321542707675196/EcqCcPPXoAAKMks.jpg",
         "RewardTables": [
           [

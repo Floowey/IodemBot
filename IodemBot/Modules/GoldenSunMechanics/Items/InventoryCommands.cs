@@ -521,15 +521,22 @@ namespace IodemBot.Modules.GoldenSunMechanics
             }
             var selectedItem = inv.GetItem(item);
 
-            if (selectedItem.ExclusiveTo?.Contains(account.Element) ?? true)
+            if (!selectedItem.ExclusiveTo?.Contains(account.Element) ?? false)
             {
-                if (inv.Equip(item, archType))
-                {
-                    UserAccountProvider.StoreUser(account);
-                    _ = ShowInventory();
-                    return;
-                }
+                _ = Context.Channel.SendMessageAsync(embed: new EmbedBuilder()
+                .WithColor(Colors.Get("Error"))
+                .WithDescription($":x: Only {string.Join(", ", selectedItem.ExclusiveTo)} Adepts can equip {selectedItem.Name}")
+                .Build());
+                return;
             }
+            
+            if (inv.Equip(item, archType))
+            {
+                UserAccountProvider.StoreUser(account);
+                _ = ShowInventory();
+                return;
+            }
+            
 
             await Context.Channel.SendMessageAsync(embed: new EmbedBuilder()
                 .WithColor(Colors.Get("Error"))
