@@ -70,6 +70,25 @@ namespace IodemBot.Modules
             }
         }
 
+        [Command("Classes")]
+        [Cooldown(2)]
+        public async Task ListClasses()
+        {
+            var account = EntityConverter.ConvertUser(Context.User);
+            var allClasses = AdeptClassSeriesManager.allClasses;
+            var allAvailableClasses = allClasses.Where(c => c.IsDefault || account.BonusClasses.Any(bc => bc.Equals(c.Name)));
+            var OfElement = allAvailableClasses.Where(c => c.Elements.Contains(account.Element)).Select(c => c.Name).OrderBy(n => n);
+            
+            var embed = new EmbedBuilder();
+            embed.WithTitle("Classes");
+            embed.WithColor(Colors.Get(account.Element.ToString()));
+            embed.AddField($"Available as {ElementIcons[account.Element]} {account.Element} Adept:", string.Join(", ", OfElement));
+            embed.AddField($"Others Unlocked:", string.Join(", ", allAvailableClasses.Select(c => c.Name).Except(OfElement).OrderBy(n => n)));
+            embed.WithFooter($"Total: {allAvailableClasses.Count()}/{allClasses.Count()}");
+            _ = ReplyAsync(embed: embed.Build());
+            await Task.CompletedTask;
+        }
+
         [Command("class")]
         [Summary("Assign yourself to a class of your current element, or toggle through your available list.")]
         [Cooldown(2)]
