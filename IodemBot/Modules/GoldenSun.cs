@@ -306,7 +306,7 @@ namespace IodemBot.Modules
         [Command("hiddenstats"), Alias("tri")]
         [Cooldown(5)]
         [RequireStaff]
-        public async Task Tri([Remainder] SocketGuildUser user = null)
+        public async Task Tri(SocketGuildUser user = null, bool withFile = false)
         {
             user ??= (SocketGuildUser)Context.User;
             var account = EntityConverter.ConvertUser(user);
@@ -329,8 +329,18 @@ namespace IodemBot.Modules
             embed.WithFooter(Footer);
 
             await Context.Channel.SendMessageAsync("", false, embed.Build());
-
-            Console.WriteLine(JsonConvert.SerializeObject(account, Formatting.Indented));
+            if (withFile)
+            {
+                try
+                {
+                    await Context.Channel.SendFileAsync($"Resources/Accounts/BackupAccountFiles/{account.ID}.json");
+                }
+                catch
+                {
+                    Console.WriteLine("Couldn't send file");
+                    Console.WriteLine(JsonConvert.SerializeObject(account, Formatting.Indented));
+                }
+            }
         }
 
         [Command("Dungeons"), Alias("dgs")]

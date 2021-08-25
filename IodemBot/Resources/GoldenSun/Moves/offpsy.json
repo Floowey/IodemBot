@@ -1121,7 +1121,7 @@
     "element": 3,
     "PPCost": 15,
     "power": 100,
-    "IgnoresSpread": true
+    "IgnoreSpread": true
   },
   "Ice": {
     "name": "Ice",
