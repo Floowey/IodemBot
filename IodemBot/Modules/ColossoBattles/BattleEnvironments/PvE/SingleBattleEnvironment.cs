@@ -20,9 +20,11 @@ namespace IodemBot.Modules.ColossoBattles
         {
             {BattleDifficulty.Tutorial, new RewardTable(){
                 new DefaultReward()
-            {
+                {
                     Chest = ChestQuality.Wooden,
-            } } },
+                }
+                }
+            },
             {BattleDifficulty.Easy, new RewardTable()
             {
                 new DefaultReward()

@@ -620,7 +620,7 @@
           "Type": "Stat",
           "Stat": "Attack",
           "Multiplier": 0.75,
-          "Probability": 35 
+          "Probability": 35
         }
       ]
     },
@@ -1598,6 +1598,7 @@
     "ItemType": "LongSword",
     "IsEquippable": true,
     "IsArtifact": true,
+    "Description":  "Infused by the power of the Earth, this ultimate weapon can only be wielded by Venus Warriors.",
     "ExclusiveTo": [ 0 ],
     "AddStatsOnEquip": {
       "Atk": 200
@@ -1655,16 +1656,16 @@
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 255
-  },
-   "increaseUnleashRate": 5,
-   "Unleash": {
+    },
+    "increaseUnleashRate": 5,
+    "Unleash": {
       "UnleashName": "Heat Flash",
       "UnleashAlignment": 1,
       "effects": [
         {
-           "Type": "MultiplyDamage",
-           "Multipliers": [ 2.3 ],
-           "Probabilities": [ 100 ]
+          "Type": "MultiplyDamage",
+          "Multipliers": [ 2.3 ],
+          "Probabilities": [ 100 ]
         },
 
         {
@@ -1676,7 +1677,7 @@
     },
     "Rarity": "Unique"
   },
-   "Nut Sword": {
+  "Nut Sword": {
     "Name": "Nut Sword",
     "Price": 80085,
     "Icon": "<:Nut_Sword:806462931595165776>",
@@ -1720,6 +1721,47 @@
           "Probability": 20
         }
       ]
+    }
+  },
+  "Arc Blade": {
+    "Name": "Arc Blade",
+    "Price": 1111111,
+    "Icon": "<a:ArcBlade:882541759333298278>",
+    "AnimatedIcon": "<a:ArcBlade:882541759333298278>",
+    "ItemType": "LightBlade",
+    "IsEquippable": true,
+    "IsArtifact": true,
+    "AddStatsOnEquip": {
+      "Atk": 200
+    },
+    "increaseUnleashRate": 5,
+    "Unleash": {
+      "UnleashName": "Hyperborean Grind",
+      "UnleashAlignment": 3,
+      "effects": [
+        {
+          "Type": "MultiplyDamage",
+          "Multipliers": [ 2.4 ],
+          "Probabilities": [ 100 ]
+        },
+        {
+          "Type": "Stat",
+          "Stat": "Resistance",
+          "Multiplier": 0.6,
+          "Probability": 75
+        }
+      ]
+    },
+    "Rarity": "Unique",
+    "AddElStatsOnEquip": {
+      "VenusAtk": 120,
+      "VenusRes": 0,
+      "MarsAtk": 120,
+      "MarsRes": 0,
+      "JupiterAtk": 120,
+      "JupiterRes": 0,
+      "MercuryAtk": 120,
+      "MercuryRes": 0
     }
   },
   "Battle Axe": {
