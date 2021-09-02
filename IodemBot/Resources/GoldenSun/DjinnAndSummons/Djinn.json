@@ -840,6 +840,7 @@
     "SpriteShiny": "<a:GlowShiny:663018696901656577>",
     "Move": {
       "Range": 1,
+      "TargetType": 1,
       "effects": [
         {
           "Type": "Revive",

@@ -8,7 +8,6 @@ namespace IodemBot.Modules.GoldenSunMechanics
 {
     public class HealPsynergy : Psynergy
     {
-        public bool SingleTarget { get; set; }
         public int Percentage { get; set; }
         public int HealPower { get; set; }
         public int PPHeal { get; set; }
@@ -41,9 +40,9 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
             aliveFriends = aliveFriends.OrderBy(s => s.Stats.HP / s.Stats.MaxHP).ThenBy(s => s.Stats.HP).ToList();
 
-            if (User.GetTeam().Any(d => d.Name.Contains("Star")))
+            if (aliveFriends.Any(d => d.Name.Contains("Star")))
             {
-                TargetNr = User.GetTeam().IndexOf(User.GetTeam().Where(d => d.Name.Contains("Star")).Random());
+                TargetNr = aliveFriends.IndexOf(User.GetTeam().Where(d => d.Name.Contains("Star")).Random());
             }
             else
             {

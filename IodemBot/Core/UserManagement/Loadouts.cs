@@ -23,7 +23,7 @@ namespace IodemBot.Core.UserManagement
 
         public void RemoveLoadout(string name)
         {
-            loadouts.RemoveAll(l => l.LoadoutName == name);
+            loadouts.RemoveAll(l => l.LoadoutName.Equals(name, StringComparison.CurrentCultureIgnoreCase));
         }
     }
 
@@ -54,7 +54,6 @@ namespace IodemBot.Core.UserManagement
             GoldenSun.SetClass(account, ClassSeries);
             Gear.ForEach(i => inv.Equip(i, AdeptClassSeriesManager.GetClassSeries(account).Archtype));
             DjinnCommands.TakeDjinn(account, Djinn.ToArray());
-
         }
     }
 }

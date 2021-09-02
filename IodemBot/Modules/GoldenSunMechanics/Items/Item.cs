@@ -43,6 +43,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public uint Price { get; set; }
 
+        public string Description { get;set; }
+
         public ItemRarity Rarity { get; set; }
 
         public Color Color
@@ -119,6 +121,10 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public string Summary()
         {
             var s = new StringBuilder();
+            if (!Description.IsNullOrEmpty())
+            {
+                s.Append(Description); s.Append("\n");
+            }
             if (AddStatsOnEquip.NonZerosToString() != "``")
             {
                 s.Append(AddStatsOnEquip.NonZerosToString());

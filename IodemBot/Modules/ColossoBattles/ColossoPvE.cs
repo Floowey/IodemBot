@@ -289,6 +289,58 @@ namespace IodemBot.Modules.ColossoBattles
             }
         }
 
+        [Command("modendless")]
+        [RequireOwner]
+        public async Task ModColossoEndless(int round = 1)
+        {
+            if (!AcceptBattles)
+            {
+                return;
+            }
+
+            if (!(Context.User is SocketGuildUser user))
+            {
+                return;
+            }
+
+            var guild = Context.Guild;
+            var gs = GuildSettings.GetGuildSettings(guild);
+            _ = RemoveFighterRoles();
+            var gauntletFromUser = battles.Where(b =>
+                Context.Guild.Channels.Any(c => b.GetChannelIds.Contains(c.Id)) &&
+                b.Name.Equals(Context.User.Username, StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault();
+            var acc = EntityConverter.ConvertUser(Context.User);
+            if (acc.LevelNumber < 50 && !acc.Tags.Contains("ColossoCompleted"))
+            {
+                return;
+            }
+
+            if (gauntletFromUser != null)
+            {
+                if (gauntletFromUser.IsActive)
+                {
+                    await ReplyAsync($"What? You already are on an adventure!");
+                    return;
+                }
+                else
+                {
+                    await gauntletFromUser.Reset("Battle override");
+                    battles.Remove(gauntletFromUser);
+                }
+            }
+            EndlessBattleEnvironment openBattle;
+            
+            openBattle = new EndlessBattleEnvironment($"{Context.User.Username}", gs.ColossoChannel, false, await PrepareBattleChannel($"Endless-{Context.User.Username}", guild, persistent: false));
+            openBattle.SetStreak(round);
+             
+            
+            battles.Add(openBattle);
+            _ = Context.Channel.SendMessageAsync($"{Context.User.Username}, {openBattle.BattleChannel.Mention} has been prepared for an endless adventure!");
+
+            _ = AddFighterRole();
+            await Task.CompletedTask;
+        }
+
         public enum FastTrackOption { SlowTrack, FastTrack };
 
         [Command("endless")]

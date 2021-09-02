@@ -181,7 +181,13 @@ namespace IodemBot.Modules
         public async Task Tags(SocketGuildUser user)
         {
             var avatar = EntityConverter.ConvertUser(user);
-            await ReplyAsync(string.Join(", ", avatar.Tags));
+            var tags = string.Join(", ", avatar.Tags);
+            while(tags.Length > 0)
+            {
+                await ReplyAsync(tags.Substring(0, 2000));
+                tags = tags.Substring(2000);
+            }
+
         }
 
         [Command("CleanupTags")]

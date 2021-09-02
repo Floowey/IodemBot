@@ -92,7 +92,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             else
             {
                 var embed = new EmbedBuilder();
-                embed.WithDescription(":x: Not enough funds. The three upgrades cost in order <:coin:569836987767324672> 50 000, <:coin:569836987767324672> 100 000 and <:coin:569836987767324672> 200 000 <:coin:569836987767324672>");
+                embed.WithDescription(":x: Not enough funds. The four upgrades cost, in order:\n<:coin:569836987767324672> 50 000\n<:coin:569836987767324672> 100 000\n<:coin:569836987767324672> 200 000 and\n<:coin:569836987767324672> 400 000");
                 embed.WithColor(Colors.Get("Error"));
                 _ = Context.Channel.SendMessageAsync("", false, embed.Build());
             }
@@ -108,6 +108,13 @@ namespace IodemBot.Modules.GoldenSunMechanics
             var embed = new EmbedBuilder();
             embed.WithColor(new Color(66, 45, 45));
             embed.WithThumbnailUrl(ItemDatabase.shopkeeper);
+
+            if (DateTime.Now.Date >= new DateTime(day: 1, month: 3, year: 2021) &&
+                DateTime.Now.Date < new DateTime(day: 15, month: 3, year: 2021))
+            {
+                embed.WithDescription("It's the Tolbi market! Up until March 14th you'll get a chance to find more and rarer gear! With this many, the stalls are rotated every 6 hours!");
+            }
+
             embed.AddField("Shop:", shop.InventoryToString(Detail.NameAndPrice), true);
 
             var fb = new EmbedFooterBuilder();
@@ -514,15 +521,22 @@ namespace IodemBot.Modules.GoldenSunMechanics
             }
             var selectedItem = inv.GetItem(item);
 
-            if (selectedItem.ExclusiveTo?.Contains(account.Element) ?? true)
+            if (!selectedItem.ExclusiveTo?.Contains(account.Element) ?? false)
             {
-                if (inv.Equip(item, archType))
-                {
-                    UserAccountProvider.StoreUser(account);
-                    _ = ShowInventory();
-                    return;
-                }
+                _ = Context.Channel.SendMessageAsync(embed: new EmbedBuilder()
+                .WithColor(Colors.Get("Error"))
+                .WithDescription($":x: Only {string.Join(", ", selectedItem.ExclusiveTo)} Adepts can equip {selectedItem.Name}")
+                .Build());
+                return;
             }
+            
+            if (inv.Equip(item, archType))
+            {
+                UserAccountProvider.StoreUser(account);
+                _ = ShowInventory();
+                return;
+            }
+            
 
             await Context.Channel.SendMessageAsync(embed: new EmbedBuilder()
                 .WithColor(Colors.Get("Error"))
