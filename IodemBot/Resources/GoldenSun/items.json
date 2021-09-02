@@ -1654,6 +1654,7 @@
     "ItemType": "LongSword",
     "IsEquippable": true,
     "IsArtifact": true,
+    "Description": "Unique to Anelace\nA sword from a legendary fallen Proxian, infused with untold power.\nCapable of cleaving foes through incandescent slashes.",
     "AddStatsOnEquip": {
       "Atk": 255
     },
@@ -1675,7 +1676,10 @@
         }
       ]
     },
-    "Rarity": "Unique"
+    "Rarity": "Unique",
+    "AddElStatsOnEquip": {
+      "MarsAtk: 30,
+    },
   },
   "Nut Sword": {
     "Name": "Nut Sword",
