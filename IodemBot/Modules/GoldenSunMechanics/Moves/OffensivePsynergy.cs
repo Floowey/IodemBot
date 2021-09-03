@@ -60,7 +60,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 }
 
                 //Effects that trigger before damage
-                log.AddRange(Effects.Where(e => e.ActivationTime == TimeToActivate.beforeDamge).ApplyAll(User, t));
+                log.AddRange(Effects.Where(e => e.ActivationTime == TimeToActivate.beforeDamage).ApplyAll(User, t));
 
                 if (!t.IsAlive)
                 {

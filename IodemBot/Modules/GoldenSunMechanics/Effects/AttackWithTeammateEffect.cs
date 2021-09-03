@@ -8,7 +8,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
     {
         public AttackWithTeammateEffect()
         {
-            ActivationTime = TimeToActivate.beforeDamge;
+            ActivationTime = TimeToActivate.beforeDamage;
         }
 
         public override string Type { get; } = "AttackWithTeammate";

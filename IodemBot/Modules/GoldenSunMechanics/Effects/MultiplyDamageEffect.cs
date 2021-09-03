@@ -12,7 +12,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public MultiplyDamageEffect()
         {
-            ActivationTime = TimeToActivate.beforeDamge;
+            ActivationTime = TimeToActivate.beforeDamage;
         }
 
         public override List<string> Apply(ColossoFighter User, ColossoFighter Target)

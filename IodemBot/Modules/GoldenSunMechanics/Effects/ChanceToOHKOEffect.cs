@@ -7,7 +7,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
     {
         public ChancetoOHKOEffect()
         {
-            ActivationTime = TimeToActivate.beforeDamge;
+            ActivationTime = TimeToActivate.beforeDamage;
         }
 
         public int Probability { get; set; } = 0;
