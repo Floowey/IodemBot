@@ -1658,10 +1658,6 @@
     "AddStatsOnEquip": {
       "Atk": 255
   },
-   "increaseUnleashRate": 5,
-   "Unleash": {
-      "Atk": 255
-    },
     "increaseUnleashRate": 5,
     "Unleash": {
       "UnleashName": "Heat Flash",
@@ -1671,9 +1667,6 @@
            "Type": "MultiplyDamage",
            "Multipliers": [ 2.3 ],
            "Probabilities": [ 100 ]
-          "Type": "MultiplyDamage",
-          "Multipliers": [ 2.3 ],
-          "Probabilities": [ 100 ]
         },
 
         {
@@ -1685,7 +1678,7 @@
     },
     "Rarity": "Unique",
     "AddElStatsOnEquip": {
-      "MarsAtk: 30,
+      "MarsAtk": 30
     },
   },
   "Nut Sword": {
