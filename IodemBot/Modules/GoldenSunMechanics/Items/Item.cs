@@ -121,10 +121,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public string Summary()
         {
             var s = new StringBuilder();
-            if (!Description.IsNullOrEmpty())
-            {
-                s.Append(Description); s.Append("\n");
-            }
+
             if (AddStatsOnEquip.NonZerosToString() != "``")
             {
                 s.Append(AddStatsOnEquip.NonZerosToString());
@@ -187,6 +184,11 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 various.Add($"Polishable");
             }
             s.Append(string.Join(" | ", various));
+
+            if (!Description.IsNullOrEmpty())
+            {
+                s.Append("\n\n"); s.Append($"*{Description}*");
+            }
             return s.ToString();
         }
     }

@@ -623,7 +623,12 @@ namespace IodemBot.Modules.GoldenSunMechanics
             embed.AddField("Icon", item.IconDisplay, true);
             embed.AddField("Value", $"<:coin:569836987767324672> {item.Price}", true);
             embed.AddField("Type", item.ItemType, true);
-            embed.AddField("Description", item.Summary());
+            embed.AddField("Summary", item.Summary(), inline: true);
+
+            //if (!item.Description.IsNullOrEmpty())
+            //{
+            //   embed.AddField("Description",$"*{item.Description}*", inline:true);
+            //}
 
             embed.WithColor((item.Category == ItemCategory.Weapon && item.IsUnleashable) ? Colors.Get(item.Unleash.UnleashAlignment.ToString()) : item.IsArtifact ? Colors.Get("Artifact") : Colors.Get("Exathi"));
 
