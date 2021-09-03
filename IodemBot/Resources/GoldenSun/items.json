@@ -1642,7 +1642,7 @@
     "IsEquippable": true,
     "IsArtifact": true,
     "AddStatsOnEquip": {
-      "Atk": 255,
+      "Atk": 255
   },
    "increaseUnleashRate": 5,
    "Unleash": {
@@ -1652,7 +1652,7 @@
         {
            "Type": "MultiplyDamage",
            "Multipliers": [ 2.3 ],
-           "Probabilities": [ 100 ],
+           "Probabilities": [ 100 ]
         },
 
         {
@@ -1700,15 +1700,14 @@
           "Stat":"Def",
           "Multiplier": 1.1,
           "Probability": 8
-        }
+        },
         {
           "Type": "RestoreHP",
           "Heal": 200,
           "Probability": 20
         }
       ]
-    },
-    "Rarity": "Unique",
+    }
   },
   "Battle Axe": {
     "Name": "Battle Axe",
