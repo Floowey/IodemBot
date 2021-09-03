@@ -1680,7 +1680,7 @@
     "Rarity": "Unique",
     "AddElStatsOnEquip": {
       "MarsAtk": 30
-    },
+    }
   },
   "Nut Sword": {
     "Name": "Nut Sword",
