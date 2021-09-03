@@ -1686,7 +1686,6 @@
     "ItemType": "LightBlade",
     "IsArtifact": true,
     "IsEquippable": true,
-    "Description": "Unique to Viri\n\"By the Order of the Council,\nBy the will of the Nut,\nYou are hereby granted access to the Council of Nut.\nFrom now on you shall be known as 'The Nut Grand-Artist'.\"\n—The Nut King, to Viri",
     "AddStatsOnEquip": {
       "Atk": 455
     },
@@ -1734,7 +1733,6 @@
     "ItemType": "LightBlade",
     "IsEquippable": true,
     "Description": "Unique to Viri\n\"Reforged in winter's howling heart with relentless care and patience. Tempered in the light of four lighthouses. Granted to Arc, to even the odds against monsters and warriors alike.",
-    "ExclusiveTo": [ 0 ]
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 200
