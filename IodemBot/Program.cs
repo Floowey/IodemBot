@@ -56,10 +56,13 @@ namespace IodemBot
             
             await client.LoginAsync(TokenType.Bot, Config.bot.token);
             await client.StartAsync();
+            
             handler = new CommandHandler();
             await handler.InitializeAsync(client);
+
             msgHandler = new MessageHandler();
             await msgHandler.InitializeAsync(client);
+
             await Task.Delay(-1);
         }
 

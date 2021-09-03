@@ -15,7 +15,9 @@ namespace IodemBot.Modules.GoldenSunMechanics
         private static DateTime lastReset;
 
         private static ShopStruct Shopstruct { get { return new ShopStruct() { Shop = shop, LastReset = lastReset, RestockMessage = restockMessage, Shopkeeper = shopkeeper }; } }
-        private static readonly int HoursForReset = 8;
+        private static int HoursForReset { get; } =
+            DateTime.Now.Date >= new DateTime(day: 1, month: 3, year: 2021) &&
+                DateTime.Now.Date < new DateTime(day: 15, month: 3, year: 2021) ? 6 : 8;
         public static string shopkeeper;
         public static string restockMessage;
         private static readonly string[] shopkeepers = { "armor shopkeeper2", "armor shopkeeper3", "champa shopkeeper", "item shopkeeper", "izumo shopkeeper", "weapon shopkeeper", "weapon shopkeeper2", "sunshine", "armor shopkeeper" };
@@ -108,17 +110,18 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 { ItemRarity.Rare, ItemRarity.Legendary, ItemRarity.Mythical}, new[] { 75, 24, 1 }).GenerateReward()
                 )
             );
-            //shop.Add(GetRandomItem(8, RandomItemType.NonArtifact));
-            //shop.Add(GetRandomItem(12, RandomItemType.NonArtifact));
-            ////shop.Add(GetRandomItem98(18, RandomItemType.NonArtifact));
 
-            //shop.Add(GetRandomItem(25, RandomItemType.Any));
-            ////shop.Add(GetRandomItem(28, 0, RandomItemType.Any));
-            //shop.Add(GetRandomItem(32, RandomItemType.Any));
+            if (DateTime.Now.Date >= new DateTime(day: 1, month: 3, year: 2021) &&
+                DateTime.Now.Date < new DateTime(day: 15, month: 3, year: 2021))
+            {
+                shop.Add(GetRandomItem(new RewardGenerator<ItemRarity>(new[]
+                { ItemRarity.Rare, ItemRarity.Legendary, ItemRarity.Mythical}, new[] { 75, 24, 2 }).GenerateReward()
+                ));
 
-            //shop.Add(GetRandomItem(15, RandomItemType.Artifact));
-            ////shop.Add(GetRandomItem(24, RandomItemType.Artifact));
-            //shop.Add(GetRandomItem(38, RandomItemType.Artifact));
+                shop.Add(GetRandomItem(new RewardGenerator<ItemRarity>(new[]
+                { ItemRarity.Rare, ItemRarity.Legendary, ItemRarity.Mythical}, new[] { 75, 24, 2 }).GenerateReward()
+                ));
+            }
 
             shopkeeper = Sprites.GetImageFromName(shopkeepers.Random());
 

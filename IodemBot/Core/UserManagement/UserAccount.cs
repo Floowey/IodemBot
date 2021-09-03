@@ -161,7 +161,6 @@ namespace IodemBot.Core.UserManagement
         }
     }
 
-
     public class UserAccount : IEquatable<UserAccount>
     {
         public static ulong[][] rates = new ulong[][] {
@@ -245,26 +244,22 @@ namespace IodemBot.Core.UserManagement
         public string PoGoCode { get; set; } = "0000-0000-0000";
         public string SwitchCode { get; set; } = "0000-0000-0000";
         [JsonIgnore] public ulong TotalXP { get { return XPLastGame + XP; } }
-
         public ulong XP { get; set; } = 0;
-
         public double XpBoost { get; set; } = 1;
-
         public ulong XPLastGame { get; set; } = 0;
         public ServerStats ServerStats { get; set; } = new ServerStats();
         public ServerStats ServerStatsTotal { get; set; } = new ServerStats();
         public BattleStats BattleStats { get; set; } = new BattleStats();
         public BattleStats BattleStatsTotal { get; set; } = new BattleStats();
         public string ImgUrl { get; set; }
-
         public void AddXp(ulong xp)
         {
             XP += (ulong)(xp * XpBoost);
         }
-
         public void NewGame()
         {
             XpBoost *= 1 + 0.1 * (1 - Math.Exp(-(double)XP / 120000));
+            XpBoost = Math.Min(2, XpBoost);
             XPLastGame = TotalXP;
 
             if (LevelNumber >= 99)
@@ -323,7 +318,6 @@ namespace IodemBot.Core.UserManagement
             Tags.Add($"{Element}Adept");
             NewGames++;
         }
-
         public bool Equals([AllowNull] UserAccount other)
         {
             if (other == null)

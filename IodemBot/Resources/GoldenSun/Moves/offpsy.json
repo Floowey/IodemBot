@@ -384,13 +384,13 @@
     "name": "Demon Night",
     "targetType": 4,
     "emote": "<:Demon_Night:536958935081549843>",
-    "range": 1,
+    "range": 2,
     "element": 0,
     "effects": [
       {
         "Type": "Condition",
         "Condition": "Haunt",
-        "Probability": 25
+        "Probability": 20
       }
     ],
     "PPCost": 12,
@@ -400,13 +400,13 @@
     "name": "Thorny Grave",
     "targetType": 4,
     "emote": "<:Thorny_Grave:536958993269260289>",
-    "range": 1,
+    "range": 2,
     "element": 0,
     "effects": [
       {
         "Type": "Condition",
         "Condition": "Haunt",
-        "Probability": 25
+        "Probability": 20
       }
     ],
     "PPCost": 24,
@@ -633,18 +633,18 @@
   },
   "Dragon Cloud": {
     "name": "Dragon Cloud",
-    "targetType": 3,
+    "targetType": 4,
     "emote": "<:Dragon_Cloud:536964123234402314>",
-    "range": 1,
+    "range": 2,
     "element": 1,
     "PPCost": 6,
     "power": 80
   },
   "Epicenter": {
     "name": "Epicenter",
-    "targetType": 3,
+    "targetType": 4,
     "emote": "<:Epicenter:536964146135171072>",
-    "range": 1,
+    "range": 2,
     "element": 1,
     "PPCost": 33,
     "power": 210
@@ -1121,7 +1121,7 @@
     "element": 3,
     "PPCost": 15,
     "power": 100,
-    "IgnoresSpread": true
+    "IgnoreSpread": true
   },
   "Ice": {
     "name": "Ice",
@@ -1526,7 +1526,7 @@
     "name": "Ice Blessing",
     "targetType": 4,
     "emote": "❄",
-    "range": 1,
+    "range": 2,
     "element": 3,
     "PPCost": 0,
     "power": 140
@@ -2548,6 +2548,15 @@
     "addDamage": 100,
     "IgnoreSpread": true
   },
+  "Rising Dragon": {
+    "name": "Rising Dragon",
+    "targetType": 3,
+    "emote": "<:Rising_Dragon:810188503731535922>",
+    "range": 1,
+    "element": 1,
+    "PPCost": 37,
+    "power": 250
+  }, 
   "Dragon Driver": {
     "name": "Dragon Driver",
     "targetType": 4,
@@ -2694,6 +2703,15 @@
     "PPCost": 0,
     "power": 200
   },
+  "Vicious Embrace": {
+    "name": "Vicious Embrace",
+    "targetType": 4,
+    "emote": ":people_hugging:",
+    "range": 2,
+    "element": 1,
+    "PPCost": 0,
+    "addDamage": 110
+  }, 
   "Flash Punch": {
     "name": "Flash Punch",
     "targetType": 3,

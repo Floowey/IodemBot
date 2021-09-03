@@ -113,9 +113,9 @@ namespace IodemBot.Modules
                 .WithTitle("Credits")
                 .WithDescription("Iodem is a community project, designed to add a special, custom made battle system, that mirrors the battle system present in the GBA games to the /r/GoldenSun discord.")
                 .AddField("Project Lead", "Floowey")
-                .AddField("Co Producers", "Falgor, Gray, Primrose, Ultimastrike")
-                .AddField("Art Contributions", "bringobrongo, elTeh, Eon, generalFang15, Mimibits, Shawn, SpaceShaman, Virize, Volk, Von")
-                .AddField("Contributions and Testers", "AlterEgo, Arcblade, ArcanusHaru, BdeBock, Dracobolt, DroneberryPi, Germaniac, IceFireFish, joschlumpf, Lavtiz, MarcAustria, Ninja Frog, Ophi, Smeecko, Random, RupeeHeart")
+                .AddField("Co Producers", "Falgor, Gray, Anelace, Arcblade")
+                .AddField("Art Contributions", "bringobrongo, Calvin, elTeh, Eon, generalFang15, Mimibits, Shawn, SpaceShaman, Tert, Virize, Volk, Von")
+                .AddField("Contributions and Testers", "AlterEgo, ArcanusHaru, BdeBock, Dracobolt, DroneberryPi, Germaniac, IceFireFish, joschlumpf, Lavtiz, Mary A. Stria, Ninja Frog, Ophi, Smeecko, Random, RupeeHeart, Ultimastrike")
                 .AddField("Special thanks to", "Camelot, the Moderators, the Nut Council and you, the players, without whom this whole project wouldn't have come this far")
                 .AddField("Support and Links", "Check out the repository:\nhttps://github.com/Floowey/IodemBot/\nIf you want to support this, you can buy Floowey a Ko-Fi!\n https://ko-fi.com/floowey")
                 .WithThumbnailUrl("https://cdn.discordapp.com/attachments/668443234292334612/738400124497035284/5ca5bf1dff3c03fbf7cc9b3c_Kofi_logo_RGB_rounded.png")
@@ -164,8 +164,14 @@ namespace IodemBot.Modules
         [Summary("Send a bug report to @Floowey#0205")]
         public async Task BugReport([Remainder] string bugreport)
         {
-            var channel = await Context.Guild.Users.Where(u => u.Id == 300339714311847936).First().GetOrCreateDMChannelAsync();
-            await channel.SendMessageAsync($"{Context.User.Username} reports: {bugreport}");
+            await Global.Owner?.SendMessageAsync($"{Context.User.Mention} reports: {bugreport}");
+
+            ISocketMessageChannel guard_channel = Global.Client.GetGuild(355558866282348574)?.GetTextChannel(535209634408169492);
+            if(guard_channel != null)
+            {
+                await guard_channel.SendMessageAsync($"{Context.User.Mention} reports: {bugreport}");
+            }
+
             await Context.Channel.SendMessageAsync($"Thank you for your feedback!");
         }
 

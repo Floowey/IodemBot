@@ -70,6 +70,25 @@ namespace IodemBot.Modules
             }
         }
 
+        [Command("Classes")]
+        [Cooldown(2)]
+        public async Task ListClasses()
+        {
+            var account = EntityConverter.ConvertUser(Context.User);
+            var allClasses = AdeptClassSeriesManager.allClasses;
+            var allAvailableClasses = allClasses.Where(c => c.IsDefault || account.BonusClasses.Any(bc => bc.Equals(c.Name)));
+            var OfElement = allAvailableClasses.Where(c => c.Elements.Contains(account.Element)).Select(c => c.Name).OrderBy(n => n);
+            
+            var embed = new EmbedBuilder();
+            embed.WithTitle("Classes");
+            embed.WithColor(Colors.Get(account.Element.ToString()));
+            embed.AddField($"Available as {ElementIcons[account.Element]} {account.Element} Adept:", string.Join(", ", OfElement));
+            embed.AddField($"Others Unlocked:", string.Join(", ", allAvailableClasses.Select(c => c.Name).Except(OfElement).OrderBy(n => n)));
+            embed.WithFooter($"Total: {allAvailableClasses.Count()}/{allClasses.Count()}");
+            _ = ReplyAsync(embed: embed.Build());
+            await Task.CompletedTask;
+        }
+
         [Command("class")]
         [Summary("Assign yourself to a class of your current element, or toggle through your available list.")]
         [Cooldown(2)]
@@ -153,9 +172,9 @@ namespace IodemBot.Modules
                     }
 
                     user.Loadouts.RemoveLoadout(loadoutName);
-                    if (user.Loadouts.loadouts.Count >= 6)
+                    if (user.Loadouts.loadouts.Count >= 9)
                     {
-                        _ = ReplyAsync("Loadout limit of 6 reached.");
+                        _ = ReplyAsync("Loadout limit of 9 reached.");
                         return;
                     }
                     var newLoadout = Loadout.GetLoadout(user);
@@ -287,7 +306,7 @@ namespace IodemBot.Modules
         [Command("hiddenstats"), Alias("tri")]
         [Cooldown(5)]
         [RequireStaff]
-        public async Task Tri([Remainder] SocketGuildUser user = null)
+        public async Task Tri(SocketGuildUser user = null, bool withFile = false)
         {
             user ??= (SocketGuildUser)Context.User;
             var account = EntityConverter.ConvertUser(user);
@@ -310,8 +329,18 @@ namespace IodemBot.Modules
             embed.WithFooter(Footer);
 
             await Context.Channel.SendMessageAsync("", false, embed.Build());
-
-            Console.WriteLine(JsonConvert.SerializeObject(account, Formatting.Indented));
+            if (withFile)
+            {
+                try
+                {
+                    await Context.Channel.SendFileAsync($"Resources/Accounts/BackupAccountFiles/{account.ID}.json");
+                }
+                catch
+                {
+                    Console.WriteLine("Couldn't send file");
+                    Console.WriteLine(JsonConvert.SerializeObject(account, Formatting.Indented));
+                }
+            }
         }
 
         [Command("Dungeons"), Alias("dgs")]
@@ -549,7 +578,7 @@ namespace IodemBot.Modules
                 return;
             }
 
-            await ReplyAsync($"You will lose all your progress so far, are you really sure? However, you will get a boost to your experience will increase from {account.XpBoost:F} to {account.XpBoost * (1 + 0.1 * (1 - Math.Exp(-(double)account.XP / 120000))):F}");
+            await ReplyAsync($"You will lose all your progress so far, are you really sure? However, you will get an experience boost from x{account.XpBoost:F} to x{Math.Min(2,account.XpBoost * (1 + 0.1 * (1 - Math.Exp(-(double)account.XP / 120000)))):F}");
 
             response = await Context.Channel.AwaitMessage(m => m.Author == Context.User);
             if (!response.Content.Equals("Yes", StringComparison.CurrentCultureIgnoreCase))

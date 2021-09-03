@@ -27,11 +27,15 @@ namespace IodemBot.Modules.GoldenSunMechanics
     [JsonSubtypes.KnownSubType(typeof(ReviveEffect), "Revive")]
     [JsonSubtypes.KnownSubType(typeof(StatEffect), "Stat")]
     [JsonSubtypes.KnownSubType(typeof(UserDiesEffect), "UserDies")]
+    [JsonSubtypes.KnownSubType(typeof(DealDamageEffect), "DealDamage")]
+    [JsonSubtypes.KnownSubType(typeof(HealEffect), "Heal")]
+    [JsonSubtypes.KnownSubType(typeof(LingeringEffect), "Lingering")]
     public abstract class Effect
     {
         public TimeToActivate ActivationTime { get; set; } = TimeToActivate.afterDamage;
         public virtual string Type { get; } = "Nothing";
 
+        public bool OnTarget { get; set; } = true;
         public abstract List<string> Apply(ColossoFighter User, ColossoFighter Target);
 
         protected virtual bool InternalValidSelection(ColossoFighter user)

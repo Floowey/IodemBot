@@ -12,7 +12,6 @@ namespace IodemBot.Modules.GoldenSunMechanics
         [JsonProperty] private string Stat { get; set; } = "OH NO";
         [JsonProperty] private double Multiplier { get; set; } = 1;
         [JsonProperty] private int Probability { get; set; } = 100;
-        [JsonProperty] private bool OnTarget { get; set; } = true;
         [JsonProperty] private int Turns { get; set; } = 7;
 
         public override string ToString()
@@ -23,7 +22,9 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public override List<string> Apply(ColossoFighter User, ColossoFighter Target)
         {
             List<string> log = new List<string>();
-            if (!Target.IsAlive)
+            ColossoFighter targetted = OnTarget ? Target : User;
+
+            if (!targetted.IsAlive)
             {
                 return log;
             }
@@ -35,16 +36,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
             if (Global.RandomNumber(0, 100) <= Probability)
             {
-                if (OnTarget)
-                {
-                    Target.ApplyBuff(new Buff(Stat, Multiplier, (uint)Turns));
-                    log.Add($"{Target.Name}'s {Stat} {(Multiplier > 1 ? "rises" : "lowers")}.");
-                }
-                else
-                {
-                    User.ApplyBuff(new Buff(Stat, Multiplier, (uint)Turns));
-                    log.Add($"{User.Name}'s {Stat} {(Multiplier > 1 ? "rises" : "lowers")}.");
-                }
+                    targetted.ApplyBuff(new Buff(Stat, Multiplier, (uint)Turns));
+                    log.Add($"{targetted.Name}'s {Stat} {(Multiplier > 1 ? "rises" : "lowers")}.");
             }
 
             return log;

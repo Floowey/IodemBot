@@ -2348,8 +2348,8 @@
                 "name": "Samurai",
                 "movepool": [
                     "Quick Strike",
-                    "Dragon Cloud",
                     "Helm Splitter",
+                    "Dragon Cloud",
                     "Demon Spear",
                     "Magic Shell"
                 ],
@@ -2365,8 +2365,8 @@
                 "name": "Ronin",
                 "movepool": [
                     "Quick Strike",
-                    "Epicenter",
                     "Skull Splitter",
+                    "Epicenter",
                     "Angel Spear",
                     "Magic Shield"
                 ],
@@ -2397,7 +2397,7 @@
         "requirement": "KillsByHand",
         "isDefault": false,
         "archtype": "Warrior",
-        "description": "Samurai are trained to have the upper hand in Hand-On-Hand combat."
+        "description": "Samurai are trained to have the upper hand in Hand-to-Hand combat."
     },
     {
         "name": "Ninja Series",

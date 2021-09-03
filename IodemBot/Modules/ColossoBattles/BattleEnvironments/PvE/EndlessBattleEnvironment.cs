@@ -90,19 +90,19 @@ namespace IodemBot.Modules.ColossoBattles
                 {
                     Chest = ChestQuality.Silver,
                     HasChest=true,
-                    Weight = 2
+                    Weight = 1
                 },
                 new DefaultReward()
                 {
                     Chest = ChestQuality.Gold,
                     HasChest=true,
-                    Weight = 7
+                    Weight = 6
                 },
                 new DefaultReward()
                 {
                     Chest = ChestQuality.Adept,
                     HasChest=true,
-                    Weight = 2
+                    Weight = 3
                 }
             } }
         };

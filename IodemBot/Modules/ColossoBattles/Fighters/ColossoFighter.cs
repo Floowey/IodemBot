@@ -66,6 +66,7 @@ namespace IodemBot.Modules.ColossoBattles
         [JsonIgnore] public uint damageDoneThisTurn;
         [JsonIgnore] public ColossoBattle battle;
         [JsonIgnore] public List<Buff> Buffs = new List<Buff>();
+        [JsonIgnore] public List<LingeringEffect> LingeringEffects = new List<LingeringEffect>();
         [JsonIgnore] public Team enemies;
         [JsonIgnore] public bool hasSelected = false;
         [JsonIgnore] public double offensiveMult = 1;
@@ -231,7 +232,32 @@ namespace IodemBot.Modules.ColossoBattles
         public virtual List<string> EndTurn()
         {
             List<string> turnLog = new List<string>();
+            turnLog.AddRange(EndTurnLingeringEffects()); // Should include Passive Healing and Damaging Abilities
 
+            turnLog.AddRange(EndTurnDjinnRecovery()); 
+            RemoveCondition(Condition.Counter); //Might need to go first
+
+            turnLog.AddRange(EndTurnPassiveRecovery()); // HP and PP from equipment
+            
+            turnLog.AddRange(EndTurnDoBuffs()); // Count Down Stat Increases
+            turnLog.AddRange(EndTurnDoConditions()); // Poison, Venom, Stun, Sleep, Seal, Delusion, Curse
+
+            turnLog.AddRange(EndTurnItemActivation()); // Custom Item unleashes like Unicorn Ring or Soul Ring
+
+            damageDoneThisTurn = 0;
+            defensiveMult = 1;
+            offensiveMult = 1;
+            if (!IsAlive)
+            {
+                selected = new Nothing();
+                hasSelected = true;
+            }
+            return turnLog;
+        }
+
+        private List<string> EndTurnDoBuffs()
+        {
+            var turnLog = new List<string>();
             var newBuffs = new List<Buff>();
             Buffs.ForEach(s =>
             {
@@ -246,9 +272,12 @@ namespace IodemBot.Modules.ColossoBattles
                 }
             });
             Buffs = newBuffs;
-            defensiveMult = 1;
-            offensiveMult = 1;
+            return turnLog;
+        }
 
+        private List<string> EndTurnPassiveRecovery()
+        {
+            var turnLog = new List<string>();
             if (IsAlive)
             {
                 if (HPrecovery > 0 && Stats.HP < Stats.MaxHP)
@@ -260,9 +289,12 @@ namespace IodemBot.Modules.ColossoBattles
                     turnLog.AddRange(RestorePP((uint)PPrecovery));
                 }
             }
-
-            RemoveCondition(Condition.Flinch);
-
+            return turnLog;
+        }
+        
+        private List<string> ConditionDamage()
+        {
+            var turnLog = new List<string>();
             if (HasCondition(Condition.Poison))
             {
                 var damage = Math.Min(200, (uint)(Stats.MaxHP * Global.RandomNumber(5, 10) / 100));
@@ -281,11 +313,19 @@ namespace IodemBot.Modules.ColossoBattles
                 var hauntDmg = damageDoneThisTurn / 4;
                 turnLog.AddRange(DealDamage(hauntDmg));
             }
+            return turnLog;
+        }
+
+        private List<string> EndTurnDoConditions()
+        {
+            var turnLog = new List<string>();
+
+            RemoveCondition(Condition.Flinch);
 
             //Chance to wake up
             if (HasCondition(Condition.Sleep) && !conditionsAppliedThisTurn.Contains(Condition.Sleep))
             {
-                if (Global.RandomNumber(0, 2) == 0)
+                if (Global.RandomNumber(0, 100) <= 60)
                 {
                     RemoveCondition(Condition.Sleep);
                     turnLog.Add($"{Name} wakes up.");
@@ -294,7 +334,7 @@ namespace IodemBot.Modules.ColossoBattles
             //Chance to remove Stun
             if (HasCondition(Condition.Stun) && !conditionsAppliedThisTurn.Contains(Condition.Stun))
             {
-                if (Global.RandomNumber(0, 2) == 0)
+                if (Global.RandomNumber(0, 100) <= 60)
                 {
                     RemoveCondition(Condition.Stun);
                     turnLog.Add($"{Name} can move again.");
@@ -303,7 +343,7 @@ namespace IodemBot.Modules.ColossoBattles
             //Chance to remove Seal
             if (HasCondition(Condition.Seal) && !conditionsAppliedThisTurn.Contains(Condition.Seal))
             {
-                if (Global.RandomNumber(0, 3) == 0)
+                if (Global.RandomNumber(0, 100) <= 40)
                 {
                     RemoveCondition(Condition.Seal);
                     turnLog.Add($"{Name}'s Psynergy is no longer sealed.");
@@ -312,7 +352,7 @@ namespace IodemBot.Modules.ColossoBattles
             //Chance to remove Delusion
             if (HasCondition(Condition.Delusion) && !conditionsAppliedThisTurn.Contains(Condition.Delusion))
             {
-                if (Global.RandomNumber(0, 4) == 0)
+                if (Global.RandomNumber(0, 100) <= 33)
                 {
                     RemoveCondition(Condition.Delusion);
                     turnLog.Add($"{Name} can see clearly again.");
@@ -337,10 +377,30 @@ namespace IodemBot.Modules.ColossoBattles
                     }
                 }
             }
-
-            RemoveCondition(Condition.Counter);
             conditionsAppliedThisTurn.Clear();
+            return turnLog;
+        }
 
+        private List<string> EndTurnLingeringEffects()
+        {
+            if (LingeringEffects.Count > 0 && IsAlive)
+            {
+                return LingeringEffects.SelectMany(e => e.ApplyLingering(this)).ToList();
+            }
+            else
+            {
+                return new List<string>();
+            }
+
+        }
+        private List<string> EndTurnDjinnRecovery()
+        {
+            return Moves.OfType<Djinn>().SelectMany(d => d.EndTurn(this)).ToList();
+        }
+
+        private List<string> EndTurnItemActivation()
+        {
+            var turnLog = new List<string>();
             foreach (var item in EquipmentWithEffect)
             {
                 if (item.IsUnleashable
@@ -362,18 +422,6 @@ namespace IodemBot.Modules.ColossoBattles
                         turnLog.Add($"{item.IconDisplay} {Name}'s {item.Name} breaks;");
                     }
                 }
-            }
-
-            foreach (var djinn in Moves.OfType<Djinn>())
-            {
-                turnLog.AddRange(djinn.EndTurn(this));
-            }
-
-            damageDoneThisTurn = 0;
-            if (!IsAlive)
-            {
-                selected = new Nothing();
-                hasSelected = true;
             }
             return turnLog;
         }
@@ -462,6 +510,7 @@ namespace IodemBot.Modules.ColossoBattles
             RemoveAllConditions();
             AddCondition(Condition.Down);
             Buffs = new List<Buff>();
+            LingeringEffects.RemoveAll(e => e.removedOnDeath);
         }
 
         public List<string> MainTurn()
@@ -478,7 +527,7 @@ namespace IodemBot.Modules.ColossoBattles
             }
 
             RemoveCondition(Condition.Flinch);
-
+            turnLog.AddRange(ConditionDamage());
             return turnLog;
         }
 
@@ -516,6 +565,7 @@ namespace IodemBot.Modules.ColossoBattles
             }
         }
 
+       
         public List<string> Revive(uint percentage)
         {
             List<string> log = new List<string>();
