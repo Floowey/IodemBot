@@ -40,6 +40,7 @@
     "Icon": "<:Heavy_Mace:569901405025075212>",
     "ItemType": "Mace",
     "IsEquippable": true,
+    "Description": "Heavy, man.  Heavy...",
     "AddStatsOnEquip": {
       "Atk": 26
     },
@@ -63,6 +64,7 @@
     "Icon": "<:Battle_Mace:569901405025075231>",
     "ItemType": "Mace",
     "IsEquippable": true,
+    "Description": "Tempered to stand up to the rigors of a good fight",
     "AddStatsOnEquip": {
       "Atk": 56
     },
@@ -74,6 +76,7 @@
     "Icon": "<:War_Mace:569901405478060032>",
     "ItemType": "Mace",
     "IsEquippable": true,
+    "Description": "Spiky!",
     "AddStatsOnEquip": {
       "Atk": 84
     },
