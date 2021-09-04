@@ -1736,7 +1736,7 @@
     "AnimatedIcon": "<a:ArcBlade:882541759333298278>",
     "ItemType": "LightBlade",
     "IsEquippable": true,
-    "Description": "Unique to Viri\n\"Reforged in winter's howling heart with relentless care and patience. Tempered in the light of four lighthouses. Granted to Arc, to even the odds against monsters and warriors alike.",
+    "Description": "\"Reforged in winter's howling heart with relentless care and patience. Tempered in the light of four lighthouses. Granted to Arc, to even the odds against monsters and warriors alike.",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 200

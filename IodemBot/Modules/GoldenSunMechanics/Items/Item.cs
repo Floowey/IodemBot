@@ -186,8 +186,12 @@ namespace IodemBot.Modules.GoldenSunMechanics
             s.Append(string.Join(" | ", various));
 
             if (!Description.IsNullOrEmpty())
-            {
-                s.Append("\n\n"); s.Append($"*{Description}*");
+            {   
+                if(various.Count > 0)
+                {
+                    s.Append("\n");
+                }
+                s.Append("\n"); s.Append($"*{Description}*");
             }
             return s.ToString();
         }
