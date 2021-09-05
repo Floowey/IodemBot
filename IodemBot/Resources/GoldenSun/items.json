@@ -52,7 +52,7 @@
     "Icon": "<:Mace:569901405435985930>",
     "ItemType": "Mace",
     "IsEquippable": true,
-    "Description": "One step above a rock tied to a stick",
+    "Description": "One step above a rock tied to a stick.",
     "AddStatsOnEquip": {
       "Atk": 6
     },
@@ -64,6 +64,7 @@
     "Icon": "<:Battle_Mace:569901405025075231>",
     "ItemType": "Mace",
     "IsEquippable": true,
+    "Description": "A sturdy hunk of metal affixed to a stout length of wood.",
     "AddStatsOnEquip": {
       "Atk": 56
     },
@@ -75,6 +76,7 @@
     "Icon": "<:War_Mace:569901405478060032>",
     "ItemType": "Mace",
     "IsEquippable": true,
+    "Description": "The addition of spikes makes the design significantly more intimidating.",
     "AddStatsOnEquip": {
       "Atk": 84
     },
