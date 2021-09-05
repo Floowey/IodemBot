@@ -40,6 +40,7 @@
     "Icon": "<:Heavy_Mace:569901405025075212>",
     "ItemType": "Mace",
     "IsEquippable": true,
+     "Description": "Heavy, man.  Heavy...",
     "AddStatsOnEquip": {
       "Atk": 26
     },
@@ -407,6 +408,7 @@
     "ItemType": "Staff",
     "IsEquippable": true,
     "IsArtifact": false,
+    "Description": "Likely one of the first weapons humanity ever adapted",
     "AddStatsOnEquip": {
       "Atk": 4
     },
@@ -605,6 +607,7 @@
     "AnimatedIcon": "<a:Salamander_Rod:808733486986559509>",
     "ItemType": "Staff",
     "IsEquippable": true,
+    "Description": "'Why is it glowing?' 'Just don't wave it around too vigorously...'",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 156
