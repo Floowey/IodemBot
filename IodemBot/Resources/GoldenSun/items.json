@@ -140,6 +140,7 @@
     "AnimatedIcon": "<a:Wicked_Mace:808765881014157342>",
     "ItemType": "Mace",
     "IsEquippable": true,
+    "Description": "Side effects include dizziness and disorientation. Consult a Healer for symptoms lasting longer than 2 hours.",
     "IsArtifact": true,
     "IsCursed": true,
     "AddStatsOnEquip": {
@@ -236,6 +237,7 @@
     "AnimatedIcon": "<a:Hagbone_Mace2:793179008568262697>",
     "ItemType": "Mace",
     "IsEquippable": true,
+    "Description": "The malice emanating from this weapon is palpable.",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 108
@@ -264,6 +266,7 @@
     "AnimatedIcon": "<a:Demon_Mace:807934275067314246>",
     "ItemType": "Mace",
     "IsEquippable": true,
+    "Description": "Somehow, not cursed.",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 115
