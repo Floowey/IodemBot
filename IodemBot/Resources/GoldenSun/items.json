@@ -89,6 +89,7 @@
     "AnimatedIcon": "<a:Grievous_Mace:808771271344914502>",
     "ItemType": "Mace",
     "IsEquippable": true,
+    "Description": "If the flanges don't hurt enough, the force of earth striking from below might do the job.",
     "IsArtifact": true,
     "DamageAlignment": 0,
     "AddStatsOnEquip": {
@@ -113,6 +114,7 @@
     "AnimatedIcon": "<a:Righteous_Mace:789978706520571944>",
     "ItemType": "Mace",
     "IsEquippable": true,
+    "Description": "A powerful ally for those that seek justice.",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 112
@@ -172,6 +174,7 @@
     "AnimatedIcon": "<a:Blessed_Mace:730089123963994203>",
     "ItemType": "Mace",
     "IsEquippable": true,
+    "Description": "The warmth of this mace bolsters you against all evil.",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 126
@@ -187,6 +190,7 @@
     "AnimatedIcon": "<a:Blow_Mace:798070892328124416>",
     "ItemType": "Mace",
     "IsEquippable": true,
+    "Description": "Ever tried swiming a lamp post?  You might get a similar result.",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 45
@@ -210,6 +214,7 @@
     "AnimatedIcon": "<a:Comet_Mace2:856742564807049266>",
     "ItemType": "Mace",
     "IsEquippable": true,
+    "Description": ".",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 105
