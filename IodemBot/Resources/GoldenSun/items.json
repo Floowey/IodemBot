@@ -89,7 +89,7 @@
     "AnimatedIcon": "<a:Grievous_Mace:808771271344914502>",
     "ItemType": "Mace",
     "IsEquippable": true,
-    "Description": "If the flanges don't hurt enough, the force of earth striking from below might do the job.",
+    "Description": "**Hello there**",
     "IsArtifact": true,
     "DamageAlignment": 0,
     "AddStatsOnEquip": {
@@ -190,7 +190,7 @@
     "AnimatedIcon": "<a:Blow_Mace:798070892328124416>",
     "ItemType": "Mace",
     "IsEquippable": true,
-    "Description": "Ever tried swiming a lamp post?  You might get a similar result.",
+    "Description": "Ever tried swinging a lamp post?  This seems similar.",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 45
@@ -214,7 +214,7 @@
     "AnimatedIcon": "<a:Comet_Mace2:856742564807049266>",
     "ItemType": "Mace",
     "IsEquippable": true,
-    "Description": ".",
+    "Description": "Frozen chunks of enemy are one way to cool down on a hot day",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 105
@@ -302,6 +302,7 @@
     "AnimatedIcon": "<a:Thanatos_Mace:806180772922785823>",
     "ItemType": "Mace",
     "IsEquippable": true,
+    "Description": "If the flanges don't kill you, the apparation that haunts it will.",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 125
