@@ -1042,12 +1042,12 @@
     "Rarity": "Rare"
   },
   "Shamans Rod": {
-    "Name": "Shamans Rod",
     "Price": 160,
     "Icon": "<:Shamans_Rod:569855339906727939>",
     "AnimatedIcon": "<a:Shamans_Rod:808750929808982017>",
     "ItemType": "Staff",
     "IsEquippable": true,
+    "Description": "Some believe this was used for some magic hullabaloo, but in reality it was just his back scratcher.",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 10
@@ -1215,6 +1215,7 @@
     "Icon": "<:Gaia_Blade:569855141499633664>",
     "ItemType": "LongSword",
     "IsEquippable": true,
+    "Description": "It's like a store brand Sol Blade. It's adequate and gets the job done, but you silently weep to yourself, wishing you could have gotten the cool thing everyone has been talking about.",
     "IsArtifact": true,
     "DamageAlignment": 0,
     "AddStatsOnEquip": {
@@ -1329,6 +1330,7 @@
     "AnimatedIcon": "<a:Cloud_Brand:729714685032529961>",
     "ItemType": "LongSword",
     "IsEquippable": true,
+    "Description": "A large broadsword that has inherited the hopes of those who fight.",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 130
@@ -1387,6 +1389,7 @@
     "AnimatedIcon": "<a:Huge_Sword:789176644169760829>",
     "ItemType": "LongSword",
     "IsEquippable": true,
+    "Description": "I mean, it kind of speaks for itself, don't you think?",
     "IsArtifact": true,
     "DamageAlignment": 0,
     "AddStatsOnEquip": {
@@ -1473,6 +1476,7 @@
     "AnimatedIcon": "<a:RuneBlade:729714688962723950>",
     "ItemType": "LongSword",
     "IsEquippable": true,
+    "Description": "Armor trimming, 400k gold",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 162
@@ -1529,6 +1533,7 @@
     "AnimatedIcon": "<a:Fire_Brand:730011785847111771>",
     "ItemType": "LongSword",
     "IsEquippable": true,
+    "Description": "This 1000 degree knife slices through the flesh of the wielder's enemies.",
     "IsArtifact": true,
     "DamageAlignment": 1,
     "AddStatsOnEquip": {
@@ -1558,6 +1563,7 @@
     "AnimatedIcon": "<a:Darksword:729794276761927700>",
     "ItemType": "LongSword",
     "IsEquippable": true,
+    "Description": "It's like a sword, but dark.",
     "IsArtifact": true,
     "isCursed": true,
     "AddStatsOnEquip": {
@@ -1587,6 +1593,7 @@
     "AnimatedIcon": "<a:Excalibur:729714685535846414>",
     "ItemType": "LongSword",
     "IsEquippable": true,
+    "Description": "'Excalibur!'\n'Excalibur!'\n'From the United Kindom!'\n'I'm looking for Heaven!'\n'I'm going to California!'\n'Excalibur!'\n'Excalibur!'",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 180
@@ -1641,6 +1648,7 @@
     "AnimatedIcon": "<a:Sword_Of_Dusk:792197247206424597>",
     "ItemType": "LongSword",
     "IsEquippable": true,
+    "Description": "It's like a Dark Sword, but darker.",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 100
@@ -1938,6 +1946,7 @@
     "AnimatedIcon": "<a:Demon_axe:730088464372072456>",
     "ItemType": "Axe",
     "IsEquippable": true,
+    "Description": "I made it through Crossbone Isle, and all I got was this lousy cursed artifact.",
     "IsArtifact": true,
     "isCursed": true,
     "AddStatsOnEquip": {
@@ -1996,6 +2005,7 @@
     "AnimatedIcon": "<a:Disk_Axe:789175980241322034>",
     "ItemType": "Axe",
     "IsEquippable": true,
+    "Description": "'Yeah, I have no idea how this is engineered either.'",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 76
@@ -2449,6 +2459,7 @@
     "AnimatedIcon": "<a:Kikuichimonji_gold1:730087971356803202>",
     "ItemType": "LightBlade",
     "IsEquippable": true,
+    "Description": "Some say this blade is only granted to those who can spell its name correctly.",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 128
@@ -5459,6 +5470,7 @@
     "Icon": "<:Golden_Ring:569854314156392468>",
     "ItemType": "Ring",
     "IsEquippable": true,
+    "Description": "One Ring to rule them all, One Ring to find them, One Ring to bring them all and in the darkness bind them.",
     "IsArtifact": true,
     "ChanceToActivate": 30,
     "ChanceToBreak": 12,
