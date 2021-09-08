@@ -330,6 +330,7 @@
     "AnimatedIcon": "<a:Rising_Mace:807793656072634440>",
     "ItemType": "Mace",
     "IsEquippable": true,
+    "Description": "A seemingly ordinary mace, until it starts stealing your enemy's life energy.",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 152
@@ -358,6 +359,7 @@
     "AnimatedIcon": "<a:Tungsten_Mace:808729745046241280>",
     "ItemType": "Mace",
     "IsEquippable": true,
+    "Description": "**BONK**.",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 159
@@ -386,6 +388,7 @@
     "AnimatedIcon": "<a:Vajra_Mace:790583697714970635>",
     "ItemType": "Mace",
     "IsEquippable": true,
+    "Description": "A truly stunning weapon.",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 182
@@ -419,7 +422,7 @@
     "ItemType": "Staff",
     "IsEquippable": true,
     "IsArtifact": false,
-    "Description": "Likely one of the first weapons humanity ever adapted",
+    "Description": "Likely one of the first weapons humanity ever adapted.",
     "AddStatsOnEquip": {
       "Atk": 4
     },
