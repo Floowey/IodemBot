@@ -40,6 +40,7 @@
     "Icon": "<:Heavy_Mace:569901405025075212>",
     "ItemType": "Mace",
     "IsEquippable": true,
+     "Description": "Heavy, man.  Heavy...",
     "AddStatsOnEquip": {
       "Atk": 26
     },
@@ -51,7 +52,7 @@
     "Icon": "<:Mace:569901405435985930>",
     "ItemType": "Mace",
     "IsEquippable": true,
-    "Description": "One step above a rock tied to a stick",
+    "Description": "One step above a rock tied to a stick.",
     "AddStatsOnEquip": {
       "Atk": 6
     },
@@ -63,6 +64,7 @@
     "Icon": "<:Battle_Mace:569901405025075231>",
     "ItemType": "Mace",
     "IsEquippable": true,
+    "Description": "A sturdy hunk of metal affixed to a stout length of wood.",
     "AddStatsOnEquip": {
       "Atk": 56
     },
@@ -74,6 +76,7 @@
     "Icon": "<:War_Mace:569901405478060032>",
     "ItemType": "Mace",
     "IsEquippable": true,
+    "Description": "The addition of spikes makes the design significantly more intimidating.",
     "AddStatsOnEquip": {
       "Atk": 84
     },
@@ -86,6 +89,7 @@
     "AnimatedIcon": "<a:Grievous_Mace:808771271344914502>",
     "ItemType": "Mace",
     "IsEquippable": true,
+    "Description": "**Hello there**",
     "IsArtifact": true,
     "DamageAlignment": 0,
     "AddStatsOnEquip": {
@@ -110,6 +114,7 @@
     "AnimatedIcon": "<a:Righteous_Mace:789978706520571944>",
     "ItemType": "Mace",
     "IsEquippable": true,
+    "Description": "A powerful ally for those that seek justice.",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 112
@@ -139,6 +144,7 @@
     "AnimatedIcon": "<a:Wicked_Mace:808765881014157342>",
     "ItemType": "Mace",
     "IsEquippable": true,
+    "Description": "Side effects include dizziness and disorientation. Consult a Healer for symptoms lasting longer than 2 hours.",
     "IsArtifact": true,
     "IsCursed": true,
     "AddStatsOnEquip": {
@@ -168,6 +174,7 @@
     "AnimatedIcon": "<a:Blessed_Mace:730089123963994203>",
     "ItemType": "Mace",
     "IsEquippable": true,
+    "Description": "The warmth of this mace bolsters you against all evil.",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 126
@@ -183,6 +190,7 @@
     "AnimatedIcon": "<a:Blow_Mace:798070892328124416>",
     "ItemType": "Mace",
     "IsEquippable": true,
+    "Description": "Ever tried swinging a lamp post?  This seems similar.",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 45
@@ -206,6 +214,7 @@
     "AnimatedIcon": "<a:Comet_Mace2:856742564807049266>",
     "ItemType": "Mace",
     "IsEquippable": true,
+    "Description": "Frozen chunks of enemy are one way to cool down on a hot day",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 105
@@ -235,6 +244,7 @@
     "AnimatedIcon": "<a:Hagbone_Mace2:793179008568262697>",
     "ItemType": "Mace",
     "IsEquippable": true,
+    "Description": "The malice emanating from this weapon is palpable.",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 108
@@ -263,6 +273,7 @@
     "AnimatedIcon": "<a:Demon_Mace:807934275067314246>",
     "ItemType": "Mace",
     "IsEquippable": true,
+    "Description": "Somehow, not cursed.",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 115
@@ -291,6 +302,7 @@
     "AnimatedIcon": "<a:Thanatos_Mace:806180772922785823>",
     "ItemType": "Mace",
     "IsEquippable": true,
+    "Description": "If the flanges don't kill you, the apparation that haunts it will.",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 125
@@ -318,6 +330,7 @@
     "AnimatedIcon": "<a:Rising_Mace:807793656072634440>",
     "ItemType": "Mace",
     "IsEquippable": true,
+    "Description": "A seemingly ordinary mace, until it starts stealing your enemy's life energy.",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 152
@@ -346,6 +359,7 @@
     "AnimatedIcon": "<a:Tungsten_Mace:808729745046241280>",
     "ItemType": "Mace",
     "IsEquippable": true,
+    "Description": "**BONK**.",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 159
@@ -374,6 +388,7 @@
     "AnimatedIcon": "<a:Vajra_Mace:790583697714970635>",
     "ItemType": "Mace",
     "IsEquippable": true,
+    "Description": "A truly stunning weapon.",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 182
@@ -407,6 +422,7 @@
     "ItemType": "Staff",
     "IsEquippable": true,
     "IsArtifact": false,
+    "Description": "Likely one of the first weapons humanity ever adapted.",
     "AddStatsOnEquip": {
       "Atk": 4
     },
@@ -605,6 +621,7 @@
     "AnimatedIcon": "<a:Salamander_Rod:808733486986559509>",
     "ItemType": "Staff",
     "IsEquippable": true,
+    "Description": "'Why is it glowing?' 'Just don't wave it around too vigorously...'",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 156
