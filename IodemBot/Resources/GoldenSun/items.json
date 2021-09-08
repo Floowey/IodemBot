@@ -1730,8 +1730,8 @@
   "Arc Blade": {
     "Name": "Arc Blade",
     "Price": 1111111,
-    "Icon": "<a:ArcBlade:882541759333298278>",
-    "AnimatedIcon": "<a:ArcBlade:882541759333298278>",
+    "Icon": "<:Arc_Blade:885198793031692309>",
+    "AnimatedIcon": "<a:Arc_Blade:885198870873772122>",
     "ItemType": "LightBlade",
     "IsEquippable": true,
     "IsArtifact": true,
