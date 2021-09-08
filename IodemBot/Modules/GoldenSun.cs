@@ -585,6 +585,13 @@ namespace IodemBot.Modules
             {
                 return;
             }
+
+            if (ColossoPvE.UserInBattle(EntityConverter.ConvertUser(Context.User)))
+            {
+                await ReplyAsync($"I find it highly unwise to do such things in the midst of a fight.");
+                return;
+            }
+
             await ReplyAsync("Let us reverse the cycle, to a stage where you were just beginning");
             account.NewGame();
             UserAccountProvider.StoreUser(account);
