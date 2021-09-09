@@ -174,7 +174,7 @@
     "AnimatedIcon": "<a:Blessed_Mace:730089123963994203>",
     "ItemType": "Mace",
     "IsEquippable": true,
-    "Description": "The warmth of this mace bolsters you against all evil.",
+    "Description": "It's been blessed, but not to where you're somehow immortal.",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 126
@@ -1390,7 +1390,7 @@
     "AnimatedIcon": "<a:Huge_Sword:789176644169760829>",
     "ItemType": "LongSword",
     "IsEquippable": true,
-    "Description": "I mean, it kind of speaks for itself, don't you think?",
+    "Description": "I like big swords and I cannot lie",
     "IsArtifact": true,
     "DamageAlignment": 0,
     "AddStatsOnEquip": {
@@ -2006,7 +2006,7 @@
     "AnimatedIcon": "<a:Disk_Axe:789175980241322034>",
     "ItemType": "Axe",
     "IsEquippable": true,
-    "Description": "'Yeah, I have no idea how this is engineered either.'",
+    "Description": "It smells of tomato and cheese.",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 76
@@ -2046,6 +2046,7 @@
     "AnimatedIcon": "<a:Tartarus_Axe:807298680213602314>",
     "ItemType": "Axe",
     "IsEquippable": true,
+    "Description": "'Tartarus..?  What's that?  ...Sounds like toothpaste.' -Junpei Iori",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 127
@@ -2217,6 +2218,7 @@
     "AnimatedIcon": "<a:Herculean_Axe:730088464514678825>",
     "ItemType": "Axe",
     "IsEquippable": true,
+    "Description": "'honey you mean Hunk-ulean axe'",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 186
@@ -2244,6 +2246,7 @@
     "Icon": "<:Machete:569855398249758728>",
     "ItemType": "LightBlade",
     "IsEquippable": true,
+    "Description": "What kind of chores this is used for is a mystery...",
     "AddStatsOnEquip": {
       "Atk": 6
     },
@@ -2255,6 +2258,7 @@
     "Icon": "<:Short_Sword:569855398635503636>",
     "ItemType": "LightBlade",
     "IsEquippable": true,
+    "Description": "'Let me see what you have.'\n'A knife!'\n'NO'",
     "AddStatsOnEquip": {
       "Atk": 8
     },
@@ -2324,6 +2328,7 @@
     "AnimatedIcon": "<a:Elven_Rapier:790020846197669919>",
     "ItemType": "LightBlade",
     "IsEquippable": true,
+    "Description": "Such Vorpal, much wow.",
     "IsArtifact": true,
     "DamageAlignment": 2,
     "AddStatsOnEquip": {
@@ -2349,6 +2354,7 @@
     "AnimatedIcon": "<a:Mystery_Blade:789614301073244160>",
     "ItemType": "LightBlade",
     "IsEquippable": true,
+    "Description": "So mysterious, no one even knows what the subtext is.",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 84
@@ -2577,6 +2583,7 @@
     "AnimatedIcon": "<a:Corsairs_Edge:791437381424513025>",
     "ItemType": "LightBlade",
     "IsEquippable": true,
+    "Description": "smh doesn't even come with RGB or cherry MX switches",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 90
@@ -2751,6 +2758,7 @@
     "ItemType": "LightBlade",
     "IsEquippable": true,
     "IsArtifact": true,
+    "Description": "'I will never be a memory.' - some silver-haired dude with mommy issues",
     "AddStatsOnEquip": {
       "Atk": 161
     },
@@ -2779,6 +2787,7 @@
     "AnimatedIcon": "<a:Tisiphone_Edge:641571441267179549>",
     "ItemType": "LightBlade",
     "IsEquippable": true,
+    "Description": "ring ring ring ring ring ring ring, tisiphone",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 178
@@ -5000,6 +5009,7 @@
     "ItemType": "Glove",
     "IsArtifact": true,
     "IsEquippable": true,
+    "Description": "You See BIG GIRL",
     "AddStatsOnEquip": {
       "Def": 43,
       "maxHP": 30
