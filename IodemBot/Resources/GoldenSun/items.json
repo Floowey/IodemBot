@@ -174,7 +174,7 @@
     "AnimatedIcon": "<a:Blessed_Mace:730089123963994203>",
     "ItemType": "Mace",
     "IsEquippable": true,
-    "Description": "The warmth of this mace bolsters you against all evil.",
+    "Description": "It's been blessed, but not to where you're somehow immortal.",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 126
@@ -1048,6 +1048,7 @@
     "AnimatedIcon": "<a:Shamans_Rod:808750929808982017>",
     "ItemType": "Staff",
     "IsEquippable": true,
+    "Description": "Some believe this was used for some magic hullabaloo, but in reality it was just his back scratcher.",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 10
@@ -1215,6 +1216,7 @@
     "Icon": "<:Gaia_Blade:569855141499633664>",
     "ItemType": "LongSword",
     "IsEquippable": true,
+    "Description": "It's like a store brand Sol Blade. It's adequate and gets the job done, but you silently weep to yourself, wishing you could have gotten the cool thing everyone has been talking about.",
     "IsArtifact": true,
     "DamageAlignment": 0,
     "AddStatsOnEquip": {
@@ -1329,6 +1331,7 @@
     "AnimatedIcon": "<a:Cloud_Brand:729714685032529961>",
     "ItemType": "LongSword",
     "IsEquippable": true,
+    "Description": "A large broadsword that has inherited the hopes of those who fight.",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 130
@@ -1387,6 +1390,7 @@
     "AnimatedIcon": "<a:Huge_Sword:789176644169760829>",
     "ItemType": "LongSword",
     "IsEquippable": true,
+    "Description": "I like big swords and I cannot lie",
     "IsArtifact": true,
     "DamageAlignment": 0,
     "AddStatsOnEquip": {
@@ -1473,6 +1477,7 @@
     "AnimatedIcon": "<a:RuneBlade:729714688962723950>",
     "ItemType": "LongSword",
     "IsEquippable": true,
+    "Description": "Armor trimming, 400k gold",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 162
@@ -1529,6 +1534,7 @@
     "AnimatedIcon": "<a:Fire_Brand:730011785847111771>",
     "ItemType": "LongSword",
     "IsEquippable": true,
+    "Description": "This 1000 degree knife slices through the flesh of the wielder's enemies.",
     "IsArtifact": true,
     "DamageAlignment": 1,
     "AddStatsOnEquip": {
@@ -1558,6 +1564,7 @@
     "AnimatedIcon": "<a:Darksword:729794276761927700>",
     "ItemType": "LongSword",
     "IsEquippable": true,
+    "Description": "It's like a sword, but dark.",
     "IsArtifact": true,
     "isCursed": true,
     "AddStatsOnEquip": {
@@ -1587,6 +1594,7 @@
     "AnimatedIcon": "<a:Excalibur:729714685535846414>",
     "ItemType": "LongSword",
     "IsEquippable": true,
+    "Description": "'Excalibur!'\n'Excalibur!'\n'From the United Kindom!'\n'I'm looking for Heaven!'\n'I'm going to California!'\n'Excalibur!'\n'Excalibur!'",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 180
@@ -1641,6 +1649,7 @@
     "AnimatedIcon": "<a:Sword_Of_Dusk:792197247206424597>",
     "ItemType": "LongSword",
     "IsEquippable": true,
+    "Description": "It's like a Dark Sword, but darker.",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 100
@@ -1938,6 +1947,7 @@
     "AnimatedIcon": "<a:Demon_axe:730088464372072456>",
     "ItemType": "Axe",
     "IsEquippable": true,
+    "Description": "I made it through Crossbone Isle, and all I got was this lousy cursed artifact.",
     "IsArtifact": true,
     "isCursed": true,
     "AddStatsOnEquip": {
@@ -1996,6 +2006,7 @@
     "AnimatedIcon": "<a:Disk_Axe:789175980241322034>",
     "ItemType": "Axe",
     "IsEquippable": true,
+    "Description": "It smells of tomato and cheese.",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 76
@@ -2035,6 +2046,7 @@
     "AnimatedIcon": "<a:Tartarus_Axe:807298680213602314>",
     "ItemType": "Axe",
     "IsEquippable": true,
+    "Description": "'Tartarus..?  What's that?  ...Sounds like toothpaste.' -Junpei Iori",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 127
@@ -2206,6 +2218,7 @@
     "AnimatedIcon": "<a:Herculean_Axe:730088464514678825>",
     "ItemType": "Axe",
     "IsEquippable": true,
+    "Description": "'honey you mean Hunk-ulean axe'",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 186
@@ -2233,6 +2246,7 @@
     "Icon": "<:Machete:569855398249758728>",
     "ItemType": "LightBlade",
     "IsEquippable": true,
+    "Description": "What kind of chores this is used for is a mystery...",
     "AddStatsOnEquip": {
       "Atk": 6
     },
@@ -2244,6 +2258,7 @@
     "Icon": "<:Short_Sword:569855398635503636>",
     "ItemType": "LightBlade",
     "IsEquippable": true,
+    "Description": "'Let me see what you have.'\n'A knife!'\n'NO'",
     "AddStatsOnEquip": {
       "Atk": 8
     },
@@ -2313,6 +2328,7 @@
     "AnimatedIcon": "<a:Elven_Rapier:790020846197669919>",
     "ItemType": "LightBlade",
     "IsEquippable": true,
+    "Description": "Such Vorpal, much wow.",
     "IsArtifact": true,
     "DamageAlignment": 2,
     "AddStatsOnEquip": {
@@ -2338,6 +2354,7 @@
     "AnimatedIcon": "<a:Mystery_Blade:789614301073244160>",
     "ItemType": "LightBlade",
     "IsEquippable": true,
+    "Description": "So mysterious, no one even knows what the subtext is.",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 84
@@ -2449,6 +2466,7 @@
     "AnimatedIcon": "<a:Kikuichimonji_gold1:730087971356803202>",
     "ItemType": "LightBlade",
     "IsEquippable": true,
+    "Description": "Some say this blade is only granted to those who can spell its name correctly.",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 128
@@ -2565,6 +2583,7 @@
     "AnimatedIcon": "<a:Corsairs_Edge:791437381424513025>",
     "ItemType": "LightBlade",
     "IsEquippable": true,
+    "Description": "smh doesn't even come with RGB or cherry MX switches",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 90
@@ -2739,6 +2758,7 @@
     "ItemType": "LightBlade",
     "IsEquippable": true,
     "IsArtifact": true,
+    "Description": "'I will never be a memory.' - some silver-haired dude with mommy issues",
     "AddStatsOnEquip": {
       "Atk": 161
     },
@@ -2767,6 +2787,7 @@
     "AnimatedIcon": "<a:Tisiphone_Edge:641571441267179549>",
     "ItemType": "LightBlade",
     "IsEquippable": true,
+    "Description": "ring ring ring ring ring ring ring, tisiphone",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 178
@@ -4988,6 +5009,7 @@
     "ItemType": "Glove",
     "IsArtifact": true,
     "IsEquippable": true,
+    "Description": "You See BIG GIRL",
     "AddStatsOnEquip": {
       "Def": 43,
       "maxHP": 30
@@ -5459,6 +5481,7 @@
     "Icon": "<:Golden_Ring:569854314156392468>",
     "ItemType": "Ring",
     "IsEquippable": true,
+    "Description": "One Ring to rule them all, One Ring to find them, One Ring to bring them all and in the darkness bind them.",
     "IsArtifact": true,
     "ChanceToActivate": 30,
     "ChanceToBreak": 12,
