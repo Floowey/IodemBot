@@ -20,7 +20,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             { ItemCategory.UnderWear, new[] { ItemType.UnderWear} },
             { ItemCategory.FootWear, new [] { ItemType.Boots, ItemType.Greave } },
             { ItemCategory.Accessoire, new []{ ItemType.Ring, ItemType.Misc } },
-            { ItemCategory.Other, new [] {ItemType.Collectible } }
+            {ItemCategory.Other, new [] {ItemType.Collectible } }
         };
 
         public static readonly ItemCategory[] Equippables = new[] { ItemCategory.Weapon, ItemCategory.ArmWear, ItemCategory.ChestWear, ItemCategory.HeadWear, ItemCategory.UnderWear, ItemCategory.FootWear, ItemCategory.Accessoire };

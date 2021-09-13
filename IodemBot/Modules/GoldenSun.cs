@@ -47,7 +47,7 @@ namespace IodemBot.Modules
 
             if (AdeptClassSeriesManager.TryGetClassSeries(name, out AdeptClassSeries series))
             {
-                AdeptClass adeptClass = series.Classes.FirstOrDefault(c => c.Name.Contains(name, StringComparison.OrdinalIgnoreCase)) ?? series.Classes.First();
+                AdeptClass adeptClass = series.Classes.Where(c => c.Name.ToUpper() == name.ToUpper()).FirstOrDefault();
                 var embed = new EmbedBuilder();
                 embed.WithAuthor($"{adeptClass.Name} - {series.Archtype}");
                 embed.WithColor(Colors.Get(series.Elements.Select(s => s.ToString()).ToArray()));
@@ -329,7 +329,18 @@ namespace IodemBot.Modules
             embed.WithFooter(Footer);
 
             await Context.Channel.SendMessageAsync("", false, embed.Build());
-            
+            if (withFile)
+            {
+                try
+                {
+                    await Context.Channel.SendFileAsync($"Resources/Accounts/BackupAccountFiles/{account.ID}.json");
+                }
+                catch
+                {
+                    Console.WriteLine("Couldn't send file");
+                    Console.WriteLine(JsonConvert.SerializeObject(account, Formatting.Indented));
+                }
+            }
         }
 
         [Command("Dungeons"), Alias("dgs")]
