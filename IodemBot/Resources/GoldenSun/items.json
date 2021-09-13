@@ -436,6 +436,7 @@
     "ItemType": "Staff",
     "IsEquippable": true,
     "IsArtifact": true,
+    "Description": "'The Allotter defines the fate of all who are born, weaving their tale. So harrowing is this tale of yours that will soon draw its end.'",
     "AddStatsOnEquip": {
       "Atk": 177
     },
@@ -820,6 +821,7 @@
     "ItemType": "Staff",
     "IsEquippable": true,
     "IsArtifact": true,
+    "Description": "'The Spinner pulls and spins the yarn of fate, from which all stories are built. What a pity that yours will be drawn so short.'",
     "AddStatsOnEquip": {
       "Atk": 168
     },
@@ -965,6 +967,7 @@
     "ItemType": "Staff",
     "IsEquippable": true,
     "IsArtifact": true,
+    "Description": "'As the Unturnable snips the yarn, an unsteady hand may yet cut the red string of fate short.'",
     "AddStatsOnEquip": {
       "Atk": 169
     },
@@ -1717,7 +1720,7 @@
     "IsArtifact": true,
     "IsEquippable": true,
     "AddStatsOnEquip": {
-      "Atk": 455
+      "Atk": 280
     },
     "Rarity": "Unique",
     "Description": "\"By the Order of the Council,\nBy the will of the Nut,\nYou are hereby granted access to the Council of Nut.\nFrom now on you shall be known as 'The Nut Grand-Artist'.\"\n—The Nut King, to Viri",
@@ -1737,8 +1740,9 @@
       "UnleashAlignment": 2,
       "effects": [
         {
-          "Type": "AddDamage",
-          "addDamage": 80
+          "Type": "MultiplyDamage",
+           "Multipliers": [ 1.8 ],
+           "Probabilities": [ 100 ]
         },
         {
           "Type": "Stat",
@@ -1750,7 +1754,7 @@
         {
           "Type": "HPDrain",
           "Percentage": 80,
-          "Probability": 20
+          "Probability": 10
         }
       ]
     }
@@ -2384,6 +2388,7 @@
     "ItemType": "LightBlade",
     "IsEquippable": true,
     "IsArtifact": true,
+    "Description": "\"I am an expert swordsman. And I am skilled in the business of death. I take no pleasure in my skill. Simply, I am good at it.\"",
     "AddStatsOnEquip": {
       "Atk": 90
     },
@@ -3451,7 +3456,8 @@
         }
       ]
     },
-    "Rarity": "Unique"
+    "Rarity": "Unique",
+    "Description": "Forged to test the limits of the world and the watchful eyes of those who build it. Diligence and effort breed result, and trust gives power."
   },
   "Demon Mail": {
     "Name": "Demon Mail",
