@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Linq;
+using System.Net.Http;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using Discord;
@@ -10,6 +11,7 @@ using Iodembot.Preconditions;
 using IodemBot.Core.UserManagement;
 using IodemBot.Discord;
 using IodemBot.Modules.ColossoBattles;
+using Newtonsoft.Json;
 
 namespace IodemBot.Modules
 {
@@ -251,6 +253,40 @@ namespace IodemBot.Modules
             chosenDjinn.IsShiny = shiny;
             UserAccountProvider.StoreUser(acc);
             await Task.CompletedTask;
+        }
+
+        [Command("GetUserFile")]
+        [RequireStaff]
+        public async Task GetUserFile(SocketUser user = null)
+        {
+            user ??= Context.User;
+            await Context.Channel.SendFileAsync($"Resources/Accounts/BackupAccountFiles/{user.Id}.json");    
+        }
+
+        [Command("PutUserFile")]
+        [RequireStaff]
+        public async Task PutUserFile()
+        {
+            var file = Context.Message.Attachments.FirstOrDefault();
+            if (file != null && file.Filename.EndsWith(".json"))
+            {
+                try
+                {
+                    using (var client = new HttpClient())
+                    {
+                        var json = await client.GetStringAsync(file.Url);
+                        var user = JsonConvert.DeserializeObject<UserAccount>(json);
+                        UserAccountProvider.StoreUser(user);
+                    }
+                    await ReplyAsync($"Successfully updated {Context.User.Mention}");
+                    return;
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                }
+            }
+            await ReplyAsync("Invalid File");
         }
 
         [Command("Emotes")]

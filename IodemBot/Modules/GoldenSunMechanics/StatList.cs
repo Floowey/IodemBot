@@ -32,6 +32,11 @@ namespace IodemBot.Modules.GoldenSunMechanics
             return new ElementalStats(s1.VenusAtk + s2.VenusAtk, s1.VenusRes + s2.VenusRes, s1.MarsAtk + s2.MarsAtk, s1.MarsRes + s2.MarsRes, s1.JupiterAtk + s2.JupiterAtk, s1.JupiterRes + s2.JupiterRes, s1.MercuryAtk + s2.MercuryAtk, s1.MercuryRes + s2.MercuryRes);
         }
 
+        public static ElementalStats operator *(ElementalStats s, float k)
+        {
+            return new ElementalStats((int)(s.VenusAtk * k), (int)(s.VenusRes* k), (int)(s.MarsAtk* k), (int)(s.MarsRes * k), (int)(s.JupiterAtk * k), (int)(s.JupiterRes* k), (int)(s.MercuryAtk* k), (int)(s.MercuryRes* k));
+        }
+
         public override string ToString()
         {
             return ($"{((VenusAtk != 0 || VenusRes != 0) ? $"{GoldenSun.ElementIcons[Element.Venus]} `{VenusAtk} | {VenusRes}` " : "")}" +

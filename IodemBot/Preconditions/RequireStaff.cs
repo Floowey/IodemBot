@@ -14,7 +14,7 @@ namespace Iodembot.Preconditions
         {
             if (context.User is SocketGuildUser gUser)
             {
-                if (gUser.Roles.Any(r => r.Name == "Admin" || r.Name == "Moderators" || r.Name == "Colosso Guard") || gUser.Id == 300339714311847936)
+                if (gUser.Roles.Any(r => r.Name == "Admin" || r.Name == "Moderators" || r.Name == "Colosso Guard") || gUser.Id == 300339714311847936 || context.Guild.Id == 668442573899300894)
                 {
                     return Task.FromResult(PreconditionResult.FromSuccess());
                 }
