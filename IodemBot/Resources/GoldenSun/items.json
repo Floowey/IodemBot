@@ -821,7 +821,7 @@
     "ItemType": "Staff",
     "IsEquippable": true,
     "IsArtifact": true,
-    "Description": "'The Spinner pulls and spins the yarn of fate, from which all stories are built. What a pity that yours will be drawn so short.'"
+    "Description": "'The Spinner pulls and spins the yarn of fate, from which all stories are built. What a pity that yours will be drawn so short.'",
     "AddStatsOnEquip": {
       "Atk": 168
     },
@@ -2388,7 +2388,7 @@
     "ItemType": "LightBlade",
     "IsEquippable": true,
     "IsArtifact": true,
-    "Description": "\"I am an expert swordsman. And I am skilled in the business of death. I take no pleasure in my skill. Simply, I am good at it.\""
+    "Description": "\"I am an expert swordsman. And I am skilled in the business of death. I take no pleasure in my skill. Simply, I am good at it.\"",
     "AddStatsOnEquip": {
       "Atk": 90
     },
