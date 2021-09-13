@@ -1720,7 +1720,7 @@
     "IsArtifact": true,
     "IsEquippable": true,
     "AddStatsOnEquip": {
-      "Atk": 455
+      "Atk": 280
     },
     "Rarity": "Unique",
     "Description": "\"By the Order of the Council,\nBy the will of the Nut,\nYou are hereby granted access to the Council of Nut.\nFrom now on you shall be known as 'The Nut Grand-Artist'.\"\n—The Nut King, to Viri",
@@ -1754,7 +1754,7 @@
         {
           "Type": "HPDrain",
           "Percentage": 80,
-          "Probability": 20
+          "Probability": 10
         }
       ]
     }
