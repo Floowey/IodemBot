@@ -464,6 +464,7 @@
     "Icon": "<a:CalvinsRule:641571441162190849>",
     "ItemType": "Staff",
     "IsEquippable": true,
+    "Description": "A mighty weapon gold for a skillful artist bold. Long may the work he began grace our eyes and brighten our hearts.",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 177
@@ -510,6 +511,7 @@
     "AnimatedIcon": "<a:Cloud_Wand:808756926497423392>",
     "ItemType": "Staff",
     "IsEquippable": true,
+    "Description": "Forged from the essence of Mercury by a blacksmith in a far away coastal land.",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 98
@@ -538,6 +540,7 @@
     "AnimatedIcon": "<a:Psynergy_Rod:796442870739238912>",
     "ItemType": "Staff",
     "IsEquippable": true,
+    "Description": "Wielders of this staff may find their Psynergy more abundant than expected.",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 64
@@ -566,6 +569,7 @@
     "AnimatedIcon": "<a:Blessed_Ankh:808903577388843029>",
     "ItemType": "Staff",
     "IsEquippable": true,
+    "Description": "One person's blessing may be another person's curse.",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 46
@@ -594,6 +598,7 @@
     "AnimatedIcon": "<a:Dracomace:790034270067621899>",
     "ItemType": "Staff",
     "IsEquippable": true,
+    "Description": "A staff, not a mace, for some reason.",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 128
@@ -652,6 +657,7 @@
     "AnimatedIcon": "<a:Magic_Rod:808766919292878880>",
     "ItemType": "Staff",
     "IsEquippable": true,
+    "Description": "It's magic!",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 16
@@ -680,6 +686,7 @@
     "AnimatedIcon": "<a:Witchs_Wand:808737143824318464>",
     "ItemType": "Staff",
     "IsEquippable": true,
+    "Description": "What are you doing with this?  Give it back to the witch, that's not yours.",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 32
@@ -708,6 +715,7 @@
     "AnimatedIcon": "<a:Glower_Staff:794803066645643324>",
     "ItemType": "Staff",
     "IsEquippable": true,
+    "Description": "It used to be coated in rust, but you'd never know by how bright it shines now.",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 126
