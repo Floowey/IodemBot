@@ -744,6 +744,7 @@
     "AnimatedIcon": "<a:Angelic_Ankh:798755708483928075>",
     "ItemType": "Staff",
     "IsEquippable": true,
+        "Description": "Its innocent, even beautiful appearance is offset by its voracious appetite for life energy.",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 83
@@ -772,6 +773,7 @@
     "AnimatedIcon": "<a:Demonic_Staff:789177261172981810>",
     "ItemType": "Staff",
     "IsEquippable": true,
+    "Description": "Laden with evil spirits, and happy to share!",
     "IsArtifact": true,
     "isCursed": true,
     "AddStatsOnEquip": {
@@ -801,6 +803,7 @@
     "AnimatedIcon": "<a:Goblins_Rod:808750776062705665>",
     "ItemType": "Staff",
     "IsEquippable": true,
+    "Description": "Stop; hammer time.",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 134
@@ -862,6 +865,7 @@
     "AnimatedIcon": "<a:Frost_Wand:789177344753401877>",
     "ItemType": "Staff",
     "IsEquippable": true,
+    "Description": "May cause your enemies to become nonresponsive for minutes to hours.",
     "IsArtifact": true,
     "DamageAlignment": 3,
     "AddStatsOnEquip": {
