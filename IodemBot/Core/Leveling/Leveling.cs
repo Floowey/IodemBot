@@ -95,7 +95,7 @@ namespace IodemBot.Core.Leveling
 
             if (channel == null || userAccount == null || user == null)
             {
-                Console.WriteLine($"userAccount: {channel}, user: {user}, channel: {channel}")
+                Console.WriteLine($"userAccount: {channel}, user: {user}, channel: {channel}");
                 return;
             }
             
