@@ -79,12 +79,12 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 var elMultFactor = (User.ElStats.GetPower(Element) * User.MultiplyBuffs("Power") - t.ElStats.GetRes(Element) * t.MultiplyBuffs("Resistance")) / (AttackBased ? 400 : 200);
                 var elMult = 1 + elMultFactor;
                 elMult = Math.Pow(elMult, 1.4);
-                //var elMult = Math.Pow(2, elMultFactor);
+                //elMult = Math.Pow(2, elMultFactor);
 
                 elMult = Math.Max(0.5, elMult);
                 var distFromCenter = Math.Abs(enemyTeam.IndexOf(t) - TargetNr);
                 var spreadMult = IgnoreSpread ? 1 : spread[distFromCenter];
-                var concentrationMult = 1 + (Math.Max(0,(float)Range - targets.Count - 1)) / Range;
+                var concentrationMult = 1 + (Math.Max(0,(float)Range - targets.Count - 1)) / (Range+1);
                 var prctdmg = (uint)(t.Stats.MaxHP * PercentageDamage / 100);
                 var realDmg = (uint)((baseDmg + dmg + AddDamage) * DmgMult * elMult * spreadMult * t.defensiveMult * User.offensiveMult * concentrationMult + prctdmg);
                 var punctuation = "!";

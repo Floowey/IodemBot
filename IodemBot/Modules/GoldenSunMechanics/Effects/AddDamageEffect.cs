@@ -9,6 +9,11 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public uint AddDamage { get; set; } = 0;
 
+        public AddDamageEffect()
+        {
+            ActivationTime = TimeToActivate.beforeDamage;
+        }
+
         public override List<string> Apply(ColossoFighter User, ColossoFighter Target)
         {
             User.addDamage += AddDamage;
