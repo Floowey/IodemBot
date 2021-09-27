@@ -895,6 +895,7 @@
     "AnimatedIcon": "<a:Nebula_Wand:789978869666152509>",
     "ItemType": "Staff",
     "IsEquippable": true,
+    "Description": "'My God, it's full of stars!'"
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 165
