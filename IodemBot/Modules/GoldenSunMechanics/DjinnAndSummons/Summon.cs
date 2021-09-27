@@ -65,14 +65,19 @@ namespace IodemBot.Modules.GoldenSunMechanics
             {
                 return log;
             }
-
-            var PartyDjinn = User.GetTeam().SelectMany(u => u.Moves.OfType<Djinn>()).Distinct();
-            var ReadyDjinn = PartyDjinn.Where(d => d.State == DjinnState.Standby).OrderBy(d => d.Position).ToList();
-            ReadyDjinn.OfElement(Element.Venus).Take(VenusNeeded).ToList().ForEach(d => d.Summon(User));
-            ReadyDjinn.OfElement(Element.Mars).Take(MarsNeeded).ToList().ForEach(d => d.Summon(User));
-            ReadyDjinn.OfElement(Element.Jupiter).Take(JupiterNeeded).ToList().ForEach(d => d.Summon(User));
-            ReadyDjinn.OfElement(Element.Mercury).Take(MercuryNeeded).ToList().ForEach(d => d.Summon(User));
-            log.AddRange(Move.Use(User));
+            if (Move.ValidSelection(User))
+            {
+                var PartyDjinn = User.GetTeam().SelectMany(u => u.Moves.OfType<Djinn>()).Distinct();
+                var ReadyDjinn = PartyDjinn.Where(d => d.State == DjinnState.Standby).OrderBy(d => d.Position).ToList();
+                ReadyDjinn.OfElement(Element.Venus).Take(VenusNeeded).ToList().ForEach(d => d.Summon(User));
+                ReadyDjinn.OfElement(Element.Mars).Take(MarsNeeded).ToList().ForEach(d => d.Summon(User));
+                ReadyDjinn.OfElement(Element.Jupiter).Take(JupiterNeeded).ToList().ForEach(d => d.Summon(User));
+                ReadyDjinn.OfElement(Element.Mercury).Take(MercuryNeeded).ToList().ForEach(d => d.Summon(User));
+                log.AddRange(Move.Use(User));
+            } else
+            {
+                return log;
+            }
             if (EffectsOnUser != null)
             {
                 log.AddRange(EffectsOnUser.ApplyAll(User, User));

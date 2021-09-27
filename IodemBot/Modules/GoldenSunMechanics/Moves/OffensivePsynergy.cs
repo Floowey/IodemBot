@@ -81,10 +81,10 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 elMult = Math.Pow(elMult, 1.4);
                 //elMult = Math.Pow(2, elMultFactor);
 
-                elMult = Math.Max(0.5, elMult);
+                elMult = Math.Max(0.25, elMult);
                 var distFromCenter = Math.Abs(enemyTeam.IndexOf(t) - TargetNr);
                 var spreadMult = IgnoreSpread ? 1 : spread[distFromCenter];
-                var concentrationMult = 1 + (Math.Max(0,(float)Range - targets.Count - 1)) / (Range+1);
+                var concentrationMult = 1 + (Math.Max(0,(float)Range - targets.Count - 1)) / (2*Range);
                 var prctdmg = (uint)(t.Stats.MaxHP * PercentageDamage / 100);
                 var realDmg = (uint)((baseDmg + dmg + AddDamage) * DmgMult * elMult * spreadMult * t.defensiveMult * User.offensiveMult * concentrationMult + prctdmg);
                 var punctuation = "!";

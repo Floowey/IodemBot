@@ -45,10 +45,10 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public ElementalStats ElementalStats
         {
             get => new ElementalStats(
-                Element == Element.Venus ? 5 : 0, Element == Element.Venus ? 5 : 0,
-                Element == Element.Mars ? 5 : 0, Element == Element.Mars ? 5 : 0,
-                Element == Element.Jupiter ? 5 : 0, Element == Element.Jupiter ? 5 : 0,
-                Element == Element.Mercury ? 5 : 0, Element == Element.Mercury ? 5 : 0);
+                Element == Element.Venus ? 4 : 0, Element == Element.Venus ? 4 : 0,
+                Element == Element.Mars ? 4 : 0, Element == Element.Mars ? 4 : 0,
+                Element == Element.Jupiter ? 4 : 0, Element == Element.Jupiter ? 4 : 0,
+                Element == Element.Mercury ? 4 : 0, Element == Element.Mercury ? 4 : 0);
         }
 
         [JsonIgnore] public DjinnState State => IsSet ? DjinnState.Standby : (CoolDown > 0 ? DjinnState.Recovery : DjinnState.Set);

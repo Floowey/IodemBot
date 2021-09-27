@@ -92,13 +92,14 @@ namespace IodemBot.Core.Leveling
 
         internal static async void LevelUp(UserAccount userAccount, SocketGuildUser user, IMessageChannel channel = null)
         {
-            if (userAccount.LevelNumber < 10 && (userAccount.LevelNumber % 5) > 0)
-            {
-                channel = GuildSettings.GetGuildSettings(user.Guild).CommandChannel;
-            }
-            if (channel == null || userAccount == null )
+            if (channel == null || userAccount == null || user == null)
             {
                 return;
+            }
+            if (userAccount.LevelNumber < 10 && (userAccount.LevelNumber % 5) > 0)
+            {
+
+                channel = GuildSettings.GetGuildSettings(user.Guild).CommandChannel;
             }
            
             // the user leveled up
