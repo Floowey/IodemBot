@@ -26,11 +26,16 @@ namespace IodemBot.Core.UserManagement
             }
             leaderBoards.Add(new Tuple<RankEnum, EndlessMode>(RankEnum.Level, EndlessMode.Default), new LeaderBoard(u => u.TotalXP));
 
-            foreach (var item in GetAllUsers())
+            foreach (var user in GetAllUsers())
             {
+                if(user == null)
+                {
+                    Console.WriteLine("User was null");
+                    continue;
+                }
                 foreach (var lb in leaderBoards.Values)
                 {
-                    lb.Set(item);
+                    lb.Set(user);
                 }
             }
         }

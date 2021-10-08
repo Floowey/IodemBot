@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 using Discord;
 using Discord.WebSocket;
 using IodemBot.Core.UserManagement;
-using IodemBot.Discord;
 using IodemBot.Modules;
 
 namespace IodemBot.Core.Leveling
@@ -56,7 +55,7 @@ namespace IodemBot.Core.Leveling
                 userAccount.ServerStats.MessagesInColossoTalks++;
                 if (userAccount.ServerStats.MessagesInColossoTalks >= 50)
                 {
-                    _ = GoldenSun.AwardClassSeries("Swordsman Series", user, channel);
+                    _ = GoldenSunCommands.AwardClassSeries("Swordsman Series", user, channel);
                 }
             }
 
@@ -75,7 +74,7 @@ namespace IodemBot.Core.Leveling
                 UserAccountProvider.StoreUser(userAccount);
                 if (userAccount.ServerStats.ChannelSwitches >= 14)
                 {
-                    _ = GoldenSun.AwardClassSeries("Air Pilgrim Series", user, channel);
+                    _ = GoldenSunCommands.AwardClassSeries("Air Pilgrim Series", user, channel);
                 }
             }
             else
@@ -126,7 +125,7 @@ namespace IodemBot.Core.Leveling
 
         internal static async void UserAddedReaction(SocketGuildUser user, SocketReaction reaction)
         {
-            if (blackListedChannels.Contains(reaction.Channel.Id) || Modules.ColossoBattles.ColossoPvE.ChannelIds.Contains(reaction.Channel.Id))
+            if (blackListedChannels.Contains(reaction.Channel.Id) || Modules.ColossoBattles.ColossoCommands.ChannelIds.Contains(reaction.Channel.Id))
             {
                 return;
             }

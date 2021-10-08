@@ -51,7 +51,7 @@ namespace IodemBot.Core.UserManagement
         public void ApplyLoadout(UserAccount account)
         {
             var inv = account.Inv;
-            GoldenSun.SetClass(account, ClassSeries);
+            GoldenSunCommands.SetClass(account, ClassSeries);
             Gear.ForEach(i => inv.Equip(i, AdeptClassSeriesManager.GetClassSeries(account).Archtype));
             DjinnCommands.TakeDjinn(account, Djinn.ToArray());
         }

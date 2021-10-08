@@ -2,19 +2,19 @@
 using System.IO;
 using System.Threading.Tasks;
 using Discord;
+using Discord.Commands;
 using Discord.WebSocket;
 using IodemBot.Core;
-using IodemBot.Discord;
+using IodemBot.Discords.Services;
 using IodemBot.Extensions;
 using IodemBot.Modules.ColossoBattles;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace IodemBot
 {
     internal class Program
     {
         private static DiscordSocketClient client;
-        private static CommandHandler handler;
-        private static MessageHandler msgHandler;
 
         private static void Main(string[] args)
         {
@@ -33,18 +33,13 @@ namespace IodemBot
 
         public async Task StartAsync()
         {
+
             if (string.IsNullOrEmpty(Config.bot.token))
             {
                 return;
             }
-
-            client = new DiscordSocketClient(new DiscordSocketConfig
-            {
-                LogLevel = LogSeverity.Info,
-                MessageCacheSize = 10,
-                DefaultRetryMode = RetryMode.AlwaysRetry,
-                ExclusiveBulkDelete = true
-            });
+            using var services = ConfigureServices();
+            client = services.GetRequiredService<DiscordSocketClient>();
 
             Global.Client = client;
 
@@ -56,23 +51,23 @@ namespace IodemBot
             
             await client.LoginAsync(TokenType.Bot, Config.bot.token);
             await client.StartAsync();
-            
-            handler = new CommandHandler();
-            await handler.InitializeAsync(client);
 
-            msgHandler = new MessageHandler();
-            await msgHandler.InitializeAsync(client);
+            await services.GetRequiredService<CommandHandlingService>().InitializeAsync();
+            await services.GetRequiredService<ActionService>().InitializeAsync();
+            services.GetRequiredService<RequestContextService>().Initialize();
 
+            await services.GetRequiredService<MessageHandler>().InitializeAsync(client);
             await Task.Delay(-1);
         }
 
-        private async Task Client_GuildMemberUpdated(SocketGuildUser before, SocketGuildUser after)
+        private async Task Client_GuildMemberUpdated(Cacheable<SocketGuildUser,ulong> before, SocketGuildUser after)
         {
-            if (before.DisplayName() != after.DisplayName())
+            if (before.HasValue && before.Value.DisplayName() != after.DisplayName())
             {
+                
                 EntityConverter.ConvertUser(after).Name = after.DisplayName();
                 _ = GuildSettings.GetGuildSettings(after.Guild).TestCommandChannel
-                    .SendMessageAsync($"{after.Mention} changed Nickname from {before.DisplayName()} to {after.DisplayName()}");
+                    .SendMessageAsync($"{after.Mention} changed Nickname from {before.Value.DisplayName()} to {after.DisplayName()}");
             }
             await Task.CompletedTask;
         }
@@ -129,6 +124,7 @@ namespace IodemBot
 
         private async Task Client_Ready()
         {
+            client.Ready -= Client_Ready;
             var channel = (SocketTextChannel)client.GetChannel(535209634408169492) ?? (SocketTextChannel)client.GetChannel(668443234292334612);
             if (channel != null && (DateTime.Now - Global.RunningSince).TotalSeconds < 15)
             {
@@ -138,7 +134,7 @@ namespace IodemBot
                     var gs = GuildSettings.GetGuildSettings(guild);
                     if (gs.AutoSetup && gs.ColossoChannel != null)
                     {
-                        await ColossoPvE.Setup(guild);
+                        await ColossoCommands.Setup(guild);
                         Console.WriteLine($"Setup in {gs.Name}");
                     }
                 }
@@ -171,5 +167,25 @@ namespace IodemBot
             }
             await Task.CompletedTask;
         }
+        private ServiceProvider ConfigureServices()
+        {
+            return new ServiceCollection()
+                .AddSingleton(new DiscordSocketClient(new DiscordSocketConfig()
+                {
+                    //AlwaysAcknowledgeInteractions = false,
+                    GatewayIntents = GatewayIntents.All,
+                    //AlwaysDownloadUsers = true,
+                    LogLevel = LogSeverity.Info,
+                    //MessageCacheSize = 10,
+                    DefaultRetryMode = RetryMode.AlwaysRetry
+                }))
+                .AddSingleton<CommandService>()
+                .AddSingleton<CommandHandlingService>()
+                .AddSingleton<ActionService>()
+                .AddSingleton<MessageHandler>()
+                .AddScoped<RequestContextService>()
+                .BuildServiceProvider();
+        }
     }
+
 }

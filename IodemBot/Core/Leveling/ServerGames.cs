@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using Discord;
 using Discord.WebSocket;
 using IodemBot.Core.UserManagement;
-using IodemBot.Discord;
 using IodemBot.Extensions;
 using IodemBot.Modules;
 using IodemBot.Modules.ColossoBattles;
@@ -106,43 +105,43 @@ namespace IodemBot.Core.Leveling
             var bs = userAccount.BattleStats;
             if (userAccount.ServerStats.ColossoWins >= 20)
             {
-                await GoldenSun.AwardClassSeries("Brute Series", userAccount, channel);
+                await GoldenSunCommands.AwardClassSeries("Brute Series", userAccount, channel);
             }
 
             if (bs.KillsByHand >= 161)
             {
-                await GoldenSun.AwardClassSeries("Samurai Series", userAccount, channel);
+                await GoldenSunCommands.AwardClassSeries("Samurai Series", userAccount, channel);
             }
 
             if (bs.DamageDealt >= 222222)
             {
-                await GoldenSun.AwardClassSeries("Ninja Series", userAccount, channel);
+                await GoldenSunCommands.AwardClassSeries("Ninja Series", userAccount, channel);
             }
 
             if (bs.SoloBattles >= 100)
             {
-                await GoldenSun.AwardClassSeries("Ranger Series", userAccount, channel);
+                await GoldenSunCommands.AwardClassSeries("Ranger Series", userAccount, channel);
             }
 
             if (bs.TotalTeamMates >= 100)
             {
-                await GoldenSun.AwardClassSeries("Dragoon Series", userAccount, channel);
+                await GoldenSunCommands.AwardClassSeries("Dragoon Series", userAccount, channel);
             }
 
             if (bs.HPhealed >= 222222)
             {
-                await GoldenSun.AwardClassSeries("White Mage Series", userAccount, channel);
+                await GoldenSunCommands.AwardClassSeries("White Mage Series", userAccount, channel);
             }
 
             if (bs.Revives >= 25)
             {
-                await GoldenSun.AwardClassSeries("Medium Series", userAccount, channel);
+                await GoldenSunCommands.AwardClassSeries("Medium Series", userAccount, channel);
             }
         }
 
         internal static async Task UserWonPvP(UserAccount avatar, ITextChannel lobbyChannel, int numberOfWinners, int numberOfLosers)
         {
-            _ = GoldenSun.AwardClassSeries("Swordsman Series", avatar, lobbyChannel);
+            _ = GoldenSunCommands.AwardClassSeries("Swordsman Series", avatar, lobbyChannel);
             string csvline = $"{DateTime.Now:s},PvP,{numberOfWinners}vs{numberOfLosers},{avatar.Name}{Environment.NewLine}";
             File.AppendAllText(BattleFile, csvline);
             await Task.CompletedTask;
@@ -177,25 +176,25 @@ namespace IodemBot.Core.Leveling
                 avatar.ServerStats.SameDungeonInARow++;
                 if (avatar.ServerStats.SameDungeonInARow >= 5)
                 {
-                    _ = GoldenSun.AwardClassSeries("Hermit Series", avatar, channel);
+                    _ = GoldenSunCommands.AwardClassSeries("Hermit Series", avatar, channel);
                 }
             }
             avatar.ServerStats.LastDungeon = dungeon.Name;
             UserAccountProvider.StoreUser(avatar);
             if (dungeon.Name == "Mercury Lighthouse")
             {
-                _ = GoldenSun.AwardClassSeries("Aqua Pilgrim Series", avatar, channel);
+                _ = GoldenSunCommands.AwardClassSeries("Aqua Pilgrim Series", avatar, channel);
             }
 
             //Unlock Crusader
             if (avatar.Dungeons.Count >= 6)
             {
-                _ = GoldenSun.AwardClassSeries("Crusader Series", avatar, channel);
+                _ = GoldenSunCommands.AwardClassSeries("Crusader Series", avatar, channel);
             }
 
             if (avatar.ServerStats.DungeonsCompleted >= 12)
             {
-                _ = GoldenSun.AwardClassSeries("Air Pilgrim Series", avatar, channel);
+                _ = GoldenSunCommands.AwardClassSeries("Air Pilgrim Series", avatar, channel);
 
             }
             string csvline = $"{DateTime.Now:s},Dungeon,{dungeon.Name},{avatar.Name}{Environment.NewLine}";
@@ -218,7 +217,7 @@ namespace IodemBot.Core.Leveling
             UserAccountProvider.StoreUser(userAccount);
             if (userAccount.ServerStats.CommandsUsed >= 100)
             {
-                await GoldenSun.AwardClassSeries("Scrapper Series", user, channel);
+                await GoldenSunCommands.AwardClassSeries("Scrapper Series", user, channel);
             }
         }
 
@@ -231,7 +230,7 @@ namespace IodemBot.Core.Leveling
 
             if (userAccount.ServerStats.RpsWins >= 3)
             {
-                await GoldenSun.AwardClassSeries("Aqua Seer Series", user, channel);
+                await GoldenSunCommands.AwardClassSeries("Aqua Seer Series", user, channel);
             }
         }
 
@@ -268,7 +267,7 @@ namespace IodemBot.Core.Leveling
 
             if (userAccount.ServerStats.LookedUpInformation >= 21)
             {
-                _ = GoldenSun.AwardClassSeries("Apprentice Series", user, channel);
+                _ = GoldenSunCommands.AwardClassSeries("Apprentice Series", user, channel);
             }
             await Task.CompletedTask;
         }
@@ -281,7 +280,7 @@ namespace IodemBot.Core.Leveling
 
             if (userAccount.ServerStats.LookedUpClass >= 11)
             {
-                _ = GoldenSun.AwardClassSeries("Page Series", user, channel);
+                _ = GoldenSunCommands.AwardClassSeries("Page Series", user, channel);
             }
             await Task.CompletedTask;
         }

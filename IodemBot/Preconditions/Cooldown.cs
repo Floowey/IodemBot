@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Discord;
 using Discord.Commands;
 
-namespace Iodembot.Preconditions
+namespace IodemBot.Preconditions
 {
     public class Cooldown : PreconditionAttribute
     {
