@@ -315,6 +315,7 @@ namespace IodemBot.Core.UserManagement
             BattleStats = new BattleStats();
             ServerStats = new ServerStats();
             Tags.Clear();
+            Tags.RemoveAll(t => !t.StartsWith("Halloween20"));
             Tags.Add($"{Element}Adept");
             NewGames++;
         }
