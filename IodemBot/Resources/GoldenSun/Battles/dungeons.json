@@ -175,7 +175,7 @@
               "Coins": 10,
               "Chest": "Wooden",
               "HasChest": true,
-              "message": "**Quick summary**:\n-Use commands in #gabomba-gears.\n-Select an element using `i!element Venus` or whichever you want. You can change it at any time.\n-Specify a class using `i!class Squire` (from what is available to you).\n-Pause a battle by reacting anywhere with :pause_button:. The timer will restart at the beginning of the next turn.\n-Don't forget to target your enemy with the numbered icons.\n-Open your chests with `i!chest`, view your inventory with `i!inv` and equip gear using `i!equip Warrior/Mage itemname`\nVisit your newly discoverd places with`i!dungeon Vale` (or Vault)\n\nDon't be shy to ask questions in #colosso-talks or find team mates to brawl with! A lot of information is also pinned!"
+              "message": "**Quick summary**:\n-Use commands in #gabomba-gears.\n-Select an element using `i!element Venus` or whichever you want. You can change it at any time.\n-Specify a class using `i!class Squire` (from what is available to you).\n-Pause a battle by reacting anywhere with :pause_button:. The timer will restart at the beginning of the next turn.\n-Don't forget to target your enemy with the numbered icons.\n-Open your chests with `i!chest`, view your inventory with `i!inv` and equip gear using `i!equip Warrior/Mage itemname`\nVisit your newly discovered places with`i!dungeon Vale` (or Vault)\n\nDon't be shy to ask questions in #colosso-talks or find team mates to brawl with! A lot of information is also pinned!"
             }
           ]
         ]
@@ -1240,7 +1240,7 @@
         ]
       },
       {
-        "Flavourtext": "The smell of fresh air beckons, and you push through into sunlight!  Finally the outdoors. Hey is that the Djinni from ealier? Let's get him!",
+        "Flavourtext": "The smell of fresh air beckons, and you push through into sunlight!  Finally the outdoors. Hey is that the Djinni from earlier? Let's get him!",
         "EnemyNames": [ "Venus Djinni 14" ],
         "Image": "",
         "RewardTables": [
@@ -1546,7 +1546,7 @@
         ]
       },
       {
-        "Flavourtext": "You explore more of the town. After some parcouring through the town you find another entrance to the Mayor's Warehouse cave. From here you can use your Psynergy to free the way. Which one do you use?",
+        "Flavourtext": "You explore more of the town. After some parkouring through the town you find another entrance to the Mayor's Warehouse cave. From here you can use your Psynergy to free the way. Which one do you use?",
         "EnemyNames": [ "Key:Move", "Trap:Catch", "Trap:Retreat" ],
         "Keywords": [ "Shuffle" ],
         "Image": "https://cdn.discordapp.com/attachments/668443234292334612/733732549725126718/unknown.png",
@@ -4597,7 +4597,7 @@
         ]
       },
       {
-        "Flavourtext": "While fighting those monsters, you saw a glowing shadow slipping by a house. You decide to follow it. Wait, a glowing shadow? That doesn't make any.. whooah, it's a Djinni!",
+        "Flavourtext": "While fighting those monsters, you saw a glowing shadow slipping by a house. You decide to follow it. Wait, a glowing shadow? That doesn't make any... whooah, it's a Djinni!",
         "EnemyNames": [ "Mars Djinni 3" ],
         "Image": "",
         "RewardTables": [
@@ -4659,7 +4659,7 @@
         ]
       },
       {
-        "Flavourtext": "Sigh.. The commotion has alarmed the guards. You just wanted to help, right? You destroyed the whole market and burned down half a house, but no one could have seen that coming, right? ......Right?",
+        "Flavourtext": "Sigh... The commotion has alarmed the guards. You just wanted to help, right? You destroyed the whole market and burned down half a house, but no one could have seen that coming, right? ......Right?",
         "EnemyNames": [ "Tolbi Guard", "Guardian Ball 1", "Tolbi Guard" ],
         "Image": "",
         "RewardTables": [
@@ -4691,7 +4691,7 @@
               "Tag": "TolbiFinals",
               "Obtainable": 1,
               "Dungeon": "Colosso Finals",
-              "message": "You show the guards the letter you found in hidden in Altmiller Cave. Baffled by Iodem's signature, they point you to the finalists' VIP area."
+              "message": "You show the guards the letter you found hidden in Altmiller Cave. Baffled by Iodem's signature, they point you to the finalists' VIP area."
             }
           ],
           [
@@ -4786,7 +4786,7 @@
         ]
       },
       {
-        "Flavourtext": "You realized that you are just walking around Karagol Sea. Let's head in the other direction!",
+        "Flavourtext": "You realize that you are just walking around Karagol Sea. Let's head in the other direction!",
         "EnemyNames": [ "Gnome Mage", "Armored Rat 1", "Gnome Mage" ],
         "Image": "",
         "RewardTables": [
@@ -5849,9 +5849,9 @@
             }
           ],
           [
-            { "Weight": 3 },
+            { "Weight": 75 },
             {
-              "Weight": 1,
+              "Weight": 25,
               "Item": "Warriors Helm"
             }
           ]
@@ -6204,7 +6204,7 @@
               "Chest": "Adept",
               "HasChest": true,
               "Dungeon": "The Way Southwards",
-              "message": "(Story parts for {0}, will contain spoilers for everyone else!)\n||As you leave for the lighthouse elevator, thunder booms, shaking the very air around you. You wonder how a thunder can sound so angry. While you can, you take the chance to look south. On the horizon you can make out the black-red storm clouds that blackened the sky above you earlier. Is this where your path will lead you next?||\n\n> Thank you for playing the first part of this Discord fan game! I sincerely hope you enjoyed it. The continuation is already in the works, so make sure to stick around for when it is done! You can give yourself the Colosso Adept role using `i!giverole ColossoAdept`, to get informed when it is done as soon as possible. Until then, spend your time keep exploring, break your record in endless battles or engage in PvP brawls and most importantly, stay awesome!\n\n~Floowey"
+              "message": "(Story parts for {0}, will contain spoilers for everyone else!)\n||As you leave for the lighthouse elevator, thunder booms, shaking the very air around you. You wonder how thunder can sound so angry. While you can, you take the chance to look south. On the horizon you can make out the black-red storm clouds that blackened the sky above you earlier. Is this where your path will lead you next?||\n\n> Thank you for playing the first part of this Discord fan game! I sincerely hope you enjoyed it. The continuation is already in the works, so make sure to stick around for when it is done! You can give yourself the Colosso Adept role using `i!giverole ColossoAdept`, to get informed when it is done as soon as possible. Until then, spend your time keep exploring, break your record in endless battles or engage in PvP brawls and most importantly, stay awesome!\n\n~Floowey"
             }
           ]
         ]
@@ -6593,7 +6593,7 @@
         ]
       },
       {
-        "Flavourtext": "You're beginning to tire from so many battles and using your Psynergy so much, but you gamely haul block around until you can escape the room.  You squint down the staircase... surely it can't be long now.  In the meantime, more monsters stand between you and your goal.",
+        "Flavourtext": "You're beginning to tire from so many battles and using your Psynergy so much, but you gamely haul blocks around until you can escape the room.  You squint down the staircase... surely it can't be long now.  In the meantime, more monsters stand between you and your goal.",
         "EnemyNames": [ "Thunder Lizard 2", "Poison Toad", "Thunder Lizard 2" ],
         "Image": "",
         "RewardTables": [
@@ -7034,7 +7034,7 @@
         ]
       },
       {
-        "Flavourtext": "Through the thicket another small glade appears. In its middle, an enormous creature - a spirit - grazes peacefully. As it hears the rustle of your passage through the briars, it looks towards you. Suddenly the plants around you move aside and you can walk through with ease. The spirit seems to sense the power of Venus flowing through your veins. It lets out a grunt, and readies itself, clearly wanting to fight.",
+        "Flavourtext": "The spirit seems unharmed, visibly satisfied with the fight and willing to share its powers with you. 'Did you *see* that?', Hama shouts out with excitement. 'Being a Jupiter Adept, I never would have dreamt of getting so close to this magnificent creature. And you bested it on top of that! You clearly are a virtuous and strong Venus Adept. I will take you back to a safe place now. I wish you all the best, may Venus shine her light on you.'",
         "EnemyNames": [ "CybeleSummon" ],
         "Keywords": [ "Heal" ],
         "Image": "",
@@ -7051,7 +7051,7 @@
         ]
       },
       {
-        "Flavourtext": "The spirit seems unharmed, visibly satisfied with the fight and willing to share its powers with you. 'Did you *see* that?', Hama shouts out with excitement. 'Being a Jupiter Adept, I never would have dreamt of getting so close to this magnificent creature. And you bested it on top of that! You clearly are a virtuous and strong Venus Adept. I will take you back to a safe place now. I wish you all the best, may Venus shine her light on you.'",
+        "Flavourtext": "'The spirit seems unharmed, visibly satisfied with the fight and willing to share its powers with you. 'Did you *see* that?', Hama shouts out with excitement. 'Being a Jupiter Adept, I never would have dreamt of getting so close to this magnificent creature. And you bested it on top of that! You clearly are a virtuous and strong Venus Adept. I will take you back to a safe place now. I wish you all the best, may Venus shine her light on you.'",
         "EnemyNames": [ "EndHama" ],
         "Image": "",
         "RewardTables": [
@@ -7065,93 +7065,6 @@
               "Dungeon": "Path Of Gaia IV"
             }
           ]
-        ]
-      }
-    ]
-  },
-  "Path of Gaia IV": {
-    "name": "Path of Gaia IV",
-    "IsOneTimeOnly": false,
-    "FlavourText": "Please be patient until this chapter becomes available!",
-    "Image": "",
-    "IsDefault": false,
-    "Requirement": {
-      "MinLevel": "999",
-      "Elements": [ "Venus" ],
-      "TagsRequired": [ "Gaia3" ],
-      "TagsLock": [ "Gaia4" ]
-    },
-    "Matchups": [
-      {
-        "Flavourtext": "Hama doesnt know what to do with you. 'As a wise Venus Adept once said. _This is your journey now_'",
-        "EnemyNames": [ "Rat" ],
-        "Image": "",
-        "RewardTables": [
-          [ { "Weight": 1 } ]
-        ]
-      },
-      {
-        "Flavourtext": "Farmers cottage in the middle of a field. You walk up to it and notice a bear attacking the farmer. Will you help the farmer?",
-        "EnemyNames": [ "Rat" ],
-        "Image": "",
-        "RewardTables": [
-          [ { "Weight": 1 } ]
-        ]
-      },
-      {
-        "Flavourtext": "Fight the bear",
-        "EnemyNames": [ "Rat" ],
-        "Image": "",
-        "RewardTables": [
-          [ { "Weight": 1 } ]
-        ]
-      },
-      {
-        "Flavourtext": "The farmer thanks you and invites you to eat. Roasted Mutton. Scraggy fox approaches with cubs hiding out in the woods. Farmer heads out, armed with a pitchfork. (Share the meat)",
-        "EnemyNames": [ "Rat" ],
-        "Image": "",
-        "RewardTables": [
-          [ { "Weight": 1 } ]
-        ]
-      },
-      {
-        "Flavourtext": "Farmer thanks you, reveals he's a local count who owns the land. Has a job for you gives you gaias axe and wants you to either chop wood or hunt down the wolves that kill lumberjacks. (decline)",
-        "EnemyNames": [ "Rat" ],
-        "Image": "",
-        "RewardTables": [
-          [ { "Weight": 1 } ]
-        ]
-      },
-      {
-        "Flavourtext": "Fight the counts guards",
-        "EnemyNames": [ "Rat" ],
-        "Image": "",
-        "RewardTables": [
-          [ { "Weight": 1 } ]
-        ]
-      },
-      {
-        "Flavourtext": "You head into the woods, wanting to stop the lumberjacks. You findyourself on a glade, surrounded by 9 enemies (Defend)",
-        "EnemyNames": [ "Rat" ],
-        "Image": "",
-        "RewardTables": [
-          [ { "Weight": 1 } ]
-        ]
-      },
-      {
-        "Flavourtext": "Fight Judgement ('You showed to have your heart in a virtuous place. But what worth is that if you cannot enforce your judgment')",
-        "EnemyNames": [ "Rat" ],
-        "Image": "",
-        "RewardTables": [
-          [ { "Weight": 1 } ]
-        ]
-      },
-      {
-        "Flavourtext": "End",
-        "EnemyNames": [ "Rat" ],
-        "Image": "",
-        "RewardTables": [
-          [ { "Weight": 1 } ]
         ]
       }
     ]
@@ -7527,29 +7440,6 @@
       }
     ]
   },
-  "Path of Magma IV": {
-    "name": "Path of Magma IV",
-    "IsOneTimeOnly": false,
-    "FlavourText": "Please be patient until this chapter becomes available!",
-    "Image": "",
-    "IsDefault": false,
-    "Requirement": {
-      "MinLevel": "999",
-      "Elements": [ "Mars" ],
-      "TagsRequired": [ "Magma3" ],
-      "TagsLock": [ "Magma4" ]
-    },
-    "Matchups": [
-      {
-        "Flavourtext": "You shouldn't be here.",
-        "EnemyNames": [ "Rat" ],
-        "Image": "",
-        "RewardTables": [
-          [ { "Weight": 1 } ]
-        ]
-      }
-    ]
-  },
   "Path of Air I": {
     "name": "Path of Air I",
     "IsOneTimeOnly": false,
@@ -7918,29 +7808,6 @@
       }
     ]
   },
-  "Path of Air IV": {
-    "name": "Path of Air IV",
-    "IsOneTimeOnly": false,
-    "FlavourText": "Please be patient until this chapter becomes available!",
-    "Image": "",
-    "IsDefault": false,
-    "Requirement": {
-      "MinLevel": "999",
-      "Elements": [ "Jupiter" ],
-      "TagsRequired": [ "Air3" ],
-      "TagsLock": [ "Air4" ]
-    },
-    "Matchups": [
-      {
-        "Flavourtext": "You shouldn't be here.",
-        "EnemyNames": [ "Rat" ],
-        "Image": "",
-        "RewardTables": [
-          [ { "Weight": 1 } ]
-        ]
-      }
-    ]
-  },
   "Path of Aqua I": {
     "name": "Path of Aqua I",
     "IsOneTimeOnly": false,
@@ -8302,29 +8169,6 @@
               "Dungeon": "Path Of Aqua IV"
             }
           ]
-        ]
-      }
-    ]
-  },
-  "Path of Aqua IV": {
-    "name": "Path of Aqua IV",
-    "IsOneTimeOnly": false,
-    "FlavourText": "Please be patient until this chapter becomes available!",
-    "Image": "",
-    "IsDefault": false,
-    "Requirement": {
-      "MinLevel": "999",
-      "Elements": [ "Mercury" ],
-      "TagsRequired": [ "Aqua3" ],
-      "TagsLock": [ "Aqua4" ]
-    },
-    "Matchups": [
-      {
-        "Flavourtext": "You shouldn't be here.",
-        "EnemyNames": [ "Rat" ],
-        "Image": "",
-        "RewardTables": [
-          [ { "Weight": 1 } ]
         ]
       }
     ]
