@@ -92,10 +92,13 @@ namespace IodemBot.Core.Leveling
 
         internal static async void LevelUp(UserAccount userAccount, SocketGuildUser user, IMessageChannel channel = null)
         {
+
             if (channel == null || userAccount == null || user == null)
             {
+                Console.WriteLine($"userAccount: {channel}, user: {user}, channel: {channel}");
                 return;
             }
+            
             if (userAccount.LevelNumber < 10 && (userAccount.LevelNumber % 5) > 0)
             {
 
