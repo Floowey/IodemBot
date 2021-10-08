@@ -181,7 +181,7 @@ namespace IodemBot.Modules.ColossoBattles
                 {
                     winners.OfType<PlayerFighter>().ToList().ForEach(async p => await ServerGames.UserWonDungeon(UserAccountProvider.GetById(p.Id), Dungeon, lobbyChannel));
 
-                    if (DateTime.Now <= new DateTime(2020, 11, 8) && Global.Random.Next(4) == 0)
+                    if (DateTime.Now <= new DateTime(2021, 11, 8) && Global.Random.Next(5) == 0)
                     {
                         var r = new List<Rewardable>() { new DefaultReward() { Dungeon = "Halloween Special" } };
                         winners.OfType<PlayerFighter>().ToList().ForEach(async p => await ServerGames.UserWonBattle(UserAccountProvider.GetById(p.Id), r, new BattleStats(), lobbyChannel, BattleChannel));
