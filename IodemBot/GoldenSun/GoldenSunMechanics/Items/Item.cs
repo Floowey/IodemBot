@@ -20,7 +20,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             { ItemCategory.UnderWear, new[] { ItemType.UnderWear} },
             { ItemCategory.FootWear, new [] { ItemType.Boots, ItemType.Greave } },
             { ItemCategory.Accessoire, new []{ ItemType.Ring, ItemType.Misc } },
-            {ItemCategory.Other, new [] {ItemType.Collectible } }
+            { ItemCategory.Other, new [] {ItemType.Collectible } }
         };
 
         public static readonly ItemCategory[] Equippables = new[] { ItemCategory.Weapon, ItemCategory.ArmWear, ItemCategory.ChestWear, ItemCategory.HeadWear, ItemCategory.UnderWear, ItemCategory.FootWear, ItemCategory.Accessoire };
@@ -42,6 +42,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public string Sprite { get { return IsAnimated ? AnimatedIcon : Icon; } }
 
         public uint Price { get; set; }
+
+        public string Description { get;set; }
 
         public ItemRarity Rarity { get; set; }
 
@@ -119,6 +121,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public string Summary()
         {
             var s = new StringBuilder();
+
             if (AddStatsOnEquip.NonZerosToString() != "``")
             {
                 s.Append(AddStatsOnEquip.NonZerosToString());
@@ -181,6 +184,15 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 various.Add($"Polishable");
             }
             s.Append(string.Join(" | ", various));
+
+            if (!Description.IsNullOrEmpty())
+            {   
+                if(various.Count > 0)
+                {
+                    s.Append("\n");
+                }
+                s.Append("\n"); s.Append($"*{Description}*");
+            }
             return s.ToString();
         }
     }

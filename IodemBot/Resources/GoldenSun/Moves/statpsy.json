@@ -451,7 +451,7 @@
   "Thermal": {
     "name": "Thermal",
     "targetType": 1,
-    "emote": "<:Blaze:551042852730175520>",
+    "emote": "<:Thermal:881257340794445834>",
     "range": 1,
     "element": 1,
     "PPCost": 4,

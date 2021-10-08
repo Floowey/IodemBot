@@ -60,7 +60,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 }
 
                 //Effects that trigger before damage
-                log.AddRange(Effects.Where(e => e.ActivationTime == TimeToActivate.beforeDamge).ApplyAll(User, t));
+                log.AddRange(Effects.Where(e => e.ActivationTime == TimeToActivate.beforeDamage).ApplyAll(User, t));
 
                 if (!t.IsAlive)
                 {
@@ -74,19 +74,20 @@ namespace IodemBot.Modules.GoldenSunMechanics
                     : (int)Power;
 
                 //                var elMult = 1 + Math.Max(0.0, (int)User.elstats.GetPower(element) * User.MultiplyBuffs("Power") - (int)t.elstats.GetRes(element) * t.MultiplyBuffs("Resistance")) / (attackBased ? 400 : 200);
-                var elMult = 1 + (User.ElStats.GetPower(Element) * User.MultiplyBuffs("Power") - t.ElStats.GetRes(Element) * t.MultiplyBuffs("Resistance")) / (AttackBased ? 400 : 200);
-                elMult = Math.Max(0.5, elMult);
-                elMult = Math.Max(0, elMult);
+                //var elMult = 1 + (User.ElStats.GetPower(Element) * User.MultiplyBuffs("Power") - t.ElStats.GetRes(Element) * t.MultiplyBuffs("Resistance")) / (AttackBased ? 400 : 200);
+                
+                var elMultFactor = (User.ElStats.GetPower(Element) * User.MultiplyBuffs("Power") - t.ElStats.GetRes(Element) * t.MultiplyBuffs("Resistance")) / (AttackBased ? 400 : 200);
+                var elMult = 1 + elMultFactor;
+                elMult = Math.Pow(elMult, 1.4);
+                //elMult = Math.Pow(2, elMultFactor);
+
+                elMult = Math.Max(0.25, elMult);
                 var distFromCenter = Math.Abs(enemyTeam.IndexOf(t) - TargetNr);
                 var spreadMult = IgnoreSpread ? 1 : spread[distFromCenter];
+                var concentrationMult = 1 + (Math.Max(0,(float)Range - targets.Count - 1)) / (2*Range);
                 var prctdmg = (uint)(t.Stats.MaxHP * PercentageDamage / 100);
-                var realDmg = (uint)((baseDmg + dmg + AddDamage) * DmgMult * elMult * spreadMult * t.defensiveMult * User.offensiveMult + prctdmg);
+                var realDmg = (uint)((baseDmg + dmg + AddDamage) * DmgMult * elMult * spreadMult * t.defensiveMult * User.offensiveMult * concentrationMult + prctdmg);
                 var punctuation = "!";
-
-                if (User.offensiveMult > 1)
-                {
-                    Console.WriteLine($"{User.Name} uses {Name} with multiplier {User.offensiveMult}");
-                }
 
                 if (t.ElStats.GetRes(Element) == t.ElStats.HighestRes())
                 {

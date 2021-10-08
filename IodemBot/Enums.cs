@@ -29,7 +29,7 @@ namespace IodemBot
 
     public enum Detail { none, Names, NameAndPrice }
 
-    public enum TimeToActivate { beforeDamge, afterDamage };
+    public enum TimeToActivate { beforeDamage, afterDamage };
 
     public enum RpsEnum { Rock, Paper, Scissors }
 

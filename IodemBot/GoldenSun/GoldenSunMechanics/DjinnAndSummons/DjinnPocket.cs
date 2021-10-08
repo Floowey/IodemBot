@@ -89,6 +89,9 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public bool AddDjinn(Djinn newDjinn)
         {
             var djinnOfElement = Djinn.GroupBy(d => d.Element).Select(s => s.Count()).ToArray();
+            if(newDjinn.IsEvent && Djinn.Any(d => d.Djinnname == newDjinn.Djinnname)){
+                return true;
+            }
             //var minDjinn = 0;
             //minDjinn = djinnOfElement.Count() > 0 ? djinnOfElement.Min() : 0;
             //if (djinn.OfElement(newDjinn.Element).Count() - minDjinn < AllowedDjinnGap && djinn.Count < PocketSize)

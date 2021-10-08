@@ -9,6 +9,9 @@ namespace IodemBot.Modules.GoldenSunMechanics
     [JsonSubtypes.FallBackSubType(typeof(DefaultReward))]
     public abstract class Rewardable
     {
+        /// <summary>
+        /// Abstract, generic Rewaradable. Configures Weights to be pulled from Rewardtables to finally give to a T
+        /// </summary>
         public int Weight { get; set; } = 1;
         public string Tag { get; set; } = "";
         public List<string> RequireTag { get; set; } = new List<string>();

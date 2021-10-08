@@ -9,7 +9,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public UserDiesEffect()
         {
-            ActivationTime = TimeToActivate.beforeDamge;
+            ActivationTime = TimeToActivate.beforeDamage;
         }
 
         public override List<string> Apply(ColossoFighter User, ColossoFighter Target)

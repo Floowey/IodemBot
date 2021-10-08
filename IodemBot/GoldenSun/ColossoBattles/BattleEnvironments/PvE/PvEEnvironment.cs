@@ -105,7 +105,9 @@ namespace IodemBot.Modules.ColossoBattles
                     return;
                 }
 
-                if (new[] { "Bronze", "Silver", "Gold" }.Contains(reaction.Emote.Name) && this is SingleBattleEnvironment environment)
+                var diffEmotesStrings = new[] { "<:Bronze:537214232203100190>", "<:Silver:537214282891395072>", "<:Gold:537214319591555073>" };
+                var diffEmotes = diffEmotesStrings.Select(e => Emote.Parse(e));
+                if (diffEmotes.Contains(reaction.Emote) && this is SingleBattleEnvironment environment)
                 {
                     Dictionary<string, BattleDifficulty> diff = new Dictionary<string, BattleDifficulty>()
                     {

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Reflection;
 using System.Threading.Tasks;
 using Discord;
 using Discord.Commands;
@@ -128,7 +129,7 @@ namespace IodemBot
             var channel = (SocketTextChannel)client.GetChannel(535209634408169492) ?? (SocketTextChannel)client.GetChannel(668443234292334612);
             if (channel != null && (DateTime.Now - Global.RunningSince).TotalSeconds < 15)
             {
-                await channel.SendMessageAsync($"Hello, I am back up. {Environment.OSVersion}");
+                await channel.SendMessageAsync($"Hello, I am back up.\nOS: {Environment.OSVersion}\nBuild Time: {File.GetLastWriteTime(Assembly.GetExecutingAssembly().Location)}");
                 foreach (var guild in client.Guilds)
                 {
                     var gs = GuildSettings.GetGuildSettings(guild);

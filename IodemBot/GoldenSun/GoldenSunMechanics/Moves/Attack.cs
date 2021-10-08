@@ -78,7 +78,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             {
                 log.Add($"{User.Weapon.IconDisplay} {User.Name}'s {User.Weapon.Name} lets out a howl! {User.Weapon.Unleash.UnleashName}!");
                 log.AddRange(User.Weapon.Unleash.AllEffects
-                    .Where(e => e.ActivationTime == TimeToActivate.beforeDamge)
+                    .Where(e => e.ActivationTime == TimeToActivate.beforeDamage)
                     .ApplyAll(User, enemy));
             }
 

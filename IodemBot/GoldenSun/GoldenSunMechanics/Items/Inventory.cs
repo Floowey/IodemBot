@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using IodemBot.Extensions;
 //using LiteDB;
 using Newtonsoft.Json;
@@ -235,11 +236,11 @@ namespace IodemBot.Modules.GoldenSunMechanics
             MageGear.Clear();
             Chests = new Dictionary<ChestQuality, uint>()
         {
-            { ChestQuality.Wooden, 0 }, {ChestQuality.Normal, 0}, {ChestQuality.Silver, 0}, {ChestQuality.Gold, 0}, {ChestQuality.Adept, 0}, {ChestQuality.Daily, 0}
+            { ChestQuality.Wooden, 0 }, {ChestQuality.Normal, 0}, {ChestQuality.Silver, 0}, {ChestQuality.Gold, 0}, {ChestQuality.Adept, 0}, {ChestQuality.Daily, 1}
         };
             Coins = 0;
             Upgrades = 0;
-            LastDailyChest = DateTime.Now.Subtract(new TimeSpan(1, 0, 0, 0));
+            //LastDailyChest = DateTime.Now.Subtract(new TimeSpan(1, 0, 0, 0));
         }
 
         internal Item GetItem(string item, Func<Item, bool> pre = null)

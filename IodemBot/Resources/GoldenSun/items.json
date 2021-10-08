@@ -40,6 +40,7 @@
     "Icon": "<:Heavy_Mace:569901405025075212>",
     "ItemType": "Mace",
     "IsEquippable": true,
+     "Description": "Heavy, man.  Heavy...",
     "AddStatsOnEquip": {
       "Atk": 26
     },
@@ -51,6 +52,7 @@
     "Icon": "<:Mace:569901405435985930>",
     "ItemType": "Mace",
     "IsEquippable": true,
+    "Description": "One step above a rock tied to a stick.",
     "AddStatsOnEquip": {
       "Atk": 6
     },
@@ -62,6 +64,7 @@
     "Icon": "<:Battle_Mace:569901405025075231>",
     "ItemType": "Mace",
     "IsEquippable": true,
+    "Description": "A sturdy hunk of metal affixed to a stout length of wood.",
     "AddStatsOnEquip": {
       "Atk": 56
     },
@@ -73,6 +76,7 @@
     "Icon": "<:War_Mace:569901405478060032>",
     "ItemType": "Mace",
     "IsEquippable": true,
+    "Description": "The addition of spikes makes the design significantly more intimidating.",
     "AddStatsOnEquip": {
       "Atk": 84
     },
@@ -85,6 +89,7 @@
     "AnimatedIcon": "<a:Grievous_Mace:808771271344914502>",
     "ItemType": "Mace",
     "IsEquippable": true,
+    "Description": "**Hello there**",
     "IsArtifact": true,
     "DamageAlignment": 0,
     "AddStatsOnEquip": {
@@ -109,6 +114,7 @@
     "AnimatedIcon": "<a:Righteous_Mace:789978706520571944>",
     "ItemType": "Mace",
     "IsEquippable": true,
+    "Description": "A powerful ally for those that seek justice.",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 112
@@ -138,6 +144,7 @@
     "AnimatedIcon": "<a:Wicked_Mace:808765881014157342>",
     "ItemType": "Mace",
     "IsEquippable": true,
+    "Description": "Side effects include dizziness and disorientation. Consult a Healer for symptoms lasting longer than 2 hours.",
     "IsArtifact": true,
     "IsCursed": true,
     "AddStatsOnEquip": {
@@ -167,6 +174,7 @@
     "AnimatedIcon": "<a:Blessed_Mace:730089123963994203>",
     "ItemType": "Mace",
     "IsEquippable": true,
+    "Description": "It's been blessed, but not to where you're somehow immortal.",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 126
@@ -182,6 +190,7 @@
     "AnimatedIcon": "<a:Blow_Mace:798070892328124416>",
     "ItemType": "Mace",
     "IsEquippable": true,
+    "Description": "Ever tried swinging a lamp post?  This seems similar.",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 45
@@ -205,6 +214,7 @@
     "AnimatedIcon": "<a:Comet_Mace2:856742564807049266>",
     "ItemType": "Mace",
     "IsEquippable": true,
+    "Description": "Frozen chunks of enemy are one way to cool down on a hot day",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 105
@@ -234,6 +244,7 @@
     "AnimatedIcon": "<a:Hagbone_Mace2:793179008568262697>",
     "ItemType": "Mace",
     "IsEquippable": true,
+    "Description": "The malice emanating from this weapon is palpable.",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 108
@@ -262,6 +273,7 @@
     "AnimatedIcon": "<a:Demon_Mace:807934275067314246>",
     "ItemType": "Mace",
     "IsEquippable": true,
+    "Description": "Somehow, not cursed.",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 115
@@ -290,6 +302,7 @@
     "AnimatedIcon": "<a:Thanatos_Mace:806180772922785823>",
     "ItemType": "Mace",
     "IsEquippable": true,
+    "Description": "If the flanges don't kill you, the apparation that haunts it will.",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 125
@@ -317,6 +330,7 @@
     "AnimatedIcon": "<a:Rising_Mace:807793656072634440>",
     "ItemType": "Mace",
     "IsEquippable": true,
+    "Description": "A seemingly ordinary mace, until it starts stealing your enemy's life energy.",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 152
@@ -345,6 +359,7 @@
     "AnimatedIcon": "<a:Tungsten_Mace:808729745046241280>",
     "ItemType": "Mace",
     "IsEquippable": true,
+    "Description": "**BONK**.",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 159
@@ -373,6 +388,7 @@
     "AnimatedIcon": "<a:Vajra_Mace:790583697714970635>",
     "ItemType": "Mace",
     "IsEquippable": true,
+    "Description": "A truly stunning weapon.",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 182
@@ -406,6 +422,7 @@
     "ItemType": "Staff",
     "IsEquippable": true,
     "IsArtifact": false,
+    "Description": "Likely one of the first weapons humanity ever adapted.",
     "AddStatsOnEquip": {
       "Atk": 4
     },
@@ -419,6 +436,7 @@
     "ItemType": "Staff",
     "IsEquippable": true,
     "IsArtifact": true,
+    "Description": "'The Allotter defines the fate of all who are born, weaving their tale. So harrowing is this tale of yours that will soon draw its end.'",
     "AddStatsOnEquip": {
       "Atk": 177
     },
@@ -446,6 +464,7 @@
     "Icon": "<a:CalvinsRule:641571441162190849>",
     "ItemType": "Staff",
     "IsEquippable": true,
+    "Description": "A mighty weapon gold for a skillful artist bold. Long may the work he began grace our eyes and brighten our hearts.",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 177
@@ -492,6 +511,7 @@
     "AnimatedIcon": "<a:Cloud_Wand:808756926497423392>",
     "ItemType": "Staff",
     "IsEquippable": true,
+    "Description": "Forged from the essence of Mercury by a blacksmith in a far away coastal land.",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 98
@@ -520,6 +540,7 @@
     "AnimatedIcon": "<a:Psynergy_Rod:796442870739238912>",
     "ItemType": "Staff",
     "IsEquippable": true,
+    "Description": "Wielders of this staff may find their Psynergy more abundant than expected.",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 64
@@ -548,6 +569,7 @@
     "AnimatedIcon": "<a:Blessed_Ankh:808903577388843029>",
     "ItemType": "Staff",
     "IsEquippable": true,
+    "Description": "One person's blessing may be another person's curse.",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 46
@@ -576,6 +598,7 @@
     "AnimatedIcon": "<a:Dracomace:790034270067621899>",
     "ItemType": "Staff",
     "IsEquippable": true,
+    "Description": "A staff, not a mace, for some reason.",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 128
@@ -604,6 +627,7 @@
     "AnimatedIcon": "<a:Salamander_Rod:808733486986559509>",
     "ItemType": "Staff",
     "IsEquippable": true,
+    "Description": "'Why is it glowing?' 'Just don't wave it around too vigorously...'",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 156
@@ -620,7 +644,7 @@
           "Type": "Stat",
           "Stat": "Attack",
           "Multiplier": 0.75,
-          "Probability": 35 
+          "Probability": 35
         }
       ]
     },
@@ -633,6 +657,7 @@
     "AnimatedIcon": "<a:Magic_Rod:808766919292878880>",
     "ItemType": "Staff",
     "IsEquippable": true,
+    "Description": "It's magic!",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 16
@@ -661,6 +686,7 @@
     "AnimatedIcon": "<a:Witchs_Wand:808737143824318464>",
     "ItemType": "Staff",
     "IsEquippable": true,
+    "Description": "What are you doing with this?  Give it back to the witch, that's not yours.",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 32
@@ -689,6 +715,7 @@
     "AnimatedIcon": "<a:Glower_Staff:794803066645643324>",
     "ItemType": "Staff",
     "IsEquippable": true,
+    "Description": "It used to be coated in rust, but you'd never know by how bright it shines now.",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 126
@@ -717,6 +744,7 @@
     "AnimatedIcon": "<a:Angelic_Ankh:798755708483928075>",
     "ItemType": "Staff",
     "IsEquippable": true,
+        "Description": "Its innocent, even beautiful appearance is offset by its voracious appetite for life energy.",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 83
@@ -745,6 +773,7 @@
     "AnimatedIcon": "<a:Demonic_Staff:789177261172981810>",
     "ItemType": "Staff",
     "IsEquippable": true,
+    "Description": "Laden with evil spirits, and happy to share!",
     "IsArtifact": true,
     "isCursed": true,
     "AddStatsOnEquip": {
@@ -774,6 +803,7 @@
     "AnimatedIcon": "<a:Goblins_Rod:808750776062705665>",
     "ItemType": "Staff",
     "IsEquippable": true,
+    "Description": "Stop; hammer time.",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 134
@@ -802,6 +832,7 @@
     "ItemType": "Staff",
     "IsEquippable": true,
     "IsArtifact": true,
+    "Description": "'The Spinner pulls and spins the yarn of fate, from which all stories are built. What a pity that yours will be drawn so short.'",
     "AddStatsOnEquip": {
       "Atk": 168
     },
@@ -834,6 +865,7 @@
     "AnimatedIcon": "<a:Frost_Wand:789177344753401877>",
     "ItemType": "Staff",
     "IsEquippable": true,
+    "Description": "May cause your enemies to become nonresponsive for minutes to hours.",
     "IsArtifact": true,
     "DamageAlignment": 3,
     "AddStatsOnEquip": {
@@ -863,6 +895,7 @@
     "AnimatedIcon": "<a:Nebula_Wand:789978869666152509>",
     "ItemType": "Staff",
     "IsEquippable": true,
+    "Description": "'My God, it's full of stars!'",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 165
@@ -947,6 +980,7 @@
     "ItemType": "Staff",
     "IsEquippable": true,
     "IsArtifact": true,
+    "Description": "'As the Unturnable snips the yarn, an unsteady hand may yet cut the red string of fate short.'",
     "AddStatsOnEquip": {
       "Atk": 169
     },
@@ -1030,6 +1064,7 @@
     "AnimatedIcon": "<a:Shamans_Rod:808750929808982017>",
     "ItemType": "Staff",
     "IsEquippable": true,
+    "Description": "Some believe this was used for some magic hullabaloo, but in reality it was just his back scratcher.",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 10
@@ -1197,6 +1232,7 @@
     "Icon": "<:Gaia_Blade:569855141499633664>",
     "ItemType": "LongSword",
     "IsEquippable": true,
+    "Description": "It's like a store brand Sol Blade. It's adequate and gets the job done, but you silently weep to yourself, wishing you could have gotten the cool thing everyone has been talking about.",
     "IsArtifact": true,
     "DamageAlignment": 0,
     "AddStatsOnEquip": {
@@ -1311,6 +1347,7 @@
     "AnimatedIcon": "<a:Cloud_Brand:729714685032529961>",
     "ItemType": "LongSword",
     "IsEquippable": true,
+    "Description": "A large broadsword that has inherited the hopes of those who fight.",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 130
@@ -1369,6 +1406,7 @@
     "AnimatedIcon": "<a:Huge_Sword:789176644169760829>",
     "ItemType": "LongSword",
     "IsEquippable": true,
+    "Description": "I like big swords and I cannot lie",
     "IsArtifact": true,
     "DamageAlignment": 0,
     "AddStatsOnEquip": {
@@ -1455,6 +1493,7 @@
     "AnimatedIcon": "<a:RuneBlade:729714688962723950>",
     "ItemType": "LongSword",
     "IsEquippable": true,
+    "Description": "Armor trimming, 400k gold",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 162
@@ -1511,6 +1550,7 @@
     "AnimatedIcon": "<a:Fire_Brand:730011785847111771>",
     "ItemType": "LongSword",
     "IsEquippable": true,
+    "Description": "This 1000 degree knife slices through the flesh of the wielder's enemies.",
     "IsArtifact": true,
     "DamageAlignment": 1,
     "AddStatsOnEquip": {
@@ -1540,6 +1580,7 @@
     "AnimatedIcon": "<a:Darksword:729794276761927700>",
     "ItemType": "LongSword",
     "IsEquippable": true,
+    "Description": "It's like a sword, but dark.",
     "IsArtifact": true,
     "isCursed": true,
     "AddStatsOnEquip": {
@@ -1569,6 +1610,7 @@
     "AnimatedIcon": "<a:Excalibur:729714685535846414>",
     "ItemType": "LongSword",
     "IsEquippable": true,
+    "Description": "'Excalibur!'\n'Excalibur!'\n'From the United Kindom!'\n'I'm looking for Heaven!'\n'I'm going to California!'\n'Excalibur!'\n'Excalibur!'",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 180
@@ -1598,6 +1640,7 @@
     "ItemType": "LongSword",
     "IsEquippable": true,
     "IsArtifact": true,
+    "Description":  "Infused by the power of the Earth, this ultimate weapon can only be wielded by Venus Warriors.",
     "ExclusiveTo": [ 0 ],
     "AddStatsOnEquip": {
       "Atk": 200
@@ -1622,6 +1665,7 @@
     "AnimatedIcon": "<a:Sword_Of_Dusk:792197247206424597>",
     "ItemType": "LongSword",
     "IsEquippable": true,
+    "Description": "It's like a Dark Sword, but darker.",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 100
@@ -1649,15 +1693,16 @@
     "Name": "Proxian Sword",
     "Price": 31700,
     "Icon": "<:Proxian_Sword:806104681885597776>",
-    "AnimatedIcon": "<a:Proxian_Sword2:856742359412113408>",
+    "AnimatedIcon": "<a:Proxian_Sword3:887357540478877756>",
     "ItemType": "LongSword",
     "IsEquippable": true,
     "IsArtifact": true,
+    "Description": "Unique to Anelace\nA sword from a legendary fallen Proxian, infused with untold power.\nCapable of cleaving foes through incandescent slashes.",
     "AddStatsOnEquip": {
       "Atk": 255
   },
-   "increaseUnleashRate": 5,
-   "Unleash": {
+    "increaseUnleashRate": 5,
+    "Unleash": {
       "UnleashName": "Heat Flash",
       "UnleashAlignment": 1,
       "effects": [
@@ -1674,9 +1719,12 @@
         }
       ]
     },
-    "Rarity": "Unique"
+    "Rarity": "Unique",
+    "AddElStatsOnEquip": {
+      "MarsAtk": 30
+    }
   },
-   "Nut Sword": {
+  "Nut Sword": {
     "Name": "Nut Sword",
     "Price": 80085,
     "Icon": "<:Nut_Sword:806462931595165776>",
@@ -1685,9 +1733,10 @@
     "IsArtifact": true,
     "IsEquippable": true,
     "AddStatsOnEquip": {
-      "Atk": 455
+      "Atk": 280
     },
     "Rarity": "Unique",
+    "Description": "\"By the Order of the Council,\nBy the will of the Nut,\nYou are hereby granted access to the Council of Nut.\nFrom now on you shall be known as 'The Nut Grand-Artist'.\"\n—The Nut King, to Viri",
     "AddElStatsOnEquip": {
       "VenusAtk": 80,
       "VenusRes": 80,
@@ -1704,8 +1753,9 @@
       "UnleashAlignment": 2,
       "effects": [
         {
-          "Type": "AddDamage",
-          "addDamage": 80
+          "Type": "MultiplyDamage",
+           "Multipliers": [ 1.8 ],
+           "Probabilities": [ 100 ]
         },
         {
           "Type": "Stat",
@@ -1717,9 +1767,51 @@
         {
           "Type": "HPDrain",
           "Percentage": 80,
-          "Probability": 20
+          "Probability": 10
         }
       ]
+    }
+  },
+  "Arc Blade": {
+    "Name": "Arc Blade",
+    "Price": 1111111,
+    "Icon": "<:Arc_Blade:885198793031692309>",
+    "AnimatedIcon": "<a:Arc_Blade:885198870873772122>",
+    "ItemType": "LightBlade",
+    "IsEquippable": true,
+    "Description": "\"Reforged in winter's howling heart with relentless care and patience. Tempered in the light of four lighthouses. Granted to Arc, to even the odds against monsters and warriors alike.",
+    "IsArtifact": true,
+    "AddStatsOnEquip": {
+      "Atk": 200
+    },
+    "increaseUnleashRate": 5,
+    "Unleash": {
+      "UnleashName": "Hyperborean Grind",
+      "UnleashAlignment": 3,
+      "effects": [
+        {
+          "Type": "MultiplyDamage",
+          "Multipliers": [ 2.4 ],
+          "Probabilities": [ 100 ]
+        },
+        {
+          "Type": "Stat",
+          "Stat": "Resistance",
+          "Multiplier": 0.6,
+          "Probability": 75
+        }
+      ]
+    },
+    "Rarity": "Unique",
+    "AddElStatsOnEquip": {
+      "VenusAtk": 120,
+      "VenusRes": 0,
+      "MarsAtk": 120,
+      "MarsRes": 0,
+      "JupiterAtk": 120,
+      "JupiterRes": 0,
+      "MercuryAtk": 120,
+      "MercuryRes": 0
     }
   },
   "Battle Axe": {
@@ -1872,6 +1964,7 @@
     "AnimatedIcon": "<a:Demon_axe:730088464372072456>",
     "ItemType": "Axe",
     "IsEquippable": true,
+    "Description": "I made it through Crossbone Isle, and all I got was this lousy cursed artifact.",
     "IsArtifact": true,
     "isCursed": true,
     "AddStatsOnEquip": {
@@ -1930,6 +2023,7 @@
     "AnimatedIcon": "<a:Disk_Axe:789175980241322034>",
     "ItemType": "Axe",
     "IsEquippable": true,
+    "Description": "It smells of tomato and cheese.",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 76
@@ -1969,6 +2063,7 @@
     "AnimatedIcon": "<a:Tartarus_Axe:807298680213602314>",
     "ItemType": "Axe",
     "IsEquippable": true,
+    "Description": "'Tartarus..?  What's that?  ...Sounds like toothpaste.' -Junpei Iori",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 127
@@ -2140,6 +2235,7 @@
     "AnimatedIcon": "<a:Herculean_Axe:730088464514678825>",
     "ItemType": "Axe",
     "IsEquippable": true,
+    "Description": "'honey you mean Hunk-ulean axe'",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 186
@@ -2167,6 +2263,7 @@
     "Icon": "<:Machete:569855398249758728>",
     "ItemType": "LightBlade",
     "IsEquippable": true,
+    "Description": "What kind of chores this is used for is a mystery...",
     "AddStatsOnEquip": {
       "Atk": 6
     },
@@ -2178,6 +2275,7 @@
     "Icon": "<:Short_Sword:569855398635503636>",
     "ItemType": "LightBlade",
     "IsEquippable": true,
+    "Description": "'Let me see what you have.'\n'A knife!'\n'NO'",
     "AddStatsOnEquip": {
       "Atk": 8
     },
@@ -2247,6 +2345,7 @@
     "AnimatedIcon": "<a:Elven_Rapier:790020846197669919>",
     "ItemType": "LightBlade",
     "IsEquippable": true,
+    "Description": "Such Vorpal, much wow.",
     "IsArtifact": true,
     "DamageAlignment": 2,
     "AddStatsOnEquip": {
@@ -2272,6 +2371,7 @@
     "AnimatedIcon": "<a:Mystery_Blade:789614301073244160>",
     "ItemType": "LightBlade",
     "IsEquippable": true,
+    "Description": "So mysterious, no one even knows what the subtext is.",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 84
@@ -2301,6 +2401,7 @@
     "ItemType": "LightBlade",
     "IsEquippable": true,
     "IsArtifact": true,
+    "Description": "\"I am an expert swordsman. And I am skilled in the business of death. I take no pleasure in my skill. Simply, I am good at it.\"",
     "AddStatsOnEquip": {
       "Atk": 90
     },
@@ -2383,6 +2484,7 @@
     "AnimatedIcon": "<a:Kikuichimonji_gold1:730087971356803202>",
     "ItemType": "LightBlade",
     "IsEquippable": true,
+    "Description": "Some say this blade is only granted to those who can spell its name correctly.",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 128
@@ -2499,6 +2601,7 @@
     "AnimatedIcon": "<a:Corsairs_Edge:791437381424513025>",
     "ItemType": "LightBlade",
     "IsEquippable": true,
+    "Description": "smh doesn't even come with RGB or cherry MX switches",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 90
@@ -2673,6 +2776,7 @@
     "ItemType": "LightBlade",
     "IsEquippable": true,
     "IsArtifact": true,
+    "Description": "'I will never be a memory.' - some silver-haired dude with mommy issues",
     "AddStatsOnEquip": {
       "Atk": 161
     },
@@ -2701,6 +2805,7 @@
     "AnimatedIcon": "<a:Tisiphone_Edge:641571441267179549>",
     "ItemType": "LightBlade",
     "IsEquippable": true,
+    "Description": "ring ring ring ring ring ring ring, tisiphone",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Atk": 178
@@ -3364,7 +3469,8 @@
         }
       ]
     },
-    "Rarity": "Unique"
+    "Rarity": "Unique",
+    "Description": "Forged to test the limits of the world and the watchful eyes of those who build it. Diligence and effort breed result, and trust gives power."
   },
   "Demon Mail": {
     "Name": "Demon Mail",
@@ -4922,6 +5028,7 @@
     "ItemType": "Glove",
     "IsArtifact": true,
     "IsEquippable": true,
+    "Description": "You See BIG GIRL",
     "AddStatsOnEquip": {
       "Def": 43,
       "maxHP": 30
@@ -5393,6 +5500,7 @@
     "Icon": "<:Golden_Ring:569854314156392468>",
     "ItemType": "Ring",
     "IsEquippable": true,
+    "Description": "One Ring to rule them all, One Ring to find them, One Ring to bring them all and in the darkness bind them.",
     "IsArtifact": true,
     "ChanceToActivate": 30,
     "ChanceToBreak": 12,
