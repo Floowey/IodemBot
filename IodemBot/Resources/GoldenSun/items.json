@@ -1570,6 +1570,7 @@
     "ItemType": "LongSword",
     "IsEquippable": true,
     "IsArtifact": true,
+    "Description": "King Arthur is probably feeling pretty ripped off right about now.",
     "AddStatsOnEquip": {
       "Atk": 180
     },
@@ -1654,7 +1655,7 @@
     "ItemType": "LongSword",
     "IsEquippable": true,
     "IsArtifact": true,
-    "Description": "Unique to Anelace\nA sword from a legendary fallen Proxian, infused with untold power.\nCapable of cleaving foes through incandescent slashes.",
+    "Description": "Unique to Estelle\nA sword from a legendary fallen Proxian, infused with untold power.\nCapable of cleaving foes through incandescent slashes.",
     "AddStatsOnEquip": {
       "Atk": 255
   },
@@ -2716,7 +2717,7 @@
     "Name": "Masamune",
     "Price": 19000,
     "Icon": "<:Masamune:571315510185164800>",
-    "AnimatedIcon": "<a:Masamune:788779138500132874>",
+    "AnimatedIcon": "<a:Masamune2:896404083504709633>",
     "ItemType": "LightBlade",
     "IsEquippable": true,
     "IsArtifact": true,
