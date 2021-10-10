@@ -35,4 +35,8 @@ namespace IodemBot.Modules
             await Context.ReplyWithMessageAsync(EphemeralRule, $"Chose Element: {SelectedElement}");
         }
     }
+
+    // Status Action
+    // Class Change Action
+    // Loadout Action
 }

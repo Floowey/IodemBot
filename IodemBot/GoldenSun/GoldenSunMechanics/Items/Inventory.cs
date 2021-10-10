@@ -101,6 +101,53 @@ namespace IodemBot.Modules.GoldenSunMechanics
             {ChestQuality.Daily, 0}
         };
 
+        public bool HasAnyChests()
+        {
+            CheckDaily();
+            return Chests.Values.Any(c => c>0);
+        }
+        public ChestQuality NextChestQuality()
+        {
+            if (HasChest(ChestQuality.Daily))
+                return ChestQuality.Daily;
+
+            foreach (ChestQuality cq in chestQualities)
+            {
+                if (HasChest(cq))
+                {
+                    return cq;
+                }
+            }
+            return ChestQuality.Daily;
+        }
+        public static int[] dailyRewards = new[] { 0, 0, 1, 1, 2 };
+        public bool TryOpenChest(ChestQuality chestQuality, out Item item, uint Level=0)
+        {
+            item = null;
+            if (IsFull)
+            {
+                return false;
+            }
+
+            if (!OpenChest(chestQuality))
+            {
+                return false;
+            }
+
+            if (chestQuality == ChestQuality.Daily)
+            {
+                
+                var rarity = (ItemRarity)(dailyRewards[DailiesInARow % dailyRewards.Length] + Math.Min(2, Level / 33));
+                item = ItemDatabase.GetRandomItem(rarity);
+            }
+            else
+            {
+                var rarity = ItemDatabase.ChestValues[chestQuality].GenerateReward();
+                item = ItemDatabase.GetRandomItem(rarity);
+            }
+            return true;
+        }
+
         public int NumberOfItemType(ItemType type)
         {
             return Inv.Where(i => i.ItemType == type).Count();
@@ -412,18 +459,22 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public bool Add(string item)
         {
-            if (IsFull)
-            {
-                return false;
-            }
-
             var i = ItemDatabase.GetItem(item);
             if (i.Name.Contains("NOT IMPLEMENTED!"))
             {
                 return false;
             }
 
-            Inv.Add(i);
+            return Add(i);
+        }
+
+        public bool Add(Item item)
+        {
+            if (IsFull)
+            {
+                return false;
+            }
+            Inv.Add(item);
             return true;
         }
 

@@ -454,21 +454,21 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 await Context.Channel.SendMessageAsync("", false, emb.Build());
                 return;
             }
-            var itemName = "";
+
+            Item item;
             var dailyRewards = new[] { 0, 0, 1, 1, 2 };
             if (cq == ChestQuality.Daily)
             {
                 var value = user.LevelNumber;
-                itemName = ItemDatabase.GetRandomItem((ItemRarity)(dailyRewards[inv.DailiesInARow % dailyRewards.Length] + Math.Min(2, value / 33)));
+                item = ItemDatabase.GetRandomItem((ItemRarity)(dailyRewards[inv.DailiesInARow % dailyRewards.Length] + Math.Min(2, value / 33)));
             }
             else
             {
                 var rarity = ItemDatabase.ChestValues[cq].GenerateReward();
-                itemName = ItemDatabase.GetRandomItem(rarity);
+                item = ItemDatabase.GetRandomItem(rarity);
             }
 
-            var item = ItemDatabase.GetItem(itemName);
-            inv.Add(item.Name);
+            inv.Add(item);
             UserAccountProvider.StoreUser(user);
 
             var embed = new EmbedBuilder();
