@@ -114,14 +114,14 @@ namespace IodemBot.Modules
             //add status menu button
             builder.WithButton(detailled ? "Warrior Gear" : null, $"#{nameof(GearAction)}.Warrior", emote: Emote.Parse("<:Long_Sword:569813505423704117>"), style: ButtonStyle.Success);
             builder.WithButton(detailled ? "Mage Gear" : null, $"#{nameof(GearAction)}.Mage", emote: Emote.Parse("<:Wooden_Stick:569813632897253376>"), style: ButtonStyle.Success);
-            builder.WithButton(detailled ? "Shop" : null, $"#{nameof(ShopAction)}.", ButtonStyle.Secondary, Emote.Parse("<:Sell:896069873149550602>"));
+            builder.WithButton(detailled ? "Shop" : null, $"#{nameof(ShopAction)}.", ButtonStyle.Secondary, Emote.Parse("<:Buy:896735785137614878>"));
             var chest = inv.HasAnyChests() ? inv.NextChestQuality() : ChestQuality.Normal;
             builder.WithButton(detailled ? "Open Chest" : null, $"#{nameof(ChestAction)}.{chest}", emote: Emote.Parse(Inventory.ChestIcons[chest]), disabled:!inv.HasAnyChests());
             if (inv.Upgrades < 4)
                 builder.WithButton(detailled ? "Upgrade Inventory" : null, $"#{nameof(UpgradeInventory)}", emote: Emote.Parse("<:Item:895957416557027369>"));
-            
+            builder.WithButton(detailled ? "Sort Inventory" : null, $"#{nameof(SortInventory)}", emote: Emote.Parse("<:Switch:896735785603194880>"));
+
             // If cursed, add remove Curse Button
-            // Add upgrade inventory Button
             // Add sort button
             return builder.Build();
         }
@@ -722,18 +722,85 @@ namespace IodemBot.Modules
 
     public class ItemRenameAction : IodemBotCommandAction
     {
-        public override Task RunAsync()
+        public override async Task RunAsync()
         {
-            throw new NotImplementedException();
+            var account = EntityConverter.ConvertUser(Context.User);
+            var inv = account.Inv;
+            var item = inv.GetItem(ItemToRename);
+            item.Nickname = NewName;
+            UserAccountProvider.StoreUser(account);
+            await Context.ReplyWithMessageAsync(EphemeralRule, $"Renamed {item.IconDisplay} {item.Itemname} to {NewName}");
         }
+        [ActionParameterSlash(Order = 0, Name = "item", Description = "The item to rename", Required=true, Type=ApplicationCommandOptionType.String)]
+        public string ItemToRename { get; set; }
 
+        [ActionParameterSlash(Order = 1, Name = "name", Description = "The Name to rename it to", Required = false, Type = ApplicationCommandOptionType.String)]
+
+        public string NewName { get; set; }
         public override EphemeralRule EphemeralRule => EphemeralRule.EphemeralOrFail;
         public override bool GuildsOnly => true;
-        public override IActionSlashCommandProperties SlashCommandProperties => base.SlashCommandProperties;
+        public override ActionGuildSlashCommandProperties SlashCommandProperties => new()
+        {
+            Name = "renameitem",
+            Description = "Rename one of your items",
+            FillParametersAsync = options =>
+            {
+                if (options != null)
+                    ItemToRename = (string)options.FirstOrDefault().Value;
+                if(options.Count() > 1)
+                    NewName = ((string)options.ElementAt(1)?.Value ?? "").Trim();
+
+                return Task.CompletedTask;
+            }
+        };
+
+        protected override Task<(bool Success, string Message)> CheckCustomPreconditionsAsync()
+        {
+            var item = EntityConverter.ConvertUser(Context.User).Inv.GetItem(ItemToRename);
+            if (item == null)
+                return Task.FromResult((false, "Couldn't find that item in your inventory"));
+
+            if (string.IsNullOrWhiteSpace(NewName))
+                NewName = item.Itemname;
+//                return Task.FromResult((false, "Not a valid name"));
+
+
+            return Task.FromResult((true, (string)null));
+        }
     }
-    // Remove Cursed Action
-    // Item Rename Action
-    // Sell Action
-    // Sort Action
-    // Iteminfo (With equip button where applicable)
+
+    public class SortInventory : IodemBotCommandAction
+    {
+        public override EphemeralRule EphemeralRule => EphemeralRule.EphemeralOrFail;
+
+        public override bool GuildsOnly => true;
+
+        public override GuildPermissions? RequiredPermissions => null;
+
+        public override async Task RunAsync()
+        {
+            //_ = UpgradeInv();
+            await Task.CompletedTask;
+        }
+        public override ActionCommandRefreshProperties CommandRefreshProperties => new()
+        {
+            CanRefreshAsync = _ => Task.FromResult((true, (string)null)),
+            FillParametersAsync = null,
+            RefreshAsync = RefreshAsync
+        };
+        private async Task RefreshAsync(bool intoNew, MessageProperties msgProps)
+        {
+            var account = EntityConverter.ConvertUser(Context.User);
+            var inv = account.Inv;
+            inv.Sort();
+            UserAccountProvider.StoreUser(account);
+            msgProps.Embed = InventoryAction.GetInventoryEmbed(account);
+            msgProps.Components = InventoryAction.GetInventoryComponent(account);
+            await Task.CompletedTask;
+        }
+    }
 }
+    // Remove Cursed Action
+    // Sell Action
+    // Iteminfo (With equip button where applicable)
+
