@@ -112,6 +112,7 @@ namespace IodemBot.Modules
             var builder = new ComponentBuilder();
             bool detailled = detail == Detail.Names;
             //add status menu button
+            builder.WithButton(detailled ? "Status" : null, $"#{nameof(StatusAction)}", style: ButtonStyle.Success, emote: Emote.Parse("<:Status:896069873124409375>"));
             builder.WithButton(detailled ? "Warrior Gear" : null, $"#{nameof(GearAction)}.Warrior", emote: Emote.Parse("<:Long_Sword:569813505423704117>"), style: ButtonStyle.Success);
             builder.WithButton(detailled ? "Mage Gear" : null, $"#{nameof(GearAction)}.Mage", emote: Emote.Parse("<:Wooden_Stick:569813632897253376>"), style: ButtonStyle.Success);
             builder.WithButton(detailled ? "Shop" : null, $"#{nameof(ShopAction)}.", ButtonStyle.Secondary, Emote.Parse("<:Buy:896735785137614878>"));
@@ -391,7 +392,7 @@ namespace IodemBot.Modules
 
     public class ShopAction : IodemBotCommandAction
     {
-        private string coinEmote = "<:coin:569836987767324672>";
+        //private string coinEmote = "<:coin:569836987767324672>";
         private Inventory _shop { get; set; }
         public override ActionGuildSlashCommandProperties SlashCommandProperties => new()
         {
