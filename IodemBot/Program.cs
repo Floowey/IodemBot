@@ -67,14 +67,35 @@ namespace IodemBot
             await Task.Delay(-1);
         }
 
-        private async Task Client_GuildMemberUpdated(SocketGuildUser before, SocketGuildUser after)
+        private async Task Client_GuildMemberUpdated(SocketGuildUser user_before, SocketGuildUser user)
         {
-            if (before.DisplayName() != after.DisplayName())
+            var guild = GuildSettings.GetGuildSettings(user.Guild);
+            if (user_before.DisplayName() != user.DisplayName())
             {
-                EntityConverter.ConvertUser(after).Name = after.DisplayName();
-                _ = GuildSettings.GetGuildSettings(after.Guild).TestCommandChannel
-                    .SendMessageAsync($"{after.Mention} changed Nickname from {before.DisplayName()} to {after.DisplayName()}");
+                EntityConverter.ConvertUser(user).Name = user.DisplayName();
+                _ = guild.TestCommandChannel
+                    .SendMessageAsync($"{user.Mention} changed Nickname from {user_before.DisplayName()} to {user.DisplayName()}");
             }
+
+            if(user_before.IsPending == true && user.IsPending == false)
+            {
+                if (GuildSettings.GetGuildSettings(user.Guild).sendWelcomeMessage)
+                {
+                    _ = guild.MainChannel.SendMessageAsync(embed:
+                        new EmbedBuilder()
+                        .WithColor(Colors.Get("Iodem"))
+                        .WithDescription(string.Format(welcomeMsg.Random(), user.DisplayName()))
+                        .Build());
+                }
+            }
+
+            if(user_before.PremiumSince.HasValue != user.PremiumSince.HasValue)
+            {
+                var isBoosting = user.PremiumSince.HasValue;
+                _ = guild.TestCommandChannel
+                   .SendMessageAsync($"{"<:Exclamatory:549529360604856323>"} {user.Mention} is {(isBoosting ? "now" : "no longer")} boosting the server.");
+            }
+
             await Task.CompletedTask;
         }
 
@@ -100,14 +121,7 @@ namespace IodemBot
 
         private async Task Client_UserJoined(SocketGuildUser user)
         {
-            if (GuildSettings.GetGuildSettings(user.Guild).sendWelcomeMessage)
-            {
-                _ = GuildSettings.GetGuildSettings(user.Guild).MainChannel.SendMessageAsync(embed:
-                    new EmbedBuilder()
-                    .WithColor(Colors.Get("Iodem"))
-                    .WithDescription(string.Format(welcomeMsg.Random(), user.DisplayName()))
-                    .Build());
-            }
+            
 
             _ = GuildSettings.GetGuildSettings(user.Guild).TestCommandChannel.SendMessageAsync(embed:
                 new EmbedBuilder()
