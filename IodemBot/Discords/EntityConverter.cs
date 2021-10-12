@@ -1,4 +1,5 @@
 ﻿using System;
+using Discord;
 using Discord.WebSocket;
 using IodemBot.Core.UserManagement;
 using IodemBot.Extensions;
@@ -12,7 +13,7 @@ namespace IodemBot
             UserConverter = new IodemUserConverter();
         }
         public static IodemUserConverter UserConverter { get; }
-        public static UserAccount ConvertUser(SocketUser user)
+        public static UserAccount ConvertUser(IUser user)
             => UserConverter.DiscordMemberToUser(user);
     }
 
@@ -22,7 +23,7 @@ namespace IodemBot
         {
 
         }
-        public UserAccount DiscordMemberToUser(SocketUser user)
+        public UserAccount DiscordMemberToUser(IUser user)
         {
             if (user == null)
             {

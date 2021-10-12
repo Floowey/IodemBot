@@ -119,11 +119,10 @@ namespace IodemBot.Modules
             var chest = inv.HasAnyChests() ? inv.NextChestQuality() : ChestQuality.Normal;
             builder.WithButton(detailled ? "Open Chest" : null, $"#{nameof(ChestAction)}.{chest}", emote: Emote.Parse(Inventory.ChestIcons[chest]), disabled:!inv.HasAnyChests());
             if (inv.Upgrades < 4)
-                builder.WithButton(detailled ? "Upgrade Inventory" : null, $"#{nameof(UpgradeInventory)}", emote: Emote.Parse("<:Item:895957416557027369>"));
-            builder.WithButton(detailled ? "Sort Inventory" : null, $"#{nameof(SortInventory)}", emote: Emote.Parse("<:Switch:896735785603194880>"));
+                builder.WithButton(detailled ? "Upgrade Inventory" : null, $"#{nameof(UpgradeInventory)}", emote: Emote.Parse("<:button_inventoryupgrade:897032416626098217>"));
+            builder.WithButton(detailled ? "Sort Inventory" : null, $"#{nameof(SortInventory)}", emote: Emote.Parse("<:button_inventorysort:897032416915488869>"));
 
             // If cursed, add remove Curse Button
-            // Add sort button
             return builder.Build();
         }
     }

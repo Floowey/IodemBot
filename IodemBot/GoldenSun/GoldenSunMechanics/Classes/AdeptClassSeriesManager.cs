@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using IodemBot.Core.UserManagement;
@@ -86,6 +87,29 @@ namespace IodemBot.Modules.GoldenSunMechanics
             availableClasses.AddRange(allClasses.Where(c => User.BonusClasses.Contains(c.Name) && c.Elements.Contains(User.Element)).ToList());
             var position = User.ClassToggle % availableClasses.Count;
             return availableClasses.ElementAt(position).Clone();
+        }
+
+        public static bool SetClass(UserAccount account, string targetClass = "")
+        {
+            string curClass = GetClassSeries(account).Name;
+            if (targetClass == "")
+            {
+                account.ClassToggle++;
+            }
+            else
+            {
+                account.ClassToggle++;
+                while (GetClassSeries(account).Name != curClass)
+                {
+                    if (GetClassSeries(account).Name.Contains(targetClass.ToLower(), StringComparison.InvariantCultureIgnoreCase))
+                    {
+                        break;
+                    }
+
+                    account.ClassToggle++;
+                }
+            }
+            return !curClass.Equals(GetClassSeries(account).Name);
         }
 
         public static bool TryGetClassSeries(string series, out AdeptClassSeries outSeries)

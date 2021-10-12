@@ -17,7 +17,7 @@ namespace IodemBot.Modules
 {
     public class GoldenSunCommands : ModuleBase<SocketCommandContext>
     {
-        internal static Dictionary<Element, string> ElementIcons = new Dictionary<Element, string>(){
+        public static Dictionary<Element, string> ElementIcons = new Dictionary<Element, string>(){
             {Element.Venus, "<:Venus_Element:573938340219584524>"},
             {Element.Mars, "<:Mars_Element:573938340307402786>"},
             {Element.Jupiter, "<:Jupiter_Element:573938340584488987>" },
@@ -436,16 +436,31 @@ namespace IodemBot.Modules
             {
                 role = Context.Guild.Roles.FirstOrDefault(r => r.Name == "Exathi");
             }
+            if (role == null)
+                return;
+
             var venusRole = Context.Guild.Roles.FirstOrDefault(x => x.Name == "Venus Adepts");
             var marsRole = Context.Guild.Roles.FirstOrDefault(x => x.Name == "Mars Adepts");
             var jupiterRole = Context.Guild.Roles.FirstOrDefault(x => x.Name == "Jupiter Adepts");
             var mercuryRole = Context.Guild.Roles.FirstOrDefault(x => x.Name == "Mercury Adepts");
             var exathi = Context.Guild.Roles.FirstOrDefault(x => x.Name == "Exathi") ?? venusRole;
-
-            await user.RemoveRolesAsync(new IRole[] { venusRole, marsRole, jupiterRole, mercuryRole, exathi });
+            var roles = new[] { venusRole, marsRole, jupiterRole, mercuryRole, exathi };
+            var userRoles = user.Roles.Where(r => roles.Contains(r));
+            await user.RemoveRolesAsync(userRoles);
             _ = user.AddRoleAsync(role);
         }
 
+        [Command("PutElementalRoles")]
+      
+        public async Task PutRoles([Remainder] ITextChannel channel)
+        {
+            var builder = new ComponentBuilder();
+            builder.WithButton("Venus", $"^{nameof(ChangeAdeptAction)}.Venus", ButtonStyle.Primary, emote: Emote.Parse("<:Venus_Star:572495673186975754>"));
+            builder.WithButton("Mars", $"^{nameof(ChangeAdeptAction)}.Mars", ButtonStyle.Primary, emote: Emote.Parse("<:Mars_Star:572495673132318721>"));
+            builder.WithButton("Jupiter", $"^{nameof(ChangeAdeptAction)}.Jupiter", ButtonStyle.Primary, emote: Emote.Parse("<:Jupiter_Star:572495672906088459>"));
+            builder.WithButton("Mercury", $"^{nameof(ChangeAdeptAction)}.Mercury", ButtonStyle.Primary, emote: Emote.Parse("<:Mercury_Star:572495673128124446>"));
+            await channel.SendMessageAsync("Choose a role:", component:builder.Build());
+        }
 
         [Command("MoveInfo")]
         [Alias("Psynergy", "PsynergyInfo", "psy")]
