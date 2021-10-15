@@ -86,7 +86,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 var spreadMult = IgnoreSpread ? 1 : spread[distFromCenter];
                 var concentrationMult = 1 + (Math.Max(0,(float)Range - targets.Count - 1)) / (2*Range);
                 var prctdmg = (uint)(t.Stats.MaxHP * PercentageDamage / 100);
-                var realDmg = (uint)((baseDmg + dmg + AddDamage) * DmgMult * elMult * spreadMult * t.defensiveMult * User.offensiveMult * concentrationMult + prctdmg);
+                var realDmg = (uint)((baseDmg + dmg + AddDamage + User.addDamage) * DmgMult * elMult * spreadMult * t.defensiveMult * User.offensiveMult * concentrationMult + prctdmg);
                 var punctuation = "!";
 
                 if (t.ElStats.GetRes(Element) == t.ElStats.HighestRes())
@@ -137,7 +137,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 }
                 ii++;
             }
-
+            User.addDamage = 0;
             return log;
         }
 
