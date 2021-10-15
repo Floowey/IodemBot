@@ -263,7 +263,19 @@
         "Wish Well",
         "Thunder Mine",
         "Psynergy Surge",
-        "Break"
+
+        "Break",
+        "Sour",
+        "Rime",
+        "Torrent",
+
+        "Wheeze",
+        "Waft",
+        "Breath",
+
+        "Boreas",
+        "Eclipse",
+        "Moloch"
       ],
       "stats": {
         "maxHP": 5000,
@@ -432,7 +444,15 @@
         "High Impact",
         "High Impact",
         "Resist",
-        "Protect"
+        "Protect",
+        "Kindle",
+        "Flash",
+        "Reflux",
+        "Tinder",
+        "Ulysses",
+        "Zagan",
+        "Tiamat",
+        "Meteor"
       ],
       "stats": {
         "maxHP": 613,
@@ -479,7 +499,13 @@
         "Clay Spire",
         "Revive",
         "Revive",
-        "Revive"
+        "Revive",
+        "Meld",
+        "Chain",
+        "Zagan",
+        "Ramses",
+        "Cybele",
+        "Judgment"
       ],
       "stats": {
         "maxHP": 733,
@@ -522,7 +548,13 @@
         "Debilitate",
         "Revive",
         "Revive",
-        "Revive"
+        "Revive",
+        "Echo",
+        "Steel",
+        "Zagan",
+        "Ramses",
+        "Cybele",
+        "Judgment"
       ],
       "stats": {
         "maxHP": 660,
@@ -573,7 +605,13 @@
         "Restore",
         "Restore",
         "Restore",
-        "Break"
+        "Break",
+        "Fizz",
+        "Steam",
+        "Balm",
+        "Nereid",
+        "Neptune",
+        "Ulysses"
       ],
       "stats": {
         "maxHP": 593,
@@ -625,13 +663,14 @@
         "Oil Drop",
         "Crystal Powder",
         "Bramble Seed",
+        "Sleep Bomb",
         "Nut"
       ],
       "stats": {
         "maxHP": 1500,
         "maxPP": 15,
-        "Atk": 250,
-        "Def": 80,
+        "Atk": 320,
+        "Def": 120,
         "Spd": 150
       },
       "elstats": {
@@ -658,7 +697,7 @@
         "maxHP": 1500,
         "maxPP": 15,
         "Atk": 300,
-        "Def": 56,
+        "Def": 100,
         "Spd": 170
       },
       "elstats": {
@@ -679,6 +718,8 @@
         "Oil Drop",
         "Crystal Powder",
         "Bramble Seed",
+        "Smoke Bomb",
+        "Sleep Bomb",
         "Nut"
       ],
       "stats": {

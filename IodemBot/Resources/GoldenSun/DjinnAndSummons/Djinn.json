@@ -203,7 +203,8 @@
           "Type": "ReduceDamage",
           "DamageReduction": 90
         }
-      ]
+      ],
+      "hasPriority": true
     },
     "Stats": {
       "MaxHP": 10,
