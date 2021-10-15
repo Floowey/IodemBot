@@ -41,7 +41,7 @@ namespace IodemBot.Discords.Services
         public List<BotAction> GetAll()
         {
             var allActions = new List<BotAction>();
-            foreach (Type type in Assembly.GetAssembly(typeof(BotAction)).GetTypes().Where(myType => myType.IsClass && !myType.IsAbstract && myType.IsSubclassOf(typeof(BotAction))))
+            foreach (Type type in typeof(BotAction).Assembly.GetTypes().Where(myType => myType.IsClass && !myType.IsAbstract && myType.IsSubclassOf(typeof(BotAction))))
                 allActions.Add((BotAction)Activator.CreateInstance(type));
 
             return allActions;

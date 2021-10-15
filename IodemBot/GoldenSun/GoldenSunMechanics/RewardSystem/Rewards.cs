@@ -41,7 +41,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             if (HasChest)
             {
                 userAccount.Inv.AwardChest(Chest);
-                awardLog.Add($"{userAccount.Name} found a {Inventory.ChestIcons[Chest]} {Chest} chest!");
+                awardLog.Add($"{userAccount.Name} found a {Emotes.GetIcon(Chest)} {Chest} chest!");
             }
             if (Item != "")
             {

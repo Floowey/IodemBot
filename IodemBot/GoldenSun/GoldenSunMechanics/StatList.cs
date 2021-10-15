@@ -39,21 +39,21 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public override string ToString()
         {
-            return ($"{((VenusAtk != 0 || VenusRes != 0) ? $"{GoldenSunCommands.ElementIcons[Element.Venus]} `{VenusAtk} | {VenusRes}` " : "")}" +
-                $"{((MercuryAtk != 0 || MercuryRes != 0) ? $"{GoldenSunCommands.ElementIcons[Element.Mercury]} `{MercuryAtk} | {MercuryRes}` " : "")}" +
+            return ($"{((VenusAtk != 0 || VenusRes != 0) ? $"{Emotes.GetIcon(Element.Venus)} `{VenusAtk} | {VenusRes}` " : "")}" +
+                $"{((MercuryAtk != 0 || MercuryRes != 0) ? $"{Emotes.GetIcon(Element.Mercury)} `{MercuryAtk} | {MercuryRes}` " : "")}" +
                 "\n" +
-                $"{((MarsAtk != 0 || MarsRes != 0) ? $"{GoldenSunCommands.ElementIcons[Element.Mars]} `{MarsAtk} | {MarsRes}` " : "")}" +
-                $"{((JupiterAtk != 0 || JupiterRes != 0) ? $"{GoldenSunCommands.ElementIcons[Element.Jupiter]} `{JupiterAtk} | {JupiterRes}` " : "")}").Trim();
+                $"{((MarsAtk != 0 || MarsRes != 0) ? $"{Emotes.GetIcon(Element.Mars)} `{MarsAtk} | {MarsRes}` " : "")}" +
+                $"{((JupiterAtk != 0 || JupiterRes != 0) ? $"{Emotes.GetIcon(Element.Jupiter)} `{JupiterAtk} | {JupiterRes}` " : "")}").Trim();
             //return $"`VnPow: {VenusAtk} MrPow: {MarsAtk} JpPow: {JupiterAtk} McPow: {MercuryAtk}`\n" +
             //    $"`VnRes: {VenusRes} MrRes: {MarsRes} JpRes: {JupiterRes} McRes: {MercuryRes}`";
         }
 
         public string NonZerosToString()
         {
-            return ($"{((VenusAtk != 0 || VenusRes != 0) ? $"{GoldenSunCommands.ElementIcons[Element.Venus]} `{VenusAtk} | {VenusRes}` " : "")}" +
-                $"{((MarsAtk != 0 || MarsRes != 0) ? $"{GoldenSunCommands.ElementIcons[Element.Mars]} `{MarsAtk} | {MarsRes}` " : "")}" +
-                $"{((JupiterAtk != 0 || JupiterRes != 0) ? $"{GoldenSunCommands.ElementIcons[Element.Jupiter]} `{JupiterAtk} | {JupiterRes}` " : "")}" +
-                $"{((MercuryAtk != 0 || MercuryRes != 0) ? $"{GoldenSunCommands.ElementIcons[Element.Mercury]} `{MercuryAtk} | {MercuryRes}` " : "")}").Trim();
+            return ($"{((VenusAtk != 0 || VenusRes != 0) ? $"{Emotes.GetIcon(Element.Venus)} `{VenusAtk} | {VenusRes}` " : "")}" +
+                $"{((MarsAtk != 0 || MarsRes != 0) ? $"{Emotes.GetIcon(Element.Mars)} `{MarsAtk} | {MarsRes}` " : "")}" +
+                $"{((JupiterAtk != 0 || JupiterRes != 0) ? $"{Emotes.GetIcon(Element.Jupiter)} `{JupiterAtk} | {JupiterRes}` " : "")}" +
+                $"{((MercuryAtk != 0 || MercuryRes != 0) ? $"{Emotes.GetIcon(Element.Mercury)} `{MercuryAtk} | {MercuryRes}` " : "")}").Trim();
         }
 
         internal int LeastRes()

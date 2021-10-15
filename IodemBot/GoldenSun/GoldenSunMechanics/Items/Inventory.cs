@@ -18,16 +18,6 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public static readonly ChestQuality[] chestQualities = { ChestQuality.Wooden, ChestQuality.Normal, ChestQuality.Silver, ChestQuality.Gold, ChestQuality.Adept, ChestQuality.Daily };
 
-        public static readonly Dictionary<ChestQuality, string> ChestIcons = new Dictionary<ChestQuality, string>()
-        {
-            {ChestQuality.Wooden, "<:wooden_chest:570332670576295986>" },
-            {ChestQuality.Normal, "<:chest:570332670442078219>" },
-            {ChestQuality.Silver, "<:silver_chest:570332670391877678>" },
-            {ChestQuality.Gold, "<:gold_chest:570332670530158593>" },
-            {ChestQuality.Adept, "<:adept_chest:570332670329094146>" },
-            {ChestQuality.Daily, "<:daily_chest:570332670605787157>" }
-        };
-
         public static readonly Dictionary<ItemCategory, string> WarriorIcons = new Dictionary<ItemCategory, string>()
         {
             {ItemCategory.Weapon, "<:Swords:572526110357585920>" },
@@ -225,7 +215,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             {
                 if (Chests[cq] > 0)
                 {
-                    s.Add($"{ChestIcons[cq]}: {Chests[cq]}");
+                    s.Add($"{Emotes.GetIcon(cq)}: {Chests[cq]}");
                 }
             }
             return string.Join(" - ", s);

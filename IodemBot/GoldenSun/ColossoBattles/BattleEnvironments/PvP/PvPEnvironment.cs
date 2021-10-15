@@ -603,7 +603,7 @@ namespace IodemBot.Modules.ColossoBattles
                     var recovery = string.Join(" ", recoveryDjinn.OfElement(el).Select(d => d.Emote));
                     embed.WithColor(Colors.Get(standbyDjinn.Select(e => e.Element.ToString()).ToList()));
 
-                    embed.AddField(GoldenSunCommands.ElementIcons[el], ($"{standby}" +
+                    embed.AddField(Emotes.GetIcon(el), ($"{standby}" +
                         $"{(!standby.IsNullOrEmpty() && !recovery.IsNullOrEmpty() ? "\n" : "\u200b")}" +
                         $"{(recovery.IsNullOrEmpty() ? "" : $"({recovery})")}").Trim(), true);
                     if (embed.Fields.Count == 2 || embed.Fields.Count == 5)

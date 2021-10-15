@@ -17,12 +17,6 @@ namespace IodemBot.Modules
 {
     public class GoldenSunCommands : ModuleBase<SocketCommandContext>
     {
-        public static Dictionary<Element, string> ElementIcons = new Dictionary<Element, string>(){
-            {Element.Venus, "<:Venus_Element:573938340219584524>"},
-            {Element.Mars, "<:Mars_Element:573938340307402786>"},
-            {Element.Jupiter, "<:Jupiter_Element:573938340584488987>" },
-            {Element.Mercury, "<:Mercury_Element:573938340743872513>" }, {Element.none , ""}
-        };
 
         //public enum Element { Venus, Mars, Jupiter, Mercury, None }
 
@@ -50,7 +44,7 @@ namespace IodemBot.Modules
                 var embed = new EmbedBuilder();
                 embed.WithAuthor($"{adeptClass.Name} - {series.Archtype}");
                 embed.WithColor(Colors.Get(series.Elements.Select(s => s.ToString()).ToArray()));
-                var relevantMoves = AdeptClassSeriesManager.GetMoveset(adeptClass).Where(m => m is Psynergy).ToList().ConvertAll(m => (Psynergy)m).ConvertAll(p => $"{p.Emote} {p.Name} `{p.PPCost}`");
+                var relevantMoves = AdeptClassSeriesManager.GetMoveset(adeptClass).OfType<Psynergy>().Select(p => $"{p.Emote} {p.Name} `{p.PPCost}`");
                 embed.AddField("Description", series.Description ?? "-");
                 embed.AddField("Stats", adeptClass.StatMultipliers, true);
                 embed.AddField("Elemental Stats", series.Elstats.ToString(), true);
@@ -81,7 +75,7 @@ namespace IodemBot.Modules
             var embed = new EmbedBuilder();
             embed.WithTitle("Classes");
             embed.WithColor(Colors.Get(account.Element.ToString()));
-            embed.AddField($"Available as {ElementIcons[account.Element]} {account.Element} Adept:", string.Join(", ", OfElement));
+            embed.AddField($"Available as {Emotes.GetIcon(account.Element)} {account.Element} Adept:", string.Join(", ", OfElement));
             embed.AddField($"Others Unlocked:", string.Join(", ", allAvailableClasses.Select(c => c.Name).Except(OfElement).OrderBy(n => n)));
             embed.WithFooter($"Total: {allAvailableClasses.Count()}/{allClasses.Count()}");
             _ = ReplyAsync(embed: embed.Build());
@@ -152,7 +146,7 @@ namespace IodemBot.Modules
                             var items = item.Gear.Count > 0 ? string.Join("", item.Gear.Select(i => user.Inv.GetItem(i)?.Icon ?? "-")) : "no gear";
                             var djinn = item.Djinn.Count > 0 ? string.Join("", item.Djinn.Select(d => user.DjinnPocket.GetDjinn(d)?.Emote ?? "-")) : "no Djinn";
                             embed.AddField(item.LoadoutName,
-                                $"{ElementIcons[item.Element]} {item.ClassSeries}\n" +
+                                $"{Emotes.GetIcon(item.Element)} {item.ClassSeries}\n" +
                                 $"{items}\n" +
                                 $"{djinn}"
                                 , inline: true);
@@ -455,10 +449,10 @@ namespace IodemBot.Modules
         public async Task PutRoles([Remainder] ITextChannel channel)
         {
             var builder = new ComponentBuilder();
-            builder.WithButton("Venus", $"^{nameof(ChangeAdeptAction)}.Venus", ButtonStyle.Primary, emote: Emote.Parse("<:Venus_Star:572495673186975754>"));
-            builder.WithButton("Mars", $"^{nameof(ChangeAdeptAction)}.Mars", ButtonStyle.Primary, emote: Emote.Parse("<:Mars_Star:572495673132318721>"));
-            builder.WithButton("Jupiter", $"^{nameof(ChangeAdeptAction)}.Jupiter", ButtonStyle.Primary, emote: Emote.Parse("<:Jupiter_Star:572495672906088459>"));
-            builder.WithButton("Mercury", $"^{nameof(ChangeAdeptAction)}.Mercury", ButtonStyle.Primary, emote: Emote.Parse("<:Mercury_Star:572495673128124446>"));
+            builder.WithButton("Venus", $"^{nameof(ChangeAdeptAction)}.Venus", ButtonStyle.Primary, emote: Emotes.GetEmote(Element.Venus));
+            builder.WithButton("Mars", $"^{nameof(ChangeAdeptAction)}.Mars", ButtonStyle.Primary, emote: Emotes.GetEmote(Element.Mars));
+            builder.WithButton("Jupiter", $"^{nameof(ChangeAdeptAction)}.Jupiter", ButtonStyle.Primary, emote: Emotes.GetEmote(Element.Jupiter));
+            builder.WithButton("Mercury", $"^{nameof(ChangeAdeptAction)}.Mercury", ButtonStyle.Primary, emote: Emotes.GetEmote(Element.Mercury));
             await channel.SendMessageAsync("Choose a role:", component:builder.Build());
         }
 

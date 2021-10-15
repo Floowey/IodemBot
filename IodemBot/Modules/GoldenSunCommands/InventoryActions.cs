@@ -18,7 +18,6 @@ namespace IodemBot.Modules
 {
     class InventoryAction : IodemBotCommandAction
     {
-        private static string coinEmote = "<:coin:569836987767324672>";
         public override EphemeralRule EphemeralRule => EphemeralRule.EphemeralOrFail;
 
         [ActionParameterSlash(Order = 0, Name = "detail", Description = "Whether to show Names or not", Required = false, Type = ApplicationCommandOptionType.String)]
@@ -100,7 +99,7 @@ namespace IodemBot.Modules
 
             var fb = new EmbedFooterBuilder();
             fb.WithText($"{inv.Count} / {inv.MaxInvSize} {(inv.Upgrades < 4 ? $"Upgrade: {50000 * Math.Pow(2, inv.Upgrades)}" : "")}");
-            embed.AddField("Coin", $"{coinEmote} {inv.Coins}");
+            embed.AddField("Coin", $"{Emotes.GetIcon("Coin")} {inv.Coins}");
             embed.WithColor(Colors.Get("Iodem"));
             embed.WithFooter(fb);
             return embed.Build();
@@ -111,16 +110,17 @@ namespace IodemBot.Modules
             var inv = account.Inv;
             var builder = new ComponentBuilder();
             bool detailled = detail == Detail.Names;
+            detail = Detail.Names;
             //add status menu button
-            builder.WithButton(detailled ? "Status" : null, $"#{nameof(StatusAction)}", style: ButtonStyle.Success, emote: Emote.Parse("<:Status:896069873124409375>"));
-            builder.WithButton(detailled ? "Warrior Gear" : null, $"#{nameof(GearAction)}.Warrior", emote: Emote.Parse("<:Long_Sword:569813505423704117>"), style: ButtonStyle.Success);
-            builder.WithButton(detailled ? "Mage Gear" : null, $"#{nameof(GearAction)}.Mage", emote: Emote.Parse("<:Wooden_Stick:569813632897253376>"), style: ButtonStyle.Success);
-            builder.WithButton(detailled ? "Shop" : null, $"#{nameof(ShopAction)}.", ButtonStyle.Secondary, Emote.Parse("<:Buy:896735785137614878>"));
+            builder.WithButton(detailled ? "Status" : null, $"#{nameof(StatusAction)}", style: ButtonStyle.Primary, emote: Emotes.GetEmote("StatusAction"));
+            builder.WithButton(detailled ? "Warrior Gear" : null, $"#{nameof(GearAction)}.Warrior", emote: Emotes.GetEmote("Warrior"), style: ButtonStyle.Success);
+            builder.WithButton(detailled ? "Mage Gear" : null, $"#{nameof(GearAction)}.Mage", emote: Emotes.GetEmote("Mage"), style: ButtonStyle.Success);
             var chest = inv.HasAnyChests() ? inv.NextChestQuality() : ChestQuality.Normal;
-            builder.WithButton(detailled ? "Open Chest" : null, $"#{nameof(ChestAction)}.{chest}", emote: Emote.Parse(Inventory.ChestIcons[chest]), disabled:!inv.HasAnyChests());
+            builder.WithButton(detailled ? "Open Chest" : null, $"#{nameof(ChestAction)}.{chest}", style: ButtonStyle.Success, emote: Emotes.GetEmote(chest), disabled:!inv.HasAnyChests());
             if (inv.Upgrades < 4)
-                builder.WithButton(detailled ? "Upgrade Inventory" : null, $"#{nameof(UpgradeInventory)}", emote: Emote.Parse("<:button_inventoryupgrade:897032416626098217>"));
-            builder.WithButton(detailled ? "Sort Inventory" : null, $"#{nameof(SortInventory)}", emote: Emote.Parse("<:button_inventorysort:897032416915488869>"));
+                builder.WithButton(detailled ? "Upgrade" : null, $"#{nameof(UpgradeInventory)}", style: ButtonStyle.Success, emote: Emotes.GetEmote("UpgradeInventoryAction"), row:1);
+            builder.WithButton(detailled ? "Sort" : null, $"#{nameof(SortInventory)}", style: ButtonStyle.Success, emote: Emotes.GetEmote("SortInventoryAction"),row:1);
+            builder.WithButton(detailled ? "Shop" : null, $"#{nameof(ShopAction)}.", ButtonStyle.Success, Emotes.GetEmote("ShopAction"), row:1);
 
             // If cursed, add remove Curse Button
             return builder.Build();
@@ -171,17 +171,10 @@ namespace IodemBot.Modules
                         var gear_opt = (string) idOptions[1];
                         SelectedCategory = gear_opt;
                     }
-                } else if (selectOptions != null && selectOptions.Any())
+                } 
+                if(selectOptions != null && selectOptions.Any())
                 {
-                    var splits = selectOptions[0].Split('.');
-                    var arch_opt = splits[0];
-                    SelectedArchtype = Enum.Parse<ArchType>(arch_opt);
-
-                    if (splits.Count() > 1)
-                    {
-                        var gear_opt = splits[1];
-                        SelectedCategory = gear_opt;
-                    }
+                    SelectedCategory = selectOptions.FirstOrDefault();
                 }
                     return Task.CompletedTask;
             },
@@ -273,10 +266,10 @@ namespace IodemBot.Modules
                     var icons = isWarrior ? Inventory.WarriorIcons : Inventory.MageIcons;
                     var emote = equipped?.IconDisplay ?? icons[cat];
                     var defaultSel = category?.Equals(cat.ToString()) ?? false;
-                    categoryOptions.Add(new SelectMenuOptionBuilder($"{cat}", $"{archtype}.{cat}.", @default:defaultSel, emote: Emote.Parse(emote)));
+                    categoryOptions.Add(new SelectMenuOptionBuilder($"{cat}", $"{cat}", @default:defaultSel, emote: Emote.Parse(emote)));
                 }
             }
-            builder.WithSelectMenu("gear", $"#{nameof(GearAction)}", options:categoryOptions, placeholder:"Select a Gear Slot", row:0);
+            builder.WithSelectMenu("gear", $"#{nameof(GearAction)}.{archtype}", options:categoryOptions, placeholder:"Select a Gear Slot", row:0);
 
             if(!string.IsNullOrEmpty(category))
             {
@@ -284,13 +277,13 @@ namespace IodemBot.Modules
                 foreach (var item in ItemsForGear.Where(i => category.Equals(i.Category.ToString())))
                 {
                     var defaultSel = EquippedGear.Contains(item);
-                    if(!itemOptions.Any(o => o.Label.Equals(item.Itemname)))
-                        itemOptions.Add(new SelectMenuOptionBuilder($"{item.Name}", $"{item.Itemname}", emote: Emote.Parse(item.IconDisplay), @default: defaultSel));
+                    if(!itemOptions.Any(o => o.Value.Equals(item.Name)))
+                        itemOptions.Add(new SelectMenuOptionBuilder($"{item.Name}", $"{item.Name}", emote: Emote.Parse(item.IconDisplay), @default: defaultSel));
                 }
 
                 builder.WithSelectMenu("items", $"#{nameof(EquipAction)}.{archtype}", options: itemOptions, placeholder:"Select an item to equip it to this slot", row:1);
             }
-            builder.WithButton(null, $"#{nameof(InventoryAction)}", style: ButtonStyle.Success, emote: Emote.Parse("<:Item:895957416557027369>"));
+            builder.WithButton(null, $"#{nameof(InventoryAction)}", style: ButtonStyle.Success, emote: Emotes.GetEmote("InventoryAction"));
             return builder.Build();
         }
     }
@@ -382,16 +375,17 @@ namespace IodemBot.Modules
 
             var item = inv.GetItem(ItemToEquip);
             if (item == null)
-            {
                 return Task.FromResult((false, "Dont have that."));
-            }
+
+            if (item.ExclusiveTo.Length > 0 && !item.ExclusiveTo.Contains(account.Element))
+                return Task.FromResult((false, $"A {account.Element} cannot equip {item.Name}"));
+
             return Task.FromResult((true, (string)null));
         }
     }
 
     public class ShopAction : IodemBotCommandAction
     {
-        //private string coinEmote = "<:coin:569836987767324672>";
         private Inventory _shop { get; set; }
         public override ActionGuildSlashCommandProperties SlashCommandProperties => new()
         {
@@ -419,7 +413,7 @@ namespace IodemBot.Modules
             var builder = GetShopComponent();
             if (!intoNew)
             {
-                builder.WithButton(null, $"#{nameof(InventoryAction)}", style: ButtonStyle.Success, emote: Emote.Parse("<:Item:895957416557027369>"));
+                builder.WithButton("Inventory", $"#{nameof(InventoryAction)}", style: ButtonStyle.Success, emote: Emotes.GetEmote("InventoryAction"));
             }
             msgProps.Components = builder.Build() ;
             return Task.CompletedTask;
@@ -612,7 +606,7 @@ namespace IodemBot.Modules
         {
             var embed = new EmbedBuilder();
 
-            embed.WithDescription($"Opening {chestQuality} Chest {Inventory.ChestIcons[chestQuality.Value]}...");
+            embed.WithDescription($"Opening {chestQuality} Chest {Emotes.GetIcon(chestQuality.Value)}...");
 
             embed.WithColor(Colors.Get("Iodem"));
             return embed.Build();
@@ -625,7 +619,7 @@ namespace IodemBot.Modules
             {
                 embed.WithFooter($"Current Reward: {inv.DailiesInARow % Inventory.dailyRewards.Length + 1}/{Inventory.dailyRewards.Length} | Overall Streak: {inv.DailiesInARow + 1}");
             }
-            embed.WithDescription($"{Inventory.ChestIcons[chestQuality.Value]} You found a {item.Name} {item.IconDisplay}");
+            embed.WithDescription($"{Emotes.GetIcon(chestQuality.Value)} You found a {item.Name} {item.IconDisplay}");
 
             return embed.Build();
         }

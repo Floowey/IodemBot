@@ -60,7 +60,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
             var fb = new EmbedFooterBuilder();
             fb.WithText($"{inv.Count} / {inv.MaxInvSize} {(inv.Upgrades < 4 ? $"Upgrade: {50000 * Math.Pow(2, inv.Upgrades)}" : "")}");
-            embed.AddField("Coin", $"<:coin:569836987767324672> {inv.Coins}");
+            embed.AddField("Coin", $"{Emotes.GetIcon("Coin")} {inv.Coins}");
             embed.WithColor(Colors.Get("Iodem"));
             embed.WithFooter(fb);
             await Context.Channel.SendMessageAsync("", false, embed.Build());
@@ -473,7 +473,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
             var embed = new EmbedBuilder();
 
-            embed.WithDescription($"Opening {cq} Chest {Inventory.ChestIcons[cq]}...");
+            embed.WithDescription($"Opening {cq} Chest {Emotes.GetIcon(cq)}...");
 
             embed.WithColor(Colors.Get("Iodem"));
             var msg = await Context.Channel.SendMessageAsync("", false, embed.Build());
@@ -484,7 +484,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             {
                 embed.WithFooter($"Current Reward: {inv.DailiesInARow % dailyRewards.Length + 1}/{dailyRewards.Length} | Overall Streak: {inv.DailiesInARow + 1}");
             }
-            embed.WithDescription($"{Inventory.ChestIcons[cq]} You found a {item.Name} {item.IconDisplay}");
+            embed.WithDescription($"{Emotes.GetIcon(cq)} You found a {item.Name} {item.IconDisplay}");
 
             await Task.Delay((int)cq * 700);
             _ = msg.ModifyAsync(m => m.Embed = embed.Build());
@@ -626,7 +626,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             embed.WithAuthor($"{item.Name} - {item.Rarity}{(item.IsArtifact ? " Artifact" : "")}");
 
             embed.AddField("Icon", item.IconDisplay, true);
-            embed.AddField("Value", $"<:coin:569836987767324672> {item.Price}", true);
+            embed.AddField("Value", $"{Emotes.GetIcon("Coin")} {item.Price}", true);
             embed.AddField("Type", item.ItemType, true);
             embed.AddField("Summary", item.Summary(), inline: true);
 

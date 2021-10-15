@@ -92,7 +92,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public static bool SetClass(UserAccount account, string targetClass = "")
         {
             string curClass = GetClassSeries(account).Name;
-            if (targetClass == "")
+            if (targetClass.IsNullOrEmpty())
             {
                 account.ClassToggle++;
             }

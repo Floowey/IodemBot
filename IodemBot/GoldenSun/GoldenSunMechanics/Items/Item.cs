@@ -66,7 +66,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             get { return ItemCategorization.First(k => k.Value.Contains(ItemType)).Key; }
         }
 
-        public Element[] ExclusiveTo { get; set; }
+        public Element[] ExclusiveTo { get; set; } = Array.Empty<Element>();
         public bool IsStackable { get; set; }
 
         public bool IsUsable { get; set; } = false;
@@ -146,7 +146,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
             if (DamageAlignment != Element.none)
             {
-                various.Add($"{GoldenSunCommands.ElementIcons[DamageAlignment]}");
+                various.Add($"{Emotes.GetIcon(DamageAlignment)}");
             }
 
             if (PPRegen > 0)
@@ -239,7 +239,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
                 if (UnleashAlignment != Element.none)
                 {
-                    s.Append(GoldenSunCommands.ElementIcons[UnleashAlignment]);
+                    s.Append(Emotes.GetIcon(UnleashAlignment));
                 }
                 s.Append(string.Join(", ", AllEffects.Select(e => $"{e}")));
                 if (UnleashName != null)

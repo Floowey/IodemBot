@@ -68,10 +68,10 @@ namespace IodemBot.Modules.GoldenSunMechanics
             embed.WithAuthor($"{summon.Name}");
             embed.AddField("Icon", summon.Emote, true);
             embed.AddField("Needed",
-                string.Join("", Enumerable.Repeat(GoldenSunCommands.ElementIcons[Element.Venus], summon.VenusNeeded)
-                .Concat(Enumerable.Repeat(GoldenSunCommands.ElementIcons[Element.Mars], summon.MarsNeeded))
-                .Concat(Enumerable.Repeat(GoldenSunCommands.ElementIcons[Element.Jupiter], summon.JupiterNeeded))
-                .Concat(Enumerable.Repeat(GoldenSunCommands.ElementIcons[Element.Mercury], summon.MercuryNeeded))),
+                string.Join("", Enumerable.Repeat(Emotes.GetIcon(Element.Venus), summon.VenusNeeded)
+                .Concat(Enumerable.Repeat(Emotes.GetIcon(Element.Mars), summon.MarsNeeded))
+                .Concat(Enumerable.Repeat(Emotes.GetIcon(Element.Jupiter), summon.JupiterNeeded))
+                .Concat(Enumerable.Repeat(Emotes.GetIcon(Element.Mercury), summon.MercuryNeeded))),
                 true);
             var effectList = summon.Effects.Count > 0 ? string.Join("\n", summon.Effects.Select(e => e.ToString())) : "";
             var UserList = summon.EffectsOnUser?.Count > 0 ? "On User:\n" + string.Join("\n", summon.EffectsOnUser.Select(e => e.ToString())) : "";
@@ -97,7 +97,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             var djinnPocket = EntityConverter.ConvertUser(Context.User).DjinnPocket;
             var embed = new EmbedBuilder();
 
-            var equippedstring = string.Join("", djinnPocket.GetDjinns().Select(d => GoldenSunCommands.ElementIcons[d.Element]));
+            var equippedstring = string.Join("", djinnPocket.GetDjinns().Select(d => Emotes.GetIcon(d.Element)));
             if (equippedstring.IsNullOrEmpty())
             {
                 equippedstring = "-";
