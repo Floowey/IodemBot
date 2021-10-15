@@ -7069,6 +7069,93 @@
       }
     ]
   },
+  "Path of Gaia IV": {
+    "name": "Path of Gaia IV",
+    "IsOneTimeOnly": false,
+    "FlavourText": "Please be patient until this chapter becomes available!",
+    "Image": "",
+    "IsDefault": false,
+    "Requirement": {
+      "MinLevel": "999",
+      "Elements": [ "Venus" ],
+      "TagsRequired": [ "Gaia3" ],
+      "TagsLock": [ "Gaia4" ]
+    },
+    "Matchups": [
+      {
+        "Flavourtext": "Hama doesnt know what to do with you. 'As a wise Venus Adept once said. _This is your journey now._'",
+        "EnemyNames": [ "Rat" ],
+        "Image": "",
+        "RewardTables": [
+          [ { "Weight": 1 } ]
+        ]
+      },
+      {
+        "Flavourtext": "Farmers cottage in the middle of a field. You walk up to it and notice a bear attacking the farmer. Will you help the farmer?",
+        "EnemyNames": [ "Rat" ],
+        "Image": "",
+        "RewardTables": [
+          [ { "Weight": 1 } ]
+        ]
+      },
+      {
+        "Flavourtext": "Fight the bear",
+        "EnemyNames": [ "Rat" ],
+        "Image": "",
+        "RewardTables": [
+          [ { "Weight": 1 } ]
+        ]
+      },
+      {
+        "Flavourtext": "The farmer thanks you and invites you to eat. Roasted Mutton. Scraggy fox approaches with cubs hiding out in the woods. Farmer heads out, armed with a pitchfork. (Share the meat)",
+        "EnemyNames": [ "Rat" ],
+        "Image": "",
+        "RewardTables": [
+          [ { "Weight": 1 } ]
+        ]
+      },
+      {
+        "Flavourtext": "Farmer thanks you, reveals he's a local count who owns the land. Has a job for you gives you gaias axe and wants you to either chop wood or hunt down the wolves that kill lumberjacks. (decline)",
+        "EnemyNames": [ "Rat" ],
+        "Image": "",
+        "RewardTables": [
+          [ { "Weight": 1 } ]
+        ]
+      },
+      {
+        "Flavourtext": "Fight the counts guards",
+        "EnemyNames": [ "Rat" ],
+        "Image": "",
+        "RewardTables": [
+          [ { "Weight": 1 } ]
+        ]
+      },
+      {
+        "Flavourtext": "You head into the woods, wanting to stop the lumberjacks. You findyourself on a glade, surrounded by 9 enemies (Defend)",
+        "EnemyNames": [ "Rat" ],
+        "Image": "",
+        "RewardTables": [
+          [ { "Weight": 1 } ]
+        ]
+      },
+      {
+        "Flavourtext": "Fight Judgement ('You showed to have your heart in a virtuous place. But what worth is that if you cannot enforce your judgment')",
+        "EnemyNames": [ "Rat" ],
+        "Image": "",
+        "RewardTables": [
+          [ { "Weight": 1 } ]
+        ]
+      },
+      {
+        "Flavourtext": "End",
+        "EnemyNames": [ "Rat" ],
+        "Image": "",
+        "RewardTables": [
+          [ { "Weight": 1 } ]
+        ]
+      }
+    ]
+  },
   "Path of Magma I": {
     "name": "Path of Magma I",
     "IsOneTimeOnly": false,
@@ -7436,6 +7523,85 @@
               "Dungeon": "Path Of Magma IV"
             }
           ]
+        ]
+      }
+    ]
+  },
+  "Path of Magma IV": {
+    "name": "Path of Magma IV",
+    "IsOneTimeOnly": false,
+    "FlavourText": "Please be patient until this chapter becomes available!",
+    "Image": "",
+    "IsDefault": false,
+    "Requirement": {
+      "MinLevel": "999",
+      "Elements": [ "Mars" ],
+      "TagsRequired": [ "Magma3" ],
+      "TagsLock": [ "Magma4" ]
+    },
+    "Matchups": [
+      {
+        "Flavourtext": "Hama greets you as you arrive. 'Welcome, wielder of flame.' She teleports you both to a great plateau overlooking the continent of Indra. 'Your arrival is timely. You have shown mastery of your internal fire and trained in tempering the Mars sources in Weyard. But did you know there is yet one more source of fire?'  ",
+        "EnemyNames": [ "Next" ],
+        "Image": "",
+        "RewardTables": [
+          [ { "Weight": 1 } ]
+        ]
+      },
+      {
+        "Flavourtext": "She offers a smile to your puzzlement, and gestures upwards, into a perfectly clear sky filled with stars.  'The heavens above also burn, like bright coals after a bonfire.  Their flame helped give rise to ours here in Weyard.'",
+        "EnemyNames": [ "Rat" ],
+        "Image": "www.visitutah.com%2Fazure%2Fcmsroot%2Fvisitutah%2Fmedia%2Fsite-assets%2Fwinter-photography%2Fski-resorts%2Feagle-point%2Fcapitol-reef_stock-photo-temple-of-the-moon-76790359.jpg%3Fw%3D956%26h%3D1187%26mode%3Dcrop%26scale%3Dboth%26quality%3D65&sp=1633801001T922b424b28d20c57233f4d4b39173bec1c23201b84ad942fd3a1a729f468ca0e",
+        "RewardTables": [
+          [ { "Weight": 1 } ]
+        ]
+      },
+      {
+        "Flavourtext": "asdf",
+        "EnemyNames": [ "Rat" ],
+        "Image": "",
+        "RewardTables": [
+          [ { "Weight": 1 } ]
+        ]
+      },
+      {
+        "Flavourtext": "asdf",
+        "EnemyNames": [ "Rat" ],
+        "Image": "",
+        "RewardTables": [
+          [ { "Weight": 1 } ]
+        ]
+      },
+      {
+        "Flavourtext": "\\'Look, over there. The ram cowers from the flame. But it's stubborn, it has it's heat, an undying flame that powers its heart.'",
+        "EnemyNames": [ "Aries" ],
+        "Image": "",
+        "RewardTables": [
+          [ { "Weight": 1 } ]
+        ]
+      },
+      {
+        "Flavourtext": "ONLY FLAME CAN SATE THE LION'S HUNGER.",
+        "EnemyNames": [ "Leo" ],
+        "Image": "",
+        "RewardTables": [
+          [ { "Weight": 1 } ]
+        ]
+      },
+      {
+        "Flavourtext": "THE ARCHER'S DEADLIEST FOE IS HIMSELF.",
+        "EnemyNames": [ "Sagittarius" ],
+        "Image": "",
+        "RewardTables": [
+          [ { "Weight": 1 } ]
+        ]
+      },
+      {
+        "Flavourtext": "asdf",
+        "EnemyNames": [ "Meteor" ],
+        "Image": "",
+        "RewardTables": [
+          [ { "Weight": 1 } ]
         ]
       }
     ]
@@ -7808,6 +7974,69 @@
       }
     ]
   },
+  "Path of Air IV": {
+    "name": "Path of Air IV",
+    "IsOneTimeOnly": false,
+    "FlavourText": "Please be patient until this chapter becomes available!",
+    "Image": "",
+    "IsDefault": false,
+    "Requirement": {
+      "MinLevel": "999",
+      "Elements": [ "Jupiter" ],
+      "TagsRequired": [ "Air3" ],
+      "TagsLock": [ "Air4" ]
+    },
+    "Matchups": [
+      {
+        "Flavourtext": "Hama says things",
+        "EnemyNames": [ "Next" ],
+        "Image": "",
+        "RewardTables": [
+          [ { "Weight": 1 } ]
+        ]
+      },
+      {
+        "Flavourtext": "fight something",
+        "EnemyNames": [ "Rat" ],
+        "Image": "",
+        "RewardTables": [
+          [ { "Weight": 1 } ]
+        ]
+      },
+      {
+        "Flavourtext": "solve puzzle",
+        "EnemyNames": [ "Rat" ],
+        "Image": "",
+        "RewardTables": [
+          [ { "Weight": 1 } ]
+        ]
+      },
+      {
+        "Flavourtext": "fight something",
+        "EnemyNames": [ "Rat" ],
+        "Image": "",
+        "RewardTables": [
+          [ { "Weight": 1 } ]
+        ]
+      },
+      {
+        "Flavourtext": "solve puzzle",
+        "EnemyNames": [ "Rat" ],
+        "Image": "",
+        "RewardTables": [
+          [ { "Weight": 1 } ]
+        ]
+      },
+      {
+        "Flavourtext": "story placeholder",
+        "EnemyNames": [ "Rat" ],
+        "Image": "",
+        "RewardTables": [
+          [ { "Weight": 1 } ]
+        ]
+      }
+    ]
+  },
   "Path of Aqua I": {
     "name": "Path of Aqua I",
     "IsOneTimeOnly": false,
@@ -8169,6 +8398,95 @@
               "Dungeon": "Path Of Aqua IV"
             }
           ]
+        ]
+      }
+    ]
+  },
+  "Path of Aqua IV": {
+    "name": "Path of Aqua IV",
+    "IsOneTimeOnly": false,
+    "FlavourText": "Hama put out an urgent call for your help. Will you answer the call?",
+    "Image": "",
+    "IsDefault": false,
+    "Requirement": {
+      "MinLevel": "999",
+      "Elements": [ "Mercury" ],
+      "TagsRequired": [ "Aqua3" ],
+      "TagsLock": [ "Aqua4" ]
+    },
+    "Matchups": [
+      {
+        "Flavourtext": "hi",
+        "EnemyNames": [ "NextHama" ],
+        "Image": "",
+        "RewardTables": [
+          [ { "Weight": 1 } ]
+        ]
+      },
+      {
+        "Flavourtext": "You step out into Tundaria, the roaring winds of the ice storm screaming around you.  In the wake of the storm, trees and shrubs have been frozen solid.  Shivering, Hama wishes you luck and tells you she'll return for you.  Then she is gone.  Trusting in your Psynergy to protect you, you approach the storm.   Some wolves emerge and attack!",
+        "EnemyNames": [ "White Wolf 1", "White Wolf 2", "White Wolf 3", "White Wolf 4", "White Wolf 5" ],
+        "Image": "",
+        "RewardTables": [
+          [ { "Weight": 1 } ]
+        ]
+      },
+      {
+        "Flavourtext": "Pressing onward into the storm, it becomes harder to see through the swirling snow.  A flight of dragons wings in from above and decides you look like easy prey.",
+        "EnemyNames": [ "Blue Dragon 1", "Winged Dragon 1", "Blue Dragon 2" ],
+        "Image": "",
+        "RewardTables": [
+          [ { "Weight": 1 } ]
+        ]
+      },
+      {
+        "Flavourtext": "Through the howling wind, you hear laughter and shouts.  You head towards them, and find oceanic nobility enjoying the storm.  They immediately take exception to your intrusion.",
+        "EnemyNames": [ "Gillman 1", "Gillman Lord 1", "Gillman Lord 2", "Gillman Lord 3", "Gillman 2" ],
+        "Keywords": [ "Shuffle" ],
+        "Image": "",
+        "RewardTables": [
+          [ { "Weight": 1 } ]
+        ]
+      },
+      {
+        "Flavourtext": "After you settle them down, the Mermen tell you that in Lord Boreas' absence, the lords of ice and water have decided to make themselves known to the world.  They point you onward, and you quickly find a trio of grudge-holding Krakens barring your path",
+        "EnemyNames": [ "Kraken", "Kraken", "Kraken" ],
+        "Image": "",
+        "RewardTables": [
+          [ { "Weight": 1 } ]
+        ]
+      },
+      {
+        "Flavourtext": "You reach the center of the storm, and a host of icy and watery creatures cavorts to raucous music: monstrous throats singing, frozen trees shattering, and crude drums pounding.  You fight your way into the middle of the commotion.",
+        "EnemyNames": [ "Next" ],
+        "Image": "",
+        "RewardTables": [
+          [ { "Weight": 1 } ]
+        ]
+      },
+      {
+        "Flavourtext": "a",
+        "EnemyNames": [ "Poseidon" ],
+        "Image": "",
+        "RewardTables": [
+          [ { "Weight": 1 } ]
+        ]
+      },
+      {
+        "Flavourtext": "The storm begins to die down as Poseidon is defeated.  However, the ground begins to shake, icy ground splitting open beneath the partygoers and you.  Boreas rises up.  You pause to heal up, trusting the Lord of Ice and Snow will hear you out.  Alas, he sees Poseidon and the other fallen members of his court, and spares you no time to explain.  ",
+        "EnemyNames": [ "BoreasSummon" ],
+        "Keywords": [ "Heal" ],
+        "Image": "",
+        "RewardTables": [
+          [ { "Weight": 1 } ]
+        ]
+      },
+      {
+        "Flavourtext": "Having defeated Boreas, you explain the situation to him.  He apologizes for the misunderstanding, and tells you he was attacked by a powerful dark shadow.  He fought off the entity, but was gravely wounded and unable to rule his subjects.  With a gesture from his hand, the creatures of ice and water disperse, ending the powerful ice storm.  ",
+        "EnemyNames": [ "End" ],
+        "Image": "",
+        "RewardTables": [
+          [ { "Weight": 1 } ]
         ]
       }
     ]

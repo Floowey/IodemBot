@@ -82,8 +82,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
                     if (djinn.IsEvent && userAccount.DjinnPocket.Djinn.Count(d => d.IsEvent) == 1)
                     {
                             awardLog.Add($"Congratulations, You have found an **Event Djinni**! They are custom made djinni, only available within the event, as a small trinket for your participation. " +
-                                $"They behave differently to other djinn, in that they will not towards your Djinn Pocket limit or any class upgrades. " +
-                                $", however they will carry over if you decide to reset your game :)" +
+                                $"They behave differently to other djinn, in that they will not count towards your Djinn Pocket limit or any class upgrades, " +
+                                $"however they will carry over if you decide to reset your game :)" +
                                 $"(Event Djinn will not be allowed in any upcoming tournaments.)");
                     }
 

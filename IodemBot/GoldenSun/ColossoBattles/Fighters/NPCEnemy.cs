@@ -37,7 +37,7 @@ namespace IodemBot.Modules.ColossoBattles
             List<string> log = new List<string>();
             for (int i = 0; i < ExtraTurns; i++)
             {
-                SelectRandom();
+                SelectRandom(includePriority:false);
                 log.AddRange(MainTurn());
             }
             return log;

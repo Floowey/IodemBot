@@ -387,7 +387,8 @@ namespace IodemBot.Modules.ColossoBattles
             {
                 openBattle = new EndlessBattleEnvironment($"{Context.User.Username}", gs.ColossoChannel, false, await PrepareBattleChannel($"Endless-{Context.User.Username}", guild, persistent: false));
                 if (fastTrackOption == FastTrackOption.FastTrack && acc.Inv.RemoveBalance(10000))
-                {                
+                {
+                    UserAccountProvider.StoreUser(acc);
                     openBattle.SetStreak(12);
                 }
             }

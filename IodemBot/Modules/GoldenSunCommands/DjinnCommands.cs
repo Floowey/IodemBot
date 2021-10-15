@@ -236,7 +236,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         [Command("Djinn Release")]
         [Summary("Say goodbye to a djinn.")]
-        public async Task ReleaseDjinn(string DjinnName)
+        public async Task ReleaseDjinn([Remainder] string DjinnName)
         {
             _ = ReleaseDjinnHidden(DjinnName);
             await Task.CompletedTask;

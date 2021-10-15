@@ -663,7 +663,7 @@ namespace IodemBot.Modules.ColossoBattles
             Weapon = otherFighter.Weapon;
         }
 
-        public void SelectRandom()
+        public void SelectRandom(bool includePriority = true)
         {
             if (!battle.isActive)
             {
@@ -683,7 +683,7 @@ namespace IodemBot.Modules.ColossoBattles
             {
                 try
                 {
-                    selected = Moves.Where(s => s.ValidSelection(this)).Random();
+                    selected = Moves.Where(s => (includePriority || !s.HasPriority) && s.ValidSelection(this)).Random();
                     selected.ChooseBestTarget(this);
                     hasSelected = true;
                 }
