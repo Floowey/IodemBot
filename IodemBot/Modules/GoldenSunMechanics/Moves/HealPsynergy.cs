@@ -30,8 +30,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
             {
                 return;
             }
-
-            var aliveFriends = User.GetTeam().Where(f => f.IsAlive).ToList();
+            var party = User.GetTeam();
+            var aliveFriends = party.Where(f => f.IsAlive).ToList();
             if (aliveFriends.Count == 0)
             {
                 TargetNr = 0;
@@ -42,11 +42,11 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
             if (aliveFriends.Any(d => d.Name.Contains("Star")))
             {
-                TargetNr = aliveFriends.IndexOf(User.GetTeam().Where(d => d.Name.Contains("Star")).Random());
+                TargetNr = party.IndexOf(party.Where(d => d.Name.Contains("Star")).Random());
             }
             else
             {
-                TargetNr = User.GetTeam().IndexOf(aliveFriends.First());
+                TargetNr = party.IndexOf(aliveFriends.First());
             }
         }
 
