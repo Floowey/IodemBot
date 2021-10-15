@@ -61,9 +61,10 @@ namespace IodemBot
             await Task.Delay(-1);
         }
 
-        private async Task Client_GuildMemberUpdated(Cacheable<SocketGuildUser,ulong> before, SocketGuildUser after)
+        private async Task Client_GuildMemberUpdated(Cacheable<SocketGuildUser,ulong> before, SocketGuildUser user)
         {
             var guild = GuildSettings.GetGuildSettings(user.Guild);
+            var user_before = before.Value;
             if (user_before.DisplayName() != user.DisplayName())
             {
                 EntityConverter.ConvertUser(user).Name = user.DisplayName();
