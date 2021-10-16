@@ -101,7 +101,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             else if (Enum.TryParse<Element>(Djinn, out var element))
             {
                 djinn = DjinnAndSummonsDatabase.GetRandomDjinn(element);
-                var isShiny = Global.RandomNumber(0, 128) == 0;
+                var isShiny = Global.RandomNumber(0, 128) - userAccount.DjinnBadLuck <= 0;
                 if (!isShiny && userAccount.DjinnPocket.Djinn.Any(d => d.Djinnname == djinn.Djinnname))
                 {
                     djinn = DjinnAndSummonsDatabase.GetRandomDjinn(element);
@@ -125,6 +125,15 @@ namespace IodemBot.Modules.GoldenSunMechanics
                     {
                         awardLog.Add($"Attention! Your Djinn Pocket has reached its limit. " +
                             $"In order to further obtain djinn, you must either make space by releasing djinn or upgrading it using `i!upgradedjinn`!");
+                    }
+                    
+                    if (djinn.IsShiny)
+                    {
+                        userAccount.DjinnBadLuck = 0;
+                    }
+                    else
+                    {
+                        userAccount.DjinnBadLuck++;
                     }
                 }
                 else

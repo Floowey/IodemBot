@@ -247,6 +247,7 @@ namespace IodemBot.Core.UserManagement
         public ulong XP { get; set; } = 0;
         public double XpBoost { get; set; } = 1;
         public ulong XPLastGame { get; set; } = 0;
+        public int DjinnBadLuck { get; set; } = 0;
         public ServerStats ServerStats { get; set; } = new ServerStats();
         public ServerStats ServerStatsTotal { get; set; } = new ServerStats();
         public BattleStats BattleStats { get; set; } = new BattleStats();
