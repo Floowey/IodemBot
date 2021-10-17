@@ -3,7 +3,7 @@ using System.ComponentModel;
 using IodemBot.Modules.GoldenSunMechanics;
 using Newtonsoft.Json;
 
-namespace IodemBot.Modules.ColossoBattles
+namespace IodemBot.ColossoBattles
 {
     public class NPCEnemy : ColossoFighter
     {
@@ -52,7 +52,7 @@ namespace IodemBot.Modules.ColossoBattles
             }
             else
             {
-                selected = new Nothing();
+                SelectedMove = new Nothing();
                 hasSelected = true;
             }
             log.AddRange(base.EndTurn());

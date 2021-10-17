@@ -1,7 +1,8 @@
 ﻿using System.Threading.Tasks;
+using IodemBot.Modules.GoldenSunMechanics;
 using Discord;
 
-namespace IodemBot.Modules.ColossoBattles
+namespace IodemBot.ColossoBattles
 {
     public class GoliathBattleEnvironment : PvPEnvironment
     {
@@ -10,11 +11,11 @@ namespace IodemBot.Modules.ColossoBattles
             _ = Reset("init");
         }
 
-        protected override async Task AddPlayer(PlayerFighter player, Team team)
+        public override async Task AddPlayer(PlayerFighter player, Team team)
         {
             if (team == Team.B)
             {
-                player.Stats *= new GoldenSunMechanics.Stats(1000, 100, 200, 200, 10);
+                player.Stats *= new Stats(1000, 100, 200, 200, 10);
                 player.Stats *= 0.01;
                 player.Name = $"Goliath {player.Name}";
                 player.IsImmuneToOHKO = true;

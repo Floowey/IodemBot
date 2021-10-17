@@ -5,7 +5,7 @@ using IodemBot.Core.UserManagement;
 using IodemBot.Modules.GoldenSunMechanics;
 using Newtonsoft.Json;
 
-namespace IodemBot.Modules.ColossoBattles
+namespace IodemBot.ColossoBattles
 {
     public class PlayerFighter : ColossoFighter
     {
@@ -21,7 +21,7 @@ namespace IodemBot.Modules.ColossoBattles
 
         public override List<string> EndTurn()
         {
-            selected = null;
+            SelectedMove = null;
             hasSelected = false;
             var log = new List<string>();
 

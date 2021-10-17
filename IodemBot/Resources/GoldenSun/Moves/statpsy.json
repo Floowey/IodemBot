@@ -1,7 +1,7 @@
 {
   "Impact": {
     "name": "Impact",
-    "targetType": 1,
+    "TargetType": "PartySingle",
     "emote": "<:Impact:536967217581916160>",
     "range": 1,
     "element": 2,
@@ -16,7 +16,7 @@
   },
   "High Impact": {
     "name": "High Impact",
-    "targetType": 2,
+    "TargetType": "PartyAll",
     "emote": "<:High_Impact:536967233646100481>",
     "range": 4,
     "element": 2,
@@ -31,7 +31,7 @@
   },
   "Demon Spear": {
     "name": "Demon Spear",
-    "targetType": 1,
+    "TargetType": "PartySingle",
     "emote": "<:Demon_Spear:536966867831619584>",
     "range": 1,
     "element": 2,
@@ -46,7 +46,7 @@
   },
   "Angel Spear": {
     "name": "Angel Spear",
-    "targetType": 2,
+    "TargetType": "PartyAll",
     "emote": "<:Angel_Spear:536966880888619028>",
     "range": 4,
     "element": 2,
@@ -61,7 +61,7 @@
   },
   "Guard": {
     "name": "Guard",
-    "targetType": 1,
+    "TargetType": "PartySingle",
     "emote": "<:Guard:537705488306012179>",
     "range": 4,
     "element": 1,
@@ -76,7 +76,7 @@
   },
   "Protect": {
     "name": "Protect",
-    "targetType": 2,
+    "TargetType": "PartyAll",
     "emote": "<:Protect:537705526038102016>",
     "range": 4,
     "element": 1,
@@ -91,7 +91,7 @@
   },
   "Ward": {
     "name": "Ward",
-    "targetType": 1,
+    "TargetType": "PartySingle",
     "emote": "<:Ward:536967348448657440>",
     "range": 4,
     "element": 1,
@@ -106,7 +106,7 @@
   },
   "Resist": {
     "name": "Resist",
-    "targetType": 2,
+    "TargetType": "PartyAll",
     "emote": "<:Resist:536967379129991198>",
     "range": 1,
     "element": 1,
@@ -121,7 +121,7 @@
   },
   "Magic Shell": {
     "name": "Magic Shell",
-    "targetType": 1,
+    "TargetType": "PartySingle",
     "emote": "<:Magic_Shell:547524710888505364>",
     "range": 4,
     "element": 1,
@@ -136,7 +136,7 @@
   },
   "Magic Shield": {
     "name": "Magic Shield",
-    "targetType": 2,
+    "TargetType": "PartyAll",
     "emote": "<:Magic_Shield:547524710930317312>",
     "range": 1,
     "element": 1,
@@ -151,7 +151,7 @@
   },
   "Impair": {
     "name": "Impair",
-    "targetType": 3,
+    "TargetType": "EnemyRange",
     "emote": "<:Impair:538289498690420736>",
     "range": 3,
     "element": 1,
@@ -166,7 +166,7 @@
   },
   "Debilitate": {
     "name": "Debilitate",
-    "targetType": 4,
+    "TargetType": "EnemyRange",
     "emote": "<:Debilitate:548922397017767956>",
     "range": 3,
     "element": 1,
@@ -181,7 +181,7 @@
   },
   "Dull": {
     "name": "Dull",
-    "targetType": 3,
+    "TargetType": "EnemyRange",
     "emote": "<:Dull:536966947879780366>",
     "range": 3,
     "element": 1,
@@ -196,7 +196,7 @@
   },
   "Blunt": {
     "name": "Blunt",
-    "targetType": 4,
+    "TargetType": "EnemyRange",
     "emote": "<:Blunt:536966988388368394>",
     "range": 3,
     "element": 1,
@@ -211,7 +211,7 @@
   },
   "Smell of Decay": {
     "name": "Smell of Decay",
-    "targetType": 4,
+    "TargetType": "EnemyRange",
     "emote": "💩",
     "range": 3,
     "element": 0,
@@ -226,7 +226,7 @@
   },
   "Weapon Grace": {
     "name": "Weapon Grace",
-    "targetType": 1,
+    "TargetType": "PartySingle",
     "emote": "<:Weapon_Grace:537001160058601472>",
     "range": 1,
     "element": 0,
@@ -241,7 +241,7 @@
   },
   "Berserk": {
     "name": "Berserk",
-    "targetType": 0,
+    "TargetType": "PartySelf",
     "emote": "<:Rampage:537766290031509524>",
     "range": 1,
     "element": 1,
@@ -266,7 +266,7 @@
   },
   "Heartrender": {
     "name": "Heartrender",
-    "targetType": 3,
+    "TargetType": "EnemyRange",
     "emote": "💗",
     "range": 1,
     "element": 1,
@@ -281,7 +281,7 @@
   },
   "Heat Kiss": {
     "name": "Heat Kiss",
-    "targetType": 4,
+    "TargetType": "EnemyRange",
     "emote": "💗",
     "range": 1,
     "element": 1,
@@ -296,7 +296,7 @@
   },
   "Enfeeble": {
     "name": "Enfeeble",
-    "targetType": 4,
+    "TargetType": "EnemyRange",
     "emote": "<:Enfeeble:878922824545357844>",
     "range": 2,
     "element": 2,
@@ -311,7 +311,7 @@
   },
   "Weaken": {
     "name": "Weaken",
-    "targetType": 3,
+    "TargetType": "EnemyRange",
     "emote": "<:Weaken:878922824767639552>",
     "range": 1,
     "element": 2,
@@ -326,7 +326,7 @@
   },
   "Heartbreaker": {
     "name": "Heartbreaker",
-    "targetType": 4,
+    "TargetType": "EnemyRange",
     "emote": "💔",
     "range": 5,
     "element": 1,
@@ -341,7 +341,7 @@
   },
   "Decompose": {
     "name": "Decompose",
-    "targetType": 4,
+    "TargetType": "EnemyRange",
     "emote": ":zombie:",
     "range": 1,
     "element": 1,
@@ -356,7 +356,7 @@
   },
   "Restore": {
     "name": "Restore",
-    "targetType": 1,
+    "TargetType": "PartySingle",
     "emote": "<:Restore:536969958542802975>",
     "range": 1,
     "element": 3,
@@ -369,7 +369,7 @@
   },
   "Cure Poison": {
     "name": "Restore",
-    "targetType": 1,
+    "TargetType": "PartySingle",
     "emote": "<:Restore:536969958542802975>",
     "range": 1,
     "element": 3,
@@ -382,7 +382,7 @@
   },
   "Revive": {
     "name": "Revive",
-    "targetType": 1,
+    "TargetType": "PartySingle",
     "emote": "<:Revive:536957965513785347>",
     "range": 1,
     "element": 0,
@@ -396,7 +396,7 @@
   },
   "Lich": {
     "name": "Lich",
-    "targetType": 1,
+    "TargetType": "PartySingle",
     "emote": "<:Lich:740659510808543352>",
     "range": 1,
     "element": 0,
@@ -410,7 +410,7 @@
   },
   "Phoenix": {
     "name": "Phoenix",
-    "targetType": 1,
+    "TargetType": "PartySingle",
     "emote": "<:Phoenix:539166682132906005>",
     "range": 1,
     "element": 1,
@@ -424,7 +424,7 @@
   },
   "Signal Whistle": {
     "name": "Signal Whistle",
-    "targetType": 2,
+    "TargetType": "PartyAll",
     "emote": ":trumpet:",
     "range": 2,
     "element": 4,
@@ -438,7 +438,7 @@
   },
   "Break": {
     "name": "Break",
-    "targetType": 5,
+    "TargetType": "EnemyAll",
     "emote": "<:Break:536969993490006036>",
     "element": 3,
     "PPCost": 5,
@@ -450,7 +450,7 @@
   },
   "Thermal": {
     "name": "Thermal",
-    "targetType": 1,
+    "TargetType": "PartySingle",
     "emote": "<:Thermal:881257340794445834>",
     "range": 1,
     "element": 1,
@@ -463,7 +463,7 @@
   },
   "Blaze": {
     "name": "Blaze",
-    "targetType": 5,
+    "TargetType": "EnemyAll",
     "emote": "<:Blaze:551042852730175520>",
     "element": 1,
     "PPCost": 5,
@@ -475,7 +475,7 @@
   },
   "Bind": {
     "name": "Bind",
-    "targetType": 3,
+    "TargetType": "EnemyRange",
     "emote": "<:Bind:549526931465568257>",
     "range": 1,
     "element": 2,
@@ -490,7 +490,7 @@
   },
   "Smoke Bomb": {
     "name": "Smoke Bomb",
-    "targetType": 3,
+    "TargetType": "EnemyRange",
     "emote": "<:Smoke_Bomb:551223599911141391>",
     "range": 1,
     "element": 0,
@@ -505,7 +505,7 @@
   },
   "Mad Spatter": {
     "name": "Mad Spatter",
-    "targetType": 4,
+    "TargetType": "EnemyRange",
     "emote": "<:Healthy_Wind:551205173167521811>",
     "range": 1,
     "element": 0,
@@ -520,7 +520,7 @@
   },
   "Mucous Gel": {
     "name": "Mucous Gel",
-    "targetType": 3,
+    "TargetType": "EnemyRange",
     "emote": ":custard:",
     "range": 1,
     "element": 0,
@@ -535,7 +535,7 @@
   },
   "Demon Eye": {
     "name": "Demon Eye",
-    "targetType": 4,
+    "TargetType": "EnemyRange",
     "emote": ":eye:",
     "range": 1,
     "element": 0,
@@ -550,7 +550,7 @@
   },
   "Lucid Prophecy": {
     "name": "Lucid Prophecy",
-    "targetType": 3,
+    "TargetType": "EnemyRange",
     "emote": "<:Curse:536984898980806658>",
     "range": 1,
     "element": 0,
@@ -565,7 +565,7 @@
   },
   "Earth Force": {
     "name": "Earth Force",
-    "targetType": 3,
+    "TargetType": "EnemyRange",
     "emote": ":earth_africa:",
     "range": 1,
     "element": 0,
@@ -580,7 +580,7 @@
   },
   "Sleep Bomb": {
     "name": "Sleep Bomb",
-    "targetType": 3,
+    "TargetType": "EnemyRange",
     "emote": "<:Sleep_Bomb:551223599894102026>",
     "range": 1,
     "element": 0,
@@ -595,7 +595,7 @@
   },
   "Disarm": {
     "name": "Pling",
-    "targetType": 0,
+    "TargetType": "PartySelf",
     "emote": "🏳️",
     "range": 3,
     "element": 4,
@@ -609,7 +609,7 @@
   },
   "Correct": {
     "name": "Correct!",
-    "targetType": 4,
+    "TargetType": "EnemyRange",
     "emote": "✅",
     "range": 4,
     "element": 4,
@@ -623,7 +623,7 @@
   },
   "Beat Dance": {
     "name": "Beat Dance",
-    "targetType": 0,
+    "TargetType": "PartySelf",
     "emote": ":musical_note:",
     "range": 1,
     "element": 1,
@@ -638,7 +638,7 @@
   },
   "Sleep Star": {
     "name": "Sleep Star",
-    "targetType": 4,
+    "TargetType": "EnemyRange",
     "emote": "<:Sleep:555427023519088671>",
     "range": 3,
     "element": 0,
@@ -653,7 +653,7 @@
   },
   "Pack Defense": {
     "name": "Pack Defense",
-    "targetType": 2,
+    "TargetType": "PartyAll",
     "emote": "<:Maha:568133448645214219>",
     "range": 1,
     "element": 0,
@@ -668,7 +668,7 @@
   },
   "Total Defense": {
     "name": "Total Defense",
-    "targetType": 0,
+    "TargetType": "PartySelf",
     "emote": ":bricks:",
     "range": 1,
     "element": 0,
@@ -683,7 +683,7 @@
   },
   "Stand Ready": {
     "name": "Stand Ready",
-    "targetType": 0,
+    "TargetType": "PartySelf",
     "emote": ":person_standing:",
     "range": 1,
     "element": 0,
@@ -698,7 +698,7 @@
   },
   "Fortify": {
     "name": "Fortify",
-    "targetType": 0,
+    "TargetType": "PartySelf",
     "emote": ":bricks:",
     "range": 1,
     "element": 0,
@@ -713,7 +713,7 @@
   },
   "Delude": {
     "name": "Delude",
-    "targetType": 4,
+    "TargetType": "EnemyRange",
     "emote": "<:Delude:536966813687349264>",
     "range": 3,
     "element": 2,
@@ -728,7 +728,7 @@
   },
   "Curse": {
     "name": "Curse",
-    "targetType": 4,
+    "TargetType": "EnemyRange",
     "emote": "<:Curse:536984898980806658>",
     "range": 3,
     "element": 2,
@@ -743,7 +743,7 @@
   },
   "Haunt": {
     "name": "Haunt",
-    "targetType": 4,
+    "TargetType": "EnemyRange",
     "emote": "<:Haunt:536984955322892310>",
     "range": 3,
     "element": 0,
@@ -758,7 +758,7 @@
   },
   "Haunting": {
     "name": "Haunting",
-    "targetType": 4,
+    "TargetType": "EnemyRange",
     "emote": "<:Haunt:536984955322892310>",
     "range": 3,
     "element": 0,
@@ -773,7 +773,7 @@
   },
   "Condemn": {
     "name": "Condemn",
-    "targetType": 4,
+    "TargetType": "EnemyRange",
     "emote": "<:Condemn:536986417130373130>",
     "range": 1,
     "element": 0,
@@ -787,7 +787,7 @@
   },
   "Sleep": {
     "name": "Sleep",
-    "targetType": 4,
+    "TargetType": "EnemyRange",
     "emote": "<:Sleep:555427023519088671>",
     "range": 3,
     "element": 2,
@@ -802,7 +802,7 @@
   },
   "Cage": {
     "name": "Cage",
-    "targetType": 3,
+    "TargetType": "EnemyRange",
     "emote": ":chains:",
     "range": 3,
     "element": 1,
@@ -817,7 +817,7 @@
   },
   "Mystic Call": {
     "name": "Mystic Call",
-    "targetType": 1,
+    "TargetType": "PartySingle",
     "emote": "<a:Mystic_Call:600650247366115339>",
     "range": 1,
     "element": 3,
@@ -831,7 +831,7 @@
   },
   "Flee": {
     "name": "Flee",
-    "targetType": 0,
+    "TargetType": "PartySelf",
     "emote": "<:Flee:597006812247490571>",
     "effects": [
       {
@@ -841,7 +841,7 @@
   },
   "Ally Search": {
     "name": "Ally Search",
-    "targetType": 0,
+    "TargetType": "PartySelf",
     "emote": "<:Flee:597006812247490571>",
     "effects": [
       {
@@ -851,7 +851,7 @@
   },
   "Contain": {
     "name": "Contain",
-    "targetType": 0,
+    "TargetType": "PartySelf",
     "emote": "<:Flee:597006812247490571>",
     "effects": [
       {
@@ -861,7 +861,7 @@
   },
   "Counter-rush": {
     "name": "Counter-rush",
-    "targetType": 0,
+    "TargetType": "PartySelf",
     "emote": "<:Flee:597006812247490571>",
     "effects": [
       {
@@ -872,7 +872,7 @@
   },
   "Threaten": {
     "name": "Threaten",
-    "targetType": 0,
+    "TargetType": "PartySelf",
     "emote": "<:Flee:597006812247490571>",
     "effects": [
       {
@@ -882,7 +882,7 @@
   },
   "Tremble": {
     "name": "Tremble",
-    "targetType": 0,
+    "TargetType": "PartySelf",
     "emote": "<:Flee:597006812247490571>",
     "effects": [
       {
@@ -892,7 +892,7 @@
   },
   "Search": {
     "name": "the time to search somewhere else",
-    "targetType": 0,
+    "TargetType": "PartySelf",
     "emote": "👀",
     "effects": [
       {
@@ -902,7 +902,7 @@
   },
   "BoulderFall": {
     "name": "_boing boing boing splash_",
-    "targetType": 0,
+    "TargetType": "PartySelf",
     "emote": "<:Avalanche:536959102019174411>",
     "effects": [
       {
@@ -912,7 +912,7 @@
   },
   "Guard Aura": {
     "name": "Guard Aura",
-    "targetType": 1,
+    "TargetType": "PartySingle",
     "hasPriority": true,
     "emote": "<:Guardian_Ball:600641727421743104>",
     "effects": [
@@ -924,7 +924,7 @@
   },
   "Sandstorm": {
     "name": "Sandstorm",
-    "targetType": 3,
+    "TargetType": "EnemyRange",
     "emote": ":cloud_tornado:",
     "range": 5,
     "element": 2,
@@ -939,7 +939,7 @@
   },
   "Poison": {
     "name": "Poison",
-    "targetType": 3,
+    "TargetType": "EnemyRange",
     "emote": "<:Poison:549526931847249920>",
     "range": 1,
     "element": 0,
@@ -954,7 +954,7 @@
   },
   "Taint": {
     "name": "Taint",
-    "targetType": 3,
+    "TargetType": "EnemyRange",
     "emote": "<:Venom:598458704400220160>",
     "range": 1,
     "element": 0,
@@ -969,7 +969,7 @@
   },
   "Sand": {
     "name": "Sand",
-    "targetType": 1,
+    "TargetType": "PartySingle",
     "emote": "<:Sand:667747947194089478>",
     "element": 0,
     "PPCost": 8,
@@ -982,7 +982,7 @@
   },
   "Poison Gel": {
     "name": "Poison Gel",
-    "targetType": 3,
+    "TargetType": "EnemyRange",
     "emote": "<:Poison:549526931847249920>",
     "range": 1,
     "element": 3,
@@ -997,7 +997,7 @@
   },
   "Regen Dance": {
     "name": "Regen Dance",
-    "targetType": 1,
+    "TargetType": "PartySingle",
     "emote": "<:Phoenix:539166682132906005>",
     "range": 1,
     "element": 1,
@@ -1011,7 +1011,7 @@
   },
   "Sack": {
     "name": "Sack",
-    "targetType": 0,
+    "TargetType": "PartySelf",
     "emote": "🪓",
     "range": 1,
     "element": 1,
@@ -1026,7 +1026,7 @@
   },
   "Slaver": {
     "name": "Slaver",
-    "targetType": 4,
+    "TargetType": "EnemyRange",
     "emote": ":link:",
     "range": 1,
     "element": 1,
@@ -1041,7 +1041,7 @@
   },
   "Spider Web": {
     "name": "Spider Web",
-    "targetType": 3,
+    "TargetType": "EnemyRange",
     "emote": ":spider_web:",
     "range": 1,
     "element": 1,

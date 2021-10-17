@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using IodemBot.Extensions;
-using IodemBot.Modules.ColossoBattles;
+using IodemBot.ColossoBattles;
 using Newtonsoft.Json;
 
 namespace IodemBot.Modules.GoldenSunMechanics
@@ -52,7 +52,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         protected override bool InternalValidSelection(ColossoFighter user)
         {
-            return user.GetTeam().Any(s => !s.IsAlive);
+            return user.Party.Any(s => !s.IsAlive);
         }
     }
 }

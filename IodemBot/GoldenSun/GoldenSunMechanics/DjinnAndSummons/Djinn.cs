@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
+using IodemBot.ColossoBattles;
 using IodemBot.Extensions;
-using IodemBot.Modules.ColossoBattles;
 using Newtonsoft.Json;
 
 namespace IodemBot.Modules.GoldenSunMechanics
@@ -17,7 +17,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public string Nickname { get; set; } = "";
         public string Djinnname { get; set; } = "";
         [JsonIgnore] public override string Emote { get => Sprite; set => Move.Emote = value; }
-        [JsonIgnore] public override Target TargetType { get => Move.TargetType; set => Move.TargetType = value; }
+        [JsonIgnore] public override TargetType TargetType { get => Move.TargetType; set => Move.TargetType = value; }
         [JsonIgnore] public override List<Effect> Effects { get => Move.Effects; set => Move.Effects = value; }
         [JsonIgnore] public override int TargetNr { get => Move.TargetNr; set => Move.TargetNr = value; }
         [JsonIgnore] public override uint Range { get => Move.Range; set => Move.Range = value; }
@@ -110,7 +110,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 case DjinnState.Set:
                     IsSet = true;
                     CoolDown = Math.Max(2,User.Moves.OfType<Djinn>().Max(d => d.CoolDown) + 1);
-                    Position = User.GetTeam().SelectMany(p => p.Moves.OfType<Djinn>()).Max(d => d.Position) + 1;
+                    Position = User.Party.SelectMany(p => p.Moves.OfType<Djinn>()).Max(d => d.Position) + 1;
                     return Move.Use(User);
 
                 case DjinnState.Standby:

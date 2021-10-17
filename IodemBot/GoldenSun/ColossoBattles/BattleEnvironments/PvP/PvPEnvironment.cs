@@ -12,7 +12,7 @@ using IodemBot.Core.UserManagement;
 using IodemBot.Extensions;
 using IodemBot.Modules.GoldenSunMechanics;
 
-namespace IodemBot.Modules.ColossoBattles
+namespace IodemBot.ColossoBattles
 {
     public abstract class PvPEnvironment : BattleEnvironment
     {
@@ -32,7 +32,7 @@ namespace IodemBot.Modules.ColossoBattles
         private readonly List<SocketGuildUser> playersWithBRole = new List<SocketGuildUser>();
         public IRole TeamBRole;
 
-        internal override ulong[] GetChannelIds => new[] { Teams[Team.A].teamChannel.Id, Teams[Team.B].teamChannel.Id };
+        internal override ulong[] ChannelIds => new[] { Teams[Team.A].teamChannel.Id, Teams[Team.B].teamChannel.Id };
 
         protected Dictionary<Team, PvPTeamCollector> Teams = new Dictionary<Team, PvPTeamCollector>()
         {
@@ -357,12 +357,17 @@ namespace IodemBot.Modules.ColossoBattles
             }
             var playerAvatar = EntityConverter.ConvertUser(player);
 
+            await AddPlayer(playerAvatar, team);
+        }
+
+        public override async Task AddPlayer(UserAccount user, Team team = Team.A)
+        {
             var factory = Teams[team].Factory;
-            var p = factory.CreatePlayerFighter(playerAvatar);
+            var p = factory.CreatePlayerFighter(user);
             await AddPlayer(p, team);
         }
 
-        protected virtual async Task AddPlayer(PlayerFighter player, Team team)
+        public override async Task AddPlayer(PlayerFighter player, Team team)
         {
             if (Battle.isActive)
             {
@@ -381,7 +386,9 @@ namespace IodemBot.Modules.ColossoBattles
             }
         }
 
-        protected override async Task StartBattle()
+
+
+        public override async Task StartBattle()
         {
             if (Battle.isActive)
             {

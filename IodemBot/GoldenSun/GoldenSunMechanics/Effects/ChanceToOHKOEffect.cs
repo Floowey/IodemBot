@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using IodemBot.Modules.ColossoBattles;
+using IodemBot.ColossoBattles;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
@@ -22,7 +22,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 return log;
             }
 
-            if (Target.GetTeam().Count > 1 && Global.RandomNumber(1, 100) <= Probability)
+            if (Target.Party.Count > 1 && Global.RandomNumber(1, 100) <= Probability)
             {
                 Target.Kill();
                 log.Add($":x: {Target.Name}'s life was taken.");

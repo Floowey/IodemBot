@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using IodemBot.Extensions;
-using IodemBot.Modules.ColossoBattles;
+using IodemBot.ColossoBattles;
 using JsonSubTypes;
 using Newtonsoft.Json;
 

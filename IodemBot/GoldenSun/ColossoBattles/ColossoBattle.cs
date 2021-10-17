@@ -4,7 +4,7 @@ using System.Linq;
 using IodemBot.Core.UserManagement;
 using IodemBot.Extensions;
 
-namespace IodemBot.Modules.ColossoBattles
+namespace IodemBot.ColossoBattles
 {
     public class ColossoBattle
     {

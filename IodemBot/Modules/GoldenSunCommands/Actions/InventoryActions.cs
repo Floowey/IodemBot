@@ -16,6 +16,10 @@ using IodemBot.Modules.GoldenSunMechanics;
 
 namespace IodemBot.Modules
 {
+    // Missing:
+    // Remove Cursed Action (either in inv or gear)
+    // Sell Action (button also on chests)
+    // Iteminfo (With equip button where applicable)
     class InventoryAction : IodemBotCommandAction
     {
         public override EphemeralRule EphemeralRule => EphemeralRule.EphemeralOrFail;
@@ -794,7 +798,5 @@ namespace IodemBot.Modules
         }
     }
 }
-    // Remove Cursed Action
-    // Sell Action
-    // Iteminfo (With equip button where applicable)
+
 

@@ -20,7 +20,6 @@ namespace IodemBot
         {
             this.client = client;
             client.MessageReceived += HandleMessageAsync;
-            client.ReactionAdded += HandleReactionAsync;
             //badWords = File.ReadAllLines("Resources/bad_words.txt");
 
             responses = new List<AutoResponse>
@@ -63,22 +62,6 @@ namespace IodemBot
                     Emote.Parse("<:Krakden:576856312500060161>")),
                 60)
             };
-            await Task.CompletedTask;
-        }
-
-
-        private async Task HandleReactionAsync(Cacheable<IUserMessage, ulong> Message, Cacheable<IMessageChannel, ulong> Channel, SocketReaction Reaction)
-        {
-            if (!(Reaction.User.Value is SocketGuildUser User))
-            {
-                return;
-            }
-
-            if (User.IsBot)
-            {
-                return;
-            }
-            Leveling.UserAddedReaction(User, Reaction);
             await Task.CompletedTask;
         }
 

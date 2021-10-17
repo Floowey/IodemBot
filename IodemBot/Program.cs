@@ -8,7 +8,7 @@ using Discord.WebSocket;
 using IodemBot.Core;
 using IodemBot.Discords.Services;
 using IodemBot.Extensions;
-using IodemBot.Modules.ColossoBattles;
+using IodemBot.ColossoBattles;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace IodemBot
@@ -144,15 +144,7 @@ namespace IodemBot
             if (channel != null && (DateTime.Now - Global.RunningSince).TotalSeconds < 15)
             {
                 await channel.SendMessageAsync($"Hello, I am back up.\nOS: {Environment.OSVersion}\nBuild Time: {File.GetLastWriteTime(Assembly.GetExecutingAssembly().Location)}");
-                foreach (var guild in client.Guilds)
-                {
-                    var gs = GuildSettings.GetGuildSettings(guild);
-                    if (gs.AutoSetup && gs.ColossoChannel != null)
-                    {
-                        await ColossoCommands.Setup(guild);
-                        Console.WriteLine($"Setup in {gs.Name}");
-                    }
-                }
+                
             }
             //setup colosso
             await client.SetStatusAsync(UserStatus.Idle);
@@ -198,6 +190,7 @@ namespace IodemBot
                 .AddSingleton<CommandHandlingService>()
                 .AddSingleton<ActionService>()
                 .AddSingleton<MessageHandler>()
+                .AddSingleton<ColossoBattleService>()
                 .AddScoped<RequestContextService>()
                 .BuildServiceProvider();
         }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using IodemBot.Extensions;
-using IodemBot.Modules.ColossoBattles;
+using IodemBot.ColossoBattles;
 using Newtonsoft.Json;
 
 namespace IodemBot.Modules.GoldenSunMechanics
@@ -26,13 +26,13 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public override void InternalChooseBestTarget(ColossoFighter User)
         {
-            var aliveEnemies = User.GetEnemies().Where(f => f.IsAlive).ToList();
+            var aliveEnemies = User.Enemies.Where(f => f.IsAlive).ToList();
             if (aliveEnemies.Count == 0)
             {
                 TargetNr = 0;
                 return;
             }
-            TargetNr = User.GetEnemies().IndexOf(aliveEnemies.Random());
+            TargetNr = User.Enemies.IndexOf(aliveEnemies.Random());
         }
 
         protected override List<string> InternalUse(ColossoFighter User)
@@ -143,7 +143,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public override string ToString()
         {
-            return $"Attack {(TargetType == Target.otherSingle ? "an enemy" : (TargetType == Target.otherAll ? $"all Enemies" : $"up to {Range * 2 - 1} Targets"))} with a base damage of {Emotes.GetIcon(Element)} {(AttackBased ? "a normal physical Attack" : $"{Power}")}{(AddDamage > 0 ? $" plus an additional {AddDamage} Points" : "")}{(DmgMult != 1 ? $" multiplied by {DmgMult}" : "")}{(PercentageDamage > 0 ? $" + {PercentageDamage}% of the targets health as damage" : "")}.{(TargetType == Target.self || TargetType == Target.ownSingle || TargetType == Target.ownAll ? "Target type set to hit your teammates! Probably an error..." : "")}";
+            
+            return $"Attack {(TargetType == TargetType.EnemyAll ? $"all Enemies" : Range==1 ?"an" : $"up to {Range * 2 - 1} Targets")} with a base damage of {Emotes.GetIcon(Element)} {(AttackBased ? "a normal physical Attack" : $"{Power}")}{(AddDamage > 0 ? $" plus an additional {AddDamage} Points" : "")}{(DmgMult != 1 ? $" multiplied by {DmgMult}" : "")}{(PercentageDamage > 0 ? $" + {PercentageDamage}% of the targets health as damage" : "")}.{(TargetType == TargetType.PartySelf || TargetType == TargetType.PartySingle || TargetType == TargetType.PartyAll ? "Target type set to hit your teammates! Probably an error..." : "")}";
         }
     }
 }

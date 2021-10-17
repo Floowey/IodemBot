@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using IodemBot.Extensions;
-using IodemBot.Modules.ColossoBattles;
+using IodemBot.ColossoBattles;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
@@ -31,13 +31,13 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         protected override int InternalChooseBestTarget(List<ColossoFighter> targets)
         {
-            var unaffectedEnemies = targets.Where(s => s.HasCurableCondition()).ToList();
+            var unaffectedEnemies = targets.Where(s => s.HasCurableCondition).ToList();
             return targets.IndexOf(unaffectedEnemies.Random());
         }
 
         protected override bool InternalValidSelection(ColossoFighter user)
         {
-            return user.GetTeam().Any(s => s.HasCurableCondition());
+            return user.Party.Any(s => s.HasCurableCondition);
         }
     }
 }

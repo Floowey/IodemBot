@@ -1,6 +1,6 @@
 ﻿using Discord;
 
-namespace IodemBot.Modules.ColossoBattles
+namespace IodemBot.ColossoBattles
 {
     internal class TeamBattleEnvironment : PvPEnvironment
     {

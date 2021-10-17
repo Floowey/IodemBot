@@ -39,7 +39,8 @@ namespace IodemBot
     public enum RandomItemType { Any, Artifact, NonArtifact }
 
     [JsonConverter(typeof(StringEnumConverter))]
-    public enum Target { self, ownSingle, ownAll, otherSingle, otherRange, otherAll }
+    public enum TargetType { PartySelf, PartySingle, PartyAll, EnemyRange, EnemyAll }
+    // 
 
     [JsonConverter(typeof(StringEnumConverter))]
     public enum ItemType

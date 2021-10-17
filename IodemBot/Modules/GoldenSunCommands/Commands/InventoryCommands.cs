@@ -8,13 +8,15 @@ using Discord.WebSocket;
 using IodemBot.Preconditions;
 using IodemBot.Core.UserManagement;
 using IodemBot.Extensions;
-using IodemBot.Modules.ColossoBattles;
+using IodemBot.ColossoBattles;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
     [Name("Inventory and Items")]
     public class InventoryCommands : ModuleBase<SocketCommandContext>
     {
+        public ColossoBattleService BattleService { get; set; }
+
         [Command("Inv")]
         [Cooldown(10)]
         [Summary("Displays inventory and current sets")]
@@ -571,10 +573,9 @@ namespace IodemBot.Modules.GoldenSunMechanics
             var inv = account.Inv;
             var embed = new EmbedBuilder();
             embed.WithColor(Colors.Get("Iodem"));
-            if (ColossoCommands.UserInBattle(EntityConverter.ConvertUser(Context.User)))
-            {
+
+            if (BattleService.UserInBattle(Context.User.Id))
                 return;
-            }
 
             if (inv.Repair(item))
             {

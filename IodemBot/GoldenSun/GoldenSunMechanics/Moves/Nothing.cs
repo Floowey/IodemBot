@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using IodemBot.Modules.ColossoBattles;
+using IodemBot.ColossoBattles;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
@@ -9,7 +9,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         {
             Name = "Nothing";
             Emote = "😶";
-            TargetType = Target.self;
+            TargetType = TargetType.PartySelf;
         }
 
         public override object Clone()

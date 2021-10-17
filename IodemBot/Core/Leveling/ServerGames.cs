@@ -8,7 +8,7 @@ using Discord.WebSocket;
 using IodemBot.Core.UserManagement;
 using IodemBot.Extensions;
 using IodemBot.Modules;
-using IodemBot.Modules.ColossoBattles;
+using IodemBot.ColossoBattles;
 using IodemBot.Modules.GoldenSunMechanics;
 
 namespace IodemBot.Core.Leveling

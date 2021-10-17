@@ -9,7 +9,7 @@ using IodemBot.Preconditions;
 using IodemBot.Core.Leveling;
 using IodemBot.Core.UserManagement;
 using IodemBot.Extensions;
-using IodemBot.Modules.ColossoBattles;
+using IodemBot.ColossoBattles;
 using IodemBot.Modules.GoldenSunMechanics;
 using Newtonsoft.Json;
 
@@ -17,7 +17,7 @@ namespace IodemBot.Modules
 {
     public class GoldenSunCommands : ModuleBase<SocketCommandContext>
     {
-
+        public ColossoBattleService BattleService { get; set; }
         //public enum Element { Venus, Mars, Jupiter, Mercury, None }
 
         [Command("awardClassSeries")]
@@ -584,7 +584,7 @@ namespace IodemBot.Modules
                 return;
             }
 
-            if (ColossoCommands.UserInBattle(EntityConverter.ConvertUser(Context.User)))
+            if (BattleService.UserInBattle(Context.User.Id))
             {
                 await ReplyAsync($"I find it highly unwise to do such things in the midst of a fight.");
                 return;

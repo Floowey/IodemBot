@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using IodemBot.Extensions;
-using IodemBot.Modules.ColossoBattles;
+using IodemBot.ColossoBattles;
 using Newtonsoft.Json;
 
 namespace IodemBot.Modules.GoldenSunMechanics
@@ -21,17 +21,17 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public override string ToString()
         {
-            return $"Heals {(TargetType == Target.self ? "the user" : TargetType == Target.ownSingle ? "a teammate" : TargetType == Target.ownAll ? "the users party" : "someone else")}. {(HealPower > 0 ? $"Heals HP with a Power of {HealPower}." : "")} {(Percentage > 0 ? $"Heals HP by {Percentage}%." : "")}{(PPHeal > 0 ? $"Heals PP with a Power of {PPHeal}." : "")}{(PPPercent > 0 ? $"Heals PP by {PPPercent}%." : "")}";
+            return $"Heals {(TargetType == TargetType.PartySelf ? "the user" : TargetType == TargetType.PartySingle ? "a teammate" : TargetType == TargetType.PartyAll ? "the users party" : "someone else")}. {(HealPower > 0 ? $"Heals HP with a Power of {HealPower}." : "")} {(Percentage > 0 ? $"Heals HP by {Percentage}%." : "")}{(PPHeal > 0 ? $"Heals PP with a Power of {PPHeal}." : "")}{(PPPercent > 0 ? $"Heals PP by {PPPercent}%." : "")}";
         }
 
         public override void InternalChooseBestTarget(ColossoFighter User)
         {
-            if (TargetType == Target.ownAll)
+            if (TargetType == TargetType.PartyAll)
             {
                 return;
             }
 
-            var aliveFriends = User.GetTeam().Where(f => f.IsAlive).ToList();
+            var aliveFriends = User.Party.Where(f => f.IsAlive).ToList();
             if (aliveFriends.Count == 0)
             {
                 TargetNr = 0;
@@ -42,11 +42,11 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
             if (aliveFriends.Any(d => d.Name.Contains("Star")))
             {
-                TargetNr = aliveFriends.IndexOf(User.GetTeam().Where(d => d.Name.Contains("Star")).Random());
+                TargetNr = aliveFriends.IndexOf(User.Party.Where(d => d.Name.Contains("Star")).Random());
             }
             else
             {
-                TargetNr = User.GetTeam().IndexOf(aliveFriends.First());
+                TargetNr = User.Party.IndexOf(aliveFriends.First());
             }
         }
 
@@ -57,7 +57,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 return false;
             }
             return (User.battle.turn == 1 ||
-                User.GetTeam().Where(f => f.IsAlive).Any(f => (100 * f.Stats.HP) / f.Stats.MaxHP < 85));
+                User.Party.Where(f => f.IsAlive).Any(f => (100 * f.Stats.HP) / f.Stats.MaxHP < 85));
         }
 
         protected override List<string> InternalUse(ColossoFighter User)

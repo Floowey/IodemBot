@@ -8,7 +8,7 @@ using IodemBot.Modules.GoldenSunMechanics;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace IodemBot.Modules.ColossoBattles
+namespace IodemBot.ColossoBattles
 {
     public class Buff
     {
@@ -49,6 +49,12 @@ namespace IodemBot.Modules.ColossoBattles
         public string ImgUrl { get; set; }
         [JsonIgnore] public List<Move> Moves { get; set; }
 
+        [JsonIgnore] public ColossoBattle battle;
+        [JsonIgnore] public Team party;
+        [JsonIgnore] public List<ColossoFighter> Party => battle.GetTeam(party);
+        [JsonIgnore] public List<ColossoFighter> Enemies => battle.GetTeam(enemies);
+
+
         [JsonProperty("Conditions", ItemConverterType = typeof(StringEnumConverter))]
         private List<Condition> Conditions = new List<Condition>();
 
@@ -61,10 +67,8 @@ namespace IodemBot.Modules.ColossoBattles
         public bool IsImmuneToPsynergy { get; set; }
         public bool IsImmuneToItemCurse { get; set; }
         public Item Weapon;
-        [JsonIgnore] public Team party;
-        [JsonIgnore] public Move selected;
+        [JsonIgnore] public Move SelectedMove { get; set; }
         [JsonIgnore] public uint damageDoneThisTurn;
-        [JsonIgnore] public ColossoBattle battle;
         [JsonIgnore] public List<Buff> Buffs = new List<Buff>();
         [JsonIgnore] public List<LingeringEffect> LingeringEffects = new List<LingeringEffect>();
         [JsonIgnore] public Team enemies;
@@ -78,7 +82,7 @@ namespace IodemBot.Modules.ColossoBattles
         public int HPrecovery { get; set; } = 0;
         public int PPrecovery { get; set; } = 0;
         public int DeathCurseCounter = 4;
-        public bool IsAlive { get { return !HasCondition(Condition.Down); } }
+        public bool IsAlive => !HasCondition(Condition.Down);
 
         internal ColossoFighter()
         {
@@ -249,7 +253,7 @@ namespace IodemBot.Modules.ColossoBattles
             offensiveMult = 1;
             if (!IsAlive)
             {
-                selected = new Nothing();
+                SelectedMove = new Nothing();
                 hasSelected = true;
             }
             return turnLog;
@@ -364,7 +368,7 @@ namespace IodemBot.Modules.ColossoBattles
                 DeathCurseCounter--;
                 if (DeathCurseCounter <= 0)
                 {
-                    if (GetTeam().Count == 1 && this is PlayerFighter p)
+                    if (Party.Count == 1 && this is PlayerFighter p)
                     {
                         p.Stats.HP = 1;
                         RemoveCondition(Condition.DeathCurse);
@@ -431,10 +435,7 @@ namespace IodemBot.Modules.ColossoBattles
             return new List<string>();
         }
 
-        public List<ColossoFighter> GetEnemies()
-        {
-            return battle.GetTeam(enemies);
-        }
+
 
         public string GetMoves(bool detailed = true)
         {
@@ -446,20 +447,20 @@ namespace IodemBot.Modules.ColossoBattles
             return string.Join(" - ", relevantMoves);
         }
 
-        public List<ColossoFighter> GetTeam()
-        {
-            return battle.GetTeam(party);
-        }
+       
 
         public bool HasCondition(Condition con)
         {
             return Conditions.Contains(con);
         }
 
-        public bool HasCurableCondition()
+        public bool HasCurableCondition
         {
-            Condition[] badConditions = { Condition.Poison, Condition.Venom, Condition.Seal, Condition.Sleep, Condition.Stun, Condition.DeathCurse };
-            return Conditions.Any(c => badConditions.Contains(c));
+            get
+            {
+                Condition[] badConditions = { Condition.Poison, Condition.Venom, Condition.Seal, Condition.Sleep, Condition.Stun, Condition.DeathCurse };
+                return Conditions.Any(c => badConditions.Contains(c));
+            }
         }
 
         public List<string> Heal(uint healHP)
@@ -521,9 +522,9 @@ namespace IodemBot.Modules.ColossoBattles
                 return turnLog;
             }
 
-            if (!selected.HasPriority)
+            if (!SelectedMove.HasPriority)
             {
-                turnLog.AddRange(selected.Use(this));
+                turnLog.AddRange(SelectedMove.Use(this));
             }
 
             RemoveCondition(Condition.Flinch);
@@ -597,9 +598,9 @@ namespace IodemBot.Modules.ColossoBattles
 
             if (trySelected == null)
             {
-                if (numberEmotes.Contains(emote.Name) && selected != null)
+                if (numberEmotes.Contains(emote.Name) && SelectedMove != null)
                 {
-                    selected.TargetNr = Array.IndexOf(numberEmotes, emote.Name) - 1;
+                    SelectedMove.TargetNr = Array.IndexOf(numberEmotes, emote.Name) - 1;
                     hasSelected = true;
                 }
                 else
@@ -617,21 +618,20 @@ namespace IodemBot.Modules.ColossoBattles
                 }
                 else
                 {
-                    selected = trySelected;
+                    SelectedMove = trySelected;
                 }
             }
 
-            if (selected.TargetType == Target.self || selected.TargetType == Target.ownAll || selected.TargetType == Target.otherAll)
+            if (SelectedMove.TargetType == TargetType.PartySelf ||
+                SelectedMove.TargetType == TargetType.PartyAll ||
+                SelectedMove.TargetType == TargetType.EnemyAll ||
+                (SelectedMove.TargetType == TargetType.PartySingle && Party.Count == 1) ||
+                (SelectedMove.TargetType == TargetType.EnemyRange && Enemies.Count == 1))
             {
                 hasSelected = true;
+                SelectedMove.TargetNr = 0;
             }
 
-            if ((selected.TargetType == Target.ownSingle && battle.GetTeam(party).Count == 1) ||
-                ((selected.TargetType == Target.otherSingle || selected.TargetType == Target.otherRange) && battle.GetTeam(enemies).Count <= 1))
-            {
-                selected.TargetNr = 0;
-                hasSelected = true;
-            }
             if (this is PlayerFighter fighter)
             {
                 fighter.AutoTurnsInARow = 0;
@@ -639,9 +639,9 @@ namespace IodemBot.Modules.ColossoBattles
             return true;
         }
 
-        public void Select(int targetNr)
+        public void SetTarget(int targetNr)
         {
-            selected.TargetNr = targetNr;
+            SelectedMove.TargetNr = targetNr;
         }
 
         public void ReplaceWith(ColossoFighter otherFighter)
@@ -675,7 +675,7 @@ namespace IodemBot.Modules.ColossoBattles
             }
             if (Moves.Where(s => s.ValidSelection(this)).Count() == 0)
             {
-                selected = new Nothing();
+                SelectedMove = new Nothing();
                 hasSelected = true;
                 return;
             }
@@ -683,13 +683,13 @@ namespace IodemBot.Modules.ColossoBattles
             {
                 try
                 {
-                    selected = Moves.Where(s => (includePriority || !s.HasPriority) && s.ValidSelection(this)).Random();
-                    selected.ChooseBestTarget(this);
+                    SelectedMove = Moves.Where(s => (includePriority || !s.HasPriority) && s.ValidSelection(this)).Random();
+                    SelectedMove.ChooseBestTarget(this);
                     hasSelected = true;
                 }
                 catch (Exception e)
                 {
-                    throw new Exception($"{Name} failed to select random Move: {selected.Name}", e);
+                    throw new Exception($"{Name} failed to select random Move: {SelectedMove.Name}", e);
                 }
             }
         }
@@ -697,9 +697,9 @@ namespace IodemBot.Modules.ColossoBattles
         public virtual List<string> StartTurn()
         {
             List<string> turnLog = new List<string>();
-            if (selected.HasPriority)
+            if (SelectedMove.HasPriority)
             {
-                turnLog.AddRange(selected.Use(this));
+                turnLog.AddRange(SelectedMove.Use(this));
             }
 
             return turnLog;

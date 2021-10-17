@@ -9,7 +9,7 @@ using IodemBot.Core.UserManagement;
 using IodemBot.Extensions;
 using IodemBot.Modules.GoldenSunMechanics;
 
-namespace IodemBot.Modules.ColossoBattles
+namespace IodemBot.ColossoBattles
 {
     internal class EndlessBattleEnvironment : PvEEnvironment
     {

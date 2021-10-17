@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using IodemBot.Extensions;
-using IodemBot.Modules.ColossoBattles;
+using IodemBot.ColossoBattles;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
@@ -12,7 +12,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         {
             Name = "Attack";
             this.Emote = Emote;
-            TargetType = Target.otherSingle;
+            TargetType = TargetType.EnemyRange;
             Range = 1;
         }
 
@@ -23,13 +23,13 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public override void InternalChooseBestTarget(ColossoFighter User)
         {
-            var aliveEnemies = User.GetEnemies().Where(f => f.IsAlive).ToList();
+            var aliveEnemies = User.Enemies.Where(f => f.IsAlive).ToList();
             if (aliveEnemies.Count == 0)
             {
                 TargetNr = 0;
                 return;
             }
-            TargetNr = User.GetEnemies().IndexOf(aliveEnemies.Random());
+            TargetNr = User.Enemies.IndexOf(aliveEnemies.Random());
         }
 
         public override bool InternalValidSelection(ColossoFighter User)
@@ -180,9 +180,9 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
             if (enemy.HasCondition(Condition.Key))
             {
-                if (enemy.GetTeam().Count(e => e.IsAlive && e.HasCondition(Condition.Key)) == 0)
+                if (enemy.Party.Count(e => e.IsAlive && e.HasCondition(Condition.Key)) == 0)
                 {
-                    enemy.GetTeam().ForEach(e => e.Kill());
+                    enemy.Party.ForEach(e => e.Kill());
                 }
                 log.Add($"Your choice was correct!");
             }
@@ -193,7 +193,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 log.Add($"It was a Trap!");
                 log.AddRange(User.DealDamage(CounterDamage));
                 enemy.EquipmentWithEffect.ForEach(i => i.Unleash.AllEffects.ForEach(e => log.AddRange(e.Apply(enemy, User))));
-                enemy.GetTeam().ForEach(e => e.Kill());
+                enemy.Party.ForEach(e => e.Kill());
             }
 
             if (User is PlayerFighter player)

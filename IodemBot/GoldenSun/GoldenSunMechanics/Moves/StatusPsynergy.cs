@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using IodemBot.Extensions;
-using IodemBot.Modules.ColossoBattles;
+using IodemBot.ColossoBattles;
 using Newtonsoft.Json;
 
 namespace IodemBot.Modules.GoldenSunMechanics
@@ -18,7 +18,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         {
             if (Effects.Count > 0)
             {
-                TargetNr = Effects[0].ChooseBestTarget(OnEnemy ? User.GetEnemies() : User.GetTeam());
+                TargetNr = Effects[0].ChooseBestTarget(OnEnemy ? User.Enemies : User.Party);
             }
             else
             {
@@ -49,7 +49,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
             foreach (var t in targets)
             {
-                if (PPCost > 1 && User.GetEnemies().Contains(t) && t.IsImmuneToPsynergy)
+                if (PPCost > 1 && User.Enemies.Contains(t) && t.IsImmuneToPsynergy)
                 {
                     log.Add($"{t.Name} protects themselves with a magical barrier.");
                     continue;
@@ -69,12 +69,11 @@ namespace IodemBot.Modules.GoldenSunMechanics
             string target = "";
             switch (TargetType)
             {
-                case Target.self: target = "the User"; break;
-                case Target.ownSingle: target = "a party member"; break;
-                case Target.ownAll: target = "the Party"; break;
-                case Target.otherSingle: target = "an enemy"; break;
-                case Target.otherRange: target = $"a range of {Range * 2 - 1} enemies"; break;
-                case Target.otherAll: target = "all enemies"; break;
+                case TargetType.PartySelf: target = "the User"; break;
+                case TargetType.PartySingle: target = "a party member"; break;
+                case TargetType.PartyAll: target = "the Party"; break;
+                case TargetType.EnemyRange: target = Range == 1? "an enemy": $"a range of {Range * 2 - 1} enemies"; break;
+                case TargetType.EnemyAll: target = "all enemies"; break;
             }
             return $"Apply an Effect to {target}.";
         }

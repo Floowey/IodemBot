@@ -127,30 +127,5 @@ namespace IodemBot.Core.Leveling
             await Task.CompletedTask;
         }
 
-        internal static async void UserAddedReaction(SocketGuildUser user, SocketReaction reaction)
-        {
-            if (blackListedChannels.Contains(reaction.Channel.Id) || Modules.ColossoBattles.ColossoCommands.ChannelIds.Contains(reaction.Channel.Id))
-            {
-                return;
-            }
-
-            if (!Global.Client.Guilds.Any(g => g.Emotes.Any(e => e.Name == reaction.Emote.Name)))
-            {
-                return;
-            }
-
-            var userAccount = EntityConverter.ConvertUser(user);
-            if (reaction.MessageId == userAccount.ServerStats.MostRecentChannel)
-            {
-                userAccount.ServerStats.ReactionsAdded++;
-            }
-            else
-            {
-                userAccount.ServerStats.ReactionsAdded += 5;
-                userAccount.ServerStats.MostRecentChannel = reaction.MessageId;
-            }
-            await Task.CompletedTask;
-            UserAccountProvider.StoreUser(userAccount);
-        }
     }
 }

@@ -9,7 +9,7 @@ using Discord.Commands;
 using Discord.WebSocket;
 using IodemBot.Preconditions;
 using IodemBot.Core.UserManagement;
-using IodemBot.Modules.ColossoBattles;
+using IodemBot.ColossoBattles;
 using Newtonsoft.Json;
 
 namespace IodemBot.Modules

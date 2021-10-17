@@ -1612,7 +1612,6 @@
     "IsEquippable": true,
     "Description": "'Excalibur!'\n'Excalibur!'\n'From the United Kindom!'\n'I'm looking for Heaven!'\n'I'm going to California!'\n'Excalibur!'\n'Excalibur!'",
     "IsArtifact": true,
-    "Description": "King Arthur is probably feeling pretty ripped off right about now.",
     "AddStatsOnEquip": {
       "Atk": 180
     },

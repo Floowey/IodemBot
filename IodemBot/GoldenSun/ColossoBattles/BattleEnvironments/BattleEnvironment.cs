@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 using System.Timers;
 using Discord;
 using Discord.WebSocket;
+using IodemBot.Core.UserManagement;
 using Newtonsoft.Json;
 
-namespace IodemBot.Modules.ColossoBattles
+namespace IodemBot.ColossoBattles
 {
     public abstract class BattleEnvironment : IDisposable
     {
@@ -27,7 +28,15 @@ namespace IodemBot.Modules.ColossoBattles
         private bool isProcessing = false;
         public bool IsActive { get { return Battle.SizeTeamA > 0; } }
 
-        internal abstract ulong[] GetChannelIds { get; }
+        internal abstract ulong[] ChannelIds { get; }
+
+        public PlayerFighter GetPlayer(ulong playerID) => Battle
+            .GetTeam(Team.A).OfType<PlayerFighter>().FirstOrDefault(p => p.Id == playerID) ??
+            Battle.GetTeam(Team.B).OfType<PlayerFighter>().FirstOrDefault(p => p.Id == playerID);
+
+        public abstract Task AddPlayer(PlayerFighter player, Team team = Team.A);
+        public abstract Task AddPlayer(UserAccount user, Team team = Team.A);
+
         public bool IsPersistent { get; set; } = true;
 
         public BattleEnvironment(string Name, ITextChannel lobbyChannel, bool isPersistent)
@@ -114,7 +123,7 @@ namespace IodemBot.Modules.ColossoBattles
 
         protected abstract Task GameOver();
 
-        protected abstract Task StartBattle();
+        public abstract Task StartBattle();
 
         public abstract Task Reset(string msg = "");
 
@@ -135,7 +144,7 @@ namespace IodemBot.Modules.ColossoBattles
             {
                 s.Add(p.Name);
                 s.Add($"{p.Stats.HP} / {p.Stats.MaxHP}HP");
-                s.Add($"{(p.hasSelected ? $"Selected {p.selected.Name} at {p.selected.TargetNr}" : "Not Selected")}");
+                s.Add($"{(p.hasSelected ? $"Selected {p.SelectedMove.Name} at {p.SelectedMove.TargetNr}" : "Not Selected")}");
                 s.Add("");
             });
             s.Add($"\nTeam B:");
@@ -143,7 +152,7 @@ namespace IodemBot.Modules.ColossoBattles
             {
                 s.Add(p.Name);
                 s.Add($"{p.Stats.HP} / {p.Stats.MaxHP}HP");
-                s.Add($"{(p.hasSelected ? $"Selected {p.selected.Name} at {p.selected.TargetNr}" : "Not Selected")}");
+                s.Add($"{(p.hasSelected ? $"Selected {p.SelectedMove.Name} at {p.SelectedMove.TargetNr}" : "Not Selected")}");
                 s.Add("");
             });
             var BattleReport = JsonConvert.SerializeObject(Battle, Formatting.Indented).Replace("{", "").Replace("}", "").Replace("\"", "");

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using IodemBot.Extensions;
-using IodemBot.Modules.ColossoBattles;
+using IodemBot.ColossoBattles;
 using Newtonsoft.Json;
 
 namespace IodemBot.Modules.GoldenSunMechanics
@@ -11,7 +11,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         [JsonProperty] private Move Move { get; set; } = new Nothing();
         [JsonIgnore] public override string Name { get => Move.Name; set => Move.Name = value; }
         [JsonIgnore] public override string Emote { get => Move.Emote; set => Move.Emote = value; }
-        [JsonIgnore] public override Target TargetType { get => Move.TargetType; set => Move.TargetType = value; }
+        [JsonIgnore] public override TargetType TargetType { get => Move.TargetType; set => Move.TargetType = value; }
         [JsonIgnore] public override List<Effect> Effects { get => Move.Effects; set => Move.Effects = value; }
         [JsonIgnore] public override int TargetNr { get => Move.TargetNr; set => Move.TargetNr = value; }
         [JsonIgnore] public override uint Range { get => Move.Range; set => Move.Range = value; }
@@ -35,7 +35,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public override bool InternalValidSelection(ColossoFighter User)
         {
-            var PartyDjinn = User.GetTeam().SelectMany(u => u.Moves.OfType<Djinn>()).Distinct();
+            var PartyDjinn = User.Party.SelectMany(u => u.Moves.OfType<Djinn>()).Distinct();
             return ValidateSummon(PartyDjinn) && Move.ValidSelection(User);
         }
 
@@ -67,7 +67,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             }
             if (Move.ValidSelection(User))
             {
-                var PartyDjinn = User.GetTeam().SelectMany(u => u.Moves.OfType<Djinn>()).Distinct();
+                var PartyDjinn = User.Party.SelectMany(u => u.Moves.OfType<Djinn>()).Distinct();
                 var ReadyDjinn = PartyDjinn.Where(d => d.State == DjinnState.Standby).OrderBy(d => d.Position).ToList();
                 ReadyDjinn.OfElement(Element.Venus).Take(VenusNeeded).ToList().ForEach(d => d.Summon(User));
                 ReadyDjinn.OfElement(Element.Mars).Take(MarsNeeded).ToList().ForEach(d => d.Summon(User));

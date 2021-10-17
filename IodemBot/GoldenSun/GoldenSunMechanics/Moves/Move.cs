@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using IodemBot.Modules.ColossoBattles;
+using IodemBot.ColossoBattles;
 using JsonSubTypes;
 using Newtonsoft.Json;
 
@@ -20,7 +20,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
     {
         public virtual string Name { get; set; } = "No Name";
         public virtual string Emote { get; set; } = "😶";
-        public virtual Target TargetType { get; set; } = Target.self;
+        public virtual TargetType TargetType { get; set; } = TargetType.PartySelf;
         public virtual List<Effect> Effects { get; set; } = new List<Effect>();
         public virtual int TargetNr { get; set; } = 0;
         public virtual uint Range { get; set; } = 1;
@@ -31,7 +31,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         {
             get
             {
-                return new Target[] { Target.otherSingle, Target.otherAll, Target.otherRange }.Contains(TargetType);
+                return new TargetType[] { TargetType.EnemyAll, TargetType.EnemyRange }.Contains(TargetType);
             }
         }
 
@@ -63,30 +63,21 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
             switch (TargetType)
             {
-                case Target.self:
+                case TargetType.PartySelf:
                     targets.Add(user);
                     break;
 
-                case Target.ownAll:
+                case TargetType.PartySingle:
+                    TargetNr = Math.Min(TargetNr, playerCount);
+                    targets.Add(user.Party[TargetNr]);
+                    break;
+
+                case TargetType.PartyAll:
                     TargetNr = Math.Min(TargetNr, playerCount);
                     targets.AddRange(user.battle.GetTeam(user.party));
                     break;
 
-                case Target.ownSingle:
-                    TargetNr = Math.Min(TargetNr, playerCount);
-                    targets.Add(user.battle.GetTeam(user.party)[TargetNr]);
-                    break;
-
-                case Target.otherAll:
-                    targets.AddRange(user.GetEnemies());
-                    break;
-
-                case Target.otherSingle:
-                    TargetNr = Math.Min(TargetNr, enemyCount);
-                    targets.Add(user.battle.GetTeam(user.enemies)[TargetNr]);
-                    break;
-
-                case Target.otherRange:
+                case TargetType.EnemyRange:
                     TargetNr = Math.Min(TargetNr, enemyCount);
                     var targetTeam = user.battle.GetTeam(user.enemies);
                     for (int i = -(int)Range + 1; i <= Range - 1; i++)
@@ -96,6 +87,10 @@ namespace IodemBot.Modules.GoldenSunMechanics
                             targets.Add(targetTeam[TargetNr + i]);
                         }
                     }
+                    break;
+
+                case TargetType.EnemyAll:
+                    targets.AddRange(user.Enemies);
                     break;
             }
             return targets;

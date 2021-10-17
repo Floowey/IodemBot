@@ -8,9 +8,10 @@ using IodemBot.Core.Leveling;
 using IodemBot.Core.UserManagement;
 using IodemBot.Extensions;
 using IodemBot.Modules.GoldenSunMechanics;
-using static IodemBot.Modules.ColossoBattles.EnemiesDatabase;
+using static IodemBot.ColossoBattles.EnemiesDatabase;
 
-namespace IodemBot.Modules.ColossoBattles
+
+namespace IodemBot.ColossoBattles
 {
     internal class GauntletBattleEnvironment : PvEEnvironment
     {

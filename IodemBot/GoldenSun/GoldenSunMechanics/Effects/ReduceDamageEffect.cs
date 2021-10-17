@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using IodemBot.Extensions;
-using IodemBot.Modules.ColossoBattles;
+using IodemBot.ColossoBattles;
 using Newtonsoft.Json;
 
 namespace IodemBot.Modules.GoldenSunMechanics
@@ -35,7 +35,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         {
             if (base.InternalValidSelection(user))
             {
-                return user.GetTeam().Count(t => t.IsAlive) > 1;
+                return user.Party.Count(t => t.IsAlive) > 1;
             }
             return false;
         }

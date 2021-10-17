@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using IodemBot.Modules.ColossoBattles;
+using IodemBot.ColossoBattles;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {

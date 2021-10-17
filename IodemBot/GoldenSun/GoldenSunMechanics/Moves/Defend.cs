@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using IodemBot.Modules.ColossoBattles;
+using IodemBot.ColossoBattles;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
@@ -10,7 +10,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         {
             Name = "Defend";
             this.Emote = Emote;
-            TargetType = Target.self;
+            TargetType = TargetType.PartySelf;
             HasPriority = true;
         }
 
@@ -27,7 +27,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public override bool InternalValidSelection(ColossoFighter User)
         {
-            return User.battle.log.Count < 10;
+            return true;
         }
 
         protected override List<string> InternalUse(ColossoFighter User)
