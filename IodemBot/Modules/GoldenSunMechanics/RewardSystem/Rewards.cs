@@ -131,7 +131,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                     {
                         userAccount.DjinnBadLuck = 0;
                     }
-                    else
+                    else if(djinn.CanBeShiny)
                     {
                         userAccount.DjinnBadLuck++;
                     }
