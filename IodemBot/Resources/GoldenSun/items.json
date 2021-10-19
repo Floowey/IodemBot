@@ -3429,7 +3429,7 @@
       "MaxPP": 120
     },
     "HPRegen": 2000,
-    "PPRegen": 90,
+    "PPRegen": 100,
     "increaseUnleashRate": 100,
     "AddElStatsOnEquip": {
       "MercuryAtk": 120,
