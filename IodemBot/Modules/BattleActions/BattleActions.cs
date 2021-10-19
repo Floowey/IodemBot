@@ -37,8 +37,6 @@ namespace IodemBot.Modules
 
             return Task.FromResult(guildResult);
         }
-
-
     }
 
     public abstract class InBattleAction : BattleAction
@@ -64,6 +62,7 @@ namespace IodemBot.Modules
             player = battle.GetPlayer(Context.User.Id);
             if (player == null)
                 return Task.FromResult((false, "You aren't in this battle."));
+
 
             return baseResult;
         }

@@ -304,36 +304,36 @@ namespace IodemBot.ColossoBattles
         }
 
         public bool IsLocked(UserAccount playerAccount)
-        => (TagsLock.Count() > 0 && TagsLock.Any(t => playerAccount.Tags.Contains(t)));
+        => TagsLock.Length > 0 && TagsLock.Any(t => playerAccount.Tags.Contains(t));
 
         public bool FulfilledRequirements(UserAccount playerAvatar)
         {
-            if (Elements.Count() > 0 && !Elements.Contains(playerAvatar.Element))
+            if (Elements.Length > 0 && !Elements.Contains(playerAvatar.Element))
             {
                 return false;
             }
 
-            if (Classes.Count() > 0 && !Classes.Contains(playerAvatar.GsClass))
+            if (Classes.Length > 0 && !Classes.Contains(playerAvatar.GsClass))
             {
                 return false;
             }
 
-            if (ClassSeries.Count() > 0 && !ClassSeries.Contains(AdeptClassSeriesManager.GetClassSeries(playerAvatar).Name))
+            if (ClassSeries.Length > 0 && !ClassSeries.Contains(AdeptClassSeriesManager.GetClassSeries(playerAvatar).Name))
             {
                 return false;
             }
 
-            if (ArchTypes.Count() > 0 && !ArchTypes.Contains(AdeptClassSeriesManager.GetClassSeries(playerAvatar).Archtype))
+            if (ArchTypes.Length > 0 && !ArchTypes.Contains(AdeptClassSeriesManager.GetClassSeries(playerAvatar).Archtype))
             {
                 return false;
             }
 
-            if (TagsRequired.Count() > 0 && !TagsRequired.All(t => playerAvatar.Tags.Contains(t)))
+            if (TagsRequired.Length > 0 && !TagsRequired.All(t => playerAvatar.Tags.Contains(t)))
             {
                 return false;
             }
 
-            if (TagsAny.Count() > 0 && TagsAny.Count(t => playerAvatar.Tags.Contains(t)) < TagsHowMany)
+            if (TagsAny.Length > 0 && TagsAny.Count(t => playerAvatar.Tags.Contains(t)) < TagsHowMany)
             {
                 return false;
             }

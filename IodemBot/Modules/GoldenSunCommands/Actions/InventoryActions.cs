@@ -102,7 +102,8 @@ namespace IodemBot.Modules
             }
 
             var fb = new EmbedFooterBuilder();
-            fb.WithText($"{inv.Count} / {inv.MaxInvSize} {(inv.Upgrades < 4 ? $"Upgrade: {50000 * Math.Pow(2, inv.Upgrades)}" : "")}");
+            int upgradeCost = (int) (50000 * Math.Pow(2, inv.Upgrades));
+            fb.WithText($"{inv.Count} / {inv.MaxInvSize} {(inv.Upgrades < 4 ? $"Upgrade: {upgradeCost}" : "")}");
             embed.AddField("Coin", $"{Emotes.GetIcon("Coin")} {inv.Coins}");
             embed.WithColor(Colors.Get("Iodem"));
             embed.WithFooter(fb);
@@ -113,18 +114,19 @@ namespace IodemBot.Modules
         {
             var inv = account.Inv;
             var builder = new ComponentBuilder();
-            bool detailled = detail == Detail.Names;
+            bool labels = account.Preferences.ShowButtonLabels;
             detail = Detail.Names;
+            uint upgradeCost = (uint)(50000 * Math.Pow(2, inv.Upgrades));
             //add status menu button
-            builder.WithButton(detailled ? "Status" : null, $"#{nameof(StatusAction)}", style: ButtonStyle.Primary, emote: Emotes.GetEmote("StatusAction"));
-            builder.WithButton(detailled ? "Warrior Gear" : null, $"#{nameof(GearAction)}.Warrior", emote: Emotes.GetEmote("Warrior"), style: ButtonStyle.Success);
-            builder.WithButton(detailled ? "Mage Gear" : null, $"#{nameof(GearAction)}.Mage", emote: Emotes.GetEmote("Mage"), style: ButtonStyle.Success);
+            builder.WithButton(labels ? "Status" : null, $"#{nameof(StatusAction)}", style: ButtonStyle.Primary, emote: Emotes.GetEmote("StatusAction"));
+            builder.WithButton(labels ? "Warrior Gear" : null, $"#{nameof(GearAction)}.Warrior", emote: Emotes.GetEmote("Warrior"), style: ButtonStyle.Success);
+            builder.WithButton(labels ? "Mage Gear" : null, $"#{nameof(GearAction)}.Mage", emote: Emotes.GetEmote("Mage"), style: ButtonStyle.Success);
             var chest = inv.HasAnyChests() ? inv.NextChestQuality() : ChestQuality.Normal;
-            builder.WithButton(detailled ? "Open Chest" : null, $"#{nameof(ChestAction)}.{chest}", style: ButtonStyle.Success, emote: Emotes.GetEmote(chest), disabled:!inv.HasAnyChests());
+            builder.WithButton(labels ? "Open Chest" : null, $"#{nameof(ChestAction)}.{chest}", style: ButtonStyle.Success, emote: Emotes.GetEmote(chest), disabled:!inv.HasAnyChests());
             if (inv.Upgrades < 4)
-                builder.WithButton(detailled ? "Upgrade" : null, $"#{nameof(UpgradeInventory)}", style: ButtonStyle.Success, emote: Emotes.GetEmote("UpgradeInventoryAction"), row:1);
-            builder.WithButton(detailled ? "Sort" : null, $"#{nameof(SortInventory)}", style: ButtonStyle.Success, emote: Emotes.GetEmote("SortInventoryAction"),row:1);
-            builder.WithButton(detailled ? "Shop" : null, $"#{nameof(ShopAction)}.", ButtonStyle.Success, Emotes.GetEmote("ShopAction"), row:1);
+                builder.WithButton(labels ? "Upgrade" : null, $"{nameof(UpgradeInventory)}", style: ButtonStyle.Success, emote: Emotes.GetEmote("UpgradeInventoryAction"), disabled: !inv.HasBalance(upgradeCost), row:1);
+            builder.WithButton(labels ? "Sort" : null, $"{nameof(SortInventory)}", style: ButtonStyle.Success, emote: Emotes.GetEmote("SortInventoryAction"),row:1);
+            builder.WithButton(labels ? "Shop" : null, $"#{nameof(ShopAction)}.", ButtonStyle.Success, Emotes.GetEmote("ShopAction"), row:1);
 
             // If cursed, add remove Curse Button
             return builder.Build();
@@ -270,10 +272,10 @@ namespace IodemBot.Modules
                     var icons = isWarrior ? Inventory.WarriorIcons : Inventory.MageIcons;
                     var emote = equipped?.IconDisplay ?? icons[cat];
                     var defaultSel = category?.Equals(cat.ToString()) ?? false;
-                    categoryOptions.Add(new SelectMenuOptionBuilder($"{cat}", $"{cat}", @default:defaultSel, emote: Emote.Parse(emote)));
+                    categoryOptions.Add(new SelectMenuOptionBuilder($"{cat}", $"{cat}", isDefault:defaultSel, emote: Emote.Parse(emote)));
                 }
             }
-            builder.WithSelectMenu("gear", $"#{nameof(GearAction)}.{archtype}", options:categoryOptions, placeholder:"Select a Gear Slot", row:0);
+            builder.WithSelectMenu( $"#{nameof(GearAction)}.{archtype}", categoryOptions, placeholder:"Select a Gear Slot", row:0);
 
             if(!string.IsNullOrEmpty(category))
             {
@@ -282,10 +284,10 @@ namespace IodemBot.Modules
                 {
                     var defaultSel = EquippedGear.Contains(item);
                     if(!itemOptions.Any(o => o.Value.Equals(item.Name)))
-                        itemOptions.Add(new SelectMenuOptionBuilder($"{item.Name}", $"{item.Name}", emote: Emote.Parse(item.IconDisplay), @default: defaultSel));
+                        itemOptions.Add(new SelectMenuOptionBuilder($"{item.Name}", $"{item.Name}", emote: Emote.Parse(item.IconDisplay),isDefault: defaultSel));
                 }
 
-                builder.WithSelectMenu("items", $"#{nameof(EquipAction)}.{archtype}", options: itemOptions, placeholder:"Select an item to equip it to this slot", row:1);
+                builder.WithSelectMenu( $"#{nameof(EquipAction)}.{archtype}", options: itemOptions, placeholder:"Select an item to equip it to this slot", row:1);
             }
             builder.WithButton(null, $"#{nameof(InventoryAction)}", style: ButtonStyle.Success, emote: Emotes.GetEmote("InventoryAction"));
             return builder.Build();
@@ -446,7 +448,7 @@ namespace IodemBot.Modules
             foreach (var item in _shop){
                 options.Add(new SelectMenuOptionBuilder($"{item.Name} - {item.Price}", $"{item.Itemname}", emote: Emote.Parse(item.IconDisplay)));
             }
-            builder.WithSelectMenu("Shop Items", nameof(ShopTake), options, placeholder: "Select an item to buy it.");
+            builder.WithSelectMenu(nameof(ShopTake), options, placeholder: "Select an item to buy it.");
 
             return builder;
         }
@@ -577,6 +579,10 @@ namespace IodemBot.Modules
             var inv = account.Inv;
             inv.TryOpenChest(chestQuality.Value, out Item item, account.LevelNumber);
             inv.Add(item);
+            bool autoSold = false;
+            if (account.Preferences.AutoSell.Contains(item.Rarity))
+                autoSold = inv.Sell(item.Name);
+
             UserAccountProvider.StoreUser(account);
 
             RestInteractionMessage InventoryMessage = null;
@@ -587,7 +593,7 @@ namespace IodemBot.Modules
                 InventoryMessage = await c.OriginalInteraction.GetOriginalResponseAsync();
             }
 
-            await Context.ReplyWithMessageAsync(EphemeralRule, embed: GetSecondChestEmbed(item, inv));
+            await Context.ReplyWithMessageAsync(EphemeralRule, embed: GetSecondChestEmbed(item, inv, autoSold));
             //await Context.ReplyWithMessageAsync(EphemeralRule, embed: GetFirstChestEmbed());
 
             //await Task.Delay(1000);
@@ -615,7 +621,7 @@ namespace IodemBot.Modules
             embed.WithColor(Colors.Get("Iodem"));
             return embed.Build();
         }
-        private Embed GetSecondChestEmbed(Item item, Inventory inv)
+        private Embed GetSecondChestEmbed(Item item, Inventory inv, bool isSold = false)
         {
             var embed = new EmbedBuilder();
             embed.WithColor(item.Color);
@@ -623,7 +629,7 @@ namespace IodemBot.Modules
             {
                 embed.WithFooter($"Current Reward: {inv.DailiesInARow % Inventory.dailyRewards.Length + 1}/{Inventory.dailyRewards.Length} | Overall Streak: {inv.DailiesInARow + 1}");
             }
-            embed.WithDescription($"{Emotes.GetIcon(chestQuality.Value)} You found a {item.Name} {item.IconDisplay}");
+            embed.WithDescription($"{Emotes.GetIcon(chestQuality.Value)} You found a {item.Name} {item.IconDisplay}{(isSold? "(Auto Sold)" : "")}");
 
             return embed.Build();
         }
@@ -644,7 +650,7 @@ namespace IodemBot.Modules
         }
     }
 
-    public class UpgradeInventory : IodemBotCommandAction
+    public class UpgradeInventory : BotComponentAction
     {
         public override EphemeralRule EphemeralRule => EphemeralRule.EphemeralOrFail;
 
@@ -654,18 +660,6 @@ namespace IodemBot.Modules
      
         public override async Task RunAsync()
         {
-            _ = UpgradeInv();
-            await Task.CompletedTask;
-        }
-        public override ActionCommandRefreshProperties CommandRefreshProperties => new()
-        {
-            CanRefreshAsync = _ => Task.FromResult((true, (string)null)),
-            FillParametersAsync = null,
-            RefreshAsync = RefreshAsync
-        };
-        private async Task RefreshAsync(bool intoNew, MessageProperties msgProps)
-        {
-            var account = EntityConverter.ConvertUser(Context.User);
             _ = UpgradeInv();
             await Task.CompletedTask;
         }
@@ -679,28 +673,13 @@ namespace IodemBot.Modules
                 inv.Upgrades++;
                 UserAccountProvider.StoreUser(account);
 
-                RestInteractionMessage InventoryMessage = null;
-                if (Context is RequestInteractionContext c && c.OriginalInteraction is SocketMessageComponent)
+                await Context.UpdateReplyAsync(msgProps =>
                 {
-                    await Task.Delay(25);
-                    // Only try to assign this when interaction is from a Button, not from Slash Command
-                    InventoryMessage = await c.OriginalInteraction.GetOriginalResponseAsync();
-                }
-
-                await Task.Delay(100);
+                    msgProps.Embed = InventoryAction.GetInventoryEmbed(account);
+                    msgProps.Components = InventoryAction.GetInventoryComponent(account);
+                });
                 await Context.ReplyWithMessageAsync(EphemeralRule, "Successfully upgraded inventory.");
-
-                if (InventoryMessage != null)
-                {
-                    await InventoryMessage.ModifyAsync(msgProps =>
-                    {
-                        msgProps.Embed = InventoryAction.GetInventoryEmbed(account);
-                        msgProps.Components = InventoryAction.GetInventoryComponent(account);
-                    });
-                }
             }
-
-
         }
         protected override Task<(bool Success, string Message)> CheckCustomPreconditionsAsync()
         {
@@ -767,7 +746,7 @@ namespace IodemBot.Modules
         }
     }
 
-    public class SortInventory : IodemBotCommandAction
+    public class SortInventory : BotComponentAction
     {
         public override EphemeralRule EphemeralRule => EphemeralRule.EphemeralOrFail;
 
@@ -777,24 +756,20 @@ namespace IodemBot.Modules
 
         public override async Task RunAsync()
         {
-            //_ = UpgradeInv();
-            await Task.CompletedTask;
-        }
-        public override ActionCommandRefreshProperties CommandRefreshProperties => new()
-        {
-            CanRefreshAsync = _ => Task.FromResult((true, (string)null)),
-            FillParametersAsync = null,
-            RefreshAsync = RefreshAsync
-        };
-        private async Task RefreshAsync(bool intoNew, MessageProperties msgProps)
-        {
             var account = EntityConverter.ConvertUser(Context.User);
             var inv = account.Inv;
             inv.Sort();
             UserAccountProvider.StoreUser(account);
-            msgProps.Embed = InventoryAction.GetInventoryEmbed(account);
-            msgProps.Components = InventoryAction.GetInventoryComponent(account);
-            await Task.CompletedTask;
+            await Context.UpdateReplyAsync(msgProps =>
+            {
+                msgProps.Embed = InventoryAction.GetInventoryEmbed(account);
+                msgProps.Components = InventoryAction.GetInventoryComponent(account);
+            });
+        }
+
+        protected override Task<(bool Success, string Message)> CheckCustomPreconditionsAsync()
+        {
+            return Task.FromResult((true, (string)null));
         }
     }
 }

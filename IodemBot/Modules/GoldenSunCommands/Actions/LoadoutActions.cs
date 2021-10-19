@@ -74,10 +74,10 @@ namespace IodemBot.Modules
         public static MessageComponent GetLoadoutComponent(UserAccount account)
         {
             var builder = new ComponentBuilder();
-
-            builder.WithButton("Status", customId: $"#{nameof(StatusAction)}", style: ButtonStyle.Primary, emote: Emotes.GetEmote("StatusAction"));
-            builder.WithButton("Classes", $"#{nameof(ClassAction)}", style: ButtonStyle.Primary, emote: Emotes.GetEmote("ClassAction"));
-            builder.WithButton("Save current Loadout", $"#{nameof(LoadoutSaveAction)}", style: ButtonStyle.Primary, emote: Emotes.GetEmote("SaveLoadoutAction"));
+            var labels = account.Preferences.ShowButtonLabels;
+            builder.WithButton(labels?"Status":null, customId: $"#{nameof(StatusAction)}", style: ButtonStyle.Primary, emote: Emotes.GetEmote("StatusAction"));
+            builder.WithButton(labels?"Classes":null, $"#{nameof(ClassAction)}", style: ButtonStyle.Primary, emote: Emotes.GetEmote("ClassAction"));
+            builder.WithButton(labels?"Save current Loadout":null, $"#{nameof(LoadoutSaveAction)}", style: ButtonStyle.Primary, emote: Emotes.GetEmote("SaveLoadoutAction"));
             List<SelectMenuOptionBuilder> options = new();
 
             if (account.Loadouts.loadouts.Count == 0)
@@ -88,7 +88,7 @@ namespace IodemBot.Modules
             {
                 options.Add(new() { Label = $"{item.LoadoutName}", Value = $"{item.LoadoutName}", Emote = Emotes.GetEmote(item.Element) });
             }
-            builder.WithSelectMenu("Loadout", $"{nameof(LoadoutTakeAction)}", options, placeholder: "Select a Loadout to change into");
+            builder.WithSelectMenu($"{nameof(LoadoutTakeAction)}", options, placeholder: "Select a Loadout to change into");
 
             return builder.Build();
         }

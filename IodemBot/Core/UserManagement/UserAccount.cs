@@ -183,6 +183,7 @@ namespace IodemBot.Core.UserManagement
         public Element Element { get; set; } = Element.none;
         public Loadouts Loadouts { get; set; } = new Loadouts();
         public TrophyCase TrophyCase { get; set; } = new TrophyCase();
+        public Preferences Preferences { get; set; } = new();
 
         [JsonIgnore]
         public string GsClass

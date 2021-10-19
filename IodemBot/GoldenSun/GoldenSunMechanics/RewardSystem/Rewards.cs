@@ -46,9 +46,12 @@ namespace IodemBot.Modules.GoldenSunMechanics
             if (Item != "")
             {
                 var item = ItemDatabase.GetItem(Item);
-                if (userAccount.Inv.Add(Item))
+                if (userAccount.Inv.Add(item))
                 {
-                    awardLog.Add($"{userAccount.Name} found a {item.Icon} {item.Name}!");
+                    bool autoSold = false;
+                    if (userAccount.Preferences.AutoSell.Contains(item.Rarity))
+                        autoSold = userAccount.Inv.Sell(item.Name);
+                    awardLog.Add($"{userAccount.Name} found a {item.Icon} {item.Name}{(autoSold? " (Auto sold)" : "")}!");
                 }
                 else
                 {

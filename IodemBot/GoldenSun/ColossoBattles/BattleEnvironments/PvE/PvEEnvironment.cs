@@ -208,13 +208,7 @@ namespace IodemBot.ColossoBattles
         {
             autoTurn.Stop();
             wasJustReset = false;
-            Task.WaitAll(PlayerMessages.Select(m => m.Key.RemoveAllReactionsAsync())
-                .Append(EnemyMessage.RemoveAllReactionsAsync())
-                .Append(SummonsMessage.RemoveAllReactionsAsync())
-                .ToArray()
-            );
-
-            await Task.Delay(3000);
+            
             await WriteBattleInit();
             autoTurn.Start();
         }
@@ -319,8 +313,7 @@ namespace IodemBot.ColossoBattles
             }
             else
             {
-                _ = SummonsMessage.ModifyAsync(m => { m.Content = $"Good Luck!\n{tutorialTips.Random()}"; m.Embed = null; });
-                _ = SummonsMessage.RemoveAllReactionsAsync();
+                _ = SummonsMessage.ModifyAsync(m => { m.Content = $"Good Luck!\n{tutorialTips.Random()}"; m.Embed = null; m.Components = null; });    
             }
 
             if (StatusMessage != null)
@@ -488,12 +481,6 @@ namespace IodemBot.ColossoBattles
                 WriteEnemyEmbed()
             };
 
-            //var validReactions = reactions.Where(r => r.MessageId == EnemyMessage.Id).ToList();
-            //foreach (var r in validReactions)
-            //{
-            //    tasks.Add(EnemyMessage.RemoveReactionAsync(r.Emote, r.User.Value));
-            //    reactions.Remove(r);
-            //}
             await Task.WhenAll(tasks);
         }
 
@@ -501,9 +488,7 @@ namespace IodemBot.ColossoBattles
         {
             var tasks = new List<Task>
             {
-                WriteEnemyEmbed(),
-                EnemyMessage.RemoveAllReactionsAsync()
-                //WriteEnemyReactions()
+                WriteEnemyEmbed()
             };
             await Task.WhenAll(tasks);
         }
@@ -552,7 +537,7 @@ namespace IodemBot.ColossoBattles
                 _ = SummonsMessage.ModifyAsync(m =>
                 {
                     m.Embed = embed.Build();
-                    m.Components = ControlBattleComponents.GetSummonsComponent(Factory);
+                    m.Components = ControlBattleComponents.GetSummonsComponent((PlayerFighter)Battle.GetTeam(Team.A).First());
 
                 });
             }

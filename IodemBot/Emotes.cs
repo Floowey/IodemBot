@@ -16,14 +16,21 @@ namespace IodemBot
 
             { "Warrior", "<:Long_Sword:569813505423704117>" },
             { "Mage", "<:Wooden_Stick:569813632897253376>" },
+            { "Dead", "<:curse:538074679492083742>" },
 
-            { "InventoryAction", "<:Item:895957416557027369>" },
-            { "DjinnAction", "<:Djinni:896069873149554818>" },
-            { "StatusAction", "<:Status:896069873124409375>" },
+            { "LabelsOn", "<:Speech_On:899296342998913044>" },
+            { "LabelsOff", "<:Speech_Off:899296342898245653>" },
+
+
             { "ClassAction", "<:Switch:896735785603194880>" },
+            { "DjinnAction", "<:Djinni:896069873149554818>" },
+            { "DungeonAction", "<:mapclosed:606236181486632985>" },
+            { "InventoryAction", "<:Item:895957416557027369>" },
             { "LoadoutAction", "<:transfer_file:896735785187962901>" },
+            { "OptionAction", "<:Options:896735785166979082>" },
             { "SaveLoadoutAction", "<:Save_Game:896735785351520316>" },
             { "ShopAction", "<:Buy:896735785137614878>" },
+            { "StatusAction", "<:Status:896069873124409375>" },
             { "SortInventoryAction", "<:button_inventorysort:897032416915488869>" },
             { "UpgradeInventoryAction", "<:button_inventoryupgrade:897032416626098217>" },
             { "UpgradeDjinnAction", "<:button_djinnupgrade:897032416856789043>" },

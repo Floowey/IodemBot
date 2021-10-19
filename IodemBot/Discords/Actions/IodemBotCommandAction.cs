@@ -9,7 +9,7 @@ namespace IodemBot.Discords.Actions
 {
     public abstract class IodemBotCommandAction : BotCommandAction
     {
-        public override EphemeralRule EphemeralRule => EphemeralRule.Permanent;
+        public override EphemeralRule EphemeralRule => EphemeralRule.EphemeralOrFail;
 
         public override bool GuildsOnly => true;
 

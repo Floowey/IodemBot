@@ -64,7 +64,7 @@ namespace IodemBot.Modules.BattleActions
             if (SelectedMove.TargetType == TargetType.PartySelf ||
                 SelectedMove.TargetType == TargetType.PartyAll ||
                 (SelectedMove.TargetType == TargetType.PartySingle && player.Party.Count == 1) ||
-                (SelectedMove.TargetType == TargetType.EnemyRange && player.Enemies.Count == 1))
+                ((SelectedMove.TargetType == TargetType.EnemyRange || SelectedMove.TargetType == TargetType.EnemyAll) && player.Enemies.Count == 1))
             {
                 player.hasSelected = true;
                 SelectedMove.TargetNr = 0;
@@ -72,7 +72,7 @@ namespace IodemBot.Modules.BattleActions
 
             if(SelectedMove is Summon s)
             {
-                await Context.UpdateReplyAsync(p => p.Components = ControlBattleComponents.GetSummonsComponent(player.factory, s));
+                await Context.UpdateReplyAsync(p => p.Components = ControlBattleComponents.GetSummonsComponent(player));
             } else
             {
                 await Context.UpdateReplyAsync(p => p.Components = ControlBattleComponents.GetPlayerControlComponents(player));
@@ -147,22 +147,36 @@ namespace IodemBot.Modules.BattleActions
                 var Team = player.SelectedMove.TargetType == TargetType.PartySingle ? player.Party : player.Enemies;
                 foreach (var f in Team)
                 {
-                    options.Add(new() { Label = $"{f.Name}", Value = $"{options.Count}" });
+                    options.Add(new() { Label = $"{f.Name}", Value = $"{options.Count}",Emote = f.IsAlive?null: Emotes.GetEmote("Dead") });
                 }
-                builder.WithSelectMenu("Target",$"{nameof(SelectTargetAction)}" , options, "Select a Target", disabled: player.hasSelected);
+                builder.WithSelectMenu($"{nameof(SelectTargetAction)}" , options, "Select a Target", disabled: player.hasSelected);
             }
 
             return builder.Build();
         }
 
-        public static MessageComponent GetSummonsComponent(PlayerFighterFactory factory, Summon selected = null)
+        public static MessageComponent GetSummonsComponent(PlayerFighter player)
         {
+            var factory = player.factory;
             ComponentBuilder builder = new();
             foreach (var move in factory.PossibleSummons)
             {
-                bool isSelection = move == selected;
+                bool isSelection = player.SelectedMove == move;
+                ButtonStyle style = isSelection ? ButtonStyle.Primary : ButtonStyle.Secondary;
+                style = move.InternalValidSelection(player) ? style : ButtonStyle.Danger;
 
-                builder.WithButton(label: $"{move.Name}", customId: $"{nameof(SelectMoveAction)}.{move.Name}", style: isSelection ? ButtonStyle.Danger : ButtonStyle.Primary, emote: move.GetEmote());
+                builder.WithButton(label: $"{move.Name}", customId: $"{nameof(SelectMoveAction)}.{move.Name}", style: style, emote: move.GetEmote());
+            }
+
+            if (!player.hasSelected && player.SelectedMove != null)
+            {
+                List<SelectMenuOptionBuilder> options = new();
+                var Team = player.SelectedMove.TargetType == TargetType.PartySingle ? player.Party : player.Enemies;
+                foreach (var f in Team)
+                {
+                    options.Add(new() { Label = $"{f.Name}", Value = $"{options.Count}" });
+                }
+                builder.WithSelectMenu($"{nameof(SelectTargetAction)}", options, "Select a Target", disabled: player.hasSelected);
             }
             return builder.Build();
         }

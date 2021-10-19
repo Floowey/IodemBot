@@ -280,6 +280,19 @@ namespace IodemBot.Modules
             await Task.CompletedTask;
         }
 
+        [Command("Sync")]
+        public async Task Sync([Remainder] SocketTextChannel channel)
+        {
+            try
+            {
+                await channel.SyncPermissionsAsync();
+            } catch (Exception e)
+            {
+                Console.Write(e.ToString());
+            }
+            await Task.CompletedTask;
+        }
+
         [Command("patdown")]
         [RequireStaff]
         public async Task PatDown([Remainder] SocketGuildUser user = null)

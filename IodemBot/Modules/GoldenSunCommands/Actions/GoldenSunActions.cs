@@ -124,12 +124,18 @@ namespace IodemBot.Modules
         {
             var inv = account.Inv;
             var builder = new ComponentBuilder();
+            var labels = account.Preferences.ShowButtonLabels;
             //add status menu button
-            builder.WithButton("Classes", $"#{nameof(ClassAction)}", style: ButtonStyle.Primary, emote: Emotes.GetEmote("ClassAction"));
-            builder.WithButton("Loadouts", $"#{nameof(LoadoutAction)}", style: ButtonStyle.Primary, emote: Emotes.GetEmote("LoadoutAction"));
+            builder.WithButton(labels ? "Classes" : null, $"#{nameof(ClassAction)}", style: ButtonStyle.Primary, emote: Emotes.GetEmote("ClassAction"));
+            builder.WithButton(labels ? "Loadouts" : null, $"#{nameof(LoadoutAction)}", style: ButtonStyle.Primary, emote: Emotes.GetEmote("LoadoutAction"));
 
-            builder.WithButton("Inventory", $"#{nameof(InventoryAction)}", style: ButtonStyle.Success, emote: Emotes.GetEmote("InventoryAction"));
-            builder.WithButton("Djinn", $"#{nameof(InventoryAction)}.", style: ButtonStyle.Success, emote: Emotes.GetEmote("DjinnAction"));
+            builder.WithButton(labels ? "Inventory" : null, $"#{nameof(InventoryAction)}", style: ButtonStyle.Success, emote: Emotes.GetEmote("InventoryAction"));
+            builder.WithButton(labels ? "Djinn" : null, $"#{nameof(DjinnAction)}.", style: ButtonStyle.Success, emote: Emotes.GetEmote("DjinnAction"));
+            builder.WithButton(labels ? "Dungeons" : null, $"#{nameof(DungeonAction)}.", style: ButtonStyle.Primary, emote: Emotes.GetEmote("DungeonAction"));
+
+
+            builder.WithButton(labels ? "Options" : null, $"#{nameof(OptionActions)}", style: ButtonStyle.Secondary, emote: Emotes.GetEmote("OptionAction"),row:2);
+
 
             var prevPage = statusPage - 1;
             var nextPage = statusPage + 1;
@@ -355,6 +361,7 @@ namespace IodemBot.Modules
             var OfElement = allAvailableClasses.Where(c => c.Elements.Contains(account.Element)).OrderBy(n => n.Name);
 
             var builder = new ComponentBuilder();
+            var labels = account.Preferences.ShowButtonLabels;
 
             List<SelectMenuOptionBuilder> ElementOptions = new();
             foreach (var element in new[] { Element.Venus, Element.Mars, Element.Jupiter, Element.Mercury })
@@ -363,11 +370,11 @@ namespace IodemBot.Modules
                 { 
                     Label = element.ToString(), 
                     Value = $"{element}", 
-                    Default = account.Element == element, 
+                    IsDefault = account.Element == element, 
                     Emote = Emotes.GetEmote(element)
                 });
             }
-            builder.WithSelectMenu("element", $"#{nameof(ChangeAdeptAction)}.", ElementOptions);
+            builder.WithSelectMenu( $"#{nameof(ChangeAdeptAction)}.", ElementOptions);
 
             List<SelectMenuOptionBuilder> ClassOptions = new();
             foreach (var series in OfElement)
@@ -376,12 +383,12 @@ namespace IodemBot.Modules
                 {
                     Label = series.Name,
                     Value = $"{series.Name}",
-                    Default = series.Classes.Any(c => c.Name.Equals(account.GsClass))
+                    IsDefault = series.Classes.Any(c => c.Name.Equals(account.GsClass))
                 });
             }
-            builder.WithSelectMenu("classSelect", $"#{nameof(ChangeAdeptAction)}", ClassOptions);
-            builder.WithButton("Status", customId: $"#{nameof(StatusAction)}",style: ButtonStyle.Primary, emote: Emotes.GetEmote("StatusAction"),row:3);
-            builder.WithButton("Loadouts", $"#{nameof(LoadoutAction)}", style: ButtonStyle.Primary, emote: Emotes.GetEmote("LoadoutAction"));
+            builder.WithSelectMenu($"#{nameof(ChangeAdeptAction)}", ClassOptions);
+            builder.WithButton(labels ? "Status" : null, customId: $"#{nameof(StatusAction)}",style: ButtonStyle.Primary, emote: Emotes.GetEmote("StatusAction"),row:3);
+            builder.WithButton(labels ? "Loadouts" : null, $"#{nameof(LoadoutAction)}", style: ButtonStyle.Primary, emote: Emotes.GetEmote("LoadoutAction"));
             return builder.Build();
         }
     }
