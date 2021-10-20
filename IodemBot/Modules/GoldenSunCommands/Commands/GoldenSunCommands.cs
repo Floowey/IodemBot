@@ -458,6 +458,7 @@ namespace IodemBot.Modules
         }
 
         [Command("PutElementalRoles")]
+        [RequireOwner]
       
         public async Task PutRoles([Remainder] ITextChannel channel)
         {

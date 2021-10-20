@@ -125,25 +125,19 @@ namespace IodemBot.Modules
             var inv = account.Inv;
             var builder = new ComponentBuilder();
             var labels = account.Preferences.ShowButtonLabels;
-            //add status menu button
+            
             builder.WithButton(labels ? "Classes" : null, $"#{nameof(ClassAction)}", style: ButtonStyle.Primary, emote: Emotes.GetEmote("ClassAction"));
             builder.WithButton(labels ? "Loadouts" : null, $"#{nameof(LoadoutAction)}", style: ButtonStyle.Primary, emote: Emotes.GetEmote("LoadoutAction"));
-
             builder.WithButton(labels ? "Inventory" : null, $"#{nameof(InventoryAction)}", style: ButtonStyle.Success, emote: Emotes.GetEmote("InventoryAction"));
             builder.WithButton(labels ? "Djinn" : null, $"#{nameof(DjinnAction)}.", style: ButtonStyle.Success, emote: Emotes.GetEmote("DjinnAction"));
-            builder.WithButton(labels ? "Dungeons" : null, $"#{nameof(DungeonAction)}.", style: ButtonStyle.Primary, emote: Emotes.GetEmote("DungeonAction"));
-
-
-            builder.WithButton(labels ? "Options" : null, $"#{nameof(OptionActions)}", style: ButtonStyle.Secondary, emote: Emotes.GetEmote("OptionAction"),row:2);
-
 
             var prevPage = statusPage - 1;
             var nextPage = statusPage + 1;
 
-
+            builder.WithButton(labels ? "Dungeons" : null, $"#{nameof(DungeonAction)}.", style: ButtonStyle.Secondary, emote: Emotes.GetEmote("DungeonAction"),row:1);
+            builder.WithButton(labels ? "Options" : null, $"#{nameof(OptionActions)}", style: ButtonStyle.Secondary, emote: Emotes.GetEmote("OptionAction"),row:1);
             builder.WithButton("◀️", $"#{nameof(StatusAction)}.{prevPage}", style: ButtonStyle.Secondary, disabled: prevPage<0, row:1);
             builder.WithButton("▶️", $"#{nameof(StatusAction)}.{nextPage}", style: ButtonStyle.Secondary, disabled: nextPage>=nPages, row:1);
-
 
             return builder.Build();
         }

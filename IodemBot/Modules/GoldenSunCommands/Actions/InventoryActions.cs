@@ -20,7 +20,7 @@ namespace IodemBot.Modules
     // Remove Cursed Action (either in inv or gear)
     // Sell Action (button also on chests)
     // Iteminfo (With equip button where applicable)
-    class InventoryAction : IodemBotCommandAction
+    public class InventoryAction : IodemBotCommandAction
     {
         public override EphemeralRule EphemeralRule => EphemeralRule.EphemeralOrFail;
 

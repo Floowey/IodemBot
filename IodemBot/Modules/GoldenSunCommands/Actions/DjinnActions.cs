@@ -240,7 +240,51 @@ namespace IodemBot.Modules
         }
     }
 
+    public class DjinnRenameAction : IodemBotCommandAction
+    {
+        public override async Task RunAsync()
+        {
+            var account = EntityConverter.ConvertUser(Context.User);
+            var djinnPocket = account.DjinnPocket;
+            var djinn = djinnPocket.GetDjinn(DjinnToRename);
+            djinn.Nickname = NewName;
+            UserAccountProvider.StoreUser(account);
+            await Context.ReplyWithMessageAsync(EphemeralRule, $"Renamed {djinn.Emote} {djinn.Djinnname} to {NewName}");
+        }
+        [ActionParameterSlash(Order = 0, Name = "djinn", Description = "The djinn to rename", Required = true, Type = ApplicationCommandOptionType.String)]
+        public string DjinnToRename { get; set; }
+
+        [ActionParameterSlash(Order = 1, Name = "name", Description = "The name to rename it to", Required = false, Type = ApplicationCommandOptionType.String)]
+
+        public string NewName { get; set; }
+        public override ActionGuildSlashCommandProperties SlashCommandProperties => new()
+        {
+            Name = "renamedjinn",
+            Description = "Rename one of your djinn",
+            FillParametersAsync = options =>
+            {
+                if (options != null)
+                    DjinnToRename = (string)options.FirstOrDefault().Value;
+                if (options.Count() > 1)
+                    NewName = ((string)options.ElementAt(1)?.Value ?? "").Trim();
+
+                return Task.CompletedTask;
+            }
+        };
+
+        protected override Task<(bool Success, string Message)> CheckCustomPreconditionsAsync()
+        {
+            var djinn = EntityConverter.ConvertUser(Context.User).DjinnPocket.GetDjinn(DjinnToRename);
+            if (djinn== null)
+                return Task.FromResult((false, "Couldn't find that djinn in your djinn pocket"));
+
+            if (string.IsNullOrWhiteSpace(NewName))
+                NewName = djinn.Djinnname;
+
+            return Task.FromResult((true, (string)null));
+        }
+    }
+
     // Djinn info, Summon Info
     // Djinn release
-    // Djinn rename
 }

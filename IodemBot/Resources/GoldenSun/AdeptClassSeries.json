@@ -115,7 +115,7 @@
       }
     ],
     "elements": [
-      0
+      "Venus"
     ],
     "elstats": {
       "VenusAtk": 140,
@@ -270,6 +270,7 @@
         "movepool": [
           "Heat Wave",
           "Fire Orb",
+          "Guard",
           "Protect",
           "Impair"
         ],
@@ -286,7 +287,9 @@
         "movepool": [
           "Liquifier",
           "Inferno",
+          "Guard",
           "Protect",
+          "Impair",
           "Debilitate"
         ],
         "statMultipliers": {
@@ -302,7 +305,9 @@
         "movepool": [
           "Liquifier",
           "Inferno",
+          "Guard",
           "Protect",
+          "Impair",
           "Debilitate"
         ],
         "statMultipliers": {
@@ -569,6 +574,7 @@
         "movepool": [
           "Shine Plasma",
           "Bind",
+          "Impact",
           "High Impact",
           "Healthy Wind"
         ],
@@ -585,6 +591,7 @@
         "movepool": [
           "Shine Plasma",
           "Bind",
+          "Impact",
           "High Impact",
           "Healing Gust"
         ],
@@ -601,6 +608,7 @@
         "movepool": [
           "Spark Plasma",
           "Bind",
+          "Impact",
           "High Impact",
           "Healing Gust"
         ],
@@ -1193,6 +1201,7 @@
         "movepool": [
           "Astral Blast",
           "Mother Gaia",
+          "Dull",
           "Blunt",
           "Impact",
           "Cure Well"
@@ -1210,7 +1219,9 @@
         "movepool": [
           "Thunder Mine",
           "Mother Gaia",
+          "Dull",
           "Blunt",
+          "Impact",
           "High Impact",
           "Potent Cure"
         ],
@@ -1227,7 +1238,9 @@
         "movepool": [
           "Thunder Mine",
           "Grand Gaia",
+          "Dull",
           "Blunt",
+          "Impact",
           "High Impact",
           "Potent Cure"
         ],
@@ -1402,9 +1415,12 @@
                 "name": "Magma Enchanter",
                 "movepool": [
                     "Astral Blast",
-                    "Eruption",
-                    "High Impact",
-                    "Resist",
+                  "Eruption",
+                  "Impact",
+                  "High Impact",
+                  "Ward",
+                  "Resist",
+                  "Guard",
                     "Protect"
                 ],
                 "statMultipliers": {
@@ -1417,13 +1433,16 @@
             },
             {
                 "name": "Magma Conjurer",
-                "movepool": [
-                    "Thunder Mine",
-                    "Pyroclasm",
-                    "High Impact",
-                    "Resist",
-                    "Protect"
-                ],
+              "movepool": [
+                "Thunder Mine",
+                "Pyroclasm",
+                "Impact",
+                "High Impact",
+                "Ward",
+                "Resist",
+                "Guard",
+                "Protect"
+              ],
                 "statMultipliers": {
                     "maxHP": 170,
                     "maxPP": 160,
@@ -1434,13 +1453,16 @@
             },
             {
                 "name": "Magma War Adept",
-                "movepool": [
-                    "Thunder Mine",
-                    "Pyroclasm",
-                    "High Impact",
-                    "Resist",
-                    "Protect"
-                ],
+              "movepool": [
+                "Thunder Mine",
+                "Pyroclasm",
+                "Impact",
+                "High Impact",
+                "Ward",
+                "Resist",
+                "Guard",
+                "Protect"
+              ],
                 "statMultipliers": {
                     "maxHP": 190,
                     "maxPP": 170,
@@ -1508,6 +1530,7 @@
           "Eruption",
           "Plasma",
           "Bind",
+          "Ward",
           "Resist",
           "Aura"
         ],
@@ -1525,7 +1548,9 @@
           "Eruption",
           "Shine Plasma",
           "Bind",
+          "Ward",
           "Resist",
+
           "Healing Aura"
         ],
         "statMultipliers": {
@@ -1542,7 +1567,9 @@
           "Pyroclasm",
           "Spark Plasma",
           "Bind",
+          "Ward",
           "Resist",
+
           "Cool Aura"
         ],
         "statMultipliers": {
@@ -1840,7 +1867,8 @@
                 "movepool": [
                     "Shine Plasma",
                     "Hail Prism",
-                    "Bind",
+                  "Bind",
+                  "Impact",
                     "High Impact",
                     "Wish Well"
                 ],
@@ -1857,7 +1885,8 @@
                 "movepool": [
                     "Shine Plasma",
                     "Freeze Prism",
-                    "Bind",
+                  "Bind",
+                  "Impact",
                     "High Impact",
                     "Wish Well"
                 ],
@@ -1874,7 +1903,8 @@
                 "movepool": [
                     "Spark Plasma",
                     "Freeze Prism",
-                    "Bind",
+                  "Bind",
+                  "Impact",
                     "High Impact",
                     "Pure Wish"
                 ],
@@ -2066,7 +2096,8 @@
                 "name": "Luminier",
                 "movepool": [
                     "Plume Edge",
-                    "Fiery Blast",
+                  "Fiery Blast",
+                  "Guard",
                     "Protect",
                     "Thermal",
                     "Ply Well"
@@ -2083,7 +2114,8 @@
                 "name": "Radiant",
                 "movepool": [
                     "Plume Edge",
-                    "Fiery Blast",
+                  "Fiery Blast",
+                  "Guard",
                     "Protect",
                     "Thermal",
                     "Pure Ply"
@@ -2155,7 +2187,9 @@
                 "movepool": [
                     "Undead Gloom",
                     "Fiery Abyss",
-                    "Toxic Grit",
+                  "Toxic Grit",
+                  "Impair",
+                  "Debilitate",
                     "Condemn"
                 ],
                 "statMultipliers": {
@@ -2168,13 +2202,14 @@
             },
             {
                 "name": "Curse Master",
-                "movepool": [
-                    "Undead Gloom",
-                    "Fiery Abyss",
-                    "Toxic Grit",
-                    "Debilitate",
-                    "Condemn"
-                ],
+              "movepool": [
+                "Undead Gloom",
+                "Fiery Abyss",
+                "Toxic Grit",
+                "Impair",
+                "Debilitate",
+                "Condemn"
+              ],
                 "statMultipliers": {
                     "maxHP": 130,
                     "maxPP": 170,
@@ -2185,13 +2220,14 @@
             },
             {
                 "name": "Soul Siphon",
-                "movepool": [
-                    "Undead Gloom",
-                    "Dire Inferno",
-                    "Toxic Grit",
-                    "Debilitate",
-                    "Condemn"
-                ],
+              "movepool": [
+                "Undead Gloom",
+                "Dire Inferno",
+                "Toxic Grit",
+                "Impair",
+                "Debilitate",
+                "Condemn"
+              ],
                 "statMultipliers": {
                     "maxHP": 150,
                     "maxPP": 180,
@@ -2202,13 +2238,14 @@
             },
             {
                 "name": "Diabolist",
-                "movepool": [
-                    "Undead Might",
-                    "Dire Inferno",
-                    "Toxic Grit",
-                    "Debilitate",
-                    "Condemn"
-                ],
+              "movepool": [
+                "Undead Might",
+                "Dire Inferno",
+                "Toxic Grit",
+                "Impair",
+                "Debilitate",
+                "Condemn"
+              ],
                 "statMultipliers": {
                     "maxHP": 170,
                     "maxPP": 190,
@@ -2363,13 +2400,15 @@
             },
             {
                 "name": "Ronin",
-                "movepool": [
-                    "Quick Strike",
-                    "Skull Splitter",
-                    "Epicenter",
-                    "Angel Spear",
-                    "Magic Shield"
-                ],
+              "movepool": [
+                "Quick Strike",
+                "Skull Splitter",
+                "Epicenter",
+                "Demon Spear",
+                "Angel Spear",
+                "Magic Shell",
+                "Magic Shield"
+              ],
                 "statMultipliers": {
                     "maxHP": 210,
                     "maxPP": 140,

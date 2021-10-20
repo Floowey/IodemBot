@@ -291,4 +291,6 @@ namespace IodemBot.Modules.GoldenSunMechanics
             await DjinnInv(DjinnDetail.Names);
         }
     }
+
+    
 }

@@ -84,11 +84,12 @@ namespace IodemBot.Modules
         public static MessageComponent GetDungeonComponent(UserAccount user)
         {
             ComponentBuilder builder = new();
-            var defaultDungeons = EnemiesDatabase.DefaultDungeons.Where(d => !d.Requirement.IsLocked(user));
+            var labels = user.Preferences.ShowButtonLabels;
+            var defaultDungeons = DefaultDungeons.Where(d => !d.Requirement.IsLocked(user));
             var availableDefaultDungeons = defaultDungeons.Where(d => d.Requirement.Applies(user)).Select(s => s.Name).ToArray();
             var unavailableDefaultDungeons = defaultDungeons.Where(d => !d.Requirement.Applies(user)).Select(s => s.Name).ToArray();
 
-            var unlockedDungeons = user.Dungeons.Where(s => EnemiesDatabase.HasDungeon(s)).Select(s => EnemiesDatabase.GetDungeon(s)).Where(d => !d.Requirement.IsLocked(user));
+            var unlockedDungeons = user.Dungeons.Where(s => HasDungeon(s)).Select(s => GetDungeon(s)).Where(d => !d.Requirement.IsLocked(user));
             var availablePermUnlocks = availableDefaultDungeons
                 .Concat(unlockedDungeons.Where(d =>
                     !d.IsOneTimeOnly &&
@@ -122,7 +123,7 @@ namespace IodemBot.Modules
             if (availableDungeons.Count > 0)
                 builder.WithSelectMenu($"{nameof(OpenDungeonAction)}.D", availableDungeons, "Select a dungeon to visit (consumes key)");
 
-
+            builder.WithButton(labels ? "Status" : null, $"#{nameof(StatusAction)}", style: ButtonStyle.Primary, emote: Emotes.GetEmote("StatusAction"));
             return builder.Build();
         }
     }

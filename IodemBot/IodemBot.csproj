@@ -11,7 +11,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Accord.Statistics" Version="3.8.0" />
-    <PackageReference Include="Discord.Net.Labs" Version="3.1.6" />
+    <PackageReference Include="Discord.Net.Labs" Version="3.1.7" />
     <PackageReference Include="JsonSubTypes">
       <Version>1.7.0</Version>
     </PackageReference>

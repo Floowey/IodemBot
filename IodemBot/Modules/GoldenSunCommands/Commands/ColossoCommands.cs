@@ -193,6 +193,7 @@ namespace IodemBot.ColossoBattles
         [Command("c setup"), Alias("colosso setup")]
         [RequireStaff]
         [RequireUserServer]
+        // not necessary
         public async Task SetupColosso()
         {
             await Context.Message.DeleteAsync();
@@ -348,18 +349,21 @@ namespace IodemBot.ColossoBattles
         [Command("dungeon"), Alias("dg")]
         [Summary("Prepare a channel for an adventure to a specified dungeon")]
         [RequireUserServer]
+        //redundant
         public async Task Dungeon([Remainder] string DungeonName)
         { _ = SetupDungeon(DungeonName, false); await Task.CompletedTask; }
 
         [Command("Tutorial")]
         [Summary("Enter the Tutorial and start your adventure!")]
         [RequireUserServer]
+        //redundant
         public async Task Tutorial()
         { _ = SetupDungeon("Tutorial", false); await Task.CompletedTask; }
 
         [Command("moddungeon")]
         [RequireStaff]
         [RequireUserServer]
+        //no slash
         public async Task ModDungeon([Remainder] string DungeonName)
         { _ = SetupDungeon(DungeonName, true); await Task.CompletedTask; }
 
