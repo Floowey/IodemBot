@@ -27,7 +27,7 @@ namespace IodemBot
     [JsonConverter(typeof(StringEnumConverter))]
     public enum ChestQuality { Wooden, Normal, Silver, Gold, Adept, Daily }
 
-    public enum Detail { none, Names, NameAndPrice }
+    public enum Detail { None, Names, NameAndPrice }
 
     public enum TimeToActivate { beforeDamage, afterDamage };
 

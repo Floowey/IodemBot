@@ -22,29 +22,27 @@ namespace IodemBot.Modules
     // Iteminfo (With equip button where applicable)
     public class InventoryAction : IodemBotCommandAction
     {
-        public override EphemeralRule EphemeralRule => EphemeralRule.EphemeralOrFail;
 
-        [ActionParameterSlash(Order = 0, Name = "detail", Description = "Whether to show Names or not", Required = false, Type = ApplicationCommandOptionType.String)]
-        [ActionParameterOptionString(Order = 0, Name = "None", Value = "none")]
-        [ActionParameterOptionString(Order = 1, Name = "Name", Value = "Names")]
-        public Detail detail { get; set; } = Detail.none;
+        [ActionParameterComponent(Order =0, Name ="Detail", Description="...", Required =false)]
+        public Detail detail { get; set; } = Detail.None;
         public override ActionGuildSlashCommandProperties SlashCommandProperties => new()
         {
             Name = "inv",
             Description = "Manage your Inventory",
-            FillParametersAsync = options =>
-            {
-                if (options != null)
-                    detail = Enum.Parse<Detail>((string)options.FirstOrDefault().Value);
-
-                return Task.CompletedTask;
-            }
+            
         };
 
         public override ActionCommandRefreshProperties CommandRefreshProperties => new()
         {
             CanRefreshAsync = _ => Task.FromResult((true, (string)null)),
-            RefreshAsync = RefreshAsync
+            RefreshAsync = RefreshAsync,
+            FillParametersAsync = (stringOptions, idOptions) =>
+            {
+                if (idOptions != null && idOptions.Any())
+                    detail = Enum.Parse<Detail>((string)idOptions.FirstOrDefault());
+
+                return Task.CompletedTask;
+            }
         };
 
         private async Task RefreshAsync(bool intoNew, MessageProperties msgProps)
@@ -63,12 +61,12 @@ namespace IodemBot.Modules
         }
         private static readonly Dictionary<Detail, char> split = new ()
         {
-            { Detail.none, '>' },
+            { Detail.None, '>' },
             {Detail.Names,',' },
             {Detail.NameAndPrice, '\n' }
         };
 
-        internal static Embed GetInventoryEmbed(UserAccount account, Detail detail=Detail.none)
+        internal static Embed GetInventoryEmbed(UserAccount account, Detail detail=Detail.None)
         {
             var inv = account.Inv;
             var embed = new EmbedBuilder()
@@ -110,12 +108,11 @@ namespace IodemBot.Modules
             return embed.Build();
         }
 
-        internal static MessageComponent GetInventoryComponent(UserAccount account, Detail detail = Detail.none)
+        internal static MessageComponent GetInventoryComponent(UserAccount account, Detail detail = Detail.None)
         {
             var inv = account.Inv;
             var builder = new ComponentBuilder();
             bool labels = account.Preferences.ShowButtonLabels;
-            detail = Detail.Names;
             uint upgradeCost = (uint)(50000 * Math.Pow(2, inv.Upgrades));
             //add status menu button
             builder.WithButton(labels ? "Status" : null, $"#{nameof(StatusAction)}", style: ButtonStyle.Primary, emote: Emotes.GetEmote("StatusAction"));
@@ -126,8 +123,12 @@ namespace IodemBot.Modules
             if (inv.Upgrades < 4)
                 builder.WithButton(labels ? "Upgrade" : null, $"{nameof(UpgradeInventory)}", style: ButtonStyle.Success, emote: Emotes.GetEmote("UpgradeInventoryAction"), disabled: !inv.HasBalance(upgradeCost), row:1);
             builder.WithButton(labels ? "Sort" : null, $"{nameof(SortInventory)}", style: ButtonStyle.Success, emote: Emotes.GetEmote("SortInventoryAction"),row:1);
-            builder.WithButton(labels ? "Shop" : null, $"#{nameof(ShopAction)}.", ButtonStyle.Success, Emotes.GetEmote("ShopAction"), row:1);
-
+            builder.WithButton(labels ? "Shop" : null, $"#{nameof(ShopAction)}.", ButtonStyle.Success, Emotes.GetEmote("ShopAction"), row: 1);
+            if (detail == Detail.None)
+                builder.WithButton(labels ? "Show Names" : null, $"#{nameof(InventoryAction)}.Names", ButtonStyle.Secondary, Emotes.GetEmote("LabelsOn"), row: 1);
+            else
+                builder.WithButton(labels ? "Hide Names" : null, $"#{nameof(InventoryAction)}.None", ButtonStyle.Secondary, Emotes.GetEmote("LabelsOff"), row: 1);
+            
             // If cursed, add remove Curse Button
             return builder.Build();
         }
@@ -739,8 +740,6 @@ namespace IodemBot.Modules
 
             if (string.IsNullOrWhiteSpace(NewName))
                 NewName = item.Itemname;
-//                return Task.FromResult((false, "Not a valid name"));
-
 
             return Task.FromResult((true, (string)null));
         }

@@ -20,11 +20,11 @@ namespace IodemBot.Modules.GoldenSunMechanics
         [Command("Inv")]
         [Cooldown(10)]
         [Summary("Displays inventory and current sets")]
-        public async Task ShowInventory(Detail detail = Detail.none)
+        public async Task ShowInventory(Detail detail = Detail.None)
         {
             var split = new Dictionary<Detail, char>()
             {
-                { Detail.none, '>' },
+                { Detail.None, '>' },
                 {Detail.Names,',' },
                 {Detail.NameAndPrice, '\n' }
             };

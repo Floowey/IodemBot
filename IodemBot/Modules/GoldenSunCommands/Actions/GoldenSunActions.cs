@@ -58,7 +58,7 @@ namespace IodemBot.Modules
         }
         private static readonly Dictionary<Detail, char> split = new()
         {
-            { Detail.none, '>' },
+            { Detail.None, '>' },
             { Detail.Names, ',' },
             { Detail.NameAndPrice, '\n' }
         };
@@ -129,7 +129,7 @@ namespace IodemBot.Modules
             builder.WithButton(labels ? "Classes" : null, $"#{nameof(ClassAction)}", style: ButtonStyle.Primary, emote: Emotes.GetEmote("ClassAction"));
             builder.WithButton(labels ? "Loadouts" : null, $"#{nameof(LoadoutAction)}", style: ButtonStyle.Primary, emote: Emotes.GetEmote("LoadoutAction"));
             builder.WithButton(labels ? "Inventory" : null, $"#{nameof(InventoryAction)}", style: ButtonStyle.Success, emote: Emotes.GetEmote("InventoryAction"));
-            builder.WithButton(labels ? "Djinn" : null, $"#{nameof(DjinnAction)}.", style: ButtonStyle.Success, emote: Emotes.GetEmote("DjinnAction"));
+            builder.WithButton(labels ? "Djinn" : null, $"#{nameof(DjinnAction)}", style: ButtonStyle.Success, emote: Emotes.GetEmote("DjinnAction"));
 
             var prevPage = statusPage - 1;
             var nextPage = statusPage + 1;

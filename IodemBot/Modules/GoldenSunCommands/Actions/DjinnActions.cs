@@ -15,27 +15,36 @@ namespace IodemBot.Modules
 {
     public class DjinnAction : IodemBotCommandAction
     {
+        [ActionParameterComponent(Order = 0, Name = "Detail", Description = "...", Required = false)]
+        public DjinnDetail detail { get; set; } = DjinnDetail.None;
+
         public int page { get; set; } = 0;
         public static int pageLimit = 24;
 
         public override async Task RunAsync()
         {
             var user = EntityConverter.ConvertUser(Context.User);
-            await Context.ReplyWithMessageAsync(EphemeralRule, embed: GetDjinnEmbed(user), components: GetDjinnComponent(user));
+            await Context.ReplyWithMessageAsync(EphemeralRule, embed: GetDjinnEmbed(user, detail), components: GetDjinnComponent(user, detail));
         }
 
         public override ActionCommandRefreshProperties CommandRefreshProperties => new()
         {
             CanRefreshAsync = _ => Task.FromResult((true, (string)null)),
-            FillParametersAsync = null,
-            RefreshAsync = RefreshAsync
+            RefreshAsync = RefreshAsync,
+            FillParametersAsync = (stringOptions, idOptions) =>
+            {
+                if (idOptions != null && idOptions.Any())
+                    detail = Enum.Parse<DjinnDetail>((string)idOptions.FirstOrDefault());
+
+                return Task.CompletedTask;
+            }
         };
         public async Task RefreshAsync(bool intoNew, MessageProperties msgProps)
         {
             var user = EntityConverter.ConvertUser(Context.User);
 
-            msgProps.Embed = GetDjinnEmbed(user);
-            msgProps.Components = GetDjinnComponent(user);
+            msgProps.Embed = GetDjinnEmbed(user, detail);
+            msgProps.Components = GetDjinnComponent(user, detail);
             await Task.CompletedTask;
         }
 
@@ -81,7 +90,7 @@ namespace IodemBot.Modules
             return builder.Build();
         }
 
-        public static MessageComponent GetDjinnComponent(UserAccount user)
+        public static MessageComponent GetDjinnComponent(UserAccount user, DjinnDetail detail = DjinnDetail.None)
         {
             ComponentBuilder builder = new();
             var djinnPocket = user.DjinnPocket;
@@ -89,6 +98,10 @@ namespace IodemBot.Modules
             var moneyneeded = (uint)(djinnPocket.PocketUpgrades + 1) * 3000;
             builder.WithButton(labels ? "Status" : null, $"#{nameof(StatusAction)}", style: ButtonStyle.Primary, emote: Emotes.GetEmote("StatusAction"));
             builder.WithButton(labels ? "Upgrade" : null, $"{nameof(UpgradeDjinnAction)}", style: ButtonStyle.Success, disabled:!user.Inv.HasBalance(moneyneeded), emote: Emotes.GetEmote("UpgradeDjinnAction"));
+            if (detail == DjinnDetail.None)
+                builder.WithButton(labels ? "Show Names" : null, $"#{nameof(DjinnAction)}.Names", ButtonStyle.Secondary, Emotes.GetEmote("LabelsOn"), row: 0);
+            else
+                builder.WithButton(labels ? "Hide Names" : null, $"#{nameof(DjinnAction)}.None", ButtonStyle.Secondary, Emotes.GetEmote("LabelsOff"), row: 0);
 
             var classSeries = AdeptClassSeriesManager.GetClassSeries(user);
             foreach (var element in classSeries.Elements)
@@ -105,7 +118,6 @@ namespace IodemBot.Modules
             }
             return builder.Build();
         }
-
     }
 
     internal class DjinnEquipAction : IodemBotCommandAction

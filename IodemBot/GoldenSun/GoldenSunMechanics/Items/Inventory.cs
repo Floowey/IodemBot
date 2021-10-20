@@ -241,7 +241,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             return true;
         }
 
-        public string InventoryToString(Detail detail = Detail.none)
+        public string InventoryToString(Detail detail = Detail.None)
         {
             if (Inv.Count == 0)
             {
