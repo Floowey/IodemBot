@@ -13,6 +13,9 @@ namespace IodemBot
         {
             { "Exclamation", "<:Exclamatory:571309036473942026>" },
             { "Coin", "<:coin:569836987767324672>" },
+            { "JoinBattle", "<:Fight:536919792813211648>" },
+            { "StartBattle", "<:Battle:536954571256365096>" },
+
 
             { "Warrior", "<:Long_Sword:569813505423704117>" },
             { "Mage", "<:Wooden_Stick:569813632897253376>" },
@@ -28,6 +31,7 @@ namespace IodemBot
             { "InventoryAction", "<:Item:895957416557027369>" },
             { "LoadoutAction", "<:transfer_file:896735785187962901>" },
             { "OptionAction", "<:Options:896735785166979082>" },
+            { "RemoveCursedAction", "<:Remove_Curse:896069873438957588>" },
             { "SaveLoadoutAction", "<:Save_Game:896735785351520316>" },
             { "ShopAction", "<:Buy:896735785137614878>" },
             { "StatusAction", "<:Status:896069873124409375>" },

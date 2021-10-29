@@ -59,7 +59,7 @@ namespace IodemBot.Modules
         {
             EmbedBuilder builder = new();
             var djinnPocket = user.DjinnPocket;
-            var equippedstring = string.Join("", djinnPocket.GetDjinns().Select(d => Emotes.GetIcon(d.Element)));
+            var equippedstring = string.Join("", djinnPocket.GetDjinns().Select(d => d.Emote));
             if (equippedstring.IsNullOrEmpty())
             {
                 equippedstring = "-";
@@ -109,9 +109,10 @@ namespace IodemBot.Modules
                 List<SelectMenuOptionBuilder> options = new();
                 foreach (var djinn in djinnPocket.Djinn.OfElement(element).Take(24))
                 {
-                    var isSelected = djinnPocket.GetDjinns().Any(d => d.Name == djinn.Name);
+                    var isSelected = false;// djinnPocket.GetDjinns().Any(d => d.Name == djinn.Name);
+                    var desc = djinn.Name != djinn.Djinnname ? djinn.Djinnname : null;
                     if (!options.Any(o => o.Value.Equals(djinn.Name)))
-                        options.Add(new() { Label = djinn.Name, Value = djinn.Name, Emote = djinn.GetEmote(), IsDefault=isSelected });
+                        options.Add(new() { Label = djinn.Name, Value = djinn.Name, Description= desc, Emote = djinn.GetEmote(), IsDefault=isSelected });
                 }
                 if(options.Count>0)
                     builder.WithSelectMenu($"#{nameof(DjinnEquipAction)}.{element}", options, maxValues: Math.Min(options.Count,2));

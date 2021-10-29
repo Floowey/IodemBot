@@ -389,6 +389,7 @@ namespace IodemBot.ColossoBattles
         {
             if (LingeringEffects.Count > 0 && IsAlive)
             {
+                Console.WriteLine($"Applying LingeringEffects: {LingeringEffects.Select(e => e.Effect.Type)}");
                 return LingeringEffects.SelectMany(e => e.ApplyLingering(this)).ToList();
             }
             else

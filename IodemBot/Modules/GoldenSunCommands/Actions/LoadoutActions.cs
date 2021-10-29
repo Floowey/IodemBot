@@ -127,6 +127,8 @@ namespace IodemBot.Modules
                 account = EntityConverter.ConvertUser(Context.User);
                 loadedLoadout.ApplyLoadout(account);
                 UserAccountProvider.StoreUser(account);
+
+                await Context.UpdateReplyAsync(msg => msg.Embed = LoadoutAction.GetLoadoutEmbed(account));
             }
 
             await Task.CompletedTask;

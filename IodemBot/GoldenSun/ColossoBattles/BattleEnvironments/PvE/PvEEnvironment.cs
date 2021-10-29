@@ -606,7 +606,7 @@ namespace IodemBot.ColossoBattles
                         s.Add($"{m.Emote} {m.Name}");
                     }
                 }
-                embed.AddField("Psynergy", string.Join(" | ", s));
+                //embed.AddField("Psynergy", string.Join(" | ", s));
 
                 
                 tasks.Add(msg.ModifyAsync(m => { 
@@ -664,6 +664,11 @@ namespace IodemBot.ColossoBattles
             await StatusMessage.ModifyAsync(m => { m.Content = text; m.Embed = null; });
             await Task.Delay(2000);
             await Reset("Game Over");
+        }
+
+        public override bool IsUsersMessage(PlayerFighter user, IUserMessage message)
+        {
+            return SummonsMessage.Id == message.Id || PlayerMessages.Any(m => m.Key.Id == message.Id && m.Value.Id == user.Id);
         }
     }
 }

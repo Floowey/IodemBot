@@ -8,6 +8,8 @@ using IodemBot.ColossoBattles;
 using IodemBot.Discords;
 using Discord;
 using Microsoft.Extensions.DependencyInjection;
+using Discord.WebSocket;
+using IodemBot.Extensions;
 
 namespace IodemBot.Modules
 {
@@ -63,6 +65,8 @@ namespace IodemBot.Modules
             if (player == null)
                 return Task.FromResult((false, "You aren't in this battle."));
 
+            if (!battle.IsUsersMessage(player, Context.Message))
+                return Task.FromResult((false, "Click your own message!"));
 
             return baseResult;
         }

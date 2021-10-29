@@ -100,11 +100,15 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public override bool InternalValidSelection(ColossoFighter User)
         {
-            return State == DjinnState.Set && Move.ValidSelection(User);
+            return State == DjinnState.Set && Move.ValidSelection(User) && !User.HasCondition(Condition.SpiritSeal);
         }
 
         protected override List<string> InternalUse(ColossoFighter User)
         {
+            if (User.HasCondition(Condition.SpiritSeal))
+            {
+                return new List<string>() { $"{User.Name} could not call upon the spirits!" };
+            }
             switch (State)
             {
                 case DjinnState.Set:

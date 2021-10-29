@@ -36,7 +36,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public override bool InternalValidSelection(ColossoFighter User)
         {
             var PartyDjinn = User.Party.SelectMany(u => u.Moves.OfType<Djinn>()).Distinct();
-            return ValidateSummon(PartyDjinn) && Move.ValidSelection(User);
+            return ValidateSummon(PartyDjinn) && Move.ValidSelection(User) && !User.HasCondition(Condition.SpiritSeal);
         }
 
         public bool CanSummon(IEnumerable<Djinn> djinns)
@@ -49,11 +49,15 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public bool ValidateSummon(IEnumerable<Djinn> djinns)
         {
-            return CanSummon(djinns.Where(d => d.State == DjinnState.Standby));
+            return CanSummon(djinns.Where(d => d.State == DjinnState.Standby)) ;
         }
 
         protected override List<string> InternalUse(ColossoFighter User)
         {
+            if (User.HasCondition(Condition.SpiritSeal))
+            {
+                return new List<string>() { $"{User.Name} could not call upon the spirits!" };
+            }
             if (!ValidSelection(User))
             {
                 return new List<string>() { $"{User.Name} failed to summon {Emote} {Name}. Not enough Djinn!" };

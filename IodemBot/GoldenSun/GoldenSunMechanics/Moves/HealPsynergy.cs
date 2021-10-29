@@ -56,8 +56,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             {
                 return false;
             }
-            return (User.battle.turn == 1 ||
-                User.Party.Where(f => f.IsAlive).Any(f => (100 * f.Stats.HP) / f.Stats.MaxHP < 85));
+            return (User.Party.Where(f => f.IsAlive).Any(f => (100 * f.Stats.HP) / f.Stats.MaxHP < 85));
         }
 
         protected override List<string> InternalUse(ColossoFighter User)

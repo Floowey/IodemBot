@@ -36,7 +36,7 @@ namespace IodemBot.ColossoBattles
 
         public abstract Task AddPlayer(PlayerFighter player, Team team = Team.A);
         public abstract Task AddPlayer(UserAccount user, Team team = Team.A);
-
+        public abstract bool IsUsersMessage(PlayerFighter player, IUserMessage message);
         public bool IsPersistent { get; set; } = true;
 
         public BattleEnvironment(string Name, ITextChannel lobbyChannel, bool isPersistent)

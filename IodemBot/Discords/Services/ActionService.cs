@@ -140,30 +140,31 @@ namespace IodemBot.Discords.Services
 
         public async Task AddAllGuildCommands(ulong guildId)
         {
+            List<ApplicationCommandProperties> properties = new();
             var slashActions = GetAll().OfType<BotCommandAction>().Where(a => a.SlashCommandProperties != null && a.SlashCommandProperties is ActionGuildSlashCommandProperties);
 
             foreach (var slashAction in slashActions)
             {
-                var commandProperties = BuildSlashCommandProperties(slashAction);
-                await _discord.Rest.CreateGuildCommand(commandProperties, guildId);
+                properties.Add(BuildSlashCommandProperties(slashAction));
             }
 
             var messageActions = GetAll().OfType<BotCommandAction>().Where(a => a.MessageCommandProperties != null && a.MessageCommandProperties is ActionGuildMessageCommandProperties);
 
             foreach (var messageAction in messageActions)
             {
-                var commandProperties = BuildMessageCommandProperties(messageAction);
-                await _discord.Rest.CreateGuildCommand(commandProperties, guildId);
+                properties.Add(BuildMessageCommandProperties(messageAction));
             }
 
             var userActions = GetAll().OfType<BotCommandAction>().Where(a => a.UserCommandProperties != null && a.UserCommandProperties is ActionGuildUserCommandProperties);
 
             foreach (var userAction in userActions)
             {
-                var commandProperties = BuildUserCommandProperties(userAction);
-                await _discord.Rest.CreateGuildCommand(commandProperties, guildId);
+                properties.Add(BuildUserCommandProperties(userAction));
             }
+            if (properties.Count > 0)
+                await _discord.Rest.BulkOverwriteGuildCommands(properties.ToArray(), guildId);
         }
+
 
         private SlashCommandProperties BuildSlashCommandProperties(BotCommandAction action)
         {

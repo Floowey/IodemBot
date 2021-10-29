@@ -123,8 +123,8 @@ namespace IodemBot.Modules.BattleActions
         public static MessageComponent GetControlComponent(bool PvP = false)
         {
             ComponentBuilder builder = new();
-            builder.WithButton("Join", $"{nameof(JoinBattleAction)}", ButtonStyle.Success);
-            builder.WithButton("Start", $"{nameof(StartBattleAction)}", ButtonStyle.Success);
+            builder.WithButton("Join", $"{nameof(JoinBattleAction)}", ButtonStyle.Success, emote:Emotes.GetEmote("JoinBattle"));
+            builder.WithButton("Start", $"{nameof(StartBattleAction)}", ButtonStyle.Success, emote: Emotes.GetEmote("StartBattle"));
             return builder.Build();
         }
 
@@ -134,11 +134,11 @@ namespace IodemBot.Modules.BattleActions
             foreach (var move in player.Moves)
             {
                 if (move is Summon)
-                    continue; ;
+                    continue;
                 bool isSelection = player.SelectedMove == move;
-                ButtonStyle style = isSelection ? ButtonStyle.Primary : ButtonStyle.Secondary;
-                style = move.InternalValidSelection(player) ? style : ButtonStyle.Danger;
-                builder.WithButton(label: $"{move.Name}", customId: $"{nameof(SelectMoveAction)}.{move.Name}", style:style , emote: move.GetEmote());
+                ButtonStyle style = isSelection ? ButtonStyle.Success : ButtonStyle.Primary;
+                style = move.InternalValidSelection(player) ? style : ButtonStyle.Secondary;
+                builder.WithButton(label: $"{move.Name}{((move is Psynergy p && !(move is Djinn))? $" - {p.PPCost}" : "")}", customId: $"{nameof(SelectMoveAction)}.{move.Name}", style:style , emote: move.GetEmote());
             }
 
             if (!player.hasSelected && player.SelectedMove != null)
@@ -162,8 +162,8 @@ namespace IodemBot.Modules.BattleActions
             foreach (var move in factory.PossibleSummons)
             {
                 bool isSelection = player.SelectedMove == move;
-                ButtonStyle style = isSelection ? ButtonStyle.Primary : ButtonStyle.Secondary;
-                style = move.InternalValidSelection(player) ? style : ButtonStyle.Danger;
+                ButtonStyle style = isSelection ? ButtonStyle.Success : ButtonStyle.Primary;
+                style = move.InternalValidSelection(player) ? style : ButtonStyle.Secondary;
 
                 builder.WithButton(label: $"{move.Name}", customId: $"{nameof(SelectMoveAction)}.{move.Name}", style: style, emote: move.GetEmote());
             }

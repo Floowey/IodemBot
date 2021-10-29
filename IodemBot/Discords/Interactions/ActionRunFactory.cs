@@ -145,6 +145,7 @@ namespace IodemBot.Discords
                 try
                 {
                     await RunActionAsync(action);
+                    Console.WriteLine($"{action.Context.User} used {InteractionNameForLog}");
                 }
                 catch (Exception e)
                 {

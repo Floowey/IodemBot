@@ -181,7 +181,7 @@ namespace IodemBot
                 {
                     //AlwaysAcknowledgeInteractions = false,
                     GatewayIntents = GatewayIntents.All,
-                    //AlwaysDownloadUsers = true,
+                    AlwaysDownloadUsers = true,
                     LogLevel = LogSeverity.Info,
                     //MessageCacheSize = 10,
                     DefaultRetryMode = RetryMode.AlwaysRetry

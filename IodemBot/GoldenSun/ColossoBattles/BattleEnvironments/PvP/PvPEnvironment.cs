@@ -772,5 +772,15 @@ namespace IodemBot.ColossoBattles
             tasks.Add(WritePlayers());
             await Task.WhenAll(tasks);
         }
+
+        public override bool IsUsersMessage(PlayerFighter player, IUserMessage message)
+        {
+            if (Teams[Team.A].PlayerMessages.TryGetValue(message, out var pf))
+                return pf.Id == player.Id;
+            else if (Teams[Team.B].PlayerMessages.TryGetValue(message, out pf))
+                return pf.Id == player.Id;
+
+            return Teams[Team.A].SummonsMessage.Id == message.Id || Teams[Team.B].SummonsMessage.Id == message.Id;
+        }
     }
 }

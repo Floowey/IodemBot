@@ -122,13 +122,14 @@ namespace IodemBot.Modules
             builder.WithButton(labels ? "Open Chest" : null, $"#{nameof(ChestAction)}.{chest}", style: ButtonStyle.Success, emote: Emotes.GetEmote(chest), disabled:!inv.HasAnyChests());
             if (inv.Upgrades < 4)
                 builder.WithButton(labels ? "Upgrade" : null, $"{nameof(UpgradeInventory)}", style: ButtonStyle.Success, emote: Emotes.GetEmote("UpgradeInventoryAction"), disabled: !inv.HasBalance(upgradeCost), row:1);
+           
             builder.WithButton(labels ? "Sort" : null, $"{nameof(SortInventory)}", style: ButtonStyle.Success, emote: Emotes.GetEmote("SortInventoryAction"),row:1);
             builder.WithButton(labels ? "Shop" : null, $"#{nameof(ShopAction)}.", ButtonStyle.Success, Emotes.GetEmote("ShopAction"), row: 1);
             if (detail == Detail.None)
                 builder.WithButton(labels ? "Show Names" : null, $"#{nameof(InventoryAction)}.Names", ButtonStyle.Secondary, Emotes.GetEmote("LabelsOn"), row: 1);
             else
                 builder.WithButton(labels ? "Hide Names" : null, $"#{nameof(InventoryAction)}.None", ButtonStyle.Secondary, Emotes.GetEmote("LabelsOff"), row: 1);
-            
+
             // If cursed, add remove Curse Button
             return builder.Build();
         }
@@ -202,6 +203,7 @@ namespace IodemBot.Modules
             if (ItemsForGear.Count == 0)
                 return Task.FromResult((false, $"You don't have any items equippable for {SelectedArchtype}."));
 
+
             return Task.FromResult((true, (string)null));
         }
 
@@ -265,6 +267,7 @@ namespace IodemBot.Modules
             var isWarrior = archtype == ArchType.Warrior;
 
             var categoryOptions = new List<SelectMenuOptionBuilder>();
+            var labels = account.Preferences.ShowButtonLabels;
             foreach (var cat in Item.Equippables)
             {
                 if(ItemsForGear.Count(i => i.Category == cat) > 0)
@@ -290,7 +293,10 @@ namespace IodemBot.Modules
 
                 builder.WithSelectMenu( $"#{nameof(EquipAction)}.{archtype}", options: itemOptions, placeholder:"Select an item to equip it to this slot", row:1);
             }
-            builder.WithButton(null, $"#{nameof(InventoryAction)}", style: ButtonStyle.Success, emote: Emotes.GetEmote("InventoryAction"));
+            builder.WithButton(labels?"Inventory":null, $"#{nameof(InventoryAction)}", style: ButtonStyle.Success, emote: Emotes.GetEmote("InventoryAction"));
+            if (inv.GetGear(ArchType.Mage).Any(w => w.IsCursed) || inv.GetGear(ArchType.Warrior).Any(w => w.IsCursed))
+                builder.WithButton(labels ? "Remove Cursed Gear" : null, $"{nameof(RemoveCursedGearInventory)}.None", ButtonStyle.Success, Emotes.GetEmote("RemoveCursedAction"));
+
             return builder.Build();
         }
     }
@@ -386,6 +392,9 @@ namespace IodemBot.Modules
 
             if (item.ExclusiveTo.Length > 0 && !item.ExclusiveTo.Contains(account.Element))
                 return Task.FromResult((false, $"A {account.Element} cannot equip {item.Name}"));
+
+            if (inv.GetGear(archType).FirstOrDefault(i => i.Category == item.Category)?.IsCursed ?? false)
+                return Task.FromResult((false, $"Oh no! Your {item.Category} slot is cursed!"));
 
             return Task.FromResult((true, (string)null));
         }
@@ -692,6 +701,47 @@ namespace IodemBot.Modules
                 return Task.FromResult((false, "Max upgrades reached"));
 
             if (!account.Inv.HasBalance(moneyneeded))
+                return Task.FromResult((false, "Not enough money"));
+
+            return Task.FromResult((true, (string)null));
+        }
+    }
+
+    public class RemoveCursedGearInventory : BotComponentAction
+    {
+        public override EphemeralRule EphemeralRule => EphemeralRule.EphemeralOrFail;
+
+        public override bool GuildsOnly => true;
+
+        public override GuildPermissions? RequiredPermissions => null;
+
+        public override async Task RunAsync()
+        {
+            _ = RemoveCursed();
+            await Task.CompletedTask;
+        }
+        private async Task RemoveCursed()
+        {
+            var account = EntityConverter.ConvertUser(Context.User);
+            var inv = account.Inv;
+            if (inv.RemoveCursedEquipment())
+            {
+                UserAccountProvider.StoreUser(account);
+
+                await Context.UpdateReplyAsync(msgProps =>
+                {
+                    msgProps.Embed = InventoryAction.GetInventoryEmbed(account);
+                    msgProps.Components = InventoryAction.GetInventoryComponent(account);
+                });
+                await Context.ReplyWithMessageAsync(EphemeralRule, "A priest removed all of your cursed equipment");
+            }
+        }
+        protected override Task<(bool Success, string Message)> CheckCustomPreconditionsAsync()
+        {
+            var user = Context.User;
+            var account = EntityConverter.ConvertUser(user);
+            var inv = account.Inv;
+            if (!account.Inv.HasBalance(Inventory.RemoveCursedCost))
                 return Task.FromResult((false, "Not enough money"));
 
             return Task.FromResult((true, (string)null));

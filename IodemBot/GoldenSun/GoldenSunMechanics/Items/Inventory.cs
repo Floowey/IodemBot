@@ -39,7 +39,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             {ItemCategory.FootWear,"<:Boots:572526109975904257>" },
             {ItemCategory.Accessoire, "<:Rings:572526110060052482>"}
         };
-
+        public static readonly uint RemoveCursedCost = 5000;
         /// <summary>
         /// Serialized and deserialized a list of strings to their Item object equivalent
         /// </summary>
@@ -436,7 +436,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 return false;
             }
 
-            if (!RemoveBalance(10000))
+            if (!RemoveBalance(RemoveCursedCost))
             {
                 return false;
             }

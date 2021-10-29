@@ -990,9 +990,13 @@
       "Element": 1,
       "effects": [
         {
-          "Type": "Stat",
-          "Stat": "Attack",
-          "Multiplier": 1.25
+          "Type": "Lingering",
+          "Duration": 3,
+          "Effect": {
+            "Type": "Heal",
+            "Percentage": 25,
+            "Element": "Mars"
+          }
         }
       ]
     },
@@ -1574,11 +1578,13 @@
     "SpriteNormal": "<a:Lull:662386482778210314>",
     "SpriteShiny": "<a:LullShiny:663022462480416807>",
     "Move": {
-      "Targettype": 0,
+      "Targettype": "PartySingle",
       "Element": 2,
       "effects": [
         {
-          "Type": "UserDies"
+          "Type": "Condition",
+          "Condition": "SpiritSeal",
+          "Probability": 100
         }
       ]
     },
@@ -2440,12 +2446,15 @@
     "SpriteNormal": "<a:Eddy:662385332070645780>",
     "SpriteShiny": "<a:EddyShiny:663022348009734145>",
     "Move": {
-      "Targettype": 2,
+      "Targettype": "EnemyAll",
       "hasPriority": true,
-      "Effects": [
+      "effects": [
         {
-          "Type": "ReduceDamage",
-          "DamageReduction": 60
+          "Type": "Lingering",
+          "Duration": 3,
+          "Effect": {
+            "Type": "Break"
+          }
         }
       ]
     },
