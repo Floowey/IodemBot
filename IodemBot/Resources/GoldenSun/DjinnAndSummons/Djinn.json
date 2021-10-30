@@ -1432,6 +1432,7 @@
           "Probability": 12
         }
       ]
+      "AddDamage": 30
     },
     "Stats": {
       "MaxHP": 11,
