@@ -7,6 +7,179 @@ using Newtonsoft.Json;
 
 namespace IodemBot.Core.UserManagement
 {
+
+    public class UserAccount : IEquatable<UserAccount>
+    {
+        public static ulong[][] rates = new ulong[][] {
+                    new ulong[] { 2538160, 25000, 100 },
+                    new ulong[] { 1196934, 2500, 90 },
+                    new ulong[] { 605000, 1000, 80 },
+                    new ulong[]{ 125000, 200, 50 },
+                    new ulong[]{ 0, 50, 0 }
+        };
+        public ulong ID { get; set; }
+        public string Name { get => HiddenName; set => HiddenName = value.RemoveBadChars(); }
+        [JsonProperty] private string HiddenName { get; set; }
+
+        public Inventory Inv { get; set; } = new Inventory();
+        public List<string> Dungeons { get; set; } = new List<string>();
+        public List<string> Tags { get; set; } = new List<string>();
+        public DjinnPocket DjinnPocket { get; set; } = new DjinnPocket();
+        public int ClassToggle { get; set; } = 0;
+        public List<string> BonusClasses { get; set; } = new List<string>();
+        public Element Element { get; set; } = Element.none;
+        public Loadouts Loadouts { get; set; } = new Loadouts();
+        public TrophyCase TrophyCase { get; set; } = new TrophyCase();
+
+        [JsonIgnore]
+        public string GsClass
+        {
+            get
+            {
+                return AdeptClassSeriesManager.GetClass(this).Name; //GoldenSun.getClass(element, LevelNumber, (uint) classToggle);
+            }
+        }
+        public DateTime LastXP { get; set; }
+
+        [JsonIgnore]
+        public uint LevelNumber
+        {
+            get
+            {
+                uint curLevel = 1;
+                foreach (var r in rates)
+                {
+                    var cutoff = r[0];
+                    var rate = (double)r[1];
+                    var level = r[2];
+                    if (XP >= cutoff)
+                    {
+                        curLevel = (uint)(level - Math.Sqrt(cutoff / rate) + Math.Sqrt(XP / rate));
+                        break;
+                    }
+                }
+
+                return Math.Max(1, curLevel);
+            }
+        }
+        [JsonIgnore]
+        public ulong XPneeded
+        {
+            get
+            {
+                var xpneeded = XP;
+                foreach (var r in rates)
+                {
+                    var cutoff = r[0];
+                    var rate = (double)r[1];
+                    var level = r[2];
+                    if (XP >= cutoff)
+                    {
+                        var wantedLvl = LevelNumber + 1;
+                        var rateFactor = Math.Sqrt(cutoff / rate);
+                        xpneeded = (ulong)(Math.Pow(wantedLvl - level + rateFactor, 2) * rate);
+                        break;
+                    }
+                }
+
+                return xpneeded - XP;
+            }
+        }
+        public bool arePublicCodes { get; set; } = false;
+        public string N3DSCode { get; set; } = "0000-0000-0000";
+        public int NewGames { get; set; } = 0;
+
+        public DateTime LastReset { get; set; } = DateTime.MinValue;
+        public string PoGoCode { get; set; } = "0000-0000-0000";
+        public string SwitchCode { get; set; } = "0000-0000-0000";
+        [JsonIgnore] public ulong TotalXP { get { return XPLastGame + XP; } }
+        public ulong XP { get; set; } = 0;
+        public double XpBoost { get; set; } = 1;
+        public ulong XPLastGame { get; set; } = 0;
+        public int DjinnBadLuck { get; set; } = 0;
+        public ServerStats ServerStats { get; set; } = new ServerStats();
+        public ServerStats ServerStatsTotal { get; set; } = new ServerStats();
+        public BattleStats BattleStats { get; set; } = new BattleStats();
+        public BattleStats BattleStatsTotal { get; set; } = new BattleStats();
+        public string ImgUrl { get; set; }
+        public void AddXp(ulong xp)
+        {
+            XP += (ulong)(xp * XpBoost);
+        }
+        public void NewGame()
+        {
+            XpBoost *= 1 + 0.1 * (1 - Math.Exp(-(double)XP / 120000));
+            XpBoost = Math.Min(2, XpBoost);
+            XPLastGame = TotalXP;
+
+            if (LevelNumber >= 99)
+            {
+                TrophyCase.Trophies.Add(new Trophy()
+                {
+                    Icon = "<:99Trophy:739170181745475601>",
+                    Text = $"Awarded for resetting their character at level {LevelNumber}",
+                    ObtainedOn = DateTime.Now
+                }
+                );
+            }
+            else if (LevelNumber >= 90)
+            {
+                TrophyCase.Trophies.Add(new Trophy()
+                {
+                    Icon = "<:90Trophy:739170181359599687>",
+                    Text = $"Awarded for resetting their character at level {LevelNumber}",
+                    ObtainedOn = DateTime.Now
+                }
+                );
+            }
+            else if (LevelNumber >= 75)
+            {
+                TrophyCase.Trophies.Add(new Trophy()
+                {
+                    Icon = "<:75Trophy:739170181334695978>",
+                    Text = $"Awarded for resetting their character at level {LevelNumber}",
+                    ObtainedOn = DateTime.Now
+                }
+                );
+            }
+            else if (LevelNumber >= 50)
+            {
+                TrophyCase.Trophies.Add(new Trophy()
+                {
+                    Icon = "<:50Trophy:739170181602869289>",
+                    Text = $"Awarded for resetting their character at level {LevelNumber}",
+                    ObtainedOn = DateTime.Now
+                }
+                );
+            }
+
+            XP = 0;
+            Inv.Clear();
+            DjinnPocket.Clear();
+            BonusClasses.Clear();
+            Dungeons.Clear();
+            Loadouts.loadouts.Clear();
+
+            BattleStatsTotal += BattleStats;
+            ServerStatsTotal += ServerStats;
+            BattleStats = new BattleStats();
+            ServerStats = new ServerStats();
+            LastReset = DateTime.Now;
+            Tags.RemoveAll(t => !t.Contains("Halloween20"));
+            Tags.Add($"{Element}Adept");
+            NewGames++;
+        }
+        public bool Equals([AllowNull] UserAccount other)
+        {
+            if (other == null)
+            {
+                return false;
+            }
+
+            return ID == other.ID;
+        }
+    }
+
     public class BattleStats
     {
         public int AttackedWeakness { get; set; } = 0;
@@ -161,173 +334,4 @@ namespace IodemBot.Core.UserManagement
         }
     }
 
-    public class UserAccount : IEquatable<UserAccount>
-    {
-        public static ulong[][] rates = new ulong[][] {
-                    new ulong[] { 2538160, 25000, 100 },
-                    new ulong[] { 1196934, 2500, 90 },
-                    new ulong[] { 605000, 1000, 80 },
-                    new ulong[]{ 125000, 200, 50 },
-                    new ulong[]{ 0, 50, 0 }
-        };
-        public ulong ID { get; set; }
-        public string Name { get => HiddenName; set => HiddenName = value.RemoveBadChars(); }
-        [JsonProperty] private string HiddenName { get; set; }
-
-        public Inventory Inv { get; set; } = new Inventory();
-        public List<string> Dungeons { get; set; } = new List<string>();
-        public List<string> Tags { get; set; } = new List<string>();
-        public DjinnPocket DjinnPocket { get; set; } = new DjinnPocket();
-        public int ClassToggle { get; set; } = 0;
-        public List<string> BonusClasses { get; set; } = new List<string>();
-        public Element Element { get; set; } = Element.none;
-        public Loadouts Loadouts { get; set; } = new Loadouts();
-        public TrophyCase TrophyCase { get; set; } = new TrophyCase();
-
-        [JsonIgnore]
-        public string GsClass
-        {
-            get
-            {
-                return AdeptClassSeriesManager.GetClass(this).Name; //GoldenSun.getClass(element, LevelNumber, (uint) classToggle);
-            }
-        }
-        public DateTime LastXP { get; set; }
-
-        [JsonIgnore]
-        public uint LevelNumber
-        {
-            get
-            {
-                uint curLevel = 1;
-                foreach (var r in rates)
-                {
-                    var cutoff = r[0];
-                    var rate = (double)r[1];
-                    var level = r[2];
-                    if (XP >= cutoff)
-                    {
-                        curLevel = (uint)(level - Math.Sqrt(cutoff / rate) + Math.Sqrt(XP / rate));
-                        break;
-                    }
-                }
-
-                return Math.Max(1, curLevel);
-            }
-        }
-        [JsonIgnore]
-        public ulong XPneeded
-        {
-            get
-            {
-                var xpneeded = XP;
-                foreach (var r in rates)
-                {
-                    var cutoff = r[0];
-                    var rate = (double)r[1];
-                    var level = r[2];
-                    if (XP >= cutoff)
-                    {
-                        var wantedLvl = LevelNumber + 1;
-                        var rateFactor = Math.Sqrt(cutoff / rate);
-                        xpneeded = (ulong)(Math.Pow(wantedLvl - level + rateFactor, 2) * rate);
-                        break;
-                    }
-                }
-
-                return xpneeded - XP;
-            }
-        }
-        public bool arePublicCodes { get; set; } = false;
-        public string N3DSCode { get; set; } = "0000-0000-0000";
-        public int NewGames { get; set; } = 0;
-        public string PoGoCode { get; set; } = "0000-0000-0000";
-        public string SwitchCode { get; set; } = "0000-0000-0000";
-        [JsonIgnore] public ulong TotalXP { get { return XPLastGame + XP; } }
-        public ulong XP { get; set; } = 0;
-        public double XpBoost { get; set; } = 1;
-        public ulong XPLastGame { get; set; } = 0;
-        public int DjinnBadLuck { get; set; } = 0;
-        public ServerStats ServerStats { get; set; } = new ServerStats();
-        public ServerStats ServerStatsTotal { get; set; } = new ServerStats();
-        public BattleStats BattleStats { get; set; } = new BattleStats();
-        public BattleStats BattleStatsTotal { get; set; } = new BattleStats();
-        public string ImgUrl { get; set; }
-        public void AddXp(ulong xp)
-        {
-            XP += (ulong)(xp * XpBoost);
-        }
-        public void NewGame()
-        {
-            XpBoost *= 1 + 0.1 * (1 - Math.Exp(-(double)XP / 120000));
-            XpBoost = Math.Min(2, XpBoost);
-            XPLastGame = TotalXP;
-
-            if (LevelNumber >= 99)
-            {
-                TrophyCase.Trophies.Add(new Trophy()
-                {
-                    Icon = "<:99Trophy:739170181745475601>",
-                    Text = $"Awarded for resetting their character at level {LevelNumber}",
-                    ObtainedOn = DateTime.Now
-                }
-                );
-            }
-            else if (LevelNumber >= 90)
-            {
-                TrophyCase.Trophies.Add(new Trophy()
-                {
-                    Icon = "<:90Trophy:739170181359599687>",
-                    Text = $"Awarded for resetting their character at level {LevelNumber}",
-                    ObtainedOn = DateTime.Now
-                }
-                );
-            }
-            else if (LevelNumber >= 75)
-            {
-                TrophyCase.Trophies.Add(new Trophy()
-                {
-                    Icon = "<:75Trophy:739170181334695978>",
-                    Text = $"Awarded for resetting their character at level {LevelNumber}",
-                    ObtainedOn = DateTime.Now
-                }
-                );
-            }
-            else if (LevelNumber >= 50)
-            {
-                TrophyCase.Trophies.Add(new Trophy()
-                {
-                    Icon = "<:50Trophy:739170181602869289>",
-                    Text = $"Awarded for resetting their character at level {LevelNumber}",
-                    ObtainedOn = DateTime.Now
-                }
-                );
-            }
-
-            XP = 0;
-            Inv.Clear();
-            DjinnPocket.Clear();
-            BonusClasses.Clear();
-            Dungeons.Clear();
-            Loadouts.loadouts.Clear();
-
-            BattleStatsTotal += BattleStats;
-            ServerStatsTotal += ServerStats;
-            BattleStats = new BattleStats();
-            ServerStats = new ServerStats();
-
-            Tags.RemoveAll(t => !t.Contains("Halloween20"));
-            Tags.Add($"{Element}Adept");
-            NewGames++;
-        }
-        public bool Equals([AllowNull] UserAccount other)
-        {
-            if (other == null)
-            {
-                return false;
-            }
-
-            return ID == other.ID;
-        }
-    }
 }

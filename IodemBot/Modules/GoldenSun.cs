@@ -581,6 +581,12 @@ namespace IodemBot.Modules
                 return;
             }
 
+            if((DateTime.Now -account.LastReset).TotalHours < 24)
+            {
+                await ReplyAsync($"Again so fast? The procedure is quite straining on your body. You should let your new self settle in a bit.");
+                return;            
+            }
+
             await ReplyAsync("Let us reverse the cycle, to a stage where you were just beginning");
             account.NewGame();
             UserAccountProvider.StoreUser(account);
