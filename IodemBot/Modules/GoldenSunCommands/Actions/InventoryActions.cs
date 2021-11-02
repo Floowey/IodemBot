@@ -22,7 +22,7 @@ namespace IodemBot.Modules
     // Iteminfo (With equip button where applicable)
     public class InventoryAction : IodemBotCommandAction
     {
-
+        public override bool GuildsOnly => false;
         [ActionParameterComponent(Order =0, Name ="Detail", Description="...", Required =false)]
         public Detail detail { get; set; } = Detail.None;
         public override ActionGuildSlashCommandProperties SlashCommandProperties => new()
@@ -137,6 +137,7 @@ namespace IodemBot.Modules
 
     public class GearAction : IodemBotCommandAction
     {
+        public override bool GuildsOnly => false;
         [ActionParameterSlash(Order =0, Name ="archtype", Description ="Archtype", Required =false, Type=ApplicationCommandOptionType.String)]
         [ActionParameterOptionString(Order =1, Name ="Warrior", Value ="Warrior")]
         [ActionParameterOptionString(Order = 2, Name = "Mage", Value = "Mage")]
@@ -146,7 +147,7 @@ namespace IodemBot.Modules
         [ActionParameterComponent(Order=1, Name ="selection", Required = false)]
         public string SelectedCategory { get; set; }
         public override EphemeralRule EphemeralRule => EphemeralRule.EphemeralOrFail;
-        public override ActionGuildSlashCommandProperties SlashCommandProperties => new()
+        public override ActionGlobalSlashCommandProperties SlashCommandProperties => new()
         {
             Name = "gear",
             Description ="Change the gear of one of your two Archtypes",
@@ -303,6 +304,7 @@ namespace IodemBot.Modules
     
     public class EquipAction : IodemBotCommandAction
     {
+        public override bool GuildsOnly => false;
         [ActionParameterComponent(Order=0, Name="archtype", Description= "...", Required =true)]
         [ActionParameterOptionString(Order = 1, Name = "Warrior", Value = "Warrior")]
         [ActionParameterOptionString(Order = 2, Name = "Mage", Value = "Mage")]
@@ -323,7 +325,7 @@ namespace IodemBot.Modules
             var component = GearAction.GetGearComponent(account, archType, item?.Category.ToString() ?? null);
             await Context.ReplyWithMessageAsync(EphemeralRule, embed: embed, components: component);
         }
-        public override ActionGuildSlashCommandProperties SlashCommandProperties => new()
+        public override ActionGlobalSlashCommandProperties SlashCommandProperties => new()
         {
             Name = "equip",
             Description = "Equip an item to one an archtype's gear",
@@ -402,8 +404,9 @@ namespace IodemBot.Modules
 
     public class ShopAction : IodemBotCommandAction
     {
+        public override bool GuildsOnly => false;
         private Inventory _shop { get; set; }
-        public override ActionGuildSlashCommandProperties SlashCommandProperties => new()
+        public override ActionGlobalSlashCommandProperties SlashCommandProperties => new()
         {
             Name = "shop",
             Description = "I wonder what's in store today"
@@ -469,7 +472,7 @@ namespace IodemBot.Modules
         public string ItemName { get; set; }
         public override EphemeralRule EphemeralRule => EphemeralRule.EphemeralOrFail;
 
-        public override bool GuildsOnly => true;
+        public override bool GuildsOnly => false;
 
         public override GuildPermissions? RequiredPermissions => null;
         public override Task FillParametersAsync(string[] selectOptions, object[] idOptions)
@@ -498,6 +501,10 @@ namespace IodemBot.Modules
 
         protected override Task<(bool Success, string Message)> CheckCustomPreconditionsAsync()
         {
+            var guildResult = IsGameCommandAllowedInGuild();
+            if (!guildResult.Success)
+                return Task.FromResult(guildResult);
+
             var user = Context.User;
             var account = EntityConverter.ConvertUser(user);
             var item = ItemDatabase.GetItem(ItemName);
@@ -536,7 +543,7 @@ namespace IodemBot.Modules
             _ = OpenChestAsync(account);
             await Task.CompletedTask;
         }
-        public override ActionGuildSlashCommandProperties SlashCommandProperties => new()
+        public override ActionGlobalSlashCommandProperties SlashCommandProperties => new()
         {
             Name = "chest",
             Description = "Open a chest",
@@ -664,7 +671,7 @@ namespace IodemBot.Modules
     {
         public override EphemeralRule EphemeralRule => EphemeralRule.EphemeralOrFail;
 
-        public override bool GuildsOnly => true;
+        public override bool GuildsOnly => false;
 
         public override GuildPermissions? RequiredPermissions => null;
      
@@ -693,6 +700,9 @@ namespace IodemBot.Modules
         }
         protected override Task<(bool Success, string Message)> CheckCustomPreconditionsAsync()
         {
+            var guildResult = IsGameCommandAllowedInGuild();
+            if (!guildResult.Success)
+                return Task.FromResult(guildResult);
             var user = Context.User;
             var account = EntityConverter.ConvertUser(user);
             var inv = account.Inv;
@@ -711,7 +721,7 @@ namespace IodemBot.Modules
     {
         public override EphemeralRule EphemeralRule => EphemeralRule.EphemeralOrFail;
 
-        public override bool GuildsOnly => true;
+        public override bool GuildsOnly => false;
 
         public override GuildPermissions? RequiredPermissions => null;
 
@@ -738,6 +748,9 @@ namespace IodemBot.Modules
         }
         protected override Task<(bool Success, string Message)> CheckCustomPreconditionsAsync()
         {
+            var guildResult = IsGameCommandAllowedInGuild();
+            if (!guildResult.Success)
+                return Task.FromResult(guildResult);
             var user = Context.User;
             var account = EntityConverter.ConvertUser(user);
             var inv = account.Inv;
@@ -767,7 +780,7 @@ namespace IodemBot.Modules
         public string NewName { get; set; }
         public override EphemeralRule EphemeralRule => EphemeralRule.EphemeralOrFail;
         public override bool GuildsOnly => true;
-        public override ActionGuildSlashCommandProperties SlashCommandProperties => new()
+        public override ActionGlobalSlashCommandProperties SlashCommandProperties => new()
         {
             Name = "renameitem",
             Description = "Rename one of your items",
@@ -784,6 +797,9 @@ namespace IodemBot.Modules
 
         protected override Task<(bool Success, string Message)> CheckCustomPreconditionsAsync()
         {
+            var guildResult = IsGameCommandAllowedInGuild();
+            if (!guildResult.Success)
+                return Task.FromResult(guildResult);
             var item = EntityConverter.ConvertUser(Context.User).Inv.GetItem(ItemToRename);
             if (item == null)
                 return Task.FromResult((false, "Couldn't find that item in your inventory"));
@@ -795,11 +811,93 @@ namespace IodemBot.Modules
         }
     }
 
+    public class SellItemAction : IodemBotCommandAction
+    {
+        public override async Task RunAsync()
+        {
+            var account = EntityConverter.ConvertUser(Context.User);
+            var inv = account.Inv;
+            EmbedBuilder embed = new();
+            if(ItemsToSell.Length == 1)
+            {
+                var item = ItemsToSell[0];
+                var it = inv.GetItem(item);
+                if (inv.Sell(item))
+                {
+                    embed.WithDescription($"Sold {it.Icon}{it.Name} for {Emotes.GetIcon("Coin")} {it.SellValue}.");
+                    embed.WithColor(it.Color);
+                }
+                else
+                {
+                    embed.WithDescription(":x: You can only sell unequipped items in your possession.");
+                    embed.WithColor(Colors.Get("Error"));
+                }
+            } else
+            {
+                uint sum = 0;
+                uint successfull = 0;
+                foreach (string i in ItemsToSell)
+                {
+                    if (inv.HasItem(i.Trim()))
+                    {
+                        var it = inv.GetItem(i.Trim());
+                        if (inv.Sell(it.Name))
+                        {
+                            sum += it.SellValue;
+                            successfull++;
+                        }
+                    }
+                }
+                embed.WithDescription($"Sold {successfull} items for <:coin:569836987767324672> {sum}.");
+                embed.WithColor(Colors.Get("Iodem"));
+            }
+
+            UserAccountProvider.StoreUser(account);
+            await Context.ReplyWithMessageAsync(EphemeralRule, embed:embed.Build());
+        }
+        [ActionParameterSlash(Order = 0, Name = "item-or-list-to-sell", Description = "e.g. `Sol Blade` or `Machete, Padded Gloves, Sol Blade`", Required = true, Type = ApplicationCommandOptionType.String)]
+        public string[] ItemsToSell { get; set; }
+
+        public override EphemeralRule EphemeralRule => EphemeralRule.EphemeralOrFail;
+        public override bool GuildsOnly => true;
+        public override ActionGuildSlashCommandProperties SlashCommandProperties => new()
+        {
+            Name = "sell",
+            Description = "Sell one or multiple items",
+            FillParametersAsync = options =>
+            {
+                if (options != null)
+                    ItemsToSell = ((string)options.FirstOrDefault().Value).Split(',').Select(s => s.Trim()).ToArray();
+
+                return Task.CompletedTask;
+            }
+        };
+
+        protected override Task<(bool Success, string Message)> CheckCustomPreconditionsAsync()
+        {
+            var guildResult = IsGameCommandAllowedInGuild();
+            if (!guildResult.Success)
+                return Task.FromResult(guildResult);
+
+            if (ItemsToSell == null || !ItemsToSell.Any())
+                return Task.FromResult((false, "Can't sell nothin'"));
+
+            if(ItemsToSell.Count() == 1)
+            {
+                var item = EntityConverter.ConvertUser(Context.User).Inv.GetItem(ItemsToSell[0]);
+                if (item == null)
+                    return Task.FromResult((false, "Couldn't find that item in your inventory"));
+            }
+
+            return Task.FromResult((true, (string)null));
+        }
+    }
+
     public class SortInventory : BotComponentAction
     {
         public override EphemeralRule EphemeralRule => EphemeralRule.EphemeralOrFail;
 
-        public override bool GuildsOnly => true;
+        public override bool GuildsOnly => false;
 
         public override GuildPermissions? RequiredPermissions => null;
 
@@ -818,7 +916,10 @@ namespace IodemBot.Modules
 
         protected override Task<(bool Success, string Message)> CheckCustomPreconditionsAsync()
         {
-            return Task.FromResult((true, (string)null));
+            var guildResult = IsGameCommandAllowedInGuild();
+            if (!guildResult.Success)
+                return Task.FromResult(guildResult);
+            return SuccessFullResult;
         }
     }
 }

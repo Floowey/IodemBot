@@ -70,7 +70,7 @@ namespace IodemBot.ColossoBattles
                             //battles.Remove(gauntletFromUser);
                         }
                     }
-                    openBattle = new GauntletBattleEnvironment($"{Context.User.Username}", GuildSettings.GetGuildSettings(Context.Guild).ColossoChannel, await BattleService.PrepareBattleChannel($"{Dungeon.Name}-{Context.User.Username}", Context.Guild, persistent: false), Dungeon.Name, false);
+                    openBattle = new GauntletBattleEnvironment(BattleService, $"{Context.User.Username}", GuildSettings.GetGuildSettings(Context.Guild).ColossoChannel, await BattleService.PrepareBattleChannel($"{Dungeon.Name}-{Context.User.Username}", Context.Guild, persistent: false), Dungeon.Name, false);
 
                     BattleService.AddBattleEnvironment(openBattle);
                 }
@@ -271,7 +271,7 @@ namespace IodemBot.ColossoBattles
            
             EndlessBattleEnvironment openBattle;
             
-            openBattle = new EndlessBattleEnvironment($"{Context.User.Username}", gs.ColossoChannel, false, await BattleService.PrepareBattleChannel($"Endless-{Context.User.Username}", guild, persistent: false));
+            openBattle = new EndlessBattleEnvironment(BattleService, $"{Context.User.Username}", gs.ColossoChannel, false, await BattleService.PrepareBattleChannel($"Endless-{Context.User.Username}", guild, persistent: false));
             openBattle.SetStreak(round);
              
             
@@ -327,7 +327,7 @@ namespace IodemBot.ColossoBattles
             EndlessBattleEnvironment openBattle;
             if (mode == EndlessMode.Default)
             {
-                openBattle = new EndlessBattleEnvironment($"{Context.User.Username}", gs.ColossoChannel, false, await BattleService.PrepareBattleChannel($"Endless-{Context.User.Username}", guild, persistent: false));
+                openBattle = new EndlessBattleEnvironment(BattleService, $"{Context.User.Username}", gs.ColossoChannel, false, await BattleService.PrepareBattleChannel($"Endless-{Context.User.Username}", guild, persistent: false));
                 if (fastTrackOption == FastTrackOption.FastTrack && acc.Inv.RemoveBalance(10000))
                 {
                     UserAccountProvider.StoreUser(acc);
@@ -336,7 +336,8 @@ namespace IodemBot.ColossoBattles
             }
             else
             {
-                openBattle = new EndlessBattleEnvironment($"{Context.User.Username}", gs.ColossoChannel, false, await BattleService.PrepareBattleChannel($"Endless-Legacy-{Context.User.Username}", guild, persistent: false), EndlessMode.Legacy);
+                openBattle = new EndlessBattleEnvironment(BattleService, $"{Context.User.Username}", gs.ColossoChannel, false, await BattleService.PrepareBattleChannel($"Endless-Legacy-{Context.User.Username}", guild, persistent: false), EndlessMode.Legacy);
+        
             }
             BattleService.AddBattleEnvironment(openBattle);
             _ = Context.Channel.SendMessageAsync($"{Context.User.Username}, {openBattle.BattleChannel.Mention} has been prepared for an endless adventure!");
@@ -401,9 +402,16 @@ namespace IodemBot.ColossoBattles
             }
             if (name == "")
             {
-                //await ReplyAsync(string.Join("\n",
-                //    battles.Where(b => Context.Guild.Channels.Any(c => b.GetChannelIds.Contains(c.Id)))
-                //    .Select(b => $"Name: {b.Name} ({nameof(b.GetType())}) Ids:{b.GetChannelIds[0]} Active:{b.IsActive} Permanent:{b.IsPersistent}")));
+                EmbedBuilder embed = new();
+                foreach (var b in BattleService.GetAllBattleEnvironments())
+                {
+                    embed.AddField($"{b.Name} {(b.IsPersistent ? "(Permanent)" : "")}",
+                    $"{b.GetType().Name}\n" +
+                    $"Channels:{string.Join(",", b.ChannelIds.Select(id => $"<#{id}>"))}"); 
+                };
+                if (embed.Fields.Count == 0)
+                    embed.WithDescription("No registered battles.");
+                await ReplyAsync(embed: embed.Build());
             }
         }
 
@@ -412,7 +420,7 @@ namespace IodemBot.ColossoBattles
         [RequireUserServer]
         public async Task StatusOfBattle(ulong id)
         {
-            var a = BattleService.GetBattleEnvironment(b => Context.Guild.Channels.Any(c => b.ChannelIds.Contains(c.Id)));
+            var a = BattleService.GetBattleEnvironment(b => b.ChannelIds.Contains(id));
             if (a != null)
             {
                 await Context.Channel.SendMessageAsync(a.GetStatus());
@@ -446,9 +454,5 @@ namespace IodemBot.ColossoBattles
         {
             await ReplyAsync(embed: RandomColossoBattlesCommands.ColossoTrain((SocketGuildUser)Context.User, Context.Channel));
         }
-
-       
-
-        
     }
 }

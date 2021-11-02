@@ -28,7 +28,8 @@ namespace IodemBot.ColossoBattles
 
         internal override ulong[] ChannelIds => new[] { BattleChannel.Id };
 
-        public PvEEnvironment(string Name, ITextChannel lobbyChannel, bool isPersistent, ITextChannel BattleChannel) : base(Name, lobbyChannel, isPersistent)
+        public PvEEnvironment(ColossoBattleService battleService, string Name, ITextChannel lobbyChannel, bool isPersistent, ITextChannel BattleChannel) 
+            : base(battleService, Name, lobbyChannel, isPersistent)
         {
             this.BattleChannel = BattleChannel;
             this.lobbyChannel = lobbyChannel;
@@ -249,7 +250,13 @@ namespace IodemBot.ColossoBattles
                 _ = StartBattle();
             }
         }
+        public override Task<(bool Success, string Message)> CanPlayerJoin(UserAccount user, Team team = Team.A)
+        {
+            if (Battle.GetTeam(team).Count >= PlayersToStart)
+                return Task.FromResult((false, "This team is already full."));
 
+            return Task.FromResult((true, (string)null));
+        }
         private static readonly string[] tutorialTips = new[]
         {
             "Djinn are your friends! Use them to make up for weaknesses in your class!",
@@ -272,7 +279,6 @@ namespace IodemBot.ColossoBattles
         public override async Task Reset(string msg = "")
         {
             Battle = new ColossoBattle();
-            
             PlayerMessages
                 .Values
                 .SelectMany(u => u.Moves.OfType<Djinn>())

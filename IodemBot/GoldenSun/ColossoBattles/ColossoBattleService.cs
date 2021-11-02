@@ -68,6 +68,11 @@ namespace IodemBot.ColossoBattles
             return battles.FirstOrDefault(filter);
         }
 
+        public IReadOnlyList<BattleEnvironment> GetAllBattleEnvironments()
+        {
+            return battles.AsReadOnly();
+        }
+
         public PlayerFighter GetPlayer(ITextChannel channel, IUser user)
         {
             return GetBattleEnvironment(channel).GetPlayer(user.Id);
@@ -92,15 +97,15 @@ namespace IodemBot.ColossoBattles
         {
             battles.Where(b => guild.Channels.Any(c => b.ChannelIds.Contains(c.Id))).ToList().ForEach(old => old.Dispose());
             var gs = GuildSettings.GetGuildSettings(guild);
-            battles.Add(new SingleBattleEnvironment("Wilds", gs.ColossoChannel, true, await PrepareBattleChannel("Weyard-Wilds", guild, persistent: true), BattleDifficulty.Easy));
-            battles.Add(new SingleBattleEnvironment("Woods", gs.ColossoChannel, true, await PrepareBattleChannel("Weyard-Woods", guild, persistent: true), BattleDifficulty.Medium));
+            battles.Add(new SingleBattleEnvironment(this, "Wilds", gs.ColossoChannel, true, await PrepareBattleChannel("Weyard-Wilds", guild, persistent: true), BattleDifficulty.Easy));
+            battles.Add(new SingleBattleEnvironment(this, "Woods", gs.ColossoChannel, true, await PrepareBattleChannel("Weyard-Woods", guild, persistent: true), BattleDifficulty.Medium));
             //battles.Add(new SingleBattleEnvironment("Wealds", LobbyChannel, await PrepareBattleChannel("Weyard-Wealds"), BattleDifficulty.Hard));
 
-            battles.Add(new EndlessBattleEnvironment("Endless", gs.ColossoChannel, true, await PrepareBattleChannel("Endless-Encounters", guild, persistent: true)));
+            battles.Add(new EndlessBattleEnvironment(this, "Endless", gs.ColossoChannel, true, await PrepareBattleChannel("Endless-Encounters", guild, persistent: true)));
 
             //battles.Add(new GauntletBattleEnvironment("Dungeon", LobbyChannel, await PrepareBattleChannel("deep-dungeon"), "Vale"));
             //battles.Add(new GauntletBattleEnvironment("Catabombs", LobbyChannel, await PrepareBattleChannel("chilly-catacombs"), "Vale"));
-            battles.Add(new TeamBattleEnvironment("PvP", gs.ColossoChannel, false, await PrepareBattleChannel("PvP-A", guild, RoomVisibility.All, persistent: true), await PrepareBattleChannel("PvP-B", guild, RoomVisibility.TeamB, true), gs.TeamBRole));
+            battles.Add(new TeamBattleEnvironment(this, "PvP", gs.ColossoChannel, false, await PrepareBattleChannel("PvP-A", guild, RoomVisibility.All, persistent: true), await PrepareBattleChannel("PvP-B", guild, RoomVisibility.TeamB, true), gs.TeamBRole));
 
             //battles.Add(new SingleBattleEnvironment("Gold", LobbyChannel, await PrepareBattleChannel("Gold"), BattleDifficulty.Hard));
             //battles.Add(new TeamBattleManager("OneVOne", LobbyChannel, await PrepareBattleChannel("OneVOneA", PermValue.Deny), await PrepareBattleChannel("OneVOneB", PermValue.Allow), 1));
@@ -110,6 +115,11 @@ namespace IodemBot.ColossoBattles
                 await Global.Client.SetGameAsync("in Babi's Palace.", "https://www.twitch.tv/directory/game/Golden%20Sun", ActivityType.Streaming);
             }
             AcceptBattles = true;
+        }
+
+        internal void RemoveBattleEnvironment(BattleEnvironment battleEnvironment)
+        {
+            battles.Remove(battleEnvironment);
         }
 
         public async Task<ITextChannel> PrepareBattleChannel(string Name, SocketGuild guild, RoomVisibility visibility = RoomVisibility.All, bool persistent = false)

@@ -147,19 +147,20 @@ namespace IodemBot.Modules
             if (Context is RequestInteractionContext r)
                 await r.OriginalInteraction.DeferAsync();
 
-            var openBattle = new GauntletBattleEnvironment($"{Context.User.Username}", gs.ColossoChannel, 
+            var openBattle = new GauntletBattleEnvironment(BattleService, $"{Context.User.Username}", gs.ColossoChannel, 
                 await BattleService.PrepareBattleChannel($"{Dungeon.Name}-{Context.User.Username}", 
                 Context.Guild, persistent: false), Dungeon.Name, false);
 
-            _ = Context.ReplyWithMessageAsync(EphemeralRule, $"{Context.User.Username}, {openBattle.BattleChannel.Mention} has been prepared for your adventure to {Dungeon.Name}");
-
             BattleService.AddBattleEnvironment(openBattle);
-            await Task.CompletedTask;
+            await Context.Channel.SendMessageAsync($"{Context.User.Username}, {openBattle.BattleChannel.Mention} has been prepared for your adventure to {Dungeon.Name}");
         }
 
         protected override Task<(bool Success, string Message)> CheckCustomPreconditionsAsync()
         {
-            
+            var guildResult = IsGameCommandAllowedInGuild();
+            if (!guildResult.Success)
+                return Task.FromResult(guildResult);
+
             var acc = EntityConverter.ConvertUser(Context.User);
             if (!TryGetDungeon(SelectedDungeonName, out Dungeon))
                 return Task.FromResult((false, $"I don't know where that place is."));
@@ -190,7 +191,7 @@ namespace IodemBot.Modules
                 UserAccountProvider.StoreUser(acc);
             }
 
-            return Task.FromResult((true, (string)null));
+            return SuccessFullResult;
         }
 
         public override Task FillParametersAsync(string[] selectOptions, object[] idOptions)

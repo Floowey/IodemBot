@@ -19,9 +19,11 @@ namespace IodemBot.Modules
 {
     public class LoadoutAction : IodemBotCommandAction
     {
-        public override Task RunAsync()
+        public override bool GuildsOnly => true;
+        public override async Task RunAsync()
         {
-            throw new NotImplementedException();
+            var account = EntityConverter.ConvertUser(Context.User);
+            await Context.ReplyWithMessageAsync(EphemeralRule, embed: GetLoadoutEmbed(account), components: GetLoadoutComponent(account));
         }
 
         public override ActionCommandRefreshProperties CommandRefreshProperties => new()
@@ -30,7 +32,11 @@ namespace IodemBot.Modules
             FillParametersAsync = null,
             RefreshAsync = RefreshAsync
         };
-
+        public override ActionGlobalSlashCommandProperties SlashCommandProperties => new()
+        {
+            Name = "loadouts",
+            Description = "View and change your complete loadout."
+        };
         public async Task RefreshAsync(bool intoNew, MessageProperties msgProps)
         {
             var account = EntityConverter.ConvertUser(Context.User);
@@ -66,7 +72,7 @@ namespace IodemBot.Modules
 
             if (account.Loadouts.loadouts.Count == 0)
             {
-                builder.AddField("No Loadouts", "You currently don't have any Loadouts. Save your ucrrent loadout using ()");
+                builder.AddField("No Loadouts", "You currently don't have any Loadouts. Save your current loadout with the button below.");
             }
             return builder.Build();
         }
@@ -92,6 +98,14 @@ namespace IodemBot.Modules
 
             return builder.Build();
         }
+        protected override Task<(bool Success, string Message)> CheckCustomPreconditionsAsync()
+        {
+            var guildResult = IsGameCommandAllowedInGuild();
+            if (!guildResult.Success)
+                return Task.FromResult(guildResult);
+
+            return SuccessFullResult;
+        }
     }
 
     public class LoadoutTakeAction : BotComponentAction
@@ -106,7 +120,11 @@ namespace IodemBot.Modules
 
         protected override Task<(bool Success, string Message)> CheckCustomPreconditionsAsync()
         {
-            return Task.FromResult((true, (string)null));
+            var guildResult = IsGameCommandAllowedInGuild();
+            if (!guildResult.Success)
+                return Task.FromResult(guildResult);
+
+            return SuccessFullResult;
         }
         public override async Task FillParametersAsync(string[] selectOptions, object[] idOptions)
         {
@@ -144,7 +162,11 @@ namespace IodemBot.Modules
 
         protected override Task<(bool Success, string Message)> CheckCustomPreconditionsAsync()
         {
-            return Task.FromResult((true, (string)null));
+            var guildResult = IsGameCommandAllowedInGuild();
+            if (!guildResult.Success)
+                return Task.FromResult(guildResult);
+
+            return SuccessFullResult;
         }
         private static Dictionary<Element, string[]> Prompts = new()
         {

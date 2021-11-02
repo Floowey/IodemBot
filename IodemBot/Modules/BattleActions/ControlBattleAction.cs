@@ -34,10 +34,10 @@ namespace IodemBot.Modules.BattleActions
     public class JoinBattleAction : BattleAction
     {
 
-        public string Team { get; set; } = "A";
+        public Team Team { get; set; } = Team.A;
         public override async Task RunAsync()
         {
-            _ = battle.AddPlayer(EntityConverter.ConvertUser(Context.User));
+            _ = battle.AddPlayer(EntityConverter.ConvertUser(Context.User),Team);
             await Task.CompletedTask;
         }        
 
@@ -46,9 +46,20 @@ namespace IodemBot.Modules.BattleActions
             var baseResult = base.CheckCustomPreconditionsAsync();
             if (!baseResult.Result.Success)
                 return baseResult;
+            if (battle.ContainsPlayer(Context.User.Id))
+                return Task.FromResult((false, "You are already in this battle."));
 
-          
-            return baseResult;
+            var user = EntityConverter.ConvertUser(Context.User);
+            var joinResult = battle.CanPlayerJoin(user, Team);
+            return joinResult;
+        }
+
+        public override async Task FillParametersAsync(string[] selectOptions, object[] idOptions)
+        {
+            if (idOptions != null && idOptions.Any())
+                Team = Enum.Parse<Team>((string)idOptions.FirstOrDefault());
+
+            await Task.CompletedTask;
         }
     }
 
@@ -123,7 +134,16 @@ namespace IodemBot.Modules.BattleActions
         public static MessageComponent GetControlComponent(bool PvP = false)
         {
             ComponentBuilder builder = new();
-            builder.WithButton("Join", $"{nameof(JoinBattleAction)}", ButtonStyle.Success, emote:Emotes.GetEmote("JoinBattle"));
+            if (PvP)
+            {
+                builder.WithButton("Join Team A", $"{nameof(JoinBattleAction)}.A", ButtonStyle.Success, emote:Emotes.GetEmote("JoinBattle"));
+                builder.WithButton("Join Team B", $"{nameof(JoinBattleAction)}.B", ButtonStyle.Success, emote:Emotes.GetEmote("JoinBattle"));
+            } else
+            {
+                builder.WithButton("Join", $"{nameof(JoinBattleAction)}", ButtonStyle.Success, emote:Emotes.GetEmote("JoinBattle"));
+
+            }
+
             builder.WithButton("Start", $"{nameof(StartBattleAction)}", ButtonStyle.Success, emote: Emotes.GetEmote("StartBattle"));
             return builder.Build();
         }

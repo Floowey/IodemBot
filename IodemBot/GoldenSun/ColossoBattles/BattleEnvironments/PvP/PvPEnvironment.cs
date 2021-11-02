@@ -40,7 +40,7 @@ namespace IodemBot.ColossoBattles
             {Team.B, new PvPTeamCollector(){team = Team.B, enemies = Team.A } },
         };
 
-        public PvPEnvironment(string Name, ITextChannel lobbyChannel, bool isPersistent, ITextChannel teamAChannel, ITextChannel teamBChannel, IRole TeamBRole, uint playersToStart = 3, uint playersToStartB = 3) : base(Name, lobbyChannel, isPersistent)
+        public PvPEnvironment(ColossoBattleService battleService, string Name, ITextChannel lobbyChannel, bool isPersistent, ITextChannel teamAChannel, ITextChannel teamBChannel, IRole TeamBRole, uint playersToStart = 3, uint playersToStartB = 3) : base(battleService, Name, lobbyChannel, isPersistent)
         {
             PlayersToStart = playersToStart;
             PlayersToStartB = playersToStartB;
@@ -385,8 +385,13 @@ namespace IodemBot.ColossoBattles
                 await StartBattle();
             }
         }
+        public override Task<(bool Success, string Message)> CanPlayerJoin(UserAccount user, Team team = Team.A)
+        {
+            if (Battle.GetTeam(team).Count >= PlayersToStart)
+                return Task.FromResult((false, "This team is already full."));
 
-
+            return Task.FromResult((true, (string)null));
+        }
 
         public override async Task StartBattle()
         {

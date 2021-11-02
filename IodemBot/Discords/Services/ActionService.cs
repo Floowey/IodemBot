@@ -66,39 +66,23 @@ namespace IodemBot.Discords.Services
 
         public async Task AddGlobalCommands()
         {
-            var globalCommands = await _discord.Rest.GetGlobalApplicationCommands().ConfigureAwait(false);
+            List<ApplicationCommandProperties> properties = new();
             var slashActions = GetAll().OfType<BotCommandAction>().Where(a => a.SlashCommandProperties != null && a.SlashCommandProperties is ActionGlobalSlashCommandProperties);
 
             foreach (var slashAction in slashActions)
             {
-                if (!globalCommands.Any(c => c.Name == slashAction.SlashCommandProperties.Name)) // and [c.Type == ApplicationCommandType.Slash] when the bug is fixed, so names can overlap
-                {
-                    var commandProperties = BuildSlashCommandProperties(slashAction);
-                    await _discord.Rest.CreateGlobalCommand(commandProperties);
-                }
+                properties.Add(BuildSlashCommandProperties(slashAction));
             }
 
             var messageActions = GetAll().OfType<BotCommandAction>().Where(a => a.MessageCommandProperties != null && a.MessageCommandProperties is ActionGlobalMessageCommandProperties);
 
             foreach (var messageAction in messageActions)
             {
-                if (!globalCommands.Any(c => c.Name == messageAction.MessageCommandProperties.Name)) // and [c.Type == ApplicationCommandType.Message] when the bug is fixed, so names can overlap
-                {
-                    var commandProperties = BuildMessageCommandProperties(messageAction);
-                    await _discord.Rest.CreateGlobalCommand(commandProperties);
-                }
+                properties.Add(BuildMessageCommandProperties(messageAction));
             }
 
-            var userActions = GetAll().OfType<BotCommandAction>().Where(a => a.UserCommandProperties != null && a.UserCommandProperties is ActionGlobalUserCommandProperties);
-
-            foreach (var userAction in userActions)
-            {
-                if (!globalCommands.Any(c => c.Name == userAction.UserCommandProperties.Name)) // and [c.Type == ApplicationCommandType.User] when the bug is fixed, so names can overlap
-                {
-                    var commandProperties = BuildUserCommandProperties(userAction);
-                    await _discord.Rest.CreateGlobalCommand(commandProperties);
-                }
-            }
+            if (properties.Count > 0)
+                await _discord.Rest.BulkOverwriteGlobalCommands(properties.ToArray());
 
             /* See below
             var guildIds = (await _discord.Rest.GetGuildsAsync()).Select(g => g.Id);

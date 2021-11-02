@@ -310,6 +310,7 @@ namespace IodemBot.Core.UserManagement
             BonusClasses.Clear();
             Dungeons.Clear();
             Loadouts.loadouts.Clear();
+            Preferences.AutoSell.Clear();
 
             BattleStatsTotal += BattleStats;
             ServerStatsTotal += ServerStats;

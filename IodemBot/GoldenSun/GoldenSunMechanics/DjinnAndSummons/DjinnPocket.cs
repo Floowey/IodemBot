@@ -56,9 +56,13 @@ namespace IodemBot.Modules.GoldenSunMechanics
                         .Where(d => !BlackList.Any(k => k.Djinnname.Equals(d.Djinnname)) && !Added.Any(k => k.Djinnname.Equals(d.Djinnname)))
                         .Distinct(new DjinnComp())
                         .Take(DjinnSetup.Count(d => d == el));
-
+                    foreach (var d in selected)
+                    {
+                        d.UpdateMove();
+                    }
                     djinns.AddRange(selected);
                     Added.AddRange(selected);
+                    
                 }
             }
             return djinns;

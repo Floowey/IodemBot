@@ -67,7 +67,7 @@ namespace IodemBot.Modules
     {
         public override EphemeralRule EphemeralRule => EphemeralRule.EphemeralOrFail;
 
-        public override bool GuildsOnly => true;
+        public override bool GuildsOnly => false;
 
         public override GuildPermissions? RequiredPermissions => null;
 
@@ -101,7 +101,7 @@ namespace IodemBot.Modules
     {
         public override EphemeralRule EphemeralRule => EphemeralRule.EphemeralOrFail;
 
-        public override bool GuildsOnly => true;
+        public override bool GuildsOnly => false;
 
         public override GuildPermissions? RequiredPermissions => null;
 

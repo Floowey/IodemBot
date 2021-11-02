@@ -4,7 +4,7 @@ namespace IodemBot.ColossoBattles
 {
     internal class TeamBattleEnvironment : PvPEnvironment
     {
-        public TeamBattleEnvironment(string Name, ITextChannel lobbyChannel, bool isPersistent, ITextChannel teamAChannel, ITextChannel teamBChannel, IRole TeamBRole, uint playersToStart = 3) : base(Name, lobbyChannel, isPersistent, teamAChannel, teamBChannel, TeamBRole, playersToStart, playersToStart)
+        public TeamBattleEnvironment(ColossoBattleService battleService, string Name, ITextChannel lobbyChannel, bool isPersistent, ITextChannel teamAChannel, ITextChannel teamBChannel, IRole TeamBRole, uint playersToStart = 3) : base(battleService, Name, lobbyChannel, isPersistent, teamAChannel, teamBChannel, TeamBRole, playersToStart, playersToStart)
         {
             _ = Reset("init");
         }

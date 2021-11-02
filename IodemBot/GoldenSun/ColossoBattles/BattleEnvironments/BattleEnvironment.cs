@@ -16,18 +16,20 @@ namespace IodemBot.ColossoBattles
         protected static string[] numberEmotes = new string[] { "0️⃣", "1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣",
             "6️⃣", "7️⃣", "8️⃣", "9️⃣" };
 
-        public string Name { get; private set; }
+        public string Name { get; set; }
         protected uint PlayersToStart { get; set; } = 4;
+        protected ITextChannel lobbyChannel { get; set; }
 
-        protected ColossoBattle Battle;
-        protected Timer autoTurn;
+        protected ColossoBattle Battle { get; set; }
 
         protected Timer resetIfNotActive;
-        protected ITextChannel lobbyChannel;
+        protected Timer autoTurn;
         protected readonly List<SocketReaction> reactions = new List<SocketReaction>();
         private bool isProcessing = false;
         public bool IsActive { get { return Battle.SizeTeamA > 0; } }
+        public bool IsPersistent { get; set; } = true;
 
+        public ColossoBattleService BattleService { get; set; }
         internal abstract ulong[] ChannelIds { get; }
 
         public PlayerFighter GetPlayer(ulong playerID) => Battle
@@ -36,14 +38,15 @@ namespace IodemBot.ColossoBattles
 
         public abstract Task AddPlayer(PlayerFighter player, Team team = Team.A);
         public abstract Task AddPlayer(UserAccount user, Team team = Team.A);
+        public abstract Task<(bool Success, string Message)> CanPlayerJoin(UserAccount user, Team team = Team.A);
         public abstract bool IsUsersMessage(PlayerFighter player, IUserMessage message);
-        public bool IsPersistent { get; set; } = true;
 
-        public BattleEnvironment(string Name, ITextChannel lobbyChannel, bool isPersistent)
+        public BattleEnvironment(ColossoBattleService BattleService, string Name = null, ITextChannel lobbyChannel = null, bool IsPersistent = true)
         {
-            this.Name = Name;
+            this.Name = Name ?? "No Name";
             this.lobbyChannel = lobbyChannel;
-            this.IsPersistent = isPersistent;
+            this.IsPersistent = IsPersistent;
+            this.BattleService = BattleService;
             Global.Client.ReactionAdded += ReactionAdded;
         }
 
@@ -129,6 +132,7 @@ namespace IodemBot.ColossoBattles
 
         public virtual void Dispose()
         {
+            BattleService.RemoveBattleEnvironment(this);
             Global.Client.ReactionAdded -= ReactionAdded;
         }
 

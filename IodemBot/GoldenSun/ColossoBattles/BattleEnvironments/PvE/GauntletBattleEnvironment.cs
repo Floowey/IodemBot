@@ -24,7 +24,7 @@ namespace IodemBot.ColossoBattles
         public DateTime LastEnemySet = DateTime.MinValue;
         public bool IsReady { get { return !IsActive && !HasPlayer && DateTime.Now.Subtract(LastEnemySet).TotalSeconds >= 20; } }
 
-        public GauntletBattleEnvironment(string Name, ITextChannel lobbyChannel, ITextChannel BattleChannel, string DungeonName, bool isPersistent) : base(Name, lobbyChannel, isPersistent, BattleChannel)
+        public GauntletBattleEnvironment(ColossoBattleService battleService, string Name, ITextChannel lobbyChannel, ITextChannel BattleChannel, string DungeonName, bool isPersistent) : base(battleService, Name, lobbyChannel, isPersistent, BattleChannel)
         {
             SetEnemy(DungeonName);
         }
@@ -109,6 +109,8 @@ namespace IodemBot.ColossoBattles
             enumerator = Dungeon.Matchups.GetEnumerator();
             matchup = enumerator.Current;
             await base.Reset(msg);
+            if (!IsPersistent)
+                return;
             var e = new EmbedBuilder();
             e.WithThumbnailUrl(Dungeon.Image);
             e.WithDescription(EnemyMessage.Content);
@@ -128,14 +130,21 @@ namespace IodemBot.ColossoBattles
             SocketGuildUser player = (SocketGuildUser)reaction.User.Value;
             var playerAvatar = EntityConverter.ConvertUser(player);
 
-            if (!Dungeon.Requirement.Applies(playerAvatar))
-            {
-                return;
-            }
+           
 
             await base.AddPlayer(reaction);
         }
+        public override Task<(bool Success, string Message)> CanPlayerJoin(UserAccount user, Team team = Team.A)
+        {
+            var result = base.CanPlayerJoin(user, team);
+            if (!result.Result.Success)
+                return result;
 
+            if (!Dungeon.Requirement.Applies(user))
+                return Task.FromResult((false, "This journey would be too dangerous for you!"));
+
+            return result;
+        }
         protected override string GetEnemyMessageString()
         {
             return $"Welcome to {Dungeon.Name}!\n{Dungeon?.FlavourText}";

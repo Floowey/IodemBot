@@ -25,6 +25,8 @@ namespace IodemBot.Discords.Actions
         public abstract bool GuildsOnly { get; }
         public abstract GuildPermissions? RequiredPermissions { get; }
 
+        protected Task<(bool, string)> SuccessFullResult => Task.FromResult((true, (string)null));
+
         public bool ValidateParameters<T>(string filterCommandName = null) where T : IActionParameterAttribute
         {
             //Required check (all we have right now)

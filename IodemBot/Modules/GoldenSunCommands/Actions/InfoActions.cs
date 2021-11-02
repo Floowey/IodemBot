@@ -18,6 +18,7 @@ namespace IodemBot.Modules
 {
     class DjinnInfoAction: IodemBotCommandAction
     {
+        public override bool GuildsOnly => false;
         [ActionParameterSlash(Order=1, Name="djinn", Description= "Name of the djinn to be displayed", Required=true, Type=ApplicationCommandOptionType.String)]
         public string IDDjinn { get; set; }
         public override async Task RunAsync()

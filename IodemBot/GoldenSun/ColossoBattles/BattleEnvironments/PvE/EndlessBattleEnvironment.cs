@@ -151,7 +151,7 @@ namespace IodemBot.ColossoBattles
             }
         }
 
-        public EndlessBattleEnvironment(string Name, ITextChannel lobbyChannel, bool isPersistent, ITextChannel BattleChannel, EndlessMode mode = EndlessMode.Default) : base(Name, lobbyChannel, isPersistent, BattleChannel)
+        public EndlessBattleEnvironment(ColossoBattleService battleService, string Name, ITextChannel lobbyChannel, bool isPersistent, ITextChannel BattleChannel, EndlessMode mode = EndlessMode.Default) : base(battleService, Name, lobbyChannel, isPersistent, BattleChannel)
         {
             this.mode = mode;
             if (mode == EndlessMode.Legacy)
@@ -282,6 +282,8 @@ namespace IodemBot.ColossoBattles
             await base.Reset(msg);
         }
 
+       
+
         protected override async Task AddPlayer(SocketReaction reaction)
         {
             if (PlayerMessages.Values.Any(s => (s.Id == reaction.UserId)))
@@ -290,23 +292,34 @@ namespace IodemBot.ColossoBattles
             }
             SocketGuildUser player = (SocketGuildUser)reaction.User.Value;
             var playerAvatar = EntityConverter.ConvertUser(player);
+            await AddPlayer(playerAvatar);
+        }
+        public override async Task AddPlayer(UserAccount user, Team team = Team.A)
+        {
 
-            if (playerAvatar.LevelNumber < 50 && !playerAvatar.Tags.Contains("ColossoCompleted"))
-            {
-                return;
-            }
 
-            var p = Factory.CreatePlayerFighter(playerAvatar);
-
-            if (playerAvatar.Inv.GetGear(AdeptClassSeriesManager.GetClassSeries(playerAvatar).Archtype).Any(i => i.Name == "Lure Cap"))
+            if (user.Inv.GetGear(AdeptClassSeriesManager.GetClassSeries(user).Archtype).Any(i => i.Name == "Lure Cap"))
             {
                 LureCaps++;
                 SetNextEnemy();
             }
 
-            await AddPlayer(p);
+            await base.AddPlayer(user);
         }
 
+        public override Task<(bool Success, string Message)> CanPlayerJoin(UserAccount user, Team team = Team.A)
+        {
+            var result = base.CanPlayerJoin(user, team);
+            if (!result.Result.Success)
+                return result;
+
+            if (user.LevelNumber < 50 && !user.Tags.Contains("ColossoCompleted"))
+            {
+                return Task.FromResult((false, "Hmm.. No, I don't think I can let you on that journey yet."));
+            }
+
+            return result;
+        }
         protected override EmbedBuilder GetEnemyEmbedBuilder()
         {
             var e = base.GetEnemyEmbedBuilder();

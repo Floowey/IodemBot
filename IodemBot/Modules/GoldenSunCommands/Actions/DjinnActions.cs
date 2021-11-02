@@ -15,6 +15,8 @@ namespace IodemBot.Modules
 {
     public class DjinnAction : IodemBotCommandAction
     {
+        public override bool GuildsOnly => false;
+
         [ActionParameterComponent(Order = 0, Name = "Detail", Description = "...", Required = false)]
         public DjinnDetail detail { get; set; } = DjinnDetail.None;
 
@@ -48,7 +50,7 @@ namespace IodemBot.Modules
             await Task.CompletedTask;
         }
 
-        public override ActionGuildSlashCommandProperties SlashCommandProperties => new()
+        public override ActionGlobalSlashCommandProperties SlashCommandProperties => new()
         {
             Name = "djinn",
             Description = "Show your djinn",
@@ -119,6 +121,15 @@ namespace IodemBot.Modules
             }
             return builder.Build();
         }
+
+        protected override Task<(bool Success, string Message)> CheckCustomPreconditionsAsync()
+        {
+            var guildResult = IsGameCommandAllowedInGuild();
+            if (!guildResult.Success)
+                return Task.FromResult(guildResult);
+
+            return SuccessFullResult;
+        }
     }
 
     internal class DjinnEquipAction : IodemBotCommandAction
@@ -132,7 +143,7 @@ namespace IodemBot.Modules
         [ActionParameterComponent(Order = 1, Name = "Djinn", Description = "djinn.", Required = true)]
         public List<string> SelectedDjinn { get; set; } = new();
 
-        public override ActionGuildSlashCommandProperties SlashCommandProperties => new()
+        public override ActionGlobalSlashCommandProperties SlashCommandProperties => new()
         {
             Name = "takedjinn",
             Description = "Select one or two djinn to take with you",
@@ -203,13 +214,22 @@ namespace IodemBot.Modules
             userDjinn.DjinnSetup = userDjinn.DjinnSetup.Take(2).ToList();
             UserAccountProvider.StoreUser(user);
         }
+
+        protected override Task<(bool Success, string Message)> CheckCustomPreconditionsAsync()
+        {
+            var guildResult = IsGameCommandAllowedInGuild();
+            if (!guildResult.Success)
+                return Task.FromResult(guildResult);
+
+            return SuccessFullResult;
+        }
     }
 
     public class UpgradeDjinnAction : BotComponentAction
     {
         public override EphemeralRule EphemeralRule => EphemeralRule.EphemeralOrFail;
 
-        public override bool GuildsOnly => true;
+        public override bool GuildsOnly => false;
 
         public override GuildPermissions? RequiredPermissions => null;
 
@@ -239,6 +259,10 @@ namespace IodemBot.Modules
         }
         protected override Task<(bool Success, string Message)> CheckCustomPreconditionsAsync()
         {
+            var guildResult = IsGameCommandAllowedInGuild();
+            if (!guildResult.Success)
+                return Task.FromResult(guildResult);
+
             var user = Context.User;
             var account = EntityConverter.ConvertUser(user);
             var djinnPocket = account.DjinnPocket;
@@ -270,7 +294,7 @@ namespace IodemBot.Modules
         [ActionParameterSlash(Order = 1, Name = "name", Description = "The name to rename it to", Required = false, Type = ApplicationCommandOptionType.String)]
 
         public string NewName { get; set; }
-        public override ActionGuildSlashCommandProperties SlashCommandProperties => new()
+        public override ActionGlobalSlashCommandProperties SlashCommandProperties => new()
         {
             Name = "renamedjinn",
             Description = "Rename one of your djinn",
@@ -287,6 +311,10 @@ namespace IodemBot.Modules
 
         protected override Task<(bool Success, string Message)> CheckCustomPreconditionsAsync()
         {
+            var guildResult = IsGameCommandAllowedInGuild();
+            if (!guildResult.Success)
+                return Task.FromResult(guildResult);
+
             var djinn = EntityConverter.ConvertUser(Context.User).DjinnPocket.GetDjinn(DjinnToRename);
             if (djinn== null)
                 return Task.FromResult((false, "Couldn't find that djinn in your djinn pocket"));

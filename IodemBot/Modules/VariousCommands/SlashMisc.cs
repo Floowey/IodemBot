@@ -15,9 +15,10 @@ namespace IodemBot.Modules.VariousCommands
 {
     public class PingCommand : IodemBotCommandAction
     {
+        public override bool GuildsOnly => false;
         [ActionParameterComponent(Order = 1, Name = "p", Description = "d", Required = false)]
         public int pinged { get; set; } = 0;
-        public override ActionGuildSlashCommandProperties SlashCommandProperties => new()
+        public override ActionGlobalSlashCommandProperties SlashCommandProperties => new()
         {
             Description = "pingping",
             Name = "pingping"
@@ -129,7 +130,8 @@ namespace IodemBot.Modules.VariousCommands
         [ActionParameterText(Order =1, Description = "User", IsRemainder = true, Name = "user", ParameterType=typeof(IUser))]
         [ActionParameterSlash(Order =1, Description = "User to poke", Name = "user", Required =true, Type=ApplicationCommandOptionType.User)]
         public IUser TargetUser { get; set; }
-        public override ActionGuildSlashCommandProperties SlashCommandProperties => new()
+        public override bool GuildsOnly => false;
+        public override ActionGlobalSlashCommandProperties SlashCommandProperties => new()
         {
             Description = "poke",
             Name = "poke",
@@ -159,7 +161,7 @@ namespace IodemBot.Modules.VariousCommands
             }
         };
 
-        public override ActionGuildUserCommandProperties UserCommandProperties => new()
+        public override ActionGlobalUserCommandProperties UserCommandProperties => new()
         {
             Name = "poke",
             FillParametersAsync = (user) =>

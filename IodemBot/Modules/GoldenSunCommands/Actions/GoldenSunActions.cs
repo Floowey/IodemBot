@@ -18,12 +18,13 @@ namespace IodemBot.Modules
 {
     public class StatusAction : IodemBotCommandAction
     {
+        public override bool GuildsOnly => false;
         public override EphemeralRule EphemeralRule => EphemeralRule.EphemeralOrFail;
 
         [ActionParameterComponent(Name = "Page", Description ="page", Order =0, Required =false)]
         public int statusPage { get; set; } = 0;
         private static int nPages = 3;
-        public override ActionGuildSlashCommandProperties SlashCommandProperties => new()
+        public override ActionGlobalSlashCommandProperties SlashCommandProperties => new()
         {
             Name = "status",
             Description = "Show your Status",
@@ -303,9 +304,19 @@ namespace IodemBot.Modules
                 user.DjinnPocket.DjinnSetup.Add(user.Element);
             }
         }
+
+        protected override Task<(bool Success, string Message)> CheckCustomPreconditionsAsync()
+        {
+            var guildResult = IsGameCommandAllowedInGuild();
+            if (!guildResult.Success)
+                return Task.FromResult(guildResult);
+
+            return SuccessFullResult;
+        }
     }
     public class ClassAction : IodemBotCommandAction
     {
+        public override bool GuildsOnly => true;
         public override async Task RunAsync()
         {
             var user = EntityConverter.ConvertUser(Context.User);

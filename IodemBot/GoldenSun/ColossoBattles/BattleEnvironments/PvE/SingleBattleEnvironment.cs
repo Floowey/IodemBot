@@ -110,7 +110,7 @@ namespace IodemBot.ColossoBattles
             } }
         };
 
-        public SingleBattleEnvironment(string Name, ITextChannel lobbyChannel, bool isPersistent, ITextChannel BattleChannel, BattleDifficulty diff) : base(Name, lobbyChannel, isPersistent, BattleChannel)
+        public SingleBattleEnvironment(ColossoBattleService battleService, string Name, ITextChannel lobbyChannel, bool isPersistent, ITextChannel BattleChannel, BattleDifficulty diff) : base(battleService, Name, lobbyChannel, isPersistent, BattleChannel)
         {
             internalDiff = diff;
             _ = Reset("init");
@@ -155,31 +155,41 @@ namespace IodemBot.ColossoBattles
             }
             SocketGuildUser player = (SocketGuildUser)reaction.User.Value;
             var playerAvatar = EntityConverter.ConvertUser(player);
-            var p = Factory.CreatePlayerFighter(playerAvatar);
-
-            if (Battle.SizeTeamA == 0 && Difficulty == BattleDifficulty.Easy && playerAvatar.LevelNumber < 10)
+            await AddPlayer(playerAvatar);
+        }
+        public override async Task AddPlayer(UserAccount user, Team team = Team.A)
+        {
+            if (Battle.SizeTeamA == 0 && Difficulty == BattleDifficulty.Easy && user.LevelNumber < 10)
             {
                 internalDiff = BattleDifficulty.Tutorial;
                 SetNextEnemy();
             }
-            else if (Difficulty == BattleDifficulty.Tutorial && playerAvatar.LevelNumber >= 10)
+            else if (Difficulty == BattleDifficulty.Tutorial && user.LevelNumber >= 10)
             {
                 internalDiff = BattleDifficulty.Easy;
                 SetNextEnemy();
             }
 
-            if(playerAvatar.LevelNumber < limits[Difficulty])
-            {
-                return;
-            }
-
-            if (playerAvatar.Inv.GetGear(AdeptClassSeriesManager.GetClassSeries(playerAvatar).Archtype).Any(i => i.Name == "Lure Cap"))
+            if (user.Inv.GetGear(AdeptClassSeriesManager.GetClassSeries(user).Archtype).Any(i => i.Name == "Lure Cap"))
             {
                 LureCaps++;
                 SetNextEnemy();
             }
 
-            await AddPlayer(p);
+            await base.AddPlayer(user);
+        }
+        public override Task<(bool Success, string Message)> CanPlayerJoin(UserAccount user, Team team = Team.A)
+        {
+            var result = base.CanPlayerJoin(user, team);
+            if (!result.Result.Success)
+                return result;
+
+            if (Difficulty > BattleDifficulty.Easy && user.LevelNumber < limits[Difficulty])
+            {
+                return Task.FromResult((false, $"You need to be at least {limits[Difficulty]} to join a {Difficulty} battle."));
+            }
+
+            return result;
         }
 
         public override void SetNextEnemy()

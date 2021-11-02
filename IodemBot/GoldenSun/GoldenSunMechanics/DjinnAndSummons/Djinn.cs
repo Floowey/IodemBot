@@ -36,7 +36,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public Stats Stats { get; set; }
 
         public void UpdateMove()
-        {
+        {       
             Move.Emote = Sprite;
             Move.Name = Name;
         }
