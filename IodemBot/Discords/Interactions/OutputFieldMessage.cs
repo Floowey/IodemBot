@@ -14,10 +14,6 @@ namespace IodemBot.Discords
 
     public class OutputFieldMessage
     {
-        public IUser AffectedUserData { get; set; }
-        public OutputFieldMessageType MessageType { get; set; }
-        public string Message { get; set; }
-
         public OutputFieldMessage(IUser affectedUserData, OutputFieldMessageType messageType, string message)
         {
             AffectedUserData = affectedUserData;
@@ -25,6 +21,14 @@ namespace IodemBot.Discords
             Message = message;
         }
 
-        public static implicit operator OutputFieldMessage((IUser AffectedUserData, OutputFieldMessageType messageType, string Message) args) => new OutputFieldMessage(args.AffectedUserData, args.messageType, args.Message);
+        public IUser AffectedUserData { get; set; }
+        public OutputFieldMessageType MessageType { get; set; }
+        public string Message { get; set; }
+
+        public static implicit operator OutputFieldMessage(
+            (IUser AffectedUserData, OutputFieldMessageType messageType, string Message) args)
+        {
+            return new(args.AffectedUserData, args.messageType, args.Message);
+        }
     }
 }

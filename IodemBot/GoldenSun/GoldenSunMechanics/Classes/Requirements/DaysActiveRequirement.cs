@@ -6,30 +6,20 @@ namespace IodemBot.Modules.GoldenSunMechanics
     {
         public int Apply(UserAccount user)
         {
-            if (user.ServerStats.UniqueDaysActive >= 70) //Wizard
+            return user.ServerStats.UniqueDaysActive switch
             {
-                return 5;
-            }
-            else if (user.ServerStats.UniqueDaysActive >= 45) //Sage
-            {
-                return 4;
-            }
-            else if (user.ServerStats.UniqueDaysActive >= 30) //Savant
-            {
-                return 3;
-            }
-            else if (user.ServerStats.UniqueDaysActive >= 14) //Scholar
-            {
-                return 2;
-            }
-            else if (user.ServerStats.UniqueDaysActive >= 7) //Elder
-            {
-                return 1;
-            }
-            else // Hermit
-            {
-                return 0;
-            }
+                //Wizard
+                >= 70 => 5,
+                //Sage
+                >= 45 => 4,
+                //Savant
+                >= 30 => 3,
+                //Scholar
+                >= 14 => 2,
+                //Elder
+                >= 7 => 1,
+                _ => 0
+            };
         }
     }
 }

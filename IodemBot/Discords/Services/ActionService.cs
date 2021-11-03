@@ -18,6 +18,8 @@ namespace IodemBot.Discords.Services
     public class ActionService
     {
         private readonly DiscordSocketClient _discord;
+
+        private readonly ConcurrentDictionary<ulong, CollectorLogic> _inProgressCollectors = new();
         private readonly IServiceProvider _services;
 
         public ActionService(IServiceProvider services)
@@ -38,7 +40,8 @@ namespace IodemBot.Discords.Services
         public List<BotAction> GetAll()
         {
             var allActions = new List<BotAction>();
-            foreach (Type type in typeof(BotAction).Assembly.GetTypes().Where(myType => myType.IsClass && !myType.IsAbstract && myType.IsSubclassOf(typeof(BotAction))))
+            foreach (var type in typeof(BotAction).Assembly.GetTypes().Where(myType =>
+                myType.IsClass && !myType.IsAbstract && myType.IsSubclassOf(typeof(BotAction))))
                 allActions.Add((BotAction)Activator.CreateInstance(type));
 
             return allActions;
@@ -64,19 +67,15 @@ namespace IodemBot.Discords.Services
         public async Task AddGlobalCommands()
         {
             List<ApplicationCommandProperties> properties = new();
-            var slashActions = GetAll().OfType<BotCommandAction>().Where(a => a.SlashCommandProperties != null && a.SlashCommandProperties is ActionGlobalSlashCommandProperties);
+            var slashActions = GetAll().OfType<BotCommandAction>().Where(a =>
+                a.SlashCommandProperties is ActionGlobalSlashCommandProperties);
 
-            foreach (var slashAction in slashActions)
-            {
-                properties.Add(BuildSlashCommandProperties(slashAction));
-            }
+            foreach (var slashAction in slashActions) properties.Add(BuildSlashCommandProperties(slashAction));
 
-            var messageActions = GetAll().OfType<BotCommandAction>().Where(a => a.MessageCommandProperties != null && a.MessageCommandProperties is ActionGlobalMessageCommandProperties);
+            var messageActions = GetAll().OfType<BotCommandAction>().Where(a =>
+                a.MessageCommandProperties is ActionGlobalMessageCommandProperties);
 
-            foreach (var messageAction in messageActions)
-            {
-                properties.Add(BuildMessageCommandProperties(messageAction));
-            }
+            foreach (var messageAction in messageActions) properties.Add(BuildMessageCommandProperties(messageAction));
 
             if (properties.Count > 0)
                 await _discord.Rest.BulkOverwriteGlobalCommands(properties.ToArray());
@@ -94,7 +93,8 @@ namespace IodemBot.Discords.Services
 
         public async Task AddGuildCommand(ulong guildId, string name)
         {
-            var slashActions = GetAll().OfType<BotCommandAction>().Where(a => a.SlashCommandProperties != null && a.SlashCommandProperties is ActionGuildSlashCommandProperties && a.MessageCommandProperties.Name == name);
+            var slashActions = GetAll().OfType<BotCommandAction>().Where(a =>
+                a.SlashCommandProperties is ActionGuildSlashCommandProperties && a.MessageCommandProperties.Name == name);
 
             foreach (var slashAction in slashActions)
             {
@@ -102,7 +102,8 @@ namespace IodemBot.Discords.Services
                 await _discord.Rest.CreateGuildCommand(commandProperties, guildId);
             }
 
-            var messageActions = GetAll().OfType<BotCommandAction>().Where(a => a.MessageCommandProperties != null && a.MessageCommandProperties is ActionGuildMessageCommandProperties && a.MessageCommandProperties.Name == name);
+            var messageActions = GetAll().OfType<BotCommandAction>().Where(a =>
+                a.MessageCommandProperties is ActionGuildMessageCommandProperties && a.MessageCommandProperties.Name == name);
 
             foreach (var messageAction in messageActions)
             {
@@ -110,7 +111,8 @@ namespace IodemBot.Discords.Services
                 await _discord.Rest.CreateGuildCommand(commandProperties, guildId);
             }
 
-            var userActions = GetAll().OfType<BotCommandAction>().Where(a => a.UserCommandProperties != null && a.UserCommandProperties is ActionGuildUserCommandProperties && a.UserCommandProperties.Name == name);
+            var userActions = GetAll().OfType<BotCommandAction>().Where(a =>
+                a.UserCommandProperties is ActionGuildUserCommandProperties && a.UserCommandProperties.Name == name);
 
             foreach (var userAction in userActions)
             {
@@ -122,26 +124,20 @@ namespace IodemBot.Discords.Services
         public async Task AddAllGuildCommands(ulong guildId)
         {
             List<ApplicationCommandProperties> properties = new();
-            var slashActions = GetAll().OfType<BotCommandAction>().Where(a => a.SlashCommandProperties != null && a.SlashCommandProperties is ActionGuildSlashCommandProperties);
+            var slashActions = GetAll().OfType<BotCommandAction>().Where(a =>
+                a.SlashCommandProperties is ActionGuildSlashCommandProperties);
 
-            foreach (var slashAction in slashActions)
-            {
-                properties.Add(BuildSlashCommandProperties(slashAction));
-            }
+            foreach (var slashAction in slashActions) properties.Add(BuildSlashCommandProperties(slashAction));
 
-            var messageActions = GetAll().OfType<BotCommandAction>().Where(a => a.MessageCommandProperties != null && a.MessageCommandProperties is ActionGuildMessageCommandProperties);
+            var messageActions = GetAll().OfType<BotCommandAction>().Where(a =>
+                a.MessageCommandProperties is ActionGuildMessageCommandProperties);
 
-            foreach (var messageAction in messageActions)
-            {
-                properties.Add(BuildMessageCommandProperties(messageAction));
-            }
+            foreach (var messageAction in messageActions) properties.Add(BuildMessageCommandProperties(messageAction));
 
-            var userActions = GetAll().OfType<BotCommandAction>().Where(a => a.UserCommandProperties != null && a.UserCommandProperties is ActionGuildUserCommandProperties);
+            var userActions = GetAll().OfType<BotCommandAction>().Where(a =>
+                a.UserCommandProperties is ActionGuildUserCommandProperties);
 
-            foreach (var userAction in userActions)
-            {
-                properties.Add(BuildUserCommandProperties(userAction));
-            }
+            foreach (var userAction in userActions) properties.Add(BuildUserCommandProperties(userAction));
             if (properties.Count > 0)
                 await _discord.Rest.BulkOverwriteGuildCommands(properties.ToArray(), guildId);
         }
@@ -155,16 +151,15 @@ namespace IodemBot.Discords.Services
             var parameters = action.GetParameters<ActionParameterSlashAttribute>()?.OrderBy(p => p.Attribute.Order);
             if (parameters != null)
             {
-                var filteredParameters = parameters.Where(p => p.Attribute.ParentNames == null || !p.Attribute.ParentNames.Any()).ToList();
-                if (filteredParameters != null && filteredParameters.Any())
-                {
+                var filteredParameters = parameters
+                    .Where(p => p.Attribute.ParentNames == null || !p.Attribute.ParentNames.Any()).ToList();
+                if (filteredParameters.Any())
                     foreach (var p in filteredParameters)
                     {
                         var option = BuildOptionFromParameter(p.Property, p.Attribute, parameters.ToList());
 
                         newCommand.AddOption(option);
                     }
-                }
             }
             //newCommand.WithDefaultPermission(action.RequiredPermissions == null);
 
@@ -194,10 +189,7 @@ namespace IodemBot.Discords.Services
                 foreach (var guildSummary in await _discord.Rest.GetGuildSummariesAsync().FlattenAsync())
                 {
                     var commands = await _discord.Rest.GetGuildApplicationCommands(guildSummary.Id);
-                    if (commands.Count > 0)
-                    {
-                        await commands.FirstOrDefault()?.DeleteAsync();
-                    }
+                    if (commands.Any()) await commands.FirstOrDefault()?.DeleteAsync();
                     await Task.Delay(500);
                 }
             });
@@ -210,66 +202,75 @@ namespace IodemBot.Discords.Services
 
         public async Task DeleteGuildCommandByNameAsync(ulong guildId, string name)
         {
-            await (await _discord.Rest.GetGuildApplicationCommands(guildId)).FirstOrDefault(c => c.Name == name)?.DeleteAsync();
+            await (await _discord.Rest.GetGuildApplicationCommands(guildId)).FirstOrDefault(c => c.Name == name)
+                ?.DeleteAsync();
         }
 
-        private SlashCommandOptionBuilder BuildOptionFromParameter(PropertyInfo property, ActionParameterSlashAttribute attribute, List<(PropertyInfo Property, ActionParameterSlashAttribute Attribute)> parameters)
+        private SlashCommandOptionBuilder BuildOptionFromParameter(PropertyInfo property,
+            ActionParameterSlashAttribute attribute,
+            List<(PropertyInfo Property, ActionParameterSlashAttribute Attribute)> parameters)
         {
-            var option = new SlashCommandOptionBuilder()
+            var option = new SlashCommandOptionBuilder
             {
                 Name = attribute.Name,
                 Description = attribute.Description,
                 Required = attribute.Required,
                 Type = attribute.Type,
-                Default = attribute.DefaultSubCommand ? true : null,
+                Default = attribute.DefaultSubCommand ? true : null
             };
 
-            var stringChoices = property.GetCustomAttributes(false).OfType<ActionParameterOptionStringAttribute>()?.OrderBy(c => c.Order);
+            var stringChoices = property.GetCustomAttributes(false).OfType<ActionParameterOptionStringAttribute>()
+                ?.OrderBy(c => c.Order);
             if (stringChoices != null && stringChoices.Any())
-            {
                 foreach (var c in stringChoices)
                     option.AddChoice(c.Name, c.Value);
-            }
 
-            var intChoices = property.GetCustomAttributes(false).OfType<ActionParameterOptionIntAttribute>()?.OrderBy(c => c.Order);
+            var intChoices = property.GetCustomAttributes(false).OfType<ActionParameterOptionIntAttribute>()
+                ?.OrderBy(c => c.Order);
             if (intChoices != null && intChoices.Any())
-            {
                 foreach (var c in intChoices)
                     option.AddChoice(c.Name, c.Value);
-            }
 
-            var filteredParameters = parameters.Where(p => p.Attribute.ParentNames != null && p.Attribute.ParentNames.Contains(attribute.Name)).ToList();
+            var filteredParameters = parameters.Where(p =>
+                p.Attribute.ParentNames != null && p.Attribute.ParentNames.Contains(attribute.Name)).ToList();
             if (filteredParameters != null && filteredParameters.Any())
-            {
                 foreach (var p in filteredParameters)
                 {
                     var subOption = BuildOptionFromParameter(p.Property, p.Attribute, filteredParameters);
 
                     option.AddOption(subOption);
                 }
-            }
 
             return option;
         }
 
-        private readonly ConcurrentDictionary<ulong, CollectorLogic> _inProgressCollectors = new ConcurrentDictionary<ulong, CollectorLogic>();
+        public void RegisterCollector(CollectorLogic collector)
+        {
+            _inProgressCollectors.GetOrAdd(collector.MessageId, collector);
+        }
 
-        public void RegisterCollector(CollectorLogic collector) => _inProgressCollectors.GetOrAdd(collector.MessageId, collector);
-
-        public void UnregisterCollector(CollectorLogic collector) => _inProgressCollectors.Remove(collector.MessageId, out _);
+        public void UnregisterCollector(CollectorLogic collector)
+        {
+            _inProgressCollectors.Remove(collector.MessageId, out _);
+        }
 
         public bool CollectorAvailable(ulong messageId)
         {
             return _inProgressCollectors.TryGetValue(messageId, out _);
         }
 
-        public async Task<(bool Success, MessageBuilder MessageBuilder)> FireCollectorAsync(IUser userData, ulong messageId, object[] idParams, object[] selectParams)
+        public async Task<(bool Success, MessageBuilder MessageBuilder)> FireCollectorAsync(IUser userData,
+            ulong messageId, object[] idParams, object[] selectParams)
         {
-            _inProgressCollectors.TryGetValue(messageId, out CollectorLogic collector);
+            _inProgressCollectors.TryGetValue(messageId, out var collector);
             if (collector == null || collector.Execute == null)
-                return (false, new MessageBuilder(userData, "I couldn't find that action anymore. Maybe you were too late?", false, null));
+                return (false,
+                    new MessageBuilder(userData, "I couldn't find that action anymore. Maybe you were too late?", false,
+                        null));
             if (collector.OnlyOriginalUserAllowed && collector.OriginalUserId != userData.Id)
-                return (false, new MessageBuilder(userData, "Sorry, for this message, only the calling user gets to pick!", false, null));
+                return (false,
+                    new MessageBuilder(userData, "Sorry, for this message, only the calling user gets to pick!", false,
+                        null));
 
             var builder = await collector.Execute(userData, messageId, idParams, selectParams);
             return (true, builder);

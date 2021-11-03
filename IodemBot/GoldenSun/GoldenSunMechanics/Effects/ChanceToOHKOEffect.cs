@@ -3,29 +3,29 @@ using IodemBot.ColossoBattles;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
-    internal class ChancetoOHKOEffect : Effect
+    internal class ChancetoOhkoEffect : Effect
     {
-        public ChancetoOHKOEffect()
+        public ChancetoOhkoEffect()
         {
-            ActivationTime = TimeToActivate.beforeDamage;
+            ActivationTime = TimeToActivate.BeforeDamage;
         }
 
         public int Probability { get; set; } = 0;
 
-        public override string Type { get; } = "OHKO";
+        public override string Type => "OHKO";
 
-        public override List<string> Apply(ColossoFighter User, ColossoFighter Target)
+        public override List<string> Apply(ColossoFighter user, ColossoFighter target)
         {
             var log = new List<string>();
-            if (Target.IsImmuneToOHKO)
+            if (target.IsImmuneToOhko)
             {
                 return log;
             }
 
-            if (Target.Party.Count > 1 && Global.RandomNumber(1, 100) <= Probability)
+            if (target.Party.Count > 1 && Global.RandomNumber(1, 100) <= Probability)
             {
-                Target.Kill();
-                log.Add($":x: {Target.Name}'s life was taken.");
+                target.Kill();
+                log.Add($":x: {target.Name}'s life was taken.");
             }
             return log;
         }

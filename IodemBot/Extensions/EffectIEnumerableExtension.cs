@@ -7,9 +7,9 @@ namespace IodemBot.Extensions
 {
     public static class EffectIEnumerableExtension
     {
-        public static IEnumerable<string> ApplyAll(this IEnumerable<Effect> effects, ColossoFighter User, ColossoFighter Target)
+        public static IEnumerable<string> ApplyAll(this IEnumerable<Effect> effects, ColossoFighter user, ColossoFighter target)
         {
-            return effects.SelectMany(e => e.Apply(User, Target));
+            return effects.SelectMany(e => e.Apply(user, target));
         }
     }
 }

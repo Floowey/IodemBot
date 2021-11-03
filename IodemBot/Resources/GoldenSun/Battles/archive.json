@@ -57,7 +57,6 @@
       }
     }
   ],
-
   [
     {
       "name": "Thunder Lizard 1",
@@ -137,7 +136,6 @@
       }
     }
   ],
-
   [
     {
       "name": "Lich 1",
@@ -149,7 +147,7 @@
         "Enfeeble",
         "Resist",
         "Stone Spire",
-        "Destruct Ray",
+        "Destruct Ray"
       ],
       "stats": {
         "maxHP": 1250,
@@ -208,7 +206,7 @@
         "Enfeeble",
         "Resist",
         "Stone Spire",
-        "Destruct Ray",
+        "Destruct Ray"
       ],
       "stats": {
         "maxHP": 1250,

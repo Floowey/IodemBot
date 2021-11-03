@@ -5,7 +5,7 @@ namespace IodemBot
 {
     public class Emotes
     {
-        private static readonly Dictionary<string, string> misc_emotes = new()
+        private static readonly Dictionary<string, string> MiscEmotes = new()
         {
             { "Exclamation", "<:Exclamatory:571309036473942026>" },
             { "Coin", "<:coin:569836987767324672>" },
@@ -31,19 +31,19 @@ namespace IodemBot
             { "StatusAction", "<:Status:896069873124409375>" },
             { "SortInventoryAction", "<:button_inventorysort:897032416915488869>" },
             { "UpgradeInventoryAction", "<:button_inventoryupgrade:897032416626098217>" },
-            { "UpgradeDjinnAction", "<:button_djinnupgrade:897032416856789043>" },
+            { "UpgradeDjinnAction", "<:button_djinnupgrade:897032416856789043>" }
         };
 
-        private static readonly Dictionary<Element, string> element_emotes = new()
+        private static readonly Dictionary<Element, string> ElementEmotes = new()
         {
             { Element.Venus, "<:Venus_Element:573938340219584524>" },
             { Element.Mars, "<:Mars_Element:573938340307402786>" },
             { Element.Jupiter, "<:Jupiter_Element:573938340584488987>" },
             { Element.Mercury, "<:Mercury_Element:573938340743872513>" },
-            { Element.none, "" }
+            { Element.None, "" }
         };
 
-        private static readonly Dictionary<ChestQuality, string> chest_emotes = new()
+        private static readonly Dictionary<ChestQuality, string> ChestEmotes = new()
         {
             { ChestQuality.Wooden, "<:wooden_chest:570332670576295986>" },
             { ChestQuality.Normal, "<:chest:570332670442078219>" },
@@ -55,7 +55,7 @@ namespace IodemBot
 
         public static string GetIcon(string emoteName)
         {
-            return misc_emotes[emoteName];
+            return MiscEmotes[emoteName];
         }
 
         public static Emote GetEmote(string emoteName)
@@ -65,7 +65,7 @@ namespace IodemBot
 
         public static string GetIcon(Element element)
         {
-            return element_emotes[element];
+            return ElementEmotes[element];
         }
 
         public static Emote GetEmote(Element element)
@@ -75,7 +75,7 @@ namespace IodemBot
 
         public static string GetIcon(ChestQuality quality)
         {
-            return chest_emotes[quality];
+            return ChestEmotes[quality];
         }
 
         public static Emote GetEmote(ChestQuality quality)

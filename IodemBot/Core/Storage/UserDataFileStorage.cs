@@ -11,22 +11,18 @@ namespace IodemBot.Core
 {
     internal class UserDataFileStorage : IPersistentStorage<UserAccount>
     {
-        private static readonly string FolderPath = "Resources/Accounts/AccountFiles";
-        private static readonly string BackupPath = "Resources/Accounts/BackupAccountFiles";
-        private static readonly ConcurrentDictionary<ulong, object> locks = new ConcurrentDictionary<ulong, object>();
-        private static readonly MemoryCache cache = MemoryCache.Default;
+        private const string FolderPath = "Resources/Accounts/AccountFiles";
+        private const string BackupPath = "Resources/Accounts/BackupAccountFiles";
+        private static readonly ConcurrentDictionary<ulong, object> Locks = new();
+        private static readonly MemoryCache Cache = MemoryCache.Default;
+
+        private static readonly object Locklock = new();
 
         static UserDataFileStorage()
         {
-            if (!File.Exists(FolderPath))
-            {
-                Directory.CreateDirectory(FolderPath);
-            }
+            if (!File.Exists(FolderPath)) Directory.CreateDirectory(FolderPath);
 
-            if (!File.Exists(BackupPath))
-            {
-                Directory.CreateDirectory(BackupPath);
-            }
+            if (!File.Exists(BackupPath)) Directory.CreateDirectory(BackupPath);
         }
 
         public bool Exists(ulong id)
@@ -44,46 +40,21 @@ namespace IodemBot.Core
             foreach (var f in Directory.GetFiles(FolderPath, "*.json"))
             {
                 var idstring = Path.GetFileNameWithoutExtension(f);
-                if (ulong.TryParse(idstring, out ulong id))
-                {
+                if (ulong.TryParse(idstring, out var id))
                     yield return RestoreSingle(id, false);
-                }
                 else
-                {
                     Console.WriteLine($"File {f} could not be loaded.");
-                }
             }
-        }
-
-        private static readonly object locklock = new object();
-
-        private static object GetLock(ulong id)
-        {
-            lock (locklock)
-            {
-                object datalock = new object();
-                return locks.GetOrAdd(id, datalock);
-            }
-        }
-
-        public UserAccount RestoreSingle(ulong id, bool doCache)
-        {
-            var user = RestoreSingle(id);
-            if (doCache)
-            {
-                cache.Set($"{id}_user", user, new CacheItemPolicy() { SlidingExpiration = TimeSpan.FromMinutes(10) });
-            }
-            return user;
         }
 
         public UserAccount RestoreSingle(ulong id)
         {
             try
             {
-                object lockobj = GetLock(id);
+                var lockobj = GetLock(id);
                 lock (lockobj)
                 {
-                    UserAccount user = cache[$"{id}_user"] as UserAccount;
+                    var user = Cache[$"{id}_user"] as UserAccount;
                     if (user == null)
                     {
                         var filePath = Path.Combine(FolderPath, $"{id}.json");
@@ -95,11 +66,9 @@ namespace IodemBot.Core
                                 Console.WriteLine($"User not registered: {id}");
                                 return null;
                             }
-                            else
-                            {
-                                Console.WriteLine($"Main File not found, using backup");
-                                filePath = backupFile;
-                            }
+
+                            Console.WriteLine("Main File not found, using backup");
+                            filePath = backupFile;
                         }
 
                         try
@@ -109,11 +78,12 @@ namespace IodemBot.Core
                         }
                         catch
                         {
-                            Console.WriteLine($"Reading file failed, trying backup");
+                            Console.WriteLine("Reading file failed, trying backup");
                             var json = File.ReadAllText(backupFile);
                             user = JsonConvert.DeserializeObject<UserAccount>(json);
                         }
                     }
+
                     return user;
                 }
             }
@@ -126,40 +96,21 @@ namespace IodemBot.Core
 
         public void Store(UserAccount item)
         {
-            lock (GetLock(item.ID))
+            lock (GetLock(item.Id))
             {
-                EnsureFiles(item.ID);
-                string json = JsonConvert.SerializeObject(item, Formatting.Indented);
+                EnsureFiles(item.Id);
+                var json = JsonConvert.SerializeObject(item, Formatting.Indented);
 
-                int cacheHash = (int)(cache.Get($"{item.ID}_hash") ?? 0);
-                int newHash = json.GetHashCode();
-                if (newHash == cacheHash)
-                {
-                    return;
-                }
+                var cacheHash = (int)(Cache.Get($"{item.Id}_hash") ?? 0);
+                var newHash = json.GetHashCode();
+                if (newHash == cacheHash) return;
 
-                File.Replace(Path.Combine(FolderPath, $"{item.ID}.json"), Path.Combine(BackupPath, $"{item.ID}.json"), Path.Combine(BackupPath, $"{item.ID}_B.json"));
-                File.WriteAllText(Path.Combine(FolderPath, $"{item.ID}.json"), json);
+                File.Replace(Path.Combine(FolderPath, $"{item.Id}.json"), Path.Combine(BackupPath, $"{item.Id}.json"),
+                    Path.Combine(BackupPath, $"{item.Id}_B.json"));
+                File.WriteAllText(Path.Combine(FolderPath, $"{item.Id}.json"), json);
 
-                cache.Set($"{item.ID}_hash", newHash, new CacheItemPolicy() { AbsoluteExpiration = DateTimeOffset.UtcNow.AddSeconds(30) });
-            }
-        }
-
-        private static void EnsureFiles(ulong id)
-        {
-            if (!File.Exists(Path.Combine(FolderPath, $"{id}.json")))
-            {
-                File.Create(Path.Combine(FolderPath, $"{id}.json")).Close();
-            }
-
-            if (!File.Exists(Path.Combine(BackupPath, $"{id}.json")))
-            {
-                File.Create(Path.Combine(BackupPath, $"{id}.json")).Close();
-            }
-
-            if (!File.Exists(Path.Combine(BackupPath, $"{id}_B.json")))
-            {
-                File.Create(Path.Combine(BackupPath, $"{id}_B.json")).Close();
+                Cache.Set($"{item.Id}_hash", newHash,
+                    new CacheItemPolicy { AbsoluteExpiration = DateTimeOffset.UtcNow.AddSeconds(30) });
             }
         }
 
@@ -181,6 +132,35 @@ namespace IodemBot.Core
         public UserAccount RestoreSingle(Expression<Func<UserAccount, bool>> predicate)
         {
             throw new NotImplementedException();
+        }
+
+        private static object GetLock(ulong id)
+        {
+            lock (Locklock)
+            {
+                var datalock = new object();
+                return Locks.GetOrAdd(id, datalock);
+            }
+        }
+
+        public UserAccount RestoreSingle(ulong id, bool doCache)
+        {
+            var user = RestoreSingle(id);
+            if (doCache)
+                Cache.Set($"{id}_user", user, new CacheItemPolicy { SlidingExpiration = TimeSpan.FromMinutes(10) });
+            return user;
+        }
+
+        private static void EnsureFiles(ulong id)
+        {
+            if (!File.Exists(Path.Combine(FolderPath, $"{id}.json")))
+                File.Create(Path.Combine(FolderPath, $"{id}.json")).Close();
+
+            if (!File.Exists(Path.Combine(BackupPath, $"{id}.json")))
+                File.Create(Path.Combine(BackupPath, $"{id}.json")).Close();
+
+            if (!File.Exists(Path.Combine(BackupPath, $"{id}_B.json")))
+                File.Create(Path.Combine(BackupPath, $"{id}_B.json")).Close();
         }
     }
 }

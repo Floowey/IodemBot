@@ -6,10 +6,10 @@ namespace IodemBot.Modules.GoldenSunMechanics
 {
     public class Defend : Move
     {
-        public Defend(string Emote = "<:Defend:536919830507552768>")
+        public Defend(string emote = "<:Defend:536919830507552768>")
         {
             Name = "Defend";
-            this.Emote = Emote;
+            this.Emote = emote;
             TargetType = TargetType.PartySelf;
             HasPriority = true;
         }
@@ -19,25 +19,24 @@ namespace IodemBot.Modules.GoldenSunMechanics
             return new Defend();
         }
 
-        public override void InternalChooseBestTarget(ColossoFighter User)
+        public override void InternalChooseBestTarget(ColossoFighter user)
         {
             TargetNr = 0;
-            return;
         }
 
-        public override bool InternalValidSelection(ColossoFighter User)
+        public override bool InternalValidSelection(ColossoFighter user)
         {
             return true;
         }
 
-        protected override List<string> InternalUse(ColossoFighter User)
+        protected override List<string> InternalUse(ColossoFighter user)
         {
-            User.defensiveMult = Math.Min(0.5, User.defensiveMult);
-            if (User is PlayerFighter p)
+            user.DefensiveMult = Math.Min(0.5, user.DefensiveMult);
+            if (user is PlayerFighter p)
             {
-                p.battleStats.Defends++;
+                p.BattleStats.Defends++;
             }
-            return new List<string>() { $"{Emote} {User.Name} is defending." };
+            return new List<string>() { $"{Emote} {user.Name} is defending." };
         }
     }
 }

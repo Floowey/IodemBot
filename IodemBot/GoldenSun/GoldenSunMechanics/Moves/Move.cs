@@ -8,58 +8,69 @@ using Newtonsoft.Json;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
-    [JsonConverter(typeof(JsonSubtypes))]
-    [JsonSubtypes.KnownSubTypeWithProperty(typeof(OffensivePsynergy), "Power")]
-    [JsonSubtypes.KnownSubTypeWithProperty(typeof(OffensivePsynergy), "AddDamage")]
-    [JsonSubtypes.KnownSubTypeWithProperty(typeof(OffensivePsynergy), "DmgMult")]
-    [JsonSubtypes.KnownSubTypeWithProperty(typeof(OffensivePsynergy), "PercentageDamage")]
-    [JsonSubtypes.KnownSubTypeWithProperty(typeof(HealPsynergy), "HealPower")]
-    [JsonSubtypes.KnownSubTypeWithProperty(typeof(HealPsynergy), "Percentage")]
-    [JsonSubtypes.FallBackSubType(typeof(StatusPsynergy))]
+    [JsonConverter(typeof(JsonSubtypes)),
+     JsonSubtypes.KnownSubTypeWithProperty(typeof(OffensivePsynergy), "Power"),
+     JsonSubtypes.KnownSubTypeWithProperty(typeof(OffensivePsynergy), "AddDamage"),
+     JsonSubtypes.KnownSubTypeWithProperty(typeof(OffensivePsynergy), "DmgMult"),
+     JsonSubtypes.KnownSubTypeWithProperty(typeof(OffensivePsynergy), "PercentageDamage"),
+     JsonSubtypes.KnownSubTypeWithProperty(typeof(HealPsynergy), "HealPower"),
+     JsonSubtypes.KnownSubTypeWithProperty(typeof(HealPsynergy), "Percentage"),
+     JsonSubtypes.FallBackSubType(typeof(StatusPsynergy))]
     public abstract class Move : ICloneable, IEquatable<Move>
     {
         public virtual string Name { get; set; } = "No Name";
         public virtual string Emote { get; set; } = "😶";
         public virtual TargetType TargetType { get; set; } = TargetType.PartySelf;
-        public virtual List<Effect> Effects { get; set; } = new List<Effect>();
-        public virtual int TargetNr { get; set; } = 0;
+        public virtual List<Effect> Effects { get; set; } = new();
+        public virtual int TargetNr { get; set; }
         public virtual uint Range { get; set; } = 1;
         public virtual bool HasPriority { get; set; } = false;
 
         [JsonIgnore]
         public bool OnEnemy
         {
-            get
-            {
-                return new TargetType[] { TargetType.EnemyAll, TargetType.EnemyRange }.Contains(TargetType);
-            }
+            get { return new[] { TargetType.EnemyAll, TargetType.EnemyRange }.Contains(TargetType); }
         }
 
-        public List<string> Use(ColossoFighter User)
+        public abstract object Clone();
+
+        public bool Equals([AllowNull] Move other)
         {
-            List<string> log = new List<string>();
-            var t = Validate(User);
-            log.AddRange(t.log);
-            if (!t.isValid)
+            if (other == null)
+            {
+                return false;
+            }
+
+            return Name == other.Name && Emote == other.Emote;
+        }
+
+        public List<string> Use(ColossoFighter user)
+        {
+            var log = new List<string>();
+            var t = Validate(user);
+            log.AddRange(t.Log);
+            if (!t.IsValid)
             {
                 return log;
             }
+
             try
             {
-                log.AddRange(InternalUse(User));
+                log.AddRange(InternalUse(user));
             }
             catch (Exception e)
             {
-                Console.WriteLine($"{Name} from {User.Name} has raised an error:\n" + e.ToString());
+                Console.WriteLine($"{Name} from {user.Name} has raised an error:\n" + e);
             }
+
             return log;
         }
 
         public List<ColossoFighter> GetTarget(ColossoFighter user)
         {
-            List<ColossoFighter> targets = new List<ColossoFighter>();
-            var playerCount = user.battle.GetTeam(user.party).Count - 1;
-            var enemyCount = user.battle.GetTeam(user.enemies).Count - 1;
+            var targets = new List<ColossoFighter>();
+            var playerCount = user.Battle.GetTeam(user.party).Count - 1;
+            var enemyCount = user.Battle.GetTeam(user.enemies).Count - 1;
 
             switch (TargetType)
             {
@@ -74,76 +85,66 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
                 case TargetType.PartyAll:
                     TargetNr = Math.Min(TargetNr, playerCount);
-                    targets.AddRange(user.battle.GetTeam(user.party));
+                    targets.AddRange(user.Battle.GetTeam(user.party));
                     break;
 
                 case TargetType.EnemyRange:
                     TargetNr = Math.Min(TargetNr, enemyCount);
-                    var targetTeam = user.battle.GetTeam(user.enemies);
-                    for (int i = -(int)Range + 1; i <= Range - 1; i++)
+                    var targetTeam = user.Battle.GetTeam(user.enemies);
+                    for (var i = -(int)Range + 1; i <= Range - 1; i++)
                     {
                         if (TargetNr + i >= 0 && TargetNr + i < targetTeam.Count)
                         {
                             targets.Add(targetTeam[TargetNr + i]);
                         }
                     }
+
                     break;
 
                 case TargetType.EnemyAll:
                     targets.AddRange(user.Enemies);
                     break;
             }
+
             return targets;
         }
 
-        protected abstract List<string> InternalUse(ColossoFighter User);
+        protected abstract List<string> InternalUse(ColossoFighter user);
 
-        protected virtual Validation Validate(ColossoFighter User)
+        protected virtual Validation Validate(ColossoFighter user)
         {
-            List<string> log = new List<string>();
-            if (!User.IsAlive)
+            var log = new List<string>();
+            if (!user.IsAlive)
             {
                 return new Validation(false, log);
             }
 
-            if (User.HasCondition(Condition.Stun))
+            if (user.HasCondition(Condition.Stun))
             {
-                log.Add($"{User.Name} can't move.");
+                log.Add($"{user.Name} can't move.");
                 return new Validation(false, log);
             }
 
-            if (User.HasCondition(Condition.Sleep))
+            if (user.HasCondition(Condition.Sleep))
             {
-                log.Add($"{User.Name} is asleep!");
+                log.Add($"{user.Name} is asleep!");
                 return new Validation(false, log);
             }
 
-            if (User.HasCondition(Condition.Flinch))
+            if (user.HasCondition(Condition.Flinch))
             {
-                log.Add($"{User.Name} can't move.");
-                User.RemoveCondition(Condition.Flinch);
+                log.Add($"{user.Name} can't move.");
+                user.RemoveCondition(Condition.Flinch);
                 return new Validation(false, log);
             }
 
-            if (User.HasCondition(Condition.ItemCurse) && !User.IsImmuneToItemCurse && Global.RandomNumber(0, 3) == 0)
+            if (user.HasCondition(Condition.ItemCurse) && !user.IsImmuneToItemCurse && Global.RandomNumber(0, 3) == 0)
             {
-                log.Add($"{User.Name} can't move.");
+                log.Add($"{user.Name} can't move.");
                 return new Validation(false, log);
             }
 
             return new Validation(true, log);
-        }
-
-        public class Validation
-        {
-            public bool isValid;
-            public List<string> log;
-
-            public Validation(bool isValid, List<string> log)
-            {
-                this.isValid = isValid;
-                this.log = log;
-            }
         }
 
         public override string ToString()
@@ -151,30 +152,18 @@ namespace IodemBot.Modules.GoldenSunMechanics
             return Name;
         }
 
-        public abstract object Clone();
+        public abstract bool InternalValidSelection(ColossoFighter user);
 
-        public abstract bool InternalValidSelection(ColossoFighter User);
+        public abstract void InternalChooseBestTarget(ColossoFighter user);
 
-        public abstract void InternalChooseBestTarget(ColossoFighter User);
-
-        internal bool ValidSelection(ColossoFighter User)
+        internal bool ValidSelection(ColossoFighter user)
         {
-            return InternalValidSelection(User);
+            return InternalValidSelection(user);
         }
 
-        internal void ChooseBestTarget(ColossoFighter User)
+        internal void ChooseBestTarget(ColossoFighter user)
         {
-            InternalChooseBestTarget(User);
-        }
-
-        public bool Equals([AllowNull] Move other)
-        {
-            if (other == null)
-            {
-                return false;
-            }
-
-            return Name == other.Name && Emote == other.Emote;
+            InternalChooseBestTarget(user);
         }
 
         public override bool Equals(object obj)
@@ -182,9 +171,16 @@ namespace IodemBot.Modules.GoldenSunMechanics
             return Equals(obj as Move);
         }
 
-        public override int GetHashCode()
+        public class Validation
         {
-            return HashCode.Combine(Name, Emote);
+            public Validation(bool isValid, List<string> log)
+            {
+                IsValid = isValid;
+                Log = log;
+            }
+
+            public bool IsValid { get; set; }
+            public List<string> Log { get; set; }
         }
     }
 }

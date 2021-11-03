@@ -29,14 +29,12 @@ namespace IodemBot.Modules
         [RequireUserPermission(ChannelPermission.ManageMessages)]
         public async Task Clear(SocketGuildUser user, int amountOfMessagesToDelete = 100)
         {
-            if (user == Context.User)
-            {
-                amountOfMessagesToDelete++; //Because it will count the purge command as a message
-            }
+            if (user == Context.User) amountOfMessagesToDelete++; //Because it will count the purge command as a message
 
             var messages = await Context.Message.Channel.GetMessagesAsync(amountOfMessagesToDelete + 1).FlattenAsync();
 
-            var result = messages.Where(x => x.Author.Id == user.Id && x.CreatedAt >= DateTimeOffset.UtcNow.Subtract(TimeSpan.FromDays(14)));
+            var result = messages.Where(x =>
+                x.Author.Id == user.Id && x.CreatedAt >= DateTimeOffset.UtcNow.Subtract(TimeSpan.FromDays(14)));
 
             await (Context.Message.Channel as SocketTextChannel).DeleteMessagesAsync(result);
         }
@@ -77,7 +75,7 @@ namespace IodemBot.Modules
                 Console.WriteLine($"{user.Name} registered");
 
                 var elRole = gm.Roles.FirstOrDefault(r => r.Name.Contains("Adepts"));
-                if (elRole != null && user.Element == Element.none)
+                if (elRole != null && user.Element == Element.None)
                 {
                     var chosenElement = new[] { Element.Venus, Element.Mars, Element.Jupiter, Element.Mercury }
                         .First(e => elRole.Name.Contains(e.ToString()));
@@ -88,6 +86,7 @@ namespace IodemBot.Modules
                     Console.WriteLine($"Updated Element for {user.Name}.");
                 }
             }
+
             await Task.CompletedTask;
         }
 
@@ -100,10 +99,15 @@ namespace IodemBot.Modules
                 .WithDescription("Server activity")
                 .AddField("Total Members ever", acc.Count(), true)
                 .AddField("Members now", Context.Guild.MemberCount, true)
-                .AddField("24h", acc.Count(a => DateTime.Now.Subtract(new TimeSpan(24, 0, 0)) < a.ServerStats.LastDayActive), true)
-                .AddField("3 Days", acc.Count(a => DateTime.Now.Subtract(new TimeSpan(3, 0, 0, 0)) < a.ServerStats.LastDayActive), true)
-                .AddField("7 Days", acc.Count(a => DateTime.Now.Subtract(new TimeSpan(7, 0, 0, 0)) < a.ServerStats.LastDayActive), true)
-                .AddField("30 Days", acc.Count(a => DateTime.Now.Subtract(new TimeSpan(30, 0, 0, 0)) < a.ServerStats.LastDayActive), true)
+                .AddField("24h",
+                    acc.Count(a => DateTime.Now.Subtract(new TimeSpan(24, 0, 0)) < a.ServerStats.LastDayActive), true)
+                .AddField("3 Days",
+                    acc.Count(a => DateTime.Now.Subtract(new TimeSpan(3, 0, 0, 0)) < a.ServerStats.LastDayActive), true)
+                .AddField("7 Days",
+                    acc.Count(a => DateTime.Now.Subtract(new TimeSpan(7, 0, 0, 0)) < a.ServerStats.LastDayActive), true)
+                .AddField("30 Days",
+                    acc.Count(a => DateTime.Now.Subtract(new TimeSpan(30, 0, 0, 0)) < a.ServerStats.LastDayActive),
+                    true)
                 .AddField("All Time", acc.Count(a => a.ServerStats.LastDayActive > DateTime.MinValue), true)
                 .AddField("Tried Colosso", acc.Count(a => a.ServerStats.ColossoWins > 0), true)
                 .Build());
@@ -116,7 +120,7 @@ namespace IodemBot.Modules
             await ReplyAsync("Shutting down for automatic update...");
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
             {
-                Console.WriteLine($"Closing {Global.Client.CurrentUser.Username } for manual update...");
+                Console.WriteLine($"Closing {Global.Client.CurrentUser.Username} for manual update...");
                 var ps = new ProcessStartInfo
                 {
                     FileName = "shellscripts/selfupdate.sh",
@@ -125,10 +129,9 @@ namespace IodemBot.Modules
                     Arguments = Global.Client.CurrentUser.Username == "Faran" ? "MedoiBotService" : "IodemBotService"
                 };
 
-                Process process = Process.Start(ps);
+                var process = Process.Start(ps);
                 process.WaitForExit();
                 Console.WriteLine("This shouldn't be reached but did.");
-                return;
             }
         }
 
@@ -147,9 +150,8 @@ namespace IodemBot.Modules
                     RedirectStandardOutput = true
                 };
 
-                Process process = Process.Start(ps);
+                var process = Process.Start(ps);
                 process.WaitForExit();
-                return;
             }
         }
 
@@ -169,9 +171,8 @@ namespace IodemBot.Modules
                     Arguments = Global.Client.CurrentUser.Username == "Faran" ? "MedoiBotService" : "IodemBotService"
                 };
 
-                Process process = Process.Start(ps);
+                var process = Process.Start(ps);
                 process.WaitForExit();
-                return;
             }
         }
 
@@ -193,12 +194,16 @@ namespace IodemBot.Modules
         public async Task CleanupTags(SocketGuildUser user)
         {
             var avatar = EntityConverter.ConvertUser(user);
-            var allTags1 = EnemiesDatabase.dungeons.Values.SelectMany(c => c.Requirement.TagsAny);
-            var allTags2 = EnemiesDatabase.dungeons.Values.SelectMany(c => c.Requirement.TagsLock);
-            var allTags3 = EnemiesDatabase.dungeons.Values.SelectMany(c => c.Requirement.TagsRequired);
-            var allTags4 = EnemiesDatabase.dungeons.Values.SelectMany(c => c.Matchups.SelectMany(m => m.RewardTables.SelectMany(r => r.Select(w => w.Tag))));
-            var allTags5 = EnemiesDatabase.dungeons.Values.SelectMany(c => c.Matchups.SelectMany(m => m.RewardTables.SelectMany(r => r.SelectMany(w => w.RequireTag))));
-            var unusedTags = avatar.Tags.Where(t => !allTags1.Contains(t) && !allTags2.Contains(t) && !allTags3.Contains(t) && !allTags4.Contains(t) && !allTags5.Contains(t));
+            var allTags1 = EnemiesDatabase.Dungeons.Values.SelectMany(c => c.Requirement.TagsAny);
+            var allTags2 = EnemiesDatabase.Dungeons.Values.SelectMany(c => c.Requirement.TagsLock);
+            var allTags3 = EnemiesDatabase.Dungeons.Values.SelectMany(c => c.Requirement.TagsRequired);
+            var allTags4 = EnemiesDatabase.Dungeons.Values.SelectMany(c =>
+                c.Matchups.SelectMany(m => m.RewardTables.SelectMany(r => r.Select(w => w.Tag))));
+            var allTags5 = EnemiesDatabase.Dungeons.Values.SelectMany(c =>
+                c.Matchups.SelectMany(m => m.RewardTables.SelectMany(r => r.SelectMany(w => w.RequireTag))));
+            var unusedTags = avatar.Tags.Where(t =>
+                !allTags1.Contains(t) && !allTags2.Contains(t) && !allTags3.Contains(t) && !allTags4.Contains(t) &&
+                !allTags5.Contains(t));
 
             avatar.Tags.RemoveAll(t => unusedTags.Contains(t));
             UserAccountProvider.StoreUser(avatar);
@@ -207,30 +212,30 @@ namespace IodemBot.Modules
 
         [Command("RemoveTag")]
         [RequireOwner]
-        public async Task RemoveTag(SocketGuildUser user, string Tag)
+        public async Task RemoveTag(SocketGuildUser user, string tag)
         {
             var avatar = EntityConverter.ConvertUser(user);
-            _ = ReplyAsync($"Tag Removed {avatar.Tags.Remove(Tag)}");
+            _ = ReplyAsync($"Tag Removed {avatar.Tags.Remove(tag)}");
             UserAccountProvider.StoreUser(avatar);
             await Task.CompletedTask;
         }
 
         [Command("SetXP")]
         [RequireOwner]
-        public async Task SetXP(SocketGuildUser user, uint xp)
+        public async Task SetXp(SocketGuildUser user, uint xp)
         {
             var avatar = EntityConverter.ConvertUser(user);
-            avatar.XP = xp;
+            avatar.Xp = xp;
             UserAccountProvider.StoreUser(avatar);
             await Task.CompletedTask;
         }
 
         [Command("AddTag")]
         [RequireOwner]
-        public async Task AddTag(SocketGuildUser user, string Tag)
+        public async Task AddTag(SocketGuildUser user, string tag)
         {
             var avatar = EntityConverter.ConvertUser(user);
-            avatar.Tags.Add(Tag);
+            avatar.Tags.Add(tag);
             UserAccountProvider.StoreUser(avatar);
             await ReplyAsync("Tag Added");
         }
@@ -242,10 +247,7 @@ namespace IodemBot.Modules
             var acc = EntityConverter.ConvertUser(user);
             var userDjinn = acc.DjinnPocket;
             var chosenDjinn = userDjinn.GetDjinn(djinn);
-            if (chosenDjinn == null)
-            {
-                return;
-            }
+            if (chosenDjinn == null) return;
             chosenDjinn.IsShiny = shiny;
             UserAccountProvider.StoreUser(acc);
             await Task.CompletedTask;
@@ -265,7 +267,6 @@ namespace IodemBot.Modules
         {
             var file = Context.Message.Attachments.FirstOrDefault();
             if (file != null && file.Filename.EndsWith(".json"))
-            {
                 try
                 {
                     using (var client = new HttpClient())
@@ -274,6 +275,7 @@ namespace IodemBot.Modules
                         var user = JsonConvert.DeserializeObject<UserAccount>(json);
                         UserAccountProvider.StoreUser(user);
                     }
+
                     await ReplyAsync($"Successfully updated {Context.User.Mention}");
                     return;
                 }
@@ -281,7 +283,7 @@ namespace IodemBot.Modules
                 {
                     Console.WriteLine(e);
                 }
-            }
+
             await ReplyAsync("Invalid File");
         }
 
@@ -289,7 +291,9 @@ namespace IodemBot.Modules
         [RequireUserPermission(GuildPermission.ManageEmojisAndStickers)]
         public async Task Emotes()
         {
-            var s = string.Join("\n", Context.Guild.Emotes.OrderBy(d => d.Name).Select(e => $"{e} \\<{(e.Animated ? "a" : "")}:{e.Name}:{e.Id}>"));
+            var s = string.Join("\n",
+                Context.Guild.Emotes.OrderBy(d => d.Name)
+                    .Select(e => $"{e} \\<{(e.Animated ? "a" : "")}:{e.Name}:{e.Id}>"));
             while (s.Length > 2000)
             {
                 await Context.Channel.SendMessageAsync(s[..2000]);

@@ -41,43 +41,48 @@ namespace IodemBot.Modules
         public override async Task RunAsync()
         {
             var user = EntityConverter.ConvertUser(Context.User);
-            await Context.ReplyWithMessageAsync(EphemeralRule, embed: GetDungeonEmbed(user), components: GetDungeonComponent(user));
+            await Context.ReplyWithMessageAsync(EphemeralRule, embed: GetDungeonEmbed(user),
+                components: GetDungeonComponent(user));
         }
 
         public static Embed GetDungeonEmbed(UserAccount user)
         {
             EmbedBuilder builder = new();
-            var defaultDungeons = EnemiesDatabase.DefaultDungeons.Where(d => !d.Requirement.IsLocked(user));
-            var availableDefaultDungeons = defaultDungeons.Where(d => d.Requirement.Applies(user)).Select(s => s.Name).ToArray();
-            var unavailableDefaultDungeons = defaultDungeons.Where(d => !d.Requirement.Applies(user)).Select(s => s.Name).ToArray();
+            var defaultDungeons = DefaultDungeons.Where(d => !d.Requirement.IsLocked(user));
+            var availableDefaultDungeons =
+                defaultDungeons.Where(d => d.Requirement.Applies(user)).Select(s => s.Name).ToArray();
+            var unavailableDefaultDungeons =
+                defaultDungeons.Where(d => !d.Requirement.Applies(user)).Select(s => s.Name).ToArray();
 
-            var unlockedDungeons = user.Dungeons.Where(s => EnemiesDatabase.HasDungeon(s)).Select(s => EnemiesDatabase.GetDungeon(s)).Where(d => !d.Requirement.IsLocked(user));
+            var unlockedDungeons = user.Dungeons.Where(HasDungeon).Select(GetDungeon)
+                .Where(d => !d.Requirement.IsLocked(user));
             var availablePermUnlocks = availableDefaultDungeons
                 .Concat(unlockedDungeons.Where(d =>
-                    !d.IsOneTimeOnly &&
-                    d.Requirement.FulfilledRequirements(user))
+                        !d.IsOneTimeOnly &&
+                        d.Requirement.FulfilledRequirements(user))
                     .Select(s => s.Name)
                     .ToArray());
             var unavailablePermUnlocks = unavailableDefaultDungeons
                 .Concat(unlockedDungeons.Where(d =>
-                    !d.IsOneTimeOnly &&
-                    !d.Requirement.FulfilledRequirements(user))
+                        !d.IsOneTimeOnly &&
+                        !d.Requirement.FulfilledRequirements(user))
                     .Select(s => s.Name)
                     .ToArray());
 
-            var availableOneTimeUnlocks = unlockedDungeons.Where(d => d.IsOneTimeOnly && d.Requirement.FulfilledRequirements(user)).Select(s => s.Name).ToArray();
-            var unavailableOneTimeUnlocks = unlockedDungeons.Where(d => d.IsOneTimeOnly && !d.Requirement.FulfilledRequirements(user)).Select(s => s.Name).ToArray();
+            var availableOneTimeUnlocks = unlockedDungeons
+                .Where(d => d.IsOneTimeOnly && d.Requirement.FulfilledRequirements(user)).Select(s => s.Name).ToArray();
+            var unavailableOneTimeUnlocks = unlockedDungeons
+                .Where(d => d.IsOneTimeOnly && !d.Requirement.FulfilledRequirements(user)).Select(s => s.Name)
+                .ToArray();
 
             builder.WithTitle("Dungeons");
 
             if (availablePermUnlocks.Any())
-            {
-                builder.AddField("<:mapopen:606236181503410176> Places Discovered", $"Available: {string.Join(", ", availablePermUnlocks)} \nUnavailable: {string.Join(", ", unavailablePermUnlocks)}");
-            }
+                builder.AddField("<:mapopen:606236181503410176> Places Discovered",
+                    $"Available: {string.Join(", ", availablePermUnlocks)} \nUnavailable: {string.Join(", ", unavailablePermUnlocks)}");
             if (availableOneTimeUnlocks.Length + unavailableOneTimeUnlocks.Length > 0)
-            {
-                builder.AddField("<:cave:607402486562684944> Dungeon Keys", $"Available: {string.Join(", ", availableOneTimeUnlocks)} \nUnavailable: {string.Join(", ", unavailableOneTimeUnlocks)}");
-            }
+                builder.AddField("<:cave:607402486562684944> Dungeon Keys",
+                    $"Available: {string.Join(", ", availableOneTimeUnlocks)} \nUnavailable: {string.Join(", ", unavailableOneTimeUnlocks)}");
             return builder.Build();
         }
 
@@ -86,54 +91,61 @@ namespace IodemBot.Modules
             ComponentBuilder builder = new();
             var labels = user.Preferences.ShowButtonLabels;
             var defaultDungeons = DefaultDungeons.Where(d => !d.Requirement.IsLocked(user));
-            var availableDefaultDungeons = defaultDungeons.Where(d => d.Requirement.Applies(user)).Select(s => s.Name).ToArray();
-            var unavailableDefaultDungeons = defaultDungeons.Where(d => !d.Requirement.Applies(user)).Select(s => s.Name).ToArray();
+            var availableDefaultDungeons =
+                defaultDungeons.Where(d => d.Requirement.Applies(user)).Select(s => s.Name).ToArray();
+            var unavailableDefaultDungeons =
+                defaultDungeons.Where(d => !d.Requirement.Applies(user)).Select(s => s.Name).ToArray();
 
-            var unlockedDungeons = user.Dungeons.Where(s => HasDungeon(s)).Select(s => GetDungeon(s)).Where(d => !d.Requirement.IsLocked(user));
+            var unlockedDungeons = user.Dungeons.Where(HasDungeon).Select(GetDungeon)
+                .Where(d => !d.Requirement.IsLocked(user));
             var availablePermUnlocks = availableDefaultDungeons
                 .Concat(unlockedDungeons.Where(d =>
-                    !d.IsOneTimeOnly &&
-                    d.Requirement.FulfilledRequirements(user))
+                        !d.IsOneTimeOnly &&
+                        d.Requirement.FulfilledRequirements(user))
                     .Select(s => s.Name)
                     .ToArray());
             var unavailablePermUnlocks = unavailableDefaultDungeons
                 .Concat(unlockedDungeons.Where(d =>
-                    !d.IsOneTimeOnly &&
-                    !d.Requirement.FulfilledRequirements(user))
+                        !d.IsOneTimeOnly &&
+                        !d.Requirement.FulfilledRequirements(user))
                     .Select(s => s.Name)
                     .ToArray());
 
-            var availableOneTimeUnlocks = unlockedDungeons.Where(d => d.IsOneTimeOnly && d.Requirement.FulfilledRequirements(user)).Select(s => s.Name).ToArray();
-            var unavailableOneTimeUnlocks = unlockedDungeons.Where(d => d.IsOneTimeOnly && !d.Requirement.FulfilledRequirements(user)).Select(s => s.Name).ToArray();
+            var availableOneTimeUnlocks = unlockedDungeons
+                .Where(d => d.IsOneTimeOnly && d.Requirement.FulfilledRequirements(user)).Select(s => s.Name).ToArray();
+            var unavailableOneTimeUnlocks = unlockedDungeons
+                .Where(d => d.IsOneTimeOnly && !d.Requirement.FulfilledRequirements(user)).Select(s => s.Name)
+                .ToArray();
 
             List<SelectMenuOptionBuilder> availableLocations = new();
             foreach (var dungeon in availablePermUnlocks)
-            {
-                availableLocations.Add(new() { Label = dungeon, Value = dungeon });
-            }
+                availableLocations.Add(new SelectMenuOptionBuilder { Label = dungeon, Value = dungeon });
             if (availableLocations.Count > 0)
-                builder.WithSelectMenu($"{nameof(OpenDungeonAction)}.L", availableLocations, "Select a location to visit");
+                builder.WithSelectMenu($"{nameof(OpenDungeonAction)}.L", availableLocations,
+                    "Select a location to visit");
 
             List<SelectMenuOptionBuilder> availableDungeons = new();
             foreach (var dungeon in availableOneTimeUnlocks)
-            {
-                availableDungeons.Add(new() { Label = dungeon, Value = dungeon });
-            }
+                availableDungeons.Add(new SelectMenuOptionBuilder { Label = dungeon, Value = dungeon });
             if (availableDungeons.Count > 0)
-                builder.WithSelectMenu($"{nameof(OpenDungeonAction)}.D", availableDungeons, "Select a dungeon to visit (consumes key)");
+                builder.WithSelectMenu($"{nameof(OpenDungeonAction)}.D", availableDungeons,
+                    "Select a dungeon to visit (consumes key)");
 
-            builder.WithButton(labels ? "Status" : null, $"#{nameof(StatusAction)}", style: ButtonStyle.Primary, emote: Emotes.GetEmote("StatusAction"));
+            builder.WithButton(labels ? "Status" : null, $"#{nameof(StatusAction)}", ButtonStyle.Primary,
+                Emotes.GetEmote("StatusAction"));
             return builder.Build();
         }
     }
 
     public class OpenDungeonAction : BotComponentAction
     {
+        private ColossoBattleService _battleService;
+
+        private Dungeon _dungeon;
+
         [ActionParameterComponent(Required = true)]
         private string SelectedDungeonName { get; set; }
 
-        private Dungeon Dungeon;
-        private ColossoBattleService BattleService;
         public override EphemeralRule EphemeralRule => EphemeralRule.EphemeralOrFail;
         public override bool GuildsOnly => true;
 
@@ -152,12 +164,14 @@ namespace IodemBot.Modules
             {
             }
 
-            var openBattle = new GauntletBattleEnvironment(BattleService, $"{Context.User.Username}", gs.ColossoChannel,
-                await BattleService.PrepareBattleChannel($"{Dungeon.Name}-{Context.User.Username}",
-                Context.Guild, persistent: false), Dungeon.Name, false);
+            var openBattle = new GauntletBattleEnvironment(_battleService, $"{Context.User.Username}",
+                gs.ColossoChannel,
+                await _battleService.PrepareBattleChannel($"{_dungeon.Name}-{Context.User.Username}",
+                    Context.Guild, persistent: false), _dungeon.Name, false);
 
-            BattleService.AddBattleEnvironment(openBattle);
-            await Context.Channel.SendMessageAsync($"{Context.User.Username}, {openBattle.BattleChannel.Mention} has been prepared for your adventure to {Dungeon.Name}");
+            _battleService.AddBattleEnvironment(openBattle);
+            await Context.Channel.SendMessageAsync(
+                $"{Context.User.Username}, {openBattle.BattleChannel.Mention} has been prepared for your adventure to {_dungeon.Name}");
         }
 
         protected override Task<(bool Success, string Message)> CheckCustomPreconditionsAsync()
@@ -167,30 +181,29 @@ namespace IodemBot.Modules
                 return Task.FromResult(guildResult);
 
             var acc = EntityConverter.ConvertUser(Context.User);
-            if (!TryGetDungeon(SelectedDungeonName, out Dungeon))
-                return Task.FromResult((false, $"I don't know where that place is."));
+            if (!TryGetDungeon(SelectedDungeonName, out _dungeon))
+                return Task.FromResult((false, "I don't know where that place is."));
 
-            if (!acc.Dungeons.Contains(Dungeon.Name) && !Dungeon.IsDefault)
-                return Task.FromResult((false, $"If you can't tell me where this place is, I can't take you there. And even if you knew, they probably wouldn't let you in! Bring me a map or show to me that you have the key to enter."));
+            if (!acc.Dungeons.Contains(_dungeon.Name) && !_dungeon.IsDefault)
+                return Task.FromResult((false,
+                    "If you can't tell me where this place is, I can't take you there. And even if you knew, they probably wouldn't let you in! Bring me a map or show to me that you have the key to enter."));
 
-            if (!Dungeon.Requirement.Applies(acc))
-                return Task.FromResult((false, $"I'm afraid that I can't take you to this place, it is too dangerous for you and me both."));
+            if (!_dungeon.Requirement.Applies(acc))
+                return Task.FromResult((false,
+                    "I'm afraid that I can't take you to this place, it is too dangerous for you and me both."));
 
-            var gauntletFromUser = BattleService.GetBattleEnvironment<GauntletBattleEnvironment>(b => b.Name.Equals(Context.User.Username, StringComparison.CurrentCultureIgnoreCase));
+            var gauntletFromUser = _battleService.GetBattleEnvironment<GauntletBattleEnvironment>(b =>
+                b.Name.Equals(Context.User.Username, StringComparison.CurrentCultureIgnoreCase));
             if (gauntletFromUser != null)
             {
                 if (gauntletFromUser.IsActive)
-                    return Task.FromResult((false, $"What? You already are on an adventure!"));
-                else
-                {
-                    _ = gauntletFromUser.Reset($"{gauntletFromUser.Name} overridden");
-                    //battles.Remove(gauntletFromUser);
-                }
+                    return Task.FromResult((false, "What? You already are on an adventure!"));
+                _ = gauntletFromUser.Reset($"{gauntletFromUser.Name} overridden");
             }
 
-            if (Dungeon.IsOneTimeOnly)
+            if (_dungeon.IsOneTimeOnly)
             {
-                acc.Dungeons.Remove(Dungeon.Name);
+                acc.Dungeons.Remove(_dungeon.Name);
                 UserAccountProvider.StoreUser(acc);
             }
 
@@ -202,7 +215,7 @@ namespace IodemBot.Modules
             if (selectOptions != null && selectOptions.Any())
                 SelectedDungeonName = selectOptions.FirstOrDefault();
 
-            BattleService = ServiceProvider.GetRequiredService<ColossoBattleService>();
+            _battleService = ServiceProvider.GetRequiredService<ColossoBattleService>();
             return Task.CompletedTask;
         }
     }

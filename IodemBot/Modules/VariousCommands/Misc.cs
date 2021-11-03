@@ -23,9 +23,9 @@ namespace IodemBot.Modules
         {
             await Context.Message.DeleteAsync();
             await Context.Channel.SendMessageAsync(embed: new EmbedBuilder()
-            .WithColor(Colors.Get("Iodem"))
-            .WithDescription(message)
-            .Build());
+                .WithColor(Colors.Get("Iodem"))
+                .WithDescription(message)
+                .Build());
         }
 
         [Command("ping")]
@@ -43,11 +43,11 @@ namespace IodemBot.Modules
             await ReplyAsync("I can't help you with that");
         }
 
-        public async Task PingAsync(IIodemCommandContext Context)
+        public async Task PingAsync(IIodemCommandContext context)
         {
             var cb = new ComponentBuilder();
             cb.WithButton("Ping", "my_id");
-            await Context.ReplyAsync(embed: new EmbedBuilder()
+            await context.ReplyAsync(embed: new EmbedBuilder()
                 .WithColor(Colors.Get("Iodem"))
                 .WithDescription($"Pong! {Global.Client.Latency} ms")
                 .Build(), component: cb.Build());
@@ -60,7 +60,7 @@ namespace IodemBot.Modules
         {
             await Context.Channel.SendMessageAsync(embed: new EmbedBuilder()
                 .WithColor(Colors.Get("Iodem"))
-                .WithDescription($"Ping!")
+                .WithDescription("Ping!")
                 .Build());
         }
 
@@ -71,14 +71,18 @@ namespace IodemBot.Modules
         {
             await Context.Channel.SendMessageAsync(embed: new EmbedBuilder()
                 .WithColor(Colors.Get("Iodem"))
-                .WithDescription($"While we do not have a dedicated music bot, check out these fantastic playlists to listen to during your adventure:")
-                .AddField("OCRemix of the Golden Sun Soundtrack on Soundcloud (it's marvellous)", "https://soundcloud.com/ocremix/sets/golden-sun-a-world-reignited")
-                .AddField("Original Sound Track playlist on YouTube:", "https://www.youtube.com/watch?v=rl16-7wZmFY&list=PLCD5E70634946E090")
+                .WithDescription(
+                    "While we do not have a dedicated music bot, check out these fantastic playlists to listen to during your adventure:")
+                .AddField("OCRemix of the Golden Sun Soundtrack on Soundcloud (it's marvellous)",
+                    "https://soundcloud.com/ocremix/sets/golden-sun-a-world-reignited")
+                .AddField("Original Sound Track playlist on YouTube:",
+                    "https://www.youtube.com/watch?v=rl16-7wZmFY&list=PLCD5E70634946E090")
                 .Build());
         }
 
-        [Command("FAQ"), Alias("Changelog", "Links", "Support", "Repo")]
-        public async Task FAQ()
+        [Command("FAQ")]
+        [Alias("Changelog", "Links", "Support", "Repo")]
+        public async Task Faq()
         {
             await Context.Channel.SendMessageAsync(embed: new EmbedBuilder()
                 .WithColor(Colors.Get("Iodem"))
@@ -90,19 +94,26 @@ namespace IodemBot.Modules
                 .Build());
         }
 
-        [Command("Credit"), Alias("Credits", "Info")]
+        [Command("Credit")]
+        [Alias("Credits", "Info")]
         public async Task Credit()
         {
             await ReplyAsync(embed: new EmbedBuilder()
                 .WithTitle("Credits")
-                .WithDescription("Iodem is a community project, designed to add a special, custom made battle system, that mirrors the battle system present in the GBA games to the /r/GoldenSun discord.")
+                .WithDescription(
+                    "Iodem is a community project, designed to add a special, custom made battle system, that mirrors the battle system present in the GBA games to the /r/GoldenSun discord.")
                 .AddField("Project Lead", "Floowey")
                 .AddField("Co Producers", "Falgor, Gray, Anelace, Arcblade")
-                .AddField("Art Contributions", "bringobrongo, Calvin, elTeh, Eon, generalFang15, Mimibits, Shawn, SpaceShaman, Tert, Virize, Volk, Von")
-                .AddField("Contributions and Testers", "AlterEgo, ArcanusHaru, BdeBock, Dracobolt, DroneberryPi, Germaniac, IceFireFish, joschlumpf, Lavtiz, Mary A. Stria, Ninja Frog, Ophi, Smeecko, Random, RupeeHeart, Ultimastrike")
-                .AddField("Special thanks to", "Camelot, the Moderators, the Nut Council and you, the players, without whom this whole project wouldn't have come this far")
-                .AddField("Support and Links", "Check out the repository:\nhttps://github.com/Floowey/IodemBot/\nIf you want to support this, you can buy Floowey a Ko-Fi!\n https://ko-fi.com/floowey")
-                .WithThumbnailUrl("https://cdn.discordapp.com/attachments/668443234292334612/738400124497035284/5ca5bf1dff3c03fbf7cc9b3c_Kofi_logo_RGB_rounded.png")
+                .AddField("Art Contributions",
+                    "bringobrongo, Calvin, elTeh, Eon, generalFang15, Mimibits, Shawn, SpaceShaman, Tert, Virize, Volk, Von")
+                .AddField("Contributions and Testers",
+                    "AlterEgo, ArcanusHaru, BdeBock, Dracobolt, DroneberryPi, Germaniac, IceFireFish, joschlumpf, Lavtiz, Mary A. Stria, Ninja Frog, Ophi, Smeecko, Random, RupeeHeart, Ultimastrike")
+                .AddField("Special thanks to",
+                    "Camelot, the Moderators, the Nut Council and you, the players, without whom this whole project wouldn't have come this far")
+                .AddField("Support and Links",
+                    "Check out the repository:\nhttps://github.com/Floowey/IodemBot/\nIf you want to support this, you can buy Floowey a Ko-Fi!\n https://ko-fi.com/floowey")
+                .WithThumbnailUrl(
+                    "https://cdn.discordapp.com/attachments/668443234292334612/738400124497035284/5ca5bf1dff3c03fbf7cc9b3c_Kofi_logo_RGB_rounded.png")
                 .Build());
         }
 
@@ -111,11 +122,9 @@ namespace IodemBot.Modules
         [Summary("Link to the wiki or a a specific search query.")]
         public async Task Wiki([Remainder] string searchQuery = "")
         {
-            string link = "https://goldensunwiki.net/wiki/Main_Page";
+            var link = "https://goldensunwiki.net/wiki/Main_Page";
             if (searchQuery != "")
-            {
                 link = $"https://goldensunwiki.net/w/index.php?Search&search={searchQuery.Trim().Replace(" ", "+")}";
-            }
 
             await Context.Channel.SendMessageAsync(embed: new EmbedBuilder()
                 .WithColor(Colors.Get("Iodem"))
@@ -123,18 +132,20 @@ namespace IodemBot.Modules
                 .Build());
         }
 
-        [Command("subreddit"), Alias("sub")]
+        [Command("subreddit")]
+        [Alias("sub")]
         [Cooldown(5)]
         [Summary("Link the wiki")]
         public async Task Subreddit()
         {
             await Context.Channel.SendMessageAsync("", false, new EmbedBuilder()
                 .WithColor(Colors.Get("Iodem"))
-                .WithDescription($"https://reddit.com/r/GoldenSun")
+                .WithDescription("https://reddit.com/r/GoldenSun")
                 .Build());
         }
 
-        [Command("Game"), Alias("ChangeGame", "SetGame")]
+        [Command("Game")]
+        [Alias("ChangeGame", "SetGame")]
         [Summary("Change what the bot is currently playing.")]
         [RequireOwner]
         public async Task SetGame([Remainder] string gamename)
@@ -150,13 +161,12 @@ namespace IodemBot.Modules
         {
             await Global.Owner?.SendMessageAsync($"{Context.User.Mention} reports: {bugreport}");
 
-            ISocketMessageChannel guard_channel = Global.Client.GetGuild(355558866282348574)?.GetTextChannel(535209634408169492);
-            if (guard_channel != null)
-            {
-                await guard_channel.SendMessageAsync($"{Context.User.Mention} reports: {bugreport}");
-            }
+            ISocketMessageChannel guardChannel =
+                Global.Client.GetGuild(355558866282348574)?.GetTextChannel(535209634408169492);
+            if (guardChannel != null)
+                await guardChannel.SendMessageAsync($"{Context.User.Mention} reports: {bugreport}");
 
-            await Context.Channel.SendMessageAsync($"Thank you for your feedback!");
+            await Context.Channel.SendMessageAsync("Thank you for your feedback!");
         }
 
         [Command("uptime")]
@@ -165,49 +175,61 @@ namespace IodemBot.Modules
         public async Task Uptime()
         {
             await Context.Channel.SendMessageAsync(embed: new EmbedBuilder()
-            .WithColor(Colors.Get("Iodem"))
-            .AddField("Running since", $"{Global.RunningSince.ToLocalTime()} ({DateTime.Now.Subtract(Global.RunningSince.ToLocalTime()):d' 'hh':'mm':'ss})")
-            .AddField("Connected since", $"{Global.UpSince.ToLocalTime()} ({DateTime.Now.Subtract(Global.UpSince.ToLocalTime()):d' 'hh':'mm':'ss})")
-            .AddField("Running on", RuntimeInformation.OSDescription)
-            .Build());
+                .WithColor(Colors.Get("Iodem"))
+                .AddField("Running since",
+                    $"{Global.RunningSince.ToLocalTime()} ({DateTime.Now.Subtract(Global.RunningSince.ToLocalTime()):d' 'hh':'mm':'ss})")
+                .AddField("Connected since",
+                    $"{Global.UpSince.ToLocalTime()} ({DateTime.Now.Subtract(Global.UpSince.ToLocalTime()):d' 'hh':'mm':'ss})")
+                .AddField("Running on", RuntimeInformation.OSDescription)
+                .Build());
         }
 
-        [Command("clock"), Alias("worldclock")]
+        [Command("clock")]
+        [Alias("worldclock")]
         [Summary("View the current time across the globe")]
         public async Task Worldclock(int time = 24)
         {
-            CultureInfo enAU = new CultureInfo("en-US");
-            string format = "HH':'mm', 'MMM dd";
-            if (time == 12)
-            {
-                format = "hh':'mm t'M, 'MMM dd";
-            }
+            var enAu = new CultureInfo("en-US");
+            var format = "HH':'mm', 'MMM dd";
+            if (time == 12) format = "hh':'mm t'M, 'MMM dd";
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
                 await Context.Channel.SendMessageAsync("", false,
                     new EmbedBuilder()
-                    .AddField(":globe_with_meridians: UTC", DateTime.UtcNow.ToString(format, enAU), true)
-                    .AddField(":flag_at: Vienna", DateTime.Now.ToString(format, enAU), true)
-                    .AddField(":flag_in: Mumbai", TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.Now, "India Standard Time").ToString(format, enAU), true)
-                    .AddField(":flag_jp: Tokyo", TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.Now, "Tokyo Standard Time").ToString(format, enAU), true)
-                    .AddField(":bridge_at_night: San Francisco", TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.Now, "Pacific Standard Time").ToString(format, enAU), true)
-                    .AddField(":statue_of_liberty: New York", TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.Now, "Eastern Standard Time").ToString(format, enAU), true)
-                    .Build()
-                    );
-            }
+                        .AddField(":globe_with_meridians: UTC", DateTime.UtcNow.ToString(format, enAu), true)
+                        .AddField(":flag_at: Vienna", DateTime.Now.ToString(format, enAu), true)
+                        .AddField(":flag_in: Mumbai",
+                            TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.Now, "India Standard Time")
+                                .ToString(format, enAu), true)
+                        .AddField(":flag_jp: Tokyo",
+                            TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.Now, "Tokyo Standard Time")
+                                .ToString(format, enAu), true)
+                        .AddField(":bridge_at_night: San Francisco",
+                            TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.Now, "Pacific Standard Time")
+                                .ToString(format, enAu), true)
+                        .AddField(":statue_of_liberty: New York",
+                            TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.Now, "Eastern Standard Time")
+                                .ToString(format, enAu), true)
+                        .Build()
+                );
             else
-            {
                 await Context.Channel.SendMessageAsync("", false,
-                   new EmbedBuilder()
-                   .AddField(":globe_with_meridians: UTC", DateTime.UtcNow.ToString(format, enAU), true)
-                   .AddField(":flag_at: Vienna", DateTime.Now.ToString(format, enAU), true)
-                   .AddField(":flag_in: New Delhi", TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.Now, "Asia/Kolkata").ToString(format, enAU), true)
-                   .AddField(":flag_jp: Tokyo", TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.Now, "Asia/Tokyo").ToString(format, enAU), true)
-                   .AddField(":bridge_at_night: San Francisco", TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.Now, "America/Vancouver").ToString(format, enAU), true)
-                   .AddField(":statue_of_liberty: New York", TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.Now, "America/New_York").ToString(format, enAU), true)
-                   .Build()
-                   );
-            }
+                    new EmbedBuilder()
+                        .AddField(":globe_with_meridians: UTC", DateTime.UtcNow.ToString(format, enAu), true)
+                        .AddField(":flag_at: Vienna", DateTime.Now.ToString(format, enAu), true)
+                        .AddField(":flag_in: New Delhi",
+                            TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.Now, "Asia/Kolkata")
+                                .ToString(format, enAu), true)
+                        .AddField(":flag_jp: Tokyo",
+                            TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.Now, "Asia/Tokyo")
+                                .ToString(format, enAu), true)
+                        .AddField(":bridge_at_night: San Francisco",
+                            TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.Now, "America/Vancouver")
+                                .ToString(format, enAu), true)
+                        .AddField(":statue_of_liberty: New York",
+                            TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.Now, "America/New_York")
+                                .ToString(format, enAu), true)
+                        .Build()
+                );
         }
 
         [Command("roleinfo")]
@@ -216,47 +238,42 @@ namespace IodemBot.Modules
         public async Task RoleInfo([Remainder] string args)
         {
             args = args.ToLower();
-            var mentionedRole = Context.Guild.Roles.Where(r => r.Name.ToLower() == args).FirstOrDefault();
-            if (mentionedRole == null)
-            {
-                mentionedRole = Context.Guild.Roles.Where(r => r.Name.ToLower().StartsWith(args)).FirstOrDefault();
-            }
-            if (mentionedRole == null || mentionedRole.IsEveryone)
-            {
-                return;
-            }
+            var mentionedRole = Context.Guild.Roles.FirstOrDefault(r => r.Name.ToLower() == args) ?? Context.Guild.Roles.FirstOrDefault(r => r.Name.ToLower().StartsWith(args));
+            if (mentionedRole == null || mentionedRole.IsEveryone) return;
 
-            var membercount = Context.Guild.Users.Where(u => u.Roles.Contains(mentionedRole)).Count();
+            var membercount = Context.Guild.Users.Count(u => u.Roles.Contains(mentionedRole));
 
             var embed = new EmbedBuilder()
-            .WithColor(mentionedRole.Color)
-            .WithTitle(mentionedRole.Name)
-            .WithThumbnailUrl(Sprites.GetRandomSprite())
-            .AddField("ID", mentionedRole.Id, true)
-            .AddField("Members", membercount, true)
-            .AddField("Color", mentionedRole.Color, true)
-            .AddField("Mentionable", mentionedRole.IsMentionable ? "Yes" : "No", true)
-            .AddField("Position", mentionedRole.Position, true)
-            .AddField("Created", mentionedRole.CreatedAt.Date, true);
+                .WithColor(mentionedRole.Color)
+                .WithTitle(mentionedRole.Name)
+                .WithThumbnailUrl(Sprites.GetRandomSprite())
+                .AddField("ID", mentionedRole.Id, true)
+                .AddField("Members", membercount, true)
+                .AddField("Color", mentionedRole.Color, true)
+                .AddField("Mentionable", mentionedRole.IsMentionable ? "Yes" : "No", true)
+                .AddField("Position", mentionedRole.Position, true)
+                .AddField("Created", mentionedRole.CreatedAt.Date, true);
 
             await Context.Channel.SendMessageAsync("", false, embed.Build());
         }
 
-        [Command("Usercount"), Alias("members", "membercount")]
+        [Command("Usercount")]
+        [Alias("members", "membercount")]
         [Cooldown(15)]
         [Summary("Display the number of users")]
         public async Task CountUsers()
         {
             var count = Context.Guild.MemberCount;
-            var online = Context.Guild.Users.Where(u => u.Status != UserStatus.Offline).Count();
+            var online = Context.Guild.Users.Count(u => u.Status != UserStatus.Offline);
 
             await Context.Channel.SendMessageAsync(embed: new EmbedBuilder()
-            .WithColor(Colors.Get("Iodem"))
-            .WithDescription($"{count} Users with {online} Online")
-            .Build());
+                .WithColor(Colors.Get("Iodem"))
+                .WithDescription($"{count} Users with {online} Online")
+                .Build());
         }
 
-        [Command("rank"), Alias("top", "top10")]
+        [Command("rank")]
+        [Alias("top", "top10")]
         [Cooldown(5)]
         [Summary("Get the most active users and your rank")]
         public async Task Rank()
@@ -264,12 +281,13 @@ namespace IodemBot.Modules
             var topAccounts = UserAccounts.GetTop();
             var embed = new EmbedBuilder();
             embed.WithColor(Colors.Get("Iodem"));
-            string[] Emotes = new string[] { "🥇", "🥈", "🥈", "🥉", "🥉", "🥉", "   ", "   ", "   ", "   " };
+            string[] emotes = { "🥇", "🥈", "🥈", "🥉", "🥉", "🥉", "   ", "   ", "   ", "   " };
             var builder = new StringBuilder();
-            for (int i = 0; i < Math.Min(topAccounts.Count, 10); i++)
+            for (var i = 0; i < Math.Min(topAccounts.Count, 10); i++)
             {
                 var curAccount = topAccounts[i];
-                builder.Append($"`{i + 1}` {Emotes[i]} {curAccount.Name?.PadRight(15) ?? curAccount.ID.ToString()} - `Lv{curAccount.LevelNumber}` - `{curAccount.XP}xp`{(curAccount.NewGames >= 1 ? $"- `({curAccount.TotalXP}xp total)`" : "")}\n");
+                builder.Append(
+                    $"`{i + 1}` {emotes[i]} {curAccount.Name?.PadRight(15) ?? curAccount.Id.ToString()} - `Lv{curAccount.LevelNumber}` - `{curAccount.Xp}xp`{(curAccount.NewGames >= 1 ? $"- `({curAccount.TotalXp}xp total)`" : "")}\n");
             }
 
             //Console.WriteLine(rank);
@@ -278,7 +296,8 @@ namespace IodemBot.Modules
             if (rank >= 10)
             {
                 builder.Append("... \n");
-                builder.Append($"`{rank + 1}` {Context.User.Username,-15} - `Lv{account.LevelNumber}` - `{account.XP}xp`{(account.NewGames >= 1 ? $"- `({account.TotalXP}xp total)`" : "")}");
+                builder.Append(
+                    $"`{rank + 1}` {Context.User.Username,-15} - `Lv{account.LevelNumber}` - `{account.Xp}xp`{(account.NewGames >= 1 ? $"- `({account.TotalXp}xp total)`" : "")}");
             }
 
             embed.WithDescription(builder.ToString());
@@ -286,7 +305,8 @@ namespace IodemBot.Modules
             await Context.Channel.SendMessageAsync("", false, embed.Build());
         }
 
-        [Command("streak"), Alias("showdown")]
+        [Command("streak")]
+        [Alias("showdown")]
         [Summary("Ranking of endless battles")]
         [Cooldown(5)]
         public async Task Showdown(RankEnum type = RankEnum.Solo, EndlessMode mode = EndlessMode.Default)
@@ -294,41 +314,43 @@ namespace IodemBot.Modules
             var topAccounts = UserAccounts.GetTop(type, mode);
 
             if (type == RankEnum.Solo)
-            {
-                topAccounts = topAccounts.OrderByDescending(d => (d.ServerStats.GetStreak(mode) + d.ServerStatsTotal.GetStreak(mode)).Solo).ToList();
-            }
+                topAccounts = topAccounts.OrderByDescending(d =>
+                    (d.ServerStats.GetStreak(mode) + d.ServerStatsTotal.GetStreak(mode)).Solo).ToList();
             else
-            {
-                topAccounts = topAccounts.Where(p => (p.ServerStats.GetStreak(mode) + p.ServerStatsTotal.GetStreak(mode)).GetEntry(type).Item1 > 0)
-                        .GroupBy(p => (p.ServerStats.GetStreak(mode) + p.ServerStatsTotal.GetStreak(mode)).GetEntry(type).Item2)
-                        .Select(group => group.First())
-                        .OrderByDescending(d => (d.ServerStats.GetStreak(mode) + d.ServerStatsTotal.GetStreak(mode)).GetEntry(type).Item1)
-                        .ToList();
-            }
+                topAccounts = topAccounts.Where(p =>
+                        (p.ServerStats.GetStreak(mode) + p.ServerStatsTotal.GetStreak(mode)).GetEntry(type).Item1 > 0)
+                    .GroupBy(p =>
+                        (p.ServerStats.GetStreak(mode) + p.ServerStatsTotal.GetStreak(mode)).GetEntry(type).Item2)
+                    .Select(group => group.First())
+                    .OrderByDescending(d =>
+                        (d.ServerStats.GetStreak(mode) + d.ServerStatsTotal.GetStreak(mode)).GetEntry(type).Item1)
+                    .ToList();
             var embed = new EmbedBuilder();
             embed.WithColor(Colors.Get("Iodem"));
-            string[] Emotes = new string[] { "🥇", "🥈", "🥉", "", "" };
+            string[] emotes = { "🥇", "🥈", "🥉", "", "" };
             var builder = new StringBuilder();
-            for (int i = 0; i < Math.Min(topAccounts.Count, 5); i++)
+            for (var i = 0; i < Math.Min(topAccounts.Count, 5); i++)
             {
                 var curAccount = topAccounts.ElementAt(i);
-                var streak = mode == EndlessMode.Default ? curAccount.ServerStats.EndlessStreak + curAccount.ServerStatsTotal.EndlessStreak : curAccount.ServerStats.LegacyStreak + curAccount.ServerStatsTotal.LegacyStreak;
+                var streak = mode == EndlessMode.Default
+                    ? curAccount.ServerStats.EndlessStreak + curAccount.ServerStatsTotal.EndlessStreak
+                    : curAccount.ServerStats.LegacyStreak + curAccount.ServerStatsTotal.LegacyStreak;
                 switch (type)
                 {
                     case RankEnum.Solo:
-                        builder.Append($"`{i + 1}` {Emotes[i]} {curAccount.Name,-15} - `{streak.Solo}`\n");
+                        builder.Append($"`{i + 1}` {emotes[i]} {curAccount.Name,-15} - `{streak.Solo}`\n");
                         break;
 
                     case RankEnum.Duo:
-                        builder.Append($"`{i + 1}` {Emotes[i]} {streak.DuoNames} - `{streak.Duo}`\n");
+                        builder.Append($"`{i + 1}` {emotes[i]} {streak.DuoNames} - `{streak.Duo}`\n");
                         break;
 
                     case RankEnum.Trio:
-                        builder.Append($"`{i + 1}` {Emotes[i]} {streak.TrioNames} - `{streak.Trio}`\n");
+                        builder.Append($"`{i + 1}` {emotes[i]} {streak.TrioNames} - `{streak.Trio}`\n");
                         break;
 
                     case RankEnum.Quad:
-                        builder.Append($"`{i + 1}` {Emotes[i]} {streak.QuadNames} - `{streak.Quad}`\n");
+                        builder.Append($"`{i + 1}` {emotes[i]} {streak.QuadNames} - `{streak.Quad}`\n");
                         break;
                 }
             }
@@ -339,7 +361,9 @@ namespace IodemBot.Modules
             if (rank >= 5)
             {
                 builder.Append("... \n");
-                var streak = mode == EndlessMode.Default ? account.ServerStats.EndlessStreak + account.ServerStatsTotal.EndlessStreak : account.ServerStats.LegacyStreak + account.ServerStatsTotal.LegacyStreak;
+                var streak = mode == EndlessMode.Default
+                    ? account.ServerStats.EndlessStreak + account.ServerStatsTotal.EndlessStreak
+                    : account.ServerStats.LegacyStreak + account.ServerStatsTotal.LegacyStreak;
                 switch (type)
                 {
                     case RankEnum.Solo:
@@ -359,10 +383,9 @@ namespace IodemBot.Modules
                         break;
                 }
             }
+
             if (type == RankEnum.Solo && mode == EndlessMode.Legacy)
-            {
                 embed.WithFooter("Honorary Mention: Smeecko - 81, by breaking the Time-Space Continuum");
-            }
             embed.WithDescription(builder.ToString());
 
             await Context.Channel.SendMessageAsync("", false, embed.Build());
@@ -371,45 +394,51 @@ namespace IodemBot.Modules
         [Command("giveRole")]
         [Cooldown(60)]
         [Summary("Give or remove the `Gladiator` or `Colosso Adept` role")]
-        public async Task GiveRole([Remainder] string RoleName = "")
+        public async Task GiveRole([Remainder] string roleName = "")
         {
             var user = (SocketGuildUser)Context.User;
-            var embed = new EmbedBuilder().WithColor(Colors.Get("Iodem")).WithThumbnailUrl(Sprites.GetImageFromName("Iodem"));
-            Dictionary<string, ulong> roles = new Dictionary<string, ulong>(StringComparer.CurrentCultureIgnoreCase)
+            var embed = new EmbedBuilder().WithColor(Colors.Get("Iodem"))
+                .WithThumbnailUrl(Sprites.GetImageFromName("Iodem"));
+            var roles = new Dictionary<string, ulong>(StringComparer.CurrentCultureIgnoreCase)
             {
                 {"Gladiator", 511704880122036234},
-                {"Colosso Adept", 644506247521107969 },
-                {"Fighter", 742060001031618590 }
+                {"Colosso Adept", 644506247521107969},
+                {"Fighter", 742060001031618590}
             };
 
-            if (RoleName.Equals("Gladiator", StringComparison.CurrentCultureIgnoreCase) && EntityConverter.ConvertUser(Context.User).LevelNumber < 5)
+            if (roleName.Equals("Gladiator", StringComparison.CurrentCultureIgnoreCase) &&
+                EntityConverter.ConvertUser(Context.User).LevelNumber < 5)
             {
-                _ = ReplyAsync("Please participate in the server more before you can announce your streams. We would like to be a community and not just be used as an advertising platform!");
+                _ = ReplyAsync(
+                    "Please participate in the server more before you can announce your streams. We would like to be a community and not just be used as an advertising platform!");
                 return;
             }
 
-            if (roles.TryGetValue(RoleName, out ulong roleId))
+            if (roles.TryGetValue(roleName, out var roleId))
             {
-                var Role = Context.Guild.GetRole(roleId);
+                var role = Context.Guild.GetRole(roleId);
                 if (user.Roles.Any(r => r.Id == roleId))
                 {
-                    embed.WithDescription($"{user.DisplayName()} is no longer a {Role.Name}!");
-                    await user.RemoveRoleAsync(Role);
+                    embed.WithDescription($"{user.DisplayName()} is no longer a {role.Name}!");
+                    await user.RemoveRoleAsync(role);
                 }
                 else
                 {
-                    embed.WithDescription($"{user.DisplayName()} is a {Role.Name} now!");
-                    await user.AddRoleAsync(Role);
+                    embed.WithDescription($"{user.DisplayName()} is a {role.Name} now!");
+                    await user.AddRoleAsync(role);
                 }
             }
             else
             {
-                embed.WithDescription($"Select any of the following available roles:\n```\n{string.Join("\n", roles.Keys)}```");
+                embed.WithDescription(
+                    $"Select any of the following available roles:\n```\n{string.Join("\n", roles.Keys)}```");
             }
+
             await Context.Channel.SendMessageAsync(embed: embed.Build());
         }
 
-        [Command("sprite"), Alias("portrait")]
+        [Command("sprite")]
+        [Alias("portrait")]
         [Summary("Get a random sprite or one of a given Character")]
         [Cooldown(5)]
         public async Task Sprite([Remainder] string name = "")
@@ -418,22 +447,17 @@ namespace IodemBot.Modules
             embed.WithColor(Colors.Get("Iodem"));
 
             if (Sprites.GetSpriteCount() == 0)
-            {
                 embed.WithDescription("No sprites found.");
-            }
             else if (name == "")
-            {
                 embed.WithImageUrl(Sprites.GetRandomSprite());
-            }
             else
-            {
                 embed.WithImageUrl(Sprites.GetImageFromName(name));
-            }
 
             await Context.Channel.SendMessageAsync("", false, embed.Build());
         }
 
-        [Command("quote"), Alias("q")]
+        [Command("quote")]
+        [Alias("q")]
         [Cooldown(10)]
         [Summary("Get a random quote. Add a name to get a quote from that character")]
         public async Task RandomQuote([Remainder] string name = "")
@@ -447,11 +471,11 @@ namespace IodemBot.Modules
             var embed = new EmbedBuilder();
             embed.WithColor(Colors.Get("Iodem"));
 
-            var q = Quotes.quoteList.Random();
+            var q = Quotes.QuoteList.Random();
             if (!name.IsNullOrEmpty())
             {
-                q = Quotes.quoteList.Where(q => q.name.Equals(name, StringComparison.OrdinalIgnoreCase)).Random();
-                if (q.name.IsNullOrEmpty())
+                q = Quotes.QuoteList.Where(q => q.Name.Equals(name, StringComparison.OrdinalIgnoreCase)).Random();
+                if (q.Name.IsNullOrEmpty())
                 {
                     embed.WithDescription("I don't remember anything this person said.");
                     await ReplyAsync(embed: embed.Build());
@@ -459,12 +483,12 @@ namespace IodemBot.Modules
                 }
             }
 
-            q.name = Utilities.ToCaps(q.name);
+            q.Name = Utilities.ToCaps(q.Name);
 
-            embed.WithAuthor(q.name);
-            embed.WithThumbnailUrl(Sprites.GetImageFromName(q.name));
-            embed.WithDescription(q.quote);
-            if (q.quote.Contains(@"#^@%!"))
+            embed.WithAuthor(q.Name);
+            embed.WithThumbnailUrl(Sprites.GetImageFromName(q.Name));
+            embed.WithDescription(q.Quote);
+            if (q.Quote.Contains(@"#^@%!"))
             {
                 var userAccount = EntityConverter.ConvertUser(Context.User);
                 await GoldenSunCommands.AwardClassSeries("Curse Mage Series", Context.User, Context.Channel);

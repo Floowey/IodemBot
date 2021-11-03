@@ -14,70 +14,58 @@ namespace IodemBot.ColossoBattles
     internal class GauntletBattleEnvironment : PvEEnvironment
     {
         public Dungeon Dungeon;
-        public DungeonMatchup matchup;
-        public int dungeon_Nr = 0;
-        public List<DungeonMatchup>.Enumerator enumerator;
-        private bool EndOfDungeon = false;
-
-        public bool HasPlayer { get { return Battle.SizeTeamA > 0; } }
+        public int DungeonNr;
+        private bool _endOfDungeon;
+        public List<DungeonMatchup>.Enumerator Enumerator;
         public DateTime LastEnemySet = DateTime.MinValue;
-        public bool IsReady { get { return !IsActive && !HasPlayer && DateTime.Now.Subtract(LastEnemySet).TotalSeconds >= 20; } }
+        public DungeonMatchup Matchup;
 
-        public GauntletBattleEnvironment(ColossoBattleService battleService, string Name, ITextChannel lobbyChannel, ITextChannel BattleChannel, string DungeonName, bool isPersistent) : base(battleService, Name, lobbyChannel, isPersistent, BattleChannel)
+        public GauntletBattleEnvironment(ColossoBattleService battleService, string name, ITextChannel lobbyChannel,
+            ITextChannel battleChannel, string dungeonName, bool isPersistent) : base(battleService, name, lobbyChannel,
+            isPersistent, battleChannel)
         {
-            SetEnemy(DungeonName);
+            SetEnemy(dungeonName);
         }
 
-        public override BattleDifficulty Difficulty => throw new NotImplementedException();
+        public bool HasPlayer => Battle.SizeTeamA > 0;
+        public bool IsReady => !IsActive && !HasPlayer && DateTime.Now.Subtract(LastEnemySet).TotalSeconds >= 20;
 
-        public override void SetEnemy(string Enemy)
+        public override void SetEnemy(string enemy)
         {
-            Dungeon = GetDungeon(Enemy);
+            Dungeon = GetDungeon(enemy);
             PlayersToStart = Dungeon.MaxPlayer;
-            enumerator = Dungeon.Matchups.GetEnumerator();
+            Enumerator = Dungeon.Matchups.GetEnumerator();
             LastEnemySet = DateTime.Now;
-            _ = Reset($"Enemy set : {Enemy}");
+            _ = Reset($"Enemy set : {enemy}");
         }
 
         public override void SetNextEnemy()
         {
-            matchup = Dungeon.Matchups.ElementAt(dungeon_Nr);
+            Matchup = Dungeon.Matchups.ElementAt(DungeonNr);
             Battle.TeamB.Clear();
-            var curEnemies = matchup.Enemy;
-            if (matchup.Shuffle)
-            {
-                curEnemies.Shuffle();
-            }
+            var curEnemies = Matchup.Enemy;
+            if (Matchup.Shuffle) curEnemies.Shuffle();
             curEnemies.Reverse();
             curEnemies.ForEach(e =>
             {
-                if (curEnemies.Count(p => p.Name.Equals(e.Name) || p.Name[0..^2].Equals(e.Name)) > 1)
-                {
+                if (curEnemies.Count(p => p.Name.Equals(e.Name) || p.Name[..^2].Equals(e.Name)) > 1)
                     e.Name = $"{e.Name} {curEnemies.Count(p => p.Name.Equals(e.Name))}";
-                }
             });
             curEnemies.Reverse();
             curEnemies.ForEach(e => Battle.AddPlayer(e, Team.B));
 
-            if (matchup.HealBefore)
-            {
+            if (Matchup.HealBefore)
                 Battle.TeamA.ForEach(f =>
                 {
                     f.RemoveAllConditions();
                     f.Heal(1000);
-                    f.RestorePP(1000);
+                    f.RestorePp(1000);
                 });
-            }
 
-            if (matchup.Keywords.Contains("Cure"))
-            {
-                Battle.TeamA.ForEach(f =>
-                {
-                    f.RemoveAllConditions();
-                });
-            }
+            if (Matchup.Keywords.Contains("Cure"))
+                Battle.TeamA.ForEach(f => { f.RemoveAllConditions(); });
 
-            matchup.Keywords
+            Matchup.Keywords
                 .Where(s => s.StartsWith("Status"))
                 .Select(s => s[6..])
                 .Select(s => Enum.Parse<Condition>(s, true)).ToList()
@@ -87,17 +75,14 @@ namespace IodemBot.ColossoBattles
         protected override EmbedBuilder GetEnemyEmbedBuilder()
         {
             var builder = base.GetEnemyEmbedBuilder();
-            if (!matchup.Image.IsNullOrEmpty())
-            {
-                builder.WithThumbnailUrl(matchup.Image);
-            }
+            if (!Matchup.Image.IsNullOrEmpty()) builder.WithThumbnailUrl(Matchup.Image);
             return builder;
         }
 
         public override async Task Reset(string msg = "")
         {
-            enumerator = Dungeon.Matchups.GetEnumerator();
-            matchup = enumerator.Current;
+            Enumerator = Dungeon.Matchups.GetEnumerator();
+            Matchup = Enumerator.Current;
             await base.Reset(msg);
             if (!IsPersistent)
                 return;
@@ -130,8 +115,8 @@ namespace IodemBot.ColossoBattles
 
         protected override string GetStartBattleString()
         {
-            string msg = string.Join(", ", PlayerMessages.Select(v => $"<@{v.Value.Id}>"));
-            SummonsMessage.ModifyAsync(m => m.Content = matchup.FlavourText);
+            var msg = string.Join(", ", PlayerMessages.Select(v => $"<@{v.Value.Id}>"));
+            SummonsMessage.ModifyAsync(m => m.Content = Matchup.FlavourText);
             return $"{msg} get into Position!";
         }
 
@@ -141,41 +126,48 @@ namespace IodemBot.ColossoBattles
             if (Battle.GetWinner() == Team.A)
             {
                 if (Battle.GetWinner() == Team.A)
-                {
-                    winners.OfType<PlayerFighter>().ToList().ForEach(p => _ = ServerGames.UserWonBattle(UserAccountProvider.GetById(p.Id), matchup.RewardTables.GetRewards(), p.battleStats, lobbyChannel, BattleChannel));
-                }
+                    winners.OfType<PlayerFighter>().ToList().ForEach(p =>
+                        _ = ServerGames.UserWonBattle(UserAccountProvider.GetById(p.Id),
+                            Matchup.RewardTables.GetRewards(), p.BattleStats, LobbyChannel, BattleChannel));
 
                 Battle.TeamA.ForEach(p =>
-                    {
-                        p.RemoveNearlyAllConditions();
-                        p.Buffs = new List<Buff>();
-                        //p.Heal((uint)(p.Stats.HP * 5 / 100));
-                    });
+                {
+                    p.RemoveNearlyAllConditions();
+                    p.Buffs = new List<Buff>();
+                    //p.Heal((uint)(p.Stats.HP * 5 / 100));
+                });
 
-                dungeon_Nr++;
-                if (dungeon_Nr >= Dungeon.Matchups.Count)
-                    EndOfDungeon = true;
+                DungeonNr++;
+                if (DungeonNr >= Dungeon.Matchups.Count)
+                    _endOfDungeon = true;
                 else
                     SetNextEnemy();
 
-                if (!EndOfDungeon)
+                if (!_endOfDungeon)
                 {
-                    await SummonsMessage.ModifyAsync(m => m.Content = matchup.FlavourText);
-                    var text = $"{winners.First().Name}'s Party wins Battle!";
+                    await SummonsMessage.ModifyAsync(m => m.Content = Matchup.FlavourText);
+                    var text = $"{winners.First().Name}'s party wins Battle!";
                     await Task.Delay(2000);
-                    await StatusMessage.ModifyAsync(m => { m.Content = text; m.Embed = null; });
+                    await StatusMessage.ModifyAsync(m =>
+                    {
+                        m.Content = text;
+                        m.Embed = null;
+                    });
                     await Task.Delay(2000);
                     Battle.TurnNumber = 0;
                     _ = StartBattle();
                 }
                 else
                 {
-                    winners.OfType<PlayerFighter>().ToList().ForEach(p => _ = ServerGames.UserWonDungeon(UserAccountProvider.GetById(p.Id), Dungeon, lobbyChannel));
+                    winners.OfType<PlayerFighter>().ToList().ForEach(p =>
+                        _ = ServerGames.UserWonDungeon(UserAccountProvider.GetById(p.Id), Dungeon, LobbyChannel));
 
                     if (DateTime.Now <= new DateTime(2021, 11, 8) && Global.RandomNumber(0, 5) == 0)
                     {
-                        var r = new List<Rewardable>() { new DefaultReward() { Dungeon = "Halloween Special" } };
-                        winners.OfType<PlayerFighter>().ToList().ForEach(p => _ = ServerGames.UserWonBattle(UserAccountProvider.GetById(p.Id), r, new BattleStats(), lobbyChannel, BattleChannel));
+                        var r = new List<Rewardable> { new DefaultReward { Dungeon = "Halloween Special" } };
+                        winners.OfType<PlayerFighter>().ToList().ForEach(p =>
+                            _ = ServerGames.UserWonBattle(UserAccountProvider.GetById(p.Id), r, new BattleStats(),
+                                LobbyChannel, BattleChannel));
                     }
 
                     _ = WriteGameOver();
@@ -183,9 +175,10 @@ namespace IodemBot.ColossoBattles
             }
             else
             {
-                var losers = winners.First().battle.GetTeam(winners.First().enemies);
+                var losers = winners.First().Battle.GetTeam(winners.First().enemies);
 
-                losers.ConvertAll(s => (PlayerFighter)s).ForEach(p => _ = ServerGames.UserLostBattle(UserAccountProvider.GetById(p.Id), lobbyChannel));
+                losers.ConvertAll(s => (PlayerFighter)s).ForEach(p =>
+                   _ = ServerGames.UserLostBattle(UserAccountProvider.GetById(p.Id), LobbyChannel));
 
                 _ = WriteGameOver();
             }
@@ -194,9 +187,12 @@ namespace IodemBot.ColossoBattles
         protected override async Task WriteGameOver()
         {
             await Task.Delay(3000);
-            var winners = Battle.GetTeam(Battle.GetWinner());
             var text = GetWinMessageString();
-            await StatusMessage.ModifyAsync(m => { m.Content = text; m.Embed = null; });
+            await StatusMessage.ModifyAsync(m =>
+            {
+                m.Content = text;
+                m.Embed = null;
+            });
             await Task.Delay(2000);
             SetEnemy(DefaultDungeons.Random().Name);
         }

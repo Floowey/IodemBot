@@ -12,27 +12,39 @@ namespace IodemBot.Modules
     [Name("Text Battles")]
     public class RandomColossoBattlesCommands : ModuleBase<SocketCommandContext>
     {
-        private static readonly List<string> enemies = new List<string>();
-        private static readonly List<Result> results = new List<Result>();
+        private static readonly List<string> Enemies = new();
+        private static readonly List<Result> Results = new();
+
+        static RandomColossoBattlesCommands()
+        {
+            // Load data
+            if (ValidateStorageFile("SystemLang/enemies.json"))
+            {
+                var jsonE = File.ReadAllText("SystemLang/enemies.json");
+                Enemies = JsonConvert.DeserializeObject<List<string>>(jsonE);
+            }
+
+            if (ValidateStorageFile("SystemLang/results.json"))
+            {
+                var jsonR = File.ReadAllText("SystemLang/results.json");
+                Results = JsonConvert.DeserializeObject<List<Result>>(jsonR);
+            }
+        }
 
         public static Embed ColossoTrain(SocketGuildUser user, IMessageChannel channel)
         {
             var embed = new EmbedBuilder();
             embed.WithColor(Colors.Get("Iodem"));
 
-            Matchup m = GetRandomMatchup();
+            var m = GetRandomMatchup();
 
             embed.WithAuthor(GetTitle(user, m.Enemy));
             embed.WithDescription(GetText(user, m));
 
             if (m.Result.IsWin)
-            {
                 ServerGames.UserWonColosso(user, channel);
-            }
             else
-            {
                 ServerGames.UserLostColosso(user, channel);
-            }
             return embed.Build();
         }
 
@@ -43,56 +55,18 @@ namespace IodemBot.Modules
 
         private static Matchup GetRandomMatchup()
         {
-            if (enemies.Count == 0 || enemies.Count == 0)
-            {
-                return new Matchup("Gladiator", new Result("{0} doesn't show up and {1} goes home. \n(If you see this, something is broken, please try it later) Nuts", false));
-            }
+            if (Enemies.Count == 0 || Enemies.Count == 0)
+                return new Matchup("Gladiator",
+                    new Result(
+                        "{0} doesn't show up and {1} goes home. \n(If you see this, something is broken, please try it later) Nuts",
+                        false));
 
-            return new Matchup(enemies.Random(), results.Random());
+            return new Matchup(Enemies.Random(), Results.Random());
         }
 
         private static string GetTitle(SocketUser user, string enemy)
         {
             return $"{((SocketGuildUser)user).DisplayName()} is up against {enemy}!";
-        }
-
-        private struct Matchup
-        {
-            public Matchup(string enemy, Result result) : this()
-            {
-                this.Enemy = enemy;
-                this.Result = result;
-            }
-
-            public string Enemy { get; set; }
-            public Result Result { get; set; }
-        }
-
-        private struct Result
-        {
-            public Result(string text, bool isWin) : this()
-            {
-                Text = text;
-                IsWin = isWin;
-            }
-
-            public string Text { get; set; }
-            public bool IsWin { get; set; }
-        }
-
-        static RandomColossoBattlesCommands()
-        {
-            // Load data
-            if (ValidateStorageFile("SystemLang/enemies.json"))
-            {
-                string jsonE = File.ReadAllText("SystemLang/enemies.json");
-                enemies = JsonConvert.DeserializeObject<List<string>>(jsonE);
-            }
-            if (ValidateStorageFile("SystemLang/results.json"))
-            {
-                string jsonR = File.ReadAllText("SystemLang/results.json");
-                results = JsonConvert.DeserializeObject<List<Result>>(jsonR);
-            }
         }
 
         private static bool ValidateStorageFile(string file)
@@ -103,17 +77,42 @@ namespace IodemBot.Modules
                 SaveData();
                 return false;
             }
+
             return true;
         }
 
         public static void SaveData()
         {
             // Save data
-            string jsonE = JsonConvert.SerializeObject(enemies, Formatting.Indented);
+            var jsonE = JsonConvert.SerializeObject(Enemies, Formatting.Indented);
             File.WriteAllText("SystemLang/enemies.json", jsonE);
 
-            string jsonR = JsonConvert.SerializeObject(results, Formatting.Indented);
+            var jsonR = JsonConvert.SerializeObject(Results, Formatting.Indented);
             File.WriteAllText("SystemLang/results.json", jsonR);
+        }
+
+        private struct Matchup
+        {
+            public Matchup(string enemy, Result result) : this()
+            {
+                Enemy = enemy;
+                Result = result;
+            }
+
+            public string Enemy { get; }
+            public Result Result { get; }
+        }
+
+        private struct Result
+        {
+            public Result(string text, bool isWin) : this()
+            {
+                Text = text;
+                IsWin = isWin;
+            }
+
+            public string Text { get; }
+            public bool IsWin { get; }
         }
     }
 }

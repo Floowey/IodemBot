@@ -3,37 +3,34 @@ using Newtonsoft.Json;
 
 namespace IodemBot
 {
-    internal class Config
+    internal static class Config
     {
-        private const string configFolder = "Resources";
-        private const string configFile = "config.json";
+        private const string ConfigFolder = "Resources";
+        private const string ConfigFile = "config.json";
 
-        public static BotConfig bot;
+        public static BotConfig Bot;
 
         static Config()
         {
-            if (!Directory.Exists(configFolder))
-            {
-                Directory.CreateDirectory(configFolder);
-            }
+            if (!Directory.Exists(ConfigFolder)) Directory.CreateDirectory(ConfigFolder);
 
-            if (!File.Exists(configFolder + "/" + configFile))
+            if (!File.Exists(ConfigFolder + "/" + ConfigFile))
             {
-                bot = new BotConfig();
-                string json = JsonConvert.SerializeObject(bot, Formatting.Indented);
-                File.WriteAllText(configFolder + "/" + configFile, json);
+                Bot = new BotConfig();
+                var json = JsonConvert.SerializeObject(Bot, Formatting.Indented);
+                File.WriteAllText(ConfigFolder + "/" + ConfigFile, json);
             }
             else
             {
-                string json = File.ReadAllText(configFolder + "/" + configFile);
-                bot = JsonConvert.DeserializeObject<BotConfig>(json);
+                var json = File.ReadAllText(ConfigFolder + "/" + ConfigFile);
+                Bot = JsonConvert.DeserializeObject<BotConfig>(json);
             }
         }
     }
 
     public struct BotConfig
     {
-        public string token;
-        public string cmdPrefix;
+        public string Token;
+        public string CmdPrefix;
     }
 }

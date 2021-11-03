@@ -9,34 +9,29 @@ namespace IodemBot.Modules.GoldenSunMechanics
 {
     internal class ReduceDamageEffect : Effect
     {
-        public override string Type { get; } = "ReduceDamage";
-        [JsonProperty] private int DamageReduction { get; set; } = 0;
+        public override string Type => "ReduceDamage";
+        [JsonProperty] private int DamageReduction { get; set; }
 
-        public override List<string> Apply(ColossoFighter User, ColossoFighter Target)
+        public override List<string> Apply(ColossoFighter user, ColossoFighter target)
         {
-            List<string> log = new List<string>();
-            if (!Target.IsAlive)
-            {
-                return log;
-            }
+            var log = new List<string>();
+            if (!target.IsAlive) return log;
 
-            Target.defensiveMult = Math.Min(Target.defensiveMult, (double)(100 - DamageReduction) / 100);
+            target.DefensiveMult = Math.Min(target.DefensiveMult, (double)(100 - DamageReduction) / 100);
 
             return log;
         }
 
         protected override int InternalChooseBestTarget(List<ColossoFighter> targets)
         {
-            var target = targets.Where(d => d.Name.Contains("Star")).FirstOrDefault() ?? targets.Where(t => t.IsAlive).Random();
+            var target = targets.FirstOrDefault(d => d.Name.Contains("Star"))
+                         ?? targets.Where(t => t.IsAlive).Random();
             return targets.IndexOf(target);
         }
 
         protected override bool InternalValidSelection(ColossoFighter user)
         {
-            if (base.InternalValidSelection(user))
-            {
-                return user.Party.Count(t => t.IsAlive) > 1;
-            }
+            if (base.InternalValidSelection(user)) return user.Party.Count(t => t.IsAlive) > 1;
             return false;
         }
 

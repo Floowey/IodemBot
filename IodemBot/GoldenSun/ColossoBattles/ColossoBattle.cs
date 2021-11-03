@@ -8,19 +8,22 @@ namespace IodemBot.ColossoBattles
 {
     public class ColossoBattle
     {
-        public List<ColossoFighter> TeamA = new List<ColossoFighter>();
-        public List<ColossoFighter> TeamB = new List<ColossoFighter>();
-        public bool IsActive { get; set; } = false;
-        public bool TurnActive { get; set; } = false;
-        public int TurnNumber { get; set; } = 0;
+        public List<ColossoFighter> TeamA = new();
+        public List<ColossoFighter> TeamB = new();
+        public bool IsActive { get; set; }
+        public bool TurnActive { get; set; }
+        public int TurnNumber { get; set; }
 
         public int SizeTeamA => TeamA.Count;
 
         public int SizeTeamB => TeamB.Count;
 
-        public List<ColossoFighter> GetTeam(Team team) => team == Team.A ? TeamA : TeamB;
-
         public List<string> Log { get; set; } = new();
+
+        public List<ColossoFighter> GetTeam(Team team)
+        {
+            return team == Team.A ? TeamA : TeamB;
+        }
 
         public void Start()
         {
@@ -29,42 +32,30 @@ namespace IodemBot.ColossoBattles
             Log.Clear();
             foreach (var p in TeamA.Concat(TeamB).ToList())
             {
-                if (p is NPCEnemy)
-                {
-                    p.SelectRandom();
-                }
+                if (p is NpcEnemy) p.SelectRandom();
 
                 if (p is PlayerFighter fighter)
                 {
-                    fighter.battleStats = new BattleStats();
-                    fighter.battleStats.TotalTeamMates += TeamA.Count - 1;
-                    if (TeamA.Count == 1)
-                    {
-                        fighter.battleStats.SoloBattles++;
-                    }
+                    fighter.BattleStats = new BattleStats();
+                    fighter.BattleStats.TotalTeamMates += TeamA.Count - 1;
+                    if (TeamA.Count == 1) fighter.BattleStats.SoloBattles++;
                 }
             }
         }
 
         public bool ForceTurn()
         {
-            if (TurnActive)
-            {
-                return false;
-            }
+            if (TurnActive) return false;
 
             Console.WriteLine("Forcing turn.");
-            List<ColossoFighter> fighters = new List<ColossoFighter>(TeamA);
+            var fighters = new List<ColossoFighter>(TeamA);
             fighters.AddRange(TeamB);
             fighters.ForEach(f =>
             {
-                if (!f.hasSelected)
+                if (!f.HasSelected)
                 {
                     f.SelectRandom();
-                    if (f is PlayerFighter player)
-                    {
-                        player.AutoTurnsInARow++;
-                    }
+                    if (f is PlayerFighter player) player.AutoTurnsInARow++;
                 }
             });
             return Turn();
@@ -72,36 +63,21 @@ namespace IodemBot.ColossoBattles
 
         public void AddPlayer(ColossoFighter player, Team team)
         {
-            if (IsActive)
-            {
-                return;
-            }
+            if (IsActive) return;
 
-            if (TeamA.Any(p => !p.ImgUrl.IsNullOrEmpty() && p.ImgUrl == player.ImgUrl))
-            {
-                return;
-            }
+            if (TeamA.Any(p => !p.ImgUrl.IsNullOrEmpty() && p.ImgUrl == player.ImgUrl)) return;
             GetTeam(team).Add(player);
             player.party = team;
-            player.battle = this;
+            player.Battle = this;
         }
 
         public bool Turn()
         {
-            if (!IsActive)
-            {
-                return false;
-            }
+            if (!IsActive) return false;
 
-            if (TurnActive)
-            {
-                return false;
-            }
+            if (TurnActive) return false;
 
-            if (!(TeamA.All(p => p.hasSelected) && TeamB.All(p => p.hasSelected)))
-            {
-                return false;
-            }
+            if (!(TeamA.All(p => p.HasSelected) && TeamB.All(p => p.HasSelected))) return false;
             Log.Clear();
 
             if (SizeTeamB == 0 || SizeTeamA == 0)
@@ -111,6 +87,7 @@ namespace IodemBot.ColossoBattles
                 IsActive = false;
                 return true;
             }
+
             TurnActive = true;
             Log.Add($"Turn {++TurnNumber}");
 
@@ -124,14 +101,11 @@ namespace IodemBot.ColossoBattles
             catch (Exception e)
             {
                 Log.Add(e.ToString());
-                Console.WriteLine("Turn Processing Error: " + e.ToString());
+                Console.WriteLine("Turn Processing Error: " + e);
             }
 
             //Check for Game Over
-            if (GameOver())
-            {
-                IsActive = false;
-            }
+            if (GameOver()) IsActive = false;
             TurnActive = false;
             return true;
         }

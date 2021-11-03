@@ -4,19 +4,19 @@ using Newtonsoft.Json;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
-    internal class HPDrainEffect : Effect
+    internal class HpDrainEffect : Effect
     {
         [JsonProperty] private uint Percentage { get; set; } = 20;
         [JsonProperty] private uint Probability { get; set; } = 100;
 
-        public override string Type { get; } = "HPDrain";
+        public override string Type => "HPDrain";
 
-        public override List<string> Apply(ColossoFighter User, ColossoFighter Target)
+        public override List<string> Apply(ColossoFighter user, ColossoFighter target)
         {
             if (Global.RandomNumber(0, 100) <= Probability)
             {
-                uint recovery = User.damageDoneThisTurn * Percentage / 100;
-                return User.Heal(recovery);
+                uint recovery = user.DamageDoneThisTurn * Percentage / 100;
+                return user.Heal(recovery);
             }
             return new List<string>();
         }

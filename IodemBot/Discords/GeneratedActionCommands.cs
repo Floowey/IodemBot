@@ -27,10 +27,9 @@ namespace IodemBot.Discords
             using var scope = ServiceProvider.CreateScope();
             ActionService = ServiceProvider.GetRequiredService<ActionService>();
             //Get phrases from items as aliases for the referenced command.
-            foreach (var action in ActionService.GetAll().OfType<BotCommandAction>().Where(s => s.TextCommandProperties != null))
-            {
+            foreach (var action in ActionService.GetAll().OfType<BotCommandAction>()
+                .Where(s => s.TextCommandProperties != null))
                 foreach (var textProperties in action.TextCommandProperties)
-                {
                     builder.AddCommand(textProperties.Name, RunActionFromTextCommand,
                         builder =>
                         {
@@ -43,7 +42,9 @@ namespace IodemBot.Discords
                             {
                                 var requiredPermissions = action.RequiredPermissions.Value.ToList();
                                 if (!requiredPermissions.Any())
+                                {
                                     builder.AddPrecondition(new RequireOwnerAttribute());
+                                }
                                 else
                                 {
                                     GuildPermission permissions = 0;
@@ -53,14 +54,17 @@ namespace IodemBot.Discords
                                     builder.AddPrecondition(new RequireUserPermissionAttribute(permissions));
                                 }
                             }
+
                             if (textProperties.Priority.HasValue)
                                 builder.Priority = textProperties.Priority.Value;
 
-                            var parameters = action.GetParameters<ActionParameterTextAttribute>()?.Where(p => p.Attribute.FilterCommandNames == null || p.Attribute.FilterCommandNames.Contains(textProperties.Name)).OrderBy(p => p.Attribute.Order);
+                            var parameters = action.GetParameters<ActionParameterTextAttribute>()
+                                ?.Where(p =>
+                                    p.Attribute.FilterCommandNames == null ||
+                                    p.Attribute.FilterCommandNames.Contains(textProperties.Name))
+                                .OrderBy(p => p.Attribute.Order);
                             if (parameters != null)
-                            {
                                 foreach (var p in parameters)
-                                {
                                     builder.AddParameter(p.Attribute.Name, p.Attribute.ParameterType, pb =>
                                     {
                                         pb.Summary = p.Attribute.Description;
@@ -69,17 +73,14 @@ namespace IodemBot.Discords
                                         pb.DefaultValue = p.Attribute.DefaultValue;
                                         pb.IsOptional = !p.Attribute.Required;
                                     });
-                                }
-                            }
 
                             textProperties.ModifyBuilder?.Invoke(scope.ServiceProvider, builder);
                         }
                     );
-                }
-            }
         }
 
-        public async Task RunActionFromTextCommand(ICommandContext commandContext, object[] parmValues, IServiceProvider services, CommandInfo commandInfo)
+        public async Task RunActionFromTextCommand(ICommandContext commandContext, object[] parmValues,
+            IServiceProvider services, CommandInfo commandInfo)
         {
             var context = new RequestCommandContext(commandContext as SocketCommandContext);
             var actionRunFactory = ActionRunFactory.Find(services, context, commandInfo, parmValues);

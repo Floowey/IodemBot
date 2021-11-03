@@ -5,16 +5,12 @@ namespace IodemBot.Modules.GoldenSunMechanics
 {
     public class CounterEffect : Effect
     {
-        public override string Type { get; } = "Counter";
+        public override string Type => "Counter";
 
-        public CounterEffect()
+        public override List<string> Apply(ColossoFighter user, ColossoFighter target)
         {
-        }
-
-        public override List<string> Apply(ColossoFighter User, ColossoFighter Target)
-        {
-            Target.AddCondition(Condition.Counter);
-            return new List<string>() { $"{Target.Name} gets ready to strike back!" };
+            target.AddCondition(Condition.Counter);
+            return new List<string>() { $"{target.Name} gets ready to strike back!" };
         }
 
         public override string ToString()

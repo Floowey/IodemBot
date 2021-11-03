@@ -16,6 +16,16 @@ namespace IodemBot.Discords.Services
         private readonly DiscordSocketClient _discord;
         private readonly IServiceProvider _services;
 
+        private readonly List<CommandError> _validErrors = new()
+        {
+            CommandError.BadArgCount,
+            CommandError.MultipleMatches,
+            CommandError.ObjectNotFound,
+            CommandError.ParseFailed,
+            CommandError.UnknownCommand,
+            CommandError.UnmetPrecondition
+        };
+
         public CommandHandlingService(IServiceProvider services)
         {
             _commands = services.GetRequiredService<CommandService>();
@@ -39,20 +49,20 @@ namespace IodemBot.Discords.Services
 
         public bool HasPrefix(IUserMessage message, IDiscordClient client, ref int argPos)
         {
-            return message.HasStringPrefix(Config.bot.cmdPrefix, ref argPos, StringComparison.CurrentCultureIgnoreCase) || message.HasMentionPrefix(client.CurrentUser, ref argPos);
+            return message.HasStringPrefix(Config.Bot.CmdPrefix, ref argPos,
+                StringComparison.CurrentCultureIgnoreCase) || message.HasMentionPrefix(client.CurrentUser, ref argPos);
         }
 
         public async Task MessageReceivedAsync(SocketMessage rawMessage)
         {
             // Ignore system messages, or messages from other bots
-            if (rawMessage is not SocketUserMessage message) return;
-            if (message.Source != MessageSource.User) return;
+            if (rawMessage is not SocketUserMessage { Source: MessageSource.User } message) return;
 
             // This value holds the offset where the prefix ends
             var argPos = 0;
 
             // Perform prefix check.
-            if (!(message.Channel is IPrivateChannel && message.Channel is SocketChannel && (message.Channel as SocketChannel).Users.Count == 2) &
+            if (!(message.Channel is IPrivateChannel and SocketChannel channel && channel.Users.Count == 2) &
                 !HasPrefix(message, _discord, ref argPos)) return;
 
             var context = new MessageCommandContext(_discord, message, message.Content[argPos..]);
@@ -67,14 +77,15 @@ namespace IodemBot.Discords.Services
             await Task.Delay(1);
         }
 
-        private readonly List<CommandError> _validErrors = new() { CommandError.BadArgCount, CommandError.MultipleMatches, CommandError.ObjectNotFound, CommandError.ParseFailed, CommandError.UnknownCommand, CommandError.UnmetPrecondition };
-
         public async Task CommandExecutedAsync(Optional<CommandInfo> command, ICommandContext context, IResult result)
         {
-            if (result?.Error != null && result.Error.Value == CommandError.Exception && result is ExecuteResult executeResult)
+            if (result?.Error != null && result.Error.Value == CommandError.Exception &&
+                result is ExecuteResult executeResult)
             {
                 if (executeResult.Exception is CommandInvalidException)
+                {
                     await _commands.ExecuteAsync(context, "CommandDidNotWork", _services);
+                }
                 else
                 {
                     Console.WriteLine(executeResult.Exception);
@@ -82,7 +93,7 @@ namespace IodemBot.Discords.Services
                     return;
                 }
             }
-            else if (!command.IsSpecified || (result?.Error != null && _validErrors.Contains(result.Error.Value)))
+            else if (!command.IsSpecified || result?.Error != null && _validErrors.Contains(result.Error.Value))
             {
                 // command is unspecified when there was a search failure (command not found)
                 await _commands.ExecuteAsync(context, "CommandDidNotWork", _services);

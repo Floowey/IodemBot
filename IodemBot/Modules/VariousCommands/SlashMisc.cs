@@ -14,10 +14,13 @@ namespace IodemBot.Modules.VariousCommands
 {
     public class PingCommand : IodemBotCommandAction
     {
+        private RequestContextService _requestContextService;
+
+        private IServiceScope _scope;
         public override bool GuildsOnly => false;
 
         [ActionParameterComponent(Order = 1, Name = "p", Description = "d", Required = false)]
-        public int pinged { get; set; } = 0;
+        public int Pinged { get; set; }
 
         public override ActionGlobalSlashCommandProperties SlashCommandProperties => new()
         {
@@ -30,52 +33,56 @@ namespace IodemBot.Modules.VariousCommands
             FillParametersAsync = (selectOptions, idOptions) =>
             {
                 if (idOptions != null && idOptions.Any())
-                    pinged = Convert.ToInt32(idOptions[0]);
+                    Pinged = Convert.ToInt32(idOptions[0]);
                 return Task.CompletedTask;
             },
             CanRefreshAsync = CanRefreshAsync,
             RefreshAsync = RefreshAsync
         };
 
-        public Task<(bool, string)> CanRefreshAsync(bool intoNew) => Task.FromResult((true, (string)null));
+        public override List<ActionTextCommandProperties> TextCommandProperties => new()
+        {
+            new ActionTextCommandProperties
+            {
+                Name = "pingping",
+                Aliases = new List<string> { "pong" },
+                Summary = "Ping Pong",
+                ShowInHelp = true
+            }
+        };
+
+        public Task<(bool, string)> CanRefreshAsync(bool intoNew)
+        {
+            return Task.FromResult((true, (string)null));
+        }
 
         public Task RefreshAsync(bool intoNew, MessageProperties msgProps)
         {
-            msgProps.Content = $"{pinged}";
+            msgProps.Content = $"{Pinged}";
             msgProps.Components = GetComponent();
-            Console.WriteLine(pinged);
+            Console.WriteLine(Pinged);
             return Task.CompletedTask;
         }
 
         public MessageComponent GetComponent()
         {
             var builder = new ComponentBuilder();
-            string[] names = new[] { "You wan sum?!", "MORE", "FASTER", "HARDER", "STRONGER", "IS THAT ALL?", "ouch.", "stop it", "no", "MOOOOAAAR" };
-            builder.WithButton(names.Random(), $"#{nameof(PingCommand)}.{pinged + 1}");
+            string[] names =
+            {
+                "You wan sum?!", "MORE", "FASTER", "HARDER", "STRONGER", "IS THAT ALL?", "ouch.", "stop it", "no",
+                "MOOOOAAAR"
+            };
+            builder.WithButton(names.Random(), $"#{nameof(PingCommand)}.{Pinged + 1}");
 
             return builder.Build();
         }
 
-        public override List<ActionTextCommandProperties> TextCommandProperties => new()
-        {
-            new()
-            {
-                Name = "pingping",
-                Aliases = new() { "pong" },
-                Summary = "Ping Pong",
-                ShowInHelp = true
-            }
-        };
-
         public override async Task RunAsync()
         {
             var cb = new ComponentBuilder();
-            cb.WithButton("Pong", $"#{nameof(PingCommand)}.{pinged + 1}");
-            await Context.ReplyWithMessageAsync(EphemeralRule, $"Plong! {pinged}", components: cb.Build());
+            cb.WithButton("Pong", $"#{nameof(PingCommand)}.{Pinged + 1}");
+            await Context.ReplyWithMessageAsync(EphemeralRule, $"Plong! {Pinged}", components: cb.Build());
         }
-
-        private IServiceScope _scope;
-        private RequestContextService _requestContextService;
 
         protected override Task<(bool Success, string Message)> CheckCustomPreconditionsAsync()
         {
@@ -93,11 +100,14 @@ namespace IodemBot.Modules.VariousCommands
 
     public class AddAllGuildCommands : IodemBotCommandAction
     {
+        private RequestContextService _requestContextService;
+
+        private IServiceScope _scope;
         public override EphemeralRule EphemeralRule => EphemeralRule.EphemeralOrFail;
 
         public override List<ActionTextCommandProperties> TextCommandProperties => new()
         {
-            new()
+            new ActionTextCommandProperties
             {
                 Name = "AddAllGuildCommands"
             }
@@ -107,11 +117,8 @@ namespace IodemBot.Modules.VariousCommands
         {
             var action = ServiceProvider.GetRequiredService<ActionService>();
             await action.AddAllGuildCommands(Context.Guild.Id);
-            await Context.ReplyWithMessageAsync(EphemeralRule, message: "Hopefully did that.");
+            await Context.ReplyWithMessageAsync(EphemeralRule, "Hopefully did that.");
         }
-
-        private IServiceScope _scope;
-        private RequestContextService _requestContextService;
 
         protected override Task<(bool Success, string Message)> CheckCustomPreconditionsAsync()
         {
@@ -129,8 +136,10 @@ namespace IodemBot.Modules.VariousCommands
 
     public class PokeUser : IodemBotCommandAction
     {
-        [ActionParameterText(Order = 1, Description = "User", IsRemainder = true, Name = "user", ParameterType = typeof(IUser))]
-        [ActionParameterSlash(Order = 1, Description = "User to poke", Name = "user", Required = true, Type = ApplicationCommandOptionType.User)]
+        [ActionParameterText(Order = 1, Description = "User", IsRemainder = true, Name = "user",
+            ParameterType = typeof(IUser))]
+        [ActionParameterSlash(Order = 1, Description = "User to poke", Name = "user", Required = true,
+            Type = ApplicationCommandOptionType.User)]
         public IUser TargetUser { get; set; }
 
         public override bool GuildsOnly => false;
@@ -150,7 +159,7 @@ namespace IodemBot.Modules.VariousCommands
 
         public override List<ActionTextCommandProperties> TextCommandProperties => new()
         {
-            new()
+            new ActionTextCommandProperties
             {
                 Name = "poke",
                 Summary = "Poke Someone",
@@ -158,7 +167,7 @@ namespace IodemBot.Modules.VariousCommands
                 FillParametersAsync = options =>
                 {
                     if (options != null)
-                        TargetUser = options[0] == null ? null : options[0] as IUser;
+                        TargetUser = options[0] as IUser;
 
                     return Task.CompletedTask;
                 }
@@ -168,7 +177,7 @@ namespace IodemBot.Modules.VariousCommands
         public override ActionGlobalUserCommandProperties UserCommandProperties => new()
         {
             Name = "poke",
-            FillParametersAsync = (user) =>
+            FillParametersAsync = user =>
             {
                 TargetUser = user;
                 return Task.CompletedTask;

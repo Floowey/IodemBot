@@ -20,15 +20,22 @@ namespace IodemBot.Modules
     // Iteminfo (With equip button where applicable)
     public class InventoryAction : IodemBotCommandAction
     {
+        private static readonly Dictionary<Detail, char> Split = new()
+        {
+            { Detail.None, '>' },
+            { Detail.Names, ',' },
+            { Detail.NameAndPrice, '\n' }
+        };
+
         public override bool GuildsOnly => false;
 
         [ActionParameterComponent(Order = 0, Name = "Detail", Description = "...", Required = false)]
-        public Detail detail { get; set; } = Detail.None;
+        public Detail Detail { get; set; } = Detail.None;
 
         public override ActionGuildSlashCommandProperties SlashCommandProperties => new()
         {
             Name = "inv",
-            Description = "Manage your Inventory",
+            Description = "Manage your Inventory"
         };
 
         public override ActionCommandRefreshProperties CommandRefreshProperties => new()
@@ -38,7 +45,7 @@ namespace IodemBot.Modules
             FillParametersAsync = (stringOptions, idOptions) =>
             {
                 if (idOptions != null && idOptions.Any())
-                    detail = Enum.Parse<Detail>((string)idOptions.FirstOrDefault());
+                    Detail = Enum.Parse<Detail>((string)idOptions.FirstOrDefault());
 
                 return Task.CompletedTask;
             }
@@ -47,61 +54,51 @@ namespace IodemBot.Modules
         private async Task RefreshAsync(bool intoNew, MessageProperties msgProps)
         {
             var account = EntityConverter.ConvertUser(Context.User);
-            msgProps.Embed = GetInventoryEmbed(account, detail);
-            msgProps.Components = GetInventoryComponent(account, detail);
+            msgProps.Embed = GetInventoryEmbed(account, Detail);
+            msgProps.Components = GetInventoryComponent(account, Detail);
             await Task.CompletedTask;
         }
 
         public override async Task RunAsync()
         {
             var account = EntityConverter.ConvertUser(Context.User);
-            var embed = GetInventoryEmbed(account, detail);
-            var component = GetInventoryComponent(account, detail);
+            var embed = GetInventoryEmbed(account, Detail);
+            var component = GetInventoryComponent(account, Detail);
             await Context.ReplyWithMessageAsync(EphemeralRule, embed: embed, components: component);
         }
-
-        private static readonly Dictionary<Detail, char> split = new()
-        {
-            { Detail.None, '>' },
-            { Detail.Names, ',' },
-            { Detail.NameAndPrice, '\n' }
-        };
 
         internal static Embed GetInventoryEmbed(UserAccount account, Detail detail = Detail.None)
         {
             var inv = account.Inv;
             var embed = new EmbedBuilder()
-            .AddField("Warrior Gear", inv.GearToString(ArchType.Warrior), true)
-            .AddField("Mage Gear", inv.GearToString(ArchType.Mage), true);
+                .AddField("Warrior Gear", inv.GearToString(ArchType.Warrior), true)
+                .AddField("Mage Gear", inv.GearToString(ArchType.Mage), true);
 
             var invstring = inv.InventoryToString(detail);
             if (invstring.Length >= 1024)
             {
                 var remainingstring = invstring;
-                List<string> parts = new List<string>();
+                var parts = new List<string>();
                 while (remainingstring.Length >= 1024)
                 {
-                    var lastitem = remainingstring.Take(1024).ToList().FindLastIndex(s => s.Equals(split[detail])) + 1;
+                    var lastitem = remainingstring.Take(1024).ToList().FindLastIndex(s => s.Equals(Split[detail])) + 1;
                     parts.Add(string.Join("", remainingstring.Take(lastitem)));
                     remainingstring = string.Join("", remainingstring.Skip(lastitem));
                 }
+
                 parts.Add(remainingstring);
                 foreach (var (value, index) in parts.Select((v, i) => (v, i)))
-                {
                     embed.AddField($"Inventory ({index + 1}/{parts.Count})", value);
-                }
             }
             else
             {
                 embed.AddField("Inventory", invstring);
             }
-            if (inv.GetChestsToString().Length > 0)
-            {
-                embed.AddField("Chests:", inv.GetChestsToString());
-            }
+
+            if (inv.GetChestsToString().Length > 0) embed.AddField("Chests:", inv.GetChestsToString());
 
             var fb = new EmbedFooterBuilder();
-            int upgradeCost = (int)(50000 * Math.Pow(2, inv.Upgrades));
+            var upgradeCost = (int)(50000 * Math.Pow(2, inv.Upgrades));
             fb.WithText($"{inv.Count} / {inv.MaxInvSize} {(inv.Upgrades < 4 ? $"Upgrade: {upgradeCost}" : "")}");
             embed.AddField("Coin", $"{Emotes.GetIcon("Coin")} {inv.Coins}");
             embed.WithColor(Colors.Get("Iodem"));
@@ -113,23 +110,32 @@ namespace IodemBot.Modules
         {
             var inv = account.Inv;
             var builder = new ComponentBuilder();
-            bool labels = account.Preferences.ShowButtonLabels;
-            uint upgradeCost = (uint)(50000 * Math.Pow(2, inv.Upgrades));
+            var labels = account.Preferences.ShowButtonLabels;
+            var upgradeCost = (uint)(50000 * Math.Pow(2, inv.Upgrades));
             //add status menu button
-            builder.WithButton(labels ? "Status" : null, $"#{nameof(StatusAction)}", style: ButtonStyle.Primary, emote: Emotes.GetEmote("StatusAction"));
-            builder.WithButton(labels ? "Warrior Gear" : null, $"#{nameof(GearAction)}.Warrior", emote: Emotes.GetEmote("Warrior"), style: ButtonStyle.Success);
-            builder.WithButton(labels ? "Mage Gear" : null, $"#{nameof(GearAction)}.Mage", emote: Emotes.GetEmote("Mage"), style: ButtonStyle.Success);
+            builder.WithButton(labels ? "Status" : null, $"#{nameof(StatusAction)}", ButtonStyle.Primary,
+                Emotes.GetEmote("StatusAction"));
+            builder.WithButton(labels ? "Warrior Gear" : null, $"#{nameof(GearAction)}.Warrior",
+                emote: Emotes.GetEmote("Warrior"), style: ButtonStyle.Success);
+            builder.WithButton(labels ? "Mage Gear" : null, $"#{nameof(GearAction)}.Mage",
+                emote: Emotes.GetEmote("Mage"), style: ButtonStyle.Success);
             var chest = inv.HasAnyChests() ? inv.NextChestQuality() : ChestQuality.Normal;
-            builder.WithButton(labels ? "Open Chest" : null, $"#{nameof(ChestAction)}.{chest}", style: ButtonStyle.Success, emote: Emotes.GetEmote(chest), disabled: !inv.HasAnyChests());
+            builder.WithButton(labels ? "Open Chest" : null, $"#{nameof(ChestAction)}.{chest}", ButtonStyle.Success,
+                Emotes.GetEmote(chest), disabled: !inv.HasAnyChests());
             if (inv.Upgrades < 4)
-                builder.WithButton(labels ? "Upgrade" : null, $"{nameof(UpgradeInventory)}", style: ButtonStyle.Success, emote: Emotes.GetEmote("UpgradeInventoryAction"), disabled: !inv.HasBalance(upgradeCost), row: 1);
+                builder.WithButton(labels ? "Upgrade" : null, $"{nameof(UpgradeInventory)}", ButtonStyle.Success,
+                    Emotes.GetEmote("UpgradeInventoryAction"), disabled: !inv.HasBalance(upgradeCost), row: 1);
 
-            builder.WithButton(labels ? "Sort" : null, $"{nameof(SortInventory)}", style: ButtonStyle.Success, emote: Emotes.GetEmote("SortInventoryAction"), row: 1);
-            builder.WithButton(labels ? "Shop" : null, $"#{nameof(ShopAction)}.", ButtonStyle.Success, Emotes.GetEmote("ShopAction"), row: 1);
+            builder.WithButton(labels ? "Sort" : null, $"{nameof(SortInventory)}", ButtonStyle.Success,
+                Emotes.GetEmote("SortInventoryAction"), row: 1);
+            builder.WithButton(labels ? "Shop" : null, $"#{nameof(ShopAction)}.", ButtonStyle.Success,
+                Emotes.GetEmote("ShopAction"), row: 1);
             if (detail == Detail.None)
-                builder.WithButton(labels ? "Show Names" : null, $"#{nameof(InventoryAction)}.Names", ButtonStyle.Secondary, Emotes.GetEmote("LabelsOn"), row: 1);
+                builder.WithButton(labels ? "Show Names" : null, $"#{nameof(InventoryAction)}.Names",
+                    ButtonStyle.Secondary, Emotes.GetEmote("LabelsOn"), row: 1);
             else
-                builder.WithButton(labels ? "Hide Names" : null, $"#{nameof(InventoryAction)}.None", ButtonStyle.Secondary, Emotes.GetEmote("LabelsOff"), row: 1);
+                builder.WithButton(labels ? "Hide Names" : null, $"#{nameof(InventoryAction)}.None",
+                    ButtonStyle.Secondary, Emotes.GetEmote("LabelsOff"), row: 1);
 
             // If cursed, add remove Curse Button
             return builder.Build();
@@ -140,7 +146,8 @@ namespace IodemBot.Modules
     {
         public override bool GuildsOnly => false;
 
-        [ActionParameterSlash(Order = 0, Name = "archtype", Description = "Archtype", Required = false, Type = ApplicationCommandOptionType.String)]
+        [ActionParameterSlash(Order = 0, Name = "archtype", Description = "Archtype", Required = false,
+            Type = ApplicationCommandOptionType.String)]
         [ActionParameterOptionString(Order = 1, Name = "Warrior", Value = "Warrior")]
         [ActionParameterOptionString(Order = 2, Name = "Mage", Value = "Mage")]
         [ActionParameterComponent(Order = 0, Name = "archtype", Required = false)]
@@ -163,6 +170,31 @@ namespace IodemBot.Modules
             }
         };
 
+        public override ActionCommandRefreshProperties CommandRefreshProperties => new()
+        {
+            FillParametersAsync = (selectOptions, idOptions) =>
+            {
+                if (idOptions != null && idOptions.Any())
+                {
+                    var archOpt = (string)idOptions[0];
+                    SelectedArchtype = Enum.Parse<ArchType>(archOpt);
+
+                    if (idOptions.Length > 1)
+                    {
+                        var gearOpt = (string)idOptions[1];
+                        SelectedCategory = gearOpt;
+                    }
+                }
+
+                if (selectOptions != null && selectOptions.Any()) SelectedCategory = selectOptions.FirstOrDefault();
+                return Task.CompletedTask;
+            },
+            CanRefreshAsync = CanRefreshAsync,
+            RefreshAsync = RefreshAsync
+        };
+
+        private bool IsWarrior => SelectedArchtype == ArchType.Warrior;
+
         public override async Task RunAsync()
         {
             var account = EntityConverter.ConvertUser(Context.User);
@@ -170,31 +202,6 @@ namespace IodemBot.Modules
             var comp = GetGearComponent(account, SelectedArchtype, SelectedCategory);
             await Context.ReplyWithMessageAsync(EphemeralRule, embed: embed, components: comp);
         }
-
-        public override ActionCommandRefreshProperties CommandRefreshProperties => new()
-        {
-            FillParametersAsync = (selectOptions, idOptions) =>
-            {
-                if (idOptions != null && idOptions.Any())
-                {
-                    var arch_opt = (string)idOptions[0];
-                    SelectedArchtype = Enum.Parse<ArchType>(arch_opt);
-
-                    if (idOptions.Length > 1)
-                    {
-                        var gear_opt = (string)idOptions[1];
-                        SelectedCategory = gear_opt;
-                    }
-                }
-                if (selectOptions != null && selectOptions.Any())
-                {
-                    SelectedCategory = selectOptions.FirstOrDefault();
-                }
-                return Task.CompletedTask;
-            },
-            CanRefreshAsync = CanRefreshAsync,
-            RefreshAsync = RefreshAsync
-        };
 
         protected override Task<(bool Success, string Message)> CheckCustomPreconditionsAsync()
         {
@@ -205,8 +212,8 @@ namespace IodemBot.Modules
             if (inv.Count == 0)
                 return Task.FromResult((false, "You don't have any items."));
 
-            var ItemsForGear = inv.Where(i => !Exclusives(SelectedArchtype).Contains(i.ItemType)).ToList();
-            if (ItemsForGear.Count == 0)
+            var itemsForGear = inv.Where(i => !Exclusives(SelectedArchtype).Contains(i.ItemType)).ToList();
+            if (itemsForGear.Count == 0)
                 return Task.FromResult((false, $"You don't have any items equippable for {SelectedArchtype}."));
 
             return Task.FromResult((true, (string)null));
@@ -226,34 +233,34 @@ namespace IodemBot.Modules
             await Task.CompletedTask;
         }
 
-        private bool IsWarrior { get => SelectedArchtype == ArchType.Warrior; }
-
-        private static ItemType[] Exclusives(ArchType archType) => archType == ArchType.Warrior ? Inventory.MageExclusive : Inventory.WarriorExclusive;
+        private static ItemType[] Exclusives(ArchType archType)
+        {
+            return archType == ArchType.Warrior ? Inventory.MageExclusive : Inventory.WarriorExclusive;
+        }
 
         internal static Embed GetGearEmbed(UserAccount account, ArchType archtype)
         {
             var inv = account.Inv;
             var embed = new EmbedBuilder();
-            var ItemsForGear = inv.Where(i => !Exclusives(archtype).Contains(i.ItemType)).ToList();
+            var itemsForGear = inv.Where(i => !Exclusives(archtype).Contains(i.ItemType)).ToList();
 
-            embed.AddField($"{archtype} Gear", inv.GearToString(archtype), false);
+            embed.AddField($"{archtype} Gear", inv.GearToString(archtype));
 
-            var invstring = string.Join("", ItemsForGear.Select(i => i.IconDisplay));
+            var invstring = string.Join("", itemsForGear.Select(i => i.IconDisplay));
             if (invstring.Length >= 1024)
             {
                 var remainingstring = invstring;
-                List<string> parts = new List<string>();
+                var parts = new List<string>();
                 while (remainingstring.Length >= 1024)
                 {
                     var lastitem = remainingstring.Take(1024).ToList().FindLastIndex(s => s.Equals('>')) + 1;
                     parts.Add(string.Join("", remainingstring.Take(lastitem)));
                     remainingstring = string.Join("", remainingstring.Skip(lastitem));
                 }
+
                 parts.Add(remainingstring);
                 foreach (var (value, index) in parts.Select((v, i) => (v, i)))
-                {
                     embed.AddField($"Equippable Gear ({index + 1}/{parts.Count})", value);
-                }
             }
             else
             {
@@ -263,45 +270,51 @@ namespace IodemBot.Modules
             return embed.Build();
         }
 
-        internal static MessageComponent GetGearComponent(UserAccount account, ArchType archtype, string category = null)
+        internal static MessageComponent GetGearComponent(UserAccount account, ArchType archtype,
+            string category = null)
         {
             var inv = account.Inv;
             var embed = new EmbedBuilder();
-            var ItemsForGear = inv.Where(i => !Exclusives(archtype).Contains(i.ItemType)).ToList();
-            var EquippedGear = inv.GetGear(archtype);
+            var itemsForGear = inv.Where(i => !Exclusives(archtype).Contains(i.ItemType)).ToList();
+            var equippedGear = inv.GetGear(archtype);
             var builder = new ComponentBuilder();
             var isWarrior = archtype == ArchType.Warrior;
 
             var categoryOptions = new List<SelectMenuOptionBuilder>();
             var labels = account.Preferences.ShowButtonLabels;
             foreach (var cat in Item.Equippables)
-            {
-                if (ItemsForGear.Count(i => i.Category == cat) > 0)
+                if (itemsForGear.Count(i => i.Category == cat) > 0)
                 {
-                    var equipped = EquippedGear.FirstOrDefault(i => i.Category == cat);
+                    var equipped = equippedGear.FirstOrDefault(i => i.Category == cat);
                     var icons = isWarrior ? Inventory.WarriorIcons : Inventory.MageIcons;
                     var emote = equipped?.IconDisplay ?? icons[cat];
                     var defaultSel = category?.Equals(cat.ToString()) ?? false;
-                    categoryOptions.Add(new SelectMenuOptionBuilder($"{cat}", $"{cat}", isDefault: defaultSel, emote: Emote.Parse(emote)));
+                    categoryOptions.Add(new SelectMenuOptionBuilder($"{cat}", $"{cat}", isDefault: defaultSel,
+                        emote: Emote.Parse(emote)));
                 }
-            }
-            builder.WithSelectMenu($"#{nameof(GearAction)}.{archtype}", categoryOptions, placeholder: "Select a Gear Slot", row: 0);
+
+            builder.WithSelectMenu($"#{nameof(GearAction)}.{archtype}", categoryOptions, "Select a Gear Slot", row: 0);
 
             if (!string.IsNullOrEmpty(category))
             {
                 var itemOptions = new List<SelectMenuOptionBuilder>();
-                foreach (var item in ItemsForGear.Where(i => category.Equals(i.Category.ToString())))
+                foreach (var item in itemsForGear.Where(i => category.Equals(i.Category.ToString())))
                 {
-                    var defaultSel = EquippedGear.Contains(item);
+                    var defaultSel = equippedGear.Contains(item);
                     if (!itemOptions.Any(o => o.Value.Equals(item.Name)))
-                        itemOptions.Add(new SelectMenuOptionBuilder($"{item.Name}", $"{item.Name}", emote: Emote.Parse(item.IconDisplay), isDefault: defaultSel));
+                        itemOptions.Add(new SelectMenuOptionBuilder($"{item.Name}", $"{item.Name}",
+                            emote: Emote.Parse(item.IconDisplay), isDefault: defaultSel));
                 }
 
-                builder.WithSelectMenu($"#{nameof(EquipAction)}.{archtype}", options: itemOptions, placeholder: "Select an item to equip it to this slot", row: 1);
+                builder.WithSelectMenu($"#{nameof(EquipAction)}.{archtype}", itemOptions,
+                    "Select an item to equip it to this slot", row: 1);
             }
-            builder.WithButton(labels ? "Inventory" : null, $"#{nameof(InventoryAction)}", style: ButtonStyle.Success, emote: Emotes.GetEmote("InventoryAction"));
+
+            builder.WithButton(labels ? "Inventory" : null, $"#{nameof(InventoryAction)}", ButtonStyle.Success,
+                Emotes.GetEmote("InventoryAction"));
             if (inv.GetGear(ArchType.Mage).Any(w => w.IsCursed) || inv.GetGear(ArchType.Warrior).Any(w => w.IsCursed))
-                builder.WithButton(labels ? "Remove Cursed Gear" : null, $"{nameof(RemoveCursedGearInventory)}.None", ButtonStyle.Success, Emotes.GetEmote("RemoveCursedAction"));
+                builder.WithButton(labels ? "Remove Cursed Gear" : null, $"{nameof(RemoveCursedGearInventory)}.None",
+                    ButtonStyle.Success, Emotes.GetEmote("RemoveCursedAction"));
 
             return builder.Build();
         }
@@ -314,23 +327,14 @@ namespace IodemBot.Modules
         [ActionParameterComponent(Order = 0, Name = "archtype", Description = "...", Required = true)]
         [ActionParameterOptionString(Order = 1, Name = "Warrior", Value = "Warrior")]
         [ActionParameterOptionString(Order = 2, Name = "Mage", Value = "Mage")]
-        [ActionParameterSlash(Order = 0, Name = "archtype", Description = "The archtype to equip to", Required = true, Type = ApplicationCommandOptionType.String)]
-        public ArchType archType { get; set; }
+        [ActionParameterSlash(Order = 0, Name = "archtype", Description = "The archtype to equip to", Required = true,
+            Type = ApplicationCommandOptionType.String)]
+        public ArchType ArchType { get; set; }
 
         //[ActionParameterComponent(Order = 1, Name = "item", Description ="...", Required = true)]
-        [ActionParameterSlash(Order = 1, Name = "item", Description = "The item to equip", Required = true, Type = ApplicationCommandOptionType.String)]
+        [ActionParameterSlash(Order = 1, Name = "item", Description = "The item to equip", Required = true,
+            Type = ApplicationCommandOptionType.String)]
         public string ItemToEquip { get; set; }
-
-        public override async Task RunAsync()
-        {
-            var account = EntityConverter.ConvertUser(Context.User);
-            var item = ItemDatabase.GetItem(ItemToEquip);
-
-            EquipItem(account);
-            var embed = GearAction.GetGearEmbed(account, archType);
-            var component = GearAction.GetGearComponent(account, archType, item?.Category.ToString() ?? null);
-            await Context.ReplyWithMessageAsync(EphemeralRule, embed: embed, components: component);
-        }
 
         public override ActionGlobalSlashCommandProperties SlashCommandProperties => new()
         {
@@ -339,7 +343,7 @@ namespace IodemBot.Modules
             FillParametersAsync = options =>
             {
                 if (options != null)
-                    archType = Enum.Parse<ArchType>((string)options.FirstOrDefault().Value);
+                    ArchType = Enum.Parse<ArchType>((string)options.FirstOrDefault().Value);
                 ItemToEquip = (string)options.ElementAt(1).Value;
                 return Task.CompletedTask;
             }
@@ -352,27 +356,29 @@ namespace IodemBot.Modules
             FillParametersAsync = (selectOptions, idOptions) =>
             {
                 if (idOptions != null && idOptions.Any())
-                {
-                    archType = Enum.Parse<ArchType>((string)idOptions.FirstOrDefault());
-                };
+                    ArchType = Enum.Parse<ArchType>((string)idOptions.FirstOrDefault());
 
-                if (selectOptions != null && selectOptions.Any())
-                {
-                    ItemToEquip = selectOptions.FirstOrDefault();
-                };
+                if (selectOptions != null && selectOptions.Any()) ItemToEquip = selectOptions.FirstOrDefault();
                 return Task.CompletedTask;
             }
         };
+
+        public override async Task RunAsync()
+        {
+            var account = EntityConverter.ConvertUser(Context.User);
+            var item = ItemDatabase.GetItem(ItemToEquip);
+
+            EquipItem(account);
+            var embed = GearAction.GetGearEmbed(account, ArchType);
+            var component = GearAction.GetGearComponent(account, ArchType, item?.Category.ToString());
+            await Context.ReplyWithMessageAsync(EphemeralRule, embed: embed, components: component);
+        }
 
         private void EquipItem(UserAccount account)
         {
             var inv = account.Inv;
 
-            if (inv.Equip(ItemToEquip, archType))
-            {
-                UserAccountProvider.StoreUser(account);
-                return;
-            }
+            if (inv.Equip(ItemToEquip, ArchType)) UserAccountProvider.StoreUser(account);
         }
 
         private Task<(bool, string)> CanRefreshAsync(bool intoNew)
@@ -386,8 +392,8 @@ namespace IodemBot.Modules
             var item = ItemDatabase.GetItem(ItemToEquip);
 
             EquipItem(account);
-            msgProps.Embed = GearAction.GetGearEmbed(account, archType);
-            msgProps.Components = GearAction.GetGearComponent(account, archType, item?.Category.ToString() ?? null);
+            msgProps.Embed = GearAction.GetGearEmbed(account, ArchType);
+            msgProps.Components = GearAction.GetGearComponent(account, ArchType, item?.Category.ToString());
             await Task.CompletedTask;
         }
 
@@ -404,7 +410,7 @@ namespace IodemBot.Modules
             if (item.ExclusiveTo.Length > 0 && !item.ExclusiveTo.Contains(account.Element))
                 return Task.FromResult((false, $"A {account.Element} cannot equip {item.Name}"));
 
-            if (inv.GetGear(archType).FirstOrDefault(i => i.Category == item.Category)?.IsCursed ?? false)
+            if (inv.GetGear(ArchType).FirstOrDefault(i => i.Category == item.Category)?.IsCursed ?? false)
                 return Task.FromResult((false, $"Oh no! Your {item.Category} slot is cursed!"));
 
             return Task.FromResult((true, (string)null));
@@ -414,7 +420,7 @@ namespace IodemBot.Modules
     public class ShopAction : IodemBotCommandAction
     {
         public override bool GuildsOnly => false;
-        private Inventory _shop { get; set; }
+        private Inventory Shop { get; set; }
 
         public override ActionGlobalSlashCommandProperties SlashCommandProperties => new()
         {
@@ -424,12 +430,6 @@ namespace IodemBot.Modules
 
         public override EphemeralRule EphemeralRule => EphemeralRule.Permanent;
 
-        public override async Task RunAsync()
-        {
-            _shop = ItemDatabase.GetShop();
-            await Context.ReplyWithMessageAsync(EphemeralRule, embed: GetShopEmbed(), components: GetShopComponent().Build());
-        }
-
         public override ActionCommandRefreshProperties CommandRefreshProperties => new()
         {
             FillParametersAsync = null,
@@ -437,20 +437,29 @@ namespace IodemBot.Modules
             RefreshAsync = RefreshAsync
         };
 
+        public override async Task RunAsync()
+        {
+            Shop = ItemDatabase.GetShop();
+            await Context.ReplyWithMessageAsync(EphemeralRule, embed: GetShopEmbed(),
+                components: GetShopComponent().Build());
+        }
+
         private Task RefreshAsync(bool intoNew, MessageProperties msgProps)
         {
-            _shop = ItemDatabase.GetShop();
+            Shop = ItemDatabase.GetShop();
             msgProps.Embed = GetShopEmbed();
             var builder = GetShopComponent();
             if (!intoNew)
-            {
-                builder.WithButton("Inventory", $"#{nameof(InventoryAction)}", style: ButtonStyle.Success, emote: Emotes.GetEmote("InventoryAction"));
-            }
+                builder.WithButton("Inventory", $"#{nameof(InventoryAction)}", ButtonStyle.Success,
+                    Emotes.GetEmote("InventoryAction"));
             msgProps.Components = builder.Build();
             return Task.CompletedTask;
         }
 
-        private Task<(bool, string)> CanRefreshAsync(bool arg) => Task.FromResult((true, (string)null));
+        private Task<(bool, string)> CanRefreshAsync(bool arg)
+        {
+            return Task.FromResult((true, (string)null));
+        }
 
         private Embed GetShopEmbed()
         {
@@ -458,7 +467,7 @@ namespace IodemBot.Modules
             embed.WithColor(new Color(66, 45, 45));
             embed.WithThumbnailUrl(ItemDatabase.Shopkeeper);
 
-            embed.AddField("Shop:", _shop.InventoryToString(Detail.NameAndPrice), true);
+            embed.AddField("Shop:", Shop.InventoryToString(Detail.NameAndPrice), true);
 
             var fb = new EmbedFooterBuilder();
             fb.WithText($"{ItemDatabase.RestockMessage} {ItemDatabase.TimeToNextReset:hh\\h\\ mm\\m}");
@@ -470,11 +479,10 @@ namespace IodemBot.Modules
         {
             var builder = new ComponentBuilder();
             List<SelectMenuOptionBuilder> options = new();
-            foreach (var item in _shop)
-            {
-                options.Add(new SelectMenuOptionBuilder($"{item.Name} - {item.Price}", $"{item.Itemname}", emote: Emote.Parse(item.IconDisplay)));
-            }
-            builder.WithSelectMenu(nameof(ShopTake), options, placeholder: "Select an item to buy it.");
+            foreach (var item in Shop)
+                options.Add(new SelectMenuOptionBuilder($"{item.Name} - {item.Price}", $"{item.Itemname}",
+                    emote: Emote.Parse(item.IconDisplay)));
+            builder.WithSelectMenu(nameof(ShopTake), options, "Select an item to buy it.");
 
             return builder;
         }
@@ -493,7 +501,8 @@ namespace IodemBot.Modules
         {
             if (idOptions != null && idOptions.Any() && idOptions[0] != null && idOptions[0].ToString().Length > 0)
                 ItemName = (string)idOptions[0];
-            else if (selectOptions != null && selectOptions.Any() && selectOptions[0] != null && selectOptions[0].ToString().Length > 0)
+            else if (selectOptions != null && selectOptions.Any() && selectOptions[0] != null &&
+                     selectOptions[0].Length > 0)
                 ItemName = selectOptions[0];
 
             return Task.CompletedTask;
@@ -547,17 +556,11 @@ namespace IodemBot.Modules
         [ActionParameterOptionString(Order = 4, Name = "Gold", Value = "Gold")]
         [ActionParameterOptionString(Order = 5, Name = "Adept", Value = "Adept")]
         [ActionParameterOptionString(Order = 6, Name = "Daily", Value = "Daily")]
-        [ActionParameterSlash(Order = 0, Name = "quality", Description = "The archtype to equip to", Required = false, Type = ApplicationCommandOptionType.String)]
-        public ChestQuality? chestQuality { get; set; }
+        [ActionParameterSlash(Order = 0, Name = "quality", Description = "The archtype to equip to", Required = false,
+            Type = ApplicationCommandOptionType.String)]
+        public ChestQuality? ChestQuality { get; set; }
 
         public override EphemeralRule EphemeralRule => EphemeralRule.EphemeralOrFail;
-
-        public override async Task RunAsync()
-        {
-            var account = EntityConverter.ConvertUser(Context.User);
-            _ = OpenChestAsync(account);
-            await Task.CompletedTask;
-        }
 
         public override ActionGlobalSlashCommandProperties SlashCommandProperties => new()
         {
@@ -565,10 +568,7 @@ namespace IodemBot.Modules
             Description = "Open a chest",
             FillParametersAsync = options =>
             {
-                if (options != null)
-                {
-                    chestQuality = Enum.Parse<ChestQuality>((string)options.FirstOrDefault().Value);
-                }
+                if (options != null) ChestQuality = Enum.Parse<ChestQuality>((string)options.FirstOrDefault().Value);
 
                 return Task.CompletedTask;
             }
@@ -581,13 +581,18 @@ namespace IodemBot.Modules
             FillParametersAsync = (selectOptions, idOptions) =>
             {
                 if (idOptions != null && idOptions.Any())
-                {
-                    chestQuality = Enum.Parse<ChestQuality>((string)idOptions.FirstOrDefault());
-                };
+                    ChestQuality = Enum.Parse<ChestQuality>((string)idOptions.FirstOrDefault());
 
                 return Task.CompletedTask;
             }
         };
+
+        public override async Task RunAsync()
+        {
+            var account = EntityConverter.ConvertUser(Context.User);
+            _ = OpenChestAsync(account);
+            await Task.CompletedTask;
+        }
 
         private Task<(bool, string)> CanRefreshAsync(bool intoNew)
         {
@@ -611,20 +616,20 @@ namespace IodemBot.Modules
         private async Task OpenChestAsync(UserAccount account)
         {
             var inv = account.Inv;
-            inv.TryOpenChest(chestQuality.Value, out Item item, account.LevelNumber);
+            inv.TryOpenChest(ChestQuality.Value, out var item, account.LevelNumber);
             inv.Add(item);
-            bool autoSold = false;
+            var autoSold = false;
             if (account.Preferences.AutoSell.Contains(item.Rarity))
                 autoSold = inv.Sell(item.Name);
 
             UserAccountProvider.StoreUser(account);
 
-            RestInteractionMessage InventoryMessage = null;
-            if (Context is RequestInteractionContext c && c.OriginalInteraction is SocketMessageComponent)
+            RestInteractionMessage inventoryMessage = null;
+            if (Context is RequestInteractionContext { OriginalInteraction: SocketMessageComponent component })
             {
                 await Task.Delay(25);
                 // Only try to assign this when interaction is from a Button, not from Slash Command
-                InventoryMessage = await c.OriginalInteraction.GetOriginalResponseAsync();
+                inventoryMessage = await component.GetOriginalResponseAsync();
             }
 
             await Context.ReplyWithMessageAsync(EphemeralRule, embed: GetSecondChestEmbed(item, inv, autoSold));
@@ -636,21 +641,19 @@ namespace IodemBot.Modules
             //}
             //);
 
-            if (InventoryMessage != null)
-            {
-                await InventoryMessage.ModifyAsync(msgProps =>
+            if (inventoryMessage != null)
+                await inventoryMessage.ModifyAsync(msgProps =>
                 {
                     msgProps.Embed = InventoryAction.GetInventoryEmbed(account);
                     msgProps.Components = InventoryAction.GetInventoryComponent(account);
                 });
-            }
         }
 
         private Embed GetFirstChestEmbed()
         {
             var embed = new EmbedBuilder();
 
-            embed.WithDescription($"Opening {chestQuality} Chest {Emotes.GetIcon(chestQuality.Value)}...");
+            embed.WithDescription($"Opening {ChestQuality} Chest {Emotes.GetIcon(ChestQuality.Value)}...");
 
             embed.WithColor(Colors.Get("Iodem"));
             return embed.Build();
@@ -660,11 +663,11 @@ namespace IodemBot.Modules
         {
             var embed = new EmbedBuilder();
             embed.WithColor(item.Color);
-            if (chestQuality == ChestQuality.Daily)
-            {
-                embed.WithFooter($"Current Reward: {inv.DailiesInARow % Inventory.dailyRewards.Length + 1}/{Inventory.dailyRewards.Length} | Overall Streak: {inv.DailiesInARow + 1}");
-            }
-            embed.WithDescription($"{Emotes.GetIcon(chestQuality.Value)} You found a {item.Name} {item.IconDisplay}{(isSold ? "(Auto Sold)" : "")}");
+            if (ChestQuality == IodemBot.ChestQuality.Daily)
+                embed.WithFooter(
+                    $"Current Reward: {inv.DailiesInARow % Inventory.DailyRewards.Length + 1}/{Inventory.DailyRewards.Length} | Overall Streak: {inv.DailiesInARow + 1}");
+            embed.WithDescription(
+                $"{Emotes.GetIcon(ChestQuality.Value)} You found a {item.Name} {item.IconDisplay}{(isSold ? "(Auto Sold)" : "")}");
 
             return embed.Build();
         }
@@ -676,9 +679,9 @@ namespace IodemBot.Modules
             var inv = account.Inv;
 
             if (!inv.HasAnyChests()) return Task.FromResult((false, "You don't have any chests."));
-            if (!chestQuality.HasValue)
-                chestQuality = inv.NextChestQuality();
-            if (!inv.HasChest(chestQuality.Value)) return Task.FromResult((false, $"You don't have any {chestQuality} chests"));
+            ChestQuality ??= inv.NextChestQuality();
+            if (!inv.HasChest(ChestQuality.Value))
+                return Task.FromResult((false, $"You don't have any {ChestQuality} chests"));
             if (inv.IsFull) return Task.FromResult((false, "Your inventory is full."));
 
             return Task.FromResult((true, (string)null));
@@ -784,20 +787,12 @@ namespace IodemBot.Modules
 
     public class ItemRenameAction : IodemBotCommandAction
     {
-        public override async Task RunAsync()
-        {
-            var account = EntityConverter.ConvertUser(Context.User);
-            var inv = account.Inv;
-            var item = inv.GetItem(ItemToRename);
-            item.Nickname = NewName;
-            UserAccountProvider.StoreUser(account);
-            await Context.ReplyWithMessageAsync(EphemeralRule, $"Renamed {item.IconDisplay} {item.Itemname} to {NewName}");
-        }
-
-        [ActionParameterSlash(Order = 0, Name = "item", Description = "The item to rename", Required = true, Type = ApplicationCommandOptionType.String)]
+        [ActionParameterSlash(Order = 0, Name = "item", Description = "The item to rename", Required = true,
+            Type = ApplicationCommandOptionType.String)]
         public string ItemToRename { get; set; }
 
-        [ActionParameterSlash(Order = 1, Name = "name", Description = "The Name to rename it to", Required = false, Type = ApplicationCommandOptionType.String)]
+        [ActionParameterSlash(Order = 1, Name = "name", Description = "The Name to rename it to", Required = false,
+            Type = ApplicationCommandOptionType.String)]
         public string NewName { get; set; }
 
         public override EphemeralRule EphemeralRule => EphemeralRule.EphemeralOrFail;
@@ -818,6 +813,17 @@ namespace IodemBot.Modules
             }
         };
 
+        public override async Task RunAsync()
+        {
+            var account = EntityConverter.ConvertUser(Context.User);
+            var inv = account.Inv;
+            var item = inv.GetItem(ItemToRename);
+            item.Nickname = NewName;
+            UserAccountProvider.StoreUser(account);
+            await Context.ReplyWithMessageAsync(EphemeralRule,
+                $"Renamed {item.IconDisplay} {item.Itemname} to {NewName}");
+        }
+
         protected override Task<(bool Success, string Message)> CheckCustomPreconditionsAsync()
         {
             var guildResult = IsGameCommandAllowedInGuild();
@@ -836,6 +842,27 @@ namespace IodemBot.Modules
 
     public class SellItemAction : IodemBotCommandAction
     {
+        [ActionParameterSlash(Order = 0, Name = "item-or-list-to-sell",
+            Description = "e.g. `Sol Blade` or `Machete, Padded Gloves, Sol Blade`", Required = true,
+            Type = ApplicationCommandOptionType.String)]
+        public string[] ItemsToSell { get; set; }
+
+        public override EphemeralRule EphemeralRule => EphemeralRule.EphemeralOrFail;
+        public override bool GuildsOnly => true;
+
+        public override ActionGlobalSlashCommandProperties SlashCommandProperties => new()
+        {
+            Name = "sell",
+            Description = "Sell one or multiple items",
+            FillParametersAsync = options =>
+            {
+                if (options != null)
+                    ItemsToSell = ((string)options.FirstOrDefault().Value).Split(',').Select(s => s.Trim()).ToArray();
+
+                return Task.CompletedTask;
+            }
+        };
+
         public override async Task RunAsync()
         {
             var account = EntityConverter.ConvertUser(Context.User);
@@ -860,8 +887,7 @@ namespace IodemBot.Modules
             {
                 uint sum = 0;
                 uint successfull = 0;
-                foreach (string i in ItemsToSell)
-                {
+                foreach (var i in ItemsToSell)
                     if (inv.HasItem(i.Trim()))
                     {
                         var it = inv.GetItem(i.Trim());
@@ -871,7 +897,7 @@ namespace IodemBot.Modules
                             successfull++;
                         }
                     }
-                }
+
                 embed.WithDescription($"Sold {successfull} items for <:coin:569836987767324672> {sum}.");
                 embed.WithColor(Colors.Get("Iodem"));
             }
@@ -879,25 +905,6 @@ namespace IodemBot.Modules
             UserAccountProvider.StoreUser(account);
             await Context.ReplyWithMessageAsync(EphemeralRule, embed: embed.Build());
         }
-
-        [ActionParameterSlash(Order = 0, Name = "item-or-list-to-sell", Description = "e.g. `Sol Blade` or `Machete, Padded Gloves, Sol Blade`", Required = true, Type = ApplicationCommandOptionType.String)]
-        public string[] ItemsToSell { get; set; }
-
-        public override EphemeralRule EphemeralRule => EphemeralRule.EphemeralOrFail;
-        public override bool GuildsOnly => true;
-
-        public override ActionGlobalSlashCommandProperties SlashCommandProperties => new()
-        {
-            Name = "sell",
-            Description = "Sell one or multiple items",
-            FillParametersAsync = options =>
-            {
-                if (options != null)
-                    ItemsToSell = ((string)options.FirstOrDefault().Value).Split(',').Select(s => s.Trim()).ToArray();
-
-                return Task.CompletedTask;
-            }
-        };
 
         protected override Task<(bool Success, string Message)> CheckCustomPreconditionsAsync()
         {

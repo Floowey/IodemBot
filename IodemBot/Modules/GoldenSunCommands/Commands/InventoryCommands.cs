@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Accord.Statistics.Distributions.Univariate;
 using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
@@ -22,46 +23,44 @@ namespace IodemBot.Modules.GoldenSunMechanics
         [Summary("Displays inventory and current sets")]
         public async Task ShowInventory(Detail detail = Detail.None)
         {
-            var split = new Dictionary<Detail, char>()
+            var split = new Dictionary<Detail, char>
             {
-                { Detail.None, '>' },
-                {Detail.Names,',' },
-                {Detail.NameAndPrice, '\n' }
+                {Detail.None, '>'},
+                {Detail.Names, ','},
+                {Detail.NameAndPrice, '\n'}
             };
             var account = EntityConverter.ConvertUser(Context.User);
             var inv = account.Inv;
             var embed = new EmbedBuilder()
-            .AddField("Warrior Gear", inv.GearToString(ArchType.Warrior), true)
-            .AddField("Mage Gear", inv.GearToString(ArchType.Mage), true);
+                .AddField("Warrior Gear", inv.GearToString(ArchType.Warrior), true)
+                .AddField("Mage Gear", inv.GearToString(ArchType.Mage), true);
 
             var invstring = inv.InventoryToString(detail);
             if (invstring.Length >= 1024)
             {
                 var remainingstring = invstring;
-                List<string> parts = new List<string>();
+                var parts = new List<string>();
                 while (remainingstring.Length >= 1024)
                 {
                     var lastitem = remainingstring.Take(1024).ToList().FindLastIndex(s => s.Equals(split[detail])) + 1;
                     parts.Add(string.Join("", remainingstring.Take(lastitem)));
                     remainingstring = string.Join("", remainingstring.Skip(lastitem));
                 }
+
                 parts.Add(remainingstring);
                 foreach (var (value, index) in parts.Select((v, i) => (v, i)))
-                {
                     embed.AddField($"Inventory ({index + 1}/{parts.Count})", value);
-                }
             }
             else
             {
                 embed.AddField("Inventory", invstring);
             }
-            if (inv.GetChestsToString().Length > 0)
-            {
-                embed.AddField("Chests:", inv.GetChestsToString());
-            }
+
+            if (inv.GetChestsToString().Length > 0) embed.AddField("Chests:", inv.GetChestsToString());
 
             var fb = new EmbedFooterBuilder();
-            fb.WithText($"{inv.Count} / {inv.MaxInvSize} {(inv.Upgrades < 4 ? $"Upgrade: {50000 * Math.Pow(2, inv.Upgrades)}" : "")}");
+            fb.WithText(
+                $"{inv.Count} / {inv.MaxInvSize} {(inv.Upgrades < 4 ? $"Upgrade: {50000 * Math.Pow(2, inv.Upgrades)}" : "")}");
             embed.AddField("Coin", $"{Emotes.GetIcon("Coin")} {inv.Coins}");
             embed.WithColor(Colors.Get("Iodem"));
             embed.WithFooter(fb);
@@ -93,10 +92,12 @@ namespace IodemBot.Modules.GoldenSunMechanics
             else
             {
                 var embed = new EmbedBuilder();
-                embed.WithDescription(":x: Not enough funds. The four upgrades cost, in order:\n<:coin:569836987767324672> 50 000\n<:coin:569836987767324672> 100 000\n<:coin:569836987767324672> 200 000 and\n<:coin:569836987767324672> 400 000");
+                embed.WithDescription(
+                    ":x: Not enough funds. The four upgrades cost, in order:\n<:coin:569836987767324672> 50 000\n<:coin:569836987767324672> 100 000\n<:coin:569836987767324672> 200 000 and\n<:coin:569836987767324672> 400 000");
                 embed.WithColor(Colors.Get("Error"));
                 _ = Context.Channel.SendMessageAsync("", false, embed.Build());
             }
+
             await Task.CompletedTask;
         }
 
@@ -161,12 +162,13 @@ namespace IodemBot.Modules.GoldenSunMechanics
             if (inv.Rename(item, newname))
             {
                 UserAccountProvider.StoreUser(account);
-                embed.WithDescription($"Item renamed successfully.");
+                embed.WithDescription("Item renamed successfully.");
             }
             else
             {
-                embed.WithDescription($":x: You don't have such item to polish.");
+                embed.WithDescription(":x: You don't have such item to polish.");
             }
+
             await Context.Channel.SendMessageAsync("", false, embed.Build());
         }
 
@@ -180,18 +182,17 @@ namespace IodemBot.Modules.GoldenSunMechanics
             invstring += string.Join(", ", weapons.Where(w => !w.CanBeAnimated).Select(i => i.Name));
             var embed = new EmbedBuilder();
             var remainingstring = invstring;
-            List<string> parts = new List<string>();
+            var parts = new List<string>();
             while (remainingstring.Length >= 1024)
             {
                 var lastitem = remainingstring.Take(1024).ToList().FindLastIndex(s => s.Equals(' ')) + 1;
                 parts.Add(string.Join("", remainingstring.Take(lastitem)));
                 remainingstring = string.Join("", remainingstring.Skip(lastitem));
             }
+
             parts.Add(remainingstring);
             foreach (var (value, index) in parts.Select((v, i) => (v, i)))
-            {
                 embed.AddField($"{index + 1}/{parts.Count}", value);
-            }
 
             _ = ReplyAsync(embed: embed.Build());
             await Task.CompletedTask;
@@ -209,12 +210,14 @@ namespace IodemBot.Modules.GoldenSunMechanics
             if (inv.Polish(item))
             {
                 UserAccountProvider.StoreUser(account);
-                embed.WithDescription($"Item polished successfully.");
+                embed.WithDescription("Item polished successfully.");
             }
             else
             {
-                embed.WithDescription($":x: No such item to polish, or not enough funds. Polishing costs x10 the items price and can only be done with selected artifacts.");
+                embed.WithDescription(
+                    ":x: No such item to polish, or not enough funds. Polishing costs x10 the items price and can only be done with selected artifacts.");
             }
+
             _ = Context.Channel.SendMessageAsync("", false, embed.Build());
             await Task.CompletedTask;
         }
@@ -248,6 +251,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 embed.WithColor(Colors.Get("Error"));
                 _ = Context.Channel.SendMessageAsync("", false, embed.Build());
             }
+
             await Task.CompletedTask;
         }
 
@@ -269,6 +273,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 embed.WithColor(Colors.Get("Error"));
                 _ = Context.Channel.SendMessageAsync("", false, embed.Build());
             }
+
             await Task.CompletedTask;
         }
 
@@ -287,11 +292,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
         [Summary("Sell an unequipped item from your inventory")]
         public async Task SellItem([Remainder] string item)
         {
-            var items = new string[0];
-            if (item.Contains(','))
-            {
-                items = item.Split(',');
-            }
+            var items = Array.Empty<string>();
+            if (item.Contains(',')) items = item.Split(',');
             var account = EntityConverter.ConvertUser(Context.User);
             var inv = account.Inv;
             var embed = new EmbedBuilder();
@@ -300,8 +302,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             {
                 uint sum = 0;
                 uint successfull = 0;
-                foreach (string i in items)
-                {
+                foreach (var i in items)
                     if (inv.HasItem(i.Trim()))
                     {
                         var it = inv.GetItem(i.Trim());
@@ -312,7 +313,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                             successfull++;
                         }
                     }
-                }
+
                 embed.WithDescription($"Sold {successfull} items for <:coin:569836987767324672> {sum}.");
                 embed.WithColor(Colors.Get("Iodem"));
             }
@@ -330,6 +331,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                     embed.WithColor(Colors.Get("Error"));
                 }
             }
+
             UserAccountProvider.StoreUser(account);
             await Context.Channel.SendMessageAsync("", false, embed.Build());
         }
@@ -350,10 +352,11 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 UserAccountProvider.StoreUser(avatar);
                 var maxdist = p.Stats.Atk * Math.Sqrt(p.Stats.Spd) / Math.Log(Math.Max(it.Price / 2, 2)) / 6;
                 var level = Math.Min(avatar.LevelNumber, 100);
-                var a = 5 + ((double)level) / 2;
-                var b = 55 - ((double)level) / 2;
-                var beta = new Accord.Statistics.Distributions.Univariate.BetaDistribution(a, b);
-                embed.WithDescription($"{Context.User.Username} yeets {it.Icon}{it.Name} {Math.Round(beta.Generate(1).FirstOrDefault() * maxdist, 2)} meters away.");
+                var a = 5 + (double)level / 2;
+                var b = 55 - (double)level / 2;
+                var beta = new BetaDistribution(a, b);
+                embed.WithDescription(
+                    $"{Context.User.Username} yeets {it.Icon}{it.Name} {Math.Round(beta.Generate(1).FirstOrDefault() * maxdist, 2)} meters away.");
                 embed.WithColor(it.Color);
 
                 _ = Context.Channel.SendMessageAsync("", false, embed.Build());
@@ -364,6 +367,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 embed.WithColor(Colors.Get("Error"));
                 _ = Context.Channel.SendMessageAsync("", false, embed.Build());
             }
+
             await Task.CompletedTask;
         }
 
@@ -392,15 +396,14 @@ namespace IodemBot.Modules.GoldenSunMechanics
         {
             var account = EntityConverter.ConvertUser(Context.User);
             var inv = account.Inv;
-            foreach (ChestQuality cq in Inventory.chestQualities)
-            {
+            foreach (var cq in Inventory.ChestQualities)
                 if (inv.HasChest(cq))
                 {
                     _ = OpenChestAsync(Context, cq);
 
                     break;
                 }
-            }
+
             await Task.CompletedTask;
         }
 
@@ -423,9 +426,9 @@ namespace IodemBot.Modules.GoldenSunMechanics
             await Task.CompletedTask;
         }
 
-        private async Task OpenChestAsync(SocketCommandContext Context, ChestQuality cq)
+        private async Task OpenChestAsync(SocketCommandContext context, ChestQuality cq)
         {
-            var user = EntityConverter.ConvertUser(Context.User);
+            var user = EntityConverter.ConvertUser(context.User);
             var inv = user.Inv;
 
             if (inv.IsFull)
@@ -433,7 +436,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 var emb = new EmbedBuilder();
                 emb.WithDescription(":x: Inventory capacity reached!");
                 emb.WithColor(Colors.Get("Error"));
-                await Context.Channel.SendMessageAsync("", false, emb.Build());
+                await context.Channel.SendMessageAsync("", false, emb.Build());
                 return;
             }
 
@@ -441,17 +444,12 @@ namespace IodemBot.Modules.GoldenSunMechanics
             {
                 var emb = new EmbedBuilder();
 
-                if (cq == ChestQuality.Daily)
-                {
-                    emb.WithDescription($":x: No {cq} Chests remaining! Next Daily Chest in: {DateTime.Today.AddDays(1).Subtract(DateTime.Now):hh\\h\\ mm\\m}");
-                }
-                else
-                {
-                    emb.WithDescription($":x: No {cq} Chests remaining!");
-                }
+                emb.WithDescription(cq == ChestQuality.Daily
+                    ? $":x: No {cq} Chests remaining! Next Daily Chest in: {DateTime.Today.AddDays(1).Subtract(DateTime.Now):hh\\h\\ mm\\m}"
+                    : $":x: No {cq} Chests remaining!");
 
                 emb.WithColor(Colors.Get("Error"));
-                await Context.Channel.SendMessageAsync("", false, emb.Build());
+                await context.Channel.SendMessageAsync("", false, emb.Build());
                 return;
             }
 
@@ -460,7 +458,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
             if (cq == ChestQuality.Daily)
             {
                 var value = user.LevelNumber;
-                item = ItemDatabase.GetRandomItem((ItemRarity)(dailyRewards[inv.DailiesInARow % dailyRewards.Length] + Math.Min(2, value / 33)));
+                item = ItemDatabase.GetRandomItem((ItemRarity)(dailyRewards[inv.DailiesInARow % dailyRewards.Length] +
+                                                                Math.Min(2, value / 33)));
             }
             else
             {
@@ -476,24 +475,21 @@ namespace IodemBot.Modules.GoldenSunMechanics
             embed.WithDescription($"Opening {cq} Chest {Emotes.GetIcon(cq)}...");
 
             embed.WithColor(Colors.Get("Iodem"));
-            var msg = await Context.Channel.SendMessageAsync("", false, embed.Build());
+            var msg = await context.Channel.SendMessageAsync("", false, embed.Build());
 
             embed = new EmbedBuilder();
             embed.WithColor(item.Color);
             if (cq == ChestQuality.Daily)
-            {
-                embed.WithFooter($"Current Reward: {inv.DailiesInARow % dailyRewards.Length + 1}/{dailyRewards.Length} | Overall Streak: {inv.DailiesInARow + 1}");
-            }
+                embed.WithFooter(
+                    $"Current Reward: {inv.DailiesInARow % dailyRewards.Length + 1}/{dailyRewards.Length} | Overall Streak: {inv.DailiesInARow + 1}");
             embed.WithDescription($"{Emotes.GetIcon(cq)} You found a {item.Name} {item.IconDisplay}");
 
             await Task.Delay((int)cq * 700);
             _ = msg.ModifyAsync(m => m.Embed = embed.Build());
 
-            var message = await Context.Channel.AwaitMessage(m => m.Author == Context.User);
+            var message = await context.Channel.AwaitMessage(m => m.Author == context.User);
             if (message != null && message.Content.Equals("Sell", StringComparison.OrdinalIgnoreCase))
-            {
                 _ = SellItem(item.Name);
-            }
         }
 
         [Command("Inv Sort")]
@@ -519,19 +515,21 @@ namespace IodemBot.Modules.GoldenSunMechanics
             if (!inv.HasItem(item))
             {
                 await Context.Channel.SendMessageAsync(embed: new EmbedBuilder()
-                .WithColor(Colors.Get("Error"))
-                .WithDescription($":x: You do not have that item.")
-                .Build());
+                    .WithColor(Colors.Get("Error"))
+                    .WithDescription(":x: You do not have that item.")
+                    .Build());
                 return;
             }
+
             var selectedItem = inv.GetItem(item);
 
             if (!selectedItem.ExclusiveTo?.Contains(account.Element) ?? false)
             {
                 _ = Context.Channel.SendMessageAsync(embed: new EmbedBuilder()
-                .WithColor(Colors.Get("Error"))
-                .WithDescription($":x: Only {string.Join(", ", selectedItem.ExclusiveTo)} Adepts can equip {selectedItem.Name}")
-                .Build());
+                    .WithColor(Colors.Get("Error"))
+                    .WithDescription(
+                        $":x: Only {string.Join(", ", selectedItem.ExclusiveTo)} Adepts can equip {selectedItem.Name}")
+                    .Build());
                 return;
             }
 
@@ -559,6 +557,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 UserAccountProvider.StoreUser(account);
                 _ = ShowInventory();
             }
+
             await Task.CompletedTask;
         }
 
@@ -577,12 +576,13 @@ namespace IodemBot.Modules.GoldenSunMechanics
             if (inv.Repair(item))
             {
                 UserAccountProvider.StoreUser(account);
-                embed.WithDescription($"Item repaired successfully");
+                embed.WithDescription("Item repaired successfully");
             }
             else
             {
-                embed.WithDescription($":x: No such item to repair, or not enough funds.");
+                embed.WithDescription(":x: No such item to repair, or not enough funds.");
             }
+
             await Context.Channel.SendMessageAsync("", false, embed.Build());
         }
 
@@ -597,24 +597,24 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 UserAccountProvider.StoreUser(account);
                 _ = ShowInventory();
             }
+
             await Task.CompletedTask;
         }
 
-        [Command("iteminfo"), Alias("i")]
+        [Command("iteminfo")]
+        [Alias("i")]
         [Cooldown(5)]
         [Summary("Gets information on a specified piece of equipment")]
         public async Task ItemInfo([Remainder] string name = "")
         {
-            if (name == "")
-            {
-                return;
-            }
+            if (name == "") return;
 
             var item = ItemDatabase.GetItem(name);
             if (item.Name.Contains("NOT IMPLEMENTED"))
             {
                 var emb = new EmbedBuilder();
-                emb.WithDescription(":x: I asked our treasurer, the weapon smith, the priest, the librarian and a cool looking kid walking by, and no one has heard of that item!");
+                emb.WithDescription(
+                    ":x: I asked our treasurer, the weapon smith, the priest, the librarian and a cool looking kid walking by, and no one has heard of that item!");
                 emb.WithColor(Colors.Get("Error"));
                 await Context.Channel.SendMessageAsync("", false, emb.Build());
                 return;
@@ -626,14 +626,19 @@ namespace IodemBot.Modules.GoldenSunMechanics
             embed.AddField("Icon", item.IconDisplay, true);
             embed.AddField("Value", $"{Emotes.GetIcon("Coin")} {item.Price}", true);
             embed.AddField("Type", item.ItemType, true);
-            embed.AddField("Summary", item.Summary(), inline: true);
+            embed.AddField("Summary", item.Summary(), true);
 
             //if (!item.Description.IsNullOrEmpty())
             //{
             //   embed.AddField("Description",$"*{item.Description}*", inline:true);
             //}
 
-            embed.WithColor((item.Category == ItemCategory.Weapon && item.IsUnleashable) ? Colors.Get(item.Unleash.UnleashAlignment.ToString()) : item.IsArtifact ? Colors.Get("Artifact") : Colors.Get("Exathi"));
+            embed.WithColor(item.Category == ItemCategory.Weapon && item.IsUnleashable
+                ?
+                Colors.Get(item.Unleash.UnleashAlignment.ToString())
+                : item.IsArtifact
+                    ? Colors.Get("Artifact")
+                    : Colors.Get("Exathi"));
 
             _ = Context.Channel.SendMessageAsync("", false, embed.Build());
             await Task.CompletedTask;

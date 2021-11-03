@@ -6,7 +6,10 @@ namespace IodemBot.ColossoBattles
 {
     public class GoliathBattleEnvironment : PvPEnvironment
     {
-        public GoliathBattleEnvironment(ColossoBattleService battleService, string Name, ITextChannel lobbyChannel, bool isPersistent, ITextChannel teamAChannel, ITextChannel teamBChannel, IRole TeamBRole, uint playersToStart = 4) : base(battleService, Name, lobbyChannel, isPersistent, teamAChannel, teamBChannel, TeamBRole, playersToStart, 1)
+        public GoliathBattleEnvironment(ColossoBattleService battleService, string name, ITextChannel lobbyChannel,
+            bool isPersistent, ITextChannel teamAChannel, ITextChannel teamBChannel, IRole teamBRole,
+            uint playersToStart = 4) : base(battleService, name, lobbyChannel, isPersistent, teamAChannel, teamBChannel,
+            teamBRole, playersToStart, 1)
         {
             _ = Reset("init");
         }
@@ -15,14 +18,15 @@ namespace IodemBot.ColossoBattles
         {
             if (team == Team.B)
             {
-                player.Stats *= new Stats(1000, 100, 200, 200, 10);
+                player.Stats *= new Stats(1000, 100, 200, 200);
                 player.Stats *= 0.01;
                 player.Name = $"Goliath {player.Name}";
-                player.IsImmuneToOHKO = true;
+                player.IsImmuneToOhko = true;
                 player.IsImmuneToHPtoOne = true;
                 player.AddCondition(Condition.DeathCurse);
                 player.DeathCurseCounter = 10;
             }
+
             await base.AddPlayer(player, team);
         }
     }

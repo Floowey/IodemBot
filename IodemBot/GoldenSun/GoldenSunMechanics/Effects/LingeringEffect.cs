@@ -8,23 +8,23 @@ namespace IodemBot.Modules.GoldenSunMechanics
 {
     public class LingeringEffect : Effect
     {
-        public override string Type { get; } = "Lingering";
+        [JsonIgnore] private ColossoFighter _user;
+        public override string Type => "Lingering";
 
         [JsonProperty] public Effect Effect { get; set; } = new NoEffect();
-        [JsonProperty] public int CoolDown { get; set; } = 0;
+        [JsonProperty] public int CoolDown { get; set; }
         [JsonProperty] public int Duration { get; set; } = 1;
         [JsonProperty] public bool RemovedOnDeath { get; set; } = true;
         [JsonProperty] public string Text { get; set; } = "";
-        [JsonIgnore] private ColossoFighter User;
 
-        public override List<string> Apply(ColossoFighter User, ColossoFighter Target)
+        public override List<string> Apply(ColossoFighter user, ColossoFighter target)
         {
-            this.User = User;
-            Target.LingeringEffects.Add(this);
-            return new List<string>() { $"A {Effect.Type} Effect is lingering around {Target.Name}" };
+            _user = user;
+            target.LingeringEffects.Add(this);
+            return new List<string> { $"A {Effect.Type} Effect is lingering around {target.Name}" };
         }
 
-        public List<string> ApplyLingering(ColossoFighter Target)
+        public List<string> ApplyLingering(ColossoFighter target)
         {
             var log = new List<string>();
             if (CoolDown > 0)
@@ -37,13 +37,11 @@ namespace IodemBot.Modules.GoldenSunMechanics
             if (Duration >= 1)
             {
                 Duration--;
-                if (!Text.IsNullOrEmpty())
-                {
-                    log.Add(string.Format(Text, Target.Name));
-                }
-                log.AddRange(Effect.Apply(User, Target));
+                if (!Text.IsNullOrEmpty()) log.Add(string.Format(Text, target.Name));
+                log.AddRange(Effect.Apply(_user, target));
                 Console.WriteLine("Applied Effect");
             }
+
             return log;
         }
 

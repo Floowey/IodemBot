@@ -7,34 +7,34 @@ namespace IodemBot
 {
     public class Sprites
     {
-        private static readonly Dictionary<string, string> sprites;
+        private static readonly Dictionary<string, string> SpritesDictionary;
 
         public static string GetImageFromName(string name)
         {
             name = name.ToLower();
-            if (sprites.ContainsKey(name))
+            if (SpritesDictionary.ContainsKey(name))
             {
-                return sprites[name];
+                return SpritesDictionary[name];
             }
 
-            return sprites["unknown"];
+            return SpritesDictionary["unknown"];
         }
 
         static Sprites()
         {
-            string json = File.ReadAllText("SystemLang/sprites.json");
+            string json = File.ReadAllText("SystemLang/Sprites.json");
             var data = JsonConvert.DeserializeObject<dynamic>(json);
-            sprites = data.ToObject<Dictionary<string, string>>();
+            SpritesDictionary = data.ToObject<Dictionary<string, string>>();
         }
 
         public static int GetSpriteCount()
         {
-            return sprites.Count;
+            return SpritesDictionary.Count;
         }
 
         public static string GetRandomSprite()
         {
-            return sprites.Random().Value;
+            return SpritesDictionary.Random().Value;
         }
     }
 }

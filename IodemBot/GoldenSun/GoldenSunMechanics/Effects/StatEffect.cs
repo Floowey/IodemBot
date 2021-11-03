@@ -8,7 +8,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 {
     internal class StatEffect : Effect
     {
-        public override string Type { get; } = "Stat";
+        public override string Type => "Stat";
         [JsonProperty] private string Stat { get; set; } = "OH NO";
         [JsonProperty] private double Multiplier { get; set; } = 1;
         [JsonProperty] private int Probability { get; set; } = 100;
@@ -19,10 +19,10 @@ namespace IodemBot.Modules.GoldenSunMechanics
             return $"{(Probability == 100 ? $"{(Multiplier > 1 ? "Raise" : "Lower")}" : $"{Probability}% chance to {(Multiplier > 1 ? "raise" : "lower")}")} {Stat} of {(OnTarget ? "target" : "user")} to {(Multiplier * 100):0.##}%";
         }
 
-        public override List<string> Apply(ColossoFighter User, ColossoFighter Target)
+        public override List<string> Apply(ColossoFighter user, ColossoFighter target)
         {
             List<string> log = new List<string>();
-            ColossoFighter targetted = OnTarget ? Target : User;
+            ColossoFighter targetted = OnTarget ? target : user;
 
             if (!targetted.IsAlive)
             {
@@ -31,7 +31,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
             if (Stat == "OH NO")
             {
-                Console.WriteLine(string.Join(", ", User.Moves.Select(s => s.Name)));
+                Console.WriteLine(string.Join(", ", user.Moves.Select(s => s.Name)));
             }
 
             if (Global.RandomNumber(0, 100) <= Probability)

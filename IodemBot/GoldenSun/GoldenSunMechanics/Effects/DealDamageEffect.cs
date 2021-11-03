@@ -12,23 +12,23 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public double DmgMult { get; set; } = 1;
         public uint PercentageDamage { get; set; } = 0;
         public Element Element { get; set; }
-        private bool AttackBased { get { return Power == 0; } }
+        private bool AttackBased => Power == 0;
 
-        public override List<string> Apply(ColossoFighter User, ColossoFighter Target)
+        public override List<string> Apply(ColossoFighter user, ColossoFighter target)
         {
             var log = new List<string>();
-            if (!Target.IsAlive)
+            if (!target.IsAlive)
             {
                 return log;
             }
 
-            if (Target.HasCondition(Condition.Key) || Target.HasCondition(Condition.Trap) || Target.HasCondition(Condition.Decoy))
+            if (target.HasCondition(Condition.Key) || target.HasCondition(Condition.Trap) || target.HasCondition(Condition.Decoy))
             {
-                log.Add($"A magical barrier is protecting {Target.Name}.");
+                log.Add($"A magical barrier is protecting {target.Name}.");
                 return log;
             }
 
-            if (!Target.IsAlive)
+            if (!target.IsAlive)
             {
                 return log;
             }
@@ -36,55 +36,55 @@ namespace IodemBot.Modules.GoldenSunMechanics
             var baseDmg = Global.RandomNumber(0, 4);
             var dmg = AttackBased ?
                 Math.Max(0,
-                (User.Stats.Atk * User.MultiplyBuffs("Attack") - Target.Stats.Def * Target.ignoreDefense * Target.MultiplyBuffs("Defense")) / 2)
+                (user.Stats.Atk * user.MultiplyBuffs("Attack") - target.Stats.Def * target.IgnoreDefense * target.MultiplyBuffs("Defense")) / 2)
                 : (int)Power;
 
-            var elMult = 1 + (User.ElStats.GetPower(Element) * User.MultiplyBuffs("Power") - Target.ElStats.GetRes(Element) * Target.MultiplyBuffs("Resistance")) / (AttackBased ? 400 : 200);
+            var elMult = 1 + (user.ElStats.GetPower(Element) * user.MultiplyBuffs("Power") - target.ElStats.GetRes(Element) * target.MultiplyBuffs("Resistance")) / (AttackBased ? 400 : 200);
             elMult = Math.Max(0.5, elMult);
             elMult = Math.Max(0, elMult);
-            var prctdmg = (uint)(Target.Stats.MaxHP * PercentageDamage / 100);
-            var realDmg = (uint)((baseDmg + dmg + AddDamage) * DmgMult * elMult * Target.defensiveMult * User.offensiveMult + prctdmg);
+            var prctdmg = (uint)(target.Stats.MaxHP * PercentageDamage / 100);
+            var realDmg = (uint)((baseDmg + dmg + AddDamage) * DmgMult * elMult * target.DefensiveMult * user.OffensiveMult + prctdmg);
             var punctuation = "!";
 
-            if (Target.ElStats.GetRes(Element) == Target.ElStats.HighestRes())
+            if (target.ElStats.GetRes(Element) == target.ElStats.HighestRes())
             {
                 punctuation = ".";
             }
 
-            if (Target.ElStats.GetRes(Element) == Target.ElStats.LeastRes())
+            if (target.ElStats.GetRes(Element) == target.ElStats.LeastRes())
             {
                 punctuation = "!!!";
-                if (User is PlayerFighter k)
+                if (user is PlayerFighter k)
                 {
-                    k.battleStats.AttackedWeakness++;
+                    k.BattleStats.AttackedWeakness++;
                 }
             }
 
             realDmg = Math.Max(1, realDmg);
 
-            log.AddRange(Target.DealDamage(realDmg, punctuation));
-            User.damageDoneThisTurn += realDmg;
+            log.AddRange(target.DealDamage(realDmg, punctuation));
+            user.DamageDoneThisTurn += realDmg;
 
-            if (User is PlayerFighter p)
+            if (user is PlayerFighter p)
             {
-                p.battleStats.DamageDealt += realDmg;
-                if (!Target.IsAlive)
+                p.BattleStats.DamageDealt += realDmg;
+                if (!target.IsAlive)
                 {
-                    p.battleStats.Kills++;
+                    p.BattleStats.Kills++;
                 }
             }
 
-            if (Target.IsAlive && Target.HasCondition(Condition.Counter))
+            if (target.IsAlive && target.HasCondition(Condition.Counter))
             {
-                var counterAtk = Target.Stats.Atk * Target.MultiplyBuffs("Attack");
-                var counterDef = User.Stats.Def * User.MultiplyBuffs("Defense") * User.ignoreDefense;
-                uint CounterDamage = (uint)Global.RandomNumber(0, 4);
+                var counterAtk = target.Stats.Atk * target.MultiplyBuffs("Attack");
+                var counterDef = user.Stats.Def * user.MultiplyBuffs("Defense") * user.IgnoreDefense;
+                uint counterDamage = (uint)Global.RandomNumber(0, 4);
                 if (counterDef < counterAtk)
                 {
-                    CounterDamage += (uint)((counterAtk - counterDef) * User.defensiveMult / 2);
+                    counterDamage += (uint)((counterAtk - counterDef) * user.DefensiveMult / 2);
                 }
-                log.Add($"{Target.Name} strikes back!");
-                log.AddRange(User.DealDamage(CounterDamage));
+                log.Add($"{target.Name} strikes back!");
+                log.AddRange(user.DealDamage(counterDamage));
             }
 
             return log;

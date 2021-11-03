@@ -9,15 +9,15 @@ namespace IodemBot.Modules
 {
     public abstract class BattleAction : BotComponentAction
     {
+        protected BattleEnvironment Battle;
+
+        protected ColossoBattleService BattleService;
+        protected IServiceScope Scope;
         public override EphemeralRule EphemeralRule => EphemeralRule.EphemeralOrFail;
 
         public override bool GuildsOnly => true;
 
         public override GuildPermissions? RequiredPermissions => null;
-
-        protected ColossoBattleService BattleService;
-        protected IServiceScope _scope;
-        protected BattleEnvironment battle;
 
         protected override Task<(bool Success, string Message)> CheckCustomPreconditionsAsync()
         {
@@ -25,11 +25,11 @@ namespace IodemBot.Modules
             if (!guildResult.Success)
                 return Task.FromResult(guildResult);
 
-            _scope = ServiceProvider.CreateScope();
-            BattleService = _scope.ServiceProvider.GetRequiredService<ColossoBattleService>();
+            Scope = ServiceProvider.CreateScope();
+            BattleService = Scope.ServiceProvider.GetRequiredService<ColossoBattleService>();
 
-            battle = BattleService.GetBattleEnvironment(Context.Channel);
-            if (battle == null)
+            Battle = BattleService.GetBattleEnvironment(Context.Channel);
+            if (Battle == null)
                 return Task.FromResult((false, "Battle not found"));
 
             return Task.FromResult(guildResult);
@@ -38,13 +38,12 @@ namespace IodemBot.Modules
 
     public abstract class InBattleAction : BattleAction
     {
+        protected PlayerFighter Player;
         public override EphemeralRule EphemeralRule => EphemeralRule.EphemeralOrFail;
 
         public override bool GuildsOnly => true;
 
         public override GuildPermissions? RequiredPermissions => null;
-
-        protected PlayerFighter player;
 
         protected override Task<(bool Success, string Message)> CheckCustomPreconditionsAsync()
         {
@@ -55,17 +54,17 @@ namespace IodemBot.Modules
             if (!BattleService.UserInBattle(Context.User.Id))
                 return Task.FromResult((false, "You aren't in a battle."));
 
-            player = battle.GetPlayer(Context.User.Id);
-            if (player == null)
+            Player = Battle.GetPlayer(Context.User.Id);
+            if (Player == null)
                 return Task.FromResult((false, "You aren't in this battle."));
 
-            if (!battle.IsUsersMessage(player, Context.Message))
+            if (!Battle.IsUsersMessage(Player, Context.Message))
                 return Task.FromResult((false, "Click your own message!"));
 
-            if (battle.isProcessing)
+            if (Battle.IsProcessing)
                 return Task.FromResult((false, "Too fast."));
 
-            if (!player.IsAlive)
+            if (!Player.IsAlive)
                 return Task.FromResult((false, "You are dead."));
 
             return baseResult;

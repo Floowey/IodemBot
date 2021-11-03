@@ -19,12 +19,12 @@ namespace IodemBot.ColossoBattles
     {
         public ColossoBattleService BattleService { get; set; }
 
-        public static readonly string[] numberEmotes = new string[] { "\u0030\u20E3", "\u0031\u20E3", "\u0032\u20E3", "\u0033\u20E3", "\u0034\u20E3", "\u0035\u20E3",
+        public static readonly string[] NumberEmotes = new string[] { "\u0030\u20E3", "\u0031\u20E3", "\u0032\u20E3", "\u0033\u20E3", "\u0034\u20E3", "\u0035\u20E3",
             "\u0036\u20E3", "\u0037\u20E3", "\u0038\u20E3", "\u0039\u20E3" };
 
-        private static readonly Dictionary<SocketGuildUser, DateTime> FighterRoles = new Dictionary<SocketGuildUser, DateTime>();
+        private static readonly Dictionary<SocketGuildUser, DateTime> FighterRoles = new();
 
-        public async Task SetupDungeon(string DungeonName, bool ModPermission = false)
+        public async Task SetupDungeon(string dungeonName, bool modPermission = false)
         {
             if (!BattleService.AcceptBattles)
             {
@@ -38,17 +38,17 @@ namespace IodemBot.ColossoBattles
             var acc = EntityConverter.ConvertUser(Context.User);
             var gs = GuildSettings.GetGuildSettings(Context.Guild);
             _ = RemoveFighterRoles();
-            if (EnemiesDatabase.TryGetDungeon(DungeonName, out var Dungeon))
+            if (EnemiesDatabase.TryGetDungeon(dungeonName, out var dungeon))
             {
-                if (!acc.Dungeons.Contains(Dungeon.Name) && !Dungeon.IsDefault && !ModPermission)
+                if (!acc.Dungeons.Contains(dungeon.Name) && !dungeon.IsDefault && !modPermission)
                 {
-                    await ReplyAsync($"If you can't tell me where this place is, I can't take you there. And even if you knew, they probably wouldn't let you in! Bring me a map or show to me that you have the key to enter.");
+                    await ReplyAsync("If you can't tell me where this place is, I can't take you there. And even if you knew, they probably wouldn't let you in! Bring me a map or show to me that you have the key to enter.");
                     return;
                 }
 
-                if (!Dungeon.Requirement.Applies(acc) && !ModPermission)
+                if (!dungeon.Requirement.Applies(acc) && !modPermission)
                 {
-                    await ReplyAsync($"I'm afraid that I can't take you to this place, it is too dangerous for you and me both.");
+                    await ReplyAsync("I'm afraid that I can't take you to this place, it is too dangerous for you and me both.");
                     return;
                 }
 
@@ -60,7 +60,7 @@ namespace IodemBot.ColossoBattles
                     {
                         if (gauntletFromUser.IsActive)
                         {
-                            await ReplyAsync($"What? You already are on an adventure!");
+                            await ReplyAsync("What? You already are on an adventure!");
                             Console.WriteLine($"User Active in: {gauntletFromUser.Name}; {gauntletFromUser.BattleChannel.Id}");
                             return;
                         }
@@ -70,27 +70,27 @@ namespace IodemBot.ColossoBattles
                             //battles.Remove(gauntletFromUser);
                         }
                     }
-                    openBattle = new GauntletBattleEnvironment(BattleService, $"{Context.User.Username}", GuildSettings.GetGuildSettings(Context.Guild).ColossoChannel, await BattleService.PrepareBattleChannel($"{Dungeon.Name}-{Context.User.Username}", Context.Guild, persistent: false), Dungeon.Name, false);
+                    openBattle = new GauntletBattleEnvironment(BattleService, $"{Context.User.Username}", GuildSettings.GetGuildSettings(Context.Guild).ColossoChannel, await BattleService.PrepareBattleChannel($"{dungeon.Name}-{Context.User.Username}", Context.Guild, persistent: false), dungeon.Name, false);
 
                     BattleService.AddBattleEnvironment(openBattle);
                 }
                 else
                 {
-                    openBattle.SetEnemy(DungeonName);
+                    openBattle.SetEnemy(dungeonName);
                 }
 
-                if (Dungeon.IsOneTimeOnly && !ModPermission)
+                if (dungeon.IsOneTimeOnly && !modPermission)
                 {
-                    acc.Dungeons.Remove(Dungeon.Name);
+                    acc.Dungeons.Remove(dungeon.Name);
                     UserAccountProvider.StoreUser(acc);
                 }
-                _ = Context.Channel.SendMessageAsync($"{Context.User.Username}, {openBattle.BattleChannel.Mention} has been prepared for your adventure to {Dungeon.Name}");
+                _ = Context.Channel.SendMessageAsync($"{Context.User.Username}, {openBattle.BattleChannel.Mention} has been prepared for your adventure to {dungeon.Name}");
 
                 _ = AddFighterRole();
             }
             else
             {
-                await ReplyAsync($"I don't know where that place is.");
+                await ReplyAsync("I don't know where that place is.");
             }
 
             await Task.CompletedTask;
@@ -141,14 +141,14 @@ namespace IodemBot.ColossoBattles
 
         [Command("DungeonInfo"), Alias("dgi")]
         [Summary("Get information about a dungeon")]
-        public async Task DungeonInfo([Remainder] string DungeonName)
+        public async Task DungeonInfo([Remainder] string dungeonName)
         {
-            if (EnemiesDatabase.TryGetDungeon(DungeonName, out var dungeon))
+            if (EnemiesDatabase.TryGetDungeon(dungeonName, out var dungeon))
             {
-                var RewardTablesWithDjinn = dungeon.Matchups
+                var rewardTablesWithDjinn = dungeon.Matchups
                     .SelectMany(m => m.RewardTables.Where(t => t.OfType<DefaultReward>().Any(r => r.Djinn != "")));
 
-                var djinnTotal = RewardTablesWithDjinn.SelectMany(t => t.OfType<DefaultReward>().Where(r => r.Djinn != ""));
+                var djinnTotal = rewardTablesWithDjinn.SelectMany(t => t.OfType<DefaultReward>().Where(r => r.Djinn != ""));
 
                 var limittedDjinn = djinnTotal.GroupBy(d => d.Tag)
                     .Select(k => k.OrderByDescending(d => d.Obtainable).First());
@@ -158,7 +158,7 @@ namespace IodemBot.ColossoBattles
                 var avatar = EntityConverter.ConvertUser(Context.User);
                 var djinnobtained = avatar.Tags.Count(t => limittedDjinn.Any(r => r.Tag.Contains(t)));
 
-                var probability = djinnTotal.Count() > 0 ? 1 - 1.0 / RewardTablesWithDjinn
+                var probability = djinnTotal.Any() ? 1 - 1.0 / rewardTablesWithDjinn
                     .Select(
                         r => 1.0 / (1 - (
                             r.Where(
@@ -182,7 +182,7 @@ namespace IodemBot.ColossoBattles
                     .WithThumbnailUrl(dungeon.Image)
                     .AddField("Info", $"{(dungeon.IsDefault ? "Default " : "")}{(dungeon.IsOneTimeOnly ? "<:dungeonkey:606237382047694919> Dungeon" : "<:mapopen:606236181503410176> Town")} for up to {dungeon.MaxPlayer} {(dungeon.MaxPlayer == 1 ? "player" : "players")}. {dungeon.Matchups.Count} stages.")
                     .AddField("Requirement", $"{dungeon.Requirement.GetDescription()}")
-                    .AddField("Djinn", $"{(djinnTotal.Count() > 0 ? $"{djinnobtained}/{limittedDjinn.Sum(d => d.Obtainable)}{(unlimittedDjinn.Count() > 0 ? "+" : "")} ({probability * 100:N0}% success rate)" : "none")}")
+                    .AddField("Djinn", $"{(djinnTotal.Any() ? $"{djinnobtained}/{limittedDjinn.Sum(d => d.Obtainable)}{(unlimittedDjinn.Any() ? "+" : "")} ({probability * 100:N0}% success rate)" : "none")}")
                     .Build());
                 await Task.CompletedTask;
             }
@@ -242,7 +242,7 @@ namespace IodemBot.ColossoBattles
             var a = BattleService.GetBattleEnvironment(b => b.ChannelIds.Contains(Context.Channel.Id)
                 && b.Name.Equals(name, StringComparison.InvariantCultureIgnoreCase));
 
-            if (a != null && a is PvEEnvironment pve)
+            if (a is PvEEnvironment pve)
                 pve.SetEnemy(enemy);
         }
 
@@ -264,9 +264,7 @@ namespace IodemBot.ColossoBattles
             var gs = GuildSettings.GetGuildSettings(guild);
             _ = RemoveFighterRoles();
 
-            EndlessBattleEnvironment openBattle;
-
-            openBattle = new EndlessBattleEnvironment(BattleService, $"{Context.User.Username}", gs.ColossoChannel, false, await BattleService.PrepareBattleChannel($"Endless-{Context.User.Username}", guild, persistent: false));
+            var openBattle = new EndlessBattleEnvironment(BattleService, $"{Context.User.Username}", gs.ColossoChannel, false, await BattleService.PrepareBattleChannel($"Endless-{Context.User.Username}", guild, persistent: false));
             openBattle.SetStreak(round);
 
             BattleService.AddBattleEnvironment(openBattle);
@@ -309,7 +307,7 @@ namespace IodemBot.ColossoBattles
             {
                 if (endlessFromUser.IsActive)
                 {
-                    await ReplyAsync($"What? You already are on an adventure!");
+                    await ReplyAsync("What? You already are on an adventure!");
                     return;
                 }
                 else
@@ -343,8 +341,8 @@ namespace IodemBot.ColossoBattles
         [Summary("Prepare a channel for an adventure to a specified dungeon")]
         [RequireUserServer]
         //redundant
-        public async Task Dungeon([Remainder] string DungeonName)
-        { _ = SetupDungeon(DungeonName, false); await Task.CompletedTask; }
+        public async Task Dungeon([Remainder] string dungeonName)
+        { _ = SetupDungeon(dungeonName, false); await Task.CompletedTask; }
 
         [Command("Tutorial")]
         [Summary("Enter the Tutorial and start your adventure!")]
@@ -357,14 +355,14 @@ namespace IodemBot.ColossoBattles
         [RequireStaff]
         [RequireUserServer]
         //no slash
-        public async Task ModDungeon([Remainder] string DungeonName)
-        { _ = SetupDungeon(DungeonName, true); await Task.CompletedTask; }
+        public async Task ModDungeon([Remainder] string dungeonName)
+        { _ = SetupDungeon(dungeonName, true); await Task.CompletedTask; }
 
         [Command("alldungeons")]
         [RequireStaff]
         public async Task AllDungeon()
         {
-            await ReplyAsync(string.Join("\n", EnemiesDatabase.dungeons.Values.Select(d => d.Name)));
+            await ReplyAsync(string.Join("\n", EnemiesDatabase.Dungeons.Values.Select(d => d.Name)));
         }
 
         [Command("givedungeon")]
@@ -400,7 +398,8 @@ namespace IodemBot.ColossoBattles
                     embed.AddField($"{b.Name} {(b.IsPersistent ? "(Permanent)" : "")}",
                     $"{b.GetType().Name}\n" +
                     $"Channels:{string.Join(",", b.ChannelIds.Select(id => $"<#{id}>"))}");
-                };
+                }
+
                 if (embed.Fields.Count == 0)
                     embed.WithDescription("No registered battles.");
                 await ReplyAsync(embed: embed.Build());

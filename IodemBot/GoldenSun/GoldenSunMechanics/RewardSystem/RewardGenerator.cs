@@ -6,50 +6,42 @@ namespace IodemBot.Modules.GoldenSunMechanics.RewardSystem
 {
     public class RewardGenerator<T>
     {
-        private readonly List<Reward> Rewards = new List<Reward>();
+        private readonly List<RewardStruct> _rewards = new();
 
         public RewardGenerator(IEnumerable<T> rewards, IEnumerable<int> weights)
         {
             if (rewards.Count() != weights.Count())
-            {
                 throw new ArgumentException("Length of rewards and weights must match up.");
-            }
-            for (int i = 0; i < rewards.Count(); i++)
-            {
-                AddReward(rewards.ElementAt(i), weights.ElementAt(i));
-            }
+            for (var i = 0; i < rewards.Count(); i++) AddReward(rewards.ElementAt(i), weights.ElementAt(i));
         }
 
         public void AddReward(T reward, int weight)
         {
-            Rewards.Add(new Reward(reward, weight));
+            _rewards.Add(new RewardStruct(reward, weight));
         }
 
         public T GenerateReward()
         {
-            if (Rewards.Count == 0)
-            {
-                throw new InvalidOperationException("Sequence contains no elements");
-            }
+            if (_rewards.Count == 0) throw new InvalidOperationException("Sequence contains no elements");
 
-            var weight = Rewards.Sum(d => d.weight);
+            var weight = _rewards.Sum(d => d.Weight);
 
-            int roll = Global.RandomNumber(0, weight);
-            var sortedRewards = Rewards.OrderByDescending(d => d.weight).ToList();
-            var reward = sortedRewards.SkipWhile(r => (roll -= r.weight) >= 0).FirstOrDefault().reward;
+            var roll = Global.RandomNumber(0, weight);
+            var sortedRewards = _rewards.OrderByDescending(d => d.Weight).ToList();
+            var reward = sortedRewards.SkipWhile(r => (roll -= r.Weight) >= 0).FirstOrDefault().Reward;
 
             return reward;
         }
 
-        private struct Reward
+        private struct RewardStruct
         {
-            internal T reward;
-            internal int weight;
+            internal readonly T Reward;
+            internal readonly int Weight;
 
-            public Reward(T reward, int weight) : this()
+            public RewardStruct(T reward, int weight) : this()
             {
-                this.reward = reward;
-                this.weight = weight;
+                Reward = reward;
+                Weight = weight;
             }
         }
     }

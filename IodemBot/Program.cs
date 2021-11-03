@@ -15,85 +15,10 @@ namespace IodemBot
 {
     internal class Program
     {
-        private static DiscordSocketClient client;
+        private static DiscordSocketClient _client;
 
-        private static void Main(string[] args)
+        private readonly string[] _welcomeMsg =
         {
-            try
-            {
-                Global.RunningSince = DateTime.Now;
-                new Program().StartAsync().GetAwaiter().GetResult();
-            }
-            catch (Exception e)
-            {
-                var date = DateTime.Now.ToString("yyyy_mm_dd");
-                Console.WriteLine(e.ToString());
-                File.AppendAllText($"Logs/{date}_crash.log", e.ToString());
-            }
-        }
-
-        public async Task StartAsync()
-        {
-            if (string.IsNullOrEmpty(Config.bot.token))
-            {
-                return;
-            }
-            using var services = ConfigureServices();
-            client = services.GetRequiredService<DiscordSocketClient>();
-
-            Global.Client = client;
-
-            client.Log += Log;
-            client.Ready += Client_Ready;
-            client.UserLeft += Client_UserLeft;
-            client.UserJoined += Client_UserJoined;
-            client.GuildMemberUpdated += Client_GuildMemberUpdated;
-
-            await client.LoginAsync(TokenType.Bot, Config.bot.token);
-            await client.StartAsync();
-
-            await services.GetRequiredService<CommandHandlingService>().InitializeAsync();
-            await services.GetRequiredService<ActionService>().InitializeAsync();
-            services.GetRequiredService<RequestContextService>().Initialize();
-
-            await services.GetRequiredService<MessageHandler>().InitializeAsync(client);
-            await Task.Delay(-1);
-        }
-
-        private async Task Client_GuildMemberUpdated(Cacheable<SocketGuildUser, ulong> before, SocketGuildUser user)
-        {
-            var guild = GuildSettings.GetGuildSettings(user.Guild);
-            var user_before = before.Value;
-            if (user_before.DisplayName() != user.DisplayName())
-            {
-                EntityConverter.ConvertUser(user).Name = user.DisplayName();
-                _ = guild.TestCommandChannel
-                    .SendMessageAsync($"{user.Mention} changed Nickname from {user_before.DisplayName()} to {user.DisplayName()}");
-            }
-
-            if (user_before.IsPending == true && user.IsPending == false)
-            {
-                if (GuildSettings.GetGuildSettings(user.Guild).sendWelcomeMessage)
-                {
-                    _ = guild.MainChannel.SendMessageAsync(embed:
-                        new EmbedBuilder()
-                        .WithColor(Colors.Get("Iodem"))
-                        .WithDescription(string.Format(welcomeMsg.Random(), user.DisplayName()))
-                        .Build());
-                }
-            }
-
-            if (user_before.PremiumSince.HasValue != user.PremiumSince.HasValue)
-            {
-                var isBoosting = user.PremiumSince.HasValue;
-                _ = guild.TestCommandChannel
-                   .SendMessageAsync($"{"<:Exclamatory:549529360604856323>"} {user.Mention} is {(isBoosting ? "now" : "no longer")} boosting the server.");
-            }
-
-            await Task.CompletedTask;
-        }
-
-        private readonly string[] welcomeMsg = {
             "Welcome, {0}! Just ignore that strange tree out front!",
             "Welcome, {0}! We'll forget that whole curse business in no time!",
             "Welcome, {0}! You may enter, so long as you do not disrupt the peace.",
@@ -110,39 +35,109 @@ namespace IodemBot
             "Felix gave a Hard Nut to {0}",
             "You're {0}? The one they're all talking about? I heard rumors that you were a huge, hulking man. I guess they were wrong.",
             "Well, if it isn't {0}, too! Where do you all plan to go today?",
-            "Hello {0}! Is 150 coins for your Nut good?",
+            "Hello {0}! Is 150 coins for your Nut good?"
         };
+
+        private static void Main(string[] args)
+        {
+            try
+            {
+                Global.RunningSince = DateTime.Now;
+                new Program().StartAsync().GetAwaiter().GetResult();
+            }
+            catch (Exception e)
+            {
+                var date = DateTime.Now.ToString("yyyy_mm_dd");
+                Console.WriteLine(e.ToString());
+                File.AppendAllText($"Logs/{date}_crash.log", e.ToString());
+            }
+        }
+
+        private async Task StartAsync()
+        {
+            if (string.IsNullOrEmpty(Config.Bot.Token)) return;
+            await using var services = ConfigureServices();
+            _client = services.GetRequiredService<DiscordSocketClient>();
+
+            Global.Client = _client;
+
+            _client.Log += Log;
+            _client.Ready += Client_Ready;
+            _client.UserLeft += Client_UserLeft;
+            _client.UserJoined += Client_UserJoined;
+            _client.GuildMemberUpdated += Client_GuildMemberUpdated;
+
+            await _client.LoginAsync(TokenType.Bot, Config.Bot.Token);
+            await _client.StartAsync();
+
+            await services.GetRequiredService<CommandHandlingService>().InitializeAsync();
+            await services.GetRequiredService<ActionService>().InitializeAsync();
+            services.GetRequiredService<RequestContextService>().Initialize();
+
+            await services.GetRequiredService<MessageHandler>().InitializeAsync(_client);
+            await Task.Delay(-1);
+        }
+
+        private async Task Client_GuildMemberUpdated(Cacheable<SocketGuildUser, ulong> before, SocketGuildUser user)
+        {
+            var guild = GuildSettings.GetGuildSettings(user.Guild);
+            var userBefore = before.Value;
+            if (userBefore.DisplayName() != user.DisplayName())
+            {
+                EntityConverter.ConvertUser(user).Name = user.DisplayName();
+                _ = guild.TestCommandChannel
+                    .SendMessageAsync(
+                        $"{user.Mention} changed Nickname from {userBefore.DisplayName()} to {user.DisplayName()}");
+            }
+
+            if (userBefore.IsPending == true && user.IsPending == false)
+                if (GuildSettings.GetGuildSettings(user.Guild).SendWelcomeMessage)
+                    _ = guild.MainChannel.SendMessageAsync(embed:
+                        new EmbedBuilder()
+                            .WithColor(Colors.Get("Iodem"))
+                            .WithDescription(string.Format(_welcomeMsg.Random(), user.DisplayName()))
+                            .Build());
+
+            if (userBefore.PremiumSince.HasValue != user.PremiumSince.HasValue)
+            {
+                var isBoosting = user.PremiumSince.HasValue;
+                _ = guild.TestCommandChannel
+                    .SendMessageAsync(
+                        $"<:Exclamatory:549529360604856323> {user.Mention} is {(isBoosting ? "now" : "no longer")} boosting the server.");
+            }
+
+            await Task.CompletedTask;
+        }
 
         private async Task Client_UserJoined(SocketGuildUser user)
         {
             _ = GuildSettings.GetGuildSettings(user.Guild).TestCommandChannel.SendMessageAsync(embed:
                 new EmbedBuilder()
-                .WithAuthor(user)
-                .AddField("Account Created", user.CreatedAt)
-                .AddField("User Joined", user.JoinedAt)
-                .AddField("Status", user.Status, true)
-                .Build());
+                    .WithAuthor(user)
+                    .AddField("Account Created", user.CreatedAt)
+                    .AddField("User Joined", user.JoinedAt)
+                    .AddField("Status", user.Status, true)
+                    .Build());
             await Task.CompletedTask;
         }
 
         private async Task Client_UserLeft(SocketGuildUser user)
         {
-            if (GuildSettings.GetGuildSettings(user.Guild).sendLeaveMessage)
-            {
-                _ = GuildSettings.GetGuildSettings(user.Guild).TestCommandChannel.SendMessageAsync($"{user.DisplayName()} left the party :(.");
-            }
+            if (GuildSettings.GetGuildSettings(user.Guild).SendLeaveMessage)
+                _ = GuildSettings.GetGuildSettings(user.Guild).TestCommandChannel
+                    .SendMessageAsync($"{user.DisplayName()} left the party :(.");
             await Task.CompletedTask;
         }
 
         private async Task Client_Ready()
         {
-            client.Ready -= Client_Ready;
-            var channel = (SocketTextChannel)client.GetChannel(535209634408169492) ?? (SocketTextChannel)client.GetChannel(668443234292334612);
+            _client.Ready -= Client_Ready;
+            var channel = (SocketTextChannel)_client.GetChannel(535209634408169492) ??
+                          (SocketTextChannel)_client.GetChannel(668443234292334612);
             if (channel != null && (DateTime.Now - Global.RunningSince).TotalSeconds < 15)
-            {
-                await channel.SendMessageAsync($"Hello, I am back up.\nOS: {Environment.OSVersion}\nBuild Time: {File.GetLastWriteTime(Assembly.GetExecutingAssembly().Location)}");
-            }
-            await client.SetStatusAsync(UserStatus.Idle);
+                await channel.SendMessageAsync(
+                    $"Hello, I am back up.\nOS: {Environment.OSVersion}\nBuild Time: {File.GetLastWriteTime(Assembly.GetExecutingAssembly().Location)}");
+            await _client.SetStatusAsync(UserStatus.Idle);
             Global.UpSince = DateTime.UtcNow;
         }
 
@@ -154,26 +149,30 @@ namespace IodemBot
             {
                 File.AppendAllText($"Logs/{date}_log.log", msg.Message + Environment.NewLine);
             }
-            catch { }
+            catch
+            {
+            }
+
             try
             {
                 if (msg.Exception != null)
                 {
                     Console.WriteLine(msg.Exception.ToString());
-                    File.AppendAllText($"Logs/{date}_log.log", msg.Exception.ToString() + Environment.NewLine);
+                    File.AppendAllText($"Logs/{date}_log.log", msg.Exception + Environment.NewLine);
                 }
             }
             catch
             {
-                File.AppendAllText($"Logs/{date}_log.log", $"Couldn't print Exception.\n");
+                File.AppendAllText($"Logs/{date}_log.log", "Couldn't print Exception.\n");
             }
+
             await Task.CompletedTask;
         }
 
         private ServiceProvider ConfigureServices()
         {
             return new ServiceCollection()
-                .AddSingleton(new DiscordSocketClient(new DiscordSocketConfig()
+                .AddSingleton(new DiscordSocketClient(new DiscordSocketConfig
                 {
                     //AlwaysAcknowledgeInteractions = false,
                     GatewayIntents = GatewayIntents.All,

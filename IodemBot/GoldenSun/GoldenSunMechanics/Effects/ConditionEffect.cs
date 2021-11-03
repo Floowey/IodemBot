@@ -7,7 +7,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 {
     internal class ConditionEffect : Effect
     {
-        public override string Type { get; } = "Condition";
+        public override string Type => "Condition";
         public Condition Condition { get; set; }
         public int Probability { get; set; } = 10;
 
@@ -27,23 +27,23 @@ namespace IodemBot.Modules.GoldenSunMechanics
             return !user.Enemies.All(s => s.HasCondition(Condition));
         }
 
-        public override List<string> Apply(ColossoFighter User, ColossoFighter Target)
+        public override List<string> Apply(ColossoFighter user, ColossoFighter target)
         {
             List<string> log = new List<string>();
-            if (Target.isImmuneToConditions.Contains(Condition))
+            if (target.IsImmuneToConditions.Contains(Condition))
             {
                 return log;
             }
 
-            if (!Target.IsAlive)
+            if (!target.IsAlive)
             {
                 return log;
             }
 
             if (Global.RandomNumber(0, 100) <= Probability)
             {
-                Target.AddCondition(Condition);
-                log.Add($"{Target.Name} gets hit with {Condition}!");
+                target.AddCondition(Condition);
+                log.Add($"{target.Name} gets hit with {Condition}!");
             }
             return log;
         }

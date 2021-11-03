@@ -7,8 +7,6 @@ namespace IodemBot.Discords.Services
 {
     public class RequestContextService
     {
-        public RequestContext Context { get; set; }
-
         //DI
         private readonly IServiceProvider _services;
 
@@ -16,6 +14,8 @@ namespace IodemBot.Discords.Services
         {
             _services = services;
         }
+
+        public RequestContext Context { get; set; }
 
         public void Initialize()
         {

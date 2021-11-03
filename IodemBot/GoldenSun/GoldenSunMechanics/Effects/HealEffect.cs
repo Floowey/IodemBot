@@ -8,29 +8,29 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public override string Type => "Heal";
         public int Percentage { get; set; }
         public int HealPower { get; set; }
-        public int PPHeal { get; set; }
-        public int PPPercent { get; set; }
+        public int PpHeal { get; set; }
+        public int PpPercent { get; set; }
         public Element Element { get; set; }
 
-        public override List<string> Apply(ColossoFighter User, ColossoFighter Target)
+        public override List<string> Apply(ColossoFighter user, ColossoFighter target)
         {
             var log = new List<string>();
-            int Power = (int)(User.ElStats.GetPower(Element) * User.MultiplyBuffs("Power"));
-            var HPtoHeal = (uint)(HealPower * Power / 100 + Target.Stats.MaxHP * Percentage / 100);
-            if (HPtoHeal > 0)
+            int power = (int)(user.ElStats.GetPower(Element) * user.MultiplyBuffs("Power"));
+            var hPtoHeal = (uint)(HealPower * power / 100 + target.Stats.MaxHP * Percentage / 100);
+            if (hPtoHeal > 0)
             {
-                log.AddRange(Target.Heal(HPtoHeal));
+                log.AddRange(target.Heal(hPtoHeal));
             }
 
-            var PPToHeal = (uint)(PPHeal * Power / 100 + Target.Stats.MaxPP * PPPercent / 100);
-            if (PPToHeal > 0)
+            var ppToHeal = (uint)(PpHeal * power / 100 + target.Stats.MaxPP * PpPercent / 100);
+            if (ppToHeal > 0)
             {
-                log.AddRange(Target.RestorePP(PPToHeal));
+                log.AddRange(target.RestorePp(ppToHeal));
             }
 
-            if (User is PlayerFighter p)
+            if (user is PlayerFighter p)
             {
-                p.battleStats.HPhealed += HPtoHeal;
+                p.BattleStats.HPhealed += hPtoHeal;
             }
             return log;
         }

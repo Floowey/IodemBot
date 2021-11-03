@@ -13,7 +13,7 @@ namespace IodemBot.Modules
     [Cooldown(10)]
     public class FriendCodes : ModuleBase<SocketCommandContext>
     {
-        public enum Code { PoGo, Switch, DS, n3ds }
+        public enum Code { PoGo, Switch, Ds, N3ds }
 
         [Command(""), Alias("")]
         [Summary("Get your Friendcode or the the FC of someone else")]
@@ -26,11 +26,11 @@ namespace IodemBot.Modules
             embed.WithColor(Colors.Get("Iodem"));
             embed.WithAuthor(target);
 
-            if (user.arePublicCodes || target.Equals(Context.User))
+            if (user.ArePublicCodes || target.Equals(Context.User))
             {
                 embed.WithDescription($"PoGo: {user.PoGoCode} \n" +
                 $"Switch: {user.SwitchCode} \n" +
-                $"3DS: {user.N3DSCode}");
+                $"3DS: {user.N3DsCode}");
             }
             else
             {
@@ -55,7 +55,7 @@ namespace IodemBot.Modules
             {
                 case "3ds":
                 case "n3ds":
-                    account.N3DSCode = code;
+                    account.N3DsCode = code;
                     embed.WithDescription("I have added your Nintendo 3DS Friend code.");
                     break;
 
@@ -83,7 +83,7 @@ namespace IodemBot.Modules
         public async Task SetPublic()
         {
             var account = EntityConverter.ConvertUser(Context.User);
-            account.arePublicCodes = true;
+            account.ArePublicCodes = true;
             UserAccountProvider.StoreUser(account);
 
             var embed = new EmbedBuilder();
@@ -98,7 +98,7 @@ namespace IodemBot.Modules
         public async Task SetPrivate()
         {
             var account = EntityConverter.ConvertUser(Context.User);
-            account.arePublicCodes = false;
+            account.ArePublicCodes = false;
             UserAccountProvider.StoreUser(account);
 
             var embed = new EmbedBuilder();

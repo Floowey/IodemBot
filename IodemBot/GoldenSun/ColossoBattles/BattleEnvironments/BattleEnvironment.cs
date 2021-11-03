@@ -13,27 +13,49 @@ namespace IodemBot.ColossoBattles
 {
     public abstract class BattleEnvironment : IDisposable
     {
-        protected static readonly string[] numberEmotes = new string[] { "0️⃣", "1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣",
-            "6️⃣", "7️⃣", "8️⃣", "9️⃣" };
+        protected static readonly string[] NumberEmotes =
+        {
+            "0️⃣", "1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣",
+            "6️⃣", "7️⃣", "8️⃣", "9️⃣"
+        };
+
+        protected readonly List<SocketReaction> Reactions = new();
+        protected Timer AutoTurn;
+
+        protected Timer ResetIfNotActive;
+
+        public BattleEnvironment(ColossoBattleService battleService, string name = null,
+            ITextChannel lobbyChannel = null, bool isPersistent = true)
+        {
+            this.Name = name ?? "No Name";
+            this.LobbyChannel = lobbyChannel;
+            this.IsPersistent = isPersistent;
+            this.BattleService = battleService;
+            Global.Client.ReactionAdded += ReactionAdded;
+        }
 
         public string Name { get; set; }
         public uint PlayersToStart { get; protected set; } = 4;
-        protected ITextChannel lobbyChannel { get; set; }
+        protected ITextChannel LobbyChannel { get; set; }
 
         public ColossoBattle Battle { get; protected set; }
-
-        protected Timer resetIfNotActive;
-        protected Timer autoTurn;
-        protected readonly List<SocketReaction> reactions = new List<SocketReaction>();
-        public bool isProcessing { get; private set; } = false;
-        public bool IsActive { get { return Battle.IsActive; } }
+        public bool IsProcessing { get; private set; }
+        public bool IsActive => Battle.IsActive;
         public bool IsPersistent { get; set; } = true;
 
-        private ColossoBattleService BattleService { get; set; }
+        private ColossoBattleService BattleService { get; }
         internal abstract ulong[] ChannelIds { get; }
 
-        public PlayerFighter GetPlayer(ulong playerID) =>
-            Battle.TeamA.Concat(Battle.TeamB).OfType<PlayerFighter>().FirstOrDefault(p => p.Id == playerID);
+        public virtual void Dispose()
+        {
+            BattleService.RemoveBattleEnvironment(this);
+            Global.Client.ReactionAdded -= ReactionAdded;
+        }
+
+        public PlayerFighter GetPlayer(ulong playerId)
+        {
+            return Battle.TeamA.Concat(Battle.TeamB).OfType<PlayerFighter>().FirstOrDefault(p => p.Id == playerId);
+        }
 
         public abstract Task AddPlayer(PlayerFighter player, Team team = Team.A);
 
@@ -43,16 +65,8 @@ namespace IodemBot.ColossoBattles
 
         public abstract bool IsUsersMessage(PlayerFighter player, IUserMessage message);
 
-        public BattleEnvironment(ColossoBattleService BattleService, string Name = null, ITextChannel lobbyChannel = null, bool IsPersistent = true)
-        {
-            this.Name = Name ?? "No Name";
-            this.lobbyChannel = lobbyChannel;
-            this.IsPersistent = IsPersistent;
-            this.BattleService = BattleService;
-            Global.Client.ReactionAdded += ReactionAdded;
-        }
-
-        public async Task ReactionAdded(Cacheable<IUserMessage, ulong> message, Cacheable<IMessageChannel, ulong> channel, SocketReaction reaction)
+        public async Task ReactionAdded(Cacheable<IUserMessage, ulong> message,
+            Cacheable<IMessageChannel, ulong> channel, SocketReaction reaction)
         {
             try
             {
@@ -60,63 +74,59 @@ namespace IodemBot.ColossoBattles
             }
             catch (Exception e)
             {
-                Console.Write("Reaction Error: " + e.ToString());
+                Console.Write("Reaction Error: " + e);
                 File.WriteAllText("Logs/ReactionError_" + Global.DateString + ".txt", e.ToString());
             }
+
             await Task.CompletedTask;
         }
 
         protected abstract Task ProcessReaction(IUserMessage message, IMessageChannel channel, SocketReaction reaction);
 
-        public bool ContainsPlayer(ulong UserId)
+        public bool ContainsPlayer(ulong userId)
         {
-            return Battle.TeamA.OfType<PlayerFighter>().Any(p => p.Id == UserId) || Battle.TeamB.OfType<PlayerFighter>().Any(p => p.Id == UserId);
+            return Battle.TeamA.OfType<PlayerFighter>().Any(p => p.Id == userId) ||
+                   Battle.TeamB.OfType<PlayerFighter>().Any(p => p.Id == userId);
         }
 
         public async Task ProcessTurn(bool forced)
         {
-            if (isProcessing)
+            if (IsProcessing)
             {
                 Console.WriteLine("Battle is still processing");
                 return;
             }
-            isProcessing = true;
-            bool turnProcessed = false;
+
+            IsProcessing = true;
+            var turnProcessed = false;
             try
             {
                 turnProcessed = forced ? Battle.ForceTurn() : Battle.Turn();
             }
             catch (Exception e)
             {
-                Console.Write("Turn did not Process correctly: " + e.ToString());
+                Console.Write("Turn did not Process correctly: " + e);
                 File.WriteAllText("Logs/TurnError_" + Global.DateString + ".txt", e.ToString());
             }
 
-            if (turnProcessed)
-            {
-                await WriteField();
-            };
-            isProcessing = false;
+            if (turnProcessed) await WriteField();
+            IsProcessing = false;
         }
 
         protected async Task WriteField()
         {
             try
             {
-                autoTurn.Stop();
+                AutoTurn.Stop();
                 await WriteBattle();
                 if (Battle.IsActive)
-                {
-                    autoTurn.Start();
-                }
+                    AutoTurn.Start();
                 else
-                {
                     await GameOver();
-                }
             }
             catch (Exception e)
             {
-                Console.WriteLine("Battle did not draw correctly:" + e.ToString());
+                Console.WriteLine("Battle did not draw correctly:" + e);
                 File.WriteAllText("Logs/DrawError_" + Global.DateString + ".txt", e.ToString());
                 //await WriteField();
             }
@@ -132,36 +142,33 @@ namespace IodemBot.ColossoBattles
 
         public abstract Task Reset(string msg = "");
 
-        public virtual void Dispose()
-        {
-            BattleService.RemoveBattleEnvironment(this);
-            Global.Client.ReactionAdded -= ReactionAdded;
-        }
-
         internal string GetStatus()
         {
             List<string> s = new();
             List<string> report = new();
             s.Add($"Battle is {(Battle.IsActive ? "" : "not")} active.");
-            s.Add($"\nTeam A:");
+            s.Add("\nTeam A:");
             Battle.TeamA.ForEach(p =>
             {
                 s.Add(p.Name);
                 s.Add($"{p.Stats.HP} / {p.Stats.MaxHP}HP");
-                s.Add($"{(p.hasSelected ? $"Selected {p.SelectedMove.Name} at {p.SelectedMove.TargetNr}" : "Not Selected")}");
+                s.Add(
+                    $"{(p.HasSelected ? $"Selected {p.SelectedMove.Name} at {p.SelectedMove.TargetNr}" : "Not Selected")}");
                 s.Add("");
             });
-            s.Add($"\nTeam B:");
+            s.Add("\nTeam B:");
             Battle.TeamB.ForEach(p =>
             {
                 s.Add(p.Name);
                 s.Add($"{p.Stats.HP} / {p.Stats.MaxHP}HP");
-                s.Add($"{(p.hasSelected ? $"Selected {p.SelectedMove.Name} at {p.SelectedMove.TargetNr}" : "Not Selected")}");
+                s.Add(
+                    $"{(p.HasSelected ? $"Selected {p.SelectedMove.Name} at {p.SelectedMove.TargetNr}" : "Not Selected")}");
                 s.Add("");
             });
-            var BattleReport = JsonConvert.SerializeObject(Battle, Formatting.Indented).Replace("{", "").Replace("}", "").Replace("\"", "");
-            Console.WriteLine(BattleReport);
-            File.WriteAllText($"Logs/Reports/Report_{Name}_{DateTime.Now:MM_dd_hh_mm}.log", BattleReport);
+            var battleReport = JsonConvert.SerializeObject(Battle, Formatting.Indented).Replace("{", "")
+                .Replace("}", "").Replace("\"", "");
+            Console.WriteLine(battleReport);
+            File.WriteAllText($"Logs/Reports/Report_{Name}_{DateTime.Now:MM_dd_hh_mm}.log", battleReport);
             return string.Join("\n", s);
         }
     }

@@ -5,9 +5,25 @@ using Newtonsoft.Json;
 
 namespace IodemBot.ColossoBattles
 {
-    public class NPCEnemy : ColossoFighter
+    public class NpcEnemy : ColossoFighter
     {
-        [JsonProperty] private int ExtraTurns { get; set; } = 0;
+        [JsonConstructor]
+        public NpcEnemy(string name, string imgUrl, Stats stats, ElementalStats elstats, string[] movepool,
+            bool hasAttack, bool hasDefend)
+        {
+            Name = name;
+            ImgUrl = imgUrl;
+            Stats = stats;
+            ElStats = elstats;
+
+            Moves = PsynergyDatabase.GetMovepool(movepool, hasAttack, hasDefend);
+
+            Movepool = movepool;
+            HasAttack = hasAttack;
+            HasDefend = hasDefend;
+        }
+
+        [JsonProperty] private int ExtraTurns { get; set; }
         [JsonProperty] private string[] Movepool { get; set; }
 
         [DefaultValue(true)]
@@ -18,34 +34,21 @@ namespace IodemBot.ColossoBattles
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Populate)]
         private bool HasDefend { get; set; } = true;
 
-        [JsonConstructor]
-        public NPCEnemy(string name, string imgUrl, Stats stats, ElementalStats elstats, string[] movepool, bool hasAttack, bool hasDefend) : base()
-        {
-            this.Name = name;
-            this.ImgUrl = imgUrl;
-            this.Stats = stats;
-            this.ElStats = elstats;
-            this.Moves = PsynergyDatabase.GetMovepool(movepool, hasAttack, hasDefend);
-
-            this.Movepool = movepool;
-            this.HasAttack = hasAttack;
-            this.HasDefend = hasDefend;
-        }
-
         public override List<string> ExtraTurn()
         {
-            List<string> log = new List<string>();
-            for (int i = 0; i < ExtraTurns; i++)
+            var log = new List<string>();
+            for (var i = 0; i < ExtraTurns; i++)
             {
-                SelectRandom(includePriority: false);
+                SelectRandom(false);
                 log.AddRange(MainTurn());
             }
+
             return log;
         }
 
         public override List<string> EndTurn()
         {
-            List<string> log = new List<string>();
+            var log = new List<string>();
             if (IsAlive)
             {
                 SelectRandom();
@@ -53,8 +56,9 @@ namespace IodemBot.ColossoBattles
             else
             {
                 SelectedMove = new Nothing();
-                hasSelected = true;
+                HasSelected = true;
             }
+
             log.AddRange(base.EndTurn());
             return log;
         }
@@ -62,7 +66,7 @@ namespace IodemBot.ColossoBattles
         public override object Clone()
         {
             var serialized = JsonConvert.SerializeObject(this);
-            return JsonConvert.DeserializeObject<NPCEnemy>(serialized);
+            return JsonConvert.DeserializeObject<NpcEnemy>(serialized);
         }
     }
 }

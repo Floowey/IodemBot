@@ -7,49 +7,42 @@ namespace IodemBot.Core
 {
     public static class DataStorage
     {
-        private static bool isSaving = false;
-        private static readonly object dataLock = new object();
+        private static bool _isSaving;
+        private static readonly object DataLock = new();
 
         //Save All userAccounts
         public static void SaveUserAccounts<T>(IEnumerable<T> accounts, string filePath)
         {
             try
             {
-                if (isSaving)
-                {
-                    return;
-                }
+                if (_isSaving) return;
 
-                lock (dataLock)
+                lock (DataLock)
                 {
-                    isSaving = true;
-                    string json = JsonConvert.SerializeObject(accounts, Formatting.Indented);
+                    _isSaving = true;
+                    var json = JsonConvert.SerializeObject(accounts, Formatting.Indented);
                     if (json.Length < 5)
-                    {
-                        throw new JsonException($"Length of json string appears to be corrupted: {json.Length}. Aborting Saving.");
-                    }
+                        throw new JsonException(
+                            $"Length of json string appears to be corrupted: {json.Length}. Aborting Saving.");
                     File.WriteAllText(filePath, json);
                 }
             }
             catch (Exception e)
             {
-                Console.WriteLine("Error while saving:" + e.ToString());
+                Console.WriteLine("Error while saving:" + e);
             }
             finally
             {
-                isSaving = false;
+                _isSaving = false;
             }
         }
 
         //Get All userAccounts
         public static IEnumerable<T> LoadListFromFile<T>(string filePath)
         {
-            if (!File.Exists(filePath))
-            {
-                return null;
-            }
+            if (!File.Exists(filePath)) return null;
 
-            string json = File.ReadAllText(filePath);
+            var json = File.ReadAllText(filePath);
             return JsonConvert.DeserializeObject<List<T>>(json);
         }
 

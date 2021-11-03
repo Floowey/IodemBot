@@ -20,8 +20,6 @@ namespace IodemBot.Discords.Actions
 
         public override IActionUserCommandProperties UserCommandProperties => null;
 
-        public override ActionCommandRefreshProperties CommandRefreshProperties => base.CommandRefreshProperties;
-
         protected override Task<(bool Success, string Message)> CheckCustomPreconditionsAsync()
         {
             return SuccessFullResult;

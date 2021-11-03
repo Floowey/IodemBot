@@ -6,41 +6,24 @@ namespace IodemBot
 {
     internal static class Global
     {
+        private static readonly object Synclock = new();
         public static DateTime RunningSince { get; internal set; }
         internal static DiscordSocketClient Client { get; set; }
-        public static Random Random { get; set; } = new Random();
-
-        private static readonly object synclock = new object();
-
-        internal static int RandomNumber(int low, int high)
-        {
-            lock (synclock)
-            {
-                return Random.Next(low, high);
-            }
-        }
+        private static Random Random { get; set; } = new();
 
         internal static DateTime UpSince { get; set; }
 
-        internal static IUser Owner
-        {
-            get
-            {
-                if (_Owner is null)
-                {
-                    _Owner = Client.GetApplicationInfoAsync().Result.Owner;
-                }
-                return _Owner;
-            }
-        }
+        internal static IUser Owner => _owner ??= Client.GetApplicationInfoAsync().Result.Owner;
 
-        private static IUser _Owner { get; set; }
+        private static IUser _owner { get; set; }
 
-        internal static string DateString
+        internal static string DateString => $"{DateTime.Now:s}".Replace(":", ".");
+
+        internal static int RandomNumber(int low, int high)
         {
-            get
+            lock (Synclock)
             {
-                return $"{DateTime.Now:s}".Replace(":", ".");
+                return Random.Next(low, high);
             }
         }
     }

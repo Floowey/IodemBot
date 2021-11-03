@@ -7,22 +7,22 @@ namespace IodemBot.Core.UserManagement
 {
     public static class UserAccounts
     {
-        private static readonly List<UserAccount> accounts;
+        private static readonly List<UserAccount> Accounts;
 
         //private static readonly string accountsFile = "Resources/Accounts/accounts.json";
-        private static readonly string accountsFile = "Resources/Accounts/accounts.json";
+        private static readonly string AccountsFile = "Resources/Accounts/accounts.json";
 
         static UserAccounts()
         {
             try
             {
-                if (DataStorage.SaveExists(accountsFile))
+                if (DataStorage.SaveExists(AccountsFile))
                 {
-                    accounts = DataStorage.LoadListFromFile<UserAccount>(accountsFile).ToList();
+                    Accounts = DataStorage.LoadListFromFile<UserAccount>(AccountsFile).ToList();
                 }
                 else
                 {
-                    accounts = new List<UserAccount>();
+                    Accounts = new List<UserAccount>();
                     SaveAccounts();
                 }
             }
@@ -34,7 +34,7 @@ namespace IodemBot.Core.UserManagement
 
         public static IReadOnlyCollection<UserAccount> GetAllAccounts()
         {
-            return accounts.AsReadOnly();
+            return Accounts.AsReadOnly();
         }
 
         public static void SaveAccounts()
@@ -64,8 +64,8 @@ namespace IodemBot.Core.UserManagement
             List<UserAccount> sortedList = null;
             switch (type)
             {
-                case (RankEnum.Level):
-                case (RankEnum.Solo):
+                case RankEnum.Level:
+                case RankEnum.Solo:
                     try
                     {
                         sortedList = UserAccountProvider.GetLeaderBoard(type, mode)
@@ -77,54 +77,52 @@ namespace IodemBot.Core.UserManagement
                     catch (Exception e)
                     {
                         Console.WriteLine(e);
-                        break;
                     }
+
                     break;
 
-                case (RankEnum.Duo):
-                case (RankEnum.Trio):
-                case (RankEnum.Quad):
+                case RankEnum.Duo:
+                case RankEnum.Trio:
+                case RankEnum.Quad:
                     sortedList = UserAccountProvider.GetLeaderBoard(type, mode)
                         .Take(20)
                         .Select(id => UserAccountProvider.GetById(id.Key))
-                        .GroupBy(p => (p.ServerStats.GetStreak(mode) + p.ServerStatsTotal.GetStreak(mode)).GetEntry(type).Item2)
+                        .GroupBy(p =>
+                            (p.ServerStats.GetStreak(mode) + p.ServerStatsTotal.GetStreak(mode)).GetEntry(type).Item2)
                         .Select(group => group.First())
-                        .OrderByDescending(d => (d.ServerStats.GetStreak(mode) + d.ServerStatsTotal.GetStreak(mode)).GetEntry(type).Item1)
+                        .OrderByDescending(d =>
+                            (d.ServerStats.GetStreak(mode) + d.ServerStatsTotal.GetStreak(mode)).GetEntry(type).Item1)
                         .ToList();
                     break;
-
-                default: break;
             }
+
             return sortedList;
         }
 
-        public static int GetRank(UserAccount user, RankEnum type = RankEnum.Level, EndlessMode mode = EndlessMode.Default)
+        public static int GetRank(UserAccount user, RankEnum type = RankEnum.Level,
+            EndlessMode mode = EndlessMode.Default)
         {
-            return UserAccountProvider.GetLeaderBoard(type, mode).IndexOf(user.ID);
+            return UserAccountProvider.GetLeaderBoard(type, mode).IndexOf(user.Id);
         }
 
         private static UserAccount GetOrCreateAccount(ulong id)
         {
-            var result = from a in accounts
-                         where a.ID == id
+            var result = from a in Accounts
+                         where a.Id == id
                          select a;
 
-            var account = result.FirstOrDefault();
-            if (account == null)
-            {
-                account = CreateUserAccount(id);
-            }
+            var account = result.FirstOrDefault() ?? CreateUserAccount(id);
 
             return account;
         }
 
         private static UserAccount CreateUserAccount(ulong id)
         {
-            var newAccount = new UserAccount()
+            var newAccount = new UserAccount
             {
-                ID = id
+                Id = id
             };
-            accounts.Add(newAccount);
+            Accounts.Add(newAccount);
             SaveAccounts();
             return newAccount;
         }

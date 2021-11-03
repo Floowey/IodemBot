@@ -8,25 +8,25 @@ namespace IodemBot.Modules.GoldenSunMechanics
 {
     public class ReviveEffect : Effect
     {
-        public override string Type { get; } = "Revive";
+        public override string Type => "Revive";
         [JsonProperty] private uint Percentage { get; set; } = 50;
         [JsonProperty] private uint Probability { get; set; } = 100;
 
-        public override List<string> Apply(ColossoFighter User, ColossoFighter Target)
+        public override List<string> Apply(ColossoFighter user, ColossoFighter target)
         {
             List<string> log = new List<string>();
-            bool wasDead = !Target.IsAlive;
+            bool wasDead = !target.IsAlive;
             if (Global.RandomNumber(0, 100) > Probability)
             {
-                log.Add($"But it has no effect on {Target.Name}");
+                log.Add($"But it has no effect on {target.Name}");
                 return log;
             }
-            log.AddRange(Target.Revive(Percentage));
+            log.AddRange(target.Revive(Percentage));
             if (wasDead)
             {
-                if (User is PlayerFighter p)
+                if (user is PlayerFighter p)
                 {
-                    p.battleStats.Revives++;
+                    p.BattleStats.Revives++;
                 }
             }
             return log;

@@ -55,7 +55,7 @@ namespace IodemBot.Modules
                 $"{curdjinn}"
                 , inline: false);
 
-            foreach (var loadout in account.Loadouts.loadouts)
+            foreach (var loadout in account.Loadouts.LoadoutsList)
             {
                 var items = loadout.Gear.Count > 0 ? string.Join("", loadout.Gear.Select(i => account.Inv.GetItem(i)?.Icon ?? "-")) : "no gear";
                 var djinn = loadout.Djinn.Count > 0 ? string.Join("", loadout.Djinn.Select(d => account.DjinnPocket.GetDjinn(d)?.Emote ?? "-")) : "no Djinn";
@@ -66,7 +66,7 @@ namespace IodemBot.Modules
                     , inline: true);
             }
 
-            if (account.Loadouts.loadouts.Count == 0)
+            if (account.Loadouts.LoadoutsList.Count == 0)
             {
                 builder.AddField("No Loadouts", "You currently don't have any Loadouts. Save your current loadout with the button below.");
             }
@@ -82,11 +82,11 @@ namespace IodemBot.Modules
             builder.WithButton(labels ? "Save current Loadout" : null, $"#{nameof(LoadoutSaveAction)}", style: ButtonStyle.Primary, emote: Emotes.GetEmote("SaveLoadoutAction"));
             List<SelectMenuOptionBuilder> options = new();
 
-            if (account.Loadouts.loadouts.Count == 0)
+            if (account.Loadouts.LoadoutsList.Count == 0)
             {
                 return builder.Build();
             }
-            foreach (var item in account.Loadouts.loadouts)
+            foreach (var item in account.Loadouts.LoadoutsList)
             {
                 options.Add(new() { Label = $"{item.LoadoutName}", Value = $"{item.LoadoutName}", Emote = Emotes.GetEmote(item.Element) });
             }
@@ -130,7 +130,8 @@ namespace IodemBot.Modules
             if (selectOptions != null && selectOptions.Any())
             {
                 SelectedLoadout = selectOptions.FirstOrDefault();
-            };
+            }
+
             await Task.CompletedTask;
         }
 
@@ -169,9 +170,9 @@ namespace IodemBot.Modules
             return SuccessFullResult;
         }
 
-        private static Dictionary<Element, string[]> Prompts = new()
+        private static Dictionary<Element, string[]> _prompts = new()
         {
-            { Element.none, new[] { "Boring" } },
+            { Element.None, new[] { "Boring" } },
             { Element.Venus, new[] { "Muddy", "Earthy", "Dirty", "Venus", "Gaia", "Green", "Growing", "Rocky", "Steady", "Rooted" } },
             { Element.Mars, new[] { "Fiery", "Hot", "Heated", "Spicy", "Burning", "Flaming", "Glowing", "Magma", "Mars" } },
             { Element.Jupiter, new[] { "Sparky", "Windy", "Boony", "Thunderous", "Tempest", "Howling", "Blowing", "Air", "Jupiter" } },
@@ -207,7 +208,7 @@ namespace IodemBot.Modules
         private void SaveLoadout(UserAccount account)
         {
             var loadout = Loadout.GetLoadout(account);
-            loadout.LoadoutName = $"{Prompts[loadout.Element].Random()} {loadout.ClassSeries[0..^7]}";
+            loadout.LoadoutName = $"{_prompts[loadout.Element].Random()} {loadout.ClassSeries[..^7]}";
             account.Loadouts.SaveLoadout(loadout);
         }
     }

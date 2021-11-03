@@ -9,44 +9,37 @@ namespace IodemBot
 {
     public class CommandHandler
     {
-        private DiscordSocketClient client;
-        private CommandService service;
+        private DiscordSocketClient _client;
+        private CommandService _service;
 
         public async Task InitializeAsync(DiscordSocketClient client)
         {
-            this.client = client;
-            service = new CommandService();
-            await service.AddModulesAsync(Assembly.GetEntryAssembly(), null);
+            _client = client;
+            _service = new CommandService();
+            await _service.AddModulesAsync(Assembly.GetEntryAssembly(), null);
             client.MessageReceived += HandleCommandAsync;
             Global.Client = client; //#0094ff
         }
 
         private async Task HandleCommandAsync(SocketMessage s)
         {
-            if (s is not SocketUserMessage msg)
-            {
-                return;
-            }
+            if (s is not SocketUserMessage msg) return;
 
-            var context = new SocketCommandContext(client, msg);
-            if (context.User.IsBot)
-            {
-                return;
-            }
+            var context = new SocketCommandContext(_client, msg);
+            if (context.User.IsBot) return;
 
-            int argPos = 0;
+            var argPos = 0;
 
-            if (msg.HasStringPrefix(Config.bot.cmdPrefix, ref argPos, StringComparison.InvariantCultureIgnoreCase) || msg.HasMentionPrefix(client.CurrentUser, ref argPos))
+            if (msg.HasStringPrefix(Config.Bot.CmdPrefix, ref argPos, StringComparison.InvariantCultureIgnoreCase) ||
+                msg.HasMentionPrefix(_client.CurrentUser, ref argPos))
             {
-                var result = await service.ExecuteAsync(context, argPos, null);
+                var result = await _service.ExecuteAsync(context, argPos, null);
                 if (!result.IsSuccess && result.Error != CommandError.UnknownCommand)
                 {
-                    if (result is ExecuteResult execResult)
-                    {
-                        Console.WriteLine(execResult.Exception);
-                    }
+                    if (result is ExecuteResult execResult) Console.WriteLine(execResult.Exception);
                     Console.WriteLine(result.ErrorReason);
                 }
+
                 _ = ServerGames.UserSentCommand(context.User, context.Channel);
             }
         }

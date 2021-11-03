@@ -10,7 +10,7 @@ namespace IodemBot.Preconditions
     {
         private TimeSpan CooldownLength { get; set; }
         private bool AdminsAreLimited { get; set; }
-        private readonly ConcurrentDictionary<CooldownInfo, DateTime> _cooldowns = new ConcurrentDictionary<CooldownInfo, DateTime>();
+        private readonly ConcurrentDictionary<CooldownInfo, DateTime> _cooldowns = new();
 
         /// <summary>
         /// Sets the cooldown for a user to use this command
@@ -38,7 +38,7 @@ namespace IodemBot.Preconditions
         public override Task<PreconditionResult> CheckPermissionsAsync(ICommandContext context, CommandInfo command, IServiceProvider services)
         {
             // Check if the user is administrator and if it needs to apply cooldown for him.
-            if (!AdminsAreLimited && context.User is IGuildUser user && user.GuildPermissions.Administrator)
+            if (!AdminsAreLimited && context.User is IGuildUser { GuildPermissions: { Administrator: true } })
             {
                 return Task.FromResult(PreconditionResult.FromSuccess());
             }

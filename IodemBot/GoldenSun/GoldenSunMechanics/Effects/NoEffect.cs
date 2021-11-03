@@ -5,9 +5,9 @@ namespace IodemBot.Modules.GoldenSunMechanics
 {
     internal class NoEffect : Effect
     {
-        public override string Type { get; } = "NoEffect";
+        public override string Type => "NoEffect";
 
-        public override List<string> Apply(ColossoFighter User, ColossoFighter Target)
+        public override List<string> Apply(ColossoFighter user, ColossoFighter target)
         {
             return new List<string>();
         }

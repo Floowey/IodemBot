@@ -12,15 +12,15 @@ namespace IodemBot.Modules.GoldenSunMechanics
     [JsonSubtypes.KnownSubType(typeof(AddDamageEffect), "AddDamage")]
     [JsonSubtypes.KnownSubType(typeof(AttackWithTeammateEffect), "AttackWithTeammate")]
     [JsonSubtypes.KnownSubType(typeof(BreakEffect), "Break")]
-    [JsonSubtypes.KnownSubType(typeof(ChancetoOHKOEffect), "OHKO")]
+    [JsonSubtypes.KnownSubType(typeof(ChancetoOhkoEffect), "OHKO")]
     [JsonSubtypes.KnownSubType(typeof(ConditionEffect), "Condition")]
     [JsonSubtypes.KnownSubType(typeof(CounterEffect), "Counter")]
-    [JsonSubtypes.KnownSubType(typeof(HPDrainEffect), "HPDrain")]
+    [JsonSubtypes.KnownSubType(typeof(HpDrainEffect), "HPDrain")]
     [JsonSubtypes.KnownSubType(typeof(MayIgnoreDefenseEffect), "IgnoreDefense")]
     [JsonSubtypes.KnownSubType(typeof(MultiplyDamageEffect), "MultiplyDamage")]
     [JsonSubtypes.KnownSubType(typeof(MysticCallEffect), "MysticCall")]
     [JsonSubtypes.KnownSubType(typeof(NoEffect), "Nothing")]
-    [JsonSubtypes.KnownSubType(typeof(PPDrainEffect), "PPDrain")]
+    [JsonSubtypes.KnownSubType(typeof(PpDrainEffect), "PPDrain")]
     [JsonSubtypes.KnownSubType(typeof(ReduceDamageEffect), "ReduceDamage")]
     [JsonSubtypes.KnownSubType(typeof(ReduceHPtoOneEffect), "ReduceHPToOne")]
     [JsonSubtypes.KnownSubType(typeof(RestoreEffect), "Restore")]
@@ -32,12 +32,12 @@ namespace IodemBot.Modules.GoldenSunMechanics
     [JsonSubtypes.KnownSubType(typeof(LingeringEffect), "Lingering")]
     public abstract class Effect
     {
-        public TimeToActivate ActivationTime { get; set; } = TimeToActivate.afterDamage;
-        public virtual string Type { get; } = "Nothing";
+        public TimeToActivate ActivationTime { get; set; } = TimeToActivate.AfterDamage;
+        public virtual string Type => "Nothing";
 
         public bool OnTarget { get; set; } = true;
 
-        public abstract List<string> Apply(ColossoFighter User, ColossoFighter Target);
+        public abstract List<string> Apply(ColossoFighter user, ColossoFighter target);
 
         protected virtual bool InternalValidSelection(ColossoFighter user)
         {
@@ -46,7 +46,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         protected virtual int InternalChooseBestTarget(List<ColossoFighter> targets)
         {
-            if (targets.Where(d => d.IsAlive).Count() == 0)
+            if (!targets.Any(d => d.IsAlive))
             {
                 return 0;
             }
@@ -59,9 +59,9 @@ namespace IodemBot.Modules.GoldenSunMechanics
             return InternalChooseBestTarget(targets);
         }
 
-        internal bool ValidSelection(ColossoFighter User)
+        internal bool ValidSelection(ColossoFighter user)
         {
-            return InternalValidSelection(User);
+            return InternalValidSelection(user);
         }
 
         public override string ToString()

@@ -5,7 +5,7 @@ namespace IodemBot.Core.UserManagement
 {
     public class TrophyCase
     {
-        public List<Trophy> Trophies { get; set; } = new List<Trophy>();
+        public List<Trophy> Trophies { get; set; } = new();
     }
 
     public class Trophy

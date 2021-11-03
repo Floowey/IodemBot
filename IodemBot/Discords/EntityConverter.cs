@@ -16,21 +16,16 @@ namespace IodemBot
         public static IodemUserConverter UserConverter { get; }
 
         public static UserAccount ConvertUser(IUser user)
-            => UserConverter.DiscordMemberToUser(user);
+        {
+            return UserConverter.DiscordMemberToUser(user);
+        }
     }
 
     public class IodemUserConverter
     {
-        public IodemUserConverter()
-        {
-        }
-
         public UserAccount DiscordMemberToUser(IUser user)
         {
-            if (user == null)
-            {
-                throw new ArgumentNullException(nameof(user));
-            }
+            if (user == null) throw new ArgumentNullException(nameof(user));
             var iUser = UserAccountProvider.GetById(user.Id);
             iUser.Name = user is SocketGuildUser u ? u.DisplayName() : user.Username;
             iUser.ImgUrl = user.GetAvatarUrl();

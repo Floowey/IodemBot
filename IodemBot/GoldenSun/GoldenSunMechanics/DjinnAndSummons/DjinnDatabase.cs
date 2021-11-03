@@ -10,15 +10,13 @@ namespace IodemBot.Modules.GoldenSunMechanics
 {
     internal class DjinnAndSummonsDatabase
     {
-        private static Dictionary<string, Djinn> DjinnDatabase { get; set; } = new Dictionary<string, Djinn>();
-        private static Dictionary<string, Summon> SummonsDatabase { get; set; } = new Dictionary<string, Summon>();
-        private static readonly string[] blacklist = new[] { "Kite", "Lull", "Aurora", "Eddy" };
+        private static readonly string[] Blacklist = { "Kite", "Lull", "Aurora", "Eddy" };
 
         static DjinnAndSummonsDatabase()
         {
             try
             {
-                string json = File.ReadAllText("Resources/GoldenSun/DjinnAndSummons/Djinn.json");
+                var json = File.ReadAllText("Resources/GoldenSun/DjinnAndSummons/Djinn.json");
                 DjinnDatabase = new Dictionary<string, Djinn>(
                     JsonConvert.DeserializeObject<Dictionary<string, Djinn>>(json),
                     StringComparer.OrdinalIgnoreCase);
@@ -35,12 +33,13 @@ namespace IodemBot.Modules.GoldenSunMechanics
             }
         }
 
-        public static Djinn GetDjinn(string DjinnName)
+        private static Dictionary<string, Djinn> DjinnDatabase { get; } = new();
+        private static Dictionary<string, Summon> SummonsDatabase { get; } = new();
+
+        public static Djinn GetDjinn(string djinnName)
         {
-            if (!TryGetDjinn(DjinnName, out Djinn djinn))
-            {
-                djinn = new Djinn() { Element = Element.Venus, Name = $"{DjinnName} NOT IMPLEMENTED" };
-            }
+            if (!TryGetDjinn(djinnName, out var djinn))
+                djinn = new Djinn { Element = Element.Venus, Name = $"{djinnName} NOT IMPLEMENTED" };
             return (Djinn)djinn.Clone();
         }
 
@@ -53,68 +52,57 @@ namespace IodemBot.Modules.GoldenSunMechanics
             return d;
         }
 
-        public static Summon GetSummon(string SummonName)
+        public static Summon GetSummon(string summonName)
         {
-            if (!TryGetSummon(SummonName, out Summon summon))
-            {
-                summon = new Summon() { Name = $"{SummonName} NOT IMPLEMENTED" };
-            }
+            if (!TryGetSummon(summonName, out var summon)) summon = new Summon { Name = $"{summonName} NOT IMPLEMENTED" };
             return summon;
         }
 
         public static Djinn GetRandomDjinn(params Element[] elements)
         {
             return (Djinn)DjinnDatabase.Values
-                .Where(d => (elements.Length == 0 || elements.Contains(d.Element)) && !d.IsEvent && !blacklist.Contains(d.Name))
+                .Where(d => (elements.Length == 0 || elements.Contains(d.Element)) && !d.IsEvent &&
+                            !Blacklist.Contains(d.Name))
                 .Random()
                 .Clone();
         }
 
-        public static bool TryGetDjinn(string DjinnName, out Djinn djinn)
+        public static bool TryGetDjinn(string djinnName, out Djinn djinn)
         {
             djinn = null;
-            if (DjinnName.IsNullOrEmpty())
-            {
-                return false;
-            }
-            if (DjinnDatabase.TryGetValue(DjinnName, out Djinn d))
+            if (djinnName.IsNullOrEmpty()) return false;
+            if (!DjinnDatabase.TryGetValue(djinnName, out var d)) return false;
+            djinn = (Djinn)d.Clone();
+            return true;
+
+            //    Console.WriteLine($"Djinn {DjinnName} is not implemented.");
+        }
+
+        public static bool TryGetDjinn(DjinnHolder djinnHolder, out Djinn djinn)
+        {
+            djinn = null;
+            if (djinnHolder.Djinn.IsNullOrEmpty()) return false;
+            if (DjinnDatabase.TryGetValue(djinnHolder.Djinn, out var d))
             {
                 djinn = (Djinn)d.Clone();
+                djinn.Nickname = djinnHolder.Nickname;
+                djinn.IsShiny = djinnHolder.Shiny;
                 return true;
             }
+
             //    Console.WriteLine($"Djinn {DjinnName} is not implemented.");
             return false;
         }
 
-        public static bool TryGetDjinn(DjinnHolder DjinnHolder, out Djinn djinn)
+        public static bool TryGetSummon(string summonName, out Summon summon)
         {
-            djinn = null;
-            if (DjinnHolder.Djinn.IsNullOrEmpty())
-            {
-                return false;
-            }
-            if (DjinnDatabase.TryGetValue(DjinnHolder.Djinn, out Djinn d))
-            {
-                djinn = (Djinn)d.Clone();
-                djinn.Nickname = DjinnHolder.Nickname;
-                djinn.IsShiny = DjinnHolder.Shiny;
-                return true;
-            }
-            //    Console.WriteLine($"Djinn {DjinnName} is not implemented.");
-            return false;
-        }
-
-        public static bool TryGetSummon(string SummonName, out Summon summon)
-        {
-            if (SummonName.IsNullOrEmpty())
+            if (summonName.IsNullOrEmpty())
             {
                 summon = null;
                 return false;
             }
-            if (SummonsDatabase.TryGetValue(SummonName, out summon))
-            {
-                return true;
-            }
+
+            if (SummonsDatabase.TryGetValue(summonName, out summon)) return true;
 
             //Console.WriteLine($"Summon {SummonName} is not implemented.");
             return false;

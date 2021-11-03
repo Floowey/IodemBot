@@ -7,26 +7,26 @@ namespace IodemBot.Modules.GoldenSunMechanics
 {
     public class RestoreEffect : Effect
     {
-        public override string Type { get; } = "Restore";
+        public override string Type => "Restore";
 
-        public override List<string> Apply(ColossoFighter User, ColossoFighter Target)
+        public override List<string> Apply(ColossoFighter user, ColossoFighter target)
         {
-            if (!Target.IsAlive)
+            if (!target.IsAlive)
             {
                 return new List<string>();
             }
 
-            Target.RemoveAllConditions();
-            if (User is PlayerFighter p)
+            target.RemoveAllConditions();
+            if (user is PlayerFighter p)
             {
-                p.battleStats.Supported++;
+                p.BattleStats.Supported++;
             }
-            return new List<string>() { $"{Target.Name}'s Conditions were cured." };
+            return new List<string>() { $"{target.Name}'s Conditions were cured." };
         }
 
         public override string ToString()
         {
-            return $"Restore the target from Conditions and Poison";
+            return "Restore the target from Conditions and Poison";
         }
 
         protected override int InternalChooseBestTarget(List<ColossoFighter> targets)

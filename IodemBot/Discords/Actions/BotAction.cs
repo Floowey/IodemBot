@@ -14,31 +14,39 @@ namespace IodemBot.Discords.Actions
         public IServiceProvider ServiceProvider { get; set; }
         public RequestContext Context { get; set; }
 
-        public void Initialize(IServiceProvider services, RequestContext context)
-        {
-            ServiceProvider = services;
-            Context = context;
-        }
-
         public abstract EphemeralRule EphemeralRule { get; }
         public abstract bool GuildsOnly { get; }
         public abstract GuildPermissions? RequiredPermissions { get; }
 
         protected Task<(bool, string)> SuccessFullResult => Task.FromResult((true, (string)null));
 
+        public void Initialize(IServiceProvider services, RequestContext context)
+        {
+            ServiceProvider = services;
+            Context = context;
+        }
+
         public bool ValidateParameters<T>(string filterCommandName = null) where T : IActionParameterAttribute
         {
             //Required check (all we have right now)
-            var parameterProperties = GetType().GetProperties().SelectMany(p => p.GetCustomAttributes(false).OfType<T>().Select(a => new { Property = p, Attribute = a }))?.Where(p => p.Attribute.Required && (p.Attribute is not ActionParameterSlashAttribute apsa || apsa.ParentNames == null || !apsa.ParentNames.Any())); //for now, don't worry about validating child properties.
+            var parameterProperties = GetType().GetProperties()
+                .SelectMany(
+                    p => p.GetCustomAttributes(false).OfType<T>().Select(a => new { Property = p, Attribute = a }))
+                .Where(p => p.Attribute.Required && (p.Attribute is not ActionParameterSlashAttribute apsa ||
+                                                     apsa.ParentNames == null ||
+                                                     !apsa.ParentNames
+                                                         .Any())); //for now, don't worry about validating child properties.
 
-            if (parameterProperties == null || !parameterProperties.Any())
+            if (!parameterProperties.Any())
                 return true;
             if (!string.IsNullOrWhiteSpace(filterCommandName))
-                parameterProperties = parameterProperties.Where(p => p.Attribute.FilterCommandNames == null || p.Attribute.FilterCommandNames.Contains(filterCommandName));
+                parameterProperties = parameterProperties.Where(p =>
+                    p.Attribute.FilterCommandNames == null ||
+                    p.Attribute.FilterCommandNames.Contains(filterCommandName));
 
             foreach (var p in parameterProperties)
             {
-                object value = p.Property.GetValue(this);
+                var value = p.Property.GetValue(this);
                 if (value == null)
                     return false;
             }
@@ -46,14 +54,18 @@ namespace IodemBot.Discords.Actions
             return true;
         }
 
-        public IEnumerable<(PropertyInfo Property, T Attribute)> GetParameters<T>(string filterCommandName = null) where T : IActionParameterAttribute
+        public IEnumerable<(PropertyInfo Property, T Attribute)> GetParameters<T>(string filterCommandName = null)
+            where T : IActionParameterAttribute
         {
-            var parameterProperties = GetType().GetProperties().SelectMany(p => p.GetCustomAttributes(false).OfType<T>().Select(a => (Property: p, Attribute: a)));
+            var parameterProperties = GetType().GetProperties().SelectMany(p =>
+                p.GetCustomAttributes(false).OfType<T>().Select(a => (Property: p, Attribute: a)));
 
-            if (parameterProperties == null || !parameterProperties.Any())
+            if (!parameterProperties.Any())
                 return null;
             if (!string.IsNullOrWhiteSpace(filterCommandName))
-                parameterProperties = parameterProperties.Where(p => p.Attribute.FilterCommandNames == null || p.Attribute.FilterCommandNames.Contains(filterCommandName));
+                parameterProperties = parameterProperties.Where(p =>
+                    p.Attribute.FilterCommandNames == null ||
+                    p.Attribute.FilterCommandNames.Contains(filterCommandName));
 
             return parameterProperties;
         }
@@ -64,14 +76,14 @@ namespace IodemBot.Discords.Actions
             {
                 if (!RequiredPermissions.Value.ToList().Any())
                 {
-                    ulong botOwnerId = await Context.GetBotOwnerIdAsync();
+                    var botOwnerId = await Context.GetBotOwnerIdAsync();
                     if (botOwnerId != Context.User.Id)
-                        return (false, $"You need to be the bot creator to run that command! Sorry!");
+                        return (false, "You need to be the bot creator to run that command! Sorry!");
                 }
                 else
                 {
                     if (!HasCorrectPermissions(Context.User as IGuildUser))
-                        return (false, $"You don't have the permissions to run that command! Sorry!");
+                        return (false, "You don't have the permissions to run that command! Sorry!");
                 }
             }
 
@@ -84,7 +96,7 @@ namespace IodemBot.Discords.Actions
             var userPermissions = user.GuildPermissions;
 
             return userPermissions.Administrator ||
-                guildPermissions.ToList().All(p => userPermissions.Has(p));
+                   guildPermissions.ToList().All(p => userPermissions.Has(p));
         }
 
         protected abstract Task<(bool Success, string Message)> CheckCustomPreconditionsAsync();
@@ -94,7 +106,7 @@ namespace IodemBot.Discords.Actions
         public (bool Success, string Message) IsGameCommandAllowedInGuild()
         {
             if (GuildsOnly && Context.Channel is IDMChannel)
-                return (false, $"You can't do that here! Find a server that I'm in, instead!");
+                return (false, "You can't do that here! Find a server that I'm in, instead!");
 
             return (true, null);
         }

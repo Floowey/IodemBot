@@ -7,9 +7,9 @@ namespace IodemBot.Discords
 {
     public class CollectorLogic
     {
-        private SemaphoreLocker _resultLock = new SemaphoreLocker();
         private bool _enabled = true;
         private Func<IUser, ulong, object[], object[], Task<MessageBuilder>> _execute;
+        private readonly SemaphoreLocker _resultLock = new();
 
         public ulong MessageId { get; set; }
         public ulong OriginalUserId { get; set; }
@@ -23,7 +23,6 @@ namespace IodemBot.Discords
                 if (value == null)
                     _execute = null;
                 else
-                {
                     _execute = async (userData, messageId, idOptions, selectOptions) =>
                     {
                         return await _resultLock.LockAsync(async () =>
@@ -34,7 +33,6 @@ namespace IodemBot.Discords
                             return new MessageBuilder(userData, "Sorry! You were just too late!", false, null);
                         });
                     };
-                }
             }
         }
 

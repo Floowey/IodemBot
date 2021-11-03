@@ -43,7 +43,7 @@ namespace IodemBot.Modules
                 var embed = new EmbedBuilder();
                 embed.WithAuthor($"{adeptClass.Name} - {series.Archtype}");
                 embed.WithColor(Colors.Get(series.Elements.Select(s => s.ToString()).ToArray()));
-                var relevantMoves = AdeptClassSeriesManager.GetMoveset(adeptClass).OfType<Psynergy>().Select(p => $"{p.Emote} {p.Name} `{p.PPCost}`");
+                var relevantMoves = AdeptClassSeriesManager.GetMoveset(adeptClass).OfType<Psynergy>().Select(p => $"{p.Emote} {p.Name} `{p.PpCost}`");
                 embed.AddField("Description", series.Description ?? "-");
                 embed.AddField("Stats", adeptClass.StatMultipliers, true);
                 embed.AddField("Elemental Stats", series.Elstats.ToString(), true);
@@ -56,10 +56,6 @@ namespace IodemBot.Modules
                     _ = ServerGames.UserLookedUpClass(sgu, (SocketTextChannel)Context.Channel);
                 }
             }
-            else
-            {
-                return;
-            }
         }
 
         [Command("Classes")]
@@ -67,15 +63,15 @@ namespace IodemBot.Modules
         public async Task ListClasses()
         {
             var account = EntityConverter.ConvertUser(Context.User);
-            var allClasses = AdeptClassSeriesManager.allClasses;
+            var allClasses = AdeptClassSeriesManager.AllClasses;
             var allAvailableClasses = allClasses.Where(c => c.IsDefault || account.BonusClasses.Any(bc => bc.Equals(c.Name)));
-            var OfElement = allAvailableClasses.Where(c => c.Elements.Contains(account.Element)).Select(c => c.Name).OrderBy(n => n);
+            var ofElement = allAvailableClasses.Where(c => c.Elements.Contains(account.Element)).Select(c => c.Name).OrderBy(n => n);
 
             var embed = new EmbedBuilder();
             embed.WithTitle("Classes");
             embed.WithColor(Colors.Get(account.Element.ToString()));
-            embed.AddField($"Available as {Emotes.GetIcon(account.Element)} {account.Element} Adept:", string.Join(", ", OfElement));
-            embed.AddField($"Others Unlocked:", string.Join(", ", allAvailableClasses.Select(c => c.Name).Except(OfElement).OrderBy(n => n)));
+            embed.AddField($"Available as {Emotes.GetIcon(account.Element)} {account.Element} Adept:", string.Join(", ", ofElement));
+            embed.AddField("Others Unlocked:", string.Join(", ", allAvailableClasses.Select(c => c.Name).Except(ofElement).OrderBy(n => n)));
             embed.WithFooter($"Total: {allAvailableClasses.Count()}/{allClasses.Count}");
             _ = ReplyAsync(embed: embed.Build());
             await Task.CompletedTask;
@@ -125,7 +121,7 @@ namespace IodemBot.Modules
 
         public enum LoadoutAction { Show, Save, Load, Remove };
 
-        [Command("loadout"), Alias("loadouts")]
+        [Command("loadout"), Alias("LoadoutsList")]
         [RequireUserServer]
         public async Task LoadoutTask(LoadoutAction action = LoadoutAction.Show, [Remainder] string loadoutName = "")
         {
@@ -139,9 +135,9 @@ namespace IodemBot.Modules
             {
                 case LoadoutAction.Show:
                     var embed = new EmbedBuilder();
-                    if (user.Loadouts.loadouts.Count > 0)
+                    if (user.Loadouts.LoadoutsList.Count > 0)
                     {
-                        foreach (var item in user.Loadouts.loadouts)
+                        foreach (var item in user.Loadouts.LoadoutsList)
                         {
                             var items = item.Gear.Count > 0 ? string.Join("", item.Gear.Select(i => user.Inv.GetItem(i)?.Icon ?? "-")) : "no gear";
                             var djinn = item.Djinn.Count > 0 ? string.Join("", item.Djinn.Select(d => user.DjinnPocket.GetDjinn(d)?.Emote ?? "-")) : "no Djinn";
@@ -154,7 +150,7 @@ namespace IodemBot.Modules
                     }
                     else
                     {
-                        embed.WithDescription("No loadouts saved.");
+                        embed.WithDescription("No LoadoutsList saved.");
                     }
                     _ = ReplyAsync(embed: embed.Build());
                     break;
@@ -166,7 +162,7 @@ namespace IodemBot.Modules
                     }
 
                     user.Loadouts.RemoveLoadout(loadoutName);
-                    if (user.Loadouts.loadouts.Count >= 9)
+                    if (user.Loadouts.LoadoutsList.Count >= 9)
                     {
                         _ = ReplyAsync("Loadout limit of 9 reached.");
                         return;
@@ -175,7 +171,7 @@ namespace IodemBot.Modules
                     newLoadout.LoadoutName = loadoutName;
                     user.Loadouts.SaveLoadout(newLoadout);
                     UserAccountProvider.StoreUser(user);
-                    _ = LoadoutTask(LoadoutAction.Show);
+                    _ = LoadoutTask();
                     break;
 
                 case LoadoutAction.Load:
@@ -198,7 +194,7 @@ namespace IodemBot.Modules
 
                     user.Loadouts.RemoveLoadout(loadoutName);
                     UserAccountProvider.StoreUser(user);
-                    _ = LoadoutTask(LoadoutAction.Show);
+                    _ = LoadoutTask();
                     break;
             }
             await Task.CompletedTask;
@@ -219,7 +215,7 @@ namespace IodemBot.Modules
             author.WithIconUrl(user.GetAvatarUrl());
             embed.WithAuthor(author);
             embed.AddField("Level", account.LevelNumber, true);
-            embed.AddField("XP", account.XP, true);
+            embed.AddField("XP", account.Xp, true);
             embed.AddField("XP to level up", account.XPneeded, true);
             await Context.Channel.SendMessageAsync("", false, embed.Build());
         }
@@ -251,16 +247,16 @@ namespace IodemBot.Modules
 
             .AddField("Unlocked Classes", account.BonusClasses.Count == 0 ? "none" : string.Join(", ", account.BonusClasses))
 
-            .AddField("XP", $"{account.XP} - next in {account.XPneeded}{(account.NewGames >= 1 ? $"\n({account.TotalXP} total | {account.NewGames} resets)" : "")}", true)
+            .AddField("XP", $"{account.Xp} - next in {account.XPneeded}{(account.NewGames >= 1 ? $"\n({account.TotalXp} total | {account.NewGames} resets)" : "")}", true)
             .AddField("Colosso wins | Dungeon Wins", $"{account.ServerStats.ColossoWins} | {account.ServerStats.DungeonsCompleted}", true)
             .AddField("Endless Streaks", $"Solo: {account.ServerStats.EndlessStreak.Solo} | Duo: {account.ServerStats.EndlessStreak.Duo} \nTrio: {account.ServerStats.EndlessStreak.Trio} | Quad: {account.ServerStats.EndlessStreak.Quad}", true);
 
             if (user is SocketGuildUser socketGuildUser)
             {
-                var Footer = new EmbedFooterBuilder();
-                Footer.WithText("Joined this Server on " + socketGuildUser.JoinedAt.Value.Date.ToString("dd-MM-yyyy"));
-                Footer.WithIconUrl(Sprites.GetImageFromName("Iodem"));
-                embed.WithFooter(Footer);
+                var footer = new EmbedFooterBuilder();
+                footer.WithText("Joined this Server on " + socketGuildUser.JoinedAt.Value.Date.ToString("dd-MM-yyyy"));
+                footer.WithIconUrl(Sprites.GetImageFromName("Iodem"));
+                embed.WithFooter(footer);
             }
             await Context.Channel.SendMessageAsync("", false, embed.Build());
         }
@@ -294,7 +290,7 @@ namespace IodemBot.Modules
                 .AddField("Account Created", user.CreatedAt)
                 .AddField("User Joined", user.JoinedAt)
                 .AddField("Status", user.Status, true)
-                .AddField("Last Activity", account.LastXP)
+                .AddField("Last Activity", account.LastXp)
                 .Build());
         }
 
@@ -318,10 +314,10 @@ namespace IodemBot.Modules
             embed.AddField("Account Created:", user.CreatedAt);
             embed.AddField("Unlocked Classes", account.BonusClasses.Count == 0 ? "none" : string.Join(", ", account.BonusClasses));
 
-            var Footer = new EmbedFooterBuilder();
-            Footer.WithText("Joined this Server on " + user.JoinedAt.Value.Date.ToString("dd-MM-yyyy"));
-            Footer.WithIconUrl(Sprites.GetImageFromName("Iodem"));
-            embed.WithFooter(Footer);
+            var footer = new EmbedFooterBuilder();
+            footer.WithText("Joined this Server on " + user.JoinedAt.Value.Date.ToString("dd-MM-yyyy"));
+            footer.WithIconUrl(Sprites.GetImageFromName("Iodem"));
+            embed.WithFooter(footer);
 
             await Context.Channel.SendMessageAsync("", false, embed.Build());
         }
@@ -336,7 +332,7 @@ namespace IodemBot.Modules
             var availableDefaultDungeons = defaultDungeons.Where(d => d.Requirement.Applies(account)).Select(s => s.Name).ToArray();
             var unavailableDefaultDungeons = defaultDungeons.Where(d => !d.Requirement.Applies(account)).Select(s => s.Name).ToArray();
 
-            var unlockedDungeons = account.Dungeons.Where(s => EnemiesDatabase.HasDungeon(s)).Select(s => EnemiesDatabase.GetDungeon(s)).Where(d => !d.Requirement.IsLocked(account));
+            var unlockedDungeons = account.Dungeons.Where(EnemiesDatabase.HasDungeon).Select(EnemiesDatabase.GetDungeon).Where(d => !d.Requirement.IsLocked(account));
             var availablePermUnlocks = availableDefaultDungeons
                 .Concat(unlockedDungeons.Where(d =>
                     !d.IsOneTimeOnly &&
@@ -356,7 +352,7 @@ namespace IodemBot.Modules
             var embed = new EmbedBuilder();
             embed.WithTitle("Dungeons");
 
-            if (availablePermUnlocks.Count() > 0)
+            if (availablePermUnlocks.Any())
             {
                 embed.AddField("<:mapopen:606236181503410176> Places Discovered", $"Available: {string.Join(", ", availablePermUnlocks)} \nUnavailable: {string.Join(", ", unavailablePermUnlocks)}");
             }
@@ -428,7 +424,7 @@ namespace IodemBot.Modules
         public async Task GiveElementRole(SocketGuildUser user, Element chosenElement)
         {
             var role = Context.Guild.Roles.FirstOrDefault(x => x.Name == chosenElement.ToString() + " Adepts");
-            if (chosenElement == Element.none)
+            if (chosenElement == Element.None)
             {
                 role = Context.Guild.Roles.FirstOrDefault(r => r.Name == "Exathi");
             }
@@ -485,7 +481,7 @@ namespace IodemBot.Modules
             embed.WithColor(Colors.Get(psy.Element.ToString()));
             embed.WithAuthor(psy.Name);
             embed.AddField("Emote", psy.Emote, true);
-            embed.AddField("PP", psy.PPCost, true);
+            embed.AddField("PP", psy.PpCost, true);
             embed.AddField("Description", $"{psy} {(psy.HasPriority ? "Always goes first." : "")}");
 
             if (psy.Effects.Count > 0)
@@ -494,8 +490,8 @@ namespace IodemBot.Modules
                 embed.AddField("Effects", s);
             }
 
-            var classWithMove = AdeptClassSeriesManager.allClasses.Where(d => d.Classes.Any(c => c.Movepool.Contains(psy.Name)));
-            if (classWithMove.Count() > 0)
+            var classWithMove = AdeptClassSeriesManager.AllClasses.Where(d => d.Classes.Any(c => c.Movepool.Contains(psy.Name)));
+            if (classWithMove.Any())
             {
                 embed.AddField("Learned by", string.Join(", ", classWithMove.Select(c => c.Name)));
             }
@@ -533,7 +529,7 @@ namespace IodemBot.Modules
                 return;
             }
 
-            await ReplyAsync($"You will lose all your progress so far, are you really sure? However, you will get an experience boost from x{account.XpBoost:F} to x{Math.Min(2, account.XpBoost * (1 + 0.1 * (1 - Math.Exp(-(double)account.XP / 120000)))):F}");
+            await ReplyAsync($"You will lose all your progress so far, are you really sure? However, you will get an experience boost from x{account.XpBoost:F} to x{Math.Min(2, account.XpBoost * (1 + 0.1 * (1 - Math.Exp(-(double)account.Xp / 120000)))):F}");
 
             response = await Context.Channel.AwaitMessage(m => m.Author == Context.User);
 
@@ -544,13 +540,13 @@ namespace IodemBot.Modules
 
             if (BattleService.UserInBattle(Context.User.Id))
             {
-                await ReplyAsync($"I find it highly unwise to do such things in the midst of a fight.");
+                await ReplyAsync("I find it highly unwise to do such things in the midst of a fight.");
                 return;
             }
 
             if ((DateTime.Now - account.LastReset).TotalHours < 24)
             {
-                await ReplyAsync($"Again so fast? The procedure is quite straining on your body. You should let your new self settle in a bit.");
+                await ReplyAsync("Again so fast? The procedure is quite straining on your body. You should let your new self settle in a bit.");
                 return;
             }
 
@@ -581,7 +577,7 @@ namespace IodemBot.Modules
 
             var embed = new EmbedBuilder();
             embed.WithColor(Colors.Get("Iodem"));
-            embed.WithDescription($"Congratulations, <@{avatar.ID}>! You have unlocked the {series}!");
+            embed.WithDescription($"Congratulations, <@{avatar.Id}>! You have unlocked the {series}!");
             if (channel == null)
             {
                 return;

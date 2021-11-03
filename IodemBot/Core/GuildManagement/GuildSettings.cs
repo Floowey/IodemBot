@@ -7,20 +7,20 @@ namespace IodemBot.Core
 {
     public class GuildSettings
     {
-        private static readonly List<GuildSetting> guilds;
-        private static readonly string guildsFile = "Resources/Accounts/guilds.json";
+        private const string GuildsFile = "Resources/Accounts/guilds.json";
+        private static readonly List<GuildSetting> Guilds;
 
         static GuildSettings()
         {
             try
             {
-                if (DataStorage.SaveExists(guildsFile))
+                if (DataStorage.SaveExists(GuildsFile))
                 {
-                    guilds = DataStorage.LoadListFromFile<GuildSetting>(guildsFile).ToList();
+                    Guilds = DataStorage.LoadListFromFile<GuildSetting>(GuildsFile).ToList();
                 }
                 else
                 {
-                    guilds = new List<GuildSetting>();
+                    Guilds = new List<GuildSetting>();
                     SaveGuilds();
                 }
             }
@@ -34,7 +34,7 @@ namespace IodemBot.Core
         {
             try
             {
-                DataStorage.SaveUserAccounts(guilds, guildsFile);
+                DataStorage.SaveUserAccounts(Guilds, GuildsFile);
             }
             catch (Exception e)
             {
@@ -49,26 +49,22 @@ namespace IodemBot.Core
 
         private static GuildSetting GetOrCreateGuild(ulong id)
         {
-            var result = from a in guilds
-                         where a.GuildID == id
+            var result = from a in Guilds
+                         where a.GuildId == id
                          select a;
 
-            var account = result.FirstOrDefault();
-            if (account == null)
-            {
-                account = CreateGuild(id);
-            }
+            var account = result.FirstOrDefault() ?? CreateGuild(id);
 
             return account;
         }
 
         private static GuildSetting CreateGuild(ulong id)
         {
-            var newAccount = new GuildSetting()
+            var newAccount = new GuildSetting
             {
-                GuildID = id
+                GuildId = id
             };
-            guilds.Add(newAccount);
+            Guilds.Add(newAccount);
             SaveGuilds();
             return newAccount;
         }

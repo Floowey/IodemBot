@@ -2,7 +2,7 @@
 
 namespace IodemBot.Discords.Actions.Attributes
 {
-    [AttributeUsage(AttributeTargets.Class, AllowMultiple = false, Inherited = true)]
+    [AttributeUsage(AttributeTargets.Class)]
     public class ModuleOrderAttribute : Attribute
     {
         public ModuleOrderAttribute(int order)

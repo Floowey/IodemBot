@@ -5,27 +5,27 @@ namespace IodemBot.Modules.GoldenSunMechanics
 {
     internal class UserDiesEffect : Effect
     {
-        public override string Type { get; } = "UserDies";
+        public override string Type => "UserDies";
 
         public UserDiesEffect()
         {
-            ActivationTime = TimeToActivate.beforeDamage;
+            ActivationTime = TimeToActivate.BeforeDamage;
         }
 
-        public override List<string> Apply(ColossoFighter User, ColossoFighter Target)
+        public override List<string> Apply(ColossoFighter user, ColossoFighter target)
         {
-            if (!User.IsAlive)
+            if (!user.IsAlive)
             {
                 return new List<string>();
             }
 
-            User.Kill();
-            return new List<string>() { $"{User.Name} goes down from exhaustion." };
+            user.Kill();
+            return new List<string>() { $"{user.Name} goes down from exhaustion." };
         }
 
         public override string ToString()
         {
-            return $"User takes itself down";
+            return "User takes itself down";
         }
     }
 }

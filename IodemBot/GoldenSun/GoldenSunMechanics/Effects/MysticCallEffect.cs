@@ -8,36 +8,34 @@ namespace IodemBot.Modules.GoldenSunMechanics
 {
     internal class MysticCallEffect : Effect
     {
-        public override string Type { get; } = "MysticCall";
+        public override string Type => "MysticCall";
         [JsonProperty] private List<string> EnemyNames { get; set; }
-        private List<NPCEnemy> friends;
+        private List<NpcEnemy> _friends;
 
-        public override List<string> Apply(ColossoFighter User, ColossoFighter Target)
+        public override List<string> Apply(ColossoFighter user, ColossoFighter target)
         {
-            List<string> log = new List<string>();
-            friends ??= EnemyNames.Select(e => EnemiesDatabase.GetEnemy(e)).ToList();
-            if (friends.Any(e => e.Name.Equals(Target.Name)))
-            {
-                //log.Add($"{Target.Name} is {(Target.IsAlive ? "alive" : "dead")}");
-                var Replacement = (NPCEnemy)EnemiesDatabase.GetEnemy(EnemyNames.Random()).Clone();
-                Target.ReplaceWith(Replacement);
-                log.Add($"{Target.Name} appears!");
-            }
+            List<string> log = new();
+            _friends ??= EnemyNames.Select(EnemiesDatabase.GetEnemy).ToList();
+            if (!_friends.Any(e => e.Name.Equals(target.Name))) return log;
+            //log.Add($"{Target.Name} is {(Target.IsAlive ? "alive" : "dead")}");
+            var replacement = (NpcEnemy)EnemiesDatabase.GetEnemy(EnemyNames.Random()).Clone();
+            target.ReplaceWith(replacement);
+            log.Add($"{target.Name} appears!");
             return log;
         }
 
         protected override int InternalChooseBestTarget(List<ColossoFighter> targets)
         {
-            friends ??= EnemyNames.Select(e => EnemiesDatabase.GetEnemy(e)).ToList();
-            var deadFriends = targets.Where(s => friends.Any(f => f.Name.Equals(s.Name) && !s.IsAlive)).ToList();
+            _friends ??= EnemyNames.Select(EnemiesDatabase.GetEnemy).ToList();
+            var deadFriends = targets.Where(s => _friends.Any(f => f.Name.Equals(s.Name) && !s.IsAlive)).ToList();
             //Console.WriteLine($"{deadFriends.Count} dead targets.({targets.First().Name})");
             return targets.IndexOf(deadFriends.Random());
         }
 
         protected override bool InternalValidSelection(ColossoFighter user)
         {
-            friends ??= EnemyNames.Select(e => EnemiesDatabase.GetEnemy(e)).ToList();
-            return user.Party.Any(s => friends.Any(f => f.Name.Equals(s.Name) && !s.IsAlive));
+            _friends ??= EnemyNames.Select(EnemiesDatabase.GetEnemy).ToList();
+            return user.Party.Any(s => _friends.Any(f => f.Name.Equals(s.Name) && !s.IsAlive));
         }
     }
 }

@@ -6,35 +6,32 @@ namespace IodemBot.Modules
 {
     public class Quotes
     {
-        internal static readonly List<QuoteStruct> quoteList = new List<QuoteStruct>();
+        internal static readonly List<QuoteStruct> QuoteList = new();
+
+        static Quotes()
+        {
+            // Load data
+            if (!ValidateStorageFile("SystemLang/quotes.json")) return;
+
+            var json = File.ReadAllText("SystemLang/quotes.json");
+            QuoteList = JsonConvert.DeserializeObject<List<QuoteStruct>>(json);
+        }
 
         public static void AddQuote(string name, string quote)
         {
-            quoteList.Add(new QuoteStruct(name.ToLower(), quote));
+            QuoteList.Add(new QuoteStruct(name.ToLower(), quote));
             SaveData();
         }
 
         public static int GetQuotesCount()
         {
-            return quoteList.Count;
-        }
-
-        static Quotes()
-        {
-            // Load data
-            if (!ValidateStorageFile("SystemLang/quotes.json"))
-            {
-                return;
-            }
-
-            string json = File.ReadAllText("SystemLang/quotes.json");
-            quoteList = JsonConvert.DeserializeObject<List<QuoteStruct>>(json);
+            return QuoteList.Count;
         }
 
         public static void SaveData()
         {
             // Save data
-            string json = JsonConvert.SerializeObject(quoteList, Formatting.Indented);
+            var json = JsonConvert.SerializeObject(QuoteList, Formatting.Indented);
             File.WriteAllText("SystemLang/quotes.json", json);
         }
 
@@ -46,18 +43,19 @@ namespace IodemBot.Modules
                 SaveData();
                 return false;
             }
+
             return true;
         }
 
         internal struct QuoteStruct
         {
-            public string name;
-            public string quote;
+            public string Name;
+            public string Quote;
 
             public QuoteStruct(string name, string quote)
             {
-                this.name = name;
-                this.quote = quote;
+                Name = name;
+                Quote = quote;
             }
         }
     }

@@ -11,45 +11,48 @@ namespace IodemBot.ColossoBattles
 {
     public static class EnemiesDatabase
     {
-        private static readonly List<List<ColossoFighter>> tutorialFighters;
-        private static readonly List<List<ColossoFighter>> bronzeFighters;
-        private static readonly List<List<ColossoFighter>> silverFighters;
-        private static readonly List<List<ColossoFighter>> goldFighters;
-        private static readonly Dictionary<string, NPCEnemy> allEnemies;
-        public static readonly Dictionary<string, Dungeon> dungeons;
-
-        public static List<Dungeon> DefaultDungeons { get { return dungeons.Where(d => d.Value.IsDefault).Select(d => d.Value).ToList(); } }
+        private static readonly List<List<ColossoFighter>> TutorialFighters;
+        private static readonly List<List<ColossoFighter>> BronzeFighters;
+        private static readonly List<List<ColossoFighter>> SilverFighters;
+        private static readonly List<List<ColossoFighter>> GoldFighters;
+        private static readonly Dictionary<string, NpcEnemy> AllEnemies;
+        public static readonly Dictionary<string, Dungeon> Dungeons;
 
         static EnemiesDatabase()
         {
             try
             {
-                tutorialFighters = LoadEnemiesFromFile("Resources/GoldenSun/Battles/tutorialFighters.json");
-                bronzeFighters = LoadEnemiesFromFile("Resources/GoldenSun/Battles/bronzeFighters.json");
-                silverFighters = LoadEnemiesFromFile("Resources/GoldenSun/Battles/silverFighters.json");
-                goldFighters = LoadEnemiesFromFile("Resources/GoldenSun/Battles/goldFighters.json");
+                TutorialFighters = LoadEnemiesFromFile("Resources/GoldenSun/Battles/tutorialFighters.json");
+                BronzeFighters = LoadEnemiesFromFile("Resources/GoldenSun/Battles/bronzeFighters.json");
+                SilverFighters = LoadEnemiesFromFile("Resources/GoldenSun/Battles/silverFighters.json");
+                GoldFighters = LoadEnemiesFromFile("Resources/GoldenSun/Battles/goldFighters.json");
 
-                string json = File.ReadAllText("Resources/GoldenSun/Battles/enemies.json");
-                allEnemies = new Dictionary<string, NPCEnemy>(
-                    JsonConvert.DeserializeObject<Dictionary<string, NPCEnemy>>(json),
+                var json = File.ReadAllText("Resources/GoldenSun/Battles/enemies.json");
+                AllEnemies = new Dictionary<string, NpcEnemy>(
+                    JsonConvert.DeserializeObject<Dictionary<string, NpcEnemy>>(json),
                     StringComparer.InvariantCultureIgnoreCase);
 
                 json = File.ReadAllText("Resources/GoldenSun/Battles/dungeons.json");
-                dungeons = new Dictionary<string, Dungeon>(
+                Dungeons = new Dictionary<string, Dungeon>(
                     JsonConvert.DeserializeObject<Dictionary<string, Dungeon>>(json),
                     StringComparer.InvariantCultureIgnoreCase);
             }
             catch (Exception e) // Just for debugging
             {
-                Console.Write("Enemies not loaded correctly" + e);
+                Console.Write("enemies not loaded correctly" + e);
             }
+        }
+
+        public static List<Dungeon> DefaultDungeons
+        {
+            get { return Dungeons.Where(d => d.Value.IsDefault).Select(d => d.Value).ToList(); }
         }
 
         public static List<List<ColossoFighter>> LoadEnemiesFromFile(string filePath)
         {
             //List<List<ColossoFighter>> fighters = new List<List<ColossoFighter>>();
-            string json = File.ReadAllText(filePath);
-            List<List<NPCEnemy>> fighters = JsonConvert.DeserializeObject<List<List<NPCEnemy>>>(json);
+            var json = File.ReadAllText(filePath);
+            var fighters = JsonConvert.DeserializeObject<List<List<NpcEnemy>>>(json);
             return fighters.Select(s1 => s1.Select(s2 => (ColossoFighter)s2).ToList()).ToList();
         }
 
@@ -58,116 +61,102 @@ namespace IodemBot.ColossoBattles
             List<List<ColossoFighter>> selectedDifficulty;
             switch (diff)
             {
-                case (BattleDifficulty.Tutorial):
-                    selectedDifficulty = tutorialFighters;
+                case BattleDifficulty.Tutorial:
+                    selectedDifficulty = TutorialFighters;
                     break;
 
-                case (BattleDifficulty.Easy):
-                    selectedDifficulty = bronzeFighters;
+                case BattleDifficulty.Easy:
+                    selectedDifficulty = BronzeFighters;
                     break;
 
-                case (BattleDifficulty.Medium):
-                case (BattleDifficulty.MediumRare):
-                    selectedDifficulty = silverFighters;
+                case BattleDifficulty.Medium:
+                case BattleDifficulty.MediumRare:
+                    selectedDifficulty = SilverFighters;
                     break;
 
-                case (BattleDifficulty.Hard):
-                    selectedDifficulty = goldFighters;
+                case BattleDifficulty.Hard:
+                    selectedDifficulty = GoldFighters;
                     break;
 
                 default:
-                    selectedDifficulty = bronzeFighters;
-                    Console.WriteLine("Enemies from default!!!");
+                    selectedDifficulty = BronzeFighters;
+                    Console.WriteLine("enemies from default!!!");
                     break;
             }
 
             var enemies = selectedDifficulty.Random().Select(f => (ColossoFighter)f.Clone()).ToList();
-            if (diff == BattleDifficulty.MediumRare)
-            {
-                enemies.ForEach(e => e.Stats *= 1.5);
-            }
+            if (diff == BattleDifficulty.MediumRare) enemies.ForEach(e => e.Stats *= 1.5);
             enemies.ForEach(e => e.Stats *= boost);
             if (enemies.Count == 0)
             {
-                Console.WriteLine($"{diff}: Enemies were empty");
+                Console.WriteLine($"{diff}: enemies were empty");
                 enemies = GetRandomEnemies(diff);
             }
+
             return enemies;
         }
 
-        internal static NPCEnemy GetEnemy(string enemyKey)
+        internal static NpcEnemy GetEnemy(string enemyKey)
         {
-            if (allEnemies.TryGetValue(enemyKey, out NPCEnemy enemy))
+            if (AllEnemies.TryGetValue(enemyKey, out var enemy)) return (NpcEnemy)enemy.Clone();
+
+            if (enemyKey.StartsWith("Trap"))
             {
-                return (NPCEnemy)enemy.Clone();
-            }
-            else if (enemyKey.StartsWith("Trap"))
-            {
-                allEnemies.TryGetValue("DeathTrap", out var trapEnemy);
-                var clone = (NPCEnemy)trapEnemy.Clone();
+                AllEnemies.TryGetValue("DeathTrap", out var trapEnemy);
+                var clone = (NpcEnemy)trapEnemy.Clone();
                 clone.Name = enemyKey.Split(':').Last();
                 return clone;
             }
-            else if (enemyKey.StartsWith("BoobyTrap"))
+
+            if (enemyKey.StartsWith("BoobyTrap"))
             {
-                allEnemies.TryGetValue("BoobyTrap", out var trapEnemy);
-                var clone = (NPCEnemy)trapEnemy.Clone();
+                AllEnemies.TryGetValue("BoobyTrap", out var trapEnemy);
+                var clone = (NpcEnemy)trapEnemy.Clone();
                 clone.Name = enemyKey.Split(':').Last();
                 var args = enemyKey.Split(':').First();
                 foreach (var arg in args.Split('-').Skip(1))
-                {
-                    if (int.TryParse(arg, out int damage))
-                    {
+                    if (int.TryParse(arg, out var damage))
                         clone.Stats.Atk = damage;
-                    }
                     else if (Enum.TryParse(arg, out Condition c))
-                    {
-                        clone.EquipmentWithEffect.Add(new Item() { Unleash = new Unleash() { Effects = new List<Effect>() { new ConditionEffect() { Condition = c } } }, ChanceToActivate = 100, ChanceToBreak = 0 });
-                    }
-                }
+                        clone.EquipmentWithEffect.Add(new Item
+                        {
+                            Unleash = new Unleash { Effects = new List<Effect> { new ConditionEffect { Condition = c } } },
+                            ChanceToActivate = 100,
+                            ChanceToBreak = 0
+                        });
                 return clone;
             }
-            else if (enemyKey.StartsWith("Key"))
+
+            if (enemyKey.StartsWith("Key"))
             {
-                allEnemies.TryGetValue("Key", out var trapEnemy);
-                var clone = (NPCEnemy)trapEnemy.Clone();
+                AllEnemies.TryGetValue("Key", out var trapEnemy);
+                var clone = (NpcEnemy)trapEnemy.Clone();
                 clone.Name = enemyKey.Split(':').Last();
                 return clone;
             }
-            else
-            {
-                Console.WriteLine($"{enemyKey} not found! Generating Dummy");
-                return new NPCEnemy($"{enemyKey} Not Implemented", Sprites.GetRandomSprite(), new Stats(), new ElementalStats(), new string[] { }, true, true);
-            }
+
+            Console.WriteLine($"{enemyKey} not found! Generating Dummy");
+            return new NpcEnemy($"{enemyKey} Not Implemented", Sprites.GetRandomSprite(), new Stats(),
+                new ElementalStats(), new string[] { }, true, true);
         }
 
         internal static Dungeon GetDungeon(string dungeonKey)
         {
-            if (dungeons.TryGetValue(dungeonKey, out Dungeon dungeon))
-            {
+            if (Dungeons.TryGetValue(dungeonKey, out var dungeon))
                 return dungeon;
-            }
-            else
-            {
-                throw new KeyNotFoundException(dungeonKey);
-            }
+            throw new KeyNotFoundException(dungeonKey);
         }
 
         internal static bool TryGetDungeon(string dungeonKey, out Dungeon dungeon)
         {
-            if (dungeons.TryGetValue(dungeonKey, out dungeon))
-            {
+            if (Dungeons.TryGetValue(dungeonKey, out dungeon))
                 return true;
-            }
-            else
-            {
-                return false;
-            }
+            return false;
         }
 
         internal static bool HasDungeon(string dungeonKey)
         {
-            return dungeons.ContainsKey(dungeonKey);
+            return Dungeons.ContainsKey(dungeonKey);
         }
 
         internal static List<ColossoFighter> GetEnemies(BattleDifficulty diff, string enemy)
@@ -175,28 +164,28 @@ namespace IodemBot.ColossoBattles
             List<List<ColossoFighter>> selectedDifficulty;
             switch (diff)
             {
-                case (BattleDifficulty.Easy):
-                    selectedDifficulty = bronzeFighters;
+                case BattleDifficulty.Easy:
+                    selectedDifficulty = BronzeFighters;
                     break;
 
-                case (BattleDifficulty.Medium):
-                    selectedDifficulty = silverFighters;
+                case BattleDifficulty.Medium:
+                    selectedDifficulty = SilverFighters;
                     break;
 
-                case (BattleDifficulty.Hard):
-                    selectedDifficulty = goldFighters;
+                case BattleDifficulty.Hard:
+                    selectedDifficulty = GoldFighters;
                     break;
 
                 default:
-                    selectedDifficulty = bronzeFighters;
-                    Console.WriteLine("Enemies from default!!!");
+                    selectedDifficulty = BronzeFighters;
+                    Console.WriteLine("enemies from default!!!");
                     break;
             }
-            var enemies = selectedDifficulty.Where(l => l.Any(e => e.Name.ToUpper().Contains(enemy.ToUpper()))).FirstOrDefault();
-            if (enemies == null)
-            {
-                enemies = GetRandomEnemies(diff);
-            }
+
+            var enemies = selectedDifficulty
+                              .FirstOrDefault(enemyLists => enemyLists.Any(e =>
+                                  e.Name.Equals(enemy, StringComparison.CurrentCultureIgnoreCase)))
+                          ?? GetRandomEnemies(diff);
 
             return enemies.Select(f => (ColossoFighter)f.Clone()).ToList();
         }
@@ -204,7 +193,7 @@ namespace IodemBot.ColossoBattles
         public class Dungeon
         {
             public List<DungeonMatchup> Matchups { get; set; }
-            public Requirement Requirement { get; set; } = new Requirement();
+            public Requirement Requirement { get; set; } = new();
             public string Name { get; set; }
             public string FlavourText { get; set; }
             public string Image { get; set; }
@@ -216,17 +205,17 @@ namespace IodemBot.ColossoBattles
         public class DungeonMatchup
         {
             [JsonConstructor]
-            public DungeonMatchup(List<string> EnemyNames)
+            public DungeonMatchup(List<string> enemyNames)
             {
-                this.EnemyNames = EnemyNames;
+                EnemyNames = enemyNames;
             }
 
             [JsonIgnore]
-            public List<NPCEnemy> Enemy
+            public List<NpcEnemy> Enemy
             {
                 get
                 {
-                    var enemies = new List<NPCEnemy>();
+                    var enemies = new List<NpcEnemy>();
                     EnemyNames.ForEach(s =>
                     {
                         var enemy = GetEnemy(s);
@@ -238,108 +227,68 @@ namespace IodemBot.ColossoBattles
 
             public List<string> EnemyNames { get; set; }
             public string FlavourText { get; set; }
-            public RewardTables RewardTables { get; set; } = new RewardTables();
+            public RewardTables RewardTables { get; set; } = new();
             public string Image { get; set; }
-            public bool Shuffle { get => Keywords.Contains("Shuffle"); }
-            public bool HealBefore { get => Keywords.Contains("Heal"); }
+            public bool Shuffle => Keywords.Contains("Shuffle");
+            public bool HealBefore => Keywords.Contains("Heal");
 
-            public List<string> Keywords { get; set; } = new List<string>();
+            public List<string> Keywords { get; set; } = new();
         }
     }
 
     public class Requirement
     {
-        public Element[] Elements { get; set; } = new Element[] { };
+        public Element[] Elements { get; set; } = { };
 
-        public ArchType[] ArchTypes { get; set; } = new ArchType[] { };
+        public ArchType[] ArchTypes { get; set; } = { };
 
-        public string[] ClassSeries { get; set; } = new string[] { };
-        public string[] Classes { get; set; } = new string[] { };
+        public string[] ClassSeries { get; set; } = { };
+        public string[] Classes { get; set; } = { };
         public int MinLevel { get; set; } = 0;
         public int MaxLevel { get; set; } = 200;
 
-        public string[] TagsRequired { get; set; } = new string[] { };
-        public string[] TagsAny { get; set; } = new string[] { };
+        public string[] TagsRequired { get; set; } = { };
+        public string[] TagsAny { get; set; } = { };
         public int TagsHowMany { get; set; } = 0;
-        public string[] TagsLock { get; set; } = new string[] { };
+        public string[] TagsLock { get; set; } = { };
 
         public string GetDescription()
         {
             var s = new List<string>();
-            if (ArchTypes.Length > 0)
-            {
-                s.Add($"For Archtypes: {string.Join(", ", ArchTypes.Select(a => a.ToString()))}");
-            }
+            if (ArchTypes.Length > 0) s.Add($"For Archtypes: {string.Join(", ", ArchTypes.Select(a => a.ToString()))}");
             if (ClassSeries.Length > 0)
-            {
                 s.Add($"For Class series: {string.Join(", ", ClassSeries.Select(a => a.ToString()))}");
-            }
-            if (Classes.Length > 0)
-            {
-                s.Add($"For Classes: {string.Join(", ", Classes.Select(a => a.ToString()))}");
-            }
-            if (Elements.Length > 0)
-            {
-                s.Add($"For Elements: {string.Join(", ", Elements.Select(a => a.ToString()))}");
-            }
-            if (MinLevel > 0)
-            {
-                s.Add($"Minimum Level: {MinLevel}");
-            }
-            if (MaxLevel < 200)
-            {
-                s.Add($"Maximum Level: {MaxLevel}");
-            }
-            if (TagsRequired.Length > 0 || TagsAny.Length > 0)
-            {
-                s.Add($"Requires completion of a previous dungeon.");
-            }
-            if (s.Count == 0)
-            {
-                s.Add($"No Requirements");
-            }
+            if (Classes.Length > 0) s.Add($"For Classes: {string.Join(", ", Classes.Select(a => a.ToString()))}");
+            if (Elements.Length > 0) s.Add($"For Elements: {string.Join(", ", Elements.Select(a => a.ToString()))}");
+            if (MinLevel > 0) s.Add($"Minimum Level: {MinLevel}");
+            if (MaxLevel < 200) s.Add($"Maximum Level: {MaxLevel}");
+            if (TagsRequired.Length > 0 || TagsAny.Length > 0) s.Add("Requires completion of a previous dungeon.");
+            if (s.Count == 0) s.Add("No Requirements");
             return string.Join("\n", s);
         }
 
         public bool IsLocked(UserAccount playerAccount)
-        => TagsLock.Length > 0 && TagsLock.Any(t => playerAccount.Tags.Contains(t));
+        {
+            return TagsLock.Length > 0 && TagsLock.Any(t => playerAccount.Tags.Contains(t));
+        }
 
         public bool FulfilledRequirements(UserAccount playerAvatar)
         {
-            if (Elements.Length > 0 && !Elements.Contains(playerAvatar.Element))
-            {
-                return false;
-            }
+            if (Elements.Length > 0 && !Elements.Contains(playerAvatar.Element)) return false;
 
-            if (Classes.Length > 0 && !Classes.Contains(playerAvatar.GsClass))
-            {
-                return false;
-            }
+            if (Classes.Length > 0 && !Classes.Contains(playerAvatar.GsClass)) return false;
 
-            if (ClassSeries.Length > 0 && !ClassSeries.Contains(AdeptClassSeriesManager.GetClassSeries(playerAvatar).Name))
-            {
-                return false;
-            }
+            if (ClassSeries.Length > 0 &&
+                !ClassSeries.Contains(AdeptClassSeriesManager.GetClassSeries(playerAvatar).Name)) return false;
 
-            if (ArchTypes.Length > 0 && !ArchTypes.Contains(AdeptClassSeriesManager.GetClassSeries(playerAvatar).Archtype))
-            {
-                return false;
-            }
+            if (ArchTypes.Length > 0 &&
+                !ArchTypes.Contains(AdeptClassSeriesManager.GetClassSeries(playerAvatar).Archtype)) return false;
 
-            if (TagsRequired.Length > 0 && !TagsRequired.All(t => playerAvatar.Tags.Contains(t)))
-            {
-                return false;
-            }
+            if (TagsRequired.Length > 0 && !TagsRequired.All(t => playerAvatar.Tags.Contains(t))) return false;
 
-            if (TagsAny.Length > 0 && TagsAny.Count(t => playerAvatar.Tags.Contains(t)) < TagsHowMany)
-            {
-                return false;
-            }
+            if (TagsAny.Length > 0 && TagsAny.Count(t => playerAvatar.Tags.Contains(t)) < TagsHowMany) return false;
 
-            if (MinLevel > playerAvatar.LevelNumber || MaxLevel < playerAvatar.LevelNumber)
-            {
-                return false;
-            }
+            if (MinLevel > playerAvatar.LevelNumber || MaxLevel < playerAvatar.LevelNumber) return false;
             return true;
         }
 

@@ -10,23 +10,21 @@ namespace IodemBot.Modules.GoldenSunMechanics
 {
     public class ItemDatabase
     {
-        private static readonly Dictionary<string, Item> itemsDatabase = new Dictionary<string, Item>(StringComparer.OrdinalIgnoreCase);
-        private static Inventory shop;
-        private static DateTime lastReset;
+        private static readonly Dictionary<string, Item> ItemsDatabase = new(StringComparer.OrdinalIgnoreCase);
+        private static Inventory _shop;
+        private static DateTime _lastReset;
 
-        private static ShopStruct Shopstruct { get { return new ShopStruct() { Shop = shop, LastReset = lastReset, RestockMessage = RestockMessage, Shopkeeper = Shopkeeper }; } }
+        private static readonly string[] Shopkeepers =
+        {
+            "armor shopkeeper2", "armor shopkeeper3", "champa shopkeeper", "item shopkeeper", "izumo shopkeeper",
+            "weapon shopkeeper", "weapon shopkeeper2", "sunshine", "armor shopkeeper"
+        };
 
-        private static int HoursForReset { get; } =
-            DateTime.Now.Date >= new DateTime(day: 1, month: 3, year: 2021) &&
-                DateTime.Now.Date < new DateTime(day: 15, month: 3, year: 2021) ? 6 : 8;
+        private static readonly string[] RestockMessages =
+            {"Next shipment in:", "Next restock in:", "New Merchant in:"};
 
-        public static string Shopkeeper { get; set; }
-        public static string RestockMessage { get; set; }
-        private static readonly string[] shopkeepers = { "armor shopkeeper2", "armor shopkeeper3", "champa shopkeeper", "item shopkeeper", "izumo shopkeeper", "weapon shopkeeper", "weapon shopkeeper2", "sunshine", "armor shopkeeper" };
-        private static readonly string[] restockMessages = { "Next shipment in:", "Next restock in:", "New Merchant in:" };
-
-        private static readonly string shopLocation = "Resources/shop.json";
-        private static readonly string itemLocation = "Resources/GoldenSun/items.json";
+        private static readonly string ShopLocation = "Resources/shop.json";
+        private static readonly string ItemLocation = "Resources/GoldenSun/items.json";
 
         public static readonly Dictionary<ChestQuality, RewardGenerator<ItemRarity>> ChestValues = new()
         {
@@ -57,36 +55,30 @@ namespace IodemBot.Modules.GoldenSunMechanics
             }
         };
 
-        public static TimeSpan TimeToNextReset
-        {
-            get
-            {
-                return lastReset.Add(new TimeSpan(HoursForReset, 0, 0)).Subtract(DateTime.Now);
-            }
-        }
-
         static ItemDatabase()
         {
             try
             {
-                string json = File.ReadAllText(itemLocation);
-                itemsDatabase = new Dictionary<string, Item>(
+                var json = File.ReadAllText(ItemLocation);
+                ItemsDatabase = new Dictionary<string, Item>(
                     JsonConvert.DeserializeObject<Dictionary<string, Item>>(json),
                     StringComparer.OrdinalIgnoreCase);
-                if (File.Exists(shopLocation))
+                if (File.Exists(ShopLocation))
                 {
-                    json = File.ReadAllText(shopLocation);
+                    json = File.ReadAllText(ShopLocation);
                     var s = JsonConvert.DeserializeObject<ShopStruct>(json);
-                    shop = s.Shop;
-                    lastReset = s.LastReset;
+                    _shop = s.Shop;
+                    _lastReset = s.LastReset;
                     Shopkeeper = s.Shopkeeper;
                     RestockMessage = s.RestockMessage;
                 }
 
-                var longestItem = itemsDatabase.Select(d => d.Value).OrderByDescending(d => $"{d.Icon} - {d.Name},".Length).First();
-                Console.WriteLine($"{longestItem.Icon} - {longestItem.Name}, {$"{longestItem.Icon} - {longestItem.Name},".Length}");
+                var longestItem = ItemsDatabase.Select(d => d.Value)
+                    .OrderByDescending(d => $"{d.Icon} - {d.Name},".Length).First();
+                Console.WriteLine(
+                    $"{longestItem.Icon} - {longestItem.Name}, {$"{longestItem.Icon} - {longestItem.Name},".Length}");
 
-                shop = GetShop();
+                _shop = GetShop();
             }
             catch (Exception e)
             {
@@ -95,71 +87,87 @@ namespace IodemBot.Modules.GoldenSunMechanics
             }
         }
 
+        private static ShopStruct Shopstruct => new()
+        { Shop = _shop, LastReset = _lastReset, RestockMessage = RestockMessage, Shopkeeper = Shopkeeper };
+
+        private static int HoursForReset { get; } =
+            DateTime.Now.Date >= new DateTime(day: 1, month: 3, year: 2021) &&
+            DateTime.Now.Date < new DateTime(day: 15, month: 3, year: 2021)
+                ? 6
+                : 8;
+
+        public static string Shopkeeper { get; set; }
+        public static string RestockMessage { get; set; }
+
+        public static TimeSpan TimeToNextReset =>
+            _lastReset.Add(new TimeSpan(HoursForReset, 0, 0)).Subtract(DateTime.Now);
+
         private static void Save()
         {
-            string json = JsonConvert.SerializeObject(Shopstruct, Formatting.Indented);
-            File.WriteAllText(shopLocation, json);
+            var json = JsonConvert.SerializeObject(Shopstruct, Formatting.Indented);
+            File.WriteAllText(ShopLocation, json);
         }
 
         public static void RandomizeShop()
         {
-            if (shop == null)
-            {
-                shop = new Inventory();
-            }
+            _shop ??= new Inventory();
 
-            shop.Clear();
-            shop.Add(GetRandomItem(ItemRarity.Common));
-            shop.Add(GetRandomItem(ItemRarity.Common));
-            shop.Add(GetRandomItem(ItemRarity.Uncommon));
-            shop.Add(GetRandomItem(new RewardGenerator<ItemRarity>(new[]
-                { ItemRarity.Uncommon, ItemRarity.Rare, ItemRarity.Legendary}, new[] { 60, 35, 5 }).GenerateReward()
+            _shop.Clear();
+            _shop.Add(GetRandomItem(ItemRarity.Common));
+            _shop.Add(GetRandomItem(ItemRarity.Common));
+            _shop.Add(GetRandomItem(ItemRarity.Uncommon));
+            _shop.Add(GetRandomItem(new RewardGenerator<ItemRarity>(new[]
+                        {ItemRarity.Uncommon, ItemRarity.Rare, ItemRarity.Legendary}, new[] { 60, 35, 5 })
+                    .GenerateReward()
                 )
             );
-            shop.Add(GetRandomItem(new RewardGenerator<ItemRarity>(new[]
-                { ItemRarity.Uncommon, ItemRarity.Rare, ItemRarity.Legendary}, new[] { 60, 35, 5 }).GenerateReward()
+            _shop.Add(GetRandomItem(new RewardGenerator<ItemRarity>(new[]
+                        {ItemRarity.Uncommon, ItemRarity.Rare, ItemRarity.Legendary}, new[] { 60, 35, 5 })
+                    .GenerateReward()
                 )
             );
-            shop.Add(GetRandomItem(new RewardGenerator<ItemRarity>(new[]
-                { ItemRarity.Rare, ItemRarity.Legendary, ItemRarity.Mythical}, new[] { 75, 24, 1 }).GenerateReward()
+            _shop.Add(GetRandomItem(new RewardGenerator<ItemRarity>(new[]
+                        {ItemRarity.Rare, ItemRarity.Legendary, ItemRarity.Mythical}, new[] { 75, 24, 1 })
+                    .GenerateReward()
                 )
             );
 
             if (DateTime.Now.Date >= new DateTime(day: 1, month: 3, year: 2021) &&
                 DateTime.Now.Date < new DateTime(day: 15, month: 3, year: 2021))
             {
-                shop.Add(GetRandomItem(new RewardGenerator<ItemRarity>(new[]
-                { ItemRarity.Rare, ItemRarity.Legendary, ItemRarity.Mythical}, new[] { 75, 24, 2 }).GenerateReward()
+                _shop.Add(GetRandomItem(new RewardGenerator<ItemRarity>(new[]
+                        {ItemRarity.Rare, ItemRarity.Legendary, ItemRarity.Mythical}, new[] { 75, 24, 2 })
+                    .GenerateReward()
                 ));
 
-                shop.Add(GetRandomItem(new RewardGenerator<ItemRarity>(new[]
-                { ItemRarity.Rare, ItemRarity.Legendary, ItemRarity.Mythical}, new[] { 75, 24, 2 }).GenerateReward()
+                _shop.Add(GetRandomItem(new RewardGenerator<ItemRarity>(new[]
+                        {ItemRarity.Rare, ItemRarity.Legendary, ItemRarity.Mythical}, new[] { 75, 24, 2 })
+                    .GenerateReward()
                 ));
             }
 
-            Shopkeeper = Sprites.GetImageFromName(shopkeepers.Random());
+            Shopkeeper = Sprites.GetImageFromName(Shopkeepers.Random());
 
-            RestockMessage = restockMessages.Random();
+            RestockMessage = RestockMessages.Random();
 
-            shop.Sort();
-            if (shop.HasDuplicate || !(shop.HasItem(ItemCategory.UnderWear) || shop.HasItem(ItemCategory.Accessoire) || shop.HasItem(ItemCategory.FootWear)))
+            _shop.Sort();
+            if (_shop.HasDuplicate || !(_shop.HasItem(ItemCategory.UnderWear) ||
+                                        _shop.HasItem(ItemCategory.Accessoire) || _shop.HasItem(ItemCategory.FootWear)))
             {
                 RandomizeShop();
             }
             else
             {
-                lastReset = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, HoursForReset * (DateTime.Now.Hour / HoursForReset), 0, 0);
+                _lastReset = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day,
+                    HoursForReset * (DateTime.Now.Hour / HoursForReset), 0, 0);
                 Save();
             }
         }
 
         public static Inventory GetShop()
         {
-            if (DateTime.Now.Subtract(lastReset).Hours >= HoursForReset)
-            {
-                RandomizeShop();
-            }
-            return shop;
+            if (DateTime.Now.Subtract(_lastReset).Hours >= HoursForReset) RandomizeShop();
+            return _shop;
         }
 
         public static Item GetItem(string itemName)
@@ -168,86 +176,47 @@ namespace IodemBot.Modules.GoldenSunMechanics
             var isAnimated = itemName.Contains("(A)");
             var hasName = itemName.Contains("|");
 
-            var justName = (isBroken || isAnimated || hasName) ? string.Concat(itemName.TakeWhile(c => !(c == '(' || c == '|'))) : itemName;
+            var justName = isBroken || isAnimated || hasName
+                ? string.Concat(itemName.TakeWhile(c => !(c == '(' || c == '|')))
+                : itemName;
 
-            if (itemsDatabase.TryGetValue(justName, out Item item))
+            if (ItemsDatabase.TryGetValue(justName, out var item))
             {
                 var i = (Item)item.Clone();
-                if (hasName)
-                {
-                    i.Nickname = string.Concat(itemName.SkipWhile(c => !c.Equals('|')))[1..];
-                }
+                if (hasName) i.Nickname = string.Concat(itemName.SkipWhile(c => !c.Equals('|')))[1..];
                 i.IsAnimated = isAnimated;
                 i.IsBroken = isBroken;
                 return i;
             }
 
-            return new Item() { Name = $"{itemName} NOT IMPLEMENTED!" };
+            return new Item { Name = $"{itemName} NOT IMPLEMENTED!" };
         }
 
-        public static bool TryGetItem(string ItemName, out Item item)
+        public static bool TryGetItem(string itemName, out Item item)
         {
-            item = GetItem(ItemName);
-            if (item.Name.ToLower().Contains("not implemented"))
-            {
-                return false;
-            }
+            item = GetItem(itemName);
+            if (item.Name.ToLower().Contains("not implemented")) return false;
             return true;
         }
 
         public static IEnumerable<Item> GetAllItems()
         {
-            return itemsDatabase.Values.ToList().AsReadOnly();
+            return ItemsDatabase.Values.ToList().AsReadOnly();
         }
 
         public static Item GetRandomItem(ItemRarity rarity)
         {
-            return itemsDatabase.Values.Where(i => i.Rarity == rarity).Random();
-        }
-
-        public static string GetRandomItem(uint level, RandomItemType rt = RandomItemType.Any)
-        {
-            uint n = Math.Max(level, 1);
-            n = Math.Min(n, 100);
-            var rate = 0.0007671 * Math.Pow(n, 2) - 0.1537 * n;
-            var pow = Math.Pow(Math.E, rate);
-            var loc = 11000 * 1.13 / (1 + 299 * pow);
-            var scale = Math.Pow(n, 2.2055);
-            var shape = 0.1 - n / 200;
-            var dist = new Accord.Statistics.Distributions.Univariate.GeneralizedParetoDistribution(loc, scale, shape);
-            var value = dist.Generate();
-            foreach (int i in new[] { 5000, 10000, 15000, 20000, 25000, 30000, 35000 })
-            {
-                Console.WriteLine($"{i}: {(1 - dist.DistributionFunction(i)) * 100}%");
-            }
-            var allItems = itemsDatabase.Values.OrderByDescending(d => d.Price);
-            var it = allItems.Where(i => i.Price <= value
-                && (rt != RandomItemType.Artifact || i.IsArtifact)
-                && (rt != RandomItemType.NonArtifact || !i.IsArtifact));
-
-            Item price = allItems.OrderBy(i => i.Price).Take(10).Random();
-            if (it != null && it.Count() >= 5)
-            {
-                price = it.TakeWhile(i => i.Price <= it.First().Price * 0.9).Union(it.Take(5)).Random();
-            }
-
-            return price.Name;
+            return ItemsDatabase.Values.Where(i => i.Rarity == rarity).Random();
         }
 
         public static List<Item> GetItems(IEnumerable<string> itemNames)
         {
-            List<Item> items = new List<Item>();
-            if (itemNames == null)
-            {
-                return items;
-            }
+            var items = new List<Item>();
+            if (itemNames == null) return items;
 
             itemNames.ToList().ForEach(i =>
             {
-                if (TryGetItem(i, out var item))
-                {
-                    items.Add(item);
-                }
+                if (TryGetItem(i, out var item)) items.Add(item);
             });
             return items;
         }

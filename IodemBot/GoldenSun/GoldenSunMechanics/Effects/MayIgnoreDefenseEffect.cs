@@ -6,15 +6,15 @@ namespace IodemBot.Modules.GoldenSunMechanics
 {
     internal class MayIgnoreDefenseEffect : Effect
     {
-        public override string Type { get; } = "IgnoreDefense";
+        public override string Type => "IgnoreDefense";
         [JsonProperty] private int Percentage { get; set; } = 20;
         [JsonProperty] private int Probability { get; set; } = 10;
 
-        public override List<string> Apply(ColossoFighter User, ColossoFighter Target)
+        public override List<string> Apply(ColossoFighter user, ColossoFighter target)
         {
             if (Global.RandomNumber(1, 100) <= Probability)
             {
-                Target.ignoreDefense = (1 - Percentage / 100);
+                target.IgnoreDefense = (1 - Percentage / 100);
             }
 
             return new List<string>();

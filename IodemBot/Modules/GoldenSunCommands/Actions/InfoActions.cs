@@ -13,14 +13,14 @@ namespace IodemBot.Modules
         public override bool GuildsOnly => false;
 
         [ActionParameterSlash(Order = 1, Name = "djinn", Description = "Name of the djinn to be displayed", Required = true, Type = ApplicationCommandOptionType.String)]
-        public string IDDjinn { get; set; }
+        private string IdDjinn { get; set; }
 
         public override async Task RunAsync()
         {
             await Context.ReplyWithMessageAsync(EphemeralRule, embed: DjinnInfoEmbed());
         }
 
-        public override ActionGuildSlashCommandProperties SlashCommandProperties => new ActionGuildSlashCommandProperties()
+        public override ActionGuildSlashCommandProperties SlashCommandProperties => new()
         {
             Name = "djinninfo",
             Description = "Give info on that one djinn you found but can't remember the name of.",
@@ -28,7 +28,7 @@ namespace IodemBot.Modules
            {
                if (options != null && options.Any())
                {
-                   IDDjinn = (string)options.FirstOrDefault().Value;
+                   IdDjinn = (string)options.FirstOrDefault().Value;
                }
                return Task.CompletedTask;
            }
@@ -38,14 +38,14 @@ namespace IodemBot.Modules
 
         protected override Task<(bool Success, string Message)> CheckCustomPreconditionsAsync()
         {
-            if (!DjinnAndSummonsDatabase.TryGetDjinn(IDDjinn, out _))
+            if (!DjinnAndSummonsDatabase.TryGetDjinn(IdDjinn, out _))
                 return Task.FromResult((false, ":x: There is no such spirit with that description!"));
             return Task.FromResult((true, "Task failed successfully"));
         }
 
         private Embed DjinnInfoEmbed()
         {
-            var djinn = DjinnAndSummonsDatabase.GetDjinn(IDDjinn);
+            var djinn = DjinnAndSummonsDatabase.GetDjinn(IdDjinn);
             var embed = new EmbedBuilder();
             embed.WithAuthor($"{djinn.Name}");
             embed.AddField("Icon", djinn.Emote, true);

@@ -23,7 +23,7 @@ namespace IodemBot.Modules
         [ActionParameterComponent(Name = "Page", Description = "page", Order = 0, Required = false)]
         public int StatusPage { get; set; } = 0;
 
-        private static readonly int nPages = 3;
+        private static readonly int NPages = 3;
 
         public override ActionGlobalSlashCommandProperties SlashCommandProperties => new()
         {
@@ -60,7 +60,7 @@ namespace IodemBot.Modules
             await Context.ReplyWithMessageAsync(EphemeralRule, embed: embed, components: component);
         }
 
-        private static readonly Dictionary<Detail, char> split = new()
+        private static readonly Dictionary<Detail, char> Split = new()
         {
             { Detail.None, '>' },
             { Detail.Names, ',' },
@@ -91,8 +91,8 @@ namespace IodemBot.Modules
 
                         .AddField("Stats", p.Stats.ToString(), true)
                         .AddField("Elemental Stats", p.ElStats.ToString(), true)
-                        .AddField("Unleash Rate", $"{p.unleashRate}%", true)
-                        .AddField("XP", $"{account.XP} - next in {account.XPneeded}{(account.NewGames >= 1 ? $"\n({account.TotalXP} total | {account.NewGames} resets)" : "")}", true);
+                        .AddField("Unleash Rate", $"{p.UnleashRate}%", true)
+                        .AddField("XP", $"{account.Xp} - next in {account.XPneeded}{(account.NewGames >= 1 ? $"\n({account.TotalXp} total | {account.NewGames} resets)" : "")}", true);
                     break;
 
                 case 1: // Stats
@@ -111,7 +111,7 @@ namespace IodemBot.Modules
                 case 2: // Total Statistics
                     embed
                         .AddField("Resets", account.NewGames, true)
-                        .AddField("Total XP", account.TotalXP, true)
+                        .AddField("Total XP", account.TotalXp, true)
                         .AddField("Colosso wins | Dungeon Wins", $"{account.ServerStatsTotal.ColossoWins} | {account.ServerStatsTotal.DungeonsCompleted}", true);
                     break;
 
@@ -141,7 +141,7 @@ namespace IodemBot.Modules
             builder.WithButton(labels ? "Dungeons" : null, $"#{nameof(DungeonAction)}.", style: ButtonStyle.Secondary, emote: Emotes.GetEmote("DungeonAction"), row: 1);
             builder.WithButton(labels ? "Options" : null, $"#{nameof(OptionActions)}", style: ButtonStyle.Secondary, emote: Emotes.GetEmote("OptionAction"), row: 1);
             builder.WithButton("◀️", $"#{nameof(StatusAction)}.{prevPage}", style: ButtonStyle.Secondary, disabled: prevPage < 0, row: 1);
-            builder.WithButton("▶️", $"#{nameof(StatusAction)}.{nextPage}", style: ButtonStyle.Secondary, disabled: nextPage >= nPages, row: 1);
+            builder.WithButton("▶️", $"#{nameof(StatusAction)}.{nextPage}", style: ButtonStyle.Secondary, disabled: nextPage >= NPages, row: 1);
 
             return builder.Build();
         }
@@ -200,7 +200,7 @@ namespace IodemBot.Modules
                     SelectedElement = Enum.Parse<Element>((string)idOptions.FirstOrDefault());
                     if (idOptions.Any())
                         SelectedClass = (string)idOptions.ElementAt(1);
-                };
+                }
 
                 if (selectOptions != null && selectOptions.Any())
                 {
@@ -213,7 +213,7 @@ namespace IodemBot.Modules
                         SelectedElement = EntityConverter.ConvertUser(Context.User).Element;
                         SelectedClass = selectOptions.FirstOrDefault();
                     }
-                };
+                }
 
                 return Task.CompletedTask;
             }
@@ -236,30 +236,30 @@ namespace IodemBot.Modules
             await Task.CompletedTask;
         }
 
-        public static async Task ChangeAdeptAsync(RequestContext Context, Element SelectedElement, string SelectedClass = null)
+        public static async Task ChangeAdeptAsync(RequestContext context, Element selectedElement, string selectedClass = null)
         {
-            var guser = (SocketGuildUser)Context.User;
-            await GiveElementRole(guser, SelectedElement, Context);
-            await ChangeAdept(guser, SelectedElement, SelectedClass, Context);
+            var guser = (SocketGuildUser)context.User;
+            await GiveElementRole(guser, selectedElement, context);
+            await ChangeAdept(guser, selectedElement, selectedClass, context);
 
             //loadedLoadout.ApplyLoadout(user);
         }
 
-        private static async Task GiveElementRole(SocketGuildUser user, Element chosenElement, RequestContext Context)
+        private static async Task GiveElementRole(SocketGuildUser user, Element chosenElement, RequestContext context)
         {
-            var role = Context.Guild.Roles.FirstOrDefault(x => x.Name == chosenElement.ToString() + " Adepts");
-            if (chosenElement == Element.none)
+            var role = context.Guild.Roles.FirstOrDefault(x => x.Name == chosenElement.ToString() + " Adepts");
+            if (chosenElement == Element.None)
             {
-                role = Context.Guild.Roles.FirstOrDefault(r => r.Name == "Exathi");
+                role = context.Guild.Roles.FirstOrDefault(r => r.Name == "Exathi");
             }
             if (role == null)
                 return;
 
-            var venusRole = Context.Guild.Roles.FirstOrDefault(x => x.Name == "Venus Adepts");
-            var marsRole = Context.Guild.Roles.FirstOrDefault(x => x.Name == "Mars Adepts");
-            var jupiterRole = Context.Guild.Roles.FirstOrDefault(x => x.Name == "Jupiter Adepts");
-            var mercuryRole = Context.Guild.Roles.FirstOrDefault(x => x.Name == "Mercury Adepts");
-            var exathi = Context.Guild.Roles.FirstOrDefault(x => x.Name == "Exathi") ?? venusRole;
+            var venusRole = context.Guild.Roles.FirstOrDefault(x => x.Name == "Venus Adepts");
+            var marsRole = context.Guild.Roles.FirstOrDefault(x => x.Name == "Mars Adepts");
+            var jupiterRole = context.Guild.Roles.FirstOrDefault(x => x.Name == "Jupiter Adepts");
+            var mercuryRole = context.Guild.Roles.FirstOrDefault(x => x.Name == "Mercury Adepts");
+            var exathi = context.Guild.Roles.FirstOrDefault(x => x.Name == "Exathi") ?? venusRole;
             var roles = new[] { venusRole, marsRole, jupiterRole, mercuryRole, exathi };
             var userRoles = user.Roles.Where(r => roles.Contains(r));
             if (userRoles.Count() == 1 && userRoles.First() == role)
@@ -269,15 +269,15 @@ namespace IodemBot.Modules
             _ = user.AddRoleAsync(role);
         }
 
-        private static async Task ChangeAdept(IGuildUser guser, Element chosenElement, string classSeriesName, RequestContext Context)
+        private static async Task ChangeAdept(IGuildUser guser, Element chosenElement, string classSeriesName, RequestContext context)
         {
             var user = EntityConverter.ConvertUser(guser);
-            await ChangeElement(user, chosenElement, Context);
+            await ChangeElement(user, chosenElement, context);
             ChangeClass(user, classSeriesName);
             UserAccountProvider.StoreUser(user);
         }
 
-        private static async Task ChangeElement(UserAccount user, Element chosenElement, RequestContext Context)
+        private static async Task ChangeElement(UserAccount user, Element chosenElement, RequestContext context)
         {
             if (user.Element == chosenElement)
             {
@@ -287,7 +287,7 @@ namespace IodemBot.Modules
             {
                 var removedEmbed = new EmbedBuilder();
                 removedEmbed.WithDescription($"<:Exclamatory:571309036473942026> Your {removed} was unequipped.");
-                _ = Context.ReplyWithMessageAsync(EphemeralRule.EphemeralOrFail, embed: removedEmbed.Build());
+                _ = context.ReplyWithMessageAsync(EphemeralRule.EphemeralOrFail, embed: removedEmbed.Build());
             }
 
             user.Element = chosenElement;
@@ -362,33 +362,33 @@ namespace IodemBot.Modules
 
         public static Embed GetClassEmbed(UserAccount account)
         {
-            var allClasses = AdeptClassSeriesManager.allClasses;
+            var allClasses = AdeptClassSeriesManager.AllClasses;
             var allAvailableClasses = allClasses.Where(c => c.IsDefault || account.BonusClasses.Any(bc => bc.Equals(c.Name)));
-            var OfElement = allAvailableClasses.Where(c => c.Elements.Contains(account.Element)).Select(c => c.Name).OrderBy(n => n);
+            var ofElement = allAvailableClasses.Where(c => c.Elements.Contains(account.Element)).Select(c => c.Name).OrderBy(n => n);
 
             var embed = new EmbedBuilder();
             embed.WithTitle("Classes");
             embed.WithColor(Colors.Get(account.Element.ToString()));
-            embed.AddField($"Current Class", AdeptClassSeriesManager.GetClass(account).Name);
-            embed.AddField($"Available as {Emotes.GetIcon(account.Element)} {account.Element} Adept:", string.Join(", ", OfElement));
-            embed.AddField($"Others Unlocked:", string.Join(", ", allAvailableClasses.Select(c => c.Name).Except(OfElement).OrderBy(n => n)));
+            embed.AddField("Current Class", AdeptClassSeriesManager.GetClass(account).Name);
+            embed.AddField($"Available as {Emotes.GetIcon(account.Element)} {account.Element} Adept:", string.Join(", ", ofElement));
+            embed.AddField("Others Unlocked:", string.Join(", ", allAvailableClasses.Select(c => c.Name).Except(ofElement).OrderBy(n => n)));
             embed.WithFooter($"Total: {allAvailableClasses.Count()}/{allClasses.Count}");
             return embed.Build();
         }
 
         public static MessageComponent GetClassComponent(UserAccount account)
         {
-            var allClasses = AdeptClassSeriesManager.allClasses;
+            var allClasses = AdeptClassSeriesManager.AllClasses;
             var allAvailableClasses = allClasses.Where(c => c.IsDefault || account.BonusClasses.Any(bc => bc.Equals(c.Name)));
-            var OfElement = allAvailableClasses.Where(c => c.Elements.Contains(account.Element)).OrderBy(n => n.Name);
+            var ofElement = allAvailableClasses.Where(c => c.Elements.Contains(account.Element)).OrderBy(n => n.Name);
 
             var builder = new ComponentBuilder();
             var labels = account.Preferences.ShowButtonLabels;
 
-            List<SelectMenuOptionBuilder> ElementOptions = new();
+            List<SelectMenuOptionBuilder> elementOptions = new();
             foreach (var element in new[] { Element.Venus, Element.Mars, Element.Jupiter, Element.Mercury })
             {
-                ElementOptions.Add(new()
+                elementOptions.Add(new()
                 {
                     Label = element.ToString(),
                     Value = $"{element}",
@@ -396,19 +396,19 @@ namespace IodemBot.Modules
                     Emote = Emotes.GetEmote(element)
                 });
             }
-            builder.WithSelectMenu($"#{nameof(ChangeAdeptAction)}.", ElementOptions);
+            builder.WithSelectMenu($"#{nameof(ChangeAdeptAction)}.", elementOptions);
 
-            List<SelectMenuOptionBuilder> ClassOptions = new();
-            foreach (var series in OfElement)
+            List<SelectMenuOptionBuilder> classOptions = new();
+            foreach (var series in ofElement)
             {
-                ClassOptions.Add(new()
+                classOptions.Add(new()
                 {
                     Label = series.Name,
                     Value = $"{series.Name}",
                     IsDefault = series.Classes.Any(c => c.Name.Equals(account.GsClass))
                 });
             }
-            builder.WithSelectMenu($"#{nameof(ChangeAdeptAction)}", ClassOptions);
+            builder.WithSelectMenu($"#{nameof(ChangeAdeptAction)}", classOptions);
             builder.WithButton(labels ? "Status" : null, customId: $"#{nameof(StatusAction)}", style: ButtonStyle.Primary, emote: Emotes.GetEmote("StatusAction"), row: 3);
             builder.WithButton(labels ? "Loadouts" : null, $"#{nameof(LoadoutAction)}", style: ButtonStyle.Primary, emote: Emotes.GetEmote("LoadoutAction"));
             return builder.Build();

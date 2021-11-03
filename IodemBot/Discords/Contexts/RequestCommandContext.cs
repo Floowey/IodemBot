@@ -24,29 +24,37 @@ namespace IodemBot.Discords.Contexts
         public override SocketUser User => OriginalContext.User;
         public override SocketUserMessage Message => OriginalContext.Message;
 
-        public async override Task<RestUserMessage> ReplyWithMessageAsync(EphemeralRule ephemeralRule, string message = null, bool isTTS = false, Embed[] embeds = null, Embed embed = null,
-            RequestOptions options = null, AllowedMentions allowedMentions = null, MessageReference messageReference = null, MessageComponent components = null, bool hasMentions = false)
+        public override async Task<RestUserMessage> ReplyWithMessageAsync(EphemeralRule ephemeralRule,
+            string message = null, bool isTts = false, Embed[] embeds = null, Embed embed = null,
+            RequestOptions options = null, AllowedMentions allowedMentions = null,
+            MessageReference messageReference = null, MessageComponent components = null, bool hasMentions = false)
         {
             await GetInitialAsync(true);
 
             if (embed == null && embeds != null && embeds.Any())
                 embed = embeds.FirstOrDefault();
 
-            return await Channel.SendMessageAsync(message, isTTS, embed, options, allowedMentions, messageReference, components);
+            return await Channel.SendMessageAsync(message, isTts, embed, options, allowedMentions, messageReference,
+                components);
         }
 
-        public async override Task<RestUserMessage> ReplyWithFileAsync(EphemeralRule ephemeralRule, Stream stream, string filename, bool isSpoiler, string message = null, bool isTTS = false, Embed[] embeds = null, Embed embed = null,
-            RequestOptions options = null, AllowedMentions allowedMentions = null, MessageReference messageReference = null, MessageComponent components = null, bool hasMentions = false)
+        public override async Task<RestUserMessage> ReplyWithFileAsync(EphemeralRule ephemeralRule, Stream stream,
+            string filename, bool isSpoiler, string message = null, bool isTts = false, Embed[] embeds = null,
+            Embed embed = null,
+            RequestOptions options = null, AllowedMentions allowedMentions = null,
+            MessageReference messageReference = null, MessageComponent components = null, bool hasMentions = false)
         {
             await GetInitialAsync(true);
 
             if (embed == null && embeds != null && embeds.Any())
                 embed = embeds.FirstOrDefault();
 
-            return await Channel.SendFileAsync(stream, filename, message, isTTS, embed, options, isSpoiler, allowedMentions, messageReference, components);
+            return await Channel.SendFileAsync(stream, filename, message, isTts, embed, options, isSpoiler,
+                allowedMentions, messageReference, components);
         }
 
-        public override async Task UpdateReplyAsync(Action<MessageProperties> propBuilder, RequestOptions options = null)
+        public override async Task UpdateReplyAsync(Action<MessageProperties> propBuilder,
+            RequestOptions options = null)
         {
             await GetInitialAsync(true);
             await OriginalContext.Message?.ModifyAsync(propBuilder);

@@ -6,7 +6,7 @@ namespace IodemBot.Extensions
     {
         public static bool IsNullOrEmpty(this string s)
         {
-            return (s == null || s == "");
+            return string.IsNullOrEmpty(s);
         }
 
         public static string RemoveBadChars(this string s)

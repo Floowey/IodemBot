@@ -5,18 +5,18 @@ namespace IodemBot.Modules.GoldenSunMechanics
 {
     public class AddDamageEffect : Effect
     {
-        public override string Type { get; } = "AddDamage";
+        public override string Type => "AddDamage";
 
         public uint AddDamage { get; set; } = 0;
 
         public AddDamageEffect()
         {
-            ActivationTime = TimeToActivate.beforeDamage;
+            ActivationTime = TimeToActivate.BeforeDamage;
         }
 
-        public override List<string> Apply(ColossoFighter User, ColossoFighter Target)
+        public override List<string> Apply(ColossoFighter user, ColossoFighter target)
         {
-            User.addDamage += AddDamage;
+            user.AddDamage += AddDamage;
             return new List<string>();
         }
 

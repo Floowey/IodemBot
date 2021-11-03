@@ -77,23 +77,23 @@ namespace IodemBot.Modules.GoldenSunMechanics
                     {
                         awardLog.Add($"You have found your first djinni, the {djinn.Element} djinni {djinn.Emote} {djinn.Name}. " +
                             $"To view what it can do, use the djinninfo command `i!di {djinn.Name}` and to take it with you on your journey, use `i!djinn take {djinn.Name}`. " +
-                            $"In battle you can use a djinn to unleash its powers. After that it will go into \"Ready\" mode. From there you can use it to call a summon. After summoning, a djinn will take some turns to recover. " +
-                            $"You can also team up with other people to use a higher number of djinn in even more powerful summon sequences! " +
-                            $"Make sure to check `i!help DjinnAndSummons` for a full list of the commands related to djinn!");
+                            "In battle you can use a djinn to unleash its powers. After that it will go into \"Ready\" mode. From there you can use it to call a summon. After summoning, a djinn will take some turns to recover. " +
+                            "You can also team up with other people to use a higher number of djinn in even more powerful summon sequences! " +
+                            "Make sure to check `i!help DjinnAndSummons` for a full list of the commands related to djinn!");
                     }
 
                     if (djinn.IsEvent && userAccount.DjinnPocket.Djinn.Count(d => d.IsEvent) == 1)
                     {
-                        awardLog.Add($"Congratulations, You have found an **Event Djinni**! They are custom made djinni, only available within the event, as a small trinket for your participation. " +
-                            $"They behave differently to other djinn, in that they will not count towards your Djinn Pocket limit or any class upgrades, " +
-                            $"however they will carry over if you decide to reset your game :)" +
-                            $"(Event Djinn will not be allowed in any upcoming tournaments.)");
+                        awardLog.Add("Congratulations, You have found an **Event Djinni**! They are custom made djinni, only available within the event, as a small trinket for your participation. " +
+                            "They behave differently to other djinn, in that they will not count towards your Djinn Pocket limit or any class upgrades, " +
+                            "however they will carry over if you decide to reset your game :)" +
+                            "(Event Djinn will not be allowed in any upcoming tournaments.)");
                     }
 
                     if (userAccount.DjinnPocket.Djinn.Count == userAccount.DjinnPocket.PocketSize)
                     {
-                        awardLog.Add($"Attention! Your Djinn Pocket has reached its limit. " +
-                            $"In order to further obtain djinn, you must either make space by releasing djinn or upgrading it using `i!upgradedjinn`!");
+                        awardLog.Add("Attention! Your Djinn Pocket has reached its limit. " +
+                            "In order to further obtain djinn, you must either make space by releasing djinn or upgrading it using `i!upgradedjinn`!");
                     }
                 }
                 else
@@ -118,16 +118,16 @@ namespace IodemBot.Modules.GoldenSunMechanics
                     {
                         awardLog.Add($"You have found your first djinni, the {djinn.Element} djinni {djinn.Emote} {djinn.Name}. " +
                             $"To view what it can do, use the djinninfo command `i!di {djinn.Name}` and to take it with you on your journey, use `i!djinn take {djinn.Name}` as long as it matches one of your classes elements. " +
-                            $"In battle you can use a djinn to unleash its powers. After that it will go into \"Ready\" mode. From there you can use it to call a summon. After summoning, a djinn will take some turns to recover. " +
-                            $"You can also team up with other people to use a higher number of djinn in even more powerful summon sequences! " +
-                            $"Find more djinn by battling them in various towns and locations, and with some luck they will join you." +
-                            $"Make sure to check `i!help DjinnAndSummons` for a full list of the commands related to djinn!");
+                            "In battle you can use a djinn to unleash its powers. After that it will go into \"Ready\" mode. From there you can use it to call a summon. After summoning, a djinn will take some turns to recover. " +
+                            "You can also team up with other people to use a higher number of djinn in even more powerful summon sequences! " +
+                            "Find more djinn by battling them in various towns and locations, and with some luck they will join you." +
+                            "Make sure to check `i!help DjinnAndSummons` for a full list of the commands related to djinn!");
                     }
 
                     if (userAccount.DjinnPocket.Djinn.Count == userAccount.DjinnPocket.PocketSize)
                     {
-                        awardLog.Add($"Attention! Your Djinn Pocket has reached its limit. " +
-                            $"In order to further obtain djinn, you must either make space by releasing djinn or upgrading it using `i!upgradedjinn`!");
+                        awardLog.Add("Attention! Your Djinn Pocket has reached its limit. " +
+                            "In order to further obtain djinn, you must either make space by releasing djinn or upgrading it using `i!upgradedjinn`!");
                     }
 
                     if (djinn.IsShiny)

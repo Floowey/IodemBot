@@ -8,6 +8,32 @@ namespace IodemBot.Modules.GoldenSunMechanics
     internal class AdeptClassSeries
     {
         public static Dictionary<string, IRequirement> DictReq;
+
+        static AdeptClassSeries()
+        {
+            DictReq = new Dictionary<string, IRequirement>
+            {
+                {"Level", new LevelRequirement()},
+                {"ColossoWins", new ColossoWinRequirement()},
+                {"CommandUses", new CommandRequirement()},
+                {"Damage", new DamageRequirement()},
+                {"Heals", new HealRequirement()},
+                {"Revives", new ReviveRequirement()},
+                {"KillsByHand", new KillsByHandRequirement()},
+                {"SoloBattles", new SoloBattleRequirement()},
+                {"Teammates", new TeammatesRequirement()},
+                {"DaysActive", new DaysActiveRequirement()},
+                {"UnlockedClasses", new UnlockedClassesRequirement()},
+                {"Djinn", new DjinnRequirement()},
+                {"DungeonsCompleted", new DungeonsCompletedRequirement()},
+                {"VenusDjinn", new VenusDjinnRequirement()},
+                {"CursedItems", new CursedItemsRequirement()},
+                {"MarsDjinn", new MarsDjinnRequirement()},
+                {"JupiterDjinn", new JupiterDjinnRequirement()},
+                {"MercuryDjinn", new MercuryDjinnRequirement()}
+            };
+        }
+
         public string Name { get; set; }
         public AdeptClass[] Classes { get; set; }
         public Element[] Elements { get; set; }
@@ -18,43 +44,19 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public ArchType Archtype { get; set; }
 
-        public AdeptClass GetClass(UserAccount User)
+        public AdeptClass GetClass(UserAccount user)
         {
             int classNr;
             try
             {
-                classNr = Math.Min(Classes.Length - 1, DictReq[Requirement].Apply(User));
+                classNr = Math.Min(Classes.Length - 1, DictReq[Requirement].Apply(user));
             }
             catch
             {
                 classNr = 0;
             }
-            return Classes[classNr];
-        }
 
-        static AdeptClassSeries()
-        {
-            DictReq = new Dictionary<string, IRequirement>
-            {
-                { "Level", new LevelRequirement() },
-                { "ColossoWins", new ColossoWinRequirement() },
-                { "CommandUses", new CommandRequirement() },
-                { "Damage", new DamageRequirement() },
-                { "Heals", new HealRequirement() },
-                { "Revives", new ReviveRequirement() },
-                { "KillsByHand", new KillsByHandRequirement() },
-                { "SoloBattles", new SoloBattleRequirement() },
-                { "Teammates", new TeammatesRequirement() },
-                { "DaysActive", new DaysActiveRequirement() },
-                { "UnlockedClasses", new UnlockedClassesRequirement() },
-                { "Djinn", new DjinnRequirement() },
-                { "DungeonsCompleted", new DungeonsCompletedRequirement()},
-                { "VenusDjinn", new VenusDjinnRequirement()},
-                { "CursedItems", new CursedItemsRequirement()},
-                { "MarsDjinn", new MarsDjinnRequirement()},
-                { "JupiterDjinn", new JupiterDjinnRequirement()},
-                { "MercuryDjinn", new MercuryDjinnRequirement()}
-            };
+            return Classes[classNr];
         }
 
         internal AdeptClassSeries Clone()

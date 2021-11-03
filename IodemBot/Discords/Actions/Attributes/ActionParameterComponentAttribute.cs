@@ -2,7 +2,7 @@
 
 namespace IodemBot.Discords.Actions.Attributes
 {
-    [AttributeUsage(AttributeTargets.Property, AllowMultiple = false)]
+    [AttributeUsage(AttributeTargets.Property)]
     public class ActionParameterComponentAttribute : Attribute, IActionParameterAttribute
     {
         public int Order { get; set; }

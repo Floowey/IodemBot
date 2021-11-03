@@ -10,8 +10,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
     {
         public int Percentage { get; set; }
         public int HealPower { get; set; }
-        public int PPHeal { get; set; }
-        public int PPPercent { get; set; }
+        public int PpHeal { get; set; }
+        public int PpPercent { get; set; }
 
         public override object Clone()
         {
@@ -21,16 +21,14 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public override string ToString()
         {
-            return $"Heals {(TargetType == TargetType.PartySelf ? "the user" : TargetType == TargetType.PartySingle ? "a teammate" : TargetType == TargetType.PartyAll ? "the users party" : "someone else")}. {(HealPower > 0 ? $"Heals HP with a Power of {HealPower}." : "")} {(Percentage > 0 ? $"Heals HP by {Percentage}%." : "")}{(PPHeal > 0 ? $"Heals PP with a Power of {PPHeal}." : "")}{(PPPercent > 0 ? $"Heals PP by {PPPercent}%." : "")}";
+            return
+                $"Heals {(TargetType == TargetType.PartySelf ? "the user" : TargetType == TargetType.PartySingle ? "a teammate" : TargetType == TargetType.PartyAll ? "the users party" : "someone else")}. {(HealPower > 0 ? $"Heals HP with a Power of {HealPower}." : "")} {(Percentage > 0 ? $"Heals HP by {Percentage}%." : "")}{(PpHeal > 0 ? $"Heals PP with a Power of {PpHeal}." : "")}{(PpPercent > 0 ? $"Heals PP by {PpPercent}%." : "")}";
         }
 
-        public override void InternalChooseBestTarget(ColossoFighter User)
+        public override void InternalChooseBestTarget(ColossoFighter user)
         {
-            if (TargetType == TargetType.PartyAll)
-            {
-                return;
-            }
-            var party = User.Party;
+            if (TargetType == TargetType.PartyAll) return;
+            var party = user.Party;
             var aliveFriends = party.Where(f => f.IsAlive).ToList();
             if (!aliveFriends.Any())
             {
@@ -40,52 +38,36 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
             aliveFriends = aliveFriends.OrderBy(s => s.Stats.HP / s.Stats.MaxHP).ThenBy(s => s.Stats.HP).ToList();
 
-            if (aliveFriends.Any(d => d.Name.Contains("Star")))
-            {
-                TargetNr = party.IndexOf(party.Where(d => d.Name.Contains("Star")).Random());
-            }
-            else
-            {
-                TargetNr = party.IndexOf(aliveFriends.First());
-            }
+            TargetNr = party.IndexOf(aliveFriends.Any(d => d.Name.Contains("Star"))
+                ? party.Where(d => d.Name.Contains("Star")).Random()
+                : aliveFriends.First());
         }
 
-        public override bool InternalValidSelection(ColossoFighter User)
+        public override bool InternalValidSelection(ColossoFighter user)
         {
-            if (!base.InternalValidSelection(User))
-            {
-                return false;
-            }
-            return (User.Party.Where(f => f.IsAlive).Any(f => (100 * f.Stats.HP) / f.Stats.MaxHP < 85));
+            if (!base.InternalValidSelection(user)) return false;
+            return user.Party.Where(f => f.IsAlive).Any(f => 100 * f.Stats.HP / f.Stats.MaxHP < 85);
         }
 
-        protected override List<string> InternalUse(ColossoFighter User)
+        protected override List<string> InternalUse(ColossoFighter user)
         {
-            List<string> log = new List<string>();
-            int Power = (int)(User.ElStats.GetPower(Element) * User.MultiplyBuffs("Power"));
-            List<ColossoFighter> targets = GetTarget(User);
+            var log = new List<string>();
+            var power = (int)(user.ElStats.GetPower(Element) * user.MultiplyBuffs("Power"));
+            var targets = GetTarget(user);
 
             foreach (var t in targets)
             {
-                var HPtoHeal = (uint)(HealPower * Power / 100 + t.Stats.MaxHP * Percentage / 100);
-                if (HPtoHeal > 0)
-                {
-                    log.AddRange(t.Heal(HPtoHeal));
-                }
+                var hPtoHeal = (uint)(HealPower * power / 100 + t.Stats.MaxHP * Percentage / 100);
+                if (hPtoHeal > 0) log.AddRange(t.Heal(hPtoHeal));
 
-                var PPToHeal = (uint)(PPHeal * Power / 100 + t.Stats.MaxPP * PPPercent / 100);
-                if (PPToHeal > 0)
-                {
-                    log.AddRange(t.RestorePP(PPToHeal));
-                }
+                var ppToHeal = (uint)(PpHeal * power / 100 + t.Stats.MaxPP * PpPercent / 100);
+                if (ppToHeal > 0) log.AddRange(t.RestorePp(ppToHeal));
 
-                log.AddRange(Effects.ApplyAll(User, t));
+                log.AddRange(Effects.ApplyAll(user, t));
 
-                if (User is PlayerFighter p)
-                {
-                    p.battleStats.HPhealed += HPtoHeal;
-                }
+                if (user is PlayerFighter p) p.BattleStats.HPhealed += hPtoHeal;
             }
+
             return log;
         }
     }

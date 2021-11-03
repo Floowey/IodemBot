@@ -5,33 +5,33 @@ namespace IodemBot.Modules.GoldenSunMechanics
 {
     internal class BreakEffect : Effect
     {
-        public override string Type { get; } = "Break";
+        public override string Type => "Break";
 
-        public override List<string> Apply(ColossoFighter User, ColossoFighter Target)
+        public override List<string> Apply(ColossoFighter user, ColossoFighter target)
         {
             List<string> log = new List<string>();
             List<Buff> newBuffs = new List<Buff>();
-            if (!Target.IsAlive)
+            if (!target.IsAlive)
             {
                 return log;
             }
 
-            foreach (var b in Target.Buffs)
+            foreach (var b in target.Buffs)
             {
-                if (b.multiplier > 1)
+                if (b.Multiplier > 1)
                 {
-                    log.Add($"{Target.Name}'s Boost to {b.stat} normalizes");
+                    log.Add($"{target.Name}'s Boost to {b.Stat} normalizes");
                 }
                 else
                 {
                     newBuffs.Add(b);
                 }
             }
-            if (User is PlayerFighter p)
+            if (user is PlayerFighter p)
             {
-                p.battleStats.Supported++;
+                p.BattleStats.Supported++;
             }
-            Target.Buffs = newBuffs;
+            target.Buffs = newBuffs;
             return log;
         }
 

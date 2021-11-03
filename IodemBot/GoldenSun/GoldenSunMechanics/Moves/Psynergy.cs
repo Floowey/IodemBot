@@ -6,51 +6,48 @@ namespace IodemBot.Modules.GoldenSunMechanics
 {
     public abstract class Psynergy : Move
     {
-        public uint PPCost { get; set; }
+        public uint PpCost { get; set; }
         public Element Element { get; set; }
 
-        public override bool InternalValidSelection(ColossoFighter User)
+        public override bool InternalValidSelection(ColossoFighter user)
         {
-            return User.Stats.PP >= PPCost && !(PPCost > 1 && User.HasCondition(Condition.Seal));
+            return user.Stats.PP >= PpCost && !(PpCost > 1 && user.HasCondition(Condition.Seal));
         }
 
-        protected override Validation Validate(ColossoFighter User)
+        protected override Validation Validate(ColossoFighter user)
         {
-            List<string> log = new List<string>();
-            var t = base.Validate(User);
-            if (!t.isValid)
-            {
-                return t;
-            }
+            var log = new List<string>();
+            var t = base.Validate(user);
+            if (!t.IsValid) return t;
 
-            log.AddRange(t.log);
+            log.AddRange(t.Log);
 
             //Psy Seal:
             //PPCost > 1 is, because Items are right now implemented as Psynergy with PPCost 1
-            if (PPCost > 1 && User.HasCondition(Condition.Seal))
+            if (PpCost > 1 && user.HasCondition(Condition.Seal))
             {
-                log.Add($"{User.Name}'s Psynergy is sealed!");
+                log.Add($"{user.Name}'s Psynergy is sealed!");
                 return new Validation(false, log);
             }
 
-            if (User.Stats.PP < PPCost)
+            if (user.Stats.PP < PpCost)
             {
-                log.Add($"{User.Name} has not enough PP to cast {this.Name}.");
+                log.Add($"{user.Name} has not enough PP to cast {Name}.");
                 return new Validation(false, log);
             }
-            List<ColossoFighter> targets = GetTarget(User);
+
+            var targets = GetTarget(user);
             if (!Effects.Any(i => i is ReviveEffect || i is MysticCallEffect) && targets.TrueForAll(i => !i.IsAlive))
             {
-                log.Add($"{User.Name} wants to {(PPCost == 1 ? "use" : "cast")} {Name}, but {(targets.Count == 1 ? "the target is" : "all the targets are")} down.");
-                if (User.Moves.FirstOrDefault(m => m is Defend) != null)
-                {
-                    log.AddRange(User.Moves.FirstOrDefault(m => m is Defend).Use(User));
-                }
+                log.Add(
+                    $"{user.Name} wants to {(PpCost == 1 ? "use" : "cast")} {Name}, but {(targets.Count == 1 ? "the target is" : "all the targets are")} down.");
+                if (user.Moves.FirstOrDefault(m => m is Defend) != null)
+                    log.AddRange(user.Moves.FirstOrDefault(m => m is Defend).Use(user));
                 return new Validation(false, log);
             }
 
-            User.Stats.PP -= (int)PPCost;
-            log.Add($"{Emote} {User.Name} {(PPCost == 1 ? "uses" : "casts")} {this.Name}!");
+            user.Stats.PP -= (int)PpCost;
+            log.Add($"{Emote} {user.Name} {(PpCost == 1 ? "uses" : "casts")} {Name}!");
             return new Validation(true, log);
         }
     }

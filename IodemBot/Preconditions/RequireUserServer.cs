@@ -9,16 +9,12 @@ namespace IodemBot.Preconditions
     public class RequireUserServer : PreconditionAttribute
     {
         // Override the CheckPermissions method
-        public override Task<PreconditionResult> CheckPermissionsAsync(ICommandContext context, CommandInfo command, IServiceProvider services)
+        public override Task<PreconditionResult> CheckPermissionsAsync(ICommandContext context, CommandInfo command,
+            IServiceProvider services)
         {
-            if (context.Guild != null && GuildSettings.GetGuildSettings(context.Guild).isUserServer)
-            {
+            if (context.Guild != null && GuildSettings.GetGuildSettings(context.Guild).IsUserServer)
                 return Task.FromResult(PreconditionResult.FromSuccess());
-            }
-            else
-            {
-                return Task.FromResult(PreconditionResult.FromError("You must be in an approved server to run this."));
-            }
+            return Task.FromResult(PreconditionResult.FromError("You must be in an approved server to run this."));
         }
     }
 }

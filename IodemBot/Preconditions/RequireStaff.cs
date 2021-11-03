@@ -20,7 +20,7 @@ namespace IodemBot.Preconditions
                 }
                 else
                 {
-                    return Task.FromResult(PreconditionResult.FromError($"You must be staff to run this command."));
+                    return Task.FromResult(PreconditionResult.FromError("You must be staff to run this command."));
                 }
             }
             else

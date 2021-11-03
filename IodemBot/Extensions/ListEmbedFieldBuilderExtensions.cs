@@ -19,7 +19,7 @@ namespace IodemBot
 
             fieldEmbed.Add(new EmbedFieldBuilder()
             {
-                Name = name == null ? null : name + (appendIfTooLong && tooLong ? $" (truncated)" : ""),
+                Name = name == null ? null : name + (appendIfTooLong && tooLong ? " (truncated)" : ""),
                 Value = content,
                 IsInline = isInline
             });

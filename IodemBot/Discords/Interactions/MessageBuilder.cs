@@ -18,14 +18,39 @@ namespace IodemBot.Discords
 
     public class MessageBuilder
     {
+        private MessageBuilder(bool success)
+        {
+            Success = success;
+            Style = MessageStyle.None;
+        }
+
+        public MessageBuilder(IUser userData, string baseMessage, bool success, string title, Color? color = null,
+            string thumbnailUrl = null, MessageStyle style = MessageStyle.Embed,
+            params OutputFieldMessage[] outputFieldMessages)
+        {
+            UserData = userData;
+            BaseMessage = baseMessage;
+            Success = success;
+            Title = title;
+            Color = color ?? Color.Purple;
+            ThumbnailUrl = thumbnailUrl;
+            Style = style;
+            OutputFieldMessages = outputFieldMessages?.ToList();
+        }
+
         public IUser UserData { get; set; }
-        private string BaseMessage { get; set; }
+        private string BaseMessage { get; }
         public bool Success { get; protected set; }
         public string Title { get; set; }
         public Color Color { get; set; }
         public string ThumbnailUrl { get; set; }
         public MessageStyle Style { get; set; }
-        public Func<IServiceProvider, RequestContext, RestUserMessage, Task<MessageBuilder>> GetDeferredMessage { get; set; }
+
+        public Func<IServiceProvider, RequestContext, RestUserMessage, Task<MessageBuilder>> GetDeferredMessage
+        {
+            get;
+            set;
+        }
 
         public string ImageUrl { get; set; }
         public Stream ImageStream { get; set; }
@@ -36,24 +61,9 @@ namespace IodemBot.Discords
 
         public List<OutputFieldMessage> OutputFieldMessages { get; set; }
 
-        public static MessageBuilder Blank(bool success) => new MessageBuilder(success);
-
-        private MessageBuilder(bool success)
+        public static MessageBuilder Blank(bool success)
         {
-            Success = success;
-            Style = MessageStyle.None;
-        }
-
-        public MessageBuilder(IUser userData, string baseMessage, bool success, string title, Color? color = null, string thumbnailUrl = null, MessageStyle style = MessageStyle.Embed, params OutputFieldMessage[] outputFieldMessages)
-        {
-            UserData = userData;
-            BaseMessage = baseMessage;
-            Success = success;
-            Title = title;
-            Color = color ?? Color.Purple;
-            ThumbnailUrl = thumbnailUrl;
-            Style = style;
-            OutputFieldMessages = outputFieldMessages?.ToList();
+            return new MessageBuilder(success);
         }
 
         public MessageBuilder Modify(Action<MessageBuilder> action)
@@ -66,7 +76,7 @@ namespace IodemBot.Discords
         {
             if (Style == MessageStyle.Embed)
             {
-                var embed = new EmbedBuilder()
+                var embed = new EmbedBuilder
                 {
                     Title = Title,
                     Description = BaseMessage,
@@ -77,15 +87,15 @@ namespace IodemBot.Discords
                 if (ImageUrl != null)
                     embed.ImageUrl = ImageUrl;
 
-                string message = null;
                 if (OutputFieldMessages != null && OutputFieldMessages.Any())
                 {
                     embed.Fields = new List<EmbedFieldBuilder>();
 
-                    var invalidFields = OutputFieldMessages.Where(om => om.Message != null && om.MessageType == OutputFieldMessageType.Invalid);
+                    var invalidFields = OutputFieldMessages.Where(om =>
+                        om.Message != null && om.MessageType == OutputFieldMessageType.Invalid);
                     if (invalidFields.Any())
                     {
-                        string invalidValue = string.Join(Environment.NewLine, invalidFields.Select(om => om.Message));
+                        var invalidValue = string.Join(Environment.NewLine, invalidFields.Select(om => om.Message));
                         if (string.IsNullOrWhiteSpace(invalidValue))
                             invalidValue = "(missing)";
 
@@ -93,40 +103,47 @@ namespace IodemBot.Discords
                         embed.Fields.Add("I couldn't do that! Here's why:", invalidValue);
                     }
 
-                    var modificationFields = OutputFieldMessages.Where(om => om.Message != null && om.MessageType == OutputFieldMessageType.Modification);
+                    var modificationFields = OutputFieldMessages.Where(om =>
+                        om.Message != null && om.MessageType == OutputFieldMessageType.Modification);
                     if (modificationFields.Any())
                     {
-                        string modificationValue = string.Join(Environment.NewLine, modificationFields.Select(om => om.Message));
+                        var modificationValue = string.Join(Environment.NewLine,
+                            modificationFields.Select(om => om.Message));
                         if (string.IsNullOrWhiteSpace(modificationValue))
                             modificationValue = "(missing)";
 
                         embed.Fields.Add("Changed Actions:", modificationValue);
                     }
 
-                    var protectionFields = OutputFieldMessages.Where(om => om.Message != null && om.MessageType == OutputFieldMessageType.Protection || om.MessageType == OutputFieldMessageType.BreakingProtection);
+                    var protectionFields = OutputFieldMessages.Where(om =>
+                        om.Message != null && om.MessageType == OutputFieldMessageType.Protection ||
+                        om.MessageType == OutputFieldMessageType.BreakingProtection);
                     if (protectionFields.Any())
                     {
-                        string protectionValue = string.Join(Environment.NewLine, protectionFields.Select(om => om.Message));
+                        var protectionValue =
+                            string.Join(Environment.NewLine, protectionFields.Select(om => om.Message));
                         if (string.IsNullOrWhiteSpace(protectionValue))
                             protectionValue = "(missing)";
 
                         embed.Fields.Add("Protections:", protectionValue);
                     }
 
-                    var resultFields = OutputFieldMessages.Where(om => om.Message != null && om.MessageType == OutputFieldMessageType.Result);
+                    var resultFields = OutputFieldMessages.Where(om =>
+                        om.Message != null && om.MessageType == OutputFieldMessageType.Result);
                     if (resultFields.Any())
                     {
-                        string resultValue = string.Join(Environment.NewLine, resultFields.Select(om => om.Message));
+                        var resultValue = string.Join(Environment.NewLine, resultFields.Select(om => om.Message));
                         if (string.IsNullOrWhiteSpace(resultValue))
                             resultValue = "(missing)";
 
                         embed.Fields.Add("Results:", resultValue);
                     }
 
-                    var bonusFields = OutputFieldMessages.Where(om => om.Message != null && om.MessageType == OutputFieldMessageType.Bonus);
+                    var bonusFields = OutputFieldMessages.Where(om =>
+                        om.Message != null && om.MessageType == OutputFieldMessageType.Bonus);
                     if (bonusFields.Any())
                     {
-                        string bonusValue = string.Join(Environment.NewLine, bonusFields.Select(om => om.Message));
+                        var bonusValue = string.Join(Environment.NewLine, bonusFields.Select(om => om.Message));
                         if (string.IsNullOrWhiteSpace(bonusValue))
                             bonusValue = "(missing)";
 
@@ -138,20 +155,19 @@ namespace IodemBot.Discords
                 if (UserData != null)
                     mentions.Insert(0, UserData.Mention);
 
-                bool hasMentions = mentions.Any();
+                var hasMentions = mentions.Any();
 
-                message = string.Join(", ", mentions.Distinct());
+                var message = string.Join(", ", mentions.Distinct());
 
-                return new MessageMetadata(embed.Build(), ImageStream, ImageIsSpoiler, ImageFileName, message, Success, hasMentions, ComponentBuilder);
+                return new MessageMetadata(embed.Build(), ImageStream, ImageIsSpoiler, ImageFileName, message, Success,
+                    hasMentions, ComponentBuilder);
             }
-            else if (Style == MessageStyle.PlainText)
-            {
-                return new MessageMetadata(null, ImageStream, ImageIsSpoiler, ImageFileName, BaseMessage, Success, false, ComponentBuilder);
-            }
-            else
-            {
-                return new MessageMetadata(null, ImageStream, ImageIsSpoiler, ImageFileName, null, Success, false, ComponentBuilder);
-            }
+
+            if (Style == MessageStyle.PlainText)
+                return new MessageMetadata(null, ImageStream, ImageIsSpoiler, ImageFileName, BaseMessage, Success,
+                    false, ComponentBuilder);
+            return new MessageMetadata(null, ImageStream, ImageIsSpoiler, ImageFileName, null, Success, false,
+                ComponentBuilder);
         }
     }
 }

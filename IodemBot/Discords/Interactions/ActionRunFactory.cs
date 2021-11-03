@@ -16,42 +16,51 @@ namespace IodemBot.Discords
     {
         public abstract Task RunActionAsync();
 
-        public static ActionRunFactory Find(IServiceProvider services, RequestContext context, SocketInteraction interaction)
+        public static ActionRunFactory Find(IServiceProvider services, RequestContext context,
+            SocketInteraction interaction)
         {
             if (interaction is SocketSlashCommand slashCommand)
                 return new ActionSlashRunFactory(services, context, slashCommand);
-            else if (interaction is SocketMessageCommand msgCommand)
+
+            if (interaction is SocketMessageCommand msgCommand)
                 return new ActionMessageRunFactory(services, context, msgCommand);
-            else if (interaction is SocketUserCommand userCommand)
+
+            if (interaction is SocketUserCommand userCommand)
                 return new ActionUserRunFactory(services, context, userCommand);
-            else if (interaction is SocketMessageComponent component)
+
+            if (interaction is SocketMessageComponent component)
             {
-                if (component.Data.CustomId.StartsWith('#') || component.Data.CustomId.StartsWith('^')) //# = refresh component, ^ = refresh into new component
+                if (component.Data.CustomId.StartsWith('#') ||
+                    component.Data.CustomId.StartsWith('^')) //# = refresh component, ^ = refresh into new component
                     return new ActionRefreshRunFactory(services, context, component);
-                else
-                    return new ActionComponentRunFactory(services, context, component);
+                return new ActionComponentRunFactory(services, context, component);
             }
 
             return null;
         }
 
-        public static ActionRunFactory Find(IServiceProvider services, RequestContext context, CommandInfo commandInfo, object[] parmValues) => new ActionTextRunFactory(services, context, commandInfo, parmValues);
+        public static ActionRunFactory Find(IServiceProvider services, RequestContext context, CommandInfo commandInfo,
+            object[] parmValues)
+        {
+            return new ActionTextRunFactory(services, context, commandInfo, parmValues);
+        }
     }
 
-    public abstract class ActionRunFactory<TInteraction, TAction> : ActionRunFactory where TInteraction : class where TAction : BotAction
+    public abstract class ActionRunFactory<TInteraction, TAction> : ActionRunFactory
+        where TInteraction : class where TAction : BotAction
     {
-        protected TInteraction _interaction;
-        protected RequestContext _context;
-        protected IServiceProvider _services;
-        protected ActionService _actionService;
+        protected ActionService ActionService;
+        protected RequestContext Context;
+        protected TInteraction Interaction;
+        protected IServiceProvider Services;
 
         public ActionRunFactory(IServiceProvider services, RequestContext context, TInteraction interaction)
         {
-            _services = services;
-            _context = context;
-            _interaction = interaction;
+            Services = services;
+            Context = context;
+            Interaction = interaction;
 
-            _actionService = _services.GetRequiredService<ActionService>();
+            ActionService = Services.GetRequiredService<ActionService>();
         }
 
         protected abstract string InteractionNameForLog { get; }
@@ -70,9 +79,9 @@ namespace IodemBot.Discords
             if (action == null)
                 throw new CommandInvalidException();
 
-            action.Initialize(_services, _context);
+            action.Initialize(Services, Context);
 
-            if (_interaction is SocketInteraction si && _context is RequestInteractionContext ic)
+            if (Interaction is SocketInteraction si && Context is RequestInteractionContext ic)
                 QueueDefer(action, si, ic);
             if (!await PopulateAndValidateParametersAsync(action))
                 return;
@@ -88,16 +97,19 @@ namespace IodemBot.Discords
             {
                 try
                 {
-                    double secondsToWait = 2.1d - (DateTime.UtcNow - si.CreatedAt.UtcDateTime).TotalSeconds;
+                    var secondsToWait = 2.1d - (DateTime.UtcNow - si.CreatedAt.UtcDateTime).TotalSeconds;
                     if (secondsToWait > 2.1)
                         secondsToWait = 2.1;
 
                     if (secondsToWait > 0)
                         await Task.Delay((secondsToWait * 1000).IntLop(Math.Floor));
 
-                    await ic.HadBeenAcknowledgedAsync(RequestAcknowledgeStatus.Acknowledged, async () => await si.DeferAsync(action.EphemeralRule.ToEphemeral()));
+                    await ic.HadBeenAcknowledgedAsync(RequestAcknowledgeStatus.Acknowledged,
+                        async () => await si.DeferAsync(action.EphemeralRule.ToEphemeral()));
                 }
-                catch { }
+                catch
+                {
+                }
             });
         }
 
@@ -108,32 +120,37 @@ namespace IodemBot.Discords
                 await PopulateParametersAsync(action);
                 if (!action.ValidateParameters<ActionParameterSlashAttribute>())
                 {
-                    await _context.ReplyWithMessageAsync(EphemeralRule.EphemeralOrFallback, "Something went wrong - you didn't fill in a required option!").ConfigureAwait(false);
+                    await Context.ReplyWithMessageAsync(EphemeralRule.EphemeralOrFallback,
+                        "Something went wrong - you didn't fill in a required option!").ConfigureAwait(false);
                     return false;
                 }
             }
             catch (CommandParameterValidationException ce)
             {
-                await _context.ReplyWithMessageAsync(EphemeralRule.EphemeralOrFallback, ce.Message);
+                await Context.ReplyWithMessageAsync(EphemeralRule.EphemeralOrFallback, ce.Message);
                 return false;
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
-                await _context.ReplyWithMessageAsync(EphemeralRule.EphemeralOrFallback, "I couldn't understand something you entered in!").ConfigureAwait(false);
+                await Context.ReplyWithMessageAsync(EphemeralRule.EphemeralOrFallback,
+                    "I couldn't understand something you entered in!").ConfigureAwait(false);
                 return false;
             }
+
             return true;
         }
 
         private async Task<bool> CheckPreconditionsAsync(TAction action)
         {
-            var (Success, Message) = await action.CheckPreconditionsAsync();
-            if (!Success)
+            var (success, message) = await action.CheckPreconditionsAsync();
+            if (!success)
             {
-                await _context.ReplyWithMessageAsync(EphemeralRule.EphemeralOrFallback, Message ?? "Something went wrong with using this command!").ConfigureAwait(false);
+                await Context.ReplyWithMessageAsync(EphemeralRule.EphemeralOrFallback,
+                    message ?? "Something went wrong with using this command!").ConfigureAwait(false);
                 return false;
             }
+
             return true;
         }
 
@@ -149,8 +166,8 @@ namespace IodemBot.Discords
                 catch (Exception e)
                 {
                     Console.WriteLine(e);
-                    await _context.ReplyWithMessageAsync(action.EphemeralRule, "Something went wrong!").ConfigureAwait(false);
-                    return;
+                    await Context.ReplyWithMessageAsync(action.EphemeralRule, "Something went wrong!")
+                        .ConfigureAwait(false);
                 }
             });
         }
@@ -158,18 +175,23 @@ namespace IodemBot.Discords
 
     public class ActionSlashRunFactory : ActionRunFactory<SocketSlashCommand, BotCommandAction>
     {
-        protected override string InteractionNameForLog => _interaction.Data.Name;
-
-        public ActionSlashRunFactory(IServiceProvider services, RequestContext context, SocketSlashCommand interaction) : base(services, context, interaction)
+        public ActionSlashRunFactory(IServiceProvider services, RequestContext context, SocketSlashCommand interaction)
+            : base(services, context, interaction)
         {
         }
 
-        protected override BotCommandAction GetAction() => _actionService.GetAll().OfType<BotCommandAction>().FirstOrDefault(a => a.SlashCommandProperties != null && a.SlashCommandProperties.Name == _interaction.Data.Name);
+        protected override string InteractionNameForLog => Interaction.Data.Name;
+
+        protected override BotCommandAction GetAction()
+        {
+            return ActionService.GetAll().OfType<BotCommandAction>().FirstOrDefault(a =>
+                a.SlashCommandProperties != null && a.SlashCommandProperties.Name == Interaction.Data.Name);
+        }
 
         protected override async Task PopulateParametersAsync(BotCommandAction action)
         {
             if (action.SlashCommandProperties.FillParametersAsync != null)
-                await action.SlashCommandProperties.FillParametersAsync(_interaction.Data.Options);
+                await action.SlashCommandProperties.FillParametersAsync(Interaction.Data.Options);
         }
 
         protected override async Task RunActionAsync(BotCommandAction action)
@@ -180,18 +202,23 @@ namespace IodemBot.Discords
 
     public class ActionMessageRunFactory : ActionRunFactory<SocketMessageCommand, BotCommandAction>
     {
-        protected override string InteractionNameForLog => _interaction.Data.Name;
-
-        public ActionMessageRunFactory(IServiceProvider services, RequestContext context, SocketMessageCommand interaction) : base(services, context, interaction)
+        public ActionMessageRunFactory(IServiceProvider services, RequestContext context,
+            SocketMessageCommand interaction) : base(services, context, interaction)
         {
         }
 
-        protected override BotCommandAction GetAction() => _actionService.GetAll().OfType<BotCommandAction>().FirstOrDefault(a => a.MessageCommandProperties != null && a.MessageCommandProperties.Name == _interaction.Data.Name);
+        protected override string InteractionNameForLog => Interaction.Data.Name;
+
+        protected override BotCommandAction GetAction()
+        {
+            return ActionService.GetAll().OfType<BotCommandAction>().FirstOrDefault(a =>
+                a.MessageCommandProperties != null && a.MessageCommandProperties.Name == Interaction.Data.Name);
+        }
 
         protected override async Task PopulateParametersAsync(BotCommandAction action)
         {
             if (action.MessageCommandProperties.FillParametersAsync != null)
-                await action.MessageCommandProperties.FillParametersAsync(_interaction.Data.Message);
+                await action.MessageCommandProperties.FillParametersAsync(Interaction.Data.Message);
         }
 
         protected override async Task RunActionAsync(BotCommandAction action)
@@ -202,18 +229,23 @@ namespace IodemBot.Discords
 
     public class ActionUserRunFactory : ActionRunFactory<SocketUserCommand, BotCommandAction>
     {
-        protected override string InteractionNameForLog => _interaction.Data.Name;
-
-        public ActionUserRunFactory(IServiceProvider services, RequestContext context, SocketUserCommand interaction) : base(services, context, interaction)
+        public ActionUserRunFactory(IServiceProvider services, RequestContext context, SocketUserCommand interaction) :
+            base(services, context, interaction)
         {
         }
 
-        protected override BotCommandAction GetAction() => _actionService.GetAll().OfType<BotCommandAction>().FirstOrDefault(a => a.UserCommandProperties != null && a.UserCommandProperties.Name == _interaction.Data.Name);
+        protected override string InteractionNameForLog => Interaction.Data.Name;
+
+        protected override BotCommandAction GetAction()
+        {
+            return ActionService.GetAll().OfType<BotCommandAction>().FirstOrDefault(a =>
+                a.UserCommandProperties != null && a.UserCommandProperties.Name == Interaction.Data.Name);
+        }
 
         protected override async Task PopulateParametersAsync(BotCommandAction action)
         {
             if (action.UserCommandProperties.FillParametersAsync != null)
-                await action.UserCommandProperties.FillParametersAsync(_interaction.Data.Member);
+                await action.UserCommandProperties.FillParametersAsync(Interaction.Data.Member);
         }
 
         protected override async Task RunActionAsync(BotCommandAction action)
@@ -226,13 +258,12 @@ namespace IodemBot.Discords
     {
         private readonly string _commandTypeName;
         private readonly object[] _idOptions;
-        private readonly bool _intoNew = false;
+        private readonly bool _intoNew;
 
-        protected override string InteractionNameForLog => _interaction.Data.CustomId;
-
-        public ActionRefreshRunFactory(IServiceProvider services, RequestContext context, SocketMessageComponent interaction) : base(services, context, interaction)
+        public ActionRefreshRunFactory(IServiceProvider services, RequestContext context,
+            SocketMessageComponent interaction) : base(services, context, interaction)
         {
-            if (string.IsNullOrWhiteSpace(_interaction.Data.CustomId))
+            if (string.IsNullOrWhiteSpace(Interaction.Data.CustomId))
                 throw new CommandInvalidException();
 
             //# = refresh component, ^ = refresh into new component
@@ -243,23 +274,29 @@ namespace IodemBot.Discords
             _idOptions = splitId.Skip(1).Cast<object>().ToArray();
         }
 
-        protected override BotCommandAction GetAction() => _actionService.GetAll().OfType<BotCommandAction>().FirstOrDefault(a => a.CommandRefreshProperties != null && a.GetType().Name == _commandTypeName);
+        protected override string InteractionNameForLog => Interaction.Data.CustomId;
+
+        protected override BotCommandAction GetAction()
+        {
+            return ActionService.GetAll().OfType<BotCommandAction>().FirstOrDefault(a =>
+                a.CommandRefreshProperties != null && a.GetType().Name == _commandTypeName);
+        }
 
         protected override async Task PopulateParametersAsync(BotCommandAction action)
         {
             if (action.CommandRefreshProperties.FillParametersAsync != null)
             {
-                var selectOptions = _interaction.Data.Values?.ToArray();
+                var selectOptions = Interaction.Data.Values?.ToArray();
                 await action.CommandRefreshProperties.FillParametersAsync(selectOptions, _idOptions);
             }
         }
 
         protected override async Task RunActionAsync(BotCommandAction action)
         {
-            var (Success, Message) = await action.CommandRefreshProperties.CanRefreshAsync(_intoNew);
-            if (!Success)
+            var (success, message) = await action.CommandRefreshProperties.CanRefreshAsync(_intoNew);
+            if (!success)
             {
-                await _context.ReplyWithMessageAsync(true, Message);
+                await Context.ReplyWithMessageAsync(true, message);
                 return;
             }
 
@@ -267,12 +304,17 @@ namespace IodemBot.Discords
             {
                 var props = new MessageProperties();
                 await action.CommandRefreshProperties.RefreshAsync(_intoNew, props);
-                await _context.ReplyWithMessageAsync(action.EphemeralRule.ToEphemeral() ? EphemeralRule.EphemeralOrFail : EphemeralRule.Permanent, props.Content.GetValueOrDefault(), embed: props.Embed.GetValueOrDefault(), embeds: props.Embeds.GetValueOrDefault(),
-                    allowedMentions: props.AllowedMentions.GetValueOrDefault(), components: props.Components.GetValueOrDefault());
+                await Context.ReplyWithMessageAsync(
+                    action.EphemeralRule.ToEphemeral() ? EphemeralRule.EphemeralOrFail : EphemeralRule.Permanent,
+                    props.Content.GetValueOrDefault(), embed: props.Embed.GetValueOrDefault(),
+                    embeds: props.Embeds.GetValueOrDefault(),
+                    allowedMentions: props.AllowedMentions.GetValueOrDefault(),
+                    components: props.Components.GetValueOrDefault());
             }
             else
             {
-                await _context.UpdateReplyAsync(msgProps => action.CommandRefreshProperties.RefreshAsync(_intoNew, msgProps).GetAwaiter().GetResult());
+                await Context.UpdateReplyAsync(msgProps =>
+                    action.CommandRefreshProperties.RefreshAsync(_intoNew, msgProps).GetAwaiter().GetResult());
             }
         }
     }
@@ -282,24 +324,29 @@ namespace IodemBot.Discords
         private readonly string _commandTypeName;
         private readonly object[] _idOptions;
 
-        protected override string InteractionNameForLog => _interaction.Data.CustomId;
-
-        public ActionComponentRunFactory(IServiceProvider services, RequestContext context, SocketMessageComponent interaction) : base(services, context, interaction)
+        public ActionComponentRunFactory(IServiceProvider services, RequestContext context,
+            SocketMessageComponent interaction) : base(services, context, interaction)
         {
-            if (string.IsNullOrWhiteSpace(_interaction.Data.CustomId))
+            if (string.IsNullOrWhiteSpace(Interaction.Data.CustomId))
                 throw new CommandInvalidException();
 
             //# = refresh component, ^ = refresh into new component
-            var splitId = _interaction.Data.CustomId.Split('.');
+            var splitId = Interaction.Data.CustomId.Split('.');
             _commandTypeName = splitId[0];
             _idOptions = splitId.Skip(1).Cast<object>().ToArray();
         }
 
-        protected override BotComponentAction GetAction() => _actionService.GetAll().OfType<BotComponentAction>().FirstOrDefault(a => a.GetType().Name == _commandTypeName);
+        protected override string InteractionNameForLog => Interaction.Data.CustomId;
+
+        protected override BotComponentAction GetAction()
+        {
+            return ActionService.GetAll().OfType<BotComponentAction>()
+                .FirstOrDefault(a => a.GetType().Name == _commandTypeName);
+        }
 
         protected override async Task PopulateParametersAsync(BotComponentAction action)
         {
-            var selectOptions = _interaction.Data.Values?.ToArray();
+            var selectOptions = Interaction.Data.Values?.ToArray();
             await action.FillParametersAsync(selectOptions, _idOptions);
         }
 
@@ -313,18 +360,21 @@ namespace IodemBot.Discords
     {
         private readonly object[] _parmValues;
         private ActionTextCommandProperties _textProperties;
-        protected override string InteractionNameForLog => _interaction.Name;
 
-        public ActionTextRunFactory(IServiceProvider services, RequestContext context, CommandInfo commandInfo, object[] parmValues) : base(services, context, commandInfo)
+        public ActionTextRunFactory(IServiceProvider services, RequestContext context, CommandInfo commandInfo,
+            object[] parmValues) : base(services, context, commandInfo)
         {
             _parmValues = parmValues;
         }
 
+        protected override string InteractionNameForLog => Interaction.Name;
+
         protected override BotCommandAction GetAction()
         {
-            var action = _actionService.GetAll().OfType<BotCommandAction>().FirstOrDefault(s => s.TextCommandProperties != null && s.TextCommandProperties.Any(t => t.Name == _interaction.Name));
+            var action = ActionService.GetAll().OfType<BotCommandAction>().FirstOrDefault(s =>
+                s.TextCommandProperties != null && s.TextCommandProperties.Any(t => t.Name == Interaction.Name));
 
-            _textProperties = action.TextCommandProperties.FirstOrDefault(t => t.Name == _interaction.Name);
+            _textProperties = action.TextCommandProperties.FirstOrDefault(t => t.Name == Interaction.Name);
             if (_textProperties == null)
                 throw new CommandInvalidException();
 

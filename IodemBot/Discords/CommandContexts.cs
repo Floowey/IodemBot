@@ -15,36 +15,33 @@ namespace IodemBot
 
         public Task ReplyAsync(string message = null, Embed embed = null, MessageComponent component = null);
 
-        public static IIodemCommandContext GetContext(object Context)
+        public static IIodemCommandContext GetContext(object context)
         {
-            if (Context is SocketCommandContext c)
-            {
-                return new TextCommandContext(c);
-            }
+            if (context is SocketCommandContext c) return new TextCommandContext(c);
             throw new ArgumentException("Did not recognize Context.");
         }
     }
 
     public class TextCommandContext : IIodemCommandContext
     {
+        private readonly SocketCommandContext _context;
+
         public TextCommandContext(SocketCommandContext context)
         {
-            this.context = context;
+            _context = context;
         }
 
-        private SocketCommandContext context;
+        public ISocketMessageChannel Channel => _context.Channel;
 
-        public ISocketMessageChannel Channel => context.Channel;
+        public SocketMessage Message => _context.Message;
 
-        public SocketMessage Message => context.Message;
+        public IGuild Guild => _context.Guild;
 
-        public IGuild Guild => context.Guild;
-
-        public SocketUser User => context.User;
+        public SocketUser User => _context.User;
 
         public async Task ReplyAsync(string text = null, Embed embed = null, MessageComponent component = null)
         {
-            await Channel.SendMessageAsync(text: text, embed: embed, component: component);
+            await Channel.SendMessageAsync(text, embed: embed, component: component);
         }
     }
 }
