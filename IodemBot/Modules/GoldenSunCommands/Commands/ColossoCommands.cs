@@ -19,7 +19,7 @@ namespace IodemBot.ColossoBattles
     public class ColossoCommands : ModuleBase<SocketCommandContext>
     {
         public ColossoBattleService BattleService { get; set; }
-        public static string[] numberEmotes = new string[] { "\u0030\u20E3", "\u0031\u20E3", "\u0032\u20E3", "\u0033\u20E3", "\u0034\u20E3", "\u0035\u20E3",
+        public static readonly string[] numberEmotes = new string[] { "\u0030\u20E3", "\u0031\u20E3", "\u0032\u20E3", "\u0033\u20E3", "\u0034\u20E3", "\u0035\u20E3",
             "\u0036\u20E3", "\u0037\u20E3", "\u0038\u20E3", "\u0039\u20E3" };
 
         private static readonly Dictionary<SocketGuildUser, DateTime> FighterRoles = new Dictionary<SocketGuildUser, DateTime>();
@@ -30,7 +30,7 @@ namespace IodemBot.ColossoBattles
             {
                 return;
             }
-            if (!(Context.User is SocketGuildUser user))
+            if (Context.User is not SocketGuildUser user)
             {
                 return;
             }
@@ -119,7 +119,7 @@ namespace IodemBot.ColossoBattles
         private async Task AddFighterRole()
         {
             var gs = GuildSettings.GetGuildSettings(Context.Guild);
-            if (!(Context.User is SocketGuildUser user))
+            if (Context.User is not SocketGuildUser user)
             {
                 return;
             }
@@ -182,7 +182,7 @@ namespace IodemBot.ColossoBattles
                     .WithTitle(dungeon.Name)
                     .WithDescription(dungeon.FlavourText)
                     .WithThumbnailUrl(dungeon.Image)
-                    .AddField("Info", $"{(dungeon.IsDefault ? "Default " : "")}{(dungeon.IsOneTimeOnly ? "<:dungeonkey:606237382047694919> Dungeon" : "<:mapopen:606236181503410176> Town")} for up to {dungeon.MaxPlayer} {(dungeon.MaxPlayer == 1 ? "player" : "players")}. {dungeon.Matchups.Count()} stages.")
+                    .AddField("Info", $"{(dungeon.IsDefault ? "Default " : "")}{(dungeon.IsOneTimeOnly ? "<:dungeonkey:606237382047694919> Dungeon" : "<:mapopen:606236181503410176> Town")} for up to {dungeon.MaxPlayer} {(dungeon.MaxPlayer == 1 ? "player" : "players")}. {dungeon.Matchups.Count} stages.")
                     .AddField("Requirement", $"{dungeon.Requirement.GetDescription()}")
                     .AddField("Djinn", $"{(djinnTotal.Count() > 0 ? $"{djinnobtained}/{limittedDjinn.Sum(d => d.Obtainable)}{(unlimittedDjinn.Count() > 0 ? "+" : "")} ({probability * 100:N0}% success rate)" : "none")}")
                     .Build());
@@ -259,7 +259,7 @@ namespace IodemBot.ColossoBattles
                 return;
             }
 
-            if (!(Context.User is SocketGuildUser user))
+            if (Context.User is not SocketGuildUser)
             {
                 return;
             }
@@ -267,10 +267,9 @@ namespace IodemBot.ColossoBattles
             var guild = Context.Guild;
             var gs = GuildSettings.GetGuildSettings(guild);
             _ = RemoveFighterRoles();
-            var acc = EntityConverter.ConvertUser(Context.User);
            
             EndlessBattleEnvironment openBattle;
-            
+
             openBattle = new EndlessBattleEnvironment(BattleService, $"{Context.User.Username}", gs.ColossoChannel, false, await BattleService.PrepareBattleChannel($"Endless-{Context.User.Username}", guild, persistent: false));
             openBattle.SetStreak(round);
              
@@ -294,7 +293,7 @@ namespace IodemBot.ColossoBattles
                 return;
             }
 
-            if (!(Context.User is SocketGuildUser user))
+            if (Context.User is not SocketGuildUser user)
             {
                 return;
             }

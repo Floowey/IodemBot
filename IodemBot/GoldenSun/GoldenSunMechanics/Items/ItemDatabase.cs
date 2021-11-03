@@ -14,19 +14,19 @@ namespace IodemBot.Modules.GoldenSunMechanics
         private static Inventory shop;
         private static DateTime lastReset;
 
-        private static ShopStruct Shopstruct { get { return new ShopStruct() { Shop = shop, LastReset = lastReset, RestockMessage = restockMessage, Shopkeeper = shopkeeper }; } }
+        private static ShopStruct Shopstruct { get { return new ShopStruct() { Shop = shop, LastReset = lastReset, RestockMessage = RestockMessage, Shopkeeper = Shopkeeper }; } }
         private static int HoursForReset { get; } =
             DateTime.Now.Date >= new DateTime(day: 1, month: 3, year: 2021) &&
                 DateTime.Now.Date < new DateTime(day: 15, month: 3, year: 2021) ? 6 : 8;
-        public static string shopkeeper;
-        public static string restockMessage;
+        public static string Shopkeeper { get; set; }
+        public static string RestockMessage { get; set; }
         private static readonly string[] shopkeepers = { "armor shopkeeper2", "armor shopkeeper3", "champa shopkeeper", "item shopkeeper", "izumo shopkeeper", "weapon shopkeeper", "weapon shopkeeper2", "sunshine", "armor shopkeeper" };
         private static readonly string[] restockMessages = { "Next shipment in:", "Next restock in:", "New Merchant in:" };
 
         private static readonly string shopLocation = "Resources/shop.json";
         private static readonly string itemLocation = "Resources/GoldenSun/items.json";
 
-        public static Dictionary<ChestQuality, RewardGenerator<ItemRarity>> ChestValues = new Dictionary<ChestQuality, RewardGenerator<ItemRarity>>() {
+        public static readonly Dictionary<ChestQuality, RewardGenerator<ItemRarity>> ChestValues = new() {
                 {ChestQuality.Wooden, new RewardGenerator<ItemRarity>(
                     new []{ItemRarity.Common, ItemRarity.Uncommon }, new []{ 88, 12})
                 },
@@ -65,8 +65,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
                     var s = JsonConvert.DeserializeObject<ShopStruct>(json);
                     shop = s.Shop;
                     lastReset = s.LastReset;
-                    shopkeeper = s.Shopkeeper;
-                    restockMessage = s.RestockMessage;
+                    Shopkeeper = s.Shopkeeper;
+                    RestockMessage = s.RestockMessage;
                 }
 
                 var longestItem = itemsDatabase.Select(d => d.Value).OrderByDescending(d => $"{d.Icon} - {d.Name},".Length).First();
@@ -123,9 +123,9 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 ));
             }
 
-            shopkeeper = Sprites.GetImageFromName(shopkeepers.Random());
+            Shopkeeper = Sprites.GetImageFromName(shopkeepers.Random());
 
-            restockMessage = restockMessages.Random();
+            RestockMessage = restockMessages.Random();
 
             shop.Sort();
             if (shop.HasDuplicate || !(shop.HasItem(ItemCategory.UnderWear) || shop.HasItem(ItemCategory.Accessoire) || shop.HasItem(ItemCategory.FootWear)))
@@ -161,7 +161,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 var i = (Item)item.Clone();
                 if (hasName)
                 {
-                    i.Nickname = string.Concat(itemName.SkipWhile(c => !c.Equals('|'))).Substring(1);
+                    i.Nickname = string.Concat(itemName.SkipWhile(c => !c.Equals('|')))[1..];
                 }
                 i.IsAnimated = isAnimated;
                 i.IsBroken = isBroken;

@@ -30,7 +30,7 @@ namespace IodemBot.Discords.Actions
         public bool ValidateParameters<T>(string filterCommandName = null) where T : IActionParameterAttribute
         {
             //Required check (all we have right now)
-            var parameterProperties = GetType().GetProperties().SelectMany(p => p.GetCustomAttributes(false).OfType<T>().Select(a => new { Property = p, Attribute = a }))?.Where(p => p.Attribute.Required && (!(p.Attribute is ActionParameterSlashAttribute apsa) || apsa.ParentNames == null || !apsa.ParentNames.Any())); //for now, don't worry about validating child properties.
+            var parameterProperties = GetType().GetProperties().SelectMany(p => p.GetCustomAttributes(false).OfType<T>().Select(a => new { Property = p, Attribute = a }))?.Where(p => p.Attribute.Required && (p.Attribute is not ActionParameterSlashAttribute apsa || apsa.ParentNames == null || !apsa.ParentNames.Any())); //for now, don't worry about validating child properties.
 
             if (parameterProperties == null || !parameterProperties.Any())
                 return true;

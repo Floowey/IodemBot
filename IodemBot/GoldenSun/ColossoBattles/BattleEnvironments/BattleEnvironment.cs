@@ -13,7 +13,7 @@ namespace IodemBot.ColossoBattles
 {
     public abstract class BattleEnvironment : IDisposable
     {
-        protected static string[] numberEmotes = new string[] { "0️⃣", "1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣",
+        protected static readonly string[] numberEmotes = new string[] { "0️⃣", "1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣",
             "6️⃣", "7️⃣", "8️⃣", "9️⃣" };
 
         public string Name { get; set; }
@@ -137,10 +137,8 @@ namespace IodemBot.ColossoBattles
 
         internal string GetStatus()
         {
-#pragma warning disable IDE0028 // Simplify collection initialization
-            List<string> s = new List<string>();
-            List<string> report = new List<string>();
-#pragma warning restore IDE0028 // Simplify collection initialization
+            List<string> s = new();
+            List<string> report = new();
             s.Add($"Battle is {(Battle.IsActive ? "" : "not")} active.");
             s.Add($"\nTeam A:");
             Battle.TeamA.ForEach(p =>

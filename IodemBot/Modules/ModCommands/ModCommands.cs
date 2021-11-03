@@ -186,7 +186,7 @@ namespace IodemBot.Modules
             while(tags.Length > 0)
             {
                 await ReplyAsync(tags.Substring(0, 2000));
-                tags = tags.Substring(2000);
+                tags = tags[2000..];
             }
 
         }
@@ -295,8 +295,8 @@ namespace IodemBot.Modules
             var s = string.Join("\n", Context.Guild.Emotes.OrderBy(d => d.Name).Select(e => $"{e} \\<{(e.Animated ? "a" : "")}:{e.Name}:{e.Id}>"));
             while (s.Length > 2000)
             {
-                await Context.Channel.SendMessageAsync(s.Substring(0, 2000));
-                s = s.Substring(2000);
+                await Context.Channel.SendMessageAsync(s[..2000]);
+                s = s[2000..];
             }
 
             await Context.Channel.SendMessageAsync(s);

@@ -206,21 +206,6 @@ namespace IodemBot.ColossoBattles
             {
                 Console.WriteLine("Game Over with no enemies existing.");
             }
-
-            foreach (var player in Battle.TeamA.Concat(Battle.TeamB).OfType<PlayerFighter>())
-            {
-                var brokenItems = player.EquipmentWithEffect.Where(i => i.IsBroken);
-                if(brokenItems.Any())
-                {
-                    var user = UserAccountProvider.GetById(player.Id);
-                    foreach (var item in brokenItems)
-                    {
-                        user.Inv.GetItem(item.Name).IsBroken = item.IsBroken;
-                    }
-                    UserAccountProvider.StoreUser(user);
-                }
-            }
-
             if (Battle.GetWinner() == Team.A)
             {
                 var RewardTables = Rewards;
@@ -270,7 +255,7 @@ namespace IodemBot.ColossoBattles
             }
             else
             {
-                var losers = winners.First().Battle.GetTeam(winners.First().enemies);
+                var losers = winners.First().battle.GetTeam(winners.First().enemies);
                 losers.ForEach(p => p.Moves.OfType<Djinn>().ToList().ForEach(d => { d.Summon(p); d.CoolDown = 0; }));
                 losers.ConvertAll(s => (PlayerFighter)s).ForEach(p => _ = ServerGames.UserLostBattle(UserAccountProvider.GetById(p.Id), lobbyChannel));
                 _ = WriteGameOver();

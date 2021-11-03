@@ -175,7 +175,7 @@ namespace IodemBot.Modules
                     var arch_opt = (string) idOptions[0];
                     SelectedArchtype = Enum.Parse<ArchType>(arch_opt);
 
-                    if(idOptions.Count() > 1)
+                    if(idOptions.Length > 1)
                     {
                         var gear_opt = (string) idOptions[1];
                         SelectedCategory = gear_opt;
@@ -200,7 +200,7 @@ namespace IodemBot.Modules
             if (inv.Count == 0)
                 return Task.FromResult((false, "You don't have any items."));
 
-            var ItemsForGear = inv.Where(i => !exclusives(SelectedArchtype).Contains(i.ItemType)).ToList();
+            var ItemsForGear = inv.Where(i => !Exclusives(SelectedArchtype).Contains(i.ItemType)).ToList();
             if (ItemsForGear.Count == 0)
                 return Task.FromResult((false, $"You don't have any items equippable for {SelectedArchtype}."));
 
@@ -222,14 +222,14 @@ namespace IodemBot.Modules
             await Task.CompletedTask;
         }
 
-        private bool isWarrior { get => SelectedArchtype == ArchType.Warrior; }
-        private static ItemType[] exclusives(ArchType archType) => archType == ArchType. Warrior ? Inventory.MageExclusive : Inventory.WarriorExclusive;
+        private bool IsWarrior { get => SelectedArchtype == ArchType.Warrior; }
+        private static ItemType[] Exclusives(ArchType archType) => archType == ArchType. Warrior ? Inventory.MageExclusive : Inventory.WarriorExclusive;
 
         internal static Embed GetGearEmbed(UserAccount account, ArchType archtype)
         {
             var inv = account.Inv;
             var embed = new EmbedBuilder();
-            var ItemsForGear = inv.Where(i => !exclusives(archtype).Contains(i.ItemType)).ToList();
+            var ItemsForGear = inv.Where(i => !Exclusives(archtype).Contains(i.ItemType)).ToList();
 
             embed.AddField($"{archtype} Gear", inv.GearToString(archtype), false);
             
@@ -262,7 +262,7 @@ namespace IodemBot.Modules
         {
             var inv = account.Inv;
             var embed = new EmbedBuilder();
-            var ItemsForGear = inv.Where(i => !exclusives(archtype).Contains(i.ItemType)).ToList();
+            var ItemsForGear = inv.Where(i => !Exclusives(archtype).Contains(i.ItemType)).ToList();
             var EquippedGear = inv.GetGear(archtype);
             var builder = new ComponentBuilder();
             var isWarrior = archtype == ArchType.Warrior;
@@ -444,12 +444,12 @@ namespace IodemBot.Modules
         {
             var embed = new EmbedBuilder();
             embed.WithColor(new Color(66, 45, 45));
-            embed.WithThumbnailUrl(ItemDatabase.shopkeeper);
+            embed.WithThumbnailUrl(ItemDatabase.Shopkeeper);
 
             embed.AddField("Shop:", _shop.InventoryToString(Detail.NameAndPrice), true);
 
             var fb = new EmbedFooterBuilder();
-            fb.WithText($"{ItemDatabase.restockMessage} {ItemDatabase.TimeToNextReset:hh\\h\\ mm\\m}");
+            fb.WithText($"{ItemDatabase.RestockMessage} {ItemDatabase.TimeToNextReset:hh\\h\\ mm\\m}");
             embed.WithFooter(fb);
             return embed.Build();
         }
@@ -753,7 +753,6 @@ namespace IodemBot.Modules
                 return Task.FromResult(guildResult);
             var user = Context.User;
             var account = EntityConverter.ConvertUser(user);
-            var inv = account.Inv;
             if (!account.Inv.HasBalance(Inventory.RemoveCursedCost))
                 return Task.FromResult((false, "Not enough money"));
 
@@ -882,7 +881,7 @@ namespace IodemBot.Modules
             if (ItemsToSell == null || !ItemsToSell.Any())
                 return Task.FromResult((false, "Can't sell nothin'"));
 
-            if(ItemsToSell.Count() == 1)
+            if(ItemsToSell.Length == 1)
             {
                 var item = EntityConverter.ConvertUser(Context.User).Inv.GetItem(ItemsToSell[0]);
                 if (item == null)

@@ -269,7 +269,7 @@ namespace IodemBot.Modules
             embed.WithColor(Colors.Get("Iodem"));
             string[] Emotes = new string[] { "🥇", "🥈", "🥈", "🥉", "🥉", "🥉", "   ", "   ", "   ", "   " };
             var builder = new StringBuilder();
-            for (int i = 0; i < Math.Min(topAccounts.Count(), 10); i++)
+            for (int i = 0; i < Math.Min(topAccounts.Count, 10); i++)
             {
                 var curAccount = topAccounts[i];
                 builder.Append($"`{i + 1}` {Emotes[i]} {curAccount.Name?.PadRight(15) ?? curAccount.ID.ToString()} - `Lv{curAccount.LevelNumber}` - `{curAccount.XP}xp`{(curAccount.NewGames >= 1 ? $"- `({curAccount.TotalXP}xp total)`" : "")}\n");
@@ -312,7 +312,7 @@ namespace IodemBot.Modules
             embed.WithColor(Colors.Get("Iodem"));
             string[] Emotes = new string[] { "🥇", "🥈", "🥉", "", "" };
             var builder = new StringBuilder();
-            for (int i = 0; i < Math.Min(topAccounts.Count(), 5); i++)
+            for (int i = 0; i < Math.Min(topAccounts.Count, 5); i++)
             {
                 var curAccount = topAccounts.ElementAt(i);
                 var streak = mode == EndlessMode.Default ? curAccount.ServerStats.EndlessStreak + curAccount.ServerStatsTotal.EndlessStreak : curAccount.ServerStats.LegacyStreak + curAccount.ServerStatsTotal.LegacyStreak;

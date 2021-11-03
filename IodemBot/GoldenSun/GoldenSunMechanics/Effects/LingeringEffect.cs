@@ -14,7 +14,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         [JsonProperty] public Effect Effect { get; set; } = new NoEffect();
         [JsonProperty] public int CoolDown { get; set; } = 0;
         [JsonProperty] public int Duration { get; set; } = 1;
-        [JsonProperty] public bool removedOnDeath { get; set; } = true;
+        [JsonProperty] public bool RemovedOnDeath { get; set; } = true;
         [JsonProperty] public string Text { get; set; } = "";
         [JsonIgnore] private ColossoFighter User;
         public override List<string> Apply(ColossoFighter User, ColossoFighter Target)

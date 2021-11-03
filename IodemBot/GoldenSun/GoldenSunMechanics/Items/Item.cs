@@ -125,17 +125,17 @@ namespace IodemBot.Modules.GoldenSunMechanics
             if (AddStatsOnEquip.NonZerosToString() != "``")
             {
                 s.Append(AddStatsOnEquip.NonZerosToString());
-                s.Append("\n");
+                s.Append('\n');
             }
             if (MultStatsOnEquip.MultipliersToString() != "``")
             {
                 s.Append(MultStatsOnEquip.MultipliersToString());
-                s.Append("\n");
+                s.Append('\n');
             }
             if (AddElStatsOnEquip.NonZerosToString() != "")
             {
                 s.Append(AddElStatsOnEquip.NonZerosToString());
-                s.Append("\n");
+                s.Append('\n');
             }
 
             var various = new List<string>();
@@ -189,9 +189,9 @@ namespace IodemBot.Modules.GoldenSunMechanics
             {   
                 if(various.Count > 0)
                 {
-                    s.Append("\n");
+                    s.Append('\n');
                 }
-                s.Append("\n"); s.Append($"*{Description}*");
+                s.Append('\n'); s.Append($"*{Description}*");
             }
             return s.ToString();
         }
@@ -244,7 +244,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 s.Append(string.Join(", ", AllEffects.Select(e => $"{e}")));
                 if (UnleashName != null)
                 {
-                    s.Append(")");
+                    s.Append(')');
                 }
             }
             return s.ToString();

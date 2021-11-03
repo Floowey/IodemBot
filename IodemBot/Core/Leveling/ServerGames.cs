@@ -64,7 +64,7 @@ namespace IodemBot.Core.Leveling
             _ = UnlockBattleClasses(userAccount, lobbyChannel);
 
             var awardStrings = rewards.Select(f => f.Award(userAccount)).Where(s => !s.IsNullOrEmpty()).ToList();
-            if (awardStrings.Count() > 0)
+            if (awardStrings.Any())
             {
                 _ = WriteAndDeleteRewards(awardStrings, battleChannel);
             }

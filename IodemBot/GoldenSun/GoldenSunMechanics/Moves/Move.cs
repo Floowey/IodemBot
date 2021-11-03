@@ -58,8 +58,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public List<ColossoFighter> GetTarget(ColossoFighter user)
         {
             List<ColossoFighter> targets = new List<ColossoFighter>();
-            var playerCount = user.Battle.GetTeam(user.party).Count - 1;
-            var enemyCount = user.Battle.GetTeam(user.enemies).Count - 1;
+            var playerCount = user.battle.GetTeam(user.party).Count - 1;
+            var enemyCount = user.battle.GetTeam(user.enemies).Count - 1;
 
             switch (TargetType)
             {
@@ -74,15 +74,15 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
                 case TargetType.PartyAll:
                     TargetNr = Math.Min(TargetNr, playerCount);
-                    targets.AddRange(user.Battle.GetTeam(user.party));
+                    targets.AddRange(user.battle.GetTeam(user.party));
                     break;
 
                 case TargetType.EnemyRange:
                     TargetNr = Math.Min(TargetNr, enemyCount);
-                    var targetTeam = user.Battle.GetTeam(user.enemies);
+                    var targetTeam = user.battle.GetTeam(user.enemies);
                     for (int i = -(int)Range + 1; i <= Range - 1; i++)
                     {
-                        if (TargetNr + i >= 0 && TargetNr + i < targetTeam.Count())
+                        if (TargetNr + i >= 0 && TargetNr + i < targetTeam.Count)
                         {
                             targets.Add(targetTeam[TargetNr + i]);
                         }
@@ -175,6 +175,16 @@ namespace IodemBot.Modules.GoldenSunMechanics
             }
 
             return Name == other.Name && Emote == other.Emote;
+        }
+
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as Move);
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Name, Emote);
         }
     }
 }

@@ -10,7 +10,7 @@ namespace IodemBot.Core.UserManagement
 
     public class UserAccount : IEquatable<UserAccount>
     {
-        public static ulong[][] rates = new ulong[][] {
+        public static readonly ulong[][] rates = new ulong[][] {
                     new ulong[] { 2538160, 25000, 100 },
                     new ulong[] { 1196934, 2500, 90 },
                     new ulong[] { 605000, 1000, 80 },
@@ -179,6 +179,16 @@ namespace IodemBot.Core.UserManagement
             }
 
             return ID == other.ID;
+        }
+
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as UserAccount);
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(ID);
         }
     }
 

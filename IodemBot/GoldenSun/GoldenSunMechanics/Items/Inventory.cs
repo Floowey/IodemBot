@@ -110,7 +110,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             }
             return ChestQuality.Daily;
         }
-        public static int[] dailyRewards = new[] { 0, 0, 1, 1, 2 };
+        public static readonly int[] dailyRewards = new[] { 0, 0, 1, 1, 2 };
         public bool TryOpenChest(ChestQuality chestQuality, out Item item, uint Level=0)
         {
             item = null;

@@ -114,7 +114,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             var shop = ItemDatabase.GetShop();
             var embed = new EmbedBuilder();
             embed.WithColor(new Color(66, 45, 45));
-            embed.WithThumbnailUrl(ItemDatabase.shopkeeper);
+            embed.WithThumbnailUrl(ItemDatabase.Shopkeeper);
 
             //if (DateTime.Now.Date >= new DateTime(day: 1, month: 3, year: 2021) &&
             //    DateTime.Now.Date < new DateTime(day: 15, month: 3, year: 2021))
@@ -125,7 +125,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             embed.AddField("Shop:", shop.InventoryToString(Detail.NameAndPrice), true);
 
             var fb = new EmbedFooterBuilder();
-            fb.WithText($"{ItemDatabase.restockMessage} {ItemDatabase.TimeToNextReset:hh\\h\\ mm\\m}");
+            fb.WithText($"{ItemDatabase.RestockMessage} {ItemDatabase.TimeToNextReset:hh\\h\\ mm\\m}");
             embed.WithFooter(fb);
             return embed.Build();
         }
@@ -230,7 +230,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             {
                 var embed = new EmbedBuilder();
                 embed.WithDescription(":x: Sorry, but we're out of stock for that. Come back later, okay?");
-                embed.WithThumbnailUrl(ItemDatabase.shopkeeper);
+                embed.WithThumbnailUrl(ItemDatabase.Shopkeeper);
                 embed.WithColor(Colors.Get("Error"));
                 _ = Context.Channel.SendMessageAsync("", false, embed.Build());
                 return;

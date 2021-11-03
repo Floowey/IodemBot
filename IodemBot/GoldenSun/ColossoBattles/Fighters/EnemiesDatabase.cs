@@ -292,7 +292,7 @@ namespace IodemBot.ColossoBattles
             {
                 s.Add($"Maximum Level: {MaxLevel}");
             }
-            if (TagsRequired.Count() > 0 || TagsAny.Count() > 0)
+            if (TagsRequired.Length > 0 || TagsAny.Length > 0)
             {
                 s.Add($"Requires completion of a previous dungeon.");
             }

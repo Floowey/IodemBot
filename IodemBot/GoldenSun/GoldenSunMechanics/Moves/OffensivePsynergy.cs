@@ -42,7 +42,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
             //Get enemies and targeted enemies
             double[] actualSpread = new double[2 * Range - 1];
-            List<ColossoFighter> enemyTeam = User.Battle.GetTeam(User.enemies);
+            List<ColossoFighter> enemyTeam = User.battle.GetTeam(User.enemies);
             List<ColossoFighter> targets = GetTarget(User);
 
             int ii = 0;

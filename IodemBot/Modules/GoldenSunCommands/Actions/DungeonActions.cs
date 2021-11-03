@@ -71,11 +71,11 @@ namespace IodemBot.Modules
            
             builder.WithTitle("Dungeons");
 
-            if (availablePermUnlocks.Count() > 0)
+            if (availablePermUnlocks.Any())
             {
                 builder.AddField("<:mapopen:606236181503410176> Places Discovered", $"Available: {string.Join(", ", availablePermUnlocks)} \nUnavailable: {string.Join(", ", unavailablePermUnlocks)}");
             }
-            if (availableOneTimeUnlocks.Count() + unavailableOneTimeUnlocks.Count() > 0)
+            if (availableOneTimeUnlocks.Length + unavailableOneTimeUnlocks.Length > 0)
             {
                 builder.AddField("<:cave:607402486562684944> Dungeon Keys", $"Available: {string.Join(", ", availableOneTimeUnlocks)} \nUnavailable: {string.Join(", ", unavailableOneTimeUnlocks)}");
             }

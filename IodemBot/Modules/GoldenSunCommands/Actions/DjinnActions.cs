@@ -18,15 +18,15 @@ namespace IodemBot.Modules
         public override bool GuildsOnly => false;
 
         [ActionParameterComponent(Order = 0, Name = "Detail", Description = "...", Required = false)]
-        public DjinnDetail detail { get; set; } = DjinnDetail.None;
+        public DjinnDetail Detail { get; set; } = DjinnDetail.None;
 
-        public int page { get; set; } = 0;
-        public static int pageLimit = 24;
+        public int Page { get; set; } = 0;
+        public const int pageLimit = 24;
 
         public override async Task RunAsync()
         {
             var user = EntityConverter.ConvertUser(Context.User);
-            await Context.ReplyWithMessageAsync(EphemeralRule, embed: GetDjinnEmbed(user, detail), components: GetDjinnComponent(user, detail));
+            await Context.ReplyWithMessageAsync(EphemeralRule, embed: GetDjinnEmbed(user, Detail), components: GetDjinnComponent(user, Detail));
         }
 
         public override ActionCommandRefreshProperties CommandRefreshProperties => new()
@@ -36,7 +36,7 @@ namespace IodemBot.Modules
             FillParametersAsync = (stringOptions, idOptions) =>
             {
                 if (idOptions != null && idOptions.Any())
-                    detail = Enum.Parse<DjinnDetail>((string)idOptions.FirstOrDefault());
+                    Detail = Enum.Parse<DjinnDetail>((string)idOptions.FirstOrDefault());
 
                 return Task.CompletedTask;
             }
@@ -45,8 +45,8 @@ namespace IodemBot.Modules
         {
             var user = EntityConverter.ConvertUser(Context.User);
 
-            msgProps.Embed = GetDjinnEmbed(user, detail);
-            msgProps.Components = GetDjinnComponent(user, detail);
+            msgProps.Embed = GetDjinnEmbed(user, Detail);
+            msgProps.Components = GetDjinnComponent(user, Detail);
             await Task.CompletedTask;
         }
 
@@ -81,7 +81,7 @@ namespace IodemBot.Modules
                 }
             }
             var eventDjinn = djinnPocket.Djinn.Count(d => d.IsEvent);
-            builder.WithFooter($"{djinnPocket.Djinn.Count()}/{djinnPocket.PocketSize}{(eventDjinn > 0 ? $"(+{eventDjinn})" : "")} Upgrade: {(djinnPocket.PocketUpgrades + 1) * 3000}");
+            builder.WithFooter($"{djinnPocket.Djinn.Count}/{djinnPocket.PocketSize}{(eventDjinn > 0 ? $"(+{eventDjinn})" : "")} Upgrade: {(djinnPocket.PocketUpgrades + 1) * 3000}");
 
             var summonString = string.Join(detail == DjinnDetail.Names ? ", " : "", djinnPocket.Summons.Select(s => $"{s.Emote}{(detail == DjinnDetail.Names ? $" {s.Name}" : "")}"));
             if (summonString.IsNullOrEmpty())

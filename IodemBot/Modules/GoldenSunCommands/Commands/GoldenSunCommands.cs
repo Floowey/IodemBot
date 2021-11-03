@@ -77,7 +77,7 @@ namespace IodemBot.Modules
             embed.WithColor(Colors.Get(account.Element.ToString()));
             embed.AddField($"Available as {Emotes.GetIcon(account.Element)} {account.Element} Adept:", string.Join(", ", OfElement));
             embed.AddField($"Others Unlocked:", string.Join(", ", allAvailableClasses.Select(c => c.Name).Except(OfElement).OrderBy(n => n)));
-            embed.WithFooter($"Total: {allAvailableClasses.Count()}/{allClasses.Count()}");
+            embed.WithFooter($"Total: {allAvailableClasses.Count()}/{allClasses.Count}");
             _ = ReplyAsync(embed: embed.Build());
             await Task.CompletedTask;
         }
@@ -129,7 +129,7 @@ namespace IodemBot.Modules
         [RequireUserServer]
         public async Task LoadoutTask(LoadoutAction action = LoadoutAction.Show, [Remainder] string loadoutName = "")
         {
-            if (!(Context.User is SocketGuildUser sgu))
+            if (Context.User is not SocketGuildUser sgu)
             {
                 return;
             }
@@ -299,7 +299,7 @@ namespace IodemBot.Modules
         [Command("hiddenstats"), Alias("tri")]
         [Cooldown(5)]
         [RequireStaff]
-        public async Task Tri(SocketGuildUser user = null, bool withFile = false)
+        public async Task Tri(SocketGuildUser user = null)
         {
             user ??= (SocketGuildUser)Context.User;
             var account = EntityConverter.ConvertUser(user);
@@ -359,7 +359,7 @@ namespace IodemBot.Modules
             {
                 embed.AddField("<:mapopen:606236181503410176> Places Discovered", $"Available: {string.Join(", ", availablePermUnlocks)} \nUnavailable: {string.Join(", ", unavailablePermUnlocks)}");
             }
-            if (availableOneTimeUnlocks.Count() + unavailableOneTimeUnlocks.Count() > 0)
+            if (availableOneTimeUnlocks.Length + unavailableOneTimeUnlocks.Length > 0)
             {
                 embed.AddField("<:cave:607402486562684944> Dungeon Keys", $"Available: {string.Join(", ", availableOneTimeUnlocks)} \nUnavailable: {string.Join(", ", unavailableOneTimeUnlocks)}");
             }
@@ -373,7 +373,7 @@ namespace IodemBot.Modules
         [Cooldown(5)]
         public async Task ChooseElement(Element chosenElement, [Remainder] string classSeriesName = null)
         {
-            if (!(Context.User is SocketGuildUser user))
+            if (Context.User is not SocketGuildUser user)
             {
                 return;
             }
@@ -468,7 +468,7 @@ namespace IodemBot.Modules
             }
 
             Move m = PsynergyDatabase.GetMove(name);
-            if(!(m is Psynergy psy))
+            if(m is not Psynergy psy)
             {
                 return;
             }
@@ -633,18 +633,11 @@ namespace IodemBot.Modules
         {
             s = s.ToLower();
             char c = s.ElementAt(0);
-            switch (c)
+            return c switch
             {
-                case 'a':
-                case 'e':
-                case 'i':
-                case 'o':
-                case 'u':
-                    return "an";
-
-                default:
-                    return "a";
-            }
+                'a' or 'e' or 'i' or 'o' or 'u' => "an",
+                _ => "a",
+            };
         }
 
     }

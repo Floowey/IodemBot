@@ -20,7 +20,7 @@ namespace IodemBot.ColossoBattles
         public bool AcceptBattles = true;
         private readonly List<BattleEnvironment> battles = new List<BattleEnvironment>();
         private readonly Dictionary<SocketGuildUser, DateTime> FighterRoles = new Dictionary<SocketGuildUser, DateTime>();
-        private int NumberOfBattles => battles.Count();
+        private int NumberOfBattles => battles.Count;
         public ColossoBattleService(IServiceProvider services)
         {
             _services = services;
@@ -128,14 +128,14 @@ namespace IodemBot.ColossoBattles
             var colossoChannel = gs.ColossoChannel;
             var categoryID = persistent ? colossoChannel.CategoryId : (gs.CustomBattlesCateogry?.Id ?? colossoChannel.CategoryId);
             var teamB = gs.TeamBRole;
-            var channel = await guild.GetOrCreateTextChannelAsync(Name, d => { d.CategoryId = categoryID; d.Position = colossoChannel.Position + battles.Count(); });
+            var channel = await guild.GetOrCreateTextChannelAsync(Name, d => { d.CategoryId = categoryID; d.Position = colossoChannel.Position + battles.Count; });
             try
             {
                 await channel.SyncPermissionsAsync();
             }
             catch (HttpException)
             {
-                channel = await guild.GetOrCreateTextChannelAsync($"{Name}1", d => { d.CategoryId = categoryID; d.Position = colossoChannel.Position + battles.Count(); });
+                channel = await guild.GetOrCreateTextChannelAsync($"{Name}1", d => { d.CategoryId = categoryID; d.Position = colossoChannel.Position + battles.Count; });
                 await channel.SyncPermissionsAsync();
             }
 

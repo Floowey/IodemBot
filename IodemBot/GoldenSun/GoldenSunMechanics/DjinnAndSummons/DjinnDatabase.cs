@@ -65,7 +65,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public static Djinn GetRandomDjinn(params Element[] elements)
         {
             return (Djinn)DjinnDatabase.Values
-                .Where(d => (elements.Count() == 0 || elements.Contains(d.Element)) && !d.IsEvent && !blacklist.Contains(d.Name))
+                .Where(d => (elements.Length == 0 || elements.Contains(d.Element)) && !d.IsEvent && !blacklist.Contains(d.Name))
                 .Random()
                 .Clone();
         }

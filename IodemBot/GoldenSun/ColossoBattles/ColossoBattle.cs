@@ -12,7 +12,7 @@ namespace IodemBot.ColossoBattles
         public List<ColossoFighter> TeamB = new List<ColossoFighter>();
         public bool IsActive { get; set; } = false;
         public bool TurnActive { get; set; } = false;
-        public int turn { get; set; } = 0;
+        public int TurnNumber { get; set; } = 0;
 
         public int SizeTeamA => TeamA.Count;
 
@@ -23,7 +23,7 @@ namespace IodemBot.ColossoBattles
         public void Start()
         {
             IsActive = true;
-            turn = 0;
+            TurnNumber = 0;
             Log.Clear();
             foreach (var p in TeamA.Concat(TeamB).ToList())
             {
@@ -82,7 +82,7 @@ namespace IodemBot.ColossoBattles
             }
             GetTeam(team).Add(player);
             player.party = team;
-            player.Battle = this;
+            player.battle = this;
         }
 
 
@@ -113,7 +113,7 @@ namespace IodemBot.ColossoBattles
                 return true;
             }
             TurnActive = true;
-            Log.Add($"Turn {++turn}");
+            Log.Add($"Turn {++TurnNumber}");
 
             try
             {

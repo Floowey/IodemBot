@@ -41,8 +41,7 @@ namespace IodemBot.Modules
         public override EphemeralRule EphemeralRule => EphemeralRule.Permanent;
         protected override Task<(bool Success, string Message)> CheckCustomPreconditionsAsync()
         {
-            
-            if(!DjinnAndSummonsDatabase.TryGetDjinn(IDDjinn, out Djinn djinn))
+            if (!DjinnAndSummonsDatabase.TryGetDjinn(IDDjinn, out _))
                 return Task.FromResult((false, ":x: There is no such spirit with that description!"));
             return Task.FromResult((true, "Task failed successfully"));
             

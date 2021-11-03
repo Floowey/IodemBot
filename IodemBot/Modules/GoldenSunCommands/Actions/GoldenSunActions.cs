@@ -22,8 +22,8 @@ namespace IodemBot.Modules
         public override EphemeralRule EphemeralRule => EphemeralRule.EphemeralOrFail;
 
         [ActionParameterComponent(Name = "Page", Description ="page", Order =0, Required =false)]
-        public int statusPage { get; set; } = 0;
-        private static int nPages = 3;
+        public int StatusPage { get; set; } = 0;
+        private static readonly int nPages = 3;
         public override ActionGlobalSlashCommandProperties SlashCommandProperties => new()
         {
             Name = "status",
@@ -38,7 +38,7 @@ namespace IodemBot.Modules
             FillParametersAsync = (selectOptions, idOptions) =>
             {
                 if (idOptions != null && idOptions.Any())
-                    statusPage = int.Parse((string)idOptions.FirstOrDefault());
+                    StatusPage = int.Parse((string)idOptions.FirstOrDefault());
                 return Task.CompletedTask;
             }
         };
@@ -46,15 +46,15 @@ namespace IodemBot.Modules
         private async Task RefreshAsync(bool intoNew, MessageProperties msgProps)
         {
             var account = EntityConverter.ConvertUser(Context.User);
-            msgProps.Embed = GetStatusEmbed(account, statusPage);
-            msgProps.Components = GetStatusComponent(account, statusPage);
+            msgProps.Embed = GetStatusEmbed(account, StatusPage);
+            msgProps.Components = GetStatusComponent(account, StatusPage);
             await Task.CompletedTask;
         }
         public override async Task RunAsync()
         {
             var account = EntityConverter.ConvertUser(Context.User);
-            var embed = GetStatusEmbed(account, statusPage);
-            var component = GetStatusComponent(account, statusPage);
+            var embed = GetStatusEmbed(account, StatusPage);
+            var component = GetStatusComponent(account, StatusPage);
             await Context.ReplyWithMessageAsync(EphemeralRule, embed: embed, components: component);
         }
         private static readonly Dictionary<Detail, char> split = new()
@@ -193,7 +193,7 @@ namespace IodemBot.Modules
                 if (idOptions != null && idOptions.Any() && (idOptions.FirstOrDefault() is string s && !s.IsNullOrEmpty()))
                 {
                     SelectedElement = Enum.Parse<Element>((string)idOptions.FirstOrDefault());
-                    if(idOptions.Count() > 1)
+                    if(idOptions.Any())
                         SelectedClass = (string)idOptions.ElementAt(1);
                 };
 
@@ -355,7 +355,7 @@ namespace IodemBot.Modules
             embed.AddField($"Current Class", AdeptClassSeriesManager.GetClass(account).Name);
             embed.AddField($"Available as {Emotes.GetIcon(account.Element)} {account.Element} Adept:", string.Join(", ", OfElement));
             embed.AddField($"Others Unlocked:", string.Join(", ", allAvailableClasses.Select(c => c.Name).Except(OfElement).OrderBy(n => n)));
-            embed.WithFooter($"Total: {allAvailableClasses.Count()}/{allClasses.Count()}");
+            embed.WithFooter($"Total: {allAvailableClasses.Count()}/{allClasses.Count}");
             return embed.Build();
         }
 

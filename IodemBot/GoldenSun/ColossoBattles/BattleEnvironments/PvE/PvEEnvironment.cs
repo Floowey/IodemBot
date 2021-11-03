@@ -599,7 +599,7 @@ namespace IodemBot.ColossoBattles
 
         protected virtual async Task WriteStatus()
         {
-            if (Battle.Log.Count > 0 && Battle.turn > 0)
+            if (Battle.Log.Count > 0 && Battle.TurnNumber > 0)
             {
                 if (StatusMessage == null)
                 {

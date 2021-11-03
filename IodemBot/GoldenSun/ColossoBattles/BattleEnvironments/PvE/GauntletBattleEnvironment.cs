@@ -81,7 +81,7 @@ namespace IodemBot.ColossoBattles
 
             matchup.Keywords
                 .Where(s => s.StartsWith("Status"))
-                .Select(s => s.Substring(6))
+                .Select(s => s[6..])
                 .Select(s => Enum.Parse<Condition>(s, true)).ToList()
                 .ForEach(c => Battle.TeamA.ForEach(p => p.AddCondition(c)));
         }
@@ -113,7 +113,6 @@ namespace IodemBot.ColossoBattles
             });
         }
 
-        
         public override Task<(bool Success, string Message)> CanPlayerJoin(UserAccount user, Team team = Team.A)
         {
             var result = base.CanPlayerJoin(user, team);
@@ -140,21 +139,6 @@ namespace IodemBot.ColossoBattles
         protected override async Task GameOver()
         {
             var winners = Battle.GetTeam(Battle.GetWinner());
-
-            foreach (var player in Battle.TeamA.Concat(Battle.TeamB).OfType<PlayerFighter>())
-            {
-                var brokenItems = player.EquipmentWithEffect.Where(i => i.IsBroken);
-                if (brokenItems.Any())
-                {
-                    var user = UserAccountProvider.GetById(player.Id);
-                    foreach (var item in brokenItems)
-                    {
-                        user.Inv.GetItem(item.Name).IsBroken = item.IsBroken;
-                    }
-                    UserAccountProvider.StoreUser(user);
-                }
-            }
-
             if (Battle.GetWinner() == Team.A)
             {
                 if (Battle.GetWinner() == Team.A)
@@ -182,7 +166,7 @@ namespace IodemBot.ColossoBattles
                     await Task.Delay(2000);
                     await StatusMessage.ModifyAsync(m => { m.Content = text; m.Embed = null; });
                     await Task.Delay(2000);
-                    Battle.turn = 0;
+                    Battle.TurnNumber = 0;
                     _ = StartBattle();
                 }
                 else
@@ -200,7 +184,7 @@ namespace IodemBot.ColossoBattles
             }
             else
             {
-                var losers = winners.First().Battle.GetTeam(winners.First().enemies);
+                var losers = winners.First().battle.GetTeam(winners.First().enemies);
 
                 
                 losers.ConvertAll(s => (PlayerFighter)s).ForEach(p => _ = ServerGames.UserLostBattle(UserAccountProvider.GetById(p.Id), lobbyChannel));

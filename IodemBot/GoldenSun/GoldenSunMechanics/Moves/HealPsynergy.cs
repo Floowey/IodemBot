@@ -30,9 +30,9 @@ namespace IodemBot.Modules.GoldenSunMechanics
             {
                 return;
             }
-            var party = User.GetTeam();
+            var party = User.Party;
             var aliveFriends = party.Where(f => f.IsAlive).ToList();
-            if (aliveFriends.Count == 0)
+            if (!aliveFriends.Any())
             {
                 TargetNr = 0;
                 return;

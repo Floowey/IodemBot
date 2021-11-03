@@ -117,7 +117,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 }
             }
             var eventDjinn = djinnPocket.Djinn.Count(d => d.IsEvent);
-            embed.WithFooter($"{djinnPocket.Djinn.Count()}/{djinnPocket.PocketSize}{(eventDjinn > 0 ? $"(+{eventDjinn})" : "")} Upgrade: {(djinnPocket.PocketUpgrades + 1) * 3000}");
+            embed.WithFooter($"{djinnPocket.Djinn.Count}/{djinnPocket.PocketSize}{(eventDjinn > 0 ? $"(+{eventDjinn})" : "")} Upgrade: {(djinnPocket.PocketUpgrades + 1) * 3000}");
 
             var summonString = string.Join(detail == DjinnDetail.Names ? ", " : "", djinnPocket.Summons.Select(s => $"{s.Emote}{(detail == DjinnDetail.Names ? $" {s.Name}" : "")}"));
             if (summonString.IsNullOrEmpty())
@@ -163,7 +163,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         [Remarks("`i!djinn Take Flint`")]
         public async Task TakeDjinn([Remainder] string Names)
         {
-            if (Names.Count() == 0)
+            if (Names.IsNullOrEmpty())
             {
                 return;
             }
