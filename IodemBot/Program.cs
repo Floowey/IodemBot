@@ -146,7 +146,6 @@ namespace IodemBot
                 await channel.SendMessageAsync($"Hello, I am back up.\nOS: {Environment.OSVersion}\nBuild Time: {File.GetLastWriteTime(Assembly.GetExecutingAssembly().Location)}");
                 
             }
-            //setup colosso
             await client.SetStatusAsync(UserStatus.Idle);
             Global.UpSince = DateTime.UtcNow;
         }

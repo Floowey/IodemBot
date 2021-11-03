@@ -20,7 +20,7 @@ namespace IodemBot.Core.Leveling
         {
             var userAccount = EntityConverter.ConvertUser(user);
             uint oldLevel = userAccount.LevelNumber;
-            userAccount.AddXp((uint)(new Random()).Next(40, 70));
+            userAccount.AddXp((uint)Global.RandomNumber(40, 70));
             uint newLevel = userAccount.LevelNumber;
 
 
@@ -43,7 +43,7 @@ namespace IodemBot.Core.Leveling
         {
             var userAccount = EntityConverter.ConvertUser(user);
             uint oldLevel = userAccount.LevelNumber;
-            userAccount.AddXp((uint)(new Random()).Next(1, 10));
+            userAccount.AddXp((uint)Global.RandomNumber(1, 10));
             uint newLevel = userAccount.LevelNumber;
             userAccount.ServerStats.ColossoStreak = 0;
             UserAccountProvider.StoreUser(userAccount);
@@ -244,7 +244,7 @@ namespace IodemBot.Core.Leveling
         internal static async Task UserLostBattle(UserAccount userAccount, ITextChannel battleChannel)
         {
             uint oldLevel = userAccount.LevelNumber;
-            userAccount.AddXp((uint)(new Random()).Next(1, 10));
+            userAccount.AddXp((uint)Global.RandomNumber(1, 10));
             uint newLevel = userAccount.LevelNumber;
 
             userAccount.ServerStats.ColossoStreak = 0;

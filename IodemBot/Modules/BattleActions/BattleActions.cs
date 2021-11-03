@@ -71,6 +71,9 @@ namespace IodemBot.Modules
             if (battle.isProcessing)
                 return Task.FromResult((false, "Too fast."));
 
+            if (!player.IsAlive)
+                return Task.FromResult((false, "You are dead."));
+
             return baseResult;
         }
     }

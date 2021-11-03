@@ -88,7 +88,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             }
             if (EffectsOnParty != null)
             {
-                User.battle.GetTeam(User.party).ForEach(p => log.AddRange(EffectsOnParty.ApplyAll(User, p)));
+                User.Battle.GetTeam(User.party).ForEach(p => log.AddRange(EffectsOnParty.ApplyAll(User, p)));
             }
             return log;
         }

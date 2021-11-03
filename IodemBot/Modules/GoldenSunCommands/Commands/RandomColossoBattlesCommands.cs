@@ -37,29 +37,7 @@ namespace IodemBot.Modules
             return embed.Build();
         }
 
-        [Command("colossoAddEnemy")]
-        [RequireUserPermission(GuildPermission.Administrator)]
-        [Summary("Add an enemy to the Colosso beastiary")]
-        public async Task ColossoAddEnemy([Remainder] string enemy)
-        {
-            if (AddEnemy(enemy))
-            {
-                await Context.Channel.SendMessageAsync(Utilities.GetFormattedAlert("ENEMY_ADDED", enemy));
-            }
-            else
-            {
-                await Context.Channel.SendMessageAsync(Utilities.GetAlert("ENEMY_NOT_ADDED"));
-            }
-        }
-
-        [Command("colossoAddResult")]
-        [RequireUserPermission(GuildPermission.Administrator)]
-        [Summary("Add a Result to the Colosso outcomes")]
-        public async Task ColossoAddResult(bool isWin, [Remainder] string result)
-        {
-            AddResult(isWin, result);
-            await Context.Channel.SendMessageAsync(Utilities.GetAlert("RESULT_ADDED"));
-        }
+       
 
         private static string GetText(SocketUser user, Matchup m)
         {
@@ -141,28 +119,6 @@ namespace IodemBot.Modules
             File.WriteAllText("SystemLang/results.json", jsonR);
         }
 
-        public static bool AddEnemy(string enemy)
-        {
-            if (enemies.Contains(enemy))
-            {
-                return false;
-            }
-
-            enemies.Add(enemy);
-            SaveData();
-            return true;
-        }
-
-        public static void AddResult(bool isWin, string result)
-        {
-            Result r = new Result(result, isWin);
-            if (results.Contains(r))
-            {
-                return;
-            }
-
-            results.Add(r);
-            SaveData();
-        }
+       
     }
 }

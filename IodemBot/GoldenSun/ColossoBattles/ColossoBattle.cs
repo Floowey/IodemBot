@@ -13,19 +13,19 @@ namespace IodemBot.ColossoBattles
         public bool IsActive { get; set; } = false;
         public bool TurnActive { get; set; } = false;
         public int turn { get; set; } = 0;
-        public List<string> log = new();
 
         public int SizeTeamA => TeamA.Count;
 
         public int SizeTeamB => TeamB.Count;
-
+        public List<ColossoFighter> GetTeam(Team team) => team == Team.A ? TeamA : TeamB;
+        public List<string> Log { get; set; } = new();
 
         public void Start()
         {
             IsActive = true;
             turn = 0;
-            log.Clear();
-            TeamA.ForEach(p =>
+            Log.Clear();
+            foreach (var p in TeamA.Concat(TeamB).ToList())
             {
                 if (p is NPCEnemy)
                 {
@@ -41,25 +41,8 @@ namespace IodemBot.ColossoBattles
                         fighter.battleStats.SoloBattles++;
                     }
                 }
-            });
 
-            TeamB.ForEach(p =>
-            {
-                if (p is NPCEnemy)
-                {
-                    p.SelectRandom();
-                }
-
-                if (p is PlayerFighter player)
-                {
-                    player.battleStats = new BattleStats();
-                    player.battleStats.TotalTeamMates += TeamB.Count - 1;
-                    if (TeamB.Count == 1)
-                    {
-                        player.battleStats.SoloBattles++;
-                    }
-                }
-            });
+            }
         }
 
         public bool ForceTurn()
@@ -93,38 +76,16 @@ namespace IodemBot.ColossoBattles
                 return;
             }
 
-            if (TeamA.Any(p => p.ImgUrl != "" && p.ImgUrl == player.ImgUrl))
+            if (TeamA.Any(p => !p.ImgUrl.IsNullOrEmpty() && p.ImgUrl == player.ImgUrl))
             {
                 return;
             }
-
-            if (team == Team.A)
-            {
-                TeamA.Add(player);
-                player.party = Team.A;
-                player.enemies = Team.B;
-            }
-            else
-            {
-                TeamB.Add(player);
-                player.party = Team.B;
-                player.enemies = Team.A;
-            }
-
-            player.battle = this;
+            GetTeam(team).Add(player);
+            player.party = team;
+            player.Battle = this;
         }
 
-        public List<ColossoFighter> GetTeam(Team team)
-        {
-            if (team == Team.A)
-            {
-                return TeamA;
-            }
-            else
-            {
-                return TeamB;
-            }
-        }
+
 
         public bool Turn()
         {
@@ -138,32 +99,32 @@ namespace IodemBot.ColossoBattles
                 return false;
             }
 
-            log.Clear();
             if (!(TeamA.All(p => p.hasSelected) && TeamB.All(p => p.hasSelected)))
             {
                 return false;
             }
+            Log.Clear();
 
             if (SizeTeamB == 0 || SizeTeamA == 0)
             {
                 Console.WriteLine("The stupid bug happened");
-                log.Add("Error occured. You win.");
+                Log.Add("Error occured. You win.");
                 IsActive = false;
                 return true;
             }
             TurnActive = true;
-            log.Add($"Turn {++turn}");
+            Log.Add($"Turn {++turn}");
 
             try
             {
-                log.AddRange(StartTurn()); // moves with priority
-                log.AddRange(MainTurn());
-                log.AddRange(ExtraTurn()); // extra Turns
-                log.AddRange(EndTurn());
+                StartTurn(); // moves with priority
+                MainTurn();
+                ExtraTurn(); // extra Turns
+                EndTurn();
             }
             catch (Exception e)
             {
-                log.Add(e.ToString());
+                Log.Add(e.ToString());
                 Console.WriteLine("Turn Processing Error: " + e.ToString());
             }
 
@@ -176,65 +137,52 @@ namespace IodemBot.ColossoBattles
             return true;
         }
 
-        private List<string> StartTurn()
+        private void StartTurn()
         {
-            List<string> turnLog = new List<string>();
-            List<ColossoFighter> fighters = new List<ColossoFighter>(TeamA);
-            fighters.AddRange(TeamB);
+            var fighters = TeamA.Concat(TeamB).ToList();
             fighters.Shuffle();
-            fighters = fighters.OrderByDescending(f => f.Stats.Spd * f.MultiplyBuffs("Speed")).ToList();
-            fighters.ForEach(f => { turnLog.AddRange(f.StartTurn()); });
-            return turnLog;
+            fighters.OrderByDescending(f => f.Stats.Spd * f.MultiplyBuffs("Speed"))
+                .ToList()
+                .ForEach(f =>Log.AddRange(f.StartTurn()));
         }
 
-        private List<string> MainTurn()
-        {
-            List<string> turnLog = new List<string>();
-            List<ColossoFighter> fighters = new List<ColossoFighter>(TeamA);
-            fighters.AddRange(TeamB);
+        private void MainTurn()
+        { 
+            var fighters = TeamA.Concat(TeamB).ToList();
             fighters.Shuffle();
-            fighters = fighters.OrderByDescending(f => f.Stats.Spd * f.MultiplyBuffs("Speed")).ToList();
-            fighters.ForEach(f => { turnLog.AddRange(f.MainTurn()); });
-            return turnLog;
+            fighters
+                .OrderByDescending(f => f.Stats.Spd * f.MultiplyBuffs("Speed"))
+                .ToList()
+                .ForEach(f => Log.AddRange(f.MainTurn()));
         }
 
-        private List<string> ExtraTurn()
+        private void ExtraTurn()
         {
-            List<string> turnLog = new List<string>();
-            List<ColossoFighter> fighters = new List<ColossoFighter>(TeamA);
-            fighters.AddRange(TeamB);
+            var fighters = TeamA.Concat(TeamB).ToList();
             fighters.Shuffle();
-            fighters = fighters.OrderByDescending(f => f.Stats.Spd * f.MultiplyBuffs("Speed")).ToList();
-            fighters.ForEach(f => { turnLog.AddRange(f.ExtraTurn()); });
-            return turnLog;
+            fighters
+                .OrderByDescending(f => f.Stats.Spd * f.MultiplyBuffs("Speed"))
+                .ToList()
+                .ForEach(f => Log.AddRange(f.ExtraTurn()));
         }
 
-        private List<string> EndTurn()
-        {
-            List<string> turnLog = new List<string>();
-            List<ColossoFighter> fighters = new List<ColossoFighter>(TeamA);
-            fighters.AddRange(TeamB);
+        private void EndTurn()
+        { 
+            var fighters = TeamA.Concat(TeamB).ToList();
             fighters.Shuffle();
-            fighters = fighters.OrderByDescending(f => f.Stats.Spd * f.MultiplyBuffs("Speed")).ToList();
-            fighters.ForEach(f => { turnLog.AddRange(f.EndTurn()); });
-            return turnLog;
+            fighters.OrderByDescending(f => f.Stats.Spd * f.MultiplyBuffs("Speed"))
+                .ToList()
+                .ForEach(f => Log.AddRange(f.EndTurn()));
         }
 
         private bool GameOver()
         {
-            return !TeamA.Any(p => p.IsAlive) || !TeamB.Any(p => p.IsAlive);
+            return !(TeamA.Any(p => p.IsAlive) && TeamB.Any(p => p.IsAlive));
         }
 
         public Team GetWinner()
         {
-            if (TeamA.Any(p => p.IsAlive))
-            {
-                return Team.A;
-            }
-            else
-            {
-                return Team.B;
-            }
+            return TeamA.Any(p => p.IsAlive) ? Team.A : Team.B;
         }
     }
 }

@@ -20,7 +20,7 @@ namespace IodemBot.Modules
         {
             var embed = new EmbedBuilder();
             embed.WithColor(Colors.Get("Iodem"));
-            embed.WithDescription((new Random()).Next(0, 2) == 1 ? "<:Lucky_Medals:538050800342269973> Heads!" : "<:Gold:537214319591555073> Tails!");
+            embed.WithDescription(Global.RandomNumber(0,1) == 0 ? "<:Lucky_Medals:538050800342269973> Heads!" : "<:Gold:537214319591555073> Tails!");
             await Context.Channel.SendMessageAsync("", false, embed.Build());
         }
 
@@ -31,7 +31,7 @@ namespace IodemBot.Modules
         {
             var embed = new EmbedBuilder()
             .WithColor(Colors.Get("Iodem"))
-            .WithDescription($"🎲 {(new Random()).Next(0, (int)sides) + 1}");
+            .WithDescription($"🎲 {Global.RandomNumber(0, (int)sides) + 1}");
             await Context.Channel.SendMessageAsync("", false, embed.Build());
         }
 
@@ -115,7 +115,7 @@ namespace IodemBot.Modules
             string[] emotesPlayer = { "🤜", ":hand_splayed:", ":v:" };
             string[] emotesCPU = { "🤛", ":hand_splayed:", ":v:" };
 
-            RpsEnum cpuChoice = (RpsEnum)((new Random()).Next(0, 1000) % 3);
+            RpsEnum cpuChoice = Enum.GetValues<RpsEnum>().Random();
             string result = "";
 
             switch ((int)choice - (int)cpuChoice)
@@ -162,7 +162,7 @@ namespace IodemBot.Modules
             {
                 c.Trim();
             }
-            var choice = choices[(new Random()).Next(0, choices.Length)];
+            var choice = choices.Random();
             await Context.Channel.SendMessageAsync(embed: new EmbedBuilder()
             .WithColor(Colors.Get("Iodem"))
             .WithDescription($"➡️ {choice}")

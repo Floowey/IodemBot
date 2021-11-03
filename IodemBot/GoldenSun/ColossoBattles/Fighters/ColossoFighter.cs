@@ -45,14 +45,15 @@ namespace IodemBot.ColossoBattles
 
         public string Name { get; set; } = "";
         public Stats Stats { get; set; } = new Stats(1, 1, 1, 1, 1);
-        public ElementalStats ElStats { get; set; } = new ElementalStats();
+        public ElementalStats ElStats { get; set; } = new();
         public string ImgUrl { get; set; }
         [JsonIgnore] public List<Move> Moves { get; set; }
 
-        [JsonIgnore] public ColossoBattle battle;
-        [JsonIgnore] public Team party;
-        [JsonIgnore] public List<ColossoFighter> Party => battle.GetTeam(party);
-        [JsonIgnore] public List<ColossoFighter> Enemies => battle.GetTeam(enemies);
+        [JsonIgnore] public ColossoBattle Battle { get; set; }
+        [JsonIgnore] public Team party { get; set; }
+        [JsonIgnore] public Team enemies { get => party == Team.A ? Team.B : Team.A; }
+        [JsonIgnore] public List<ColossoFighter> Party => Battle.GetTeam(party);
+        [JsonIgnore] public List<ColossoFighter> Enemies => Battle.GetTeam(enemies);
 
 
         [JsonProperty("Conditions", ItemConverterType = typeof(StringEnumConverter))]
@@ -66,22 +67,21 @@ namespace IodemBot.ColossoBattles
         public bool IsImmuneToHPtoOne { get; set; }
         public bool IsImmuneToPsynergy { get; set; }
         public bool IsImmuneToItemCurse { get; set; }
-        public Item Weapon;
+        public Item Weapon { get; set; }
         [JsonIgnore] public Move SelectedMove { get; set; }
         [JsonIgnore] public uint damageDoneThisTurn;
         [JsonIgnore] public List<Buff> Buffs = new List<Buff>();
         [JsonIgnore] public List<LingeringEffect> LingeringEffects = new List<LingeringEffect>();
-        [JsonIgnore] public Team enemies;
         [JsonIgnore] public bool hasSelected = false;
         [JsonIgnore] public double offensiveMult = 1;
         [JsonIgnore] public double defensiveMult = 1;
         [JsonIgnore] public double ignoreDefense = 1;
-        public int unleashRate = 35;
+        public int unleashRate { get; set; } = 35;
         [JsonIgnore] public uint addDamage { get; set; } = 0;
         public List<Item> EquipmentWithEffect = new List<Item>();
         public int HPrecovery { get; set; } = 0;
         public int PPrecovery { get; set; } = 0;
-        public int DeathCurseCounter = 4;
+        public int DeathCurseCounter { get; set; } = 4;
         public bool IsAlive => !HasCondition(Condition.Down);
 
         internal ColossoFighter()
@@ -219,10 +219,9 @@ namespace IodemBot.ColossoBattles
             if (Stats.HP > damage)
             {
                 Stats.HP -= (int)damage;
-                ColossoFighter colossoFighter = this;
-                if (colossoFighter is PlayerFighter)
+                if (this is PlayerFighter p)
                 {
-                    ((PlayerFighter)this).battleStats.DamageTanked += damage;
+                    p.battleStats.DamageTanked += damage;
                 }
             }
             else
@@ -305,13 +304,14 @@ namespace IodemBot.ColossoBattles
                 turnLog.Add($"{Name} is damaged by the Poison.");
                 turnLog.AddRange(DealDamage(damage));
             }
+
             if (HasCondition(Condition.Venom))
             {
                 var damage = Math.Min(400, (uint)(Stats.MaxHP * Global.RandomNumber(10, 20) / 100));
                 turnLog.Add($"{Name} is damaged by the Venom.");
                 turnLog.AddRange(DealDamage(damage));
             }
-            //Haunt Damage
+
             if (HasCondition(Condition.Haunt) && Global.RandomNumber(0, 2) == 0)
             {
                 var hauntDmg = damageDoneThisTurn / 4;
@@ -394,9 +394,8 @@ namespace IodemBot.ColossoBattles
             }
             else
             {
-                return new List<string>();
+                return new();
             }
-
         }
         private List<string> EndTurnDjinnRecovery()
         {
@@ -433,7 +432,7 @@ namespace IodemBot.ColossoBattles
 
         public virtual List<string> ExtraTurn()
         {
-            return new List<string>();
+            return new();
         }
 
 
@@ -666,7 +665,7 @@ namespace IodemBot.ColossoBattles
 
         public void SelectRandom(bool includePriority = true)
         {
-            if (!battle.IsActive)
+            if (!Battle.IsActive)
             {
                 throw new Exception("Why tf do you want to selectRandom(), the battle is *not* active!");
             }

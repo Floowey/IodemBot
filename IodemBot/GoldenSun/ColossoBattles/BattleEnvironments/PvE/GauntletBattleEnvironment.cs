@@ -113,19 +113,7 @@ namespace IodemBot.ColossoBattles
             });
         }
 
-        protected override async Task AddPlayer(SocketReaction reaction)
-        {
-            if (PlayerMessages.Values.Any(s => (s.Id == reaction.UserId)))
-            {
-                return;
-            }
-            SocketGuildUser player = (SocketGuildUser)reaction.User.Value;
-            var playerAvatar = EntityConverter.ConvertUser(player);
-
-           
-
-            await base.AddPlayer(reaction);
-        }
+        
         public override Task<(bool Success, string Message)> CanPlayerJoin(UserAccount user, Team team = Team.A)
         {
             var result = base.CanPlayerJoin(user, team);
@@ -152,6 +140,21 @@ namespace IodemBot.ColossoBattles
         protected override async Task GameOver()
         {
             var winners = Battle.GetTeam(Battle.GetWinner());
+
+            foreach (var player in Battle.TeamA.Concat(Battle.TeamB).OfType<PlayerFighter>())
+            {
+                var brokenItems = player.EquipmentWithEffect.Where(i => i.IsBroken);
+                if (brokenItems.Any())
+                {
+                    var user = UserAccountProvider.GetById(player.Id);
+                    foreach (var item in brokenItems)
+                    {
+                        user.Inv.GetItem(item.Name).IsBroken = item.IsBroken;
+                    }
+                    UserAccountProvider.StoreUser(user);
+                }
+            }
+
             if (Battle.GetWinner() == Team.A)
             {
                 if (Battle.GetWinner() == Team.A)
@@ -186,7 +189,7 @@ namespace IodemBot.ColossoBattles
                 {
                     winners.OfType<PlayerFighter>().ToList().ForEach(p => _ = ServerGames.UserWonDungeon(UserAccountProvider.GetById(p.Id), Dungeon, lobbyChannel));
 
-                    if (DateTime.Now <= new DateTime(2021, 11, 8) && Global.Random.Next(5) == 0)
+                    if (DateTime.Now <= new DateTime(2021, 11, 8) && Global.RandomNumber(0,5) == 0)
                     {
                         var r = new List<Rewardable>() { new DefaultReward() { Dungeon = "Halloween Special" } };
                         winners.OfType<PlayerFighter>().ToList().ForEach(p => _ = ServerGames.UserWonBattle(UserAccountProvider.GetById(p.Id), r, new BattleStats(), lobbyChannel, BattleChannel));
@@ -197,7 +200,7 @@ namespace IodemBot.ColossoBattles
             }
             else
             {
-                var losers = winners.First().battle.GetTeam(winners.First().enemies);
+                var losers = winners.First().Battle.GetTeam(winners.First().enemies);
 
                 
                 losers.ConvertAll(s => (PlayerFighter)s).ForEach(p => _ = ServerGames.UserLostBattle(UserAccountProvider.GetById(p.Id), lobbyChannel));

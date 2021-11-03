@@ -34,9 +34,9 @@ namespace IodemBot.Modules
             }
             else
             {
-                embed.WithDescription(Utilities.GetAlert("CODE_IS_PRIVATE"));
+                embed.WithDescription("You better ask them yourselves...");
             }
-
+            
             await Context.Channel.SendMessageAsync("", false, embed.Build());
         }
 
@@ -56,22 +56,22 @@ namespace IodemBot.Modules
                 case "3ds":
                 case "n3ds":
                     account.N3DSCode = code;
-                    embed.WithDescription(Utilities.GetFormattedAlert("FC_ADDED_SUCCESS", "3DS"));
+                    embed.WithDescription("I have added your Nintendo 3DS Friend code.");
                     break;
 
                 case "switch":
                 case "sw":
                     account.SwitchCode = code;
-                    embed.WithDescription(Utilities.GetFormattedAlert("FC_ADDED_SUCCESS", "Switch"));
+                    embed.WithDescription("I have added your Switch Friend code.");
                     break;
 
                 case "pogo":
                     account.PoGoCode = code;
-                    embed.WithDescription(Utilities.GetFormattedAlert("FC_ADDED_SUCCESS", "Pokemon Go"));
+                    embed.WithDescription("I have added your Pokemon Go Friend code.");
                     break;
 
                 default:
-                    embed.WithDescription(Utilities.GetAlert("FC_CODE_UNKNOWN"));
+                    embed.WithDescription("Not a valid code.");
                     break;
             }
             UserAccountProvider.StoreUser(account);
@@ -89,7 +89,7 @@ namespace IodemBot.Modules
             var embed = new EmbedBuilder();
             embed.WithColor(Colors.Get("Iodem"));
             embed.WithThumbnailUrl(Sprites.GetImageFromName("Iodem"));
-            embed.WithDescription(Utilities.GetAlert("FC_PUBLIC"));
+            embed.WithDescription("Anyone can see your codes now.");
             await Context.Channel.SendMessageAsync("", false, embed.Build());
         }
 
@@ -104,7 +104,7 @@ namespace IodemBot.Modules
             var embed = new EmbedBuilder();
             embed.WithColor(Colors.Get("Iodem"));
             embed.WithThumbnailUrl(Sprites.GetImageFromName("Iodem"));
-            embed.WithDescription(Utilities.GetAlert("FC_PRIVATE"));
+            embed.WithDescription("Your codes are private now.");
             await Context.Channel.SendMessageAsync("", false, embed.Build());
         }
     }

@@ -28,35 +28,6 @@ namespace IodemBot.Modules
             .Build());
         }
 
-        [Command("mock")]
-        [RequireModerator]
-        [Summary("Are you me?")]
-        public async Task Mock([Remainder] string message)
-        {
-            var embed = new EmbedBuilder();
-            embed.WithColor(Colors.Get("Iodem"));
-            embed.WithAuthor(Context.User);
-            embed.WithDescription(StringToMock(message));
-            await Context.Message.DeleteAsync();
-            await Context.Channel.SendMessageAsync("", false, embed.Build());
-        }
-
-        private string StringToMock(string text)
-        {
-            var lower = text.ToLower();
-            var s = new StringBuilder();
-            for (int i = 0; i < lower.Length; i++)
-            {
-                string c = lower[i].ToString();
-                if (i % 2 == 1)
-                {
-                    c = c.ToUpper();
-                }
-                s.Append(c);
-            }
-            return s.ToString();
-        }
-
         [Command("ping")]
         [Cooldown(5)]
         [Summary("Pong")]
@@ -441,17 +412,7 @@ namespace IodemBot.Modules
             await Context.Channel.SendMessageAsync(embed: embed.Build());
         }
 
-        [Command("addQuote")]
-        [RequireModerator]
-        [Summary("Add a Quote to the quoteList.")]
-        public async Task AddQuoteCommand(string name, [Remainder] string quote)
-        {
-            Quotes.AddQuote(name, quote);
-            var embed = new EmbedBuilder();
-            embed.WithColor(Colors.Get("Iodem"));
-            embed.WithDescription(Utilities.GetAlert("quote_added"));
-            await Context.Channel.SendMessageAsync("", false, embed.Build());
-        }
+        
         [Command("sprite"), Alias("portrait")]
         [Summary("Get a random sprite or one of a given Character")]
         [Cooldown(5)]
@@ -462,7 +423,7 @@ namespace IodemBot.Modules
 
             if (Sprites.GetSpriteCount() == 0)
             {
-                embed.WithDescription(Utilities.GetAlert("no_sprites"));
+                embed.WithDescription("No sprites found.");
             }
             else if (name == "")
             {
@@ -482,7 +443,7 @@ namespace IodemBot.Modules
         {
             if (Quotes.GetQuotesCount() == 0)
             {
-                await NoQuotes();
+                await ReplyAsync("I don't recall any quotes.");
                 return;
             }
 
@@ -495,7 +456,7 @@ namespace IodemBot.Modules
                 q = Quotes.quoteList.Where(q => q.name.Equals(name, StringComparison.OrdinalIgnoreCase)).Random();
                 if (q.name.IsNullOrEmpty())
                 {
-                    embed.WithDescription(Utilities.GetAlert("No_Quote_From_Name"));
+                    embed.WithDescription("I don't remember anything this person said.");
                     await ReplyAsync(embed: embed.Build());
                     return;
                 }
@@ -512,16 +473,7 @@ namespace IodemBot.Modules
                 await GoldenSunCommands.AwardClassSeries("Curse Mage Series", Context.User, Context.Channel);
             }
 
-            await Context.Channel.SendMessageAsync("", false, embed.Build());
-            //await embed.WithDescription(Utilities.GetAlert("quote"));
-        }
-
-        private async Task NoQuotes()
-        {
-            var embed = new EmbedBuilder();
-            embed.WithColor(Colors.Get("Iodem"));
-            embed.WithDescription(Utilities.GetAlert("no_quotes"));
-            await Context.Channel.SendMessageAsync("", false, embed.Build());
+            await ReplyAsync("", false, embed.Build());
         }
     }
 }

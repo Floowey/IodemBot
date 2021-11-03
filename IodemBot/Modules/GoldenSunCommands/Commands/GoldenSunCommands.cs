@@ -280,19 +280,6 @@ namespace IodemBot.Modules
             await Task.CompletedTask;
         }
 
-        [Command("Sync")]
-        public async Task Sync([Remainder] SocketTextChannel channel)
-        {
-            try
-            {
-                await channel.SyncPermissionsAsync();
-            } catch (Exception e)
-            {
-                Console.Write(e.ToString());
-            }
-            await Task.CompletedTask;
-        }
-
         [Command("patdown")]
         [RequireStaff]
         public async Task PatDown([Remainder] SocketGuildUser user = null)
@@ -519,49 +506,7 @@ namespace IodemBot.Modules
             }
         }
 
-        [Command("rndElement"), Alias("rndEl", "randElement")]
-        [Cooldown(10)]
-        [Summary("Get a random Element (Use `i!element` to assign one, however)")]
-        public async Task RandomElement()
-        {
-            var embed = new EmbedBuilder();
-            Random r = new Random();
 
-            RndElement el = (RndElement)r.Next(0, 4);
-
-            embed.WithAuthor(el.ToString());
-
-            switch (el)
-            {
-                case RndElement.Venus:
-                    embed.WithColor(Colors.Get("Venus"));
-                    embed.WithDescription(Utilities.GetAlert("ELEMENT_VENUS"));
-                    embed.WithThumbnailUrl("https://archive-media-0.nyafuu.org/vp/image/1499/44/1499447315322.png");
-                    break;
-
-                case RndElement.Mars:
-                    embed.WithColor(Colors.Get("Mars"));
-                    embed.WithDescription(Utilities.GetAlert("ELEMENT_MARS"));
-                    embed.WithThumbnailUrl("https://kmsmith0613.files.wordpress.com/2013/11/mars-djinni.png");
-                    break;
-
-                case RndElement.Jupiter:
-                    embed.WithColor(Colors.Get("Jupiter"));
-                    embed.WithDescription(Utilities.GetAlert("ELEMENT_JUPITER"));
-                    embed.WithThumbnailUrl("https://pre00.deviantart.net/a1e1/th/pre/i/2014/186/f/7/golden_sun___jupiter_djinn_by_vercidium-d7pb4l3.png");
-                    break;
-
-                case RndElement.Mercury:
-                    embed.WithColor(Colors.Get("Mercury"));
-                    embed.WithDescription(Utilities.GetAlert("ELEMENT_MERCURY"));
-                    embed.WithThumbnailUrl("http://thelostwaters.com/gallery/galleries/goldensun/official/MercuryDjinn.png");
-                    break;
-
-                default: break;
-            }
-
-            await Context.Channel.SendMessageAsync("", false, embed.Build());
-        }
 
         [Command("removeClassSeries")]
         [Summary("Remove a given Class Series from a User")]
@@ -678,7 +623,7 @@ namespace IodemBot.Modules
             return !curClass.Equals(AdeptClassSeriesManager.GetClassSeries(account).Name);
         }
 
-        private string Article(string s)
+        private static string Article(string s)
         {
             s = s.ToLower();
             char c = s.ElementAt(0);

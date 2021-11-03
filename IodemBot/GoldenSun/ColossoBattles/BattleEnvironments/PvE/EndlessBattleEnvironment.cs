@@ -194,6 +194,21 @@ namespace IodemBot.ColossoBattles
             {
                 Console.WriteLine("Game Over with no enemies existing.");
             }
+
+            foreach (var player in Battle.TeamA.Concat(Battle.TeamB).OfType<PlayerFighter>())
+            {
+                var brokenItems = player.EquipmentWithEffect.Where(i => i.IsBroken);
+                if (brokenItems.Any())
+                {
+                    var user = UserAccountProvider.GetById(player.Id);
+                    foreach (var item in brokenItems)
+                    {
+                        user.Inv.GetItem(item.Name).IsBroken = item.IsBroken;
+                    }
+                    UserAccountProvider.StoreUser(user);
+                }
+            }
+
             if (Battle.GetWinner() == Team.A)
             {
                 winsInARow++;
@@ -268,7 +283,7 @@ namespace IodemBot.ColossoBattles
             }
             else
             {
-                var losers = winners.First().battle.GetTeam(winners.First().enemies);
+                var losers = winners.First().Battle.GetTeam(winners.First().enemies);
                 losers.OfType<PlayerFighter>().ToList().ForEach(async p => await ServerGames.UserLostBattle(UserAccountProvider.GetById(p.Id), lobbyChannel));
                 losers.OfType<PlayerFighter>().ToList().ForEach(async p => await ServerGames.UserFinishedEndless(UserAccountProvider.GetById(p.Id), winsInARow, mode));
                 _ = WriteGameOver();
@@ -282,18 +297,6 @@ namespace IodemBot.ColossoBattles
             await base.Reset(msg);
         }
 
-       
-
-        protected override async Task AddPlayer(SocketReaction reaction)
-        {
-            if (PlayerMessages.Values.Any(s => (s.Id == reaction.UserId)))
-            {
-                return;
-            }
-            SocketGuildUser player = (SocketGuildUser)reaction.User.Value;
-            var playerAvatar = EntityConverter.ConvertUser(player);
-            await AddPlayer(playerAvatar);
-        }
         public override async Task AddPlayer(UserAccount user, Team team = Team.A)
         {
 

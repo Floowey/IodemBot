@@ -16,15 +16,6 @@ namespace IodemBot
             alerts = data.ToObject<Dictionary<string, string>>();
         }
 
-        public static string GetAlert(string key)
-        {
-            if (alerts.ContainsKey(key))
-            {
-                return alerts[key];
-            }
-
-            return GetAlert("ALERT_NOT_FOUND");
-        }
 
         public static string GetFormattedAlert(string key, params object[] parameter)
         {
@@ -35,12 +26,7 @@ namespace IodemBot
             return "";
         }
 
-        public static string GetFormattedAlert(string key, object parameter)
-        {
-            return GetFormattedAlert(key, new object[] { parameter });
-        }
-
-        public static String ToCaps(string input)
+        public static string ToCaps(string input)
         {
             string[] words = input.Split(' ');
             string output = "";

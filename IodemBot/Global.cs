@@ -8,7 +8,6 @@ namespace IodemBot
     {
         public static DateTime RunningSince { get; internal set; }
         internal static DiscordSocketClient Client { get; set; }
-        internal static ulong MessageIdToTrack { get; set; }
         public static Random Random { get; set; } = new Random();
 
         private static readonly object synclock = new object();

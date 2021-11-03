@@ -9,7 +9,7 @@ namespace IodemBot
 {
     public class Emotes
     {
-        private static Dictionary<string, string> misc_emotes = new()
+        private static readonly Dictionary<string, string> misc_emotes = new()
         {
             { "Exclamation", "<:Exclamatory:571309036473942026>" },
             { "Coin", "<:coin:569836987767324672>" },

@@ -32,9 +32,8 @@ namespace IodemBot.ColossoBattles
         private ColossoBattleService BattleService { get; set; }
         internal abstract ulong[] ChannelIds { get; }
 
-        public PlayerFighter GetPlayer(ulong playerID) => Battle
-            .GetTeam(Team.A).OfType<PlayerFighter>().FirstOrDefault(p => p.Id == playerID) ??
-            Battle.GetTeam(Team.B).OfType<PlayerFighter>().FirstOrDefault(p => p.Id == playerID);
+        public PlayerFighter GetPlayer(ulong playerID) => 
+            Battle.TeamA.Concat(Battle.TeamB).OfType<PlayerFighter>().FirstOrDefault(p => p.Id == playerID);
 
         public abstract Task AddPlayer(PlayerFighter player, Team team = Team.A);
         public abstract Task AddPlayer(UserAccount user, Team team = Team.A);
