@@ -6,9 +6,9 @@ namespace IodemBot
     public enum DjinnDetail { None, Names }
 
     public enum Team { A, B }
-
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum Condition { Down, Poison, Venom, Seal, Stun, DeathCurse, Haunt, ItemCurse, Flinch, Delusion, Sleep, Counter, SpiritSeal, Decoy, Key, Trap }
-
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum RndElement { Venus, Mars, Jupiter, Mercury }
 
     public enum LevelOption { Default, SetLevel, CappedLevel }
@@ -54,7 +54,7 @@ namespace IodemBot
         Boots, Greave,
         Ring, Misc
     }
-
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum ItemRarity
     {
         Common, Uncommon, Rare, Legendary, Mythical, Unique
@@ -67,11 +67,11 @@ namespace IodemBot
     // Adept: 30% Rare, 65% Legendary, 5% Mythical
 
     public enum RoomVisibility { All, TeamA, TeamB, Private }
-
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum RankEnum { Level, Solo, Duo, Trio, Quad }
 
     public enum BattleDifficulty { Tutorial = 0, Easy = 1, Medium = 2, MediumRare = 3, Hard = 4, Adept = 5 };
-
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum ItemCategory
     {
         Weapon, ArmWear, ChestWear, HeadWear, UnderWear, FootWear, Accessoire, Other

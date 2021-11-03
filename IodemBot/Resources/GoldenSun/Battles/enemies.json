@@ -11532,7 +11532,8 @@
       "jupiterres": 100,
       "venusres": 72,
       "marsres": 25,
-      "venusatk": 105
+      "venusatk": 105,
+      "mercuryatk": 125
     },
     "isImmuneToConditions": [
       "Stun",

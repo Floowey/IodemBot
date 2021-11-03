@@ -666,7 +666,7 @@ namespace IodemBot.ColossoBattles
 
         public void SelectRandom(bool includePriority = true)
         {
-            if (!battle.isActive)
+            if (!battle.IsActive)
             {
                 throw new Exception("Why tf do you want to selectRandom(), the battle is *not* active!");
             }

@@ -860,7 +860,7 @@ namespace IodemBot.Modules
 
         public override EphemeralRule EphemeralRule => EphemeralRule.EphemeralOrFail;
         public override bool GuildsOnly => true;
-        public override ActionGuildSlashCommandProperties SlashCommandProperties => new()
+        public override ActionGlobalSlashCommandProperties SlashCommandProperties => new()
         {
             Name = "sell",
             Description = "Sell one or multiple items",

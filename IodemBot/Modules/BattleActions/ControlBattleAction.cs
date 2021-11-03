@@ -25,8 +25,8 @@ namespace IodemBot.Modules.BattleActions
             if (!baseResult.Result.Success)
                 return baseResult;
 
-            if (!battle.IsActive)
-                return Task.FromResult((false, "No Players in Battle"));
+            if (battle.Battle.SizeTeamA == 0)
+                return Task.FromResult((false, "Not enough players to start."));
             return baseResult;
         }
     }

@@ -10,31 +10,19 @@ namespace IodemBot.ColossoBattles
     {
         public List<ColossoFighter> TeamA = new List<ColossoFighter>();
         public List<ColossoFighter> TeamB = new List<ColossoFighter>();
-        public bool isActive = false;
+        public bool IsActive { get; set; } = false;
+        public bool TurnActive { get; set; } = false;
+        public int turn { get; set; } = 0;
+        public List<string> log = new();
 
-        public int SizeTeamA
-        {
-            get
-            {
-                return TeamA.Count();
-            }
-        }
+        public int SizeTeamA => TeamA.Count;
 
-        public int SizeTeamB
-        {
-            get
-            {
-                return TeamB.Count();
-            }
-        }
+        public int SizeTeamB => TeamB.Count;
 
-        public int turn = 0;
-        public List<string> log = new List<string>();
-        public bool turnActive = false;
 
         public void Start()
         {
-            isActive = true;
+            IsActive = true;
             turn = 0;
             log.Clear();
             TeamA.ForEach(p =>
@@ -76,7 +64,7 @@ namespace IodemBot.ColossoBattles
 
         public bool ForceTurn()
         {
-            if (turnActive)
+            if (TurnActive)
             {
                 return false;
             }
@@ -100,7 +88,7 @@ namespace IodemBot.ColossoBattles
 
         public void AddPlayer(ColossoFighter player, Team team)
         {
-            if (isActive)
+            if (IsActive)
             {
                 return;
             }
@@ -140,12 +128,12 @@ namespace IodemBot.ColossoBattles
 
         public bool Turn()
         {
-            if (!isActive)
+            if (!IsActive)
             {
                 return false;
             }
 
-            if (turnActive)
+            if (TurnActive)
             {
                 return false;
             }
@@ -160,10 +148,10 @@ namespace IodemBot.ColossoBattles
             {
                 Console.WriteLine("The stupid bug happened");
                 log.Add("Error occured. You win.");
-                isActive = false;
+                IsActive = false;
                 return true;
             }
-            turnActive = true;
+            TurnActive = true;
             log.Add($"Turn {++turn}");
 
             try
@@ -182,9 +170,9 @@ namespace IodemBot.ColossoBattles
             //Check for Game Over
             if (GameOver())
             {
-                isActive = false;
+                IsActive = false;
             }
-            turnActive = false;
+            TurnActive = false;
             return true;
         }
 

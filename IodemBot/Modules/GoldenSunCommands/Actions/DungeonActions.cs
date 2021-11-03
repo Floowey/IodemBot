@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Discord;
+using Discord.Net;
 using IodemBot.ColossoBattles;
 using IodemBot.Core;
 using IodemBot.Core.UserManagement;
@@ -144,8 +145,15 @@ namespace IodemBot.Modules
         {
             var gs = GuildSettings.GetGuildSettings(Context.Guild);
 
-            if (Context is RequestInteractionContext r)
+            try
+            {
+                if (Context is RequestInteractionContext r)
                 await r.OriginalInteraction.DeferAsync();
+            }
+            catch (HttpException)
+            {
+
+            }
 
             var openBattle = new GauntletBattleEnvironment(BattleService, $"{Context.User.Username}", gs.ColossoChannel, 
                 await BattleService.PrepareBattleChannel($"{Dungeon.Name}-{Context.User.Username}", 

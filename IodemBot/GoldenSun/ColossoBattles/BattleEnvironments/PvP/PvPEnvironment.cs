@@ -217,7 +217,7 @@ namespace IodemBot.ColossoBattles
                     _ = StartBattle();
                     return;
                 }
-                if (!Battle.isActive)
+                if (!Battle.IsActive)
                 {
                     return;
                 }
@@ -258,14 +258,14 @@ namespace IodemBot.ColossoBattles
                         return;
                     }
 
-                    if (!Battle.isActive)
+                    if (!Battle.IsActive)
                     {
                         _ = c.RemoveReactionAsync(reaction.Emote, reaction.User.Value);
                         Console.WriteLine("Battle not active.");
                         return;
                     }
 
-                    if (Battle.turnActive)
+                    if (Battle.TurnActive)
                     {
                         _ = c.RemoveReactionAsync(reaction.Emote, reaction.User.Value);
                         Console.WriteLine("Not so fast");
@@ -369,7 +369,7 @@ namespace IodemBot.ColossoBattles
 
         public override async Task AddPlayer(PlayerFighter player, Team team)
         {
-            if (Battle.isActive)
+            if (Battle.IsActive)
             {
                 return;
             }
@@ -395,7 +395,7 @@ namespace IodemBot.ColossoBattles
 
         public override async Task StartBattle()
         {
-            if (Battle.isActive)
+            if (Battle.IsActive)
             {
                 return;
             }

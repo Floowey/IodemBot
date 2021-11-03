@@ -68,6 +68,9 @@ namespace IodemBot.Modules
             if (!battle.IsUsersMessage(player, Context.Message))
                 return Task.FromResult((false, "Click your own message!"));
 
+            if (battle.isProcessing)
+                return Task.FromResult((false, "Too fast."));
+
             return baseResult;
         }
     }

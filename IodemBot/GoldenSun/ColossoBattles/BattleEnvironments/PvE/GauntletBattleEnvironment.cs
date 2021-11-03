@@ -17,6 +17,7 @@ namespace IodemBot.ColossoBattles
     {
         public Dungeon Dungeon;
         public DungeonMatchup matchup;
+        public int dungeon_Nr = 0;
         public List<DungeonMatchup>.Enumerator enumerator;
         private bool EndOfDungeon = false;
 
@@ -42,56 +43,47 @@ namespace IodemBot.ColossoBattles
 
         public override void SetNextEnemy()
         {
-            if (enumerator.MoveNext())
+            matchup = Dungeon.Matchups.ElementAt(dungeon_Nr);
+            Battle.TeamB.Clear();
+            var curEnemies = matchup.Enemy;
+            if (matchup.Shuffle)
             {
-                matchup = enumerator.Current;
-                Battle.TeamB.Clear();
-                var curEnemies = matchup.Enemy;
-                if (matchup.Shuffle)
+                curEnemies.Shuffle();
+            }
+            curEnemies.Reverse();
+            curEnemies.ForEach(e =>
+            {
+                if (curEnemies.Count(p => p.Name.Equals(e.Name) || p.Name[0..^2].Equals(e.Name)) > 1)
                 {
-                    curEnemies.Shuffle();
+                    e.Name = $"{e.Name} {curEnemies.Count(p => p.Name.Equals(e.Name))}";
                 }
-                curEnemies.Reverse();
-                curEnemies.ForEach(e =>
+            });
+            curEnemies.Reverse();
+            curEnemies.ForEach(e => Battle.AddPlayer(e, Team.B));
+
+            if (matchup.HealBefore)
+            {
+                Battle.TeamA.ForEach(f =>
                 {
-                    if (curEnemies.Count(p => p.Name.Equals(e.Name) || p.Name[0..^2].Equals(e.Name)) > 1)
-                    {
-                        e.Name = $"{e.Name} {curEnemies.Count(p => p.Name.Equals(e.Name))}";
-                    }
+                    f.RemoveAllConditions();
+                    f.Heal(1000);
+                    f.RestorePP(1000);
                 });
-                curEnemies.Reverse();
-                curEnemies.ForEach(e => Battle.AddPlayer(e, Team.B));
-
-                if (matchup.HealBefore)
-                {
-                    Battle.TeamA.ForEach(f =>
-                    {
-                        f.RemoveAllConditions();
-                        f.Heal(1000);
-                        f.RestorePP(1000);
-                    });
-                }
-
-                if (matchup.Keywords.Contains("Cure"))
-                {
-                    Battle.TeamA.ForEach(f =>
-                    {
-                        f.RemoveAllConditions();
-                    });
-                }
-
-                matchup.Keywords
-                    .Where(s => s.StartsWith("Status"))
-                    .Select(s => s.Substring(6))
-                    .Select(s => Enum.Parse<Condition>(s, true)).ToList()
-                    .ForEach(c => Battle.TeamA.ForEach(p => p.AddCondition(c)));
-
-                EndOfDungeon = false;
             }
-            else
+
+            if (matchup.Keywords.Contains("Cure"))
             {
-                EndOfDungeon = true;
+                Battle.TeamA.ForEach(f =>
+                {
+                    f.RemoveAllConditions();
+                });
             }
+
+            matchup.Keywords
+                .Where(s => s.StartsWith("Status"))
+                .Select(s => s.Substring(6))
+                .Select(s => Enum.Parse<Condition>(s, true)).ToList()
+                .ForEach(c => Battle.TeamA.ForEach(p => p.AddCondition(c)));
         }
 
         protected override EmbedBuilder GetEnemyEmbedBuilder()
@@ -164,17 +156,21 @@ namespace IodemBot.ColossoBattles
             {
                 if (Battle.GetWinner() == Team.A)
                 {
-                    winners.OfType<PlayerFighter>().ToList().ForEach(async p => await ServerGames.UserWonBattle(UserAccountProvider.GetById(p.Id), matchup.RewardTables.GetRewards(), p.battleStats, lobbyChannel, BattleChannel));
+                    winners.OfType<PlayerFighter>().ToList().ForEach(p => _ = ServerGames.UserWonBattle(UserAccountProvider.GetById(p.Id), matchup.RewardTables.GetRewards(), p.battleStats, lobbyChannel, BattleChannel));
                 }
 
                 Battle.TeamA.ForEach(p =>
                     {
                         p.RemoveNearlyAllConditions();
                         p.Buffs = new List<Buff>();
-                        p.Heal((uint)(p.Stats.HP * 5 / 100));
+                        //p.Heal((uint)(p.Stats.HP * 5 / 100));
                     });
 
-                SetNextEnemy();
+                dungeon_Nr++;
+                if (dungeon_Nr >= Dungeon.Matchups.Count)
+                    EndOfDungeon = true;
+                else
+                    SetNextEnemy();
 
                 if (!EndOfDungeon)
                 {
@@ -188,12 +184,12 @@ namespace IodemBot.ColossoBattles
                 }
                 else
                 {
-                    winners.OfType<PlayerFighter>().ToList().ForEach(async p => await ServerGames.UserWonDungeon(UserAccountProvider.GetById(p.Id), Dungeon, lobbyChannel));
+                    winners.OfType<PlayerFighter>().ToList().ForEach(p => _ = ServerGames.UserWonDungeon(UserAccountProvider.GetById(p.Id), Dungeon, lobbyChannel));
 
                     if (DateTime.Now <= new DateTime(2021, 11, 8) && Global.Random.Next(5) == 0)
                     {
                         var r = new List<Rewardable>() { new DefaultReward() { Dungeon = "Halloween Special" } };
-                        winners.OfType<PlayerFighter>().ToList().ForEach(async p => await ServerGames.UserWonBattle(UserAccountProvider.GetById(p.Id), r, new BattleStats(), lobbyChannel, BattleChannel));
+                        winners.OfType<PlayerFighter>().ToList().ForEach(p => _ = ServerGames.UserWonBattle(UserAccountProvider.GetById(p.Id), r, new BattleStats(), lobbyChannel, BattleChannel));
                     }
 
                     _ = WriteGameOver();
@@ -204,7 +200,7 @@ namespace IodemBot.ColossoBattles
                 var losers = winners.First().battle.GetTeam(winners.First().enemies);
 
                 
-                losers.ConvertAll(s => (PlayerFighter)s).ForEach(async p => await ServerGames.UserLostBattle(UserAccountProvider.GetById(p.Id), lobbyChannel));
+                losers.ConvertAll(s => (PlayerFighter)s).ForEach(p => _ = ServerGames.UserLostBattle(UserAccountProvider.GetById(p.Id), lobbyChannel));
 
                 _ = WriteGameOver();
             }

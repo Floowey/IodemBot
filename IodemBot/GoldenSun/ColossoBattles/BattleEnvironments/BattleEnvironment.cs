@@ -17,19 +17,19 @@ namespace IodemBot.ColossoBattles
             "6️⃣", "7️⃣", "8️⃣", "9️⃣" };
 
         public string Name { get; set; }
-        protected uint PlayersToStart { get; set; } = 4;
+        public uint PlayersToStart { get; protected set; } = 4;
         protected ITextChannel lobbyChannel { get; set; }
 
-        protected ColossoBattle Battle { get; set; }
+        public ColossoBattle Battle { get; protected set; }
 
         protected Timer resetIfNotActive;
         protected Timer autoTurn;
         protected readonly List<SocketReaction> reactions = new List<SocketReaction>();
-        private bool isProcessing = false;
-        public bool IsActive { get { return Battle.SizeTeamA > 0; } }
+        public bool isProcessing { get; private set; } = false;
+        public bool IsActive { get { return Battle.IsActive; } }
         public bool IsPersistent { get; set; } = true;
 
-        public ColossoBattleService BattleService { get; set; }
+        private ColossoBattleService BattleService { get; set; }
         internal abstract ulong[] ChannelIds { get; }
 
         public PlayerFighter GetPlayer(ulong playerID) => Battle
@@ -103,7 +103,7 @@ namespace IodemBot.ColossoBattles
             {
                 autoTurn.Stop();
                 await WriteBattle();
-                if (Battle.isActive)
+                if (Battle.IsActive)
                 {
                     autoTurn.Start();
                 }
@@ -142,7 +142,7 @@ namespace IodemBot.ColossoBattles
             List<string> s = new List<string>();
             List<string> report = new List<string>();
 #pragma warning restore IDE0028 // Simplify collection initialization
-            s.Add($"Battle is {(Battle.isActive ? "" : "not")} active.");
+            s.Add($"Battle is {(Battle.IsActive ? "" : "not")} active.");
             s.Add($"\nTeam A:");
             Battle.TeamA.ForEach(p =>
             {
