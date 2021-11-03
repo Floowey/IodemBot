@@ -4,14 +4,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using Discord;
 using Discord.Commands;
-using Discord.Net;
 using Discord.WebSocket;
-using IodemBot.Preconditions;
 using IodemBot.Core;
 using IodemBot.Core.UserManagement;
 using IodemBot.Extensions;
-using IodemBot.Modules.GoldenSunMechanics;
 using IodemBot.Modules;
+using IodemBot.Modules.GoldenSunMechanics;
+using IodemBot.Preconditions;
 
 namespace IodemBot.ColossoBattles
 {
@@ -19,6 +18,7 @@ namespace IodemBot.ColossoBattles
     public class ColossoCommands : ModuleBase<SocketCommandContext>
     {
         public ColossoBattleService BattleService { get; set; }
+
         public static readonly string[] numberEmotes = new string[] { "\u0030\u20E3", "\u0031\u20E3", "\u0032\u20E3", "\u0033\u20E3", "\u0034\u20E3", "\u0035\u20E3",
             "\u0036\u20E3", "\u0037\u20E3", "\u0038\u20E3", "\u0039\u20E3" };
 
@@ -139,7 +139,6 @@ namespace IodemBot.ColossoBattles
             await Task.CompletedTask;
         }
 
-
         [Command("DungeonInfo"), Alias("dgi")]
         [Summary("Get information about a dungeon")]
         public async Task DungeonInfo([Remainder] string DungeonName)
@@ -148,7 +147,6 @@ namespace IodemBot.ColossoBattles
             {
                 var RewardTablesWithDjinn = dungeon.Matchups
                     .SelectMany(m => m.RewardTables.Where(t => t.OfType<DefaultReward>().Any(r => r.Djinn != "")));
-
 
                 var djinnTotal = RewardTablesWithDjinn.SelectMany(t => t.OfType<DefaultReward>().Where(r => r.Djinn != ""));
 
@@ -200,8 +198,6 @@ namespace IodemBot.ColossoBattles
             _ = BattleService.SetupInGuild(Context.Guild);
         }
 
-
-
         [Command("c reset")]
         [RequireStaff]
         [RequireUserServer]
@@ -247,7 +243,7 @@ namespace IodemBot.ColossoBattles
                 && b.Name.Equals(name, StringComparison.InvariantCultureIgnoreCase));
 
             if (a != null && a is PvEEnvironment pve)
-                pve.SetEnemy(enemy);       
+                pve.SetEnemy(enemy);
         }
 
         [Command("modendless")]
@@ -267,13 +263,12 @@ namespace IodemBot.ColossoBattles
             var guild = Context.Guild;
             var gs = GuildSettings.GetGuildSettings(guild);
             _ = RemoveFighterRoles();
-           
+
             EndlessBattleEnvironment openBattle;
 
             openBattle = new EndlessBattleEnvironment(BattleService, $"{Context.User.Username}", gs.ColossoChannel, false, await BattleService.PrepareBattleChannel($"Endless-{Context.User.Username}", guild, persistent: false));
             openBattle.SetStreak(round);
-             
-            
+
             BattleService.AddBattleEnvironment(openBattle);
             _ = Context.Channel.SendMessageAsync($"{Context.User.Username}, {openBattle.BattleChannel.Mention} has been prepared for an endless adventure!");
 
@@ -336,14 +331,12 @@ namespace IodemBot.ColossoBattles
             else
             {
                 openBattle = new EndlessBattleEnvironment(BattleService, $"{Context.User.Username}", gs.ColossoChannel, false, await BattleService.PrepareBattleChannel($"Endless-Legacy-{Context.User.Username}", guild, persistent: false), EndlessMode.Legacy);
-        
             }
             BattleService.AddBattleEnvironment(openBattle);
             _ = Context.Channel.SendMessageAsync($"{Context.User.Username}, {openBattle.BattleChannel.Mention} has been prepared for an endless adventure!");
 
             _ = AddFighterRole();
             await Task.CompletedTask;
-
         }
 
         [Command("dungeon"), Alias("dg")]
@@ -406,7 +399,7 @@ namespace IodemBot.ColossoBattles
                 {
                     embed.AddField($"{b.Name} {(b.IsPersistent ? "(Permanent)" : "")}",
                     $"{b.GetType().Name}\n" +
-                    $"Channels:{string.Join(",", b.ChannelIds.Select(id => $"<#{id}>"))}"); 
+                    $"Channels:{string.Join(",", b.ChannelIds.Select(id => $"<#{id}>"))}");
                 };
                 if (embed.Fields.Count == 0)
                     embed.WithDescription("No registered battles.");
@@ -431,10 +424,9 @@ namespace IodemBot.ColossoBattles
         [RequireUserServer]
         public async Task StatusOfBattle(IMessageChannel channel)
         {
-            _=StatusOfBattle(channel.Id);
+            _ = StatusOfBattle(channel.Id);
             await Task.CompletedTask;
         }
-
 
         [Command("c AcceptBattles")]
         [RequireStaff]

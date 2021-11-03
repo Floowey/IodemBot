@@ -15,9 +15,11 @@ namespace IodemBot.Modules.GoldenSunMechanics
         private static DateTime lastReset;
 
         private static ShopStruct Shopstruct { get { return new ShopStruct() { Shop = shop, LastReset = lastReset, RestockMessage = RestockMessage, Shopkeeper = Shopkeeper }; } }
+
         private static int HoursForReset { get; } =
             DateTime.Now.Date >= new DateTime(day: 1, month: 3, year: 2021) &&
                 DateTime.Now.Date < new DateTime(day: 15, month: 3, year: 2021) ? 6 : 8;
+
         public static string Shopkeeper { get; set; }
         public static string RestockMessage { get; set; }
         private static readonly string[] shopkeepers = { "armor shopkeeper2", "armor shopkeeper3", "champa shopkeeper", "item shopkeeper", "izumo shopkeeper", "weapon shopkeeper", "weapon shopkeeper2", "sunshine", "armor shopkeeper" };
@@ -26,23 +28,35 @@ namespace IodemBot.Modules.GoldenSunMechanics
         private static readonly string shopLocation = "Resources/shop.json";
         private static readonly string itemLocation = "Resources/GoldenSun/items.json";
 
-        public static readonly Dictionary<ChestQuality, RewardGenerator<ItemRarity>> ChestValues = new() {
-                {ChestQuality.Wooden, new RewardGenerator<ItemRarity>(
-                    new []{ItemRarity.Common, ItemRarity.Uncommon }, new []{ 88, 12})
-                },
-                {ChestQuality.Normal, new RewardGenerator<ItemRarity>(
-                    new []{ItemRarity.Common, ItemRarity.Uncommon }, new []{ 33, 67})
-                },
-                {ChestQuality.Silver, new RewardGenerator<ItemRarity>(
-                    new []{ItemRarity.Uncommon, ItemRarity.Rare, ItemRarity.Legendary}, new []{ 40, 50, 10})
-                },
-                {ChestQuality.Gold, new RewardGenerator<ItemRarity>(
-                    new []{ItemRarity.Rare, ItemRarity.Legendary, ItemRarity.Mythical}, new []{ 40, 50, 10})
-                },
-                {ChestQuality.Adept, new RewardGenerator<ItemRarity>(
-                    new []{ItemRarity.Legendary, ItemRarity.Mythical}, new []{ 65, 35})
-                }
-            };
+        public static readonly Dictionary<ChestQuality, RewardGenerator<ItemRarity>> ChestValues = new()
+        {
+            {
+                ChestQuality.Wooden,
+                new RewardGenerator<ItemRarity>(
+                    new[] { ItemRarity.Common, ItemRarity.Uncommon }, new[] { 88, 12 })
+            },
+            {
+                ChestQuality.Normal,
+                new RewardGenerator<ItemRarity>(
+                    new[] { ItemRarity.Common, ItemRarity.Uncommon }, new[] { 33, 67 })
+            },
+            {
+                ChestQuality.Silver,
+                new RewardGenerator<ItemRarity>(
+                    new[] { ItemRarity.Uncommon, ItemRarity.Rare, ItemRarity.Legendary }, new[] { 40, 50, 10 })
+            },
+            {
+                ChestQuality.Gold,
+                new RewardGenerator<ItemRarity>(
+                    new[] { ItemRarity.Rare, ItemRarity.Legendary, ItemRarity.Mythical }, new[] { 40, 50, 10 })
+            },
+            {
+                ChestQuality.Adept,
+                new RewardGenerator<ItemRarity>(
+                    new[] { ItemRarity.Legendary, ItemRarity.Mythical }, new[] { 65, 35 })
+            }
+        };
+
         public static TimeSpan TimeToNextReset
         {
             get

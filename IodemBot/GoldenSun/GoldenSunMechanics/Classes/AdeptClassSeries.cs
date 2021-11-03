@@ -80,7 +80,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         // Dragoon: (100, 200, 400) People in Battle  (+0 for Solo, +3 for full party)
         // Samurai: (161, 666) Kills By UNLEASH or Melee Psynergy (i.e. Ragnarok). "Next" and "End" enemies don't count.
-        // Medium: (25, 66, 111) Revives 
+        // Medium: (25, 66, 111) Revives
         // Ranger: Solo Battles (100, 300, 500)
         // Ninja: Total Damage (222 222, 888 888, 1 111 111)
         // White Mage: Points Healed (222 222, 555 555)

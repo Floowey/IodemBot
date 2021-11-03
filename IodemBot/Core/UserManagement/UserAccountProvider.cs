@@ -9,6 +9,7 @@ namespace IodemBot.Core.UserManagement
     public static class UserAccountProvider
     {
         private static readonly IPersistentStorage<UserAccount> _persistentStorage;
+
         private static readonly Dictionary<Tuple<RankEnum, EndlessMode>, LeaderBoard> leaderBoards
             = new Dictionary<Tuple<RankEnum, EndlessMode>, LeaderBoard>();
 
@@ -22,13 +23,12 @@ namespace IodemBot.Core.UserManagement
                 {
                     leaderBoards.Add(new Tuple<RankEnum, EndlessMode>(rank, mode), new LeaderBoard(u => (ulong)(u.ServerStats.GetStreak(mode).GetEntry(rank).Item1 + u.ServerStatsTotal.GetStreak(mode).GetEntry(rank).Item1)));
                 }
-
             }
             leaderBoards.Add(new Tuple<RankEnum, EndlessMode>(RankEnum.Level, EndlessMode.Default), new LeaderBoard(u => u.TotalXP));
 
             foreach (var user in GetAllUsers())
             {
-                if(user == null)
+                if (user == null)
                 {
                     Console.WriteLine("User was null");
                     continue;
@@ -108,7 +108,7 @@ namespace IodemBot.Core.UserManagement
             public ulong this[ulong key]
             {
                 get => dict.FirstOrDefault(e => e.Key == key).Value;
-                set 
+                set
                 {
                     Remove(key);
                     dict.Add(new KeyValuePair<ulong, ulong>(key, value));
@@ -123,7 +123,8 @@ namespace IodemBot.Core.UserManagement
                     return dict.Select(e => e.Key).ToList();
                 }
             }
-            public ICollection<ulong> Values 
+
+            public ICollection<ulong> Values
             {
                 get
                 {
@@ -136,7 +137,7 @@ namespace IodemBot.Core.UserManagement
             {
                 return IndexOfKey(key);
             }
-    
+
             public int IndexOfKey(ulong key)
             {
                 Sort();
@@ -194,7 +195,7 @@ namespace IodemBot.Core.UserManagement
 
             public bool Remove(ulong key)
             {
-                return dict.RemoveAll(e => e.Key == key)>0;
+                return dict.RemoveAll(e => e.Key == key) > 0;
             }
 
             public bool Remove(KeyValuePair<ulong, ulong> item)
@@ -205,12 +206,13 @@ namespace IodemBot.Core.UserManagement
             public void Set(UserAccount user)
             {
                 var val = func.Invoke(user);
-                if(val > 0)
+                if (val > 0)
                 {
                     if (ContainsKey(user.ID))
                     {
                         this[user.ID] = val;
-                    } else
+                    }
+                    else
                     {
                         Add(user.ID, val);
                     }
@@ -225,12 +227,15 @@ namespace IodemBot.Core.UserManagement
                     {
                         value = this[key];
                         return true;
-                    } else
+                    }
+                    else
                     {
                         value = 0;
                         return false;
                     }
-                } catch (InvalidOperationException ioe){
+                }
+                catch (InvalidOperationException ioe)
+                {
                     Console.WriteLine(ioe);
                     value = 0;
                     return false;
@@ -243,6 +248,4 @@ namespace IodemBot.Core.UserManagement
             }
         }
     }
-
-
 }

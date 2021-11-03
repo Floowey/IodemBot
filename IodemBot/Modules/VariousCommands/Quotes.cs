@@ -8,7 +8,6 @@ namespace IodemBot.Modules
     {
         internal static readonly List<QuoteStruct> quoteList = new List<QuoteStruct>();
 
-
         public static void AddQuote(string name, string quote)
         {
             quoteList.Add(new QuoteStruct(name.ToLower(), quote));

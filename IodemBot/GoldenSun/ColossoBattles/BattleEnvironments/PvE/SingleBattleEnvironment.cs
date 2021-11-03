@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Discord;
-using Discord.WebSocket;
 using IodemBot.Core.Leveling;
 using IodemBot.Core.UserManagement;
 using IodemBot.Extensions;
@@ -168,6 +167,7 @@ namespace IodemBot.ColossoBattles
 
             await base.AddPlayer(user);
         }
+
         public override Task<(bool Success, string Message)> CanPlayerJoin(UserAccount user, Team team = Team.A)
         {
             var result = base.CanPlayerJoin(user, team);
@@ -215,7 +215,7 @@ namespace IodemBot.ColossoBattles
 
                 // If there was *no* mimic, add a counter weight
                 //var lurCapBonus = new[] { 16, 12, 10, 9, 8 };
-                var lurCapBonus = new[] { 12, 10, 9, 8, 7};
+                var lurCapBonus = new[] { 12, 10, 9, 8, 7 };
 
                 if (!Battle.TeamB.Any(f => f.Name.Contains("Mimic")))
                 {

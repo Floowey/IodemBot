@@ -4,7 +4,7 @@ using IodemBot.Extensions;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
-    class JupiterDjinnRequirement : IRequirement
+    internal class JupiterDjinnRequirement : IRequirement
     {
         public int Apply(UserAccount user)
         {

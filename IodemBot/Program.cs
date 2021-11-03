@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
+using IodemBot.ColossoBattles;
 using IodemBot.Core;
 using IodemBot.Discords.Services;
 using IodemBot.Extensions;
-using IodemBot.ColossoBattles;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace IodemBot
@@ -34,7 +34,6 @@ namespace IodemBot
 
         public async Task StartAsync()
         {
-
             if (string.IsNullOrEmpty(Config.bot.token))
             {
                 return;
@@ -49,7 +48,7 @@ namespace IodemBot
             client.UserLeft += Client_UserLeft;
             client.UserJoined += Client_UserJoined;
             client.GuildMemberUpdated += Client_GuildMemberUpdated;
-            
+
             await client.LoginAsync(TokenType.Bot, Config.bot.token);
             await client.StartAsync();
 
@@ -61,7 +60,7 @@ namespace IodemBot
             await Task.Delay(-1);
         }
 
-        private async Task Client_GuildMemberUpdated(Cacheable<SocketGuildUser,ulong> before, SocketGuildUser user)
+        private async Task Client_GuildMemberUpdated(Cacheable<SocketGuildUser, ulong> before, SocketGuildUser user)
         {
             var guild = GuildSettings.GetGuildSettings(user.Guild);
             var user_before = before.Value;
@@ -72,7 +71,7 @@ namespace IodemBot
                     .SendMessageAsync($"{user.Mention} changed Nickname from {user_before.DisplayName()} to {user.DisplayName()}");
             }
 
-            if(user_before.IsPending == true && user.IsPending == false)
+            if (user_before.IsPending == true && user.IsPending == false)
             {
                 if (GuildSettings.GetGuildSettings(user.Guild).sendWelcomeMessage)
                 {
@@ -84,7 +83,7 @@ namespace IodemBot
                 }
             }
 
-            if(user_before.PremiumSince.HasValue != user.PremiumSince.HasValue)
+            if (user_before.PremiumSince.HasValue != user.PremiumSince.HasValue)
             {
                 var isBoosting = user.PremiumSince.HasValue;
                 _ = guild.TestCommandChannel
@@ -116,8 +115,6 @@ namespace IodemBot
 
         private async Task Client_UserJoined(SocketGuildUser user)
         {
-            
-
             _ = GuildSettings.GetGuildSettings(user.Guild).TestCommandChannel.SendMessageAsync(embed:
                 new EmbedBuilder()
                 .WithAuthor(user)
@@ -144,7 +141,6 @@ namespace IodemBot
             if (channel != null && (DateTime.Now - Global.RunningSince).TotalSeconds < 15)
             {
                 await channel.SendMessageAsync($"Hello, I am back up.\nOS: {Environment.OSVersion}\nBuild Time: {File.GetLastWriteTime(Assembly.GetExecutingAssembly().Location)}");
-                
             }
             await client.SetStatusAsync(UserStatus.Idle);
             Global.UpSince = DateTime.UtcNow;
@@ -173,6 +169,7 @@ namespace IodemBot
             }
             await Task.CompletedTask;
         }
+
         private ServiceProvider ConfigureServices()
         {
             return new ServiceCollection()
@@ -194,5 +191,4 @@ namespace IodemBot
                 .BuildServiceProvider();
         }
     }
-
 }

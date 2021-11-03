@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Discord;
 using Discord.Net;
@@ -21,6 +20,7 @@ namespace IodemBot.ColossoBattles
         private readonly List<BattleEnvironment> battles = new List<BattleEnvironment>();
         private readonly Dictionary<SocketGuildUser, DateTime> FighterRoles = new Dictionary<SocketGuildUser, DateTime>();
         private int NumberOfBattles => battles.Count;
+
         public ColossoBattleService(IServiceProvider services)
         {
             _services = services;
@@ -143,13 +143,16 @@ namespace IodemBot.ColossoBattles
             {
                 case RoomVisibility.All:
                     break;
+
                 case RoomVisibility.TeamA:
                     _ = channel.AddPermissionOverwriteAsync(teamB, new OverwritePermissions(viewChannel: PermValue.Deny));
                     break;
+
                 case RoomVisibility.TeamB:
                     _ = channel.AddPermissionOverwriteAsync(teamB, new OverwritePermissions(viewChannel: PermValue.Allow));
                     _ = channel.AddPermissionOverwriteAsync(guild.EveryoneRole, new OverwritePermissions(viewChannel: PermValue.Deny, sendMessages: PermValue.Deny));
                     break;
+
                 case RoomVisibility.Private:
                     _ = channel.AddPermissionOverwriteAsync(teamB, new OverwritePermissions(viewChannel: PermValue.Deny));
                     _ = channel.AddPermissionOverwriteAsync(guild.EveryoneRole, new OverwritePermissions(viewChannel: PermValue.Deny));

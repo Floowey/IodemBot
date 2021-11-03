@@ -7,7 +7,6 @@ using Newtonsoft.Json;
 
 namespace IodemBot.Core.UserManagement
 {
-
     public class UserAccount : IEquatable<UserAccount>
     {
         public static readonly ulong[][] rates = new ulong[][] {
@@ -17,6 +16,7 @@ namespace IodemBot.Core.UserManagement
                     new ulong[]{ 125000, 200, 50 },
                     new ulong[]{ 0, 50, 0 }
         };
+
         public ulong ID { get; set; }
         public string Name { get => HiddenName; set => HiddenName = value.RemoveBadChars(); }
         [JsonProperty] private string HiddenName { get; set; }
@@ -40,6 +40,7 @@ namespace IodemBot.Core.UserManagement
                 return AdeptClassSeriesManager.GetClass(this).Name; //GoldenSun.getClass(element, LevelNumber, (uint) classToggle);
             }
         }
+
         public DateTime LastXP { get; set; }
 
         [JsonIgnore]
@@ -63,6 +64,7 @@ namespace IodemBot.Core.UserManagement
                 return Math.Max(1, curLevel);
             }
         }
+
         [JsonIgnore]
         public ulong XPneeded
         {
@@ -86,6 +88,7 @@ namespace IodemBot.Core.UserManagement
                 return xpneeded - XP;
             }
         }
+
         public bool arePublicCodes { get; set; } = false;
         public string N3DSCode { get; set; } = "0000-0000-0000";
         public int NewGames { get; set; } = 0;
@@ -103,10 +106,12 @@ namespace IodemBot.Core.UserManagement
         public BattleStats BattleStats { get; set; } = new BattleStats();
         public BattleStats BattleStatsTotal { get; set; } = new BattleStats();
         public string ImgUrl { get; set; }
+
         public void AddXp(ulong xp)
         {
             XP += (ulong)(xp * XpBoost);
         }
+
         public void NewGame()
         {
             XpBoost *= 1 + 0.1 * (1 - Math.Exp(-(double)XP / 120000));
@@ -171,6 +176,7 @@ namespace IodemBot.Core.UserManagement
             Tags.Add($"{Element}Adept");
             NewGames++;
         }
+
         public bool Equals([AllowNull] UserAccount other)
         {
             if (other == null)
@@ -248,6 +254,7 @@ namespace IodemBot.Core.UserManagement
                 _ => null,
             };
         }
+
         public void AddStreak(int streak, int players = 1, string Names = "")
         {
             switch (players)
@@ -279,10 +286,10 @@ namespace IodemBot.Core.UserManagement
                         QuadNames = Names;
                     }
                     break;
+
                 default: break;
             }
         }
-
 
         public static EndlessStreak operator +(EndlessStreak s1, EndlessStreak s2)
         {
@@ -345,5 +352,4 @@ namespace IodemBot.Core.UserManagement
             };
         }
     }
-
 }

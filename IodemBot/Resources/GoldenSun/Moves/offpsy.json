@@ -2556,7 +2556,7 @@
     "element": 1,
     "PPCost": 37,
     "power": 250
-  }, 
+  },
   "Dragon Driver": {
     "name": "Dragon Driver",
     "TargetType": "EnemyRange",
@@ -2711,7 +2711,7 @@
     "element": 1,
     "PPCost": 0,
     "addDamage": 110
-  }, 
+  },
   "Flash Punch": {
     "name": "Flash Punch",
     "TargetType": "EnemyRange",

@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
-using IodemBot.Preconditions;
 using IodemBot.Core.UserManagement;
 using IodemBot.Extensions;
+using IodemBot.Preconditions;
 
 namespace IodemBot.Modules
 {
@@ -33,7 +33,6 @@ namespace IodemBot.Modules
         [Summary("Pong")]
         public async Task PingCommand()
         {
-            
             _ = PingAsync(IIodemCommandContext.GetContext(Context));
             await Task.CompletedTask;
         }
@@ -152,7 +151,7 @@ namespace IodemBot.Modules
             await Global.Owner?.SendMessageAsync($"{Context.User.Mention} reports: {bugreport}");
 
             ISocketMessageChannel guard_channel = Global.Client.GetGuild(355558866282348574)?.GetTextChannel(535209634408169492);
-            if(guard_channel != null)
+            if (guard_channel != null)
             {
                 await guard_channel.SendMessageAsync($"{Context.User.Mention} reports: {bugreport}");
             }
@@ -257,8 +256,6 @@ namespace IodemBot.Modules
             .Build());
         }
 
-        
-
         [Command("rank"), Alias("top", "top10")]
         [Cooldown(5)]
         [Summary("Get the most active users and your rank")]
@@ -338,7 +335,7 @@ namespace IodemBot.Modules
 
             //Console.WriteLine(rank);
             var account = EntityConverter.ConvertUser(Context.User);
-            var rank = UserAccounts.GetRank(account, type, mode );
+            var rank = UserAccounts.GetRank(account, type, mode);
             if (rank >= 5)
             {
                 builder.Append("... \n");
@@ -412,7 +409,6 @@ namespace IodemBot.Modules
             await Context.Channel.SendMessageAsync(embed: embed.Build());
         }
 
-        
         [Command("sprite"), Alias("portrait")]
         [Summary("Get a random sprite or one of a given Character")]
         [Cooldown(5)]
@@ -436,6 +432,7 @@ namespace IodemBot.Modules
 
             await Context.Channel.SendMessageAsync("", false, embed.Build());
         }
+
         [Command("quote"), Alias("q")]
         [Cooldown(10)]
         [Summary("Get a random quote. Add a name to get a quote from that character")]

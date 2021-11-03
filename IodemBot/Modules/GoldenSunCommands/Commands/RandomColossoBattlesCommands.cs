@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.IO;
-using System.Threading.Tasks;
 using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
@@ -36,8 +35,6 @@ namespace IodemBot.Modules
             }
             return embed.Build();
         }
-
-       
 
         private static string GetText(SocketUser user, Matchup m)
         {
@@ -118,7 +115,5 @@ namespace IodemBot.Modules
             string jsonR = JsonConvert.SerializeObject(results, Formatting.Indented);
             File.WriteAllText("SystemLang/results.json", jsonR);
         }
-
-       
     }
 }

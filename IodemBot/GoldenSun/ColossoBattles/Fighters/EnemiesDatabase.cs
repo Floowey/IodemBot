@@ -124,7 +124,6 @@ namespace IodemBot.ColossoBattles
                     {
                         clone.EquipmentWithEffect.Add(new Item() { Unleash = new Unleash() { Effects = new List<Effect>() { new ConditionEffect() { Condition = c } } }, ChanceToActivate = 100, ChanceToBreak = 0 });
                     }
-
                 }
                 return clone;
             }
@@ -134,7 +133,6 @@ namespace IodemBot.ColossoBattles
                 var clone = (NPCEnemy)trapEnemy.Clone();
                 clone.Name = enemyKey.Split(':').Last();
                 return clone;
-
             }
             else
             {

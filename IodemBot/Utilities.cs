@@ -16,7 +16,6 @@ namespace IodemBot
             alerts = data.ToObject<Dictionary<string, string>>();
         }
 
-
         public static string GetFormattedAlert(string key, params object[] parameter)
         {
             if (alerts.ContainsKey(key))

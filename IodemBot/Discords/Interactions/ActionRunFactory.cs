@@ -1,4 +1,7 @@
-﻿using Discord;
+﻿using System;
+using System.Linq;
+using System.Threading.Tasks;
+using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
 using IodemBot.Discords.Actions;
@@ -6,11 +9,6 @@ using IodemBot.Discords.Actions.Attributes;
 using IodemBot.Discords.Contexts;
 using IodemBot.Discords.Services;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace IodemBot.Discords
 {
@@ -40,7 +38,6 @@ namespace IodemBot.Discords
         public static ActionRunFactory Find(IServiceProvider services, RequestContext context, CommandInfo commandInfo, object[] parmValues) => new ActionTextRunFactory(services, context, commandInfo, parmValues);
     }
 
-
     public abstract class ActionRunFactory<TInteraction, TAction> : ActionRunFactory where TInteraction : class where TAction : BotAction
     {
         protected TInteraction _interaction;
@@ -60,7 +57,9 @@ namespace IodemBot.Discords
         protected abstract string InteractionNameForLog { get; }
 
         protected abstract TAction GetAction();
+
         protected abstract Task PopulateParametersAsync(TAction action);
+
         protected abstract Task RunActionAsync(TAction action);
 
         public override async Task RunActionAsync()
@@ -161,7 +160,9 @@ namespace IodemBot.Discords
     {
         protected override string InteractionNameForLog => _interaction.Data.Name;
 
-        public ActionSlashRunFactory(IServiceProvider services, RequestContext context, SocketSlashCommand interaction) : base(services, context, interaction) { }
+        public ActionSlashRunFactory(IServiceProvider services, RequestContext context, SocketSlashCommand interaction) : base(services, context, interaction)
+        {
+        }
 
         protected override BotCommandAction GetAction() => _actionService.GetAll().OfType<BotCommandAction>().FirstOrDefault(a => a.SlashCommandProperties != null && a.SlashCommandProperties.Name == _interaction.Data.Name);
 
@@ -181,7 +182,9 @@ namespace IodemBot.Discords
     {
         protected override string InteractionNameForLog => _interaction.Data.Name;
 
-        public ActionMessageRunFactory(IServiceProvider services, RequestContext context, SocketMessageCommand interaction) : base(services, context, interaction) { }
+        public ActionMessageRunFactory(IServiceProvider services, RequestContext context, SocketMessageCommand interaction) : base(services, context, interaction)
+        {
+        }
 
         protected override BotCommandAction GetAction() => _actionService.GetAll().OfType<BotCommandAction>().FirstOrDefault(a => a.MessageCommandProperties != null && a.MessageCommandProperties.Name == _interaction.Data.Name);
 
@@ -201,7 +204,9 @@ namespace IodemBot.Discords
     {
         protected override string InteractionNameForLog => _interaction.Data.Name;
 
-        public ActionUserRunFactory(IServiceProvider services, RequestContext context, SocketUserCommand interaction) : base(services, context, interaction) { }
+        public ActionUserRunFactory(IServiceProvider services, RequestContext context, SocketUserCommand interaction) : base(services, context, interaction)
+        {
+        }
 
         protected override BotCommandAction GetAction() => _actionService.GetAll().OfType<BotCommandAction>().FirstOrDefault(a => a.UserCommandProperties != null && a.UserCommandProperties.Name == _interaction.Data.Name);
 
@@ -219,9 +224,9 @@ namespace IodemBot.Discords
 
     public class ActionRefreshRunFactory : ActionRunFactory<SocketMessageComponent, BotCommandAction>
     {
-        readonly string _commandTypeName;
-        readonly object[] _idOptions;
-        readonly bool _intoNew = false;
+        private readonly string _commandTypeName;
+        private readonly object[] _idOptions;
+        private readonly bool _intoNew = false;
 
         protected override string InteractionNameForLog => _interaction.Data.CustomId;
 
@@ -274,8 +279,8 @@ namespace IodemBot.Discords
 
     public class ActionComponentRunFactory : ActionRunFactory<SocketMessageComponent, BotComponentAction>
     {
-        readonly string _commandTypeName;
-        readonly object[] _idOptions;
+        private readonly string _commandTypeName;
+        private readonly object[] _idOptions;
 
         protected override string InteractionNameForLog => _interaction.Data.CustomId;
 
@@ -306,11 +311,14 @@ namespace IodemBot.Discords
 
     public class ActionTextRunFactory : ActionRunFactory<CommandInfo, BotCommandAction>
     {
-        readonly object[] _parmValues;
-        ActionTextCommandProperties _textProperties;
+        private readonly object[] _parmValues;
+        private ActionTextCommandProperties _textProperties;
         protected override string InteractionNameForLog => _interaction.Name;
 
-        public ActionTextRunFactory(IServiceProvider services, RequestContext context, CommandInfo commandInfo, object[] parmValues) : base(services, context, commandInfo) { _parmValues = parmValues; }
+        public ActionTextRunFactory(IServiceProvider services, RequestContext context, CommandInfo commandInfo, object[] parmValues) : base(services, context, commandInfo)
+        {
+            _parmValues = parmValues;
+        }
 
         protected override BotCommandAction GetAction()
         {

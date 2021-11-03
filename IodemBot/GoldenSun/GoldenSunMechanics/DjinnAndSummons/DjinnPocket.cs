@@ -20,12 +20,14 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
             set { Djinn = value?.Select(s => DjinnAndSummonsDatabase.TryGetDjinn(s, out Djinn dj) ? dj : null).Where(c => c != null).ToList() ?? new List<Djinn>(); }
         }
+
         public List<SummonHolder> SummonStorage
         {
             get { return Summons.Count == 0 ? null : Summons?.Select(d => new SummonHolder() { Summon = d.Name }).ToList(); }
 
             set { Summons = value?.Select(s => DjinnAndSummonsDatabase.TryGetSummon(s.Summon, out Summon sum) ? sum : null).Where(c => c != null).ToList() ?? new List<Summon>(); }
         }
+
         public List<Element> DjinnSetup { get; set; } = new List<Element>();
         public int PocketUpgrades { get; set; } = 0;
         [JsonIgnore] public int PocketSize { get => Math.Min(70, BasePocketSize + PocketUpgrades * 2) + Djinn.Count(d => d.IsEvent); }
@@ -62,7 +64,6 @@ namespace IodemBot.Modules.GoldenSunMechanics
                     }
                     djinns.AddRange(selected);
                     Added.AddRange(selected);
-                    
                 }
             }
             return djinns;
@@ -93,7 +94,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public bool AddDjinn(Djinn newDjinn)
         {
             var djinnOfElement = Djinn.GroupBy(d => d.Element).Select(s => s.Count()).ToArray();
-            if(newDjinn.IsEvent && Djinn.Any(d => d.Djinnname == newDjinn.Djinnname)){
+            if (newDjinn.IsEvent && Djinn.Any(d => d.Djinnname == newDjinn.Djinnname))
+            {
                 return true;
             }
             //var minDjinn = 0;
@@ -106,6 +108,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             }
             return false;
         }
+
         public Djinn GetDjinn(string DjinnName)
         {
             Djinn d = null;
@@ -115,6 +118,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             d ??= list.FirstOrDefault(d => DjinnName.Equals(d.Nickname, StringComparison.CurrentCultureIgnoreCase));
             return d;
         }
+
         public void AddSummon(Summon newSummon)
         {
             Summons.Add(newSummon);
@@ -125,6 +129,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 .ThenBy(s => s.VenusNeeded)
                 .ToList();
         }
+
         public void Clear()
         {
             Djinn.RemoveAll(d => !(d.IsShiny || d.IsEvent));

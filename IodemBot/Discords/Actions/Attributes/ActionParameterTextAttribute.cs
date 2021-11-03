@@ -13,8 +13,10 @@ namespace IodemBot.Discords.Actions.Attributes
         public bool IsMultiple { get; set; }
         public bool IsRemainder { get; set; }
         public object DefaultValue { get; set; }
+
         //public TypeReader TypeReader { get; set; }
         public Type ParameterType { get; set; }
+
         public bool Required { get; set; } = false;
     }
 }

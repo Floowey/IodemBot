@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
-using IodemBot.Preconditions;
-using IodemBot.Core.UserManagement;
 using IodemBot.ColossoBattles;
+using IodemBot.Core.UserManagement;
+using IodemBot.Preconditions;
 using Newtonsoft.Json;
 
 namespace IodemBot.Modules
@@ -77,7 +77,7 @@ namespace IodemBot.Modules
                 Console.WriteLine($"{user.Name} registered");
 
                 var elRole = gm.Roles.FirstOrDefault(r => r.Name.Contains("Adepts"));
-                if(elRole != null && user.Element == Element.none)
+                if (elRole != null && user.Element == Element.none)
                 {
                     var chosenElement = new[] { Element.Venus, Element.Mars, Element.Jupiter, Element.Mercury }
                         .First(e => elRole.Name.Contains(e.ToString()));
@@ -129,7 +129,6 @@ namespace IodemBot.Modules
                 process.WaitForExit();
                 Console.WriteLine("This shouldn't be reached but did.");
                 return;
-
             }
         }
 
@@ -151,7 +150,6 @@ namespace IodemBot.Modules
                 Process process = Process.Start(ps);
                 process.WaitForExit();
                 return;
-
             }
         }
 
@@ -183,12 +181,11 @@ namespace IodemBot.Modules
         {
             var avatar = EntityConverter.ConvertUser(user);
             var tags = string.Join(", ", avatar.Tags);
-            while(tags.Length > 0)
+            while (tags.Length > 0)
             {
                 await ReplyAsync(tags.Substring(0, 2000));
                 tags = tags[2000..];
             }
-
         }
 
         [Command("CleanupTags")]
@@ -259,7 +256,7 @@ namespace IodemBot.Modules
         public async Task GetUserFile(SocketUser user = null)
         {
             user ??= Context.User;
-            await Context.Channel.SendFileAsync($"Resources/Accounts/BackupAccountFiles/{user.Id}.json");    
+            await Context.Channel.SendFileAsync($"Resources/Accounts/BackupAccountFiles/{user.Id}.json");
         }
 
         [Command("PutUserFile")]
@@ -300,7 +297,6 @@ namespace IodemBot.Modules
             }
 
             await Context.Channel.SendMessageAsync(s);
-
         }
     }
 }

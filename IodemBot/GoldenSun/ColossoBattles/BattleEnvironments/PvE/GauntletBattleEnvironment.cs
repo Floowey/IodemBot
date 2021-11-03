@@ -3,13 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Discord;
-using Discord.WebSocket;
 using IodemBot.Core.Leveling;
 using IodemBot.Core.UserManagement;
 using IodemBot.Extensions;
 using IodemBot.Modules.GoldenSunMechanics;
 using static IodemBot.ColossoBattles.EnemiesDatabase;
-
 
 namespace IodemBot.ColossoBattles
 {
@@ -124,6 +122,7 @@ namespace IodemBot.ColossoBattles
 
             return result;
         }
+
         protected override string GetEnemyMessageString()
         {
             return $"Welcome to {Dungeon.Name}!\n{Dungeon?.FlavourText}";
@@ -173,7 +172,7 @@ namespace IodemBot.ColossoBattles
                 {
                     winners.OfType<PlayerFighter>().ToList().ForEach(p => _ = ServerGames.UserWonDungeon(UserAccountProvider.GetById(p.Id), Dungeon, lobbyChannel));
 
-                    if (DateTime.Now <= new DateTime(2021, 11, 8) && Global.RandomNumber(0,5) == 0)
+                    if (DateTime.Now <= new DateTime(2021, 11, 8) && Global.RandomNumber(0, 5) == 0)
                     {
                         var r = new List<Rewardable>() { new DefaultReward() { Dungeon = "Halloween Special" } };
                         winners.OfType<PlayerFighter>().ToList().ForEach(p => _ = ServerGames.UserWonBattle(UserAccountProvider.GetById(p.Id), r, new BattleStats(), lobbyChannel, BattleChannel));
@@ -186,7 +185,6 @@ namespace IodemBot.ColossoBattles
             {
                 var losers = winners.First().battle.GetTeam(winners.First().enemies);
 
-                
                 losers.ConvertAll(s => (PlayerFighter)s).ForEach(p => _ = ServerGames.UserLostBattle(UserAccountProvider.GetById(p.Id), lobbyChannel));
 
                 _ = WriteGameOver();

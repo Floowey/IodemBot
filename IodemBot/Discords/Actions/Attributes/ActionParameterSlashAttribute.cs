@@ -1,5 +1,5 @@
-﻿using Discord;
-using System;
+﻿using System;
+using Discord;
 
 namespace IodemBot.Discords.Actions.Attributes
 {

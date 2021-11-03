@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Discord;
 using IodemBot.Core.UserManagement;
@@ -41,6 +40,7 @@ namespace IodemBot.Modules
                 return Task.CompletedTask;
             }
         };
+
         public async Task RefreshAsync(bool intoNew, MessageProperties msgProps)
         {
             var user = EntityConverter.ConvertUser(Context.User);
@@ -99,7 +99,7 @@ namespace IodemBot.Modules
             bool labels = user.Preferences.ShowButtonLabels;
             var moneyneeded = (uint)(djinnPocket.PocketUpgrades + 1) * 3000;
             builder.WithButton(labels ? "Status" : null, $"#{nameof(StatusAction)}", style: ButtonStyle.Primary, emote: Emotes.GetEmote("StatusAction"));
-            builder.WithButton(labels ? "Upgrade" : null, $"{nameof(UpgradeDjinnAction)}", style: ButtonStyle.Success, disabled:!user.Inv.HasBalance(moneyneeded), emote: Emotes.GetEmote("UpgradeDjinnAction"));
+            builder.WithButton(labels ? "Upgrade" : null, $"{nameof(UpgradeDjinnAction)}", style: ButtonStyle.Success, disabled: !user.Inv.HasBalance(moneyneeded), emote: Emotes.GetEmote("UpgradeDjinnAction"));
             if (detail == DjinnDetail.None)
                 builder.WithButton(labels ? "Show Names" : null, $"#{nameof(DjinnAction)}.Names", ButtonStyle.Secondary, Emotes.GetEmote("LabelsOn"), row: 0);
             else
@@ -114,10 +114,10 @@ namespace IodemBot.Modules
                     var isSelected = false;// djinnPocket.GetDjinns().Any(d => d.Name == djinn.Name);
                     var desc = djinn.Name != djinn.Djinnname ? djinn.Djinnname : null;
                     if (!options.Any(o => o.Value.Equals(djinn.Name)))
-                        options.Add(new() { Label = djinn.Name, Value = djinn.Name, Description= desc, Emote = djinn.GetEmote(), IsDefault=isSelected });
+                        options.Add(new() { Label = djinn.Name, Value = djinn.Name, Description = desc, Emote = djinn.GetEmote(), IsDefault = isSelected });
                 }
-                if(options.Count>0)
-                    builder.WithSelectMenu($"#{nameof(DjinnEquipAction)}.{element}", options, maxValues: Math.Min(options.Count,2));
+                if (options.Count > 0)
+                    builder.WithSelectMenu($"#{nameof(DjinnEquipAction)}.{element}", options, maxValues: Math.Min(options.Count, 2));
             }
             return builder.Build();
         }
@@ -149,12 +149,11 @@ namespace IodemBot.Modules
             Description = "Select one or two djinn to take with you",
             FillParametersAsync = options =>
             {
-                if(options != null && options.Any())
+                if (options != null && options.Any())
                 {
                     FirstDjinn = (string)options.FirstOrDefault().Value;
-                    if(options.Count() > 1)
-                        SecondDjinn= (string)options.ElementAt(1).Value;
-
+                    if (options.Count() > 1)
+                        SecondDjinn = (string)options.ElementAt(1).Value;
 
                     if (!FirstDjinn.IsNullOrEmpty())
                         SelectedDjinn.Add(FirstDjinn);
@@ -177,6 +176,7 @@ namespace IodemBot.Modules
                 return Task.CompletedTask;
             }
         };
+
         public async Task RefreshAsync(bool intoNew, MessageProperties msgProps)
         {
             EquipDjinn();
@@ -238,6 +238,7 @@ namespace IodemBot.Modules
             _ = UpgradeDjinn();
             await Task.CompletedTask;
         }
+
         private async Task UpgradeDjinn()
         {
             var account = EntityConverter.ConvertUser(Context.User);
@@ -257,6 +258,7 @@ namespace IodemBot.Modules
                 await Context.ReplyWithMessageAsync(EphemeralRule, "Successfully upgraded djinn pocket.");
             }
         }
+
         protected override Task<(bool Success, string Message)> CheckCustomPreconditionsAsync()
         {
             var guildResult = IsGameCommandAllowedInGuild();
@@ -267,7 +269,7 @@ namespace IodemBot.Modules
             var account = EntityConverter.ConvertUser(user);
             var djinnPocket = account.DjinnPocket;
             var moneyneeded = (uint)(djinnPocket.PocketUpgrades + 1) * 3000; ;
-            if (djinnPocket.PocketSize>= 70)
+            if (djinnPocket.PocketSize >= 70)
                 return Task.FromResult((false, "Max upgrades reached"));
 
             if (!account.Inv.HasBalance(moneyneeded))
@@ -288,12 +290,13 @@ namespace IodemBot.Modules
             UserAccountProvider.StoreUser(account);
             await Context.ReplyWithMessageAsync(EphemeralRule, $"Renamed {djinn.Emote} {djinn.Djinnname} to {NewName}");
         }
+
         [ActionParameterSlash(Order = 0, Name = "djinn", Description = "The djinn to rename", Required = true, Type = ApplicationCommandOptionType.String)]
         public string DjinnToRename { get; set; }
 
         [ActionParameterSlash(Order = 1, Name = "name", Description = "The name to rename it to", Required = false, Type = ApplicationCommandOptionType.String)]
-
         public string NewName { get; set; }
+
         public override ActionGlobalSlashCommandProperties SlashCommandProperties => new()
         {
             Name = "renamedjinn",
@@ -316,7 +319,7 @@ namespace IodemBot.Modules
                 return Task.FromResult(guildResult);
 
             var djinn = EntityConverter.ConvertUser(Context.User).DjinnPocket.GetDjinn(DjinnToRename);
-            if (djinn== null)
+            if (djinn == null)
                 return Task.FromResult((false, "Couldn't find that djinn in your djinn pocket"));
 
             if (string.IsNullOrWhiteSpace(NewName))

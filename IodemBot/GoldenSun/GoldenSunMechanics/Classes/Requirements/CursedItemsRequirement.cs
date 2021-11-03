@@ -3,7 +3,7 @@ using IodemBot.Core.UserManagement;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
-    class CursedItemsRequirement : IRequirement
+    internal class CursedItemsRequirement : IRequirement
     {
         public int Apply(UserAccount user)
         {

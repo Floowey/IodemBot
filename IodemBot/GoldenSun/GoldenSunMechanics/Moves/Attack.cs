@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using IodemBot.Extensions;
 using IodemBot.ColossoBattles;
+using IodemBot.Extensions;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
@@ -138,7 +138,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
             damage = (uint)(damage * elMult);
             damage = (uint)(damage * enemy.defensiveMult);
-            damage = (uint) Math.Max(enemy.defensiveMult <= 0 ? 0 : 1, damage);
+            damage = (uint)Math.Max(enemy.defensiveMult <= 0 ? 0 : 1, damage);
 
             log.AddRange(enemy.DealDamage(damage, punctuation));
 

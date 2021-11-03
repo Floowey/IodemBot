@@ -32,12 +32,15 @@ namespace IodemBot.ColossoBattles
         private ColossoBattleService BattleService { get; set; }
         internal abstract ulong[] ChannelIds { get; }
 
-        public PlayerFighter GetPlayer(ulong playerID) => 
+        public PlayerFighter GetPlayer(ulong playerID) =>
             Battle.TeamA.Concat(Battle.TeamB).OfType<PlayerFighter>().FirstOrDefault(p => p.Id == playerID);
 
         public abstract Task AddPlayer(PlayerFighter player, Team team = Team.A);
+
         public abstract Task AddPlayer(UserAccount user, Team team = Team.A);
+
         public abstract Task<(bool Success, string Message)> CanPlayerJoin(UserAccount user, Team team = Team.A);
+
         public abstract bool IsUsersMessage(PlayerFighter player, IUserMessage message);
 
         public BattleEnvironment(ColossoBattleService BattleService, string Name = null, ITextChannel lobbyChannel = null, bool IsPersistent = true)

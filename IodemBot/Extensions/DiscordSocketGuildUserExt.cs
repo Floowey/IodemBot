@@ -1,4 +1,5 @@
 ﻿using Discord.WebSocket;
+
 namespace IodemBot.Extensions
 {
     public static class DiscordSocketGuildUserExt

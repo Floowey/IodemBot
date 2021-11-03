@@ -1,11 +1,8 @@
-﻿using Discord;
-using Discord.Commands.Builders;
-using Discord.WebSocket;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Threading.Tasks;
+using Discord.WebSocket;
 
-namespace IodemBot.Discords.Actions 
+namespace IodemBot.Discords.Actions
 {
     public interface IActionMessageCommandProperties
     {

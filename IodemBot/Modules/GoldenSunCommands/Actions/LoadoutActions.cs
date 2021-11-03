@@ -1,25 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Discord;
-using Discord.Net;
-using Discord.Rest;
-using Discord.WebSocket;
 using IodemBot.Core.UserManagement;
 using IodemBot.Discords;
 using IodemBot.Discords.Actions;
 using IodemBot.Discords.Actions.Attributes;
-using IodemBot.Discords.Contexts;
 using IodemBot.Extensions;
-using IodemBot.Modules.GoldenSunMechanics;
 
 namespace IodemBot.Modules
 {
     public class LoadoutAction : IodemBotCommandAction
     {
         public override bool GuildsOnly => true;
+
         public override async Task RunAsync()
         {
             var account = EntityConverter.ConvertUser(Context.User);
@@ -32,11 +26,13 @@ namespace IodemBot.Modules
             FillParametersAsync = null,
             RefreshAsync = RefreshAsync
         };
+
         public override ActionGlobalSlashCommandProperties SlashCommandProperties => new()
         {
             Name = "loadouts",
             Description = "View and change your complete loadout."
         };
+
         public async Task RefreshAsync(bool intoNew, MessageProperties msgProps)
         {
             var account = EntityConverter.ConvertUser(Context.User);
@@ -81,9 +77,9 @@ namespace IodemBot.Modules
         {
             var builder = new ComponentBuilder();
             var labels = account.Preferences.ShowButtonLabels;
-            builder.WithButton(labels?"Status":null, customId: $"#{nameof(StatusAction)}", style: ButtonStyle.Primary, emote: Emotes.GetEmote("StatusAction"));
-            builder.WithButton(labels?"Classes":null, $"#{nameof(ClassAction)}", style: ButtonStyle.Primary, emote: Emotes.GetEmote("ClassAction"));
-            builder.WithButton(labels?"Save current Loadout":null, $"#{nameof(LoadoutSaveAction)}", style: ButtonStyle.Primary, emote: Emotes.GetEmote("SaveLoadoutAction"));
+            builder.WithButton(labels ? "Status" : null, customId: $"#{nameof(StatusAction)}", style: ButtonStyle.Primary, emote: Emotes.GetEmote("StatusAction"));
+            builder.WithButton(labels ? "Classes" : null, $"#{nameof(ClassAction)}", style: ButtonStyle.Primary, emote: Emotes.GetEmote("ClassAction"));
+            builder.WithButton(labels ? "Save current Loadout" : null, $"#{nameof(LoadoutSaveAction)}", style: ButtonStyle.Primary, emote: Emotes.GetEmote("SaveLoadoutAction"));
             List<SelectMenuOptionBuilder> options = new();
 
             if (account.Loadouts.loadouts.Count == 0)
@@ -98,6 +94,7 @@ namespace IodemBot.Modules
 
             return builder.Build();
         }
+
         protected override Task<(bool Success, string Message)> CheckCustomPreconditionsAsync()
         {
             var guildResult = IsGameCommandAllowedInGuild();
@@ -112,6 +109,7 @@ namespace IodemBot.Modules
     {
         [ActionParameterComponent(Order = 0, Name = "Loadout", Description = "Loadout", Required = false)]
         public string SelectedLoadout { get; set; }
+
         public override EphemeralRule EphemeralRule => EphemeralRule.EphemeralOrFail;
 
         public override bool GuildsOnly => true;
@@ -126,6 +124,7 @@ namespace IodemBot.Modules
 
             return SuccessFullResult;
         }
+
         public override async Task FillParametersAsync(string[] selectOptions, object[] idOptions)
         {
             if (selectOptions != null && selectOptions.Any())
@@ -152,6 +151,7 @@ namespace IodemBot.Modules
             await Task.CompletedTask;
         }
     }
+
     public class LoadoutSaveAction : IodemBotCommandAction
     {
         public override EphemeralRule EphemeralRule => EphemeralRule.EphemeralOrFail;
@@ -168,6 +168,7 @@ namespace IodemBot.Modules
 
             return SuccessFullResult;
         }
+
         private static Dictionary<Element, string[]> Prompts = new()
         {
             { Element.none, new[] { "Boring" } },
@@ -176,6 +177,7 @@ namespace IodemBot.Modules
             { Element.Jupiter, new[] { "Sparky", "Windy", "Boony", "Thunderous", "Tempest", "Howling", "Blowing", "Air", "Jupiter" } },
             { Element.Mercury, new[] { "Flowing", "Freezing", "Snowy", "Oceanic", "Aqua", "Mercury", "Blue", "Raining" } }
         };
+
         public override async Task RunAsync()
         {
             var account = EntityConverter.ConvertUser(Context.User);

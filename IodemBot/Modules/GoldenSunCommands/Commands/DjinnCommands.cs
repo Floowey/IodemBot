@@ -4,9 +4,9 @@ using System.Threading.Tasks;
 using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
-using IodemBot.Preconditions;
 using IodemBot.Core.UserManagement;
 using IodemBot.Extensions;
+using IodemBot.Preconditions;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
@@ -106,7 +106,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
             foreach (Element e in new[] { Element.Venus, Element.Mars, Element.none, Element.Jupiter, Element.Mercury, Element.none })
             {
-                if(e == Element.none)
+                if (e == Element.none)
                 {
                     embed.AddField("\u200b", "\u200b", true);
                 }
@@ -136,14 +136,14 @@ namespace IodemBot.Modules.GoldenSunMechanics
             var djinnPocket = acc.DjinnPocket;
             var inv = acc.Inv;
             var price = (uint)(djinnPocket.PocketUpgrades + 1) * 3000;
-            if(djinnPocket.PocketSize >= 70)
+            if (djinnPocket.PocketSize >= 70)
             {
                 await ReplyAsync(embed: new EmbedBuilder()
                     .WithDescription($"Max Djinn pocket size reached")
                     .Build());
                 return;
             }
-        
+
             if (inv.RemoveBalance(price))
             {
                 djinnPocket.PocketUpgrades++;
@@ -291,6 +291,4 @@ namespace IodemBot.Modules.GoldenSunMechanics
             await DjinnInv(DjinnDetail.Names);
         }
     }
-
-    
 }

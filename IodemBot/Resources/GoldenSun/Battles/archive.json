@@ -1,232 +1,232 @@
 ﻿[
-    [
-        {
-            "name": "Earth Lizard 1",
-            "imgurl": "https://vignette.wikia.nocookie.net/goldensun/images/d/de/Earth_Lizard.png/revision/latest?cb=20080205202157",
-            "movepool": [
-                "Acid Breath",
-                "Clay Spire",
-                "Quake Sphere",
-                "Mother Gaia",
-                "Cure Well"
-            ],
-            "stats": {
-                "maxHP": 1550,
-                "maxPP": 48,
-                "Atk": 278,
-                "Def": 97,
-                "Spd": 102
-            },
-            "elstats": {
-                "VenusAtk": 120,
-                "VenusRes": 193,
-                "MarsAtk": 95,
-                "MarsRes": 100,
-                "JupiterAtk": 110,
-                "JupiterRes": 25,
-                "MercuryAtk": 140,
-                "MercuryRes": 100
-            }
-        },
-        {
-            "name": "Earth Lizard 2",
-            "imgurl": "",
-            "movepool": [
-                "Acid Breath",
-                "Clay Spire",
-                "Quake Sphere",
-                "Mother Gaia",
-                "Cure Well"
-            ],
-            "stats": {
-                "maxHP": 1550,
-                "maxPP": 48,
-                "Atk": 278,
-                "Def": 97,
-                "Spd": 102
-            },
-            "elstats": {
-                "VenusAtk": 120,
-                "VenusRes": 193,
-                "MarsAtk": 95,
-                "MarsRes": 100,
-                "JupiterAtk": 110,
-                "JupiterRes": 25,
-                "MercuryAtk": 110,
-                "MercuryRes": 100
-            }
-        }
-    ],
+  [
+    {
+      "name": "Earth Lizard 1",
+      "imgurl": "https://vignette.wikia.nocookie.net/goldensun/images/d/de/Earth_Lizard.png/revision/latest?cb=20080205202157",
+      "movepool": [
+        "Acid Breath",
+        "Clay Spire",
+        "Quake Sphere",
+        "Mother Gaia",
+        "Cure Well"
+      ],
+      "stats": {
+        "maxHP": 1550,
+        "maxPP": 48,
+        "Atk": 278,
+        "Def": 97,
+        "Spd": 102
+      },
+      "elstats": {
+        "VenusAtk": 120,
+        "VenusRes": 193,
+        "MarsAtk": 95,
+        "MarsRes": 100,
+        "JupiterAtk": 110,
+        "JupiterRes": 25,
+        "MercuryAtk": 140,
+        "MercuryRes": 100
+      }
+    },
+    {
+      "name": "Earth Lizard 2",
+      "imgurl": "",
+      "movepool": [
+        "Acid Breath",
+        "Clay Spire",
+        "Quake Sphere",
+        "Mother Gaia",
+        "Cure Well"
+      ],
+      "stats": {
+        "maxHP": 1550,
+        "maxPP": 48,
+        "Atk": 278,
+        "Def": 97,
+        "Spd": 102
+      },
+      "elstats": {
+        "VenusAtk": 120,
+        "VenusRes": 193,
+        "MarsAtk": 95,
+        "MarsRes": 100,
+        "JupiterAtk": 110,
+        "JupiterRes": 25,
+        "MercuryAtk": 110,
+        "MercuryRes": 100
+      }
+    }
+  ],
 
-    [
-        {
-            "name": "Thunder Lizard 1",
-            "imgurl": "https://vignette.wikia.nocookie.net/goldensun/images/c/cf/Poison_Toad.png/revision/latest?cb=20071119064119",
-            "movepool": [
-                "Storm Breath",
-                "Blue Bolt",
-                "Tempest"
-            ],
-            "stats": {
-                "maxHP": 750,
-                "maxPP": 55,
-                "Atk": 347,
-                "Def": 133,
-                "Spd": 134
-            },
-            "elstats": {
-                "VenusAtk": 100,
-                "VenusRes": 25,
-                "MarsAtk": 25,
-                "MarsRes": 100,
-                "JupiterAtk": 120,
-                "JupiterRes": 193,
-                "MercuryAtk": 125,
-                "MercuryRes": 100
-            }
-        },
-        {
-            "name": "Poison Toad",
-            "imgurl": "",
-            "movepool": [
-                "Acid Breath",
-                "Rabid Fang"
-            ],
-            "stats": {
-                "maxHP": 2250,
-                "maxPP": 52,
-                "Atk": 363,
-                "Def": 97,
-                "Spd": 93
-            },
-            "elstats": {
-                "VenusAtk": 95,
-                "VenusRes": 100,
-                "MarsAtk": 85,
-                "MarsRes": 25,
-                "JupiterAtk": 85,
-                "JupiterRes": 100,
-                "MercuryAtk": 95,
-                "MercuryRes": 175
-            }
-        },
-        {
-            "name": "Thunder Lizard 2",
-            "imgurl": "",
-            "movepool": [
-                "Storm Breath",
-                "Blue Bolt",
-                "Tempest"
-            ],
-            "stats": {
-                "maxHP": 750,
-                "maxPP": 55,
-                "Atk": 347,
-                "Def": 133,
-                "Spd": 134
-            },
-            "elstats": {
-                "VenusAtk": 100,
-                "VenusRes": 25,
-                "MarsAtk": 25,
-                "MarsRes": 100,
-                "JupiterAtk": 120,
-                "JupiterRes": 193,
-                "MercuryAtk": 125,
-                "MercuryRes": 100
-            }
-        }
-    ],
+  [
+    {
+      "name": "Thunder Lizard 1",
+      "imgurl": "https://vignette.wikia.nocookie.net/goldensun/images/c/cf/Poison_Toad.png/revision/latest?cb=20071119064119",
+      "movepool": [
+        "Storm Breath",
+        "Blue Bolt",
+        "Tempest"
+      ],
+      "stats": {
+        "maxHP": 750,
+        "maxPP": 55,
+        "Atk": 347,
+        "Def": 133,
+        "Spd": 134
+      },
+      "elstats": {
+        "VenusAtk": 100,
+        "VenusRes": 25,
+        "MarsAtk": 25,
+        "MarsRes": 100,
+        "JupiterAtk": 120,
+        "JupiterRes": 193,
+        "MercuryAtk": 125,
+        "MercuryRes": 100
+      }
+    },
+    {
+      "name": "Poison Toad",
+      "imgurl": "",
+      "movepool": [
+        "Acid Breath",
+        "Rabid Fang"
+      ],
+      "stats": {
+        "maxHP": 2250,
+        "maxPP": 52,
+        "Atk": 363,
+        "Def": 97,
+        "Spd": 93
+      },
+      "elstats": {
+        "VenusAtk": 95,
+        "VenusRes": 100,
+        "MarsAtk": 85,
+        "MarsRes": 25,
+        "JupiterAtk": 85,
+        "JupiterRes": 100,
+        "MercuryAtk": 95,
+        "MercuryRes": 175
+      }
+    },
+    {
+      "name": "Thunder Lizard 2",
+      "imgurl": "",
+      "movepool": [
+        "Storm Breath",
+        "Blue Bolt",
+        "Tempest"
+      ],
+      "stats": {
+        "maxHP": 750,
+        "maxPP": 55,
+        "Atk": 347,
+        "Def": 133,
+        "Spd": 134
+      },
+      "elstats": {
+        "VenusAtk": 100,
+        "VenusRes": 25,
+        "MarsAtk": 25,
+        "MarsRes": 100,
+        "JupiterAtk": 120,
+        "JupiterRes": 193,
+        "MercuryAtk": 125,
+        "MercuryRes": 100
+      }
+    }
+  ],
 
-    [
-        {
-            "name": "Lich 1",
-            "imgurl": "https://vignette.wikia.nocookie.net/goldensun/images/e/ec/Succubus.png/revision/latest?cb=20080205202925",
-            "movepool": [
-                "Glacier",
-                "Ice Missile",
-                "Debilitate",
-                "Enfeeble",
-                "Resist",
-                "Stone Spire",
-                "Destruct Ray",
-            ],
-            "stats": {
-                "maxHP": 1250,
-                "maxPP": 300,
-                "Atk": 250,
-                "Def": 150,
-                "Spd": 150
-            },
-            "elstats": {
-                "VenusAtk": 120,
-                "VenusRes": 125,
-                "MarsAtk": 100,
-                "MarsRes": 75,
-                "JupiterAtk": 130,
-                "JupiterRes": 150,
-                "MercuryAtk": 130,
-                "MercuryRes": 200
-            }
-        },
-        {
-            "name": "Succubus",
-            "imgurl": "https://vignette.wikia.nocookie.net/goldensun/images/a/a0/Satrage.png/revision/latest?cb=20080105061855",
-            "movepool": [
-                "Freeze Prism",
-                "Sonic Slash",
-                "Heartbreaker",
-                "Wish Well",
-                "Inferno",
-                "Protect"
-            ],
-            "stats": {
-                "maxHP": 2500,
-                "maxPP": 300,
-                "Atk": 300,
-                "Def": 100,
-                "Spd": 160
-            },
-            "elstats": {
-                "VenusAtk": 100,
-                "VenusRes": 75,
-                "MarsAtk": 120,
-                "MarsRes": 125,
-                "JupiterAtk": 130,
-                "JupiterRes": 150,
-                "MercuryAtk": 130,
-                "MercuryRes": 200
-            }
-        },
-        {
-            "name": "Lich 2",
-            "imgurl": "https://vignette.wikia.nocookie.net/goldensun/images/9/94/Azart.png/revision/latest?cb=20080105061632",
-            "movepool": [
-                "Glacier",
-                "Ice Missile",
-                "Debilitate",
-                "Enfeeble",
-                "Resist",
-                "Stone Spire",
-                "Destruct Ray",
-            ],
-            "stats": {
-                "maxHP": 1250,
-                "maxPP": 300,
-                "Atk": 250,
-                "Def": 150,
-                "Spd": 150
-            },
-            "elstats": {
-                "VenusAtk": 120,
-                "VenusRes": 125,
-                "MarsAtk": 100,
-                "MarsRes": 75,
-                "JupiterAtk": 130,
-                "JupiterRes": 150,
-                "MercuryAtk": 130,
-                "MercuryRes": 200
-            }
-        }
-    ]
+  [
+    {
+      "name": "Lich 1",
+      "imgurl": "https://vignette.wikia.nocookie.net/goldensun/images/e/ec/Succubus.png/revision/latest?cb=20080205202925",
+      "movepool": [
+        "Glacier",
+        "Ice Missile",
+        "Debilitate",
+        "Enfeeble",
+        "Resist",
+        "Stone Spire",
+        "Destruct Ray",
+      ],
+      "stats": {
+        "maxHP": 1250,
+        "maxPP": 300,
+        "Atk": 250,
+        "Def": 150,
+        "Spd": 150
+      },
+      "elstats": {
+        "VenusAtk": 120,
+        "VenusRes": 125,
+        "MarsAtk": 100,
+        "MarsRes": 75,
+        "JupiterAtk": 130,
+        "JupiterRes": 150,
+        "MercuryAtk": 130,
+        "MercuryRes": 200
+      }
+    },
+    {
+      "name": "Succubus",
+      "imgurl": "https://vignette.wikia.nocookie.net/goldensun/images/a/a0/Satrage.png/revision/latest?cb=20080105061855",
+      "movepool": [
+        "Freeze Prism",
+        "Sonic Slash",
+        "Heartbreaker",
+        "Wish Well",
+        "Inferno",
+        "Protect"
+      ],
+      "stats": {
+        "maxHP": 2500,
+        "maxPP": 300,
+        "Atk": 300,
+        "Def": 100,
+        "Spd": 160
+      },
+      "elstats": {
+        "VenusAtk": 100,
+        "VenusRes": 75,
+        "MarsAtk": 120,
+        "MarsRes": 125,
+        "JupiterAtk": 130,
+        "JupiterRes": 150,
+        "MercuryAtk": 130,
+        "MercuryRes": 200
+      }
+    },
+    {
+      "name": "Lich 2",
+      "imgurl": "https://vignette.wikia.nocookie.net/goldensun/images/9/94/Azart.png/revision/latest?cb=20080105061632",
+      "movepool": [
+        "Glacier",
+        "Ice Missile",
+        "Debilitate",
+        "Enfeeble",
+        "Resist",
+        "Stone Spire",
+        "Destruct Ray",
+      ],
+      "stats": {
+        "maxHP": 1250,
+        "maxPP": 300,
+        "Atk": 250,
+        "Def": 150,
+        "Spd": 150
+      },
+      "elstats": {
+        "VenusAtk": 120,
+        "VenusRes": 125,
+        "MarsAtk": 100,
+        "MarsRes": 75,
+        "JupiterAtk": 130,
+        "JupiterRes": 150,
+        "MercuryAtk": 130,
+        "MercuryRes": 200
+      }
+    }
+  ]
 ]

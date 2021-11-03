@@ -36,7 +36,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public Stats Stats { get; set; }
 
         public void UpdateMove()
-        {       
+        {
             Move.Emote = Sprite;
             Move.Name = Name;
         }
@@ -113,7 +113,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             {
                 case DjinnState.Set:
                     IsSet = true;
-                    CoolDown = Math.Max(2,User.Moves.OfType<Djinn>().Max(d => d.CoolDown) + 1);
+                    CoolDown = Math.Max(2, User.Moves.OfType<Djinn>().Max(d => d.CoolDown) + 1);
                     Position = User.Party.SelectMany(p => p.Moves.OfType<Djinn>()).Max(d => d.Position) + 1;
                     return Move.Use(User);
 

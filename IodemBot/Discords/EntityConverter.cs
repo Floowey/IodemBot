@@ -12,7 +12,9 @@ namespace IodemBot
         {
             UserConverter = new IodemUserConverter();
         }
+
         public static IodemUserConverter UserConverter { get; }
+
         public static UserAccount ConvertUser(IUser user)
             => UserConverter.DiscordMemberToUser(user);
     }
@@ -21,8 +23,8 @@ namespace IodemBot
     {
         public IodemUserConverter()
         {
-
         }
+
         public UserAccount DiscordMemberToUser(IUser user)
         {
             if (user == null)
@@ -35,6 +37,5 @@ namespace IodemBot
             UserAccountProvider.StoreUser(iUser);
             return iUser;
         }
-
     }
 }

@@ -2,17 +2,14 @@
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Linq.Expressions;
 using System.Runtime.Caching;
-using System.Text;
-using System.Threading;
 using IodemBot.Core.UserManagement;
 using Newtonsoft.Json;
 
 namespace IodemBot.Core
 {
-    class UserDataFileStorage : IPersistentStorage<UserAccount>
+    internal class UserDataFileStorage : IPersistentStorage<UserAccount>
     {
         private static readonly string FolderPath = "Resources/Accounts/AccountFiles";
         private static readonly string BackupPath = "Resources/Accounts/BackupAccountFiles";
@@ -36,10 +33,12 @@ namespace IodemBot.Core
         {
             return File.Exists(Path.Combine(FolderPath, $"{id}.json"));
         }
+
         public void Remove(ulong id)
         {
             File.Delete(Path.Combine(FolderPath, $"{id}.json"));
         }
+
         public IEnumerable<UserAccount> RestoreAll()
         {
             foreach (var f in Directory.GetFiles(FolderPath, "*.json"))
@@ -48,13 +47,16 @@ namespace IodemBot.Core
                 if (ulong.TryParse(idstring, out ulong id))
                 {
                     yield return RestoreSingle(id, false);
-                } else
+                }
+                else
                 {
                     Console.WriteLine($"File {f} could not be loaded.");
                 }
             }
         }
+
         private static readonly object locklock = new object();
+
         private static object GetLock(ulong id)
         {
             lock (locklock)
@@ -63,6 +65,7 @@ namespace IodemBot.Core
                 return locks.GetOrAdd(id, datalock);
             }
         }
+
         public UserAccount RestoreSingle(ulong id, bool doCache)
         {
             var user = RestoreSingle(id);
@@ -72,6 +75,7 @@ namespace IodemBot.Core
             }
             return user;
         }
+
         public UserAccount RestoreSingle(ulong id)
         {
             try
@@ -80,7 +84,7 @@ namespace IodemBot.Core
                 lock (lockobj)
                 {
                     UserAccount user = cache[$"{id}_user"] as UserAccount;
-                    if(user == null)
+                    if (user == null)
                     {
                         var filePath = Path.Combine(FolderPath, $"{id}.json");
                         var backupFile = Path.Combine(BackupPath, $"{id}.json");
@@ -90,7 +94,8 @@ namespace IodemBot.Core
                             {
                                 Console.WriteLine($"User not registered: {id}");
                                 return null;
-                            } else
+                            }
+                            else
                             {
                                 Console.WriteLine($"Main File not found, using backup");
                                 filePath = backupFile;
@@ -101,7 +106,8 @@ namespace IodemBot.Core
                         {
                             var json = File.ReadAllText(filePath);
                             user = JsonConvert.DeserializeObject<UserAccount>(json);
-                        } catch
+                        }
+                        catch
                         {
                             Console.WriteLine($"Reading file failed, trying backup");
                             var json = File.ReadAllText(backupFile);
@@ -109,12 +115,15 @@ namespace IodemBot.Core
                         }
                     }
                     return user;
-                }       
-            } catch (Exception e) {
+                }
+            }
+            catch (Exception e)
+            {
                 Console.WriteLine($"Loading user {id} critically failed: {e}");
                 return null;
             }
         }
+
         public void Store(UserAccount item)
         {
             lock (GetLock(item.ID))
@@ -128,7 +137,7 @@ namespace IodemBot.Core
                 {
                     return;
                 }
-                
+
                 File.Replace(Path.Combine(FolderPath, $"{item.ID}.json"), Path.Combine(BackupPath, $"{item.ID}.json"), Path.Combine(BackupPath, $"{item.ID}_B.json"));
                 File.WriteAllText(Path.Combine(FolderPath, $"{item.ID}.json"), json);
 
@@ -138,7 +147,7 @@ namespace IodemBot.Core
 
         private static void EnsureFiles(ulong id)
         {
-            if(!File.Exists(Path.Combine(FolderPath, $"{id}.json")))
+            if (!File.Exists(Path.Combine(FolderPath, $"{id}.json")))
             {
                 File.Create(Path.Combine(FolderPath, $"{id}.json")).Close();
             }
@@ -163,10 +172,12 @@ namespace IodemBot.Core
         {
             throw new NotImplementedException();
         }
+
         public void Remove(Expression<Func<UserAccount, bool>> predicate)
         {
             throw new NotImplementedException();
         }
+
         public UserAccount RestoreSingle(Expression<Func<UserAccount, bool>> predicate)
         {
             throw new NotImplementedException();

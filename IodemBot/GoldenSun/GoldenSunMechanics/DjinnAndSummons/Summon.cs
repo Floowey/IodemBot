@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using IodemBot.Extensions;
 using IodemBot.ColossoBattles;
+using IodemBot.Extensions;
 using Newtonsoft.Json;
 
 namespace IodemBot.Modules.GoldenSunMechanics
@@ -49,7 +49,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public bool ValidateSummon(IEnumerable<Djinn> djinns)
         {
-            return CanSummon(djinns.Where(d => d.State == DjinnState.Standby)) ;
+            return CanSummon(djinns.Where(d => d.State == DjinnState.Standby));
         }
 
         protected override List<string> InternalUse(ColossoFighter User)
@@ -78,7 +78,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 ReadyDjinn.OfElement(Element.Jupiter).Take(JupiterNeeded).ToList().ForEach(d => d.Summon(User));
                 ReadyDjinn.OfElement(Element.Mercury).Take(MercuryNeeded).ToList().ForEach(d => d.Summon(User));
                 log.AddRange(Move.Use(User));
-            } else
+            }
+            else
             {
                 return log;
             }

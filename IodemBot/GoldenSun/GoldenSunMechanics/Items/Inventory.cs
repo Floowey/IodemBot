@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using IodemBot.Extensions;
+
 //using LiteDB;
 using Newtonsoft.Json;
 
@@ -39,7 +39,9 @@ namespace IodemBot.Modules.GoldenSunMechanics
             {ItemCategory.FootWear,"<:Boots:572526109975904257>" },
             {ItemCategory.Accessoire, "<:Rings:572526110060052482>"}
         };
+
         public static readonly uint RemoveCursedCost = 5000;
+
         /// <summary>
         /// Serialized and deserialized a list of strings to their Item object equivalent
         /// </summary>
@@ -48,16 +50,19 @@ namespace IodemBot.Modules.GoldenSunMechanics
             get => Inv.Count == 0 ? null : Inv?.Select(i => i.NameToSerialize).ToList();
             set => Inv = ItemDatabase.GetItems(value).ToList();
         }
+
         public List<string> WarriorGearString
         {
             get => WarriorGear.Count == 0 ? null : WarriorGear?.Select(i => i.Name).ToList();
             set => WarriorGear = value?.Select(i => GetItem(i)).ToList() ?? new List<Item>();
         }
+
         public List<string> MageGearString
         {
             get => MageGear.Count == 0 ? null : MageGear?.Select(i => i.Name).ToList();
             set => MageGear = value?.Select(i => GetItem(i)).ToList() ?? new List<Item>();
         }
+
         [JsonIgnore] private List<Item> Inv { get; set; } = new List<Item>();
 
         [JsonIgnore] private List<Item> WarriorGear { get; set; } = new List<Item>();
@@ -94,8 +99,9 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public bool HasAnyChests()
         {
             CheckDaily();
-            return Chests.Values.Any(c => c>0);
+            return Chests.Values.Any(c => c > 0);
         }
+
         public ChestQuality NextChestQuality()
         {
             if (HasChest(ChestQuality.Daily))
@@ -110,8 +116,10 @@ namespace IodemBot.Modules.GoldenSunMechanics
             }
             return ChestQuality.Daily;
         }
+
         public static readonly int[] dailyRewards = new[] { 0, 0, 1, 1, 2 };
-        public bool TryOpenChest(ChestQuality chestQuality, out Item item, uint Level=0)
+
+        public bool TryOpenChest(ChestQuality chestQuality, out Item item, uint Level = 0)
         {
             item = null;
             if (IsFull)
@@ -126,7 +134,6 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
             if (chestQuality == ChestQuality.Daily)
             {
-                
                 var rarity = (ItemRarity)(dailyRewards[DailiesInARow % dailyRewards.Length] + Math.Min(2, Level / 33));
                 item = ItemDatabase.GetRandomItem(rarity);
             }
@@ -191,7 +198,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 else if (DateTime.Now.Date >= new DateTime(day: 1, month: 2, year: 2021))
                 {
                     DailiesInARow = 0;
-                } else
+                }
+                else
                 {
                     DailiesInARow++;
                 }

@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Discord;
 using IodemBot.Core.UserManagement;
 using IodemBot.Discords;
 using IodemBot.Discords.Actions;
-using IodemBot.Discords.Actions.Attributes;
 
 namespace IodemBot.Modules
 {
@@ -27,6 +25,7 @@ namespace IodemBot.Modules
             FillParametersAsync = null,
             RefreshAsync = RefreshAsync
         };
+
         public async Task RefreshAsync(bool intoNew, MessageProperties msgProps)
         {
             var user = EntityConverter.ConvertUser(Context.User);
@@ -50,13 +49,13 @@ namespace IodemBot.Modules
         {
             ComponentBuilder builder = new();
             var labels = account.Preferences.ShowButtonLabels;
-            builder.WithButton(labels? "Status" : null, customId: $"#{nameof(StatusAction)}", style: ButtonStyle.Primary, emote: Emotes.GetEmote("StatusAction"), row: 0);
-            builder.WithButton($"Show Labels", $"{nameof(ToggleButtonLabelsAction)}", style: ButtonStyle.Secondary, Emotes.GetEmote(labels? "LabelsOn" : "LabelsOff"));
+            builder.WithButton(labels ? "Status" : null, customId: $"#{nameof(StatusAction)}", style: ButtonStyle.Primary, emote: Emotes.GetEmote("StatusAction"), row: 0);
+            builder.WithButton($"Show Labels", $"{nameof(ToggleButtonLabelsAction)}", style: ButtonStyle.Secondary, Emotes.GetEmote(labels ? "LabelsOn" : "LabelsOff"));
             List<SelectMenuOptionBuilder> options = new();
             var rarities = Enum.GetValues<ItemRarity>();
             foreach (var rarity in rarities)
             {
-                options.Add(new() { Label = rarity.ToString(), Value = rarity.ToString(), IsDefault=account.Preferences.AutoSell.Contains(rarity) });
+                options.Add(new() { Label = rarity.ToString(), Value = rarity.ToString(), IsDefault = account.Preferences.AutoSell.Contains(rarity) });
             }
             builder.WithSelectMenu($"{nameof(SelectAutoSellOptionsAction)}", options, minValues: 0, maxValues: rarities.Length);
             return builder.Build();
@@ -88,7 +87,7 @@ namespace IodemBot.Modules
 
         public override async Task FillParametersAsync(string[] selectOptions, object[] idOptions)
         {
-            if(selectOptions != null)
+            if (selectOptions != null)
             {
                 rarities = selectOptions.Select(s => Enum.Parse<ItemRarity>(s)).ToList();
             }

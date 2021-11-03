@@ -6,7 +6,8 @@ namespace IodemBot.Modules.GoldenSunMechanics.RewardSystem
 {
     public class RewardGenerator<T>
     {
-        readonly List<Reward> Rewards = new List<Reward>();
+        private readonly List<Reward> Rewards = new List<Reward>();
+
         public RewardGenerator(IEnumerable<T> rewards, IEnumerable<int> weights)
         {
             if (rewards.Count() != weights.Count())

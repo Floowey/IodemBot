@@ -1,12 +1,11 @@
-﻿using Discord;
-using IodemBot.Discords.Actions.Attributes;
-using IodemBot.Discords.Contexts;
-using Microsoft.Extensions.DependencyInjection;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
+using Discord;
+using IodemBot.Discords.Actions.Attributes;
+using IodemBot.Discords.Contexts;
 
 namespace IodemBot.Discords.Actions
 {

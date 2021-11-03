@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using IodemBot.Extensions;
 using IodemBot.ColossoBattles;
+using IodemBot.Extensions;
 using Newtonsoft.Json;
 
 namespace IodemBot.Modules.GoldenSunMechanics
@@ -75,7 +75,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
                 //                var elMult = 1 + Math.Max(0.0, (int)User.elstats.GetPower(element) * User.MultiplyBuffs("Power") - (int)t.elstats.GetRes(element) * t.MultiplyBuffs("Resistance")) / (attackBased ? 400 : 200);
                 //var elMult = 1 + (User.ElStats.GetPower(Element) * User.MultiplyBuffs("Power") - t.ElStats.GetRes(Element) * t.MultiplyBuffs("Resistance")) / (AttackBased ? 400 : 200);
-                
+
                 var elMultFactor = (User.ElStats.GetPower(Element) * User.MultiplyBuffs("Power") - t.ElStats.GetRes(Element) * t.MultiplyBuffs("Resistance")) / (AttackBased ? 400 : 200);
                 var elMult = 1 + elMultFactor;
                 elMult = Math.Pow(elMult, 1.4);
@@ -84,7 +84,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 elMult = Math.Max(0.25, elMult);
                 var distFromCenter = Math.Abs(enemyTeam.IndexOf(t) - TargetNr);
                 var spreadMult = IgnoreSpread ? 1 : spread[distFromCenter];
-                var concentrationMult = 1 + (Math.Max(0,(float)Range - targets.Count - 1)) / (2*Range);
+                var concentrationMult = 1 + (Math.Max(0, (float)Range - targets.Count - 1)) / (2 * Range);
                 var prctdmg = (uint)(t.Stats.MaxHP * PercentageDamage / 100);
                 var realDmg = (uint)((baseDmg + dmg + AddDamage + User.addDamage) * DmgMult * elMult * spreadMult * t.defensiveMult * User.offensiveMult * concentrationMult + prctdmg);
                 var punctuation = "!";
@@ -143,8 +143,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public override string ToString()
         {
-            
-            return $"Attack {(TargetType == TargetType.EnemyAll ? $"all Enemies" : Range==1 ?"an" : $"up to {Range * 2 - 1} Targets")} with a base damage of {Emotes.GetIcon(Element)} {(AttackBased ? "a normal physical Attack" : $"{Power}")}{(AddDamage > 0 ? $" plus an additional {AddDamage} Points" : "")}{(DmgMult != 1 ? $" multiplied by {DmgMult}" : "")}{(PercentageDamage > 0 ? $" + {PercentageDamage}% of the targets health as damage" : "")}.{(TargetType == TargetType.PartySelf || TargetType == TargetType.PartySingle || TargetType == TargetType.PartyAll ? "Target type set to hit your teammates! Probably an error..." : "")}";
+            return $"Attack {(TargetType == TargetType.EnemyAll ? $"all Enemies" : Range == 1 ? "an" : $"up to {Range * 2 - 1} Targets")} with a base damage of {Emotes.GetIcon(Element)} {(AttackBased ? "a normal physical Attack" : $"{Power}")}{(AddDamage > 0 ? $" plus an additional {AddDamage} Points" : "")}{(DmgMult != 1 ? $" multiplied by {DmgMult}" : "")}{(PercentageDamage > 0 ? $" + {PercentageDamage}% of the targets health as damage" : "")}.{(TargetType == TargetType.PartySelf || TargetType == TargetType.PartySingle || TargetType == TargetType.PartyAll ? "Target type set to hit your teammates! Probably an error..." : "")}";
         }
     }
 }

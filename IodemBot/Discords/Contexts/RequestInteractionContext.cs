@@ -1,11 +1,11 @@
-﻿using Discord;
-using Discord.Net;
-using Discord.Rest;
-using Discord.WebSocket;
-using System;
+﻿using System;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Discord;
+using Discord.Net;
+using Discord.Rest;
+using Discord.WebSocket;
 
 namespace IodemBot.Discords.Contexts
 {
@@ -18,8 +18,8 @@ namespace IodemBot.Discords.Contexts
 
     public class RequestInteractionContext : RequestContext
     {
-        readonly SemaphoreLocker _acknowledgedLock = new SemaphoreLocker();
-        RequestAcknowledgeStatus _acknowledgeStatus = RequestAcknowledgeStatus.NotAcknowledged;
+        private readonly SemaphoreLocker _acknowledgedLock = new SemaphoreLocker();
+        private RequestAcknowledgeStatus _acknowledgeStatus = RequestAcknowledgeStatus.NotAcknowledged;
 
         public RequestInteractionContext(SocketInteraction interaction, DiscordSocketClient client)
         {

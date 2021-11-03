@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using Discord;
 using Discord.Commands;
@@ -14,6 +12,7 @@ namespace IodemBot
         public SocketMessage Message { get; }
         public IGuild Guild { get; }
         public SocketUser User { get; }
+
         public Task ReplyAsync(string message = null, Embed embed = null, MessageComponent component = null);
 
         public static IIodemCommandContext GetContext(object Context)
@@ -45,7 +44,7 @@ namespace IodemBot
 
         public async Task ReplyAsync(string text = null, Embed embed = null, MessageComponent component = null)
         {
-            await Channel.SendMessageAsync(text: text, embed: embed, component:component);
+            await Channel.SendMessageAsync(text: text, embed: embed, component: component);
         }
     }
 }

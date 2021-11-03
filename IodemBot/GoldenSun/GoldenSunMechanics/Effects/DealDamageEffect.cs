@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using IodemBot.ColossoBattles;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
-    class DealDamageEffect : Effect
+    internal class DealDamageEffect : Effect
     {
         public override string Type => "DealDamage";
         public uint Power { get; set; } = 0;
@@ -71,7 +70,6 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 p.battleStats.DamageDealt += realDmg;
                 if (!Target.IsAlive)
                 {
-                    
                     p.battleStats.Kills++;
                 }
             }

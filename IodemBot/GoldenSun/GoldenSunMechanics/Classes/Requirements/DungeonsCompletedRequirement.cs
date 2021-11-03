@@ -2,7 +2,7 @@
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
-    class DungeonsCompletedRequirement : IRequirement
+    internal class DungeonsCompletedRequirement : IRequirement
     {
         public int Apply(UserAccount user)
         {

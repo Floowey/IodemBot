@@ -385,6 +385,7 @@ namespace IodemBot.ColossoBattles
                 await StartBattle();
             }
         }
+
         public override Task<(bool Success, string Message)> CanPlayerJoin(UserAccount user, Team team = Team.A)
         {
             if (Battle.GetTeam(team).Count >= PlayersToStart)
@@ -405,12 +406,10 @@ namespace IodemBot.ColossoBattles
                 return;
             }
 
-
             foreach (var V in Teams.Values)
             {
                 V.PlayerMessages.Values.ToList().ForEach(p => p.Moves.AddRange(V.Factory.PossibleSummons));
             }
-
 
             resetIfNotActive.Stop();
             Battle.Start();
@@ -657,6 +656,7 @@ namespace IodemBot.ColossoBattles
             });
             await Task.CompletedTask;
         }
+
         protected virtual async Task WriteStatus()
         {
             List<Task> tasks = new List<Task>();

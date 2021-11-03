@@ -1,16 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
-using IodemBot.Preconditions;
+using IodemBot.ColossoBattles;
 using IodemBot.Core.Leveling;
 using IodemBot.Core.UserManagement;
 using IodemBot.Extensions;
-using IodemBot.ColossoBattles;
 using IodemBot.Modules.GoldenSunMechanics;
+using IodemBot.Preconditions;
 using Newtonsoft.Json;
 
 namespace IodemBot.Modules
@@ -71,7 +70,7 @@ namespace IodemBot.Modules
             var allClasses = AdeptClassSeriesManager.allClasses;
             var allAvailableClasses = allClasses.Where(c => c.IsDefault || account.BonusClasses.Any(bc => bc.Equals(c.Name)));
             var OfElement = allAvailableClasses.Where(c => c.Elements.Contains(account.Element)).Select(c => c.Name).OrderBy(n => n);
-            
+
             var embed = new EmbedBuilder();
             embed.WithTitle("Classes");
             embed.WithColor(Colors.Get(account.Element.ToString()));
@@ -125,6 +124,7 @@ namespace IodemBot.Modules
         }
 
         public enum LoadoutAction { Show, Save, Load, Remove };
+
         [Command("loadout"), Alias("loadouts")]
         [RequireUserServer]
         public async Task LoadoutTask(LoadoutAction action = LoadoutAction.Show, [Remainder] string loadoutName = "")
@@ -158,6 +158,7 @@ namespace IodemBot.Modules
                     }
                     _ = ReplyAsync(embed: embed.Build());
                     break;
+
                 case LoadoutAction.Save:
                     if (loadoutName.IsNullOrEmpty())
                     {
@@ -176,6 +177,7 @@ namespace IodemBot.Modules
                     UserAccountProvider.StoreUser(user);
                     _ = LoadoutTask(LoadoutAction.Show);
                     break;
+
                 case LoadoutAction.Load:
                     var loadedLoadout = user.Loadouts.GetLoadout(loadoutName);
                     if (loadedLoadout != null)
@@ -187,6 +189,7 @@ namespace IodemBot.Modules
                         _ = Status();
                     }
                     break;
+
                 case LoadoutAction.Remove:
                     if (loadoutName.IsNullOrEmpty())
                     {
@@ -234,7 +237,6 @@ namespace IodemBot.Modules
             var author = new EmbedAuthorBuilder();
             author.WithName($"{(user is SocketGuildUser sguser ? sguser.DisplayName() : user.Username)}");
             author.WithIconUrl(user.GetAvatarUrl());
-
 
             var embed = new EmbedBuilder()
             .WithColor(Colors.Get(account.Element.ToString()))
@@ -322,7 +324,6 @@ namespace IodemBot.Modules
             embed.WithFooter(Footer);
 
             await Context.Channel.SendMessageAsync("", false, embed.Build());
-            
         }
 
         [Command("Dungeons"), Alias("dgs")]
@@ -390,7 +391,8 @@ namespace IodemBot.Modules
 
         public async Task ChangeElement(UserAccount user, Element chosenElement, string classSeriesName = "")
         {
-            if(user.Element == chosenElement) {
+            if (user.Element == chosenElement)
+            {
                 return;
             }
             foreach (string removed in user.Inv.UnequipExclusiveTo(user.Element))
@@ -417,7 +419,7 @@ namespace IodemBot.Modules
 
             var tags = new[] { "VenusAdept", "MarsAdept", "JupiterAdept", "MercuryAdept" };
             user.Tags.RemoveAll(s => tags.Contains(s));
-            if((int)chosenElement < tags.Length)
+            if ((int)chosenElement < tags.Length)
             {
                 user.Tags.Add(tags[(int)chosenElement]);
             }
@@ -446,7 +448,6 @@ namespace IodemBot.Modules
 
         [Command("PutElementalRoles")]
         [RequireOwner]
-      
         public async Task PutRoles([Remainder] ITextChannel channel)
         {
             var builder = new ComponentBuilder();
@@ -454,7 +455,7 @@ namespace IodemBot.Modules
             builder.WithButton("Mars", $"^{nameof(ChangeAdeptAction)}.Mars", ButtonStyle.Primary, emote: Emotes.GetEmote(Element.Mars));
             builder.WithButton("Jupiter", $"^{nameof(ChangeAdeptAction)}.Jupiter", ButtonStyle.Primary, emote: Emotes.GetEmote(Element.Jupiter));
             builder.WithButton("Mercury", $"^{nameof(ChangeAdeptAction)}.Mercury", ButtonStyle.Primary, emote: Emotes.GetEmote(Element.Mercury));
-            await channel.SendMessageAsync("Choose a role:", component:builder.Build());
+            await channel.SendMessageAsync("Choose a role:", component: builder.Build());
         }
 
         [Command("MoveInfo")]
@@ -468,7 +469,7 @@ namespace IodemBot.Modules
             }
 
             Move m = PsynergyDatabase.GetMove(name);
-            if(m is not Psynergy psy)
+            if (m is not Psynergy psy)
             {
                 return;
             }
@@ -506,8 +507,6 @@ namespace IodemBot.Modules
             }
         }
 
-
-
         [Command("removeClassSeries")]
         [Summary("Remove a given Class Series from a User")]
         [RequireModerator]
@@ -534,10 +533,10 @@ namespace IodemBot.Modules
                 return;
             }
 
-            await ReplyAsync($"You will lose all your progress so far, are you really sure? However, you will get an experience boost from x{account.XpBoost:F} to x{Math.Min(2,account.XpBoost * (1 + 0.1 * (1 - Math.Exp(-(double)account.XP / 120000)))):F}");
+            await ReplyAsync($"You will lose all your progress so far, are you really sure? However, you will get an experience boost from x{account.XpBoost:F} to x{Math.Min(2, account.XpBoost * (1 + 0.1 * (1 - Math.Exp(-(double)account.XP / 120000)))):F}");
 
             response = await Context.Channel.AwaitMessage(m => m.Author == Context.User);
-            
+
             if (!response.Content.Equals("Yes", StringComparison.CurrentCultureIgnoreCase))
             {
                 return;
@@ -549,10 +548,10 @@ namespace IodemBot.Modules
                 return;
             }
 
-            if((DateTime.Now -account.LastReset).TotalHours < 24)
+            if ((DateTime.Now - account.LastReset).TotalHours < 24)
             {
                 await ReplyAsync($"Again so fast? The procedure is quite straining on your body. You should let your new self settle in a bit.");
-                return;            
+                return;
             }
 
             await ReplyAsync("Let us reverse the cycle, to a stage where you were just beginning");
@@ -639,6 +638,5 @@ namespace IodemBot.Modules
                 _ => "a",
             };
         }
-
     }
 }

@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
-using IodemBot.Preconditions;
+using IodemBot.ColossoBattles;
 using IodemBot.Core.UserManagement;
 using IodemBot.Extensions;
-using IodemBot.ColossoBattles;
+using IodemBot.Preconditions;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
@@ -283,7 +283,6 @@ namespace IodemBot.Modules.GoldenSunMechanics
             await Task.CompletedTask;
         }
 
-
         [Command("Sell")]
         [Summary("Sell an unequipped item from your inventory")]
         public async Task SellItem([Remainder] string item)
@@ -316,7 +315,6 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 }
                 embed.WithDescription($"Sold {successfull} items for <:coin:569836987767324672> {sum}.");
                 embed.WithColor(Colors.Get("Iodem"));
-
             }
             else
             {
@@ -536,14 +534,13 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 .Build());
                 return;
             }
-            
+
             if (inv.Equip(item, archType))
             {
                 UserAccountProvider.StoreUser(account);
                 _ = ShowInventory();
                 return;
             }
-            
 
             await Context.Channel.SendMessageAsync(embed: new EmbedBuilder()
                 .WithColor(Colors.Get("Error"))

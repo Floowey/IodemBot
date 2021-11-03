@@ -1,15 +1,12 @@
-﻿using Discord;
+﻿using System;
+using System.Collections.Generic;
+using System.Reflection;
+using System.Threading.Tasks;
+using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
 using IodemBot.Discords.Contexts;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection.Extensions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace IodemBot.Discords.Services
 {
@@ -70,7 +67,8 @@ namespace IodemBot.Discords.Services
             await Task.Delay(1);
         }
 
-        readonly List<CommandError> _validErrors = new() { CommandError.BadArgCount, CommandError.MultipleMatches, CommandError.ObjectNotFound, CommandError.ParseFailed, CommandError.UnknownCommand, CommandError.UnmetPrecondition };
+        private readonly List<CommandError> _validErrors = new() { CommandError.BadArgCount, CommandError.MultipleMatches, CommandError.ObjectNotFound, CommandError.ParseFailed, CommandError.UnknownCommand, CommandError.UnmetPrecondition };
+
         public async Task CommandExecutedAsync(Optional<CommandInfo> command, ICommandContext context, IResult result)
         {
             if (result?.Error != null && result.Error.Value == CommandError.Exception && result is ExecuteResult executeResult)

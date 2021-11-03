@@ -26,7 +26,7 @@ namespace IodemBot.Modules
             await Context.Channel.SendMessageAsync("Check your DMs.");
 
             var dmChannel = await Context.User.CreateDMChannelAsync();
-            
+
             var contextString = Context.Guild?.Name ?? "DMs with me";
             var builder = new EmbedBuilder()
             {

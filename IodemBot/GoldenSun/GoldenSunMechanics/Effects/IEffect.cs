@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using IodemBot.Extensions;
 using IodemBot.ColossoBattles;
+using IodemBot.Extensions;
 using JsonSubTypes;
 using Newtonsoft.Json;
 
@@ -36,6 +36,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public virtual string Type { get; } = "Nothing";
 
         public bool OnTarget { get; set; } = true;
+
         public abstract List<string> Apply(ColossoFighter User, ColossoFighter Target);
 
         protected virtual bool InternalValidSelection(ColossoFighter user)

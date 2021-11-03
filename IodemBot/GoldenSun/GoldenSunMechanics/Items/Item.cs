@@ -43,7 +43,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public uint Price { get; set; }
 
-        public string Description { get;set; }
+        public string Description { get; set; }
 
         public ItemRarity Rarity { get; set; }
 
@@ -186,8 +186,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
             s.Append(string.Join(" | ", various));
 
             if (!Description.IsNullOrEmpty())
-            {   
-                if(various.Count > 0)
+            {
+                if (various.Count > 0)
                 {
                     s.Append('\n');
                 }

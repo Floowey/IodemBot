@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using IodemBot.Core.UserManagement;
 using IodemBot.ColossoBattles;
+using IodemBot.Core.UserManagement;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
@@ -51,7 +51,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                     bool autoSold = false;
                     if (userAccount.Preferences.AutoSell.Contains(item.Rarity))
                         autoSold = userAccount.Inv.Sell(item.Name);
-                    awardLog.Add($"{userAccount.Name} found a {item.Icon} {item.Name}{(autoSold? " (Auto sold)" : "")}!");
+                    awardLog.Add($"{userAccount.Name} found a {item.Icon} {item.Name}{(autoSold ? " (Auto sold)" : "")}!");
                 }
                 else
                 {
@@ -84,13 +84,13 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
                     if (djinn.IsEvent && userAccount.DjinnPocket.Djinn.Count(d => d.IsEvent) == 1)
                     {
-                            awardLog.Add($"Congratulations, You have found an **Event Djinni**! They are custom made djinni, only available within the event, as a small trinket for your participation. " +
-                                $"They behave differently to other djinn, in that they will not count towards your Djinn Pocket limit or any class upgrades, " +
-                                $"however they will carry over if you decide to reset your game :)" +
-                                $"(Event Djinn will not be allowed in any upcoming tournaments.)");
+                        awardLog.Add($"Congratulations, You have found an **Event Djinni**! They are custom made djinni, only available within the event, as a small trinket for your participation. " +
+                            $"They behave differently to other djinn, in that they will not count towards your Djinn Pocket limit or any class upgrades, " +
+                            $"however they will carry over if you decide to reset your game :)" +
+                            $"(Event Djinn will not be allowed in any upcoming tournaments.)");
                     }
 
-                    if(userAccount.DjinnPocket.Djinn.Count == userAccount.DjinnPocket.PocketSize)
+                    if (userAccount.DjinnPocket.Djinn.Count == userAccount.DjinnPocket.PocketSize)
                     {
                         awardLog.Add($"Attention! Your Djinn Pocket has reached its limit. " +
                             $"In order to further obtain djinn, you must either make space by releasing djinn or upgrading it using `i!upgradedjinn`!");
@@ -129,12 +129,12 @@ namespace IodemBot.Modules.GoldenSunMechanics
                         awardLog.Add($"Attention! Your Djinn Pocket has reached its limit. " +
                             $"In order to further obtain djinn, you must either make space by releasing djinn or upgrading it using `i!upgradedjinn`!");
                     }
-                    
+
                     if (djinn.IsShiny)
                     {
                         userAccount.DjinnBadLuck = 0;
                     }
-                    else if(djinn.CanBeShiny)
+                    else if (djinn.CanBeShiny)
                     {
                         userAccount.DjinnBadLuck++;
                     }

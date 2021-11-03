@@ -4,9 +4,9 @@ using System.Threading.Tasks;
 using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
-using IodemBot.Preconditions;
 using IodemBot.Core.Leveling;
 using IodemBot.Extensions;
+using IodemBot.Preconditions;
 
 namespace IodemBot.Modules
 {
@@ -20,7 +20,7 @@ namespace IodemBot.Modules
         {
             var embed = new EmbedBuilder();
             embed.WithColor(Colors.Get("Iodem"));
-            embed.WithDescription(Global.RandomNumber(0,1) == 0 ? "<:Lucky_Medals:538050800342269973> Heads!" : "<:Gold:537214319591555073> Tails!");
+            embed.WithDescription(Global.RandomNumber(0, 1) == 0 ? "<:Lucky_Medals:538050800342269973> Heads!" : "<:Gold:537214319591555073> Tails!");
             await Context.Channel.SendMessageAsync("", false, embed.Build());
         }
 
@@ -78,6 +78,7 @@ namespace IodemBot.Modules
             "You will see...",
             "Very doubtful"
         };
+
         [Command("8ball"), Alias("Oracle", "Fortune Teller", "Seer")]
         [Cooldown(5)]
         [Remarks("Ask the Oracle about your future.")]
@@ -146,7 +147,6 @@ namespace IodemBot.Modules
             _ = Context.Channel.SendMessageAsync("", false, embed.Build());
             await Task.CompletedTask;
         }
-
 
         [Command("choose"), Alias("pick")]
         [Cooldown(15)]

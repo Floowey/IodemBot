@@ -2,9 +2,9 @@
 using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
-using IodemBot.Preconditions;
 using IodemBot.Core.UserManagement;
 using IodemBot.Extensions;
+using IodemBot.Preconditions;
 
 namespace IodemBot.Modules
 {
@@ -36,7 +36,7 @@ namespace IodemBot.Modules
             {
                 embed.WithDescription("You better ask them yourselves...");
             }
-            
+
             await Context.Channel.SendMessageAsync("", false, embed.Build());
         }
 

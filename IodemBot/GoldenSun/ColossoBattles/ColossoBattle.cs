@@ -17,7 +17,9 @@ namespace IodemBot.ColossoBattles
         public int SizeTeamA => TeamA.Count;
 
         public int SizeTeamB => TeamB.Count;
+
         public List<ColossoFighter> GetTeam(Team team) => team == Team.A ? TeamA : TeamB;
+
         public List<string> Log { get; set; } = new();
 
         public void Start()
@@ -41,7 +43,6 @@ namespace IodemBot.ColossoBattles
                         fighter.battleStats.SoloBattles++;
                     }
                 }
-
             }
         }
 
@@ -84,8 +85,6 @@ namespace IodemBot.ColossoBattles
             player.party = team;
             player.battle = this;
         }
-
-
 
         public bool Turn()
         {
@@ -143,11 +142,11 @@ namespace IodemBot.ColossoBattles
             fighters.Shuffle();
             fighters.OrderByDescending(f => f.Stats.Spd * f.MultiplyBuffs("Speed"))
                 .ToList()
-                .ForEach(f =>Log.AddRange(f.StartTurn()));
+                .ForEach(f => Log.AddRange(f.StartTurn()));
         }
 
         private void MainTurn()
-        { 
+        {
             var fighters = TeamA.Concat(TeamB).ToList();
             fighters.Shuffle();
             fighters
@@ -167,7 +166,7 @@ namespace IodemBot.ColossoBattles
         }
 
         private void EndTurn()
-        { 
+        {
             var fighters = TeamA.Concat(TeamB).ToList();
             fighters.Shuffle();
             fighters.OrderByDescending(f => f.Stats.Spd * f.MultiplyBuffs("Speed"))

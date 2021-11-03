@@ -36,8 +36,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
             if (Global.RandomNumber(0, 100) <= Probability)
             {
-                    targetted.ApplyBuff(new Buff(Stat, Multiplier, (uint)Turns));
-                    log.Add($"{targetted.Name}'s {Stat} {(Multiplier > 1 ? "rises" : "lowers")}.");
+                targetted.ApplyBuff(new Buff(Stat, Multiplier, (uint)Turns));
+                log.Add($"{targetted.Name}'s {Stat} {(Multiplier > 1 ? "rises" : "lowers")}.");
             }
 
             return log;

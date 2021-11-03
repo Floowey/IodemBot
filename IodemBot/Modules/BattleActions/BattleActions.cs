@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using IodemBot.Discords.Actions;
+﻿using System.Threading.Tasks;
+using Discord;
 using IodemBot.ColossoBattles;
 using IodemBot.Discords;
-using Discord;
+using IodemBot.Discords.Actions;
 using Microsoft.Extensions.DependencyInjection;
-using Discord.WebSocket;
-using IodemBot.Extensions;
 
 namespace IodemBot.Modules
 {
@@ -24,6 +18,7 @@ namespace IodemBot.Modules
         protected ColossoBattleService BattleService;
         protected IServiceScope _scope;
         protected BattleEnvironment battle;
+
         protected override Task<(bool Success, string Message)> CheckCustomPreconditionsAsync()
         {
             var guildResult = IsGameCommandAllowedInGuild();
@@ -48,7 +43,6 @@ namespace IodemBot.Modules
         public override bool GuildsOnly => true;
 
         public override GuildPermissions? RequiredPermissions => null;
-
 
         protected PlayerFighter player;
 

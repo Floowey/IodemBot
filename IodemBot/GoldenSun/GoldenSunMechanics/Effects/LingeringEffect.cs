@@ -1,9 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using IodemBot.Extensions;
+﻿using System;
+using System.Collections.Generic;
 using IodemBot.ColossoBattles;
+using IodemBot.Extensions;
 using Newtonsoft.Json;
-using System;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
@@ -17,6 +16,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         [JsonProperty] public bool RemovedOnDeath { get; set; } = true;
         [JsonProperty] public string Text { get; set; } = "";
         [JsonIgnore] private ColossoFighter User;
+
         public override List<string> Apply(ColossoFighter User, ColossoFighter Target)
         {
             this.User = User;
@@ -26,7 +26,6 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public List<string> ApplyLingering(ColossoFighter Target)
         {
-
             var log = new List<string>();
             if (CoolDown > 0)
             {
@@ -34,7 +33,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 CoolDown--;
                 return log;
             }
-            
+
             if (Duration >= 1)
             {
                 Duration--;

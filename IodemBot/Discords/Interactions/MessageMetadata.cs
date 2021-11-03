@@ -1,8 +1,6 @@
-﻿using Discord;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.IO;
-using System.Text;
+using Discord;
 
 namespace IodemBot.Discords
 {

@@ -28,7 +28,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                     var teamMate = User.Party.Where(s => s.IsAlive && !s.Equals(User)).OrderByDescending(p => p.Stats.Atk).Take(TeamMates).ToList();
                     teamMate.ForEach(m =>
                     {
-                        User.addDamage += (uint)(m.Stats.Atk * m.MultiplyBuffs("Attack") / (TeamMates+1));
+                        User.addDamage += (uint)(m.Stats.Atk * m.MultiplyBuffs("Attack") / (TeamMates + 1));
                         log.Add($"{m.Name} assists the attack.");
                     });
                     break;
@@ -38,7 +38,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public override string ToString()
         {
-            return $"Attack alongside {TeamMates} friend{(TeamMates>1?"s":"")}";
+            return $"Attack alongside {TeamMates} friend{(TeamMates > 1 ? "s" : "")}";
         }
     }
 }

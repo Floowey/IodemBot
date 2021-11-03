@@ -183,9 +183,10 @@ namespace IodemBot.ColossoBattles
                     {
                         p.Stats *= djinn.Stats + new Stats(100, 100, 100, 100, 100);
                         p.Stats *= 0.01;
-                        p.ElStats += djinn.ElementalStats * Math.Max(1,(level/10f));
+                        p.ElStats += djinn.ElementalStats * Math.Max(1, (level / 10f));
                     }
                     break;
+
                 case DjinnOption.Unique:
                     var djinnToBeAdded = avatar.DjinnPocket.GetDjinns(djinn);
                     djinn.AddRange(djinnToBeAdded);

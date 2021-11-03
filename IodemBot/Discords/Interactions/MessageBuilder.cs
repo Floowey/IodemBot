@@ -1,11 +1,10 @@
-﻿using Discord;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Discord;
 using Discord.Rest;
-using Discord.Commands;
-using System.IO;
 using IodemBot.Discords.Contexts;
 
 namespace IodemBot.Discords
@@ -20,7 +19,7 @@ namespace IodemBot.Discords
     public class MessageBuilder
     {
         public IUser UserData { get; set; }
-        string BaseMessage { get; set; }
+        private string BaseMessage { get; set; }
         public bool Success { get; protected set; }
         public string Title { get; set; }
         public Color Color { get; set; }
@@ -33,7 +32,7 @@ namespace IodemBot.Discords
         public bool ImageIsSpoiler { get; set; } = false;
         public string ImageFileName { get; set; } = "attachment.png";
 
-        public ComponentBuilder ComponentBuilder {  get; set; }
+        public ComponentBuilder ComponentBuilder { get; set; }
 
         public List<OutputFieldMessage> OutputFieldMessages { get; set; }
 

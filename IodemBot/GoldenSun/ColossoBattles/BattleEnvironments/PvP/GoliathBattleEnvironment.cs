@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
-using IodemBot.Modules.GoldenSunMechanics;
 using Discord;
+using IodemBot.Modules.GoldenSunMechanics;
 
 namespace IodemBot.ColossoBattles
 {

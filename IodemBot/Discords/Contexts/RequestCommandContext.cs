@@ -1,12 +1,11 @@
-﻿using Discord;
-using Discord.Commands;
-using Discord.Rest;
-using Discord.WebSocket;
-using IodemBot.Discords;
-using System;
+﻿using System;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Discord;
+using Discord.Commands;
+using Discord.Rest;
+using Discord.WebSocket;
 
 namespace IodemBot.Discords.Contexts
 {
@@ -25,7 +24,7 @@ namespace IodemBot.Discords.Contexts
         public override SocketUser User => OriginalContext.User;
         public override SocketUserMessage Message => OriginalContext.Message;
 
-        public async override Task<RestUserMessage> ReplyWithMessageAsync(EphemeralRule ephemeralRule, string message = null, bool isTTS = false, Embed[] embeds = null, Embed embed = null, 
+        public async override Task<RestUserMessage> ReplyWithMessageAsync(EphemeralRule ephemeralRule, string message = null, bool isTTS = false, Embed[] embeds = null, Embed embed = null,
             RequestOptions options = null, AllowedMentions allowedMentions = null, MessageReference messageReference = null, MessageComponent components = null, bool hasMentions = false)
         {
             await GetInitialAsync(true);
@@ -36,7 +35,7 @@ namespace IodemBot.Discords.Contexts
             return await Channel.SendMessageAsync(message, isTTS, embed, options, allowedMentions, messageReference, components);
         }
 
-        public async override Task<RestUserMessage> ReplyWithFileAsync(EphemeralRule ephemeralRule, Stream stream, string filename, bool isSpoiler, string message = null, bool isTTS = false, Embed[] embeds = null, Embed embed = null, 
+        public async override Task<RestUserMessage> ReplyWithFileAsync(EphemeralRule ephemeralRule, Stream stream, string filename, bool isSpoiler, string message = null, bool isTTS = false, Embed[] embeds = null, Embed embed = null,
             RequestOptions options = null, AllowedMentions allowedMentions = null, MessageReference messageReference = null, MessageComponent components = null, bool hasMentions = false)
         {
             await GetInitialAsync(true);

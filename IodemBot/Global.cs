@@ -11,6 +11,7 @@ namespace IodemBot
         public static Random Random { get; set; } = new Random();
 
         private static readonly object synclock = new object();
+
         internal static int RandomNumber(int low, int high)
         {
             lock (synclock)
@@ -18,6 +19,7 @@ namespace IodemBot
                 return Random.Next(low, high);
             }
         }
+
         internal static DateTime UpSince { get; set; }
 
         internal static IUser Owner
@@ -31,6 +33,7 @@ namespace IodemBot
                 return _Owner;
             }
         }
+
         private static IUser _Owner { get; set; }
 
         internal static string DateString

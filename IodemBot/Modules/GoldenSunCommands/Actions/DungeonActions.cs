@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Discord;
 using Discord.Net;
@@ -30,6 +29,7 @@ namespace IodemBot.Modules
             CanRefreshAsync = _ => Task.FromResult((true, (string)null)),
             RefreshAsync = RefreshAsync
         };
+
         public async Task RefreshAsync(bool intoNew, MessageProperties msgProps)
         {
             var user = EntityConverter.ConvertUser(Context.User);
@@ -68,7 +68,6 @@ namespace IodemBot.Modules
             var availableOneTimeUnlocks = unlockedDungeons.Where(d => d.IsOneTimeOnly && d.Requirement.FulfilledRequirements(user)).Select(s => s.Name).ToArray();
             var unavailableOneTimeUnlocks = unlockedDungeons.Where(d => d.IsOneTimeOnly && !d.Requirement.FulfilledRequirements(user)).Select(s => s.Name).ToArray();
 
-           
             builder.WithTitle("Dungeons");
 
             if (availablePermUnlocks.Any())
@@ -115,7 +114,6 @@ namespace IodemBot.Modules
             if (availableLocations.Count > 0)
                 builder.WithSelectMenu($"{nameof(OpenDungeonAction)}.L", availableLocations, "Select a location to visit");
 
-
             List<SelectMenuOptionBuilder> availableDungeons = new();
             foreach (var dungeon in availableOneTimeUnlocks)
             {
@@ -131,13 +129,13 @@ namespace IodemBot.Modules
 
     public class OpenDungeonAction : BotComponentAction
     {
-        [ActionParameterComponent(Required =true)]
+        [ActionParameterComponent(Required = true)]
         private string SelectedDungeonName { get; set; }
+
         private Dungeon Dungeon;
         private ColossoBattleService BattleService;
-        public override EphemeralRule EphemeralRule =>EphemeralRule.EphemeralOrFail;
+        public override EphemeralRule EphemeralRule => EphemeralRule.EphemeralOrFail;
         public override bool GuildsOnly => true;
-
 
         public override GuildPermissions? RequiredPermissions => null;
 
@@ -148,15 +146,14 @@ namespace IodemBot.Modules
             try
             {
                 if (Context is RequestInteractionContext r)
-                await r.OriginalInteraction.DeferAsync();
+                    await r.OriginalInteraction.DeferAsync();
             }
             catch (HttpException)
             {
-
             }
 
-            var openBattle = new GauntletBattleEnvironment(BattleService, $"{Context.User.Username}", gs.ColossoChannel, 
-                await BattleService.PrepareBattleChannel($"{Dungeon.Name}-{Context.User.Username}", 
+            var openBattle = new GauntletBattleEnvironment(BattleService, $"{Context.User.Username}", gs.ColossoChannel,
+                await BattleService.PrepareBattleChannel($"{Dungeon.Name}-{Context.User.Username}",
                 Context.Guild, persistent: false), Dungeon.Name, false);
 
             BattleService.AddBattleEnvironment(openBattle);
@@ -172,14 +169,12 @@ namespace IodemBot.Modules
             var acc = EntityConverter.ConvertUser(Context.User);
             if (!TryGetDungeon(SelectedDungeonName, out Dungeon))
                 return Task.FromResult((false, $"I don't know where that place is."));
-            
+
             if (!acc.Dungeons.Contains(Dungeon.Name) && !Dungeon.IsDefault)
-                return Task.FromResult((false,$"If you can't tell me where this place is, I can't take you there. And even if you knew, they probably wouldn't let you in! Bring me a map or show to me that you have the key to enter."));
-            
+                return Task.FromResult((false, $"If you can't tell me where this place is, I can't take you there. And even if you knew, they probably wouldn't let you in! Bring me a map or show to me that you have the key to enter."));
 
             if (!Dungeon.Requirement.Applies(acc))
                 return Task.FromResult((false, $"I'm afraid that I can't take you to this place, it is too dangerous for you and me both."));
-            
 
             var gauntletFromUser = BattleService.GetBattleEnvironment<GauntletBattleEnvironment>(b => b.Name.Equals(Context.User.Username, StringComparison.CurrentCultureIgnoreCase));
             if (gauntletFromUser != null)

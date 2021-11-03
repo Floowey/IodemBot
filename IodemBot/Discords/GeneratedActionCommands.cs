@@ -1,21 +1,14 @@
-﻿using Discord;
-using Discord.Commands;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
-using System.IO;
+﻿using System;
 using System.Linq;
-using System.Text.RegularExpressions;
-using System.Security.Authentication.ExtendedProtection;
-using Discord.WebSocket;
-using Microsoft.Extensions.DependencyInjection;
-using Discord.Rest;
+using System.Threading.Tasks;
+using Discord;
+using Discord.Commands;
 using Discord.Commands.Builders;
-using IodemBot.Discords.Actions.Attributes;
-using IodemBot.Discords.Services;
 using IodemBot.Discords.Actions;
+using IodemBot.Discords.Actions.Attributes;
 using IodemBot.Discords.Contexts;
+using IodemBot.Discords.Services;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace IodemBot.Discords
 {
@@ -24,8 +17,8 @@ namespace IodemBot.Discords
     {
         // DI Services
         public ActionService ActionService { get; set; }
-        public IServiceProvider ServiceProvider { get; set; }
 
+        public IServiceProvider ServiceProvider { get; set; }
 
         protected override void OnModuleBuilding(CommandService commandService, ModuleBuilder builder)
         {

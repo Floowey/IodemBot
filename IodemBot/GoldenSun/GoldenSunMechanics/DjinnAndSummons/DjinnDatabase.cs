@@ -82,7 +82,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 djinn = (Djinn)d.Clone();
                 return true;
             }
-        //    Console.WriteLine($"Djinn {DjinnName} is not implemented.");
+            //    Console.WriteLine($"Djinn {DjinnName} is not implemented.");
             return false;
         }
 

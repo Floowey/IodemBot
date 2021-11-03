@@ -37,7 +37,8 @@ namespace IodemBot
 
         public static Color Get(IEnumerable<string> keys)
         {
-            if (keys.Count() == 0){
+            if (keys.Count() == 0)
+            {
                 return Color.LightGrey;
             }
             int r = 0;

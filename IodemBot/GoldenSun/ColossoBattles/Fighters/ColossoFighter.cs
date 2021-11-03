@@ -26,7 +26,6 @@ namespace IodemBot.ColossoBattles
 
     public abstract class ColossoFighter : IComparable<ColossoFighter>, ICloneable
     {
-
         public static readonly Dictionary<Condition, string> ConditionStrings = new Dictionary<Condition, string>()
         {
             { Condition.Down, "<:curse:538074679492083742>"},
@@ -54,7 +53,6 @@ namespace IodemBot.ColossoBattles
         [JsonIgnore] public Team enemies { get => party == Team.A ? Team.B : Team.A; }
         [JsonIgnore] public List<ColossoFighter> Party => battle.GetTeam(party);
         [JsonIgnore] public List<ColossoFighter> Enemies => battle.GetTeam(enemies);
-
 
         [JsonProperty("Conditions", ItemConverterType = typeof(StringEnumConverter))]
         private List<Condition> Conditions = new List<Condition>();
@@ -238,11 +236,11 @@ namespace IodemBot.ColossoBattles
             List<string> turnLog = new List<string>();
             turnLog.AddRange(EndTurnLingeringEffects()); // Should include Passive Healing and Damaging Abilities
 
-            turnLog.AddRange(EndTurnDjinnRecovery()); 
+            turnLog.AddRange(EndTurnDjinnRecovery());
             RemoveCondition(Condition.Counter); //Might need to go first
 
             turnLog.AddRange(EndTurnPassiveRecovery()); // HP and PP from equipment
-            
+
             turnLog.AddRange(EndTurnDoBuffs()); // Count Down Stat Increases
             turnLog.AddRange(EndTurnDoConditions()); // Poison, Venom, Stun, Sleep, Seal, Delusion, Curse
 
@@ -295,7 +293,7 @@ namespace IodemBot.ColossoBattles
             }
             return turnLog;
         }
-        
+
         private List<string> ConditionDamage()
         {
             var turnLog = new List<string>();
@@ -396,8 +394,8 @@ namespace IodemBot.ColossoBattles
             {
                 return new List<string>();
             }
-
         }
+
         private List<string> EndTurnDjinnRecovery()
         {
             return Moves.OfType<Djinn>().SelectMany(d => d.EndTurn(this)).ToList();
@@ -436,8 +434,6 @@ namespace IodemBot.ColossoBattles
             return new List<string>();
         }
 
-
-
         public string GetMoves(bool detailed = true)
         {
             var relevantMoves = Moves.Where(m => m is Psynergy).ToList().Select(m => m.Emote);
@@ -447,8 +443,6 @@ namespace IodemBot.ColossoBattles
             }
             return string.Join(" - ", relevantMoves);
         }
-
-       
 
         public bool HasCondition(Condition con)
         {
@@ -567,7 +561,6 @@ namespace IodemBot.ColossoBattles
             }
         }
 
-       
         public List<string> Revive(uint percentage)
         {
             List<string> log = new List<string>();

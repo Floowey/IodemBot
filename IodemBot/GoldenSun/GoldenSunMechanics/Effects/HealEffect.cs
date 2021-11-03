@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using IodemBot.ColossoBattles;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
-    class HealEffect : Effect
+    internal class HealEffect : Effect
     {
         public override string Type => "Heal";
         public int Percentage { get; set; }
@@ -16,7 +14,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public override List<string> Apply(ColossoFighter User, ColossoFighter Target)
         {
-            var log = new List<string>(); 
+            var log = new List<string>();
             int Power = (int)(User.ElStats.GetPower(Element) * User.MultiplyBuffs("Power"));
             var HPtoHeal = (uint)(HealPower * Power / 100 + Target.Stats.MaxHP * Percentage / 100);
             if (HPtoHeal > 0)

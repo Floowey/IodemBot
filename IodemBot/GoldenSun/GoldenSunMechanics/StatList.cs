@@ -34,7 +34,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public static ElementalStats operator *(ElementalStats s, float k)
         {
-            return new ElementalStats((int)(s.VenusAtk * k), (int)(s.VenusRes* k), (int)(s.MarsAtk* k), (int)(s.MarsRes * k), (int)(s.JupiterAtk * k), (int)(s.JupiterRes* k), (int)(s.MercuryAtk* k), (int)(s.MercuryRes* k));
+            return new ElementalStats((int)(s.VenusAtk * k), (int)(s.VenusRes * k), (int)(s.MarsAtk * k), (int)(s.MarsRes * k), (int)(s.JupiterAtk * k), (int)(s.JupiterRes * k), (int)(s.MercuryAtk * k), (int)(s.MercuryRes * k));
         }
 
         public override string ToString()

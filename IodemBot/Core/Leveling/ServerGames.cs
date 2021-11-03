@@ -5,10 +5,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using Discord;
 using Discord.WebSocket;
+using IodemBot.ColossoBattles;
 using IodemBot.Core.UserManagement;
 using IodemBot.Extensions;
 using IodemBot.Modules;
-using IodemBot.ColossoBattles;
 using IodemBot.Modules.GoldenSunMechanics;
 
 namespace IodemBot.Core.Leveling
@@ -16,13 +16,13 @@ namespace IodemBot.Core.Leveling
     internal static class ServerGames
     {
         internal static string BattleFile { get => $"Logs/Battles_{DateTime.Now:yyyy-MM-dd}.log"; }
+
         internal static async void UserWonColosso(SocketGuildUser user, IMessageChannel channel)
         {
             var userAccount = EntityConverter.ConvertUser(user);
             uint oldLevel = userAccount.LevelNumber;
             userAccount.AddXp((uint)Global.RandomNumber(40, 70));
             uint newLevel = userAccount.LevelNumber;
-
 
             userAccount.ServerStats.ColossoWins++;
             userAccount.ServerStats.ColossoStreak++;
@@ -195,7 +195,6 @@ namespace IodemBot.Core.Leveling
             if (avatar.ServerStats.DungeonsCompleted >= 12)
             {
                 _ = GoldenSunCommands.AwardClassSeries("Air Pilgrim Series", avatar, channel);
-
             }
             string csvline = $"{DateTime.Now:s},Dungeon,{dungeon.Name},{avatar.Name}{Environment.NewLine}";
             File.AppendAllText(BattleFile, csvline);

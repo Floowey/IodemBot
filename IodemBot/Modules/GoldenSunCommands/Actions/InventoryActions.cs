@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Discord;
-using Discord.Net;
 using Discord.Rest;
 using Discord.WebSocket;
 using IodemBot.Core.UserManagement;
@@ -23,13 +21,14 @@ namespace IodemBot.Modules
     public class InventoryAction : IodemBotCommandAction
     {
         public override bool GuildsOnly => false;
-        [ActionParameterComponent(Order =0, Name ="Detail", Description="...", Required =false)]
+
+        [ActionParameterComponent(Order = 0, Name = "Detail", Description = "...", Required = false)]
         public Detail detail { get; set; } = Detail.None;
+
         public override ActionGuildSlashCommandProperties SlashCommandProperties => new()
         {
             Name = "inv",
             Description = "Manage your Inventory",
-            
         };
 
         public override ActionCommandRefreshProperties CommandRefreshProperties => new()
@@ -52,6 +51,7 @@ namespace IodemBot.Modules
             msgProps.Components = GetInventoryComponent(account, detail);
             await Task.CompletedTask;
         }
+
         public override async Task RunAsync()
         {
             var account = EntityConverter.ConvertUser(Context.User);
@@ -59,14 +59,15 @@ namespace IodemBot.Modules
             var component = GetInventoryComponent(account, detail);
             await Context.ReplyWithMessageAsync(EphemeralRule, embed: embed, components: component);
         }
-        private static readonly Dictionary<Detail, char> split = new ()
+
+        private static readonly Dictionary<Detail, char> split = new()
         {
             { Detail.None, '>' },
-            {Detail.Names,',' },
-            {Detail.NameAndPrice, '\n' }
+            { Detail.Names, ',' },
+            { Detail.NameAndPrice, '\n' }
         };
 
-        internal static Embed GetInventoryEmbed(UserAccount account, Detail detail=Detail.None)
+        internal static Embed GetInventoryEmbed(UserAccount account, Detail detail = Detail.None)
         {
             var inv = account.Inv;
             var embed = new EmbedBuilder()
@@ -100,7 +101,7 @@ namespace IodemBot.Modules
             }
 
             var fb = new EmbedFooterBuilder();
-            int upgradeCost = (int) (50000 * Math.Pow(2, inv.Upgrades));
+            int upgradeCost = (int)(50000 * Math.Pow(2, inv.Upgrades));
             fb.WithText($"{inv.Count} / {inv.MaxInvSize} {(inv.Upgrades < 4 ? $"Upgrade: {upgradeCost}" : "")}");
             embed.AddField("Coin", $"{Emotes.GetIcon("Coin")} {inv.Coins}");
             embed.WithColor(Colors.Get("Iodem"));
@@ -119,11 +120,11 @@ namespace IodemBot.Modules
             builder.WithButton(labels ? "Warrior Gear" : null, $"#{nameof(GearAction)}.Warrior", emote: Emotes.GetEmote("Warrior"), style: ButtonStyle.Success);
             builder.WithButton(labels ? "Mage Gear" : null, $"#{nameof(GearAction)}.Mage", emote: Emotes.GetEmote("Mage"), style: ButtonStyle.Success);
             var chest = inv.HasAnyChests() ? inv.NextChestQuality() : ChestQuality.Normal;
-            builder.WithButton(labels ? "Open Chest" : null, $"#{nameof(ChestAction)}.{chest}", style: ButtonStyle.Success, emote: Emotes.GetEmote(chest), disabled:!inv.HasAnyChests());
+            builder.WithButton(labels ? "Open Chest" : null, $"#{nameof(ChestAction)}.{chest}", style: ButtonStyle.Success, emote: Emotes.GetEmote(chest), disabled: !inv.HasAnyChests());
             if (inv.Upgrades < 4)
-                builder.WithButton(labels ? "Upgrade" : null, $"{nameof(UpgradeInventory)}", style: ButtonStyle.Success, emote: Emotes.GetEmote("UpgradeInventoryAction"), disabled: !inv.HasBalance(upgradeCost), row:1);
-           
-            builder.WithButton(labels ? "Sort" : null, $"{nameof(SortInventory)}", style: ButtonStyle.Success, emote: Emotes.GetEmote("SortInventoryAction"),row:1);
+                builder.WithButton(labels ? "Upgrade" : null, $"{nameof(UpgradeInventory)}", style: ButtonStyle.Success, emote: Emotes.GetEmote("UpgradeInventoryAction"), disabled: !inv.HasBalance(upgradeCost), row: 1);
+
+            builder.WithButton(labels ? "Sort" : null, $"{nameof(SortInventory)}", style: ButtonStyle.Success, emote: Emotes.GetEmote("SortInventoryAction"), row: 1);
             builder.WithButton(labels ? "Shop" : null, $"#{nameof(ShopAction)}.", ButtonStyle.Success, Emotes.GetEmote("ShopAction"), row: 1);
             if (detail == Detail.None)
                 builder.WithButton(labels ? "Show Names" : null, $"#{nameof(InventoryAction)}.Names", ButtonStyle.Secondary, Emotes.GetEmote("LabelsOn"), row: 1);
@@ -138,26 +139,30 @@ namespace IodemBot.Modules
     public class GearAction : IodemBotCommandAction
     {
         public override bool GuildsOnly => false;
-        [ActionParameterSlash(Order =0, Name ="archtype", Description ="Archtype", Required =false, Type=ApplicationCommandOptionType.String)]
-        [ActionParameterOptionString(Order =1, Name ="Warrior", Value ="Warrior")]
+
+        [ActionParameterSlash(Order = 0, Name = "archtype", Description = "Archtype", Required = false, Type = ApplicationCommandOptionType.String)]
+        [ActionParameterOptionString(Order = 1, Name = "Warrior", Value = "Warrior")]
         [ActionParameterOptionString(Order = 2, Name = "Mage", Value = "Mage")]
         [ActionParameterComponent(Order = 0, Name = "archtype", Required = false)]
         public ArchType SelectedArchtype { get; set; } = ArchType.Warrior;
 
-        [ActionParameterComponent(Order=1, Name ="selection", Required = false)]
+        [ActionParameterComponent(Order = 1, Name = "selection", Required = false)]
         public string SelectedCategory { get; set; }
+
         public override EphemeralRule EphemeralRule => EphemeralRule.EphemeralOrFail;
+
         public override ActionGlobalSlashCommandProperties SlashCommandProperties => new()
         {
             Name = "gear",
-            Description ="Change the gear of one of your two Archtypes",
-            FillParametersAsync = options => 
+            Description = "Change the gear of one of your two Archtypes",
+            FillParametersAsync = options =>
             {
                 if (options != null)
                     SelectedArchtype = Enum.Parse<ArchType>((string)options.FirstOrDefault().Value);
                 return Task.CompletedTask;
             }
         };
+
         public override async Task RunAsync()
         {
             var account = EntityConverter.ConvertUser(Context.User);
@@ -172,20 +177,20 @@ namespace IodemBot.Modules
             {
                 if (idOptions != null && idOptions.Any())
                 {
-                    var arch_opt = (string) idOptions[0];
+                    var arch_opt = (string)idOptions[0];
                     SelectedArchtype = Enum.Parse<ArchType>(arch_opt);
 
-                    if(idOptions.Length > 1)
+                    if (idOptions.Length > 1)
                     {
-                        var gear_opt = (string) idOptions[1];
+                        var gear_opt = (string)idOptions[1];
                         SelectedCategory = gear_opt;
                     }
-                } 
-                if(selectOptions != null && selectOptions.Any())
+                }
+                if (selectOptions != null && selectOptions.Any())
                 {
                     SelectedCategory = selectOptions.FirstOrDefault();
                 }
-                    return Task.CompletedTask;
+                return Task.CompletedTask;
             },
             CanRefreshAsync = CanRefreshAsync,
             RefreshAsync = RefreshAsync
@@ -203,7 +208,6 @@ namespace IodemBot.Modules
             var ItemsForGear = inv.Where(i => !Exclusives(SelectedArchtype).Contains(i.ItemType)).ToList();
             if (ItemsForGear.Count == 0)
                 return Task.FromResult((false, $"You don't have any items equippable for {SelectedArchtype}."));
-
 
             return Task.FromResult((true, (string)null));
         }
@@ -223,7 +227,8 @@ namespace IodemBot.Modules
         }
 
         private bool IsWarrior { get => SelectedArchtype == ArchType.Warrior; }
-        private static ItemType[] Exclusives(ArchType archType) => archType == ArchType. Warrior ? Inventory.MageExclusive : Inventory.WarriorExclusive;
+
+        private static ItemType[] Exclusives(ArchType archType) => archType == ArchType.Warrior ? Inventory.MageExclusive : Inventory.WarriorExclusive;
 
         internal static Embed GetGearEmbed(UserAccount account, ArchType archtype)
         {
@@ -232,7 +237,7 @@ namespace IodemBot.Modules
             var ItemsForGear = inv.Where(i => !Exclusives(archtype).Contains(i.ItemType)).ToList();
 
             embed.AddField($"{archtype} Gear", inv.GearToString(archtype), false);
-            
+
             var invstring = string.Join("", ItemsForGear.Select(i => i.IconDisplay));
             if (invstring.Length >= 1024)
             {
@@ -258,7 +263,7 @@ namespace IodemBot.Modules
             return embed.Build();
         }
 
-        internal static MessageComponent GetGearComponent(UserAccount account, ArchType archtype, string category=null)
+        internal static MessageComponent GetGearComponent(UserAccount account, ArchType archtype, string category = null)
         {
             var inv = account.Inv;
             var embed = new EmbedBuilder();
@@ -271,48 +276,49 @@ namespace IodemBot.Modules
             var labels = account.Preferences.ShowButtonLabels;
             foreach (var cat in Item.Equippables)
             {
-                if(ItemsForGear.Count(i => i.Category == cat) > 0)
+                if (ItemsForGear.Count(i => i.Category == cat) > 0)
                 {
                     var equipped = EquippedGear.FirstOrDefault(i => i.Category == cat);
                     var icons = isWarrior ? Inventory.WarriorIcons : Inventory.MageIcons;
                     var emote = equipped?.IconDisplay ?? icons[cat];
                     var defaultSel = category?.Equals(cat.ToString()) ?? false;
-                    categoryOptions.Add(new SelectMenuOptionBuilder($"{cat}", $"{cat}", isDefault:defaultSel, emote: Emote.Parse(emote)));
+                    categoryOptions.Add(new SelectMenuOptionBuilder($"{cat}", $"{cat}", isDefault: defaultSel, emote: Emote.Parse(emote)));
                 }
             }
-            builder.WithSelectMenu( $"#{nameof(GearAction)}.{archtype}", categoryOptions, placeholder:"Select a Gear Slot", row:0);
+            builder.WithSelectMenu($"#{nameof(GearAction)}.{archtype}", categoryOptions, placeholder: "Select a Gear Slot", row: 0);
 
-            if(!string.IsNullOrEmpty(category))
+            if (!string.IsNullOrEmpty(category))
             {
                 var itemOptions = new List<SelectMenuOptionBuilder>();
                 foreach (var item in ItemsForGear.Where(i => category.Equals(i.Category.ToString())))
                 {
                     var defaultSel = EquippedGear.Contains(item);
-                    if(!itemOptions.Any(o => o.Value.Equals(item.Name)))
-                        itemOptions.Add(new SelectMenuOptionBuilder($"{item.Name}", $"{item.Name}", emote: Emote.Parse(item.IconDisplay),isDefault: defaultSel));
+                    if (!itemOptions.Any(o => o.Value.Equals(item.Name)))
+                        itemOptions.Add(new SelectMenuOptionBuilder($"{item.Name}", $"{item.Name}", emote: Emote.Parse(item.IconDisplay), isDefault: defaultSel));
                 }
 
-                builder.WithSelectMenu( $"#{nameof(EquipAction)}.{archtype}", options: itemOptions, placeholder:"Select an item to equip it to this slot", row:1);
+                builder.WithSelectMenu($"#{nameof(EquipAction)}.{archtype}", options: itemOptions, placeholder: "Select an item to equip it to this slot", row: 1);
             }
-            builder.WithButton(labels?"Inventory":null, $"#{nameof(InventoryAction)}", style: ButtonStyle.Success, emote: Emotes.GetEmote("InventoryAction"));
+            builder.WithButton(labels ? "Inventory" : null, $"#{nameof(InventoryAction)}", style: ButtonStyle.Success, emote: Emotes.GetEmote("InventoryAction"));
             if (inv.GetGear(ArchType.Mage).Any(w => w.IsCursed) || inv.GetGear(ArchType.Warrior).Any(w => w.IsCursed))
                 builder.WithButton(labels ? "Remove Cursed Gear" : null, $"{nameof(RemoveCursedGearInventory)}.None", ButtonStyle.Success, Emotes.GetEmote("RemoveCursedAction"));
 
             return builder.Build();
         }
     }
-    
+
     public class EquipAction : IodemBotCommandAction
     {
         public override bool GuildsOnly => false;
-        [ActionParameterComponent(Order=0, Name="archtype", Description= "...", Required =true)]
+
+        [ActionParameterComponent(Order = 0, Name = "archtype", Description = "...", Required = true)]
         [ActionParameterOptionString(Order = 1, Name = "Warrior", Value = "Warrior")]
         [ActionParameterOptionString(Order = 2, Name = "Mage", Value = "Mage")]
         [ActionParameterSlash(Order = 0, Name = "archtype", Description = "The archtype to equip to", Required = true, Type = ApplicationCommandOptionType.String)]
         public ArchType archType { get; set; }
 
         //[ActionParameterComponent(Order = 1, Name = "item", Description ="...", Required = true)]
-        [ActionParameterSlash(Order=1, Name="item", Description= "The item to equip", Required=true, Type=ApplicationCommandOptionType.String)]
+        [ActionParameterSlash(Order = 1, Name = "item", Description = "The item to equip", Required = true, Type = ApplicationCommandOptionType.String)]
         public string ItemToEquip { get; set; }
 
         public override async Task RunAsync()
@@ -325,6 +331,7 @@ namespace IodemBot.Modules
             var component = GearAction.GetGearComponent(account, archType, item?.Category.ToString() ?? null);
             await Context.ReplyWithMessageAsync(EphemeralRule, embed: embed, components: component);
         }
+
         public override ActionGlobalSlashCommandProperties SlashCommandProperties => new()
         {
             Name = "equip",
@@ -333,10 +340,11 @@ namespace IodemBot.Modules
             {
                 if (options != null)
                     archType = Enum.Parse<ArchType>((string)options.FirstOrDefault().Value);
-                    ItemToEquip = (string)options.ElementAt(1).Value;
+                ItemToEquip = (string)options.ElementAt(1).Value;
                 return Task.CompletedTask;
             }
         };
+
         public override ActionCommandRefreshProperties CommandRefreshProperties => new()
         {
             CanRefreshAsync = CanRefreshAsync,
@@ -376,12 +384,13 @@ namespace IodemBot.Modules
         {
             var account = EntityConverter.ConvertUser(Context.User);
             var item = ItemDatabase.GetItem(ItemToEquip);
-            
+
             EquipItem(account);
             msgProps.Embed = GearAction.GetGearEmbed(account, archType);
             msgProps.Components = GearAction.GetGearComponent(account, archType, item?.Category.ToString() ?? null);
             await Task.CompletedTask;
         }
+
         protected override Task<(bool Success, string Message)> CheckCustomPreconditionsAsync()
         {
             var user = Context.User;
@@ -406,12 +415,15 @@ namespace IodemBot.Modules
     {
         public override bool GuildsOnly => false;
         private Inventory _shop { get; set; }
+
         public override ActionGlobalSlashCommandProperties SlashCommandProperties => new()
         {
             Name = "shop",
             Description = "I wonder what's in store today"
         };
+
         public override EphemeralRule EphemeralRule => EphemeralRule.Permanent;
+
         public override async Task RunAsync()
         {
             _shop = ItemDatabase.GetShop();
@@ -434,7 +446,7 @@ namespace IodemBot.Modules
             {
                 builder.WithButton("Inventory", $"#{nameof(InventoryAction)}", style: ButtonStyle.Success, emote: Emotes.GetEmote("InventoryAction"));
             }
-            msgProps.Components = builder.Build() ;
+            msgProps.Components = builder.Build();
             return Task.CompletedTask;
         }
 
@@ -458,7 +470,8 @@ namespace IodemBot.Modules
         {
             var builder = new ComponentBuilder();
             List<SelectMenuOptionBuilder> options = new();
-            foreach (var item in _shop){
+            foreach (var item in _shop)
+            {
                 options.Add(new SelectMenuOptionBuilder($"{item.Name} - {item.Price}", $"{item.Itemname}", emote: Emote.Parse(item.IconDisplay)));
             }
             builder.WithSelectMenu(nameof(ShopTake), options, placeholder: "Select an item to buy it.");
@@ -475,10 +488,11 @@ namespace IodemBot.Modules
         public override bool GuildsOnly => false;
 
         public override GuildPermissions? RequiredPermissions => null;
+
         public override Task FillParametersAsync(string[] selectOptions, object[] idOptions)
         {
             if (idOptions != null && idOptions.Any() && idOptions[0] != null && idOptions[0].ToString().Length > 0)
-                ItemName = (string) idOptions[0];
+                ItemName = (string)idOptions[0];
             else if (selectOptions != null && selectOptions.Any() && selectOptions[0] != null && selectOptions[0].ToString().Length > 0)
                 ItemName = selectOptions[0];
 
@@ -493,7 +507,8 @@ namespace IodemBot.Modules
             {
                 UserAccountProvider.StoreUser(account);
                 await Context.ReplyWithMessageAsync(EphemeralRule, "Successfully bought item");
-            } else
+            }
+            else
             {
                 await Context.ReplyWithMessageAsync(EphemeralRule, "Couldn't buy that.");
             }
@@ -515,10 +530,10 @@ namespace IodemBot.Modules
 
             if (!shop.Any(i => i.Itemname.Equals(item.Itemname, StringComparison.CurrentCultureIgnoreCase)))
                 return Task.FromResult((false, "The shop does not carry this item at the moment."));
-            
-            if(!account.Inv.HasBalance(item.Price))
+
+            if (!account.Inv.HasBalance(item.Price))
                 return Task.FromResult((false, "Not enough money"));
-            
+
             return Task.FromResult((true, (string)null));
         }
     }
@@ -543,6 +558,7 @@ namespace IodemBot.Modules
             _ = OpenChestAsync(account);
             await Task.CompletedTask;
         }
+
         public override ActionGlobalSlashCommandProperties SlashCommandProperties => new()
         {
             Name = "chest",
@@ -557,6 +573,7 @@ namespace IodemBot.Modules
                 return Task.CompletedTask;
             }
         };
+
         public override ActionCommandRefreshProperties CommandRefreshProperties => new()
         {
             CanRefreshAsync = CanRefreshAsync,
@@ -584,8 +601,8 @@ namespace IodemBot.Modules
                 var account = EntityConverter.ConvertUser(Context.User);
                 _ = OpenChestAsync(account);
                 await Task.CompletedTask;
-
-            } catch (Exception e)
+            }
+            catch (Exception e)
             {
                 Console.WriteLine(e);
             }
@@ -619,7 +636,6 @@ namespace IodemBot.Modules
             //}
             //);
 
-
             if (InventoryMessage != null)
             {
                 await InventoryMessage.ModifyAsync(msgProps =>
@@ -629,6 +645,7 @@ namespace IodemBot.Modules
                 });
             }
         }
+
         private Embed GetFirstChestEmbed()
         {
             var embed = new EmbedBuilder();
@@ -638,6 +655,7 @@ namespace IodemBot.Modules
             embed.WithColor(Colors.Get("Iodem"));
             return embed.Build();
         }
+
         private Embed GetSecondChestEmbed(Item item, Inventory inv, bool isSold = false)
         {
             var embed = new EmbedBuilder();
@@ -646,7 +664,7 @@ namespace IodemBot.Modules
             {
                 embed.WithFooter($"Current Reward: {inv.DailiesInARow % Inventory.dailyRewards.Length + 1}/{Inventory.dailyRewards.Length} | Overall Streak: {inv.DailiesInARow + 1}");
             }
-            embed.WithDescription($"{Emotes.GetIcon(chestQuality.Value)} You found a {item.Name} {item.IconDisplay}{(isSold? "(Auto Sold)" : "")}");
+            embed.WithDescription($"{Emotes.GetIcon(chestQuality.Value)} You found a {item.Name} {item.IconDisplay}{(isSold ? "(Auto Sold)" : "")}");
 
             return embed.Build();
         }
@@ -661,7 +679,7 @@ namespace IodemBot.Modules
             if (!chestQuality.HasValue)
                 chestQuality = inv.NextChestQuality();
             if (!inv.HasChest(chestQuality.Value)) return Task.FromResult((false, $"You don't have any {chestQuality} chests"));
-            if(inv.IsFull) return Task.FromResult((false, "Your inventory is full."));
+            if (inv.IsFull) return Task.FromResult((false, "Your inventory is full."));
 
             return Task.FromResult((true, (string)null));
         }
@@ -674,12 +692,13 @@ namespace IodemBot.Modules
         public override bool GuildsOnly => false;
 
         public override GuildPermissions? RequiredPermissions => null;
-     
+
         public override async Task RunAsync()
         {
             _ = UpgradeInv();
             await Task.CompletedTask;
         }
+
         private async Task UpgradeInv()
         {
             var account = EntityConverter.ConvertUser(Context.User);
@@ -698,6 +717,7 @@ namespace IodemBot.Modules
                 await Context.ReplyWithMessageAsync(EphemeralRule, "Successfully upgraded inventory.");
             }
         }
+
         protected override Task<(bool Success, string Message)> CheckCustomPreconditionsAsync()
         {
             var guildResult = IsGameCommandAllowedInGuild();
@@ -730,6 +750,7 @@ namespace IodemBot.Modules
             _ = RemoveCursed();
             await Task.CompletedTask;
         }
+
         private async Task RemoveCursed()
         {
             var account = EntityConverter.ConvertUser(Context.User);
@@ -746,6 +767,7 @@ namespace IodemBot.Modules
                 await Context.ReplyWithMessageAsync(EphemeralRule, "A priest removed all of your cursed equipment");
             }
         }
+
         protected override Task<(bool Success, string Message)> CheckCustomPreconditionsAsync()
         {
             var guildResult = IsGameCommandAllowedInGuild();
@@ -771,14 +793,16 @@ namespace IodemBot.Modules
             UserAccountProvider.StoreUser(account);
             await Context.ReplyWithMessageAsync(EphemeralRule, $"Renamed {item.IconDisplay} {item.Itemname} to {NewName}");
         }
-        [ActionParameterSlash(Order = 0, Name = "item", Description = "The item to rename", Required=true, Type=ApplicationCommandOptionType.String)]
+
+        [ActionParameterSlash(Order = 0, Name = "item", Description = "The item to rename", Required = true, Type = ApplicationCommandOptionType.String)]
         public string ItemToRename { get; set; }
 
         [ActionParameterSlash(Order = 1, Name = "name", Description = "The Name to rename it to", Required = false, Type = ApplicationCommandOptionType.String)]
-
         public string NewName { get; set; }
+
         public override EphemeralRule EphemeralRule => EphemeralRule.EphemeralOrFail;
         public override bool GuildsOnly => true;
+
         public override ActionGlobalSlashCommandProperties SlashCommandProperties => new()
         {
             Name = "renameitem",
@@ -787,7 +811,7 @@ namespace IodemBot.Modules
             {
                 if (options != null)
                     ItemToRename = (string)options.FirstOrDefault().Value;
-                if(options.Count() > 1)
+                if (options.Count() > 1)
                     NewName = ((string)options.ElementAt(1)?.Value ?? "").Trim();
 
                 return Task.CompletedTask;
@@ -817,7 +841,7 @@ namespace IodemBot.Modules
             var account = EntityConverter.ConvertUser(Context.User);
             var inv = account.Inv;
             EmbedBuilder embed = new();
-            if(ItemsToSell.Length == 1)
+            if (ItemsToSell.Length == 1)
             {
                 var item = ItemsToSell[0];
                 var it = inv.GetItem(item);
@@ -831,7 +855,8 @@ namespace IodemBot.Modules
                     embed.WithDescription(":x: You can only sell unequipped items in your possession.");
                     embed.WithColor(Colors.Get("Error"));
                 }
-            } else
+            }
+            else
             {
                 uint sum = 0;
                 uint successfull = 0;
@@ -852,13 +877,15 @@ namespace IodemBot.Modules
             }
 
             UserAccountProvider.StoreUser(account);
-            await Context.ReplyWithMessageAsync(EphemeralRule, embed:embed.Build());
+            await Context.ReplyWithMessageAsync(EphemeralRule, embed: embed.Build());
         }
+
         [ActionParameterSlash(Order = 0, Name = "item-or-list-to-sell", Description = "e.g. `Sol Blade` or `Machete, Padded Gloves, Sol Blade`", Required = true, Type = ApplicationCommandOptionType.String)]
         public string[] ItemsToSell { get; set; }
 
         public override EphemeralRule EphemeralRule => EphemeralRule.EphemeralOrFail;
         public override bool GuildsOnly => true;
+
         public override ActionGlobalSlashCommandProperties SlashCommandProperties => new()
         {
             Name = "sell",
@@ -881,7 +908,7 @@ namespace IodemBot.Modules
             if (ItemsToSell == null || !ItemsToSell.Any())
                 return Task.FromResult((false, "Can't sell nothin'"));
 
-            if(ItemsToSell.Length == 1)
+            if (ItemsToSell.Length == 1)
             {
                 var item = EntityConverter.ConvertUser(Context.User).Inv.GetItem(ItemsToSell[0]);
                 if (item == null)
@@ -922,5 +949,3 @@ namespace IodemBot.Modules
         }
     }
 }
-
-

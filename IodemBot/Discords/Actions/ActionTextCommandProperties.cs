@@ -1,7 +1,7 @@
-﻿using Discord.Commands.Builders;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Discord.Commands.Builders;
 
 namespace IodemBot.Discords.Actions
 {

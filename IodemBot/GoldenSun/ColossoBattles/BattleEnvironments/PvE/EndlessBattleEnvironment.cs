@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Discord;
-using Discord.WebSocket;
 using IodemBot.Core.Leveling;
 using IodemBot.Core.UserManagement;
 using IodemBot.Extensions;
@@ -136,6 +135,7 @@ namespace IodemBot.ColossoBattles
         {
             winsInARow = streak;
         }
+
         private double Boost
         {
             get
@@ -207,7 +207,8 @@ namespace IodemBot.ColossoBattles
                 }
                 RewardTables.Add(chests);
 
-                if(winsInARow % 10 == 0) {
+                if (winsInARow % 10 == 0)
+                {
                     var rt = new RewardTable
                     {
                         new DefaultReward()
@@ -284,8 +285,6 @@ namespace IodemBot.ColossoBattles
 
         public override async Task AddPlayer(UserAccount user, Team team = Team.A)
         {
-
-
             if (user.Inv.GetGear(AdeptClassSeriesManager.GetClassSeries(user).Archtype).Any(i => i.Name == "Lure Cap"))
             {
                 LureCaps++;
@@ -308,6 +307,7 @@ namespace IodemBot.ColossoBattles
 
             return result;
         }
+
         protected override EmbedBuilder GetEnemyEmbedBuilder()
         {
             var e = base.GetEnemyEmbedBuilder();

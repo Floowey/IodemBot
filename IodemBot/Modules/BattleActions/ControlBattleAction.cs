@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Discord;
 using IodemBot.ColossoBattles;
-using IodemBot.Modules.GoldenSunMechanics;
 using IodemBot.Discords.Actions.Attributes;
 using IodemBot.Extensions;
+using IodemBot.Modules.GoldenSunMechanics;
 
 namespace IodemBot.Modules.BattleActions
 {
@@ -33,13 +32,13 @@ namespace IodemBot.Modules.BattleActions
 
     public class JoinBattleAction : BattleAction
     {
-
         public Team Team { get; set; } = Team.A;
+
         public override async Task RunAsync()
         {
-            _ = battle.AddPlayer(EntityConverter.ConvertUser(Context.User),Team);
+            _ = battle.AddPlayer(EntityConverter.ConvertUser(Context.User), Team);
             await Task.CompletedTask;
-        }        
+        }
 
         protected override Task<(bool Success, string Message)> CheckCustomPreconditionsAsync()
         {
@@ -65,8 +64,9 @@ namespace IodemBot.Modules.BattleActions
 
     public class SelectMoveAction : InBattleAction
     {
-        [ActionParameterComponent(Order =0, Name ="Move", Description ="move", Required =true)]
+        [ActionParameterComponent(Order = 0, Name = "Move", Description = "move", Required = true)]
         public string SelectedMoveName { get; set; }
+
         public override async Task RunAsync()
         {
             var SelectedMove = player.Moves.FirstOrDefault(m => m.Name.Equals(SelectedMoveName, StringComparison.InvariantCultureIgnoreCase));
@@ -81,10 +81,11 @@ namespace IodemBot.Modules.BattleActions
                 SelectedMove.TargetNr = 0;
             }
 
-            if(SelectedMove is Summon s)
+            if (SelectedMove is Summon s)
             {
                 await Context.UpdateReplyAsync(p => p.Components = ControlBattleComponents.GetSummonsComponent(player));
-            } else
+            }
+            else
             {
                 await Context.UpdateReplyAsync(p => p.Components = ControlBattleComponents.GetPlayerControlComponents(player));
             }
@@ -93,10 +94,11 @@ namespace IodemBot.Modules.BattleActions
             {
                 fighter.AutoTurnsInARow = 0;
             }
-            if(player.hasSelected)
+            if (player.hasSelected)
                 _ = battle.ProcessTurn(false);
             await Task.CompletedTask;
         }
+
         public override async Task FillParametersAsync(string[] selectOptions, object[] idOptions)
         {
             if (idOptions != null && idOptions.Any())
@@ -111,6 +113,7 @@ namespace IodemBot.Modules.BattleActions
     {
         [ActionParameterComponent(Order = 0, Name = "Target", Description = "target", Required = true)]
         public int SelectedTargetPosition { get; set; }
+
         public override async Task RunAsync()
         {
             player.SelectedMove.TargetNr = SelectedTargetPosition;
@@ -136,12 +139,12 @@ namespace IodemBot.Modules.BattleActions
             ComponentBuilder builder = new();
             if (PvP)
             {
-                builder.WithButton("Join Team A", $"{nameof(JoinBattleAction)}.A", ButtonStyle.Success, emote:Emotes.GetEmote("JoinBattle"));
-                builder.WithButton("Join Team B", $"{nameof(JoinBattleAction)}.B", ButtonStyle.Success, emote:Emotes.GetEmote("JoinBattle"));
-            } else
+                builder.WithButton("Join Team A", $"{nameof(JoinBattleAction)}.A", ButtonStyle.Success, emote: Emotes.GetEmote("JoinBattle"));
+                builder.WithButton("Join Team B", $"{nameof(JoinBattleAction)}.B", ButtonStyle.Success, emote: Emotes.GetEmote("JoinBattle"));
+            }
+            else
             {
-                builder.WithButton("Join", $"{nameof(JoinBattleAction)}", ButtonStyle.Success, emote:Emotes.GetEmote("JoinBattle"));
-
+                builder.WithButton("Join", $"{nameof(JoinBattleAction)}", ButtonStyle.Success, emote: Emotes.GetEmote("JoinBattle"));
             }
 
             builder.WithButton("Start", $"{nameof(StartBattleAction)}", ButtonStyle.Success, emote: Emotes.GetEmote("StartBattle"));
@@ -158,7 +161,7 @@ namespace IodemBot.Modules.BattleActions
                 bool isSelection = player.SelectedMove == move;
                 ButtonStyle style = isSelection ? ButtonStyle.Success : ButtonStyle.Primary;
                 style = move.InternalValidSelection(player) ? style : ButtonStyle.Secondary;
-                builder.WithButton(label: $"{move.Name}{((move is Psynergy p && !(move is Djinn))? $" - {p.PPCost}" : "")}", customId: $"{nameof(SelectMoveAction)}.{move.Name}", style:style , emote: move.GetEmote());
+                builder.WithButton(label: $"{move.Name}{((move is Psynergy p && !(move is Djinn)) ? $" - {p.PPCost}" : "")}", customId: $"{nameof(SelectMoveAction)}.{move.Name}", style: style, emote: move.GetEmote());
             }
 
             if (!player.hasSelected && player.SelectedMove != null)
@@ -167,9 +170,9 @@ namespace IodemBot.Modules.BattleActions
                 var Team = player.SelectedMove.TargetType == TargetType.PartySingle ? player.Party : player.Enemies;
                 foreach (var f in Team)
                 {
-                    options.Add(new() { Label = $"{f.Name}", Value = $"{options.Count}",Emote = f.IsAlive?null: Emotes.GetEmote("Dead") });
+                    options.Add(new() { Label = $"{f.Name}", Value = $"{options.Count}", Emote = f.IsAlive ? null : Emotes.GetEmote("Dead") });
                 }
-                builder.WithSelectMenu($"{nameof(SelectTargetAction)}" , options, "Select a Target", disabled: player.hasSelected);
+                builder.WithSelectMenu($"{nameof(SelectTargetAction)}", options, "Select a Target", disabled: player.hasSelected);
             }
 
             return builder.Build();

@@ -1,8 +1,8 @@
-﻿using Discord.WebSocket;
-using Discord;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Discord;
+using Discord.WebSocket;
 using IodemBot.Discords.Actions.Attributes;
 
 namespace IodemBot.Discords.Actions

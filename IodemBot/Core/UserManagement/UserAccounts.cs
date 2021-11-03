@@ -8,6 +8,7 @@ namespace IodemBot.Core.UserManagement
     public static class UserAccounts
     {
         private static readonly List<UserAccount> accounts;
+
         //private static readonly string accountsFile = "Resources/Accounts/accounts.json";
         private static readonly string accountsFile = "Resources/Accounts/accounts.json";
 
@@ -72,12 +73,14 @@ namespace IodemBot.Core.UserManagement
                             .ToList()
                             .Select(id => UserAccountProvider.GetById(id.Key))
                             .ToList();
-
-                    } catch (Exception e){
+                    }
+                    catch (Exception e)
+                    {
                         Console.WriteLine(e);
                         break;
                     }
                     break;
+
                 case (RankEnum.Duo):
                 case (RankEnum.Trio):
                 case (RankEnum.Quad):

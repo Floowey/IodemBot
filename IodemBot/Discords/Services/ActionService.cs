@@ -1,20 +1,17 @@
-﻿using Discord;
-using Discord.Commands;
-using Discord.Net;
-using Discord.WebSocket;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection.Extensions;
-using Newtonsoft.Json;
-using System;
+﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 using System.Threading.Tasks;
-using System.Collections.Concurrent;
+using Discord;
+using Discord.Net;
+using Discord.WebSocket;
 using IodemBot.Discords.Actions;
 using IodemBot.Discords.Actions.Attributes;
 using IodemBot.Discords.Contexts;
+using Microsoft.Extensions.DependencyInjection;
+using Newtonsoft.Json;
 
 namespace IodemBot.Discords.Services
 {
@@ -149,7 +146,6 @@ namespace IodemBot.Discords.Services
                 await _discord.Rest.BulkOverwriteGuildCommands(properties.ToArray(), guildId);
         }
 
-
         private SlashCommandProperties BuildSlashCommandProperties(BotCommandAction action)
         {
             var newCommand = new SlashCommandBuilder();
@@ -198,7 +194,8 @@ namespace IodemBot.Discords.Services
                 foreach (var guildSummary in await _discord.Rest.GetGuildSummariesAsync().FlattenAsync())
                 {
                     var commands = await _discord.Rest.GetGuildApplicationCommands(guildSummary.Id);
-                    if (commands.Count > 0){
+                    if (commands.Count > 0)
+                    {
                         await commands.FirstOrDefault()?.DeleteAsync();
                     }
                     await Task.Delay(500);
@@ -258,6 +255,7 @@ namespace IodemBot.Discords.Services
         private readonly ConcurrentDictionary<ulong, CollectorLogic> _inProgressCollectors = new ConcurrentDictionary<ulong, CollectorLogic>();
 
         public void RegisterCollector(CollectorLogic collector) => _inProgressCollectors.GetOrAdd(collector.MessageId, collector);
+
         public void UnregisterCollector(CollectorLogic collector) => _inProgressCollectors.Remove(collector.MessageId, out _);
 
         public bool CollectorAvailable(ulong messageId)
@@ -334,6 +332,6 @@ namespace IodemBot.Discords.Services
             var actionRunFactory = ActionRunFactory.Find(_services, context, arg);
             if (actionRunFactory != null)
                 await actionRunFactory.RunActionAsync();
-            }
+        }
     }
 }

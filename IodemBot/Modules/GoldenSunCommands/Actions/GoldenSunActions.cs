@@ -1,18 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
+using Discord;
+using Discord.WebSocket;
+using IodemBot.ColossoBattles;
+using IodemBot.Core.UserManagement;
+using IodemBot.Discords;
 using IodemBot.Discords.Actions;
 using IodemBot.Discords.Actions.Attributes;
-using Discord;
-using IodemBot.Core.UserManagement;
-using IodemBot.ColossoBattles;
-using IodemBot.Modules.GoldenSunMechanics;
-using IodemBot.Extensions;
-using IodemBot.Discords;
-using Discord.WebSocket;
 using IodemBot.Discords.Contexts;
+using IodemBot.Extensions;
+using IodemBot.Modules.GoldenSunMechanics;
 
 namespace IodemBot.Modules
 {
@@ -21,9 +20,11 @@ namespace IodemBot.Modules
         public override bool GuildsOnly => false;
         public override EphemeralRule EphemeralRule => EphemeralRule.EphemeralOrFail;
 
-        [ActionParameterComponent(Name = "Page", Description ="page", Order =0, Required =false)]
+        [ActionParameterComponent(Name = "Page", Description = "page", Order = 0, Required = false)]
         public int StatusPage { get; set; } = 0;
+
         private static readonly int nPages = 3;
+
         public override ActionGlobalSlashCommandProperties SlashCommandProperties => new()
         {
             Name = "status",
@@ -50,6 +51,7 @@ namespace IodemBot.Modules
             msgProps.Components = GetStatusComponent(account, StatusPage);
             await Task.CompletedTask;
         }
+
         public override async Task RunAsync()
         {
             var account = EntityConverter.ConvertUser(Context.User);
@@ -57,6 +59,7 @@ namespace IodemBot.Modules
             var component = GetStatusComponent(account, StatusPage);
             await Context.ReplyWithMessageAsync(EphemeralRule, embed: embed, components: component);
         }
+
         private static readonly Dictionary<Detail, char> split = new()
         {
             { Detail.None, '>' },
@@ -64,7 +67,7 @@ namespace IodemBot.Modules
             { Detail.NameAndPrice, '\n' }
         };
 
-        internal static Embed GetStatusEmbed(UserAccount account, int statusPage=0)
+        internal static Embed GetStatusEmbed(UserAccount account, int statusPage = 0)
         {
             var factory = new PlayerFighterFactory();
             var p = factory.CreatePlayerFighter(account);
@@ -78,8 +81,8 @@ namespace IodemBot.Modules
             .WithAuthor(author)
             .WithTitle($"Level {account.LevelNumber} {account.GsClass} {string.Join("", account.TrophyCase.Trophies.Select(t => t.Icon))} (Rank {UserAccounts.GetRank(account) + 1})");
 
-            switch (statusPage){
-                
+            switch (statusPage)
+            {
                 case 0: // Overview
                     embed
                         .AddField("Current Equip", account.Inv.GearToString(AdeptClassSeriesManager.GetClassSeries(account).Archtype), true)
@@ -111,22 +114,22 @@ namespace IodemBot.Modules
                         .AddField("Total XP", account.TotalXP, true)
                         .AddField("Colosso wins | Dungeon Wins", $"{account.ServerStatsTotal.ColossoWins} | {account.ServerStatsTotal.DungeonsCompleted}", true);
                     break;
+
                 default:
                     embed
                         .WithDescription("Something went wrong.");
                     break;
             }
 
-
             return embed.Build();
         }
 
-        internal static MessageComponent GetStatusComponent(UserAccount account, int statusPage=0)
+        internal static MessageComponent GetStatusComponent(UserAccount account, int statusPage = 0)
         {
             var inv = account.Inv;
             var builder = new ComponentBuilder();
             var labels = account.Preferences.ShowButtonLabels;
-            
+
             builder.WithButton(labels ? "Classes" : null, $"#{nameof(ClassAction)}", style: ButtonStyle.Primary, emote: Emotes.GetEmote("ClassAction"));
             builder.WithButton(labels ? "Loadouts" : null, $"#{nameof(LoadoutAction)}", style: ButtonStyle.Primary, emote: Emotes.GetEmote("LoadoutAction"));
             builder.WithButton(labels ? "Inventory" : null, $"#{nameof(InventoryAction)}", style: ButtonStyle.Success, emote: Emotes.GetEmote("InventoryAction"));
@@ -135,14 +138,15 @@ namespace IodemBot.Modules
             var prevPage = statusPage - 1;
             var nextPage = statusPage + 1;
 
-            builder.WithButton(labels ? "Dungeons" : null, $"#{nameof(DungeonAction)}.", style: ButtonStyle.Secondary, emote: Emotes.GetEmote("DungeonAction"),row:1);
-            builder.WithButton(labels ? "Options" : null, $"#{nameof(OptionActions)}", style: ButtonStyle.Secondary, emote: Emotes.GetEmote("OptionAction"),row:1);
-            builder.WithButton("◀️", $"#{nameof(StatusAction)}.{prevPage}", style: ButtonStyle.Secondary, disabled: prevPage<0, row:1);
-            builder.WithButton("▶️", $"#{nameof(StatusAction)}.{nextPage}", style: ButtonStyle.Secondary, disabled: nextPage>=nPages, row:1);
+            builder.WithButton(labels ? "Dungeons" : null, $"#{nameof(DungeonAction)}.", style: ButtonStyle.Secondary, emote: Emotes.GetEmote("DungeonAction"), row: 1);
+            builder.WithButton(labels ? "Options" : null, $"#{nameof(OptionActions)}", style: ButtonStyle.Secondary, emote: Emotes.GetEmote("OptionAction"), row: 1);
+            builder.WithButton("◀️", $"#{nameof(StatusAction)}.{prevPage}", style: ButtonStyle.Secondary, disabled: prevPage < 0, row: 1);
+            builder.WithButton("▶️", $"#{nameof(StatusAction)}.{nextPage}", style: ButtonStyle.Secondary, disabled: nextPage >= nPages, row: 1);
 
             return builder.Build();
         }
     }
+
     public class ChangeAdeptAction : IodemBotCommandAction
     {
         [ActionParameterSlash(Order = 0, Name = "element", Description = "el", Required = true, Type = ApplicationCommandOptionType.String)]
@@ -153,9 +157,9 @@ namespace IodemBot.Modules
         [ActionParameterOptionString(Name = "Exathi", Order = 0, Value = "none")]
         [ActionParameterComponent(Order = 0, Name = "element", Description = "Element", Required = true)]
         public Element SelectedElement { get; set; }
+
         [ActionParameterSlash(Order = 1, Name = "class", Description = "class", Required = false, Type = ApplicationCommandOptionType.String)]
         [ActionParameterComponent(Order = 1, Name = "class", Description = "class", Required = false)]
-
         public string SelectedClass { get; set; }
 
         public override bool GuildsOnly => true;
@@ -177,6 +181,7 @@ namespace IodemBot.Modules
                 return Task.CompletedTask;
             }
         };
+
         public override async Task RunAsync()
         {
             await ChangeAdeptAsync(Context, SelectedElement, SelectedClass);
@@ -193,7 +198,7 @@ namespace IodemBot.Modules
                 if (idOptions != null && idOptions.Any() && (idOptions.FirstOrDefault() is string s && !s.IsNullOrEmpty()))
                 {
                     SelectedElement = Enum.Parse<Element>((string)idOptions.FirstOrDefault());
-                    if(idOptions.Any())
+                    if (idOptions.Any())
                         SelectedClass = (string)idOptions.ElementAt(1);
                 };
 
@@ -213,13 +218,15 @@ namespace IodemBot.Modules
                 return Task.CompletedTask;
             }
         };
+
         private async Task RefreshAsync(bool intoNew, MessageProperties msgProps)
         {
             await ChangeAdeptAsync(Context, SelectedElement, SelectedClass);
             if (intoNew)
             {
                 msgProps.Content = $"Welcome to the {SelectedElement} Clan, {Context.User.Mention}";
-            } else
+            }
+            else
             {
                 var user = EntityConverter.ConvertUser(Context.User);
                 msgProps.Embed = ClassAction.GetClassEmbed(user);
@@ -237,6 +244,7 @@ namespace IodemBot.Modules
 
             //loadedLoadout.ApplyLoadout(user);
         }
+
         private static async Task GiveElementRole(SocketGuildUser user, Element chosenElement, RequestContext Context)
         {
             var role = Context.Guild.Roles.FirstOrDefault(x => x.Name == chosenElement.ToString() + " Adepts");
@@ -268,6 +276,7 @@ namespace IodemBot.Modules
             ChangeClass(user, classSeriesName);
             UserAccountProvider.StoreUser(user);
         }
+
         private static async Task ChangeElement(UserAccount user, Element chosenElement, RequestContext Context)
         {
             if (user.Element == chosenElement)
@@ -278,7 +287,7 @@ namespace IodemBot.Modules
             {
                 var removedEmbed = new EmbedBuilder();
                 removedEmbed.WithDescription($"<:Exclamatory:571309036473942026> Your {removed} was unequipped.");
-                _ = Context.ReplyWithMessageAsync(EphemeralRule.EphemeralOrFail,embed: removedEmbed.Build());
+                _ = Context.ReplyWithMessageAsync(EphemeralRule.EphemeralOrFail, embed: removedEmbed.Build());
             }
 
             user.Element = chosenElement;
@@ -290,12 +299,13 @@ namespace IodemBot.Modules
             }
             await Task.CompletedTask;
         }
+
         private static void ChangeClass(UserAccount user, string classSeriesName = "")
         {
             user.ClassToggle = 0;
-            if(!classSeriesName.IsNullOrEmpty())
+            if (!classSeriesName.IsNullOrEmpty())
                 AdeptClassSeriesManager.SetClass(user, classSeriesName);
-            
+
             var series = AdeptClassSeriesManager.GetClassSeries(user);
             if (series != null && !user.DjinnPocket.DjinnSetup.All(d => series.Elements.Contains(d)))
             {
@@ -314,27 +324,33 @@ namespace IodemBot.Modules
             return SuccessFullResult;
         }
     }
+
     public class ClassAction : IodemBotCommandAction
     {
         public override bool GuildsOnly => true;
+
         public override async Task RunAsync()
         {
             var user = EntityConverter.ConvertUser(Context.User);
             await Context.ReplyWithMessageAsync(EphemeralRule, embed: GetClassEmbed(user), components: GetClassComponent(user));
         }
+
         public override EphemeralRule EphemeralRule => EphemeralRule.EphemeralOrFail;
+
         public override ActionGuildSlashCommandProperties SlashCommandProperties => new()
         {
             Name = "class",
             Description = "Change your element and class",
             FillParametersAsync = null
         };
+
         public override ActionCommandRefreshProperties CommandRefreshProperties => new()
         {
             CanRefreshAsync = _ => Task.FromResult((true, (string)null)),
             FillParametersAsync = null,
             RefreshAsync = RefreshAsync
         };
+
         public async Task RefreshAsync(bool intoNew, MessageProperties msgProps)
         {
             var user = EntityConverter.ConvertUser(Context.User);
@@ -343,6 +359,7 @@ namespace IodemBot.Modules
             msgProps.Components = GetClassComponent(user);
             await Task.CompletedTask;
         }
+
         public static Embed GetClassEmbed(UserAccount account)
         {
             var allClasses = AdeptClassSeriesManager.allClasses;
@@ -371,15 +388,15 @@ namespace IodemBot.Modules
             List<SelectMenuOptionBuilder> ElementOptions = new();
             foreach (var element in new[] { Element.Venus, Element.Mars, Element.Jupiter, Element.Mercury })
             {
-                ElementOptions.Add(new() 
-                { 
-                    Label = element.ToString(), 
-                    Value = $"{element}", 
-                    IsDefault = account.Element == element, 
+                ElementOptions.Add(new()
+                {
+                    Label = element.ToString(),
+                    Value = $"{element}",
+                    IsDefault = account.Element == element,
                     Emote = Emotes.GetEmote(element)
                 });
             }
-            builder.WithSelectMenu( $"#{nameof(ChangeAdeptAction)}.", ElementOptions);
+            builder.WithSelectMenu($"#{nameof(ChangeAdeptAction)}.", ElementOptions);
 
             List<SelectMenuOptionBuilder> ClassOptions = new();
             foreach (var series in OfElement)
@@ -392,7 +409,7 @@ namespace IodemBot.Modules
                 });
             }
             builder.WithSelectMenu($"#{nameof(ChangeAdeptAction)}", ClassOptions);
-            builder.WithButton(labels ? "Status" : null, customId: $"#{nameof(StatusAction)}",style: ButtonStyle.Primary, emote: Emotes.GetEmote("StatusAction"),row:3);
+            builder.WithButton(labels ? "Status" : null, customId: $"#{nameof(StatusAction)}", style: ButtonStyle.Primary, emote: Emotes.GetEmote("StatusAction"), row: 3);
             builder.WithButton(labels ? "Loadouts" : null, $"#{nameof(LoadoutAction)}", style: ButtonStyle.Primary, emote: Emotes.GetEmote("LoadoutAction"));
             return builder.Build();
         }

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
-using IodemBot.Extensions;
 using IodemBot.ColossoBattles;
+using IodemBot.Extensions;
 using Newtonsoft.Json;
 
 namespace IodemBot.Modules.GoldenSunMechanics
@@ -72,7 +72,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 case TargetType.PartySelf: target = "the User"; break;
                 case TargetType.PartySingle: target = "a party member"; break;
                 case TargetType.PartyAll: target = "the Party"; break;
-                case TargetType.EnemyRange: target = Range == 1? "an enemy": $"a range of {Range * 2 - 1} enemies"; break;
+                case TargetType.EnemyRange: target = Range == 1 ? "an enemy" : $"a range of {Range * 2 - 1} enemies"; break;
                 case TargetType.EnemyAll: target = "all enemies"; break;
             }
             return $"Apply an Effect to {target}.";

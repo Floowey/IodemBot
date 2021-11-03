@@ -1,18 +1,19 @@
-﻿using Discord;
+﻿using System;
+using System.IO;
+using System.Threading.Tasks;
+using Discord;
 using Discord.Rest;
 using Discord.WebSocket;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.IO;
-using System.Threading.Tasks;
 
 namespace IodemBot.Discords.Contexts
 {
     public abstract class RequestContext
     {
-        readonly SemaphoreLocker _initialLock = new SemaphoreLocker();
+        private readonly SemaphoreLocker _initialLock = new SemaphoreLocker();
 
         private bool _initial = true;
+
         public async Task<bool> GetInitialAsync(bool updateAfterTouch)
         {
             return await _initialLock.LockAsync(() =>
@@ -26,6 +27,7 @@ namespace IodemBot.Discords.Contexts
         }
 
         private ulong? _botOwnerId;
+
         public async Task<ulong> GetBotOwnerIdAsync()
         {
             if (_botOwnerId.HasValue)
@@ -36,7 +38,6 @@ namespace IodemBot.Discords.Contexts
             return _botOwnerId.Value;
         }
 
-
         public abstract DiscordSocketClient Client { get; }
         public abstract SocketGuild Guild { get; }
         public abstract ISocketMessageChannel Channel { get; }
@@ -45,23 +46,25 @@ namespace IodemBot.Discords.Contexts
 
         public ulong? GetReferenceMessageId() => Message?.Id;
 
-
         public Task<RestUserMessage> ReplyWithMessageAsync(bool ephemeral, string message = null, bool isTTS = false, Embed[] embeds = null, Embed embed = null,
             RequestOptions options = null, AllowedMentions allowedMentions = null, MessageReference messageReference = null, MessageComponent components = null, bool hasMentions = false)
             => ReplyWithMessageAsync(ephemeral ? EphemeralRule.EphemeralOrFallback : EphemeralRule.Permanent, message, isTTS, embeds, embed, options, allowedMentions, messageReference, components, hasMentions);
+
         public Task<RestUserMessage> ReplyWithFileAsync(bool ephemeral, Stream stream, string filename, bool isSpoiler, string message = null, bool isTTS = false, Embed[] embeds = null,
             Embed embed = null, RequestOptions options = null, AllowedMentions allowedMentions = null, MessageReference messageReference = null, MessageComponent components = null, bool hasMentions = false)
             => ReplyWithFileAsync(ephemeral ? EphemeralRule.EphemeralOrFallback : EphemeralRule.Permanent, stream, filename, isSpoiler, message, isTTS, embeds, embed, options, allowedMentions, messageReference, components, hasMentions);
 
-        public abstract Task<RestUserMessage> ReplyWithMessageAsync(EphemeralRule ephemeralRule, string message = null, bool isTTS = false, Embed[] embeds = null, Embed embed = null, 
+        public abstract Task<RestUserMessage> ReplyWithMessageAsync(EphemeralRule ephemeralRule, string message = null, bool isTTS = false, Embed[] embeds = null, Embed embed = null,
             RequestOptions options = null, AllowedMentions allowedMentions = null, MessageReference messageReference = null, MessageComponent components = null, bool hasMentions = false);
-        public abstract Task<RestUserMessage> ReplyWithFileAsync(EphemeralRule ephemeralRule, Stream stream, string filename, bool isSpoiler, string message = null, bool isTTS = false, Embed[] embeds = null,
-            Embed embed = null,  RequestOptions options = null, AllowedMentions allowedMentions = null, MessageReference messageReference = null, MessageComponent components = null, bool hasMentions = false);
-        public abstract Task UpdateReplyAsync(Action<MessageProperties> propBuilder, RequestOptions options = null);
 
+        public abstract Task<RestUserMessage> ReplyWithFileAsync(EphemeralRule ephemeralRule, Stream stream, string filename, bool isSpoiler, string message = null, bool isTTS = false, Embed[] embeds = null,
+            Embed embed = null, RequestOptions options = null, AllowedMentions allowedMentions = null, MessageReference messageReference = null, MessageComponent components = null, bool hasMentions = false);
+
+        public abstract Task UpdateReplyAsync(Action<MessageProperties> propBuilder, RequestOptions options = null);
 
         public Task ReplyBuilderAsync(IServiceProvider baseServices, MessageBuilder messageBuilder, bool ephemeral, ulong? referenceMessageId = null)
             => ReplyBuilderAsync(baseServices, messageBuilder, ephemeral ? EphemeralRule.EphemeralOrFallback : EphemeralRule.Permanent, referenceMessageId);
+
         public async Task ReplyBuilderAsync(IServiceProvider baseServices, MessageBuilder messageBuilder, EphemeralRule ephemeralRule, ulong? referenceMessageId = null)
         {
             var messageData = messageBuilder.BuildOutput();

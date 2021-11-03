@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Discord;
 using IodemBot.Discords.Services;
@@ -10,13 +7,14 @@ namespace IodemBot.Discords
 {
     public class CollectorLogic
     {
-        SemaphoreLocker _resultLock = new SemaphoreLocker();
-        bool _enabled = true;
-        Func<IUser, ulong, object[], object[], Task<MessageBuilder>> _execute;
+        private SemaphoreLocker _resultLock = new SemaphoreLocker();
+        private bool _enabled = true;
+        private Func<IUser, ulong, object[], object[], Task<MessageBuilder>> _execute;
 
         public ulong MessageId { get; set; }
         public ulong OriginalUserId { get; set; }
         public bool OnlyOriginalUserAllowed { get; set; }
+
         public Func<IUser, ulong, object[], object[], Task<MessageBuilder>> Execute
         {
             get => _execute;

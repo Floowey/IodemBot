@@ -48,7 +48,6 @@ namespace IodemBot.Core.Leveling
                 //    await GoldenSun.AwardClassSeries("Hermit Series", user, channel);
                 //}
             }
-            
 
             if (channel.Id == GuildSettings.GetGuildSettings(channel.Guild)?.ColossoChannel?.Id)
             {
@@ -59,7 +58,6 @@ namespace IodemBot.Core.Leveling
                 }
             }
 
-            
             uint newLevel = userAccount.LevelNumber;
 
             if (oldLevel != newLevel)
@@ -91,19 +89,17 @@ namespace IodemBot.Core.Leveling
 
         internal static async void LevelUp(UserAccount userAccount, SocketGuildUser user, IMessageChannel channel = null)
         {
-
             if (channel == null || userAccount == null || user == null)
             {
                 Console.WriteLine($"userAccount: {channel}, user: {user}, channel: {channel}");
                 return;
             }
-            
+
             if (userAccount.LevelNumber < 10 && (userAccount.LevelNumber % 5) > 0)
             {
-
                 channel = GuildSettings.GetGuildSettings(user.Guild).CommandChannel;
             }
-           
+
             // the user leveled up
             var embed = new EmbedBuilder();
             embed.WithColor(Colors.Get(userAccount.Element.ToString()));
@@ -126,6 +122,5 @@ namespace IodemBot.Core.Leveling
             _ = channel.SendMessageAsync("", embed: embed.Build());
             await Task.CompletedTask;
         }
-
     }
 }
