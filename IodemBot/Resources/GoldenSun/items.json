@@ -2656,7 +2656,7 @@
     "Name": "Sylph Rapier",
     "Price": 11000,
     "Icon": "<:Sylph_Rapier:569855398316605482>",
-    "AnimatedIcon": "<a:Sylph_Rapier:808337399775756289>",
+    "AnimatedIcon": "<a:Sylph_Rapier2:900377449509040198>",
     "ItemType": "LightBlade",
     "IsEquippable": true,
     "IsArtifact": true,
@@ -3428,7 +3428,7 @@
       "MaxPP": 120
     },
     "HPRegen": 2000,
-    "PPRegen": 90,
+    "PPRegen": 100,
     "increaseUnleashRate": 100,
     "AddElStatsOnEquip": {
       "MercuryAtk": 120,

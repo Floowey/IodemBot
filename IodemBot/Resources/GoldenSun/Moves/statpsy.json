@@ -1028,7 +1028,7 @@
     "name": "Slaver",
     "TargetType": "EnemyRange",
     "emote": ":link:",
-    "range": 1,
+    "range": 3,
     "element": 1,
     "PPCost": 0,
     "effects": [

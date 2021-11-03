@@ -1435,7 +1435,8 @@
           "Type": "OHKO",
           "Probability": 12
         }
-      ]
+      ],
+      "AddDamage": 30
     },
     "Stats": {
       "MaxHP": 11,
@@ -2033,7 +2034,7 @@
       "effects": [
         {
           "Type": "Stat",
-          "Stat": "Spd",
+          "Stat": "Speed",
           "Multiplier": 2
         }
       ]

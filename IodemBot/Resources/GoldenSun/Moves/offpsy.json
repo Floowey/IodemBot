@@ -198,8 +198,8 @@
   },
   "Toxic Grit": {
     "name": "Toxic Grit",
-    "TargetType": "EnemyRange",
-    "emote": "<:curse:538074679492083742>",
+    "targetType": "EnemyRange",
+    "emote": "<:Toxic_Grit:900377138035851307>",
     "range": 3,
     "element": 0,
     "effects": [
@@ -350,8 +350,8 @@
   },
   "Undead Gloom": {
     "name": "Undead Gloom",
-    "TargetType": "EnemyRange",
-    "emote": "💀",
+    "targetType": "EnemyRange",
+    "emote": "<:Undead_Gloom:900376939041275974>",
     "range": 1,
     "element": 0,
     "effects": [
@@ -366,8 +366,8 @@
   },
   "Undead Might": {
     "name": "Undead Might",
-    "TargetType": "EnemyRange",
-    "emote": "☠",
+    "targetType": "EnemyRange",
+    "emote": "<:Undead_Might:900377051129864213>",
     "range": 1,
     "element": 0,
     "effects": [
