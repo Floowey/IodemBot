@@ -109,6 +109,38 @@ namespace IodemBot.Modules.GoldenSunMechanics
                     p.BattleStats.DamageDealt += realDmg;
                     if (!t.IsAlive)
                     {
+                        var Battle = user.Battle;
+                        var killedByTags = t.Tags.Where(t => t.StartsWith("KilledBy"));
+                        string[] MoveTypes = { "Djinn", "Hand", "Summon", "Psynergy" };
+                        if (killedByTags.Any())
+                        {
+                            foreach (var killedByTag in killedByTags)
+                            {
+                                var args = killedByTag.Split('@');
+                                var BattleNumbers = args.Skip(1).Select(int.Parse);
+                                var MoveArgs = args.First().Split(':').Skip(1);
+
+                                var ElementArgs = MoveArgs
+                                    .Where(Enum.GetValues<Element>().Select(e => e.ToString()).Contains)
+                                    .Select(Enum.Parse<Element>);
+                                if (ElementArgs.Any() && !ElementArgs.Contains(Element))
+                                    continue;
+
+                                var parentMove = user.Moves.First(m => m.Name == Name);
+                                var isPsy = MoveArgs.Contains("Hand") && parentMove is Psynergy { PpCost: > 1 };
+                                var isDjinn = MoveArgs.Contains("Djinn") && parentMove is Djinn;
+                                var isSummon = MoveArgs.Contains("Summon") && parentMove is Summon;
+                                if (MoveArgs.Any(MoveTypes.Contains) && !(isPsy || isDjinn || isSummon))
+                                    continue;
+
+                                var MoveNames = MoveArgs.Where(s => s.StartsWith('#')).Select(s => s[1..]);
+                                if (MoveNames.Any() && !MoveNames.Contains(parentMove is Djinn d ? d.Djinnname : Name))
+                                    continue;
+
+                                Battle.OutValue = BattleNumbers.Random();
+                            }
+                        }
+
                         if (AttackBased && Range == 1) p.BattleStats.KillsByHand++;
                         p.BattleStats.Kills++;
                     }

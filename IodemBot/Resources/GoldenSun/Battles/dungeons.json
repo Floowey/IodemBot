@@ -1,4 +1,59 @@
 ﻿{
+  "NonLinTest": {
+    "name": "NonLinTest",
+    "IsOneTimeOnly": false,
+    "FlavourText": "Hidden behind Kraden's Cottage, there is a small cave. Whatever might be in there?",
+    "Image": "https://goldensunwiki.net/w/images/4/41/ValeCaveEntrance.png",
+    "IsDefault": true,
+    "Matchups": [
+      {
+        "Flavourtext": "Click Left to go to Battle 3, Right to Next Battle",
+        "EnemyNames": [ "Choice:Left|KilledBy:Player@1", "Choice:Right|KilledBy:Player@2" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "XP": 1,
+              "Coins": 1
+            }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "You clicked Left. Now you go right.",
+        "EnemyNames": [ "Next" ],
+        "Image": "",
+        "RewardTables": [
+          [ { "Weight": 1 } ]
+        ]
+      },
+      {
+        "Flavourtext": "You clicked Right",
+        "EnemyNames": [ "Choice:Go back to Choice|KilledBy:Player@0", "Choice:Continue On" ],
+        "Image": "",
+        "RewardTables": [
+          [ { "Weight": 1 } ]
+        ]
+      },
+      {
+        "Flavourtext": "Kill with Hand and go to Start, otherwise go to end",
+        "EnemyNames": [ "Zombie 1|KilledBy:Hand@0" ],
+        "Image": "",
+        "RewardTables": [
+          [ { "Weight": 1 } ]
+        ]
+      },
+      {
+        "Flavourtext": "Done",
+        "EnemyNames": [ "End" ],
+        "Image": "",
+        "RewardTables": [
+          [ { "Weight": 1 } ]
+        ]
+      }
+    ]
+  },
   "Tutorial": {
     "name": "Tutorial",
     "IsOneTimeOnly": false,

@@ -19,6 +19,7 @@ namespace IodemBot.ColossoBattles
         public int SizeTeamB => TeamB.Count;
 
         public List<string> Log { get; set; } = new();
+        public int OutValue { get; set; } = -1;
 
         public List<ColossoFighter> GetTeam(Team team)
         {
@@ -79,7 +80,7 @@ namespace IodemBot.ColossoBattles
 
             if (!(TeamA.All(p => p.HasSelected) && TeamB.All(p => p.HasSelected))) return false;
             Log.Clear();
-
+            OutValue = -1;
             if (SizeTeamB == 0 || SizeTeamA == 0)
             {
                 Console.WriteLine("The stupid bug happened");

@@ -138,7 +138,50 @@ namespace IodemBot.ColossoBattles
                 });
 
                 DungeonNr++;
-                if (DungeonNr >= Dungeon.Matchups.Count)
+
+                var setMatchup = Matchup.Keywords.FirstOrDefault(m => m.StartsWith("ToMatchup"));
+                if (setMatchup is not null)
+                    DungeonNr = setMatchup.Split('@').Skip(1).Select(int.Parse).Random();
+
+                var allTags = Battle.TeamA.OfType<PlayerFighter>()
+                    .SelectMany(p => UserAccountProvider.GetById(p.Id).Tags);
+                var taggedAnyMatchups = Matchup.Keywords.Where(m => m.StartsWith("HasTagAny"));
+                if (taggedAnyMatchups.Any())
+                {
+                    foreach (var taggedMatchup in taggedAnyMatchups)
+                    {
+                        var args = taggedMatchup.Split('@');
+                        var BattleNumbers = args.Skip(1).Select(int.Parse);
+                        var TagArgs = args.First().Split(':').Skip(1);
+
+                        if (!TagArgs.Any(allTags.Contains))
+                            continue;
+
+                        DungeonNr = BattleNumbers.Random();
+                    }
+                }
+
+                var taggedAllMatchups = Matchup.Keywords.Where(m => m.StartsWith("HasTagAll"));
+                if (taggedAllMatchups.Any())
+                {
+                    foreach (var taggedMatchup in taggedAllMatchups)
+                    {
+                        var args = taggedMatchup.Split('@');
+                        var BattleNumbers = args.Skip(1).Select(int.Parse);
+                        var TagArgs = args.First().Split(':').Skip(1);
+
+                        if (!TagArgs.All(allTags.Contains))
+                            continue;
+
+                        DungeonNr = BattleNumbers.Random();
+                    }
+                }
+
+                if (Battle.OutValue != -1)
+                    DungeonNr = Battle.OutValue;
+
+                // Set To Next Dungeon if applicable
+                if (DungeonNr >= Dungeon.Matchups.Count || Matchup.EnemyNames.Any(e => e.Contains("End")))
                     _endOfDungeon = true;
                 else
                     SetNextEnemy();

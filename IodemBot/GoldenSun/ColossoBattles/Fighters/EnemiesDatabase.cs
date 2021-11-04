@@ -98,46 +98,57 @@ namespace IodemBot.ColossoBattles
 
         internal static NpcEnemy GetEnemy(string enemyKey)
         {
-            if (AllEnemies.TryGetValue(enemyKey, out var enemy)) return (NpcEnemy)enemy.Clone();
+            var tags = enemyKey.Contains('|') ? enemyKey.Split('|').Skip(1).ToList() : new();
+            enemyKey = enemyKey.Split('|').First();
+
+            NpcEnemy outEnemy = new NpcEnemy($"{enemyKey} Not Implemented", Sprites.GetRandomSprite(), new Stats(),
+                    new ElementalStats(), Array.Empty<string>(), true, true);
+
+            if (AllEnemies.TryGetValue(enemyKey, out var enemy))
+                outEnemy = enemy.Clone() as NpcEnemy;
 
             if (enemyKey.StartsWith("Trap"))
             {
                 AllEnemies.TryGetValue("DeathTrap", out var trapEnemy);
-                var clone = (NpcEnemy)trapEnemy.Clone();
-                clone.Name = enemyKey.Split(':').Last();
-                return clone;
+                outEnemy = trapEnemy.Clone() as NpcEnemy;
+                outEnemy.Name = enemyKey.Split(':').Last();
             }
 
             if (enemyKey.StartsWith("BoobyTrap"))
             {
                 AllEnemies.TryGetValue("BoobyTrap", out var trapEnemy);
-                var clone = (NpcEnemy)trapEnemy.Clone();
-                clone.Name = enemyKey.Split(':').Last();
+                outEnemy = trapEnemy.Clone() as NpcEnemy;
+                outEnemy.Name = enemyKey.Split(':').Last();
                 var args = enemyKey.Split(':').First();
                 foreach (var arg in args.Split('-').Skip(1))
                     if (int.TryParse(arg, out var damage))
-                        clone.Stats.Atk = damage;
+                        outEnemy.Stats.Atk = damage;
                     else if (Enum.TryParse(arg, out Condition c))
-                        clone.EquipmentWithEffect.Add(new Item
+                        outEnemy.EquipmentWithEffect.Add(new Item
                         {
                             Unleash = new Unleash { Effects = new List<Effect> { new ConditionEffect { Condition = c } } },
                             ChanceToActivate = 100,
                             ChanceToBreak = 0
                         });
-                return clone;
+            }
+
+            if (enemyKey.StartsWith("Choice"))
+            {
+                AllEnemies.TryGetValue("BoobyTrap", out var trapEnemy);
+                outEnemy = (NpcEnemy)trapEnemy.Clone();
+                outEnemy.Name = enemyKey.Split(':').Last();
+                outEnemy.Stats.Atk = 0;
             }
 
             if (enemyKey.StartsWith("Key"))
             {
                 AllEnemies.TryGetValue("Key", out var trapEnemy);
-                var clone = (NpcEnemy)trapEnemy.Clone();
-                clone.Name = enemyKey.Split(':').Last();
-                return clone;
+                outEnemy = (NpcEnemy)trapEnemy.Clone();
+                outEnemy.Name = enemyKey.Split(':').Last();
             }
 
-            Console.WriteLine($"{enemyKey} not found! Generating Dummy");
-            return new NpcEnemy($"{enemyKey} Not Implemented", Sprites.GetRandomSprite(), new Stats(),
-                new ElementalStats(), new string[] { }, true, true);
+            outEnemy.Tags.AddRange(tags);
+            return outEnemy;
         }
 
         internal static Dungeon GetDungeon(string dungeonKey)

@@ -158,23 +158,52 @@ namespace IodemBot.Modules.GoldenSunMechanics
             if (enemy.HasCondition(Condition.Decoy))
             {
                 var counterDamage = (uint)(user.Stats.MaxHP * enemy.Stats.Atk / 100);
-                log.Add("It was a Trap!");
-                log.AddRange(user.DealDamage(counterDamage));
+                var miniLog = new List<string>();
+                miniLog.Add("It was a Trap!");
+                miniLog.AddRange(user.DealDamage(counterDamage));
                 enemy.EquipmentWithEffect.ForEach(i =>
-                    i.Unleash.AllEffects.ForEach(e => log.AddRange(e.Apply(enemy, user))));
+                    i.Unleash.AllEffects.ForEach(e => miniLog.AddRange(e.Apply(enemy, user))));
+
+                if (miniLog.Count == 2 && counterDamage == 0)
+                    log.Add("A choice was made.");
+                else
+                    log.AddRange(miniLog);
+
                 enemy.Party.ForEach(e => e.Kill());
             }
 
-            if (user is PlayerFighter player)
+            if (user is not PlayerFighter player) return log;
+            player.BattleStats.DamageDealt += damage;
+            if (enemy.IsAlive) return log;
+            var Battle = player.Battle;
+            var killedByTags = enemy.Tags.Where(t => t.StartsWith("KilledBy"));
+            // KilledBy:Player shouldnt need a check, its a white card
+            // KilledBy:Venus:Mars:Djinn@2@3
+            string[] MoveNames = { "Djinn", "Hand", "Summon", "Psynergy" };
+            if (killedByTags.Any())
             {
-                player.BattleStats.DamageDealt += damage;
-                if (!enemy.IsAlive)
+                foreach (var killedByTag in killedByTags)
                 {
-                    if (enemy.Stats.Spd > 0 && weaponUnleashed) player.BattleStats.KillsByHand++;
-                    player.BattleStats.Kills++;
-                    player.BattleStats.HighestDamage = Math.Max(player.BattleStats.HighestDamage, damage);
+                    var args = killedByTag.Split('@');
+                    var BattleNumbers = args.Skip(1).Select(int.Parse);
+                    var MoveArgs = args.First().Split(':').Skip(1);
+
+                    var ElementArgs = MoveArgs
+                        .Where(Enum.GetValues<Element>().Select(e => e.ToString()).Contains)
+                        .Select(Enum.Parse<Element>);
+                    if (ElementArgs.Any() && !ElementArgs.Contains(element))
+                        continue;
+
+                    if (MoveArgs.Any(MoveNames.Contains) && !MoveArgs.Contains("Hand"))
+                        continue;
+
+                    Battle.OutValue = BattleNumbers.Random();
                 }
             }
+
+            if (enemy.Stats.Spd > 0 && weaponUnleashed) player.BattleStats.KillsByHand++;
+            player.BattleStats.Kills++;
+            player.BattleStats.HighestDamage = Math.Max(player.BattleStats.HighestDamage, damage);
 
             return log;
         }

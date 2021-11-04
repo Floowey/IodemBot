@@ -48,6 +48,7 @@ namespace IodemBot.ColossoBattles
         [JsonProperty("Conditions", ItemConverterType = typeof(StringEnumConverter))]
         private List<Condition> _conditions = new();
 
+        public List<string> Tags = new();
         [JsonIgnore] public uint DamageDoneThisTurn;
         public int DeathCurseCounter = 4;
         [JsonIgnore] public double DefensiveMult = 1;
@@ -458,6 +459,25 @@ namespace IodemBot.ColossoBattles
             AddCondition(Condition.Down);
             Buffs = new List<Buff>();
             LingeringEffects.RemoveAll(e => e.RemovedOnDeath);
+
+            // OnKill@4@8
+            var OnKillTag = Tags.FirstOrDefault(t => t.StartsWith("OnKill"));
+            if (OnKillTag is not null)
+            {
+                var OnKillBattleNumbers = OnKillTag.Split('@').Skip(1).Select(int.Parse);
+                Battle.OutValue = OnKillBattleNumbers.Random();
+            }
+
+            var killedBeforeTag = Tags.FirstOrDefault(t => t.StartsWith("KilledBeforeTurn"));
+            if (killedBeforeTag is null) return;
+
+            // KilledBefore:3@4@5
+            var args = killedBeforeTag.Split(':').Last();
+            var argsSplits = args.Split('@');
+            var beforeTurn = int.Parse(argsSplits.First());
+            var battleNumbers = argsSplits.Skip(1).Select(int.Parse);
+            if (Battle.TurnNumber <= beforeTurn)
+                Battle.OutValue = battleNumbers.Random();
         }
 
         public List<string> MainTurn()
