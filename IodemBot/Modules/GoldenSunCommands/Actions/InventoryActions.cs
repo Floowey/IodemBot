@@ -10,6 +10,7 @@ using IodemBot.Discords;
 using IodemBot.Discords.Actions;
 using IodemBot.Discords.Actions.Attributes;
 using IodemBot.Discords.Contexts;
+using IodemBot.Extensions;
 using IodemBot.Modules.GoldenSunMechanics;
 
 namespace IodemBot.Modules
@@ -82,8 +83,8 @@ namespace IodemBot.Modules
                 while (remainingstring.Length >= 1024)
                 {
                     var lastitem = remainingstring.Take(1024).ToList().FindLastIndex(s => s.Equals(Split[detail])) + 1;
-                    parts.Add(string.Join("", remainingstring.Take(lastitem)));
-                    remainingstring = string.Join("", remainingstring.Skip(lastitem));
+                    parts.Add(string.Concat(remainingstring.Take(lastitem)));
+                    remainingstring = string.Concat(remainingstring.Skip(lastitem));
                 }
 
                 parts.Add(remainingstring);
@@ -302,8 +303,12 @@ namespace IodemBot.Modules
                 {
                     var defaultSel = equippedGear.Contains(item);
                     if (!itemOptions.Any(o => o.Value.Equals(item.Name)))
-                        itemOptions.Add(new SelectMenuOptionBuilder($"{item.Name}", $"{item.Name}",
+                    {
+                        var desc = item.AddStatsOnEquip.NonZerosToString()[1..^1];
+                        itemOptions.Add(new SelectMenuOptionBuilder($"{item.Name}", $"{item.Name}", description:desc.IsNullOrEmpty()?null:desc,
                             emote: Emote.Parse(item.IconDisplay), isDefault: defaultSel));
+
+                    }
                 }
 
                 builder.WithSelectMenu($"#{nameof(EquipAction)}.{archtype}", itemOptions,

@@ -2,46 +2,118 @@
   "NonLinTest": {
     "name": "NonLinTest",
     "IsOneTimeOnly": false,
-    "FlavourText": "Hidden behind Kraden's Cottage, there is a small cave. Whatever might be in there?",
+    "FlavourText": "Get lost.",
     "Image": "https://goldensunwiki.net/w/images/4/41/ValeCaveEntrance.png",
     "IsDefault": true,
     "Matchups": [
       {
-        "Flavourtext": "Click Left to go to Battle 3, Right to Next Battle",
-        "EnemyNames": [ "Choice:Left|KilledBy:Player@1", "Choice:Right|KilledBy:Player@2" ],
+        "Flavourtext": "Leave it alone",
+        "EnemyNames": [ "Rat 1|Runner", "Next:Leave me alone!|Runner:1:Good bye.|OnKill@200", "Zombie 1" ],
+        "Keywords": [ "@200" ],
+        "Image": "",
+        "RewardTables": [
+          [ { "Weight": 1 } ]
+        ]
+      },
+      {
+        "Flavourtext": "Click Left to skip a battle, Right to Next Battle. Get a machete, but only the first time you are here.",
+        "EnemyNames": [ "Choice:Left", "Choice:Right|KilledBy:Player@102" ],
+        "Keywords": [ "@100" ],
         "Image": "",
         "RewardTables": [
           [
             {
               "Weight": 1,
+              "RequireTag": [ "!SomeTag" ],
+              "Tag": "SomeTag",
               "XP": 1,
-              "Coins": 1
+              "Coins": 1,
+              "Item": "Machete"
+            }
+          ]
+        ]
+      },
+
+      {
+        "Flavourtext": "You clicked Left. Now you go right.",
+        "EnemyNames": [ "Next" ],
+        "Keywords": [ "@101" ],
+        "Image": "",
+        "RewardTables": [
+          [ { "Weight": 1 } ]
+        ]
+      },
+      {
+        "Flavourtext": "You clicked Right. Get a machete if you go back",
+        "EnemyNames": [ "Choice:Go back to Choice|KilledBy:Player@100", "Choice:Continue On" ],
+        "Keywords": [ "@102" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "@100" ],
+              "Item": "Machete"
             }
           ]
         ]
       },
       {
-        "Flavourtext": "You clicked Left. Now you go right.",
-        "EnemyNames": [ "Next" ],
+        "Flavourtext": "Physical Attacks don't seem to kill it...",
+        "EnemyNames": [ "Zombie 1|KilledBy:Hand@103" ],
+        "Keywords": [ "@103" ],
         "Image": "",
         "RewardTables": [
           [ { "Weight": 1 } ]
         ]
       },
       {
-        "Flavourtext": "You clicked Right",
-        "EnemyNames": [ "Choice:Go back to Choice|KilledBy:Player@0", "Choice:Continue On" ],
+        "Flavourtext": "Kill only with djinn",
+        "EnemyNames": [ "Zombie 1:Zombert|KilledBy:Djinn@105" ],
+        "Keywords": [ "ToMatchup@104", "@104" ],
         "Image": "",
         "RewardTables": [
           [ { "Weight": 1 } ]
         ]
       },
       {
-        "Flavourtext": "Kill with Hand and go to Start, otherwise go to end",
-        "EnemyNames": [ "Zombie 1|KilledBy:Hand@0" ],
+        "Flavourtext": "Kill only with Psy",
+        "EnemyNames": [ "Zombie 1|KilledBy:Psynergy@106" ],
+        "Keywords": [ "ToMatchup@105", "@105" ],
         "Image": "",
         "RewardTables": [
           [ { "Weight": 1 } ]
+        ]
+      },
+      {
+        "Flavourtext": "Kill with Jupiter for Treasure",
+        "EnemyNames": [ "Zombie 1|KilledBy:Jupiter@-5" ],
+        "Keywords": [ "@106" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "@-5" ],
+              "Chest": "Wooden",
+              "HasChest": true
+            }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "Kill with Lightning for treasure",
+        "EnemyNames": [ "Zombie 1|KilledBy:##Lightning@-5" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "@-5" ],
+              "Chest": "Wooden",
+              "HasChest": true
+            }
+          ]
         ]
       },
       {
@@ -49,7 +121,12 @@
         "EnemyNames": [ "End" ],
         "Image": "",
         "RewardTables": [
-          [ { "Weight": 1 } ]
+          [
+            {
+              "Weight": 1,
+              "Tag": "-SomeTag"
+            }
+          ]
         ]
       }
     ]
@@ -395,7 +472,7 @@
       },
       {
         "Flavourtext": "You reach the river and begin to try making your way across. Watch out! A boulder is falling from Mount Aleph! You need to dodge it!",
-        "EnemyNames": [ "Boulder" ],
+        "EnemyNames": [ "Boulder|KilledBy:Player@-5|Runner:0:The boulder loudly crashed into the river" ],
         "Image": "",
         "RewardTables": [
           [
@@ -403,6 +480,17 @@
               "Weight": 1,
               "XP": 25,
               "Coins": 5
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "@-5" ],
+              "Tag": "SecretBoulder",
+              "Obtainable": 1,
+              "Chest": "Adept",
+              "HasChest": true,
+              "message": "The boulder cracks open, revealing some treasure."
             }
           ],
           [
@@ -446,7 +534,7 @@
         ]
       },
       {
-        "Flavourtext": "You reach the highest part of Vale and make camp for the night.  Like the Valean adepts of old, you will set out tomorrow to explore Weyard. Adventures, monsters, and treasures await you!",
+        "Flavourtext": "You reach the highest part of Vale and make camp for the night.  Like the Valean Adepts of old, you will set out tomorrow to explore Weyard. Adventures, monsters, and treasures await you!",
         "EnemyNames": [ "End" ],
         "Image": "",
         "RewardTables": [

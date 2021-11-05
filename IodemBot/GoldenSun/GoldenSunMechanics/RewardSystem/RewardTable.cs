@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using Newtonsoft.Json;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
@@ -23,8 +25,14 @@ namespace IodemBot.Modules.GoldenSunMechanics
         }
     }
 
-    public class RewardTables : List<RewardTable>
+    public class RewardTables : List<RewardTable>, ICloneable
     {
+        public object Clone()
+        {
+            var serialized = JsonConvert.SerializeObject(this);
+            return JsonConvert.DeserializeObject<RewardTables>(serialized);
+        }
+
         public List<Rewardable> GetRewards()
         {
             if (Count == 0) Add(new RewardTable());

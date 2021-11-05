@@ -184,8 +184,8 @@ namespace IodemBot.Modules
             var tags = string.Join(", ", avatar.Tags);
             while (tags.Length > 0)
             {
-                await ReplyAsync(tags.Substring(0, 2000));
-                tags = tags[2000..];
+                await ReplyAsync(tags.Substring(0, Math.Min(tags.Length, 2000)));
+                tags = string.Concat(tags.Skip(2000));
             }
         }
 

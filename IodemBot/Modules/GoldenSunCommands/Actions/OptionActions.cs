@@ -65,7 +65,7 @@ namespace IodemBot.Modules
                     Value = rarity.ToString(),
                     IsDefault = account.Preferences.AutoSell.Contains(rarity)
                 });
-            builder.WithSelectMenu($"{nameof(SelectAutoSellOptionsAction)}", options, minValues: 0,
+            builder.WithSelectMenu($"{nameof(SelectAutoSellOptionsAction)}", options, placeholder:"Select item rarities to autosell",minValues: 0,
                 maxValues: rarities.Length);
             return builder.Build();
         }

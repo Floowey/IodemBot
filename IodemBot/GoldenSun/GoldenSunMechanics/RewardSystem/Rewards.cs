@@ -25,12 +25,15 @@ namespace IodemBot.Modules.GoldenSunMechanics
         {
             List<string> awardLog = new List<string>();
 
-            if (RequireTag.Count > 0 && !RequireTag.All(t => userAccount.Tags.Contains(t)))
+            var hasAllRequired = RequireTag.Where(s => !s.StartsWith('!')).All(userAccount.Tags.Contains); // Have all required Tags
+            var hasRestricted = RequireTag.Where(s => s.StartsWith('!')).Select(s => s[1..]).Any(userAccount.Tags.Contains);// Have none of restricted Tags
+
+            if (RequireTag.Any() && (!hasAllRequired || hasRestricted))
             {
                 return "";
             }
 
-            if (Obtainable > 0 && userAccount.Tags.Count(r => r.Equals(Tag)) >= Obtainable)
+            if (Obtainable > 0 && userAccount.Tags.Count(Tag.Equals) >= Obtainable)
             {
                 return "";
             }
@@ -160,7 +163,10 @@ namespace IodemBot.Modules.GoldenSunMechanics
             }
             if (giveTag && Tag != "")
             {
-                userAccount.Tags.Add(Tag);
+                if (Tag.StartsWith('-'))
+                    userAccount.Tags.Remove(Tag);
+                else
+                    userAccount.Tags.Add(Tag);
             }
             return string.Join("\n", awardLog);
         }

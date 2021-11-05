@@ -147,6 +147,8 @@ namespace IodemBot.ColossoBattles
             fighters.OrderByDescending(f => f.Stats.Spd * f.MultiplyBuffs("Speed"))
                 .ToList()
                 .ForEach(f => Log.AddRange(f.EndTurn()));
+            TeamA.RemoveAll(m => m.Name == "Runner");
+            TeamB.RemoveAll(m => m.Name == "Runner");
         }
 
         private bool GameOver()

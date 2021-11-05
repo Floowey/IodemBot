@@ -127,8 +127,12 @@ namespace IodemBot.ColossoBattles
             {
                 if (Battle.GetWinner() == Team.A)
                     winners.OfType<PlayerFighter>().ToList().ForEach(p =>
+                    {
+                        var r = (RewardTables)Matchup.RewardTables.Clone();
+                        r.ForEach(t => t.ForEach(reward => reward.RequireTag.RemoveAll(s => s.Equals($"@{Battle.OutValue}"))));
                         _ = ServerGames.UserWonBattle(UserAccountProvider.GetById(p.Id),
-                            Matchup.RewardTables.GetRewards(), p.BattleStats, LobbyChannel, BattleChannel));
+                            r.GetRewards(), p.BattleStats, LobbyChannel, BattleChannel);
+                    });
 
                 Battle.TeamA.ForEach(p =>
                 {
@@ -177,8 +181,13 @@ namespace IodemBot.ColossoBattles
                     }
                 }
 
-                if (Battle.OutValue != -1)
+                if (Battle.OutValue >= 0)
                     DungeonNr = Battle.OutValue;
+                if (DungeonNr >= 100)
+                {
+                    var taggedDungeon = Dungeon.Matchups.FirstOrDefault(d => d.Keywords.Contains($"@{DungeonNr}"));
+                    DungeonNr = Dungeon.Matchups.IndexOf(taggedDungeon);
+                }
 
                 // Set To Next Dungeon if applicable
                 if (DungeonNr >= Dungeon.Matchups.Count || Matchup.EnemyNames.Any(e => e.Contains("End")))

@@ -236,7 +236,7 @@ namespace IodemBot.ColossoBattles
             turnLog.AddRange(EndTurnDoConditions()); // Poison, Venom, Stun, Sleep, Seal, Delusion, Curse
 
             turnLog.AddRange(EndTurnItemActivation()); // Custom Item unleashes like Unicorn Ring or Soul Ring
-
+            turnLog.AddRange(EndTurnRunner());
             DamageDoneThisTurn = 0;
             DefensiveMult = 1;
             OffensiveMult = 1;
@@ -247,6 +247,31 @@ namespace IodemBot.ColossoBattles
             }
 
             return turnLog;
+        }
+
+        private List<string> EndTurnRunner()
+        {
+            if (!IsAlive || !Tags.Any(t => t.StartsWith("Runner"))) return new();
+
+            var tag = Tags.First(t => t.StartsWith("Runner"));
+            var splits = tag.Split(':');
+            var turns = splits.Length > 1 ? int.Parse(splits[1]) : 0;
+            var msg = splits.Length > 2 ? splits[2] : "";
+            if (turns > 0)
+            {
+                Tags.Remove(tag);
+                Tags.Add($"Runner:{turns - 1}{(msg.IsNullOrEmpty()? "" : $":{msg}")}");
+                return new();
+            }
+
+            var newEnemy = EnemiesDatabase.GetEnemy("Next");
+            if (Party.Count(c => c.Name != "Runner") > 1)
+                newEnemy.Name = "Runner";
+            else
+                newEnemy.Name = "No Enemies remaining";
+            List<string> log = new() { msg.IsNullOrEmpty() ? $"{Name} ran away." : msg };
+            ReplaceWith(newEnemy);
+            return log;
         }
 
         private List<string> EndTurnDoBuffs()
@@ -625,6 +650,7 @@ namespace IodemBot.ColossoBattles
             IsImmuneToItemCurse = otherFighter.IsImmuneToItemCurse;
             IsImmuneToPsynergy = otherFighter.IsImmuneToPsynergy;
             Weapon = otherFighter.Weapon;
+            Tags = otherFighter.Tags;
         }
 
         public void SelectRandom(bool includePriority = true)

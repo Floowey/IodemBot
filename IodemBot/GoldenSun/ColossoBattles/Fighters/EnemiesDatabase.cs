@@ -100,9 +100,10 @@ namespace IodemBot.ColossoBattles
         {
             var tags = enemyKey.Contains('|') ? enemyKey.Split('|').Skip(1).ToList() : new();
             enemyKey = enemyKey.Split('|').First();
+            var nickname = enemyKey.Contains(':') ? enemyKey.Split(':').Last() : null;
+            enemyKey = enemyKey.Split(':').First();
 
-            NpcEnemy outEnemy = new NpcEnemy($"{enemyKey} Not Implemented", Sprites.GetRandomSprite(), new Stats(),
-                    new ElementalStats(), Array.Empty<string>(), true, true);
+            NpcEnemy outEnemy = null;
 
             if (AllEnemies.TryGetValue(enemyKey, out var enemy))
                 outEnemy = enemy.Clone() as NpcEnemy;
@@ -111,14 +112,12 @@ namespace IodemBot.ColossoBattles
             {
                 AllEnemies.TryGetValue("DeathTrap", out var trapEnemy);
                 outEnemy = trapEnemy.Clone() as NpcEnemy;
-                outEnemy.Name = enemyKey.Split(':').Last();
             }
 
             if (enemyKey.StartsWith("BoobyTrap"))
             {
                 AllEnemies.TryGetValue("BoobyTrap", out var trapEnemy);
                 outEnemy = trapEnemy.Clone() as NpcEnemy;
-                outEnemy.Name = enemyKey.Split(':').Last();
                 var args = enemyKey.Split(':').First();
                 foreach (var arg in args.Split('-').Skip(1))
                     if (int.TryParse(arg, out var damage))
@@ -136,7 +135,6 @@ namespace IodemBot.ColossoBattles
             {
                 AllEnemies.TryGetValue("BoobyTrap", out var trapEnemy);
                 outEnemy = (NpcEnemy)trapEnemy.Clone();
-                outEnemy.Name = enemyKey.Split(':').Last();
                 outEnemy.Stats.Atk = 0;
             }
 
@@ -144,7 +142,17 @@ namespace IodemBot.ColossoBattles
             {
                 AllEnemies.TryGetValue("Key", out var trapEnemy);
                 outEnemy = (NpcEnemy)trapEnemy.Clone();
-                outEnemy.Name = enemyKey.Split(':').Last();
+            }
+
+            if (outEnemy == null)
+            {
+                Console.WriteLine($"{enemyKey} was not found.");
+                outEnemy = new($"{enemyKey} Not Implemented", Sprites.GetRandomSprite(), new Stats(),
+                    new ElementalStats(), Array.Empty<string>(), false, false);
+            }
+            else
+            {
+                outEnemy.Name = nickname ?? outEnemy.Name;
             }
 
             outEnemy.Tags.AddRange(tags);

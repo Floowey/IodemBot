@@ -11,6 +11,21 @@ namespace IodemBot.Modules.GoldenSunMechanics
     {
         private static readonly double[] Spread = { 1.0, 0.66, 0.5, 0.33, 0.25, 0.15, 0.1 };
 
+        public static readonly Dictionary<string, string[]> MoveCategories = new()
+        {
+            { "##Plant", new[] { "Growth", "Mad Growth", "Wild Growth", "Thorn", "Nettle", "Briar" } }, // Maybe Punji
+            { "##Fire", new[] { "Fireball" } },
+            { "##Water", new[] { "Drench" } },
+            { "##Ice", new[] { "Prism", "Frost", "Ice" } },
+            { "##Wind", new[] { "Whirlwind" } },
+            { "##Lightning", new[] { "Plasma", "Shine Plasma", "Spark Plasma", "Bolt", "Thunder Mine" } },
+            { "##Earth", new[] { "Quake" } }, //Either incldue Spire and Rockfall or make separate ##Rock (or both)
+            { "##Dragon", new[] { "Reigning Dragon", "Dragon Fume", "Dragon Cloud" } },
+            { "##Sword", new[] { "Ragnarok", "Helm Splitter" } },
+            { "##Explosion", new[] { "Burst", "Fire Bomb", "Blast" } },
+            { "##Undead", new[] { "Undead Gloom", "Demon Night", "Call Zombie" } }
+        };
+
         public uint Power { get; set; } = 0;
         public uint AddDamage { get; set; } = 0;
         public double DmgMult { get; set; } = 1;
@@ -112,6 +127,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                         var Battle = user.Battle;
                         var killedByTags = t.Tags.Where(t => t.StartsWith("KilledBy"));
                         string[] MoveTypes = { "Djinn", "Hand", "Summon", "Psynergy" };
+
                         if (killedByTags.Any())
                         {
                             foreach (var killedByTag in killedByTags)
@@ -127,13 +143,14 @@ namespace IodemBot.Modules.GoldenSunMechanics
                                     continue;
 
                                 var parentMove = user.Moves.First(m => m.Name == Name);
-                                var isPsy = MoveArgs.Contains("Hand") && parentMove is Psynergy { PpCost: > 1 };
+                                var isPsy = MoveArgs.Contains("Psynergy") && parentMove is Psynergy { PpCost: > 1 };
                                 var isDjinn = MoveArgs.Contains("Djinn") && parentMove is Djinn;
                                 var isSummon = MoveArgs.Contains("Summon") && parentMove is Summon;
                                 if (MoveArgs.Any(MoveTypes.Contains) && !(isPsy || isDjinn || isSummon))
                                     continue;
 
-                                var MoveNames = MoveArgs.Where(s => s.StartsWith('#')).Select(s => s[1..]);
+                                var MoveNames = MoveArgs.Where(s => s.StartsWith('#') && !s.StartsWith("##")).Select(s => s[1..]).ToList();
+                                MoveNames.AddRange(MoveArgs.Where(s => s.StartsWith("##")).SelectMany(MoveCategories.GetValueOrDefault).ToList());
                                 if (MoveNames.Any() && !MoveNames.Contains(parentMove is Djinn d ? d.Djinnname : Name))
                                     continue;
 
