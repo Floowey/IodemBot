@@ -24,5 +24,10 @@ namespace IodemBot.Modules.GoldenSunMechanics
             }
             return log;
         }
+
+        public override string ToString()
+        {
+            return "Exploits the opponents weakest element.";
+        }
     }
 }

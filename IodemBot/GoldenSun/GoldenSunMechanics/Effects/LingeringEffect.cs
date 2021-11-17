@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using IodemBot.ColossoBattles;
 using IodemBot.Extensions;
 using Newtonsoft.Json;
@@ -32,13 +33,32 @@ namespace IodemBot.Modules.GoldenSunMechanics
             _user = user;
             appliedCoolDown = CoolDown;
             appliedDuration = Duration;
-            target.LingeringEffects.Add(this);
-            return new List<string> { $"A {Effect.Type} Effect is lingering around {target.Name}" };
+            var log = new List<string>();
+            if (AllowMultiple || !target.LingeringEffects.Any(l => l.InstanceID == InstanceID))
+            {
+                log.Add($"A {Effect.Type} Effect is lingering around {target.Name}");
+                target.LingeringEffects.Add(this);
+            }
+            return log;
+        }
+
+        protected override bool InternalValidSelection(ColossoFighter user)
+        {
+            if (AllowMultiple)
+                return true;
+
+            var targets = user.SelectedMove.OnEnemy ? user.Enemies : user.SelectedMove.TargetType == TargetType.PartySelf ? new List<ColossoFighter>() { user } : user.Party;
+
+            return !targets.All(e => e.LingeringEffects.Any(l => l.InstanceID == InstanceID));
         }
 
         public List<string> ApplyLingering(ColossoFighter target)
         {
             var log = new List<string>();
+
+            if (!RequireAlly.IsNullOrEmpty() && !_user.Party.Where(p => p.IsAlive).Any(n => n.Name == RequireAlly))
+                return log;
+
             if (appliedCoolDown > 0)
             {
                 Console.WriteLine("On cooldown");
