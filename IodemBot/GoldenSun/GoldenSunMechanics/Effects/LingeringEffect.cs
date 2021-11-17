@@ -18,15 +18,10 @@ namespace IodemBot.Modules.GoldenSunMechanics
         [JsonProperty] public bool RemovedOnDeath { get; set; } = true;
         [JsonProperty] public string Text { get; set; } = "";
         [JsonProperty] public string RequireAlly { get; set; }
-        [JsonProperty] public bool AllowMultiple { get; set; }
-        [JsonIgnore] public Guid InstanceID { get; private set; }
+        [JsonProperty] public string AllowMultipleID { get; set; }
+
         private int appliedCoolDown;
         private int appliedDuration;
-
-        public LingeringEffect()
-        {
-            InstanceID = Guid.NewGuid();
-        }
 
         public override List<string> Apply(ColossoFighter user, ColossoFighter target)
         {
@@ -34,7 +29,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             appliedCoolDown = CoolDown;
             appliedDuration = Duration;
             var log = new List<string>();
-            if (AllowMultiple || !target.LingeringEffects.Any(l => l.InstanceID == InstanceID))
+            if (!AllowMultipleID.IsNullOrEmpty() || !target.LingeringEffects.Any(l => l.AllowMultipleID == AllowMultipleID))
             {
                 log.Add($"A {Effect.Type} Effect is lingering around {target.Name}");
                 target.LingeringEffects.Add(this);
@@ -44,12 +39,19 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         protected override bool InternalValidSelection(ColossoFighter user)
         {
-            if (AllowMultiple)
+            if (AllowMultipleID.IsNullOrEmpty())
                 return true;
 
             var targets = user.SelectedMove.OnEnemy ? user.Enemies : user.SelectedMove.TargetType == TargetType.PartySelf ? new List<ColossoFighter>() { user } : user.Party;
 
-            return !targets.All(e => e.LingeringEffects.Any(l => l.InstanceID == InstanceID));
+            return !targets.All(e => e.LingeringEffects.Any(l => l.AllowMultipleID == AllowMultipleID));
+        }
+
+        protected override int InternalChooseBestTarget(List<ColossoFighter> targets)
+        {
+            if (AllowMultipleID.IsNullOrEmpty()) return base.InternalChooseBestTarget(targets);
+
+            return targets.IndexOf(targets.Where(e => !e.LingeringEffects.Any(t => t.AllowMultipleID == AllowMultipleID)).Random());
         }
 
         public List<string> ApplyLingering(ColossoFighter target)

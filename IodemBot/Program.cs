@@ -137,11 +137,14 @@ namespace IodemBot
             if (channel != null && (DateTime.Now - Global.RunningSince).TotalSeconds < 15)
                 await channel.SendMessageAsync(embed: new EmbedBuilder()
                     .WithTitle("Hello, I am back up.")
-                    .AddField("OS", Environment.OSVersion)
-                    .AddField("Build Time", File.GetLastWriteTime(Assembly.GetExecutingAssembly().Location))
-                    .AddField("Version", Assembly.GetExecutingAssembly().GetName().Version)
-                    .AddField("Prefix", Config.Bot.CmdPrefix)
-                    .AddField("System Time", DateTime.Now)
+                    .AddField("Version", Assembly.GetExecutingAssembly().GetName().Version, true)
+                    .AddField("OS", Environment.OSVersion.Platform, true)
+                    .AddField("Latency", _client.Latency, true)
+                    .AddField("Build Time", File.GetLastWriteTime(Assembly.GetExecutingAssembly().Location), true)
+                    .AddField("System Time", DateTime.Now, true)
+                    .AddField("Prefix", Config.Bot.CmdPrefix, true)
+                    .WithAuthor(_client.CurrentUser)
+                    .WithColor(Colors.Get("Iodem"))
                     .Build());
             await _client.SetStatusAsync(UserStatus.Idle);
             Global.UpSince = DateTime.UtcNow;
