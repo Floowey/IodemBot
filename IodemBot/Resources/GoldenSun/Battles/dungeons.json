@@ -7916,7 +7916,7 @@
       },
       {
         "Flavourtext": "Sagittarius, the Archer. Fight fire with fire, so they say. Sagittarius has realised, the archer's deadliest foe is himself.",
-        "EnemyNames": [ "MirrorAll:Sagittarius|Boost:125|KilledBeforeTurn:4@-5" ],
+        "EnemyNames": [ "MirrorAll:Sagittarius|KilledBeforeTurn:4@-5" ],
         "Keywords": [ "@103", "ToMatchup@100", "HasTagAll:Magma4ZodLeo:Magma4ZodAries:Magma4ZodSagittarius@500" ],
         "Image": "",
         "RewardTables": [
