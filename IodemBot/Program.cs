@@ -135,8 +135,14 @@ namespace IodemBot
             var channel = (SocketTextChannel)_client.GetChannel(535209634408169492) ??
                           (SocketTextChannel)_client.GetChannel(668443234292334612);
             if (channel != null && (DateTime.Now - Global.RunningSince).TotalSeconds < 15)
-                await channel.SendMessageAsync(
-                    $"Hello, I am back up.\nOS: {Environment.OSVersion}\nBuild Time: {File.GetLastWriteTime(Assembly.GetExecutingAssembly().Location)}");
+                await channel.SendMessageAsync(embed: new EmbedBuilder()
+                    .WithTitle("Hello, I am back up.")
+                    .AddField("OS", Environment.OSVersion)
+                    .AddField("Build Time", File.GetLastWriteTime(Assembly.GetExecutingAssembly().Location))
+                    .AddField("Version", Assembly.GetExecutingAssembly().GetName().Version)
+                    .AddField("Prefix", Config.Bot.CmdPrefix)
+                    .AddField("System Time", DateTime.Now)
+                    .Build());
             await _client.SetStatusAsync(UserStatus.Idle);
             Global.UpSince = DateTime.UtcNow;
         }

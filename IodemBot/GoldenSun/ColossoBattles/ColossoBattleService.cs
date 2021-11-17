@@ -116,8 +116,15 @@ namespace IodemBot.ColossoBattles
             //battles.Add(new TeamBattleManager("OneVOne", LobbyChannel, await PrepareBattleChannel("OneVOneA", PermValue.Deny), await PrepareBattleChannel("OneVOneB", PermValue.Allow), 1));
 
             if (Global.Client.Activity == null)
+            {
+#if DEBUG
+                await Global.Client.SetGameAsync("in Floowey's Palace.",
+                  "https://www.twitch.tv/directory/game/Golden%20Sun", ActivityType.Competing);
+#else
                 await Global.Client.SetGameAsync("in Babi's Palace.",
                     "https://www.twitch.tv/directory/game/Golden%20Sun", ActivityType.Streaming);
+#endif
+            }
             AcceptBattles = true;
         }
 
