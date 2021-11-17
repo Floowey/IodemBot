@@ -22,7 +22,7 @@ namespace IodemBot
 
         static Sprites()
         {
-            string json = File.ReadAllText("SystemLang/Sprites.json");
+            string json = File.ReadAllText("SystemLang/sprites.json");
             var data = JsonConvert.DeserializeObject<dynamic>(json);
             SpritesDictionary = data.ToObject<Dictionary<string, string>>();
         }
