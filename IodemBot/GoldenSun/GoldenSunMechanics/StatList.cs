@@ -17,6 +17,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public int MercuryAtk { get; set; }
         public int MercuryRes { get; set; }
 
+        [JsonConstructor]
         public ElementalStats(int venusAtk = 100, int venusRes = 100, int marsAtk = 100, int marsDef = 100,
             int jupiterAtk = 100, int jupiterDef = 100, int mercuryAtk = 100, int mercuryDef = 100) : this()
         {
@@ -28,6 +29,18 @@ namespace IodemBot.Modules.GoldenSunMechanics
             JupiterRes = jupiterDef;
             MercuryAtk = mercuryAtk;
             MercuryRes = mercuryDef;
+        }
+
+        public ElementalStats(ElementalStats newStats)
+        {
+            VenusAtk = newStats.VenusAtk;
+            VenusRes = newStats.VenusRes;
+            MarsAtk = newStats.MarsAtk;
+            MarsRes = newStats.MarsRes;
+            JupiterAtk = newStats.JupiterAtk;
+            JupiterRes = newStats.JupiterRes;
+            MercuryAtk = newStats.MercuryAtk;
+            MercuryRes = newStats.MercuryRes;
         }
 
         public static ElementalStats operator +(ElementalStats s1, ElementalStats s2)
@@ -67,7 +80,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 .Trim();
         }
 
-        internal int LeastRes()
+        internal int LowestRes()
         {
             return new[] { VenusRes, MarsRes, JupiterRes, MercuryRes }.Min();
         }
@@ -104,6 +117,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
     public class Stats
     {
+        [JsonConstructor]
         public Stats(int maxHp = 10, int maxPp = 10, int atk = 10, int def = 10, int spd = 10)
         {
             MaxHP = maxHp;
@@ -113,6 +127,17 @@ namespace IodemBot.Modules.GoldenSunMechanics
             Atk = atk;
             Def = def;
             Spd = spd;
+        }
+
+        public Stats(Stats newStats)
+        {
+            MaxHP = newStats.MaxHP;
+            MaxPP = newStats.MaxPP;
+            HP = newStats.HP;
+            PP = newStats.PP;
+            Atk = newStats.Atk;
+            Def = newStats.Def;
+            Spd = newStats.Spd;
         }
 
         public int MaxHP { get; set; }

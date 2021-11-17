@@ -80,6 +80,9 @@ namespace IodemBot.Modules
             builder.WithButton(labels ? "Status" : null, customId: $"#{nameof(StatusAction)}", style: ButtonStyle.Primary, emote: Emotes.GetEmote("StatusAction"));
             builder.WithButton(labels ? "Classes" : null, $"#{nameof(ClassAction)}", style: ButtonStyle.Primary, emote: Emotes.GetEmote("ClassAction"));
             builder.WithButton(labels ? "Save current Loadout" : null, $"#{nameof(LoadoutSaveAction)}", style: ButtonStyle.Primary, emote: Emotes.GetEmote("SaveLoadoutAction"));
+            builder.WithButton(labels ? "Reveal to others" : null, $"{nameof(RevealEphemeralAction)}", ButtonStyle.Secondary,
+                Emotes.GetEmote("RevealEphemeralAction"), row: 0);
+
             List<SelectMenuOptionBuilder> options = new();
 
             if (account.Loadouts.LoadoutsList.Count == 0)

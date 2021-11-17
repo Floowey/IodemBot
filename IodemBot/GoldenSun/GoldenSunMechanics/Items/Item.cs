@@ -109,6 +109,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public bool CuresCurse { get; set; }
 
         public bool IsEquippable => Equippables.Contains(Category);
+
         public bool IsEquipped { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
@@ -132,6 +133,14 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public override string ToString()
         {
             return Name;
+        }
+
+        public bool IsEquippableBy(ArchType archType)
+        {
+            if (archType == ArchType.Mage)
+                return !Inventory.WarriorExclusive.Contains(ItemType);
+            else
+                return !Inventory.MageExclusive.Contains(ItemType);
         }
 
         public string Summary()

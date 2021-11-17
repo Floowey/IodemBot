@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Discord;
 using Discord.Net;
+using Discord.WebSocket;
 using IodemBot.ColossoBattles;
 using IodemBot.Core;
 using IodemBot.Core.UserManagement;
@@ -16,7 +17,7 @@ using static IodemBot.ColossoBattles.EnemiesDatabase;
 
 namespace IodemBot.Modules
 {
-    public class DungeonAction : IodemBotCommandAction
+    public class DungeonsAction : IodemBotCommandAction
     {
         public override ActionGuildSlashCommandProperties SlashCommandProperties => new()
         {
@@ -133,6 +134,8 @@ namespace IodemBot.Modules
 
             builder.WithButton(labels ? "Status" : null, $"#{nameof(StatusAction)}", ButtonStyle.Primary,
                 Emotes.GetEmote("StatusAction"));
+            builder.WithButton(labels ? "Reveal to others" : null, $"{nameof(RevealEphemeralAction)}", ButtonStyle.Secondary,
+        Emotes.GetEmote("RevealEphemeralAction"), row: 0);
             return builder.Build();
         }
     }

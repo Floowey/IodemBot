@@ -138,11 +138,12 @@ namespace IodemBot.Modules
             var prevPage = statusPage - 1;
             var nextPage = statusPage + 1;
 
-            builder.WithButton(labels ? "Dungeons" : null, $"#{nameof(DungeonAction)}.", style: ButtonStyle.Secondary, emote: Emotes.GetEmote("DungeonAction"), row: 1);
+            builder.WithButton(labels ? "Dungeons" : null, $"#{nameof(DungeonsAction)}.", style: ButtonStyle.Secondary, emote: Emotes.GetEmote("DungeonAction"), row: 1);
             builder.WithButton(labels ? "Options" : null, $"#{nameof(OptionActions)}", style: ButtonStyle.Secondary, emote: Emotes.GetEmote("OptionAction"), row: 1);
+            builder.WithButton(labels ? "Reveal to others" : null, $"{nameof(RevealEphemeralAction)}", ButtonStyle.Secondary,
+                Emotes.GetEmote("RevealEphemeralAction"), row: 1);
             builder.WithButton("◀️", $"#{nameof(StatusAction)}.{prevPage}", style: ButtonStyle.Secondary, disabled: prevPage < 0, row: 1);
             builder.WithButton("▶️", $"#{nameof(StatusAction)}.{nextPage}", style: ButtonStyle.Secondary, disabled: nextPage >= NPages, row: 1);
-
             return builder.Build();
         }
     }
@@ -158,12 +159,29 @@ namespace IodemBot.Modules
         [ActionParameterComponent(Order = 0, Name = "element", Description = "Element", Required = true)]
         public Element SelectedElement { get; set; }
 
-        [ActionParameterSlash(Order = 1, Name = "class", Description = "class", Required = false, Type = ApplicationCommandOptionType.String)]
+        [ActionParameterSlash(Order = 1, Name = "class", Description = "class", Required = false, AutoComplete = true, Type = ApplicationCommandOptionType.String)]
         [ActionParameterComponent(Order = 1, Name = "class", Description = "class", Required = false)]
         public string SelectedClass { get; set; }
 
         public override bool GuildsOnly => true;
         public override EphemeralRule EphemeralRule => EphemeralRule.EphemeralOrFail;
+
+        public override ActionAutoCompleteProperties AutoCompleteProperties => new()
+        {
+            AutoComplete = AutoComplete
+        };
+
+        private IEnumerable<AutocompleteResult> AutoComplete(AutocompleteOption current, IReadOnlyCollection<AutocompleteOption> options)
+        {
+            var el = Enum.Parse<Element>((string)options.First().Value);
+            var value = (string)current.Value;
+            var user = EntityConverter.ConvertUser(Context.User);
+            var allClasses = AdeptClassSeriesManager.AllClasses;
+            var availableClasses = allClasses.Where(c => (c.IsDefault || user.BonusClasses.Contains(c.Name)) && c.Elements.Contains(el));
+
+            return allClasses.Where(c => c.Name.Contains(value, StringComparison.InvariantCultureIgnoreCase) || c.Classes.Any(c => c.Name.Contains(value, StringComparison.InvariantCultureIgnoreCase)))
+                .Take(20).Select(s => new AutocompleteResult(s.Name, s.Name));
+        }
 
         public override ActionGuildSlashCommandProperties SlashCommandProperties => new()
         {
@@ -411,6 +429,8 @@ namespace IodemBot.Modules
             builder.WithSelectMenu($"#{nameof(ChangeAdeptAction)}", classOptions);
             builder.WithButton(labels ? "Status" : null, customId: $"#{nameof(StatusAction)}", style: ButtonStyle.Primary, emote: Emotes.GetEmote("StatusAction"), row: 3);
             builder.WithButton(labels ? "Loadouts" : null, $"#{nameof(LoadoutAction)}", style: ButtonStyle.Primary, emote: Emotes.GetEmote("LoadoutAction"));
+            builder.WithButton(labels ? "Reveal to others" : null, $"{nameof(RevealEphemeralAction)}", ButtonStyle.Secondary,
+                Emotes.GetEmote("RevealEphemeralAction"));
             return builder.Build();
         }
     }

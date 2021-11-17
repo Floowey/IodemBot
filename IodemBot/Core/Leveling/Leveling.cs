@@ -55,16 +55,14 @@ namespace IodemBot.Core.Leveling
             {
                 userAccount.ServerStats.MostRecentChannel = channel.Id;
                 userAccount.ServerStats.ChannelSwitches += 2;
-                UserAccountProvider.StoreUser(userAccount);
                 if (userAccount.ServerStats.ChannelSwitches >= 14)
                     _ = GoldenSunCommands.AwardClassSeries("Air Pilgrim Series", user, channel);
             }
             else
             {
                 if (userAccount.ServerStats.ChannelSwitches > 0) userAccount.ServerStats.ChannelSwitches--;
-                UserAccountProvider.StoreUser(userAccount);
             }
-
+            UserAccountProvider.StoreUser(userAccount);
             await Task.CompletedTask;
         }
 

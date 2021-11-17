@@ -105,6 +105,8 @@ namespace IodemBot.Modules
             else
                 builder.WithButton(labels ? "Hide Names" : null, $"#{nameof(DjinnAction)}.None", ButtonStyle.Secondary,
                     Emotes.GetEmote("LabelsOff"), row: 0);
+            builder.WithButton(labels ? "Reveal to others" : null, $"{nameof(RevealEphemeralAction)}", ButtonStyle.Secondary,
+                    Emotes.GetEmote("RevealEphemeralAction"), row: 0);
 
             var classSeries = AdeptClassSeriesManager.GetClassSeries(user);
             foreach (var element in classSeries.Elements)

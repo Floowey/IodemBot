@@ -87,12 +87,12 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 Element == Element.Mercury ? 4 : 0, Element == Element.Mercury ? 4 : 0);
 
         [JsonIgnore]
-        public DjinnState State => IsSet ? DjinnState.Standby : CoolDown > 0 ? DjinnState.Recovery : DjinnState.Set;
+        public DjinnState State => OnStandby ? DjinnState.Standby : CoolDown > 0 ? DjinnState.Recovery : DjinnState.Set;
 
         [JsonIgnore] public int CoolDown { get; set; }
         [JsonIgnore] public int Position { get; set; }
 
-        private bool IsSet { get; set; }
+        public bool OnStandby { get; set; }
 
         public void UpdateMove()
         {
@@ -108,7 +108,6 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public override object Clone()
         {
-            var test = JsonConvert.SerializeObject(Move);
             var json = JsonConvert.SerializeObject(this,
                 Formatting.None,
                 new JsonSerializerSettings() { ReferenceLoopHandling = ReferenceLoopHandling.Serialize });
@@ -117,12 +116,12 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public void Summon(ColossoFighter user)
         {
-            IsSet = false;
+            OnStandby = false;
         }
 
         public void Reset()
         {
-            IsSet = false;
+            OnStandby = false;
             CoolDown = 0;
         }
 
@@ -155,13 +154,13 @@ namespace IodemBot.Modules.GoldenSunMechanics
             switch (State)
             {
                 case DjinnState.Set:
-                    IsSet = true;
+                    OnStandby = true;
                     CoolDown = Math.Max(2, user.Moves.OfType<Djinn>().Max(d => d.CoolDown) + 1);
                     Position = user.Party.SelectMany(p => p.Moves.OfType<Djinn>()).Max(d => d.Position) + 1;
                     return Move.Use(user);
 
                 case DjinnState.Standby:
-                    IsSet = false;
+                    OnStandby = false;
                     user.Moves.OfType<Djinn>().Where(d => d.CoolDown > CoolDown).ToList().ForEach(d => d.CoolDown--);
                     CoolDown = 0;
                     return new List<string> { $"{Emote} {Name} was set to {user.Name}." };

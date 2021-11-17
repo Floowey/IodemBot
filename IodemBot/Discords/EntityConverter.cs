@@ -29,7 +29,7 @@ namespace IodemBot
             var iUser = UserAccountProvider.GetById(user.Id);
             iUser.Name = user is SocketGuildUser u ? u.DisplayName() : user.Username;
             iUser.ImgUrl = user.GetAvatarUrl();
-            UserAccountProvider.StoreUser(iUser);
+            //UserAccountProvider.StoreUser(iUser);
             return iUser;
         }
     }

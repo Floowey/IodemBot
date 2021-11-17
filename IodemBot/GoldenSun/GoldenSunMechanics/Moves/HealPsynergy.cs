@@ -38,8 +38,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
             aliveFriends = aliveFriends.OrderBy(s => s.Stats.HP / s.Stats.MaxHP).ThenBy(s => s.Stats.HP).ToList();
 
-            TargetNr = party.IndexOf(aliveFriends.Any(d => d.Name.Contains("Star"))
-                ? party.Where(d => d.Name.Contains("Star")).Random()
+            TargetNr = party.IndexOf(aliveFriends.Any(d => d.Tags.Contains("VIP"))
+                ? party.Where(d => d.Tags.Contains("VIP")).Random()
                 : aliveFriends.First());
         }
 

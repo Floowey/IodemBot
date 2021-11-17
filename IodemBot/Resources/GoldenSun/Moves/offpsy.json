@@ -2340,6 +2340,9 @@
     "power": 170,
     "effects": [
       {
+        "Type": "Dark"
+      },
+      {
         "Type": "Stat",
         "Stat": "Defense",
         "Multiplier": 0.75,
@@ -3022,6 +3025,26 @@
       {
         "Type": "OHKO",
         "probability": 10
+      }
+    ]
+  },
+  "Balance": {
+    "name": "Balance",
+    "TargetType": "EnemyAll",
+    "emote": ":scales:",
+    "range": 5,
+    "element": 4,
+    "PPCost": 0,
+    "dmgMult": 1,
+    "ignoreSpread": true,
+    "effects": [
+      {
+        "Type": "Libra"
+      },
+      {
+        "Type": "IgnoreDefense",
+        "IgnorePercent": 100,
+        "Probability": 100
       }
     ]
   }

@@ -45,6 +45,43 @@ namespace IodemBot.ColossoBattles
             Battle.TeamB.Clear();
             var curEnemies = Matchup.Enemy;
             if (Matchup.Shuffle) curEnemies.Shuffle();
+
+            var allTags = Battle.TeamA.OfType<PlayerFighter>()
+                   .SelectMany(p => UserAccountProvider.GetById(p.Id).Tags);
+            curEnemies = curEnemies.Where(e =>
+            {
+                var checkTags = e.Tags.Where(t => t.Contains("HasTag"));
+
+                foreach (var tag in checkTags)
+                {
+                    var splits = tag.Split(':');
+                    var keyWord = splits.First();
+                    var Negative = keyWord.StartsWith('!');
+                    keyWord = Negative ? keyWord[1..] : keyWord;
+                    keyWord = keyWord == "HasTag" ? "HasTagAny" : keyWord;
+                    var checkAny = keyWord.Contains("Any");
+
+                    var normalTags = splits.Skip(1).Where(t => !t.Contains('*'));
+                    var wildCards = splits.Skip(1).Where(t => t.Contains('*')).Select(s => s[0..^1]);
+
+                    if (checkAny) //Check Any
+                    {
+                        var valid = (!normalTags.Any() || normalTags.Any(allTags.Contains))
+                        && (!wildCards.Any() || wildCards.Any(t => allTags.Any(a => a.StartsWith(t))));
+                        if (valid == Negative)
+                            return false;
+                    }
+                    else //Check All
+                    {
+                        var valid = (!normalTags.Any() || normalTags.All(allTags.Contains))
+                        && (!wildCards.Any() || wildCards.All(t => allTags.Any(a => a.StartsWith(t))));
+                        if (valid == Negative)
+                            return false;
+                    }
+                }
+                return true;
+            }).ToList();
+
             curEnemies.Reverse();
             curEnemies.ForEach(e =>
             {
@@ -149,38 +186,37 @@ namespace IodemBot.ColossoBattles
 
                 var allTags = Battle.TeamA.OfType<PlayerFighter>()
                     .SelectMany(p => UserAccountProvider.GetById(p.Id).Tags);
-                var taggedAnyMatchups = Matchup.Keywords.Where(m => m.StartsWith("HasTagAny"));
-                if (taggedAnyMatchups.Any())
+                var checkTags = Matchup.Keywords.Where(t => t.Contains("HasTag"));
+                foreach (var tag in checkTags)
                 {
-                    foreach (var taggedMatchup in taggedAnyMatchups)
+                    var args = tag.Split('@');
+                    var BattleNumbers = args.Skip(1).Select(int.Parse);
+                    var splits = args.First().Split(':');
+                    var keyWord = splits.First();
+                    var Negative = keyWord.StartsWith('!');
+                    keyWord = Negative ? keyWord[1..] : keyWord;
+                    keyWord = keyWord == "HasTag" ? "HasTagAny" : keyWord;
+                    var checkAny = keyWord.Contains("Any");
+
+                    var normalTags = splits.Skip(1).Where(t => !t.Contains('*'));
+                    var wildCards = splits.Skip(1).Where(t => t.Contains('*')).Select(s => s[0..^1]);
+
+                    if (checkAny) //Check Any
                     {
-                        var args = taggedMatchup.Split('@');
-                        var BattleNumbers = args.Skip(1).Select(int.Parse);
-                        var TagArgs = args.First().Split(':').Skip(1);
-
-                        if (!TagArgs.Any(allTags.Contains))
+                        var valid = (!normalTags.Any() || normalTags.Any(allTags.Contains))
+                        && (!wildCards.Any() || wildCards.Any(t => allTags.Any(a => a.StartsWith(t))));
+                        if (valid == Negative)
                             continue;
-
-                        DungeonNr = BattleNumbers.Random();
                     }
-                }
-
-                var taggedAllMatchups = Matchup.Keywords.Where(m => m.StartsWith("HasTagAll"));
-                if (taggedAllMatchups.Any())
-                {
-                    foreach (var taggedMatchup in taggedAllMatchups)
+                    else //Check All
                     {
-                        var args = taggedMatchup.Split('@');
-                        var BattleNumbers = args.Skip(1).Select(int.Parse);
-                        var TagArgs = args.First().Split(':').Skip(1);
-
-                        if (!TagArgs.All(allTags.Contains))
+                        var valid = (!normalTags.Any() || normalTags.All(allTags.Contains))
+                        && (!wildCards.Any() || wildCards.All(t => allTags.Any(a => a.StartsWith(t))));
+                        if (valid == Negative)
                             continue;
-
-                        DungeonNr = BattleNumbers.Random();
                     }
+                    DungeonNr = BattleNumbers.Random();
                 }
-
                 if (Battle.OutValue >= 0)
                     DungeonNr = Battle.OutValue;
                 if (DungeonNr >= 100)
@@ -217,6 +253,14 @@ namespace IodemBot.ColossoBattles
                     if (DateTime.Now <= new DateTime(2021, 11, 8) && Global.RandomNumber(0, 5) == 0)
                     {
                         var r = new List<Rewardable> { new DefaultReward { Dungeon = "Halloween Special" } };
+                        winners.OfType<PlayerFighter>().ToList().ForEach(p =>
+                            _ = ServerGames.UserWonBattle(UserAccountProvider.GetById(p.Id), r, new BattleStats(),
+                                LobbyChannel, BattleChannel));
+                    }
+
+                    if (DateTime.Now <= new DateTime(2021, 26, 12) && Global.RandomNumber(0, 5) == 0)
+                    {
+                        var r = new List<Rewardable> { new DefaultReward { Dungeon = "A Very Golden Christmas" } };
                         winners.OfType<PlayerFighter>().ToList().ForEach(p =>
                             _ = ServerGames.UserWonBattle(UserAccountProvider.GetById(p.Id), r, new BattleStats(),
                                 LobbyChannel, BattleChannel));

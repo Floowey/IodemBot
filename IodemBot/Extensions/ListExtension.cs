@@ -1,26 +1,29 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Security.Cryptography;
 
 namespace IodemBot.Extensions
 {
     public static class ListExtension
     {
+        private static readonly RNGCryptoServiceProvider provider = new RNGCryptoServiceProvider();
+        private static Random rng = new Random();
+
         public static void Shuffle<T>(this IList<T> list)
         {
-            var provider = new RNGCryptoServiceProvider();
-            var n = list.Count;
+            int n = list.Count;
             while (n > 1)
             {
-                var box = new byte[1];
-                do
-                {
-                    provider.GetBytes(box);
-                } while (!(box[0] < n * (byte.MaxValue / n)));
-
-                var k = box[0] % n;
                 n--;
+                int k = rng.Next(n + 1);
                 (list[k], list[n]) = (list[n], list[k]);
             }
         }
+
+        //public static void Shuffle<T>(this IList<T> list)
+        //{
+        //    list = list.OrderBy(i => Global.RandomNumber(0, 10000)).ToList();
+        //}
     }
 }

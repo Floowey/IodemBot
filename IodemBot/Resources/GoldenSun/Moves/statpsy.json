@@ -922,6 +922,18 @@
       }
     ]
   },
+  "Royal Defense": {
+    "name": "Royal Defense",
+    "TargetType": "PartyAll",
+    "hasPriority": true,
+    "emote": "<:Guard:537705488306012179>",
+    "effects": [
+      {
+        "Type": "ReduceDamage",
+        "DamageReduction": 75
+      }
+    ]
+  },
   "Sandstorm": {
     "name": "Sandstorm",
     "TargetType": "EnemyRange",
@@ -1009,6 +1021,34 @@
       }
     ]
   },
+  "Regrow Limb": {
+    "name": "Regrow Limb",
+    "TargetType": "PartySingle",
+    "emote": "<:Ply:536969730636906498>",
+    "range": 1,
+    "element": 1,
+    "PPCost": 0,
+    "effects": [
+      {
+        "Type": "Revive",
+        "Percentage": 80
+      }
+    ]
+  },
+  "Rebalance": {
+    "name": "Rebalance",
+    "TargetType": "PartyAll",
+    "emote": ":scales:",
+    "range": 1,
+    "element": 1,
+    "PPCost": 0,
+    "effects": [
+      {
+        "Type": "Revive",
+        "Percentage": 100
+      }
+    ]
+  },
   "Sack": {
     "name": "Sack",
     "TargetType": "PartySelf",
@@ -1051,6 +1091,50 @@
         "Type": "Stat",
         "Stat": "Speed",
         "Multiplier": 0.6
+      }
+    ]
+  },
+  "Crucible": {
+    "name": "Crucible",
+    "TargetType": "PartySelf",
+    "emote": ":amphora:",
+    "range": 1,
+    "element": 2,
+    "PPCost": 0,
+    "effects": [
+      {
+        "Type": "Crucible"
+      }
+    ]
+  },
+  "Djinn Stun": {
+    "name": "Djinn Stun",
+    "TargetType": "EnemyAll",
+    "emote": ":amphora:",
+    "range": 1,
+    "element": 2,
+    "PPCost": 0,
+    "effects": [
+      {
+        "Type": "DjinnManip"
+      }
+    ]
+  },
+  "Meteor Shower": {
+    "name": "Meteor Shower",
+    "TargetType": "PartySingle",
+    "emote": ":comet:",
+    "range": 1,
+    "element": 1,
+    "PPCost": 0,
+    "hasPriority": true,
+    "effects": [
+      {
+        "Type": "Lingering",
+        "Effect": {
+          "Type": "Counter"
+        },
+        "Duration": 999
       }
     ]
   }

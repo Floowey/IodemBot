@@ -71,6 +71,15 @@ namespace IodemBot.ColossoBattles
         public string Name { get; set; } = "";
         public Stats Stats { get; set; } = new(1, 1, 1, 1, 1);
         public ElementalStats ElStats { get; set; }
+
+        public Stats BoostedStats
+        {
+            get => Stats * new Stats(100, 100,
+                    (int)(MultiplyBuffs("Atk") * 100),
+                    (int)(MultiplyBuffs("Def") * 100),
+                    (int)(MultiplyBuffs("Speed") * 100)) * 0.01;
+        }
+
         public string ImgUrl { get; set; }
         [JsonIgnore] public List<Move> Moves { get; set; }
 
@@ -260,7 +269,7 @@ namespace IodemBot.ColossoBattles
             if (turns > 0)
             {
                 Tags.Remove(tag);
-                Tags.Add($"Runner:{turns - 1}{(msg.IsNullOrEmpty()? "" : $":{msg}")}");
+                Tags.Add($"Runner:{turns - 1}{(msg.IsNullOrEmpty() ? "" : $":{msg}")}");
                 return new();
             }
 
@@ -394,7 +403,7 @@ namespace IodemBot.ColossoBattles
         {
             if (LingeringEffects.Count > 0 && IsAlive)
             {
-                Console.WriteLine($"Applying LingeringEffects: {LingeringEffects.Select(e => e.Effect.Type)}");
+                Console.WriteLine($"Applying LingeringEffects: {string.Join("", LingeringEffects.Select(e => e.Effect.Type))}");
                 return LingeringEffects.SelectMany(e => e.ApplyLingering(this)).ToList();
             }
 
@@ -637,10 +646,10 @@ namespace IodemBot.ColossoBattles
         {
             Name = otherFighter.Name;
             ImgUrl = otherFighter.ImgUrl;
-            Stats = otherFighter.Stats;
-            ElStats = otherFighter.ElStats;
-            _conditions = otherFighter._conditions;
-            Moves = otherFighter.Moves;
+            Stats = new Stats(otherFighter.Stats);
+            ElStats = new ElementalStats(otherFighter.ElStats);
+            _conditions = otherFighter._conditions.ToList();
+            Moves = otherFighter.Moves.Select(m => m is Djinn ? (Djinn)m.Clone() : m).ToList();
             IsImmuneToConditions = otherFighter.IsImmuneToConditions;
             DeathCurseCounter = otherFighter.DeathCurseCounter;
             PPrecovery = otherFighter.PPrecovery;
@@ -649,8 +658,8 @@ namespace IodemBot.ColossoBattles
             IsImmuneToOhko = otherFighter.IsImmuneToHPtoOne;
             IsImmuneToItemCurse = otherFighter.IsImmuneToItemCurse;
             IsImmuneToPsynergy = otherFighter.IsImmuneToPsynergy;
-            Weapon = otherFighter.Weapon;
-            Tags = otherFighter.Tags;
+            Weapon = (Item)otherFighter.Weapon?.Clone();
+            Tags = otherFighter.Tags.ToList();
         }
 
         public void SelectRandom(bool includePriority = true)

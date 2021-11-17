@@ -1079,11 +1079,11 @@
     "SpriteNormal": "<a:Spark:662386330751336470>",
     "SpriteShiny": "<a:SparkShiny:663018696784085023>",
     "Move": {
-      "Targettype": 1,
+      "Targettype": "PartyAll",
       "effects": [
         {
           "Type": "Revive",
-          "Percentage": 60,
+          "Percentage": 50,
           "Probability": 70
         }
       ]
@@ -2592,6 +2592,116 @@
     "Stats": {
       "MaxHP": 8,
       "Def": 5,
+      "Spd": 3
+    }
+  },
+  "Holly": {
+    "Djinnname": "Holly",
+    "Element": 0,
+    "SpriteNormal": "<a:Leaf:764415634909560844>",
+    "Event": "Christmas21",
+    "Move": {
+      "Targettype": "EnemyRange",
+      "Range": 1,
+      "AddDamage": 24,
+      "Effects": [
+        {
+          "Type": "Condition",
+          "Condition": "Poison",
+          "Probability": 7
+        },
+        {
+          "Type": "Condition",
+          "Condition": "Stun",
+          "Probability": 7
+        },
+        {
+          "Type": "Condition",
+          "Condition": "Seal",
+          "Probability": 7
+        },
+        {
+          "Type": "Condition",
+          "Condition": "Delusion",
+          "Probability": 7
+        }
+      ]
+    },
+    "Stats": {
+      "MaxHP": 5,
+      "Atk": 3,
+      "Def": 2
+    }
+  },
+  "Sconce": {
+    "Djinnname": "Sconce",
+    "Element": 1,
+    "SpriteNormal": "<a:Lantern:764415945271410698>",
+    "Event": "Christmas21",
+    "Move": {
+      "Targettype": "PartySingle",
+      "Range": 4,
+      "Heal": 24,
+      "effects": [
+        {
+          "Type": "Stat",
+          "Stat": "Resistance",
+          "Multiplier": 1.2,
+          "Probability": 100
+        }
+      ]
+    },
+    "Stats": {
+      "MaxHP": 7,
+      "MaxPP": 4,
+      "Def": 4
+    }
+  },
+  "Jingle": {
+    "Djinnname": "Jingle",
+    "Element": 2,
+    "SpriteNormal": "<a:Flutter:765593130275045448>",
+    "Event": "Christmas21",
+    "Move": {
+      "Targettype": "PartyAll",
+      "Element": 2,
+      "Effects": [
+        {
+          "Type": "Restore"
+        }
+      ]
+    },
+    "Stats": {
+      "MaxHP": 7,
+      "MaxPP": 4,
+      "Def": 3
+    }
+  },
+  "Frostbite": {
+    "Djinnname": "Frostbite",
+    "Element": 3,
+    "SpriteNormal": "<a:Shiver:765593206334816266>",
+    "Event": "Christmas21",
+    "Move": {
+      "Targettype": "EnemyRange",
+      "Range": 1,
+      "dmgMult": 1.2,
+      "effects": [
+        {
+          "Type": "Condition",
+          "Condition": "Stun",
+          "Probability": 12
+        },
+        {
+          "Type": "Condition",
+          "Condition": "Flinch",
+          "Probability": 24
+        }
+      ]
+    },
+    "Stats": {
+      "MaxHP": 8,
+      "Atk": 4,
       "Spd": 3
     }
   }

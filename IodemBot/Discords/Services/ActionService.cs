@@ -216,6 +216,7 @@ namespace IodemBot.Discords.Services
                 Description = attribute.Description,
                 Required = attribute.Required,
                 Type = attribute.Type,
+                Autocomplete = attribute.AutoComplete,
                 Default = attribute.DefaultSubCommand ? true : null
             };
 

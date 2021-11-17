@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Discord;
@@ -34,6 +35,11 @@ namespace IodemBot.Discords
                     component.Data.CustomId.StartsWith('^')) //# = refresh component, ^ = refresh into new component
                     return new ActionRefreshRunFactory(services, context, component);
                 return new ActionComponentRunFactory(services, context, component);
+            }
+
+            if (interaction is SocketAutocompleteInteraction autoComplete)
+            {
+                return new ActionAutoCompleteRunFactory(services, context, autoComplete);
             }
 
             return null;
@@ -390,6 +396,50 @@ namespace IodemBot.Discords
         protected override async Task RunActionAsync(BotCommandAction action)
         {
             await action.RunAsync();
+        }
+    }
+
+    internal class ActionAutoCompleteRunFactory : ActionRunFactory<SocketAutocompleteInteraction, BotCommandAction>
+    {
+        private AutocompleteOption _current;
+        private IReadOnlyCollection<AutocompleteOption> _options;
+
+        public ActionAutoCompleteRunFactory(IServiceProvider services, RequestContext context,
+            SocketAutocompleteInteraction interaction) : base(services, context, interaction)
+        {
+            _current = Interaction.Data.Current;
+            _options = Interaction.Data.Options;
+        }
+
+        protected override string InteractionNameForLog => Interaction.Data.CommandName;
+        protected override BotCommandAction GetAction()
+        {
+            return ActionService.GetAll().OfType<BotCommandAction>().FirstOrDefault(a =>
+                a.SlashCommandProperties != null && a.SlashCommandProperties.Name == Interaction.Data.CommandName
+                && a.AutoCompleteProperties != null);
+        }
+
+        protected override async Task PopulateParametersAsync(BotCommandAction action)
+        {
+            await Task.CompletedTask;
+        }
+
+        protected override async Task RunActionAsync(BotCommandAction action)
+        {
+            await Interaction.RespondAsync(action.AutoCompleteProperties.AutoComplete(_current, _options));
+        }
+
+        public override async Task RunActionAsync()
+        {
+            //using IDisposable typingObject = _context is RequestCommandContext ? _context.Channel?.EnterTypingState() : null;
+
+            var action = GetAction();
+            if (action == null)
+                throw new CommandInvalidException();
+
+            action.Initialize(Services, Context);
+
+            await RunActionAsync(action);
         }
     }
 }

@@ -26,6 +26,7 @@ namespace IodemBot
             { "LoadoutAction", "<:transfer_file:896735785187962901>" },
             { "OptionAction", "<:Options:896735785166979082>" },
             { "RemoveCursedAction", "<:Remove_Curse:896069873438957588>" },
+            { "RevealEphemeralAction", "<:Reveal:909763819167944714>" },
             { "SaveLoadoutAction", "<:Save_Game:896735785351520316>" },
             { "ShopAction", "<:Buy:896735785137614878>" },
             { "StatusAction", "<:Status:896069873124409375>" },

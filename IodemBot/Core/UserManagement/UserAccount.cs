@@ -173,7 +173,7 @@ namespace IodemBot.Core.UserManagement
             BattleStats = new BattleStats();
             ServerStats = new ServerStats();
             LastReset = DateTime.Now;
-            Tags.RemoveAll(t => !t.Contains("Halloween20"));
+            Tags.RemoveAll(t => !t.Contains("Halloween20") || !t.Contains("Christmas21"));
             Tags.Add($"{Element}Adept");
             NewGames++;
         }

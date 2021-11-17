@@ -28,10 +28,89 @@ namespace IodemBot.ColossoBattles
 
         public void Start()
         {
-            IsActive = true;
             TurnNumber = 0;
             Log.Clear();
-            foreach (var p in TeamA.Concat(TeamB).ToList())
+            if (TeamB.Any(p => p.Tags.Contains("MirrorAll")))
+            {
+                var mirrorCount = TeamB.Count(p => p.Tags.Contains("MirrorAll"));
+                for (int i = 0; i < mirrorCount; i++)
+                {
+                    var otherTags = TeamB.Where(p => p.Tags.Contains("MirrorAll")).ElementAt(i).Tags.Except(new[] { "Mirror", "MirrorAll" });
+                    var nickname = TeamB.Where(p => p.Tags.Contains("MirrorAll")).ElementAt(i).Name;
+                    foreach (var player in TeamA)
+                    {
+                        var enemy = EnemiesDatabase.GetEnemy("Next");
+                        enemy.ReplaceWith(player);
+                        enemy.Heal(1000);
+                        enemy.RemoveNearlyAllConditions();
+                        enemy.Tags.AddRange(otherTags);
+                        enemy.Tags.RemoveAll(t => t.StartsWith("Mirror"));
+                        enemy.Name = nickname == "Mirror" ? enemy.Name : nickname;
+                        //enemy = (NpcEnemy)enemy.Clone();
+                        AddPlayer(enemy, Team.B);
+                    }
+                }
+                TeamB.RemoveAll(p => p.Tags.Contains("MirrorAll"));
+            }
+            if (TeamB.Any(p => p.Tags.Contains("Mirror")))
+            {
+                foreach (var mirror in TeamB.OfType<NpcEnemy>().Where(p => p.Tags.Contains("Mirror")))
+                {
+                    var mirrorName = mirror.Name;
+                    var otherTags = mirror.Tags.Except(new[] { "Mirror", "MirrorAll" });
+                    mirror.ReplaceWith(TeamA.OfType<PlayerFighter>().OrderByDescending(p => p.Stats.MaxHP + p.Stats.MaxPP + p.Stats.Atk + p.Stats.Def + p.Stats.Spd).First());
+                    mirror.Heal(1000);
+                    mirror.RemoveNearlyAllConditions();
+                    mirror.Name = mirrorName == "Mirror" ? mirror.Name : mirrorName;
+                    mirror.Tags.AddRange(otherTags);
+                    mirror.Tags.RemoveAll(t => t.StartsWith("Mirror"));
+                    //AddPlayer(mirror, Team.B);
+                }
+                TeamB.RemoveAll(p => p.Tags.Contains("MirrorAll"));
+            }
+
+            foreach (var fighter in TeamA.Concat(TeamB).Where(f => f.Tags.Any(t => t.StartsWith("Boost:"))))
+            {
+                foreach (var tag in fighter.Tags.Where(t => t.StartsWith("Boost")))
+                {
+                    var splits = tag.Split(':');
+                    var stat = splits.Length == 3 ? splits.ElementAt(2) : "All";
+                    var amount = float.Parse(splits.ElementAt(1));
+
+                    switch (stat)
+                    {
+                        case "HP":
+                        case "MaxHP":
+                            fighter.Stats.MaxHP = (int)(fighter.Stats.MaxHP * amount / 100);
+                            fighter.Stats.HP = fighter.Stats.MaxHP;
+                            break;
+
+                        case "MaxPP":
+                        case "PP":
+                            fighter.Stats.MaxPP = (int)(fighter.Stats.MaxPP * amount / 100);
+                            fighter.Stats.PP = fighter.Stats.MaxPP; break;
+                        case "Atk":
+                            fighter.Stats.Atk = (int)(fighter.Stats.Atk * amount / 100);
+                            break;
+
+                        case "Def":
+                            fighter.Stats.Def = (int)(fighter.Stats.Def * amount / 100);
+                            break;
+
+                        case "Spd":
+                            fighter.Stats.Spd = (int)(fighter.Stats.Spd * amount / 100);
+                            break;
+
+                        case "All":
+                        default:
+                            fighter.Stats *= amount;
+                            fighter.Stats *= 0.01;
+                            break;
+                    }
+                }
+            }
+            IsActive = true;
+            foreach (var p in TeamA.Concat(TeamB))
             {
                 if (p is NpcEnemy) p.SelectRandom();
 
@@ -66,7 +145,6 @@ namespace IodemBot.ColossoBattles
         {
             if (IsActive) return;
 
-            if (TeamA.Any(p => !p.ImgUrl.IsNullOrEmpty() && p.ImgUrl == player.ImgUrl)) return;
             GetTeam(team).Add(player);
             player.party = team;
             player.Battle = this;
@@ -147,7 +225,7 @@ namespace IodemBot.ColossoBattles
             fighters.OrderByDescending(f => f.Stats.Spd * f.MultiplyBuffs("Speed"))
                 .ToList()
                 .ForEach(f => Log.AddRange(f.EndTurn()));
-            TeamA.RemoveAll(m => m.Name == "Runner");
+            //TeamA.RemoveAll(m => m.Name == "Runner");
             TeamB.RemoveAll(m => m.Name == "Runner");
         }
 

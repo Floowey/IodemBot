@@ -449,7 +449,7 @@ namespace IodemBot.ColossoBattles
             var i = 1;
             foreach (var fighter in Battle.GetTeam(Team.B))
             {
-                var desc = $"{fighter.ConditionsToString()}".Trim();
+                var desc = $"\u200B{fighter.ConditionsToString()}".Trim();
                 e.AddField($"{fighter.Name}", desc.IsNullOrEmpty() ? "\u200B" : desc, true);
                 //e.AddField($"{fighter.Name}", $"{fighter.ConditionsToString()}".Trim(), true);
                 i++;
@@ -497,12 +497,12 @@ namespace IodemBot.ColossoBattles
                     var recovery = string.Join(" ", recoveryDjinn.OfElement(el).Select(d => d.Emote));
                     embed.WithColor(Colors.Get(standbyDjinn.Select(e => e.Element.ToString()).ToList()));
 
-                    var djinnField = $"{standby}{(recovery.IsNullOrEmpty() ? "" : $"({recovery})")}";
+                    var djinnField = $"\u200B{standby}{(recovery.IsNullOrEmpty() ? "" : $"\u200B({recovery})")}";
 
                     //embed.AddField(Emotes.GetIcon(el), ($"{standby}" +
                     //    $"{(!standby.IsNullOrEmpty() && !recovery.IsNullOrEmpty() ? "\n" : "\u200b")}" +
                     //    $"{(recovery.IsNullOrEmpty() ? "" : $"({recovery})")}").Trim(), true);
-                    embed.AddField(Emotes.GetIcon(el), djinnField.IsNullOrEmpty() ? "\u200b" : djinnField);
+                    embed.AddField($"\u200B{Emotes.GetIcon(el)}", djinnField.IsNullOrEmpty() ? "\u200b" : djinnField);
                     if (necessaryFields > 2 && embed.Fields.Count == 2 || embed.Fields.Count == 5)
                         embed.AddField("\u200b", "\u200b", true);
                 }
@@ -522,11 +522,16 @@ namespace IodemBot.ColossoBattles
                 embed.WithThumbnailUrl(fighter.ImgUrl);
                 embed.WithColor(
                     Colors.Get(fighter.Moves.OfType<Psynergy>().Select(p => p.Element.ToString()).ToArray()));
+                //embed.AddField($"{fighter.Name}{fighter.ConditionsToString()}",
+                //    $"**HP**: {fighter.Stats.HP} / {fighter.Stats.MaxHP}\n**PP**: {fighter.Stats.PP} / {fighter.Stats.MaxPP}");
                 embed.AddField($"{fighter.Name}{fighter.ConditionsToString()}",
-                    $"**HP**: {fighter.Stats.HP} / {fighter.Stats.MaxHP}\n**PP**: {fighter.Stats.PP} / {fighter.Stats.MaxPP}");
+                    $"{Utilities.GetProgressBar(fighter.Stats.HP*100/fighter.Stats.MaxHP)} **HP {fighter.Stats.HP}**\n" +
+                    $"{Utilities.GetProgressBar(fighter.Stats.PP * 100 / fighter.Stats.MaxPP)} **PP {fighter.Stats.PP}**"
+                );
 
                 tasks.Add(msg.ModifyAsync(m =>
                 {
+                    m.Content = "";
                     m.Embed = embed.Build();
                     m.Components = ControlBattleComponents.GetPlayerControlComponents(fighter);
                 }));

@@ -72,19 +72,19 @@ namespace IodemBot.Modules
         {
             var inv = account.Inv;
             var embed = new EmbedBuilder()
-                .AddField("Warrior Gear", inv.GearToString(ArchType.Warrior), true)
-                .AddField("Mage Gear", inv.GearToString(ArchType.Mage), true);
+                .AddField("Warrior Gear", string.Concat(inv.GearToString(ArchType.Warrior).Prepend('\u200B')), true)
+                .AddField("Mage Gear", string.Concat(inv.GearToString(ArchType.Mage).Prepend('\u200B')), true);
 
-            var invstring = inv.InventoryToString(detail);
+            var invstring = string.Concat(inv.InventoryToString(detail).Prepend('\u200B'));
             if (invstring.Length >= 1024)
             {
                 var remainingstring = invstring;
                 var parts = new List<string>();
-                while (remainingstring.Length >= 1024)
+                while (remainingstring.Length > 1024)
                 {
-                    var lastitem = remainingstring.Take(1024).ToList().FindLastIndex(s => s.Equals(Split[detail])) + 1;
+                    var lastitem = remainingstring.Take(1020).ToList().FindLastIndex(s => s.Equals(Split[detail])) + 1;
                     parts.Add(string.Concat(remainingstring.Take(lastitem)));
-                    remainingstring = string.Concat(remainingstring.Skip(lastitem));
+                    remainingstring = string.Concat(remainingstring.Skip(lastitem).Prepend('\u200B'));
                 }
 
                 parts.Add(remainingstring);
@@ -137,6 +137,8 @@ namespace IodemBot.Modules
             else
                 builder.WithButton(labels ? "Hide Names" : null, $"#{nameof(InventoryAction)}.None",
                     ButtonStyle.Secondary, Emotes.GetEmote("LabelsOff"), row: 1);
+            builder.WithButton(labels ? "Reveal to others" : null, $"{nameof(RevealEphemeralAction)}", ButtonStyle.Secondary,
+                Emotes.GetEmote("RevealEphemeralAction"), row: 1);
 
             // If cursed, add remove Curse Button
             return builder.Build();
@@ -305,9 +307,8 @@ namespace IodemBot.Modules
                     if (!itemOptions.Any(o => o.Value.Equals(item.Name)))
                     {
                         var desc = item.AddStatsOnEquip.NonZerosToString()[1..^1];
-                        itemOptions.Add(new SelectMenuOptionBuilder($"{item.Name}", $"{item.Name}", description:desc.IsNullOrEmpty()?null:desc,
+                        itemOptions.Add(new SelectMenuOptionBuilder($"{item.Name}", $"{item.Name}", description: desc.IsNullOrEmpty() ? null : desc,
                             emote: Emote.Parse(item.IconDisplay), isDefault: defaultSel));
-
                     }
                 }
 
@@ -337,12 +338,36 @@ namespace IodemBot.Modules
         public ArchType ArchType { get; set; }
 
         //[ActionParameterComponent(Order = 1, Name = "item", Description ="...", Required = true)]
-        [ActionParameterSlash(Order = 1, Name = "item", Description = "The item to equip", Required = true,
+        [ActionParameterSlash(Order = 1, Name = "item", Description = "The item to equip", Required = true, AutoComplete = true,
             Type = ApplicationCommandOptionType.String)]
         public string ItemToEquip { get; set; }
 
-        public override ActionGlobalSlashCommandProperties SlashCommandProperties => new()
+        public override ActionAutoCompleteProperties AutoCompleteProperties => new()
         {
+            AutoComplete = AutoComplete
+        };
+
+        private IEnumerable<AutocompleteResult> AutoComplete(AutocompleteOption current, IReadOnlyCollection<AutocompleteOption> selected)
+        {
+            if (current.Name != "item")
+                return null;
+
+            if (selected.First().Name != "archtype")
+                return null;
+
+            var arch = ArchType.Warrior;
+            if ((string)selected.First().Value != "Warrior")
+                arch = ArchType.Mage;
+            var text = (string)current.Value;
+            var user = EntityConverter.ConvertUser(Context.User);
+            return user.Inv.Where(i => i.IsEquippable && i.IsEquippableBy(arch) && 
+                    (i.Itemname.Contains(text, StringComparison.InvariantCultureIgnoreCase) || (i.Nickname?.Contains(text, StringComparison.InvariantCultureIgnoreCase) ?? false)))
+                .Take(20)
+                .Select(i => new AutocompleteResult(i.Name, i.Name));
+        }
+
+        public override ActionGuildSlashCommandProperties SlashCommandProperties => new()
+        {   
             Name = "equip",
             Description = "Equip an item to one an archtype's gear",
             FillParametersAsync = options =>
@@ -371,7 +396,7 @@ namespace IodemBot.Modules
         public override async Task RunAsync()
         {
             var account = EntityConverter.ConvertUser(Context.User);
-            var item = ItemDatabase.GetItem(ItemToEquip);
+            var item = account.Inv.GetItem(ItemToEquip);
 
             EquipItem(account);
             var embed = GearAction.GetGearEmbed(account, ArchType);
@@ -411,6 +436,9 @@ namespace IodemBot.Modules
             var item = inv.GetItem(ItemToEquip);
             if (item == null)
                 return Task.FromResult((false, "Dont have that."));
+
+            if (!item.IsEquippableBy(ArchType))
+                return Task.FromResult((false, $"{ArchType}s cannot equip {item.ItemType}s"));
 
             if (item.ExclusiveTo.Length > 0 && !item.ExclusiveTo.Contains(account.Element))
                 return Task.FromResult((false, $"A {account.Element} cannot equip {item.Name}"));
@@ -636,8 +664,11 @@ namespace IodemBot.Modules
                 // Only try to assign this when interaction is from a Button, not from Slash Command
                 inventoryMessage = await component.GetOriginalResponseAsync();
             }
+            var builder = new ComponentBuilder();
+            builder.WithButton(account.Preferences.ShowButtonLabels ? "Reveal to others" : null, $"{nameof(RevealEphemeralAction)}", ButtonStyle.Secondary,
+               Emotes.GetEmote("RevealEphemeralAction"), row: 1);
 
-            await Context.ReplyWithMessageAsync(EphemeralRule, embed: GetSecondChestEmbed(item, inv, autoSold));
+            await Context.ReplyWithMessageAsync(EphemeralRule, embed: GetSecondChestEmbed(item, inv, autoSold), components: builder.Build());
             //await Context.ReplyWithMessageAsync(EphemeralRule, embed: GetFirstChestEmbed());
 
             //await Task.Delay(1000);
@@ -672,7 +703,7 @@ namespace IodemBot.Modules
                 embed.WithFooter(
                     $"Current Reward: {inv.DailiesInARow % Inventory.DailyRewards.Length + 1}/{Inventory.DailyRewards.Length} | Overall Streak: {inv.DailiesInARow + 1}");
             embed.WithDescription(
-                $"{Emotes.GetIcon(ChestQuality.Value)} You found a {item.Name} {item.IconDisplay}{(isSold ? "(Auto Sold)" : "")}");
+                $"{Emotes.GetIcon(ChestQuality.Value)} {Context.User.Mention} found a {item.Name} {item.IconDisplay}{(isSold ? "(Auto Sold)" : "")}");
 
             return embed.Build();
         }

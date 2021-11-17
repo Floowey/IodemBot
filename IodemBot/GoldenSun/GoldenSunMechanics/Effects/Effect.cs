@@ -13,8 +13,11 @@ namespace IodemBot.Modules.GoldenSunMechanics
     [JsonSubtypes.KnownSubType(typeof(AttackWithTeammateEffect), "AttackWithTeammate")]
     [JsonSubtypes.KnownSubType(typeof(BreakEffect), "Break")]
     [JsonSubtypes.KnownSubType(typeof(ChancetoOhkoEffect), "OHKO")]
+    [JsonSubtypes.KnownSubType(typeof(CrucibleEffect), "Crucible")]
     [JsonSubtypes.KnownSubType(typeof(ConditionEffect), "Condition")]
     [JsonSubtypes.KnownSubType(typeof(CounterEffect), "Counter")]
+    [JsonSubtypes.KnownSubType(typeof(DarkEffect), "Dark")]
+    [JsonSubtypes.KnownSubType(typeof(DjinnManipEffect), "DjinnManip")]
     [JsonSubtypes.KnownSubType(typeof(HpDrainEffect), "HPDrain")]
     [JsonSubtypes.KnownSubType(typeof(MayIgnoreDefenseEffect), "IgnoreDefense")]
     [JsonSubtypes.KnownSubType(typeof(MultiplyDamageEffect), "MultiplyDamage")]
@@ -30,6 +33,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
     [JsonSubtypes.KnownSubType(typeof(DealDamageEffect), "DealDamage")]
     [JsonSubtypes.KnownSubType(typeof(HealEffect), "Heal")]
     [JsonSubtypes.KnownSubType(typeof(LingeringEffect), "Lingering")]
+    [JsonSubtypes.KnownSubType(typeof(LibraEffect), "Libra")]
     public abstract class Effect
     {
         public TimeToActivate ActivationTime { get; set; } = TimeToActivate.AfterDamage;

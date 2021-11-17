@@ -18,7 +18,7 @@
       }
     ],
     "elements": [
-      4
+      "None"
     ],
     "elstats": {
       "VenusAtk": 100,
@@ -214,7 +214,7 @@
       }
     ],
     "elements": [
-      0
+      "Venus"
     ],
     "elstats": {
       "VenusAtk": 140,
@@ -320,7 +320,7 @@
       }
     ],
     "elements": [
-      1
+      "Mars"
     ],
     "elstats": {
       "VenusAtk": 100,
@@ -419,7 +419,7 @@
       }
     ],
     "elements": [
-      1
+      "Mars"
     ],
     "elstats": {
       "VenusAtk": 100,
@@ -520,7 +520,7 @@
       }
     ],
     "elements": [
-      1
+      "Venus"
     ],
     "elstats": {
       "VenusAtk": 70,
@@ -622,7 +622,7 @@
       }
     ],
     "elements": [
-      2
+      "Jupiter"
     ],
     "elstats": {
       "VenusAtk": 70,
@@ -723,7 +723,7 @@
       }
     ],
     "elements": [
-      2
+      "Jupiter"
     ],
     "elstats": {
       "VenusAtk": 80,
@@ -822,7 +822,7 @@
       }
     ],
     "elements": [
-      3
+      "Mercury"
     ],
     "elstats": {
       "VenusAtk": 100,
@@ -923,7 +923,7 @@
       }
     ],
     "elements": [
-      3
+      "Mercury"
     ],
     "elstats": {
       "VenusAtk": 70,
@@ -1023,7 +1023,7 @@
       }
     ],
     "elements": [
-      3
+      "Mercury"
     ],
     "elstats": {
       "VenusAtk": 110,
@@ -1144,8 +1144,8 @@
       }
     ],
     "elements": [
-      0,
-      1
+      "Venus",
+      "Mars"
     ],
     "elstats": {
       "VenusAtk": 130,
@@ -1254,8 +1254,8 @@
       }
     ],
     "elements": [
-      0,
-      2
+      "Venus",
+      "Jupiter"
     ],
     "elstats": {
       "VenusAtk": 130,
@@ -1357,8 +1357,8 @@
       }
     ],
     "elements": [
-      0,
-      3
+      "Venus",
+      "Mercury"
     ],
     "elstats": {
       "VenusAtk": 130,
@@ -1473,8 +1473,8 @@
       }
     ],
     "elements": [
-      1,
-      2
+      "Mars",
+      "Jupiter"
     ],
     "elstats": {
       "VenusAtk": 70,
@@ -1582,8 +1582,8 @@
       }
     ],
     "elements": [
-      1,
-      2
+      "Mars",
+      "Jupiter"
     ],
     "elstats": {
       "VenusAtk": 70,
@@ -1687,8 +1687,8 @@
       }
     ],
     "elements": [
-      1,
-      3
+      "Mars",
+      "Mercury"
     ],
     "elstats": {
       "VenusAtk": 70,
@@ -1792,8 +1792,8 @@
       }
     ],
     "elements": [
-      0,
-      2
+      "Venus",
+      "Jupiter"
     ],
     "elstats": {
       "VenusAtk": 130,
@@ -1918,8 +1918,8 @@
       }
     ],
     "elements": [
-      2,
-      3
+      "Jupiter",
+      "Mercury"
     ],
     "elstats": {
       "VenusAtk": 75,
@@ -2022,8 +2022,8 @@
       }
     ],
     "elements": [
-      0,
-      3
+      "Venus",
+      "Mercury"
     ],
     "elstats": {
       "VenusAtk": 130,
@@ -2130,8 +2130,8 @@
       }
     ],
     "elements": [
-      1,
-      3
+      "Mars",
+      "Mercury"
     ],
     "elstats": {
       "VenusAtk": 70,
@@ -2256,8 +2256,8 @@
       }
     ],
     "elements": [
-      0,
-      1
+      "Venus",
+      "Mars"
     ],
     "elstats": {
       "VenusAtk": 140,
@@ -2360,8 +2360,8 @@
       }
     ],
     "elements": [
-      0,
-      2
+      "Venus",
+      "Jupiter"
     ],
     "elstats": {
       "VenusAtk": 130,
@@ -2419,9 +2419,9 @@
       }
     ],
     "elements": [
-      0,
-      1,
-      2
+      "Venus",
+      "Mars",
+      "Jupiter"
     ],
     "elstats": {
       "VenusAtk": 120,
@@ -2493,9 +2493,9 @@
       }
     ],
     "elements": [
-      0,
-      1,
-      2
+      "Venus",
+      "Mars",
+      "Jupiter"
     ],
     "elstats": {
       "VenusAtk": 110,
@@ -2567,9 +2567,9 @@
       }
     ],
     "elements": [
-      1,
-      2,
-      3
+      "Mars",
+      "Jupiter",
+      "Mercury"
     ],
     "elstats": {
       "VenusAtk": 30,
@@ -2641,9 +2641,9 @@
       }
     ],
     "elements": [
-      0,
-      1,
-      3
+      "Venus",
+      "Mars",
+      "Mercury"
     ],
     "elstats": {
       "VenusAtk": 115,
@@ -2699,9 +2699,9 @@
       }
     ],
     "elements": [
-      0,
-      2,
-      3
+      "Venus",
+      "Jupiter",
+      "Mercury"
     ],
     "elstats": {
       "VenusAtk": 100,
@@ -2774,9 +2774,9 @@
       }
     ],
     "elements": [
-      0,
-      2,
-      3
+      "Venus",
+      "Jupiter",
+      "Mercury"
     ],
     "elstats": {
       "VenusAtk": 120,

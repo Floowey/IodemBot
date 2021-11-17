@@ -14,6 +14,7 @@ namespace IodemBot.Discords.Actions
         public abstract IActionMessageCommandProperties MessageCommandProperties { get; }
         public abstract IActionUserCommandProperties UserCommandProperties { get; }
         public virtual ActionCommandRefreshProperties CommandRefreshProperties { get; }
+        public virtual ActionAutoCompleteProperties AutoCompleteProperties { get; }
 
         public (bool Selected, IEnumerable<SocketSlashCommandDataOption> Options) SubOptionsForOptions(
             IEnumerable<SocketSlashCommandDataOption> options, string propertyName)

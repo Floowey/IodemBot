@@ -231,7 +231,7 @@ namespace IodemBot.Modules
         }
 
         [Command("AddTag")]
-        [RequireOwner]
+        [RequireStaff]
         public async Task AddTag(SocketGuildUser user, string tag)
         {
             var avatar = EntityConverter.ConvertUser(user);

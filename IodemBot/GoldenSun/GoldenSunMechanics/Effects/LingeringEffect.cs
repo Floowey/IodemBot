@@ -16,10 +16,22 @@ namespace IodemBot.Modules.GoldenSunMechanics
         [JsonProperty] public int Duration { get; set; } = 1;
         [JsonProperty] public bool RemovedOnDeath { get; set; } = true;
         [JsonProperty] public string Text { get; set; } = "";
+        [JsonProperty] public string RequireAlly { get; set; }
+        [JsonProperty] public bool AllowMultiple { get; set; }
+        [JsonIgnore] public Guid InstanceID { get; private set; }
+        private int appliedCoolDown;
+        private int appliedDuration;
+
+        public LingeringEffect()
+        {
+            InstanceID = Guid.NewGuid();
+        }
 
         public override List<string> Apply(ColossoFighter user, ColossoFighter target)
         {
             _user = user;
+            appliedCoolDown = CoolDown;
+            appliedDuration = Duration;
             target.LingeringEffects.Add(this);
             return new List<string> { $"A {Effect.Type} Effect is lingering around {target.Name}" };
         }
@@ -27,16 +39,16 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public List<string> ApplyLingering(ColossoFighter target)
         {
             var log = new List<string>();
-            if (CoolDown > 0)
+            if (appliedCoolDown > 0)
             {
                 Console.WriteLine("On cooldown");
-                CoolDown--;
+                appliedCoolDown--;
                 return log;
             }
 
-            if (Duration >= 1)
+            if (appliedDuration >= 1)
             {
-                Duration--;
+                appliedDuration--;
                 if (!Text.IsNullOrEmpty()) log.Add(string.Format(Text, target.Name));
                 log.AddRange(Effect.Apply(_user, target));
                 Console.WriteLine("Applied Effect");

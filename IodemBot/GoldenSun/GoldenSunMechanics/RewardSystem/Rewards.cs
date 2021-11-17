@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using IodemBot.ColossoBattles;
 using IodemBot.Core.UserManagement;
+using IodemBot.Extensions;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
@@ -157,14 +158,17 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 }
             }
 
-            if (Message != "")
+            if (!Message.IsNullOrEmpty())
             {
                 awardLog.Add(string.Format(Message, userAccount.Name));
             }
             if (giveTag && Tag != "")
             {
                 if (Tag.StartsWith('-'))
-                    userAccount.Tags.Remove(Tag);
+                    if (Tag.EndsWith('*'))
+                        userAccount.Tags.RemoveAll(t => t.StartsWith(Tag[1..^1]));
+                    else
+                        userAccount.Tags.Remove(Tag[1..]);
                 else
                     userAccount.Tags.Add(Tag);
             }

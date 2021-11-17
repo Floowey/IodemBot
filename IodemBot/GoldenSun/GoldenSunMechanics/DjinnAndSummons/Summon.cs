@@ -10,7 +10,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
     {
         public List<Effect> EffectsOnParty = null;
         public List<Effect> EffectsOnUser = null;
-        [JsonProperty] private Move Move { get; set; } = new Nothing();
+        [JsonProperty] public Move Move { get; set; } = new Nothing();
 
         [JsonIgnore]
         public override string Name

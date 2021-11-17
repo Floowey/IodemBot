@@ -51,7 +51,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 punctuation = ".";
             }
 
-            if (target.ElStats.GetRes(Element) == target.ElStats.LeastRes())
+            if (target.ElStats.GetRes(Element) == target.ElStats.LowestRes())
             {
                 punctuation = "!!!";
                 if (user is PlayerFighter k)

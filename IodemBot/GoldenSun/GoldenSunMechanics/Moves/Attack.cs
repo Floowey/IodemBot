@@ -91,6 +91,15 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
             if (weaponUnleashed) element = user.Weapon.Unleash.UnleashAlignment;
 
+            var immuneTag = enemy.Tags.FirstOrDefault(t => t.StartsWith("ImmuneTo:"))?.Split(':').Skip(1).Select(Enum.Parse<Element>)
+                ?? Array.Empty<Element>();
+
+            if (immuneTag.Contains(element))
+            {
+                log.Add($"{enemy.Name} is unharmed.");
+                return log;
+            }
+
             //var elMult = 1 + Math.Max(0.0, (int)User.elstats.GetPower(element) * User.MultiplyBuffs("Power") - (int)enemy.elstats.GetRes(element) * enemy.MultiplyBuffs("Resistance")) / 400;
             var elMult = 1.0 + (user.ElStats.GetPower(element) * user.MultiplyBuffs("Power") -
                                 enemy.ElStats.GetRes(element) * enemy.MultiplyBuffs("Resistance")) / 400.0;
@@ -104,7 +113,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 damage = (uint)(damage * 1.25 + Global.RandomNumber(5, 15));
             }
 
-            if (enemy.ElStats.GetRes(element) == enemy.ElStats.LeastRes())
+            if (enemy.ElStats.GetRes(element) == enemy.ElStats.LowestRes())
             {
                 punctuation = "!!!";
                 if (user is PlayerFighter p) p.BattleStats.AttackedWeakness++;

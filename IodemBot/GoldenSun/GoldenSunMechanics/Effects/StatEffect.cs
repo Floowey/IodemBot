@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using IodemBot.ColossoBattles;
+using IodemBot.Extensions;
 using Newtonsoft.Json;
 
 namespace IodemBot.Modules.GoldenSunMechanics
@@ -19,9 +20,28 @@ namespace IodemBot.Modules.GoldenSunMechanics
             return $"{(Probability == 100 ? $"{(Multiplier > 1 ? "Raise" : "Lower")}" : $"{Probability}% chance to {(Multiplier > 1 ? "raise" : "lower")}")} {Stat} of {(OnTarget ? "target" : "user")} to {(Multiplier * 100):0.##}%";
         }
 
+        protected override int InternalChooseBestTarget(List<ColossoFighter> targets)
+        {
+            Dictionary<string, string> redirect = new()
+            {
+                { "Attack", "Atk" },
+                { "Defense", "Def" },
+                { "Speed", "Spd" },
+                { "Power", "MaxPP" },
+                { "Resistance", "MaxHP" }
+            };
+            if (!redirect.ContainsKey(Stat))
+                return base.InternalChooseBestTarget(targets);
+
+            if (targets.Any(t => t.Tags.Contains("VIP")))
+                return targets.IndexOf(targets.Where(t => t.Tags.Contains("VIP")).Random());
+
+            return targets.IndexOf(targets.OrderBy(t => ((double)(int)t.Stats.GetType().GetProperty(redirect[Stat]).GetValue(t.Stats)) / t.MultiplyBuffs(Stat)).First());
+        }
+
         public override List<string> Apply(ColossoFighter user, ColossoFighter target)
         {
-            List<string> log = new List<string>();
+            List<string> log = new();
             ColossoFighter targetted = OnTarget ? target : user;
 
             if (!targetted.IsAlive)

@@ -342,18 +342,9 @@ namespace IodemBot.Modules.GoldenSunMechanics
             var i = GetItem(item);
             if (!i.IsEquippable) return false;
 
-            var gear = WarriorGear;
+            if (!i.IsEquippableBy(archType)) return false;
 
-            if (archType == ArchType.Mage)
-            {
-                if (WarriorExclusive.Contains(i.ItemType)) return false;
-
-                gear = MageGear;
-            }
-            else
-            {
-                if (MageExclusive.Contains(i.ItemType)) return false;
-            }
+            var gear = GetGear(archType);
 
             var g = gear.GetItem(i.Category);
             if (g != null)
