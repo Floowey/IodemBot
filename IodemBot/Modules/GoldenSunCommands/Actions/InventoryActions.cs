@@ -911,7 +911,6 @@ namespace IodemBot.Modules
             CanRefreshAsync = _ => Task.FromResult((true, (string)null)),
             FillParametersAsync = (selectOptions, idOptions) =>
              {
-
                  if (idOptions != null && idOptions.Any())
                  {
                      ItemsToSell = idOptions.Select(i => ((string)i).Trim('*')).ToArray();
@@ -931,7 +930,6 @@ namespace IodemBot.Modules
             if (!intoNew)
                 return;
 
-            msgProps.Content = "hi :)";
             msgProps.Embed = GetSellEmbed().Build();
             await Task.CompletedTask;
         }
@@ -1027,14 +1025,14 @@ namespace IodemBot.Modules
             while (ItemsInInv.Any())
             {
                 var options = new List<SelectMenuOptionBuilder>();
-                foreach (var i in ItemsInInv.Take(24))
+                foreach (var i in ItemsInInv.Take(25))
                 {
                     var itemName = $"{i.Name}{new string('*', options.Count(o => o.Value.StartsWith(i.Name)))}";
-                    options.Add(new() { Label = itemName, Value = itemName, Emote = Emote.Parse(i.Icon), Description = i.Price.ToString() });
+                    options.Add(new() { Label = itemName, Value = itemName, Emote = Emote.Parse(i.Icon), Description = $"{i.Price / 2}{Emotes.GetIcon("Coin")}" });
                 }
-                builder.WithSelectMenu($"^{nameof(SellItemAction)}.{cnt}", options, placeholder: "Select Items to Sell", maxValues: Math.Min(24, options.Count));
+                builder.WithSelectMenu($"^{nameof(SellItemAction)}.{cnt}", options, placeholder: "Select Items to Sell", maxValues: Math.Min(25, options.Count));
 
-                ItemsInInv = ItemsInInv.Skip(24);
+                ItemsInInv = ItemsInInv.Skip(25);
                 cnt++;
             }
 

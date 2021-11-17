@@ -7239,7 +7239,7 @@
         ]
       },
       {
-        "Flavourtext": "You pick a direction at random and begin your journey. Suddenly *BONK*, something drops on your head. A squirrel dropped a hard nut from a tree above. You pick it up, slowly as to not scare it. The squirrel timidly approaches, from the other side a crow glides down and looks at the nut. What do you do with it?",
+        "Flavourtext": "You pick a direction at random and begin your journey. Suddenly *BONK*, something drops on your head. A squirrel dropped a hard nut from a tree above. You pick it up, slowly as to not scare the creature. The squirrel timidly approaches, from the other side a crow glides down and looks at the nut. What do you do with it?",
         "EnemyNames": [ "Choice:Give it to the squirrel|KilledBy:Player@-5", "Choice:Give it to the crow|KilledBy:Player@-6", "Choice:Keep it" ],
         "Image": "",
         "RewardTables": [
@@ -7306,7 +7306,7 @@
         ]
       },
       {
-        "Flavourtext": "You walk out to the Fox, drawing your weapon. It's pups run off into the woods; the fox is determined to protect its life and offspring.",
+        "Flavourtext": "You draw your weapon and stride out to meet the fox. Its pups run off into the woods, but it stands its ground, shaking.  It is determined to protect its life and offspring.",
         "EnemyNames": [ "White Wolf:Fox|Boost:200" ],
         "Keywords": [ "@320" ],
         "Image": "",
@@ -7350,7 +7350,7 @@
       },
       {
         "Flavourtext": "When you decline, the lord loses his temper. 'Guards!' he cries. 'Seize this ingrate!'",
-        "EnemyNames": [ "Tolbi Guard:Guard", "Tolbi Guard:Guard", "Tolbi Guard:Guard", "Tolbi Guard:Guard", "Tolbi Guard:Guard" ],
+        "EnemyNames": [ "Tolbi Guard:Guard|Boost:200", "Tolbi Guard:Guard|Boost:200", "Tolbi Guard:Guard|Boost:200", "Tolbi Guard:Guard|Boost:200", "Tolbi Guard:Guard|Boost:200" ],
         "Keywords": [ "@410", "ToMatchup@500" ],
         "Image": "",
         "RewardTables": [
@@ -7358,7 +7358,7 @@
         ]
       },
       {
-        "Flavourtext": "Following the itch of battleand treasure, you make yourself into the nearby woods. You hear the chopping of the lumberjacks, but from a sonar howl it dawns on you that you are surrounded by a pack of hungry wolves.",
+        "Flavourtext": "Following the itch of battle and treasure, you make yourself into the nearby woods. You hear the chopping of the lumberjacks, but from a sonar howl it dawns on you that you are surrounded by a pack of hungry wolves.",
         "EnemyNames": [ "White Wolf:Hungry Wolf|Boost:125", "White Wolf:Hungry Wolf|Boost:125", "White Wolf:Hungry Wolf|Boost:125", "White Wolf:Alpha Wolf|Boost:200", "White Wolf:Hungry Wolf|Boost:125" ],
         "Keywords": [ "@420", "ToMatchup@990", "Shuffle" ],
         "Image": "",
@@ -7376,7 +7376,7 @@
       },
       {
         "Flavourtext": "After knocking out the noble's guards, you escape and head into the woods. You aim to stop the needless destruction of the forest for personal profit. You arrive in the glade where the lumberjacks are camped out, and call for them to stop. Angered, they surround you on all sides. They look hungry and pitifully armed, but they also look serious about trying to hurt you. Only one of them, a guard in magically glowing armor looks like a skilled combatant.",
-        "EnemyNames": [ "Bulky Bugman:Lumberjack|Runner:0|KilledBy:Player@990", "Bulky Bugman:Lumberjack|Runner:1|KilledBy:Player@990", "Bulky Bugman:Lumberjack|Runner:1|KilledBy:Player@990", "Bulky Bugman:Lumberjack|Runner:2|KilledBy:Player@990", "Bulky Bugman:Lumberjack|Runner:2|KilledBy:Player@990", "Bulky Bugman:Lumberjack|Runner:3|KilledBy:Player@990", "Bulky Bugman:Lumberjack|Runner:5|KilledBy:Player@990", "Tolbi Guard:Guard|Boost:350|ImmuneTo:None" ],
+        "EnemyNames": [ "Bulky Bugman:Lumberjack|Runner:0|KilledBy:Player@990", "Bulky Bugman:Lumberjack|Runner:1|KilledBy:Player@990", "Bulky Bugman:Lumberjack|Runner:1|KilledBy:Player@990", "Bulky Bugman:Lumberjack|Runner:2|KilledBy:Player@990", "Bulky Bugman:Lumberjack|Runner:2|KilledBy:Player@990", "Bulky Bugman:Lumberjack|Runner:3|KilledBy:Player@990", "Bulky Bugman:Lumberjack|Runner:5|KilledBy:Player@990", "Tolbi Guard:Guard|Boost:300|ImmuneTo:None" ],
         "Keywords": [ "@500", "ToMatchup@995", "HasTagAll:Gaia4QuestFedFox:Gaia4QuestFoughtBear:Gaia4QuestNut@600", "Shuffle" ],
         "Image": "https://goldensunwiki.net/w/images/9/9f/KolimaForestDD.png",
         "RewardTables": [
@@ -7393,7 +7393,7 @@
       },
       {
         "Flavourtext": "The lumberjacks weapons are no match for your armor and Psynergy defenses. Though you raise no weapon against them, they realize how foolish it was to attack you. Their anger turns to terror, and they flee, leaving their axes behind. Suddenly, the trees around you start moving. From the bushes, some familiar animals emerge. They glow with an earthly aura. 'You challenge the forces of nature. You claim to protect us, but we did not ask for your protection. Prove to us, the flora and fauna of the forest and mother nature herself that you are worthy.'",
-        "EnemyNames": [ "KirinSummon:Fox Avatar|Boost:150", "CybeleSummon:Squirrel Avatar", "ProcneSummon:Crow Avatar", "Estre Wood:Forest Avatar|Boost:200" ],
+        "EnemyNames": [ "KirinSummon:Fox Avatar|Boost:150", "CybeleSummon:Squirrel Avatar|Boost:75", "ProcneSummon:Crow|Boost:75 Avatar", "Estre Wood:Forest Avatar|Boost:150" ],
         "Keywords": [ "Shuffle", "@600" ],
         "Image": "",
         "RewardTables": [
@@ -7411,7 +7411,7 @@
       },
       {
         "Flavourtext": "The winged, armor-clad being speaks. Its voice shakes the clearing and your very soul. 'You have shown that your heart is righteous, balanced, and concerned for all. You showed strength over nature. But the power of Venus extends past nature. More is needed to earn my blessing. What is that all power worth if you cannot enforce your judgments?' It raises its armaments, the battle begins!",
-        "EnemyNames": [ "JudgmentSummon" ],
+        "EnemyNames": [ "JudgmentSummon|ImmuneTo:Jupiter" ],
         "Keywords": [ "@900" ],
         "Image": "https://preview.redd.it/an5rb40ivsy51.png?width=960&crop=smart&auto=webp&s=723891c4fc9df2493063b7f0441e1957a2e9aab9",
         "RewardTables": [
@@ -7887,6 +7887,249 @@
               "Weight": 1,
               "Tag": "Magma4ZodLeo",
               "Obtainable": 1
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "Tag": "Magma4RewardItem",
+              "Obtainable": 1,
+              "Item": "Big Bang Gloves"
+            }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "Look, over there. The ram, it cowers from the flame. It's stubborn, it has an undying flame that powers its heart. Still, it avoids contact with fire.",
+        "EnemyNames": [ "Mars Djinni 6:Aries|ImmuneTo:Mars" ],
+        "Keywords": [ "@102", "ToMatchup@100", "HasTagAll:Magma4ZodLeo:Magma4ZodAries:Magma4ZodSagittarius@500" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "Tag": "Magma4ZodAries",
+              "Obtainable": 1
+            }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "Sagittarius, the Archer. Fight fire with fire, so they say. Sagittarius has realised, the archer's deadliest foe is himself.",
+        "EnemyNames": [ "MirrorAll:Sagittarius|Boost:125|KilledBeforeTurn:4@-5" ],
+        "Keywords": [ "@103", "ToMatchup@100", "HasTagAll:Magma4ZodLeo:Magma4ZodAries:Magma4ZodSagittarius@500" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "Tag": "Magma4ZodSagittarius",
+              "Obtainable": 1
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "@-5" ],
+              "Tag": "Magma4RewardItemSecret",
+              "Obtainable": 1,
+              "Item": "Sagttarius Bow"
+            }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "Gemini, the sign of the twins. Their wit and their mysterious connection comes from Jupiter.",
+        "EnemyNames": [ "AtalantaSummon:Gemini", "AtalantaSummon:Gemini" ],
+        "Keywords": [ "@201", "ToMatchup@100" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "Tag": "Magma4ZodGemini",
+              "Obtainable": 1
+            }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "You thought you were really clever there, right? But no. I'm afraid Aquarius does not even get its power from Mercury. In fact Jupiter is Aquarius' Master.",
+        "EnemyNames": [ "Poseidon:Aquarius" ],
+        "Keywords": [ "@202", "ToMatchup@100" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "Tag": "Magma4ZodAquarius",
+              "Obtainable": 1
+            }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "Libra, the Scale under the Jupiter star. Say Adept, do you know to judge justice and balance?",
+        "EnemyNames": [ "Pan", "Libra|VIP", "Pan" ],
+        "Keywords": [ "@203", "ToMatchup@100" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "Tag": "Magma4ZodLibra",
+              "Obtainable": 1
+            }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "Virgo, protectress of the harvest. A gallant knight guards the noble Venus sign on her every step.",
+        "EnemyNames": [ "Virgo", "Paladin" ],
+        "Keywords": [ "@204", "ToMatchup@100" ],
+        "Image": "https://cdn.discordapp.com/attachments/668443234292334612/906847253682094090/Create-meme-knight-covers-the-Princess-shield-ghostblade-.png",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "Tag": "Magma4ZodVirgo",
+              "Obtainable": 1
+            }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "You are a funny one. No, Pisces, the sign of the fish, is a sign under Mercury.",
+        "EnemyNames": [ "NereidSummon:Pisces", "NereidSummon:Pisces" ],
+        "Keywords": [ "@205", "ToMatchup@100" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "Tag": "Magma4ZodPisces",
+              "Obtainable": 1
+            }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "Cancer, the sign of the crab lives in Mercury's seas. Watch out for its claws, it can regrow them!",
+        "EnemyNames": [ "Claw", "Cancer", "Claw" ],
+        "Keywords": [ "@206", "ToMatchup@100" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "Tag": "Magma4ZodCancer",
+              "Obtainable": 1
+            }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "Ah, Scorpio. No. Mercury grants Scorpio its powers. Watch out for its tail!",
+        "EnemyNames": [ "Magicore:Scorpio", "Manticore:Scorpio", "Manticore King:Scorpio" ],
+        "Keywords": [ "@207", "Shuffle", "ToMatchup@100" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "Tag": "Magma4ZodScorpio",
+              "Obtainable": 1
+            }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "Capricorn, the goat. It's a cousin to a Mars Zodiac, but it draws its power from Venus.",
+        "EnemyNames": [ "CybeleSummon:Capricorn" ],
+        "Keywords": [ "@208", "ToMatchup@100" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "Tag": "Magma4ZodCapricorn",
+              "Obtainable": 1
+            }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "Taurus? No. It's hot headed, that's for sure, but as it stumpedes over vast prairies, Venus gives it its strength.",
+        "EnemyNames": [ "ZaganSummon:Taurus" ],
+        "Keywords": [ "@209", "ToMatchup@100" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "Tag": "Magma4ZodTaurus",
+              "Obtainable": 1
+            }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "Very good. You showed deep knowledge over the Zodiac signs and their element. It is now time to head to Dehkan Plateu.",
+        "EnemyNames": [ "Next" ],
+        "Keywords": [ "@500", "ToMatchup@510", "HasTagAny:Magma4ZodLeo:Magma4ZodAries:Magma4ZodSagittarius:Magma4ZodGemini:Magma4ZodAquarius:Magma4ZodLibra:Magma4ZodVirgo:Magma4ZodPisces:Magma4ZodCancer:Magma4ZodScorpio:Magma4ZodCapricorn:Magma4ZodTaurus@600", "HasTagAll:Magma4ZodLeo:Magma4ZodAries:Magma4ZodSagittarius:Magma4ZodGemini:Magma4ZodAquarius:Magma4ZodLibra:Magma4ZodVirgo:Magma4ZodPisces:Magma4ZodCancer:Magma4ZodScorpio:Magma4ZodCapricorn:Magma4ZodTaurus@520," ],
+        "Image": "",
+        "RewardTables": [
+          [ { "Weight": 1 } ]
+        ]
+      },
+      {
+        "Flavourtext": "(Everything was correct first try. Either you are smart or you cheated. Both wit and honesty are neither of Mars' strongest suites, 'so I am impressed'. The Mars signs want you to go through the trial of fire to prove your purity.)",
+        "EnemyNames": [ "TiamatSummon:Leo|ImmuneTo:Venus:Jupiter:Mercury:None", "Mars Djinni 6:Aries|ImmuneTo:Mars", "Mirror:Sagittarius" ],
+        "Keywords": [ "@510", "ToMatchup@600" ],
+        "Image": "",
+        "RewardTables": [
+          [ { "Weight": 1 } ]
+        ]
+      },
+      {
+        "Flavourtext": "(All Zodiac signs completed. Extra reward)",
+        "EnemyNames": [ "Next" ],
+        "Keywords": [ "@520", "ToMatchup@600" ],
+        "Image": "",
+        "RewardTables": [
+          [ { "Weight": 1 } ],
+          [
+            {
+              "Weight": 1,
+              "Tag": "Magma4RewardChestSecret",
+              "Obtainable": 1,
+              "Chest": "Adept",
+              "HasChest": true
+            }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "asdf",
+        "EnemyNames": [ "MeteorSummon|ImmuneTo:Mercury" ],
+        "Keywords": [ "@600" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "Tag": "Magma4",
+              "Obtainable": 1,
+              "Summon": "Meteor"
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "Tag": "Magma4RewardChest",
+              "Obtainable": 1,
+              "Chest": "Adept",
+              "HasChest": true
             }
           ]
         ]
