@@ -171,6 +171,11 @@ namespace IodemBot.Modules.GoldenSunMechanics
             return Equals(obj as Move);
         }
 
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Name, Emote, TargetType, Effects, Range, HasPriority);
+        }
+
         public class Validation
         {
             public Validation(bool isValid, List<string> log)

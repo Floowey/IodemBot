@@ -123,6 +123,8 @@ namespace IodemBot.Modules
             var chest = inv.HasAnyChests() ? inv.NextChestQuality() : ChestQuality.Normal;
             builder.WithButton(labels ? "Open Chest" : null, $"#{nameof(ChestAction)}.{chest}", ButtonStyle.Success,
                 Emotes.GetEmote(chest), disabled: !inv.HasAnyChests());
+            builder.WithButton(labels ? "Sell" : null, $"{nameof(SellItemComponent)}", ButtonStyle.Success,
+                Emotes.GetEmote("SellAction"));
             if (inv.Upgrades < 4)
                 builder.WithButton(labels ? "Upgrade" : null, $"{nameof(UpgradeInventory)}", ButtonStyle.Success,
                     Emotes.GetEmote("UpgradeInventoryAction"), disabled: !inv.HasBalance(upgradeCost), row: 1);
@@ -360,14 +362,14 @@ namespace IodemBot.Modules
                 arch = ArchType.Mage;
             var text = (string)current.Value;
             var user = EntityConverter.ConvertUser(Context.User);
-            return user.Inv.Where(i => i.IsEquippable && i.IsEquippableBy(arch) && 
+            return user.Inv.Where(i => i.IsEquippable && i.IsEquippableBy(arch) &&
                     (i.Itemname.Contains(text, StringComparison.InvariantCultureIgnoreCase) || (i.Nickname?.Contains(text, StringComparison.InvariantCultureIgnoreCase) ?? false)))
                 .Take(20)
                 .Select(i => new AutocompleteResult(i.Name, i.Name));
         }
 
         public override ActionGuildSlashCommandProperties SlashCommandProperties => new()
-        {   
+        {
             Name = "equip",
             Description = "Equip an item to one an archtype's gear",
             FillParametersAsync = options =>
@@ -668,6 +670,11 @@ namespace IodemBot.Modules
             builder.WithButton(account.Preferences.ShowButtonLabels ? "Reveal to others" : null, $"{nameof(RevealEphemeralAction)}", ButtonStyle.Secondary,
                Emotes.GetEmote("RevealEphemeralAction"), row: 1);
 
+            if (!autoSold)
+            {
+                builder.WithButton(account.Preferences.ShowButtonLabels ? "Sell" : null, $"^{nameof(SellItemAction)}.{item.Name}", ButtonStyle.Secondary, Emotes.GetEmote("SellAction"));
+            }
+
             await Context.ReplyWithMessageAsync(EphemeralRule, embed: GetSecondChestEmbed(item, inv, autoSold), components: builder.Build());
             //await Context.ReplyWithMessageAsync(EphemeralRule, embed: GetFirstChestEmbed());
 
@@ -899,7 +906,43 @@ namespace IodemBot.Modules
             }
         };
 
+        public override ActionCommandRefreshProperties CommandRefreshProperties => new()
+        {
+            CanRefreshAsync = _ => Task.FromResult((true, (string)null)),
+            FillParametersAsync = (selectOptions, idOptions) =>
+             {
+
+                 if (idOptions != null && idOptions.Any())
+                 {
+                     ItemsToSell = idOptions.Select(i => ((string)i).Trim('*')).ToArray();
+                 }
+                 if (selectOptions != null && selectOptions.Any())
+                 {
+                     ItemsToSell = selectOptions.Select(i => ((string)i).Trim('*')).ToArray();
+                 }
+
+                 return Task.CompletedTask;
+             },
+            RefreshAsync = RefreshAsync
+        };
+
+        private async Task RefreshAsync(bool intoNew, MessageProperties msgProps)
+        {
+            if (!intoNew)
+                return;
+
+            msgProps.Content = "hi :)";
+            msgProps.Embed = GetSellEmbed().Build();
+            await Task.CompletedTask;
+        }
+
         public override async Task RunAsync()
+        {
+            var embed = GetSellEmbed();
+            await Context.ReplyWithMessageAsync(EphemeralRule, embed: embed.Build());
+        }
+
+        private EmbedBuilder GetSellEmbed()
         {
             var account = EntityConverter.ConvertUser(Context.User);
             var inv = account.Inv;
@@ -937,9 +980,8 @@ namespace IodemBot.Modules
                 embed.WithDescription($"Sold {successfull} items for <:coin:569836987767324672> {sum}.");
                 embed.WithColor(Colors.Get("Iodem"));
             }
-
             UserAccountProvider.StoreUser(account);
-            await Context.ReplyWithMessageAsync(EphemeralRule, embed: embed.Build());
+            return embed;
         }
 
         protected override Task<(bool Success, string Message)> CheckCustomPreconditionsAsync()
@@ -959,6 +1001,52 @@ namespace IodemBot.Modules
             }
 
             return Task.FromResult((true, (string)null));
+        }
+    }
+
+    public class SellItemComponent : BotComponentAction
+    {
+        public override EphemeralRule EphemeralRule => EphemeralRule.EphemeralOrFail;
+
+        public override bool GuildsOnly => false;
+
+        public override GuildPermissions? RequiredPermissions => null;
+
+        public override async Task RunAsync()
+        {
+            await Context.ReplyWithMessageAsync(EphemeralRule, "Choose what to sell", components: Comp());
+        }
+
+        private MessageComponent Comp()
+        {
+            var account = EntityConverter.ConvertUser(Context.User);
+            IEnumerable<Item> ItemsInInv = account.Inv.OrderBy(i => i.Price);
+
+            var builder = new ComponentBuilder();
+            int cnt = 0;
+            while (ItemsInInv.Any())
+            {
+                var options = new List<SelectMenuOptionBuilder>();
+                foreach (var i in ItemsInInv.Take(24))
+                {
+                    var itemName = $"{i.Name}{new string('*', options.Count(o => o.Value.StartsWith(i.Name)))}";
+                    options.Add(new() { Label = itemName, Value = itemName, Emote = Emote.Parse(i.Icon), Description = i.Price.ToString() });
+                }
+                builder.WithSelectMenu($"^{nameof(SellItemAction)}.{cnt}", options, placeholder: "Select Items to Sell", maxValues: Math.Min(24, options.Count));
+
+                ItemsInInv = ItemsInInv.Skip(24);
+                cnt++;
+            }
+
+            return builder.Build();
+        }
+
+        protected override Task<(bool Success, string Message)> CheckCustomPreconditionsAsync()
+        {
+            var guildResult = IsGameCommandAllowedInGuild();
+            if (!guildResult.Success)
+                return Task.FromResult(guildResult);
+            return SuccessFullResult;
         }
     }
 

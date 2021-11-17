@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using Discord;
@@ -65,6 +66,7 @@ namespace IodemBot
             _client.Ready += Client_Ready;
             _client.UserLeft += Client_UserLeft;
             _client.UserJoined += Client_UserJoined;
+            _client.UserBanned += _client_UserBanned;
             _client.GuildMemberUpdated += Client_GuildMemberUpdated;
 
             await _client.LoginAsync(TokenType.Bot, Config.Bot.Token);
@@ -76,6 +78,17 @@ namespace IodemBot
 
             await services.GetRequiredService<MessageHandler>().InitializeAsync(_client);
             await Task.Delay(-1);
+        }
+
+        private async Task _client_UserBanned(SocketUser user, SocketGuild guild)
+        {
+            if (GuildSettings.GetGuildSettings(guild).SendLeaveMessage)
+            {
+                var r = await guild.GetBanAsync(user);
+                var channel = GuildSettings.GetGuildSettings(guild).TestCommandChannel;
+                _ = channel.SendMessageAsync($"{user.Mention} left the party :) {r.Reason}");
+            }
+            await Task.CompletedTask;
         }
 
         private async Task Client_GuildMemberUpdated(Cacheable<SocketGuildUser, ulong> before, SocketGuildUser user)
@@ -124,8 +137,10 @@ namespace IodemBot
         private async Task Client_UserLeft(SocketGuildUser user)
         {
             if (GuildSettings.GetGuildSettings(user.Guild).SendLeaveMessage)
-                _ = GuildSettings.GetGuildSettings(user.Guild).TestCommandChannel
-                    .SendMessageAsync($"{user.DisplayName()} left the party :(.");
+            {
+                var channel = GuildSettings.GetGuildSettings(user.Guild).TestCommandChannel;
+                _ = channel.SendMessageAsync($"{user.DisplayName()} left the party :(");
+            }
             await Task.CompletedTask;
         }
 
@@ -137,12 +152,12 @@ namespace IodemBot
             if (channel != null && (DateTime.Now - Global.RunningSince).TotalSeconds < 15)
                 await channel.SendMessageAsync(embed: new EmbedBuilder()
                     .WithTitle("Hello, I am back up.")
-                    .AddField("Version", Assembly.GetExecutingAssembly().GetName().Version, true)
                     .AddField("OS", Environment.OSVersion.Platform, true)
                     .AddField("Latency", _client.Latency, true)
                     .AddField("Build Time", File.GetLastWriteTime(Assembly.GetExecutingAssembly().Location), true)
-                    .AddField("System Time", DateTime.Now, true)
+                    .AddField("Version", Assembly.GetExecutingAssembly().GetName().Version, true)
                     .AddField("Prefix", Config.Bot.CmdPrefix, true)
+                    .AddField("System Time", DateTime.Now, true)
                     .WithAuthor(_client.CurrentUser)
                     .WithColor(Colors.Get("Iodem"))
                     .Build());

@@ -28,6 +28,7 @@ namespace IodemBot
             { "RemoveCursedAction", "<:Remove_Curse:896069873438957588>" },
             { "RevealEphemeralAction", "<:Reveal:909763819167944714>" },
             { "SaveLoadoutAction", "<:Save_Game:896735785351520316>" },
+            { "SellAction", "<:Sell:896069873149550602>" },
             { "ShopAction", "<:Buy:896735785137614878>" },
             { "StatusAction", "<:Status:896069873124409375>" },
             { "SortInventoryAction", "<:button_inventorysort:897032416915488869>" },
