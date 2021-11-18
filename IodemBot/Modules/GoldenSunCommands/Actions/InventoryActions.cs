@@ -1025,14 +1025,14 @@ namespace IodemBot.Modules
             while (ItemsInInv.Any())
             {
                 var options = new List<SelectMenuOptionBuilder>();
-                foreach (var i in ItemsInInv.Take(25))
+                foreach (var i in ItemsInInv.Take(24))
                 {
                     var itemName = $"{i.Name}{new string('*', options.Count(o => o.Value.StartsWith(i.Name)))}";
-                    options.Add(new() { Label = itemName, Value = itemName, Emote = Emote.Parse(i.Icon), Description = $"{i.Price / 2}{Emotes.GetIcon("Coin")}" });
+                    options.Add(new() { Label = itemName, Value = itemName, Emote = Emote.Parse(i.Icon), Description = $"{i.Price / 2} coins" });
                 }
-                builder.WithSelectMenu($"^{nameof(SellItemAction)}.{cnt}", options, placeholder: "Select Items to Sell", maxValues: Math.Min(25, options.Count));
+                builder.WithSelectMenu($"^{nameof(SellItemAction)}.{cnt}", options, placeholder: "Select Items to Sell", maxValues: Math.Min(24, options.Count));
 
-                ItemsInInv = ItemsInInv.Skip(25);
+                ItemsInInv = ItemsInInv.Skip(24);
                 cnt++;
             }
 
