@@ -494,7 +494,7 @@ namespace IodemBot.ColossoBattles
             Buffs = new List<Buff>();
             LingeringEffects.RemoveAll(e => e.RemovedOnDeath);
 
-            if (Tags.Any(t => t == "Captian") && !Party.Any(p => p.IsAlive && p.Tags.Any(t => t == "Captain")))
+            if (Tags.Any(t => t == "Head") && !Party.Any(p => p.IsAlive && p.Tags.Any(t => t == "Head")))
                 Party.ForEach(e => e.Kill());
 
             // OnKill@4@8

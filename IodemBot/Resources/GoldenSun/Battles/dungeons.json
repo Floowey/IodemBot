@@ -7970,7 +7970,7 @@
       },
       {
         "Flavourtext": "Libra, the Scale under the Jupiter star. Say Adept, do you know to judge justice and balance?'",
-        "EnemyNames": [ "Pan", "Libra|VIP|Captain", "Pan" ],
+        "EnemyNames": [ "Pan", "Libra|VIP|Head", "Pan" ],
         "Keywords": [ "@203", "ToMatchup@100" ],
         "Image": "",
         "RewardTables": [
@@ -8015,7 +8015,7 @@
       },
       {
         "Flavourtext": "Cancer, the sign of the crab lives in Mercury's seas. Watch out for its claws, it can regrow them!'",
-        "EnemyNames": [ "Claw", "Cancer|Captain", "Claw" ],
+        "EnemyNames": [ "Claw", "Cancer|Head", "Claw" ],
         "Keywords": [ "@206", "ToMatchup@100" ],
         "Image": "",
         "RewardTables": [
@@ -8111,7 +8111,7 @@
       },
       {
         "Flavourtext": "You climb to the highest point of the Plateau. The view is vast, but your attention is immediately drawn upwards.  In the sky, a great ball of fire has come close to Weyard.  It dominates the sky.  Hama nods. 'Weyard, thankfully, is safe. But this is one of the purest sources of Mars you could hope to meet in your lifetime. Show it your strength, Adept!  And beware; Mercury holds no sway here.'",
-        "EnemyNames": [ "CometMeteor1", "CometMeteor2", "MeteorSummon|ImmuneTo:Mercury|Captain", "CometMeteor3", "CometMeteor4 " ],
+        "EnemyNames": [ "CometMeteor1", "CometMeteor2", "MeteorSummon|ImmuneTo:Mercury|Head", "CometMeteor3", "CometMeteor4 " ],
         "Keywords": [ "@600" ],
         "Image": "",
         "RewardTables": [
