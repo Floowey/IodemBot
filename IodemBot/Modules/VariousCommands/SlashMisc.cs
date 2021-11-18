@@ -134,6 +134,78 @@ namespace IodemBot.Modules.VariousCommands
         }
     }
 
+    public class StopListening : IodemBotCommandAction
+    {
+        private RequestContextService _requestContextService;
+
+        private IServiceScope _scope;
+        public override EphemeralRule EphemeralRule => EphemeralRule.EphemeralOrFail;
+
+        public override List<ActionTextCommandProperties> TextCommandProperties => new()
+        {
+            new ActionTextCommandProperties
+            {
+                Name = "ShutUp"
+            }
+        };
+
+        public override async Task RunAsync()
+        {
+            var action = ServiceProvider.GetRequiredService<ActionService>();
+            await action.StopSlash();
+            await Context.ReplyWithMessageAsync(EphemeralRule, "https://i.redd.it/l6d5vsyne6a41.jpg");
+        }
+
+        protected override Task<(bool Success, string Message)> CheckCustomPreconditionsAsync()
+        {
+            var guildResult = IsGameCommandAllowedInGuild();
+            if (!guildResult.Success)
+                return Task.FromResult(guildResult);
+
+            _scope = ServiceProvider.CreateScope();
+            _requestContextService = _scope.ServiceProvider.GetRequiredService<RequestContextService>();
+            _requestContextService.AddContext(Context);
+
+            return Task.FromResult(guildResult);
+        }
+    }
+
+    public class StartListening : IodemBotCommandAction
+    {
+        private RequestContextService _requestContextService;
+
+        private IServiceScope _scope;
+        public override EphemeralRule EphemeralRule => EphemeralRule.EphemeralOrFail;
+
+        public override List<ActionTextCommandProperties> TextCommandProperties => new()
+        {
+            new ActionTextCommandProperties
+            {
+                Name = "ListenUp"
+            }
+        };
+
+        public override async Task RunAsync()
+        {
+            var action = ServiceProvider.GetRequiredService<ActionService>();
+            await action.StartSlash();
+            await Context.ReplyWithMessageAsync(EphemeralRule, "https://c.tenor.com/srbGZ0LCROsAAAAM/okily-dokily-okie-dokie.gif");
+        }
+
+        protected override Task<(bool Success, string Message)> CheckCustomPreconditionsAsync()
+        {
+            var guildResult = IsGameCommandAllowedInGuild();
+            if (!guildResult.Success)
+                return Task.FromResult(guildResult);
+
+            _scope = ServiceProvider.CreateScope();
+            _requestContextService = _scope.ServiceProvider.GetRequiredService<RequestContextService>();
+            _requestContextService.AddContext(Context);
+
+            return Task.FromResult(guildResult);
+        }
+    }
+
     public class PokeUser : IodemBotCommandAction
     {
         [ActionParameterText(Order = 1, Description = "User", IsRemainder = true, Name = "user",

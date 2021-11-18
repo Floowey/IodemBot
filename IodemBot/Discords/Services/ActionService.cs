@@ -37,6 +37,19 @@ namespace IodemBot.Discords.Services
             return Task.CompletedTask;
         }
 
+        public Task StartSlash()
+        {
+            _discord.InteractionCreated -= Client_InteractionCreated;
+            _discord.InteractionCreated += Client_InteractionCreated;
+            return Task.CompletedTask;
+        }
+
+        public Task StopSlash()
+        {
+            _discord.InteractionCreated -= Client_InteractionCreated;
+            return Task.CompletedTask;
+        }
+
         public List<BotAction> GetAll()
         {
             var allActions = new List<BotAction>();

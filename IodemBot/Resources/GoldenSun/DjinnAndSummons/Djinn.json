@@ -2598,7 +2598,7 @@
   "Holly": {
     "Djinnname": "Holly",
     "Element": 0,
-    "SpriteNormal": "<a:Leaf:764415634909560844>",
+    "SpriteNormal": "<a:Holly:910804168338472981>",
     "Event": "Christmas21",
     "Move": {
       "Targettype": "EnemyRange",
@@ -2636,7 +2636,7 @@
   "Sconce": {
     "Djinnname": "Sconce",
     "Element": 1,
-    "SpriteNormal": "<a:Lantern:764415945271410698>",
+    "SpriteNormal": "<a:Sconce:910804265252036632>",
     "Event": "Christmas21",
     "Move": {
       "Targettype": "PartySingle",
@@ -2660,7 +2660,7 @@
   "Jingle": {
     "Djinnname": "Jingle",
     "Element": 2,
-    "SpriteNormal": "<a:Flutter:765593130275045448>",
+    "SpriteNormal": "<a:Jingle:910805122236444693>",
     "Event": "Christmas21",
     "Move": {
       "Targettype": "PartyAll",
@@ -2680,7 +2680,7 @@
   "Frostbite": {
     "Djinnname": "Frostbite",
     "Element": 3,
-    "SpriteNormal": "<a:Shiver:765593206334816266>",
+    "SpriteNormal": "<a:Frostbite:910805364453302322>",
     "Event": "Christmas21",
     "Move": {
       "Targettype": "EnemyRange",

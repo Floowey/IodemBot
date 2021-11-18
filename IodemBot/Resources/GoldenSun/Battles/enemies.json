@@ -11293,7 +11293,7 @@
   "MeteorSummon": {
     "movepool": [ "Meteor Blow", "Rockfall", "Comet Punch", "Supernova", "Inferno", "Pyroclasm", "Searing Beam", "Dire Inferno", "Planetary", "Meteor", "Spark" ],
     "name": "Meteor",
-    "imgurl": "https://goldensunwiki.net/w/images/0/0a/Meteor.gif",
+    "imgurl": "https://cdn.discordapp.com/attachments/497696510688100352/665884968785936384/Meteor.gif",
     "stats": {
       "maxhp": 6789,
       "maxpp": 2414,
@@ -11406,7 +11406,7 @@
   "ThorSummon": {
     "movepool": [ "Thor", "Luff", "Squall", "Blitz", "Bolt", "Blue Bolt", "Destruct Ray", "Spark Plasma", "Thunderhead", "Thunder Mine", "Quick Strike" ],
     "name": "Thor",
-    "imgurl": "https://goldensunwiki.net/w/images/6/6b/Thor.gif",
+    "imgurl": "https://media.discordapp.net/attachments/497696510688100352/665884848891887626/Thor.gif",
     "stats": {
       "maxhp": 4443,
       "maxpp": 1622,
@@ -11532,7 +11532,7 @@
   "BoreasSummon": {
     "movepool": [ "Boreas", "Sleet", "Hail", "Spout", "Rime", "Sour", "Glacier", "Ice Missile", "Megacool", "Freeze Prism", "Diamond Berg" ],
     "name": "Boreas",
-    "imgurl": "https://cdn.discordapp.com/attachments/497696510688100352/665884979833864192/Neptune_2.gif",
+    "imgurl": "https://goldensunwiki.net/w/images/9/94/Boreas.gif",
     "stats": {
       "maxhp": 5100,
       "maxpp": 427,
