@@ -8076,7 +8076,7 @@
       {
         "Flavourtext": "Very good. You showed deep knowledge over the Zodiac signs and their element. It is now time to head to Dehkan Plateu.",
         "EnemyNames": [ "Next" ],
-        "Keywords": [ "@500", "ToMatchup@510", "HasTagAny:Magma4ZodLeo:Magma4ZodAries:Magma4ZodSagittarius:Magma4ZodGemini:Magma4ZodAquarius:Magma4ZodLibra:Magma4ZodVirgo:Magma4ZodPisces:Magma4ZodCancer:Magma4ZodScorpio:Magma4ZodCapricorn:Magma4ZodTaurus@600", "HasTagAll:Magma4ZodLeo:Magma4ZodAries:Magma4ZodSagittarius:Magma4ZodGemini:Magma4ZodAquarius:Magma4ZodLibra:Magma4ZodVirgo:Magma4ZodPisces:Magma4ZodCancer:Magma4ZodScorpio:Magma4ZodCapricorn:Magma4ZodTaurus@520," ],
+        "Keywords": [ "@500", "ToMatchup@510", "HasTagAny:Magma4ZodLeo:Magma4ZodAries:Magma4ZodSagittarius:Magma4ZodGemini:Magma4ZodAquarius:Magma4ZodLibra:Magma4ZodVirgo:Magma4ZodPisces:Magma4ZodCancer:Magma4ZodScorpio:Magma4ZodCapricorn:Magma4ZodTaurus@600", "HasTagAll:Magma4ZodLeo:Magma4ZodAries:Magma4ZodSagittarius:Magma4ZodGemini:Magma4ZodAquarius:Magma4ZodLibra:Magma4ZodVirgo:Magma4ZodPisces:Magma4ZodCancer:Magma4ZodScorpio:Magma4ZodCapricorn:Magma4ZodTaurus@520" ],
         "Image": "",
         "RewardTables": [
           [ { "Weight": 1 } ]
