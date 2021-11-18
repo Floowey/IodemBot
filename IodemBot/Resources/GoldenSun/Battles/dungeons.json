@@ -9216,7 +9216,7 @@
       },
       {
         "Flavourtext": "You step out into Tundaria, the roaring winds of the ice storm screaming around you. In the wake of the storm, trees and shrubs have been frozen solid. The greenery shall be the l*e*ast of your concerns... What might the correct path be?",
-        "EnemyNames": [ "Choice:Left|KilledBy:Player@110", "Choice:Right|KilledBy:Player@110" ],
+        "EnemyNames": [ "Choice:Left|KilledBy:Player@105", "Choice:Right|KilledBy:Player@110" ],
         "Keywords": [ "@100" ],
         "Image": "",
         "RewardTables": [
@@ -9226,7 +9226,7 @@
       {
         "Flavourtext": "No, this can't be the right way. Something tells you that the right direction is hidden in plain sight...",
         "EnemyNames": [ "Choice:Right|KilledBy:Player@100" ],
-        "Keywords": [ "@110" ],
+        "Keywords": [ "@105" ],
         "Image": "",
         "RewardTables": [
           [ { "Weight": 1 } ]
@@ -9327,7 +9327,7 @@
       },
       {
         "Flavourtext": "The storm begins to die down as Poseidon is defeated. However, the ground begins to shake, icy ground splitting open beneath the partygoers and you. Boreas rises up. You pause to heal up, trusting the Lord of Ice and Snow will hear you out. Alas, he sees Poseidon and the other fallen members of his court, and spares you no time to explain. ",
-        "EnemyNames": [ "BoreasSummon" ],
+        "EnemyNames": [ "BoreasSummon|ImmuneTo:Mars" ],
         "Keywords": [ "Heal" ],
         "Image": "",
         "RewardTables": [
