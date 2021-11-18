@@ -7239,7 +7239,7 @@
         ]
       },
       {
-        "Flavourtext": "You pick a direction at random and begin your journey. Suddenly *BONK*, something drops on your head. A squirrel dropped a hard nut from a tree above. You pick it up, slowly as to not scare the creature. The squirrel timidly approaches, from the other side a crow glides down and looks at the nut. What do you do with it?",
+        "Flavourtext": "You pick a direction at random and begin your journey. Suddenly *BONK*, something drops on your head. A squirrel has dropped hard nut from a tree above. You pick it up, slowly, as to not scare the creature. The squirrel timidly approaches, from the other side a crow glides down and looks at the nut. What do you do with it?",
         "EnemyNames": [ "Choice:Give it to the squirrel|KilledBy:Player@-5", "Choice:Give it to the crow|KilledBy:Player@-6", "Choice:Keep it" ],
         "Image": "",
         "RewardTables": [
@@ -7253,7 +7253,7 @@
         ]
       },
       {
-        "Flavourtext": "Your path takes you into farmlands surrounded by forest, and eventually you come to a cottage in the middle of a field. As you approach, you see a bear attacking the farmer. What shall you do?",
+        "Flavourtext": "Your path takes you into farmlands surrounded by forest, and eventually you come to a cottage in the middle of a field. As you approach, you see a bear attacking the farmer. What do you do?",
         "EnemyNames": [ "Choice:Fight Bear|KilledBy:Player@210", "Choice:Leave Farmer alone|KilledBy:Player@302" ],
         "Keywords": [ "@200" ],
         "Image": "",
@@ -7291,7 +7291,7 @@
         ]
       },
       {
-        "Flavourtext": "You walk closer on your own pace. You watch the farmer veer a four pronged pitchfork. It looks clumsy, but it's enough to scare off the bear. 'Thanks for nothing!', he shouts at you. Still, he invites you in and serves you a hearty plate of roast mutton with vegetables. As you're eating, a scraggly-looking fox approaches the cottage. The farmer again grabs his pitchfork. 'Varmint,' he grumbles. As you take in the scene, you spot the bright eyes of fox pups peering out of the undergrowth.",
+        "Flavourtext": "You walk closer on your own pace. You watch the farmer heft a four-pronged pitchfork. It looks clumsy, but it's enough to scare off the bear. 'Thanks for nothing!', he shouts at you. Still, he invites you in and serves you a hearty plate of roast mutton with vegetables. As you're eating, a scraggly-looking fox approaches the cottage. The farmer again grabs his pitchfork. 'Varmint,' he grumbles. As you take in the scene, you spot the bright eyes of fox pups peering out of the undergrowth.",
         "EnemyNames": [ "Choice:Feed Fox|KilledBy:Player@401", "Choice:Scare off Fox|KilledBy:Player@320" ],
         "Keywords": [ "@302" ],
         "Image": "",
@@ -7306,7 +7306,7 @@
         ]
       },
       {
-        "Flavourtext": "You draw your weapon and stride out to meet the fox. Its pups run off into the woods, but it stands its ground, shaking.  It is determined to protect its life and offspring.",
+        "Flavourtext": "You draw your weapon and stride out to meet the fox. The pups flee into the woods, but it stands its ground, shaking.  It is determined to protect its life and offspring.",
         "EnemyNames": [ "White Wolf:Fox|Boost:200" ],
         "Keywords": [ "@320" ],
         "Image": "",
@@ -7358,7 +7358,7 @@
         ]
       },
       {
-        "Flavourtext": "Following the itch of battle and treasure, you make yourself into the nearby woods. You hear the chopping of the lumberjacks, but from a sonar howl it dawns on you that you are surrounded by a pack of hungry wolves.",
+        "Flavourtext": "Following the itch of battle and treasure, you make yourself into the nearby woods. The chopping of the lumberjacks beckons you forward. But as you draw closer, a sudden howl is answered by another, and another. It dawns on you that a pack of hungry wolves has surrounded you.",
         "EnemyNames": [ "White Wolf:Hungry Wolf|Boost:125", "White Wolf:Hungry Wolf|Boost:125", "White Wolf:Hungry Wolf|Boost:125", "White Wolf:Alpha Wolf|Boost:200", "White Wolf:Hungry Wolf|Boost:125" ],
         "Keywords": [ "@420", "ToMatchup@990", "Shuffle" ],
         "Image": "",
@@ -7375,7 +7375,7 @@
         ]
       },
       {
-        "Flavourtext": "After knocking out the noble's guards, you escape and head into the woods. You aim to stop the needless destruction of the forest for personal profit. You arrive in the glade where the lumberjacks are camped out, and call for them to stop. Angered, they surround you on all sides. They look hungry and pitifully armed, but they also look serious about trying to hurt you. Only one of them, a guard in magically glowing armor looks like a skilled combatant.",
+        "Flavourtext": "After knocking out the noble's guards, you escape and head into the woods. You aim to stop the needless destruction of the forest for personal profit. You arrive in the glade where the lumberjacks are camped out, and call for them to stop.  They do, but only at the shout of a guard in magically glowing armor.  They surround you on all sides, brandishing their woodcutting axes. They look hungry and pitifully armed, but they also look serious about trying to hurt you. The guard, perhaps the only skilled combatent among them, orders the attack.",
         "EnemyNames": [ "Bulky Bugman:Lumberjack|Runner:0|KilledBy:Player@990", "Bulky Bugman:Lumberjack|Runner:1|KilledBy:Player@990", "Bulky Bugman:Lumberjack|Runner:1|KilledBy:Player@990", "Bulky Bugman:Lumberjack|Runner:2|KilledBy:Player@990", "Bulky Bugman:Lumberjack|Runner:2|KilledBy:Player@990", "Bulky Bugman:Lumberjack|Runner:3|KilledBy:Player@990", "Bulky Bugman:Lumberjack|Runner:5|KilledBy:Player@990", "Tolbi Guard:Guard|Boost:300|ImmuneTo:None" ],
         "Keywords": [ "@500", "ToMatchup@995", "HasTagAll:Gaia4QuestFedFox:Gaia4QuestFoughtBear:Gaia4QuestNut@600", "Shuffle" ],
         "Image": "https://goldensunwiki.net/w/images/9/9f/KolimaForestDD.png",
@@ -7392,7 +7392,7 @@
         ]
       },
       {
-        "Flavourtext": "The lumberjacks weapons are no match for your armor and Psynergy defenses. Though you raise no weapon against them, they realize how foolish it was to attack you. Their anger turns to terror, and they flee, leaving their axes behind. Suddenly, the trees around you start moving. From the bushes, some familiar animals emerge. They glow with an earthly aura. 'You challenge the forces of nature. You claim to protect us, but we did not ask for your protection. Prove to us, the flora and fauna of the forest and mother nature herself that you are worthy.'",
+        "Flavourtext": "The lumberjacks' weapons are no match for your armor and Psynergy defenses. Though you raise no weapon against them, they realize how foolish it was to attack you. Their anger turns to terror, and they flee, leaving their axes behind. Suddenly, the trees around you start moving. From the bushes, some familiar animals emerge. They glow with an earthly aura. 'You challenge the forces of nature. You claim to protect us, but we did not ask for your protection. Prove to us, the flora and fauna of the forest and Mother Nature herself that you are worthy.'",
         "EnemyNames": [ "KirinSummon:Fox Avatar|Boost:150", "CybeleSummon:Squirrel Avatar|Boost:75", "ProcneSummon:Crow|Boost:75 Avatar", "Estre Wood:Forest Avatar|Boost:150" ],
         "Keywords": [ "Shuffle", "@600" ],
         "Image": "",
@@ -7401,7 +7401,7 @@
         ]
       },
       {
-        "Flavourtext": "You feel inside your heart that mother nature has given you her blessing. At the same time, you feel a powerful force creeping up on you. You look behind you. A massive humanoid figure wings down from the sky, clad in plate mail. Bull horns sprout from its head, white feathery wings from its shoulders. It wields a sword and a lion-headed shield.",
+        "Flavourtext": "You feel inside your heart that Mother Nature has given you her blessing. At the same time, you feel a powerful force creeping up on you. You look behind you. A massive humanoid figure wings down from the sky, clad in plate mail. Bull horns sprout from its head, white feathery wings from its shoulders. It wields a sword and a lion-headed shield.",
         "EnemyNames": [ "Next" ],
         "Keywords": [ "Heal" ],
         "Image": "",
@@ -7860,7 +7860,7 @@
         ]
       },
       {
-        "Flavourtext": "She offers a smile to your puzzlement, and gestures upwards, into a perfectly clear sky filled with stars. 'The heavens above also burn, like bright coals after a bonfire. Their flame helped give rise to ours here in Weyard.'\nWe still have time. Since today we are dealing with astral forces, we must also learn about the zodiac signs. Each zodiac sign is associated with one of the elements. ",
+        "Flavourtext": "She offers a smile to your puzzlement, and gestures upwards, into a perfectly clear sky filled with stars. 'The heavens above also burn, like bright coals after a bonfire. Their flame helped give rise to ours here in Weyard.'\n  She glances up, and nods.  'We still have time. Since today we are dealing with astral forces, we must also learn about the zodiac signs. Each zodiac sign is associated with one of the elements.'",
         "EnemyNames": [ "Next" ],
         "Image": "",
         "RewardTables": [
@@ -7868,7 +7868,7 @@
         ]
       },
       {
-        "Flavourtext": "Look at these statues, they are from far from here, the Craggy Peak Ruins.\n\nCan you identify the three zodiac signs associated with Mars?",
+        "Flavourtext": "Look at these statues, they are from far from here, the Craggy Peak Ruins.\n\nCan you identify the three zodiac signs associated with Mars?'",
         "EnemyNames": [ "Choice:Leo|KilledBy:Player@101|!HasTag:Magma4ZodLeo", "Choice:Aries|KilledBy:Player@102|!HasTag:Magma4ZodAries", "Choice:Sagittarius|KilledBy:Player@103|!HasTag:Magma4ZodSagittarius", "Choice:Gemini||KilledBy:Player@201|!HasTag:Magma4ZodGemini", "Choice:Aquarius|KilledBy:Player@202|!HasTag:Magma4ZodAquarius", "Choice:Libra|KilledBy:Player@203|!HasTag:Magma4ZodLibra", "Choice:Virgo|KilledBy:Player@204|!HasTag:Magma4ZodVirgo", "Choice:Pisces|KilledBy:Player@205|!HasTag:Magma4ZodPisces", "Choice:Cancer|KilledBy:Player@206|!HasTag:Magma4ZodCancer", "Choice:Scorpio|KilledBy:Player@207|!HasTag:Magma4ZodScorpio", "Choice:Capricorn|KilledBy:Player@208|!HasTag:Magma4ZodCapricorn", "Choice:Taurus|KilledBy:Player@209|!HasTag:Magma4ZodTaurus" ],
         "Keywords": [ "@100", "Shuffle", "ToMatchup@100" ],
         "Image": "https://goldensunwiki.net/w/images/3/3a/ZodiacSymbols.png",
@@ -7877,7 +7877,7 @@
         ]
       },
       {
-        "Flavourtext": "Leo, the noblest of the Zodiac sign. It's guise is akin the sun. Only flame can sate the lions hunger.",
+        "Flavourtext": "Leo, the noblest of the Zodiac signs. Its guise is akin the sun. Only flame can sate the lion's hunger.'",
         "EnemyNames": [ "TiamatSummon:Leo|ImmuneTo:Venus:Jupiter:Mercury:None" ],
         "Keywords": [ "@101", "ToMatchup@100", "HasTagAll:Magma4ZodLeo:Magma4ZodAries:Magma4ZodSagittarius@500" ],
         "Image": "",
@@ -7900,7 +7900,7 @@
         ]
       },
       {
-        "Flavourtext": "Look, over there. The ram, it cowers from the flame. It's stubborn, it has an undying flame that powers its heart. Still, it avoids contact with fire.",
+        "Flavourtext": "Look there. The ram, it cowers from the flame. It's stubborn, it has an undying flame that powers its heart. Still, it avoids contact with fire.'",
         "EnemyNames": [ "Mars Djinni 6:Aries|ImmuneTo:Mars" ],
         "Keywords": [ "@102", "ToMatchup@100", "HasTagAll:Magma4ZodLeo:Magma4ZodAries:Magma4ZodSagittarius@500" ],
         "Image": "",
@@ -7915,8 +7915,8 @@
         ]
       },
       {
-        "Flavourtext": "Sagittarius, the Archer. Fight fire with fire, so they say. Sagittarius has realised, the archer's deadliest foe is himself.",
-        "EnemyNames": [ "MirrorAll:Sagittarius|KilledBeforeTurn:4@-5" ],
+        "Flavourtext": "Sagittarius, the Archer. Fight fire with fire, so they say. Sagittarius has realised, the archer's deadliest foe is himself.'",
+        "EnemyNames": [ "MirrorAll:Sagittarius|Boost:125|KilledBeforeTurn:4@-5" ],
         "Keywords": [ "@103", "ToMatchup@100", "HasTagAll:Magma4ZodLeo:Magma4ZodAries:Magma4ZodSagittarius@500" ],
         "Image": "",
         "RewardTables": [
@@ -7939,7 +7939,7 @@
         ]
       },
       {
-        "Flavourtext": "Gemini, the sign of the twins. Their wit and their mysterious connection comes from Jupiter.",
+        "Flavourtext": "Gemini, the sign of the twins. Their wit and their mysterious connection comes from Jupiter.'",
         "EnemyNames": [ "AtalantaSummon:Gemini", "AtalantaSummon:Gemini" ],
         "Keywords": [ "@201", "ToMatchup@100" ],
         "Image": "",
@@ -7954,7 +7954,7 @@
         ]
       },
       {
-        "Flavourtext": "You thought you were really clever there, right? But no. I'm afraid Aquarius does not even get its power from Mercury. In fact Jupiter is Aquarius' Master.",
+        "Flavourtext": "You thought you were really clever there, right? But no. I'm afraid Aquarius does not even get its power from Mercury. In fact Jupiter is Aquarius' Master.'",
         "EnemyNames": [ "Poseidon:Aquarius" ],
         "Keywords": [ "@202", "ToMatchup@100" ],
         "Image": "",
@@ -7969,8 +7969,8 @@
         ]
       },
       {
-        "Flavourtext": "Libra, the Scale under the Jupiter star. Say Adept, do you know to judge justice and balance?",
-        "EnemyNames": [ "Pan", "Libra|VIP", "Pan" ],
+        "Flavourtext": "Libra, the Scale under the Jupiter star. Say Adept, do you know to judge justice and balance?'",
+        "EnemyNames": [ "Pan", "Libra|VIP|Captain", "Pan" ],
         "Keywords": [ "@203", "ToMatchup@100" ],
         "Image": "",
         "RewardTables": [
@@ -7984,7 +7984,7 @@
         ]
       },
       {
-        "Flavourtext": "Virgo, protectress of the harvest. A gallant knight guards the noble Venus sign on her every step.",
+        "Flavourtext": "Virgo, protectress of the harvest. A gallant knight guards the noble Venus sign on her every step.'",
         "EnemyNames": [ "Virgo", "Paladin" ],
         "Keywords": [ "@204", "ToMatchup@100" ],
         "Image": "https://cdn.discordapp.com/attachments/668443234292334612/906847253682094090/Create-meme-knight-covers-the-Princess-shield-ghostblade-.png",
@@ -7999,7 +7999,7 @@
         ]
       },
       {
-        "Flavourtext": "You are a funny one. No, Pisces, the sign of the fish, is a sign under Mercury.",
+        "Flavourtext": "You are a funny one. No, Pisces, the sign of the fish, is a sign under Mercury.'",
         "EnemyNames": [ "NereidSummon:Pisces", "NereidSummon:Pisces" ],
         "Keywords": [ "@205", "ToMatchup@100" ],
         "Image": "",
@@ -8014,8 +8014,8 @@
         ]
       },
       {
-        "Flavourtext": "Cancer, the sign of the crab lives in Mercury's seas. Watch out for its claws, it can regrow them!",
-        "EnemyNames": [ "Claw", "Cancer", "Claw" ],
+        "Flavourtext": "Cancer, the sign of the crab lives in Mercury's seas. Watch out for its claws, it can regrow them!'",
+        "EnemyNames": [ "Claw", "Cancer|Captain", "Claw" ],
         "Keywords": [ "@206", "ToMatchup@100" ],
         "Image": "",
         "RewardTables": [
@@ -8029,7 +8029,7 @@
         ]
       },
       {
-        "Flavourtext": "Ah, Scorpio. No. Mercury grants Scorpio its powers. Watch out for its tail!",
+        "Flavourtext": "Ah, Scorpio. No. Mercury grants Scorpio its powers. Watch out for its tail!'",
         "EnemyNames": [ "Magicore:Scorpio", "Manticore:Scorpio", "Manticore King:Scorpio" ],
         "Keywords": [ "@207", "Shuffle", "ToMatchup@100" ],
         "Image": "",
@@ -8044,7 +8044,7 @@
         ]
       },
       {
-        "Flavourtext": "Capricorn, the goat. It's a cousin to a Mars Zodiac, but it draws its power from Venus.",
+        "Flavourtext": "Capricorn, the goat. It's a cousin to a Mars Zodiac, but it draws its power from Venus.'",
         "EnemyNames": [ "CybeleSummon:Capricorn" ],
         "Keywords": [ "@208", "ToMatchup@100" ],
         "Image": "",
@@ -8059,7 +8059,7 @@
         ]
       },
       {
-        "Flavourtext": "Taurus? No. It's hot headed, that's for sure, but as it stumpedes over vast prairies, Venus gives it its strength.",
+        "Flavourtext": "Taurus? No. It's hot headed, that's for sure, but as it stumpedes over vast prairies, Venus gives it its strength.'",
         "EnemyNames": [ "ZaganSummon:Taurus" ],
         "Keywords": [ "@209", "ToMatchup@100" ],
         "Image": "",
@@ -8074,7 +8074,7 @@
         ]
       },
       {
-        "Flavourtext": "Very good. You showed deep knowledge over the Zodiac signs and their element. It is now time to head to Dehkan Plateu.",
+        "Flavourtext": "Very good,' Hama smiles. 'You have shown deep knowledge of the Zodiac signs and their elements. Now, let us go to the highest point of Dehkan Plateau. You have a rare opportunity, and we must not miss it.'",
         "EnemyNames": [ "Next" ],
         "Keywords": [ "@500", "ToMatchup@510", "HasTagAny:Magma4ZodLeo:Magma4ZodAries:Magma4ZodSagittarius:Magma4ZodGemini:Magma4ZodAquarius:Magma4ZodLibra:Magma4ZodVirgo:Magma4ZodPisces:Magma4ZodCancer:Magma4ZodScorpio:Magma4ZodCapricorn:Magma4ZodTaurus@600", "HasTagAll:Magma4ZodLeo:Magma4ZodAries:Magma4ZodSagittarius:Magma4ZodGemini:Magma4ZodAquarius:Magma4ZodLibra:Magma4ZodVirgo:Magma4ZodPisces:Magma4ZodCancer:Magma4ZodScorpio:Magma4ZodCapricorn:Magma4ZodTaurus@520" ],
         "Image": "",
@@ -8083,7 +8083,7 @@
         ]
       },
       {
-        "Flavourtext": "(Everything was correct first try. Either you are smart or you cheated. Both wit and honesty are neither of Mars' strongest suites, 'so I am impressed'. The Mars signs want you to go through the trial of fire to prove your purity.)",
+        "Flavourtext": "(Everything was correct first try. Either you are smart or you cheated. Both wit and honesty are neither of Mars' strongest suites, 'so I am impressed'. The Mars signs want you to go through the trial of fire to prove your purity.)  Hama pauses after you answer correctly for the third time in a row.  'Hmm...  Typically wit and honesty are neither of Mars' strong suites. I am impressed.'  The statues of the Mars signs glow deep crimson, and forms coelesce in front of you.  'Seems they want to test your purity,' she opines cautiously.",
         "EnemyNames": [ "TiamatSummon:Leo|ImmuneTo:Venus:Jupiter:Mercury:None", "Mars Djinni 6:Aries|ImmuneTo:Mars", "Mirror:Sagittarius" ],
         "Keywords": [ "@510", "ToMatchup@600" ],
         "Image": "",
@@ -8110,8 +8110,8 @@
         ]
       },
       {
-        "Flavourtext": "asdf",
-        "EnemyNames": [ "MeteorSummon|ImmuneTo:Mercury" ],
+        "Flavourtext": "You climb to the highest point of the Plateau. The view is vast, but your attention is immediately drawn upwards.  In the sky, a great ball of fire has come close to Weyard.  It dominates the sky.  Hama nods. 'Weyard, thankfully, is safe. But this is one of the purest sources of Mars you could hope to meet in your lifetime. Show it your strength, Adept!  And beware; Mercury holds no sway here.'",
+        "EnemyNames": [ "CometMeteor1", "CometMeteor2", "MeteorSummon|ImmuneTo:Mercury|Captain", "CometMeteor3", "CometMeteor4 " ],
         "Keywords": [ "@600" ],
         "Image": "",
         "RewardTables": [
@@ -8132,6 +8132,14 @@
               "HasChest": true
             }
           ]
+        ]
+      },
+      {
+        "Flavourtext": "The meteor continues on its way through the sky and beyond, passing Weyard safely. You watch this rare celestial encounter disappear, having taken some of its vast power into yourself during the fight.",
+        "EnemyNames": [ "End" ],
+        "Image": "",
+        "RewardTables": [
+          [ { "Weight": 1 } ]
         ]
       }
     ]

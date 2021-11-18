@@ -494,6 +494,9 @@ namespace IodemBot.ColossoBattles
             Buffs = new List<Buff>();
             LingeringEffects.RemoveAll(e => e.RemovedOnDeath);
 
+            if (Tags.Any(t => t == "Captian") && !Party.Any(p => p.IsAlive && p.Tags.Any(t => t == "Captain")))
+                Party.ForEach(e => e.Kill());
+
             // OnKill@4@8
             var OnKillTag = Tags.FirstOrDefault(t => t.StartsWith("OnKill"));
             if (OnKillTag is not null)
@@ -502,10 +505,10 @@ namespace IodemBot.ColossoBattles
                 Battle.OutValue = OnKillBattleNumbers.Random();
             }
 
+            // KilledBefore:3@4@5
             var killedBeforeTag = Tags.FirstOrDefault(t => t.StartsWith("KilledBeforeTurn"));
             if (killedBeforeTag is null) return;
 
-            // KilledBefore:3@4@5
             var args = killedBeforeTag.Split(':').Last();
             var argsSplits = args.Split('@');
             var beforeTurn = int.Parse(argsSplits.First());
