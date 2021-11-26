@@ -6,23 +6,20 @@ namespace IodemBot.Core
 {
     public class GuildSetting
     {
-        public bool AutoSetup = false;
+        public bool AutoSetup { get; set; } = false;
         public GuildSetupConfig GuildConfig;
-        public ulong GuildId;
-        public bool IsTestServer = false;
-        public bool IsUserServer = false;
-        public string Name = "";
-        public bool SendLeaveMessage = false;
-        public bool SendWelcomeMessage = false;
+        public ulong GuildId { get; set; }
+        public bool IsTestServer { get; set; } = false;
+        public bool IsUserServer { get; set; } = false;
+        public string Name { get; set; } = "";
+        public bool SendLeaveMessage { get; set; } = false;
+        public bool SendWelcomeMessage { get; set; } = false;
 
         [JsonIgnore] public IRole TeamBRole => Global.Client.GetGuild(GuildId).GetRole(GuildConfig.TeamBid);
         [JsonIgnore] public IRole FighterRole => Global.Client.GetGuild(GuildId).GetRole(GuildConfig.FighterId);
 
         [JsonIgnore]
         public SocketTextChannel MainChannel => (SocketTextChannel)Global.Client.GetChannel(GuildConfig.MainChannelId);
-
-        [JsonIgnore]
-        public SocketTextChannel ModChannel => (SocketTextChannel)Global.Client.GetChannel(GuildConfig.ModChannelId);
 
         [JsonIgnore]
         public SocketTextChannel CommandChannel =>
@@ -37,10 +34,6 @@ namespace IodemBot.Core
             (SocketTextChannel)Global.Client.GetChannel(GuildConfig.TestCommandChannelId);
 
         [JsonIgnore]
-        public SocketTextChannel StreamChannel =>
-            (SocketTextChannel)Global.Client.GetChannel(GuildConfig.StreamChannelId);
-
-        [JsonIgnore]
         public SocketCategoryChannel CustomBattlesCateogry =>
             (SocketCategoryChannel)Global.Client.GetChannel(GuildConfig.CustomBattlesCateogryId);
     }
@@ -48,12 +41,10 @@ namespace IodemBot.Core
     public struct GuildSetupConfig
     {
         public ulong MainChannelId { get; set; }
-        public ulong ModChannelId { get; set; }
         public ulong CommandChannelId { get; set; }
         public ulong ColossoChannelId { get; set; }
         public ulong CustomBattlesCateogryId { get; set; }
         public ulong TestCommandChannelId { get; set; }
-        public ulong StreamChannelId { get; set; }
         public ulong TeamBid { get; set; }
         public ulong FighterId { get; set; }
     }

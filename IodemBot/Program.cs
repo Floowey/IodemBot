@@ -114,9 +114,18 @@ namespace IodemBot
             if (userBefore.PremiumSince.HasValue != user.PremiumSince.HasValue)
             {
                 var isBoosting = user.PremiumSince.HasValue;
-                _ = guild.TestCommandChannel
+                if (isBoosting)
+                {
+                    _ = guild.MainChannel
+                        .SendMessageAsync(
+                            $"<:Exclamatory:549529360604856323> {user.Mention} is now boosting the server.");
+                }
+                else
+                {
+                    _ = guild.TestCommandChannel
                     .SendMessageAsync(
-                        $"<:Exclamatory:549529360604856323> {user.Mention} is {(isBoosting ? "now" : "no longer")} boosting the server.");
+                        $"<:Exclamatory:549529360604856323> {user.Mention} is no longer boosting the server.");
+                }
             }
 
             await Task.CompletedTask;

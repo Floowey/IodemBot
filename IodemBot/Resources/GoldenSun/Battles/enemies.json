@@ -11931,8 +11931,7 @@
       "mercuryatk": 120
     },
     "hasDefend": false,
-    "extraturns": 0,
-    "Tags": [ "ImmuneTo:Jupiter" ]
+    "extraturns": 0
   },
   "Yellow Elemental": {
     "movepool": [ "Haze", "Jupiter", "Atalanta", "Breeze", "Wheeze", "Doldrum", "Gust" ],

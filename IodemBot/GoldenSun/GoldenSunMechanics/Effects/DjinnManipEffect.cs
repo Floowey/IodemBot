@@ -28,7 +28,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             validDjinn.Shuffle();
             var djinnSelected = validDjinn.Take(nDjinn);
 
-            foreach (var djinn in validDjinn)
+            foreach (var djinn in djinnSelected)
             {
                 switch (ToState)
                 {

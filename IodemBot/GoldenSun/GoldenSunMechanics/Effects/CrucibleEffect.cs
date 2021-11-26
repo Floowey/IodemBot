@@ -47,8 +47,21 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 enemyDjinn.OfElement(Element.Jupiter).Take(summon.JupiterNeeded).ToList().ForEach(d => d.Summon(user));
                 enemyDjinn.OfElement(Element.Mercury).Take(summon.MercuryNeeded).ToList().ForEach(d => d.Summon(user));
                 log.AddRange(summon.Move.Use(user));
+
+                if (summon.EffectsOnUser != null) log.AddRange(summon.EffectsOnUser.ApplyAll(user, user));
+                if (summon.EffectsOnParty != null)
+                    user.Battle.GetTeam(user.party).ForEach(p => log.AddRange(summon.EffectsOnParty.ApplyAll(user, p)));
             }
             return log;
+        }
+
+        protected override bool InternalValidSelection(ColossoFighter user)
+        {
+            var enemyDjinn = user.Enemies.SelectMany(m => m.Moves).OfType<Djinn>().Where(d => d.State == DjinnState.Standby);
+            var summonList = user.Enemies.SelectMany(m => m.Moves).OfType<Summon>()
+                .Where(s => s.CanSummon(enemyDjinn))
+                .ToList();
+            return summonList.Any();
         }
 
         protected override int InternalChooseBestTarget(List<ColossoFighter> targets)
