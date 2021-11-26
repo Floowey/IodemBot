@@ -14,7 +14,6 @@ namespace IodemBot.Modules
 {
     public class DjinnAction : IodemBotCommandAction
     {
-        public const int PageLimit = 24;
         public override bool GuildsOnly => false;
 
         [ActionParameterComponent(Order = 0, Name = "detail", Description = "...", Required = false)]
@@ -112,7 +111,7 @@ namespace IodemBot.Modules
             foreach (var element in classSeries.Elements)
             {
                 List<SelectMenuOptionBuilder> options = new();
-                foreach (var djinn in djinnPocket.Djinn.OfElement(element).Take(24))
+                foreach (var djinn in djinnPocket.Djinn.OfElement(element).Take(SelectMenuBuilder.MaxOptionCount))
                 {
                     var isSelected = false; // djinnPocket.GetDjinns().Any(d => d.Name == djinn.Name);
                     var desc = djinn.Name != djinn.Djinnname ? djinn.Djinnname : null;
