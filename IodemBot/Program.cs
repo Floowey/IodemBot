@@ -202,6 +202,7 @@ namespace IodemBot
                     GatewayIntents = GatewayIntents.All,
                     AlwaysDownloadUsers = true,
                     LogLevel = LogSeverity.Info,
+
                     //MessageCacheSize = 10,
                     DefaultRetryMode = RetryMode.AlwaysRetry
                 }))

@@ -1,136 +1,4 @@
 ﻿{
-  "NonLinTest": {
-    "name": "NonLinTest",
-    "IsOneTimeOnly": false,
-    "FlavourText": "Get lost.",
-    "Image": "https://goldensunwiki.net/w/images/4/41/ValeCaveEntrance.png",
-    "IsDefault": true,
-    "Matchups": [
-      {
-        "Flavourtext": "Leave it alone",
-        "EnemyNames": [ "Rat 1|Runner", "Next:Leave me alone!|Runner:1:Good bye.|OnKill@200", "Zombie 1" ],
-        "Keywords": [ "@200" ],
-        "Image": "",
-        "RewardTables": [
-          [ { "Weight": 1 } ]
-        ]
-      },
-      {
-        "Flavourtext": "Click Left to skip a battle, Right to Next Battle. Get a machete, but only the first time you are here.",
-        "EnemyNames": [ "Choice:Left", "Choice:Right|KilledBy:Player@102" ],
-        "Keywords": [ "@100" ],
-        "Image": "",
-        "RewardTables": [
-          [
-            {
-              "Weight": 1,
-              "RequireTag": [ "!SomeTag" ],
-              "Tag": "SomeTag",
-              "XP": 1,
-              "Coins": 1,
-              "Item": "Machete"
-            }
-          ]
-        ]
-      },
-
-      {
-        "Flavourtext": "You clicked Left. Now you go right.",
-        "EnemyNames": [ "Next" ],
-        "Keywords": [ "@101" ],
-        "Image": "",
-        "RewardTables": [
-          [ { "Weight": 1 } ]
-        ]
-      },
-      {
-        "Flavourtext": "You clicked Right. Get a machete if you go back",
-        "EnemyNames": [ "Choice:Go back to Choice|KilledBy:Player@100", "Choice:Continue On" ],
-        "Keywords": [ "@102" ],
-        "Image": "",
-        "RewardTables": [
-          [
-            {
-              "Weight": 1,
-              "RequireTag": [ "@100" ],
-              "Item": "Machete"
-            }
-          ]
-        ]
-      },
-      {
-        "Flavourtext": "Physical Attacks don't seem to kill it...",
-        "EnemyNames": [ "Zombie 1|KilledBy:Hand@103" ],
-        "Keywords": [ "@103" ],
-        "Image": "",
-        "RewardTables": [
-          [ { "Weight": 1 } ]
-        ]
-      },
-      {
-        "Flavourtext": "Kill only with djinn",
-        "EnemyNames": [ "Zombie 1:Zombert|KilledBy:Djinn@105" ],
-        "Keywords": [ "ToMatchup@104", "@104" ],
-        "Image": "",
-        "RewardTables": [
-          [ { "Weight": 1 } ]
-        ]
-      },
-      {
-        "Flavourtext": "Kill only with Psy",
-        "EnemyNames": [ "Zombie 1|KilledBy:Psynergy@106" ],
-        "Keywords": [ "ToMatchup@105", "@105" ],
-        "Image": "",
-        "RewardTables": [
-          [ { "Weight": 1 } ]
-        ]
-      },
-      {
-        "Flavourtext": "Kill with Jupiter for Treasure",
-        "EnemyNames": [ "Zombie 1|KilledBy:Jupiter@-5" ],
-        "Keywords": [ "@106" ],
-        "Image": "",
-        "RewardTables": [
-          [
-            {
-              "Weight": 1,
-              "RequireTag": [ "@-5" ],
-              "Chest": "Wooden",
-              "HasChest": true
-            }
-          ]
-        ]
-      },
-      {
-        "Flavourtext": "Kill with Lightning for treasure",
-        "EnemyNames": [ "Zombie 1|KilledBy:##Lightning@-5" ],
-        "Image": "",
-        "RewardTables": [
-          [
-            {
-              "Weight": 1,
-              "RequireTag": [ "@-5" ],
-              "Chest": "Wooden",
-              "HasChest": true
-            }
-          ]
-        ]
-      },
-      {
-        "Flavourtext": "Done",
-        "EnemyNames": [ "End" ],
-        "Image": "",
-        "RewardTables": [
-          [
-            {
-              "Weight": 1,
-              "Tag": "-SomeTag"
-            }
-          ]
-        ]
-      }
-    ]
-  },
   "Tutorial": {
     "name": "Tutorial",
     "IsOneTimeOnly": false,
@@ -355,7 +223,7 @@
         ]
       },
       {
-        "Flavourtext": "As you finish climbing the first slope, a light storm rises.  You find the town was only abandoned by people... the critters have taken over.",
+        "Flavourtext": "As you finish climbing the first slope, a light storm rises. You find the town was only abandoned by people... the critters have taken over.",
         "EnemyNames": [ "Vermin 1" ],
         "Image": "",
         "RewardTables": [
@@ -391,7 +259,7 @@
         ]
       },
       {
-        "Flavourtext": "The storm gets harsher and the wind and rain pick up.  More critters attack!",
+        "Flavourtext": "The storm gets harsher and the wind and rain pick up. More critters attack!",
         "EnemyNames": [ "Vermin 1", "Bat 1", "Vermin 1" ],
         "Image": "",
         "RewardTables": [
@@ -534,7 +402,7 @@
         ]
       },
       {
-        "Flavourtext": "You reach the highest part of Vale and make camp for the night.  Like the Valean Adepts of old, you will set out tomorrow to explore Weyard. Adventures, monsters, and treasures await you!",
+        "Flavourtext": "You reach the highest part of Vale and make camp for the night. Like the Valean Adepts of old, you will set out tomorrow to explore Weyard. Adventures, monsters, and treasures await you!",
         "EnemyNames": [ "End" ],
         "Image": "",
         "RewardTables": [
@@ -635,7 +503,7 @@
         ]
       },
       {
-        "Flavourtext": "You step through the revealed door.  You have reached the ruined Star Chamber! The roof of it has broken down and the room is exposed directly to the Golden Sun. Some nasty looking monsters are looking at you from afar, it would be better to turn back now than never!",
+        "Flavourtext": "You step through the revealed door. You have reached the ruined Star Chamber! The roof of it has broken down and the room is exposed directly to the Golden Sun. Some nasty looking monsters are looking at you from afar, it would be better to turn back now than never!",
         "EnemyNames": [ "Amaze 1", "Amaze 2", "Amaze 1" ],
         "Keywords": [ "Shuffle" ],
         "Image": "",
@@ -721,7 +589,7 @@
     },
     "Matchups": [
       {
-        "Flavourtext": "You trace your path back to the Star Chamber in Sol Sanctum, and step through the door.  Some colorful glowing lights assault you!  What's going on? The Star Chamber appears to be alive! Watch out! ",
+        "Flavourtext": "You trace your path back to the Star Chamber in Sol Sanctum, and step through the door. Some colorful glowing lights assault you! What's going on? The Star Chamber appears to be alive! Watch out! ",
         "EnemyNames": [ "Anger Ball 1", "Anger Ball 1" ],
         "Image": "",
         "RewardTables": [
@@ -849,7 +717,7 @@
         ]
       },
       {
-        "Flavourtext": "With that battle finished, the Star Chamber begins to quiet down into its customary silence.  Well done! You defeated the secret mini super boss!",
+        "Flavourtext": "With that battle finished, the Star Chamber begins to quiet down into its customary silence. Well done! You defeated the secret mini super boss!",
         "EnemyNames": [ "End" ],
         "Image": "",
         "RewardTables": [
@@ -967,7 +835,7 @@
         ]
       },
       {
-        "Flavourtext": "Oh hey! A Jupiter Djinni flies down from above.  ",
+        "Flavourtext": "Oh hey! A Jupiter Djinni flies down from above. ",
         "EnemyNames": [ "Jupiter Djinni 4" ],
         "Image": "",
         "RewardTables": [
@@ -1061,7 +929,7 @@
         ]
       },
       {
-        "Flavourtext": "As you move on, the locals tell you the cemetery is unsettling a lot of the inhabitants.  You can see why!",
+        "Flavourtext": "As you move on, the locals tell you the cemetery is unsettling a lot of the inhabitants. You can see why!",
         "EnemyNames": [ "Skeleton 1", "Zombie 1" ],
         "Image": "",
         "RewardTables": [
@@ -1090,7 +958,7 @@
         ]
       },
       {
-        "Flavourtext": "The skeleton's bones clatter to the ground.  The commotion has attracted a dog... and wolves! Protect the pup!",
+        "Flavourtext": "The skeleton's bones clatter to the ground. The commotion has attracted a dog... and wolves! Protect the pup!",
         "EnemyNames": [ "Wild Wolf 2", "Wild Wolf 2" ],
         "Image": "",
         "RewardTables": [
@@ -1252,7 +1120,7 @@
         ]
       },
       {
-        "Flavourtext": "You step into the cave.  That's a nice chest, I wonder what it's doing so close to the entrance?",
+        "Flavourtext": "You step into the cave. That's a nice chest, I wonder what it's doing so close to the entrance?",
         "EnemyNames": [ "Mimic 19" ],
         "Image": "",
         "RewardTables": [
@@ -1283,7 +1151,7 @@
         ]
       },
       {
-        "Flavourtext": "You feel hungry after that fight.  Hey, time for a mushroom salad with honey before going further! ... wait, those are Death Caps!",
+        "Flavourtext": "You feel hungry after that fight. Hey, time for a mushroom salad with honey before going further! ... wait, those are Death Caps!",
         "EnemyNames": [ "Death Cap", "Death Cap", "Fighter Bee 1", "Fighter Bee 1" ],
         "Keywords": [ "Shuffle" ],
         "Image": "",
@@ -1298,7 +1166,7 @@
         ]
       },
       {
-        "Flavourtext": "You move further down the cave.  What a large fellow, maybe he'll want to... oh nevermind it's a Cave Troll.",
+        "Flavourtext": "You move further down the cave. What a large fellow, maybe he'll want to... oh nevermind it's a Cave Troll.",
         "EnemyNames": [ "Cave Troll 1" ],
         "Image": "",
         "RewardTables": [
@@ -1312,7 +1180,7 @@
         ]
       },
       {
-        "Flavourtext": "You enter a large room.  What incredible statues! I wonder what would happen if I boop them on the snoot...",
+        "Flavourtext": "You enter a large room. What incredible statues! I wonder what would happen if I boop them on the snoot...",
         "EnemyNames": [ "Gargoyle", "Gargoyle", "Gargoyle" ],
         "Image": "",
         "RewardTables": [
@@ -1334,7 +1202,7 @@
         ]
       },
       {
-        "Flavourtext": "You pass through a corridor and round a corner.  Oh no, an adept must have died and became a ghost... Let's put this mage to rest.",
+        "Flavourtext": "You pass through a corridor and round a corner. Oh no, an adept must have died and became a ghost... Let's put this mage to rest.",
         "EnemyNames": [ "Ghost Mage 1" ],
         "Image": "",
         "RewardTables": [
@@ -1348,7 +1216,7 @@
         ]
       },
       {
-        "Flavourtext": "You find some stairs leading up, instead of down!  This must be the right way.  At the top, you find... I didn't think bears came in green. The more you know...",
+        "Flavourtext": "You find some stairs leading up, instead of down! This must be the right way. At the top, you find... I didn't think bears came in green. The more you know...",
         "EnemyNames": [ "Ravager 1" ],
         "Image": "",
         "RewardTables": [
@@ -1383,7 +1251,7 @@
         ]
       },
       {
-        "Flavourtext": "The smell of fresh air beckons, and you push through into sunlight!  Finally the outdoors. Hey is that the Djinni from earlier? Let's get him!",
+        "Flavourtext": "The smell of fresh air beckons, and you push through into sunlight! Finally the outdoors. Hey is that the Djinni from earlier? Let's get him!",
         "EnemyNames": [ "Venus Djinni 14" ],
         "Image": "",
         "RewardTables": [
@@ -1495,7 +1363,7 @@
         ]
       },
       {
-        "Flavourtext": "Having put the goblins to rest, you almost immediately trip over undead.  Is there anything left that's alive in this cave?",
+        "Flavourtext": "Having put the goblins to rest, you almost immediately trip over undead. Is there anything left that's alive in this cave?",
         "EnemyNames": [ "Ghost 1", "Will Head", "Zombie 1" ],
         "Keywords": [ "Shuffle" ],
         "Image": "",
@@ -1646,7 +1514,7 @@
               "Tag": "McCoyTask1",
               "Obtainable": 1,
               "Dungeon": "Tret Tree",
-              "message": "Oi, laddie! Yeh, you, adept, or what you might be. I have a task for ye. Some time ago me men cut down some trees. It mad the ole tree, Tret, mad and turned me men into wood themselves! Ever since we didnae touch a single branch of the ole spud, but now he accuses me men to clear too much woodland again! It wasnae me men, I swear! So go tae the ole bloke and tell him that it wasnae us who did it. None of me men can walk intae the woods and return. What areya standing there rooted to the ground fer? Go!"
+              "message": "Oi, laddie! Yeh, you, Adept, or whatever you might be. I have a task for ye. Some time ago me men cut down some trees. It mad the ole tree, Tret, mad and turned me men into wood themselves! Ever since we didnae touch a single branch of the ole spud, but now he accuses me men to clear too much woodland again! It wasnae me men, I swear! So go tae the ole bloke and tell him that it wasnae us who did it. None of me men can walk intae the woods and return. What areya standing there rooted to the ground fer? Go!"
             }
           ],
           [
@@ -2001,7 +1869,7 @@
         ]
       },
       {
-        "Flavourtext": "Most of the town is out ice skating.  Wanting to join in, you venture out onto the frozen river. Two little kids, calling themselves Justin and Megan ask you if you know a person called Mia. 'She is our hero!', they claim.",
+        "Flavourtext": "Most of the town is out ice skating. Wanting to join in, you venture out onto the frozen river. Two little kids, calling themselves Justin and Megan ask you if you know a person called Mia. 'She is our hero!', they claim.",
         "EnemyNames": [ "Gnome", "Gnome" ],
         "Image": "",
         "RewardTables": [
@@ -2028,7 +1896,7 @@
         ]
       },
       {
-        "Flavourtext": "Not knowing this Mia and not wanting to upset them, you skate off.  But then you slip and crash into the frozen waterfall! There is a warm cave behind it, where a Mars Djinni is keeping two bears comfortable as they hibernate.",
+        "Flavourtext": "Not knowing this Mia and not wanting to upset them, you skate off. But then you slip and crash into the frozen waterfall! There is a warm cave behind it, where a Mars Djinni is keeping two bears comfortable as they hibernate.",
         "EnemyNames": [ "Mars Djinni 1", "Mauler 1", "Mauler 1" ],
         "Image": "",
         "RewardTables": [
@@ -2386,7 +2254,7 @@
     },
     "Matchups": [
       {
-        "Flavourtext": "'Welcome to Lunpa, home of the great Dodonpa,' a bored-sounding town crier intones.  'Run the gauntlet, prove your strength and stealth, do battle with the Mighty Toadonpa, and win a mystery prize.  Tickets are 500 coins.'  He gets a closer look at you and your equipment, and pauses.  Lowering his voice, he whispers to you, 'Actually, you look halfway competent and the guards are getting really bored.'  He hands you a ticket and gestures you towards the fortress gates.  'Just, please give them a decent fight, and don't tell Lord Dodonpa.'",
+        "Flavourtext": "'Welcome to Lunpa, home of the great Dodonpa,' a bored-sounding town crier intones. 'Run the gauntlet, prove your strength and stealth, do battle with the Mighty Toadonpa, and win a mystery prize. Tickets are 500 coins.' He gets a closer look at you and your equipment, and pauses. Lowering his voice, he whispers to you, 'Actually, you look halfway competent and the guards are getting really bored.' He hands you a ticket and gestures you towards the fortress gates. 'Just, please give them a decent fight, and don't tell Lord Dodonpa.'",
         "EnemyNames": [ "Next" ],
         "Image": "",
         "RewardTables": [
@@ -2400,7 +2268,7 @@
         ]
       },
       {
-        "Flavourtext": "You hand your ticket in at the fortress gates.  They tell you to 'fearlessly meet the Fortress Challenges, find the key, and fight the monster,' and wave you in.  Before you can get very far, you're accosted by some sneaky monsters.",
+        "Flavourtext": "You hand your ticket in at the fortress gates. They tell you to 'fearlessly meet the Fortress Challenges, find the key, and fight the monster,' and wave you in. Before you can get very far, you're accosted by some sneaky monsters.",
         "EnemyNames": [ "Rat Warrior 1", "Kobold 1", "Vile Dirge 1" ],
         "Keywords": [ "Shuffle" ],
         "Image": "",
@@ -2431,7 +2299,7 @@
         ]
       },
       {
-        "Flavourtext": "A guard is pacing slowly down the hall.  He announces loudly every 15 feet or so, 'I sure hope I don't find any INTRUDERS in the fortress, or they'll lose the challenge and I'll have to escort them out.'   Quick, hide in the shadows and wait 'til he goes away?",
+        "Flavourtext": "A guard is pacing slowly down the hall. He announces loudly every 15 feet or so, 'I sure hope I don't find any INTRUDERS in the fortress, or they'll lose the challenge and I'll have to escort them out.'  Quick, hide in the shadows and wait 'til he goes away?",
         "EnemyNames": [ "Fortress Guard" ],
         "Image": "",
         "RewardTables": [
@@ -2444,7 +2312,7 @@
         ]
       },
       {
-        "Flavourtext": "A group of fortress guards are talking amongst themselves here.  As you walk up, they straighten up and ready their weapons.  'A challenger!  About time,' they say.  ",
+        "Flavourtext": "A group of fortress guards are talking amongst themselves here. As you walk up, they straighten up and ready their weapons. 'A challenger! About time,' they say. ",
         "EnemyNames": [ "Brigand", "Brigand", "Brigand" ],
         "Image": "",
         "RewardTables": [
@@ -2474,7 +2342,7 @@
         ]
       },
       {
-        "Flavourtext": "Having thrashed the guards soundly, they nod and let you pass. One of them whispers, 'Dodonpa's favorite color' to you as you move by.  The fortress contains dozens of rooms, which you methodically search through. One of them contains a Mercury Djinni relaxing on a barstool in front of a counter. Annoyed, it attacks!",
+        "Flavourtext": "Having thrashed the guards soundly, they nod and let you pass. One of them whispers, 'Dodonpa's favorite color' to you as you move by. The fortress contains dozens of rooms, which you methodically search through. One of them contains a Mercury Djinni relaxing on a barstool in front of a counter. Annoyed, it attacks!",
         "EnemyNames": [ "Mercury Djinni 4" ],
         "Image": "",
         "RewardTables": [
@@ -2530,7 +2398,7 @@
         ]
       },
       {
-        "Flavourtext": "Another side room holds a table with three keys.  Just up the passage you hear another bored-sounding guard announcing that if he spots you, you lose the challenge, so choose wisely!",
+        "Flavourtext": "Another side room holds a table with three keys. Just up the passage you hear another bored-sounding guard announcing that if he spots you, you lose the challenge, so choose wisely!",
         "EnemyNames": [ "BoobyTrap-60:RedKey", "BoobyTrap-60:BlueKey", "Key:YellowKey" ],
         "Keywords": [ "Shuffle" ],
         "Image": "https://i.imgur.com/6oB3CBd.png",
@@ -2555,7 +2423,7 @@
         ]
       },
       {
-        "Flavourtext": "Finally, you enter a wide, arena-like room and spot a yellow door with a sign that reads 'Winner's Exit.'  But as soon as you do, a huge toad-like monster also spots you.  It bellows and attacks!",
+        "Flavourtext": "Finally, you enter a wide, arena-like room and spot a yellow door with a sign that reads 'Winner's Exit.' But as soon as you do, a huge toad-like monster also spots you. It bellows and attacks!",
         "EnemyNames": [ "Toadonpa" ],
         "Image": "",
         "RewardTables": [
@@ -2598,7 +2466,7 @@
         ]
       },
       {
-        "Flavourtext": "Having defeated the monster, you collect your 'mystery item' and proceed through the exit.  The town crier nods to you as you leave the city.  What a weird place.",
+        "Flavourtext": "Having defeated the monster, you collect your 'mystery item' and proceed through the exit. The town crier nods to you as you leave the city. What a weird place.",
         "EnemyNames": [ "End" ],
         "Image": "",
         "RewardTables": [
@@ -2621,7 +2489,7 @@
     "IsDefault": false,
     "Matchups": [
       {
-        "Flavourtext": "As you walk north along the coast of Angara, you are certain to pass this town.  But before you get there... what's this, the Queen of Rats or what?",
+        "Flavourtext": "As you walk north along the coast of Angara, you are certain to pass this town. But before you get there... what's this, the Queen of Rats or what?",
         "EnemyNames": [ "Rat Soldier 1", "Rat 1", "Rat Soldier 1" ],
         "Keywords": [ "Shuffle" ],
         "Image": "",
@@ -2700,7 +2568,7 @@
         ]
       },
       {
-        "Flavourtext": "Some bees swarming around decide to attack you.  Pretty typical in this kind of place.",
+        "Flavourtext": "Some bees swarming around decide to attack you. Pretty typical in this kind of place.",
         "EnemyNames": [ "Drone Bee 1", "Drone Bee 1", "Drone bee 1" ],
         "Keywords": [ "Shuffle" ],
         "Image": "",
@@ -2715,7 +2583,7 @@
         ]
       },
       {
-        "Flavourtext": "Woops, something between the trees is moving. Totally normal!  After all, you've been rolling around logs all day.",
+        "Flavourtext": "Woops, something between the trees is moving. Totally normal! After all, you've been rolling around logs all day.",
         "EnemyNames": [ "Kobold 2", "Flutter Seed", "Flutter Seed" ],
         "Keywords": [ "Shuffle" ],
         "Image": "",
@@ -2774,7 +2642,7 @@
         ]
       },
       {
-        "Flavourtext": "The woods are getting clearer. You've made it out safely!  You return to Kolima's inn for the night.",
+        "Flavourtext": "The woods are getting clearer. You've made it out safely! You return to Kolima's inn for the night.",
         "EnemyNames": [ "End" ],
         "Image": "",
         "RewardTables": [
@@ -2797,7 +2665,7 @@
     "IsDefault": false,
     "Matchups": [
       {
-        "Flavourtext": "Rodents of unusual size!  A respectable first fight, yet you sigh upon recalling the great size of Tret.",
+        "Flavourtext": "Rodents of unusual size! A respectable first fight, yet you sigh upon recalling the great size of Tret.",
         "EnemyNames": [ "Rat 1", "Rat Soldier 1", "Rat 2" ],
         "Keywords": [ "Shuffle" ],
         "Image": "",
@@ -2812,7 +2680,7 @@
         ]
       },
       {
-        "Flavourtext": "First there was the forest, now there's this tree maze, too, and a few forest denizens bar your way.  It feels like there's eyes assessing your abilities from somewhere in the branches.  A trained Venus adept might be able to use a localized earthquake to shake the observer from their perch...",
+        "Flavourtext": "First there was the forest, now there's this tree maze, too, and a few forest denizens bar your way. It feels like there's eyes assessing your abilities from somewhere in the branches. A trained Venus adept might be able to use a localized earthquake to shake the observer from their perch...",
         "EnemyNames": [ "Gnome", "Creeper 1", "Troll 1", "Rat 1" ],
         "Keywords": [ "Shuffle" ],
         "Image": "",
@@ -2845,7 +2713,7 @@
         ]
       },
       {
-        "Flavourtext": "You pick your way through the maze.  As you round a corner, you're ambushed!  Since they were born, they've been stayin' alive.",
+        "Flavourtext": "You pick your way through the maze. As you round a corner, you're ambushed! Since they were born, they've been stayin' alive.",
         "EnemyNames": [ "Drone Bee 1", "Gnome", "Gnome", "Gnome" ],
         "Keywords": [ "Shuffle" ],
         "Image": "",
@@ -2860,7 +2728,7 @@
         ]
       },
       {
-        "Flavourtext": "After searching around a while, you find a room with a table of spiders playing cards.  They immediately notice you, uh oh...",
+        "Flavourtext": "After searching around a while, you find a room with a table of spiders playing cards. They immediately notice you, uh oh...",
         "EnemyNames": [ "Spider 1", "Spider 2", "Spider 1", "Spider 2", "Spider 1" ],
         "Keywords": [ "Shuffle" ],
         "Image": "",
@@ -2918,7 +2786,7 @@
         ]
       },
       {
-        "Flavourtext": "You return to the third floor and notice some shadows in the corner.  What is it? CREEPER! Aw man...",
+        "Flavourtext": "You return to the third floor and notice some shadows in the corner. What is it? CREEPER! Aw man...",
         "EnemyNames": [ "Creeper 1", "Creeper 1", "Creeper 1", "Creeper 1" ],
         "Image": "",
         "RewardTables": [
@@ -2986,6 +2854,7 @@
             {
               "Weight": 1,
               "Tag": "TretComplete",
+              "Obtainable": 1,
               "XP": 256,
               "Coins": 300
             }
@@ -2997,7 +2866,7 @@
               "Tag": "DrawBridge",
               "Obtainable": 1,
               "Dungeon": "Fuchin Temple",
-              "message": "A girl approaches you.  She watched you battle the monster, and you think you saw her on top of the lighthouse you visited. 'Oh young Adept! You have shown remarkable strength! I will tell the guard to let you pass over the draw bridge after Kolima. I am in a hurry, are you on your way to Lama Temple? Let us meet there! Oh, sorry, I forgot to mention. My Name is Feizhi! Nice to meet you, bye!'"
+              "message": "A girl approaches you. She watched you battle the monster, and you think you saw her on top of the lighthouse you visited. 'Oh young Adept! You have shown remarkable strength! I will tell the guard to let you pass over the draw bridge after Kolima. I am in a hurry, are you on your way to Lama Temple? Let us meet there! Oh, sorry, I forgot to mention. My Name is Feizhi! Nice to meet you, bye!'"
             }
           ],
           [
@@ -3007,7 +2876,7 @@
               "Tag": "ZaganUnlock",
               "Obtainable": 1,
               "Dungeon": "Forest Den",
-              "message": "A bit out of breath, you look up. Tret is satisfied with your power and accepts his loss. You tell him what McCoy has asked you to deliver. Before Tret can respond, a loud roar grabs your attention.  You come back to your senses, turn around, and see a fierce beast. Not a bear, not a lion... something *else*. Something that wields an enormous axe. It must have witnessed your battle.  When it notices your gaze, it runs off. It didn't go far, so you track it down.  You decide to catch your breath before you challenge it, though!"
+              "message": "A bit out of breath, you look up. Tret is satisfied with your power and accepts his loss. You tell him what McCoy has asked you to deliver. Before Tret can respond, a loud roar grabs your attention. You come back to your senses, turn around, and see a fierce beast. Not a bear, not a lion... something *else*. Something that wields an enormous axe. It must have witnessed your battle. When it notices your gaze, it runs off. It didn't go far, so you track it down. You decide to catch your breath before you challenge it, though!"
             }
           ]
         ]
@@ -3368,7 +3237,7 @@
         ]
       },
       {
-        "Flavourtext": "Thankfully, the end of the forest is in sight.  You make your way out.",
+        "Flavourtext": "Thankfully, the end of the forest is in sight. You make your way out.",
         "EnemyNames": [ "End" ],
         "Image": "",
         "RewardTables": [
@@ -3401,7 +3270,7 @@
     "IsDefault": false,
     "Matchups": [
       {
-        "Flavourtext": "You finally leave the forest, what a relief!  Some creatures are your welcome party.  ",
+        "Flavourtext": "You finally leave the forest, what a relief! Some creatures are your welcome party. ",
         "EnemyNames": [ "Mole 1", "Mole 2", "Ape 1" ],
         "Keywords": [ "Shuffle" ],
         "Image": "",
@@ -3472,7 +3341,7 @@
         ]
       },
       {
-        "Flavourtext": "Leaving the town didn't feel difficult, you really didn't get much out of it. In the wilds, however...!  You get ambushed.  ",
+        "Flavourtext": "Leaving the town didn't feel difficult, you really didn't get much out of it. In the wilds, however...! You get ambushed. ",
         "EnemyNames": [ "Bone Fighter 1", "Death Head", "Spirit", "Ape 1" ],
         "Keywords": [ "Shuffle" ],
         "Image": "",
@@ -3651,7 +3520,7 @@
         ]
       },
       {
-        "Flavourtext": "Altin is partially flooded!  The townsfolk point you to the mine's entrance.  The first thing you see is a treasure chest!  But there's no such thing as free loot...",
+        "Flavourtext": "Altin is partially flooded! The townsfolk point you to the mine's entrance. The first thing you see is a treasure chest! But there's no such thing as free loot...",
         "EnemyNames": [ "Mimic 18" ],
         "Image": "",
         "RewardTables": [
@@ -3716,7 +3585,7 @@
         ]
       },
       {
-        "Flavourtext": "A Djinni is playing in the floodwaters here.  Light and refreshing!",
+        "Flavourtext": "A Djinni is playing in the floodwaters here. Light and refreshing!",
         "EnemyNames": [ "Mercury Djinni 8" ],
         "Image": "",
         "RewardTables": [
@@ -3751,7 +3620,7 @@
         ]
       },
       {
-        "Flavourtext": "A trail of ooze leads you onward.  Careful, this could be a sticky situation!",
+        "Flavourtext": "A trail of ooze leads you onward. Careful, this could be a sticky situation!",
         "EnemyNames": [ "Slime Beast 1", "Slime Beast 2", "Bone Fighter 1", "Slime Beast 1" ],
         "Keywords": [ "Shuffle" ],
         "Image": "",
@@ -3788,7 +3657,7 @@
         ]
       },
       {
-        "Flavourtext": "The floodwaters recede after you defeat the first one, but it seems they've banded together now!  Mo' Monsters, Mo' Problems.",
+        "Flavourtext": "The floodwaters recede after you defeat the first one, but it seems they've banded together now! Mo' Monsters, Mo' Problems.",
         "EnemyNames": [ "Living Statue", "Living Statue", "Living Statue" ],
         "Image": "",
         "RewardTables": [
@@ -3832,7 +3701,7 @@
         ]
       },
       {
-        "Flavourtext": "With all the statues defeated, the waters sink back down into the earth.  Altin is still soaked, but it will dry out in time.  You've done a very good deed today.",
+        "Flavourtext": "With all the statues defeated, the waters sink back down into the earth. Altin is still soaked, but it will dry out in time. You've done a very good deed today.",
         "EnemyNames": [ "End" ],
         "Image": "",
         "RewardTables": [
@@ -4160,7 +4029,7 @@
         ]
       },
       {
-        "Flavourtext": "You stumble on a pack of robbers.  Alas, where there are merchants, there will be thieves.",
+        "Flavourtext": "You stumble on a pack of robbers. Alas, where there are merchants, there will be thieves.",
         "EnemyNames": [ "Bandit 2", "Brigand", "Bandit 2" ],
         "Image": "",
         "RewardTables": [
@@ -4217,7 +4086,7 @@
         ]
       },
       {
-        "Flavourtext": "You hear angry buzzing from nearby.  What is it?  Oh no, not the bees!  Not the beeeeees!  ",
+        "Flavourtext": "You hear angry buzzing from nearby. What is it? Oh no, not the bees! Not the beeeeees! ",
         "EnemyNames": [ "Fighter Bee 1", "Fighter Bee 2", "Fighter Bee 1", "Fighter Bee 2", "Fighter Bee 1", "Fighter Bee 2", "Fighter Bee 1", "Fighter Bee 2", "Fighter Bee 1" ],
         "Keywords": [ "Shuffle" ],
         "Image": "",
@@ -4240,7 +4109,7 @@
         ]
       },
       {
-        "Flavourtext": "You find the docks.  Want to set sail? These rowdy dockhands need you to prove you're not just another landlubber!",
+        "Flavourtext": "You find the docks. Want to set sail? These rowdy dockhands need you to prove you're not just another landlubber!",
         "EnemyNames": [ "Sea Fighter", "Brigand", "Sea Fighter" ],
         "Image": "",
         "RewardTables": [
@@ -4414,7 +4283,7 @@
         ]
       },
       {
-        "Flavourtext": "Hsu bows in recognition of your prowess, and tells you he thought he spotted something of interest at a particular corner of this cave system.  Following his directions, and after solving a puzzle, you come face-to-snout with a Djinni!",
+        "Flavourtext": "Hsu bows in recognition of your prowess, and tells you he thought he spotted something of interest at a particular corner of this cave system. Following his directions, and after solving a puzzle, you come face-to-snout with a Djinni!",
         "EnemyNames": [ "Venus Djinni 14" ],
         "Image": "",
         "RewardTables": [
@@ -5134,7 +5003,7 @@
         ]
       },
       {
-        "Flavourtext": "This cave seems endless.  Still, there might be more to find down here.  You press on, and run directly into some twisted hounds and their keeper.",
+        "Flavourtext": "This cave seems endless. Still, there might be more to find down here. You press on, and run directly into some twisted hounds and their keeper.",
         "EnemyNames": [ "Dread Hound 1", "Dread Hound 1", "Clay Gargoyle" ],
         "Image": "",
         "RewardTables": [
@@ -5344,7 +5213,7 @@
         ]
       },
       {
-        "Flavourtext": "Morgan falls, defeated, and the crowd cheers.  You have completed the Trials, and shown yourself worthy to fight in the Finals.  The Tolbi guards nod respectfully to you as you leave the arena.",
+        "Flavourtext": "Morgan falls, defeated, and the crowd cheers. You have completed the Trials, and shown yourself worthy to fight in the Finals. The Tolbi guards nod respectfully to you as you leave the arena.",
         "EnemyNames": [ "End" ],
         "Image": "",
         "RewardTables": [
@@ -5515,7 +5384,7 @@
         ]
       },
       {
-        "Flavourtext": "The Adept nods to you, acknowledging defeat.  The crowd roars their approval around you as you are presented with your prizes.  As the guards of Tolbi escort you out of the arena, they slap you on the shoulder in congratulation, and tell you that you can now join the Tolbi Guard if you ever want to give up the adventuring business.  ",
+        "Flavourtext": "The Adept nods to you, acknowledging defeat. The crowd roars their approval around you as you are presented with your prizes. As the guards of Tolbi escort you out of the arena, they slap you on the shoulder in congratulation, and tell you that you can now join the Tolbi Guard if you ever want to give up the adventuring business. ",
         "EnemyNames": [ "End" ],
         "Image": "",
         "RewardTables": [
@@ -5547,7 +5416,7 @@
   "Suhalla Desert": {
     "name": "Suhalla Desert",
     "IsOneTimeOnly": true,
-    "FlavourText": "Suhalla Desert, a barren, windblown landscape.  Traveling through here will be an endeavor.",
+    "FlavourText": "Suhalla Desert, a barren, windblown landscape. Traveling through here will be an endeavor.",
     "Image": "https://goldensunwiki.net/w/images/b/bf/SuhallaDesert.jpg",
     "IsDefault": false,
     "Requirement": {
@@ -5555,7 +5424,7 @@
     },
     "Matchups": [
       {
-        "Flavourtext": "As you enter the Suhalla Desert, everything seems to be still aside from it being little windy. Rumor persist of tornadoes blocking the way to Lalivero, or even abducting people!  You step into the desert and are met immediately by some unfriendly denizens.",
+        "Flavourtext": "As you enter the Suhalla Desert, everything seems to be still aside from it being little windy. Rumor persist of tornadoes blocking the way to Lalivero, or even abducting people! You step into the desert and are met immediately by some unfriendly denizens.",
         "EnemyNames": [ "Acid Maggot", "Acid Maggot", "Kobold 1", "Kobold 1" ],
         "Image": "",
         "RewardTables": [
@@ -5569,7 +5438,7 @@
         ]
       },
       {
-        "Flavourtext": "As you pass into a canyon area, the wind picks up and a tornado bars your way.  As you stand and watch it for a while, it slows down, seemingly puzzled, and the settling dust reveals a red Tornado Lizard! It seems like these sandy devils have inhabited the desert!",
+        "Flavourtext": "As you pass into a canyon area, the wind picks up and a tornado bars your way. As you stand and watch it for a while, it slows down, seemingly puzzled, and the settling dust reveals a red Tornado Lizard! It seems like these sandy devils have inhabited the desert!",
         "EnemyNames": [ "Tornado Lizard" ],
         "Image": "",
         "RewardTables": [
@@ -5737,7 +5606,7 @@
         ]
       },
       {
-        "Flavourtext": "You see green on the other side of a ravine... but a giant tornado bars your way! You channel your Psynergy, and the lizard slows and drops you from the tornado.  He seems to be green instead of red, so he's probably stronger than the others...",
+        "Flavourtext": "You see green on the other side of a ravine... but a giant tornado bars your way! You channel your Psynergy, and the lizard slows and drops you from the tornado. He seems to be green instead of red, so he's probably stronger than the others...",
         "EnemyNames": [ "Storm Lizard" ],
         "Image": "",
         "RewardTables": [
@@ -5763,7 +5632,7 @@
         ]
       },
       {
-        "Flavourtext": "You escape Suhalla Desert, but not without getting clothes full of sand.  You lay foot on some sweet sweet green grass again, and sigh in relief.  ",
+        "Flavourtext": "You escape Suhalla Desert, but not without getting clothes full of sand. You lay foot on some sweet sweet green grass again, and sigh in relief. ",
         "EnemyNames": [ "End" ],
         "Image": "",
         "RewardTables": [
@@ -5792,7 +5661,7 @@
     },
     "Matchups": [
       {
-        "Flavourtext": "After backtracking from the Storm Lizard, you look back at the chasm you couldn't cross.   Hmm... is that a secret passage across the way there?  You climb carefully down the wall... then something blinding catches your eye!",
+        "Flavourtext": "After backtracking from the Storm Lizard, you look back at the chasm you couldn't cross.  Hmm... is that a secret passage across the way there? You climb carefully down the wall... then something blinding catches your eye!",
         "EnemyNames": [ "Mars Djinni 9" ],
         "Image": "",
         "RewardTables": [
@@ -5819,7 +5688,7 @@
         ]
       },
       {
-        "Flavourtext": "Phew...after the battle, it seemed it was actually a fire Djinni just trying to make some friends! He really played rough... Now, where does this cave go? On the other side, it's a massive red Tornado! You focus your Psynergy again.  It looks like Storm Lizard's grandpa isn't happy you did that...",
+        "Flavourtext": "Phew...after the battle, it seemed it was actually a fire Djinni just trying to make some friends! He really played rough... Now, where does this cave go? On the other side, it's a massive red Tornado! You focus your Psynergy again. It looks like Storm Lizard's grandpa isn't happy you did that...",
         "EnemyNames": [ "Tempest Lizard" ],
         "Image": "",
         "RewardTables": [
@@ -6100,7 +5969,7 @@
         ]
       },
       {
-        "Flavourtext": "As the next group of monsters finds you, you pause.  Fire, Ice, Lightning. Now that one's a common trope.",
+        "Flavourtext": "As the next group of monsters finds you, you pause. Fire, Ice, Lightning. Now that one's a common trope.",
         "EnemyNames": [ "Willowisp 1", "Ice Gargoyle", "Thunder Lizard 1" ],
         "Image": "",
         "RewardTables": [
@@ -6321,7 +6190,7 @@
               "RequireTag": [ "MegaeraFinished" ],
               "Tag": "VenusLHStory3",
               "Obtainable": 1,
-              "message": "(Story parts for {0}, will contain spoilers for everyone else!)\n||At some point during the fight, the black spirit withdrew, leaving just you and the dragon to brawl against each other. As you slay the dragon, it disappears into thin air. The sky begins to clear and the red mist rolls away, heading south.  'That was the danger I was afraid of. We must stop it.' Megaera is right. This is a danger to all of Weyard.||"
+              "message": "(Story parts for {0}, will contain spoilers for everyone else!)\n||At some point during the fight, the black spirit withdrew, leaving just you and the dragon to brawl against each other. As you slay the dragon, it disappears into thin air. The sky begins to clear and the red mist rolls away, heading south. 'That was the danger I was afraid of. We must stop it.' Megaera is right. This is a danger to all of Weyard.||"
             }
           ]
         ]
@@ -6388,7 +6257,7 @@
         ]
       },
       {
-        "Flavourtext": "As you work your way up the lighthouse, you find more monsters.  This version of Snow White and the Seven Dwarves might not end as well as the original...",
+        "Flavourtext": "As you work your way up the lighthouse, you find more monsters. This version of Snow White and the Seven Dwarves might not end as well as the original...",
         "EnemyNames": [ "Nightmare 1", "Gnome Wizard", "Gnome Wizard", "Gnome Wizard", "Gnome Mage", "Gnome Mage", "Gnome", "Gnome" ],
         "Keywords": [ "Shuffle" ],
         "Image": "",
@@ -6479,8 +6348,23 @@
         ]
       },
       {
-        "Flavourtext": "You puzzle your way through the riddles and riddle yourself through the puzzles. You have to choose going left or going right, but seeing how it'll probably involve treasure you'll go both ways anyways. Let's start left.\nIt looks like a party of warriors has tried this before you, though...",
+        "Flavourtext": "You puzzle your way through the riddles and riddle yourself through the puzzles. You have to choose going left or going right,",
+        "EnemyNames": [ "Choice:Left", "Choice:Right|KilledBy:Player@7" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "XP": 1,
+              "Coins": 1
+            }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "Let's start left.\nIt looks like a party of warriors has tried this before you, though...",
         "EnemyNames": [ "Skull Warrior", "Skull Warrior", "Skull Warrior", "Skull Warrior" ],
+        "Keywords": [ "ToMatchup@8" ],
         "Image": "",
         "RewardTables": [
           [
@@ -6493,16 +6377,17 @@
           [
             {
               "Weight": 1,
+              "Tag": "BabiAsura",
+              "Obtainable": 1,
               "Item": "Asuras Armor"
-            },
-            { "Weight": 7 }
+            }
           ]
         ]
       },
       {
-        "Flavourtext": "You end the ill-fated group. Time to check out the other path. You stumble upon some sort of a secret, monsterous society...",
+        "Flavourtext": "Time to check out the right path. You stumble upon some sort of a secret, monsterous society...",
         "EnemyNames": [ "Chimera Mage 1", "Gnome Wizard", "Chimera Mage 1", "Gnome Wizard" ],
-        "Keywords": [ "Shuffle" ],
+        "Keywords": [ "Shuffle", "" ],
         "Image": "",
         "RewardTables": [
           [
@@ -6515,9 +6400,10 @@
           [
             {
               "Weight": 1,
+              "Tag": "BabiOracle",
+              "Obtainable": 1,
               "Item": "Oracles Robe"
-            },
-            { "Weight": 7 }
+            }
           ]
         ]
       },
@@ -6568,7 +6454,7 @@
     "IsDefault": false,
     "Matchups": [
       {
-        "Flavourtext": "You've made it to the island!  It's a quick walk to the cave entrance.  As you enter cautiously, some monsters take exception to your presence here!",
+        "Flavourtext": "You've made it to the island! It's a quick walk to the cave entrance. As you enter cautiously, some monsters take exception to your presence here!",
         "EnemyNames": [ "Virago 2", "Hobgoblin 1", "Virago 2" ],
         "Image": "",
         "RewardTables": [
@@ -6604,7 +6490,7 @@
         ]
       },
       {
-        "Flavourtext": "Having heaved fallen columns out of your way, you pass through the second room.  The guardians of the next level await...",
+        "Flavourtext": "Having heaved fallen columns out of your way, you pass through the second room. The guardians of the next level await...",
         "EnemyNames": [ "Fiendish Ghoul", "Lich 2", "Fiendish Ghoul" ],
         "Image": "",
         "RewardTables": [
@@ -6625,7 +6511,7 @@
         ]
       },
       {
-        "Flavourtext": "You collect the key from the third room and pass through the final door and down the stairs.  A matched pair of gryphons greets you.",
+        "Flavourtext": "You collect the key from the third room and pass through the final door and down the stairs. A matched pair of gryphons greets you.",
         "EnemyNames": [ "Gryphon 1", "Gryphon 1" ],
         "Image": "",
         "RewardTables": [
@@ -6646,7 +6532,7 @@
         ]
       },
       {
-        "Flavourtext": "The statue's sharp eyes in the next room were no match for your stealth and Psynergy.  You peer downward, and the staircase seems endless, disappearing into darkness...",
+        "Flavourtext": "The statue's sharp eyes in the next room were no match for your stealth and Psynergy. You peer downward, and the staircase seems endless, disappearing into darkness...",
         "EnemyNames": [ "Stone Soldier", "Lizard King", "Harridan 2", "Stone Soldier" ],
         "Image": "",
         "RewardTables": [
@@ -6667,7 +6553,7 @@
         ]
       },
       {
-        "Flavourtext": "After an eternity of fiddling with logs and underground dam controls, you exit the fifth room and head downwards once more.  A pair of chimeras swoops down from above to challenge you.",
+        "Flavourtext": "After an eternity of fiddling with logs and underground dam controls, you exit the fifth room and head downwards once more. A pair of chimeras swoops down from above to challenge you.",
         "EnemyNames": [ "Chimera 1", "Chimera 1" ],
         "Image": "",
         "RewardTables": [
@@ -6715,7 +6601,7 @@
         ]
       },
       {
-        "Flavourtext": "With the sixth room behind you, the stairway down beckons.  You answer its siren call, and find guards awaiting you at the next puzzle room door.",
+        "Flavourtext": "With the sixth room behind you, the stairway down beckons. You answer its siren call, and find guards awaiting you at the next puzzle room door.",
         "EnemyNames": [ "Earth Lizard 1", "Earth Lizard 1" ],
         "Image": "",
         "RewardTables": [
@@ -6736,7 +6622,7 @@
         ]
       },
       {
-        "Flavourtext": "You're beginning to tire from so many battles and using your Psynergy so much, but you gamely haul blocks around until you can escape the room.  You squint down the staircase... surely it can't be long now.  In the meantime, more monsters stand between you and your goal.",
+        "Flavourtext": "You're beginning to tire from so many battles and using your Psynergy so much, but you gamely haul blocks around until you can escape the room. You squint down the staircase... surely it can't be long now. In the meantime, more monsters stand between you and your goal.",
         "EnemyNames": [ "Thunder Lizard 2", "Poison Toad", "Thunder Lizard 2" ],
         "Image": "",
         "RewardTables": [
@@ -6757,7 +6643,7 @@
         ]
       },
       {
-        "Flavourtext": "A quartet of eerie howls meet your ears as you exit the puzzle room and begin down the stairs once more.  Oh boy...",
+        "Flavourtext": "A quartet of eerie howls meet your ears as you exit the puzzle room and begin down the stairs once more. Oh boy...",
         "EnemyNames": [ "Cerebus", "Cerebus" ],
         "Image": "",
         "RewardTables": [
@@ -6778,7 +6664,7 @@
         ]
       },
       {
-        "Flavourtext": "You enter the door and begin rolling logs across the pool.  As you do, you spot a treasure chest.  Is this the legendary treasure cache?  As you reach for it, the chest sprouts teeth.  Guess not!",
+        "Flavourtext": "You enter the door and begin rolling logs across the pool. As you do, you spot a treasure chest. Is this the legendary treasure cache? As you reach for it, the chest sprouts teeth. Guess not!",
         "EnemyNames": [ "Mimic 23" ],
         "Image": "",
         "RewardTables": [
@@ -6794,7 +6680,7 @@
         ]
       },
       {
-        "Flavourtext": "You finally reach the bottom of the stairs.  A rotting ship lies here, so you climb aboard, searching for the fabled treasure.  The rattle of bones and the clatter of armor greets you instead.  Glowing yellow eyes lurch toward you with remarkable speed! ",
+        "Flavourtext": "You finally reach the bottom of the stairs. A rotting ship lies here, so you climb aboard, searching for the fabled treasure. The rattle of bones and the clatter of armor greets you instead. Glowing yellow eyes lurch toward you with remarkable speed! ",
         "EnemyNames": [ "Deadbeard" ],
         "Image": "",
         "RewardTables": [
@@ -6824,7 +6710,7 @@
         ]
       },
       {
-        "Flavourtext": "You don't see the vast piles of treasure you'd hoped for, but you help yourself to some of the nice things you spot after the fight is over.  Deadbeard has been vanquished, and you are very ready for a long nap.  ",
+        "Flavourtext": "You don't see the vast piles of treasure you'd hoped for, but you help yourself to some of the nice things you spot after the fight is over. Deadbeard has been vanquished, and you are very ready for a long nap. ",
         "EnemyNames": [ "End" ],
         "Image": "",
         "RewardTables": [
@@ -7225,7 +7111,7 @@
     },
     "Matchups": [
       {
-        "Flavourtext": "You approach Hama once more. She looks you over, nodding. 'Your path is not yet complete, but I cannot guide you further. Go out into the world. As a wise Venus Adept once said, _This is your journey now._'",
+        "Flavourtext": "You approach Hama once more. She looks you over, nodding. 'Your path is not yet complete, but I cannot guide you further. Go out into the world. As a wise Venus Adept once said, _'This is your journey now._'",
         "EnemyNames": [ "Next" ],
         "Keywords": [ "@100" ],
         "Image": "",
@@ -7233,7 +7119,9 @@
           [
             {
               "Weight": 1,
-              "Tag": "-Gaia4Quest*"
+              "Tag": "-Gaia4Quest*",
+              "XP": 1,
+              "Coins": 1
             }
           ]
         ]
@@ -7247,7 +7135,9 @@
             {
               "Weight": 1,
               "RequireTag": [ "@-5" ],
-              "Tag": "Gaia4QuestNut"
+              "Tag": "Gaia4QuestNut",
+              "XP": 1,
+              "Coins": 1
             }
           ]
         ]
@@ -7258,7 +7148,13 @@
         "Keywords": [ "@200" ],
         "Image": "",
         "RewardTables": [
-          [ { "Weight": 1 } ]
+          [
+            {
+              "Weight": 1,
+              "XP": 1,
+              "Coins": 1
+            }
+          ]
         ]
       },
       {
@@ -7270,7 +7166,9 @@
           [
             {
               "Weight": 1,
-              "Tag": "Gaia4QuestFoughtBear"
+              "Tag": "Gaia4QuestFoughtBear",
+              "XP": 600,
+              "Coins": 700
             }
           ]
         ]
@@ -7285,7 +7183,9 @@
             {
               "Weight": 1,
               "RequireTag": [ "@401" ],
-              "Tag": "Gaia4QuestFedFox"
+              "Tag": "Gaia4QuestFedFox",
+              "XP": 1,
+              "Coins": 1
             }
           ]
         ]
@@ -7300,7 +7200,9 @@
             {
               "Weight": 1,
               "RequireTag": [ "@401" ],
-              "Tag": "Gaia4QuestFedFox"
+              "Tag": "Gaia4QuestFedFox",
+              "XP": 1,
+              "Coins": 1
             }
           ]
         ]
@@ -7311,11 +7213,17 @@
         "Keywords": [ "@320" ],
         "Image": "",
         "RewardTables": [
-          [ { "Weight": 1 } ]
+          [
+            {
+              "Weight": 1,
+              "XP": 500,
+              "Coins": 500
+            }
+          ]
         ]
       },
       {
-        "Flavourtext": "With a full belly, the fox feeds her pups and scampers off. They will live another day and be able to hunt again, thanks to your kindness. 'I suppose that's one way of handling it,' says the man.\nAs lord of this area, you have my thanks.' He pauses. 'Say, you look like you know yourselves around animals and have a good hand in a fight. My servants are harvesting wood to expand my holdings in this area, but they're being attacked by wolves. Take this axe, and end this threat to my people and property.'",
+        "Flavourtext": "With a full belly, the fox feeds her pups and scampers off. They will live another day and be able to hunt again, thanks to your kindness. 'I suppose that's one way of handling it,' says the farmer. Just then, a trumpet sounds.  Your host grimaces, but directs you outside.  A lord and his retinue have just arrived.\nThe farmer relays the story of your kindness, and the lord nods. 'You have my thanks.' He pauses. 'Say, you look like you know yourselves around animals and are a good hand in a fight. My servants are harvesting wood to expand my holdings in this area, but they're being attacked by wolves. Take this axe, and end this threat to my people and property.' He holds out a very well-made axe.",
         "EnemyNames": [ "Choice:Accept|KilledBy:Player@420", "Choice:Decline|KilledBy:Player@410" ],
         "Keywords": [ "@401" ],
         "Image": "",
@@ -7326,13 +7234,15 @@
               "RequireTag": [ "@420" ],
               "Tag": "Gaia4RewardTreasure",
               "Obtainable": 1,
+              "XP": 1,
+              "Coins": 1,
               "Item": "Gaias Axe"
             }
           ]
         ]
       },
       {
-        "Flavourtext": "As lord of this area, you have my thanks.' He pauses. 'Say, you're a good hand in a fight. My servants are harvesting wood to expand my holdings in this area, but they're being attacked by wolves. Take this axe, and end this threat to my people and property. You will, of course, be rewarded handsomely.'",
+        "Flavourtext": "With the fox slain, the farmer smiles and nods to you.  Just then, a trumpet sounds.  Your host grimaces, but directs you outside.  A lord and his retinue have just arrived.\nThe farmer relays the story of your kindness, and the lord nods. 'You have my thanks.' He pauses. 'Say, you look like you know yourselves around animals and are a good hand in a fight. My servants are harvesting wood to expand my holdings in this area, but they're being attacked by wolves. Take this axe, and end this threat to my people and property.' He holds out a very well-made axe.",
         "EnemyNames": [ "Choice:Accept|KilledBy:Player@420", "Choice:Decline|KilledBy:Player@410" ],
         "Keywords": [ "@402" ],
         "Image": "",
@@ -7343,22 +7253,30 @@
               "RequireTag": [ "@420" ],
               "Tag": "Gaia4RewardTreasure",
               "Obtainable": 1,
+              "XP": 1,
+              "Coins": 1,
               "Item": "Gaias Axe"
             }
           ]
         ]
       },
       {
-        "Flavourtext": "When you decline, the lord loses his temper. 'Guards!' he cries. 'Seize this ingrate!'",
+        "Flavourtext": "When you decline, the lord loses his temper. 'Guards!' he cries. 'Seize this ingrate!'  His men immediately draw their weapons against you.",
         "EnemyNames": [ "Tolbi Guard:Guard|Boost:200", "Tolbi Guard:Guard|Boost:200", "Tolbi Guard:Guard|Boost:200", "Tolbi Guard:Guard|Boost:200", "Tolbi Guard:Guard|Boost:200" ],
         "Keywords": [ "@410", "ToMatchup@500" ],
         "Image": "",
         "RewardTables": [
-          [ { "Weight": 1 } ]
+          [
+            {
+              "Weight": 1,
+              "XP": 800,
+              "Coins": 900
+            }
+          ]
         ]
       },
       {
-        "Flavourtext": "Following the itch of battle and treasure, you make yourself into the nearby woods. The chopping of the lumberjacks beckons you forward. But as you draw closer, a sudden howl is answered by another, and another. It dawns on you that a pack of hungry wolves has surrounded you.",
+        "Flavourtext": "Following the itch of battle and treasure, you make your way into the nearby woods. The chopping of the lumberjacks beckons you forward. But as you draw closer, a sudden howl is answered by another, and another. It dawns on you that a pack of hungry wolves has surrounded you.",
         "EnemyNames": [ "White Wolf:Hungry Wolf|Boost:125", "White Wolf:Hungry Wolf|Boost:125", "White Wolf:Hungry Wolf|Boost:125", "White Wolf:Alpha Wolf|Boost:200", "White Wolf:Hungry Wolf|Boost:125" ],
         "Keywords": [ "@420", "ToMatchup@990", "Shuffle" ],
         "Image": "",
@@ -7368,6 +7286,8 @@
               "Weight": 1,
               "Tag": "Gaia4RewardSecretAdept",
               "Obtainable": 1,
+              "XP": 1600,
+              "Coins": 2000,
               "Chest": "Adept",
               "HasChest": true
             }
@@ -7386,79 +7306,28 @@
               "RequireTag": [ "@-1" ],
               "Tag": "Gaia4RewardTreasure",
               "Obtainable": 1,
+              "XP": 500,
+              "Coins": 200,
               "Item": "Gaias Axe"
             }
           ]
         ]
       },
       {
-        "Flavourtext": "The lumberjacks' weapons are no match for your armor and Psynergy defenses. Though you raise no weapon against them, they realize how foolish it was to attack you. Their anger turns to terror, and they flee, leaving their axes behind. Suddenly, the trees around you start moving. From the bushes, some familiar animals emerge. They glow with an earthly aura. 'You challenge the forces of nature. You claim to protect us, but we did not ask for your protection. Prove to us, the flora and fauna of the forest and Mother Nature herself that you are worthy.'",
-        "EnemyNames": [ "KirinSummon:Fox Avatar|Boost:150", "CybeleSummon:Squirrel Avatar|Boost:75", "ProcneSummon:Crow|Boost:75 Avatar", "Estre Wood:Forest Avatar|Boost:150" ],
+        "Flavourtext": "The lumberjacks' weapons are no match for your armor and Psynergy defenses. Though you raise no weapon against them, they realize how foolish it was to attack you. Their anger turns to terror, and they flee, leaving their axes behind. Suddenly, the trees around you start moving. From the bushes, some familiar animals emerge, and yet... they now have a glowing aura. 'You challenge the forces of nature,' they claim in chorus. 'You claim to protect us, but we did not ask for your protection. Prove to us, the flora and fauna of the forest and Mother Nature herself, that you are worthy.'",
+        "EnemyNames": [ "KirinSummon:Fox Avatar|Boost:150", "CybeleSummon:Squirrel Avatar|Boost:75", "ProcneSummon:Crow Avatar|Boost:75", "Estre Wood:Forest Avatar|Boost:150" ],
         "Keywords": [ "Shuffle", "@600" ],
         "Image": "",
         "RewardTables": [
-          [ { "Weight": 1 } ]
-        ]
-      },
-      {
-        "Flavourtext": "You feel inside your heart that Mother Nature has given you her blessing. At the same time, you feel a powerful force creeping up on you. You look behind you. A massive humanoid figure wings down from the sky, clad in plate mail. Bull horns sprout from its head, white feathery wings from its shoulders. It wields a sword and a lion-headed shield.",
-        "EnemyNames": [ "Next" ],
-        "Keywords": [ "Heal" ],
-        "Image": "",
-        "RewardTables": [
-          [ { "Weight": 1 } ]
-        ]
-      },
-      {
-        "Flavourtext": "The winged, armor-clad being speaks. Its voice shakes the clearing and your very soul. 'You have shown that your heart is righteous, balanced, and concerned for all. You showed strength over nature. But the power of Venus extends past nature. More is needed to earn my blessing. What is that all power worth if you cannot enforce your judgments?' It raises its armaments, the battle begins!",
-        "EnemyNames": [ "JudgmentSummon|ImmuneTo:Jupiter" ],
-        "Keywords": [ "@900" ],
-        "Image": "https://preview.redd.it/an5rb40ivsy51.png?width=960&crop=smart&auto=webp&s=723891c4fc9df2493063b7f0441e1957a2e9aab9",
-        "RewardTables": [
-          [ { "Weight": 1 } ]
-        ]
-      },
-      {
-        "Flavourtext": "The humanoid being lowers its weapon and shield. 'Well done. You have the strength of heart, mind, and body to be a fair judge of all. Go then, with my blessing. Call on me in times of Weyard's need.'",
-        "EnemyNames": [ "End" ],
-        "Keywords": [ "@999" ],
-        "Image": "",
-        "RewardTables": [
           [
             {
               "Weight": 1,
-              "Tag": "Gaia4",
+              "Tag": "Gaia4RewardXP2",
               "Obtainable": 1,
-              "Summon": "Judgment"
-            }
-          ],
-          [
-            {
-              "Weight": 1,
-              "Tag": "Gaia4RewardAdept",
-              "Obtainable": 1,
-              "Chest": "Adept",
-              "HasChest": true
+              "XP": 1600,
+              "Coins": 2000
             }
           ]
-        ]
-      },
-      {
-        "Flavourtext": "You leave the blood-covered forest behind. Whatever it was you had to find, it didn't fall into your path today.",
-        "EnemyNames": [ "End" ],
-        "Keywords": [ "@990" ],
-        "Image": "",
-        "RewardTables": [
-          [ { "Weight": 1 } ]
-        ]
-      },
-      {
-        "Flavourtext": "Dusk is settling in. Whatever it was you had to find, it didn't fall into your path today.",
-        "EnemyNames": [ "End" ],
-        "Keywords": [ "@995" ],
-        "Image": "",
-        "RewardTables": [
-          [ { "Weight": 1 } ]
         ]
       }
     ]
@@ -7868,7 +7737,7 @@
         ]
       },
       {
-        "Flavourtext": "Look at these statues, they are from far from here, the Craggy Peak Ruins.\n\nCan you identify the three zodiac signs associated with Mars?'",
+        "Flavourtext": "Hama shows you a vision of twelve statues arrayed. 'One for each zodiach sign.  They are from far from here, in the Craggy Peak Ruins.\n\nCan you identify the three zodiac signs associated with Mars?'",
         "EnemyNames": [ "Choice:Leo|KilledBy:Player@101|!HasTag:Magma4ZodLeo", "Choice:Aries|KilledBy:Player@102|!HasTag:Magma4ZodAries", "Choice:Sagittarius|KilledBy:Player@103|!HasTag:Magma4ZodSagittarius", "Choice:Gemini||KilledBy:Player@201|!HasTag:Magma4ZodGemini", "Choice:Aquarius|KilledBy:Player@202|!HasTag:Magma4ZodAquarius", "Choice:Libra|KilledBy:Player@203|!HasTag:Magma4ZodLibra", "Choice:Virgo|KilledBy:Player@204|!HasTag:Magma4ZodVirgo", "Choice:Pisces|KilledBy:Player@205|!HasTag:Magma4ZodPisces", "Choice:Cancer|KilledBy:Player@206|!HasTag:Magma4ZodCancer", "Choice:Scorpio|KilledBy:Player@207|!HasTag:Magma4ZodScorpio", "Choice:Capricorn|KilledBy:Player@208|!HasTag:Magma4ZodCapricorn", "Choice:Taurus|KilledBy:Player@209|!HasTag:Magma4ZodTaurus" ],
         "Keywords": [ "@100", "Shuffle", "ToMatchup@100" ],
         "Image": "https://goldensunwiki.net/w/images/3/3a/ZodiacSymbols.png",
@@ -7877,7 +7746,7 @@
         ]
       },
       {
-        "Flavourtext": "Leo, the noblest of the Zodiac signs. Its guise is akin the sun. Only flame can sate the lion's hunger.'",
+        "Flavourtext": "Leo, the noblest of the Zodiac signs. Its visage is akin the sun. Only flame can sate the lion's hunger.'",
         "EnemyNames": [ "TiamatSummon:Leo|ImmuneTo:Venus:Jupiter:Mercury:None" ],
         "Keywords": [ "@101", "ToMatchup@100", "HasTagAll:Magma4ZodLeo:Magma4ZodAries:Magma4ZodSagittarius@500" ],
         "Image": "",
@@ -7886,7 +7755,9 @@
             {
               "Weight": 1,
               "Tag": "Magma4ZodLeo",
-              "Obtainable": 1
+              "Obtainable": 1,
+              "XP": 500,
+              "Coins": 500
             }
           ],
           [
@@ -7900,7 +7771,7 @@
         ]
       },
       {
-        "Flavourtext": "Look there. The ram, it cowers from the flame. It's stubborn, it has an undying flame that powers its heart. Still, it avoids contact with fire.'",
+        "Flavourtext": "Look there. The ram, it cowers from the flame. It's stubborn, it has an undying flame that powers its heart. Still, it avoids fire.'",
         "EnemyNames": [ "Mars Djinni 6:Aries|ImmuneTo:Mars" ],
         "Keywords": [ "@102", "ToMatchup@100", "HasTagAll:Magma4ZodLeo:Magma4ZodAries:Magma4ZodSagittarius@500" ],
         "Image": "",
@@ -7909,13 +7780,15 @@
             {
               "Weight": 1,
               "Tag": "Magma4ZodAries",
-              "Obtainable": 1
+              "Obtainable": 1,
+              "XP": 500,
+              "Coins": 500
             }
           ]
         ]
       },
       {
-        "Flavourtext": "Sagittarius, the Archer. Fight fire with fire, so they say. Sagittarius has realised, the archer's deadliest foe is himself.'",
+        "Flavourtext": "Sagittarius, the Archer. Fight fire with fire, it is said. Sagittarius has realised, the archer's deadliest foe is himself.'",
         "EnemyNames": [ "MirrorAll:Sagittarius|Boost:125|KilledBeforeTurn:4@-5" ],
         "Keywords": [ "@103", "ToMatchup@100", "HasTagAll:Magma4ZodLeo:Magma4ZodAries:Magma4ZodSagittarius@500" ],
         "Image": "",
@@ -7924,7 +7797,9 @@
             {
               "Weight": 1,
               "Tag": "Magma4ZodSagittarius",
-              "Obtainable": 1
+              "Obtainable": 1,
+              "XP": 500,
+              "Coins": 500
             }
           ],
           [
@@ -7948,13 +7823,15 @@
             {
               "Weight": 1,
               "Tag": "Magma4ZodGemini",
-              "Obtainable": 1
+              "Obtainable": 1,
+              "XP": 300,
+              "Coins": 300
             }
           ]
         ]
       },
       {
-        "Flavourtext": "You thought you were really clever there, right? But no. I'm afraid Aquarius does not even get its power from Mercury. In fact Jupiter is Aquarius' Master.'",
+        "Flavourtext": "Hama chuckles gently.  'You thought you were really clever there, right? But no, I'm afraid Aquarius does not even get its power from Mercury. In fact Jupiter is Aquarius' Master.'",
         "EnemyNames": [ "Poseidon:Aquarius" ],
         "Keywords": [ "@202", "ToMatchup@100" ],
         "Image": "",
@@ -7963,13 +7840,15 @@
             {
               "Weight": 1,
               "Tag": "Magma4ZodAquarius",
-              "Obtainable": 1
+              "Obtainable": 1,
+              "XP": 300,
+              "Coins": 300
             }
           ]
         ]
       },
       {
-        "Flavourtext": "Libra, the Scale under the Jupiter star. Say Adept, do you know to judge justice and balance?'",
+        "Flavourtext": "Libra, the Scale under the Jupiter star. Say Adept, do you know how to judge justice and balance?'",
         "EnemyNames": [ "Pan", "Libra|VIP|Head", "Pan" ],
         "Keywords": [ "@203", "ToMatchup@100" ],
         "Image": "",
@@ -7978,7 +7857,9 @@
             {
               "Weight": 1,
               "Tag": "Magma4ZodLibra",
-              "Obtainable": 1
+              "Obtainable": 1,
+              "XP": 300,
+              "Coins": 300
             }
           ]
         ]
@@ -7993,7 +7874,9 @@
             {
               "Weight": 1,
               "Tag": "Magma4ZodVirgo",
-              "Obtainable": 1
+              "Obtainable": 1,
+              "XP": 300,
+              "Coins": 300
             }
           ]
         ]
@@ -8008,13 +7891,15 @@
             {
               "Weight": 1,
               "Tag": "Magma4ZodPisces",
-              "Obtainable": 1
+              "Obtainable": 1,
+              "XP": 300,
+              "Coins": 300
             }
           ]
         ]
       },
       {
-        "Flavourtext": "Cancer, the sign of the crab lives in Mercury's seas. Watch out for its claws, it can regrow them!'",
+        "Flavourtext": "Cancer, the sign of the crab lives in Mercury's seas. Beware its claws, they regrow in time!'",
         "EnemyNames": [ "Claw", "Cancer|Head", "Claw" ],
         "Keywords": [ "@206", "ToMatchup@100" ],
         "Image": "",
@@ -8023,13 +7908,15 @@
             {
               "Weight": 1,
               "Tag": "Magma4ZodCancer",
-              "Obtainable": 1
+              "Obtainable": 1,
+              "XP": 300,
+              "Coins": 300
             }
           ]
         ]
       },
       {
-        "Flavourtext": "Ah, Scorpio. No. Mercury grants Scorpio its powers. Watch out for its tail!'",
+        "Flavourtext": "Ah, Scorpio. No. Mercury grants Scorpio its powers. Have a care, its tail bears a mighty poison.'",
         "EnemyNames": [ "Magicore:Scorpio", "Manticore:Scorpio", "Manticore King:Scorpio" ],
         "Keywords": [ "@207", "Shuffle", "ToMatchup@100" ],
         "Image": "",
@@ -8038,13 +7925,15 @@
             {
               "Weight": 1,
               "Tag": "Magma4ZodScorpio",
-              "Obtainable": 1
+              "Obtainable": 1,
+              "XP": 300,
+              "Coins": 300
             }
           ]
         ]
       },
       {
-        "Flavourtext": "Capricorn, the goat. It's a cousin to a Mars Zodiac, but it draws its power from Venus.'",
+        "Flavourtext": "Capricorn, the goat. It's a cousin to a Mars Zodiac sign, but it draws its power from Venus.'",
         "EnemyNames": [ "CybeleSummon:Capricorn" ],
         "Keywords": [ "@208", "ToMatchup@100" ],
         "Image": "",
@@ -8053,13 +7942,15 @@
             {
               "Weight": 1,
               "Tag": "Magma4ZodCapricorn",
-              "Obtainable": 1
+              "Obtainable": 1,
+              "XP": 300,
+              "Coins": 300
             }
           ]
         ]
       },
       {
-        "Flavourtext": "Taurus? No. It's hot headed, that's for sure, but as it stumpedes over vast prairies, Venus gives it its strength.'",
+        "Flavourtext": "Taurus? No. It's hot headed, that's for sure, but as it stampedes over vast prairies, Venus gives it its strength.'",
         "EnemyNames": [ "ZaganSummon:Taurus" ],
         "Keywords": [ "@209", "ToMatchup@100" ],
         "Image": "",
@@ -8068,7 +7959,9 @@
             {
               "Weight": 1,
               "Tag": "Magma4ZodTaurus",
-              "Obtainable": 1
+              "Obtainable": 1,
+              "XP": 300,
+              "Coins": 300
             }
           ]
         ]
@@ -8083,16 +7976,22 @@
         ]
       },
       {
-        "Flavourtext": "(Everything was correct first try. Either you are smart or you cheated. Both wit and honesty are neither of Mars' strongest suites, 'so I am impressed'. The Mars signs want you to go through the trial of fire to prove your purity.)  Hama pauses after you answer correctly for the third time in a row.  'Hmm...  Typically wit and honesty are neither of Mars' strong suites. I am impressed.'  The statues of the Mars signs glow deep crimson, and forms coelesce in front of you.  'Seems they want to test your purity,' she opines cautiously.",
+        "Flavourtext": "Hama pauses after you answer correctly for the third time in a row.  'Hmm...  Typically quick wit and wisdom are neither of Mars' strong suites. I am impressed.'  The statues of the Mars signs glow deep crimson, and forms coelesce in front of you.  'Seems they want to test your purity,' she opines cautiously.",
         "EnemyNames": [ "TiamatSummon:Leo|ImmuneTo:Venus:Jupiter:Mercury:None", "Mars Djinni 6:Aries|ImmuneTo:Mars", "Mirror:Sagittarius" ],
         "Keywords": [ "@510", "ToMatchup@600" ],
         "Image": "",
         "RewardTables": [
-          [ { "Weight": 1 } ]
+          [
+            {
+              "Weight": 1,
+              "XP": 800,
+              "Coins": 800
+            }
+          ]
         ]
       },
       {
-        "Flavourtext": "(All Zodiac signs completed. Extra reward)",
+        "Flavourtext": "Well,' Hama comments. 'A hard-won set of battles, but you finally succeeded in the end. Persistence is also an admirable trait, and merits a reward.'  ",
         "EnemyNames": [ "Next" ],
         "Keywords": [ "@520", "ToMatchup@600" ],
         "Image": "",
@@ -8118,9 +8017,33 @@
           [
             {
               "Weight": 1,
-              "Tag": "Magma4",
+              "Tag": "Magma4RewardXP",
               "Obtainable": 1,
+              "XP": 5000,
+              "Coins": 5000,
               "Summon": "Meteor"
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "Magma4" ],
+              "XP": 1500,
+              "Coins": 1500
+            }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "The meteor continues on its way through the sky and beyond, passing Weyard safely. You watch this rare celestial encounter disappear, having taken some of its vast power into yourself during the fight.",
+        "EnemyNames": [ "End" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "Tag": "Magma4",
+              "Obtainable": 1
             }
           ],
           [
@@ -8131,15 +8054,16 @@
               "Chest": "Adept",
               "HasChest": true
             }
+          ],
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "!Gaia1", "!Air1", "!Aqua1" ],
+              "Tag": "MagmaPure",
+              "Obtainable": 1,
+              "Item": "Herculean Axe"
+            }
           ]
-        ]
-      },
-      {
-        "Flavourtext": "The meteor continues on its way through the sky and beyond, passing Weyard safely. You watch this rare celestial encounter disappear, having taken some of its vast power into yourself during the fight.",
-        "EnemyNames": [ "End" ],
-        "Image": "",
-        "RewardTables": [
-          [ { "Weight": 1 } ]
         ]
       }
     ]
@@ -8663,6 +8587,8 @@
             {
               "Weight": 1,
               "Tag": "Air4Elemental1",
+              "XP": 400,
+              "Coins": 500,
               "message": "Path of Air 4 Spoiler for {0}: ||To one of my sides, some creatures dwell. Don't anger me, or storm I'll foretell.||"
             }
           ]
@@ -8679,6 +8605,8 @@
               "Weight": 1,
               "RequireTag": [ "@-10" ],
               "Tag": "Air4Elemental2",
+              "XP": 400,
+              "Coins": 500,
               "message": "Path of Air 4 Spoiler for {0}: ||I'm face to face with who helps me fly.||"
             }
           ]
@@ -8695,6 +8623,8 @@
               "Weight": 1,
               "RequireTag": [ "@-10" ],
               "Tag": "Air4Elemental3",
+              "XP": 400,
+              "Coins": 500,
               "message": "Path of Air 4 Spoiler for {0}: ||Hear me sing to the moon and the north star will shine.||"
             }
           ]
@@ -8710,6 +8640,8 @@
             {
               "Weight": 1,
               "Tag": "Air4Elemental4",
+              "XP": 400,
+              "Coins": 500,
               "message": "Path of Air 4 Spoiler for {0}: ||I'm you, without arms, a thought at best. I see East getting helped by West.||"
             }
           ]
@@ -8730,7 +8662,13 @@
         "Keywords": [ "@410", "Shuffle" ],
         "Image": "",
         "RewardTables": [
-          [ { "Weight": 1 } ],
+          [
+            {
+              "Weight": 1,
+              "XP": 400,
+              "Coins": 400
+            }
+          ],
           [
             {
               "Weight": 1,
@@ -8756,7 +8694,13 @@
         "Keywords": [ "@500", "ToMatchup@500" ],
         "Image": "",
         "RewardTables": [
-          [ { "Weight": 1 } ],
+          [
+            {
+              "Weight": 1,
+              "XP": 100,
+              "Coins": 100
+            }
+          ],
           [
             {
               "Weight": 1,
@@ -8773,7 +8717,13 @@
         "Keywords": [ "@510", "ToMatchup@500" ],
         "Image": "",
         "RewardTables": [
-          [ { "Weight": 1 } ]
+          [
+            {
+              "Weight": 1,
+              "XP": 200,
+              "Coins": 200
+            }
+          ]
         ]
       },
       {
@@ -8782,7 +8732,13 @@
         "Keywords": [ "@520", "ToMatchup@510" ],
         "Image": "",
         "RewardTables": [
-          [ { "Weight": 1 } ]
+          [
+            {
+              "Weight": 1,
+              "XP": 500,
+              "Coins": 500
+            }
+          ]
         ]
       },
       {
@@ -8796,17 +8752,25 @@
       },
       {
         "Flavourtext": "Thor",
-        "EnemyNames": [ "ThorSummon|VIP", "Mjolnir" ],
+        "EnemyNames": [ "ThorSummon|VIP|ImmuneTo:Venus", "Mjolnir" ],
         "Image": "",
         "RewardTables": [
-          [ { "Weight": 1 } ],
           [
             {
               "Weight": 1,
-              "Tag": "Air4RewardChest",
+              "Tag": "Air4RewardXP1",
               "Obtainable": 1,
-              "Chest": "Adept",
-              "HasChest": true
+              "XP": 5000,
+              "Coins": 5000,
+              "Summon": "Thor"
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "Air4" ],
+              "XP": 1500,
+              "Coins": 1500
             }
           ]
         ]
@@ -8816,21 +8780,29 @@
         "EnemyNames": [ "End" ],
         "Image": "",
         "RewardTables": [
-          [ { "Weight": 1 } ]
-        ]
-      },
-      {
-        "Flavourtext": "Displeased Elements end",
-        "EnemyNames": [ "End" ],
-        "Keywords": [ "@800" ],
-        "Image": "",
-        "RewardTables": [
           [
             {
               "Weight": 1,
               "Tag": "Air4",
+              "Obtainable": 1
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "Tag": "Air4RewardChest",
               "Obtainable": 1,
-              "Summon": "Thor"
+              "Chest": "Adept",
+              "HasChest": true
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "!Gaia1", "!Magma1", "!Aqua1" ],
+              "Tag": "AirPure",
+              "Obtainable": 1,
+              "Item": "Mysterious Robe"
             }
           ]
         ]
@@ -9080,7 +9052,7 @@
     },
     "Matchups": [
       {
-        "Flavourtext": "You find yourself on a strange ship, with a dragon head on the prow. You see Hama on the bow, looking ahead. 'This is one of a number of ships people from a civilization known as Lemuria used. They, like yourself, were Mercury Adepts, and very proficient ones at that. These are some of the waters they've explored ages ago.  Rather dangerous ones, I might add, but today they will serve as your lesson.'",
+        "Flavourtext": "You find yourself on a strange ship, with a dragon head on the prow. You see Hama on the bow, looking ahead. 'This is one of a number of ships people from a civilization known as Lemuria used. They, like yourself, were Mercury Adepts, and very proficient ones at that. These are some of the waters they've explored ages ago. Rather dangerous ones, I might add, but today they will serve as your lesson.'",
         "EnemyNames": [ "NextHama" ],
         "Image": "",
         "RewardTables": [
@@ -9205,7 +9177,7 @@
   "Path of Aqua IV": {
     "name": "Path of Aqua IV",
     "IsOneTimeOnly": false,
-    "FlavourText": "Hama put out an urgent call for your help. Will you answer the call?",
+    "FlavourText": "Hama put out an urgent call for your help. Will you answer?",
     "Image": "",
     "IsDefault": false,
     "Requirement": {
@@ -9219,11 +9191,16 @@
         "EnemyNames": [ "NextHama" ],
         "Image": "",
         "RewardTables": [
-          [ { "Weight": 1 } ]
+          [
+            {
+              "Weight": 1,
+              "Tag": "-Aqua4Fight*"
+            }
+          ]
         ]
       },
       {
-        "Flavourtext": "You step out into Tundaria, the roaring winds of the ice storm screaming around you. In the wake of the storm, trees and shrubs have been frozen solid. The greenery shall be the l*e*ast of your concerns... What might the correct path be?",
+        "Flavourtext": "You step out into Tundaria. The roaring winds of the ice storm scream around you, blinding you and making it hard to see the way ahead. In the wake of the storm, trees and shrubs have been frozen solid. The greenery shall be the l*e*ast of your concerns... Which direction should you go?",
         "EnemyNames": [ "Choice:Left|KilledBy:Player@105", "Choice:Right|KilledBy:Player@110" ],
         "Keywords": [ "@100" ],
         "Image": "",
@@ -9241,7 +9218,7 @@
         ]
       },
       {
-        "Flavourtext": "Trusting in your Psynergy to protect you, you approach the storm.  Some wolves emerge and attack!",
+        "Flavourtext": "Trusting in your Psynergy to protect you, you approach the storm.  Some wolves emerge from the howling blizzard and attack!",
         "EnemyNames": [ "White Wolf", "White Wolf", "White Wolf", "White Wolf", "White Wolf" ],
         "Keywords": [ "@110" ],
         "Image": "",
@@ -9254,7 +9231,15 @@
         "EnemyNames": [ "Choice:Up|KilledBy:Player@120", "Choice:Down|KilledBy:Player@500", "Choice:Left|KilledBy:Player@110", "Choice:Right|KilledBy:Player@500" ],
         "Image": "",
         "RewardTables": [
-          [ { "Weight": 1 } ]
+          [
+            {
+              "Weight": 1,
+              "Tag": "Aqua4Fight1",
+              "Obtainable": 1,
+              "XP": 400,
+              "Coins": 400
+            }
+          ]
         ]
       },
       {
@@ -9267,11 +9252,19 @@
         ]
       },
       {
-        "Flavourtext": "You head on, but almost step into an enormous cleft in the ice. No, you have to find another way.",
+        "Flavourtext": "You head on, but almost step into an enormous cleft in the ice. You'll have to find another way.",
         "EnemyNames": [ "Choice:Up|KilledBy:Player@500", "Choice:Down|KilledBy:Player@120", "Choice:Left|KilledBy:Player@130" ],
         "Image": "",
         "RewardTables": [
-          [ { "Weight": 1 } ]
+          [
+            {
+              "Weight": 1,
+              "Tag": "Aqua4Fight2",
+              "Obtainable": 1,
+              "XP": 400,
+              "Coins": 400
+            }
+          ]
         ]
       },
       {
@@ -9284,11 +9277,19 @@
         ]
       },
       {
-        "Flavourtext": "After you settle them down, the Mermen tell you that in Lord Boreas' absence, the lords of ice and water have decided to make themselves known to the world in their rawest form. You will need to find Boreas and bring this to a halt!",
+        "Flavourtext": "After the fight, the Mermen tell you that in Lord Boreas' absence, the lords of ice and water have decided to make themselves known to the world in their rawest form. You will need to find Boreas and bring this to a halt!",
         "EnemyNames": [ "Choice:Up|KilledBy:Player@500", "Choice:Down|KilledBy:Player@100", "Choice:Left|KilledBy:Player@140", "Choice:Right|KilledBy:Player@120" ],
         "Image": "",
         "RewardTables": [
-          [ { "Weight": 1 } ]
+          [
+            {
+              "Weight": 1,
+              "Tag": "Aqua4Fight3",
+              "Obtainable": 1,
+              "XP": 400,
+              "Coins": 400
+            }
+          ]
         ]
       },
       {
@@ -9301,11 +9302,36 @@
         ]
       },
       {
-        "Flavourtext": "Oh what would you give for a hot cup of tea. You feel as you're close to the center of the storm, you *must* be close now.",
+        "Flavourtext": "The chill is really starting to get to you. What a weird path you took. Oh, what would you give for a hot cup of tea. You *must* be nearly to the center of the storm now.",
         "EnemyNames": [ "Choice:Up|KilledBy:Player@150", "Choice:Down|KilledBy:Player@100", "Choice:Left|KilledBy:Player@500", "Choice:Right|KilledBy:Player@130" ],
+        "Keywords": [ "@141" ],
         "Image": "",
         "RewardTables": [
-          [ { "Weight": 1 } ]
+          [
+            {
+              "Weight": 1,
+              "Tag": "Aqua4Fight4",
+              "Obtainable": 1,
+              "XP": 400,
+              "Coins": 400
+            }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "Curiosity got the best of you! In the middle of the circular path you took, something glimmers through the blizzard.",
+        "EnemyNames": [ "Next" ],
+        "Keywords": [ "@145", "ToMatchup@141" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "Tag": "Aqua4RewardTreasureSecret",
+              "Obtainable": 1,
+              "Item": "Heirloom Ring"
+            }
+          ]
         ]
       },
       {
@@ -9322,7 +9348,23 @@
         "EnemyNames": [ "Poseidon" ],
         "Image": "",
         "RewardTables": [
-          [ { "Weight": 1 } ],
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "Aqua4RewardXP1" ],
+              "XP": 800,
+              "Coins": 800
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "Tag": "Aqua4RewardXP1",
+              "Obtainable": 1,
+              "XP": 2000,
+              "Coins": 2000
+            }
+          ],
           [
             {
               "Weight": 1,
@@ -9334,7 +9376,7 @@
         ]
       },
       {
-        "Flavourtext": "The storm begins to die down as Poseidon is defeated. However, the ground begins to shake, icy ground splitting open beneath the partygoers and you. Boreas rises up. You pause to heal up, trusting the Lord of Ice and Snow will hear you out. Alas, he sees Poseidon and the other fallen members of his court, and spares you no time to explain. ",
+        "Flavourtext": "The storm begins to die down as Poseidon is defeated. However before you can relax, the ground begins to shake, icy ground splitting open beneath the partygoers and you. Boreas rises up. You pause to heal up, trusting the Lord of Ice and Snow will hear you out. Alas, he sees Poseidon and the other fallen members of his court, and spares you no time to explain. ",
         "EnemyNames": [ "BoreasSummon|ImmuneTo:Mars" ],
         "Keywords": [ "Heal" ],
         "Image": "",
@@ -9342,9 +9384,33 @@
           [
             {
               "Weight": 1,
-              "Tag": "Aqua4",
+              "Tag": "Aqua4RewardXP2",
               "Obtainable": 1,
+              "XP": 5000,
+              "Coins": 5000,
               "Summon": "Boreas"
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "Aqua4" ],
+              "XP": 1500,
+              "Coins": 1500
+            }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "Having defeated Boreas, you explain the situation to him. He apologizes for the misunderstanding, and tells you he was attacked by a powerful dark shadow. He fought off the entity, but was gravely wounded and unable to rule his subjects. With a gesture from his hand, the creatures of ice and water disperse, ending the powerful ice storm. 'Thou has proven thyself a master of Mercury, young Adept. Call upon me when thy need is great, and I will freeze thine enemies solid.' You look upon the devastation wrought across Tundaria by the storm, and know you have gained a powerful ally. ",
+        "EnemyNames": [ "End" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "Tag": "Aqua4",
+              "Obtainable": 1
             }
           ],
           [
@@ -9355,19 +9421,20 @@
               "Chest": "Adept",
               "HasChest": true
             }
+          ],
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "!Gaia1", "!Magma1", "!Air1" ],
+              "Tag": "AquaPure",
+              "Obtainable": 1,
+              "Item": "Tritons Ward"
+            }
           ]
         ]
       },
       {
-        "Flavourtext": "Having defeated Boreas, you explain the situation to him. He apologizes for the misunderstanding, and tells you he was attacked by a powerful dark shadow. He fought off the entity, but was gravely wounded and unable to rule his subjects. With a gesture from his hand, the creatures of ice and water disperse, ending the powerful ice storm. 'Thou has proven thyself a master of Mercury, young Adept. Call upon me when thy need is great, and I will freeze thine enemies solid.' You look upon the devastation wrought across Tundaria by the storm, and know you have gained a powerful ally. ",
-        "EnemyNames": [ "End" ],
-        "Image": "",
-        "RewardTables": [
-          [ { "Weight": 1 } ]
-        ]
-      },
-      {
-        "Flavourtext": "You got way too lost. You can hear Hama's voice in your head. 'I'm here for you. Do you wish to start from anew or do you want to head home for now?'",
+        "Flavourtext": "Gusts of blinding snow whoosh and spin you around. You've lost track of where you were, and can't seem to find the path forward. Faintly, in your mind, you can hear Hama's voice. 'I am here, Adept. I can take you back to where you started. Do you wish to start anew, or head home for now?'",
         "EnemyNames": [ "Choice:Back to start|KilledBy:Player@100", "Choice:Return home" ],
         "Keywords": [ "@500" ],
         "Image": "",
@@ -9386,7 +9453,7 @@
         ]
       },
       {
-        "Flavourtext": "Maybe another time...",
+        "Flavourtext": "Chilled to the bone and exhausted, you turn away from the massive, frozen vortex. Maybe you can return another day, before the storm does irreparable damage to Weyard...",
         "EnemyNames": [ "End" ],
         "Image": "",
         "RewardTables": [
@@ -9647,12 +9714,12 @@
   "Halloween Special": {
     "name": "Halloween Special",
     "IsOneTimeOnly": true,
-    "FlavourText": "Happy Halloween! A twisted forest, with unknown dangers.  Dare you enter?",
+    "FlavourText": "Happy Halloween! A twisted forest, with unknown dangers. Dare you enter?",
     "Image": "",
     "IsDefault": false,
     "Matchups": [
       {
-        "Flavourtext": "You find yourself in a graveyard surrounded by unfamiliar trees...  The air is deadly silent and chill.  As you try to orient yourself, hands sprout from the grave sites beneath you!",
+        "Flavourtext": "You find yourself in a graveyard surrounded by unfamiliar trees... The air is deadly silent and chill. As you try to orient yourself, hands sprout from the grave sites beneath you!",
         "EnemyNames": [ "Zombie 1", "Zombie 2", "Zombie 1", "Zombie 2", "Zombie 1" ],
         "Image": "",
         "RewardTables": [
@@ -9674,7 +9741,7 @@
         ]
       },
       {
-        "Flavourtext": "Having returned the corpses to their rest, you look around and realize you are quite lost.  You pick a direction and start moving into the forest... but several of the trees start moving towards you!",
+        "Flavourtext": "Having returned the corpses to their rest, you look around and realize you are quite lost. You pick a direction and start moving into the forest... but several of the trees start moving towards you!",
         "EnemyNames": [ "Wood Walker", "Wood Walker", "Wood Walker", "Gloom Skorpna" ],
         "Keywords": [ "Shuffle" ],
         "Image": "",
@@ -9751,7 +9818,7 @@
         ]
       },
       {
-        "Flavourtext": "You spot a glow between the trees, and head towards it.  A giant pumpkin, lit from the inside, leers at you toothily.  You go to look inside... out flies an agitated Mars Djinni!  While you're still processing that, the pumpkin sprouts insectoid legs and a stinger and tries to bite!",
+        "Flavourtext": "You spot a glow between the trees, and head towards it. A giant pumpkin, lit from the inside, leers at you toothily. You go to look inside... out flies an agitated Mars Djinni! While you're still processing that, the pumpkin sprouts insectoid legs and a stinger and tries to bite!",
         "EnemyNames": [ "Mimic Halloween", "Mars Djinni Halloween" ],
         "Image": "https://cdn.discordapp.com/attachments/696352535568711711/764111444253343745/pumic.gif",
         "RewardTables": [
@@ -9767,7 +9834,7 @@
         ]
       },
       {
-        "Flavourtext": "The pumpkin shatters, revealing some loot. You collect it quickly, but before you can try to convince the Mars Djinni to join you, it zooms away!  Hoping it might know the way out, you follow the light it sheds, and come face-to-face with its friends.  ",
+        "Flavourtext": "The pumpkin shatters, revealing some loot. You collect it quickly, but before you can try to convince the Mars Djinni to join you, it zooms away! Hoping it might know the way out, you follow the light it sheds, and come face-to-face with its friends. ",
         "EnemyNames": [ "Mars Djinni Halloween", "Jupiter Djinni Halloween", "Venus Djinni Halloween", "Mercury Djinni Halloween" ],
         "Keywords": [ "Heal", "Shuffle" ],
         "Image": "https://media.discordapp.net/attachments/494638277987401739/763709260713426974/Document_3_2.jpg?width=849&height=679",
@@ -9817,7 +9884,7 @@
         ]
       },
       {
-        "Flavourtext": "Howls begin behind you.  The baying of hounds chasing their prey.  Instinctively, you know who they're hunting: you.  You take off running, trying to find any place to hide, but to no avail... after several pulse-pounding minutes, the Wild Hunt has found you.  The hounds go for your throat.  ",
+        "Flavourtext": "Howls begin behind you. The baying of hounds chasing their prey. Instinctively, you know who they're hunting: you. You take off running, trying to find any place to hide, but to no avail... after several pulse-pounding minutes, the Wild Hunt has found you. The hounds go for your throat. ",
         "EnemyNames": [ "Cerberus", "Living Armor", "Hobgoblin 1", "Red Demon", "Cerberus" ],
         "Keywords": [ "Heal" ],
         "Image": "",
@@ -9840,7 +9907,7 @@
         ]
       },
       {
-        "Flavourtext": "Breathing hard, you pause for a moment by a pair of massive, gnarled oak trees.  There seems to be no way out of this forest, and you're tired from fighting for your life.  So naturally, the oaks begin to move, opening two brilliant red glowing eyes each, and taking swipes at you.  ",
+        "Flavourtext": "Breathing hard, you pause for a moment by a pair of massive, gnarled oak trees. There seems to be no way out of this forest, and you're tired from fighting for your life. So naturally, the oaks begin to move, opening two brilliant red glowing eyes each, and taking swipes at you. ",
         "EnemyNames": [ "Estre Wood", "Estre Wood" ],
         "Keywords": [ "Heal" ],
         "Image": "https://static.wikia.nocookie.net/goldensun/images/b/b5/Estre_Wood.png/",
@@ -9888,7 +9955,7 @@
         ]
       },
       {
-        "Flavourtext": "As the hellish light fades from the massive tree's eyes, your vision suddenly becomes blurry and everything fades to black.  You slowly regain consciousness where you last remember being, but your exhaustion and heavier gold pouch tells you this was no dream.  ",
+        "Flavourtext": "As the hellish light fades from the massive tree's eyes, your vision suddenly becomes blurry and everything fades to black. You slowly regain consciousness where you last remember being, but your exhaustion and heavier gold pouch tells you this was no dream. ",
         "EnemyNames": [ "End" ],
         "Image": "",
         "RewardTables": [
@@ -9905,8 +9972,8 @@
       }
     ]
   },
-  "Christmas Special": {
-    "name": "Christmas Special",
+  "A Very Golden Christmas": {
+    "name": "A Very Golden Christmas",
     "IsOneTimeOnly": false,
     "FlavourText": "A wintertime celebration in a far away land. Join the festivities! ",
     "Image": "",
@@ -10046,7 +10113,7 @@
               "Obtainable": 1,
               "Djinn": "Frostbite"
             },
-            { "Weight": 8 }
+            { "Weight": 12 }
           ],
           [
             { "Weight": 3 },
@@ -10137,16 +10204,14 @@
             {
               "Weight": 1,
               "Dungeon": "Venus Lighthouse"
-            }
-          ],
-          [
+            },
             {
-              "Weight": 2,
+              "Weight": 1,
               "Chest": "Adept",
               "HasChest": true
             },
             {
-              "Weight": 1,
+              "Weight": 3,
               "Chest": "Gold",
               "HasChest": true
             }

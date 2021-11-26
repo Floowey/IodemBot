@@ -2628,7 +2628,7 @@
       ]
     },
     "Stats": {
-      "MaxHP": 5,
+      "MaxHP": 7,
       "Atk": 3,
       "Def": 2
     }
@@ -2641,7 +2641,8 @@
     "Move": {
       "Targettype": "PartySingle",
       "Range": 4,
-      "Heal": 24,
+      "healpower": 0,
+      "percentage": 24,
       "effects": [
         {
           "Type": "Stat",
@@ -2685,6 +2686,7 @@
     "Move": {
       "Targettype": "EnemyRange",
       "Range": 1,
+      "element": 3,
       "dmgMult": 1.2,
       "effects": [
         {
@@ -2702,7 +2704,7 @@
     "Stats": {
       "MaxHP": 8,
       "Atk": 4,
-      "Spd": 3
+      "Spd": 4
     }
   }
 }

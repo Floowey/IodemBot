@@ -69,10 +69,10 @@ namespace IodemBot.Discords.Services
                 await AddGlobalCommands();
                 //PurgeAllGuildCommands();
             }
-            catch (ApplicationCommandException exception)
+            catch (HttpException exception)
             {
                 // If our command was invalid, we should catch an ApplicationCommandException. This exception contains the path of the error as well as the error message. You can serialize the Error field in the exception to get a visual of where your error is.
-                var json = JsonConvert.SerializeObject(exception.Error, Formatting.Indented);
+                var json = JsonConvert.SerializeObject(exception.Errors, Formatting.Indented);
                 Console.WriteLine(json);
             }
         }
