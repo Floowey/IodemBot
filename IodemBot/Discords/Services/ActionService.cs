@@ -227,10 +227,10 @@ namespace IodemBot.Discords.Services
             {
                 Name = attribute.Name,
                 Description = attribute.Description,
-                Required = attribute.Required,
+                IsRequired = attribute.Required,
                 Type = attribute.Type,
-                Autocomplete = attribute.AutoComplete,
-                Default = attribute.DefaultSubCommand ? true : null
+                IsAutocomplete = attribute.AutoComplete,
+                IsDefault = attribute.DefaultSubCommand ? true : null,
             };
 
             var stringChoices = property.GetCustomAttributes(false).OfType<ActionParameterOptionStringAttribute>()

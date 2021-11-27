@@ -11604,10 +11604,10 @@
       "spd": 80
     },
     "elstats": {
-      "venusres": 193,
-      "mercuryres": 55,
-      "marsres": 25,
-      "jupiterres": 45,
+      "venusres": 83,
+      "mercuryres": 155,
+      "marsres": 55,
+      "jupiterres": 145,
       "mercuryatk": 120,
       "jupiteratk": 120
     },

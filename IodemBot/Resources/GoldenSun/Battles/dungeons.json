@@ -2299,7 +2299,7 @@
         ]
       },
       {
-        "Flavourtext": "A guard is pacing slowly down the hall. He announces loudly every 15 feet or so, 'I sure hope I don't find any INTRUDERS in the fortress, or they'll lose the challenge and I'll have to escort them out.'  Quick, hide in the shadows and wait 'til he goes away?",
+        "Flavourtext": "A guard is pacing slowly down the hall. He announces loudly every 15 feet or so, 'I sure hope I don't find any INTRUDERS in the fortress, or they'll lose the challenge and I'll have to escort them out.' Quick, hide in the shadows and wait 'til he goes away?",
         "EnemyNames": [ "Fortress Guard" ],
         "Image": "",
         "RewardTables": [
@@ -5661,7 +5661,7 @@
     },
     "Matchups": [
       {
-        "Flavourtext": "After backtracking from the Storm Lizard, you look back at the chasm you couldn't cross.  Hmm... is that a secret passage across the way there? You climb carefully down the wall... then something blinding catches your eye!",
+        "Flavourtext": "After backtracking from the Storm Lizard, you look back at the chasm you couldn't cross. Hmm... is that a secret passage across the way there? You climb carefully down the wall... then something blinding catches your eye!",
         "EnemyNames": [ "Mars Djinni 9" ],
         "Image": "",
         "RewardTables": [
@@ -7101,8 +7101,8 @@
   "Path of Gaia IV": {
     "name": "Path of Gaia IV",
     "IsOneTimeOnly": false,
-    "FlavourText": "Please be patient until this chapter becomes available!",
-    "Image": "",
+    "FlavourText": "Hama sends you off to a journey of moral and dilemma - are you a worthy Venus Adept?",
+    "Image": "https://www.almarsguides.com/AlmarsImages/Retro/Walkthroughs/GBA/GoldenSun/Walkthroughs/DjinnLocations/Hail%20Djinni%20Location.png",
     "IsDefault": false,
     "Requirement": {
       "MinLevel": "50",
@@ -7208,7 +7208,7 @@
         ]
       },
       {
-        "Flavourtext": "You draw your weapon and stride out to meet the fox. The pups flee into the woods, but it stands its ground, shaking.  It is determined to protect its life and offspring.",
+        "Flavourtext": "You draw your weapon and stride out to meet the fox. The pups flee into the woods, but it stands its ground, shaking. It is determined to protect its life and offspring.",
         "EnemyNames": [ "White Wolf:Fox|Boost:200" ],
         "Keywords": [ "@320" ],
         "Image": "",
@@ -7223,7 +7223,7 @@
         ]
       },
       {
-        "Flavourtext": "With a full belly, the fox feeds her pups and scampers off. They will live another day and be able to hunt again, thanks to your kindness. 'I suppose that's one way of handling it,' says the farmer. Just then, a trumpet sounds.  Your host grimaces, but directs you outside.  A lord and his retinue have just arrived.\nThe farmer relays the story of your kindness, and the lord nods. 'You have my thanks.' He pauses. 'Say, you look like you know yourselves around animals and are a good hand in a fight. My servants are harvesting wood to expand my holdings in this area, but they're being attacked by wolves. Take this axe, and end this threat to my people and property.' He holds out a very well-made axe.",
+        "Flavourtext": "With a full belly, the fox feeds her pups and scampers off. They will live another day and be able to hunt again, thanks to your kindness. 'I suppose that's one way of handling it,' says the farmer. Just then, a trumpet sounds. Your host grimaces, but directs you outside. A lord and his retinue have just arrived.\nThe farmer relays the story of your kindness, and the lord nods. 'You have my thanks.' He pauses. 'Say, you look like you know yourselves around animals and are a good hand in a fight. My servants are harvesting wood to expand my holdings in this area, but they're being attacked by wolves. Take this axe, and end this threat to my people and property.' He holds out a very well-made axe.",
         "EnemyNames": [ "Choice:Accept|KilledBy:Player@420", "Choice:Decline|KilledBy:Player@410" ],
         "Keywords": [ "@401" ],
         "Image": "",
@@ -7242,7 +7242,7 @@
         ]
       },
       {
-        "Flavourtext": "With the fox slain, the farmer smiles and nods to you.  Just then, a trumpet sounds.  Your host grimaces, but directs you outside.  A lord and his retinue have just arrived.\nThe farmer relays the story of your kindness, and the lord nods. 'You have my thanks.' He pauses. 'Say, you look like you know yourselves around animals and are a good hand in a fight. My servants are harvesting wood to expand my holdings in this area, but they're being attacked by wolves. Take this axe, and end this threat to my people and property.' He holds out a very well-made axe.",
+        "Flavourtext": "With the fox slain, the farmer smiles and nods to you. Just then, a trumpet sounds. Your host grimaces, but directs you outside. A lord and his retinue have just arrived.\nThe farmer relays the story of your kindness, and the lord nods. 'You have my thanks.' He pauses. 'Say, you look like you know yourselves around animals and are a good hand in a fight. My servants are harvesting wood to expand my holdings in this area, but they're being attacked by wolves. Take this axe, and end this threat to my people and property.' He holds out a very well-made axe.",
         "EnemyNames": [ "Choice:Accept|KilledBy:Player@420", "Choice:Decline|KilledBy:Player@410" ],
         "Keywords": [ "@402" ],
         "Image": "",
@@ -7261,7 +7261,7 @@
         ]
       },
       {
-        "Flavourtext": "When you decline, the lord loses his temper. 'Guards!' he cries. 'Seize this ingrate!'  His men immediately draw their weapons against you.",
+        "Flavourtext": "When you decline, the lord loses his temper. 'Guards!' he cries. 'Seize this ingrate!' His men immediately draw their weapons against you.",
         "EnemyNames": [ "Tolbi Guard:Guard|Boost:200", "Tolbi Guard:Guard|Boost:200", "Tolbi Guard:Guard|Boost:200", "Tolbi Guard:Guard|Boost:200", "Tolbi Guard:Guard|Boost:200" ],
         "Keywords": [ "@410", "ToMatchup@500" ],
         "Image": "",
@@ -7295,7 +7295,7 @@
         ]
       },
       {
-        "Flavourtext": "After knocking out the noble's guards, you escape and head into the woods. You aim to stop the needless destruction of the forest for personal profit. You arrive in the glade where the lumberjacks are camped out, and call for them to stop.  They do, but only at the shout of a guard in magically glowing armor.  They surround you on all sides, brandishing their woodcutting axes. They look hungry and pitifully armed, but they also look serious about trying to hurt you. The guard, perhaps the only skilled combatent among them, orders the attack.",
+        "Flavourtext": "After knocking out the noble's guards, you escape and head into the woods. You aim to stop the needless destruction of the forest for personal profit. You arrive in the glade where the lumberjacks are camped out, and call for them to stop. They do, but only at the shout of a guard in magically glowing armor. They surround you on all sides, brandishing their woodcutting axes. They look hungry and pitifully armed, but they also look serious about trying to hurt you. The guard, perhaps the only skilled combatent among them, orders the attack.",
         "EnemyNames": [ "Bulky Bugman:Lumberjack|Runner:0|KilledBy:Player@990", "Bulky Bugman:Lumberjack|Runner:1|KilledBy:Player@990", "Bulky Bugman:Lumberjack|Runner:1|KilledBy:Player@990", "Bulky Bugman:Lumberjack|Runner:2|KilledBy:Player@990", "Bulky Bugman:Lumberjack|Runner:2|KilledBy:Player@990", "Bulky Bugman:Lumberjack|Runner:3|KilledBy:Player@990", "Bulky Bugman:Lumberjack|Runner:5|KilledBy:Player@990", "Tolbi Guard:Guard|Boost:300|ImmuneTo:None" ],
         "Keywords": [ "@500", "ToMatchup@995", "HasTagAll:Gaia4QuestFedFox:Gaia4QuestFoughtBear:Gaia4QuestNut@600", "Shuffle" ],
         "Image": "https://goldensunwiki.net/w/images/9/9f/KolimaForestDD.png",
@@ -7706,8 +7706,8 @@
   "Path of Magma IV": {
     "name": "Path of Magma IV",
     "IsOneTimeOnly": false,
-    "FlavourText": "Please be patient until this chapter becomes available!",
-    "Image": "",
+    "FlavourText": "An astral spectacle is expected over Weyard - but first, how well do you know the stars?",
+    "Image": "https://www.goldensun-syndicate.net/tlawalk/dehkanplateau/map5.gif",
     "IsDefault": false,
     "Requirement": {
       "MinLevel": "50",
@@ -7729,7 +7729,7 @@
         ]
       },
       {
-        "Flavourtext": "She offers a smile to your puzzlement, and gestures upwards, into a perfectly clear sky filled with stars. 'The heavens above also burn, like bright coals after a bonfire. Their flame helped give rise to ours here in Weyard.'\n  She glances up, and nods.  'We still have time. Since today we are dealing with astral forces, we must also learn about the zodiac signs. Each zodiac sign is associated with one of the elements.'",
+        "Flavourtext": "She offers a smile to your puzzlement, and gestures upwards, into a perfectly clear sky filled with stars. 'The heavens above also burn, like bright coals after a bonfire. Their flame helped give rise to ours here in Weyard.'\n She glances up, and nods. 'We still have time. Since today we are dealing with astral forces, we must also learn about the zodiac signs. Each zodiac sign is associated with one of the elements.'",
         "EnemyNames": [ "Next" ],
         "Image": "",
         "RewardTables": [
@@ -7737,7 +7737,7 @@
         ]
       },
       {
-        "Flavourtext": "Hama shows you a vision of twelve statues arrayed. 'One for each zodiach sign.  They are from far from here, in the Craggy Peak Ruins.\n\nCan you identify the three zodiac signs associated with Mars?'",
+        "Flavourtext": "Hama shows you a vision of twelve statues arrayed. 'One for each zodiach sign. They are from far from here, in the Craggy Peak Ruins.\n\nCan you identify the three zodiac signs associated with Mars?'",
         "EnemyNames": [ "Choice:Leo|KilledBy:Player@101|!HasTag:Magma4ZodLeo", "Choice:Aries|KilledBy:Player@102|!HasTag:Magma4ZodAries", "Choice:Sagittarius|KilledBy:Player@103|!HasTag:Magma4ZodSagittarius", "Choice:Gemini||KilledBy:Player@201|!HasTag:Magma4ZodGemini", "Choice:Aquarius|KilledBy:Player@202|!HasTag:Magma4ZodAquarius", "Choice:Libra|KilledBy:Player@203|!HasTag:Magma4ZodLibra", "Choice:Virgo|KilledBy:Player@204|!HasTag:Magma4ZodVirgo", "Choice:Pisces|KilledBy:Player@205|!HasTag:Magma4ZodPisces", "Choice:Cancer|KilledBy:Player@206|!HasTag:Magma4ZodCancer", "Choice:Scorpio|KilledBy:Player@207|!HasTag:Magma4ZodScorpio", "Choice:Capricorn|KilledBy:Player@208|!HasTag:Magma4ZodCapricorn", "Choice:Taurus|KilledBy:Player@209|!HasTag:Magma4ZodTaurus" ],
         "Keywords": [ "@100", "Shuffle", "ToMatchup@100" ],
         "Image": "https://goldensunwiki.net/w/images/3/3a/ZodiacSymbols.png",
@@ -7749,7 +7749,7 @@
         "Flavourtext": "Leo, the noblest of the Zodiac signs. Its visage is akin the sun. Only flame can sate the lion's hunger.'",
         "EnemyNames": [ "TiamatSummon:Leo|ImmuneTo:Venus:Jupiter:Mercury:None" ],
         "Keywords": [ "@101", "ToMatchup@100", "HasTagAll:Magma4ZodLeo:Magma4ZodAries:Magma4ZodSagittarius@500" ],
-        "Image": "",
+        "Image": "https://media.discordapp.net/attachments/668443234292334612/914123052906844170/unknown.png",
         "RewardTables": [
           [
             {
@@ -7774,7 +7774,7 @@
         "Flavourtext": "Look there. The ram, it cowers from the flame. It's stubborn, it has an undying flame that powers its heart. Still, it avoids fire.'",
         "EnemyNames": [ "Mars Djinni 6:Aries|ImmuneTo:Mars" ],
         "Keywords": [ "@102", "ToMatchup@100", "HasTagAll:Magma4ZodLeo:Magma4ZodAries:Magma4ZodSagittarius@500" ],
-        "Image": "",
+        "Image": "https://media.discordapp.net/attachments/668443234292334612/914124036634726430/unknown.png",
         "RewardTables": [
           [
             {
@@ -7791,7 +7791,7 @@
         "Flavourtext": "Sagittarius, the Archer. Fight fire with fire, it is said. Sagittarius has realised, the archer's deadliest foe is himself.'",
         "EnemyNames": [ "MirrorAll:Sagittarius|Boost:125|KilledBeforeTurn:4@-5" ],
         "Keywords": [ "@103", "ToMatchup@100", "HasTagAll:Magma4ZodLeo:Magma4ZodAries:Magma4ZodSagittarius@500" ],
-        "Image": "",
+        "Image": "https://media.discordapp.net/attachments/668443234292334612/914126219589587004/unknown.png",
         "RewardTables": [
           [
             {
@@ -7817,7 +7817,7 @@
         "Flavourtext": "Gemini, the sign of the twins. Their wit and their mysterious connection comes from Jupiter.'",
         "EnemyNames": [ "AtalantaSummon:Gemini", "AtalantaSummon:Gemini" ],
         "Keywords": [ "@201", "ToMatchup@100" ],
-        "Image": "",
+        "Image": "https://media.discordapp.net/attachments/668443234292334612/914123275427262464/unknown.png",
         "RewardTables": [
           [
             {
@@ -7831,10 +7831,10 @@
         ]
       },
       {
-        "Flavourtext": "Hama chuckles gently.  'You thought you were really clever there, right? But no, I'm afraid Aquarius does not even get its power from Mercury. In fact Jupiter is Aquarius' Master.'",
+        "Flavourtext": "Hama chuckles gently. 'You thought you were really clever there, right? But no, I'm afraid Aquarius does not even get its power from Mercury. In fact Jupiter is Aquarius' Master.'",
         "EnemyNames": [ "Poseidon:Aquarius" ],
         "Keywords": [ "@202", "ToMatchup@100" ],
-        "Image": "",
+        "Image": "https://media.discordapp.net/attachments/668443234292334612/914127516908798002/unknown.png",
         "RewardTables": [
           [
             {
@@ -7851,7 +7851,7 @@
         "Flavourtext": "Libra, the Scale under the Jupiter star. Say Adept, do you know how to judge justice and balance?'",
         "EnemyNames": [ "Pan", "Libra|VIP|Head", "Pan" ],
         "Keywords": [ "@203", "ToMatchup@100" ],
-        "Image": "",
+        "Image": "https://media.discordapp.net/attachments/668443234292334612/914123833131298816/unknown.png",
         "RewardTables": [
           [
             {
@@ -7885,7 +7885,7 @@
         "Flavourtext": "You are a funny one. No, Pisces, the sign of the fish, is a sign under Mercury.'",
         "EnemyNames": [ "NereidSummon:Pisces", "NereidSummon:Pisces" ],
         "Keywords": [ "@205", "ToMatchup@100" ],
-        "Image": "",
+        "Image": "https://media.discordapp.net/attachments/668443234292334612/914124359822630922/unknown.png",
         "RewardTables": [
           [
             {
@@ -7902,7 +7902,7 @@
         "Flavourtext": "Cancer, the sign of the crab lives in Mercury's seas. Beware its claws, they regrow in time!'",
         "EnemyNames": [ "Claw", "Cancer|Head", "Claw" ],
         "Keywords": [ "@206", "ToMatchup@100" ],
-        "Image": "",
+        "Image": "https://media.discordapp.net/attachments/668443234292334612/914125318363676692/unknown.png",
         "RewardTables": [
           [
             {
@@ -7919,7 +7919,7 @@
         "Flavourtext": "Ah, Scorpio. No. Mercury grants Scorpio its powers. Have a care, its tail bears a mighty poison.'",
         "EnemyNames": [ "Magicore:Scorpio", "Manticore:Scorpio", "Manticore King:Scorpio" ],
         "Keywords": [ "@207", "Shuffle", "ToMatchup@100" ],
-        "Image": "",
+        "Image": "https://media.discordapp.net/attachments/668443234292334612/914124551212896256/unknown.png",
         "RewardTables": [
           [
             {
@@ -7936,7 +7936,7 @@
         "Flavourtext": "Capricorn, the goat. It's a cousin to a Mars Zodiac sign, but it draws its power from Venus.'",
         "EnemyNames": [ "CybeleSummon:Capricorn" ],
         "Keywords": [ "@208", "ToMatchup@100" ],
-        "Image": "",
+        "Image": "https://media.discordapp.net/attachments/668443234292334612/914126000177156106/unknown.png",
         "RewardTables": [
           [
             {
@@ -7953,7 +7953,7 @@
         "Flavourtext": "Taurus? No. It's hot headed, that's for sure, but as it stampedes over vast prairies, Venus gives it its strength.'",
         "EnemyNames": [ "ZaganSummon:Taurus" ],
         "Keywords": [ "@209", "ToMatchup@100" ],
-        "Image": "",
+        "Image": "https://media.discordapp.net/attachments/668443234292334612/914125661763940352/unknown.png",
         "RewardTables": [
           [
             {
@@ -7976,10 +7976,10 @@
         ]
       },
       {
-        "Flavourtext": "Hama pauses after you answer correctly for the third time in a row.  'Hmm...  Typically quick wit and wisdom are neither of Mars' strong suites. I am impressed.'  The statues of the Mars signs glow deep crimson, and forms coelesce in front of you.  'Seems they want to test your purity,' she opines cautiously.",
+        "Flavourtext": "Hama pauses after you answer correctly for the third time in a row. 'Hmm... Typically quick wit and wisdom are neither of Mars' strong suites. I am impressed.' The statues of the Mars signs glow deep crimson, and forms coelesce in front of you. 'Seems they want to test your purity,' she opines cautiously.",
         "EnemyNames": [ "TiamatSummon:Leo|ImmuneTo:Venus:Jupiter:Mercury:None", "Mars Djinni 6:Aries|ImmuneTo:Mars", "Mirror:Sagittarius" ],
         "Keywords": [ "@510", "ToMatchup@600" ],
-        "Image": "",
+        "Image": "https://media.discordapp.net/attachments/668443234292334612/914123052906844170/unknown.png",
         "RewardTables": [
           [
             {
@@ -7991,7 +7991,7 @@
         ]
       },
       {
-        "Flavourtext": "Well,' Hama comments. 'A hard-won set of battles, but you finally succeeded in the end. Persistence is also an admirable trait, and merits a reward.'  ",
+        "Flavourtext": "Well,' Hama comments. 'A hard-won set of battles, but you finally succeeded in the end. Persistence is also an admirable trait, and merits a reward.' ",
         "EnemyNames": [ "Next" ],
         "Keywords": [ "@520", "ToMatchup@600" ],
         "Image": "",
@@ -8009,7 +8009,7 @@
         ]
       },
       {
-        "Flavourtext": "You climb to the highest point of the Plateau. The view is vast, but your attention is immediately drawn upwards.  In the sky, a great ball of fire has come close to Weyard.  It dominates the sky.  Hama nods. 'Weyard, thankfully, is safe. But this is one of the purest sources of Mars you could hope to meet in your lifetime. Show it your strength, Adept!  And beware; Mercury holds no sway here.'",
+        "Flavourtext": "You climb to the highest point of the Plateau. The view is vast, but your attention is immediately drawn upwards. In the sky, a great ball of fire has come close to Weyard. It dominates the sky. Hama nods. 'Weyard, thankfully, is safe. But this is one of the purest sources of Mars you could hope to meet in your lifetime. Show it your strength, Adept! And beware; Mercury holds no sway here.'",
         "EnemyNames": [ "CometMeteor1", "CometMeteor2", "MeteorSummon|ImmuneTo:Mercury|Head", "CometMeteor3", "CometMeteor4 " ],
         "Keywords": [ "@600" ],
         "Image": "",
@@ -8439,8 +8439,8 @@
   "Path of Air IV": {
     "name": "Path of Air IV",
     "IsOneTimeOnly": false,
-    "FlavourText": "Please be patient until this chapter becomes available!",
-    "Image": "",
+    "FlavourText": "Hama prepares a traditional Anemos ritual. May your power be strong enough to succeed.",
+    "Image": "https://goldensunwiki.net/w/images/1/1a/ContigoOverworld.png",
     "IsDefault": false,
     "Requirement": {
       "MinLevel": "50",
@@ -8449,7 +8449,7 @@
     },
     "Matchups": [
       {
-        "Flavourtext": "Hama says things",
+        "Flavourtext": "Hama says things, we are in the Anemos Crater",
         "EnemyNames": [ "Next" ],
         "Image": "",
         "RewardTables": [
@@ -8578,8 +8578,8 @@
         ]
       },
       {
-        "Flavourtext": "*Adept of the Wind. Show me your power in a lack of air.*",
-        "EnemyNames": [ "Green Elemental|ImmuneTo:Jupiter" ],
+        "Flavourtext": "*'Adept of the Wind. Show me your power in a lack of air.'*",
+        "EnemyNames": [ "Green Elemental:|ImmuneTo:Jupiter" ],
         "Keywords": [ "@210", "ToMatchup@200" ],
         "Image": "",
         "RewardTables": [
@@ -8595,7 +8595,7 @@
         ]
       },
       {
-        "Flavourtext": "*Adept of the Wind. Watch me and follow.*",
+        "Flavourtext": "*'Adept of the Wind. Watch me and follow.'*",
         "EnemyNames": [ "Yellow Elemental|KilledBy:Jupiter:Djinn:Summon@-10" ],
         "Keywords": [ "@220", "ToMatchup@200" ],
         "Image": "",
@@ -8613,7 +8613,7 @@
         ]
       },
       {
-        "Flavourtext": "*Adept of the Wind. Watch me and follow.*",
+        "Flavourtext": "*'Adept of the Wind. Watch me and follow.'*",
         "EnemyNames": [ "Pink Elemental|KilledBy:Jupiter:Psynergy@-10" ],
         "Keywords": [ "@230", "ToMatchup@200" ],
         "Image": "",
@@ -8631,7 +8631,7 @@
         ]
       },
       {
-        "Flavourtext": "*Adept of the Wind. A strong vortex absorbs the weak.*",
+        "Flavourtext": "*'Adept of the Wind. A strong vortex absorbs the weak.'*",
         "EnemyNames": [ "Mirror:Purple Elemental|Boost:55|Boost:200:Spd", "Mirror:Purple Elemental|Boost:55|Boost:200:Spd", "Mirror:Purple Elemental|Boost:55|Boost:200:Spd", "Mirror:Purple Elemental|Boost:55|Boost:200:Spd" ],
         "Keywords": [ "@240", "ToMatchup@200" ],
         "Image": "",
@@ -9178,7 +9178,7 @@
     "name": "Path of Aqua IV",
     "IsOneTimeOnly": false,
     "FlavourText": "Hama put out an urgent call for your help. Will you answer?",
-    "Image": "",
+    "Image": "http://www.goldensun-zone.de/goldensun2/komplettloesung/bilder/Tundaria-Weltkarte-Ankunft.png",
     "IsDefault": false,
     "Requirement": {
       "MinLevel": "50",
@@ -9218,7 +9218,7 @@
         ]
       },
       {
-        "Flavourtext": "Trusting in your Psynergy to protect you, you approach the storm.  Some wolves emerge from the howling blizzard and attack!",
+        "Flavourtext": "Trusting in your Psynergy to protect you, you approach the storm. Some wolves emerge from the howling blizzard and attack!",
         "EnemyNames": [ "White Wolf", "White Wolf", "White Wolf", "White Wolf", "White Wolf" ],
         "Keywords": [ "@110" ],
         "Image": "",
@@ -10021,7 +10021,7 @@
       },
       {
         "Flavourtext": "As you approach the village of Prox in the frozen north, you see it is brightly lit. As you get closer, you can see thousands of candles, braziers, and colored lights made of Psynergy! As you stare at the beautiful sight, a few more monsters notice you.",
-        "EnemyNames": [ "Bear", "Bear" ],
+        "EnemyNames": [ "Grisly1:Bear", "MolochSummon", "Grisly1:Bear" ],
         "Image": "",
         "RewardTables": [
           [
@@ -10077,7 +10077,7 @@
       },
       {
         "Flavourtext": "After the show, a puppeteer stands up. He is tall and pony-tailed, with dark brown hair and compelling eyes. He appears to not be from Prox, given the lack of scales in his skin. He nods to you and walks away. Curious, you follow him up some stairs and into the night. Several twists and turns later, you find him at the highest house in the village. Several Djinn keep him company here. Seeing you, they ask for a friendly battle.",
-        "EnemyNames": [ "Venus Djinni Christmas", "Mars Djinni Christmas", "IsaacFinal:Felix", "Jupiter Djinni Christmas", "Mercury Djinni Christmas" ],
+        "EnemyNames": [ "Venus Djinni Christmas", "Mars Djinni Christmas", "IsaacFinal:Masked Puppeteer", "Jupiter Djinni Christmas", "Mercury Djinni Christmas" ],
         "Keywords": [ "Heal" ],
         "Image": "",
         "RewardTables": [
@@ -10145,8 +10145,8 @@
         ]
       },
       {
-        "Flavourtext": "A white-bearded, elderly man dressed all in red sits here in front of a fir tree. Like the puppeteer, his face is also not scaly. He seems to be talking at length to a group of children and their parents. By and large, people are politely feigning interest, but every now and then he calls out a child's name and hands them a box or bag wrapped with a bow. Squeals of glee greet each gift. \nUpon spotting you, the man addresses you, 'Well! It's been a while! It's good to see that more Adepts are exploring the world... back when Jenna and I were stuck on Idejima... the restoration of Alchemy... Lemuria...' He natters on for at least 15 minutes, getting further and further off-topic. Eventually you find yourself yawning, and he notices. 'Well! How rude! Perhaps a fight will wake you up!' He jumps to his feet and attacks!",
-        "EnemyNames": [ "Santa Kraden" ],
+        "Flavourtext": "A white-bearded, elderly man dressed all in red sits here in front of a fir tree. Like the puppeteer, his face is also not scaly. He seems to be talking at length to a group of children and their parents. By and large, people are politely feigning interest, but every now and then he calls out a child's name and hands them a box or bag wrapped with a bow. Squeals of glee greet each gift. \n\nUpon spotting you, the man addresses you, 'Well! It's been a while! It's good to see that more Adepts are exploring the world... back when Jenna and I were stuck on Idejima... the restoration of Alchemy... Lemuria...' He natters on for at least 15 minutes, getting further and further off-topic. Eventually you find yourself yawning, and he notices. 'Well! How rude! Perhaps a fight will wake you up!' He jumps to his feet and attacks!",
+        "EnemyNames": [ "Ruffian:Santa Kraden" ],
         "Image": "",
         "RewardTables": [
           [
@@ -10171,7 +10171,7 @@
         ]
       },
       {
-        "Flavourtext": "The elderly man settles back into his chair after you defeat him. 'Hmph! You seem more awake, at least. But I only give presents to good children! Bad children meet my friend! I found him deep in a cave... the depths of a massive desert... great battle...' Ignoring the renewed ramblings, a massive, winged, curly-horned, red-skinned demon appears behind the red-clad man. As the parents usher their children back, the demon trots towards you on enormous cloven hooves. Each footstep shakes the ground, and he brings his hammer to bear. ",
+        "Flavourtext": "'Ouch! No, stop it. Have you no respect for the elderly?'. The man settles back into his chair after you defeat him. 'Hmph! You seem more awake, at least. But I only give presents to good children! Bad children meet my friend! I found him deep in a cave... the depths of a massive desert... great battle...' Ignoring the renewed ramblings, a massive, winged, curly-horned, red-skinned demon appears behind the red-clad man. As the parents usher their children back, the demon trots towards you on enormous cloven hooves. Each footstep shakes the ground, and he brings his hammer to bear. ",
         "EnemyNames": [ "Krampus" ],
         "Keywords": [ "Heal" ],
         "Image": "",

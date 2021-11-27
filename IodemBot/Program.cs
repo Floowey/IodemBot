@@ -208,7 +208,7 @@ namespace IodemBot
                 .AddSingleton(new DiscordSocketClient(new DiscordSocketConfig
                 {
                     //AlwaysAcknowledgeInteractions = false,
-                    GatewayIntents = GatewayIntents.All,
+                    GatewayIntents = GatewayIntents.AllUnprivileged,
                     AlwaysDownloadUsers = true,
                     LogLevel = LogSeverity.Info,
 
