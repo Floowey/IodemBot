@@ -34,8 +34,7 @@
               "Weight": 1,
               "XP": 10,
               "Coins": 10
-            },
-            { "Weight": }
+            }
           ]
         ]
       },
@@ -9962,7 +9961,7 @@
   "A Very Golden Christmas": {
     "name": "A Very Golden Christmas",
     "IsOneTimeOnly": true,
-    "FlavourText": "A wintertime celebration in a far away land. Join the festivities!\n(Event dungeon, available until <t:1641510000>",
+    "FlavourText": "A wintertime celebration in a far away land. Join the festivities!\n(Event dungeon, available until <t:1641510000>)",
     "Image": "https://media.discordapp.net/attachments/896423719428304946/910238976722481182/goldensun_xmascard-digital900px.png",
     "IsDefault": false,
     "Matchups": [

@@ -207,12 +207,9 @@ namespace IodemBot
             return new ServiceCollection()
                 .AddSingleton(new DiscordSocketClient(new DiscordSocketConfig
                 {
-                    //AlwaysAcknowledgeInteractions = false,
-                    GatewayIntents = GatewayIntents.AllUnprivileged,
+                    GatewayIntents = GatewayIntents.AllUnprivileged | GatewayIntents.GuildPresences,
                     AlwaysDownloadUsers = true,
                     LogLevel = LogSeverity.Info,
-
-                    //MessageCacheSize = 10,
                     DefaultRetryMode = RetryMode.AlwaysRetry
                 }))
                 .AddSingleton<CommandService>()

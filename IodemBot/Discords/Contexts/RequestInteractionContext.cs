@@ -83,7 +83,7 @@ namespace IodemBot.Discords.Contexts
                     if (initial && previousStatus == RequestAcknowledgeStatus.NotAcknowledged)
                     {
                         await OriginalInteraction.RespondAsync(message, embeds, isTts, ephemeralRule.ToEphemeral(),
-                            allowedMentions, options, components, embed);
+                            allowedMentions, components, embed, options);
                         _acknowledgeStatus = RequestAcknowledgeStatus.Acknowledged;
                         try
                         {
@@ -136,7 +136,7 @@ namespace IodemBot.Discords.Contexts
 
                     if (messageReference == null || ephemeralRule == EphemeralRule.EphemeralOrFail)
                         return await OriginalInteraction.FollowupAsync(message, embeds, isTts,
-                            ephemeralRule.ToEphemeral(), allowedMentions, options, components, embed);
+                            ephemeralRule.ToEphemeral(), allowedMentions, components, embed, options);
                     return await Channel.SendMessageAsync(message, isTts, embed ?? embeds?.FirstOrDefault(), options,
                         allowedMentions, messageReference, components);
                 }
