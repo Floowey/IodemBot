@@ -134,6 +134,42 @@ namespace IodemBot.Modules.VariousCommands
         }
     }
 
+    public class AddGlobalCommands : IodemBotCommandAction
+    {
+        private RequestContextService _requestContextService;
+
+        private IServiceScope _scope;
+        public override EphemeralRule EphemeralRule => EphemeralRule.EphemeralOrFail;
+
+        public override List<ActionTextCommandProperties> TextCommandProperties => new()
+        {
+            new ActionTextCommandProperties
+            {
+                Name = "AddGlobalCommands"
+            }
+        };
+
+        public override async Task RunAsync()
+        {
+            var action = ServiceProvider.GetRequiredService<ActionService>();
+            await action.AddGlobalCommands();
+            await Context.ReplyWithMessageAsync(EphemeralRule, "Hopefully did that.");
+        }
+
+        protected override Task<(bool Success, string Message)> CheckCustomPreconditionsAsync()
+        {
+            var guildResult = IsGameCommandAllowedInGuild();
+            if (!guildResult.Success)
+                return Task.FromResult(guildResult);
+
+            _scope = ServiceProvider.CreateScope();
+            _requestContextService = _scope.ServiceProvider.GetRequiredService<RequestContextService>();
+            _requestContextService.AddContext(Context);
+
+            return Task.FromResult(guildResult);
+        }
+    }
+
     public class StopListening : IodemBotCommandAction
     {
         private RequestContextService _requestContextService;

@@ -66,7 +66,7 @@ namespace IodemBot.Discords.Services
 
             try
             {
-                await AddGlobalCommands();
+                // await AddGlobalCommands();
                 //PurgeAllGuildCommands();
             }
             catch (HttpException exception)
@@ -91,7 +91,17 @@ namespace IodemBot.Discords.Services
             foreach (var messageAction in messageActions) properties.Add(BuildMessageCommandProperties(messageAction));
 
             if (properties.Count > 0)
-                await _discord.Rest.BulkOverwriteGlobalCommands(properties.ToArray());
+            {
+                if (!_discord.Rest.GetGlobalApplicationCommands().GetAwaiter().GetResult().Any())
+                {
+                    await _discord.Rest.CreateGlobalCommand(properties.First());
+                    Console.WriteLine($"Only added {properties.First().Name}");
+                }
+                else
+                {
+                    await _discord.Rest.BulkOverwriteGlobalCommands(properties.ToArray());
+                }
+            }
 
             /* See below
             var guildIds = (await _discord.Rest.GetGuildsAsync()).Select(g => g.Id);

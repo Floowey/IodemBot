@@ -10,6 +10,7 @@ using Discord.WebSocket;
 using IodemBot.Core.Leveling;
 using IodemBot.Core.UserManagement;
 using IodemBot.Extensions;
+using IodemBot.Modules.BattleActions;
 using IodemBot.Modules.GoldenSunMechanics;
 
 namespace IodemBot.ColossoBattles
@@ -45,13 +46,7 @@ namespace IodemBot.ColossoBattles
             var a = Teams[Team.A];
             var b = Teams[Team.B];
 
-            a.EnemyMessage = await a.TeamChannel.SendMessageAsync($"Welcome to {Name}. Join Team A or Team B.");
-            _ = a.EnemyMessage.AddReactionsAsync(new IEmote[]
-            {
-                Emote.Parse("<:Fight_A:592374736479059979>"),
-                Emote.Parse("<:Fight_B:592374736248373279>"),
-                Emote.Parse("<:Battle:536954571256365096>")
-            });
+            a.EnemyMessage = await a.TeamChannel.SendMessageAsync($"Welcome to {Name}. Join Team A or Team B.", component: ControlBattleComponents.GetControlComponent(true));
             a.SummonsMessage = await a.TeamChannel.SendMessageAsync("Good Luck!");
             b.EnemyMessage =
                 await b.TeamChannel.SendMessageAsync(
@@ -109,22 +104,18 @@ namespace IodemBot.ColossoBattles
                 {
                     m.Content = $"Welcome to {Name}. Join Team A or Team B.";
                     m.Embed = null;
-                });
-                _ = a.EnemyMessage.AddReactionsAsync(new IEmote[]
-                {
-                    Emote.Parse("<:Fight_A:592374736479059979>"),
-                    Emote.Parse("<:Fight_B:592374736248373279>"),
-                    Emote.Parse("<:Battle:536954571256365096>")
+                    m.Components = ControlBattleComponents.GetControlComponent(true);
                 });
             }
 
             if (b.EnemyMessage != null)
             {
-                _ = b.EnemyMessage.RemoveAllReactionsAsync();
+                //_ = b.EnemyMessage.RemoveAllReactionsAsync();
                 _ = b.EnemyMessage.ModifyAsync(m =>
                 {
                     m.Content = $"Welcome to {Name}, Team B. Please wait til the battle has started.";
                     m.Embed = null;
+                    m.Components = null;
                 });
             }
 
@@ -634,31 +625,7 @@ namespace IodemBot.ColossoBattles
 
         protected virtual async Task WritePlayersInit()
         {
-            var tasks = new List<Task>();
-            Teams.Values.ToList().ForEach(v =>
-            {
-                var i = 1;
-                foreach (var k in v.PlayerMessages)
-                {
-                    var msg = k.Key;
-                    var fighter = k.Value;
-                    var emotes = new List<IEmote>();
-                    if (v.PlayerMessages.Count > 1) emotes.Add(new Emoji(NumberEmotes[i]));
-                    foreach (var m in fighter.Moves)
-                        if (!(m is Summon))
-                            emotes.Add(m.GetEmote());
-                    //emotes.RemoveAll(e => msg.Reactions.Any(r => r.Key.Name.Equals(e.Name, StringComparison.InvariantCultureIgnoreCase)));
-                    //tasks.Add(msg.AddReactionsAsync(emotes.ToArray()));
-                    tasks.Add(
-                        msg.AddReactionsAsync(
-                            emotes.Except(msg.Reactions.Keys).ToArray()
-                        )
-                    );
-                    i++;
-                }
-            });
-            tasks.Add(WritePlayers());
-            await Task.WhenAll(tasks);
+            await WritePlayers();
         }
 
         public override bool IsUsersMessage(PlayerFighter player, IUserMessage message)
