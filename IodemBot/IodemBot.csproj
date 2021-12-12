@@ -6,9 +6,9 @@
 		<ApplicationIcon></ApplicationIcon>
 		<DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
 		<Version>3.0.0.0</Version>
-		<AssemblyVersion>3.0.2111.16</AssemblyVersion>
+		<AssemblyVersion>3.0.2111.22</AssemblyVersion>
 		<Deterministic>false</Deterministic>
-		<FileVersion>3.0.0.42</FileVersion>
+		<FileVersion>3.0.0.48</FileVersion>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
 	  <ShouldCreateLogs>True</ShouldCreateLogs>
@@ -38,7 +38,7 @@
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Accord.Statistics" Version="3.8.0" />
-		<PackageReference Include="Discord.Net.Labs" Version="3.4.6" />
+		<PackageReference Include="Discord.Net.Labs" Version="3.4.7" />
 		<PackageReference Include="JsonSubTypes">
 			<Version>1.7.0</Version>
 		</PackageReference>

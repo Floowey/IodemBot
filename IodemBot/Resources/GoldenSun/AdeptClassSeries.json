@@ -1498,7 +1498,8 @@
         "name": "Air Pilgrim",
         "movepool": [
           "Volcano",
-          "Plasma"
+          "Plasma",
+          "Weaken"
         ],
         "statMultipliers": {
           "maxHP": 90,
@@ -1514,7 +1515,9 @@
           "Eruption",
           "Plasma",
           "Bind",
-          "Ward"
+          "Ward",
+          "Weaken",
+          "Aura"
         ],
         "statMultipliers": {
           "maxHP": 110,
@@ -1532,7 +1535,9 @@
           "Bind",
           "Ward",
           "Resist",
-          "Aura"
+          "Weaken",
+          "Enfeeble",
+          "Healing Aura"
         ],
         "statMultipliers": {
           "maxHP": 120,
@@ -1550,7 +1555,8 @@
           "Bind",
           "Ward",
           "Resist",
-
+          "Weaken",
+          "Enfeeble",
           "Healing Aura"
         ],
         "statMultipliers": {
@@ -1569,7 +1575,8 @@
           "Bind",
           "Ward",
           "Resist",
-
+          "Weaken",
+          "Enfeeble",
           "Cool Aura"
         ],
         "statMultipliers": {
@@ -1703,7 +1710,7 @@
     "requirement": "DungeonsCompleted",
     "isDefault": false,
     "archtype": "Mage",
-    "description": "Aqua Pilgrims travel the world and spread their wisdom. Most find their destiny at the same, holy place..."
+    "description": "Aqua Pilgrims travel the world and spread their wisdom. Most find their destiny at the same, sacret place..."
   },
   {
     "name": "Air Seer Series",
@@ -1778,6 +1785,7 @@
         "movepool": [
           "Blue Bolt",
           "Wild Growth",
+          "Grand Gaia",
           "Potent Cure",
           "Healing Gust",
           "Revive"
@@ -1990,7 +1998,7 @@
         "name": "Aqua Druid",
         "movepool": [
           "Froth Spiral",
-          "Mad Growth",
+          "Wild Growth",
           "Taint",
           "Elder Wood",
           "Revive"
@@ -2008,6 +2016,7 @@
         "movepool": [
           "Froth Spiral",
           "Wild Growth",
+          "Toxic Grit",
           "Taint",
           "Estre Wood",
           "Revive"

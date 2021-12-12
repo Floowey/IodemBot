@@ -200,25 +200,6 @@ namespace IodemBot.ColossoBattles
             {
                 if (reaction.User.Value.IsBot) return;
                 if (channel.Id != Teams[Team.A].TeamChannel.Id && channel.Id != Teams[Team.B].TeamChannel.Id) return;
-                if (reaction.Emote.Name == "Fight_A")
-                {
-                    _ = AddPlayer(reaction, Team.A);
-                    return;
-                }
-
-                if (reaction.Emote.Name == "Fight_B")
-                {
-                    _ = AddPlayer(reaction, Team.B);
-                    return;
-                }
-
-                if (reaction.Emote.Name == "Battle")
-                {
-                    _ = StartBattle();
-                    return;
-                }
-
-                if (!Battle.IsActive) return;
 
                 Teams.Values.ToList().ForEach(async v =>
                 {
@@ -285,37 +266,7 @@ namespace IodemBot.ColossoBattles
                         _ = ProcessTurn(true);
                         return;
                     }
-
-                    var curPlayer = playerMessages.Values.FirstOrDefault(p => p.Id == reaction.User.Value.Id);
-                    if (curPlayer == null)
-                    {
-                        _ = c.RemoveReactionAsync(reaction.Emote, reaction.User.Value);
-                        Console.WriteLine("Player not in this room.");
-                        return;
-                    }
-
-                    var correctId = playerMessages.Keys.First(key => playerMessages[key].Id == curPlayer.Id).Id;
-
-                    if (!NumberEmotes.Contains(reaction.Emote.Name))
-                        if (reaction.MessageId != enemyMessage.Id && reaction.MessageId != summonsMessage.Id &&
-                            reaction.MessageId != correctId)
-                        {
-                            _ = c.RemoveReactionAsync(reaction.Emote, reaction.User.Value);
-                            Console.WriteLine("Didn't click on own message.");
-                            return;
-                        }
-
-                    if (!curPlayer.Select(reaction.Emote))
-                    {
-                        _ = c.RemoveReactionAsync(reaction.Emote, reaction.User.Value);
-                        Console.WriteLine("Couldn't select that move.");
-                        return;
-                    }
-
-                    Reactions.Add(reaction);
                 });
-
-                _ = ProcessTurn(false);
             }
             catch (Exception e)
             {

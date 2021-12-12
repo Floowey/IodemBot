@@ -213,7 +213,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             var s = new List<string>();
             foreach (var cq in ChestQualities)
                 if (Chests[cq] > 0)
-                    s.Add($"{Emotes.GetIcon(cq)}: {Chests[cq]}");
+                    s.Add($"{Emotes.GetIcon(cq).ToShortEmote()}: {Chests[cq]}");
             return string.Join(" - ", s);
         }
 
@@ -236,12 +236,12 @@ namespace IodemBot.Modules.GoldenSunMechanics
             return detail switch
             {
                 Detail.Names => string.Join(", ",
-                    Inv.Select(i => $"{i.IconDisplay} {i.Name}{(i.IsBroken ? " (Broken)" : "")}").ToArray()),
+                    Inv.Select(i => $"{i.IconDisplay.ToShortEmote()} {i.Name}{(i.IsBroken ? " (Broken)" : "")}").ToArray()),
                 Detail.NameAndPrice => string.Join("\n",
                     Inv.Select(i =>
-                            $"{i.IconDisplay} {i.Name} - {(Count <= 60 ? "<:coin:569836987767324672>" : "")}{i.Price}")
+                            $"{i.IconDisplay.ToShortEmote()} {i.Name} - {(Count <= 60 ? "<:coin:569836987767324672>" : "")}{i.Price}")
                         .ToArray()),
-                _ => string.Join("", Inv.Select(i => i.IconDisplay).ToArray())
+                _ => string.Join("", Inv.Select(i => i.IconDisplay.ToShortEmote()).ToArray())
             };
         }
 
@@ -288,7 +288,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
             var defaultIcons = archType == ArchType.Warrior ? WarriorIcons : MageIcons;
 
-            foreach (var cat in Item.Equippables) s.Append(gear.GetItem(cat)?.IconDisplay ?? defaultIcons[cat]);
+            foreach (var cat in Item.Equippables) s.Append(gear.GetItem(cat)?.IconDisplay.ToShortEmote() ?? defaultIcons[cat].ToShortEmote());
 
             return s.ToString();
         }

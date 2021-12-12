@@ -157,36 +157,6 @@ namespace IodemBot.ColossoBattles
                     _ = ProcessTurn(true);
                     return;
                 }
-
-                var curPlayer = PlayerMessages.Values.FirstOrDefault(p => p.Id == reaction.User.Value.Id);
-                if (curPlayer == null)
-                {
-                    _ = c.RemoveReactionAsync(reaction.Emote, reaction.User.Value);
-                    Console.WriteLine("Player not in this room.");
-                    return;
-                }
-
-                var correctId = PlayerMessages.Keys.First(key => PlayerMessages[key].Id == curPlayer.Id).Id;
-
-                if (!NumberEmotes.Contains(reaction.Emote.Name))
-                    if (reaction.MessageId != EnemyMessage.Id && reaction.MessageId != SummonsMessage.Id &&
-                        reaction.MessageId != correctId)
-                    {
-                        _ = c.RemoveReactionAsync(reaction.Emote, reaction.User.Value);
-                        Console.WriteLine("Didn't click on own message.");
-                        return;
-                    }
-
-                if (!curPlayer.Select(reaction.Emote))
-                {
-                    _ = c.RemoveReactionAsync(reaction.Emote, reaction.User.Value);
-                    Console.WriteLine("Couldn't select that move.");
-                    return;
-                }
-
-                Reactions.Add(reaction);
-
-                _ = ProcessTurn(false);
             }
             catch (Exception e)
             {
@@ -525,7 +495,7 @@ namespace IodemBot.ColossoBattles
                 //embed.AddField($"{fighter.Name}{fighter.ConditionsToString()}",
                 //    $"**HP**: {fighter.Stats.HP} / {fighter.Stats.MaxHP}\n**PP**: {fighter.Stats.PP} / {fighter.Stats.MaxPP}");
                 embed.AddField($"{fighter.Name}{fighter.ConditionsToString()}",
-                    $"{Utilities.GetProgressBar(fighter.Stats.HP*100/fighter.Stats.MaxHP)} **HP {fighter.Stats.HP}**\n" +
+                    $"{Utilities.GetProgressBar(fighter.Stats.HP * 100 / fighter.Stats.MaxHP)} **HP {fighter.Stats.HP}**\n" +
                     $"{Utilities.GetProgressBar(fighter.Stats.PP * 100 / fighter.Stats.MaxPP)} **PP {fighter.Stats.PP}**"
                 );
 

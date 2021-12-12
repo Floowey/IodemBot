@@ -11,7 +11,7 @@
     },
     "Matchups": [
       {
-        "Flavourtext": "Welcome to the marvelous world of Weyard, aspiring Adept. I will introduce you to the setting of Golden Sun and how the mechanics are going to work. If you want to take your time while doing this, you can react with :pause_button: to stop a battle from automatically going forward. To continue, click on the 'Attack' reaction.",
+        "Flavourtext": "Welcome to the marvelous world of Weyard, aspiring Adept. I will introduce you to the setting of Golden Sun and how the mechanics are going to work. If you want to take your time while doing this, you can react with :pause_button: to stop a battle from automatically going forward. To continue, use 'Attack'.",
         "EnemyNames": [ "Next" ],
         "Image": "",
         "RewardTables": [
@@ -25,7 +25,7 @@
         ]
       },
       {
-        "Flavourtext": "Weyard is a world filled with the power of Alchemy. This means that everything consists of the four classical elements.\nVenus, the element of Earth,\nMars, the element of Fire,\nJupiter, the element of Wind, and\nMercury, the element of Water.\nAn Adept is a human who inherited the power of one of these elements.",
+        "Flavourtext": "Weyard is a world filled with the power of Alchemy. This means that everything consists of the four classical elements.\nVenus, the element of Earth,\nMars, the element of Fire,\nJupiter, the element of Wind, and\nMercury, the element of Water.\nAn Adept is a human who inherited the power of one of these elements.\n\nAs you are an aspiring Adept too, you will want to align yourself with one of these elements, if you haven't done so yet. You can do so by using the `/element <e.g. Venus>`, using the `/class` command or by going to #some-channel. Don't worry, this choice isn't final. You can change it any time you want.",
         "EnemyNames": [ "Next" ],
         "Image": "",
         "RewardTables": [
@@ -34,26 +34,13 @@
               "Weight": 1,
               "XP": 10,
               "Coins": 10
-            }
+            },
+            { "Weight": }
           ]
         ]
       },
       {
-        "Flavourtext": "As you are an aspiring Adept too, you will want to align yourself with one of these elements, if you haven't done so yet. Go to #gabomba-gears and use the command `i!element Venus`, or any other elemental path you would like to pursue. Generally, all commands are to be used in this channel. Note that you can change your element at any time and as often as you want!",
-        "EnemyNames": [ "Next" ],
-        "Image": "",
-        "RewardTables": [
-          [
-            {
-              "Weight": 1,
-              "XP": 10,
-              "Coins": 10
-            }
-          ]
-        ]
-      },
-      {
-        "Flavourtext": "You will see that you have been put into a class. This class determines the your stats and the abilities (the Psynergy) you have access to. Furthermore, any given class is either a Warrior or a Mage, which determines the type of equipment you can wield.",
+        "Flavourtext": "You will see that you have been put into a class. This class determines the your stats and the abilities (the Psynergy) you have access to. Furthermore, any given class is either a Warrior or a Mage, which determines the type of equipment you can wield. Changing your class is just as easy, you can do it using the `/class` command and see all your available classes with `i!classes`.",
         "EnemyNames": [ "Next" ],
         "Image": "",
         "RewardTables": [
@@ -93,7 +80,7 @@
         ]
       },
       {
-        "Flavourtext": "Speaking of equipment, the commands for equipment are vast, but simple. They are pinned in both #colosso-talks and #gabomba-gears. Here is some basic gear that you can equip for starters. Open your chests using `i!chest`",
+        "Flavourtext": "Speaking of equipment. Here is some basic gear that you can equip for starters. Go to your `/inv` and select one of your archtype gear sets. There you can equip your items. You will also see a button to open your chests along the way.",
         "EnemyNames": [ "Next" ],
         "Image": "",
         "RewardTables": [
@@ -121,7 +108,7 @@
         ]
       },
       {
-        "Flavourtext": "If there are multiple enemies, you need to select your target. First choose the move you want to use, and then use the number icons (:one: to :three:) to target the enemy with that number. In the case of area-of-effect attacks, the selected enemy is the centermost enemy which will take most of the damage. If you are on mobile, you might need to scroll up to see the numbers!",
+        "Flavourtext": "If there are multiple enemies, you need to select your target. First choose the move you want to use, and then an enemy from the select menu. In the case of area-of-effect attacks, the selected enemy is the centermost enemy which will take most of the damage.",
         "EnemyNames": [ "Training Dummy", "Training Dummy", "Training Dummy" ],
         "Image": "",
         "RewardTables": [
@@ -175,7 +162,7 @@
               "Coins": 10,
               "Chest": "Wooden",
               "HasChest": true,
-              "message": "**Quick summary**:\n-Use commands in #gabomba-gears.\n-Select an element using `i!element Venus` or whichever you want. You can change it at any time.\n-Specify a class using `i!class Squire` (from what is available to you).\n-Pause a battle by reacting anywhere with :pause_button:. The timer will restart at the beginning of the next turn.\n-Don't forget to target your enemy with the numbered icons.\n-Open your chests with `i!chest`, view your inventory with `i!inv` and equip gear using `i!equip Warrior/Mage itemname`\nVisit your newly discovered places with`i!dungeon Vale` (or Vault)\n\nDon't be shy to ask questions in #colosso-talks or find team mates to brawl with! A lot of information is also pinned!"
+              "message": "**Quick summary**:\n-Use commands in #gabomba-gears.\nView your status with `/status`. This is a hub that leads you to all aspects of the game\n-Select an element and class using `/element` and `/class`. You can change it at any time.\n-Pause a battle by reacting anywhere with :pause_button:. The timer will restart at the beginning of the next turn.\n-view your inventory with `/inv`, where you can equip gear and open chests!\n-Visit your newly discovered places with`/dungeons` or go there directly with `i!dungeon Vale` (or Vault)\n\nDon't be shy to ask questions in #colosso-talks or find team mates to brawl with! A lot of information is also pinned!"
             }
           ]
         ]
@@ -7105,7 +7092,7 @@
     "Image": "https://www.almarsguides.com/AlmarsImages/Retro/Walkthroughs/GBA/GoldenSun/Walkthroughs/DjinnLocations/Hail%20Djinni%20Location.png",
     "IsDefault": false,
     "Requirement": {
-      "MinLevel": "50",
+      "MinLevel": "999",
       "Elements": [ "Venus" ],
       "TagsRequired": [ "Gaia3" ]
     },
@@ -7710,7 +7697,7 @@
     "Image": "https://www.goldensun-syndicate.net/tlawalk/dehkanplateau/map5.gif",
     "IsDefault": false,
     "Requirement": {
-      "MinLevel": "50",
+      "MinLevel": "999",
       "Elements": [ "Mars" ],
       "TagsRequired": [ "Magma3" ]
     },
@@ -8443,7 +8430,7 @@
     "Image": "https://goldensunwiki.net/w/images/1/1a/ContigoOverworld.png",
     "IsDefault": false,
     "Requirement": {
-      "MinLevel": "50",
+      "MinLevel": "999",
       "Elements": [ "Jupiter" ],
       "TagsRequired": [ "Air3" ]
     },
@@ -9181,7 +9168,7 @@
     "Image": "http://www.goldensun-zone.de/goldensun2/komplettloesung/bilder/Tundaria-Weltkarte-Ankunft.png",
     "IsDefault": false,
     "Requirement": {
-      "MinLevel": "50",
+      "MinLevel": "999",
       "Elements": [ "Mercury" ],
       "TagsRequired": [ "Aqua3" ]
     },
@@ -9974,10 +9961,10 @@
   },
   "A Very Golden Christmas": {
     "name": "A Very Golden Christmas",
-    "IsOneTimeOnly": false,
-    "FlavourText": "A wintertime celebration in a far away land. Join the festivities! ",
-    "Image": "",
-    "IsDefault": true,
+    "IsOneTimeOnly": true,
+    "FlavourText": "A wintertime celebration in a far away land. Join the festivities!\n(Event dungeon, available until <t:1641510000>",
+    "Image": "https://media.discordapp.net/attachments/896423719428304946/910238976722481182/goldensun_xmascard-digital900px.png",
+    "IsDefault": false,
     "Matchups": [
       {
         "Flavourtext": "Hama finds you on your travels and smiles. 'Adept, it is time to take a break from your adventures. There is a festival I think you'll like, far to the north.' She teleports you somewhere else... and a couple feet directly above a snowdrift. You promptly fall in with a FLUMF!",
@@ -10020,7 +10007,7 @@
         ]
       },
       {
-        "Flavourtext": "As you approach the village of Prox in the frozen north, you see it is brightly lit. As you get closer, you can see thousands of candles, braziers, and colored lights made of Psynergy! As you stare at the beautiful sight, a few more monsters notice you.",
+        "Flavourtext": "As you approach the village of Prox in the frozen north, you see it is brightly lit. You get closer and notice thousands of candles, braziers, and colored lights made of Psynergy! As you stare at the beautiful sight, a few more monsters notice you.",
         "EnemyNames": [ "Grisly1:Bear", "MolochSummon", "Grisly1:Bear" ],
         "Image": "",
         "RewardTables": [
@@ -10079,7 +10066,7 @@
         "Flavourtext": "After the show, a puppeteer stands up. He is tall and pony-tailed, with dark brown hair and compelling eyes. He appears to not be from Prox, given the lack of scales in his skin. He nods to you and walks away. Curious, you follow him up some stairs and into the night. Several twists and turns later, you find him at the highest house in the village. Several Djinn keep him company here. Seeing you, they ask for a friendly battle.",
         "EnemyNames": [ "Venus Djinni Christmas", "Mars Djinni Christmas", "IsaacFinal:Masked Puppeteer", "Jupiter Djinni Christmas", "Mercury Djinni Christmas" ],
         "Keywords": [ "Heal" ],
-        "Image": "",
+        "Image": "https://media.discordapp.net/attachments/896423719428304946/910238976722481182/goldensun_xmascard-digital900px.png",
         "RewardTables": [
           [
             {
@@ -10113,7 +10100,7 @@
               "Obtainable": 1,
               "Djinn": "Frostbite"
             },
-            { "Weight": 12 }
+            { "Weight": 8 }
           ],
           [
             { "Weight": 3 },
@@ -10171,7 +10158,7 @@
         ]
       },
       {
-        "Flavourtext": "'Ouch! No, stop it. Have you no respect for the elderly?'. The man settles back into his chair after you defeat him. 'Hmph! You seem more awake, at least. But I only give presents to good children! Bad children meet my friend! I found him deep in a cave... the depths of a massive desert... great battle...' Ignoring the renewed ramblings, a massive, winged, curly-horned, red-skinned demon appears behind the red-clad man. As the parents usher their children back, the demon trots towards you on enormous cloven hooves. Each footstep shakes the ground, and he brings his hammer to bear. ",
+        "Flavourtext": "'Have you no respect for the elderly?'. The man settles back into his chair after you defeat him. 'Hmph! You seem more awake, at least. But I only give presents to good children! Bad children meet my friend! I found him deep in a cave... the depths of a massive desert... great battle...' Ignoring the renewed ramblings, a massive, winged, curly-horned, red-skinned demon appears behind the red-clad man. As the parents usher their children back, the demon trots towards you on enormous cloven hooves. Each footstep shakes the ground, and he brings his hammer to bear. ",
         "EnemyNames": [ "Krampus" ],
         "Keywords": [ "Heal" ],
         "Image": "",

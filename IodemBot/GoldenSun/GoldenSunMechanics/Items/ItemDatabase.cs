@@ -31,7 +31,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             {
                 ChestQuality.Wooden,
                 new RewardGenerator<ItemRarity>(
-                    new[] { ItemRarity.Common, ItemRarity.Uncommon }, new[] { 88, 12 })
+                    new[] { ItemRarity.Common, ItemRarity.Uncommon }, new[] { 85, 15 })
             },
             {
                 ChestQuality.Normal,
@@ -73,10 +73,10 @@ namespace IodemBot.Modules.GoldenSunMechanics
                     RestockMessage = s.RestockMessage;
                 }
 
-                var longestItem = ItemsDatabase.Select(d => d.Value)
-                    .OrderByDescending(d => $"{d.Icon} - {d.Name},".Length).First();
+                var longestItem = ItemsDatabase.Values
+                    .OrderByDescending(d => $"{d.Icon.ToShortEmote()} - {d.Name},".Length).First();
                 Console.WriteLine(
-                    $"{longestItem.Icon} - {longestItem.Name}, {$"{longestItem.Icon} - {longestItem.Name},".Length}");
+                    $"{longestItem.Icon.ToShortEmote()} - {longestItem.Name}, {$"{longestItem.Icon.ToShortEmote()} - {longestItem.Name},".Length}");
 
                 _shop = GetShop();
             }

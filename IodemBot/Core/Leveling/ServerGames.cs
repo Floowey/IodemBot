@@ -177,7 +177,7 @@ namespace IodemBot.Core.Leveling
             var userAccount = EntityConverter.ConvertUser(user);
             userAccount.ServerStats.CommandsUsed++;
             UserAccountProvider.StoreUser(userAccount);
-            if (userAccount.ServerStats.CommandsUsed >= 100)
+            if (userAccount.ServerStats.CommandsUsed >= 50)
                 await GoldenSunCommands.AwardClassSeries("Scrapper Series", user, channel);
         }
 
@@ -210,9 +210,7 @@ namespace IodemBot.Core.Leveling
             UserAccountProvider.StoreUser(userAccount);
             if (oldLevel != newLevel)
             {
-                var user =
-                    (SocketGuildUser)await battleChannel.GetUserAsync(userAccount
-                        .Id); // Where(s => s. == userAccount.ID).First();
+                var user = (SocketGuildUser)await battleChannel.GetUserAsync(userAccount.Id); // Where(s => s. == userAccount.ID).First();
                 Leveling.LevelUp(userAccount, user, (SocketTextChannel)battleChannel);
             }
 
@@ -225,7 +223,7 @@ namespace IodemBot.Core.Leveling
             userAccount.ServerStats.LookedUpInformation++;
             UserAccountProvider.StoreUser(userAccount);
 
-            if (userAccount.ServerStats.LookedUpInformation >= 21)
+            if (userAccount.ServerStats.LookedUpInformation >= 17)
                 _ = GoldenSunCommands.AwardClassSeries("Apprentice Series", user, channel);
             await Task.CompletedTask;
         }
