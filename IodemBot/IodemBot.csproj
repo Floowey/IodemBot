@@ -1,242 +1,266 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk;Microsoft.NET.Sdk.Publish">
-  <PropertyGroup>
-    <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
-    <StartupObject>IodemBot.Program</StartupObject>
-    <ApplicationIcon>iodem_ZUO_icon.ico</ApplicationIcon>
-    <DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
-  </PropertyGroup>
-  <ItemGroup>
-    <None Include="..\.editorconfig" Link=".editorconfig" />
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="Accord.Statistics" Version="3.8.0" />
-    <PackageReference Include="Discord.Net" Version="2.4.0" />
-    <PackageReference Include="JsonSubTypes">
-      <Version>1.7.0</Version>
-    </PackageReference>
-    <PackageReference Include="Microsoft.CSharp">
-      <Version>4.7.0</Version>
-    </PackageReference>
-    <PackageReference Include="Microsoft.Extensions.Logging">
-      <Version>5.0.0</Version>
-    </PackageReference>
-    <PackageReference Include="Microsoft.NETCore.Platforms">
-      <Version>5.0.2</Version>
-    </PackageReference>
-    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.9" />
-    <PackageReference Include="Microsoft.Win32.Primitives">
-      <Version>4.3.0</Version>
-    </PackageReference>
-    <PackageReference Include="NETStandard.Library">
-      <Version>2.0.3</Version>
-    </PackageReference>
-    <PackageReference Include="Newtonsoft.Json">
-      <Version>12.0.3</Version>
-    </PackageReference>
-    <PackageReference Include="Serilog">
-      <Version>2.10.0</Version>
-    </PackageReference>
-    <PackageReference Include="Serilog.Extensions.Logging">
-      <Version>3.0.1</Version>
-    </PackageReference>
-    <PackageReference Include="System.AppContext">
-      <Version>4.3.0</Version>
-    </PackageReference>
-    <PackageReference Include="System.Collections">
-      <Version>4.3.0</Version>
-    </PackageReference>
-    <PackageReference Include="System.Collections.Concurrent">
-      <Version>4.3.0</Version>
-    </PackageReference>
-    <PackageReference Include="System.Collections.Immutable">
-      <Version>5.0.0</Version>
-    </PackageReference>
-    <PackageReference Include="System.ComponentModel">
-      <Version>4.3.0</Version>
-    </PackageReference>
-    <PackageReference Include="System.Console">
-      <Version>4.3.1</Version>
-    </PackageReference>
-    <PackageReference Include="System.Diagnostics.Debug">
-      <Version>4.3.0</Version>
-    </PackageReference>
-    <PackageReference Include="System.Diagnostics.DiagnosticSource">
-      <Version>5.0.1</Version>
-    </PackageReference>
-    <PackageReference Include="System.Diagnostics.Tools">
-      <Version>4.3.0</Version>
-    </PackageReference>
-    <PackageReference Include="System.Diagnostics.Tracing">
-      <Version>4.3.0</Version>
-    </PackageReference>
-    <PackageReference Include="System.Globalization">
-      <Version>4.3.0</Version>
-    </PackageReference>
-    <PackageReference Include="System.Globalization.Calendars">
-      <Version>4.3.0</Version>
-    </PackageReference>
-    <PackageReference Include="System.Interactive.Async">
-      <Version>5.0.0</Version>
-    </PackageReference>
-    <PackageReference Include="System.IO.Compression">
-      <Version>4.3.0</Version>
-    </PackageReference>
-    <PackageReference Include="System.IO.Compression.ZipFile">
-      <Version>4.3.0</Version>
-    </PackageReference>
-    <PackageReference Include="System.IO.FileSystem">
-      <Version>4.3.0</Version>
-    </PackageReference>
-    <PackageReference Include="System.Linq.Expressions">
-      <Version>4.3.0</Version>
-    </PackageReference>
-    <PackageReference Include="System.Net.Http">
-      <Version>4.3.4</Version>
-    </PackageReference>
-    <PackageReference Include="System.Net.Primitives">
-      <Version>4.3.1</Version>
-    </PackageReference>
-    <PackageReference Include="System.Net.Security">
-      <Version>4.3.2</Version>
-    </PackageReference>
-    <PackageReference Include="System.ObjectModel">
-      <Version>4.3.0</Version>
-    </PackageReference>
-    <PackageReference Include="System.Reflection">
-      <Version>4.3.0</Version>
-    </PackageReference>
-    <PackageReference Include="System.Reflection.Extensions">
-      <Version>4.3.0</Version>
-    </PackageReference>
-    <PackageReference Include="System.Reflection.Primitives">
-      <Version>4.3.0</Version>
-    </PackageReference>
-    <PackageReference Include="System.Resources.ResourceManager">
-      <Version>4.3.0</Version>
-    </PackageReference>
-    <PackageReference Include="System.Runtime">
-      <Version>4.3.1</Version>
-    </PackageReference>
-    <PackageReference Include="System.Runtime.Caching" Version="5.0.0" />
-    <PackageReference Include="System.Runtime.Extensions">
-      <Version>4.3.1</Version>
-    </PackageReference>
-    <PackageReference Include="System.Runtime.Handles">
-      <Version>4.3.0</Version>
-    </PackageReference>
-    <PackageReference Include="System.Runtime.InteropServices.RuntimeInformation">
-      <Version>4.3.0</Version>
-    </PackageReference>
-    <PackageReference Include="System.Runtime.Numerics">
-      <Version>4.3.0</Version>
-    </PackageReference>
-    <PackageReference Include="System.Security.Cryptography.Algorithms">
-      <Version>4.3.1</Version>
-    </PackageReference>
-    <PackageReference Include="System.Security.Cryptography.X509Certificates">
-      <Version>4.3.2</Version>
-    </PackageReference>
-    <PackageReference Include="System.Text.Encoding">
-      <Version>4.3.0</Version>
-    </PackageReference>
-    <PackageReference Include="System.Text.Encoding.Extensions">
-      <Version>4.3.0</Version>
-    </PackageReference>
-    <PackageReference Include="System.Text.RegularExpressions">
-      <Version>4.3.1</Version>
-    </PackageReference>
-    <PackageReference Include="System.Threading.Tasks">
-      <Version>4.3.0</Version>
-    </PackageReference>
-    <PackageReference Include="System.Xml.ReaderWriter">
-      <Version>4.3.1</Version>
-    </PackageReference>
-    <PackageReference Include="System.Xml.XDocument">
-      <Version>4.3.0</Version>
-    </PackageReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Update="Resources\Colors.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="Resources\config.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="Resources\GoldenSun\AdeptClassSeries.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="Resources\GoldenSun\Battles\archive.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="Resources\GoldenSun\Battles\bronzeFighters.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="Resources\GoldenSun\Battles\dungeons.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="Resources\GoldenSun\Battles\dungeontest.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="Resources\GoldenSun\Battles\enemies.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="Resources\GoldenSun\Battles\goldFighters.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="Resources\GoldenSun\Battles\silverFighters.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="Resources\GoldenSun\Battles\tutorialFighters.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="Resources\GoldenSun\DjinnAndSummons\AllDjinn.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="Resources\GoldenSun\DjinnAndSummons\Djinn.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="Resources\GoldenSun\DjinnAndSummons\Summons.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="Resources\GoldenSun\items.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="Resources\GoldenSun\Moves\healpsy.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="Resources\GoldenSun\Moves\offpsy.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="Resources\GoldenSun\Moves\statpsy.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="Resources\GoldenSun\shop.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="shellscripts\backupusers.sh">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="shellscripts\pullusers.sh">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="shellscripts\selfupdate.sh">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="SystemLang\alerts.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="SystemLang\enemies.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="SystemLang\quotes.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="SystemLang\results.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="SystemLang\sprites.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<TargetFramework>net5.0</TargetFramework>
+		<StartupObject></StartupObject>
+		<ApplicationIcon></ApplicationIcon>
+		<DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
+		<Version>3.0.0.0</Version>
+		<AssemblyVersion>3.0.2112.3</AssemblyVersion>
+		<Deterministic>false</Deterministic>
+		<FileVersion>3.0.0.52</FileVersion>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+	  <ShouldCreateLogs>True</ShouldCreateLogs>
+	  <AdvancedSettingsExpanded>False</AdvancedSettingsExpanded>
+	  <UpdateAssemblyVersion>False</UpdateAssemblyVersion>
+	  <UpdateAssemblyFileVersion>False</UpdateAssemblyFileVersion>
+	  <UpdateAssemblyInfoVersion>False</UpdateAssemblyInfoVersion>
+	  <AssemblyVersionSettings>None.None.None.None</AssemblyVersionSettings>
+	  <UpdatePackageVersion>False</UpdatePackageVersion>
+	  <AssemblyInfoVersionType>SettingsVersion</AssemblyInfoVersionType>
+	  <InheritWinAppVersionFrom>None</InheritWinAppVersionFrom>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+	  <ShouldCreateLogs>True</ShouldCreateLogs>
+	  <AdvancedSettingsExpanded>False</AdvancedSettingsExpanded>
+	  <UpdateAssemblyVersion>True</UpdateAssemblyVersion>
+	  <UpdateAssemblyFileVersion>True</UpdateAssemblyFileVersion>
+	  <UpdateAssemblyInfoVersion>False</UpdateAssemblyInfoVersion>
+	  <AssemblyVersionSettings>None.None.YearMonth.IncrementWithResetOnIncrease</AssemblyVersionSettings>
+	  <UpdatePackageVersion>False</UpdatePackageVersion>
+	  <AssemblyInfoVersionType>SettingsVersion</AssemblyInfoVersionType>
+	  <InheritWinAppVersionFrom>None</InheritWinAppVersionFrom>
+	  <AssemblyFileVersionSettings>None.None.None.Increment</AssemblyFileVersionSettings>
+	</PropertyGroup>
+	<ItemGroup>
+		<None Include="..\.editorconfig" Link=".editorconfig" />
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Accord.Statistics" Version="3.8.0" />
+		<PackageReference Include="Discord.Net.Labs" Version="3.4.9" />
+		<PackageReference Include="JsonSubTypes">
+			<Version>1.7.0</Version>
+		</PackageReference>
+		<PackageReference Include="Microsoft.CSharp">
+			<Version>4.7.0</Version>
+		</PackageReference>
+		<PackageReference Include="Microsoft.Extensions.Logging">
+			<Version>6.0.0</Version>
+		</PackageReference>
+		<PackageReference Include="Microsoft.NETCore.Platforms">
+			<Version>6.0.0</Version>
+		</PackageReference>
+		<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.14.0" />
+		<PackageReference Include="Microsoft.Win32.Primitives">
+			<Version>4.3.0</Version>
+		</PackageReference>
+		<PackageReference Include="NETStandard.Library">
+			<Version>2.0.3</Version>
+		</PackageReference>
+		<PackageReference Include="Newtonsoft.Json">
+			<Version>13.0.1</Version>
+		</PackageReference>
+		<PackageReference Include="Serilog">
+			<Version>2.10.0</Version>
+		</PackageReference>
+		<PackageReference Include="Serilog.Extensions.Logging">
+			<Version>3.1.0</Version>
+		</PackageReference>
+		<PackageReference Include="System.AppContext">
+			<Version>4.3.0</Version>
+		</PackageReference>
+		<PackageReference Include="System.Collections">
+			<Version>4.3.0</Version>
+		</PackageReference>
+		<PackageReference Include="System.Collections.Concurrent">
+			<Version>4.3.0</Version>
+		</PackageReference>
+		<PackageReference Include="System.Collections.Immutable">
+			<Version>6.0.0</Version>
+		</PackageReference>
+		<PackageReference Include="System.ComponentModel">
+			<Version>4.3.0</Version>
+		</PackageReference>
+		<PackageReference Include="System.Console">
+			<Version>4.3.1</Version>
+		</PackageReference>
+		<PackageReference Include="System.Diagnostics.Debug">
+			<Version>4.3.0</Version>
+		</PackageReference>
+		<PackageReference Include="System.Diagnostics.DiagnosticSource">
+			<Version>6.0.0</Version>
+		</PackageReference>
+		<PackageReference Include="System.Diagnostics.Tools">
+			<Version>4.3.0</Version>
+		</PackageReference>
+		<PackageReference Include="System.Diagnostics.Tracing">
+			<Version>4.3.0</Version>
+		</PackageReference>
+		<PackageReference Include="System.Globalization">
+			<Version>4.3.0</Version>
+		</PackageReference>
+		<PackageReference Include="System.Globalization.Calendars">
+			<Version>4.3.0</Version>
+		</PackageReference>
+		<PackageReference Include="System.Interactive.Async">
+			<Version>5.1.0</Version>
+		</PackageReference>
+		<PackageReference Include="System.IO.Compression">
+			<Version>4.3.0</Version>
+		</PackageReference>
+		<PackageReference Include="System.IO.Compression.ZipFile">
+			<Version>4.3.0</Version>
+		</PackageReference>
+		<PackageReference Include="System.IO.FileSystem">
+			<Version>4.3.0</Version>
+		</PackageReference>
+		<PackageReference Include="System.Linq.Expressions">
+			<Version>4.3.0</Version>
+		</PackageReference>
+		<PackageReference Include="System.Net.Http">
+			<Version>4.3.4</Version>
+		</PackageReference>
+		<PackageReference Include="System.Net.Primitives">
+			<Version>4.3.1</Version>
+		</PackageReference>
+		<PackageReference Include="System.Net.Security">
+			<Version>4.3.2</Version>
+		</PackageReference>
+		<PackageReference Include="System.ObjectModel">
+			<Version>4.3.0</Version>
+		</PackageReference>
+		<PackageReference Include="System.Reflection">
+			<Version>4.3.0</Version>
+		</PackageReference>
+		<PackageReference Include="System.Reflection.Extensions">
+			<Version>4.3.0</Version>
+		</PackageReference>
+		<PackageReference Include="System.Reflection.Primitives">
+			<Version>4.3.0</Version>
+		</PackageReference>
+		<PackageReference Include="System.Resources.ResourceManager">
+			<Version>4.3.0</Version>
+		</PackageReference>
+		<PackageReference Include="System.Runtime">
+			<Version>4.3.1</Version>
+		</PackageReference>
+		<PackageReference Include="System.Runtime.Caching" Version="6.0.0" />
+		<PackageReference Include="System.Runtime.Extensions">
+			<Version>4.3.1</Version>
+		</PackageReference>
+		<PackageReference Include="System.Runtime.Handles">
+			<Version>4.3.0</Version>
+		</PackageReference>
+		<PackageReference Include="System.Runtime.InteropServices.RuntimeInformation">
+			<Version>4.3.0</Version>
+		</PackageReference>
+		<PackageReference Include="System.Runtime.Numerics">
+			<Version>4.3.0</Version>
+		</PackageReference>
+		<PackageReference Include="System.Security.Cryptography.Algorithms">
+			<Version>4.3.1</Version>
+		</PackageReference>
+		<PackageReference Include="System.Security.Cryptography.X509Certificates">
+			<Version>4.3.2</Version>
+		</PackageReference>
+		<PackageReference Include="System.Text.Encoding">
+			<Version>4.3.0</Version>
+		</PackageReference>
+		<PackageReference Include="System.Text.Encoding.Extensions">
+			<Version>4.3.0</Version>
+		</PackageReference>
+		<PackageReference Include="System.Text.RegularExpressions">
+			<Version>4.3.1</Version>
+		</PackageReference>
+		<PackageReference Include="System.Threading.Tasks">
+			<Version>4.3.0</Version>
+		</PackageReference>
+		<PackageReference Include="System.Xml.ReaderWriter">
+			<Version>4.3.1</Version>
+		</PackageReference>
+		<PackageReference Include="System.Xml.XDocument">
+			<Version>4.3.0</Version>
+		</PackageReference>
+	</ItemGroup>
+	<ItemGroup>
+		<None Update="Resources\Colors.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="Resources\config.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="Resources\GoldenSun\AdeptClassSeries.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="Resources\GoldenSun\Battles\archive.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="Resources\GoldenSun\Battles\bronzeFighters.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="Resources\GoldenSun\Battles\dungeons.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="Resources\GoldenSun\Battles\dungeontest.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="Resources\GoldenSun\Battles\enemies.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="Resources\GoldenSun\Battles\goldFighters.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="Resources\GoldenSun\Battles\silverFighters.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="Resources\GoldenSun\Battles\tutorialFighters.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="Resources\GoldenSun\DjinnAndSummons\AllDjinn.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="Resources\GoldenSun\DjinnAndSummons\Djinn.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="Resources\GoldenSun\DjinnAndSummons\Summons.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="Resources\GoldenSun\items.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="Resources\GoldenSun\Moves\healpsy.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="Resources\GoldenSun\Moves\offpsy.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="Resources\GoldenSun\Moves\statpsy.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="Resources\GoldenSun\shop.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="shellscripts\backupusers.sh">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="shellscripts\pullusers.sh">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="shellscripts\selfupdate.sh">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="SystemLang\enemies.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="SystemLang\quotes.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="SystemLang\results.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="SystemLang\sprites.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
 </Project>

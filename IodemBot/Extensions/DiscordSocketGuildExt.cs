@@ -10,7 +10,7 @@ namespace IodemBot
     {
         public static async Task<ITextChannel> GetOrCreateTextChannelAsync(this SocketGuild guild, string channelName, Action<TextChannelProperties> func = null)
         {
-            var existingChannel = guild.TextChannels.Where(c => c.Name == channelName.ToLower().Replace(' ', '-')).FirstOrDefault();
+            var existingChannel = guild.TextChannels.FirstOrDefault(c => c.Name == channelName.ToLower().Replace(' ', '-'));
             if (existingChannel != null)
             {
                 return existingChannel;

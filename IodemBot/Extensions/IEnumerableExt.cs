@@ -3,16 +3,11 @@ using System.Linq;
 
 namespace IodemBot.Extensions
 {
-    public static class IEnumerableExt
+    public static class EnumerableExt
     {
         public static T Random<T>(this IEnumerable<T> ts)
         {
-            if (ts.Count() == 0)
-            {
-                return default;
-            }
-
-            return ts.ElementAt(Global.RandomNumber(0, ts.Count()));
+            return !ts.Any() ? default : ts.ElementAt(Global.RandomNumber(0, ts.Count()));
         }
     }
 }

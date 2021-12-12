@@ -78,3 +78,7 @@ dkms.conf
 /IodemBot/Dockerfile
 /IodemBot/Properties
 /MigrationBackup/1c82b64e/IodemBot
+.vscode
+IodemBot/Resources/Accounts
+IodemBot/Resources/shop.json
+IodemBot/Logs

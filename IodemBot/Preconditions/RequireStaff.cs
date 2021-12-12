@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Discord.Commands;
 using Discord.WebSocket;
 
-namespace Iodembot.Preconditions
+namespace IodemBot.Preconditions
 {
     // Inherit from PreconditionAttribute
     public class RequireStaff : PreconditionAttribute
@@ -20,7 +20,7 @@ namespace Iodembot.Preconditions
                 }
                 else
                 {
-                    return Task.FromResult(PreconditionResult.FromError($"You must be staff to run this command."));
+                    return Task.FromResult(PreconditionResult.FromError("You must be staff to run this command."));
                 }
             }
             else

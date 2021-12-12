@@ -1,7 +1,7 @@
 {
   "Cure": {
     "name": "Cure",
-    "targetType": 1,
+    "TargetType": "PartySingle",
     "emote": "<:Cure:536957799670743070>",
     "range": 1,
     "element": 0,
@@ -12,7 +12,7 @@
   },
   "Cure Well": {
     "name": "Cure Well",
-    "targetType": 1,
+    "TargetType": "PartySingle",
     "emote": "<:Cure_Well:536957817563774996>",
     "range": 1,
     "element": 0,
@@ -23,7 +23,7 @@
   },
   "Potent Cure": {
     "name": "Potent Cure",
-    "targetType": 1,
+    "TargetType": "PartySingle",
     "emote": "<:Potent_Cure:536957933217644554>",
     "range": 1,
     "element": 0,
@@ -34,7 +34,7 @@
   },
   "Aura": {
     "name": "Aura",
-    "targetType": 2,
+    "TargetType": "PartyAll",
     "emote": "<:Aura:536963105226489865>",
     "range": 4,
     "element": 1,
@@ -45,7 +45,7 @@
   },
   "Healing Aura": {
     "name": "Healing Aura",
-    "targetType": 2,
+    "TargetType": "PartyAll",
     "emote": "<:Healing_Aura:536963179125932032>",
     "range": 4,
     "element": 1,
@@ -56,7 +56,7 @@
   },
   "Cool Aura": {
     "name": "Cool Aura",
-    "targetType": 2,
+    "TargetType": "PartyAll",
     "emote": "<:Cool_Aura:536963140244602893>",
     "range": 4,
     "element": 1,
@@ -67,7 +67,7 @@
   },
   "Boon": {
     "name": "Boon",
-    "targetType": 1,
+    "TargetType": "PartySingle",
     "emote": "<:Boon:551203547098906624>",
     "range": 3,
     "element": 2,
@@ -83,7 +83,7 @@
   },
   "Nature's Boon": {
     "name": "Nature's Boon",
-    "targetType": 1,
+    "TargetType": "PartySingle",
     "emote": "<:Natures_Boon:537001159630782465>",
     "range": 3,
     "element": 2,
@@ -99,7 +99,7 @@
   },
   "Vital Boon": {
     "name": "Vital Boon",
-    "targetType": 1,
+    "TargetType": "PartySingle",
     "emote": "<:Vital_Boon:551203547274936324>",
     "range": 3,
     "element": 2,
@@ -115,7 +115,7 @@
   },
   "Fresh Breeze": {
     "name": "Fresh Breeze",
-    "targetType": 2,
+    "TargetType": "PartyAll",
     "emote": "<:Fresh_Breeze:551205173159002126>",
     "range": 3,
     "element": 2,
@@ -126,7 +126,7 @@
   },
   "Healthy Wind": {
     "name": "Healthy Wind",
-    "targetType": 2,
+    "TargetType": "PartyAll",
     "emote": "<:Healthy_Wind:551205173167521811>",
     "range": 3,
     "element": 2,
@@ -137,7 +137,7 @@
   },
   "Healing Gust": {
     "name": "Healing Gust",
-    "targetType": 2,
+    "TargetType": "PartyAll",
     "emote": "<:Healing_Gust:551205173154938899>",
     "range": 3,
     "element": 2,
@@ -148,7 +148,7 @@
   },
   "Ply": {
     "name": "Ply",
-    "targetType": 1,
+    "TargetType": "PartySingle",
     "emote": "<:Ply:536969730636906498>",
     "range": 1,
     "element": 3,
@@ -159,7 +159,7 @@
   },
   "Ply Well": {
     "name": "Ply Well",
-    "targetType": 1,
+    "TargetType": "PartySingle",
     "emote": "<:Ply_Well:536969749859532800>",
     "range": 1,
     "element": 3,
@@ -170,7 +170,7 @@
   },
   "Pure Ply": {
     "name": "Pure Ply",
-    "targetType": 1,
+    "TargetType": "PartySingle",
     "emote": "<:Pure_Ply:536969776036315136>",
     "range": 1,
     "element": 3,
@@ -181,7 +181,7 @@
   },
   "Earnest Ply": {
     "name": "Earnest Ply",
-    "targetType": 1,
+    "TargetType": "PartySingle",
     "emote": "<:Pure_Ply:536969776036315136>",
     "range": 1,
     "element": 3,
@@ -192,7 +192,7 @@
   },
   "Wish": {
     "name": "Wish",
-    "targetType": 2,
+    "TargetType": "PartyAll",
     "emote": "<:Wish:536969825793212436>",
     "range": 3,
     "element": 3,
@@ -202,7 +202,7 @@
   },
   "Wish Well": {
     "name": "Wish Well",
-    "targetType": 2,
+    "TargetType": "PartyAll",
     "emote": "<:Wish_Well:536969842016911381>",
     "range": 3,
     "element": 3,
@@ -213,7 +213,7 @@
   },
   "Pure Wish": {
     "name": "Pure Wish",
-    "targetType": 2,
+    "TargetType": "PartyAll",
     "emote": "<:Pure_Wish:536969896265777162>",
     "range": 3,
     "element": 3,
@@ -224,7 +224,7 @@
   },
   "Elder Wood": {
     "name": "Elder Wood",
-    "targetType": 2,
+    "TargetType": "PartyAll",
     "emote": "<:Estre_Wood:551067651670016020>",
     "range": 3,
     "element": 3,
@@ -235,7 +235,7 @@
   },
   "Estre Wood": {
     "name": "Estre Wood",
-    "targetType": 2,
+    "TargetType": "PartyAll",
     "emote": "<:Estre_Wood:551067651670016020>",
     "range": 3,
     "element": 3,
@@ -246,7 +246,7 @@
   },
   "Nut": {
     "name": "Nut",
-    "targetType": 1,
+    "TargetType": "PartySingle",
     "emote": "<:Nut:548636122402783243>",
     "range": 1,
     "element": 3,
@@ -257,7 +257,7 @@
   },
   "Herb": {
     "name": "Herb",
-    "targetType": 1,
+    "TargetType": "PartySingle",
     "emote": "<:Herb:543043292187590659>",
     "range": 1,
     "element": 3,
@@ -268,7 +268,7 @@
   },
   "Worms": {
     "name": "Worms",
-    "targetType": 0,
+    "TargetType": "PartySelf",
     "emote": ":bug:",
     "range": 1,
     "element": 0,
@@ -279,7 +279,7 @@
   },
   "Recovery": {
     "name": "Recovery",
-    "targetType": 0,
+    "TargetType": "PartySelf",
     "emote": ":star2:",
     "range": 1,
     "element": 0,
@@ -289,7 +289,7 @@
   },
   "Spasm": {
     "name": "Spasm",
-    "targetType": 0,
+    "TargetType": "PartySelf",
     "emote": ":star2:",
     "range": 1,
     "element": 0,
@@ -299,7 +299,7 @@
   },
   "Soothing Star": {
     "name": "Soothing Star",
-    "targetType": 2,
+    "TargetType": "PartyAll",
     "emote": ":star2:",
     "range": 1,
     "element": 0,
