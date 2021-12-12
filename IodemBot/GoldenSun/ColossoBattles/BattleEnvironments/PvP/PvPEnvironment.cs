@@ -475,7 +475,7 @@ namespace IodemBot.ColossoBattles
 
         protected virtual async Task WriteSummonsInit()
         {
-            _ = WriteSummonsReactions();
+            //_ = WriteSummonsReactions();
             await WriteSummons();
         }
 
