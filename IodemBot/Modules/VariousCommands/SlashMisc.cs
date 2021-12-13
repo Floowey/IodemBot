@@ -189,7 +189,7 @@ namespace IodemBot.Modules.VariousCommands
         {
             var action = ServiceProvider.GetRequiredService<ActionService>();
             await action.StopSlash();
-            await Context.ReplyWithMessageAsync(EphemeralRule, "https://i.redd.it/l6d5vsyne6a41.jpg");
+            await Context.ReplyWithMessageAsync(EphemeralRule, "https://media.discordapp.net/attachments/535209634408169492/919998099525623838/unknown.png");
         }
 
         protected override Task<(bool Success, string Message)> CheckCustomPreconditionsAsync()

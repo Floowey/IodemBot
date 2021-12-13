@@ -223,7 +223,7 @@ namespace IodemBot
         HeadWear,
         UnderWear,
         FootWear,
-        Accessoire,
+        Accessory,
         Other
     }
 }
