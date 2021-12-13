@@ -33,7 +33,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             { ItemCategory.ChestWear, "<:Armors:572526109942611978>" },
             { ItemCategory.UnderWear, "<:Shirts:572526110173167616>" },
             { ItemCategory.FootWear, "<:Boots:572526109975904257>" },
-            { ItemCategory.Accessoire, "<:Rings:572526110060052482>" }
+            { ItemCategory.Accessory, "<:Rings:572526110060052482>" }
         };
 
         public static readonly Dictionary<ItemCategory, string> MageIcons = new()
@@ -44,7 +44,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             { ItemCategory.ChestWear, "<:Robes:572526110068441118>" },
             { ItemCategory.UnderWear, "<:Shirts:572526110173167616>" },
             { ItemCategory.FootWear, "<:Boots:572526109975904257>" },
-            { ItemCategory.Accessoire, "<:Rings:572526110060052482>" }
+            { ItemCategory.Accessory, "<:Rings:572526110060052482>" }
         };
 
         public static readonly uint RemoveCursedCost = 5000;

@@ -26,14 +26,14 @@ namespace IodemBot.Modules.GoldenSunMechanics
             { ItemCategory.HeadWear, new[] { ItemType.Helmet, ItemType.Hat, ItemType.Circlet, ItemType.Crown } },
             { ItemCategory.UnderWear, new[] { ItemType.UnderWear } },
             { ItemCategory.FootWear, new[] { ItemType.Boots, ItemType.Greave } },
-            { ItemCategory.Accessoire, new[] { ItemType.Ring, ItemType.Misc } },
+            { ItemCategory.Accessory, new[] { ItemType.Ring, ItemType.Misc } },
             { ItemCategory.Other, new[] { ItemType.Collectible } }
         };
 
         public static readonly ItemCategory[] Equippables =
         {
             ItemCategory.Weapon, ItemCategory.ArmWear, ItemCategory.ChestWear, ItemCategory.HeadWear,
-            ItemCategory.UnderWear, ItemCategory.FootWear, ItemCategory.Accessoire
+            ItemCategory.UnderWear, ItemCategory.FootWear, ItemCategory.Accessory
         };
 
         [JsonIgnore] internal bool IsAnimated = false;

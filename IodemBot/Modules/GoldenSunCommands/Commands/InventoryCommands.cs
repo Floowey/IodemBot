@@ -485,7 +485,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             if (cq == ChestQuality.Daily)
                 embed.WithFooter(
                     $"Current Reward: {inv.DailiesInARow % dailyRewards.Length + 1}/{dailyRewards.Length} | Overall Streak: {inv.DailiesInARow + 1}");
-            embed.WithDescription($"{Emotes.GetIcon(cq)} You found a {item.Name} {item.IconDisplay}{(autoSold ? $"(Autosold)" : "")}");
+            embed.WithDescription($"{Emotes.GetIcon(cq)} You found a {item.Name} {item.IconDisplay}{(autoSold ? $" (Autosold)" : "")}");
 
             await Task.Delay((int)cq * 700);
             _ = msg.ModifyAsync(m => m.Embed = embed.Build());
