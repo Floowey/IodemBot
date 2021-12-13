@@ -488,7 +488,8 @@ namespace IodemBot.ColossoBattles
 
             var embed = new EmbedBuilder();
             //.WithThumbnailUrl("https://cdn.discordapp.com/attachments/497696510688100352/640300243820216336/unknown.png");
-
+            var allEls = new[] { Element.Venus, Element.Mars, Element.Jupiter, Element.Mercury };
+            var necessaryFields = allEls.Count(el => allDjinn.OfElement(el).Any());
             foreach (var el in new[] { Element.Venus, Element.Mars, Element.Jupiter, Element.Mercury })
                 if (allDjinn.OfElement(el).Any())
                 {
@@ -496,11 +497,11 @@ namespace IodemBot.ColossoBattles
                     var recovery = string.Join(" ", recoveryDjinn.OfElement(el).Select(d => d.Emote));
                     embed.WithColor(Colors.Get(standbyDjinn.Select(e => e.Element.ToString()).ToList()));
 
-                    embed.AddField(Emotes.GetIcon(el), ($"{standby}" +
-                                                        $"{(!standby.IsNullOrEmpty() && !recovery.IsNullOrEmpty() ? "\n" : "\u200b")}" +
-                                                        $"{(recovery.IsNullOrEmpty() ? "" : $"({recovery})")}").Trim(),
-                        true);
-                    if (embed.Fields.Count == 2 || embed.Fields.Count == 5) embed.AddField("\u200b", "\u200b", true);
+                    var djinnField = $"\u200B{standby}{(recovery.IsNullOrEmpty() ? "" : $"\u200B({recovery})")}";
+
+                    embed.AddField($"\u200B{Emotes.GetIcon(el)}", djinnField.IsNullOrEmpty() ? "\u200b" : djinnField, true);
+                    if (necessaryFields > 2 && embed.Fields.Count == 2 || embed.Fields.Count == 5)
+                        embed.AddField("\u200b", "\u200b", true);
                 }
 
             return embed;
