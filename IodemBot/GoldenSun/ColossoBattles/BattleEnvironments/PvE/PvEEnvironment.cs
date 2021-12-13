@@ -473,7 +473,7 @@ namespace IodemBot.ColossoBattles
                     //embed.AddField(Emotes.GetIcon(el), ($"{standby}" +
                     //    $"{(!standby.IsNullOrEmpty() && !recovery.IsNullOrEmpty() ? "\n" : "\u200b")}" +
                     //    $"{(recovery.IsNullOrEmpty() ? "" : $"({recovery})")}").Trim(), true);
-                    embed.AddField($"\u200B{Emotes.GetIcon(el)}", djinnField.IsNullOrEmpty() ? "\u200b" : djinnField);
+                    embed.AddField($"\u200B{Emotes.GetIcon(el)}", djinnField.IsNullOrEmpty() ? "\u200b" : djinnField, true);
                     if (necessaryFields > 2 && embed.Fields.Count == 2 || embed.Fields.Count == 5)
                         embed.AddField("\u200b", "\u200b", true);
                 }
