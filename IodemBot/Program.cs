@@ -207,7 +207,7 @@ namespace IodemBot
             return new ServiceCollection()
                 .AddSingleton(new DiscordSocketClient(new DiscordSocketConfig
                 {
-                    GatewayIntents = GatewayIntents.AllUnprivileged | GatewayIntents.GuildPresences,
+                    GatewayIntents = GatewayIntents.AllUnprivileged | GatewayIntents.GuildPresences | GatewayIntents.GuildMembers,
                     AlwaysDownloadUsers = true,
                     LogLevel = LogSeverity.Info,
                     DefaultRetryMode = RetryMode.AlwaysRetry
