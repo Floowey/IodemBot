@@ -468,8 +468,11 @@ namespace IodemBot.Modules.GoldenSunMechanics
             }
 
             inv.Add(item);
-            UserAccountProvider.StoreUser(user);
+            var autoSold = false;
+            if (user.Preferences.AutoSell.Contains(item.Rarity))
+                autoSold = inv.Sell(item.Name);
 
+            UserAccountProvider.StoreUser(user);
             var embed = new EmbedBuilder();
 
             embed.WithDescription($"Opening {cq} Chest {Emotes.GetIcon(cq)}...");
@@ -482,7 +485,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             if (cq == ChestQuality.Daily)
                 embed.WithFooter(
                     $"Current Reward: {inv.DailiesInARow % dailyRewards.Length + 1}/{dailyRewards.Length} | Overall Streak: {inv.DailiesInARow + 1}");
-            embed.WithDescription($"{Emotes.GetIcon(cq)} You found a {item.Name} {item.IconDisplay}");
+            embed.WithDescription($"{Emotes.GetIcon(cq)} You found a {item.Name} {item.IconDisplay}{(autoSold ? $"(Autosold)" : "")}");
 
             await Task.Delay((int)cq * 700);
             _ = msg.ModifyAsync(m => m.Embed = embed.Build());
