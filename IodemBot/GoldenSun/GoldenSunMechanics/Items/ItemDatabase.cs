@@ -152,7 +152,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
             _shop.Sort();
             if (_shop.HasDuplicate || !(_shop.HasItem(ItemCategory.UnderWear) ||
-                                        _shop.HasItem(ItemCategory.Accessoire) || _shop.HasItem(ItemCategory.FootWear)))
+                                        _shop.HasItem(ItemCategory.Accessory) || _shop.HasItem(ItemCategory.FootWear)))
             {
                 RandomizeShop();
             }
