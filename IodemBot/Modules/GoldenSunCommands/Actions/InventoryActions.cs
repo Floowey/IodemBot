@@ -303,12 +303,13 @@ namespace IodemBot.Modules
             if (!string.IsNullOrEmpty(category))
             {
                 var itemOptions = new List<SelectMenuOptionBuilder>();
-                foreach (var item in itemsForGear.Where(i => category.Equals(i.Category.ToString())))
+                foreach (var item in itemsForGear.Where(i => category.Equals(i.Category.ToString()) && i.Name.Length < SelectMenuOptionBuilder.MaxSelectValueLength))
                 {
                     var defaultSel = equippedGear.Contains(item);
                     if (!itemOptions.Any(o => o.Value.Equals(item.Name)))
                     {
                         var desc = item.AddStatsOnEquip.NonZerosToString()[1..^1];
+                        desc = desc.Length <= SelectMenuOptionBuilder.MaxDescriptionLength ? desc : null;
                         itemOptions.Add(new SelectMenuOptionBuilder($"{item.Name}", $"{item.Name}", description: desc.IsNullOrEmpty() ? null : desc,
                             emote: Emote.Parse(item.IconDisplay), isDefault: defaultSel));
                     }
@@ -1023,7 +1024,7 @@ namespace IodemBot.Modules
         private MessageComponent Comp()
         {
             var account = EntityConverter.ConvertUser(Context.User);
-            IEnumerable<Item> ItemsInInv = account.Inv.OrderBy(i => i.Price);
+            IEnumerable<Item> ItemsInInv = account.Inv.OrderBy(i => i.Price).Where(i => i.Name.Length + 10 < SelectMenuOptionBuilder.MaxSelectValueLength);
 
             var builder = new ComponentBuilder();
             int cnt = 0;
