@@ -453,9 +453,9 @@ namespace IodemBot.ColossoBattles
             return string.Join(" - ", relevantMoves);
         }
 
-        public bool HasCondition(Condition con)
+        public bool HasCondition(params Condition[] con)
         {
-            return _conditions.Contains(con);
+            return _conditions.Intersect(con).Any();
         }
 
         public List<string> Heal(uint healHp)
@@ -559,12 +559,12 @@ namespace IodemBot.ColossoBattles
             DeathCurseCounter = 4;
         }
 
-        public void RemoveCondition(Condition con)
+        public void RemoveCondition(params Condition[] con)
         {
-            if (_conditions.Contains(con))
+            foreach (var c in con)
             {
-                _conditions.Remove(con);
-                if (con == Condition.DeathCurse) DeathCurseCounter = 4;
+                _conditions.Remove(c);
+                if (c == Condition.DeathCurse) DeathCurseCounter = 4;
             }
         }
 

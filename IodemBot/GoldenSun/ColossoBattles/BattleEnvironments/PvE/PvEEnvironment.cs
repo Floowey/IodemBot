@@ -396,6 +396,7 @@ namespace IodemBot.ColossoBattles
 
         protected virtual async Task WriteEnemiesInit()
         {
+            await EnemyMessage.RemoveAllReactionsAsync();
             await WriteEnemies();
         }
 

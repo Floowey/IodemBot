@@ -12289,6 +12289,15 @@
       "jupiteratk": 95,
       "mercuryatk": 85
     },
+    "isImmuneToConditions": [
+      "Stun",
+      "Poison",
+      "Venom",
+      "Delusion",
+      "Sleep",
+      "DeathCurse",
+      "Haunt"
+    ],
     "extraturns": 1,
     "hasDefend": false
   }

@@ -119,9 +119,10 @@ namespace IodemBot.Modules
                 .Build());
         }
 
-        public enum LoadoutAction { Show, Save, Load, Remove };
+        public enum LoadoutAction
+        { Show, Save, Load, Remove };
 
-        [Command("loadout"), Alias("LoadoutsList")]
+        [Command("loadout"), Alias("Loadouts")]
         [RequireUserServer]
         public async Task LoadoutTask(LoadoutAction action = LoadoutAction.Show, [Remainder] string loadoutName = "")
         {

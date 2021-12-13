@@ -10007,7 +10007,7 @@
       },
       {
         "Flavourtext": "As you approach the village of Prox in the frozen north, you see it is brightly lit. You get closer and notice thousands of candles, braziers, and colored lights made of Psynergy! As you stare at the beautiful sight, a few more monsters notice you.",
-        "EnemyNames": [ "Grisly1:Bear", "MolochSummon", "Grisly1:Bear" ],
+        "EnemyNames": [ "Grisly 1:Bear", "MolochSummon:Abominable Snowman", "Grisly 1:Bear" ],
         "Image": "",
         "RewardTables": [
           [
