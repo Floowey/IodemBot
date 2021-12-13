@@ -516,7 +516,7 @@ namespace IodemBot.Modules
             var builder = new ComponentBuilder();
             List<SelectMenuOptionBuilder> options = new();
             foreach (var item in Shop)
-                options.Add(new SelectMenuOptionBuilder($"{item.Name} - {item.Price}", $"{item.Itemname}",
+                options.Add(new SelectMenuOptionBuilder($"{item.Name}", $"{item.Itemname}", description: $"{item.Price} coins",
                     emote: Emote.Parse(item.IconDisplay)));
             builder.WithSelectMenu(nameof(ShopTake), options, "Select an item to buy it.");
 
