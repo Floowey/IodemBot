@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using IodemBot.ColossoBattles;
 using IodemBot.Extensions;
@@ -9,14 +10,26 @@ namespace IodemBot.Modules.GoldenSunMechanics
     {
         public override string Type => "Restore";
 
+        public static Condition[] defaultConditions =
+        {
+            Condition.Poison,
+            Condition.Venom,
+            Condition.Seal,
+            Condition.Sleep,
+            Condition.Stun,
+            Condition.DeathCurse
+        };
+
+        public Condition[] CureConditions { get; set; } = Array.Empty<Condition>();
+        private Condition[] _targetConditions => CureConditions.Any() ? CureConditions : defaultConditions;
+
         public override List<string> Apply(ColossoFighter user, ColossoFighter target)
         {
             if (!target.IsAlive)
-            {
                 return new List<string>();
-            }
 
-            target.RemoveAllConditions();
+            target.RemoveCondition(_targetConditions);
+
             if (user is PlayerFighter p)
             {
                 p.BattleStats.Supported++;
@@ -37,7 +50,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         protected override bool InternalValidSelection(ColossoFighter user)
         {
-            return user.Party.Any(s => s.HasCurableCondition);
+            return user.Party.Any(s => s.HasCondition(_targetConditions));
         }
     }
 }

@@ -442,7 +442,7 @@ namespace IodemBot.Modules
             if (!item.IsEquippableBy(ArchType))
                 return Task.FromResult((false, $"{ArchType}s cannot equip {item.ItemType}s"));
 
-            if (item.ExclusiveTo.Length > 0 && !item.ExclusiveTo.Contains(account.Element))
+            if (item.ExclusiveTo.Any() && !item.ExclusiveTo.Contains(account.Element))
                 return Task.FromResult((false, $"A {account.Element} cannot equip {item.Name}"));
 
             if (inv.GetGear(ArchType).FirstOrDefault(i => i.Category == item.Category)?.IsCursed ?? false)
@@ -603,7 +603,10 @@ namespace IodemBot.Modules
             Description = "Open a chest",
             FillParametersAsync = options =>
             {
-                if (options != null) ChestQuality = Enum.Parse<ChestQuality>((string)options.FirstOrDefault().Value);
+                if (options != null)
+                {
+                    ChestQuality = Enum.Parse<ChestQuality>((string)options.FirstOrDefault().Value);
+                }
 
                 return Task.CompletedTask;
             }
@@ -651,6 +654,7 @@ namespace IodemBot.Modules
         private async Task OpenChestAsync(UserAccount account)
         {
             var inv = account.Inv;
+
             inv.TryOpenChest(ChestQuality.Value, out var item, account.LevelNumber);
             inv.Add(item);
             var autoSold = false;
@@ -722,6 +726,7 @@ namespace IodemBot.Modules
             var inv = account.Inv;
 
             if (!inv.HasAnyChests()) return Task.FromResult((false, "You don't have any chests."));
+
             ChestQuality ??= inv.NextChestQuality();
             if (!inv.HasChest(ChestQuality.Value))
                 return Task.FromResult((false, $"You don't have any {ChestQuality} chests"));

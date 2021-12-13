@@ -127,7 +127,7 @@ namespace IodemBot.Modules
                 }
 
                 if (options.Count > 0)
-                    builder.WithSelectMenu($"#{nameof(DjinnEquipAction)}.{element}", options,
+                    builder.WithSelectMenu($"#{nameof(DjinnEquipAction)}.{element}", options, placeholder:$"{element} Djinn",
                         maxValues: Math.Min(options.Count, 2));
             }
 

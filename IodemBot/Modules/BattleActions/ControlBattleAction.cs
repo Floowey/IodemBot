@@ -111,6 +111,14 @@ namespace IodemBot.Modules.BattleActions
         {
             Player.SelectedMove.TargetNr = SelectedTargetPosition;
             Player.HasSelected = true;
+            if (Player.Party.Count > 1)
+            { // Only update the select menu if its a group battle
+                if (Player.SelectedMove is Summon)
+                    await Context.UpdateReplyAsync(p => p.Components = ControlBattleComponents.GetSummonsComponent(Player));
+                else
+                    await Context.UpdateReplyAsync(p =>
+                        p.Components = ControlBattleComponents.GetPlayerControlComponents(Player));
+            }
             _ = Battle.ProcessTurn(false);
             await Task.CompletedTask;
         }
@@ -125,10 +133,10 @@ namespace IodemBot.Modules.BattleActions
 
     public static class ControlBattleComponents
     {
-        public static MessageComponent GetControlComponent(bool pvP = false)
+        public static MessageComponent GetControlComponent(bool PvP = false)
         {
             ComponentBuilder builder = new();
-            if (pvP)
+            if (PvP)
             {
                 builder.WithButton("Join Team A", $"{nameof(JoinBattleAction)}.A", ButtonStyle.Success,
                     Emotes.GetEmote("JoinBattle"));
@@ -160,19 +168,22 @@ namespace IodemBot.Modules.BattleActions
                     $"{nameof(SelectMoveAction)}.{move.Name}", style, move.GetEmote());
             }
 
-            if (!player.HasSelected && player.SelectedMove != null)
+            if (player.SelectedMove != null)
             {
-                List<SelectMenuOptionBuilder> options = new();
                 var team = player.SelectedMove.TargetType == TargetType.PartySingle ? player.Party : player.Enemies;
+                if (team.Count == 1)
+                    return builder.Build();
+
+                List<SelectMenuOptionBuilder> options = new();
                 foreach (var f in team)
                     options.Add(new SelectMenuOptionBuilder
                     {
                         Label = $"{f.Name}",
                         Value = $"{options.Count}",
-                        Emote = f.IsAlive ? null : Emotes.GetEmote("Dead")
+                        Emote = f.IsAlive ? null : Emotes.GetEmote("Dead"),
+                        IsDefault = player.HasSelected && team.IndexOf(f) == player.SelectedMove.TargetNr
                     });
-                builder.WithSelectMenu($"{nameof(SelectTargetAction)}", options, "Select a Target",
-                    disabled: player.HasSelected);
+                builder.WithSelectMenu($"{nameof(SelectTargetAction)}", options, "Select a Target");
             }
 
             return builder.Build();
@@ -196,7 +207,12 @@ namespace IodemBot.Modules.BattleActions
                 List<SelectMenuOptionBuilder> options = new();
                 var team = player.SelectedMove.TargetType == TargetType.PartySingle ? player.Party : player.Enemies;
                 foreach (var f in team)
-                    options.Add(new SelectMenuOptionBuilder { Label = $"{f.Name}", Value = $"{options.Count}" });
+                    options.Add(new SelectMenuOptionBuilder
+                    {
+                        Label = $"{f.Name}",
+                        Value = $"{options.Count}",
+                        Emote = f.IsAlive ? null : Emotes.GetEmote("Dead")
+                    });
                 builder.WithSelectMenu($"{nameof(SelectTargetAction)}", options, "Select a Target",
                     disabled: player.HasSelected);
             }

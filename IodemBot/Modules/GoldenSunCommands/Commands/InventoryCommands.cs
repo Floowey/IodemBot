@@ -523,7 +523,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
             var selectedItem = inv.GetItem(item);
 
-            if (!selectedItem.ExclusiveTo?.Contains(account.Element) ?? false)
+            if (selectedItem.ExclusiveTo.Any() && !selectedItem.ExclusiveTo.Contains(account.Element))
             {
                 _ = Context.Channel.SendMessageAsync(embed: new EmbedBuilder()
                     .WithColor(Colors.Get("Error"))

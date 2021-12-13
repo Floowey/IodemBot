@@ -57,12 +57,12 @@ namespace IodemBot
             var oneCell = (float)100 / length;
             for (int i = 0; i < percent / oneCell - 1; i++)
                 s.Add(progressBarEmotes.Last().emote);
-            if (percent%oneCell>0.1 ||percent ==0)
+            if (percent % oneCell > 0.1 || percent == 0)
                 s.Add(progressBarEmotes.Last(v => (percent % oneCell) / oneCell * 100 >= v.value).emote);
             else
                 s.Add(progressBarEmotes.Last().emote);
 
-            while(s.Count<length)
+            while (s.Count < length)
                 s.Add(progressBarEmotes.First().emote);
             return string.Join("", s);
         }

@@ -216,7 +216,7 @@ namespace IodemBot.Modules
                 if (idOptions != null && idOptions.Any() && (idOptions.FirstOrDefault() is string s && !s.IsNullOrEmpty()))
                 {
                     SelectedElement = Enum.Parse<Element>((string)idOptions.FirstOrDefault());
-                    if (idOptions.Any())
+                    if (idOptions.Count() == 2)
                         SelectedClass = (string)idOptions.ElementAt(1);
                 }
 
