@@ -10,25 +10,26 @@ namespace IodemBot.Modules.GoldenSunMechanics
     {
         public override string Type => "Restore";
 
-        public static Condition[] defaultConditions =
+        public static readonly Condition[] defaultConditions =
         {
             Condition.Poison,
             Condition.Venom,
             Condition.Seal,
             Condition.Sleep,
             Condition.Stun,
-            Condition.DeathCurse
+            Condition.DeathCurse,
+            Condition.Delusion
         };
 
         public Condition[] CureConditions { get; set; } = Array.Empty<Condition>();
-        private Condition[] _targetConditions => CureConditions.Any() ? CureConditions : defaultConditions;
+        private Condition[] TargetConditions => CureConditions.Any() ? CureConditions : defaultConditions;
 
         public override List<string> Apply(ColossoFighter user, ColossoFighter target)
         {
             if (!target.IsAlive)
                 return new List<string>();
 
-            target.RemoveCondition(_targetConditions);
+            target.RemoveCondition(TargetConditions);
 
             if (user is PlayerFighter p)
             {
@@ -50,7 +51,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         protected override bool InternalValidSelection(ColossoFighter user)
         {
-            return user.Party.Any(s => s.HasCondition(_targetConditions));
+            return user.Party.Any(s => s.HasCondition(TargetConditions));
         }
     }
 }

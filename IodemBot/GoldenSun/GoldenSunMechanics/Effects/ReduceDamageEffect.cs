@@ -31,7 +31,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         protected override bool InternalValidSelection(ColossoFighter user)
         {
-            if (base.InternalValidSelection(user)) return user.Party.Count(t => t.IsAlive) > 1;
+            if (base.InternalValidSelection(user))
+                return user is PlayerFighter || user.Party.Count(t => t.IsAlive) > 1;
             return false;
         }
 

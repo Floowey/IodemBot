@@ -1186,6 +1186,7 @@
           "Astral Blast",
           "Gaia",
           "Dull",
+          "Weaken",
           "Cure Well"
         ],
         "statMultipliers": {
@@ -1203,7 +1204,7 @@
           "Mother Gaia",
           "Dull",
           "Blunt",
-          "Impact",
+          "Weaken",
           "Cure Well"
         ],
         "statMultipliers": {
@@ -1221,8 +1222,8 @@
           "Mother Gaia",
           "Dull",
           "Blunt",
-          "Impact",
-          "High Impact",
+          "Weaken",
+          "Enfeeble",
           "Potent Cure"
         ],
         "statMultipliers": {
@@ -1240,8 +1241,8 @@
           "Grand Gaia",
           "Dull",
           "Blunt",
-          "Impact",
-          "High Impact",
+          "Weaken",
+          "Enfeeble",
           "Potent Cure"
         ],
         "statMultipliers": {
