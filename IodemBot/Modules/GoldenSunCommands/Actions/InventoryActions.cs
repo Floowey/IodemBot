@@ -604,7 +604,7 @@ namespace IodemBot.Modules
             Description = "Open a chest",
             FillParametersAsync = options =>
             {
-                if (options != null)
+                if (options != null && options.Any())
                 {
                     ChestQuality = Enum.Parse<ChestQuality>((string)options.FirstOrDefault().Value);
                 }
