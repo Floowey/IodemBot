@@ -10221,5 +10221,39 @@
         ]
       }
     ]
+  },
+  "Debug Room": {
+    "name": "Debug Room",
+    "IsOneTimeOnly": true,
+    "FlavourText": "Dungeon Description",
+    "Image": "",
+    "IsDefault": false,
+    "Matchups": [
+      {
+        "Flavourtext": "E",
+        "EnemyNames": [ "Training Dummy", "Training Dummy", "Training Dummy", "Training Dummy", "Training Dummy", "Training Dummy" ],
+        "Keywords": [ "@100" ],
+        "Image": "https://i.kym-cdn.com/photos/images/newsfeed/001/365/818/183.jpg",
+        "RewardTables": [
+          [ { "Weight": 1 } ]
+        ]
+      },
+      {
+        "Flavourtext": "Again?",
+        "EnemyNames": [ "Choice:Repeat|KilledByPlayer@100", "Choice:No" ],
+        "Image": "",
+        "RewardTables": [
+          [ { "Weight": 1 } ]
+        ]
+      },
+      {
+        "Flavourtext": "End",
+        "EnemyNames": [ "Good Bye." ],
+        "Image": "",
+        "RewardTables": [
+          [ { "Weight": 1 } ]
+        ]
+      }
+    ]
   }
 }
