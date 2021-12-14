@@ -444,7 +444,7 @@ namespace IodemBot.Modules
         }
 
         [Command("PutElementalRoles")]
-        [RequireOwner]
+        [RequireModerator]
         public async Task PutRoles([Remainder] ITextChannel channel)
         {
             var builder = new ComponentBuilder();
