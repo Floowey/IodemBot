@@ -41,7 +41,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
                     case DjinnState.Standby:
                         djinn.OnStandby = true;
-                        djinn.CoolDown = Math.Max(2, user.Moves.OfType<Djinn>().Max(d => d.CoolDown) + 1);
+                        djinn.CoolDown = Math.Max(2, target.Moves.OfType<Djinn>().Max(d => d.CoolDown) + 1);
                         djinn.Position = target.Party.SelectMany(p => p.Moves.OfType<Djinn>()).Max(d => d.Position) + 1;
                         log.Add($"{target.Name}'s {djinn.Name} was set to standby.");
                         break;
