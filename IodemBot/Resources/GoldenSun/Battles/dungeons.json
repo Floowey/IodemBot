@@ -8429,7 +8429,7 @@
     "Image": "https://goldensunwiki.net/w/images/1/1a/ContigoOverworld.png",
     "IsDefault": false,
     "Requirement": {
-      "MinLevel": "999",
+      "MinLevel": "50",
       "Elements": [ "Jupiter" ],
       "TagsRequired": [ "Air3" ]
     },
