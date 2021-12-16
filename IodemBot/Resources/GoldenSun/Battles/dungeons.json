@@ -8618,7 +8618,7 @@
       },
       {
         "Flavourtext": "*'Adept of the Wind. A strong vortex absorbs the weak.'*",
-        "EnemyNames": [ "Mirror:Purple Elemental|Boost:55|Boost:200:Spd", "Mirror:Purple Elemental|Boost:55|Boost:200:Spd", "Mirror:Purple Elemental|Boost:55|Boost:200:Spd", "Mirror:Purple Elemental|Boost:55|Boost:200:Spd" ],
+        "EnemyNames": [ "Mirror:Purple Elemental|Boost:50|Boost:205:Spd", "Mirror:Purple Elemental|Boost:50|Boost:205:Spd", "Mirror:Purple Elemental|Boost:50|Boost:205:Spd" ],
         "Keywords": [ "@240", "ToMatchup@200" ],
         "Image": "",
         "RewardTables": [
