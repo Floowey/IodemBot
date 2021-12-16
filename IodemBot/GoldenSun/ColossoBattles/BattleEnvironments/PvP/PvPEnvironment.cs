@@ -410,47 +410,33 @@ namespace IodemBot.ColossoBattles
 
         protected virtual async Task WriteEnemies()
         {
-            var tasks = new List<Task>
-            {
-                WriteEnemyEmbeds()
-            };
-
             Teams.Values.ToList().ForEach(v =>
             {
-                var validReactions = Reactions.Where(r => r.MessageId == v.EnemyMessage.Id).ToList();
-                foreach (var r in validReactions)
-                {
-                    tasks.Add(v.EnemyMessage.RemoveReactionAsync(r.Emote, r.User.Value));
-                    Reactions.Remove(r);
-                }
+                var e = GetTeamAsEnemyEmbedBuilder(v.Enemies);
+                if (v.EnemyMessage.Embeds.Count == 0 ||
+                    !v.EnemyMessage.Embeds.FirstOrDefault().ToEmbedBuilder().AllFieldsEqual(e))
+                    _ = v.EnemyMessage.ModifyAsync(m =>
+                    {
+                        m.Content = "";
+                        m.Embed = e.Build();
+                        m.Components = null;
+                    });
             });
-            await Task.WhenAll(tasks);
         }
 
         protected virtual async Task WriteEnemiesInit()
         {
-            var tasks = new List<Task>
+            Teams.Values.ToList().ForEach(v =>
             {
-                WriteEnemyEmbeds()
-            };
-            await Task.WhenAll(tasks);
+                _ = v.EnemyMessage.RemoveAllReactionsAsync();
+            });
+            await WriteEnemies();
         }
 
         protected virtual async Task WriteEnemyEmbeds()
         {
             var tasks = new List<Task>();
 
-            Teams.Values.ToList().ForEach(v =>
-            {
-                var e = GetTeamAsEnemyEmbedBuilder(v.Enemies);
-                if (v.EnemyMessage.Embeds.Count == 0 ||
-                    !v.EnemyMessage.Embeds.FirstOrDefault().ToEmbedBuilder().AllFieldsEqual(e))
-                    tasks.Add(v.EnemyMessage.ModifyAsync(m =>
-                    {
-                        m.Content = "";
-                        m.Embed = e.Build();
-                    }));
-            });
             await Task.WhenAll(tasks);
         }
 
@@ -524,15 +510,13 @@ namespace IodemBot.ColossoBattles
                 var tasks = new List<Task>();
                 var embed = GetDjinnEmbedBuilder(v);
                 if (embed != null && (v.SummonsMessage.Embeds.Count == 0 ||
-                                      !v.SummonsMessage.Embeds.FirstOrDefault().ToEmbedBuilder().AllFieldsEqual(embed)))
-                    _ = v.SummonsMessage.ModifyAsync(m => m.Embed = embed.Build());
-
-                var validReactions = Reactions.Where(r => r.MessageId == v.SummonsMessage.Id).ToList();
-                foreach (var r in validReactions)
-                {
-                    tasks.Add(v.SummonsMessage.RemoveReactionAsync(r.Emote, r.User.Value));
-                    Reactions.Remove(r);
-                }
+                                  !v.SummonsMessage.Embeds.FirstOrDefault().ToEmbedBuilder().AllFieldsEqual(embed)))
+                    _ = v.SummonsMessage.ModifyAsync(m =>
+                    {
+                        m.Embed = embed.Build();
+                        m.Components =
+                            ControlBattleComponents.GetSummonsComponent((PlayerFighter)Battle.GetTeam(v.Team).First());
+                    });
             });
             await Task.CompletedTask;
         }
@@ -576,49 +560,28 @@ namespace IodemBot.ColossoBattles
                     var embed = new EmbedBuilder();
                     var fighter = k.Value;
 
-                    var validReactions = Reactions.Where(r => r.MessageId == msg.Id).ToList();
-                    foreach (var r in validReactions)
-                    {
-                        tasks.Add(msg.RemoveReactionAsync(r.Emote, r.User.Value));
-                        Reactions.Remove(r);
-                    }
-
                     embed.WithThumbnailUrl(fighter.ImgUrl);
-                    embed.WithColor(Colors.Get(fighter.Moves.OfType<Psynergy>().Select(p => p.Element.ToString())
-                        .ToArray()));
-                    embed.AddField($"{NumberEmotes[i]}{fighter.ConditionsToString()}", fighter.Name, true);
-                    embed.AddField("HP", $"{fighter.Stats.HP} / {fighter.Stats.MaxHP}", true);
-                    embed.AddField("PP", $"{fighter.Stats.PP} / {fighter.Stats.MaxPP}", true);
-                    var s = new List<string>();
-                    foreach (var m in fighter.Moves)
-                        if (m is Psynergy p)
-                        {
-                            s.Add($"{m.Emote} {m.Name} {p.PpCost}");
-                        }
-                        else if (m is Summon summon)
-                        {
-                        }
-                        else
-                        {
-                            s.Add($"{m.Emote} {m.Name}");
-                        }
+                    embed.WithColor(
+                        Colors.Get(fighter.Moves.OfType<Psynergy>().Select(p => p.Element.ToString()).ToArray()));
+                    //embed.AddField($"{fighter.Name}{fighter.ConditionsToString()}",
+                    //    $"**HP**: {fighter.Stats.HP} / {fighter.Stats.MaxHP}\n**PP**: {fighter.Stats.PP} / {fighter.Stats.MaxPP}");
+                    embed.AddField($"{fighter.Name}{fighter.ConditionsToString()}",
+                        $"{Utilities.GetProgressBar(fighter.Stats.HP * 100 / fighter.Stats.MaxHP)} **HP {fighter.Stats.HP}**\n" +
+                        $"{Utilities.GetProgressBar(fighter.Stats.PP * 100 / Math.Max(1, fighter.Stats.MaxPP))} **PP {fighter.Stats.PP}**"
+                    );
 
-                    embed.AddField("Psynergy", string.Join(" | ", s));
-
-                    if (msg.Embeds.Count == 0 || !msg.Embeds.FirstOrDefault().ToEmbedBuilder().AllFieldsEqual(embed))
-                        tasks.Add(msg.ModifyAsync(m =>
-                        {
-                            m.Content = "";
-                            m.Embed = embed.Build();
-                        }));
-
-                    if (fighter is PlayerFighter fighter1 && fighter.AutoTurnsInARow >= 2)
+                    tasks.Add(msg.ModifyAsync(m =>
                     {
-                        var ping = await msg.Channel.SendMessageAsync($"<@{fighter1.Id}>");
-                        await ping.DeleteAsync();
-                    }
+                        m.Content = "";
+                        m.Embed = embed.Build();
+                        m.Components = ControlBattleComponents.GetPlayerControlComponents(fighter);
+                    }));
 
-                    i++;
+                    if (fighter.AutoTurnsInARow >= 2)
+                    {
+                        var ping = await msg.Channel.SendMessageAsync($"<@{fighter.Id}>");
+                        _ = ping.DeleteAsync();
+                    }
                 }
             });
             await Task.WhenAll(tasks);
@@ -631,12 +594,13 @@ namespace IodemBot.ColossoBattles
 
         public override bool IsUsersMessage(PlayerFighter player, IUserMessage message)
         {
-            if (Teams[Team.A].PlayerMessages.TryGetValue(message, out var pf))
-                return pf.Id == player.Id;
-            if (Teams[Team.B].PlayerMessages.TryGetValue(message, out pf))
-                return pf.Id == player.Id;
+            if (message.Channel.Id == Teams[player.party].TeamChannel.Id)
+            {
+                return Teams[player.party].SummonsMessage.Id == message.Id ||
+                   Teams[player.party].PlayerMessages.Any(m => m.Key.Id == message.Id && m.Value.Id == player.Id);
+            }
 
-            return Teams[Team.A].SummonsMessage.Id == message.Id || Teams[Team.B].SummonsMessage.Id == message.Id;
+            return false;
         }
 
         protected class PvPTeamCollector

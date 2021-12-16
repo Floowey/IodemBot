@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
 namespace IodemBot
@@ -130,13 +131,17 @@ namespace IodemBot
     }
 
     [JsonConverter(typeof(StringEnumConverter))]
+    [Flags]
     public enum TargetType
     {
-        PartySelf,
-        PartySingle,
-        PartyAll,
-        EnemyRange,
-        EnemyAll
+        PartySelf = 0,
+        PartySingle = 1,
+        PartyAll = 2,
+        EnemyRange = 4,
+        EnemyAll = 8,
+        OnParty = PartySelf | PartySingle | PartyAll,
+        OnEnemy = EnemyRange | EnemyAll,
+        NoAim = PartySelf | PartyAll | EnemyAll
     }
 
     //
