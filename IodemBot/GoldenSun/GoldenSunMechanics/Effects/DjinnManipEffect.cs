@@ -23,7 +23,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public override List<string> Apply(ColossoFighter user, ColossoFighter target)
         {
             List<string> log = new();
-
+            if (!target.IsAlive)
+                return log;
             var validDjinn = target.Moves.OfType<Djinn>().Where(d => d.State == FromState).ToList();
             validDjinn.Shuffle();
             var djinnSelected = validDjinn.Take(nDjinn);
