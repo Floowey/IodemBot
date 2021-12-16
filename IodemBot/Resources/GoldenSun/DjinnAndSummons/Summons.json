@@ -3,7 +3,7 @@
     "Move": {
       "Name": "Venus",
       "Emote": "<:Venus:636449223134412801>",
-      "Targettype": 4,
+      "TargetType": "EnemyAll",
       "Element": 0,
       "power": 50,
       "percentageDamage": 5,
@@ -27,7 +27,7 @@
     "Move": {
       "Name": "Ramses",
       "Emote": "<:Ramses:636449223080017920>",
-      "Targettype": 4,
+      "TargetType": "EnemyAll",
       "Element": 0,
       "power": 100,
       "percentageDamage": 9,
@@ -51,7 +51,7 @@
     "Move": {
       "Name": "Cybele",
       "Emote": "<:Cybele:636449222987874304>",
-      "Targettype": 4,
+      "TargetType": "EnemyAll",
       "Element": 0,
       "power": 150,
       "percentageDamage": 10,
@@ -75,7 +75,7 @@
     "Move": {
       "Name": "Judgment",
       "Emote": "<:Judgment:636449222920503307>",
-      "Targettype": 4,
+      "TargetType": "EnemyAll",
       "Element": 0,
       "power": 240,
       "percentageDamage": 12,
@@ -99,7 +99,7 @@
     "Move": {
       "Name": "Mars",
       "Emote": "<:Mars:636449223147257866>",
-      "Targettype": 4,
+      "TargetType": "EnemyAll",
       "Element": 1,
       "power": 50,
       "percentageDamage": 5,
@@ -123,7 +123,7 @@
     "Move": {
       "Name": "Kirin",
       "Emote": "<:Kirin:636449223012909057>",
-      "Targettype": 4,
+      "TargetType": "EnemyAll",
       "Element": 1,
       "power": 100,
       "percentageDamage": 9,
@@ -147,7 +147,7 @@
     "Move": {
       "Name": "Tiamat",
       "Emote": "<:Tiamat:636449223185006592>",
-      "Targettype": 4,
+      "TargetType": "EnemyAll",
       "Element": 1,
       "power": 150,
       "percentageDamage": 10,
@@ -171,7 +171,7 @@
     "Move": {
       "Name": "Meteor",
       "Emote": "<:Meteor:636449223071760384>",
-      "Targettype": 4,
+      "TargetType": "EnemyAll",
       "Element": 1,
       "power": 240,
       "percentageDamage": 12,
@@ -195,7 +195,7 @@
     "Move": {
       "Name": "Jupiter",
       "Emote": "<:Jupiter:636449223143063562>",
-      "Targettype": 4,
+      "TargetType": "EnemyAll",
       "Element": 2,
       "power": 50,
       "percentageDamage": 5,
@@ -219,7 +219,7 @@
     "Move": {
       "Name": "Atalanta",
       "Emote": "<:Atalanta:636449222958514176>",
-      "Targettype": 4,
+      "TargetType": "EnemyAll",
       "Element": 2,
       "power": 100,
       "percentageDamage": 9,
@@ -243,7 +243,7 @@
     "Move": {
       "Name": "Procne",
       "Emote": "<:Procne:636449223021428756>",
-      "Targettype": 4,
+      "TargetType": "EnemyAll",
       "Element": 2,
       "power": 150,
       "percentageDamage": 10,
@@ -267,7 +267,7 @@
     "Move": {
       "Name": "Thor",
       "Emote": "<:Thor:636449222886948866>",
-      "Targettype": 4,
+      "TargetType": "EnemyAll",
       "Element": 2,
       "power": 240,
       "percentageDamage": 12,
@@ -291,7 +291,7 @@
     "Move": {
       "Name": "Mercury",
       "Emote": "<:Mercury:636449222975291403>",
-      "Targettype": 4,
+      "TargetType": "EnemyAll",
       "Element": 3,
       "power": 50,
       "percentageDamage": 5,
@@ -315,7 +315,7 @@
     "Move": {
       "Name": "Nereid",
       "Emote": "<:Nereid:636449223184875530>",
-      "Targettype": 4,
+      "TargetType": "EnemyAll",
       "Element": 3,
       "power": 100,
       "percentageDamage": 9,
@@ -339,7 +339,7 @@
     "Move": {
       "Name": "Neptune",
       "Emote": "<:Neptune:636449222975029279>",
-      "Targettype": 4,
+      "TargetType": "EnemyAll",
       "Element": 3,
       "power": 150,
       "percentageDamage": 10,
@@ -363,7 +363,7 @@
     "Move": {
       "Name": "Boreas",
       "Emote": "<:Boreas:636449222551404545>",
-      "Targettype": 4,
+      "TargetType": "EnemyAll",
       "Element": 3,
       "power": 240,
       "percentageDamage": 12,
@@ -387,7 +387,7 @@
     "Move": {
       "Name": "Zagan",
       "Emote": "<:Zagan:636449223159709706>",
-      "Targettype": 4,
+      "TargetType": "EnemyAll",
       "Element": 0,
       "power": 80,
       "percentageDamage": 9,
@@ -421,7 +421,7 @@
     "Move": {
       "Name": "Flora",
       "Emote": "<:Flora:636449222736085003>",
-      "Targettype": 4,
+      "TargetType": "EnemyAll",
       "Element": 2,
       "power": 80,
       "percentageDamage": 9,
@@ -454,7 +454,7 @@
     "Move": {
       "Name": "Megaera",
       "Emote": "<:Megaera:636449222706593803>",
-      "Targettype": 4,
+      "TargetType": "EnemyAll",
       "Element": 1,
       "power": 80,
       "percentageDamage": 9,
@@ -488,7 +488,7 @@
     "Move": {
       "Name": "Moloch",
       "Emote": "<:Moloch:636449223096926218>",
-      "Targettype": 4,
+      "TargetType": "EnemyAll",
       "Element": 3,
       "power": 80,
       "percentageDamage": 9,
@@ -522,7 +522,7 @@
     "Move": {
       "Name": "Ulysses",
       "Emote": "<:Ulysses:636449222933348363>",
-      "Targettype": 4,
+      "TargetType": "EnemyAll",
       "Element": 1,
       "power": 240,
       "percentageDamage": 14,
@@ -555,7 +555,7 @@
     "Move": {
       "Name": "Eclipse",
       "Emote": "<:Eclipse:636449222589284373>",
-      "Targettype": 4,
+      "TargetType": "EnemyAll",
       "Element": 2,
       "power": 300,
       "percentageDamage": 15,
