@@ -185,6 +185,8 @@ namespace IodemBot.Modules.VariousCommands
             }
         };
 
+        public override GuildPermissions? RequiredPermissions => base.RequiredPermissions;
+
         public override async Task RunAsync()
         {
             var action = ServiceProvider.GetRequiredService<ActionService>();
@@ -195,6 +197,10 @@ namespace IodemBot.Modules.VariousCommands
         protected override Task<(bool Success, string Message)> CheckCustomPreconditionsAsync()
         {
             var guildResult = IsGameCommandAllowedInGuild();
+            if (!guildResult.Success)
+                return Task.FromResult(guildResult);
+
+            guildResult = StaffRequired();
             if (!guildResult.Success)
                 return Task.FromResult(guildResult);
 

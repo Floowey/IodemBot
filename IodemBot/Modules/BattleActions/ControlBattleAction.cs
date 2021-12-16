@@ -73,11 +73,8 @@ namespace IodemBot.Modules.BattleActions
                 m.Name.Equals(SelectedMoveName, StringComparison.InvariantCultureIgnoreCase));
 
             Player.SelectedMove = selectedMove;
-            if (selectedMove.TargetType == TargetType.PartySelf ||
-                selectedMove.TargetType == TargetType.PartyAll ||
-                selectedMove.TargetType == TargetType.PartySingle && Player.Party.Count == 1 ||
-                (selectedMove.TargetType == TargetType.EnemyRange || selectedMove.TargetType == TargetType.EnemyAll) &&
-                Player.Enemies.Count == 1)
+            var targetTeam = selectedMove.OnEnemy ? Player.Enemies : Player.Party;
+            if ((selectedMove.TargetType & TargetType.NoAim) == selectedMove.TargetType || targetTeam.Count <= 1)
             {
                 Player.HasSelected = true;
                 selectedMove.TargetNr = 0;
@@ -99,6 +96,20 @@ namespace IodemBot.Modules.BattleActions
         {
             if (idOptions != null && idOptions.Any()) SelectedMoveName = (string)idOptions.FirstOrDefault();
             await Task.CompletedTask;
+        }
+
+        protected override Task<(bool Success, string Message)> CheckCustomPreconditionsAsync()
+        {
+            var result = base.CheckCustomPreconditionsAsync();
+            if (!result.GetAwaiter().GetResult().Success)
+                return result;
+
+            var selectedMove = Player.Moves.FirstOrDefault(m =>
+                m.Name.Equals(SelectedMoveName, StringComparison.InvariantCultureIgnoreCase));
+            if (selectedMove == null)
+                return Task.FromResult((false, "Unaccessible move"));
+
+            return result;
         }
     }
 
@@ -170,20 +181,9 @@ namespace IodemBot.Modules.BattleActions
 
             if (player.SelectedMove != null)
             {
-                var team = player.SelectedMove.TargetType == TargetType.PartySingle ? player.Party : player.Enemies;
-                if (team.Count == 1)
-                    return builder.Build();
-
-                List<SelectMenuOptionBuilder> options = new();
-                foreach (var f in team)
-                    options.Add(new SelectMenuOptionBuilder
-                    {
-                        Label = $"{f.Name}",
-                        Value = $"{options.Count}",
-                        Emote = f.IsAlive ? null : Emotes.GetEmote("Dead"),
-                        IsDefault = player.HasSelected && team.IndexOf(f) == player.SelectedMove.TargetNr
-                    });
-                builder.WithSelectMenu($"{nameof(SelectTargetAction)}", options, "Select a Target");
+                var sm = GetTargetMenu(player);
+                if (sm != null)
+                    builder.WithSelectMenu(sm);
             }
 
             return builder.Build();
@@ -202,22 +202,40 @@ namespace IodemBot.Modules.BattleActions
                 builder.WithButton($"{move.Name}", $"{nameof(SelectMoveAction)}.{move.Name}", style, move.GetEmote());
             }
 
-            if (!player.HasSelected && player.SelectedMove != null)
+            if (player.SelectedMove != null)
             {
-                List<SelectMenuOptionBuilder> options = new();
-                var team = player.SelectedMove.TargetType == TargetType.PartySingle ? player.Party : player.Enemies;
-                foreach (var f in team)
-                    options.Add(new SelectMenuOptionBuilder
-                    {
-                        Label = $"{f.Name}",
-                        Value = $"{options.Count}",
-                        Emote = f.IsAlive ? null : Emotes.GetEmote("Dead")
-                    });
-                builder.WithSelectMenu($"{nameof(SelectTargetAction)}", options, "Select a Target",
-                    disabled: player.HasSelected);
+                var sm = GetTargetMenu(player);
+                if (sm != null)
+                    builder.WithSelectMenu(sm);
             }
 
             return builder.Build();
+        }
+
+        private static SelectMenuBuilder GetTargetMenu(PlayerFighter player)
+        {
+            var targets = player.SelectedMove.OnEnemy ? player.Enemies : player.Party;
+            if ((player.SelectedMove.TargetType & TargetType.NoAim) == player.SelectedMove.TargetType || targets.Count <= 1)
+                return null;
+            var team = targets.First().Party;
+
+            List<SelectMenuOptionBuilder> options = new();
+            foreach (var f in targets)
+            {
+                var emote = f.IsAlive ? null : Emotes.GetEmote("Dead");
+
+                if (f.Stats.HP != 0 && 100 * f.Stats.HP / f.Stats.MaxHP <= 10)
+                    emote = Emote.Parse("<:Exclamatory:549529360604856323>");
+
+                options.Add(new SelectMenuOptionBuilder
+                {
+                    Label = $"{f.Name}",
+                    Value = $"{options.Count}",
+                    Emote = emote,
+                    IsDefault = player.HasSelected && team.IndexOf(f) == player.SelectedMove.TargetNr
+                });
+            }
+            return new SelectMenuBuilder($"{nameof(SelectTargetAction)}", options, "Select a Target");
         }
     }
 }

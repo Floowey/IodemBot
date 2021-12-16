@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using Discord;
+using Discord.WebSocket;
 using IodemBot.Discords.Actions.Attributes;
 using IodemBot.Discords.Contexts;
 
@@ -108,6 +109,26 @@ namespace IodemBot.Discords.Actions
             if (GuildsOnly && Context.Channel is IDMChannel)
                 return (false, "You can't do that here! Find a server that I'm in, instead!");
 
+            return (true, null);
+        }
+
+        public (bool Success, string Message) ModeratorRequired()
+        {
+            if (Context.User is not SocketGuildUser gUser)
+                return (false, "You must be in /r/GoldenSun server to run this command.");
+
+            if (!gUser.Roles.Any(r => r.Name is "Admin" or "Moderators") && gUser.Id != 300339714311847936)
+                return (false, "You must be moderator to run this command.");
+            return (true, null);
+        }
+
+        public (bool Success, string Message) StaffRequired()
+        {
+            if (Context.User is not SocketGuildUser gUser)
+                return (false, "You must be in /r/GoldenSun server to run this command.");
+
+            if (!gUser.Roles.Any(r => r.Name == "Admin" || r.Name == "Moderators" || r.Name == "Colosso Guard") && gUser.Id != 300339714311847936 && Context.Guild.Id != 668442573899300894)
+                return (false, "You must be staff to run this command.");
             return (true, null);
         }
     }

@@ -497,7 +497,7 @@ namespace IodemBot.ColossoBattles
                 //    $"**HP**: {fighter.Stats.HP} / {fighter.Stats.MaxHP}\n**PP**: {fighter.Stats.PP} / {fighter.Stats.MaxPP}");
                 embed.AddField($"{fighter.Name}{fighter.ConditionsToString()}",
                     $"{Utilities.GetProgressBar(fighter.Stats.HP * 100 / fighter.Stats.MaxHP)} **HP {fighter.Stats.HP}**\n" +
-                    $"{Utilities.GetProgressBar(fighter.Stats.PP * 100 / fighter.Stats.MaxPP)} **PP {fighter.Stats.PP}**"
+                    $"{Utilities.GetProgressBar(fighter.Stats.PP * 100 / Math.Max(1, fighter.Stats.MaxPP))} **PP {fighter.Stats.PP}**"
                 );
 
                 tasks.Add(msg.ModifyAsync(m =>
