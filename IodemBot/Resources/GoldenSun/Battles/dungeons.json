@@ -8556,7 +8556,7 @@
       },
       {
         "Flavourtext": "Four Elementals",
-        "EnemyNames": [ "Choice:Purple Elemental|KilledBy:Player@210", "Choice:Green Elemental|KilledBy:Player@220", "Choice:Pink Elemental|KilledBy:Player@230", "Choice:Yellow Elemental|KilledBy:Player@240", "Choice:Go to Altars|KilledBy:Player@100" ],
+        "EnemyNames": [ "Choice:Green Elemental|KilledBy:Player@210", "Choice:Yellow Elemental|KilledBy:Player@220", "Choice:Pink Elemental|KilledBy:Player@230", "Choice:Purple Elemental|KilledBy:Player@240", "Choice:Go to Altars|KilledBy:Player@100" ],
         "Keywords": [ "@200" ],
         "Image": "",
         "RewardTables": [
@@ -8565,7 +8565,7 @@
       },
       {
         "Flavourtext": "*'Adept of the Wind. Show me your power in a lack of air.'*",
-        "EnemyNames": [ "Green Elemental:|ImmuneTo:Jupiter" ],
+        "EnemyNames": [ "Green Elemental|ImmuneTo:Jupiter" ],
         "Keywords": [ "@210", "ToMatchup@200" ],
         "Image": "",
         "RewardTables": [
