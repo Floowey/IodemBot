@@ -1674,6 +1674,12 @@
           "Type": "Condition",
           "Condition": "Delusion",
           "Probability": 50
+        },
+        {
+          "Type": "Stat",
+          "Stat": "Defense",
+          "Multiplier": 0.8,
+          "Probability": 20
         }
       ]
     },
