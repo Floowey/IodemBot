@@ -50,6 +50,8 @@ namespace IodemBot.Modules.BattleActions
 
             var user = EntityConverter.ConvertUser(Context.User);
             var joinResult = Battle.CanPlayerJoin(user, Team);
+            if (user.Tags.Contains("EnterAllDungeons"))
+                return SuccessFullResult;
             return joinResult;
         }
 
