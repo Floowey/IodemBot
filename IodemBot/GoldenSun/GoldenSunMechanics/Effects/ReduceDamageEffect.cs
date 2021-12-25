@@ -24,9 +24,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         protected override int InternalChooseBestTarget(List<ColossoFighter> targets)
         {
-            var target = targets.FirstOrDefault(d => d.Name.Contains("Star"))
-                         ?? targets.Where(t => t.IsAlive).Random();
-            return targets.IndexOf(target);
+            return ChooseAliveVIPTarget(targets);
         }
 
         protected override bool InternalValidSelection(ColossoFighter user)

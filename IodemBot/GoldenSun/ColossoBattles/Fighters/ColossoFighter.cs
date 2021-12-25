@@ -98,6 +98,8 @@ namespace IodemBot.ColossoBattles
         public int PPrecovery { get; set; }
         public bool IsAlive => !HasCondition(Condition.Down);
 
+        public bool IsImmobilized => HasCondition(new[] { Condition.Down, Condition.Sleep, Condition.Stun, Condition.Flinch });
+
         public bool HasCurableCondition
         {
             get

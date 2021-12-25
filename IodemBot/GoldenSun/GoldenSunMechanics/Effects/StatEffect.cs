@@ -34,9 +34,9 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 return base.InternalChooseBestTarget(targets);
 
             if (targets.Any(t => t.Tags.Contains("VIP")))
-                return targets.IndexOf(targets.Where(t => t.Tags.Contains("VIP")).Random());
+                return ChooseAliveVIPTarget(targets);
 
-            return targets.IndexOf(targets.OrderBy(t => ((double)(int)t.Stats.GetType().GetProperty(redirect[Stat]).GetValue(t.Stats)) / t.MultiplyBuffs(Stat)).First());
+            return targets.IndexOf(targets.OrderByDescending(t => ((double)(int)t.Stats.GetType().GetProperty(redirect[Stat]).GetValue(t.Stats)) / t.MultiplyBuffs(Stat)).First());
         }
 
         public override List<string> Apply(ColossoFighter user, ColossoFighter target)

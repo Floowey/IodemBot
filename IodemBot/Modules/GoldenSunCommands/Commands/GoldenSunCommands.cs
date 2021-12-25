@@ -453,7 +453,7 @@ namespace IodemBot.Modules
             builder.WithButton("Jupiter", $"^{nameof(ChangeAdeptAction)}.Jupiter", ButtonStyle.Primary, emote: Emotes.GetEmote(Element.Jupiter));
             builder.WithButton("Mercury", $"^{nameof(ChangeAdeptAction)}.Mercury", ButtonStyle.Primary, emote: Emotes.GetEmote(Element.Mercury));
             await channel.SendMessageAsync($"Choose from {Emotes.GetIcon(Element.Venus)}Venus, {Emotes.GetIcon(Element.Mars)}Mars, " +
-                $"{Emotes.GetIcon(Element.Jupiter)}Jupiter, or {Emotes.GetIcon(Element.Mercury)}Mercury. You can change your role/element at any time.", component: builder.Build());
+                $"{Emotes.GetIcon(Element.Jupiter)}Jupiter, or {Emotes.GetIcon(Element.Mercury)}Mercury. You can change your role/element at any time.", components: builder.Build());
         }
 
         [Command("MoveInfo")]

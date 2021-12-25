@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using IodemBot.ColossoBattles;
 
 namespace IodemBot.Modules.GoldenSunMechanics
@@ -26,7 +27,10 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public override bool InternalValidSelection(ColossoFighter user)
         {
-            return true;
+            if (user is PlayerFighter)
+                return true;
+
+            return !user.Enemies.All(f => f.IsImmobilized);
         }
 
         protected override List<string> InternalUse(ColossoFighter user)

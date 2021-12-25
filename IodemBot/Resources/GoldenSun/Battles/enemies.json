@@ -11452,7 +11452,6 @@
       "venusres": 25,
       "jupiteratk": 120
     },
-    "Tags": [ "ImmuneTo:Jupiter" ],
     "isImmuneToConditions": [
       "Stun",
       "Poison",
@@ -11945,7 +11944,7 @@
       "spd": 999
     },
     "elstats": {
-      "jupiterres": 153,
+      "jupiterres": 133,
       "mercuryres": 50,
       "marsres": 50,
       "venusres": 50,
@@ -11988,6 +11987,15 @@
       "def": 240,
       "spd": 999
     },
+    "isImmuneToConditions": [
+      "Stun",
+      "Poison",
+      "Venom",
+      "Delusion",
+      "Sleep",
+      "DeathCurse",
+      "Haunt"
+    ],
     "elstats": {
       "jupiterres": 153,
       "mercuryres": 50,
@@ -12011,6 +12019,15 @@
       "def": 240,
       "spd": 999
     },
+    "isImmuneToConditions": [
+      "Stun",
+      "Poison",
+      "Venom",
+      "Delusion",
+      "Sleep",
+      "DeathCurse",
+      "Haunt"
+    ],
     "elstats": {
       "jupiterres": 153,
       "mercuryres": 50,
@@ -12034,6 +12051,15 @@
       "def": 240,
       "spd": 999
     },
+    "isImmuneToConditions": [
+      "Stun",
+      "Poison",
+      "Venom",
+      "Delusion",
+      "Sleep",
+      "DeathCurse",
+      "Haunt"
+    ],
     "elstats": {
       "jupiterres": 153,
       "mercuryres": 50,

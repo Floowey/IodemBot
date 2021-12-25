@@ -41,7 +41,7 @@ namespace IodemBot
 
         public async Task ReplyAsync(string text = null, Embed embed = null, MessageComponent component = null)
         {
-            await Channel.SendMessageAsync(text, embed: embed, component: component);
+            await Channel.SendMessageAsync(text, embed: embed, components: component);
         }
     }
 }

@@ -60,7 +60,7 @@ namespace IodemBot.ColossoBattles
         private async Task Initialize()
         {
             EnemyMessage = await BattleChannel.SendMessageAsync(GetEnemyMessageString(),
-                component: ControlBattleComponents.GetControlComponent());
+                components: ControlBattleComponents.GetControlComponent());
             SummonsMessage = await BattleChannel.SendMessageAsync("Good Luck!");
         }
 
