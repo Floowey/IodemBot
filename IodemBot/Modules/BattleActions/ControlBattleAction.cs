@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Discord;
+using Discord.WebSocket;
 using IodemBot.ColossoBattles;
 using IodemBot.Discords.Actions.Attributes;
 using IodemBot.Extensions;
@@ -36,6 +37,11 @@ namespace IodemBot.Modules.BattleActions
 
         public override async Task RunAsync()
         {
+            if (Battle is PvPEnvironment pvp && Context.User is SocketGuildUser user && Team == Team.B)
+            {
+                await user.AddRoleAsync(pvp.TeamBRole);
+                pvp.PlayersWithTeamBRole.Add(user);
+            }
             _ = Battle.AddPlayer(EntityConverter.ConvertUser(Context.User), Team);
             await Task.CompletedTask;
         }

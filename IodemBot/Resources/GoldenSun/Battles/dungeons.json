@@ -10006,8 +10006,8 @@
         ]
       },
       {
-        "Flavourtext": "As you approach the village of Prox in the frozen north, you see it is brightly lit. You get closer and notice thousands of candles, braziers, and colored lights made of Psynergy! As you stare at the beautiful sight, a few more monsters notice you.",
-        "EnemyNames": [ "Grisly 1:Bear", "MolochSummon:Abominable Snowman", "Grisly 1:Bear" ],
+        "Flavourtext": "Approaching the village of Prox in the frozen north, you see it is brightly lit. You get closer and notice thousands of candles, braziers, and colored lights made of Psynergy! As you stare at the beautiful sight, a few more monsters notice you.",
+        "EnemyNames": [ "Grisly 1:Bear", "MolochSummon", "Grisly 1:Bear" ],
         "Image": "",
         "RewardTables": [
           [
@@ -10133,6 +10133,7 @@
       {
         "Flavourtext": "A white-bearded, elderly man dressed all in red sits here in front of a fir tree. Like the puppeteer, his face is also not scaly. He seems to be talking at length to a group of children and their parents. By and large, people are politely feigning interest, but every now and then he calls out a child's name and hands them a box or bag wrapped with a bow. Squeals of glee greet each gift. \n\nUpon spotting you, the man addresses you, 'Well! It's been a while! It's good to see that more Adepts are exploring the world... back when Jenna and I were stuck on Idejima... the restoration of Alchemy... Lemuria...' He natters on for at least 15 minutes, getting further and further off-topic. Eventually you find yourself yawning, and he notices. 'Well! How rude! Perhaps a fight will wake you up!' He jumps to his feet and attacks!",
         "EnemyNames": [ "Ruffian:Santa Kraden" ],
+        "Keywords": [ "https://cdn.discordapp.com/attachments/668443234292334612/924255639709036584/SPOILER_5688-1777515081.png" ],
         "Image": "",
         "RewardTables": [
           [
@@ -10167,55 +10168,6 @@
               "Weight": 1,
               "XP": 1200,
               "Coins": 1200
-            }
-          ],
-          [
-            {
-              "Weight": 8,
-              "XP": 400,
-              "Coins": 400
-            },
-            {
-              "Weight": 1,
-              "Dungeon": "Suhalla Desert Junction"
-            },
-            {
-              "Weight": 1,
-              "Dungeon": "Star Chamber"
-            },
-            {
-              "Weight": 1,
-              "Dungeon": "Crossbone Isle"
-            },
-            {
-              "Weight": 1,
-              "Dungeon": "Venus Lighthouse"
-            },
-            {
-              "Weight": 1,
-              "Chest": "Adept",
-              "HasChest": true
-            },
-            {
-              "Weight": 3,
-              "Chest": "Gold",
-              "HasChest": true
-            }
-          ]
-        ]
-      },
-      {
-        "Flavourtext": "Defeated, the demonic creature nods and lowers his hammer. In a booming voice, he announces, 'Well fought, Adept.' He reaches behind him and brings out a box from somewhere, handing it to you. Then he vanishes, and cheers ring out from around you. The festivities continue, and you spend the rest of the night feasting and celebrating with the Proxians. Stuffed with good food, you find your way to the inn, where a warm bed awaits you, free of charge this festival night.",
-        "EnemyNames": [ "End" ],
-        "Image": "",
-        "RewardTables": [
-          [
-            {
-              "Weight": 1,
-              "Tag": "ChristmasFinished",
-              "Obtainable": 1,
-              "XP": 10,
-              "Coins": 10
             }
           ]
         ]

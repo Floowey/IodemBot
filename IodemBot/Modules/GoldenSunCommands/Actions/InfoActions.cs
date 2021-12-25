@@ -20,7 +20,7 @@ namespace IodemBot.Modules
             await Context.ReplyWithMessageAsync(EphemeralRule, embed: DjinnInfoEmbed());
         }
 
-        public override ActionGuildSlashCommandProperties SlashCommandProperties => new()
+        public override ActionGlobalSlashCommandProperties SlashCommandProperties => new()
         {
             Name = "djinninfo",
             Description = "Give info on that one djinn you found but can't remember the name of.",

@@ -18,7 +18,7 @@ namespace IodemBot.ColossoBattles
     public abstract class PvPEnvironment : BattleEnvironment
     {
         private readonly uint _playersToStartB = 4;
-        private readonly List<SocketGuildUser> _playersWithBRole = new();
+        public readonly List<SocketGuildUser> PlayersWithTeamBRole = new();
         public IRole TeamBRole;
 
         protected Dictionary<Team, PvPTeamCollector> Teams = new()
@@ -46,7 +46,7 @@ namespace IodemBot.ColossoBattles
             var a = Teams[Team.A];
             var b = Teams[Team.B];
 
-            a.EnemyMessage = await a.TeamChannel.SendMessageAsync($"Welcome to {Name}. Join Team A or Team B.", component: ControlBattleComponents.GetControlComponent(true));
+            a.EnemyMessage = await a.TeamChannel.SendMessageAsync($"Welcome to {Name}. Join Team A or Team B.", components: ControlBattleComponents.GetControlComponent(true));
             a.SummonsMessage = await a.TeamChannel.SendMessageAsync("Good Luck!");
             b.EnemyMessage =
                 await b.TeamChannel.SendMessageAsync(
@@ -60,9 +60,8 @@ namespace IodemBot.ColossoBattles
             var a = Teams[Team.A];
             var b = Teams[Team.B];
 
-            _playersWithBRole.Where(p => p.Roles.Any(r => r.Name == "TeamB")).ToList()
-                .ForEach(a => _ = a.RemoveRoleAsync(TeamBRole));
-
+            PlayersWithTeamBRole.ForEach(p => p.RemoveRoleAsync(TeamBRole));
+            PlayersWithTeamBRole.Clear();
             foreach (var team in new[] { a, b })
             {
                 foreach (var k in team.PlayerMessages.Keys)
@@ -273,11 +272,6 @@ namespace IodemBot.ColossoBattles
             if (Teams[Team.A].PlayerMessages.Values.Any(s => s.Id == reaction.UserId)) return;
             if (Teams[Team.B].PlayerMessages.Values.Any(s => s.Id == reaction.UserId)) return;
             var player = (SocketGuildUser)reaction.User.Value;
-            if (team == Team.B)
-            {
-                await player.AddRoleAsync(TeamBRole);
-                _playersWithBRole.Add(player);
-            }
 
             var playerAvatar = EntityConverter.ConvertUser(player);
 
@@ -288,6 +282,7 @@ namespace IodemBot.ColossoBattles
         {
             var factory = Teams[team].Factory;
             var p = factory.CreatePlayerFighter(user);
+
             await AddPlayer(p, team);
         }
 

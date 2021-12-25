@@ -58,6 +58,21 @@ namespace IodemBot.Modules.GoldenSunMechanics
             return targets.IndexOf(targets.Where(t => t.IsAlive).Random());
         }
 
+        protected virtual int ChooseAliveVIPTarget(List<ColossoFighter> targets)
+        {
+            var aliveFriends = targets.Where(f => f.IsAlive).ToList();
+            if (!aliveFriends.Any())
+            {
+                return 0;
+            }
+
+            aliveFriends = aliveFriends.OrderBy(s => s.Stats.HP / s.Stats.MaxHP).ThenBy(s => s.Stats.HP).ToList();
+
+            return targets.IndexOf(aliveFriends.Any(d => d.Tags.Contains("VIP"))
+                ? targets.Where(d => d.Tags.Contains("VIP")).Random()
+                : aliveFriends.First());
+        }
+
         internal int ChooseBestTarget(List<ColossoFighter> targets)
         {
             return InternalChooseBestTarget(targets);

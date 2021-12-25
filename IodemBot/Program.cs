@@ -95,7 +95,7 @@ namespace IodemBot
         {
             var guild = GuildSettings.GetGuildSettings(user.Guild);
             var userBefore = before.Value;
-            if (userBefore.DisplayName() != user.DisplayName())
+            if (userBefore is not null && userBefore.DisplayName() != user.DisplayName())
             {
                 EntityConverter.ConvertUser(user).Name = user.DisplayName();
                 _ = guild.TestCommandChannel
@@ -103,7 +103,7 @@ namespace IodemBot
                         $"{user.Mention} changed Nickname from {userBefore.DisplayName()} to {user.DisplayName()}");
             }
 
-            if (userBefore.IsPending == true && user.IsPending == false)
+            if ((userBefore?.IsPending ?? true) == true && user.IsPending == false)
                 if (GuildSettings.GetGuildSettings(user.Guild).SendWelcomeMessage)
                     _ = guild.MainChannel.SendMessageAsync(embed:
                         new EmbedBuilder()
@@ -111,7 +111,7 @@ namespace IodemBot
                             .WithDescription(string.Format(_welcomeMsg.Random(), user.DisplayName()))
                             .Build());
 
-            if (userBefore.PremiumSince.HasValue != user.PremiumSince.HasValue)
+            if (userBefore?.PremiumSince.HasValue ?? false != user.PremiumSince.HasValue)
             {
                 var isBoosting = user.PremiumSince.HasValue;
                 if (isBoosting)
@@ -143,12 +143,13 @@ namespace IodemBot
             await Task.CompletedTask;
         }
 
-        private async Task Client_UserLeft(SocketGuildUser user)
+        private async Task Client_UserLeft(SocketGuild guild, SocketUser user)
         {
-            if (GuildSettings.GetGuildSettings(user.Guild).SendLeaveMessage)
+            var settings = GuildSettings.GetGuildSettings(guild);
+            if (settings.SendLeaveMessage)
             {
-                var channel = GuildSettings.GetGuildSettings(user.Guild).TestCommandChannel;
-                _ = channel.SendMessageAsync($"{user.DisplayName()} left the party :(");
+                var channel = settings.TestCommandChannel;
+                _ = channel.SendMessageAsync($"{user.Mention} ({user.Username}) left the party :(");
             }
             await Task.CompletedTask;
         }

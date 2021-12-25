@@ -29,7 +29,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             appliedCoolDown = CoolDown;
             appliedDuration = Duration;
             var log = new List<string>();
-            if (!AllowMultipleID.IsNullOrEmpty() || !target.LingeringEffects.Any(l => l.AllowMultipleID == AllowMultipleID))
+            if (user.IsAlive && !AllowMultipleID.IsNullOrEmpty() || !target.LingeringEffects.Any(l => l.AllowMultipleID == AllowMultipleID))
             {
                 log.Add($"A {Effect.Type} Effect is lingering around {target.Name}");
                 target.LingeringEffects.Add(this);

@@ -274,9 +274,10 @@ namespace IodemBot.Modules
                         var json = await client.GetStringAsync(file.Url);
                         var user = JsonConvert.DeserializeObject<UserAccount>(json);
                         UserAccountProvider.StoreUser(user);
+                        var discordUser = Context.Guild.GetUser(user.Id);
+                        await ReplyAsync($"Successfully updated {discordUser.Mention}");
                     }
 
-                    await ReplyAsync($"Successfully updated {Context.User.Mention}");
                     return;
                 }
                 catch (Exception e)
