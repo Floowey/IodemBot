@@ -1678,7 +1678,9 @@
         {
           "Type": "Stat",
           "Stat": "Defense",
-          "Multiplier": 0.80,
+
+          "Multiplier": 0.8,
+
           "Probability": 20
         }
       ]
