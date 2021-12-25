@@ -1696,7 +1696,7 @@
     "ItemType": "LongSword",
     "IsEquippable": true,
     "IsArtifact": true,
-    "Description": "Unique to Estelle\nA sword from a legendary fallen Proxian, infused with untold power.\nCapable of cleaving foes through incandescent slashes.",
+    "Description": "A sword from a legendary fallen Proxian, infused with untold power.\nCapable of cleaving foes through incandescent slashes.\nBestowed to Estelle, who weaves fiery trails through and around her foes.",
     "AddStatsOnEquip": {
       "Atk": 255
     },
@@ -1715,6 +1715,14 @@
           "Type": "Condition",
           "Condition": "Delusion",
           "Probability": 50
+        },
+        {
+          "Type": "Stat",
+          "Stat": "Defense",
+
+          "Multiplier": 0.8,
+
+          "Probability": 20
         }
       ]
     },
@@ -1862,7 +1870,8 @@
         }
       ]
     },
-    "Rarity": "Uncommon"
+    "Rarity": "Uncommon",
+    "Description": "They say you get this if you can do the hand sign.",
   },
   "Great Axe": {
     "Name": "Great Axe",
@@ -2110,7 +2119,8 @@
         }
       ]
     },
-    "Rarity": "Rare"
+    "Rarity": "Rare",
+    "Description": "We don't know how or when the Vikings got electricity either."
   },
   "Mighty Axe": {
     "Name": "Mighty Axe",
