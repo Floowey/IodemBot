@@ -147,7 +147,7 @@ namespace IodemBot
                     .AddField("Status", user.Status, true)
                     .Build());
 
-            if (!user.IsPending.GetValueOrDefault())
+            if (user.IsPending.HasValue && !user.IsPending.Value)
             {
                 await SendWelcomeMessage(user);
             }
