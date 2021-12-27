@@ -37,6 +37,8 @@ namespace IodemBot.ColossoBattles
         public override List<string> ExtraTurn()
         {
             var log = new List<string>();
+            if (SelectedMove is Nothing) // don't have an extra turn if it was previously set to nothing from Killing
+                return log;
             for (var i = 0; i < ExtraTurns; i++)
             {
                 SelectRandom(false);

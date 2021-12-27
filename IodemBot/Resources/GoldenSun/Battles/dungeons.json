@@ -9962,7 +9962,7 @@
     "name": "A Very Golden Christmas",
     "IsOneTimeOnly": true,
     "FlavourText": "A wintertime celebration in a far away land. Join the festivities!\n(Event dungeon, available until <t:1641510000>)",
-    "Image": "https://media.discordapp.net/attachments/896423719428304946/910238976722481182/goldensun_xmascard-digital900px.png",
+    "Image": "https://cdn.discordapp.com/attachments/668442573899300897/924936245828796416/goldensun_xmascard2021900px.png",
     "IsDefault": false,
     "Matchups": [
       {
@@ -10065,7 +10065,7 @@
         "Flavourtext": "After the show, a puppeteer stands up. He is tall and pony-tailed, with dark brown hair and compelling eyes. He appears to not be from Prox, given the lack of scales in his skin. He nods to you and walks away. Curious, you follow him up some stairs and into the night. Several twists and turns later, you find him at the highest house in the village. Several Djinn keep him company here. Seeing you, they ask for a friendly battle.",
         "EnemyNames": [ "Venus Djinni Christmas", "Mars Djinni Christmas", "IsaacFinal:Masked Puppeteer", "Jupiter Djinni Christmas", "Mercury Djinni Christmas" ],
         "Keywords": [ "Heal" ],
-        "Image": "https://media.discordapp.net/attachments/896423719428304946/910238976722481182/goldensun_xmascard-digital900px.png",
+        "Image": "https://cdn.discordapp.com/attachments/668442573899300897/924936245828796416/goldensun_xmascard2021900px.png",
         "RewardTables": [
           [
             {

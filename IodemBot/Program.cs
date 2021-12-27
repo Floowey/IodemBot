@@ -104,12 +104,7 @@ namespace IodemBot
             }
 
             if (userBefore.IsPending == true && user.IsPending == false)
-                if (GuildSettings.GetGuildSettings(user.Guild).SendWelcomeMessage)
-                    _ = guild.MainChannel.SendMessageAsync(embed:
-                        new EmbedBuilder()
-                            .WithColor(Colors.Get("Iodem"))
-                            .WithDescription(string.Format(_welcomeMsg.Random(), user.DisplayName()))
-                            .Build());
+                await SendWelcomeMessage(user);
 
             //if (userBefore.PremiumSince.HasValue != user.PremiumSince.HasValue)
             //{
@@ -131,6 +126,17 @@ namespace IodemBot
             await Task.CompletedTask;
         }
 
+        private async Task SendWelcomeMessage(SocketGuildUser user)
+        {
+            var guild = GuildSettings.GetGuildSettings(user.Guild);
+            if (GuildSettings.GetGuildSettings(user.Guild).SendWelcomeMessage)
+                _ = guild.MainChannel.SendMessageAsync(embed:
+                    new EmbedBuilder()
+                        .WithColor(Colors.Get("Iodem"))
+                        .WithDescription(string.Format(_welcomeMsg.Random(), user.DisplayName()))
+                        .Build());
+        }
+
         private async Task Client_UserJoined(SocketGuildUser user)
         {
             _ = GuildSettings.GetGuildSettings(user.Guild).TestCommandChannel.SendMessageAsync(embed:
@@ -140,6 +146,11 @@ namespace IodemBot
                     .AddField("User Joined", user.JoinedAt)
                     .AddField("Status", user.Status, true)
                     .Build());
+
+            if (!user.IsPending.GetValueOrDefault())
+            {
+                await SendWelcomeMessage(user);
+            }
             await Task.CompletedTask;
         }
 
