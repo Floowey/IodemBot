@@ -9962,7 +9962,7 @@
     "name": "A Very Golden Christmas",
     "IsOneTimeOnly": true,
     "FlavourText": "A wintertime celebration in a far away land. Join the festivities!\n(Event dungeon, available until <t:1641510000>)",
-    "Image": "https://media.discordapp.net/attachments/896423719428304946/910238976722481182/goldensun_xmascard-digital900px.png",
+    "Image": "https://cdn.discordapp.com/attachments/668442573899300897/925098257372307456/goldensun_xmascard2021900px.png",
     "IsDefault": false,
     "Matchups": [
       {
@@ -10065,7 +10065,7 @@
         "Flavourtext": "After the show, a puppeteer stands up. He is tall and pony-tailed, with dark brown hair and compelling eyes. He appears to not be from Prox, given the lack of scales in his skin. He nods to you and walks away. Curious, you follow him up some stairs and into the night. Several twists and turns later, you find him at the highest house in the village. Several Djinn keep him company here. Seeing you, they ask for a friendly battle.",
         "EnemyNames": [ "Venus Djinni Christmas", "Mars Djinni Christmas", "IsaacFinal:Masked Puppeteer", "Jupiter Djinni Christmas", "Mercury Djinni Christmas" ],
         "Keywords": [ "Heal" ],
-        "Image": "https://media.discordapp.net/attachments/896423719428304946/910238976722481182/goldensun_xmascard-digital900px.png",
+        "Image": "https://cdn.discordapp.com/attachments/668442573899300897/925098257372307456/goldensun_xmascard2021900px.png",
         "RewardTables": [
           [
             {
@@ -10133,8 +10133,7 @@
       {
         "Flavourtext": "A white-bearded, elderly man dressed all in red sits here in front of a fir tree. Like the puppeteer, his face is also not scaly. He seems to be talking at length to a group of children and their parents. By and large, people are politely feigning interest, but every now and then he calls out a child's name and hands them a box or bag wrapped with a bow. Squeals of glee greet each gift. \n\nUpon spotting you, the man addresses you, 'Well! It's been a while! It's good to see that more Adepts are exploring the world... back when Jenna and I were stuck on Idejima... the restoration of Alchemy... Lemuria...' He natters on for at least 15 minutes, getting further and further off-topic. Eventually you find yourself yawning, and he notices. 'Well! How rude! Perhaps a fight will wake you up!' He jumps to his feet and attacks!",
         "EnemyNames": [ "Ruffian:Santa Kraden" ],
-        "Keywords": [ "https://cdn.discordapp.com/attachments/668443234292334612/924255639709036584/SPOILER_5688-1777515081.png" ],
-        "Image": "",
+        "Image": "https://cdn.discordapp.com/attachments/668443234292334612/924255639709036584/SPOILER_5688-1777515081.png",
         "RewardTables": [
           [
             {
@@ -10168,6 +10167,55 @@
               "Weight": 1,
               "XP": 1200,
               "Coins": 1200
+            }
+          ],
+          [
+            {
+              "Weight": 8,
+              "XP": 400,
+              "Coins": 400
+            },
+            {
+              "Weight": 1,
+              "Dungeon": "Suhalla Desert Junction"
+            },
+            {
+              "Weight": 1,
+              "Dungeon": "Star Chamber"
+            },
+            {
+              "Weight": 1,
+              "Dungeon": "Crossbone Isle"
+            },
+            {
+              "Weight": 1,
+              "Dungeon": "Venus Lighthouse"
+            },
+            {
+              "Weight": 1,
+              "Chest": "Adept",
+              "HasChest": true
+            },
+            {
+              "Weight": 3,
+              "Chest": "Gold",
+              "HasChest": true
+            }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "Defeated, the demonic creature nods and lowers his hammer. In a booming voice, he announces, 'Well fought, Adept.' He reaches behind him and brings out a box from somewhere, handing it to you. Then he vanishes, and cheers ring out from around you. The festivities continue, and you spend the rest of the night feasting and celebrating with the Proxians. Stuffed with good food, you find your way to the inn, where a warm bed awaits you, free of charge this festival night.",
+        "EnemyNames": [ "End" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "Tag": "ChristmasFinished",
+              "Obtainable": 1,
+              "XP": 10,
+              "Coins": 10
             }
           ]
         ]

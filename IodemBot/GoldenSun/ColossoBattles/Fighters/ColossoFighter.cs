@@ -495,6 +495,7 @@ namespace IodemBot.ColossoBattles
             AddCondition(Condition.Down);
             Buffs = new List<Buff>();
             LingeringEffects.RemoveAll(e => e.RemovedOnDeath);
+            SelectedMove = new Nothing();
 
             if (Tags.Any(t => t == "Head") && !Party.Any(p => p.IsAlive && p.Tags.Any(t => t == "Head")))
                 Party.Where(e => e.IsAlive).ToList().ForEach(e => e.Kill());

@@ -95,7 +95,7 @@ namespace IodemBot
         {
             var guild = GuildSettings.GetGuildSettings(user.Guild);
             var userBefore = before.Value;
-            if (userBefore is not null && userBefore.DisplayName() != user.DisplayName())
+            if (userBefore.DisplayName() != user.DisplayName())
             {
                 EntityConverter.ConvertUser(user).Name = user.DisplayName();
                 _ = guild.TestCommandChannel
@@ -103,32 +103,39 @@ namespace IodemBot
                         $"{user.Mention} changed Nickname from {userBefore.DisplayName()} to {user.DisplayName()}");
             }
 
-            if ((userBefore?.IsPending ?? true) == true && user.IsPending == false)
-                if (GuildSettings.GetGuildSettings(user.Guild).SendWelcomeMessage)
-                    _ = guild.MainChannel.SendMessageAsync(embed:
-                        new EmbedBuilder()
-                            .WithColor(Colors.Get("Iodem"))
-                            .WithDescription(string.Format(_welcomeMsg.Random(), user.DisplayName()))
-                            .Build());
+            Console.WriteLine($"Updated: before:{userBefore.IsPending} after:{user.IsPending}");
+            if (userBefore.IsPending.Value == true && user.IsPending.Value == false)
+                await SendWelcomeMessage(user);
 
-            if (userBefore?.PremiumSince.HasValue ?? false != user.PremiumSince.HasValue)
-            {
-                var isBoosting = user.PremiumSince.HasValue;
-                if (isBoosting)
-                {
-                    _ = guild.MainChannel
-                        .SendMessageAsync(
-                            $"<:Exclamatory:549529360604856323> {user.Mention} is now boosting the server.");
-                }
-                else
-                {
-                    _ = guild.TestCommandChannel
-                    .SendMessageAsync(
-                        $"<:Exclamatory:549529360604856323> {user.Mention} is no longer boosting the server.");
-                }
-            }
+            //if (userBefore.PremiumSince.HasValue != user.PremiumSince.HasValue)
+            //{
+            //    var isBoosting = user.PremiumSince.HasValue;
+            //    if (isBoosting)
+            //    {
+            //        _ = guild.MainChannel
+            //            .SendMessageAsync(
+            //                $"<:Exclamatory:549529360604856323> {user.Mention} is now boosting the server.");
+            //    }
+            //    else
+            //    {
+            //        _ = guild.TestCommandChannel
+            //        .SendMessageAsync(
+            //            $"<:Exclamatory:549529360604856323> {user.Mention} is no longer boosting the server.");
+            //    }
+            //}
 
             await Task.CompletedTask;
+        }
+
+        private async Task SendWelcomeMessage(SocketGuildUser user)
+        {
+            var guild = GuildSettings.GetGuildSettings(user.Guild);
+            if (GuildSettings.GetGuildSettings(user.Guild).SendWelcomeMessage)
+                _ = guild.MainChannel.SendMessageAsync(embed:
+                    new EmbedBuilder()
+                        .WithColor(Colors.Get("Iodem"))
+                        .WithDescription(string.Format(_welcomeMsg.Random(), user.DisplayName()))
+                        .Build());
         }
 
         private async Task Client_UserJoined(SocketGuildUser user)
@@ -140,6 +147,12 @@ namespace IodemBot
                     .AddField("User Joined", user.JoinedAt)
                     .AddField("Status", user.Status, true)
                     .Build());
+
+            Console.WriteLine($"Joined: hasvalue:{user.IsPending.HasValue} after:{user.IsPending.Value}");
+            if (user.IsPending.HasValue && !user.IsPending.Value)
+            {
+                await SendWelcomeMessage(user);
+            }
             await Task.CompletedTask;
         }
 
