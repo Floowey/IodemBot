@@ -103,7 +103,8 @@ namespace IodemBot
                         $"{user.Mention} changed Nickname from {userBefore.DisplayName()} to {user.DisplayName()}");
             }
 
-            if (userBefore.IsPending == true && user.IsPending == false)
+            Console.WriteLine($"Updated: before:{userBefore.IsPending} after:{user.IsPending}");
+            if (userBefore.IsPending.Value == true && user.IsPending.Value == false)
                 await SendWelcomeMessage(user);
 
             //if (userBefore.PremiumSince.HasValue != user.PremiumSince.HasValue)
@@ -147,6 +148,7 @@ namespace IodemBot
                     .AddField("Status", user.Status, true)
                     .Build());
 
+            Console.WriteLine($"Joined: hasvalue:{user.IsPending.HasValue} after:{user.IsPending.Value}");
             if (user.IsPending.HasValue && !user.IsPending.Value)
             {
                 await SendWelcomeMessage(user);
