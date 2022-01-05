@@ -66,6 +66,7 @@ namespace IodemBot
             _client.Ready += Client_Ready;
             _client.UserLeft += Client_UserLeft;
             _client.UserJoined += Client_UserJoined;
+
             _client.UserBanned += _client_UserBanned;
             _client.GuildMemberUpdated += Client_GuildMemberUpdated;
 
@@ -103,9 +104,12 @@ namespace IodemBot
                         $"{user.Mention} changed Nickname from {userBefore.DisplayName()} to {user.DisplayName()}");
             }
 
-            Console.WriteLine($"Updated: before:{userBefore.IsPending} after:{user.IsPending}");
-            if (userBefore.IsPending.Value == true && user.IsPending.Value == false)
-                await SendWelcomeMessage(user);
+            //Console.WriteLine($"Updated: before:{userBefore.IsPending.GetValueOrDefault()} after:{user.IsPending.GetValueOrDefault()}");
+            //if (userBefore.IsPending.GetValueOrDefault() == true && user.IsPending.GetValueOrDefault() == false)
+            //{
+            //    await SendWelcomeMessage(user);
+            //    Console.WriteLine($"{user.Username} joined");
+            //}
 
             //if (userBefore.PremiumSince.HasValue != user.PremiumSince.HasValue)
             //{
@@ -148,7 +152,7 @@ namespace IodemBot
                     .AddField("Status", user.Status, true)
                     .Build());
 
-            Console.WriteLine($"Joined: hasvalue:{user.IsPending.HasValue} after:{user.IsPending.Value}");
+            Console.WriteLine($"Joined: hasValue:{user.IsPending.HasValue} isPending:{user.IsPending.GetValueOrDefault()}");
             if (user.IsPending.HasValue && !user.IsPending.Value)
             {
                 await SendWelcomeMessage(user);

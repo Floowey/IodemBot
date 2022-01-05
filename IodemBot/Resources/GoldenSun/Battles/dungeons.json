@@ -3241,8 +3241,7 @@
             {
               "Weight": 7,
               "Dungeon": "Xian"
-            },
-            { "Weight": 4 }
+            }
           ]
         ]
       }
@@ -4249,7 +4248,7 @@
             },
             {
               "Weight": 5,
-              "Item": "Witch's Wand"
+              "Item": "Witchs Wand"
             }
           ]
         ]
@@ -6334,7 +6333,7 @@
         ]
       },
       {
-        "Flavourtext": "You puzzle your way through the riddles and riddle yourself through the puzzles. You have to choose going left or going right,",
+        "Flavourtext": "You puzzle your way through the riddles and riddle yourself through the puzzles. There's a split in the path.  Do you choose to go left or right?",
         "EnemyNames": [ "Choice:Left", "Choice:Right|KilledBy:Player@7" ],
         "Image": "",
         "RewardTables": [
@@ -7723,7 +7722,7 @@
         ]
       },
       {
-        "Flavourtext": "Hama shows you a vision of twelve statues arrayed. 'One for each zodiach sign. They are from far from here, in the Craggy Peak Ruins.\n\nCan you identify the three zodiac signs associated with Mars?'",
+        "Flavourtext": "Hama shows you a vision of twelve statues arrayed before you. 'One for each zodiac sign. They are from far from here, in the Craggy Peak Ruins.\n\nCan you identify the three zodiac signs associated with Mars?'",
         "EnemyNames": [ "Choice:Leo|KilledBy:Player@101|!HasTag:Magma4ZodLeo", "Choice:Aries|KilledBy:Player@102|!HasTag:Magma4ZodAries", "Choice:Sagittarius|KilledBy:Player@103|!HasTag:Magma4ZodSagittarius", "Choice:Gemini||KilledBy:Player@201|!HasTag:Magma4ZodGemini", "Choice:Aquarius|KilledBy:Player@202|!HasTag:Magma4ZodAquarius", "Choice:Libra|KilledBy:Player@203|!HasTag:Magma4ZodLibra", "Choice:Virgo|KilledBy:Player@204|!HasTag:Magma4ZodVirgo", "Choice:Pisces|KilledBy:Player@205|!HasTag:Magma4ZodPisces", "Choice:Cancer|KilledBy:Player@206|!HasTag:Magma4ZodCancer", "Choice:Scorpio|KilledBy:Player@207|!HasTag:Magma4ZodScorpio", "Choice:Capricorn|KilledBy:Player@208|!HasTag:Magma4ZodCapricorn", "Choice:Taurus|KilledBy:Player@209|!HasTag:Magma4ZodTaurus" ],
         "Keywords": [ "@100", "Shuffle", "ToMatchup@100" ],
         "Image": "https://goldensunwiki.net/w/images/3/3a/ZodiacSymbols.png",
@@ -7851,7 +7850,7 @@
         ]
       },
       {
-        "Flavourtext": "Virgo, protectress of the harvest. A gallant knight guards the noble Venus sign on her every step.'",
+        "Flavourtext": "Virgo, protectress of the harvest. A gallant knight guards the noble Venus sign at her every step.'",
         "EnemyNames": [ "Virgo", "Paladin" ],
         "Keywords": [ "@204", "ToMatchup@100" ],
         "Image": "https://cdn.discordapp.com/attachments/668443234292334612/906847253682094090/Create-meme-knight-covers-the-Princess-shield-ghostblade-.png",
@@ -7977,7 +7976,7 @@
         ]
       },
       {
-        "Flavourtext": "Well,' Hama comments. 'A hard-won set of battles, but you finally succeeded in the end. Persistence is also an admirable trait, and merits a reward.' ",
+        "Flavourtext": "'Well,' Hama comments. 'A hard-won set of battles, but you finally succeeded in the end. Persistence and curiosity is an admirable trait, and merits a reward.' ",
         "EnemyNames": [ "Next" ],
         "Keywords": [ "@520", "ToMatchup@600" ],
         "Image": "",
@@ -7995,7 +7994,7 @@
         ]
       },
       {
-        "Flavourtext": "You climb to the highest point of the Plateau. The view is vast, but your attention is immediately drawn upwards. In the sky, a great ball of fire has come close to Weyard. It dominates the sky. Hama nods. 'Weyard, thankfully, is safe. But this is one of the purest sources of Mars you could hope to meet in your lifetime. Show it your strength, Adept! And beware; Mercury holds no sway here.'",
+        "Flavourtext": "You climb to the highest point of the Plateau. The view is vast, but your attention is immediately drawn upwards. In the sky, a great ball of celestial fire has come close to Weyard. It dominates the sky. Hama nods. 'Weyard, thankfully, is safe. But this is one of the purest sources of Mars you could hope to meet in your lifetime. Show it your strength, Adept! And beware; Mercury holds no sway here.'",
         "EnemyNames": [ "CometMeteor1", "CometMeteor2", "MeteorSummon|ImmuneTo:Mercury|Head", "CometMeteor3", "CometMeteor4 " ],
         "Keywords": [ "@600" ],
         "Image": "",
@@ -8435,7 +8434,7 @@
     },
     "Matchups": [
       {
-        "Flavourtext": "Hama says things, we are in the Anemos Crater",
+        "Flavourtext": "Hama welcomes you and begins one of her typical educational introductions. But you aren't listening, taken aback by the sight that lies before you: a massive crater torn from the earth before you, dwarfing the nearby town of Contigo many times over.  Within, four altars have been set up in each cardinal direction, and colourful elementals swirl over and around it all.",
         "EnemyNames": [ "Next" ],
         "Image": "",
         "RewardTables": [
@@ -8454,7 +8453,7 @@
         ]
       },
       {
-        "Flavourtext": "We try to make contact with Anemos. For the ritual we need to put the right totem on the right altar. If you are worthy to the elementals, they might give you a clue. Mind you, they speak in riddles and are quite mischievous.",
+        "Flavourtext": "Hama's voice finally pierces through your awe. 'We will try to make contact with Anemos. For the ritual, we need to put the right totem on the right altar. If you prove yourself worthy to the elementals, they might give you a clue. But beware, they speak in riddles and are quite mischievous.'  She hands you a heavy bag. Inside are carved stone idols shaped like symbols of various Jupiter-aligned forces.  ",
         "EnemyNames": [ "Choice:Altars|KilledBy:Player@100", "Choice:Elementals|KilledBy:Player@200" ],
         "Image": "",
         "RewardTables": [
@@ -8462,7 +8461,7 @@
         ]
       },
       {
-        "Flavourtext": "Four altars",
+        "Flavourtext": "There are four altars here at each of the points of a compass inside the crater. Which one do you want to visit?",
         "EnemyNames": [ "Choice:North Altar|KilledBy:Player@110", "Choice:East Altar|KilledBy:Player@120", "Choice:South Altar|KilledBy:Player@130", "Choice:West Altar|KilledBy:Player@140", "Choice:Go to Elementals|KilledBy:Player@200" ],
         "Keywords": [ "@100" ],
         "Image": "",
@@ -8471,10 +8470,10 @@
         ]
       },
       {
-        "Flavourtext": "The North Altar. Which idol do you want to put on its pedestal?",
+        "Flavourtext": "You move to the northern altar inside the massive crater. Which idol do you want to put atop it?",
         "EnemyNames": [ "Choice:Fang Idol|KilledBy:Player@-10", "Choice:Mind Idol", "Choice:Feather Idol", "Choice:Gust Idol", "Choice:Lightning Idol", "Choice:Jade Idol", "Choice:Storm Idol", "Choice:Moon Idol" ],
         "Keywords": [ "@110", "Shuffle", "ToMatchup@100", "HasTagAll:Air4IdolFang:Air4IdolFeather:Air4IdolMind:Air4IdolGust@400" ],
-        "Image": "",
+        "Image": "https://cdn.discordapp.com/attachments/668443234292334612/921740749215793172/unknown.png",
         "RewardTables": [
           [
             {
@@ -8492,10 +8491,10 @@
         ]
       },
       {
-        "Flavourtext": "The East Altar. Which idol do you want to put on its pedestal?",
+        "Flavourtext": "The easternmost altar draws close. Which idol do you put upon it?",
         "EnemyNames": [ "Choice:Fang Idol", "Choice:Mind Idol", "Choice:Feather Idol|KilledBy:Player@-10", "Choice:Gust Idol", "Choice:Lightning Idol", "Choice:Jade Idol", "Choice:Storm Idol", "Choice:Moon Idol" ],
         "Keywords": [ "@120", "Shuffle", "ToMatchup@100", "HasTagAll:Air4IdolFang:Air4IdolFeather:Air4IdolMind:Air4IdolGust@400" ],
-        "Image": "",
+        "Image": "https://cdn.discordapp.com/attachments/668443234292334612/921740749215793172/unknown.png",
         "RewardTables": [
           [
             {
@@ -8513,10 +8512,10 @@
         ]
       },
       {
-        "Flavourtext": "The South Altar. Which idol do you want to put on its pedestal?",
+        "Flavourtext": "You approach the altar on the south point of the crater. Which idol do you put on its pedestal?",
         "EnemyNames": [ "Choice:Fang Idol", "Choice:Mind Idol|KilledBy:Player@-10", "Choice:Feather Idol", "Choice:Gust Idol", "Choice:Lightning Idol", "Choice:Jade Idol", "Choice:Storm Idol", "Choice:Moon Idol" ],
         "Keywords": [ "@130", "Shuffle", "ToMatchup@100", "HasTagAll:Air4IdolFang:Air4IdolFeather:Air4IdolMind:Air4IdolGust@400" ],
-        "Image": "",
+        "Image": "https://cdn.discordapp.com/attachments/668443234292334612/921740749215793172/unknown.png",
         "RewardTables": [
           [
             {
@@ -8534,10 +8533,10 @@
         ]
       },
       {
-        "Flavourtext": "The West Altar. Which idol do you want to put on its pedestal?",
+        "Flavourtext": "The altar on the westernmost point of the crater looms before you. Which idol do you choose?",
         "EnemyNames": [ "Choice:Fang Idol", "Choice:Mind Idol", "Choice:Feather Idol", "Choice:Gust Idol|KilledBy:Player@-10", "Choice:Lightning Idol", "Choice:Jade Idol", "Choice:Storm Idol", "Choice:Moon Idol" ],
         "Keywords": [ "@140", "Shuffle", "ToMatchup@100", "HasTagAll:Air4IdolFang:Air4IdolFeather:Air4IdolMind:Air4IdolGust@400" ],
-        "Image": "",
+        "Image": "https://cdn.discordapp.com/attachments/668443234292334612/921740749215793172/unknown.png",
         "RewardTables": [
           [
             {
@@ -8555,7 +8554,7 @@
         ]
       },
       {
-        "Flavourtext": "Four Elementals",
+        "Flavourtext": "Four brightly coloured elementals roam this crater, darting and swirling at their whimsy. Which one do you approach?",
         "EnemyNames": [ "Choice:Green Elemental|KilledBy:Player@210", "Choice:Yellow Elemental|KilledBy:Player@220", "Choice:Pink Elemental|KilledBy:Player@230", "Choice:Purple Elemental|KilledBy:Player@240", "Choice:Go to Altars|KilledBy:Player@100" ],
         "Keywords": [ "@200" ],
         "Image": "",
@@ -8564,7 +8563,7 @@
         ]
       },
       {
-        "Flavourtext": "*'Adept of the Wind. Show me your power in a lack of air.'*",
+        "Flavourtext": "A green light flits over the earth in front of you. It greets you, saying, *'Adept of the Wind. Though air is mighty, it is not the only source of strength. Show me your power beyond it.'*",
         "EnemyNames": [ "Green Elemental|ImmuneTo:Jupiter" ],
         "Keywords": [ "@210", "ToMatchup@200" ],
         "Image": "",
@@ -8575,13 +8574,13 @@
               "Tag": "Air4Elemental1",
               "XP": 400,
               "Coins": 500,
-              "message": "Path of Air 4 Spoiler for {0}: ||To one of my sides, some creatures dwell. Don't anger me, or storm I'll foretell.||"
+              "message": "Path of Air 4 Spoiler for {0}: ||On one of my flanks, some creatures dwell. Don't anger me, or storm I'll foretell.||"
             }
           ]
         ]
       },
       {
-        "Flavourtext": "*'Adept of the Wind. Watch me and follow.'*",
+        "Flavourtext": "A yellow-glowing creature zooms in circles around you, almost too quickly to follow.  It pauses to leap up and down, singing, *'Adept of the Wind. Watch me closely, follow my lead, and you might catch up to me!'*",
         "EnemyNames": [ "Yellow Elemental|KilledBy:Jupiter:Djinn:Summon@-10" ],
         "Keywords": [ "@220", "ToMatchup@200" ],
         "Image": "",
@@ -8593,13 +8592,13 @@
               "Tag": "Air4Elemental2",
               "XP": 400,
               "Coins": 500,
-              "message": "Path of Air 4 Spoiler for {0}: ||I'm face to face with who helps me fly.||"
+              "message": "Path of Air 4 Spoiler for {0}: ||I'm face-to-face with what helps me fly.||"
             }
           ]
         ]
       },
       {
-        "Flavourtext": "*'Adept of the Wind. Watch me and follow.'*",
+        "Flavourtext": "A pink cloud hovers over your head and bellows, in harmonious twinned tones that shake your very bones, *'Adept of the Wind.  Can you mirror my powers?'*",
         "EnemyNames": [ "Pink Elemental|KilledBy:Jupiter:Psynergy@-10" ],
         "Keywords": [ "@230", "ToMatchup@200" ],
         "Image": "",
@@ -8617,8 +8616,8 @@
         ]
       },
       {
-        "Flavourtext": "*'Adept of the Wind. A strong vortex absorbs the weak.'*",
-        "EnemyNames": [ "Mirror:Purple Elemental|Boost:50|Boost:205:Spd", "Mirror:Purple Elemental|Boost:50|Boost:205:Spd", "Mirror:Purple Elemental|Boost:50|Boost:205:Spd" ],
+        "Flavourtext": "As you approach, the sole glowing purple elemental splits before your eyes. Three indistinct purple forms move to surround you, shifting to mimic your approximate size and shape.  They scream discordantly, *'Adept of the Wind! A strong vortex absorbs the weak!'*",
+        "EnemyNames": [ "Mirror:Purple Elemental|Boost:55|Boost:200:Spd", "Mirror:Purple Elemental|Boost:55|Boost:200:Spd", "Mirror:Purple Elemental|Boost:55|Boost:200:Spd", "Mirror:Purple Elemental|Boost:55|Boost:200:Spd" ],
         "Keywords": [ "@240", "ToMatchup@200" ],
         "Image": "",
         "RewardTables": [
@@ -8628,13 +8627,13 @@
               "Tag": "Air4Elemental4",
               "XP": 400,
               "Coins": 500,
-              "message": "Path of Air 4 Spoiler for {0}: ||I'm you, without arms, a thought at best. I see East getting helped by West.||"
+              "message": "Path of Air 4 Spoiler for {0}: ||I'm you without arms, a thought at best. I see East getting helped by West.||"
             }
           ]
         ]
       },
       {
-        "Flavourtext": "Prepare Ritual",
+        "Flavourtext": "After placing the last idol, the ritual is seemingly complete. You turn around to see the the results...",
         "EnemyNames": [ "Next" ],
         "Keywords": [ "@400", "ToMatchup@420", "!HasTagAll:Air4Elemental1:Air4Elemental2:Air4Elemental3:Air4Elemental4@410" ],
         "Image": "",
@@ -8643,7 +8642,7 @@
         ]
       },
       {
-        "Flavourtext": "'What's this? You did not satisfy all the elements?' They appear appalled by your disrespect.",
+        "Flavourtext": "'What's this?' Hama exclaims. 'You did not satisfy all the elementals? That's a fundamental part of the ritual...'  She swallows and nods behind you. The elementals have formed up to attack, and they appear appalled by your disrespect!",
         "EnemyNames": [ "Green Elemental|!HasTag:Air4Elemental1", "Yellow Elemental|!HasTag:Air4Elemental2", "Pink Elemental|!HasTag:Air4Elemental3", "Mirror:Purple Elemental|!HasTag:Air4Elemental4" ],
         "Keywords": [ "@410", "Shuffle" ],
         "Image": "",
@@ -8666,7 +8665,7 @@
         ]
       },
       {
-        "Flavourtext": "a gust starts. fight the wind, are you stronger than the wind you try to conjure",
+        "Flavourtext": "A storm comes up in the middle of the crater, gaining in power and speed as you watch. 'You must get to the center quickly,' Hama urges. 'Fight through the wind! Are you strong enough, or will you get blown away?",
         "EnemyNames": [ "Next" ],
         "Keywords": [ "@420" ],
         "Image": "",
@@ -8675,7 +8674,7 @@
         ]
       },
       {
-        "Flavourtext": "Kill within 2 turns",
+        "Flavourtext": "A light wind breezes around you on the outskirts of the storm. It´s easy to get through it, but you should hurry.",
         "EnemyNames": [ "Storm Phase 1|KilledBeforeTurn:2@510" ],
         "Keywords": [ "@500", "ToMatchup@500" ],
         "Image": "",
@@ -8698,7 +8697,7 @@
         ]
       },
       {
-        "Flavourtext": "Kill within 3 turns",
+        "Flavourtext": "The clouds are thick and black now. You know you don´t have much time to get through, otherwise it will push you out again!",
         "EnemyNames": [ "Storm Phase 2|KilledBeforeTurn:3@520" ],
         "Keywords": [ "@510", "ToMatchup@500" ],
         "Image": "",
@@ -8713,7 +8712,7 @@
         ]
       },
       {
-        "Flavourtext": "Kill within 4 turns",
+        "Flavourtext": "Lighting strikes left and right. You are in the height of the storm now. Make haste before you are blown away!",
         "EnemyNames": [ "Storm Phase 3|KilledBeforeTurn:4@600" ],
         "Keywords": [ "@520", "ToMatchup@510" ],
         "Image": "",
@@ -8728,7 +8727,7 @@
         ]
       },
       {
-        "Flavourtext": "The storm is enormous, thor appears",
+        "Flavourtext": "You have made it to the eye of the hurricane.  Around you, gale-force winds rage and howl, but the center is calm. Facing you stands a huge, well-muscled, god-like being. He raises his arm, and with a crack of thunder and bright sparks, an ancient runed hammer appears in it. Wordlessly, he raises it in a salute, and shifts into a fighting stance.  Get ready!",
         "EnemyNames": [ "Next" ],
         "Keywords": [ "@600" ],
         "Image": "",
@@ -8737,7 +8736,7 @@
         ]
       },
       {
-        "Flavourtext": "Thor",
+        "Flavourtext": "Thor charges into battle, hurling his trusty hammer Mjolnir before him. You just barely dodge the opening salvo as it sizzles by, returning to Thor's hand, and the battle begins in earnest.  As lightning strikes the massive hammer, it crackles around Thor ominously.  ",
         "EnemyNames": [ "ThorSummon|VIP|ImmuneTo:Venus", "Mjolnir" ],
         "Image": "",
         "RewardTables": [
@@ -8762,7 +8761,7 @@
         ]
       },
       {
-        "Flavourtext": "End",
+        "Flavourtext": "Thor kneels before you, defeated. You have earned his respect. If you ever need his help, paint his symbol in the sky and his lightning will desintegrate your foes.",
         "EnemyNames": [ "End" ],
         "Image": "",
         "RewardTables": [
@@ -9173,7 +9172,7 @@
     },
     "Matchups": [
       {
-        "Flavourtext": "Hama nods to you as you arrive. 'Good, you're here. We don't have much time. A massive ice storm has formed near Tundaria. It's rushing north and growing in size and power. It will flood and freeze all of Weyard, starting with Mikasalla, unless it is stopped.' She holds out her hand. You take it, and are abruptly somewhere much colder... Shivering, Hama wishes you luck, to not get lost and tells you she'll return for you. Then she is gone.",
+        "Flavourtext": "Hama nods to you as you arrive. 'Good, you're here. We don't have much time. A massive ice storm has formed near Tundaria. It's rushing north and growing in size and power. It will flood and freeze all of Weyard, starting with Mikasalla, unless it is stopped.' She holds out her hand. You take it, and are abruptly somewhere much colder... Shivering, Hama wishes you luck and safe travels, and tells you she'll be watching for if you need her. Then she is gone.",
         "EnemyNames": [ "NextHama" ],
         "Image": "",
         "RewardTables": [
@@ -9213,7 +9212,7 @@
         ]
       },
       {
-        "Flavourtext": "Pressing onward into the storm, it becomes harder to see through the unorthodox weather. Where should you go?",
+        "Flavourtext": "Pressing onward into the storm, it becomes harder to see through this dangerously unorthodox weather. Where should you go?",
         "EnemyNames": [ "Choice:Up|KilledBy:Player@120", "Choice:Down|KilledBy:Player@500", "Choice:Left|KilledBy:Player@110", "Choice:Right|KilledBy:Player@500" ],
         "Image": "",
         "RewardTables": [
@@ -9288,8 +9287,8 @@
         ]
       },
       {
-        "Flavourtext": "The chill is really starting to get to you. What a weird path you took. Oh, what would you give for a hot cup of tea. You *must* be nearly to the center of the storm now.",
-        "EnemyNames": [ "Choice:Up|KilledBy:Player@150", "Choice:Down|KilledBy:Player@100", "Choice:Left|KilledBy:Player@500", "Choice:Right|KilledBy:Player@130" ],
+        "Flavourtext": "The chill is really starting to get to you. What a weird and twisted path you've taken. Oh, what would you give for a hot cup of tea. You *must* be nearly to the center of the storm now...",
+        "EnemyNames": [ "Choice:Up|KilledBy:Player@150", "Choice:Down|KilledBy:Player@145", "Choice:Left|KilledBy:Player@500", "Choice:Right|KilledBy:Player@130" ],
         "Keywords": [ "@141" ],
         "Image": "",
         "RewardTables": [
@@ -9420,7 +9419,7 @@
         ]
       },
       {
-        "Flavourtext": "Gusts of blinding snow whoosh and spin you around. You've lost track of where you were, and can't seem to find the path forward. Faintly, in your mind, you can hear Hama's voice. 'I am here, Adept. I can take you back to where you started. Do you wish to start anew, or head home for now?'",
+        "Flavourtext": "Gusts of blinding snow whoosh and spin you around. You've lost track of where you were, and can't seem to find the path forward. Faintly, in your mind, you can hear Hama's voice. 'I am here, Adept. I can take you back to where you started. Do you wish to start anew, or retreat home to rest and try again later?'",
         "EnemyNames": [ "Choice:Back to start|KilledBy:Player@100", "Choice:Return home" ],
         "Keywords": [ "@500" ],
         "Image": "",
@@ -9439,7 +9438,7 @@
         ]
       },
       {
-        "Flavourtext": "Chilled to the bone and exhausted, you turn away from the massive, frozen vortex. Maybe you can return another day, before the storm does irreparable damage to Weyard...",
+        "Flavourtext": "Chilled to the bone and exhausted, you turn away from the massive, frozen vortex as Hama's magic whisks you away. Maybe you can return another day, before the storm does irreparable damage to Weyard...",
         "EnemyNames": [ "End" ],
         "Image": "",
         "RewardTables": [
@@ -10247,8 +10246,8 @@
         ]
       },
       {
-        "Flavourtext": "End",
-        "EnemyNames": [ "Good Bye." ],
+        "Flavourtext": "Good Bye.",
+        "EnemyNames": [ "End" ],
         "Image": "",
         "RewardTables": [
           [ { "Weight": 1 } ]

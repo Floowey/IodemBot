@@ -191,7 +191,6 @@ namespace IodemBot.ColossoBattles
         [Command("c setup"), Alias("colosso setup")]
         [RequireStaff]
         [RequireUserServer]
-        // not necessary
         public async Task SetupColosso()
         {
             await Context.Message.DeleteAsync();
@@ -247,7 +246,7 @@ namespace IodemBot.ColossoBattles
         }
 
         [Command("modendless")]
-        [RequireOwner]
+        [RequireStaff]
         public async Task ModColossoEndless(int round = 1)
         {
             if (!BattleService.AcceptBattles)
@@ -274,7 +273,36 @@ namespace IodemBot.ColossoBattles
             await Task.CompletedTask;
         }
 
-        public enum FastTrackOption { SlowTrack, FastTrack };
+        [Command("modgoliath")]
+        [RequireStaff]
+        public async Task ModGoliathBattle()
+        {
+            if (!BattleService.AcceptBattles)
+            {
+                return;
+            }
+
+            if (Context.User is not SocketGuildUser)
+            {
+                return;
+            }
+
+            var guild = Context.Guild;
+            var gs = GuildSettings.GetGuildSettings(guild);
+            _ = RemoveFighterRoles();
+
+            var openBattle = new GoliathBattleEnvironment(BattleService,
+                $"Goliath-{Context.User.Username}", gs.ColossoChannel, false,
+               await BattleService.PrepareBattleChannel("Goliath-B", guild, RoomVisibility.All, true),
+                await BattleService.PrepareBattleChannel("Goliath-A", guild, RoomVisibility.TeamB, true), gs.TeamBRole);
+
+            BattleService.AddBattleEnvironment(openBattle);
+            _ = Context.Channel.SendMessageAsync($"Goliath Battle Ready.");
+            await Task.CompletedTask;
+        }
+
+        public enum FastTrackOption
+        { SlowTrack, FastTrack };
 
         [Command("endless")]
         [Summary("Prepare a channel for an endless gamemode. 'Legacy' will be without djinn. Endless unlocks at level 50 or once you completed the Colosso Finals! Using `i!endless default true` will let you skip ahead to round 13 for a fee of 10.000 coins")]
@@ -340,21 +368,18 @@ namespace IodemBot.ColossoBattles
         [Command("dungeon"), Alias("dg")]
         [Summary("Prepare a channel for an adventure to a specified dungeon")]
         [RequireUserServer]
-        //redundant
         public async Task Dungeon([Remainder] string dungeonName)
         { _ = SetupDungeon(dungeonName, false); await Task.CompletedTask; }
 
         [Command("Tutorial")]
         [Summary("Enter the Tutorial and start your adventure!")]
         [RequireUserServer]
-        //redundant
         public async Task Tutorial()
         { _ = SetupDungeon("Tutorial", false); await Task.CompletedTask; }
 
         [Command("moddungeon")]
         [RequireStaff]
         [RequireUserServer]
-        //no slash
         public async Task ModDungeon([Remainder] string dungeonName)
         { _ = SetupDungeon(dungeonName, true); await Task.CompletedTask; }
 

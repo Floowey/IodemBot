@@ -260,7 +260,7 @@ namespace IodemBot.ColossoBattles
                     if (Battle.TeamB.Any(f => f.Name.Contains("ercury Djinn")))
                         djinnTable.Add(new DefaultReward { Djinn = "Mercury", Weight = 1 });
                     djinnTable.Add(new DefaultReward
-                    { Weight = djinnTable.Weight * (9 - (int)Difficulty) * 3 - djinnTable.Weight });
+                    { Weight = djinnTable.Weight * 3 * (8 - (int)Difficulty) });
                     rewardTables.Add(djinnTable);
                 }
 
