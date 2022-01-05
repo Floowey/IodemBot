@@ -101,7 +101,7 @@ namespace IodemBot.ColossoBattles
                 await PrepareBattleChannel("Weyard-Wilds", guild, persistent: true), BattleDifficulty.Easy));
             _battles.Add(new SingleBattleEnvironment(this, "Woods", gs.ColossoChannel, true,
                 await PrepareBattleChannel("Weyard-Woods", guild, persistent: true), BattleDifficulty.Medium));
-            _battles.Add(new SingleBattleEnvironment(this, "Weards", gs.ColossoChannel, true,
+            _battles.Add(new SingleBattleEnvironment(this, "Wealds", gs.ColossoChannel, true,
                 await PrepareBattleChannel("Weyard-Wealds", guild, persistent: true), BattleDifficulty.Hard));
 
             _battles.Add(new EndlessBattleEnvironment(this, "Endless", gs.ColossoChannel, true,
