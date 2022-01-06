@@ -36,6 +36,10 @@ namespace IodemBot.Core
         [JsonIgnore]
         public SocketCategoryChannel CustomBattlesCateogry =>
             (SocketCategoryChannel)Global.Client.GetChannel(GuildConfig.CustomBattlesCateogryId);
+
+        [JsonIgnore]
+        public SocketCategoryChannel PrivateBattlesCategory =>
+           (SocketCategoryChannel)Global.Client.GetChannel(GuildConfig.PrivateBattlesCateogryId);
     }
 
     public struct GuildSetupConfig
@@ -44,6 +48,7 @@ namespace IodemBot.Core
         public ulong CommandChannelId { get; set; }
         public ulong ColossoChannelId { get; set; }
         public ulong CustomBattlesCateogryId { get; set; }
+        public ulong PrivateBattlesCateogryId { get; set; }
         public ulong TestCommandChannelId { get; set; }
         public ulong TeamBid { get; set; }
         public ulong FighterId { get; set; }

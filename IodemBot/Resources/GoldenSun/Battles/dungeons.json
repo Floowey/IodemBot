@@ -7113,7 +7113,7 @@
       },
       {
         "Flavourtext": "You pick a direction at random and begin your journey. Suddenly *BONK*, something drops on your head. A squirrel has dropped hard nut from a tree above. You pick it up, slowly, as to not scare the creature. The squirrel timidly approaches, from the other side a crow glides down and looks at the nut. What do you do with it?",
-        "EnemyNames": [ "Choice:Give it to the squirrel|KilledBy:Player@-5", "Choice:Give it to the crow|KilledBy:Player@-6", "Choice:Keep it" ],
+        "EnemyNames": [ "Choice:Give it to the squirrel|KilledBy:Player@-5", "Choice:Give it to the crow|KilledBy:Player@-5", "Choice:Keep it" ],
         "Image": "",
         "RewardTables": [
           [
@@ -7195,7 +7195,7 @@
       {
         "Flavourtext": "You draw your weapon and stride out to meet the fox. The pups flee into the woods, but it stands its ground, shaking. It is determined to protect its life and offspring.",
         "EnemyNames": [ "White Wolf:Fox|Boost:200" ],
-        "Keywords": [ "@320" ],
+        "Keywords": [ "@320", "ToMatchup@402" ],
         "Image": "",
         "RewardTables": [
           [
@@ -7247,7 +7247,7 @@
       },
       {
         "Flavourtext": "When you decline, the lord loses his temper. 'Guards!' he cries. 'Seize this ingrate!' His men immediately draw their weapons against you.",
-        "EnemyNames": [ "Tolbi Guard:Guard|Boost:200", "Tolbi Guard:Guard|Boost:200", "Tolbi Guard:Guard|Boost:200", "Tolbi Guard:Guard|Boost:200", "Tolbi Guard:Guard|Boost:200" ],
+        "EnemyNames": [ "Tolbi Guard:Guard|Boost:180", "Tolbi Guard:Guard|Boost:180", "Tolbi Guard:Guard|Boost:180", "Tolbi Guard:Guard|Boost:180", "Tolbi Guard:Guard|Boost:180" ],
         "Keywords": [ "@410", "ToMatchup@500" ],
         "Image": "",
         "RewardTables": [
@@ -7263,25 +7263,21 @@
       {
         "Flavourtext": "Following the itch of battle and treasure, you make your way into the nearby woods. The chopping of the lumberjacks beckons you forward. But as you draw closer, a sudden howl is answered by another, and another. It dawns on you that a pack of hungry wolves has surrounded you.",
         "EnemyNames": [ "White Wolf:Hungry Wolf|Boost:125", "White Wolf:Hungry Wolf|Boost:125", "White Wolf:Hungry Wolf|Boost:125", "White Wolf:Alpha Wolf|Boost:200", "White Wolf:Hungry Wolf|Boost:125" ],
-        "Keywords": [ "@420", "ToMatchup@990", "Shuffle" ],
+        "Keywords": [ "@420", "ToMatchup@991", "Shuffle" ],
         "Image": "",
         "RewardTables": [
           [
             {
               "Weight": 1,
-              "Tag": "Gaia4RewardSecretAdept",
-              "Obtainable": 1,
-              "XP": 1600,
-              "Coins": 2000,
-              "Chest": "Adept",
-              "HasChest": true
+              "XP": 900,
+              "Coins": 1000
             }
           ]
         ]
       },
       {
         "Flavourtext": "After knocking out the noble's guards, you escape and head into the woods. You aim to stop the needless destruction of the forest for personal profit. You arrive in the glade where the lumberjacks are camped out, and call for them to stop. They do, but only at the shout of a guard in magically glowing armor. They surround you on all sides, brandishing their woodcutting axes. They look hungry and pitifully armed, but they also look serious about trying to hurt you. The guard, perhaps the only skilled combatent among them, orders the attack.",
-        "EnemyNames": [ "Bulky Bugman:Lumberjack|Runner:0|KilledBy:Player@990", "Bulky Bugman:Lumberjack|Runner:1|KilledBy:Player@990", "Bulky Bugman:Lumberjack|Runner:1|KilledBy:Player@990", "Bulky Bugman:Lumberjack|Runner:2|KilledBy:Player@990", "Bulky Bugman:Lumberjack|Runner:2|KilledBy:Player@990", "Bulky Bugman:Lumberjack|Runner:3|KilledBy:Player@990", "Bulky Bugman:Lumberjack|Runner:5|KilledBy:Player@990", "Tolbi Guard:Guard|Boost:300|ImmuneTo:None" ],
+        "EnemyNames": [ "Bulky Bugman:Lumberjack|Runner:0|KilledBy:Player@990", "Bulky Bugman:Lumberjack|Runner:1|KilledBy:Player@990", "Bulky Bugman:Lumberjack|Runner:1|KilledBy:Player@990", "Bulky Bugman:Lumberjack|Runner:2|KilledBy:Player@990", "Bulky Bugman:Lumberjack|Runner:2|KilledBy:Player@990", "Bulky Bugman:Lumberjack|Runner:3|KilledBy:Player@990", "Bulky Bugman:Lumberjack|Runner:5|KilledBy:Player@990", "Tolbi Guard:Guard|Boost:300" ],
         "Keywords": [ "@500", "ToMatchup@995", "HasTagAll:Gaia4QuestFedFox:Gaia4QuestFoughtBear:Gaia4QuestNut@600", "Shuffle" ],
         "Image": "https://goldensunwiki.net/w/images/9/9f/KolimaForestDD.png",
         "RewardTables": [
@@ -7311,6 +7307,132 @@
               "Obtainable": 1,
               "XP": 1600,
               "Coins": 2000
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "Gaia4" ],
+              "Obtainable": 1,
+              "XP": 400,
+              "Coins": 600
+            }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "The animals shimmer and fade. You feel in your heart that Mother Nature has given you her blessing. At the same time, you feel a powerful force creeping up on you. You look behind you. A massive humanoid figure wings down from the sky, clad in plate mail. Bull horns sprout from its head, white feathery wings from its shoulders. It wields a sword and a lion-headed shield.",
+        "EnemyNames": [ "Next" ],
+        "Keywords": [ "Heal" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "XP": 1,
+              "Coins": 1
+            }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "The winged, armor-clad being speaks. Its voice shakes the clearing and your very soul. 'You have shown that your heart is righteous, balanced, and concerned for all. You showed strength over nature. But the power of Venus extends beyond nature. More is needed to earn my blessing. What is that all power worth if you cannot enforce your judgments?' It raises its armaments, the battle begins!",
+        "EnemyNames": [ "JudgmentSummon|ImmuneTo:Jupiter" ],
+        "Keywords": [ "@900" ],
+        "Image": "https://preview.redd.it/an5rb40ivsy51.png?width=960&crop=smart&auto=webp&s=723891c4fc9df2493063b7f0441e1957a2e9aab9",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "Tag": "Gaia4RewardXP2",
+              "Obtainable": 1,
+              "XP": 5000,
+              "Coins": 5000,
+              "Summon": "Judgment"
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "Gaia4" ],
+              "XP": 1500,
+              "Coins": 1500
+            }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "The humanoid being lowers its weapon and shield. 'Well done. You have the strength of heart, mind, and body to be a fair judge of all. Go then, with my blessing. Call on me in times of Weyard's need.'",
+        "EnemyNames": [ "End" ],
+        "Keywords": [ "@999" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "Tag": "Gaia4",
+              "Obtainable": 1
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "Tag": "Gaia4RewardAdept",
+              "Obtainable": 1,
+              "Chest": "Adept",
+              "HasChest": true
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "!Magma1", "!Air1", "!Aqua1" ],
+              "Tag": "GaiaPure",
+              "Obtainable": 1,
+              "Item": "Tisiphone Edge"
+            }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "You leave the blood-covered forest behind. Whatever it was you had to find, it didn't fall into your path today.",
+        "EnemyNames": [ "End" ],
+        "Keywords": [ "@990" ],
+        "Image": "",
+        "RewardTables": [
+          [ { "Weight": 1 } ]
+        ]
+      },
+      {
+        "Flavourtext": "You leave the blood-covered forest behind. On your return, the lord hands you his reward. But you feel like something is missing. Whatever it was you had to find, it didn't fall into your path today.",
+        "EnemyNames": [ "End" ],
+        "Keywords": [ "@991" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "Tag": "Gaia4RewardSecretAdept",
+              "Obtainable": 1,
+              "Chest": "Adept",
+              "HasChest": true
+            }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "Dusk is settling in. Whatever it was you had to find, it didn't fall into your path today.",
+        "EnemyNames": [ "End" ],
+        "Keywords": [ "@995" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "Tag": "Gaia4RewardSecretTreasure",
+              "Obtainable": 1,
+              "Item": "Ninja Sandals",
+              "message": "On the side of the road you found a pair of broken down flippers."
             }
           ]
         ]

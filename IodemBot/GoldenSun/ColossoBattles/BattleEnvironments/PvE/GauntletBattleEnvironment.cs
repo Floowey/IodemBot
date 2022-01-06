@@ -221,7 +221,7 @@ namespace IodemBot.ColossoBattles
                     DungeonNr = Battle.OutValue;
                 if (DungeonNr >= 100)
                 {
-                    var taggedDungeon = Dungeon.Matchups.FirstOrDefault(d => d.Keywords.Contains($"@{DungeonNr}"));
+                    var taggedDungeon = Dungeon.Matchups.First(d => d.Keywords.Contains($"@{DungeonNr}"));
                     DungeonNr = Dungeon.Matchups.IndexOf(taggedDungeon);
                 }
 

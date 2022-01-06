@@ -40,13 +40,13 @@ namespace IodemBot.ColossoBattles
             _ = RemoveFighterRoles();
             if (EnemiesDatabase.TryGetDungeon(dungeonName, out var dungeon))
             {
-                if (!acc.Dungeons.Contains(dungeon.Name) && !dungeon.IsDefault && !modPermission)
+                if (!acc.Dungeons.Contains(dungeon.Name) && !dungeon.IsDefault && !modPermission )
                 {
                     await ReplyAsync("If you can't tell me where this place is, I can't take you there. And even if you knew, they probably wouldn't let you in! Bring me a map or show to me that you have the key to enter.");
                     return;
                 }
 
-                if (!dungeon.Requirement.Applies(acc) && !modPermission)
+                if (!dungeon.Requirement.Applies(acc) && !modPermission && !acc.Tags.Contains("EnterAllDungeons"))
                 {
                     await ReplyAsync("I'm afraid that I can't take you to this place, it is too dangerous for you and me both.");
                     return;
