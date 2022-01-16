@@ -203,6 +203,8 @@ namespace IodemBot
     public enum RankEnum
     {
         Level,
+        LevelWeek,
+        LevelMonth,
         Solo,
         Duo,
         Trio,

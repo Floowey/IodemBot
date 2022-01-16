@@ -172,7 +172,7 @@ namespace IodemBot.Core.Leveling
             await Task.CompletedTask;
         }
 
-        internal static async Task UserSentCommand(SocketUser user, IMessageChannel channel)
+        internal static async Task UserSentCommand(IUser user, IMessageChannel channel)
         {
             var userAccount = EntityConverter.ConvertUser(user);
             userAccount.ServerStats.CommandsUsed++;

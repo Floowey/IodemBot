@@ -558,7 +558,7 @@ namespace IodemBot.Modules
             await Status();
         }
 
-        internal static async Task AwardClassSeries(string series, SocketUser user, IMessageChannel channel)
+        internal static async Task AwardClassSeries(string series, IUser user, IMessageChannel channel)
         {
             var avatar = EntityConverter.ConvertUser(user);
             await AwardClassSeries(series, avatar, channel);

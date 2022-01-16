@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 
 namespace IodemBot.Core.UserManagement
@@ -12,6 +13,20 @@ namespace IodemBot.Core.UserManagement
         private static readonly Dictionary<Tuple<RankEnum, EndlessMode>, LeaderBoard> LeaderBoards
             = new();
 
+        public static Calendar cal = new CultureInfo("en-US").Calendar;
+
+        public static string weekKey
+        {
+            get
+            {
+                int week = cal.GetWeekOfYear(DateTime.Now, CalendarWeekRule.FirstDay, DayOfWeek.Monday);
+                return $"{DateTime.Now.Year}-{week}";
+            }
+        }
+
+        public static string monthKey => $"{DateTime.Now.Year}-{DateTime.Now.Month}";
+        public static DateTime CurrentMonth => new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1);
+
         static UserAccountProvider()
         {
             //_persistentStorage = new PersistentStorage<UserAccount>();
@@ -22,8 +37,20 @@ namespace IodemBot.Core.UserManagement
                         new LeaderBoard(u =>
                             (ulong)(u.ServerStats.GetStreak(mode).GetEntry(rank).Item1 +
                                      u.ServerStatsTotal.GetStreak(mode).GetEntry(rank).Item1)));
+
             LeaderBoards.Add(new Tuple<RankEnum, EndlessMode>(RankEnum.Level, EndlessMode.Default),
                 new LeaderBoard(u => u.TotalXp));
+
+            LeaderBoards.Add(new Tuple<RankEnum, EndlessMode>(RankEnum.LevelWeek, EndlessMode.Default),
+                new LeaderBoard(u => (ulong)u.DailyXP
+                .Where(kv => kv.Key.Year == DateTime.Now.Year &&
+                cal.GetWeekOfYear(kv.Key, CalendarWeekRule.FirstDay, DayOfWeek.Monday) == cal.GetWeekOfYear(DateTime.Now, CalendarWeekRule.FirstDay, DayOfWeek.Monday))
+                .Select(kv => (decimal)kv.Value).Sum())
+            );
+
+            LeaderBoards.Add(new Tuple<RankEnum, EndlessMode>(RankEnum.LevelMonth, EndlessMode.Default),
+                new LeaderBoard(u => (ulong)(u.DailyXP.Where(kv => kv.Key >= CurrentMonth).Select(kv => (decimal)kv.Value).Sum()))
+            );
 
             foreach (var user in GetAllUsers())
             {
@@ -39,7 +66,7 @@ namespace IodemBot.Core.UserManagement
 
         public static LeaderBoard GetLeaderBoard(RankEnum type = RankEnum.Level, EndlessMode mode = EndlessMode.Default)
         {
-            if (type == RankEnum.Level) mode = EndlessMode.Default;
+            if (type == RankEnum.Level || type == RankEnum.LevelWeek || type == RankEnum.LevelMonth) mode = EndlessMode.Default;
             return LeaderBoards[new Tuple<RankEnum, EndlessMode>(type, mode)];
         }
 

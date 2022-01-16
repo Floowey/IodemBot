@@ -660,6 +660,7 @@
     "SpriteNormal": "<a:Cinder:662386330612924426>",
     "SpriteShiny": "<a:CinderShiny:663018696448540674>",
     "Move": {
+      "TargetType": "PartySingle",
       "Range": 1,
       "effects": [
         {
@@ -2603,7 +2604,7 @@
     "Move": {
       "Targettype": "EnemyRange",
       "Range": 1,
-      "AddDamage": 24,
+      "DmgMult": 1.24,
       "Effects": [
         {
           "Type": "Condition",

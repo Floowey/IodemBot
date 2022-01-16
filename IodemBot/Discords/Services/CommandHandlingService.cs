@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
+using IodemBot.Core.Leveling;
 using IodemBot.Discords.Contexts;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -101,7 +102,7 @@ namespace IodemBot.Discords.Services
 
             // the command was successful, we don't care about this result, unless we want to log that a command succeeded.
             if (result.IsSuccess)
-                return;
+                _ = ServerGames.UserSentCommand(context.User, context.Channel);
         }
     }
 }

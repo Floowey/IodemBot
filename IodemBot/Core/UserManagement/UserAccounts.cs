@@ -65,6 +65,8 @@ namespace IodemBot.Core.UserManagement
             switch (type)
             {
                 case RankEnum.Level:
+                case RankEnum.LevelWeek:
+                case RankEnum.LevelMonth:
                 case RankEnum.Solo:
                     try
                     {

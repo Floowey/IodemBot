@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
 using IodemBot.Extensions;
 using IodemBot.Modules.GoldenSunMechanics;
 using Newtonsoft.Json;
@@ -102,6 +103,8 @@ namespace IodemBot.Core.UserManagement
         public ulong Xp { get; set; }
         public double XpBoost { get; set; } = 1;
         public ulong XpLastGame { get; set; }
+
+        public Dictionary<DateTime, ulong> DailyXP = new();
         public int DjinnBadLuck { get; set; } = 0;
         public ServerStats ServerStats { get; set; } = new();
         public ServerStats ServerStatsTotal { get; set; } = new();
@@ -118,7 +121,12 @@ namespace IodemBot.Core.UserManagement
 
         public void AddXp(ulong xp)
         {
-            Xp += (ulong)(xp * XpBoost);
+            var xpToAdd = (ulong)(xp * XpBoost);
+            Xp += xpToAdd;
+            if (DailyXP.ContainsKey(DateTime.Today))
+                DailyXP[DateTime.Today] += xpToAdd;
+            else
+                DailyXP[DateTime.Today] = xpToAdd;
         }
 
         public void NewGame()

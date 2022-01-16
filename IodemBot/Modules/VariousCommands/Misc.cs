@@ -276,9 +276,13 @@ namespace IodemBot.Modules
         [Alias("top", "top10")]
         [Cooldown(5)]
         [Summary("Get the most active users and your rank")]
-        public async Task Rank()
+        public async Task Rank(RankEnum type = RankEnum.Level)
         {
-            var topAccounts = UserAccounts.GetTop();
+            var valid = new[] { RankEnum.Level, RankEnum.LevelMonth, RankEnum.LevelWeek };
+            if (!valid.Contains(type))
+                return;
+
+            var topAccounts = UserAccounts.GetTop(type);
             var embed = new EmbedBuilder();
             embed.WithColor(Colors.Get("Iodem"));
             string[] emotes = { "🥇", "🥈", "🥈", "🥉", "🥉", "🥉", "   ", "   ", "   ", "   " };
@@ -286,8 +290,28 @@ namespace IodemBot.Modules
             for (var i = 0; i < Math.Min(topAccounts.Count, 10); i++)
             {
                 var curAccount = topAccounts[i];
+                string toAdd = "";
+                switch (type)
+                {
+                    case RankEnum.Level:
+                        toAdd = $"`{ curAccount.Xp}xp`{ (curAccount.NewGames >= 1 ? $"- `({curAccount.TotalXp}xp total)`" : "")}";
+                        break;
+
+                    case RankEnum.LevelWeek:
+                        var xp = (ulong)curAccount.DailyXP
+                           .Where(kv => kv.Key.Year == DateTime.Now.Year &&
+                           UserAccountProvider.cal.GetWeekOfYear(kv.Key, CalendarWeekRule.FirstDay, DayOfWeek.Monday) == UserAccountProvider.cal.GetWeekOfYear(DateTime.Now, CalendarWeekRule.FirstDay, DayOfWeek.Monday))
+                           .Select(kv => (decimal)kv.Value).Sum();
+                        toAdd = $"`{xp} xp`";
+                        break;
+
+                    case RankEnum.LevelMonth:
+                        xp = (ulong)curAccount.DailyXP.Where(kv => kv.Key >= UserAccountProvider.CurrentMonth).Select(kv => (decimal)kv.Value).Sum();
+                        toAdd = $"`{xp} xp`";
+                        break;
+                }
                 builder.Append(
-                    $"`{i + 1}` {emotes[i]} {curAccount.Name?.PadRight(15) ?? curAccount.Id.ToString()} - `Lv{curAccount.LevelNumber}` - `{curAccount.Xp}xp`{(curAccount.NewGames >= 1 ? $"- `({curAccount.TotalXp}xp total)`" : "")}\n");
+                    $"`{i + 1}` {emotes[i]} {curAccount.Name?.PadRight(15) ?? curAccount.Id.ToString()} - `Lv{curAccount.LevelNumber}` - {toAdd}\n");
             }
 
             //Console.WriteLine(rank);

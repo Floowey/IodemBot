@@ -245,6 +245,50 @@ namespace IodemBot.ColossoBattles
                 pve.SetEnemy(enemy);
         }
 
+        [Command("c addweyard")]
+        [RequireStaff]
+        public async Task AddWeyardBattle(string ChannelName)
+        {
+            var gs = GuildSettings.GetGuildSettings(Context.Guild);
+            BattleService.AddBattleEnvironment(new SingleBattleEnvironment(BattleService, ChannelName, gs.ColossoChannel, true,
+               await BattleService.PrepareBattleChannel($"Weyard-{ChannelName}", Context.Guild, persistent: true), BattleDifficulty.Medium));
+        }
+
+        [Command("c remove")]
+        [RequireStaff]
+        public async Task RemoveBattle(string name)
+        {
+            var gs = GuildSettings.GetGuildSettings(Context.Guild);
+            var battle = BattleService.GetBattleEnvironment(b => b.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
+            if(battle != null)
+            {
+                await RemoveBattle(battle);
+            }
+        }
+
+        [Command("c remove")]
+        [RequireStaff]
+        public async Task RemoveBattle(IMessageChannel channel)
+        {
+            var gs = GuildSettings.GetGuildSettings(Context.Guild);
+            var battle = BattleService.GetBattleEnvironment(channel);
+            if (battle != null)
+            {
+                await RemoveBattle(battle);
+            }
+        }
+
+        private async Task RemoveBattle(BattleEnvironment battle)
+        {
+                //await battle.Reset();
+                foreach (var id in battle.ChannelIds)
+                {
+                    await Context.Guild.GetChannel(id).DeleteAsync();
+                }
+                battle.Dispose();
+                await ReplyAsync($"Removed {battle.Name}");
+        }
+
         [Command("modendless")]
         [RequireStaff]
         public async Task ModColossoEndless(int round = 1)
@@ -415,14 +459,14 @@ namespace IodemBot.ColossoBattles
             {
                 await Context.Channel.SendMessageAsync(a.GetStatus());
             }
-            if (name == "")
+            if (name.IsNullOrEmpty())
             {
                 EmbedBuilder embed = new();
                 foreach (var b in BattleService.GetAllBattleEnvironments())
                 {
-                    embed.AddField($"{b.Name} {(b.IsPersistent ? "(Permanent)" : "")}",
-                    $"{b.GetType().Name}\n" +
-                    $"Channels:{string.Join(",", b.ChannelIds.Select(id => $"<#{id}>"))}");
+                    embed.AddField($"{b.Name}, {(b.IsActive ? "Active" : "Inactive")} {(b.IsProcessing? ", Processing" : "")}, {b.Battle.SizeTeamA + b.Battle.TeamB.OfType<PlayerFighter>().Count()} Players",
+                    $"{b.GetType().Name}, {(b.IsPersistent ? "(Permanent)" : "")}\n" +
+                    $"{string.Join(",", b.ChannelIds.Select(id => $"<#{id}>"))}", true);
                 }
 
                 if (embed.Fields.Count == 0)

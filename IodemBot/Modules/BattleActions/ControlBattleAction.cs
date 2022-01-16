@@ -181,8 +181,8 @@ namespace IodemBot.Modules.BattleActions
                 if (move is Summon)
                     continue;
                 var isSelection = player.SelectedMove == move;
-                var style = isSelection ? ButtonStyle.Success : ButtonStyle.Primary;
-                style = move.InternalValidSelection(player) ? style : ButtonStyle.Secondary;
+                var style = move.InternalValidSelection(player) ? ButtonStyle.Primary : ButtonStyle.Secondary;
+                style = isSelection ? ButtonStyle.Success : style;
                 builder.WithButton($"{move.Name}{(move is Psynergy p ? $" - {p.PpCost}" : "")}",
                     $"{nameof(SelectMoveAction)}.{move.Name}", style, move.GetEmote());
             }
