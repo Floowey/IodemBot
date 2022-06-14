@@ -175,12 +175,15 @@ namespace IodemBot.ColossoBattles
                 StartTurn(); // moves with priority
                 MainTurn();
                 ExtraTurn(); // extra Turns
-                EndTurn();
             }
             catch (Exception e)
             {
                 Log.Add(e.ToString());
                 Console.WriteLine("Turn Processing Error: " + e);
+            }
+            finally
+            {
+                EndTurn();
             }
 
             //Check for Game Over
