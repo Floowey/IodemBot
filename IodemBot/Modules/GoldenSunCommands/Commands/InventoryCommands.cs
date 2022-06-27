@@ -62,8 +62,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
             var fb = new EmbedFooterBuilder();
             fb.WithText(
                 $"{inv.Count} / {inv.MaxInvSize} {(inv.Upgrades < 4 ? $"Upgrade: {50000 * Math.Pow(2, inv.Upgrades)}" : "")}");
-            embed.AddField("Coin", $"{Emotes.GetIcon("Coin")} {inv.Coins}");
-            embed.AddField("Game Tickets", $" {inv.GameTickets}");
+            embed.AddField("Coin", $"{Emotes.GetIcon("Coin")} {inv.Coins}", true);
+            embed.AddField("Game Tickets", $"{Emotes.GetIcon("GameTicket")} {inv.GameTickets}", true);
 
             embed.WithColor(Colors.Get("Iodem"));
             embed.WithFooter(fb);

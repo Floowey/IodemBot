@@ -102,7 +102,7 @@ namespace IodemBot.Modules
             var upgradeCost = (int)(50000 * Math.Pow(2, inv.Upgrades));
             fb.WithText($"{inv.Count} / {inv.MaxInvSize} {(inv.Upgrades < 4 ? $"Upgrade: {upgradeCost}" : "")}");
             embed.AddField("Coin", $"{Emotes.GetIcon("Coin")} {inv.Coins}", true);
-            embed.AddField("Game Tickets", $" {inv.GameTickets}", true);
+            embed.AddField("Game Tickets", $"{Emotes.GetIcon("GameTicket")} {inv.GameTickets}", true);
             embed.WithColor(Colors.Get("Iodem"));
             embed.WithFooter(fb);
             return embed.Build();

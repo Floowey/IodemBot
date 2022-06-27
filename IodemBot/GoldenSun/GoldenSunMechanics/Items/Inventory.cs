@@ -427,7 +427,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             if (i.Name.Contains("NOT IMPLEMENTED!")) return false;
             if (IsFull) return false;
 
-            if (!RemoveTickets(i.Price / GameTicketValue)) return false;
+            if (!RemoveTickets(i.TicketPrice)) return false;
             i.IsBoughtFromShop = true;
             return Add(i.Name);
         }
