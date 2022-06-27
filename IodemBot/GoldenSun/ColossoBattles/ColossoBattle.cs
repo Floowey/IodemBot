@@ -110,11 +110,11 @@ namespace IodemBot.ColossoBattles
                 }
             }
 
-            foreach (var fighter in TeamA.Concat(TeamB).Where(f => f.Tags.Any(t => t.StartsWith("ExtraTurns:"))))
+            foreach (var fighter in TeamA.Concat(TeamB).OfType<NpcEnemy>().Where(f => f.Tags.Any(t => t.StartsWith("ExtraTurns:"))))
             {
-                var splits = tag.Split(':');
-                var turns = float.Parse(splits.ElementAt(1));
-                fighter.ExtraTurn = turns;
+                var splits = fighter.Tags.First(t => t.StartsWith("ExtraTurns")).Split(':');
+                var turns = int.Parse(splits.ElementAt(1));
+                fighter.ExtraTurns = turns;
             }
 
             IsActive = true;
