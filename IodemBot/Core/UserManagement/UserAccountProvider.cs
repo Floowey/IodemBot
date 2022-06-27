@@ -245,13 +245,20 @@ namespace IodemBot.Core.UserManagement
 
             public void Set(UserAccount user)
             {
-                var val = _func.Invoke(user);
-                if (val > 0)
+                try
                 {
-                    if (ContainsKey(user.Id))
-                        this[user.Id] = val;
-                    else
-                        Add(user.Id, val);
+                    var val = _func.Invoke(user);
+                    if (val > 0)
+                    {
+                        if (ContainsKey(user.Id))
+                            this[user.Id] = val;
+                        else
+                            Add(user.Id, val);
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
                 }
             }
         }
