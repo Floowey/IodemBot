@@ -9,6 +9,8 @@ namespace IodemBot
         {
             { "Exclamation", "<:Exclamatory:571309036473942026>" },
             { "Coin", "<:coin:569836987767324672>" },
+            { "GameTicket", "<:Game_Ticket:987305720666001488>" },
+
             { "JoinBattle", "<:Fight:536919792813211648>" },
             { "StartBattle", "<:Battle:536954571256365096>" },
 
@@ -55,8 +57,27 @@ namespace IodemBot
             { ChestQuality.Daily, "<:daily_chest:570332670605787157>" }
         };
 
-        public static string GetIcon(string emoteName)
+        private static readonly Dictionary<Condition, string> ConditionEmotes = new()
         {
+            { Condition.Down, "<:curse:538074679492083742>" },
+            { Condition.Poison, "<:Poison:549526931847249920>" },
+            { Condition.Venom, "<:Venom:598458704400220160>" },
+            { Condition.Seal, "<:Psy_Seal:549526931465568257>" },
+            { Condition.Stun, "<:Flash_Bolt:536966441862299678>" },
+            { Condition.Haunt, "<:Haunted:549526931821953034>" },
+            { Condition.ItemCurse, "<:Condemn:583651784040644619>" },
+            { Condition.Flinch, "" },
+            { Condition.Delusion, "<:delusion:549526931637534721>" },
+            { Condition.Sleep, "<:Sleep:555427023519088671>" },
+            { Condition.Counter, "" },
+            {Condition.SpiritSeal, "<:Psy_Seal:549526931465568257>" },
+            {Condition.DeathCurse, "<:DeathCurse1:583645163499552791>" }
+        };
+
+        public static string GetIcon(string emoteName, string NotFound = null)
+        {
+            if (NotFound != null && !MiscEmotes.ContainsKey(emoteName))
+                return NotFound;
             return MiscEmotes[emoteName];
         }
 
@@ -65,8 +86,10 @@ namespace IodemBot
             return Emote.Parse(GetIcon(emoteName));
         }
 
-        public static string GetIcon(Element element)
+        public static string GetIcon(Element element, string NotFound = null)
         {
+            if (NotFound != null && !ElementEmotes.ContainsKey(element))
+                return NotFound;
             return ElementEmotes[element];
         }
 
@@ -75,14 +98,28 @@ namespace IodemBot
             return Emote.Parse(GetIcon(element));
         }
 
-        public static string GetIcon(ChestQuality quality)
+        public static string GetIcon(ChestQuality quality, string NotFound = null)
         {
+            if (NotFound != null && !ChestEmotes.ContainsKey(quality))
+                return NotFound;
             return ChestEmotes[quality];
         }
 
         public static Emote GetEmote(ChestQuality quality)
         {
             return Emote.Parse(GetIcon(quality));
+        }
+
+        public static string GetIcon(Condition condition, string NotFound = null)
+        {
+            if (NotFound != null && !ConditionEmotes.ContainsKey(condition))
+                return NotFound;
+            return ConditionEmotes[condition];
+        }
+
+        public static Emote GetEmote(Condition condition)
+        {
+            return Emote.Parse(GetIcon(condition));
         }
     }
 }

@@ -36,6 +36,16 @@ namespace IodemBot.Modules.GoldenSunMechanics
             ItemCategory.UnderWear, ItemCategory.FootWear, ItemCategory.Accessory
         };
 
+        public static readonly Dictionary<ItemRarity, uint> MinimumTicketPrices = new()
+        {
+            { ItemRarity.Common, 200 },
+            { ItemRarity.Uncommon, 2000 },
+            { ItemRarity.Rare, 5000},
+            { ItemRarity.Legendary, 12000 },
+            { ItemRarity.Mythical, 22000 },
+            { ItemRarity.Unique, 1000000 }
+        };
+
         [JsonIgnore] internal bool IsAnimated = false;
 
         public string Name
@@ -48,9 +58,16 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public string Itemname { get; set; }
 
         internal string NameToSerialize =>
-            $"{Itemname}{(IsAnimated ? "(A)" : "")}{(IsBroken ? "(B)" : "")}{(!Nickname.IsNullOrEmpty() ? $"|{Nickname}" : "")}";
+            $"{Itemname}" +
+            $"{(IsAnimated ? "(A)" : "")}" +
+            $"{(IsBroken ? "(B)" : "")}" +
+            $"{(IsBoughtFromShop ? "(S)" : "")}" +
+            $"{(!Nickname.IsNullOrEmpty() ? $"|{Nickname}" : "")}";
 
-        public string IconDisplay => $"{(IsBroken ? "(" : "")}{Icon}{(IsBroken ? ")" : "")}";
+        public string NormalIcon { get; set; }
+        public string AnimatedIcon { get; set; }
+        [JsonIgnore] internal bool CanBeAnimated => !IsAnimated && !AnimatedIcon.IsNullOrEmpty();
+        public string IconDisplay => IsBroken ? $"({Icon})$" : Icon;
 
         public string Icon
         {
@@ -58,13 +75,18 @@ namespace IodemBot.Modules.GoldenSunMechanics
             set => NormalIcon = value;
         }
 
-        public string NormalIcon { get; set; }
-        public string AnimatedIcon { get; set; }
-        [JsonIgnore] internal bool CanBeAnimated => !IsAnimated && !AnimatedIcon.IsNullOrEmpty();
-
-        public string Sprite => IsAnimated ? AnimatedIcon : Icon;
-
         public uint Price { get; set; }
+        [JsonIgnore] public uint SellValue => (uint)(Price / (IsBroken ? 10 : 2));
+
+        public uint TicketPrice
+        {
+            get
+            {
+                return Math.Max(1, Math.Max(MinimumTicketPrices[Rarity], Price) / (Inventory.GameTicketValue + 8 * (4 - (uint)Rarity)));
+            }
+        }
+
+        public uint TicketValue => (uint)Rarity + 1;
 
         public string Description { get; set; }
 
@@ -73,8 +95,6 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public Color Color =>
             Category == ItemCategory.Weapon && IsUnleashable ? Colors.Get(Unleash.UnleashAlignment.ToString()) :
             IsArtifact ? Colors.Get("Artifact") : Colors.Get("Exathi");
-
-        [JsonIgnore] public uint SellValue => (uint)(Price / (IsBroken ? 10 : 2));
 
         public ItemType ItemType { get; set; }
 
@@ -89,6 +109,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public bool IsUsable { get; set; } = false;
         public bool IsArtifact { get; set; } = false;
 
+        public bool IsBoughtFromShop { get; set; } = false;
         public int IncreaseUnleashRate { get; set; }
 
         [DefaultValue(100)] public int ChanceToActivate { get; set; } = 80;

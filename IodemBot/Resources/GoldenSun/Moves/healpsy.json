@@ -77,7 +77,8 @@
     "singleTarget": true,
     "effects": [
       {
-        "Type": "Restore"
+        "Type": "Restore",
+        "CureConditions": [ "Poison", "Venom", "DeathCurse", "Delusion" ]
       }
     ]
   },
@@ -93,7 +94,8 @@
     "singleTarget": true,
     "effects": [
       {
-        "Type": "Restore"
+        "Type": "Restore",
+        "CureConditions": [ "Poison", "Venom", "DeathCurse", "Delusion" ]
       }
     ]
   },
@@ -109,7 +111,8 @@
     "singleTarget": true,
     "effects": [
       {
-        "Type": "Restore"
+        "Type": "Restore",
+        "CureConditions": [ "Poison", "Venom", "DeathCurse", "Delusion" ]
       }
     ]
   },
@@ -231,7 +234,13 @@
     "PPCost": 9,
     "healPower": 120,
     "percentage": 0,
-    "singleTarget": false
+    "singleTarget": false,
+    "effects": [
+      {
+        "Type": "Restore",
+        "CureConditions": [ "Poison", "Venom" ]
+      }
+    ]
   },
   "Estre Wood": {
     "name": "Estre Wood",
@@ -242,7 +251,13 @@
     "PPCost": 16,
     "healPower": 280,
     "percentage": 0,
-    "singleTarget": false
+    "singleTarget": false,
+    "effects": [
+      {
+        "Type": "Restore",
+        "CureConditions": [ "Poison", "Venom" ]
+      }
+    ]
   },
   "Nut": {
     "name": "Nut",

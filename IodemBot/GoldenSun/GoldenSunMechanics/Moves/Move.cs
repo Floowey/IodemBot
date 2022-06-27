@@ -25,6 +25,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public virtual int TargetNr { get; set; }
         public virtual uint Range { get; set; } = 1;
         public virtual bool HasPriority { get; set; } = false;
+        public virtual string Description { get; set; }
 
         [JsonIgnore]
         public bool OnEnemy

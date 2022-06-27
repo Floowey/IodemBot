@@ -12,7 +12,8 @@
       "MaxHP": 8,
       "MaxPP": 4,
       "Atk": 3
-    }
+    },
+    "Description":  "Cookie Lover."
   },
   "Flower": {
     "Djinnname": "Flower",
@@ -262,7 +263,8 @@
       "TargetType": "PartyAll",
       "Effects": [
         {
-          "Type": "Restore"
+          "Type": "Restore",
+          "CureConditions": [ "Stun", "Sleep", "Seal", "DeathCurse", "Delusion", "Poison", "Venom", "Haunt" ]
         }
       ]
     },
@@ -445,7 +447,9 @@
       "TargetType": "PartyAll",
       "Effects": [
         {
-          "Type": "Restore"
+          "Type": "Restore",
+          "CureConditions": [ "Stun", "Sleep", "Seal", "DeathCurse", "Delusion", "Poison", "Venom", "Haunt" ]
+
         }
       ]
     },
@@ -2014,7 +2018,9 @@
       "Element": 3,
       "effects": [
         {
-          "Type": "Restore"
+          "Type": "Restore",
+          "CureConditions": [ "Stun", "Sleep", "Seal", "DeathCurse", "Delusion", "Poison", "Venom", "Haunt" ]
+
         }
       ]
     },
@@ -2299,7 +2305,9 @@
       "TargetType": "PartyAll",
       "Effects": [
         {
-          "Type": "Restore"
+          "Type": "Restore",
+          "CureConditions": [ "Stun", "Sleep", "Seal", "DeathCurse", "Delusion", "Poison", "Venom", "Haunt" ]
+
         }
       ]
     },
@@ -2669,7 +2677,8 @@
       "Element": 2,
       "Effects": [
         {
-          "Type": "Restore"
+          "Type": "Restore",
+          "CureConditions": [ "Stun", "Sleep", "Seal", "DeathCurse", "Delusion", "Poison", "Venom", "Haunt" ]
         }
       ]
     },

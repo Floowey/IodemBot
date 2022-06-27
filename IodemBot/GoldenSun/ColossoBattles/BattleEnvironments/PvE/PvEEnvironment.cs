@@ -33,7 +33,9 @@ namespace IodemBot.ColossoBattles
             "Be sure to check the pins in #colosso-talks! A lot of good information is saved there.",
             "You have two equipment sets: warrior and mage. Items can be equipped to one or both sets!",
             "Want to stay up to date with how the bot progresses? Give you self the @Colosso Adept role with `i!giverole Colosso Adept`!",
-            "If you want to support this projects, look no further than `i!credits`!"
+            "If you want to support this project, look no further than `i!credits`!",
+            "Have you checked out the new Slash Commands? Go ahead and try `/status` (instead of `i!status`)!",
+            "Did do you find Djinn but can't use Summons? The secrets of Sol Sanctum near Vale may hold the key to that..."
         };
 
         private bool _wasReset;

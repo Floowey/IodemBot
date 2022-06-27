@@ -7,7 +7,6 @@ namespace IodemBot.Extensions
 {
     public static class ListExtension
     {
-        private static readonly RNGCryptoServiceProvider provider = new RNGCryptoServiceProvider();
         private static Random rng = new Random();
 
         public static void Shuffle<T>(this IList<T> list)

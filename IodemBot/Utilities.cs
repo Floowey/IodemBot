@@ -26,6 +26,17 @@ namespace IodemBot
             return output.Trim();
         }
 
+        public static string Article(string s)
+        {
+            s = s.ToLower();
+            char c = s.ElementAt(0);
+            return c switch
+            {
+                'a' or 'e' or 'i' or 'o' or 'u' => "an",
+                _ => "a",
+            };
+        }
+
         //private static List<(double value, string emote)> progressBarEmotes = new()
         //{
         //    (0, "<:Bar0:909126366820200469>"),

@@ -7,6 +7,7 @@ using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
 using IodemBot.ColossoBattles;
+using IodemBot.Core.Leveling;
 using IodemBot.Core.UserManagement;
 using IodemBot.Extensions;
 using IodemBot.Preconditions;
@@ -62,6 +63,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
             fb.WithText(
                 $"{inv.Count} / {inv.MaxInvSize} {(inv.Upgrades < 4 ? $"Upgrade: {50000 * Math.Pow(2, inv.Upgrades)}" : "")}");
             embed.AddField("Coin", $"{Emotes.GetIcon("Coin")} {inv.Coins}");
+            embed.AddField("Game Tickets", $" {inv.GameTickets}");
+
             embed.WithColor(Colors.Get("Iodem"));
             embed.WithFooter(fb);
             await Context.Channel.SendMessageAsync("", false, embed.Build());
@@ -255,6 +258,53 @@ namespace IodemBot.Modules.GoldenSunMechanics
             await Task.CompletedTask;
         }
 
+        [Command("BlackMarket")]
+        [Summary("Black Market? What black market? No no, this is a concession stand for your game tickets!")]
+        public async Task TicketBuy([Remainder] string item)
+        {
+            var account = EntityConverter.ConvertUser(Context.User);
+            var inv = account.Inv;
+            var embed = new EmbedBuilder();
+
+            if (!account.Tags.Contains("LunpaCompleted"))
+            {
+                embed.WithDescription("Black Market? What black market? Oh, are you looking for the concession stand in Lunpa?");
+                embed.WithColor(Colors.Get("Error"));
+                _ = Context.Channel.SendMessageAsync("", false, embed.Build());
+                return;
+            }
+            var i = ItemDatabase.GetItem(item);
+            if (i.Name.Contains("NOT IMPLEMENTED!"))
+            {
+                embed.WithDescription($":x: A what? {item}? Never heard of that. I've got my eyes all around Angara, this item is unheard of.");
+                embed.WithColor(Colors.Get("Error"));
+                _ = Context.Channel.SendMessageAsync("", false, embed.Build());
+                return;
+            }
+
+            if (i.Rarity == ItemRarity.Unique)
+            {
+                embed.WithDescription($":x: You want to get {Utilities.Article(item)} {item}? You jest, there is no way you could get your hands on that.");
+                embed.WithColor(Colors.Get("Error"));
+                _ = Context.Channel.SendMessageAsync("", false, embed.Build());
+                return;
+            }
+
+            if (inv.TicketBuy(item))
+            {
+                UserAccountProvider.StoreUser(account);
+                _ = ShowInventory();
+            }
+            else
+            {
+                embed.WithDescription(":x: Balance not enough or Inventory at full capacity.");
+                embed.WithColor(Colors.Get("Error"));
+                _ = Context.Channel.SendMessageAsync("", false, embed.Build());
+            }
+
+            await Task.CompletedTask;
+        }
+
         [Command("ModBuy")]
         [RequireModerator]
         public async Task ModBuy([Remainder] string item)
@@ -301,20 +351,22 @@ namespace IodemBot.Modules.GoldenSunMechanics
             if (items.Length > 0)
             {
                 uint sum = 0;
+                uint tickets = 0;
                 uint successfull = 0;
                 foreach (var i in items)
                     if (inv.HasItem(i.Trim()))
                     {
                         var it = inv.GetItem(i.Trim());
-
                         if (inv.Sell(it.Name))
                         {
                             sum += it.SellValue;
+                            if (!it.IsBoughtFromShop && it.IsArtifact)
+                                tickets += it.TicketValue;
                             successfull++;
                         }
                     }
 
-                embed.WithDescription($"Sold {successfull} items for <:coin:569836987767324672> {sum}.");
+                embed.WithDescription($"Sold {successfull} items for {Emotes.GetIcon("Coin")} {sum} and {Emotes.GetIcon("GameTicket")} {tickets}.");
                 embed.WithColor(Colors.Get("Iodem"));
             }
             else
@@ -322,7 +374,14 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 var it = inv.GetItem(item);
                 if (inv.Sell(item))
                 {
-                    embed.WithDescription($"Sold {it.Icon}{it.Name} for <:coin:569836987767324672> {it.SellValue}.");
+                    if (!it.IsBoughtFromShop && it.IsArtifact)
+                    {
+                        embed.WithDescription($"Sold {it.Icon}{it.Name} for {Emotes.GetIcon("Coin")} {it.SellValue}. Here's {it.TicketValue} Game Ticket{(it.TicketValue > 1 ? "s" : "")} for you, as a little gift.");
+                    }
+                    else
+                    {
+                        embed.WithDescription($"Sold {it.Icon}{it.Name} for {Emotes.GetIcon("Coin")} {it.SellValue}.");
+                    }
                     embed.WithColor(it.Color);
                 }
                 else
@@ -346,7 +405,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
             var inv = avatar.Inv;
 
             var embed = new EmbedBuilder();
-            var it = inv.GetItem(item);
+            var it = inv.GetItem(item, reverse: true);
+
             if (inv.Remove(item))
             {
                 UserAccountProvider.StoreUser(avatar);
@@ -430,50 +490,38 @@ namespace IodemBot.Modules.GoldenSunMechanics
         {
             var user = EntityConverter.ConvertUser(context.User);
             var inv = user.Inv;
+            var embed = new EmbedBuilder();
 
             if (inv.IsFull)
             {
-                var emb = new EmbedBuilder();
-                emb.WithDescription(":x: Inventory capacity reached!");
-                emb.WithColor(Colors.Get("Error"));
-                await context.Channel.SendMessageAsync("", false, emb.Build());
+                embed.WithDescription(":x: Inventory capacity reached!");
+                embed.WithColor(Colors.Get("Error"));
+                await context.Channel.SendMessageAsync("", false, embed.Build());
                 return;
             }
 
-            if (!inv.OpenChest(cq))
+            if (!inv.TryOpenChest(cq, out Item item, user.LevelNumber))
             {
-                var emb = new EmbedBuilder();
-
-                emb.WithDescription(cq == ChestQuality.Daily
+                embed.WithDescription(cq == ChestQuality.Daily
                     ? $":x: No {cq} Chests remaining! Next Daily Chest in: {DateTime.Today.AddDays(1).Subtract(DateTime.Now):hh\\h\\ mm\\m}"
                     : $":x: No {cq} Chests remaining!");
 
-                emb.WithColor(Colors.Get("Error"));
-                await context.Channel.SendMessageAsync("", false, emb.Build());
+                embed.WithColor(Colors.Get("Error"));
+                await context.Channel.SendMessageAsync("", false, embed.Build());
                 return;
             }
 
-            Item item;
-            var dailyRewards = new[] { 0, 0, 1, 1, 2 };
-            if (cq == ChestQuality.Daily)
-            {
-                var value = user.LevelNumber;
-                item = ItemDatabase.GetRandomItem((ItemRarity)(dailyRewards[inv.DailiesInARow % dailyRewards.Length] +
-                                                                Math.Min(2, value / 33)));
-            }
-            else
-            {
-                var rarity = ItemDatabase.ChestValues[cq].GenerateReward();
-                item = ItemDatabase.GetRandomItem(rarity);
-            }
-
             inv.Add(item);
+
+            var tickets = (uint)Math.Min(10, inv.DailiesInARow + 1);
+            if (cq == ChestQuality.Daily)
+                inv.GameTickets += tickets;
+
             var autoSold = false;
             if (user.Preferences.AutoSell.Contains(item.Rarity))
                 autoSold = inv.Sell(item.Name);
 
             UserAccountProvider.StoreUser(user);
-            var embed = new EmbedBuilder();
 
             embed.WithDescription($"Opening {cq} Chest {Emotes.GetIcon(cq)}...");
 
@@ -484,8 +532,9 @@ namespace IodemBot.Modules.GoldenSunMechanics
             embed.WithColor(item.Color);
             if (cq == ChestQuality.Daily)
                 embed.WithFooter(
-                    $"Current Reward: {inv.DailiesInARow % dailyRewards.Length + 1}/{dailyRewards.Length} | Overall Streak: {inv.DailiesInARow + 1}");
-            embed.WithDescription($"{Emotes.GetIcon(cq)} You found a {item.Name} {item.IconDisplay}{(autoSold ? $" (Autosold)" : "")}");
+                    $"Current Reward: {inv.DailiesInARow % Inventory.DailyRewards.Length + 1}/{Inventory.DailyRewards.Length} | Overall Streak: {inv.DailiesInARow + 1}");
+            embed.WithDescription($"{Emotes.GetIcon(cq)} You found a {item.Name} {item.IconDisplay}{(autoSold ? $" (Autosold)" : "")}" +
+                $"{(cq == ChestQuality.Daily ? $"\nYou also obtained {Emotes.GetIcon("GameTicket")} {tickets}" : "")}");
 
             await Task.Delay((int)cq * 700);
             _ = msg.ModifyAsync(m => m.Embed = embed.Build());
@@ -590,7 +639,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         }
 
         [Command("removeCursed")]
-        [Summary("Removes all cursed gear for a small fee of 10k coins")]
+        [Summary("Removes all cursed gear for a small fee of 5000 coins")]
         public async Task RemoveCursed()
         {
             var account = EntityConverter.ConvertUser(Context.User);
@@ -627,7 +676,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
             embed.WithAuthor($"{item.Name} - {item.Rarity}{(item.IsArtifact ? " Artifact" : "")}");
 
             embed.AddField("Icon", item.IconDisplay, true);
-            embed.AddField("Value", $"{Emotes.GetIcon("Coin")} {item.Price}", true);
+            embed.AddField("Value", $"{Emotes.GetIcon("Coin")} {item.Price}\n{Emotes.GetIcon("GameTicket")} {item.TicketPrice}", true);
+
             embed.AddField("Type", item.ItemType, true);
             embed.AddField("Summary", item.Summary(), true);
 
@@ -644,6 +694,11 @@ namespace IodemBot.Modules.GoldenSunMechanics
                     : Colors.Get("Exathi"));
 
             _ = Context.Channel.SendMessageAsync("", false, embed.Build());
+
+            if (Context.User is SocketGuildUser sgu)
+            {
+                _ = ServerGames.UserLookedUpItem(sgu, (SocketTextChannel)Context.Channel);
+            }
             await Task.CompletedTask;
         }
     }

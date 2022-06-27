@@ -49,17 +49,27 @@ namespace IodemBot.Modules.GoldenSunMechanics
             }
             if (Item != "")
             {
-                var item = ItemDatabase.GetItem(Item);
-                if (userAccount.Inv.Add(item))
+                if (Item.StartsWith("GameTicket"))
                 {
-                    bool autoSold = false;
-                    if (userAccount.Preferences.AutoSell.Contains(item.Rarity))
-                        autoSold = userAccount.Inv.Sell(item.Name);
-                    awardLog.Add($"{userAccount.Name} found a {item.Icon} {item.Name}{(autoSold ? " (Auto sold)" : "")}!");
+                    if (!uint.TryParse(Item[..^1], out uint tickets))
+                        tickets = 1;
+                    userAccount.Inv.GameTickets += tickets;
+
                 }
                 else
                 {
-                    giveTag = false;
+                    var item = ItemDatabase.GetItem(Item);
+                    if (userAccount.Inv.Add(item))
+                    {
+                        bool autoSold = false;
+                        if (userAccount.Preferences.AutoSell.Contains(item.Rarity))
+                            autoSold = userAccount.Inv.Sell(item.Name);
+                        awardLog.Add($"{userAccount.Name} found a {item.Icon} {item.Name}{(autoSold ? " (Auto sold)" : "")}!");
+                    }
+                    else
+                    {
+                        giveTag = false;
+                    }
                 }
             }
 
@@ -113,6 +123,13 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 {
                     djinn = DjinnAndSummonsDatabase.GetRandomDjinn(element);
                 }
+                else if (isShiny)
+                {
+                    while (userAccount.DjinnPocket.Djinn.Any(d => d.Djinnname == djinn.Djinnname && d.IsShiny))
+                    {
+                        djinn = DjinnAndSummonsDatabase.GetRandomDjinn(element);
+                    }
+                }
                 djinn.IsShiny = isShiny && djinn.CanBeShiny;
                 djinn.UpdateMove();
                 if (userAccount.DjinnPocket.AddDjinn(djinn))
@@ -137,11 +154,15 @@ namespace IodemBot.Modules.GoldenSunMechanics
                     if (djinn.IsShiny)
                     {
                         userAccount.DjinnBadLuck = 0;
+                        userAccount.ServerStats.ShinyDjinnObtained++;
+                        userAccount.ServerStats.TotalShinyChances++;
                     }
                     else if (djinn.CanBeShiny)
                     {
+                        userAccount.ServerStats.TotalShinyChances++;
                         userAccount.DjinnBadLuck++;
                     }
+                    userAccount.ServerStats.DjinnObtained++;
                 }
                 else
                 {

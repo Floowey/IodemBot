@@ -47,7 +47,8 @@
             {
               "Weight": 1,
               "XP": 10,
-              "Coins": 10
+              "Coins": 10,
+              "message": "Use `/inv` to open your chest and change equip your gear!"
             }
           ],
           [
@@ -161,6 +162,7 @@
               "Coins": 10,
               "Chest": "Wooden",
               "HasChest": true,
+              "Item": "GameTicket",
               "message": "**Quick summary**:\n-Use commands in #gabomba-gears.\nView your status with `/status`. This is a hub that leads you to all aspects of the game\n-Select an element and class using `/element` and `/class`. You can change it at any time.\n-Pause a battle by reacting anywhere with :pause_button:. The timer will restart at the beginning of the next turn.\n-view your inventory with `/inv`, where you can equip gear and open chests!\n-Visit your newly discovered places with`/dungeons` or go there directly with `i!dungeon Vale` (or Vault)\n\nDon't be shy to ask questions in #colosso-talks or find team mates to brawl with! A lot of information is also pinned!"
             }
           ]
@@ -349,12 +351,12 @@
           ],
           [
             {
-              "Weight": 2,
+              "Weight": 3,
               "Tag": "SolSanctumUnlocked",
               "Obtainable": 1,
               "Dungeon": "Sol Sanctum"
             },
-            { "Weight": 3 }
+            { "Weight": 2 }
           ],
           [
             {
@@ -396,11 +398,12 @@
             {
               "Weight": 1,
               "XP": 5,
-              "Coins": 10
+              "Coins": 10,
+              "Item": "GameTicket"
             }
           ],
           [
-            { "Weight": 4 },
+            { "Weight": 3 },
             {
               "Weight": 1,
               "Chest": "Wooden",
@@ -408,10 +411,14 @@
             }
           ],
           [
-            { "Weight": 9 },
+            { "Weight": 8 },
             {
               "Weight": 1,
               "Item": "Magic Rod"
+            },
+            {
+              "Weight": 1,
+              "Item": "Long Sword"
             }
           ]
         ]
@@ -555,7 +562,8 @@
             {
               "Weight": 1,
               "XP": 69,
-              "Coins": 15
+              "Coins": 15,
+              "Item": "GameTicket2"
             }
           ]
         ]
@@ -711,7 +719,8 @@
             {
               "Weight": 1,
               "XP": 10,
-              "Coins": 10
+              "Coins": 10,
+              "Item": "GameTicket5"
             }
           ]
         ]
@@ -864,7 +873,8 @@
             {
               "Weight": 1,
               "XP": 10,
-              "Coins": 10
+              "Coins": 10,
+              "Item": "GameTicket3"
             }
           ]
         ]
@@ -1048,18 +1058,59 @@
         ]
       },
       {
-        "Flavourtext": "Wow, what a dangerous neighborhood. No wonder the Valeans aren't happy here either. Let's sleep for one more night and then get out of here!",
+        "Flavourtext": "Wow, what a dangerous neighborhood. No wonder the Valeans aren't happy here either. Let's sleep for one more night and then get out of here! Where do you want to you want to explore from here? From the town's outlook you see a cave to the east. To the north, a dark patch of dangerous woods, with what looks like a settlement nested inbetween.",
+        "EnemyNames": [ "Choice:East|KilledBy:Player@100", "Choice:North (dangerous)|KilledBy:Player@200" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "XP": 1,
+              "Coins": 1,
+              "Item": "GameTicket"
+            }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "You head east and encounter the entrance of an overgrown cave.",
+        "EnemyNames": [ "End" ],
+        "Keywords": [ "@100" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "Dungeon": "Goma Cave"
+            }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "You head north through some shady woods. It *was* dangerous, on the way you are ambushed!",
+        "EnemyNames": [ "Mad Vermin", "Mad Vermin" ],
+        "Keywords": [ "@200" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "XP": 200,
+              "Coins": 200
+            }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "You made it out safely. As you reach the gates of a small town, the sound of raucous music dins your ears. Are you sure you're welcome here?",
         "EnemyNames": [ "End" ],
         "Image": "",
         "RewardTables": [
           [
             {
-              "Weight": 6,
-              "Dungeon": "Goma Cave"
-            },
-            { "Weight": 2 },
-            {
               "Weight": 1,
+              "XP": 50,
+              "Coins": 50,
               "Dungeon": "Lunpa"
             }
           ]
@@ -1282,7 +1333,8 @@
               "Tag": "VaultCaveCompleted",
               "Obtainable": 1,
               "XP": 1,
-              "Coins": 1
+              "Coins": 1,
+              "Item": "GameTicket3"
             }
           ]
         ]
@@ -1373,7 +1425,7 @@
       },
       {
         "Flavourtext": "The way out is near. But before enjoying the sun again, you encounter a Djinni!",
-        "EnemyNames": [ "Mars Djinni 1" ],
+        "EnemyNames": [ "Mars Djinni 10" ],
         "Image": "https://cdn.discordapp.com/attachments/742023207917453322/742023312615538779/1596978861230.png",
         "RewardTables": [
           [
@@ -1416,6 +1468,7 @@
               "Weight": 1,
               "XP": 8,
               "Coins": 10,
+              "Item": "GameTicket",
               "Dungeon": "Bilibin"
             }
           ]
@@ -1558,7 +1611,7 @@
       },
       {
         "Flavourtext": "This is what Lord McCoy was hiding here... a Jupiter Djinni!",
-        "EnemyNames": [ "Jupiter Djinni 1" ],
+        "EnemyNames": [ "Jupiter Djinni 12" ],
         "Image": "",
         "RewardTables": [
           [
@@ -1592,24 +1645,77 @@
         ]
       },
       {
-        "Flavourtext": "Onto the next shenanigans, before the guards figure out that you found the hideout.",
+        "Flavourtext": "Onto the next shenanigans, before the guards figure out that you found the hideout. Three roads lead out from the town of Bilibin. One goes straight back into Goma Cave, one leads east towards a foresty area with a gigantic tree poking out of the horizon. A third heads north, towards a snowy mountain range.",
+        "EnemyNames": [ "Choice:Goma Cave|KilledBy:Player@100", "Choice:East|KilledBy:Player@200", "Choice:North|KilledBy:Player@300" ],
+        "Keywords": [ "Heal" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "XP": 10,
+              "Coins": 10
+            }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "You go back into Goma Cave. Maybe there's more things to discover.",
+        "EnemyNames": [ "End" ],
+        "Keywords": [ "@100" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "Item": "GameTicket",
+              "Dungeon": "Goma Cave"
+            }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "You head east through the remains of a destroyed barricade. The road doesn't lead to the enermous tree after all, but to a small town nearby.",
+        "EnemyNames": [ "End" ],
+        "Keywords": [ "@200" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "Item": "GameTicket",
+              "Dungeon": "Kolima"
+            }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "You head north, and feel the air around you cooling off. ",
+        "EnemyNames": [ "Rat Soldier 1", "Ooze 1" ],
+        "Keywords": [ "@300", "Shuffle" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "XP": 200,
+              "Coins": 200
+            }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "You keep walking towards the mountains. As you approach, a cave entrance reveals itself between two mountain crests. ",
         "EnemyNames": [ "End" ],
         "Image": "",
         "RewardTables": [
           [
             {
-              "Weight": 3,
-              "Dungeon": "Kolima"
-            },
-            {
-              "Weight": 3,
-              "Dungeon": "Bilibin Cave"
-            }
-          ],
-          [
-            {
               "Weight": 1,
-              "Dungeon": "Goma Cave"
+              "XP": 50,
+              "Coins": 50,
+              "Item": "GameTicket",
+              "Dungeon": "Bilibin Cave"
             }
           ]
         ]
@@ -1737,6 +1843,7 @@
             {
               "Weight": 1,
               "XP": 10,
+              "Item": "GameTicket2",
               "Dungeon": "Imil"
             }
           ]
@@ -1925,6 +2032,7 @@
               "Weight": 1,
               "XP": 5,
               "Coins": 10,
+              "Item": "GameTicket2",
               "Dungeon": "Bilibin Cave"
             }
           ],
@@ -2187,8 +2295,10 @@
             {
               "Weight": 3,
               "Tag": "MercLHComplete",
+              "Obtainable": 1,
               "XP": 280,
-              "Coins": 300
+              "Coins": 300,
+              "Item": "GameTicket3"
             }
           ],
           [
@@ -2198,7 +2308,7 @@
               "Tag": "DrawBridge",
               "Obtainable": 1,
               "Dungeon": "Fuchin Temple",
-              "message": "A girl approaches you, she watched you battle the monster and you think you saw her back in the depths of Kolima. 'Oh young Adept! You have shown remarkable strength! I will let the guard allow you to pass over the draw bridge after Kolima. I'm in a hurry, are you on your way to Lama Temple? Let us meet there! Oh, sorry, I forgot to mention. My Name is Feizhi! Nice to meet you, bye!'"
+              "message": "A girl approaches you. She watched you battle the monster and you think you saw her back in the depths of Kolima. 'Oh young Adept! You have shown remarkable strength! I will let the guard allow you to pass over the draw bridge after Kolima. I'm in a hurry, are you on your way to Lama Temple? Let us meet there! Oh, sorry, I forgot to mention. My Name is Feizhi! Nice to meet you, bye!'"
             }
           ],
           [
@@ -2222,7 +2332,8 @@
             {
               "Weight": 1,
               "XP": 9,
-              "Coins": 10
+              "Coins": 10,
+              "Item": "GameTicket3"
             }
           ]
         ]
@@ -2375,7 +2486,7 @@
             }
           ],
           [
-            { "Weight": 9 },
+            { "Weight": 5 },
             {
               "Weight": 1,
               "Item": "Mythril Circlet"
@@ -2422,20 +2533,20 @@
           ],
           [
             {
-              "Weight": 75,
+              "Weight": 60,
               "Chest": "Normal",
               "HasChest": true
             },
             {
-              "Weight": 1,
+              "Weight": 6,
               "Item": "Dragon Axe"
             },
             {
-              "Weight": 1,
+              "Weight": 6,
               "Item": "Ninja Blade"
             },
             {
-              "Weight": 1,
+              "Weight": 6,
               "Item": "Shamshir"
             },
             {
@@ -2459,8 +2570,12 @@
           [
             {
               "Weight": 1,
+              "Tag": "LunpaCompleted",
+              "Obtainable": 1,
               "XP": 10,
-              "Coins": 35
+              "Coins": 35,
+              "Item": "GameTicket2",
+              "message": "The smell of fresh pastries and fried food calls to you on the way out. As you draw near the booth, the merchant looks you over. 'You know, we have... additional... wares, for people like you,' they tell you quietly. 'Do you have Game Tickets? Stop by again after sunset, if you're interested... Ask for the `i!blackmarket`.... But keep it down!'"
             }
           ]
         ]
@@ -2635,7 +2750,7 @@
           [
             { "Weight": 1 },
             {
-              "Weight": 1,
+              "Weight": 2,
               "Dungeon": "Tret Tree"
             }
           ]
@@ -2666,7 +2781,7 @@
         ]
       },
       {
-        "Flavourtext": "First there was the forest, now there's this tree maze, too, and a few forest denizens bar your way. It feels like there's eyes assessing your abilities from somewhere in the branches. A trained Venus adept might be able to use a localized earthquake to shake the observer from their perch...",
+        "Flavourtext": "First there was the forest. Now there's this tree maze, and a few forest denizens bar your way too. As you pick your way, you feel like there's eyes assessing your abilities from somewhere in the branches. An elemental presence touches your senses.  Perhaps someone gifted with the power of the Earth might be able to draw out the watcher...",
         "EnemyNames": [ "Gnome", "Creeper 1", "Troll 1", "Rat 1" ],
         "Keywords": [ "Shuffle" ],
         "Image": "",
@@ -2842,7 +2957,8 @@
               "Tag": "TretComplete",
               "Obtainable": 1,
               "XP": 256,
-              "Coins": 300
+              "Coins": 300,
+              "Item": "GameTicket4"
             }
           ],
           [
@@ -2876,7 +2992,8 @@
             {
               "Weight": 1,
               "XP": 10,
-              "Coins": 10
+              "Coins": 10,
+              "Item": "GameTicket2"
             }
           ]
         ]
@@ -3048,6 +3165,7 @@
               "Weight": 1,
               "XP": 10,
               "Coins": 10,
+              "Item": "GameTicket2",
               "Dungeon": "Mogall Forest"
             }
           ]
@@ -3240,6 +3358,7 @@
           [
             {
               "Weight": 7,
+              "Item": "GameTicket3",
               "Dungeon": "Xian"
             }
           ]
@@ -3405,7 +3524,7 @@
         ]
       },
       {
-        "Flavourtext": "'Welcome! So you have made it'. A purple haired woman greets you. 'This is the one I was talking about! They are very talented!', a different, much younger purple haired woman claims. 'Very well. You must be very talented indeed, then. If you are ready to study under my ward, I may have a task or another for you.'",
+        "Flavourtext": "'Welcome! So you have made it.' A purple-haired woman greets you. 'This is the one I was talking about! They are very talented!' chimes in a different, much younger purple haired woman. 'Very well. You must be very talented indeed, then. If you are ready to study under my ward, I may have a task or another for you.'",
         "EnemyNames": [ "EndHama" ],
         "Image": "",
         "RewardTables": [
@@ -3424,7 +3543,7 @@
               "RequireTag": [ "AltinFinished" ],
               "Tag": "HamaLamakan",
               "Obtainable": 1,
-              "message": "The creatures were powered by ancient Mercury Psynergy, remnants from the ancient culture. And you say a white spirit was dwelling in the energy? Oh no, this means trouble... Please, inform me if you see more of these occurances.\n\n Now though, you want to cross the Lamakan Desert. You'll need guidance, as the desert is full of heat and traps. An Adept needs to reveal an oasis for you to cool off in. Feizhi, do you think you have mastered Reveal yet? Would you be so kind and accompany {0} through that hellish place?"
+              "message": "The creatures were powered by ancient Mercury Psynergy, remnants from the ancient culture. And you say a white spirit was dwelling in the energy? Oh no, this means trouble... Please, inform me if you see more of these occurances.\n\n Now though, you want to cross the Lamakan Desert. You'll need guidance, as the desert is full of heat and traps. An Adept needs to reveal an oasis for you to cool off in. Feizhi, do you think you have mastered Reveal yet? Would you be so kind and accompany {0} through that hellish place?'"
             }
           ],
           [
@@ -3440,7 +3559,7 @@
               "RequireTag": [ "MegaeraSeen" ],
               "Tag": "HamaMegaera1",
               "Obtainable": 1,
-              "message": "So you saw another spirit? One with two swords? The elements are out of balance more than I anticipated. The spirits are loose and mischievous, they will probably hide in places full of elemental psynergy and drain them if left unchecked. We need to seek the spirits out, but be careful!"
+              "message": "So you saw another spirit? One with two swords? The elements are out of balance more than I anticipated. The spirits are loose and mischievous, they will probably hide in places full of elemental psynergy and drain them if left unchecked. We need to seek the spirits out, but be careful!'"
             }
           ],
           [
@@ -3476,6 +3595,12 @@
               "RequireTag": [ "MegaeraFinished" ],
               "Tag": "HamaMegaera2",
               "Obtainable": 1
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "Item": "GameTicket2"
             }
           ]
         ]
@@ -3698,6 +3823,12 @@
               "Obtainable": 1,
               "message": "You slew the beast. It lets out a roar and magically turns into stone. You have fulfilled Hama's task. As you head out, you see a silhouette gliding away, disappearing in the sky. What could that have been? Yet another reason to head back to Hama and report this sighting."
             }
+          ],
+          [
+            {
+              "Weight": 1,
+              "Item": "GameTicket2"
+            }
           ]
         ]
       }
@@ -3918,6 +4049,7 @@
               "Weight": 1,
               "XP": 10,
               "Coins": 10,
+              "Item": "GameTicket3",
               "Dungeon": "Kalay"
             }
           ],
@@ -4147,6 +4279,12 @@
               "XP": 10,
               "Coins": 10
             }
+          ],
+          [
+            {
+              "Weight": 1,
+              "Item": "GameTicket2"
+            }
           ]
         ]
       }
@@ -4334,7 +4472,8 @@
             {
               "Weight": 1,
               "XP": 10,
-              "Coins": 168
+              "Coins": 168,
+              "Item": "GameTicket3"
             }
           ],
           [
@@ -4468,7 +4607,7 @@
       },
       {
         "Flavourtext": "'Land ho!' A frantic voice calls from the lookout. You wake up from the quick nap you took. It's hard to make out what you are squinting at on the horizon. Is that Tolbi already...? A mighty wave rises out of the Karagol, blocking the shore from view and sending you stumbling as the ship heaves. When you regain your footing, your stomach drops. There, lounging on the foredeck, tentacles wrapped around the bowsprit, sits a beast you thought mere legend - a Kraken.",
-        "EnemyNames": [ "Tentacle", "Tentacle", "Tentacle", "Tentacle", "Kraken", "Tentacle", "Tentacle", "Tentacle", "Tentacle" ],
+        "EnemyNames": [ "Tentacle", "Tentacle", "Tentacle", "Tentacle", "Kraken|Head", "Tentacle", "Tentacle", "Tentacle", "Tentacle" ],
         "Keywords": [ "Heal" ],
         "Image": "https://cdn.discordapp.com/attachments/497696510688100352/672471448442634240/Kraken.gif",
         "RewardTables": [
@@ -4512,6 +4651,12 @@
               "XP": 10,
               "Coins": 10,
               "Dungeon": "Tolbi"
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "Item": "GameTicket3"
             }
           ]
         ]
@@ -4778,7 +4923,7 @@
               "Weight": 1,
               "Dungeon": "Altmiller Cave"
             },
-            { "Weight": 3 }
+            { "Weight": 2 }
           ]
         ]
       },
@@ -4812,12 +4957,13 @@
             {
               "Weight": 1,
               "XP": 10,
-              "Coins": 10
+              "Coins": 10,
+              "Item": "GameTicket3"
             }
           ],
           [
             {
-              "Weight": 1,
+              "Weight": 2,
               "Dungeon": "Suhalla Desert"
             },
             { "Weight": 1 }
@@ -5051,6 +5197,12 @@
               "Coins": 75,
               "message": "'Congratulations, Adept. You have mastered the puzzles put in by our late Lord Babi. He surely would have admired your skills, and thus your talent shall be rewarded. Show this letter to the guards at Colosso. You may proudly show your strength at the Colosso Tournament.\n\nLord Iodem'"
             }
+          ],
+          [
+            {
+              "Weight": 1,
+              "Item": "GameTicket4"
+            }
           ]
         ]
       }
@@ -5208,6 +5360,7 @@
               "Obtainable": 1,
               "XP": 1,
               "Coins": 1,
+              "Item": "GameTicket2",
               "Dungeon": "Colosso Finals"
             }
           ]
@@ -5376,6 +5529,15 @@
           [
             {
               "Weight": 1,
+              "RequireTag": [ "ColossoCompleted" ],
+              "Chest": "Silver",
+              "HasChest": true,
+              "Item": "GameTicket4"
+            }
+          ],
+          [
+            {
+              "Weight": 1,
               "Tag": "ColossoCompleted",
               "Obtainable": 1,
               "XP": 1,
@@ -5384,14 +5546,6 @@
               "HasChest": true,
               "Item": "Lure Cap",
               "message": "Congratulations, Adept! You've proven to be exceedingly strong! You may now fight in the Endless battle mode!"
-            }
-          ],
-          [
-            {
-              "Weight": 1,
-              "RequireTag": [ "ColossoCompleted" ],
-              "Chest": "Silver",
-              "HasChest": true
             }
           ]
         ]
@@ -5630,6 +5784,12 @@
               "Coins": 10,
               "Dungeon": "Lalivero"
             }
+          ],
+          [
+            {
+              "Weight": 1,
+              "Item": "GameTicket3"
+            }
           ]
         ]
       }
@@ -5705,6 +5865,12 @@
               "Dungeon": "Crossbone Isle"
             },
             { "Weight": 3 }
+          ],
+          [
+            {
+              "Weight": 1,
+              "Item": "GameTicket3"
+            }
           ]
         ]
       }
@@ -5721,7 +5887,7 @@
     },
     "Matchups": [
       {
-        "Flavourtext": "A small narrow passage way makes travel tricky. It's not *that* hard, but the monsters in your way don't make it any easier.",
+        "Flavourtext": "A small narrow passageway makes travel tricky. It's not *that* hard, but the monsters in your way don't make it any easier.",
         "EnemyNames": [ "Nightmare 1", "Earth Golem", "Nightmare 1", "Earth Golem" ],
         "Keywords": [ "Shuffle" ],
         "Image": "",
@@ -5814,7 +5980,21 @@
       },
       {
         "Flavourtext": "Lalivero is small and cozy. The town is thriving from building the late Lord Babi's Lighthouse. Without the funds from Tolbi, there wouldn't have been much business.",
-        "EnemyNames": [ "Tolbi Guard", "Guardian Ball 1", "Tolbi Guard", "Guardian Ball 1", "Tolbi Guard" ],
+        "EnemyNames": [ "Gnome Wizard", "Gnome Wizard", "Gnome Wizard" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "XP": 123,
+              "Coins": 234
+            }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "'HALT!' yells a guard as you step near the construction site of a large tower. 'Only Adepts and approved personnel past this point.'  He fixes you with a challenging stare.  What do you do?",
+        "EnemyNames": [ "Next:Guard Checkpoint|KilledBy:Psynergy@600" ],
         "Image": "",
         "RewardTables": [
           [
@@ -5823,13 +6003,36 @@
               "XP": 187,
               "Coins": 121
             }
-          ],
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "'I'm afraid this isn't prove for anything,' the guard says. 'Move along'. Well now you *want* to see what's behind the gate. Your foolish attempt to naruto ninja-run past the guards is quickly interrupted by a watchful patrol.",
+        "EnemyNames": [ "Tolbi Guard", "Guardian Ball 1", "Tolbi Guard", "Guardian Ball 1", "Tolbi Guard" ],
+        "Image": "",
+        "RewardTables": [
           [
             {
-              "Weight": 3,
+              "Weight": 1,
+              "XP": 133,
+              "Coins": 112
+            }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "Once past the gate, you spot the ominous entrance of the tower. It's a lighthouse apparently. As if that didn't hold any secrets!",
+        "EnemyNames": [ "Next" ],
+        "Keywords": [ "@600" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "XP": 10,
+              "Coins": 10,
               "Dungeon": "Babis Lighthouse"
-            },
-            { "Weight": 2 }
+            }
           ]
         ]
       },
@@ -5901,6 +6104,12 @@
               "Obtainable": 1,
               "XP": 3,
               "Coins": 1
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "Item": "GameTicket3"
             }
           ]
         ]
@@ -6189,7 +6398,8 @@
             {
               "Weight": 1,
               "XP": 10,
-              "Coins": 10
+              "Coins": 10,
+              "Item": "GameTicket6"
             }
           ],
           [
@@ -6200,6 +6410,7 @@
               "Obtainable": 1,
               "Chest": "Adept",
               "HasChest": true,
+              "Item": "GameTicket9",
               "Dungeon": "The Way Southwards",
               "message": "(Story parts for {0}, will contain spoilers for everyone else!)\n||As you leave for the lighthouse elevator, thunder booms, shaking the very air around you. You wonder how thunder can sound so angry. While you can, you take the chance to look south. On the horizon you can make out the black-red storm clouds that blackened the sky above you earlier. Is this where your path will lead you next?||\n\n> Thank you for playing the first part of this Discord fan game! I sincerely hope you enjoyed it. The continuation is already in the works, so make sure to stick around for when it is done! You can give yourself the Colosso Adept role using `i!giverole ColossoAdept`, to get informed when it is done as soon as possible. Until then, spend your time keep exploring, break your record in endless battles or engage in PvP brawls and most importantly, stay awesome!\n\n~Floowey"
             }
@@ -6417,6 +6628,7 @@
               "Weight": 1,
               "XP": 10,
               "Coins": 10,
+              "Item": "GameTicket4",
               "Dungeon": "Venus Lighthouse"
             }
           ],
@@ -6703,7 +6915,8 @@
             {
               "Weight": 1,
               "XP": 1,
-              "Coins": 1
+              "Coins": 1,
+              "Item": "GameTicket5"
             }
           ]
         ]
@@ -6801,6 +7014,7 @@
               "Weight": 1,
               "Tag": "Gaia1",
               "Obtainable": 1,
+              "Item": "GameTicket2",
               "Dungeon": "Path Of Gaia II",
               "Djinn": "Venus"
             }
@@ -6938,6 +7152,7 @@
               "Obtainable": 1,
               "XP": 140,
               "Coins": 140,
+              "Item": "GameTicket3",
               "Dungeon": "Path Of Gaia III"
             }
           ]
@@ -7048,7 +7263,7 @@
         ]
       },
       {
-        "Flavourtext": "The spirit seems unharmed, visibly satisfied with the fight and willing to share its powers with you. 'Did you *see* that?', Hama shouts out with excitement. 'Being a Jupiter Adept, I never would have dreamt of getting so close to this magnificent creature. And you bested it on top of that! You clearly are a virtuous and strong Venus Adept. I will take you back to a safe place now. I wish you all the best, may Venus shine her light on you.'",
+        "Flavourtext": "Through the thicket another small glade appears. In its middle, an enormous creature - a spirit - grazes peacefully. As it hears the rustle of your passage through the briars, it looks towards you. Suddenly the plants around you move aside and you can walk through with ease. The spirit seems to sense the power of Venus flowing through your veins. It lets out a grunt, and readies itself, clearly wanting to fight.",
         "EnemyNames": [ "CybeleSummon" ],
         "Keywords": [ "Heal" ],
         "Image": "",
@@ -7076,6 +7291,7 @@
               "Obtainable": 1,
               "XP": 180,
               "Coins": 180,
+              "Item": "GameTicket4",
               "Dungeon": "Path Of Gaia IV"
             }
           ]
@@ -7090,7 +7306,7 @@
     "Image": "https://www.almarsguides.com/AlmarsImages/Retro/Walkthroughs/GBA/GoldenSun/Walkthroughs/DjinnLocations/Hail%20Djinni%20Location.png",
     "IsDefault": false,
     "Requirement": {
-      "MinLevel": "999",
+      "MinLevel": "50",
       "Elements": [ "Venus" ],
       "TagsRequired": [ "Gaia3" ]
     },
@@ -7296,9 +7512,9 @@
       },
       {
         "Flavourtext": "The lumberjacks' weapons are no match for your armor and Psynergy defenses. Though you raise no weapon against them, they realize how foolish it was to attack you. Their anger turns to terror, and they flee, leaving their axes behind. Suddenly, the trees around you start moving. From the bushes, some familiar animals emerge, and yet... they now have a glowing aura. 'You challenge the forces of nature,' they claim in chorus. 'You claim to protect us, but we did not ask for your protection. Prove to us, the flora and fauna of the forest and Mother Nature herself, that you are worthy.'",
-        "EnemyNames": [ "KirinSummon:Fox Avatar|Boost:150", "CybeleSummon:Squirrel Avatar|Boost:75", "ProcneSummon:Crow Avatar|Boost:75", "Estre Wood:Forest Avatar|Boost:150" ],
+        "EnemyNames": [ "KirinSummon:Fox Avatar|Boost:140", "CybeleSummon:Squirrel Avatar|Boost:70|ExtraTurns:0", "ProcneSummon:Crow Avatar|Boost:70|ExtraTurns:0", "Estre Wood:Forest Avatar|Boost:125" ],
         "Keywords": [ "Shuffle", "@600" ],
-        "Image": "",
+        "Image": "https://media.discordapp.net/attachments/668442573899300897/990919064480260197/unknown.png?width=453&height=679",
         "RewardTables": [
           [
             {
@@ -7336,7 +7552,7 @@
         ]
       },
       {
-        "Flavourtext": "The winged, armor-clad being speaks. Its voice shakes the clearing and your very soul. 'You have shown that your heart is righteous, balanced, and concerned for all. You showed strength over nature. But the power of Venus extends beyond nature. More is needed to earn my blessing. What is that all power worth if you cannot enforce your judgments?' It raises its armaments, the battle begins!",
+        "Flavourtext": "The winged, armor-clad being speaks. Its voice shakes the clearing and your very soul. 'You have shown that your heart is righteous, balanced, and concerned for all. You showed strength over nature. But the power of Venus extends beyond nature. More is needed to earn my blessing. What is all that power worth if you cannot enforce your judgments?' It raises its armaments, the battle begins!",
         "EnemyNames": [ "JudgmentSummon|ImmuneTo:Jupiter" ],
         "Keywords": [ "@900" ],
         "Image": "https://preview.redd.it/an5rb40ivsy51.png?width=960&crop=smart&auto=webp&s=723891c4fc9df2493063b7f0441e1957a2e9aab9",
@@ -7372,6 +7588,12 @@
               "Weight": 1,
               "Tag": "Gaia4",
               "Obtainable": 1
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "Item": "GameTicket5"
             }
           ],
           [
@@ -7528,6 +7750,7 @@
               "Weight": 1,
               "Tag": "Magma1",
               "Obtainable": 1,
+              "Item": "GameTicket2",
               "Dungeon": "Path Of Magma II",
               "Djinn": "Mars"
             }
@@ -7666,6 +7889,7 @@
               "Obtainable": 1,
               "XP": 140,
               "Coins": 140,
+              "Item": "GameTicket3",
               "Dungeon": "Path Of Magma III"
             }
           ]
@@ -7803,6 +8027,7 @@
               "Obtainable": 1,
               "XP": 180,
               "Coins": 180,
+              "Item": "GameTicket4",
               "Dungeon": "Path Of Magma IV"
             }
           ]
@@ -7817,7 +8042,7 @@
     "Image": "https://www.goldensun-syndicate.net/tlawalk/dehkanplateau/map5.gif",
     "IsDefault": false,
     "Requirement": {
-      "MinLevel": "999",
+      "MinLevel": "50",
       "Elements": [ "Mars" ],
       "TagsRequired": [ "Magma3" ]
     },
@@ -7836,7 +8061,7 @@
         ]
       },
       {
-        "Flavourtext": "She offers a smile to your puzzlement, and gestures upwards, into a perfectly clear sky filled with stars. 'The heavens above also burn, like bright coals after a bonfire. Their flame helped give rise to ours here in Weyard.'\n She glances up, and nods. 'We still have time. Since today we are dealing with astral forces, we must also learn about the zodiac signs. Each zodiac sign is associated with one of the elements.'",
+        "Flavourtext": "She offers a smile to your puzzlement, and gestures upwards, into a perfectly clear sky filled with stars. 'The heavens above also burn, like bright coals after a bonfire. Their flame helped give rise to ours here in Weyard.'\nShe glances up, and nods. 'We still have time. Since today we are dealing with astral forces, we must also learn about the zodiac signs. Each zodiac sign is associated with one of the elements.'",
         "EnemyNames": [ "Next" ],
         "Image": "",
         "RewardTables": [
@@ -7896,7 +8121,7 @@
       },
       {
         "Flavourtext": "Sagittarius, the Archer. Fight fire with fire, it is said. Sagittarius has realised, the archer's deadliest foe is himself.'",
-        "EnemyNames": [ "MirrorAll:Sagittarius|Boost:125|KilledBeforeTurn:4@-5" ],
+        "EnemyNames": [ "MirrorAll:Sagittarius|Boost:101|KilledBeforeTurn:4@-5" ],
         "Keywords": [ "@103", "ToMatchup@100", "HasTagAll:Magma4ZodLeo:Magma4ZodAries:Magma4ZodSagittarius@500" ],
         "Image": "https://media.discordapp.net/attachments/668443234292334612/914126219589587004/unknown.png",
         "RewardTables": [
@@ -8117,7 +8342,7 @@
       },
       {
         "Flavourtext": "You climb to the highest point of the Plateau. The view is vast, but your attention is immediately drawn upwards. In the sky, a great ball of celestial fire has come close to Weyard. It dominates the sky. Hama nods. 'Weyard, thankfully, is safe. But this is one of the purest sources of Mars you could hope to meet in your lifetime. Show it your strength, Adept! And beware; Mercury holds no sway here.'",
-        "EnemyNames": [ "CometMeteor1", "CometMeteor2", "MeteorSummon|ImmuneTo:Mercury|Head", "CometMeteor3", "CometMeteor4 " ],
+        "EnemyNames": [ "CometMeteor1", "CometMeteor2", "MeteorSummon|ImmuneTo:Mercury|Head", "CometMeteor3", "CometMeteor4" ],
         "Keywords": [ "@600" ],
         "Image": "",
         "RewardTables": [
@@ -8169,6 +8394,12 @@
               "Tag": "MagmaPure",
               "Obtainable": 1,
               "Item": "Herculean Axe"
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "Item": "GameTicket5"
             }
           ]
         ]
@@ -8264,6 +8495,7 @@
               "Weight": 1,
               "Tag": "Air1",
               "Obtainable": 1,
+              "Item": "GameTicket2",
               "Dungeon": "Path Of Air II",
               "Djinn": "Jupiter"
             }
@@ -8399,6 +8631,7 @@
               "Obtainable": 1,
               "XP": 140,
               "Coins": 140,
+              "Item": "GameTicket3",
               "Dungeon": "Path Of Air III"
             }
           ]
@@ -8536,6 +8769,7 @@
               "Obtainable": 1,
               "XP": 140,
               "Coins": 140,
+              "Item": "GameTicket4",
               "Dungeon": "Path Of Air IV"
             }
           ]
@@ -8550,7 +8784,7 @@
     "Image": "https://goldensunwiki.net/w/images/1/1a/ContigoOverworld.png",
     "IsDefault": false,
     "Requirement": {
-      "MinLevel": "999",
+      "MinLevel": "50",
       "Elements": [ "Jupiter" ],
       "TagsRequired": [ "Air3" ]
     },
@@ -8739,8 +8973,8 @@
       },
       {
         "Flavourtext": "As you approach, the sole glowing purple elemental splits before your eyes. Three indistinct purple forms move to surround you, shifting to mimic your approximate size and shape.  They scream discordantly, *'Adept of the Wind! A strong vortex absorbs the weak!'*",
-        "EnemyNames": [ "Mirror:Purple Elemental|Boost:55|Boost:200:Spd", "Mirror:Purple Elemental|Boost:55|Boost:200:Spd", "Mirror:Purple Elemental|Boost:55|Boost:200:Spd", "Mirror:Purple Elemental|Boost:55|Boost:200:Spd" ],
-        "Keywords": [ "@240", "ToMatchup@200" ],
+        "EnemyNames": [ "Mirror:Purple Elemental|Boost:34|Boost:303:Spd", "Mirror:Purple Elemental|Boost:33|Boost:303:Spd", "Mirror:Purple Elemental|Boost:33|Boost:303:Spd" ],
+        "Keywords": [ "@240", "ToMatchup@200", "Shuffle" ],
         "Image": "",
         "RewardTables": [
           [
@@ -8911,6 +9145,12 @@
               "Obtainable": 1,
               "Item": "Mysterious Robe"
             }
+          ],
+          [
+            {
+              "Weight": 1,
+              "Item": "GameTicket5"
+            }
           ]
         ]
       }
@@ -9005,6 +9245,7 @@
               "Weight": 1,
               "Tag": "Aqua1",
               "Obtainable": 1,
+              "Item": "GameTicket2",
               "Dungeon": "Path Of Aqua II",
               "Djinn": "Mercury"
             }
@@ -9138,6 +9379,7 @@
               "Obtainable": 1,
               "XP": 140,
               "Coins": 140,
+              "Item": "GameTicket3",
               "Dungeon": "Path Of Aqua III"
             }
           ]
@@ -9274,6 +9516,7 @@
               "Obtainable": 1,
               "XP": 140,
               "Coins": 140,
+              "Item": "GameTicket4",
               "Dungeon": "Path Of Aqua IV"
             }
           ]
@@ -9288,7 +9531,7 @@
     "Image": "http://www.goldensun-zone.de/goldensun2/komplettloesung/bilder/Tundaria-Weltkarte-Ankunft.png",
     "IsDefault": false,
     "Requirement": {
-      "MinLevel": "999",
+      "MinLevel": "50",
       "Elements": [ "Mercury" ],
       "TagsRequired": [ "Aqua3" ]
     },
@@ -9409,7 +9652,7 @@
         ]
       },
       {
-        "Flavourtext": "The chill is really starting to get to you. What a weird and twisted path you've taken. Oh, what would you give for a hot cup of tea. You *must* be nearly to the center of the storm now...",
+        "Flavourtext": "The chill is really starting to get to you. What a weird and twisted path you've taken. Oh, what would you give for a hot cup of tea. You *must* be nearly at the center of the storm now...",
         "EnemyNames": [ "Choice:Up|KilledBy:Player@150", "Choice:Down|KilledBy:Player@145", "Choice:Left|KilledBy:Player@500", "Choice:Right|KilledBy:Player@130" ],
         "Keywords": [ "@141" ],
         "Image": "",
@@ -9523,6 +9766,12 @@
           [
             {
               "Weight": 1,
+              "Item": "GameTicket5"
+            }
+          ],
+          [
+            {
+              "Weight": 1,
               "Tag": "Aqua4RewardChest",
               "Obtainable": 1,
               "Chest": "Adept",
@@ -9572,7 +9821,7 @@
   "Forest Den": {
     "name": "Forest Den",
     "IsOneTimeOnly": false,
-    "FlavourText": "The creatue hid in a small den, you need to challenge it before it cuts down the trees and threatens the serenity of Kolima.",
+    "FlavourText": "The creature hid in a small den, you need to challenge it before it cuts down the trees and threatens the serenity of Kolima.",
     "Image": "https://cdn.discordapp.com/attachments/668443234292334612/733732921441124362/unknown.png",
     "IsDefault": false,
     "Requirement": {
@@ -9619,6 +9868,7 @@
               "Weight": 1,
               "Tag": "ZaganFinished",
               "Obtainable": 1,
+              "Item": "GameTicket5",
               "Summon": "Zagan"
             }
           ]
@@ -9676,6 +9926,7 @@
               "Weight": 1,
               "Tag": "MolochFinished",
               "Obtainable": 1,
+              "Item": "GameTicket5",
               "Summon": "Moloch"
             }
           ]
@@ -9733,6 +9984,7 @@
               "Weight": 1,
               "Tag": "FloraFinished",
               "Obtainable": 1,
+              "Item": "GameTicket5",
               "Summon": "Flora"
             }
           ]
@@ -9790,6 +10042,7 @@
               "Weight": 1,
               "Tag": "MegaeraFinished",
               "Obtainable": 1,
+              "Item": "GameTicket5",
               "Summon": "Megaera"
             }
           ]
@@ -9810,7 +10063,7 @@
     "Matchups": [
       {
         "Flavourtext": "You shouldn't be here.",
-        "EnemyNames": [ "Rat" ],
+        "EnemyNames": [ "Rat 1" ],
         "Image": "",
         "RewardTables": [
           [ { "Weight": 1 } ]

@@ -104,29 +104,29 @@ namespace IodemBot
                         $"{user.Mention} changed Nickname from {userBefore.DisplayName()} to {user.DisplayName()}");
             }
 
-            //Console.WriteLine($"Updated: before:{userBefore.IsPending.GetValueOrDefault()} after:{user.IsPending.GetValueOrDefault()}");
-            //if (userBefore.IsPending.GetValueOrDefault() == true && user.IsPending.GetValueOrDefault() == false)
-            //{
-            //    await SendWelcomeMessage(user);
-            //    Console.WriteLine($"{user.Username} joined");
-            //}
+            Console.WriteLine($"Updated: before:{userBefore.IsPending.GetValueOrDefault()} after:{user.IsPending.GetValueOrDefault()}");
+            if (userBefore.IsPending.GetValueOrDefault() == true && user.IsPending.GetValueOrDefault() == false)
+            {
+                await SendWelcomeMessage(user);
+                Console.WriteLine($"{user.Username} joined");
+            }
 
-            //if (userBefore.PremiumSince.HasValue != user.PremiumSince.HasValue)
-            //{
-            //    var isBoosting = user.PremiumSince.HasValue;
-            //    if (isBoosting)
-            //    {
-            //        _ = guild.MainChannel
-            //            .SendMessageAsync(
-            //                $"<:Exclamatory:549529360604856323> {user.Mention} is now boosting the server.");
-            //    }
-            //    else
-            //    {
-            //        _ = guild.TestCommandChannel
-            //        .SendMessageAsync(
-            //            $"<:Exclamatory:549529360604856323> {user.Mention} is no longer boosting the server.");
-            //    }
-            //}
+            if (userBefore.PremiumSince.HasValue != user.PremiumSince.HasValue)
+            {
+                var isBoosting = user.PremiumSince.HasValue;
+                if (isBoosting)
+                {
+                    _ = guild.MainChannel
+                        .SendMessageAsync(
+                            $"<:Exclamatory:549529360604856323> {user.Mention} is now boosting the server.");
+                }
+                else
+                {
+                    _ = guild.TestCommandChannel
+                    .SendMessageAsync(
+                        $"<:Exclamatory:549529360604856323> {user.Mention} is no longer boosting the server.");
+                }
+            }
 
             await Task.CompletedTask;
         }
@@ -147,7 +147,7 @@ namespace IodemBot
             _ = GuildSettings.GetGuildSettings(user.Guild).TestCommandChannel.SendMessageAsync(embed:
                 new EmbedBuilder()
                     .WithAuthor(user)
-                    .AddField("Account Created", user.CreatedAt)
+                    .AddField("Account Created", $"{user.CreatedAt}{((DateTime.Now - user.CreatedAt).TotalDays < 7 ? $"{Emotes.GetIcon("Exclamation")} New Account!" : "")}")
                     .AddField("User Joined", user.JoinedAt)
                     .AddField("Status", user.Status, true)
                     .Build());

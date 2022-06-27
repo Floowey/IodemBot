@@ -276,7 +276,7 @@ namespace IodemBot.Modules
         [Alias("top", "top10")]
         [Cooldown(5)]
         [Summary("Get the most active users and your rank")]
-        public async Task Rank(RankEnum type = RankEnum.Level)
+        public async Task Rank(RankEnum type = RankEnum.LevelMonth)
         {
             var valid = new[] { RankEnum.Level, RankEnum.LevelMonth, RankEnum.LevelWeek };
             if (!valid.Contains(type))

@@ -101,7 +101,7 @@ namespace IodemBot.Modules
                     }
                     UserAccountProvider.StoreUser(account);
                     await Context.Channel.SendMessageAsync(embed: embed
-                    .WithDescription($"You are {Article(account.GsClass)} {account.GsClass} now, {account.Name}.")
+                    .WithDescription($"You are {Utilities.Article(account.GsClass)} {account.GsClass} now, {account.Name}.")
                     .Build());
                     return;
                 }
@@ -238,7 +238,7 @@ namespace IodemBot.Modules
             var embed = new EmbedBuilder()
             .WithColor(Colors.Get(account.Element.ToString()))
             .WithAuthor(author)
-            .WithTitle($"Level {account.LevelNumber} {account.GsClass} {string.Join("", account.TrophyCase.Trophies.Select(t => t.Icon))} (Rank {UserAccounts.GetRank(account) + 1})")
+            .WithTitle($"Level {account.LevelNumber} {account.GsClass} {string.Join("", account.TrophyCase.Trophies.Select(t =>  t.Icon.ToShortEmote()))} (Rank {UserAccounts.GetRank(account) + 1})")
             .AddField("Current Equip", account.Inv.GearToString(AdeptClassSeriesManager.GetClassSeries(account).Archtype), true)
             .AddField("Psynergy", p.GetMoves(false), true)
             .AddField("Djinn", account.DjinnPocket.GetDjinns().GetDisplay(DjinnDetail.None), true)
@@ -498,6 +498,9 @@ namespace IodemBot.Modules
                 embed.AddField("Learned by", string.Join(", ", classWithMove.Select(c => c.Name)));
             }
 
+            if (!psy.Description.IsNullOrEmpty())
+                embed.WithFooter(psy.Description);
+
             await Context.Channel.SendMessageAsync("", false, embed.Build());
             if (Context.User is SocketGuildUser sgu)
             {
@@ -626,15 +629,6 @@ namespace IodemBot.Modules
             return !curClass.Equals(AdeptClassSeriesManager.GetClassSeries(account).Name);
         }
 
-        private static string Article(string s)
-        {
-            s = s.ToLower();
-            char c = s.ElementAt(0);
-            return c switch
-            {
-                'a' or 'e' or 'i' or 'o' or 'u' => "an",
-                _ => "a",
-            };
-        }
+       
     }
 }

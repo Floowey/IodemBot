@@ -29,29 +29,40 @@ namespace IodemBot.Modules.GoldenSunMechanics
             if (!target.IsAlive)
                 return new List<string>();
 
-            target.RemoveCondition(TargetConditions);
+            var removed = target.RemoveCondition(TargetConditions);
+            var easedPoison = false;
+            if (target.HasCondition(Condition.Venom) && TargetConditions.Contains(Condition.Poison))
+            {
+                target.RemoveCondition(Condition.Venom);
+                target.AddCondition(Condition.Poison);
+                easedPoison = true;
+                removed++;
+            }
 
             if (user is PlayerFighter p)
             {
                 p.BattleStats.Supported++;
             }
-            return new List<string>() { $"{target.Name}'s Conditions were cured." };
+            return new List<string>() { $"{target.Name} was cured of {removed} Condition{(removed == 1 ? "" : "s")}.{(easedPoison ? $" {target.Name}'s envenomation was eased." : "")}" };
         }
 
         public override string ToString()
         {
-            return "Restore the target from Conditions and Poison";
+            return !CureConditions.Any() ? "Restore the target from Conditions and Poison" : $"Restores the target from the following conditions:\n{string.Join(", ", TargetConditions.OrderBy(c => (int)c).Select(c => $"{Emotes.GetIcon(c, "")} {c}"))}" +
+                $"{(TargetConditions.Contains(Condition.Poison) && !TargetConditions.Contains(Condition.Venom) ? $"\nCan ease {Emotes.GetIcon(Condition.Venom)} envenomation." : "")}";
         }
 
         protected override int InternalChooseBestTarget(List<ColossoFighter> targets)
         {
-            var unaffectedEnemies = targets.Where(s => s.HasCurableCondition).ToList();
+            var unaffectedEnemies = targets.Where(s => s.HasCondition(TargetConditions) ||
+            (s.HasCondition(Condition.Venom) && TargetConditions.Contains(Condition.Poison))).ToList();
             return targets.IndexOf(unaffectedEnemies.Random());
         }
 
         protected override bool InternalValidSelection(ColossoFighter user)
         {
-            return user.Party.Any(s => s.HasCondition(TargetConditions));
+            return user.Party.Any(s => s.HasCondition(TargetConditions)) ||
+                (user.Party.Any(s => s.HasCondition(Condition.Venom)) && TargetConditions.Contains(Condition.Poison));
         }
     }
 }

@@ -45,6 +45,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
             if (Statpsy.TryGetValue(move, out var sp)) return (StatusPsynergy)sp.Clone();
 
+            if (move.EndsWith("#d"))
+                move = move[..^2];
             if (DjinnAndSummonsDatabase.TryGetDjinn(move, out var d)) return d;
 
             if (DjinnAndSummonsDatabase.TryGetSummon(move, out var s)) return s;

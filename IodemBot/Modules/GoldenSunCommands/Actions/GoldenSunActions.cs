@@ -109,10 +109,13 @@ namespace IodemBot.Modules
                     break;
 
                 case 2: // Total Statistics
+                    var allTimeBestStreak = account.ServerStats.EndlessStreak + account.ServerStatsTotal.EndlessStreak;
                     embed
                         .AddField("Resets", account.NewGames, true)
                         .AddField("Total XP", account.TotalXp, true)
-                        .AddField("Colosso wins | Dungeon Wins", $"{account.ServerStatsTotal.ColossoWins} | {account.ServerStatsTotal.DungeonsCompleted}", true);
+                        .AddField("Colosso wins | Dungeon Wins", $"{account.ServerStatsTotal.ColossoWins} | {account.ServerStatsTotal.DungeonsCompleted}", true)
+                        .AddField("Endless Streaks", $"Solo: {allTimeBestStreak.Solo} | Duo: {allTimeBestStreak.Duo} \nTrio: {allTimeBestStreak.Trio} | Quad: {allTimeBestStreak.Quad}", true);
+
                     break;
 
                 default:

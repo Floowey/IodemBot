@@ -828,7 +828,8 @@
     "range": 2,
     "element": 2,
     "PPCost": 5,
-    "power": 20
+    "power": 20,
+    "Description": "Zzz... Whuzza? Whirlwind? Wind Stone? Zzzzrrrgg..."
   },
   "Tornado": {
     "name": "Tornado",

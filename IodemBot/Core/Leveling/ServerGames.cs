@@ -167,6 +167,8 @@ namespace IodemBot.Core.Leveling
 
         internal static async Task UserWonSingleBattle(UserAccount avatar, BattleDifficulty difficulty)
         {
+            avatar.Inv.GameTickets += (uint)difficulty;
+            UserAccountProvider.StoreUser(avatar);
             var csvline = $"{DateTime.Now:s},Single,{difficulty},{avatar.Name}{Environment.NewLine}";
             File.AppendAllText(BattleFile, csvline);
             await Task.CompletedTask;
@@ -220,10 +222,10 @@ namespace IodemBot.Core.Leveling
         internal static async Task UserLookedUpPsynergy(SocketGuildUser user, SocketTextChannel channel)
         {
             var userAccount = EntityConverter.ConvertUser(user);
-            userAccount.ServerStats.LookedUpInformation++;
+            userAccount.ServerStats.LookedUpPsynergy++;
             UserAccountProvider.StoreUser(userAccount);
 
-            if (userAccount.ServerStats.LookedUpInformation >= 17)
+            if (userAccount.ServerStats.LookedUpPsynergy >= 14)
                 _ = GoldenSunCommands.AwardClassSeries("Apprentice Series", user, channel);
             await Task.CompletedTask;
         }
@@ -234,8 +236,19 @@ namespace IodemBot.Core.Leveling
             userAccount.ServerStats.LookedUpClass++;
             UserAccountProvider.StoreUser(userAccount);
 
-            if (userAccount.ServerStats.LookedUpClass >= 11)
+            if (userAccount.ServerStats.LookedUpClass >= 10)
                 _ = GoldenSunCommands.AwardClassSeries("Page Series", user, channel);
+            await Task.CompletedTask;
+        }
+
+        internal static async Task UserLookedUpItem(SocketGuildUser user, SocketTextChannel channel)
+        {
+            var userAccount = EntityConverter.ConvertUser(user);
+            userAccount.ServerStats.LookedUpItem++;
+            UserAccountProvider.StoreUser(userAccount);
+
+            if (userAccount.ServerStats.LookedUpItem >= 20)
+                _ = GoldenSunCommands.AwardClassSeries("Scrapper Series", user, channel);
             await Task.CompletedTask;
         }
     }

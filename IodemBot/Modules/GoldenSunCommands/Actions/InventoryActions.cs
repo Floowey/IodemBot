@@ -101,7 +101,8 @@ namespace IodemBot.Modules
             var fb = new EmbedFooterBuilder();
             var upgradeCost = (int)(50000 * Math.Pow(2, inv.Upgrades));
             fb.WithText($"{inv.Count} / {inv.MaxInvSize} {(inv.Upgrades < 4 ? $"Upgrade: {upgradeCost}" : "")}");
-            embed.AddField("Coin", $"{Emotes.GetIcon("Coin")} {inv.Coins}");
+            embed.AddField("Coin", $"{Emotes.GetIcon("Coin")} {inv.Coins}", true);
+            embed.AddField("Game Tickets", $" {inv.GameTickets}", true);
             embed.WithColor(Colors.Get("Iodem"));
             embed.WithFooter(fb);
             return embed.Build();
@@ -662,6 +663,10 @@ namespace IodemBot.Modules
             if (account.Preferences.AutoSell.Contains(item.Rarity))
                 autoSold = inv.Sell(item.Name);
 
+            var tickets = (uint)Math.Min(10, inv.DailiesInARow + 1);
+            if (ChestQuality.Value == IodemBot.ChestQuality.Daily)
+                inv.GameTickets += tickets;
+
             UserAccountProvider.StoreUser(account);
 
             RestInteractionMessage inventoryMessage = null;
@@ -710,12 +715,14 @@ namespace IodemBot.Modules
         private Embed GetSecondChestEmbed(Item item, Inventory inv, bool isSold = false)
         {
             var embed = new EmbedBuilder();
+            var tickets = (uint)Math.Min(10, inv.DailiesInARow);
             embed.WithColor(item.Color);
             if (ChestQuality == IodemBot.ChestQuality.Daily)
                 embed.WithFooter(
                     $"Current Reward: {inv.DailiesInARow % Inventory.DailyRewards.Length + 1}/{Inventory.DailyRewards.Length} | Overall Streak: {inv.DailiesInARow + 1}");
             embed.WithDescription(
-                $"{Emotes.GetIcon(ChestQuality.Value)} {Context.User.Mention} found a {item.Name} {item.IconDisplay}{(isSold ? "(Auto Sold)" : "")}");
+                $"{Emotes.GetIcon(ChestQuality.Value)} {Context.User.Mention} found a {item.Name} {item.IconDisplay}{(isSold ? "(Auto Sold)" : "")}" +
+               $"{(ChestQuality == IodemBot.ChestQuality.Daily ? $"\nYou also obtained {Emotes.GetIcon("GameTicket")} {tickets}" : "")}");
 
             return embed.Build();
         }
@@ -957,7 +964,14 @@ namespace IodemBot.Modules
                 var it = inv.GetItem(item);
                 if (inv.Sell(item))
                 {
-                    embed.WithDescription($"Sold {it.Icon}{it.Name} for {Emotes.GetIcon("Coin")} {it.SellValue}.");
+                    if (!it.IsBoughtFromShop && it.IsArtifact)
+                    {
+                        embed.WithDescription($"Sold {it.Icon}{it.Name} for {Emotes.GetIcon("Coin")} {it.SellValue}. Here's {it.TicketValue} Game Ticket{(it.TicketValue > 1 ? "s" : "")} for you, as a little gift.");
+                    }
+                    else
+                    {
+                        embed.WithDescription($"Sold {it.Icon}{it.Name} for {Emotes.GetIcon("Coin")} {it.SellValue}.");
+                    }
                     embed.WithColor(it.Color);
                 }
                 else
@@ -969,6 +983,7 @@ namespace IodemBot.Modules
             else
             {
                 uint sum = 0;
+                uint tickets = 0;
                 uint successfull = 0;
                 foreach (var i in ItemsToSell)
                     if (inv.HasItem(i.Trim()))
@@ -977,11 +992,13 @@ namespace IodemBot.Modules
                         if (inv.Sell(it.Name))
                         {
                             sum += it.SellValue;
+                            if (!it.IsBoughtFromShop && it.IsArtifact)
+                                tickets += it.TicketValue;
                             successfull++;
                         }
                     }
 
-                embed.WithDescription($"Sold {successfull} items for <:coin:569836987767324672> {sum}.");
+                embed.WithDescription($"Sold {successfull} items for {Emotes.GetIcon("Coin")} {sum} and {Emotes.GetIcon("GameTicket")} {tickets}.");
                 embed.WithColor(Colors.Get("Iodem"));
             }
             UserAccountProvider.StoreUser(account);

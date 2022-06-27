@@ -174,9 +174,10 @@ namespace IodemBot.Modules.GoldenSunMechanics
         {
             var isBroken = itemName.Contains("(B)");
             var isAnimated = itemName.Contains("(A)");
-            var hasName = itemName.Contains("|");
+            var isBoughtFromShop = itemName.Contains("(S)");
+            var hasName = itemName.Contains('|');
 
-            var justName = isBroken || isAnimated || hasName
+            var justName = isBroken || isAnimated || hasName || isBoughtFromShop
                 ? string.Concat(itemName.TakeWhile(c => !(c == '(' || c == '|')))
                 : itemName;
 
@@ -186,6 +187,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 if (hasName) i.Nickname = string.Concat(itemName.SkipWhile(c => !c.Equals('|')))[1..];
                 i.IsAnimated = isAnimated;
                 i.IsBroken = isBroken;
+                i.IsBoughtFromShop = isBoughtFromShop;
                 return i;
             }
 

@@ -534,9 +534,8 @@ namespace IodemBot.ColossoBattles
                 {
                     if (v.StatusMessage == null)
                     {
-                        var msg = v.PlayerMessages
-                            .Aggregate("", (s, v) => s += $"<@{v.Value.Id}>, ");
-                        v.StatusMessage = await v.TeamChannel.SendMessageAsync($"{msg}get in position!");
+                        string msg = string.Join(", ", v.PlayerMessages.Select(m => $"<@{m.Value.Id}>"));
+                        v.StatusMessage = await v.TeamChannel.SendMessageAsync($"{msg}, get in position!");
                     }
                 }
             });
@@ -548,7 +547,6 @@ namespace IodemBot.ColossoBattles
             var tasks = new List<Task>();
             Teams.Values.ToList().ForEach(async v =>
             {
-                var i = 1;
                 foreach (var k in v.PlayerMessages)
                 {
                     var msg = k.Key;

@@ -204,8 +204,8 @@ namespace IodemBot.Modules.BattleActions
             foreach (var move in factory.PossibleSummons)
             {
                 var isSelection = player.SelectedMove == move;
-                var style = isSelection ? ButtonStyle.Success : ButtonStyle.Primary;
-                style = move.InternalValidSelection(player) ? style : ButtonStyle.Secondary;
+                var style = move.InternalValidSelection(player) ? ButtonStyle.Primary : ButtonStyle.Secondary;
+                style = isSelection ? ButtonStyle.Success : style;
 
                 builder.WithButton($"{move.Name}", $"{nameof(SelectMoveAction)}.{move.Name}", style, move.GetEmote());
             }

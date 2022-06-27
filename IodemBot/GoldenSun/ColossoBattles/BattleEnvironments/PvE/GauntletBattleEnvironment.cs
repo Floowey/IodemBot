@@ -234,7 +234,7 @@ namespace IodemBot.ColossoBattles
                 if (!_endOfDungeon)
                 {
                     await SummonsMessage.ModifyAsync(m => m.Content = Matchup.FlavourText);
-                    var text = $"{winners.First().Name}'s party wins Battle!";
+                    var text = $"{winners.First().Name}'s party wins the Battle!";
                     await Task.Delay(2000);
                     await StatusMessage.ModifyAsync(m =>
                     {

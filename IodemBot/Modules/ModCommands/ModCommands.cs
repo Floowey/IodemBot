@@ -258,6 +258,7 @@ namespace IodemBot.Modules
         public async Task GetUserFile(SocketUser user = null)
         {
             user ??= Context.User;
+            await Task.Delay(1000);
             await Context.Channel.SendFileAsync($"Resources/Accounts/BackupAccountFiles/{user.Id}.json");
         }
 

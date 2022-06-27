@@ -363,20 +363,36 @@
     "PPCost": 4,
     "effects": [
       {
-        "Type": "Restore"
+        "Type": "Restore",
+        "CureConditions": [ "Stun", "Sleep", "Seal", "DeathCurse", "Delusion" ]
       }
     ]
   },
   "Cure Poison": {
-    "name": "Restore",
+    "name": "Cure Poison",
     "TargetType": "PartySingle",
-    "emote": "<:Restore:536969958542802975>",
+    "emote": "<:Cure_Poison:536969927068745758>",
     "range": 1,
     "element": 3,
     "PPCost": 4,
     "effects": [
       {
-        "Type": "Restore"
+        "Type": "Restore",
+        "CureConditions": [ "Poison", "Venom" ]
+      }
+    ]
+  },
+  "Remedy": {
+    "name": "Remedy",
+    "TargetType": "PartySingle",
+    "emote": "<a:Remedy:988801609205170317>",
+    "range": 1,
+    "element": 3,
+    "PPCost": 4,
+    "effects": [
+      {
+        "Type": "Restore",
+        "CureConditions": [ "Stun", "Sleep", "Seal", "DeathCurse", "Delusion", "Poison", "Venom", "Haunt", "SpiritSeal" ]
       }
     ]
   },
@@ -457,7 +473,8 @@
     "PPCost": 4,
     "effects": [
       {
-        "Type": "Restore"
+        "Type": "Restore",
+        "CureConditions": [ "Poison", "Stun", "Sleep", "Seal", "DeathCurse", "Delusion" ]
       }
     ]
   },
@@ -990,7 +1007,8 @@
         "Type": "ReduceDamage",
         "DamageReduction": 60
       }
-    ]
+    ],
+    "Description": "Wielder of Earth's might, Lay your hands upon this stone. I shall grant thee the power to melt into the earth, the power of Sand!"
   },
   "Poison Gel": {
     "name": "Poison Gel",
