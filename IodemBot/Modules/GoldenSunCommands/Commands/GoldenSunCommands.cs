@@ -238,7 +238,7 @@ namespace IodemBot.Modules
             var embed = new EmbedBuilder()
             .WithColor(Colors.Get(account.Element.ToString()))
             .WithAuthor(author)
-            .WithTitle($"Level {account.LevelNumber} {account.GsClass} {string.Join("", account.TrophyCase.Trophies.Select(t =>  t.Icon.ToShortEmote()))} (Rank {UserAccounts.GetRank(account) + 1})")
+            .WithTitle(string.Concat($"Level {account.LevelNumber} {account.GsClass} {string.Join("", account.TrophyCase.Trophies.Select(t => t.Icon))} (Rank {UserAccounts.GetRank(account) + 1})".Take(EmbedBuilder.MaxTitleLength)))
             .AddField("Current Equip", account.Inv.GearToString(AdeptClassSeriesManager.GetClassSeries(account).Archtype), true)
             .AddField("Psynergy", p.GetMoves(false), true)
             .AddField("Djinn", account.DjinnPocket.GetDjinns().GetDisplay(DjinnDetail.None), true)
@@ -628,7 +628,5 @@ namespace IodemBot.Modules
             }
             return !curClass.Equals(AdeptClassSeriesManager.GetClassSeries(account).Name);
         }
-
-       
     }
 }
