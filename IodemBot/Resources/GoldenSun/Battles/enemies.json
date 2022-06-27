@@ -11422,14 +11422,14 @@
     "extraturns": 1
   },
   "ThorSummon": {
-    "movepool": [ "Thor", "Luff", "Squall", "Blitz", "Bolt#d", "Blue Bolt", "Destruct Ray", "Spark Plasma", "Thunderhead", "Thunder Mine", "Quick Strike" ],
+    "movepool": [ "Thor", "Luff", "Vortex", "Blitz", "Bolt#d", "Blue Bolt", "Destruct Ray", "Destruct Ray", "Spark Plasma", "Thunderhead", "Thunder Mine", "Quick Strike" ],
     "name": "Thor",
     "imgurl": "https://media.discordapp.net/attachments/497696510688100352/665884848891887626/Thor.gif",
     "stats": {
       "maxhp": 4443,
       "maxpp": 1622,
-      "atk": 559,
-      "def": 440,
+      "atk": 529,
+      "def": 415,
       "spd": 999
     },
     "elstats": {
