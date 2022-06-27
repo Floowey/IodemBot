@@ -2936,6 +2936,7 @@
     "AnimatedIcon": "<a:Dragon_Bow:808869224981200966>",
     "ItemType": "Bow",
     "IsEquippable": true,
+    "Description": "A bow from the east. Fires arrows with flames akin to a dragon's breath.",
     "IsArtifact": true,
     "DamageAlignment": 1,
     "AddStatsOnEquip": {
