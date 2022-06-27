@@ -40,7 +40,7 @@ namespace IodemBot.ColossoBattles
             _ = RemoveFighterRoles();
             if (EnemiesDatabase.TryGetDungeon(dungeonName, out var dungeon))
             {
-                if (!acc.Dungeons.Contains(dungeon.Name) && !dungeon.IsDefault && !modPermission )
+                if (!acc.Dungeons.Contains(dungeon.Name) && !dungeon.IsDefault && !modPermission)
                 {
                     await ReplyAsync("If you can't tell me where this place is, I can't take you there. And even if you knew, they probably wouldn't let you in! Bring me a map or show to me that you have the key to enter.");
                     return;
@@ -260,7 +260,7 @@ namespace IodemBot.ColossoBattles
         {
             var gs = GuildSettings.GetGuildSettings(Context.Guild);
             var battle = BattleService.GetBattleEnvironment(b => b.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
-            if(battle != null)
+            if (battle != null)
             {
                 await RemoveBattle(battle);
             }
@@ -280,13 +280,13 @@ namespace IodemBot.ColossoBattles
 
         private async Task RemoveBattle(BattleEnvironment battle)
         {
-                //await battle.Reset();
-                foreach (var id in battle.ChannelIds)
-                {
-                    await Context.Guild.GetChannel(id).DeleteAsync();
-                }
-                battle.Dispose();
-                await ReplyAsync($"Removed {battle.Name}");
+            //await battle.Reset();
+            foreach (var id in battle.ChannelIds)
+            {
+                await Context.Guild.GetChannel(id).DeleteAsync();
+            }
+            battle.Dispose();
+            await ReplyAsync($"Removed {battle.Name}");
         }
 
         [Command("modendless")]
@@ -464,7 +464,7 @@ namespace IodemBot.ColossoBattles
                 EmbedBuilder embed = new();
                 foreach (var b in BattleService.GetAllBattleEnvironments())
                 {
-                    embed.AddField($"{b.Name}, {(b.IsActive ? "Active" : "Inactive")} {(b.IsProcessing? ", Processing" : "")}, {b.Battle.SizeTeamA + b.Battle.TeamB.OfType<PlayerFighter>().Count()} Players",
+                    embed.AddField($"{b.Name}, {(b.IsActive ? "Active" : "Inactive")} {(b.IsProcessing ? ", Processing" : "")}, {b.Battle.SizeTeamA + b.Battle.TeamB.OfType<PlayerFighter>().Count()} Players",
                     $"{b.GetType().Name}, {(b.IsPersistent ? "(Permanent)" : "")}\n" +
                     $"{string.Join(",", b.ChannelIds.Select(id => $"<#{id}>"))}", true);
                 }
