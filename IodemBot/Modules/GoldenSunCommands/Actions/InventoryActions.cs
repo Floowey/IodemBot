@@ -715,7 +715,7 @@ namespace IodemBot.Modules
         private Embed GetSecondChestEmbed(Item item, Inventory inv, bool isSold = false)
         {
             var embed = new EmbedBuilder();
-            var tickets = (uint)Math.Min(10, inv.DailiesInARow);
+            var tickets = (uint)Math.Min(10, inv.DailiesInARow + 1);
             embed.WithColor(item.Color);
             if (ChestQuality == IodemBot.ChestQuality.Daily)
                 embed.WithFooter(
