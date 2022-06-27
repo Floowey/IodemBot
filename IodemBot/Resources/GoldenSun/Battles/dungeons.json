@@ -7519,7 +7519,7 @@
           [
             {
               "Weight": 1,
-              "Tag": "Gaia4RewardXP2",
+              "Tag": "Gaia4RewardXP",
               "Obtainable": 1,
               "XP": 1600,
               "Coins": 2000
@@ -8140,7 +8140,7 @@
               "RequireTag": [ "@-5" ],
               "Tag": "Magma4RewardItemSecret",
               "Obtainable": 1,
-              "Item": "Sagttarius Bow"
+              "Item": "Sagittarius Bow"
             }
           ]
         ]

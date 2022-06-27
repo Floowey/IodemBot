@@ -6,9 +6,9 @@
 		<ApplicationIcon></ApplicationIcon>
 		<DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
 		<Version>3.0.0.0</Version>
-		<AssemblyVersion>3.1.2206.60</AssemblyVersion>
+		<AssemblyVersion>3.1.2206.61</AssemblyVersion>
 		<Deterministic>false</Deterministic>
-		<FileVersion>3.0.0.174</FileVersion>
+		<FileVersion>3.0.0.175</FileVersion>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
 	  <ShouldCreateLogs>True</ShouldCreateLogs>
