@@ -88,7 +88,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
         internal uint MaxInvSize => BaseInvSize + 10 * Upgrades;
 
         public DateTime LastDailyChest { get; set; }
-        public int DailiesInARow { get; set; }
+
+        public int DailiesInARow { get; set; } = 0;
 
         internal int Count => Inv.Count;
 

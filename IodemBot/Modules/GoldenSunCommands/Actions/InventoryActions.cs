@@ -966,7 +966,7 @@ namespace IodemBot.Modules
                 {
                     if (!it.IsBoughtFromShop && it.IsArtifact)
                     {
-                        embed.WithDescription($"Sold {it.Icon}{it.Name} for {Emotes.GetIcon("Coin")} {it.SellValue}. Here's {Emotes.GetIcon("Game Ticket")} {it.TicketValue} Game Ticket{(it.TicketValue > 1 ? "s" : "")} for you, as a little gift.");
+                        embed.WithDescription($"Sold {it.Icon}{it.Name} for {Emotes.GetIcon("Coin")} {it.SellValue}. Here's {Emotes.GetIcon("GameTicket")} {it.TicketValue} Game Ticket{(it.TicketValue > 1 ? "s" : "")} for you, as a little gift.");
                     }
                     else
                     {
