@@ -38,17 +38,17 @@ namespace IodemBot.Core.UserManagement
                             (ulong)(u.ServerStats.GetStreak(mode).GetEntry(rank).Item1 +
                                      u.ServerStatsTotal.GetStreak(mode).GetEntry(rank).Item1)));
 
-            LeaderBoards.Add(new Tuple<RankEnum, EndlessMode>(RankEnum.Level, EndlessMode.Default),
+            LeaderBoards.Add(new Tuple<RankEnum, EndlessMode>(RankEnum.AllTime, EndlessMode.Default),
                 new LeaderBoard(u => u.TotalXp));
 
-            LeaderBoards.Add(new Tuple<RankEnum, EndlessMode>(RankEnum.LevelWeek, EndlessMode.Default),
+            LeaderBoards.Add(new Tuple<RankEnum, EndlessMode>(RankEnum.Week, EndlessMode.Default),
                 new LeaderBoard(u => (ulong)u.DailyXP
                 .Where(kv => kv.Key.Year == DateTime.Now.Year &&
                 cal.GetWeekOfYear(kv.Key, CalendarWeekRule.FirstDay, DayOfWeek.Monday) == cal.GetWeekOfYear(DateTime.Now, CalendarWeekRule.FirstDay, DayOfWeek.Monday))
                 .Select(kv => (decimal)kv.Value).Sum())
             );
 
-            LeaderBoards.Add(new Tuple<RankEnum, EndlessMode>(RankEnum.LevelMonth, EndlessMode.Default),
+            LeaderBoards.Add(new Tuple<RankEnum, EndlessMode>(RankEnum.Month, EndlessMode.Default),
                 new LeaderBoard(u => (ulong)(u.DailyXP.Where(kv => kv.Key >= CurrentMonth).Select(kv => (decimal)kv.Value).Sum()))
             );
 
@@ -64,9 +64,9 @@ namespace IodemBot.Core.UserManagement
             }
         }
 
-        public static LeaderBoard GetLeaderBoard(RankEnum type = RankEnum.Level, EndlessMode mode = EndlessMode.Default)
+        public static LeaderBoard GetLeaderBoard(RankEnum type = RankEnum.AllTime, EndlessMode mode = EndlessMode.Default)
         {
-            if (type == RankEnum.Level || type == RankEnum.LevelWeek || type == RankEnum.LevelMonth) mode = EndlessMode.Default;
+            if (type == RankEnum.AllTime || type == RankEnum.Week || type == RankEnum.Month) mode = EndlessMode.Default;
             return LeaderBoards[new Tuple<RankEnum, EndlessMode>(type, mode)];
         }
 

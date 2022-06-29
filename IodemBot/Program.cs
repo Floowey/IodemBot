@@ -147,7 +147,7 @@ namespace IodemBot
             _ = GuildSettings.GetGuildSettings(user.Guild).TestCommandChannel.SendMessageAsync(embed:
                 new EmbedBuilder()
                     .WithAuthor(user)
-                    .AddField("Account Created", $"{user.CreatedAt}{((DateTime.Now - user.CreatedAt).TotalDays < 7 ? $"{Emotes.GetIcon("Exclamation")} New Account!" : "")}")
+                    .AddField("Account Created", $"{user.CreatedAt}{((DateTime.Now - user.CreatedAt).TotalDays < 7 ? $" {Emotes.GetIcon("Exclamation")} New Account!" : "")}")
                     .AddField("User Joined", user.JoinedAt)
                     .AddField("Status", user.Status, true)
                     .Build());

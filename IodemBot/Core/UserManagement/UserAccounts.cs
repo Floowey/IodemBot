@@ -59,14 +59,14 @@ namespace IodemBot.Core.UserManagement
             return GetOrCreateAccount(id);
         }
 
-        public static List<UserAccount> GetTop(RankEnum type = RankEnum.Level, EndlessMode mode = EndlessMode.Default)
+        public static List<UserAccount> GetTop(RankEnum type = RankEnum.AllTime, EndlessMode mode = EndlessMode.Default)
         {
             List<UserAccount> sortedList = null;
             switch (type)
             {
-                case RankEnum.Level:
-                case RankEnum.LevelWeek:
-                case RankEnum.LevelMonth:
+                case RankEnum.AllTime:
+                case RankEnum.Week:
+                case RankEnum.Month:
                 case RankEnum.Solo:
                     try
                     {
@@ -101,7 +101,7 @@ namespace IodemBot.Core.UserManagement
             return sortedList;
         }
 
-        public static int GetRank(UserAccount user, RankEnum type = RankEnum.Level,
+        public static int GetRank(UserAccount user, RankEnum type = RankEnum.AllTime,
             EndlessMode mode = EndlessMode.Default)
         {
             return UserAccountProvider.GetLeaderBoard(type, mode).IndexOf(user.Id);

@@ -1821,6 +1821,140 @@
       "MercuryRes": 0
     }
   },
+  "Warhammer": {
+    "Name": "Warhammer",
+    "Price": 40000,
+    "Icon": "<:Warhammer:991376828713418802>",
+    "ItemType": "Mace",
+    "IsEquippable": true,
+    "IsArtifact": true,
+    "DamageAlignment": 0,
+    "AddStatsOnEquip": {
+      "Atk": 208
+    },
+    "Unleash": {
+      "UnleashName": "Smurf Smasher",
+      "UnleashAlignment": 0,
+      "effects": [
+        {
+          "Type": "MultiplyDamage",
+          "Multipliers": [ 1.8 ],
+          "Probabilities": [ 100 ]
+        },
+        {
+          "Type": "Stat",
+          "Stat": "Attack",
+          "Multiplier": 1.08,
+          "Probability": 100,
+          "OnTarget": false
+        },
+        {
+          "Type": "Stat",
+          "Stat": "Defense",
+          "Multiplier": 1.08,
+          "Probability": 100,
+          "OnTarget": false
+        },
+        {
+          "Type": "Stat",
+          "Stat": "Speed",
+          "Multiplier": 1.08,
+          "Probability": 100,
+          "OnTarget": false
+        },
+        {
+          "Type": "Stat",
+          "Stat": "Power",
+          "Multiplier": 1.08,
+          "Probability": 100,
+          "OnTarget": false
+        },
+        {
+          "Type": "Stat",
+          "Stat": "Resistance",
+          "Multiplier": 1.08,
+          "Probability": 100,
+          "OnTarget": false
+        }
+      ]
+    },
+    "AddElStatsOnEquip": {
+      "VenusAtk": 30,
+      "VenusRes": 30
+    },
+    "Rarity": "Unique",
+    "Description": "'Other hammers strengthen blades. Crushing blades strengthens this one.'\nUsed by joschlumpf to smash plastic figurines."
+  },
+  "Leprechaun Needle": {
+    "Name": "Leprechaun Needle",
+    "Price": 40000000,
+    "Icon": "<:LeprechaunNeedle:991376825362161674>",
+    "ItemType": "LightBlade",
+    "IsEquippable": true,
+    "IsArtifact": true,
+    "AddStatsOnEquip": {
+      "Atk": 66
+    },
+    "Unleash": {
+      "UnleashName": "Fortuna Dominat Ludum",
+      "UnleashAlignment": 0,
+      "effects": [
+        {
+          "Type": "MultiplyDamage",
+          "Multipliers": [ 6 ],
+          "Probabilities": [ 6 ]
+        }
+      ]
+    },
+    "Rarity": "Unique"
+  },
+  "Soupe'R Bow L": {
+    "Name": "Soupe'R Bow L",
+    "Price": 69420,
+    "Icon": "<:SouperBowL:991676088927387790>",
+    "ItemType": "Bow",
+    "IsEquippable": true,
+    "IsArtifact": true,
+    "AddStatsOnEquip": {
+      "Atk": 249,
+      "HP": 49
+    },
+    "Unleash": {
+      "UnleashName": "DID SOMEONE SAY SOUP?!",
+      "UnleashAlignment": 5,
+      "effects": [
+        {
+          "Type": "Light"
+        },
+        {
+          "Type": "MultiplyDamage",
+          "Multipliers": [ 2.4, 4.9 ],
+          "Probabilities": [ 49, 49 ]
+        }
+      ]
+    },
+    "Rarity": "Unique",
+    "Description": "A repurposed Soup Ladle. It shoots arrows drenched in Falgor's' Souper Soup."
+  },
+  "Souper Soup": {
+    "Name": "Souper Soup",
+    "Price": 42069,
+    "Icon": "<:SouperSoup:991676090789662740>",
+    "ItemType": "Misc",
+    "IsEquippable": true,
+    "IsArtifact": true,
+    "GrantsUnleash": true,
+    "increaseUnleashRate": 8,
+    "Unleash": {
+      "effects": [
+        {
+          "Type": "Light"
+        }
+      ]
+    },
+    "Rarity": "Unique",
+    "Description": "Falgor's secret recipe. It's hot, it's liquid, it's got some nutty, chunky bits in it. But why in the world is it bubbly, too?"
+  },
   "Battle Axe": {
     "Name": "Battle Axe",
     "Price": 280,

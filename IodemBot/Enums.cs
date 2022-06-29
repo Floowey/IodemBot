@@ -202,9 +202,9 @@ namespace IodemBot
     [JsonConverter(typeof(StringEnumConverter))]
     public enum RankEnum
     {
-        Level,
-        LevelWeek,
-        LevelMonth,
+        AllTime,
+        Week,
+        Month,
         Solo,
         Duo,
         Trio,

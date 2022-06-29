@@ -260,12 +260,12 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         [Command("BlackMarket")]
         [Summary("Black Market? What black market? No no, this is a concession stand for your game tickets!")]
-        public async Task TicketBuy([Remainder] string item)
+        public async Task TicketBuy([Remainder] string item = "")
         {
             var account = EntityConverter.ConvertUser(Context.User);
             var inv = account.Inv;
             var embed = new EmbedBuilder();
-
+            
             if (!account.Tags.Contains("LunpaCompleted"))
             {
                 embed.WithDescription("Black Market? What black market? Oh, are you looking for the concession stand in Lunpa?");
@@ -273,7 +273,18 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 _ = Context.Channel.SendMessageAsync("", false, embed.Build());
                 return;
             }
+
+            embed.WithThumbnailUrl(Sprites.GetImageFromName("Dodonpa"));
+            if (item.IsNullOrEmpty())
+            {
+                embed.WithDescription($"Welcome, to the blackmarket, uuh, the concession stand! Have a look around!\nAnything that brain of yours can think of can be found.\nWe've got mountains of content. Some better, some worse.\nIf none of it's of interest to you, you'd be the first!");
+                embed.WithColor(Colors.Get("Artifact"));
+                _ = Context.Channel.SendMessageAsync("", false, embed.Build());
+                return;
+            }
             var i = ItemDatabase.GetItem(item);
+
+
             if (i.Name.Contains("NOT IMPLEMENTED!"))
             {
                 embed.WithDescription($":x: A what? {item}? Never heard of that. I've got my eyes all around Angara, this item is unheard of.");
@@ -284,22 +295,46 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
             if (i.Rarity == ItemRarity.Unique)
             {
-                embed.WithDescription($":x: You want to get {Utilities.Article(item)} {item}? You jest, there is no way you could get your hands on that.");
-                embed.WithColor(Colors.Get("Error"));
-                _ = Context.Channel.SendMessageAsync("", false, embed.Build());
-                return;
-            }
+                var price = i.TicketPrice;
+                var discount = (new[] { 2, 3, 4 }).Random();
+                if (account.Id != 557413372979838986 && inv.GameTickets >= price && inv.RemoveTickets(price - (uint)(price / discount)))
+                {
+                    i = ItemDatabase.GetItem("Leprechaun Needle");
+                    embed.WithDescription("I'm sorry to dissappoint, but that's something I really can't get my hands on for you.");
+                    embed.WithColor(Colors.Get("Artifact"));
+                    await Context.Channel.SendMessageAsync("", false, embed.Build());
 
-            if (inv.TicketBuy(item))
-            {
-                UserAccountProvider.StoreUser(account);
-                _ = ShowInventory();
+                    await Task.Delay(4000);
+                    embed.WithDescription($"However..... *intensly stares at {Emotes.GetIcon("GameTicket", "")} {price} Game Tickets*\nLet me see what I can find in the back....");
+                    await Context.Channel.SendMessageAsync("", false, embed.Build());
+
+                    await Task.Delay(6000);
+                    embed.WithDescription($"There, found something. Not sure where it's from. If you asked me, it's priceless. A unique thing. Well, it's no use to me, but surely you will get more Luck out of it!" +
+                        $"\n I'll even give you a {100 / 3}% discount on it!" +
+                        $"\n{account.Name} found a {i.Icon} {i.Name}!");
+                    await Context.Channel.SendMessageAsync("", false, embed.Build());
+                }
+                else
+                {
+                    embed.WithDescription($":x: You want to get {Utilities.Article(item)} {item}? You jest, there is no way you could get your hands on that.");
+                    embed.WithColor(Colors.Get("Error"));
+                    _ = Context.Channel.SendMessageAsync("", false, embed.Build());
+                    return;
+                }
             }
             else
             {
-                embed.WithDescription(":x: Balance not enough or Inventory at full capacity.");
-                embed.WithColor(Colors.Get("Error"));
-                _ = Context.Channel.SendMessageAsync("", false, embed.Build());
+                if (inv.TicketBuy(item))
+                {
+                    UserAccountProvider.StoreUser(account);
+                    _ = ShowInventory();
+                }
+                else
+                {
+                    embed.WithDescription(":x: Balance not enough or Inventory at full capacity.");
+                    embed.WithColor(Colors.Get("Error"));
+                    _ = Context.Channel.SendMessageAsync("", false, embed.Build());
+                }
             }
 
             await Task.CompletedTask;
