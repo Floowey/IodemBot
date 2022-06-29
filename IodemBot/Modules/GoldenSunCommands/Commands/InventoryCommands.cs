@@ -296,7 +296,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             {
                 var price = i.TicketPrice;
                 var discount = (new[] { 2, 3, 4 }).Random();
-                if (account.Id != 557413372979838986 && inv.GameTickets >= price && inv.RemoveTickets(price - (uint)(price / discount)))
+                if (account.Id == 557413372979838986 && inv.GameTickets >= price && inv.RemoveTickets(price - (uint)(price / discount)))
                 {
                     i = ItemDatabase.GetItem("Leprechaun Needle");
                     embed.WithDescription("I'm sorry to dissappoint, but that's something I really can't get my hands on for you.");
