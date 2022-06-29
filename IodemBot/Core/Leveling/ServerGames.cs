@@ -133,6 +133,8 @@ namespace IodemBot.Core.Leveling
 
         internal static async Task UserFinishedEndless(UserAccount avatar, int winsInARow, EndlessMode mode)
         {
+            avatar.Inv.GameTickets += Math.Max((uint)winsInARow, (uint)(winsInARow * winsInARow / 12));
+            UserAccountProvider.StoreUser(avatar);
             var csvline = $"{DateTime.Now:s},Endless {mode},{winsInARow},{avatar.Name}{Environment.NewLine}";
             File.AppendAllText(BattleFile, csvline);
             await Task.CompletedTask;

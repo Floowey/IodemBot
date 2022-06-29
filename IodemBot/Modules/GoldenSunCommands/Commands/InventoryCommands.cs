@@ -265,7 +265,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             var account = EntityConverter.ConvertUser(Context.User);
             var inv = account.Inv;
             var embed = new EmbedBuilder();
-            
+
             if (!account.Tags.Contains("LunpaCompleted"))
             {
                 embed.WithDescription("Black Market? What black market? Oh, are you looking for the concession stand in Lunpa?");
@@ -283,7 +283,6 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 return;
             }
             var i = ItemDatabase.GetItem(item);
-
 
             if (i.Name.Contains("NOT IMPLEMENTED!"))
             {
@@ -517,6 +516,22 @@ namespace IodemBot.Modules.GoldenSunMechanics
             var account = EntityConverter.ConvertUser(user ?? Context.User);
             var inv = account.Inv;
             inv.AddBalance(amount);
+            UserAccountProvider.StoreUser(account);
+            await Task.CompletedTask;
+        }
+
+        [Command("giveTickets")]
+        [RequireStaff]
+        public async Task GiveTickets(int amount, SocketUser user = null)
+        {
+            var account = EntityConverter.ConvertUser(user ?? Context.User);
+            var inv = account.Inv;
+            if (amount > 0)
+                inv.GameTickets += (uint)amount;
+            else if (amount <= inv.GameTickets)
+                inv.GameTickets -= (uint)amount;
+            else
+                inv.GameTickets = 0;
             UserAccountProvider.StoreUser(account);
             await Task.CompletedTask;
         }
