@@ -121,7 +121,7 @@ namespace IodemBot.ColossoBattles
                 if (con == Condition.Poison && HasCondition(Condition.Venom)) return;
 
                 _conditions.Add(con);
-                _conditionsFromTurn[con] = Battle.TurnNumber;
+                _conditionsFromTurn[con] = Battle?.TurnNumber ?? 0;
             }
         }
 
