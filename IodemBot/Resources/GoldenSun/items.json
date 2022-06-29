@@ -1921,7 +1921,7 @@
     },
     "Unleash": {
       "UnleashName": "DID SOMEONE SAY SOUP?!",
-      "UnleashAlignment": 5,
+      "UnleashAlignment": 4,
       "effects": [
         {
           "Type": "Light"
