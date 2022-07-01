@@ -1714,7 +1714,7 @@
         {
           "Type": "Condition",
           "Condition": "Delusion",
-          "Probability": 50
+          "Probability": 80
         },
         {
           "Type": "Stat",
@@ -1722,13 +1722,13 @@
 
           "Multiplier": 0.8,
 
-          "Probability": 20
+          "Probability": 40
         }
       ]
     },
     "Rarity": "Unique",
     "AddElStatsOnEquip": {
-      "MarsAtk": 30
+      "MarsAtk": 120
     }
   },
   "Nut Sword": {
@@ -1906,7 +1906,8 @@
         }
       ]
     },
-    "Rarity": "Unique"
+    "Rarity": "Unique",
+    "Description": "Once Lady Luck had the chance to meet me. It made her day."
   },
   "Soupe'R Bow L": {
     "Name": "Soupe'R Bow L",

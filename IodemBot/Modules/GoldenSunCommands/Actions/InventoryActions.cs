@@ -299,7 +299,7 @@ namespace IodemBot.Modules
                         emote: Emote.Parse(emote)));
                 }
 
-            builder.WithSelectMenu($"#{nameof(GearAction)}.{archtype}", categoryOptions, "Select a Gear Slot", row: 0);
+            builder.WithSelectMenu($"#{nameof(GearAction)}.{archtype}", categoryOptions.Take(SelectMenuBuilder.MaxOptionCount).ToList(), "Select a Gear Slot", row: 0);
 
             if (!string.IsNullOrEmpty(category))
             {
