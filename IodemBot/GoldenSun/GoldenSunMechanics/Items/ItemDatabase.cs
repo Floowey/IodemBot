@@ -91,8 +91,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         { Shop = _shop, LastReset = _lastReset, RestockMessage = RestockMessage, Shopkeeper = Shopkeeper };
 
         private static int HoursForReset { get; } =
-            DateTime.Now.Date >= new DateTime(day: 1, month: 3, year: 2021) &&
-            DateTime.Now.Date < new DateTime(day: 15, month: 3, year: 2021)
+            EventSchedule.CheckEvent("Shop")
                 ? 6
                 : 8;
 
@@ -132,8 +131,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 )
             );
 
-            if (DateTime.Now.Date >= new DateTime(day: 1, month: 3, year: 2021) &&
-                DateTime.Now.Date < new DateTime(day: 15, month: 3, year: 2021))
+            if (EventSchedule.CheckEvent("Shop"))
             {
                 _shop.Add(GetRandomItem(new RewardGenerator<ItemRarity>(new[]
                         {ItemRarity.Rare, ItemRarity.Legendary, ItemRarity.Mythical}, new[] { 75, 24, 2 })
