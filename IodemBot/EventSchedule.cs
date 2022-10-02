@@ -14,7 +14,7 @@ namespace IodemBot
 
         static EventSchedule()
         {
-            string json = File.ReadAllText("Resources/events.json");
+            string json = File.ReadAllText("Resources/GoldenSun/event_schedule.json");
             var data = JsonConvert.DeserializeObject<dynamic>(json);
             ScheduledEvents = data.ToObject<Dictionary<string, EventScheduleStruct>>();
         }
@@ -24,7 +24,7 @@ namespace IodemBot
             if (ScheduledEvents.TryGetValue(eventName, out EventScheduleStruct schedule))
             {
                 var today = DateTime.Today;
-                return schedule.Start >= today && schedule.End < today;
+                return today >= schedule.Start && today <= schedule.End;
             }
             return false;
         }

@@ -134,12 +134,12 @@ namespace IodemBot.Modules.GoldenSunMechanics
             if (EventSchedule.CheckEvent("Shop"))
             {
                 _shop.Add(GetRandomItem(new RewardGenerator<ItemRarity>(new[]
-                        {ItemRarity.Rare, ItemRarity.Legendary, ItemRarity.Mythical}, new[] { 75, 24, 2 })
+                        {ItemRarity.Rare, ItemRarity.Legendary, ItemRarity.Mythical}, new[] { 70, 24, 6 })
                     .GenerateReward()
                 ));
 
                 _shop.Add(GetRandomItem(new RewardGenerator<ItemRarity>(new[]
-                        {ItemRarity.Rare, ItemRarity.Legendary, ItemRarity.Mythical}, new[] { 75, 24, 2 })
+                        {ItemRarity.Rare, ItemRarity.Legendary, ItemRarity.Mythical}, new[] { 70, 24, 6 })
                     .GenerateReward()
                 ));
             }
