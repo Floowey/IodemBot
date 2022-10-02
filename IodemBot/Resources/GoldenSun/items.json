@@ -3952,6 +3952,7 @@
     "Icon": "<:Wild_Coat:569854675940147230>",
     "ItemType": "LightArmor",
     "IsEquippable": true,
+    "Description": "Only wild people wear it.",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Def": 37,

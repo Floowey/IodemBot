@@ -19,23 +19,23 @@ namespace IodemBot.ColossoBattles
         private static readonly string[] TutorialTips =
         {
             "Djinn are your friends! Use them to make up for weaknesses in your class!",
-            "You want to play with multiple setups? Save your loadout with `i!loadout save <My Loadout Name>` to access it later!",
+            "Want to play with multiple setups? Save your loadout with `i!loadout save <My Loadout Name>` so you can easily access it later!",
             "Make sure to keep opening your daily chests! Every 5th item will be better than the ones before!",
             "Struggling to beat a dungeon? Keep on grinding, you might find good gear to help you progress!",
-            "Some dungeons might feature riddles, take your time to solve them by reacting with :pause_button:",
-            "i!train is a great way to earn some solo xp if running solo battles are a little too difficult.",
+            "Some dungeons feature riddles, take your time solving them by reacting with :pause_button:",
+            "i!train is a great way to earn some solo xp if running solo battles is a little too difficult.",
             "The @Colosso Guard are here to ensure that things run smoothly. If there are any issues, let them know. Note that they cannot fix delays or lag.",
             "Remember to keep commands locked away in <#358276942337671178> to ensure that the <#546760009741107216> channel doesn't get flooded with shenanigans.",
-            "No djinn were harmed in the making of this code. ~~Except for Flint, but he had it coming.~~",
+            "No Djinn were harmed in the making of this code. ~~Except for Flint, but he had it coming.~~",
             "Take your time, especially if a lot of people are playing. Iodem can only do so much at once!",
             "Collecting Djinn of your class element can help you power up in more ways than one!",
             "There are a lot of classes in Golden Sun. Try them out! Each has strengths and weaknesses that may help you if you get stuck.",
             "Be sure to check the pins in #colosso-talks! A lot of good information is saved there.",
             "You have two equipment sets: warrior and mage. Items can be equipped to one or both sets!",
-            "Want to stay up to date with how the bot progresses? Give you self the @Colosso Adept role with `i!giverole Colosso Adept`!",
+            "Want to stay up to date with updates to Iodem? Give yourself the @Colosso Adept role with `i!giverole Colosso Adept`!",
             "If you want to support this project, look no further than `i!credits`!",
             "Have you checked out the new Slash Commands? Go ahead and try `/status` (instead of `i!status`)!",
-            "Did do you find Djinn but can't use Summons? The secrets of Sol Sanctum near Vale may hold the key to that..."
+            "Did you find Djinn but can't use Summons? The secrets of Sol Sanctum near Vale may hold the key to that..."
         };
 
         private bool _wasReset;
