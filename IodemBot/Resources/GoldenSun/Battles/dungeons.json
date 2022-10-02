@@ -6007,7 +6007,7 @@
         ]
       },
       {
-        "Flavourtext": "'I'm afraid this isn't proof of anything,' the guard says. 'Move along'. Well now you *want* to see what's behind the gate. Your foolish attempt to naruto ninja-run past the guards is quickly interrupted by a watchful patrol.",
+        "Flavourtext": "'I'm afraid this isn't prove for anything,' the guard says. 'Move along'. Well now you *want* to see what's behind the gate. Your foolish attempt to naruto ninja-run past the guards is quickly interrupted by a watchful patrol.",
         "EnemyNames": [ "Tolbi Guard", "Guardian Ball 1", "Tolbi Guard", "Guardian Ball 1", "Tolbi Guard" ],
         "Image": "",
         "RewardTables": [
@@ -7302,7 +7302,7 @@
   "Path of Gaia IV": {
     "name": "Path of Gaia IV",
     "IsOneTimeOnly": false,
-    "FlavourText": "Hama sends you off to a journey of moral and dilemma - are you a worthy Venus Adept?",
+    "FlavourText": "Hama sends you off on a journey of moral dilemmas - are you a worthy Venus Adept?",
     "Image": "https://www.almarsguides.com/AlmarsImages/Retro/Walkthroughs/GBA/GoldenSun/Walkthroughs/DjinnLocations/Hail%20Djinni%20Location.png",
     "IsDefault": false,
     "Requirement": {
@@ -7328,7 +7328,7 @@
         ]
       },
       {
-        "Flavourtext": "You pick a direction at random and begin your journey. Suddenly *BONK*, something drops on your head. A squirrel has dropped hard nut from a tree above. You pick it up, slowly, as to not scare the creature. The squirrel timidly approaches, from the other side a crow glides down and looks at the nut. What do you do with it?",
+        "Flavourtext": "You pick a direction at random and begin your journey. Suddenly *BONK*, something drops on your head. A squirrel has dropped a hard nut from a tree above. You pick it up, slowly, as to not scare the creature. The squirrel timidly approaches, from the other side a crow glides down and looks at the nut. What do you do with it?",
         "EnemyNames": [ "Choice:Give it to the squirrel|KilledBy:Player@-5", "Choice:Give it to the crow|KilledBy:Player@-5", "Choice:Keep it" ],
         "Image": "",
         "RewardTables": [
@@ -7654,7 +7654,7 @@
               "Tag": "Gaia4RewardSecretTreasure",
               "Obtainable": 1,
               "Item": "Ninja Sandals",
-              "message": "On the side of the road you found a pair of broken down flippers."
+              "message": "On the side of the road you found a pair of broken down slippers."
             }
           ]
         ]
@@ -8301,7 +8301,7 @@
       {
         "Flavourtext": "Very good,' Hama smiles. 'You have shown deep knowledge of the Zodiac signs and their elements. Now, let us go to the highest point of Dehkan Plateau. You have a rare opportunity, and we must not miss it.'",
         "EnemyNames": [ "Next" ],
-        "Keywords": [ "@500", "ToMatchup@510", "HasTagAny:Magma4ZodLeo:Magma4ZodAries:Magma4ZodSagittarius:Magma4ZodGemini:Magma4ZodAquarius:Magma4ZodLibra:Magma4ZodVirgo:Magma4ZodPisces:Magma4ZodCancer:Magma4ZodScorpio:Magma4ZodCapricorn:Magma4ZodTaurus@600", "HasTagAll:Magma4ZodLeo:Magma4ZodAries:Magma4ZodSagittarius:Magma4ZodGemini:Magma4ZodAquarius:Magma4ZodLibra:Magma4ZodVirgo:Magma4ZodPisces:Magma4ZodCancer:Magma4ZodScorpio:Magma4ZodCapricorn:Magma4ZodTaurus@520" ],
+        "Keywords": [ "@500", "ToMatchup@510", "HasTagAny:Magma4ZodGemini:Magma4ZodAquarius:Magma4ZodLibra:Magma4ZodVirgo:Magma4ZodPisces:Magma4ZodCancer:Magma4ZodScorpio:Magma4ZodCapricorn:Magma4ZodTaurus@600", "HasTagAll:Magma4ZodLeo:Magma4ZodAries:Magma4ZodSagittarius:Magma4ZodGemini:Magma4ZodAquarius:Magma4ZodLibra:Magma4ZodVirgo:Magma4ZodPisces:Magma4ZodCancer:Magma4ZodScorpio:Magma4ZodCapricorn:Magma4ZodTaurus@520" ],
         "Image": "",
         "RewardTables": [
           [ { "Weight": 1 } ]
@@ -8309,7 +8309,7 @@
       },
       {
         "Flavourtext": "Hama pauses after you answer correctly for the third time in a row. 'Hmm... Typically quick wit and wisdom are neither of Mars' strong suites. I am impressed.' The statues of the Mars signs glow deep crimson, and forms coelesce in front of you. 'Seems they want to test your purity,' she opines cautiously.",
-        "EnemyNames": [ "TiamatSummon:Leo|ImmuneTo:Venus:Jupiter:Mercury:None", "Mars Djinni 6:Aries|ImmuneTo:Mars", "Mirror:Sagittarius" ],
+        "EnemyNames": [ "TiamatSummon:Leo|ImmuneTo:Venus:Jupiter:Mercury:None", "Mars Djinni 6:Aries|ImmuneTo:Mars", "Mirror:Sagittarius|Boost:70" ],
         "Keywords": [ "@510", "ToMatchup@600" ],
         "Image": "https://media.discordapp.net/attachments/668443234292334612/914123052906844170/unknown.png",
         "RewardTables": [
@@ -9068,7 +9068,7 @@
         ]
       },
       {
-        "Flavourtext": "Lighting strikes left and right. You are in the height of the storm now. Make haste before you are blown away!",
+        "Flavourtext": "Lightning strikes left and right. You are in the height of the storm now. Make haste before you are blown away!",
         "EnemyNames": [ "Storm Phase 3|KilledBeforeTurn:4@600" ],
         "Keywords": [ "@520", "ToMatchup@510" ],
         "Image": "",
@@ -9489,7 +9489,7 @@
         ]
       },
       {
-        "Flavourtext": "You begin to see bubbles ahead of the ship, a bit off the starboard side. These bubbles turn into ripples, then waves. A massive whale breaches the surface, splashing seawater everywhere. Hama seems unphased, and she simply smiles. 'Adept, say hello to Neptune, the guardian of Weyard's Oceans. You will be facing him in battle today as a test of your power.'",
+        "Flavourtext": "You begin to see bubbles ahead of the ship, a bit off the starboard side. These bubbles turn into ripples, then waves. A massive whale breaches the surface, splashing seawater everywhere. Hama seems unfazed, and she simply smiles. 'Adept, say hello to Neptune, the guardian of Weyard's Oceans. You will be facing him in battle today as a test of your power.'",
         "EnemyNames": [ "NeptuneSummon" ],
         "Keywords": [ "Heal" ],
         "Image": "",

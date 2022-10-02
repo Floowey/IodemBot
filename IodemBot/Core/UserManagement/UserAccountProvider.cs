@@ -67,7 +67,9 @@ namespace IodemBot.Core.UserManagement
         public static LeaderBoard GetLeaderBoard(RankEnum type = RankEnum.AllTime, EndlessMode mode = EndlessMode.Default)
         {
             if (type == RankEnum.AllTime || type == RankEnum.Week || type == RankEnum.Month) mode = EndlessMode.Default;
-            return LeaderBoards[new Tuple<RankEnum, EndlessMode>(type, mode)];
+            var lb = LeaderBoards[new Tuple<RankEnum, EndlessMode>(type, mode)];
+            lb.Sort();
+            return lb;
         }
 
         public static UserAccount GetById(ulong userId)
@@ -221,7 +223,7 @@ namespace IodemBot.Core.UserManagement
                 return ((IEnumerable)_dict).GetEnumerator();
             }
 
-            private void Sort()
+            public void Sort()
             {
                 _dict.Sort((x, y) => y.Value.CompareTo(x.Value));
             }

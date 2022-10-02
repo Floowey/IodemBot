@@ -6,9 +6,9 @@
 		<ApplicationIcon></ApplicationIcon>
 		<DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
 		<Version>3.0.0.0</Version>
-		<AssemblyVersion>3.1.2207.0</AssemblyVersion>
+		<AssemblyVersion>3.1.2210.4</AssemblyVersion>
 		<Deterministic>false</Deterministic>
-		<FileVersion>3.0.0.188</FileVersion>
+		<FileVersion>3.0.0.193</FileVersion>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
 	  <ShouldCreateLogs>True</ShouldCreateLogs>
@@ -246,6 +246,9 @@
 		</None>
 		<None Update="shellscripts\pullusers.sh">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="shellscripts\selfrestart.sh">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
 		<None Update="shellscripts\selfupdate.sh">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

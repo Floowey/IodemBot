@@ -135,6 +135,28 @@ namespace IodemBot.Modules
             }
         }
 
+        [Command("RestartIodem")]
+        [RequireStaff]
+        public async Task RestartSelf()
+        {
+            await ReplyAsync("Restarting...");
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            {
+                Console.WriteLine($"Closing {Global.Client.CurrentUser.Username} for manual restart...");
+                var ps = new ProcessStartInfo
+                {
+                    FileName = "shellscripts/selfrestart.sh",
+                    UseShellExecute = false,
+                    RedirectStandardOutput = true,
+                    Arguments = Global.Client.CurrentUser.Username == "Faran" ? "MedoiBotService" : "IodemBotService"
+                };
+
+                var process = Process.Start(ps);
+                process.WaitForExit();
+                Console.WriteLine("This shouldn't be reached but did.");
+            }
+        }
+
         [Command("backupusers")]
         [RequireOwner]
         public async Task BackupUsers()

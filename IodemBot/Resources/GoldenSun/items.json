@@ -1719,9 +1719,7 @@
         {
           "Type": "Stat",
           "Stat": "Defense",
-
           "Multiplier": 0.8,
-
           "Probability": 40
         }
       ]

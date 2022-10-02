@@ -250,7 +250,7 @@ namespace IodemBot.ColossoBattles
                     winners.OfType<PlayerFighter>().ToList().ForEach(p =>
                         _ = ServerGames.UserWonDungeon(UserAccountProvider.GetById(p.Id), Dungeon, LobbyChannel));
 
-                    if (DateTime.Now <= new DateTime(2021, 11, 8) && Global.RandomNumber(0, 5) == 0)
+                    if (EventSchedule.CheckEvent("Halloween") && Global.RandomNumber(0, 5) == 0)
                     {
                         var r = new List<Rewardable> { new DefaultReward { Dungeon = "Halloween Special" } };
                         winners.OfType<PlayerFighter>().ToList().ForEach(p =>
@@ -258,7 +258,7 @@ namespace IodemBot.ColossoBattles
                                 LobbyChannel, BattleChannel));
                     }
 
-                    if (DateTime.Now <= new DateTime(2022, 1, 7) && Global.RandomNumber(0, 5) == 0)
+                    if (EventSchedule.CheckEvent("Christmas") && Global.RandomNumber(0, 5) == 0)
                     {
                         var r = new List<Rewardable> { new DefaultReward { Dungeon = "A Very Golden Christmas" } };
                         winners.OfType<PlayerFighter>().ToList().ForEach(p =>
