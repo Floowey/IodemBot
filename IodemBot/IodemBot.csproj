@@ -6,9 +6,9 @@
 		<ApplicationIcon></ApplicationIcon>
 		<DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
 		<Version>3.0.0.0</Version>
-		<AssemblyVersion>3.1.2210.7</AssemblyVersion>
+		<AssemblyVersion>3.1.2210.8</AssemblyVersion>
 		<Deterministic>false</Deterministic>
-		<FileVersion>3.0.0.196</FileVersion>
+		<FileVersion>3.0.0.197</FileVersion>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
 	  <ShouldCreateLogs>True</ShouldCreateLogs>
@@ -225,6 +225,9 @@
 		</None>
 		<None Update="Resources\GoldenSun\DjinnAndSummons\Summons.json">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="Resources\GoldenSun\event_schedule.json">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
 		<None Update="Resources\GoldenSun\items.json">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
