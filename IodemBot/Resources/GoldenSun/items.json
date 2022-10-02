@@ -1887,6 +1887,7 @@
     "Name": "Leprechaun Needle",
     "Price": 40000000,
     "Icon": "<:LeprechaunNeedle:991376825362161674>",
+    "AnimatedIcon": "<a:Leprechaun_Needle:995437201137610823>",
     "ItemType": "LightBlade",
     "IsEquippable": true,
     "IsArtifact": true,
@@ -3950,6 +3951,7 @@
     "Icon": "<:Wild_Coat:569854675940147230>",
     "ItemType": "LightArmor",
     "IsEquippable": true,
+    "Description": "Only wild people wear it.",
     "IsArtifact": true,
     "AddStatsOnEquip": {
       "Def": 37,
