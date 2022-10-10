@@ -102,6 +102,8 @@ namespace IodemBot.ColossoBattles
             List<SocketGuildUser> toBeRemoved = new List<SocketGuildUser>();
             foreach (var entry in FighterRoles)
             {
+                if (BattleService.UserInBattle(EntityConverter.ConvertUser(entry.Key)))
+                    continue;
                 if ((DateTime.Now - entry.Value).TotalMinutes > 10)
                 {
                     if (entry.Key.Roles.Any(r => r.Id == gs.FighterRole.Id))
