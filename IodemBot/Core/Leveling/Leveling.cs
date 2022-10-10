@@ -44,7 +44,7 @@ namespace IodemBot.Core.Leveling
             {
                 userAccount.ServerStats.MessagesInColossoTalks++;
                 if (userAccount.ServerStats.MessagesInColossoTalks >= 50)
-                    _ = GoldenSunCommands.AwardClassSeries("Swordsman Series", user, channel);
+                    _ = GoldenSunCommands.AwardClassSeries("Swordsman Series", userAccount, channel);
             }
 
             var newLevel = userAccount.LevelNumber;
@@ -56,7 +56,7 @@ namespace IodemBot.Core.Leveling
                 userAccount.ServerStats.MostRecentChannel = channel.Id;
                 userAccount.ServerStats.ChannelSwitches += 2;
                 if (userAccount.ServerStats.ChannelSwitches >= 14)
-                    _ = GoldenSunCommands.AwardClassSeries("Air Pilgrim Series", user, channel);
+                    _ = GoldenSunCommands.AwardClassSeries("Air Pilgrim Series", userAccount, channel);
             }
             else
             {
