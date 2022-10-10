@@ -59,7 +59,6 @@ namespace IodemBot
             if (string.IsNullOrEmpty(Config.Bot.Token)) return;
             await using var services = ConfigureServices();
             _client = services.GetRequiredService<DiscordSocketClient>();
-
             Global.Client = _client;
 
             _client.Log += Log;
