@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using IodemBot.Extensions;
+using IodemBot.GoldenSun;
 using IodemBot.Modules.GoldenSunMechanics;
 using Newtonsoft.Json;
 
@@ -36,6 +37,7 @@ namespace IodemBot.Core.UserManagement
         public int ClassToggle { get; set; }
         public List<string> BonusClasses { get; set; } = new();
         public Element Element { get; set; } = Element.None;
+        public OathList Oaths { get; set; } = new();
         public Loadouts Loadouts { get; set; } = new();
         public TrophyCase TrophyCase { get; set; } = new();
         public Preferences Preferences { get; set; } = new();
@@ -121,7 +123,7 @@ namespace IodemBot.Core.UserManagement
 
         public void AddXp(ulong xp)
         {
-            var xpToAdd = (ulong)(xp * XpBoost);
+            var xpToAdd = Oaths.IsOathActive(Oath.Oaf) ? (ulong)(xp * 0.25) : (ulong)(xp * XpBoost);
             Xp += xpToAdd;
             if (DailyXP.ContainsKey(DateTime.Today))
                 DailyXP[DateTime.Today] += xpToAdd;
@@ -365,7 +367,6 @@ namespace IodemBot.Core.UserManagement
                 ShinyDjinnObtained = s1.ShinyDjinnObtained + s2.ShinyDjinnObtained,
                 ShinyDjinnReleased = s1.ShinyDjinnReleased + s2.ShinyDjinnReleased,
                 TotalShinyChances = s1.TotalShinyChances + s2.TotalShinyChances
-
             };
         }
     }

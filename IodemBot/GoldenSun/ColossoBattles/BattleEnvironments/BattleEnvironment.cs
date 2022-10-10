@@ -35,7 +35,7 @@ namespace IodemBot.ColossoBattles
         }
 
         public string Name { get; set; }
-        public uint PlayersToStart { get; protected set; } = 4;
+        public uint PlayersToStart { get; set; } = 4;
         protected ITextChannel LobbyChannel { get; set; }
 
         public ColossoBattle Battle { get; protected set; }

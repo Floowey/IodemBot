@@ -200,43 +200,35 @@ namespace IodemBot.ColossoBattles
             return true;
         }
 
-        private void StartTurn()
+        private List<ColossoFighter> GetFighterOrder()
         {
             var fighters = TeamA.Concat(TeamB).ToList();
             fighters.Shuffle();
-            fighters.OrderByDescending(f => f.Stats.Spd * f.MultiplyBuffs("Speed"))
-                .ToList()
-                .ForEach(f => Log.AddRange(f.StartTurn()));
+            return fighters
+                .OrderByDescending(f => f.Tags.Contains("PassiveTailWind"))
+                .ThenBy(f => f.Tags.Contains("OathIdle"))
+                .ThenByDescending(f => f.Stats.Spd * f.MultiplyBuffs("Speed"))
+                .ToList();
+        }
+
+        private void StartTurn()
+        {
+            GetFighterOrder().ForEach(f => Log.AddRange(f.StartTurn()));
         }
 
         private void MainTurn()
         {
-            var fighters = TeamA.Concat(TeamB).ToList();
-            fighters.Shuffle();
-            fighters
-                .OrderByDescending(f => f.Stats.Spd * f.MultiplyBuffs("Speed"))
-                .ToList()
-                .ForEach(f => Log.AddRange(f.MainTurn()));
+            GetFighterOrder().ForEach(f => Log.AddRange(f.MainTurn()));
         }
 
         private void ExtraTurn()
         {
-            var fighters = TeamA.Concat(TeamB).ToList();
-            fighters.Shuffle();
-            fighters
-                .OrderByDescending(f => f.Stats.Spd * f.MultiplyBuffs("Speed"))
-                .ToList()
-                .ForEach(f => Log.AddRange(f.ExtraTurn()));
+            GetFighterOrder().ForEach(f => Log.AddRange(f.ExtraTurn()));
         }
 
         private void EndTurn()
         {
-            var fighters = TeamA.Concat(TeamB).ToList();
-            fighters.Shuffle();
-            fighters.OrderByDescending(f => f.Stats.Spd * f.MultiplyBuffs("Speed"))
-                .ToList()
-                .ForEach(f => Log.AddRange(f.EndTurn()));
-            //TeamA.RemoveAll(m => m.Name == "Runner");
+            GetFighterOrder().ForEach(f => Log.AddRange(f.EndTurn()));
             TeamB.RemoveAll(m => m.Name == "Runner");
         }
 

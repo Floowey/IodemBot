@@ -399,6 +399,9 @@ namespace IodemBot.Modules
                 await Context.Channel.SendMessageAsync("", false, removedEmbed.Build());
             }
 
+            if (user.Oaths.IsOathOfElementActive())
+                return;
+
             user.Element = chosenElement;
             user.ClassToggle = 0;
             if (!classSeriesName.IsNullOrEmpty())

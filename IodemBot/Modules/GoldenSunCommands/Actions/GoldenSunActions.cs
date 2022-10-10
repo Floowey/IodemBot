@@ -310,7 +310,8 @@ namespace IodemBot.Modules
                 removedEmbed.WithDescription($"<:Exclamatory:571309036473942026> Your {removed} was unequipped.");
                 _ = context.ReplyWithMessageAsync(EphemeralRule.EphemeralOrFail, embed: removedEmbed.Build());
             }
-
+            if (user.Oaths.IsOathOfElementActive())
+                return;
             user.Element = chosenElement;
             var tags = new[] { "VenusAdept", "MarsAdept", "JupiterAdept", "MercuryAdept" };
             user.Tags.RemoveAll(s => tags.Contains(s));
@@ -386,12 +387,13 @@ namespace IodemBot.Modules
             var allClasses = AdeptClassSeriesManager.AllClasses;
             var allAvailableClasses = allClasses.Where(c => c.IsDefault || account.BonusClasses.Any(bc => bc.Equals(c.Name)));
             var ofElement = allAvailableClasses.Where(c => c.Elements.Contains(account.Element)).Select(c => c.Name).OrderBy(n => n);
+            var availableClasses = AdeptClassSeriesManager.GetAvailableClasses(account);
 
             var embed = new EmbedBuilder();
             embed.WithTitle("Classes");
             embed.WithColor(Colors.Get(account.Element.ToString()));
             embed.AddField("Current Class", AdeptClassSeriesManager.GetClass(account).Name);
-            embed.AddField($"Available as {Emotes.GetIcon(account.Element)} {account.Element} Adept:", string.Join(", ", ofElement));
+            embed.AddField($"Available as {Emotes.GetIcon(account.Element)} {account.Element} Adept:", string.Join(", ", availableClasses));
             embed.AddField("Others Unlocked:", string.Join(", ", allAvailableClasses.Select(c => c.Name).Except(ofElement).OrderBy(n => n)));
             embed.WithFooter($"Total: {allAvailableClasses.Count()}/{allClasses.Count}");
             return embed.Build();
@@ -403,6 +405,7 @@ namespace IodemBot.Modules
             var allAvailableClasses = allClasses.Where(c => c.IsDefault || account.BonusClasses.Any(bc => bc.Equals(c.Name)));
             var ofElement = allAvailableClasses.Where(c => c.Elements.Contains(account.Element)).OrderBy(n => n.Name);
 
+            var availableClasses = AdeptClassSeriesManager.GetAvailableClasses(account);
             var builder = new ComponentBuilder();
             var labels = account.Preferences.ShowButtonLabels;
 
@@ -420,7 +423,7 @@ namespace IodemBot.Modules
             builder.WithSelectMenu($"#{nameof(ChangeAdeptAction)}.", elementOptions);
 
             List<SelectMenuOptionBuilder> classOptions = new();
-            foreach (var series in ofElement)
+            foreach (var series in availableClasses)
             {
                 classOptions.Add(new()
                 {

@@ -54,7 +54,6 @@ namespace IodemBot.Modules.GoldenSunMechanics
                     if (!uint.TryParse(Item[..^1], out uint tickets))
                         tickets = 1;
                     userAccount.Inv.GameTickets += tickets;
-
                 }
                 else
                 {
@@ -186,12 +185,21 @@ namespace IodemBot.Modules.GoldenSunMechanics
             if (giveTag && Tag != "")
             {
                 if (Tag.StartsWith('-'))
+                {
                     if (Tag.EndsWith('*'))
                         userAccount.Tags.RemoveAll(t => t.StartsWith(Tag[1..^1]));
                     else
                         userAccount.Tags.Remove(Tag[1..]);
+
+                    if (Tag.StartsWith("-Oath"))
+                        userAccount.Oaths.ActiveOaths.Remove(Enum.Parse<Oath>(Tag[5..]));
+                }
                 else
+                {
                     userAccount.Tags.Add(Tag);
+                    if (Tag.StartsWith("Oath"))
+                        userAccount.Oaths.ActiveOaths.Add(Enum.Parse<Oath>(Tag[4..]));
+                }
             }
             return string.Join("\n", awardLog);
         }

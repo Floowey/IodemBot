@@ -185,7 +185,7 @@ namespace IodemBot.ColossoBattles
         public override async Task AddPlayer(PlayerFighter player, Team team = Team.A)
         {
             if (Battle.IsActive) return;
-
+            if (player.Tags.Contains("OathSolitude") && PlayerMessages.Any()) return;
             Battle.AddPlayer(player, Team.A);
 
             ResetIfNotActive.Stop();
@@ -195,6 +195,8 @@ namespace IodemBot.ColossoBattles
             PlayerMessages.Add(playerMsg, player);
 
             if (PlayerMessages.Count == PlayersToStart) _ = StartBattle();
+            if (player.Tags.Contains("OathSolitude"))
+                _ = StartBattle();
         }
 
         public override Task<(bool Success, string Message)> CanPlayerJoin(UserAccount user, Team team = Team.A)
@@ -204,6 +206,9 @@ namespace IodemBot.ColossoBattles
 
             if (Battle.GetTeam(team).Count >= PlayersToStart)
                 return Task.FromResult((false, "This team is already full."));
+
+            if (user.Oaths.IsOathActive(Oath.Solitude) && Battle.GetTeam(team).Any())
+                return Task.FromResult((false, "You cannot break your Oath of Solitude!"));
 
             return Task.FromResult((true, (string)null));
         }

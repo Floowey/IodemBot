@@ -106,21 +106,30 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public static AdeptClassSeries GetClassSeries(UserAccount user)
         {
-            var availableClasses = AllClasses.Where(c => c.IsDefault && c.Elements.Contains(user.Element)).ToList();
-            availableClasses.AddRange(AllClasses
-                .Where(c => user.BonusClasses.Contains(c.Name) && c.Elements.Contains(user.Element)).ToList());
+            var availableClasses = GetAvailableClasses(user);
             var position = user.ClassToggle % availableClasses.Count;
             return availableClasses.ElementAt(position).Clone();
+        }
+
+        public static List<AdeptClassSeries> GetAvailableClasses(UserAccount user)
+        {
+            var availableClasses = AllClasses.Where(c => c.IsDefault && c.Elements.Contains(user.Element)).ToList();
+
+            availableClasses.AddRange(AllClasses
+                .Where(c => user.BonusClasses.Contains(c.Name) && c.Elements.Contains(user.Element)).ToList());
+
+            if (user.Oaths.IsOathActive(Oath.Warrior))
+                availableClasses = availableClasses.Where(c => c.Archtype == ArchType.Warrior).ToList();
+            if (user.Oaths.IsOathActive(Oath.Mage))
+                availableClasses = availableClasses.Where(c => c.Archtype == ArchType.Mage).ToList();
+            return availableClasses;
         }
 
         public static bool SetClass(UserAccount account, string targetClass = "")
         {
             var curClass = GetClassSeries(account).Name;
-            if (targetClass.IsNullOrEmpty())
-            {
-                account.ClassToggle++;
-            }
-            else
+            account.ClassToggle++;
+            if (!targetClass.IsNullOrEmpty())
             {
                 account.ClassToggle++;
                 while (GetClassSeries(account).Name != curClass)
