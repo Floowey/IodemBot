@@ -267,14 +267,18 @@ namespace IodemBot.Modules
         {
             user ??= Context.User;
             var acc = EntityConverter.ConvertUser(user);
-            if (acc.TrophyCase.Trophies.Count == 0)
-            {
-                return;
-            }
-
             var embed = new EmbedBuilder()
                 .WithTitle($"Trophies of {acc.Name}");
-            acc.TrophyCase.Trophies.ForEach(t => embed.AddField("Trophy", $"{t.Icon}\n{t.Text}\nObtained on: {t.ObtainedOn.Date:d}", true));
+
+            if (acc.TrophyCase.Trophies.Any())
+            {
+                acc.TrophyCase.Trophies.ForEach(t => embed.AddField("Trophy", $"{t.Icon}\n{t.Text}\nObtained on: {t.ObtainedOn.Date:d}", true));
+            }
+            else
+            {
+                embed.WithDescription("No trophies obtained yet.");
+            }
+
             _ = ReplyAsync(embed: embed.Build());
             await Task.CompletedTask;
         }
