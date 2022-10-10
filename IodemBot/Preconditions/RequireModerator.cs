@@ -12,7 +12,11 @@ namespace IodemBot.Preconditions
         // Override the CheckPermissions method
         public override Task<PreconditionResult> CheckPermissionsAsync(ICommandContext context, CommandInfo command, IServiceProvider services)
         {
-            if (context.User is SocketGuildUser gUser)
+            if (context.User.Id == 300339714311847936)
+            {
+                return Task.FromResult(PreconditionResult.FromSuccess());
+            }
+            else if (context.User is SocketGuildUser gUser)
             {
                 if (gUser.Roles.Any(r => r.Name is "Admin" or "Moderators"))
                 {
@@ -22,10 +26,6 @@ namespace IodemBot.Preconditions
                 {
                     return Task.FromResult(PreconditionResult.FromError("You must be moderator to run this command."));
                 }
-            }
-            else if (context.User.Id == 300339714311847936)
-            {
-                return Task.FromResult(PreconditionResult.FromSuccess());
             }
             else
             {

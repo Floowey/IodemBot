@@ -122,7 +122,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
             if (EventSchedule.CheckEvent("Shop"))
             {
-                embed.WithDescription("It's the pre-Halloween market! Until October 6th, you'll get a chance to find more and rarer gear! On top of that, the stalls are rotated every 6 hours!");
+                var ev = EventSchedule.GetEventSchedule("Shop");
+                embed.WithDescription($"{ev.Flavortext}\nActive until {TimestampTag.FromDateTime(ev.End, TimestampTagStyles.ShortDateTime)}.");
             }
 
             embed.AddField("Shop:", shop.InventoryToString(Detail.NameAndPrice), true);
