@@ -237,12 +237,17 @@ namespace IodemBot.ColossoBattles
         [RequireUserServer]
         public async Task SetEnemy(string name, [Remainder] string enemy)
         {
-            await Context.Message.DeleteAsync();
-            var a = BattleService.GetBattleEnvironment(b => b.ChannelIds.Contains(Context.Channel.Id)
-                && b.Name.Equals(name, StringComparison.InvariantCultureIgnoreCase));
+            var a = BattleService.GetBattleEnvironment(b => b.Name.Equals(name, StringComparison.InvariantCultureIgnoreCase));
 
             if (a is PvEEnvironment pve)
+            {
                 pve.SetEnemy(enemy);
+                _ = ReplyAsync($"Tried setting {enemy} to {pve.Name}. First enemy is now: {pve.Battle.TeamB.FirstOrDefault()?.Name ?? "None"}");
+            }
+            else
+            {
+                _ = ReplyAsync($"No PvE environment found with `{name}`");
+            }
         }
 
         [Command("c addweyard")]
