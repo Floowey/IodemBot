@@ -50,6 +50,12 @@ namespace IodemBot
         NoInventory
     }
 
+    public enum PassiveOption
+    {
+        Default,
+        NoPassive
+    }
+
     public enum DjinnOption
     {
         Unique,

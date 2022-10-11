@@ -78,6 +78,7 @@ namespace IodemBot.ColossoBattles
         public DjinnOption DjinnOption { get; set; } = DjinnOption.Any;
         public BaseStatOption BaseStatOption { get; set; } = BaseStatOption.Default;
         public BaseStatManipulationOption BaseStatManipulationOption { get; set; } = BaseStatManipulationOption.Default;
+        public PassiveOption PassiveOption { get; set; } = PassiveOption.Default;
         public List<Summon> PossibleSummons => Summons.Where(s => s.CanSummon(Djinn)).Distinct().ToList();
         public uint SetLevel { get; set; } = 99;
         public Stats StatMultiplier { get; set; } = new(100, 100, 100, 100, 100);
@@ -185,6 +186,17 @@ namespace IodemBot.ColossoBattles
                     break;
 
                 case DjinnOption.NoDjinn:
+                    break;
+            }
+
+            switch (PassiveOption)
+            {
+                case PassiveOption.Default:
+                    p.Passive = user.Passives.GetSelectedPassive();
+                    p.PassiveLevel = user.Passives.GetPassiveLevel(user.Oaths);
+                    break;
+
+                case PassiveOption.NoPassive:
                     break;
             }
 

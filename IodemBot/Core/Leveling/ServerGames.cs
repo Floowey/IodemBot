@@ -156,6 +156,39 @@ namespace IodemBot.Core.Leveling
             if (dungeon.Name == "Mercury Lighthouse")
                 _ = GoldenSunCommands.AwardClassSeries("Aqua Pilgrim Series", avatar, channel);
 
+            if (avatar.Oaths.ActiveOaths.Any())
+            {
+                string dungeonToComplete = avatar.Oaths.IsOathOfElementActive() ? " IV" : "Venus Lighthouse";
+                if (dungeon.Name.EndsWith(dungeonToComplete))
+                {
+                    var oaths = avatar.Oaths.ActiveOaths;
+                    avatar.Oaths.CompleteOaths();
+
+                    var embed = new EmbedBuilder();
+                    embed.WithColor(Colors.Get("Iodem"));
+                    embed.WithTitle("Oaths fulfilled!");
+                    embed.WithDescription($"Hereby {avatar.Name} has ceremoniously fulfilled the following Oaths:\n" +
+                        $"{string.Join("\n", oaths.Select(o => $"Oath of {o}"))}");
+
+                    _ = channel.SendMessageAsync(embed: embed.Build());
+                }
+            }
+
+            if (dungeon.Name.EndsWith(" IV"))
+            {
+                var el = avatar.Element;
+                var unlockedPassives = Passives.AllPassives.Except(avatar.Passives.UnlockedPassives).Where(p => p.elements.Contains(el)).ToList();
+                if (unlockedPassives.Any())
+                {
+                    var embed = new EmbedBuilder();
+                    embed.WithColor(Colors.Get(el.ToString()));
+                    embed.WithTitle("Impulses mastered");
+                    embed.WithDescription($"The power of {el} flushes through your soul. The following impulses are now newly available to you: " +
+                        $"{string.Join("\n", unlockedPassives.Select(p => p.Name))}");
+                    avatar.Passives.UnlockedPassives.AddRange(unlockedPassives);
+                }
+            }
+
             //Unlock Crusader
             if (avatar.Dungeons.Count >= 6) _ = GoldenSunCommands.AwardClassSeries("Crusader Series", avatar, channel);
 

@@ -66,7 +66,8 @@ namespace IodemBot.ColossoBattles
 
         public string ImgUrl { get; set; }
         [JsonIgnore] public List<Move> Moves { get; set; }
-
+        public Passive Passive { get; set; }
+        public int PassiveLevel { get; set; }
         [JsonIgnore] public ColossoBattle Battle { get; set; }
         [JsonIgnore] public Team party { get; set; }
         [JsonIgnore] public Team enemies => party == Team.A ? Team.B : Team.A;

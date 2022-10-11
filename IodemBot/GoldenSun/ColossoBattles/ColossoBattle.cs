@@ -120,6 +120,37 @@ namespace IodemBot.ColossoBattles
             IsActive = true;
             foreach (var p in TeamA.Concat(TeamB))
             {
+                switch (p.Passive.Name)
+                {
+                    case "Stone Skin":
+                        p.DefensiveMult = p.Passive.args[p.PassiveLevel];
+                        break;
+
+                    case "Instant Ignition":
+                        p.OffensiveMult = p.Passive.args[p.PassiveLevel];
+                        break;
+
+                    case "Soothing Song":
+                        p.RemoveCondition(new[] { Condition.Poison, Condition.Venom, Condition.Haunt });
+                        break;
+
+                    case "Vital Spark":
+                        p.Revive((uint)p.Passive.args[p.PassiveLevel]);
+                        break;
+
+                    case "Fiery Reflex":
+                        p.AddCondition(Condition.Counter);
+                        break;
+
+                    case "Brisk Flow":
+                        p.RestorePp((uint)(p.Stats.MaxPP * p.Passive.args[p.PassiveLevel]));
+                        break;
+
+                    case "Petrichor Scent":
+                        p.Heal((uint)(p.Stats.MaxHP * p.Passive.args[p.PassiveLevel]));
+                        break;
+                }
+
                 if (p is NpcEnemy) p.SelectRandom();
 
                 if (p is PlayerFighter fighter)
@@ -205,7 +236,7 @@ namespace IodemBot.ColossoBattles
             var fighters = TeamA.Concat(TeamB).ToList();
             fighters.Shuffle();
             return fighters
-                .OrderByDescending(f => f.Tags.Contains("PassiveTailWind"))
+                .OrderByDescending(f => f.Passive.Equals("Tail Wind") && TurnNumber == 0)
                 .ThenBy(f => f.Tags.Contains("OathIdle"))
                 .ThenByDescending(f => f.Stats.Spd * f.MultiplyBuffs("Speed"))
                 .ToList();

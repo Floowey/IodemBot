@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using IodemBot.Extensions;
-using IodemBot.GoldenSun;
 using IodemBot.Modules.GoldenSunMechanics;
 using Newtonsoft.Json;
 
@@ -38,6 +37,7 @@ namespace IodemBot.Core.UserManagement
         public List<string> BonusClasses { get; set; } = new();
         public Element Element { get; set; } = Element.None;
         public OathList Oaths { get; set; } = new();
+        public Passives Passives { get; set; } = new();
         public Loadouts Loadouts { get; set; } = new();
         public TrophyCase TrophyCase { get; set; } = new();
         public Preferences Preferences { get; set; } = new();
