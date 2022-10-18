@@ -183,7 +183,7 @@
     "name": "Dull",
     "TargetType": "EnemyRange",
     "emote": "<:Dull:536966947879780366>",
-    "range": 3,
+    "range": 1,
     "element": 1,
     "PPCost": 5,
     "effects": [
