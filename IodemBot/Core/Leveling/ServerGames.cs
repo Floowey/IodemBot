@@ -152,17 +152,32 @@ namespace IodemBot.Core.Leveling
             }
 
             avatar.ServerStats.LastDungeon = dungeon.Name;
-            UserAccountProvider.StoreUser(avatar);
+
             if (dungeon.Name == "Mercury Lighthouse")
                 _ = GoldenSunCommands.AwardClassSeries("Aqua Pilgrim Series", avatar, channel);
 
+            //Unlock Crusader
+            if (avatar.Dungeons.Count >= 6)
+                _ = GoldenSunCommands.AwardClassSeries("Crusader Series", avatar, channel);
+
+            if (avatar.ServerStats.DungeonsCompleted >= 12)
+                _ = GoldenSunCommands.AwardClassSeries("Air Pilgrim Series", avatar, channel);
+
             if (avatar.Oaths.ActiveOaths.Any())
             {
-                string dungeonToComplete = avatar.Oaths.IsOathOfElementActive() ? " IV" : "Venus Lighthouse";
+                string dungeonToComplete = avatar.Oaths.IsOathOfElementActive() ? " I" : "Vault";
+                //string dungeonToComplete = avatar.Oaths.IsOathOfElementActive() ? " IV" : "Venus Lighthouse";
                 if (dungeon.Name.EndsWith(dungeonToComplete))
                 {
-                    var oaths = avatar.Oaths.ActiveOaths;
-                    avatar.Oaths.CompleteOaths();
+                    var oaths = avatar.Oaths.ActiveOaths.ToList();
+                    try
+                    {
+                        avatar.Oaths.CompleteOaths();
+                    }
+                    catch (Exception e)
+                    {
+                        Console.Write(e);
+                    }
 
                     var embed = new EmbedBuilder();
                     embed.WithColor(Colors.Get("Iodem"));
@@ -174,26 +189,23 @@ namespace IodemBot.Core.Leveling
                 }
             }
 
-            if (dungeon.Name.EndsWith(" IV"))
+            if (dungeon.Name.EndsWith(" I"))
             {
                 var el = avatar.Element;
                 var unlockedPassives = Passives.AllPassives.Except(avatar.Passives.UnlockedPassives).Where(p => p.elements.Contains(el)).ToList();
                 if (unlockedPassives.Any())
                 {
+                    avatar.Passives.AddPassive(unlockedPassives.ToArray());
                     var embed = new EmbedBuilder();
                     embed.WithColor(Colors.Get(el.ToString()));
                     embed.WithTitle("Impulses mastered");
-                    embed.WithDescription($"The power of {el} flushes through your soul. The following impulses are now newly available to you: " +
+                    embed.WithDescription($"The power of {el} flushes through your soul. The following impulses are now newly available to you:\n" +
                         $"{string.Join("\n", unlockedPassives.Select(p => p.Name))}");
-                    avatar.Passives.UnlockedPassives.AddRange(unlockedPassives);
+
+                    _ = channel.SendMessageAsync(embed: embed.Build());
                 }
             }
-
-            //Unlock Crusader
-            if (avatar.Dungeons.Count >= 6) _ = GoldenSunCommands.AwardClassSeries("Crusader Series", avatar, channel);
-
-            if (avatar.ServerStats.DungeonsCompleted >= 12)
-                _ = GoldenSunCommands.AwardClassSeries("Air Pilgrim Series", avatar, channel);
+            UserAccountProvider.StoreUser(avatar);
             var csvline = $"{DateTime.Now:s},Dungeon,{dungeon.Name},{avatar.Name}{Environment.NewLine}";
             File.AppendAllText(BattleFile, csvline);
 

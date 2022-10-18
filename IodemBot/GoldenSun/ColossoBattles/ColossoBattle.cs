@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using IodemBot.Core.UserManagement;
 using IodemBot.Extensions;
+using IodemBot.Modules.GoldenSunMechanics;
 
 namespace IodemBot.ColossoBattles
 {
@@ -123,31 +124,58 @@ namespace IodemBot.ColossoBattles
                 switch (p.Passive.Name)
                 {
                     case "Stone Skin":
-                        p.DefensiveMult = p.Passive.args[p.PassiveLevel];
+                        if (p.IsAlive)
+                        {
+                            p.DefensiveMult = p.Passive.args[p.PassiveLevel];
+                            Log.Add($"{p.Name}'s skin hardens.");
+                        }
                         break;
 
                     case "Instant Ignition":
-                        p.OffensiveMult = p.Passive.args[p.PassiveLevel];
+                        if (!p.IsAlive)
+                        {
+                            p.OffensiveMult = p.Passive.args[p.PassiveLevel];
+                            Log.Add($"{p.Name} gets fired up.");
+                        }
                         break;
 
                     case "Soothing Song":
-                        p.RemoveCondition(new[] { Condition.Poison, Condition.Venom, Condition.Haunt });
+                        if (!p.IsAlive)
+                        {
+                            var c = p.RemoveCondition(new[] { Condition.Poison, Condition.Venom, Condition.Haunt });
+                            if (c > 0)
+                                Log.Add($"{p.Name} is relieved of any ailments");
+                        }
                         break;
 
                     case "Vital Spark":
+                        if (!p.IsAlive)
+                            Log.Add($"{p.Name}'s inner spark reignites.");
                         p.Revive((uint)p.Passive.args[p.PassiveLevel]);
                         break;
 
                     case "Fiery Reflex":
-                        p.AddCondition(Condition.Counter);
+                        if (!p.IsAlive)
+                        {
+                            p.AddCondition(Condition.Counter);
+                            Log.Add($"{p.Name} strikes a battle pose.");
+                        }
                         break;
 
                     case "Brisk Flow":
-                        p.RestorePp((uint)(p.Stats.MaxPP * p.Passive.args[p.PassiveLevel]));
+                        if (!p.IsAlive)
+                        {
+                            p.RestorePp((uint)(p.Stats.MaxPP * p.Passive.args[p.PassiveLevel]));
+                            Log.Add($"A brisk flow refills {p.Name}'s PP.");
+                        }
                         break;
 
                     case "Petrichor Scent":
-                        p.Heal((uint)(p.Stats.MaxHP * p.Passive.args[p.PassiveLevel]));
+                        if (!p.IsAlive)
+                        {
+                            p.Heal((uint)(p.Stats.MaxHP * p.Passive.args[p.PassiveLevel]));
+                            Log.Add($"The smell of geosmin lifts {p.Name}'s health.");
+                        }
                         break;
                 }
 
@@ -196,7 +224,9 @@ namespace IodemBot.ColossoBattles
             if (TurnActive) return false;
 
             if (!(TeamA.All(p => p.HasSelected) && TeamB.All(p => p.HasSelected))) return false;
-            Log.Clear();
+
+            if(TurnNumber!=0)
+                Log.Clear();
             OutValue = -1;
             if (SizeTeamB == 0 || SizeTeamA == 0)
             {
@@ -235,9 +265,12 @@ namespace IodemBot.ColossoBattles
         {
             var fighters = TeamA.Concat(TeamB).ToList();
             fighters.Shuffle();
+
+            fighters.Where(p => p.IsAlive && p.Passive.Equals("Tail Wind")).ToList().ForEach(p => Log.Add($"{p.Name} swiftly acts."));
             return fighters
-                .OrderByDescending(f => f.Passive.Equals("Tail Wind") && TurnNumber == 0)
-                .ThenBy(f => f.Tags.Contains("OathIdle"))
+                .OrderByDescending(f => f.Passive.Equals("Tail Wind") && TurnNumber == 0 && 
+                    (f.PassiveLevel == 2 || f.SelectedMove is StatusPsynergy || (f.SelectedMove is OffensivePsynergy && f.PassiveLevel == 1)))
+                .ThenBy(f => f.Tags.Contains("OathIdleness"))
                 .ThenByDescending(f => f.Stats.Spd * f.MultiplyBuffs("Speed"))
                 .ToList();
         }

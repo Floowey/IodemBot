@@ -165,27 +165,27 @@ namespace IodemBot.ColossoBattles
             var stat = MultiplyBuffs("Attack");
             if (stat != 1)
                 s.Append(
-                    $"{(stat > 1 ? "<:Atk_Increase:669146889471393833>" : "<:Atk_Decrease:669147349859303433>")}`x{stat}`");
+                    $"{(stat > 1 ? "<:Atk_Increase:669146889471393833>" : "<:Atk_Decrease:669147349859303433>").ToShortEmote()}`x{stat}`");
 
             stat = MultiplyBuffs("Defense");
             if (stat != 1)
                 s.Append(
-                    $"{(stat > 1 ? "<:Def_Increase:669147527710375957>" : "<:Def_Decrease:669147401780461568>")}`x{stat}`");
+                    $"{(stat > 1 ? "<:Def_Increase:669147527710375957>" : "<:Def_Decrease:669147401780461568>").ToShortEmote()}`x{stat}`");
 
             stat = MultiplyBuffs("Resistance");
             if (stat != 1)
                 s.Append(
-                    $"{(stat > 1 ? "<:Res_Increase:669147593963601960>" : "<:Res_Decrease:669147473373298698>")}`x{stat}`");
+                    $"{(stat > 1 ? "<:Res_Increase:669147593963601960>" : "<:Res_Decrease:669147473373298698>").ToShortEmote()}`x{stat}`");
 
             stat = MultiplyBuffs("Power");
             if (stat != 1)
                 s.Append(
-                    $"{(stat > 1 ? "<:Pow_Increase:669147830316695563>" : "<:Pow_Decrease:669147728651223040>")}`x{stat}`");
+                    $"{(stat > 1 ? "<:Pow_Increase:669147830316695563>" : "<:Pow_Decrease:669147728651223040>").ToShortEmote()}`x{stat}`");
 
             stat = MultiplyBuffs("Speed");
             if (stat != 1)
                 s.Append(
-                    $"{(stat > 1 ? "<:Spe_Increase:669147782732316682>" : "<:Spe_Decrease:669147666164350976>")}`x{stat}`");
+                    $"{(stat > 1 ? "<:Spe_Increase:669147782732316682>" : "<:Spe_Decrease:669147666164350976>").ToShortEmote()}`x{stat}`");
 
             return s.ToString();
         }

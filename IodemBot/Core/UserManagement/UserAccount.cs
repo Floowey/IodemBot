@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
+using System.Linq;
 using IodemBot.Extensions;
 using IodemBot.Modules.GoldenSunMechanics;
 using Newtonsoft.Json;
@@ -173,10 +174,19 @@ namespace IodemBot.Core.UserManagement
             Xp = 0;
             Inv.Clear();
             DjinnPocket.Clear();
-            BonusClasses.Clear();
+            List<ArchType> ArchsToRemove = new();
+            if (Oaths.GetOathCompletion(Oath.Warrior) < OathCompletion.Completed)
+                ArchsToRemove.Add(ArchType.Warrior);
+            if (Oaths.GetOathCompletion(Oath.Mage) < OathCompletion.Completed)
+                ArchsToRemove.Add(ArchType.Mage);
+
+            BonusClasses.RemoveAll(c => ArchsToRemove.Contains(AdeptClassSeriesManager.AllClasses.First(cl => cl.Name == c).Archtype));
             Dungeons.Clear();
+            Dungeons.Add("Reawakening");
             Loadouts.LoadoutsList.Clear();
             Preferences.AutoSell.Clear();
+            Oaths.ActiveOaths.Clear();
+            Oaths.OathsCompletedThisRun.Clear();
 
             BattleStatsTotal += BattleStats;
             ServerStatsTotal += ServerStats;
@@ -184,7 +194,16 @@ namespace IodemBot.Core.UserManagement
             ServerStats = new ServerStats();
             LastReset = DateTime.Now;
             Tags.RemoveAll(t => !t.Contains("Halloween20") || !t.Contains("Christmas21"));
+            Tags.Add("TutorialCompleted");
             Tags.Add($"{Element}Adept");
+            Tags.Add(AdeptClassSeriesManager.GetClassSeries(this).Archtype.ToString());
+            Tags.Add($"HasReset");
+            if (Oaths.GetOathCompletion(Oath.Warrior) >= OathCompletion.Completed)
+                Tags.Add("WarriorGear");
+            if (Oaths.GetOathCompletion(Oath.Mage) >= OathCompletion.Completed)
+                Tags.Add("MageGear");
+            if (Oaths.GetOathCompletion(Oath.Idleness) >= OathCompletion.Completed)
+                Tags.Add("ElvenGear");
             NewGames++;
         }
 

@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
+using IodemBot.Core;
 using IodemBot.Core.UserManagement;
 using IodemBot.Extensions;
 using IodemBot.Preconditions;
@@ -447,7 +448,7 @@ namespace IodemBot.Modules
             {
                 {"Gladiator", 511704880122036234},
                 {"Colosso Adept", 644506247521107969},
-                {"Fighter", 742060001031618590}
+                {"Fighter", GuildSettings.GetGuildSettings(Context.Guild).FighterRole.Id}
             };
 
             if (roleName.Equals("Gladiator", StringComparison.CurrentCultureIgnoreCase) &&

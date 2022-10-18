@@ -378,29 +378,30 @@ namespace IodemBot.Modules
 
             var embed = new EmbedBuilder();
             var account = EntityConverter.ConvertUser(Context.User);
-            _ = GiveElementRole(user, chosenElement);
             await ChangeElement(account, chosenElement, classSeriesName);
             UserAccountProvider.StoreUser(account);
-            embed.WithColor(Colors.Get(chosenElement.ToString()));
-            embed.WithDescription($"Welcome to the {chosenElement} Clan, {account.GsClass} {((SocketGuildUser)Context.User).DisplayName()}!");
+            _ = GiveElementRole(user, account.Element);
+            embed.WithColor(Colors.Get(account.Element.ToString()));
+            embed.WithDescription($"Welcome to the {account.Element} Clan, {account.GsClass} {((SocketGuildUser)Context.User).DisplayName()}!");
+            if (account.Oaths.IsOathOfElementActive())
+                embed.WithFooter("An Oath prevents you from changing your element.");
             await Context.Channel.SendMessageAsync("", false, embed.Build());
         }
 
         public async Task ChangeElement(UserAccount user, Element chosenElement, string classSeriesName = "")
         {
             if (user.Element == chosenElement)
-            {
                 return;
-            }
+
+            if (user.Oaths.IsOathOfElementActive())
+                return;
+
             foreach (string removed in user.Inv.UnequipExclusiveTo(user.Element))
             {
                 var removedEmbed = new EmbedBuilder();
                 removedEmbed.WithDescription($"<:Exclamatory:571309036473942026> Your {removed} was unequipped.");
                 await Context.Channel.SendMessageAsync("", false, removedEmbed.Build());
             }
-
-            if (user.Oaths.IsOathOfElementActive())
-                return;
 
             user.Element = chosenElement;
             user.ClassToggle = 0;
@@ -552,7 +553,7 @@ namespace IodemBot.Modules
                 return;
             }
 
-            if ((DateTime.Now - account.LastReset).TotalHours < 24)
+            if ((DateTime.Now - account.LastReset).TotalHours < 0)
             {
                 await ReplyAsync("Again so fast? The procedure is quite straining on your body. You should let your new self settle in a bit.");
                 return;

@@ -131,7 +131,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             account.ClassToggle++;
             if (!targetClass.IsNullOrEmpty())
             {
-                account.ClassToggle++;
+                //account.ClassToggle++;
                 while (GetClassSeries(account).Name != curClass)
                 {
                     if (GetClassSeries(account).Name
@@ -140,7 +140,9 @@ namespace IodemBot.Modules.GoldenSunMechanics
                     account.ClassToggle++;
                 }
             }
-
+            account.Tags.Remove("Warrior");
+            account.Tags.Remove("Mage");
+            account.Tags.Add(GetClassSeries(account).Archtype.ToString());
             return !curClass.Equals(GetClassSeries(account).Name);
         }
 

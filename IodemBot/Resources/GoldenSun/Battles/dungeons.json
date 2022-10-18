@@ -170,6 +170,768 @@
       }
     ]
   },
+  "Reawakening": {
+    "name": "Reawakening",
+    "IsOneTimeOnly": false,
+    "FlavourText": "Welcome! Be introduced to the world of Weyard and Golden Sun!\nReact with <:Fight:536919792813211648> to join a battle.\nThen, press <:Battle:536954571256365096> when you are ready to start the Tutorial!",
+    "Image": "https://cdn.discordapp.com/attachments/497696510688100352/595583507393150997/unknown.png",
+    "IsDefault": false,
+    "MaxPlayer": 1,
+    "Requirement": {
+      "TagsRequired": [ "HasReset" ],
+      "TagsLock": [ "AwakeningCompleted" ]
+    },
+    "Matchups": [
+      {
+        "Flavourtext": "Welcome to the marvelous world of Weyard, aspiring Adept. I will introduce you to the setting of Golden Sun and how the mechanics are going to work. If you want to take your time while doing this, you can react with :pause_button: to stop a battle from automatically going forward. To continue, use 'Attack'.",
+        "EnemyNames": [ "Next" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "XP": 10,
+              "Coins": 10
+            }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "Before you is a choice, to swear a solemn oath, which tightens the path your new journey will take. Finish Venus Lighthouse to unlock perks and remove handicaps.\nOath of *Element*: Complete the Path IV without changing your element. Perks: Upgraded impulses. *Note: This changes your objective for all selected Oaths to Path IV*\nOath of Warrior/Mage: You are only able to select classes from the chosen archtypes. You get some fancy starting gear. Perks: Warrior/Mage gear on every reset, Warrior/Mage classes remain unlocked\nOath of the Oaf: Your XP Bonus is ignored and your overall XP gain reduced to 25%. Rewards: ?, ?\nOath of Idleness: You always move last. Rewards: Elven gear available on reset, ?\nOath of Solitude: Complete all your battles alone, no teaming up. Rewards: Better rewards when combined with other Oaths",
+        "EnemyNames": [ "Choice:Oath of Venus|HasTag:VenusAdept|!HasTag:OathVenus|KilledBy:Player@-10", "Choice:Remove Oath of Venus|HasTag:OathVenus|KilledBy:Player@-11", "Choice:Oath of Mars|HasTag:MarsAdept|!HasTag:OathMars|KilledBy:Player@-12", "Choice:Remove Oath of Mars|HasTag:OathMars|KilledBy:Player@-13", "Choice:Oath of Jupiter|HasTag:JupiterAdept|!HasTag:OathJupiter|KilledBy:Player@-14", "Choice:Remove Oath of Jupiter|HasTag:OathJupiter|KilledBy:Player@-15", "Choice:Oath of Mercury|HasTag:MercuryAdept|!HasTag:OathMercury|KilledBy:Player@-16", "Choice:Remove Oath of Mercury|HasTag:OathMercury|KilledBy:Player@-17", "Choice:Oath of the Warrior|HasTag:Warrior|!HasTag:OathWarrior|KilledBy:Player@-18", "Choice:Remove Oath of the Warrior|HasTag:OathWarrior|KilledBy:Player@-19", "Choice:Oath of the Mage|HasTag:Mage|!HasTag:OathMage|KilledBy:Player@-20", "Choice:Remove Oath of the Mage|HasTag:OathMage|KilledBy:Player@-21", "Choice:Oath of the Oaf|!HasTag:OathOaf|KilledBy:Player@-22", "Choice:Remove Oath of the Oaf|HasTag:OathOaf|KilledBy:Player@-23", "Choice:Oath of Idleness|!HasTag:OathIdleness|KilledBy:Player@-24", "Choice:Remove Oath of Idleness|HasTag:OathIdleness|KilledBy:Player@-25", "Choice:Oath of Solitude|!HasTag:OathSolitude|KilledBy:Player@-26", "Choice:Remove Oath of Solitude|HasTag:OathSolitude|KilledBy:Player@-27", "Choice:Continue With Selection|KilledBy:Player@110" ],
+        "Keywords": [ "@100", "ToMatchup@100" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "@-10" ],
+              "Tag": "OathVenus",
+              "Obtainable": 1
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "@-11" ],
+              "Tag": "-OathVenus"
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "@-12" ],
+              "Tag": "OathMars",
+              "Obtainable": 1
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "@-13" ],
+              "Tag": "-OathMars"
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "@-14" ],
+              "Tag": "OathJupiter",
+              "Obtainable": 1
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "@-15" ],
+              "Tag": "-OathJupiter"
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "@-16" ],
+              "Tag": "OathMercury",
+              "Obtainable": 1
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "@-17" ],
+              "Tag": "-OathMercury"
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "@-18" ],
+              "Tag": "OathWarrior",
+              "Obtainable": 1
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "@-19" ],
+              "Tag": "-OathWarrior"
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "@-20" ],
+              "Tag": "OathMage",
+              "Obtainable": 1
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "@-21" ],
+              "Tag": "-OathMage"
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "@-22" ],
+              "Tag": "OathOaf",
+              "Obtainable": 1
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "@-23" ],
+              "Tag": "-OathOaf"
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "@-24" ],
+              "Tag": "OathIdleness",
+              "Obtainable": 1
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "@-25" ],
+              "Tag": "-OathIdleness"
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "@-26" ],
+              "Tag": "OathSolitude",
+              "Obtainable": 1
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "@-27" ],
+              "Tag": "-OathSolitude"
+            }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "You took your oaths",
+        "EnemyNames": [ "Next" ],
+        "Keywords": [ "@110" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "OathWarrior" ],
+              "Tag": "WarriorGear",
+              "Obtainable": 1
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "OathMage" ],
+              "Tag": "MageGear",
+              "Obtainable": 1
+            }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "You are offered a variety of gear sets to choose from.",
+        "EnemyNames": [ "Choice:Tutorial Gear|KilledBy:Player@-1", "Choice:Warrior Gear|HasTag:WarriorGear|KilledBy:Player@-2", "Choice:Mage Gear|HasTag:MageGear|KilledBy:Player@-3", "Choice:Elven Gear|HasTag:ElvenGear|KilledBy:Player@-4" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "@-1" ],
+              "Tag": "TutorialItem",
+              "Obtainable": 1,
+              "Chest": "Wooden",
+              "HasChest": true,
+              "Item": "Machete"
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "@-1" ],
+              "Tag": "TutorialItem",
+              "Obtainable": 2,
+              "Item": "Cotton Shirt"
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "@-1" ],
+              "Tag": "TutorialItem",
+              "Obtainable": 3,
+              "Item": "Padded Gloves"
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "@-2" ],
+              "Tag": "TutorialItem",
+              "Obtainable": 1,
+              "Item": "Battle Axe"
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "@-2" ],
+              "Tag": "TutorialItem",
+              "Obtainable": 2,
+              "Item": "Chain Mail"
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "@-2" ],
+              "Tag": "TutorialItem",
+              "Obtainable": 3,
+              "Item": "Iron Helm"
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "@-2" ],
+              "Tag": "TutorialItem",
+              "Obtainable": 4,
+              "Item": "War Ring"
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "@-3" ],
+              "Tag": "TutorialItem",
+              "Obtainable": 1,
+              "Item": "Blessed Ankh"
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "@-3" ],
+              "Tag": "TutorialItem",
+              "Obtainable": 2,
+              "Item": "Bone Armlet"
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "@-3" ],
+              "Tag": "TutorialItem",
+              "Obtainable": 3,
+              "Item": "Silver Circlet"
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "@-3" ],
+              "Tag": "TutorialItem",
+              "Obtainable": 4,
+              "Item": "Adept Ring"
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "@-4" ],
+              "Tag": "TutorialItem",
+              "Obtainable": 1,
+              "Item": "Elven Rapier"
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "@-4" ],
+              "Tag": "TutorialItem",
+              "Obtainable": 2,
+              "Item": "Elven Shirt"
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "@-4" ],
+              "Tag": "TutorialItem",
+              "Obtainable": 3,
+              "Item": "Elven Ring"
+            }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "Ready to wake up? Let's get going!",
+        "EnemyNames": [ "End" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "Tag": "AwakeningCompleted",
+              "Obtainable": 1,
+              "XP": 100,
+              "Coins": 100,
+              "Dungeon": "Vale"
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "Dungeon": "Vault"
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "OathVenus" ],
+              "Dungeon": "Path of Gaia I"
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "OathMars" ],
+              "Dungeon": "Path of Magma I"
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "OathJupiter" ],
+              "Dungeon": "Path of Air I"
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "OathMercury" ],
+              "Dungeon": "Path of Aqua I"
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Reawakening",
+    "IsOneTimeOnly": false,
+    "FlavourText": "Welcome! Be introduced to the world of Weyard and Golden Sun!\nReact with <:Fight:536919792813211648> to join a battle.\nThen, press <:Battle:536954571256365096> when you are ready to start the Tutorial!",
+    "Image": "https://cdn.discordapp.com/attachments/497696510688100352/595583507393150997/unknown.png",
+    "IsDefault": false,
+    "MaxPlayer": 1,
+    "Requirement": {
+      "TagsRequired": [ "HasReset" ],
+      "TagsLock": [ "AwakeningComplete" ]
+    },
+    "Matchups": [
+      {
+        "Flavourtext": "Welcome to the marvelous world of Weyard, aspiring Adept. I will introduce you to the setting of Golden Sun and how the mechanics are going to work. If you want to take your time while doing this, you can react with :pause_button: to stop a battle from automatically going forward. To continue, use 'Attack'.",
+        "EnemyNames": [ "Next" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "XP": 10,
+              "Coins": 10
+            }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "Before you is a choice, to swear a solemn oath, which tightens the path your new journey will take.",
+        "EnemyNames": [ "Choice:Oath of Venus|HasTag:VenusAdept|!HasTag:OathVenus|KilledBy:Player@-10", "Choice:Remove Oath of Venus|HasTag:OathVenus|KilledBy:Player@-11", "Choice:Oath of Mars|HasTag:MarsAdept|!HasTag:OathMars|KilledBy:Player@-12", "Choice:Remove Oath of Mars|HasTag:OathMars|KilledBy:Player@-13", "Choice:Oath of Jupiter|HasTag:JupiterAdept|!HasTag:OathJupiter|KilledBy:Player@-14", "Choice:Remove Oath of Jupiter|HasTag:OathJupiter|KilledBy:Player@-15", "Choice:Oath of Mercury|HasTag:MercuryAdept|!HasTag:OathMercury|KilledBy:Player@-16", "Choice:Remove Oath of Mercury|HasTag:OathMercury|KilledBy:Player@-17", "Choice:Oath of the Warrior|HasTag:Warrior|!HasTag:OathWarrior|KilledBy:Player@-18", "Choice:Remove Oath of the Warrior|HasTag:OathWarrior|KilledBy:Player@-19", "Choice:Oath of the Mage|HasTag:Mage|!HasTag:OathMage|KilledBy:Player@-20", "Choice:Remove Oath of the Mage|HasTag:OathMage|KilledBy:Player@-21", "Choice:Oath of the Oaf|!HasTag:OathOaf|KilledBy:Player@-22", "Choice:Remove Oath of the Oaf|HasTag:OathOaf|KilledBy:Player@-23", "Choice:Oath of Idleness|!HasTag:OathIdleness|KilledBy:Player@-24", "Choice:Remove Oath of Idleness|HasTag:OathIdleness|KilledBy:Player@-25", "Choice:Oath of Solitude|!HasTag:OathSolitude|KilledBy:Player@-26", "Choice:Remove Oath of Solitude|HasTag:OathSolitude|KilledBy:Player@-27", "Choice:Continue With Selection|KilledBy:Player@110" ],
+        "Keywords": [ "@100", "ToMatchup@100" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "@-10" ],
+              "Tag": "OathVenus",
+              "Obtainable": 1
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "@-11" ],
+              "Tag": "-OathVenus"
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "@-12" ],
+              "Tag": "OathMars",
+              "Obtainable": 1
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "@-13" ],
+              "Tag": "-OathMars"
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "@-14" ],
+              "Tag": "OathJupiter",
+              "Obtainable": 1
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "@-15" ],
+              "Tag": "-OathJupiter"
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "@-16" ],
+              "Tag": "OathMercury",
+              "Obtainable": 1
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "@-17" ],
+              "Tag": "-OathMercury"
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "@-18" ],
+              "Tag": "OathWarrior",
+              "Obtainable": 1
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "@-19" ],
+              "Tag": "-OathWarrior"
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "@-20" ],
+              "Tag": "OathMage",
+              "Obtainable": 1
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "@-21" ],
+              "Tag": "-OathMage"
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "@-22" ],
+              "Tag": "OathOaf",
+              "Obtainable": 1
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "@-23" ],
+              "Tag": "-OathOaf"
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "@-24" ],
+              "Tag": "OathIdleness",
+              "Obtainable": 1
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "@-25" ],
+              "Tag": "-OathIdleness"
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "@-26" ],
+              "Tag": "OathSolitude",
+              "Obtainable": 1
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "@-27" ],
+              "Tag": "-OathSolitude"
+            }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "You took your oaths",
+        "EnemyNames": [ "Next" ],
+        "Keywords": [ "@110" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "OathWarrior" ],
+              "Tag": "WarriorGear",
+              "Obtainable": 1
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "OathMage" ],
+              "Tag": "MageGear",
+              "Obtainable": 1
+            }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "You are offered a variety of gear sets to choose from.",
+        "EnemyNames": [ "Choice:Tutorial Gear|KilledBy:Player@-1", "Choice:Warrior Gear|HasTag:WarriorGear|KilledBy:Player@-2", "Choice:Mage Gear|HasTag:MageGear|KilledBy:Player@-3", "Choice:Elven Gear|HasTag:ElvenGear|KilledBy:Player@-4" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "@-1" ],
+              "Tag": "TutorialItem",
+              "Obtainable": 1,
+              "Chest": "Wooden",
+              "HasChest": true,
+              "Item": "Machete"
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "@-1" ],
+              "Tag": "TutorialItem",
+              "Obtainable": 2,
+              "Item": "Cotton Shirt"
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "@-1" ],
+              "Tag": "TutorialItem",
+              "Obtainable": 3,
+              "Item": "Padded Gloves"
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "@-2" ],
+              "Tag": "TutorialItem",
+              "Obtainable": 1,
+              "Item": "Battle Axe"
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "@-2" ],
+              "Tag": "TutorialItem",
+              "Obtainable": 2,
+              "Item": "Chain Mail"
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "@-2" ],
+              "Tag": "TutorialItem",
+              "Obtainable": 3,
+              "Item": "Iron Helm"
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "@-2" ],
+              "Tag": "TutorialItem",
+              "Obtainable": 4,
+              "Item": "War Ring"
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "@-3" ],
+              "Tag": "TutorialItem",
+              "Obtainable": 1,
+              "Item": "Blessed Ankh"
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "@-3" ],
+              "Tag": "TutorialItem",
+              "Obtainable": 2,
+              "Item": "Bone Armlet"
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "@-3" ],
+              "Tag": "TutorialItem",
+              "Obtainable": 3,
+              "Item": "Silver Circlet"
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "@-3" ],
+              "Tag": "TutorialItem",
+              "Obtainable": 4,
+              "Item": "Adept Ring"
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "@-4" ],
+              "Tag": "TutorialItem",
+              "Obtainable": 1,
+              "Item": "Elven Rapier"
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "@-4" ],
+              "Tag": "TutorialItem",
+              "Obtainable": 2,
+              "Item": "Elven Shirt"
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "@-4" ],
+              "Tag": "TutorialItem",
+              "Obtainable": 3,
+              "Item": "Elven Ring"
+            }
+          ]
+        ]
+      },
+      {
+        "Flavourtext": "Ready to wake up? Let's get going!",
+        "EnemyNames": [ "End" ],
+        "Image": "",
+        "RewardTables": [
+          [
+            {
+              "Weight": 1,
+              "Tag": "AwakeningCompleted",
+              "Obtainable": 1,
+              "XP": 15000,
+              "Coins": 100,
+              "Dungeon": "Vale"
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "Dungeon": "Vault"
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "OathVenus" ],
+              "Dungeon": "Path of Gaia I"
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "OathMars" ],
+              "Dungeon": "Path of Magma I"
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "OathJupiter" ],
+              "Dungeon": "Path of Air I"
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "OathMercury" ],
+              "Dungeon": "Path of Aqua I"
+            }
+          ]
+        ]
+      }
+    ]
+  },
   "Vale": {
     "name": "Vale",
     "IsOneTimeOnly": false,

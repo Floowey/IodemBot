@@ -206,6 +206,8 @@ namespace IodemBot.ColossoBattles
             p.Stats *= 0.01;
 
             user.Oaths.ActiveOaths.ForEach(o => p.Tags.Add($"Oath{o}"));
+            if (user.Oaths.IsOathActive(Oath.Idleness))
+                p.Stats.Spd = 2;
             return p;
         }
 

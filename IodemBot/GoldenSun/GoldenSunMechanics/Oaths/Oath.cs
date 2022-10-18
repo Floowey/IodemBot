@@ -10,7 +10,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
     { Solitude, Oaf, Idleness, Warrior, Mage, Venus, Mars, Jupiter, Mercury }
 
     public enum OathCompletion
-    { NotCompleted = 0, Active = 1, Completed = 2, SolitudeCompletion = 3 }
+    { NotCompleted = 0, Completed = 1, SolitudeCompletion = 2 }
 
     public class OathList
     {
@@ -26,8 +26,6 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 return OathCompletion.SolitudeCompletion;
             else if (CompletedOaths.Contains(o))
                 return OathCompletion.Completed;
-            else if (ActiveOaths.Contains(o))
-                return OathCompletion.Active;
             else
                 return OathCompletion.NotCompleted;
         }
@@ -37,10 +35,12 @@ namespace IodemBot.Modules.GoldenSunMechanics
             if (IsOathActive(Oath.Solitude))
             {
                 CompletedSolitudeOaths.AddRange(ActiveOaths);
-                CompletedSolitudeOaths = (List<Oath>)CompletedSolitudeOaths.Distinct();
+                CompletedSolitudeOaths = CompletedSolitudeOaths.Distinct().ToList();
             }
+
             CompletedOaths.AddRange(ActiveOaths);
-            CompletedOaths = (List<Oath>)CompletedOaths.Distinct();
+            CompletedOaths = CompletedOaths.Distinct().ToList();
+
             OathsCompletedThisRun.AddRange(ActiveOaths);
             ActiveOaths.Clear();
         }
