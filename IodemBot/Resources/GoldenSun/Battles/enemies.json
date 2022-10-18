@@ -7140,7 +7140,16 @@
       "marsres": 25,
       "mercuryatk": 115
     },
-    "extraturns": 1
+    "extraturns": 1,
+    "isImmuneToConditions": [
+      "Stun",
+      "Poison",
+      "Venom",
+      "Delusion",
+      "Sleep",
+      "DeathCurse",
+      "Haunt"
+    ]
   },
   "Pteranodon": {
     "movepool": [ "Ice Breath", "Banshee Howl" ],
@@ -8631,7 +8640,7 @@
       "mercuryatk": 105,
       "jupiteratk": 95
     },
-    "Tags": [ "VIP" ],
+    "Tags": [ "VIP", "Head" ],
     "extraturns": 1
   },
   "Star Magician 2": {
@@ -8653,7 +8662,7 @@
       "mercuryatk": 105,
       "jupiteratk": 95
     },
-    "Tags": [ "VIP" ],
+    "Tags": [ "VIP", "Head" ],
     "extraturns": 1
   },
   "Stealthy Scout": {
@@ -11152,7 +11161,7 @@
   "MarsSummon": {
     "movepool": [ "Flare", "Blast" ],
     "name": "Mars",
-    "imgurl": "https://goldensunwiki.net/w/images/9/98/MarsDjinniGif.gif",
+    "imgurl": "https://goldensunwiki.net/w/images/b/bc/Mars-icon-dd.gif",
     "stats": {
       "maxhp": 172,
       "maxpp": 14,
@@ -11227,6 +11236,15 @@
       "mercuryres": 25,
       "marsatk": 125
     },
+    "isImmuneToConditions": [
+      "Stun",
+      "Poison",
+      "Venom",
+      "Delusion",
+      "Sleep",
+      "DeathCurse",
+      "Haunt"
+    ],
     "extraturns": 0
   },
   "CometMeteor2": {
@@ -11404,14 +11422,14 @@
     "extraturns": 1
   },
   "ThorSummon": {
-    "movepool": [ "Thor", "Luff", "Squall", "Blitz", "Bolt", "Blue Bolt", "Destruct Ray", "Spark Plasma", "Thunderhead", "Thunder Mine", "Quick Strike" ],
+    "movepool": [ "Thor", "Luff", "Vortex", "Blitz", "Bolt#d", "Blue Bolt", "Destruct Ray", "Destruct Ray", "Spark Plasma", "Thunderhead", "Thunder Mine", "Quick Strike" ],
     "name": "Thor",
     "imgurl": "https://media.discordapp.net/attachments/497696510688100352/665884848891887626/Thor.gif",
     "stats": {
       "maxhp": 4443,
       "maxpp": 1622,
-      "atk": 559,
-      "def": 440,
+      "atk": 529,
+      "def": 415,
       "spd": 999
     },
     "elstats": {
@@ -11477,7 +11495,7 @@
       "maxpp": 20,
       "atk": 107,
       "def": 24,
-      "spd": 58
+      "spd": 55
     },
     "elstats": {
       "mercuryres": 193,
@@ -11546,6 +11564,15 @@
       "mercuryres": 193,
       "mercuryatk": 175
     },
+    "isImmuneToConditions": [
+      "Stun",
+      "Poison",
+      "Venom",
+      "Delusion",
+      "Sleep",
+      "DeathCurse",
+      "Haunt"
+    ],
     "extraturns": 1
   },
   "ZaganSummon": {

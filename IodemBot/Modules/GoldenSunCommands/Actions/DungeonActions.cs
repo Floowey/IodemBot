@@ -134,6 +134,10 @@ namespace IodemBot.Modules
 
             builder.WithButton(labels ? "Status" : null, $"#{nameof(StatusAction)}", ButtonStyle.Primary,
                 Emotes.GetEmote("StatusAction"));
+            builder.WithButton(labels ? "Endless" : null, $"{nameof(OpenEndlessAction)}.false", ButtonStyle.Primary,
+                Emotes.GetEmote("StartBattle"), disabled: user.LevelNumber <= 50 || !user.Tags.Contains("ColossoCompleted"));
+            builder.WithButton(labels ? "Endless Fasttrack" : null, $"{nameof(OpenEndlessAction)}.true", ButtonStyle.Primary,
+                Emotes.GetEmote("StartBattle"), disabled: user.LevelNumber <= 50 || !user.Tags.Contains("ColossoCompleted") || !user.Inv.HasBalance(OpenEndlessAction.Cost));
             builder.WithButton(labels ? "Reveal to others" : null, $"{nameof(RevealEphemeralAction)}", ButtonStyle.Secondary,
         Emotes.GetEmote("RevealEphemeralAction"), row: 0);
             return builder.Build();
@@ -217,6 +221,83 @@ namespace IodemBot.Modules
         {
             if (selectOptions != null && selectOptions.Any())
                 SelectedDungeonName = selectOptions.FirstOrDefault();
+
+            _battleService = ServiceProvider.GetRequiredService<ColossoBattleService>();
+            return Task.CompletedTask;
+        }
+    }
+
+    public class OpenEndlessAction : BotComponentAction
+    {
+        private ColossoBattleService _battleService;
+
+        [ActionParameterComponent(Required = true)]
+        private bool FastTrack { get; set; }
+
+        public override EphemeralRule EphemeralRule => EphemeralRule.EphemeralOrFail;
+        public override bool GuildsOnly => true;
+        public static readonly uint Cost = 10000;
+        public override GuildPermissions? RequiredPermissions => null;
+
+        public override async Task RunAsync()
+        {
+            var gs = GuildSettings.GetGuildSettings(Context.Guild);
+
+            try
+            {
+                if (Context is RequestInteractionContext r)
+                    await r.OriginalInteraction.DeferAsync();
+            }
+            catch (HttpException)
+            {
+            }
+            var acc = EntityConverter.ConvertUser(Context.User);
+            var openBattle = new EndlessBattleEnvironment(_battleService, $"{Context.User.Username}", gs.ColossoChannel, false, await _battleService.PrepareBattleChannel($"Endless-{Context.User.Username}", Context.Guild, persistent: false));
+            if (FastTrack && acc.Inv.RemoveBalance(Cost))
+            {
+                UserAccountProvider.StoreUser(acc);
+                openBattle.SetStreak(12);
+            }
+
+            _battleService.AddBattleEnvironment(openBattle);
+            await Context.Channel.SendMessageAsync(
+                $"{Context.User.Username}, {openBattle.BattleChannel.Mention} has been prepared for an endless adventure");
+        }
+
+        protected override Task<(bool Success, string Message)> CheckCustomPreconditionsAsync()
+        {
+            var guildResult = IsGameCommandAllowedInGuild();
+            if (!guildResult.Success)
+                return Task.FromResult(guildResult);
+
+            var acc = EntityConverter.ConvertUser(Context.User);
+
+            var gauntletFromUser = _battleService.GetBattleEnvironment<EndlessBattleEnvironment>(b =>
+                b.Name.Equals(Context.User.Username, StringComparison.CurrentCultureIgnoreCase));
+            if (gauntletFromUser != null)
+            {
+                if (gauntletFromUser.IsActive)
+                    return Task.FromResult((false, "What? You already are on an adventure!"));
+                _ = gauntletFromUser.Reset($"{gauntletFromUser.Name} overridden");
+            }
+
+            if (acc.LevelNumber < 50 && !acc.Tags.Contains("ColossoCompleted"))
+            {
+                return Task.FromResult((false, "You are not yet ready to take on such endeavor. Come back when you are level 50 or aquired special permission from Lord Iodem."));
+            }
+
+            if (FastTrack && !acc.Inv.HasBalance(Cost))
+            {
+                return Task.FromResult((false, "You lack the funds to skip to stronger battles."));
+            }
+
+            return SuccessFullResult;
+        }
+
+        public override Task FillParametersAsync(string[] selectOptions, object[] idOptions)
+        {
+            if (idOptions != null && idOptions.Any())
+                FastTrack = bool.Parse((string)idOptions.First());
 
             _battleService = ServiceProvider.GetRequiredService<ColossoBattleService>();
             return Task.CompletedTask;

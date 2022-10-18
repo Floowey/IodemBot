@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
+using IodemBot.Core;
 using IodemBot.Core.UserManagement;
 using IodemBot.Extensions;
 using IodemBot.Preconditions;
@@ -276,9 +277,13 @@ namespace IodemBot.Modules
         [Alias("top", "top10")]
         [Cooldown(5)]
         [Summary("Get the most active users and your rank")]
-        public async Task Rank()
+        public async Task Rank(RankEnum type = RankEnum.Month)
         {
-            var topAccounts = UserAccounts.GetTop();
+            var valid = new[] { RankEnum.AllTime, RankEnum.Month, RankEnum.Week };
+            if (!valid.Contains(type))
+                return;
+
+            var topAccounts = UserAccounts.GetTop(type);
             var embed = new EmbedBuilder();
             embed.WithColor(Colors.Get("Iodem"));
             string[] emotes = { "🥇", "🥈", "🥈", "🥉", "🥉", "🥉", "   ", "   ", "   ", "   " };
@@ -286,22 +291,62 @@ namespace IodemBot.Modules
             for (var i = 0; i < Math.Min(topAccounts.Count, 10); i++)
             {
                 var curAccount = topAccounts[i];
+                string toAdd = "";
+                switch (type)
+                {
+                    case RankEnum.AllTime:
+                        toAdd = $"`{curAccount.Xp}xp`{(curAccount.NewGames >= 1 ? $"- `({curAccount.TotalXp}xp total)`" : "")}";
+                        break;
+
+                    case RankEnum.Week:
+                        var xp = (ulong)curAccount.DailyXP
+                           .Where(kv => kv.Key.Year == DateTime.Now.Year &&
+                           UserAccountProvider.cal.GetWeekOfYear(kv.Key, CalendarWeekRule.FirstDay, DayOfWeek.Monday) == UserAccountProvider.cal.GetWeekOfYear(DateTime.Now, CalendarWeekRule.FirstDay, DayOfWeek.Monday))
+                           .Select(kv => (decimal)kv.Value).Sum();
+                        toAdd = $"`{xp} xp`";
+                        break;
+
+                    case RankEnum.Month:
+                        xp = (ulong)curAccount.DailyXP.Where(kv => kv.Key >= UserAccountProvider.CurrentMonth).Select(kv => (decimal)kv.Value).Sum();
+                        toAdd = $"`{xp} xp`";
+                        break;
+                }
                 builder.Append(
-                    $"`{i + 1}` {emotes[i]} {curAccount.Name?.PadRight(15) ?? curAccount.Id.ToString()} - `Lv{curAccount.LevelNumber}` - `{curAccount.Xp}xp`{(curAccount.NewGames >= 1 ? $"- `({curAccount.TotalXp}xp total)`" : "")}\n");
+                    $"`{i + 1}` {emotes[i]} {curAccount.Name?.PadRight(15) ?? curAccount.Id.ToString()} - `Lv{curAccount.LevelNumber}` - {toAdd}\n");
             }
 
             //Console.WriteLine(rank);
             var account = EntityConverter.ConvertUser(Context.User);
-            var rank = UserAccounts.GetRank(account);
+            var rank = UserAccounts.GetRank(account, type);
             if (rank >= 10)
             {
                 builder.Append("... \n");
+                string toAdd = "";
+                switch (type)
+                {
+                    case RankEnum.AllTime:
+                        toAdd = $"`{account.Xp}xp`{(account.NewGames >= 1 ? $"- `({account.TotalXp}xp total)`" : "")}";
+                        break;
+
+                    case RankEnum.Week:
+                        var xp = (ulong)account.DailyXP
+                           .Where(kv => kv.Key.Year == DateTime.Now.Year &&
+                           UserAccountProvider.cal.GetWeekOfYear(kv.Key, CalendarWeekRule.FirstDay, DayOfWeek.Monday) == UserAccountProvider.cal.GetWeekOfYear(DateTime.Now, CalendarWeekRule.FirstDay, DayOfWeek.Monday))
+                           .Select(kv => (decimal)kv.Value).Sum();
+                        toAdd = $"`{xp} xp`";
+                        break;
+
+                    case RankEnum.Month:
+                        xp = (ulong)account.DailyXP.Where(kv => kv.Key >= UserAccountProvider.CurrentMonth).Select(kv => (decimal)kv.Value).Sum();
+                        toAdd = $"`{xp} xp`";
+                        break;
+                }
                 builder.Append(
-                    $"`{rank + 1}` {Context.User.Username,-15} - `Lv{account.LevelNumber}` - `{account.Xp}xp`{(account.NewGames >= 1 ? $"- `({account.TotalXp}xp total)`" : "")}");
+                    $"`{rank + 1}` {Context.User.Username,-15} - `Lv{account.LevelNumber}` - {toAdd}\n");
             }
 
             embed.WithDescription(builder.ToString());
-
+            embed.WithFooter($"Leaderboard of {type}");
             await Context.Channel.SendMessageAsync("", false, embed.Build());
         }
 
@@ -403,7 +448,7 @@ namespace IodemBot.Modules
             {
                 {"Gladiator", 511704880122036234},
                 {"Colosso Adept", 644506247521107969},
-                {"Fighter", 742060001031618590}
+                {"Fighter", GuildSettings.GetGuildSettings(Context.Guild).FighterRole.Id}
             };
 
             if (roleName.Equals("Gladiator", StringComparison.CurrentCultureIgnoreCase) &&

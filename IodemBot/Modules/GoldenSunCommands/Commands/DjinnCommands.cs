@@ -36,7 +36,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             embed.AddField("Stats", djinn.Stats.NonZerosToString(), true);
             var effectList = djinn.Effects.Count > 0 ? string.Join("\n", djinn.Effects.Select(e => e.ToString())) : "";
             embed.AddField("Description",
-                string.Join("\n", djinn.ToString(), effectList, djinn.HasPriority ? "Always goes first." : ""));
+                string.Join("\n", djinn.ToString(), effectList, djinn.HasPriority ? "Always goes first." : "").Trim() + $"\n\n{(djinn.Description.IsNullOrEmpty() ? "" : $"*{djinn.Description}*")}");
 
             embed.WithColor(Colors.Get(djinn.Element.ToString()));
 
@@ -81,7 +81,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 : "";
             embed.AddField("Description",
                 string.Join("\n", summon.ToString(), effectList, userList, partyList,
-                    summon.HasPriority ? "Always goes first." : ""));
+                    summon.HasPriority ? "Always goes first." : "").Trim() + $"\n\n*{summon.Description}*");
 
             embed.WithColor(Colors.Get(
                 Enumerable.Repeat(Element.Venus.ToString(), summon.VenusNeeded)
@@ -256,6 +256,10 @@ namespace IodemBot.Modules.GoldenSunMechanics
             if (response.Content.Equals("Yes", StringComparison.CurrentCultureIgnoreCase))
             {
                 userDjinn.Djinn.Remove(chosenDjinn);
+                acc.ServerStats.DjinnReleased++;
+                if (chosenDjinn.IsShiny)
+                    acc.ServerStats.ShinyDjinnReleased++;
+
                 UserAccountProvider.StoreUser(acc);
                 _ = ReplyAsync(embed: new EmbedBuilder()
                     .WithDescription(

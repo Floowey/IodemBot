@@ -20,6 +20,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
     [JsonSubtypes.KnownSubType(typeof(DjinnManipEffect), "DjinnManip")]
     [JsonSubtypes.KnownSubType(typeof(HpDrainEffect), "HPDrain")]
     [JsonSubtypes.KnownSubType(typeof(MayIgnoreDefenseEffect), "IgnoreDefense")]
+    [JsonSubtypes.KnownSubType(typeof(LightEffect), "Light")]
     [JsonSubtypes.KnownSubType(typeof(MultiplyDamageEffect), "MultiplyDamage")]
     [JsonSubtypes.KnownSubType(typeof(MysticCallEffect), "MysticCall")]
     [JsonSubtypes.KnownSubType(typeof(NoEffect), "Nothing")]

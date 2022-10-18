@@ -133,6 +133,8 @@ namespace IodemBot.Core.Leveling
 
         internal static async Task UserFinishedEndless(UserAccount avatar, int winsInARow, EndlessMode mode)
         {
+            avatar.Inv.GameTickets += Math.Max((uint)winsInARow, (uint)(winsInARow * winsInARow / 12));
+            UserAccountProvider.StoreUser(avatar);
             var csvline = $"{DateTime.Now:s},Endless {mode},{winsInARow},{avatar.Name}{Environment.NewLine}";
             File.AppendAllText(BattleFile, csvline);
             await Task.CompletedTask;
@@ -150,15 +152,60 @@ namespace IodemBot.Core.Leveling
             }
 
             avatar.ServerStats.LastDungeon = dungeon.Name;
-            UserAccountProvider.StoreUser(avatar);
+
             if (dungeon.Name == "Mercury Lighthouse")
                 _ = GoldenSunCommands.AwardClassSeries("Aqua Pilgrim Series", avatar, channel);
 
             //Unlock Crusader
-            if (avatar.Dungeons.Count >= 6) _ = GoldenSunCommands.AwardClassSeries("Crusader Series", avatar, channel);
+            if (avatar.Dungeons.Count >= 6)
+                _ = GoldenSunCommands.AwardClassSeries("Crusader Series", avatar, channel);
 
             if (avatar.ServerStats.DungeonsCompleted >= 12)
                 _ = GoldenSunCommands.AwardClassSeries("Air Pilgrim Series", avatar, channel);
+
+            if (avatar.Oaths.ActiveOaths.Any())
+            {
+                string dungeonToComplete = avatar.Oaths.IsOathOfElementActive() ? " I" : "Vault";
+                //string dungeonToComplete = avatar.Oaths.IsOathOfElementActive() ? " IV" : "Venus Lighthouse";
+                if (dungeon.Name.EndsWith(dungeonToComplete))
+                {
+                    var oaths = avatar.Oaths.ActiveOaths.ToList();
+                    try
+                    {
+                        avatar.Oaths.CompleteOaths();
+                    }
+                    catch (Exception e)
+                    {
+                        Console.Write(e);
+                    }
+
+                    var embed = new EmbedBuilder();
+                    embed.WithColor(Colors.Get("Iodem"));
+                    embed.WithTitle("Oaths fulfilled!");
+                    embed.WithDescription($"Hereby {avatar.Name} has ceremoniously fulfilled the following Oaths:\n" +
+                        $"{string.Join("\n", oaths.Select(o => $"Oath of {o}"))}");
+
+                    _ = channel.SendMessageAsync(embed: embed.Build());
+                }
+            }
+
+            if (dungeon.Name.EndsWith(" I"))
+            {
+                var el = avatar.Element;
+                var unlockedPassives = Passives.AllPassives.Except(avatar.Passives.UnlockedPassives).Where(p => p.elements.Contains(el)).ToList();
+                if (unlockedPassives.Any())
+                {
+                    avatar.Passives.AddPassive(unlockedPassives.ToArray());
+                    var embed = new EmbedBuilder();
+                    embed.WithColor(Colors.Get(el.ToString()));
+                    embed.WithTitle("Impulses mastered");
+                    embed.WithDescription($"The power of {el} flushes through your soul. The following impulses are now newly available to you:\n" +
+                        $"{string.Join("\n", unlockedPassives.Select(p => p.Name))}");
+
+                    _ = channel.SendMessageAsync(embed: embed.Build());
+                }
+            }
+            UserAccountProvider.StoreUser(avatar);
             var csvline = $"{DateTime.Now:s},Dungeon,{dungeon.Name},{avatar.Name}{Environment.NewLine}";
             File.AppendAllText(BattleFile, csvline);
 
@@ -167,12 +214,14 @@ namespace IodemBot.Core.Leveling
 
         internal static async Task UserWonSingleBattle(UserAccount avatar, BattleDifficulty difficulty)
         {
+            avatar.Inv.GameTickets += (uint)difficulty;
+            UserAccountProvider.StoreUser(avatar);
             var csvline = $"{DateTime.Now:s},Single,{difficulty},{avatar.Name}{Environment.NewLine}";
             File.AppendAllText(BattleFile, csvline);
             await Task.CompletedTask;
         }
 
-        internal static async Task UserSentCommand(SocketUser user, IMessageChannel channel)
+        internal static async Task UserSentCommand(IUser user, IMessageChannel channel)
         {
             var userAccount = EntityConverter.ConvertUser(user);
             userAccount.ServerStats.CommandsUsed++;
@@ -220,10 +269,10 @@ namespace IodemBot.Core.Leveling
         internal static async Task UserLookedUpPsynergy(SocketGuildUser user, SocketTextChannel channel)
         {
             var userAccount = EntityConverter.ConvertUser(user);
-            userAccount.ServerStats.LookedUpInformation++;
+            userAccount.ServerStats.LookedUpPsynergy++;
             UserAccountProvider.StoreUser(userAccount);
 
-            if (userAccount.ServerStats.LookedUpInformation >= 17)
+            if (userAccount.ServerStats.LookedUpPsynergy >= 14)
                 _ = GoldenSunCommands.AwardClassSeries("Apprentice Series", user, channel);
             await Task.CompletedTask;
         }
@@ -234,8 +283,19 @@ namespace IodemBot.Core.Leveling
             userAccount.ServerStats.LookedUpClass++;
             UserAccountProvider.StoreUser(userAccount);
 
-            if (userAccount.ServerStats.LookedUpClass >= 11)
+            if (userAccount.ServerStats.LookedUpClass >= 10)
                 _ = GoldenSunCommands.AwardClassSeries("Page Series", user, channel);
+            await Task.CompletedTask;
+        }
+
+        internal static async Task UserLookedUpItem(SocketGuildUser user, SocketTextChannel channel)
+        {
+            var userAccount = EntityConverter.ConvertUser(user);
+            userAccount.ServerStats.LookedUpItem++;
+            UserAccountProvider.StoreUser(userAccount);
+
+            if (userAccount.ServerStats.LookedUpItem >= 20)
+                _ = GoldenSunCommands.AwardClassSeries("Scrapper Series", user, channel);
             await Task.CompletedTask;
         }
     }

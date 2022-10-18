@@ -5,15 +5,15 @@ using IodemBot.ColossoBattles;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
-    internal class DarkEffect : Effect
+    internal class LightEffect : Effect
     {
-        public override string Type => "Dark";
+        public override string Type => "Light";
 
         public override List<string> Apply(ColossoFighter user, ColossoFighter target)
         {
             List<string> log = new();
 
-            var newElement = new[] { Element.Venus, Element.Mars, Element.Jupiter, Element.Mercury }.OrderBy(e => target.ElStats.GetRes(e)).First();
+            var newElement = new[] { Element.Venus, Element.Mars, Element.Jupiter, Element.Mercury }.OrderByDescending(e => user.ElStats.GetPower(e)).First();
 
             if (user.SelectedMove.Effects.Any(e => e.Type == Type))
             {
@@ -32,7 +32,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public override string ToString()
         {
-            return "Exploits the opponents weakest element.";
+            return "Draws out the users strongest element.";
         }
     }
 }

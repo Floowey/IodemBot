@@ -26,23 +26,7 @@ namespace IodemBot.ColossoBattles
 
     public abstract class ColossoFighter : IComparable<ColossoFighter>, ICloneable
     {
-        public static readonly Dictionary<Condition, string> ConditionStrings = new()
-        {
-            { Condition.Down, "<:curse:538074679492083742>" },
-            { Condition.Poison, "<:Poison:549526931847249920>" },
-            { Condition.Venom, "<:Venom:598458704400220160>" },
-            { Condition.Seal, "<:Psy_Seal:549526931465568257>" },
-            { Condition.Stun, "<:Flash_Bolt:536966441862299678>" },
-            { Condition.DeathCurse, "" },
-            { Condition.Haunt, "<:Haunted:549526931821953034>" },
-            { Condition.ItemCurse, "<:Condemn:583651784040644619>" },
-            { Condition.Flinch, "" },
-            { Condition.Delusion, "<:delusion:549526931637534721>" },
-            { Condition.Sleep, "<:Sleep:555427023519088671>" },
-            { Condition.Counter, "" }
-        };
-
-        [JsonIgnore] private readonly List<Condition> _conditionsAppliedThisTurn = new();
+        [JsonIgnore] private readonly Dictionary<Condition, int> _conditionsFromTurn = new();
         [JsonIgnore] public List<Buff> Buffs = new();
 
         [JsonProperty("Conditions", ItemConverterType = typeof(StringEnumConverter))]
@@ -82,7 +66,8 @@ namespace IodemBot.ColossoBattles
 
         public string ImgUrl { get; set; }
         [JsonIgnore] public List<Move> Moves { get; set; }
-
+        public Passive Passive { get; set; }
+        public int PassiveLevel { get; set; }
         [JsonIgnore] public ColossoBattle Battle { get; set; }
         [JsonIgnore] public Team party { get; set; }
         [JsonIgnore] public Team enemies => party == Team.A ? Team.B : Team.A;
@@ -137,7 +122,7 @@ namespace IodemBot.ColossoBattles
                 if (con == Condition.Poison && HasCondition(Condition.Venom)) return;
 
                 _conditions.Add(con);
-                _conditionsAppliedThisTurn.Add(con);
+                _conditionsFromTurn[con] = Battle?.TurnNumber ?? 0;
             }
         }
 
@@ -175,32 +160,32 @@ namespace IodemBot.ColossoBattles
                     : deathCurseEmotes[DeathCurseCounter]);
             }
 
-            _conditions.ForEach(c => s.Append(ConditionStrings.GetValueOrDefault(c, "")));
+            _conditions.Where(c => c != Condition.DeathCurse).ToList().ForEach(c => s.Append(Emotes.GetIcon(c, "")));
 
             var stat = MultiplyBuffs("Attack");
             if (stat != 1)
                 s.Append(
-                    $"{(stat > 1 ? "<:Atk_Increase:669146889471393833>" : "<:Atk_Decrease:669147349859303433>")}`x{stat}`");
+                    $"{(stat > 1 ? "<:Atk_Increase:669146889471393833>" : "<:Atk_Decrease:669147349859303433>").ToShortEmote()}`x{stat}`");
 
             stat = MultiplyBuffs("Defense");
             if (stat != 1)
                 s.Append(
-                    $"{(stat > 1 ? "<:Def_Increase:669147527710375957>" : "<:Def_Decrease:669147401780461568>")}`x{stat}`");
+                    $"{(stat > 1 ? "<:Def_Increase:669147527710375957>" : "<:Def_Decrease:669147401780461568>").ToShortEmote()}`x{stat}`");
 
             stat = MultiplyBuffs("Resistance");
             if (stat != 1)
                 s.Append(
-                    $"{(stat > 1 ? "<:Res_Increase:669147593963601960>" : "<:Res_Decrease:669147473373298698>")}`x{stat}`");
+                    $"{(stat > 1 ? "<:Res_Increase:669147593963601960>" : "<:Res_Decrease:669147473373298698>").ToShortEmote()}`x{stat}`");
 
             stat = MultiplyBuffs("Power");
             if (stat != 1)
                 s.Append(
-                    $"{(stat > 1 ? "<:Pow_Increase:669147830316695563>" : "<:Pow_Decrease:669147728651223040>")}`x{stat}`");
+                    $"{(stat > 1 ? "<:Pow_Increase:669147830316695563>" : "<:Pow_Decrease:669147728651223040>").ToShortEmote()}`x{stat}`");
 
             stat = MultiplyBuffs("Speed");
             if (stat != 1)
                 s.Append(
-                    $"{(stat > 1 ? "<:Spe_Increase:669147782732316682>" : "<:Spe_Decrease:669147666164350976>")}`x{stat}`");
+                    $"{(stat > 1 ? "<:Spe_Increase:669147782732316682>" : "<:Spe_Decrease:669147666164350976>").ToShortEmote()}`x{stat}`");
 
             return s.ToString();
         }
@@ -347,37 +332,50 @@ namespace IodemBot.ColossoBattles
             RemoveCondition(Condition.Flinch);
 
             //Chance to wake up
-            if (HasCondition(Condition.Sleep) && !_conditionsAppliedThisTurn.Contains(Condition.Sleep))
-                if (Global.RandomNumber(0, 100) <= 60)
-                {
-                    RemoveCondition(Condition.Sleep);
-                    turnLog.Add($"{Name} wakes up.");
-                }
+            if (HasCondition(Condition.Sleep))
+            {
+                if (!_conditionsFromTurn.TryGetValue(Condition.Sleep, out int fromTurn)) fromTurn = 0;
+                if (Battle.TurnNumber - fromTurn != 0)
+                    if (Battle.TurnNumber - fromTurn >= Party.Count || Global.RandomNumber(0, 100) <= 60)
+                    {
+                        RemoveCondition(Condition.Sleep);
+                        turnLog.Add($"{Name} wakes up.");
+                    }
+            }
 
             //Chance to remove Stun
-            if (HasCondition(Condition.Stun) && !_conditionsAppliedThisTurn.Contains(Condition.Stun))
-                if (Global.RandomNumber(0, 100) <= 60)
-                {
-                    RemoveCondition(Condition.Stun);
-                    turnLog.Add($"{Name} can move again.");
-                }
-
+            if (HasCondition(Condition.Stun))
+            {
+                if (!_conditionsFromTurn.TryGetValue(Condition.Stun, out int fromTurn)) fromTurn = 0;
+                if (Battle.TurnNumber - fromTurn != 0)
+                    if (Battle.TurnNumber - fromTurn >= Party.Count || Global.RandomNumber(0, 100) <= 60)
+                    {
+                        RemoveCondition(Condition.Stun);
+                        turnLog.Add($"{Name} can move again.");
+                    }
+            }
             //Chance to remove Seal
-            if (HasCondition(Condition.Seal) && !_conditionsAppliedThisTurn.Contains(Condition.Seal))
-                if (Global.RandomNumber(0, 100) <= 40)
-                {
-                    RemoveCondition(Condition.Seal);
-                    turnLog.Add($"{Name}'s Psynergy is no longer sealed.");
-                }
-
+            if (HasCondition(Condition.Seal))
+            {
+                if (!_conditionsFromTurn.TryGetValue(Condition.Seal, out int fromTurn)) fromTurn = 0;
+                if (Battle.TurnNumber - fromTurn != 0)
+                    if (Battle.TurnNumber - fromTurn >= Party.Count || Global.RandomNumber(0, 100) <= 60)
+                    {
+                        RemoveCondition(Condition.Seal);
+                        turnLog.Add($"{Name}'s Psynergy is no longer sealed.");
+                    }
+            }
             //Chance to remove Delusion
-            if (HasCondition(Condition.Delusion) && !_conditionsAppliedThisTurn.Contains(Condition.Delusion))
-                if (Global.RandomNumber(0, 100) <= 33)
-                {
-                    RemoveCondition(Condition.Delusion);
-                    turnLog.Add($"{Name} can see clearly again.");
-                }
-
+            if (HasCondition(Condition.Delusion))
+            {
+                if (!_conditionsFromTurn.TryGetValue(Condition.Delusion, out int fromTurn)) fromTurn = 0;
+                if (Battle.TurnNumber - fromTurn != 0)
+                    if (Battle.TurnNumber - fromTurn >= Party.Count || Global.RandomNumber(0, 100) <= 33)
+                    {
+                        RemoveCondition(Condition.Delusion);
+                        turnLog.Add($"{Name} can see clearly again.");
+                    }
+            }
             if (HasCondition(Condition.DeathCurse))
             {
                 DeathCurseCounter--;
@@ -397,7 +395,6 @@ namespace IodemBot.ColossoBattles
                 }
             }
 
-            _conditionsAppliedThisTurn.Clear();
             return turnLog;
         }
 
@@ -562,13 +559,17 @@ namespace IodemBot.ColossoBattles
             DeathCurseCounter = 4;
         }
 
-        public void RemoveCondition(params Condition[] con)
+        public int RemoveCondition(params Condition[] con)
         {
+            var removed = 0;
             foreach (var c in con)
             {
-                _conditions.Remove(c);
+                if (_conditions.Remove(c))
+                    removed++;
+                _conditionsFromTurn.Remove(c);
                 if (c == Condition.DeathCurse) DeathCurseCounter = 4;
             }
+            return removed;
         }
 
         public List<string> Revive(uint percentage)

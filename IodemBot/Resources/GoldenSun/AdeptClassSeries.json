@@ -762,6 +762,7 @@
         "movepool": [
           "Ice Horn",
           "Restore",
+          "Cure Poison",
           "Ply Well"
         ],
         "statMultipliers": {
@@ -777,6 +778,7 @@
         "movepool": [
           "Ice Horn",
           "Restore",
+          "Cure Poison",
           "Ply Well",
           "Wish"
         ],
@@ -793,6 +795,7 @@
         "movepool": [
           "Ice Missile",
           "Restore",
+          "Cure Poison",
           "Pure Ply",
           "Wish Well"
         ],
@@ -809,6 +812,7 @@
         "movepool": [
           "Ice Missile",
           "Restore",
+          "Cure Poison",
           "Pure Ply",
           "Pure Wish"
         ],
@@ -1711,7 +1715,7 @@
     "requirement": "DungeonsCompleted",
     "isDefault": false,
     "archtype": "Mage",
-    "description": "Aqua Pilgrims travel the world and spread their wisdom. Most find their destiny at the same, sacret place..."
+    "description": "Aqua Pilgrims travel the world and spread their wisdom. Most find their destiny at the same, sacred place..."
   },
   {
     "name": "Air Seer Series",
@@ -2386,7 +2390,7 @@
     "requirement": "ColossoWins",
     "isDefault": false,
     "archtype": "Mage",
-    "description": "Young Scrappers like to tinker with mechanisms, which they try to make the best of in battles."
+    "description": "Scrappers start young to find the best swords, the best gear, to help them shine in battle."
   },
   {
     "name": "Samurai Series",
@@ -2622,6 +2626,7 @@
           "Rockslide",
           "Cluster Bomb",
           "Restore",
+          "Cure Poison",
           "Wish Well"
         ],
         "statMultipliers": {
@@ -2639,6 +2644,7 @@
           "Avalanche",
           "Carpet Bomb",
           "Restore",
+          "Cure Poison",
           "Pure Wish"
         ],
         "statMultipliers": {
@@ -2679,6 +2685,7 @@
           "Shine Plasma",
           "Hail Prism",
           "Restore",
+          "Cure Poison",
           "Wish Well",
           "Revive"
         ],
@@ -2695,7 +2702,7 @@
         "movepool": [
           "Spark Plasma",
           "Freeze Prism",
-          "Restore",
+          "Remedy",
           "Pure Wish",
           "Revive"
         ],

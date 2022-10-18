@@ -36,6 +36,8 @@ namespace IodemBot.ColossoBattles
                 Dungeons = new Dictionary<string, Dungeon>(
                     JsonConvert.DeserializeObject<Dictionary<string, Dungeon>>(json),
                     StringComparer.InvariantCultureIgnoreCase);
+
+                Dungeons.Values.ToList().SelectMany(d => d.Matchups.SelectMany(m => m.Enemy)).ToList();
             }
             catch (Exception e) // Just for debugging
             {
@@ -239,6 +241,8 @@ namespace IodemBot.ColossoBattles
                     {
                         var enemy = GetEnemy(s);
                         enemies.Add(enemy);
+                        if (enemy.Name.Contains("Not Implemented"))
+                            Console.WriteLine($"Enemy {s} not found. {FlavourText}");
                     });
                     return enemies;
                 }
@@ -257,19 +261,19 @@ namespace IodemBot.ColossoBattles
 
     public class Requirement
     {
-        public Element[] Elements { get; set; } = { };
+        public Element[] Elements { get; set; } = Array.Empty<Element>();
 
-        public ArchType[] ArchTypes { get; set; } = { };
+        public ArchType[] ArchTypes { get; set; } = Array.Empty<ArchType>();
 
-        public string[] ClassSeries { get; set; } = { };
-        public string[] Classes { get; set; } = { };
+        public string[] ClassSeries { get; set; } = Array.Empty<string>();
+        public string[] Classes { get; set; } = Array.Empty<string>();
         public int MinLevel { get; set; } = 0;
         public int MaxLevel { get; set; } = 200;
 
-        public string[] TagsRequired { get; set; } = { };
-        public string[] TagsAny { get; set; } = { };
+        public string[] TagsRequired { get; set; } = Array.Empty<string>();
+        public string[] TagsAny { get; set; } = Array.Empty<string>();
         public int TagsHowMany { get; set; } = 0;
-        public string[] TagsLock { get; set; } = { };
+        public string[] TagsLock { get; set; } = Array.Empty<string>();
 
         public string GetDescription()
         {

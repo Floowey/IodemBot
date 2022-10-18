@@ -25,6 +25,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public virtual int TargetNr { get; set; }
         public virtual uint Range { get; set; } = 1;
         public virtual bool HasPriority { get; set; } = false;
+        public virtual string Description { get; set; }
 
         [JsonIgnore]
         public bool OnEnemy
@@ -69,43 +70,55 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public List<ColossoFighter> GetTarget(ColossoFighter user)
         {
             var targets = new List<ColossoFighter>();
-            var playerCount = user.Battle.GetTeam(user.party).Count - 1;
-            var enemyCount = user.Battle.GetTeam(user.enemies).Count - 1;
+            var playerMaxIndex = user.Party.Count - 1;
+            var enemyMaxIndex = user.Enemies.Count - 1;
 
-            switch (TargetType)
+            try
             {
-                case TargetType.PartySelf:
-                    targets.Add(user);
-                    break;
+                switch (TargetType)
+                {
+                    case TargetType.PartySelf:
+                        targets.Add(user);
+                        break;
 
-                case TargetType.PartySingle:
-                    TargetNr = Math.Min(TargetNr, playerCount);
-                    targets.Add(user.Party[TargetNr]);
-                    break;
+                    case TargetType.PartySingle:
+                        TargetNr = Math.Min(TargetNr, playerMaxIndex);
+                        targets.Add(user.Party[TargetNr]);
+                        break;
 
-                case TargetType.PartyAll:
-                    TargetNr = Math.Min(TargetNr, playerCount);
-                    targets.AddRange(user.Battle.GetTeam(user.party));
-                    break;
+                    case TargetType.PartyAll:
+                        targets.AddRange(user.Party);
+                        break;
 
-                case TargetType.EnemyRange:
-                    TargetNr = Math.Min(TargetNr, enemyCount);
-                    var targetTeam = user.Battle.GetTeam(user.enemies);
-                    for (var i = -(int)Range + 1; i <= Range - 1; i++)
-                    {
-                        if (TargetNr + i >= 0 && TargetNr + i < targetTeam.Count)
+                    case TargetType.EnemyRange:
+                        TargetNr = Math.Min(TargetNr, enemyMaxIndex);
+                        var targetTeam = user.Enemies;
+                        for (var i = -(int)Range + 1; i <= Range - 1; i++)
                         {
-                            targets.Add(targetTeam[TargetNr + i]);
+                            if (TargetNr + i >= 0 && TargetNr + i < targetTeam.Count)
+                            {
+                                targets.Add(targetTeam[TargetNr + i]);
+                            }
                         }
-                    }
 
-                    break;
+                        break;
 
-                case TargetType.EnemyAll:
-                    targets.AddRange(user.Enemies);
-                    break;
+                    case TargetType.EnemyAll:
+                        targets.AddRange(user.Enemies);
+                        break;
+                }
             }
-
+            catch (ArgumentOutOfRangeException e)
+            {
+                throw new InvalidOperationException($"{user.Name} mistargetted with {Name} while targetting {TargetNr}");
+            }
+            finally
+            {
+                if (!targets.Any())
+                {
+                    targets.Add(OnEnemy ? user.Enemies.First() : user.Party.First());
+                }
+            }
             return targets;
         }
 

@@ -14,7 +14,7 @@ namespace IodemBot.Preconditions
         {
             if (context.User is SocketGuildUser gUser)
             {
-                if (gUser.Roles.Any(r => r.Name == "Admin" || r.Name == "Moderators" || r.Name == "Colosso Guard") || gUser.Id == 300339714311847936 || context.Guild.Id == 668442573899300894)
+                if (gUser.Roles.Any(r => r.Name == "Admin" || r.Name == "Moderators" || r.Name == "Colosso Guard") || context.Guild.Id == 668442573899300894)
                 {
                     return Task.FromResult(PreconditionResult.FromSuccess());
                 }
@@ -22,6 +22,10 @@ namespace IodemBot.Preconditions
                 {
                     return Task.FromResult(PreconditionResult.FromError("You must be staff to run this command."));
                 }
+            }
+            else if (context.User.Id == 300339714311847936)
+            {
+                return Task.FromResult(PreconditionResult.FromSuccess());
             }
             else
             {

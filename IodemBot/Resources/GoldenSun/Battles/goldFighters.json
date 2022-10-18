@@ -450,6 +450,7 @@
         "Reflux",
         "Aurora",
         "Ulysses",
+        "Mars",
         "Zagan",
         "Tiamat",
         "Meteor"
@@ -500,8 +501,10 @@
         "Revive",
         "Revive",
         "Revive",
+        "Flint",
         "Meld",
         "Chain",
+        "Venus",
         "Zagan",
         "Ramses",
         "Cybele",
@@ -510,7 +513,7 @@
       "stats": {
         "maxHP": 733,
         "maxPP": 147,
-        "Atk": 520,
+        "Atk": 490,
         "Def": 247,
         "Spd": 253
       },
@@ -551,6 +554,7 @@
         "Revive",
         "Echo",
         "Steel",
+        "Venus",
         "Zagan",
         "Ramses",
         "Cybele",
@@ -559,7 +563,7 @@
       "stats": {
         "maxHP": 660,
         "maxPP": 120,
-        "Atk": 493,
+        "Atk": 480,
         "Def": 227,
         "Spd": 200
       },
@@ -597,7 +601,6 @@
       "imgurl": "",
       "movepool": [
         "High Impact",
-        "High Impact",
         "Pure Wish",
         "Pure Wish",
         "Freeze Prism",
@@ -608,7 +611,8 @@
         "Break",
         "Fizz",
         "Steam",
-        "Balm",
+        "Sleet",
+        "Mercury",
         "Nereid",
         "Neptune",
         "Ulysses"
@@ -1124,7 +1128,8 @@
         "DeathCurse",
         "Haunt"
       ],
-      "isImmuneToOHKO": true
+      "isImmuneToOHKO": true,
+      "Tags": [ "VIP", "Head" ]
     },
     {
       "movepool": [ "Guard Aura" ],

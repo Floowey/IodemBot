@@ -36,7 +36,7 @@ namespace IodemBot.ColossoBattles
             _client.Ready -= _client_Ready;
             _ = Task.Run(async () =>
             {
-                await Task.Delay(2000);
+                await Task.Delay(5000);
                 foreach (var guild in _client.Guilds)
                 {
                     await Task.Delay(1000);
@@ -101,13 +101,12 @@ namespace IodemBot.ColossoBattles
                 await PrepareBattleChannel("Weyard-Wilds", guild, persistent: true), BattleDifficulty.Easy));
             _battles.Add(new SingleBattleEnvironment(this, "Woods", gs.ColossoChannel, true,
                 await PrepareBattleChannel("Weyard-Woods", guild, persistent: true), BattleDifficulty.Medium));
-            //battles.Add(new SingleBattleEnvironment("Wealds", LobbyChannel, await PrepareBattleChannel("Weyard-Wealds"), BattleDifficulty.Hard));
+            _battles.Add(new SingleBattleEnvironment(this, "Wealds", gs.ColossoChannel, true,
+                await PrepareBattleChannel("Weyard-Wealds", guild, persistent: true), BattleDifficulty.Hard));
 
             _battles.Add(new EndlessBattleEnvironment(this, "Endless", gs.ColossoChannel, true,
                 await PrepareBattleChannel("Endless-Encounters", guild, persistent: true)));
 
-            //battles.Add(new GauntletBattleEnvironment("Dungeon", LobbyChannel, await PrepareBattleChannel("deep-dungeon"), "Vale"));
-            //battles.Add(new GauntletBattleEnvironment("Catabombs", LobbyChannel, await PrepareBattleChannel("chilly-catacombs"), "Vale"));
             _battles.Add(new TeamBattleEnvironment(this, "PvP", gs.ColossoChannel, false,
                 await PrepareBattleChannel("PvP-A", guild, RoomVisibility.All, true),
                 await PrepareBattleChannel("PvP-B", guild, RoomVisibility.TeamB, true), gs.TeamBRole));
@@ -118,8 +117,8 @@ namespace IodemBot.ColossoBattles
             if (Global.Client.Activity == null)
             {
 #if DEBUG
-                await Global.Client.SetGameAsync("in Floowey's Palace.",
-                  "https://www.twitch.tv/directory/game/Golden%20Sun", ActivityType.Competing);
+                await Global.Client.SetGameAsync("in Babi's Palace.",
+                  "https://www.twitch.tv/directory/game/Golden%20Sun", ActivityType.Streaming);
 #else
                 await Global.Client.SetGameAsync("in Babi's Palace.",
                     "https://www.twitch.tv/directory/game/Golden%20Sun", ActivityType.Streaming);

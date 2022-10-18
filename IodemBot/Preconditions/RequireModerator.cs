@@ -14,7 +14,7 @@ namespace IodemBot.Preconditions
         {
             if (context.User is SocketGuildUser gUser)
             {
-                if (gUser.Roles.Any(r => r.Name is "Admin" or "Moderators") || gUser.Id == 300339714311847936)
+                if (gUser.Roles.Any(r => r.Name is "Admin" or "Moderators"))
                 {
                     return Task.FromResult(PreconditionResult.FromSuccess());
                 }
@@ -22,6 +22,10 @@ namespace IodemBot.Preconditions
                 {
                     return Task.FromResult(PreconditionResult.FromError("You must be moderator to run this command."));
                 }
+            }
+            else if (context.User.Id == 300339714311847936)
+            {
+                return Task.FromResult(PreconditionResult.FromSuccess());
             }
             else
             {

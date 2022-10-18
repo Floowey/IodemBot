@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using IodemBot.Core.UserManagement;
 using IodemBot.Extensions;
+using IodemBot.Modules.GoldenSunMechanics;
 
 namespace IodemBot.ColossoBattles
 {
@@ -109,9 +110,75 @@ namespace IodemBot.ColossoBattles
                     }
                 }
             }
+
+            foreach (var fighter in TeamA.Concat(TeamB).OfType<NpcEnemy>().Where(f => f.Tags.Any(t => t.StartsWith("ExtraTurns:"))))
+            {
+                var splits = fighter.Tags.First(t => t.StartsWith("ExtraTurns")).Split(':');
+                var turns = int.Parse(splits.ElementAt(1));
+                fighter.ExtraTurns = turns;
+            }
+
             IsActive = true;
             foreach (var p in TeamA.Concat(TeamB))
             {
+                switch (p.Passive.Name)
+                {
+                    case "Stone Skin":
+                        if (p.IsAlive)
+                        {
+                            p.DefensiveMult = p.Passive.args[p.PassiveLevel];
+                            Log.Add($"{p.Name}'s skin hardens.");
+                        }
+                        break;
+
+                    case "Instant Ignition":
+                        if (!p.IsAlive)
+                        {
+                            p.OffensiveMult = p.Passive.args[p.PassiveLevel];
+                            Log.Add($"{p.Name} gets fired up.");
+                        }
+                        break;
+
+                    case "Soothing Song":
+                        if (!p.IsAlive)
+                        {
+                            var c = p.RemoveCondition(new[] { Condition.Poison, Condition.Venom, Condition.Haunt });
+                            if (c > 0)
+                                Log.Add($"{p.Name} is relieved of any ailments");
+                        }
+                        break;
+
+                    case "Vital Spark":
+                        if (!p.IsAlive)
+                            Log.Add($"{p.Name}'s inner spark reignites.");
+                        p.Revive((uint)p.Passive.args[p.PassiveLevel]);
+                        break;
+
+                    case "Fiery Reflex":
+                        if (!p.IsAlive)
+                        {
+                            p.AddCondition(Condition.Counter);
+                            Log.Add($"{p.Name} strikes a battle pose.");
+                        }
+                        break;
+
+                    case "Brisk Flow":
+                        if (!p.IsAlive)
+                        {
+                            p.RestorePp((uint)(p.Stats.MaxPP * p.Passive.args[p.PassiveLevel]));
+                            Log.Add($"A brisk flow refills {p.Name}'s PP.");
+                        }
+                        break;
+
+                    case "Petrichor Scent":
+                        if (!p.IsAlive)
+                        {
+                            p.Heal((uint)(p.Stats.MaxHP * p.Passive.args[p.PassiveLevel]));
+                            Log.Add($"The smell of geosmin lifts {p.Name}'s health.");
+                        }
+                        break;
+                }
+
                 if (p is NpcEnemy) p.SelectRandom();
 
                 if (p is PlayerFighter fighter)
@@ -157,7 +224,9 @@ namespace IodemBot.ColossoBattles
             if (TurnActive) return false;
 
             if (!(TeamA.All(p => p.HasSelected) && TeamB.All(p => p.HasSelected))) return false;
-            Log.Clear();
+
+            if(TurnNumber!=0)
+                Log.Clear();
             OutValue = -1;
             if (SizeTeamB == 0 || SizeTeamA == 0)
             {
@@ -175,12 +244,15 @@ namespace IodemBot.ColossoBattles
                 StartTurn(); // moves with priority
                 MainTurn();
                 ExtraTurn(); // extra Turns
-                EndTurn();
             }
             catch (Exception e)
             {
                 Log.Add(e.ToString());
                 Console.WriteLine("Turn Processing Error: " + e);
+            }
+            finally
+            {
+                EndTurn();
             }
 
             //Check for Game Over
@@ -189,43 +261,38 @@ namespace IodemBot.ColossoBattles
             return true;
         }
 
-        private void StartTurn()
+        private List<ColossoFighter> GetFighterOrder()
         {
             var fighters = TeamA.Concat(TeamB).ToList();
             fighters.Shuffle();
-            fighters.OrderByDescending(f => f.Stats.Spd * f.MultiplyBuffs("Speed"))
-                .ToList()
-                .ForEach(f => Log.AddRange(f.StartTurn()));
+
+            fighters.Where(p => p.IsAlive && p.Passive.Equals("Tail Wind")).ToList().ForEach(p => Log.Add($"{p.Name} swiftly acts."));
+            return fighters
+                .OrderByDescending(f => f.Passive.Equals("Tail Wind") && TurnNumber == 0 && 
+                    (f.PassiveLevel == 2 || f.SelectedMove is StatusPsynergy || (f.SelectedMove is OffensivePsynergy && f.PassiveLevel == 1)))
+                .ThenBy(f => f.Tags.Contains("OathIdleness"))
+                .ThenByDescending(f => f.Stats.Spd * f.MultiplyBuffs("Speed"))
+                .ToList();
+        }
+
+        private void StartTurn()
+        {
+            GetFighterOrder().ForEach(f => Log.AddRange(f.StartTurn()));
         }
 
         private void MainTurn()
         {
-            var fighters = TeamA.Concat(TeamB).ToList();
-            fighters.Shuffle();
-            fighters
-                .OrderByDescending(f => f.Stats.Spd * f.MultiplyBuffs("Speed"))
-                .ToList()
-                .ForEach(f => Log.AddRange(f.MainTurn()));
+            GetFighterOrder().ForEach(f => Log.AddRange(f.MainTurn()));
         }
 
         private void ExtraTurn()
         {
-            var fighters = TeamA.Concat(TeamB).ToList();
-            fighters.Shuffle();
-            fighters
-                .OrderByDescending(f => f.Stats.Spd * f.MultiplyBuffs("Speed"))
-                .ToList()
-                .ForEach(f => Log.AddRange(f.ExtraTurn()));
+            GetFighterOrder().ForEach(f => Log.AddRange(f.ExtraTurn()));
         }
 
         private void EndTurn()
         {
-            var fighters = TeamA.Concat(TeamB).ToList();
-            fighters.Shuffle();
-            fighters.OrderByDescending(f => f.Stats.Spd * f.MultiplyBuffs("Speed"))
-                .ToList()
-                .ForEach(f => Log.AddRange(f.EndTurn()));
-            //TeamA.RemoveAll(m => m.Name == "Runner");
+            GetFighterOrder().ForEach(f => Log.AddRange(f.EndTurn()));
             TeamB.RemoveAll(m => m.Name == "Runner");
         }
 

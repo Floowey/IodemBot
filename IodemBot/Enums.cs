@@ -22,16 +22,16 @@ namespace IodemBot
         Down,
         Poison,
         Venom,
-        Seal,
         Stun,
+        Sleep,
+        Delusion,
+        Seal,
         DeathCurse,
         Haunt,
-        ItemCurse,
-        Flinch,
-        Delusion,
-        Sleep,
-        Counter,
         SpiritSeal,
+        Flinch,
+        Counter,
+        ItemCurse,
         Decoy,
         Key,
         Trap
@@ -48,6 +48,12 @@ namespace IodemBot
     {
         Default,
         NoInventory
+    }
+
+    public enum PassiveOption
+    {
+        Default,
+        NoPassive
     }
 
     public enum DjinnOption
@@ -202,7 +208,9 @@ namespace IodemBot
     [JsonConverter(typeof(StringEnumConverter))]
     public enum RankEnum
     {
-        Level,
+        AllTime,
+        Week,
+        Month,
         Solo,
         Duo,
         Trio,

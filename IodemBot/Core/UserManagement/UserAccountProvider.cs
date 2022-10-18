@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 
 namespace IodemBot.Core.UserManagement
@@ -12,6 +13,20 @@ namespace IodemBot.Core.UserManagement
         private static readonly Dictionary<Tuple<RankEnum, EndlessMode>, LeaderBoard> LeaderBoards
             = new();
 
+        public static Calendar cal = new CultureInfo("en-US").Calendar;
+
+        public static string weekKey
+        {
+            get
+            {
+                int week = cal.GetWeekOfYear(DateTime.Now, CalendarWeekRule.FirstDay, DayOfWeek.Monday);
+                return $"{DateTime.Now.Year}-{week}";
+            }
+        }
+
+        public static string monthKey => $"{DateTime.Now.Year}-{DateTime.Now.Month}";
+        public static DateTime CurrentMonth => new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1);
+
         static UserAccountProvider()
         {
             //_persistentStorage = new PersistentStorage<UserAccount>();
@@ -22,8 +37,20 @@ namespace IodemBot.Core.UserManagement
                         new LeaderBoard(u =>
                             (ulong)(u.ServerStats.GetStreak(mode).GetEntry(rank).Item1 +
                                      u.ServerStatsTotal.GetStreak(mode).GetEntry(rank).Item1)));
-            LeaderBoards.Add(new Tuple<RankEnum, EndlessMode>(RankEnum.Level, EndlessMode.Default),
+
+            LeaderBoards.Add(new Tuple<RankEnum, EndlessMode>(RankEnum.AllTime, EndlessMode.Default),
                 new LeaderBoard(u => u.TotalXp));
+
+            LeaderBoards.Add(new Tuple<RankEnum, EndlessMode>(RankEnum.Week, EndlessMode.Default),
+                new LeaderBoard(u => (ulong)u.DailyXP
+                .Where(kv => kv.Key.Year == DateTime.Now.Year &&
+                cal.GetWeekOfYear(kv.Key, CalendarWeekRule.FirstDay, DayOfWeek.Monday) == cal.GetWeekOfYear(DateTime.Now, CalendarWeekRule.FirstDay, DayOfWeek.Monday))
+                .Select(kv => (decimal)kv.Value).Sum())
+            );
+
+            LeaderBoards.Add(new Tuple<RankEnum, EndlessMode>(RankEnum.Month, EndlessMode.Default),
+                new LeaderBoard(u => (ulong)(u.DailyXP.Where(kv => kv.Key >= CurrentMonth).Select(kv => (decimal)kv.Value).Sum()))
+            );
 
             foreach (var user in GetAllUsers())
             {
@@ -37,10 +64,12 @@ namespace IodemBot.Core.UserManagement
             }
         }
 
-        public static LeaderBoard GetLeaderBoard(RankEnum type = RankEnum.Level, EndlessMode mode = EndlessMode.Default)
+        public static LeaderBoard GetLeaderBoard(RankEnum type = RankEnum.AllTime, EndlessMode mode = EndlessMode.Default)
         {
-            if (type == RankEnum.Level) mode = EndlessMode.Default;
-            return LeaderBoards[new Tuple<RankEnum, EndlessMode>(type, mode)];
+            if (type == RankEnum.AllTime || type == RankEnum.Week || type == RankEnum.Month) mode = EndlessMode.Default;
+            var lb = LeaderBoards[new Tuple<RankEnum, EndlessMode>(type, mode)];
+            lb.Sort();
+            return lb;
         }
 
         public static UserAccount GetById(ulong userId)
@@ -194,7 +223,7 @@ namespace IodemBot.Core.UserManagement
                 return ((IEnumerable)_dict).GetEnumerator();
             }
 
-            private void Sort()
+            public void Sort()
             {
                 _dict.Sort((x, y) => y.Value.CompareTo(x.Value));
             }
@@ -218,13 +247,20 @@ namespace IodemBot.Core.UserManagement
 
             public void Set(UserAccount user)
             {
-                var val = _func.Invoke(user);
-                if (val > 0)
+                try
                 {
-                    if (ContainsKey(user.Id))
-                        this[user.Id] = val;
-                    else
-                        Add(user.Id, val);
+                    var val = _func.Invoke(user);
+                    if (val > 0)
+                    {
+                        if (ContainsKey(user.Id))
+                            this[user.Id] = val;
+                        else
+                            Add(user.Id, val);
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
                 }
             }
         }

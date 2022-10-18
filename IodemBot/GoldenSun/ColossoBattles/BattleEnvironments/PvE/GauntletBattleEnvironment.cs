@@ -221,7 +221,7 @@ namespace IodemBot.ColossoBattles
                     DungeonNr = Battle.OutValue;
                 if (DungeonNr >= 100)
                 {
-                    var taggedDungeon = Dungeon.Matchups.FirstOrDefault(d => d.Keywords.Contains($"@{DungeonNr}"));
+                    var taggedDungeon = Dungeon.Matchups.First(d => d.Keywords.Contains($"@{DungeonNr}"));
                     DungeonNr = Dungeon.Matchups.IndexOf(taggedDungeon);
                 }
 
@@ -234,7 +234,7 @@ namespace IodemBot.ColossoBattles
                 if (!_endOfDungeon)
                 {
                     await SummonsMessage.ModifyAsync(m => m.Content = Matchup.FlavourText);
-                    var text = $"{winners.First().Name}'s party wins Battle!";
+                    var text = $"{winners.First().Name}'s party wins the Battle!";
                     await Task.Delay(2000);
                     await StatusMessage.ModifyAsync(m =>
                     {
@@ -250,7 +250,7 @@ namespace IodemBot.ColossoBattles
                     winners.OfType<PlayerFighter>().ToList().ForEach(p =>
                         _ = ServerGames.UserWonDungeon(UserAccountProvider.GetById(p.Id), Dungeon, LobbyChannel));
 
-                    if (DateTime.Now <= new DateTime(2021, 11, 8) && Global.RandomNumber(0, 5) == 0)
+                    if (EventSchedule.CheckEvent("Halloween") && Global.RandomNumber(0, 5) == 0)
                     {
                         var r = new List<Rewardable> { new DefaultReward { Dungeon = "Halloween Special" } };
                         winners.OfType<PlayerFighter>().ToList().ForEach(p =>
@@ -258,7 +258,7 @@ namespace IodemBot.ColossoBattles
                                 LobbyChannel, BattleChannel));
                     }
 
-                    if (DateTime.Now <= new DateTime(2022, 1, 7) && Global.RandomNumber(0, 5) == 0)
+                    if (EventSchedule.CheckEvent("Christmas") && Global.RandomNumber(0, 5) == 0)
                     {
                         var r = new List<Rewardable> { new DefaultReward { Dungeon = "A Very Golden Christmas" } };
                         winners.OfType<PlayerFighter>().ToList().ForEach(p =>

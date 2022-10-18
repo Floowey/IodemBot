@@ -86,5 +86,32 @@ namespace IodemBot.Modules.GoldenSunMechanics
         // Ranger: Solo Battles (100, 300, 500)
         // Ninja: Total Damage (222 222, 888 888, 1 111 111)
         // White Mage: Points Healed (222 222, 555 555)
+
+        // Element Identities/Passives:
+        // Venus: Life, Defense
+        // Mars: Energy, Strength
+        // Jupiter: Speed, Wit
+        // Mercury: Health, Consistency
+
+        // Turn-One-Passives:
+
+        // Get these when you complete a Oath of Element run in that Element (can't switch Element):
+        // Venus: "Stone Skin", 50% Damage
+        // Mars: "Instant Ignition" 1.25% Damage Mult
+        // Jupiter: "Tail Wind", Act First
+        // Mercury: "Soothing Song" Restore Status
+
+        // Get these when you completel both Oath of Elements run, incl. one of those with the Oath of Solitude (can't team up)
+        // Venus/Mars: "Vital Spark", Revive to 25%
+        // Mars/Jupiter: "Fiery Reflex", Counter
+        // Jupiter/Mercury: "Brisk Flow" Restore 25% PP
+        // Mercury/Venus: "Petrichor Scent" Restore 33% HP
+
+        // Alternatives:
+        // "[...] Barrier" Immune to Psynergy (like the Tret cutscene)
+        // Djinn get recovered
+        // Djinn get standby
+        // Take no damage until it's your turn
+        // Be the target of enemies
     }
 }

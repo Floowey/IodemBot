@@ -79,7 +79,7 @@ namespace IodemBot.Modules
             var embed = new EmbedBuilder()
             .WithColor(Colors.Get(account.Element.ToString()))
             .WithAuthor(author)
-            .WithTitle($"Level {account.LevelNumber} {account.GsClass} {string.Join("", account.TrophyCase.Trophies.Select(t => t.Icon))} (Rank {UserAccounts.GetRank(account) + 1})");
+            .WithTitle($"Level {account.LevelNumber} {account.GsClass}"); // {string.Join("", account.TrophyCase.Trophies.Select(t => t.Icon))} (Rank {UserAccounts.GetRank(account) + 1})");
 
             switch (statusPage)
             {
@@ -92,7 +92,9 @@ namespace IodemBot.Modules
                         .AddField("Stats", p.Stats.ToString(), true)
                         .AddField("Elemental Stats", p.ElStats.ToString(), true)
                         .AddField("Unleash Rate", $"{p.UnleashRate}%", true)
-                        .AddField("XP", $"{account.Xp} - next in {account.XPneeded}{(account.NewGames >= 1 ? $"\n({account.TotalXp} total | {account.NewGames} resets)" : "")}", true);
+                        .AddField("XP", $"{account.Xp} - next in {account.XPneeded}{(account.NewGames >= 1 ? $"\n({account.TotalXp} total | {account.NewGames} resets)" : "")}", true)
+                        .AddField("Oaths", $"active: {string.Join(", ", account.Oaths.ActiveOaths.Select(o => o.ToString()))}\n+" +
+                        $"completed this run: {string.Join(", ", account.Oaths.OathsCompletedThisRun.Select(o => o.ToString()))}");
                     break;
 
                 case 1: // Stats
@@ -109,10 +111,15 @@ namespace IodemBot.Modules
                     break;
 
                 case 2: // Total Statistics
+                    var allTimeBestStreak = account.ServerStats.EndlessStreak + account.ServerStatsTotal.EndlessStreak;
                     embed
                         .AddField("Resets", account.NewGames, true)
                         .AddField("Total XP", account.TotalXp, true)
-                        .AddField("Colosso wins | Dungeon Wins", $"{account.ServerStatsTotal.ColossoWins} | {account.ServerStatsTotal.DungeonsCompleted}", true);
+                        .AddField("Colosso wins | Dungeon Wins", $"{account.ServerStatsTotal.ColossoWins} | {account.ServerStatsTotal.DungeonsCompleted}", true)
+                        .AddField("Endless Streaks", $"Solo: {allTimeBestStreak.Solo} | Duo: {allTimeBestStreak.Duo} \nTrio: {allTimeBestStreak.Trio} | Quad: {allTimeBestStreak.Quad}", true)
+                        .AddField("Oaths", $"sol. completed: {string.Join(", ", account.Oaths.CompletedSolitudeOaths.Select(o => o.ToString()))}\n" +
+                        $"completed: {string.Join(", ", account.Oaths.CompletedOaths.Except(account.Oaths.CompletedSolitudeOaths).Select(o => o.ToString()))}");
+
                     break;
 
                 default:
@@ -163,6 +170,9 @@ namespace IodemBot.Modules
         [ActionParameterComponent(Order = 1, Name = "class", Description = "class", Required = false)]
         public string SelectedClass { get; set; }
 
+        [ActionParameterComponent(Order = 1, Name = "Impulse", Description = "Impulse", Required = false)]
+        public string SelectedPassive { get; set; }
+
         public override bool GuildsOnly => true;
         public override EphemeralRule EphemeralRule => EphemeralRule.EphemeralOrFail;
 
@@ -194,6 +204,9 @@ namespace IodemBot.Modules
                     SelectedElement = Enum.Parse<Element>((string)options.FirstOrDefault().Value);
                     if (options.Count() > 1)
                         SelectedClass = (string)options.ElementAt(1).Value;
+
+                    if (options.Count() > 2)
+                        SelectedPassive = (string)options.ElementAt(2).Value;
                 }
 
                 return Task.CompletedTask;
@@ -213,11 +226,22 @@ namespace IodemBot.Modules
             RefreshAsync = RefreshAsync,
             FillParametersAsync = (selectOptions, idOptions) =>
             {
+                var isPassive = false;
                 if (idOptions != null && idOptions.Any() && (idOptions.FirstOrDefault() is string s && !s.IsNullOrEmpty()))
                 {
-                    SelectedElement = Enum.Parse<Element>((string)idOptions.FirstOrDefault());
-                    if (idOptions.Count() == 2)
-                        SelectedClass = (string)idOptions.ElementAt(1);
+                    if (s == "Passive")
+                    {
+                        isPassive = true;
+                    }
+                    else
+                    {
+                        SelectedElement = Enum.Parse<Element>((string)idOptions.FirstOrDefault());
+                        if (idOptions.Length == 2)
+                            SelectedClass = (string)idOptions.ElementAt(1);
+
+                        if (idOptions.Length == 3)
+                            SelectedPassive = (string)idOptions.ElementAt(2);
+                    }
                 }
 
                 if (selectOptions != null && selectOptions.Any())
@@ -229,7 +253,10 @@ namespace IodemBot.Modules
                     catch
                     {
                         SelectedElement = EntityConverter.ConvertUser(Context.User).Element;
-                        SelectedClass = selectOptions.FirstOrDefault();
+                        if (isPassive)
+                            SelectedPassive = selectOptions.FirstOrDefault();
+                        else
+                            SelectedClass = selectOptions.FirstOrDefault();
                     }
                 }
 
@@ -239,7 +266,7 @@ namespace IodemBot.Modules
 
         private async Task RefreshAsync(bool intoNew, MessageProperties msgProps)
         {
-            await ChangeAdeptAsync(Context, SelectedElement, SelectedClass);
+            await ChangeAdeptAsync(Context, SelectedElement, SelectedClass, SelectedPassive);
             if (intoNew)
             {
                 msgProps.Content = $"Welcome to the {SelectedElement} Clan, {Context.User.Mention}";
@@ -254,11 +281,11 @@ namespace IodemBot.Modules
             await Task.CompletedTask;
         }
 
-        public static async Task ChangeAdeptAsync(RequestContext context, Element selectedElement, string selectedClass = null)
+        public static async Task ChangeAdeptAsync(RequestContext context, Element selectedElement, string selectedClass = null, string selectedPassive = null)
         {
             var guser = (SocketGuildUser)context.User;
             await GiveElementRole(guser, selectedElement, context);
-            await ChangeAdept(guser, selectedElement, selectedClass, context);
+            await ChangeAdept(guser, selectedElement, selectedClass, selectedPassive, context);
 
             //loadedLoadout.ApplyLoadout(user);
         }
@@ -287,11 +314,16 @@ namespace IodemBot.Modules
             _ = user.AddRoleAsync(role);
         }
 
-        private static async Task ChangeAdept(IGuildUser guser, Element chosenElement, string classSeriesName, RequestContext context)
+        private static async Task ChangeAdept(IGuildUser guser, Element chosenElement, string classSeriesName, string passive, RequestContext context)
         {
             var user = EntityConverter.ConvertUser(guser);
             await ChangeElement(user, chosenElement, context);
             ChangeClass(user, classSeriesName);
+            user.Passives.SelectedPassive = passive ?? user.Passives.SelectedPassive;
+
+            user.Tags.Remove("Warrior");
+            user.Tags.Remove("Mage");
+            user.Tags.Add(AdeptClassSeriesManager.GetClassSeries(user).Archtype.ToString());
             UserAccountProvider.StoreUser(user);
         }
 
@@ -307,9 +339,15 @@ namespace IodemBot.Modules
                 removedEmbed.WithDescription($"<:Exclamatory:571309036473942026> Your {removed} was unequipped.");
                 _ = context.ReplyWithMessageAsync(EphemeralRule.EphemeralOrFail, embed: removedEmbed.Build());
             }
+            if (user.Oaths.IsOathOfElementActive())
+                return;
 
             user.Element = chosenElement;
             var tags = new[] { "VenusAdept", "MarsAdept", "JupiterAdept", "MercuryAdept" };
+
+            if (!user.Passives.GetSelectedPassive().elements.Contains(chosenElement))
+                user.Passives.SelectedPassive = Passives.AllPassives.FirstOrDefault(p => p.elements.Contains(chosenElement)).Name;
+
             user.Tags.RemoveAll(s => tags.Contains(s));
             if ((int)chosenElement < tags.Length)
             {
@@ -383,6 +421,7 @@ namespace IodemBot.Modules
             var allClasses = AdeptClassSeriesManager.AllClasses;
             var allAvailableClasses = allClasses.Where(c => c.IsDefault || account.BonusClasses.Any(bc => bc.Equals(c.Name)));
             var ofElement = allAvailableClasses.Where(c => c.Elements.Contains(account.Element)).Select(c => c.Name).OrderBy(n => n);
+            var availableClasses = AdeptClassSeriesManager.GetAvailableClasses(account);
 
             var embed = new EmbedBuilder();
             embed.WithTitle("Classes");
@@ -390,6 +429,9 @@ namespace IodemBot.Modules
             embed.AddField("Current Class", AdeptClassSeriesManager.GetClass(account).Name);
             embed.AddField($"Available as {Emotes.GetIcon(account.Element)} {account.Element} Adept:", string.Join(", ", ofElement));
             embed.AddField("Others Unlocked:", string.Join(", ", allAvailableClasses.Select(c => c.Name).Except(ofElement).OrderBy(n => n)));
+
+            embed.AddField("Selected Impulse", $"Impulse: {account.Passives.SelectedPassive}", true);
+            embed.AddField("Impulses?", "*Impulses are passives that do something on Turn 1. They get unlocked upgraded by completing Path of Element IV in combination with oaths.*");
             embed.WithFooter($"Total: {allAvailableClasses.Count()}/{allClasses.Count}");
             return embed.Build();
         }
@@ -400,6 +442,7 @@ namespace IodemBot.Modules
             var allAvailableClasses = allClasses.Where(c => c.IsDefault || account.BonusClasses.Any(bc => bc.Equals(c.Name)));
             var ofElement = allAvailableClasses.Where(c => c.Elements.Contains(account.Element)).OrderBy(n => n.Name);
 
+            var availableClasses = AdeptClassSeriesManager.GetAvailableClasses(account);
             var builder = new ComponentBuilder();
             var labels = account.Preferences.ShowButtonLabels;
 
@@ -414,10 +457,10 @@ namespace IodemBot.Modules
                     Emote = Emotes.GetEmote(element)
                 });
             }
-            builder.WithSelectMenu($"#{nameof(ChangeAdeptAction)}.", elementOptions);
+            builder.WithSelectMenu($"#{nameof(ChangeAdeptAction)}.", elementOptions, disabled: account.Oaths.IsOathOfElementActive());
 
             List<SelectMenuOptionBuilder> classOptions = new();
-            foreach (var series in ofElement)
+            foreach (var series in availableClasses)
             {
                 classOptions.Add(new()
                 {
@@ -427,6 +470,21 @@ namespace IodemBot.Modules
                 });
             }
             builder.WithSelectMenu($"#{nameof(ChangeAdeptAction)}", classOptions);
+
+            List<SelectMenuOptionBuilder> passiveOptions = new();
+            foreach (var passive in account.Passives.UnlockedPassives.Where(p => p.elements.Contains(account.Element)))
+            {
+                passiveOptions.Add(new()
+                {
+                    Label = $"{passive.Name} ({Passives.GetPassiveLevel(passive, account.Oaths) + 1})",
+                    Value = $"{passive.Name}",
+                    IsDefault = account.Passives.SelectedPassive == passive.Name,
+                    Description = passive.ShortDescription
+                });
+            }
+            if (passiveOptions.Any())
+                builder.WithSelectMenu($"#{nameof(ChangeAdeptAction)}.Passive", passiveOptions);
+
             builder.WithButton(labels ? "Status" : null, customId: $"#{nameof(StatusAction)}", style: ButtonStyle.Primary, emote: Emotes.GetEmote("StatusAction"), row: 3);
             builder.WithButton(labels ? "Loadouts" : null, $"#{nameof(LoadoutAction)}", style: ButtonStyle.Primary, emote: Emotes.GetEmote("LoadoutAction"));
             builder.WithButton(labels ? "Reveal to others" : null, $"{nameof(RevealEphemeralAction)}", ButtonStyle.Secondary,

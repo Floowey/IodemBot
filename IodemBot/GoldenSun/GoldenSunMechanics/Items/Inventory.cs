@@ -49,6 +49,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public static readonly uint RemoveCursedCost = 5000;
 
+        public static readonly uint GameTicketValue = 60;
+
         public static readonly int[] DailyRewards = { 0, 0, 1, 1, 2 };
 
         /// <summary>
@@ -79,21 +81,21 @@ namespace IodemBot.Modules.GoldenSunMechanics
         [JsonIgnore] private List<Item> MageGear { get; set; } = new();
 
         public uint Coins { get; set; }
+        public uint GameTickets { get; set; }
+
         public uint Upgrades { get; set; }
 
         internal uint MaxInvSize => BaseInvSize + 10 * Upgrades;
 
         public DateTime LastDailyChest { get; set; }
-        public int DailiesInARow { get; set; }
+
+        public int DailiesInARow { get; set; } = 0;
 
         internal int Count => Inv.Count;
 
         public bool IsFull => Count >= MaxInvSize;
 
-        internal bool HasDuplicate
-        {
-            get { return Inv.Any(i => Inv.Count(j => j.Name.Equals(i.Name)) > 1); }
-        }
+        internal bool HasDuplicate => Inv.DistinctBy(i => i.Itemname).Count() != Count;
 
         public Dictionary<ChestQuality, uint> Chests { get; set; } = new()
         {
@@ -141,6 +143,11 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
             if (chestQuality == ChestQuality.Daily)
             {
+                if ((DateTime.Now - LastDailyChest.Date).TotalHours <= 32)
+                    DailiesInARow++;
+                else
+                    DailiesInARow = 0;
+                LastDailyChest = DateTime.Now;
                 var rarity = (ItemRarity)(DailyRewards[DailiesInARow % DailyRewards.Length] + Math.Min(2, level / 33));
                 item = ItemDatabase.GetRandomItem(rarity);
             }
@@ -150,6 +157,18 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 item = ItemDatabase.GetRandomItem(rarity);
             }
 
+            return true;
+        }
+
+        private bool OpenChest(ChestQuality chestQuality)
+        {
+            CheckDaily();
+            Chests.TryGetValue(chestQuality, out var nOfChests);
+
+            if (nOfChests == 0) return false;
+
+            Chests.Remove(chestQuality);
+            Chests.Add(chestQuality, nOfChests - 1);
             return true;
         }
 
@@ -173,28 +192,10 @@ namespace IodemBot.Modules.GoldenSunMechanics
             return arch == ArchType.Warrior ? WarriorGear : MageGear;
         }
 
-        public bool OpenChest(ChestQuality chestQuality)
-        {
-            CheckDaily();
-            Chests.TryGetValue(chestQuality, out var nOfChests);
-
-            if (nOfChests == 0) return false;
-
-            Chests.Remove(chestQuality);
-            Chests.Add(chestQuality, nOfChests - 1);
-            return true;
-        }
-
         private void CheckDaily()
         {
             if (LastDailyChest.Date < DateTime.Now.Date && Chests[ChestQuality.Daily] == 0)
             {
-                if ((DateTime.Now.Date - LastDailyChest.Date).TotalDays <= 1)
-                    DailiesInARow++;
-                else if (DateTime.Now.Date >= new DateTime(day: 1, month: 2, year: 2021))
-                    DailiesInARow = 0;
-                else
-                    DailiesInARow++;
                 AwardChest(ChestQuality.Daily);
                 LastDailyChest = DateTime.Now;
             }
@@ -268,16 +269,21 @@ namespace IodemBot.Modules.GoldenSunMechanics
             };
             Coins = 0;
             Upgrades = 0;
+            GameTickets = 0;
             //LastDailyChest = DateTime.Now.Subtract(new TimeSpan(1, 0, 0, 0));
         }
 
-        internal Item GetItem(string item, Func<Item, bool> pre = null)
+        internal Item GetItem(string item, Func<Item, bool> pre = null, bool reverse = false)
         {
+            if (reverse)
+                Inv.Reverse();
             var i = Inv.FirstOrDefault(ii => pre?.Invoke(ii) ?? false);
             i ??= Inv.FirstOrDefault(d =>
                 item.Equals(d.Itemname, StringComparison.CurrentCultureIgnoreCase) && d.Nickname.IsNullOrEmpty());
             i ??= Inv.FirstOrDefault(d => item.Equals(d.Itemname, StringComparison.CurrentCultureIgnoreCase));
             i ??= Inv.FirstOrDefault(d => item.Equals(d.Nickname, StringComparison.CurrentCultureIgnoreCase));
+            if (reverse)
+                Inv.Reverse();
             return i;
         }
 
@@ -412,7 +418,18 @@ namespace IodemBot.Modules.GoldenSunMechanics
             if (IsFull) return false;
 
             if (!RemoveBalance(i.Price)) return false;
+            i.IsBoughtFromShop = true;
+            return Add(i);
+        }
 
+        public bool TicketBuy(string item)
+        {
+            var i = ItemDatabase.GetItem(item);
+            if (i.Name.Contains("NOT IMPLEMENTED!")) return false;
+            if (IsFull) return false;
+
+            if (!RemoveTickets(i.TicketPrice)) return false;
+            i.IsBoughtFromShop = true;
             return Add(i.Name);
         }
 
@@ -429,14 +446,19 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public bool Sell(string item)
         {
             if (!HasItem(item)) return false;
-            var it = GetItem(item);
+            var it = GetItem(item, reverse: true);
+
             if (WarriorGear.Concat(MageGear).Any(i => i.Name.Equals(it.Name, StringComparison.CurrentCultureIgnoreCase)))
                 if (Inv
                     .Count(i => string.Equals(i.Name, it.Name, StringComparison.InvariantCultureIgnoreCase)) == 1)
                     return false;
 
             Inv.Remove(it);
-            Coins += it.SellValue;
+            AddBalance(it.SellValue);
+
+            if (!it.IsBoughtFromShop && it.IsArtifact)
+                GameTickets += it.TicketValue;
+
             return true;
         }
 
@@ -455,6 +477,14 @@ namespace IodemBot.Modules.GoldenSunMechanics
             if (!HasBalance(amount)) return false;
 
             Coins -= amount;
+            return true;
+        }
+
+        public bool RemoveTickets(uint amount)
+        {
+            if (GameTickets < amount) return false;
+
+            GameTickets -= amount;
             return true;
         }
     }

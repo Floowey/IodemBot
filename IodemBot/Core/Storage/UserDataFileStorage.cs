@@ -76,9 +76,9 @@ namespace IodemBot.Core
                             var json = File.ReadAllText(filePath);
                             user = JsonConvert.DeserializeObject<UserAccount>(json);
                         }
-                        catch
+                        catch (Exception e)
                         {
-                            Console.WriteLine("Reading file failed, trying backup");
+                            Console.WriteLine($"Reading file failed, trying backup: {e}");
                             var json = File.ReadAllText(backupFile);
                             user = JsonConvert.DeserializeObject<UserAccount>(json);
                         }

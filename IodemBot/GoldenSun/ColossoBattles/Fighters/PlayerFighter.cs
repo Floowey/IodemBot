@@ -78,39 +78,40 @@ namespace IodemBot.ColossoBattles
         public DjinnOption DjinnOption { get; set; } = DjinnOption.Any;
         public BaseStatOption BaseStatOption { get; set; } = BaseStatOption.Default;
         public BaseStatManipulationOption BaseStatManipulationOption { get; set; } = BaseStatManipulationOption.Default;
+        public PassiveOption PassiveOption { get; set; } = PassiveOption.Default;
         public List<Summon> PossibleSummons => Summons.Where(s => s.CanSummon(Djinn)).Distinct().ToList();
         public uint SetLevel { get; set; } = 99;
         public Stats StatMultiplier { get; set; } = new(100, 100, 100, 100, 100);
 
-        public PlayerFighter CreatePlayerFighter(UserAccount avatar)
+        public PlayerFighter CreatePlayerFighter(UserAccount user)
         {
             var p = new PlayerFighter
             {
-                Name = avatar.Name,
-                ImgUrl = avatar.ImgUrl,
+                Name = user.Name,
+                ImgUrl = user.ImgUrl,
                 Factory = this,
-                Id = avatar.Id,
-                Moves = AdeptClassSeriesManager.GetMoveset(avatar)
+                Id = user.Id,
+                Moves = AdeptClassSeriesManager.GetMoveset(user)
             };
-            var @class = AdeptClassSeriesManager.GetClass(avatar);
-            var classSeries = AdeptClassSeriesManager.GetClassSeries(avatar);
+            var @class = AdeptClassSeriesManager.GetClass(user);
+            var classSeries = AdeptClassSeriesManager.GetClassSeries(user);
             if (classSeries.Name == "Curse Mage Series" || classSeries.Name == "Medium Series")
                 p.IsImmuneToItemCurse = true;
 
             var level = LevelOption switch
             {
                 LevelOption.SetLevel => SetLevel,
-                LevelOption.CappedLevel => Math.Min(avatar.LevelNumber, SetLevel),
-                _ => avatar.LevelNumber
+                LevelOption.CappedLevel => Math.Min(user.LevelNumber, SetLevel),
+                _ => user.LevelNumber
             };
 
-            p.Stats = GetStats(avatar, level);
-            p.ElStats = AdeptClassSeriesManager.GetElStats(avatar);
+            p.Stats = GetStats(user, level);
+            p.ElStats = AdeptClassSeriesManager.GetElStats(user);
 
             switch (InventoryOption)
             {
                 case InventoryOption.Default:
-                    var gear = avatar.Inv.GetGear(classSeries.Archtype);
+                    var gear = user.Inv.GetGear(classSeries.Archtype);
                     gear.ForEach(g => { p.Stats += g.AddStatsOnEquip; });
                     gear.ForEach(g => { p.ElStats += g.AddElStatsOnEquip; });
                     gear.ForEach(g =>
@@ -157,9 +158,9 @@ namespace IodemBot.ColossoBattles
             switch (DjinnOption)
             {
                 case DjinnOption.Any:
-                    var djinnToAdd = avatar.DjinnPocket.GetDjinns();
+                    var djinnToAdd = user.DjinnPocket.GetDjinns();
                     Djinn.AddRange(djinnToAdd);
-                    Summons.AddRange(avatar.DjinnPocket.Summons);
+                    Summons.AddRange(user.DjinnPocket.Summons);
                     p.Moves.AddRange(djinnToAdd);
                     foreach (var djinn in djinnToAdd)
                     {
@@ -171,9 +172,9 @@ namespace IodemBot.ColossoBattles
                     break;
 
                 case DjinnOption.Unique:
-                    var djinnToBeAdded = avatar.DjinnPocket.GetDjinns(Djinn);
+                    var djinnToBeAdded = user.DjinnPocket.GetDjinns(Djinn);
                     Djinn.AddRange(djinnToBeAdded);
-                    Summons.AddRange(avatar.DjinnPocket.Summons);
+                    Summons.AddRange(user.DjinnPocket.Summons);
                     p.Moves.AddRange(djinnToBeAdded);
                     foreach (var djinn in djinnToBeAdded)
                     {
@@ -188,11 +189,25 @@ namespace IodemBot.ColossoBattles
                     break;
             }
 
+            switch (PassiveOption)
+            {
+                case PassiveOption.Default:
+                    p.Passive = user.Passives.GetSelectedPassive();
+                    p.PassiveLevel = user.Passives.GetPassiveLevel(user.Oaths);
+                    break;
+
+                case PassiveOption.NoPassive:
+                    break;
+            }
+
             p.Stats *= @class.StatMultipliers;
             p.Stats *= 0.01;
             p.Stats *= StatMultiplier;
             p.Stats *= 0.01;
 
+            user.Oaths.ActiveOaths.ForEach(o => p.Tags.Add($"Oath{o}"));
+            if (user.Oaths.IsOathActive(Oath.Idleness))
+                p.Stats.Spd = 2;
             return p;
         }
 

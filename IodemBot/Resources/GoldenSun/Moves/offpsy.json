@@ -146,7 +146,7 @@
     "name": "Punji",
     "TargetType": "EnemyRange",
     "emote": "<:Punji:536958777413337088>",
-    "range": 3,
+    "range": 2,
     "element": 0,
     "PPCost": 7,
     "power": 45
@@ -155,7 +155,7 @@
     "name": "Punji Trap",
     "TargetType": "EnemyRange",
     "emote": "<:Punji_Trap:536958822841843722>",
-    "range": 4,
+    "range": 2,
     "element": 0,
     "PPCost": 13,
     "power": 85
@@ -164,7 +164,7 @@
     "name": "Punji Strike",
     "TargetType": "EnemyRange",
     "emote": "<:Punji_Strike:536958839434641408>",
-    "range": 5,
+    "range": 3,
     "element": 0,
     "PPCost": 24,
     "power": 150
@@ -828,7 +828,8 @@
     "range": 2,
     "element": 2,
     "PPCost": 5,
-    "power": 20
+    "power": 20,
+    "Description": "Zzz... Whuzza? Whirlwind? Wind Stone? Zzzzrrrgg..."
   },
   "Tornado": {
     "name": "Tornado",

@@ -260,7 +260,7 @@ namespace IodemBot.ColossoBattles
                     p.Heal((uint)(p.Stats.HP * 5 / 100));
                 });
 
-                var text = $"{winners.First().Name}'s party wins Battle {_winsInARow}! Battle will reset shortly.";
+                var text = $"{winners.First().Name}'s party wins the Battle {_winsInARow}! Battle will reset shortly.";
                 await Task.Delay(3000);
                 await StatusMessage.ModifyAsync(m =>
                 {

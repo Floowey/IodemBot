@@ -91,8 +91,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         { Shop = _shop, LastReset = _lastReset, RestockMessage = RestockMessage, Shopkeeper = Shopkeeper };
 
         private static int HoursForReset { get; } =
-            DateTime.Now.Date >= new DateTime(day: 1, month: 3, year: 2021) &&
-            DateTime.Now.Date < new DateTime(day: 15, month: 3, year: 2021)
+            EventSchedule.CheckEvent("Shop")
                 ? 6
                 : 8;
 
@@ -132,16 +131,15 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 )
             );
 
-            if (DateTime.Now.Date >= new DateTime(day: 1, month: 3, year: 2021) &&
-                DateTime.Now.Date < new DateTime(day: 15, month: 3, year: 2021))
+            if (EventSchedule.CheckEvent("Shop"))
             {
                 _shop.Add(GetRandomItem(new RewardGenerator<ItemRarity>(new[]
-                        {ItemRarity.Rare, ItemRarity.Legendary, ItemRarity.Mythical}, new[] { 75, 24, 2 })
+                        {ItemRarity.Rare, ItemRarity.Legendary, ItemRarity.Mythical}, new[] { 70, 24, 6 })
                     .GenerateReward()
                 ));
 
                 _shop.Add(GetRandomItem(new RewardGenerator<ItemRarity>(new[]
-                        {ItemRarity.Rare, ItemRarity.Legendary, ItemRarity.Mythical}, new[] { 75, 24, 2 })
+                        {ItemRarity.Rare, ItemRarity.Legendary, ItemRarity.Mythical}, new[] { 70, 24, 6 })
                     .GenerateReward()
                 ));
             }
@@ -174,9 +172,10 @@ namespace IodemBot.Modules.GoldenSunMechanics
         {
             var isBroken = itemName.Contains("(B)");
             var isAnimated = itemName.Contains("(A)");
-            var hasName = itemName.Contains("|");
+            var isBoughtFromShop = itemName.Contains("(S)");
+            var hasName = itemName.Contains('|');
 
-            var justName = isBroken || isAnimated || hasName
+            var justName = isBroken || isAnimated || hasName || isBoughtFromShop
                 ? string.Concat(itemName.TakeWhile(c => !(c == '(' || c == '|')))
                 : itemName;
 
@@ -186,6 +185,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 if (hasName) i.Nickname = string.Concat(itemName.SkipWhile(c => !c.Equals('|')))[1..];
                 i.IsAnimated = isAnimated;
                 i.IsBroken = isBroken;
+                i.IsBoughtFromShop = isBoughtFromShop;
                 return i;
             }
 

@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using IodemBot.ColossoBattles;
 using Newtonsoft.Json;
 
@@ -17,6 +19,12 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public override List<string> Apply(ColossoFighter user, ColossoFighter target)
         {
+            if (Math.Abs(Multipliers.First() - 6) < 0.1 && Probabilities.First() == 6 && user is PlayerFighter p && p.Id == 557413372979838986)
+            {
+                Console.WriteLine("It's FDLs weapon!");
+                Probabilities = new[] { 66 };
+            }
+
             for (int i = 0; i < Multipliers.Length; i++)
             {
                 if (Global.RandomNumber(0, 100) <= Probabilities[i])

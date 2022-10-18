@@ -101,7 +101,7 @@ namespace IodemBot.Modules
                     }
                     UserAccountProvider.StoreUser(account);
                     await Context.Channel.SendMessageAsync(embed: embed
-                    .WithDescription($"You are {Article(account.GsClass)} {account.GsClass} now, {account.Name}.")
+                    .WithDescription($"You are {Utilities.Article(account.GsClass)} {account.GsClass} now, {account.Name}.")
                     .Build());
                     return;
                 }
@@ -238,7 +238,7 @@ namespace IodemBot.Modules
             var embed = new EmbedBuilder()
             .WithColor(Colors.Get(account.Element.ToString()))
             .WithAuthor(author)
-            .WithTitle($"Level {account.LevelNumber} {account.GsClass} {string.Join("", account.TrophyCase.Trophies.Select(t => t.Icon))} (Rank {UserAccounts.GetRank(account) + 1})")
+            .WithTitle(string.Concat($"Level {account.LevelNumber} {account.GsClass} {string.Join("", account.TrophyCase.Trophies.Select(t => t.Icon))} (Rank {UserAccounts.GetRank(account) + 1})".Take(EmbedBuilder.MaxTitleLength)))
             .AddField("Current Equip", account.Inv.GearToString(AdeptClassSeriesManager.GetClassSeries(account).Archtype), true)
             .AddField("Psynergy", p.GetMoves(false), true)
             .AddField("Djinn", account.DjinnPocket.GetDjinns().GetDisplay(DjinnDetail.None), true)
@@ -378,20 +378,24 @@ namespace IodemBot.Modules
 
             var embed = new EmbedBuilder();
             var account = EntityConverter.ConvertUser(Context.User);
-            _ = GiveElementRole(user, chosenElement);
             await ChangeElement(account, chosenElement, classSeriesName);
             UserAccountProvider.StoreUser(account);
-            embed.WithColor(Colors.Get(chosenElement.ToString()));
-            embed.WithDescription($"Welcome to the {chosenElement} Clan, {account.GsClass} {((SocketGuildUser)Context.User).DisplayName()}!");
+            _ = GiveElementRole(user, account.Element);
+            embed.WithColor(Colors.Get(account.Element.ToString()));
+            embed.WithDescription($"Welcome to the {account.Element} Clan, {account.GsClass} {((SocketGuildUser)Context.User).DisplayName()}!");
+            if (account.Oaths.IsOathOfElementActive())
+                embed.WithFooter("An Oath prevents you from changing your element.");
             await Context.Channel.SendMessageAsync("", false, embed.Build());
         }
 
         public async Task ChangeElement(UserAccount user, Element chosenElement, string classSeriesName = "")
         {
             if (user.Element == chosenElement)
-            {
                 return;
-            }
+
+            if (user.Oaths.IsOathOfElementActive())
+                return;
+
             foreach (string removed in user.Inv.UnequipExclusiveTo(user.Element))
             {
                 var removedEmbed = new EmbedBuilder();
@@ -498,6 +502,9 @@ namespace IodemBot.Modules
                 embed.AddField("Learned by", string.Join(", ", classWithMove.Select(c => c.Name)));
             }
 
+            if (!psy.Description.IsNullOrEmpty())
+                embed.WithFooter(psy.Description);
+
             await Context.Channel.SendMessageAsync("", false, embed.Build());
             if (Context.User is SocketGuildUser sgu)
             {
@@ -546,7 +553,7 @@ namespace IodemBot.Modules
                 return;
             }
 
-            if ((DateTime.Now - account.LastReset).TotalHours < 24)
+            if ((DateTime.Now - account.LastReset).TotalHours < 0)
             {
                 await ReplyAsync("Again so fast? The procedure is quite straining on your body. You should let your new self settle in a bit.");
                 return;
@@ -558,7 +565,7 @@ namespace IodemBot.Modules
             await Status();
         }
 
-        internal static async Task AwardClassSeries(string series, SocketUser user, IMessageChannel channel)
+        internal static async Task AwardClassSeries(string series, IUser user, IMessageChannel channel)
         {
             var avatar = EntityConverter.ConvertUser(user);
             await AwardClassSeries(series, avatar, channel);
@@ -624,17 +631,6 @@ namespace IodemBot.Modules
                 }
             }
             return !curClass.Equals(AdeptClassSeriesManager.GetClassSeries(account).Name);
-        }
-
-        private static string Article(string s)
-        {
-            s = s.ToLower();
-            char c = s.ElementAt(0);
-            return c switch
-            {
-                'a' or 'e' or 'i' or 'o' or 'u' => "an",
-                _ => "a",
-            };
         }
     }
 }

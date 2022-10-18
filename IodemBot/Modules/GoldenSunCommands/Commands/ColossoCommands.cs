@@ -46,7 +46,7 @@ namespace IodemBot.ColossoBattles
                     return;
                 }
 
-                if (!dungeon.Requirement.Applies(acc) && !modPermission)
+                if (!dungeon.Requirement.Applies(acc) && !modPermission && !acc.Tags.Contains("EnterAllDungeons"))
                 {
                     await ReplyAsync("I'm afraid that I can't take you to this place, it is too dangerous for you and me both.");
                     return;
@@ -102,6 +102,8 @@ namespace IodemBot.ColossoBattles
             List<SocketGuildUser> toBeRemoved = new List<SocketGuildUser>();
             foreach (var entry in FighterRoles)
             {
+                if (BattleService.UserInBattle(EntityConverter.ConvertUser(entry.Key)))
+                    continue;
                 if ((DateTime.Now - entry.Value).TotalMinutes > 10)
                 {
                     if (entry.Key.Roles.Any(r => r.Id == gs.FighterRole.Id))
@@ -191,7 +193,6 @@ namespace IodemBot.ColossoBattles
         [Command("c setup"), Alias("colosso setup")]
         [RequireStaff]
         [RequireUserServer]
-        // not necessary
         public async Task SetupColosso()
         {
             await Context.Message.DeleteAsync();
@@ -246,8 +247,52 @@ namespace IodemBot.ColossoBattles
                 pve.SetEnemy(enemy);
         }
 
+        [Command("c addweyard")]
+        [RequireStaff]
+        public async Task AddWeyardBattle(string ChannelName)
+        {
+            var gs = GuildSettings.GetGuildSettings(Context.Guild);
+            BattleService.AddBattleEnvironment(new SingleBattleEnvironment(BattleService, ChannelName, gs.ColossoChannel, true,
+               await BattleService.PrepareBattleChannel($"Weyard-{ChannelName}", Context.Guild, persistent: true), BattleDifficulty.Medium));
+        }
+
+        [Command("c remove")]
+        [RequireStaff]
+        public async Task RemoveBattle(string name)
+        {
+            var gs = GuildSettings.GetGuildSettings(Context.Guild);
+            var battle = BattleService.GetBattleEnvironment(b => b.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
+            if (battle != null)
+            {
+                await RemoveBattle(battle);
+            }
+        }
+
+        [Command("c remove")]
+        [RequireStaff]
+        public async Task RemoveBattle(IMessageChannel channel)
+        {
+            var gs = GuildSettings.GetGuildSettings(Context.Guild);
+            var battle = BattleService.GetBattleEnvironment(channel);
+            if (battle != null)
+            {
+                await RemoveBattle(battle);
+            }
+        }
+
+        private async Task RemoveBattle(BattleEnvironment battle)
+        {
+            //await battle.Reset();
+            foreach (var id in battle.ChannelIds)
+            {
+                await Context.Guild.GetChannel(id).DeleteAsync();
+            }
+            battle.Dispose();
+            await ReplyAsync($"Removed {battle.Name}");
+        }
+
         [Command("modendless")]
-        [RequireOwner]
+        [RequireStaff]
         public async Task ModColossoEndless(int round = 1)
         {
             if (!BattleService.AcceptBattles)
@@ -274,7 +319,36 @@ namespace IodemBot.ColossoBattles
             await Task.CompletedTask;
         }
 
-        public enum FastTrackOption { SlowTrack, FastTrack };
+        [Command("modgoliath")]
+        [RequireStaff]
+        public async Task ModGoliathBattle()
+        {
+            if (!BattleService.AcceptBattles)
+            {
+                return;
+            }
+
+            if (Context.User is not SocketGuildUser)
+            {
+                return;
+            }
+
+            var guild = Context.Guild;
+            var gs = GuildSettings.GetGuildSettings(guild);
+            _ = RemoveFighterRoles();
+
+            var openBattle = new GoliathBattleEnvironment(BattleService,
+                $"Goliath-{Context.User.Username}", gs.ColossoChannel, false,
+               await BattleService.PrepareBattleChannel("Goliath-B", guild, RoomVisibility.All, true),
+                await BattleService.PrepareBattleChannel("Goliath-A", guild, RoomVisibility.TeamB, true), gs.TeamBRole);
+
+            BattleService.AddBattleEnvironment(openBattle);
+            _ = Context.Channel.SendMessageAsync($"Goliath Battle Ready.");
+            await Task.CompletedTask;
+        }
+
+        public enum FastTrackOption
+        { SlowTrack, FastTrack };
 
         [Command("endless")]
         [Summary("Prepare a channel for an endless gamemode. 'Legacy' will be without djinn. Endless unlocks at level 50 or once you completed the Colosso Finals! Using `i!endless default true` will let you skip ahead to round 13 for a fee of 10.000 coins")]
@@ -340,21 +414,18 @@ namespace IodemBot.ColossoBattles
         [Command("dungeon"), Alias("dg")]
         [Summary("Prepare a channel for an adventure to a specified dungeon")]
         [RequireUserServer]
-        //redundant
         public async Task Dungeon([Remainder] string dungeonName)
         { _ = SetupDungeon(dungeonName, false); await Task.CompletedTask; }
 
         [Command("Tutorial")]
         [Summary("Enter the Tutorial and start your adventure!")]
         [RequireUserServer]
-        //redundant
         public async Task Tutorial()
         { _ = SetupDungeon("Tutorial", false); await Task.CompletedTask; }
 
         [Command("moddungeon")]
         [RequireStaff]
         [RequireUserServer]
-        //no slash
         public async Task ModDungeon([Remainder] string dungeonName)
         { _ = SetupDungeon(dungeonName, true); await Task.CompletedTask; }
 
@@ -390,14 +461,14 @@ namespace IodemBot.ColossoBattles
             {
                 await Context.Channel.SendMessageAsync(a.GetStatus());
             }
-            if (name == "")
+            if (name.IsNullOrEmpty())
             {
                 EmbedBuilder embed = new();
                 foreach (var b in BattleService.GetAllBattleEnvironments())
                 {
-                    embed.AddField($"{b.Name} {(b.IsPersistent ? "(Permanent)" : "")}",
-                    $"{b.GetType().Name}\n" +
-                    $"Channels:{string.Join(",", b.ChannelIds.Select(id => $"<#{id}>"))}");
+                    embed.AddField($"{b.Name}, {(b.IsActive ? "Active" : "Inactive")} {(b.IsProcessing ? ", Processing" : "")}, {b.Battle.SizeTeamA + b.Battle.TeamB.OfType<PlayerFighter>().Count()} Players",
+                    $"{b.GetType().Name}, {(b.IsPersistent ? "(Permanent)" : "")}\n" +
+                    $"{string.Join(",", b.ChannelIds.Select(id => $"<#{id}>"))}", true);
                 }
 
                 if (embed.Fields.Count == 0)

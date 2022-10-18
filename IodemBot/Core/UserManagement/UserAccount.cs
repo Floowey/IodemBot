@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
+using System.Linq;
 using IodemBot.Extensions;
 using IodemBot.Modules.GoldenSunMechanics;
 using Newtonsoft.Json;
@@ -35,6 +37,8 @@ namespace IodemBot.Core.UserManagement
         public int ClassToggle { get; set; }
         public List<string> BonusClasses { get; set; } = new();
         public Element Element { get; set; } = Element.None;
+        public OathList Oaths { get; set; } = new();
+        public Passives Passives { get; set; } = new();
         public Loadouts Loadouts { get; set; } = new();
         public TrophyCase TrophyCase { get; set; } = new();
         public Preferences Preferences { get; set; } = new();
@@ -102,6 +106,8 @@ namespace IodemBot.Core.UserManagement
         public ulong Xp { get; set; }
         public double XpBoost { get; set; } = 1;
         public ulong XpLastGame { get; set; }
+
+        public Dictionary<DateTime, ulong> DailyXP = new();
         public int DjinnBadLuck { get; set; } = 0;
         public ServerStats ServerStats { get; set; } = new();
         public ServerStats ServerStatsTotal { get; set; } = new();
@@ -118,7 +124,12 @@ namespace IodemBot.Core.UserManagement
 
         public void AddXp(ulong xp)
         {
-            Xp += (ulong)(xp * XpBoost);
+            var xpToAdd = Oaths.IsOathActive(Oath.Oaf) ? (ulong)(xp * 0.25) : (ulong)(xp * XpBoost);
+            Xp += xpToAdd;
+            if (DailyXP.ContainsKey(DateTime.Today))
+                DailyXP[DateTime.Today] += xpToAdd;
+            else
+                DailyXP[DateTime.Today] = xpToAdd;
         }
 
         public void NewGame()
@@ -163,10 +174,19 @@ namespace IodemBot.Core.UserManagement
             Xp = 0;
             Inv.Clear();
             DjinnPocket.Clear();
-            BonusClasses.Clear();
+            List<ArchType> ArchsToRemove = new();
+            if (Oaths.GetOathCompletion(Oath.Warrior) < OathCompletion.Completed)
+                ArchsToRemove.Add(ArchType.Warrior);
+            if (Oaths.GetOathCompletion(Oath.Mage) < OathCompletion.Completed)
+                ArchsToRemove.Add(ArchType.Mage);
+
+            BonusClasses.RemoveAll(c => ArchsToRemove.Contains(AdeptClassSeriesManager.AllClasses.First(cl => cl.Name == c).Archtype));
             Dungeons.Clear();
+            Dungeons.Add("Reawakening");
             Loadouts.LoadoutsList.Clear();
             Preferences.AutoSell.Clear();
+            Oaths.ActiveOaths.Clear();
+            Oaths.OathsCompletedThisRun.Clear();
 
             BattleStatsTotal += BattleStats;
             ServerStatsTotal += ServerStats;
@@ -174,7 +194,16 @@ namespace IodemBot.Core.UserManagement
             ServerStats = new ServerStats();
             LastReset = DateTime.Now;
             Tags.RemoveAll(t => !t.Contains("Halloween20") || !t.Contains("Christmas21"));
+            Tags.Add("TutorialCompleted");
             Tags.Add($"{Element}Adept");
+            Tags.Add(AdeptClassSeriesManager.GetClassSeries(this).Archtype.ToString());
+            Tags.Add($"HasReset");
+            if (Oaths.GetOathCompletion(Oath.Warrior) >= OathCompletion.Completed)
+                Tags.Add("WarriorGear");
+            if (Oaths.GetOathCompletion(Oath.Mage) >= OathCompletion.Completed)
+                Tags.Add("MageGear");
+            if (Oaths.GetOathCompletion(Oath.Idleness) >= OathCompletion.Completed)
+                Tags.Add("ElvenGear");
             NewGames++;
         }
 
@@ -309,7 +338,8 @@ namespace IodemBot.Core.UserManagement
         public uint CommandsUsed { get; set; }
         public DateTime LastDayActive { get; set; } = DateTime.Now;
         public int LookedUpClass { get; set; }
-        public int LookedUpInformation { get; set; }
+        public int LookedUpItem { get; set; }
+        public int LookedUpPsynergy { get; set; }
         public int MessagesInColossoTalks { get; set; }
         public ulong MostRecentChannel { get; set; } = 0;
         public int ReactionsAdded { get; set; }
@@ -320,6 +350,12 @@ namespace IodemBot.Core.UserManagement
         public int DungeonsCompleted { get; set; }
         public string LastDungeon { get; set; } = "";
         public int SameDungeonInARow { get; set; } = 0;
+
+        public int DjinnObtained { get; set; } = 0;
+        public int DjinnReleased { get; set; } = 0;
+        public int ShinyDjinnObtained { get; set; } = 0;
+        public int ShinyDjinnReleased { get; set; } = 0;
+        public int TotalShinyChances { get; set; } = 0;
 
         public EndlessStreak GetStreak(EndlessMode mode)
         {
@@ -336,14 +372,20 @@ namespace IodemBot.Core.UserManagement
                 ChannelSwitches = s1.ChannelSwitches + s2.ChannelSwitches,
                 RpsWins = s1.RpsWins + s2.RpsWins,
                 UniqueDaysActive = s1.UniqueDaysActive + s2.UniqueDaysActive,
-                LookedUpInformation = s1.LookedUpInformation + s2.LookedUpInformation,
+                LookedUpPsynergy = s1.LookedUpPsynergy + s2.LookedUpPsynergy,
                 LookedUpClass = s1.LookedUpClass + s2.LookedUpClass,
+                LookedUpItem = s1.LookedUpItem + s2.LookedUpItem,
                 ColossoWins = s1.ColossoWins + s2.ColossoWins,
                 CommandsUsed = s1.CommandsUsed + s2.CommandsUsed,
                 SpentMoneyOnArtifacts = s1.SpentMoneyOnArtifacts + s2.SpentMoneyOnArtifacts,
                 ReactionsAdded = s1.ReactionsAdded + s2.ReactionsAdded,
                 MessagesInColossoTalks = s1.MessagesInColossoTalks + s2.MessagesInColossoTalks,
-                DungeonsCompleted = s1.DungeonsCompleted + s2.DungeonsCompleted
+                DungeonsCompleted = s1.DungeonsCompleted + s2.DungeonsCompleted,
+                DjinnObtained = s1.DjinnObtained + s2.DjinnObtained,
+                DjinnReleased = s1.DjinnReleased + s2.DjinnReleased,
+                ShinyDjinnObtained = s1.ShinyDjinnObtained + s2.ShinyDjinnObtained,
+                ShinyDjinnReleased = s1.ShinyDjinnReleased + s2.ShinyDjinnReleased,
+                TotalShinyChances = s1.TotalShinyChances + s2.TotalShinyChances
             };
         }
     }

@@ -23,7 +23,7 @@ namespace IodemBot.ColossoBattles
             HasDefend = hasDefend;
         }
 
-        [JsonProperty] private int ExtraTurns { get; set; }
+        [JsonProperty] public int ExtraTurns { get; set; }
         [JsonProperty] private string[] Movepool { get; set; }
 
         [DefaultValue(true)]

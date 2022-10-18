@@ -100,8 +100,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 var spreadMult = IgnoreSpread ? 1 : Spread[distFromCenter];
                 var concentrationMult = 1 + Math.Max(0, (float)Range - targets.Count - 1) / (2 * Range);
                 var prctdmg = (uint)(t.Stats.MaxHP * PercentageDamage / 100);
-                var realDmg = (uint)((baseDmg + dmg + AddDamage + user.AddDamage) * DmgMult * elMult * spreadMult *
-                    t.DefensiveMult * user.OffensiveMult * concentrationMult + prctdmg);
+                var realDmg = (uint)(((baseDmg + dmg + AddDamage + user.AddDamage) * DmgMult * elMult * spreadMult
+                    * user.OffensiveMult * concentrationMult + prctdmg) * t.DefensiveMult);
                 var punctuation = "!";
 
                 var immuneTag = t.Tags.FirstOrDefault(t => t.StartsWith("ImmuneTo:"))?.Split(':').Skip(1).Select(Enum.Parse<Element>)
