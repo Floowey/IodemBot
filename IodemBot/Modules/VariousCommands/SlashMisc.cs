@@ -240,6 +240,10 @@ namespace IodemBot.Modules.VariousCommands
             if (!guildResult.Success)
                 return Task.FromResult(guildResult);
 
+            guildResult = StaffRequired();
+            if (!guildResult.Success)
+                return Task.FromResult(guildResult);
+
             _scope = ServiceProvider.CreateScope();
             _requestContextService = _scope.ServiceProvider.GetRequiredService<RequestContextService>();
             _requestContextService.AddContext(Context);
