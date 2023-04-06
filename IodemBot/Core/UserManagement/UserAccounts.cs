@@ -72,7 +72,6 @@ namespace IodemBot.Core.UserManagement
                     {
                         sortedList = UserAccountProvider.GetLeaderBoard(type, mode)
                             .Take(10)
-                            .ToList()
                             .Select(id => UserAccountProvider.GetById(id.Key))
                             .ToList();
                     }
