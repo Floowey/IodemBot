@@ -122,7 +122,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
             if (EventSchedule.CheckEvent("Shop"))
             {
-                embed.WithDescription("It's the pre-Halloween market! Until October 6th, you'll get a chance to find more and rarer gear! On top of that, the stalls are rotated every 6 hours!");
+                var ev = EventSchedule.GetEventSchedule("Shop");
+                embed.WithDescription($"{ev.Flavortext}\nActive until {TimestampTag.FromDateTime(ev.End, TimestampTagStyles.ShortDateTime)}.");
             }
 
             embed.AddField("Shop:", shop.InventoryToString(Detail.NameAndPrice), true);
@@ -308,8 +309,11 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
                     await Task.Delay(6000);
                     embed.WithDescription($"There, found something. Not sure where it's from. If you asked me, it's priceless. A unique thing. Well, it's no use to me, but surely you will get more Luck out of it!" +
-                        $"\n I'll even give you a {100 / 3}% discount on it!" +
+                        $"\n I'll even give you a {100 / discount}% discount on it!" +
                         $"\n{account.Name} found a {i.Icon} {i.Name}!");
+
+                    inv.Add(i);
+                    UserAccountProvider.StoreUser(account);
                     await Context.Channel.SendMessageAsync("", false, embed.Build());
                 }
                 else
@@ -729,11 +733,6 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
             embed.AddField("Type", item.ItemType, true);
             embed.AddField("Summary", item.Summary(), true);
-
-            //if (!item.Description.IsNullOrEmpty())
-            //{
-            //   embed.AddField("Description",$"*{item.Description}*", inline:true);
-            //}
 
             embed.WithColor(item.Category == ItemCategory.Weapon && item.IsUnleashable
                 ?

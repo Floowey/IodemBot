@@ -148,9 +148,10 @@ namespace IodemBot.ColossoBattles
 
             if (outEnemy == null)
             {
-                Console.WriteLine($"{enemyKey} was not found.");
-                outEnemy = new($"{enemyKey} Not Implemented", Sprites.GetRandomSprite(), new Stats(),
-                    new ElementalStats(), Array.Empty<string>(), false, false);
+                throw new ArgumentException("Enemy not found");
+                //Console.WriteLine($"{enemyKey} was not found.");
+                //outEnemy = new($"{enemyKey} Not Implemented", Sprites.GetRandomSprite(), new Stats(),
+                //    new ElementalStats(), Array.Empty<string>(), false, false);
             }
             else
             {

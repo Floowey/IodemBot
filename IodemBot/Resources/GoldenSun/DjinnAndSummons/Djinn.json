@@ -13,7 +13,7 @@
       "MaxPP": 4,
       "Atk": 3
     },
-    "Description":  "Cookie Lover."
+    "Description": "Cookie Lover."
   },
   "Flower": {
     "Djinnname": "Flower",
@@ -449,7 +449,6 @@
         {
           "Type": "Restore",
           "CureConditions": [ "Stun", "Sleep", "Seal", "DeathCurse", "Delusion", "Poison", "Venom", "Haunt" ]
-
         }
       ]
     },
@@ -2020,7 +2019,6 @@
         {
           "Type": "Restore",
           "CureConditions": [ "Stun", "Sleep", "Seal", "DeathCurse", "Delusion", "Poison", "Venom", "Haunt" ]
-
         }
       ]
     },
@@ -2307,7 +2305,6 @@
         {
           "Type": "Restore",
           "CureConditions": [ "Stun", "Sleep", "Seal", "DeathCurse", "Delusion", "Poison", "Venom", "Haunt" ]
-
         }
       ]
     },
@@ -2321,7 +2318,7 @@
     "Djinnname": "Dew",
     "Element": 3,
     "SpriteNormal": "<a:Dew:662385332301594634>",
-    "SpriteShiny": "<a:DewdropShiny:663022347711676446>",
+    "SpriteShiny": "<a:DewShiny:663022348139757578>",
     "Move": {
       "TargetType": "PartySingle",
       "Effects": [

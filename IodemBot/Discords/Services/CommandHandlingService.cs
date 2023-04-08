@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
+using IodemBot.ColossoBattles;
+using IodemBot.Converter;
 using IodemBot.Core.Leveling;
 using IodemBot.Discords.Contexts;
 using Microsoft.Extensions.DependencyInjection;
@@ -43,7 +45,7 @@ namespace IodemBot.Discords.Services
         public async Task InitializeAsync()
         {
             // Register custom readers.
-
+            _commands.AddTypeReader<BattleEnvironment>(new BattleEnvironmentConverter());
             // Register modules that are public and inherit ModuleBase<T>.
             await _commands.AddModulesAsync(Assembly.GetEntryAssembly(), _services);
         }
