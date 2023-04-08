@@ -1,9 +1,6 @@
 using Xunit;
 using Newtonsoft.Json;
-using IodemBot.ColossoBattles;
 using static IodemBot.ColossoBattles.EnemiesDatabase;
-using IodemBot.Modules.GoldenSunMechanics;
-using static IodemBot.Modules.GoldenSunMechanics.ItemDatabase;
 
 namespace IodemBotTest
 {
