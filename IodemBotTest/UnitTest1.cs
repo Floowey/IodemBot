@@ -9,11 +9,5 @@ namespace IodemBotTest
         {
             Assert.Equal(1, 1);
         }
-
-        [Fact]
-        public void TestFails()
-        {
-            Assert.Equal(1, 2);
-        }
     }
 }
