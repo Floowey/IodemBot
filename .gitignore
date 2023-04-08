@@ -82,3 +82,6 @@ dkms.conf
 IodemBot/Resources/Accounts
 IodemBot/Resources/shop.json
 IodemBot/Logs
+
+/IodemBotTest/bin/
+/IodemBotTest/obj/
