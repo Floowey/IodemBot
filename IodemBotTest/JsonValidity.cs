@@ -19,6 +19,7 @@ namespace IodemBotTest
         [InlineData("Resources/GoldenSun/Battles/enemies.json")]
         [InlineData("Resources/GoldenSun/Battles/dungeons.json")]
         [InlineData("Resources/GoldenSun/items.json")]
+        [InlineData("Resources/GoldenSun/AdeptClassSeries.json")]
         public void ValidateJson(string x)
         {
             var exception = Record.Exception(() =>
@@ -37,7 +38,7 @@ namespace IodemBotTest
             var Dungeons = JsonConvert.DeserializeObject<Dictionary<string, Dungeon>>(json);
 
             var exception = Record.Exception(() =>
-            Dungeons.Values.ToList().SelectMany(d => d.Matchups.SelectMany(m => m.Enemy)).ToList());
+            Dungeons?.Values.ToList().SelectMany(d => d.Matchups.SelectMany(m => m.Enemy)).ToList());
             Assert.IsNotType<ArgumentException>(exception);
         }
     }

@@ -139,6 +139,7 @@ namespace IodemBot
                         .WithColor(Colors.Get("Iodem"))
                         .WithDescription(string.Format(_welcomeMsg.Random(), user.DisplayName()))
                         .Build());
+            await Task.CompletedTask;
         }
 
         private async Task Client_UserJoined(SocketGuildUser user)

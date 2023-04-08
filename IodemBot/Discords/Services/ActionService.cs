@@ -75,6 +75,8 @@ namespace IodemBot.Discords.Services
                 var json = JsonConvert.SerializeObject(exception.Errors, Formatting.Indented);
                 Console.WriteLine(json);
             }
+
+            await Task.CompletedTask;
         }
 
         public async Task AddGlobalCommands()
