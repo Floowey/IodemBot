@@ -17,6 +17,7 @@ using SixLabors.ImageSharp.PixelFormats;
 using SixLabors.ImageSharp;
 using IodemBot.Discords;
 using System.Threading.Channels;
+using IodemBot.Images;
 
 namespace IodemBot.Modules
 {

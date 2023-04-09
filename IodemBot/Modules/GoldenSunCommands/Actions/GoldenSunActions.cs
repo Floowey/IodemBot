@@ -12,7 +12,9 @@ using IodemBot.Discords.Actions;
 using IodemBot.Discords.Actions.Attributes;
 using IodemBot.Discords.Contexts;
 using IodemBot.Extensions;
+using IodemBot.Images;
 using IodemBot.Modules.GoldenSunMechanics;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace IodemBot.Modules
 {
@@ -275,7 +277,9 @@ namespace IodemBot.Modules
             else
             {
                 var user = EntityConverter.ConvertUser(Context.User);
-                msgProps.Embed = ClassAction.GetClassEmbed(user);
+                var a = new ClassAction();
+
+                msgProps.Embed = await a.GetClassEmbed(user);
                 msgProps.Components = ClassAction.GetClassComponent(user);
             }
 
@@ -388,7 +392,7 @@ namespace IodemBot.Modules
         public override async Task RunAsync()
         {
             var user = EntityConverter.ConvertUser(Context.User);
-            await Context.ReplyWithMessageAsync(EphemeralRule, embed: GetClassEmbed(user), components: GetClassComponent(user));
+            await Context.ReplyWithMessageAsync(EphemeralRule, embed: await GetClassEmbed(user), components: GetClassComponent(user));
         }
 
         public override EphemeralRule EphemeralRule => EphemeralRule.EphemeralOrFail;
@@ -411,12 +415,12 @@ namespace IodemBot.Modules
         {
             var user = EntityConverter.ConvertUser(Context.User);
 
-            msgProps.Embed = GetClassEmbed(user);
+            msgProps.Embed = await GetClassEmbed(user);
             msgProps.Components = GetClassComponent(user);
             await Task.CompletedTask;
         }
 
-        public static Embed GetClassEmbed(UserAccount account)
+        public async Task<Embed> GetClassEmbed(UserAccount account)
         {
             var allClasses = AdeptClassSeriesManager.AllClasses;
             var allAvailableClasses = allClasses.Where(c => c.IsDefault || account.BonusClasses.Any(bc => bc.Equals(c.Name)));
@@ -436,7 +440,10 @@ namespace IodemBot.Modules
             embed.AddField("Impulses?", "*Impulses are passives that do something on Turn 1. They get unlocked upgraded by completing Path of Element IV in combination with oaths.*");
 
             //var filename = Path.GetFileName("compass.png");
-            //embed.WithThumbnailUrl($"attachment://{filename}");
+            //embed.WithImageUrl($"attachment://{filename}");
+
+            var cs = ServiceProvider.GetRequiredService<CompassService>();
+            embed.WithThumbnailUrl(await cs.GetCompass(account));
 
             embed.WithFooter($"Total: {allAvailableClasses.Count()}/{allClasses.Count}");
 

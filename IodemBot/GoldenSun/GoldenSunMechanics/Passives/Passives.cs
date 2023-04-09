@@ -27,8 +27,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 ShortDescription="Act faster in battle.",},
 
             new(){Name="Soothing Song", elements = new[]{Element.Mercury},
-                Description="Collecting your thoughts at the beginning of battle recovers any ailments.",
-                ShortDescription="Recover from ailments",},
+                Description="Collecting your thoughts at the beginning of battle recovers any ailments 25/50/100% of the time.",
+                ShortDescription="Recover from ailments",args=new[]{25.0,50,100 } },
 
             new(){Name="Vital Spark", elements = new[]{Element.Venus, Element.Mars},
                 Description="Your spark of life never fades and kickstarts you back into battle at 5/15/25%",
@@ -36,8 +36,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 args=new[]{5.0,15.0,25.0} },
 
             new(){Name="Fiery Reflex", elements = new[]{Element.Mars, Element.Jupiter},
-                Description="Fast reaction speed allows you to quickly strike back on any incoming attacks.",
-                ShortDescription="Strike back when attacked.",},
+                Description="Fast reaction speed allows you to quickly strike back on any incoming attacks 25/50/100% of the time.",
+                ShortDescription="Strike back when attacked.",args=new[]{25.0,50,100 } },
 
             new(){Name="Brisk Flow", elements = new[]{Element.Jupiter, Element.Mercury},
                 Description="Surrounded by psynergy in fluid state, your PP recovers by 5/15/25%",
