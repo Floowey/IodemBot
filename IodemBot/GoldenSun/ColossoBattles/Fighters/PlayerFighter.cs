@@ -93,8 +93,9 @@ namespace IodemBot.ColossoBattles
                 Id = user.Id,
                 Moves = AdeptClassSeriesManager.GetMoveset(user)
             };
-            var @class = AdeptClassSeriesManager.GetClass(user);
-            var classSeries = AdeptClassSeriesManager.GetClassSeries(user);
+            var @class = user.AdeptClass;
+            var classSeries = user.ClassSeries;
+
             if (classSeries.Name == "Curse Mage Series" || classSeries.Name == "Medium Series")
                 p.IsImmuneToItemCurse = true;
 
@@ -213,11 +214,9 @@ namespace IodemBot.ColossoBattles
 
         private Stats GetStats(UserAccount avatar, uint level)
         {
-            var classSeries = AdeptClassSeriesManager.GetClassSeries(avatar);
-
             var stats = BaseStatOption switch
             {
-                BaseStatOption.Default => classSeries.Archtype == ArchType.Warrior
+                BaseStatOption.Default => avatar.ClassSeries.Archtype == ArchType.Warrior
                     ? WarriorStatHolder.GetStats(level, ReductionFactor)
                     : MageStatHolder.GetStats(level, ReductionFactor),
                 _ => AverageStatHolder.GetStats(level)

@@ -188,11 +188,10 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public static void TakeDjinn(UserAccount user, params string[] names)
         {
             var userDjinn = user.DjinnPocket;
-            var userclass = AdeptClassSeriesManager.GetClassSeries(user);
             var chosenDjinn = names
                 .Select(n => userDjinn.GetDjinn(n))
                 .Where(d => d != null)
-                .OfElement(userclass.Elements)
+                .OfElement(user.ClassSeries.Elements)
                 .Take(DjinnPocket.MaxDjinn)
                 .ToList();
 

@@ -41,7 +41,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             var giveTag = true;
             userAccount.AddXp(Xp);
 
-            if (AdeptClassSeriesManager.GetClassSeries(userAccount).Name == "Pirate Series")
+            if (userAccount.ClassSeries.Name == "Pirate Series")
                 userAccount.Inv.AddBalance((uint)(Coins * 1.25));
             else
                 userAccount.Inv.AddBalance(Coins);

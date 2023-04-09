@@ -49,6 +49,7 @@ namespace IodemBot.Core.UserManagement
             }
         }
 
+        [Obsolete("UserAccounts.GetAccount is outdated. Use EntityConverter.")]
         public static UserAccount GetAccount(SocketUser user)
         {
             return GetOrCreateAccount(user.Id);

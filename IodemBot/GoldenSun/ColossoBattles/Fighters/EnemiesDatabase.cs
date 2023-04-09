@@ -303,10 +303,10 @@ namespace IodemBot.ColossoBattles
             if (Classes.Length > 0 && !Classes.Contains(playerAvatar.GsClass)) return false;
 
             if (ClassSeries.Length > 0 &&
-                !ClassSeries.Contains(AdeptClassSeriesManager.GetClassSeries(playerAvatar).Name)) return false;
+                !ClassSeries.Contains(playerAvatar.ClassSeries.Name)) return false;
 
             if (ArchTypes.Length > 0 &&
-                !ArchTypes.Contains(AdeptClassSeriesManager.GetClassSeries(playerAvatar).Archtype)) return false;
+                !ArchTypes.Contains(playerAvatar.ClassSeries.Archtype)) return false;
 
             if (TagsRequired.Length > 0 && !TagsRequired.All(t => playerAvatar.Tags.Contains(t))) return false;
 

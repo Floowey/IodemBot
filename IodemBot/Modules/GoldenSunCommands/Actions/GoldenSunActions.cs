@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Discord;
@@ -85,7 +86,7 @@ namespace IodemBot.Modules
             {
                 case 0: // Overview
                     embed
-                        .AddField("Current Equip", account.Inv.GearToString(AdeptClassSeriesManager.GetClassSeries(account).Archtype), true)
+                        .AddField("Current Equip", account.Inv.GearToString(account.ClassSeries.Archtype), true)
                         .AddField("Psynergy", p.GetMoves(false), true)
                         .AddField("Djinn", account.DjinnPocket.GetDjinns().GetDisplay(DjinnDetail.None), true)
 
@@ -323,7 +324,7 @@ namespace IodemBot.Modules
 
             user.Tags.Remove("Warrior");
             user.Tags.Remove("Mage");
-            user.Tags.Add(AdeptClassSeriesManager.GetClassSeries(user).Archtype.ToString());
+            user.Tags.Add(user.ClassSeries.Archtype.ToString());
             UserAccountProvider.StoreUser(user);
         }
 
@@ -362,8 +363,7 @@ namespace IodemBot.Modules
             if (!classSeriesName.IsNullOrEmpty())
                 AdeptClassSeriesManager.SetClass(user, classSeriesName);
 
-            var series = AdeptClassSeriesManager.GetClassSeries(user);
-            if (series != null && !user.DjinnPocket.DjinnSetup.All(d => series.Elements.Contains(d)))
+            if (user.ClassSeries != null && !user.DjinnPocket.DjinnSetup.All(d => user.ClassSeries.Elements.Contains(d)))
             {
                 user.DjinnPocket.DjinnSetup.Clear();
                 user.DjinnPocket.DjinnSetup.Add(user.Element);
@@ -423,6 +423,8 @@ namespace IodemBot.Modules
             var ofElement = allAvailableClasses.Where(c => c.Elements.Contains(account.Element)).Select(c => c.Name).OrderBy(n => n);
             var availableClasses = AdeptClassSeriesManager.GetAvailableClasses(account);
 
+            ImageStitcher.GenerateCompass(account);
+
             var embed = new EmbedBuilder();
             embed.WithTitle("Classes");
             embed.WithColor(Colors.Get(account.Element.ToString()));
@@ -432,7 +434,12 @@ namespace IodemBot.Modules
 
             embed.AddField("Selected Impulse", $"Impulse: {account.Passives.SelectedPassive}", true);
             embed.AddField("Impulses?", "*Impulses are passives that do something on Turn 1. They get unlocked upgraded by completing Path of Element IV in combination with oaths.*");
+
+            //var filename = Path.GetFileName("compass.png");
+            //embed.WithThumbnailUrl($"attachment://{filename}");
+
             embed.WithFooter($"Total: {allAvailableClasses.Count()}/{allClasses.Count}");
+
             return embed.Build();
         }
 

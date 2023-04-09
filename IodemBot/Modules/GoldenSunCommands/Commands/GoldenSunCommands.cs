@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Discord;
@@ -11,6 +12,11 @@ using IodemBot.Extensions;
 using IodemBot.Modules.GoldenSunMechanics;
 using IodemBot.Preconditions;
 using Newtonsoft.Json;
+using SixLabors.ImageSharp.Formats.Jpeg;
+using SixLabors.ImageSharp.PixelFormats;
+using SixLabors.ImageSharp;
+using IodemBot.Discords;
+using System.Threading.Channels;
 
 namespace IodemBot.Modules
 {
@@ -83,14 +89,15 @@ namespace IodemBot.Modules
         public async Task ClassToggle([Remainder] string name = "")
         {
             var account = EntityConverter.ConvertUser(Context.User);
-            AdeptClassSeriesManager.TryGetClassSeries(account.GsClass, out AdeptClassSeries curSeries);
-            var gotClass = AdeptClassSeriesManager.TryGetClassSeries(name, out AdeptClassSeries series);
+            var curSeries = account.ClassSeries;
+
+            var foundClass = AdeptClassSeriesManager.TryGetClassSeries(name, out AdeptClassSeries series);
             var embed = new EmbedBuilder().WithColor(Colors.Get(account.Element.ToString()));
 
-            if (gotClass || name == "")
+            if (foundClass || name == "")
             {
                 var success = SetClass(account, series?.Name ?? "");
-                series = AdeptClassSeriesManager.GetClassSeries(account);
+                series = account.ClassSeries;
                 if (curSeries.Name.Equals(series?.Name) || success)
                 {
                     if (series != null && !account.DjinnPocket.DjinnSetup.All(d => series.Elements.Contains(d)))
@@ -239,7 +246,7 @@ namespace IodemBot.Modules
             .WithColor(Colors.Get(account.Element.ToString()))
             .WithAuthor(author)
             .WithTitle(string.Concat($"Level {account.LevelNumber} {account.GsClass} {string.Join("", account.TrophyCase.Trophies.Select(t => t.Icon))} (Rank {UserAccounts.GetRank(account) + 1})".Take(EmbedBuilder.MaxTitleLength)))
-            .AddField("Current Equip", account.Inv.GearToString(AdeptClassSeriesManager.GetClassSeries(account).Archtype), true)
+            .AddField("Current Equip", account.Inv.GearToString(account.ClassSeries.Archtype), true)
             .AddField("Psynergy", p.GetMoves(false), true)
             .AddField("Djinn", account.DjinnPocket.GetDjinns().GetDisplay(DjinnDetail.None), true)
 
@@ -414,7 +421,7 @@ namespace IodemBot.Modules
                 SetClass(user, classSeriesName);
             }
 
-            var series = AdeptClassSeriesManager.GetClassSeries(user);
+            var series = user.ClassSeries;
             if (series != null && !user.DjinnPocket.DjinnSetup.All(d => series.Elements.Contains(d)))
             {
                 user.DjinnPocket.DjinnSetup.Clear();
@@ -532,6 +539,14 @@ namespace IodemBot.Modules
             await Task.CompletedTask;
         }
 
+        [Command("compass")]
+        [Summary("Reset and start a new game. Careful, your progress will be lost!")]
+        public async Task SendCompass()
+        {
+            ImageStitcher.GenerateCompass(EntityConverter.ConvertUser(Context.User));
+            await Context.Channel.SendFileAsync("compass.png");
+        }
+
         public async Task NewGamePlusTask()
         {
             var account = EntityConverter.ConvertUser(Context.User);
@@ -582,7 +597,7 @@ namespace IodemBot.Modules
                 return;
             }
 
-            string curClass = AdeptClassSeriesManager.GetClassSeries(avatar).Name;
+            string curClass = avatar.ClassSeries.Name;
             avatar.BonusClasses.Add(series);
             avatar.BonusClasses.Sort();
             SetClass(avatar, curClass);
@@ -616,7 +631,7 @@ namespace IodemBot.Modules
 
         internal static bool SetClass(UserAccount account, string name = "")
         {
-            string curClass = AdeptClassSeriesManager.GetClassSeries(account).Name;
+            string curClass = account.ClassSeries.Name;
             if (name == "")
             {
                 account.ClassToggle++;
@@ -624,9 +639,9 @@ namespace IodemBot.Modules
             else
             {
                 account.ClassToggle++;
-                while (AdeptClassSeriesManager.GetClassSeries(account).Name != curClass)
+                while (account.ClassSeries.Name != curClass)
                 {
-                    if (AdeptClassSeriesManager.GetClassSeries(account).Name.ToLower().Contains(name.ToLower()))
+                    if (account.ClassSeries.Name.ToLower().Contains(name.ToLower()))
                     {
                         break;
                     }
@@ -634,7 +649,7 @@ namespace IodemBot.Modules
                     account.ClassToggle++;
                 }
             }
-            return !curClass.Equals(AdeptClassSeriesManager.GetClassSeries(account).Name);
+            return !curClass.Equals(account.ClassSeries.Name);
         }
     }
 }

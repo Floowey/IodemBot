@@ -585,5 +585,72 @@
     ],
     "JupiterNeeded": 2,
     "MercuryNeeded": 2
+  },
+  "Chiwen": {
+    "Move": {
+      "Name": "Chiwen",
+      "Emote": "<:Chiwen:1094343797720223754>",
+      "TargetType": "PartyAll",
+      "Element": 4,
+      "healPower": 50,
+      "percentage": 15,
+      "singleTarget": false,
+      "effects": [
+        {
+          "Type": "Restore",
+          "CureConditions": [ "Poison", "Venom", "DeathCurse", "Delusion" ]
+        }
+      ]
+    },
+    "Description": "Chiwen, the hornless-dragon mouth, aids its users in restoring their powers. This is a custom summon created for the IodemBot Project",
+    "EffectsOnUser": [
+      {
+        "Type": "Stat",
+        "Stat": "Power",
+        "Multiplier": 1.2
+      },
+      {
+        "Type": "Stat",
+        "Stat": "Resistance",
+        "Multiplier": 1.2
+      }
+    ],
+    "MarsNeeded": 1,
+    "MercuryNeeded": 1
+  },
+  "Skadi": {
+    "Move": {
+      "Name": "Skadi",
+      "Emote": "<:Skadi:1094343795488866384>",
+      "TargetType": "EnemyRange",
+      "Element": 4,
+      "power": 120,
+      "percentageDamage": 8,
+      "Range": 5,
+      "IgnoreSpread": true,
+      "Effects": [
+
+        {
+          "Type": "Condition",
+          "Condition": "Sleep",
+          "Probability": 30
+        }
+      ]
+    },
+    "Description": "The skiing huntress covers her enemies in snow. This is a custom summon created for the IodemBot Project.",
+    "EffectsOnUser": [
+      {
+        "Type": "Stat",
+        "Stat": "Power",
+        "Multiplier": 1.2
+      },
+      {
+        "Type": "Stat",
+        "Stat": "Resistance",
+        "Multiplier": 1.2
+      }
+    ],
+    "MercuryNeeded": 1,
+    "VenusNeeded": 1
   }
 }

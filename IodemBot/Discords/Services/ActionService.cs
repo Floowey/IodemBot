@@ -104,16 +104,6 @@ namespace IodemBot.Discords.Services
                     await _discord.Rest.BulkOverwriteGlobalCommands(properties.ToArray());
                 }
             }
-
-            /* See below
-            var guildIds = (await _discord.Rest.GetGuildsAsync()).Select(g => g.Id);
-            foreach (var guildId in guildIds)
-            {
-                var guild = _discord.GetGuild(guildId);
-                if (guild != null)
-                    await SetOwnerPermissionsAsync(guild);
-            }
-            */
         }
 
         public async Task AddGuildCommand(ulong guildId, string name)
