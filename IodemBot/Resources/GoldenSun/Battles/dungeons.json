@@ -251,7 +251,7 @@
             {
               "Weight": 1,
               "RequireTag": [ "@-16" ],
-              "Tag": "OathMercury"
+              "Tag": "OathMercury",
               "Obtainable": 1
             }
           ],
