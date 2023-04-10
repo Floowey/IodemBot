@@ -10,6 +10,7 @@ using IodemBot.ColossoBattles;
 using IodemBot.Core;
 using IodemBot.Discords.Services;
 using IodemBot.Extensions;
+using IodemBot.Images;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace IodemBot
@@ -59,7 +60,6 @@ namespace IodemBot
             if (string.IsNullOrEmpty(Config.Bot.Token)) return;
             await using var services = ConfigureServices();
             _client = services.GetRequiredService<DiscordSocketClient>();
-
             Global.Client = _client;
 
             _client.Log += Log;
@@ -78,6 +78,7 @@ namespace IodemBot
             services.GetRequiredService<RequestContextService>().Initialize();
 
             await services.GetRequiredService<MessageHandler>().InitializeAsync(_client);
+            await services.GetRequiredService<CompassService>().InitializeAsync();
             await Task.Delay(-1);
         }
 
@@ -140,6 +141,7 @@ namespace IodemBot
                         .WithColor(Colors.Get("Iodem"))
                         .WithDescription(string.Format(_welcomeMsg.Random(), user.DisplayName()))
                         .Build());
+            await Task.CompletedTask;
         }
 
         private async Task Client_UserJoined(SocketGuildUser user)
@@ -235,6 +237,7 @@ namespace IodemBot
                 .AddSingleton<ActionService>()
                 .AddSingleton<MessageHandler>()
                 .AddSingleton<ColossoBattleService>()
+                .AddSingleton<CompassService>()
                 .AddScoped<RequestContextService>()
                 .BuildServiceProvider();
         }

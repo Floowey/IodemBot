@@ -40,7 +40,11 @@ namespace IodemBot.Modules.GoldenSunMechanics
             }
             var giveTag = true;
             userAccount.AddXp(Xp);
-            userAccount.Inv.AddBalance(Coins);
+
+            if (userAccount.ClassSeries.Name == "Pirate Series")
+                userAccount.Inv.AddBalance((uint)(Coins * 1.25));
+            else
+                userAccount.Inv.AddBalance(Coins);
 
             if (HasChest)
             {

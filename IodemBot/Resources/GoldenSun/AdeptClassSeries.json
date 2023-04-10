@@ -535,7 +535,7 @@
     "requirement": "MarsDjinn",
     "isDefault": true,
     "archtype": "Warrior",
-    "description": "Crossing and plundering throughout the Eastern Seas, Pirates fear the lands more than the depths below."
+    "description": "Crossing and plundering throughout the Eastern Seas, Pirates fear the lands more than the depths below. They earn an additional 25% gold from battles."
   },
   {
     "name": "Wind Seer Series",

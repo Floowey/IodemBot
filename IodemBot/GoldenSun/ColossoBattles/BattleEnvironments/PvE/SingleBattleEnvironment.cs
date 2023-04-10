@@ -194,7 +194,7 @@ namespace IodemBot.ColossoBattles
                 SetNextEnemy();
             }
 
-            if (user.Inv.GetGear(AdeptClassSeriesManager.GetClassSeries(user).Archtype).Any(i => i.Name == "Lure Cap"))
+            if (user.Inv.GetGear(user.ClassSeries.Archtype).Any(i => i.Name == "Lure Cap"))
             {
                 _lureCaps++;
                 SetNextEnemy();

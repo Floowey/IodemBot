@@ -148,9 +148,10 @@ namespace IodemBot.ColossoBattles
 
             if (outEnemy == null)
             {
-                Console.WriteLine($"{enemyKey} was not found.");
-                outEnemy = new($"{enemyKey} Not Implemented", Sprites.GetRandomSprite(), new Stats(),
-                    new ElementalStats(), Array.Empty<string>(), false, false);
+                throw new ArgumentException("Enemy not found");
+                //Console.WriteLine($"{enemyKey} was not found.");
+                //outEnemy = new($"{enemyKey} Not Implemented", Sprites.GetRandomSprite(), new Stats(),
+                //    new ElementalStats(), Array.Empty<string>(), false, false);
             }
             else
             {
@@ -302,10 +303,10 @@ namespace IodemBot.ColossoBattles
             if (Classes.Length > 0 && !Classes.Contains(playerAvatar.GsClass)) return false;
 
             if (ClassSeries.Length > 0 &&
-                !ClassSeries.Contains(AdeptClassSeriesManager.GetClassSeries(playerAvatar).Name)) return false;
+                !ClassSeries.Contains(playerAvatar.ClassSeries.Name)) return false;
 
             if (ArchTypes.Length > 0 &&
-                !ArchTypes.Contains(AdeptClassSeriesManager.GetClassSeries(playerAvatar).Archtype)) return false;
+                !ArchTypes.Contains(playerAvatar.ClassSeries.Archtype)) return false;
 
             if (TagsRequired.Length > 0 && !TagsRequired.All(t => playerAvatar.Tags.Contains(t))) return false;
 

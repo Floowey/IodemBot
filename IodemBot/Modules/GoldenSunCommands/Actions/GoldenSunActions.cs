@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Discord;
@@ -11,7 +12,9 @@ using IodemBot.Discords.Actions;
 using IodemBot.Discords.Actions.Attributes;
 using IodemBot.Discords.Contexts;
 using IodemBot.Extensions;
+using IodemBot.Images;
 using IodemBot.Modules.GoldenSunMechanics;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace IodemBot.Modules
 {
@@ -85,7 +88,7 @@ namespace IodemBot.Modules
             {
                 case 0: // Overview
                     embed
-                        .AddField("Current Equip", account.Inv.GearToString(AdeptClassSeriesManager.GetClassSeries(account).Archtype), true)
+                        .AddField("Current Equip", account.Inv.GearToString(account.ClassSeries.Archtype), true)
                         .AddField("Psynergy", p.GetMoves(false), true)
                         .AddField("Djinn", account.DjinnPocket.GetDjinns().GetDisplay(DjinnDetail.None), true)
 
@@ -274,7 +277,9 @@ namespace IodemBot.Modules
             else
             {
                 var user = EntityConverter.ConvertUser(Context.User);
-                msgProps.Embed = ClassAction.GetClassEmbed(user);
+                var a = new ClassAction();
+
+                msgProps.Embed = await a.GetClassEmbed(user);
                 msgProps.Components = ClassAction.GetClassComponent(user);
             }
 
@@ -323,7 +328,7 @@ namespace IodemBot.Modules
 
             user.Tags.Remove("Warrior");
             user.Tags.Remove("Mage");
-            user.Tags.Add(AdeptClassSeriesManager.GetClassSeries(user).Archtype.ToString());
+            user.Tags.Add(user.ClassSeries.Archtype.ToString());
             UserAccountProvider.StoreUser(user);
         }
 
@@ -362,8 +367,7 @@ namespace IodemBot.Modules
             if (!classSeriesName.IsNullOrEmpty())
                 AdeptClassSeriesManager.SetClass(user, classSeriesName);
 
-            var series = AdeptClassSeriesManager.GetClassSeries(user);
-            if (series != null && !user.DjinnPocket.DjinnSetup.All(d => series.Elements.Contains(d)))
+            if (user.ClassSeries != null && !user.DjinnPocket.DjinnSetup.All(d => user.ClassSeries.Elements.Contains(d)))
             {
                 user.DjinnPocket.DjinnSetup.Clear();
                 user.DjinnPocket.DjinnSetup.Add(user.Element);
@@ -388,7 +392,7 @@ namespace IodemBot.Modules
         public override async Task RunAsync()
         {
             var user = EntityConverter.ConvertUser(Context.User);
-            await Context.ReplyWithMessageAsync(EphemeralRule, embed: GetClassEmbed(user), components: GetClassComponent(user));
+            await Context.ReplyWithMessageAsync(EphemeralRule, embed: await GetClassEmbed(user), components: GetClassComponent(user));
         }
 
         public override EphemeralRule EphemeralRule => EphemeralRule.EphemeralOrFail;
@@ -411,17 +415,19 @@ namespace IodemBot.Modules
         {
             var user = EntityConverter.ConvertUser(Context.User);
 
-            msgProps.Embed = GetClassEmbed(user);
+            msgProps.Embed = await GetClassEmbed(user);
             msgProps.Components = GetClassComponent(user);
             await Task.CompletedTask;
         }
 
-        public static Embed GetClassEmbed(UserAccount account)
+        public async Task<Embed> GetClassEmbed(UserAccount account)
         {
             var allClasses = AdeptClassSeriesManager.AllClasses;
             var allAvailableClasses = allClasses.Where(c => c.IsDefault || account.BonusClasses.Any(bc => bc.Equals(c.Name)));
             var ofElement = allAvailableClasses.Where(c => c.Elements.Contains(account.Element)).Select(c => c.Name).OrderBy(n => n);
             var availableClasses = AdeptClassSeriesManager.GetAvailableClasses(account);
+
+            ImageStitcher.GenerateCompass(account);
 
             var embed = new EmbedBuilder();
             embed.WithTitle("Classes");
@@ -432,7 +438,15 @@ namespace IodemBot.Modules
 
             embed.AddField("Selected Impulse", $"Impulse: {account.Passives.SelectedPassive}", true);
             embed.AddField("Impulses?", "*Impulses are passives that do something on Turn 1. They get unlocked upgraded by completing Path of Element IV in combination with oaths.*");
+
+            //var filename = Path.GetFileName("compass.png");
+            //embed.WithImageUrl($"attachment://{filename}");
+
+            var cs = ServiceProvider.GetRequiredService<CompassService>();
+            embed.WithThumbnailUrl(await cs.GetCompass(account));
+
             embed.WithFooter($"Total: {allAvailableClasses.Count()}/{allClasses.Count}");
+
             return embed.Build();
         }
 

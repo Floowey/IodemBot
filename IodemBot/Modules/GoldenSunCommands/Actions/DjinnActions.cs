@@ -107,8 +107,7 @@ namespace IodemBot.Modules
             builder.WithButton(labels ? "Reveal to others" : null, $"{nameof(RevealEphemeralAction)}", ButtonStyle.Secondary,
                     Emotes.GetEmote("RevealEphemeralAction"), row: 0);
 
-            var classSeries = AdeptClassSeriesManager.GetClassSeries(user);
-            foreach (var element in classSeries.Elements)
+            foreach (var element in user.ClassSeries.Elements)
             {
                 List<SelectMenuOptionBuilder> options = new();
                 foreach (var djinn in djinnPocket.Djinn.OfElement(element).Take(SelectMenuBuilder.MaxOptionCount))
@@ -127,7 +126,7 @@ namespace IodemBot.Modules
                 }
 
                 if (options.Count > 0)
-                    builder.WithSelectMenu($"#{nameof(DjinnEquipAction)}.{element}", options, placeholder:$"{element} Djinn",
+                    builder.WithSelectMenu($"#{nameof(DjinnEquipAction)}.{element}", options, placeholder: $"{element} Djinn",
                         maxValues: Math.Min(options.Count, 2));
             }
 
@@ -213,11 +212,10 @@ namespace IodemBot.Modules
         {
             var user = EntityConverter.ConvertUser(Context.User);
             var userDjinn = user.DjinnPocket;
-            var userclass = AdeptClassSeriesManager.GetClassSeries(user);
             var chosenDjinn = SelectedDjinn
                 .Select(n => userDjinn.GetDjinn(n))
                 .Where(d => d != null)
-                .OfElement(userclass.Elements)
+                .OfElement(user.ClassSeries.Elements)
                 .Take(DjinnPocket.MaxDjinn)
                 .ToList();
 

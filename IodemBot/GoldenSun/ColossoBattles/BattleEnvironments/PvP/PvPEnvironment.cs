@@ -417,6 +417,7 @@ namespace IodemBot.ColossoBattles
                         m.Components = null;
                     });
             });
+            await Task.CompletedTask;
         }
 
         protected virtual async Task WriteEnemiesInit()

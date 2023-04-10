@@ -43,8 +43,8 @@ namespace IodemBot.Core.UserManagement
                 Djinn = account.DjinnPocket.GetDjinns().Select(d => d.Name).ToList(),
                 Element = account.Element
             };
-            var classSeries = AdeptClassSeriesManager.GetClassSeries(account);
-            l.ClassSeries = classSeries.Name;
+            var classSeries = account.ClassSeries;
+            l.ClassSeries = account.ClassSeries.Name;
             l.Gear = account.Inv.GetGear(classSeries.Archtype).OrderBy(i => i.ItemType).Select(i => i.Name).ToList();
             return l;
         }
@@ -53,7 +53,7 @@ namespace IodemBot.Core.UserManagement
         {
             var inv = account.Inv;
             GoldenSunCommands.SetClass(account, ClassSeries);
-            Gear.ForEach(i => inv.Equip(i, AdeptClassSeriesManager.GetClassSeries(account).Archtype));
+            Gear.ForEach(i => inv.Equip(i, account.ClassSeries.Archtype));
             DjinnCommands.TakeDjinn(account, Djinn.ToArray());
         }
     }

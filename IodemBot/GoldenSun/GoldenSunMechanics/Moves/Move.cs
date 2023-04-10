@@ -108,7 +108,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                         break;
                 }
             }
-            catch (ArgumentOutOfRangeException e)
+            catch (ArgumentOutOfRangeException)
             {
                 throw new InvalidOperationException($"{user.Name} mistargetted with {Name} while targetting {TargetNr}");
             }

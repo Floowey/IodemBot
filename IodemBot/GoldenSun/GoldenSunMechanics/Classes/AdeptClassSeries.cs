@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 
 namespace IodemBot.Modules.GoldenSunMechanics
 {
-    internal class AdeptClassSeries
+    public class AdeptClassSeries
     {
         public static Dictionary<string, IRequirement> DictReq;
 
@@ -35,7 +35,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         }
 
         public string Name { get; set; }
-        public AdeptClass[] Classes { get; set; }
+        public List<AdeptClass> Classes { get; set; }
         public Element[] Elements { get; set; }
         public ElementalStats Elstats { get; set; }
         public string Requirement { get; set; }
@@ -49,7 +49,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             int classNr;
             try
             {
-                classNr = Math.Min(Classes.Length - 1, DictReq[Requirement].Apply(user));
+                classNr = Math.Min(Classes.Count - 1, DictReq[Requirement].Apply(user));
             }
             catch
             {

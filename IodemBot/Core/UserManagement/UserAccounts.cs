@@ -49,6 +49,7 @@ namespace IodemBot.Core.UserManagement
             }
         }
 
+        [Obsolete("UserAccounts.GetAccount is outdated. Use EntityConverter.")]
         public static UserAccount GetAccount(SocketUser user)
         {
             return GetOrCreateAccount(user.Id);
@@ -72,7 +73,6 @@ namespace IodemBot.Core.UserManagement
                     {
                         sortedList = UserAccountProvider.GetLeaderBoard(type, mode)
                             .Take(10)
-                            .ToList()
                             .Select(id => UserAccountProvider.GetById(id.Key))
                             .ToList();
                     }

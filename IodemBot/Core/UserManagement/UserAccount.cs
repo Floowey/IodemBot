@@ -47,6 +47,12 @@ namespace IodemBot.Core.UserManagement
         public string GsClass =>
             AdeptClassSeriesManager.GetClass(this).Name; //GoldenSun.getClass(element, LevelNumber, (uint) classToggle);
 
+        [JsonIgnore]
+        public AdeptClass AdeptClass => AdeptClassSeriesManager.GetClass(this);
+
+        [JsonIgnore]
+        public AdeptClassSeries ClassSeries => AdeptClassSeriesManager.GetClassSeries(this);
+
         public DateTime LastXp { get; set; }
 
         [JsonIgnore]
@@ -196,7 +202,7 @@ namespace IodemBot.Core.UserManagement
             Tags.RemoveAll(t => !t.Contains("Halloween20") || !t.Contains("Christmas21"));
             Tags.Add("TutorialCompleted");
             Tags.Add($"{Element}Adept");
-            Tags.Add(AdeptClassSeriesManager.GetClassSeries(this).Archtype.ToString());
+            Tags.Add(ClassSeries.Archtype.ToString());
             Tags.Add($"HasReset");
             if (Oaths.GetOathCompletion(Oath.Warrior) >= OathCompletion.Completed)
                 Tags.Add("WarriorGear");

@@ -140,7 +140,7 @@ namespace IodemBot.ColossoBattles
                         break;
 
                     case "Soothing Song":
-                        if (!p.IsAlive)
+                        if (!p.IsAlive && Global.RandomNumber(0, 100) < p.Passive.args[p.PassiveLevel])
                         {
                             var c = p.RemoveCondition(new[] { Condition.Poison, Condition.Venom, Condition.Haunt });
                             if (c > 0)
@@ -155,7 +155,7 @@ namespace IodemBot.ColossoBattles
                         break;
 
                     case "Fiery Reflex":
-                        if (!p.IsAlive)
+                        if (!p.IsAlive && Global.RandomNumber(0, 100) < p.Passive.args[p.PassiveLevel])
                         {
                             p.AddCondition(Condition.Counter);
                             Log.Add($"{p.Name} strikes a battle pose.");
@@ -225,7 +225,7 @@ namespace IodemBot.ColossoBattles
 
             if (!(TeamA.All(p => p.HasSelected) && TeamB.All(p => p.HasSelected))) return false;
 
-            if(TurnNumber!=0)
+            if (TurnNumber != 0)
                 Log.Clear();
             OutValue = -1;
             if (SizeTeamB == 0 || SizeTeamA == 0)
@@ -268,7 +268,7 @@ namespace IodemBot.ColossoBattles
 
             fighters.Where(p => p.IsAlive && p.Passive.Equals("Tail Wind")).ToList().ForEach(p => Log.Add($"{p.Name} swiftly acts."));
             return fighters
-                .OrderByDescending(f => f.Passive.Equals("Tail Wind") && TurnNumber == 0 && 
+                .OrderByDescending(f => f.Passive.Equals("Tail Wind") && TurnNumber == 0 &&
                     (f.PassiveLevel == 2 || f.SelectedMove is StatusPsynergy || (f.SelectedMove is OffensivePsynergy && f.PassiveLevel == 1)))
                 .ThenBy(f => f.Tags.Contains("OathIdleness"))
                 .ThenByDescending(f => f.Stats.Spd * f.MultiplyBuffs("Speed"))

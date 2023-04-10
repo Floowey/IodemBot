@@ -32,11 +32,17 @@ namespace IodemBot
             }
             return false;
         }
+
+        public static EventScheduleStruct GetEventSchedule(string eventName)
+        {
+            return ScheduledEvents[eventName];
+        }
     }
 
     public struct EventScheduleStruct
     {
         public DateTime Start { get; set; }
         public DateTime End { get; set; }
+        public string Flavortext { get; set; }
     }
 }

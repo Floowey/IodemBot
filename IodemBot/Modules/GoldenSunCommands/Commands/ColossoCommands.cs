@@ -202,34 +202,10 @@ namespace IodemBot.ColossoBattles
         [Command("c reset")]
         [RequireStaff]
         [RequireUserServer]
-        public async Task Reset(string name)
+        public async Task Reset(BattleEnvironment env)
         {
-            var a = BattleService.GetBattleEnvironment(b => Context.Guild.Channels.Any(c => b.ChannelIds.Contains(c.Id))
-                && b.Name.Equals(name, StringComparison.InvariantCultureIgnoreCase));
-
-            if (a != null)
-                _ = a.Reset("manual reset");
-
-            await Task.CompletedTask;
-        }
-
-        [Command("c reset")]
-        [RequireStaff]
-        [RequireUserServer]
-        public async Task Reset(IMessageChannel channel)
-        {
-            _ = Reset(channel.Id);
-            await Task.CompletedTask;
-        }
-
-        [Command("c reset")]
-        [RequireStaff]
-        [RequireUserServer]
-        public async Task Reset(ulong id)
-        {
-            var a = BattleService.GetBattleEnvironment(b => b.ChannelIds.Contains(id));
-            if (a != null)
-                _ = a.Reset("manual reset");
+            if (env != null)
+                _ = env.Reset("manual reset");
 
             await Task.CompletedTask;
         }
@@ -237,14 +213,18 @@ namespace IodemBot.ColossoBattles
         [Command("c setEnemy")]
         [RequireStaff]
         [RequireUserServer]
-        public async Task SetEnemy(string name, [Remainder] string enemy)
+        public async Task SetEnemy(BattleEnvironment a, [Remainder] string enemy)
         {
-            await Context.Message.DeleteAsync();
-            var a = BattleService.GetBattleEnvironment(b => b.ChannelIds.Contains(Context.Channel.Id)
-                && b.Name.Equals(name, StringComparison.InvariantCultureIgnoreCase));
-
             if (a is PvEEnvironment pve)
+            {
                 pve.SetEnemy(enemy);
+                _ = ReplyAsync($"Tried setting {enemy} to {pve.Name}. First enemy is now: {pve.Battle.TeamB.FirstOrDefault()?.Name ?? "None"}");
+            }
+            else
+            {
+                _ = ReplyAsync($"Couldn't resolve PvE environment.");
+            }
+            await Task.CompletedTask;
         }
 
         [Command("c addweyard")]
@@ -258,29 +238,7 @@ namespace IodemBot.ColossoBattles
 
         [Command("c remove")]
         [RequireStaff]
-        public async Task RemoveBattle(string name)
-        {
-            var gs = GuildSettings.GetGuildSettings(Context.Guild);
-            var battle = BattleService.GetBattleEnvironment(b => b.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
-            if (battle != null)
-            {
-                await RemoveBattle(battle);
-            }
-        }
-
-        [Command("c remove")]
-        [RequireStaff]
-        public async Task RemoveBattle(IMessageChannel channel)
-        {
-            var gs = GuildSettings.GetGuildSettings(Context.Guild);
-            var battle = BattleService.GetBattleEnvironment(channel);
-            if (battle != null)
-            {
-                await RemoveBattle(battle);
-            }
-        }
-
-        private async Task RemoveBattle(BattleEnvironment battle)
+        public async Task RemoveBattle(BattleEnvironment battle)
         {
             //await battle.Reset();
             foreach (var id in battle.ChannelIds)
