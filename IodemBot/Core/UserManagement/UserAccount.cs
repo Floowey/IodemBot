@@ -66,9 +66,10 @@ namespace IodemBot.Core.UserManagement
                     var cutoff = r[0];
                     var rate = (double)r[1];
                     var level = r[2];
+                    var XpCount = Oaths.IsOathActive(Oath.Oaf) ? Xp / XpBoost / 4 : Xp;
                     if (Xp >= cutoff)
                     {
-                        curLevel = (uint)(level - Math.Sqrt(cutoff / rate) + Math.Sqrt(Xp / rate));
+                        curLevel = (uint)(level - Math.Sqrt(cutoff / rate) + Math.Sqrt(XpCount / rate));
                         break;
                     }
                 }
@@ -130,7 +131,7 @@ namespace IodemBot.Core.UserManagement
 
         public void AddXp(ulong xp)
         {
-            var xpToAdd = Oaths.IsOathActive(Oath.Oaf) ? (ulong)(xp * 0.25) : (ulong)(xp * XpBoost);
+            var xpToAdd = (ulong)(xp * XpBoost);
             Xp += xpToAdd;
             if (DailyXP.ContainsKey(DateTime.Today))
                 DailyXP[DateTime.Today] += xpToAdd;
