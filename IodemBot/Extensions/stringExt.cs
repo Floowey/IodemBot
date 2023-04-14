@@ -14,11 +14,15 @@ namespace IodemBot.Extensions
         public static string RemoveBadChars(this string s)
         {
             s ??= "";
-            return Regex.Replace(s, "[\"\n@,$\\$]", "");
+            s = Regex.Replace(s, "[\"\n@,$\\$]", "");
+            s = Regex.Replace(s, "_", @"\_");
+            s = Regex.Replace(s, @"\*", @"\\\*");
+
+            return s;
         }
 
         /// <summary>
-        /// Returns a shortened form a given Emote. e.g. "<:isaac_fallen:490017761972715530>" to "<:i:490017761972715530>". 
+        /// Returns a shortened form a given Emote. e.g. "<:isaac_fallen:490017761972715530>" to "<:i:490017761972715530>".
         /// If the string is an Emoji, e.g. :grimasse: it returns it as is.
         /// Otherwise raises ArgumentException if invalid string.
         /// </summary>
@@ -26,7 +30,7 @@ namespace IodemBot.Extensions
         /// <returns>The shortened form of the emote.</returns>
         public static string ToShortEmote(this string s)
         {
-            if(!(Emote.TryParse(s, out _) || Emoji.TryParse(s, out _)))
+            if (!(Emote.TryParse(s, out _) || Emoji.TryParse(s, out _)))
                 throw new ArgumentException($"{s} not a valid Emote sequence");
 
             var emote = Regex.Match(s, @"<(a?):(.+):(\d{18})>");
