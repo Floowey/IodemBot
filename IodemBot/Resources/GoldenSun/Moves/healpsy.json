@@ -320,5 +320,16 @@
     "element": 0,
     "PPCost": 0,
     "healPower": 10
+  },
+  "Succubus": {
+    "name": "Succubus",
+    "TargetType": "PartySingle",
+    "emote": "<:Succubus:1096734946795724881>",
+    "range": 1,
+    "element": 3,
+    "PPCost": 9,
+    "healPower": 250,
+    "percentage": 15,
+    "singleTarget": true
   }
 }

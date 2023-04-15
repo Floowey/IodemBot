@@ -71,7 +71,8 @@ namespace IodemBot
             { Condition.Sleep, "<:Sleep:555427023519088671>" },
             { Condition.Counter, "" },
             {Condition.SpiritSeal, "<:Psy_Seal:549526931465568257>" },
-            {Condition.DeathCurse, "<:DeathCurse1:583645163499552791>" }
+            {Condition.DeathCurse, "<:DeathCurse1:583645163499552791>" },
+            {Condition.Avoid, "<:Avoid:1096459879281066065>" }
         };
 
         public static string GetIcon(string emoteName, string NotFound = null)

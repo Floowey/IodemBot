@@ -743,6 +743,21 @@
       }
     ]
   },
+  "Mist": {
+    "name": "Mist",
+    "TargetType": "EnemyRange",
+    "emote": "<:Mist:536984203154423829>",
+    "range": 3,
+    "element": 2,
+    "PPCost": 4,
+    "effects": [
+      {
+        "Type": "Condition",
+        "Condition": "Delusion",
+        "Probability": 80
+      }
+    ]
+  },
   "Curse": {
     "name": "Curse",
     "TargetType": "EnemyRange",
@@ -970,14 +985,14 @@
     "name": "Poison",
     "TargetType": "EnemyRange",
     "emote": "<:Poison:549526931847249920>",
-    "range": 1,
+    "range": 5,
     "element": 0,
     "PPCost": 4,
     "effects": [
       {
         "Type": "Condition",
         "Condition": "Poison",
-        "Probability": 15
+        "Probability": 20
       }
     ]
   },
@@ -985,14 +1000,14 @@
     "name": "Taint",
     "TargetType": "EnemyRange",
     "emote": "<:Venom:598458704400220160>",
-    "range": 1,
+    "range": 3,
     "element": 0,
     "PPCost": 6,
     "effects": [
       {
         "Type": "Condition",
         "Condition": "Venom",
-        "Probability": 10
+        "Probability": 25
       }
     ]
   },
@@ -1153,6 +1168,21 @@
           "Type": "Counter"
         },
         "Duration": 999
+      }
+    ]
+  },
+  "Avoid": {
+    "name": "Avoid",
+    "TargetType": "PartySingle",
+    "emote": "<:Avoid:1096459879281066065>",
+    "range": 1,
+    "element": 3,
+    "PPCost": 4,
+    "effects": [
+      {
+        "Type": "Condition",
+        "Condition": "Avoid",
+        "Probability": 100
       }
     ]
   }

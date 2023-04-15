@@ -242,10 +242,10 @@
           "Impair"
         ],
         "statMultipliers": {
-          "maxHP": 110,
+          "maxHP": 120,
           "maxPP": 80,
           "Atk": 100,
-          "Def": 110,
+          "Def": 120,
           "Spd": 70
         }
       },
@@ -258,10 +258,10 @@
           "Impair"
         ],
         "statMultipliers": {
-          "maxHP": 130,
+          "maxHP": 140,
           "maxPP": 90,
           "Atk": 100,
-          "Def": 120,
+          "Def": 130,
           "Spd": 80
         }
       },
@@ -275,10 +275,10 @@
           "Impair"
         ],
         "statMultipliers": {
-          "maxHP": 150,
+          "maxHP": 160,
           "maxPP": 100,
           "Atk": 130,
-          "Def": 140,
+          "Def": 150,
           "Spd": 100
         }
       },
@@ -293,10 +293,10 @@
           "Debilitate"
         ],
         "statMultipliers": {
-          "maxHP": 170,
+          "maxHP": 180,
           "maxPP": 110,
           "Atk": 130,
-          "Def": 140,
+          "Def": 150,
           "Spd": 100
         }
       },
@@ -311,10 +311,10 @@
           "Debilitate"
         ],
         "statMultipliers": {
-          "maxHP": 190,
+          "maxHP": 200,
           "maxPP": 120,
           "Atk": 140,
-          "Def": 150,
+          "Def": 160,
           "Spd": 110
         }
       }
@@ -449,7 +449,7 @@
         "statMultipliers": {
           "maxHP": 110,
           "maxPP": 90,
-          "Atk": 100,
+          "Atk": 110,
           "Def": 100,
           "Spd": 90
         }
@@ -465,7 +465,7 @@
         "statMultipliers": {
           "maxHP": 130,
           "maxPP": 100,
-          "Atk": 110,
+          "Atk": 120,
           "Def": 110,
           "Spd": 100
         }
@@ -481,7 +481,7 @@
         "statMultipliers": {
           "maxHP": 150,
           "maxPP": 110,
-          "Atk": 120,
+          "Atk": 130,
           "Def": 120,
           "Spd": 110
         }
@@ -497,7 +497,7 @@
         "statMultipliers": {
           "maxHP": 170,
           "maxPP": 120,
-          "Atk": 130,
+          "Atk": 140,
           "Def": 130,
           "Spd": 120
         }
@@ -513,9 +513,9 @@
         "statMultipliers": {
           "maxHP": 190,
           "maxPP": 130,
-          "Atk": 140,
+          "Atk": 150,
           "Def": 140,
-          "Spd": 120
+          "Spd": 130
         }
       }
     ],
@@ -645,6 +645,7 @@
       {
         "name": "Beastling",
         "movepool": [
+          "Rampage_2",
           "Slash",
           "Ray",
           "Boon"
@@ -660,6 +661,7 @@
       {
         "name": "Wildrunner",
         "movepool": [
+          "Rampage_2",
           "Speed Punch",
           "Wind Slash",
           "Ray",
@@ -676,6 +678,7 @@
       {
         "name": "Shapeshifter",
         "movepool": [
+          "Rampage_2",
           "Speed Punch",
           "Wind Slash",
           "Storm Ray",
@@ -692,6 +695,7 @@
       {
         "name": "Beast Master",
         "movepool": [
+          "Rampage_2",
           "Speed Punch",
           "Sonic Slash",
           "Storm Ray",
@@ -708,6 +712,7 @@
       {
         "name": "Prime Beast",
         "movepool": [
+          "Rampage_2",
           "Speed Punch",
           "Sonic Slash",
           "Destruct Ray",
@@ -881,6 +886,7 @@
         "name": "Commander",
         "movepool": [
           "Diamond Dust",
+          "Mare Temporis",
           "Glacier",
           "Supercool",
           "Ply Well"
@@ -897,6 +903,7 @@
         "name": "Captain",
         "movepool": [
           "Diamond Berg",
+          "Mare Temporis",
           "Glacier",
           "Supercool",
           "Pure Ply"
@@ -913,6 +920,7 @@
         "name": "Admiral",
         "movepool": [
           "Diamond Berg",
+          "Mare Temporis",
           "Glacier",
           "Megacool",
           "Pure Ply"
@@ -983,6 +991,7 @@
           "Diamond Dust",
           "Deluge",
           "Break",
+          "Avoid",
           "Ply Well"
         ],
         "statMultipliers": {
@@ -999,6 +1008,7 @@
           "Diamond Berg",
           "Deluge",
           "Break",
+          "Avoid",
           "Pure Ply"
         ],
         "statMultipliers": {
@@ -1015,6 +1025,7 @@
           "Diamond Berg",
           "Deluge",
           "Break",
+          "Avoid",
           "Pure Ply"
         ],
         "statMultipliers": {
@@ -1172,7 +1183,7 @@
       {
         "name": "Apprentice",
         "movepool": [
-          "Gaia",
+          "Spire",
           "Dull",
           "Cure"
         ],
@@ -1188,7 +1199,7 @@
         "name": "Gaia Illusionist",
         "movepool": [
           "Astral Blast",
-          "Gaia",
+          "Clay Spire",
           "Dull",
           "Weaken",
           "Cure Well"
@@ -1205,7 +1216,7 @@
         "name": "Gaia Enchanter",
         "movepool": [
           "Astral Blast",
-          "Mother Gaia",
+          "Clay Spire",
           "Dull",
           "Blunt",
           "Weaken",
@@ -1223,7 +1234,7 @@
         "name": "Gaia Conjurer",
         "movepool": [
           "Thunder Mine",
-          "Mother Gaia",
+          "Clay Spire",
           "Dull",
           "Blunt",
           "Weaken",
@@ -1242,7 +1253,7 @@
         "name": "Gaia War Adept",
         "movepool": [
           "Thunder Mine",
-          "Grand Gaia",
+          "Stone Spire",
           "Dull",
           "Blunt",
           "Weaken",
@@ -1502,8 +1513,8 @@
       {
         "name": "Air Pilgrim",
         "movepool": [
-          "Volcano",
-          "Plasma",
+          "Lava Shower",
+          "Thunderclap",
           "Weaken"
         ],
         "statMultipliers": {
@@ -1517,8 +1528,8 @@
       {
         "name": "Air Wanderer",
         "movepool": [
-          "Eruption",
-          "Plasma",
+          "Molten Bath",
+          "Thunderclap",
           "Bind",
           "Ward",
           "Weaken",
@@ -1535,8 +1546,8 @@
       {
         "name": "Air Ascetic",
         "movepool": [
-          "Eruption",
-          "Plasma",
+          "Moltenbath",
+          "Thunderbolt",
           "Bind",
           "Ward",
           "Resist",
@@ -1555,8 +1566,8 @@
       {
         "name": "Air Fire Monk",
         "movepool": [
-          "Eruption",
-          "Shine Plasma",
+          "Molten Bath",
+          "Thunderbolt",
           "Bind",
           "Ward",
           "Resist",
@@ -1575,8 +1586,8 @@
       {
         "name": "Air Guru",
         "movepool": [
-          "Pyroclasm",
-          "Spark Plasma",
+          "Magmastorm",
+          "Thunderhead",
           "Bind",
           "Ward",
           "Resist",
@@ -1723,8 +1734,9 @@
       {
         "name": "Air Seer",
         "movepool": [
-          "Bolt",
-          "Growth",
+          "Whirlwind",
+          "Gaia",
+          "Sand",
           "Cure"
         ],
         "statMultipliers": {
@@ -1738,8 +1750,9 @@
       {
         "name": "Air Diviner",
         "movepool": [
-          "Flash Bolt",
-          "Mad Growth",
+          "Whirlwind",
+          "Mother Gaia",
+          "Sand",
           "Cure",
           "Fresh Breeze"
         ],
@@ -1754,8 +1767,9 @@
       {
         "name": "Air Shaman",
         "movepool": [
-          "Flash Bolt",
-          "Mad Growth",
+          "Tornado",
+          "Mother Gaia",
+          "Sand",
           "Cure Well",
           "Healthy Wind",
           "Revive"
@@ -1771,8 +1785,9 @@
       {
         "name": "Air Druid",
         "movepool": [
-          "Blue Bolt",
-          "Wild Growth",
+          "Tornado",
+          "Mother Gaia",
+          "Sand",
           "Potent Cure",
           "Healing Gust",
           "Revive"
@@ -1788,9 +1803,9 @@
       {
         "name": "Air Oracle",
         "movepool": [
-          "Blue Bolt",
-          "Wild Growth",
+          "Tempest",
           "Grand Gaia",
+          "Sand",
           "Potent Cure",
           "Healing Gust",
           "Revive"
@@ -2186,7 +2201,7 @@
           "Undead Gloom",
           "Fiery Abyss",
           "Impair",
-          "Condemn"
+          "Curse"
         ],
         "statMultipliers": {
           "maxHP": 90,
@@ -2201,10 +2216,10 @@
         "movepool": [
           "Undead Gloom",
           "Fiery Abyss",
-          "Toxic Grit",
+          "Fear Puppet",
           "Impair",
           "Debilitate",
-          "Condemn"
+          "Curse"
         ],
         "statMultipliers": {
           "maxHP": 120,
@@ -2219,10 +2234,10 @@
         "movepool": [
           "Undead Gloom",
           "Fiery Abyss",
-          "Toxic Grit",
+          "Fear Puppet",
           "Impair",
           "Debilitate",
-          "Condemn"
+          "Curse"
         ],
         "statMultipliers": {
           "maxHP": 130,
@@ -2237,10 +2252,10 @@
         "movepool": [
           "Undead Gloom",
           "Dire Inferno",
-          "Toxic Grit",
+          "Fear Puppet",
           "Impair",
           "Debilitate",
-          "Condemn"
+          "Curse"
         ],
         "statMultipliers": {
           "maxHP": 150,
@@ -2255,10 +2270,10 @@
         "movepool": [
           "Undead Might",
           "Dire Inferno",
-          "Toxic Grit",
+          "Fear Puppet",
           "Impair",
           "Debilitate",
-          "Condemn"
+          "Curse"
         ],
         "statMultipliers": {
           "maxHP": 170,
@@ -2294,6 +2309,7 @@
       {
         "name": "Scrapper",
         "movepool": [
+          "Rampage_2",
           "Speed Punch",
           "Growth",
           "Boon"
@@ -2309,6 +2325,7 @@
       {
         "name": "Grappler",
         "movepool": [
+          "Rampage_2",
           "Speed Punch",
           "Psynergy Slam",
           "Growth",
@@ -2325,6 +2342,7 @@
       {
         "name": "Brawler",
         "movepool": [
+          "Rampage_2",
           "Speed Punch",
           "Psynergy Slam",
           "Mad Growth",
@@ -2341,6 +2359,7 @@
       {
         "name": "Bruiser",
         "movepool": [
+          "Rampage_2",
           "Speed Punch",
           "Psynergy Slam",
           "Psynergy Surge",
@@ -2358,6 +2377,7 @@
       {
         "name": "Gladiator",
         "movepool": [
+          "Rampage_2",
           "Speed Punch",
           "Psynergy Slam",
           "Psynergy Surge",
@@ -2741,10 +2761,10 @@
       {
         "name": "Medium",
         "movepool": [
-          "Destruct Ray",
-          "Froth Spiral",
+          "Call Zombie",
           "Call Demon",
-          "Cure Well",
+          "Thorny Grave",
+          "Succubus",
           "Lich"
         ],
         "statMultipliers": {
@@ -2758,10 +2778,11 @@
       {
         "name": "Dark Conjurer",
         "movepool": [
-          "Destruct Ray",
-          "Froth Spiral",
+          "Call Zombie",
           "Call Demon",
-          "Potent Cure",
+          "Thorny Grave",
+          "Haunt",
+          "Succubus",
           "Lich"
         ],
         "statMultipliers": {
@@ -2775,10 +2796,12 @@
       {
         "name": "Dark Shaman",
         "movepool": [
-          "Destruct Ray",
-          "Froth Spiral",
+          "Call Zombie",
+          "Call Demon",
           "Call Dullahan",
-          "Potent Cure",
+          "Thorny Grave",
+          "Haunt",
+          "Succubus",
           "Lich"
         ],
         "statMultipliers": {
@@ -2809,5 +2832,231 @@
     "isDefault": false,
     "archtype": "Mage",
     "description": "Mediums talk to the fallen and harness their powers. Their powers aren't stopped by cursed gear."
+  },
+  {
+    "name": "Viking Series",
+    "classes": [
+      {
+        "name": "Viking",
+        "movepool": [
+          "Diamond Dust",
+          "Bolt",
+          "Ply"
+        ],
+        "statMultipliers": {
+          "maxHP": 100,
+          "maxPP": 70,
+          "Atk": 120,
+          "Def": 90,
+          "Spd": 70
+        }
+      },
+      {
+        "name": "Skald",
+        "movepool": [
+          "Diamond Dust",
+          "Flash Bolt",
+          "Ward",
+          "Ply"
+        ],
+        "statMultipliers": {
+          "maxHP": 120,
+          "maxPP": 80,
+          "Atk": 130,
+          "Def": 100,
+          "Spd": 120
+        }
+      },
+      {
+        "name": "Runemaster",
+        "movepool": [
+          "Diamond Dust",
+          "Flash Bolt",
+          "Ward",
+          "Resist",
+          "Pure Ply"
+        ],
+        "statMultipliers": {
+          "maxHP": 140,
+          "maxPP": 90,
+          "Atk": 140,
+          "Def": 110,
+          "Spd": 130
+        }
+      },
+      {
+        "name": "Housecarl",
+        "movepool": [
+          "Diamond Dust",
+          "Blue Bolt",
+          "Bind",
+          "Ward",
+          "Resist",
+          "Ply Well"
+        ],
+        "statMultipliers": {
+          "maxHP": 140,
+          "maxPP": 90,
+          "Atk": 140,
+          "Def": 110,
+          "Spd": 130
+        }
+      },
+      {
+        "name": "Hersir",
+        "movepool": [
+          "Diamond Berg",
+          "Blue Bolt",
+          "Bind",
+          "Ward",
+          "Resist",
+          "Ply Well"
+        ],
+        "statMultipliers": {
+          "maxHP": 180,
+          "maxPP": 110,
+          "Atk": 160,
+          "Def": 130,
+          "Spd": 150
+        }
+      },
+      {
+        "name": "Koningr",
+        "movepool": [
+          "Diamond Berg",
+          "Blue Bolt",
+          "Bind",
+          "Ward",
+          "Resist",
+          "Pure Ply"
+        ],
+        "statMultipliers": {
+          "maxHP": 200,
+          "maxPP": 120,
+          "Atk": 170,
+          "Def": 140,
+          "Spd": 160
+        }
+      }
+    ],
+    "elements": [
+      "Jupiter",
+      "Mercury"
+    ],
+    "elstats": {
+      "VenusAtk": 90,
+      "VenusRes": 90,
+      "MarsAtk": 65,
+      "MarsRes": 65,
+      "JupiterAtk": 140,
+      "JupiterRes": 140,
+      "MercuryAtk": 140,
+      "MercuryRes": 140
+    },
+    "requirement": "ColossoWins",
+    "isDefault": false,
+    "archtype": "Warrior",
+    "description": "Seaborn Warriors, powered by Thor's Thunder"
+  },
+  {
+    "name": "Hoplite Series",
+    "classes": [
+      {
+        "name": "Hoplite",
+        "movepool": [
+          "Slash",
+          "Mist"
+        ],
+        "statMultipliers": {
+          "maxHP": 110,
+          "maxPP": 90,
+          "Atk": 100,
+          "Def": 100,
+          "Spd": 100
+        }
+      },
+      {
+        "name": "Spartan",
+        "movepool": [
+          "Wind Slash",
+          "Impact",
+          "Mist"
+        ],
+        "statMultipliers": {
+          "maxHP": 130,
+          "maxPP": 100,
+          "Atk": 110,
+          "Def": 110,
+          "Spd": 110
+        }
+      },
+      {
+        "name": "Stratigos",
+        "movepool": [
+          "Quick Strike",
+          "Wind Slash",
+          "Impact",
+          "Mist"
+        ],
+        "statMultipliers": {
+          "maxHP": 150,
+          "maxPP": 110,
+          "Atk": 120,
+          "Def": 120,
+          "Spd": 120
+        }
+      },
+      {
+        "name": "Polemarch",
+        "movepool": [
+          "Quick Strike",
+          "Wind Slash",
+          "Impact",
+          "High Impact",
+          "Mist"
+        ],
+        "statMultipliers": {
+          "maxHP": 170,
+          "maxPP": 120,
+          "Atk": 130,
+          "Def": 130,
+          "Spd": 130
+        }
+      },
+      {
+        "name": "Olympian",
+        "movepool": [
+          "Quick Strike",
+          "Sonic Slash",
+          "Impact",
+          "High Impact",
+          "Mist"
+        ],
+        "statMultipliers": {
+          "maxHP": 190,
+          "maxPP": 130,
+          "Atk": 140,
+          "Def": 140,
+          "Spd": 140
+        }
+      }
+    ],
+    "elements": [
+      "Jupiter"
+    ],
+    "elstats": {
+      "VenusAtk": 70,
+      "VenusRes": 70,
+      "MarsAtk": 100,
+      "MarsRes": 100,
+      "JupiterAtk": 140,
+      "JupiterRes": 140,
+      "MercuryAtk": 110,
+      "MercuryRes": 110
+    },
+    "requirement": "JupiterDjinn",
+    "isDefault": true,
+    "archtype": "Warrior",
+    "description": "With their special training, Hoplites strive to follow the footsteps of epic heroes and heroines."
   }
 ]

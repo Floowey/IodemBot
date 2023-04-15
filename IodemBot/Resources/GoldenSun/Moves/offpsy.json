@@ -131,7 +131,14 @@
     "range": 2,
     "element": 0,
     "PPCost": 10,
-    "power": 60
+    "power": 60,
+    "Effects": [
+      {
+        "Type": "ConditionMult",
+        "Conditions": [ "Poison" ],
+        "Multiplier": 1.5
+      }
+    ]
   },
   "Wild Growth": {
     "name": "Wild Growth",
@@ -140,7 +147,14 @@
     "range": 3,
     "element": 0,
     "PPCost": 19,
-    "power": 110
+    "power": 110,
+    "Effects": [
+      {
+        "Type": "ConditionMult",
+        "Conditions": [ "Poison", "Venom" ],
+        "Multiplier": 1.5
+      }
+    ]
   },
   "Punji": {
     "name": "Punji",
@@ -176,7 +190,14 @@
     "range": 1,
     "element": 0,
     "PPCost": 5,
-    "power": 40
+    "power": 40,
+    "effects": [
+      {
+        "Type": "Condition",
+        "Condition": "Stun",
+        "Probability": 12
+      }
+    ]
   },
   "Clay Spire": {
     "name": "Clay Spire",
@@ -185,7 +206,14 @@
     "range": 2,
     "element": 0,
     "PPCost": 13,
-    "power": 85
+    "power": 85,
+    "effects": [
+      {
+        "Type": "Condition",
+        "Condition": "Stun",
+        "Probability": 12
+      }
+    ]
   },
   "Stone Spire": {
     "name": "Stone Spire",
@@ -194,7 +222,14 @@
     "range": 2,
     "element": 0,
     "PPCost": 22,
-    "power": 160
+    "power": 160,
+    "effects": [
+      {
+        "Type": "Condition",
+        "Condition": "Stun",
+        "Probability": 12
+      }
+    ]
   },
   "Toxic Grit": {
     "name": "Toxic Grit",
@@ -829,7 +864,14 @@
     "element": 2,
     "PPCost": 5,
     "power": 20,
-    "Description": "Zzz... Whuzza? Whirlwind? Wind Stone? Zzzzrrrgg..."
+    "Description": "Zzz... Whuzza? Whirlwind? Wind Stone? Zzzzrrrgg...",
+    "effects": [
+      {
+        "Type": "Condition",
+        "Condition": "Delusion",
+        "Probability": 25
+      }
+    ]
   },
   "Tornado": {
     "name": "Tornado",
@@ -838,7 +880,14 @@
     "range": 3,
     "element": 2,
     "PPCost": 14,
-    "power": 80
+    "power": 80,
+    "effects": [
+      {
+        "Type": "Condition",
+        "Condition": "Delusion",
+        "Probability": 25
+      }
+    ]
   },
   "Tempest": {
     "name": "Tempest",
@@ -847,7 +896,14 @@
     "range": 3,
     "element": 2,
     "PPCost": 27,
-    "power": 160
+    "power": 160,
+    "effects": [
+      {
+        "Type": "Condition",
+        "Condition": "Delusion",
+        "Probability": 25
+      }
+    ]
   },
   "Gale": {
     "name": "Gale",
@@ -2194,6 +2250,15 @@
     "emote": ":wolf:",
     "range": 5,
     "element": 4,
+    "PPCost": 0,
+    "dmgMult": 0.8
+  },
+  "Rampage_2": {
+    "name": "Rampage",
+    "TargetType": "EnemyRange",
+    "emote": ":wolf:",
+    "range": 3,
+    "element": 4,
     "PPCost": 0
   },
   "Power Crush": {
@@ -2208,6 +2273,27 @@
       {
         "Type": "ReduceHPToOne",
         "Probability": 20
+      }
+    ]
+  },
+  "Fear Puppet": {
+    "name": "Fear Puppet",
+    "TargetType": "EnemyRange",
+    "emote": "<:Fear_Puppet:1096717054335262720>",
+    "range": 2,
+    "element": 0,
+    "PPCost": 7,
+    "Power": 66,
+    "effects": [
+      {
+        "Type": "Condition",
+        "Condition": "Stun",
+        "Probability": 30
+      },
+      {
+        "Type": "ConditionMult",
+        "Conditions": [ "DeathCurse", "Haunt" ],
+        "Multiplier": 1.6
       }
     ]
   },
@@ -3048,5 +3134,14 @@
         "Probability": 100
       }
     ]
+  },
+  "Mare Temporis": {
+    "name": "Mare Temporis",
+    "TargetType": "EnemyRange",
+    "emote": "<:Trident:1096466200982200400>",
+    "range": 1,
+    "element": 2,
+    "PPCost": 4,
+    "dmgMult": 1.2
   }
 }

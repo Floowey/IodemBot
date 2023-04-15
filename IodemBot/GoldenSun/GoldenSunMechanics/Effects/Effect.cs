@@ -35,6 +35,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
     [JsonSubtypes.KnownSubType(typeof(HealEffect), "Heal")]
     [JsonSubtypes.KnownSubType(typeof(LingeringEffect), "Lingering")]
     [JsonSubtypes.KnownSubType(typeof(LibraEffect), "Libra")]
+    [JsonSubtypes.KnownSubType(typeof(ConditionMultEffect), "ConditionMult")]
     public abstract class Effect
     {
         public TimeToActivate ActivationTime { get; set; } = TimeToActivate.AfterDamage;

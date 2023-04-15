@@ -117,6 +117,9 @@ namespace IodemBot.ColossoBattles
         {
             if (!HasCondition(con))
             {
+                if (HasCondition(Condition.Avoid))
+                    return;
+
                 if (con == Condition.Venom && HasCondition(Condition.Poison)) RemoveCondition(Condition.Poison);
 
                 if (con == Condition.Poison && HasCondition(Condition.Venom)) return;
@@ -330,6 +333,18 @@ namespace IodemBot.ColossoBattles
             var turnLog = new List<string>();
 
             RemoveCondition(Condition.Flinch);
+
+            //Chance to wake up
+            if (HasCondition(Condition.Avoid))
+            {
+                if (!_conditionsFromTurn.TryGetValue(Condition.Avoid, out int fromTurn)) fromTurn = 0;
+                if (Battle.TurnNumber - fromTurn != 0)
+                    if (Global.RandomNumber(0, 100) <= 30)
+                    {
+                        RemoveCondition(Condition.Avoid);
+                        turnLog.Add($"{Name} is suscpect to status conditions again.");
+                    }
+            }
 
             //Chance to wake up
             if (HasCondition(Condition.Sleep))

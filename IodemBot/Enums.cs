@@ -34,7 +34,8 @@ namespace IodemBot
         ItemCurse,
         Decoy,
         Key,
-        Trap
+        Trap,
+        Avoid
     }
 
     public enum LevelOption
