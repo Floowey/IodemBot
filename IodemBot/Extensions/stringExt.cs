@@ -14,7 +14,7 @@ namespace IodemBot.Extensions
         public static string RemoveBadChars(this string s)
         {
             s ??= "";
-            s = Regex.Replace(s, "[\"\n@,$\\$]", "");
+            s = Regex.Replace(s, "[\"\n@,()|$\\$]", "");
             s = Regex.Replace(s, "_", @"\_");
             s = Regex.Replace(s, @"\*", @"\\\*");
 
