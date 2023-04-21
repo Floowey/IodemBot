@@ -755,7 +755,7 @@
           "Ply"
         ],
         "statMultipliers": {
-          "maxHP": 90,
+          "maxHP": 100,
           "maxPP": 130,
           "Atk": 90,
           "Def": 100,
@@ -771,7 +771,7 @@
           "Ply Well"
         ],
         "statMultipliers": {
-          "maxHP": 100,
+          "maxHP": 110,
           "maxPP": 140,
           "Atk": 100,
           "Def": 110,
@@ -788,7 +788,7 @@
           "Wish"
         ],
         "statMultipliers": {
-          "maxHP": 120,
+          "maxHP": 130,
           "maxPP": 150,
           "Atk": 110,
           "Def": 120,
@@ -805,7 +805,7 @@
           "Wish Well"
         ],
         "statMultipliers": {
-          "maxHP": 140,
+          "maxHP": 150,
           "maxPP": 160,
           "Atk": 120,
           "Def": 130,
@@ -822,7 +822,7 @@
           "Pure Wish"
         ],
         "statMultipliers": {
-          "maxHP": 160,
+          "maxHP": 170,
           "maxPP": 170,
           "Atk": 130,
           "Def": 140,
@@ -840,8 +840,8 @@
       "MarsRes": 100,
       "JupiterAtk": 80,
       "JupiterRes": 80,
-      "MercuryAtk": 140,
-      "MercuryRes": 140
+      "MercuryAtk": 150,
+      "MercuryRes": 150
     },
     "requirement": "MercuryDjinn",
     "isDefault": true,
@@ -1112,6 +1112,7 @@
           "Planet Diver",
           "Clay Spire",
           "Supernova",
+          "Impair",
           "Debilitate",
           "Revive"
         ],
@@ -1129,6 +1130,7 @@
           "Planetary",
           "Clay Spire",
           "Supernova",
+          "Impair",
           "Debilitate",
           "Revive"
         ],
@@ -1146,6 +1148,7 @@
           "Planetary",
           "Stone Spire",
           "Supernova",
+          "Impair",
           "Debilitate",
           "Revive"
         ],
@@ -1586,7 +1589,7 @@
       {
         "name": "Air Guru",
         "movepool": [
-          "Magmastorm",
+          "Magma Storm",
           "Thunderhead",
           "Bind",
           "Ward",
@@ -1845,7 +1848,7 @@
         "name": "Hermit",
         "movepool": [
           "Plasma",
-          "Prism",
+          "Cool",
           "Bind"
         ],
         "statMultipliers": {
@@ -1860,7 +1863,7 @@
         "name": "Elder",
         "movepool": [
           "Plasma",
-          "Hail Prism",
+          "Supercool",
           "Bind",
           "Impact",
           "Wish"
@@ -1877,7 +1880,7 @@
         "name": "Scholar",
         "movepool": [
           "Plasma",
-          "Hail Prism",
+          "Supercool",
           "Bind",
           "Impact",
           "Wish"
@@ -1894,7 +1897,7 @@
         "name": "Savant",
         "movepool": [
           "Shine Plasma",
-          "Hail Prism",
+          "Supercool",
           "Bind",
           "Impact",
           "High Impact",
@@ -1912,7 +1915,7 @@
         "name": "Sage",
         "movepool": [
           "Shine Plasma",
-          "Freeze Prism",
+          "Megacool",
           "Bind",
           "Impact",
           "High Impact",
@@ -1930,7 +1933,7 @@
         "name": "Wizard",
         "movepool": [
           "Spark Plasma",
-          "Freeze Prism",
+          "Megacool",
           "Bind",
           "Impact",
           "High Impact",

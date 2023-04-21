@@ -565,7 +565,15 @@
     "range": 2,
     "element": 1,
     "PPCost": 4,
-    "power": 15
+    "power": 15,
+    "effects": [
+      {
+        "Type": "Stat",
+        "Stat": "Attack",
+        "Multiplier": 0.9,
+        "Probability": 50
+      }
+    ]
   },
   "Flare Wall": {
     "name": "Flare Wall",
@@ -574,7 +582,15 @@
     "range": 2,
     "element": 1,
     "PPCost": 7,
-    "power": 40
+    "power": 40,
+    "effects": [
+      {
+        "Type": "Stat",
+        "Stat": "Attack",
+        "Multiplier": 0.9,
+        "Probability": 75
+      }
+    ]
   },
   "Flare Storm": {
     "name": "Flare Storm",
@@ -583,7 +599,15 @@
     "range": 3,
     "element": 1,
     "PPCost": 12,
-    "power": 80
+    "power": 80,
+    "effects": [
+      {
+        "Type": "Stat",
+        "Stat": "Attack",
+        "Multiplier": 0.9,
+        "Probability": 100
+      }
+    ]
   },
   "Fireball": {
     "name": "Fireball",
@@ -1202,7 +1226,7 @@
     "name": "Ice Missile",
     "TargetType": "EnemyRange",
     "emote": "<:Ice_Missile:536969287848558604>",
-    "range": 2,
+    "range": 3,
     "element": 3,
     "PPCost": 23,
     "power": 160
