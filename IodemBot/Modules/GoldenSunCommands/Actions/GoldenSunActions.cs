@@ -278,6 +278,7 @@ namespace IodemBot.Modules
             {
                 var user = EntityConverter.ConvertUser(Context.User);
                 var a = new ClassAction();
+                a.Initialize(ServiceProvider, Context);
 
                 msgProps.Embed = await a.GetClassEmbed(user);
                 msgProps.Components = ClassAction.GetClassComponent(user);

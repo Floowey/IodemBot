@@ -137,7 +137,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             var djinnPocket = acc.DjinnPocket;
             var inv = acc.Inv;
             var price = (uint)(djinnPocket.PocketUpgrades + 1) * 3000;
-            if (djinnPocket.PocketSize >= 70)
+            if (djinnPocket.PocketSize >= DjinnPocket.MaxPocketSize)
             {
                 await ReplyAsync(embed: new EmbedBuilder()
                     .WithDescription("Max Djinn pocket size reached")
@@ -254,7 +254,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             var response = await Context.Channel.AwaitMessage(m => m.Author == Context.User);
             if (response.Content.Equals("Yes", StringComparison.CurrentCultureIgnoreCase))
             {
-                userDjinn.Djinn.Remove(chosenDjinn);
+                userDjinn.ReleaseDjinn(chosenDjinn);
                 acc.ServerStats.DjinnReleased++;
                 if (chosenDjinn.IsShiny)
                     acc.ServerStats.ShinyDjinnReleased++;
