@@ -254,7 +254,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             var response = await Context.Channel.AwaitMessage(m => m.Author == Context.User);
             if (response.Content.Equals("Yes", StringComparison.CurrentCultureIgnoreCase))
             {
-                userDjinn.Djinn.Remove(chosenDjinn);
+                userDjinn.ReleaseDjinn(chosenDjinn);
                 acc.ServerStats.DjinnReleased++;
                 if (chosenDjinn.IsShiny)
                     acc.ServerStats.ShinyDjinnReleased++;

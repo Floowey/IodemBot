@@ -10,7 +10,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 {
     internal class DjinnAndSummonsDatabase
     {
-        private static readonly string[] Blacklist = { "Kite", "Lull", "Aurora", "Eddy" };
+        public static readonly string[] Blacklist = { "Kite", "Lull", "Aurora", "Eddy" };
 
         static DjinnAndSummonsDatabase()
         {
@@ -33,8 +33,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
             }
         }
 
-        private static Dictionary<string, Djinn> DjinnDatabase { get; } = new();
-        private static Dictionary<string, Summon> SummonsDatabase { get; } = new();
+        public static Dictionary<string, Djinn> DjinnDatabase { get; } = new();
+        public static Dictionary<string, Summon> SummonsDatabase { get; } = new();
 
         public static Djinn GetDjinn(string djinnName)
         {

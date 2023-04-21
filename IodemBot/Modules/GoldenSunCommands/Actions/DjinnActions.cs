@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Emit;
+using System.Security.Principal;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 using Discord;
 using IodemBot.Core.UserManagement;
 using IodemBot.Discords;
@@ -19,7 +22,7 @@ namespace IodemBot.Modules
         [ActionParameterComponent(Order = 0, Name = "detail", Description = "...", Required = false)]
         public DjinnDetail Detail { get; set; } = DjinnDetail.None;
 
-        public int Page { get; set; } = 0;
+        public int DjinnPage { get; set; } = 0;
 
         public override ActionCommandRefreshProperties CommandRefreshProperties => new()
         {
@@ -28,7 +31,10 @@ namespace IodemBot.Modules
             FillParametersAsync = (stringOptions, idOptions) =>
             {
                 if (idOptions != null && idOptions.Any())
-                    Detail = Enum.Parse<DjinnDetail>((string)idOptions.FirstOrDefault());
+                {
+                    DjinnPage = int.Parse((string)idOptions.FirstOrDefault());
+                    Detail = Enum.Parse<DjinnDetail>((string)idOptions.Skip(1).FirstOrDefault());
+                }
 
                 return Task.CompletedTask;
             }
@@ -44,68 +50,83 @@ namespace IodemBot.Modules
         public override async Task RunAsync()
         {
             var user = EntityConverter.ConvertUser(Context.User);
-            await Context.ReplyWithMessageAsync(EphemeralRule, embed: GetDjinnEmbed(user, Detail),
-                components: GetDjinnComponent(user, Detail));
+            await Context.ReplyWithMessageAsync(EphemeralRule, embed: GetDjinnEmbed(user, Detail, DjinnPage),
+                components: GetDjinnComponent(user, Detail, DjinnPage));
         }
 
         public async Task RefreshAsync(bool intoNew, MessageProperties msgProps)
         {
             var user = EntityConverter.ConvertUser(Context.User);
 
-            msgProps.Embed = GetDjinnEmbed(user, Detail);
-            msgProps.Components = GetDjinnComponent(user, Detail);
+            msgProps.Embed = GetDjinnEmbed(user, Detail, DjinnPage);
+            msgProps.Components = GetDjinnComponent(user, Detail, DjinnPage);
             await Task.CompletedTask;
         }
 
-        public static Embed GetDjinnEmbed(UserAccount user, DjinnDetail detail = DjinnDetail.None)
+        public static Embed GetDjinnEmbed(UserAccount user, DjinnDetail detail = DjinnDetail.None, int pageNr = 0)
         {
-            EmbedBuilder builder = new();
+            EmbedBuilder embed = new();
             var djinnPocket = user.DjinnPocket;
             var equippedstring = string.Join("", djinnPocket.GetDjinns().Select(d => d.Emote));
             if (equippedstring.IsNullOrEmpty()) equippedstring = "-";
-            builder.AddField("Equipped", equippedstring);
+            embed.AddField("Equipped", equippedstring);
 
-            foreach (var e in new[]
-                {Element.Venus, Element.Mars, Element.None, Element.Jupiter, Element.Mercury, Element.None})
-                if (e == Element.None)
-                {
-                    builder.AddField("\u200b", "\u200b", true);
-                }
-                else
-                {
-                    var djinnString = djinnPocket.Djinn.OfElement(e).GetDisplay(detail);
-                    builder.AddField($"{e} Djinn", djinnString, true);
-                }
+            var pages = GetDjinnPages(user);
+            var page = pages[pageNr];
+
+            embed.WithTitle("Djinn Pool");
+            page.ForEach(embedList =>
+            {
+                var djinnString = embedList.GetDisplay(detail);
+                embed.AddField($"Djinn", djinnString, false);
+            });
 
             var eventDjinn = djinnPocket.Djinn.Count(d => d.IsEvent);
-            builder.WithFooter(
-                $"{djinnPocket.Djinn.Count}/{djinnPocket.PocketSize}{(eventDjinn > 0 ? $"(+{eventDjinn})" : "")} Upgrade: {(djinnPocket.PocketUpgrades + 1) * 3000}");
+            embed.WithFooter(
+                $"p.{pageNr + 1}/{GetTotalPages(user)} | {djinnPocket.Djinn.Count}/{djinnPocket.PocketSize}{(eventDjinn > 0 ? $"(+{eventDjinn})" : "")} | comp: {djinnPocket.Djinn.DistinctBy(d => d.Djinnname).Count()} / {DjinnAndSummonsDatabase.DjinnDatabase.Count - DjinnAndSummonsDatabase.Blacklist.Length} | shiny: {djinnPocket.Djinn.Where(d => d.IsShiny).DistinctBy(d => d.Djinnname).Count()} | Upgrade: {(djinnPocket.PocketUpgrades + 1) * 3000}");
 
             var summonString = string.Join(detail == DjinnDetail.Names ? ", " : "",
                 djinnPocket.Summons.Select(s => $"{s.Emote}{(detail == DjinnDetail.Names ? $" {s.Name}" : "")}"));
             if (summonString.IsNullOrEmpty()) summonString = "-";
-            builder.AddField("Summons", summonString);
-            return builder.Build();
+            embed.AddField("Summons", summonString);
+            return embed.Build();
         }
 
-        public static MessageComponent GetDjinnComponent(UserAccount user, DjinnDetail detail = DjinnDetail.None)
+        public static MessageComponent GetDjinnComponent(UserAccount user, DjinnDetail detail = DjinnDetail.None, int djinnPage = 0)
         {
             ComponentBuilder builder = new();
             var djinnPocket = user.DjinnPocket;
             var labels = user.Preferences.ShowButtonLabels;
             var moneyneeded = (uint)(djinnPocket.PocketUpgrades + 1) * 3000;
+
+            var elements = new[] { Element.Venus, Element.Mars, Element.Jupiter, Element.Mercury };
+
             builder.WithButton(labels ? "Status" : null, $"#{nameof(StatusAction)}", ButtonStyle.Primary,
                 Emotes.GetEmote("StatusAction"));
             builder.WithButton(labels ? "Upgrade" : null, $"{nameof(UpgradeDjinnAction)}", ButtonStyle.Success,
                 disabled: !user.Inv.HasBalance(moneyneeded), emote: Emotes.GetEmote("UpgradeDjinnAction"));
+
             if (detail == DjinnDetail.None)
-                builder.WithButton(labels ? "Show Names" : null, $"#{nameof(DjinnAction)}.Names", ButtonStyle.Secondary,
+                builder.WithButton(labels ? "Show Names" : null, $"#{nameof(DjinnAction)}.{djinnPage}.Names", ButtonStyle.Secondary,
                     Emotes.GetEmote("LabelsOn"), row: 0);
             else
-                builder.WithButton(labels ? "Hide Names" : null, $"#{nameof(DjinnAction)}.None", ButtonStyle.Secondary,
+                builder.WithButton(labels ? "Hide Names" : null, $"#{nameof(DjinnAction)}.{djinnPage}.None", ButtonStyle.Secondary,
                     Emotes.GetEmote("LabelsOff"), row: 0);
+
+            if (GetDjinnPages(user).Count > 1)
+            {
+                var ind = GetPagesIndex(user);
+                for (int i = 0; i < elements.Length; i++)
+                {
+                    builder.WithButton(labels ? elements[i].ToString() : null, $"#{nameof(DjinnAction)}.{ind[i]}.{detail}", style: ButtonStyle.Secondary, row: 1, emote: Emotes.GetEmote(elements[i]));
+                }
+                var prevPage = djinnPage - 1;
+                var nextPage = djinnPage + 1;
+                builder.WithButton("◀️", $"#{nameof(DjinnAction)}.{prevPage}.{detail}.N", style: ButtonStyle.Secondary, disabled: prevPage < 0, row: 0);
+                builder.WithButton("▶️", $"#{nameof(DjinnAction)}.{nextPage}.{detail}.P", style: ButtonStyle.Secondary, disabled: nextPage >= GetTotalPages(user), row: 0);
+            }
             builder.WithButton(labels ? "Reveal to others" : null, $"{nameof(RevealEphemeralAction)}", ButtonStyle.Secondary,
-                    Emotes.GetEmote("RevealEphemeralAction"), row: 0);
+                    Emotes.GetEmote("RevealEphemeralAction"), row: 1);
 
             foreach (var element in user.ClassSeries.Elements)
             {
@@ -133,6 +154,62 @@ namespace IodemBot.Modules
             return builder.Build();
         }
 
+        public const int EmbedsPerPage = 4;
+
+        public static int GetTotalPages(UserAccount account)
+        {
+            return GetPages(account).Sum();
+        }
+
+        public static int[] GetPages(UserAccount account)
+        {
+            var djinn = account.DjinnPocket;
+            var pages = new int[4];
+            var elements = new[] { Element.Venus, Element.Mars, Element.Jupiter, Element.Mercury };
+
+            for (int i = 0; i < elements.Length; i++)
+            {
+                var fields = djinn.Djinn.OfElement(elements[i]).Count() / SelectMenuBuilder.MaxOptionCount;
+                pages[i] = Math.Max(1, fields / EmbedsPerPage);
+            }
+            return pages;
+        }
+
+        public static int[] GetPagesIndex(UserAccount account)
+        {
+            var pages = GetPages(account);
+            var pagesIndex = new int[pages.Length];
+            pagesIndex[0] = 0;
+            pagesIndex[1] = pages[0];
+            pagesIndex[2] = pages[0] + pages[1];
+            pagesIndex[3] = pages[0] + pages[1] + pages[2];
+            return pagesIndex;
+        }
+
+        public static List<List<List<Djinn>>> GetDjinnPages(UserAccount account)
+        {
+            var djinn = account.DjinnPocket;
+            var elements = new[] { Element.Venus, Element.Mars, Element.Jupiter, Element.Mercury };
+
+            var pages = new List<List<List<Djinn>>>();
+            foreach (var element in elements)
+            {
+                var ofEl = djinn.Djinn.OfElement(element).ToList();
+                if (ofEl.Any())
+                {
+                    pages.AddRange(ofEl.ChunkBy(SelectMenuBuilder.MaxValuesCount).ChunkBy(EmbedsPerPage));
+                }
+                else
+                {
+                    pages.Add(new List<List<Djinn>>());
+                }
+            }
+            if (pages.Select(c => c.Count).Sum() <= EmbedsPerPage)
+                pages = new() { pages.SelectMany(c => c).ToList() };
+
+            return pages;
+        }
+
         protected override Task<(bool Success, string Message)> CheckCustomPreconditionsAsync()
         {
             var guildResult = IsGameCommandAllowedInGuild();
@@ -140,6 +217,82 @@ namespace IodemBot.Modules
                 return Task.FromResult(guildResult);
 
             return SuccessFullResult;
+        }
+    }
+
+    internal class DjinnPoolAction : IodemBotCommandAction
+    {
+        public override bool GuildsOnly => false;
+        public override EphemeralRule EphemeralRule => EphemeralRule.EphemeralOrFail;
+
+        [ActionParameterComponent(Name = "Page", Description = "page", Order = 0, Required = false)]
+        public int DjinnPage { get; set; } = 0;
+
+        [ActionParameterComponent(Order = 0, Name = "detail", Description = "...", Required = false)]
+        public DjinnDetail Detail { get; set; } = DjinnDetail.None;
+
+        public override ActionGlobalSlashCommandProperties SlashCommandProperties => new()
+        {
+            Name = "djinnpool",
+            Description = "Show your djinnpool",
+            FillParametersAsync = null
+        };
+
+        public override ActionCommandRefreshProperties CommandRefreshProperties => new()
+        {
+            CanRefreshAsync = _ => Task.FromResult((true, (string)null)),
+            RefreshAsync = RefreshAsync,
+            FillParametersAsync = (selectOptions, idOptions) =>
+            {
+                if (idOptions != null && idOptions.Any())
+                {
+                    DjinnPage = int.Parse((string)idOptions.FirstOrDefault());
+                    Detail = Enum.Parse<DjinnDetail>((string)idOptions.Skip(1).FirstOrDefault());
+                }
+
+                return Task.CompletedTask;
+            }
+        };
+
+        private async Task RefreshAsync(bool intoNew, MessageProperties msgProps)
+        {
+            var account = EntityConverter.ConvertUser(Context.User);
+            msgProps.Embed = GetDjinnPoolEmbed(account, DjinnPage, Detail);
+            msgProps.Components = GetDjinnPoolComponent(account, DjinnPage, Detail);
+            await Task.CompletedTask;
+        }
+
+        public override async Task RunAsync()
+        {
+            var account = EntityConverter.ConvertUser(Context.User);
+            var embed = GetDjinnPoolEmbed(account, DjinnPage, Detail);
+            var component = GetDjinnPoolComponent(account, DjinnPage, Detail);
+            await Context.ReplyWithMessageAsync(EphemeralRule, embed: embed, components: component);
+        }
+
+        internal static Embed GetDjinnPoolEmbed(UserAccount account, int pageNr = 0, DjinnDetail detail = DjinnDetail.None)
+        {
+            var embed = new EmbedBuilder();
+            var djinn = account.DjinnPocket;
+
+            return embed.Build();
+        }
+
+        internal static MessageComponent GetDjinnPoolComponent(UserAccount account, int djinnPage = 0, DjinnDetail detail = DjinnDetail.None)
+        {
+            ComponentBuilder builder = new();
+            var labels = account.Preferences.ShowButtonLabels;
+            builder.WithButton(labels ? "Djinn" : null, $"#{nameof(DjinnAction)}", ButtonStyle.Primary,
+               Emotes.GetEmote("DjinnAction"));
+
+            if (detail == DjinnDetail.None)
+                builder.WithButton(labels ? "Show Names" : null, $"#{nameof(DjinnPoolAction)}.{djinnPage}.Names", ButtonStyle.Secondary,
+                    Emotes.GetEmote("LabelsOn"), row: 0);
+            else
+                builder.WithButton(labels ? "Hide Names" : null, $"#{nameof(DjinnPoolAction)}.{djinnPage}.None", ButtonStyle.Secondary,
+                    Emotes.GetEmote("LabelsOff"), row: 0);
+
+            return builder.Build();
         }
     }
 

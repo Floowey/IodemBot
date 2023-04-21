@@ -10,6 +10,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
     {
         public static readonly int MaxDjinn = 2;
         public static readonly int BasePocketSize = 6;
+
+        public int DjinnEssences { get; set; } = 0;
         [JsonIgnore] public List<Djinn> Djinn { get; set; } = new();
         [JsonIgnore] public List<Summon> Summons { get; set; } = new();
 
@@ -86,6 +88,18 @@ namespace IodemBot.Modules.GoldenSunMechanics
             return true;
         }
 
+        public bool ReleaseDjinn(string djinnName)
+        {
+            if (!DjinnAndSummonsDatabase.TryGetDjinn(djinnName, out var djinn)) return false;
+            return ReleaseDjinn(djinn);
+        }
+
+        public bool ReleaseDjinn(Djinn djinn)
+        {
+            DjinnEssences++;
+            return Djinn.Remove(djinn);
+        }
+
         public Djinn GetDjinn(string djinnName)
         {
             Djinn d = null;
@@ -111,6 +125,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public void Clear()
         {
             Djinn.RemoveAll(d => !(d.IsShiny || d.IsEvent));
+            Djinn.Clear();
             DjinnSetup.Clear();
             Summons.Clear();
             PocketUpgrades = 0;
