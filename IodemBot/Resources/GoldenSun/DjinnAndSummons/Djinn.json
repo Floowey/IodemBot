@@ -940,7 +940,7 @@
         {
           "Type": "Stat",
           "Stat": "Speed",
-          "Multiplier" 1.25
+          "Multiplier": 1.25
         }  
       ]
     },
