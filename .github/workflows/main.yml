@@ -3,7 +3,7 @@ name: Build with .NET Core
 on:
   push:
   pull_request:
-    branches: [ "master" ]
+    branches: [ "master", "3.2_Oaths_and_Classes" ]
 
 jobs:
   build:
