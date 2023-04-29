@@ -624,7 +624,7 @@
         {
           "Type": "Stat",
           "Stat": "Attack",
-          "Multiplier": 1.25
+          "Multiplier": 1.5
         }
       ]
     },
@@ -866,12 +866,12 @@
     "SpriteNormal": "<a:Stoke:662386330767982643>",
     "SpriteShiny": "<a:StokeShiny:663018696947531779>",
     "Move": {
-      "TargetType": "PartyAll",
+      "TargetType": "PartySingle",
       "Effects": [
         {
           "Type": "Stat",
           "Stat": "Attack",
-          "Multiplier": 1.25
+          "Multiplier": 1.75
         }
       ]
     },
@@ -929,14 +929,19 @@
     "SpriteNormal": "<a:Fugue:662386330378043465>",
     "SpriteShiny": "<a:FugueShiny:663018697224486922>",
     "Move": {
-      "TargetType": "PartyAll",
+      "TargetType": "PartySingle",
       "Element": 1,
       "effects": [
         {
           "Type": "Stat",
           "Stat": "Attack",
           "Multiplier": 1.25
-        }
+        },
+        {
+          "Type": "Stat",
+          "Stat": "Speed",
+          "Multiplier" 1.25
+        }  
       ]
     },
     "Stats": {
@@ -1125,12 +1130,12 @@
     "SpriteNormal": "<a:Kindle:662386330722107402>",
     "SpriteShiny": "<a:KindleShiny:663018697002319883>",
     "Move": {
-      "TargetType": "PartyAll",
+      "TargetType": "PartySelf",
       "Effects": [
         {
           "Type": "Stat",
           "Stat": "Attack",
-          "Multiplier": 1.25
+          "Multiplier": 1.75
         }
       ]
     },
@@ -1567,7 +1572,12 @@
       "Element": 2,
       "effects": [
         {
-          "Type": "UserDies"
+          "Type": "Counter"
+        },
+        {
+          "Type": "Stat",
+          "Stat": "Speed"
+          "Multiplier": 1.5
         }
       ]
     },
