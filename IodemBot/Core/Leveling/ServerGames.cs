@@ -168,11 +168,8 @@ namespace IodemBot.Core.Leveling
 
             if (avatar.Oaths.ActiveOaths.Any())
             {
-#if DEBUG
                 string dungeonToComplete = avatar.Oaths.IsOathOfElementActive() ? " I" : "Vault";
-#else
-                string dungeonToComplete = avatar.Oaths.IsOathOfElementActive() ? " IV" : "Venus Lighthouse";
-#endif
+                //string dungeonToComplete = avatar.Oaths.IsOathOfElementActive() ? " IV" : "Venus Lighthouse";
                 if (dungeon.Name.EndsWith(dungeonToComplete))
                 {
                     var oaths = avatar.Oaths.ActiveOaths.ToList();
@@ -195,7 +192,7 @@ namespace IodemBot.Core.Leveling
                 }
             }
 
-            if (dungeon.Name.EndsWith(" IV"))
+            if (dungeon.Name.EndsWith(" I"))
             {
                 var el = avatar.Element;
                 var unlockedPassives = Passives.AllPassives.Except(avatar.Passives.UnlockedPassives).Where(p => p.elements.Contains(el)).ToList();
