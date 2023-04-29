@@ -523,7 +523,7 @@
               "Weight": 1,
               "Tag": "AwakeningCompleted",
               "Obtainable": 1,
-              "XP": 100,
+              "XP": 15000,
               "Coins": 100,
               "Dungeon": "Vale"
             }
