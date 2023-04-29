@@ -115,7 +115,7 @@ namespace IodemBot.Images
     public class CompassService
     {
         private string compassFile = "Resources/GoldenSun/compass.json";
-        private Dictionary<int, string> CompassMap = new();
+        private Dictionary<string, string> CompassMap = new();
         private IMessageChannel channel;
         private ulong channelID = 1094655423405117661;
         private IServiceProvider _services;
@@ -129,7 +129,7 @@ namespace IodemBot.Images
             if (File.Exists(compassFile))
             {
                 string json = File.ReadAllText(compassFile);
-                CompassMap = JsonConvert.DeserializeObject<Dictionary<int, string>>(json);
+                CompassMap = JsonConvert.DeserializeObject<Dictionary<string, string>>(json);
             }
             else
             {
@@ -156,13 +156,13 @@ namespace IodemBot.Images
 
         public void SaveCompass()
         {
-            File.WriteAllText(compassFile, JsonConvert.SerializeObject(CompassMap));
+            File.WriteAllText(compassFile, JsonConvert.SerializeObject(CompassMap, Formatting.Indented));
         }
 
         public void DeleteCompass()
         {
             File.Delete(compassFile);
-            CompassMap = new Dictionary<int, string>();
+            CompassMap = new Dictionary<string, string>();
             SaveCompass();
         }
 
@@ -175,7 +175,7 @@ namespace IodemBot.Images
 
         public async Task<string> GetCompass(int[] completions)
         {
-            var hash = string.Join("", completions).GetHashCode();
+            var hash = string.Join("", completions);
             if (!CompassMap.TryGetValue(hash, out string link))
             {
                 if (channel is null)

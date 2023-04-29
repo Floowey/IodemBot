@@ -69,26 +69,32 @@ namespace IodemBot.Modules
             var djinnPocket = user.DjinnPocket;
             var equippedstring = string.Join("", djinnPocket.GetDjinns().Select(d => d.Emote));
             if (equippedstring.IsNullOrEmpty()) equippedstring = "-";
+
+            if (user.Oaths.IsOathActive(Oath.Dispirited))
+                equippedstring = ":chains: Locked by an Oath :chains:";
             embed.AddField("Equipped", equippedstring);
 
             var pages = GetDjinnPages(user);
             var page = pages[pageNr];
 
             embed.WithTitle("Djinn Pool");
-            page.ForEach(embedList =>
+            page.ForEach(pageEntry =>
             {
-                var djinnString = embedList.GetDisplay(detail);
-                embed.AddField($"\u200b", djinnString, false);
+                var djinnString = pageEntry.GetDisplay(detail);
+                var element = pageEntry.FirstOrDefault().Element.ToString() ?? "\u200b";
+                embed.AddField($"{element} Djinn", djinnString, false);
             });
+
+            var summonString = string.Join(detail == DjinnDetail.Names ? ", " : "",
+                djinnPocket.Summons.Select(s => $"{s.Emote.ToShortEmote()}{(detail == DjinnDetail.Names ? $" {s.Name}" : "")}"));
+            if (summonString.IsNullOrEmpty()) summonString = "-";
+
+            embed.AddField("Summons", summonString);
 
             var eventDjinn = djinnPocket.Djinn.Count(d => d.IsEvent);
             embed.WithFooter(
                 $"p.{pageNr + 1}/{GetTotalPages(user)} | {djinnPocket.Djinn.Count}/{djinnPocket.PocketSize}{(eventDjinn > 0 ? $"(+{eventDjinn})" : "")} | comp: {djinnPocket.Djinn.DistinctBy(d => d.Djinnname).Count()} / {DjinnAndSummonsDatabase.DjinnDatabase.Count - DjinnAndSummonsDatabase.Blacklist.Length} | shiny: {djinnPocket.Djinn.Where(d => d.IsShiny).DistinctBy(d => d.Djinnname).Count()} | Upgrade: {(djinnPocket.PocketUpgrades + 1) * 3000}");
 
-            var summonString = string.Join(detail == DjinnDetail.Names ? ", " : "",
-                djinnPocket.Summons.Select(s => $"{s.Emote}{(detail == DjinnDetail.Names ? $" {s.Name}" : "")}"));
-            if (summonString.IsNullOrEmpty()) summonString = "-";
-            embed.AddField("Summons", summonString);
             return embed.Build();
         }
 
@@ -154,7 +160,7 @@ namespace IodemBot.Modules
             return builder.Build();
         }
 
-        public const int EmbedsPerPage = 4;
+        public static readonly int EmbedsPerPage = 4;
 
         public static int GetTotalPages(UserAccount account)
         {

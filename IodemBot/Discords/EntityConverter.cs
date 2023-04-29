@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Discord;
 using Discord.WebSocket;
 using IodemBot.Core.UserManagement;
@@ -27,8 +28,16 @@ namespace IodemBot
         {
             if (user == null) throw new ArgumentNullException(nameof(user));
             var iUser = UserAccountProvider.GetById(user.Id);
-            iUser.Name = user is SocketGuildUser u ? u.DisplayName() : user.Username;
+            iUser.Name = user.Username;
+            if (user is SocketGuildUser u)
+            {
+                iUser.Name = u.DisplayName();
+                iUser.isSupporter |= u.PremiumSince != null;
+                iUser.isSupporter |= iUser.TrophyCase.Trophies.Any(t => t.Icon.Contains("Supporter"));
+            }
+
             iUser.ImgUrl = user.GetAvatarUrl();
+
             //UserAccountProvider.StoreUser(iUser);
             return iUser;
         }

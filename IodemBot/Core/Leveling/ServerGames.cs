@@ -156,6 +156,9 @@ namespace IodemBot.Core.Leveling
             if (dungeon.Name == "Mercury Lighthouse")
                 _ = GoldenSunCommands.AwardClassSeries("Aqua Pilgrim Series", avatar, channel);
 
+            if (dungeon.Name == "Karagol Sea")
+                _ = GoldenSunCommands.AwardClassSeries("Viking Series", avatar, channel);
+
             //Unlock Crusader
             if (avatar.Dungeons.Count >= 6)
                 _ = GoldenSunCommands.AwardClassSeries("Crusader Series", avatar, channel);
@@ -165,8 +168,11 @@ namespace IodemBot.Core.Leveling
 
             if (avatar.Oaths.ActiveOaths.Any())
             {
+#if DEBUG
                 string dungeonToComplete = avatar.Oaths.IsOathOfElementActive() ? " I" : "Vault";
-                //string dungeonToComplete = avatar.Oaths.IsOathOfElementActive() ? " IV" : "Venus Lighthouse";
+#else
+                string dungeonToComplete = avatar.Oaths.IsOathOfElementActive() ? " IV" : "Venus Lighthouse";
+#endif
                 if (dungeon.Name.EndsWith(dungeonToComplete))
                 {
                     var oaths = avatar.Oaths.ActiveOaths.ToList();
@@ -189,7 +195,7 @@ namespace IodemBot.Core.Leveling
                 }
             }
 
-            if (dungeon.Name.EndsWith(" I"))
+            if (dungeon.Name.EndsWith(" IV"))
             {
                 var el = avatar.Element;
                 var unlockedPassives = Passives.AllPassives.Except(avatar.Passives.UnlockedPassives).Where(p => p.elements.Contains(el)).ToList();
@@ -198,8 +204,8 @@ namespace IodemBot.Core.Leveling
                     avatar.Passives.AddPassive(unlockedPassives.ToArray());
                     var embed = new EmbedBuilder();
                     embed.WithColor(Colors.Get(el.ToString()));
-                    embed.WithTitle("Impulses mastered");
-                    embed.WithDescription($"The power of {el} flushes through your soul. The following impulses are now newly available to you:\n" +
+                    embed.WithTitle("Passive Initiatives mastered");
+                    embed.WithDescription($"The power of {el} flushes through your soul. The following Passive Initiatives are now newly available to you:\n" +
                         $"{string.Join("\n", unlockedPassives.Select(p => p.Name))}");
 
                     _ = channel.SendMessageAsync(embed: embed.Build());

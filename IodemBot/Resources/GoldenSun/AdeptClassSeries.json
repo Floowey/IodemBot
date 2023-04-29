@@ -1286,7 +1286,7 @@
       "MercuryAtk": 85,
       "MercuryRes": 85
     },
-    "requirement": "UnlockedClasses",
+    "requirement": "Djinn",
     "isDefault": false,
     "archtype": "Warrior",
     "description": "The study of Alchemy and the answer of the universe is the center of the Apprentices education, with the goal to support all of their fellows."
@@ -1505,7 +1505,7 @@
       "MercuryAtk": 70,
       "MercuryRes": 70
     },
-    "requirement": "UnlockedClasses",
+    "requirement": "Djinn",
     "isDefault": false,
     "archtype": "Warrior",
     "description": "The Pages study the strategies and abilities of their peers, so they may better support them. Knowledge about classes gives them their strength."

@@ -43,6 +43,8 @@ namespace IodemBot.Core.UserManagement
         public TrophyCase TrophyCase { get; set; } = new();
         public Preferences Preferences { get; set; } = new();
 
+        public bool isSupporter { get; set; } = false;
+
         [JsonIgnore]
         public string GsClass =>
             AdeptClassSeriesManager.GetClass(this).Name; //GoldenSun.getClass(element, LevelNumber, (uint) classToggle);
@@ -139,10 +141,13 @@ namespace IodemBot.Core.UserManagement
                 DailyXP[DateTime.Today] = xpToAdd;
         }
 
+        public double MaxXpBoost => 2 + 0.5 * (int)Oaths.GetOathCompletion(Oath.Oaf);
+
         public void NewGame()
         {
-            XpBoost *= 1 + 0.1 * (1 - Math.Exp(-(double)Xp / 120000));
-            XpBoost = Math.Min(2, XpBoost);
+            var XPIncrement = Oaths.OathsCompletedThisRun.Count;
+            XpBoost += (0.075 + XPIncrement * 0.025) * (1 - Math.Exp(-(double)Xp / 120000));
+            XpBoost = Math.Min(MaxXpBoost, XpBoost);
             XpLastGame = TotalXp;
 
             if (LevelNumber >= 99)
@@ -181,10 +186,17 @@ namespace IodemBot.Core.UserManagement
             Xp = 0;
             Inv.Clear();
             DjinnPocket.Clear();
+
+            if (Oaths.GetOathCompletion(Oath.Turtle) >= OathCompletion.Completed)
+                Inv.Coins += 10000;
+
+            if (Oaths.GetOathCompletion(Oath.Dispirited) == OathCompletion.SolitudeCompletion)
+                DjinnPocket.PocketUpgrades = (DjinnPocket.Djinn.Count - DjinnPocket.PocketSizeBonus) / DjinnPocket.PocketUpgradeIncrement + 2;
+
             List<ArchType> ArchsToRemove = new();
-            if (Oaths.GetOathCompletion(Oath.Warrior) < OathCompletion.Completed)
+            if (Oaths.GetOathCompletion(Oath.Warrior) == OathCompletion.NotCompleted)
                 ArchsToRemove.Add(ArchType.Warrior);
-            if (Oaths.GetOathCompletion(Oath.Mage) < OathCompletion.Completed)
+            if (Oaths.GetOathCompletion(Oath.Mage) == OathCompletion.NotCompleted)
                 ArchsToRemove.Add(ArchType.Mage);
 
             BonusClasses.RemoveAll(c => ArchsToRemove.Contains(AdeptClassSeriesManager.AllClasses.First(cl => cl.Name == c).Archtype));
@@ -205,12 +217,13 @@ namespace IodemBot.Core.UserManagement
             Tags.Add($"{Element}Adept");
             Tags.Add(ClassSeries.Archtype.ToString());
             Tags.Add($"HasReset");
-            if (Oaths.GetOathCompletion(Oath.Warrior) >= OathCompletion.Completed)
+            if (Oaths.GetOathCompletion(Oath.Warrior) == OathCompletion.SolitudeCompletion)
                 Tags.Add("WarriorGear");
-            if (Oaths.GetOathCompletion(Oath.Mage) >= OathCompletion.Completed)
+            if (Oaths.GetOathCompletion(Oath.Mage) == OathCompletion.SolitudeCompletion)
                 Tags.Add("MageGear");
-            if (Oaths.GetOathCompletion(Oath.Idleness) >= OathCompletion.Completed)
+            if (Oaths.GetOathCompletion(Oath.Turtle) >= OathCompletion.Completed)
                 Tags.Add("ElvenGear");
+
             NewGames++;
         }
 

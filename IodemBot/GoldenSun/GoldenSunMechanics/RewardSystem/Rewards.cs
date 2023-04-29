@@ -164,6 +164,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
                     {
                         userAccount.ServerStats.TotalShinyChances++;
                         userAccount.DjinnBadLuck++;
+                        if (userAccount.Oaths.GetOathCompletion(Oath.Dispirited) == OathCompletion.SolitudeCompletion)
+                            userAccount.DjinnBadLuck++;
                     }
                     userAccount.ServerStats.DjinnObtained++;
                 }

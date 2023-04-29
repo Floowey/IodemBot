@@ -79,10 +79,15 @@ namespace IodemBot.Modules
             author.WithName($"{account.Name}");
             author.WithIconUrl(account.ImgUrl);
 
+            var trophies = string.Join("", account.TrophyCase.Trophies.Select(t => t.Icon));
+            if (trophies.IsNullOrEmpty())
+                trophies = "-";
+
             var embed = new EmbedBuilder()
             .WithColor(Colors.Get(account.Element.ToString()))
             .WithAuthor(author)
-            .WithTitle($"Level {account.LevelNumber} {account.GsClass}"); // {string.Join("", account.TrophyCase.Trophies.Select(t => t.Icon))} (Rank {UserAccounts.GetRank(account) + 1})");
+            .WithDescription(trophies)
+            .WithTitle($"Level {account.LevelNumber} {account.GsClass} Rank {UserAccounts.GetRank(account) + 1}");
 
             switch (statusPage)
             {
@@ -96,8 +101,8 @@ namespace IodemBot.Modules
                         .AddField("Elemental Stats", p.ElStats.ToString(), true)
                         .AddField("Unleash Rate", $"{p.UnleashRate}%", true)
                         .AddField("XP", $"{account.Xp} - next in {account.XPneeded}{(account.NewGames >= 1 ? $"\n({account.TotalXp} total | {account.NewGames} resets)" : "")}", true)
-                        .AddField("Oaths", $"active: {string.Join(", ", account.Oaths.ActiveOaths.Select(o => o.ToString()))}\n+" +
-                        $"completed this run: {string.Join(", ", account.Oaths.OathsCompletedThisRun.Select(o => o.ToString()))}");
+                        .AddField("Oaths", $"active:{string.Join(", ", account.Oaths.ActiveOaths.Select(o => o.ToString()))}\n" +
+                        $"completed this run:{string.Join(", ", account.Oaths.OathsCompletedThisRun.Select(o => o.ToString()))}");
                     break;
 
                 case 1: // Stats
@@ -109,8 +114,8 @@ namespace IodemBot.Modules
                         .AddField("HP Healed", account.BattleStats.HPhealed, true)
                         .AddField("Highest Damage", account.BattleStats.HighestDamage, true)
                         .AddField("Revives", account.BattleStats.Revives, true)
-                        .AddField("Kills by Hand", account.BattleStats.KillsByHand, true);
-
+                        .AddField("Kills by Hand", account.BattleStats.KillsByHand, true)
+                        .AddField("Bad Luck", account.DjinnBadLuck, true);
                     break;
 
                 case 2: // Total Statistics
@@ -173,7 +178,7 @@ namespace IodemBot.Modules
         [ActionParameterComponent(Order = 1, Name = "class", Description = "class", Required = false)]
         public string SelectedClass { get; set; }
 
-        [ActionParameterComponent(Order = 1, Name = "Impulse", Description = "Impulse", Required = false)]
+        [ActionParameterComponent(Order = 1, Name = "Passive Initiatives", Description = "Passive Initiatives", Required = false)]
         public string SelectedPassive { get; set; }
 
         public override bool GuildsOnly => true;
@@ -324,7 +329,10 @@ namespace IodemBot.Modules
         {
             var user = EntityConverter.ConvertUser(guser);
             await ChangeElement(user, chosenElement, context);
-            ChangeClass(user, classSeriesName);
+            if (classSeriesName != null)
+            {
+                ChangeClass(user, classSeriesName);
+            }
             user.Passives.SelectedPassive = passive ?? user.Passives.SelectedPassive;
 
             user.Tags.Remove("Warrior");
@@ -428,8 +436,6 @@ namespace IodemBot.Modules
             var ofElement = allAvailableClasses.Where(c => c.Elements.Contains(account.Element)).Select(c => c.Name).OrderBy(n => n);
             var availableClasses = AdeptClassSeriesManager.GetAvailableClasses(account);
 
-            ImageStitcher.GenerateCompass(account);
-
             var embed = new EmbedBuilder();
             embed.WithTitle("Classes");
             embed.WithColor(Colors.Get(account.Element.ToString()));
@@ -437,11 +443,8 @@ namespace IodemBot.Modules
             embed.AddField($"Available as {Emotes.GetIcon(account.Element)} {account.Element} Adept:", string.Join(", ", ofElement));
             embed.AddField("Others Unlocked:", string.Join(", ", allAvailableClasses.Select(c => c.Name).Except(ofElement).OrderBy(n => n)));
 
-            embed.AddField("Selected Impulse", $"Impulse: {account.Passives.SelectedPassive}", true);
-            embed.AddField("Impulses?", "*Impulses are passives that do something on Turn 1. They get unlocked upgraded by completing Path of Element IV in combination with oaths.*");
-
-            //var filename = Path.GetFileName("compass.png");
-            //embed.WithImageUrl($"attachment://{filename}");
+            embed.AddField("Selected Passive Initiatives", $"Passive Initiatives: {account.Passives.SelectedPassive}", true);
+            embed.AddField("*Passive Initiatives?*", "*Impulses are passives that do something on Turn 1. They get unlocked upgraded by completing Path of Element IV in combination with oaths.*");
 
             var cs = ServiceProvider.GetRequiredService<CompassService>();
             embed.WithThumbnailUrl(await cs.GetCompass(account));

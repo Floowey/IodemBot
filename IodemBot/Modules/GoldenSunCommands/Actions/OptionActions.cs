@@ -45,6 +45,11 @@ namespace IodemBot.Modules
                 ? "None"
                 : string.Join(", ", account.Preferences.AutoSell);
             builder.AddField("Auto Sell:", $"{autoSell}");
+
+            builder.AddField("HP Bar Theme", $"{account.Preferences.BarThemeHP} {Utilities.GetProgressBar(75, 3, account.Preferences.BarThemeHP)}");
+            builder.AddField("PP Bar Theme", $"{account.Preferences.BarThemePP} {Utilities.GetProgressBar(75, 3, account.Preferences.BarThemePP)}");
+            if (!account.isSupporter)
+                builder.AddField("Want to customize your bars?", "By becoming a Golden Sun Supporter, you will get the choice to change your bar theme. You can become a supporter either by supporting Floowey on Kofi (see i!credits) or boosting the Golden Sun discord server");
             return builder.Build();
         }
 
@@ -56,6 +61,7 @@ namespace IodemBot.Modules
                 Emotes.GetEmote("StatusAction"), row: 0);
             builder.WithButton("Show Labels", $"{nameof(ToggleButtonLabelsAction)}", ButtonStyle.Secondary,
                 Emotes.GetEmote(labels ? "LabelsOn" : "LabelsOff"));
+
             List<SelectMenuOptionBuilder> options = new();
             var rarities = Enum.GetValues<ItemRarity>();
             foreach (var rarity in rarities)
@@ -65,8 +71,35 @@ namespace IodemBot.Modules
                     Value = rarity.ToString(),
                     IsDefault = account.Preferences.AutoSell.Contains(rarity)
                 });
-            builder.WithSelectMenu($"{nameof(SelectAutoSellOptionsAction)}", options, placeholder:"Select item rarities to autosell",minValues: 0,
+            builder.WithSelectMenu($"{nameof(SelectAutoSellOptionsAction)}", options, placeholder: "Select item rarities to autosell", minValues: 0,
                 maxValues: rarities.Length);
+
+            List<SelectMenuOptionBuilder> barOptions = new();
+            var themes = Utilities.progressBars.Keys;
+
+            foreach (var theme in themes)
+                barOptions.Add(new SelectMenuOptionBuilder
+                {
+                    Label = theme,
+                    Value = theme,
+                    IsDefault = account.Preferences.BarThemeHP.Equals(theme),
+                    Emote = Emote.Parse(Utilities.GetProgressBar(75, 1, theme))
+                });
+            builder.WithSelectMenu($"{nameof(ChooseHPBarThemeAction)}", barOptions, placeholder: "Select HP progress bar theme",
+                disabled: !account.isSupporter);
+
+            barOptions.Clear();
+            foreach (var theme in themes)
+                barOptions.Add(new SelectMenuOptionBuilder
+                {
+                    Label = theme,
+                    Value = theme,
+                    IsDefault = account.Preferences.BarThemePP.Equals(theme),
+                    Emote = Emote.Parse(Utilities.GetProgressBar(75, 1, theme))
+                });
+            builder.WithSelectMenu($"{nameof(ChoosePPBarThemeAction)}", barOptions, placeholder: "Select PP progress bar theme",
+                disabled: !account.isSupporter);
+
             return builder.Build();
         }
     }
@@ -100,6 +133,74 @@ namespace IodemBot.Modules
         public override async Task FillParametersAsync(string[] selectOptions, object[] idOptions)
         {
             if (selectOptions != null) _rarities = selectOptions.Select(Enum.Parse<ItemRarity>).ToList();
+
+            await Task.CompletedTask;
+        }
+    }
+
+    internal class ChooseHPBarThemeAction : BotComponentAction
+    {
+        private string barTheme = "classic";
+        public override EphemeralRule EphemeralRule => EphemeralRule.EphemeralOrFail;
+
+        public override bool GuildsOnly => false;
+
+        public override GuildPermissions? RequiredPermissions => null;
+
+        public override async Task RunAsync()
+        {
+            var account = EntityConverter.ConvertUser(Context.User);
+            account.Preferences.BarThemeHP = barTheme;
+            UserAccountProvider.StoreUser(account);
+            await Context.UpdateReplyAsync(m =>
+            {
+                m.Embed = OptionActions.GetOptionsEmbed(account);
+                m.Components = OptionActions.GetOptionsComponent(account);
+            });
+        }
+
+        protected override Task<(bool Success, string Message)> CheckCustomPreconditionsAsync()
+        {
+            return Task.FromResult((true, (string)null));
+        }
+
+        public override async Task FillParametersAsync(string[] selectOptions, object[] idOptions)
+        {
+            if (selectOptions != null) barTheme = selectOptions.FirstOrDefault();
+
+            await Task.CompletedTask;
+        }
+    }
+
+    internal class ChoosePPBarThemeAction : BotComponentAction
+    {
+        private string barTheme = "classic";
+        public override EphemeralRule EphemeralRule => EphemeralRule.EphemeralOrFail;
+
+        public override bool GuildsOnly => false;
+
+        public override GuildPermissions? RequiredPermissions => null;
+
+        public override async Task RunAsync()
+        {
+            var account = EntityConverter.ConvertUser(Context.User);
+            account.Preferences.BarThemePP = barTheme;
+            UserAccountProvider.StoreUser(account);
+            await Context.UpdateReplyAsync(m =>
+            {
+                m.Embed = OptionActions.GetOptionsEmbed(account);
+                m.Components = OptionActions.GetOptionsComponent(account);
+            });
+        }
+
+        protected override Task<(bool Success, string Message)> CheckCustomPreconditionsAsync()
+        {
+            return Task.FromResult((true, (string)null));
+        }
+
+        public override async Task FillParametersAsync(string[] selectOptions, object[] idOptions)
+        {
+            if (selectOptions != null) barTheme = selectOptions.FirstOrDefault();
 
             await Task.CompletedTask;
         }

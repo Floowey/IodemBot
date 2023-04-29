@@ -14,6 +14,8 @@ namespace IodemBot.ColossoBattles
         public BattleStats BattleStats = new();
         [JsonIgnore] public PlayerFighterFactory Factory;
         [JsonIgnore] public ulong Id;
+        public string BarThemeHP = Utilities.DefaultBar;
+        public string BarThemePP = Utilities.DefaultBar;
 
         public override List<string> EndTurn()
         {
@@ -79,6 +81,8 @@ namespace IodemBot.ColossoBattles
         public BaseStatOption BaseStatOption { get; set; } = BaseStatOption.Default;
         public BaseStatManipulationOption BaseStatManipulationOption { get; set; } = BaseStatManipulationOption.Default;
         public PassiveOption PassiveOption { get; set; } = PassiveOption.Default;
+
+        public OathOption OathOption { get; set; } = OathOption.WithOaths;
         public List<Summon> PossibleSummons => Summons.Where(s => s.CanSummon(Djinn)).Distinct().ToList();
         public uint SetLevel { get; set; } = 99;
         public Stats StatMultiplier { get; set; } = new(100, 100, 100, 100, 100);
@@ -160,6 +164,10 @@ namespace IodemBot.ColossoBattles
             {
                 case DjinnOption.Any:
                     var djinnToAdd = user.DjinnPocket.GetDjinns();
+
+                    if (OathOption == OathOption.WithOaths && user.Oaths.IsOathActive(Oath.Dispirited))
+                        djinnToAdd.Clear();
+
                     Djinn.AddRange(djinnToAdd);
                     Summons.AddRange(user.DjinnPocket.Summons);
                     p.Moves.AddRange(djinnToAdd);
@@ -174,6 +182,10 @@ namespace IodemBot.ColossoBattles
 
                 case DjinnOption.Unique:
                     var djinnToBeAdded = user.DjinnPocket.GetDjinns(Djinn);
+
+                    if (OathOption == OathOption.WithOaths && user.Oaths.IsOathActive(Oath.Dispirited))
+                        djinnToBeAdded.Clear();
+
                     Djinn.AddRange(djinnToBeAdded);
                     Summons.AddRange(user.DjinnPocket.Summons);
                     p.Moves.AddRange(djinnToBeAdded);
@@ -206,8 +218,11 @@ namespace IodemBot.ColossoBattles
             p.Stats *= StatMultiplier;
             p.Stats *= 0.01;
 
+            p.BarThemeHP = user.Preferences.BarThemeHP;
+            p.BarThemePP = user.Preferences.BarThemePP;
+
             user.Oaths.ActiveOaths.ForEach(o => p.Tags.Add($"Oath{o}"));
-            if (user.Oaths.IsOathActive(Oath.Idleness))
+            if (OathOption == OathOption.WithOaths && user.Oaths.IsOathActive(Oath.Turtle))
                 p.Stats.Spd = 2;
             return p;
         }

@@ -99,11 +99,16 @@ namespace IodemBot.Modules.GoldenSunMechanics
         [Summary("Displays your Djinn pocket")]
         public async Task DjinnInv(DjinnDetail detail = DjinnDetail.None)
         {
-            var djinnPocket = EntityConverter.ConvertUser(Context.User).DjinnPocket;
+            var user = EntityConverter.ConvertUser(Context.User);
+            var djinnPocket = user.DjinnPocket;
             var embed = new EmbedBuilder();
 
             var equippedstring = string.Join("", djinnPocket.GetDjinns().Select(d => Emotes.GetIcon(d.Element)));
+
             if (equippedstring.IsNullOrEmpty()) equippedstring = "-";
+
+            if (user.Oaths.IsOathActive(Oath.Dispirited))
+                equippedstring = ":chains: Locked by an Oath :chains:";
             embed.AddField("Equipped", equippedstring);
 
             foreach (var e in new[]

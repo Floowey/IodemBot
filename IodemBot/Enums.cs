@@ -57,6 +57,12 @@ namespace IodemBot
         NoPassive
     }
 
+    public enum OathOption
+    {
+        WithOaths,
+        WithoutOaths
+    }
+
     public enum DjinnOption
     {
         Unique,

@@ -48,10 +48,12 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
         public List<Element> DjinnSetup { get; set; } = new();
         public int PocketUpgrades { get; set; }
+        public static readonly int PocketUpgradeIncrement = 2;
 
         [JsonIgnore]
-        public int PocketSize => Math.Min(MaxPocketSize, BasePocketSize + PocketUpgrades * 2) + Djinn.Count(d => d.IsEvent);
+        public int PocketSize => Math.Min(MaxPocketSize, BasePocketSize + PocketUpgrades * PocketUpgradeIncrement) + PocketSizeBonus;
 
+        public int PocketSizeBonus => Djinn.Count(d => d.IsEvent);
         public static readonly int MaxPocketSize = 999;
 
         public List<Djinn> GetDjinns(List<Djinn> blackList = null)

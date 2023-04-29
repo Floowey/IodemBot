@@ -10,7 +10,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 {
     internal class DjinnAndSummonsDatabase
     {
-        public static readonly string[] Blacklist = { "Kite", "Lull", "Aurora", "Eddy" };
+        public static readonly string[] Blacklist = { };
 
         static DjinnAndSummonsDatabase()
         {

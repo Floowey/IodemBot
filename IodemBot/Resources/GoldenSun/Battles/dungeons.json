@@ -197,8 +197,8 @@
         ]
       },
       {
-        "Flavourtext": "Before you is a choice, to swear a solemn oath, which tightens the path your new journey will take. Finish Venus Lighthouse to unlock perks and remove handicaps.\nOath of *Element*: Complete the Path IV without changing your element. Perks: Upgraded impulses. *Note: This changes your objective for all selected Oaths to Path IV*\nOath of Warrior/Mage: You are only able to select classes from the chosen archtypes. You get some fancy starting gear. Perks: Warrior/Mage gear on every reset, Warrior/Mage classes remain unlocked\nOath of the Oaf: Your XP Bonus is ignored and your overall XP gain reduced to 25%. Rewards: ?, ?\nOath of Idleness: You always move last. Rewards: Elven gear available on reset, ?\nOath of Solitude: Complete all your battles alone, no teaming up. Rewards: Better rewards when combined with other Oaths",
-        "EnemyNames": [ "Choice:Oath of Venus|HasTag:VenusAdept|!HasTag:OathVenus|KilledBy:Player@-10", "Choice:Remove Oath of Venus|HasTag:OathVenus|KilledBy:Player@-11", "Choice:Oath of Mars|HasTag:MarsAdept|!HasTag:OathMars|KilledBy:Player@-12", "Choice:Remove Oath of Mars|HasTag:OathMars|KilledBy:Player@-13", "Choice:Oath of Jupiter|HasTag:JupiterAdept|!HasTag:OathJupiter|KilledBy:Player@-14", "Choice:Remove Oath of Jupiter|HasTag:OathJupiter|KilledBy:Player@-15", "Choice:Oath of Mercury|HasTag:MercuryAdept|!HasTag:OathMercury|KilledBy:Player@-16", "Choice:Remove Oath of Mercury|HasTag:OathMercury|KilledBy:Player@-17", "Choice:Oath of the Warrior|HasTag:Warrior|!HasTag:OathWarrior|KilledBy:Player@-18", "Choice:Remove Oath of the Warrior|HasTag:OathWarrior|KilledBy:Player@-19", "Choice:Oath of the Mage|HasTag:Mage|!HasTag:OathMage|KilledBy:Player@-20", "Choice:Remove Oath of the Mage|HasTag:OathMage|KilledBy:Player@-21", "Choice:Oath of the Oaf|!HasTag:OathOaf|KilledBy:Player@-22", "Choice:Remove Oath of the Oaf|HasTag:OathOaf|KilledBy:Player@-23", "Choice:Oath of Idleness|!HasTag:OathIdleness|KilledBy:Player@-24", "Choice:Remove Oath of Idleness|HasTag:OathIdleness|KilledBy:Player@-25", "Choice:Oath of Solitude|!HasTag:OathSolitude|KilledBy:Player@-26", "Choice:Remove Oath of Solitude|HasTag:OathSolitude|KilledBy:Player@-27", "Choice:Continue With Selection|KilledBy:Player@110" ],
+        "Flavourtext": "Before you is a choice, to swear a solemn oath, which tightens the path your new journey will take. Finish Venus Lighthouse to unlock perks and remove handicaps.\nOath of *Element*: Complete the Path IV without changing your element. Perks: Upgraded impulses. *Note: This changes your objective for all selected Oaths to Path IV*\nOath of Warrior/Mage: You are only able to select classes from the chosen archtypes. You get some fancy starting gear. Perks: Warrior/Mage gear on every reset, Warrior/Mage classes remain unlocked\nOath of the Oaf: Your XP Bonus is ignored and your overall XP gain reduced to 25%. Rewards: Increase the maximum XP multiplier to x2.5 and x3.0\nOath of the Turtle: You always move last. Rewards: Elven gear available on reset, ?\nOath of the Dispirited: Djinn are not available to you in battle. Rewards: Higher Shiny Djinn chance. Upon reset, your djinn pocket will be expanded to fit your all your important djinn.\nOath of Solitude: Complete all your battles alone, no teaming up. Rewards: Better rewards when combined with other Oaths",
+        "EnemyNames": [ "Choice:Oath of Venus|HasTag:VenusAdept|!HasTag:OathVenus|KilledBy:Player@-10", "Choice:Remove Oath of Venus|HasTag:OathVenus|KilledBy:Player@-11", "Choice:Oath of Mars|HasTag:MarsAdept|!HasTag:OathMars|KilledBy:Player@-12", "Choice:Remove Oath of Mars|HasTag:OathMars|KilledBy:Player@-13", "Choice:Oath of Jupiter|HasTag:JupiterAdept|!HasTag:OathJupiter|KilledBy:Player@-14", "Choice:Remove Oath of Jupiter|HasTag:OathJupiter|KilledBy:Player@-15", "Choice:Oath of Mercury|HasTag:MercuryAdept|!HasTag:OathMercury|KilledBy:Player@-16", "Choice:Remove Oath of Mercury|HasTag:OathMercury|KilledBy:Player@-17", "Choice:Oath of the Warrior|HasTag:Warrior|!HasTag:OathWarrior|KilledBy:Player@-18", "Choice:Remove Oath of the Warrior|HasTag:OathWarrior|KilledBy:Player@-19", "Choice:Oath of the Mage|HasTag:Mage|!HasTag:OathMage|KilledBy:Player@-20", "Choice:Remove Oath of the Mage|HasTag:OathMage|KilledBy:Player@-21", "Choice:Oath of the Oaf|!HasTag:OathOaf|KilledBy:Player@-22", "Choice:Remove Oath of the Oaf|HasTag:OathOaf|KilledBy:Player@-23", "Choice:Oath of the Turtle|!HasTag:OathTurtle|KilledBy:Player@-24", "Choice:Remove Oath of the Turtle|HasTag:OathTurtle|KilledBy:Player@-25", "Choice:Oath of Solitude|!HasTag:OathSolitude|KilledBy:Player@-26", "Choice:Remove Oath of Solitude|HasTag:OathSolitude|KilledBy:Player@-27,Choice:Oath of the Dispirited|!HasTag:OathDispirited|KilledBy:Player@-26", "Choice:Remove Oath of the DispiritedHasTag:OathDispirited|KilledBy:Player@-27", "Choice:Continue With Selection|KilledBy:Player@110", "Choice:Abort Reawakening|KilledBy:Player@999" ],
         "Keywords": [ "@100", "ToMatchup@100" ],
         "Image": "",
         "RewardTables": [
@@ -311,7 +311,7 @@
             {
               "Weight": 1,
               "RequireTag": [ "@-24" ],
-              "Tag": "OathIdleness",
+              "Tag": "OathTurtle",
               "Obtainable": 1
             }
           ],
@@ -319,14 +319,14 @@
             {
               "Weight": 1,
               "RequireTag": [ "@-25" ],
-              "Tag": "-OathIdleness"
+              "Tag": "-OathTurtle"
             }
           ],
           [
             {
               "Weight": 1,
               "RequireTag": [ "@-26" ],
-              "Tag": "OathSolitude",
+              "Tag": "OathDispirited",
               "Obtainable": 1
             }
           ],
@@ -334,13 +334,28 @@
             {
               "Weight": 1,
               "RequireTag": [ "@-27" ],
+              "Tag": "-OathDispirited"
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "@-28" ],
+              "Tag": "OathSolitude",
+              "Obtainable": 1
+            }
+          ],
+          [
+            {
+              "Weight": 1,
+              "RequireTag": [ "@-29" ],
               "Tag": "-OathSolitude"
             }
           ]
         ]
       },
       {
-        "Flavourtext": "You took your oaths",
+        "Flavourtext": "You took your oaths.",
         "EnemyNames": [ "Next" ],
         "Keywords": [ "@110" ],
         "Image": "",
@@ -364,7 +379,7 @@
         ]
       },
       {
-        "Flavourtext": "You are offered a variety of gear sets to choose from.",
+        "Flavourtext": "You are offered a selection of gear sets to choose from. Choose Wisely.",
         "EnemyNames": [ "Choice:Tutorial Gear|KilledBy:Player@-1", "Choice:Warrior Gear|HasTag:WarriorGear|KilledBy:Player@-2", "Choice:Mage Gear|HasTag:MageGear|KilledBy:Player@-3", "Choice:Elven Gear|HasTag:ElvenGear|KilledBy:Player@-4" ],
         "Image": "",
         "RewardTables": [
@@ -547,6 +562,15 @@
               "Dungeon": "Path of Aqua I"
             }
           ]
+        ]
+      },
+      {
+        "Flavourtext": "You return to slumber, reconsidering your element and class archtype, before starting the rewakening anew.",
+        "EnemyNames": [ "End" ],
+        "Keywords": [ "@999" ],
+        "Image": "",
+        "RewardTables": [
+          [ { "Weight": 1 } ]
         ]
       }
     ]

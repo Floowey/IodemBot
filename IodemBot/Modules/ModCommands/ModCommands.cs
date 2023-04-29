@@ -284,6 +284,22 @@ namespace IodemBot.Modules
             await Context.Channel.SendFileAsync($"Resources/Accounts/BackupAccountFiles/{user.Id}.json");
         }
 
+        [Command("makeSupporter")]
+        [RequireStaff]
+        public async Task MakeSupporter(SocketUser user = null)
+        {
+            var avatar = EntityConverter.ConvertUser(user);
+            avatar.TrophyCase.Trophies.Add(new Trophy()
+            {
+                Text = "Thank you for supporting Iodem!",
+                Icon = "<:Supporter:899220684243353601>",
+                ObtainedOn = DateTime.Now
+            });
+
+            UserAccountProvider.StoreUser(avatar);
+            await ReplyAsync("Supporter state added");
+        }
+
         [Command("PutUserFile")]
         [RequireStaff]
         public async Task PutUserFile()
