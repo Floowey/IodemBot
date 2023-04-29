@@ -1576,7 +1576,7 @@
         },
         {
           "Type": "Stat",
-          "Stat": "Speed"
+          "Stat": "Speed",
           "Multiplier": 1.5
         }
       ]
