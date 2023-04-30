@@ -197,7 +197,9 @@ namespace IodemBot.Modules.GoldenSunMechanics
                     else
                         userAccount.Tags.Remove(Tag[1..]);
 
-                    if (Tag.StartsWith("-Oath"))
+                    if (Tag.StartsWith("-Oath*"))
+                        userAccount.Oaths.ActiveOaths.Clear();
+                    else if (Tag.StartsWith("-Oath"))
                         userAccount.Oaths.ActiveOaths.Remove(Enum.Parse<Oath>(Tag[5..]));
                 }
                 else

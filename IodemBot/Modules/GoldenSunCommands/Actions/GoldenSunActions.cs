@@ -120,9 +120,14 @@ namespace IodemBot.Modules
 
                 case 2: // Total Statistics
                     var allTimeBestStreak = account.ServerStats.EndlessStreak + account.ServerStatsTotal.EndlessStreak;
+                    var XPIncrement = account.Oaths.OathsCompletedThisRun.Count;
+
                     embed
                         .AddField("Resets", account.NewGames, true)
                         .AddField("Total XP", account.TotalXp, true)
+                        .AddField("XP Boost", account.XpBoost, true)
+                        .AddField("XP Boost After Reset", (0.075 + XPIncrement * 0.025) * (1 - Math.Exp(-(double)account.Xp / 120000)), true)
+                        .AddField("XP Boost Cap", account.MaxXpBoost, true)
                         .AddField("Colosso wins | Dungeon Wins", $"{account.ServerStatsTotal.ColossoWins} | {account.ServerStatsTotal.DungeonsCompleted}", true)
                         .AddField("Endless Streaks", $"Solo: {allTimeBestStreak.Solo} | Duo: {allTimeBestStreak.Duo} \nTrio: {allTimeBestStreak.Trio} | Quad: {allTimeBestStreak.Quad}", true)
                         .AddField("Oaths", $"sol. completed: {string.Join(", ", account.Oaths.CompletedSolitudeOaths.Select(o => o.ToString()))}\n" +

@@ -2280,7 +2280,7 @@
   "Rampage_2": {
     "name": "Rampage",
     "TargetType": "EnemyRange",
-    "emote": ":wolf:",
+    "emote": "<:Maha:568133448645214219>",
     "range": 3,
     "element": 4,
     "PPCost": 0

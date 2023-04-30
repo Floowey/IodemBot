@@ -650,6 +650,10 @@ namespace IodemBot.Modules
                     account.ClassToggle++;
                 }
             }
+
+            account.Tags.Remove("Warrior");
+            account.Tags.Remove("Mage");
+            account.Tags.Add(account.ClassSeries.Archtype.ToString());
             return !curClass.Equals(account.ClassSeries.Name);
         }
     }
