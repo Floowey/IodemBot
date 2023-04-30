@@ -256,7 +256,7 @@ namespace IodemBot.Modules
 
             .AddField("Unlocked Classes", account.BonusClasses.Count == 0 ? "none" : string.Join(", ", account.BonusClasses))
 
-            .AddField("XP", $"{account.Xp} {(account.Oaths.IsOathActive(Oath.Oaf) ? $" (effective: {account.Xp / 4 / account.XpBoost})" : "")} - next in {account.XPneeded}{(account.NewGames >= 1 ? $"\n({account.TotalXp} total | {account.NewGames} resets)" : "")}", true)
+            .AddField("XP", $"{account.Xp} {(account.Oaths.IsOathActive(Oath.Oaf) ? $" (effective: {(ulong)(account.Xp / 4 / account.XpBoost)})" : "")} - next in {account.XPneeded}{(account.NewGames >= 1 ? $"\n({account.TotalXp} total | {account.NewGames} resets)" : "")}", true)
             .AddField("Colosso wins | Dungeon Wins", $"{account.ServerStats.ColossoWins} | {account.ServerStats.DungeonsCompleted}", true)
             .AddField("Endless Streaks", $"Solo: {account.ServerStats.EndlessStreak.Solo} | Duo: {account.ServerStats.EndlessStreak.Duo} \nTrio: {account.ServerStats.EndlessStreak.Trio} | Quad: {account.ServerStats.EndlessStreak.Quad}", true);
 

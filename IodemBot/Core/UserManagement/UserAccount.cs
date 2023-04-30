@@ -85,7 +85,7 @@ namespace IodemBot.Core.UserManagement
         {
             get
             {
-                var xpneeded = Xp;
+                ulong xpneeded = (ulong)(Oaths.IsOathActive(Oath.Oaf) ? Xp / XpBoost / 4 : Xp);
                 foreach (var r in Rates)
                 {
                     var cutoff = r[0];

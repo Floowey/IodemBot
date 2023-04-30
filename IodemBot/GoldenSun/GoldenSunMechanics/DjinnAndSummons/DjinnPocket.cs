@@ -129,7 +129,6 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public void Clear()
         {
             Djinn.RemoveAll(d => !(d.IsShiny || d.IsEvent));
-            Djinn.Clear();
             DjinnSetup.Clear();
             Summons.Clear();
             PocketUpgrades = 0;
