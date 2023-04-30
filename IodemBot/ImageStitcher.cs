@@ -130,6 +130,11 @@ namespace IodemBot.Images
             {
                 string json = File.ReadAllText(compassFile);
                 CompassMap = JsonConvert.DeserializeObject<Dictionary<string, string>>(json);
+                if (CompassMap == null)
+                {
+                    CompassMap = new();
+                    SaveCompass();
+                }
             }
             else
             {
