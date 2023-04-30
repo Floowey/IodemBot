@@ -86,7 +86,7 @@ namespace IodemBot.Core.Leveling
             embed.WithDescription("<:Up_Arrow:571309108289077258> " + userAccount.GsClass + " " + user.Mention +
                                   " just leveled up!");
             embed.AddField("LEVEL", userAccount.LevelNumber, true);
-            embed.AddField("XP", $"{userAccount.Xp}{(userAccount.Oaths.IsOathActive(Oath.Turtle) ? $" (effective: {userAccount.Xp / 4 / userAccount.XpBoost})" : "")}", true);
+            embed.AddField("XP", $"{userAccount.Xp}{(userAccount.Oaths.IsOathActive(Oath.Oaf) ? $" (effective: {userAccount.Xp / 4 / userAccount.XpBoost})" : "")}", true);
             if (userAccount.LevelNumber == 10)
                 embed.AddField("Congratulations!", "You have unlocked Easy mode in the Weyard battle channels!");
             else if (userAccount.LevelNumber == 30)
