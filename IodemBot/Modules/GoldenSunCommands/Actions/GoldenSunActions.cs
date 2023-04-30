@@ -100,7 +100,7 @@ namespace IodemBot.Modules
                         .AddField("Stats", p.Stats.ToString(), true)
                         .AddField("Elemental Stats", p.ElStats.ToString(), true)
                         .AddField("Unleash Rate", $"{p.UnleashRate}%", true)
-                        .AddField("XP", $"{account.Xp} - next in {account.XPneeded}{(account.NewGames >= 1 ? $"\n({account.TotalXp} total | {account.NewGames} resets)" : "")}", true)
+                        .AddField("XP", $"{account.Xp} {(account.Oaths.IsOathActive(Oath.Turtle) ? $" (effective: {account.Xp / 4 / account.XpBoost})" : "")} - next in {account.XPneeded}{(account.NewGames >= 1 ? $"\n({account.TotalXp} total | {account.NewGames} resets)" : "")}", true)
                         .AddField("Oaths", $"active: {string.Join(", ", account.Oaths.ActiveOaths.Select(o => o.ToString()))}\n" +
                         $"completed this run: {string.Join(", ", account.Oaths.OathsCompletedThisRun.Select(o => o.ToString()))}");
                     break;

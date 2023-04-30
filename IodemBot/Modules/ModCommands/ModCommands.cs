@@ -289,7 +289,7 @@ namespace IodemBot.Modules
         public async Task MakeSupporter(SocketUser user = null)
         {
             var avatar = EntityConverter.ConvertUser(user);
-            avatar.TrophyCase.Trophies.Add(new Trophy()
+            avatar.TrophyCase.Trophies.Prepend(new Trophy()
             {
                 Text = "Thank you for supporting Iodem!",
                 Icon = "<:Supporter:899220684243353601>",
