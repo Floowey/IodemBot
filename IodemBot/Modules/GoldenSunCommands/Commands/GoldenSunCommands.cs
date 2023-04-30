@@ -12,11 +12,7 @@ using IodemBot.Extensions;
 using IodemBot.Modules.GoldenSunMechanics;
 using IodemBot.Preconditions;
 using Newtonsoft.Json;
-using SixLabors.ImageSharp.Formats.Jpeg;
-using SixLabors.ImageSharp.PixelFormats;
 using SixLabors.ImageSharp;
-using IodemBot.Discords;
-using System.Threading.Channels;
 using IodemBot.Images;
 
 namespace IodemBot.Modules

@@ -145,8 +145,9 @@ namespace IodemBot.Core.UserManagement
 
         public void NewGame()
         {
-            var XPIncrement = Oaths.OathsCompletedThisRun.Count;
-            XpBoost += (0.075 + XPIncrement * 0.025) * (1 - Math.Exp(-(double)Xp / 120000));
+            var OathCount = Oaths.OathsCompletedThisRun.Count;
+            XpBoost += (0.075 + OathCount * 0.025) * (1 - Math.Exp(-(double)Xp / 120000));
+
             XpBoost = Math.Min(MaxXpBoost, XpBoost);
             XpLastGame = TotalXp;
 

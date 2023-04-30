@@ -101,8 +101,8 @@ namespace IodemBot.Modules
                         .AddField("Elemental Stats", p.ElStats.ToString(), true)
                         .AddField("Unleash Rate", $"{p.UnleashRate}%", true)
                         .AddField("XP", $"{account.Xp} - next in {account.XPneeded}{(account.NewGames >= 1 ? $"\n({account.TotalXp} total | {account.NewGames} resets)" : "")}", true)
-                        .AddField("Oaths", $"active:{string.Join(", ", account.Oaths.ActiveOaths.Select(o => o.ToString()))}\n" +
-                        $"completed this run:{string.Join(", ", account.Oaths.OathsCompletedThisRun.Select(o => o.ToString()))}");
+                        .AddField("Oaths", $"active: {string.Join(", ", account.Oaths.ActiveOaths.Select(o => o.ToString()))}\n" +
+                        $"completed this run: {string.Join(", ", account.Oaths.OathsCompletedThisRun.Select(o => o.ToString()))}");
                     break;
 
                 case 1: // Stats

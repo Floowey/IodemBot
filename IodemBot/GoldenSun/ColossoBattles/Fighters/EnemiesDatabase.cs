@@ -312,6 +312,9 @@ namespace IodemBot.ColossoBattles
 
             if (TagsAny.Length > 0 && TagsAny.Count(t => playerAvatar.Tags.Contains(t)) < TagsHowMany) return false;
 
+            if (playerAvatar.Oaths.IsOathActive(Oath.Oaf))
+                return true;
+
             if (MinLevel > playerAvatar.LevelNumber || MaxLevel < playerAvatar.LevelNumber) return false;
             return true;
         }
