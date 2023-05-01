@@ -364,7 +364,7 @@ namespace IodemBot.Modules
             user.Element = chosenElement;
             var tags = new[] { "VenusAdept", "MarsAdept", "JupiterAdept", "MercuryAdept" };
 
-            if (!user.Passives.GetSelectedPassive().elements.Contains(chosenElement))
+            if (!user.Passives.GetSelectedPassive().elements?.Contains(chosenElement) ?? false)
                 user.Passives.SelectedPassive = Passives.AllPassives.FirstOrDefault(p => p.elements.Contains(chosenElement)).Name;
 
             user.Tags.RemoveAll(s => tags.Contains(s));

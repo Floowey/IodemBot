@@ -86,12 +86,14 @@ namespace IodemBot.Core.UserManagement
             get
             {
                 ulong xpneeded = (ulong)(Oaths.IsOathActive(Oath.Oaf) ? Xp / XpBoost / 4 : Xp);
+                ulong xpnow = (ulong)(Oaths.IsOathActive(Oath.Oaf) ? Xp / XpBoost / 4 : Xp);
+
                 foreach (var r in Rates)
                 {
                     var cutoff = r[0];
                     var rate = (double)r[1];
                     var level = r[2];
-                    if (Xp >= cutoff)
+                    if (xpnow >= cutoff)
                     {
                         var wantedLvl = LevelNumber + 1;
                         var rateFactor = Math.Sqrt(cutoff / rate);
@@ -100,7 +102,7 @@ namespace IodemBot.Core.UserManagement
                     }
                 }
 
-                return xpneeded - Xp;
+                return xpneeded - xpnow;
             }
         }
 

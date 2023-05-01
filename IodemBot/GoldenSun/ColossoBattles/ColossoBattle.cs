@@ -132,7 +132,7 @@ namespace IodemBot.ColossoBattles
                         break;
 
                     case "Instant Ignition":
-                        if (!p.IsAlive)
+                        if (p.IsAlive)
                         {
                             p.OffensiveMult = p.Passive.args[p.PassiveLevel];
                             Log.Add($"{p.Name} gets fired up.");
@@ -140,7 +140,7 @@ namespace IodemBot.ColossoBattles
                         break;
 
                     case "Soothing Song":
-                        if (!p.IsAlive && Global.RandomNumber(0, 100) < p.Passive.args[p.PassiveLevel])
+                        if (p.IsAlive && Global.RandomNumber(0, 100) < p.Passive.args[p.PassiveLevel])
                         {
                             var c = p.RemoveCondition(new[] { Condition.Poison, Condition.Venom, Condition.Haunt });
                             if (c > 0)
@@ -150,12 +150,14 @@ namespace IodemBot.ColossoBattles
 
                     case "Vital Spark":
                         if (!p.IsAlive)
+                        {
                             Log.Add($"{p.Name}'s inner spark reignites.");
-                        p.Revive((uint)p.Passive.args[p.PassiveLevel]);
+                            p.Revive((uint)p.Passive.args[p.PassiveLevel]);
+                        }
                         break;
 
                     case "Fiery Reflex":
-                        if (!p.IsAlive && Global.RandomNumber(0, 100) < p.Passive.args[p.PassiveLevel])
+                        if (p.IsAlive && Global.RandomNumber(0, 100) < p.Passive.args[p.PassiveLevel])
                         {
                             p.AddCondition(Condition.Counter);
                             Log.Add($"{p.Name} strikes a battle pose.");
@@ -163,7 +165,7 @@ namespace IodemBot.ColossoBattles
                         break;
 
                     case "Brisk Flow":
-                        if (!p.IsAlive)
+                        if (p.IsAlive)
                         {
                             p.RestorePp((uint)(p.Stats.MaxPP * p.Passive.args[p.PassiveLevel]));
                             Log.Add($"A brisk flow refills {p.Name}'s PP.");
@@ -171,7 +173,7 @@ namespace IodemBot.ColossoBattles
                         break;
 
                     case "Petrichor Scent":
-                        if (!p.IsAlive)
+                        if (p.IsAlive)
                         {
                             p.Heal((uint)(p.Stats.MaxHP * p.Passive.args[p.PassiveLevel]));
                             Log.Add($"The smell of geosmin lifts {p.Name}'s health.");
