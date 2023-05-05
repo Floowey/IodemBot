@@ -11660,6 +11660,48 @@
     },
     "extraturns": 0
   },
+  "SkadiSummon": {
+    "movepool": [ "Supercool", "Rockfall", "Gaia", "Mother Gaia", "Glacier", "Tundra", "Ice Horn" ],
+    "name": "Skadi",
+    "imgurl": "https://upload.wikimedia.org/wikipedia/commons/0/06/Skadi_Hunting_in_the_Mountains_by_H._L._M.jpg",
+    "stats": {
+      "maxhp": 1700,
+      "maxpp": 450,
+      "atk": 270,
+      "def": 125,
+      "spd": 227
+    },
+    "elstats": {
+      "venusres": 193,
+      "marsres": 55,
+      "jupiterres": 25,
+      "mercuryres": 193,
+      "venusatk": 120,
+      "mercuryatk": 120
+    },
+    "extraturns": 0
+  },
+  "ChiwenSummon": {
+    "movepool": [ "Fireball", "Inferno", "Dragon Cloud", "Drench", "Deluge", "Froth Sphere", "Avoid" ],
+    "name": "Chiwen",
+    "imgurl": "https://cdn.discordapp.com/attachments/497696510688100352/665884933943984130/Flora.gif",
+    "stats": {
+      "maxhp": 1400,
+      "maxpp": 450,
+      "atk": 250,
+      "def": 135,
+      "spd": 277
+    },
+    "elstats": {
+      "venusres": 193,
+      "mercuryres": 25,
+      "marsres": 55,
+      "jupiterres": 193,
+      "venusatk": 120,
+      "jupiteratk": 120
+    },
+    "extraturns": 0
+  },
   "AzartFinal": {
     "movepool": [ "Smoke Bomb", "Oil Drop" ],
     "name": "Azart",

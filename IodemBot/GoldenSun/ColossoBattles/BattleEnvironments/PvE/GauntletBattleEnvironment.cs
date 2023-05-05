@@ -154,7 +154,7 @@ namespace IodemBot.ColossoBattles
         {
             var msg = string.Join(", ", PlayerMessages.Select(v => $"<@{v.Value.Id}>"));
             SummonsMessage.ModifyAsync(m => m.Content = Matchup.FlavourText);
-            return $"{msg} get into Position!";
+            return $"{msg} get into Position!\n{string.Join("\n", Battle.Log)}";
         }
 
         protected override async Task GameOver()

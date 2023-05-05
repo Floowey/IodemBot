@@ -82,7 +82,7 @@ namespace IodemBot.ColossoBattles
         protected virtual string GetStartBattleString()
         {
             var msg = string.Join(", ", PlayerMessages.Select(v => $"<@{v.Value.Id}>"));
-            return $"{msg} get into Position!";
+            return $"{msg} get into Position!\n{string.Join("\n", Battle.Log)}";
         }
 
         protected string GetWinMessageString()
@@ -511,7 +511,7 @@ namespace IodemBot.ColossoBattles
                 //embed.AddField($"{fighter.Name}{fighter.ConditionsToString()}",
                 //    $"**HP**: {fighter.Stats.HP} / {fighter.Stats.MaxHP}\n**PP**: {fighter.Stats.PP} / {fighter.Stats.MaxPP}");
                 embed.AddField($"{fighter.Name}{fighter.ConditionsToString()}",
-                    $"{Utilities.GetProgressBar(fighter.Stats.HP * 100 / fighter.Stats.MaxHP, theme:barThemeHP)} **HP {fighter.Stats.HP}**\n" +
+                    $"{Utilities.GetProgressBar(fighter.Stats.HP * 100 / fighter.Stats.MaxHP, theme: barThemeHP)} **HP {fighter.Stats.HP}**\n" +
                     $"{Utilities.GetProgressBar(fighter.Stats.PP * 100 / Math.Max(1, fighter.Stats.MaxPP), theme: barThemePP)} **PP {fighter.Stats.PP}**"
                 );
 

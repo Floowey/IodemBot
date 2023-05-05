@@ -334,10 +334,8 @@ namespace IodemBot.Modules
         {
             var user = EntityConverter.ConvertUser(guser);
             await ChangeElement(user, chosenElement, context);
-            if (classSeriesName != null)
-            {
-                ChangeClass(user, classSeriesName);
-            }
+            
+            ChangeClass(user, classSeriesName);
             user.Passives.SelectedPassive = passive ?? user.Passives.SelectedPassive;
 
             user.Tags.Remove("Warrior");
