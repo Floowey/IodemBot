@@ -334,7 +334,7 @@ namespace IodemBot.Modules
         {
             var user = EntityConverter.ConvertUser(guser);
             await ChangeElement(user, chosenElement, context);
-            
+
             ChangeClass(user, classSeriesName);
             user.Passives.SelectedPassive = passive ?? user.Passives.SelectedPassive;
 
@@ -363,7 +363,7 @@ namespace IodemBot.Modules
             var tags = new[] { "VenusAdept", "MarsAdept", "JupiterAdept", "MercuryAdept" };
 
             if (!user.Passives.GetSelectedPassive().elements?.Contains(chosenElement) ?? false)
-                user.Passives.SelectedPassive = Passives.AllPassives.FirstOrDefault(p => p.elements.Contains(chosenElement)).Name;
+                user.Passives.SelectedPassive = user.Passives.UnlockedPassives.FirstOrDefault(p => p.elements.Contains(chosenElement)).Name;
 
             user.Tags.RemoveAll(s => tags.Contains(s));
             if ((int)chosenElement < tags.Length)
