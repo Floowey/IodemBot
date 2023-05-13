@@ -87,7 +87,7 @@
         {
           "Type": "Stat",
           "Stat": "Defense",
-          "Multiplier": 1.25
+          "Multiplier": 1.50
         }
       ]
     },
@@ -245,7 +245,10 @@
           "Type": "Stat",
           "Stat": "Defense",
           "Multiplier": 1.25
-        }
+        },
+        {
+          "Type": "Avoid",
+        }  
       ]
     },
     "Stats": {
@@ -501,12 +504,12 @@
     "SpriteNormal": "<a:Iron:662385859454173215>",
     "SpriteShiny": "<a:IronShiny:663013988535238666>",
     "Move": {
-      "TargetType": "PartyAll",
+      "TargetType": "PartySingle",
       "effects": [
         {
           "Type": "Stat",
           "Stat": "Defense",
-          "Multiplier": 1.25
+          "Multiplier": 2.00
         }
       ]
     },
@@ -1109,7 +1112,7 @@
         {
           "Type": "Stat",
           "Stat": "Defense",
-          "Multiplier": 1.25
+          "Multiplier": 1.50
         }
       ]
     },
