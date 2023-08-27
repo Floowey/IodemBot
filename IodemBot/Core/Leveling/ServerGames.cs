@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using Discord;
 using Discord.WebSocket;
@@ -166,6 +167,9 @@ namespace IodemBot.Core.Leveling
             if (avatar.ServerStats.DungeonsCompleted >= 12)
                 _ = GoldenSunCommands.AwardClassSeries("Air Pilgrim Series", avatar, channel);
 
+            var passivesBefore = avatar.Passives.UnlockedPassives.ToList();
+            var PassiveLevelsBefore = avatar.Passives.UnlockedPassives.Select(p => Passives.GetPassiveLevel(p, avatar.Oaths)).ToArray();
+
             if (avatar.Oaths.ActiveOaths.Any())
             {
                 string dungeonToComplete = avatar.Oaths.IsOathOfElementActive() ? " I" : "Vault";
@@ -191,10 +195,11 @@ namespace IodemBot.Core.Leveling
                         $"{string.Join("\n", oaths.Select(o => $"Oath of {o}"))}");
 
                     if (oafLevel > 0 && oafLevel <= 50)
-                        avatar.TrophyCase.Trophies.Add(new Trophy() { 
-                            Text=$"Awarded for completing Oath of the Oaf by completing {(elementOath ? "Path IV" : "Vault")} at level {oafLevel}.", 
-                            Icon= elementOath ? "<:Krakden:576856312500060161>" : "<:Nut:548636122402783243>", 
-                            ObtainedOn=DateTime.Now
+                        avatar.TrophyCase.Trophies.Add(new Trophy()
+                        {
+                            Text = $"Awarded for completing Oath of the Oaf by completing {(elementOath ? "Path IV" : "Vault")} at level {oafLevel}.",
+                            Icon = elementOath ? "<:Krakden:576856312500060161>" : "<:Nut:548636122402783243>",
+                            ObtainedOn = DateTime.Now
                         });
 
                     _ = channel.SendMessageAsync(embed: embed.Build());
@@ -205,18 +210,36 @@ namespace IodemBot.Core.Leveling
             {
                 var el = avatar.Element;
                 var unlockedPassives = Passives.AllPassives.Except(avatar.Passives.UnlockedPassives).Where(p => p.elements.Contains(el)).ToList();
+
+                var embed = new EmbedBuilder();
+                embed.WithColor(Colors.Get(el.ToString()));
+                embed.WithTitle("Passive Initiatives mastered");
                 if (unlockedPassives.Any())
                 {
                     avatar.Passives.AddPassive(unlockedPassives.ToArray());
-                    var embed = new EmbedBuilder();
-                    embed.WithColor(Colors.Get(el.ToString()));
-                    embed.WithTitle("Passive Initiatives mastered");
                     embed.WithDescription($"The power of {el} flushes through your soul. The following Passive Initiatives are now newly available to you:\n" +
-                        $"{string.Join("\n", unlockedPassives.Select(p => p.Name))}");
+                        $"{string.Join("\n", unlockedPassives.Select(p => $"{p.Name} ({Passives.GetPassiveLevel(p, avatar.Oaths)})"))}");
+                }
 
+                var PassiveLevelsAfter = avatar.Passives.UnlockedPassives.Select(p => Passives.GetPassiveLevel(p, avatar.Oaths)).ToArray();
+                if (!Enumerable.SequenceEqual(PassiveLevelsBefore, PassiveLevelsAfter))
+                {
+                    StringBuilder msg = new();
+                    for (int i = 0; i < passivesBefore.Count; i++)
+                    {
+                        if (PassiveLevelsBefore[i] != PassiveLevelsAfter[i])
+                        {
+                            msg.Append($"{passivesBefore[i].Name} ({PassiveLevelsBefore[i]}) -> ({PassiveLevelsAfter[i]})");
+                        }
+                    }
+                    embed.AddField("Passives Upgraded!", msg);
+                }
+                if (embed.Fields.Any() || !embed.Description.IsNullOrEmpty())
+                {
                     _ = channel.SendMessageAsync(embed: embed.Build());
                 }
             }
+
             UserAccountProvider.StoreUser(avatar);
             var csvline = $"{DateTime.Now:s},Dungeon,{dungeon.Name},{avatar.Name}{Environment.NewLine}";
             File.AppendAllText(BattleFile, csvline);

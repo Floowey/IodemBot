@@ -2283,7 +2283,8 @@
     "emote": "<:Maha:568133448645214219>",
     "range": 3,
     "element": 4,
-    "PPCost": 0
+    "PPCost": 0,
+    "dmgMult": 0.8
   },
   "Power Crush": {
     "name": "Power Crush",

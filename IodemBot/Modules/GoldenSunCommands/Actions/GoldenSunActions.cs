@@ -375,9 +375,11 @@ namespace IodemBot.Modules
 
         private static void ChangeClass(UserAccount user, string classSeriesName = "")
         {
-            user.ClassToggle = 0;
             if (!classSeriesName.IsNullOrEmpty())
+            {
+                user.ClassToggle = 0;
                 AdeptClassSeriesManager.SetClass(user, classSeriesName);
+            }
 
             if (user.ClassSeries != null && !user.DjinnPocket.DjinnSetup.All(d => user.ClassSeries.Elements.Contains(d)))
             {

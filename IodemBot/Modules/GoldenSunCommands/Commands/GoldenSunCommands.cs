@@ -89,38 +89,57 @@ namespace IodemBot.Modules
             var curSeries = account.ClassSeries;
 
             var foundClass = AdeptClassSeriesManager.TryGetClassSeries(name, out AdeptClassSeries series);
+            var hasClass = AdeptClassSeriesManager.GetUnlockedClasses(account).Any(d => d.Name == series?.Name);
+
             var embed = new EmbedBuilder().WithColor(Colors.Get(account.Element.ToString()));
 
-            if (foundClass || name == "")
+            if (!foundClass && name != "")
             {
-                var success = SetClass(account, series?.Name ?? "");
-                series = account.ClassSeries;
-                if (curSeries.Name.Equals(series?.Name) || success)
-                {
-                    if (series != null && !account.DjinnPocket.DjinnSetup.All(d => series.Elements.Contains(d)))
-                    {
-                        account.DjinnPocket.DjinnSetup.Clear();
-                        account.DjinnPocket.DjinnSetup.Add(account.Element);
-                        account.DjinnPocket.DjinnSetup.Add(account.Element);
-                    }
-                    UserAccountProvider.StoreUser(account);
-                    await Context.Channel.SendMessageAsync(embed: embed
-                    .WithDescription($"You are {Utilities.Article(account.GsClass)} {account.GsClass} now, {account.Name}.")
-                    .Build());
-                    return;
-                }
-                else
-                {
-                    await Context.Channel.SendMessageAsync(embed: embed
-                        .WithDescription($":x: A {account.Element} Adept cannot get into the {series.Name}")
-                        .Build());
-                    return;
-                }
+                await Context.Channel.SendMessageAsync(embed: embed
+             .WithDescription($":x: I'm afraid the {name} class is unknown to me.")
+             .Build());
+                return;
             }
 
-            await Context.Channel.SendMessageAsync(embed: embed
-                .WithDescription($":x: I could not find the {name} class in your available classes.")
+            if (!hasClass && name != "")
+            {
+                await Context.Channel.SendMessageAsync(embed: embed
+             .WithDescription($":x: I could not find the {name} class in your available classes.")
+             .Build());
+                return;
+            }
+
+            if (!series.Elements.Contains(account.Element))
+            {
+                await Context.Channel.SendMessageAsync(embed: embed
+                 .WithDescription($":x: A {account.Element} Adept cannot get into the {series.Name}.")
+                 .Build());
+                return;
+            }
+
+            var success = SetClass(account, series?.Name ?? "");
+            series = account.ClassSeries;
+            if (curSeries.Name.Equals(series?.Name) || success)
+            {
+                if (series != null && !account.DjinnPocket.DjinnSetup.All(d => series.Elements.Contains(d)))
+                {
+                    account.DjinnPocket.DjinnSetup.Clear();
+                    account.DjinnPocket.DjinnSetup.Add(account.Element);
+                    account.DjinnPocket.DjinnSetup.Add(account.Element);
+                }
+                UserAccountProvider.StoreUser(account);
+                await Context.Channel.SendMessageAsync(embed: embed
+                .WithDescription($"You are {Utilities.Article(account.GsClass)} {account.GsClass} now, {account.Name}.")
                 .Build());
+                return;
+            }
+            else
+            {
+                await Context.Channel.SendMessageAsync(embed: embed
+                .WithDescription($":x: Something went wrong.")
+                .Build());
+                return;
+            }
         }
 
         public enum LoadoutAction
@@ -561,7 +580,7 @@ namespace IodemBot.Modules
                 return;
             }
 
-            await ReplyAsync($"You will lose all your progress so far, are you really sure? However, you will get an experience boost from x{account.XpBoost:F} to x{Math.Min(2, account.XpBoost * (1 + 0.1 * (1 - Math.Exp(-(double)account.Xp / 120000)))):F}");
+            await ReplyAsync($"You will lose all your progress so far, are you really sure? However, you will get an experience boost from x{account.XpBoost:F} to x{Math.Min(account.MaxXpBoost, account.XpBoost * (1 + 0.1 * (1 - Math.Exp(-(double)account.Xp / 120000)))):F}");
 
             response = await Context.Channel.AwaitMessage(m => m.Author == Context.User);
 

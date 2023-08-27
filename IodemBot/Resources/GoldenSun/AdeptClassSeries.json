@@ -3061,5 +3061,307 @@
     "isDefault": true,
     "archtype": "Warrior",
     "description": "With their special training, Hoplites strive to follow the footsteps of epic heroes and heroines."
+  },
+  {
+    "name": "Toa Series",
+    "classes": [
+      {
+        "name": "Toa",
+        "movepool": [
+          "Lava Shower",
+          "Gale",
+          "Douse",
+          "Boon"
+        ],
+        "statMultipliers": {
+          "maxHP": 130,
+          "maxPP": 160,
+          "Atk": 120,
+          "Def": 120,
+          "Spd": 160
+        }
+      },
+      {
+        "name": "Matai",
+        "movepool": [
+          "Molten Bath",
+          "Hurricane",
+          "Deluge",
+          "Break",
+          "Nature's Boon"
+        ],
+        "statMultipliers": {
+          "maxHP": 150,
+          "maxPP": 170,
+          "Atk": 130,
+          "Def": 130,
+          "Spd": 170
+        }
+      },
+      {
+        "name": "Kahuna",
+        "movepool": [
+          "Magma Storm",
+          "Hurricane",
+          "Deluge",
+          "Break",
+          "Vital Boon"
+        ],
+        "statMultipliers": {
+          "maxHP": 170,
+          "maxPP": 180,
+          "Atk": 140,
+          "Def": 140,
+          "Spd": 180
+        }
+      }
+    ],
+    "elements": [
+      "Mars",
+      "Jupiter",
+      "Mercury"
+    ],
+    "elstats": {
+      "VenusAtk": 100,
+      "VenusRes": 100,
+      "MarsAtk": 30,
+      "MarsRes": 30,
+      "JupiterAtk": 120,
+      "JupiterRes": 120,
+      "MercuryAtk": 120,
+      "MercuryRes": 120
+    },
+    "requirement": "Heals",
+    "isDefault": false,
+    "archtype": "Warrior",
+    "description": "The healing capabilites of the White Mages are the best of their kind."
+  },
+  {
+    "name": "Tribalist Series",
+    "classes": [
+      {
+        "name": "Tribalist",
+        "movepool": [
+          "Shine Plasma",
+          "Hail Prism",
+          "Restore",
+          "Cure Poison",
+          "Wish Well",
+          "Revive"
+        ],
+        "statMultipliers": {
+          "maxHP": 150,
+          "maxPP": 180,
+          "Atk": 130,
+          "Def": 130,
+          "Spd": 150
+        }
+      },
+      {
+        "name": "Ocelotl",
+        "movepool": [
+          "Molten Bath",
+          "Hurricane",
+          "Deluge",
+          "Break",
+          "Nature's Boon"
+        ],
+        "statMultipliers": {
+          "maxHP": 150,
+          "maxPP": 170,
+          "Atk": 130,
+          "Def": 130,
+          "Spd": 170
+        }
+      },
+      {
+        "name": "Jaguatl",
+        "movepool": [
+          "Magma Storm",
+          "Hurricane",
+          "Deluge",
+          "Break",
+          "Vital Boon"
+        ],
+        "statMultipliers": {
+          "maxHP": 170,
+          "maxPP": 180,
+          "Atk": 140,
+          "Def": 140,
+          "Spd": 180
+        }
+      }
+    ],
+    "elements": [
+      "Venus",
+      "Jupiter",
+      "Mercury"
+    ],
+    "elstats": {
+      "VenusAtk": 100,
+      "VenusRes": 100,
+      "MarsAtk": 30,
+      "MarsRes": 30,
+      "JupiterAtk": 120,
+      "JupiterRes": 120,
+      "MercuryAtk": 120,
+      "MercuryRes": 120
+    },
+    "requirement": "Heals",
+    "isDefault": false,
+    "archtype": "Warrior",
+    "description": "The healing capabilites of the White Mages are the best of their kind."
+  },
+  {
+    "name": "Prospector Series",
+    "classes": [
+      {
+        "name": "Prospector",
+        "movepool": [
+          "Shine Plasma",
+          "Hail Prism",
+          "Restore",
+          "Cure Poison",
+          "Wish Well",
+          "Revive"
+        ],
+        "statMultipliers": {
+          "maxHP": 150,
+          "maxPP": 180,
+          "Atk": 130,
+          "Def": 130,
+          "Spd": 150
+        }
+      },
+      {
+        "name": "Jeweller",
+        "movepool": [
+          "Molten Bath",
+          "Hurricane",
+          "Deluge",
+          "Break",
+          "Nature's Boon"
+        ],
+        "statMultipliers": {
+          "maxHP": 150,
+          "maxPP": 170,
+          "Atk": 130,
+          "Def": 130,
+          "Spd": 170
+        }
+      },
+      {
+        "name": "Crystalmancer",
+        "movepool": [
+          "Magma Storm",
+          "Hurricane",
+          "Deluge",
+          "Break",
+          "Vital Boon"
+        ],
+        "statMultipliers": {
+          "maxHP": 170,
+          "maxPP": 180,
+          "Atk": 140,
+          "Def": 140,
+          "Spd": 180
+        }
+      }
+    ],
+    "elements": [
+      "Venus",
+      "Mars",
+      "Mercury"
+    ],
+    "elstats": {
+      "VenusAtk": 100,
+      "VenusRes": 100,
+      "MarsAtk": 30,
+      "MarsRes": 30,
+      "JupiterAtk": 120,
+      "JupiterRes": 120,
+      "MercuryAtk": 120,
+      "MercuryRes": 120
+    },
+    "requirement": "Heals",
+    "isDefault": false,
+    "archtype": "Mage",
+    "description": "The healing capabilites of the White Mages are the best of their kind."
+  },
+  {
+    "name": "Fakir Series",
+    "classes": [
+      {
+        "name": "Fakir",
+        "movepool": [
+          "Shine Plasma",
+          "Hail Prism",
+          "Restore",
+          "Cure Poison",
+          "Wish Well",
+          "Revive"
+        ],
+        "statMultipliers": {
+          "maxHP": 150,
+          "maxPP": 180,
+          "Atk": 130,
+          "Def": 130,
+          "Spd": 150
+        }
+      },
+      {
+        "name": "Vizir",
+        "movepool": [
+          "Molten Bath",
+          "Hurricane",
+          "Deluge",
+          "Break",
+          "Nature's Boon"
+        ],
+        "statMultipliers": {
+          "maxHP": 150,
+          "maxPP": 170,
+          "Atk": 130,
+          "Def": 130,
+          "Spd": 170
+        }
+      },
+      {
+        "name": "Sultan",
+        "movepool": [
+          "Magma Storm",
+          "Hurricane",
+          "Deluge",
+          "Break",
+          "Vital Boon"
+        ],
+        "statMultipliers": {
+          "maxHP": 170,
+          "maxPP": 180,
+          "Atk": 140,
+          "Def": 140,
+          "Spd": 180
+        }
+      }
+    ],
+    "elements": [
+      "Venus",
+      "Mars",
+      "Jupiter"
+    ],
+    "elstats": {
+      "VenusAtk": 100,
+      "VenusRes": 100,
+      "MarsAtk": 30,
+      "MarsRes": 30,
+      "JupiterAtk": 120,
+      "JupiterRes": 120,
+      "MercuryAtk": 120,
+      "MercuryRes": 120
+    },
+    "requirement": "Heals",
+    "isDefault": false,
+    "archtype": "Mage",
+    "description": "The healing capabilites of the White Mages are the best of their kind."
   }
 ]

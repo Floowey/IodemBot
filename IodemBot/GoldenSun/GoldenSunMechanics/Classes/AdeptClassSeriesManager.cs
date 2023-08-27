@@ -125,6 +125,15 @@ namespace IodemBot.Modules.GoldenSunMechanics
             return availableClasses;
         }
 
+        public static List<AdeptClassSeries> GetUnlockedClasses(UserAccount user)
+        {
+            var availableClasses = AllClasses.Where(c => c.IsDefault).ToList();
+
+            availableClasses.AddRange(AllClasses
+                .Where(c => user.BonusClasses.Contains(c.Name)).ToList());
+            return availableClasses;
+        }
+
         public static bool SetClass(UserAccount account, string targetClass = "")
         {
             var curClass = GetClassSeries(account).Name;

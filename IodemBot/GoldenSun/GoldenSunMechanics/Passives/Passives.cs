@@ -42,7 +42,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             new(){Name="Brisk Flow", elements = new[]{Element.Jupiter, Element.Mercury},
                 Description="Surrounded by psynergy in fluid state, your PP recovers by 5/15/25%",
                 ShortDescription="Recover 5/15/25% PP",
-                args=new[]{0.5,0.15,0.25} },
+                args=new[]{0.05,0.15,0.25} },
 
             new(){Name="Petrichor Scent", elements = new[]{Element.Mercury, Element.Venus},
                 Description="The smell of fresh rain makes you feel so good, it heals you 10/25/33% of your max HP",
