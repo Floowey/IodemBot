@@ -1,15 +1,15 @@
 ﻿{
   "Halloween": {
-    "start": "2022-10-07T00:00:00",
-    "end": "2022-11-07T00:00:00"
+    "start": "2023-10-07T00:00:00",
+    "end": "2023-11-07T00:00:00"
   },
   "Christmas": {
-    "start": "2022-12-01T00:00:00",
-    "end": "2023-01-01T00:00:00"
+    "start": "2023-12-01T00:00:00",
+    "end": "2024-01-07T00:00:00"
   },
   "Shop": {
-    "start": "2022-10-01T00:00:00",
-    "end": "2022-10-14T00:00:00",
+    "start": "2023-10-01T00:00:00",
+    "end": "2023-10-14T00:00:00",
     "flavortext": "To bring the spirit of Halloween closer to you, and help in your endeavour to find all of the event djinn, the big market keeps on giving!"
   }
 }
