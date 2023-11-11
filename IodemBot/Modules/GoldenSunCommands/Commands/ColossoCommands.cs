@@ -297,8 +297,8 @@ namespace IodemBot.ColossoBattles
 
             var openBattle = new GoliathBattleEnvironment(BattleService,
                 $"Goliath-{Context.User.Username}", gs.ColossoChannel, false,
-               await BattleService.PrepareBattleChannel("Goliath-B", guild, RoomVisibility.All, true),
-                await BattleService.PrepareBattleChannel("Goliath-A", guild, RoomVisibility.TeamB, true), gs.TeamBRole);
+               await BattleService.PrepareBattleChannel("Goliath-A", guild, RoomVisibility.All, true),
+                await BattleService.PrepareBattleChannel("Goliath-B", guild, RoomVisibility.TeamB, true), gs.TeamBRole);
 
             BattleService.AddBattleEnvironment(openBattle);
             _ = Context.Channel.SendMessageAsync($"Goliath Battle Ready.");
