@@ -1696,7 +1696,7 @@
     "ItemType": "LongSword",
     "IsEquippable": true,
     "IsArtifact": true,
-    "Description": "A sword from a legendary fallen Proxian, infused with untold power.\nCapable of cleaving foes through incandescent slashes.\nBestowed to Estelle, who weaves fiery trails through and around her foes.",
+    "Description": "A scarlet sword from a legendary fallen Proxian infused with untold power,\ncapable of cleaving foes through incandescent slashes.\nBestowed to Anelace, who calls it Incandescence, it gracefully yet \npowerfully weaves fiery trails through and around her foes.",
     "AddStatsOnEquip": {
       "Atk": 255
     },
