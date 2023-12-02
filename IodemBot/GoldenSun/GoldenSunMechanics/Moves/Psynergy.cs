@@ -47,6 +47,11 @@ namespace IodemBot.Modules.GoldenSunMechanics
             }
 
             user.Stats.PP -= (int)PpCost;
+            
+            if(user is PlayerFighter p){
+                p.BattleStats.PPUsed += PpCost;
+            }
+
             log.Add($"{Emote} {user.Name} {(PpCost == 1 ? "uses" : "casts")} {Name}!");
             return new Validation(true, log);
         }

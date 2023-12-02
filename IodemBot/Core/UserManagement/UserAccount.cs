@@ -255,6 +255,8 @@ namespace IodemBot.Core.UserManagement
         public int SoloBattles { get; set; }
         public int Supported { get; set; }
         public int TotalTeamMates { get; set; }
+        public uint ItemActivations { get; set; }
+        public uint PPUsed { get; set; }
 
         public static BattleStats operator +(BattleStats b1, BattleStats b2)
         {
@@ -271,6 +273,8 @@ namespace IodemBot.Core.UserManagement
                 Defends = b1.Defends + b2.Defends,
                 AttackedWeakness = b1.AttackedWeakness + b2.AttackedWeakness,
                 DamageTanked = b1.DamageTanked + b2.DamageTanked,
+                ItemActivations = b1.ItemActivations + b2.ItemActivations,
+                PPUsed = b1.PPUsed + b2.PPUsed,
                 HighestDamage = Math.Max(b1.HighestDamage, b2.HighestDamage)
             };
         }

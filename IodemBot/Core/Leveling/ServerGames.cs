@@ -108,6 +108,15 @@ namespace IodemBot.Core.Leveling
             if (bs.HPhealed >= 222222)
                 await GoldenSunCommands.AwardClassSeries("White Mage Series", userAccount, channel);
 
+            if (bs.ItemActivations >= 10)
+                await GoldenSunCommands.AwardClassSeries("Prospector Series", userAccount, channel);
+
+            if (bs.HighestDamage >= 300)
+                await GoldenSunCommands.AwardClassSeries("Tribalist Series", userAccount, channel);
+
+            if (bs.PPUsed >= 1000)
+                await GoldenSunCommands.AwardClassSeries("Fakir Series", userAccount, channel);
+
             if (bs.Revives >= 25) await GoldenSunCommands.AwardClassSeries("Medium Series", userAccount, channel);
         }
 

@@ -2727,6 +2727,16 @@
     "PPCost": 0,
     "dmgMult": 1.8
   },
+  "Sabre Dance": {
+    "name": "Sabre Dance",
+    "TargetType": "EnemyRange",
+    "emote": "<:Sabre_Dance:1180574194312937606>",
+    "range": 1,
+    "element": 0,
+    "PPCost": 7,
+    "power": 0,
+    "dmgMult": 1.5
+  },
   "Drain Fang": {
     "name": "Drain Fang",
     "TargetType": "EnemyRange",
@@ -2800,7 +2810,7 @@
     "PPCost": 0,
     "power": 170
   },
-  "Mytic Flame": {
+  "Mystic Flame": {
     "name": "Mystic Flame",
     "TargetType": "EnemyRange",
     "emote": "<:Flare:536965231201484829>",
@@ -3241,9 +3251,79 @@
     "name": "Bosca Sweep",
     "TargetType": "EnemyRange",
     "emote": "<:BoscaSwipe:1180498646412840961>",
-    "range": 2,
+    "range": 1,
     "element": 4,
     "PPCost": 6,
-    "dmgMult": 0.7
+    "dmgMult": 1.1,
+    "effects": [
+      {
+        "Type": "Stat",
+        "Stat": "Attack",
+        "Multiplier": 1.1
+      }
+    ]
+  },
+  "Sand Vortex": {
+    "name": "Sand Vortex",
+    "TargetType": "EnemyRange",
+    "emote": "<:SandVortex:1180567219827122297>",
+    "range": 2,
+    "element":2,
+    "PPCost": 6,
+    "power": 35,
+    "Effects": [
+      {
+        "Type": "ConditionMult",
+        "Conditions": [ "Delusion" ],
+        "Multiplier": 1.1
+      },
+      {
+        "Type": "Condition",
+        "Condition": "Delusion",
+        "Probability": 10
+      }
+    ]
+  },
+  "Dune Slide": {
+    "name": "Dune Slide",
+    "TargetType": "EnemyRange",
+    "emote": "<:DuneSlide:1180567218422026300>",
+    "range": 2,
+    "element": 2,
+    "PPCost": 12,
+    "power": 50,
+    "Effects": [
+      {
+        "Type": "ConditionMult",
+        "Conditions": [ "Delusion" ],
+        "Multiplier": 1.2
+      },
+      {
+        "Type": "Condition",
+        "Condition": "Delusion",
+        "Probability": 20
+      }
+    ]
+  },
+  "Desert Storm": {
+    "name": "Desert Storm",
+    "TargetType": "EnemyRange",
+    "emote": "<:DesertStorm:1180567215800602705>",
+    "range": 3,
+    "element": 2,
+    "PPCost": 26,
+    "power": 120,
+    "Effects": [
+      {
+        "Type": "ConditionMult",
+        "Conditions": [ "Delusion" ],
+        "Multiplier": 1.3
+      },
+      {
+        "Type": "Condition",
+        "Condition": "Delusion",
+        "Probability": 30
+      }
+    ]
   }
 }

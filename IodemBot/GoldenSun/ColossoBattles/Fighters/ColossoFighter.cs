@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Discord;
+using IodemBot.Core.UserManagement;
 using IodemBot.Extensions;
 using IodemBot.Modules.GoldenSunMechanics;
 using Newtonsoft.Json;
@@ -210,7 +211,10 @@ namespace IodemBot.ColossoBattles
             {
                 Stats.HP -= (int)damage;
                 var colossoFighter = this;
-                if (colossoFighter is PlayerFighter) ((PlayerFighter)this).BattleStats.DamageTanked += damage;
+                if (colossoFighter is PlayerFighter p)
+                {
+                    p.BattleStats.DamageTanked += damage;
+                }
             }
             else
             {
@@ -441,6 +445,12 @@ namespace IodemBot.ColossoBattles
                     && !HasCondition(Condition.Decoy))
                 {
                     turnLog.Add($"{item.IconDisplay} {Name}'s {item.Name} starts to Glow.");
+
+                    if (this is PlayerFighter p)
+                    {
+                        p.BattleStats.ItemActivations++;
+                    }
+
                     foreach (var effect in item.Unleash.AllEffects) turnLog.AddRange(effect.Apply(this, this));
 
                     if (Global.RandomNumber(0, 100) <= item.ChanceToBreak)
