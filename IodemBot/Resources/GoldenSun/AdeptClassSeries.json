@@ -3215,7 +3215,7 @@
         "name": "Prospector",
         "movepool": [
           "Diamond Dust",
-          "Topas Speck",
+          "Topaz Speck",
           "Ruby Speck"
         ],
         "statMultipliers": {
@@ -3230,7 +3230,7 @@
         "name": "Jeweller",
         "movepool": [
           "Diamond Dust",
-          "Topas Shard",
+          "Topaz Shard",
           "Ruby Barb",
           "Sapphire Talisman",
           "Magic Shield"

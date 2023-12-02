@@ -3213,8 +3213,8 @@
     "PPCost": 29,
     "power": 130
   },
-  "Topas Speck": {
-    "name": "Topas Speck",
+  "Topaz Speck": {
+    "name": "Topaz Speck",
     "TargetType": "EnemyRange",
     "emote": "<:TopasSpeck:1180497604891656285>",
     "range": 1,
@@ -3222,8 +3222,8 @@
     "PPCost": 5,
     "power": 45
   },
-  "Topas Shard": {
-    "name": "Topas Shard",
+  "Topaz Shard": {
+    "name": "Topaz Shard",
     "TargetType": "EnemyRange",
     "emote": "<:TopasShard:1180498315587113050>",
     "range": 1,
