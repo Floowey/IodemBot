@@ -364,7 +364,13 @@
     "effects": [
       {
         "Type": "Restore",
-        "CureConditions": [ "Stun", "Sleep", "Seal", "DeathCurse", "Delusion" ]
+        "CureConditions": [
+          "Stun",
+          "Sleep",
+          "Seal",
+          "DeathCurse",
+          "Delusion"
+        ]
       }
     ]
   },
@@ -378,7 +384,10 @@
     "effects": [
       {
         "Type": "Restore",
-        "CureConditions": [ "Poison", "Venom" ]
+        "CureConditions": [
+          "Poison",
+          "Venom"
+        ]
       }
     ]
   },
@@ -392,7 +401,17 @@
     "effects": [
       {
         "Type": "Restore",
-        "CureConditions": [ "Stun", "Sleep", "Seal", "DeathCurse", "Delusion", "Poison", "Venom", "Haunt", "SpiritSeal" ]
+        "CureConditions": [
+          "Stun",
+          "Sleep",
+          "Seal",
+          "DeathCurse",
+          "Delusion",
+          "Poison",
+          "Venom",
+          "Haunt",
+          "SpiritSeal"
+        ]
       }
     ]
   },
@@ -474,7 +493,14 @@
     "effects": [
       {
         "Type": "Restore",
-        "CureConditions": [ "Poison", "Stun", "Sleep", "Seal", "DeathCurse", "Delusion" ]
+        "CureConditions": [
+          "Poison",
+          "Stun",
+          "Sleep",
+          "Seal",
+          "DeathCurse",
+          "Delusion"
+        ]
       }
     ]
   },
@@ -857,7 +883,17 @@
     "effects": [
       {
         "Type": "MysticCall",
-        "EnemyNames": [ "Anger Ball 1", "Anger Ball 2", "Guardian Ball 1", "Guardian Ball 2", "Refresh Ball 1", "Refresh Ball 2", "Thunder Ball 1", "Thunder Ball 2", "Death Ball" ]
+        "EnemyNames": [
+          "Anger Ball 1",
+          "Anger Ball 2",
+          "Guardian Ball 1",
+          "Guardian Ball 2",
+          "Refresh Ball 1",
+          "Refresh Ball 2",
+          "Thunder Ball 1",
+          "Thunder Ball 2",
+          "Death Ball"
+        ]
       }
     ]
   },
@@ -1183,6 +1219,56 @@
         "Type": "Condition",
         "Condition": "Avoid",
         "Probability": 100
+      }
+    ]
+  },
+  "Magic Lamp": {
+    "name": "Magic Lamp",
+    "TargetType": "EnemyRange",
+    "emote": "<:MagicLamp:1180498642080116756>",
+    "range": 1,
+    "element": 2,
+    "PPCost": 7,
+    "effects": [
+      {
+        "Type": "Condition",
+        "Condition": "SpiritSeal",
+        "Probability": 90
+      }
+    ]
+  },
+  "Sapphire Talisman": {
+    "name": "Sapphire Talisman",
+    "TargetType": "PartySingle",
+    "emote": "<:SapphireTalisman:1180498640373039186>",
+    "range": 1,
+    "element": 3,
+    "PPCost": 4,
+    "effects": [
+      {
+        "Type": "Condition",
+        "Condition": "Avoid",
+        "Probability": 100
+      }
+    ]
+  },
+  "Battle Dance": {
+    "name": "Battle Dance",
+    "TargetType": "PartyAll",
+    "emote": " <:BattleDance:1180498644223398008>",
+    "range": 1,
+    "element": 1,
+    "PPCost": 6,
+    "effects": [
+      {
+        "Type": "Stat",
+        "Stat": "Defense",
+        "Multiplier": 1.25
+      },
+      {
+        "Type": "Stat",
+        "Stat": "Power",
+        "Multiplier": 1.25
       }
     ]
   }

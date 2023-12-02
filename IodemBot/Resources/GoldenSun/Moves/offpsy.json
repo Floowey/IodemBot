@@ -3168,5 +3168,82 @@
     "element": 2,
     "PPCost": 4,
     "dmgMult": 1.2
+  },
+  "Ruby Speck": {
+    "name": "Ruby Speck",
+    "TargetType": "EnemyRange",
+    "emote": "<:RubySpeck:1180498599113654343>",
+    "range": 2,
+    "element": 1,
+    "PPCost": 5,
+    "power": 35
+  },
+  "Ruby Barb": {
+    "name": "Ruby Barb",
+    "TargetType": "EnemyRange",
+    "emote": "<:RubyBarb:1180498596026654812>",
+    "range": 3,
+    "element": 1,
+    "PPCost": 11,
+    "power": 65
+  },
+  "Ruby Bomb": {
+    "name": "Ruby Bomb",
+    "TargetType": "EnemyRange",
+    "emote": "<:RubyBomb:1180498593971441694>",
+    "range": 4,
+    "element": 1,
+    "effects": [
+      {
+        "Type": "Condition",
+        "Condition": "Flinch",
+        "Probability": 16
+      }
+    ],
+    "PPCost": 29,
+    "power": 130
+  },
+  "Topas Speck": {
+    "name": "Topas Speck",
+    "TargetType": "EnemyRange",
+    "emote": "<:TopasSpeck:1180497604891656285>",
+    "range": 1,
+    "element": 0,
+    "PPCost": 5,
+    "power": 45
+  },
+  "Topas Shard": {
+    "name": "Topas Shard",
+    "TargetType": "EnemyRange",
+    "emote": "<:TopasShard:1180498315587113050>",
+    "range": 1,
+    "element": 0,
+    "PPCost": 11,
+    "power": 140
+  },
+  "Topalista": {
+    "name": "Topalista",
+    "TargetType": "EnemyRange",
+    "emote": "<:Topalista:1180498335958843422>",
+    "range": 2,
+    "element": 0,
+    "effects": [
+      {
+        "Type": "Condition",
+        "Condition": "Flinch",
+        "Probability": 16
+      }
+    ],
+    "PPCost": 29,
+    "power": 230
+  },
+  "Bosca Sweep": {
+    "name": "Bosca Sweep",
+    "TargetType": "EnemyRange",
+    "emote": "<:BoscaSwipe:1180498646412840961>",
+    "range": 2,
+    "element": 4,
+    "PPCost": 6,
+    "dmgMult": 0.7
   }
 }
