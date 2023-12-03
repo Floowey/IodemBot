@@ -215,12 +215,9 @@ namespace IodemBot.Core.UserManagement
             ServerStats = new ServerStats();
             LastReset = DateTime.Now;
 
-            Tags.RemoveAll(t => !t.Contains("Halloween20") || !t.Contains("Christmas21"));
-            Tags.Add($"{Element}Adept");
-            Tags.Add(ClassSeries.Archtype.ToString());
-            
             if (Tags.Contains("HasReset") || Tags.Contains("VenusLHCompleted"))
             {
+                Tags.RemoveAll(t => !t.Contains("Halloween20") || !t.Contains("Christmas21"));
                 Tags.Add($"HasReset");
                 Dungeons.Add("Reawakening");
                 Tags.Add("TutorialCompleted");
@@ -233,9 +230,10 @@ namespace IodemBot.Core.UserManagement
             }
             else
             {
-                Dungeons.Add("Tutorial");
+                Tags.RemoveAll(t => !t.Contains("Halloween20") || !t.Contains("Christmas21"));
             }
-
+            Tags.Add($"{Element}Adept");
+            Tags.Add(ClassSeries.Archtype.ToString());
             NewGames++;
         }
 

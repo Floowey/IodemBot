@@ -455,8 +455,8 @@ namespace IodemBot.ColossoBattles
 
                     if (Global.RandomNumber(0, 100) <= item.ChanceToBreak)
                     {
+                        turnLog.Add($"{item.IconDisplay} {Name}'s {item.Name} breaks.");
                         item.IsBroken = true;
-                        turnLog.Add($"{item.IconDisplay} {Name}'s {item.Name} breaks;");
                     }
                 }
 

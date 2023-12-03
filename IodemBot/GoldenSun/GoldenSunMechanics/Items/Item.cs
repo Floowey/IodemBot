@@ -67,7 +67,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
         public string NormalIcon { get; set; }
         public string AnimatedIcon { get; set; }
         [JsonIgnore] internal bool CanBeAnimated => !IsAnimated && !AnimatedIcon.IsNullOrEmpty();
-        public string IconDisplay => IsBroken ? $"({Icon})$" : Icon;
+        public string IconDisplay => IsBroken ? $"({Icon})" : Icon;
 
         public string Icon
         {

@@ -175,7 +175,7 @@ namespace IodemBot.Modules
 
         private static Dictionary<Element, string[]> _prompts = new()
         {
-            { Element.None, new[] { "Boring" } },
+            { Element.None, new[] { "Boring", "Plain" } },
             { Element.Venus, new[] { "Muddy", "Earthy", "Dirty", "Venus", "Gaia", "Green", "Growing", "Rocky", "Steady", "Rooted" } },
             { Element.Mars, new[] { "Fiery", "Hot", "Heated", "Spicy", "Burning", "Flaming", "Glowing", "Magma", "Mars" } },
             { Element.Jupiter, new[] { "Sparky", "Windy", "Boony", "Thunderous", "Tempest", "Howling", "Blowing", "Air", "Jupiter" } },

@@ -173,7 +173,7 @@ namespace IodemBot.Modules
         [ActionParameterSlash(Order = 0, Name = "element", Description = "el", Required = true, Type = ApplicationCommandOptionType.String)]
         [ActionParameterOptionString(Name = "Venus", Order = 1, Value = "Venus")]
         [ActionParameterOptionString(Name = "Mars", Order = 1, Value = "Mars")]
-        [ActionParameterOptionString(Name = "Windy Boi", Order = 3, Value = "Jupiter")]
+        [ActionParameterOptionString(Name = "Jupitery", Order = 3, Value = "Jupiter")]
         [ActionParameterOptionString(Name = "Mercury", Order = 4, Value = "Mercury")]
         [ActionParameterOptionString(Name = "Exathi", Order = 0, Value = "none")]
         [ActionParameterComponent(Order = 0, Name = "element", Description = "Element", Required = true)]
