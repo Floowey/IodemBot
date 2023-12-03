@@ -31,6 +31,11 @@ namespace IodemBot.Core.UserManagement
         {
             //_persistentStorage = new PersistentStorage<UserAccount>();
             PersistentStorage = new UserDataFileStorage();
+            ResetLeaderBoards();
+        }
+
+        public static void AddLeaderBoards()
+        {
             foreach (var rank in new[] { RankEnum.Solo, RankEnum.Duo, RankEnum.Trio, RankEnum.Quad })
                 foreach (var mode in new[] { EndlessMode.Default, EndlessMode.Legacy })
                     LeaderBoards.Add(new Tuple<RankEnum, EndlessMode>(rank, mode),
@@ -51,7 +56,9 @@ namespace IodemBot.Core.UserManagement
             LeaderBoards.Add(new Tuple<RankEnum, EndlessMode>(RankEnum.Month, EndlessMode.Default),
                 new LeaderBoard(u => (ulong)(u.DailyXP.Where(kv => kv.Key >= CurrentMonth).Select(kv => (decimal)kv.Value).Sum()))
             );
-
+        }
+        public static void FillLeaderBoards()
+        {
             foreach (var user in GetAllUsers())
             {
                 if (user == null)
@@ -64,10 +71,17 @@ namespace IodemBot.Core.UserManagement
             }
         }
 
+        public static void ResetLeaderBoards()
+        {
+            LeaderBoards.Clear();
+            AddLeaderBoards();
+            FillLeaderBoards();
+        }
         public static LeaderBoard GetLeaderBoard(RankEnum type = RankEnum.AllTime, EndlessMode mode = EndlessMode.Default)
         {
             if (type == RankEnum.AllTime || type == RankEnum.Week || type == RankEnum.Month) mode = EndlessMode.Default;
             var lb = LeaderBoards[new Tuple<RankEnum, EndlessMode>(type, mode)];
+
             lb.Sort();
             return lb;
         }

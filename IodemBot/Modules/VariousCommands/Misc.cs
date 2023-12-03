@@ -284,8 +284,26 @@ namespace IodemBot.Modules
                 return;
 
             var topAccounts = UserAccounts.GetTop(type);
+
+
+            // Check Integrity of the leaderboard.
+            var topAccountsWeek = topAccounts.Select(u => u.DailyXP
+                           .Where(kv => kv.Key.Year == DateTime.Now.Year &&
+                           UserAccountProvider.cal.GetWeekOfYear(kv.Key, CalendarWeekRule.FirstDay, DayOfWeek.Monday) == UserAccountProvider.cal.GetWeekOfYear(DateTime.Now, CalendarWeekRule.FirstDay, DayOfWeek.Monday))
+                           .Select(kv => (decimal)kv.Value).Sum());
+
+            var topAccountsMonth = topAccounts.Select(u => u.DailyXP.Where(kv => kv.Key >= UserAccountProvider.CurrentMonth).Select(kv => (decimal)kv.Value).Sum());
+    
+            if(topAccountsWeek.ToList().Contains(0) || topAccountsMonth.ToList().Contains(0)){
+                Console.WriteLine("Found zeros in monthly or weekly leaderboared. Resetting.");
+                UserAccountProvider.ResetLeaderBoards();
+                topAccounts = UserAccounts.GetTop(type);
+            }
+
             var embed = new EmbedBuilder();
             embed.WithColor(Colors.Get("Iodem"));
+
+
             string[] emotes = { "🥇", "🥈", "🥈", "🥉", "🥉", "🥉", "   ", "   ", "   ", "   " };
             var builder = new StringBuilder();
             for (var i = 0; i < Math.Min(topAccounts.Count, 10); i++)
