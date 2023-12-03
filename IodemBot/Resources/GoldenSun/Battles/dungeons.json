@@ -212,7 +212,7 @@
     },
     "Matchups": [
       {
-        "Flavourtext": "Welcome to the marvelous world of Weyard, aspiring Adept. I will introduce you to the setting of Golden Sun and how the mechanics are going to work. If you want to take your time while doing this, you can react with :pause_button: to stop a battle from automatically going forward. To continue, use 'Attack'.",
+        "Flavourtext": "Oh Adept, what happened to you? It was deliberate, you say? Well then. It will only take one moment before you are ready again.",
         "EnemyNames": [
           "Next"
         ],
@@ -452,7 +452,7 @@
         ]
       },
       {
-        "Flavourtext": "You took your oaths.",
+        "Flavourtext": "Very well, so that's your choice!",
         "EnemyNames": [
           "Next"
         ],
@@ -646,7 +646,7 @@
               ],
               "Tag": "TutorialItem",
               "Obtainable": 3,
-              "Item": "Elven Ring"
+              "Item": "Fairy Ring"
             }
           ]
         ]
@@ -9668,7 +9668,7 @@
         ]
       },
       {
-        "Flavourtext": "You walk closer on your own pace. You watch the farmer heft a four-pronged pitchfork. It looks clumsy, but it's enough to scare off the bear. 'Thanks for nothing!', he shouts at you. Still, he invites you in and serves you a hearty plate of roast mutton with vegetables. As you're eating, a scraggly-looking fox approaches the cottage. The farmer again grabs his pitchfork. 'Varmint,' he grumbles. As you take in the scene, you spot the bright eyes of fox pups peering out of the undergrowth.",
+        "Flavourtext": "You walk closer at your own pace. You watch the farmer heft a four-pronged pitchfork. It looks clumsy, but it's enough to scare off the bear. 'Thanks for nothing!', he shouts at you. Still, he invites you in and serves you a hearty plate of roast mutton with vegetables. As you're eating, a scraggly-looking fox approaches the cottage. The farmer again grabs his pitchfork. 'Varmint,' he grumbles. As you take in the scene, you spot the bright eyes of fox pups peering out of the undergrowth.",
         "EnemyNames": [
           "Choice:Feed Fox|KilledBy:Player@401",
           "Choice:Scare off Fox|KilledBy:Player@320"
@@ -9764,7 +9764,7 @@
         ]
       },
       {
-        "Flavourtext": "When you decline, the lord loses his temper. 'Guards!' he cries. 'Seize this ingrate!' His men immediately draw their weapons against you.",
+        "Flavourtext": "When you decline, the lord loses his temper. 'Guards!', he cries. 'Seize this ingrate!' His men immediately draw their weapons against you.",
         "EnemyNames": [
           "Tolbi Guard:Guard|Boost:180",
           "Tolbi Guard:Guard|Boost:180",
@@ -9788,7 +9788,7 @@
         ]
       },
       {
-        "Flavourtext": "Following the itch of battle and treasure, you make your way into the nearby woods. The chopping of the lumberjacks beckons you forward. But as you draw closer, a sudden howl is answered by another, and another. It dawns on you that a pack of hungry wolves has surrounded you.",
+        "Flavourtext": "Following the itch for battle and treasure, you make your way into the nearby woods. The chopping of the lumberjacks beckons you forward. But as you draw closer, a sudden howl is answered by another, and another. It dawns on you that a pack of hungry wolves has surrounded you.",
         "EnemyNames": [
           "White Wolf:Hungry Wolf|Boost:125",
           "White Wolf:Hungry Wolf|Boost:125",
@@ -9813,7 +9813,7 @@
         ]
       },
       {
-        "Flavourtext": "After knocking out the noble's guards, you escape and head into the woods. You aim to stop the needless destruction of the forest for personal profit. You arrive in the glade where the lumberjacks are camped out, and call for them to stop. They do, but only at the shout of a guard in magically glowing armor. They surround you on all sides, brandishing their woodcutting axes. They look hungry and pitifully armed, but they also look serious about trying to hurt you. The guard, perhaps the only skilled combatent among them, orders the attack.",
+        "Flavourtext": "After knocking out the noble's guards, you escape and head into the woods. You aim to stop the needless destruction of the forest for personal profit. You arrive in the glade where the lumberjacks are camped out, and call for them to stop. They do, but only at the shout of a guard in magically glowing armor. They surround you on all sides, brandishing their woodcutting axes. They look hungry and pitifully armed, but they also look serious about trying to hurt you. The guard, perhaps the only skilled combatant among them, orders the attack.",
         "EnemyNames": [
           "Bulky Bugman:Lumberjack|Runner:0|KilledBy:Player@990",
           "Bulky Bugman:Lumberjack|Runner:1|KilledBy:Player@990",
@@ -10578,7 +10578,7 @@
         ]
       },
       {
-        "Flavourtext": "Leo, the noblest of the Zodiac signs. Its visage is akin the sun. Only flame can sate the lion's hunger.'",
+        "Flavourtext": "Leo, the noblest of the Zodiac signs. Its visage is akin to the sun. Only flame can sate the lion's hunger.'",
         "EnemyNames": [
           "TiamatSummon:Leo|ImmuneTo:Venus:Jupiter:Mercury:None"
         ],
@@ -10689,7 +10689,7 @@
         ]
       },
       {
-        "Flavourtext": "Hama chuckles gently. 'You thought you were really clever there, right? But no, I'm afraid Aquarius does not even get its power from Mercury. In fact Jupiter is Aquarius' Master.'",
+        "Flavourtext": "Hama chuckles gently. 'You thought you were really clever there, right? But no, I'm afraid Aquarius does not even get its power from Mercury. In fact, Jupiter is Aquarius' Master.'",
         "EnemyNames": [
           "Poseidon:Aquarius"
         ],
@@ -10852,7 +10852,7 @@
         ]
       },
       {
-        "Flavourtext": "Taurus? No. It's hot headed, that's for sure, but as it stampedes over vast prairies, Venus gives it its strength.'",
+        "Flavourtext": "Taurus? No. It's hot-headed, that's for sure, but as it stampedes over vast prairies, Venus gives it its strength.'",
         "EnemyNames": [
           "ZaganSummon:Taurus"
         ],
@@ -10894,7 +10894,7 @@
         ]
       },
       {
-        "Flavourtext": "Hama pauses after you answer correctly for the third time in a row. 'Hmm... Typically quick wit and wisdom are neither of Mars' strong suites. I am impressed.' The statues of the Mars signs glow deep crimson, and forms coelesce in front of you. 'Seems they want to test your purity,' she opines cautiously.",
+        "Flavourtext": "Hama pauses after you answer correctly for the third time in a row. 'Hmm... Typically quick wit and wisdom are neither of Mars' strong suits. I am impressed.' The statues of the Mars signs glow deep crimson, and forms coalesce in front of you. 'Seems they want to test your purity,' she opines cautiously.",
         "EnemyNames": [
           "TiamatSummon:Leo|ImmuneTo:Venus:Jupiter:Mercury:None",
           "Mars Djinni 6:Aries|ImmuneTo:Mars",
@@ -11516,7 +11516,7 @@
         ]
       },
       {
-        "Flavourtext": "Hama's voice finally pierces through your awe. 'We will try to make contact with Anemos. For the ritual, we need to put the right totem on the right altar. If you prove yourself worthy to the elementals, they might give you a clue. But beware, they speak in riddles and are quite mischievous.'  She hands you a heavy bag. Inside are carved stone idols shaped like symbols of various Jupiter-aligned forces.  ",
+        "Flavourtext": "Hama's voice finally pierces through your awe. 'We will try to make contact with Anemos. For the ritual, we need to put the right totem on the right altar. If you prove yourself worthy to the elementals, they might give you a clue. But beware, they speak in riddles and are quite mischievous.'  She hands you a heavy bag. Inside are carved stone idols shaped like symbols of various Jupiter-aligned forces.",
         "EnemyNames": [
           "Choice:Altars|KilledBy:Player@100",
           "Choice:Elementals|KilledBy:Player@200"
@@ -11626,7 +11626,7 @@
         ]
       },
       {
-        "Flavourtext": "You approach the altar on the south point of the crater. Which idol do you put on its pedestal?",
+        "Flavourtext": "You approach the altar at the south point of the crater. Which idol do you put on its pedestal?",
         "EnemyNames": [
           "Choice:Fang Idol",
           "Choice:Mind Idol|KilledBy:Player@-10",
@@ -11818,7 +11818,7 @@
         ]
       },
       {
-        "Flavourtext": "After placing the last idol, the ritual is seemingly complete. You turn around to see the the results...",
+        "Flavourtext": "After placing the last idol, the ritual is seemingly complete. You turn around to see the results...",
         "EnemyNames": [
           "Next"
         ],
@@ -11970,7 +11970,7 @@
         ]
       },
       {
-        "Flavourtext": "Thor charges into battle, hurling his trusty hammer Mjolnir before him. You just barely dodge the opening salvo as it sizzles by, returning to Thor's hand, and the battle begins in earnest.  As lightning strikes the massive hammer, it crackles around Thor ominously.  ",
+        "Flavourtext": "Thor charges into battle, hurling his trusty hammer Mjolnir before him. You just barely dodge the opening salvo as it sizzles by, returning to Thor's hand, and the battle begins in earnest.  As lightning strikes the massive hammer, it crackles around Thor ominously.",
         "EnemyNames": [
           "ThorSummon|VIP|ImmuneTo:Venus",
           "Mjolnir"
@@ -12511,7 +12511,7 @@
     },
     "Matchups": [
       {
-        "Flavourtext": "Hama nods to you as you arrive. 'Good, you're here. We don't have much time. A massive ice storm has formed near Tundaria. It's rushing north and growing in size and power. It will flood and freeze all of Weyard, starting with Mikasalla, unless it is stopped.' She holds out her hand. You take it, and are abruptly somewhere much colder... Shivering, Hama wishes you luck and safe travels, and tells you she'll be watching for if you need her. Then she is gone.",
+        "Flavourtext": "Hama nods to you as you arrive. 'Good, you're here. We don't have much time. A massive ice storm has formed near Tundaria. It's rushing north and growing in size and power. It will flood and freeze all of Weyard, starting with Mikasalla, unless it is stopped.' She holds out her hand. You take it, and are abruptly somewhere much colder... Shivering, Hama wishes you luck and safe travels, and tells you she'll be watching for you if you need her. Then she is gone.",
         "EnemyNames": [
           "NextHama"
         ],
@@ -12834,7 +12834,7 @@
         ]
       },
       {
-        "Flavourtext": "Having defeated Boreas, you explain the situation to him. He apologizes for the misunderstanding, and tells you he was attacked by a powerful dark shadow. He fought off the entity, but was gravely wounded and unable to rule his subjects. With a gesture from his hand, the creatures of ice and water disperse, ending the powerful ice storm. 'Thou has proven thyself a master of Mercury, young Adept. Call upon me when thy need is great, and I will freeze thine enemies solid.' You look upon the devastation wrought across Tundaria by the storm, and know you have gained a powerful ally. ",
+        "Flavourtext": "Having defeated Boreas, you explain the situation to him. He apologizes for the misunderstanding, and tells you he was attacked by a powerful dark shadow. He fought off the entity, but was gravely wounded and unable to rule his subjects. With a gesture from his hand, the creatures of ice and water disperse, ending the powerful ice storm. 'Thou has proven thyself a master of Mercury, young Adept. Call upon me when thy need is great, and I will freeze thine enemies solid.' You look upon the devastation wrought across Tundaria by the storm, and know you have gained a powerful ally.",
         "EnemyNames": [
           "End"
         ],
@@ -13555,7 +13555,7 @@
   "A Very Golden Christmas": {
     "name": "A Very Golden Christmas",
     "IsOneTimeOnly": true,
-    "FlavourText": "A wintertime celebration in a far away land. Join the festivities!\n(Event dungeon, available until <t:1641510000>)",
+    "FlavourText": "A wintertime celebration in a far away land. Join the festivities!\n(Event dungeon, available until <t:1704538800>)",
     "Image": "https://cdn.discordapp.com/attachments/668442573899300897/925098257372307456/goldensun_xmascard2021900px.png",
     "IsDefault": false,
     "Matchups": [
@@ -13955,7 +13955,7 @@
         ]
       },
       {
-        "Flavourtext": "With a loud squawk, Chiwen flops onto the shore, its body crackling with flames.'Hey you!' it barks. 'You wanna simmer a bit with me in pool? No? Unacceptable. Fight it is.' You're not sure what to make of this quirky creature, but it's clear that a battle is about to ensue.",
+        "Flavourtext": "With a loud squawk, Chiwen flops onto the shore, its body crackling with flames. 'Hey you!' it barks. 'You wanna simmer a bit with me in pool? No? Unacceptable. Fight it is.' You're not sure what to make of this quirky creature, but it's clear that a battle is about to ensue.",
         "EnemyNames": [
           "ChiwenSummon"
         ],
