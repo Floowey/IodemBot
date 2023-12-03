@@ -237,6 +237,7 @@
       {
         "name": "Guard",
         "movepool": [
+          "Flare",
           "Fireball",
           "Guard",
           "Impair"
@@ -253,6 +254,7 @@
         "name": "Soldier",
         "movepool": [
           "Heat Wave",
+          "Flare Wall",
           "Fire Orb",
           "Guard",
           "Impair"
@@ -269,6 +271,7 @@
         "name": "Warrior",
         "movepool": [
           "Heat Wave",
+          "Flare Storm",
           "Fire Orb",
           "Guard",
           "Protect",
@@ -286,6 +289,7 @@
         "name": "Champion",
         "movepool": [
           "Liquifier",
+          "Flare Storm",
           "Inferno",
           "Guard",
           "Protect",
@@ -304,6 +308,7 @@
         "name": "Hero",
         "movepool": [
           "Liquifier",
+          "Flare Storm",
           "Inferno",
           "Guard",
           "Protect",
