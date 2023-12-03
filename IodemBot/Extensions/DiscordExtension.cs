@@ -20,6 +20,7 @@ namespace IodemBot.Extensions
 
             return guild.Users.FirstOrDefault(user =>
                 Regex.IsMatch(user.Username, name, RegexOptions.IgnoreCase) ||
+                Regex.IsMatch(user.GlobalName ?? "", name, RegexOptions.IgnoreCase) ||
                 Regex.IsMatch(user.Nickname ?? "", name, RegexOptions.IgnoreCase)
             );
         }

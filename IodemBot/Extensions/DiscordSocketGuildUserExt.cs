@@ -6,7 +6,7 @@ namespace IodemBot.Extensions
     {
         public static string DisplayName(this SocketGuildUser user)
         {
-            return user.Nickname ?? user.Username;
+            return user.Nickname ?? user.GlobalName ?? user.Username;
         }
     }
 }
