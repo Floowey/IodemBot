@@ -114,7 +114,6 @@ namespace IodemBot.Core.UserManagement
                          select a;
 
             var account = result.FirstOrDefault() ?? CreateUserAccount(id);
-
             return account;
         }
 
