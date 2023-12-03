@@ -8,8 +8,8 @@ namespace IodemBot.Modules.GoldenSunMechanics
         {
             return user.BattleStats.DamageTanked switch
             {
-                >= 250000 => 2,
-                >= 75000 => 1,
+                >= 150000 => 2,
+                >= 40000 => 1,
                 _ => 0
             };
         }

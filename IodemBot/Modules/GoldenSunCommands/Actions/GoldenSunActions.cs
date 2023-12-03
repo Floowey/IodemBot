@@ -111,10 +111,13 @@ namespace IodemBot.Modules
                         .AddField("Colosso wins | Dungeon Wins", $"{account.ServerStats.ColossoWins} | {account.ServerStats.DungeonsCompleted}", true)
                         .AddField("Endless Streaks", $"Solo: {account.ServerStats.EndlessStreak.Solo} | Duo: {account.ServerStats.EndlessStreak.Duo} \nTrio: {account.ServerStats.EndlessStreak.Trio} | Quad: {account.ServerStats.EndlessStreak.Quad}", true)
                         .AddField("Damage Dealt", account.BattleStats.DamageDealt, true)
-                        .AddField("HP Healed", account.BattleStats.HPhealed, true)
                         .AddField("Highest Damage", account.BattleStats.HighestDamage, true)
+                        .AddField("Damage Tanked", account.BattleStats.DamageTanked, true)
+                        .AddField("HP Healed", account.BattleStats.HPhealed, true)
+                        .AddField("PP Used", account.BattleStats.PPUsed, true)
                         .AddField("Revives", account.BattleStats.Revives, true)
                         .AddField("Kills by Hand", account.BattleStats.KillsByHand, true)
+                        .AddField("Item Activations", account.BattleStats.ItemActivations, true)
                         .AddField("Bad Luck", account.DjinnBadLuck, true);
                     break;
 
