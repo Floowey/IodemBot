@@ -204,7 +204,6 @@ namespace IodemBot.Core.UserManagement
 
             BonusClasses.RemoveAll(c => ArchsToRemove.Contains(AdeptClassSeriesManager.AllClasses.First(cl => cl.Name == c).Archtype));
             Dungeons.Clear();
-            Dungeons.Add("Reawakening");
             Loadouts.LoadoutsList.Clear();
             Preferences.AutoSell.Clear();
             Oaths.ActiveOaths.Clear();
@@ -215,17 +214,27 @@ namespace IodemBot.Core.UserManagement
             BattleStats = new BattleStats();
             ServerStats = new ServerStats();
             LastReset = DateTime.Now;
+
             Tags.RemoveAll(t => !t.Contains("Halloween20") || !t.Contains("Christmas21"));
-            Tags.Add("TutorialCompleted");
             Tags.Add($"{Element}Adept");
             Tags.Add(ClassSeries.Archtype.ToString());
-            Tags.Add($"HasReset");
-            if (Oaths.GetOathCompletion(Oath.Warrior) == OathCompletion.SolitudeCompletion)
-                Tags.Add("WarriorGear");
-            if (Oaths.GetOathCompletion(Oath.Mage) == OathCompletion.SolitudeCompletion)
-                Tags.Add("MageGear");
-            if (Oaths.GetOathCompletion(Oath.Turtle) >= OathCompletion.Completed)
-                Tags.Add("ElvenGear");
+            
+            if (Tags.Contains("HasReset") || Tags.Contains("VenusLHCompleted"))
+            {
+                Tags.Add($"HasReset");
+                Dungeons.Add("Reawakening");
+                Tags.Add("TutorialCompleted");
+                if (Oaths.GetOathCompletion(Oath.Warrior) == OathCompletion.SolitudeCompletion)
+                    Tags.Add("WarriorGear");
+                if (Oaths.GetOathCompletion(Oath.Mage) == OathCompletion.SolitudeCompletion)
+                    Tags.Add("MageGear");
+                if (Oaths.GetOathCompletion(Oath.Turtle) >= OathCompletion.Completed)
+                    Tags.Add("ElvenGear");
+            }
+            else
+            {
+                Dungeons.Add("Tutorial");
+            }
 
             NewGames++;
         }

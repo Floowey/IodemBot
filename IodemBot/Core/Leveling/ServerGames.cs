@@ -215,7 +215,7 @@ namespace IodemBot.Core.Leveling
                 }
             }
 
-            if (dungeon.Name.EndsWith(" I"))
+            if (dungeon.Name.EndsWith(" I")) // IV
             {
                 var el = avatar.Element;
                 var unlockedPassives = Passives.AllPassives.Except(avatar.Passives.UnlockedPassives).Where(p => p.elements.Contains(el)).ToList();
