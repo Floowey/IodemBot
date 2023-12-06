@@ -11684,7 +11684,7 @@
   "ChiwenSummon": {
     "movepool": [ "Fireball", "Inferno", "Dragon Cloud", "Drench", "Deluge", "Froth Sphere", "Avoid" ],
     "name": "Chiwen",
-    "imgurl": "https://cdn.discordapp.com/attachments/497696510688100352/665884933943984130/Flora.gif",
+    "imgurl": "https://upload.wikimedia.org/wikipedia/commons/f/f7/Nagoya_Castle_Golden_Shachi-Hoko_Statue01.jpg",
     "stats": {
       "maxhp": 1400,
       "maxpp": 450,
@@ -11693,12 +11693,12 @@
       "spd": 277
     },
     "elstats": {
-      "venusres": 193,
-      "mercuryres": 25,
-      "marsres": 55,
-      "jupiterres": 193,
-      "venusatk": 120,
-      "jupiteratk": 120
+      "venusres": 43,
+      "mercuryres": 125,
+      "marsres": 155,
+      "jupiterres": 73,
+      "marsatk": 120,
+      "mercuryatk": 120
     },
     "extraturns": 0
   },

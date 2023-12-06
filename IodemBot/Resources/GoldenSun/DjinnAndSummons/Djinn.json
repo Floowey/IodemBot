@@ -247,7 +247,7 @@
           "Multiplier": 1.25
         },
         {
-          "Type": "Avoid",
+          "Type": "Avoid"
         }  
       ]
     },

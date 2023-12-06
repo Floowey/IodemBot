@@ -111,7 +111,7 @@ namespace IodemBot.Core.Leveling
             if (bs.ItemActivations >= 10)
                 await GoldenSunCommands.AwardClassSeries("Prospector Series", userAccount, channel);
 
-            if (bs.HighestDamage >= 300)
+            if (bs.HighestDamage >= 500)
                 await GoldenSunCommands.AwardClassSeries("Tribalist Series", userAccount, channel);
 
             if (bs.PPUsed >= 1000)

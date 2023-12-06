@@ -6,7 +6,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
     {
         public int Apply(UserAccount user)
         {
-            return user.BattleStats.HighestDamage >= 900 ? 2 : user.BattleStats.HighestDamage >= 600 ? 1 : 0;
+            return user.BattleStats.HighestDamage >= 1500 ? 2 : user.BattleStats.HighestDamage >= 1000 ? 1 : 0;
         }
     }
 }

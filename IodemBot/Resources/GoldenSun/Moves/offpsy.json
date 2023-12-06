@@ -3259,7 +3259,8 @@
       {
         "Type": "Stat",
         "Stat": "Attack",
-        "Multiplier": 1.1
+        "Multiplier": 1.1,
+        "OnTarget": false
       }
     ]
   },
