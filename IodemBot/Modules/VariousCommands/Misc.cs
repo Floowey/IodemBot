@@ -456,7 +456,7 @@ namespace IodemBot.Modules
 
         [Command("giveRole")]
         [Cooldown(60)]
-        [Summary("Give or remove the `Gladiator` or `Colosso Adept` role")]
+        [Summary("Give or remove the `Gladiator`, `Fighter`, `Colosso Enthusiast` or `Colosso Adept` role")]
         public async Task GiveRole([Remainder] string roleName = "")
         {
             var user = (SocketGuildUser)Context.User;
@@ -466,7 +466,8 @@ namespace IodemBot.Modules
             {
                 {"Gladiator", 511704880122036234},
                 {"Colosso Adept", 644506247521107969},
-                {"Fighter", GuildSettings.GetGuildSettings(Context.Guild).FighterRole.Id}
+                {"Fighter", GuildSettings.GetGuildSettings(Context.Guild).FighterRole.Id},
+                {"Colosso Enthusiast", 1145281972906754048}
             };
 
             if (roleName.Equals("Gladiator", StringComparison.CurrentCultureIgnoreCase) &&
