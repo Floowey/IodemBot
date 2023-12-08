@@ -117,6 +117,9 @@ namespace IodemBot.Core.Leveling
             if (bs.PPUsed >= 1000)
                 await GoldenSunCommands.AwardClassSeries("Fakir Series", userAccount, channel);
 
+            if (bs.DamageTanked >= 10000)
+                await GoldenSunCommands.AwardClassSeries("Toa Series", userAccount, channel);
+
             if (bs.Revives >= 25) await GoldenSunCommands.AwardClassSeries("Medium Series", userAccount, channel);
         }
 
