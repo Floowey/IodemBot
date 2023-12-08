@@ -233,7 +233,7 @@ namespace IodemBot.Core.Leveling
                         $"{string.Join("\n", unlockedPassives.Select(p => $"{p.Name} ({Passives.GetPassiveLevel(p, avatar.Oaths)})"))}");
                 }
 
-                var PassiveLevelsAfter = avatar.Passives.UnlockedPassives.Select(p => Passives.GetPassiveLevel(p, avatar.Oaths)).ToArray();
+                var PassiveLevelsAfter = passivesBefore.Select(p => Passives.GetPassiveLevel(p, avatar.Oaths)).ToArray();
                 if (!Enumerable.SequenceEqual(PassiveLevelsBefore, PassiveLevelsAfter))
                 {
                     StringBuilder msg = new();
@@ -244,7 +244,8 @@ namespace IodemBot.Core.Leveling
                             msg.Append($"{passivesBefore[i].Name} ({PassiveLevelsBefore[i]}) -> ({PassiveLevelsAfter[i]})");
                         }
                     }
-                    embed.AddField("Passives Upgraded!", msg);
+                    if(msg.Length > 0)
+                        embed.AddField("Passives Upgraded!", msg);
                 }
                 if (embed.Fields.Any() || !embed.Description.IsNullOrEmpty())
                 {
