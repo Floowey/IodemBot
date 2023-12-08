@@ -35,6 +35,8 @@ namespace IodemBot.Core.UserManagement
         public string ClassSeries { get; set; } = "";
         public List<string> Gear { get; set; } = new();
         public List<string> Djinn { get; set; } = new();
+        public string Passive {get;set;} = "";
+
 
         public static Loadout GetLoadout(UserAccount account)
         {
@@ -46,6 +48,7 @@ namespace IodemBot.Core.UserManagement
             var classSeries = account.ClassSeries;
             l.ClassSeries = account.ClassSeries.Name;
             l.Gear = account.Inv.GetGear(classSeries.Archtype).OrderBy(i => i.ItemType).Select(i => i.Name).ToList();
+            l.Passive = account.Passives.SelectedPassive;
             return l;
         }
 
@@ -55,6 +58,7 @@ namespace IodemBot.Core.UserManagement
             GoldenSunCommands.SetClass(account, ClassSeries);
             Gear.ForEach(i => inv.Equip(i, account.ClassSeries.Archtype));
             DjinnCommands.TakeDjinn(account, Djinn.ToArray());
+            account.Passives.SelectedPassive = Passive;
         }
     }
 }

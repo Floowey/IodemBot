@@ -49,20 +49,25 @@ namespace IodemBot.Modules
             curLoadout.LoadoutName = "Current Loadout";
             var curitems = curLoadout.Gear.Count > 0 ? string.Join("", curLoadout.Gear.Select(i => account.Inv.GetItem(i)?.Icon ?? "-")) : "no gear";
             var curdjinn = curLoadout.Djinn.Count > 0 ? string.Join("", curLoadout.Djinn.Select(d => account.DjinnPocket.GetDjinn(d)?.Emote ?? "-")) : "no Djinn";
+            var curpassive = curLoadout.Passive.IsNullOrEmpty() ? "-" : curLoadout.Passive;
             builder.AddField(curLoadout.LoadoutName,
                 $"{Emotes.GetIcon(curLoadout.Element)} {curLoadout.ClassSeries}\n" +
                 $"{curitems}\n" +
-                $"{curdjinn}"
+                $"{curdjinn}\n" +
+                $"{curpassive}"
                 , inline: false);
 
             foreach (var loadout in account.Loadouts.LoadoutsList)
             {
                 var items = loadout.Gear.Count > 0 ? string.Join("", loadout.Gear.Select(i => account.Inv.GetItem(i)?.Icon ?? "-")) : "no gear";
                 var djinn = loadout.Djinn.Count > 0 ? string.Join("", loadout.Djinn.Select(d => account.DjinnPocket.GetDjinn(d)?.Emote ?? "-")) : "no Djinn";
+                var passive = curLoadout.Passive.IsNullOrEmpty() ? "-" : loadout.Passive;
+            
                 builder.AddField(loadout.LoadoutName,
                     $"{Emotes.GetIcon(loadout.Element)} {loadout.ClassSeries}\n" +
                     $"{items}\n" +
-                    $"{djinn}"
+                    $"{djinn}\n" +
+                    $"{passive}"
                     , inline: true);
             }
 

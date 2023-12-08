@@ -2274,8 +2274,7 @@
     "emote": ":wolf:",
     "range": 5,
     "element": 4,
-    "PPCost": 0,
-    "dmgMult": 0.8
+    "PPCost": 0
   },
   "Rampage_2": {
     "name": "Rampage",
