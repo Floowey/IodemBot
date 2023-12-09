@@ -223,6 +223,7 @@ namespace IodemBot.ColossoBattles
                 .ForEach(d => d.Reset());
 
             foreach (var k in PlayerMessages.Keys) _ = k.DeleteAsync();
+            
             Factory.Djinn.Clear();
             Factory.Summons.Clear();
             PlayerMessages.Clear();
@@ -267,8 +268,8 @@ namespace IodemBot.ColossoBattles
 
             SetNextEnemy();
 
-            if (AutoTurn != null) AutoTurn.Dispose();
-            if (ResetIfNotActive != null) ResetIfNotActive.Dispose();
+            AutoTurn?.Dispose();
+            ResetIfNotActive?.Dispose();
             AutoTurn = new Timer
             {
                 Interval = 45000,

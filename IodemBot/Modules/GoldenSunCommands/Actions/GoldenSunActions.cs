@@ -455,7 +455,7 @@ namespace IodemBot.Modules
                             ? "-" 
                             : account.Passives.SelectedPassive + $" (Level {account.Passives.GetPassiveLevel(account.Oaths) +1})" + "\n" + $"*{account.Passives.GetSelectedPassive().Description}*" ;
             embed.AddField("Selected Passive Initiative", $"{passiveDesc}", true);
-            embed.AddField("Passive Initiatives?", "*Impulses are passives that do something on Turn 1. They get unlocked upgraded by completing Path of Element IV in combination with oaths.*");
+            embed.AddField("Passive Initiatives?", "*Passive Initiatives are abilities that activate at the start of every battle. They get unlocked by completing the Elemental Path IV's and upgrade through the elemental oaths.*");
 
             var cs = ServiceProvider.GetRequiredService<CompassService>();
             embed.WithThumbnailUrl(await cs.GetCompass(account));
