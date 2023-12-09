@@ -205,8 +205,15 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 else
                 {
                     userAccount.Tags.Add(Tag);
-                    if (Tag.StartsWith("Oath"))
-                        userAccount.Oaths.ActiveOaths.Add(Enum.Parse<Oath>(Tag[4..]));
+                    if (Tag.StartsWith("Oath")){
+                        var o = Enum.Parse<Oath>(Tag[4..]);
+                        if(OathList.ElementOaths.Contains(o))
+                            userAccount.Oaths.ActiveOaths = userAccount.Oaths.ActiveOaths.Except(OathList.ElementOaths).ToList();
+                        if(OathList.ArchtypeOaths.Contains(o))
+                            userAccount.Oaths.ActiveOaths = userAccount.Oaths.ActiveOaths.Except(OathList.ArchtypeOaths).ToList();
+
+                        userAccount.Oaths.ActiveOaths.Add(o);
+                    }
                 }
             }
             return string.Join("\n", awardLog);

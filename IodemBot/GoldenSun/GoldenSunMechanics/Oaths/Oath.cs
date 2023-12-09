@@ -18,6 +18,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
     public class OathList
     {
         public static readonly List<Oath> ElementOaths = new() { Oath.Venus, Oath.Mars, Oath.Jupiter, Oath.Mercury };
+        public static readonly List<Oath> ArchtypeOaths = new() { Oath.Mage, Oath.Warrior };
         public static readonly List<Oath> OathsWithArticle = new() { Oath.Turtle, Oath.Warrior, Oath.Mage, Oath.Dispirited };
 
         [JsonProperty(ItemConverterType = typeof(StringEnumConverter))]

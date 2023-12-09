@@ -145,6 +145,7 @@ namespace IodemBot.ColossoBattles
                 if (reaction.Emote.Name == "⏸️")
                 {
                     AutoTurn.Stop();
+                    Console.WriteLine($"{Name} was paused.");
                     return;
                 }
 
