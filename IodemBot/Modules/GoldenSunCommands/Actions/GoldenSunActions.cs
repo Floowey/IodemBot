@@ -186,7 +186,7 @@ namespace IodemBot.Modules
         [ActionParameterComponent(Order = 1, Name = "class", Description = "class", Required = false)]
         public string SelectedClass { get; set; }
 
-        [ActionParameterComponent(Order = 1, Name = "Passive Initiatives", Description = "Passive Initiatives", Required = false)]
+        [ActionParameterComponent(Order = 1, Name = "Passive Initiative", Description = "Passive Initiative", Required = false)]
         public string SelectedPassive { get; set; }
 
         public override bool GuildsOnly => true;
@@ -449,10 +449,13 @@ namespace IodemBot.Modules
             embed.WithColor(Colors.Get(account.Element.ToString()));
             embed.AddField("Current Class", AdeptClassSeriesManager.GetClass(account).Name);
             embed.AddField($"Available as {Emotes.GetIcon(account.Element)} {account.Element} Adept:", string.Join(", ", ofElement));
-            embed.AddField("Others Unlocked:", string.Join(", ", allAvailableClasses.Select(c => c.Name).Except(ofElement).OrderBy(n => n)));
+            embed.AddField("Other classes unlocked:", string.Join(", ", allAvailableClasses.Select(c => c.Name).Except(ofElement).OrderBy(n => n)));
 
-            embed.AddField("Selected Passive Initiatives", $"Passive Initiatives: {account.Passives.SelectedPassive}", true);
-            embed.AddField("*Passive Initiatives?*", "*Impulses are passives that do something on Turn 1. They get unlocked upgraded by completing Path of Element IV in combination with oaths.*");
+            var passiveDesc = account.Passives.SelectedPassive.IsNullOrEmpty() 
+                            ? "-" 
+                            : account.Passives.SelectedPassive + $" (Level {account.Passives.GetPassiveLevel(account.Oaths) +1})" + "\n" + $"*{account.Passives.GetSelectedPassive().Description}*" ;
+            embed.AddField("Selected Passive Initiative", $"{passiveDesc}", true);
+            embed.AddField("Passive Initiatives?", "*Impulses are passives that do something on Turn 1. They get unlocked upgraded by completing Path of Element IV in combination with oaths.*");
 
             var cs = ServiceProvider.GetRequiredService<CompassService>();
             embed.WithThumbnailUrl(await cs.GetCompass(account));

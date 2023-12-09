@@ -241,7 +241,7 @@ namespace IodemBot.Core.Leveling
                     {
                         if (PassiveLevelsBefore[i] != PassiveLevelsAfter[i])
                         {
-                            msg.Append($"{passivesBefore[i].Name} ({PassiveLevelsBefore[i]}) -> ({PassiveLevelsAfter[i]})");
+                            msg.Append($"{passivesBefore[i].Name} ({PassiveLevelsBefore[i] +1}) -> ({PassiveLevelsAfter[i] +1})");
                         }
                     }
                     if(msg.Length > 0)
