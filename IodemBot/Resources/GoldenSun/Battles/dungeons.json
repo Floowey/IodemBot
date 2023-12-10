@@ -5199,7 +5199,7 @@
               ],
               "Tag": "ChiwenQuest1",
               "Obtainable": 1,
-              "Dungeon": "Hot Spring Pond",
+              "Dungeon": "Hot Spring Grotto",
               "message": "You notice one particular water stream being warmer than the others. You follow it, to a cove with steaming pools."
             }
           ]
@@ -13860,7 +13860,7 @@
     "name": "Snow Peak Mountains",
     "IsOneTimeOnly": false,
     "FlavourText": "A mystic aura from this snow capped mountain range draws your attention.",
-    "Image": "https://cdn.discordapp.com/attachments/668443234292334612/733735136469713027/unknown.png",
+    "Image": "https://media.discordapp.net/attachments/668443234292334612/1183391013407039569/Schnee.png",
     "IsDefault": false,
     "Requirement": {
       "TagsRequired": [
@@ -13923,11 +13923,11 @@
       }
     ]
   },
-  "Hot Spring Pond": {
-    "name": "Hot Spring Pond",
+  "Hot Spring Grotto": {
+    "name": "Hot Spring Grotto",
     "IsOneTimeOnly": false,
     "FlavourText": "From the caverns of Altin, you noticed a mysteriously warm stream. Where does it lead?",
-    "Image": "https://cdn.discordapp.com/attachments/668443234292334612/733735136469713027/unknown.png",
+    "Image": "https://cdn.discordapp.com/attachments/668443234292334612/1183425840948719746/vietnamese-traditional-decoration-dragon-art-600nw-1482882695.jpg",
     "IsDefault": false,
     "Requirement": {
       "TagsRequired": [
