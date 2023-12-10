@@ -589,7 +589,7 @@
   "Chiwen": {
     "Move": {
       "Name": "Chiwen",
-      "Emote": "<:Chiwen:1094343797720223754>",
+      "Emote": "<:Chiwen:1183459679523844197>",
       "TargetType": "PartyAll",
       "Element": 4,
       "healPower": 50,
@@ -598,7 +598,7 @@
       "effects": [
         {
           "Type": "Restore",
-          "CureConditions": [ "Poison", "Venom", "DeathCurse", "Delusion" ]
+          "CureConditions": [ "Poison", "Venom", "Haunt", "Seal", "Sleep", "SpiritSeal", "DeathCurse", "Delusion" ]
         }
       ]
     },
@@ -621,21 +621,13 @@
   "Skadi": {
     "Move": {
       "Name": "Skadi",
-      "Emote": "<:Skadi:1094343795488866384>",
+      "Emote": "<:Skadi:1183459698163339294>",
       "TargetType": "EnemyRange",
       "Element": 4,
       "power": 120,
       "percentageDamage": 8,
       "Range": 5,
-      "IgnoreSpread": true,
-      "Effects": [
-
-        {
-          "Type": "Condition",
-          "Condition": "Sleep",
-          "Probability": 30
-        }
-      ]
+      "IgnoreSpread": true
     },
     "Description": "The skiing huntress covers her enemies in snow. This is a custom summon created for the IodemBot Project.",
     "EffectsOnUser": [
@@ -648,6 +640,13 @@
         "Type": "Stat",
         "Stat": "Resistance",
         "Multiplier": 1.2
+      }
+    ],
+    "EffectsOnParty": [
+      {
+        "Type": "Stat",
+        "Stat": "Speed",
+        "Multiplier": 1.5
       }
     ],
     "MercuryNeeded": 1,
