@@ -228,7 +228,7 @@
         ]
       },
       {
-        "Flavourtext": "Before you is a choice, to swear a solemn oath, which tightens the path your new journey will take. Finish Venus Lighthouse to unlock perks and remove handicaps.\n**Oath of *Element***: Complete the Path IV without changing your element.\nPerks: Upgraded impulses. *Note: This changes your objective for all selected Oaths to Path IV*\n**Oath of Warrior/Mage**: You are only able to select classes from the chosen archtypes. You get some fancy starting gear.\nPerks: Warrior/Mage gear on every reset, Warrior/Mage classes remain unlocked\n**Oath of the Oaf**: Your XP Bonus is ignored and your overall XP gain reduced to 25%. This removes minimum level requirements for dungeons.\nRewards: Increase the maximum XP multiplier to x2.5 and x3.0\n**Oath of the Turtle**: You always move last.\nPerks: 10k Coins after reset, Elven gear available on reset\n**Oath of the Dispirited**: Djinn are not available to you in battle. Perks: Higher Shiny Djinn chance. Upon reset, your djinn pocket will be expanded to fit your all your important djinn.\n**Oath of Solitude**: Complete all your battles alone, no teaming up.\nPerks: Better rewards when combined with other Oaths.",
+        "Flavourtext": "Before you is a choice, to swear a solemn oath, which tightens the path your new journey will take. Finish Venus Lighthouse to unlock perks and remove handicaps.\n**Oath of *Element***: You cannot change out of the chosen elements until you complete the respective Path IV.\nReward: Passive levels 2 and (Bonus:) 3. *Note: This changes your objective for all selected Oaths to Path IV*\n**Oath of Warrior/Mage**: You cannot change classes outside the chosen Archtype.\nRewards: Upon starting a new game, don't lose unlocked classes of that Archtype. Bonus: Always have the Gear option available on new game.\n**Oath of the Oaf**:Only receive 25% of the Exp. Your Exp Boost is ignored. This removes minimum level requirements for dungeons.\nIncrease your maximum Exp Boost from x2.0 to x2.5 and (Bonus) x3.0\n**Oath of the Turtle**: You always move last.\nRewards: Elven Gear Option at Reawakening. Bonus: Start with 10.000 Gold\n**Oath of the Dispirited**: You cannot bring Djinn into battle. Rewards: Increased chance of finding shiny djinn. Bonus: upon Reset, your Djinn Pocket will be the minimum size required to hold all your carry overs.\n**Oath of Solitude**: Complete all your battles alone, no teaming up.\nReward: Combined with other oaths, you unlock the Bonus reward.",
         "EnemyNames": [
           "Choice:Oath of Venus|HasTag:VenusAdept|!HasTag:OathVenus|KilledBy:Player@-10",
           "Choice:Remove Oath of Venus|HasTag:OathVenus|KilledBy:Player@-11",
@@ -13859,7 +13859,7 @@
   "Snow Peak Mountains": {
     "name": "Snow Peak Mountains",
     "IsOneTimeOnly": false,
-    "FlavourText": "In the middle of Mogall Forest, a small glade is filled with an aromatic breeze...",
+    "FlavourText": "A mystic aura from this snow capped mountain range draws your attention.",
     "Image": "https://cdn.discordapp.com/attachments/668443234292334612/733735136469713027/unknown.png",
     "IsDefault": false,
     "Requirement": {
@@ -13926,7 +13926,7 @@
   "Hot Spring Pond": {
     "name": "Hot Spring Pond",
     "IsOneTimeOnly": false,
-    "FlavourText": "In the middle of Mogall Forest, a small glade is filled with an aromatic breeze...",
+    "FlavourText": "From the caverns of Altin, you noticed a mysteriously warm stream. Where does it lead?",
     "Image": "https://cdn.discordapp.com/attachments/668443234292334612/733735136469713027/unknown.png",
     "IsDefault": false,
     "Requirement": {

@@ -2847,7 +2847,6 @@
       {
         "name": "Viking",
         "movepool": [
-          "Diamond Dust",
           "Bolt",
           "Ply"
         ],
@@ -2956,15 +2955,15 @@
       "VenusRes": 90,
       "MarsAtk": 65,
       "MarsRes": 65,
-      "JupiterAtk": 140,
-      "JupiterRes": 140,
-      "MercuryAtk": 140,
-      "MercuryRes": 140
+      "JupiterAtk": 130,
+      "JupiterRes": 130,
+      "MercuryAtk": 130,
+      "MercuryRes": 130
     },
     "requirement": "ColossoWins",
     "isDefault": false,
     "archtype": "Warrior",
-    "description": "Seaborn Warriors, powered by Thor's Thunder"
+    "description": "Seaborn Warriors, powered by Thor's Thunder."
   },
   {
     "name": "Hoplite Series",
