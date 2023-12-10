@@ -184,13 +184,14 @@ namespace IodemBot.Core.Leveling
 
             if (avatar.Oaths.ActiveOaths.Any())
             {
-                string dungeonToComplete = avatar.Oaths.IsOathOfElementActive() ? " I" : "Vault";
+                var elementOath = avatar.Oaths.IsOathOfElementActive();
+                var isSolitude = avatar.Oaths.ActiveOaths.Contains(Oath.Solitude);
+                string dungeonToComplete = elementOath ? " I" : "Vault";
                 //string dungeonToComplete = avatar.Oaths.IsOathOfElementActive() ? " IV" : "Venus Lighthouse";
                 if (dungeon.Name.EndsWith(dungeonToComplete))
                 {
                     var oaths = avatar.Oaths.ActiveOaths.ToList();
                     var oafLevel = avatar.Oaths.ActiveOaths.Contains(Oath.Oaf) ? avatar.LevelNumber : 0;
-                    var elementOath = avatar.Oaths.IsOathOfElementActive();
                     try
                     {
                         avatar.Oaths.CompleteOaths();
@@ -206,13 +207,15 @@ namespace IodemBot.Core.Leveling
                     embed.WithDescription($"Hereby {avatar.Name} has ceremoniously fulfilled the following Oaths:\n" +
                         $"{string.Join("\n", oaths.Select(o => $"Oath of {o}"))}");
 
-                    if (oafLevel > 0 && oafLevel <= 50)
+                    if (isSolitude && oafLevel > 0 && oafLevel <= 50){
                         avatar.TrophyCase.Trophies.Add(new Trophy()
                         {
                             Text = $"Awarded for completing Oath of the Oaf by completing {(elementOath ? "Path IV" : "Vault")} at level {oafLevel}.",
                             Icon = elementOath ? "<:Krakden:576856312500060161>" : "<:Nut:548636122402783243>",
                             ObtainedOn = DateTime.Now
                         });
+                    embed.AddField("The Hardest Nut", "You're the toughest nut out there.");
+                    }
 
                     _ = channel.SendMessageAsync(embed: embed.Build());
                 }
