@@ -182,7 +182,7 @@ namespace IodemBot.ColossoBattles
                     .WithTitle(dungeon.Name)
                     .WithDescription(dungeon.FlavourText)
                     .WithThumbnailUrl(dungeon.Image)
-                    .AddField("Info", $"{(dungeon.IsDefault ? "Default " : "")}{(dungeon.IsOneTimeOnly ? "<:dungeonkey:606237382047694919> Dungeon" : "<:mapopen:606236181503410176> Town")} for up to {dungeon.MaxPlayer} {(dungeon.MaxPlayer == 1 ? "player" : "players")}. {dungeon.Matchups.Count} stages.")
+                    .AddField("Info", $"{(dungeon.IsDefault ? "Default " : "")}{(dungeon.IsOneTimeOnly ? "<:dungeonkey:606237382047694919> Dungeon" : "<:mapopen:606236181503410176> Location")} for up to {dungeon.MaxPlayer} {(dungeon.MaxPlayer == 1 ? "player" : "players")}. {dungeon.Matchups.Count} stages.")
                     .AddField("Requirement", $"{dungeon.Requirement.GetDescription()}")
                     .AddField("Djinn", $"{(djinnTotal.Any() ? $"{djinnobtained}/{limittedDjinn.Sum(d => d.Obtainable)}{(unlimittedDjinn.Any() ? "+" : "")} ({probability * 100:N0}% success rate)" : "none")}")
                     .Build());
