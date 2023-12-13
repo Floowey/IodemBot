@@ -81,7 +81,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
 
             var atk = user.Stats.Atk * user.MultiplyBuffs("Attack");
             var def = enemy.Stats.Def * enemy.MultiplyBuffs("Defense") * enemy.IgnoreDefense;
-            var damage = (uint)Global.RandomNumber(0, 4);
+            var damage = (uint)Global.RandomNumber(0, 5);
             if (def < atk) damage = (uint)((atk - def) / 2);
             damage += user.AddDamage;
             damage = (uint)(damage * user.OffensiveMult);

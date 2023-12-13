@@ -33,7 +33,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 return log;
             }
 
-            var baseDmg = Global.RandomNumber(0, 4);
+            var baseDmg = Global.RandomNumber(0, 5);
             var dmg = AttackBased ?
                 Math.Max(0,
                 (user.Stats.Atk * user.MultiplyBuffs("Attack") - target.Stats.Def * target.IgnoreDefense * target.MultiplyBuffs("Defense")) / 2)
@@ -78,7 +78,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             {
                 var counterAtk = target.Stats.Atk * target.MultiplyBuffs("Attack");
                 var counterDef = user.Stats.Def * user.MultiplyBuffs("Defense") * user.IgnoreDefense;
-                uint counterDamage = (uint)Global.RandomNumber(0, 4);
+                uint counterDamage = (uint)Global.RandomNumber(0, 5);
                 if (counterDef < counterAtk)
                 {
                     counterDamage += (uint)((counterAtk - counterDef) * user.DefensiveMult / 2);

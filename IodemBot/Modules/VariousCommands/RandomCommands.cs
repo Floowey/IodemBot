@@ -44,7 +44,7 @@ namespace IodemBot.Modules
         {
             var embed = new EmbedBuilder();
             embed.WithColor(Colors.Get("Iodem"));
-            embed.WithDescription(Global.RandomNumber(0, 1) == 0
+            embed.WithDescription(Global.RandomNumber(0, 2) == 0
                 ? "<:Lucky_Medals:538050800342269973> Heads!"
                 : "<:Gold:537214319591555073> Tails!");
             await Context.Channel.SendMessageAsync("", false, embed.Build());

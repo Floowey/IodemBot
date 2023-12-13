@@ -22,7 +22,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
                 return log;
             }
 
-            if (target.Party.Count > 1 && Global.RandomNumber(1, 100) <= Probability)
+            if (target.Party.Count > 1 && Global.RandomNumber(0, 100) <= Probability)
             {
                 target.Kill();
                 log.Add($":x: {target.Name}'s life was taken.");
