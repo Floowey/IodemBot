@@ -28,10 +28,11 @@ namespace IodemBot
         {
             if (user == null) throw new ArgumentNullException(nameof(user));
             var iUser = UserAccountProvider.GetById(user.Id);
-            iUser.Name = user.Username;
+            if(user is SocketUser su){
+                iUser.Name = su.DisplayName();
+            }
             if (user is SocketGuildUser u)
             {
-                iUser.Name = u.DisplayName();
                 iUser.isSupporter |= u.PremiumSince != null;
                 iUser.isSupporter |= iUser.TrophyCase.Trophies.Any(t => t.Icon.Contains("Supporter"));
             }

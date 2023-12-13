@@ -2,11 +2,14 @@
 
 namespace IodemBot.Extensions
 {
-    public static class DiscordSocketGuildUserExt
+    public static class DiscordSocketUserExt
     {
-        public static string DisplayName(this SocketGuildUser user)
+        public static string DisplayName(this SocketUser user)
         {
-            return user.Nickname ?? user.GlobalName ?? user.Username;
+            string name = user.GlobalName ?? user.Username;
+            if(user is SocketGuildUser u)
+                name = u.Nickname ?? name;
+            return name;
         }
     }
 }

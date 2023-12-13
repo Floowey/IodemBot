@@ -231,7 +231,7 @@ namespace IodemBot.Modules
         [Summary("See xp for your next level")]
         public async Task Xp()
         {
-            var user = (SocketGuildUser)Context.User;
+            var user = Context.User;
             var account = EntityConverter.ConvertUser(user);
             var embed = new EmbedBuilder();
 
@@ -261,7 +261,7 @@ namespace IodemBot.Modules
             var p = factory.CreatePlayerFighter(account);
 
             var author = new EmbedAuthorBuilder();
-            author.WithName($"{(user is SocketGuildUser sguser ? sguser.DisplayName() : user.Username)}");
+            author.WithName(user.DisplayName());
             author.WithIconUrl(user.GetAvatarUrl());
 
             var embed = new EmbedBuilder()
@@ -415,7 +415,7 @@ namespace IodemBot.Modules
             UserAccountProvider.StoreUser(account);
             _ = GiveElementRole(user, account.Element);
             embed.WithColor(Colors.Get(account.Element.ToString()));
-            embed.WithDescription($"Welcome to the {account.Element} Clan, {account.GsClass} {((SocketGuildUser)Context.User).DisplayName()}!");
+            embed.WithDescription($"Welcome to the {account.Element} Clan, {account.GsClass} {Context.User.DisplayName()}!");
             if (account.Oaths.IsOathOfElementActive())
                 embed.WithFooter("An Oath prevents you from changing your element.");
             await Context.Channel.SendMessageAsync("", false, embed.Build());

@@ -169,7 +169,7 @@ namespace IodemBot.Modules.GoldenSunMechanics
             }
             else
             {
-                embed.WithDescription(":x: You don't have such item to polish.");
+                embed.WithDescription(":x: You don't have such item to rename.");
             }
 
             await Context.Channel.SendMessageAsync("", false, embed.Build());
