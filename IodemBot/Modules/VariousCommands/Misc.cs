@@ -104,7 +104,7 @@ namespace IodemBot.Modules
                 .WithDescription(
                     "Iodem is a community project, designed to add a special, custom made battle system, that mirrors the battle system present in the GBA games to the /r/GoldenSun discord.")
                 .AddField("Project Lead", "Floowey")
-                .AddField("Co Producers", "Falgor, Gray, Estelle, Arcblade")
+                .AddField("Co Producers", "Falgor, Gray, Anelace, Arcblade")
                 .AddField("Art Contributions",
                     "bringobrongo, Calvin, elTeh, Eon, generalFang15, Mimibits, Shawn, SpaceShaman, Tert, Virize, Volk, Von")
                 .AddField("Contributions and Testers",
