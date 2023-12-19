@@ -17,7 +17,7 @@ namespace IodemBot.ColossoBattles
 {
     public abstract class PvPEnvironment : BattleEnvironment
     {
-        private readonly uint _playersToStartB = 4;
+        private uint _playersToStartB = 4;
         public readonly List<SocketGuildUser> PlayersWithTeamBRole = new();
         public IRole TeamBRole;
 
@@ -302,7 +302,8 @@ namespace IodemBot.ColossoBattles
 
         public override Task<(bool Success, string Message)> CanPlayerJoin(UserAccount user, Team team = Team.A)
         {
-            if (Battle.GetTeam(team).Count >= PlayersToStart)
+            var pts = team==Team.A ? PlayersToStart : _playersToStartB;
+            if (Battle.GetTeam(team).Count >= pts)
                 return Task.FromResult((false, "This team is already full."));
 
             return Task.FromResult((true, (string)null));
