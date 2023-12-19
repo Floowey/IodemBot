@@ -597,9 +597,12 @@ namespace IodemBot.Modules
                 return;
             }
 
-            if ((DateTime.Now - account.LastReset).TotalHours < 0)
+            var timeLocked = (DateTime.Now - account.LastReset).TotalMinutes < 10;
+            var timeLockExceptions = (DateTime.Now - account.LastReset).TotalMinutes < 5;
+
+            if (timeLocked && !timeLockExceptions)
             {
-                await ReplyAsync("Again so fast? The procedure is quite straining on your body. You should let your new self settle in a bit.");
+                await ReplyAsync($"Again, so soon? The procedure is quite straining on your body. You should let your new self settle in a bit. Try again {TimestampTag.FromDateTime(account.LastReset.AddHours(2), TimestampTagStyles.Relative)}");
                 return;
             }
 
