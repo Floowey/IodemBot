@@ -247,8 +247,10 @@
           "Multiplier": 1.25
         },
         {
-          "Type": "Avoid"
-        }  
+          "Type": "Condition",
+          "Condition": "Avoid",
+          "Probability": 100
+        }
       ]
     },
     "Stats": {
