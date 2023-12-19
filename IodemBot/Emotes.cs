@@ -75,6 +75,14 @@ namespace IodemBot
             {Condition.Avoid, "<:Avoid:1096459879281066065>" }
         };
 
+        public static readonly Dictionary<Element, string[]> ElementalOathBonusTrophies = new(){
+            {Element.None,      new[]{"<:LH:1185977184402292777>", "<:LH_W:1185977192899936286>", "<:LH_M:1185977242904436918>", "<:LH_All:1186036792462418041>"}},
+            {Element.Venus,     new[]{"<:HN_V:1185977178853220392>", "<:HN_V_W:1185977182695206942>", "<:HN_V_M:1185977180304445461>", GetIcon(Element.Venus)}},
+            {Element.Mars,      new[]{"<:HN_M:1185977173287370843>", "<:HN_M_W:1185977177494261800>", "<:HN_M_M:1185977175141273640>",GetIcon(Element.Mars)}},
+            {Element.Jupiter,   new[]{"<:HN_J:1185977164697436210>", "<:HN_J_W:1185977170758213714>", "<:HN_J_M:1185977168572985354>",GetIcon(Element.Jupiter)}},
+            {Element.Mercury,   new[]{"<:HN_C:1185977159504896120>", "<:HN_C_W:1185977163153944586>", "<:HN_C_M:1185977160868048926>",GetIcon(Element.Mercury)}}
+        };
+
         public static string GetIcon(string emoteName, string NotFound = null)
         {
             if (NotFound != null && !MiscEmotes.ContainsKey(emoteName))
@@ -122,5 +130,8 @@ namespace IodemBot
         {
             return Emote.Parse(GetIcon(condition));
         }
+
+      
+
     }
 }

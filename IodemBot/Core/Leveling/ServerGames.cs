@@ -185,13 +185,24 @@ namespace IodemBot.Core.Leveling
             if (avatar.Oaths.ActiveOaths.Any())
             {
                 var elementOath = avatar.Oaths.IsOathOfElementActive();
+                Element elementOathElement = avatar.Oaths.GetActiveElementalOath();
                 var isSolitude = avatar.Oaths.ActiveOaths.Contains(Oath.Solitude);
+                var isWarrior = avatar.Oaths.ActiveOaths.Contains(Oath.Warrior);
+                var isMage = avatar.Oaths.ActiveOaths.Contains(Oath.Mage);
+                var allOthers = avatar.Oaths.ActiveOaths.Contains(Oath.Turtle)
+                                && avatar.Oaths.ActiveOaths.Contains(Oath.Dispirited);
                 string dungeonToComplete = elementOath ? " I" : "Vault";
                 //string dungeonToComplete = avatar.Oaths.IsOathOfElementActive() ? " IV" : "Venus Lighthouse";
+                var oaths = avatar.Oaths.ActiveOaths.ToList();
+                var oafLevel = avatar.Oaths.ActiveOaths.Contains(Oath.Oaf) ? avatar.LevelNumber : 0;
+                var allOaths = oafLevel > 0
+                            && (isWarrior || isMage)
+                            && isSolitude
+                            && elementOath
+                            && allOthers;
+
                 if (dungeon.Name.EndsWith(dungeonToComplete))
                 {
-                    var oaths = avatar.Oaths.ActiveOaths.ToList();
-                    var oafLevel = avatar.Oaths.ActiveOaths.Contains(Oath.Oaf) ? avatar.LevelNumber : 0;
                     try
                     {
                         avatar.Oaths.CompleteOaths();
@@ -207,14 +218,38 @@ namespace IodemBot.Core.Leveling
                     embed.WithDescription($"Hereby {avatar.Name} has ceremoniously fulfilled the following Oaths:\n" +
                         $"{string.Join("\n", oaths.Select(o => $"Oath of {o}"))}");
 
-                    if (isSolitude && oafLevel > 0 && oafLevel <= 50){
+                    if (isSolitude && oafLevel > 0 && oafLevel <= 50)
+                    {
+                        var text = $"Awarded for completing Oath of the Oaf by completing Vault at level {oafLevel}.";
+                        var iconSet = Emotes.ElementalOathBonusTrophies[elementOathElement];
+                        var icon = iconSet[0];
+
+                        if (elementOath)
+                        {
+                            text = $"Awarded for completing Oath of the Oaf by completing Path of {elementOathElement} IV at level {oafLevel}.";
+                        }
+                        if (isWarrior){
+                            icon = iconSet[1];
+                            text += "\nThis was achieved strictly as a warrior.";
+                        }
+
+                        if (isMage){
+                            icon = iconSet[2];
+                            text += "\nThis was achieved strictly as a mage.";
+                        }
+
+                        if (allOaths){
+                            icon = iconSet[3];
+                            text += "\nThis was achieved in combination with all possible Oaths.";
+                        }
+
                         avatar.TrophyCase.Trophies.Add(new Trophy()
                         {
-                            Text = $"Awarded for completing Oath of the Oaf by completing {(elementOath ? "Path IV" : "Vault")} at level {oafLevel}.",
-                            Icon = elementOath ? "<:Krakden:576856312500060161>" : "<:Nut:548636122402783243>",
+                            Text = text,
+                            Icon = icon,
                             ObtainedOn = DateTime.Now
                         });
-                    embed.AddField("The Hardest Nut", "You're the toughest nut out there.");
+                        embed.AddField($"The Hardest Nut {icon}", "You're one of the toughest nuts out there.");
                     }
 
                     _ = channel.SendMessageAsync(embed: embed.Build());
@@ -244,10 +279,10 @@ namespace IodemBot.Core.Leveling
                     {
                         if (PassiveLevelsBefore[i] != PassiveLevelsAfter[i])
                         {
-                            msg.Append($"{passivesBefore[i].Name} ({PassiveLevelsBefore[i] +1}) -> ({PassiveLevelsAfter[i] +1})");
+                            msg.Append($"{passivesBefore[i].Name} ({PassiveLevelsBefore[i] + 1}) -> ({PassiveLevelsAfter[i] + 1})");
                         }
                     }
-                    if(msg.Length > 0)
+                    if (msg.Length > 0)
                         embed.AddField("Passives Upgraded!", msg);
                 }
                 if (embed.Fields.Any() || !embed.Description.IsNullOrEmpty())

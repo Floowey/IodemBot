@@ -67,5 +67,12 @@ namespace IodemBot.Modules.GoldenSunMechanics
         {
             return ElementOaths.Any(e => ActiveOaths.Contains(e));
         }
+        public Element GetActiveElementalOath()
+        {
+            if (IsOathOfElementActive())
+                return Enum.Parse<Element>(ElementOaths.Where(e => ActiveOaths.Contains(e)).First().ToString());
+            else
+                return Element.None;
+        }
     }
 }
