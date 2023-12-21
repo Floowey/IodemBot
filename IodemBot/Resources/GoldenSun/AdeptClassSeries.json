@@ -2902,11 +2902,11 @@
           "Ply Well"
         ],
         "statMultipliers": {
-          "maxHP": 140,
-          "maxPP": 90,
-          "Atk": 140,
-          "Def": 110,
-          "Spd": 130
+          "maxHP": 160,
+          "maxPP": 110,
+          "Atk": 150,
+          "Def": 120,
+          "Spd": 140
         }
       },
       {

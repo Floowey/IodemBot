@@ -789,8 +789,8 @@
     "TargetType": "EnemyRange",
     "emote": "<:Curse:536984898980806658>",
     "range": 3,
-    "element": 2,
-    "PPCost": 0,
+    "element": 0,
+    "PPCost": 6,
     "effects": [
       {
         "Type": "Condition",

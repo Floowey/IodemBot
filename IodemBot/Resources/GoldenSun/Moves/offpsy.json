@@ -79,6 +79,15 @@
     "PPCost": 18,
     "dmgMult": 1.5
   },
+  "Call Zombie": {
+    "name": "Call Zombie",
+    "TargetType": "EnemyRange",
+    "emote": "<:Call_Zombie:536997673799122956>",
+    "range": 1,
+    "element": 3,
+    "PPCost": 5,
+    "power": 40
+  },
   "Call Demon": {
     "name": "Call Demon",
     "TargetType": "EnemyRange",
